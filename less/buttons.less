@@ -31,7 +31,6 @@
     color: @grayDark;
     text-decoration: none;
     background-position: 0 -15px;
-
     // transition is only when going to hover/focus, otherwise the background
     // behind the gradient (there for IE<=9 fallback) gets mismatched
     .transition(background-position .1s linear);
@@ -136,6 +135,8 @@ input[type="button"] {
 .btn-danger.active,
 .btn-success.active,
 .btn-info.active,
+.btn-navbar.active,
+.btn-navbar-selected.active,
 .btn-inverse.active {
   color: rgba(255,255,255,.75);
 }
@@ -164,6 +165,48 @@ input[type="button"] {
 // Inverse appears as dark gray
 .btn-inverse {
   .buttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight);
+}
+.btn-navbar {
+  .buttonBackground(@btnNavbarBackground, @btnNavbarBackgroundHighlight);
+  background-image: -webkit-linear-gradient(bottom, @btnNavbarBackgroundHighlight 0%, @btnNavbarBackgroundHighlight 49%,@btnNavbarBackground 50%,@btnNavbarBackground 100%);
+  background-image: -moz-linear-gradient(bottom, @btnNavbarBackgroundHighlight 0%, @btnNavbarBackgroundHighlight 49%,@btnNavbarBackground 50%,@btnNavbarBackground 100%);
+  background-image: -ms-linear-gradient(bottom, @btnNavbarBackgroundHighlight 0%, @btnNavbarBackgroundHighlight 49%,@btnNavbarBackground 50%,@btnNavbarBackground 100%);
+  background-image: -o-linear-gradient(bottom, @btnNavbarBackgroundHighlight 0%, @btnNavbarBackgroundHighlight 49%,@btnNavbarBackground 50%,@btnNavbarBackground 100%);
+  background-image: linear-gradient(bottom, @btnNavbarBackgroundHighlight 0%, @btnNavbarBackgroundHighlight 49%,@btnNavbarBackground 50%,@btnNavbarBackground 100%);
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    background-position: 0 0px;
+  }
+  &.active,
+  &:active {
+    background-image: -webkit-linear-gradient(bottom, @btnNavbarBackgroundHighlight 0%, @btnNavbarBackgroundHighlight 49%,@btnNavbarBackground 50%,@btnNavbarBackground 100%);
+    background-image: -moz-linear-gradient(bottom, @btnNavbarBackgroundHighlight 0%, @btnNavbarBackgroundHighlight 49%,@btnNavbarBackground 50%,@btnNavbarBackground 100%);
+    background-image: -ms-linear-gradient(bottom, @btnNavbarBackgroundHighlight 0%, @btnNavbarBackgroundHighlight 49%,@btnNavbarBackground 50%,@btnNavbarBackground 100%);
+    background-image: -o-linear-gradient(bottom, @btnNavbarBackgroundHighlight 0%, @btnNavbarBackgroundHighlight 49%,@btnNavbarBackground 50%,@btnNavbarBackground 100%);
+    background-image: linear-gradient(bottom, @btnNavbarBackgroundHighlight 0%, @btnNavbarBackgroundHighlight 49%,@btnNavbarBackground 50%,@btnNavbarBackground 100%);
+  }
+}
+.btn-navbar-selected {
+  .buttonBackground(@btnNavbarSelectedBackground, @btnNavbarSelectedBackgroundHighlight);
+  background-image: -webkit-linear-gradient(bottom, @btnNavbarSelectedBackgroundHighlight 0%, @btnNavbarSelectedBackgroundHighlight 49%, @btnNavbarSelectedBackground 50%, @btnNavbarSelectedBackground 100%);
+  background-image: -moz-linear-gradient(bottom, @btnNavbarSelectedBackgroundHighlight 0%, @btnNavbarSelectedBackgroundHighlight 49%, @btnNavbarSelectedBackground 50%, @btnNavbarSelectedBackground 100%);
+  background-image: -ms-linear-gradient(bottom, @btnNavbarSelectedBackgroundHighlight 0%, @btnNavbarSelectedBackgroundHighlight 49%, @btnNavbarSelectedBackground 50%, @btnNavbarSelectedBackground 100%);
+  background-image: -o-linear-gradient(bottom, @btnNavbarSelectedBackgroundHighlight 0%, @btnNavbarSelectedBackgroundHighlight 49%, @btnNavbarSelectedBackground 50%, @btnNavbarSelectedBackground 100%);
+  background-image: linear-gradient(bottom, @btnNavbarSelectedBackgroundHighlight 0%, @btnNavbarSelectedBackgroundHighlight 49%, @btnNavbarSelectedBackground 50%, @btnNavbarSelectedBackground 100%);
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    background-position: 0 0px;
+  }
+  &.active,
+  &:active {
+    background-image: -webkit-linear-gradient(bottom, @btnNavbarSelectedBackgroundHighlight 0%, @btnNavbarSelectedBackgroundHighlight 49%, @btnNavbarSelectedBackground 50%, @btnNavbarSelectedBackground 100%);
+    background-image: -moz-linear-gradient(bottom, @btnNavbarSelectedBackgroundHighlight 0%, @btnNavbarSelectedBackgroundHighlight 49%, @btnNavbarSelectedBackground 50%, @btnNavbarSelectedBackground 100%);
+    background-image: -ms-linear-gradient(bottom, @btnNavbarSelectedBackgroundHighlight 0%, @btnNavbarSelectedBackgroundHighlight 49%, @btnNavbarSelectedBackground 50%, @btnNavbarSelectedBackground 100%);
+    background-image: -o-linear-gradient(bottom, @btnNavbarSelectedBackgroundHighlight 0%, @btnNavbarSelectedBackgroundHighlight 49%, @btnNavbarSelectedBackground 50%, @btnNavbarSelectedBackground 100%);
+    background-image: linear-gradient(bottom, @btnNavbarSelectedBackgroundHighlight 0%, @btnNavbarSelectedBackgroundHighlight 49%, @btnNavbarSelectedBackground 50%, @btnNavbarSelectedBackground 100%);
+  }
 }
 
 
