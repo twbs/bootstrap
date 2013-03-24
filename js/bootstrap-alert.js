@@ -35,20 +35,19 @@
   
   Alert.prototype.auto_close = function (e) {
 
-  	var $this = $(this)
+    var $this = $(this)
       , selector = $this.attr('data-target')
       , $parent
       
-      $parent = $(selector)   
-      
-      $(auto_dismiss).each(function(idx, elem){
-      	$parent.length || ($parent = $(elem).hasClass('alert') ? $(elem) : $(elem).parent())
-      	var dismiss_secs = parseFloat($(this).attr("data-auto-dismiss"));
-      	if(dismiss_secs > 0){
-      		setTimeout(function() { $parent.removeClass('in') }, dismiss_secs * 1000 );
-      	}      	
-      })
-      
+    $parent = $(selector)
+    
+    $(auto_dismiss).each(function(idx, elem){
+      $parent.length || ($parent = $(elem).hasClass('alert') ? $(elem) : $(elem).parent())
+      var dismiss_secs = parseFloat($(this).attr("data-auto-dismiss"));
+      if(dismiss_secs > 0){
+        setTimeout(function() { $parent.removeClass('in') }, dismiss_secs * 1000 );
+      }
+    })
   }    
 
   Alert.prototype.close = function (e) {
