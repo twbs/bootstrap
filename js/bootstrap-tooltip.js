@@ -90,9 +90,10 @@
 
       self = $(e.currentTarget)[this.type](options).data(this.type)
 
+      clearTimeout(this.timeout)
+
       if (!self.options.delay || !self.options.delay.show) return self.show()
 
-      clearTimeout(this.timeout)
       self.hoverState = 'in'
       this.timeout = setTimeout(function() {
         if (self.hoverState == 'in') self.show()
