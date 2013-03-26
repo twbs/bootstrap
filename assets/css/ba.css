@@ -9,30 +9,6 @@
 
 /* Body and structure
 -------------------------------------------------- */
-
-@font-face {
-  font-family: 'Gotham';
-  font-style: normal;
-  font-weight: normal;
-  src: url('gotham.eot');
-  src: url('gotham.eot?#iefix') format('embedded-opentype'), url('gotham.woff') format('woff'), url('gotham.ttf') format('truetype'), url('gotham.svg#Gotham') format('svg');
-}
-
-
-@font-face {
-    font-family: 'Gotham Light';
-    src: url('gotham/light.eot');
-    src: url('gotham/light.eot?#iefix') format('embedded-opentype'),
-         url('gotham/light.woff') format('woff'),
-         url('gotham/light.ttf') format('truetype'),
-         url('gotham/light.svg#Gotham Light') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-
 body {
   padding-top: 70px!important;
 }
