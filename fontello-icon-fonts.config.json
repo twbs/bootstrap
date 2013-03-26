@@ -256,7 +256,7 @@
       "code": 10004,
       "from": 10004,
       "uid": "43ab845088317bd348dee1d975700c48",
-      "css": "ok-circle",
+      "css": "ok-sign",
       "orig_css": "ok-circle",
       "orig_code": 10004,
       "src": "fontawesome"
@@ -405,6 +405,21 @@
       "orig_code": 57557,
       "src": "elusive",
       "from": 57557
+    },
+    {
+      "search": [
+        "ok",
+        true,
+        "check",
+        "mark"
+      ],
+      "code": 59138,
+      "from": 59138,
+      "uid": "ad33e708f4d2e25c5056c931da1528d6",
+      "css": "ok-circle",
+      "orig_css": "ok-circle2",
+      "orig_code": 59138,
+      "src": "fontawesome"
     },
     {
       "search": [
