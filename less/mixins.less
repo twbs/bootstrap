@@ -449,52 +449,52 @@
 .generate-grid-columns(@grid-columns) {
 
   // Default columns
-  .spanX (@index) when (@index > 0) {
-    .span@{index} { .span(@index); }
-    .spanX((@index - 1));
+  .col-span-X (@index) when (@index > 0) {
+    .col-span-@{index} { .col-span-(@index); }
+    .col-span-X((@index - 1));
   }
-  .spanX(0) {}
+  .col-span-X(0) {}
 
   // Offsets (gaps between columns)
-  .offsetX (@index) when (@index > 0) {
-    .offset@{index} { .offset(@index); }
-    .offsetX((@index - 1));
+  .col-offset-X (@index) when (@index > 0) {
+    .col-offset-@{index} { .col-offset-(@index); }
+    .col-offset-X((@index - 1));
   }
-  .offsetX (0) {}
+  .col-offset-X (0) {}
 
   // Source ordering
-  .pushX (@index) when (@index > 0) {
-    .push@{index} { .push(@index); }
-    .pushX((@index - 1));
+  .col-push-X (@index) when (@index > 0) {
+    .col-push-@{index} { .col-push-(@index); }
+    .col-push-X((@index - 1));
   }
-  .pushX (0) {}
+  .col-push-X (0) {}
 
   // Source ordering
-  .pullX (@index) when (@index > 0) {
-    .pull@{index} { .pull(@index); }
-    .pullX((@index - 1));
+  .col-pull-X (@index) when (@index > 0) {
+    .col-pull-@{index} { .col-pull-(@index); }
+    .col-pull-X((@index - 1));
   }
-  .pullX (0) {}
+  .col-pull-X (0) {}
 
   // Apply the styles
-  .span(@columns) {
+  .col-span-(@columns) {
     width: percentage((@columns / @grid-columns));
   }
-  .offset(@columns) {
+  .col-offset-(@columns) {
     margin-left: percentage((@columns / @grid-columns));
   }
-  .push(@columns) {
+  .col-push-(@columns) {
     left: percentage((@columns / @grid-columns));
   }
-  .pull(@columns) {
+  .col-pull-(@columns) {
     right: percentage((@columns / @grid-columns));
   }
 
   // Generate .spanX and .offsetX
-  .spanX(@grid-columns);
-  .offsetX(@grid-columns);
-  .pushX(@grid-columns);
-  .pullX(@grid-columns);
+  .col-span-X(@grid-columns);
+  .col-offset-X(@grid-columns);
+  .col-push-X(@grid-columns);
+  .col-pull-X(@grid-columns);
 }
 
 

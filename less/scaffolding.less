@@ -30,19 +30,21 @@ html {
 }
 
 body {
+  font-family: @font-family-base;
+  .font-size();
+  line-height: @line-height-base;
   color: @text-color;
   background-color: @body-background;
 }
 
 // Reset fonts for revelant elements
-body,
 input,
 button,
 select,
 textarea {
-  font-family: @font-family-base;
-  .font-size();
-  line-height: @line-height-base;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 

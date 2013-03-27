@@ -18,12 +18,12 @@ title: CSS
     <!-- Docs nav
     ================================================== -->
     <div class="row">
-      <div class="span3 bs-docs-sidebar">
+      <div class="col-span-3 bs-docs-sidebar">
         <ul class="nav nav-list bs-docs-sidenav">
           <li><a href="#global"><i class="glyphicon glyphicon-chevron-right"></i> Global settings</a></li>
+          <li><a href="#grid"><i class="glyphicon glyphicon-chevron-right"></i> Grid system</a></li>
           <li><a href="#typography"><i class="glyphicon glyphicon-chevron-right"></i> Typography</a></li>
           <li><a href="#code"><i class="glyphicon glyphicon-chevron-right"></i> Code</a></li>
-          <li><a href="#grid"><i class="glyphicon glyphicon-chevron-right"></i> Grid system</a></li>
           <li><a href="#tables"><i class="glyphicon glyphicon-chevron-right"></i> Tables</a></li>
           <li><a href="#forms"><i class="glyphicon glyphicon-chevron-right"></i> Forms</a></li>
           <li><a href="#buttons"><i class="glyphicon glyphicon-chevron-right"></i> Buttons</a></li>
@@ -32,7 +32,7 @@ title: CSS
           <li><a href="#responsive-utilities"><i class="glyphicon glyphicon-chevron-right"></i> Responsive utilities</a></li>
         </ul>
       </div>
-      <div class="span9">
+      <div class="col-span-9">
 
 
 
@@ -74,6 +74,207 @@ title: CSS
 
           <h3>Normalize reset</h3>
           <p>For improved cross-browser rendering, we use <a href="http://necolas.github.com/normalize.css/" target="_blank">Normalize</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a>.</p>
+
+        </section>
+
+
+
+        <!-- Grid system
+        ================================================== -->
+        <section id="grid">
+          <div class="page-header">
+            <h1>Grid system</h1>
+          </div>
+          <p class="lead">Bootstrap includes a responsive, percent-based grid system that appropriately scales up to 12 columns as the device or viewport size increases&mdash;in other words, it's mobile first. It includes <a href="#grid-example">predefined classes</a> for this, as well as powerful <a href="#grid-less">mixins for generating semantic layouts</a>.</p>
+
+          <h3 id="grid-example">Grid example</h3>
+          <p>On mobile devices, the grid starts out stacked. Above 768px, it becomes horizontal as media queries kick in to apply <code>float</code>s and <code>width</code>s. To create a basic grid layout, wrap a series of <code>.col-span-*</code> elements within a <code>.row</code>. As this is a 12-column grid, each <code>.span*</code> spans a number of those 12 columns, and should always add up to 12 for each row (or the number of columns in the parent), even at mobile resolutions.</p>
+          <div class="bs-docs-grid">
+            <div class="row show-grid">
+              <div class="col-span-1">1</div>
+              <div class="col-span-1">1</div>
+              <div class="col-span-1">1</div>
+              <div class="col-span-1">1</div>
+              <div class="col-span-1">1</div>
+              <div class="col-span-1">1</div>
+              <div class="col-span-1">1</div>
+              <div class="col-span-1">1</div>
+              <div class="col-span-1">1</div>
+              <div class="col-span-1">1</div>
+              <div class="col-span-1">1</div>
+              <div class="col-span-1">1</div>
+            </div>
+            <div class="row show-grid">
+              <div class="col-span-4">4</div>
+              <div class="col-span-4">4</div>
+              <div class="col-span-4">4</div>
+            </div>
+            <div class="row show-grid">
+              <div class="col-span-6">6</div>
+              <div class="col-span-6">6</div>
+            </div>
+          </div>
+{% highlight html linenos %}
+<div class="row">
+  <div class="col-span-1">1</div>
+  <div class="col-span-1">1</div>
+  <div class="col-span-1">1</div>
+  <div class="col-span-1">1</div>
+  <div class="col-span-1">1</div>
+  <div class="col-span-1">1</div>
+  <div class="col-span-1">1</div>
+  <div class="col-span-1">1</div>
+  <div class="col-span-1">1</div>
+  <div class="col-span-1">1</div>
+  <div class="col-span-1">1</div>
+  <div class="col-span-1">1</div>
+</div>
+<div class="row">
+  <div class="col-span-4">4</div>
+  <div class="col-span-4">4</div>
+  <div class="col-span-4">4</div>
+</div>
+<div class="row">
+  <div class="col-span-6">6</div>
+  <div class="col-span-6">6</div>
+</div>
+{% endhighlight %}
+
+          <h3 id="grid-offsetting">Offsetting columns</h3>
+          <p>Move columns to the right using <code>.col-offset-*</code> classes. Each class increases the left margin of a column by a whole column. For example, <code>.col-offset-4</code> moves <code>.col-span-4</code> over four columns.</p>
+          <div class="bs-docs-grid">
+            <div class="row show-grid">
+              <div class="col-span-4">4</div>
+              <div class="col-span-4 col-offset-4">4 offset 4</div>
+            </div><!-- /row -->
+            <div class="row show-grid">
+              <div class="col-span-3 col-offset-3">3 offset 3</div>
+              <div class="col-span-3 col-offset-3">3 offset 3</div>
+            </div><!-- /row -->
+            <div class="row show-grid">
+              <div class="col-span-6 col-offset-6">6 offset 6</div>
+            </div><!-- /row -->
+          </div>
+{% highlight html linenos %}
+<div class="row">
+  <div class="col-span-4">...</div>
+  <div class="col-span-4 col-offset-4">...</div>
+</div>
+{% endhighlight %}
+
+
+          <h3 id="grid-nesting">Nesting columns</h3>
+          <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.span*</code> columns within an existing <code>.span*</code> column. Nested rows should include a set of columns that add up to 12.</p>
+          <div class="row show-grid">
+            <div class="col-span-9">
+              Level 1: 9 columns
+              <div class="row show-grid">
+                <div class="col-span-6">
+                  Level 2: 6 columns
+                </div>
+                <div class="col-span-6">
+                  Level 2: 6 columns
+                </div>
+              </div>
+            </div>
+          </div>
+{% highlight html linenos %}
+<div class="row">
+  <div class="col-span-9">
+    Level 1: 9 columns
+    <div class="row">
+      <div class="col-span-6">
+        Level 2: 6 columns
+      </div>
+      <div class="col-span-6">
+        Level 2: 6 columns
+      </div>
+    </div>
+  </div>
+</div>
+{% endhighlight %}
+
+          <h3 id="grid-column-ordering">Column ordering</h3>
+          <p>Easily change the order of our built-in grid columns with <code>.push*</code> and <code>.pull*</code> modifier classes.</p>
+<div class="row show-grid">
+  <div class="col-span-9 col-push-3">9</div>
+  <div class="col-span-3 col-pull-9">3</div>
+</div>
+
+{% highlight html linenos %}
+<div class="row show-grid">
+  <div class="col-span-9 col-push-3">9</div>
+  <div class="col-span-3 col-pull-9">3</div>
+</div>
+{% endhighlight %}
+
+          <h3 id="grid-less">LESS mixins and variables</h3>
+          <p>In addition to <a href="#grid-example">prebuilt grid classes</a> for fast layouts, Bootstrap includes LESS variables and mixins for quickly generating your own simple, semantic layouts.</p>
+
+          <h4>Variables</h4>
+          <p>Variables determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.</p>
+{% highlight css linenos %}
+@grid-columns:              12;
+@grid-gutter-width:         30px;
+@grid-float-breakpoint:     768px;
+{% endhighlight %}
+
+          <h4>Mixins</h4>
+          <p>Mixins are used in conjunction with the grid variables to generate semantic CSS for individual grid columns.</p>
+{% highlight css linenos %}
+// Creates a wrapper for a series of columns
+.make-row() {
+  // Negative margin the row out to align the content of columns
+  margin-left:  (@grid-gutter-width / -2);
+  margin-right: (@grid-gutter-width / -2);
+  // Then clear the floated columns
+  .clear_float();
+}
+
+// Generate the columns
+.make-column(@columns) {
+  @media (min-width: @grid-float-breakpoint) {
+    float: left;
+    // Calculate width based on number of columns available
+    width: percentage(@columns / @grid-columns);
+  }
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Set inner padding as gutters instead of margin
+  padding-left:  (@grid-gutter-width / 2);
+  padding-right: (@grid-gutter-width / 2);
+}
+
+// Generate the column offsets
+.make-column-offset(@columns) {
+  @media (min-width: @grid-float-breakpoint) {
+    margin-left: percentage((@columns / @grid-columns));
+  }
+}
+{% endhighlight %}
+
+          <h4>Example usage</h4>
+          <p>You can modify the variables to your own custom values, or just use the mixins with their default values. Here's an example of using the default settings to create a two-column layout with a gap between.</p>
+{% highlight css linenos %}
+.wrapper {
+  .make-row();
+}
+.content-main {
+  .make-column(8);
+}
+.content-secondary {
+  .make-column(3);
+  .make-column-offset(1);
+}
+{% endhighlight %}
+{% highlight html linenos %}
+<div class="wrapper">
+  <div class="content-main">...</div>
+  <div class="content-secondary">...</div>
+</div>
+{% endhighlight %}
+
+
 
         </section>
 
@@ -463,207 +664,6 @@ title: CSS
           Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.
         </p>
       </section>
-
-
-
-        <!-- Grid system
-        ================================================== -->
-        <section id="grid">
-          <div class="page-header">
-            <h1>Grid system</h1>
-          </div>
-          <p class="lead">Bootstrap includes a responsive, percent-based grid system that appropriately scales up to 12 columns as the device or viewport size increases&mdash;in other words, it's mobile first. It includes <a href="#grid-example">predefined classes</a> for this, as well as powerful <a href="#grid-less">mixins for generating semantic layouts</a>.</p>
-
-          <h3 id="grid-example">Grid example</h3>
-          <p>On mobile devices, the grid starts out stacked. Above 768px, it becomes horizontal as media queries kick in to apply <code>float</code>s and <code>width</code>s. To create a basic grid layout, wrap a series of <code>.span*</code> elements within a <code>.row</code>. As this is a 12-column grid, each <code>.span*</code> spans a number of those 12 columns, and should always add up to 12 for each row (or the number of columns in the parent), even at mobile resolutions.</p>
-          <div class="bs-docs-grid">
-            <div class="row show-grid">
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-            </div>
-            <div class="row show-grid">
-              <div class="span4">4</div>
-              <div class="span4">4</div>
-              <div class="span4">4</div>
-            </div>
-            <div class="row show-grid">
-              <div class="span6">6</div>
-              <div class="span6">6</div>
-            </div>
-          </div>
-{% highlight html linenos %}
-<div class="row">
-  <div class="span1">1</div>
-  <div class="span1">1</div>
-  <div class="span1">1</div>
-  <div class="span1">1</div>
-  <div class="span1">1</div>
-  <div class="span1">1</div>
-  <div class="span1">1</div>
-  <div class="span1">1</div>
-  <div class="span1">1</div>
-  <div class="span1">1</div>
-  <div class="span1">1</div>
-  <div class="span1">1</div>
-</div>
-<div class="row">
-  <div class="span4">4</div>
-  <div class="span4">4</div>
-  <div class="span4">4</div>
-</div>
-<div class="row">
-  <div class="span6">6</div>
-  <div class="span6">6</div>
-</div>
-{% endhighlight %}
-
-          <h3 id="grid-offsetting">Offsetting columns</h3>
-          <p>Move columns to the right using <code>.offset*</code> classes. Each class increases the left margin of a column by a whole column. For example, <code>.offset4</code> moves <code>.span4</code> over four columns.</p>
-          <div class="bs-docs-grid">
-            <div class="row show-grid">
-              <div class="span4">4</div>
-              <div class="span4 offset4">4 offset 4</div>
-            </div><!-- /row -->
-            <div class="row show-grid">
-              <div class="span3 offset3">3 offset 3</div>
-              <div class="span3 offset3">3 offset 3</div>
-            </div><!-- /row -->
-            <div class="row show-grid">
-              <div class="span6 offset6">6 offset 6</div>
-            </div><!-- /row -->
-          </div>
-{% highlight html linenos %}
-<div class="row">
-  <div class="span4">...</div>
-  <div class="span4 offset4">...</div>
-</div>
-{% endhighlight %}
-
-
-          <h3 id="grid-nesting">Nesting columns</h3>
-          <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.span*</code> columns within an existing <code>.span*</code> column. Nested rows should include a set of columns that add up to 12.</p>
-          <div class="row show-grid">
-            <div class="span9">
-              Level 1: 9 columns
-              <div class="row show-grid">
-                <div class="span6">
-                  Level 2: 6 columns
-                </div>
-                <div class="span6">
-                  Level 2: 6 columns
-                </div>
-              </div>
-            </div>
-          </div>
-{% highlight html linenos %}
-<div class="row">
-  <div class="span9">
-    Level 1: 9 columns
-    <div class="row">
-      <div class="span6">
-        Level 2: 6 columns
-      </div>
-      <div class="span6">
-        Level 2: 6 columns
-      </div>
-    </div>
-  </div>
-</div>
-{% endhighlight %}
-
-          <h3 id="grid-column-ordering">Column ordering</h3>
-          <p>Easily change the order of our built-in grid columns with <code>.push*</code> and <code>.pull*</code> modifier classes.</p>
-<div class="row show-grid">
-  <div class="span9 push3">9</div>
-  <div class="span3 pull9">3</div>
-</div>
-
-{% highlight html linenos %}
-<div class="row show-grid">
-  <div class="span9 push3">9</div>
-  <div class="span3 pull9">3</div>
-</div>
-{% endhighlight %}
-
-          <h3 id="grid-less">LESS mixins and variables</h3>
-          <p>In addition to <a href="#grid-example">prebuilt grid classes</a> for fast layouts, Bootstrap includes LESS variables and mixins for quickly generating your own simple, semantic layouts.</p>
-
-          <h4>Variables</h4>
-          <p>Variables determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.</p>
-{% highlight css linenos %}
-@grid-columns:              12;
-@grid-gutter-width:         30px;
-@grid-float-breakpoint:     768px;
-{% endhighlight %}
-
-          <h4>Mixins</h4>
-          <p>Mixins are used in conjunction with the grid variables to generate semantic CSS for individual grid columns.</p>
-{% highlight css linenos %}
-// Creates a wrapper for a series of columns
-.make-row() {
-  // Negative margin the row out to align the content of columns
-  margin-left:  (@grid-gutter-width / -2);
-  margin-right: (@grid-gutter-width / -2);
-  // Then clear the floated columns
-  .clear_float();
-}
-
-// Generate the columns
-.make-column(@columns) {
-  @media (min-width: @grid-float-breakpoint) {
-    float: left;
-    // Calculate width based on number of columns available
-    width: percentage(@columns / @grid-columns);
-  }
-  // Prevent columns from collapsing when empty
-  min-height: 1px;
-  // Set inner padding as gutters instead of margin
-  padding-left:  (@grid-gutter-width / 2);
-  padding-right: (@grid-gutter-width / 2);
-}
-
-// Generate the column offsets
-.make-column-offset(@columns) {
-  @media (min-width: @grid-float-breakpoint) {
-    margin-left: percentage((@columns / @grid-columns));
-  }
-}
-{% endhighlight %}
-
-          <h4>Example usage</h4>
-          <p>You can modify the variables to your own custom values, or just use the mixins with their default values. Here's an example of using the default settings to create a two-column layout with a gap between.</p>
-{% highlight css linenos %}
-.wrapper {
-  .make-row();
-}
-.content-main {
-  .make-column(8);
-}
-.content-secondary {
-  .make-column(3);
-  .make-column-offset(1);
-}
-{% endhighlight %}
-{% highlight html linenos %}
-<div class="wrapper">
-  <div class="content-main">...</div>
-  <div class="content-secondary">...</div>
-</div>
-{% endhighlight %}
-
-
-
-        </section>
 
 
 

@@ -288,19 +288,21 @@ html {
 }
 
 body {
-  color: #333333;
-  background-color: #ffffff;
-}
-
-body,
-input,
-button,
-select,
-textarea {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-size: 1.4rem;
   line-height: 20px;
+  color: #333333;
+  background-color: #ffffff;
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 a {
@@ -344,7 +346,7 @@ p {
   font-size: 21px;
   font-size: 2.1rem;
   font-weight: 200;
-  line-height: 1.25;
+  line-height: 1.3;
 }
 
 small {
@@ -755,7 +757,7 @@ pre code {
   clear: both;
 }
 
-[class^="span"] {
+[class*="col-span-"] {
   position: relative;
   min-height: 1px;
   padding-right: 15px;
@@ -766,151 +768,151 @@ pre code {
   .container {
     max-width: 728px;
   }
-  [class^="span"] {
+  [class*="col-span-"] {
     float: left;
   }
-  .span12 {
+  .col-span-12 {
     width: 100%;
   }
-  .span11 {
+  .col-span-11 {
     width: 91.66666666666666%;
   }
-  .span10 {
+  .col-span-10 {
     width: 83.33333333333334%;
   }
-  .span9 {
+  .col-span-9 {
     width: 75%;
   }
-  .span8 {
+  .col-span-8 {
     width: 66.66666666666666%;
   }
-  .span7 {
+  .col-span-7 {
     width: 58.333333333333336%;
   }
-  .span6 {
+  .col-span-6 {
     width: 50%;
   }
-  .span5 {
+  .col-span-5 {
     width: 41.66666666666667%;
   }
-  .span4 {
+  .col-span-4 {
     width: 33.33333333333333%;
   }
-  .span3 {
+  .col-span-3 {
     width: 25%;
   }
-  .span2 {
+  .col-span-2 {
     width: 16.666666666666664%;
   }
-  .span1 {
+  .col-span-1 {
     width: 8.333333333333332%;
   }
-  .offset12 {
+  .col-offset-12 {
     margin-left: 100%;
   }
-  .offset11 {
+  .col-offset-11 {
     margin-left: 91.66666666666666%;
   }
-  .offset10 {
+  .col-offset-10 {
     margin-left: 83.33333333333334%;
   }
-  .offset9 {
+  .col-offset-9 {
     margin-left: 75%;
   }
-  .offset8 {
+  .col-offset-8 {
     margin-left: 66.66666666666666%;
   }
-  .offset7 {
+  .col-offset-7 {
     margin-left: 58.333333333333336%;
   }
-  .offset6 {
+  .col-offset-6 {
     margin-left: 50%;
   }
-  .offset5 {
+  .col-offset-5 {
     margin-left: 41.66666666666667%;
   }
-  .offset4 {
+  .col-offset-4 {
     margin-left: 33.33333333333333%;
   }
-  .offset3 {
+  .col-offset-3 {
     margin-left: 25%;
   }
-  .offset2 {
+  .col-offset-2 {
     margin-left: 16.666666666666664%;
   }
-  .offset1 {
+  .col-offset-1 {
     margin-left: 8.333333333333332%;
   }
-  .push12 {
+  .col-push-12 {
     left: 100%;
   }
-  .push11 {
+  .col-push-11 {
     left: 91.66666666666666%;
   }
-  .push10 {
+  .col-push-10 {
     left: 83.33333333333334%;
   }
-  .push9 {
+  .col-push-9 {
     left: 75%;
   }
-  .push8 {
+  .col-push-8 {
     left: 66.66666666666666%;
   }
-  .push7 {
+  .col-push-7 {
     left: 58.333333333333336%;
   }
-  .push6 {
+  .col-push-6 {
     left: 50%;
   }
-  .push5 {
+  .col-push-5 {
     left: 41.66666666666667%;
   }
-  .push4 {
+  .col-push-4 {
     left: 33.33333333333333%;
   }
-  .push3 {
+  .col-push-3 {
     left: 25%;
   }
-  .push2 {
+  .col-push-2 {
     left: 16.666666666666664%;
   }
-  .push1 {
+  .col-push-1 {
     left: 8.333333333333332%;
   }
-  .pull12 {
+  .col-pull-12 {
     right: 100%;
   }
-  .pull11 {
+  .col-pull-11 {
     right: 91.66666666666666%;
   }
-  .pull10 {
+  .col-pull-10 {
     right: 83.33333333333334%;
   }
-  .pull9 {
+  .col-pull-9 {
     right: 75%;
   }
-  .pull8 {
+  .col-pull-8 {
     right: 66.66666666666666%;
   }
-  .pull7 {
+  .col-pull-7 {
     right: 58.333333333333336%;
   }
-  .pull6 {
+  .col-pull-6 {
     right: 50%;
   }
-  .pull5 {
+  .col-pull-5 {
     right: 41.66666666666667%;
   }
-  .pull4 {
+  .col-pull-4 {
     right: 33.33333333333333%;
   }
-  .pull3 {
+  .col-pull-3 {
     right: 25%;
   }
-  .pull2 {
+  .col-pull-2 {
     right: 16.666666666666664%;
   }
-  .pull1 {
+  .col-pull-1 {
     right: 8.333333333333332%;
   }
 }
@@ -927,7 +929,7 @@ pre code {
   }
 }
 
-[class*="span"].pull-right {
+[class*="col-span-"].pull-right {
   float: right;
 }
 
@@ -1065,13 +1067,13 @@ th {
   background-color: #f5f5f5;
 }
 
-table col[class^="span"] {
+table col[class*="col-span-"] {
   display: table-column;
   float: none;
 }
 
-table td[class^="span"],
-table th[class^="span"] {
+table td[class*="col-span-"],
+table th[class*="col-span-"] {
   display: table-cell;
   float: none;
 }

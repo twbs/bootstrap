@@ -12,7 +12,7 @@
 .row {
   .make-row();
 }
-[class^="span"] {
+[class*="col-span-"] {
   position: relative;
   min-height: 1px;
   padding-left:  (@grid-gutter-width / 2);
@@ -25,7 +25,7 @@
     max-width: 728px;
   }
   // Generate the grid columns and offsets
-  [class^="span"] { float: left; }
+  [class*="col-span-"] { float: left; }
   .generate-grid-columns(@grid-columns);
 }
 
@@ -44,6 +44,6 @@
 }
 
 // Reset utility classes due to specificity
-[class*="span"].pull-right {
+[class*="col-span-"].pull-right {
   float: right;
 }
