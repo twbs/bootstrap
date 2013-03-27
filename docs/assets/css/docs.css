@@ -14,6 +14,11 @@ body {
   /* We add the padding to the body for >768px only */
 }
 
+.bs-docs-container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 /*  */
 .bs-docs-footer {
   padding-left:  15px;
@@ -486,7 +491,8 @@ section > ul li {
 
 .bs-docs-footer {
   text-align: center;
-  padding: 30px 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
   margin-top: 100px;
   border-top: 1px solid #e5e5e5;
 }
@@ -608,6 +614,12 @@ input.focused {
   /* Account for fixed navbar (which is static to start) */
   body {
     padding-top: 50px; /* Default height of navbar */
+  }
+
+  /* Undo custom padding */
+  .bs-docs-container {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   /* Tweak display of docs jumbotrons */
