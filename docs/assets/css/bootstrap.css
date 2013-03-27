@@ -546,7 +546,11 @@ li {
   line-height: 20px;
 }
 
-.list-unstyled,
+.list-unstyled {
+  margin-left: 0;
+  list-style: none;
+}
+
 .list-inline {
   margin-left: 0;
   list-style: none;
