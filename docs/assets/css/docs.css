@@ -35,7 +35,6 @@ body {
 
 /* Padding for in-page bookmarks */
 section {
-  padding-top: 30px;
 }
 
 /* Few stylistic typography tweaks */
@@ -51,6 +50,19 @@ section > ul li {
 
 /* Jumbotrons
 -------------------------------------------------- */
+
+.bs-docs-section-header {
+  margin: 60px 0;
+}
+.bs-docs-section-header h1,
+.bs-docs-section-header .lead {
+  color: #8a8a8a;
+}
+.bs-docs-section-header h1 {
+  font-size: 80px;
+  font-size: 8rem;
+  line-height: 1;
+}
 
 /* Base class */
 .bs-docs-jumbotron {
@@ -198,10 +210,17 @@ section > ul li {
 
 .bs-docs-sidenav-heading {
   margin: 0;
+}
+.bs-docs-sidenav-heading a {
+  display: block;
   padding: 15px 20px;
   color: #999;
   border-bottom: 1px solid #e5e5e5;
   box-shadow: 0 1px 0 #fff;
+}
+.bs-docs-sidenav-heading a:hover {
+  color: #777;
+  text-decoration: none;
 }
 
 .bs-docs-sidenav .nav-header {
