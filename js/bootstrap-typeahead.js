@@ -58,13 +58,14 @@
   , show: function () {
       var pos = $.extend({}, this.$element.position(), {
         height: this.$element[0].offsetHeight
+        , width: this.$element[0].offsetWidth
       })
 
       this.$menu
         .insertAfter(this.$element)
         .css({
-          top: pos.top + pos.height
-        , left: pos.left
+          top: this.options.position === "above" ? pos.top - this.$menu.outerHeight(true) - 4 : pos.top + pos.height
+        , left: this.options.align === "right" ? pos.left + pos.width - this.$menu.outerWidth(true) : pos.left
         })
         .show()
 
@@ -309,6 +310,8 @@
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
   , minLength: 1
+  , align: 'left'
+  , position: 'below'
   }
 
   $.fn.typeahead.Constructor = Typeahead

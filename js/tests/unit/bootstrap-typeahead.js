@@ -56,6 +56,28 @@ $(function () {
         typeahead.$menu.remove()
       })
 
+      test("should show menu in alternate location when query entered", function () {
+        var $input = $('<input />')
+            .appendTo('body')
+            .typeahead({
+              source: ['aa', 'ab', 'ac']
+              , align : 'right'
+              , position : 'above'
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        typeahead.lookup()
+
+        ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
+        equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
+        equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
+        ok(typeahead.$menu.top < $input.top, 'typeahead is positioned above input')
+
+        $input.remove()
+        typeahead.$menu.remove()
+      })
+
       test("should accept data source via synchronous function", function () {
         var $input = $('<input />').typeahead({
               source: function () {
