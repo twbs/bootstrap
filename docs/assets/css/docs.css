@@ -9,15 +9,17 @@
 -------------------------------------------------- */
 
 body {
-  padding-top: 54px;
   position: relative; /* For scrollyspy */
   /* We add the padding to the body for >768px only */
 }
 
-.bs-docs-container {
-  max-width: 860px;
+.bs-docs-container,
+.bs-home-container {
   padding-left: 15px;
   padding-right: 15px;
+}
+.bs-docs-container {
+  max-width: 860px;
 }
 
 /*  */
@@ -45,36 +47,6 @@ section > ul li {
   margin-bottom: 5px;
 }
 
-
-
-/* Navbar
--------------------------------------------------- */
-
-.bs-docs-navbar {
-  background-color: #333;
-}
-.bs-docs-navbar .navbar-brand {
-  padding: 15px;
-  font-size: 30px;
-  margin-left: 0;
-}
-.bs-docs-navbar .nav {
-  border-top: 1px solid #222;
-  border-bottom: 1px solid #444;
-}
-.bs-docs-navbar .nav > li > a {
-  width: 60px;
-  text-align: center;
-  border-top: 1px solid #444;
-  border-bottom: 1px solid #222;
-}
-.bs-docs-navbar .glyphicon {
-  display: block;
-  font-size: 20px;
-}
-.bs-docs-navbar .nav .tooltip {
-  white-space: nowrap;
-}
 
 
 /* Jumbotrons
@@ -195,23 +167,33 @@ section > ul li {
 -------------------------------------------------- */
 
 .bs-docs-sidebar {
+  display: none;
   position: fixed;
   top: 0;
-  left: 60px;
+  left: 0;
   bottom: 0;
   width: 240px;
   background-color: #f5f5f5;
-  border-right: 1px solid #e5e5e5;
+  overflow-y: scroll;
+  text-shadow: 0 1px 0 #fff;
+  box-shadow: inset -1px 0 0 #e5e5e5;
+}
+.bs-docs-sidenav {
+  margin: 0 0 25px;
 }
 .bs-docs-sidenav > li > a {
-  color: #555;
-  padding: 8px 20px;
+  color: #666;
+  padding: 4px 20px;
+}
+.bs-docs-sidenav > li > a:hover {
+  border-right: 1px solid #d5d5d5;
 }
 .bs-docs-sidenav > .active > a,
 .bs-docs-sidenav > .active:hover > a,
 .bs-docs-sidenav > .active:focus > a {
-  color: #fff;
-  background-color: #428bca;
+  font-weight: 500;
+  color: #428bca;
+  border-right: 1px solid #428bca;
 }
 
 .bs-docs-sidenav-heading {
@@ -222,54 +204,15 @@ section > ul li {
   box-shadow: 0 1px 0 #fff;
 }
 
-.bs-docs-navbar:after,
-.bs-docs-sidebar:after {
-  position: absolute;
-  top: -20px;
-  right: 0;
-  bottom: -20px;
-  left: -10px;
-  z-index: 10;
-  display: block;
-  content: " ";
-  box-shadow: inset -5px 0 25px rgba(0,0,0,.05);
+.bs-docs-sidenav .nav-header {
+  padding: 25px 20px 5px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
 }
-.bs-docs-navbar .container,
-.bs-docs-sidenav {
-  position: relative;
-  z-index: 15;
+.bs-docs-sidenav > li + .nav-header {
+  margin-top: 0;
 }
-
-
-/* Base styles are not affixable given mobile-first */
-.bs-docs-sidenav {
-  margin: 0;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-/*.bs-docs-sidenav.affix {
-  position: static;
-  top: 0;
-}*/
-
-/* Chevrons within each link */
-/*.bs-docs-sidenav .glyphicon-chevron-right {
-  float: right;
-  margin-top: 1px;
-  margin-right: -6px;
-  opacity: .25;
-  color: #000;
-}
-.bs-docs-sidenav a:hover .glyphicon-chevron-right {
-  opacity: .5;
-}
-.bs-docs-sidenav .active .glyphicon-chevron-right,
-.bs-docs-sidenav .active a:hover .glyphicon-chevron-right {
-  color: #fff;
-  opacity: 1;
-}
-*/
 
 
 /* Bootstrap code examples
@@ -674,16 +617,21 @@ input.focused {
 @media screen and (min-width: 768px) {
 
   /* Account for fixed navbar (which is static to start) */
-  body {
-    /*padding-top: 50px;*/ /* Default height of navbar */
-    padding-top: 0;
-    padding-left: 300px;
+  .bs-docs-docs {
+    padding-left: 260px;
+    padding-right: 20px;
   }
 
   /* Undo custom padding */
-  .bs-docs-container {
+  .bs-docs-container,
+  .bs-home-container {
     padding-left: 0;
     padding-right: 0;
+  }
+
+  /* Show the docs nav */
+  .bs-docs-sidebar {
+    display: block;
   }
 
   /* Tweak display of docs jumbotrons */
@@ -705,19 +653,6 @@ input.focused {
     text-align: left;
   }
 
-  /* From here, start to affix the nav because we keep columns here */
-  .bs-docs-sidenav.affix {
-    position: fixed;
-    top: 20px;
-  }
-  .bs-docs-sidenav {
-    width: 170px;
-  }
-  .bs-docs-sidenav.affix-bottom {
-    position: absolute;
-    top: auto;
-    bottom: 270px;
-  }
 }
 
 /* Tablets/desktops and up */
@@ -728,14 +663,9 @@ input.focused {
     width: 12.5%;
   }
 
-  .bs-docs-sidenav {
-    width: 240px;
-  }
 }
 
 /* Large desktops and up */
 @media screen and (min-width: 1200px) {
-/*  .bs-docs-sidenav {
-    width: 240px;
-  }
-*/}
+
+}
