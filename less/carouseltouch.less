@@ -1,0 +1,30 @@
+//
+// Carousel
+// --------------------------------------------------
+
+.carouseltouch {
+  position: relative;
+}
+
+.carousel-inner {
+
+  > .neighbor,
+  > .touch {
+    .transition(none);
+  }
+
+  > .neighbor,
+  > .active,
+  > .next,
+  > .prev { display: block; }
+
+  
+  > .neighbor,
+  > .next,
+  > .prev {
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+}

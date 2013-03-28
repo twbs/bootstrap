@@ -4888,6 +4888,33 @@ a.badge:focus {
   }
 }
 
+.carouseltouch {
+  position: relative;
+}
+
+.carousel-inner > .neighbor,
+.carousel-inner > .touch {
+  -webkit-transition: none;
+     -moz-transition: none;
+       -o-transition: none;
+          transition: none;
+}
+
+.carousel-inner > .neighbor,
+.carousel-inner > .active,
+.carousel-inner > .next,
+.carousel-inner > .prev {
+  display: block;
+}
+
+.carousel-inner > .neighbor,
+.carousel-inner > .next,
+.carousel-inner > .prev {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
 .jumbotron {
   padding: 30px;
   margin-bottom: 30px;
