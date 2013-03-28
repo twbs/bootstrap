@@ -49,9 +49,9 @@ section > ul li {
 /* Navbar
 -------------------------------------------------- */
 
-.bs-docs-navbar {
+/*.bs-docs-navbar {
   background-color: #fff;
-  border-bottom: 1px solid #ccc; /* IE8 */
+  border-bottom: 1px solid #ccc;
   border-bottom: 1px solid rgba(0,0,0,.1);
 }
 .bs-docs-navbar .nav > .active > a,
@@ -59,7 +59,30 @@ section > ul li {
   font-weight: 500;
   background-color: transparent;
 }
+*/
 
+.bs-docs-navbar .navbar-brand {
+  padding: 15px;
+  font-size: 32px;
+  margin-left: 0;
+}
+.bs-docs-navbar .nav {
+  border-top: 1px solid #111;
+  border-bottom: 1px solid #333;
+}
+.bs-docs-navbar .nav > li > a {
+  width: 60px;
+  text-align: center;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #111;
+}
+.bs-docs-navbar .glyphicon {
+  display: block;
+  font-size: 20px;
+}
+.bs-docs-navbar .nav .tooltip {
+  white-space: nowrap;
+}
 
 
 /* Jumbotrons
@@ -181,7 +204,7 @@ section > ul li {
 
 /* Base styles are not affixable given mobile-first */
 .bs-docs-sidenav {
-  margin: 20px 0 0;
+  margin: 0;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -613,7 +636,9 @@ input.focused {
 
   /* Account for fixed navbar (which is static to start) */
   body {
-    padding-top: 50px; /* Default height of navbar */
+    /*padding-top: 50px;*/ /* Default height of navbar */
+    padding-top: 0;
+    padding-left: 60px;
   }
 
   /* Undo custom padding */
@@ -644,7 +669,7 @@ input.focused {
   /* From here, start to affix the nav because we keep columns here */
   .bs-docs-sidenav.affix {
     position: fixed;
-    top: 54px;
+    top: 20px;
   }
   .bs-docs-sidenav {
     width: 170px;

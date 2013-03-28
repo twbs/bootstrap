@@ -58,6 +58,7 @@
 
 // Fix the top/bottom navbars when screen real estate supports it
 .navbar-fixed-top,
+.navbar-fixed-left,
 .navbar-fixed-bottom {
   position: fixed;
   right: 0;
@@ -67,6 +68,16 @@
 }
 .navbar-fixed-top    { top: 0; }
 .navbar-fixed-bottom { bottom: 0; }
+
+// Fixed left
+.navbar-fixed-left {
+  top: 0;
+  right: auto;
+  bottom: 0;
+}
+.navbar-fixed-left .container {
+  max-width: none;
+}
 
 
 
@@ -305,6 +316,16 @@
   // Since we override the border, we need to specify it again for inverted navbars
   .navbar-inverse .nav > .divider {
     border-right-color: lighten(@navbar-inverse-bg, 5%);
+  }
+
+  .navbar-fixed-left {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .navbar-fixed-left .navbar-brand,
+  .navbar-fixed-left .nav,
+  .navbar-fixed-left .nav > li {
+    float: none;
   }
 
   // Required to make the collapsing navbar work on regular desktops

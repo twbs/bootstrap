@@ -49,6 +49,11 @@
     $('.tooltip-test').tooltip()
     $('.popover-test').popover()
 
+    $('.bs-docs-navbar').tooltip({
+      selector: "a[data-toggle=tooltip]",
+      container: ".bs-docs-navbar .nav"
+    })
+
     // popover demo
     $("a[data-toggle=popover]")
       .popover()
