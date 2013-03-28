@@ -4,109 +4,49 @@ title: Getting started
 description: Overview of the project, its contents, and how to get started with a simple template.
 ---
 
-<div class="bs-docs-sidebar">
-  <ul class="nav bs-docs-sidenav">
-    <h3 class="bs-docs-sidenav-heading"><a href="/">Bootstrap</a></h3>
-    <li class="nav-header">Getting started</li>
-    <li><a href="#download-bootstrap">Download</a></li>
-    <li><a href="#file-structure">File structure</a></li>
-    <li><a href="#contents">What's included</a></li>
-    <li><a href="#html-template">HTML template</a></li>
-    <li><a href="#examples">Examples</a></li>
 
-    <li class="nav-header">CSS</li>
-    <li><a href="#global">Global settings</a></li>
-    <li><a href="#grid">Grid system</a></li>
-    <li><a href="#typography">Typography</a></li>
-    <li><a href="#code">Code</a></li>
-    <li><a href="#tables">Tables</a></li>
-    <li><a href="#forms">Forms</a></li>
-    <li><a href="#buttons">Buttons</a></li>
-    <li><a href="#images">Images</a></li>
-    <li><a href="#icons">Glyphicons</a></li>
-    <li><a href="#responsive-utilities">Responsive utilities</a></li>
+<div class="bs-docs-container">
 
-    <li class="nav-header">Components</li>
-    <li><a href="#dropdowns">Dropdowns</a></li>
-    <li><a href="#buttonGroups">Button groups</a></li>
-    <li><a href="#buttonDropdowns">Button dropdowns</a></li>
-    <li><a href="#navs">Navs</a></li>
-    <li><a href="#navbar">Navbar</a></li>
-    <li><a href="#breadcrumbs">Breadcrumbs</a></li>
-    <li><a href="#pagination">Pagination</a></li>
-    <li><a href="#labels">Labels</a></li>
-    <li><a href="#badges">Badges</a></li>
-    <li><a href="#typography">Typography</a></li>
-    <li><a href="#thumbnails">Thumbnails</a></li>
-    <li><a href="#alerts">Alerts</a></li>
-    <li><a href="#progress">Progress bars</a></li>
-    <li><a href="#media">Media object</a></li>
-    <li><a href="#misc">Misc</a></li>
-
-    <li class="nav-header">JavaScript</li>
-    <li><a href="#overview">Overview</a></li>
-    <li><a href="#transitions">Transitions</a></li>
-    <li><a href="#modals">Modal</a></li>
-    <li><a href="#dropdowns">Dropdown</a></li>
-    <li><a href="#scrollspy">Scrollspy</a></li>
-    <li><a href="#tabs">Tab</a></li>
-    <li><a href="#tooltips">Tooltip</a></li>
-    <li><a href="#popovers">Popover</a></li>
-    <li><a href="#alerts">Alert</a></li>
-    <li><a href="#buttons">Button</a></li>
-    <li><a href="#collapse">Collapse</a></li>
-    <li><a href="#carousel">Carousel</a></li>
-    <li><a href="#typeahead">Typeahead</a></li>
-    <li><a href="#affix">Affix</a></li>
-  </ul>
-</div>
-
-<div class="container bs-docs-container">
-
-
-
-
-
-  <div class="bs-docs-section-header">
-    <h1>Getting started</h1>
-    <p class="lead">Overview of the project, its contents, and how to get started with a simple template.</p>
+  <!-- Welcome
+  ================================================== -->
+  <div id="welcome" class="bs-docs-section-header">
+    <h1>Welcome</h1>
+    <p class="lead">Welcome to the Bootstrap documentation, the living, interactive style and code guide for all things Bootstrap. If you're new here, continue reading to learn how to get started. Otherwise, carry on you beautiful person you.</p>
   </div>
 
-  <!-- Download
+  <!-- Getting started
   ================================================== -->
-  <section id="download-bootstrap">
+  <div class="bs-docs-section" id="getting-started">
     <div class="page-header">
-      <h1>Download</h1>
+      <h1>Getting started</h1>
     </div>
-    <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
-
+    <p class="lead">There are three easy ways to quickly get started with Bootstrap, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
     <div class="row">
       <div class="col-span-6">
-        <h2>Compiled</h2>
-        <p><strong>Fastest way to get started:</strong> get the compiled and minified versions of our CSS, JS, and images. No docs or original source files.</p>
+        <h2>Compiled CSS and JS</h2>
+        <p><strong>The fastest way to get started:</strong> get the compiled and minified versions of our CSS, JavaScript, and fonts. No documentation or original source files are included.</p>
         <p><a class="btn btn-large btn-primary" href="assets/bootstrap.zip" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a></p>
       </div>
       <div class="col-span-6">
-        <h2>Source</h2>
+        <h2>Project source code</h2>
         <p>Get the original files for all CSS and JavaScript, along with a local copy of the docs by downloading the latest version directly from GitHub.</p>
         <p><a class="btn btn-large" href="https://github.com/twitter/bootstrap/zipball/master" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download Bootstrap source</a></p>
       </div>
       <div class="col-span-6">
         <h2>Bower</h2>
         <p>Install and manage the original files for all CSS and JavaScript, along with a local copy of the docs, using <a href="http://twitter.github.com/bower">Bower</a>.</p>
-        {% highlight bash %}bower install bootstrap{% endhighlight %}
+        {% highlight bash %}$ bower install bootstrap{% endhighlight %}
       </div>
     </div>
-  </section>
-
+  </div>
 
   <!-- File structure
   ================================================== -->
-  <section id="file-structure">
+  <div class="bs-docs-section" id="whats-included">
     <div class="page-header">
-      <h1>File structure</h1>
+      <h1>What's included</h1>
     </div>
-    <p class="lead">Within the download you'll find the following file structure and contents, logically grouping common assets and providing both compiled and minified variations.</p>
+    <p class="lead">Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations.</p>
     <p>Once downloaded, unzip the compressed folder to see the structure of (the compiled) Bootstrap. You'll see something like this:</p>
 
 {% highlight bash %}
@@ -127,52 +67,17 @@ description: Overview of the project, its contents, and how to get started with 
 
     <p>This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). The image files are compressed using <a href="http://imageoptim.com/">ImageOptim</a>, a Mac app for compressing PNGs.</p>
     <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included.</p>
-  </section>
+  </div>
 
-  <!-- Contents
+  <!-- Examples
   ================================================== -->
-  <section id="contents">
+  <div class="bs-docs-section" id="examples">
     <div class="page-header">
-      <h1>What's included</h1>
+      <h1>Templates and examples</h1>
     </div>
-    <p class="lead">Bootstrap comes equipped with HTML, CSS, and JS for all sorts of things, but they can be summarized with a handful of categories visible at the top of the <a href="http://getbootstrap.com">Bootstrap documentation</a>.</p>
+    <p class="lead">Make use of a super basic HTML template, or dive into a few examples we've started for you. We encourage folks to iterate on these examples and not simply use them as an end result.</p>
 
-    <h2>Docs sections</h2>
-    <p>In addition to the getting started documentation you're reading now, the Bootstrap docs are broken into a few key pages.</p>
-
-    <h4><a href="http://twitter.github.com/bootstrap/css.html">Core CSS</a></h4>
-    <p>Global styles for the body, Normalize, links, grid system, tables, forms, buttons, icons, and more.</p>
-    <h4><a href="http://twitter.github.com/bootstrap/components.html">Components</a></h4>
-    <p>Basic styles for common interface components like tabs and pills, navbar, alerts, page headers, and more. Head here to see what kind of custom components Bootstrap has to offer beyond basic HTML elements.</p>
-    <h4><a href="http://twitter.github.com/bootstrap/javascript.html">JavaScript plugins</a></h4>
-    <p>Similar to Components, these JavaScript plugins are interactive components for things like tooltips, popovers, modals, and more.</p>
-  </section>
-
-  <!-- HTML template
-  ================================================== -->
-  <section id="html-template">
-    <div class="page-header">
-      <h1>4. Basic HTML template</h1>
-    </div>
-    <p class="lead">With a brief intro into the contents out of the way, we can focus on putting Bootstrap to use. To do that, we'll utilize a basic HTML template that includes everything we mentioned in the <a href="./getting-started.html#file-structure">File structure</a>.</p>
-    <p>Now, here's a look at a <strong>typical HTML file</strong>:</p>
-
-{% highlight html linenos %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Bootstrap 101 Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-    <script src="http://code.jquery.com/jquery.js"></script>
-  </body>
-</html>
-{% endhighlight %}
-
-    <p>To make this <strong>a Bootstrapped template</strong>, just include the appropriate CSS and JS files:</p>
-
+    <h3>HTML template</h3>
 {% highlight html linenos %}
 <!DOCTYPE html>
 <html>
@@ -186,30 +91,14 @@ description: Overview of the project, its contents, and how to get started with 
     <h1>Hello, world!</h1>
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+    <!-- Optionally enable responsive features in IE8 -->
+    <script src="js/respond.js"></script>
   </body>
 </html>
 {% endhighlight %}
 
-    <p><strong>And you're set!</strong> With those two files added, you can begin to develop any site or application with Bootstrap.</p>
-
-    <hr>
-
-    <h4>Responsive features in IE8</h4>
-    <p>Internet Explorer 8 lacks support for media queries, the method by which we deliver responsive CSS to folks. To enable that, you need to include a third party tool (which we include in the project repository) called <a href="https://github.com/scottjehl/Respond">Respond.js</a>.</p>
-<pre class="prettyprint linenums">
-&lt;!--[if lt IE 9]&gt;
-  &lt;script src="/assets/js/respond/respond.js"&gt;&lt;/script&gt;
-&lt;![endif]--&gt;
-</pre>
-  </section>
-
-  <!-- Examples
-  ================================================== -->
-  <section id="examples">
-    <div class="page-header">
-      <h1>5. Examples</h1>
-    </div>
-    <p class="lead">Move beyond the base template with a few example layouts. We encourage folks to iterate on these examples and not simply use them as an end result.</p>
+    <h3>Examples</h3>
     <div class="row bs-docs-examples">
       <div class="col-span-4">
         <a class="thumbnail" href="/examples/starter-template/" target="_blank">
@@ -268,7 +157,6 @@ description: Overview of the project, its contents, and how to get started with 
         <p>An interactive riff on the basic marketing site featuring a prominent carousel.</p>
       </div>
 
-
       <div class="col-span-4">
         <a class="thumbnail" href="/examples/navbar/" target="_blank">
           <img src="/assets/img/examples/bootstrap-example-navbar.png" alt="">
@@ -298,27 +186,27 @@ description: Overview of the project, its contents, and how to get started with 
         <p></p>
       </div>
     </div>
-  </section>
+  </div>
 
 
 
 
 
-  <div class="bs-docs-section-header">
+  <div class="bs-docs-section-header" id="css">
     <h1>CSS</h1>
     <p class="lead">Fundamental HTML elements styled and enhanced with extensible classes.</p>
   </div>
 
-        <!-- Global Bootstrap settings
-        ================================================== -->
-        <section id="global">
-          <div class="page-header">
-            <h1>Global settings</h1>
-          </div>
-          <p class="lead">Get the lowdown on the key pieces of Bootstrap's infrastructure, including our approach to better, faster, stronger web development.</p>
+  <!-- Global Bootstrap settings
+  ================================================== -->
+  <div class="bs-docs-section" id="css-overview">
+    <div class="page-header">
+      <h1>Overview</h1>
+    </div>
+    <p class="lead">Get the lowdown on the key pieces of Bootstrap's infrastructure, including our approach to better, faster, stronger web development.</p>
 
-          <h3>Requires HTML5 doctype</h3>
-          <p>Bootstrap makes use of certain HTML elements and CSS properties that require the use of the HTML5 doctype. Include it at the beginning of all your projects.</p>
+    <h3>HTML5 doctype required</h3>
+    <p>Bootstrap makes use of certain HTML elements and CSS properties that require the use of the HTML5 doctype. Include it at the beginning of all your projects.</p>
 
 {% highlight html linenos %}
 <!DOCTYPE html>
@@ -327,34 +215,31 @@ description: Overview of the project, its contents, and how to get started with 
 </html>
 {% endhighlight %}
 
-          <h3>Mobile first</h3>
-          <p>With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework. With Bootstrap 3, we've rewritten the project to be mobile friendly from the start. Instead of adding on optional mobile styles, they're baked right into the core. In fact, <strong>Bootstrap is mobile first</strong>. Mobile first styles can be found throughout the entire library instead of in separate files.</p>
-          <p>To ensure proper rendering and touch zooming, <strong>add the viewport meta tag</strong> to your <code>&lt;head&gt;</code>.</p>
+    <h3>Mobile first</h3>
+    <p>With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework. With Bootstrap 3, we've rewritten the project to be mobile friendly from the start. Instead of adding on optional mobile styles, they're baked right into the core. In fact, <strong>Bootstrap is mobile first</strong>. Mobile first styles can be found throughout the entire library instead of in separate files.</p>
+    <p>To ensure proper rendering and touch zooming, <strong>add the viewport meta tag</strong> to your <code>&lt;head&gt;</code>.</p>
 
 {% highlight html linenos %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% endhighlight %}
 
-          <h3>Typography and links</h3>
-          <p>Bootstrap sets basic global display, typography, and link styles. Specifically, we:</p>
-          <ul>
-            <li>Remove <code>margin</code> on the body</li>
-            <li>Set <code>background-color: white;</code> on the <code>body</code></li>
-            <li>Use the <code>@font-family-base</code>, <code>@font-size-base</code>, and <code>@line-height-base</code> attributes as our typographic base</li>
-            <li>Set the global link color via <code>@link-color</code> and apply link underlines only on <code>:hover</code></li>
-          </ul>
-          <p>These styles can be found within <strong>scaffolding.less</strong>.</p>
+    <h3>Typography and links</h3>
+    <p>Bootstrap sets basic global display, typography, and link styles. Specifically, we:</p>
+    <ul>
+      <li>Remove <code>margin</code> on the body</li>
+      <li>Set <code>background-color: white;</code> on the <code>body</code></li>
+      <li>Use the <code>@font-family-base</code>, <code>@font-size-base</code>, and <code>@line-height-base</code> attributes as our typographic base</li>
+      <li>Set the global link color via <code>@link-color</code> and apply link underlines only on <code>:hover</code></li>
+    </ul>
+    <p>These styles can be found within <strong>scaffolding.less</strong>.</p>
 
-          <h3>Normalize reset</h3>
-          <p>For improved cross-browser rendering, we use <a href="http://necolas.github.com/normalize.css/" target="_blank">Normalize</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a>.</p>
-
-        </section>
-
-
+    <h3>Normalize reset</h3>
+    <p>For improved cross-browser rendering, we use <a href="http://necolas.github.com/normalize.css/" target="_blank">Normalize</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a>.</p>
+  </div>
 
         <!-- Grid system
         ================================================== -->
-        <section id="grid">
+        <div class="bs-docs-section" id="grid">
           <div class="page-header">
             <h1>Grid system</h1>
           </div>
@@ -549,14 +434,14 @@ description: Overview of the project, its contents, and how to get started with 
 
 
 
-        </section>
+        </div>
 
 
 
 
         <!-- Typography
         ================================================== -->
-        <section id="typography">
+        <div class="bs-docs-section" id="typography">
           <div class="page-header">
             <h1>Typography</h1>
           </div>
@@ -596,15 +481,6 @@ description: Overview of the project, its contents, and how to get started with 
             </table>
           </div>
 
-<!--           <div class="bs-docs-example">
-            <h1>h1. Heading 1</h1>
-            <h2>h2. Heading 2</h2>
-            <h3>h3. Heading 3</h3>
-            <h4>h4. Heading 4</h4>
-            <h5>h5. Heading 5</h5>
-            <h6>h6. Heading 6</h6>
-          </div>
- -->
           <!-- Body copy -->
           <h2 id="body-copy">Body copy</h2>
           <p>Bootstrap's global default <code>font-size</code> is <strong>14px</strong>, with a <code>line-height</code> of <strong>20px</strong>. This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition, <code>&lt;p&gt;</code> (paragraphs) receive a bottom margin of half their line-height (10px by default).</p>
@@ -936,7 +812,7 @@ description: Overview of the project, its contents, and how to get started with 
         <p>
           Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.
         </p>
-      </section>
+      </div>
 
 
 
@@ -944,7 +820,7 @@ description: Overview of the project, its contents, and how to get started with 
 
         <!-- Code
         ================================================== -->
-        <section id="code">
+        <div class="bs-docs-section" id="code">
           <div class="page-header">
             <h1>Code</h1>
           </div>
@@ -968,13 +844,13 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
           <p>You may optionally add the <code>.pre-scrollable</code> class which will set a max-height of 350px and provide a y-axis scrollbar.</p>
-        </section>
+        </div>
 
 
 
         <!-- Tables
         ================================================== -->
-        <section id="tables">
+        <div class="bs-docs-section" id="tables">
           <div class="page-header">
             <h1>Tables</h1>
           </div>
@@ -1365,13 +1241,13 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </table>
 {% endhighlight %}
 
-        </section>
+        </div>
 
 
 
         <!-- Forms
         ================================================== -->
-        <section id="forms">
+        <div class="bs-docs-section" id="forms">
           <div class="page-header">
             <h1>Forms</h1>
           </div>
@@ -2107,13 +1983,13 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
 {% endhighlight %}
 
-        </section>
+        </div>
 
 
 
         <!-- Buttons
         ================================================== -->
-        <section id="buttons">
+        <div class="bs-docs-section" id="buttons">
           <div class="page-header">
             <h1>Buttons</h1>
           </div>
@@ -2253,13 +2129,13 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
           <p>As a best practice, <strong>we highly recommend matching using the <code>&lt;button&lt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
 
-        </section>
+        </div>
 
 
 
         <!-- Images
         ================================================== -->
-        <section id="images">
+        <div class="bs-docs-section" id="images">
           <div class="page-header">
             <h1>Images</h1>
           </div>
@@ -2276,8 +2152,15 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <img src="..." class="img-thumbnail">
 {% endhighlight %}
 
-        </section>
+        </div>
 
+
+
+
+
+      <div class="bs-docs-section-header" id="components">
+        <h1>Components</h1>
+      </div>
 
 
         <!-- Icons
@@ -4067,7 +3950,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
         <!-- Typographic components
         ================================================== -->
-        <section id="typography">
+        <section id="typography-components">
           <div class="page-header">
             <h1>Typographic components</h1>
           </div>
@@ -4626,12 +4509,16 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
 
+    <div class="bs-docs-section-header" id="js">
+      <h1>JavaScript plugins</h1>
+    </div>
+
 
         <!-- Overview
         ================================================== -->
-        <section id="overview">
+        <section id="js-overview">
           <div class="page-header">
-            <h1>JavaScript in Bootstrap</h1>
+            <h1>Overview</h1>
           </div>
 
           <h3>Individual or compiled</h3>

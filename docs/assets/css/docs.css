@@ -34,7 +34,9 @@ body {
 -------------------------------------------------- */
 
 /* Padding for in-page bookmarks */
-section {
+section,
+.bs-docs-section {
+  padding-top: 30px;
 }
 
 /* Few stylistic typography tweaks */
@@ -52,10 +54,7 @@ section > ul li {
 -------------------------------------------------- */
 
 .bs-docs-section-header {
-  margin: 60px 0;
-}
-.bs-docs-section-header h1,
-.bs-docs-section-header .lead {
+  padding-top: 60px;
   color: #8a8a8a;
 }
 .bs-docs-section-header h1 {
@@ -205,11 +204,12 @@ section > ul li {
 .bs-docs-sidenav > .active:focus > a {
   font-weight: 500;
   color: #428bca;
+  background-color: transparent;
   border-right: 1px solid #428bca;
 }
 
 .bs-docs-sidenav-heading {
-  margin: 0;
+  margin: 0 0 25px;
 }
 .bs-docs-sidenav-heading a {
   display: block;
@@ -223,15 +223,20 @@ section > ul li {
   text-decoration: none;
 }
 
-.bs-docs-sidenav .nav-header {
-  padding: 25px 20px 5px;
+/* Section headings for groups of links */
+.bs-docs-sidenav > li > .nav-header {
+  margin-top: 20px;
+  margin-bottom: 5px;
   font-size: 14px;
   font-weight: 500;
   color: #333;
 }
-.bs-docs-sidenav > li + .nav-header {
-  margin-top: 0;
+.bs-docs-sidenav > .active > .nav-header,
+.bs-docs-sidenav > .active > .nav-header:hover {
+  color: #333;
+  border-color: #333;
 }
+
 
 
 /* Bootstrap code examples
@@ -638,7 +643,6 @@ input.focused {
   /* Account for fixed navbar (which is static to start) */
   .bs-docs-docs {
     padding-left: 260px;
-    padding-right: 20px;
   }
 
   /* Undo custom padding */
@@ -677,6 +681,10 @@ input.focused {
 /* Tablets/desktops and up */
 @media screen and (min-width: 992px) {
 
+  .bs-docs-docs {
+    padding-left: 280px;
+  }
+
   /* Icons */
   .the-icons li {
     width: 12.5%;
@@ -686,5 +694,8 @@ input.focused {
 
 /* Large desktops and up */
 @media screen and (min-width: 1200px) {
+  .bs-docs-docs {
+    padding-left: 300px;
+  }
 
 }
