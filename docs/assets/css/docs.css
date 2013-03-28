@@ -15,6 +15,7 @@ body {
 }
 
 .bs-docs-container {
+  max-width: 860px;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -49,32 +50,23 @@ section > ul li {
 /* Navbar
 -------------------------------------------------- */
 
-/*.bs-docs-navbar {
-  background-color: #fff;
-  border-bottom: 1px solid #ccc;
-  border-bottom: 1px solid rgba(0,0,0,.1);
+.bs-docs-navbar {
+  background-color: #333;
 }
-.bs-docs-navbar .nav > .active > a,
-.bs-docs-navbar .nav > .active > a:hover {
-  font-weight: 500;
-  background-color: transparent;
-}
-*/
-
 .bs-docs-navbar .navbar-brand {
   padding: 15px;
-  font-size: 32px;
+  font-size: 30px;
   margin-left: 0;
 }
 .bs-docs-navbar .nav {
-  border-top: 1px solid #111;
-  border-bottom: 1px solid #333;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #444;
 }
 .bs-docs-navbar .nav > li > a {
   width: 60px;
   text-align: center;
-  border-top: 1px solid #333;
-  border-bottom: 1px solid #111;
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #222;
 }
 .bs-docs-navbar .glyphicon {
   display: block;
@@ -202,6 +194,53 @@ section > ul li {
 /* Sidenav
 -------------------------------------------------- */
 
+.bs-docs-sidebar {
+  position: fixed;
+  top: 0;
+  left: 60px;
+  bottom: 0;
+  width: 240px;
+  background-color: #f5f5f5;
+  border-right: 1px solid #e5e5e5;
+}
+.bs-docs-sidenav > li > a {
+  color: #555;
+  padding: 8px 20px;
+}
+.bs-docs-sidenav > .active > a,
+.bs-docs-sidenav > .active:hover > a,
+.bs-docs-sidenav > .active:focus > a {
+  color: #fff;
+  background-color: #428bca;
+}
+
+.bs-docs-sidenav-heading {
+  margin: 0;
+  padding: 15px 20px;
+  color: #999;
+  border-bottom: 1px solid #e5e5e5;
+  box-shadow: 0 1px 0 #fff;
+}
+
+.bs-docs-navbar:after,
+.bs-docs-sidebar:after {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  bottom: -20px;
+  left: -10px;
+  z-index: 10;
+  display: block;
+  content: " ";
+  box-shadow: inset -5px 0 25px rgba(0,0,0,.05);
+}
+.bs-docs-navbar .container,
+.bs-docs-sidenav {
+  position: relative;
+  z-index: 15;
+}
+
+
 /* Base styles are not affixable given mobile-first */
 .bs-docs-sidenav {
   margin: 0;
@@ -209,13 +248,13 @@ section > ul li {
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
-.bs-docs-sidenav.affix {
+/*.bs-docs-sidenav.affix {
   position: static;
   top: 0;
-}
+}*/
 
 /* Chevrons within each link */
-.bs-docs-sidenav .glyphicon-chevron-right {
+/*.bs-docs-sidenav .glyphicon-chevron-right {
   float: right;
   margin-top: 1px;
   margin-right: -6px;
@@ -230,7 +269,7 @@ section > ul li {
   color: #fff;
   opacity: 1;
 }
-
+*/
 
 
 /* Bootstrap code examples
@@ -638,7 +677,7 @@ input.focused {
   body {
     /*padding-top: 50px;*/ /* Default height of navbar */
     padding-top: 0;
-    padding-left: 60px;
+    padding-left: 300px;
   }
 
   /* Undo custom padding */
@@ -690,13 +729,13 @@ input.focused {
   }
 
   .bs-docs-sidenav {
-    width: 220px;
+    width: 240px;
   }
 }
 
 /* Large desktops and up */
 @media screen and (min-width: 1200px) {
-  .bs-docs-sidenav {
-    width: 260px;
+/*  .bs-docs-sidenav {
+    width: 240px;
   }
-}
+*/}
