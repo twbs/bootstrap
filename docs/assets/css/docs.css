@@ -61,6 +61,7 @@ section > ul li {
   font-size: 80px;
   font-size: 8rem;
   line-height: 1;
+  color: #b94a48;
 }
 
 /* Base class */
@@ -203,9 +204,9 @@ section > ul li {
 .bs-docs-sidenav > .active:hover > a,
 .bs-docs-sidenav > .active:focus > a {
   font-weight: 500;
-  color: #428bca;
+  color: #b94a48;
   background-color: transparent;
-  border-right: 1px solid #428bca;
+  border-right: 1px solid #b94a48;
 }
 
 .bs-docs-sidenav-heading {
@@ -214,12 +215,12 @@ section > ul li {
 .bs-docs-sidenav-heading a {
   display: block;
   padding: 15px 20px;
-  color: #999;
+  color: #b94a48;
   border-bottom: 1px solid #e5e5e5;
   box-shadow: 0 1px 0 #fff;
 }
 .bs-docs-sidenav-heading a:hover {
-  color: #777;
+  color: #a3403e;
   text-decoration: none;
 }
 
