@@ -295,6 +295,7 @@
     this.$element = $(element)
     this.$indicators = this.$element.find('.carousel-indicators')
     this.options = options
+    this.touch()
     this.options.pause == 'hover' && this.$element
       .on('mouseenter', $.proxy(this.pause, this))
       .on('mouseleave', $.proxy(this.cycle, this))
