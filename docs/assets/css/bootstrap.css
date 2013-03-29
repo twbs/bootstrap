@@ -3258,6 +3258,7 @@ button.close {
 }
 
 .navbar-fixed-top,
+.navbar-fixed-left,
 .navbar-fixed-bottom {
   position: fixed;
   right: 0;
@@ -3272,6 +3273,16 @@ button.close {
 
 .navbar-fixed-bottom {
   bottom: 0;
+}
+
+.navbar-fixed-left {
+  top: 0;
+  right: auto;
+  bottom: 0;
+}
+
+.navbar-fixed-left .container {
+  max-width: none;
 }
 
 .navbar-brand {
@@ -3498,6 +3509,15 @@ button.close {
   }
   .navbar-inverse .nav > .divider {
     border-right-color: #2f2f2f;
+  }
+  .navbar-fixed-left {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .navbar-fixed-left .navbar-brand,
+  .navbar-fixed-left .nav,
+  .navbar-fixed-left .nav > li {
+    float: none;
   }
   .navbar-toggle {
     position: relative;

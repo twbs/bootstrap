@@ -307,6 +307,16 @@
     border-right-color: lighten(@navbar-inverse-bg, 5%);
   }
 
+  .navbar-fixed-left {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .navbar-fixed-left .navbar-brand,
+  .navbar-fixed-left .nav,
+  .navbar-fixed-left .nav > li {
+    float: none;
+  }
+
   // Required to make the collapsing navbar work on regular desktops
   .navbar-toggle {
     position: relative;

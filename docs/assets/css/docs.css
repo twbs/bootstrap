@@ -9,14 +9,17 @@
 -------------------------------------------------- */
 
 body {
-  padding-top: 54px;
   position: relative; /* For scrollyspy */
   /* We add the padding to the body for >768px only */
 }
 
-.bs-docs-container {
+.bs-docs-container,
+.bs-home-container {
   padding-left: 15px;
   padding-right: 15px;
+}
+.bs-docs-container {
+  max-width: 860px;
 }
 
 /*  */
@@ -31,7 +34,8 @@ body {
 -------------------------------------------------- */
 
 /* Padding for in-page bookmarks */
-section {
+section,
+.bs-docs-section {
   padding-top: 30px;
 }
 
@@ -46,24 +50,19 @@ section > ul li {
 
 
 
-/* Navbar
--------------------------------------------------- */
-
-.bs-docs-navbar {
-  background-color: #fff;
-  border-bottom: 1px solid #ccc; /* IE8 */
-  border-bottom: 1px solid rgba(0,0,0,.1);
-}
-.bs-docs-navbar .nav > .active > a,
-.bs-docs-navbar .nav > .active > a:hover {
-  font-weight: 500;
-  background-color: transparent;
-}
-
-
-
 /* Jumbotrons
 -------------------------------------------------- */
+
+.bs-docs-section-header {
+  padding-top: 60px;
+  color: #8a8a8a;
+}
+.bs-docs-section-header h1 {
+  font-size: 80px;
+  font-size: 8rem;
+  line-height: 1;
+  color: #b94a48;
+}
 
 /* Base class */
 .bs-docs-jumbotron {
@@ -179,33 +178,64 @@ section > ul li {
 /* Sidenav
 -------------------------------------------------- */
 
-/* Base styles are not affixable given mobile-first */
-.bs-docs-sidenav {
-  margin: 20px 0 0;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-.bs-docs-sidenav.affix {
-  position: static;
+.bs-docs-sidebar {
+  display: none;
+  position: fixed;
   top: 0;
+  left: 0;
+  bottom: 0;
+  width: 240px;
+  background-color: #f5f5f5;
+  overflow-y: scroll;
+  text-shadow: 0 1px 0 #fff;
+  box-shadow: inset -1px 0 0 #e5e5e5;
+}
+.bs-docs-sidenav {
+  margin: 0 0 25px;
+}
+.bs-docs-sidenav > li > a {
+  color: #666;
+  padding: 4px 25px;
+}
+.bs-docs-sidenav > li > a:hover {
+  border-right: 1px solid #d5d5d5;
+}
+.bs-docs-sidenav > .active > a,
+.bs-docs-sidenav > .active:hover > a,
+.bs-docs-sidenav > .active:focus > a {
+  font-weight: 500;
+  color: #b94a48;
+  background-color: transparent;
+  border-right: 1px solid #b94a48;
 }
 
-/* Chevrons within each link */
-.bs-docs-sidenav .glyphicon-chevron-right {
-  float: right;
-  margin-top: 1px;
-  margin-right: -6px;
-  opacity: .25;
-  color: #000;
+.bs-docs-sidenav-heading {
+  margin: 0 0 25px;
 }
-.bs-docs-sidenav a:hover .glyphicon-chevron-right {
-  opacity: .5;
+.bs-docs-sidenav-heading a {
+  display: block;
+  padding: 15px 25px;
+  color: #b94a48;
+  border-bottom: 1px solid #e5e5e5;
+  box-shadow: 0 1px 0 #fff;
 }
-.bs-docs-sidenav .active .glyphicon-chevron-right,
-.bs-docs-sidenav .active a:hover .glyphicon-chevron-right {
-  color: #fff;
-  opacity: 1;
+.bs-docs-sidenav-heading a:hover {
+  color: #a3403e;
+  text-decoration: none;
+}
+
+/* Section headings for groups of links */
+.bs-docs-sidenav > li > .nav-header {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+.bs-docs-sidenav > .active > .nav-header,
+.bs-docs-sidenav > .active > .nav-header:hover {
+  color: #333;
+  border-color: #333;
 }
 
 
@@ -612,14 +642,20 @@ input.focused {
 @media screen and (min-width: 768px) {
 
   /* Account for fixed navbar (which is static to start) */
-  body {
-    padding-top: 50px; /* Default height of navbar */
+  .bs-docs-docs {
+    padding-left: 260px;
   }
 
   /* Undo custom padding */
-  .bs-docs-container {
+  .bs-docs-container,
+  .bs-home-container {
     padding-left: 0;
     padding-right: 0;
+  }
+
+  /* Show the docs nav */
+  .bs-docs-sidebar {
+    display: block;
   }
 
   /* Tweak display of docs jumbotrons */
@@ -641,37 +677,26 @@ input.focused {
     text-align: left;
   }
 
-  /* From here, start to affix the nav because we keep columns here */
-  .bs-docs-sidenav.affix {
-    position: fixed;
-    top: 54px;
-  }
-  .bs-docs-sidenav {
-    width: 170px;
-  }
-  .bs-docs-sidenav.affix-bottom {
-    position: absolute;
-    top: auto;
-    bottom: 270px;
-  }
 }
 
 /* Tablets/desktops and up */
 @media screen and (min-width: 992px) {
+
+  .bs-docs-docs {
+    padding-left: 280px;
+  }
 
   /* Icons */
   .the-icons li {
     width: 12.5%;
   }
 
-  .bs-docs-sidenav {
-    width: 220px;
-  }
 }
 
 /* Large desktops and up */
 @media screen and (min-width: 1200px) {
-  .bs-docs-sidenav {
-    width: 260px;
+  .bs-docs-docs {
+    padding-left: 300px;
   }
+
 }
