@@ -298,7 +298,6 @@
     this.options.pause == 'hover' && this.$element
       .on('mouseenter', $.proxy(this.pause, this))
       .on('mouseleave', $.proxy(this.cycle, this))
-    console.log('carousel');
   }
 
   Carousel.prototype = {
