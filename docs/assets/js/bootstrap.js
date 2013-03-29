@@ -278,6 +278,10 @@
  * limitations under the License.
  * ========================================================== */
 
+ /*
+  * TOUCH add by thierry_ 
+  * ===========*/
+
 
 !function ($) {
 
@@ -294,200 +298,10 @@
     this.options.pause == 'hover' && this.$element
       .on('mouseenter', $.proxy(this.pause, this))
       .on('mouseleave', $.proxy(this.cycle, this))
+    console.log('carousel');
   }
 
   Carousel.prototype = {
-
-    cycle: function (e) {
-      if (!e) this.paused = false
-      if (this.interval) clearInterval(this.interval);
-      this.options.interval
-        && !this.paused
-        && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
-      return this
-    }
-
-  , getActiveIndex: function () {
-      this.$active = this.$element.find('.item.active')
-      this.$items = this.$active.parent().children()
-      return this.$items.index(this.$active)
-    }
-
-  , to: function (pos) {
-      var activeIndex = this.getActiveIndex()
-        , that = this
-
-      if (pos > (this.$items.length - 1) || pos < 0) return
-
-      if (this.sliding) {
-        return this.$element.one('slid', function () {
-          that.to(pos)
-        })
-      }
-
-      if (activeIndex == pos) {
-        return this.pause().cycle()
-      }
-
-      return this.slide(pos > activeIndex ? 'next' : 'prev', $(this.$items[pos]))
-    }
-
-  , pause: function (e) {
-      if (!e) this.paused = true
-      if (this.$element.find('.next, .prev').length && $.support.transition.end) {
-        this.$element.trigger($.support.transition.end)
-        this.cycle(true)
-      }
-      clearInterval(this.interval)
-      this.interval = null
-      return this
-    }
-
-  , next: function () {
-      if (this.sliding) return
-      return this.slide('next')
-    }
-
-  , prev: function () {
-      if (this.sliding) return
-      return this.slide('prev')
-    }
-
-  , slide: function (type, next) {
-      var $active = this.$element.find('.item.active')
-        , $next = next || $active[type]()
-        , isCycling = this.interval
-        , direction = type == 'next' ? 'left' : 'right'
-        , fallback  = type == 'next' ? 'first' : 'last'
-        , that = this
-        , e
-
-      this.sliding = true
-
-      isCycling && this.pause()
-
-      $next = $next.length ? $next : this.$element.find('.item')[fallback]()
-
-      e = $.Event('slide', {
-        relatedTarget: $next[0]
-      , direction: direction
-      })
-
-      if ($next.hasClass('active')) return
-
-      if (this.$indicators.length) {
-        this.$indicators.find('.active').removeClass('active')
-        this.$element.one('slid', function () {
-          var $nextIndicator = $(that.$indicators.children()[that.getActiveIndex()])
-          $nextIndicator && $nextIndicator.addClass('active')
-        })
-      }
-
-      if ($.support.transition && this.$element.hasClass('slide')) {
-        this.$element.trigger(e)
-        if (e.isDefaultPrevented()) return
-        $next.addClass(type)
-        $next[0].offsetWidth // force reflow
-        $active.addClass(direction)
-        $next.addClass(direction)
-        this.$element.one($.support.transition.end, function () {
-          $next.removeClass([type, direction].join(' ')).addClass('active')
-          $active.removeClass(['active', direction].join(' '))
-          that.sliding = false
-          setTimeout(function () { that.$element.trigger('slid') }, 0)
-        })
-      } else {
-        this.$element.trigger(e)
-        if (e.isDefaultPrevented()) return
-        $active.removeClass('active')
-        $next.addClass('active')
-        this.sliding = false
-        this.$element.trigger('slid')
-      }
-
-      isCycling && this.cycle()
-
-      return this
-    }
-
-  }
-
-
- /* CAROUSEL PLUGIN DEFINITION
-  * ========================== */
-
-  var old = $.fn.carousel
-
-  $.fn.carousel = function (option) {
-    return this.each(function () {
-      var $this = $(this)
-        , data = $this.data('carousel')
-        , options = $.extend({}, $.fn.carousel.defaults, typeof option == 'object' && option)
-        , action = typeof option == 'string' ? option : options.slide
-      if (!data) $this.data('carousel', (data = new Carousel(this, options)))
-      if (typeof option == 'number') data.to(option)
-      else if (action) data[action]()
-      else if (options.interval) data.pause().cycle()
-    })
-  }
-
-  $.fn.carousel.defaults = {
-    interval: 5000
-  , pause: 'hover'
-  }
-
-  $.fn.carousel.Constructor = Carousel
-
-
- /* CAROUSEL NO CONFLICT
-  * ==================== */
-
-  $.fn.carousel.noConflict = function () {
-    $.fn.carousel = old
-    return this
-  }
-
- /* CAROUSEL DATA-API
-  * ================= */
-
-  $(document).on('click.carousel.data-api', '[data-slide], [data-slide-to]', function (e) {
-    var $this = $(this), href
-      , $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
-      , options = $.extend({}, $target.data(), $this.data())
-      , slideIndex
-
-    $target.carousel(options)
-
-    if (slideIndex = $this.attr('data-slide-to')) {
-      $target.data('carousel').pause().to(slideIndex).cycle()
-    }
-
-    e.preventDefault()
-  })
-
-}(window.jQuery);/* ==========================================================
- * bootstrap-carouseltouch.js v3.0.0
- * http://twitter.github.com/bootstrap/javascript.html#carousel
- * ========================================================== */
-
-!function ($) {
-
-  "use strict"; // jshint ;_;
-
-
- /* CAROUSEL TOUCH CLASS DEFINITION
-  * ========================= */
-
-  var CarouselTouch = function (element, options) {
-    this.$element = $(element)
-    this.$indicators = this.$element.find('.carousel-indicators')
-    this.options = options
-    this.options.pause == 'hover' && this.$element
-      .on('mouseenter', $.proxy(this.pause, this))
-      .on('mouseleave', $.proxy(this.cycle, this))
-  }
-
-  CarouselTouch.prototype = {
 
     cycle: function (e) {
       if (!e) this.paused = false
@@ -616,57 +430,57 @@
           startY = e.touches[0].pageY;
           delta = 0;
           
-          that.$element.on('touchmove', { carouselTouch: that }, onTouchMove);
-          that.$element.on('touchend', { carouselTouch: that }, onTouchEnd);
+          that.$element.on("touchmove", { carouselTouch: that }, onTouchMove);
+          that.$element.on("touchend", { carouselTouch: that }, onTouchEnd);
           
-          var prevItems = that.$element.find('.item.prev');
-          prevItems.removeClass('prev')
+          var prevItems = that.$element.find(".item.prev");
+          prevItems.removeClass("prev")
           
-          var nextItems = that.$element.find('.item.next');
-          nextItems.removeClass('next')
+          var nextItems = that.$element.find(".item.next");
+          nextItems.removeClass("next")
           
           //event.preventDefault();
         }
         
       };
-      this.$element.on('touchstart', onTouchStart);
+      this.$element.on("touchstart", onTouchStart);
       
       var onTouchMove = function(event) {
         var e = event.originalEvent, $neighbor, slide, margin;
-        $active = that.$element.find('.item.active');
+        $active = that.$element.find(".item.active");
         delta = startX - e.touches[0].pageX;
         scrolling = (Math.abs(delta) < Math.abs(e.touches[0].pageY - startY));
         if (!scrolling) {
           if (isCycling) return;
-          if ($active.hasClass('prev') || $active.hasClass('next')) return;
+          if ($active.hasClass("prev") || $active.hasClass("next")) return;
           
-          $active.addClass('touch')
+          $active.addClass("touch")
           margin = slide = (100/that.$element.width()) * delta;
           if (that.options.sticky) margin = (slide/5) * Math.log(Math.max(1,Math.abs(slide)))/2;
           
           if (slide > 0) {
             $neighbor = $active.next();
-            $neighbor = $neighbor.length ? $neighbor : that.$element.find('.item').first();
-            $neighbor.addClass('next').addClass('neighbor').css('left', ( 100 - margin ) + '%');
+            $neighbor = $neighbor.length ? $neighbor : that.$element.find(".item").first();
+            $neighbor.addClass("next").addClass("neighbor").css("left", ( 100 - margin ) + "%");
           } else {
             $neighbor = $active.prev();
-            $neighbor = $neighbor.length ? $neighbor : that.$element.find('.item').last();
-            $neighbor.addClass('prev').addClass('neighbor').css('left', ( -100 - margin ) + '%');
+            $neighbor = $neighbor.length ? $neighbor : that.$element.find(".item").last();
+            $neighbor.addClass("prev").addClass("neighbor").css("left", ( -100 - margin ) + "%");
           }
-          $active.css('left', (-margin) + '%')
+          $active.css("left", (-margin) + "%")
           e.preventDefault()
         }
       };
       
       var onTouchEnd = function (event) {
         var e = event.originalEvent;
-        $active = that.$element.find('.item.active');
-        that.$element.off('touchmove', onTouchMove);
+        $active = that.$element.find(".item.active");
+        that.$element.off("touchmove", onTouchMove);
         if (!scrolling) {
-          var $neighbors = that.$element.find('.item.neighbor');
+          var $neighbors = that.$element.find(".item.neighbor");
           
-          $active.removeClass('touch').css('left', '')
-          $neighbors.removeClass('neighbor').css('left', '')
+          $active.removeClass("touch").css("left", "")
+          $neighbors.removeClass("neighbor").css("left", "")
           var activeZone = Math.min(250, that.$element.width()/2);
           if (delta > activeZone) {
             that.next();
@@ -681,7 +495,7 @@
           
         }
         
-        that.$element.off('touchend', onTouchEnd);
+        that.$element.off("touchend", onTouchEnd);
         
       };
     }
@@ -689,53 +503,53 @@
   }
 
 
- /* CAROUSEL TOUCH PLUGIN DEFINITION
+ /* CAROUSEL PLUGIN DEFINITION
   * ========================== */
 
-  var old = $.fn.carouseltouch
+  var old = $.fn.carousel
 
-  $.fn.carouseltouch = function (option) {
+  $.fn.carousel = function (option) {
     return this.each(function () {
       var $this = $(this)
-        , data = $this.data('carouseltouch')
-        , options = $.extend({}, $.fn.carouseltouch.defaults, typeof option == 'object' && option)
+        , data = $this.data('carousel')
+        , options = $.extend({}, $.fn.carousel.defaults, typeof option == 'object' && option)
         , action = typeof option == 'string' ? option : options.slide
-      if (!data) $this.data('carouseltouch', (data = new CarouselTouch(this, options)))
+      if (!data) $this.data('carousel', (data = new Carousel(this, options)))
       if (typeof option == 'number') data.to(option)
       else if (action) data[action]()
       else if (options.interval) data.pause().cycle()
     })
   }
 
-  $.fn.carouseltouch.defaults = {
+  $.fn.carousel.defaults = {
     interval: 5000
   , pause: 'hover'
   }
 
-  $.fn.carouseltouch.Constructor = CarouselTouch
+  $.fn.carousel.Constructor = Carousel
 
 
- /* CAROUSEL TOUCH NO CONFLICT
+ /* CAROUSEL NO CONFLICT
   * ==================== */
 
-  $.fn.carouseltouch.noConflict = function () {
-    $.fn.carouseltouch = old
+  $.fn.carousel.noConflict = function () {
+    $.fn.carousel = old
     return this
   }
 
- /* CAROUSEL TOUCH DATA-API
+ /* CAROUSEL DATA-API
   * ================= */
 
-  $(document).on('click.carouseltouch.data-api', '[data-slide], [data-slide-to]', function (e) {
+  $(document).on('click.carousel.data-api', '[data-slide], [data-slide-to]', function (e) {
     var $this = $(this), href
       , $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
       , options = $.extend({}, $target.data(), $this.data())
       , slideIndex
 
-    $target.carouseltouch(options)
+    $target.carousel(options)
 
     if (slideIndex = $this.attr('data-slide-to')) {
-      $target.data('carouseltouch').pause().to(slideIndex).cycle()
+      $target.data('carousel').pause().to(slideIndex).cycle()
     }
 
     e.preventDefault()

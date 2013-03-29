@@ -38,3 +38,5 @@ nbproject
 .idea
 node_modules
 dist
+
+_dev

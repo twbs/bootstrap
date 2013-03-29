@@ -4769,6 +4769,24 @@ a.badge:focus {
   left: 100%;
 }
 
+.carousel-inner > .neighbor,
+.carousel-inner > .touch {
+  -webkit-transition: none;
+     -moz-transition: none;
+       -o-transition: none;
+          transition: none;
+}
+
+.carousel-inner > .neighbor {
+  display: block;
+}
+
+.carousel-inner > .neighbor {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
 .carousel-control {
   position: absolute;
   top: 0;
@@ -4886,33 +4904,6 @@ a.badge:focus {
     margin-right: 0;
     margin-left: 0;
   }
-}
-
-.carouseltouch {
-  position: relative;
-}
-
-.carousel-inner > .neighbor,
-.carousel-inner > .touch {
-  -webkit-transition: none;
-     -moz-transition: none;
-       -o-transition: none;
-          transition: none;
-}
-
-.carousel-inner > .neighbor,
-.carousel-inner > .active,
-.carousel-inner > .next,
-.carousel-inner > .prev {
-  display: block;
-}
-
-.carousel-inner > .neighbor,
-.carousel-inner > .next,
-.carousel-inner > .prev {
-  position: absolute;
-  top: 0;
-  width: 100%;
 }
 
 .jumbotron {
