@@ -195,7 +195,7 @@ section > ul li {
 }
 .bs-docs-sidenav > li > a {
   color: #666;
-  padding: 4px 20px;
+  padding: 4px 25px;
 }
 .bs-docs-sidenav > li > a:hover {
   border-right: 1px solid #d5d5d5;
@@ -214,7 +214,7 @@ section > ul li {
 }
 .bs-docs-sidenav-heading a {
   display: block;
-  padding: 15px 20px;
+  padding: 15px 25px;
   color: #b94a48;
   border-bottom: 1px solid #e5e5e5;
   box-shadow: 0 1px 0 #fff;
