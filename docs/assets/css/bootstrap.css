@@ -1705,6 +1705,9 @@ select:focus:invalid:focus {
   .form-horizontal .control-group > .controls {
     margin-left: 180px;
   }
+  .form-horizontal .form-actions {
+    padding-left: 180px;
+  }
 }
 
 .btn {
