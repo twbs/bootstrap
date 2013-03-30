@@ -217,7 +217,6 @@ section > ul li {
 /* Nav: second level (shown on .active) */
 .bs-docs-sidebar .nav .nav {
   display: none;
-  margin-left: 15px;
   margin-bottom: 5px;
 }
 .bs-docs-sidebar .nav > .active > ul {
@@ -226,6 +225,7 @@ section > ul li {
 .bs-docs-sidebar .nav .nav > li > a {
   padding-top: 2px;
   padding-bottom: 2px;
+  padding-left: 40px;
   font-size: 90%;
 }
 

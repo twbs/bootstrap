@@ -567,13 +567,13 @@ title: Bootstrap Documentation
           <h3>Emphasis classes</h3>
           <p>Convey meaning through color with a handful of emphasis utility classes.</p>
           <div class="bs-docs-example">
-            <p class="muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+            <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
             <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
             <p class="text-error">Donec ullamcorper nulla non metus auctor fringilla.</p>
             <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
           </div>
 {% highlight html linenos %}
-<p class="muted">...</p>
+<p class="text-muted">...</p>
 <p class="text-warning">...</p>
 <p class="text-error">...</p>
 <p class="text-success">...</p>
@@ -2561,7 +2561,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           <div class="bs-docs-example bs-docs-example-submenu">
 
             <div class="pull-left">
-              <p class="muted">Default</p>
+              <p class="text-muted">Default</p>
               <div class="dropdown clearfix">
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                   <li><a tabindex="-1" href="#">Action</a></li>
@@ -2583,7 +2583,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             </div>
 
             <div class="pull-left">
-              <p class="muted">Dropup</p>
+              <p class="text-muted">Dropup</p>
               <div class="dropup">
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                   <li><a tabindex="-1" href="#">Action</a></li>
@@ -2605,7 +2605,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             </div>
 
             <div class="pull-left">
-              <p class="muted">Left submenu</p>
+              <p class="text-muted">Left submenu</p>
               <div class="dropdown">
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                   <li><a tabindex="-1" href="#">Action</a></li>
@@ -4388,18 +4388,6 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   float: right;
 }
 {% endhighlight %}
-
-          <h4>.muted</h4>
-          <p>Change an element's color to <code>#999</code></p>
-{% highlight html linenos %}
-<p class="muted">...</p>
-{% endhighlight %}
-{% highlight css linenos %}
-.muted {
-  color: #999;
-}
-{% endhighlight %}
-
 
           <h4>.clearfix</h4>
           <p>Clear the <code>float</code> on any element. Utilizes <a href="http://nicolasgallagher.com/micro-clearfix-hack/">the micro clearfix</a> as popularized by Nicolas Gallagher.</p>
