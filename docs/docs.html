@@ -3277,7 +3277,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 
 
-    <h2>Basic navbar</h2>
+    <h2 id="navbar-basic">Basic navbar</h2>
     <p>To start, navbars are static (not fixed to the top) and include support for a project name and basic navigation. Place one anywhere within a <code>.container</code>, which sets the width of your site and content.</p>
     <div class="bs-docs-example">
       <div class="navbar">
@@ -3302,7 +3302,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h2>Navbar components</h2>
 
-    <h3>Brand</h3>
+    <h3 id="navbar-brand">Brand</h3>
     <p>A simple link to show your brand or project name only requires an anchor tag.</p>
     <div class="bs-docs-example">
       <div class="navbar">
@@ -3313,7 +3313,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <a class="navbar-brand" href="#">Title</a>
 {% endhighlight %}
 
-    <h3>Nav links</h3>
+    <h3 id="navbar-nav">Nav links</h3>
     <p>Nav items are simple to add via unordered lists.</p>
     <div class="bs-docs-example">
       <div class="navbar">
@@ -3352,7 +3352,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </ul>
 {% endhighlight %}
 
-    <h3>Forms</h3>
+    <h3 id="navbar-forms">Forms</h3>
     <p>To properly style and position a form within the navbar, add the appropriate classes as shown below. For a default form, include <code>.navbar-form</code> and either <code>.pull-left</code> or <code>.pull-right</code> to properly align it.</p>
     <div class="bs-docs-example">
       <div class="navbar">
@@ -3382,7 +3382,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h2>Optional display variations</h2>
     <p>Fix the navbar to the top or bottom of the viewport with an additional class on the outermost div, <code>.navbar</code>.</p>
 
-    <h3>Fixed to top</h3>
+    <h3 id="navbar-fixed-top">Fixed to top</h3>
     <p>Add <code>.navbar-fixed-top</code> and remember to account for the hidden area underneath it by adding at least 40px <code>padding</code> to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.</p>
     <div class="bs-docs-example bs-navbar-top-example">
       <div class="navbar navbar-fixed-top" style="position: absolute; top: -1px;">
@@ -3402,7 +3402,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 {% endhighlight %}
 
-    <h3>Fixed to bottom</h3>
+    <h3 id="navbar-fixed-bottom">Fixed to bottom</h3>
     <p>Add <code>.navbar-fixed-bottom</code> instead.</p>
     <div class="bs-docs-example bs-navbar-bottom-example">
       <div class="navbar navbar-fixed-bottom" style="position: absolute; bottom: -1px;">
@@ -3422,7 +3422,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 {% endhighlight %}
 
-    <h3>Static top navbar</h3>
+    <h3 id="navbar-static-top">Static top navbar</h3>
     <p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.navbar-fixed-top</code> class, you do not need to change any padding on the <code>body</code>.</p>
     <div class="bs-docs-example bs-navbar-top-example">
       <div class="navbar navbar-static-top" style="margin: -1px -1px 0;">
@@ -3443,7 +3443,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
-    <h2>Responsive navbar</h2>
+    <h2 id="navbar-responsive">Responsive navbar</h2>
     <p>To implement a collapsing responsive navbar, wrap your navbar content in a containing div, <code>.nav-collapse.collapse</code>, and add the navbar toggle button, <code>.navbar-toggle</code>.</p>
     <div class="bs-docs-example">
       <div class="navbar">
