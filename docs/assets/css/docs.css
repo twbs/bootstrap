@@ -311,6 +311,7 @@ section > ul li {
 .bs-docs-example > .jumbotron:last-child,
 .bs-docs-example > .alert:last-child,
 .bs-docs-example > .panel:last-child,
+.bs-docs-example > .list-group:last-child,
 .bs-docs-example > .well:last-child {
   margin-bottom: 0;
 }
@@ -339,6 +340,10 @@ section > ul li {
   margin: 0;
 }
 
+/* List groups */
+.bs-docs-example > .list-group {
+  max-width: 400px;
+}
 
 /* Navbar examples */
 .bs-navbar-top-example,

@@ -58,3 +58,21 @@
     border-color: @panel-info-border;
   }
 }
+
+// List groups in panels
+.list-group-flush {
+  margin: 15px -15px -15px;
+
+  .list-group-item {
+    border-width: 1px 0;
+
+    // Remove border radius for top one
+    &:first-child {
+      .border-top-radius(0);
+    }
+    // But keep it for the last one
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}
