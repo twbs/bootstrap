@@ -2070,6 +2070,174 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </div>
 
 
+        <!-- Helpers
+        ================================================== -->
+        <div class="bs-docs-section" id="helper-classes">
+          <div class="page-header">
+            <h1>Helper classes</h1>
+          </div>
+
+          <h3>Close icon</h3>
+          <p>Use the generic close icon for dismissing content like modals and alerts.</p>
+          <div class="bs-docs-example">
+            <p><button class="close" style="float: none;">&times;</button></p>
+          </div>
+{% highlight html linenos %}
+<button class="close" style="float: none;">&times;</button>
+{% endhighlight %}
+
+          <h3>.pull-left</h3>
+          <p>Float an element left</p>
+{% highlight html linenos %}
+<div class="pull-left">...</div>
+{% endhighlight %}
+{% highlight css linenos %}
+.pull-left {
+  float: left;
+}
+{% endhighlight %}
+
+          <h3>.pull-right</h3>
+          <p>Float an element right</p>
+{% highlight html linenos %}
+<div class="pull-right">...</div>
+{% endhighlight %}
+{% highlight css linenos %}
+.pull-right {
+  float: right;
+}
+{% endhighlight %}
+
+          <h3>.clearfix</h3>
+          <p>Clear the <code>float</code> on any element. Utilizes <a href="http://nicolasgallagher.com/micro-clearfix-hack/">the micro clearfix</a> as popularized by Nicolas Gallagher.</p>
+{% highlight html linenos %}
+<div class="clearfix">...</div>
+{% endhighlight %}
+{% highlight css linenos %}
+// Mixin
+.clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Usage
+.element {
+  .clearfix();
+}
+{% endhighlight %}
+        </div>
+
+
+        <!-- Responsive utilities
+        ================================================== -->
+        <div class="bs-docs-section" id="responsive-utilities">
+          <div class="page-header">
+            <h1>Responsive utilities</h1>
+          </div>
+          <p class="lead">For faster mobile-friendly development, use these utility classes for showing and hiding content by device via media query. Also included are utility classes for toggling content when printed.</p>
+
+          <h3>Responsive classes</h3>
+          <table class="table table-bordered table-striped responsive-utilities hidden-phone">
+            <thead>
+              <tr>
+                <th>Class</th>
+                <th>Phones <small>767px and below</small></th>
+                <th>Tablets <small>979px to 768px</small></th>
+                <th>Desktops <small>Default</small></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th><code>.visible-phone</code></th>
+                <td class="is-visible">Visible</td>
+                <td class="is-hidden">Hidden</td>
+                <td class="is-hidden">Hidden</td>
+              </tr>
+              <tr>
+                <th><code>.visible-tablet</code></th>
+                <td class="is-hidden">Hidden</td>
+                <td class="is-visible">Visible</td>
+                <td class="is-hidden">Hidden</td>
+              </tr>
+              <tr>
+                <th><code>.visible-desktop</code></th>
+                <td class="is-hidden">Hidden</td>
+                <td class="is-hidden">Hidden</td>
+                <td class="is-visible">Visible</td>
+              </tr>
+              <tr>
+                <th><code>.hidden-phone</code></th>
+                <td class="is-hidden">Hidden</td>
+                <td class="is-visible">Visible</td>
+                <td class="is-visible">Visible</td>
+              </tr>
+              <tr>
+                <th><code>.hidden-tablet</code></th>
+                <td class="is-visible">Visible</td>
+                <td class="is-hidden">Hidden</td>
+                <td class="is-visible">Visible</td>
+              </tr>
+              <tr>
+                <th><code>.hidden-desktop</code></th>
+                <td class="is-visible">Visible</td>
+                <td class="is-visible">Visible</td>
+                <td class="is-hidden">Hidden</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Print classes</h3>
+          <table class="table table-bordered table-striped responsive-utilities">
+            <thead>
+              <tr>
+                <th>Class</th>
+                <th>Browser</th>
+                <th>Print</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th><code>.visible-print</code></th>
+                <td class="is-hidden">Hidden</td>
+                <td class="is-visible">Visible</td>
+              </tr>
+              <tr>
+                <th><code>.hidden-print</code></th>
+                <td class="is-visible">Visible</td>
+                <td class="is-hidden">Hidden</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>When to use</h3>
+          <p>Use on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation. Responsive utilities should not be used with tables, and as such are not supported.</p>
+
+          <h3>Test case</h3>
+          <p>Resize your browser or load on different devices to test the above classes.</p>
+          <h4>Visible on...</h4>
+          <p>Green checkmarks indicate that class is visible in your current viewport.</p>
+          <ul class="responsive-utilities-test">
+            <li>Phone<span class="visible-phone">&#10004; Phone</span></li>
+            <li>Tablet<span class="visible-tablet">&#10004; Tablet</span></li>
+            <li>Desktop<span class="visible-desktop">&#10004; Desktop</span></li>
+          </ul>
+          <h4>Hidden on...</h4>
+          <p>Here, green checkmarks indicate that class is hidden in your current viewport.</p>
+          <ul class="responsive-utilities-test hidden-on">
+            <li>Phone<span class="hidden-phone">&#10004; Phone</span></li>
+            <li>Tablet<span class="hidden-tablet">&#10004; Tablet</span></li>
+            <li>Desktop<span class="hidden-desktop">&#10004; Desktop</span></li>
+          </ul>
+
+        </div>
+
+
 
 
 
@@ -2385,112 +2553,6 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
         </section>
-
-
-
-        <!-- Responsive design
-        ================================================== -->
-        <section id="responsive-utilities">
-          <div class="page-header">
-            <h1>Responsive utilities</h1>
-          </div>
-          <p class="lead">For faster mobile-friendly development, use these utility classes for showing and hiding content by device via media query. Also included are utility classes for toggling content when printed.</p>
-
-          <h3>Responsive classes</h3>
-          <table class="table table-bordered table-striped responsive-utilities hidden-phone">
-            <thead>
-              <tr>
-                <th>Class</th>
-                <th>Phones <small>767px and below</small></th>
-                <th>Tablets <small>979px to 768px</small></th>
-                <th>Desktops <small>Default</small></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th><code>.visible-phone</code></th>
-                <td class="is-visible">Visible</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-              </tr>
-              <tr>
-                <th><code>.visible-tablet</code></th>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-visible">Visible</td>
-                <td class="is-hidden">Hidden</td>
-              </tr>
-              <tr>
-                <th><code>.visible-desktop</code></th>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-visible">Visible</td>
-              </tr>
-              <tr>
-                <th><code>.hidden-phone</code></th>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-visible">Visible</td>
-                <td class="is-visible">Visible</td>
-              </tr>
-              <tr>
-                <th><code>.hidden-tablet</code></th>
-                <td class="is-visible">Visible</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-visible">Visible</td>
-              </tr>
-              <tr>
-                <th><code>.hidden-desktop</code></th>
-                <td class="is-visible">Visible</td>
-                <td class="is-visible">Visible</td>
-                <td class="is-hidden">Hidden</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <h3>Print classes</h3>
-          <table class="table table-bordered table-striped responsive-utilities">
-            <thead>
-              <tr>
-                <th>Class</th>
-                <th>Browser</th>
-                <th>Print</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th><code>.visible-print</code></th>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-visible">Visible</td>
-              </tr>
-              <tr>
-                <th><code>.hidden-print</code></th>
-                <td class="is-visible">Visible</td>
-                <td class="is-hidden">Hidden</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <h3>When to use</h3>
-          <p>Use on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation. Responsive utilities should not be used with tables, and as such are not supported.</p>
-
-          <h3>Test case</h3>
-          <p>Resize your browser or load on different devices to test the above classes.</p>
-          <h4>Visible on...</h4>
-          <p>Green checkmarks indicate that class is visible in your current viewport.</p>
-          <ul class="responsive-utilities-test">
-            <li>Phone<span class="visible-phone">&#10004; Phone</span></li>
-            <li>Tablet<span class="visible-tablet">&#10004; Tablet</span></li>
-            <li>Desktop<span class="visible-desktop">&#10004; Desktop</span></li>
-          </ul>
-          <h4>Hidden on...</h4>
-          <p>Here, green checkmarks indicate that class is hidden in your current viewport.</p>
-          <ul class="responsive-utilities-test hidden-on">
-            <li>Phone<span class="hidden-phone">&#10004; Phone</span></li>
-            <li>Tablet<span class="hidden-tablet">&#10004; Tablet</span></li>
-            <li>Desktop<span class="hidden-desktop">&#10004; Desktop</span></li>
-          </ul>
-
-        </section>
-
 
 
 
@@ -4317,14 +4379,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
 
-        <!-- Miscellaneous
+        <!-- Wells
         ================================================== -->
-        <section id="misc">
+        <div id="wells">
           <div class="page-header">
-            <h1>Miscellaneous <small>Lightweight utility components</small></h1>
+            <h1>Wells</h1>
           </div>
 
-          <h2>Wells</h2>
+          <h3>Default well</h3>
           <p>Use the well as a simple effect on an element to give it an inset effect.</p>
           <div class="bs-docs-example">
             <div class="well">
@@ -4354,61 +4416,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <div class="well well-small">...</div>
 {% endhighlight %}
 
-
-          <h2>Close icon</h2>
-          <p>Use the generic close icon for dismissing content like modals and alerts.</p>
-          <div class="bs-docs-example">
-            <p><button class="close" style="float: none;">&times;</button></p>
-          </div>
-{% highlight html linenos %}
-<button class="close" style="float: none;">&times;</button>
-{% endhighlight %}
-
-          <h2>Helper classes</h2>
-          <p>Simple, focused classes for small display or behavior tweaks.</p>
-
-          <h4>.pull-left</h4>
-          <p>Float an element left</p>
-{% highlight html linenos %}
-<div class="pull-left">...</div>
-{% endhighlight %}
-{% highlight css linenos %}
-.pull-left {
-  float: left;
-}
-{% endhighlight %}
-
-          <h4>.pull-right</h4>
-          <p>Float an element right</p>
-{% highlight html linenos %}
-<div class="pull-right">...</div>
-{% endhighlight %}
-{% highlight css linenos %}
-.pull-right {
-  float: right;
-}
-{% endhighlight %}
-
-          <h4>.clearfix</h4>
-          <p>Clear the <code>float</code> on any element. Utilizes <a href="http://nicolasgallagher.com/micro-clearfix-hack/">the micro clearfix</a> as popularized by Nicolas Gallagher.</p>
-{% highlight html linenos %}
-<div class="clearfix">...</div>
-{% endhighlight %}
-{% highlight css linenos %}
-.clearfix {
-  &:before,
-  &:after {
-    content: " ";
-    display: table;
-  }
-  &:after {
-    clear: both;
-  }
-}
-{% endhighlight %}
-
-
-        </section>
+        </div>
 
 
 
