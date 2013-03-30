@@ -383,12 +383,12 @@ a.text-warning:focus {
   color: #a47e3c;
 }
 
-.text-error {
+.text-danger {
   color: #b94a48;
 }
 
-a.text-error:hover,
-a.text-error:focus {
+a.text-danger:hover,
+a.text-danger:focus {
   color: #953b39;
 }
 
@@ -1119,9 +1119,9 @@ table th[class*="col-span-"] {
   border-color: #d6e9c6;
 }
 
-.table > tbody > tr > td.error,
-.table > tbody > tr > th.error,
-.table > tbody > tr.error > td {
+.table > tbody > tr > td.danger,
+.table > tbody > tr > th.danger,
+.table > tbody > tr.danger > td {
   background-color: #f2dede;
   border-color: #eed3d7;
 }
@@ -1140,9 +1140,9 @@ table th[class*="col-span-"] {
   border-color: #c9e2b3;
 }
 
-.table-hover > tbody > tr > td.error:hover,
-.table-hover > tbody > tr > th.error:hover,
-.table-hover > tbody > tr.error:hover > td {
+.table-hover > tbody > tr > td.danger:hover,
+.table-hover > tbody > tr > th.danger:hover,
+.table-hover > tbody > tr.danger:hover > td {
   background-color: #ebcccc;
   border-color: #e6c1c7;
 }
@@ -2942,6 +2942,68 @@ fieldset[disabled] .btn-link:focus {
 
 .typeahead {
   z-index: 1051;
+}
+
+.panel {
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.panel-heading {
+  padding: 10px 15px;
+  margin: -15px -15px 15px;
+  font-size: 16px;
+  font-size: 1.6rem;
+  font-weight: 500;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #dddddd;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.panel-success {
+  border-color: #d6e9c6;
+}
+
+.panel-success .panel-heading {
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.panel-warning {
+  border-color: #fbeed5;
+}
+
+.panel-warning .panel-heading {
+  color: #c09853;
+  background-color: #fcf8e3;
+  border-color: #fbeed5;
+}
+
+.panel-danger {
+  border-color: #eed3d7;
+}
+
+.panel-danger .panel-heading {
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+}
+
+.panel-info {
+  border-color: #bce8f1;
+}
+
+.panel-info .panel-heading {
+  color: #3a87ad;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
 }
 
 .well {

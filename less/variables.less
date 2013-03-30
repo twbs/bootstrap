@@ -240,9 +240,9 @@
 @state-warning-background:       #fcf8e3;
 @state-warning-border:           darken(spin(@state-warning-background, -10), 3%);
 
-@state-error-text:               #b94a48;
-@state-error-background:         #f2dede;
-@state-error-border:             darken(spin(@state-error-background, -10), 3%);
+@state-danger-text:              #b94a48;
+@state-danger-background:        #f2dede;
+@state-danger-border:            darken(spin(@state-danger-background, -10), 3%);
 
 @state-success-text:             #468847;
 @state-success-background:       #dff0d8;
@@ -280,7 +280,6 @@
 
 // Modals
 // -------------------------
-
 @modal-inner-padding:         20px;
 
 
@@ -294,6 +293,35 @@
 @progress-bar-info-bg:        @brand-info;
 
 
+// Panels
+// -------------------------
+@panel-bg:                    #fff;
+@panel-border:                #ddd;
+@panel-border-radius:         @border-radius-base;
+@panel-heading-bg:            #f5f5f5;
+
+@panel-success-text:          @state-success-text;
+@panel-success-border:        @state-success-border;
+@panel-success-heading-bg:    @state-success-background;
+
+@panel-warning-text:          @state-warning-text;
+@panel-warning-border:        @state-warning-border;
+@panel-warning-heading-bg:    @state-warning-background;
+
+@panel-danger-text:           @state-danger-text;
+@panel-danger-border:         @state-danger-border;
+@panel-danger-heading-bg:     @state-danger-background;
+
+@panel-info-text:             @state-info-text;
+@panel-info-border:           @state-info-border;
+@panel-info-heading-bg:       @state-info-background;
+
+
+// Wells
+// -------------------------
+@well-background:             #f5f5f5;
+
+
 // Miscellaneous
 // -------------------------
 
@@ -302,9 +330,6 @@
 
 // Horizontal forms & lists
 @component-offset-horizontal: 180px;
-
-// Wells
-@well-background:             #f5f5f5;
 
 
 
