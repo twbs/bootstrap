@@ -1202,8 +1202,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h3 id="forms-inline">Inline form</h3>
     <p>Add <code>.form-inline</code> for left-aligned labels and inline-block controls for a compact layout.</p>
     <form class="bs-docs-example form-inline">
-      <input type="text" class="span3" placeholder="Email">
-      <input type="password" class="span3" placeholder="Password">
+      <input type="text" class="col-span-3" placeholder="Email">
+      <input type="password" class="col-span-3" placeholder="Password">
       <div class="checkbox">
         <label>
           <input type="checkbox"> Remember me
@@ -1213,8 +1213,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </form><!-- /example -->
 {% highlight html linenos %}
 <form class="form-inline">
-  <input type="text" class="span3" placeholder="Email">
-  <input type="password" class="span3" placeholder="Password">
+  <input type="text" class="col-span-3" placeholder="Email">
+  <input type="password" class="col-span-3" placeholder="Password">
   <div class="checkbox">
     <label>
       <input type="checkbox"> Remember me
@@ -1426,10 +1426,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Style inputs via default browser functionality with <code>:invalid</code>. Specify a <code>type</code>, add the <code>required</code> attribute if the field is not optional, and (if applicable) specify a <code>pattern</code>.</p>
     <p>This is not available in versions of Internet Explorer 7-9 due to lack of support for CSS pseudo selectors.</p>
     <form class="bs-docs-example form-inline">
-      <input class="span3" type="email" placeholder="test@example.com" required>
+      <input class="col-span-3" type="email" placeholder="test@example.com" required>
     </form>
 {% highlight html linenos %}
-<input class="span3" type="email" placeholder="test@example.com" required>
+<input class="col-span-3" type="email" placeholder="test@example.com" required>
 {% endhighlight %}
 
     <h3 id="forms-disabled-inputs">Disabled inputs</h3>
@@ -1446,10 +1446,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <form class="bs-docs-example form-inline">
       <fieldset disabled>
         <div>
-          <input type="text" class="span4" placeholder="Disabled input">
+          <input type="text" class="col-span-4" placeholder="Disabled input">
         </div>
         <div>
-          <select class="span4">
+          <select class="col-span-4">
             <option>Disabled select</option>
           </select>
         </div>
@@ -1465,10 +1465,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <form class="form-inline">
   <fieldset disabled>
     <div>
-      <input type="text" class="span4" placeholder="Disabled input">
+      <input type="text" class="col-span-4" placeholder="Disabled input">
     </div>
     <div>
-      <select class="span4">
+      <select class="col-span-4">
         <option>Disabled select</option>
       </select>
     </div>
@@ -1550,7 +1550,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <span class="input-group-addon">.00</span>
       </div>
       <br>
-      <div class="input-group span3">
+      <div class="input-group col-span-3">
         <span class="input-group-addon">$</span>
         <input type="text">
         <span class="input-group-addon">.00</span>
@@ -1567,7 +1567,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <span class="input-group-addon">.00</span>
 </div>
 
-<div class="input-group span3">
+<div class="input-group col-span-3">
   <span class="input-group-addon">$</span>
   <input type="text">
   <span class="input-group-addon">.00</span>
@@ -1781,7 +1781,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <div class="controls docs-input-sizes">
         <input class="span1" type="text" placeholder=".span1">
         <input class="span2" type="text" placeholder=".span2">
-        <input class="span3" type="text" placeholder=".span3">
+        <input class="col-span-3" type="text" placeholder=".col-span-3">
         <select class="span1">
           <option>1</option>
           <option>2</option>
@@ -1796,7 +1796,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           <option>4</option>
           <option>5</option>
         </select>
-        <select class="span3">
+        <select class="col-span-3">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -1808,14 +1808,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% highlight html linenos %}
 <input class="span1" type="text" placeholder=".span1">
 <input class="span2" type="text" placeholder=".span2">
-<input class="span3" type="text" placeholder=".span3">
+<input class="col-span-3" type="text" placeholder=".col-span-3">
 <select class="span1">
   ...
 </select>
 <select class="span2">
   ...
 </select>
-<select class="span3">
+<select class="col-span-3">
   ...
 </select>
 {% endhighlight %}
@@ -1823,27 +1823,27 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>If you need multiple inputs on the same line, wrap them in the standard grid markup (with <code>.row</code> and <code>.span*</code> classes). Each input should have it's own column and will expand to fill the available width automatically.</p>
     <form class="bs-docs-example" style="padding-bottom: 15px;">
       <div class="row">
-        <div class="span4">
-          <input type="text" placeholder=".span4">
+        <div class="col-span-4">
+          <input type="text" placeholder=".col-span-4">
         </div>
-        <div class="span4">
-          <input type="text" placeholder=".span4">
+        <div class="col-span-4">
+          <input type="text" placeholder=".col-span-4">
         </div>
-        <div class="span4">
-          <input type="text" placeholder=".span4">
+        <div class="col-span-4">
+          <input type="text" placeholder=".col-span-4">
         </div>
       </div>
     </form>
 {% highlight html linenos %}
 <div class="row">
-  <div class="span4">
-    <input type="text" placeholder=".span4">
+  <div class="col-span-4">
+    <input type="text" placeholder=".col-span-4">
   </div>
-  <div class="span4">
-    <input type="text" placeholder=".span4">
+  <div class="col-span-4">
+    <input type="text" placeholder=".col-span-4">
   </div>
-  <div class="span4">
-    <input type="text" placeholder=".span4">
+  <div class="col-span-4">
+    <input type="text" placeholder=".col-span-4">
   </div>
 </div>
 {% endhighlight %}
@@ -3966,22 +3966,22 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>By default, Bootstrap's thumbnails are designed to showcase linked images with minimal required markup.</p>
     <div class="bs-docs-example">
       <div class="row">
-        <div class="span3">
+        <div class="col-span-3">
           <a href="#" class="thumbnail">
             <img data-src="holder.js/260x180" alt="">
           </a>
         </div>
-        <div class="span3">
+        <div class="col-span-3">
           <a href="#" class="thumbnail">
             <img data-src="holder.js/260x180" alt="">
           </a>
         </div>
-        <div class="span3">
+        <div class="col-span-3">
           <a href="#" class="thumbnail">
             <img data-src="holder.js/260x180" alt="">
           </a>
         </div>
-        <div class="span3">
+        <div class="col-span-3">
           <a href="#" class="thumbnail">
             <img data-src="holder.js/260x180" alt="">
           </a>
@@ -3990,7 +3990,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div><!-- /.bs-docs-example -->
 {% highlight html linenos %}
 <div class="row">
-  <div class="span3">
+  <div class="col-span-3">
     <a href="#" class="thumbnail">
       <img data-src="holder.js/260x180" alt="">
     </a>
@@ -4003,7 +4003,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.</p>
     <div class="bs-docs-example">
       <div class="row">
-        <div class="span4">
+        <div class="col-span-4">
           <div class="thumbnail">
             <img data-src="holder.js/300x200" alt="">
             <div class="caption">
@@ -4013,7 +4013,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             </div>
           </div>
         </div>
-        <div class="span4">
+        <div class="col-span-4">
           <div class="thumbnail">
             <img data-src="holder.js/300x200" alt="">
             <div class="caption">
@@ -4023,7 +4023,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             </div>
           </div>
         </div>
-        <div class="span4">
+        <div class="col-span-4">
           <div class="thumbnail">
             <img data-src="holder.js/300x200" alt="">
             <div class="caption">
@@ -4037,7 +4037,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div><!-- /.bs-docs-example -->
 {% highlight html linenos %}
 <div class="row">
-  <div class="span3">
+  <div class="col-span-3">
     <div class="thumbnail">
       <img data-src="holder.js/300x200" alt="">
       <div class="caption">
@@ -6076,7 +6076,7 @@ $('.carousel').carousel({
             <h2>Example</h2>
             <p>A basic, easily extended plugin for quickly creating elegant typeaheads with any form text input.</p>
             <div class="bs-docs-example" style="background-color: #f5f5f5;">
-              <input type="text" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]'>
+              <input type="text" class="col-span-3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]'>
             </div><!-- /example -->
 {% highlight html linenos %}
 <input type="text" data-provide="typeahead">
