@@ -2561,7 +2561,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
     <p class="lead">Toggleable, contextual menu for displaying lists of links. Made interactive with the <a href="./javascript.html#dropdowns">dropdown JavaScript plugin</a>.</p>
 
-    <h3>Example</h3>
+    <h3 id="dropdowns-example">Example</h3>
     <p>Wrap the dropdown's trigger and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Then add the menu's HTML.</p>
     <div class="bs-docs-example">
       <div class="dropdown clearfix">
@@ -2587,7 +2587,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 {% endhighlight %}
 
-    <h3>Aligning the menus</h3>
+    <h3 id="dropdowns-alignment">Aligning the menus</h3>
     <p>Add <code>.pull-right</code> to a <code>.dropdown-menu</code> to right align the dropdown menu.</p>
 {% highlight html linenos %}
 <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
@@ -2595,7 +2595,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </ul>
 {% endhighlight %}
 
-    <h3>Disabled menu options</h3>
+    <h3 id="dropdowns-disabled">Disabled menu options</h3>
     <p>Add <code>.disabled</code> to a <code>&lt;li&gt;</code> in the dropdown to disable the link.</p>
     <div class="bs-docs-example">
       <div class="dropdown clearfix">
@@ -2614,7 +2614,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </ul>
 {% endhighlight %}
 
-    <h3>Sub menus on dropdowns</h3>
+    <h3 id="dropdowns-submenus">Sub menus on dropdowns</h3>
     <p>Add an extra level of dropdown menus, appearing on hover like those of OS X, with some simple markup additions. Add <code>.dropdown-submenu</code> to any <code>li</code> in an existing dropdown menu for automatic styling.</p>
     <div class="bs-docs-example bs-docs-example-submenu">
 
@@ -2708,13 +2708,13 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
   <!-- Button Groups
   ================================================== -->
-  <div class="bs-docs-section" id="buttonGroups">
+  <div class="bs-docs-section" id="btn-groups">
     <div class="page-header">
       <h1>Button groups</h1>
     </div>
     <p class="lead">Group a series of buttons together on a single line with the button group. Add on optional JavaScript radio and checkbox style behavior with <a href="./javascript.html#buttons">our buttons plugin</a>.</p>
 
-    <h3>Single button group</h3>
+    <h3 id="btn-groups-single">Basic button group</h3>
     <p>Wrap a series of buttons with <code>.btn</code> in <code>.btn-group</code>.</p>
     <div class="bs-docs-example">
       <div class="btn-group" style="margin: 9px 0 5px;">
@@ -2731,7 +2731,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 {% endhighlight %}
 
-    <h3>Multiple button groups</h3>
+    <h3 id="btn-groups-toolbar">Multiple button groups</h3>
     <p>Combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex components.</p>
     <div class="bs-docs-example">
       <div class="btn-toolbar" style="margin: 0;">
@@ -2759,7 +2759,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 {% endhighlight %}
 
-    <h3>Vertical button groups</h3>
+    <h3 id="btn-groups-vertical">Vertical button groups</h3>
     <p>Make a set of buttons appear vertically stacked rather than horizontally.</p>
     <div class="bs-docs-example">
       <div class="btn-group btn-group-vertical">
@@ -2775,7 +2775,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 {% endhighlight %}
 
-    <h3>Justified button groups</h3>
+    <h3 id="btn-groups-justified">Justified button groups</h3>
     <p>Make a group of buttons stretch at the same size to span the entire width of its parent. <strong>This only works with <code>&lt;a&gt;</code> elements</strong> as the <code>&lt;button&gt;</code> doesn't pick up these styles.</p>
     <div class="bs-docs-example">
       <div class="btn-group btn-group-justified">
@@ -2796,14 +2796,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
   <!-- Split button dropdowns
   ================================================== -->
-  <div class="bs-docs-section" id="buttonDropdowns">
+  <div class="bs-docs-section" id="btn-dropdowns">
     <div class="page-header">
       <h1>Button dropdown menus</h1>
     </div>
     <p class="lead">Use any button to trigger a dropdown menu by placing it within a <code>.btn-group</code> and providing the proper menu markup. Requires the <a href="./javascript.html#dropdowns">Bootstrap dropdown plugin</a>.</p>
 
-    <h3>Single or split button</h3>
-    <p>Turn a button into dropdown toggle, or add a second button to toggle the dropdown while retaining the primary button action.</p>
+    <h3 id="btn-dropdown-single">Single button dropdowns</h3>
+    <p>Turn a button into dropdown toggle with some basic markup changes.</p>
     <div class="bs-docs-example">
       <div class="btn-toolbar" style="margin-bottom: 10px;">
         <div class="btn-group">
@@ -2857,7 +2857,26 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           </ul>
         </div><!-- /btn-group -->
       </div>
+    </div>
+{% highlight html linenos %}
+<!-- Single button -->
+<div class="btn-group">
+  <button class="btn dropdown-toggle" data-toggle="dropdown">
+    Action <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
+{% endhighlight %}
 
+    <h3 id="btn-dropdown-split">Split button dropdowns</h3>
+    <p>Similarly, create split button dropdowns with the same markup changes, only with a separate button.</p>
+    <div class="bs-docs-example">
       <div class="btn-toolbar" style="margin: 0;">
         <div class="btn-group">
           <button class="btn">Action</button>
@@ -2917,20 +2936,6 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div><!-- /btn-toolbar -->
     </div>
 {% highlight html linenos %}
-<!-- Single button -->
-<div class="btn-group">
-  <button class="btn dropdown-toggle" data-toggle="dropdown">
-    Action <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>
-</div>
-
 <!-- Split button -->
 <div class="btn-group">
   <button class="btn">Action</button>
@@ -2947,7 +2952,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 {% endhighlight %}
 
-    <h3>Works with all button sizes</h3>
+    <h3 id="btn-dropdowns-sizes">Works with all button sizes</h3>
     <p>Button dropdowns work at any size: <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code>.</p>
     <div class="bs-docs-example">
       <div class="btn-toolbar" style="margin: 0;">
@@ -3021,7 +3026,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 {% endhighlight %}
 
-    <h3>Dropup buttons</h3>
+    <h3 id="btn-dropdowns-dropup">Dropup buttons</h3>
     <p>Trigger dropdown menus above elements by adding <code>.dropup</code> to the parent.</p>
     <div class="bs-docs-example">
       <div class="btn-toolbar">
