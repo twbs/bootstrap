@@ -117,30 +117,6 @@
   text-align: center;
 }
 
-// Lists
-// -------------------------
-
-.nav-list > li > a {
-  margin-bottom: -1px; // pull up the following link for a 1px border between
-  border: 1px solid #e5e5e5;
-}
-.nav-list > li:first-child > a {
-   border-top-left-radius: @border-radius-base;
-  border-top-right-radius: @border-radius-base;
-}
-.nav-list > li:last-child > a {
-   border-bottom-left-radius: @border-radius-base;
-  border-bottom-right-radius: @border-radius-base;
-}
-.nav-list > .active > a,
-.nav-list > .active > a:hover,
-.nav-list > .active > a:focus {
-  z-index: 2; // Bring active item forward so border sits on top of next element
-  color: #fff;
-  background-color: @link-color;
-  border-color: @link-color;
-}
-
 
 
 // Nav states and addons

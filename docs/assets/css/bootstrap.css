@@ -3267,30 +3267,6 @@ button.close {
   text-align: center;
 }
 
-.nav-list > li > a {
-  margin-bottom: -1px;
-  border: 1px solid #e5e5e5;
-}
-
-.nav-list > li:first-child > a {
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
-}
-
-.nav-list > li:last-child > a {
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-
-.nav-list > .active > a,
-.nav-list > .active > a:hover,
-.nav-list > .active > a:focus {
-  z-index: 2;
-  color: #fff;
-  background-color: #428bca;
-  border-color: #428bca;
-}
-
 .nav > .disabled > a {
   color: #999999;
 }
@@ -4803,7 +4779,7 @@ a.badge:focus {
   top: 0;
 }
 
-.nav-list > .active > a > .badge,
+a.list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
   color: #428bca;
   background-color: #fff;
