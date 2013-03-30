@@ -400,7 +400,7 @@ section > ul li {
   margin-bottom: 5px;
 }
 .bs-docs-example-submenu {
-  min-height: 180px;
+  min-height: 230px;
 }
 .bs-docs-example-submenu > .pull-left + .pull-left {
   margin-left: 20px;
