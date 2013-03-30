@@ -9,7 +9,7 @@
   background-color: @navbar-bg;
   border-radius: @border-radius-base;
   // Prevent floats from breaking the navbar
-  .clear_float();
+  .clearfix();
 }
 
 // Navbar nav links
@@ -283,7 +283,7 @@
   .navbar .nav {
     float: left;
     margin-top: 0; // undo top margin to make nav extend full height of navbar
-    .clear_float();
+    .clearfix();
 
     &.pull-right {
       float: right;

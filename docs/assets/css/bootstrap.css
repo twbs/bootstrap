@@ -365,12 +365,12 @@ cite {
   font-style: normal;
 }
 
-.muted {
+.text-muted {
   color: #999999;
 }
 
-a.muted:hover,
-a.muted:focus {
+a.text-muted:hover,
+a.text-muted:focus {
   color: #808080;
 }
 
@@ -589,6 +589,16 @@ dd {
   clear: both;
 }
 
+.dl-horizontal:before,
+.dl-horizontal:after {
+  display: table;
+  content: " ";
+}
+
+.dl-horizontal:after {
+  clear: both;
+}
+
 .dl-horizontal dt {
   float: left;
   width: 160px;
@@ -746,9 +756,29 @@ pre code {
   clear: both;
 }
 
+.container:before,
+.container:after {
+  display: table;
+  content: " ";
+}
+
+.container:after {
+  clear: both;
+}
+
 .row {
   margin-right: -15px;
   margin-left: -15px;
+}
+
+.row:before,
+.row:after {
+  display: table;
+  content: " ";
+}
+
+.row:after {
+  clear: both;
 }
 
 .row:before,
@@ -1498,6 +1528,16 @@ select:focus:invalid:focus {
   clear: both;
 }
 
+.form-actions:before,
+.form-actions:after {
+  display: table;
+  content: " ";
+}
+
+.form-actions:after {
+  clear: both;
+}
+
 .help-block,
 .help-inline {
   color: #737373;
@@ -1682,6 +1722,14 @@ select:focus:invalid:focus {
   .form-horizontal .control-group {
     position: relative;
     margin-bottom: 20px;
+  }
+  .form-horizontal .control-group:before,
+  .form-horizontal .control-group:after {
+    display: table;
+    content: " ";
+  }
+  .form-horizontal .control-group:after {
+    clear: both;
   }
   .form-horizontal .control-group:before,
   .form-horizontal .control-group:after {
@@ -2763,7 +2811,6 @@ fieldset[disabled] .btn-link:focus {
   font-weight: normal;
   line-height: 20px;
   color: #333333;
-  white-space: nowrap;
 }
 
 .dropdown-menu > li > a:hover,
@@ -2968,6 +3015,16 @@ button.close {
   clear: both;
 }
 
+.nav:before,
+.nav:after {
+  display: table;
+  content: " ";
+}
+
+.nav:after {
+  clear: both;
+}
+
 .nav > li {
   display: block;
 }
@@ -3126,6 +3183,16 @@ button.close {
   clear: both;
 }
 
+.tabbable:before,
+.tabbable:after {
+  display: table;
+  content: " ";
+}
+
+.tabbable:after {
+  clear: both;
+}
+
 .tab-content > .tab-pane,
 .pill-content > .pill-pane {
   display: none;
@@ -3210,6 +3277,16 @@ button.close {
   padding: 10px 15px;
   background-color: #eeeeee;
   border-radius: 4px;
+}
+
+.navbar:before,
+.navbar:after {
+  display: table;
+  content: " ";
+}
+
+.navbar:after {
+  clear: both;
 }
 
 .navbar:before,
@@ -3483,6 +3560,14 @@ button.close {
   .navbar .nav:after {
     clear: both;
   }
+  .navbar .nav:before,
+  .navbar .nav:after {
+    display: table;
+    content: " ";
+  }
+  .navbar .nav:after {
+    clear: both;
+  }
   .navbar .nav.pull-right {
     float: right;
   }
@@ -3603,6 +3688,16 @@ button.close {
 .btn-group > .btn:hover,
 .btn-group > .btn:active {
   z-index: 2;
+}
+
+.btn-toolbar:before,
+.btn-toolbar:after {
+  display: table;
+  content: " ";
+}
+
+.btn-toolbar:after {
+  clear: both;
 }
 
 .btn-toolbar:before,
@@ -3880,6 +3975,16 @@ button.close {
   clear: both;
 }
 
+.pager:before,
+.pager:after {
+  display: table;
+  content: " ";
+}
+
+.pager:after {
+  clear: both;
+}
+
 .pager li {
   display: inline;
 }
@@ -4015,6 +4120,16 @@ button.close {
   margin-top: 15px;
   text-align: right;
   border-top: 1px solid #e5e5e5;
+}
+
+.modal-footer:before,
+.modal-footer:after {
+  display: table;
+  content: " ";
+}
+
+.modal-footer:after {
+  clear: both;
 }
 
 .modal-footer:before,

@@ -16,7 +16,7 @@
 //    that are clearfixed.
 // 2. The use of `table` rather than `block` is only necessary if using
 //    `:before` to contain the top-margins of child elements.
-.clear_float() {
+.clearfix() {
   &:before,
   &:after {
     content: " "; /* 1 */
@@ -400,7 +400,7 @@
 .container-fixed() {
   margin-right: auto;
   margin-left: auto;
-  .clear_float();
+  .clearfix();
 }
 
 // Make a grid
@@ -411,7 +411,7 @@
   margin-left:  (@grid-gutter-width / -2);
   margin-right: (@grid-gutter-width / -2);
   // Then clear the floated columns
-  .clear_float();
+  .clearfix();
 }
 // Generate the columns
 .make-column(@columns) {

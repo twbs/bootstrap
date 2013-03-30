@@ -158,7 +158,7 @@ dd {
 }
 // Horizontal layout (like forms)
 .dl-horizontal {
-  .clear_float(); // Ensure dl clears floats if empty dd elements present
+  .clearfix(); // Ensure dl clears floats if empty dd elements present
   dt {
     float: left;
     width: (@component-offset-horizontal - 20);
