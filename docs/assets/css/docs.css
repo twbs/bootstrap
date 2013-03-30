@@ -190,23 +190,43 @@ section > ul li {
   text-shadow: 0 1px 0 #fff;
   box-shadow: inset -1px 0 0 #e5e5e5;
 }
-.bs-docs-sidenav {
+
+/* Nav: first level */
+.bs-docs-sidebar > .nav {
   margin: 0 0 25px;
 }
-.bs-docs-sidenav > li > a {
+.bs-docs-sidebar .nav > li > a {
+  display: block;
   color: #666;
   padding: 4px 25px;
 }
-.bs-docs-sidenav > li > a:hover {
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+  text-decoration: none;
   border-right: 1px solid #d5d5d5;
 }
-.bs-docs-sidenav > .active > a,
-.bs-docs-sidenav > .active:hover > a,
-.bs-docs-sidenav > .active:focus > a {
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
   font-weight: 500;
   color: #b94a48;
   background-color: transparent;
   border-right: 1px solid #b94a48;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+  display: none;
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
+.bs-docs-sidebar .nav > .active > ul {
+  display: block;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-size: 90%;
 }
 
 .bs-docs-sidenav-heading {

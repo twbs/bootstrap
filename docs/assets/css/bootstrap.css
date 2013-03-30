@@ -3258,7 +3258,6 @@ button.close {
 }
 
 .navbar-fixed-top,
-.navbar-fixed-left,
 .navbar-fixed-bottom {
   position: fixed;
   right: 0;
@@ -3273,16 +3272,6 @@ button.close {
 
 .navbar-fixed-bottom {
   bottom: 0;
-}
-
-.navbar-fixed-left {
-  top: 0;
-  right: auto;
-  bottom: 0;
-}
-
-.navbar-fixed-left .container {
-  max-width: none;
 }
 
 .navbar-brand {

@@ -442,13 +442,13 @@ title: Bootstrap Documentation
 
         <!-- Typography
         ================================================== -->
-        <div class="bs-docs-section" id="typography">
+        <div class="bs-docs-section" id="type">
           <div class="page-header">
             <h1>Typography</h1>
           </div>
 
           <!-- Headings -->
-          <h2 id="headings">Headings</h2>
+          <h2 id="type-headings">Headings</h2>
           <p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available.</p>
 
           <div class="bs-docs-example bs-docs-example-type">
@@ -491,7 +491,7 @@ title: Bootstrap Documentation
 {% endhighlight %}
 
           <!-- Body copy -->
-          <h2 id="body-copy">Body copy</h2>
+          <h2 id="type-body-copy">Body copy</h2>
           <p>Bootstrap's global default <code>font-size</code> is <strong>14px</strong>, with a <code>line-height</code> of <strong>20px</strong>. This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition, <code>&lt;p&gt;</code> (paragraphs) receive a bottom margin of half their line-height (10px by default).</p>
           <div class="bs-docs-example">
             <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
@@ -518,7 +518,7 @@ title: Bootstrap Documentation
 
 
           <!-- Emphasis -->
-          <h2 id="emphasis">Emphasis</h2>
+          <h2 id="type-emphasis">Emphasis</h2>
           <p>Make use of HTML's default emphasis tags with lightweight styles.</p>
 
           <h3>Small text</h3>
@@ -581,7 +581,7 @@ title: Bootstrap Documentation
 
 
           <!-- Abbreviations -->
-          <h2 id="abbreviations">Abbreviations</h2>
+          <h2 id="type-abbreviations">Abbreviations</h2>
           <p>Stylized implementation of HTML's <code>&lt;abbr&gt;</code> element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover.</p>
 
           <h3>Basic abbreviation</h3>
@@ -604,7 +604,7 @@ title: Bootstrap Documentation
 
 
           <!-- Addresses -->
-          <h2 id="addresses">Addresses</h2>
+          <h2 id="type-addresses">Addresses</h2>
           <p>Present contact information for the nearest ancestor or the entire body of work. Preserve formatting by ending all lines with <code>&lt;br&gt;</code>.</p>
           <div class="bs-docs-example">
             <address>
@@ -634,7 +634,7 @@ title: Bootstrap Documentation
 
 
           <!-- Blockquotes -->
-          <h2 id="blockquotes">Blockquotes</h2>
+          <h2 id="type-blockquotes">Blockquotes</h2>
           <p>For quoting blocks of content from another source within your document.</p>
 
           <h3>Default blockquote</h3>
@@ -684,7 +684,7 @@ title: Bootstrap Documentation
 
 
           <!-- Lists -->
-          <h2 id="lists">Lists</h2>
+          <h2 id="type-lists">Lists</h2>
 
           <h3>Unordered</h3>
           <p>A list of items in which the order does <em>not</em> explicitly matter.</p>
@@ -864,7 +864,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             <h1>Tables</h1>
           </div>
 
-          <h2>Default styles</h2>
+          <h2 id="tables-example">Basic example</h2>
           <p>For basic styling&mdash;light padding and only horizontal dividers&mdash;add the base class <code>.table</code> to any <code>&lt;table&gt;</code>. It may seem super redundant, but given the widespread use of tables for other plugins like calendars and date pickers, we've opted to isolate our custom table styles.</p>
           <div class="bs-docs-example">
             <table class="table">
@@ -908,7 +908,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           <h2>Optional classes</h2>
           <p>Add any of the following classes to the <code>.table</code> base class.</p>
 
-          <h3>Striped</h3>
+          <h3 id="tables-striped">Striped</h3>
           <p>Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code> via the <code>:nth-child</code> CSS selector (not available in IE8).</p>
           <div class="bs-docs-example">
             <table class="table table-striped">
@@ -948,7 +948,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </table>
 {% endhighlight %}
 
-          <h3>Bordered</h3>
+          <h3 id="tables-bordered">Bordered</h3>
           <p>Add <code>.table-bordered</code> for borders and rounded corners.</p>
           <div class="bs-docs-example">
             <table class="table table-bordered">
@@ -992,7 +992,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </table>
 {% endhighlight %}
 
-          <h3>Hover rows</h3>
+          <h3 id="tables-hover-rows">Hover rows</h3>
           <p>Add <code>.table-hover</code> to enable a hover state on table rows within a <code>&lt;tbody&gt;</code>.</p>
           <div class="bs-docs-example">
             <table class="table table-hover">
@@ -1032,7 +1032,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
-          <h3>Condensed</h3>
+          <h3 id="tables-condensed">Condensed</h3>
           <p>Add <code>.table-condensed</code> to make tables more compact by cutting cell padding in half.</p>
           <div class="bs-docs-example">
             <table class="table table-condensed">
@@ -1073,7 +1073,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
 
-          <h2>Optional row classes</h2>
+          <h2 id="tables-row-classes">Optional row classes</h2>
           <p>Use contextual classes to color table rows.</p>
           <table class="table table-bordered table-striped">
             <colgroup>
@@ -1156,100 +1156,6 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 ...
 {% endhighlight %}
 
-
-
-          <h2>Supported table markup</h2>
-          <p>List of supported table HTML elements and how they should be used.</p>
-          <table class="table table-bordered table-striped">
-            <colgroup>
-              <col class="span1">
-              <col class="span7">
-            </colgroup>
-            <thead>
-              <tr>
-                <th>Tag</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <code>&lt;table&gt;</code>
-                </td>
-                <td>
-                  Wrapping element for displaying data in a tabular format
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <code>&lt;thead&gt;</code>
-                </td>
-                <td>
-                  Container element for table header rows (<code>&lt;tr&gt;</code>) to label table columns
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <code>&lt;tbody&gt;</code>
-                </td>
-                <td>
-                  Container element for table rows (<code>&lt;tr&gt;</code>) in the body of the table
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <code>&lt;tr&gt;</code>
-                </td>
-                <td>
-                  Container element for a set of table cells (<code>&lt;td&gt;</code> or <code>&lt;th&gt;</code>) that appears on a single row
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <code>&lt;td&gt;</code>
-                </td>
-                <td>
-                  Default table cell
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <code>&lt;th&gt;</code>
-                </td>
-                <td>
-                  Special table cell for column (or row, depending on scope and placement) labels
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <code>&lt;caption&gt;</code>
-                </td>
-                <td>
-                  Description or summary of what the table holds, especially useful for screen readers
-                </td>
-              </tr>
-            </tbody>
-          </table>
-{% highlight html linenos %}
-<table>
-  <caption>...</caption>
-  <thead>
-    <tr>
-      <th>...</th>
-      <th>...</th>
-      <th>...</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-  </tbody>
-</table>
-{% endhighlight %}
-
         </div>
 
 
@@ -1261,7 +1167,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             <h1>Forms</h1>
           </div>
 
-          <h2 id="forms-default">Default styles</h2>
+          <h2 id="forms-example">Basic example</h2>
           <p>Individual form controls automatically receive some global styling. By default, inputs are set to <code>width: 100%;</code>.</p>
           <form class="bs-docs-example">
             <fieldset>
@@ -1295,10 +1201,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
-          <h2 id="forms-layouts">Optional layouts</h2>
+          <h2>Optional layouts</h2>
           <p>Included with Bootstrap are optional form layouts for common use cases.</p>
 
-          <h3>Inline form</h3>
+          <h3 id="forms-inline">Inline form</h3>
           <p>Add <code>.form-inline</code> for left-aligned labels and inline-block controls for a compact layout.</p>
           <form class="bs-docs-example form-inline">
             <input type="text" class="span3" placeholder="Email">
@@ -1323,7 +1229,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </form>
 {% endhighlight %}
 
-          <h3>Horizontal form</h3>
+          <h3 id="forms-horizontal">Horizontal form</h3>
           <p>Right align labels and float them to the left to make them appear on the same line as controls. Requires the most markup changes from a default form:</p>
           <ul>
             <li>Add <code>.form-horizontal</code> to the form</li>
@@ -1509,7 +1415,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
 
-          <h2>Form control states</h2>
+          <h2 id="forms-control-states">Form control states</h2>
           <p>Provide feedback to users or visitors with basic feedback states on form controls and labels.</p>
 
           <h3 id="forms-input-focus">Input focus</h3>
@@ -1635,7 +1541,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           <h2 id="forms-extending">Extending form controls</h2>
           <p>Adding on top of existing browser controls, Bootstrap includes other useful form components.</p>
 
-          <h3>Input groups</h3>
+          <h3 id="forms-input-groups">Input groups</h3>
           <p>Add text or buttons before, after, or on both sides of any text-based input. Use <code>.input-group</code> with a <code>.add-on</code> to prepend or append elements to an <code>&lt;input&gt;</code>.</p>
           <p>Avoid using <code>&lt;select&gt;</code> elements here as they cannot be fully styled in WebKit browsers.</p>
           <form class="bs-docs-example">
@@ -1856,7 +1762,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 {% endhighlight %}
 
-          <h3 id="forms-extending-sizes">Control sizing</h3>
+          <h3 id="forms-control-sizes">Control sizing</h3>
           <p>Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using <code>.span*</code> classes.</p>
 
           <h4>Relative sizing</h4>
@@ -1956,7 +1862,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <span class="uneditable-input">Some value here</span>
 {% endhighlight %}
 
-          <h3>Form actions</h3>
+          <h3 id="forms-actions">Form actions</h3>
           <p>End a form with a group of actions (buttons). When placed within a <code>.form-horizontal</code>, the buttons will automatically indent to line up with the form controls.</p>
           <form class="bs-docs-example">
             <div class="form-actions">
@@ -1971,7 +1877,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 {% endhighlight %}
 
-          <h3>Help text</h3>
+          <h3 id="forms-help-text">Help text</h3>
           <p>Inline and block level support for help text that appears around form controls.</p>
           <h4>Inline help</h4>
           <form class="bs-docs-example form-inline">
@@ -2041,7 +1947,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot fix.</p>
 
 
-          <h2>Button sizes</h2>
+          <h2 id="buttons-sizes">Button sizes</h2>
           <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code> for additional sizes.</p>
           <div class="bs-docs-example">
             <p>
@@ -2093,7 +1999,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
-          <h2>Disabled state</h2>
+          <h2 id="buttons-disabled">Disabled state</h2>
           <p>Make buttons look unclickable by fading them back 50%.</p>
 
           <h3>Button element</h3>
@@ -2122,7 +2028,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           </p>
 
 
-          <h2>One class, multiple tags</h2>
+          <h2 id="buttons-tags">One class, multiple tags</h2>
           <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
           <form class="bs-docs-example">
             <a class="btn" href="">Link</a>
