@@ -2999,9 +2999,12 @@ a.list-group-item.active {
   border-color: #428bca;
 }
 
-a.list-group-item.active .list-group-item-heading,
-a.list-group-item.active .list-group-item-text {
+a.list-group-item.active .list-group-item-heading {
   color: inherit;
+}
+
+a.list-group-item.active .list-group-item-text {
+  color: #e1edf7;
 }
 
 .list-group-item > .badge,

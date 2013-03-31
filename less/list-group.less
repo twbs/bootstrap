@@ -72,9 +72,11 @@ a.list-group-item.active {
   border-color: @list-group-active-border;
 
   // Force color to inherit for custom content
-  .list-group-item-heading,
-  .list-group-item-text {
+  .list-group-item-heading {
     color: inherit;
+  }
+  .list-group-item-text {
+    color: lighten(@list-group-active-bg, 40%);
   }
 }
 
