@@ -438,6 +438,30 @@ section > ul li {
   margin-bottom: 15px;
 }
 
+/* Tooltips */
+.bs-docs-tooltip-examples {
+  text-align: center;
+  margin: 0 0 10px;
+  list-style: none;
+}
+.bs-docs-tooltip-examples li {
+  display: inline;
+  padding: 0 10px;
+}
+
+/* Popovers */
+.bs-docs-example-popover {
+  padding-bottom: 24px;
+  background-color: #f9f9f9;
+}
+.bs-docs-example-popover .popover {
+  position: relative;
+  display: block;
+  float: left;
+  width: 260px;
+  margin: 20px;
+}
+
 
 /* Example templates
 -------------------------------------------------- */
