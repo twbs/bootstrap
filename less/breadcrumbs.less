@@ -18,6 +18,9 @@
       padding: 0 5px;
       color: #ccc;
     }
+    &:last-child:after {
+      content: ""; // No divider after last element
+    }
   }
   > .active {
     color: @grayLight;
