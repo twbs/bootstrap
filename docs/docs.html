@@ -3,7 +3,6 @@ layout: default
 title: Bootstrap Documentation
 ---
 
-
 <div class="bs-docs-container">
 
   <!-- Welcome
@@ -4470,20 +4469,42 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Linkify list group items by using anchor tags instead of list items (that also means a parent <code>&lt;div&gt;</code> instead of an <code>&lt;ul&gt;</code>. No need for individual parents around each element.</p>
     <div class="bs-docs-example">
       <div class="list-group">
-        <a href="#" class="list-group-item active">Cras justo odio</a>
-        <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-        <a href="#" class="list-group-item">Morbi leo risus</a>
-        <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-        <a href="#" class="list-group-item">Vestibulum at eros</a>
+        <a href="#" class="list-group-item active">
+          Cras justo odio
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+        <a href="#" class="list-group-item">Dapibus ac facilisis in
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+        <a href="#" class="list-group-item">Morbi leo risus
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+        <a href="#" class="list-group-item">Porta ac consectetur ac
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+        <a href="#" class="list-group-item">Vestibulum at eros
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
       </div>
     </div>
 {% highlight html linenos %}
 <div class="list-group">
-  <a href="#" class="list-group-item active">Cras justo odio</a>
-  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-  <a href="#" class="list-group-item">Morbi leo risus</a>
-  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-  <a href="#" class="list-group-item">Vestibulum at eros</a>
+  <a href="#" class="list-group-item active">
+    Cras justo odio
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+  <a href="#" class="list-group-item">Dapibus ac facilisis in
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+  <a href="#" class="list-group-item">Morbi leo risus
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+  <a href="#" class="list-group-item">Porta ac consectetur ac
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+  <a href="#" class="list-group-item">Vestibulum at eros
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
 </div>
 {% endhighlight %}
 
@@ -6476,3 +6497,7 @@ $('[data-spy="affix"]').each(function () {
         </section>
 
 </div><!-- /.container -->
+
+<a href="#welcome" class="bs-docs-top">
+  Back to top
+</a>

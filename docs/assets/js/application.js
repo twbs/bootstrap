@@ -13,7 +13,7 @@
       e.preventDefault()
     })
 
-    // side bar
+    // back to top
     // setTimeout(function () {
     //   $('.bs-docs-sidenav').affix({
     //     offset: {
@@ -22,6 +22,10 @@
     //     }
     //   })
     // }, 100)
+
+    setTimeout(function () {
+      $('.bs-docs-top').affix()
+    }, 100)
 
     // make code pretty
     window.prettyPrint && prettyPrint()
