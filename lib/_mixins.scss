@@ -631,7 +631,7 @@
 }
 
 @mixin grid-fluid-offset-x($gridColumns, $fluidGridColumnWidth, $fluidGridGutterWidth) {
-  @for $i from 1 through $gridColums {
+  @for $i from 1 through $gridColumns {
     .offset#{$i} { @include grid-fluid-offset($i, $fluidGridColumnWidth, $fluidGridGutterWidth); }
     .offset#{$i}:first-child { @include grid-fluid-offset-first-child($i, $fluidGridColumnWidth, $fluidGridGutterWidth); }
   }
