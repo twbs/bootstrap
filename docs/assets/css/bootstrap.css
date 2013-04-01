@@ -2789,7 +2789,7 @@ fieldset[disabled] .btn-link:focus {
 }
 
 .dropdown-menu .divider {
-  height: 1px;
+  height: 2px;
   margin: 9px 0;
   overflow: hidden;
   background-color: #e5e5e5;
@@ -3289,7 +3289,7 @@ button.close {
 }
 
 .nav .divider {
-  height: 1px;
+  height: 2px;
   margin: 9px 0;
   overflow: hidden;
   background-color: #e5e5e5;
@@ -3522,7 +3522,7 @@ button.close {
 }
 
 .navbar .nav > .divider {
-  height: 1px;
+  height: 2px;
   margin: 9px 0;
   overflow: hidden;
   background-color: #e1e1e1;
