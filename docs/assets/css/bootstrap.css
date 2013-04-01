@@ -3033,6 +3033,16 @@ a.list-group-item.active .list-group-item-text {
   border-top-left-radius: 3px;
 }
 
+.panel-primary {
+  border-color: #428bca;
+}
+
+.panel-primary .panel-heading {
+  color: #ffffff;
+  background-color: #428bca;
+  border-color: #428bca;
+}
+
 .panel-success {
   border-color: #d6e9c6;
 }
