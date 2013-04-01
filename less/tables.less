@@ -5,7 +5,7 @@
 
 table {
   max-width: 100%;
-  background-color: @table-background;
+  background-color: @table-bg;
   border-collapse: collapse;
   border-spacing: 0;
 }
@@ -48,7 +48,7 @@ th {
 
   // Nesting
   .table {
-    background-color: @body-background;
+    background-color: @body-bg;
   }
 }
 
@@ -153,7 +153,7 @@ th {
   > tbody {
     > tr:nth-child(odd) > td,
     > tr:nth-child(odd) > th {
-      background-color: @table-background-accent;
+      background-color: @table-bg-accent;
     }
   }
 }
@@ -168,7 +168,7 @@ th {
   > tbody {
     > tr:hover > td,
     > tr:hover > th {
-      background-color: @table-background-hover;
+      background-color: @table-bg-hover;
     }
   }
 }
