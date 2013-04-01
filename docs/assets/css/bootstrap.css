@@ -790,7 +790,7 @@ pre code {
   padding-left: 15px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 48em) {
   .container {
     max-width: 728px;
   }
@@ -943,13 +943,13 @@ pre code {
   }
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 62em) {
   .container {
     max-width: 940px;
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 75em) {
   .container {
     max-width: 1170px;
   }
