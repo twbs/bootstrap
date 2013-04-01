@@ -3250,7 +3250,7 @@ button.close {
 }
 
 .nav-justified {
-  max-height: 40px;
+  width: 100%;
 }
 
 .nav-justified > li {
@@ -3258,6 +3258,22 @@ button.close {
   float: none;
   width: 1%;
   text-align: center;
+}
+
+.nav-justified.nav-tabs {
+  border-bottom: 0;
+}
+
+.nav-justified.nav-tabs > li > a {
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-justified.nav-tabs > .active > a {
+  border-bottom-color: #ffffff;
+}
+
+.nav-justified > li > a {
+  margin-right: 0;
 }
 
 .nav > .disabled > a {

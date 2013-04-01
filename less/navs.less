@@ -107,14 +107,27 @@
 // -------------------------
 
 .nav-justified {
-  // Negative margin doesn't work, so we hack it
-  max-height: 40px;
+  width: 100%;
 }
 .nav-justified > li {
   float: none;
   display: table-cell;
   width: 1%;
   text-align: center;
+}
+// Move borders to anchors instead of bottom of list
+.nav-justified.nav-tabs {
+  border-bottom: 0;
+  > li > a {
+    border-bottom: 1px solid #ddd;
+  }
+  > .active > a {
+    border-bottom-color: @body-bg;
+  }
+}
+// Override margin from .nav-tabs
+.nav-justified > li > a {
+  margin-right: 0;
 }
 
 
