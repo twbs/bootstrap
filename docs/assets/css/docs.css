@@ -48,6 +48,16 @@ body {
   bottom: 15px;
 }
 
+/* Side notes for calling out things */
+.bs-docs-sidenote {
+  margin: 20px 0;
+  padding: 15px 30px 15px 15px;
+  background-color: #fcf2f2;
+  border-left: 5px solid #df7c7b;
+}
+.bs-docs-sidenote p:last-child {
+  margin-bottom: 0;
+}
 
 
 /* Sections
@@ -75,13 +85,13 @@ section > ul li {
 
 .bs-docs-section-header {
   padding-top: 60px;
-  color: #8a8a8a;
+  color: #b94a48;
+  border-bottom: 5px solid #b94a48;
 }
 .bs-docs-section-header h1 {
   font-size: 80px;
   font-size: 8rem;
   line-height: 1;
-  color: #b94a48;
 }
 
 /* Base class */
