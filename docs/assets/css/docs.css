@@ -21,6 +21,10 @@ body {
 .bs-docs-container {
   max-width: 860px;
 }
+.bs-docs-container .row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
 
 /*  */
 .bs-docs-footer {
@@ -215,15 +219,15 @@ section > ul li {
   left: 0;
   bottom: 0;
   width: 240px;
-  background-color: #f5f5f5;
   overflow-y: scroll;
   text-shadow: 0 1px 0 #fff;
-  box-shadow: inset -1px 0 0 #e5e5e5;
+  background-color: #f5f5f5;
+  border-right: 1px solid #e5e5e5;
 }
 
 /* Nav: first level */
 .bs-docs-sidebar > .nav {
-  margin: 0 0 25px;
+  margin: 0 -1px 25px 0;
 }
 .bs-docs-sidebar .nav > li > a {
   display: block;
