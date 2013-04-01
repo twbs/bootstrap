@@ -172,17 +172,17 @@
 
 // Navbar brand label
 @navbar-brand-color:               @navbar-link-color;
-@navbar-brand-color-hover:         darken(@navbar-link-color, 10%);
-@navbar-brand-bg-hover:            transparent;
+@navbar-brand-hover-color:         darken(@navbar-link-color, 10%);
+@navbar-brand-hover-bg:            transparent;
 
 // Navbar links
 @navbar-link-color:                #777;
-@navbar-link-color-hover:          #333;
-@navbar-link-bg-hover:             transparent;
-@navbar-link-color-active:         #555;
-@navbar-link-bg-active:            darken(@navbar-bg, 10%);
-@navbar-link-color-disabled:       #ccc;
-@navbar-link-bg-disabled:          transparent;
+@navbar-link-hover-color:          #333;
+@navbar-link-hover-bg:             transparent;
+@navbar-link-active-color:         #555;
+@navbar-link-active-bg:            darken(@navbar-bg, 10%);
+@navbar-link-disabled-color:       #ccc;
+@navbar-link-disabled-bg:          transparent;
 
 // Inverted navbar
 @navbar-inverse-text:                       @grayLight;
@@ -195,20 +195,19 @@
 
 // Inverted navbar links
 @navbar-inverse-link-color:                 @grayLight;
-@navbar-inverse-link-color-hover:           #fff;
-@navbar-inverse-link-bg-hover:              transparent;
-@navbar-inverse-link-color-active:          @navbar-inverse-link-color-hover;
-@navbar-inverse-link-bg-active:             darken(@navbar-inverse-bg, 10%);
-@navbar-inverse-link-color-disabled:        #444;
-@navbar-inverse-link-bg-disabled:           transparent;
+@navbar-inverse-link-hover-color:           #fff;
+@navbar-inverse-link-hover-bg:              transparent;
+@navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
+@navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%);
+@navbar-inverse-link-disabled-color:        #444;
+@navbar-inverse-link-disabled-bg:           transparent;
 
 // Inverted navbar search
 // Normal navbar needs no special styles or vars
-@navbar-inverse-search-background:          lighten(@navbar-inverse-bg, 25%);
-@navbar-inverse-search-background-focus:    #fff;
+@navbar-inverse-search-bg:                  lighten(@navbar-inverse-bg, 25%);
+@navbar-inverse-search-bg-focus:            #fff;
 @navbar-inverse-search-border:              @navbar-inverse-bg;
 @navbar-inverse-search-placeholder-color:   #ccc;
-
 
 
 // Pagination
