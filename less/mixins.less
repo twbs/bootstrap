@@ -407,11 +407,14 @@
 
 // Creates a wrapper for a series of columns
 .make-row() {
-  // Negative margin the row out to align the content of columns
-  margin-left:  (@grid-gutter-width / -2);
-  margin-right: (@grid-gutter-width / -2);
   // Then clear the floated columns
   .clearfix();
+
+  // Negative margin nested rows out to align the content of columns
+  .row {
+    margin-left:  (@grid-gutter-width / -2);
+    margin-right: (@grid-gutter-width / -2);
+  }
 }
 // Generate the columns
 .make-column(@columns) {
