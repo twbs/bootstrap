@@ -30,30 +30,6 @@ body {
   margin-top: 20px;
   margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
 }
-.navbar-wrapper .navbar {
-
-}
-
-/* Remove border and change up box shadow for more contrast */
-.navbar .navbar-inner {
-  border: 0;
-  -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
-     -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
-          box-shadow: 0 2px 10px rgba(0,0,0,.25);
-}
-
-/* Downsize the brand/project name a bit */
-.navbar .brand {
-  padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
-  font-size: 16px;
-  font-weight: bold;
-  text-shadow: 0 -1px 0 rgba(0,0,0,.5);
-}
-
-/* Navbar links: increase padding for taller navbar */
-.navbar .nav > li > a {
-  padding: 15px 20px;
-}
 
 
 /* CUSTOMIZE THE CAROUSEL
@@ -87,13 +63,7 @@ body {
   padding: 0 20px;
   margin-top: 200px;
 }
-.carousel-caption h1,
-.carousel-caption .lead {
-  margin: 0;
-  line-height: 1.25;
-  color: #fff;
-  text-shadow: 0 1px 1px rgba(0,0,0,.4);
-}
+
 .carousel-caption .btn {
   margin-top: 10px;
 }
@@ -157,10 +127,6 @@ body {
     margin-bottom: 0;
     width: auto;
   }
-  .navbar-inner {
-    border-radius: 0;
-    margin: -20px 0;
-  }
 
   .carousel .item {
     height: 500px;
@@ -185,10 +151,6 @@ body {
 
 
 @media (max-width: 767px) {
-
-  .navbar-inner {
-    margin: -20px;
-  }
 
   .carousel {
     margin-left: -20px;
@@ -275,6 +237,12 @@ body {
 <!-- Carousel
 ================================================== -->
 <div id="myCarousel" class="carousel slide">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
   <div class="carousel-inner">
     <div class="item active">
       <img src="../../assets/img/examples/slide-01.jpg" alt="">
