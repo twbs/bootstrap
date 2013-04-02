@@ -54,8 +54,8 @@
         if (trigger == 'click') {
           this.$element.on('click.' + this.type, this.options.selector, $.proxy(this.toggle, this))
         } else if (trigger != 'manual') {
-          eventIn = trigger == 'hover' ? 'mouseenter' : 'focus'
-          eventOut = trigger == 'hover' ? 'mouseleave' : 'blur'
+          eventIn = trigger == 'hover' ? 'mouseenter' : 'focus touchstart'
+          eventOut = trigger == 'hover' ? 'mouseleave' : 'blur touchend'
           this.$element.on(eventIn + '.' + this.type, this.options.selector, $.proxy(this.enter, this))
           this.$element.on(eventOut + '.' + this.type, this.options.selector, $.proxy(this.leave, this))
         }
@@ -64,6 +64,11 @@
       this.options.selector ?
         (this._options = $.extend({}, this.options, { trigger: 'manual', selector: '' })) :
         this.fixTitle()
+
+      //suppress iOS copy/pase menu appearing on touchhold events
+      this.$element.css("webkit-touch-callout", "none").css("webkit-user-select", "none");
+
+
     }
 
   , getOptions: function (options) {
