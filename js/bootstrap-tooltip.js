@@ -138,8 +138,8 @@
           .detach()
           .css({ top: 0, left: 0, display: 'block' })
 
-        container = this.options.container === '' ? '' : $( this.options.container )
-        container.length ? $tip.appendTo( container ) : $tip.insertAfter( this.$element )
+        container = this.options.container === '' ? '' : $(this.options.container)
+        container.length ? $tip.appendTo(container) : $tip.insertAfter(this.$element)
 
         pos = this.getPosition()
 
@@ -215,7 +215,6 @@
       } else {
         this.replaceArrow(actualHeight - height, actualHeight, 'top')
       }
-
       if (replace) $tip.offset(offset)
     }
 
@@ -294,7 +293,12 @@
     }
 
   , tip: function () {
-      return this.$tip = this.$tip || $(this.options.template)
+      this.$tip = this.$tip || $(this.options.template)
+      if (this.options.cssClass) {
+        this.$tip.addClass(this.options.cssClass)
+      }
+
+      return this.$tip;
     }
 
   , arrow: function(){
