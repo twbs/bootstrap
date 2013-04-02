@@ -222,12 +222,12 @@ section > ul li {
   overflow-y: scroll;
   text-shadow: 0 1px 0 #fff;
   background-color: #f5f5f5;
-  border-right: 1px solid #e5e5e5;
+  box-shadow: inset -1px 0 0 #e5e5e5;
 }
 
 /* Nav: first level */
 .bs-docs-sidebar > .nav {
-  margin: 0 -1px 25px 0;
+  margin: 0 0 25px 0;
 }
 .bs-docs-sidebar .nav > li > a {
   display: block;
