@@ -3587,13 +3587,13 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h2>Inverted variation</h2>
     <p>Modify the look of the navbar by adding <code>.navbar-inverse</code>.</p>
     <div class="bs-docs-example">
-      <div class="navbar navbar-inverse" style="position: static;">
+      <div class="navbar navbar-inverse">
         <div class="container">
-          <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </a>
+          </button>
           <a class="navbar-brand" href="#">Title</a>
           <div class="nav-collapse collapse navbar-inverse-collapse">
             <ul class="nav">
@@ -3631,8 +3631,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
               </li>
             </ul>
           </div><!-- /.nav-collapse -->
-        </div>
-      </div><!-- /navbar -->
+        </div><!-- /.container -->
+      </div><!-- /.navbar -->
     </div><!-- /example -->
 {% highlight html linenos %}
 <div class="navbar navbar-inverse">
