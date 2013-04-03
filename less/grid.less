@@ -12,12 +12,18 @@
 .row {
   .make-row();
 }
-[class*="col-span-"] {
+[class*="col-span-"],
+[class*="col-small-"] {
   position: relative;
   min-height: 1px;
   padding-left:  (@grid-gutter-width / 2);
   padding-right: (@grid-gutter-width / 2);
 }
+
+[class*="col-small-"] {
+  float: left;
+}
+.generate-small-grid-columns(@grid-columns);
 
 // Responsive: Tablets and up
 @media screen and (min-width: 768px) {
@@ -25,7 +31,9 @@
     max-width: 728px;
   }
   // Generate the grid columns and offsets
-  [class*="col-span-"] { float: left; }
+  [class*="col-span-"] {
+    float: left;
+  }
   .generate-grid-columns(@grid-columns);
 }
 

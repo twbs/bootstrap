@@ -782,11 +782,64 @@ pre code {
   margin-left: -15px;
 }
 
-[class*="col-span-"] {
+[class*="col-span-"],
+[class*="col-small-"] {
   position: relative;
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+}
+
+[class*="col-small-"] {
+  float: left;
+}
+
+.col-small-span-12 {
+  width: 100%;
+}
+
+.col-small-span-11 {
+  width: 91.66666666666666%;
+}
+
+.col-small-span-10 {
+  width: 83.33333333333334%;
+}
+
+.col-small-span-9 {
+  width: 75%;
+}
+
+.col-small-span-8 {
+  width: 66.66666666666666%;
+}
+
+.col-small-span-7 {
+  width: 58.333333333333336%;
+}
+
+.col-small-span-6 {
+  width: 50%;
+}
+
+.col-small-span-5 {
+  width: 41.66666666666667%;
+}
+
+.col-small-span-4 {
+  width: 33.33333333333333%;
+}
+
+.col-small-span-3 {
+  width: 25%;
+}
+
+.col-small-span-2 {
+  width: 16.666666666666664%;
+}
+
+.col-small-span-1 {
+  width: 8.333333333333332%;
 }
 
 @media screen and (min-width: 768px) {
@@ -5161,6 +5214,8 @@ a.list-group-item.active > .badge,
     font-size: 30px;
   }
   .carousel-caption {
+    right: 20%;
+    left: 20%;
     padding-bottom: 30px;
   }
 }

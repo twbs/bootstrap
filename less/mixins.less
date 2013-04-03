@@ -501,6 +501,24 @@
   .col-pull-X(@grid-columns);
 }
 
+// Small device grid
+.generate-small-grid-columns(@grid-columns) {
+
+  // Deterimine the classes
+  .col-small-span-X (@index) when (@index > 0) {
+    .col-small-span-@{index} { .col-small-span-(@index); }
+    .col-small-span-X((@index - 1));
+  }
+  .col-small-span-X(0) {}
+
+  // Specify widths
+  .col-small-span-(@columns) {
+    width: percentage((@columns / @grid-columns));
+  }
+
+  // Generate the CSS
+  .col-small-span-X(@grid-columns);
+}
 
 
 // Framework mixins

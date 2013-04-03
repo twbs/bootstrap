@@ -321,6 +321,8 @@ title: Bootstrap Documentation
     <p>For improved cross-browser rendering, we use <a href="http://necolas.github.com/normalize.css/" target="_blank">Normalize</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a>.</p>
   </div>
 
+
+
   <!-- Grid system
   ================================================== -->
   <div class="bs-docs-section" id="grid">
@@ -438,15 +440,30 @@ title: Bootstrap Documentation
 
     <h3 id="grid-column-ordering">Column ordering</h3>
     <p>Easily change the order of our built-in grid columns with <code>.push*</code> and <code>.pull*</code> modifier classes.</p>
-<div class="row show-grid">
-  <div class="col-span-9 col-push-3">9</div>
-  <div class="col-span-3 col-pull-9">3</div>
-</div>
+    <div class="row show-grid">
+      <div class="col-span-9 col-push-3">9</div>
+      <div class="col-span-3 col-pull-9">3</div>
+    </div>
 
 {% highlight html linenos %}
 <div class="row show-grid">
   <div class="col-span-9 col-push-3">9</div>
   <div class="col-span-3 col-pull-9">3</div>
+</div>
+{% endhighlight %}
+
+    <h3 id="grid-small">Small device grid</h3>
+    <p>Use the small device grid classes, like <code>.col-small-span-6</code>, to create columned layouts on phone and tablet devices (anything under 768px). Offsets, pushes, and pulls are not available with the small grid at this time.</p>
+    <div class="row show-grid">
+      <div class="col-span-4 col-small-span-6">4 cols, 6 small cols</div>
+      <div class="col-span-4 col-small-span-6">4 cols, 6 small cols</div>
+      <div class="col-span-4 col-small-span-12">4 cols, 12 small cols</div>
+    </div>
+{% highlight html linenos %}
+<div class="row">
+  <div class="col-span-4 col-small-span-6">4 cols, 6 small cols</div>
+  <div class="col-span-4 col-small-span-6">4 cols, 6 small cols</div>
+  <div class="col-span-4 col-small-span-12">4 cols, 12 small cols</div>
 </div>
 {% endhighlight %}
 
