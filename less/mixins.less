@@ -16,7 +16,7 @@
 //    that are clearfixed.
 // 2. The use of `table` rather than `block` is only necessary if using
 //    `:before` to contain the top-margins of child elements.
-.clear_float() {
+.clearfix() {
   &:before,
   &:after {
     content: " "; /* 1 */
@@ -283,7 +283,7 @@
     background-image: -o-linear-gradient(left, @startColor, @midColor @colorStop, @endColor);
     background-image: linear-gradient(to right, @startColor, @midColor @colorStop, @endColor);
     background-repeat: no-repeat;
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@startColor),argb(@endColor))); // IE9 and down, gets no color-stop at all for proper fallback
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@startColor),argb(@endColor))); // IE9 and down, gets no color-stop at all for proper fallback
   }
 
   .vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 50%, @endColor: #c3325f) {
@@ -302,6 +302,7 @@
     background-image: -webkit-radial-gradient(circle, @innerColor, @outerColor);
     background-image: -moz-radial-gradient(circle, @innerColor, @outerColor);
     background-image: -o-radial-gradient(circle, @innerColor, @outerColor);
+    background-image: radial-gradient(circle, @innerColor, @outerColor);
     background-repeat: no-repeat;
   }
   .striped(@color: #555, @angle: 45deg) {
@@ -346,7 +347,7 @@
 // -------------------------
 // Dividers (basically an hr) within dropdowns and nav lists
 .nav-divider(@top: #e5e5e5, @bottom: #fff) {
-  height: 1px;
+  height: 2px; // 1px for background, one for border
   margin: ((@line-height-base / 2) - 1) 0;
   overflow: hidden;
   background-color: @top;
@@ -400,18 +401,21 @@
 .container-fixed() {
   margin-right: auto;
   margin-left: auto;
-  .clear_float();
+  .clearfix();
 }
 
 // Make a grid
 
 // Creates a wrapper for a series of columns
 .make-row() {
-  // Negative margin the row out to align the content of columns
-  margin-left:  (@grid-gutter-width / -2);
-  margin-right: (@grid-gutter-width / -2);
   // Then clear the floated columns
-  .clear_float();
+  .clearfix();
+
+  // Negative margin nested rows out to align the content of columns
+  .row {
+    margin-left:  (@grid-gutter-width / -2);
+    margin-right: (@grid-gutter-width / -2);
+  }
 }
 // Generate the columns
 .make-column(@columns) {
@@ -497,6 +501,24 @@
   .col-pull-X(@grid-columns);
 }
 
+// Small device grid
+.generate-small-grid-columns(@grid-columns) {
+
+  // Deterimine the classes
+  .col-small-span-X (@index) when (@index > 0) {
+    .col-small-span-@{index} { .col-small-span-(@index); }
+    .col-small-span-X((@index - 1));
+  }
+  .col-small-span-X(0) {}
+
+  // Specify widths
+  .col-small-span-(@columns) {
+    width: percentage((@columns / @grid-columns));
+  }
+
+  // Generate the CSS
+  .col-small-span-X(@grid-columns);
+}
 
 
 // Framework mixins

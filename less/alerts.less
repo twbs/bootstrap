@@ -10,7 +10,7 @@
   padding: 8px 35px 8px 14px;
   margin-bottom: @line-height-base;
   color: @state-warning-text;
-  background-color: @state-warning-background;
+  background-color: @state-warning-bg;
   border: 1px solid @state-warning-border;
   border-radius: @border-radius-base;
 
@@ -45,7 +45,7 @@
 // -------------------------
 
 .alert-success {
-  background-color: @state-success-background;
+  background-color: @state-success-bg;
   border-color: @state-success-border;
   color: @state-success-text;
   hr {
@@ -58,19 +58,19 @@
 }
 .alert-danger,
 .alert-error {
-  background-color: @state-error-background;
-  border-color: @state-error-border;
-  color: @state-error-text;
+  background-color: @state-danger-bg;
+  border-color: @state-danger-border;
+  color: @state-danger-text;
   hr {
-    border-top-color: darken(@state-error-border, 5%);
+    border-top-color: darken(@state-danger-border, 5%);
   }
   > a,
   > p > a {
-    color: darken(@state-error-text, 10%);
+    color: darken(@state-danger-text, 10%);
   }
 }
 .alert-info {
-  background-color: @state-info-background;
+  background-color: @state-info-bg;
   border-color: @state-info-border;
   color: @state-info-text;
   hr {

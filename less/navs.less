@@ -11,7 +11,7 @@
   margin-bottom: 0;
   padding-left: 0; // Override default ul/ol
   list-style: none;
-  .clear_float();
+  .clearfix();
 }
 .nav > li {
   display: block;
@@ -65,7 +65,7 @@
 .nav-tabs > .active > a:hover,
 .nav-tabs > .active > a:focus {
   color: @gray;
-  background-color: @body-background;
+  background-color: @body-bg;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
   cursor: default;
@@ -91,7 +91,7 @@
 .nav-pills > .active > a:hover,
 .nav-pills > .active > a:focus {
   color: #fff;
-  background-color: @link-color;
+  background-color: @component-active-bg;
 }
 
 // Stacked pills
@@ -107,8 +107,7 @@
 // -------------------------
 
 .nav-justified {
-  // Negative margin doesn't work, so we hack it
-  max-height: 40px;
+  width: 100%;
 }
 .nav-justified > li {
   float: none;
@@ -116,29 +115,19 @@
   width: 1%;
   text-align: center;
 }
-
-// Lists
-// -------------------------
-
-.nav-list > li > a {
-  margin-bottom: -1px; // pull up the following link for a 1px border between
-  border: 1px solid #e5e5e5;
+// Move borders to anchors instead of bottom of list
+.nav-justified.nav-tabs {
+  border-bottom: 0;
+  > li > a {
+    border-bottom: 1px solid #ddd;
+  }
+  > .active > a {
+    border-bottom-color: @body-bg;
+  }
 }
-.nav-list > li:first-child > a {
-   border-top-left-radius: @border-radius-base;
-  border-top-right-radius: @border-radius-base;
-}
-.nav-list > li:last-child > a {
-   border-bottom-left-radius: @border-radius-base;
-  border-bottom-right-radius: @border-radius-base;
-}
-.nav-list > .active > a,
-.nav-list > .active > a:hover,
-.nav-list > .active > a:focus {
-  z-index: 2; // Bring active item forward so border sits on top of next element
-  color: #fff;
-  background-color: @link-color;
-  border-color: @link-color;
+// Override margin from .nav-tabs
+.nav-justified > li > a {
+  margin-right: 0;
 }
 
 
@@ -231,8 +220,8 @@
   margin-top: 8px;
 }
 .nav .dropdown-toggle:hover .caret {
-  border-top-color: @link-color-hover;
-  border-bottom-color: @link-color-hover;
+  border-top-color: @link-hover-color;
+  border-bottom-color: @link-hover-color;
 }
 
 // Active dropdown links

@@ -9,7 +9,7 @@
   background-color: @navbar-bg;
   border-radius: @border-radius-base;
   // Prevent floats from breaking the navbar
-  .clear_float();
+  .clearfix();
 }
 
 // Navbar nav links
@@ -28,20 +28,20 @@
   }
   .nav > li > a:hover,
   .nav > li > a:focus {
-    color: @navbar-link-color-hover;
-    background-color: @navbar-link-bg-hover;
+    color: @navbar-link-hover-color;
+    background-color: @navbar-link-hover-bg;
   }
   .nav > .active > a,
   .nav > .active > a:hover,
   .nav > .active > a:focus {
-    color: @navbar-link-color-active;
-    background-color: @navbar-link-bg-active;
+    color: @navbar-link-active-color;
+    background-color: @navbar-link-active-bg;
   }
   .nav > .disabled > a,
   .nav > .disabled > a:hover,
   .nav > .disabled > a:focus {
-    color: @navbar-link-color-disabled;
-    background-color: @navbar-link-bg-disabled;
+    color: @navbar-link-disabled-color;
+    background-color: @navbar-link-disabled-bg;
   }
 }
 
@@ -88,9 +88,9 @@
   text-align: center;
   &:hover,
   &:focus {
-    color: @navbar-brand-color-hover;
+    color: @navbar-brand-hover-color;
     text-decoration: none;
-    background-color: @navbar-brand-bg-hover;
+    background-color: @navbar-brand-hover-bg;
   }
 }
 
@@ -151,16 +151,16 @@
   // Caret should match text color on hover
   li.dropdown > a:hover .caret,
   li.dropdown > a:focus .caret {
-    border-top-color: @navbar-link-color-hover;
-    border-bottom-color: @navbar-link-color-hover;
+    border-top-color: @navbar-link-hover-color;
+    border-bottom-color: @navbar-link-hover-color;
   }
 
   // Remove background color from open dropdown
   li.dropdown.open > .dropdown-toggle,
   li.dropdown.active > .dropdown-toggle,
   li.dropdown.open.active > .dropdown-toggle {
-    background-color: @navbar-link-bg-active;
-    color: @navbar-link-color-active;
+    background-color: @navbar-link-active-bg;
+    color: @navbar-link-active-color;
   }
   li.dropdown > .dropdown-toggle .caret {
     border-top-color: @navbar-link-color;
@@ -169,8 +169,8 @@
   li.dropdown.open > .dropdown-toggle .caret,
   li.dropdown.active > .dropdown-toggle .caret,
   li.dropdown.open.active > .dropdown-toggle .caret {
-    border-top-color: @navbar-link-color-active;
-    border-bottom-color: @navbar-link-color-active;
+    border-top-color: @navbar-link-active-color;
+    border-bottom-color: @navbar-link-active-color;
   }
 }
 
@@ -207,20 +207,20 @@
   }
   .nav > li > a:hover,
   .nav > li > a:focus {
-    color: @navbar-inverse-link-color-hover;
-    background-color: @navbar-inverse-link-bg-hover;
+    color: @navbar-inverse-link-hover-color;
+    background-color: @navbar-inverse-link-hover-bg;
   }
   .nav > .active > a,
   .nav > .active > a:hover,
   .nav > .active > a:focus {
-    color: @navbar-inverse-link-color-active;
-    background-color: @navbar-inverse-link-bg-active;
+    color: @navbar-inverse-link-active-color;
+    background-color: @navbar-inverse-link-active-bg;
   }
   .nav > .disabled > a,
   .nav > .disabled > a:hover,
   .nav > .disabled > a:focus {
-    color: @navbar-inverse-link-color-disabled;
-    background-color: @navbar-inverse-link-bg-disabled;
+    color: @navbar-inverse-link-disabled-color;
+    background-color: @navbar-inverse-link-disabled-bg;
   }
 
   // Darken the responsive nav toggle
@@ -245,12 +245,12 @@
   .nav li.dropdown.open > .dropdown-toggle,
   .nav li.dropdown.active > .dropdown-toggle,
   .nav li.dropdown.open.active > .dropdown-toggle {
-    background-color: @navbar-inverse-link-bg-active;
-    color: @navbar-inverse-link-color-active;
+    background-color: @navbar-inverse-link-active-bg;
+    color: @navbar-inverse-link-active-color;
   }
   .nav li.dropdown > a:hover .caret {
-    border-top-color: @navbar-inverse-link-color-hover;
-    border-bottom-color: @navbar-inverse-link-color-hover;
+    border-top-color: @navbar-inverse-link-hover-color;
+    border-bottom-color: @navbar-inverse-link-hover-color;
   }
   .nav li.dropdown > .dropdown-toggle .caret {
     border-top-color: @navbar-inverse-link-color;
@@ -259,8 +259,8 @@
   .nav li.dropdown.open > .dropdown-toggle .caret,
   .nav li.dropdown.active > .dropdown-toggle .caret,
   .nav li.dropdown.open.active > .dropdown-toggle .caret {
-    border-top-color: @navbar-inverse-link-color-active;
-    border-bottom-color: @navbar-inverse-link-color-active;
+    border-top-color: @navbar-inverse-link-active-color;
+    border-bottom-color: @navbar-inverse-link-active-color;
   }
 }
 
@@ -283,7 +283,7 @@
   .navbar .nav {
     float: left;
     margin-top: 0; // undo top margin to make nav extend full height of navbar
-    .clear_float();
+    .clearfix();
 
     &.pull-right {
       float: right;
@@ -307,6 +307,16 @@
     border-right-color: lighten(@navbar-inverse-bg, 5%);
   }
 
+  .navbar-fixed-left {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .navbar-fixed-left .navbar-brand,
+  .navbar-fixed-left .nav,
+  .navbar-fixed-left .nav > li {
+    float: none;
+  }
+
   // Required to make the collapsing navbar work on regular desktops
   .navbar-toggle {
     position: relative;
@@ -328,7 +338,7 @@
 .navbar-link {
   color: @navbar-link-color;
   &:hover {
-    color: @navbar-link-color-hover;
+    color: @navbar-link-hover-color;
   }
 }
 
