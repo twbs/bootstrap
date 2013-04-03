@@ -2273,14 +2273,12 @@ table th[class*="span"],
   background-color: #c4e3f3;
 }
 
-@charset "UTF-8";
-
 @font-face {
   font-family: 'fontello-icon-fonts';
   font-style: normal;
   font-weight: normal;
-  src: url("../font/fontello-icon-fonts.eot?59837903");
-  src: url("../font/fontello-icon-fonts.eot?59837903#iefix") format('embedded-opentype'), url("../font/fontello-icon-fonts.woff?59837903") format('woff'), url("../font/fontello-icon-fonts.ttf?59837903") format('truetype'), url("../font/fontello-icon-fonts.svg?59837903#fontello-icon-fonts") format('svg');
+  src: url("../font/fontello-icon-fonts.eot?76260559");
+  src: url("../font/fontello-icon-fonts.eot?76260559#iefix") format('embedded-opentype'), url("../font/fontello-icon-fonts.woff?76260559") format('woff'), url("../font/fontello-icon-fonts.ttf?76260559") format('truetype'), url("../font/fontello-icon-fonts.svg?76260559#fontello-icon-fonts") format('svg');
 }
 
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
@@ -2291,7 +2289,7 @@ table th[class*="span"],
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello-icon-fonts';
-    src: url('../font/fontello-icon-fonts.svg?59837903#fontello-icon-fonts') format('svg');
+    src: url('../font/fontello-icon-fonts.svg?76260559#fontello-icon-fonts') format('svg');
   }
 }
 */
@@ -2308,7 +2306,9 @@ table th[class*="span"],
   line-height: 1em;
   text-align: center;
   text-decoration: inherit;
+  text-transform: none;
   speak: none;
+  font-variant: normal;
 }
 
 .icon-plus:before {
@@ -2478,6 +2478,18 @@ table th[class*="span"],
 }
 
 /* '' */
+
+.icon-up:before {
+  content: '\e0ae';
+}
+
+/* '' */
+
+.icon-down:before {
+  content: '\e0d5';
+}
+
+/* '' */
 
 .icon-remove-circle:before {
   content: '\e703';
@@ -2660,10 +2672,10 @@ table th[class*="span"],
 /* '' */
 
 .icon-chart-line:before {
-  content: '📈';
+  content: '\f4c8';
 }
 
-/* '\1f4c8' */
+/* '' */
 
 .icon-book:before {
   content: '\f4d5';
@@ -5240,7 +5252,9 @@ input[type="submit"].btn.btn-mini {
           background-clip: padding-box;
 }
 
-.popover.top {
+.popover.top,
+.popover.right-top,
+.popover.left-top {
   margin-top: -10px;
 }
 
@@ -5250,7 +5264,9 @@ input[type="submit"].btn.btn-mini {
   margin-left: 10px;
 }
 
-.popover.bottom {
+.popover.bottom,
+.popover.right-bottom,
+.popover.left-bottom {
   margin-top: 10px;
 }
 
@@ -5300,7 +5316,9 @@ input[type="submit"].btn.btn-mini {
   content: "";
 }
 
-.popover.top .arrow {
+.popover.top .arrow,
+.popover.right-top .arrow,
+.popover.left-top .arrow {
   bottom: -11px;
   left: 50%;
   margin-left: -11px;
@@ -5309,7 +5327,9 @@ input[type="submit"].btn.btn-mini {
   border-bottom-width: 0;
 }
 
-.popover.top .arrow:after {
+.popover.top .arrow:after,
+.popover.right-top .arrow:after,
+.popover.left-top .arrow:after {
   bottom: 1px;
   margin-left: -10px;
   border-top-color: #ffffff;
@@ -5335,7 +5355,9 @@ input[type="submit"].btn.btn-mini {
   border-left-width: 0;
 }
 
-.popover.bottom .arrow {
+.popover.bottom .arrow,
+.popover.right-bottom .arrow,
+.popover.left-bottom .arrow {
   top: -11px;
   left: 50%;
   margin-left: -11px;
@@ -5344,7 +5366,9 @@ input[type="submit"].btn.btn-mini {
   border-top-width: 0;
 }
 
-.popover.bottom .arrow:after {
+.popover.bottom .arrow:after,
+.popover.right-bottom .arrow:after,
+.popover.left-bottom .arrow:after {
   top: 1px;
   margin-left: -10px;
   border-bottom-color: #ffffff;
@@ -5383,6 +5407,17 @@ input[type="submit"].btn.btn-mini {
 .popover.top-right .arrow,
 .popover.top-left .arrow {
   top: 15px;
+}
+
+.popover.right-bottom .arrow,
+.popover.right-top .arrow {
+  left: 15px;
+}
+
+.popover.left-bottom .arrow,
+.popover.left-top .arrow {
+  right: 4px;
+  left: auto;
 }
 
 .thumbnails {

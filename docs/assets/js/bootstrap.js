@@ -1186,8 +1186,8 @@
           .detach()
           .css({ top: 0, left: 0, display: 'block' })
 
-        container = this.options.container === '' ? '' : $( this.options.container )
-        container.length ? $tip.appendTo( container ) : $tip.insertAfter( this.$element )
+        container = this.options.container === '' ? '' : $(this.options.container)
+        container.length ? $tip.appendTo(container) : $tip.insertAfter(this.$element)
 
         pos = this.getPosition()
 
@@ -1218,6 +1218,18 @@
             break
           case 'top-right':
             tp = {top: pos.top, left: pos.left + pos.width}
+            break
+          case 'right-bottom':
+            tp = { top: pos.top + pos.height, left: pos.left }
+            break
+          case 'right-top':
+            tp = { top: pos.top - actualHeight, left: pos.left }
+            break
+          case 'left-bottom':
+            tp = { top: pos.top + pos.height, left: pos.right - actualWidth }
+            break
+          case 'left-top':
+            tp = { top: pos.top - actualHeight, left: pos.right - actualWidth }
             break
         }
 
@@ -1263,7 +1275,6 @@
       } else {
         this.replaceArrow(actualHeight - height, actualHeight, 'top')
       }
-
       if (replace) $tip.offset(offset)
     }
 
@@ -1342,7 +1353,12 @@
     }
 
   , tip: function () {
-      return this.$tip = this.$tip || $(this.options.template)
+      this.$tip = this.$tip || $(this.options.template)
+      if (this.options.cssClass) {
+        this.$tip.addClass(this.options.cssClass)
+      }
+
+      return this.$tip;
     }
 
   , arrow: function(){
@@ -1488,6 +1504,9 @@
   , tip: function () {
       if (!this.$tip) {
         this.$tip = $(this.options.template)
+        if (this.options.cssClass) {
+          this.$tip.addClass(this.options.cssClass)
+        }
       }
       return this.$tip
     }

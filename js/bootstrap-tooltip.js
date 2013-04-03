@@ -171,6 +171,18 @@
           case 'top-right':
             tp = {top: pos.top, left: pos.left + pos.width}
             break
+          case 'right-bottom':
+            tp = { top: pos.top + pos.height, left: pos.left }
+            break
+          case 'right-top':
+            tp = { top: pos.top - actualHeight, left: pos.left }
+            break
+          case 'left-bottom':
+            tp = { top: pos.top + pos.height, left: pos.right - actualWidth }
+            break
+          case 'left-top':
+            tp = { top: pos.top - actualHeight, left: pos.right - actualWidth }
+            break
         }
 
         this.applyPlacement(tp, placement)
