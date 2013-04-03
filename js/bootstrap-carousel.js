@@ -56,7 +56,7 @@
       var activeIndex = this.getActiveIndex()
         , that = this
 
-      if (pos > (this.$items.length - 1) || pos < 0) return
+      if (pos > (this.$items.length - 1) || pos < 0) return this
 
       if (this.sliding) {
         return this.$element.one('slid', function () {
