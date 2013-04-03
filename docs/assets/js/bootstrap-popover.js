@@ -67,6 +67,9 @@
   , tip: function () {
       if (!this.$tip) {
         this.$tip = $(this.options.template)
+        if (this.options.cssClass) {
+          this.$tip.addClass(this.options.cssClass)
+        }
       }
       return this.$tip
     }
