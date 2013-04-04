@@ -39,7 +39,7 @@
             ,  'OTransition'      : 'oTransitionEnd'
             ,  'msTransition'     : 'MSTransitionEnd'
             ,  'transition'       : 'transitionend'
-          },
+            }
           , name
 
         for (name in transEndEventNames){
