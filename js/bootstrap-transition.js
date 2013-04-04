@@ -33,12 +33,13 @@
       var transitionEnd = (function () {
 
         var el = document.createElement('bootstrap')
-          , transEndEventNames = {
-               'WebkitTransition' : 'webkitTransitionEnd'
-            ,  'MozTransition'    : 'transitionend'
-            ,  'OTransition'      : 'oTransitionEnd otransitionend'
-            ,  'transition'       : 'transitionend'
-            }
+          , var transEndEventNames = {
+              'WebkitTransition' : 'webkitTransitionEnd',
+              'MozTransition'    : 'transitionend',
+              'OTransition'      : 'oTransitionEnd',
+              'msTransition'     : 'MSTransitionEnd',
+              'transition'       : 'transitionend'
+          },
           , name
 
         for (name in transEndEventNames){
@@ -46,10 +47,10 @@
             return transEndEventNames[name]
           }
         }
-
+        return false;
       }())
 
-      return transitionEnd && {
+      return {
         end: transitionEnd
       }
 
