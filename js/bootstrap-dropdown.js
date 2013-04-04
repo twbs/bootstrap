@@ -52,6 +52,10 @@
       clearMenus()
 
       if (!isActive) {
+        $this.trigger('dropmenu.dropdown', [{
+          parent: $parent,
+          trigger: $this
+        }])
         $parent.toggleClass('open')
       }
 
