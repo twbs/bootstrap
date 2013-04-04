@@ -34,9 +34,10 @@
 
         var el = document.createElement('bootstrap')
           , transEndEventNames = {
-               'WebkitTransition' : 'webkitTransitionEnd'
+              'WebkitTransition' : 'webkitTransitionEnd'
             ,  'MozTransition'    : 'transitionend'
-            ,  'OTransition'      : 'oTransitionEnd otransitionend'
+            ,  'OTransition'      : 'oTransitionEnd'
+            ,  'msTransition'     : 'MSTransitionEnd'
             ,  'transition'       : 'transitionend'
             }
           , name
@@ -46,10 +47,10 @@
             return transEndEventNames[name]
           }
         }
-
+        return false;
       }())
 
-      return transitionEnd && {
+      return {
         end: transitionEnd
       }
 
