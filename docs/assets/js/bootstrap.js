@@ -217,6 +217,16 @@
     this.$element.toggleClass('active')
   }
 
+  Button.prototype.untoggle = function() {
+    var $parent = this.$element.closest('[data-toggle="buttons-radio"]')
+
+    $parent && $parent
+      .find('.active')
+      .removeClass('active')
+
+    this.$element.removeClass('active')
+  }
+
 
  /* BUTTON PLUGIN DEFINITION
   * ======================== */
@@ -230,6 +240,7 @@
         , options = typeof option == 'object' && option
       if (!data) $this.data('button', (data = new Button(this, options)))
       if (option == 'toggle') data.toggle()
+      if (option == 'untoggle') data.untoggle()
       else if (option) data.setState(option)
     })
   }

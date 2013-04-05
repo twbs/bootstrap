@@ -57,6 +57,13 @@ $(function () {
         ok(btn.hasClass('active'), 'btn has class active')
       })
 
+      test("should untoggle", function() {
+        var btn = $('<button class="btn active">mdo</button>')
+        ok(btn.hasClass('active'), 'btn should have active class initially')
+        btn.button('untoggle')
+        ok(!btn.hasClass('active'), 'btn does not have active class')
+      })
+
       test("should toggle active when btn children are clicked", function () {
         var btn = $('<button class="btn" data-toggle="button">mdo</button>')
           , inner = $('<i></i>')
