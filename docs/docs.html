@@ -69,7 +69,6 @@ title: Bootstrap Documentation
 {% endhighlight %}
 
     <p>This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>).</p>
-    <p>This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). The image files are compressed using <a href="http://imageoptim.com/">ImageOptim</a>, a Mac app for compressing PNGs.</p>
     <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included.</p>
   </div>
 
@@ -1859,7 +1858,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3 id="forms-control-sizes">Control sizing</h3>
-    <p>Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using <code>.span*</code> classes.</p>
+    <p>Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using <code>.col-span-*</code> classes.</p>
 
     <h4>Relative sizing</h4>
     <p>Create larger or smaller form controls that match button sizes.</p>
@@ -1877,11 +1876,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h4>Column sizing</h4>
-    <p>Use <code>.col-span-12</code> to <code>.col-span-12</code> for setting widths on inputs that match Bootstrap's grid system.</p>
+    <p>Use <code>.col-span-1</code> to <code>.col-span-12</code> for setting widths on inputs that match Bootstrap's grid system.</p>
     <form class="bs-docs-example" style="padding-bottom: 15px;">
       <div class="controls docs-input-sizes">
         <input class="col-span-1" type="text" placeholder=".col-span-1">
-        <input class="span2" type="text" placeholder=".span2">
+        <input class="col-span-2" type="text" placeholder=".col-span-2">
         <input class="col-span-3" type="text" placeholder=".col-span-3">
         <select class="col-span-1">
           <option>1</option>
@@ -1890,7 +1889,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           <option>4</option>
           <option>5</option>
         </select>
-        <select class="span2">
+        <select class="col-span-2">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -1908,12 +1907,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </form>
 {% highlight html linenos %}
 <input class="col-span-1" type="text" placeholder=".col-span-1">
-<input class="span2" type="text" placeholder=".span2">
+<input class="col-span-2" type="text" placeholder=".col-span-2">
 <input class="col-span-3" type="text" placeholder=".col-span-3">
 <select class="col-span-1">
   ...
 </select>
-<select class="span2">
+<select class="col-span-2">
   ...
 </select>
 <select class="col-span-3">
@@ -2632,7 +2631,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <div class="controls">
           <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-            <input class="span2" id="inputIcon" type="text">
+            <input class="col-span-2" id="inputIcon" type="text">
           </div>
         </div>
       </div>
@@ -2643,7 +2642,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <div class="controls">
     <div class="input-group">
       <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-      <input class="span2" id="inputIcon" type="text">
+      <input class="col-span-2" id="inputIcon" type="text">
     </div>
   </div>
 </div>
