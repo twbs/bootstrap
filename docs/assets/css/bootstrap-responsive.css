@@ -1005,6 +1005,9 @@
        -moz-border-radius: 3px;
             border-radius: 3px;
   }
+  .nav-collapse .dropdown-menu .active a {
+    color: #ffffff;
+  }
   .nav-collapse .btn {
     padding: 4px 10px 4px;
     font-weight: normal;
