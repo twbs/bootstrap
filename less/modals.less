@@ -93,3 +93,45 @@
     margin-left: 0;
   }
 }
+
+.modal.fluid {
+	position: fixed;
+	display: block;
+	top: 10%;
+	left: 10%;
+	bottom: 10%;
+	right: 10%;
+	overflow: hidden;
+	margin: 0 auto;  // override default positioning with negative margin
+	max-width: 600px;
+	max-height: none;
+
+	.modal-header {
+		position: relative;
+
+		a.close {
+			margin-top: 5px;
+		}
+	}
+	.modal-body {
+		position: absolute;
+		overflow-x: visible;
+		overflow-y: auto;
+		top: 49px;
+		left: 0;
+		bottom: 64px;
+		right: 0;
+		width: auto;
+		margin: 0;
+		padding: 15px;
+		max-width: none !important;  // override modal JS stupidity
+		max-height: none;
+	}
+	.modal-footer {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		padding: 15px;
+	}
+}
