@@ -1,5 +1,5 @@
 /* =============================================================
- * bootstrap-collapse.js v2.3.1
+ * bootstrap-collapse.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#collapse
  * =============================================================
  * Copyright 2012 Twitter, Inc.
@@ -61,21 +61,36 @@
       if (actives && actives.length) {
         hasData = actives.data('collapse')
         if (hasData && hasData.transitioning) return
-        actives.collapse('hide')
+        actives.collapse('hide', $.Event('show'))
+        if(hasData.defaultPrevented) {
+          hasData.defaultPrevented = 0
+          return
+        }
         hasData || actives.data('collapse', null)
       }
 
       this.$element[dimension](0)
       this.transition('addClass', $.Event('show'), 'shown')
+      if(this.defaultPrevented) {
+        this.$element[dimension]()
+        this.defaultPrevented = 0
+        return
+      }
       $.support.transition && this.$element[dimension](this.$element[0][scroll])
     }
 
-  , hide: function () {
+  , hide: function (isChained) {
       var dimension
-      if (this.transitioning || !this.$element.hasClass('in')) return
+      if (this.transitioning || !this.$element.hasClass('in') || this.defaultPrevented) return       
       dimension = this.dimension()
       this.reset(this.$element[dimension]())
       this.transition('removeClass', $.Event('hide'), 'hidden')
+      if(this.defaultPrevented) {
+        this.reset()
+        if(!isChained)
+          this.defaultPrevented = 0
+        return
+      }
       this.$element[dimension](0)
     }
 
@@ -102,7 +117,10 @@
 
       this.$element.trigger(startEvent)
 
-      if (startEvent.isDefaultPrevented()) return
+      if (startEvent.isDefaultPrevented()) {
+        this.defaultPrevented = 1
+        return
+      }
 
       this.transitioning = 1
 
@@ -125,13 +143,13 @@
 
   var old = $.fn.collapse
 
-  $.fn.collapse = function (option) {
+  $.fn.collapse = function (option, isChained) {
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('collapse')
         , options = $.extend({}, $.fn.collapse.defaults, $this.data(), typeof option == 'object' && option)
       if (!data) $this.data('collapse', (data = new Collapse(this, options)))
-      if (typeof option == 'string') data[option]()
+      if (typeof option == 'string') data[option](isChained)
     })
   }
 
