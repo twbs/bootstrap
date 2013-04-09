@@ -408,7 +408,7 @@ title: Bootstrap Documentation
 
 
     <h3 id="grid-nesting">Nesting columns</h3>
-    <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.span*</code> columns within an existing <code>.span*</code> column. Nested rows should include a set of columns that add up to 12.</p>
+    <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.col-span-*</code> columns within an existing <code>.col-span-*</code> column. Nested rows should include a set of columns that add up to 12.</p>
     <div class="row show-grid">
       <div class="col-span-9">
         Level 1: 9 columns
@@ -439,7 +439,7 @@ title: Bootstrap Documentation
 {% endhighlight %}
 
     <h3 id="grid-column-ordering">Column ordering</h3>
-    <p>Easily change the order of our built-in grid columns with <code>.push*</code> and <code>.pull*</code> modifier classes.</p>
+    <p>Easily change the order of our built-in grid columns with <code>.col-push-*</code> and <code>.col-pull-*</code> modifier classes.</p>
     <div class="row show-grid">
       <div class="col-span-9 col-push-3">9</div>
       <div class="col-span-3 col-pull-9">3</div>
@@ -1876,11 +1876,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h4>Column sizing</h4>
-    <p>Use <code>.col-span-12</code> to <code>.col-span-12</code> for setting widths on inputs that match Bootstrap's grid system.</p>
+    <p>Use <code>.col-span-1</code> to <code>.col-span-12</code> for setting widths on inputs that match Bootstrap's grid system.</p>
     <form class="bs-docs-example" style="padding-bottom: 15px;">
       <div class="controls docs-input-sizes">
         <input class="col-span-1" type="text" placeholder=".col-span-1">
-        <input class="span2" type="text" placeholder=".span2">
+        <input class="col-span-2" type="text" placeholder=".col-span-2">
         <input class="col-span-3" type="text" placeholder=".col-span-3">
         <select class="col-span-1">
           <option>1</option>
@@ -1889,7 +1889,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           <option>4</option>
           <option>5</option>
         </select>
-        <select class="span2">
+        <select class="col-span-2">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -1907,12 +1907,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </form>
 {% highlight html linenos %}
 <input class="col-span-1" type="text" placeholder=".col-span-1">
-<input class="span2" type="text" placeholder=".span2">
+<input class="col-span-2" type="text" placeholder=".col-span-2">
 <input class="col-span-3" type="text" placeholder=".col-span-3">
 <select class="col-span-1">
   ...
 </select>
-<select class="span2">
+<select class="col-span-2">
   ...
 </select>
 <select class="col-span-3">
@@ -1920,7 +1920,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </select>
 {% endhighlight %}
 
-    <p>If you need multiple inputs on the same line, wrap them in the standard grid markup (with <code>.row</code> and <code>.span*</code> classes). Each input should have it's own column and will expand to fill the available width automatically.</p>
+    <p>If you need multiple inputs on the same line, wrap them in the standard grid markup (with <code>.row</code> and <code>.col-span-*</code> classes). Each input should have it's own column and will expand to fill the available width automatically.</p>
     <form class="bs-docs-example" style="padding-bottom: 15px;">
       <div class="row">
         <div class="col-span-4">
