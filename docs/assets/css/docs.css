@@ -32,26 +32,6 @@ body {
   padding-right: 15px;
 }
 
-/* Back to top link */
-.bs-docs-top {
-  float: left;
-  padding: 7px 15px;
-  font-weight: 500;
-  color: #999;
-  background-color: #eee;
-  border-radius: 4px;
-}
-.bs-docs-top:hover {
-  color: #fff;
-  text-decoration: none;
-  background-color: #999;
-}
-.bs-docs-top.affix {
-  position: fixed;
-  right:  15px;
-  bottom: 15px;
-}
-
 /* Side notes for calling out things */
 .bs-docs-sidenote {
   margin: 20px 0;
@@ -91,11 +71,6 @@ section > ul li {
   padding-top: 60px;
   color: #b94a48;
   border-bottom: 5px solid #b94a48;
-}
-.bs-docs-section-header h1 {
-  font-size: 80px;
-  font-size: 8rem;
-  line-height: 1;
 }
 
 /* Base class */
@@ -727,6 +702,32 @@ input.focused {
 
 /* Tablets and up */
 @media screen and (min-width: 768px) {
+
+  /* Back to top link */
+  .bs-docs-top {
+    float: left;
+    padding: 7px 15px;
+    font-weight: 500;
+    color: #999;
+    background-color: #eee;
+    border-radius: 4px;
+  }
+  .bs-docs-top:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #999;
+  }
+  .bs-docs-top.affix {
+    position: fixed;
+    right:  15px;
+    bottom: 15px;
+  }
+
+  .bs-docs-section-header h1 {
+    font-size: 80px;
+    font-size: 8rem;
+    line-height: 1;
+  }
 
   /* Account for fixed navbar (which is static to start) */
   .bs-docs-docs {
