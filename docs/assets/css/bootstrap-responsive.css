@@ -1030,6 +1030,7 @@
   .navbar-inverse .nav-collapse .dropdown-menu a:hover,
   .navbar-inverse .nav-collapse .dropdown-menu a:focus {
     background-color: #111111;
+    color: #eeeeee;
   }
   .nav-collapse.in .btn-group {
     padding: 0;
