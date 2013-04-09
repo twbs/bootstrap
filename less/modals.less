@@ -96,42 +96,66 @@
 
 .modal.fluid {
 	position: fixed;
-	display: block;
 	top: 10%;
 	left: 10%;
 	bottom: 10%;
 	right: 10%;
-	overflow: hidden;
-	margin: 0 auto;  // override default positioning with negative margin
+
+	width: 80%;
+	height: 80%;
+	padding: 0px;
+	border: none;
+
 	max-width: 600px;
-	max-height: none;
+	max-height: 80%;
+	min-width: 100px;
 
-	.modal-header {
+	margin: 0 auto;  // override default positioning with negative margin
+	background: transparent;
+	border-radius: 0;
+	box-shadow: none;
+
+	.close {
+		margin-top: 5px;
+	}
+	.modal-content {
 		position: relative;
+		overflow: auto;
+		height: 70%;
+		padding: 0;
+		background-color: @white;
+		border-radius: 0;
+		box-shadow: rgba(0, 0, 0, 0.298039) 0px 3px 7px 0px;
 
-		a.close {
-			margin-top: 5px;
+		&:first-child {
+			border-top-left-radius: 6px;
+			border-top-right-radius: 6px;
+		}
+		&:last-child {
+			border-bottom-left-radius: 6px;
+			border-bottom-right-radius: 6px;
 		}
 	}
-	.modal-body {
-		position: absolute;
-		overflow-x: visible;
-		overflow-y: auto;
-		top: 49px;
+	.modal-header {
+		position: relative;
+		top: 0;
 		left: 0;
-		bottom: 64px;
 		right: 0;
-		width: auto;
-		margin: 0;
-		padding: 15px;
-		max-width: none !important;  // override modal JS stupidity
-		max-height: none;
+		background: @white;
+		border-top-left-radius: 6px;
+		border-top-right-radius: 6px;
+		box-shadow: rgba(0, 0, 0, 0.298039) 0px 3px 7px 0px;
+	}
+	.modal-body {
+		position: relative;
+		overflow: visible;
+		background-color: @white;
 	}
 	.modal-footer {
-		position: absolute;
+		position: relative;
 		left: 0;
 		bottom: 0;
 		right: 0;
-		padding: 15px;
+		box-shadow: rgba(0, 0, 0, 0.298039) 0px 3px 7px 0px;
 	}
-}
+}	
