@@ -118,24 +118,6 @@
 	.close {
 		margin-top: 5px;
 	}
-	.modal-content {
-		position: relative;
-		overflow: auto;
-		height: 70%;
-		padding: 0;
-		background-color: @white;
-		border-radius: 0;
-		box-shadow: rgba(0, 0, 0, 0.298039) 0px 3px 7px 0px;
-
-		&:first-child {
-			border-top-left-radius: 6px;
-			border-top-right-radius: 6px;
-		}
-		&:last-child {
-			border-bottom-left-radius: 6px;
-			border-bottom-right-radius: 6px;
-		}
-	}
 	.modal-header {
 		position: relative;
 		top: 0;
@@ -144,7 +126,7 @@
 		background: @white;
 		border-top-left-radius: 6px;
 		border-top-right-radius: 6px;
-		box-shadow: rgba(0, 0, 0, 0.298039) 0px 3px 7px 0px;
+		.box-shadow(0 3px 7px rgba(0,0,0,0.3));
 	}
 	.modal-body {
 		position: relative;
@@ -156,6 +138,25 @@
 		left: 0;
 		bottom: 0;
 		right: 0;
-		box-shadow: rgba(0, 0, 0, 0.298039) 0px 3px 7px 0px;
+		.box-shadow(0 3px 7px rgba(0,0,0,0.3));
 	}
-}	
+	.modal-body {
+		position: relative;
+		overflow: auto;
+		height: auto;
+		max-height: 70%;
+		padding: 15px;
+		background-color: @white;
+		border-radius: 0;
+		.box-shadow(0 3px 7px rgba(0,0,0,0.3));
+
+		&:first-child {
+			border-top-left-radius: 6px;
+			border-top-right-radius: 6px;
+		}
+		&:last-child {
+			border-bottom-left-radius: 6px;
+			border-bottom-right-radius: 6px;
+		}
+	}
+}
