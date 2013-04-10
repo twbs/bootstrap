@@ -131,13 +131,12 @@
 @dropdown-divider-top:           #e5e5e5;
 @dropdown-divider-bottom:        #fff;
 
-@dropdown-link-color:            @grayDark;
-@dropdown-link-hover-color:      #fff;
-@dropdown-link-hover-bg:         @dropdown-link-active-bg;
-
 @dropdown-link-active-color:     #fff;
 @dropdown-link-active-bg:        @component-active-bg;
 
+@dropdown-link-color:            @grayDark;
+@dropdown-link-hover-color:      #fff;
+@dropdown-link-hover-bg:         @dropdown-link-active-bg;
 
 
 // COMPONENT VARIABLES
@@ -170,11 +169,6 @@
 @navbar-text:                      #777;
 @navbar-bg:                        #eee;
 
-// Navbar brand label
-@navbar-brand-color:               @navbar-link-color;
-@navbar-brand-hover-color:         darken(@navbar-link-color, 10%);
-@navbar-brand-hover-bg:            transparent;
-
 // Navbar links
 @navbar-link-color:                #777;
 @navbar-link-hover-color:          #333;
@@ -184,14 +178,14 @@
 @navbar-link-disabled-color:       #ccc;
 @navbar-link-disabled-bg:          transparent;
 
+// Navbar brand label
+@navbar-brand-color:               @navbar-link-color;
+@navbar-brand-hover-color:         darken(@navbar-link-color, 10%);
+@navbar-brand-hover-bg:            transparent;
+
 // Inverted navbar
 @navbar-inverse-text:                       @grayLight;
 @navbar-inverse-bg:                         #222;
-
-// Inverted navbar brand label
-@navbar-inverse-brand-color:                @navbar-inverse-link-color;
-@navbar-inverse-brand-hover-color:          #fff;
-@navbar-inverse-brand-hover-bg:             transparent;
 
 // Inverted navbar links
 @navbar-inverse-link-color:                 @grayLight;
@@ -201,6 +195,11 @@
 @navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%);
 @navbar-inverse-link-disabled-color:        #444;
 @navbar-inverse-link-disabled-bg:           transparent;
+
+// Inverted navbar brand label
+@navbar-inverse-brand-color:                @navbar-inverse-link-color;
+@navbar-inverse-brand-hover-color:          #fff;
+@navbar-inverse-brand-hover-bg:             transparent;
 
 // Inverted navbar search
 // Normal navbar needs no special styles or vars
