@@ -93,3 +93,70 @@
     margin-left: 0;
   }
 }
+
+.modal.fluid {
+	position: fixed;
+	top: 10%;
+	left: 10%;
+	bottom: 10%;
+	right: 10%;
+
+	width: 80%;
+	height: 80%;
+	padding: 0px;
+	border: none;
+
+	max-width: 600px;
+	max-height: 80%;
+	min-width: 100px;
+
+	margin: 0 auto;  // override default positioning with negative margin
+	background: transparent;
+	border-radius: 0;
+	box-shadow: none;
+
+	.close {
+		margin-top: 5px;
+	}
+	.modal-header {
+		position: relative;
+		top: 0;
+		left: 0;
+		right: 0;
+		background: @white;
+		border-top-left-radius: 6px;
+		border-top-right-radius: 6px;
+		.box-shadow(0 3px 7px rgba(0,0,0,0.3));
+	}
+	.modal-body {
+		position: relative;
+		overflow: visible;
+		background-color: @white;
+	}
+	.modal-footer {
+		position: relative;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		.box-shadow(0 3px 7px rgba(0,0,0,0.3));
+	}
+	.modal-body {
+		position: relative;
+		overflow: auto;
+		height: auto;
+		max-height: 70%;
+		padding: 15px;
+		background-color: @white;
+		border-radius: 0;
+		.box-shadow(0 3px 7px rgba(0,0,0,0.3));
+
+		&:first-child {
+			border-top-left-radius: 6px;
+			border-top-right-radius: 6px;
+		}
+		&:last-child {
+			border-bottom-left-radius: 6px;
+			border-bottom-right-radius: 6px;
+		}
+	}
+}
