@@ -27,18 +27,21 @@
   * ====================== */
 
   var Affix = function (element, options) {
+    this.$element = $(element)
+    $.fn.affix.defaults.affixWindow = (this.$element.closest('[data-affix-window]').length) ? this.$element.closest('[data-affix-window]')[0] : window
+    $.fn.affix.defaults.affixDocument = (this.$element.closest('[data-affix-document]').length) ? this.$element.closest('[data-affix-document]')[0] : document
     this.options = $.extend({}, $.fn.affix.defaults, options)
-    this.$window = $(window)
+    this.$window = $(this.options.affixWindow)
       .on('scroll.affix.data-api', $.proxy(this.checkPosition, this))
       .on('click.affix.data-api',  $.proxy(function () { setTimeout($.proxy(this.checkPosition, this), 1) }, this))
-    this.$element = $(element)
+    this.$document = $(this.options.affixDocument)
     this.checkPosition()
   }
 
   Affix.prototype.checkPosition = function () {
     if (!this.$element.is(':visible')) return
 
-    var scrollHeight = $(document).height()
+    var scrollHeight = this.$document.height()
       , scrollTop = this.$window.scrollTop()
       , position = this.$element.offset()
       , offset = this.options.offset
