@@ -385,7 +385,7 @@ title: Bootstrap Documentation
 {% endhighlight %}
 
     <h3 id="grid-offsetting">Offsetting columns</h3>
-    <p>Move columns to the right using <code>.col-offset-*</code> classes. Each class increases the left margin of a column by a whole column. For example, <code>.col-offset-4</code> moves <code>.col-span-4</code> over four columns.</p>
+    <p>Move columns to the right using <code>.col-offset-*</code> classes. These classes increase the left margin of a column by <code>*</code> columns. For example, <code>.col-offset-4</code> moves <code>.col-span-4</code> over four columns.</p>
     <div class="bs-docs-grid">
       <div class="row show-grid">
         <div class="col-span-4">4</div>
@@ -396,13 +396,17 @@ title: Bootstrap Documentation
         <div class="col-span-3 col-offset-3">3 offset 3</div>
       </div><!-- /row -->
       <div class="row show-grid">
-        <div class="col-span-6 col-offset-6">6 offset 6</div>
+        <div class="col-span-6 col-offset-3">6 offset 3</div>
       </div><!-- /row -->
     </div>
 {% highlight html linenos %}
 <div class="row">
   <div class="col-span-4">...</div>
   <div class="col-span-4 col-offset-4">...</div>
+</div>
+...
+<div class="row">
+  <div class="col-span-6 col-offset-3">...</div>
 </div>
 {% endhighlight %}
 
@@ -1948,15 +1952,6 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 {% endhighlight %}
 
-    <h3>Uneditable inputs</h3>
-    <p>Present data in a form that's not editable without using actual form markup.</p>
-    <form class="bs-docs-example">
-      <span class="input-xlarge uneditable-input">Some value here</span>
-    </form>
-{% highlight html linenos %}
-<span class="uneditable-input">Some value here</span>
-{% endhighlight %}
-
     <h3 id="forms-actions">Form actions</h3>
     <p>End a form with a group of actions (buttons). When placed within a <code>.form-horizontal</code>, the buttons will automatically indent to line up with the form controls.</p>
     <form class="bs-docs-example">
@@ -2038,9 +2033,6 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <button type="button" class="btn btn-link">Link</button>
 {% endhighlight %}
 
-    <h4>Cross browser compatibility</h4>
-    <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot fix.</p>
-
 
     <h2 id="buttons-sizes">Button sizes</h2>
     <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code> for additional sizes.</p>
@@ -2100,13 +2092,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h3>Button element</h3>
     <p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
     <p class="bs-docs-example">
-      <button type="button" class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
+      <button type="button" class="btn btn-large btn-primary" disabled="disabled">Primary button</button>
       <button type="button" class="btn btn-large" disabled="disabled">Button</button>
     </p>
 {% highlight html linenos %}
-<button type="button" class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
+<button type="button" class="btn btn-large btn-primary" disabled="disabled">Primary button</button>
 <button type="button" class="btn btn-large" disabled="disabled">Button</button>
 {% endhighlight %}
+
+    <div class="bs-docs-sidenote">
+      <p><strong>Cross-browser compatibility</strong></p>
+      <p>If you add the <code>disabled</code> attribute to a <code>&lt;button&gt;</code>, Internet Explorer 9 and below will render text gray with a nasty text-shadow that we cannot fix.</p>
+    </div>
 
     <h3>Anchor element</h3>
     <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
@@ -2137,7 +2134,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <input class="btn" type="button" value="Input">
 <input class="btn" type="submit" value="Submit">
 {% endhighlight %}
-    <p>As a best practice, <strong>we highly recommend matching using the <code>&lt;button&gt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
+    <p>As a best practice, <strong>we highly recommend using the <code>&lt;button&gt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
 
   </div>
 
@@ -3996,7 +3993,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h2 id="type-components-page-header">Page header</h2>
-    <p>A simple shell for an <code>h1</code> to appropriately space out and segment sections of content on a page. It can utilize the <code>h1</code>'s default <code>small</code>, element as well most other components (with additional styles).</p>
+    <p>A simple shell for an <code>h1</code> to appropriately space out and segment sections of content on a page. It can utilize the <code>h1</code>'s default <code>small</code> element as well as most other components (with additional styles).</p>
     <div class="bs-docs-example">
       <div class="page-header">
         <h1>Example page header <small>Subtext for header</small></h1>
@@ -4185,7 +4182,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
     <p class="lead">Provide up-to-date feedback on the progress of a workflow or action with simple yet flexible progress bars.</p>
 
-    <p>Progress bars use CSS3 transitions and animations to achieve some of their effects. These features are not supported in IE8-9 or older versions of Firefox. Internet Explorer 10 and below, as well as Opera 12, do not support animations.</p>
+    <div class="bs-docs-sidenote">
+      <p><strong>Cross-browser compatibility</strong></p>
+      <p>Progress bars use CSS3 transitions and animations to achieve some of their effects.</p>
+      <p>These features are not supported in Internet Explorer 9 and below or older versions of Firefox. Opera 12 does not support animations.</p>
+    </div>
 
     <h3 id="progress-basic">Basic</h3>
     <p>Default progress bar with a vertical gradient.</p>
@@ -4450,7 +4451,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3 id="list-group-chevrons">With chevrons</h3>
-    <p>Adding Glyphicon chevrons are automatically moved to the right.</p>
+    <p>Add Glyphicon chevrons that are automatically moved to the right.</p>
     <div class="bs-docs-example">
       <ul class="list-group">
         <li class="list-group-item">
@@ -4535,7 +4536,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3 id="list-group-linked">Linked list group</h3>
-    <p>Linkify list group items by using anchor tags instead of list items (that also means a parent <code>&lt;div&gt;</code> instead of an <code>&lt;ul&gt;</code>. No need for individual parents around each element.</p>
+    <p>Linkify list group items by using anchor tags instead of list items (that also means a parent <code>&lt;div&gt;</code> instead of an <code>&lt;ul&gt;</code>). No need for individual parents around each element.</p>
     <div class="bs-docs-example">
       <div class="list-group">
         <a href="#" class="list-group-item active">
@@ -4919,6 +4920,9 @@ $('#myModal').on('show', function (e) {
             <hr>
 
             <h4>Overflowing text to show optional scrollbar</h4>
+            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
             <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
             <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
