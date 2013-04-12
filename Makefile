@@ -88,8 +88,6 @@ bootstrap/css/*.css: less/*.less
 	mkdir -p bootstrap/css
 	recess --compile ${BOOTSTRAP_LESS} > bootstrap/css/bootstrap.css
 	recess --compress ${BOOTSTRAP_LESS} > bootstrap/css/bootstrap.min.css
-	recess --compile ${BOOTSTRAP_RESPONSIVE_LESS} > bootstrap/css/bootstrap-responsive.css
-	recess --compress ${BOOTSTRAP_RESPONSIVE_LESS} > bootstrap/css/bootstrap-responsive.min.css
 
 #
 # FONTS
