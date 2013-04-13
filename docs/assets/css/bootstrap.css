@@ -1226,6 +1226,12 @@ label {
   font-weight: bold;
 }
 
+input[type="search"] {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 select,
 textarea,
 input[type="text"],
