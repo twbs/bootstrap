@@ -39,6 +39,9 @@ body {
   background-color: #fcf2f2;
   border-left: 5px solid #df7c7b;
 }
+.bs-docs-sidenote h4 {
+  margin-top: 0;
+}
 .bs-docs-sidenote p:last-child {
   margin-bottom: 0;
 }
@@ -662,6 +665,7 @@ input.focused {
   margin-bottom: 0;
   background-color: transparent;
   border: 0;
+  white-space: nowrap;
 }
 .highlight pre code {
   font-size: inherit;

@@ -207,7 +207,7 @@ title: Bootstrap Documentation
     <p>Once you've downloaded and included Bootstrap's CSS into your templates, you can move on to customizing the included components. To do so, create a new stylesheet (LESS, if you like, or just plain CSS) to house your customizations.</p>
 
     <div class="bs-docs-sidenote">
-      <p><strong>Compiled or minified?</strong></p>
+      <h4>Compiled or minified?</h4>
       <p>Unless you plan on reading a good chunk of the compiled CSS, go with the minified. It's the same code, just compacted. Less bandwidth is good, especially in production environments.</p>
     </div>
 
@@ -261,7 +261,7 @@ title: Bootstrap Documentation
     <p>Going beyond light customizations and into visual overhauls is just as straightforward as the above custom button. For a site like <a href="http://yourkarma.com">Karma</a>, which uses Bootstrap as a CSS reset with heavy modifications, more extensive work is involved, but well worth it in the end.</p>
 
     <div class="bs-docs-sidenote">
-      <p><strong>Alternate customization methods</strong></p>
+      <h4>Alternate customization methods</h4>
       <p>While not recommended for folks new to Bootstrap, you may use one of two alternate methods for customization. The first is modifying the source .less files (making upgrades super difficult), and the second is mapping source LESS code to <a href="http://ruby.bvision.com/blog/please-stop-embedding-bootstrap-classes-in-your-html">your own classes via mixins</a>. For the time being, neither options are documented here.</p>
     </div>
 
@@ -2104,7 +2104,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <div class="bs-docs-sidenote">
-      <p><strong>Cross-browser compatibility</strong></p>
+      <h4>Cross-browser compatibility</h4>
       <p>If you add the <code>disabled</code> attribute to a <code>&lt;button&gt;</code>, Internet Explorer 9 and below will render text gray with a nasty text-shadow that we cannot fix.</p>
     </div>
 
@@ -2562,7 +2562,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <div class="bs-docs-sidenote">
-      <p><strong>Accessibility</strong></p>
+      <h4>Accessibility</h4>
       <p>Keep in mind that using icons without any additional content means the icons are not represented to screen reader users.</p>
     </div>
 
@@ -3603,7 +3603,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <div class="bs-docs-sidenote">
-      <p><strong>Plugin dependency</strong></p>
+      <h4>Plugin dependency</h4>
       <p>The responsive navbar requires the <a href="#collapse">collapse plugin</a> to be included in your version of Bootstrap.</p>
     </div>
 
@@ -4187,7 +4187,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p class="lead">Provide up-to-date feedback on the progress of a workflow or action with simple yet flexible progress bars.</p>
 
     <div class="bs-docs-sidenote">
-      <p><strong>Cross-browser compatibility</strong></p>
+      <h4>Cross-browser compatibility</h4>
       <p>Progress bars use CSS3 transitions and animations to achieve some of their effects.</p>
       <p>These features are not supported in Internet Explorer 9 and below or older versions of Firefox. Opera 12 does not support animations.</p>
     </div>
@@ -5290,7 +5290,7 @@ $('.navbar').scrollspy()
 {% endhighlight %}
 
           <div class="bs-docs-sidenote">
-            <p><strong>Resolvable ID targets required</strong></p>
+            <h4>Resolvable ID targets required</h4>
             <p>Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the dom like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.</p>
           </div>
 
@@ -5579,7 +5579,7 @@ $('#example').tooltip(options)
             </tbody>
           </table>
           <div class="bs-docs-sidenote">
-            <p><strong>Data attributes for individual tooltips</strong></p>
+            <h4>Data attributes for individual tooltips</h4>
             <p>Options for individual tooltips can alternatively be specified through the use of data attributes, as explained above.</p>
           </div>
 
@@ -5759,7 +5759,7 @@ $('#example').tooltip(options)
           </tbody>
         </table>
         <div class="bs-docs-sidenote">
-          <p><strong>Data attributes for individual popovers</strong>
+          <h4>Data attributes for individual popovers</h4>
           <p>Options for individual popovers can alternatively be specified through the use of data attributes, as explained above.</p>
         </div>
 
@@ -5979,7 +5979,7 @@ $('.nav-tabs').button()
             <h4>$().button('toggle')</h4>
             <p>Toggles push state. Gives the button the appearance that it has been activated.</p>
             <div class="bs-docs-sidenote">
-              <p><strong>Auto toggling</strong></p>
+              <h4>Auto toggling</h4>
               <p>You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.</p>
             </div>
 {% highlight html linenos %}
@@ -5994,7 +5994,7 @@ $('.nav-tabs').button()
 {% endhighlight %}
 
             <div class="bs-docs-sidenote">
-              <p><strong>Cross-browser compatibility</strong></p>
+              <h4>Cross-browser compatibility</h4>
               <p><a href="https://github.com/twitter/bootstrap/issues/793">Firefox persists the disabled state across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>.</p>
             </div>
 
@@ -6547,7 +6547,7 @@ $('.typeahead').typeahead()
 {% endhighlight %}
 
             <div class="bs-docs-sidenote">
-              <p><strong>Heads up!</strong></p>
+              <h4>Requires positioning</h4>
               <p>You must manage the position of a pinned element and the behavior of its immediate parent. Position is controlled by <code>affix</code>, <code>affix-top</code>, and <code>affix-bottom</code>. Remember to check for a potentially collapsed parent when the affix kicks in as it's removing content from the normal flow of the page.</p>
             </div>
 
