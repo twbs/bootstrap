@@ -20,7 +20,7 @@
 
 !function ($) {
 
-  "use strict"; // jshint ;_;
+  "use strict";
 
 
  /* BUTTON PUBLIC CLASS DEFINITION
