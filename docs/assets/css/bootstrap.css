@@ -2860,6 +2860,7 @@ fieldset[disabled] .btn-link:focus {
   font-weight: normal;
   line-height: 20px;
   color: #333333;
+  white-space: nowrap;
 }
 
 .dropdown-menu > li > a:hover,
