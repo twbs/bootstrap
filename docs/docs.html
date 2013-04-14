@@ -69,7 +69,10 @@ title: Bootstrap Documentation
 {% endhighlight %}
 
     <p>This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). The image files are compressed using <a href="http://imageoptim.com/">ImageOptim</a>, a Mac app for compressing PNGs.</p>
-    <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included.</p>
+    <div class="bs-docs-sidenote">
+    	<h4>jQuery required</h4>
+    	<p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included, as shown in the <a href="#examples">101 template</a>.</p>
+    </div>
   </div>
 
   <!-- Examples
@@ -627,7 +630,7 @@ title: Bootstrap Documentation
     <p>Make use of HTML's default emphasis tags with lightweight styles.</p>
 
     <h3>Small text</h3>
-    <p>For de-emphasizing inline or blocks of text, <small>use the small tag</small> to set text at 85% the size of the parent. Heading elements receive their own <code>font-size</code> for nested <code>&lt;small&gt;</code> elements.</p>
+    <p>For de-emphasizing inline or blocks of text, use the <code>&lt;small&gt;</code> tag to set text at 85% the size of the parent. Heading elements receive their own <code>font-size</code> for nested <code>&lt;small&gt;</code> elements.</p>
     <div class="bs-docs-example">
       <p><small>This line of text is meant to be treated as fine print.</small></p>
     </div>
@@ -1011,7 +1014,13 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Add any of the following classes to the <code>.table</code> base class.</p>
 
     <h3 id="tables-striped">Striped</h3>
-    <p>Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code> via the <code>:nth-child</code> CSS selector (not available in IE8).</p>
+    <p>Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p>
+    
+    <div class="bs-docs-sidenote">
+    	<h4>Cross-browser compatibility</h4>
+      <p>Striped tables are styled via the <code>:nth-child</code> CSS selector, which is not available in IE8.</p>
+    </div>
+    
     <div class="bs-docs-example">
       <table class="table table-striped">
         <thead>
@@ -1396,7 +1405,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h3>Inputs</h3>
     <p>Most common form control, text-based input fields. Includes support for all HTML5 types: text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color.</p>
-    <p>Requires the use of a specified <code>type</code> at all times.</p>
+    <div class="bs-docs-sidenote">
+    	<h4>Type declaration required</h4>
+    	<p>Inputs will only be fully styled if their <code>type</code> is properly declared.</p>
+    </div>
     <form class="bs-docs-example form-inline">
       <input type="text" placeholder="Text input">
     </form>
@@ -1530,8 +1542,13 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3 id="forms-invalid-inputs">Invalid inputs</h3>
-    <p>Style inputs via default browser functionality with <code>:invalid</code>. Specify a <code>type</code>, add the <code>required</code> attribute if the field is not optional, and (if applicable) specify a <code>pattern</code>.</p>
-    <p>This is not available in versions of Internet Explorer 7-9 due to lack of support for CSS pseudo selectors.</p>
+    <p>Style inputs via default browser functionality. Specify a <code>type</code>, add the <code>required</code> attribute if the field is not optional, and (if applicable) specify a <code>pattern</code>.</p>
+    
+    <div class="bs-docs-sidenote">
+    	<h4>Cross-browser compatibility</h4>
+      <p>Invalid inputs are styled via the <code>:invalid</code> CSS selector, which is not supported by Internet Explorer 9 and below.</p>
+    </div>
+    
     <form class="bs-docs-example form-inline">
       <input class="col-span-3" type="email" placeholder="test@example.com" required>
     </form>
@@ -1549,7 +1566,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3 id="forms-disabled-fieldsets">Disabled fieldsets</h3>
-    <p>Add the <code>disabled</code> attribute to a <code>&lt;fieldset&gt;</code> to disable all the controls within the <code>&lt;fieldset&gt;</code> at once. Link buttons (with the <code>&lt;a&gt;</code> element) will be aesthetically disabled, but you will need custom JavaScript to disable their behavior.</p>
+    <p>Add the <code>disabled</code> attribute to a <code>&lt;fieldset&gt;</code> to disable all the controls within the <code>&lt;fieldset&gt;</code> at once.</p>
+    
+    <div class="bs-docs-sidenote">
+    	<h4>Link functionality of <code>&lt;a&gt;</code> not impacted</h4>
+      <p>This class will only change the appearance of <code>&lt;a class="btn"&gt;</code> buttons, not their functionality. You need to use custom JavaScript to disable links here.</p>
+    </div>
+    
+    <div class="bs-docs-sidenote">
+    	<h4>Cross-browser compatibility</h4>
+      <p>While Bootstrap will apply these styles in all browsers, IE and Safari don't actually support the <code>&lt;disabled&gt;</code> attribute on a <code>&lt;fieldset&gt;</code>. You need to use custom JavaScript to disable the fieldset in these browsers.</p>
+    </div>
+    
     <form class="bs-docs-example form-inline">
       <fieldset disabled>
         <div>
@@ -1645,7 +1673,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h3 id="forms-input-groups">Input groups</h3>
     <p>Add text or buttons before, after, or on both sides of any text-based input. Use <code>.input-group</code> with a <code>.add-on</code> to prepend or append elements to an <code>&lt;input&gt;</code>.</p>
-    <p>Avoid using <code>&lt;select&gt;</code> elements here as they cannot be fully styled in WebKit browsers.</p>
+    
+    <div class="bs-docs-sidenote">
+    	<h4>Cross-browser compatibility</h4>
+      <p>Avoid using <code>&lt;select&gt;</code> elements here as they cannot be fully styled in WebKit browsers.</p>
+    </div>
+    
     <form class="bs-docs-example">
       <div class="input-group col-span-9">
         <span class="input-group-addon">@</span>
@@ -2119,8 +2152,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <a href="#" class="btn btn-large disabled">Link</a>
 {% endhighlight %}
     <p>
-      We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required. Also, this class is only for aesthetic; you must use custom JavaScript to disable links here.
+      We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
     </p>
+    <div class="bs-docs-sidenote">
+    	<h4>Link functionality not impacted</h4>
+      <p>This class will only change the <code>&lt;a&gt;</code>'s appearance, not its functionality. You need to use custom JavaScript to disable links here.</p>
+    </div>
 
 
     <h2 id="buttons-tags">One class, multiple tags</h2>
@@ -2137,7 +2174,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <input class="btn" type="button" value="Input">
 <input class="btn" type="submit" value="Submit">
 {% endhighlight %}
-    <p>As a best practice, <strong>we highly recommend using the <code>&lt;button&gt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
+
+		<div class="bs-docs-sidenote">
+    	<h4>Cross-browser rendering</h4>
+    	<p>As a best practice, <strong>we highly recommend using the <code>&lt;button&gt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
+    </div>
 
   </div>
 
@@ -2150,7 +2191,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <h1>Images</h1>
     </div>
 
-    <p>Add classes to an <code>&lt;img&gt;</code> element to easily style images in any project. Rounded corners are not available in IE8.</p>
+    <p>Add classes to an <code>&lt;img&gt;</code> element to easily style images in any project.</p>
+    <div class="bs-docs-sidenote">
+    	<h4>Cross-browser compatibility</h4>
+      <p>Keep in mind that Internet Explorer 8 lacks support for rounded corners.</p>
+    </div>
     <div class="bs-docs-example bs-docs-example-images">
       <img data-src="holder.js/140x140" class="img-rounded">
       <img data-src="holder.js/140x140" class="img-circle">
@@ -2904,7 +2949,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="page-header">
       <h1>Button dropdown menus</h1>
     </div>
-    <p class="lead">Use any button to trigger a dropdown menu by placing it within a <code>.btn-group</code> and providing the proper menu markup. Requires the <a href="./javascript.html#dropdowns">Bootstrap dropdown plugin</a>.</p>
+    <p class="lead">Use any button to trigger a dropdown menu by placing it within a <code>.btn-group</code> and providing the proper menu markup.</p>
+    
+    <div class="bs-docs-sidenote">
+    	<h4>Plugin dependency</h4>
+      <p>Button dropdowns require the <a href="#dropdown-plugin">dropdown plugin</a> to be included in your version of Bootstrap.</p>
+    </div>
 
     <h3 id="btn-dropdowns-single">Single button dropdowns</h3>
     <p>Turn a button into dropdown toggle with some basic markup changes.</p>
@@ -3257,7 +3307,13 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3 id="nav-disabled-links">Disabled state</h3>
-    <p>For any nav component (tabs, pills, or list), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>. Links will remain clickable, however, unless you remove the <code>href</code> attribute. Alternatively, you could implement custom JavaScript to prevent those clicks.</p>
+    <p>For any nav component (tabs, pills, or list), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>.</p>
+    
+    <div class="bs-docs-sidenote">
+    	<h4>Link functionality not impacted</h4>
+      <p>This class will only change the <code>&lt;a&gt;</code>'s appearance, not its functionality. You need to use custom JavaScript to disable links here.</p>
+    </div>
+    
     <div class="bs-docs-example">
       <ul class="nav nav-pills">
         <li><a href="#">Clickable link</a></li>
@@ -3467,10 +3523,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
     <h2>Optional display variations</h2>
-    <p>Fix the navbar to the top or bottom of the viewport with an additional class on the outermost div, <code>.navbar</code>.</p>
-
+    <p>Fix the navbar to the top or bottom of the viewport with an additional class on the outermost div, <code>.navbar</code>. These will also remove rounded corners.</p>
+		
     <h3 id="navbar-fixed-top">Fixed to top</h3>
-    <p>Add <code>.navbar-fixed-top</code> and remember to account for the hidden area underneath it by adding at least 40px <code>padding</code> to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.</p>
+    <p>Add <code>.navbar-fixed-top</code>.</p>
     <div class="bs-docs-example bs-navbar-top-example">
       <div class="navbar navbar-fixed-top" style="position: absolute; top: -1px;">
         <div class="container" style="width: auto;">
@@ -3488,6 +3544,22 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   ...
 </div>
 {% endhighlight %}
+		
+    <div class="bs-docs-sidenote">
+    	<h4>Body padding required</h4>
+      <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the top of the <code>&lt;body&gt;</code>. The navbar itself has a height of 54px by default. At 768px and above, its height shrinks to 50px. Try out your own values or use our snippet below:</p>
+{% highlight css linenos %}
+body {
+  padding-top: 64px;
+}
+@media screen and (min-width: 768px) {
+  body {
+    padding-top: 60px;
+  }
+}
+{% endhighlight %}
+			<p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
+    </div>
 
     <h3 id="navbar-fixed-bottom">Fixed to bottom</h3>
     <p>Add <code>.navbar-fixed-bottom</code> instead.</p>
@@ -3509,8 +3581,24 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 {% endhighlight %}
 
+		<div class="bs-docs-sidenote">
+    	<h4>Body padding required</h4>
+      <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the bottom of the <code>&lt;body&gt;</code>. The navbar itself has a height of 54px by default. At 768px and above, its height shrinks to 50px. Try out your own values or use our snippet below:</p>
+{% highlight css linenos %}
+body {
+  padding-bottom: 64px;
+}
+@media screen and (min-width: 768px) {
+  body {
+    padding-bottom: 60px;
+  }
+}
+{% endhighlight %}
+			<p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
+    </div>
+
     <h3 id="navbar-static-top">Static top navbar</h3>
-    <p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.navbar-fixed-top</code> class, you do not need to change any padding on the <code>body</code>.</p>
+    <p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.navbar-fixed-*</code> classes, you do not need to change any padding on the <code>body</code>.</p>
     <div class="bs-docs-example bs-navbar-top-example">
       <div class="navbar navbar-static-top" style="margin: -1px -1px 0;">
         <div class="container" style="width: auto;">
@@ -3931,6 +4019,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h4>Self collapsing</h4>
     <p>When there are no new or unread items, badges will simply collapse (via CSS's <code>:empty</code> selector) provided no content exists within.</p>
+    
+    <div class="bs-docs-sidenote">
+    	<h4>Cross-browser compatibility</h4>
+      <p>Badges won't self collapse in Internet Explorer 8 because it lacks support for the <code>:empty</code> selector.</p>
+    </div>
 
     <h4>Adapts to active nav states</h4>
     <p>Built-in styles are included for placing badges in active states in pill and list navigations.</p>
@@ -4778,7 +4871,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 
     <h3 id="js-individual-compiled">Individual or compiled</h3>
-    <p>Plugins can be included individually (though some have required dependencies), or all at once. <strong>Do not attempt to include both.</strong> Both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all plugins in a single file.</p>
+    <p>Plugins can be included individually, or all at once. <strong>Do not attempt to include both.</strong> Both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all plugins in a single file.</p>
+    <div class="bs-docs-sidenote">
+    	<h4>Plugin dependencies</h4>
+      <p>Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs (in notes like this one).</p>
+    </div>
 
     <h3 id="js-data-attrs">Data attributes</h3>
     <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API and should be your first consideration when using a plugin.</p>
@@ -5620,7 +5717,12 @@ $('#example').tooltip(options)
         </div>
 
         <h2>Examples</h2>
-        <p>Add small overlays of content, like those on the iPad, to any element for housing secondary information. Hover over the button to trigger the popover. <strong>Requires <a href="#tooltips">Tooltip</a> to be included.</strong></p>
+        <p>Add small overlays of content, like those on the iPad, to any element for housing secondary information. Hover over the button to trigger the popover.</p>
+        
+        <div class="bs-docs-sidenote">
+        	<h4>Plugin dependency</h4>
+          <p>Popovers require the <a href="#tooltips">tooltip plugin</a> to be included in your version of Bootstrap.</p>
+        </div>
 
         <h3>Static popover</h3>
         <p>Four options are available: top, right, bottom, and left aligned.</p>
@@ -6022,7 +6124,11 @@ $('.nav-tabs').button()
 
             <h3>About</h3>
             <p>Get base styles and flexible support for collapsible components like accordions and navigation.</p>
-            <p class="muted"><strong>*</strong> Requires the Transitions plugin to be included.</p>
+            
+            <div class="bs-docs-sidenote">
+            	<h4>Plugin dependency</h4>
+              <p>Collapse requires the <a href="#transitions">transitions plugin</a> to be included in your version of Bootstrap.</p>
+            </div>
 
             <h2>Example accordion</h2>
             <p>Using the collapse plugin, we built a simple accordion style widget:</p>
@@ -6286,7 +6392,10 @@ $('#myCollapsible').on('hidden', function () {
 
             <h3>Optional captions</h3>
             <p>Add captions to your slides easily with the <code>.carousel-caption</code> element within any <code>.item</code>. Place just about any optional HTML within there and it will be automatically aligned and formatted.</p>
-            <p><strong>Captions are hidden in mobile views</strong> and shown with viewports greater than 768px wide.</p>
+            <div class="bs-docs-sidenote">
+            	<h4>Responsive visibility</h4>
+              <p><strong>Captions are hidden by default</strong> and will show up only with viewports greater than 768px wide.</p>
+            </div>
             <div class="bs-docs-example">
               <div class="carousel slide bs-docs-carousel-example">
                 <ol class="carousel-indicators">
