@@ -79,6 +79,7 @@ section > ul li {
   position: relative;
   margin-bottom: 20px;
   padding: 30px 15px;
+  text-align: center;
 }
 .bs-docs-jumbotron h1 {
   font-size: 50px;
@@ -550,10 +551,8 @@ section > ul li {
 
 /* Social proof buttons from GitHub & Twitter */
 .bs-docs-social {
-  margin-top: 40px;
+  margin-top: 80px;
   margin-bottom: 20px;
-  padding-top: 39px;
-  border-top: 1px solid #e5e5e5;
 }
 /* Quick links on Home */
 .bs-docs-social-buttons {
@@ -702,7 +701,8 @@ input.focused {
     font-size: 100px;
   }
   .masthead p {
-    max-width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
     font-size: 30px;
   }
   .subhead {
