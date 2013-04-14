@@ -45,7 +45,8 @@ body {
 .bs-docs-sidenote p:last-child {
   margin-bottom: 0;
 }
-.bs-docs-sidenote code {
+.bs-docs-sidenote code,
+.bs-docs-sidenote .highlight {
   background-color: #fff;
 }
 
