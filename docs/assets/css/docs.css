@@ -45,6 +45,9 @@ body {
 .bs-docs-sidenote p:last-child {
   margin-bottom: 0;
 }
+.bs-docs-sidenote code {
+  background-color: #fff;
+}
 
 
 /* Sections
