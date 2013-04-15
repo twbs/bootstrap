@@ -26,7 +26,7 @@ th {
     padding: 8px;
     line-height: @line-height-base;
     vertical-align: top;
-    border-top: 1px solid @table-border;
+    border-top: 1px solid @table-border-color;
   }
   // Bottom align for column headings
   thead th {
@@ -43,7 +43,7 @@ th {
   }
   // Account for multiple tbody instances
   tbody + tbody {
-    border-top: 2px solid @table-border;
+    border-top: 2px solid @table-border-color;
   }
 
   // Nesting
@@ -70,13 +70,13 @@ th {
 // ----------------
 
 .table-bordered {
-  border: 1px solid @table-border;
+  border: 1px solid @table-border-color;
   border-collapse: separate; // Done so we can round those corners!
   border-left: 0;
   border-radius: @border-radius-base;
   th,
   td {
-    border-left: 1px solid @table-border;
+    border-left: 1px solid @table-border-color;
   }
   // Prevent a double border
   caption + thead tr:first-child th,
