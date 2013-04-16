@@ -436,8 +436,11 @@ input[type="button"].btn-block {
 }
 
 .btn-navbar {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  line-height: 25px;
   color: #fff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  text-shadow: -1px -1px #777777, 1px 1px #666666;
   background: url("../images/l10n/nav-normal.png") repeat-x scroll 0 0 transparent;
   background-color: #8d8d8d;
 }
@@ -445,7 +448,7 @@ input[type="button"].btn-block {
 .btn-navbar:hover,
 .btn-navbar:focus {
   color: #fff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  text-shadow: -1px -1px #777777, 1px 1px #666666;
   background: url("../images/l10n/nav-selected.png") repeat-x scroll 0 0 transparent;
   background-color: #8d8d8d;
   background-position: 0 0;
@@ -454,14 +457,17 @@ input[type="button"].btn-block {
 .btn-navbar.active,
 .btn-navbar:active {
   color: #fff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  text-shadow: -1px -1px #777777, 1px 1px #666666;
   background: url("../images/l10n/nav-normal.png") repeat-x scroll 0 0 transparent;
   background-color: #8d8d8d;
 }
 
 .btn-navbar-selected {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  line-height: 25px;
   color: #fff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  text-shadow: -1px -1px #777777, 1px 1px #666666;
   background: url("../images/l10n/nav-selected.png") repeat-x scroll 0 0 transparent;
   background-color: #8d8d8d;
 }
@@ -471,7 +477,7 @@ input[type="button"].btn-block {
 .btn-navbar-selected.active,
 .btn-navbar-selected:active {
   color: #fff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  text-shadow: -1px -1px #777777, 1px 1px #666666;
   background: url("../images/l10n/nav-selected.png") repeat-x scroll 0 0 transparent;
   background-color: #8d8d8d;
 }
