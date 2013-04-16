@@ -303,6 +303,19 @@
     },
     {
       "search": [
+        "help",
+        "question"
+      ],
+      "code": 10067,
+      "uid": "3a230e539a4f3b904debd04c6c155034",
+      "css": "help",
+      "orig_css": "help",
+      "orig_code": 10067,
+      "src": "entypo",
+      "from": 10067
+    },
+    {
+      "search": [
         "attention",
         "warning",
         "alert"
