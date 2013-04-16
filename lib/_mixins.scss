@@ -590,7 +590,7 @@
 
 @mixin grid-core-span-x($gridColumns, $gridColumnWidth, $gridGutterWidth) {
   @for $i from 1 through $gridColumns {
-    .span#{$i} { @include grid-core-span($i, $gridColumnWidth, $gridGutterWidth);}
+    .span#{$i} { @include grid-core-span($i, $gridColumnWidth, $gridGutterWidth); }
   }
 }
 
