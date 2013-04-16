@@ -34,6 +34,4 @@ nbproject
 .CVS
 .idea
 node_modules
-
-# weird file
-.travis.yml
+dist

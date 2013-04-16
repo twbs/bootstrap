@@ -9,9 +9,10 @@
 
     <!-- Le styles -->
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
-    <style>
+    <style type="text/css">
       body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        padding-top: 60px;
+        padding-bottom: 40px;
       }
     </style>
     <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
@@ -45,46 +46,62 @@
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="nav-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
             </ul>
+            <form class="navbar-form pull-right">
+              <input class="span2" type="text" placeholder="Email">
+              <input class="span2" type="password" placeholder="Password">
+              <button type="submit" class="btn">Sign in</button>
+            </form>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
 
     <div class="container">
-      <div class="span8">
-        <h2>IncuBA 2013, crear con estilo</h2>
-        <p class="lead">Hoy finaliza el primer llamado para la entrega de proyectos que se deben presentar en el Centro Metropolitano de Diseño (Algarrobo 1041, Barracas).</p>
 
-        <p>El objetivo del programa <strong>IncuBA IX</strong> es apoyar el proceso de creación y consolidación de nuevos proyectos, así como favorecer el intercambio de experiencias y el networking entre emprendedores y especialistas en las diferentes&nbsp;temáticas.</p>
-
-       
-
-
-        <p>Los emprendimientos se desarrollan en el <a href="http://www.cmd.gov.ar/">CMD</a> Algarrobo 1041, la entidad pública de la Ciudad reconocida en toda Latinoamérica por impulsar la incorporación del diseño a las empresas de Buenos Aires y generar, a partir de esto, más trabajo y una mejor calidad de vida para todos los&nbsp;vecinos.</p>
-
-        <p><iframe width="640" height="360" src="http://www.youtube.com/embed/kXuvp2Ua5xI?list=UU9ZfE85nK7e0cBLoTaRrWhQ" frameborder="0" allowfullscreen></iframe></p>
-
-        <p>Si estás interesado en participar en <strong>Incuba IX</strong> debés presentar tu proyecto a través de alguna de las entidades&nbsp;patrocinantes.</p>
-
-        <p>Para participar, tu emprendimiento debe tener menos de 24 meses de antigüedad y desarrollarse dentro de la Ciudad en el ámbito del diseño, la creatividad y la&nbsp;innovación.</p>
-
-        <ul>
-        <li><strong>Fechas de cierre del&nbsp;concurso:</strong></li>
-
-        <li><strong>Primer llamado:</strong> hasta el 22 de marzo&nbsp;2013</li>
-
-        <li><strong>Segundo llamado:</strong> 17 de mayo de&nbsp;2013</li>
-        </ul>
-        <p>Recordamos que si la presentación de proyectos con fecha de vencimiento el 22 de marzo de 2013 ocupara el total del espacio disponible, quedará sin efecto la segunda instancia de presentación fijada para el 17 de mayo de&nbsp;2013.</p>
-
-        <p><a href="/areas/produccion/subs_produccion/incuba/incuba.php?menu_id=34866">Conocé más sobre Incuba&nbsp;IX</a></p>
-
-        <p><a href="http://estatico.buenosaires.gov.ar/areas/produccion/subs_produccion/incuba/archivos/Res_246_Incuba_IX_Anexo_I.pdf">Bases y&nbsp;condiciones</a></p>
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Hello, world!</h1>
+        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
       </div>
-      <div class="span4">
 
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="span4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="span4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+       </div>
+        <div class="span4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
       </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2013</p>
+      </footer>
 
     </div> <!-- /container -->
 
