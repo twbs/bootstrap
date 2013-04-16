@@ -436,6 +436,7 @@ input[type="button"].btn-block {
 }
 
 .btn-navbar {
+  padding: 4px 0;
   font-family: "Times New Roman", Times, serif;
   font-weight: bold;
   line-height: 25px;
@@ -463,6 +464,7 @@ input[type="button"].btn-block {
 }
 
 .btn-navbar-selected {
+  padding: 4px 0;
   font-family: "Times New Roman", Times, serif;
   font-weight: bold;
   line-height: 25px;
