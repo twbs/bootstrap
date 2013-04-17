@@ -110,11 +110,9 @@
   font-size: @font-size-base * 1.25;
   font-weight: 500;
   background-color: darken(@state-warning-bg, 5%);
-  border-bottom: 1px solid darken(@state-warning-border, 5%); 
-  border-top-right-radius: (@border-radius-base - 1);
-  border-top-left-radius: (@border-radius-base - 1);
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+  border-bottom: 1px solid darken(@state-warning-border, 5%);
+  .border-top-radius((@border-radius-base - 1));
+  .border-bottom-radius(0);
 }
 
 // Contextual variations
