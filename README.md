@@ -1,26 +1,26 @@
-# [BAStrap v0.5](http://gcba.github.com/BAstrap)
+Ôªø# [BAStrap v0.5](http://gcba.github.com/BAstrap)
 
-BAStrap es el framework del Gobierno de la Ciudad para la creaciÛn de sitios web.
-Su propÛsito es que el trabajo in-house y de proveedores sea consistente estÈtica y funcionalmente.
+BAStrap es el framework del Gobierno de la Ciudad para la creaci√≥n de sitios web.
+Su prop√≥sito es que el trabajo in-house y de proveedores sea consistente est√©tica y funcionalmente.
 
-BAStrap est· basado en [Bootstrap v2.3.1](http://twitter.github.com/bootstrap)
+BAStrap est√° basado en [Bootstrap v2.3.1](http://twitter.github.com/bootstrap)
 
 
 ## Compilar el CSS y JavaScript
 
-BAStrap incluye un [makefile](Makefile) para compilar el framework. Antes de empezar instal· [las dependencias locales requeridas](package.json):
+BAStrap incluye un [makefile](Makefile) para compilar el framework. Antes de empezar instal√° [las dependencias locales requeridas](package.json):
 
 ```
 $ npm install
 ```
 
-Una vez que estÈ instalado, vas a poder usar los comandos:
+Una vez que est√© instalado, vas a poder usar los comandos:
 
 #### build - `make`
 Corre el compilador recess para construir los archivos `/less` y compila los docs. Requiere recess y uglify-js.
 
 #### watch - `make watch`
-Este mÈtodo revisa los archivos Less y los compila autom·ticamente cuando los grab·s. Requiere Watchr.
+Este m√©todo revisa los archivos Less y los compila autom√°ticamente cuando los grab√°s. Requiere Watchr.
 
 
 ## Autores originales
@@ -39,8 +39,8 @@ Este mÈtodo revisa los archivos Less y los compila autom·ticamente cuando los gr
 ## Autores del GCBA
 
 + [Federico Abad](http://twitter.com/abad)
-+ [Juli·n Rodriguez](http://twitter.com/julianrod)
-+ [TeÛfilo Sibileau](http://twitter.com/drkloc)
++ [Juli√°n Rodriguez](http://twitter.com/julianrod)
++ [Te√≥filo Sibileau](http://twitter.com/drkloc)
 
 ## Copyright and license
 
