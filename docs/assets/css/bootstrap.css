@@ -4242,7 +4242,7 @@ button.close {
 .pager .disabled > span {
   color: #999999;
   cursor: default;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 .modal-open {
