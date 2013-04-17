@@ -9,6 +9,14 @@
 
 /* Body and structure
 -------------------------------------------------- */
+@font-face {
+  font-family: 'Gotham';
+  font-style: normal;
+  font-weight: normal;
+  src: url('fonts/gotham.eot');
+  src: url('fonts/gotham.eot?#iefix') format('embedded-opentype'), url('fonts/gotham.woff') format('woff'), url('fonts/gotham.ttf') format('truetype'), url('fonts/gotham.svg#Gotham') format('svg');
+}
+
 body {
   padding-top: 70px!important;
 }
