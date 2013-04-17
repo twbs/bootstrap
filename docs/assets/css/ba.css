@@ -79,6 +79,7 @@ body {
   width: 168px;
   height: 30px;
   background: url(../img/logo.png);
+  text-indent: -100%;
 }
 
 .header-gcba h2.slogan {
