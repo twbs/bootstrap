@@ -4628,7 +4628,6 @@ button.close {
 }
 
 .alert h4 {
-  margin-top: 0;
   color: inherit;
 }
 
@@ -4703,6 +4702,10 @@ button.close {
   padding-bottom: 14px;
 }
 
+.alert-block .close {
+  top: -8px;
+}
+
 .alert-block > p,
 .alert-block > ul {
   margin-bottom: 0;
@@ -4710,6 +4713,34 @@ button.close {
 
 .alert-block p + p {
   margin-top: 5px;
+}
+
+.alert-heading {
+  padding: 10px 15px;
+  margin: -14px -35px 14px -14px;
+  font-size: 17.5px;
+  font-weight: 500;
+  background-color: #faf2cc;
+  border-bottom: 1px solid #f8e5be;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 3px;
+}
+
+.alert-block .alert-success > .alert-heading {
+  background-color: #d0e9c6;
+  border-bottom: 1px solid #c9e2b3;
+}
+
+.alert-block .alert-danger > .alert-heading {
+  background-color: #ebcccc;
+  border-bottom: 1px solid #e6c1c7;
+}
+
+.alert-block .alert-info > .alert-heading {
+  background-color: #c4e3f3;
+  border-bottom: 1px solid #a6e1ec;
 }
 
 .thumbnail,
