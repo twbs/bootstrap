@@ -369,6 +369,20 @@
         border-color: darken(@border, 10%);
   }
 
+  &[data-toggle^="button"].active {
+    background-color: darken(@background, 25%);
+        border-color: darken(@border, 35%);
+  }
+
+  &[data-toggle^="button"].active {
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: darken(@background, 20%);
+          border-color: darken(@border, 25%);
+    }
+  }
+
   &.disabled,
   &[disabled],
   fieldset[disabled] & {
