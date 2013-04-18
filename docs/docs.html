@@ -6695,6 +6695,163 @@ $('[data-spy="affix"]').each(function () {
           </table>
         </section>
 
+         <!-- Off Canvas
+        ================================================== -->
+        <section id="offcanvas">
+          <div class="page-header">
+            <h1>Off Canvas <small>bootstrap-offcanvas.js</small></h1>
+          </div>
+
+          <p>Inspired by <a href="http://bradfrost.github.com/this-is-responsive/patterns.html">This is Responsive</a> by <a href="http://bradfrostweb.com/about/">Brad Frost</a>.
+
+          <h2>Examples</h2>
+          <p>Create basic off canvas layouts, as seen on the likes of the Facebook and Google+ apps for iPad.</p>
+
+          <div class="alert alert-info">
+            <strong>Heads up!</strong>
+            The off canvas layout is tailored for phone and tablet viewport widths. If you are using a Desktop browser, in order to see the examples in action you must shrink the window accordingly.
+          </div>
+
+          <h3>Sidebar coming in from the right</h3>
+          <div class="bs-docs-example" style="overflow: hidden">
+
+            <div id="offcanvas-right-example" class="row row-offcanvas row-offcanvas-right">
+              <div class="col-span-9">
+                <p class="pull-right visible-phone"><a href="#offcanvas-right-sidebar" class="btn btn-primary btn-offcanvas" data-toggle="offcanvas"><i class="glyphicon-resize-horizontal"></i></a></p>
+                <div class="row">
+                  <div class="col-span-6">
+                    <h2>Heading</h2>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><a class="btn" href="#">View details &raquo;</a></p>
+                  </div>
+                  <div class="col-span-6">
+                    <h2>Heading</h2>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><a class="btn" href="#">View details &raquo;</a></p>
+                  </div>
+                </div>
+              </div>
+              <nav class="col-span-3 sidebar-offcanvas" id="offcanvas-right-sidebar" role="navigation">
+                <div class="well sidebar-nav">
+                  <ul class="nav nav-list">
+                    <li class="nav-header">Sidebar</li>
+                    <li class="active"><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li class="nav-header">Sidebar</li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                  </ul>
+                </div>
+              </nav>
+            </div> <!-- /offcanvas-right-example -->
+          </div>
+{% highlight html linenos %}
+<div id="offcanvas-right-example" class="row row-offcanvas row-offcanvas-right">
+  <div class="col-span-9">
+    <p class="pull-right visible-phone"><a href="#offcanvas-right-sidebar" class="btn btn-primary btn-offcanvas" data-toggle="offcanvas"><i class="glyphicon-resize-horizontal"></i></a></p>
+    <div class="row">
+      <div class="col-span-6">
+        <h2>Heading</h2>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p><a class="btn" href="#">View details &raquo;</a></p>
+      </div>
+      <div class="col-span-6">
+        <h2>Heading</h2>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p><a class="btn" href="#">View details &raquo;</a></p>
+      </div>
+    </div>
+  </div>
+  <nav class="col-span-3 sidebar-offcanvas" id="offcanvas-right-sidebar" role="navigation">
+    <div class="well sidebar-nav">
+      <ul class="nav nav-list">
+        <li class="nav-header">Sidebar</li>
+        <li class="active"><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li class="nav-header">Sidebar</li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+{% endhighlight %}
+
+          <h3>Sidebar coming in from the left</h3>
+          <div class="bs-docs-example" style="overflow: hidden">
+
+            <div id="offcanvas-left-example" class="row row-offcanvas row-offcanvas-left">
+              <nav class="col-span-3 sidebar-offcanvas" id="offcanvas-right-sidebar" role="navigation">
+                <div class="well sidebar-nav">
+                  <ul class="nav nav-list">
+                    <li class="nav-header">Sidebar</li>
+                    <li class="active"><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li class="nav-header">Sidebar</li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                  </ul>
+                </div>
+              </nav>
+              <div class="col-span-9">
+                <p class="pull-left visible-phone"><a href="#offcanvas-left-sidebar" class="btn btn-primary btn-offcanvas" data-toggle="offcanvas"><i class="glyphicon-resize-horizontal"></i></a></p>
+                <div class="row">
+                  <div class="col-span-6">
+                    <h2>Heading</h2>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><a class="btn" href="#">View details &raquo;</a></p>
+                  </div>
+                  <div class="col-span-6">
+                    <h2>Heading</h2>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><a class="btn" href="#">View details &raquo;</a></p>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- /offcanvas-left-example -->
+          </div>
+
+          <hr class="bs-docs-separator">
+
+          <h2>Usage</h2>
+
+          <h3>Via data attributes</h3>
+          <p>Build a simple row with two columns, designate the content column and sidebar column, and put a button or a link with <code>class="btn-offcanvas"</code> and <code>data-toggle="offcanvas"</code> inside the content column.</p>
+<pre class="prettyprint linenums">
+&lt;div class="row row-offcanvas row-offcanvas-right"&gt;
+  &lt;div class="col-span-9"&gt;
+    &lt;p class="pull-right visible-phone"&gt;
+      &lt;a href="#offcanvas-right-sidebar" class="btn btn-offcanvas" data-toggle="offcanvas"&gt;&lt;i class="glyphicon-resize-horizontal"&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;/p&gt;
+    ...
+  &lt;/div&gt;
+  &lt;nav class="col-span-3 sidebar-offcanvas" id="offcanvas-right-sidebar" role="navigation"&gt;
+    ...
+  &lt;/nav&gt;
+&lt;/div&gt;
+</pre>
+
+          <h3>Via JavaScript</h3>
+          <p>Call the off canvas via JavaScript:</p>
+          <pre class="prettyprint linenums">$('.btn-offcanvas').offcanvas()</pre>
+
+          <h3>Options</h3>
+          <p><em>None</em></p>
+
+          <h3>Methods</h3>
+          <h4>$().offcanvas('toggle')</h4>
+          <p>A programmatic api for toggling the sidebar and making it slide in or out.</p>
+        </section>
+
+
+
+
 </div><!-- /.container -->
 
 <a href="#welcome" class="bs-docs-top">

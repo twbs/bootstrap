@@ -39,8 +39,6 @@
       var $this = $(this)
         , $parent
 
-      if ($this.is('.disabled, :disabled')) return
-
       $parent = $this.parents('.row-offcanvas')
 
       $parent.toggleClass('active')
@@ -50,26 +48,27 @@
     }
 
   , keydown: function (e) {
-      var $this
-        , $parent
+      console.log($(this))
+      $(this).toggle
+      // var $this
+      //   , $parent
 
-      if (!/(38|40|27)/.test(e.keyCode)) return
+      // if (!/(38|40|27)/.test(e.keyCode)) return
 
-      $this = $(this)
+      // $this = $(this)
 
-      e.preventDefault()
-      e.stopPropagation()
+      // e.preventDefault()
+      // e.stopPropagation()
 
-      if ($this.is('.disabled, :disabled')) return
+      // $parent = $this.parents('.row-offcanvas')
 
-      $parent = $this.parents('.row-offcanvas')
+      // console.log($parent, $parent.find(toggle))
+      // if ($parent.hasClass('active') && e.keyCode == 27) {
+      //   console.log($parent, $parent.find(toggle))
+      //   $parent.find(toggle).focus()
+      // }
 
-      $parent.hasClass('active')
-
-      if (e.keyCode == 27) {
-        if (e.which == 27) $parent.find(toggle).focus()
-        return $this.click()
-      }
+      // return false;
 
     }
 
