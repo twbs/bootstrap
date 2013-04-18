@@ -1,0 +1,9 @@
+.nav {
+  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=20);
+  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#333333", endColorstr="#000000", GradientType=0);
+}
+.evalTest1 {
+  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=30);
+  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=5);
+}

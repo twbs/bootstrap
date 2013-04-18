@@ -1,0 +1,199 @@
+
+// For now, variables can't be declared inside @media blocks.
+
+@var: 42;
+
+@media print {
+    .class {
+        color: blue;
+        .sub {
+            width: @var;
+        }
+    }
+    .top, header > h1 {
+        color: #222 * 2;
+    }
+}
+
+@media screen {
+    @base: 8;
+    body { max-width: @base * 60; }
+}
+
+@media all and (device-aspect-ratio: 16/9) {
+   body { max-width: 800px; }
+}
+
+@media all and (orientation:portrait) {
+    aside { float: none; }
+}
+
+@media handheld and (min-width: @var), screen and (min-width: 20em) {
+    body {
+        max-width: 480px;
+    }
+}
+
+body {
+    @media print {
+        padding: 20px;
+
+        header {
+            background-color: red;
+        }
+
+        @media (orientation:landscape) {
+            margin-left: 20px;
+        }
+    }
+}
+
+@media screen {
+  .sidebar {
+    width: 300px;
+    @media (orientation: landscape) {
+      width: 500px;
+    }
+  }
+}
+
+@media a {
+  .first {
+    @media b {
+      .second {
+        .third {
+          width: 300px;
+          @media c {
+            width: 500px;
+          }
+        }
+        .fourth {
+          width: 3;
+        }
+      }
+    }
+  }
+}
+
+body {
+    @media a, b and c {
+        width: 95%;
+
+        @media x, y {
+            width: 100%;
+        }
+    }
+}
+
+.mediaMixin(@fallback: 200px) {
+    background: black;
+
+    @media handheld {
+        background: white;
+
+        @media (max-width: @fallback) {
+            background: red;
+        }
+    }
+}
+
+.a {
+  .mediaMixin(100px);
+}
+
+.b {
+  .mediaMixin();
+}
+@smartphone: ~"only screen and (max-width: 200px)";
+@media @smartphone {
+  width: 480px;
+}
+
+@media print {
+  @page :left {
+    margin: 0.5cm;
+  }
+  @page :right {
+    margin: 0.5cm;
+  }
+  @page Test:first {
+    margin: 1cm;
+  }
+  @page :first {
+    size: 8.5in 11in;
+	@top-left {
+      margin: 1cm;
+    }
+    @top-left-corner {
+      margin: 1cm;
+    }
+    @top-center {
+      margin: 1cm;
+    }
+    @top-right {
+      margin: 1cm;
+    }
+    @top-right-corner {
+      margin: 1cm;
+    }
+    @bottom-left {
+      margin: 1cm;
+    }
+    @bottom-left-corner {
+      margin: 1cm;
+    }
+    @bottom-center {
+      margin: 1cm;
+    }
+    @bottom-right {
+      margin: 1cm;
+    }
+    @bottom-right-corner {
+      margin: 1cm;
+    }
+    @left-top {
+      margin: 1cm;
+    }
+    @left-middle {
+      margin: 1cm;
+    }
+    @left-bottom {
+      margin: 1cm;
+    }
+    @right-top {
+      margin: 1cm;
+    }
+    @right-middle {
+      content: "Page " counter(page);
+    }
+    @right-bottom {
+      margin: 1cm;
+    }
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-resolution: 2dppx), (min-resolution: 128dpcm) {
+  .b {
+    background: red;
+  }
+}
+
+.bg() {
+    background: red;
+
+    @media (max-width: 500px) {
+        background: green;
+    }
+}
+
+body {
+    .bg();
+}
+
+@bpMedium: 1000px;
+@media (max-width: @bpMedium) {
+    body {        
+        .bg();
+        background: blue;
+    }
+}

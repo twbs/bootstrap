@@ -1,0 +1,11 @@
+node-cssmin.esproj
+**/npm-debug.log
+node_modules/
+coverage/
+tmp/
+CVS/
+.DS_Store
+.*.swp
+.svn
+*~
+.com.apple.timemachine.supported

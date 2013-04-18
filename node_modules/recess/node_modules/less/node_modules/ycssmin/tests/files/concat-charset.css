@@ -1,0 +1,15 @@
+/* This is invalid CSS, but frequently happens as a result of concatenation. */
+@charset "utf-8";
+#foo {
+	border-width:1px;
+}
+/*
+Note that this is erroneous!
+The actual CSS file can only have a single charset.
+However, this is the job of the author/application.
+The compressor should not get involved.
+*/
+@charset "another one";
+#bar {
+	border-width:10px;
+}

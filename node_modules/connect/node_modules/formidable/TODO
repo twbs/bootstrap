@@ -1,0 +1,3 @@
+- Better bufferMaxSize handling approach
+- Add tests for JSON parser pull request and merge it
+- Implement QuerystringParser the same way as MultipartParser

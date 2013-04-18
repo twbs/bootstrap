@@ -1,0 +1,36 @@
+@import "https://www.github.com/modify-this.css";
+
+@import "https://www.github.com/modify-again.css";
+.modify {
+  my-url: url("https://www.github.com/a.png");
+}
+.modify {
+  my-url: url("https://www.github.com/b.png");
+}
+@font-face {
+  src: url("/fonts/garamond-pro.ttf");
+  src: local(Futura-Medium), url(https://www.github.com/fonts.svg#MyGeometricModern) format("svg");
+}
+#shorthands {
+  background: url("http://www.lesscss.org/spec.html") no-repeat 0 4px;
+}
+#misc {
+  background-image: url(https://www.github.com/images/image.jpg);
+}
+#data-uri {
+  background: url(data:image/png;charset=utf-8;base64,
+    kiVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/
+    k//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U
+    kg9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC);
+  background-image: url(data:image/x-png,f9difSSFIIGFIFJD1f982FSDKAA9==);
+  background-image: url(http://fonts.googleapis.com/css?family=\"Rokkitt\":\(400\),700);
+}
+#svg-data-uri {
+  background: transparent url('data:image/svg+xml, <svg version="1.1"><g></g></svg>');
+}
+.comma-delimited {
+  background: url(https://www.github.com/bg.jpg) no-repeat, url(https://www.github.com/bg.png) repeat-x top left, url(https://www.github.com/bg);
+}
+.values {
+  url: url('https://www.github.com/Trebuchet');
+}

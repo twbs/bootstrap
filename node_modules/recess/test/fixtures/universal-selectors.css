@@ -1,0 +1,13 @@
+* {
+	display: block;
+}
+
+.ded > *,
+.mdo > *,
+.fat > * {
+    position: absolute;
+}
+
+.fat * {
+	overflow: hidden
+}

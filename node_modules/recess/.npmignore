@@ -1,0 +1,37 @@
+# Numerous always-ignore extensions
+*.diff
+*.err
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.vi
+*~
+*.sass-cache
+
+# OS or Editor folders
+.DS_Store
+._*
+Thumbs.db
+.cache
+.project
+.settings
+.tmproj
+*.esproj
+nbproject
+*.sublime-project
+*.sublime-workspace
+
+# Komodo
+*.komodoproject
+.komodotools
+
+# Folders to ignore
+.hg
+.svn
+.CVS
+.idea
+
+#node modules
+node_modules

@@ -1,0 +1,95 @@
+.\" Generated with Ronnjs/v0.1
+.\" http://github.com/kapouer/ronnjs/
+.
+.TH "NODEUNIT" "1" "October 2010" "" ""
+.
+.SH "NAME"
+\fBnodeunit\fR \-\- simple node\.js unit testing tool
+.
+.SH "SYNOPSIS"
+.
+.nf
+nodeunit [options] <file\-or\-directory> [<file\-or\-directory> \.\.\.]
+.
+.fi
+.
+.SH "DESCRIPTION"
+Nodeunit is a simple unit testing tool based on the node\.js assert module\.
+.
+.IP "\(bu" 4
+Simple to use
+.
+.IP "\(bu" 4
+Just export the tests from a module
+.
+.IP "\(bu" 4
+Helps you avoid common pitfalls when testing asynchronous code
+.
+.IP "\(bu" 4
+Easy to add test cases with setUp and tearDown functions if you wish
+.
+.IP "\(bu" 4
+Allows the use of mocks and stubs
+.
+.IP "" 0
+.
+.SH "OPTIONS"
+  \fB\-\-config FILE\fR:
+.
+.br
+      Load config options from a JSON file, allows the customisation
+      of color schemes for the default test reporter etc\.
+      See bin/nodeunit\.json for current available options\.
+.
+.P
+  \fB\-\-reporter FILE\fR:
+.
+.br
+      You can set the test reporter to a custom module or on of the modules
+      in nodeunit/lib/reporters, when omitted, the default test runner is used\.
+.
+.P
+  \fB\-\-list\-reporters\fR:
+.
+.br
+      List available build\-in reporters\.
+.
+.P
+  \fB\-h\fR, \fB\-\-help\fR:
+.
+.br
+      Display the help and exit\.
+.
+.P
+  \fB\-v\fR, \fB\-\-version\fR:
+.
+.br
+      Output version information and exit\.
+.
+.P
+  \fB<file\-or\-directory>\fR:
+      You can run nodeunit on specific files or on all \fI*\.js\fR files inside
+.
+.br
+      a directory\.
+.
+.SH "AUTHORS"
+Written by Caolan McMahon and other nodeunit contributors\.
+.
+.br
+Contributors list: \fIhttp://github\.com/caolan/nodeunit/contributors\fR\|\.
+.
+.SH "REPORTING BUGS"
+Report nodeunit bugs to \fIhttp://github\.com/caolan/nodeunit/issues\fR\|\.
+.
+.SH "COPYRIGHT"
+Copyright © 2010 Caolan McMahon\.
+.
+.br
+Nodeunit has been released under the MIT license:
+.
+.br
+\fIhttp://github\.com/caolan/nodeunit/raw/master/LICENSE\fR\|\.
+.
+.SH "SEE ALSO"
+node(1)

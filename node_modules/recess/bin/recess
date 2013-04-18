@@ -1,0 +1,94 @@
+#!/usr/bin/env node
+var recess = require('../lib')
+  , watch  = require('watch')
+  , nopt   = require('nopt')
+  , path   = require('path')
+  , fs     = require('fs')
+  , config = '.recessrc'
+  , writeFile
+  , options
+  , output
+  , paths
+
+// exit with docs
+if (process.argv.length == 2) return recess.docs()
+
+// define expected options
+options = {
+  compile: Boolean
+, compress: Boolean
+, config: path
+, noIDs: Boolean
+, noJSPrefix: Boolean
+, noOverqualifying: Boolean
+, noUnderscores: Boolean
+, noUniversalSelectors: Boolean
+, prefixWhitespace: Boolean
+, strictPropertyOrder: Boolean
+, version: Boolean
+, watch: path
+, zeroUnits: Boolean
+}
+
+// parse options
+shorthand = { 'v': ['--version'] };
+options = nopt(options, shorthand, process.argv)
+
+// if help exit
+if (options.help) return recess.docs()
+
+// set version
+recess.version = require(path.join(__dirname, '..', 'package.json')).version
+if (options.version) return console.log(recess.version)
+
+// set path from remaining arguments
+paths = options.argv.remain
+
+// clean options object
+delete options.argv
+
+// check for config or default .recessrc
+if (options.config || (fs.existsSync || path.existsSync)(config)) {
+  config = JSON.parse(fs.readFileSync(options.config || config))
+  for (i in options) config[i] = options[i]
+  options = config
+}
+
+// set CLI to true
+options.cli = true
+
+
+// if not watch - run Recess
+if (!options.watch) return recess(paths, options)
+
+// if options watch, but compile isn't set - make it happen
+if (options.watch && !options.compile && !options.compress) options.compile = true;
+
+// set CLI to false
+options.cli = false
+paths  = paths[0].split(':')
+output = paths[1]
+paths  = paths[0]
+
+// generate output and write to file
+writeFile = function () {
+  recess(paths, options, function (err, obj) {
+    fs.writeFile(output, obj.output)
+  })
+}
+
+// if watch doesn't exist, watch the path
+if (!(fs.existsSync || path.existsSync)(options.watch)) options.watch = path.resolve(paths)
+
+// throw if can't find file to watch
+if (!(fs.existsSync || path.existsSync)(options.watch)) return console.log("can't find file: " + options.watch)
+
+// use fs.watch if watchign single file
+if (path.extname(options.watch)) return fs.watch(options.watch, writeFile)
+
+// create monitor to watch filetree if provided dir
+watch.createMonitor(options.watch, function (monitor) {
+  monitor.on("created", writeFile)
+  monitor.on("changed", writeFile)
+  monitor.on("removed", writeFile)
+})

@@ -1,0 +1,49 @@
+#operations {
+  color: #111111;
+  height: 9px;
+  width: 3em;
+  substraction: 0;
+  division: 1;
+}
+#operations .spacing {
+  height: 9px;
+  width: 3em;
+}
+.with-variables {
+  height: 16em;
+  width: 24em;
+  size: 1cm;
+}
+.with-functions {
+  color: #646464;
+  color: #ff8080;
+  color: #c94a4a;
+}
+.negative {
+  height: 0px;
+  width: 4px;
+}
+.shorthands {
+  padding: -1px 2px 0 -4px;
+}
+.rem-dimensions {
+  font-size: 5.5rem;
+}
+.colors {
+  color: #123;
+  border-color: #334455;
+  background-color: #000000;
+}
+.colors .other {
+  color: #222222;
+  border-color: #222222;
+}
+.negations {
+  variable: -4px;
+  variable1: 0px;
+  variable2: 0px;
+  variable3: 8px;
+  variable4: 0px;
+  paren: -4px;
+  paren2: 16px;
+}

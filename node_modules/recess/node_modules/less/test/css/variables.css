@@ -1,0 +1,26 @@
+.variables {
+  width: 14cm;
+}
+.variables {
+  height: 24px;
+  color: #888888;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  quotes: "~" "~";
+}
+.redefinition {
+  three: 3;
+}
+.values {
+  font-family: 'Trebuchet', 'Trebuchet', 'Trebuchet';
+  color: #888888 !important;
+  multi: something 'A', B, C, 'Trebuchet';
+}
+.variable-names {
+  name: 'hello';
+}
+.alpha {
+  filter: alpha(opacity=42);
+}
+a:nth-child(2) {
+  border: 1px;
+}

@@ -1,0 +1,1 @@
+/*\*/.selector{color:khaki}/**/

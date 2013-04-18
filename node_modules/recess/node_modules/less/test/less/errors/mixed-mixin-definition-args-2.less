@@ -1,0 +1,6 @@
+.mixin(@a : 4, @b : 3, @c: 2) {
+    will: fail;
+}
+.mixin-test {
+    .mixin(@a: 5, @b: 6; @c: 7);
+}

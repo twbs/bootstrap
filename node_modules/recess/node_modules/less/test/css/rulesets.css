@@ -1,0 +1,33 @@
+#first > .one {
+  font-size: 2em;
+}
+#first > .one > #second .two > #deux {
+  width: 50%;
+}
+#first > .one > #second .two > #deux #third {
+  height: 100%;
+}
+#first > .one > #second .two > #deux #third:focus {
+  color: black;
+}
+#first > .one > #second .two > #deux #third:focus #fifth > #sixth .seventh #eighth + #ninth {
+  color: purple;
+}
+#first > .one > #second .two > #deux #fourth,
+#first > .one > #second .two > #deux #five,
+#first > .one > #second .two > #deux #six {
+  color: #110000;
+}
+#first > .one > #second .two > #deux #fourth .seven,
+#first > .one > #second .two > #deux #five .seven,
+#first > .one > #second .two > #deux #six .seven,
+#first > .one > #second .two > #deux #fourth .eight > #nine,
+#first > .one > #second .two > #deux #five .eight > #nine,
+#first > .one > #second .two > #deux #six .eight > #nine {
+  border: 1px solid black;
+}
+#first > .one > #second .two > #deux #fourth #ten,
+#first > .one > #second .two > #deux #five #ten,
+#first > .one > #second .two > #deux #six #ten {
+  color: red;
+}

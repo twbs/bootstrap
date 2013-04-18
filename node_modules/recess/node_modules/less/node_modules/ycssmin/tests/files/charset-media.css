@@ -1,0 +1,9 @@
+/* re: 2495387 */
+@charset 'utf-8';
+@media all {
+body {
+}
+body {
+background-color: gold;
+}
+}

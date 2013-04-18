@@ -1,0 +1,35 @@
+.tiny-scope {
+  color: #998899;
+}
+.scope1 {
+  color: #0000ff;
+  border-color: #000000;
+}
+.scope1 .scope2 {
+  color: #0000ff;
+}
+.scope1 .scope2 .scope3 {
+  color: #ff0000;
+  border-color: #000000;
+  background-color: #ffffff;
+}
+.scope {
+  scoped-val: #008000;
+}
+.heightIsSet {
+  height: 1024px;
+}
+.useHeightInMixinCall {
+  mixin-height: 1024px;
+}
+.imported {
+  exists: true;
+}
+.testImported {
+  exists: true;
+}
+#allAreUsedHere {
+  default: 'top level';
+  scope: 'top level';
+  sub-scope-only: 'inside';
+}

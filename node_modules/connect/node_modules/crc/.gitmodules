@@ -1,0 +1,3 @@
+[submodule "tests/nodeunit"]
+	path = tests/nodeunit
+	url = git://github.com/caolan/nodeunit.git

@@ -1,0 +1,36 @@
+{
+  "author": {
+    "name": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me"
+  },
+  "name": "minimatch",
+  "description": "a glob matcher in javascript",
+  "version": "0.0.5",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/isaacs/minimatch.git"
+  },
+  "main": "minimatch.js",
+  "scripts": {
+    "test": "tap test"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {
+    "lru-cache": "~1.0.2"
+  },
+  "devDependencies": {
+    "tap": "~0.0.5"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/isaacs/minimatch/raw/master/LICENSE"
+    }
+  ],
+  "readme": "# minimatch\n\nA minimal matching utility.\n\n[![Build Status](https://secure.travis-ci.org/isaacs/minimatch.png)](http://travis-ci.org/isaacs/minimatch)\n\n\nThis is the matching library used internally by npm.\n\nEventually, it will replace the C binding in node-glob.\n\nIt works by converting glob expressions into JavaScript `RegExp`\nobjects.\n\n## Usage\n\n```javascript\nvar minimatch = require(\"minimatch\")\n\nminimatch(\"bar.foo\", \"*.foo\") // true!\nminimatch(\"bar.foo\", \"*.bar\") // false!\n```\n\n## Features\n\nSupports all glob features.\n\nSee:\n\n* `man sh`\n* `man fnmatch`\n* `man 5 gitignore`\n\n### Departures from zsh/bash/ksh/sh\n\nIf the pattern starts with a `!` character, then it is negated.\n\nIf a pattern starts with `#`, then it is treated as a comment, and\nwill not match anything.  (Use `\\#` to match a literal `#` at the\nstart of a line.)\n\nThe double-star `**` is always supported, instead of requiring a special\nflag.\n\nIf an escaped pattern has no matches, and the `null` flag is not set,\nthen minimatch.match returns the pattern as-provided, rather than\ninterpreting the character escapes.  For example,\n`minimatch.match([], \"\\\\*a\\\\?\")` will return `\"\\\\*a\\\\?\"` rather than\n`\"*a?\"`.\n\n## Functions\n\n### minimatch(path, pattern, options)\n\nMain export.  Tests a path against\nthe pattern using the options.\n\n### minimatch.filter(pattern, options)\n\nReturns a function that tests its\nsupplied argument, suitable for use with `Array.filter`.\n\n### minimatch.match(list, pattern, options)\n\nMatch against the list of\nfiles, in the style of fnmatch or glob.  If nothing is matched, then\nreturn the pattern (unless `{ null: true }` in the options.)\n\n### minimatch.makeRe(pattern, options)\n\nMake a regular expression object\nfrom the pattern.\n\n## Options\n\nAll options are `false` by default.\n\n### debug\n\nDump a ton of stuff to stderr.\n\n### null\n\nReturn an empty list from minimatch.match, instead of a list\ncontaining the pattern itself.\n\n### nocase\n\nPerform a case-insensitive match.\n\n### cache\n\nAn LRU cache with `.get(k)` and `.set(k,v)` methods.  By\ndefault, an instance of `node-lru-cache` is used, with 1000 max\nentries.\n\n### slash\n\nIf set, then `a/*` will match `a/` as well as `a/b`.\n\n### matchBase\n\nIf set, then patterns without slashes will be matched\nagainst the basename of the path if it contains slashes.  For example,\n`a?b` would match `xyz/123/acb`.\n\n### partial\n\nInternal.  Used by `minimatch.makeRe`.\n\n### dot\n\nAllow patterns to match paths starting with a period, even if\nthe pattern does not explicitly start with a period.\n",
+  "_id": "minimatch@0.0.5",
+  "_from": "minimatch@0.0.x"
+}

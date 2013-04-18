@@ -1,0 +1,27 @@
+.named-arg {
+  color: blue;
+  width: 5px;
+  height: 99%;
+  args: 1px 100%;
+  text-align: center;
+}
+.class {
+  width: 5px;
+  height: 19%;
+  args: 1px 20%;
+}
+.all-args-wrong-args {
+  width: 10px;
+  height: 9%;
+  args: 2px 10%;
+}
+.named-args2 {
+  width: 15px;
+  height: 49%;
+  color: #646464;
+}
+.named-args3 {
+  width: 5px;
+  height: 29%;
+  color: #123456;
+}

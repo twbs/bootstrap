@@ -1,0 +1,16 @@
+/* 
+because of IE6 first-letter and first-line
+must be followed by a space
+http://reference.sitepoint.com/css/pseudoelement-firstletter
+Thanks: P.Sorokin comment at http://www.phpied.com/cssmin-js/ 
+*/
+p:first-letter{
+  buh: hum;
+}
+p:first-line{
+  baa: 1;
+}
+
+p:first-line,a,p:first-letter,b{
+  color: red;
+}

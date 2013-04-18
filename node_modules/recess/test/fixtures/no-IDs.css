@@ -1,0 +1,15 @@
+div, #div:hover {
+  position: absolute;
+}
+
+p,
+.cool,
+#bar /*a sfasdasd */ {
+  display: block;
+}
+
+p,
+.cool,
+.foo > #bar{
+  display: block;
+}

@@ -1,0 +1,12 @@
+.foo {
+  background-image: url("sprite.png");
+}
+.bar {
+  background: url('sprite.png');
+}
+.fat {
+  background: url(sprite.png);
+}
+.woo {
+  background: #fff url(../sprite.png) center center no-repeat;
+}

@@ -1,0 +1,10 @@
+div.fat {
+	position: absolute;
+	display: block;
+}
+
+h1,
+.foo h2#ded,
+h3.mdo {
+	overflow: hidden;
+}

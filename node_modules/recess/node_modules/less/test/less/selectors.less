@@ -1,0 +1,136 @@
+h1, h2, h3 {
+  a, p {
+    &:hover {
+      color: red;
+    }
+  }
+}
+
+#all { color: blue; }
+#the { color: blue; }
+#same { color: blue; }
+
+ul, li, div, q, blockquote, textarea {
+  margin: 0;
+}
+
+td {
+  margin: 0;
+  padding: 0;
+}
+
+td, input {
+  line-height: 1em;
+}
+
+a {
+  color: red;
+
+  &:hover { color: blue; }
+
+  div & { color: green; }
+
+  p & span { color: yellow; }
+}
+
+.foo {
+  .bar, .baz {
+    & .qux {
+      display: block;
+    }
+    .qux & {
+      display: inline;
+    }
+	.qux& {
+	  display: inline-block;
+	}
+    .qux & .biz {
+      display: none;
+    }
+  }
+}
+
+.b {
+ &.c {
+  .a& {
+   color: red;
+  }
+ }
+}
+
+.b {
+ .c & {
+  &.a {
+   color: red;
+  }
+ }
+}
+
+.p {
+  .foo &.bar {
+    color: red;
+  }
+}
+
+.p {
+  .foo&.bar {
+    color: red;
+  }
+}
+
+.foo {
+  .foo + & {
+    background: amber;
+  }
+  & + & {
+    background: amber;
+  }
+}
+
+.foo, .bar {
+  & + & {
+    background: amber;
+  }
+}
+
+.foo, .bar {
+  a, b {
+    & > & {
+      background: amber;
+    }
+  }
+}
+
+.other ::fnord { color: red }
+.other::fnord { color: red }
+.other {
+  ::bnord {color: red }
+  &::bnord {color: red }
+}
+// selector interpolation - deprecated
+@theme: blood;
+(~".@{theme}") {
+  color: red;
+}
+// selector interpolation - new format
+@selector: ~".@{theme}";
+@{selector} {
+  color:red;
+}
+@{selector}red {
+  color: green;
+}
+.red {
+  #@{theme}.@{theme}&.black {
+    color:black;
+  }
+}
+@num: 3;
+:nth-child(@{num}):nth-child(@num) {
+	second-use: deprecated;
+}
+.test {
+  &:nth-child(odd):not(:nth-child(3)) {
+    color: #ff0000;
+  }
+}

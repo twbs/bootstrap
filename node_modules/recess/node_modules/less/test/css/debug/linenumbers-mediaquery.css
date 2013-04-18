@@ -1,0 +1,35 @@
+@charset "UTF-8";
+@media -sass-debug-info{filename{font-family:file\:\/\/{pathimportesc}test\.less}line{font-family:\000033}}
+/* @charset "ISO-8859-1"; */
+@media -sass-debug-info{filename{font-family:file\:\/\/{pathimportesc}test\.less}line{font-family:\0000323}}
+.tst3 {
+  color: grey;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/{pathesc}linenumbers\.less}line{font-family:\0000315}}
+.test1 {
+  color: black;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/{pathesc}linenumbers\.less}line{font-family:\000036}}
+.test2 {
+  color: red;
+}
+@media all {
+  @media -sass-debug-info{filename{font-family:file\:\/\/{pathimportesc}test\.less}line{font-family:\000035}}
+  .tst {
+    color: black;
+  }
+}
+@media all and screen {
+  @media -sass-debug-info{filename{font-family:file\:\/\/{pathimportesc}test\.less}line{font-family:\000037}}
+  .tst {
+    color: red;
+  }
+  @media -sass-debug-info{filename{font-family:file\:\/\/{pathimportesc}test\.less}line{font-family:\000039}}
+  .tst .tst3 {
+    color: white;
+  }
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/{pathimportesc}test\.less}line{font-family:\0000318}}
+.tst2 {
+  color: white;
+}

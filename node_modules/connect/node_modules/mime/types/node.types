@@ -1,0 +1,43 @@
+# What: Google Chrome Extension
+# Why: To allow apps to (work) be served with the right content type header.
+# http://codereview.chromium.org/2830017
+# Added by: niftylettuce
+application/x-chrome-extension  crx
+
+# What: OTF Message Silencer
+# Why: To silence the "Resource interpreted as font but transferred with MIME
+# type font/otf" message that occurs in Google Chrome
+# Added by: niftylettuce
+font/opentype  otf
+
+# What: HTC support
+# Why: To properly render .htc files such as CSS3PIE
+# Added by: niftylettuce
+text/x-component  htc
+
+# What: HTML5 application cache manifest
+# Why: De-facto standard. Required by Mozilla browser when serving HTML5 apps
+# per https://developer.mozilla.org/en/offline_resources_in_firefox
+# Added by: louisremi
+text/cache-manifest  appcache manifest
+
+# What: node binary buffer format
+# Why: semi-standard extension w/in the node community
+# Added by: tootallnate
+application/octet-stream  buffer
+
+# What: The "protected" MP-4 formats used by iTunes.
+# Why: Required for streaming music to browsers (?)
+# Added by: broofa
+application/mp4  m4p
+audio/mp4  m4a
+
+# What: Music playlist format (http://en.wikipedia.org/wiki/M3U)
+# Why: See https://github.com/bentomas/node-mime/pull/6
+# Added by: mjrusso
+application/x-mpegURL  m3u8
+
+# What: Video format, Part of RFC1890
+# Why: See https://github.com/bentomas/node-mime/pull/6
+# Added by: mjrusso
+video/MP2T  ts
