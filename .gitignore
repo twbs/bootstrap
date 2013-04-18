@@ -1,6 +1,9 @@
 # Ignore compiled docs
 _gh_pages
 
+# Ignore build folder
+bootstrap
+
 # Numerous always-ignore extensions
 *.diff
 *.err
