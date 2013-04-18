@@ -22,9 +22,9 @@ $(function () {
         ok(!!$.fn.tooltip.defaults, 'defaults is defined')
       })
 
-      test("should remove title attribute", function () {
+      test("should empty title attribute", function () {
         var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>').tooltip()
-        ok(!tooltip.attr('title'), 'title tag was removed')
+        ok(tooltip.attr('title') === '', 'title attribute was emptied')
       })
 
       test("should add data attribute for referencing original title", function () {
@@ -250,5 +250,45 @@ $(function () {
         ok($("body > .tooltip").length, 'inside the body')
         ok(!$("#qunit-fixture > .tooltip").length, 'not found in parent')
         tooltip.tooltip('hide')
+      })
+
+      test("should place tooltip inside window", function(){
+        var container = $("<div />").appendTo("body")
+            .css({position: "absolute", width: 200, height: 200, bottom: 0, left: 0})
+          , tooltip = $("<a href='#' title='Very very very very very very very very long tooltip'>Hover me</a>")
+          .css({position: "absolute", top:0, left: 0})
+          .appendTo(container)
+          .tooltip({placement: "top", animate: false})
+          .tooltip("show")
+
+        stop()
+
+        setTimeout(function(){
+          ok($(".tooltip").offset().left >= 0)
+
+          start()
+          container.remove()
+        }, 100)
+      })
+
+      test("should place tooltip on top of element", function(){
+        var container = $("<div />").appendTo("body")
+              .css({position: "absolute", bottom: 0, left: 0, textAlign: "right", width: 300, height: 300})
+            , p = $("<p style='margin-top:200px' />").appendTo(container)
+            , tooltiped = $("<a href='#' title='very very very very very very very long tooltip'>Hover me</a>")
+              .css({marginTop: 200})
+              .appendTo(p)
+              .tooltip({placement: "top", animate: false})
+              .tooltip("show")
+
+        stop()
+
+        setTimeout(function(){
+          var tooltip = container.find(".tooltip")
+
+          start()
+          ok(tooltip.offset().top + tooltip.outerHeight() <= tooltiped.offset().top)
+          container.remove()
+        }, 100)
       })
 })

@@ -1,3 +1,6 @@
+# Ignore compiled docs
+_gh_pages
+
 # Numerous always-ignore extensions
 *.diff
 *.err
@@ -10,6 +13,7 @@
 *.vi
 *~
 *.sass-cache
+*.ruby-version
 
 # OS or Editor folders
 .DS_Store

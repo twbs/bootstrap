@@ -10,19 +10,20 @@
 
 // Mobile-first defaults
 .row {
-  margin-left:  @grid-gutter-width / -2;
-  margin-right: @grid-gutter-width / -2;
-  .clear_float();
+  .make-row();
 }
-[class^="span"] {
+[class*="col-span-"],
+[class*="col-small-"] {
+  position: relative;
   min-height: 1px;
-  padding-left:  @grid-gutter-width / 2;
-  padding-right: @grid-gutter-width / 2;
-  // Proper box-model (padding doesn't add to width)
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  padding-left:  (@grid-gutter-width / 2);
+  padding-right: (@grid-gutter-width / 2);
 }
+
+[class*="col-small-"] {
+  float: left;
+}
+.generate-small-grid-columns(@grid-columns);
 
 // Responsive: Tablets and up
 @media screen and (min-width: 768px) {
@@ -30,10 +31,10 @@
     max-width: 728px;
   }
   // Generate the grid columns and offsets
-  [class^="span"] {
+  [class*="col-span-"] {
     float: left;
   }
-  #grid > .core(@grid-column-width, @grid-gutter-width);
+  .generate-grid-columns(@grid-columns);
 }
 
 // Responsive: Desktops and up
@@ -48,13 +49,9 @@
   .container {
     max-width: 1170px;
   }
-  [class^="span"] {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
 }
 
 // Reset utility classes due to specificity
-[class*="span"].pull-right {
+[class*="col-span-"].pull-right {
   float: right;
 }

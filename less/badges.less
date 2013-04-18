@@ -1,21 +1,22 @@
 //
-// Labels and badges
+// Badges
 // --------------------------------------------------
 
 
 // Base classes
 .badge {
   display: inline-block;
-  padding: 2px 4px;
-  font-size: @font-size-base * .846;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
   font-weight: bold;
-  line-height: 14px; // ensure proper line-height if floated
   color: #fff;
-  vertical-align: baseline;
+  line-height: 1;
+  vertical-align: middle;
   white-space: nowrap;
-  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  text-align: center;
   background-color: @grayLight;
-  border-radius: 3px;
+  border-radius: 10px;
 
   // Empty labels/badges collapse
   &:empty {
@@ -25,25 +26,12 @@
 
 // Hover state, but only for links
 a.badge {
-  &:hover {
+  &:hover,
+  &:focus {
     color: #fff;
     text-decoration: none;
     cursor: pointer;
   }
-}
-
-// Colors
-// Only give background-color difference to links (and to simplify, we don't qualifty with `a` but [href] attribute)
-.badge {
-  // Important (red)
-  &-danger            { background-color: @state-error-text; }
-  &-danger[href]      { background-color: darken(@state-error-text, 10%); }
-  // Warnings (orange)
-  &-warning           { background-color: #f89406; }
-  &-warning[href]     { background-color: darken(#f89406, 10%); }
-  // Success (green)
-  &-success           { background-color: @state-success-text; }
-  &-success[href]     { background-color: darken(@state-success-text, 10%); }
 }
 
 // Quick fix for labels/badges in buttons
@@ -57,4 +45,14 @@ a.badge {
   .badge {
     top: 0;
   }
+}
+
+// Account for counters in navs
+a.list-group-item.active > .badge,
+.nav-pills > .active > a > .badge {
+  color: @link-color;
+  background-color: #fff;
+}
+.nav-pills > li > a > .badge {
+  margin-left: 3px;
 }

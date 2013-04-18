@@ -19,12 +19,14 @@
   cursor: pointer;
   border: 1px solid @btn-border;
   border-radius: @border-radius-base;
+  white-space: nowrap;
 
   &:focus {
     .tab-focus();
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: #fff;
     text-decoration: none;
   }
@@ -40,7 +42,8 @@
   &[disabled],
   fieldset[disabled] & {
     cursor: default;
-    .opacity(65);
+    pointer-events: none; // Future-proof disabling of clicks
+    .opacity(.65);
     .box-shadow(none);
   }
 
@@ -63,10 +66,6 @@
   font-size: @font-size-small;
   border-radius: @border-radius-small;
 }
-.btn-mini [class^="icon-"],
-.btn-mini [class*=" icon-"] {
-  margin-top: -1px;
-}
 
 // Mini
 .btn-mini {
@@ -79,10 +78,7 @@
 // Icons in buttons
 // -------------------------
 
-.btn [class^="glyphicon-"]::before       { vertical-align: -2px; }
-.btn-small [class^="glyphicon-"]::before,
-.btn-mini [class^="glyphicon-"]::before  { vertical-align: -1px; }
-
+// TODO: figure this shit out
 
 // Block button
 // -------------------------
@@ -92,7 +88,6 @@
   width: 100%;
   padding-left: 0;
   padding-right: 0;
-  .box-sizing(border-box);
 }
 
 // Vertically space out multiple block buttons
@@ -110,74 +105,31 @@ input[type="button"] {
 }
 
 
-
 // Alternate buttons
 // --------------------------------------------------
 
 .btn {
-  color: #fff;
-  background-color: @btn-background;
-  border-color: @btn-border;
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: darken(@btn-background, 5%);
-        border-color: darken(@btn-border, 10%);
-  }
+  color: @btn-color;
+  .btn-pseudo-states(@btn-bg, @btn-border);
 }
 .btn-primary {
-  background-color: @btn-background-primary;
-      border-color: @btn-border-primary;
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: darken(@btn-background-primary, 5%);
-        border-color: darken(@btn-border-primary, 10%);
-  }
+  .btn-pseudo-states(@btn-primary-bg, @btn-primary-border);
 }
-// Warning appears are orange
+// Warning appears as orange
 .btn-warning {
-  background-color: @btn-background-warning;
-      border-color: @btn-border-warning;
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: darken(@btn-background-warning, 5%);
-        border-color: darken(@btn-border-warning, 10%);
-  }
+  .btn-pseudo-states(@btn-warning-bg, @btn-warning-border);
 }
 // Danger and error appear as red
 .btn-danger {
-  background-color: @btn-background-danger;
-      border-color: @btn-border-danger;
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: darken(@btn-background-danger, 5%);
-        border-color: darken(@btn-border-danger, 10%);
-  }
+  .btn-pseudo-states(@btn-danger-bg, @btn-danger-border);
 }
 // Success appears as green
 .btn-success {
-  background-color: @btn-background-success;
-      border-color: @btn-border-success;
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: darken(@btn-background-success, 5%);
-        border-color: darken(@btn-border-success, 10%);
-  }
+  .btn-pseudo-states(@btn-success-bg, @btn-success-border);
 }
 // Info appears as blue-green
 .btn-info {
-  background-color: @btn-background-info;
-      border-color: @btn-border-info;
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: darken(@btn-background-info, 5%);
-        border-color: darken(@btn-border-info, 10%);
-  }
+  .btn-pseudo-states(@btn-info-bg, @btn-info-border);
 }
 
 
@@ -195,6 +147,7 @@ fieldset[disabled] .btn-link {
 }
 .btn-link,
 .btn-link:hover,
+.btn-link:focus,
 .btn-link:active {
   border-color: transparent;
 }
@@ -204,15 +157,17 @@ fieldset[disabled] .btn-link {
   cursor: pointer;
   border-radius: 0;
 }
-.btn-link:hover {
-  color: @link-color-hover;
+.btn-link:hover,
+.btn-link:focus {
+  color: @link-hover-color;
   text-decoration: underline;
   background-color: transparent;
 }
 .btn-link {
   &[disabled],
   fieldset[disabled] & {
-    &:hover {
+    &:hover,
+    &:focus {
       color: @grayDark;
       text-decoration: none;
     }

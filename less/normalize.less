@@ -1,4 +1,4 @@
-/*! normalize.css v2.0.1 | MIT License | git.io/normalize */
+/*! normalize.css v2.1.0 | MIT License | git.io/normalize */
 
 // ==========================================================================
 // HTML5 display definitions
@@ -16,6 +16,7 @@ figure,
 footer,
 header,
 hgroup,
+main,
 nav,
 section,
 summary {
@@ -100,12 +101,13 @@ a:hover {
 // ==========================================================================
 
 //
-// Address variable `h1` font size within `section` and `article` contexts in
-// Firefox 4+, Safari 5, and Chrome.
+// Address variable `h1` font-size and margin within `section` and `article`
+// contexts in Firefox 4+, Safari 5, and Chrome.
 //
 
 h1 {
   font-size: 2em;
+  margin: 0.67em 0;
 }
 
 //
@@ -130,7 +132,17 @@ strong {
 //
 
 dfn {
-    font-style: italic;
+  font-style: italic;
+}
+
+//
+// Address differences between Firefox and other browsers.
+//
+
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
 }
 
 //
@@ -159,9 +171,7 @@ samp {
 //
 
 pre {
-  white-space: pre;
   white-space: pre-wrap;
-  word-wrap: break-word;
 }
 
 //
@@ -217,7 +227,7 @@ img {
 //
 
 svg:not(:root) {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 // ==========================================================================
@@ -229,7 +239,7 @@ svg:not(:root) {
 //
 
 figure {
-    margin: 0;
+  margin: 0;
 }
 
 // ==========================================================================
@@ -279,6 +289,18 @@ textarea {
 button,
 input {
   line-height: normal;
+}
+
+//
+// Address inconsistent `text-transform` inheritance for `button` and `select`.
+// All other form control elements do not inherit `text-transform` values.
+// Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
+// Correct `select` style inheritance in Firefox 4+ and Opera.
+//
+
+button,
+select {
+  text-transform: none;
 }
 
 //

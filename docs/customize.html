@@ -1,99 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Customize · Bootstrap</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+---
+layout: default
+title: Customize and download
+---
 
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+<div class="bs-docs-sidebar">
+  <h5 class="bs-docs-sidenav-heading">Customize and download</h5>
+  <ul class="nav bs-docs-sidenav">
+    <li><a href="#components">1. Choose components</a></li>
+    <li><a href="#plugins">2. Select jQuery plugins</a></li>
+    <li><a href="#variables">3. Customize variables</a></li>
+    <li><a href="#download">4. Download</a></li>
+  </ul>
+</div>
 
-    <!-- Documentation extras -->
-    <link href="assets/css/docs.css" rel="stylesheet">
-    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="assets/js/html5shiv.js"></script>
-      <script src="assets/js/respond/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="assets/ico/favicon.png">
-
-  </head>
-
-  <body data-spy="scroll" data-target=".bs-docs-sidebar">
-
-    <!-- Navbar
-    ================================================== -->
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="brand" href="./index.html">Bootstrap</a>
-        <div class="nav-collapse collapse">
-          <ul class="nav">
-            <li class="">
-              <a href="./index.html">Home</a>
-            </li>
-            <li class="">
-              <a href="./getting-started.html">Get started</a>
-            </li>
-            <li class="">
-              <a href="./css.html">CSS</a>
-            </li>
-            <li class="">
-              <a href="./components.html">Components</a>
-            </li>
-            <li class="">
-              <a href="./javascript.html">JavaScript</a>
-            </li>
-            <li class="active">
-              <a href="./customize.html">Customize</a>
-            </li>
-            <li class="">
-              <a href="./gallery.html">Gallery</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-<!-- Masthead
-================================================== -->
-<header class="bs-docs-jumbotron subhead">
-  <div class="container">
-    <h1>Customize and download</h1>
-    <p class="lead"><a href="https://github.com/twitter/bootstrap/zipball/master">Download Bootstrap</a> or customize variables, components, JavaScript plugins, and more.</p>
-  </div>
-</header>
-
-
-  <div class="container">
-
-    <!-- Docs nav
-    ================================================== -->
-    <div class="row">
-      <div class="span3 bs-docs-sidebar">
-        <ul class="nav nav-list bs-docs-sidenav">
-          <li><a href="#components"><i class="glyphicon-chevron-right"></i> 1. Choose components</a></li>
-          <li><a href="#plugins"><i class="glyphicon-chevron-right"></i> 2. Select jQuery plugins</a></li>
-          <li><a href="#variables"><i class="glyphicon-chevron-right"></i> 3. Customize variables</a></li>
-          <li><a href="#download"><i class="glyphicon-chevron-right"></i> 4. Download</a></li>
-        </ul>
-      </div>
-      <div class="span9">
-
+  <div class="container bs-docs-container">
 
         <!-- Customize form
         ================================================== -->
@@ -106,9 +26,10 @@
               </h1>
             </div>
             <div class="row download-builder">
-              <div class="span3">
+              <div class="col-span-3">
                 <h3>Scaffolding</h3>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="reset.less"> Normalize and reset</label>
+                <label class="checkbox"><input checked="checked" type="checkbox" value="print.less"> Print</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="scaffolding.less"> Body type and links</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="grid.less"> Grid system</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="layouts.less"> Layouts</label>
@@ -121,7 +42,7 @@
                 <label class="checkbox"><input checked="checked" type="checkbox" value="buttons.less"> Buttons</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="sprites.less"> Icons</label>
               </div><!-- /span -->
-              <div class="span3">
+              <div class="col-span-3">
                 <h3>Components</h3>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="button-groups.less"> Button groups and dropdowns</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="navs.less"> Navs, tabs, and pills</label>
@@ -142,7 +63,7 @@
                 <label class="checkbox"><input checked="checked" type="checkbox" value="accordion.less"> Collapse</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="carousel.less"> Carousel</label>
               </div><!-- /span -->
-              <div class="span3">
+              <div class="col-span-3">
                 <h3>Miscellaneous</h3>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="wells.less"> Wells</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="close.less"> Close icon</label>
@@ -166,7 +87,7 @@
               </h1>
             </div>
             <div class="row download-builder">
-              <div class="span3">
+              <div class="col-span-3">
                 <label class="checkbox">
                   <input type="checkbox" checked="true" value="bootstrap-transition.js">
                   Transitions <small>(required for any animation)</small>
@@ -196,7 +117,7 @@
                   Popovers <small>(requires Tooltips)</small>
                 </label>
               </div><!-- /span -->
-              <div class="span3">
+              <div class="col-span-3">
                 <label class="checkbox">
                   <input type="checkbox" checked="true" value="bootstrap-affix.js">
                   Affix
@@ -222,7 +143,7 @@
                   Typeahead
                 </label>
               </div><!-- /span -->
-              <div class="span3">
+              <div class="col-span-3">
                 <h4 class="muted">Heads up!</h4>
                 <p class="muted">All checked plugins will be compiled into a single file, bootstrap.js. All plugins require the latest version of <a href="http://jquery.com/" target="_blank">jQuery</a> to be included.</p>
               </div><!-- /span -->
@@ -238,183 +159,183 @@
               </h1>
             </div>
             <div class="row download-builder">
-              <div class="span3">
+              <div class="col-span-3">
                 <h3>Scaffolding</h3>
                 <label>@body-background</label>
-                <input type="text" class="span3" placeholder="#fff">
+                <input type="text" placeholder="#fff">
                 <label>@text-color</label>
-                <input type="text" class="span3" placeholder="@grayDark">
+                <input type="text" placeholder="@grayDark">
 
                 <h3>Links</h3>
                 <label>@link-color</label>
-                <input type="text" class="span3" placeholder="#08c">
+                <input type="text" placeholder="#08c">
                 <label>@link-color-hover</label>
-                <input type="text" class="span3" placeholder="darken(@link-color, 15%)">
+                <input type="text" placeholder="darken(@link-color, 15%)">
 
                 <h3>Grid system</h3>
                 <label>@grid-columns</label>
-                <input type="text" class="span3" placeholder="12">
+                <input type="text" placeholder="12">
                 <label>@grid-column-width</label>
-                <input type="text" class="span3" placeholder="60px">
+                <input type="text" placeholder="60px">
                 <label>@grid-gutter-width</label>
-                <input type="text" class="span3" placeholder="20px">
+                <input type="text" placeholder="20px">
                 <label>@grid-column-width-1200</label>
-                <input type="text" class="span3" placeholder="70px">
+                <input type="text" placeholder="70px">
                 <label>@grid-gutter-width-1200</label>
-                <input type="text" class="span3" placeholder="30px">
+                <input type="text" placeholder="30px">
                 <label>@grid-column-width-768</label>
-                <input type="text" class="span3" placeholder="42px">
+                <input type="text" placeholder="42px">
                 <label>@grid-gutter-width-768</label>
-                <input type="text" class="span3" placeholder="20px">
+                <input type="text" placeholder="20px">
 
               </div><!-- /span -->
-              <div class="span3">
+              <div class="col-span-3">
 
                 <h3>Typography</h3>
                 <label>@font-family-sans-serif</label>
-                <input type="text" class="span3" placeholder="'Helvetica Neue', Helvetica, Arial, sans-serif">
+                <input type="text" placeholder="'Helvetica Neue', Helvetica, Arial, sans-serif">
                 <label>@font-family-serif</label>
-                <input type="text" class="span3" placeholder="Georgia, 'Times New Roman', Times, serif">
+                <input type="text" placeholder="Georgia, 'Times New Roman', Times, serif">
                 <label>@font-family-monospace</label>
-                <input type="text" class="span3" placeholder="Menlo, Monaco, 'Courier New', monospace">
+                <input type="text" placeholder="Menlo, Monaco, 'Courier New', monospace">
 
                 <label>@font-size-base</label>
-                <input type="text" class="span3" placeholder="14px">
+                <input type="text" placeholder="14px">
                 <label>@font-family-base</label>
-                <input type="text" class="span3" placeholder="@font-family-sans-serif">
+                <input type="text" placeholder="@font-family-sans-serif">
                 <label>@line-height-base</label>
-                <input type="text" class="span3" placeholder="20px">
+                <input type="text" placeholder="20px">
 
                 <label>@headings-font-family</label>
-                <input type="text" class="span3" placeholder="inherit">
+                <input type="text" placeholder="inherit">
                 <label>@headings-font-weight</label>
-                <input type="text" class="span3" placeholder="bold">
+                <input type="text" placeholder="bold">
                 <label>@headingsColor</label>
-                <input type="text" class="span3" placeholder="inherit">
+                <input type="text" placeholder="inherit">
 
                 <label>@font-size-large</label>
-                <input type="text" class="span3" placeholder="@font-size-base * 1.25">
+                <input type="text" placeholder="@font-size-base * 1.25">
                 <label>@font-size-small</label>
-                <input type="text" class="span3" placeholder="@font-size-base * 0.85">
+                <input type="text" placeholder="@font-size-base * 0.85">
                 <label>@font-size-mini</label>
-                <input type="text" class="span3" placeholder="@font-size-base * 0.75">
+                <input type="text" placeholder="@font-size-base * 0.75">
 
                 <label>@padding-large</label>
-                <input type="text" class="span3" placeholder="11px 19px">
+                <input type="text" placeholder="11px 19px">
                 <label>@padding-small</label>
-                <input type="text" class="span3" placeholder="2px 10px">
+                <input type="text" placeholder="2px 10px">
                 <label>@padding-mini</label>
-                <input type="text" class="span3" placeholder="1px 6px">
+                <input type="text" placeholder="1px 6px">
 
                 <label>@border-radius-base</label>
-                <input type="text" class="span3" placeholder="4px">
+                <input type="text" placeholder="4px">
                 <label>@border-radius-large</label>
-                <input type="text" class="span3" placeholder="6px">
+                <input type="text" placeholder="6px">
                 <label>@border-radius-small</label>
-                <input type="text" class="span3" placeholder="3px">
+                <input type="text" placeholder="3px">
 
                 <label>@hero-background</label>
-                <input type="text" class="span3" placeholder="@grayLighter">
+                <input type="text" placeholder="@grayLighter">
                 <label>@hero-heading-color</label>
-                <input type="text" class="span3" placeholder="inherit">
+                <input type="text" placeholder="inherit">
                 <label>@hero-lead-color</label>
-                <input type="text" class="span3" placeholder="inherit">
+                <input type="text" placeholder="inherit">
 
                 <h3>Tables</h3>
                 <label>@table-background</label>
-                <input type="text" class="span3" placeholder="transparent">
+                <input type="text" placeholder="transparent">
                 <label>@table-background-accent</label>
-                <input type="text" class="span3" placeholder="#f9f9f9">
+                <input type="text" placeholder="#f9f9f9">
                 <label>@table-background-hover</label>
-                <input type="text" class="span3" placeholder="#f5f5f5">
-                <label>@table-border</label>
-                <input type="text" class="span3" placeholder="#ddd">
+                <input type="text" placeholder="#f5f5f5">
+                <label>@table-border-color</label>
+                <input type="text" placeholder="#ddd">
 
                 <h3>Forms</h3>
                 <label>@input-color-placeholder</label>
-                <input type="text" class="span3" placeholder="@grayLight">
+                <input type="text" placeholder="@grayLight">
                 <label>@input-background</label>
-                <input type="text" class="span3" placeholder="#fff">
+                <input type="text" placeholder="#fff">
                 <label>@input-border</label>
-                <input type="text" class="span3" placeholder="#ccc">
+                <input type="text" placeholder="#ccc">
                 <label>@input-border-radius</label>
-                <input type="text" class="span3" placeholder="3px">
+                <input type="text" placeholder="3px">
                 <label>@input-background-disabled</label>
-                <input type="text" class="span3" placeholder="@grayLighter">
+                <input type="text" placeholder="@grayLighter">
                 <label>@form-actions-background</label>
-                <input type="text" class="span3" placeholder="#f5f5f5">
+                <input type="text" placeholder="#f5f5f5">
                 <label>@btn-backround-primary</label>
-                <input type="text" class="span3" placeholder="@link-color">
+                <input type="text" placeholder="@link-color">
                 <label>@btn-backround-primary-highlight</label>
-                <input type="text" class="span3" placeholder="darken(#fff, 10%)">
+                <input type="text" placeholder="darken(#fff, 10%)">
 
               </div><!-- /span -->
-              <div class="span3">
+              <div class="col-span-3">
 
                 <h3>Form states &amp; alerts</h3>
                 <label>@state-warning-text</label>
-                <input type="text" class="span3" placeholder="#c09853">
+                <input type="text" placeholder="#c09853">
                 <label>@state-warning-background</label>
-                <input type="text" class="span3" placeholder="#fcf8e3">
+                <input type="text" placeholder="#fcf8e3">
                 <label>@state-error-text</label>
-                <input type="text" class="span3" placeholder="#b94a48">
+                <input type="text" placeholder="#b94a48">
                 <label>@state-error-background</label>
-                <input type="text" class="span3" placeholder="#f2dede">
+                <input type="text" placeholder="#f2dede">
                 <label>@state-success-text</label>
-                <input type="text" class="span3" placeholder="#468847">
+                <input type="text" placeholder="#468847">
                 <label>@state-success-background</label>
-                <input type="text" class="span3" placeholder="#dff0d8">
+                <input type="text" placeholder="#dff0d8">
                 <label>@state-info-text</label>
-                <input type="text" class="span3" placeholder="#3a87ad">
+                <input type="text" placeholder="#3a87ad">
                 <label>@state-info-background</label>
-                <input type="text" class="span3" placeholder="#d9edf7">
+                <input type="text" placeholder="#d9edf7">
 
                 <h3>Navbar</h3>
                 <label>@navbar-height</label>
-                <input type="text" class="span3" placeholder="40px">
+                <input type="text" placeholder="40px">
                 <label>@navbar-background</label>
-                <input type="text" class="span3" placeholder="@grayDarker">
+                <input type="text" placeholder="@grayDarker">
                 <label>@navbar-background-highlight</label>
-                <input type="text" class="span3" placeholder="@grayDark">
+                <input type="text" placeholder="@grayDark">
                 <label>@navbar-text</label>
-                <input type="text" class="span3" placeholder="@grayLight">
+                <input type="text" placeholder="@grayLight">
                 <label>@navbar-brand-color</label>
-                <input type="text" class="span3" placeholder="@navbar-link-color">
+                <input type="text" placeholder="@navbar-link-color">
                 <label>@navbar-link-color</label>
-                <input type="text" class="span3" placeholder="@grayLight">
+                <input type="text" placeholder="@grayLight">
                 <label>@navbar-link-color-hover</label>
-                <input type="text" class="span3" placeholder="#fff">
+                <input type="text" placeholder="#fff">
                 <label>@navbar-link-color-active</label>
-                <input type="text" class="span3" placeholder="@navbar-link-color-hover">
+                <input type="text" placeholder="@navbar-link-color-hover">
                 <label>@navbar-link-background-hover</label>
-                <input type="text" class="span3" placeholder="transparent">
+                <input type="text" placeholder="transparent">
                 <label>@navbar-link-background-active</label>
-                <input type="text" class="span3" placeholder="@navbar-background">
+                <input type="text" placeholder="@navbar-background">
                 <label>@navbarSearchBackground</label>
-                <input type="text" class="span3" placeholder="lighten(@navbar-background, 25%)">
+                <input type="text" placeholder="lighten(@navbar-background, 25%)">
                 <label>@navbarSearchBackgroundFocus</label>
-                <input type="text" class="span3" placeholder="#fff">
+                <input type="text" placeholder="#fff">
                 <label>@navbarSearchBorder</label>
-                <input type="text" class="span3" placeholder="darken(@navbarSearchBackground, 30%)">
+                <input type="text" placeholder="darken(@navbarSearchBackground, 30%)">
                 <label>@navbarSearchPlaceholderColor</label>
-                <input type="text" class="span3" placeholder="#ccc">
+                <input type="text" placeholder="#ccc">
 
                 <label>@navbar-collapse-width</label>
-                <input type="text" class="span3" placeholder="979px">
+                <input type="text" placeholder="979px">
                 <label>@navbar-collapse-width-desktop</label>
-                <input type="text" class="span3" placeholder="@navbar-collapse-width + 1">
+                <input type="text" placeholder="@navbar-collapse-width + 1">
 
                 <h3>Dropdowns</h3>
                 <label>@dropdown-background</label>
-                <input type="text" class="span3" placeholder="#fff">
+                <input type="text" placeholder="#fff">
                 <label>@dropdown-border</label>
-                <input type="text" class="span3" placeholder="rgba(0,0,0,.2)">
+                <input type="text" placeholder="rgba(0,0,0,.2)">
                 <label>@dropdown-link-color</label>
-                <input type="text" class="span3" placeholder="@grayDark">
+                <input type="text" placeholder="@grayDark">
                 <label>@dropdown-link-color-hover</label>
-                <input type="text" class="span3" placeholder="#fff">
+                <input type="text" placeholder="#fff">
                 <label>@dropdown-link-background-hover</label>
-                <input type="text" class="span3" placeholder="@link-color">
+                <input type="text" placeholder="@link-color">
               </div><!-- /span -->
             </div><!-- /row -->
           </section>
@@ -426,7 +347,7 @@
               </h1>
             </div>
             <div class="download-btn">
-              <a class="btn btn-primary" href="#" >Customize and Download</a>
+              <a class="btn btn-primary" href="#" onclick="_gaq.push(['_trackEvent', 'Customize', 'Download', 'Customize and Download']);">Customize and Download</a>
               <h4>What's included?</h4>
               <p>Downloads include compiled CSS, compiled and minified CSS, and compiled jQuery plugins, all nicely packed up into a zipball for your convenience.</p>
             </div>
@@ -434,77 +355,4 @@
         </form>
 
 
-
-      </div>
-    </div>
-
-  </div>
-
-
-
-    <!-- Footer
-    ================================================== -->
-    <footer class="footer">
-      <div class="container">
-
-        <div class="bs-docs-social">
-          <ul class="bs-docs-social-buttons">
-            <li>
-              <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twitter&repo=bootstrap&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
-            </li>
-            <li>
-              <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twitter&repo=bootstrap&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="102px" height="20px"></iframe>
-            </li>
-            <li class="follow-btn">
-              <a href="https://twitter.com/twbootstrap" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @twbootstrap</a>
-            </li>
-            <li class="tweet-btn">
-              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://twitter.github.com/bootstrap/" data-count="horizontal" data-via="twbootstrap" data-related="mdo:Creator of Twitter Bootstrap">Tweet</a>
-            </li>
-          </ul>
-        </div>
-
-
-        <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
-        <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-        <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-        <ul class="footer-links">
-          <li><a href="http://blog.getbootstrap.com">Blog</a></li>
-          <li class="muted">&middot;</li>
-          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Issues</a></li>
-          <li class="muted">&middot;</li>
-          <li><a href="https://github.com/twitter/bootstrap/wiki">Roadmap and changelog</a></li>
-        </ul>
-      </div>
-    </footer>
-
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap-transition.js"></script>
-    <script src="assets/js/bootstrap-alert.js"></script>
-    <script src="assets/js/bootstrap-modal.js"></script>
-    <script src="assets/js/bootstrap-dropdown.js"></script>
-    <script src="assets/js/bootstrap-scrollspy.js"></script>
-    <script src="assets/js/bootstrap-tab.js"></script>
-    <script src="assets/js/bootstrap-tooltip.js"></script>
-    <script src="assets/js/bootstrap-popover.js"></script>
-    <script src="assets/js/bootstrap-button.js"></script>
-    <script src="assets/js/bootstrap-collapse.js"></script>
-    <script src="assets/js/bootstrap-carousel.js"></script>
-    <script src="assets/js/bootstrap-typeahead.js"></script>
-    <script src="assets/js/bootstrap-affix.js"></script>
-    <script src="assets/js/bootstrap-offcanvas.js"></script>
-
-    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-    <script src="assets/js/holder/holder.js"></script>
-    <script src="assets/js/google-code-prettify/prettify.js"></script>
-
-    <script src="assets/js/application.js"></script>
-
-
-  </body>
-</html>
+  </div><!-- /.container -->

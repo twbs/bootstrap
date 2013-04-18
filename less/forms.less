@@ -21,8 +21,8 @@ legend {
   width: 100%;
   padding: 0;
   margin-bottom: @line-height-base;
-  font-size: @font-size-base * 1.5;
-  line-height: @line-height-base * 2;
+  font-size: (@font-size-base * 1.5);
+  line-height: (@line-height-base * 2);
   color: @grayDark;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
@@ -53,18 +53,16 @@ input[type="email"],
 input[type="url"],
 input[type="search"],
 input[type="tel"],
-input[type="color"],
-.uneditable-input {
+input[type="color"] {
   display: inline-block;
-  .box-sizing(border-box); // Makes inputs behave like true block-level elements
-  min-height: @input-height; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  min-height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   padding: 6px 9px;
-  // margin-bottom: @line-height-base / 2;
+  // margin-bottom: (@line-height-base / 2);
   font-size: @font-size-base;
   line-height: @line-height-base;
   color: @gray;
   vertical-align: middle;
-  background-color: @input-background;
+  background-color: @input-bg;
   border: 1px solid @input-border;
   border-radius: @input-border-radius;
   .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
@@ -75,8 +73,7 @@ input[type="color"],
 // Can't be on input[type=*] selectors or it's too specific
 input,
 select,
-textarea,
-.uneditable-input {
+textarea {
   width: 100%;
 }
 
@@ -89,6 +86,11 @@ input[type="button"],
 input[type="radio"],
 input[type="checkbox"] {
   width: auto; // Override of generic input selector
+}
+
+// Override content-box in Normalize (* isn't specific enough)
+input[type="search"] {
+  .box-sizing(border-box);
 }
 
 // Reset height since textareas have rows
@@ -111,8 +113,7 @@ input[type="email"],
 input[type="url"],
 input[type="search"],
 input[type="tel"],
-input[type="color"],
-.uneditable-input {
+input[type="color"] {
   // Focus state
   &:focus {
     border-color: rgba(82,168,236,.8);
@@ -134,14 +135,8 @@ input[type="checkbox"] {
 // Set the height of select and file controls to match text inputs
 select,
 input[type="file"] {
-  height: @input-height; /* In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support */
-  line-height: @input-height;
-}
-
-// Make select elements obey height by applying a border
-// TODO: See if this can be part of the above selector stack
-select {
-  border: 1px solid @input-border;
+  height: @input-height-base; /* In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support */
+  line-height: @input-height-base;
 }
 
 // Make multiple select elements height not fixed
@@ -156,32 +151,6 @@ input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
   .tab-focus();
-}
-
-
-// Uneditable inputs
-// -------------------------
-
-// Make uneditable inputs look inactive
-.uneditable-input,
-.uneditable-textarea {
-  color: @grayLight;
-  background-color: darken(@input-background, 1%);
-  border-color: @input-border;
-  .box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
-  cursor: not-allowed;
-}
-
-// For text that needs to appear as an input but should not be an input
-.uneditable-input {
-  overflow: hidden; // prevent text from wrapping, but still cut it off like an input does
-  white-space: nowrap;
-}
-
-// Make uneditable textareas behave like a textarea
-.uneditable-textarea {
-  width: auto;
-  height: auto;
 }
 
 
@@ -203,7 +172,7 @@ textarea {
 .checkbox {
   display: block;
   min-height: @line-height-base; // clear the floating input if there is no label text
-  margin-bottom: @line-height-base / 2;
+  margin-bottom: (@line-height-base / 2);
   padding-left: 20px;
   label {
     display: inline;
@@ -221,7 +190,7 @@ textarea {
 }
 .radio + .radio,
 .checkbox + .checkbox {
-  margin-top: (@line-height-base / 4) * -1;
+  margin-top: ((@line-height-base / 4) * -1);
 }
 
 // Move the options list down to align with labels
@@ -231,7 +200,6 @@ textarea {
 }
 
 // Radios and checkboxes on same line
-// TODO v3: Convert .inline to .control-inline
 .radio-inline,
 .checkbox-inline {
   display: inline-block;
@@ -267,23 +235,16 @@ input[type="email"],
 input[type="url"],
 input[type="search"],
 input[type="tel"],
-input[type="color"],
-.uneditable-input {
+input[type="color"] {
   &.input-large {
     padding: @padding-large;
-    padding-left: 14px;
-    padding-right: 14px; // TODO: Resolve this override
     font-size: @font-size-large;
     border-radius: @border-radius-large;
   }
   &.input-small {
+    min-height: @input-height-small;
     padding: @padding-small;
     font-size: @font-size-small;
-    border-radius: @border-radius-small;
-  }
-  &.input-mini {
-    padding: @padding-mini;
-    font-size: @font-size-mini;
     border-radius: @border-radius-small;
   }
 }
@@ -296,8 +257,7 @@ input[type="color"],
 // Grid style input sizes
 input[class*="span"],
 select[class*="span"],
-textarea[class*="span"],
-.uneditable-input[class*="span"] {
+textarea[class*="span"] {
   float: none;
   margin-left: 0;
   margin-right: 0;
@@ -305,17 +265,14 @@ textarea[class*="span"],
 
 // Ensure input-prepend/append never wraps
 .input-append input[class*="span"],
-.input-append .uneditable-input[class*="span"],
-.input-prepend input[class*="span"],
-.input-prepend .uneditable-input[class*="span"] {
+.input-prepend input[class*="span"] {
   display: inline-block;
 }
 
 input[class*="span"],
 select[class*="span"],
-textarea[class*="span"],
-.uneditable-input[class*="span"] {
-  height: @input-height;
+textarea[class*="span"] {
+  height: @input-height-base;
 }
 
 
@@ -334,7 +291,7 @@ textarea {
   &[readonly],
   fieldset[disabled] & {
     cursor: not-allowed;
-    background-color: @input-background-disabled;
+    background-color: @input-bg-disabled;
   }
 }
 // Explicitly reset the colors here
@@ -355,15 +312,15 @@ input[type="checkbox"] {
 
 // Warning
 .has-warning {
-  .formFieldState(@state-warning-text, @state-warning-text, @state-warning-background);
+  .formFieldState(@state-warning-text, @state-warning-text, @state-warning-bg);
 }
 // Error
 .has-error {
-  .formFieldState(@state-error-text, @state-error-text, @state-error-background);
+  .formFieldState(@state-danger-text, @state-danger-text, @state-danger-bg);
 }
 // Success
 .has-success {
-  .formFieldState(@state-success-text, @state-success-text, @state-success-background);
+  .formFieldState(@state-success-text, @state-success-text, @state-success-bg);
 }
 
 // HTML5 invalid states
@@ -389,9 +346,9 @@ select:focus:invalid {
   padding: (@line-height-base - 1) 20px @line-height-base;
   margin-top: @line-height-base;
   margin-bottom: @line-height-base;
-  background-color: @form-actions-background;
+  background-color: @form-actions-bg;
   border-top: 1px solid #e5e5e5;
-  .clear_float(); // Adding clearfix to allow for .pull-right button containers
+  .clearfix(); // Adding clearfix to allow for .pull-right button containers
 }
 
 
@@ -406,7 +363,7 @@ select:focus:invalid {
 
 .help-block {
   display: block; // account for any element using help-block
-  margin-bottom: @line-height-base / 2;
+  margin-bottom: (@line-height-base / 2);
 }
 
 .help-inline {
@@ -432,8 +389,7 @@ select:focus:invalid {
   }
 
   input,
-  select,
-  .uneditable-input {
+  select {
     width: 100%;
   }
 }
@@ -442,11 +398,16 @@ select:focus:invalid {
 // -------------------------
 .input-group-addon,
 .input-group-btn,
-.input-group input,
-.input-group .uneditable-input {
+.input-group input {
   display: table-cell;
   margin: 0;
   border-radius: 0;
+  &.input-small {
+    border-radius: 0;
+  }
+  &.input-large {
+    border-radius: 0;
+  }
 }
 // Addon and addon wrapper for buttons
 .input-group-addon,
@@ -467,21 +428,40 @@ select:focus:invalid {
   text-shadow: 0 1px 0 #fff;
   background-color: @grayLighter;
   border: 1px solid #ccc;
+
+	&.input-small {
+	  padding: @padding-small;
+	  font-size: @font-size-small;
+  }
+	&.input-large {
+		padding: @padding-large;
+		font-size: @font-size-large;
+	}
 }
 
 // Reset rounded corners
 .input-group input:first-child,
-.input-group .uneditable-input:first-child,
 .input-group-addon:first-child {
   .border-left-radius(@border-radius-base);
+  &.input-small {
+    .border-left-radius(@border-radius-small);
+  }
+  &.input-large {
+    .border-left-radius(@border-radius-large);
+  }
 }
 .input-group-addon:first-child {
   border-right: 0;
 }
 .input-group input:last-child,
-.input-group .uneditable-input:last-child,
 .input-group-addon:last-child {
   .border-right-radius(@border-radius-base);
+  &.input-small {
+    .border-right-radius(@border-radius-small);
+  }
+  &.input-large {
+    .border-right-radius(@border-radius-large);
+  }
 }
 .input-group-addon:last-child {
   border-left: 0;
@@ -489,40 +469,43 @@ select:focus:invalid {
 
 // Button input groups
 // -------------------------
-.input-group-btn,
-.input-group-btn .btn {
+.input-group-btn {
+  position: relative;
   white-space: nowrap;
 }
 .input-group-btn > .btn {
+  position: relative;
   float: left; // Collapse white-space
   border-radius: 0;
   + .btn {
-    border-left: 0;
+    margin-left: -1px;
+  }
+  // Bring the "active" button to the front
+  &:hover,
+  &:active {
+    z-index: 2;
   }
 }
-.input-group-btn.btn-group {
-  display: table-cell;
-}
-// Prepend
-.input-group-btn {
-  &:first-child > .btn,
-  &.btn-group:first-child > .btn {
-    border-right: 0;
-  }
-  &:first-child > .btn,
-  &.btn-group:first-child > .btn {
-    border-radius: @border-radius-base 0 0 @border-radius-base;
+
+// Prepended buttons
+.input-group-btn:first-child {
+  // Round the left corners only
+  > .btn:first-child,
+  > .dropdown-toggle:first-child {
+    .border-left-radius(@border-radius-base);
+    &.btn-large { .border-left-radius(@border-radius-large); }
+    &.btn-small { .border-left-radius(@border-radius-small); }
   }
 }
-// Append
-.input-group-btn {
-  &:last-child > .btn,
-  &.btn-group:last-child > .btn:first-child {
-    border-left: 0;
-  }
-  &:last-child > .btn,
-  &.btn-group:last-child > .btn {
-    border-radius: 0 @border-radius-base @border-radius-base 0;
+
+// Appended buttons
+.input-group-btn:last-child {
+  // Round the right corners only
+  > .btn:last-child,
+  > .dropdown-toggle {
+    .border-right-radius(@border-radius-base);
+    &.btn-large { .border-right-radius(@border-radius-large); }
+    &.btn-small { .border-right-radius(@border-radius-small); }
   }
 }
 
@@ -530,7 +513,6 @@ select:focus:invalid {
 
 // Horizontal forms
 // --------------------------------------------------
-
 
 @media screen and (min-width: 768px) {
 
@@ -540,12 +522,11 @@ select:focus:invalid {
     .control-group {
       position: relative;
       margin-bottom: @line-height-base;
-      .clear_float();
+      .clearfix();
 
       input,
       select,
-      textarea,
-      .uneditable-input {
+      textarea {
         margin-bottom: 0;
       }
     }
@@ -553,7 +534,7 @@ select:focus:invalid {
     // Float the labels left
     .control-group > .control-label {
       float: left;
-      width: @component-offset-horizontal - 20;
+      width: (@component-offset-horizontal - 20);
       padding-top: 6px;
       text-align: right;
     }
@@ -561,6 +542,11 @@ select:focus:invalid {
     // Move over all input controls and content over
     .control-group > .controls {
       margin-left: @component-offset-horizontal;
+    }
+
+    // Make sure form actions buttons are aligned with controls
+    .form-actions {
+      padding-left: @component-offset-horizontal;
     }
 
   }
