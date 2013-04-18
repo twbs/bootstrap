@@ -1,1 +1,0 @@
-/*! $LastChangedRevision: 81 $ $LastChangedDate: 2009-05-27 17:41:02 +0100 (Wed, 27 May 2009) $ */body{yo:cats}ul[id$=foo] label:hover{yo:yo}

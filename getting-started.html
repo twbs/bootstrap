@@ -1,16 +1,18 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Getting · Bootstrap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,800,300' rel='stylesheet' type='text/css'>
+    <meta name="description" content="BAStrap">
+    <meta name="author" content="Gobierno de la Ciudad de Buenos Aires">
 
+	<!-- Invocando Open Sans y Gotham -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,800,300' rel='stylesheet' type='text/css'>
+	
     <!-- Le styles -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">\
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
     <link href="assets/css/ba.css" rel="stylesheet">
@@ -36,8 +38,8 @@
       <div class="header-gcba">
           <div class="header-inner">
             <div class="container">
-              <div id="logo"></div>
-              <h2 class="slogan">En todo estas vos</h2>
+              <div id="logo">Buenos Aires Ciudad</div>
+              <h2 class="slogan">En todo estás vos</h2>
             </div>
           </div>
       </div>
@@ -54,23 +56,23 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="./index.html">Bootstrap</a>
+          <!-- Botón de home Bootstrap      <a class="brand" href="./index.html">Buenos Aires Ciudad</a> -->
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="">
-                <a href="./index.html">Home</a>
+                <a href="./index.html">Inicio</a>
               </li>
               <li class="active">
-                <a href="./getting-started.html">Get started</a>
+                <a href="./getting-started.html">Empezar</a>
               </li>
               <li class="">
-                <a href="./scaffolding.html">Scaffolding</a>
+                <a href="./scaffolding.html">Layout</a>
               </li>
               <li class="">
-                <a href="./base-css.html">Base CSS</a>
+                <a href="./base-css.html">CSS básico</a>
               </li>
               <li class="">
-                <a href="./components.html">Components</a>
+                <a href="./components.html">Componentes</a>
               </li>
               <li class="">
                 <a href="./javascript.html">JavaScript</a>
@@ -84,12 +86,12 @@
       </div>
     </div>
 
-<!-- Subhead
+﻿<!-- Subhead
 ================================================== -->
 <header class="jumbotron subhead" id="overview">
   <div class="container">
-    <h1>Getting started</h1>
-    <p class="lead">Overview of the project, its contents, and how to get started with a simple template.</p>
+    <h1>Para empezar</h1>
+    <p class="lead">Información sobre el proyecto y cómo empezar a usar BAstrap.</p>
   </div>
 </header>
 
@@ -101,12 +103,10 @@
     <div class="row">
       <div class="span3 bs-docs-sidebar">
         <ul class="nav nav-list bs-docs-sidenav">
-          <li><a href="#download-bootstrap"><i class="icon-chevron-right"></i> Download</a></li>
-          <li><a href="#file-structure"><i class="icon-chevron-right"></i> File structure</a></li>
-          <li><a href="#contents"><i class="icon-chevron-right"></i> What's included</a></li>
+          <li><a href="#download-bootstrap"><i class="icon-chevron-right"></i> Descarga</a></li>
+          <li><a href="#contents"><i class="icon-chevron-right"></i> Contenidos</a></li>
           <li><a href="#html-template"><i class="icon-chevron-right"></i> HTML template</a></li>
-          <li><a href="#examples"><i class="icon-chevron-right"></i> Examples</a></li>
-          <li><a href="#what-next"><i class="icon-chevron-right"></i> What next?</a></li>
+          <li><a href="#examples"><i class="icon-chevron-right"></i> Ejemplos</a></li>
         </ul>
       </div>
       <div class="span9">
@@ -117,20 +117,15 @@
         ================================================== -->
         <section id="download-bootstrap">
           <div class="page-header">
-            <h1>1. Download</h1>
+            <h1>1. Descarga</h1>
           </div>
-          <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
+          <p class="lead">Antes de descargar, se avisa que es necesario tener conocimientos de HTML y CSS.</p>
 
           <div class="row-fluid">
             <div class="span6">
-              <h2>Download compiled</h2>
-              <p><strong>Fastest way to get started:</strong> get the compiled and minified versions of our CSS, JS, and images. No docs or original source files.</p>
-              <p><a class="btn btn-large btn-primary" href="assets/bootstrap.zip" >Download Bootstrap</a></p>
-            </div>
-            <div class="span6">
-              <h2>Download source</h2>
-              <p>Get the original files for all CSS and JavaScript, along with a local copy of the docs by downloading the latest version directly from GitHub.</p>
-              <p><a class="btn btn-large" href="https://github.com/twitter/bootstrap/zipball/master" >Download Bootstrap source</a></p>
+              <h2>Descarga</h2>
+              <p><strong>Descargue las versiones compiladas y minificadas de nuestro CSS, JS, e imágenes.</p>
+              <p><a class="btn btn-large btn-primary" href="assets/bootstrap.zip">Descargar BAstrap</a></p>
             </div>
           </div>
         </section>
@@ -320,18 +315,6 @@
         </section>
 
 
-
-
-        <!-- Next
-        ================================================== -->
-        <section id="what-next">
-          <div class="page-header">
-            <h1>What next?</h1>
-          </div>
-          <p class="lead">Head to the docs for information, examples, and code snippets, or take the next leap and customize Bootstrap for any upcoming project.</p>
-          <a class="btn btn-large btn-primary" href="./scaffolding.html" >Visit the Bootstrap docs</a>
-          <a class="btn btn-large" href="./customize.html" style="margin-left: 5px;" >Customize Bootstrap</a>
-        </section>
 
 
 

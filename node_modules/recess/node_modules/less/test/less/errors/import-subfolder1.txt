@@ -1,3 +1,0 @@
-NameError: .mixin-not-defined is undefined in {pathrel}mixin-not-defined.less:11:0
-10 
-11 .mixin-not-defined();

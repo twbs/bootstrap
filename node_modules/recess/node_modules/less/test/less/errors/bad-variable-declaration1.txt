@@ -1,2 +1,0 @@
-ParseError: Syntax Error on line 1 in {path}bad-variable-declaration1.less:1:0
-1 @@demo: "hi";
