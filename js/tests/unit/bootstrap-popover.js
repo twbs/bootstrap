@@ -76,6 +76,26 @@ $(function () {
         ok(!$('.popover').length, 'popover was removed')
         $('#qunit-fixture').empty()
       })
+      
+      test("should get title from options if both set in options and attributes", function () {
+        $.support.transition = false
+        var popover = $('<a href="#" title="@fat">@fat</a>')
+          .appendTo('#qunit-fixture')
+          .popover({
+            title: function () {
+              return '@mdo'
+            }
+          })
+
+        popover.popover('show')
+
+        ok($('.popover').length, 'popover was inserted')
+        equals($('.popover .popover-title').text(), '@mdo', 'title correctly inserted')
+
+        popover.popover('hide')
+        ok(!$('.popover').length, 'popover was removed')
+        $('#qunit-fixture').empty()
+      })
 
       test("should respect custom classes", function() {
         $.support.transition = false
