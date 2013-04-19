@@ -40,7 +40,7 @@
 
   , setContent: function () {
       var $tip = this.tip()
-        , title = this.getTitle()
+        , title = this.options.title ? this.options.title : this.getTitle()
         , content = this.getContent()
 
       $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
