@@ -1013,8 +1013,6 @@ pre code {
 table {
   max-width: 100%;
   background-color: transparent;
-  border-collapse: collapse;
-  border-spacing: 0;
 }
 
 th {
