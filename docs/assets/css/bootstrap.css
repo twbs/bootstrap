@@ -4784,6 +4784,7 @@ a.thumbnail:focus {
 }
 
 .label {
+  display: inline;
   padding: .25em .6em;
   font-size: 75%;
   font-weight: 500;

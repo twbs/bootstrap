@@ -2,9 +2,10 @@
 // Labels
 // --------------------------------------------------
 
+// LESS base
 
-// Base classes
-.label {
+.label() {
+  display: inline;
   padding: .25em .6em;
   font-size: 75%;
   font-weight: 500;
@@ -15,32 +16,83 @@
   text-align: center;
   background-color: @grayLight;
   border-radius: .25em;
-}
 
-// Hover state, but only for links
-a.label {
-  &:hover,
-  &:focus {
-    color: #fff;
-    text-decoration: none;
-    cursor: pointer;
+  //hover state, but only for links - as a mixin which will be accessible as LESS shorthand: .label > .a;
+  .a() {
+    &:hover,
+    &:focus {
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  // Colors
+  // Only give background-color difference to links (and to simplify, we don't qualifty with `a` but [href] attribute)
+  // Constructed as parametric mixin so it wont overproduce [href] by default - only for elements that will have arg link passed to local .is mixin
+
+  .label-danger() {
+    background-color: @label-danger-bg;
+    .is(@arg) when (@arg = link) {
+      &[href] {
+       background-color: darken(@label-danger-bg, 10%);
+      }
+    }
+  }
+
+  .label-warning() {
+    background-color: @label-warning-bg;
+    .is(@arg) when (@arg = link) {
+      &[href] {
+        background-color: darken(@label-warning-bg, 10%);
+      }
+    }
+  }
+
+  .label-success() {
+    background-color: @label-success-bg;
+    .is(@arg) when (@arg = link) {
+      &[href] {
+        background-color: darken(@label-success-bg, 10%);
+      }
+    }
+  }
+
+  .label-info() {
+    background-color: @label-info-bg;
+    .is(@arg) when (@arg = link) {
+      &[href] {
+        background-color: darken(@label-info-bg, 10%);
+      }
+    }
   }
 }
 
-// Colors
-// Only give background-color difference to links (and to simplify, we don't qualifty with `a` but [href] attribute)
+// populate mixins for CSS
 .label {
-  // Danger (red)
-  &-danger            { background-color: @label-danger-bg; }
-  &-danger[href]      { background-color: darken(@label-danger-bg, 10%); }
-  // Warnings (orange)
-  &-warning           { background-color: @label-warning-bg; }
-  &-warning[href]     { background-color: darken(@label-warning-bg, 10%); }
-  // Success (green)
-  &-success           { background-color: @label-success-bg; }
-  &-success[href]     { background-color: darken(@label-success-bg, 10%); }
-  // Info (turquoise)
-  &-info              { background-color: @label-info-bg; }
-  &-info[href]        { background-color: darken(@label-info-bg, 10%); }
+  .label();
 }
 
+a.label {
+  .label > .a;
+}
+
+.label-danger {
+  .label > .label-danger;
+  .label > .label-danger > .is(link); // will produce .label-danger[href] class for folks who like to use class in HTML
+}
+
+.label-warning {
+  .label > .label-warning;
+  .label > .label-warning > .is(link);
+}
+
+.label-success {
+  .label > .label-success;
+  .label > .label-success > .is(link);
+}
+
+.label-info {
+  .label > .label-info;
+  .label > .label-info > .is(link);
+} 
