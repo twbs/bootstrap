@@ -4663,22 +4663,18 @@ button.close {
   color: #356635;
 }
 
-.alert-danger,
-.alert-error {
+.alert-danger {
   color: #b94a48;
   background-color: #f2dede;
   border-color: #eed3d7;
 }
 
-.alert-danger hr,
-.alert-error hr {
+.alert-danger hr {
   border-top-color: #e6c1c7;
 }
 
 .alert-danger > a,
-.alert-error > a,
-.alert-danger > p > a,
-.alert-error > p > a {
+.alert-danger > p > a {
   color: #953b39;
 }
 
