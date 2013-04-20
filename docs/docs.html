@@ -3783,9 +3783,17 @@ body {
   <li class="active">Data</li>
 </ul>
 {% endhighlight %}
+   
+    <div class="bs-docs-sidenote">
+      <p>Separator is automatically added, by default : <code>/</code>.</p>
+      <p>If you'd like to use a different separator character drop the snippet below into your CSS:</p>
+{% highlight css linenos %}
+.breadcrumb > li:after {
+  content: ">";
+}
+{% endhighlight %}
+    </div>
   </div>
-
-
 
   <!-- Pagination
   ================================================== -->
