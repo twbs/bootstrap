@@ -196,14 +196,16 @@ abbr.initialism {
 
 // Blockquotes
 blockquote {
-  padding: 0 0 0 15px;
+  padding: (@line-height-base/2) @line-height-base;
   margin: 0 0 @line-height-base;
   border-left: 5px solid @grayLighter;
   p {
-    margin-bottom: 0;
     font-size: (@font-size-base * 1.25);
     font-weight: 300;
     line-height: 1.25;
+  }
+  p:last-child {
+    margin-bottom: 0;
   }
   small {
     display: block;
