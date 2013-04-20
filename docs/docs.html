@@ -6332,11 +6332,11 @@ $('#myCollapsible').on('hidden', function () {
             <h2>Examples</h2>
             <p>The slideshow below shows a generic plugin and component for cycling through elements like a carousel.</p>
             <div class="bs-docs-example">
-              <div class="carousel slide bs-docs-carousel-example">
+              <div id="carousel-example-generic" class="carousel slide bs-docs-carousel-example">
                 <ol class="carousel-indicators">
-                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
                   <div class="item active">
@@ -6349,21 +6349,21 @@ $('#myCollapsible').on('hidden', function () {
                     <img data-src="holder.js/900x500/auto/#777:#fff/text:Third slide" alt="">
                   </div>
                 </div>
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
                   <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
                   <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
               </div>
             </div><!-- /example -->
 {% highlight html linenos %}
-<div class="carousel slide">
+<div id="carousel-example-generic" class="carousel slide">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
   </ol>
 
   <!-- Wrapper for slides -->
@@ -6378,10 +6378,10 @@ $('#myCollapsible').on('hidden', function () {
   </div>
 
   <!-- Controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left"></span>
   </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right"></span>
   </a>
 </div>
@@ -6394,11 +6394,11 @@ $('#myCollapsible').on('hidden', function () {
               <p><strong>Captions are hidden by default</strong> and will show up only with viewports greater than 768px wide.</p>
             </div>
             <div class="bs-docs-example">
-              <div class="carousel slide bs-docs-carousel-example">
+              <div id="carousel-example-captions" class="carousel slide bs-docs-carousel-example">
                 <ol class="carousel-indicators">
-                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                  <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-example-captions" data-slide-to="1"></li>
+                  <li data-target="#carousel-example-captions" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
                   <div class="item active">
@@ -6423,10 +6423,10 @@ $('#myCollapsible').on('hidden', function () {
                     </div>
                   </div>
                 </div>
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <a class="left carousel-control" href="#carousel-example-captions" data-slide="prev">
                   <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <a class="right carousel-control" href="#carousel-example-captions" data-slide="next">
                   <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
               </div>
