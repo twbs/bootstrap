@@ -17,7 +17,7 @@
   background-color: @grayLight;
   border-radius: .25em;
 
-  //hover state, but only for links - as a mixin which will be accessible as LESS shorthand: .label > .a;
+  // Hover state, but only for links - as a mixin which will be accessible as LESS shorthand: .label > .a;
   .a() {
     &:hover,
     &:focus {
@@ -29,11 +29,11 @@
 
   // Colors
   // Only give background-color difference to links (and to simplify, we don't qualifty with `a` but [href] attribute)
-  // Constructed as parametric mixin so it wont overproduce [href] by default - only for elements that will have arg link passed to local .is mixin
-
+  // If there is a need for [href] then use local mixin a() via ex: .label-danger > .a; to attach additional CSS for [href] attr
+  
   .label-danger() {
     background-color: @label-danger-bg;
-    .is(@arg) when (@arg = link) {
+    .a() {
       &[href] {
        background-color: darken(@label-danger-bg, 10%);
       }
@@ -42,7 +42,7 @@
 
   .label-warning() {
     background-color: @label-warning-bg;
-    .is(@arg) when (@arg = link) {
+    .a() {
       &[href] {
         background-color: darken(@label-warning-bg, 10%);
       }
@@ -51,7 +51,7 @@
 
   .label-success() {
     background-color: @label-success-bg;
-    .is(@arg) when (@arg = link) {
+    .a() {
       &[href] {
         background-color: darken(@label-success-bg, 10%);
       }
@@ -60,7 +60,7 @@
 
   .label-info() {
     background-color: @label-info-bg;
-    .is(@arg) when (@arg = link) {
+    .a() {
       &[href] {
         background-color: darken(@label-info-bg, 10%);
       }
@@ -79,20 +79,20 @@ a.label {
 
 .label-danger {
   .label > .label-danger;
-  .label > .label-danger > .is(link); // will produce .label-danger[href] class for folks who like to use class in HTML
+  .label > .label-danger > .a; // will produce .label-danger[href] class for folks who like to use class in HTML
 }
 
 .label-warning {
   .label > .label-warning;
-  .label > .label-warning > .is(link);
+  .label > .label-warning > .a;
 }
 
 .label-success {
   .label > .label-success;
-  .label > .label-success > .is(link);
+  .label > .label-success > .a;
 }
 
 .label-info {
   .label > .label-info;
-  .label > .label-info > .is(link);
+  .label > .label-info > .a;
 } 
