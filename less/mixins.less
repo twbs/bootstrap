@@ -438,6 +438,16 @@
     right: percentage((@columns / @grid-columns));
   }
 }
+// Small, mobile-first columns
+.make-small-column(@columns) {
+  position: relative;
+  float: left;
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Set inner padding as gutters instead of margin
+  padding-left:  (@grid-gutter-width / 2);
+  padding-right: (@grid-gutter-width / 2);
+}
 
 
 
