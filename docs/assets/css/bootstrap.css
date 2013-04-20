@@ -5310,47 +5310,67 @@ a.list-group-item.active > .badge,
 }
 
 .visible-phone {
-  display: none !important;
+  display: inherit !important;
 }
 
 .visible-tablet {
   display: none !important;
 }
 
-.hidden-desktop {
+.visible-desktop {
   display: none !important;
 }
 
-.visible-desktop {
+.hidden-phone {
+  display: none !important;
+}
+
+.hidden-tablet {
+  display: inherit !important;
+}
+
+.hidden-desktop {
   display: inherit !important;
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
-  .hidden-desktop {
+  .visible-phone {
+    display: none !important;
+  }
+  .visible-tablet {
     display: inherit !important;
   }
   .visible-desktop {
-    display: none !important ;
+    display: none !important;
   }
-  .visible-tablet {
+  .hidden-phone {
     display: inherit !important;
   }
   .hidden-tablet {
     display: none !important;
   }
-}
-
-@media (max-width: 767px) {
   .hidden-desktop {
     display: inherit !important;
   }
-  .visible-desktop {
+}
+
+@media (min-width: 980px) {
+  .visible-phone {
     display: none !important;
   }
-  .visible-phone {
+  .visible-tablet {
+    display: none !important;
+  }
+  .visible-desktop {
     display: inherit !important;
   }
   .hidden-phone {
+    display: inherit !important;
+  }
+  .hidden-tablet {
+    display: inherit !important;
+  }
+  .hidden-desktop {
     display: none !important;
   }
 }
