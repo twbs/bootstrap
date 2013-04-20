@@ -1013,8 +1013,6 @@ pre code {
 table {
   max-width: 100%;
   background-color: transparent;
-  border-collapse: collapse;
-  border-spacing: 0;
 }
 
 th {
@@ -3262,8 +3260,32 @@ button.close {
   background-color: #eeeeee;
 }
 
+.nav > li.disabled > a {
+  color: #999999;
+}
+
+.nav > li.disabled > a:hover,
+.nav > li.disabled > a:focus {
+  color: #999999;
+  text-decoration: none;
+  cursor: default;
+  background-color: transparent;
+}
+
+.nav > li + .nav-header {
+  margin-top: 9px;
+}
+
 .nav > .pull-right {
   float: right;
+}
+
+.nav .divider {
+  height: 2px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+  border-bottom: 1px solid #ffffff;
 }
 
 .nav-tabs {
@@ -3286,14 +3308,35 @@ button.close {
   border-color: #eeeeee #eeeeee #dddddd;
 }
 
-.nav-tabs > .active > a,
-.nav-tabs > .active > a:hover,
-.nav-tabs > .active > a:focus {
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
   color: #555555;
   cursor: default;
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
+}
+
+.nav-tabs.nav-justified {
+  width: 100%;
+  border-bottom: 0;
+}
+
+.nav-tabs.nav-justified > li {
+  display: table-cell;
+  float: none;
+  width: 1%;
+  text-align: center;
+}
+
+.nav-tabs.nav-justified > li > a {
+  margin-right: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-tabs.nav-justified > .active > a {
+  border-bottom-color: #ffffff;
 }
 
 .nav-pills > li {
@@ -3308,9 +3351,9 @@ button.close {
   margin-left: 2px;
 }
 
-.nav-pills > .active > a,
-.nav-pills > .active > a:hover,
-.nav-pills > .active > a:focus {
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
   color: #fff;
   background-color: #428bca;
 }
@@ -3335,34 +3378,6 @@ button.close {
   text-align: center;
 }
 
-.nav-justified.nav-tabs {
-  border-bottom: 0;
-}
-
-.nav-justified.nav-tabs > li > a {
-  border-bottom: 1px solid #ddd;
-}
-
-.nav-justified.nav-tabs > .active > a {
-  border-bottom-color: #ffffff;
-}
-
-.nav-justified > li > a {
-  margin-right: 0;
-}
-
-.nav > .disabled > a {
-  color: #999999;
-}
-
-.nav > .disabled > a:hover,
-.nav > .disabled > a:focus {
-  color: #999999;
-  text-decoration: none;
-  cursor: default;
-  background-color: transparent;
-}
-
 .nav-header {
   display: block;
   padding: 3px 15px;
@@ -3372,18 +3387,6 @@ button.close {
   color: #999999;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
-}
-
-.nav li + .nav-header {
-  margin-top: 9px;
-}
-
-.nav .divider {
-  height: 2px;
-  margin: 9px 0;
-  overflow: hidden;
-  background-color: #e5e5e5;
-  border-bottom: 1px solid #ffffff;
 }
 
 .tabbable:before,
@@ -4237,7 +4240,7 @@ button.close {
 .pager .disabled > span {
   color: #999999;
   cursor: default;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 .modal-open {
