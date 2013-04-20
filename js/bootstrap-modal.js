@@ -142,13 +142,15 @@
         var that = this
         this.$element.hide()
         this.backdrop(function () {
-          that.removeBackdrop()
+          if (that.options.backdrop) {
+            that.removeBackdrop()
+          }
           that.$element.trigger('hidden')
         })
       }
 
     , removeBackdrop: function () {
-        this.$backdrop && this.$backdrop.remove()
+         this.$backdrop && this.$backdrop.remove()
         this.$backdrop = null
       }
 
