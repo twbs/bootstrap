@@ -1,0 +1,12 @@
+# Dependencies
+markdown:     rdiscount
+pygments:     true
+
+# Permalinks
+permalink:    pretty
+
+# Server
+source:       ./docs
+destination:  ./_gh_pages
+url:          http://bootstrap.dev:9001
+server_port:  9001

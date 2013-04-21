@@ -1,0 +1,34 @@
+<!-- Navbar
+================================================== -->
+<div class="navbar navbar-inverse navbar-fixed-left bs-docs-navbar">
+  <div class="container">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">B</a>
+    <div class="nav-collapse collapse">
+      <ul class="nav">
+<!--         <li {% if page.title == "Bootstrap" %}class="active"{% endif %}>
+          <a href="/"><span class="glyphicon glyphicon-home"></span></a>
+        </li>
+ -->        <li {% if page.title == "Getting started" %}class="active"{% endif %}>
+          <a href="/getting-started" data-toggle="tooltip" data-placement="right" title="Getting started"><span class="glyphicon glyphicon-list"></span></a>
+        </li>
+        <li {% if page.title == "CSS" %}class="active"{% endif %}>
+          <a href="/css" data-toggle="tooltip" data-placement="right" title="CSS"><span class="glyphicon glyphicon-tint"></span></a>
+        </li>
+        <li {% if page.title == "Components" %}class="active"{% endif %}>
+          <a href="/components" data-toggle="tooltip" data-placement="right" title="Components"><span class="glyphicon glyphicon-fire"></span></a>
+        </li>
+        <li {% if page.title == "JavaScript plugins" %}class="active"{% endif %}>
+          <a href="/javascript" data-toggle="tooltip" data-placement="right" title="JavaScript plugins"><span class="glyphicon glyphicon-dashboard"></span></a>
+        </li>
+        <li {% if page.title == "Customize and download" %}class="active"{% endif %}>
+          <a href="/customize" data-toggle="tooltip" data-placement="right" title="Customize"><span class="glyphicon glyphicon-cog"></span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

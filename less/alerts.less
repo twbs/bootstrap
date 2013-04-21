@@ -8,60 +8,78 @@
 
 .alert {
   padding: 8px 35px 8px 14px;
-  margin-bottom: @baseLineHeight;
-  text-shadow: 0 1px 0 rgba(255,255,255,.5);
-  background-color: @warningBackground;
-  border: 1px solid @warningBorder;
-  .border-radius(@baseBorderRadius);
-}
-.alert,
-.alert h4 {
-  // Specified for the h4 to prevent conflicts of changing @headingsColor
-  color: @warningText;
-}
-.alert h4 {
-  margin: 0;
-}
+  margin-bottom: @line-height-base;
+  color: @state-warning-text;
+  background-color: @state-warning-bg;
+  border: 1px solid @state-warning-border;
+  border-radius: @border-radius-base;
 
-// Adjust close link position
-.alert .close {
-  position: relative;
-  top: -2px;
-  right: -21px;
-  line-height: @baseLineHeight;
-}
+  // Headings for larger alerts
+  h4 {
+    margin-top: 0;
+    // Specified for the h4 to prevent conflicts of changing @headingsColor
+    color: inherit;
+  }
+  // Match the hr to the border of the alert
+  hr {
+    border-top-color: darken(@state-warning-border, 5%);
+  }
+  // Inherit color for immediate links and bolden them some
+  > a,
+  > p > a {
+    font-weight: 500;
+    color: darken(@state-warning-text, 10%);
+  }
 
+  // Adjust close link position
+  .close {
+    position: relative;
+    top: -2px;
+    right: -21px;
+    color: inherit;
+  }
+}
 
 // Alternate styles
 // -------------------------
 
 .alert-success {
-  background-color: @successBackground;
-  border-color: @successBorder;
-  color: @successText;
-}
-.alert-success h4 {
-  color: @successText;
+  background-color: @state-success-bg;
+  border-color: @state-success-border;
+  color: @state-success-text;
+  hr {
+    border-top-color: darken(@state-success-border, 5%);
+  }
+  > a,
+  > p > a {
+    color: darken(@state-success-text, 10%);
+  }
 }
 .alert-danger,
 .alert-error {
-  background-color: @errorBackground;
-  border-color: @errorBorder;
-  color: @errorText;
-}
-.alert-danger h4,
-.alert-error h4 {
-  color: @errorText;
+  background-color: @state-danger-bg;
+  border-color: @state-danger-border;
+  color: @state-danger-text;
+  hr {
+    border-top-color: darken(@state-danger-border, 5%);
+  }
+  > a,
+  > p > a {
+    color: darken(@state-danger-text, 10%);
+  }
 }
 .alert-info {
-  background-color: @infoBackground;
-  border-color: @infoBorder;
-  color: @infoText;
+  background-color: @state-info-bg;
+  border-color: @state-info-border;
+  color: @state-info-text;
+  hr {
+    border-top-color: darken(@state-info-border, 5%);
+  }
+  > a,
+  > p > a {
+    color: darken(@state-info-text, 10%);
+  }
 }
-.alert-info h4 {
-  color: @infoText;
-}
-
 
 // Block alerts
 // -------------------------
