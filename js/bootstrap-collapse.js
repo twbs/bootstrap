@@ -35,7 +35,7 @@
     }
 
     this.options.toggle && this.toggle()
-    if (this.options.toggle == true) {
+    if (this.options.toggle === true) {
         this.$element.css('overflow', 'visible');
     }
   }
