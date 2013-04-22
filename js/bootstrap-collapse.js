@@ -35,6 +35,9 @@
     }
 
     this.options.toggle && this.toggle()
+    if (this.options.toggle == true) {
+        this.$element.css('overflow', 'visible');
+    }
   }
 
   Collapse.prototype = {
@@ -67,6 +70,7 @@
 
       this.$element[dimension](0)
       this.transition('addClass', $.Event('show'), 'shown')
+      this.$element.css('overflow', 'visible');
       $.support.transition && this.$element[dimension](this.$element[0][scroll])
     }
 
@@ -76,6 +80,7 @@
       dimension = this.dimension()
       this.reset(this.$element[dimension]())
       this.transition('removeClass', $.Event('hide'), 'hidden')
+      this.$element.css('overflow', 'hidden');
       this.$element[dimension](0)
     }
 
