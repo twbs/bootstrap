@@ -3471,8 +3471,8 @@ button.close {
 .nav-pills .open .dropdown-toggle,
 .nav > li.dropdown.open.active > a:hover {
   color: #fff;
-  background-color: @grayLight;
-  border-color: @grayLight;
+  background-color: @gray-light;
+  border-color: @gray-light;
 }
 .nav li.dropdown.open .caret,
 .nav li.dropdown.open.active .caret,
@@ -3484,7 +3484,7 @@ button.close {
 
 // Dropdowns in stacked tabs
 .tabs-stacked .open > a:hover {
-  border-color: @grayLight;
+  border-color: @gray-light;
 }
 
 */

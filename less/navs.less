@@ -21,7 +21,7 @@
       &:hover,
       &:focus {
         text-decoration: none;
-        background-color: @grayLighter;        
+        background-color: @gray-lighter;
       }
     }
 
@@ -33,12 +33,12 @@
 
     // Gray out text
     &.disabled > a {
-      color: @grayLight;
+      color: @gray-light;
     }
     // Nuke hover effects
     &.disabled > a:hover,
     &.disabled > a:focus {
-      color: @grayLight;
+      color: @gray-light;
       text-decoration: none;
       background-color: transparent;
       cursor: default;
@@ -54,7 +54,7 @@
   > .pull-right {
     float: right;
   }
-  
+
   // Dividers (basically an hr) within the dropdown
   .divider {
     .nav-divider();
@@ -75,7 +75,7 @@
   > li {
     float: left;
     // Make the list-items overlay the bottom border
-    margin-bottom: -1px;    
+    margin-bottom: -1px;
 
     // Actual tabs (as links)
     > a {
@@ -84,7 +84,7 @@
       border: 1px solid transparent;
       border-radius: @border-radius-base @border-radius-base 0 0;
       &:hover {
-        border-color: @grayLighter @grayLighter #ddd;
+        border-color: @gray-lighter @gray-lighter #ddd;
       }
     }
 
@@ -96,7 +96,7 @@
       background-color: @body-bg;
       border: 1px solid #ddd;
       border-bottom-color: transparent;
-      cursor: default;      
+      cursor: default;
     }
   }
   // pulling this in mainly for less shorthand
@@ -128,7 +128,7 @@
     &.active > a:hover,
     &.active > a:focus {
       color: #fff;
-      background-color: @component-active-bg;      
+      background-color: @component-active-bg;
     }
   }
 }
@@ -141,7 +141,7 @@
     + li {
       > a {
         margin-top: 2px;
-        margin-left: 0; // no need for this gap between nav items        
+        margin-left: 0; // no need for this gap between nav items
       }
     }
   }
@@ -186,7 +186,7 @@
   font-size: 11px;
   font-weight: bold;
   line-height: @line-height-base;
-  color: @grayLight;
+  color: @gray-light;
   text-shadow: 0 1px 0 rgba(255,255,255,.5);
   text-transform: uppercase;
 }
@@ -264,8 +264,8 @@
 .nav-pills .open .dropdown-toggle,
 .nav > li.dropdown.open.active > a:hover {
   color: #fff;
-  background-color: @grayLight;
-  border-color: @grayLight;
+  background-color: @gray-light;
+  border-color: @gray-light;
 }
 .nav li.dropdown.open .caret,
 .nav li.dropdown.open.active .caret,
@@ -277,7 +277,7 @@
 
 // Dropdowns in stacked tabs
 .tabs-stacked .open > a:hover {
-  border-color: @grayLight;
+  border-color: @gray-light;
 }
 
 */

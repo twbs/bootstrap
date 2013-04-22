@@ -10,11 +10,11 @@
 // Grays
 // -------------------------
 
-@grayDarker:            #222;
-@grayDark:              #333;
-@gray:                  #555;
-@grayLight:             #999;
-@grayLighter:           #eee;
+@gray-darker:            lighten(#000, 13.5%); // #222
+@gray-dark:              lighten(#000, 20%);   // #333
+@gray:                   lighten(#000, 33.5%); // #555
+@gray-light:             lighten(#000, 60%);   // #999
+@gray-lighter:           lighten(#000, 93.5%); // #eee
 
 // Brand colors
 // -------------------------
@@ -29,7 +29,7 @@
 // -------------------------
 
 @body-bg:               #fff;
-@text-color:            @grayDark;
+@text-color:            @gray-dark;
 
 // Links
 // -------------------------
@@ -109,12 +109,12 @@
 // -------------------------
 
 @input-bg:                       #fff;
-@input-bg-disabled:              @grayLighter;
+@input-bg-disabled:              @gray-lighter;
 
 @input-border:                   #ccc;
 @input-border-radius:            @border-radius-base;
 
-@input-color-placeholder:        @grayLight;
+@input-color-placeholder:        @gray-light;
 
 @input-height-base:              (@line-height-base + 14px); // base line-height + 12px vertical padding + 2px top/bottom border
 @input-height-large:             (@line-height-base + 24px); // base line-height + 22px vertical padding + 2px top/bottom border
@@ -134,7 +134,7 @@
 @dropdown-link-active-color:     #fff;
 @dropdown-link-active-bg:        @component-active-bg;
 
-@dropdown-link-color:            @grayDark;
+@dropdown-link-color:            @gray-dark;
 @dropdown-link-hover-color:      #fff;
 @dropdown-link-hover-bg:         @dropdown-link-active-bg;
 
@@ -184,11 +184,11 @@
 @navbar-brand-hover-bg:            transparent;
 
 // Inverted navbar
-@navbar-inverse-text:                       @grayLight;
+@navbar-inverse-text:                       @gray-light;
 @navbar-inverse-bg:                         #222;
 
 // Inverted navbar links
-@navbar-inverse-link-color:                 @grayLight;
+@navbar-inverse-link-color:                 @gray-light;
 @navbar-inverse-link-hover-color:           #fff;
 @navbar-inverse-link-hover-bg:              transparent;
 @navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
@@ -220,7 +220,7 @@
 // Jumbotron
 // -------------------------
 
-@jumbotron-bg:                   @grayLighter;
+@jumbotron-bg:                   @gray-lighter;
 @jumbotron-heading-color:        inherit;
 @jumbotron-lead-color:           inherit;
 
@@ -363,7 +363,7 @@
 // -------------------------
 
 // Hr border color
-@hr-border:                   @grayLighter;
+@hr-border:                   @gray-lighter;
 
 // Horizontal forms & lists
 @component-offset-horizontal: 180px;
