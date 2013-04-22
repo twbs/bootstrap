@@ -4795,7 +4795,9 @@ a.thumbnail:focus {
   border-radius: .25em;
 }
 
+.label[href]:hover,
 a.label:hover,
+.label[href]:focus,
 a.label:focus {
   color: #fff;
   text-decoration: none;
@@ -4810,20 +4812,20 @@ a.label:focus {
   background-color: #c9302c;
 }
 
-.label-warning {
-  background-color: #f0ad4e;
-}
-
-.label-warning[href] {
-  background-color: #ec971f;
-}
-
 .label-success {
   background-color: #5cb85c;
 }
 
 .label-success[href] {
   background-color: #449d44;
+}
+
+.label-warning {
+  background-color: #f0ad4e;
+}
+
+.label-warning[href] {
+  background-color: #ec971f;
 }
 
 .label-info {

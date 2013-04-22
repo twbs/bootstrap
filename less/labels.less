@@ -2,9 +2,7 @@
 // Labels
 // --------------------------------------------------
 
-// LESS base
-
-.label() {
+.label {
   display: inline;
   padding: .25em .6em;
   font-size: 75%;
@@ -17,8 +15,8 @@
   background-color: @gray-light;
   border-radius: .25em;
 
-  // Hover state, but only for links - as a mixin which will be accessible as LESS shorthand: .label > .a;
-  .a() {
+  // Nuke the hover effects for a.label and for label[href] - for anchors
+  &[href], a& {
     &:hover,
     &:focus {
       color: #fff;
@@ -26,73 +24,34 @@
       cursor: pointer;
     }
   }
-
-  // Colors
-  // Only give background-color difference to links (and to simplify, we don't qualifty with `a` but [href] attribute)
-  // If there is a need for [href] then use local mixin a() via ex: .label-danger > .a; to attach additional CSS for [href] attr
-  
-  .label-danger() {
-    background-color: @label-danger-bg;
-    .a() {
-      &[href] {
-       background-color: darken(@label-danger-bg, 10%);
-      }
-    }
-  }
-
-  .label-warning() {
-    background-color: @label-warning-bg;
-    .a() {
-      &[href] {
-        background-color: darken(@label-warning-bg, 10%);
-      }
-    }
-  }
-
-  .label-success() {
-    background-color: @label-success-bg;
-    .a() {
-      &[href] {
-        background-color: darken(@label-success-bg, 10%);
-      }
-    }
-  }
-
-  .label-info() {
-    background-color: @label-info-bg;
-    .a() {
-      &[href] {
-        background-color: darken(@label-info-bg, 10%);
-      }
-    }
-  }
 }
 
-// populate mixins for CSS
-.label {
-  .label();
-}
-
-a.label {
-  .label > .a;
-}
-
+// Colors
+// Varying the background-color - if the a has href, then deploy darker color
 .label-danger {
-  .label > .label-danger;
-  .label > .label-danger > .a; // will produce .label-danger[href] class for folks who like to use class in HTML
-}
-
-.label-warning {
-  .label > .label-warning;
-  .label > .label-warning > .a;
+  background-color: @label-danger-bg;
+  &[href] {
+    background-color: darken(@label-danger-bg, 10%);
+  }
 }
 
 .label-success {
-  .label > .label-success;
-  .label > .label-success > .a;
+  background-color: @label-success-bg;
+  &[href] {
+    background-color: darken(@label-success-bg, 10%);
+  }
+}
+
+.label-warning {
+  background-color: @label-warning-bg;
+  &[href] {
+    background-color: darken(@label-warning-bg, 10%);
+  }
 }
 
 .label-info {
-  .label > .label-info;
-  .label > .label-info > .a;
-} 
+  background-color: @label-info-bg;
+  &[href] {
+    background-color: darken(@label-info-bg, 10%);
+  }
+}
