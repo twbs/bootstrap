@@ -58,7 +58,7 @@ When completed, you'll be able to run the various make commands provided:
 Runs jshint and qunit tests headlessly in [phantomjs](http://code.google.com/p/phantomjs/) (used for ci). **Requires phantomjs.**
 
 #### watch - `make watch`
-This is a convenience method for watching just Less files and automatically building them whenever you save. **Requires the Watchr gem.**
+This is a convenience method for watching just Less files and automatically building them whenever you save. **Requires the watchr gem.**
 
 Should you encounter problems with installing dependencies or running the makefile commands, uninstall any previous versions (global and local) you may have installed, and then rerun `npm install`.
 

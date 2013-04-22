@@ -1896,7 +1896,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3 id="forms-control-sizes">Control sizing</h3>
-    <p>Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using <code>.span*</code> classes.</p>
+    <p>Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using <code>.col-span-*</code> classes.</p>
 
     <h4>Relative sizing</h4>
     <p>Create larger or smaller form controls that match button sizes.</p>
@@ -2679,7 +2679,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <div class="controls">
           <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-            <input class="span2" id="inputIcon" type="text">
+            <input class="col-span-2" id="inputIcon" type="text">
           </div>
         </div>
       </div>
@@ -2690,7 +2690,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <div class="controls">
     <div class="input-group">
       <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-      <input class="span2" id="inputIcon" type="text">
+      <input class="col-span-2" id="inputIcon" type="text">
     </div>
   </div>
 </div>
@@ -3761,7 +3761,7 @@ body {
       <h1>Breadcrumbs <small></small></h1>
     </div>
     <p class="lead">Indicate the current page's location within a navigational hierarchy.</p>
-
+    <p>Separators are automatically added in CSS through `:after` and `content`.</p>
     <div class="bs-docs-example">
       <ul class="breadcrumb">
         <li class="active">Home</li>
@@ -4246,7 +4246,7 @@ body {
     <h3 id="alerts-alternatives">Contextual alternatives</h3>
     <p>Add optional classes to change an alert's connotation.</p>
     <div class="bs-docs-example">
-      <div class="alert alert-error">
+      <div class="alert alert-danger">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Oh snap!</strong> Change a few things up and try submitting again.
       </div>
@@ -4260,7 +4260,7 @@ body {
       </div>
     </div>
 {% highlight html linenos %}
-<div class="alert alert-error">...</div>
+<div class="alert alert-danger">...</div>
 <div class="alert alert-success">...</div>
 <div class="alert alert-info">...</div>
 {% endhighlight %}
@@ -5327,7 +5327,7 @@ $('.dropdown-toggle').dropdown()
           <h2>Example in navbar</h2>
           <p>The ScrollSpy plugin is for automatically updating nav targets based on scroll position. Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.</p>
           <div class="bs-docs-example">
-            <div id="navbarExample" class="navbar navbar-static">
+            <div id="navbar-example" class="navbar navbar-static">
               <div class="navbar-inner">
                 <div class="container" style="width: auto;">
                   <a class="navbar-brand" href="#">Project Name</a>
@@ -5347,7 +5347,7 @@ $('.dropdown-toggle').dropdown()
                 </div>
               </div>
             </div>
-            <div data-spy="scroll" data-target="#navbarExample" data-offset="0" class="scrollspy-example">
+            <div data-spy="scroll" data-target="#navbar-example" data-offset="0" class="scrollspy-example">
               <h4 id="fat">@fat</h4>
               <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
               <h4 id="mdo">@mdo</h4>
@@ -5364,15 +5364,12 @@ $('.dropdown-toggle').dropdown()
           </div><!-- /example -->
 
 
-          <hr class="bs-docs-separator">
-
-
           <h2>Usage</h2>
 
           <h3>Via data attributes</h3>
-          <p>To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body) and <code>data-target=".navbar"</code> to select which nav to use. You'll want to use scrollspy with a <code>.nav</code> component.</p>
+          <p>To easily add scrollspy behavior to your topbar navigation, add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the <code>&lt;body&gt;</code>. Then add the <code>data-target</code> attribute with the ID or class of the parent element of any Bootstrap <code>.nav</code> component.</p>
 {% highlight html linenos %}
-<body data-spy="scroll" data-target=".navbar">
+<body data-spy="scroll" data-target="#navbar-example">
   ...
 </body>
 {% endhighlight %}
@@ -5380,7 +5377,7 @@ $('.dropdown-toggle').dropdown()
           <h3>Via JavaScript</h3>
           <p>Call the scrollspy via JavaScript:</p>
 {% highlight js linenos %}
-$('.navbar').scrollspy()
+$('#navbar-example').scrollspy()
 {% endhighlight %}
 
           <div class="bs-docs-sidenote">
@@ -6332,11 +6329,11 @@ $('#myCollapsible').on('hidden', function () {
             <h2>Examples</h2>
             <p>The slideshow below shows a generic plugin and component for cycling through elements like a carousel.</p>
             <div class="bs-docs-example">
-              <div class="carousel slide bs-docs-carousel-example">
+              <div id="carousel-example-generic" class="carousel slide bs-docs-carousel-example">
                 <ol class="carousel-indicators">
-                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
                   <div class="item active">
@@ -6349,21 +6346,21 @@ $('#myCollapsible').on('hidden', function () {
                     <img data-src="holder.js/900x500/auto/#777:#fff/text:Third slide" alt="">
                   </div>
                 </div>
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
                   <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
                   <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
               </div>
             </div><!-- /example -->
 {% highlight html linenos %}
-<div class="carousel slide">
+<div id="carousel-example-generic" class="carousel slide">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
   </ol>
 
   <!-- Wrapper for slides -->
@@ -6378,10 +6375,10 @@ $('#myCollapsible').on('hidden', function () {
   </div>
 
   <!-- Controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left"></span>
   </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right"></span>
   </a>
 </div>
@@ -6394,11 +6391,11 @@ $('#myCollapsible').on('hidden', function () {
               <p><strong>Captions are hidden by default</strong> and will show up only with viewports greater than 768px wide.</p>
             </div>
             <div class="bs-docs-example">
-              <div class="carousel slide bs-docs-carousel-example">
+              <div id="carousel-example-captions" class="carousel slide bs-docs-carousel-example">
                 <ol class="carousel-indicators">
-                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                  <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-example-captions" data-slide-to="1"></li>
+                  <li data-target="#carousel-example-captions" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
                   <div class="item active">
@@ -6423,10 +6420,10 @@ $('#myCollapsible').on('hidden', function () {
                     </div>
                   </div>
                 </div>
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <a class="left carousel-control" href="#carousel-example-captions" data-slide="prev">
                   <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <a class="right carousel-control" href="#carousel-example-captions" data-slide="next">
                   <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
               </div>
