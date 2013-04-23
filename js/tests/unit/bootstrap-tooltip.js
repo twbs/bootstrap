@@ -291,4 +291,75 @@ $(function () {
           container.remove()
         }, 100)
       })
+
+      test("Should get title from function where supplied", function() {
+        var opts = {title: function () { return 'generated title' }}
+          , tooltip = $('<a href="#" rel="tooltip" ></a>').tooltip(opts)
+        
+        tooltip.appendTo('#qunit-fixture').tooltip('show')
+
+        equal($('#qunit-fixture .tooltip-inner').text(), 'generated title');
+      })
+
+      test("Should get a new title each time shown", function() {
+        var n = 0
+          , opts = {title: function () { return 'shown ' + (++n) + ' times' }}
+          , tooltip = $('<a href="#" rel="tooltip" ></a>').tooltip(opts)
+        
+        tooltip.appendTo('#qunit-fixture')
+               .tooltip('show').tooltip('hide').tooltip('show')
+
+        notEqual($('#qunit-fixture .tooltip-inner').text(), 'shown 1 times');
+        equal($('#qunit-fixture .tooltip-inner').text(), 'shown ' + n + ' times');
+      })
+
+      test("Should cache titles when asked", function() {
+        var n = 0
+          , opts = {
+            cachable: true
+            , title: function () { return 'shown ' + (++n) + ' times' }
+          }
+          , tooltip = $('<a href="#" rel="tooltip" ></a>').tooltip(opts)
+        
+        tooltip.appendTo('#qunit-fixture')
+               .tooltip('show').tooltip('hide').tooltip('show')
+
+        equal($('#qunit-fixture .tooltip-inner').text(), 'shown 1 times');
+      })
+
+      test("Should expose a repositioning mechanism for dynamic content", function () {
+        var css = {position: "absolute", bottom: 0, left: 0, textAlign: "right", width: 300, height: 300}
+          , $container = $("<div />").appendTo("body").css(css)
+          , $p = $("<p style='margin-top:200px;margin-left:200px' />").appendTo($container)
+          , $title = $('<span>Some text</span>')
+          , opts = {
+            trigger: 'manual'
+            , html: true
+            , placement: 'left'
+            , animate: false
+            , title: $title
+            }
+          , $a = $('<a href="#" rel="tooltip">has tip</a>').appendTo($p).tooltip(opts).tooltip('show')
+
+        stop()
+
+        setTimeout(function() {
+          var tooltip = $container.find(".tooltip")
+            , offsetA = tooltip.offset()
+
+          $title.append('A whole lot more text than was there previously')
+          $a.tooltip('reposition')
+
+          setTimeout(function() {
+            var tooltip = $container.find(".tooltip")
+              , offsetB = tooltip.offset()
+
+            start()
+            notEqual(offsetA.top, offsetB.pop)
+            $container.remove()
+          }, 0)
+
+        }, 0)
+      })
+
 })
