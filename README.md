@@ -71,6 +71,8 @@ Should you encounter problems with installing dependencies or running the makefi
 
 Please submit all pull requests against *-wip branches. If your pull request contains JavaScript patches or features, you must include relevant unit tests. All HTML and CSS should conform to the [Code Guide](http://github.com/mdo/code-guide), maintained by [Mark Otto](http://github.com/mdo).
 
+Editor preferences are also available in the [editor config](.editorconfig) for easy application in common text editors. Read more and download plugins at [http://editorconfig.com](http://editorconfig.com).
+
 
 
 ## Community
