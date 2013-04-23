@@ -56,6 +56,26 @@ $(function () {
         typeahead.$menu.remove()
       })
 
+      test("should show menu when query is empty und minLength is 0", function () {
+        var $input = $('<input />')
+            .appendTo('body')
+            .typeahead({
+              source: ['aa', 'ab', 'ac'],
+              minLength: 0
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('')
+        typeahead.lookup()
+
+        ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
+        equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
+        equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
+
+        $input.remove()
+        typeahead.$menu.remove()
+      })
+
       test("should accept data source via synchronous function", function () {
         var $input = $('<input />').typeahead({
               source: function () {
