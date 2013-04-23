@@ -3192,9 +3192,9 @@ a.list-group-item.active .list-group-item-text {
 
 .close {
   float: right;
-  font-size: 20px;
+  font-size: 21px;
   font-weight: bold;
-  line-height: 20px;
+  line-height: 1;
   color: #000;
   text-shadow: 0 1px 0 #ffffff;
   opacity: 0.2;
@@ -3382,7 +3382,7 @@ button.close {
 .nav-header {
   display: block;
   padding: 3px 15px;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: bold;
   line-height: 20px;
   color: #999999;
@@ -3576,7 +3576,7 @@ button.close {
   padding: 15px;
   margin-right: auto;
   margin-left: auto;
-  font-size: 18px;
+  font-size: 17.5px;
   font-weight: 500;
   line-height: 20px;
   color: #777777;
@@ -4355,7 +4355,7 @@ button.close {
   position: absolute;
   z-index: 1030;
   display: block;
-  font-size: 11px;
+  font-size: 10.5px;
   line-height: 1.4;
   opacity: 0;
   filter: alpha(opacity=0);
@@ -4802,7 +4802,7 @@ a.thumbnail:focus {
   display: inline-block;
   min-width: 10px;
   padding: 3px 7px;
-  font-size: 12px;
+  font-size: 11.9px;
   font-weight: bold;
   line-height: 1;
   color: #fff;
@@ -4902,7 +4902,7 @@ a.list-group-item.active > .badge,
   float: left;
   width: 0;
   height: 100%;
-  font-size: 12px;
+  font-size: 11.9px;
   color: #fff;
   text-align: center;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -5216,7 +5216,7 @@ a.list-group-item.active > .badge,
     border-radius: 6px;
   }
   .jumbotron h1 {
-    font-size: 60px;
+    font-size: 63px;
   }
 }
 
