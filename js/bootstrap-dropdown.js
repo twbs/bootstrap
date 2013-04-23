@@ -30,6 +30,7 @@
     , Dropdown = function (element) {
         var $el = $(element).on('click.dropdown.data-api', this.toggle)
         $('html').on('click.dropdown.data-api', function () {
+          $el.parent().trigger('hide')
           $el.parent().removeClass('open')
         })
       }
@@ -53,6 +54,7 @@
 
       if (!isActive) {
         $parent.toggleClass('open')
+        $parent.trigger('show')
       }
 
       $this.focus()
@@ -105,7 +107,12 @@
 
   function clearMenus() {
     $(toggle).each(function () {
-      getParent($(this)).removeClass('open')
+      var $parent = getParent($(this))
+      var isActive = $parent.hasClass('open')
+      if (isActive) {
+        $parent.trigger('hide')
+      }
+      $parent.removeClass('open')
     })
   }
 
