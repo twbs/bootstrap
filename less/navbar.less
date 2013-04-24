@@ -328,9 +328,16 @@
     height: auto !important;
     overflow: visible !important;
   }
+  
 
 }
 
+// Clear float on smaller devices
+@media screen and (max-width: 768px) {
+  .navbar .nav-collapse.collapse *{
+     float: none;   
+  }
+}
 /*
 
 // Janky solution for now to account for links outside the .nav
