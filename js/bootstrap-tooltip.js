@@ -56,8 +56,8 @@
         } else if (trigger != 'manual') {
           eventIn = trigger == 'hover' ? 'mouseenter' : 'focus'
           eventOut = trigger == 'hover' ? 'mouseleave' : 'blur'
-          this.$element.on(eventIn + '.' + this.type, this.options.selector, $.proxy(this.enter, this))
-          this.$element.on(eventOut + '.' + this.type, this.options.selector, $.proxy(this.leave, this))
+          this.$element.on(eventIn + '.' + this.type, this.options.selector, $.proxy(this.onenter, this))
+          this.$element.on(eventOut + '.' + this.type, this.options.selector, $.proxy(this.onleave, this))
         }
       }
 
@@ -78,8 +78,14 @@
 
       return options
     }
+    
+  , onenter: function(e) {
+     this.enter(e.currentTarget)
+  }
 
-  , enter: function (e) {
+  , enter: function (currentTarget) {
+      currentTarget = currentTarget || this.$element[0]
+
       var defaults = $.fn[this.type].defaults
         , options = {}
         , self
@@ -88,24 +94,32 @@
         if (defaults[key] != value) options[key] = value
       }, this)
 
-      self = $(e.currentTarget)[this.type](options).data(this.type)
+      self = $(currentTarget)[this.type](options).data(this.type)
+
+      self.hoverState = 'in'
 
       if (!self.options.delay || !self.options.delay.show) return self.show()
 
       clearTimeout(this.timeout)
-      self.hoverState = 'in'
       this.timeout = setTimeout(function() {
         if (self.hoverState == 'in') self.show()
       }, self.options.delay.show)
     }
 
-  , leave: function (e) {
-      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
+  , onleave: function(e) {
+     this.leave(e.currentTarget)
+  }
+  
+  , leave: function (currentTarget) {
+      currentTarget = currentTarget || this.$element[0]
+      var self = $(currentTarget)[this.type](this._options).data(this.type)
+
+      if (self.hoverState !== 'in') return;
+      self.hoverState = 'out'
 
       if (this.timeout) clearTimeout(this.timeout)
       if (!self.options.delay || !self.options.delay.hide) return self.hide()
 
-      self.hoverState = 'out'
       this.timeout = setTimeout(function() {
         if (self.hoverState == 'out') self.hide()
       }, self.options.delay.hide)
@@ -119,6 +133,9 @@
         , placement
         , tp
         , e = $.Event('show')
+      
+      if (Tooltip.prev && Tooltip.prev !== this) Tooltip.prev.leave();
+      Tooltip.prev = this
 
       if (this.hasContent() && this.enabled) {
         this.$element.trigger(e)
