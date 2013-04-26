@@ -369,6 +369,22 @@
 @component-offset-horizontal: 180px;
 
 
+// Media queries breakpoints
+// --------------------------------------------------
+
+// Tiny screen / phone
+@screen-tiny:                480px;
+@screen-phone:               @screen-tiny;
+// Small screen / tablet
+@screen-small:               768px;
+@screen-tablet:              @screen-small;
+// Medium screen / desktop
+@screen-medium:              992px;
+@screen-desktop:             @screen-medium;
+// Large screen / wide desktop
+@screen-large:               1200px;
+@screen-large-desktop:       @screen-large;
+
 
 // Grid system
 // --------------------------------------------------
@@ -378,4 +394,5 @@
 // Padding, to be divided by two and applied to the left and right of all columns
 @grid-gutter-width:         30px;
 // Point at which the navbar stops collapsing
-@grid-float-breakpoint:     768px;
+@grid-float-breakpoint:     @screen-tablet;
+
