@@ -4796,19 +4796,19 @@ a.thumbnail:focus {
 }
 
 .label[href]:hover,
-a.label:hover,
-.label[href]:focus,
-a.label:focus {
+.label[href]:focus {
   color: #fff;
   text-decoration: none;
   cursor: pointer;
+  background-color: #808080;
 }
 
 .label-danger {
   background-color: #d9534f;
 }
 
-.label-danger[href] {
+.label-danger[href]:hover,
+.label-danger[href]:focus {
   background-color: #c9302c;
 }
 
@@ -4816,7 +4816,8 @@ a.label:focus {
   background-color: #5cb85c;
 }
 
-.label-success[href] {
+.label-success[href]:hover,
+.label-success[href]:focus {
   background-color: #449d44;
 }
 
@@ -4824,7 +4825,8 @@ a.label:focus {
   background-color: #f0ad4e;
 }
 
-.label-warning[href] {
+.label-warning[href]:hover,
+.label-warning[href]:focus {
   background-color: #ec971f;
 }
 
@@ -4832,7 +4834,8 @@ a.label:focus {
   background-color: #5bc0de;
 }
 
-.label-info[href] {
+.label-info[href]:hover,
+.label-info[href]:focus {
   background-color: #31b0d5;
 }
 
