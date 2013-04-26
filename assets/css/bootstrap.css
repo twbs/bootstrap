@@ -6790,6 +6790,12 @@ a.badge:focus {
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
+.footer-ba {
+  height: 33px;
+  background: url(../img/logo-white.png) no-repeat center top;
+  border: none;
+}
+
 .pull-right {
   float: right;
 }
