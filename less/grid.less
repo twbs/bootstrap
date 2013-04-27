@@ -26,7 +26,7 @@
 .generate-small-grid-columns(@grid-columns);
 
 // Responsive: Tablets and up
-@media screen and (min-width: 768px) {
+@media screen and (min-width: @screen-tablet) {
   .container {
     max-width: 728px;
   }
@@ -38,14 +38,14 @@
 }
 
 // Responsive: Desktops and up
-@media screen and (min-width: 992px) {
+@media screen and (min-width: @screen-desktop) {
   .container {
     max-width: 940px;
   }
 }
 
 // Responsive: Large desktops and up
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: @screen-large-desktop) {
   .container {
     max-width: 1170px;
   }
