@@ -12,29 +12,35 @@
 .row {
   .make-row();
 }
-[class*="col-span-"],
-[class*="col-small-"] {
+
+
+// Common styles for small and large grid columns
+.col {
   position: relative;
+  // Float and set width: 100%; for easy stacking on mobile devices
+  float: left;
+  width: 100%;
+  // Prevent columns from collapsing when empty
   min-height: 1px;
+  // Inner gutter via padding
   padding-left:  (@grid-gutter-width / 2);
   padding-right: (@grid-gutter-width / 2);
 }
 
-[class*="col-small-"] {
-  float: left;
+// Generate small grid classes first
+.generate-grid-columns(@grid-columns);
+
+// Then generate the larger grid classes via media query
+@media screen and (min-width: 768px) {
+  .generate-large-grid-columns(@grid-columns);
 }
-.generate-small-grid-columns(@grid-columns);
+
 
 // Responsive: Tablets and up
 @media screen and (min-width: 768px) {
   .container {
     max-width: 728px;
   }
-  // Generate the grid columns and offsets
-  [class*="col-span-"] {
-    float: left;
-  }
-  .generate-grid-columns(@grid-columns);
 }
 
 // Responsive: Desktops and up
@@ -52,6 +58,6 @@
 }
 
 // Reset utility classes due to specificity
-[class*="col-span-"].pull-right {
+/*[class*="col-span-"].pull-right {
   float: right;
-}
+}*/

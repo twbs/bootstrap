@@ -124,13 +124,13 @@ section > ul li {
 .show-grid {
   margin-bottom: 15px;
 }
-.show-grid [class*="col-span-"] {
+.show-grid .col {
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #eee;
   border: 1px solid #ddd;
 }
-.show-grid [class*="col-span-"]:hover {
+.show-grid .col:hover {
   background-color: #ddd;
 }
 
