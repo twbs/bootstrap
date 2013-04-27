@@ -375,12 +375,19 @@
 // Tiny screen / phone
 @screen-tiny:                480px;
 @screen-phone:               @screen-tiny;
+
 // Small screen / tablet
 @screen-small:               768px;
 @screen-tablet:              @screen-small;
+
 // Medium screen / desktop
 @screen-medium:              992px;
 @screen-desktop:             @screen-medium;
+
+// So media queries don't overlap when required, provide a maximum
+@screen-small-max:           (@screen-medium - 1);
+@screen-tablet-max:          @screen-small-max;
+
 // Large screen / wide desktop
 @screen-large:               1200px;
 @screen-large-desktop:       @screen-large;
