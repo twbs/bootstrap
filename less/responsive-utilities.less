@@ -46,7 +46,7 @@
 
 
 // Tablets & small desktops only
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: @screen-tablet) and (max-width: @screen-desktop) {
   .visible-phone    { display: none !important; }
   .visible-tablet    { display: inherit !important; }
   .visible-desktop   { display: none !important; }
@@ -57,7 +57,7 @@
 }
 
 // For desktops
-@media (min-width: 980px) {
+@media (min-width: @screen-desktop) {
   .visible-phone     { display: none !important; }
   .visible-tablet    { display: none !important; }
   .visible-desktop   { display: inherit !important; }

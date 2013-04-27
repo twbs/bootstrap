@@ -5341,7 +5341,7 @@ a.list-group-item.active > .badge,
   display: inherit !important;
 }
 
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: 768px) and (max-width: 992px) {
   .visible-phone {
     display: none !important;
   }
@@ -5362,7 +5362,7 @@ a.list-group-item.active > .badge,
   }
 }
 
-@media (min-width: 980px) {
+@media (min-width: 992px) {
   .visible-phone {
     display: none !important;
   }
