@@ -1,0 +1,172 @@
+﻿<!-- Subhead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1>Para empezar</h1>
+    <p class="lead">Información sobre el proyecto y cómo empezar a usar BAstrap.</p>
+  </div>
+</header>
+
+
+  <div class="container">
+
+    <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav">
+          <li><a href="#download-bootstrap"><i class="icon-chevron-right"></i> Descarga</a></li>
+          <li><a href="#contents"><i class="icon-chevron-right"></i> Contenidos</a></li>
+          <li><a href="#html-template"><i class="icon-chevron-right"></i> HTML template</a></li>
+        </ul>
+      </div>
+      <div class="span9">
+
+
+        <!-- Download
+        ================================================== -->
+        <section id="download-bootstrap">
+          <div class="page-header">
+            <h1>1. Descarga</h1>
+          </div>
+          <p class="lead">Antes de descargar, se avisa que es necesario tener conocimientos de HTML y CSS.</p>
+
+          <div class="row-fluid">
+            <div class="span6">
+              <h2>Descarga</h2>
+              <p><strong>Descargue las versiones compiladas y minificadas de nuestro CSS, JS, e imágenes.</p>
+              <p><a class="btn btn-large btn-primary" href="assets/bootstrap.zip">Descargar BAstrap</a></p>
+            </div>
+          </div>
+        </section>
+
+
+
+        <!-- File structure
+        ================================================== -->
+        <section id="file-structure">
+          <div class="page-header">
+            <h1>2. Estructura de archivos</h1>
+          </div>
+          <p class="lead">En la descarga vas a encontrar la siguiente estructura y contenidos, agrupando los recursos y proveyendo variaciones compiladas y minificadas.</p>
+          <p>Una vez descargado, descomprimí la carpeta para ver la estructura de BAstrap. Verás algo como esto:</p>
+<pre class="prettyprint">
+  bootstrap/
+  ├── css/
+  │   ├── bootstrap.css
+  │   ├── bootstrap.min.css
+  ├── js/
+  │   ├── bootstrap.js
+  │   ├── bootstrap.min.js
+  └── img/
+      ├── glyphicons-halflings.png
+      └── glyphicons-halflings-white.png
+      └── logo.png
+      └── logo-white.png
+</pre>
+        </section>
+
+
+
+        <!-- Contents
+        ================================================== -->
+        <section id="contents">
+          <div class="page-header">
+            <h1>3. Qué está incluido</h1>
+          </div>
+          <p class="lead">BAstrap tiene HTML, CSS, y JS para todo tipo de usos, pero se pueden resumir en las categorías que se ven en la navegación de esta documentación.</p>
+
+          <h2>Secciones</h2>
+          <h4><a href="layout.html">Layout</a></h4>
+          <p>Estilos globales para dar formato a la tipografía, fondo, estilos de enlaces, sistema de grilla y dos layouts simples.</p>
+          <h4><a href="estilos-css.html">Estilos CSS</a></h4>
+          <p>Estilos para elementos HTML comunes como tipografía, código, tablas, formularios, y botones. También incluye un set de<a href="http://glyphicons.com">Glyphicons</a>.</p>
+          <h4><a href="componentes.html">Componentes</a></h4>
+          <p>Estilos básicos para componentes comunes como pestañas, pills, barras de navegación, alertas, encabezados y más.</p>
+          <h4><a href="javascript.html">JavaScript</a></h4>
+          <p>Similar a Componentes, estos plugins son componentes interactivos para cosas como tooltips, popovers, modals y más.</p>
+
+          <h2>Lista de componentes</h2>
+          <p>Juntas, las secciones de <strong>Componentes</strong> y <strong>JavaScript</strong> proveen los siguientes elementos de interfaz:</p>
+          <ul>
+            <li>Grupos de botones</li>
+            <li>Dropdowns de botones</li>
+            <li>Pestañas, pastillas y listas de navegación</li>
+            <li>Barras de navegación</li>
+            <li>Etiquetas</li>
+            <li>Badges</li>
+            <li>Encabezados de página y "hero unit"</li>
+            <li>Miniaturas</li>
+            <li>Alertas</li>
+            <li>Barras de progreso</li>
+            <li>Modals</li>
+            <li>Dropdowns</li>
+            <li>Tooltips</li>
+            <li>Popovers</li>
+            <li>Accordion</li>
+            <li>Carousel</li>
+            <li>Typeahead</li>
+          </ul>
+        </section>
+
+
+
+        <!-- HTML template
+        ================================================== -->
+        <section id="html-template">
+          <div class="page-header">
+            <h1>4. Template HTML básico</h1>
+          </div>
+          <p class="lead">Para empezar a usar BAstrap, usaremos un template básico de HTML que incluye todo lo mencionado en la <a href="./empezar.html#file-structure">estructura de archivos</a>.</p>
+          <p>Acá hay un <strong>archivo HTML típico</strong>:</p>
+<pre class="prettyprint linenums">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello, world!&lt;/h1&gt;
+    &lt;script src="http://code.jquery.com/jquery.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+          <p>Para hacer de esto <strong>un template BAstrapizado</strong>, simplemente incluí los archivos CSS y JS necesarios:</p>
+<pre class="prettyprint linenums">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;!-- Bootstrap --&gt;
+    &lt;link href="css/bootstrap.min.css" rel="stylesheet" media="screen"&gt;
+    &lt;link href="css/ba.css" rel="stylesheet" media="screen"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class="gcba-fixed-top"&gt;
+      &lt;div class="header-gcba"&gt;
+          &lt;div class="header-inner"&gt;
+            &lt;div class="container"&gt;
+              &lt;div id="logo"&gt;Buenos Aires Ciudad&lt;/div&gt;
+              &lt;h2 class="slogan"&gt;En todo estás vos&lt;/h2&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;h1&gt;Hello, world!&lt;/h1&gt;
+    &lt;footer class="footer"&gt;
+      &lt;hr class="footer-ba"&gt;
+    &lt;/footer&gt;
+    &lt;script src="http://code.jquery.com/jquery.js"&gt;&lt;/script&gt;
+    &lt;script src="js/bootstrap.min.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+          <p><strong>¡Y listo!</strong> Con esos dos archivos agregados, podés empezar a desarrollar cualquier sitio o aplicación con BAstrap. Ya estarán incluidos el encabezado y el pie con la identidad del Gobierno.</p>
+        </section>
+
+      </div>{{! /span9 }}
+    </div>{{! row}}
+
+  </div>{{! /.container }}
