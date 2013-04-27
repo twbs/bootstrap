@@ -19,28 +19,41 @@ title: Bootstrap Documentation
       <h1>Getting started</h1>
     </div>
     <p class="lead">There are a few easy ways to quickly get started with Bootstrap, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
-    <div class="row">
-      <div class="col-span-6">
-        <h3>Compiled CSS and JS</h3>
-        <p><strong>The fastest way to get started:</strong> get the compiled and minified versions of our CSS, JavaScript, and fonts. No documentation or original source files are included.</p>
-        <p><a class="btn btn-large btn-primary" href="assets/bootstrap.zip" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a></p>
-      </div>
-      <div class="col-span-6">
-        <h3>Latest source code</h3>
-        <p>Get the original files for all CSS and JavaScript, along with a local copy of the docs by downloading the latest version directly from GitHub.</p>
-        <p><a class="btn btn-large" href="https://github.com/twitter/bootstrap/zipball/master" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download Bootstrap source</a></p>
-      </div>
-      <div class="col-span-6">
-        <h3>Clone or fork via GitHub</h3>
-        <p>Clone the entire project or fork your own version of Bootstrap to make it your own by visiting us on GitHub.</p>
-        <p><a class="btn btn-large" href="https://github.com/twitter/bootstrap/" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'GitHub project']);">GitHub repository</a></p>
-      </div>
-      <div class="col-span-6">
-        <h3>Bower</h3>
-        <p>Install and manage the original files for all CSS and JavaScript, along with a local copy of the docs, using <a href="http://twitter.github.com/bower">Bower</a>.</p>
+
+    <h3>Download compiled CSS and JS</h3>
+    <p class="lead">The fastest way to get started is to get the compiled and minified versions of our CSS, JavaScript, and fonts. No documentation or original source files are included.</p>
+    <p><a class="btn btn-large btn-primary" href="assets/bootstrap.zip" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a></p>
+
+    <hr>
+
+    <h3 id="download-options">More download options</h3>
+    <div class="bs-docs-dl-options">
+      <h4>
+        <a href="https://github.com/twitter/bootstrap/zipball/master" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download latest source code</a>
+      </h4>
+      <p>Get the original files for all CSS and JavaScript by downloading the latest version directly from GitHub.</p>
+      <h4>
+        <a href="https://github.com/twitter/bootstrap/" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'GitHub project']);">Clone or fork via GitHub</a>
+      </h4>
+      <p>Clone the entire project or fork your own version of Bootstrap to make it your own by visiting us on GitHub.</p>
+      <h4>
+        Install with <a href="http://twitter.github.com/bower">Bower</a>
+      </h4>
+      <p>Install and manage the original files for all CSS and JavaScript, along with a local copy of the docs, using <a href="http://twitter.github.com/bower">Bower</a>.</p>
         {% highlight bash %}$ bower install bootstrap{% endhighlight %}
-      </div>
     </div>
+
+    <hr>
+
+    <h3 id="bootstrap-cdn">Use the Bootstrap CDN</h3>
+    <p>The folks over at <a href="https://www.netdna.com/">NetDNA</a> have graciously provided CDN support for Bootstrap's CSS and JavaScript. To use, swap your local instances for the <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links listed below.</p>
+{% highlight html linenos %}
+<!-- Latest compiled and minified CSS -->
+<link href="//netdna.bootstrapcdn.com/bootstrap/head/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/head/js/bootstrap.min.js"></script>
+{% endhighlight %}
   </div>
 
   <!-- File structure

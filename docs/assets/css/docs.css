@@ -13,6 +13,16 @@ body {
   /* We add the padding to the body for >768px only */
 }
 
+hr {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.bs-docs-dl-options h4 {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
 .bs-docs-container,
 .bs-home-container {
   padding-left: 15px;
