@@ -3490,7 +3490,7 @@ button.close {
 
 .navbar {
   position: relative;
-  padding: 10px 15px;
+  padding: 0 15px;
   background-color: #eeeeee;
   border-radius: 4px;
 }
@@ -3741,10 +3741,6 @@ button.close {
 }
 
 @media screen and (min-width: 768px) {
-  .navbar {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
   .navbar-brand {
     float: left;
     margin-right: 5px;
