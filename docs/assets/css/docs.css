@@ -308,7 +308,7 @@ section > ul li {
 .bs-navbar-bottom-example {
   z-index: 1;
   padding: 0;
-  height: 90px;
+  height: 110px;
   overflow: hidden; /* cut the drop shadows off */
 }
 .bs-navbar-top-example .navbar-fixed-top,

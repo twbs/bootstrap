@@ -3423,7 +3423,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="bs-docs-example">
       <div class="navbar">
         <a class="navbar-brand" href="#">Title</a>
-        <ul class="nav">
+        <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">Link</a></li>
           <li><a href="#">Link</a></li>
@@ -3433,7 +3433,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% highlight html linenos %}
 <div class="navbar">
   <a class="navbar-brand" href="#">Title</a>
-  <ul class="nav">
+  <ul class="nav navbar-nav">
     <li class="active"><a href="#">Home</a></li>
     <li><a href="#">Link</a></li>
     <li><a href="#">Link</a></li>
@@ -3458,7 +3458,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Nav items are simple to add via unordered lists.</p>
     <div class="bs-docs-example">
       <div class="navbar">
-        <ul class="nav">
+        <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">Link</a></li>
           <li class="disabled"><a href="#">Disabled</a></li>
@@ -3466,30 +3466,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div>
     </div><!-- /example -->
 {% highlight html linenos %}
-<ul class="nav">
+<ul class="nav navbar-nav">
   <li class="active"><a href="#">Home</a></li>
   <li><a href="#">Link</a></li>
   <li class="disabled"><a href="#">Disabled</a></li>
-</ul>
-{% endhighlight %}
-    <p>You can easily add dividers to your nav links with an empty list item and a simple class. Just add the appropriate class to <code>&lt;li&gt;</code> elements between links. Dividers will be horizontal to start, but at resolutions above 768px they become vertical with the navigation.</p>
-    <div class="bs-docs-example">
-      <div class="navbar">
-        <ul class="nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Link</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Link</a></li>
-          <li class="divider"></li>
-        </ul>
-      </div>
-    </div><!-- /example -->
-{% highlight html linenos %}
-<ul class="nav">
-  ...
-  <li class="divider"></li>
-  ...
 </ul>
 {% endhighlight %}
 
@@ -3529,7 +3509,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <div class="navbar navbar-fixed-top" style="position: absolute; top: -1px;">
         <div class="container" style="width: auto;">
           <a class="navbar-brand" href="#">Title</a>
-          <ul class="nav">
+          <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">Link</a></li>
             <li><a href="#">Link</a></li>
@@ -3565,7 +3545,7 @@ body {
       <div class="navbar navbar-fixed-bottom" style="position: absolute; bottom: -1px;">
         <div class="container" style="width: auto;">
           <a class="navbar-brand" href="#">Title</a>
-          <ul class="nav">
+          <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">Link</a></li>
             <li><a href="#">Link</a></li>
@@ -3601,7 +3581,7 @@ body {
       <div class="navbar navbar-static-top" style="margin: -1px -1px 0;">
         <div class="container" style="width: auto;">
           <a class="navbar-brand" href="#">Title</a>
-          <ul class="nav">
+          <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">Link</a></li>
             <li><a href="#">Link</a></li>
@@ -3628,7 +3608,7 @@ body {
           </button>
           <a class="navbar-brand" href="#">Title</a>
           <div class="nav-collapse collapse navbar-responsive-collapse">
-            <ul class="nav">
+            <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#">Link</a></li>
               <li><a href="#">Link</a></li>
@@ -3648,9 +3628,8 @@ body {
             <form class="navbar-form pull-left" action="">
               <input type="text" class="col-span-8" placeholder="Search">
             </form>
-            <ul class="nav pull-right">
+            <ul class="nav navbar-nav pull-right">
               <li><a href="#">Link</a></li>
-              <li class="divider"></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -3706,7 +3685,7 @@ body {
           </button>
           <a class="navbar-brand" href="#">Title</a>
           <div class="nav-collapse collapse navbar-inverse-collapse">
-            <ul class="nav">
+            <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#">Link</a></li>
               <li><a href="#">Link</a></li>
@@ -3726,9 +3705,8 @@ body {
             <form class="navbar-form pull-left" action="">
               <input type="text" class="col-span-8" placeholder="Search">
             </form>
-            <ul class="nav pull-right">
+            <ul class="nav navbar-nav pull-right">
               <li><a href="#">Link</a></li>
-              <li class="divider"></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
