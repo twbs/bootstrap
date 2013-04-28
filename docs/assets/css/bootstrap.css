@@ -4261,7 +4261,7 @@ button.close {
 }
 
 .modal.fade {
-  top: -25%;
+  top: -100%;
   -webkit-transition: opacity 0.3s linear, top 0.3s ease-out;
      -moz-transition: opacity 0.3s linear, top 0.3s ease-out;
        -o-transition: opacity 0.3s linear, top 0.3s ease-out;
