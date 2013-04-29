@@ -2,7 +2,7 @@
 var hogan = require('hogan.js')
   , fs    = require('fs')
   , prod  = process.argv[2] == 'production'
-  , title = 'Bootstrap'
+  , title = 'BAstrap'
 
 var layout, pages
 

@@ -1,12 +1,11 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8">
-    <title>Scaffolding · Bootstrap</title>
+    <title>Layout · BAstrap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="BAStrap">
     <meta name="author" content="Gobierno de la Ciudad de Buenos Aires">
-
 	<!-- Invocando Open Sans y Gotham -->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,800,300' rel='stylesheet' type='text/css'>
 	
@@ -24,9 +23,9 @@
     <!-- Le fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="assets/ico/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
 
   </head>
 
@@ -56,29 +55,26 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <!-- Botón de home Bootstrap      <a class="brand" href="./index.html">Buenos Aires Ciudad</a> -->
+          <!-- Botón de home Bootstrap <a class="brand" href="./index.html">Buenos Aires Ciudad</a> -->
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="">
                 <a href="./index.html">Inicio</a>
               </li>
               <li class="">
-                <a href="./getting-started.html">Empezar</a>
-              </li>
-              <li class="active">
-                <a href="./scaffolding.html">Layout</a>
+                <a href="./empezar.html">Empezar</a>
               </li>
               <li class="">
-                <a href="./base-css.html">CSS básico</a>
+                <a href="./layout.html">Layout</a>
               </li>
               <li class="">
-                <a href="./components.html">Componentes</a>
+                <a href="./estilos-css.html">Estilos CSS</a>
+              </li>
+              <li class="">
+                <a href="./componentes.html">Componentes</a>
               </li>
               <li class="">
                 <a href="./javascript.html">JavaScript</a>
-              </li>
-              <li class="">
-                <a href="./customize.html">Customize</a>
               </li>
             </ul>
           </div>
@@ -86,12 +82,12 @@
       </div>
     </div>
 
-<!-- Subhead
+﻿<!-- Subhead
 ================================================== -->
 <header class="jumbotron subhead" id="overview">
   <div class="container">
-    <h1>Scaffolding</h1>
-    <p class="lead">Bootstrap is built on responsive 12-column grids, layouts, and components.</p>
+    <h1>Layout</h1>
+    <p class="lead">BAstrap funciona sobre grillas responsive de 12 columnas, layouts, y componentes.</p>
   </div>
 </header>
 
@@ -102,11 +98,11 @@
     <div class="row">
       <div class="span3 bs-docs-sidebar">
         <ul class="nav nav-list bs-docs-sidenav">
-          <li><a href="#global"><i class="icon-chevron-right"></i> Global styles</a></li>
-          <li><a href="#gridSystem"><i class="icon-chevron-right"></i> Grid system</a></li>
-          <li><a href="#fluidGridSystem"><i class="icon-chevron-right"></i> Fluid grid system</a></li>
+          <li><a href="#global"><i class="icon-chevron-right"></i> Estilos globales</a></li>
+          <li><a href="#gridSystem"><i class="icon-chevron-right"></i> Sistema de grillas</a></li>
+          <li><a href="#fluidGridSystem"><i class="icon-chevron-right"></i> Sistema de grilla fluida</a></li>
           <li><a href="#layouts"><i class="icon-chevron-right"></i> Layouts</a></li>
-          <li><a href="#responsive"><i class="icon-chevron-right"></i> Responsive design</a></li>
+          <li><a href="#responsive"><i class="icon-chevron-right"></i> Diseño responsive</a></li>
         </ul>
       </div>
       <div class="span9">
@@ -117,30 +113,17 @@
         ================================================== -->
         <section id="global">
           <div class="page-header">
-            <h1>Global settings</h1>
+            <h1>Estilos globales</h1>
           </div>
 
-          <h3>Requires HTML5 doctype</h3>
-          <p>Bootstrap makes use of certain HTML elements and CSS properties that require the use of the HTML5 doctype. Include it at the beginning of all your projects.</p>
+          <h3>Requiere doctype HTML5</h3>
+          <p>BAstrap necesita el doctype de HTML5. Incluilo al principio de tus páginas.</p>
 <pre class="prettyprint linenums">
 &lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
+&lt;html lang="es"&gt;
   ...
 &lt;/html&gt;
 </pre>
-
-          <h3>Typography and links</h3>
-          <p>Bootstrap sets basic global display, typography, and link styles. Specifically, we:</p>
-          <ul>
-            <li>Remove <code>margin</code> on the body</li>
-            <li>Set <code>background-color: white;</code> on the <code>body</code></li>
-            <li>Use the <code>@baseFontFamily</code>, <code>@baseFontSize</code>, and <code>@baseLineHeight</code> attributes as our typographic base</li>
-            <li>Set the global link color via <code>@linkColor</code> and apply link underlines only on <code>:hover</code></li>
-          </ul>
-          <p>These styles can be found within <strong>scaffolding.less</strong>.</p>
-
-          <h3>Reset via Normalize</h3>
-          <p>With Bootstrap 2, the old reset block has been dropped in favor of <a href="http://necolas.github.com/normalize.css/" target="_blank">Normalize.css</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a> that also powers the <a href="http://html5boilerplate.com" target="_blank">HTML5 Boilerplate</a>. While we use much of Normalize within our <strong>reset.less</strong>, we have removed some elements specifically for Bootstrap.</p>
 
         </section>
 
@@ -151,11 +134,11 @@
         ================================================== -->
         <section id="gridSystem">
           <div class="page-header">
-            <h1>Default grid system</h1>
+            <h1>Sistema predeterminado de grillas</h1>
           </div>
 
-          <h2>Live grid example</h2>
-          <p>The default Bootstrap grid system utilizes <strong>12 columns</strong>, making for a 940px wide container without <a href="./scaffolding.html#responsive">responsive features</a> enabled. With the responsive CSS file added, the grid adapts to be 724px and 1170px wide depending on your viewport. Below 767px viewports, the columns become fluid and stack vertically.</p>
+          <h2>Ejemplo de grilla funcional</h2>
+          <p>El sistema de grilla usa <strong>12 columnas</strong>, que hacen un container de 940px de ancho si no tenemos <a href="./scaffolding.html#responsive">responsive</a> activado. Incluyendo el CSS responsive, la grilla se adapta para ser de 724px y 1170px de ancho dependiendo del tamaño de tu navegador. Para navegadores de menos de 767px las columnas se hacen fluidas y se ordenan verticalmente.</p>
           <div class="bs-docs-grid">
             <div class="row show-grid">
               <div class="span1">1</div>
@@ -182,18 +165,18 @@
             </div>
           </div>
 
-          <h3>Basic grid HTML</h3>
-          <p>For a simple two column layout, create a <code>.row</code> and add the appropriate number of <code>.span*</code> columns. As this is a 12-column grid, each <code>.span*</code> spans a number of those 12 columns, and should always add up to 12 for each row (or the number of columns in the parent).</p>
+          <h3>Grilla básica HTML</h3>
+          <p>Para un layout simple de dos columnas, creá un <code>.row</code> y agregá el número apropiado de columnas <code>.span*</code>. Los <code>.span*</code> tienen que sumar un total de 12.</p>
 <pre class="prettyprint linenums">
 &lt;div class="row"&gt;
   &lt;div class="span4"&gt;...&lt;/div&gt;
   &lt;div class="span8"&gt;...&lt;/div&gt;
 &lt;/div&gt;
 </pre>
-          <p>Given this example, we have <code>.span4</code> and <code>.span8</code>, making for 12 total columns and a complete row.</p>
+          <p>En este ejemplo tenemos un <code>.span4</code> y <code>.span8</code>, que hacen 12 columnas, o sea una fila completa.</p>
 
-          <h2>Offsetting columns</h2>
-          <p>Move columns to the right using <code>.offset*</code> classes. Each class increases the left margin of a column by a whole column. For example, <code>.offset4</code> moves <code>.span4</code> over four columns.</p>
+          <h2>Moviendo columnas</h2>
+          <p>Mové columnas a la derecha usando las clases <code>.offset*</code>. Cada clase aumenta el margen izquierdo de una columna por un espacio de una columna entera. Por ejemplo, <code>.offset4</code> moves <code>.span4</code> over four columns.</p>
           <div class="bs-docs-grid">
             <div class="row show-grid">
               <div class="span4">4</div>
@@ -576,8 +559,6 @@
       <hr class="footer-ba">
     </footer>
 
-
-
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -596,13 +577,9 @@
     <script src="assets/js/bootstrap-carousel.js"></script>
     <script src="assets/js/bootstrap-typeahead.js"></script>
     <script src="assets/js/bootstrap-affix.js"></script>
-
     <script src="assets/js/holder/holder.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
-
     <script src="assets/js/application.js"></script>
-
-
 
   </body>
 </html>
