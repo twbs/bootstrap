@@ -4024,7 +4024,7 @@ button.close {
 }
 
 .breadcrumb > li:last-child:after {
-  content: "";
+  display: none;
 }
 
 .breadcrumb > .active {
