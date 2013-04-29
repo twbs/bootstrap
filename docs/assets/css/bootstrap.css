@@ -3586,7 +3586,7 @@ button.close {
 
 .navbar-toggle {
   position: absolute;
-  top: 10px;
+  top: 18px;
   right: 10px;
   padding: 8px 12px;
   background-color: transparent;
@@ -4024,7 +4024,7 @@ button.close {
 }
 
 .breadcrumb > li:last-child:after {
-  content: "";
+  display: none;
 }
 
 .breadcrumb > .active {
