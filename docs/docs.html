@@ -335,7 +335,7 @@ title: Bootstrap Documentation
     <p class="lead">Bootstrap includes a responsive, percent-based grid system that appropriately scales up to 12 columns as the device or viewport size increases&mdash;in other words, it's mobile first. It includes <a href="#grid-example">predefined classes</a> for this, as well as powerful <a href="#grid-less">mixins for generating semantic layouts</a>.</p>
 
     <h3 id="grid-example">Grid example</h3>
-    <p>On mobile devices, the grid starts out stacked. Above 768px, it becomes horizontal as media queries kick in to apply <code>float</code>s and <code>width</code>s. To create a basic grid layout, wrap a series of <code>.col-span-*</code> elements within a <code>.row</code>. As this is a 12-column grid, each <code>.col-span-*</code> spans a number of those 12 columns, and should always add up to 12 for each row (or the number of columns in the parent), even at mobile resolutions.</p>
+    <p>On mobile devices, the grid starts out stacked. Above 768px, it becomes horizontal as media queries kick in to apply <code>float</code>s and <code>width</code>s. To create a basic grid layout, wrap a series of <code>.col-lg-*</code> elements within a <code>.row</code>. As this is a 12-column grid, each <code>.col-lg-*</code> spans a number of those 12 columns, and should always add up to 12 for each row (or the number of columns in the parent), even at mobile resolutions.</p>
     <div class="bs-docs-grid">
       <div class="row show-grid">
         <div class="col col-lg-1">1</div>
@@ -418,7 +418,7 @@ title: Bootstrap Documentation
 
 
     <h3 id="grid-nesting">Nesting columns</h3>
-    <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.col-span-*</code> columns within an existing <code>.col-span-*</code> column. Nested rows should include a set of columns that add up to 12.</p>
+    <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.col-lg-*</code> columns within an existing <code>.col-lg-*</code> column. Nested rows should include a set of columns that add up to 12.</p>
     <div class="row show-grid">
       <div class="col col-lg-9">
         Level 1: 9 columns
@@ -1896,7 +1896,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3 id="forms-control-sizes">Control sizing</h3>
-    <p>Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using <code>.col-span-*</code> classes.</p>
+    <p>Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using <code>.col-lg-*</code> classes.</p>
 
     <h4>Relative sizing</h4>
     <p>Create larger or smaller form controls that match button sizes.</p>
@@ -1958,7 +1958,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </select>
 {% endhighlight %}
 
-    <p>If you need multiple inputs on the same line, wrap them in the standard grid markup (with <code>.row</code> and <code>.col-span-*</code> classes). Each input should have it's own column and will expand to fill the available width automatically.</p>
+    <p>If you need multiple inputs on the same line, wrap them in the standard grid markup (with <code>.row</code> and <code>.col-lg-*</code> classes). Each input should have it's own column and will expand to fill the available width automatically.</p>
     <form class="bs-docs-example" style="padding-bottom: 15px;">
       <div class="row">
         <div class="col col-lg-4">
