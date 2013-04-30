@@ -248,20 +248,18 @@
 #gradient {
   .horizontal(@startColor: #555, @endColor: #333) {
     background-color: @endColor;
-    background-image: -moz-linear-gradient(left, @startColor, @endColor); // FF 3.6+
     background-image: -webkit-gradient(linear, 0 0, 100% 0, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
     background-image: -webkit-linear-gradient(left, @startColor, @endColor); // Safari 5.1+, Chrome 10+
-    background-image: -o-linear-gradient(left, @startColor, @endColor); // Opera 11.10
+    background-image: -moz-linear-gradient(left, @startColor, @endColor); // FF 3.6+
     background-image: linear-gradient(to right, @startColor, @endColor); // Standard, IE10
     background-repeat: repeat-x;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@startColor),argb(@endColor))); // IE9 and down
   }
   .vertical(@startColor: #555, @endColor: #333) {
     background-color: @endColor;
-    background-image: -moz-linear-gradient(top, @startColor, @endColor); // FF 3.6+
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
     background-image: -webkit-linear-gradient(top, @startColor, @endColor); // Safari 5.1+, Chrome 10+
-    background-image: -o-linear-gradient(top, @startColor, @endColor); // Opera 11.10
+    background-image: -moz-linear-gradient(top, @startColor, @endColor); // FF 3.6+
     background-image: linear-gradient(to bottom, @startColor, @endColor); // Standard, IE10
     background-repeat: repeat-x;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@startColor),argb(@endColor))); // IE9 and down
@@ -269,9 +267,8 @@
   .directional(@startColor: #555, @endColor: #333, @deg: 45deg) {
     background-color: @endColor;
     background-repeat: repeat-x;
-    background-image: -moz-linear-gradient(@deg, @startColor, @endColor); // FF 3.6+
     background-image: -webkit-linear-gradient(@deg, @startColor, @endColor); // Safari 5.1+, Chrome 10+
-    background-image: -o-linear-gradient(@deg, @startColor, @endColor); // Opera 11.10
+    background-image: -moz-linear-gradient(@deg, @startColor, @endColor); // FF 3.6+
     background-image: linear-gradient(@deg, @startColor, @endColor); // Standard, IE10
   }
   .horizontal-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 50%, @endColor: #c3325f) {
@@ -279,7 +276,6 @@
     background-image: -webkit-gradient(left, linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
     background-image: -webkit-linear-gradient(left, @startColor, @midColor @colorStop, @endColor);
     background-image: -moz-linear-gradient(left, @startColor, @midColor @colorStop, @endColor);
-    background-image: -o-linear-gradient(left, @startColor, @midColor @colorStop, @endColor);
     background-image: linear-gradient(to right, @startColor, @midColor @colorStop, @endColor);
     background-repeat: no-repeat;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@startColor),argb(@endColor))); // IE9 and down, gets no color-stop at all for proper fallback
@@ -290,7 +286,6 @@
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
     background-image: -webkit-linear-gradient(@startColor, @midColor @colorStop, @endColor);
     background-image: -moz-linear-gradient(top, @startColor, @midColor @colorStop, @endColor);
-    background-image: -o-linear-gradient(@startColor, @midColor @colorStop, @endColor);
     background-image: linear-gradient(@startColor, @midColor @colorStop, @endColor);
     background-repeat: no-repeat;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@startColor),argb(@endColor))); // IE9 and down, gets no color-stop at all for proper fallback
@@ -300,7 +295,6 @@
     background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@innerColor), to(@outerColor));
     background-image: -webkit-radial-gradient(circle, @innerColor, @outerColor);
     background-image: -moz-radial-gradient(circle, @innerColor, @outerColor);
-    background-image: -o-radial-gradient(circle, @innerColor, @outerColor);
     background-image: radial-gradient(circle, @innerColor, @outerColor);
     background-repeat: no-repeat;
   }
@@ -309,7 +303,6 @@
     background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
     background-image: -webkit-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
     background-image: -moz-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-    background-image: -o-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
     background-image: linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
   }
 }
@@ -419,13 +412,12 @@
 // Generate the columns
 .make-column(@columns) {
   @media (min-width: @grid-float-breakpoint) {
-    float: left;
     // Calculate width based on number of columns available
-    width: percentage(@columns / @grid-columns);
+    width: percentage((@columns / @grid-columns));
   }
   // Prevent columns from collapsing when empty
   min-height: 1px;
-  // Set inner padding as gutters instead of margin
+  // Inner gutter via padding
   padding-left:  (@grid-gutter-width / 2);
   padding-right: (@grid-gutter-width / 2);
 }
@@ -445,18 +437,53 @@
     right: percentage((@columns / @grid-columns));
   }
 }
+// Small, mobile-first columns
+.make-small-column(@columns) {
+  position: relative;
+  float: left;
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Set inner padding as gutters instead of margin
+  padding-left:  (@grid-gutter-width / 2);
+  padding-right: (@grid-gutter-width / 2);
+}
 
 
 
-// The Grid
+// Small grid columns
 .generate-grid-columns(@grid-columns) {
 
-  // Default columns
-  .col-span-X (@index) when (@index > 0) {
-    .col-span-@{index} { .col-span-(@index); }
-    .col-span-X((@index - 1));
+  .col-sm-X (@index) when (@index > 0) {
+    .col-sm-@{index} { .col-sm-(@index); }
+    .col-sm-X((@index - 1));
   }
-  .col-span-X(0) {}
+  .col-sm-X (0) {}
+
+  // Generate columns
+  .col-sm-X(@grid-columns);
+
+  // Apply the styles
+  .col-sm-(@columns) {
+    width: percentage((@columns / @grid-columns));
+  }
+}
+
+// Large grid columns
+.generate-large-grid-columns(@grid-columns) {
+
+  .col-lg-X (@index) when (@index > 0) {
+    .col-lg-@{index} { .col-lg-(@index); }
+    .col-lg-X((@index - 1));
+  }
+  .col-lg-X (0) {}
+
+  // Generate the columns
+  .col-lg-X(@grid-columns);
+
+  // Apply the styles
+  .col-lg-(@columns) {
+    width: percentage((@columns / @grid-columns));
+  }
 
   // Offsets (gaps between columns)
   .col-offset-X (@index) when (@index > 0) {
@@ -480,9 +507,6 @@
   .col-pull-X (0) {}
 
   // Apply the styles
-  .col-span-(@columns) {
-    width: percentage((@columns / @grid-columns));
-  }
   .col-offset-(@columns) {
     margin-left: percentage((@columns / @grid-columns));
   }
@@ -494,30 +518,11 @@
   }
 
   // Generate .spanX and .offsetX
-  .col-span-X(@grid-columns);
   .col-offset-X(@grid-columns);
   .col-push-X(@grid-columns);
   .col-pull-X(@grid-columns);
 }
 
-// Small device grid
-.generate-small-grid-columns(@grid-columns) {
-
-  // Deterimine the classes
-  .col-small-span-X (@index) when (@index > 0) {
-    .col-small-span-@{index} { .col-small-span-(@index); }
-    .col-small-span-X((@index - 1));
-  }
-  .col-small-span-X(0) {}
-
-  // Specify widths
-  .col-small-span-(@columns) {
-    width: percentage((@columns / @grid-columns));
-  }
-
-  // Generate the CSS
-  .col-small-span-X(@grid-columns);
-}
 
 
 // Framework mixins

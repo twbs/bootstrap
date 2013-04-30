@@ -71,6 +71,7 @@
     font-weight: normal;
     line-height: @line-height-base;
     color: @dropdown-link-color;
+    white-space: nowrap; // prevent links from randomly breaking onto new lines
   }
 }
 
@@ -102,7 +103,7 @@
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,
 .dropdown-menu > .disabled > a:focus {
-  color: @grayLight;
+  color: @gray-light;
 }
 // Nuke hover/focus effects
 .dropdown-menu > .disabled > a:hover,

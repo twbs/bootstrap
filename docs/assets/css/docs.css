@@ -26,32 +26,6 @@ body {
   margin-right: -15px;
 }
 
-/*  */
-.bs-docs-footer {
-  padding-left:  15px;
-  padding-right: 15px;
-}
-
-/* Back to top link */
-.bs-docs-top {
-  float: left;
-  padding: 7px 15px;
-  font-weight: 500;
-  color: #999;
-  background-color: #eee;
-  border-radius: 4px;
-}
-.bs-docs-top:hover {
-  color: #fff;
-  text-decoration: none;
-  background-color: #999;
-}
-.bs-docs-top.affix {
-  position: fixed;
-  right:  15px;
-  bottom: 15px;
-}
-
 /* Side notes for calling out things */
 .bs-docs-sidenote {
   margin: 20px 0;
@@ -59,8 +33,15 @@ body {
   background-color: #fcf2f2;
   border-left: 5px solid #df7c7b;
 }
+.bs-docs-sidenote h4 {
+  margin-top: 0;
+}
 .bs-docs-sidenote p:last-child {
   margin-bottom: 0;
+}
+.bs-docs-sidenote code,
+.bs-docs-sidenote .highlight {
+  background-color: #fff;
 }
 
 
@@ -92,56 +73,34 @@ section > ul li {
   color: #b94a48;
   border-bottom: 5px solid #b94a48;
 }
-.bs-docs-section-header h1 {
-  font-size: 80px;
-  font-size: 8rem;
-  line-height: 1;
-}
 
 /* Base class */
 .bs-docs-jumbotron {
   position: relative;
   margin-bottom: 20px;
   padding: 30px 15px;
-  color: #fff;
   text-align: center;
-  background-color: #b94a48;
 }
 .bs-docs-jumbotron h1 {
   font-size: 50px;
-}
-
-/* Link styles (used on .masthead-links as well) */
-.bs-docs-jumbotron a {
-  color: #fff;
-  color: rgba(255,255,255,.5);
-  -webkit-transition: all .2s ease-in-out;
-     -moz-transition: all .2s ease-in-out;
-          transition: all .2s ease-in-out;
-}
-.bs-docs-jumbotron a:hover {
-  color: #fff;
+  line-height: 1;
 }
 
 /* Download button */
 .bs-docs-jumbotron .btn {
+  margin-top: 5px;
+  margin-bottom: 5px;
   padding: 18px 24px;
   font-size: 21px;
   color: #b94a48; /* redeclare to override the `.jumbotron a` */
   background-color: #fff;
+  border-color: #e5e5e5;
 }
-.bs-docs-jumbotron .btn,
 .bs-docs-jumbotron .btn:hover,
 .bs-docs-jumbotron .btn:active {
-  color: #b94a48; /* redeclare to override the `.jumbotron a` */
-  background-color: #fff;
-  border-color: #fff;
-}
-
-/* Masthead (docs home)
-------------------------- */
-.masthead h1 {
-  line-height: 1;
+  color: #fff; /* redeclare to override the `.jumbotron a` */
+  background-color: #b94a48;
+  border-color: #b94a48;
 }
 
 /* Textual links in masthead */
@@ -151,42 +110,10 @@ section > ul li {
 }
 .masthead-links li {
   display: inline;
-  padding: 0 10px;
-  color: rgba(255,255,255,.25);
-}
-
-
-
-/* Marketing section of Overview
--------------------------------------------------- */
-
-.bs-docs-marketing {
-  text-align: center;
-  color: #5a5a5a;
-}
-.bs-docs-marketing h1 {
-  margin: 60px 0 10px;
-  font-size: 50px;
-  line-height: 1;
-}
-.bs-docs-marketing h2 {
-  margin-bottom: 5px;
-}
-.bs-docs-marketing p {
-  font-size: 16px;
-  line-height: 1.4;
-}
-.bs-docs-marketing .marketing-byline {
-  margin-bottom: 40px;
-  font-size: 21px;
-  font-weight: 300;
-  line-height: 1.25;
   color: #999;
 }
-.marketing-img {
-  display: block;
-  margin: 30px auto 10px;
-  max-height: 145px;
+.masthead-links li + li {
+  margin-left: 20px;
 }
 
 
@@ -197,13 +124,13 @@ section > ul li {
 .show-grid {
   margin-bottom: 15px;
 }
-.show-grid [class*="col-span-"] {
+.show-grid .col {
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #eee;
   border: 1px solid #ddd;
 }
-.show-grid [class*="col-span-"]:hover {
+.show-grid .col:hover {
   background-color: #ddd;
 }
 
@@ -329,9 +256,6 @@ section > ul li {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-.prettyprint .linenums {
-  /*margin-left: 0;*/
-}
 
 /* Tweak content of examples for optimum awesome */
 .bs-docs-example > p:last-child,
@@ -384,13 +308,20 @@ section > ul li {
 .bs-navbar-bottom-example {
   z-index: 1;
   padding: 0;
-  height: 90px;
+  min-height: 110px;
   overflow: hidden; /* cut the drop shadows off */
 }
 .bs-navbar-top-example .navbar-fixed-top,
 .bs-navbar-bottom-example .navbar-fixed-bottom {
+  position: relative;
   margin-left: 0;
   margin-right: 0;
+}
+.bs-navbar-top-example .navbar-fixed-top {
+  top: -1px;
+}
+.bs-navbar-bottom-example .navbar-fixed-bottom {
+  bottom: -1px;
 }
 .bs-navbar-top-example {
   -webkit-border-radius: 0 0 4px 4px;
@@ -605,7 +536,6 @@ section > ul li {
 -------------------------------------------------- */
 
 .bs-docs-footer {
-  text-align: center;
   padding-top: 30px;
   padding-bottom: 30px;
   margin-top: 100px;
@@ -628,21 +558,21 @@ section > ul li {
 
 /* Social proof buttons from GitHub & Twitter */
 .bs-docs-social {
-  margin-top: 10px;
+  margin-top: 80px;
   margin-bottom: 20px;
-  text-align: center;
 }
 /* Quick links on Home */
 .bs-docs-social-buttons {
   display: inline-block;
   margin: 0;
-  padding: 0 10px;
   list-style: none;
 }
 .bs-docs-social-buttons li {
   display: inline-block;
-  padding: 5px 8px;
   line-height: 1;
+}
+.bs-docs-social-buttons li + li {
+  margin-left: 15px;
 }
 .bs-docs-social-buttons .twitter-follow-button {
   width: 225px !important;
@@ -685,6 +615,7 @@ input.focused {
   margin-bottom: 0;
   background-color: transparent;
   border: 0;
+  white-space: nowrap;
 }
 .highlight pre code {
   font-size: inherit;
@@ -726,14 +657,39 @@ input.focused {
 /* Tablets and up */
 @media screen and (min-width: 768px) {
 
+  /* Back to top link */
+  .bs-docs-top {
+    float: left;
+    padding: 7px 15px;
+    font-weight: 500;
+    color: #999;
+    background-color: #eee;
+    border-radius: 4px;
+  }
+  .bs-docs-top:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #999;
+  }
+  .bs-docs-top.affix {
+    position: fixed;
+    right:  15px;
+    bottom: 15px;
+  }
+
+  .bs-docs-section-header h1 {
+    font-size: 80px;
+    font-size: 8rem;
+    line-height: 1;
+  }
+
   /* Account for fixed navbar (which is static to start) */
   .bs-docs-docs {
     padding-left: 260px;
   }
 
   /* Undo custom padding */
-  .bs-docs-container,
-  .bs-home-container {
+  .bs-docs-container {
     padding-left: 0;
     padding-right: 0;
   }
@@ -752,14 +708,19 @@ input.focused {
     font-size: 100px;
   }
   .masthead p {
+    margin-left: 15%;
+    margin-right: 15%;
     font-size: 30px;
-    margin-left: 10%;
-    margin-right: 10%;
   }
   .subhead {
     padding-top:    60px;
     padding-bottom: 60px;
     text-align: left;
+  }
+
+  .bs-navbar-top-example .navbar-fixed-top,
+  .bs-navbar-bottom-example .navbar-fixed-bottom {
+    position: absolute;
   }
 
 }

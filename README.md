@@ -1,7 +1,3 @@
-<a href="http://getbootstrap.com">
-  <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-docs-readme.png" width="100px">
-</a>
-
 # [Bootstrap v3.0.0](http://getbootstrap.com) [![Build Status](https://secure.travis-ci.org/twitter/bootstrap.png)](http://travis-ci.org/twitter/bootstrap)
 
 Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created and maintained by [Mark Otto](http://twitter.com/mdo) and [Jacob Thornton](http://twitter.com/fat).
@@ -55,14 +51,17 @@ $ npm install
 
 When completed, you'll be able to run the various make commands provided:
 
-#### build - `make` or `make bootstrap`
-`make` runs the Recess compiler to rebuild the `/less` files and compile the docs. `make bootstrap` creates the `/bootstrap` directory with compiled files. **Requires recess and uglify-js.**
+#### Build - `make`
+`make` runs the Recess compiler to rebuild the `/less` files and compile the docs. **Requires recess and uglify-js.**
 
-#### test - `make test`
+#### Compile CSS, JS, and fonts - `make bootstrap`
+`make bootstrap` creates the `/bootstrap` directory with compiled files. **Requires recess and uglify-js.**
+
+#### Tests - `make test`
 Runs jshint and qunit tests headlessly in [phantomjs](http://code.google.com/p/phantomjs/) (used for ci). **Requires phantomjs.**
 
-#### watch - `make watch`
-This is a convenience method for watching just Less files and automatically building them whenever you save. **Requires the Watchr gem.**
+#### Watch - `make watch`
+This is a convenience method for watching just Less files and automatically building them whenever you save. **Requires the watchr gem.**
 
 Should you encounter problems with installing dependencies or running the makefile commands, uninstall any previous versions (global and local) you may have installed, and then rerun `npm install`.
 
@@ -71,6 +70,8 @@ Should you encounter problems with installing dependencies or running the makefi
 ## Contributing
 
 Please submit all pull requests against *-wip branches. If your pull request contains JavaScript patches or features, you must include relevant unit tests. All HTML and CSS should conform to the [Code Guide](http://github.com/mdo/code-guide), maintained by [Mark Otto](http://github.com/mdo).
+
+Editor preferences are also available in the [editor config](.editorconfig) for easy application in common text editors. Read more and download plugins at [http://editorconfig.com](http://editorconfig.com).
 
 
 

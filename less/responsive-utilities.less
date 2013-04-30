@@ -5,9 +5,25 @@
 
 // IE10 Metro responsive
 // Required for Windows 8 Metro split-screen snapping with IE10
+//
 // Source: http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
 @-ms-viewport{
   width: device-width;
+}
+
+// IE10 on Windows Phone 8
+// IE10 on WP8 doesn't report CSS pixels, but actual device pixels. In
+// other words, say on a Lumia, you'll get 768px as the device width,
+// meaning users will see the tablet styles and not phone styles.
+//
+// Alternatively you can override this with JS (see source below), but
+// we won't be doing that here given our limited scope.
+//
+// Source: http://timkadlec.com/2013/01/windows-phone-8-and-device-width/
+@media screen and (max-width: 400px) {
+  @-ms-viewport{
+    width: 320px;
+  }
 }
 
 // Hide from screenreaders and browsers
@@ -19,34 +35,36 @@
 
 // Visibility utilities
 
-// For desktops
-.visible-phone     { display: none !important; }
+// For Phones
+.visible-phone     { display: inherit !important; }
 .visible-tablet    { display: none !important; }
-.hidden-phone      { }
-.hidden-tablet     { }
-.hidden-desktop    { display: none !important; }
-.visible-desktop   { display: inherit !important; }
+.visible-desktop   { display: none !important; }
+
+.hidden-phone      { display: none !important; }
+.hidden-tablet     { display: inherit !important; }
+.hidden-desktop    { display: inherit !important; }
+
 
 // Tablets & small desktops only
-@media (min-width: 768px) and (max-width: 979px) {
-  // Hide everything else
-  .hidden-desktop    { display: inherit !important; }
-  .visible-desktop   { display: none !important ; }
-  // Show
+@media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
+  .visible-phone    { display: none !important; }
   .visible-tablet    { display: inherit !important; }
-  // Hide
+  .visible-desktop   { display: none !important; }
+
+  .hidden-phone      { display: inherit !important; }
   .hidden-tablet     { display: none !important; }
+  .hidden-desktop    { display: inherit !important; }
 }
 
-// Phones only
-@media (max-width: 767px) {
-  // Hide everything else
-  .hidden-desktop    { display: inherit !important; }
-  .visible-desktop   { display: none !important; }
-  // Show
-  .visible-phone     { display: inherit !important; } // Use inherit to restore previous behavior
-  // Hide
-  .hidden-phone      { display: none !important; }
+// For desktops
+@media (min-width: @screen-desktop) {
+  .visible-phone     { display: none !important; }
+  .visible-tablet    { display: none !important; }
+  .visible-desktop   { display: inherit !important; }
+
+  .hidden-phone      { display: inherit !important; }
+  .hidden-tablet     { display: inherit !important; }
+  .hidden-desktop    { display: none !important; }
 }
 
 // Print utilities

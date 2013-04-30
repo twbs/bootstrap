@@ -28,9 +28,9 @@ em      { font-style: italic; }
 cite    { font-style: normal; }
 
 // Utility classes
-.text-muted          { color: @grayLight; }
+.text-muted          { color: @gray-light; }
 a.text-muted:hover,
-a.text-muted:focus   { color: darken(@grayLight, 10%); }
+a.text-muted:focus   { color: darken(@gray-light, 10%); }
 
 .text-warning        { color: @state-warning-text; }
 a.text-warning:hover,
@@ -60,7 +60,7 @@ h1, h2, h3, h4, h5, h6,
   small {
     font-weight: normal;
     line-height: 1;
-    color: @grayLight;
+    color: @gray-light;
   }
 }
 
@@ -100,7 +100,7 @@ h4 small, .h4 small { font-size: @font-size-base; }
 .page-header {
   padding-bottom: ((@line-height-base / 2) - 1);
   margin: (@line-height-base * 2) 0 @line-height-base;
-  border-bottom: 1px solid @grayLighter;
+  border-bottom: 1px solid @gray-lighter;
 }
 
 
@@ -187,7 +187,7 @@ abbr[title],
 // Added data-* attribute to help out our tooltip plugin, per https://github.com/twitter/bootstrap/issues/5257
 abbr[data-original-title] {
   cursor: help;
-  border-bottom: 1px dotted @grayLight;
+  border-bottom: 1px dotted @gray-light;
 }
 abbr.initialism {
   font-size: 90%;
@@ -196,19 +196,21 @@ abbr.initialism {
 
 // Blockquotes
 blockquote {
-  padding: 0 0 0 15px;
+  padding: (@line-height-base/2) @line-height-base;
   margin: 0 0 @line-height-base;
-  border-left: 5px solid @grayLighter;
+  border-left: 5px solid @gray-lighter;
   p {
-    margin-bottom: 0;
     font-size: (@font-size-base * 1.25);
     font-weight: 300;
     line-height: 1.25;
   }
+  p:last-child {
+    margin-bottom: 0;
+  }
   small {
     display: block;
     line-height: @line-height-base;
-    color: @grayLight;
+    color: @gray-light;
     &:before {
       content: '\2014 \00A0';
     }
@@ -219,7 +221,7 @@ blockquote {
     float: right;
     padding-right: 15px;
     padding-left: 0;
-    border-right: 5px solid @grayLighter;
+    border-right: 5px solid @gray-lighter;
     border-left: 0;
     p,
     small {

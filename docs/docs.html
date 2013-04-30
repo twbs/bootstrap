@@ -20,22 +20,22 @@ title: Bootstrap Documentation
     </div>
     <p class="lead">There are a few easy ways to quickly get started with Bootstrap, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
     <div class="row">
-      <div class="col-span-6">
+      <div class="col col-lg-6">
         <h3>Compiled CSS and JS</h3>
         <p><strong>The fastest way to get started:</strong> get the compiled and minified versions of our CSS, JavaScript, and fonts. No documentation or original source files are included.</p>
         <p><a class="btn btn-large btn-primary" href="assets/bootstrap.zip" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a></p>
       </div>
-      <div class="col-span-6">
+      <div class="col col-lg-6">
         <h3>Latest source code</h3>
         <p>Get the original files for all CSS and JavaScript, along with a local copy of the docs by downloading the latest version directly from GitHub.</p>
         <p><a class="btn btn-large" href="https://github.com/twitter/bootstrap/zipball/master" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download Bootstrap source</a></p>
       </div>
-      <div class="col-span-6">
+      <div class="col col-lg-6">
         <h3>Clone or fork via GitHub</h3>
         <p>Clone the entire project or fork your own version of Bootstrap to make it your own by visiting us on GitHub.</p>
         <p><a class="btn btn-large" href="https://github.com/twitter/bootstrap/" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'GitHub project']);">GitHub repository</a></p>
       </div>
-      <div class="col-span-6">
+      <div class="col col-lg-6">
         <h3>Bower</h3>
         <p>Install and manage the original files for all CSS and JavaScript, along with a local copy of the docs, using <a href="http://twitter.github.com/bower">Bower</a>.</p>
         {% highlight bash %}$ bower install bootstrap{% endhighlight %}
@@ -69,7 +69,10 @@ title: Bootstrap Documentation
 {% endhighlight %}
 
     <p>This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). The image files are compressed using <a href="http://imageoptim.com/">ImageOptim</a>, a Mac app for compressing PNGs.</p>
-    <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included.</p>
+    <div class="bs-docs-sidenote">
+      <h4>jQuery required</h4>
+      <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included, as shown in the <a href="#examples">starter template</a>.</p>
+    </div>
   </div>
 
   <!-- Examples
@@ -107,63 +110,63 @@ title: Bootstrap Documentation
 
     <h3>Examples</h3>
     <div class="row bs-docs-examples">
-      <div class="col-span-4">
+      <div class="col col-lg-4">
         <a class="thumbnail" href="/examples/starter-template/" target="_blank">
           <img src="/assets/img/examples/bootstrap-example-starter.png" alt="">
         </a>
         <h4>Starter template</h4>
         <p>A barebones HTML page with Bootstrap's CSS and JavaScript included.</p>
       </div>
-      <div class="col-span-4">
+      <div class="col col-lg-4">
         <a class="thumbnail" href="/examples/grid/" target="_blank">
           <img src="/assets/img/examples/bootstrap-example-grid.png" alt="">
         </a>
         <h4>Basic grid layouts</h4>
         <p>Simple grid layouts to familiarize you with using the Bootstrap grid system.</p>
       </div>
-      <div class="col-span-4">
+      <div class="col col-lg-4">
         <a class="thumbnail" href="/examples/jumbotron/" target="_blank">
           <img src="/assets/img/examples/bootstrap-example-marketing.png" alt="">
         </a>
         <h4>Basic marketing site</h4>
         <p>Features a jumbotron for primary message and three supporting elements.</p>
       </div>
-      <div class="col-span-4">
+      <div class="col col-lg-4">
         <a class="thumbnail" href="/examples/jumbotron-narrow/" target="_blank">
           <img src="/assets/img/examples/bootstrap-example-jumbotron-narrow.png" alt="">
         </a>
         <h4>Narrow marketing</h4>
         <p>Slim, lightweight marketing template for small projects or teams.</p>
       </div>
-      <div class="col-span-4">
+      <div class="col col-lg-4">
         <a class="thumbnail" href="/examples/justified-nav/" target="_blank">
           <img src="/assets/img/examples/bootstrap-example-justified-nav.png" alt="">
         </a>
         <h4>Justified nav</h4>
         <p>Marketing page with equal-width navigation links in a modified navbar.</p>
       </div>
-      <div class="col-span-4">
+      <div class="col col-lg-4">
         <a class="thumbnail" href="/examples/signin/" target="_blank">
           <img src="/assets/img/examples/bootstrap-example-signin.png" alt="">
         </a>
         <h4>Sign in</h4>
         <p>Barebones sign in form with custom, larger form controls and a flexible layout.</p>
       </div>
-      <div class="col-span-4">
+      <div class="col col-lg-4">
         <a class="thumbnail" href="/examples/sticky-footer/" target="_blank">
           <img src="/assets/img/examples/bootstrap-example-sticky-footer.png" alt="">
         </a>
         <h4>Sticky footer</h4>
         <p>Pin a fixed-height footer to the bottom of the user's viewport.</p>
       </div>
-      <div class="col-span-4">
+      <div class="col col-lg-4">
         <a class="thumbnail" href="/examples/sticky-footer-navbar/" target="_blank">
           <img src="/assets/img/examples/bootstrap-example-sticky-footer-navbar.png" alt="">
         </a>
         <h4>Sticky footer w/ navbar</h4>
         <p>Add a fixed navbar to the default sticky footer template.</p>
       </div>
-      <div class="col-span-4">
+      <div class="col col-lg-4">
         <a class="thumbnail" href="/examples/carousel/" target="_blank">
           <img src="/assets/img/examples/bootstrap-example-carousel.png" alt="">
         </a>
@@ -171,21 +174,21 @@ title: Bootstrap Documentation
         <p>An interactive riff on the basic marketing site featuring a prominent carousel.</p>
       </div>
 
-      <div class="col-span-4">
+      <div class="col col-lg-4">
         <a class="thumbnail" href="/examples/navbar/" target="_blank">
           <img src="/assets/img/examples/bootstrap-example-navbar.png" alt="">
         </a>
         <h4>Navbar</h4>
         <p>Basic template for showcasing how the navbar works.</p>
       </div>
-      <div class="col-span-4">
+      <div class="col col-lg-4">
         <a class="thumbnail" href="/examples/navbar-static-top/" target="_blank">
           <img src="/assets/img/examples/bootstrap-example-navbar-static-top.png" alt="">
         </a>
         <h4>Static top navbar</h4>
         <p>Basic template for showcasing the static navbar variation.</p>
       </div>
-      <div class="col-span-4">
+      <div class="col col-lg-4">
         <a class="thumbnail" href="/examples/navbar-fixed-top/" target="_blank">
           <img src="/assets/img/examples/bootstrap-example-navbar-fixed-top.png" alt="">
         </a>
@@ -207,7 +210,7 @@ title: Bootstrap Documentation
     <p>Once you've downloaded and included Bootstrap's CSS into your templates, you can move on to customizing the included components. To do so, create a new stylesheet (LESS, if you like, or just plain CSS) to house your customizations.</p>
 
     <div class="bs-docs-sidenote">
-      <p><strong>Compiled or minified?</strong></p>
+      <h4>Compiled or minified?</h4>
       <p>Unless you plan on reading a good chunk of the compiled CSS, go with the minified. It's the same code, just compacted. Less bandwidth is good, especially in production environments.</p>
     </div>
 
@@ -261,7 +264,7 @@ title: Bootstrap Documentation
     <p>Going beyond light customizations and into visual overhauls is just as straightforward as the above custom button. For a site like <a href="http://yourkarma.com">Karma</a>, which uses Bootstrap as a CSS reset with heavy modifications, more extensive work is involved, but well worth it in the end.</p>
 
     <div class="bs-docs-sidenote">
-      <p><strong>Alternate customization methods</strong></p>
+      <h4>Alternate customization methods</h4>
       <p>While not recommended for folks new to Bootstrap, you may use one of two alternate methods for customization. The first is modifying the source .less files (making upgrades super difficult), and the second is mapping source LESS code to <a href="http://ruby.bvision.com/blog/please-stop-embedding-bootstrap-classes-in-your-html">your own classes via mixins</a>. For the time being, neither options are documented here.</p>
     </div>
 
@@ -335,88 +338,95 @@ title: Bootstrap Documentation
     <p>On mobile devices, the grid starts out stacked. Above 768px, it becomes horizontal as media queries kick in to apply <code>float</code>s and <code>width</code>s. To create a basic grid layout, wrap a series of <code>.col-span-*</code> elements within a <code>.row</code>. As this is a 12-column grid, each <code>.col-span-*</code> spans a number of those 12 columns, and should always add up to 12 for each row (or the number of columns in the parent), even at mobile resolutions.</p>
     <div class="bs-docs-grid">
       <div class="row show-grid">
-        <div class="col-span-1">1</div>
-        <div class="col-span-1">1</div>
-        <div class="col-span-1">1</div>
-        <div class="col-span-1">1</div>
-        <div class="col-span-1">1</div>
-        <div class="col-span-1">1</div>
-        <div class="col-span-1">1</div>
-        <div class="col-span-1">1</div>
-        <div class="col-span-1">1</div>
-        <div class="col-span-1">1</div>
-        <div class="col-span-1">1</div>
-        <div class="col-span-1">1</div>
+        <div class="col col-lg-1">1</div>
+        <div class="col col-lg-1">1</div>
+        <div class="col col-lg-1">1</div>
+        <div class="col col-lg-1">1</div>
+        <div class="col col-lg-1">1</div>
+        <div class="col col-lg-1">1</div>
+        <div class="col col-lg-1">1</div>
+        <div class="col col-lg-1">1</div>
+        <div class="col col-lg-1">1</div>
+        <div class="col col-lg-1">1</div>
+        <div class="col col-lg-1">1</div>
+        <div class="col col-lg-1">1</div>
       </div>
       <div class="row show-grid">
-        <div class="col-span-4">4</div>
-        <div class="col-span-4">4</div>
-        <div class="col-span-4">4</div>
+        <div class="col col-lg-4">4</div>
+        <div class="col col-lg-4">4</div>
+        <div class="col col-lg-4">4</div>
       </div>
       <div class="row show-grid">
-        <div class="col-span-6">6</div>
-        <div class="col-span-6">6</div>
+        <div class="col col-lg-6">6</div>
+        <div class="col col-lg-6">6</div>
       </div>
     </div>
 {% highlight html linenos %}
 <div class="row">
-  <div class="col-span-1">1</div>
-  <div class="col-span-1">1</div>
-  <div class="col-span-1">1</div>
-  <div class="col-span-1">1</div>
-  <div class="col-span-1">1</div>
-  <div class="col-span-1">1</div>
-  <div class="col-span-1">1</div>
-  <div class="col-span-1">1</div>
-  <div class="col-span-1">1</div>
-  <div class="col-span-1">1</div>
-  <div class="col-span-1">1</div>
-  <div class="col-span-1">1</div>
+  <div class="col col-lg-1">1</div>
+  <div class="col col-lg-1">1</div>
+  <div class="col col-lg-1">1</div>
+  <div class="col col-lg-1">1</div>
+  <div class="col col-lg-1">1</div>
+  <div class="col col-lg-1">1</div>
+  <div class="col col-lg-1">1</div>
+  <div class="col col-lg-1">1</div>
+  <div class="col col-lg-1">1</div>
+  <div class="col col-lg-1">1</div>
+  <div class="col col-lg-1">1</div>
+  <div class="col col-lg-1">1</div>
 </div>
 <div class="row">
-  <div class="col-span-4">4</div>
-  <div class="col-span-4">4</div>
-  <div class="col-span-4">4</div>
+  <div class="col col-lg-4">4</div>
+  <div class="col col-lg-4">4</div>
+  <div class="col col-lg-4">4</div>
 </div>
 <div class="row">
-  <div class="col-span-6">6</div>
-  <div class="col-span-6">6</div>
+  <div class="col col-lg-6">6</div>
+  <div class="col col-lg-6">6</div>
 </div>
 {% endhighlight %}
 
     <h3 id="grid-offsetting">Offsetting columns</h3>
-    <p>Move columns to the right using <code>.col-offset-*</code> classes. Each class increases the left margin of a column by a whole column. For example, <code>.col-offset-4</code> moves <code>.col-span-4</code> over four columns.</p>
+    <p>Move columns to the right using <code>.col-offset-*</code> classes. These classes increase the left margin of a column by <code>*</code> columns. For example, <code>.col-offset-4</code> moves <code>.col col-lg-4</code> over four columns.</p>
     <div class="bs-docs-grid">
       <div class="row show-grid">
-        <div class="col-span-4">4</div>
-        <div class="col-span-4 col-offset-4">4 offset 4</div>
+        <div class="col col-lg-4">4</div>
+        <div class="col col-lg-4 col-offset-4">4 offset 4</div>
       </div><!-- /row -->
       <div class="row show-grid">
-        <div class="col-span-3 col-offset-3">3 offset 3</div>
-        <div class="col-span-3 col-offset-3">3 offset 3</div>
+        <div class="col col-lg-3 col-offset-3">3 offset 3</div>
+        <div class="col col-lg-3 col-offset-3">3 offset 3</div>
       </div><!-- /row -->
       <div class="row show-grid">
-        <div class="col-span-6 col-offset-6">6 offset 6</div>
+        <div class="col col-lg-6 col-offset-3">6 offset 3</div>
       </div><!-- /row -->
     </div>
 {% highlight html linenos %}
 <div class="row">
-  <div class="col-span-4">...</div>
-  <div class="col-span-4 col-offset-4">...</div>
+  <div class="col col-lg-4">...</div>
+  <div class="col col-lg-4 col-offset-4">...</div>
+</div>
+<div class="row">
+  <div class="col col-lg-3 col-offset-3">3 offset 3</div>
+  <div class="col col-lg-3 col-offset-3">3 offset 3</div>
+</div>
+<div class="row">
+  <div class="col col-lg-6 col-offset-3">...</div>
 </div>
 {% endhighlight %}
 
 
     <h3 id="grid-nesting">Nesting columns</h3>
-    <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.span*</code> columns within an existing <code>.span*</code> column. Nested rows should include a set of columns that add up to 12.</p>
+    <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.col-span-*</code> columns within an existing <code>.col-span-*</code> column. Nested rows should include a set of columns that add up to 12.</p>
     <div class="row show-grid">
-      <div class="col-span-9">
+      <div class="col col-lg-9">
         Level 1: 9 columns
         <div class="row show-grid">
-          <div class="col-span-6">
+          <div class="col col-lg-6">
             Level 2: 6 columns
           </div>
-          <div class="col-span-6">
+          <div class="col col-lg-6">
             Level 2: 6 columns
           </div>
         </div>
@@ -424,13 +434,13 @@ title: Bootstrap Documentation
     </div>
 {% highlight html linenos %}
 <div class="row">
-  <div class="col-span-9">
+  <div class="col col-lg-9">
     Level 1: 9 columns
     <div class="row">
-      <div class="col-span-6">
+      <div class="col col-lg-6">
         Level 2: 6 columns
       </div>
-      <div class="col-span-6">
+      <div class="col col-lg-6">
         Level 2: 6 columns
       </div>
     </div>
@@ -439,31 +449,31 @@ title: Bootstrap Documentation
 {% endhighlight %}
 
     <h3 id="grid-column-ordering">Column ordering</h3>
-    <p>Easily change the order of our built-in grid columns with <code>.push*</code> and <code>.pull*</code> modifier classes.</p>
+    <p>Easily change the order of our built-in grid columns with <code>.col-push-*</code> and <code>.col-pull-*</code> modifier classes.</p>
     <div class="row show-grid">
-      <div class="col-span-9 col-push-3">9</div>
-      <div class="col-span-3 col-pull-9">3</div>
+      <div class="col col-lg-9 col-push-3">9</div>
+      <div class="col col-lg-3 col-pull-9">3</div>
     </div>
 
 {% highlight html linenos %}
 <div class="row show-grid">
-  <div class="col-span-9 col-push-3">9</div>
-  <div class="col-span-3 col-pull-9">3</div>
+  <div class="col col-lg-9 col-push-3">9</div>
+  <div class="col col-lg-3 col-pull-9">3</div>
 </div>
 {% endhighlight %}
 
     <h3 id="grid-small">Small device grid</h3>
-    <p>Use the small device grid classes, like <code>.col-small-span-6</code>, to create columned layouts on phone and tablet devices (anything under 768px). Offsets, pushes, and pulls are not available with the small grid at this time.</p>
+    <p>Use the small device grid classes, like <code>.col-sm-6</code>, to create columned layouts on phone and tablet devices (anything under 768px). Offsets, pushes, and pulls are not available with the small grid at this time.</p>
     <div class="row show-grid">
-      <div class="col-span-4 col-small-span-6">4 cols, 6 small cols</div>
-      <div class="col-span-4 col-small-span-6">4 cols, 6 small cols</div>
-      <div class="col-span-4 col-small-span-12">4 cols, 12 small cols</div>
+      <div class="col col-lg-4 col-sm-6">4 cols, 6 small cols</div>
+      <div class="col col-lg-4 col-sm-6">4 cols, 6 small cols</div>
+      <div class="col col-lg-4 col-sm-12">4 cols, 12 small cols</div>
     </div>
 {% highlight html linenos %}
 <div class="row">
-  <div class="col-span-4 col-small-span-6">4 cols, 6 small cols</div>
-  <div class="col-span-4 col-small-span-6">4 cols, 6 small cols</div>
-  <div class="col-span-4 col-small-span-12">4 cols, 12 small cols</div>
+  <div class="col col-lg-4 col-sm-6">4 cols, 6 small cols</div>
+  <div class="col col-lg-4 col-sm-6">4 cols, 6 small cols</div>
+  <div class="col col-lg-4 col-sm-12">4 cols, 12 small cols</div>
 </div>
 {% endhighlight %}
 
@@ -620,7 +630,7 @@ title: Bootstrap Documentation
     <p>Make use of HTML's default emphasis tags with lightweight styles.</p>
 
     <h3>Small text</h3>
-    <p>For de-emphasizing inline or blocks of text, <small>use the small tag</small> to set text at 85% the size of the parent. Heading elements receive their own <code>font-size</code> for nested <code>&lt;small&lt;</code> elements.</p>
+    <p>For de-emphasizing inline or blocks of text, use the <code>&lt;small&gt;</code> tag to set text at 85% the size of the parent. Heading elements receive their own <code>font-size</code> for nested <code>&lt;small&gt;</code> elements.</p>
     <div class="bs-docs-example">
       <p><small>This line of text is meant to be treated as fine print.</small></p>
     </div>
@@ -1004,7 +1014,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Add any of the following classes to the <code>.table</code> base class.</p>
 
     <h3 id="tables-striped">Striped</h3>
-    <p>Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code> via the <code>:nth-child</code> CSS selector (not available in IE8).</p>
+    <p>Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p>
+    <div class="bs-docs-sidenote">
+      <h4>Cross-browser compatibility</h4>
+      <p>Striped tables are styled via the <code>:nth-child</code> CSS selector, which is not available in IE8.</p>
+    </div>
     <div class="bs-docs-example">
       <table class="table table-striped">
         <thead>
@@ -1172,8 +1186,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Use contextual classes to color table rows.</p>
     <table class="table table-bordered table-striped">
       <colgroup>
-        <col class="col-span-1">
-        <col class="col-span-7">
+        <col class="col col-lg-1">
+        <col class="col col-lg-7">
       </colgroup>
       <thead>
         <tr>
@@ -1190,7 +1204,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </tr>
         <tr>
           <td>
-            <code>.error</code>
+            <code>.danger</code>
           </td>
           <td>Indicates a dangerous or potentially negative action.</td>
         </tr>
@@ -1225,7 +1239,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             <td>01/04/2012</td>
             <td>Approved</td>
           </tr>
-          <tr class="error">
+          <tr class="danger">
             <td>2</td>
             <td>TB - Monthly</td>
             <td>02/04/2012</td>
@@ -1302,8 +1316,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h3 id="forms-inline">Inline form</h3>
     <p>Add <code>.form-inline</code> for left-aligned labels and inline-block controls for a compact layout.</p>
     <form class="bs-docs-example form-inline">
-      <input type="text" class="col-span-3" placeholder="Email">
-      <input type="password" class="col-span-3" placeholder="Password">
+      <input type="text" class="col col-lg-3" placeholder="Email">
+      <input type="password" class="col col-lg-3" placeholder="Password">
       <div class="checkbox">
         <label>
           <input type="checkbox"> Remember me
@@ -1313,8 +1327,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </form><!-- /example -->
 {% highlight html linenos %}
 <form class="form-inline">
-  <input type="text" class="col-span-3" placeholder="Email">
-  <input type="password" class="col-span-3" placeholder="Password">
+  <input type="text" class="col col-lg-3" placeholder="Email">
+  <input type="password" class="col col-lg-3" placeholder="Password">
   <div class="checkbox">
     <label>
       <input type="checkbox"> Remember me
@@ -1389,7 +1403,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h3>Inputs</h3>
     <p>Most common form control, text-based input fields. Includes support for all HTML5 types: text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color.</p>
-    <p>Requires the use of a specified <code>type</code> at all times.</p>
+    <div class="bs-docs-sidenote">
+      <h4>Type declaration required</h4>
+      <p>Inputs will only be fully styled if their <code>type</code> is properly declared.</p>
+    </div>
     <form class="bs-docs-example form-inline">
       <input type="text" placeholder="Text input">
     </form>
@@ -1523,13 +1540,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3 id="forms-invalid-inputs">Invalid inputs</h3>
-    <p>Style inputs via default browser functionality with <code>:invalid</code>. Specify a <code>type</code>, add the <code>required</code> attribute if the field is not optional, and (if applicable) specify a <code>pattern</code>.</p>
-    <p>This is not available in versions of Internet Explorer 7-9 due to lack of support for CSS pseudo selectors.</p>
+    <p>Style inputs via default browser functionality. Specify a <code>type</code>, add the <code>required</code> attribute if the field is not optional, and (if applicable) specify a <code>pattern</code>.</p>
+
+    <div class="bs-docs-sidenote">
+      <h4>Cross-browser compatibility</h4>
+      <p>Invalid inputs are styled via the <code>:invalid</code> CSS selector, which is not supported by Internet Explorer 9 and below.</p>
+    </div>
+
     <form class="bs-docs-example form-inline">
-      <input class="col-span-3" type="email" placeholder="test@example.com" required>
+      <input class="col col-lg-3" type="email" placeholder="test@example.com" required>
     </form>
 {% highlight html linenos %}
-<input class="col-span-3" type="email" placeholder="test@example.com" required>
+<input class="col col-lg-3" type="email" placeholder="test@example.com" required>
 {% endhighlight %}
 
     <h3 id="forms-disabled-inputs">Disabled inputs</h3>
@@ -1542,14 +1564,25 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3 id="forms-disabled-fieldsets">Disabled fieldsets</h3>
-    <p>Add the <code>disabled</code> attribute to a <code>&lt;fieldset&gt;</code> to disable all the controls within the <code>&lt;fieldset&gt;</code> at once. Link buttons (with the <code>&lt;a&gt;</code> element) will be aesthetically disabled, but you will need custom JavaScript to disable their behavior.</p>
+    <p>Add the <code>disabled</code> attribute to a <code>&lt;fieldset&gt;</code> to disable all the controls within the <code>&lt;fieldset&gt;</code> at once.</p>
+
+    <div class="bs-docs-sidenote">
+      <h4>Link functionality of <code>&lt;a&gt;</code> not impacted</h4>
+      <p>This class will only change the appearance of <code>&lt;a class="btn"&gt;</code> buttons, not their functionality. Use custom JavaScript to disable links here.</p>
+    </div>
+
+    <div class="bs-docs-sidenote">
+      <h4>Cross-browser compatibility</h4>
+      <p>While Bootstrap will apply these styles in all browsers, IE and Safari don't actually support the <code>&lt;disabled&gt;</code> attribute on a <code>&lt;fieldset&gt;</code>. Use custom JavaScript to disable the fieldset in these browsers.</p>
+    </div>
+
     <form class="bs-docs-example form-inline">
       <fieldset disabled>
         <div>
-          <input type="text" class="col-span-4" placeholder="Disabled input">
+          <input type="text" class="col col-lg-4" placeholder="Disabled input">
         </div>
         <div>
-          <select class="col-span-4">
+          <select class="col col-lg-4">
             <option>Disabled select</option>
           </select>
         </div>
@@ -1565,10 +1598,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <form class="form-inline">
   <fieldset disabled>
     <div>
-      <input type="text" class="col-span-4" placeholder="Disabled input">
+      <input type="text" class="col col-lg-4" placeholder="Disabled input">
     </div>
     <div>
-      <select class="col-span-4">
+      <select class="col col-lg-4">
         <option>Disabled select</option>
       </select>
     </div>
@@ -1638,36 +1671,41 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h3 id="forms-input-groups">Input groups</h3>
     <p>Add text or buttons before, after, or on both sides of any text-based input. Use <code>.input-group</code> with a <code>.add-on</code> to prepend or append elements to an <code>&lt;input&gt;</code>.</p>
-    <p>Avoid using <code>&lt;select&gt;</code> elements here as they cannot be fully styled in WebKit browsers.</p>
+
+    <div class="bs-docs-sidenote">
+      <h4>Cross-browser compatibility</h4>
+      <p>Avoid using <code>&lt;select&gt;</code> elements here as they cannot be fully styled in WebKit browsers.</p>
+    </div>
+
     <form class="bs-docs-example">
-      <div class="input-group col-span-9">
+      <div class="input-group col col-lg-9">
         <span class="input-group-addon">@</span>
         <input type="text" placeholder="Username">
       </div>
       <br>
-      <div class="input-group col-span-6">
+      <div class="input-group col col-lg-6">
         <input type="text">
         <span class="input-group-addon">.00</span>
       </div>
       <br>
-      <div class="input-group col-span-3">
+      <div class="input-group col col-lg-3">
         <span class="input-group-addon">$</span>
         <input type="text">
         <span class="input-group-addon">.00</span>
       </div>
     </form>
 {% highlight html linenos %}
-<div class="input-group col-span-9">
+<div class="input-group col col-lg-9">
   <span class="input-group-addon">@</span>
   <input type="text" placeholder="Username">
 </div>
 
-<div class="input-group col-span-6">
+<div class="input-group col col-lg-6">
   <input type="text">
   <span class="input-group-addon">.00</span>
 </div>
 
-<div class="input-group col-span-3">
+<div class="input-group col col-lg-3">
   <span class="input-group-addon">$</span>
   <input type="text">
   <span class="input-group-addon">.00</span>
@@ -1677,33 +1715,33 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h4>Optional sizes</h4>
     <p>Add the relative form sizing classes to the `.input-group-addon`.</p>
     <form class="bs-docs-example">
-      <div class="input-group col-span-9">
+      <div class="input-group col col-lg-9">
         <span class="input-group-addon input-large">@</span>
         <input type="text" class="input-large" placeholder="Username">
       </div>
       <br>
-      <div class="input-group col-span-9">
+      <div class="input-group col col-lg-9">
         <span class="input-group-addon">@</span>
         <input type="text" placeholder="Username">
       </div>
       <br>
-      <div class="input-group col-span-9">
+      <div class="input-group col col-lg-9">
         <span class="input-group-addon input-small">@</span>
         <input type="text" class="input-small" placeholder="Username">
       </div>
     </form>
 {% highlight html linenos %}
-<div class="input-group col-span-9">
+<div class="input-group col col-lg-9">
   <span class="input-group-addon input-large">@</span>
   <input type="text" class="input-large" placeholder="Username">
 </div>
 
-<div class="input-group col-span-9">
+<div class="input-group col col-lg-9">
   <span class="input-group-addon">@</span>
   <input type="text" placeholder="Username">
 </div>
 
-<div class="input-group col-span-9">
+<div class="input-group col col-lg-9">
   <span class="input-group-addon input-small">@</span>
   <input type="text" class="input-small" placeholder="Username">
 </div>
@@ -1712,14 +1750,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h4>Buttons instead of text</h4>
     <p>Buttons in input groups are a bit different and require one extra level of nesting. Instead of <code>.input-group-addon</code>, you'll need to use <code>.input-group-btn</code> to wrap the buttons. This is required due to default browser styles that cannot be overridden.</p>
     <form class="bs-docs-example">
-      <div class="input-group col-span-7">
+      <div class="input-group col col-lg-7">
         <span class="input-group-btn">
           <button class="btn" type="button">Go!</button>
         </span>
         <input type="text">
       </div>
       <br>
-      <div class="input-group col-span-7">
+      <div class="input-group col col-lg-7">
         <input type="text">
         <span class="input-group-btn">
           <button class="btn" type="button">Go!</button>
@@ -1727,14 +1765,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div>
     </form>
 {% highlight html linenos %}
-<div class="input-group col-span-7">
+<div class="input-group col col-lg-7">
   <span class="input-group-btn">
     <button class="btn" type="button">Go!</button>
   </span>
   <input type="text">
 </div>
 
-<div class="input-group col-span-7">
+<div class="input-group col col-lg-7">
   <input type="text">
   <span class="input-group-btn">
     <button class="btn" type="button">Go!</button>
@@ -1745,7 +1783,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h4>Button dropdowns</h4>
     <p></p>
     <form class="bs-docs-example">
-      <div class="input-group col-span-7">
+      <div class="input-group col col-lg-7">
         <div class="input-group-btn">
           <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
           <ul class="dropdown-menu">
@@ -1759,7 +1797,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <input type="text">
       </div><!-- /input-group -->
       <br>
-      <div class="input-group col-span-7">
+      <div class="input-group col col-lg-7">
         <input type="text">
         <div class="input-group-btn">
           <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
@@ -1774,7 +1812,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div><!-- /input-group -->
     </form>
 {% highlight html linenos %}
-<div class="input-group col-span-7">
+<div class="input-group col col-lg-7">
   <div class="input-group-btn">
     <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
     <ul class="dropdown-menu">
@@ -1788,7 +1826,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <input type="text">
 </div><!-- /input-group -->
 
-<div class="input-group col-span-7">
+<div class="input-group col col-lg-7">
   <input type="text">
   <div class="input-group-btn">
     <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
@@ -1805,7 +1843,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h4>Segmented dropdown groups</h4>
     <form class="bs-docs-example">
-      <div class="input-group col-span-7">
+      <div class="input-group col col-lg-7">
         <div class="input-group-btn">
           <button class="btn" tabindex="-1">Action</button>
           <button class="btn dropdown-toggle" data-toggle="dropdown" tabindex="-1">
@@ -1824,7 +1862,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
       <br>
 
-      <div class="input-group col-span-7">
+      <div class="input-group col col-lg-7">
         <input type="text">
         <div class="input-group-btn">
           <button class="btn" tabindex="-1">Action</button>
@@ -1842,14 +1880,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div>
     </form>
 {% highlight html linenos %}
-<div class="input-group col-span-7">
+<div class="input-group col col-lg-7">
   <div class="input-group-btn">
     <!-- Button and dropdown menu -->
   </div>
   <input type="text">
 </div>
 
-<div class="input-group col-span-7">
+<div class="input-group col col-lg-7">
   <input type="text">
   <div class="input-group-btn btn-group">
     <!-- Button and dropdown menu -->
@@ -1858,7 +1896,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3 id="forms-control-sizes">Control sizing</h3>
-    <p>Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using <code>.span*</code> classes.</p>
+    <p>Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using <code>.col-span-*</code> classes.</p>
 
     <h4>Relative sizing</h4>
     <p>Create larger or smaller form controls that match button sizes.</p>
@@ -1876,27 +1914,27 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h4>Column sizing</h4>
-    <p>Use <code>.col-span-12</code> to <code>.col-span-12</code> for setting widths on inputs that match Bootstrap's grid system.</p>
+    <p>Use <code>.col col-lg-1</code> to <code>.col col-lg-12</code> for setting widths on inputs that match Bootstrap's grid system.</p>
     <form class="bs-docs-example" style="padding-bottom: 15px;">
       <div class="controls docs-input-sizes">
-        <input class="col-span-1" type="text" placeholder=".col-span-1">
-        <input class="span2" type="text" placeholder=".span2">
-        <input class="col-span-3" type="text" placeholder=".col-span-3">
-        <select class="col-span-1">
+        <input class="col col-lg-1" type="text" placeholder=".col col-lg-1">
+        <input class="col col-lg-2" type="text" placeholder=".col col-lg-2">
+        <input class="col col-lg-3" type="text" placeholder=".col col-lg-3">
+        <select class="col col-lg-1">
           <option>1</option>
           <option>2</option>
           <option>3</option>
           <option>4</option>
           <option>5</option>
         </select>
-        <select class="span2">
+        <select class="col col-lg-2">
           <option>1</option>
           <option>2</option>
           <option>3</option>
           <option>4</option>
           <option>5</option>
         </select>
-        <select class="col-span-3">
+        <select class="col col-lg-3">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -1906,55 +1944,46 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div>
     </form>
 {% highlight html linenos %}
-<input class="col-span-1" type="text" placeholder=".col-span-1">
-<input class="span2" type="text" placeholder=".span2">
-<input class="col-span-3" type="text" placeholder=".col-span-3">
-<select class="col-span-1">
+<input class="col col-lg-1" type="text" placeholder=".col col-lg-1">
+<input class="col col-lg-2" type="text" placeholder=".col col-lg-2">
+<input class="col col-lg-3" type="text" placeholder=".col col-lg-3">
+<select class="col col-lg-1">
   ...
 </select>
-<select class="span2">
+<select class="col col-lg-2">
   ...
 </select>
-<select class="col-span-3">
+<select class="col col-lg-3">
   ...
 </select>
 {% endhighlight %}
 
-    <p>If you need multiple inputs on the same line, wrap them in the standard grid markup (with <code>.row</code> and <code>.span*</code> classes). Each input should have it's own column and will expand to fill the available width automatically.</p>
+    <p>If you need multiple inputs on the same line, wrap them in the standard grid markup (with <code>.row</code> and <code>.col-span-*</code> classes). Each input should have it's own column and will expand to fill the available width automatically.</p>
     <form class="bs-docs-example" style="padding-bottom: 15px;">
       <div class="row">
-        <div class="col-span-4">
-          <input type="text" placeholder=".col-span-4">
+        <div class="col col-lg-4">
+          <input type="text" placeholder=".col col-lg-4">
         </div>
-        <div class="col-span-4">
-          <input type="text" placeholder=".col-span-4">
+        <div class="col col-lg-4">
+          <input type="text" placeholder=".col col-lg-4">
         </div>
-        <div class="col-span-4">
-          <input type="text" placeholder=".col-span-4">
+        <div class="col col-lg-4">
+          <input type="text" placeholder=".col col-lg-4">
         </div>
       </div>
     </form>
 {% highlight html linenos %}
 <div class="row">
-  <div class="col-span-4">
-    <input type="text" placeholder=".col-span-4">
+  <div class="col col-lg-4">
+    <input type="text" placeholder=".col col-lg-4">
   </div>
-  <div class="col-span-4">
-    <input type="text" placeholder=".col-span-4">
+  <div class="col col-lg-4">
+    <input type="text" placeholder=".col col-lg-4">
   </div>
-  <div class="col-span-4">
-    <input type="text" placeholder=".col-span-4">
+  <div class="col col-lg-4">
+    <input type="text" placeholder=".col col-lg-4">
   </div>
 </div>
-{% endhighlight %}
-
-    <h3>Uneditable inputs</h3>
-    <p>Present data in a form that's not editable without using actual form markup.</p>
-    <form class="bs-docs-example">
-      <span class="input-xlarge uneditable-input">Some value here</span>
-    </form>
-{% highlight html linenos %}
-<span class="uneditable-input">Some value here</span>
 {% endhighlight %}
 
     <h3 id="forms-actions">Form actions</h3>
@@ -2038,9 +2067,6 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <button type="button" class="btn btn-link">Link</button>
 {% endhighlight %}
 
-    <h4>Cross browser compatibility</h4>
-    <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot fix.</p>
-
 
     <h2 id="buttons-sizes">Button sizes</h2>
     <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code> for additional sizes.</p>
@@ -2100,13 +2126,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h3>Button element</h3>
     <p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
     <p class="bs-docs-example">
-      <button type="button" class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
+      <button type="button" class="btn btn-large btn-primary" disabled="disabled">Primary button</button>
       <button type="button" class="btn btn-large" disabled="disabled">Button</button>
     </p>
 {% highlight html linenos %}
-<button type="button" class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
+<button type="button" class="btn btn-large btn-primary" disabled="disabled">Primary button</button>
 <button type="button" class="btn btn-large" disabled="disabled">Button</button>
 {% endhighlight %}
+
+    <div class="bs-docs-sidenote">
+      <h4>Cross-browser compatibility</h4>
+      <p>If you add the <code>disabled</code> attribute to a <code>&lt;button&gt;</code>, Internet Explorer 9 and below will render text gray with a nasty text-shadow that we cannot fix.</p>
+    </div>
 
     <h3>Anchor element</h3>
     <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
@@ -2119,8 +2150,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <a href="#" class="btn btn-large disabled">Link</a>
 {% endhighlight %}
     <p>
-      We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required. Also, this class is only for aesthetic; you must use custom JavaScript to disable links here.
+      We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
     </p>
+    <div class="bs-docs-sidenote">
+      <h4>Link functionality not impacted</h4>
+      <p>This class will only change the <code>&lt;a&gt;</code>'s appearance, not its functionality. Use custom JavaScript to disable links here.</p>
+    </div>
 
 
     <h2 id="buttons-tags">One class, multiple tags</h2>
@@ -2137,7 +2172,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <input class="btn" type="button" value="Input">
 <input class="btn" type="submit" value="Submit">
 {% endhighlight %}
-    <p>As a best practice, <strong>we highly recommend matching using the <code>&lt;button&gt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
+
+    <div class="bs-docs-sidenote">
+      <h4>Cross-browser rendering</h4>
+      <p>As a best practice, <strong>we highly recommend using the <code>&lt;button&gt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
+    </div>
 
   </div>
 
@@ -2150,7 +2189,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <h1>Images</h1>
     </div>
 
-    <p>Add classes to an <code>&lt;img&gt;</code> element to easily style images in any project. Rounded corners are not available in IE8.</p>
+    <p>Add classes to an <code>&lt;img&gt;</code> element to easily style images in any project.</p>
+    <div class="bs-docs-sidenote">
+      <h4>Cross-browser compatibility</h4>
+      <p>Keep in mind that Internet Explorer 8 lacks support for rounded corners.</p>
+    </div>
     <div class="bs-docs-example bs-docs-example-images">
       <img data-src="holder.js/140x140" class="img-rounded">
       <img data-src="holder.js/140x140" class="img-circle">
@@ -2561,10 +2604,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 {% endhighlight %}
 
-    <p class="alert alert-info">
-      <strong>Heads up!</strong>
-      Using icons without any additional content means the icons are not represented to screen reader users.
-    </p>
+    <div class="bs-docs-sidenote">
+      <h4>Accessibility</h4>
+      <p>Keep in mind that using icons without any additional content means the icons are not represented to screen reader users.</p>
+    </div>
 
     <h5>Dropdown in a button group</h5>
     <div class="bs-docs-example">
@@ -2636,7 +2679,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <div class="controls">
           <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-            <input class="span2" id="inputIcon" type="text">
+            <input class="col col-lg-2" id="inputIcon" type="text">
           </div>
         </div>
       </div>
@@ -2647,7 +2690,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <div class="controls">
     <div class="input-group">
       <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-      <input class="span2" id="inputIcon" type="text">
+      <input class="col col-lg-2" id="inputIcon" type="text">
     </div>
   </div>
 </div>
@@ -2904,7 +2947,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="page-header">
       <h1>Button dropdown menus</h1>
     </div>
-    <p class="lead">Use any button to trigger a dropdown menu by placing it within a <code>.btn-group</code> and providing the proper menu markup. Requires the <a href="./javascript.html#dropdowns">Bootstrap dropdown plugin</a>.</p>
+    <p class="lead">Use any button to trigger a dropdown menu by placing it within a <code>.btn-group</code> and providing the proper menu markup.</p>
+
+    <div class="bs-docs-sidenote">
+      <h4>Plugin dependency</h4>
+      <p>Button dropdowns require the <a href="#dropdown-plugin">dropdown plugin</a> to be included in your version of Bootstrap.</p>
+    </div>
 
     <h3 id="btn-dropdowns-single">Single button dropdowns</h3>
     <p>Turn a button into dropdown toggle with some basic markup changes.</p>
@@ -3257,7 +3305,13 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3 id="nav-disabled-links">Disabled state</h3>
-    <p>For any nav component (tabs, pills, or list), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>. Links will remain clickable, however, unless you remove the <code>href</code> attribute. Alternatively, you could implement custom JavaScript to prevent those clicks.</p>
+    <p>For any nav component (tabs, pills, or list), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>.</p>
+
+    <div class="bs-docs-sidenote">
+      <h4>Link functionality not impacted</h4>
+      <p>This class will only change the <code>&lt;a&gt;</code>'s appearance, not its functionality. Use custom JavaScript to disable links here.</p>
+    </div>
+
     <div class="bs-docs-example">
       <ul class="nav nav-pills">
         <li><a href="#">Clickable link</a></li>
@@ -3369,7 +3423,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="bs-docs-example">
       <div class="navbar">
         <a class="navbar-brand" href="#">Title</a>
-        <ul class="nav">
+        <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">Link</a></li>
           <li><a href="#">Link</a></li>
@@ -3379,7 +3433,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% highlight html linenos %}
 <div class="navbar">
   <a class="navbar-brand" href="#">Title</a>
-  <ul class="nav">
+  <ul class="nav navbar-nav">
     <li class="active"><a href="#">Home</a></li>
     <li><a href="#">Link</a></li>
     <li><a href="#">Link</a></li>
@@ -3404,7 +3458,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Nav items are simple to add via unordered lists.</p>
     <div class="bs-docs-example">
       <div class="navbar">
-        <ul class="nav">
+        <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">Link</a></li>
           <li class="disabled"><a href="#">Disabled</a></li>
@@ -3412,30 +3466,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div>
     </div><!-- /example -->
 {% highlight html linenos %}
-<ul class="nav">
+<ul class="nav navbar-nav">
   <li class="active"><a href="#">Home</a></li>
   <li><a href="#">Link</a></li>
   <li class="disabled"><a href="#">Disabled</a></li>
-</ul>
-{% endhighlight %}
-    <p>You can easily add dividers to your nav links with an empty list item and a simple class. Just add the appropriate class to <code>&lt;li&gt;</code> elements between links. Dividers will be horizontal to start, but at resolutions above 768px they become vertical with the navigation.</p>
-    <div class="bs-docs-example">
-      <div class="navbar">
-        <ul class="nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Link</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Link</a></li>
-          <li class="divider"></li>
-        </ul>
-      </div>
-    </div><!-- /example -->
-{% highlight html linenos %}
-<ul class="nav">
-  ...
-  <li class="divider"></li>
-  ...
 </ul>
 {% endhighlight %}
 
@@ -3467,15 +3501,15 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
     <h2>Optional display variations</h2>
-    <p>Fix the navbar to the top or bottom of the viewport with an additional class on the outermost div, <code>.navbar</code>.</p>
+    <p>Fix the navbar to the top or bottom of the viewport with an additional class on the outermost div, <code>.navbar</code>. These will also remove rounded corners.</p>
 
     <h3 id="navbar-fixed-top">Fixed to top</h3>
-    <p>Add <code>.navbar-fixed-top</code> and remember to account for the hidden area underneath it by adding at least 40px <code>padding</code> to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.</p>
+    <p>Add <code>.navbar-fixed-top</code>.</p>
     <div class="bs-docs-example bs-navbar-top-example">
-      <div class="navbar navbar-fixed-top" style="position: absolute; top: -1px;">
+      <div class="navbar navbar-fixed-top">
         <div class="container" style="width: auto;">
           <a class="navbar-brand" href="#">Title</a>
-          <ul class="nav">
+          <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">Link</a></li>
             <li><a href="#">Link</a></li>
@@ -3489,13 +3523,29 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 {% endhighlight %}
 
+    <div class="bs-docs-sidenote">
+      <h4>Body padding required</h4>
+      <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the top of the <code>&lt;body&gt;</code>. The navbar itself has a height of 54px by default. At 768px and above, its height shrinks to 50px. Try out your own values or use our snippet below:</p>
+{% highlight css linenos %}
+body {
+  padding-top: 64px;
+}
+@media screen and (min-width: 768px) {
+  body {
+    padding-top: 60px;
+  }
+}
+{% endhighlight %}
+      <p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
+    </div>
+
     <h3 id="navbar-fixed-bottom">Fixed to bottom</h3>
     <p>Add <code>.navbar-fixed-bottom</code> instead.</p>
     <div class="bs-docs-example bs-navbar-bottom-example">
-      <div class="navbar navbar-fixed-bottom" style="position: absolute; bottom: -1px;">
+      <div class="navbar navbar-fixed-bottom">
         <div class="container" style="width: auto;">
           <a class="navbar-brand" href="#">Title</a>
-          <ul class="nav">
+          <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">Link</a></li>
             <li><a href="#">Link</a></li>
@@ -3509,13 +3559,29 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 {% endhighlight %}
 
+    <div class="bs-docs-sidenote">
+      <h4>Body padding required</h4>
+      <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the bottom of the <code>&lt;body&gt;</code>. The navbar itself has a height of 54px by default. At 768px and above, its height shrinks to 50px. Try out your own values or use our snippet below:</p>
+{% highlight css linenos %}
+body {
+  padding-bottom: 64px;
+}
+@media screen and (min-width: 768px) {
+  body {
+    padding-bottom: 60px;
+  }
+}
+{% endhighlight %}
+      <p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
+    </div>
+
     <h3 id="navbar-static-top">Static top navbar</h3>
-    <p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.navbar-fixed-top</code> class, you do not need to change any padding on the <code>body</code>.</p>
+    <p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.navbar-fixed-*</code> classes, you do not need to change any padding on the <code>body</code>.</p>
     <div class="bs-docs-example bs-navbar-top-example">
       <div class="navbar navbar-static-top" style="margin: -1px -1px 0;">
         <div class="container" style="width: auto;">
           <a class="navbar-brand" href="#">Title</a>
-          <ul class="nav">
+          <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">Link</a></li>
             <li><a href="#">Link</a></li>
@@ -3542,7 +3608,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           </button>
           <a class="navbar-brand" href="#">Title</a>
           <div class="nav-collapse collapse navbar-responsive-collapse">
-            <ul class="nav">
+            <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#">Link</a></li>
               <li><a href="#">Link</a></li>
@@ -3560,11 +3626,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
               </li>
             </ul>
             <form class="navbar-form pull-left" action="">
-              <input type="text" class="col-span-8" placeholder="Search">
+              <input type="text" class="col col-lg-8" placeholder="Search">
             </form>
-            <ul class="nav pull-right">
+            <ul class="nav navbar-nav pull-right">
               <li><a href="#">Link</a></li>
-              <li class="divider"></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -3602,8 +3667,9 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div><!-- /.navbar -->
 {% endhighlight %}
 
-    <div class="alert alert-info">
-      <strong>Heads up!</strong> The responsive navbar requires the <a href="#collapse">collapse plugin</a>.
+    <div class="bs-docs-sidenote">
+      <h4>Plugin dependency</h4>
+      <p>The responsive navbar requires the <a href="#collapse">collapse plugin</a> to be included in your version of Bootstrap.</p>
     </div>
 
 
@@ -3619,7 +3685,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           </button>
           <a class="navbar-brand" href="#">Title</a>
           <div class="nav-collapse collapse navbar-inverse-collapse">
-            <ul class="nav">
+            <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#">Link</a></li>
               <li><a href="#">Link</a></li>
@@ -3637,11 +3703,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
               </li>
             </ul>
             <form class="navbar-form pull-left" action="">
-              <input type="text" class="col-span-8" placeholder="Search">
+              <input type="text" class="col col-lg-8" placeholder="Search">
             </form>
-            <ul class="nav pull-right">
+            <ul class="nav navbar-nav pull-right">
               <li><a href="#">Link</a></li>
-              <li class="divider"></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -3674,7 +3739,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <h1>Breadcrumbs <small></small></h1>
     </div>
     <p class="lead">Indicate the current page's location within a navigational hierarchy.</p>
-
+    <p>Separators are automatically added in CSS through `:after` and `content`.</p>
     <div class="bs-docs-example">
       <ul class="breadcrumb">
         <li class="active">Home</li>
@@ -3894,56 +3959,20 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h3>Available variations</h3>
     <p>Add any of the below mentioned modifier classes to change the appearance of a label.</p>
-    <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>Labels</th>
-          <th>Markup</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <span class="label">Default</span>
-          </td>
-          <td>
-            <code>&lt;span class="label"&gt;Default&lt;/span&gt;</code>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <span class="label label-success">Success</span>
-          </td>
-          <td>
-            <code>&lt;span class="label label-success"&gt;Success&lt;/span&gt;</code>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <span class="label label-warning">Warning</span>
-          </td>
-          <td>
-            <code>&lt;span class="label label-warning"&gt;Warning&lt;/span&gt;</code>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <span class="label label-danger">Danger</span>
-          </td>
-          <td>
-            <code>&lt;span class="label label-danger"&gt;Danger&lt;/span&gt;</code>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <span class="label label-info">Info</span>
-          </td>
-          <td>
-            <code>&lt;span class="label label-info"&gt;Info&lt;/span&gt;</code>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="bs-docs-example">
+      <span class="label">Default</span>
+      <span class="label label-success">Success</span>
+      <span class="label label-warning">Warning</span>
+      <span class="label label-danger">Danger</span>
+      <span class="label label-info">Info</span>
+    </div>
+{% highlight html linenos %}
+<span class="label">Default</span>
+<span class="label label-success">Success</span>
+<span class="label label-warning">Warning</span>
+<span class="label label-danger">Danger</span>
+<span class="label label-info">Info</span>
+{% endhighlight %}
 
   </div>
 
@@ -3966,6 +3995,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h4>Self collapsing</h4>
     <p>When there are no new or unread items, badges will simply collapse (via CSS's <code>:empty</code> selector) provided no content exists within.</p>
+
+    <div class="bs-docs-sidenote">
+      <h4>Cross-browser compatibility</h4>
+      <p>Badges won't self collapse in Internet Explorer 8 because it lacks support for the <code>:empty</code> selector.</p>
+    </div>
 
     <h4>Adapts to active nav states</h4>
     <p>Built-in styles are included for placing badges in active states in pill and list navigations.</p>
@@ -4032,7 +4066,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h2 id="type-components-page-header">Page header</h2>
-    <p>A simple shell for an <code>h1</code> to appropriately space out and segment sections of content on a page. It can utilize the <code>h1</code>'s default <code>small</code>, element as well most other components (with additional styles).</p>
+    <p>A simple shell for an <code>h1</code> to appropriately space out and segment sections of content on a page. It can utilize the <code>h1</code>'s default <code>small</code> element, as well as most other components (with additional styles).</p>
     <div class="bs-docs-example">
       <div class="page-header">
         <h1>Example page header <small>Subtext for header</small></h1>
@@ -4059,22 +4093,22 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>By default, Bootstrap's thumbnails are designed to showcase linked images with minimal required markup.</p>
     <div class="bs-docs-example">
       <div class="row">
-        <div class="col-span-3">
+        <div class="col col-lg-3">
           <a href="#" class="thumbnail">
             <img data-src="holder.js/260x180" alt="">
           </a>
         </div>
-        <div class="col-span-3">
+        <div class="col col-lg-3">
           <a href="#" class="thumbnail">
             <img data-src="holder.js/260x180" alt="">
           </a>
         </div>
-        <div class="col-span-3">
+        <div class="col col-lg-3">
           <a href="#" class="thumbnail">
             <img data-src="holder.js/260x180" alt="">
           </a>
         </div>
-        <div class="col-span-3">
+        <div class="col col-lg-3">
           <a href="#" class="thumbnail">
             <img data-src="holder.js/260x180" alt="">
           </a>
@@ -4083,7 +4117,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div><!-- /.bs-docs-example -->
 {% highlight html linenos %}
 <div class="row">
-  <div class="col-span-3">
+  <div class="col col-lg-3">
     <a href="#" class="thumbnail">
       <img data-src="holder.js/260x180" alt="">
     </a>
@@ -4096,7 +4130,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.</p>
     <div class="bs-docs-example">
       <div class="row">
-        <div class="col-span-4">
+        <div class="col col-lg-4">
           <div class="thumbnail">
             <img data-src="holder.js/300x200" alt="">
             <div class="caption">
@@ -4106,7 +4140,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             </div>
           </div>
         </div>
-        <div class="col-span-4">
+        <div class="col col-lg-4">
           <div class="thumbnail">
             <img data-src="holder.js/300x200" alt="">
             <div class="caption">
@@ -4116,7 +4150,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             </div>
           </div>
         </div>
-        <div class="col-span-4">
+        <div class="col col-lg-4">
           <div class="thumbnail">
             <img data-src="holder.js/300x200" alt="">
             <div class="caption">
@@ -4130,7 +4164,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div><!-- /.bs-docs-example -->
 {% highlight html linenos %}
 <div class="row">
-  <div class="col-span-3">
+  <div class="col col-lg-3">
     <div class="thumbnail">
       <img data-src="holder.js/300x200" alt="">
       <div class="caption">
@@ -4190,7 +4224,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h3 id="alerts-alternatives">Contextual alternatives</h3>
     <p>Add optional classes to change an alert's connotation.</p>
     <div class="bs-docs-example">
-      <div class="alert alert-error">
+      <div class="alert alert-danger">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Oh snap!</strong> Change a few things up and try submitting again.
       </div>
@@ -4204,7 +4238,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div>
     </div>
 {% highlight html linenos %}
-<div class="alert alert-error">...</div>
+<div class="alert alert-danger">...</div>
 <div class="alert alert-success">...</div>
 <div class="alert alert-info">...</div>
 {% endhighlight %}
@@ -4221,7 +4255,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
     <p class="lead">Provide up-to-date feedback on the progress of a workflow or action with simple yet flexible progress bars.</p>
 
-    <p>Progress bars use CSS3 transitions and animations to achieve some of their effects. These features are not supported in IE8-9 or older versions of Firefox. Internet Explorer 10 and below, as well as Opera 12, do not support animations.</p>
+    <div class="bs-docs-sidenote">
+      <h4>Cross-browser compatibility</h4>
+      <p>Progress bars use CSS3 transitions and animations to achieve some of their effects. These features are not supported in Internet Explorer 9 and below or older versions of Firefox. Opera 12 does not support animations.</p>
+    </div>
 
     <h3 id="progress-basic">Basic</h3>
     <p>Default progress bar with a vertical gradient.</p>
@@ -4486,7 +4523,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3 id="list-group-chevrons">With chevrons</h3>
-    <p>Adding Glyphicon chevrons are automatically moved to the right.</p>
+    <p>Add Glyphicon chevrons that are automatically moved to the right.</p>
     <div class="bs-docs-example">
       <ul class="list-group">
         <li class="list-group-item">
@@ -4571,7 +4608,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3 id="list-group-linked">Linked list group</h3>
-    <p>Linkify list group items by using anchor tags instead of list items (that also means a parent <code>&lt;div&gt;</code> instead of an <code>&lt;ul&gt;</code>. No need for individual parents around each element.</p>
+    <p>Linkify list group items by using anchor tags instead of list items (that also means a parent <code>&lt;div&gt;</code> instead of an <code>&lt;ul&gt;</code>). No need for individual parents around each element.</p>
     <div class="bs-docs-example">
       <div class="list-group">
         <a href="#" class="list-group-item active">
@@ -4809,7 +4846,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 
     <h3 id="js-individual-compiled">Individual or compiled</h3>
-    <p>Plugins can be included individually (though some have required dependencies), or all at once. <strong>Do not attempt to include both.</strong> Both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all plugins in a single file.</p>
+    <p>Plugins can be included individually, or all at once. <strong>Do not attempt to include both.</strong> Both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all plugins in a single file.</p>
+    <div class="bs-docs-sidenote">
+      <h4>Plugin dependencies</h4>
+      <p>Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs (in notes like this one).</p>
+    </div>
 
     <h3 id="js-data-attrs">Data attributes</h3>
     <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API and should be your first consideration when using a plugin.</p>
@@ -4955,6 +4996,9 @@ $('#myModal').on('show', function (e) {
             <hr>
 
             <h4>Overflowing text to show optional scrollbar</h4>
+            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
             <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
             <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
@@ -5261,7 +5305,7 @@ $('.dropdown-toggle').dropdown()
           <h2>Example in navbar</h2>
           <p>The ScrollSpy plugin is for automatically updating nav targets based on scroll position. Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.</p>
           <div class="bs-docs-example">
-            <div id="navbarExample" class="navbar navbar-static">
+            <div id="navbar-example" class="navbar navbar-static">
               <div class="navbar-inner">
                 <div class="container" style="width: auto;">
                   <a class="navbar-brand" href="#">Project Name</a>
@@ -5281,7 +5325,7 @@ $('.dropdown-toggle').dropdown()
                 </div>
               </div>
             </div>
-            <div data-spy="scroll" data-target="#navbarExample" data-offset="0" class="scrollspy-example">
+            <div data-spy="scroll" data-target="#navbar-example" data-offset="0" class="scrollspy-example">
               <h4 id="fat">@fat</h4>
               <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
               <h4 id="mdo">@mdo</h4>
@@ -5298,15 +5342,12 @@ $('.dropdown-toggle').dropdown()
           </div><!-- /example -->
 
 
-          <hr class="bs-docs-separator">
-
-
           <h2>Usage</h2>
 
           <h3>Via data attributes</h3>
-          <p>To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body) and <code>data-target=".navbar"</code> to select which nav to use. You'll want to use scrollspy with a <code>.nav</code> component.</p>
+          <p>To easily add scrollspy behavior to your topbar navigation, add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the <code>&lt;body&gt;</code>. Then add the <code>data-target</code> attribute with the ID or class of the parent element of any Bootstrap <code>.nav</code> component.</p>
 {% highlight html linenos %}
-<body data-spy="scroll" data-target=".navbar">
+<body data-spy="scroll" data-target="#navbar-example">
   ...
 </body>
 {% endhighlight %}
@@ -5314,12 +5355,12 @@ $('.dropdown-toggle').dropdown()
           <h3>Via JavaScript</h3>
           <p>Call the scrollspy via JavaScript:</p>
 {% highlight js linenos %}
-$('.navbar').scrollspy()
+$('#navbar-example').scrollspy()
 {% endhighlight %}
 
-          <div class="alert alert-info">
-            <strong>Heads up!</strong>
-            Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the dom like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.
+          <div class="bs-docs-sidenote">
+            <h4>Resolvable ID targets required</h4>
+            <p>Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the DOM like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.</p>
           </div>
 
           <h3>Methods</h3>
@@ -5606,9 +5647,9 @@ $('#example').tooltip(options)
              </tr>
             </tbody>
           </table>
-          <div class="alert alert-info">
-            <strong>Heads up!</strong>
-            Options for individual tooltips can alternatively be specified through the use of data attributes.
+          <div class="bs-docs-sidenote">
+            <h4>Data attributes for individual tooltips</h4>
+            <p>Options for individual tooltips can alternatively be specified through the use of data attributes, as explained above.</p>
           </div>
 
           <h3>Markup</h3>
@@ -5648,7 +5689,12 @@ $('#example').tooltip(options)
         </div>
 
         <h2>Examples</h2>
-        <p>Add small overlays of content, like those on the iPad, to any element for housing secondary information. Hover over the button to trigger the popover. <strong>Requires <a href="#tooltips">Tooltip</a> to be included.</strong></p>
+        <p>Add small overlays of content, like those on the iPad, to any element for housing secondary information. Hover over the button to trigger the popover.</p>
+
+        <div class="bs-docs-sidenote">
+          <h4>Plugin dependency</h4>
+          <p>Popovers require the <a href="#tooltips">tooltip plugin</a> to be included in your version of Bootstrap.</p>
+        </div>
 
         <h3>Static popover</h3>
         <p>Four options are available: top, right, bottom, and left aligned.</p>
@@ -5716,79 +5762,79 @@ $('#example').tooltip(options)
         <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.</p>
         <table class="table table-bordered table-striped">
           <thead>
-           <tr>
-             <th style="width: 100px;">Name</th>
-             <th style="width: 100px;">type</th>
-             <th style="width: 50px;">default</th>
-             <th>description</th>
-           </tr>
+            <tr>
+              <th style="width: 100px;">Name</th>
+              <th style="width: 100px;">type</th>
+              <th style="width: 50px;">default</th>
+              <th>description</th>
+            </tr>
           </thead>
           <tbody>
-           <tr>
-             <td>animation</td>
-             <td>boolean</td>
-             <td>true</td>
-             <td>apply a css fade transition to the tooltip</td>
-           </tr>
-           <tr>
-             <td>html</td>
-             <td>boolean</td>
-             <td>false</td>
-             <td>Insert html into the popover. If false, jquery's <code>text</code> method will be used to insert content into the dom. Use text if you're worried about XSS attacks.</td>
-           </tr>
-           <tr>
-             <td>placement</td>
-             <td>string | function</td>
-             <td>'right'</td>
-             <td>how to position the popover - top | bottom | left | right</td>
-           </tr>
-           <tr>
-             <td>selector</td>
-             <td>string</td>
-             <td>false</td>
-             <td>if a selector is provided, tooltip objects will be delegated to the specified targets</td>
-           </tr>
-           <tr>
-             <td>trigger</td>
-             <td>string</td>
-             <td>'click'</td>
-             <td>how popover is triggered - click | hover | focus | manual</td>
-           </tr>
-           <tr>
-             <td>title</td>
-             <td>string | function</td>
-             <td>''</td>
-             <td>default title value if `title` attribute isn't present</td>
-           </tr>
-           <tr>
-             <td>content</td>
-             <td>string | function</td>
-             <td>''</td>
-             <td>default content value if `data-content` attribute isn't present</td>
-           </tr>
-           <tr>
-             <td>delay</td>
-             <td>number | object</td>
-             <td>0</td>
-             <td>
-              <p>delay showing and hiding the popover (ms) - does not apply to manual trigger type</p>
-              <p>If a number is supplied, delay is applied to both hide/show</p>
-              <p>Object structure is: <code>delay: { show: 500, hide: 100 }</code></p>
-             </td>
-           </tr>
-           <tr>
-             <td>container</td>
-             <td>string | false</td>
-             <td>false</td>
-             <td>
-              <p>Appends the popover to a specific element <code>container: 'body'</code></p>
-             </td>
-           </tr>
+            <tr>
+              <td>animation</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>apply a css fade transition to the tooltip</td>
+            </tr>
+            <tr>
+              <td>html</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>Insert html into the popover. If false, jquery's <code>text</code> method will be used to insert content into the dom. Use text if   you're worried about XSS attacks.</td>
+            </tr>
+            <tr>
+              <td>placement</td>
+              <td>string | function</td>
+              <td>'right'</td>
+              <td>how to position the popover - top | bottom | left | right</td>
+            </tr>
+            <tr>
+              <td>selector</td>
+              <td>string</td>
+              <td>false</td>
+              <td>if a selector is provided, tooltip objects will be delegated to the specified targets if a selector is provided, tooltip objects will be delegated to the specified targets. in practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twitter/bootstrap/issues/4215">this</a> and <a href="http://jsfiddle.net/KPeKS/4/">an informative example</a>.</td>
+            </tr>
+            <tr>
+              <td>trigger</td>
+              <td>string</td>
+              <td>'click'</td>
+              <td>how popover is triggered - click | hover | focus | manual</td>
+            </tr>
+            <tr>
+              <td>title</td>
+              <td>string | function</td>
+              <td>''</td>
+              <td>default title value if `title` attribute isn't present</td>
+            </tr>
+            <tr>
+              <td>content</td>
+              <td>string | function</td>
+              <td>''</td>
+              <td>default content value if `data-content` attribute isn't present</td>
+            </tr>
+            <tr>
+              <td>delay</td>
+              <td>number | object</td>
+              <td>0</td>
+              <td>
+               <p>delay showing and hiding the popover (ms) - does not apply to manual trigger type</p>
+               <p>If a number is supplied, delay is applied to both hide/show</p>
+               <p>Object structure is: <code>delay: { show: 500, hide: 100 }</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td>container</td>
+              <td>string | false</td>
+              <td>false</td>
+              <td>
+               <p>Appends the popover to a specific element <code>container: 'body'</code></p>
+              </td>
+            </tr>
           </tbody>
         </table>
-        <div class="alert alert-info">
-          <strong>Heads up!</strong>
-          Options for individual popovers can alternatively be specified through the use of data attributes.
+        <div class="bs-docs-sidenote">
+          <h4>Data attributes for individual popovers</h4>
+          <p>Options for individual popovers can alternatively be specified through the use of data attributes, as explained above.</p>
         </div>
 
         <h3>Markup</h3>
@@ -5837,7 +5883,7 @@ $('#example').tooltip(options)
         <div class="bs-docs-example">
           <div class="alert alert-block alert-error fade in">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <h4 class="alert-heading">Oh snap! You got an error!</h4>
+            <h4>Oh snap! You got an error!</h4>
             <p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
             <p>
               <a class="btn btn-danger" href="#">Take this action</a> <a class="btn" href="#">Or do this</a>
@@ -5871,20 +5917,20 @@ $('#example').tooltip(options)
         <p>Bootstrap's alert class exposes a few events for hooking into alert functionality.</p>
         <table class="table table-bordered table-striped">
           <thead>
-           <tr>
-             <th style="width: 150px;">Event</th>
-             <th>Description</th>
-           </tr>
+            <tr>
+              <th style="width: 150px;">Event</th>
+              <th>Description</th>
+            </tr>
           </thead>
           <tbody>
-           <tr>
-             <td>close</td>
-             <td>This event fires immediately when the <code>close</code> instance method is called.</td>
-           </tr>
-           <tr>
-             <td>closed</td>
-             <td>This event is fired when the alert has been closed (will wait for css transitions to complete).</td>
-           </tr>
+            <tr>
+              <td>close</td>
+              <td>This event fires immediately when the <code>close</code> instance method is called.</td>
+            </tr>
+            <tr>
+              <td>closed</td>
+              <td>This event is fired when the alert has been closed (will wait for css transitions to complete).</td>
+            </tr>
           </tbody>
         </table>
 {% highlight js linenos %}
@@ -6006,9 +6052,9 @@ $('.nav-tabs').button()
 
             <h4>$().button('toggle')</h4>
             <p>Toggles push state. Gives the button the appearance that it has been activated.</p>
-            <div class="alert alert-info">
-              <strong>Heads up!</strong>
-              You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.
+            <div class="bs-docs-sidenote">
+              <h4>Auto toggling</h4>
+              <p>You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.</p>
             </div>
 {% highlight html linenos %}
 <button type="button" class="btn" data-toggle="button">...</button>
@@ -6021,9 +6067,9 @@ $('.nav-tabs').button()
 <button type="button" class="btn" data-loading-text="loading stuff...">...</button>
 {% endhighlight %}
 
-            <div class="alert alert-info">
-              <strong>Heads up!</strong>
-              <a href="https://github.com/twitter/bootstrap/issues/793">Firefox persists the disabled state across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>.
+            <div class="bs-docs-sidenote">
+              <h4>Cross-browser compatibility</h4>
+              <p><a href="https://github.com/twitter/bootstrap/issues/793">Firefox persists the disabled state across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>.</p>
             </div>
 
             <h4>$().button('reset')</h4>
@@ -6050,7 +6096,11 @@ $('.nav-tabs').button()
 
             <h3>About</h3>
             <p>Get base styles and flexible support for collapsible components like accordions and navigation.</p>
-            <p class="muted"><strong>*</strong> Requires the Transitions plugin to be included.</p>
+
+            <div class="bs-docs-sidenote">
+              <h4>Plugin dependency</h4>
+              <p>Collapse requires the <a href="#transitions">transitions plugin</a> to be included in your version of Bootstrap.</p>
+            </div>
 
             <h2>Example accordion</h2>
             <p>Using the collapse plugin, we built a simple accordion style widget:</p>
@@ -6257,11 +6307,11 @@ $('#myCollapsible').on('hidden', function () {
             <h2>Examples</h2>
             <p>The slideshow below shows a generic plugin and component for cycling through elements like a carousel.</p>
             <div class="bs-docs-example">
-              <div class="carousel slide bs-docs-carousel-example">
+              <div id="carousel-example-generic" class="carousel slide bs-docs-carousel-example">
                 <ol class="carousel-indicators">
-                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
                   <div class="item active">
@@ -6274,21 +6324,21 @@ $('#myCollapsible').on('hidden', function () {
                     <img data-src="holder.js/900x500/auto/#777:#fff/text:Third slide" alt="">
                   </div>
                 </div>
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
                   <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
                   <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
               </div>
             </div><!-- /example -->
 {% highlight html linenos %}
-<div class="carousel slide">
+<div id="carousel-example-generic" class="carousel slide">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
   </ol>
 
   <!-- Wrapper for slides -->
@@ -6303,10 +6353,10 @@ $('#myCollapsible').on('hidden', function () {
   </div>
 
   <!-- Controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left"></span>
   </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right"></span>
   </a>
 </div>
@@ -6314,13 +6364,16 @@ $('#myCollapsible').on('hidden', function () {
 
             <h3>Optional captions</h3>
             <p>Add captions to your slides easily with the <code>.carousel-caption</code> element within any <code>.item</code>. Place just about any optional HTML within there and it will be automatically aligned and formatted.</p>
-            <p><strong>Captions are hidden in mobile views</strong> and shown with viewports greater than 768px wide.</p>
+            <div class="bs-docs-sidenote">
+              <h4>Responsive visibility</h4>
+              <p><strong>Captions are hidden by default</strong> and will show up only with viewports greater than 768px wide.</p>
+            </div>
             <div class="bs-docs-example">
-              <div class="carousel slide bs-docs-carousel-example">
+              <div id="carousel-example-captions" class="carousel slide bs-docs-carousel-example">
                 <ol class="carousel-indicators">
-                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                  <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-example-captions" data-slide-to="1"></li>
+                  <li data-target="#carousel-example-captions" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
                   <div class="item active">
@@ -6345,10 +6398,10 @@ $('#myCollapsible').on('hidden', function () {
                     </div>
                   </div>
                 </div>
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <a class="left carousel-control" href="#carousel-example-captions" data-slide="prev">
                   <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <a class="right carousel-control" href="#carousel-example-captions" data-slide="next">
                   <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
               </div>
@@ -6422,6 +6475,7 @@ $('.carousel').carousel({
             <h4>.carousel('pause')</h4>
             <p>Stops the carousel from cycling through items.</p>
 
+
             <h4>.carousel(number)</h4>
             <p>Cycles the carousel to a particular frame (0 based, similar to an array).</p>
 
@@ -6466,7 +6520,7 @@ $('.carousel').carousel({
             <h2>Example</h2>
             <p>A basic, easily extended plugin for quickly creating elegant typeaheads with any form text input.</p>
             <div class="bs-docs-example" style="background-color: #f5f5f5;">
-              <input type="text" class="col-span-3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]'>
+              <input type="text" class="col col-lg-3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]'>
             </div><!-- /example -->
 {% highlight html linenos %}
 <input type="text" data-provide="typeahead">
@@ -6573,9 +6627,9 @@ $('.typeahead').typeahead()
 <div data-spy="affix" data-offset-top="200">...</div>
 {% endhighlight %}
 
-            <div class="alert alert-info">
-              <strong>Heads up!</strong>
-              You must manage the position of a pinned element and the behavior of its immediate parent. Position is controlled by <code>affix</code>, <code>affix-top</code>, and <code>affix-bottom</code>. Remember to check for a potentially collapsed parent when the affix kicks in as it's removing content from the normal flow of the page.
+            <div class="bs-docs-sidenote">
+              <h4>Requires positioning</h4>
+              <p>You must manage the position of a pinned element and the behavior of its immediate parent. Position is controlled by <code>affix</code>, <code>affix-top</code>, and <code>affix-bottom</code>. Remember to check for a potentially collapsed parent when the affix kicks in as it's removing content from the normal flow of the page.</p>
             </div>
 
             <h3>Via JavaScript</h3>
