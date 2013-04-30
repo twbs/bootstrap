@@ -411,15 +411,20 @@
 }
 // Generate the columns
 .make-column(@columns) {
-  @media (min-width: @grid-float-breakpoint) {
-    // Calculate width based on number of columns available
-    width: percentage((@columns / @grid-columns));
-  }
+  position: relative;
+  // Float and set width: 100%; for easy stacking on mobile devices
+  float: left;
+  width: 100%;
   // Prevent columns from collapsing when empty
   min-height: 1px;
   // Inner gutter via padding
   padding-left:  (@grid-gutter-width / 2);
   padding-right: (@grid-gutter-width / 2);
+
+  // Calculate width based on number of columns available
+  @media (min-width: @grid-float-breakpoint) {
+    width: percentage((@columns / @grid-columns));
+  }
 }
 // Generate the column offsets
 .make-column-offset(@columns) {
@@ -437,16 +442,7 @@
     right: percentage((@columns / @grid-columns));
   }
 }
-// Small, mobile-first columns
-.make-small-column(@columns) {
-  position: relative;
-  float: left;
-  // Prevent columns from collapsing when empty
-  min-height: 1px;
-  // Set inner padding as gutters instead of margin
-  padding-left:  (@grid-gutter-width / 2);
-  padding-right: (@grid-gutter-width / 2);
-}
+
 
 
 
