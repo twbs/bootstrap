@@ -85,7 +85,7 @@ title: Bootstrap Documentation
 
     <h3>HTML template</h3>
     <p>Copy and paste the HTML from below to get started with a bare bones Bootstrap document.</p>
-{% highlight html linenos %}
+{% highlight html %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -220,13 +220,13 @@ title: Bootstrap Documentation
     <p>There are varying degrees to customizing components, but most fall into two camps: light customizations and complete visual overhauls. Luckily, there are plenty of examples of both.</p>
     <p>We define light customizations as mostly surface layer changes, things like a color and font changes to existing Bootstrap components. A great example of this is the the <a href="http://translate.twitter.com">Twitter Translation Center</a> (coded by @mdo). Let's look at how to implement the custom button we wrote for this site, <code>.btn-ttc</code>.</p>
     <p>Instead of using the provided Bootstrap buttons, which only require just one class to start, <code>.btn</code>, we'll add our own modifier class, <code>.btn-ttc</code>. This will give us a slightly custom look with minimal effort.</p>
-{% highlight html linenos %}
+{% highlight html %}
 <button type="button" class="btn btn-ttc">Save changes</button>
 {% endhighlight %}
 
   <p>In the custom stylesheet, add the following CSS:</p>
 
-{% highlight css linenos %}
+{% highlight css %}
 /* Custom button
 -------------------------------------------------- */
 
@@ -293,7 +293,7 @@ title: Bootstrap Documentation
 
     <h3>HTML5 doctype required</h3>
     <p>Bootstrap makes use of certain HTML elements and CSS properties that require the use of the HTML5 doctype. Include it at the beginning of all your projects.</p>
-{% highlight html linenos %}
+{% highlight html %}
 <!DOCTYPE html>
 <html lang="en">
   ...
@@ -303,7 +303,7 @@ title: Bootstrap Documentation
     <h3>Mobile first</h3>
     <p>With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework. With Bootstrap 3, we've rewritten the project to be mobile friendly from the start. Instead of adding on optional mobile styles, they're baked right into the core. In fact, <strong>Bootstrap is mobile first</strong>. Mobile first styles can be found throughout the entire library instead of in separate files.</p>
     <p>To ensure proper rendering and touch zooming, <strong>add the viewport meta tag</strong> to your <code>&lt;head&gt;</code>.</p>
-{% highlight html linenos %}
+{% highlight html %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% endhighlight %}
 
@@ -361,7 +361,7 @@ title: Bootstrap Documentation
         <div class="col col-lg-6">6</div>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="row">
   <div class="col col-lg-1">1</div>
   <div class="col col-lg-1">1</div>
@@ -402,7 +402,7 @@ title: Bootstrap Documentation
         <div class="col col-lg-6 col-offset-3">6 offset 3</div>
       </div><!-- /row -->
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="row">
   <div class="col col-lg-4">...</div>
   <div class="col col-lg-4 col-offset-4">...</div>
@@ -432,7 +432,7 @@ title: Bootstrap Documentation
         </div>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="row">
   <div class="col col-lg-9">
     Level 1: 9 columns
@@ -455,7 +455,7 @@ title: Bootstrap Documentation
       <div class="col col-lg-3 col-pull-9">3</div>
     </div>
 
-{% highlight html linenos %}
+{% highlight html %}
 <div class="row show-grid">
   <div class="col col-lg-9 col-push-3">9</div>
   <div class="col col-lg-3 col-pull-9">3</div>
@@ -469,7 +469,7 @@ title: Bootstrap Documentation
       <div class="col col-lg-4 col-sm-6">4 cols, 6 small cols</div>
       <div class="col col-lg-4 col-sm-12">4 cols, 12 small cols</div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="row">
   <div class="col col-lg-4 col-sm-6">4 cols, 6 small cols</div>
   <div class="col col-lg-4 col-sm-6">4 cols, 6 small cols</div>
@@ -482,7 +482,7 @@ title: Bootstrap Documentation
 
     <h4>Variables</h4>
     <p>Variables determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.</p>
-{% highlight css linenos %}
+{% highlight css %}
 @grid-columns:              12;
 @grid-gutter-width:         30px;
 @grid-float-breakpoint:     768px;
@@ -490,7 +490,7 @@ title: Bootstrap Documentation
 
     <h4>Mixins</h4>
     <p>Mixins are used in conjunction with the grid variables to generate semantic CSS for individual grid columns.</p>
-{% highlight css linenos %}
+{% highlight css %}
 // Creates a wrapper for a series of columns
 .make-row() {
   // Negative margin the row out to align the content of columns
@@ -524,7 +524,7 @@ title: Bootstrap Documentation
 
     <h4>Example usage</h4>
     <p>You can modify the variables to your own custom values, or just use the mixins with their default values. Here's an example of using the default settings to create a two-column layout with a gap between.</p>
-{% highlight css linenos %}
+{% highlight css %}
 .wrapper {
   .make-row();
 }
@@ -536,7 +536,7 @@ title: Bootstrap Documentation
   .make-column-offset(1);
 }
 {% endhighlight %}
-{% highlight html linenos %}
+{% highlight html %}
 <div class="wrapper">
   <div class="content-main">...</div>
   <div class="content-secondary">...</div>
@@ -589,7 +589,7 @@ title: Bootstrap Documentation
         </tbody>
       </table>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <h1>...</h1>
 <h2>...</h2>
 <h3>...</h3>
@@ -606,7 +606,7 @@ title: Bootstrap Documentation
       <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
       <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <p>...</p>
 {% endhighlight %}
 
@@ -616,7 +616,7 @@ title: Bootstrap Documentation
     <div class="bs-docs-example">
       <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <p class="lead">...</p>
 {% endhighlight %}
 
@@ -634,7 +634,7 @@ title: Bootstrap Documentation
     <div class="bs-docs-example">
       <p><small>This line of text is meant to be treated as fine print.</small></p>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <small>This line of text is meant to be treated as fine print.</small>
 {% endhighlight %}
 
@@ -644,7 +644,7 @@ title: Bootstrap Documentation
     <div class="bs-docs-example">
       <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <strong>rendered as bold text</strong>
 {% endhighlight %}
 
@@ -653,7 +653,7 @@ title: Bootstrap Documentation
     <div class="bs-docs-example">
       <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <em>rendered as italicized text</em>
 {% endhighlight %}
 
@@ -666,7 +666,7 @@ title: Bootstrap Documentation
       <p class="text-center">Center aligned text.</p>
       <p class="text-right">Right aligned text.</p>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <p class="text-left">Left aligned text.</p>
 <p class="text-center">Center aligned text.</p>
 <p class="text-right">Right aligned text.</p>
@@ -680,7 +680,7 @@ title: Bootstrap Documentation
       <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
       <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <p class="text-muted">...</p>
 <p class="text-warning">...</p>
 <p class="text-danger">...</p>
@@ -697,7 +697,7 @@ title: Bootstrap Documentation
     <div class="bs-docs-example">
       <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <abbr title="attribute">attr</abbr>
 {% endhighlight %}
 
@@ -706,7 +706,7 @@ title: Bootstrap Documentation
     <div class="bs-docs-example">
       <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.</p>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <abbr title="HyperText Markup Language" class="initialism">HTML</abbr>
 {% endhighlight %}
 
@@ -726,7 +726,7 @@ title: Bootstrap Documentation
         <a href="mailto:#">first.last@example.com</a>
       </address>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <address>
   <strong>Twitter, Inc.</strong><br>
   795 Folsom Ave, Suite 600<br>
@@ -752,7 +752,7 @@ title: Bootstrap Documentation
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
       </blockquote>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <blockquote>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
 </blockquote>
@@ -769,7 +769,7 @@ title: Bootstrap Documentation
         <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
       </blockquote>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <blockquote>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
   <small>Someone famous <cite title="Source Title">Source Title</cite></small>
@@ -784,7 +784,7 @@ title: Bootstrap Documentation
         <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
       </blockquote>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <blockquote class="pull-right">
   ...
 </blockquote>
@@ -815,7 +815,7 @@ title: Bootstrap Documentation
         <li>Eget porttitor lorem</li>
       </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul>
   <li>...</li>
 </ul>
@@ -835,7 +835,7 @@ title: Bootstrap Documentation
         <li>Eget porttitor lorem</li>
       </ol>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ol>
   <li>...</li>
 </ol>
@@ -862,7 +862,7 @@ title: Bootstrap Documentation
         <li>Eget porttitor lorem</li>
       </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="list-unstyled">
   <li>...</li>
 </ul>
@@ -877,7 +877,7 @@ title: Bootstrap Documentation
         <li>Nulla volutpat</li>
       </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="list-inline">
   <li>...</li>
 </ul>
@@ -896,7 +896,7 @@ title: Bootstrap Documentation
         <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
       </dl>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <dl>
   <dt>...</dt>
   <dd>...</dd>
@@ -918,7 +918,7 @@ title: Bootstrap Documentation
         <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
       </dl>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <dl class="dl-horizontal">
   <dt>...</dt>
   <dd>...</dd>
@@ -944,7 +944,7 @@ title: Bootstrap Documentation
 <div class="bs-docs-example">
   For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
-{% highlight html linenos %}
+{% highlight html %}
 For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
@@ -953,7 +953,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <div class="bs-docs-example">
   <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
 </div>
-{% highlight html linenos %}
+{% highlight html %}
 <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
 {% endhighlight %}
 
@@ -1003,7 +1003,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </tbody>
       </table>
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <table class="table">
   ...
 </table>
@@ -1051,7 +1051,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </tbody>
       </table>
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <table class="table table-striped">
   ...
 </table>
@@ -1095,7 +1095,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </tbody>
       </table>
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <table class="table table-bordered">
   ...
 </table>
@@ -1134,7 +1134,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </tbody>
       </table>
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <table class="table table-hover">
   ...
 </table>
@@ -1174,7 +1174,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </tbody>
       </table>
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <table class="table table-condensed">
   ...
 </table>
@@ -1254,7 +1254,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </tbody>
       </table>
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 ...
 <tr class="success">
   <td>1</td>
@@ -1292,7 +1292,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <button type="submit" class="btn">Submit</button>
       </fieldset>
     </form><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <form>
   <fieldset>
     <legend>Legend</legend>
@@ -1325,7 +1325,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div>
       <button type="submit" class="btn">Sign in</button>
     </form><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <form class="form-inline">
   <input type="text" class="col col-lg-3" placeholder="Email">
   <input type="password" class="col col-lg-3" placeholder="Password">
@@ -1370,7 +1370,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </div>
       </div>
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <form class="form-horizontal">
   <div class="control-group">
     <label class="control-label" for="inputEmail">Email</label>
@@ -1410,7 +1410,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <form class="bs-docs-example form-inline">
       <input type="text" placeholder="Text input">
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <input type="text" placeholder="Text input">
 {% endhighlight %}
 
@@ -1419,7 +1419,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <form class="bs-docs-example form-inline">
       <textarea rows="3"></textarea>
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <textarea rows="3"></textarea>
 {% endhighlight %}
 
@@ -1447,7 +1447,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </label>
       </div>
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="checkbox">
   <label>
     <input type="checkbox" value="">
@@ -1476,7 +1476,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
       </label>
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <label class="checkbox-inline">
   <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
 </label>
@@ -1507,7 +1507,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <option>5</option>
       </select>
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <select>
   <option>1</option>
   <option>2</option>
@@ -1535,7 +1535,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <form class="bs-docs-example form-inline">
       <input class="focused" id="focusedInput" type="text" value="This is focused...">
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <input id="focusedInput" type="text" value="This is focused...">
 {% endhighlight %}
 
@@ -1550,7 +1550,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <form class="bs-docs-example form-inline">
       <input class="col col-lg-3" type="email" placeholder="test@example.com" required>
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <input class="col col-lg-3" type="email" placeholder="test@example.com" required>
 {% endhighlight %}
 
@@ -1559,7 +1559,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <form class="bs-docs-example form-inline">
       <input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here…" disabled>
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <input id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
 {% endhighlight %}
 
@@ -1594,7 +1594,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <button type="submit" class="btn btn-primary">Submit</button>
       </fieldset>
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <form class="form-inline">
   <fieldset disabled>
     <div>
@@ -1643,7 +1643,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </div>
       </div>
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="control-group has-warning">
   <label class="control-label" for="inputWarning">Input with warning</label>
   <div class="controls">
@@ -1694,7 +1694,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <span class="input-group-addon">.00</span>
       </div>
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="input-group col col-lg-9">
   <span class="input-group-addon">@</span>
   <input type="text" placeholder="Username">
@@ -1730,7 +1730,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <input type="text" class="input-small" placeholder="Username">
       </div>
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="input-group col col-lg-9">
   <span class="input-group-addon input-large">@</span>
   <input type="text" class="input-large" placeholder="Username">
@@ -1764,7 +1764,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </span>
       </div>
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="input-group col col-lg-7">
   <span class="input-group-btn">
     <button class="btn" type="button">Go!</button>
@@ -1811,7 +1811,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </div><!-- /btn-group -->
       </div><!-- /input-group -->
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="input-group col col-lg-7">
   <div class="input-group-btn">
     <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
@@ -1879,7 +1879,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </div>
       </div>
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="input-group col col-lg-7">
   <div class="input-group-btn">
     <!-- Button and dropdown menu -->
@@ -1907,7 +1907,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <input class="input-small" type="text" placeholder=".input-small">
       </div>
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <input class="input-large" type="text" placeholder=".input-large">
 <input type="text" placeholder="Default input">
 <input class="input-small" type="text" placeholder=".input-small">
@@ -1943,7 +1943,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </select>
       </div>
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <input class="col col-lg-1" type="text" placeholder=".col col-lg-1">
 <input class="col col-lg-2" type="text" placeholder=".col col-lg-2">
 <input class="col col-lg-3" type="text" placeholder=".col col-lg-3">
@@ -1972,7 +1972,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </div>
       </div>
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="row">
   <div class="col col-lg-4">
     <input type="text" placeholder=".col col-lg-4">
@@ -1994,7 +1994,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <button type="button" class="btn">Cancel</button>
       </div>
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="form-actions">
   <button type="submit" class="btn btn-primary">Save changes</button>
   <button type="button" class="btn">Cancel</button>
@@ -2007,7 +2007,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <form class="bs-docs-example form-inline">
       <input type="text"> <span class="help-inline">Inline help text</span>
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <input type="text">
 <span class="help-inline">Inline help text</span>
 {% endhighlight %}
@@ -2017,7 +2017,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <input type="text">
       <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <input type="text">
 <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
 {% endhighlight %}
@@ -2044,7 +2044,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <button type="button" class="btn btn-danger">Danger</button>
       <button type="button" class="btn btn-link">Link</button>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <!-- Standard gray button with gradient -->
 <button type="button" class="btn btn-default">Default</button>
 
@@ -2088,7 +2088,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <button type="button" class="btn btn-mini">Mini button</button>
       </p>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <p>
   <button type="button" class="btn btn-large btn-primary">Large button</button>
   <button type="button" class="btn btn-large">Large button</button>
@@ -2114,7 +2114,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <button type="button" class="btn btn-large btn-block">Block level button</button>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <button type="button" class="btn btn-large btn-block btn-primary">Block level button</button>
 <button type="button" class="btn btn-large btn-block">Block level button</button>
 {% endhighlight %}
@@ -2129,7 +2129,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <button type="button" class="btn btn-large btn-primary" disabled="disabled">Primary button</button>
       <button type="button" class="btn btn-large" disabled="disabled">Button</button>
     </p>
-{% highlight html linenos %}
+{% highlight html %}
 <button type="button" class="btn btn-large btn-primary" disabled="disabled">Primary button</button>
 <button type="button" class="btn btn-large" disabled="disabled">Button</button>
 {% endhighlight %}
@@ -2145,7 +2145,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
       <a href="#" class="btn btn-large disabled">Link</a>
     </p>
-{% highlight html linenos %}
+{% highlight html %}
 <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
 <a href="#" class="btn btn-large disabled">Link</a>
 {% endhighlight %}
@@ -2166,7 +2166,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <input class="btn" type="button" value="Input">
       <input class="btn" type="submit" value="Submit">
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <a class="btn" href="">Link</a>
 <button class="btn" type="submit">Button</button>
 <input class="btn" type="button" value="Input">
@@ -2199,7 +2199,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <img data-src="holder.js/140x140" class="img-circle">
       <img data-src="holder.js/140x140" class="img-thumbnail">
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <img src="..." class="img-rounded">
 <img src="..." class="img-circle">
 <img src="..." class="img-thumbnail">
@@ -2220,16 +2220,16 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="bs-docs-example">
       <p><button class="close" style="float: none;">&times;</button></p>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <button class="close" style="float: none;">&times;</button>
 {% endhighlight %}
 
     <h3>.pull-left</h3>
     <p>Float an element left</p>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="pull-left">...</div>
 {% endhighlight %}
-{% highlight css linenos %}
+{% highlight css %}
 .pull-left {
   float: left;
 }
@@ -2237,10 +2237,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h3>.pull-right</h3>
     <p>Float an element right</p>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="pull-right">...</div>
 {% endhighlight %}
-{% highlight css linenos %}
+{% highlight css %}
 .pull-right {
   float: right;
 }
@@ -2248,10 +2248,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h3>.clearfix</h3>
     <p>Clear the <code>float</code> on any element. Utilizes <a href="http://nicolasgallagher.com/micro-clearfix-hack/">the micro clearfix</a> as popularized by Nicolas Gallagher.</p>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="clearfix">...</div>
 {% endhighlight %}
-{% highlight css linenos %}
+{% highlight css %}
 // Mixin
 .clearfix {
   &:before,
@@ -2570,7 +2570,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h2>How to use</h2>
     <p>Add the appropriate class to any inline element. All icon classes are prefixed with <code>glyphicon-</code> for easy styling. To use, place the following code just about anywhere:</p>
-{% highlight html linenos %}
+{% highlight html %}
 <span class="glyphicon glyphicon-search"></span>
 {% endhighlight %}
     <p>Want to change the icon color? Just change the <code>color</code> of the parent element.</p>
@@ -2593,7 +2593,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </div>
       </div>
     </div><!-- /bs-docs-example -->
-{% highlight html linenos %}
+{% highlight html %}
 <div class="btn-toolbar">
   <div class="btn-group">
     <a class="btn" href="#"><span class="glyphicon glyphicon-align-left"></span></a>
@@ -2623,7 +2623,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </ul>
       </div>
     </div><!-- /bs-docs-example -->
-{% highlight html linenos %}
+{% highlight html %}
 <div class="btn-group">
   <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-user"></span> User</a>
   <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
@@ -2641,7 +2641,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="bs-docs-example">
       <a class="btn btn-large" href="#"><span class="glyphicon glyphicon-star"></span> Star</a>
     </div><!-- /bs-docs-example -->
-{% highlight html linenos %}
+{% highlight html %}
 <a class="btn btn-large" href="#"><span class="glyphicon glyphicon-star"></span> Star</a>
 {% endhighlight %}
 
@@ -2649,7 +2649,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="bs-docs-example">
       <a class="btn btn-small" href="#"><span class="glyphicon glyphicon-star"></span></a>
     </div><!-- /bs-docs-example -->
-{% highlight html linenos %}
+{% highlight html %}
 <a class="btn btn-small" href="#"><span class="glyphicon glyphicon-star"></span></a>
 {% endhighlight %}
 
@@ -2663,7 +2663,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <li><a href="#"><span class="glyphicon glyphicon-"></span> Misc</a></li>
       </ul>
     </div><!-- /bs-docs-example -->
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="nav nav-pills nav-stacked">
   <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
   <li><a href="#"><span class="glyphicon glyphicon-book"></span> Library</a></li>
@@ -2684,7 +2684,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </div>
       </div>
     </form>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="control-group">
   <label class="control-label" for="inputIcon">Email address</label>
   <div class="controls">
@@ -2721,7 +2721,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </ul>
       </div>
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <div class="dropdown">
   <!-- Link or button to toggle dropdown -->
   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
@@ -2736,7 +2736,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h3 id="dropdowns-alignment">Aligning the menus</h3>
     <p>Add <code>.pull-right</code> to a <code>.dropdown-menu</code> to right align the dropdown menu.</p>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
   ...
 </ul>
@@ -2753,7 +2753,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </ul>
       </div>
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
   <li><a tabindex="-1" href="#">Regular link</a></li>
   <li class="disabled"><a tabindex="-1" href="#">Disabled link</a></li>
@@ -2832,7 +2832,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div>
 
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
   ...
   <li class="dropdown-submenu pull-left">
@@ -2870,7 +2870,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <button type="button" class="btn">Right</button>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="btn-group">
   <button type="button" class="btn">Left</button>
   <button type="button" class="btn">Middle</button>
@@ -2898,7 +2898,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </div>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="btn-toolbar">
   <div class="btn-group">...</div>
   <div class="btn-group">...</div>
@@ -2916,7 +2916,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <button type="button" class="btn"><i class="glyphicon glyphicon-align-justify"></i></button>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="btn-group btn-group-vertical">
   ...
 </div>
@@ -2931,7 +2931,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <a href="#" class="btn">Middle</a>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="btn-group btn-group-justified">
   ...
 </div>
@@ -3010,7 +3010,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </div><!-- /btn-group -->
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <!-- Single button -->
 <div class="btn-group">
   <button class="btn dropdown-toggle" data-toggle="dropdown">
@@ -3087,7 +3087,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </div><!-- /btn-group -->
       </div><!-- /btn-toolbar -->
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <!-- Split button -->
 <div class="btn-group">
   <button class="btn">Action</button>
@@ -3146,7 +3146,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </div><!-- /btn-group -->
       </div><!-- /btn-toolbar -->
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <!-- Large button group -->
 <div class="btn-group">
   <button class="btn btn-large dropdown-toggle" type="button" data-toggle="dropdown">
@@ -3206,7 +3206,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </div><!-- /btn-group -->
       </div>
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <div class="btn-group dropup">
   <button class="btn">Dropup</button>
   <button class="btn dropdown-toggle" data-toggle="dropdown">
@@ -3240,7 +3240,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <li><a href="#">Messages</a></li>
       </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="nav nav-tabs">
   <li class="active"><a href="#">Home</a></li>
   <li><a href="#">Profile</a></li>
@@ -3257,7 +3257,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <li><a href="#">Messages</a></li>
       </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="nav nav-pills">
   <li class="active"><a href="#">Home</a></li>
   <li><a href="#">Profile</a></li>
@@ -3272,7 +3272,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <li><a href="#">Messages</a></li>
       </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="nav nav-pills nav-stacked">
   ...
 </ul>
@@ -3295,7 +3295,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <li><a href="#">Messages</a></li>
       </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="nav nav-tabs nav-justified">
   ...
 </ul>
@@ -3319,7 +3319,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <li class="disabled"><a href="#">Disabled link</a></li>
       </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="nav nav-tabs">
   ...
   <li class="disabled"><a href="#">Disabled link</a></li>
@@ -3357,7 +3357,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </li>
       </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="nav nav-tabs">
   ...
   <li class="dropdown">
@@ -3391,7 +3391,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </li>
       </ul>
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="nav nav-pills">
   ...
   <li class="dropdown">
@@ -3430,7 +3430,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </ul>
       </div>
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <div class="navbar">
   <a class="navbar-brand" href="#">Title</a>
   <ul class="nav navbar-nav">
@@ -3450,7 +3450,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <a class="navbar-brand" href="#">Title</a>
       </div>
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <a class="navbar-brand" href="#">Title</a>
 {% endhighlight %}
 
@@ -3465,7 +3465,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </ul>
       </div>
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="nav navbar-nav">
   <li class="active"><a href="#">Home</a></li>
   <li><a href="#">Link</a></li>
@@ -3483,7 +3483,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </form>
       </div>
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <form class="navbar-form pull-left">
   <input type="text" style="width: 200px;">
   <button type="submit" class="btn">Submit</button>
@@ -3517,7 +3517,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </div>
       </div>
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <div class="navbar navbar-fixed-top">
   ...
 </div>
@@ -3526,7 +3526,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="bs-docs-sidenote">
       <h4>Body padding required</h4>
       <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the top of the <code>&lt;body&gt;</code>. The navbar itself has a height of 54px by default. At 768px and above, its height shrinks to 50px. Try out your own values or use our snippet below:</p>
-{% highlight css linenos %}
+{% highlight css %}
 body {
   padding-top: 64px;
 }
@@ -3553,7 +3553,7 @@ body {
         </div>
       </div>
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <div class="navbar navbar-fixed-bottom">
   ...
 </div>
@@ -3562,7 +3562,7 @@ body {
     <div class="bs-docs-sidenote">
       <h4>Body padding required</h4>
       <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the bottom of the <code>&lt;body&gt;</code>. The navbar itself has a height of 54px by default. At 768px and above, its height shrinks to 50px. Try out your own values or use our snippet below:</p>
-{% highlight css linenos %}
+{% highlight css %}
 body {
   padding-bottom: 64px;
 }
@@ -3589,7 +3589,7 @@ body {
         </div>
       </div>
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <div class="navbar navbar-static-top">
   ...
 </div>
@@ -3645,7 +3645,7 @@ body {
         </div><!-- /.container -->
       </div><!-- /.navbar -->
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <div class="navbar">
   <div class="container">
 
@@ -3722,7 +3722,7 @@ body {
         </div><!-- /.container -->
       </div><!-- /.navbar -->
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <div class="navbar navbar-inverse">
   ...
 </div>
@@ -3754,7 +3754,7 @@ body {
         <li class="active">Data</li>
       </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="breadcrumb">
   <li><a href="#">Home</a></li>
   <li><a href="#">Library</a></li>
@@ -3786,7 +3786,7 @@ body {
         <li><a href="#">&raquo;</a></li>
       </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="pagination">
   <li><a href="#">&laquo;</a></li>
   <li><a href="#">1</a></li>
@@ -3811,7 +3811,7 @@ body {
         <li><a href="#">&raquo;</a></li>
      </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="pagination">
   <li class="disabled"><a href="#">&laquo;</a></li>
   <li class="active"><a href="#">1</a></li>
@@ -3819,7 +3819,7 @@ body {
 </ul>
 {% endhighlight %}
     <p>You can optionally swap out active or disabled anchors for <code>&lt;span&gt;</code> to remove click functionality while retaining intended styles.</p>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="pagination">
   <li class="disabled"><span>&laquo;</span></li>
   <li class="active"><span>1</span></li>
@@ -3876,7 +3876,7 @@ body {
         </ul>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="pagination pagination-large">...</ul>
 <ul class="pagination pagination">...</ul>
 <ul class="pagination pagination-small">...</ul>
@@ -3895,7 +3895,7 @@ body {
         <li><a href="#">Next</a></li>
       </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="pager">
   <li><a href="#">Previous</a></li>
   <li><a href="#">Next</a></li>
@@ -3910,7 +3910,7 @@ body {
         <li class="next"><a href="#">Newer &rarr;</a></li>
       </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="pager">
   <li class="previous"><a href="#">&larr; Older</a></li>
   <li class="next"><a href="#">Newer &rarr;</a></li>
@@ -3926,7 +3926,7 @@ body {
         <li class="next"><a href="#">Newer &rarr;</a></li>
       </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="pager">
   <li class="previous disabled"><a href="#">&larr; Older</a></li>
   <li class="next"><a href="#">Newer &rarr;</a></li>
@@ -3953,7 +3953,7 @@ body {
       <h5>Example heading <span class="label">New</span></h5>
       <h6>Example heading <span class="label">New</span></h6>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <h3>Example heading <span class="label">New</span></h3>
 {% endhighlight %}
 
@@ -3966,7 +3966,7 @@ body {
       <span class="label label-danger">Danger</span>
       <span class="label label-info">Info</span>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <span class="label">Default</span>
 <span class="label label-success">Success</span>
 <span class="label label-warning">Warning</span>
@@ -3989,7 +3989,7 @@ body {
     <div class="bs-docs-example">
       <a href="#">Inbox <span class="badge">42</span></a>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <a href="#">Inbox <span class="badge">42</span></a>
 {% endhighlight %}
 
@@ -4026,7 +4026,7 @@ body {
         </li>
       </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="nav nav-pills nav-stacked">
   <li class="active">
     <a href="#">
@@ -4057,7 +4057,7 @@ body {
         <p><a class="btn btn-primary btn-large">Learn more</a></p>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="jumbotron">
   <h1>Hello, world!</h1>
   <p>...</p>
@@ -4072,7 +4072,7 @@ body {
         <h1>Example page header <small>Subtext for header</small></h1>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="page-header">
   <h1>Example page header <small>Subtext for header</small></h1>
 </div>
@@ -4115,7 +4115,7 @@ body {
         </div>
       </div>
     </div><!-- /.bs-docs-example -->
-{% highlight html linenos %}
+{% highlight html %}
 <div class="row">
   <div class="col col-lg-3">
     <a href="#" class="thumbnail">
@@ -4162,7 +4162,7 @@ body {
         </div>
       </div>
     </div><!-- /.bs-docs-example -->
-{% highlight html linenos %}
+{% highlight html %}
 <div class="row">
   <div class="col col-lg-3">
     <div class="thumbnail">
@@ -4197,7 +4197,7 @@ body {
         <strong>Warning!</strong> Best check yo self, you're not looking too good.
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="alert">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <strong>Warning!</strong> Best check yo self, you're not looking too good.
@@ -4213,7 +4213,7 @@ body {
         <p>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="alert alert-block">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <h4>Warning!</h4>
@@ -4237,7 +4237,7 @@ body {
         <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="alert alert-danger">...</div>
 <div class="alert alert-success">...</div>
 <div class="alert alert-info">...</div>
@@ -4267,7 +4267,7 @@ body {
         <div class="progress-bar" style="width: 60%;"></div>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="progress">
   <div class="progress-bar" style="width: 60%;"></div>
 </div>
@@ -4289,7 +4289,7 @@ body {
         <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="progress">
   <div class="progress-bar progress-bar-info" style="width: 20%"></div>
 </div>
@@ -4320,7 +4320,7 @@ body {
         <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="progress progress-striped">
   <div class="progress-bar progress-bar-info" style="width: 20%"></div>
 </div>
@@ -4342,7 +4342,7 @@ body {
         <div class="progress-bar" style="width: 45%"></div>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="progress progress-striped active">
   <div class="progress-bar" style="width: 45%"></div>
 </div>
@@ -4357,7 +4357,7 @@ body {
         <div class="progress-bar progress-bar-danger" style="width: 10%"></div>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="progress">
   <div class="progress-bar progress-bar-success" style="width: 35%"></div>
   <div class="progress-bar progress-bar-warning" style="width: 20%"></div>
@@ -4408,7 +4408,7 @@ body {
         </div>
       </div>
     </div><!-- /.bs-docs-example -->
-{% highlight html linenos %}
+{% highlight html %}
 <div class="media">
   <a class="pull-left" href="#">
     <img class="media-object" src="...">
@@ -4474,7 +4474,7 @@ body {
         </li>
       </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="media-list">
   <li class="media">
     <a class="pull-left" href="#">
@@ -4512,7 +4512,7 @@ body {
         <li class="list-group-item">Vestibulum at eros</li>
       </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="list-group">
   <li class="list-group-item">Cras justo odio</li>
   <li class="list-group-item">Dapibus ac facilisis in</li>
@@ -4540,7 +4540,7 @@ body {
         </li>
       </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="list-group">
   <li class="list-group-item">
     <span class="glyphicon glyphicon-chevron-right"></span>
@@ -4567,7 +4567,7 @@ body {
         </li>
       </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="list-group">
   <li class="list-group-item">
     <span class="badge">14</span>
@@ -4597,7 +4597,7 @@ body {
         </li>
       </ul>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="list-group">
   <li class="list-group-item">
     <span class="glyphicon glyphicon-chevron-right"></span>
@@ -4629,7 +4629,7 @@ body {
         </a>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="list-group">
   <a href="#" class="list-group-item active">
     Cras justo odio
@@ -4668,7 +4668,7 @@ body {
         </a>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="list-group">
   <a href="#" class="list-group-item active">
     <h4 class="list-group-item-heading">List group item heading</h4>
@@ -4696,7 +4696,7 @@ body {
         Basic panel example
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="panel">
   Basic panel example
 </div>
@@ -4710,7 +4710,7 @@ body {
         Panel content
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="panel">
   <div class="panel-heading">Panel heading</div>
   Panel content
@@ -4741,7 +4741,7 @@ body {
         Panel content
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="panel panel-primary">...</div>
 <div class="panel panel-success">...</div>
 <div class="panel panel-warning">...</div>
@@ -4767,7 +4767,7 @@ body {
         </ul>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="panel">
   <!-- Default panel contents -->
   <div class="panel-heading">Panel heading</div>
@@ -4804,7 +4804,7 @@ body {
         Look, I'm in a well!
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="well">...</div>
 {% endhighlight %}
     <h3>Optional classes</h3>
@@ -4814,7 +4814,7 @@ body {
         Look, I'm in a well!
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="well well-large">...</div>
 {% endhighlight %}
 
@@ -4823,7 +4823,7 @@ body {
         Look, I'm in a well!
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="well well-small">...</div>
 {% endhighlight %}
   </div>
@@ -4856,23 +4856,23 @@ body {
     <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API and should be your first consideration when using a plugin.</p>
 
     <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the body namespaced with `'data-api'`. This looks like this:
-{% highlight js linenos %}
+{% highlight js %}
 $('body').off('.data-api')
 {% endhighlight %}
 
     <p>Alternatively, to target a specific plugin, just include the plugin's name as a namespace along with the data-api namespace like this:</p>
-{% highlight js linenos %}
+{% highlight js %}
 $('body').off('.alert.data-api')
 {% endhighlight %}
 
     <h3 id="js-programmatic-api">Programmatic API</h3>
     <p>We also believe you should be able to use all Bootstrap plugins purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.</p>
-{% highlight js linenos %}
+{% highlight js %}
 $(".btn.danger").button("toggle").addClass("fat")
 {% endhighlight %}
 
     <p>All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a plugin with default behavior):</p>
-{% highlight js linenos %}
+{% highlight js %}
 $("#myModal").modal()                      // initialized with defaults
 $("#myModal").modal({ keyboard: false })   // initialized with no keyboard
 $("#myModal").modal('show')                // initializes and invokes show immediately</p>
@@ -4882,7 +4882,7 @@ $("#myModal").modal('show')                // initializes and invokes show immed
 
     <h3 id="js-noconflict">No conflict</h3>
     <p>Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In these circumstances, namespace collisions can occasionally occur. If this happens, you may call <code>.noConflict</code> on the plugin you wish to revert the value of.</p>
-{% highlight js linenos %}
+{% highlight js %}
 var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
 $.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the bootstrap functionality
 {% endhighlight %}
@@ -4890,7 +4890,7 @@ $.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the boot
     <h3 id="js-events">Events</h3>
     <p>Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.</p>
     <p>All infinitive events provide <code>preventDefault</code> functionality. This provides the ability to stop the execution of an action before it starts.</p>
-{% highlight js linenos %}
+{% highlight js %}
 $('#myModal').on('show', function (e) {
   if (!data) return e.preventDefault() // stops modal from being shown
 })
@@ -4952,7 +4952,7 @@ $('#myModal').on('show', function (e) {
         </div><!-- /.modal-dalog -->
       </div><!-- /.modal -->
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <div class="modal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -5018,7 +5018,7 @@ $('#myModal').on('show', function (e) {
     <div class="bs-docs-example" style="padding-bottom: 24px;">
       <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Launch demo modal</a>
     </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <div class="modal">
   <!-- Button trigger modal -->
   <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Launch demo modal</a>
@@ -5048,13 +5048,13 @@ $('#myModal').on('show', function (e) {
 
     <h3>Via data attributes</h3>
     <p>Activate a modal without writing JavaScript. Set <code>data-toggle="modal"</code> on a controller element, like a button, along with a <code>data-target="#foo"</code> or <code>href="#foo"</code> to target a specific modal to toggle.</p>
-{% highlight html linenos %}
+{% highlight html %}
 <button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button>
 {% endhighlight %}
 
     <h3>Via JavaScript</h3>
     <p>Call a modal with id <code>myModal</code> with a single line of JavaScript:</p>
-    {% highlight js linenos %}$('#myModal').modal(options){% endhighlight %}
+    {% highlight js %}$('#myModal').modal(options){% endhighlight %}
 
     <h3>Options</h3>
     <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-backdrop=""</code>.</p>
@@ -5091,7 +5091,7 @@ $('#myModal').on('show', function (e) {
          <td>path</td>
          <td>false</td>
          <td><p>If a remote url is provided, content will be loaded via jQuery's <code>load</code> method and injected into the <code>.modal-body</code>. If you're using the data api, you may alternatively use the <code>href</code> tag to specify the remote source. An example of this is shown below:</p>
-{% highlight html linenos %}
+{% highlight html %}
 <a data-toggle="modal" href="remote.html" data-target="#modal">Click me</a>
 {% endhighlight %}
        </tr>
@@ -5102,7 +5102,7 @@ $('#myModal').on('show', function (e) {
 
     <h4>.modal(options)</h4>
     <p>Activates your content as a modal. Accepts an optional options <code>object</code>.</p>
-{% highlight js linenos %}
+{% highlight js %}
 $('#myModal').modal({
   keyboard: false
 })
@@ -5110,15 +5110,15 @@ $('#myModal').modal({
 
     <h4>.modal('toggle')</h4>
     <p>Manually toggles a modal.</p>
-    {% highlight js linenos %}$('#myModal').modal('toggle'){% endhighlight %}
+    {% highlight js %}$('#myModal').modal('toggle'){% endhighlight %}
 
     <h4>.modal('show')</h4>
     <p>Manually opens a modal.</p>
-    {% highlight js linenos %}$('#myModal').modal('show'){% endhighlight %}
+    {% highlight js %}$('#myModal').modal('show'){% endhighlight %}
 
     <h4>.modal('hide')</h4>
     <p>Manually hides a modal.</p>
-    {% highlight js linenos %}$('#myModal').modal('hide'){% endhighlight %}
+    {% highlight js %}$('#myModal').modal('hide'){% endhighlight %}
 
     <h3>Events</h3>
     <p>Bootstrap's modal class exposes a few events for hooking into modal functionality.</p>
@@ -5148,7 +5148,7 @@ $('#myModal').modal({
        </tr>
       </tbody>
     </table>
-{% highlight js linenos %}
+{% highlight js %}
 $('#myModal').on('hidden', function () {
   // do something…
 })
@@ -5258,7 +5258,7 @@ $('#myModal').on('hidden', function () {
 
           <h3>Via data attributes</h3>
           <p>Add <code>data-toggle="dropdown"</code> to a link or button to toggle a dropdown.</p>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="dropdown">
   <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown trigger</a>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -5267,7 +5267,7 @@ $('#myModal').on('hidden', function () {
 </div>
 {% endhighlight %}
           <p>To keep URLs intact, use the <code>data-target</code> attribute instead of <code>href="#"</code>.</p>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="dropdown">
   <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
     Dropdown <span class="caret"></span>
@@ -5280,7 +5280,7 @@ $('#myModal').on('hidden', function () {
 
           <h3>Via JavaScript</h3>
           <p>Call the dropdowns via JavaScript:</p>
-{% highlight js linenos %}
+{% highlight js %}
 $('.dropdown-toggle').dropdown()
 {% endhighlight %}
 
@@ -5346,7 +5346,7 @@ $('.dropdown-toggle').dropdown()
 
           <h3>Via data attributes</h3>
           <p>To easily add scrollspy behavior to your topbar navigation, add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the <code>&lt;body&gt;</code>. Then add the <code>data-target</code> attribute with the ID or class of the parent element of any Bootstrap <code>.nav</code> component.</p>
-{% highlight html linenos %}
+{% highlight html %}
 <body data-spy="scroll" data-target="#navbar-example">
   ...
 </body>
@@ -5354,7 +5354,7 @@ $('.dropdown-toggle').dropdown()
 
           <h3>Via JavaScript</h3>
           <p>Call the scrollspy via JavaScript:</p>
-{% highlight js linenos %}
+{% highlight js %}
 $('#navbar-example').scrollspy()
 {% endhighlight %}
 
@@ -5366,7 +5366,7 @@ $('#navbar-example').scrollspy()
           <h3>Methods</h3>
           <h4>.scrollspy('refresh')</h4>
           <p>When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:</p>
-{% highlight js linenos %}
+{% highlight js %}
 $('[data-spy="scroll"]').each(function () {
   var $spy = $(this).scrollspy('refresh')
 });
@@ -5457,7 +5457,7 @@ $('[data-spy="scroll"]').each(function () {
 
           <h2>Usage</h2>
           <p>Enable tabbable tabs via JavaScript (each tab needs to be activated individually):</p>
-{% highlight js linenos %}
+{% highlight js %}
 $('#myTab a').click(function (e) {
   e.preventDefault();
   $(this).tab('show');
@@ -5465,7 +5465,7 @@ $('#myTab a').click(function (e) {
 {% endhighlight %}
 
           <p>You can activate individual tabs in several ways:</p>
-{% highlight js linenos %}
+{% highlight js %}
 $('#myTab a[href="#profile"]').tab('show'); // Select tab by name
 $('#myTab a:first').tab('show'); // Select first tab
 $('#myTab a:last').tab('show'); // Select last tab
@@ -5474,7 +5474,7 @@ $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
 
           <h3>Markup</h3>
           <p>You can activate a tab or pill navigation without writing any JavaScript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element. Adding the <code>nav</code> and <code>nav-tabs</code> classes to the tab <code>ul</code> will apply the Bootstrap tab styling.</p>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="nav nav-tabs">
   <li><a href="#home" data-toggle="tab">Home</a></li>
   <li><a href="#profile" data-toggle="tab">Profile</a></li>
@@ -5490,7 +5490,7 @@ $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
           <p>
             Activates a tab element and content container. Tab should have either a <code>data-target</code> or an <code>href</code> targeting a container node in the DOM.
           </p>
-{% highlight html linenos %}
+{% highlight html %}
 <ul class="nav nav-tabs" id="myTab">
   <li class="active"><a href="#home">Home</a></li>
   <li><a href="#profile">Profile</a></li>
@@ -5531,7 +5531,7 @@ $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
              </tr>
             </tbody>
           </table>
-{% highlight js linenos %}
+{% highlight js %}
 $('a[data-toggle="tab"]').on('shown', function (e) {
   e.target // activated tab
   e.relatedTarget // previous tab
@@ -5575,7 +5575,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
           <h2>Usage</h2>
           <p>Trigger the tooltip via JavaScript:</p>
-{% highlight js linenos %}
+{% highlight js %}
 $('#example').tooltip(options)
 {% endhighlight %}
 
@@ -5653,7 +5653,7 @@ $('#example').tooltip(options)
           </div>
 
           <h3>Markup</h3>
-{% highlight html linenos %}
+{% highlight html %}
 <a href="#" data-toggle="tooltip" title="first tooltip">Hover over me</a>
 {% endhighlight %}
 
@@ -5664,19 +5664,19 @@ $('#example').tooltip(options)
 
           <h4>.tooltip('show')</h4>
           <p>Reveals an element's tooltip.</p>
-          {% highlight js linenos %}$('#element').tooltip('show'){% endhighlight %}
+          {% highlight js %}$('#element').tooltip('show'){% endhighlight %}
 
           <h4>.tooltip('hide')</h4>
           <p>Hides an element's tooltip.</p>
-          {% highlight js linenos %}$('#element').tooltip('hide'){% endhighlight %}
+          {% highlight js %}$('#element').tooltip('hide'){% endhighlight %}
 
           <h4>.tooltip('toggle')</h4>
           <p>Toggles an element's tooltip.</p>
-          {% highlight js linenos %}$('#element').tooltip('toggle'){% endhighlight %}
+          {% highlight js %}$('#element').tooltip('toggle'){% endhighlight %}
 
           <h4>.tooltip('destroy')</h4>
           <p>Hides and destroys an element's tooltip.</p>
-          {% highlight js linenos %}$('#element').tooltip('destroy'){% endhighlight %}
+          {% highlight js %}$('#element').tooltip('destroy'){% endhighlight %}
         </section>
 
 
@@ -5756,7 +5756,7 @@ $('#example').tooltip(options)
 
         <h2>Usage</h2>
         <p>Enable popovers via JavaScript:</p>
-        {% highlight js linenos %}$('#example').popover(options){% endhighlight %}
+        {% highlight js %}$('#example').popover(options){% endhighlight %}
 
         <h3>Options</h3>
         <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.</p>
@@ -5846,19 +5846,19 @@ $('#example').tooltip(options)
 
         <h4>.popover('show')</h4>
         <p>Reveals an elements popover.</p>
-        {% highlight js linenos %}$('#element').popover('show'){% endhighlight %}
+        {% highlight js %}$('#element').popover('show'){% endhighlight %}
 
         <h4>.popover('hide')</h4>
         <p>Hides an elements popover.</p>
-        {% highlight js linenos %}$('#element').popover('hide'){% endhighlight %}
+        {% highlight js %}$('#element').popover('hide'){% endhighlight %}
 
         <h4>.popover('toggle')</h4>
         <p>Toggles an elements popover.</p>
-        {% highlight js linenos %}$('#element').popover('toggle'){% endhighlight %}
+        {% highlight js %}$('#element').popover('toggle'){% endhighlight %}
 
         <h4>.popover('destroy')</h4>
         <p>Hides and destroys an element's popover.</p>
-        {% highlight js linenos %}$('#element').popover('destroy'){% endhighlight %}
+        {% highlight js %}$('#element').popover('destroy'){% endhighlight %}
       </section>
 
 
@@ -5897,11 +5897,11 @@ $('#example').tooltip(options)
 
         <h2>Usage</h2>
         <p>Enable dismissal of an alert via JavaScript:</p>
-        {% highlight js linenos %}$(".alert").alert(){% endhighlight %}
+        {% highlight js %}$(".alert").alert(){% endhighlight %}
 
         <h3>Markup</h3>
         <p>Just add <code>data-dismiss="alert"</code> to your close button to automatically give an alert close functionality.</p>
-        {% highlight html linenos %}<a class="close" data-dismiss="alert" href="#">&times;</a>{% endhighlight %}
+        {% highlight html %}<a class="close" data-dismiss="alert" href="#">&times;</a>{% endhighlight %}
 
         <h3>Methods</h3>
 
@@ -5910,7 +5910,7 @@ $('#example').tooltip(options)
 
         <h4>.alert('close')</h4>
         <p>Closes an alert.</p>
-        {% highlight js linenos %}$(".alert").alert('close'){% endhighlight %}
+        {% highlight js %}$(".alert").alert('close'){% endhighlight %}
 
 
         <h3>Events</h3>
@@ -5933,7 +5933,7 @@ $('#example').tooltip(options)
             </tr>
           </tbody>
         </table>
-{% highlight js linenos %}
+{% highlight js %}
 $('#my-alert').bind('closed', function () {
   // do something…
 })
@@ -5959,7 +5959,7 @@ $('#my-alert').bind('closed', function () {
                 Loading state
               </button>
             </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <button type="button" id="fat-btn" data-loading-text="Loading..." class="btn btn-primary">
   Loading state
 </button>
@@ -5970,7 +5970,7 @@ $('#my-alert').bind('closed', function () {
             <div class="bs-docs-example" style="padding-bottom: 24px;">
               <button type="button" class="btn btn-primary" data-toggle="button">Single toggle</button>
             </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <button type="button" class="btn btn-primary" data-toggle="button">Single toggle</button>
 {% endhighlight %}
 
@@ -5989,7 +5989,7 @@ $('#my-alert').bind('closed', function () {
                 </label>
               </div>
             </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <div class="btn-group" data-toggle="buttons-checkbox">
   <label class="btn btn-primary">
     <input type="checkbox"> Option 1
@@ -6018,7 +6018,7 @@ $('#my-alert').bind('closed', function () {
                 </label>
               </div>
             </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <div class="btn-group" data-toggle="buttons-radio">
   <label class="btn btn-primary">
     <input type="radio" name="options" id="option1"> Option 1
@@ -6038,7 +6038,7 @@ $('#my-alert').bind('closed', function () {
 
             <h2>Usage</h2>
             <p>Enable buttons via JavaScript:</p>
-{% highlight js linenos %}
+{% highlight js %}
 $('.nav-tabs').button()
 {% endhighlight %}
 
@@ -6056,14 +6056,14 @@ $('.nav-tabs').button()
               <h4>Auto toggling</h4>
               <p>You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.</p>
             </div>
-{% highlight html linenos %}
+{% highlight html %}
 <button type="button" class="btn" data-toggle="button">...</button>
 {% endhighlight %}
 
             <h4>$().button('loading')</h4>
             <p>Sets button state to loading - disables button and swaps text to loading text. Loading text should be defined on the button element using the data attribute <code>data-loading-text</code>.
             </p>
-{% highlight html linenos %}
+{% highlight html %}
 <button type="button" class="btn" data-loading-text="loading stuff...">...</button>
 {% endhighlight %}
 
@@ -6077,7 +6077,7 @@ $('.nav-tabs').button()
 
             <h4>$().button(string)</h4>
             <p>Resets button state - swaps text to any data defined text state.</p>
-{% highlight html linenos %}
+{% highlight html %}
 <button type="button" class="btn" data-complete-text="finished!" >...</button>
 <script>
   $('.btn').button('complete')
@@ -6145,7 +6145,7 @@ $('.nav-tabs').button()
                 </div>
               </div>
             </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <div class="accordion" id="accordion2">
   <div class="accordion-group">
     <div class="accordion-heading">
@@ -6187,7 +6187,7 @@ $('.nav-tabs').button()
 {% endhighlight %}
 
             <p>You can also use the plugin without the accordion markup. Make a button toggle the expanding and collapsing of another element.</p>
-{% highlight html linenos %}
+{% highlight html %}
 <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo">
   simple collapsible
 </button>
@@ -6207,7 +6207,7 @@ $('.nav-tabs').button()
 
             <h3>Via JavaScript</h3>
             <p>Enable manually with:</p>
-{% highlight js linenos %}
+{% highlight js %}
 $(".collapse").collapse()
 {% endhighlight %}
 
@@ -6243,7 +6243,7 @@ $(".collapse").collapse()
 
             <h4>.collapse(options)</h4>
             <p>Activates your content as a collapsible element. Accepts an optional options <code>object</code>.
-{% highlight js linenos %}
+{% highlight js %}
 $('#myCollapsible').collapse({
   toggle: false
 })
@@ -6288,7 +6288,7 @@ $('#myCollapsible').collapse({
                </tr>
               </tbody>
             </table>
-{% highlight js linenos %}
+{% highlight js %}
 $('#myCollapsible').on('hidden', function () {
   // do something…
 })
@@ -6332,7 +6332,7 @@ $('#myCollapsible').on('hidden', function () {
                 </a>
               </div>
             </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <div id="carousel-example-generic" class="carousel slide">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -6406,7 +6406,7 @@ $('#myCollapsible').on('hidden', function () {
                 </a>
               </div>
             </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <div class="item active">
   <img src="..." alt="">
   <div class="carousel-caption">
@@ -6428,7 +6428,7 @@ $('#myCollapsible').on('hidden', function () {
 
             <h3>Via JavaScript</h3>
             <p>Call carousel manually with:</p>
-{% highlight js linenos %}
+{% highlight js %}
 $('.carousel').carousel()
 {% endhighlight %}
 
@@ -6463,7 +6463,7 @@ $('.carousel').carousel()
 
             <h4>.carousel(options)</h4>
             <p>Initializes the carousel with an optional options <code>object</code> and starts cycling through items.</p>
-{% highlight html linenos %}
+{% highlight html %}
 $('.carousel').carousel({
   interval: 2000
 })
@@ -6522,7 +6522,7 @@ $('.carousel').carousel({
             <div class="bs-docs-example" style="background-color: #f5f5f5;">
               <input type="text" class="col col-lg-3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]'>
             </div><!-- /example -->
-{% highlight html linenos %}
+{% highlight html %}
 <input type="text" data-provide="typeahead">
 {% endhighlight %}
 
@@ -6538,7 +6538,7 @@ $('.carousel').carousel({
 
             <h3>Via JavaScript</h3>
             <p>Call the typeahead manually with:</p>
-{% highlight js linenos %}
+{% highlight js %}
 $('.typeahead').typeahead()
 {% endhighlight %}
 
@@ -6623,7 +6623,7 @@ $('.typeahead').typeahead()
             <h3>Via data attributes</h3>
             <p>To easily add affix behavior to any element, just add <code>data-spy="affix"</code> to the element you want to spy on. Then use offsets to define when to toggle the pinning of an element on and off.</p>
 
-{% highlight html linenos %}
+{% highlight html %}
 <div data-spy="affix" data-offset-top="200">...</div>
 {% endhighlight %}
 
@@ -6634,14 +6634,14 @@ $('.typeahead').typeahead()
 
             <h3>Via JavaScript</h3>
             <p>Call the affix plugin via JavaScript:</p>
-{% highlight js linenos %}
+{% highlight js %}
 $('#navbar').affix()
 {% endhighlight %}
 
             <h3>Methods</h3>
             <h4>.affix('refresh')</h4>
             <p>When using affix in conjunction with adding or removing of elements from the DOM, you'll want to call the refresh method:</p>
-{% highlight js linenos %}
+{% highlight js %}
 $('[data-spy="affix"]').each(function () {
   $(this).affix('refresh')
 });
