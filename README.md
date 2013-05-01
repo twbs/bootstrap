@@ -14,7 +14,7 @@ Three quick start options are available:
 * Clone the repo: `git clone git://github.com/twitter/bootstrap.git`.
 * Install with Twitter's [Bower](http://github.com/bower/bower): `bower install bootstrap`.
 
-Read the [Getting Started page](http://getbootstrap.com/getting-started/) for information on the framework contents, basic template guidelines, and more.
+Read the [Getting Started page](http://getbootstrap.com/getting-started.html) for information on the framework contents, basic template guidelines, and more.
 
 
 ## Bootstrap elsewhere
