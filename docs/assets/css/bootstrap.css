@@ -3489,6 +3489,7 @@ button.close {
   position: relative;
   padding-top: 15px;
   padding-bottom: 15px;
+  margin-bottom: 20px;
   background-color: #eeeeee;
   border-radius: 4px;
 }
