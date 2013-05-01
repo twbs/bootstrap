@@ -3487,7 +3487,8 @@ button.close {
 
 .navbar {
   position: relative;
-  padding: 0 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   background-color: #eeeeee;
   border-radius: 4px;
 }

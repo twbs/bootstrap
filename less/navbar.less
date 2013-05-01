@@ -5,9 +5,11 @@
 // Wrapper and base class
 .navbar {
   position: relative;
-  padding: 0 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   background-color: @navbar-bg;
   border-radius: @border-radius-base;
+
   // Prevent floats from breaking the navbar
   .clearfix();
 }
@@ -16,7 +18,7 @@
 // -------------------------
 
 .navbar-nav {
-  // Space out from .navbar .brand and .btn-navbar
+  // Space out from .navbar .brand and .btn-navbar when stacked in mobile views
   margin-top: 5px;
 
   > li > a {
