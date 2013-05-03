@@ -3488,9 +3488,9 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <form class="navbar-form pull-left">
           <select name="" id="" style="width: 200px;">
             <option value="1">1</option>
-            <option value="1">1</option>
-            <option value="1">1</option>
-            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
           </select>
           <button type="submit" class="btn">Submit</button>
         </form>
@@ -3508,7 +3508,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <form class="navbar-form pull-left">
           <input type="text" style="width: 200px;">
           <label class="checkbox-inline">
-            <input type="checkbox"> Derp
+            <input type="checkbox"> Remember me
           </label>
           <button type="submit" class="btn">Submit</button>
         </form>
@@ -3526,16 +3526,43 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>For buttons not residing in a <code>&lt;form&gt;</code>, add this class to vertically center buttons within a navbar.</p>
     <div class="bs-docs-example">
       <div class="navbar">
-        <a href="#" class="navbar-brand">Derp</a>
+        <a href="#" class="navbar-brand">Brand</a>
         <button type="button" class="btn">Submit</button>
       </div>
     </div>
 
-    <h3 id="navbar-component-alignment">Component alignment</h3>
-    <p>Align nav links, search form, or text, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
-
     <h3 id="navbar-text">Text</h3>
     <p>Wrap strings of text in an element with <code>.navbar-text</code>, usually on a <code>&lt;p&gt;</code> tag for proper leading and color.</p>
+    <div class="bs-docs-example">
+      <div class="navbar">
+        <a href="#" class="navbar-brand">Brand</a>
+        <p class="navbar-text">Signed in as Mark Otto</p>
+      </div>
+    </div>
+{% highlight html linenos %}
+<div class="navbar">
+  <a href="#" class="navbar-brand">Brand</a>
+  <p class="navbar-text">Signed in as Mark Otto</p>
+</div>
+{% endhighlight %}
+
+    <h3 id="navbar-links">Links</h3>
+    <p>For folks using standard links that are not within the regular navbar navigation component, use the <code>.navbar-link</code> class to add the proper colors for the default and inverse navbar options.</p>
+    <div class="bs-docs-example">
+      <div class="navbar">
+        <a href="#" class="navbar-brand">Brand</a>
+        <p class="pull-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+      </div>
+    </div>
+{% highlight html linenos %}
+<div class="navbar">
+  <a href="#" class="navbar-brand">Brand</a>
+  <p class="pull-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+</div>
+{% endhighlight %}
+
+    <h3 id="navbar-component-alignment">Component alignment</h3>
+    <p>Align nav links, search form, or text, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
 
 
     <h2>Optional display variations</h2>

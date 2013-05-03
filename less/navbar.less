@@ -300,7 +300,8 @@
 }
 
 
-// Buttons in navbar
+
+// Buttons in navbars
 //
 // Vertically center a button within a navbar (when *not* in a form).
 
@@ -308,10 +309,23 @@
   margin-top: ((@navbar-height - @input-height-base) / 2);
 }
 
-/*
 
-// Janky solution for now to account for links outside the .nav
-// -------------------------
+
+// Text in navbars
+//
+// Add a class to make any element properly align itself vertically within the navbars.
+
+.navbar-text {
+
+}
+
+
+
+// Links in navbars
+//
+// Add a class to ensure links outside the navbar nav are colored correctly.
+
+// Default navbar variables
 .navbar-link {
   color: @navbar-link-color;
   &:hover {
@@ -319,4 +333,10 @@
   }
 }
 
-*/
+// Use the inverse navbar variables
+.navbar-inverse .navbar-link {
+  color: @navbar-inverse-link-color;
+  &:hover {
+    color: @navbar-inverse-link-hover-color;
+  }
+}
