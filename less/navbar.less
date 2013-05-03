@@ -285,20 +285,6 @@
     }
   }
 
-  // Dividers go vertical
-  // Change the height and height, disable bottom border, then add right border
-  .navbar .nav > .divider {
-    width: 1px;
-    height: (@navbar-height * .6);
-    margin: (@navbar-height * .2) 9px;
-    border-bottom: 0;
-    border-right: 1px solid lighten(@navbar-bg, 5%);
-  }
-  // Since we override the border, we need to specify it again for inverted navbars
-  .navbar-inverse .nav > .divider {
-    border-right-color: lighten(@navbar-inverse-bg, 5%);
-  }
-
   // Required to make the collapsing navbar work on regular desktops
   .navbar-toggle {
     position: relative;
