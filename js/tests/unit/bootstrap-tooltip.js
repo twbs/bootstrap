@@ -27,6 +27,47 @@ $(function () {
         ok(tooltip.attr('title') === '', 'title attribute was emptied')
       })
 
+      test("tooltip title test #1", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Simple tooltip" style="display: inline-block; position: absolute; top: 0; left: 0;"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({
+          })
+          .tooltip('show')
+
+        equal($('.tooltip').children('.tooltip-inner').text(), 'Simple tooltip', 'title from title attribute is set')
+
+        tooltip.tooltip('hide')
+        ok(!$(".tooltip").length, 'tooltip removed')
+      })
+
+      test("tooltip title test #2", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Simple tooltip" style="display: inline-block; position: absolute; top: 0; left: 0;"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({
+            title: 'This is a tooltip with some content'
+          })
+          .tooltip('show')
+
+        equal($('.tooltip').children('.tooltip-inner').text(), 'Simple tooltip', 'title is set from title attribute while prefered over title option')
+
+        tooltip.tooltip('hide')
+        ok(!$(".tooltip").length, 'tooltip removed')
+      })
+
+      test("tooltip title test #3", function () {
+        var tooltip = $('<a href="#" rel="tooltip" style="display: inline-block; position: absolute; top: 0; left: 0;"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({
+            title: 'This is a tooltip with some content'
+          })
+          .tooltip('show')
+
+        equal($('.tooltip').children('.tooltip-inner').text(), 'This is a tooltip with some content', 'title from title option is set')
+
+        tooltip.tooltip('hide')
+        ok(!$(".tooltip").length, 'tooltip removed')
+      })
+
       test("should add data attribute for referencing original title", function () {
         var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>').tooltip()
         equals(tooltip.attr('data-original-title'), 'Another tooltip', 'original title preserved in data attribute')

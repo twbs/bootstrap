@@ -1,5 +1,5 @@
 /* ==========================================================
- * bootstrap-carousel.js v2.3.1
+ * bootstrap-carousel.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#carousel
  * ==========================================================
  * Copyright 2012 Twitter, Inc.
