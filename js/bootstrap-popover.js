@@ -64,15 +64,8 @@
       return content
     }
 
-  , tip: function () {
-      if (!this.$tip) {
-        this.$tip = $(this.options.template)
-      }
-      return this.$tip
-    }
-
-  , destroy: function () {
-      this.hide().$element.off('.' + this.type).removeData(this.type)
+  , arrow: function(){
+      return this.$arrow = this.$arrow || this.tip().find(".arrow")
     }
 
   })
