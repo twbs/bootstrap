@@ -57,24 +57,24 @@ Keep track of development and community news.
 
 ## Compiling CSS and JavaScript
 
-Bootstrap includes a [makefile](Makefile) with convenient methods for working with the framework. Before getting started, be sure to install [the necessary local dependencies](package.json):
+Bootstrap uses [GruntJS](http://gruntjs.com/) with convenient methods for working with the framework. Before getting started, be sure to install [the necessary local dependencies](package.json):
 
 ```
 $ npm install
 ```
 
-When completed, you'll be able to run the various make commands provided:
+When completed, you'll be able to run the various grunt commands provided:
 
-#### build - `make`
-Runs the recess compiler to rebuild the `/less` files and compiles the docs. Requires recess and uglify-js.
+#### build - `grunt`
+Runs the recess compiler to rebuild the `/less` files and compiles the docs.
 
-#### test - `make test`
-Runs jshint and qunit tests headlessly in [phantomjs](http://code.google.com/p/phantomjs/) (used for ci). Depends on having phantomjs installed.
+#### test - `grunt test`
+Runs jshint and qunit tests headlessly in [phantomjs](http://code.google.com/p/phantomjs/) (used for ci).
 
-#### watch - `make watch`
-This is a convenience method for watching just Less files and automatically building them whenever you save. Requires the Watchr gem.
+#### watch - `grunt watch`
+This is a convenience method for watching just Less files and automatically building them whenever you save.
 
-Should you encounter problems with installing dependencies or running the makefile commands, be sure to first uninstall any previous versions (global and local) you may have installed, and then rerun `npm install`.
+Should you encounter problems with installing dependencies or running the grunt commands, be sure to first uninstall any previous versions (global and local) you may have installed, and then rerun `npm install`.
 
 
 
