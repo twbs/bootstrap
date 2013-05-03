@@ -3332,6 +3332,9 @@ button.close {
   display: table-cell;
   float: none;
   width: 1%;
+}
+
+.nav-tabs.nav-justified > li > a {
   text-align: center;
 }
 
@@ -3380,6 +3383,9 @@ button.close {
   display: table-cell;
   float: none;
   width: 1%;
+}
+
+.nav-justified > li > a {
   text-align: center;
 }
 
