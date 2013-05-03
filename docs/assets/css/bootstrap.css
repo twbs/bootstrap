@@ -1396,15 +1396,17 @@ textarea::-webkit-input-placeholder {
   margin-top: -5px;
 }
 
+/*
+// Move the options list down to align with labels
 .controls > .radio:first-child,
 .controls > .checkbox:first-child {
-  padding-top: 5px;
+  padding-top: 5px; // has to be padding because margin collaspes
 }
+*/
 
 .radio-inline,
 .checkbox-inline {
   display: inline-block;
-  padding-top: 5px;
   padding-left: 20px;
   margin-bottom: 0;
   font-weight: normal;
@@ -3759,16 +3761,6 @@ button.close {
   .navbar .nav.pull-right {
     float: right;
   }
-  .navbar .nav > .divider {
-    width: 1px;
-    height: 30px;
-    margin: 10px 9px;
-    border-right: 1px solid #fbfbfb;
-    border-bottom: 0;
-  }
-  .navbar-inverse .nav > .divider {
-    border-right-color: #2f2f2f;
-  }
   .navbar-toggle {
     position: relative;
     top: auto;
@@ -3781,62 +3773,25 @@ button.close {
   }
 }
 
-/*
+.navbar-btn {
+  margin-top: 8px;
+}
 
-// Janky solution for now to account for links outside the .nav
-// -------------------------
 .navbar-link {
-  color: @navbar-link-color;
-  &:hover {
-    color: @navbar-link-hover-color;
-  }
+  color: #777777;
 }
 
-// Buttons in navbar
-// -------------------------
-.navbar .btn,
-.navbar .btn-group {
-  .navbarVerticalAlign(30px); // Vertically center in navbar
-}
-.navbar .btn-group .btn,
-.navbar .input-prepend .btn,
-.navbar .input-append .btn {
-  margin-top: 0; // then undo the margin here so we don't accidentally double it
+.navbar-link:hover {
+  color: #333333;
 }
 
-// Navbar forms
-// -------------------------
-.navbar-form {
-  margin-bottom: 0; // remove default bottom margin
-  .clearfix();
-  input,
-  select,
-  .radio,
-  .checkbox {
-    .navbarVerticalAlign(30px); // Vertically center in navbar
-  }
-  input,
-  select,
-  .btn {
-    display: inline-block;
-    margin-bottom: 0;
-  }
-  input[type="image"],
-  input[type="checkbox"],
-  input[type="radio"] {
-    margin-top: 3px;
-  }
-  .input-append,
-  .input-prepend {
-    margin-top: 5px;
-    white-space: nowrap; // preven two  items from separating within a .navbar-form that has .pull-left
-    input {
-      margin-top: 0; // remove the margin on top since it's on the parent
-    }
-  }
+.navbar-inverse .navbar-link {
+  color: #999999;
 }
 
-*/
+.navbar-inverse .navbar-link:hover {
+  color: #ffffff;
+}
 
 .btn .caret {
   border-top-color: #ffffff;
