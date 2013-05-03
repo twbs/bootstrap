@@ -12,7 +12,19 @@ module.exports = function(grunt) {
             '*/\n',
         // Task configuration.
         clean: {
+            gh1: ['docs/assets/<%= pkg.name %>.zip'],
+            gh2: ['bootstrap', '../bootstrap-gh-pages/assets/<%= pkg.name %>.zip'],
             dist: ['bootstrap']
+        },
+        compress: {
+            gh: {
+                options: {
+                    archive: '<%= pkg.name %>.zip'
+                },
+                expand: true,
+                src: ['<%= pkg.name %>/**/*'],
+                dest: 'docs/assets/'
+            }
         },
         concat: {
             options: {
@@ -32,6 +44,11 @@ module.exports = function(grunt) {
             bootstrap: {
                 files: [
                     {expand: true, flatten: true, src: ['img/*'], dest: 'bootstrap/img/'}
+                ]
+            },
+            gh: {
+                files: [
+                    {expand: true, src: ['docs/**/*'], dest: '../bootstrap-gh-pages/'}
                 ]
             },
             dist: {
@@ -59,6 +76,9 @@ module.exports = function(grunt) {
         shell: {
             dist: {
                 command: 'node docs/build'
+            },
+            gh: {
+                command: 'node docs/build production'
             }
         },
         recess: {
@@ -105,6 +125,7 @@ module.exports = function(grunt) {
 
     // These plugins provide necessary tasks.
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -116,14 +137,20 @@ module.exports = function(grunt) {
 
 
     // Default task.
-    grunt.registerTask('default', ['jshint', 'recess:dist', 'shell', 'copy:dist', 'concat:dist', 'uglify']);
+    grunt.registerTask('default', ['jshint', 'recess:dist', 'shell:dist', 'copy:dist', 'concat:dist', 'uglify']);
 
     // Test task.
     grunt.registerTask('test', ['jshint', 'qunit']);
+
+    // Clean task.
+    grunt.registerTask('cleanit', ['clean:dist']);
 
     // Bootstrap task.
     grunt.registerTask('bootstrap', ['concat:bootstrap', 'recess:bootstrap', 'copy:bootstrap']);
 
     // Travis CI task.
     grunt.registerTask('travis', ['jshint', 'qunit']);
+
+    // Task for gh-pages 4 fat & mdo ONLY (O_O  )
+    grunt.registerTask('gh-pages', ['bootstrap', 'clean:gh1', 'compress:gh', 'clean:gh2', 'shell:gh', 'copy:gh']);
 };
