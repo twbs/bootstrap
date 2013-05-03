@@ -39,7 +39,7 @@ $(function () {
           .tooltip({placement: 'bottom'})
           .tooltip('show')
 
-        ok($(".tooltip").is('.fade.bottom.in'), 'has correct classes applied')
+        ok($(".tooltip").is('.fade.bottom.in'), 'has correct classes applied. Expected `.tooltip.fade.bottom.in`, got: ' + $(".tooltip").attr('class'))
         tooltip.tooltip('hide')
       })
 
@@ -58,10 +58,62 @@ $(function () {
       test("should respect custom classes", function () {
         var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
           .appendTo('#qunit-fixture')
-          .tooltip({ template: '<div class="tooltip some-class"><div class="tooltip-arrow"/><div class="tooltip-inner"/></div>'})
+          .tooltip({ template: '<div class="tooltip some-class"><div class="tooltip-inner"/></div>'})
           .tooltip('show')
 
         ok($('.tooltip').hasClass('some-class'), 'custom class is present')
+        tooltip.tooltip('hide')
+        ok(!$(".tooltip").length, 'tooltip removed')
+      })
+
+      test("should have get an arrow per default", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Simple tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip()
+          .tooltip('show')
+
+        ok($('.tooltip').children('.tooltip-arrow'), '.tooltip-arrow is present')
+        tooltip.tooltip('hide')
+        ok(!$(".tooltip").length, 'tooltip removed')
+      })
+
+      test("should not get an arrow if option set to false", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Simple tooltip without an arrow"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({ arrow: false })
+          .tooltip('show')
+
+        ok(!$('.tooltip').children('.tooltip-arrow').length, '.tooltip-arrow isn\'t present')
+
+        tooltip.tooltip('hide')
+        ok(!$(".tooltip").length, 'tooltip removed')
+      })
+
+      test("should not have arrow, even if customized", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Simple tooltip with an custom arrow"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({
+            template: '<div class="tooltip some-class"><div class="tooltip-arrow customized"/><div class="tooltip-inner"/></div>',
+            arrow: false
+          })
+          .tooltip('show')
+
+        ok(!$('.tooltip').children('.tooltip-arrow').length, '.tooltip-arrow isn\'t present')
+
+        tooltip.tooltip('hide')
+        ok(!$(".tooltip").length, 'tooltip removed')
+      })
+
+      test("should have not have doubled arrow if customized", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Customized tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({
+            template: '<div class="tooltip some-class"><div class="tooltip-arrow customized"/><div class="tooltip-inner"/></div>'
+          })
+          .tooltip('show')
+
+        ok($('.tooltip').children('.tooltip-arrow').hasClass('customized'), 'customized arrow is present')
+        equal($(".tooltip").children('.tooltip-arrow').length, 1, 'no additional arrow present')
         tooltip.tooltip('hide')
         ok(!$(".tooltip").length, 'tooltip removed')
       })

@@ -45,8 +45,6 @@
 
       $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
       $tip.find('.popover-content')[this.options.html ? 'html' : 'text'](content)
-
-      $tip.removeClass('fade top bottom left right in')
     }
 
   , hasContent: function () {
@@ -62,17 +60,6 @@
         || $e.attr('data-content')
 
       return content
-    }
-
-  , tip: function () {
-      if (!this.$tip) {
-        this.$tip = $(this.options.template)
-      }
-      return this.$tip
-    }
-
-  , destroy: function () {
-      this.hide().$element.off('.' + this.type).removeData(this.type)
     }
 
   })
@@ -99,7 +86,8 @@
     placement: 'right'
   , trigger: 'click'
   , content: ''
-  , template: '<div class="popover"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+  , template: '<div class="popover"><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+  , arrow: 'popover-arrow'
   })
 
 
