@@ -738,6 +738,18 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
             </thead>
             <tbody>
              <tr>
+               <td>{{_i}}template{{/i}}</td>
+               <td>{{_i}}string{{/i}}</td>
+               <td>'&lt;div class="tooltip"&gt;&lt;div class="tooltip-inner"&gt;&lt;/div&gt;&lt;/div&gt;'</td>
+               <td>{{_i}}the HTML template used to create the tooltip{{/i}}</td>
+             </tr>
+             <tr>
+               <td>{{_i}}arrow{{/i}}</td>
+               <td>{{_i}}string | false{{/i}}</td>
+               <td>'tooltip-arrow'</td>
+               <td>{{_i}}if set to false, no tooltip-arrow is shown. If set (default), it is the name of the class used for the arrow element that will be created on the fly. If you add a customized arrow in your template, please always add the default class name too.{{/i}}</td>
+             </tr>
+             <tr>
                <td>{{_i}}animation{{/i}}</td>
                <td>{{_i}}boolean{{/i}}</td>
                <td>true</td>
@@ -905,10 +917,22 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           </thead>
           <tbody>
            <tr>
+             <td>{{_i}}template{{/i}}</td>
+             <td>{{_i}}string{{/i}}</td>
+             <td>'&lt;div class="popover"&gt;&lt;h3 class="popover-title"&gt;&lt;/h3&gt;&lt;div class="popover-content"&gt;&lt;/div&gt;&lt;/div&gt;'</td>
+             <td>{{_i}}the HTML template used to create the popover{{/i}}</td>
+           </tr>
+           <tr>
+             <td>{{_i}}arrow{{/i}}</td>
+             <td>{{_i}}string | false{{/i}}</td>
+             <td>'popover-arrow'</td>
+             <td>{{_i}}if set to false, no popover-arrow is shown. If set (default), it is the name of the class used for the arrow element that will be created on the fly. If you add a customized arrow in your template, please always add the default class name too.{{/i}}</td>
+           </tr>
+           <tr>
              <td>{{_i}}animation{{/i}}</td>
              <td>{{_i}}boolean{{/i}}</td>
              <td>true</td>
-             <td>{{_i}}apply a css fade transition to the tooltip{{/i}}</td>
+             <td>{{_i}}apply a css fade transition to the popover{{/i}}</td>
            </tr>
            <tr>
              <td>{{_i}}html{{/i}}</td>

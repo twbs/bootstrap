@@ -126,10 +126,6 @@
         $tip = this.tip()
         this.setContent()
 
-        if (this.options.animation) {
-          $tip.addClass('fade')
-        }
-
         placement = typeof this.options.placement == 'function' ?
           this.options.placement.call(this, $tip[0], this.$element[0]) :
           this.options.placement
@@ -217,7 +213,6 @@
         , title = this.getTitle()
 
       $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title)
-      $tip.removeClass('fade in top bottom left right')
     }
 
   , hide: function () {
@@ -281,11 +276,30 @@
     }
 
   , tip: function () {
-      return this.$tip = this.$tip || $(this.options.template)
+      return this.$tip = this.$tip || this.createTipFromTemplate(this.options.template)
+    }
+
+  , createTipFromTemplate: function(template) {
+        var $tip = $(template);
+
+        if (this.options.animation) {
+          $tip.addClass('fade')
+        }
+
+        if (this.options.arrow) {
+          if (!$tip.children('.' + this.getOptions({}).arrow)) {
+              $tip.prepend('<div class="' + this.options.arrow + '"></div>');
+          }
+        } else {
+          $tip.find('.' + this.getOptions({}).arrow).remove();
+          $tip.find('.arrow').remove();
+        }
+
+        return $tip;
     }
 
   , arrow: function(){
-      return this.$arrow = this.$arrow || this.tip().find(".tooltip-arrow")
+      return this.$arrow = this.$arrow || this.tip().find(this.options.arrow ? "." + this.options.arrow : "")
     }
 
   , validate: function () {
@@ -341,7 +355,8 @@
     animation: true
   , placement: 'top'
   , selector: false
-  , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+  , template: '<div class="tooltip"><div class="tooltip-inner"></div></div>'
+  , arrow: 'tooltip-arrow'
   , trigger: 'hover focus'
   , title: ''
   , delay: 0

@@ -84,7 +84,7 @@ $(function () {
           .popover({
             title: 'Test'
           , content: 'Test'
-          , template: '<div class="popover foobar"><div class="arrow"></div><div class="inner"><h3 class="title"></h3><div class="content"><p></p></div></div></div>'
+          , template: '<div class="popover foobar"><div class="inner"><h3 class="title"></h3><div class="content"><p></p></div></div></div>'
           })
 
         popover.popover('show')
@@ -95,6 +95,56 @@ $(function () {
         popover.popover('hide')
         ok(!$('.popover').length, 'popover was removed')
         $('#qunit-fixture').empty()
+      })
+
+      test("should have get an arrow per default", function () {
+        var popover = $('<a href="#" rel="popover" title="Simple popover"></a>')
+          .appendTo('#qunit-fixture')
+          .popover()
+          .popover('show')
+
+        ok($('.popover').children('.popover-arrow'), 'arrow is present')
+        popover.popover('hide')
+        ok(!$(".popover").length, 'popover removed')
+      })
+
+      test("should not get an arrow if option set to false", function () {
+        var popover = $('<a href="#" rel="popover" title="Simple popover without an arrow"></a>')
+          .appendTo('#qunit-fixture')
+          .popover({ arrow: false })
+          .popover('show')
+
+        ok(!$('.popover').children('.popover-arrow').length, 'arrow isn\'t present')
+        popover.popover('hide')
+        ok(!$(".popover").length, 'popover removed')
+      })
+
+      test("should not have arrow, even if customized", function () {
+        var popover = $('<a href="#" rel="popover" title="Simple popover with an custom arrow"></a>')
+          .appendTo('#qunit-fixture')
+          .popover({
+            template: '<div class="popover foobar"><div class="popover-arrow customized"/><div class="inner"><h3 class="title"></h3><div class="content"><p></p></div></div></div>',
+            arrow: false
+          })
+          .popover('show')
+
+        ok(!$('.popover').children('.popover-arrow').length, 'arrow isn\'t present')
+        popover.popover('hide')
+        ok(!$(".popover").length, 'popover removed')
+      })
+
+      test("should have not have doubled arrow if customized", function () {
+        var popover = $('<a href="#" rel="popover" title="Customized popover"></a>')
+          .appendTo('#qunit-fixture')
+          .popover({
+            template: '<div class="popover foobar"><div class="popover-arrow customized"/><div class="inner"><h3 class="title"></h3><div class="content"><p></p></div></div></div>'
+          })
+          .popover('show')
+
+        ok($('.popover').children('.popover-arrow').hasClass('customized'), 'customized arrow is present')
+        equal($(".popover").children('.popover-arrow').length, 1, 'no additional arrow present')
+        popover.popover('hide')
+        ok(!$(".popover").length, 'popover removed')
       })
 
       test("should destroy popover", function () {
