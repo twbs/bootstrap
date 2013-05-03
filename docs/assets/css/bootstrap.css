@@ -1381,6 +1381,7 @@ textarea::-webkit-input-placeholder {
   display: inline;
   margin-bottom: 0;
   font-weight: normal;
+  cursor: pointer;
 }
 
 .radio input[type="radio"],
@@ -1411,6 +1412,7 @@ textarea::-webkit-input-placeholder {
   margin-bottom: 0;
   font-weight: normal;
   vertical-align: middle;
+  cursor: pointer;
 }
 
 .radio-inline + .radio-inline,
