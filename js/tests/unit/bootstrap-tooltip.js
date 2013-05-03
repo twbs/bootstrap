@@ -72,7 +72,7 @@ $(function () {
           .tooltip()
           .tooltip('show')
 
-        ok($('.tooltip').children('.tooltip-arrow'), '.tooltip-arrow is present')
+        equal($('.tooltip').children('.tooltip-arrow').length, 1, '.tooltip-arrow is present')
         tooltip.tooltip('hide')
         ok(!$(".tooltip").length, 'tooltip removed')
       })

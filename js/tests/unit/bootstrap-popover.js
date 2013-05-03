@@ -103,7 +103,7 @@ $(function () {
           .popover()
           .popover('show')
 
-        ok($('.popover').children('.popover-arrow'), 'arrow is present')
+        equal($('.popover').children('.popover-arrow').length, 1, 'arrow is present')
         popover.popover('hide')
         ok(!$(".popover").length, 'popover removed')
       })

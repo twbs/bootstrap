@@ -287,7 +287,7 @@
         }
 
         if (this.options.arrow) {
-          if (!$tip.children('.' + this.getOptions({}).arrow)) {
+          if ($tip.children('.' + this.getOptions({}).arrow).length === 0) {
               $tip.prepend('<div class="' + this.options.arrow + '"></div>');
           }
         } else {
