@@ -2919,6 +2919,28 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 {% endhighlight %}
 
+    <h3 id="btn-groups-nested">Nested button groups</h3>
+    <p>Place buttons groups within button groups when you want dropdown menus mixed with a series of buttons.</p>
+    <div class="bs-docs-example">
+      <div class="btn-group">
+        <button type="button" class="btn">1</button>
+        <button type="button" class="btn">2</button>
+        <button type="button" class="btn">3</button>
+
+        <div class="btn-group">
+          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+            Dropdown
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Dropdown link</a></li>
+            <li><a href="#">Dropdown link</a></li>
+            <li><a href="#">Dropdown link</a></li>
+           </ul>
+        </div>
+      </div>
+    </div>
+
     <h3 id="btn-groups-vertical">Vertical button groups</h3>
     <p>Make a set of buttons appear vertically stacked rather than horizontally.</p>
     <div class="bs-docs-example">
