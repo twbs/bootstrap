@@ -3476,12 +3476,44 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h3 id="navbar-forms">Forms</h3>
     <p>To properly style and position a form within the navbar, add the appropriate classes as shown below. For a default form, include <code>.navbar-form</code> and either <code>.pull-left</code> or <code>.pull-right</code> to properly align it.</p>
     <div class="bs-docs-example">
+
       <div class="navbar">
         <form class="navbar-form pull-left">
           <input type="text" style="width: 200px;">
           <button type="submit" class="btn">Submit</button>
         </form>
       </div>
+
+      <div class="navbar">
+        <form class="navbar-form pull-left">
+          <select name="" id="" style="width: 200px;">
+            <option value="1">1</option>
+            <option value="1">1</option>
+            <option value="1">1</option>
+            <option value="1">1</option>
+          </select>
+          <button type="submit" class="btn">Submit</button>
+        </form>
+      </div>
+
+      <div class="navbar">
+        <form class="navbar-form pull-left">
+          <input type="text" style="width: 200px;">
+          <input type="checkbox">
+          <button type="submit" class="btn">Submit</button>
+        </form>
+      </div>
+
+      <div class="navbar">
+        <form class="navbar-form pull-left">
+          <input type="text" style="width: 200px;">
+          <label class="checkbox-inline">
+            <input type="checkbox"> Derp
+          </label>
+          <button type="submit" class="btn">Submit</button>
+        </form>
+      </div>
+
     </div><!-- /example -->
 {% highlight html %}
 <form class="navbar-form pull-left">
