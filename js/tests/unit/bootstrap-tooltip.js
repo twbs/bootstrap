@@ -108,7 +108,7 @@ $(function () {
         var tooltip = $('<a href="#" rel="tooltip" title="Customized tooltip"></a>')
           .appendTo('#qunit-fixture')
           .tooltip({
-            template: '<div class="tooltip some-class"><div class="tooltip-arrow customized"/><div class="tooltip-inner"/></div>',
+            template: '<div class="tooltip some-class"><div class="tooltip-arrow customized"/><div class="tooltip-inner"/></div>'
           })
           .tooltip('show')
 
