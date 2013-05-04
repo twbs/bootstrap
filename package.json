@@ -5,7 +5,7 @@
   , "keywords": ["bootstrap", "css"]
   , "homepage": "http://twitter.github.com/bootstrap/"
   , "author": "Twitter Inc."
-  , "scripts": { "test": "make test" }
+  , "scripts": { "test": "grunt test" }
   , "repository": {
       "type": "git"
     , "url": "https://github.com/twitter/bootstrap.git"
