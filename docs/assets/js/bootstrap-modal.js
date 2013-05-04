@@ -86,11 +86,13 @@
 
         e = $.Event('hide')
 
-        this.$element.trigger(e)
+        if ($("div.modal.in").length <= 1) this.$element.trigger(e)
 
         if (!this.isShown || e.isDefaultPrevented()) return
 
         this.isShown = false
+
+        if ($("div.modal.in").length <= 1) $('body').removeClass('modal-open')
 
         this.escape()
 
