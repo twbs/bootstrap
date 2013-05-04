@@ -43,27 +43,27 @@ Documentation for [previous versions](https://github.com/twitter/bootstrap/tags)
 
 ## Compiling CSS and JavaScript
 
-Bootstrap includes a [makefile](Makefile) with convenient methods for working with the framework. Before getting started, be sure to install [the necessary local dependencies](package.json):
+Bootstrap uses [GruntJS](http://gruntjs.com/) with convenient methods for working with the framework. Before getting started, be sure to install [the necessary local dependencies](package.json):
 
 ```
 $ npm install
 ```
 
-When completed, you'll be able to run the various make commands provided:
+When completed, you'll be able to run the various grunt commands provided:
 
-#### Build - `make`
-`make` runs the Recess compiler to rebuild the `/less` files and compile the docs. **Requires recess and uglify-js.**
+#### Build - `grunt`
+`grunt` runs the Recess compiler to rebuild the `/less` files and compile the docs. **Requires recess and uglify-js.**
 
-#### Compile CSS, JS, and fonts - `make bootstrap`
-`make bootstrap` creates the `/bootstrap` directory with compiled files. **Requires recess and uglify-js.**
+#### Compile CSS, JS, and fonts - `grunt bootstrap`
+`grunt bootstrap` creates the `/bootstrap` directory with compiled files. **Requires recess and uglify-js.**
 
-#### Tests - `make test`
+#### Tests - `grunt test`
 Runs jshint and qunit tests headlessly in [phantomjs](http://code.google.com/p/phantomjs/) (used for ci). **Requires phantomjs.**
 
-#### Watch - `make watch`
-This is a convenience method for watching just Less files and automatically building them whenever you save. **Requires the watchr gem.**
+#### Watch - `grunt watch`
+This is a convenience method for watching just Less files and automatically building them whenever you save.
 
-Should you encounter problems with installing dependencies or running the makefile commands, uninstall any previous versions (global and local) you may have installed, and then rerun `npm install`.
+Should you encounter problems with installing dependencies or running the grunt commands, uninstall any previous versions (global and local) you may have installed, and then rerun `npm install`.
 
 
 

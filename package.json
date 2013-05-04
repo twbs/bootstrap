@@ -17,9 +17,18 @@
     }
   ]
   , "devDependencies": {
-      "uglify-js": "1.3.4"
-    , "jshint": "0.9.1"
-    , "recess": "1.1.6"
-    , "connect": "2.1.3"
+      "connect": "2.1.3"
+    , "grunt": "~0.4.1"
+    , "grunt-cli": "~0.1.7"
+    , "grunt-contrib-clean": "~0.4.1"
+    , "grunt-contrib-compress": "~0.5.0"
+    , "grunt-contrib-concat": "~0.3.0"
+    , "grunt-contrib-copy": "~0.4.1"
+    , "grunt-contrib-jshint": "~0.4.3"
+    , "grunt-contrib-uglify": "~0.2.0"
+    , "grunt-contrib-qunit": "~0.2.1"
+    , "grunt-contrib-watch": "~0.3.1"
+    , "grunt-shell": "~0.2.2"
+    , "grunt-recess": "~0.3.3"
   }
 }
