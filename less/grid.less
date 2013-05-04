@@ -31,7 +31,7 @@
 .generate-grid-columns(@grid-columns);
 
 // Then generate the larger grid classes via media query
-@media screen and (min-width: 768px) {
+@media screen and (min-width: @screen-small) {
   .generate-large-grid-columns(@grid-columns);
 }
 
