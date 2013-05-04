@@ -67,8 +67,13 @@
   z-index: @zindex-navbar-fixed;
   border-radius: 0;
 }
-.navbar-fixed-top    { top: 0; }
-.navbar-fixed-bottom { bottom: 0; }
+.navbar-fixed-top {
+  top: 0;
+}
+.navbar-fixed-bottom {
+  bottom: 0;
+  margin-bottom: 0; // override .navbar defaults
+}
 
 
 
@@ -262,7 +267,7 @@
 
 
 
-// Inverse navbar
+// Responsive navbar
 // --------------------------------------------------
 
 @media screen and (min-width: @screen-tablet) {

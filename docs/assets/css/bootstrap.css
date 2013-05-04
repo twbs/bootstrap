@@ -3578,6 +3578,7 @@ button.close {
 
 .navbar-fixed-bottom {
   bottom: 0;
+  margin-bottom: 0;
 }
 
 .navbar-brand {
