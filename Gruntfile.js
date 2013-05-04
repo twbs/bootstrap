@@ -143,9 +143,6 @@ module.exports = function(grunt) {
     // Bootstrap task.
     grunt.registerTask('bootstrap', ['concat:bootstrap', 'recess:bootstrap', 'copy:bootstrap']);
 
-    // Travis CI task.
-    grunt.registerTask('travis', ['jshint', 'qunit']);
-
     // Task for gh-pages 4 fat & mdo ONLY (O_O  )
     grunt.registerTask('gh-pages', ['bootstrap', 'clean:gh1', 'compress:gh', 'clean:gh2', 'shell:gh', 'copy:gh']);
 };
