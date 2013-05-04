@@ -20,33 +20,33 @@
 // Visibility utilities
 
 // For desktops
-.visible-phone     { display: none !important; }
-.visible-tablet    { display: none !important; }
-.hidden-phone      { }
-.hidden-tablet     { }
-.hidden-desktop    { display: none !important; }
-.visible-desktop   { display: inherit !important; }
+.visible-sm     { display: none !important; }
+.visible-md    { display: none !important; }
+.hidden-sm      { }
+.hidden-md     { }
+.hidden-lg    { display: none !important; }
+.visible-lg   { display: inherit !important; }
 
 // Tablets & small desktops only
 @media (min-width: 768px) and (max-width: 979px) {
   // Hide everything else
-  .hidden-desktop    { display: inherit !important; }
-  .visible-desktop   { display: none !important ; }
+  .hidden-lg    { display: inherit !important; }
+  .visible-lg   { display: none !important ; }
   // Show
-  .visible-tablet    { display: inherit !important; }
+  .visible-lg    { display: inherit !important; }
   // Hide
-  .hidden-tablet     { display: none !important; }
+  .hidden-lg     { display: none !important; }
 }
 
 // Phones only
 @media (max-width: 767px) {
   // Hide everything else
-  .hidden-desktop    { display: inherit !important; }
-  .visible-desktop   { display: none !important; }
+  .hidden-lg    { display: inherit !important; }
+  .visible-lg   { display: none !important; }
   // Show
-  .visible-phone     { display: inherit !important; } // Use inherit to restore previous behavior
+  .visible-sm     { display: inherit !important; } // Use inherit to restore previous behavior
   // Hide
-  .hidden-phone      { display: none !important; }
+  .hidden-sm      { display: none !important; }
 }
 
 // Print utilities
