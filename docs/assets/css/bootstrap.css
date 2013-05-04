@@ -4895,6 +4895,9 @@ a.list-group-item.active > .badge,
      -moz-transition: width 0.6s ease;
        -o-transition: width 0.6s ease;
           transition: width 0.6s ease;
+  -webkit-backface-visibility: hidden;
+     -moz-backface-visibility: hidden;
+          backface-visibility: hidden;
 }
 
 .progress-striped .progress-bar {
