@@ -2114,6 +2114,28 @@ fieldset[disabled] .btn-link:focus {
   text-decoration: none;
 }
 
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .btn:active {
+    color: rgba(0, 0, 0, 0);
+    text-shadow: 1px 1px 0 #ffffff;
+  }
+  .btn-link:active {
+    color: #428bca;
+    test-shadow: none;
+  }
+}
+
+@-moz-document url-prefix() {
+  .btn:active {
+    color: rgba(0, 0, 0, 0);
+    text-shadow: 1px 1px 0 #ffffff;
+  }
+  .btn-link:active {
+    color: #428bca;
+    test-shadow: none;
+  }
+}
+
 .fade {
   opacity: 0;
   -webkit-transition: opacity 0.15s linear;
@@ -3990,6 +4012,18 @@ button.close {
 .btn-group[data-toggle="buttons-radio"] > .btn > input[type="radio"],
 .btn-group[data-toggle="buttons-checkbox"] > .btn > input[type="checkbox"] {
   display: none;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .btn:active .caret {
+    margin: 9px -1px 0 1px;
+  }
+}
+
+@-moz-document url-prefix() {
+  .btn:active .caret {
+    margin: 9px -1px 0 1px;
+  }
 }
 
 .breadcrumb {
