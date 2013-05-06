@@ -179,3 +179,19 @@
 .btn-group[data-toggle="buttons-checkbox"] > .btn > input[type="checkbox"] {
   display: none;
 }
+
+
+// "Press" effect for FF and Webkits
+// --------------------------------------------------
+
+// Move caret by 1px to simulate "press" effect
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .btn:active .caret {
+    margin: 9px -1px 0 1px;
+  }
+}
+@-moz-document url-prefix() {
+  .btn:active .caret {
+    margin: 9px -1px 0 1px;
+  }
+}

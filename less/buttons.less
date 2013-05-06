@@ -173,3 +173,31 @@ fieldset[disabled] .btn-link {
     }
   }
 }
+
+
+// "Press" effect for FF and Webkits
+// --------------------------------------------------
+
+// Move text by 1px to simulate "press" effect
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .btn:active {
+    color: rgba(0,0,0,0);
+    text-shadow: 1px 1px 0 @btn-color;
+  }
+  // No "press" effect for link buttons
+  .btn-link:active {
+    color: @link-color;
+    test-shadow: none;
+  }
+}
+@-moz-document url-prefix() {
+  .btn:active {
+    color: rgba(0,0,0,0);
+    text-shadow: 1px 1px 0 @btn-color;
+  }
+  // No "press" effect for link buttons
+  .btn-link:active {
+    color: @link-color;
+    test-shadow: none;
+  }
+}
