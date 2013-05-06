@@ -2273,12 +2273,14 @@ table th[class*="span"],
   background-color: #c4e3f3;
 }
 
+@charset "UTF-8";
+
 @font-face {
   font-family: 'fontello-icon-fonts';
   font-style: normal;
   font-weight: normal;
-  src: url("../font/fontello-icon-fonts.eot?76260559");
-  src: url("../font/fontello-icon-fonts.eot?76260559#iefix") format('embedded-opentype'), url("../font/fontello-icon-fonts.woff?76260559") format('woff'), url("../font/fontello-icon-fonts.ttf?76260559") format('truetype'), url("../font/fontello-icon-fonts.svg?76260559#fontello-icon-fonts") format('svg');
+  src: url('../font/fontello-icon-fonts.eot?7023614');
+  src: url('../font/fontello-icon-fonts.eot?7023614#iefix') format('embedded-opentype'), url('../font/fontello-icon-fonts.woff?7023614') format('woff'), url('../font/fontello-icon-fonts.ttf?7023614') format('truetype'), url('../font/fontello-icon-fonts.svg?7023614#fontello-icon-fonts') format('svg');
 }
 
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
@@ -2289,7 +2291,7 @@ table th[class*="span"],
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello-icon-fonts';
-    src: url('../font/fontello-icon-fonts.svg?76260559#fontello-icon-fonts') format('svg');
+    src: url('../font/fontello-icon-fonts.svg?7023614#fontello-icon-fonts') format('svg');
   }
 }
 */
@@ -2298,9 +2300,9 @@ table th[class*="span"],
 [class*=" icon-"]:before {
   display: inline-block;
   width: 1em;
-  margin-right: 0.2em;
-  margin-left: 0.2em;
-  font-family: 'fontello-icon-fonts';
+  margin-right: .2em;
+  margin-left: .2em;
+  font-family: "fontello-icon-fonts";
   font-style: normal;
   font-weight: normal;
   line-height: 1em;
@@ -2419,7 +2421,7 @@ table th[class*="span"],
 
 /* '✓' */
 
-.icon-ok-circle:before {
+.icon-ok-sign:before {
   content: '\2714';
 }
 
@@ -2442,6 +2444,12 @@ table th[class*="span"],
 }
 
 /* '✱' */
+
+.icon-help:before {
+  content: '\2753';
+}
+
+/* '❓' */
 
 .icon-exclamation-sign:before {
   content: '\2757';
@@ -2490,6 +2498,18 @@ table th[class*="span"],
 }
 
 /* '' */
+
+.icon-globe:before {
+  content: '\e0e2';
+}
+
+/* '' */
+
+.icon-ok-circle:before {
+  content: '\e702';
+}
+
+/* '' */
 
 .icon-remove-circle:before {
   content: '\e703';
@@ -2544,6 +2564,12 @@ table th[class*="span"],
 }
 
 /* '' */
+
+.icon-font:before {
+  content: '\e779';
+}
+
+/* '' */
 
 .icon-align-left:before {
   content: '\e77e';
@@ -2682,6 +2708,12 @@ table th[class*="span"],
 }
 
 /* '' */
+
+.icon-upload:before {
+  content: '📤';
+}
+
+/* '\1f4e4' */
 
 .icon-download-alt:before {
   content: '\f4e5';

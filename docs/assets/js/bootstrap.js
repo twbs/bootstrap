@@ -1112,6 +1112,10 @@
       this.options.selector ?
         (this._options = $.extend({}, this.options, { trigger: 'manual', selector: '' })) :
         this.fixTitle()
+    
+      if ( this.options.global_close ) {
+        this.tip().addClass( 'global_close' )
+      } 
     }
 
   , getOptions: function (options) {
@@ -1387,8 +1391,32 @@
 
   , toggle: function (e) {
       var self = e ? $(e.currentTarget)[this.type](this._options).data(this.type) : this
-      self.tip().hasClass('in') ? self.hide() : self.show()
+
+      if ( e ) {
+        e.preventDefault()
+        e.stopPropagation()
+      }
+    
+      self.globalClose()
+
+      if ( self.tip().hasClass( 'in' ) ) {
+        $( 'body' ).off( 'click.global_close' )
+        self.hide() 
+      } else {
+        self.show()
+        // close on global request, exclude clicks inside tooltip
+        this.options.global_close &&
+        $( 'body' ).on( 'click.global_close', function( ev ) {
+          if ( !self.tip().has( ev.target ).length ) { self.toggle(); }
+        } )
+      } 
     }
+  
+  , globalClose: function() {
+    var open = $( '.global_close.in' )
+    open.off( 'click.global_close' )
+    open.hide()
+  }
 
   , destroy: function () {
       this.hide().$element.off('.' + this.type).removeData(this.type)
