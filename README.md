@@ -35,7 +35,7 @@ Have a bug or a feature request? [Please open a new issue](https://github.com/tw
 
 ## Documentation
 
-Bootstrap's docs are built using [Jekyll](http://jekyllrb.com) and hosted on GitHub Pages at [http://getbootstrap.com](http://getbootstrap.com). To view our docs locally, you'll need to [install Jekyll](https://github.com/mojombo/jekyll/wiki/install) to run a local server.
+Bootstrap's docs are built using [Jekyll](http://jekyllrb.com) and hosted on GitHub Pages at [http://getbootstrap.com](http://getbootstrap.com). To view our docs locally, you'll need to [install Jekyll](http://jekyllrb.com/docs/installation) to run a local server.
 
 Documentation for [previous versions](https://github.com/twitter/bootstrap/tags) is also available via tags.
 
