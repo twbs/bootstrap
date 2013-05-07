@@ -847,6 +847,50 @@ form.bs-docs-example {
 
 
 
+/* Ads in headers
+-------------------------------------------------- */
+
+.subhead h1,
+.subhead .lead {
+  margin-right: 340px;
+}
+
+.carbonad {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 10px !important;
+  height: auto !important;
+  font-size: 13px !important;
+  line-height: 16px !important;
+  background: transparent !important; /* reset image and color in one line */
+  border: 0 !important;
+  border-radius: 4px;
+}
+.carbonad-img {
+  margin: 0 !important;
+}
+.carbonad-text,
+.carbonad-tag,
+.carbonad-tag a {
+  color: #fff !important;
+}
+.carbonad-text,
+.carbonad-tag {
+  float: none !important;
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  margin-left: 145px !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+.carbonad-text {
+  padding-top: 0 !important;
+}
+.carbonad-tag {
+  text-align: left !important;
+}
+
 
 /* Responsive
 -------------------------------------------------- */
@@ -888,6 +932,15 @@ form.bs-docs-example {
     width: 218px;
     margin-top: 30px;
     margin-right: 0;
+  }
+
+  .subhead h1,
+  .subhead .lead {
+    margin-right: 0;
+  }
+  .carbonad {
+    position: static;
+    margin: 0 !important;
   }
 }
 
@@ -939,6 +992,9 @@ form.bs-docs-example {
   }
   .bs-docs-social {
     margin: 0 -20px;
+  }
+  .carbonad {
+    margin: 0 !important;
   }
 
   /* Space out the show-grid examples */
@@ -999,6 +1055,9 @@ form.bs-docs-example {
   .subhead h1,
   .subhead p {
     text-align: center;
+  }
+  .carbonad {
+    margin: 0 auto !important;
   }
 
   /* Marketing on home */
