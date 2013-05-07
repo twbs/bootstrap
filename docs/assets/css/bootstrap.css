@@ -3529,7 +3529,7 @@ button.close {
 }
 
 .navbar-nav {
-  margin-top: 5px;
+  margin: 10px -15px 0;
 }
 
 .navbar-nav > li > a {
