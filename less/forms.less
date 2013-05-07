@@ -23,7 +23,7 @@ legend {
   margin-bottom: @line-height-base;
   font-size: (@font-size-base * 1.5);
   line-height: (@line-height-base * 2);
-  color: @grayDark;
+  color: @gray-dark;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
 }
@@ -62,11 +62,11 @@ input[type="color"] {
   line-height: @line-height-base;
   color: @gray;
   vertical-align: middle;
-  background-color: @input-background;
+  background-color: @input-bg;
   border: 1px solid @input-border;
   border-radius: @input-border-radius;
   .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
-  .transition(~"border linear .2s, box-shadow linear .2s");
+  .transition(~"border-color linear .2s, box-shadow linear .2s");
 }
 
 // Reset appearance properties for textual inputs and textarea
@@ -86,6 +86,11 @@ input[type="button"],
 input[type="radio"],
 input[type="checkbox"] {
   width: auto; // Override of generic input selector
+}
+
+// Override content-box in Normalize (* isn't specific enough)
+input[type="search"] {
+  .box-sizing(border-box);
 }
 
 // Reset height since textareas have rows
@@ -173,6 +178,7 @@ textarea {
     display: inline;
     margin-bottom: 0;
     font-weight: normal;
+    cursor: pointer;
   }
 }
 
@@ -188,21 +194,24 @@ textarea {
   margin-top: ((@line-height-base / 4) * -1);
 }
 
+/*
 // Move the options list down to align with labels
 .controls > .radio:first-child,
 .controls > .checkbox:first-child {
   padding-top: 5px; // has to be padding because margin collaspes
 }
+*/
 
 // Radios and checkboxes on same line
 .radio-inline,
 .checkbox-inline {
   display: inline-block;
-  padding-top: 5px;
+//  padding-top: 5px;
   padding-left: 20px;
   margin-bottom: 0;
   vertical-align: middle;
   font-weight: normal;
+  cursor: pointer;
 }
 .radio-inline + .radio-inline,
 .checkbox-inline + .checkbox-inline {
@@ -286,7 +295,7 @@ textarea {
   &[readonly],
   fieldset[disabled] & {
     cursor: not-allowed;
-    background-color: @input-background-disabled;
+    background-color: @input-bg-disabled;
   }
 }
 // Explicitly reset the colors here
@@ -307,15 +316,15 @@ input[type="checkbox"] {
 
 // Warning
 .has-warning {
-  .formFieldState(@state-warning-text, @state-warning-text, @state-warning-background);
+  .formFieldState(@state-warning-text, @state-warning-text, @state-warning-bg);
 }
 // Error
 .has-error {
-  .formFieldState(@state-error-text, @state-error-text, @state-error-background);
+  .formFieldState(@state-danger-text, @state-danger-text, @state-danger-bg);
 }
 // Success
 .has-success {
-  .formFieldState(@state-success-text, @state-success-text, @state-success-background);
+  .formFieldState(@state-success-text, @state-success-text, @state-success-bg);
 }
 
 // HTML5 invalid states
@@ -341,9 +350,9 @@ select:focus:invalid {
   padding: (@line-height-base - 1) 20px @line-height-base;
   margin-top: @line-height-base;
   margin-bottom: @line-height-base;
-  background-color: @form-actions-background;
+  background-color: @form-actions-bg;
   border-top: 1px solid #e5e5e5;
-  .clear_float(); // Adding clearfix to allow for .pull-right button containers
+  .clearfix(); // Adding clearfix to allow for .pull-right button containers
 }
 
 
@@ -421,7 +430,7 @@ select:focus:invalid {
   line-height: @line-height-base;
   text-align: center;
   text-shadow: 0 1px 0 #fff;
-  background-color: @grayLighter;
+  background-color: @gray-lighter;
   border: 1px solid #ccc;
 
 	&.input-small {
@@ -509,7 +518,7 @@ select:focus:invalid {
 // Horizontal forms
 // --------------------------------------------------
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: @screen-tablet) {
 
   .form-horizontal {
 
@@ -517,7 +526,7 @@ select:focus:invalid {
     .control-group {
       position: relative;
       margin-bottom: @line-height-base;
-      .clear_float();
+      .clearfix();
 
       input,
       select,
@@ -537,6 +546,11 @@ select:focus:invalid {
     // Move over all input controls and content over
     .control-group > .controls {
       margin-left: @component-offset-horizontal;
+    }
+
+    // Make sure form actions buttons are aligned with controls
+    .form-actions {
+      padding-left: @component-offset-horizontal;
     }
 
   }

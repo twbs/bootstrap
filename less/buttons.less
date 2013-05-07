@@ -110,26 +110,26 @@ input[type="button"] {
 
 .btn {
   color: @btn-color;
-  .btn-pseudo-states(@btn-background, @btn-border);
+  .btn-pseudo-states(@btn-bg, @btn-border);
 }
 .btn-primary {
-  .btn-pseudo-states(@btn-background-primary, @btn-border-primary);
+  .btn-pseudo-states(@btn-primary-bg, @btn-primary-border);
 }
 // Warning appears as orange
 .btn-warning {
-  .btn-pseudo-states(@btn-background-warning, @btn-border-warning);
+  .btn-pseudo-states(@btn-warning-bg, @btn-warning-border);
 }
 // Danger and error appear as red
 .btn-danger {
-  .btn-pseudo-states(@btn-background-danger, @btn-border-danger);
+  .btn-pseudo-states(@btn-danger-bg, @btn-danger-border);
 }
 // Success appears as green
 .btn-success {
-  .btn-pseudo-states(@btn-background-success, @btn-border-success);
+  .btn-pseudo-states(@btn-success-bg, @btn-success-border);
 }
 // Info appears as blue-green
 .btn-info {
-  .btn-pseudo-states(@btn-background-info, @btn-border-info);
+  .btn-pseudo-states(@btn-info-bg, @btn-info-border);
 }
 
 
@@ -159,7 +159,7 @@ fieldset[disabled] .btn-link {
 }
 .btn-link:hover,
 .btn-link:focus {
-  color: @link-color-hover;
+  color: @link-hover-color;
   text-decoration: underline;
   background-color: transparent;
 }
@@ -168,7 +168,7 @@ fieldset[disabled] .btn-link {
   fieldset[disabled] & {
     &:hover,
     &:focus {
-      color: @grayDark;
+      color: @gray-dark;
       text-decoration: none;
     }
   }

@@ -2,45 +2,69 @@
 // Labels
 // --------------------------------------------------
 
-
-// Base classes
 .label {
+  display: inline;
   padding: .25em .6em;
   font-size: 75%;
   font-weight: 500;
-  color: #fff;
   line-height: 1;
-  vertical-align: middle;
-  white-space: nowrap;
+  color: #fff;
   text-align: center;
-  background-color: @grayLight;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: @gray-light;
   border-radius: .25em;
-}
 
-// Hover state, but only for links
-a.label {
-  &:hover,
-  &:focus {
-    color: #fff;
-    text-decoration: none;
-    cursor: pointer;
+  // Add hover effects, but only for links 
+  &[href] {
+    &:hover,
+    &:focus {
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+      background-color: darken(@gray-light, 10%);
+    }
   }
 }
 
 // Colors
-// Only give background-color difference to links (and to simplify, we don't qualifty with `a` but [href] attribute)
-.label {
-  // Danger (red)
-  &-danger            { background-color: @label-danger-background; }
-  &-danger[href]      { background-color: darken(@label-danger-background, 10%); }
-  // Warnings (orange)
-  &-warning           { background-color: @label-warning-background; }
-  &-warning[href]     { background-color: darken(@label-warning-background, 10%); }
-  // Success (green)
-  &-success           { background-color: @label-success-background; }
-  &-success[href]     { background-color: darken(@label-success-background, 10%); }
-  // Info (turquoise)
-  &-info              { background-color: @label-info-background; }
-  &-info[href]        { background-color: darken(@label-info-background, 10%); }
+// Contextual variations (linked labels get darker on :hover)
+.label-danger {
+  background-color: @label-danger-bg;
+  &[href] {
+    &:hover, 
+    &:focus {
+      background-color: darken(@label-danger-bg, 10%);
+    }
+  }
 }
 
+.label-success {
+  background-color: @label-success-bg;
+  &[href] {
+    &:hover,
+    &:focus {
+      background-color: darken(@label-success-bg, 10%);
+    }
+  }
+}
+
+.label-warning {
+  background-color: @label-warning-bg;
+  &[href] {
+    &:hover,
+    &:focus {
+      background-color: darken(@label-warning-bg, 10%);
+    }
+  }
+}
+
+.label-info {
+  background-color: @label-info-bg;
+  &[href] {
+    &:hover,
+    &:focus {
+      background-color: darken(@label-info-bg, 10%);
+    }
+  }
+}

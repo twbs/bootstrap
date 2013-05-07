@@ -27,37 +27,6 @@ body {
   left: 0;
   right: 0;
   z-index: 10;
-  margin-top: 20px;
-  margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
-}
-.navbar-wrapper .navbar {
-
-}
-
-/* Remove border and change up box shadow for more contrast */
-.navbar .navbar-inner {
-  border: 0;
-  -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
-     -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
-          box-shadow: 0 2px 10px rgba(0,0,0,.25);
-}
-
-/* Downsize the brand/project name a bit */
-.navbar .brand {
-  padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
-  font-size: 16px;
-  font-weight: bold;
-  text-shadow: 0 -1px 0 rgba(0,0,0,.5);
-}
-
-/* Navbar links: increase padding for taller navbar */
-.navbar .nav > li > a {
-  padding: 15px 20px;
-}
-
-/* Offset the responsive button for proper vertical alignment */
-.navbar .navbar-toggle {
-  margin-top: 10px;
 }
 
 
@@ -69,22 +38,12 @@ body {
 .carousel {
   margin-bottom: 60px;
 }
-
-.carousel .container {
-  position: relative;
-  z-index: 9;
-}
-
-.carousel-control {
-  height: 80px;
-  margin-top: 0;
-  font-size: 120px;
-  text-shadow: 0 1px 1px rgba(0,0,0,.4);
-  background-color: transparent;
-  border: 0;
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
   z-index: 10;
 }
 
+/* Declare heights because of positioning of img element */
 .carousel .item {
   height: 500px;
 }
@@ -96,37 +55,26 @@ body {
   height: 500px;
 }
 
-.carousel-caption {
-  background-color: transparent;
-  position: static;
-  max-width: 550px;
-  padding: 0 20px;
-  margin-top: 200px;
-}
-.carousel-caption h1,
-.carousel-caption .lead {
-  margin: 0;
-  line-height: 1.25;
-  color: #fff;
-  text-shadow: 0 1px 1px rgba(0,0,0,.4);
-}
-.carousel-caption .btn {
-  margin-top: 10px;
-}
-
 
 
 /* MARKETING CONTENT
 -------------------------------------------------- */
 
+/* Pad the edges of the mobile views a bit */
+.marketing {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 /* Center align the text within the three columns below the carousel */
-.marketing .col-span-4 {
+.marketing .col-lg-4 {
   text-align: center;
+  margin-bottom: 20px;
 }
 .marketing h2 {
   font-weight: normal;
 }
-.marketing .col-span-4 p {
+.marketing .col-lg-4 p {
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -167,15 +115,39 @@ body {
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
-@media (max-width: 979px) {
+@media (min-width: 768px) {
+
+  /* Remve the edge padding needed for mobile */
+  .marketing {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Navbar positioning foo */
+  .navbar-wrapper {
+    margin-top: 20px;
+    margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+  }
+  /* The navbar becomes detached from the top, so we round the corners */
+  .navbar-wrapper .navbar {
+    border-radius: 4px;
+  }
+
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: 1.4;
+  }
+
+}
+
+
+/*@media (max-width: 979px) {
 
   .container.navbar-wrapper {
     margin-bottom: 0;
     width: auto;
-  }
-  .navbar-inner {
-    border-radius: 0;
-    margin: -20px 0;
   }
 
   .carousel .item {
@@ -201,10 +173,6 @@ body {
 
 
 @media (max-width: 767px) {
-
-  .navbar-inner {
-    margin: -20px;
-  }
 
   .carousel {
     margin-left: -20px;
@@ -244,7 +212,19 @@ body {
     line-height: 1.5;
   }
 
-}
+  .navbar-wrapper {
+    margin-top: 0;
+  }
+
+  .navbar {
+    border-radius: 0;
+  }
+
+  #myCarousel {
+    margin-top: 54px;
+  }
+
+}*/
 </style>
 
 
@@ -252,25 +232,21 @@ body {
 <!-- NAVBAR
 ================================================== -->
 <div class="navbar-wrapper">
-  <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
   <div class="container">
 
-    <div class="navbar navbar-inverse">
-      <div class="navbar-inner">
-        <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+	    <a class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	    </a>
         <a class="navbar-brand" href="#">Project name</a>
-        <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
         <div class="nav-collapse collapse">
-          <ul class="nav">
+          <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
-            <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -284,52 +260,57 @@ body {
               </ul>
             </li>
           </ul>
-        </div><!--/.nav-collapse -->
-      </div><!-- /.navbar-inner -->
-    </div><!-- /.navbar -->
+        </div>
+      </div>
+    </div>
 
-  </div> <!-- /.container -->
-</div><!-- /.navbar-wrapper -->
-
+  </div>
+</div>
 
 
 <!-- Carousel
 ================================================== -->
 <div id="myCarousel" class="carousel slide">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
   <div class="carousel-inner">
     <div class="item active">
-      <img src="../assets/img/examples/slide-01.jpg" alt="">
+      <img data-src="holder.js/1500x500/auto/#777:#7a7a7a/text:First slide" alt="">
       <div class="container">
         <div class="carousel-caption">
           <h1>Example headline.</h1>
-          <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          <a class="btn btn-large btn-primary" href="#">Sign up today</a>
+          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          <p><a class="btn btn-large btn-primary" href="#">Sign up today</a></p>
         </div>
       </div>
     </div>
     <div class="item">
-      <img src="../assets/img/examples/slide-02.jpg" alt="">
+      <img data-src="holder.js/1500x500/auto/#777:#7a7a7a/text:Second slide" alt="">
       <div class="container">
         <div class="carousel-caption">
           <h1>Another example headline.</h1>
-          <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          <a class="btn btn-large btn-primary" href="#">Learn more</a>
+          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          <p><a class="btn btn-large btn-primary" href="#">Learn more</a></p>
         </div>
       </div>
     </div>
     <div class="item">
-      <img src="../assets/img/examples/slide-03.jpg" alt="">
+      <img data-src="holder.js/1500x500/auto/#777:#7a7a7a/text:Third slide" alt="">
       <div class="container">
         <div class="carousel-caption">
           <h1>One more for good measure.</h1>
-          <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          <a class="btn btn-large btn-primary" href="#">Browse gallery</a>
+          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          <p><a class="btn btn-large btn-primary" href="#">Browse gallery</a></p>
         </div>
       </div>
     </div>
   </div>
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 </div><!-- /.carousel -->
 
 
@@ -342,24 +323,24 @@ body {
 
   <!-- Three columns of text below the carousel -->
   <div class="row">
-    <div class="col-span-4">
+    <div class="col col-lg-4">
       <img class="img-circle" data-src="holder.js/140x140">
       <h2>Heading</h2>
-      <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+      <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
       <p><a class="btn" href="#">View details &raquo;</a></p>
-    </div><!-- /.col-span-4 -->
-    <div class="col-span-4">
+    </div><!-- /.col-lg-4 -->
+    <div class="col col-lg-4">
       <img class="img-circle" data-src="holder.js/140x140">
       <h2>Heading</h2>
-      <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+      <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
       <p><a class="btn" href="#">View details &raquo;</a></p>
-    </div><!-- /.col-span-4 -->
-    <div class="col-span-4">
+    </div><!-- /.col-lg-4 -->
+    <div class="col col-lg-4">
       <img class="img-circle" data-src="holder.js/140x140">
       <h2>Heading</h2>
       <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
       <p><a class="btn" href="#">View details &raquo;</a></p>
-    </div><!-- /.col-span-4 -->
+    </div><!-- /.col-lg-4 -->
   </div><!-- /.row -->
 
 
@@ -368,24 +349,24 @@ body {
   <hr class="featurette-divider">
 
   <div class="featurette">
-    <img class="featurette-image pull-right" src="../assets/img/examples/browser-icon-chrome.png">
-    <h2 class="featurette-heading">First featurette headling. <span class="muted">It'll blow your mind.</span></h2>
+    <img class="featurette-image img-circle pull-right" data-src="holder.js/512x512">
+    <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
     <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
   </div>
 
   <hr class="featurette-divider">
 
   <div class="featurette">
-    <img class="featurette-image pull-left" src="../assets/img/examples/browser-icon-firefox.png">
-    <h2 class="featurette-heading">Oh yeah, it's that good. <span class="muted">See for yourself.</span></h2>
+    <img class="featurette-image img-circle pull-left" data-src="holder.js/512x512">
+    <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
     <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
   </div>
 
   <hr class="featurette-divider">
 
   <div class="featurette">
-    <img class="featurette-image pull-right" src="../assets/img/examples/browser-icon-safari.png">
-    <h2 class="featurette-heading">And lastly, this one. <span class="muted">Checkmate.</span></h2>
+    <img class="featurette-image img-circle pull-right" data-src="holder.js/512x512">
+    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
     <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
   </div>
 

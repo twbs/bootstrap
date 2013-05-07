@@ -74,18 +74,19 @@
 // Modal header
 // Top section of the modal w/ title and dismiss
 .modal-header {
-  padding: 9px 15px;
+  padding: @modal-title-padding;
   border-bottom: 1px solid #e5e5e5;
+  min-height: (@modal-title-padding + @modal-title-line-height);
 }
 // Close icon
 .modal-header .close {
-  margin-top: 2px;
+  margin-top: -2px;
 }
 
 // Title text within header
 .modal-title {
   margin: 0;
-  line-height: 30px; // effectively set a min-height for the header
+  line-height: @modal-title-line-height;
 }
 
 // Modal body
@@ -119,7 +120,7 @@
 }
 
 // Scale up the modal
-@media screen and (min-width: 768px) {
+@media screen and (min-width: @screen-tablet) {
 
   .modal-dialog {
     left: 50%;

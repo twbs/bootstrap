@@ -32,7 +32,7 @@
 
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
-  .clear_float();
+  .clearfix();
 
   .btn-group {
     float: left;
@@ -71,6 +71,21 @@
 .btn-group > .btn.large:last-child,
 .btn-group > .large.dropdown-toggle {
   .border-right-radius(@border-radius-large);
+}
+
+// Custom edits for including btn-groups within btn-groups (useful for including dropdown buttons within a btn-group)
+.btn-group > .btn-group {
+  float: left;
+}
+.btn-group > .btn-group > .btn {
+  border-radius: 0;
+}
+.btn-group > .btn-group:last-child > .btn {
+  .border-right-radius(@border-radius-base);
+}
+.btn-group > .btn-group:first-child > .btn {
+  margin-left: 0;
+  .border-left-radius(@border-radius-base);
 }
 
 // On active and open, don't show outline

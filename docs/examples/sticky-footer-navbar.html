@@ -22,14 +22,13 @@ title: Sticky footer with navbar template
     height: 100%;
     /* Negative indent footer by its height */
     margin: 0 auto -60px;
+    /* Pad bottom by footer height */
+    padding: 0 0 60px;
   }
 
   /* Set the fixed height of the footer here */
-  #push,
   #footer {
     height: 60px;
-  }
-  #footer {
     background-color: #f5f5f5;
   }
 
@@ -50,7 +49,7 @@ title: Sticky footer with navbar template
   /* Not required for template or sticky footer method. */
 
   #wrap > .container {
-    padding-top: 60px;
+    padding: 60px 15px 0;
   }
   .container .credit {
     margin: 20px 0;
@@ -77,7 +76,7 @@ title: Sticky footer with navbar template
       </button>
       <a class="navbar-brand" href="#">Project name</a>
       <div class="nav-collapse collapse">
-        <ul class="nav">
+        <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -104,14 +103,12 @@ title: Sticky footer with navbar template
       <h1>Sticky footer with fixed navbar</h1>
     </div>
     <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added within <code>#wrap</code> with <code>padding-top: 60px;</code> on the <code>.container</code>.</p>
-    <p>Back to <a href="./sticky-footer.html">the default sticky footer</a> minus the navbar.</p>
+    <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p>
   </div>
-
-  <div id="push"></div>
 </div>
 
 <div id="footer">
   <div class="container">
-    <p class="muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
+    <p class="text-muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
   </div>
 </div>

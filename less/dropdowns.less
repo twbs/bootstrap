@@ -45,7 +45,7 @@
   padding: 5px 0;
   margin: 2px 0 0; // override default ul
   list-style: none;
-  background-color: @dropdown-background;
+  background-color: @dropdown-bg;
   border: 1px solid #ccc; // IE8 fallback
   border: 1px solid @dropdown-border;
   border-radius: @border-radius-base;
@@ -71,7 +71,7 @@
     font-weight: normal;
     line-height: @line-height-base;
     color: @dropdown-link-color;
-    white-space: nowrap;
+    white-space: nowrap; // prevent links from randomly breaking onto new lines
   }
 }
 
@@ -82,8 +82,8 @@
 .dropdown-submenu:hover > a,
 .dropdown-submenu:focus > a {
   text-decoration: none;
-  color: @dropdown-link-color-hover;
-  #gradient > .vertical(@dropdown-link-background-hover, darken(@dropdown-link-background-hover, 5%));
+  color: @dropdown-link-hover-color;
+  #gradient > .vertical(@dropdown-link-hover-bg, darken(@dropdown-link-hover-bg, 5%));
 }
 
 // Active state
@@ -91,10 +91,10 @@
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
-  color: @dropdown-link-color-active;
+  color: @dropdown-link-active-color;
   text-decoration: none;
   outline: 0;
-  #gradient > .vertical(@dropdown-link-background-active, darken(@dropdown-link-background-active, 5%));
+  #gradient > .vertical(@dropdown-link-active-bg, darken(@dropdown-link-active-bg, 5%));
 }
 
 // Disabled state
@@ -103,7 +103,7 @@
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,
 .dropdown-menu > .disabled > a:focus {
-  color: @grayLight;
+  color: @gray-light;
 }
 // Nuke hover/focus effects
 .dropdown-menu > .disabled > a:hover,
@@ -186,12 +186,12 @@
   border-color: transparent;
   border-style: solid;
   border-width: 5px 0 5px 5px;
-  border-left-color: darken(@dropdown-background, 20%);
+  border-left-color: darken(@dropdown-bg, 20%);
   margin-top: 5px;
   margin-right: -10px;
 }
 .dropdown-submenu:hover > a:after {
-  border-left-color: @dropdown-link-color-hover;
+  border-left-color: @dropdown-link-hover-color;
 }
 
 // Left aligned submenus

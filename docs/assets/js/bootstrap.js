@@ -57,7 +57,8 @@
 
   })
 
-}(window.jQuery);/* ==========================================================
+}(window.jQuery);
+/* ==========================================================
  * bootstrap-alert.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#alerts
  * ==========================================================
@@ -155,7 +156,8 @@
 
   $(document).on('click.alert.data-api', dismiss, Alert.prototype.close)
 
-}(window.jQuery);/* ============================================================
+}(window.jQuery);
+/* ============================================================
  * bootstrap-button.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#buttons
  * ============================================================
@@ -259,7 +261,8 @@
     $btn.button('toggle')
   })
 
-}(window.jQuery);/* ==========================================================
+}(window.jQuery);
+/* ==========================================================
  * bootstrap-carousel.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#carousel
  * ==========================================================
@@ -465,7 +468,8 @@
     e.preventDefault()
   })
 
-}(window.jQuery);/* =============================================================
+}(window.jQuery);
+/* =============================================================
  * bootstrap-collapse.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#collapse
  * =============================================================
@@ -631,7 +635,8 @@
     $(target).collapse(option)
   })
 
-}(window.jQuery);/* ============================================================
+}(window.jQuery);
+/* ============================================================
  * bootstrap-dropdown.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#dropdowns
  * ============================================================
@@ -1621,7 +1626,7 @@
         this.activeTarget = target
 
         $(this.selector)
-          .parent('.active')
+          .parents('.active')
           .removeClass('active')
 
         selector = this.selector
@@ -1629,7 +1634,7 @@
           + this.selector + '[href="' + target + '"]'
 
         active = $(selector)
-          .parent('li')
+          .parents('li')
           .addClass('active')
 
         if (active.parent('.dropdown-menu').length)  {
@@ -1683,7 +1688,8 @@
     })
   })
 
-}(window.jQuery);/* ========================================================
+}(window.jQuery);
+/* ========================================================
  * bootstrap-tab.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#tabs
  * ========================================================
@@ -1826,7 +1832,8 @@
     $(this).tab('show')
   })
 
-}(window.jQuery);/* =============================================================
+}(window.jQuery);
+/* =============================================================
  * bootstrap-typeahead.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#typeahead
  * =============================================================

@@ -155,19 +155,23 @@
 // Hidden by default for smaller viewports
 .carousel-caption {
   position: absolute;
-  left: 20%;
-  right: 20%;
+  left: 15%;
+  right: 15%;
   bottom: 20px;
-  display: none;
+  z-index: 10;
   padding-top: 20px;
   padding-bottom: 20px;
   color: #fff;
+  text-align: center;
   text-shadow: 0 1px 2px rgba(0,0,0,.6);
+  & .btn {
+    text-shadow: none; // No shadow for button elements in carousel-caption
+  }
 }
 
 
-// Scale up controls for >768px
-@media screen and (min-width: 768px) {
+// Scale up controls for tablets and up
+@media screen and (min-width: @screen-tablet) {
 
   // Scale up the controls a smidge
   .carousel-control .glyphicon {
@@ -180,13 +184,8 @@
 
   // Show and left align the captions
   .carousel-caption {
-    left: 0;
-    right: 0;
-    z-index: 10;
-    display: block;
-    max-width: 60%;
-    padding: 30px;
-    margin-left: 0;
-    margin-right: 0;
+    left: 20%;
+    right: 20%;
+    padding-bottom: 30px;
   }
 }

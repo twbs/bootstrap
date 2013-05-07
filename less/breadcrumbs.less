@@ -18,8 +18,11 @@
       padding: 0 5px;
       color: #ccc;
     }
+    &:last-child:after {
+      display: none; // No divider after last element
+    }
   }
   > .active {
-    color: @grayLight;
+    color: @gray-light;
   }
 }

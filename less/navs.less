@@ -11,26 +11,54 @@
   margin-bottom: 0;
   padding-left: 0; // Override default ul/ol
   list-style: none;
-  .clear_float();
-}
-.nav > li {
-  display: block;
-}
-.nav > li > a {
-  position: relative;
-  display: block;
-  padding: 10px 15px;
-}
-.nav > li > a:hover,
-.nav > li > a:focus {
-  text-decoration: none;
-  background-color: @grayLighter;
-}
+  .clearfix();
+  > li {
+    display: block;
+    > a {
+      position: relative;
+      display: block;
+      padding: 10px 15px;
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        background-color: @gray-lighter;
+      }
+    }
 
-// Redeclare pull classes because of specifity
-// Todo: consider making these utilities !important to avoid this bullshit
-.nav > .pull-right {
-  float: right;
+    // Nav states and addons
+    // --------------------------------------------------
+
+    // Disabled state
+    // -------------------------
+
+    // Gray out text
+    &.disabled > a {
+      color: @gray-light;
+    }
+    // Nuke hover effects
+    &.disabled > a:hover,
+    &.disabled > a:focus {
+      color: @gray-light;
+      text-decoration: none;
+      background-color: transparent;
+      cursor: default;
+    }
+    // Space the headers out when they follow another list item (link)
+    &+ .nav-header {
+      margin-top: 9px;
+    }
+  }
+
+  // Redeclare pull classes because of specifity
+  // Todo: consider making these utilities !important to avoid this bullshit
+  > .pull-right {
+    float: right;
+  }
+
+  // Dividers (basically an hr) within the dropdown
+  .divider {
+    .nav-divider();
+  }
 }
 
 
@@ -44,123 +72,112 @@
 // Give the tabs something to sit on
 .nav-tabs {
   border-bottom: 1px solid #ddd;
-}
-.nav-tabs > li {
-  float: left;
-  // Make the list-items overlay the bottom border
-  margin-bottom: -1px;
-}
-// Actual tabs (as links)
-.nav-tabs > li > a {
-  margin-right: 2px;
-  line-height: @line-height-base;
-  border: 1px solid transparent;
-  border-radius: @border-radius-base @border-radius-base 0 0;
-  &:hover {
-    border-color: @grayLighter @grayLighter #ddd;
+  > li {
+    float: left;
+    // Make the list-items overlay the bottom border
+    margin-bottom: -1px;
+
+    // Actual tabs (as links)
+    > a {
+      margin-right: 2px;
+      line-height: @line-height-base;
+      border: 1px solid transparent;
+      border-radius: @border-radius-base @border-radius-base 0 0;
+      &:hover {
+        border-color: @gray-lighter @gray-lighter #ddd;
+      }
+    }
+
+    // Active state, and it's :hover to override normal :hover
+    &.active > a,
+    &.active > a:hover,
+    &.active > a:focus {
+      color: @gray;
+      background-color: @body-bg;
+      border: 1px solid #ddd;
+      border-bottom-color: transparent;
+      cursor: default;
+    }
+  }
+  // pulling this in mainly for less shorthand
+  &.nav-justified {
+    .nav-justified;
+    .nav-tabs-justified;
   }
 }
-// Active state, and it's :hover to override normal :hover
-.nav-tabs > .active > a,
-.nav-tabs > .active > a:hover,
-.nav-tabs > .active > a:focus {
-  color: @gray;
-  background-color: @body-background;
-  border: 1px solid #ddd;
-  border-bottom-color: transparent;
-  cursor: default;
-}
+
 
 // Pills
 // -------------------------
+.nav-pills {
+  > li {
+    float: left;
 
-.nav-pills > li {
-  float: left;
+    // Links rendered as pills
+    > a {
+      border-radius: 5px;
+    }
+    + li {
+      > a {
+        margin-left: 2px;
+      }
+    }
+
+    // Active state
+    &.active > a,
+    &.active > a:hover,
+    &.active > a:focus {
+      color: #fff;
+      background-color: @component-active-bg;
+    }
+  }
 }
 
-// Links rendered as pills
-.nav-pills > li > a {
-  border-radius: 5px;
-}
-.nav-pills > li + li > a {
-  margin-left: 2px;
-}
-
-// Active state
-.nav-pills > .active > a,
-.nav-pills > .active > a:hover,
-.nav-pills > .active > a:focus {
-  color: #fff;
-  background-color: @link-color;
-}
 
 // Stacked pills
-.nav-stacked > li {
-  float: none;
-}
-.nav-stacked > li + li > a {
-  margin-top: 2px;
-  margin-left: 0; // no need for this gap between nav items
+.nav-stacked {
+  > li {
+    float: none;
+    + li {
+      > a {
+        margin-top: 2px;
+        margin-left: 0; // no need for this gap between nav items
+      }
+    }
+  }
 }
 
 // Justified nav links
 // -------------------------
 
 .nav-justified {
-  // Negative margin doesn't work, so we hack it
-  max-height: 40px;
-}
-.nav-justified > li {
-  float: none;
-  display: table-cell;
-  width: 1%;
-  text-align: center;
+  width: 100%;
+  > li {
+    float: none;
+    display: table-cell;
+    width: 1%;
+    > a {
+      text-align: center;
+    }
+  }
 }
 
-// Lists
-// -------------------------
+// Move borders to anchors instead of bottom of list
+.nav-tabs-justified () {
+  border-bottom: 0;
+  > li > a {
+    border-bottom: 1px solid #ddd;
 
-.nav-list > li > a {
-  margin-bottom: -1px; // pull up the following link for a 1px border between
-  border: 1px solid #e5e5e5;
-}
-.nav-list > li:first-child > a {
-   border-top-left-radius: @border-radius-base;
-  border-top-right-radius: @border-radius-base;
-}
-.nav-list > li:last-child > a {
-   border-bottom-left-radius: @border-radius-base;
-  border-bottom-right-radius: @border-radius-base;
-}
-.nav-list > .active > a,
-.nav-list > .active > a:hover,
-.nav-list > .active > a:focus {
-  z-index: 2; // Bring active item forward so border sits on top of next element
-  color: #fff;
-  background-color: @link-color;
-  border-color: @link-color;
+    // Override margin from .nav-tabs
+    margin-right: 0;
+  }
+  > .active > a {
+    border-bottom-color: @body-bg;
+  }
+
 }
 
 
-
-// Nav states and addons
-// --------------------------------------------------
-
-// Disabled state
-// -------------------------
-
-// Gray out text
-.nav > .disabled > a {
-  color: @grayLight;
-}
-// Nuke hover effects
-.nav > .disabled > a:hover,
-.nav > .disabled > a:focus {
-  color: @grayLight;
-  text-decoration: none;
-  background-color: transparent;
-  cursor: default;
-}
 
 // Nav headers (for dropdowns and lists)
 // -------------------------
@@ -168,21 +185,12 @@
 .nav-header {
   display: block;
   padding: 3px 15px;
-  font-size: 11px;
+  font-size: @font-size-mini;
   font-weight: bold;
   line-height: @line-height-base;
-  color: @grayLight;
+  color: @gray-light;
   text-shadow: 0 1px 0 rgba(255,255,255,.5);
   text-transform: uppercase;
-}
-// Space them out when they follow another list item (link)
-.nav li + .nav-header {
-  margin-top: 9px;
-}
-
-// Dividers (basically an hr) within the dropdown
-.nav .divider {
-  .nav-divider();
 }
 
 
@@ -231,8 +239,8 @@
   margin-top: 8px;
 }
 .nav .dropdown-toggle:hover .caret {
-  border-top-color: @link-color-hover;
-  border-bottom-color: @link-color-hover;
+  border-top-color: @link-hover-color;
+  border-bottom-color: @link-hover-color;
 }
 
 // Active dropdown links
@@ -258,8 +266,8 @@
 .nav-pills .open .dropdown-toggle,
 .nav > li.dropdown.open.active > a:hover {
   color: #fff;
-  background-color: @grayLight;
-  border-color: @grayLight;
+  background-color: @gray-light;
+  border-color: @gray-light;
 }
 .nav li.dropdown.open .caret,
 .nav li.dropdown.open.active .caret,
@@ -271,7 +279,7 @@
 
 // Dropdowns in stacked tabs
 .tabs-stacked .open > a:hover {
-  border-color: @grayLight;
+  border-color: @gray-light;
 }
 
 */

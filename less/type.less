@@ -11,9 +11,9 @@ p {
 }
 .lead {
   margin-bottom: @line-height-base;
-  .font-size((@font-size-base * 1.5));
+  font-size: (@font-size-base * 1.5);
   font-weight: 200;
-  line-height: 1.3;
+  line-height: 1.4;
 }
 
 
@@ -28,17 +28,17 @@ em      { font-style: italic; }
 cite    { font-style: normal; }
 
 // Utility classes
-.muted               { color: @grayLight; }
-a.muted:hover,
-a.muted:focus        { color: darken(@grayLight, 10%); }
+.text-muted          { color: @gray-light; }
+a.text-muted:hover,
+a.text-muted:focus   { color: darken(@gray-light, 10%); }
 
 .text-warning        { color: @state-warning-text; }
 a.text-warning:hover,
 a.text-warning:focus { color: darken(@state-warning-text, 10%); }
 
-.text-error          { color: @state-error-text; }
-a.text-error:hover,
-a.text-error:focus   { color: darken(@state-error-text, 10%); }
+.text-danger         { color: @state-danger-text; }
+a.text-danger:hover,
+a.text-danger:focus  { color: darken(@state-danger-text, 10%); }
 
 .text-success        { color: @state-success-text; }
 a.text-success:hover,
@@ -57,11 +57,10 @@ h1, h2, h3, h4, h5, h6,
   font-family: @headings-font-family;
   font-weight: @headings-font-weight;
   line-height: @line-height-base;
-  text-rendering: optimizelegibility; // Fix the character spacing for headings
   small {
     font-weight: normal;
     line-height: 1;
-    color: @grayLight;
+    color: @gray-light;
   }
 }
 
@@ -82,12 +81,12 @@ h6 {
   margin-bottom: (@line-height-base / 2);
 }
 
-h1, .h1 { font-size: (@font-size-base * 2.75); font-size: 4rem; } // ~38px
-h2, .h2 { font-size: (@font-size-base * 2.25); font-size: 3rem; } // ~32px
-h3, .h3 { font-size: (@font-size-base * 1.75); font-size: 2.5rem; } // ~24px
-h4, .h4 { font-size: (@font-size-base * 1.25); font-size: 2rem; } // ~18px
-h5, .h5 { font-size:  @font-size-base; font-size: 1.6rem; }
-h6, .h6 { font-size: (@font-size-base * 0.85); font-size: 1.2rem; } // ~12px
+h1, .h1 { font-size: (@font-size-base * 2.75); } // ~38px
+h2, .h2 { font-size: (@font-size-base * 2.25); } // ~32px
+h3, .h3 { font-size: (@font-size-base * 1.75); } // ~24px
+h4, .h4 { font-size: (@font-size-base * 1.25); } // ~18px
+h5, .h5 { font-size:  @font-size-base; }
+h6, .h6 { font-size: (@font-size-base * 0.85); } // ~12px
 
 h1 small, .h1 small { font-size: (@font-size-base * 1.75); } // ~24px
 h2 small, .h2 small { font-size: (@font-size-base * 1.25); } // ~18px
@@ -101,7 +100,7 @@ h4 small, .h4 small { font-size: @font-size-base; }
 .page-header {
   padding-bottom: ((@line-height-base / 2) - 1);
   margin: (@line-height-base * 2) 0 @line-height-base;
-  border-bottom: 1px solid @grayLighter;
+  border-bottom: 1px solid @gray-lighter;
 }
 
 
@@ -126,18 +125,20 @@ li {
 }
 
 // List options
+
 // Unstyled keeps list items block level, just removes list-style
-.list-unstyled,
-// Inline turns list items into inline-block
-.list-inline {
+.list-unstyled {
   margin-left: 0;
   list-style: none;
 }
-// Single-line list items
-.list-inline > li {
-  display: inline-block;
-  padding-left: 5px;
-  padding-right: 5px;
+// Inline turns list items into inline-block
+.list-inline {
+  .list-unstyled();
+  > li {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 }
 
 // Description Lists
@@ -156,7 +157,7 @@ dd {
 }
 // Horizontal layout (like forms)
 .dl-horizontal {
-  .clear_float(); // Ensure dl clears floats if empty dd elements present
+  .clearfix(); // Ensure dl clears floats if empty dd elements present
   dt {
     float: left;
     width: (@component-offset-horizontal - 20);
@@ -186,7 +187,7 @@ abbr[title],
 // Added data-* attribute to help out our tooltip plugin, per https://github.com/twitter/bootstrap/issues/5257
 abbr[data-original-title] {
   cursor: help;
-  border-bottom: 1px dotted @grayLight;
+  border-bottom: 1px dotted @gray-light;
 }
 abbr.initialism {
   font-size: 90%;
@@ -195,19 +196,21 @@ abbr.initialism {
 
 // Blockquotes
 blockquote {
-  padding: 0 0 0 15px;
+  padding: (@line-height-base/2) @line-height-base;
   margin: 0 0 @line-height-base;
-  border-left: 5px solid @grayLighter;
+  border-left: 5px solid @gray-lighter;
   p {
-    margin-bottom: 0;
     font-size: (@font-size-base * 1.25);
     font-weight: 300;
     line-height: 1.25;
   }
+  p:last-child {
+    margin-bottom: 0;
+  }
   small {
     display: block;
     line-height: @line-height-base;
-    color: @grayLight;
+    color: @gray-light;
     &:before {
       content: '\2014 \00A0';
     }
@@ -218,7 +221,7 @@ blockquote {
     float: right;
     padding-right: 15px;
     padding-left: 0;
-    border-right: 5px solid @grayLighter;
+    border-right: 5px solid @gray-lighter;
     border-left: 0;
     p,
     small {

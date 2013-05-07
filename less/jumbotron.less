@@ -6,11 +6,11 @@
 .jumbotron {
   padding: 30px;
   margin-bottom: 30px;
-  font-size: 21px;
+  font-size: (@font-size-base * 1.5);
   font-weight: 200;
   line-height: (@line-height-base * 1.5);
   color: @jumbotron-lead-color;
-  background-color: @jumbotron-background;
+  background-color: @jumbotron-bg;
   h1 {
     line-height: 1;
     color: @jumbotron-heading-color;
@@ -20,13 +20,13 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: @screen-tablet) {
   .jumbotron {
     padding: 50px 60px;
-    border-radius: 6px; // Only round corners at higher resolutions
+    border-radius: @border-radius-large; // Only round corners at higher resolutions
 
     h1 {
-      font-size: 60px;
+      font-size: (@font-size-base * 4.5);
     }
   }
 }
