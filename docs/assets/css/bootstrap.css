@@ -1844,7 +1844,7 @@ select:focus:invalid:focus {
   white-space: nowrap;
   vertical-align: middle;
   cursor: pointer;
-  border: 1px solid #a7a9aa;
+  border: 1px solid transparent;
   border-radius: 4px;
 }
 
@@ -1879,72 +1879,38 @@ fieldset[disabled] .btn {
           box-shadow: none;
 }
 
-.btn-large {
-  padding: 11px 14px;
-  font-size: 17.5px;
-  border-radius: 6px;
-}
-
-.btn-small {
-  padding: 2px 10px;
-  font-size: 11.9px;
-  border-radius: 3px;
-}
-
-.btn-mini {
-  padding: 0 6px;
-  font-size: 10.5px;
-  border-radius: 3px;
-}
-
-.btn-block {
-  display: block;
-  width: 100%;
-  padding-right: 0;
-  padding-left: 0;
-}
-
-.btn-block + .btn-block {
-  margin-top: 5px;
-}
-
-input[type="submit"].btn-block,
-input[type="reset"].btn-block,
-input[type="button"].btn-block {
-  width: 100%;
-}
-
-.btn {
+.btn-default {
   color: #ffffff;
   background-color: #a7a9aa;
   border-color: #a7a9aa;
 }
 
-.btn:hover,
-.btn:focus,
-.btn:active,
-.btn.active {
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active {
   background-color: #9a9c9d;
   border-color: #8d9091;
 }
 
-.btn.disabled:hover,
-.btn[disabled]:hover,
-fieldset[disabled] .btn:hover,
-.btn.disabled:focus,
-.btn[disabled]:focus,
-fieldset[disabled] .btn:focus,
-.btn.disabled:active,
-.btn[disabled]:active,
-fieldset[disabled] .btn:active,
-.btn.disabled.active,
-.btn[disabled].active,
-fieldset[disabled] .btn.active {
+.btn-default.disabled:hover,
+.btn-default[disabled]:hover,
+fieldset[disabled] .btn-default:hover,
+.btn-default.disabled:focus,
+.btn-default[disabled]:focus,
+fieldset[disabled] .btn-default:focus,
+.btn-default.disabled:active,
+.btn-default[disabled]:active,
+fieldset[disabled] .btn-default:active,
+.btn-default.disabled.active,
+.btn-default[disabled].active,
+fieldset[disabled] .btn-default.active {
   background-color: #a7a9aa;
   border-color: #a7a9aa;
 }
 
 .btn-primary {
+  color: #ffffff;
   background-color: #428bca;
   border-color: #428bca;
 }
@@ -1974,6 +1940,7 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .btn-warning {
+  color: #ffffff;
   background-color: #f0ad4e;
   border-color: #f0ad4e;
 }
@@ -2003,6 +1970,7 @@ fieldset[disabled] .btn-warning.active {
 }
 
 .btn-danger {
+  color: #ffffff;
   background-color: #d9534f;
   border-color: #d9534f;
 }
@@ -2032,6 +2000,7 @@ fieldset[disabled] .btn-danger.active {
 }
 
 .btn-success {
+  color: #ffffff;
   background-color: #5cb85c;
   border-color: #5cb85c;
 }
@@ -2061,6 +2030,7 @@ fieldset[disabled] .btn-success.active {
 }
 
 .btn-info {
+  color: #ffffff;
   background-color: #5bc0de;
   border-color: #5bc0de;
 }
@@ -2126,6 +2096,41 @@ fieldset[disabled] .btn-link:hover,
 fieldset[disabled] .btn-link:focus {
   color: #333333;
   text-decoration: none;
+}
+
+.btn-large {
+  padding: 11px 14px;
+  font-size: 17.5px;
+  border-radius: 6px;
+}
+
+.btn-small {
+  padding: 2px 10px;
+  font-size: 11.9px;
+  border-radius: 3px;
+}
+
+.btn-mini {
+  padding: 0 6px;
+  font-size: 10.5px;
+  border-radius: 3px;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.btn-block + .btn-block {
+  margin-top: 5px;
+}
+
+input[type="submit"].btn-block,
+input[type="reset"].btn-block,
+input[type="button"].btn-block {
+  width: 100%;
 }
 
 .fade {
