@@ -9,5 +9,5 @@ permalink:    pretty
 source:       ./docs
 destination:  ./_gh_pages
 server_port:  9001
-url:          /bootstrap/
-baseurl:      /bootstrap/
+url:          /
+baseurl:      /
