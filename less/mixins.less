@@ -350,7 +350,8 @@
 // -------------------------
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
-.btn-pseudo-states(@background, @border) {
+.btn-pseudo-states(@color, @background, @border) {
+  color: @color;
   background-color: @background;
   border-color: @border;
 
