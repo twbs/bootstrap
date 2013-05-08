@@ -54,10 +54,10 @@ input[type="url"],
 input[type="search"],
 input[type="tel"],
 input[type="color"] {
-  display: inline-block;
+  display: block;
   min-height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   padding: 6px 9px;
-  // margin-bottom: (@line-height-base / 2);
+  margin-bottom: 10px;
   font-size: @font-size-base;
   line-height: @line-height-base;
   color: @gray;
@@ -174,6 +174,7 @@ textarea {
   min-height: @line-height-base; // clear the floating input if there is no label text
   margin-bottom: (@line-height-base / 2);
   padding-left: 20px;
+  vertical-align: middle;
   label {
     display: inline;
     margin-bottom: 0;
@@ -387,14 +388,16 @@ select:focus:invalid {
   display: table;
 
   // Undo padding and float of grid classes
-  &[class*="span"] {
+  &.col {
     float: none;
-    padding: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   input,
   select {
     width: 100%;
+    margin-bottom: 0;
   }
 }
 
@@ -404,7 +407,7 @@ select:focus:invalid {
 .input-group-btn,
 .input-group input {
   display: table-cell;
-  margin: 0;
+  /*margin: 0;*/
   border-radius: 0;
   &.input-small {
     border-radius: 0;
@@ -513,6 +516,21 @@ select:focus:invalid {
   }
 }
 
+
+
+// Inline forms
+// --------------------------------------------------
+
+.form-inline {
+  input,
+  select,
+  textarea,
+  .radio,
+  .checkbox {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+}
 
 
 // Horizontal forms

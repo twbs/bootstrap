@@ -1327,10 +1327,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Included with Bootstrap are optional form layouts for common use cases.</p>
 
     <h3 id="forms-inline">Inline form</h3>
-    <p>Add <code>.form-inline</code> for left-aligned labels and inline-block controls for a compact layout.</p>
+    <p>Add <code>.form-inline</code> for left-aligned and inline-block controls for a compact layout.</p>
+    <div class="bs-docs-sidenote">
+      <h4>Requires custom widths</h4>
+      <p>Inputs, selects, and textareas are 100% wide by default in Bootstrap. To use the inline form, you'll have to set a width on the form controls used within.</p>
+    </div>
     <form class="bs-docs-example form-inline">
-      <input type="text" class="col col-lg-3" placeholder="Email">
-      <input type="password" class="col col-lg-3" placeholder="Password">
+      <input type="text" placeholder="Email" style="width: 180px;">
+      <input type="password" placeholder="Password" style="width: 180px;">
       <div class="checkbox">
         <label>
           <input type="checkbox"> Remember me
@@ -1340,8 +1344,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </form><!-- /example -->
 {% highlight html %}
 <form class="form-inline">
-  <input type="text" class="col col-lg-3" placeholder="Email">
-  <input type="password" class="col col-lg-3" placeholder="Password">
+  <input type="text" placeholder="Email" style="width: 180px;">
+  <input type="password" placeholder="Password" style="width: 180px;">
   <div class="checkbox">
     <label>
       <input type="checkbox"> Remember me
@@ -1927,74 +1931,30 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h4>Column sizing</h4>
-    <p>Use <code>.col col-lg-1</code> to <code>.col col-lg-12</code> for setting widths on inputs that match Bootstrap's grid system.</p>
-    <form class="bs-docs-example" style="padding-bottom: 15px;">
-      <div class="controls docs-input-sizes">
-        <input class="col col-lg-1" type="text" placeholder=".col col-lg-1">
-        <input class="col col-lg-2" type="text" placeholder=".col col-lg-2">
-        <input class="col col-lg-3" type="text" placeholder=".col col-lg-3">
-        <select class="col col-lg-1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-        <select class="col col-lg-2">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-        <select class="col col-lg-3">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </div>
-    </form>
-{% highlight html %}
-<input class="col col-lg-1" type="text" placeholder=".col col-lg-1">
-<input class="col col-lg-2" type="text" placeholder=".col col-lg-2">
-<input class="col col-lg-3" type="text" placeholder=".col col-lg-3">
-<select class="col col-lg-1">
-  ...
-</select>
-<select class="col col-lg-2">
-  ...
-</select>
-<select class="col col-lg-3">
-  ...
-</select>
-{% endhighlight %}
-
-    <p>If you need multiple inputs on the same line, wrap them in the standard grid markup (with <code>.row</code> and <code>.col-span-*</code> classes). Each input should have it's own column and will expand to fill the available width automatically.</p>
+    <p>Wrap inputs in grid columns, or any custom parent element, to easily enforce desired widths.</p>
     <form class="bs-docs-example" style="padding-bottom: 15px;">
       <div class="row">
-        <div class="col col-lg-4">
-          <input type="text" placeholder=".col col-lg-4">
+        <div class="col col-lg-2">
+          <input type="text" placeholder="col col-large-2">
+        </div>
+        <div class="col col-lg-3">
+          <input type="text" placeholder="col col-large-3">
         </div>
         <div class="col col-lg-4">
-          <input type="text" placeholder=".col col-lg-4">
-        </div>
-        <div class="col col-lg-4">
-          <input type="text" placeholder=".col col-lg-4">
+          <input type="text" placeholder="col col-large-4">
         </div>
       </div>
     </form>
 {% highlight html %}
 <div class="row">
-  <div class="col col-lg-4">
-    <input type="text" placeholder=".col col-lg-4">
+  <div class="col col-lg-2">
+    <input type="text" placeholder="col col-large-2">
+  </div>
+  <div class="col col-lg-3">
+    <input type="text" placeholder="col col-large-3">
   </div>
   <div class="col col-lg-4">
-    <input type="text" placeholder=".col col-lg-4">
-  </div>
-  <div class="col col-lg-4">
-    <input type="text" placeholder=".col col-lg-4">
+    <input type="text" placeholder="col col-large-4">
   </div>
 </div>
 {% endhighlight %}
@@ -5833,7 +5793,6 @@ $('#example').tooltip(options)
 
           <div class="clearfix"></div>
         </div>
-        <p>No markup shown as popovers are generated from JavaScript and content within a <code>data</code> attribute.</p>
 
         <h3>Live demo</h3>
         <div class="bs-docs-example" style="padding-bottom: 24px;">

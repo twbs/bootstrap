@@ -1249,9 +1249,10 @@ input[type="url"],
 input[type="search"],
 input[type="tel"],
 input[type="color"] {
-  display: inline-block;
+  display: block;
   min-height: 34px;
   padding: 6px 9px;
+  margin-bottom: 10px;
   font-size: 14px;
   line-height: 20px;
   color: #555555;
@@ -1374,6 +1375,7 @@ textarea::-webkit-input-placeholder {
   min-height: 20px;
   padding-left: 20px;
   margin-bottom: 10px;
+  vertical-align: middle;
 }
 
 .radio label,
@@ -1619,21 +1621,24 @@ select:focus:invalid:focus {
   display: table;
 }
 
-.input-group[class*="span"] {
+.input-group.col {
   float: none;
-  padding: 0;
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .input-group input,
 .input-group select {
   width: 100%;
+  margin-bottom: 0;
 }
 
 .input-group-addon,
 .input-group-btn,
 .input-group input {
   display: table-cell;
-  margin: 0;
+  /*margin: 0;*/
+
   border-radius: 0;
 }
 
@@ -1777,6 +1782,15 @@ select:focus:invalid:focus {
 .input-group-btn:last-child > .dropdown-toggle.btn-small {
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
+}
+
+.form-inline input,
+.form-inline select,
+.form-inline textarea,
+.form-inline .radio,
+.form-inline .checkbox {
+  display: inline-block;
+  margin-bottom: 0;
 }
 
 @media screen and (min-width: 768px) {
