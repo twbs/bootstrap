@@ -17,7 +17,7 @@
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  border: 1px solid @btn-border;
+  border: 1px solid transparent;
   border-radius: @border-radius-base;
   white-space: nowrap;
 
@@ -50,91 +50,35 @@
 }
 
 
-// Button Sizes
-// -------------------------
-
-// Large
-.btn-large {
-  padding: @padding-large;
-  font-size: @font-size-large;
-  border-radius: @border-radius-large;
-}
-
-// Small
-.btn-small {
-  padding: @padding-small;
-  font-size: @font-size-small;
-  border-radius: @border-radius-small;
-}
-
-// Mini
-.btn-mini {
-  padding: @padding-mini;
-  font-size: @font-size-mini;
-  border-radius: @border-radius-small;
-}
-
-
-// Icons in buttons
-// -------------------------
-
-// TODO: figure this shit out
-
-// Block button
-// -------------------------
-
-.btn-block {
-  display: block;
-  width: 100%;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-// Vertically space out multiple block buttons
-.btn-block + .btn-block {
-  margin-top: 5px;
-}
-
-// Specificity overrides
-input[type="submit"],
-input[type="reset"],
-input[type="button"] {
-  &.btn-block {
-    width: 100%;
-  }
-}
-
-
 // Alternate buttons
 // --------------------------------------------------
 
-.btn {
-  color: @btn-color;
-  .btn-pseudo-states(@btn-bg, @btn-border);
+.btn-default {
+  .btn-pseudo-states(@btn-default-color, @btn-default-bg, @btn-default-border);
 }
 .btn-primary {
-  .btn-pseudo-states(@btn-primary-bg, @btn-primary-border);
+  .btn-pseudo-states(@btn-primary-color, @btn-primary-bg, @btn-primary-border);
 }
 // Warning appears as orange
 .btn-warning {
-  .btn-pseudo-states(@btn-warning-bg, @btn-warning-border);
+  .btn-pseudo-states(@btn-warning-color, @btn-warning-bg, @btn-warning-border);
 }
 // Danger and error appear as red
 .btn-danger {
-  .btn-pseudo-states(@btn-danger-bg, @btn-danger-border);
+  .btn-pseudo-states(@btn-danger-color, @btn-danger-bg, @btn-danger-border);
 }
 // Success appears as green
 .btn-success {
-  .btn-pseudo-states(@btn-success-bg, @btn-success-border);
+  .btn-pseudo-states(@btn-success-color, @btn-success-bg, @btn-success-border);
 }
 // Info appears as blue-green
 .btn-info {
-  .btn-pseudo-states(@btn-info-bg, @btn-info-border);
+  .btn-pseudo-states(@btn-info-color, @btn-info-bg, @btn-info-border);
 }
 
 
 // Link buttons
-// --------------------------------------------------
+// -------------------------
 
 // Make a button look and behave like a link
 .btn-link,
@@ -171,5 +115,50 @@ fieldset[disabled] .btn-link {
       color: @gray-dark;
       text-decoration: none;
     }
+  }
+}
+
+
+// Button Sizes
+// --------------------------------------------------
+
+.btn-large {
+  padding: @padding-large;
+  font-size: @font-size-large;
+  border-radius: @border-radius-large;
+}
+.btn-small {
+  padding: @padding-small;
+  font-size: @font-size-small;
+  border-radius: @border-radius-small;
+}
+.btn-mini {
+  padding: @padding-mini;
+  font-size: @font-size-mini;
+  border-radius: @border-radius-small;
+}
+
+
+// Block button
+// --------------------------------------------------
+
+.btn-block {
+  display: block;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+// Vertically space out multiple block buttons
+.btn-block + .btn-block {
+  margin-top: 5px;
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.btn-block {
+    width: 100%;
   }
 }
