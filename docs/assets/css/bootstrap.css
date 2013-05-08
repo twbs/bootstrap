@@ -3543,7 +3543,7 @@ button.close {
 }
 
 .navbar-nav {
-  margin: 10px -15px 0;
+  margin-top: 5px;
 }
 
 .navbar-nav > li > a {
