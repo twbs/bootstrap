@@ -5,7 +5,7 @@
     {% include header.html %}
     <!-- Place anything custom after this. -->
   </head>
-  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+  <body data-spy="scroll" data-target=".bs-sidebar">
 
     <!-- Docs master nav -->
     {% include nav-main.html %}
@@ -21,8 +21,8 @@
     <div class="container bs-docs-container">
       <div class="row">
         <div class="col col-lg-3">
-          <div class="bs-docs-sidebar">
-            <ul class="nav">
+          <div class="bs-sidebar">
+            <ul class="nav bs-sidenav">
               {% if page.slug == "welcome" %}
                  {% include nav-welcome.html %}
               {% elsif page.slug == "css" %}

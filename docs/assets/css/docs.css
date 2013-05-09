@@ -126,7 +126,6 @@ hr {
 /* Page headers */
 .bs-docs-header {
   padding: 30px 30px 40px;
-  margin-bottom: 30px;
   font-size: 16px;
   color: #5a5a5a;
   text-align: center;
@@ -147,32 +146,39 @@ hr {
 
 
 
-/* Sidenav
+/* Docs sidebar
 -------------------------------------------------- */
 
-/* Nav: first level */
-.bs-docs-sidebar > .nav {
-  margin-top: 20px;
-  margin-bottom: 20px;
+/* By default it's not affixed in mobile views, so undo that */
+.bs-sidebar.affix {
+  position: static;
+}
+
+/* First level of nav */
+.bs-sidenav {
+  margin-top: 30px;
+  margin-bottom: 30px;
   padding-top: 15px;
   padding-bottom: 15px;
   text-shadow: 0 1px 0 #fff;
   background-color: #f5f5f5;
   border-radius: 5px;
 }
-.bs-docs-sidebar .nav > li > a {
+
+/* All levels of nav */
+.bs-sidebar .nav > li > a {
   display: block;
   color: #666;
-  padding: 4px 25px;
+  padding: 4px 20px;
 }
-.bs-docs-sidebar .nav > li > a:hover,
-.bs-docs-sidebar .nav > li > a:focus {
+.bs-sidebar .nav > li > a:hover,
+.bs-sidebar .nav > li > a:focus {
   text-decoration: none;
   border-right: 1px solid #d5d5d5;
 }
-.bs-docs-sidebar .nav > .active > a,
-.bs-docs-sidebar .nav > .active:hover > a,
-.bs-docs-sidebar .nav > .active:focus > a {
+.bs-sidebar .nav > .active > a,
+.bs-sidebar .nav > .active:hover > a,
+.bs-sidebar .nav > .active:focus > a {
   font-weight: 500;
   color: #b94a48;
   background-color: transparent;
@@ -180,58 +186,18 @@ hr {
 }
 
 /* Nav: second level (shown on .active) */
-.bs-docs-sidebar .nav .nav {
+.bs-sidebar .nav .nav {
   display: none;
   margin-bottom: 5px;
 }
-.bs-docs-sidebar .nav > .active > ul {
+.bs-sidebar .nav > .active > ul {
   display: block;
 }
-.bs-docs-sidebar .nav .nav > li > a {
+.bs-sidebar .nav .nav > li > a {
   padding-top: 2px;
   padding-bottom: 2px;
   padding-left: 40px;
   font-size: 90%;
-}
-
-.bs-docs-sidenav-heading {
-  margin: 0 0 25px;
-}
-.bs-docs-sidenav-heading a {
-  display: block;
-  padding: 15px 25px;
-  color: #b94a48;
-  border-bottom: 1px solid #e5e5e5;
-  box-shadow: 0 1px 0 #fff;
-}
-.bs-docs-sidenav-heading a:hover {
-  color: #a3403e;
-  text-decoration: none;
-}
-
-/* Section headings for groups of links */
-.bs-docs-sidenav > li > .nav-header {
-  margin-top: 20px;
-  margin-bottom: 5px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #333;
-}
-.bs-docs-sidenav > .active > .nav-header,
-.bs-docs-sidenav > .active > .nav-header:hover {
-  color: #333;
-  border-color: #333;
-}
-
-/* Increase spacing between page nav and other pages */
-.bs-docs-sidenav .nav-divider {
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-
-.bs-docs-sidebar.affix {
-  top: 50px;
-  width: 270px;
 }
 
 
@@ -690,6 +656,13 @@ input.focused {
 /* Tablets and up */
 @media screen and (min-width: 768px) {
 
+  /* Reaffix the fixed sidebar */
+  .bs-sidebar.affix {
+    position: fixed; /* Undo the static from mobile-first approach */
+    top: 50px;
+    width: 160px;
+  }
+
   /* Back to top link */
   .bs-docs-top {
     float: left;
@@ -726,7 +699,7 @@ input.focused {
   }
 
   /* Show the docs nav */
-  .bs-docs-sidebar {
+  .bs-sidebar {
     display: block;
   }
 
@@ -754,6 +727,11 @@ input.focused {
 /* Tablets/desktops and up */
 @media screen and (min-width: 992px) {
 
+  /* Widen the fixed sidebar */
+  .bs-sidebar.affix {
+    width: 213px;
+  }
+
   /* Icons */
   .the-icons li {
     width: 12.5%;
@@ -763,5 +741,10 @@ input.focused {
 
 /* Large desktops and up */
 @media screen and (min-width: 1200px) {
+
+  /* Widen the fixed sidebar again */
+  .bs-sidebar.affix {
+    width: 270px;
+  }
 
 }
