@@ -522,13 +522,13 @@ body {
 /* Footer
 -------------------------------------------------- */
 
-.bs-docs-footer {
+.bs-footer {
   padding-top: 30px;
   padding-bottom: 30px;
   margin-top: 100px;
   border-top: 1px solid #e5e5e5;
 }
-.bs-docs-footer p {
+.bs-footer p {
   margin-bottom: 0;
   color: #777;
 }
@@ -674,12 +674,6 @@ input.focused {
   .bs-header h1 {
     font-size: 60px;
     line-height: 1;
-  }
-
-  /* Undo custom padding */
-  .bs-docs-container {
-    padding-left: 0;
-    padding-right: 0;
   }
 
   /* Show the docs nav */
