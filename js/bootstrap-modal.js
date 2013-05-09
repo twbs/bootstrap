@@ -30,7 +30,11 @@
     this.options = options
     this.$element = $(element)
       .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
-    this.options.remote && this.$element.find('.modal-body').load(this.options.remote)
+    if (this.options.remote) {
+      var modalBody = this.$element.find(this.options.body)
+      if (modalBody.length === 0) modalBody = this.$element
+      modalBody.load(this.options.remote)
+    }
   }
 
   Modal.prototype = {
@@ -212,6 +216,7 @@
       backdrop: true
     , keyboard: true
     , show: true
+    , body: '.modal-body'
   }
 
   $.fn.modal.Constructor = Modal
