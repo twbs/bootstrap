@@ -211,7 +211,7 @@ body {
 -------------------------------------------------- */
 
 /* Base class */
-.bs-docs-example {
+.bs-example {
   position: relative;
   padding: 39px 14px 14px;
   margin-bottom: -1px;
@@ -220,7 +220,7 @@ body {
   border-top-right-radius: 4px;
 }
 /* Echo out a label for the example */
-.bs-docs-example:after {
+.bs-example:after {
   content: "Example";
   position: absolute;
   top: -1px;
@@ -236,56 +236,56 @@ body {
 }
 
 /* Tweak display of the examples */
-.bs-docs-example + .prettyprint,
-.bs-docs-example + .highlight {
+.bs-example + .prettyprint,
+.bs-example + .highlight {
   margin-top: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
 /* Tweak content of examples for optimum awesome */
-.bs-docs-example > p:last-child,
-.bs-docs-example > ul:last-child,
-.bs-docs-example > ol:last-child,
-.bs-docs-example > blockquote:last-child,
-.bs-docs-example > input:last-child,
-.bs-docs-example > select:last-child,
-.bs-docs-example > textarea:last-child,
-.bs-docs-example > .table:last-child,
-.bs-docs-example > .jumbotron:last-child,
-.bs-docs-example > .alert:last-child,
-.bs-docs-example > .panel:last-child,
-.bs-docs-example > .list-group:last-child,
-.bs-docs-example > .well:last-child {
+.bs-example > p:last-child,
+.bs-example > ul:last-child,
+.bs-example > ol:last-child,
+.bs-example > blockquote:last-child,
+.bs-example > input:last-child,
+.bs-example > select:last-child,
+.bs-example > textarea:last-child,
+.bs-example > .table:last-child,
+.bs-example > .jumbotron:last-child,
+.bs-example > .alert:last-child,
+.bs-example > .panel:last-child,
+.bs-example > .list-group:last-child,
+.bs-example > .well:last-child {
   margin-bottom: 0;
 }
 
 /* Typography */
-.bs-docs-example-type .table td {
+.bs-example-type .table td {
   color: #999;
   vertical-align: middle;
   border-color: ;
 }
-.bs-docs-example-type .table td,
-.bs-docs-example-type .table th {
+.bs-example-type .table td,
+.bs-example-type .table th {
   padding: 15px 0;
   border-color: #eee;
 }
-.bs-docs-example-type .table tr:first-child td,
-.bs-docs-example-type .table tr:first-child th {
+.bs-example-type .table tr:first-child td,
+.bs-example-type .table tr:first-child th {
   border-top: 0;
 }
-.bs-docs-example-type h1,
-.bs-docs-example-type h2,
-.bs-docs-example-type h3,
-.bs-docs-example-type h4,
-.bs-docs-example-type h5,
-.bs-docs-example-type h6 {
+.bs-example-type h1,
+.bs-example-type h2,
+.bs-example-type h3,
+.bs-example-type h4,
+.bs-example-type h5,
+.bs-example-type h6 {
   margin: 0;
 }
 
 /* List groups */
-.bs-docs-example > .list-group {
+.bs-example > .list-group {
   max-width: 400px;
 }
 
@@ -331,10 +331,10 @@ body {
 }
 
 /* Example modals */
-.bs-docs-example-modal {
+.bs-example-modal {
   background-color: #f5f5f5;
 }
-.bs-docs-example-modal .modal {
+.bs-example-modal .modal {
   position: relative;
   top: auto;
   right: auto;
@@ -343,29 +343,29 @@ body {
   z-index: 1;
   display: block;
 }
-.bs-docs-example-modal .modal-dialog {
+.bs-example-modal .modal-dialog {
   left: auto;
   margin-left: auto;
   margin-right: auto;
 }
 
 /* Example dropdowns */
-.bs-docs-example > .dropdown > .dropdown-menu,
-.bs-docs-example-submenu > .pull-left > .dropup > .dropdown-menu,
-.bs-docs-example-submenu > .pull-left > .dropdown > .dropdown-menu {
+.bs-example > .dropdown > .dropdown-menu,
+.bs-example-submenu > .pull-left > .dropup > .dropdown-menu,
+.bs-example-submenu > .pull-left > .dropdown > .dropdown-menu {
   position: static;
   display: block;
   margin-bottom: 5px;
 }
-.bs-docs-example-submenu {
+.bs-example-submenu {
   min-height: 230px;
 }
-.bs-docs-example-submenu > .pull-left + .pull-left {
+.bs-example-submenu > .pull-left + .pull-left {
   margin-left: 20px;
 }
 
 /* Example tabbable tabs */
-.bs-docs-example-tabs .nav-tabs {
+.bs-example-tabs .nav-tabs {
   margin-bottom: 15px;
 }
 
@@ -381,11 +381,11 @@ body {
 }
 
 /* Popovers */
-.bs-docs-example-popover {
+.bs-example-popover {
   padding-bottom: 24px;
   background-color: #f9f9f9;
 }
-.bs-docs-example-popover .popover {
+.bs-example-popover .popover {
   position: relative;
   display: block;
   float: left;
@@ -398,10 +398,10 @@ body {
 /* Example templates
 -------------------------------------------------- */
 
-.bs-docs-examples h4 {
+.bs-examples h4 {
   margin-bottom: 5px;
 }
-.bs-docs-examples p {
+.bs-examples p {
   margin-bottom: 20px;
 }
 
@@ -629,7 +629,7 @@ input.focused {
 
 /* Hide code snippets on mobile devices */
 @media screen and (max-width: 480px) {
-  .bs-docs-example {
+  .bs-example {
     border-radius: 4px;
   }
   .highlight {
