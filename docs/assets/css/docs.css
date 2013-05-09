@@ -89,17 +89,17 @@ body {
 -------------------------------------------------- */
 
 /* Page headers */
-.bs-docs-header {
+.bs-header {
   padding: 30px 30px 40px;
   font-size: 16px;
   color: #5a5a5a;
   text-align: center;
   border-bottom: 1px solid #ddd;
 }
-.bs-docs-header h1 {
+.bs-header h1 {
   color: #b94a48;
 }
-.bs-docs-header p {
+.bs-header p {
   font-weight: 300;
   line-height: 1.5;
 }
@@ -668,11 +668,11 @@ input.focused {
     bottom: 15px;
   }
 
-  .bs-docs-header {
+  .bs-header {
     font-size: 21px;
     text-align: left;
   }
-  .bs-docs-header h1 {
+  .bs-header h1 {
     font-size: 60px;
     line-height: 1;
   }
