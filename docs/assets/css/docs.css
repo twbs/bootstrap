@@ -29,10 +29,13 @@ hr {
   margin-bottom: 30px;
 }
 
+
+
 .bs-docs-dl-options h4 {
   margin-top: 15px;
   margin-bottom: 5px;
 }
+
 /*
 .bs-docs-container,
 .bs-home-container {
@@ -40,6 +43,7 @@ hr {
   padding-right: 15px;
 }
 */
+
 /* Side notes for calling out things */
 .bs-docs-sidenote {
   margin: 20px 0;
@@ -59,50 +63,23 @@ hr {
 }
 
 
-/* Sections
+
+/* Homepage masthead
 -------------------------------------------------- */
 
-/* Padding for in-page bookmarks */
-/*section,*/
-.bs-docs-section {
-  padding-top: 30px;
-}
-
-/* Few stylistic typography tweaks */
-/*section > .page-header,
-section > .lead {
-  color: #5a5a5a;
-}
-section > ul li {
-  margin-bottom: 5px;
-}*/
-
-
-
-/* Jumbotrons
--------------------------------------------------- */
-
-.bs-docs-header {
-  margin-bottom: 20px;
-  padding-top: 30px;
-  color: #b94a48;
-  border-bottom: 5px solid #b94a48;
-}
-
-/* Base class */
-.bs-docs-jumbotron {
+.bs-masthead {
   position: relative;
   margin-bottom: 20px;
   padding: 30px 15px;
   text-align: center;
 }
-.bs-docs-jumbotron h1 {
+.bs-masthead h1 {
   font-size: 50px;
   line-height: 1;
 }
 
 /* Download button */
-.bs-docs-jumbotron .btn {
+.bs-masthead .btn {
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 18px 24px;
@@ -111,42 +88,42 @@ section > ul li {
   background-color: #fff;
   border-color: #e5e5e5;
 }
-.bs-docs-jumbotron .btn:hover,
-.bs-docs-jumbotron .btn:active {
+.bs-masthead .btn:hover,
+.bs-masthead .btn:active {
   color: #fff; /* redeclare to override the `.jumbotron a` */
   background-color: #b94a48;
   border-color: #b94a48;
 }
 
-/* Textual links in masthead */
-.masthead-links {
+/* Textual links */
+.bs-masthead-links {
   margin: 20px 0;
   list-style: none;
 }
-.masthead-links li {
+.bs-masthead-links li {
   display: inline;
   color: #999;
 }
-.masthead-links li + li {
+.bs-masthead-links li + li {
   margin-left: 20px;
 }
 
 
 
-/* Special grid styles
+/* Docs pages and sections
 -------------------------------------------------- */
 
-.show-grid {
-  margin-bottom: 15px;
+/* Page headers */
+.bs-docs-header {
+  margin-bottom: 20px;
+  padding-top: 30px;
+  color: #b94a48;
+  border-bottom: 5px solid #b94a48;
 }
-.show-grid .col {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: #eee;
-  border: 1px solid #ddd;
-}
-.show-grid .col:hover {
-  background-color: #ddd;
+
+/* Padding for in-page bookmarks */
+.bs-docs-section {
+  padding-top: 30px;
 }
 
 
@@ -236,6 +213,24 @@ section > ul li {
 .bs-docs-sidebar.affix {
   top: 50px;
   width: 270px;
+}
+
+
+
+/* Special grid styles
+-------------------------------------------------- */
+
+.show-grid {
+  margin-bottom: 15px;
+}
+.show-grid .col {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #eee;
+  border: 1px solid #ddd;
+}
+.show-grid .col:hover {
+  background-color: #ddd;
 }
 
 
@@ -716,22 +711,17 @@ input.focused {
   }
 
   /* Tweak display of docs jumbotrons */
-  .masthead {
+  .bs-masthead {
     padding-top:    100px;
     padding-bottom: 100px;
   }
-  .masthead h1 {
+  .bs-masthead h1 {
     font-size: 100px;
   }
-  .masthead p {
+  .bs-masthead p {
     margin-left: 15%;
     margin-right: 15%;
     font-size: 30px;
-  }
-  .subhead {
-    padding-top:    60px;
-    padding-bottom: 60px;
-    text-align: left;
   }
 
   .bs-navbar-top-example .navbar-fixed-top,
