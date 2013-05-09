@@ -251,7 +251,7 @@ table {
     max-width: 100% !important;
   }
   @page  {
-    margin: 0.5cm;
+    margin: 2cm .5cm;
   }
   p,
   h2,
@@ -263,7 +263,7 @@ table {
   h3 {
     page-break-after: avoid;
   }
-  .navbar-toggle {
+  .navbar {
     display: none;
   }
 }
