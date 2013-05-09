@@ -8,13 +8,13 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
 
   <!-- Global Bootstrap settings
   ================================================== -->
-  <div class="bs-docs-section" id="css-overview">
+  <div class="bs-docs-section" id="overview">
     <div class="page-header">
       <h1>Overview</h1>
     </div>
     <p class="lead">Get the lowdown on the key pieces of Bootstrap's infrastructure, including our approach to better, faster, stronger web development.</p>
 
-    <h3>HTML5 doctype required</h3>
+    <h3 id="overview-doctype">HTML5 doctype required</h3>
     <p>Bootstrap makes use of certain HTML elements and CSS properties that require the use of the HTML5 doctype. Include it at the beginning of all your projects.</p>
 {% highlight html %}
 <!DOCTYPE html>
@@ -23,17 +23,17 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
 </html>
 {% endhighlight %}
 
-    <h3>Mobile first</h3>
+    <h3 id="overview-mobile">Mobile first</h3>
     <p>With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework. With Bootstrap 3, we've rewritten the project to be mobile friendly from the start. Instead of adding on optional mobile styles, they're baked right into the core. In fact, <strong>Bootstrap is mobile first</strong>. Mobile first styles can be found throughout the entire library instead of in separate files.</p>
     <p>To ensure proper rendering and touch zooming, <strong>add the viewport meta tag</strong> to your <code>&lt;head&gt;</code>.</p>
 {% highlight html %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% endhighlight %}
 
-    <h3>Responsive images</h3>
+    <h3 id="overview-responsive-images">Responsive images</h3>
     <p>We automatically attempt to scale images to appropriate sizes with a global <code>max-width: 100%;</code> on all <code>&lt;img&gt;</code> elements. If you run into problems (e.g., with Google Maps), be sure to disable this property on a per-case basis.</p>
 
-    <h3>Typography and links</h3>
+    <h3 id="overview-type-links">Typography and links</h3>
     <p>Bootstrap sets basic global display, typography, and link styles. Specifically, we:</p>
     <ul>
       <li>Remove <code>margin</code> on the body</li>
@@ -43,8 +43,16 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
     </ul>
     <p>These styles can be found within <strong>scaffolding.less</strong>.</p>
 
-    <h3>Normalize reset</h3>
+    <h3 id="overview-reset">Normalize reset</h3>
     <p>For improved cross-browser rendering, we use <a href="http://necolas.github.com/normalize.css/" target="_blank">Normalize</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a>.</p>
+
+    <h3 id="overview-container">Centering with container</h3>
+    <p>Easily center a page's contents by wrapping its contents in a container. Containers set `max-width` at various media query breakpoints to match our grid system.</p>
+{% highlight html %}
+<div class="container">
+  ...
+</div>
+{% endhighlight %}
   </div>
 
 
