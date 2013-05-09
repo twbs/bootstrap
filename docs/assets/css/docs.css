@@ -170,20 +170,20 @@ body {
 /* Side notes for calling out things
 -------------------------------------------------- */
 
-.bs-docs-sidenote {
+.bs-callout {
   margin: 20px 0;
   padding: 15px 30px 15px 15px;
   background-color: #fcf2f2;
   border-left: 5px solid #df7c7b;
 }
-.bs-docs-sidenote h4 {
+.bs-callout h4 {
   margin-top: 0;
 }
-.bs-docs-sidenote p:last-child {
+.bs-callout p:last-child {
   margin-bottom: 0;
 }
-.bs-docs-sidenote code,
-.bs-docs-sidenote .highlight {
+.bs-callout code,
+.bs-callout .highlight {
   background-color: #fff;
 }
 
