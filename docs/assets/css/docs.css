@@ -544,27 +544,26 @@ body {
 }
 
 /* Social proof buttons from GitHub & Twitter */
-.bs-docs-social {
+.bs-social {
   margin-top: 80px;
   margin-bottom: 20px;
 }
-/* Quick links on Home */
-.bs-docs-social-buttons {
+.bs-social-buttons {
   display: inline-block;
   margin: 0;
   list-style: none;
 }
-.bs-docs-social-buttons li {
+.bs-social-buttons li {
   display: inline-block;
   line-height: 1;
 }
-.bs-docs-social-buttons li + li {
+.bs-social-buttons li + li {
   margin-left: 15px;
 }
-.bs-docs-social-buttons .twitter-follow-button {
+.bs-social-buttons .twitter-follow-button {
   width: 225px !important;
 }
-.bs-docs-social-buttons .twitter-share-button {
+.bs-social-buttons .twitter-share-button {
   width: 98px !important;
 }
 
