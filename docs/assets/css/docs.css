@@ -649,7 +649,7 @@ input.focused {
   }
 
   /* Back to top link */
-  .bs-docs-top {
+  .bs-top {
     float: left;
     padding: 7px 15px;
     font-weight: 500;
@@ -657,12 +657,12 @@ input.focused {
     background-color: #eee;
     border-radius: 4px;
   }
-  .bs-docs-top:hover {
+  .bs-top:hover {
     color: #fff;
     text-decoration: none;
     background-color: #999;
   }
-  .bs-docs-top.affix {
+  .bs-top.affix {
     position: fixed;
     right:  15px;
     bottom: 15px;

@@ -24,7 +24,7 @@
     }, 100)
 
     setTimeout(function () {
-      $('.bs-docs-top').affix()
+      $('.bs-top').affix()
     }, 100)
 
     // make code pretty
