@@ -10,10 +10,14 @@
 
 body {
   position: relative; /* For scrollyspy */
-  padding-top: 50px;
+  padding-top: 50px; /* Account for fixed navbar */
 }
 
-/* Top nav and header */
+
+
+/* Top nav and header
+-------------------------------------------------- */
+
 .bs-docs-nav {
   background-color: #b94a48;
 }
@@ -31,45 +35,6 @@ body {
 .bs-docs-nav .navbar-toggle:hover {
   background-color: #993c3a;
   border-color: #993c3a;
-}
-
-
-hr {
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-
-
-
-.bs-docs-dl-options h4 {
-  margin-top: 15px;
-  margin-bottom: 5px;
-}
-
-/*
-.bs-docs-container,
-.bs-home-container {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-*/
-
-/* Side notes for calling out things */
-.bs-docs-sidenote {
-  margin: 20px 0;
-  padding: 15px 30px 15px 15px;
-  background-color: #fcf2f2;
-  border-left: 5px solid #df7c7b;
-}
-.bs-docs-sidenote h4 {
-  margin-top: 0;
-}
-.bs-docs-sidenote p:last-child {
-  margin-bottom: 0;
-}
-.bs-docs-sidenote code,
-.bs-docs-sidenote .highlight {
-  background-color: #fff;
 }
 
 
@@ -198,6 +163,28 @@ hr {
   padding-bottom: 2px;
   padding-left: 40px;
   font-size: 90%;
+}
+
+
+
+/* Side notes for calling out things
+-------------------------------------------------- */
+
+.bs-docs-sidenote {
+  margin: 20px 0;
+  padding: 15px 30px 15px 15px;
+  background-color: #fcf2f2;
+  border-left: 5px solid #df7c7b;
+}
+.bs-docs-sidenote h4 {
+  margin-top: 0;
+}
+.bs-docs-sidenote p:last-child {
+  margin-bottom: 0;
+}
+.bs-docs-sidenote code,
+.bs-docs-sidenote .highlight {
+  background-color: #fff;
 }
 
 
@@ -405,6 +392,7 @@ hr {
   width: 260px;
   margin: 20px;
 }
+
 
 
 /* Example templates
@@ -629,15 +617,12 @@ input.focused {
   color: #bebec5;
 }
 
-
-
-/* Docs gallery
--------------------------------------------------- */
-
-.bs-docs-gallery .thumbnail {
-  max-width: 400px;
-  margin: 0 auto 20px;
+/* Better spacing on download options in getting started */
+.bs-docs-dl-options h4 {
+  margin-top: 15px;
+  margin-bottom: 5px;
 }
+
 
 
 /* Responsive variations
