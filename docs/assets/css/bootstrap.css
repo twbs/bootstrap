@@ -2177,6 +2177,7 @@ input[type="button"].btn-block {
 
 .glyphicon:before {
   font-family: 'Glyphicons Halflings';
+  -webkit-font-smoothing: antialiased;
   font-style: normal;
   font-weight: normal;
   line-height: 1;
