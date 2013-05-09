@@ -15,13 +15,22 @@ body {
 
 /* Top nav and header */
 .bs-docs-nav {
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
+  background-color: #b94a48;
 }
-.bs-docs-nav .navbar-brand {
-  color: #b94a48;
+.bs-docs-nav .navbar-brand,
+.bs-docs-nav .navbar-nav > li > a {
+  color: #fff;
 }
-
+.bs-docs-nav .navbar-nav > .active > a {
+  background-color: #993c3a;
+}
+.bs-docs-nav .navbar-toggle{
+  border-color: #b94a48;
+}
+.bs-docs-nav .navbar-toggle:hover {
+  background-color: #993c3a;
+  border-color: #993c3a;
+}
 
 
 hr {
