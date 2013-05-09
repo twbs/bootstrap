@@ -57,7 +57,6 @@ input[type="color"] {
   display: block;
   min-height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   padding: 6px 9px;
-  margin-bottom: 10px;
   font-size: @font-size-base;
   line-height: @line-height-base;
   color: @gray;
@@ -172,7 +171,8 @@ textarea {
 .checkbox {
   display: block;
   min-height: @line-height-base; // clear the floating input if there is no label text
-  margin-bottom: (@line-height-base / 2);
+  margin-top: 10px;
+  margin-bottom: 10px;
   padding-left: 20px;
   vertical-align: middle;
   label {
@@ -182,7 +182,6 @@ textarea {
     cursor: pointer;
   }
 }
-
 .radio input[type="radio"],
 .radio-inline input[type="radio"],
 .checkbox input[type="checkbox"],
@@ -192,7 +191,7 @@ textarea {
 }
 .radio + .radio,
 .checkbox + .checkbox {
-  margin-top: ((@line-height-base / 4) * -1);
+  margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
 }
 
 /*
@@ -253,33 +252,6 @@ input[type="color"] {
     border-radius: @border-radius-small;
   }
 }
-
-
-
-// GRID SIZING FOR INPUTS
-// ----------------------
-
-// Grid style input sizes
-input[class*="span"],
-select[class*="span"],
-textarea[class*="span"] {
-  float: none;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-// Ensure input-prepend/append never wraps
-.input-append input[class*="span"],
-.input-prepend input[class*="span"] {
-  display: inline-block;
-}
-
-input[class*="span"],
-select[class*="span"],
-textarea[class*="span"] {
-  height: @input-height-base;
-}
-
 
 
 // DISABLED STATE
@@ -361,20 +333,11 @@ select:focus:invalid {
 // HELP TEXT
 // ---------
 
-.help-block,
-.help-inline {
-  color: lighten(@text-color, 25%); // lighten the text some for contrast
-}
-
 .help-block {
   display: block; // account for any element using help-block
-  margin-bottom: (@line-height-base / 2);
-}
-
-.help-inline {
-  display: inline-block;
-  vertical-align: middle;
-  padding-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: lighten(@text-color, 25%); // lighten the text some for contrast
 }
 
 
@@ -436,14 +399,14 @@ select:focus:invalid {
   background-color: @gray-lighter;
   border: 1px solid #ccc;
 
-	&.input-small {
-	  padding: @padding-small;
-	  font-size: @font-size-small;
+  &.input-small {
+    padding: @padding-small;
+    font-size: @font-size-small;
   }
-	&.input-large {
-		padding: @padding-large;
-		font-size: @font-size-large;
-	}
+  &.input-large {
+    padding: @padding-large;
+    font-size: @font-size-large;
+  }
 }
 
 // Reset rounded corners
@@ -528,6 +491,10 @@ select:focus:invalid {
   .radio,
   .checkbox {
     display: inline-block;
+  }
+  .radio,
+  .checkbox {
+    margin-top: 0;
     margin-bottom: 0;
   }
 }
@@ -535,41 +502,14 @@ select:focus:invalid {
 
 // Horizontal forms
 // --------------------------------------------------
+// Horizontal forms are built on grid classes.
 
-@media screen and (min-width: @screen-tablet) {
-
-  .form-horizontal {
-
-    // Increase spacing between groups
-    .control-group {
-      position: relative;
-      margin-bottom: @line-height-base;
-      .clearfix();
-
-      input,
-      select,
-      textarea {
-        margin-bottom: 0;
-      }
-    }
-
-    // Float the labels left
-    .control-group > .control-label {
-      float: left;
-      width: (@component-offset-horizontal - 20);
-      padding-top: 6px;
-      text-align: right;
-    }
-
-    // Move over all input controls and content over
-    .control-group > .controls {
-      margin-left: @component-offset-horizontal;
-    }
-
-    // Make sure form actions buttons are aligned with controls
-    .form-actions {
-      padding-left: @component-offset-horizontal;
-    }
-
+.form-horizontal {
+  .row + .row {
+    margin-top: 15px;
+  }
+  .row-label {
+    padding-top: 6px;
+    text-align: right;
   }
 }

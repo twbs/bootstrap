@@ -1008,7 +1008,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 
     <h2 id="forms-example">Basic example</h2>
-    <p>Individual form controls automatically receive some global styling. By default, inputs are set to <code>width: 100%;</code>.</p>
+    <p>Individual form controls automatically receive some global styling. All textual <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> elements are set to <code>width: 100%;</code> by default.</p>
     <form class="bs-example">
       <fieldset>
         <legend>Legend</legend>
@@ -1074,23 +1074,17 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3 id="forms-horizontal">Horizontal form</h3>
-    <p>Right align labels and float them to the left to make them appear on the same line as controls. Requires the most markup changes from a default form:</p>
-    <ul>
-      <li>Add <code>.form-horizontal</code> to the form</li>
-      <li>Wrap labels and controls in <code>.control-group</code></li>
-      <li>Add <code>.control-label</code> to the label</li>
-      <li>Wrap any associated controls in <code>.controls</code> for proper alignment</li>
-    </ul>
+    <p>Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout.</p>
     <form class="bs-example form-horizontal">
-      <div class="control-group">
-        <label class="control-label" for="inputEmail">Email</label>
-        <div class="controls">
+      <div class="row">
+        <label for="inputEmail" class="col col-lg-2 row-label">Email</label>
+        <div class="col col-lg-10">
           <input type="text" id="inputEmail" placeholder="Email">
         </div>
       </div>
-      <div class="control-group">
-        <label class="control-label" for="inputPassword">Password</label>
-        <div class="controls">
+      <div class="row">
+        <label for="" class="col col-lg-2 row-label">Password</label>
+        <div class="col col-lg-10">
           <input type="password" id="inputPassword" placeholder="Password">
           <div class="checkbox">
             <label>
@@ -1098,24 +1092,22 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             </label>
           </div>
         </div>
-      </div>
-      <div class="control-group">
-        <div class="controls">
+        <div class="col col-lg-10 col-offset-2">
           <button type="submit" class="btn btn-default">Sign in</button>
         </div>
       </div>
     </form>
 {% highlight html %}
 <form class="form-horizontal">
-  <div class="control-group">
-    <label class="control-label" for="inputEmail">Email</label>
-    <div class="controls">
+  <div class="row">
+    <label for="inputEmail" class="col col-lg-2 row-label">Email</label>
+    <div class="col col-lg-10">
       <input type="text" id="inputEmail" placeholder="Email">
     </div>
   </div>
-  <div class="control-group">
-    <label class="control-label" for="inputPassword">Password</label>
-    <div class="controls">
+  <div class="row">
+    <label for="" class="col col-lg-2 row-label">Password</label>
+    <div class="col col-lg-10">
       <input type="password" id="inputPassword" placeholder="Password">
       <div class="checkbox">
         <label>
@@ -1123,9 +1115,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </label>
       </div>
     </div>
-  </div>
-  <div class="control-group">
-    <div class="controls">
+    <div class="col col-lg-10 col-offset-2">
       <button type="submit" class="btn btn-default">Sign in</button>
     </div>
   </div>
@@ -1693,18 +1683,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3 id="forms-help-text">Help text</h3>
-    <p>Inline and block level support for help text that appears around form controls.</p>
-    <h4>Inline help</h4>
-    <form class="bs-example form-inline">
-      <input type="text"> <span class="help-inline">Inline help text</span>
-    </form>
-{% highlight html %}
-<input type="text">
-<span class="help-inline">Inline help text</span>
-{% endhighlight %}
-
-    <h4>Block help</h4>
-    <form class="bs-example form-inline">
+    <p>Block level help text for form controls.</p>
+    <form class="bs-example">
       <input type="text">
       <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
     </form>

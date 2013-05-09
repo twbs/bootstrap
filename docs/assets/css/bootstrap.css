@@ -1252,7 +1252,6 @@ input[type="color"] {
   display: block;
   min-height: 34px;
   padding: 6px 9px;
-  margin-bottom: 10px;
   font-size: 14px;
   line-height: 20px;
   color: #555555;
@@ -1374,6 +1373,7 @@ textarea::-webkit-input-placeholder {
   display: block;
   min-height: 20px;
   padding-left: 20px;
+  margin-top: 10px;
   margin-bottom: 10px;
   vertical-align: middle;
 }
@@ -1464,25 +1464,6 @@ input[type="color"].input-small {
   padding: 2px 10px;
   font-size: 11.9px;
   border-radius: 3px;
-}
-
-input[class*="span"],
-select[class*="span"],
-textarea[class*="span"] {
-  float: none;
-  margin-right: 0;
-  margin-left: 0;
-}
-
-.input-append input[class*="span"],
-.input-prepend input[class*="span"] {
-  display: inline-block;
-}
-
-input[class*="span"],
-select[class*="span"],
-textarea[class*="span"] {
-  height: 34px;
 }
 
 input[disabled],
@@ -1601,20 +1582,11 @@ select:focus:invalid:focus {
   clear: both;
 }
 
-.help-block,
-.help-inline {
-  color: #737373;
-}
-
 .help-block {
   display: block;
+  margin-top: 5px;
   margin-bottom: 10px;
-}
-
-.help-inline {
-  display: inline-block;
-  padding-left: 5px;
-  vertical-align: middle;
+  color: #737373;
 }
 
 .input-group {
@@ -1790,47 +1762,21 @@ select:focus:invalid:focus {
 .form-inline .radio,
 .form-inline .checkbox {
   display: inline-block;
+}
+
+.form-inline .radio,
+.form-inline .checkbox {
+  margin-top: 0;
   margin-bottom: 0;
 }
 
-@media screen and (min-width: 768px) {
-  .form-horizontal .control-group {
-    position: relative;
-    margin-bottom: 20px;
-  }
-  .form-horizontal .control-group:before,
-  .form-horizontal .control-group:after {
-    display: table;
-    content: " ";
-  }
-  .form-horizontal .control-group:after {
-    clear: both;
-  }
-  .form-horizontal .control-group:before,
-  .form-horizontal .control-group:after {
-    display: table;
-    content: " ";
-  }
-  .form-horizontal .control-group:after {
-    clear: both;
-  }
-  .form-horizontal .control-group input,
-  .form-horizontal .control-group select,
-  .form-horizontal .control-group textarea {
-    margin-bottom: 0;
-  }
-  .form-horizontal .control-group > .control-label {
-    float: left;
-    width: 160px;
-    padding-top: 6px;
-    text-align: right;
-  }
-  .form-horizontal .control-group > .controls {
-    margin-left: 180px;
-  }
-  .form-horizontal .form-actions {
-    padding-left: 180px;
-  }
+.form-horizontal .row + .row {
+  margin-top: 15px;
+}
+
+.form-horizontal .row-label {
+  padding-top: 6px;
+  text-align: right;
 }
 
 .btn {
