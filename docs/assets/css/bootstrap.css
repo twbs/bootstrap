@@ -3598,6 +3598,20 @@ button.close {
   margin-bottom: 8px;
 }
 
+.navbar-form input,
+.navbar-form select,
+.navbar-form textarea,
+.navbar-form .radio,
+.navbar-form .checkbox {
+  display: inline-block;
+}
+
+.navbar-form .radio,
+.navbar-form .checkbox {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .navbar-nav > li > .dropdown-menu {
   margin-top: 0;
   border-top-right-radius: 0;

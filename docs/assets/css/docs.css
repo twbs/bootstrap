@@ -252,6 +252,7 @@ body {
 .bs-example > select:last-child,
 .bs-example > textarea:last-child,
 .bs-example > .table:last-child,
+.bs-example > .navbar:last-child
 .bs-example > .jumbotron:last-child,
 .bs-example > .alert:last-child,
 .bs-example > .panel:last-child,
