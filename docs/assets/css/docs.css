@@ -10,7 +10,7 @@
 
 body {
   position: relative; /* For scrollyspy */
-  /* We add the padding to the body for >768px only */
+  padding-top: 50px;
 }
 
 /* Top nav and header */
@@ -124,10 +124,18 @@ hr {
 
 /* Page headers */
 .bs-docs-header {
-  margin-bottom: 20px;
-  padding-top: 30px;
+  padding: 0 15px 15px;
+  margin-bottom: 30px;
+  font-size: 16px;
+  color: #5a5a5a;
+  border-bottom: 1px solid #ddd;
+}
+.bs-docs-header h1 {
   color: #b94a48;
-  border-bottom: 5px solid #b94a48;
+}
+.bs-docs-header p {
+  font-weight: 300;
+  line-height: 1.5;
 }
 
 /* Padding for in-page bookmarks */
@@ -679,9 +687,6 @@ input.focused {
 
 /* Tablets and up */
 @media screen and (min-width: 768px) {
-  body {
-    padding-top: 50px;
-  }
 
   /* Back to top link */
   .bs-docs-top {
@@ -703,8 +708,12 @@ input.focused {
     bottom: 15px;
   }
 
+  .bs-docs-header {
+    padding: 30px 0 40px;
+    font-size: 21px;
+  }
   .bs-docs-header h1 {
-    font-size: 80px;
+    font-size: 60px;
     line-height: 1;
   }
 
