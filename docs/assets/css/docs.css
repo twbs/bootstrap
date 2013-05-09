@@ -13,6 +13,17 @@ body {
   /* We add the padding to the body for >768px only */
 }
 
+/* Top nav and header */
+.bs-docs-nav {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+.bs-docs-nav .navbar-brand {
+  color: #b94a48;
+}
+
+
+
 hr {
   margin-top: 30px;
   margin-bottom: 30px;
@@ -22,20 +33,13 @@ hr {
   margin-top: 15px;
   margin-bottom: 5px;
 }
-
+/*
 .bs-docs-container,
 .bs-home-container {
   padding-left: 15px;
   padding-right: 15px;
 }
-.bs-docs-container {
-  max-width: 860px;
-}
-.bs-docs-container .row {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-
+*/
 /* Side notes for calling out things */
 .bs-docs-sidenote {
   margin: 20px 0;
@@ -59,27 +63,28 @@ hr {
 -------------------------------------------------- */
 
 /* Padding for in-page bookmarks */
-section,
+/*section,*/
 .bs-docs-section {
   padding-top: 30px;
 }
 
 /* Few stylistic typography tweaks */
-section > .page-header,
+/*section > .page-header,
 section > .lead {
   color: #5a5a5a;
 }
 section > ul li {
   margin-bottom: 5px;
-}
+}*/
 
 
 
 /* Jumbotrons
 -------------------------------------------------- */
 
-.bs-docs-section-header {
-  padding-top: 60px;
+.bs-docs-header {
+  margin-bottom: 20px;
+  padding-top: 30px;
   color: #b94a48;
   border-bottom: 5px solid #b94a48;
 }
@@ -149,22 +154,15 @@ section > ul li {
 /* Sidenav
 -------------------------------------------------- */
 
-.bs-docs-sidebar {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 240px;
-  overflow-y: scroll;
-  text-shadow: 0 1px 0 #fff;
-  background-color: #f5f5f5;
-  box-shadow: inset -1px 0 0 #e5e5e5;
-}
-
 /* Nav: first level */
 .bs-docs-sidebar > .nav {
-  margin: 0 0 25px 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-shadow: 0 1px 0 #fff;
+  background-color: #f5f5f5;
+  border-radius: 5px;
 }
 .bs-docs-sidebar .nav > li > a {
   display: block;
@@ -227,6 +225,17 @@ section > ul li {
 .bs-docs-sidenav > .active > .nav-header:hover {
   color: #333;
   border-color: #333;
+}
+
+/* Increase spacing between page nav and other pages */
+.bs-docs-sidenav .nav-divider {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.bs-docs-sidebar.affix {
+  top: 50px;
+  width: 270px;
 }
 
 
@@ -666,6 +675,9 @@ input.focused {
 
 /* Tablets and up */
 @media screen and (min-width: 768px) {
+  body {
+    padding-top: 50px;
+  }
 
   /* Back to top link */
   .bs-docs-top {
@@ -687,15 +699,9 @@ input.focused {
     bottom: 15px;
   }
 
-  .bs-docs-section-header h1 {
+  .bs-docs-header h1 {
     font-size: 80px;
-    font-size: 8rem;
     line-height: 1;
-  }
-
-  /* Account for fixed navbar (which is static to start) */
-  .bs-docs-docs {
-    padding-left: 260px;
   }
 
   /* Undo custom padding */
@@ -738,10 +744,6 @@ input.focused {
 /* Tablets/desktops and up */
 @media screen and (min-width: 992px) {
 
-  .bs-docs-docs {
-    padding-left: 280px;
-  }
-
   /* Icons */
   .the-icons li {
     width: 12.5%;
@@ -751,8 +753,5 @@ input.focused {
 
 /* Large desktops and up */
 @media screen and (min-width: 1200px) {
-  .bs-docs-docs {
-    padding-left: 300px;
-  }
 
 }

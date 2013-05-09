@@ -3304,7 +3304,7 @@ button.close {
   float: right;
 }
 
-.nav .divider {
+.nav .nav-divider {
   height: 2px;
   margin: 9px 0;
   overflow: hidden;

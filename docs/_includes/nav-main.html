@@ -1,0 +1,24 @@
+<div class="navbar navbar-fixed-top bs-docs-nav">
+  <div class="container">
+    <a href="/" class="navbar-brand">Bootstrap</a>
+    <div class="nav-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li{% if page.slug == "welcome" %} class="active"{% endif %}>
+          <a href="/welcome">Overview</a>
+        </li>
+        <li{% if page.slug == "css" %} class="active"{% endif %}>
+          <a href="/css">CSS</a>
+        </li>
+        <li{% if page.slug == "components" %} class="active"{% endif %}>
+          <a href="/components">Components</a>
+        </li>
+        <li{% if page.slug == "js" %} class="active"{% endif %}>
+          <a href="/javascript">JavaScript</a>
+        </li>
+        <li{% if page.slug == "customize" %} class="active"{% endif %}>
+          <a href="/customize">Customize</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
