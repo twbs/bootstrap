@@ -21,10 +21,11 @@ body {
 .bs-docs-nav .navbar-nav > li > a {
   color: #fff;
 }
-.bs-docs-nav .navbar-nav > .active > a {
+.bs-docs-nav .navbar-nav > .active > a,
+.bs-docs-nav .navbar-nav > .active > a:hover {
   background-color: #993c3a;
 }
-.bs-docs-nav .navbar-toggle{
+.bs-docs-nav .navbar-toggle {
   border-color: #b94a48;
 }
 .bs-docs-nav .navbar-toggle:hover {
@@ -124,10 +125,11 @@ hr {
 
 /* Page headers */
 .bs-docs-header {
-  padding: 0 15px 15px;
+  padding: 30px 30px 40px;
   margin-bottom: 30px;
   font-size: 16px;
   color: #5a5a5a;
+  text-align: center;
   border-bottom: 1px solid #ddd;
 }
 .bs-docs-header h1 {
@@ -709,8 +711,8 @@ input.focused {
   }
 
   .bs-docs-header {
-    padding: 30px 0 40px;
     font-size: 21px;
+    text-align: left;
   }
   .bs-docs-header h1 {
     font-size: 60px;
