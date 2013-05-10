@@ -46,12 +46,12 @@
 @font-family-base:        @font-family-sans-serif;
 
 @font-size-base:          14px;
-@font-size-large:         (@font-size-base * 1.25); // ~18px
-@font-size-small:         (@font-size-base * 0.85); // ~12px
-@font-size-mini:          (@font-size-base * 0.75); // ~11px
+@font-size-large:         ceil(@font-size-base * 1.25); // ~18px
+@font-size-small:         ceil(@font-size-base * 0.85); // ~12px
+@font-size-mini:          ceil(@font-size-base * 0.75); // ~11px
 
-@line-height-base:        1.5;
-@line-height-computed:    (@font-size-base * @line-height-base);
+@line-height-base:        1.428; // 20/14
+@line-height-computed:    ceil(@font-size-base * @line-height-base); // ~20px
 @line-height-headings:    1.1;
 
 @headings-font-family:    inherit; // empty to use BS default, @font-family-base

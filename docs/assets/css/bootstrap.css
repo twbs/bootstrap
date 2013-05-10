@@ -283,7 +283,7 @@ html {
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.428;
   color: #333333;
   background-color: #ffffff;
 }
@@ -329,11 +329,11 @@ img {
 }
 
 p {
-  margin: 0 0 10.5px;
+  margin: 0 0 10px;
 }
 
 .lead {
-  margin-bottom: 21px;
+  margin-bottom: 20px;
   font-size: 21px;
   font-weight: 200;
   line-height: 1.4;
@@ -440,15 +440,15 @@ h6 small,
 h1,
 h2,
 h3 {
-  margin-top: 21px;
-  margin-bottom: 10.5px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 h4,
 h5,
 h6 {
-  margin-top: 10.5px;
-  margin-bottom: 10.5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 h1,
@@ -499,15 +499,15 @@ h4 small,
 }
 
 .page-header {
-  padding-bottom: 9.5px;
-  margin: 42px 0 21px;
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
   border-bottom: 1px solid #eeeeee;
 }
 
 ul,
 ol {
   padding: 0;
-  margin: 0 0 10.5px 25px;
+  margin: 0 0 10px 25px;
 }
 
 ul ul,
@@ -518,7 +518,7 @@ ol ul {
 }
 
 li {
-  line-height: 1.5;
+  line-height: 1.428;
 }
 
 .list-unstyled {
@@ -538,12 +538,12 @@ li {
 }
 
 dl {
-  margin-bottom: 21px;
+  margin-bottom: 20px;
 }
 
 dt,
 dd {
-  line-height: 1.5;
+  line-height: 1.428;
 }
 
 dt {
@@ -551,7 +551,7 @@ dt {
 }
 
 dd {
-  margin-left: 10.5px;
+  margin-left: 10px;
 }
 
 .dl-horizontal:before,
@@ -589,7 +589,7 @@ dd {
 }
 
 hr {
-  margin: 21px 0;
+  margin: 20px 0;
   border: 0;
   border-top: 1px solid #eeeeee;
   border-bottom: 1px solid #fff;
@@ -608,8 +608,8 @@ abbr.initialism {
 }
 
 blockquote {
-  padding: 10.5px 21px;
-  margin: 0 0 21px;
+  padding: 10px 20px;
+  margin: 0 0 20px;
   border-left: 5px solid #eeeeee;
 }
 
@@ -625,7 +625,7 @@ blockquote p:last-child {
 
 blockquote small {
   display: block;
-  line-height: 1.5;
+  line-height: 1.428;
   color: #999999;
 }
 
@@ -663,9 +663,9 @@ blockquote:after {
 
 address {
   display: block;
-  margin-bottom: 21px;
+  margin-bottom: 20px;
   font-style: normal;
-  line-height: 1.5;
+  line-height: 1.428;
 }
 
 code,
@@ -687,10 +687,10 @@ code {
 
 pre {
   display: block;
-  padding: 0.25;
-  margin: 0 0 0.75;
+  padding: 9.5px;
+  margin: 0 0 10px;
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.428;
   word-break: break-all;
   word-wrap: break-word;
   white-space: pre;
@@ -702,7 +702,7 @@ pre {
 }
 
 pre.prettyprint {
-  margin-bottom: 1.5;
+  margin-bottom: 20px;
 }
 
 pre code {
@@ -1010,7 +1010,7 @@ th {
 
 .table {
   width: 100%;
-  margin-bottom: 1.5;
+  margin-bottom: 20px;
 }
 
 .table thead > tr > th,
@@ -1018,7 +1018,7 @@ th {
 .table thead > tr > td,
 .table tbody > tr > td {
   padding: 8px;
-  line-height: 1.5;
+  line-height: 1.428;
   vertical-align: top;
   border-top: 1px solid #dddddd;
 }
@@ -1204,7 +1204,7 @@ legend {
   display: block;
   width: 100%;
   padding: 0;
-  margin-bottom: 21px;
+  margin-bottom: 20px;
   font-size: 21px;
   line-height: 1.1;
   color: #333333;
@@ -1235,10 +1235,10 @@ input[type="search"],
 input[type="tel"],
 input[type="color"] {
   display: block;
-  min-height: 35px;
+  min-height: 34px;
   padding: 6px 9px;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.428;
   color: #555555;
   vertical-align: middle;
   background-color: #ffffff;
@@ -1313,10 +1313,10 @@ input[type="checkbox"] {
 
 select,
 input[type="file"] {
-  height: 35px;
+  height: 34px;
   /* In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support */
 
-  line-height: 35px;
+  line-height: 34px;
 }
 
 select[multiple],
@@ -1356,7 +1356,7 @@ textarea::-webkit-input-placeholder {
 .radio,
 .checkbox {
   display: block;
-  min-height: 21px;
+  min-height: 20px;
   padding-left: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -1425,7 +1425,7 @@ input[type="search"].input-large,
 input[type="tel"].input-large,
 input[type="color"].input-large {
   padding: 11px 14px;
-  font-size: 17.5px;
+  font-size: 18px;
   border-radius: 6px;
 }
 
@@ -1445,9 +1445,9 @@ input[type="url"].input-small,
 input[type="search"].input-small,
 input[type="tel"].input-small,
 input[type="color"].input-small {
-  min-height: 27px;
+  min-height: 26px;
   padding: 2px 10px;
-  font-size: 11.9px;
+  font-size: 12px;
   border-radius: 3px;
 }
 
@@ -1540,9 +1540,9 @@ select:focus:invalid:focus {
 }
 
 .form-actions {
-  padding: 21px 20px;
-  margin-top: 21px;
-  margin-bottom: 21px;
+  padding: 20px 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   background-color: #f5f5f5;
   border-top: 1px solid #e5e5e5;
 }
@@ -1612,7 +1612,7 @@ select:focus:invalid:focus {
   padding: 6px 8px;
   font-size: 14px;
   font-weight: normal;
-  line-height: 1.5;
+  line-height: 1.428;
   text-align: center;
   text-shadow: 0 1px 0 #fff;
   background-color: #eeeeee;
@@ -1625,13 +1625,13 @@ select:focus:invalid:focus {
 
 .input-group-addon.input-small {
   padding: 2px 10px;
-  font-size: 11.9px;
+  font-size: 12px;
   border-radius: 3px;
 }
 
 .input-group-addon.input-large {
   padding: 11px 14px;
-  font-size: 17.5px;
+  font-size: 18px;
   border-radius: 6px;
 }
 
@@ -1707,7 +1707,7 @@ select:focus:invalid:focus {
   margin-bottom: 0;
   font-size: 14px;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.428;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -1968,19 +1968,19 @@ fieldset[disabled] .btn-link:focus {
 
 .btn-large {
   padding: 11px 14px;
-  font-size: 17.5px;
+  font-size: 18px;
   border-radius: 6px;
 }
 
 .btn-small {
   padding: 2px 10px;
-  font-size: 11.9px;
+  font-size: 12px;
   border-radius: 3px;
 }
 
 .btn-mini {
   padding: 0 6px;
-  font-size: 10.5px;
+  font-size: 11px;
   border-radius: 3px;
 }
 
@@ -2746,7 +2746,7 @@ input[type="button"].btn-block {
 
 .dropdown-menu .divider {
   height: 2px;
-  margin: -0.25 0;
+  margin: 9px 0;
   overflow: hidden;
   background-color: #e5e5e5;
   border-bottom: 1px solid #ffffff;
@@ -2757,7 +2757,7 @@ input[type="button"].btn-block {
   padding: 3px 20px;
   clear: both;
   font-weight: normal;
-  line-height: 1.5;
+  line-height: 1.428;
   color: #333333;
   white-space: nowrap;
 }
@@ -3175,7 +3175,7 @@ button.close {
 
 .nav .nav-divider {
   height: 2px;
-  margin: -0.25 0;
+  margin: 9px 0;
   overflow: hidden;
   background-color: #e5e5e5;
   border-bottom: 1px solid #ffffff;
@@ -3192,7 +3192,7 @@ button.close {
 
 .nav-tabs > li > a {
   margin-right: 2px;
-  line-height: 1.5;
+  line-height: 1.428;
   border: 1px solid transparent;
   border-radius: 4px 4px 0 0;
 }
@@ -3280,9 +3280,9 @@ button.close {
 .nav-header {
   display: block;
   padding: 3px 15px;
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: bold;
-  line-height: 1.5;
+  line-height: 1.428;
   color: #999999;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
@@ -3421,8 +3421,8 @@ button.close {
 }
 
 .navbar-nav > li > a {
-  padding-top: 14.5px;
-  padding-bottom: 14.5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   line-height: 20px;
   color: #777777;
 }
@@ -3475,9 +3475,9 @@ button.close {
   padding: 15px;
   margin-right: auto;
   margin-left: auto;
-  font-size: 17.5px;
+  font-size: 18px;
   font-weight: 500;
-  line-height: 21px;
+  line-height: 20px;
   color: #777777;
   text-align: center;
 }
@@ -3685,12 +3685,12 @@ button.close {
 }
 
 .navbar-btn {
-  margin-top: 7.5px;
+  margin-top: 8px;
 }
 
 .navbar-text {
-  margin-top: 14.5px;
-  margin-bottom: 14.5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .navbar-link {
@@ -3901,7 +3901,7 @@ button.close {
 
 .breadcrumb {
   padding: 8px 15px;
-  margin: 0 0 1.5;
+  margin: 0 0 20px;
   list-style: none;
   background-color: #f5f5f5;
   border-radius: 4px;
@@ -3929,7 +3929,7 @@ button.close {
 
 .pagination {
   display: inline-block;
-  margin: 1.5 0;
+  margin: 20px 0;
   border-radius: 4px;
 }
 
@@ -3941,7 +3941,7 @@ button.close {
 .pagination > li > span {
   float: left;
   padding: 4px 12px;
-  line-height: 1.5;
+  line-height: 1.428;
   text-decoration: none;
   background-color: #ffffff;
   border: 1px solid #dddddd;
@@ -3986,7 +3986,7 @@ button.close {
 .pagination-large > li > a,
 .pagination-large > li > span {
   padding: 11px 14px;
-  font-size: 17.5px;
+  font-size: 18px;
 }
 
 .pagination-large > li:first-child > a,
@@ -4020,17 +4020,17 @@ button.close {
 .pagination-small > li > a,
 .pagination-small > li > span {
   padding: 2px 10px;
-  font-size: 11.9px;
+  font-size: 12px;
 }
 
 .pagination-mini > li > a,
 .pagination-mini > li > span {
   padding: 0 6px;
-  font-size: 10.5px;
+  font-size: 11px;
 }
 
 .pager {
-  margin: 1.5 0;
+  margin: 20px 0;
   text-align: center;
   list-style: none;
 }
@@ -4167,7 +4167,7 @@ button.close {
 }
 
 .modal-header {
-  min-height: 16.5px;
+  min-height: 16.428px;
   padding: 15px;
   border-bottom: 1px solid #e5e5e5;
 }
@@ -4178,7 +4178,7 @@ button.close {
 
 .modal-title {
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.428;
 }
 
 .modal-body {
@@ -4245,7 +4245,7 @@ button.close {
   position: absolute;
   z-index: 1030;
   display: block;
-  font-size: 10.5px;
+  font-size: 11px;
   line-height: 1.4;
   opacity: 0;
   filter: alpha(opacity=0);
@@ -4468,7 +4468,7 @@ button.close {
 
 .alert {
   padding: 10px 35px 10px 15px;
-  margin-bottom: 21px;
+  margin-bottom: 20px;
   color: #c09853;
   background-color: #fcf8e3;
   border: 1px solid #fbeed5;
@@ -4559,7 +4559,7 @@ button.close {
 .thumbnail,
 .img-thumbnail {
   padding: 4px;
-  line-height: 1.5;
+  line-height: 1.428;
   background-color: #ffffff;
   border: 1px solid #dddddd;
   border-radius: 4px;
@@ -4692,7 +4692,7 @@ a.thumbnail:focus {
   display: inline-block;
   min-width: 10px;
   padding: 3px 7px;
-  font-size: 11.9px;
+  font-size: 12px;
   font-weight: bold;
   line-height: 1;
   color: #fff;
@@ -4779,8 +4779,8 @@ a.list-group-item.active > .badge,
 }
 
 .progress {
-  height: 21px;
-  margin-bottom: 21px;
+  height: 20px;
+  margin-bottom: 20px;
   overflow: hidden;
   background-color: #f5f5f5;
   border-radius: 4px;
@@ -4792,7 +4792,7 @@ a.list-group-item.active > .badge,
   float: left;
   width: 0;
   height: 100%;
-  font-size: 11.9px;
+  font-size: 12px;
   color: #fff;
   text-align: center;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -4874,7 +4874,7 @@ a.list-group-item.active > .badge,
 }
 
 .accordion {
-  margin-bottom: 1.5;
+  margin-bottom: 20px;
 }
 
 .accordion-group {
@@ -5086,7 +5086,7 @@ a.list-group-item.active > .badge,
   margin-bottom: 30px;
   font-size: 21px;
   font-weight: 200;
-  line-height: 2.25;
+  line-height: 2.142;
   color: inherit;
   background-color: #eeeeee;
 }
