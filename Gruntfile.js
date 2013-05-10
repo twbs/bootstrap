@@ -5,11 +5,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         // Metadata.
         pkg: grunt.file.readJSON('package.json'),
-        banner: '/**\n' +
-            '* <%= pkg.name %>.js v<%= pkg.version %> by @fat and @mdo\n' +
-            '* Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-            '* <%= _.pluck(pkg.licenses, "url").join(", ") %>\n' +
-            '*/\n',
+        banner: '/**\n' + '* <%= pkg.name %>.js v<%= pkg.version %> by @fat and @mdo\n' + '* Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' + '* <%= _.pluck(pkg.licenses, "url").join(", ") %>\n' + '*/\n',
         // Task configuration.
         clean: {
             gh1: ['docs/assets/<%= pkg.name %>.zip'],
@@ -42,21 +38,37 @@ module.exports = function(grunt) {
         },
         copy: {
             bootstrap: {
-                files: [
-                    {expand: true, flatten: true, src: ['fonts/*'], dest: 'bootstrap/fonts/'}
-                ]
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    src: ['fonts/*'],
+                    dest: 'bootstrap/fonts/'
+                }]
             },
             gh: {
-                files: [
-                    {expand: true, src: ['docs/**/*'], dest: '../bootstrap-gh-pages/'}
-                ]
+                files: [{
+                    expand: true,
+                    src: ['docs/**/*'],
+                    dest: '../bootstrap-gh-pages/'
+                }]
             },
             dist: {
-                files: [
-                    {expand: true, flatten: true, src: ['fonts/*'], dest: 'docs/assets/fonts/'},
-                    {expand: true, flatten: true, src: ['js/*.js'], dest: 'docs/assets/js/'},
-                    {expand: true, flatten: true, src: ['js/tests/vendor/jquery.js'], dest: 'docs/assets/js/'}
-                ]
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    src: ['fonts/*'],
+                    dest: 'docs/assets/fonts/'
+                }, {
+                    expand: true,
+                    flatten: true,
+                    src: ['js/*.js'],
+                    dest: 'docs/assets/js/'
+                }, {
+                    expand: true,
+                    flatten: true,
+                    src: ['js/tests/vendor/jquery.js'],
+                    dest: 'docs/assets/js/'
+                }]
             }
         },
         jshint: {
@@ -87,6 +99,14 @@ module.exports = function(grunt) {
                     'bootstrap/css/bootstrap.css': ['less/bootstrap.less']
                 }
             },
+            min: {
+                options: {
+                    compress: true
+                },
+                files: {
+                    'bootstrap/css/bootstrap.min.css': ['less/bootstrap.less']
+                }
+            },
             dist: {
                 files: {
                     'docs/assets/css/bootstrap.css': ['less/bootstrap.less']
@@ -97,9 +117,15 @@ module.exports = function(grunt) {
             options: {
                 banner: '<%= banner %>'
             },
+            bootstrap: {
+                files: {
+                    'bootstrap/js/<%= pkg.name %>.min.js': ['<%= concat.bootstrap.dest %>']
+                }
+            },
             dist: {
-                src: '<%= concat.dist.dest %>',
-                dest: 'docs/assets/js/<%= pkg.name %>.min.js'
+                files: {
+                    'docs/assets/js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+                }
             }
         },
         qunit: {
@@ -141,8 +167,8 @@ module.exports = function(grunt) {
     grunt.registerTask('cleanit', ['clean:dist']);
 
     // Bootstrap task.
-    grunt.registerTask('bootstrap', ['concat:bootstrap', 'recess:bootstrap', 'copy:bootstrap']);
+    grunt.registerTask('bootstrap', ['concat:bootstrap', 'recess:bootstrap', 'recess:min', 'copy:bootstrap', 'uglify:bootstrap']);
 
-    // Task for gh-pages 4 fat & mdo ONLY (O_O  )
+    // Task for gh-pages 4 fat & mdo ONLY (O_O )
     grunt.registerTask('gh-pages', ['bootstrap', 'clean:gh1', 'compress:gh', 'clean:gh2', 'shell:gh', 'copy:gh']);
 };
