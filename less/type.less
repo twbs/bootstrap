@@ -7,10 +7,10 @@
 // -------------------------
 
 p {
-  margin: 0 0 (@line-height-base / 2);
+  margin: 0 0 (@line-height-computed / 2);
 }
 .lead {
-  margin-bottom: @line-height-base;
+  margin-bottom: @line-height-computed;
   font-size: (@font-size-base * 1.5);
   font-weight: 200;
   line-height: 1.4;
@@ -56,7 +56,7 @@ h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: @headings-font-family;
   font-weight: @headings-font-weight;
-  line-height: @line-height-base;
+  line-height: @line-height-headings;
   small {
     font-weight: normal;
     line-height: 1;
@@ -67,30 +67,26 @@ h1, h2, h3, h4, h5, h6,
 h1,
 h2,
 h3 {
-  margin-top: @line-height-base;
-  margin-bottom: (@line-height-base / 2);
-  line-height: (@line-height-base * 2);
-}
-h3 {
-  line-height: (@line-height-base * 1.5);
+  margin-top: @line-height-computed;
+  margin-bottom: (@line-height-computed / 2);
 }
 h4,
 h5,
 h6 {
-  margin-top: (@line-height-base / 2);
-  margin-bottom: (@line-height-base / 2);
+  margin-top: (@line-height-computed / 2);
+  margin-bottom: (@line-height-computed / 2);
 }
 
-h1, .h1 { font-size: (@font-size-base * 2.75); } // ~38px
-h2, .h2 { font-size: (@font-size-base * 2.25); } // ~32px
-h3, .h3 { font-size: (@font-size-base * 1.75); } // ~24px
-h4, .h4 { font-size: (@font-size-base * 1.25); } // ~18px
+h1, .h1 { font-size: ceil(@font-size-base * 2.70); } // ~38px
+h2, .h2 { font-size: ceil(@font-size-base * 2.25); } // ~32px
+h3, .h3 { font-size: ceil(@font-size-base * 1.70); } // ~24px
+h4, .h4 { font-size: ceil(@font-size-base * 1.25); } // ~18px
 h5, .h5 { font-size:  @font-size-base; }
-h6, .h6 { font-size: (@font-size-base * 0.85); } // ~12px
+h6, .h6 { font-size: ceil(@font-size-base * 0.85); } // ~12px
 
-h1 small, .h1 small { font-size: (@font-size-base * 1.75); } // ~24px
-h2 small, .h2 small { font-size: (@font-size-base * 1.25); } // ~18px
-h3 small, .h3 small { font-size: @font-size-base; }
+h1 small, .h1 small { font-size: ceil(@font-size-base * 1.70); } // ~24px
+h2 small, .h2 small { font-size: ceil(@font-size-base * 1.25); } // ~18px
+h3 small, .h3 small,
 h4 small, .h4 small { font-size: @font-size-base; }
 
 
@@ -98,8 +94,8 @@ h4 small, .h4 small { font-size: @font-size-base; }
 // -------------------------
 
 .page-header {
-  padding-bottom: ((@line-height-base / 2) - 1);
-  margin: (@line-height-base * 2) 0 @line-height-base;
+  padding-bottom: ((@line-height-computed / 2) - 1);
+  margin: (@line-height-computed * 2) 0 @line-height-computed;
   border-bottom: 1px solid @gray-lighter;
 }
 
@@ -112,7 +108,7 @@ h4 small, .h4 small { font-size: @font-size-base; }
 ul,
 ol {
   padding: 0;
-  margin: 0 0 (@line-height-base / 2) 25px;
+  margin: 0 0 (@line-height-computed / 2) 25px;
 }
 ul ul,
 ul ol,
@@ -143,7 +139,7 @@ li {
 
 // Description Lists
 dl {
-  margin-bottom: @line-height-base;
+  margin-bottom: @line-height-computed;
 }
 dt,
 dd {
@@ -153,7 +149,7 @@ dt {
   font-weight: bold;
 }
 dd {
-  margin-left: (@line-height-base / 2);
+  margin-left: (@line-height-computed / 2);
 }
 // Horizontal layout (like forms)
 .dl-horizontal {
@@ -175,7 +171,7 @@ dd {
 
 // Horizontal rules
 hr {
-  margin: @line-height-base 0;
+  margin: @line-height-computed 0;
   border: 0;
   border-top: 1px solid @hr-border;
   border-bottom: 1px solid #fff;
@@ -196,8 +192,8 @@ abbr.initialism {
 
 // Blockquotes
 blockquote {
-  padding: (@line-height-base/2) @line-height-base;
-  margin: 0 0 @line-height-base;
+  padding: (@line-height-computed / 2) @line-height-computed;
+  margin: 0 0 @line-height-computed;
   border-left: 5px solid @gray-lighter;
   p {
     font-size: (@font-size-base * 1.25);
@@ -249,7 +245,7 @@ blockquote:after {
 // Addresses
 address {
   display: block;
-  margin-bottom: @line-height-base;
+  margin-bottom: @line-height-computed;
   font-style: normal;
   line-height: @line-height-base;
 }

@@ -599,6 +599,7 @@ input.focused {
 }
 .highlight pre {
   padding: 0;
+  margin-top: 0;
   margin-bottom: 0;
   background-color: transparent;
   border: 0;

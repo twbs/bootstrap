@@ -50,7 +50,9 @@
 @font-size-small:         (@font-size-base * 0.85); // ~12px
 @font-size-mini:          (@font-size-base * 0.75); // ~11px
 
-@line-height-base:        20px;
+@line-height-base:        1.5;
+@line-height-computed:    (@font-size-base * @line-height-base);
+@line-height-headings:    1.1;
 
 @headings-font-family:    inherit; // empty to use BS default, @font-family-base
 @headings-font-weight:    500;
@@ -121,9 +123,9 @@
 
 @input-color-placeholder:        @gray-light;
 
-@input-height-base:              (@line-height-base + 14px); // base line-height + 12px vertical padding + 2px top/bottom border
-@input-height-large:             (@line-height-base + 24px); // base line-height + 22px vertical padding + 2px top/bottom border
-@input-height-small:             (@line-height-base + 6px);  // base line-height + 4px vertical padding + 2px top/bottom border
+@input-height-base:              (@line-height-computed + 14px); // base line-height + 12px vertical padding + 2px top/bottom border
+@input-height-large:             (@line-height-computed + 24px); // base line-height + 22px vertical padding + 2px top/bottom border
+@input-height-small:             (@line-height-computed + 6px);  // base line-height + 4px vertical padding + 2px top/bottom border
 
 @form-actions-bg:                 #f5f5f5;
 

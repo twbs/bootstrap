@@ -20,9 +20,9 @@ legend {
   display: block;
   width: 100%;
   padding: 0;
-  margin-bottom: @line-height-base;
+  margin-bottom: @line-height-computed;
   font-size: (@font-size-base * 1.5);
-  line-height: (@line-height-base * 2);
+  line-height: @line-height-headings;
   color: @gray-dark;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
@@ -170,7 +170,7 @@ textarea {
 .radio,
 .checkbox {
   display: block;
-  min-height: @line-height-base; // clear the floating input if there is no label text
+  min-height: @line-height-computed; // clear the floating input if there is no label text
   margin-top: 10px;
   margin-bottom: 10px;
   padding-left: 20px;
@@ -320,9 +320,9 @@ select:focus:invalid {
 // ------------
 
 .form-actions {
-  padding: (@line-height-base - 1) 20px @line-height-base;
-  margin-top: @line-height-base;
-  margin-bottom: @line-height-base;
+  padding: @line-height-computed 20px;
+  margin-top: @line-height-computed;
+  margin-bottom: @line-height-computed;
   background-color: @form-actions-bg;
   border-top: 1px solid #e5e5e5;
   .clearfix(); // Adding clearfix to allow for .pull-right button containers
