@@ -52,6 +52,9 @@ body {
   font-size: 50px;
   line-height: 1;
 }
+.bs-masthead .bs-social {
+  margin-top: 80px;
+}
 
 /* Download button */
 .bs-masthead .btn {
@@ -524,9 +527,10 @@ body {
 -------------------------------------------------- */
 
 .bs-footer {
-  padding-top: 30px;
+  padding-top: 40px;
   padding-bottom: 30px;
   margin-top: 100px;
+  text-align: center;
   border-top: 1px solid #e5e5e5;
 }
 .bs-footer p {
@@ -546,7 +550,6 @@ body {
 
 /* Social proof buttons from GitHub & Twitter */
 .bs-social {
-  margin-top: 80px;
   margin-bottom: 20px;
 }
 .bs-social-buttons {
