@@ -39,3 +39,5 @@ nbproject
 .idea
 node_modules
 dist
+bootstrap
+docs/_site
