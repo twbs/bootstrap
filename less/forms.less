@@ -410,8 +410,9 @@ select:focus:invalid {
 // Reset rounded corners
 .input-group input:first-child,
 .input-group-addon:first-child,
-.input-group-btn:first-child > .btn:first-child,
-.input-group-btn:first-child > .dropdown-toggle:first-child {
+.input-group-btn:first-child > .btn,
+.input-group-btn:first-child > .dropdown-toggle,
+.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
   .border-right-radius(0);
 }
 .input-group-addon:first-child {
@@ -419,8 +420,9 @@ select:focus:invalid {
 }
 .input-group input:last-child,
 .input-group-addon:last-child,
-.input-group-btn:last-child > .btn:last-child,
-.input-group-btn:last-child > .dropdown-toggle {
+.input-group-btn:last-child > .btn,
+.input-group-btn:last-child > .dropdown-toggle,
+.input-group-btn:first-child > .btn:not(:first-child) {
   .border-left-radius(0);
 }
 .input-group-addon:last-child {
