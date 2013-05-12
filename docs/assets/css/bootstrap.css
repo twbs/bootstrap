@@ -3336,64 +3336,11 @@ button.close {
   border-bottom-color: #2a6496;
 }
 
-/*.nav .active .caret {
-  border-top-color: #fff;
-  border-bottom-color: #fff;
-}
-.nav-tabs .active .caret {
-  border-top-color: @gray;
-  border-bottom-color: @gray;
-}*/
-
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
-
-/*
-
-// Active dropdown links
-// -------------------------
-.nav .active .caret {
-  border-top-color: #fff;
-  border-bottom-color: #fff;
-}
-.nav-tabs .active .caret {
-  border-top-color: @gray;
-  border-bottom-color: @gray;
-}
-*/
-
-/*
-// Active:hover dropdown links
-// -------------------------
-.nav > .dropdown.active > a:hover {
-  cursor: pointer;
-}
-*/
-
-/*// Open dropdowns
-// -------------------------
-.nav > .open > a,
-.nav-pills .open > a,
-.nav > li.dropdown.open.active > a:hover {
-  color: #fff;
-  background-color: @gray-light;
-  border-color: @gray-light;
-}
-.nav li.dropdown.open .caret,
-.nav li.dropdown.open.active .caret,
-.nav li.dropdown.open > a:hover .caret {
-  border-top-color: #fff;
-  border-bottom-color: #fff;
-  .opacity(1);
-}*/
-
-/*// Dropdowns in stacked tabs
-.tabs-stacked .open > a:hover {
-  border-color: @gray-light;
-}*/
 
 .navbar {
   position: relative;
