@@ -12,8 +12,11 @@
   padding-left: 0; // Override default ul/ol
   list-style: none;
   .clearfix();
+
   > li {
+    position: relative;
     display: block;
+
     > a {
       position: relative;
       display: block;
@@ -44,7 +47,7 @@
       cursor: default;
     }
     // Space the headers out when they follow another list item (link)
-    &+ .nav-header {
+    + .nav-header {
       margin-top: 9px;
     }
   }
@@ -213,6 +216,15 @@
   display: block;
 }
 
+
+
+// Dropdowns
+// -------------------------
+
+.nav-tabs .dropdown-menu {
+  // Remove the top rounded corners here since there is a hard edge above the menu
+  .border-top-radius(0);
+}
 
 
 /*
