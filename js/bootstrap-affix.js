@@ -51,8 +51,8 @@
     if (typeof offsetTop == 'function') offsetTop = offset.top()
     if (typeof offsetBottom == 'function') offsetBottom = offset.bottom()
 
-    affix = this.unpin != null && (scrollTop + this.unpin <= position.top) ?
-      false    : offsetBottom != null && (position.top + this.$element.height() >= scrollHeight - offsetBottom) ?
+    affix = scrollTop !== 0 && this.unpin != null && (scrollTop + this.unpin <= position.top) ?
+      false    : offsetBottom != null && (scrollTop + this.$element.height() >= scrollHeight - offsetBottom) ?
       'bottom' : offsetTop != null && scrollTop <= offsetTop ?
       'top'    : false
 
@@ -60,7 +60,7 @@
 
     this.affixed = affix
     this.unpin = affix == 'bottom' ? position.top - scrollTop : null
-
+    if (this.unpin < 0) this.unpin = 0;
     this.$element.removeClass(reset).addClass('affix' + (affix ? '-' + affix : ''))
   }
 
