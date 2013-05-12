@@ -49,8 +49,13 @@
     &.open > a,
     &.open > a:hover,
     &.open > a:focus {
+      color: #fff;
       background-color: @link-color;
       border-color: @link-color;
+      .caret {
+        border-top-color: #fff;
+        border-bottom-color: #fff;
+      }
     }
   }
 
@@ -223,6 +228,27 @@
 // Dropdowns
 // -------------------------
 
+// Make dropdown carets use link color in navs
+.nav .caret {
+  border-top-color: @link-color;
+  border-bottom-color: @link-color;
+}
+.nav a:hover .caret {
+  border-top-color: @link-hover-color;
+  border-bottom-color: @link-hover-color;
+}
+
+/*.nav .active .caret {
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+}
+.nav-tabs .active .caret {
+  border-top-color: @gray;
+  border-bottom-color: @gray;
+}*/
+
+
+// Specific dropdowns
 .nav-tabs .dropdown-menu {
   // make dropdown border overlap tab border
   margin-top: -1px;
@@ -232,20 +258,7 @@
 
 
 
-
-
-
-  // Make dropdown carets use link color in navs
-  .nav .caret {
-    border-top-color: @link-color;
-    border-bottom-color: @link-color;
-  }
-  .nav a:hover .caret {
-    border-top-color: @link-hover-color;
-    border-bottom-color: @link-hover-color;
-  }
-
-
+/*
 
 // Active dropdown links
 // -------------------------
@@ -257,16 +270,19 @@
   border-top-color: @gray;
   border-bottom-color: @gray;
 }
+*/
 
+/*
 // Active:hover dropdown links
 // -------------------------
 .nav > .dropdown.active > a:hover {
   cursor: pointer;
 }
+*/
 
-// Open dropdowns
+/*// Open dropdowns
 // -------------------------
-.nav-tabs .open > a,
+.nav > .open > a,
 .nav-pills .open > a,
 .nav > li.dropdown.open.active > a:hover {
   color: #fff;
@@ -279,79 +295,9 @@
   border-top-color: #fff;
   border-bottom-color: #fff;
   .opacity(1);
-}
+}*/
 
-// Dropdowns in stacked tabs
+/*// Dropdowns in stacked tabs
 .tabs-stacked .open > a:hover {
   border-color: @gray-light;
-}
-
-
-/*
-// Prevent IE8 from misplacing imgs
-// See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
-.nav > li > a > img {
-  max-width: none;
-}
-
-// Dropdowns
-// -------------------------
-
-.nav-tabs .dropdown-menu {
-  // Remove the top rounded corners here since there is a hard edge above the menu
-  .border-top-radius(0);
-}
-
-// Default dropdown links
-// -------------------------
-// Make carets use linkColor to start
-.nav .dropdown-toggle .caret {
-  border-top-color: @link-color;
-  border-bottom-color: @link-color;
-  margin-top: 8px;
-}
-.nav .dropdown-toggle:hover .caret {
-  border-top-color: @link-hover-color;
-  border-bottom-color: @link-hover-color;
-}
-
-// Active dropdown links
-// -------------------------
-.nav .active .dropdown-toggle .caret {
-  border-top-color: #fff;
-  border-bottom-color: #fff;
-}
-.nav-tabs .active .dropdown-toggle .caret {
-  border-top-color: @gray;
-  border-bottom-color: @gray;
-}
-
-// Active:hover dropdown links
-// -------------------------
-.nav > .dropdown.active > a:hover {
-  cursor: pointer;
-}
-
-// Open dropdowns
-// -------------------------
-.nav-tabs .open .dropdown-toggle,
-.nav-pills .open .dropdown-toggle,
-.nav > li.dropdown.open.active > a:hover {
-  color: #fff;
-  background-color: @gray-light;
-  border-color: @gray-light;
-}
-.nav li.dropdown.open .caret,
-.nav li.dropdown.open.active .caret,
-.nav li.dropdown.open a:hover .caret {
-  border-top-color: #fff;
-  border-bottom-color: #fff;
-  .opacity(1);
-}
-
-// Dropdowns in stacked tabs
-.tabs-stacked .open > a:hover {
-  border-color: @gray-light;
-}
-
-*/
+}*/

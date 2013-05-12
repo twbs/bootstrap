@@ -3165,8 +3165,16 @@ button.close {
 .nav > li.open > a,
 .nav > li.open > a:hover,
 .nav > li.open > a:focus {
+  color: #fff;
   background-color: #428bca;
   border-color: #428bca;
+}
+
+.nav > li.open > a .caret,
+.nav > li.open > a:hover .caret,
+.nav > li.open > a:focus .caret {
+  border-top-color: #fff;
+  border-bottom-color: #fff;
 }
 
 .nav > .pull-right {
@@ -3318,12 +3326,6 @@ button.close {
   display: block;
 }
 
-.nav-tabs .dropdown-menu {
-  margin-top: -1px;
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-}
-
 .nav .caret {
   border-top-color: #428bca;
   border-bottom-color: #428bca;
@@ -3334,90 +3336,47 @@ button.close {
   border-bottom-color: #2a6496;
 }
 
+/*.nav .active .caret {
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+}
+.nav-tabs .active .caret {
+  border-top-color: @gray;
+  border-bottom-color: @gray;
+}*/
+
+.nav-tabs .dropdown-menu {
+  margin-top: -1px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+/*
+
+// Active dropdown links
+// -------------------------
 .nav .active .caret {
   border-top-color: #fff;
   border-bottom-color: #fff;
 }
-
 .nav-tabs .active .caret {
-  border-top-color: #555555;
-  border-bottom-color: #555555;
-}
-
-.nav > .dropdown.active > a:hover {
-  cursor: pointer;
-}
-
-.nav-tabs .open > a,
-.nav-pills .open > a,
-.nav > li.dropdown.open.active > a:hover {
-  color: #fff;
-  background-color: #999999;
-  border-color: #999999;
-}
-
-.nav li.dropdown.open .caret,
-.nav li.dropdown.open.active .caret,
-.nav li.dropdown.open > a:hover .caret {
-  border-top-color: #fff;
-  border-bottom-color: #fff;
-  opacity: 1;
-  filter: alpha(opacity=100);
-}
-
-.tabs-stacked .open > a:hover {
-  border-color: #999999;
-}
-
-/*
-// Prevent IE8 from misplacing imgs
-// See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
-.nav > li > a > img {
-  max-width: none;
-}
-
-// Dropdowns
-// -------------------------
-
-.nav-tabs .dropdown-menu {
-  // Remove the top rounded corners here since there is a hard edge above the menu
-  .border-top-radius(0);
-}
-
-// Default dropdown links
-// -------------------------
-// Make carets use linkColor to start
-.nav .dropdown-toggle .caret {
-  border-top-color: @link-color;
-  border-bottom-color: @link-color;
-  margin-top: 8px;
-}
-.nav .dropdown-toggle:hover .caret {
-  border-top-color: @link-hover-color;
-  border-bottom-color: @link-hover-color;
-}
-
-// Active dropdown links
-// -------------------------
-.nav .active .dropdown-toggle .caret {
-  border-top-color: #fff;
-  border-bottom-color: #fff;
-}
-.nav-tabs .active .dropdown-toggle .caret {
   border-top-color: @gray;
   border-bottom-color: @gray;
 }
+*/
 
+/*
 // Active:hover dropdown links
 // -------------------------
 .nav > .dropdown.active > a:hover {
   cursor: pointer;
 }
+*/
 
-// Open dropdowns
+/*// Open dropdowns
 // -------------------------
-.nav-tabs .open .dropdown-toggle,
-.nav-pills .open .dropdown-toggle,
+.nav > .open > a,
+.nav-pills .open > a,
 .nav > li.dropdown.open.active > a:hover {
   color: #fff;
   background-color: @gray-light;
@@ -3425,18 +3384,16 @@ button.close {
 }
 .nav li.dropdown.open .caret,
 .nav li.dropdown.open.active .caret,
-.nav li.dropdown.open a:hover .caret {
+.nav li.dropdown.open > a:hover .caret {
   border-top-color: #fff;
   border-bottom-color: #fff;
   .opacity(1);
-}
+}*/
 
-// Dropdowns in stacked tabs
+/*// Dropdowns in stacked tabs
 .tabs-stacked .open > a:hover {
   border-color: @gray-light;
-}
-
-*/
+}*/
 
 .navbar {
   position: relative;
