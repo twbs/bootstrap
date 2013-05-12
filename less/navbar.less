@@ -153,26 +153,26 @@
 // Dropdown menu items and carets
 .navbar-nav {
   // Caret should match text color on hover
-  li.dropdown > a:hover .caret,
-  li.dropdown > a:focus .caret {
+  > .dropdown > a:hover .caret,
+  > .dropdown > a:focus .caret {
     border-top-color: @navbar-link-hover-color;
     border-bottom-color: @navbar-link-hover-color;
   }
 
   // Remove background color from open dropdown
-  li.dropdown.open > .dropdown-toggle,
-  li.dropdown.active > .dropdown-toggle,
-  li.dropdown.open.active > .dropdown-toggle {
+  > .open > a,
+  > .open > a:hover,
+  > .open > a:focus {
     background-color: @navbar-link-active-bg;
     color: @navbar-link-active-color;
   }
-  li.dropdown > .dropdown-toggle .caret {
+  > .dropdown > a .caret {
     border-top-color: @navbar-link-color;
     border-bottom-color: @navbar-link-color;
   }
-  li.dropdown.open > .dropdown-toggle .caret,
-  li.dropdown.active > .dropdown-toggle .caret,
-  li.dropdown.open.active > .dropdown-toggle .caret {
+  > .open > a .caret,
+  > .open > a:hover .caret,
+  > .open > a:focus .caret {
     border-top-color: @navbar-link-active-color;
     border-bottom-color: @navbar-link-active-color;
   }
@@ -243,23 +243,23 @@
 
   // Dropdowns
   .navbar-nav {
-    li.dropdown.open > .dropdown-toggle,
-    li.dropdown.active > .dropdown-toggle,
-    li.dropdown.open.active > .dropdown-toggle {
+    > .open > a,
+    > .open > a:hover,
+    > .open > a:focus {
       background-color: @navbar-inverse-link-active-bg;
       color: @navbar-inverse-link-active-color;
     }
-    li.dropdown > a:hover .caret {
+    > .dropdown > a:hover .caret {
       border-top-color: @navbar-inverse-link-hover-color;
       border-bottom-color: @navbar-inverse-link-hover-color;
     }
-    li.dropdown > .dropdown-toggle .caret {
+    > .dropdown > a .caret {
       border-top-color: @navbar-inverse-link-color;
       border-bottom-color: @navbar-inverse-link-color;
     }
-    li.dropdown.open > .dropdown-toggle .caret,
-    li.dropdown.active > .dropdown-toggle .caret,
-    li.dropdown.open.active > .dropdown-toggle .caret {
+    > .open > a .caret,
+    > .open > a:hover .caret,
+    > .open > a:focus .caret {
       border-top-color: @navbar-inverse-link-active-color;
       border-bottom-color: @navbar-inverse-link-active-color;
     }

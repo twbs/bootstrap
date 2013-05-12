@@ -3162,17 +3162,17 @@ button.close {
   margin-top: 9px;
 }
 
-.nav > li.open > a,
-.nav > li.open > a:hover,
-.nav > li.open > a:focus {
+.nav.open > a,
+.nav.open > a:hover,
+.nav.open > a:focus {
   color: #fff;
   background-color: #428bca;
   border-color: #428bca;
 }
 
-.nav > li.open > a .caret,
-.nav > li.open > a:hover .caret,
-.nav > li.open > a:focus .caret {
+.nav.open > a .caret,
+.nav.open > a:hover .caret,
+.nav.open > a:focus .caret {
   border-top-color: #fff;
   border-bottom-color: #fff;
 }
@@ -3501,27 +3501,27 @@ button.close {
   border-bottom-left-radius: 0;
 }
 
-.navbar-nav li.dropdown > a:hover .caret,
-.navbar-nav li.dropdown > a:focus .caret {
+.navbar-nav > .dropdown > a:hover .caret,
+.navbar-nav > .dropdown > a:focus .caret {
   border-top-color: #333333;
   border-bottom-color: #333333;
 }
 
-.navbar-nav li.dropdown.open > .dropdown-toggle,
-.navbar-nav li.dropdown.active > .dropdown-toggle,
-.navbar-nav li.dropdown.open.active > .dropdown-toggle {
+.navbar-nav > .open > a,
+.navbar-nav > .open > a:hover,
+.navbar-nav > .open > a:focus {
   color: #555555;
   background-color: #d5d5d5;
 }
 
-.navbar-nav li.dropdown > .dropdown-toggle .caret {
+.navbar-nav > .dropdown > a .caret {
   border-top-color: #777777;
   border-bottom-color: #777777;
 }
 
-.navbar-nav li.dropdown.open > .dropdown-toggle .caret,
-.navbar-nav li.dropdown.active > .dropdown-toggle .caret,
-.navbar-nav li.dropdown.open.active > .dropdown-toggle .caret {
+.navbar-nav > .open > a .caret,
+.navbar-nav > .open > a:hover .caret,
+.navbar-nav > .open > a:focus .caret {
   border-top-color: #555555;
   border-bottom-color: #555555;
 }
@@ -3587,26 +3587,26 @@ button.close {
   background-color: #fff;
 }
 
-.navbar-inverse .navbar-nav li.dropdown.open > .dropdown-toggle,
-.navbar-inverse .navbar-nav li.dropdown.active > .dropdown-toggle,
-.navbar-inverse .navbar-nav li.dropdown.open.active > .dropdown-toggle {
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
   color: #ffffff;
   background-color: #080808;
 }
 
-.navbar-inverse .navbar-nav li.dropdown > a:hover .caret {
+.navbar-inverse .navbar-nav > .dropdown > a:hover .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
 }
 
-.navbar-inverse .navbar-nav li.dropdown > .dropdown-toggle .caret {
+.navbar-inverse .navbar-nav > .dropdown > a .caret {
   border-top-color: #999999;
   border-bottom-color: #999999;
 }
 
-.navbar-inverse .navbar-nav li.dropdown.open > .dropdown-toggle .caret,
-.navbar-inverse .navbar-nav li.dropdown.active > .dropdown-toggle .caret,
-.navbar-inverse .navbar-nav li.dropdown.open.active > .dropdown-toggle .caret {
+.navbar-inverse .navbar-nav > .open > a .caret,
+.navbar-inverse .navbar-nav > .open > a:hover .caret,
+.navbar-inverse .navbar-nav > .open > a:focus .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
 }
