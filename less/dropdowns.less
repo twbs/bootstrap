@@ -2,10 +2,6 @@
 // Dropdown menus
 // --------------------------------------------------
 
-// Remove the outline when :focus is triggered
-.open > a {
-  outline: 0;
-}
 
 // Dropdown arrow/caret
 // --------------------
@@ -107,8 +103,14 @@
 // Open state for the dropdown
 // ---------------------------
 .open {
-  & > .dropdown-menu {
+  // Show the menu
+  > .dropdown-menu {
     display: block;
+  }
+
+  // Remove the outline when :focus is triggered
+  > a {
+    outline: 0;
   }
 }
 

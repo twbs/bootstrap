@@ -28,17 +28,10 @@
       }
     }
 
-    // Nav states and addons
-    // --------------------------------------------------
-
-    // Disabled state
-    // -------------------------
-
-    // Gray out text
+    // Disabled state sets text to gray and nukes hover/tab effects
     &.disabled > a {
       color: @gray-light;
     }
-    // Nuke hover effects
     &.disabled > a:hover,
     &.disabled > a:focus {
       color: @gray-light;
@@ -46,9 +39,18 @@
       background-color: transparent;
       cursor: default;
     }
+
     // Space the headers out when they follow another list item (link)
     + .nav-header {
       margin-top: 9px;
+    }
+
+    // Open dropdowns
+    &.open > a,
+    &.open > a:hover,
+    &.open > a:focus {
+      background-color: @link-color;
+      border-color: @link-color;
     }
   }
 
@@ -222,8 +224,66 @@
 // -------------------------
 
 .nav-tabs .dropdown-menu {
+  // make dropdown border overlap tab border
+  margin-top: -1px;
   // Remove the top rounded corners here since there is a hard edge above the menu
   .border-top-radius(0);
+}
+
+
+
+
+
+
+  // Make dropdown carets use link color in navs
+  .nav .caret {
+    border-top-color: @link-color;
+    border-bottom-color: @link-color;
+  }
+  .nav a:hover .caret {
+    border-top-color: @link-hover-color;
+    border-bottom-color: @link-hover-color;
+  }
+
+
+
+// Active dropdown links
+// -------------------------
+.nav .active .caret {
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+}
+.nav-tabs .active .caret {
+  border-top-color: @gray;
+  border-bottom-color: @gray;
+}
+
+// Active:hover dropdown links
+// -------------------------
+.nav > .dropdown.active > a:hover {
+  cursor: pointer;
+}
+
+// Open dropdowns
+// -------------------------
+.nav-tabs .open > a,
+.nav-pills .open > a,
+.nav > li.dropdown.open.active > a:hover {
+  color: #fff;
+  background-color: @gray-light;
+  border-color: @gray-light;
+}
+.nav li.dropdown.open .caret,
+.nav li.dropdown.open.active .caret,
+.nav li.dropdown.open > a:hover .caret {
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+  .opacity(1);
+}
+
+// Dropdowns in stacked tabs
+.tabs-stacked .open > a:hover {
+  border-color: @gray-light;
 }
 
 
