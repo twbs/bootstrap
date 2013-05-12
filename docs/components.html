@@ -1170,9 +1170,12 @@ lead: "Dozens of reusable components built to provide iconography, dropdowns, na
     <div class="bs-example">
       <div class="navbar">
         <a href="#" class="navbar-brand">Brand</a>
-        <button type="button" class="btn btn-default">Submit</button>
+        <button type="button" class="btn btn-default navbar-btn">Sign in</button>
       </div>
     </div>
+{% highlight html %}
+<button type="button" class="btn btn-default navbar-btn">Sign in</button>
+{% endhighlight %}
 
     <h3 id="navbar-text">Text</h3>
     <p>Wrap strings of text in an element with <code>.navbar-text</code>, usually on a <code>&lt;p&gt;</code> tag for proper leading and color.</p>
@@ -1182,7 +1185,7 @@ lead: "Dozens of reusable components built to provide iconography, dropdowns, na
         <p class="navbar-text">Signed in as Mark Otto</p>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="navbar">
   <a href="#" class="navbar-brand">Brand</a>
   <p class="navbar-text">Signed in as Mark Otto</p>
@@ -1197,7 +1200,7 @@ lead: "Dozens of reusable components built to provide iconography, dropdowns, na
         <p class="pull-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
       </div>
     </div>
-{% highlight html linenos %}
+{% highlight html %}
 <div class="navbar">
   <a href="#" class="navbar-brand">Brand</a>
   <p class="pull-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
