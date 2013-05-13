@@ -158,7 +158,7 @@ module.exports = function(grunt) {
 
 
     // Default task.
-    grunt.registerTask('default', ['jshint', 'recess:dist', 'copy:dist', 'concat:dist', 'uglify']);
+    grunt.registerTask('default', ['jshint', 'recess:dist', 'copy:dist', 'concat:dist', 'uglify:dist']);
 
     // Test task.
     grunt.registerTask('test', ['jshint', 'qunit']);
