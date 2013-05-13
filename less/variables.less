@@ -44,8 +44,8 @@
 
 // Typography
 // -------------------------
-@sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
-@serifFontFamily:       Georgia, "Times New Roman", Times, serif;
+@sansFontFamily:        arial,"Microsoft YaHei","Helvetica Neue", Helvetica, Arial, sans-serif;
+@serifFontFamily:       Georgia,SimSun, "Times New Roman", Times, serif;
 @monoFontFamily:        Monaco, Menlo, Consolas, "Courier New", monospace;
 
 @baseFontSize:          14px;
@@ -70,9 +70,12 @@
 @paddingSmall:          2px 10px;  // 26px
 @paddingMini:           0 6px;   // 22px
 
-@baseBorderRadius:      4px;
-@borderRadiusLarge:     6px;
-@borderRadiusSmall:     3px;
+//@baseBorderRadius:      4px;
+//@borderRadiusLarge:     6px;
+//@borderRadiusSmall:     3px;
+@baseBorderRadius:      1px;
+@borderRadiusLarge:     4px;
+@borderRadiusSmall:     2px;
 
 
 // Tables
@@ -88,23 +91,23 @@
 @btnBackgroundHighlight:            darken(@white, 10%);
 @btnBorder:                         #ccc;
 
-@btnPrimaryBackground:              @linkColor;
-@btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 20%);
+@btnPrimaryBackground:              spin(#4C8FFD,-10%);
+@btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 10%);
 
-@btnInfoBackground:                 #5bc0de;
-@btnInfoBackgroundHighlight:        #2f96b4;
+@btnInfoBackground:                 spin(#5bc0de,-10%);
+@btnInfoBackgroundHighlight:        spin(#2f96b4,-10%);
 
-@btnSuccessBackground:              #62c462;
-@btnSuccessBackgroundHighlight:     #51a351;
+@btnSuccessBackground:              spin(#62c462,-30%);
+@btnSuccessBackgroundHighlight:     spin(#51a351,-30%);
 
-@btnWarningBackground:              lighten(@orange, 15%);
-@btnWarningBackgroundHighlight:     @orange;
+@btnWarningBackground:              spin(lighten(@orange, 15%),-30%);
+@btnWarningBackgroundHighlight:     spin(@orange,-30%);
 
-@btnDangerBackground:               #ee5f5b;
-@btnDangerBackgroundHighlight:      #bd362f;
+@btnDangerBackground:               spin(#ee5f5b,-30%);
+@btnDangerBackgroundHighlight:      spin(#bd362f,-30%);
 
-@btnInverseBackground:              #444;
-@btnInverseBackgroundHighlight:     @grayDarker;
+@btnInverseBackground:              spin(#444,-30%);
+@btnInverseBackgroundHighlight:     spin(@grayDarker,-30%);
 
 
 // Forms
@@ -172,7 +175,7 @@
 
 // Wells
 // -------------------------
-@wellBackground:                  #f5f5f5;
+@wellBackground:                  #f1f2f3;
 
 
 // Navbar
@@ -234,7 +237,7 @@
 @warningBackground:       #fcf8e3;
 @warningBorder:           darken(spin(@warningBackground, -10), 3%);
 
-@errorText:               #b94a48;
+@errorText:               #c03523;
 @errorBackground:         #f2dede;
 @errorBorder:             darken(spin(@errorBackground, -10), 3%);
 
