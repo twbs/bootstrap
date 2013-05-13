@@ -5112,68 +5112,68 @@ a.list-group-item.active > .badge,
   visibility: hidden;
 }
 
-.visible-phone {
+.visible-sm {
   display: inherit !important;
 }
 
-.visible-tablet {
+.visible-md {
   display: none !important;
 }
 
-.visible-desktop {
+.visible-lg {
   display: none !important;
 }
 
-.hidden-phone {
+.hidden-sm {
   display: none !important;
 }
 
-.hidden-tablet {
+.hidden-md {
   display: inherit !important;
 }
 
-.hidden-desktop {
+.hidden-lg {
   display: inherit !important;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  .visible-phone {
+  .visible-sm {
     display: none !important;
   }
-  .visible-tablet {
+  .visible-md {
     display: inherit !important;
   }
-  .visible-desktop {
+  .visible-lg {
     display: none !important;
   }
-  .hidden-phone {
+  .hidden-sm {
     display: inherit !important;
   }
-  .hidden-tablet {
+  .hidden-md {
     display: none !important;
   }
-  .hidden-desktop {
+  .hidden-lg {
     display: inherit !important;
   }
 }
 
 @media (min-width: 992px) {
-  .visible-phone {
+  .visible-sm {
     display: none !important;
   }
-  .visible-tablet {
+  .visible-md {
     display: none !important;
   }
-  .visible-desktop {
+  .visible-lg {
     display: inherit !important;
   }
-  .hidden-phone {
+  .hidden-sm {
     display: inherit !important;
   }
-  .hidden-tablet {
+  .hidden-md {
     display: inherit !important;
   }
-  .hidden-desktop {
+  .hidden-lg {
     display: none !important;
   }
 }
