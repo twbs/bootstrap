@@ -1300,17 +1300,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <h4>Cross-browser compatibility</h4>
       <p>While Bootstrap will apply these styles in all browsers, IE and Safari don't actually support the <code>&lt;disabled&gt;</code> attribute on a <code>&lt;fieldset&gt;</code>. Use custom JavaScript to disable the fieldset in these browsers.</p>
     </div>
-
     <form class="bs-example form-inline">
       <fieldset disabled>
-        <div>
-          <input type="text" class="col col-lg-4" placeholder="Disabled input">
-        </div>
-        <div>
-          <select class="col col-lg-4">
-            <option>Disabled select</option>
-          </select>
-        </div>
+        <input type="text" placeholder="Disabled input" style="width: 180px;">
+        <select style="width: 180px;">
+          <option>Disabled select</option>
+        </select>
         <div class="checkbox">
           <label>
             <input type="checkbox"> Can't check this
@@ -1322,14 +1317,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% highlight html %}
 <form class="form-inline">
   <fieldset disabled>
-    <div>
-      <input type="text" class="col col-lg-4" placeholder="Disabled input">
-    </div>
-    <div>
-      <select class="col col-lg-4">
-        <option>Disabled select</option>
-      </select>
-    </div>
+    <input type="text" placeholder="Disabled input" style="width: 180px;">
+    <select style="width: 180px;">
+      <option>Disabled select</option>
+    </select>
     <div class="checkbox">
       <label>
         <input type="checkbox"> Can't check this
