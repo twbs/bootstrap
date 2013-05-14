@@ -91,32 +91,32 @@
 
 // Danger (red)
 .progress-danger .bar, .progress .bar-danger {
-  #gradient > .vertical(spin(#ee5f5b,-10%), spin(#c43c35,-10%));
+  #gradient > .vertical(#ee5f5b, #c43c35);
 }
 .progress-danger.progress-striped .bar, .progress-striped .bar-danger {
-  #gradient > .striped(spin(#ee5f5b,-10%));
+  #gradient > .striped(#ee5f5b);
 }
 
 // Success (green)
 .progress-success .bar, .progress .bar-success {
-  #gradient > .vertical(spin(#62c462,-10%), spin(#57a957,-10%));
+  #gradient > .vertical(#62c462, #57a957);
 }
 .progress-success.progress-striped .bar, .progress-striped .bar-success {
-  #gradient > .striped(spin(#62c462,-10%));
+  #gradient > .striped(#62c462);
 }
 
 // Info (teal)
 .progress-info .bar, .progress .bar-info {
-  #gradient > .vertical(spin(#5bc0de,10%), spin(#339bb9,10%));
+  #gradient > .vertical(#5bc0de, #339bb9);
 }
 .progress-info.progress-striped .bar, .progress-striped .bar-info {
-  #gradient > .striped(spin(#5bc0de,10%));
+  #gradient > .striped(#5bc0de);
 }
 
 // Warning (orange)
 .progress-warning .bar, .progress .bar-warning {
-  #gradient > .vertical(spin(lighten(@orange, 15%),-10%), spin(@orange,-10%));
+  #gradient > .vertical(lighten(@orange, 15%), @orange);
 }
 .progress-warning.progress-striped .bar, .progress-striped .bar-warning {
-  #gradient > .striped(spin(lighten(@orange, 15%),-10%));
+  #gradient > .striped(lighten(@orange, 15%));
 }

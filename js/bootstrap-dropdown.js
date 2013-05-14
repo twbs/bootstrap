@@ -27,6 +27,7 @@
   * ========================= */
 
   var toggle = '[data-toggle=dropdown]'
+    , hovertoggle = '[data-toggle=hoverdropdown]'
     , Dropdown = function (element) {
         var $el = $(element).on('click.dropdown.data-api', this.toggle)
         $('html').on('click.dropdown.data-api', function () {
@@ -57,6 +58,27 @@
 
       $this.focus()
 
+      return false
+    }
+    
+  , show: function (e) {
+      var $this = $(this)
+        , $parent
+        , isActive
+
+      if ($this.is('.disabled, :disabled')) return
+
+      $parent = getParent($this)
+
+      if(!$parent.hasClass('dropdown-hover')){
+        return;
+      }
+      clearMenus()
+      if(!$parent.hasClass('open')){
+        $parent.toggleClass('open')
+      }        
+
+      $this.focus()
       return false
     }
 
@@ -160,6 +182,7 @@
     .on('click.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
     .on('click.dropdown-menu', function (e) { e.stopPropagation() })
     .on('click.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
+    .on('mouseenter.dropdown.data-api'  , toggle, Dropdown.prototype.show)
     .on('keydown.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
 
 }(window.jQuery);
