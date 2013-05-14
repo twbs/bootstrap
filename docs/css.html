@@ -1051,8 +1051,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <p>Inputs, selects, and textareas are 100% wide by default in Bootstrap. To use the inline form, you'll have to set a width on the form controls used within.</p>
     </div>
     <form class="bs-example form-inline">
-      <input type="text" placeholder="Email" style="width: 180px;">
-      <input type="password" placeholder="Password" style="width: 180px;">
+      <input type="text" placeholder="Email">
+      <input type="password" placeholder="Password">
       <div class="checkbox">
         <label>
           <input type="checkbox"> Remember me
@@ -1062,8 +1062,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </form><!-- /example -->
 {% highlight html %}
 <form class="form-inline">
-  <input type="text" placeholder="Email" style="width: 180px;">
-  <input type="password" placeholder="Password" style="width: 180px;">
+  <input type="text" placeholder="Email">
+  <input type="password" placeholder="Password">
   <div class="checkbox">
     <label>
       <input type="checkbox"> Remember me
@@ -1132,7 +1132,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <h4>Type declaration required</h4>
       <p>Inputs will only be fully styled if their <code>type</code> is properly declared.</p>
     </div>
-    <form class="bs-example form-inline">
+    <form class="bs-example">
       <input type="text" placeholder="Text input">
     </form>
 {% highlight html %}
@@ -1141,7 +1141,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h3>Textarea</h3>
     <p>Form control which supports multiple lines of text. Change <code>rows</code> attribute as necessary.</p>
-    <form class="bs-example form-inline">
+    <form class="bs-example">
       <textarea rows="3"></textarea>
     </form>
 {% highlight html %}
@@ -1257,7 +1257,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h3 id="forms-input-focus">Input focus</h3>
     <p>We remove the default <code>outline</code> styles on some form controls and apply a <code>box-shadow</code> in its place for <code>:focus</code>.</p>
-    <form class="bs-example form-inline">
+    <form class="bs-example">
       <input class="focused" id="focusedInput" type="text" value="This is focused...">
     </form>
 {% highlight html %}
@@ -1272,7 +1272,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <p>Invalid inputs are styled via the <code>:invalid</code> CSS selector, which is not supported by Internet Explorer 9 and below.</p>
     </div>
 
-    <form class="bs-example form-inline">
+    <form class="bs-example">
       <input type="email" placeholder="test@example.com" required>
     </form>
 {% highlight html %}
@@ -1281,7 +1281,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h3 id="forms-disabled-inputs">Disabled inputs</h3>
     <p>Add the <code>disabled</code> attribute on an input to prevent user input and trigger a slightly different look.</p>
-    <form class="bs-example form-inline">
+    <form class="bs-example">
       <input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here…" disabled>
     </form>
 {% highlight html %}
@@ -1303,14 +1303,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <form class="bs-example form-inline">
       <fieldset disabled>
-        <div>
-          <input type="text" class="col col-lg-4" placeholder="Disabled input">
-        </div>
-        <div>
-          <select class="col col-lg-4">
-            <option>Disabled select</option>
-          </select>
-        </div>
+        <input type="text" placeholder="Disabled input">
+        <select>
+          <option>Disabled select</option>
+        </select>
         <div class="checkbox">
           <label>
             <input type="checkbox"> Can't check this
@@ -1323,10 +1319,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <form class="form-inline">
   <fieldset disabled>
     <div>
-      <input type="text" class="col col-lg-4" placeholder="Disabled input">
+      <input type="text" placeholder="Disabled input">
     </div>
     <div>
-      <select class="col col-lg-4">
+      <select>
         <option>Disabled select</option>
       </select>
     </div>
