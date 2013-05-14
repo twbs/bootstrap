@@ -28,6 +28,8 @@
 @orange:                #f89406;
 @pink:                  #c3325f;
 @purple:                #7a43b6;
+@googleRed:             #dd4b39;
+@googleBlue:            #3B81F2;
 
 
 // Scaffolding
@@ -38,8 +40,8 @@
 
 // Links
 // -------------------------
-@linkColor:             #08c;
-@linkColorHover:        darken(@linkColor, 15%);
+@linkColor:             #0077CC;
+@linkColorHover:        darken(@linkColor, 10%);
 
 
 // Typography
@@ -100,11 +102,11 @@
 @btnSuccessBackground:              spin(#62c462,-30%);
 @btnSuccessBackgroundHighlight:     spin(#51a351,-30%);
 
-@btnWarningBackground:              spin(lighten(@orange, 15%),-30%);
-@btnWarningBackgroundHighlight:     spin(@orange,-30%);
+@btnWarningBackground:              #FBB24B;
+@btnWarningBackgroundHighlight:     #FAA122;
 
-@btnDangerBackground:               spin(#ee5f5b,-30%);
-@btnDangerBackgroundHighlight:      spin(#bd362f,-30%);
+@btnDangerBackground:               #DA4937;
+@btnDangerBackgroundHighlight:      #C6402E;
 
 @btnInverseBackground:              spin(#444,-30%);
 @btnInverseBackgroundHighlight:     spin(@grayDarker,-30%);
@@ -280,8 +282,10 @@
 @gridRowWidth:            (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
 
 // 1200px min
-@gridColumnWidth1200:     70px;
-@gridGutterWidth1200:     30px;
+//@gridColumnWidth1200:     70px;
+//@gridGutterWidth1200:     30px;
+@gridColumnWidth1200:     60px;
+@gridGutterWidth1200:     25px;
 @gridRowWidth1200:        (@gridColumns * @gridColumnWidth1200) + (@gridGutterWidth1200 * (@gridColumns - 1));
 
 // 768px-979px

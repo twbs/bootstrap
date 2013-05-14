@@ -139,7 +139,38 @@
   border-bottom-color: transparent;
   cursor: default;
 }
-
+//Navs Google Style
+.nav-tabs-google > li {
+  margin: 0 1px 0 0;
+}
+.nav-tabs-google > li > a {
+  padding-top: 2px;
+  padding-bottom: 6px;
+  line-height: 20px;
+  color: #777;
+  border: 1px solid transparent;
+}
+.nav-tabs-google > li > a:hover {
+  color: #222;
+  background-color: @white;
+  border-color: @white @white @white;
+}
+.nav-tabs-google > li > a:active {
+  color: @googleRed;
+}
+.nav-tabs-google li:hover {
+  color: @grayDark;
+  border-bottom: 3px solid @googleRed;
+}
+.nav-tabs-google li.active {
+  font-weight: bold;
+  border-bottom: 3px solid @googleRed;
+}
+.nav-tabs-google > .active > a,
+.nav-tabs-google > .active > a:hover {
+  color: @grayDark;
+  border: 1px solid transparent;
+}
 
 // PILLS
 // -----
