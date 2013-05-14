@@ -86,8 +86,8 @@
 ================================================== -->
 <header class="jumbotron subhead" id="overview">
   <div class="container">
-    <h1>Base CSS</h1>
-    <p class="lead">Fundamental HTML elements styled and enhanced with extensible classes.</p>
+    <h1>Estilos CSS</h1>
+    <p class="lead">Elementos HTML fundamentales estilados y mejorados con clases extensibles.</p>
   </div>
 </header>
 
@@ -99,13 +99,13 @@
     <div class="row">
       <div class="span3 bs-docs-sidebar">
         <ul class="nav nav-list bs-docs-sidenav">
-          <li><a href="#typography"><i class="icon-chevron-right"></i> Typography</a></li>
-          <li><a href="#code"><i class="icon-chevron-right"></i> Code</a></li>
-          <li><a href="#tables"><i class="icon-chevron-right"></i> Tables</a></li>
-          <li><a href="#forms"><i class="icon-chevron-right"></i> Forms</a></li>
-          <li><a href="#buttons"><i class="icon-chevron-right"></i> Buttons</a></li>
-          <li><a href="#images"><i class="icon-chevron-right"></i> Images</a></li>
-          <li><a href="#icons"><i class="icon-chevron-right"></i> Icons by Glyphicons</a></li>
+          <li><a href="#typography"><i class="icon-chevron-right"></i> Tipografía</a></li>
+          <li><a href="#code"><i class="icon-chevron-right"></i> Código</a></li>
+          <li><a href="#tables"><i class="icon-chevron-right"></i> Tablas</a></li>
+          <li><a href="#forms"><i class="icon-chevron-right"></i> Formularios</a></li>
+          <li><a href="#buttons"><i class="icon-chevron-right"></i> Botones</a></li>
+          <li><a href="#images"><i class="icon-chevron-right"></i> Imágenes</a></li>
+          <li><a href="#icons"><i class="icon-chevron-right"></i> Íconos de Glyphicons</a></li>
         </ul>
       </div>
       <div class="span9">
@@ -116,22 +116,22 @@
         ================================================== -->
         <section id="typography">
           <div class="page-header">
-            <h1>Typography</h1>
+            <h1>Tipografía</h1>
           </div>
 
-          <h2 id="headings">Headings</h2>
-          <p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available.</p>
+          <h2 id="headings">Encabezados</h2>
+          <p>Todos los encabezados HTML, de <code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code> están disponibles.</p>
           <div class="bs-docs-example">
-            <h1>h1. Heading 1</h1>
-            <h2>h2. Heading 2</h2>
-            <h3>h3. Heading 3</h3>
-            <h4>h4. Heading 4</h4>
-            <h5>h5. Heading 5</h5>
-            <h6>h6. Heading 6</h6>
+            <h1>h1. Encabezado 1</h1>
+            <h2>h2. Encabezado 2</h2>
+            <h3>h3. Encabezado 3</h3>
+            <h4>h4. Encabezado 4</h4>
+            <h5>h5. Encabezado 5</h5>
+            <h6>h6. Encabezado 6</h6>
           </div>
 
-          <h2 id="body-copy">Body copy</h2>
-          <p>Bootstrap's global default <code>font-size</code> is <strong>14px</strong>, with a <code>line-height</code> of <strong>20px</strong>. This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition, <code>&lt;p&gt;</code> (paragraphs) receive a bottom margin of half their line-height (10px by default).</p>
+          <h2 id="body-copy">Texto de cuerpo</h2>
+          <p>El <code>font-size</code> (tamaño de tipografía) predeterminado de BAstrap es <strong>14px</strong>, con un <code>line-height</code> (alto de línea) de <strong>20px</strong>. Esto se aplica al <code>&lt;body&gt;</code> y a todos los párrafos. Además, los <code>&lt;p&gt;</code> (párrafos) tienen un margen inferior de la mitad de su alto de línea (predeterminado de 10px).</p>
           <div class="bs-docs-example">
             <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
             <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
@@ -139,65 +139,62 @@
           </div>
           <pre class="prettyprint">&lt;p&gt;...&lt;/p&gt;</pre>
 
-          <h3>Lead body copy</h3>
-          <p>Make a paragraph stand out by adding <code>.lead</code>.</p>
+          <h3>Texto de cuerpo destacado</h3>
+          <p>Hacé que un párrafo se destaque usando <code>.lead</code>.</p>
           <div class="bs-docs-example">
             <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
           </div>
           <pre class="prettyprint">&lt;p class="lead"&gt;...&lt;/p&gt;</pre>
 
-          <h3>Built with Less</h3>
-          <p>The typographic scale is based on two LESS variables in <strong>variables.less</strong>: <code>@baseFontSize</code> and <code>@baseLineHeight</code>. The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.</p>
-
 
           <hr class="bs-docs-separator">
 
 
-          <h2 id="emphasis">Emphasis</h2>
-          <p>Make use of HTML's default emphasis tags with lightweight styles.</p>
+          <h2 id="emphasis">Énfasis</h2>
+          <p>Hacé uso de las etiquetas estándar de HTML para énfasis.</p>
 
           <h3><code>&lt;small&gt;</code></h3>
-          <p>For de-emphasizing inline or blocks of text, <small>use the small tag.</small></p>
+          <p>Para sacarle énfasis a texto inline o en un bloque, <small>usá la etiqueta small.</small></p>
           <div class="bs-docs-example">
-            <p><small>This line of text is meant to be treated as fine print.</small></p>
+            <p><small>Ésta línea de texto se debería considerar como "letra pequeña".</small></p>
           </div>
 <pre class="prettyprint">
 &lt;p&gt;
-  &lt;small&gt;This line of text is meant to be treated as fine print.&lt;/small&gt;
+  &lt;small&gt;Ésta línea de texto se debería considerar como "letra pequeña".&lt;/small&gt;
 &lt;/p&gt;
 </pre>
 
-          <h3>Bold</h3>
-          <p>For emphasizing a snippet of text with a heavier font-weight.</p>
+          <h3>Negrita</h3>
+          <p>Para dar énfasis a un fragmento de texto con ancho mayor.</p>
           <div class="bs-docs-example">
-            <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
+            <p>El siguiente fragmento de texto se muestra como <strong>texto en negrita</strong>.</p>
           </div>
-          <pre class="prettyprint">&lt;strong&gt;rendered as bold text&lt;/strong&gt;</pre>
+          <pre class="prettyprint">&lt;strong&gt;texto en negrita&lt;/strong&gt;</pre>
 
-          <h3>Italics</h3>
-          <p>For emphasizing a snippet of text with italics.</p>
+          <h3>Itálica</h3>
+          <p>Para dar énfasis a un fragmento de texto con itálicas (cursivas).</p>
           <div class="bs-docs-example">
-            <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
+            <p>El siguiente fragmento de texto se muestra como <em>texto en itálicas</em>.</p>
           </div>
-          <pre class="prettyprint">&lt;em&gt;rendered as italicized text&lt;/em&gt;</pre>
+          <pre class="prettyprint">&lt;em&gt;texto en itálicas&lt;/em&gt;</pre>
 
-          <p><span class="label label-info">Heads up!</span> Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
+          <p><span class="label label-info">¡Atención!</span> Sentite libre de usar <code>&lt;b&gt;</code> y <code>&lt;i&gt;</code> en HTML5. <code>&lt;b&gt;</code> se usa para resaltar palabras o frases sin darles mayor importancia mientras que <code>&lt;i&gt;</code> se usa para la voz, términos técnicos, etc.</p>
 
-          <h3>Alignment classes</h3>
-          <p>Easily realign text to components with text alignment classes.</p>
+          <h3>Clases para alineación</h3>
+          <p>Realineá fácilmente el texto con estas clases.</p>
           <div class="bs-docs-example">
-            <p class="text-left">Left aligned text.</p>
-            <p class="text-center">Center aligned text.</p>
-            <p class="text-right">Right aligned text.</p>
+            <p class="text-left">Texto alineado a la izquierda.</p>
+            <p class="text-center">Texto alineado al centro.</p>
+            <p class="text-right">Texto alineado a la derecha.</p>
           </div>
 <pre class="prettyprint linenums">
-&lt;p class="text-left"&gt;Left aligned text.&lt;/p&gt;
-&lt;p class="text-center"&gt;Center aligned text.&lt;/p&gt;
-&lt;p class="text-right"&gt;Right aligned text.&lt;/p&gt;
+&lt;p class="text-left"&gt;Texto alineado a la izquierda.&lt;/p&gt;
+&lt;p class="text-center"&gt;Texto alineado al centro.&lt;/p&gt;
+&lt;p class="text-right"&gt;Texto alineado a la derecha.&lt;/p&gt;
 </pre>
 
-          <h3>Emphasis classes</h3>
-          <p>Convey meaning through color with a handful of emphasis utility classes.</p>
+          <h3>Clases de énfasis</h3>
+          <p>Transmití sentido a través del color con estas clases utilitarias de énfasis.</p>
           <div class="bs-docs-example">
             <p class="muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
             <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
@@ -217,20 +214,20 @@
           <hr class="bs-docs-separator">
 
 
-          <h2 id="abbreviations">Abbreviations</h2>
-          <p>Stylized implementation of HTML's <code>&lt;abbr&gt;</code> element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover.</p>
+          <h2 id="abbreviations">Abreviaturas</h2>
+          <p>Implementación con estilos del elemento <code>&lt;abbr&gt;</code> para abreviaturas y acrónimos para mostrar la versión expandida al hacer hover. Abreviaturas con un atributo <code>title</code> tienen un borde inferior punteado y un cursor de ayuda al hacer hover, proveyendo contexto adicional al hacer hover.</p>
 
           <h3><code>&lt;abbr&gt;</code></h3>
-          <p>For expanded text on long hover of an abbreviation, include the <code>title</code> attribute.</p>
+          <p>Para texto explicativo al hacer hover sobre una abreviatura, incluí el atributo <code>title</code>.</p>
           <div class="bs-docs-example">
-            <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
+            <p>Una abreviatura de la palabra atributo es <abbr title="atributo">attr</abbr>.</p>
           </div>
-          <pre class="prettyprint">&lt;abbr title="attribute"&gt;attr&lt;/abbr&gt;</pre>
+          <pre class="prettyprint">&lt;abbr title="atributo"&gt;attr&lt;/abbr&gt;</pre>
 
           <h3><code>&lt;abbr class="initialism"&gt;</code></h3>
-          <p>Add <code>.initialism</code> to an abbreviation for a slightly smaller font-size.</p>
+          <p>Agregá <code>.initialism</code> a una abreviatura para un menor tamaño de tipografía.</p>
           <div class="bs-docs-example">
-            <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.</p>
+            <p>El <abbr title="HyperText Markup Language" class="initialism">HTML</abbr> es lo mejor del mundo.</p>
           </div>
           <pre class="prettyprint">&lt;abbr title="HyperText Markup Language" class="initialism"&gt;HTML&lt;/abbr&gt;</pre>
 
@@ -238,11 +235,11 @@
           <hr class="bs-docs-separator">
 
 
-          <h2 id="addresses">Addresses</h2>
-          <p>Present contact information for the nearest ancestor or the entire body of work.</p>
+          <h2 id="addresses">Direcciones</h2>
+          <p>Presentá información de contacto para el anterior ancestro del elemento o para la obra completa.</p>
 
           <h3><code>&lt;address&gt;</code></h3>
-          <p>Preserve formatting by ending all lines with <code>&lt;br&gt;</code>.</p>
+          <p>Preservá el formato terminando todas las líneas con <code>&lt;br&gt;</code>.</p>
           <div class="bs-docs-example">
             <address>
               <strong>Twitter, Inc.</strong><br>
@@ -251,7 +248,7 @@
               <abbr title="Phone">P:</abbr> (123) 456-7890
             </address>
             <address>
-              <strong>Full Name</strong><br>
+              <strong>Nombre completo</strong><br>
               <a href="mailto:#">first.last@example.com</a>
             </address>
           </div>
@@ -264,7 +261,7 @@
 &lt;/address&gt;
 
 &lt;address&gt;
-  &lt;strong&gt;Full Name&lt;/strong&gt;&lt;br&gt;
+  &lt;strong&gt;Nombre completo&lt;/strong&gt;&lt;br&gt;
   &lt;a href="mailto:#"&gt;first.last@example.com&lt;/a&gt;
 &lt;/address&gt;
 </pre>
@@ -274,10 +271,10 @@
 
 
           <h2 id="blockquotes">Blockquotes</h2>
-          <p>For quoting blocks of content from another source within your document.</p>
+          <p>Para citar bloques de contenido de otra fuente en tu documento.</p>
 
-          <h3>Default blockquote</h3>
-          <p>Wrap <code>&lt;blockquote&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes we recommend a <code>&lt;p&gt;</code>.</p>
+          <h3>Blockquote predeterminado</h3>
+          <p>Usá <code>&lt;blockquote&gt;</code> alrededor de cualquier <abbr title="HyperText Markup Language">HTML</abbr> para hacerlo una cita. Para citas directas recomendamos <code>&lt;p&gt;</code>.</p>
           <div class="bs-docs-example">
             <blockquote>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -289,30 +286,30 @@
 &lt;/blockquote&gt;
 </pre>
 
-          <h3>Blockquote options</h3>
-          <p>Style and content changes for simple variations on a standard blockquote.</p>
+          <h3>Opciones de Blockquote</h3>
+          <p>Cambios de estilo y contenido para simples variantes de un blockquote estándar.</p>
 
-          <h4>Naming a source</h4>
-          <p>Add <code>&lt;small&gt;</code> tag for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
+          <h4>Mencionando una fuente</h4>
+          <p>Agregá una etiqueta <code>&lt;small&gt;</code> para identificar la fuente. Poné el nombre de la fuente dentro de una etiqueta <code>&lt;cite&gt;</code>.</p>
           <div class="bs-docs-example">
             <blockquote>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-              <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+              <small>Alguien Famoso en <cite title="Libro Famoso">Libro Famoso</cite></small>
             </blockquote>
           </div>
 <pre class="prettyprint linenums">
 &lt;blockquote&gt;
   &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
-  &lt;small&gt;Someone famous &lt;cite title="Source Title"&gt;Source Title&lt;/cite&gt;&lt;/small&gt;
+  &lt;small&gt;Alguien Famoso en &lt;cite title="Libro Famoso"&gt;Libro Famoso&lt;/cite&gt;&lt;/small&gt;
 &lt;/blockquote&gt;
 </pre>
 
-          <h4>Alternate displays</h4>
-          <p>Use <code>.pull-right</code> for a floated, right-aligned blockquote.</p>
+          <h4>Visualización alternativa</h4>
+          <p>Usá <code>.pull-right</code> para tener un blockquote flotado alineado a la derecha.</p>
           <div class="bs-docs-example" style="overflow: hidden;">
             <blockquote class="pull-right">
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-              <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+              <small>Alguien Famoso en <cite title="Libro Famoso">Libro Famoso</cite></small>
             </blockquote>
           </div>
 <pre class="prettyprint linenums">
@@ -326,10 +323,10 @@
 
 
           <!-- Lists -->
-          <h2 id="lists">Lists</h2>
+          <h2 id="lists">Listas</h2>
 
-          <h3>Unordered</h3>
-          <p>A list of items in which the order does <em>not</em> explicitly matter.</p>
+          <h3>No ordenadas</h3>
+          <p>Una lista de ítems en los que el orden <em>no</em> es importante.</p>
           <div class="bs-docs-example">
             <ul>
               <li>Lorem ipsum dolor sit amet</li>
@@ -355,8 +352,8 @@
 &lt;/ul&gt;
 </pre>
 
-          <h3>Ordered</h3>
-          <p>A list of items in which the order <em>does</em> explicitly matter.</p>
+          <h3>Ordenadas</h3>
+          <p>Una lista de ítems en los que el orden <em>sí</em> es importante.</p>
           <div class="bs-docs-example">
             <ol>
               <li>Lorem ipsum dolor sit amet</li>
@@ -375,8 +372,8 @@
 &lt;/ol&gt;
 </pre>
 
-        <h3>Unstyled</h3>
-        <p>Remove the default <code>list-style</code> and left padding on list items (immediate children only).</p>
+        <h3>Sin estilo</h3>
+        <p>Eliminá el <code>list-style</code> predeterminado y el left padding en los ítems de la lista (solamente para los primeros children).</p>
         <div class="bs-docs-example">
           <ul class="unstyled">
             <li>Lorem ipsum dolor sit amet</li>
@@ -403,7 +400,7 @@
 </pre>
 
         <h3>Inline</h3>
-        <p>Place all list items on a single line with <code>inline-block</code> and some light padding.</p>
+        <p>Ubicá todos los ítems en una sola línea y con algo de padding usando <code>inline-block</code>.</p>
         <div class="bs-docs-example">
           <ul class="inline">
             <li>Lorem ipsum</li>
@@ -417,12 +414,12 @@
 &lt;/ul&gt;
 </pre>
 
-        <h3>Description</h3>
-        <p>A list of terms with their associated descriptions.</p>
+        <h3>Descripciones</h3>
+        <p>Una lista de términos con sus descripciones asociadas.</p>
         <div class="bs-docs-example">
           <dl>
-            <dt>Description lists</dt>
-            <dd>A description list is perfect for defining terms.</dd>
+            <dt>Listas de descripciones</dt>
+            <dd>Una lista de descripciones es perfecta para definir términos.</dd>
             <dt>Euismod</dt>
             <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
             <dd>Donec id elit non mi porta gravida at eget metus.</dd>
@@ -437,12 +434,12 @@
 &lt;/dl&gt;
 </pre>
 
-        <h4>Horizontal description</h4>
-        <p>Make terms and descriptions in <code>&lt;dl&gt;</code> line up side-by-side.</p>
+        <h4>Descripción horizontal</h4>
+        <p>Hacé que términos y descripciones en <code>&lt;dl&gt;</code> se distribuyan uno al lado del otro.</p>
         <div class="bs-docs-example">
           <dl class="dl-horizontal">
-            <dt>Description lists</dt>
-            <dd>A description list is perfect for defining terms.</dd>
+            <dt>Listas de descripciones</dt>
+            <dd>Una lista de descripciones es perfecta para definir términos.</dd>
             <dt>Euismod</dt>
             <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
             <dd>Donec id elit non mi porta gravida at eget metus.</dd>
@@ -459,8 +456,8 @@
 &lt;/dl&gt;
 </pre>
         <p>
-          <span class="label label-info">Heads up!</span>
-          Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.
+          <span class="label label-info">¡Atención!</span>
+          Las listas de descipción horizontales truncarán los términos que sean demasiado largos en la columna izquierda usando <code>text-overflow</code>. En visualizaciones más angostas, van a cambiar al layout predeterminado, que es apilado uno arriba del otro.
         </p>
       </section>
 
@@ -470,30 +467,30 @@
         ================================================== -->
         <section id="code">
           <div class="page-header">
-            <h1>Code</h1>
+            <h1>Código</h1>
           </div>
 
           <h2>Inline</h2>
-          <p>Wrap inline snippets of code with <code>&lt;code&gt;</code>.</p>
+          <p>Usá <code>&lt;code&gt;</code> para poner código adentro.</p>
 <div class="bs-docs-example">
-  For example, <code>&lt;section&gt;</code> should be wrapped as inline.
+  Por ejemplo, <code>&lt;section&gt;</code> debería estar inline.
 </div>
 <pre class="prettyprint linenums">
-For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped as inline.
+Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inline.
 </pre>
 
-          <h2>Basic block</h2>
-          <p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to escape any angle brackets in the code for proper rendering.</p>
+          <h2>Bloque básico</h2>
+          <p>Usá <code>&lt;pre&gt;</code> para muchas líneas de código. Asegurate de 'escapar' cualquier signo &lt; o &gt; en el código para que funcione bien.</p>
 <div class="bs-docs-example">
-  <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
+  <pre>&lt;p&gt;Texto de ejemplo...&lt;/p&gt;</pre>
 </div>
 <pre class="prettyprint linenums" style="margin-bottom: 9px;">
 &lt;pre&gt;
-  &amp;lt;p&amp;gt;Sample text here...&amp;lt;/p&amp;gt;
+  &amp;lt;p&amp;gt;Texto de ejemplo...&amp;lt;/p&amp;gt;
 &lt;/pre&gt;
 </pre>
-          <p><span class="label label-info">Heads up!</span> Be sure to keep code within <code>&lt;pre&gt;</code> tags as close to the left as possible; it will render all tabs.</p>
-          <p>You may optionally add the <code>.pre-scrollable</code> class which will set a max-height of 350px and provide a y-axis scrollbar.</p>
+          <p><span class="label label-info">¡Atención!</span> Asegurate de mantener el código dentro de etiquetas <code>&lt;pre&gt;</code> lo más a la izquierda posible, porque se renderizarán todos los espacios y tabulaciones.</p>
+          <p>Podés agregar opcionalmente la clase <code>.pre-scrollable</code> que le dará un max-height de 350px y una barra de desplazamiento vertical.</p>
         </section>
 
 
@@ -502,10 +499,10 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
         ================================================== -->
         <section id="tables">
           <div class="page-header">
-            <h1>Tables</h1>
+            <h1>Tablas</h1>
           </div>
 
-          <h2>Default styles</h2>
+          <h2>Estilos predeterminados</h2>
           <p>For basic styling&mdash;light padding and only horizontal dividers&mdash;add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>
           <div class="bs-docs-example">
             <table class="table">
