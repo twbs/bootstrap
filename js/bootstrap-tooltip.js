@@ -90,9 +90,9 @@
 
       self = $(e.currentTarget)[this.type](options).data(this.type)
 
+      clearTimeout(this.timeout)
       if (!self.options.delay || !self.options.delay.show) return self.show()
 
-      clearTimeout(this.timeout)
       self.hoverState = 'in'
       this.timeout = setTimeout(function() {
         if (self.hoverState == 'in') self.show()
@@ -232,12 +232,12 @@
 
       function removeWithAnimation() {
         var timeout = setTimeout(function () {
-          $tip.off($.support.transition.end).detach()
+          $tip.filter(':not(.in)').off($.support.transition.end).detach()
         }, 500)
 
         $tip.one($.support.transition.end, function () {
           clearTimeout(timeout)
-          $tip.detach()
+          $tip.filter(':not(.in)').detach()
         })
       }
 
