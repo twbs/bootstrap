@@ -1197,18 +1197,18 @@ lead: "Dozens of reusable components built to provide iconography, dropdowns, na
     <div class="bs-example">
       <div class="navbar">
         <a href="#" class="navbar-brand">Brand</a>
-        <p class="pull-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+        <p class="navbar-text pull-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
       </div>
     </div>
 {% highlight html %}
 <div class="navbar">
   <a href="#" class="navbar-brand">Brand</a>
-  <p class="pull-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+  <p class="navbar-text pull-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
 </div>
 {% endhighlight %}
 
     <h3 id="navbar-component-alignment">Component alignment</h3>
-    <p>Align nav links, search form, or text, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
+    <p>Align nav links, forms, buttons, or text, using the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction. To align nav links, put them in a separate <code>&lt;ul&gt;</code> with the respective utility class applied.</p>
 
 
     <h2>Optional display variations</h2>
@@ -1236,16 +1236,9 @@ lead: "Dozens of reusable components built to provide iconography, dropdowns, na
 
     <div class="bs-callout">
       <h4>Body padding required</h4>
-      <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the top of the <code>&lt;body&gt;</code>. The navbar itself has a height of 54px by default. At 768px and above, its height shrinks to 50px. Try out your own values or use our snippet below:</p>
+      <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the top of the <code>&lt;body&gt;</code>. Try out your own values or use our snippet below. Tip: By default, the navbar is 50px high.</p>
 {% highlight css %}
-body {
-  padding-top: 64px;
-}
-@media screen and (min-width: 768px) {
-  body {
-    padding-top: 60px;
-  }
-}
+body { padding-top: 70px; }
 {% endhighlight %}
       <p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
     </div>
@@ -1272,16 +1265,9 @@ body {
 
     <div class="bs-callout">
       <h4>Body padding required</h4>
-      <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the bottom of the <code>&lt;body&gt;</code>. The navbar itself has a height of 54px by default. At 768px and above, its height shrinks to 50px. Try out your own values or use our snippet below:</p>
+      <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the bottom of the <code>&lt;body&gt;</code>. Try out your own values or use our snippet below. Tip: By default, the navbar is 50px high.</p>
 {% highlight css %}
-body {
-  padding-bottom: 64px;
-}
-@media screen and (min-width: 768px) {
-  body {
-    padding-bottom: 60px;
-  }
-}
+body { padding-bottom: 70px; }
 {% endhighlight %}
       <p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
     </div>
