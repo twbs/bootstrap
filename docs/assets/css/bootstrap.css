@@ -1700,7 +1700,12 @@ select:focus:invalid:focus {
 
 .form-horizontal .row-label {
   padding-top: 6px;
-  text-align: right;
+}
+
+@media (min-width: 768px) {
+  .form-horizontal .row-label {
+    text-align: right;
+  }
 }
 
 .btn {

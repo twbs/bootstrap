@@ -478,6 +478,12 @@ select:focus:invalid {
   }
   .row-label {
     padding-top: 6px;
+  }
+}
+
+// Only right aline form labels here when the columns stop stacking
+@media (min-width: 768px) {
+  .form-horizontal .row-label {
     text-align: right;
   }
 }
