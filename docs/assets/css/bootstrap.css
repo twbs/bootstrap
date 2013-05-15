@@ -3387,6 +3387,7 @@ button.close {
 
 .navbar-nav {
   margin-top: 10px;
+  margin-bottom: 15px;
 }
 
 .navbar-nav > li > a {
@@ -3394,6 +3395,7 @@ button.close {
   padding-bottom: 15px;
   line-height: 20px;
   color: #777777;
+  border-radius: 4px;
 }
 
 .navbar-nav > li > a:hover,
@@ -3634,9 +3636,13 @@ button.close {
   .navbar .nav {
     float: left;
     margin-top: 0;
+    margin-bottom: 0;
   }
   .navbar .nav > li {
     float: left;
+  }
+  .navbar .nav > li > a {
+    border-radius: 0;
   }
   .navbar .nav.pull-right {
     float: right;

@@ -22,12 +22,14 @@
   // Space out from .navbar .brand and .btn-navbar when stacked in mobile views
   // and outdent nav links so text lines up with logo.
   margin-top: 10px;
+  margin-bottom: 15px;
 
   > li > a {
     padding-top: ((@navbar-height - @line-height-computed) / 2);
     padding-bottom: ((@navbar-height - @line-height-computed) / 2);
     color: @navbar-link-color;
     line-height: 20px;
+    border-radius: @border-radius-base;
   }
   > li > a:hover,
   > li > a:focus {
@@ -281,10 +283,15 @@
   }
   .navbar .nav {
     float: left;
-    margin-top: 0; // undo top margin to make nav extend full height of navbar
+    // undo margin to make nav extend full height of navbar
+    margin-top: 0;
+    margin-bottom: 0;
 
     > li {
       float: left;
+      > a {
+        border-radius: 0;
+      }
     }
 
     &.pull-right {
