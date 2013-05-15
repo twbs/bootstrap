@@ -748,7 +748,7 @@ lead: "Dozens of reusable components built to provide iconography, dropdowns, na
 {% endhighlight %}
 
     <h3 id="btn-dropdowns-sizes">Works with all button sizes</h3>
-    <p>Button dropdowns work at any size: <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code>.</p>
+    <p>Button dropdowns work with buttons of all sizes.</p>
     <div class="bs-example">
       <div class="btn-toolbar" style="margin: 0;">
         <div class="btn-group">
@@ -766,18 +766,6 @@ lead: "Dozens of reusable components built to provide iconography, dropdowns, na
         <div class="btn-group">
           <button class="btn btn-default btn-small dropdown-toggle" type="button" data-toggle="dropdown">
             Small button <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-        <div class="btn-group">
-          <button class="btn btn-default btn-mini dropdown-toggle" type="button" data-toggle="dropdown">
-            Mini button <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
@@ -809,15 +797,6 @@ lead: "Dozens of reusable components built to provide iconography, dropdowns, na
     ...
   </ul>
 </div>
-
-<!-- Mini button group -->
-<div class="btn-group">
-  <button class="btn btn-default btn-mini dropdown-toggle" type="button" data-toggle="dropdown">
-    Mini button <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    ...
-  </ul>
 </div>
 {% endhighlight %}
 
@@ -1540,7 +1519,7 @@ body {
 
 
     <h3>Sizes</h3>
-    <p>Fancy larger or smaller pagination? Add <code>.pagination-large</code>, <code>.pagination-small</code>, or <code>.pagination-mini</code> for additional sizes.</p>
+    <p>Fancy larger or smaller pagination? Add <code>.pagination-large</code> or <code>.pagination-small</code>  for additional sizes.</p>
     <div class="bs-example">
       <div>
         <ul class="pagination pagination-large">
@@ -1575,23 +1554,11 @@ body {
           <li><a href="#">&raquo;</a></li>
         </ul>
       </div>
-      <div>
-        <ul class="pagination pagination-mini">
-          <li><a href="#">&laquo;</a></li>
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-          <li><a href="#">&raquo;</a></li>
-        </ul>
-      </div>
     </div>
 {% highlight html %}
 <ul class="pagination pagination-large">...</ul>
 <ul class="pagination pagination">...</ul>
 <ul class="pagination pagination-small">...</ul>
-<ul class="pagination pagination-mini">...</ul>
 {% endhighlight %}
 
 

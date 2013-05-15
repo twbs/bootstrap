@@ -294,6 +294,11 @@ body {
   margin: 0;
 }
 
+/* Forms */
+.bs-example-control-sizing input[type="text"] + input[type="text"] {
+  margin-top: 10px;
+}
+
 /* List groups */
 .bs-example > .list-group {
   max-width: 400px;

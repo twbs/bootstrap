@@ -283,7 +283,7 @@ html {
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  line-height: 1.428;
+  line-height: 1.428571429;
   color: #333333;
   background-color: #ffffff;
 }
@@ -415,7 +415,6 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: inherit;
   font-weight: 500;
   line-height: 1.1;
 }
@@ -518,7 +517,7 @@ ol ul {
 }
 
 li {
-  line-height: 1.428;
+  line-height: 1.428571429;
 }
 
 .list-unstyled {
@@ -543,7 +542,7 @@ dl {
 
 dt,
 dd {
-  line-height: 1.428;
+  line-height: 1.428571429;
 }
 
 dt {
@@ -625,7 +624,7 @@ blockquote p:last-child {
 
 blockquote small {
   display: block;
-  line-height: 1.428;
+  line-height: 1.428571429;
   color: #999999;
 }
 
@@ -665,7 +664,7 @@ address {
   display: block;
   margin-bottom: 20px;
   font-style: normal;
-  line-height: 1.428;
+  line-height: 1.428571429;
 }
 
 code,
@@ -690,7 +689,7 @@ pre {
   padding: 9.5px;
   margin: 0 0 10px;
   font-size: 13px;
-  line-height: 1.428;
+  line-height: 1.428571429;
   word-break: break-all;
   word-wrap: break-word;
   white-space: pre;
@@ -1018,7 +1017,7 @@ th {
 .table thead > tr > td,
 .table tbody > tr > td {
   padding: 8px;
-  line-height: 1.428;
+  line-height: 1.428571429;
   vertical-align: top;
   border-top: 1px solid #dddddd;
 }
@@ -1206,7 +1205,7 @@ legend {
   padding: 0;
   margin-bottom: 20px;
   font-size: 21px;
-  line-height: 1.1;
+  line-height: inherit;
   color: #333333;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
@@ -1235,10 +1234,10 @@ input[type="search"],
 input[type="tel"],
 input[type="color"] {
   display: block;
-  min-height: 34px;
-  padding: 6px 9px;
+  min-height: 36px;
+  padding: 8px 12px;
   font-size: 14px;
-  line-height: 1.428;
+  line-height: 1.428571429;
   color: #555555;
   vertical-align: middle;
   background-color: #ffffff;
@@ -1313,10 +1312,10 @@ input[type="checkbox"] {
 
 select,
 input[type="file"] {
-  height: 34px;
+  height: 36px;
   /* In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support */
 
-  line-height: 34px;
+  line-height: 36px;
 }
 
 select[multiple],
@@ -1424,7 +1423,7 @@ input[type="url"].input-large,
 input[type="search"].input-large,
 input[type="tel"].input-large,
 input[type="color"].input-large {
-  padding: 11px 14px;
+  padding: 14px 16px;
   font-size: 18px;
   border-radius: 6px;
 }
@@ -1445,8 +1444,8 @@ input[type="url"].input-small,
 input[type="search"].input-small,
 input[type="tel"].input-small,
 input[type="color"].input-small {
-  min-height: 26px;
-  padding: 2px 10px;
+  min-height: 30px;
+  padding: 5px 10px;
   font-size: 12px;
   border-radius: 3px;
 }
@@ -1612,7 +1611,7 @@ select:focus:invalid:focus {
   padding: 6px 8px;
   font-size: 14px;
   font-weight: normal;
-  line-height: 1.428;
+  line-height: 1.428571429;
   text-align: center;
   text-shadow: 0 1px 0 #fff;
   background-color: #eeeeee;
@@ -1624,13 +1623,13 @@ select:focus:invalid:focus {
 }
 
 .input-group-addon.input-small {
-  padding: 2px 10px;
+  padding: 5px 10px;
   font-size: 12px;
   border-radius: 3px;
 }
 
 .input-group-addon.input-large {
-  padding: 11px 14px;
+  padding: 14px 16px;
   font-size: 18px;
   border-radius: 6px;
 }
@@ -1710,11 +1709,11 @@ select:focus:invalid:focus {
 
 .btn {
   display: inline-block;
-  padding: 6px 12px;
+  padding: 8px 12px;
   margin-bottom: 0;
   font-size: 14px;
   font-weight: 500;
-  line-height: 1.428;
+  line-height: 1.428571429;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -1974,20 +1973,15 @@ fieldset[disabled] .btn-link:focus {
 }
 
 .btn-large {
-  padding: 11px 14px;
+  padding: 14px 16px;
   font-size: 18px;
   border-radius: 6px;
 }
 
 .btn-small {
-  padding: 2px 10px;
+  padding: 5px 10px;
   font-size: 12px;
-  border-radius: 3px;
-}
-
-.btn-mini {
-  padding: 0 6px;
-  font-size: 11px;
+  line-height: 1.5;
   border-radius: 3px;
 }
 
@@ -2750,7 +2744,7 @@ input[type="button"].btn-block {
   padding: 3px 20px;
   clear: both;
   font-weight: normal;
-  line-height: 1.428;
+  line-height: 1.428571429;
   color: #333333;
   white-space: nowrap;
 }
@@ -3214,7 +3208,7 @@ button.close {
 
 .nav-tabs > li > a {
   margin-right: 2px;
-  line-height: 1.428;
+  line-height: 1.428571429;
   border: 1px solid transparent;
   border-radius: 4px 4px 0 0;
 }
@@ -3304,7 +3298,7 @@ button.close {
   padding: 3px 15px;
   font-size: 11px;
   font-weight: bold;
-  line-height: 1.428;
+  line-height: 1.428571429;
   color: #999999;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
@@ -3660,7 +3654,7 @@ button.close {
 }
 
 .navbar-btn {
-  margin-top: 8px;
+  margin-top: 7px;
 }
 
 .navbar-text {
@@ -3905,7 +3899,7 @@ button.close {
 .pagination > li > span {
   float: left;
   padding: 4px 12px;
-  line-height: 1.428;
+  line-height: 1.428571429;
   text-decoration: none;
   background-color: #ffffff;
   border: 1px solid #dddddd;
@@ -3949,7 +3943,7 @@ button.close {
 
 .pagination-large > li > a,
 .pagination-large > li > span {
-  padding: 11px 14px;
+  padding: 14px 16px;
   font-size: 18px;
 }
 
@@ -3965,32 +3959,22 @@ button.close {
   border-bottom-right-radius: 6px;
 }
 
-.pagination-mini > li:first-child > a,
+.pagination-small > li > a,
+.pagination-small > li > span {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
 .pagination-small > li:first-child > a,
-.pagination-mini > li:first-child > span,
 .pagination-small > li:first-child > span {
   border-bottom-left-radius: 3px;
   border-top-left-radius: 3px;
 }
 
-.pagination-mini > li:last-child > a,
 .pagination-small > li:last-child > a,
-.pagination-mini > li:last-child > span,
 .pagination-small > li:last-child > span {
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
-}
-
-.pagination-small > li > a,
-.pagination-small > li > span {
-  padding: 2px 10px;
-  font-size: 12px;
-}
-
-.pagination-mini > li > a,
-.pagination-mini > li > span {
-  padding: 0 6px;
-  font-size: 11px;
 }
 
 .pager {
@@ -4131,7 +4115,7 @@ button.close {
 }
 
 .modal-header {
-  min-height: 16.428px;
+  min-height: 16.428571429px;
   padding: 15px;
   border-bottom: 1px solid #e5e5e5;
 }
@@ -4142,7 +4126,7 @@ button.close {
 
 .modal-title {
   margin: 0;
-  line-height: 1.428;
+  line-height: 1.428571429;
 }
 
 .modal-body {
@@ -4523,7 +4507,7 @@ button.close {
 .thumbnail,
 .img-thumbnail {
   padding: 4px;
-  line-height: 1.428;
+  line-height: 1.428571429;
   background-color: #ffffff;
   border: 1px solid #dddddd;
   border-radius: 4px;
@@ -5050,7 +5034,7 @@ a.list-group-item.active > .badge,
   margin-bottom: 30px;
   font-size: 21px;
   font-weight: 200;
-  line-height: 2.142;
+  line-height: 2.1428571435;
   color: inherit;
   background-color: #eeeeee;
 }

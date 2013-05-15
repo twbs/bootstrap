@@ -22,7 +22,7 @@ legend {
   padding: 0;
   margin-bottom: @line-height-computed;
   font-size: (@font-size-base * 1.5);
-  line-height: @line-height-headings;
+  line-height: inherit;
   color: @gray-dark;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
@@ -56,7 +56,7 @@ input[type="tel"],
 input[type="color"] {
   display: block;
   min-height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
-  padding: 6px 9px;
+  padding: @padding-base-vertical @padding-base-horizontal;
   font-size: @font-size-base;
   line-height: @line-height-base;
   color: @gray;
@@ -241,13 +241,13 @@ input[type="search"],
 input[type="tel"],
 input[type="color"] {
   &.input-large {
-    padding: @padding-large;
+    padding: @padding-large-vertical @padding-large-horizontal;
     font-size: @font-size-large;
     border-radius: @border-radius-large;
   }
   &.input-small {
     min-height: @input-height-small;
-    padding: @padding-small;
+    padding: @padding-small-vertical @padding-small-horizontal;
     font-size: @font-size-small;
     border-radius: @border-radius-small;
   }
@@ -397,11 +397,12 @@ select:focus:invalid {
   border-radius: @border-radius-base;
 
   &.input-small {
-    padding: @padding-small;
+    padding: @padding-small-vertical @padding-small-horizontal;
     font-size: @font-size-small;
-    border-radius: @border-radius-small;  }
+    border-radius: @border-radius-small;
+  }
   &.input-large {
-    padding: @padding-large;
+    padding: @padding-large-vertical @padding-large-horizontal;
     font-size: @font-size-large;
     border-radius: @border-radius-large;
   }
