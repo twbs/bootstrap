@@ -49,7 +49,7 @@
 
       if ( $this.parent('li').hasClass('active') ) return
 
-      previous = $ul.find('.active:last a')[0]
+      previous = $ul.find('.active').last().find('a')[0]
 
       e = $.Event('show', {
         relatedTarget: previous
@@ -71,7 +71,7 @@
     }
 
   , activate: function ( element, container, callback) {
-      var $active = container.find('> .active')
+      var $active = container.children('.active')
         , transition = callback
             && $.support.transition
             && $active.hasClass('fade')
@@ -79,7 +79,7 @@
       function next() {
         $active
           .removeClass('active')
-          .find('> .dropdown-menu > .active')
+          .children('.dropdown-menu > .active')
           .removeClass('active')
 
         element.addClass('active')
