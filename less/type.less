@@ -176,7 +176,7 @@ hr {
   border-bottom: 1px solid @white;
 }
 
-// Abbreviations and acronyms
+// Abbreviations
 abbr[title],
 // Added data-* attribute to help out our tooltip plugin, per https://github.com/twitter/bootstrap/issues/5257
 abbr[data-original-title] {
@@ -184,6 +184,17 @@ abbr[data-original-title] {
   border-bottom: 1px dotted @grayLight;
 }
 abbr.initialism {
+  font-size: 90%;
+  text-transform: uppercase;
+}
+
+// Acronyms
+acronym[title],
+acronym[data-original-title] {
+  cursor: help;
+  border-bottom: 1px dotted @grayLight;
+}
+acronym.initialism {
   font-size: 90%;
   text-transform: uppercase;
 }
