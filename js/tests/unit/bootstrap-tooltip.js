@@ -291,4 +291,26 @@ $(function () {
           container.remove()
         }, 100)
       })
+
+      test("should not show tooltip if parent element moves", function () {
+        var container = $("<div />").appendTo("body")
+            .css({position: "absolute", bottom: 0, left: 0, textAlign: "right", width: 300, height: 300})
+            .offset({ top: 100 })
+          , tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+            .appendTo(container)
+            .tooltip()
+            .tooltip('show')
+
+        stop()
+
+        setTimeout(function(){
+          container.offset({ top: 200 })
+          ok($(".tooltip").is('.fade.in'), 'tooltip is faded in')
+          setTimeout(function(){
+            start()
+            ok(!$(".tooltip").is('.fade.in'), 'tooltip is not faded in')
+          }, 520)
+        }, 500)
+      })
+
 })

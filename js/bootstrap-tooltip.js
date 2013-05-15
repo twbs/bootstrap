@@ -119,6 +119,7 @@
         , placement
         , tp
         , e = $.Event('show')
+        , that = this
 
       if (this.hasContent() && this.enabled) {
         this.$element.trigger(e)
@@ -139,6 +140,15 @@
           .css({ top: 0, left: 0, display: 'block' })
 
         this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
+
+        this.interval = setInterval(function() {
+          if (that.elementOffset
+            && (that.elementOffset.top != that.$element.offset().top
+            || that.elementOffset.left != that.$element.offset().left)) {
+            that.hide()
+          }
+          that.elementOffset = that.$element.offset()
+        }, 500)
 
         pos = this.getPosition()
 
@@ -246,6 +256,8 @@
         $tip.detach()
 
       this.$element.trigger('hidden')
+
+      clearInterval(this.interval)
 
       return this
     }
