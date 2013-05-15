@@ -269,6 +269,9 @@ body {
 .bs-example > .well:last-child {
   margin-bottom: 0;
 }
+.bs-example > .close {
+  float: none;
+}
 
 /* Typography */
 .bs-example-type .table td {
