@@ -288,6 +288,11 @@ body {
   margin: 0;
 }
 
+.bs-example.form-inline input:not([type=checkbox]):not([type=radio]),
+.bs-example.form-inline select {
+  width: 180px;
+}
+
 /* List groups */
 .bs-example > .list-group {
   max-width: 400px;
