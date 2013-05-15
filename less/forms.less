@@ -65,12 +65,12 @@ input[type="color"] {
   border: 1px solid @input-border;
   border-radius: @input-border-radius;
   .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
-  .transition(~"border-color linear .2s, box-shadow linear .2s");
+  .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 
   &:focus {
     border-color: rgba(82,168,236,.8);
     outline: 0;
-    .box-shadow(0 0 8px rgba(82,168,236,.6));
+    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)");
   }
 }
 
