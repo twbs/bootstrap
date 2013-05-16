@@ -1,0 +1,665 @@
+/*
+ * Bootstrap Documentation
+ * Special styles for presenting Bootstrap's documentation and code examples.
+ */
+
+
+
+/* Key scaffolding
+-------------------------------------------------- */
+
+body {
+  padding-top: 54px;
+  position: relative; /* For scrollyspy */
+  /* We add the padding to the body for >768px only */
+}
+
+/*  */
+.bs-docs-footer {
+  padding-left:  15px;
+  padding-right: 15px;
+}
+
+
+
+/* Sections
+-------------------------------------------------- */
+
+/* Padding for in-page bookmarks */
+section {
+  padding-top: 30px;
+}
+
+/* Few stylistic typography tweaks */
+section > .page-header,
+section > .lead {
+  color: #5a5a5a;
+}
+section > ul li {
+  margin-bottom: 5px;
+}
+
+
+
+/* Navbar
+-------------------------------------------------- */
+
+.bs-docs-navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc; /* IE8 */
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.bs-docs-navbar .nav > .active > a,
+.bs-docs-navbar .nav > .active > a:hover {
+  font-weight: 500;
+  background-color: transparent;
+}
+
+
+
+/* Jumbotrons
+-------------------------------------------------- */
+
+/* Base class */
+.bs-docs-jumbotron {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 30px 15px;
+  color: #fff;
+  text-align: center;
+  background-color: #b94a48;
+}
+.bs-docs-jumbotron h1 {
+  font-size: 50px;
+}
+
+/* Link styles (used on .masthead-links as well) */
+.bs-docs-jumbotron a {
+  color: #fff;
+  color: rgba(255,255,255,.5);
+  -webkit-transition: all .2s ease-in-out;
+     -moz-transition: all .2s ease-in-out;
+          transition: all .2s ease-in-out;
+}
+.bs-docs-jumbotron a:hover {
+  color: #fff;
+}
+
+/* Download button */
+.bs-docs-jumbotron .btn {
+  padding: 18px 24px;
+  font-size: 21px;
+  color: #b94a48; /* redeclare to override the `.jumbotron a` */
+  background-color: #fff;
+}
+.bs-docs-jumbotron .btn,
+.bs-docs-jumbotron .btn:hover,
+.bs-docs-jumbotron .btn:active {
+  color: #b94a48; /* redeclare to override the `.jumbotron a` */
+  background-color: #fff;
+  border-color: #fff;
+}
+
+/* Masthead (docs home)
+------------------------- */
+.masthead h1 {
+  line-height: 1;
+}
+
+/* Textual links in masthead */
+.masthead-links {
+  margin: 20px 0;
+  list-style: none;
+}
+.masthead-links li {
+  display: inline;
+  padding: 0 10px;
+  color: rgba(255,255,255,.25);
+}
+
+
+
+/* Marketing section of Overview
+-------------------------------------------------- */
+
+.bs-docs-marketing {
+  text-align: center;
+  color: #5a5a5a;
+}
+.bs-docs-marketing h1 {
+  margin: 60px 0 10px;
+  font-size: 50px;
+  line-height: 1;
+}
+.bs-docs-marketing h2 {
+  margin-bottom: 5px;
+}
+.bs-docs-marketing p {
+  font-size: 16px;
+  line-height: 1.4;
+}
+.bs-docs-marketing .marketing-byline {
+  margin-bottom: 40px;
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 1.25;
+  color: #999;
+}
+.marketing-img {
+  display: block;
+  margin: 30px auto 10px;
+  max-height: 145px;
+}
+
+
+
+/* Special grid styles
+-------------------------------------------------- */
+
+.show-grid {
+  margin-bottom: 15px;
+}
+.show-grid [class^="span"] {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #eee;
+  border: 1px solid #ddd;
+}
+.show-grid [class*="span"]:hover {
+  background-color: #ddd;
+}
+
+
+
+/* Sidenav
+-------------------------------------------------- */
+
+/* Base styles are not affixable given mobile-first */
+.bs-docs-sidenav {
+  margin: 20px 0 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.bs-docs-sidenav.affix {
+  position: static;
+  top: 0;
+}
+
+/* Chevrons within each link */
+.bs-docs-sidenav .glyphicon-chevron-right {
+  float: right;
+  margin-top: 1px;
+  margin-right: -6px;
+  opacity: .25;
+  color: #000;
+}
+.bs-docs-sidenav a:hover .glyphicon-chevron-right {
+  opacity: .5;
+}
+.bs-docs-sidenav .active .glyphicon-chevron-right,
+.bs-docs-sidenav .active a:hover .glyphicon-chevron-right {
+  color: #fff;
+  opacity: 1;
+}
+
+
+
+/* Bootstrap code examples
+-------------------------------------------------- */
+
+/* Base class */
+.bs-docs-example {
+  position: relative;
+  padding: 39px 14px 14px;
+  margin-bottom: -1px;
+  border: 1px solid #ddd;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+/* Echo out a label for the example */
+.bs-docs-example:after {
+  content: "Example";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #9da0a4;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-top-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Tweak display of the examples */
+.bs-docs-example + .prettyprint,
+.bs-docs-example + .highlight {
+  margin-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.prettyprint .linenums {
+  /*margin-left: 0;*/
+}
+
+/* Tweak content of examples for optimum awesome */
+.bs-docs-example > p:last-child,
+.bs-docs-example > ul:last-child,
+.bs-docs-example > ol:last-child,
+.bs-docs-example > blockquote:last-child,
+.bs-docs-example > input:last-child,
+.bs-docs-example > select:last-child,
+.bs-docs-example > textarea:last-child,
+.bs-docs-example > .table:last-child,
+.bs-docs-example > .jumbotron:last-child,
+.bs-docs-example > .alert:last-child {
+  margin-bottom: 0;
+}
+
+/* Typography */
+.bs-docs-example-type .table td {
+  color: #999;
+  vertical-align: middle;
+  border-color: ;
+}
+.bs-docs-example-type .table td,
+.bs-docs-example-type .table th {
+  padding: 15px 0;
+  border-color: #eee;
+}
+.bs-docs-example-type .table tr:first-child td,
+.bs-docs-example-type .table tr:first-child th {
+  border-top: 0;
+}
+.bs-docs-example-type h1,
+.bs-docs-example-type h2,
+.bs-docs-example-type h3,
+.bs-docs-example-type h4,
+.bs-docs-example-type h5,
+.bs-docs-example-type h6 {
+  margin: 0;
+}
+
+
+/* Navbar examples */
+.bs-navbar-top-example,
+.bs-navbar-bottom-example {
+  z-index: 1;
+  padding: 0;
+  height: 90px;
+  overflow: hidden; /* cut the drop shadows off */
+}
+.bs-navbar-top-example .navbar-fixed-top,
+.bs-navbar-bottom-example .navbar-fixed-bottom {
+  margin-left: 0;
+  margin-right: 0;
+}
+.bs-navbar-top-example {
+  -webkit-border-radius: 0 0 4px 4px;
+     -moz-border-radius: 0 0 4px 4px;
+          border-radius: 0 0 4px 4px;
+}
+.bs-navbar-top-example:after {
+  top: auto;
+  bottom: -1px;
+  -webkit-border-radius: 0 4px 0 4px;
+     -moz-border-radius: 0 4px 0 4px;
+          border-radius: 0 4px 0 4px;
+}
+.bs-navbar-bottom-example {
+  -webkit-border-radius: 4px 4px 0 0;
+     -moz-border-radius: 4px 4px 0 0;
+          border-radius: 4px 4px 0 0;
+}
+.bs-navbar-bottom-example .navbar {
+  margin-bottom: 0;
+}
+
+/* Example modals */
+.bs-docs-example-modal {
+  background-color: #f5f5f5;
+}
+.bs-docs-example-modal .modal {
+  position: relative;
+  top: auto;
+  right: auto;
+  left: auto;
+  bottom: auto;
+  z-index: 1;
+  display: block;
+}
+.bs-docs-example-modal .modal-dialog {
+  left: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Example dropdowns */
+.bs-docs-example > .dropdown > .dropdown-menu,
+.bs-docs-example-submenu > .pull-left > .dropup > .dropdown-menu,
+.bs-docs-example-submenu > .pull-left > .dropdown > .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 5px;
+}
+.bs-docs-example-submenu {
+  min-height: 180px;
+}
+.bs-docs-example-submenu > .pull-left + .pull-left {
+  margin-left: 20px;
+}
+
+/* Example tabbable tabs */
+.bs-docs-example-tabs .nav-tabs {
+  margin-bottom: 15px;
+}
+
+
+/* Example templates
+-------------------------------------------------- */
+
+.bs-docs-examples h4 {
+  margin-bottom: 5px;
+}
+.bs-docs-examples p {
+  margin-bottom: 20px;
+}
+
+
+
+/* Icons
+-------------------------------------------------- */
+
+.the-icons {
+  padding-bottom: 1px;
+  margin-left: 0;
+  list-style: none;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.the-icons li {
+  float: left;
+  width: 100px;
+  height: 110px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0 -1px -1px 0;
+}
+.the-icons .glyphicon {
+  display: block;
+  margin: 5px auto;
+  vertical-align: middle;
+  margin-right: 3px;
+  font-size: 24px;
+}
+.the-icons li:hover {
+  background-color: rgba(255,0,0,.1);
+}
+
+
+
+/* Responsive docs
+-------------------------------------------------- */
+
+/* Related: responsive utilities tables */
+.table code {
+  font-size: 13px;
+  font-weight: normal;
+}
+
+/* Utility classes table
+------------------------- */
+.responsive-utilities th small {
+  display: block;
+  font-weight: normal;
+  color: #999;
+}
+.responsive-utilities tbody th {
+  font-weight: normal;
+}
+.responsive-utilities td {
+  text-align: center;
+}
+.responsive-utilities td.is-visible {
+  color: #468847;
+  background-color: #dff0d8 !important;
+}
+.responsive-utilities td.is-hidden {
+  color: #ccc;
+  background-color: #f9f9f9 !important;
+}
+
+/* Responsive tests
+------------------------- */
+.responsive-utilities-test {
+  margin-top: 5px;
+  margin-left: 0;
+  list-style: none;
+  overflow: hidden; /* clear floats */
+}
+.responsive-utilities-test li {
+  position: relative;
+  float: left;
+  width: 25%;
+  height: 43px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 43px;
+  color: #999;
+  text-align: center;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+.responsive-utilities-test li + li {
+  margin-left: 10px;
+}
+.responsive-utilities-test span {
+  position: absolute;
+  top:    -1px;
+  left:   -1px;
+  right:  -1px;
+  bottom: -1px;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+.responsive-utilities-test span {
+  color: #468847;
+  background-color: #dff0d8;
+  border: 1px solid #d6e9c6;
+}
+
+
+
+/* Footer
+-------------------------------------------------- */
+
+.bs-docs-footer {
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 100px;
+  border-top: 1px solid #e5e5e5;
+}
+.bs-docs-footer p {
+  margin-bottom: 0;
+  color: #777;
+}
+.footer-links {
+  margin: 10px 0;
+}
+.footer-links li {
+  display: inline;
+  padding: 0 2px;
+}
+.footer-links li:first-child {
+  padding-left: 0;
+}
+
+/* Social proof buttons from GitHub & Twitter */
+.bs-docs-social {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+/* Quick links on Home */
+.bs-docs-social-buttons {
+  display: inline-block;
+  margin: 0;
+  padding: 0 10px;
+  list-style: none;
+}
+.bs-docs-social-buttons li {
+  display: inline-block;
+  padding: 5px 8px;
+  line-height: 1;
+}
+.bs-docs-social-buttons .twitter-follow-button {
+  width: 225px !important;
+}
+.bs-docs-social-buttons .twitter-share-button {
+  width: 98px !important;
+}
+
+
+
+/* Misc docs stuff
+-------------------------------------------------- */
+
+/* Pseudo :focus state for showing how it looks in the docs */
+input.focused {
+  border-color: rgba(82,168,236,.8);
+  outline: 0;
+  outline: thin dotted \9; /* IE6-9 */
+  -moz-box-shadow: 0 0 8px rgba(82,168,236,.6);
+       box-shadow: 0 0 8px rgba(82,168,236,.6);
+}
+
+/* Scrollspy demo on fixed height div */
+.scrollspy-example {
+  position: relative;
+  height: 200px;
+  margin-top: 10px;
+  overflow: auto;
+}
+
+.highlight {
+  padding: 9px 14px;
+  margin-bottom: 14px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  border-radius: 4px;
+}
+.highlight pre {
+  padding: 0;
+  margin-bottom: 0;
+  background-color: transparent;
+  border: 0;
+}
+.highlight pre code {
+  font-size: inherit;
+  color: #333; /* Effectively the base text color */
+}
+.highlight pre .lineno {
+  display: inline-block;
+  width: 22px;
+  padding-right: 5px;
+  margin-right: 10px;
+  text-align: right;
+  color: #bebec5;
+}
+
+
+
+/* Docs gallery
+-------------------------------------------------- */
+
+.bs-docs-gallery .thumbnail {
+  max-width: 400px;
+  margin: 0 auto 20px;
+}
+
+
+/* Responsive variations
+-------------------------------------------------- */
+
+/* Hide code snippets on mobile devices */
+@media screen and (max-width: 480px) {
+  .bs-docs-example {
+    border-radius: 4px;
+  }
+  .highlight {
+    display: none;
+  }
+}
+
+/* Tablets and up */
+@media screen and (min-width: 768px) {
+
+  /* Account for fixed navbar (which is static to start) */
+  body {
+    padding-top: 50px; /* Default height of navbar */
+  }
+
+  /* Tweak display of docs jumbotrons */
+  .masthead {
+    padding-top:    100px;
+    padding-bottom: 100px;
+  }
+  .masthead h1 {
+    font-size: 100px;
+  }
+  .masthead p {
+    font-size: 30px;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  .subhead {
+    padding-top:    60px;
+    padding-bottom: 60px;
+    text-align: left;
+  }
+
+  /* From here, start to affix the nav because we keep columns here */
+  .bs-docs-sidenav.affix {
+    position: fixed;
+    top: 54px;
+  }
+  .bs-docs-sidenav {
+    width: 170px;
+  }
+  .bs-docs-sidenav.affix-bottom {
+    position: absolute;
+    top: auto;
+    bottom: 270px;
+  }
+}
+
+/* Tablets/desktops and up */
+@media screen and (min-width: 992px) {
+
+  /* Icons */
+  .the-icons li {
+    width: 12.5%;
+  }
+
+  .bs-docs-sidenav {
+    width: 220px;
+  }
+}
+
+/* Large desktops and up */
+@media screen and (min-width: 1200px) {
+  .bs-docs-sidenav {
+    width: 260px;
+  }
+}
