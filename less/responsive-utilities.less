@@ -36,40 +36,40 @@
 // Visibility utilities
 
 // For Phones
-.visible-phone     { display: inherit !important; }
-.visible-tablet    { display: none !important; }
-.visible-desktop   { display: none !important; }
+.visible-sm   { display: inherit !important; }
+.visible-md   { display: none !important; }
+.visible-lg   { display: none !important; }
 
-.hidden-phone      { display: none !important; }
-.hidden-tablet     { display: inherit !important; }
-.hidden-desktop    { display: inherit !important; }
+.hidden-sm    { display: none !important; }
+.hidden-md    { display: inherit !important; }
+.hidden-lg    { display: inherit !important; }
 
 
 // Tablets & small desktops only
 @media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
-  .visible-phone    { display: none !important; }
-  .visible-tablet    { display: inherit !important; }
-  .visible-desktop   { display: none !important; }
+  .visible-sm   { display: none !important; }
+  .visible-md   { display: inherit !important; }
+  .visible-lg   { display: none !important; }
 
-  .hidden-phone      { display: inherit !important; }
-  .hidden-tablet     { display: none !important; }
-  .hidden-desktop    { display: inherit !important; }
+  .hidden-sm    { display: inherit !important; }
+  .hidden-md    { display: none !important; }
+  .hidden-lg    { display: inherit !important; }
 }
 
 // For desktops
 @media (min-width: @screen-desktop) {
-  .visible-phone     { display: none !important; }
-  .visible-tablet    { display: none !important; }
-  .visible-desktop   { display: inherit !important; }
+  .visible-sm   { display: none !important; }
+  .visible-md   { display: none !important; }
+  .visible-lg   { display: inherit !important; }
 
-  .hidden-phone      { display: inherit !important; }
-  .hidden-tablet     { display: inherit !important; }
-  .hidden-desktop    { display: none !important; }
+  .hidden-sm    { display: inherit !important; }
+  .hidden-md    { display: inherit !important; }
+  .hidden-lg    { display: none !important; }
 }
 
 // Print utilities
-.visible-print    { display: none !important; }
-.hidden-print     { }
+.visible-print  { display: none !important; }
+.hidden-print   { }
 
 @media print {
   .visible-print  { display: inherit !important; }

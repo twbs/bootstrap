@@ -3,33 +3,18 @@
 // --------------------------------------------------
 
 
-// Use the .menu class on any <li> element within the topbar or ul.tabs and you'll get some superfancy dropdowns
-.dropup,
-.dropdown {
-  position: relative;
-}
-.dropdown-toggle:active,
-.open .dropdown-toggle {
-  outline: 0;
-}
-
 // Dropdown arrow/caret
 // --------------------
 .caret {
   display: inline-block;
   width: 0;
   height: 0;
-  vertical-align: top;
+  margin-left: 2px;
+  vertical-align: middle;
   border-top:   4px solid #000;
   border-right: 4px solid transparent;
   border-left:  4px solid transparent;
   content: "";
-}
-
-// Place the caret
-.dropdown .caret {
-  margin-top: 8px;
-  margin-left: 2px;
 }
 
 // The dropdown menu (ul)
@@ -118,8 +103,14 @@
 // Open state for the dropdown
 // ---------------------------
 .open {
-  & > .dropdown-menu {
+  // Show the menu
+  > .dropdown-menu {
     display: block;
+  }
+
+  // Remove the outline when :focus is triggered
+  > a {
+    outline: 0;
   }
 }
 
