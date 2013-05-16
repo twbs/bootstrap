@@ -5115,7 +5115,7 @@ a.list-group-item.active > .badge,
   visibility: hidden;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 767px) {
   .visible-md {
     display: none !important;
   }
