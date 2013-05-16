@@ -471,132 +471,117 @@
  * ============================================================ */
 
 
-!function ($) {
+!function ($) { "use strict";
 
-  "use strict"; // jshint ;_;
-
-
- /* COLLAPSE PUBLIC CLASS DEFINITION
-  * ================================ */
+  // COLLAPSE PUBLIC CLASS DEFINITION
+  // ================================
 
   var Collapse = function (element, options) {
-    this.$element = $(element)
-    this.options = $.extend({}, $.fn.collapse.defaults, options)
+    this.$element      = $(element)
+    this.options       = $.extend({}, Collapse.DEFAULTS, options)
+    this.transitioning = null
 
-    if (this.options.parent) {
-      this.$parent = $(this.options.parent)
-    }
-
-    this.options.toggle && this.toggle()
+    if (this.options.parent) this.$parent = $(this.options.parent)
+    if (this.options.toggle) this.toggle()
   }
 
-  Collapse.prototype = {
+  Collapse.DEFAULTS = {
+    toggle: true
+  }
 
-    constructor: Collapse
+  Collapse.prototype.dimension = function () {
+    var hasWidth = this.$element.hasClass('width')
+    return hasWidth ? 'width' : 'height'
+  }
 
-  , dimension: function () {
-      var hasWidth = this.$element.hasClass('width')
-      return hasWidth ? 'width' : 'height'
+  Collapse.prototype.show = function () {
+    if (this.transitioning || this.$element.hasClass('in')) return
+
+    var dimension = this.dimension()
+    var scroll    = $.camelCase(['scroll', dimension].join('-'))
+    var actives   = this.$parent && this.$parent.find('> .accordion-group > .in')
+
+    if (actives && actives.length) {
+      var hasData = actives.data('collapse')
+      if (hasData && hasData.transitioning) return
+      actives.collapse('hide')
+      hasData || actives.data('collapse', null)
     }
 
-  , show: function () {
-      var dimension
-        , scroll
-        , actives
-        , hasData
+    this.$element[dimension](0)
+    this.transition('addClass', $.Event('show'), 'shown')
 
-      if (this.transitioning || this.$element.hasClass('in')) return
+    if ($.support.transition) this.$element[dimension](this.$element[0][scroll])
+  }
 
-      dimension = this.dimension()
-      scroll = $.camelCase(['scroll', dimension].join('-'))
-      actives = this.$parent && this.$parent.find('> .accordion-group > .in')
+  Collapse.prototype.hide = function () {
+    if (this.transitioning || !this.$element.hasClass('in')) return
+    var dimension = this.dimension()
+    this.reset(this.$element[dimension]())
+    this.transition('removeClass', $.Event('hide'), 'hidden')
+    this.$element[dimension](0)
+  }
 
-      if (actives && actives.length) {
-        hasData = actives.data('collapse')
-        if (hasData && hasData.transitioning) return
-        actives.collapse('hide')
-        hasData || actives.data('collapse', null)
-      }
+  Collapse.prototype.reset = function (size) {
+    var dimension = this.dimension()
 
-      this.$element[dimension](0)
-      this.transition('addClass', $.Event('show'), 'shown')
-      $.support.transition && this.$element[dimension](this.$element[0][scroll])
+    this.$element
+      .removeClass('collapse')
+      [dimension](size || 'auto')
+      [0].offsetWidth
+
+    this.$element[size !== null ? 'addClass' : 'removeClass']('collapse')
+
+    return this
+  }
+
+  Collapse.prototype.transition = function (method, startEvent, completeEvent) {
+    var that     = this
+    var complete = function () {
+      if (startEvent.type == 'show') that.reset()
+      that.transitioning = 0
+      that.$element.trigger(completeEvent)
     }
 
-  , hide: function () {
-      var dimension
-      if (this.transitioning || !this.$element.hasClass('in')) return
-      dimension = this.dimension()
-      this.reset(this.$element[dimension]())
-      this.transition('removeClass', $.Event('hide'), 'hidden')
-      this.$element[dimension](0)
-    }
+    this.$element.trigger(startEvent)
 
-  , reset: function (size) {
-      var dimension = this.dimension()
+    if (startEvent.isDefaultPrevented()) return
 
-      this.$element
-        .removeClass('collapse')
-        [dimension](size || 'auto')
-        [0].offsetWidth
+    this.transitioning = 1
 
-      this.$element[size !== null ? 'addClass' : 'removeClass']('collapse')
+    this.$element[method]('in')
 
-      return this
-    }
+    $.support.transition && this.$element.hasClass('collapse') ?
+      this.$element.one($.support.transition.end, complete) :
+      complete()
+  }
 
-  , transition: function (method, startEvent, completeEvent) {
-      var that = this
-        , complete = function () {
-            if (startEvent.type == 'show') that.reset()
-            that.transitioning = 0
-            that.$element.trigger(completeEvent)
-          }
-
-      this.$element.trigger(startEvent)
-
-      if (startEvent.isDefaultPrevented()) return
-
-      this.transitioning = 1
-
-      this.$element[method]('in')
-
-      $.support.transition && this.$element.hasClass('collapse') ?
-        this.$element.one($.support.transition.end, complete) :
-        complete()
-    }
-
-  , toggle: function () {
-      this[this.$element.hasClass('in') ? 'hide' : 'show']()
-    }
-
+  Collapse.prototype.toggle = function () {
+    this[this.$element.hasClass('in') ? 'hide' : 'show']()
   }
 
 
- /* COLLAPSE PLUGIN DEFINITION
-  * ========================== */
+  // COLLAPSE PLUGIN DEFINITION
+  // ==========================
 
   var old = $.fn.collapse
 
   $.fn.collapse = function (option) {
     return this.each(function () {
-      var $this = $(this)
-        , data = $this.data('collapse')
-        , options = $.extend({}, $.fn.collapse.defaults, $this.data(), typeof option == 'object' && option)
+      var $this   = $(this)
+      var data    = $this.data('collapse')
+      var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option)
+
       if (!data) $this.data('collapse', (data = new Collapse(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
 
-  $.fn.collapse.defaults = {
-    toggle: true
-  }
-
   $.fn.collapse.Constructor = Collapse
 
 
- /* COLLAPSE NO CONFLICT
-  * ==================== */
+  // COLLAPSE NO CONFLICT
+  // ====================
 
   $.fn.collapse.noConflict = function () {
     $.fn.collapse = old
@@ -604,15 +589,16 @@
   }
 
 
- /* COLLAPSE DATA-API
-  * ================= */
+  // COLLAPSE DATA-API
+  // =================
 
   $(document).on('click.collapse.data-api', '[data-toggle=collapse]', function (e) {
-    var $this = $(this), href
-      , target = $this.attr('data-target')
+    var $this  = $(this), href
+    var target = $this.attr('data-target')
         || e.preventDefault()
         || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
-      , option = $(target).data('collapse') ? 'toggle' : $this.data()
+    var option = $(target).data('collapse') ? 'toggle' : $this.data()
+
     $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
     $(target).collapse(option)
   })
@@ -638,123 +624,101 @@
  * ============================================================ */
 
 
-!function ($) {
-
-  "use strict"; // jshint ;_;
+!function ($) { "use strict";
 
 
- /* DROPDOWN CLASS DEFINITION
-  * ========================= */
+  // DROPDOWN CLASS DEFINITION
+  // =========================
 
-  var toggle = '[data-toggle=dropdown]'
-    , Dropdown = function (element) {
-        var $el = $(element).on('click.dropdown.data-api', this.toggle)
-        $('html').on('click.dropdown.data-api', function () {
-          $el.parent().removeClass('open')
-        })
-      }
+  var backdrop = '.dropdown-backdrop'
+  var toggle   = '[data-toggle=dropdown]'
+  var Dropdown = function (element) {
+    var $el = $(element).on('click.dropdown.data-api', this.toggle)
+    $('html').on('click.dropdown.data-api', function () {
+      $el.parent().removeClass('open')
+    })
+  }
 
-  Dropdown.prototype = {
+  Dropdown.prototype.toggle = function (e) {
+    var $this = $(this)
 
-    constructor: Dropdown
+    if ($this.is('.disabled, :disabled')) return
 
-  , toggle: function (e) {
-      var $this = $(this)
-        , $parent
-        , isActive
+    var $parent  = getParent($this)
+    var isActive = $parent.hasClass('open')
 
-      if ($this.is('.disabled, :disabled')) return
+    clearMenus()
 
-      $parent = getParent($this)
-
-      isActive = $parent.hasClass('open')
-
-      clearMenus()
-
-      if (!isActive) {
-        $parent.toggleClass('open')
-      }
-
-      $this.focus()
-
-      return false
+    if (!isActive) {
+      $('<div class="dropdown-backdrop"/>').insertBefore($(this)).on('click', clearMenus)
+      $parent.toggleClass('open')
     }
 
-  , keydown: function (e) {
-      var $this
-        , $items
-        , $active
-        , $parent
-        , isActive
-        , index
+    $this.focus()
 
-      if (!/(38|40|27)/.test(e.keyCode)) return
+    return false
+  }
 
-      $this = $(this)
+  Dropdown.prototype.keydown = function (e) {
+    if (!/(38|40|27)/.test(e.keyCode)) return
 
-      e.preventDefault()
-      e.stopPropagation()
+    var $this = $(this)
 
-      if ($this.is('.disabled, :disabled')) return
+    e.preventDefault()
+    e.stopPropagation()
 
-      $parent = getParent($this)
+    if ($this.is('.disabled, :disabled')) return
 
-      isActive = $parent.hasClass('open')
+    var $parent  = getParent($this)
+    var isActive = $parent.hasClass('open')
 
-      if (!isActive || (isActive && e.keyCode == 27)) {
-        if (e.which == 27) $parent.find(toggle).focus()
-        return $this.click()
-      }
-
-      $items = $('[role=menu] li:not(.divider):visible a', $parent)
-
-      if (!$items.length) return
-
-      index = $items.index($items.filter(':focus'))
-
-      if (e.keyCode == 38 && index > 0) index--                                        // up
-      if (e.keyCode == 40 && index < $items.length - 1) index++                        // down
-      if (!~index) index = 0
-
-      $items
-        .eq(index)
-        .focus()
+    if (!isActive || (isActive && e.keyCode == 27)) {
+      if (e.which == 27) $parent.find(toggle).focus()
+      return $this.click()
     }
 
+    var $items = $('[role=menu] li:not(.divider):visible a', $parent)
+
+    if (!$items.length) return
+
+    var index = $items.index($items.filter(':focus'))
+
+    if (e.keyCode == 38 && index > 0)                 index--                        // up
+    if (e.keyCode == 40 && index < $items.length - 1) index++                        // down
+    if (!~index)                                      index=0
+
+    $items.eq(index).focus()
   }
 
   function clearMenus() {
-    $(toggle).each(function () {
-      getParent($(this)).removeClass('open')
-    })
+    $(backdrop).remove()
+    $(toggle).each(function () { getParent($(this)).removeClass('open') })
   }
 
   function getParent($this) {
     var selector = $this.attr('data-target')
-      , $parent
 
     if (!selector) {
       selector = $this.attr('href')
       selector = selector && /#/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
     }
 
-    $parent = selector && $(selector)
+    var $parent = selector && $(selector)
 
-    if (!$parent || !$parent.length) $parent = $this.parent()
-
-    return $parent
+    return $parent && $parent.length ? $parent : $this.parent()
   }
 
 
-  /* DROPDOWN PLUGIN DEFINITION
-   * ========================== */
+  // DROPDOWN PLUGIN DEFINITION
+  // ==========================
 
   var old = $.fn.dropdown
 
   $.fn.dropdown = function (option) {
     return this.each(function () {
       var $this = $(this)
-        , data = $this.data('dropdown')
+      var data  = $this.data('dropdown')
+
       if (!data) $this.data('dropdown', (data = new Dropdown(this)))
       if (typeof option == 'string') data[option].call($this)
     })
@@ -763,8 +727,8 @@
   $.fn.dropdown.Constructor = Dropdown
 
 
- /* DROPDOWN NO CONFLICT
-  * ==================== */
+  // DROPDOWN NO CONFLICT
+  // ====================
 
   $.fn.dropdown.noConflict = function () {
     $.fn.dropdown = old
@@ -772,13 +736,12 @@
   }
 
 
-  /* APPLY TO STANDARD DROPDOWN ELEMENTS
-   * =================================== */
+  // APPLY TO STANDARD DROPDOWN ELEMENTS
+  // ===================================
+
 
   $(document)
-    .on('click.dropdown.data-api', clearMenus)
     .on('click.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
-    .on('click.dropdown-menu', function (e) { e.stopPropagation() })
     .on('click.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
     .on('keydown.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
 
