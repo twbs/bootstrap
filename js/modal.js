@@ -44,7 +44,7 @@
 
   Modal.prototype.show = function () {
     var that = this
-    var e    = $.Event('bs:modal:show')
+    var e    = $.Event('show.bs.modal')
 
     this.$element.trigger(e)
 
@@ -74,8 +74,8 @@
       that.enforceFocus()
 
       transition ?
-        that.$element.one($.support.transition.end, function () { that.$element.focus().trigger('bs:modal:shown') }) :
-        that.$element.focus().trigger('bs:modal:shown')
+        that.$element.one($.support.transition.end, function () { that.$element.focus().trigger('shown.bs.modal') }) :
+        that.$element.focus().trigger('shown.bs.modal')
 
     })
   }
@@ -83,7 +83,7 @@
   Modal.prototype.hide = function (e) {
     if (e) e.preventDefault()
 
-    e = $.Event('bs:modal:hide')
+    e = $.Event('hide.bs.modal')
 
     this.$element.trigger(e)
 
@@ -93,7 +93,7 @@
 
     this.escape()
 
-    $(document).off('focusin.modal')
+    $(document).off('focusin.bs.modal')
 
     this.$element
       .removeClass('in')
@@ -105,7 +105,7 @@
   }
 
   Modal.prototype.enforceFocus = function () {
-    $(document).on('focusin.modal', function (e) {
+    $(document).on('focusin.bs.modal', function (e) {
       if (this.$element[0] !== e.target && !this.$element.has(e.target).length) {
         this.$element.focus()
       }
@@ -114,11 +114,11 @@
 
   Modal.prototype.escape = function () {
     if (this.isShown && this.options.keyboard) {
-      this.$element.on('keyup.dismiss.modal', function ( e ) {
+      this.$element.on('keyup.dismiss.bs.modal', function ( e ) {
         e.which == 27 && this.hide()
       }, this)
     } else if (!this.isShown) {
-      this.$element.off('keyup.dismiss.modal')
+      this.$element.off('keyup.dismiss.bs.modal')
     }
   }
 
@@ -140,7 +140,7 @@
     this.$element.hide()
     this.backdrop(function () {
       that.removeBackdrop()
-      that.$element.trigger('bs:modal:hidden')
+      that.$element.trigger('hidden.bs.modal')
     })
   }
 
@@ -196,10 +196,10 @@
   $.fn.modal = function (option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs-modal')
+      var data    = $this.data('bs.modal')
       var options = $.extend({}, Modal.DEFAULTS, $this.data(), typeof option == 'object' && option)
 
-      if (!data) $this.data('bs-modal', (data = new Modal(this, options)))
+      if (!data) $this.data('bs.modal', (data = new Modal(this, options)))
       if (typeof option == 'string') data[option]()
       else if (options.show) data.show()
     })
@@ -220,7 +220,7 @@
   // MODAL DATA-API
   // ==============
 
-  $(document).on('click.modal.data-api', '[data-toggle="modal"]', function (e) {
+  $(document).on('click.bs.modal.data-api', '[data-toggle="modal"]', function (e) {
     var $this   = $(this)
     var href    = $this.attr('href')
     var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) //strip for ie7
@@ -236,7 +236,7 @@
     })
 
     var $body = $(document.body)
-      .on('bs:modal:shown',  '.modal', function () { $body.addClass('modal-open') })
-      .on('bs:modal:hidden', '.modal', function () { $body.removeClass('modal-open') })
+      .on('bs.modal.shown',  '.modal', function () { $body.addClass('modal-open') })
+      .on('bs.modal.hidden', '.modal', function () { $body.removeClass('modal-open') })
 
 }(window.jQuery);

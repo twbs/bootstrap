@@ -99,7 +99,7 @@
       if (defaults[key] != value) options[key] = value
     }, this)
 
-    var self = $(e.currentTarget)[this.type](options).data('bs-' + this.type)
+    var self = $(e.currentTarget)[this.type](options).data('bs.' + this.type)
 
     if (!self.options.delay || !self.options.delay.show) return self.show()
 
@@ -112,7 +112,7 @@
   }
 
   Tooltip.prototype.leave = function (e) {
-    var self = $(e.currentTarget)[this.type](this._options).data('bs-' + this.type)
+    var self = $(e.currentTarget)[this.type](this._options).data('bs.' + this.type)
 
     if (this.timeout) clearTimeout(this.timeout)
     if (!self.options.delay || !self.options.delay.hide) return self.hide()
@@ -124,7 +124,7 @@
   }
 
   Tooltip.prototype.show = function () {
-    var e = $.Event('bs:'+ this.type + ':show')
+    var e = $.Event('show.bs.'+ this.type)
 
     if (this.hasContent() && this.enabled) {
       this.$element.trigger(e)
@@ -168,7 +168,7 @@
       }
 
       this.applyPlacement(tp, placement)
-      this.$element.trigger('bs:' + this.type + ':shown')
+      this.$element.trigger('shown.bs.' + this.type)
     }
   }
 
@@ -227,7 +227,7 @@
   Tooltip.prototype.hide = function () {
     var that = this
     var $tip = this.tip()
-    var e    = $.Event('bs:' + this.type + ':hide')
+    var e    = $.Event('hide.bs.' + this.type)
 
     this.$element.trigger(e)
 
@@ -250,7 +250,7 @@
       removeWithAnimation() :
       $tip.detach()
 
-    this.$element.trigger('bs:' + this.type + ':hidden')
+    this.$element.trigger('hidden.bs.' + this.type)
 
     return this
   }
@@ -314,12 +314,12 @@
   }
 
   Tooltip.prototype.toggle = function (e) {
-    var self = e ? $(e.currentTarget)[this.type](this._options).data('bs-' + this.type) : this
+    var self = e ? $(e.currentTarget)[this.type](this._options).data('bs.' + this.type) : this
     self.tip().hasClass('in') ? self.hide() : self.show()
   }
 
   Tooltip.prototype.destroy = function () {
-    this.hide().$element.off('.' + this.type).removeData('bs-' + this.type)
+    this.hide().$element.off('.' + this.type).removeData('bs.' + this.type)
   }
 
 
@@ -331,10 +331,10 @@
   $.fn.tooltip = function (option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs-tooltip')
+      var data    = $this.data('bs.tooltip')
       var options = typeof option == 'object' && option
 
-      if (!data) $this.data('bs-tooltip', (data = new Tooltip(this, options)))
+      if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }

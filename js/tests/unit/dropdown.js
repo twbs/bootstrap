@@ -103,8 +103,9 @@ $(function () {
             .find('[data-toggle="dropdown"]')
             .dropdown()
             .click()
+
         ok(dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
-        $('.dropdown-backdrop').click()
+        $('body').click()
         ok(!dropdown.parent('.dropdown').hasClass('open'), 'open class removed')
         dropdown.remove()
       })
@@ -136,13 +137,13 @@ $(function () {
         first.click()
         ok(first.parents('.open').length == 1, 'open class added on click')
         ok($('#qunit-fixture .open').length == 1, 'only one object is open')
-        $('.dropdown-backdrop').click()
+        $('body').click()
         ok($("#qunit-fixture .open").length === 0, 'open class removed')
 
         last.click()
         ok(last.parent('.open').length == 1, 'open class added on click')
         ok($('#qunit-fixture .open').length == 1, 'only one object is open')
-        $('.dropdown-backdrop').click()
+        $('body').click()
         ok($("#qunit-fixture .open").length === 0, 'open class removed')
 
         $("#qunit-fixture").html("")
