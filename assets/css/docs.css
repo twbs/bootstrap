@@ -847,6 +847,54 @@ form.bs-docs-example {
 
 
 
+/* Ads in headers
+-------------------------------------------------- */
+
+.subhead h1,
+.subhead .lead {
+  margin-right: 340px;
+}
+
+.carbonad {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 0 !important;
+  padding: 15px;
+  height: auto !important;
+  overflow: hidden; /* clearfix */
+  font-size: 13px !important;
+  line-height: 16px !important;
+  background: #222 !important; /* reset image and color in one line */
+  background: rgba(0,0,0,.5) !important;
+  border: 0 !important;
+  border-radius: 4px;
+  box-shadow: inset 0 3px 5px rgba(0,0,0,.5), 0 1px 0 rgba(255,255,255,.1);
+}
+.carbonad-img {
+  margin: 0 !important;
+}
+.carbonad-text,
+.carbonad-tag,
+.carbonad-tag a {
+  color: #fff !important;
+}
+.carbonad-text,
+.carbonad-tag {
+  float: none !important;
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  margin-left: 145px !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+.carbonad-text {
+  padding-top: 0 !important;
+}
+.carbonad-tag {
+  text-align: left !important;
+}
+
 
 /* Responsive
 -------------------------------------------------- */
@@ -889,6 +937,18 @@ form.bs-docs-example {
     margin-top: 30px;
     margin-right: 0;
   }
+
+  .subhead h1,
+  .subhead .lead {
+    margin-right: 0;
+  }
+
+  .carbonad {
+    position: static;
+    width: auto !important;
+    margin-top: 30px !important;
+  }
+
 }
 
 /* Tablet to desktop
@@ -939,6 +999,15 @@ form.bs-docs-example {
   }
   .bs-docs-social {
     margin: 0 -20px;
+  }
+
+  .carbonad {
+    position: static;
+    width: auto !important;
+    margin: 40px -20px -40px !important;
+    padding: 20px !important;
+    overflow: hidden; /* clearfix */
+    border-radius: 0;
   }
 
   /* Space out the show-grid examples */
