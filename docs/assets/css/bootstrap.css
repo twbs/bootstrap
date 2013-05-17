@@ -4410,8 +4410,7 @@ button.close {
   border-top-color: #f8e5be;
 }
 
-.alert > a,
-.alert > p > a {
+.alert .alert-link {
   font-weight: 500;
   color: #a47e3c;
 }
@@ -4433,8 +4432,7 @@ button.close {
   border-top-color: #c9e2b3;
 }
 
-.alert-success > a,
-.alert-success > p > a {
+.alert-success .alert-link {
   color: #356635;
 }
 
@@ -4448,8 +4446,7 @@ button.close {
   border-top-color: #e6c1c7;
 }
 
-.alert-danger > a,
-.alert-danger > p > a {
+.alert-danger .alert-link {
   color: #953b39;
 }
 
@@ -4463,8 +4460,7 @@ button.close {
   border-top-color: #a6e1ec;
 }
 
-.alert-info > a,
-.alert-info > p > a {
+.alert-info .alert-link {
   color: #2d6987;
 }
 
