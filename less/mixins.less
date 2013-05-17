@@ -522,14 +522,6 @@
 // Framework mixins
 // --------------------------------------------------
 
-// Generate rem font-sizes with pixel fallbacks
-// By default uses `@font-size-base` with an initial value of 14 (1.4rem or 14px)
-.font-size(@font-size: @font-size-base) {
-  @rem-size: (@font-size / 10);
-  font-size: ~"@{font-size}px";
-  font-size: ~"@{rem-size}rem";
-}
-
 // Generate form validation states
 .form-field-validation(@text-color: #555, @border-color: #ccc, @background-color: #f5f5f5) {
   // Color the label text
