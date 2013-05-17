@@ -23,7 +23,6 @@ build:
 	@echo "               ${CHECK}"
 	@printf "Prepping documentation assets..."
 	@cp fonts/* docs/assets/fonts/
-	@cp js/*.js docs/assets/js/
 	@cp js/tests/vendor/jquery.js docs/assets/js/
 	@echo "            ${CHECK}"
 	@printf "Compiling and minifying JavaScript..."
@@ -120,5 +119,11 @@ watch:
 	echo "Watching less files..."; \
 	watchr -e "watch('less/.*\.less') { system 'make' }"
 
+#
+# BUILD AND START SERVER
+#
+
+run: build
+	jekyll build && jekyll server
 
 .PHONY: docs watch gh-pages bootstrap-img bootstrap-css bootstrap-js
