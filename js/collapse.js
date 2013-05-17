@@ -56,7 +56,7 @@
     }
 
     this.$element[dimension](0)
-    this.transition('addClass', $.Event('bs:collapse:show'), 'shown')
+    this.transition('addClass', $.Event('bs:collapse:show'), 'bs:collapse:shown')
 
     if ($.support.transition) this.$element[dimension](this.$element[0][scroll])
   }
@@ -85,7 +85,7 @@
   Collapse.prototype.transition = function (method, startEvent, completeEvent) {
     var that     = this
     var complete = function () {
-      if (startEvent.type == 'show') that.reset()
+      if (startEvent.type == 'bs:collapse:show') that.reset()
       that.transitioning = 0
       that.$element.trigger(completeEvent)
     }

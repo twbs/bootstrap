@@ -80,7 +80,7 @@
     })
   }
 
-  Modal.prototype.show = function (e) {
+  Modal.prototype.hide = function (e) {
     if (e) e.preventDefault()
 
     e = $.Event('bs:modal:hide')
@@ -144,12 +144,12 @@
     })
   }
 
-  Modal.prototype.removeBackdrop: function () {
+  Modal.prototype.removeBackdrop = function () {
     this.$backdrop && this.$backdrop.remove()
     this.$backdrop = null
   }
 
-  Modal.prototype.backdrop: function (callback) {
+  Modal.prototype.backdrop = function (callback) {
     var that    = this
     var animate = this.$element.hasClass('fade') ? 'fade' : ''
 

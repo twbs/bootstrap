@@ -45,7 +45,7 @@
       $parent = $this.hasClass('alert') ? $this : $this.parent()
     }
 
-    $parent.trigger(e = $.Event('bs-close'))
+    $parent.trigger(e = $.Event('bs:alert:close'))
 
     if (e.isDefaultPrevented()) return
 
@@ -79,8 +79,8 @@
   $.fn.alert.Constructor = Alert
 
 
- /* ALERT NO CONFLICT
-  * ================= */
+  // ALERT NO CONFLICT
+  // =================
 
   $.fn.alert.noConflict = function () {
     $.fn.alert = old
@@ -89,7 +89,7 @@
 
 
   // ALERT DATA-API
-  // ============== */
+  // ==============
 
   $(document).on('click.bs-alert.bs-data-api', dismiss, Alert.prototype.close)
 

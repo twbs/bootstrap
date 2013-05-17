@@ -63,7 +63,7 @@
 
   Popover.prototype.getContent = function () {
     var content = typeof this.options.content == 'function' ?
-      this.options.content.call($e[0]) :
+      this.options.content.call(this.$element[0]) :
       this.options.content
 
     return content || this.$element.attr('data-content')

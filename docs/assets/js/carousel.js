@@ -111,7 +111,7 @@
 
     $next = $next.length ? $next : this.$element.find('.item')[fallback]()
 
-    var e = $.Event('slide', { relatedTarget: $next[0], direction: direction })
+    var e = $.Event('bs:carousel:slide', { relatedTarget: $next[0], direction: direction })
 
     if ($next.hasClass('active')) return
 
@@ -159,11 +159,11 @@
   $.fn.carousel = function (option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('carousel')
+      var data    = $this.data('bs-carousel')
       var options = $.extend({}, Carousel.DEFAULTS, typeof option == 'object' && option)
       var action  = typeof option == 'string' ? option : options.slide
 
-      if (!data) $this.data('carousel', (data = new Carousel(this, options)))
+      if (!data) $this.data('bs-carousel', (data = new Carousel(this, options)))
       if (typeof option == 'number') data.to(option)
       else if (action) data[action]()
       else if (options.interval) data.pause().cycle()
@@ -180,6 +180,7 @@
     $.fn.carousel = old
     return this
   }
+
 
   // CAROUSEL DATA-API
   // =================

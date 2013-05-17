@@ -19,7 +19,7 @@ $(function () {
       })
 
       test("should expose default settings", function () {
-        ok(!!$.fn.tooltip.defaults, 'defaults is defined')
+        ok(!!$.fn.tooltip.Constructor.DEFAULTS, 'defaults is defined')
       })
 
       test("should empty title attribute", function () {
@@ -69,7 +69,7 @@ $(function () {
       test("should fire show event", function () {
         stop()
         var tooltip = $('<div title="tooltip title"></div>')
-          .bind("show", function() {
+          .bind("bs:tooltip:show", function() {
             ok(true, "show was called")
             start()
           })
@@ -79,7 +79,7 @@ $(function () {
       test("should fire shown event", function () {
         stop()
         var tooltip = $('<div title="tooltip title"></div>')
-          .bind("shown", function() {
+          .bind("bs:tooltip:shown", function() {
             ok(true, "shown was called")
             start()
           })
@@ -89,12 +89,12 @@ $(function () {
       test("should not fire shown event when default prevented", function () {
         stop()
         var tooltip = $('<div title="tooltip title"></div>')
-          .bind("show", function(e) {
+          .bind("bs:tooltip:show", function(e) {
             e.preventDefault()
             ok(true, "show was called")
             start()
           })
-          .bind("shown", function() {
+          .bind("bs:tooltip:shown", function() {
             ok(false, "shown was called")
           })
           .tooltip('show')
@@ -103,10 +103,10 @@ $(function () {
       test("should fire hide event", function () {
         stop()
         var tooltip = $('<div title="tooltip title"></div>')
-          .bind("shown", function() {
+          .bind("bs:tooltip:shown", function() {
             $(this).tooltip('hide')
           })
-          .bind("hide", function() {
+          .bind("bs:tooltip:hide", function() {
             ok(true, "hide was called")
             start()
           })
@@ -116,10 +116,10 @@ $(function () {
       test("should fire hidden event", function () {
         stop()
         var tooltip = $('<div title="tooltip title"></div>')
-          .bind("shown", function() {
+          .bind("bs:tooltip:shown", function() {
             $(this).tooltip('hide')
           })
-          .bind("hidden", function() {
+          .bind("bs:tooltip:hidden", function() {
             ok(true, "hidden was called")
             start()
           })
@@ -129,15 +129,15 @@ $(function () {
       test("should not fire hidden event when default prevented", function () {
         stop()
         var tooltip = $('<div title="tooltip title"></div>')
-          .bind("shown", function() {
+          .bind("bs:tooltip:shown", function() {
             $(this).tooltip('hide')
           })
-          .bind("hide", function(e) {
+          .bind("bs:tooltip:hide", function(e) {
             e.preventDefault()
             ok(true, "hide was called")
             start()
           })
-          .bind("hidden", function() {
+          .bind("bs:tooltip:hidden", function() {
             ok(false, "hidden was called")
           })
           .tooltip('show')
@@ -214,13 +214,13 @@ $(function () {
 
       test("should destroy tooltip", function () {
         var tooltip = $('<div/>').tooltip().on('click.foo', function(){})
-        ok(tooltip.data('tooltip'), 'tooltip has data')
+        ok(tooltip.data('bs-tooltip'), 'tooltip has data')
         ok($._data(tooltip[0], 'events').mouseover && $._data(tooltip[0], 'events').mouseout, 'tooltip has hover event')
         ok($._data(tooltip[0], 'events').click[0].namespace == 'foo', 'tooltip has extra click.foo event')
         tooltip.tooltip('show')
         tooltip.tooltip('destroy')
         ok(!tooltip.hasClass('in'), 'tooltip is hidden')
-        ok(!$._data(tooltip[0], 'tooltip'), 'tooltip does not have data')
+        ok(!$._data(tooltip[0], 'bs-tooltip'), 'tooltip does not have data')
         ok($._data(tooltip[0], 'events').click[0].namespace == 'foo', 'tooltip still has click.foo')
         ok(!$._data(tooltip[0], 'events').mouseover && !$._data(tooltip[0], 'events').mouseout, 'tooltip does not have any events')
       })

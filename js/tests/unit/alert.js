@@ -48,12 +48,12 @@ $(function () {
         $.support.transition = false
         stop();
         $('<div class="alert"/>')
-          .bind('bs-close', function (e) {
+          .bind('bs:alert:close', function (e) {
             e.preventDefault();
             ok(true);
             start();
           })
-          .bind('bs-closed', function () {
+          .bind('bs:alert:closed', function () {
             ok(false);
           })
           .alert('close')
