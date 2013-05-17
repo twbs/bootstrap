@@ -11,8 +11,15 @@ title: Grid template
     padding-right: 15px;
   }
 
+  h4 {
+    margin-top: 25px;
+  }
   .row {
     margin-bottom: 20px;
+  }
+  .row .row {
+    margin-top: 10px;
+    margin-bottom: 0;
   }
   [class*="col-lg-"] {
     padding-top: 15px;
@@ -49,6 +56,19 @@ title: Grid template
   </div>
 
   <h4>Full width, single column</h4>
-  <p class="text-muted">No grid classes are necessary for full-width elements.</p>
+  <p class="text-warning">No grid classes are necessary for full-width elements.</p>
+
+  <h4>Two columns with two nested columns</h4>
+  <div class="row">
+    <div class="col col-lg-8">
+      .col .col-lg-8
+      <div class="row">
+        <div class="col col-lg-6">.col .col-lg-6</div>
+        <div class="col col-lg-6">.col .col-lg-6</div>
+      </div>
+    </div>
+    <div class="col col-lg-4">.col .col-lg-4</div>
+  </div>
+
 
 </div> <!-- /container -->
