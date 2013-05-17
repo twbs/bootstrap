@@ -976,10 +976,6 @@ pre code {
   .container {
     max-width: 728px;
   }
-  .row {
-    margin-right: -15px;
-    margin-left: -15px;
-  }
 }
 
 @media screen and (min-width: 992px) {
