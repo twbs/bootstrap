@@ -17,15 +17,6 @@ Three quick start options are available:
 Read the [Getting Started page](http://getbootstrap.com/getting-started/) for information on the framework contents, basic template guidelines, and more.
 
 
-## Bootstrap elsewhere
-
-Beyond getting started with the Bootstrap core, there are ways to use Bootstrap in other tools and services:
-
-* [Roots WordPress theme](https://github.com/retlehs/roots) - A WordPress starter theme based on HTML5 Boilerplate & Bootstrap from Twitter.
-
-Have suggestions? Let us know with a [new issue](https://github.com/twitter/bootstrap/issues).
-
-
 
 ## Bugs and feature requests
 
