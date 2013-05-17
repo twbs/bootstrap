@@ -1666,12 +1666,12 @@ select:focus:invalid:focus {
   margin-top: 15px;
 }
 
-.form-horizontal .row-label {
+.form-horizontal .control-label {
   padding-top: 6px;
 }
 
 @media (min-width: 768px) {
-  .form-horizontal .row-label {
+  .form-horizontal .control-label {
     text-align: right;
   }
 }

@@ -268,15 +268,15 @@ input[type="checkbox"] {
 
 // Warning
 .has-warning {
-  .formFieldState(@state-warning-text, @state-warning-text, @state-warning-bg);
+  .form-field-validation(@state-warning-text, @state-warning-text, @state-warning-bg);
 }
 // Error
 .has-error {
-  .formFieldState(@state-danger-text, @state-danger-text, @state-danger-bg);
+  .form-field-validation(@state-danger-text, @state-danger-text, @state-danger-bg);
 }
 // Success
 .has-success {
-  .formFieldState(@state-success-text, @state-success-text, @state-success-bg);
+  .form-field-validation(@state-success-text, @state-success-text, @state-success-bg);
 }
 
 // HTML5 invalid states
@@ -443,14 +443,14 @@ select:focus:invalid {
   .row + .row {
     margin-top: 15px;
   }
-  .row-label {
+  .control-label {
     padding-top: 6px;
   }
 }
 
 // Only right aline form labels here when the columns stop stacking
 @media (min-width: 768px) {
-  .form-horizontal .row-label {
+  .form-horizontal .control-label {
     text-align: right;
   }
 }
