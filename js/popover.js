@@ -87,10 +87,10 @@
   $.fn.popover = function (option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs-popover')
+      var data    = $this.data('bs.popover')
       var options = typeof option == 'object' && option
 
-      if (!data) $this.data('bs-popover', (data = new Popover(this, options)))
+      if (!data) $this.data('bs.popover', (data = new Popover(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }

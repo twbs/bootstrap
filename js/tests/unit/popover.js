@@ -34,7 +34,7 @@ $(function () {
         var popover = $('<a href="#" title="mdo" data-content="http://twitter.com/mdo">@mdo</a>')
           .popover()
 
-        ok(!!popover.data('bs-popover'), 'popover instance exists')
+        ok(!!popover.data('bs.popover'), 'popover instance exists')
       })
 
       test("should get title and content from options", function () {
@@ -99,7 +99,7 @@ $(function () {
 
       test("should destroy popover", function () {
         var popover = $('<div/>').popover({trigger: 'hover'}).on('click.foo', function(){})
-        ok(popover.data('bs-popover'), 'popover has data')
+        ok(popover.data('bs.popover'), 'popover has data')
         ok($._data(popover[0], 'events').mouseover && $._data(popover[0], 'events').mouseout, 'popover has hover event')
         ok($._data(popover[0], 'events').click[0].namespace == 'foo', 'popover has extra click.foo event')
         popover.popover('show')

@@ -56,7 +56,7 @@
     }
 
     this.$element[dimension](0)
-    this.transition('addClass', $.Event('bs:collapse:show'), 'bs:collapse:shown')
+    this.transition('addClass', $.Event('show.bs.collapse'), 'shown.bs.collapse')
 
     if ($.support.transition) this.$element[dimension](this.$element[0][scroll])
   }
@@ -65,7 +65,7 @@
     if (this.transitioning || !this.$element.hasClass('in')) return
     var dimension = this.dimension()
     this.reset(this.$element[dimension]())
-    this.transition('removeClass', $.Event('bs:collapse:hide'), 'hidden')
+    this.transition('removeClass', $.Event('hide.bs.collapse'), 'hidden')
     this.$element[dimension](0)
   }
 
@@ -85,7 +85,7 @@
   Collapse.prototype.transition = function (method, startEvent, completeEvent) {
     var that     = this
     var complete = function () {
-      if (startEvent.type == 'bs:collapse:show') that.reset()
+      if (startEvent.type == 'show') that.reset()
       that.transitioning = 0
       that.$element.trigger(completeEvent)
     }

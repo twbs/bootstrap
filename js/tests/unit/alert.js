@@ -1,6 +1,6 @@
 $(function () {
 
-    module("alerts")
+    module("alert")
 
       test("should provide no conflict", function () {
         var alert = $.fn.alert.noConflict()
@@ -48,12 +48,12 @@ $(function () {
         $.support.transition = false
         stop();
         $('<div class="alert"/>')
-          .bind('bs:alert:close', function (e) {
+          .on('close.bs.alert', function (e) {
             e.preventDefault();
             ok(true);
             start();
           })
-          .bind('bs:alert:closed', function () {
+          .on('closed.bs.alert', function () {
             ok(false);
           })
           .alert('close')

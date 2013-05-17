@@ -18,7 +18,7 @@ $(function () {
 
       test("should exit early if element is not visible", function () {
         var $affix = $('<div style="display: none"></div>').affix()
-        $affix.data('bs-affix').checkPosition()
+        $affix.data('bs.affix').checkPosition()
         ok(!$affix.hasClass('affix'), 'affix class was not added')
       })
 
