@@ -2,8 +2,8 @@
     "name": "twitter/bootstrap"
   , "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development."
   , "keywords": ["bootstrap", "css"]
-  , "homepage": "http://twitter.github.com/bootstrap/"
-  , "author": "Twitter Inc."
+  , "homepage": "http://twitter.github.io/bootstrap/"
+  , "authors": [{"name":"Twitter Inc.", "homepage":"https://dev.twitter.com/opensource"}]
   , "license": "Apache-2.0"
-
+  , "support":{"issues":"https://github.com/twitter/bootstrap/issues"}
 }
