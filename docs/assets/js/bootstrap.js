@@ -507,7 +507,7 @@
     }
 
     this.$element[dimension](0)
-    this.transition('addClass', $.Event('bs:collapse:show'), 'shown')
+    this.transition('addClass', $.Event('bs:collapse:show'), 'bs:collapse:shown')
 
     if ($.support.transition) this.$element[dimension](this.$element[0][scroll])
   }
@@ -536,7 +536,7 @@
   Collapse.prototype.transition = function (method, startEvent, completeEvent) {
     var that     = this
     var complete = function () {
-      if (startEvent.type == 'show') that.reset()
+      if (startEvent.type == 'bs:collapse:show') that.reset()
       that.transitioning = 0
       that.$element.trigger(completeEvent)
     }
@@ -647,7 +647,10 @@
     clearMenus()
 
     if (!isActive) {
-      $('<div class="dropdown-backdrop"/>').insertBefore($(this)).on('click', clearMenus)
+      if ('ontouchstart' in document.documentElement) {
+        // if mobile we we use a backdrop because click events don't delegate
+        $('<div class="dropdown-backdrop"/>').insertBefore($(this)).on('click', clearMenus)
+      }
       $parent.toggleClass('open')
     }
 
@@ -738,6 +741,7 @@
 
 
   $(document)
+    .on('click.dropdown.data-api', clearMenus)
     .on('click.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
     .on('click.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
     .on('keydown.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
@@ -825,7 +829,7 @@
     })
   }
 
-  Modal.prototype.show = function (e) {
+  Modal.prototype.hide = function (e) {
     if (e) e.preventDefault()
 
     e = $.Event('bs:modal:hide')
@@ -1035,10 +1039,10 @@
   }
 
   Tooltip.prototype.init = function (type, element, options) {
-    this.type     = type
-    this.options  = this.getOptions(options)
     this.enabled  = true
+    this.type     = type
     this.$element = $(element)
+    this.options  = this.getOptions(options)
 
     var triggers = this.options.trigger.split(' ')
 
@@ -1086,7 +1090,7 @@
       if (defaults[key] != value) options[key] = value
     }, this)
 
-    var self = $(e.currentTarget)[this.type](options).data(this.type)
+    var self = $(e.currentTarget)[this.type](options).data('bs-' + this.type)
 
     if (!self.options.delay || !self.options.delay.show) return self.show()
 
@@ -1099,7 +1103,7 @@
   }
 
   Tooltip.prototype.leave = function (e) {
-    var self = $(e.currentTarget)[this.type](this._options).data(this.type)
+    var self = $(e.currentTarget)[this.type](this._options).data('bs-' + this.type)
 
     if (this.timeout) clearTimeout(this.timeout)
     if (!self.options.delay || !self.options.delay.hide) return self.hide()
@@ -1155,7 +1159,7 @@
       }
 
       this.applyPlacement(tp, placement)
-      this.$element.trigger('shown')
+      this.$element.trigger('bs:' + this.type + ':shown')
     }
   }
 
@@ -1237,7 +1241,7 @@
       removeWithAnimation() :
       $tip.detach()
 
-    this.$element.trigger('hidden')
+    this.$element.trigger('bs:' + this.type + ':hidden')
 
     return this
   }
@@ -1301,12 +1305,12 @@
   }
 
   Tooltip.prototype.toggle = function (e) {
-    var self = e ? $(e.currentTarget)[this.type](this._options).data(this.type) : this
+    var self = e ? $(e.currentTarget)[this.type](this._options).data('bs-' + this.type) : this
     self.tip().hasClass('in') ? self.hide() : self.show()
   }
 
   Tooltip.prototype.destroy = function () {
-    this.hide().$element.off('.' + this.type).removeData(this.type)
+    this.hide().$element.off('.' + this.type).removeData('bs-' + this.type)
   }
 
 

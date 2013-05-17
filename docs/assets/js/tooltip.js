@@ -48,10 +48,10 @@
   }
 
   Tooltip.prototype.init = function (type, element, options) {
-    this.type     = type
-    this.options  = this.getOptions(options)
     this.enabled  = true
+    this.type     = type
     this.$element = $(element)
+    this.options  = this.getOptions(options)
 
     var triggers = this.options.trigger.split(' ')
 
@@ -99,7 +99,7 @@
       if (defaults[key] != value) options[key] = value
     }, this)
 
-    var self = $(e.currentTarget)[this.type](options).data(this.type)
+    var self = $(e.currentTarget)[this.type](options).data('bs-' + this.type)
 
     if (!self.options.delay || !self.options.delay.show) return self.show()
 
@@ -112,7 +112,7 @@
   }
 
   Tooltip.prototype.leave = function (e) {
-    var self = $(e.currentTarget)[this.type](this._options).data(this.type)
+    var self = $(e.currentTarget)[this.type](this._options).data('bs-' + this.type)
 
     if (this.timeout) clearTimeout(this.timeout)
     if (!self.options.delay || !self.options.delay.hide) return self.hide()
@@ -168,7 +168,7 @@
       }
 
       this.applyPlacement(tp, placement)
-      this.$element.trigger('shown')
+      this.$element.trigger('bs:' + this.type + ':shown')
     }
   }
 
@@ -250,7 +250,7 @@
       removeWithAnimation() :
       $tip.detach()
 
-    this.$element.trigger('hidden')
+    this.$element.trigger('bs:' + this.type + ':hidden')
 
     return this
   }
@@ -314,12 +314,12 @@
   }
 
   Tooltip.prototype.toggle = function (e) {
-    var self = e ? $(e.currentTarget)[this.type](this._options).data(this.type) : this
+    var self = e ? $(e.currentTarget)[this.type](this._options).data('bs-' + this.type) : this
     self.tip().hasClass('in') ? self.hide() : self.show()
   }
 
   Tooltip.prototype.destroy = function () {
-    this.hide().$element.off('.' + this.type).removeData(this.type)
+    this.hide().$element.off('.' + this.type).removeData('bs-' + this.type)
   }
 
 

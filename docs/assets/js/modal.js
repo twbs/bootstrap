@@ -80,7 +80,7 @@
     })
   }
 
-  Modal.prototype.show = function (e) {
+  Modal.prototype.hide = function (e) {
     if (e) e.preventDefault()
 
     e = $.Event('bs:modal:hide')
