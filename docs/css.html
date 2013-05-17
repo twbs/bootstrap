@@ -1927,9 +1927,9 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <thead>
           <tr>
             <th>Class</th>
-            <th>Phones <small>767px and below</small></th>
-            <th>Tablets <small>979px to 768px</small></th>
-            <th>Desktops <small>Default</small></th>
+            <th>Small devices <small>Up to 768px</small></th>
+            <th>Medium devices <small>768px to 979px</small></th>
+            <th>Large devices <small>980px and up</small></th>
           </tr>
         </thead>
         <tbody>
@@ -1997,23 +1997,23 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </table>
 
     <h3>When to use</h3>
-    <p>Use on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation. Responsive utilities should not be used with tables, and as such are not supported.</p>
+    <p>Use on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation. Responsive utilities are currently only available for block-level toggling, meaning <code>display: none;</code> or <code>display: block;</code>. Use with inline and table elements is currently not supported.</p>
 
     <h3>Test case</h3>
-    <p>Resize your browser or load on different devices to test the above classes.</p>
+    <p>Resize your browser or load on different devices to test the responsive utility classes.</p>
     <h4>Visible on...</h4>
-    <p>Green checkmarks indicate that class is visible in your current viewport.</p>
+    <p>Green checkmarks indicate the element <strong>is visible</strong> in your current viewport.</p>
     <ul class="responsive-utilities-test">
-      <li>Phone<span class="visible-sm">&#10004; Phone</span></li>
-      <li>Tablet<span class="visible-md">&#10004; Tablet</span></li>
-      <li>Desktop<span class="visible-lg">&#10004; Desktop</span></li>
+      <li>Small<span class="visible-sm">&#10004; Visible on small</span></li>
+      <li>Medium<span class="visible-md">&#10004; Visible on medium</span></li>
+      <li>Large<span class="visible-lg">&#10004; Visible on large</span></li>
     </ul>
     <h4>Hidden on...</h4>
-    <p>Here, green checkmarks indicate that class is hidden in your current viewport.</p>
+    <p>Here, green checkmarks indicate the element <strong>is hidden</strong> in your current viewport.</p>
     <ul class="responsive-utilities-test hidden-on">
-      <li>Phone<span class="hidden-sm">&#10004; Phone</span></li>
-      <li>Tablet<span class="hidden-md">&#10004; Tablet</span></li>
-      <li>Desktop<span class="hidden-lg">&#10004; Desktop</span></li>
+      <li>Small<span class="hidden-sm">&#10004; Hidden on small</span></li>
+      <li>Medium<span class="hidden-md">&#10004; Hidden on medium</span></li>
+      <li>Large<span class="hidden-lg">&#10004; Hidden on desktop</span></li>
     </ul>
 
   </div>
