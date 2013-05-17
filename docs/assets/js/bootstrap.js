@@ -92,14 +92,14 @@
       $parent = $this.hasClass('alert') ? $this : $this.parent()
     }
 
-    $parent.trigger(e = $.Event('bs:alert:close'))
+    $parent.trigger(e = $.Event('close.bs.alert'))
 
     if (e.isDefaultPrevented()) return
 
     $parent.removeClass('in')
 
     function removeElement() {
-      $parent.trigger('bs-closed').remove()
+      $parent.trigger('closed.bs.alert').remove()
     }
 
     $.support.transition && $parent.hasClass('fade') ?
@@ -116,9 +116,9 @@
   $.fn.alert = function (option) {
     return this.each(function () {
       var $this = $(this)
-      var data  = $this.data('bs-alert')
+      var data  = $this.data('bs.alert')
 
-      if (!data) $this.data('bs-alert', (data = new Alert(this)))
+      if (!data) $this.data('bs.alert', (data = new Alert(this)))
       if (typeof option == 'string') data[option].call($this)
     })
   }
@@ -138,7 +138,7 @@
   // ALERT DATA-API
   // ==============
 
-  $(document).on('click.bs-alert.bs-data-api', dismiss, Alert.prototype.close)
+  $(document).on('click.bs.alert.data-api', dismiss, Alert.prototype.close)
 
 }(window.jQuery);
 /* ============================================================
@@ -217,7 +217,7 @@
       var data    = $this.data('button')
       var options = typeof option == 'object' && option
 
-      if (!data) $this.data('bs-button', (data = new Button(this, options)))
+      if (!data) $this.data('bs.button', (data = new Button(this, options)))
 
       if (option == 'toggle') data.toggle()
       else if (option) data.setState(option)
@@ -239,7 +239,7 @@
   // BUTTON DATA-API
   // ===============
 
-  $(document).on('click.bs-button.bs-data-api', '[data-toggle^=button]', function (e) {
+  $(document).on('click.bs.button.data-api', '[data-toggle^=button]', function (e) {
     var $btn = $(e.target)
     if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
     $btn.button('toggle')
@@ -359,7 +359,7 @@
 
     $next = $next.length ? $next : this.$element.find('.item')[fallback]()
 
-    var e = $.Event('bs:carousel:slide', { relatedTarget: $next[0], direction: direction })
+    var e = $.Event('slide.bs.carousel', { relatedTarget: $next[0], direction: direction })
 
     if ($next.hasClass('active')) return
 
@@ -407,11 +407,11 @@
   $.fn.carousel = function (option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs-carousel')
+      var data    = $this.data('bs.carousel')
       var options = $.extend({}, Carousel.DEFAULTS, typeof option == 'object' && option)
       var action  = typeof option == 'string' ? option : options.slide
 
-      if (!data) $this.data('bs-carousel', (data = new Carousel(this, options)))
+      if (!data) $this.data('bs.carousel', (data = new Carousel(this, options)))
       if (typeof option == 'number') data.to(option)
       else if (action) data[action]()
       else if (options.interval) data.pause().cycle()
@@ -507,7 +507,7 @@
     }
 
     this.$element[dimension](0)
-    this.transition('addClass', $.Event('bs:collapse:show'), 'bs:collapse:shown')
+    this.transition('addClass', $.Event('show.bs.collapse'), 'shown.bs.collapse')
 
     if ($.support.transition) this.$element[dimension](this.$element[0][scroll])
   }
@@ -516,7 +516,7 @@
     if (this.transitioning || !this.$element.hasClass('in')) return
     var dimension = this.dimension()
     this.reset(this.$element[dimension]())
-    this.transition('removeClass', $.Event('bs:collapse:hide'), 'hidden')
+    this.transition('removeClass', $.Event('hide.bs.collapse'), 'hidden')
     this.$element[dimension](0)
   }
 
@@ -536,7 +536,7 @@
   Collapse.prototype.transition = function (method, startEvent, completeEvent) {
     var that     = this
     var complete = function () {
-      if (startEvent.type == 'bs:collapse:show') that.reset()
+      if (startEvent.type == 'show') that.reset()
       that.transitioning = 0
       that.$element.trigger(completeEvent)
     }
@@ -793,7 +793,7 @@
 
   Modal.prototype.show = function () {
     var that = this
-    var e    = $.Event('bs:modal:show')
+    var e    = $.Event('show.bs.modal')
 
     this.$element.trigger(e)
 
@@ -823,8 +823,8 @@
       that.enforceFocus()
 
       transition ?
-        that.$element.one($.support.transition.end, function () { that.$element.focus().trigger('bs:modal:shown') }) :
-        that.$element.focus().trigger('bs:modal:shown')
+        that.$element.one($.support.transition.end, function () { that.$element.focus().trigger('shown.bs.modal') }) :
+        that.$element.focus().trigger('shown.bs.modal')
 
     })
   }
@@ -832,7 +832,7 @@
   Modal.prototype.hide = function (e) {
     if (e) e.preventDefault()
 
-    e = $.Event('bs:modal:hide')
+    e = $.Event('hide.bs.modal')
 
     this.$element.trigger(e)
 
@@ -842,7 +842,7 @@
 
     this.escape()
 
-    $(document).off('focusin.modal')
+    $(document).off('focusin.bs.modal')
 
     this.$element
       .removeClass('in')
@@ -854,7 +854,7 @@
   }
 
   Modal.prototype.enforceFocus = function () {
-    $(document).on('focusin.modal', function (e) {
+    $(document).on('focusin.bs.modal', function (e) {
       if (this.$element[0] !== e.target && !this.$element.has(e.target).length) {
         this.$element.focus()
       }
@@ -863,11 +863,11 @@
 
   Modal.prototype.escape = function () {
     if (this.isShown && this.options.keyboard) {
-      this.$element.on('keyup.dismiss.modal', function ( e ) {
+      this.$element.on('keyup.dismiss.bs.modal', function ( e ) {
         e.which == 27 && this.hide()
       }, this)
     } else if (!this.isShown) {
-      this.$element.off('keyup.dismiss.modal')
+      this.$element.off('keyup.dismiss.bs.modal')
     }
   }
 
@@ -889,7 +889,7 @@
     this.$element.hide()
     this.backdrop(function () {
       that.removeBackdrop()
-      that.$element.trigger('bs:modal:hidden')
+      that.$element.trigger('hidden.bs.modal')
     })
   }
 
@@ -945,10 +945,10 @@
   $.fn.modal = function (option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs-modal')
+      var data    = $this.data('bs.modal')
       var options = $.extend({}, Modal.DEFAULTS, $this.data(), typeof option == 'object' && option)
 
-      if (!data) $this.data('bs-modal', (data = new Modal(this, options)))
+      if (!data) $this.data('bs.modal', (data = new Modal(this, options)))
       if (typeof option == 'string') data[option]()
       else if (options.show) data.show()
     })
@@ -969,7 +969,7 @@
   // MODAL DATA-API
   // ==============
 
-  $(document).on('click.modal.data-api', '[data-toggle="modal"]', function (e) {
+  $(document).on('click.bs.modal.data-api', '[data-toggle="modal"]', function (e) {
     var $this   = $(this)
     var href    = $this.attr('href')
     var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) //strip for ie7
@@ -985,8 +985,8 @@
     })
 
     var $body = $(document.body)
-      .on('bs:modal:shown',  '.modal', function () { $body.addClass('modal-open') })
-      .on('bs:modal:hidden', '.modal', function () { $body.removeClass('modal-open') })
+      .on('bs.modal.shown',  '.modal', function () { $body.addClass('modal-open') })
+      .on('bs.modal.hidden', '.modal', function () { $body.removeClass('modal-open') })
 
 }(window.jQuery);
 /* ===========================================================
@@ -1090,7 +1090,7 @@
       if (defaults[key] != value) options[key] = value
     }, this)
 
-    var self = $(e.currentTarget)[this.type](options).data('bs-' + this.type)
+    var self = $(e.currentTarget)[this.type](options).data('bs.' + this.type)
 
     if (!self.options.delay || !self.options.delay.show) return self.show()
 
@@ -1103,7 +1103,7 @@
   }
 
   Tooltip.prototype.leave = function (e) {
-    var self = $(e.currentTarget)[this.type](this._options).data('bs-' + this.type)
+    var self = $(e.currentTarget)[this.type](this._options).data('bs.' + this.type)
 
     if (this.timeout) clearTimeout(this.timeout)
     if (!self.options.delay || !self.options.delay.hide) return self.hide()
@@ -1115,7 +1115,7 @@
   }
 
   Tooltip.prototype.show = function () {
-    var e = $.Event('bs:'+ this.type + ':show')
+    var e = $.Event('show.bs.'+ this.type)
 
     if (this.hasContent() && this.enabled) {
       this.$element.trigger(e)
@@ -1159,7 +1159,7 @@
       }
 
       this.applyPlacement(tp, placement)
-      this.$element.trigger('bs:' + this.type + ':shown')
+      this.$element.trigger('shown.bs.' + this.type)
     }
   }
 
@@ -1218,7 +1218,7 @@
   Tooltip.prototype.hide = function () {
     var that = this
     var $tip = this.tip()
-    var e    = $.Event('bs:' + this.type + ':hide')
+    var e    = $.Event('hide.bs.' + this.type)
 
     this.$element.trigger(e)
 
@@ -1241,7 +1241,7 @@
       removeWithAnimation() :
       $tip.detach()
 
-    this.$element.trigger('bs:' + this.type + ':hidden')
+    this.$element.trigger('hidden.bs.' + this.type)
 
     return this
   }
@@ -1305,12 +1305,12 @@
   }
 
   Tooltip.prototype.toggle = function (e) {
-    var self = e ? $(e.currentTarget)[this.type](this._options).data('bs-' + this.type) : this
+    var self = e ? $(e.currentTarget)[this.type](this._options).data('bs.' + this.type) : this
     self.tip().hasClass('in') ? self.hide() : self.show()
   }
 
   Tooltip.prototype.destroy = function () {
-    this.hide().$element.off('.' + this.type).removeData('bs-' + this.type)
+    this.hide().$element.off('.' + this.type).removeData('bs.' + this.type)
   }
 
 
@@ -1322,10 +1322,10 @@
   $.fn.tooltip = function (option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs-tooltip')
+      var data    = $this.data('bs.tooltip')
       var options = typeof option == 'object' && option
 
-      if (!data) $this.data('bs-tooltip', (data = new Tooltip(this, options)))
+      if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
@@ -1431,10 +1431,10 @@
   $.fn.popover = function (option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs-popover')
+      var data    = $this.data('bs.popover')
       var options = typeof option == 'object' && option
 
-      if (!data) $this.data('bs-popover', (data = new Popover(this, options)))
+      if (!data) $this.data('bs.popover', (data = new Popover(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
@@ -1576,10 +1576,10 @@
   $.fn.scrollspy = function (option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs-scrollspy')
+      var data    = $this.data('bs.scrollspy')
       var options = typeof option == 'object' && option
 
-      if (!data) $this.data('bs-scrollspy', (data = new ScrollSpy(this, options)))
+      if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
@@ -1649,7 +1649,7 @@
     if ($this.parent('li').hasClass('active')) return
 
     var previous = $ul.find('.active:last a')[0]
-    var e        = $.Event('bs:tab:show', {
+    var e        = $.Event('show.bs.tab', {
       relatedTarget: previous
     })
 
@@ -1662,7 +1662,7 @@
     this.activate($this.parent('li'), $ul)
     this.activate($target, $target.parent(), function () {
       $this.trigger({
-        type: 'bs:tab:shown'
+        type: 'shown.bs.tab'
       , relatedTarget: previous
       })
     })
@@ -1712,9 +1712,9 @@
   $.fn.tab = function ( option ) {
     return this.each(function () {
       var $this = $(this)
-      var data  = $this.data('bs-tab')
+      var data  = $this.data('bs.tab')
 
-      if (!data) $this.data('bs-tab', (data = new Tab(this)))
+      if (!data) $this.data('bs.tab', (data = new Tab(this)))
       if (typeof option == 'string') data[option]()
     })
   }
@@ -1734,7 +1734,7 @@
   // TAB DATA-API
   // ============
 
-  $(document).on('click.tab.data-api', '[data-toggle="tab"], [data-toggle="pill"]', function (e) {
+  $(document).on('click.bs.tab.data-api', '[data-toggle="tab"], [data-toggle="pill"]', function (e) {
     e.preventDefault()
     $(this).tab('show')
   })
@@ -1768,8 +1768,8 @@
   var Affix = function (element, options) {
     this.options = $.extend({}, Affix.DEFAULTS, options)
     this.$window = $(window)
-      .on('scroll.bs-affix.bs-data-api', $.proxy(this.checkPosition, this))
-      .on('click.bs-affix.bs-data-api',  $.proxy(this.checkPositionWithEventLoop, this))
+      .on('scroll.bs.affix.data-api', $.proxy(this.checkPosition, this))
+      .on('click.bs.affix.data-api',  $.proxy(this.checkPositionWithEventLoop, this))
 
     this.$element = $(element)
     this.affixed  =
@@ -1822,10 +1822,10 @@
   $.fn.affix = function (option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs-affix')
+      var data    = $this.data('bs.affix')
       var options = typeof option == 'object' && option
 
-      if (!data) $this.data('bs-affix', (data = new Affix(this, options)))
+      if (!data) $this.data('bs.affix', (data = new Affix(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
