@@ -18,33 +18,30 @@
  * ========================================================== */
 
 
-!function ($) {
+!function ($) { "use strict";
 
-  "use strict";
-
-
-  /* CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
-   * ======================================================= */
+  // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
+  // ============================================================
 
   function transitionEnd() {
-    var el = document.createElement('bootstrap');
+    var el = document.createElement('bootstrap')
 
     var transEndEventNames = {
-        'WebkitTransition' : 'webkitTransitionEnd'
-      , 'MozTransition'    : 'transitionend'
-      , 'OTransition'      : 'oTransitionEnd otransitionend'
-      , 'transition'       : 'transitionend'
-    };
+      'WebkitTransition' : 'webkitTransitionEnd'
+    , 'MozTransition'    : 'transitionend'
+    , 'OTransition'      : 'oTransitionEnd otransitionend'
+    , 'transition'       : 'transitionend'
+    }
 
     for (var name in transEndEventNames) {
       if (el.style[name] !== undefined) {
-        return { end: transEndEventNames[name] };
+        return { end: transEndEventNames[name] }
       }
     }
   }
 
   $(function () {
-    $.support.transition = transitionEnd();
-  });
+    $.support.transition = transitionEnd()
+  })
 
 }(window.jQuery);
