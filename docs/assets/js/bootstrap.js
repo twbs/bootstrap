@@ -1083,7 +1083,7 @@
   }
 
   Tooltip.prototype.enter = function (e) {
-    var defaults = $.fn[this.type].defaults
+    var defaults = this.getDefaults()
     var options  = {}
 
     this._options && $.each(this._options, function (key, value) {
