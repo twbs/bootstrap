@@ -57,9 +57,10 @@ $.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the boot
 
     <h3 id="js-events">Events</h3>
     <p>Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.</p>
+    <p>As of 3.0.0, all bootstrap events are namespaced.</p>
     <p>All infinitive events provide <code>preventDefault</code> functionality. This provides the ability to stop the execution of an action before it starts.</p>
 {% highlight js %}
-$('#myModal').on('show', function (e) {
+$('#myModal').on('show.bs.modal', function (e) {
   if (!data) return e.preventDefault() // stops modal from being shown
 })
 {% endhighlight %}
@@ -71,10 +72,10 @@ $('#myModal').on('show', function (e) {
   ================================================== -->
   <div class="bs-docs-section" id="transitions">
     <div class="page-header">
-      <h1>Transitions <small>bootstrap-transition.js</small></h1>
+      <h1>Transitions <small>transition.js</small></h1>
     </div>
     <h3>About transitions</h3>
-    <p>For simple transition effects, include bootstrap-transition.js once alongside the other JS files. If you're using the compiled (or minified) bootstrap.js, there is no need to include this&mdash;it's already there.</p>
+    <p>For simple transition effects, include transition.js once alongside the other JS files. If you're using the compiled (or minified) bootstrap.js, there is no need to include this&mdash;it's already there.</p>
     <h3>Use cases</h3>
     <p>A few examples of the transition plugin:</p>
     <ul>
@@ -293,7 +294,7 @@ $('#myModal').modal({
     <table class="table table-bordered table-striped">
       <thead>
        <tr>
-         <th style="width: 150px;">Event</th>
+         <th style="width: 150px;">Event Type</th>
          <th>Description</th>
        </tr>
       </thead>
@@ -317,7 +318,7 @@ $('#myModal').modal({
       </tbody>
     </table>
 {% highlight js %}
-$('#myModal').on('hidden', function () {
+$('#myModal').on('hidden.bs.modal', function () {
   // do something…
 })
 {% endhighlight %}
@@ -566,7 +567,7 @@ $('[data-spy="scroll"]').each(function () {
           <table class="table table-bordered table-striped">
             <thead>
              <tr>
-               <th style="width: 150px;">Event</th>
+               <th style="width: 150px;">Event Type</th>
                <th>Description</th>
              </tr>
             </thead>
@@ -577,6 +578,11 @@ $('[data-spy="scroll"]').each(function () {
             </tr>
             </tbody>
           </table>
+{% highlight js %}
+$('#myScrollspy').on('activate.bs.scrollspy', function () {
+  // do something…
+})
+{% endhighlight %}
         </section>
 
 
@@ -684,7 +690,7 @@ $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
           <table class="table table-bordered table-striped">
             <thead>
              <tr>
-               <th style="width: 150px;">Event</th>
+               <th style="width: 150px;">Event Type</th>
                <th>Description</th>
              </tr>
             </thead>
@@ -700,7 +706,7 @@ $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
             </tbody>
           </table>
 {% highlight js %}
-$('a[data-toggle="tab"]').on('shown', function (e) {
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
   e.target // activated tab
   e.relatedTarget // previous tab
 })
@@ -714,7 +720,6 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <div class="page-header">
             <h1>Tooltips <small>bootstrap-tooltip.js</small></h1>
           </div>
-
 
           <h2>Examples</h2>
           <p>Inspired by the excellent jQuery.tipsy plugin written by Jason Frame; Tooltips are an updated version, which don't rely on images, use CSS3 for animations, and data-attributes for local title storage.</p>
@@ -1085,7 +1090,7 @@ $('#example').tooltip(options)
         <table class="table table-bordered table-striped">
           <thead>
             <tr>
-              <th style="width: 150px;">Event</th>
+              <th style="width: 150px;">Event Type</th>
               <th>Description</th>
             </tr>
           </thead>
@@ -1101,7 +1106,7 @@ $('#example').tooltip(options)
           </tbody>
         </table>
 {% highlight js %}
-$('#my-alert').bind('closed', function () {
+$('#my-alert').bind('closed.bs.alert', function () {
   // do something…
 })
 {% endhighlight %}
@@ -1430,7 +1435,7 @@ $('#myCollapsible').collapse({
             <table class="table table-bordered table-striped">
               <thead>
                <tr>
-                 <th style="width: 150px;">Event</th>
+                 <th style="width: 150px;">Event Type</th>
                  <th>Description</th>
                </tr>
               </thead>
@@ -1456,7 +1461,7 @@ $('#myCollapsible').collapse({
               </tbody>
             </table>
 {% highlight js %}
-$('#myCollapsible').on('hidden', function () {
+$('#myCollapsible').on('hidden.bs.collapse', function () {
   // do something…
 })
 {% endhighlight %}
@@ -1657,7 +1662,7 @@ $('.carousel').carousel({
             <table class="table table-bordered table-striped">
               <thead>
                <tr>
-                 <th style="width: 150px;">Event</th>
+                 <th style="width: 150px;">Event Type</th>
                  <th>Description</th>
                </tr>
               </thead>
@@ -1672,6 +1677,11 @@ $('.carousel').carousel({
                </tr>
               </tbody>
             </table>
+            {% highlight js %}
+$('#myCarousel').on('slide.bs.carousel', function () {
+  // do something…
+})
+{% endhighlight %}
           </section>
 
 
