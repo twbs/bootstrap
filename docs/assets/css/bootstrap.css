@@ -1535,34 +1535,6 @@ select:focus:invalid:focus {
           box-shadow: 0 0 6px #f8b9b7;
 }
 
-.form-actions {
-  padding: 20px 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  background-color: #f5f5f5;
-  border-top: 1px solid #e5e5e5;
-}
-
-.form-actions:before,
-.form-actions:after {
-  display: table;
-  content: " ";
-}
-
-.form-actions:after {
-  clear: both;
-}
-
-.form-actions:before,
-.form-actions:after {
-  display: table;
-  content: " ";
-}
-
-.form-actions:after {
-  clear: both;
-}
-
 .help-block {
   display: block;
   margin-top: 5px;
