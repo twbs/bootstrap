@@ -3,19 +3,61 @@
 // --------------------------------------------------
 
 
-// Fixed (940px)
-#grid > .core(@gridColumnWidth, @gridGutterWidth);
+// Set the container width, and override it for fixed navbars in media queries
+.container {
+  .container-fixed();
+}
 
-// Fluid (940px)
-#grid > .fluid(@fluidGridColumnWidth, @fluidGridGutterWidth);
+// Mobile-first defaults
+.row {
+  .make-row();
+}
+
+
+// Common styles for small and large grid columns
+.col {
+  position: relative;
+  // Float and set width: 100%; for easy stacking on mobile devices
+  float: left;
+  width: 100%;
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Inner gutter via padding
+  padding-left:  (@grid-gutter-width / 2);
+  padding-right: (@grid-gutter-width / 2);
+}
+
+// Generate small grid classes first
+.generate-grid-columns(@grid-columns);
+
+// Then generate the larger grid classes via media query
+@media screen and (min-width: @screen-small) {
+  .generate-large-grid-columns(@grid-columns);
+}
+
+
+// Responsive: Tablets and up
+@media screen and (min-width: @screen-tablet) {
+  .container {
+    max-width: 728px;
+  }
+}
+
+// Responsive: Desktops and up
+@media screen and (min-width: @screen-desktop) {
+  .container {
+    max-width: 940px;
+  }
+}
+
+// Responsive: Large desktops and up
+@media screen and (min-width: @screen-large-desktop) {
+  .container {
+    max-width: 1170px;
+  }
+}
 
 // Reset utility classes due to specificity
-[class*="span"].hide,
-.row-fluid [class*="span"].hide {
-  display: none;
-}
-
-[class*="span"].pull-right,
-.row-fluid [class*="span"].pull-right {
+/*[class*="col-span-"].pull-right {
   float: right;
-}
+}*/

@@ -3,37 +3,18 @@
 // --------------------------------------------------
 
 
-// Use the .menu class on any <li> element within the topbar or ul.tabs and you'll get some superfancy dropdowns
-.dropup,
-.dropdown {
-  position: relative;
-}
-.dropdown-toggle {
-  // The caret makes the toggle a bit too tall in IE7
-  *margin-bottom: -3px;
-}
-.dropdown-toggle:active,
-.open .dropdown-toggle {
-  outline: 0;
-}
-
 // Dropdown arrow/caret
 // --------------------
 .caret {
   display: inline-block;
   width: 0;
   height: 0;
-  vertical-align: top;
-  border-top:   4px solid @black;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top:   4px solid #000;
   border-right: 4px solid transparent;
   border-left:  4px solid transparent;
   content: "";
-}
-
-// Place the caret
-.dropdown .caret {
-  margin-top: 8px;
-  margin-left: 2px;
 }
 
 // The dropdown menu (ul)
@@ -42,23 +23,19 @@
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: @zindexDropdown;
+  z-index: @zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
   float: left;
   min-width: 160px;
   padding: 5px 0;
   margin: 2px 0 0; // override default ul
   list-style: none;
-  background-color: @dropdownBackground;
-  border: 1px solid #ccc; // Fallback for IE7-8
-  border: 1px solid @dropdownBorder;
-  *border-right-width: 2px;
-  *border-bottom-width: 2px;
-  .border-radius(6px);
-  .box-shadow(0 5px 10px rgba(0,0,0,.2));
-  -webkit-background-clip: padding-box;
-     -moz-background-clip: padding;
-          background-clip: padding-box;
+  background-color: @dropdown-bg;
+  border: 1px solid #ccc; // IE8 fallback
+  border: 1px solid @dropdown-border;
+  border-radius: @border-radius-base;
+  .box-shadow(0 6px 12px rgba(0,0,0,.175));
+  .background-clip(padding-box);
 
   // Aligns the dropdown menu to right
   &.pull-right {
@@ -68,7 +45,7 @@
 
   // Dividers (basically an hr) within the dropdown
   .divider {
-    .nav-divider(@dropdownDividerTop, @dropdownDividerBottom);
+    .nav-divider(@dropdown-divider-top, @dropdown-divider-bottom);
   }
 
   // Links within the dropdown menu
@@ -77,9 +54,9 @@
     padding: 3px 20px;
     clear: both;
     font-weight: normal;
-    line-height: @baseLineHeight;
-    color: @dropdownLinkColor;
-    white-space: nowrap;
+    line-height: @line-height-base;
+    color: @dropdown-link-color;
+    white-space: nowrap; // prevent links from randomly breaking onto new lines
   }
 }
 
@@ -90,8 +67,8 @@
 .dropdown-submenu:hover > a,
 .dropdown-submenu:focus > a {
   text-decoration: none;
-  color: @dropdownLinkColorHover;
-  #gradient > .vertical(@dropdownLinkBackgroundHover, darken(@dropdownLinkBackgroundHover, 5%));
+  color: @dropdown-link-hover-color;
+  #gradient > .vertical(@dropdown-link-hover-bg, darken(@dropdown-link-hover-bg, 5%));
 }
 
 // Active state
@@ -99,10 +76,10 @@
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
-  color: @dropdownLinkColorActive;
+  color: @dropdown-link-active-color;
   text-decoration: none;
   outline: 0;
-  #gradient > .vertical(@dropdownLinkBackgroundActive, darken(@dropdownLinkBackgroundActive, 5%));
+  #gradient > .vertical(@dropdown-link-active-bg, darken(@dropdown-link-active-bg, 5%));
 }
 
 // Disabled state
@@ -111,7 +88,7 @@
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,
 .dropdown-menu > .disabled > a:focus {
-  color: @grayLight;
+  color: @gray-light;
 }
 // Nuke hover/focus effects
 .dropdown-menu > .disabled > a:hover,
@@ -126,13 +103,27 @@
 // Open state for the dropdown
 // ---------------------------
 .open {
-  // IE7's z-index only goes to the nearest positioned ancestor, which would
-  // make the menu appear below buttons that appeared later on the page
-  *z-index: @zindexDropdown;
-
-  & > .dropdown-menu {
+  // Show the menu
+  > .dropdown-menu {
     display: block;
   }
+
+  // Remove the outline when :focus is triggered
+  > a {
+    outline: 0;
+  }
+}
+
+
+// Backdrop to catch body clicks on mobile, etc.
+// ---------------------------
+.dropdown-backdrop {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: @zindex-dropdown - 10;
 }
 
 // Right aligned dropdowns
@@ -151,7 +142,7 @@
   // Reverse the caret
   .caret {
     border-top: 0;
-    border-bottom: 4px solid @black;
+    border-bottom: 4px solid #000;
     content: "";
   }
   // Different positioning for bottom up menu
@@ -173,7 +164,7 @@
   left: 100%;
   margin-top: -6px;
   margin-left: -1px;
-  .border-radius(0 6px 6px 6px);
+  border-top-left-radius: 0; // Nuke the closest corner as appropriate
 }
 .dropdown-submenu:hover > .dropdown-menu {
   display: block;
@@ -185,7 +176,7 @@
   bottom: 0;
   margin-top: 0;
   margin-bottom: -2px;
-  .border-radius(5px 5px 5px 0);
+  border-bottom-left-radius: 0; // Nuke the closest corner as appropriate
 }
 
 // Caret to indicate there is a submenu
@@ -198,12 +189,12 @@
   border-color: transparent;
   border-style: solid;
   border-width: 5px 0 5px 5px;
-  border-left-color: darken(@dropdownBackground, 20%);
+  border-left-color: darken(@dropdown-bg, 20%);
   margin-top: 5px;
   margin-right: -10px;
 }
 .dropdown-submenu:hover > a:after {
-  border-left-color: @dropdownLinkColorHover;
+  border-left-color: @dropdown-link-hover-color;
 }
 
 // Left aligned submenus
@@ -216,12 +207,12 @@
   > .dropdown-menu {
     left: -100%;
     margin-left: 10px;
-    .border-radius(6px 0 6px 6px);
+    border-top-right-radius: 0; // Remove the rounded corner here
   }
 }
 
 // Tweak nav headers
-// -----------------
+// ---------------------------
 // Increase padding from 15px to 20px on sides
 .dropdown .dropdown-menu .nav-header {
   padding-left: 20px;
@@ -229,9 +220,7 @@
 }
 
 // Typeahead
-// ---------
+// ---------------------------
 .typeahead {
   z-index: 1051;
-  margin-top: 2px; // give it some space to breathe
-  .border-radius(@baseBorderRadius);
 }

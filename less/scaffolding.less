@@ -3,16 +3,40 @@
 // --------------------------------------------------
 
 
+// Reset the box-sizing
+// -------------------------
+
+* {
+  .box-sizing(border-box);
+}
+
+
 // Body reset
 // -------------------------
 
+html {
+  font-size: 62.5%;
+  // Touch the Mobile Magic™
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
 body {
-  margin: 0;
-  font-family: @baseFontFamily;
-  font-size: @baseFontSize;
-  line-height: @baseLineHeight;
-  color: @textColor;
-  background-color: @bodyBackground;
+  font-family: @font-family-base;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  color: @text-color;
+  background-color: @body-bg;
+}
+
+// Reset fonts for revelant elements
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 
@@ -20,34 +44,40 @@ body {
 // -------------------------
 
 a {
-  color: @linkColor;
+  color: @link-color;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: @linkColorHover;
+  color: @link-hover-color;
   text-decoration: underline;
+}
+a:focus {
+  .tab-focus();
 }
 
 
 // Images
 // -------------------------
 
-// Rounded corners
-.img-rounded {
-  .border-radius(6px);
+img {
+  // Responsive images (ensure images don't scale beyond their parents)
+  max-width: 100%; // Part 1: Set a maxium relative to the parent
+  height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
+
+  // Match vertical alignment with other comment elements
+  vertical-align: middle;
 }
 
-// Add polaroid-esque trim
-.img-polaroid {
-  padding: 4px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0,0,0,.2);
-  .box-shadow(0 1px 3px rgba(0,0,0,.1));
+// Rounded corners
+.img-rounded {
+  border-radius: 6px;
 }
+
+// Image thumbnails
+// See thumbnails.less for `.img-thumbnail`
 
 // Perfect circle
 .img-circle {
-  .border-radius(500px); // crank the border-radius so it works with most reasonably sized images
+  border-radius: 500px; // crank the border-radius so it works with most reasonably sized images
 }
