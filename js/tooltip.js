@@ -225,7 +225,7 @@
   Tooltip.prototype.hide = function () {
     var that = this
     var $tip = this.tip()
-    var e    = $.Event('hide')
+    var e    = $.Event('bs:' + this.type + ':hide')
 
     this.$element.trigger(e)
 
@@ -329,10 +329,10 @@
   $.fn.tooltip = function ( option ) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('tooltip')
+      var data    = $this.data('bs-tooltip')
       var options = typeof option == 'object' && option
 
-      if (!data) $this.data('tooltip', (data = new Tooltip(this, options)))
+      if (!data) $this.data('bs-tooltip', (data = new Tooltip(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
