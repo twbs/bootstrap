@@ -12,9 +12,9 @@ Three quick start options are available:
 
 * [Download the latest release](https://github.com/twitter/bootstrap/zipball/master).
 * Clone the repo: `git clone git://github.com/twitter/bootstrap.git`.
-* Install with Twitter's [Bower](http://bower.io): `bower install bootstrap`.
+* Install with [Bower](http://bower.io): `bower install bootstrap`.
 
-Read the [Getting Started page](http://getbootstrap.com/getting-started/) for information on the framework contents, basic template guidelines, and more.
+Read the [Getting Started page](http://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
 
 
 
@@ -26,21 +26,35 @@ Have a bug or a feature request? [Please open a new issue](https://github.com/tw
 
 ## Documentation
 
-Bootstrap's docs are built using [Jekyll](http://jekyllrb.com) and hosted on GitHub Pages at [http://getbootstrap.com](http://getbootstrap.com). To view our docs locally, you'll need to [install Jekyll](http://jekyllrb.com/docs/installation) to run a local server.
+Bootstrap's documentation, included in this repo in the `/docs` directory, is built with [Jekyll](http://jekyllrb.com) and publicly hosted on GitHub Pages at [http://getbootstrap.com](http://getbootstrap.com). The docs maybe also be run locally.
 
-Documentation for [previous versions](https://github.com/twitter/bootstrap/tags) is also available via tags.
+### Running documentation locally
+
+1. If necessary, [install Jekyll](http://jekyllrb.com/docs/installation).
+2. From the `/bootstrap` directory, run `jekyll serve` in the command line.
+3. Open [http://getbootstrap.dev:9001](http://getbootstrap.dev:9001) in your browser, and voilà.
+
+Learn more about using Jekyll by reading their [documentation](http://jekyllrb.com/docs/home/).
+
+### Documentation for previous releases
+
+Documentation for v2.3.2 has been made available for the time being at [http://getbootstrap.com/2.3.2/docs](http://getbootstrap.com/2.3.2/docs) while folks transition to Bootstrap 3.
+
+For previous releases, documentation is available for [download via Git tags](https://github.com/twitter/bootstrap/tags).
 
 
 
 ## Compiling CSS and JavaScript
 
-Bootstrap includes a [makefile](Makefile) with convenient methods for working with the framework. Before getting started, be sure to install [the necessary local dependencies](package.json):
+Bootstrap includes a [makefile](Makefile) with convenient methods for working with the framework. Before getting started, install [the necessary local dependencies](package.json):
 
 ```
 $ npm install
 ```
 
-When completed, you'll be able to run the various make commands provided:
+When completed, you'll be able to run the various make commands provided.
+
+### Available makefile commands
 
 #### Build - `make`
 `make` runs the Recess compiler to rebuild the `/less` files and compile the docs. **Requires recess and uglify-js.**
@@ -54,15 +68,19 @@ Runs jshint and qunit tests headlessly in [phantomjs](http://code.google.com/p/p
 #### Watch - `make watch`
 This is a convenience method for watching just Less files and automatically building them whenever you save. **Requires the watchr gem.**
 
-Should you encounter problems with installing dependencies or running the makefile commands, uninstall any previous versions (global and local) you may have installed, and then rerun `npm install`.
+### Troubleshooting dependencies
+
+Should you encounter problems with installing dependencies or running makefile commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
 
 
 
 ## Contributing
 
-Please submit all pull requests against *-wip branches. If your pull request contains JavaScript patches or features, you must include relevant unit tests. All HTML and CSS should conform to the [Code Guide](http://github.com/mdo/code-guide), maintained by [Mark Otto](http://github.com/mdo).
+Please read through our guidelines for contributing to Bootstrap. Included are directions for opening issues, coding standards, and notes on development. 
 
-Editor preferences are also available in the [editor config](.editorconfig) for easy application in common text editors. Read more and download plugins at [http://editorconfig.com](http://editorconfig.com).
+More over, if your pull request contains JavaScript patches or features, you must include relevant unit tests. All HTML and CSS should conform to the [Code Guide](http://github.com/mdo/code-guide), maintained by [Mark Otto](http://github.com/mdo).
+
+Editor preferences are available in the [editor config](.editorconfig) for easy use in common text editors. Read more and download plugins at [http://editorconfig.com](http://editorconfig.com).
 
 
 
