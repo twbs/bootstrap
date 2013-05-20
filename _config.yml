@@ -9,4 +9,4 @@ permalink:    pretty
 source:       ./docs
 destination:  ./_gh_pages
 port:         9001
-url:          http://bootstrap.dev:9001
+url:          http://getbootstrap.dev:9001
