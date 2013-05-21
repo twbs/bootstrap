@@ -503,14 +503,14 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
           </div>
 
           <h2>Estilos predeterminados</h2>
-          <p>For basic styling&mdash;light padding and only horizontal dividers&mdash;add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>
+          <p>Para estilos básicos&mdash;algo de padding y solamente divisores horizontales&mdash;agregá la clase básica <code>.table</code> a cualquier <code>&lt;table&gt;</code>.</p>
           <div class="bs-docs-example">
             <table class="table">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
                   <th>Username</th>
                 </tr>
               </thead>
@@ -546,18 +546,18 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
           <hr class="bs-docs-separator">
 
 
-          <h2>Optional classes</h2>
-          <p>Add any of the following classes to the <code>.table</code> base class.</p>
+          <h2>Clases opcionales</h2>
+          <p>Agregá cualquiera de estas clases a la clase base <code>.table</code>.</p>
 
           <h3><code>.table-striped</code></h3>
-          <p>Adds zebra-striping to any table row within the <code>&lt;tbody&gt;</code> via the <code>:nth-child</code> CSS selector (not available in IE7-8).</p>
+          <p>Agrega líneas alternadas de sombrado dentro del <code>&lt;tbody&gt;</code> a través del selector <code>:nth-child</code> (no disponible en IE7-8).</p>
           <div class="bs-docs-example">
             <table class="table table-striped">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
                   <th>Username</th>
                 </tr>
               </thead>
@@ -590,14 +590,14 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
 </pre>
 
           <h3><code>.table-bordered</code></h3>
-          <p>Add borders and rounded corners to the table.</p>
+          <p>Agrega bordes y esquinas redondeadas a la tabla.</p>
           <div class="bs-docs-example">
             <table class="table table-bordered">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
                   <th>Username</th>
                 </tr>
               </thead>
@@ -634,14 +634,14 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
 </pre>
 
           <h3><code>.table-hover</code></h3>
-          <p>Enable a hover state on table rows within a <code>&lt;tbody&gt;</code>.</p>
+          <p>Activa un estado hoven en las filas de la tabla dentro del <code>&lt;tbody&gt;</code>.</p>
           <div class="bs-docs-example">
             <table class="table table-hover">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
                   <th>Username</th>
                 </tr>
               </thead>
@@ -673,14 +673,14 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
 </pre>
 
           <h3><code>.table-condensed</code></h3>
-          <p>Makes tables more compact by cutting cell padding in half.</p>
+          <p>Hace que la tabla sea más compacta achicando el padding de la celda a la mitad.</p>
           <div class="bs-docs-example">
             <table class="table table-condensed">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
                   <th>Username</th>
                 </tr>
               </thead>
@@ -715,8 +715,8 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
           <hr class="bs-docs-separator">
 
 
-          <h2>Optional row classes</h2>
-          <p>Use contextual classes to color table rows.</p>
+          <h2>Clases de fila opcionales</h2>
+          <p>Uná clases contextuales para colorear algunas filas de una tabla.</p>
           <table class="table table-bordered table-striped">
             <colgroup>
               <col class="span1">
@@ -724,8 +724,8 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
             </colgroup>
             <thead>
               <tr>
-                <th>Class</th>
-                <th>Description</th>
+                <th>Clase</th>
+                <th>Descripción</th>
               </tr>
             </thead>
             <tbody>
@@ -733,25 +733,25 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
                 <td>
                   <code>.success</code>
                 </td>
-                <td>Indicates a successful or positive action.</td>
+                <td>Indica una acción satisfactoria o positiva.</td>
               </tr>
               <tr>
                 <td>
                   <code>.error</code>
                 </td>
-                <td>Indicates a dangerous or potentially negative action.</td>
+                <td>Indica una acción peligrosa o potencialmente negativa.</td>
               </tr>
               <tr>
                 <td>
                   <code>.warning</code>
                 </td>
-                <td>Indicates a warning that might need attention.</td>
+                <td>Indica una alerta que puede requerir atención.</td>
               </tr>
               <tr>
                 <td>
                   <code>.info</code>
                 </td>
-                <td>Used as an alternative to the default styles.</td>
+                <td>Usada como una alternativa al estilo predeterminado</td>
               </tr>
             </tbody>
           </table>
@@ -760,35 +760,35 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Product</th>
-                  <th>Payment Taken</th>
-                  <th>Status</th>
+                  <th>Producto</th>
+                  <th>Fecha de pago</th>
+                  <th>Estado</th>
                 </tr>
               </thead>
               <tbody>
                 <tr class="success">
                   <td>1</td>
-                  <td>TB - Monthly</td>
+                  <td>TB - Mensual</td>
                   <td>01/04/2012</td>
-                  <td>Approved</td>
+                  <td>Aprobado</td>
                 </tr>
                 <tr class="error">
                   <td>2</td>
-                  <td>TB - Monthly</td>
+                  <td>TB - Mensual</td>
                   <td>02/04/2012</td>
-                  <td>Declined</td>
+                  <td>Rechazado</td>
                 </tr>
                 <tr class="warning">
                   <td>3</td>
-                  <td>TB - Monthly</td>
+                  <td>TB - Mensual</td>
                   <td>03/04/2012</td>
-                  <td>Pending</td>
+                  <td>Pendiente</td>
                 </tr>
                 <tr class="info">
                   <td>4</td>
-                  <td>TB - Monthly</td>
+                  <td>TB - Mensual</td>
                   <td>04/04/2012</td>
-                  <td>Call in to confirm</td>
+                  <td>Llame para confirmar</td>
                 </tr>
               </tbody>
             </table>
@@ -797,9 +797,9 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
 ...
   &lt;tr class="success"&gt;
     &lt;td&gt;1&lt;/td&gt;
-    &lt;td&gt;TB - Monthly&lt;/td&gt;
+    &lt;td&gt;TB - Mensual&lt;/td&gt;
     &lt;td&gt;01/04/2012&lt;/td&gt;
-    &lt;td&gt;Approved&lt;/td&gt;
+    &lt;td&gt;Aprobado&lt;/td&gt;
   &lt;/tr&gt;
 ...
 </pre>
@@ -808,8 +808,8 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
           <hr class="bs-docs-separator">
 
 
-          <h2>Supported table markup</h2>
-          <p>List of supported table HTML elements and how they should be used.</p>
+          <h2>Código de tabla implementado</h2>
+          <p>Lista de elementos HTML de tablas implementados y cómo se deben usar.</p>
           <table class="table table-bordered table-striped">
             <colgroup>
               <col class="span1">
@@ -817,8 +817,8 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
             </colgroup>
             <thead>
               <tr>
-                <th>Tag</th>
-                <th>Description</th>
+                <th>Etiqueta</th>
+                <th>Descripción</th>
               </tr>
             </thead>
             <tbody>
@@ -827,7 +827,7 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
                   <code>&lt;table&gt;</code>
                 </td>
                 <td>
-                  Wrapping element for displaying data in a tabular format
+                  Elemento contenedor para mostrar datos en un formato tabular
                 </td>
               </tr>
               <tr>
@@ -835,7 +835,7 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
                   <code>&lt;thead&gt;</code>
                 </td>
                 <td>
-                  Container element for table header rows (<code>&lt;tr&gt;</code>) to label table columns
+                  Elemento contenedor para las filas del encabezado de la tabla (<code>&lt;tr&gt;</code>) para dar nombre a las columnas de la tabla
                 </td>
               </tr>
               <tr>
@@ -843,7 +843,7 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
                   <code>&lt;tbody&gt;</code>
                 </td>
                 <td>
-                  Container element for table rows (<code>&lt;tr&gt;</code>) in the body of the table
+                  Elemento contenedor para las filas de la tabla (<code>&lt;tr&gt;</code>) en el cuerpo de la misma
                 </td>
               </tr>
               <tr>
@@ -851,7 +851,7 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
                   <code>&lt;tr&gt;</code>
                 </td>
                 <td>
-                  Container element for a set of table cells (<code>&lt;td&gt;</code> or <code>&lt;th&gt;</code>) that appears on a single row
+                  Elemento contenedor para el conjunto de celdas de la tabla (<code>&lt;td&gt;</code> o <code>&lt;th&gt;</code>) que aparece en una misma fila
                 </td>
               </tr>
               <tr>
@@ -859,7 +859,7 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
                   <code>&lt;td&gt;</code>
                 </td>
                 <td>
-                  Default table cell
+                  Celda de tabla predeterminada
                 </td>
               </tr>
               <tr>
@@ -867,7 +867,7 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
                   <code>&lt;th&gt;</code>
                 </td>
                 <td>
-                  Special table cell for column (or row, depending on scope and placement) labels
+                  Celda de tabla especial (o fila, dependiendo de su alcance y ubicación) para etiquetas
                 </td>
               </tr>
               <tr>
@@ -875,7 +875,7 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
                   <code>&lt;caption&gt;</code>
                 </td>
                 <td>
-                  Description or summary of what the table holds, especially useful for screen readers
+                  Descripción o resumen de lo que contiene la tabla, especialmente útil para sistemas lectores de pantalla
                 </td>
               </tr>
             </tbody>
@@ -906,34 +906,34 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
         ================================================== -->
         <section id="forms">
           <div class="page-header">
-            <h1>Forms</h1>
+            <h1>Formularios</h1>
           </div>
 
-          <h2>Default styles</h2>
-          <p>Individual form controls receive styling, but without any required base class on the <code>&lt;form&gt;</code> or large changes in markup. Results in stacked, left-aligned labels on top of form controls.</p>
+          <h2>Estilos predeterminados</h2>
+          <p>Los controles individuales de los formularios reciben estilos, pero sin necesitar una clase base en el <code>&lt;form&gt;</code> o grandes cambios en el código. Se muestran los controles del formulario apilados uno arriba del otro, alineados a la izquierda y con su etiqueta correspondiente encima.</p>
           <form class="bs-docs-example">
             <fieldset>
               <legend>Legend</legend>
-              <label>Label name</label>
-              <input type="text" placeholder="Type something…">
-              <span class="help-block">Example block-level help text here.</span>
+              <label>Nombre de la etiqueta</label>
+              <input type="text" placeholder="Escribí algo…">
+              <span class="help-block">Ejemplo de texto de ayuda block-level.</span>
               <label class="checkbox">
-                <input type="checkbox"> Check me out
+                <input type="checkbox"> Tildame
               </label>
-              <button type="submit" class="btn">Submit</button>
+              <button type="submit" class="btn">Enviar</button>
             </fieldset>
           </form>
 <pre class="prettyprint linenums">
 &lt;form&gt;
   &lt;fieldset&gt;
     &lt;legend&gt;Legend&lt;/legend&gt;
-    &lt;label&gt;Label name&lt;/label&gt;
-    &lt;input type="text" placeholder="Type something…"&gt;
-    &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
+    &lt;label&gt;Nombre de la etiqueta&lt;/label&gt;
+    &lt;input type="text" placeholder="Escribí algo…"&gt;
+    &lt;span class="help-block"&gt;Ejemplo de texto de ayuda block-level.&lt;/span&gt;
     &lt;label class="checkbox"&gt;
-      &lt;input type="checkbox"&gt; Check me out
+      &lt;input type="checkbox"&gt; Tildame
     &lt;/label&gt;
-    &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
+    &lt;button type="submit" class="btn"&gt;Enviar&lt;/button&gt;
   &lt;/fieldset&gt;
 &lt;/form&gt;
 </pre>
@@ -942,50 +942,50 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
           <hr class="bs-docs-separator">
 
 
-          <h2>Optional layouts</h2>
-          <p>Included with Bootstrap are three optional form layouts for common use cases.</p>
+          <h2>Layouts opcionales</h2>
+          <p>Incluídos con BAstrap vienen 3 layouts de formularios opcionales para casos de uso comunes.</p>
 
-          <h3>Search form</h3>
-          <p>Add <code>.form-search</code> to the form and <code>.search-query</code> to the <code>&lt;input&gt;</code> for an extra-rounded text input.</p>
+          <h3>Formulario de búsqueda</h3>
+          <p>Agregá <code>.form-search</code> al formulario y <code>.search-query</code> al <code>&lt;input&gt;</code> para un text input extra-redondeado.</p>
           <form class="bs-docs-example form-search">
             <input type="text" class="input-medium search-query">
-            <button type="submit" class="btn">Search</button>
+            <button type="submit" class="btn">Buscar</button>
           </form>
 <pre class="prettyprint linenums">
 &lt;form class="form-search"&gt;
   &lt;input type="text" class="input-medium search-query"&gt;
-  &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
+  &lt;button type="submit" class="btn"&gt;Buscar&lt;/button&gt;
 &lt;/form&gt;
 </pre>
 
-          <h3>Inline form</h3>
-          <p>Add <code>.form-inline</code> for left-aligned labels and inline-block controls for a compact layout.</p>
+          <h3>Formulario inline</h3>
+          <p>Agregá <code>.form-inline</code> para etiquetas alineadas a la izquierda y controles inline-block que resultan en un layout compacto.</p>
           <form class="bs-docs-example form-inline">
             <input type="text" class="input-small" placeholder="Email">
             <input type="password" class="input-small" placeholder="Password">
             <label class="checkbox">
-              <input type="checkbox"> Remember me
+              <input type="checkbox"> Recordarme
             </label>
-            <button type="submit" class="btn">Sign in</button>
+            <button type="submit" class="btn">Ingresar</button>
           </form>
 <pre class="prettyprint linenums">
 &lt;form class="form-inline"&gt;
   &lt;input type="text" class="input-small" placeholder="Email"&gt;
   &lt;input type="password" class="input-small" placeholder="Password"&gt;
   &lt;label class="checkbox"&gt;
-    &lt;input type="checkbox"&gt; Remember me
+    &lt;input type="checkbox"&gt; Recordarme
   &lt;/label&gt;
-  &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
+  &lt;button type="submit" class="btn"&gt;Ingresar&lt;/button&gt;
 &lt;/form&gt;
 </pre>
 
-          <h3>Horizontal form</h3>
-          <p>Right align labels and float them to the left to make them appear on the same line as controls. Requires the most markup changes from a default form:</p>
+          <h3>Formulario horizontal</h3>
+          <p>Etiquetas alineadas a la derecha y flotadas a la izquierda para mostrarlas en la misma línea que los controles. Es el layout que requiere más cambios en el código del formulario:</p>
           <ul>
-            <li>Add <code>.form-horizontal</code> to the form</li>
-            <li>Wrap labels and controls in <code>.control-group</code></li>
+            <li>Agregá <code>.form-horizontal</code> al formulario</li>
             <li>Add <code>.control-label</code> to the label</li>
-            <li>Wrap any associated controls in <code>.controls</code> for proper alignment</li>
+            <li>Envolvé labels y controles en <code>.control-group</code></li>
+            <li>Envolvé cualquier control asociado en <code>.controls</code> para una alineación correcta</li>
           </ul>
           <form class="bs-docs-example form-horizontal">
             <div class="control-group">
@@ -1003,9 +1003,9 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
             <div class="control-group">
               <div class="controls">
                 <label class="checkbox">
-                  <input type="checkbox"> Remember me
+                  <input type="checkbox"> Recordarme
                 </label>
-                <button type="submit" class="btn">Sign in</button>
+                <button type="submit" class="btn">Ingresar</button>
               </div>
             </div>
           </form>
@@ -1026,9 +1026,9 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
   &lt;div class="control-group"&gt;
     &lt;div class="controls"&gt;
       &lt;label class="checkbox"&gt;
-        &lt;input type="checkbox"&gt; Remember me
+        &lt;input type="checkbox"&gt; Recordarme
       &lt;/label&gt;
-      &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
+      &lt;button type="submit" class="btn"&gt;Ingresar&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/form&gt;
@@ -1038,21 +1038,21 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
           <hr class="bs-docs-separator">
 
 
-          <h2>Supported form controls</h2>
-          <p>Examples of standard form controls supported in an example form layout.</p>
+          <h2>Controles de formularios implementados</h2>
+          <p>Ejemplos de controles de formulario estándar implementados en un layout de ejemplo.</p>
 
           <h3>Inputs</h3>
-          <p>Most common form control, text-based input fields. Includes support for all HTML5 types: text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color.</p>
-          <p>Requires the use of a specified <code>type</code> at all times.</p>
+          <p>El control de formularios más común, cajas de ingreso de texto. Están implementadas todas las variantes de HTML5: text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, y color.</p>
+          <p>Requiere siempre el uso del <code>type</code> específico.</p>
           <form class="bs-docs-example form-inline">
-            <input type="text" placeholder="Text input">
+            <input type="text" placeholder="Ingresar texto">
           </form>
 <pre class="prettyprint linenums">
-&lt;input type="text" placeholder="Text input"&gt;
+&lt;input type="text" placeholder="Ingresar texto"&gt;
 </pre>
 
           <h3>Textarea</h3>
-          <p>Form control which supports multiple lines of text. Change <code>rows</code> attribute as necessary.</p>
+          <p>Control de formulario que permite cargar muchas líneas de texto. Cambiá el atributo <code>rows</code> de acuerdo a la necesidad.</p>
           <form class="bs-docs-example form-inline">
             <textarea rows="3"></textarea>
           </form>
@@ -1060,42 +1060,42 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
 &lt;textarea rows="3"&gt;&lt;/textarea&gt;
 </pre>
 
-          <h3>Checkboxes and radios</h3>
-          <p>Checkboxes are for selecting one or several options in a list while radios are for selecting one option from many.</p>
-          <h4>Default (stacked)</h4>
+          <h3>Cajas de selección y radios</h3>
+          <p>Los checkboxes son para seleccionar una o más opciones de una lista mientras que los radios son para seleccionar una sola opción entre varias.</p>
+          <h4>Predeterminado (apilados)</h4>
           <form class="bs-docs-example">
             <label class="checkbox">
               <input type="checkbox" value="">
-              Option one is this and that&mdash;be sure to include why it's great
+              Opción uno es esta y aquella&mdash;asegurate de incluir por qué es genial
             </label>
             <br>
             <label class="radio">
               <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-              Option one is this and that&mdash;be sure to include why it's great
+              Opción uno es esta y aquella&mdash;asegurate de incluir por qué es genial
             </label>
             <label class="radio">
               <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-              Option two can be something else and selecting it will deselect option one
+              Opción dos puede ser otra cosa y seleccionarla deseleccionará la opción uno
             </label>
           </form>
 <pre class="prettyprint linenums">
 &lt;label class="checkbox"&gt;
   &lt;input type="checkbox" value=""&gt;
-  Option one is this and that&mdash;be sure to include why it's great
+  Opción uno es esta y aquella&mdash;asegurate de incluir por qué es genial
 &lt;/label&gt;
 
 &lt;label class="radio"&gt;
   &lt;input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked&gt;
-  Option one is this and that&mdash;be sure to include why it's great
+  Opción uno es esta y aquella&mdash;asegurate de incluir por qué es genial
 &lt;/label&gt;
 &lt;label class="radio"&gt;
   &lt;input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"&gt;
-  Option two can be something else and selecting it will deselect option one
+  Opción dos puede ser otra cosa y seleccionarla deseleccionará la opción uno
 &lt;/label&gt;
 </pre>
 
-          <h4>Inline checkboxes</h4>
-          <p>Add the <code>.inline</code> class to a series of checkboxes or radios for controls appear on the same line.</p>
+          <h4>Checkboxes inline</h4>
+          <p>Agregá la clase <code>.inline</code> a una serie de checkboxes o radios para que los controles aparezcan en la misma línea.</p>
           <form class="bs-docs-example">
             <label class="checkbox inline">
               <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
@@ -1119,8 +1119,8 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
 &lt;/label&gt;
 </pre>
 
-          <h3>Selects</h3>
-          <p>Use the default option or specify a <code>multiple="multiple"</code> to show multiple options at once.</p>
+          <h3>Selectores</h3>
+          <p>Usá la opción predeterminada o especificá <code>multiple="multiple"</code> para mostrar varias opciones a la vez.</p>
           <form class="bs-docs-example">
             <select>
               <option>1</option>
@@ -1160,14 +1160,14 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
           <hr class="bs-docs-separator">
 
 
-          <h2>Extending form controls</h2>
-          <p>Adding on top of existing browser controls, Bootstrap includes other useful form components.</p>
+          <h2>Extendiendo los controles de formularios</h2>
+          <p>BAstrap incluye otros componentes de formularios útiles además de los tradicionales.</p>
 
-          <h3>Prepended and appended inputs</h3>
-          <p>Add text or buttons before or after any text-based input. Do note that <code>select</code> elements are not supported here.</p>
+          <h3>Inputs prepended y appended</h3>
+          <p>Agregá texto o botones antes o después de cualquier input de texto. Notá que los elementos <code>select</code> no tienen esta opción.</p>
 
-          <h4>Default options</h4>
-          <p>Wrap an <code>.add-on</code> and an <code>input</code> with one of two classes to prepend or append text to an input.</p>
+          <h4>Opciones predeterminadas</h4>
+          <p>Usá un <code>.add-on</code> y un <code>input</code> con una de las dos clases para agregar el contenido al principio o al final de un input.</p>
           <form class="bs-docs-example">
             <div class="input-prepend">
               <span class="add-on">@</span>
@@ -1190,8 +1190,8 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
 &lt;/div&gt;
 </pre>
 
-          <h4>Combined</h4>
-          <p>Use both classes and two instances of <code>.add-on</code> to prepend and append an input.</p>
+          <h4>Combinado</h4>
+          <p>Usá ambas clases y dos instancias de <code>.add-on</code> para agregar contenido al principio y al final de un input.</p>
           <form class="bs-docs-example form-inline">
             <div class="input-prepend input-append">
               <span class="add-on">$</span>
@@ -1207,48 +1207,48 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
 &lt;/div&gt;
 </pre>
 
-          <h4>Buttons instead of text</h4>
-          <p>Instead of a <code>&lt;span&gt;</code> with text, use a <code>.btn</code> to attach a button (or two) to an input.</p>
+          <h4>Botones en lugar de texto</h4>
+          <p>En lugar de un <code>&lt;span&gt;</code> con texto, usá un <code>.btn</code> para añadir un botón (o dos) a un input.</p>
           <form class="bs-docs-example">
             <div class="input-append">
               <input class="span2" id="appendedInputButton" type="text">
-              <button class="btn" type="button">Go!</button>
+              <button class="btn" type="button">Ir</button>
             </div>
           </form>
 <pre class="prettyprint linenums">
 &lt;div class="input-append"&gt;
   &lt;input class="span2" id="appendedInputButton" type="text"&gt;
-  &lt;button class="btn" type="button"&gt;Go!&lt;/button&gt;
+  &lt;button class="btn" type="button"&gt;Ir&lt;/button&gt;
 &lt;/div&gt;
 </pre>
           <form class="bs-docs-example">
             <div class="input-append">
               <input class="span2" id="appendedInputButtons" type="text">
-              <button class="btn" type="button">Search</button>
-              <button class="btn" type="button">Options</button>
+              <button class="btn" type="button">Buscar</button>
+              <button class="btn" type="button">Opciones</button>
             </div>
           </form>
 <pre class="prettyprint linenums">
 &lt;div class="input-append"&gt;
   &lt;input class="span2" id="appendedInputButtons" type="text"&gt;
-  &lt;button class="btn" type="button"&gt;Search&lt;/button&gt;
-  &lt;button class="btn" type="button"&gt;Options&lt;/button&gt;
+  &lt;button class="btn" type="button"&gt;Buscar&lt;/button&gt;
+  &lt;button class="btn" type="button"&gt;Opciones&lt;/button&gt;
 &lt;/div&gt;
 </pre>
 
-          <h4>Button dropdowns</h4>
+          <h4>Dropdowns de botones</h4>
           <p></p>
           <form class="bs-docs-example">
             <div class="input-append">
               <input class="span2" id="appendedDropdownButton" type="text">
               <div class="btn-group">
-                <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+                <button class="btn dropdown-toggle" data-toggle="dropdown">Acción <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Algo más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
             </div><!-- /input-append -->
@@ -1258,7 +1258,7 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
   &lt;input class="span2" id="appendedDropdownButton" type="text"&gt;
   &lt;div class="btn-group"&gt;
     &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
-      Action
+      Acción
       &lt;span class="caret"&gt;&lt;/span&gt;
     &lt;/button&gt;
     &lt;ul class="dropdown-menu"&gt;
@@ -1271,13 +1271,13 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
           <form class="bs-docs-example">
             <div class="input-prepend">
               <div class="btn-group">
-                <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+                <button class="btn dropdown-toggle" data-toggle="dropdown">Acción <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Algo más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
               <input class="span2" id="prependedDropdownButton" type="text">
@@ -1287,7 +1287,7 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
 &lt;div class="input-prepend"&gt;
   &lt;div class="btn-group"&gt;
     &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
-      Action
+      Acción
       &lt;span class="caret"&gt;&lt;/span&gt;
     &lt;/button&gt;
     &lt;ul class="dropdown-menu"&gt;
@@ -1301,24 +1301,24 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
           <form class="bs-docs-example">
             <div class="input-prepend input-append">
               <div class="btn-group">
-                <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+                <button class="btn dropdown-toggle" data-toggle="dropdown">Acción <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Algo más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
               <input class="span2" id="appendedPrependedDropdownButton" type="text">
               <div class="btn-group">
-                <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+                <button class="btn dropdown-toggle" data-toggle="dropdown">Acción <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Algo más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
             </div><!-- /input-prepend input-append -->
@@ -1327,7 +1327,7 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
 &lt;div class="input-prepend input-append"&gt;
   &lt;div class="btn-group"&gt;
     &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
-      Action
+      Acción
       &lt;span class="caret"&gt;&lt;/span&gt;
     &lt;/button&gt;
     &lt;ul class="dropdown-menu"&gt;
@@ -1337,7 +1337,7 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
   &lt;input class="span2" id="appendedPrependedDropdownButton" type="text"&gt;
   &lt;div class="btn-group"&gt;
     &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
-      Action
+      Acción
       &lt;span class="caret"&gt;&lt;/span&gt;
     &lt;/button&gt;
     &lt;ul class="dropdown-menu"&gt;
@@ -1351,16 +1351,16 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
           <form class="bs-docs-example">
             <div class="input-prepend">
               <div class="btn-group">
-                <button class="btn" tabindex="-1">Action</button>
+                <button class="btn" tabindex="-1">Acción</button>
                 <button class="btn dropdown-toggle" data-toggle="dropdown" tabindex="-1">
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Algo más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div>
               <input type="text">
@@ -1368,16 +1368,16 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
             <div class="input-append">
               <input type="text">
               <div class="btn-group">
-                <button class="btn" tabindex="-1">Action</button>
+                <button class="btn" tabindex="-1">Acción</button>
                 <button class="btn dropdown-toggle" data-toggle="dropdown" tabindex="-1">
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Algo más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div>
             </div>
