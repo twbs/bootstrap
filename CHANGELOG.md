@@ -1,3 +1,6 @@
+## 2.3.2 (May 17, 2013)
+- Fix dropdown for firefox (middleclick) and mobile
+
 ## 2.3.1 (February 28, 2013)
 
 Patch release for @fat's n00bery
