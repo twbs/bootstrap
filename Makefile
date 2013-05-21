@@ -68,6 +68,7 @@ bootstrap: bootstrap-img bootstrap-css bootstrap-js
 #
 # JS COMPILE
 #
+
 bootstrap-js: bootstrap/js/*.js
 
 bootstrap/js/*.js: js/*.js
@@ -79,7 +80,7 @@ bootstrap/js/*.js: js/*.js
 	rm bootstrap/js/copyright.js bootstrap/js/bootstrap.min.tmp.js
 
 #
-# CSS COMPLILE
+# CSS COMPILE
 #
 
 bootstrap-css: bootstrap/css/*.css
