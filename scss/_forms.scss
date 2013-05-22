@@ -1,0 +1,464 @@
+//
+// Forms
+// --------------------------------------------------
+
+
+// Non-controls
+// -------------------------
+
+form {
+  margin: 0;
+}
+
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: $line-height-computed;
+  font-size: ($font-size-base * 1.5);
+  line-height: inherit;
+  color: $gray-dark;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+// Form controls
+// -------------------------
+
+// Shared size and type resets
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+  display: block;
+  min-height: $input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  padding: $padding-base-vertical $padding-base-horizontal;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $gray;
+  vertical-align: middle;
+  background-color: $input-bg;
+  border: 1px solid $input-border;
+  border-radius: $input-border-radius;
+  @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+  @include transition((border-color ease-in-out .15s, box-shadow ease-in-out .15s));
+
+  &:focus {
+    border-color: rgba(82,168,236,.8);
+    outline: 0;
+    @include box-shadow((inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)));
+  }
+}
+
+// Reset appearance properties for textual inputs and textarea
+// Can't be on input[type=*] selectors or it's too specific
+input,
+select,
+textarea {
+  width: 100%;
+}
+
+// Reset width of input images, buttons, radios, checkboxes
+input[type="file"],
+input[type="image"],
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto; // Override of generic input selector
+}
+
+// Override content-box in Normalize (* isn't specific enough)
+input[type="search"] {
+  @include box-sizing(border-box);
+}
+
+// Reset height since textareas have rows
+textarea {
+  height: auto;
+}
+
+// Position radios and checkboxes better
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 4px 0 0;
+  margin-top: 1px \9; /* IE8-9 */
+  line-height: normal;
+}
+
+// Set the height of select and file controls to match text inputs
+select,
+input[type="file"] {
+  height: $input-height-base; /* In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support */
+  line-height: $input-height-base;
+}
+
+// Make multiple select elements height not fixed
+select[multiple],
+select[size] {
+  height: auto;
+}
+
+// Fix optgroup Firefox bug per https://github.com/twitter/bootstrap/issues/7611
+select optgroup {
+  font-size: inherit;
+  font-style: inherit;
+  font-family: inherit;
+}
+
+// Focus for select, file, radio, and checkbox
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  @include tab-focus();
+}
+
+
+// Placeholder
+// -------------------------
+
+// Placeholder text gets special styles because when browsers invalidate entire lines if it doesn't understand a selector
+input,
+textarea {
+  @include placeholder();
+}
+
+
+// CHECKBOXES & RADIOS
+// -------------------
+
+// Indent the labels to position radios/checkboxes as hanging
+.radio,
+.checkbox {
+  display: block;
+  min-height: $line-height-computed; // clear the floating input if there is no label text
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  vertical-align: middle;
+  label {
+    display: inline;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+  }
+}
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+  float: left;
+  margin-left: -20px;
+}
+.radio + .radio,
+.checkbox + .checkbox {
+  margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
+}
+
+/*
+// Move the options list down to align with labels
+.controls > .radio:first-child,
+.controls > .checkbox:first-child {
+  padding-top: 5px; // has to be padding because margin collaspes
+}
+*/
+
+// Radios and checkboxes on same line
+.radio-inline,
+.checkbox-inline {
+  display: inline-block;
+//  padding-top: 5px;
+  padding-left: 20px;
+  margin-bottom: 0;
+  vertical-align: middle;
+  font-weight: normal;
+  cursor: pointer;
+}
+.radio-inline + .radio-inline,
+.checkbox-inline + .checkbox-inline {
+  margin-top: 0;
+  margin-left: 10px; // space out consecutive inline controls
+}
+
+
+
+// INPUT SIZES
+// -----------
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+  &.input-large {
+    padding: $padding-large-vertical $padding-large-horizontal;
+    font-size: $font-size-large;
+    border-radius: $border-radius-large;
+  }
+  &.input-small {
+    min-height: $input-height-small;
+    padding: $padding-small-vertical $padding-small-horizontal;
+    font-size: $font-size-small;
+    border-radius: $border-radius-small;
+  }
+}
+
+
+// DISABLED STATE
+// --------------
+
+// Disabled and read-only inputs
+// Note: HTML5 says that inputs under a fieldset > legend:first-child won't be
+//   disabled if the fieldset is disabled. Due to implementation difficulty,
+//   we don't honor that edge case; we style them as disabled anyway.
+input,
+select,
+textarea {
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    background-color: $input-bg-disabled;
+  }
+}
+// Explicitly reset the colors here
+input[type="radio"],
+input[type="checkbox"] {
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    background-color: transparent;
+  }
+}
+
+
+
+
+// FORM FIELD FEEDBACK STATES
+// --------------------------
+
+// Warning
+.has-warning {
+  @include form-field-validation($state-warning-text, $state-warning-text, $state-warning-bg);
+}
+// Error
+.has-error {
+  @include form-field-validation($state-danger-text, $state-danger-text, $state-danger-bg);
+}
+// Success
+.has-success {
+  @include form-field-validation($state-success-text, $state-success-text, $state-success-bg);
+}
+
+// HTML5 invalid states
+// Shares styles with the .control-group.error above
+input:focus:invalid,
+textarea:focus:invalid,
+select:focus:invalid {
+  color: #b94a48;
+  border-color: #ee5f5b;
+  &:focus {
+    border-color: darken(#ee5f5b, 10%);
+    $shadow: 0 0 6px lighten(#ee5f5b, 20%);
+    @include box-shadow($shadow);
+  }
+}
+
+
+
+
+// HELP TEXT
+// ---------
+
+.help-block {
+  display: block; // account for any element using help-block
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: lighten($text-color, 25%); // lighten the text some for contrast
+}
+
+
+
+// Input groups
+// --------------------------------------------------
+
+// Base styles
+// -------------------------
+.input-group {
+  display: table;
+
+  // Undo padding and float of grid classes
+  &.col {
+    float: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  input,
+  select {
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+// Display as table-cell
+// -------------------------
+.input-group-addon,
+.input-group-btn,
+.input-group input {
+  display: table-cell;
+
+  &:not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+}
+// Addon and addon wrapper for buttons
+.input-group-addon,
+.input-group-btn {
+  width: 1%;
+  vertical-align: middle; // Match the inputs
+}
+
+// Text input groups
+// -------------------------
+.input-group-addon {
+  @include box-sizing(border-box);
+  padding: 6px 8px;
+  font-size: $font-size-base;
+  font-weight: normal;
+  line-height: $line-height-base;
+  text-align: center;
+  text-shadow: 0 1px 0 #fff;
+  background-color: $gray-lighter;
+  border: 1px solid #ccc;
+  border-radius: $border-radius-base;
+
+  &.input-small {
+    padding: $padding-small-vertical $padding-small-horizontal;
+    font-size: $font-size-small;
+    border-radius: $border-radius-small;
+  }
+  &.input-large {
+    padding: $padding-large-vertical $padding-large-horizontal;
+    font-size: $font-size-large;
+    border-radius: $border-radius-large;
+  }
+}
+
+// Reset rounded corners
+.input-group input:first-child,
+.input-group-addon:first-child,
+.input-group-btn:first-child > .btn,
+.input-group-btn:first-child > .dropdown-toggle,
+.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
+  @include border-right-radius(0);
+}
+.input-group-addon:first-child {
+  border-right: 0;
+}
+.input-group input:last-child,
+.input-group-addon:last-child,
+.input-group-btn:last-child > .btn,
+.input-group-btn:last-child > .dropdown-toggle,
+.input-group-btn:first-child > .btn:not(:first-child) {
+  @include border-left-radius(0);
+}
+.input-group-addon:last-child {
+  border-left: 0;
+}
+
+// Button input groups
+// -------------------------
+.input-group-btn {
+  position: relative;
+  white-space: nowrap;
+}
+.input-group-btn > .btn {
+  position: relative;
+  float: left; // Collapse white-space
+  + .btn {
+    margin-left: -1px;
+  }
+  // Bring the "active" button to the front
+  &:hover,
+  &:active {
+    z-index: 2;
+  }
+}
+
+
+// Inline forms
+// --------------------------------------------------
+
+@mixin form-inline {
+  input,
+  select,
+  textarea,
+  .radio,
+  .checkbox {
+    display: inline-block;
+  }
+  .radio,
+  .checkbox {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.form-inline { @include form-inline }
+
+// Horizontal forms
+// --------------------------------------------------
+// Horizontal forms are built on grid classes.
+
+.form-horizontal {
+  .row + .row {
+    margin-top: 15px;
+  }
+  .control-label {
+    padding-top: 6px;
+  }
+}
+
+// Only right aline form labels here when the columns stop stacking
+@media (min-width: 768px) {
+  .form-horizontal .control-label {
+    text-align: right;
+  }
+}

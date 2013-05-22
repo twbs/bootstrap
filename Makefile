@@ -1,5 +1,6 @@
 BOOTSTRAP ?= ./docs/assets/css/bootstrap.css
-BOOTSTRAP_SCSS ?= ./scss/bootstrap.css.scss
+BOOTSTRAP_SCSS ?= ./scss/bootstrap.scss
+SASS_PRECISION ?= 15
 DATE=$(shell date +%I:%M%p)
 CHECK=\033[32m✔ Done\033[39m
 HR=\033[37m--------------------------------------------------\033[39m
@@ -19,7 +20,7 @@ build:
 	@jshint js/tests/unit/*.js --config js/.jshintrc
 	@echo "             ${CHECK}"
 	@printf "Compiling SCSS with SASS..."
-	@sass ${BOOTSTRAP_SCSS} > ${BOOTSTRAP}
+	@sass --precision ${SASS_PRECISION} ${BOOTSTRAP_SCSS} > ${BOOTSTRAP}
 	@echo "               ${CHECK}"
 	@printf "Prepping documentation assets..."
 	@cp fonts/* docs/assets/fonts/
@@ -85,8 +86,8 @@ bootstrap-css: bootstrap/css/*.css
 
 bootstrap/css/*.css: scss/*.scss
 	mkdir -p bootstrap/css
-	sass ${BOOTSTRAP_SCSS} > bootstrap/css/bootstrap.css
-	sass ${BOOTSTRAP_SCSS} > bootstrap/css/bootstrap.min.css
+	sass --precision ${SASS_PRECISION} ${BOOTSTRAP_SCSS} > bootstrap/css/bootstrap.css
+	sass --precision ${SASS_PRECISION} ${BOOTSTRAP_SCSS} > bootstrap/css/bootstrap.min.css
 
 #
 # FONTS

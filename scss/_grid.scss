@@ -1,0 +1,65 @@
+//
+// Grid system
+// --------------------------------------------------
+
+
+// Set the container width, and override it for fixed navbars in media queries
+.container {
+  @include container-fixed();
+}
+
+// Mobile-first defaults
+.row {
+  @include make-row();
+}
+
+
+// Common styles for small and large grid columns
+@mixin col {
+  position: relative;
+  // Float and set width: 100%; for easy stacking on mobile devices
+  float: left;
+  width: 100%;
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Inner gutter via padding
+  padding-left:  ($grid-gutter-width / 2);
+  padding-right: ($grid-gutter-width / 2);
+}
+
+.col { @include col }
+
+// Generate small grid classes first
+@include generate-grid-columns($grid-columns);
+
+// Then generate the larger grid classes via media query
+@media screen and (min-width: $screen-small) {
+  @include generate-large-grid-columns($grid-columns);
+}
+
+
+// Responsive: Tablets and up
+@media screen and (min-width: $screen-tablet) {
+  .container {
+    max-width: 728px;
+  }
+}
+
+// Responsive: Desktops and up
+@media screen and (min-width: $screen-desktop) {
+  .container {
+    max-width: 940px;
+  }
+}
+
+// Responsive: Large desktops and up
+@media screen and (min-width: $screen-large-desktop) {
+  .container {
+    max-width: 1170px;
+  }
+}
+
+// Reset utility classes due to specificity
+/*[class*="col-span-"].pull-right {
+  float: right;
+}*/
