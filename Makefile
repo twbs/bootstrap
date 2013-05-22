@@ -1,5 +1,5 @@
 BOOTSTRAP ?= ./docs/assets/css/bootstrap.css
-BOOTSTRAP_LESS ?= ./less/bootstrap.less
+BOOTSTRAP_SCSS ?= ./scss/bootstrap.css.scss
 DATE=$(shell date +%I:%M%p)
 CHECK=\033[32m✔ Done\033[39m
 HR=\033[37m--------------------------------------------------\033[39m
@@ -18,8 +18,8 @@ build:
 	@jshint js/*.js --config js/.jshintrc
 	@jshint js/tests/unit/*.js --config js/.jshintrc
 	@echo "             ${CHECK}"
-	@printf "Compiling LESS with Recess..."
-	@recess --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
+	@printf "Compiling SCSS with SASS..."
+	@sass ${BOOTSTRAP_SCSS} > ${BOOTSTRAP}
 	@echo "               ${CHECK}"
 	@printf "Prepping documentation assets..."
 	@cp fonts/* docs/assets/fonts/
@@ -58,7 +58,7 @@ clean:
 
 #
 # BUILD SIMPLE BOOTSTRAP DIRECTORY
-# recess & uglifyjs are required
+# sass & uglifyjs are required
 #
 
 bootstrap: bootstrap-fonts bootstrap-css bootstrap-js
@@ -83,10 +83,10 @@ bootstrap/js/*.js: js/*.js
 
 bootstrap-css: bootstrap/css/*.css
 
-bootstrap/css/*.css: less/*.less
+bootstrap/css/*.css: scss/*.scss
 	mkdir -p bootstrap/css
-	recess --compile ${BOOTSTRAP_LESS} > bootstrap/css/bootstrap.css
-	recess --compress ${BOOTSTRAP_LESS} > bootstrap/css/bootstrap.min.css
+	sass ${BOOTSTRAP_SCSS} > bootstrap/css/bootstrap.css
+	sass ${BOOTSTRAP_SCSS} > bootstrap/css/bootstrap.min.css
 
 #
 # FONTS
@@ -112,12 +112,12 @@ gh-pages: bootstrap docs
 	cp -r docs/* ../bootstrap-gh-pages
 
 #
-# WATCH LESS FILES
+# WATCH SCSS FILES
 #
 
 watch:
-	echo "Watching less files..."; \
-	watchr -e "watch('less/.*\.less') { system 'make' }"
+	echo "Watching scss files..."; \
+	watchr -e "watch('scss/.*\.scss') { system 'make' }"
 
 #
 # BUILD AND START SERVER
