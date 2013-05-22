@@ -97,7 +97,7 @@
 
     this._options && $.each(this._options, function (key, value) {
       if (defaults[key] != value) options[key] = value
-    }, this)
+    })
 
     var self = $(e.currentTarget)[this.type](options).data('bs.' + this.type)
 
