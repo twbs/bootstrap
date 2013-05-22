@@ -19,7 +19,7 @@ build:
 	@jshint js/*.js --config js/.jshintrc
 	@jshint js/tests/unit/*.js --config js/.jshintrc
 	@echo "             ${CHECK}"
-	@printf "Compiling SCSS with SASS..."
+	@printf "Compiling scss with Sass..."
 	@sass --precision ${SASS_PRECISION} ${BOOTSTRAP_SCSS} > ${BOOTSTRAP}
 	@echo "               ${CHECK}"
 	@printf "Prepping documentation assets..."
