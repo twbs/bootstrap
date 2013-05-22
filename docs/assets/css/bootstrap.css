@@ -6798,19 +6798,6 @@ a.badge:focus {
 
 /*  agrego lo que estaba en ba.css - despu�s hay que limpiar bien esto */
 
-/* Add additional stylesheets below
--------------------------------------------------- */
-
-/*
-  Bootstrap's documentation styles
-  Special styles for presenting Bootstrap's documentation and examples
-*/
-
-/* Buttons gradient removed in buttons.less */
-
-/* Body and structure
--------------------------------------------------- */
-
 @font-face {
   font-family: 'Gotham';
   font-style: normal;
@@ -6935,6 +6922,7 @@ body {
 }
 
 .footer {
+  padding: 30px 0;
   background: #252120!important;
   border-top: #000;
 }
