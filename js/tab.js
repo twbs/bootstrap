@@ -129,5 +129,13 @@
     e.preventDefault()
     $(this).tab('show')
   })
+  
+  // REMOTE TAB DATA-API
+  // ===================
+  $(document).on('[data-remote-toggle="tab"], [data-remote-toggle="pill"]', function (e) {
+    e.preventDefault()
+    var href = $(this).attr('href');
+    $('[data-toggle="tab"][href="' + href + '"], [data-toggle="pill"][href="' + href + '"]').tab('show')
+  })
 
 }(window.jQuery);
