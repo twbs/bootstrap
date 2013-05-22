@@ -176,7 +176,7 @@
           <p>En este ejemplo tenemos un <code>.span4</code> y <code>.span8</code>, que hacen 12 columnas, o sea una fila completa.</p>
 
           <h2>Moviendo columnas</h2>
-          <p>Mové columnas a la derecha usando las clases <code>.offset*</code>. Cada clase aumenta el margen izquierdo de una columna por un espacio de una columna entera. Por ejemplo, <code>.offset4</code> moves <code>.span4</code> over four columns.</p>
+          <p>Mové columnas a la derecha usando las clases <code>.offset*</code>. Cada clase aumenta el margen izquierdo de una columna por un espacio de una columna entera. Por ejemplo, <code>.offset4</code> mueve <code>.span4</code> en cuatro columnas.</p>
           <div class="bs-docs-grid">
             <div class="row show-grid">
               <div class="span4">4</div>
@@ -215,10 +215,10 @@
 <pre class="prettyprint linenums">
 &lt;div class="row"&gt;
   &lt;div class="span9"&gt;
-    Level 1 column
+    Columna nivel 1
     &lt;div class="row"&gt;
-      &lt;div class="span6"&gt;Level 2&lt;/div&gt;
-      &lt;div class="span3"&gt;Level 2&lt;/div&gt;
+      &lt;div class="span6"&gt;Nivel 2&lt;/div&gt;
+      &lt;div class="span3"&gt;Nivel 2&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -231,11 +231,11 @@
         ================================================== -->
         <section id="fluidGridSystem">
           <div class="page-header">
-            <h1>Fluid grid system</h1>
+            <h1>Sistema de grilla fluida</h1>
           </div>
 
-          <h2>Live fluid grid example</h2>
-          <p>The fluid grid system uses percents instead of pixels for column widths. It has the same responsive capabilities as our fixed grid system, ensuring proper proportions for key screen resolutions and devices.</p>
+          <h2>Ejemplo de grilla fluida</h2>
+          <p>El sistema de grilla fluida usa porcentajes en lugar de píxels para el ancho de las columnas. Tiene las mismas capacidades responsive que el sistema de grilla fija, asegurando proporciones adecuadas para las resoluciones de pantalla más usadas.</p>
           <div class="bs-docs-grid">
             <div class="row-fluid show-grid">
               <div class="span1">1</div>
@@ -269,8 +269,8 @@
             </div>
           </div>
 
-          <h3>Basic fluid grid HTML</h3>
-          <p>Make any row "fluid" by changing <code>.row</code> to <code>.row-fluid</code>. The column classes stay the exact same, making it easy to flip between fixed and fluid grids.</p>
+          <h3>HTML de una grilla fluida básica</h3>
+          <p>Hacé que una row sea "fluida" cambiando <code>.row</code> por <code>.row-fluid</code>. Las clases de las columnas quedan igual, lo que facilita el cambio entre grillas fijas y fluidas.</p>
 <pre class="prettyprint linenums">
 &lt;div class="row-fluid"&gt;
   &lt;div class="span4"&gt;...&lt;/div&gt;
@@ -278,8 +278,8 @@
 &lt;/div&gt;
 </pre>
 
-          <h2>Fluid offsetting</h2>
-          <p>Operates the same way as the fixed grid system offsetting: add <code>.offset*</code> to any column to offset by that many columns.</p>
+          <h2>Offsetting fluido</h2>
+          <p>Funciona de la misma manera que en el sistema de grilla fija: agregar <code>.offset*</code> a cualquier columna para moverla por esa cantidad de columnas.</p>
           <div class="bs-docs-grid">
             <div class="row-fluid show-grid">
               <div class="span4">4</div>
@@ -300,25 +300,25 @@
 &lt;/div&gt;
 </pre>
 
-          <h2>Fluid nesting</h2>
-          <p>Fluid grids utilize nesting differently: each nested level of columns should add up to 12 columns. This is because the fluid grid uses percentages, not pixels, for setting widths.</p>
+          <h2>Anidado fluido</h2>
+          <p>Las grillas fluidas usan el anidado de forma diferente:: cada nivel anidado de columnas tiene que sumar 12. Esto es porque el sistema de grilla fluida usa porcentajes, no píxeles, para definir anchos.</p>
           <div class="row-fluid show-grid">
             <div class="span12">
-              Fluid 12
+              Fluido 12
               <div class="row-fluid show-grid">
                 <div class="span6">
-                  Fluid 6
+                  Fluido 6
                   <div class="row-fluid show-grid">
                     <div class="span6">
-                      Fluid 6
+                      Fluido 6
                     </div>
                     <div class="span6">
-                      Fluid 6
+                      Fluido 6
                     </div>
                   </div>
                 </div>
                 <div class="span6">
-                  Fluid 6
+                  Fluido 6
                 </div>
               </div>
             </div>
@@ -326,16 +326,16 @@
 <pre class="prettyprint linenums">
 &lt;div class="row-fluid"&gt;
   &lt;div class="span12"&gt;
-    Fluid 12
+    Fluido 12
     &lt;div class="row-fluid"&gt;
       &lt;div class="span6"&gt;
-        Fluid 6
+        Fluido 6
         &lt;div class="row-fluid"&gt;
-          &lt;div class="span6"&gt;Fluid 6&lt;/div&gt;
-          &lt;div class="span6"&gt;Fluid 6&lt;/div&gt;
+          &lt;div class="span6"&gt;Fluido 6&lt;/div&gt;
+          &lt;div class="span6"&gt;Fluido 6&lt;/div&gt;
         &lt;/div&gt;
       &lt;/div&gt;
-      &lt;div class="span6"&gt;Fluid 6&lt;/div&gt;
+      &lt;div class="span6"&gt;Fluido 6&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -353,8 +353,8 @@
             <h1>Layouts</h1>
           </div>
 
-          <h2>Fixed layout</h2>
-          <p>Provides a common fixed-width (and optionally responsive) layout with only <code>&lt;div class="container"&gt;</code> required.</p>
+          <h2>Layout fijo</h2>
+          <p>Provee un layout de ancho fijo común (con opción responsive) con solo agregar <code>&lt;div class="container"&gt;</code> antes.</p>
           <div class="mini-layout">
             <div class="mini-layout-body"></div>
           </div>
@@ -366,8 +366,8 @@
 &lt;/body&gt;
 </pre>
 
-          <h2>Fluid layout</h2>
-          <p>Create a fluid, two-column page with <code>&lt;div class="container-fluid"&gt;</code>&mdash;great for applications and docs.</p>
+          <h2>Layout fluido</h2>
+          <p>Creá una página fluida de dos columnas con <code>&lt;div class="container-fluid"&gt;</code>&mdash;útil para aplicaciones y documentación.</p>
           <div class="mini-layout fluid">
             <div class="mini-layout-sidebar"></div>
             <div class="mini-layout-body"></div>
@@ -376,10 +376,10 @@
 &lt;div class="container-fluid"&gt;
   &lt;div class="row-fluid"&gt;
     &lt;div class="span2"&gt;
-      &lt;!--Sidebar content--&gt;
+      &lt;!--Contenido de sidebar--&gt;
     &lt;/div&gt;
     &lt;div class="span10"&gt;
-      &lt;!--Body content--&gt;
+      &lt;!--Contenido del body--&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -393,66 +393,64 @@
         ================================================== -->
         <section id="responsive">
           <div class="page-header">
-            <h1>Responsive design</h1>
+            <h1>Diseño responsive</h1>
           </div>
 
-          <h2>Enabling responsive features</h2>
-          <p>Turn on responsive CSS in your project by including the proper meta tag and additional stylesheet within the <code>&lt;head&gt;</code> of your document. If you've compiled Bootstrap from the Customize page, you need only include the meta tag.</p>
+          <h2>Activando la funcionalidad responsive</h2>
+          <p>Activá el CSS responsive en tu proyecto incluyendo el meta tag y la hoja de estilos adecuados dentro del <code>&lt;head&gt;</code> de tu documento.</p>
 <pre class="prettyprint linenums">
 &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
 &lt;link href="assets/css/bootstrap-responsive.css" rel="stylesheet"&gt;
 </pre>
-          <p><span class="label label-info">Heads up!</span>  Bootstrap doesn't include responsive features by default at this time as not everything needs to be responsive. Instead of encouraging developers to remove this feature, we figure it best to enable it as needed.</p>
 
-          <h2>About responsive Bootstrap</h2>
-          <img src="assets/img/responsive-illustrations.png" alt="Responsive devices" style="float: right; margin: 0 0 20px 20px;">
-          <p>Media queries allow for custom CSS based on a number of conditions&mdash;ratios, widths, display type, etc&mdash;but usually focuses around <code>min-width</code> and <code>max-width</code>.</p>
+          <h2>Más información sobre BAstrap responsive</h2>
+          <p>Los Media queries permiten CSS personalizado basado en algunas condiciones&mdash;proporciones, anchos, tipo de pantalla, etc&mdash;pero en general se enfocan en <code>min-width</code> y <code>max-width</code>.</p>
           <ul>
-            <li>Modify the width of column in our grid</li>
-            <li>Stack elements instead of float wherever necessary</li>
-            <li>Resize headings and text to be more appropriate for devices</li>
+            <li>Cambia el ancho de la columna en nuestra grilla</li>
+            <li>Apila elementos en lugar de flotarlos cuando sea necesario</li>
+            <li>Redimensiona encabezados y texto para que se ajusten mejor a los dispositivos</li>
           </ul>
-          <p>Use media queries responsibly and only as a start to your mobile audiences. For larger projects, do consider dedicated code bases and not layers of media queries.</p>
+          
 
-          <h2>Supported devices</h2>
-          <p>Bootstrap supports a handful of media queries in a single file to help make your projects more appropriate on different devices and screen resolutions. Here's what's included:</p>
+          <h2>Dispositivos</h2>
+          <p>BAstrap contiene muchos media queries en un solo archivo para ayudar a que tus proyectos se vean bien en diferentes dispositivos y resoluciones de pantalla. Se incluyen:</p>
           <table class="table table-bordered table-striped">
             <thead>
               <tr>
-                <th>Label</th>
-                <th>Layout width</th>
-                <th>Column width</th>
-                <th>Gutter width</th>
+                <th>Nombre</th>
+                <th>Ancho de layout</th>
+                <th>Ancho de columna</th>
+                <th>Espacio entre columnas</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Large display</td>
-                <td>1200px and up</td>
+                <td>Pantalla grande</td>
+                <td>1200px y más</td>
                 <td>70px</td>
                 <td>30px</td>
               </tr>
               <tr>
                 <td>Default</td>
-                <td>980px and up</td>
+                <td>980px y más</td>
                 <td>60px</td>
                 <td>20px</td>
               </tr>
               <tr>
-                <td>Portrait tablets</td>
-                <td>768px and above</td>
+                <td>Tabletas (retrato)</td>
+                <td>768px y más</td>
                 <td>42px</td>
                 <td>20px</td>
               </tr>
               <tr>
-                <td>Phones to tablets</td>
-                <td>767px and below</td>
-                <td class="muted" colspan="2">Fluid columns, no fixed widths</td>
+                <td>Teléfonos y tabletas</td>
+                <td>767px y menos</td>
+                <td class="muted" colspan="2">Columnas fluidas, sin anchos fijos</td>
               </tr>
               <tr>
-                <td>Phones</td>
-                <td>480px and below</td>
-                <td class="muted" colspan="2">Fluid columns, no fixed widths</td>
+                <td>Teléfonos</td>
+                <td>480px y menos</td>
+                <td class="muted" colspan="2">Columnas fluidas, sin anchos fijos</td>
               </tr>
             </tbody>
           </table>
@@ -471,75 +469,75 @@
 </pre>
 
 
-          <h2>Responsive utility classes</h2>
-          <p>For faster mobile-friendly development, use these utility classes for showing and hiding content by device. Below is a table of the available classes and their effect on a given media query layout (labeled by device). They can be found in <code>responsive.less</code>.</p>
+          <h2>Clases utilitarias responsive</h2>
+          <p>Para un desarrollo apuntado a mobile, usá estas clases utilitarias para mostrar y esconder contenido de acuerdo al dispositivo. Abajo hay una tabla con las clases disponibles y su efecto dado el layout del media query (marcado por dispositivo).</p>
           <table class="table table-bordered table-striped responsive-utilities">
             <thead>
               <tr>
-                <th>Class</th>
-                <th>Phones <small>767px and below</small></th>
-                <th>Tablets <small>979px to 768px</small></th>
-                <th>Desktops <small>Default</small></th>
+                <th>Clase</th>
+                <th>Teléfonos <small>767px y menores</small></th>
+                <th>Tabletas <small>De 979px a 768px</small></th>
+                <th>Escritorios <small>Default</small></th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th><code>.visible-phone</code></th>
                 <td class="is-visible">Visible</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
+                <td class="is-hidden">Oculto</td>
+                <td class="is-hidden">Oculto</td>
               </tr>
               <tr>
                 <th><code>.visible-tablet</code></th>
-                <td class="is-hidden">Hidden</td>
+                <td class="is-hidden">Oculto</td>
                 <td class="is-visible">Visible</td>
-                <td class="is-hidden">Hidden</td>
+                <td class="is-hidden">Oculto</td>
               </tr>
               <tr>
                 <th><code>.visible-desktop</code></th>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
+                <td class="is-hidden">Oculto</td>
+                <td class="is-hidden">Oculto</td>
                 <td class="is-visible">Visible</td>
               </tr>
               <tr>
                 <th><code>.hidden-phone</code></th>
-                <td class="is-hidden">Hidden</td>
+                <td class="is-hidden">Oculto</td>
                 <td class="is-visible">Visible</td>
                 <td class="is-visible">Visible</td>
               </tr>
               <tr>
                 <th><code>.hidden-tablet</code></th>
                 <td class="is-visible">Visible</td>
-                <td class="is-hidden">Hidden</td>
+                <td class="is-hidden">Oculto</td>
                 <td class="is-visible">Visible</td>
               </tr>
               <tr>
                 <th><code>.hidden-desktop</code></th>
                 <td class="is-visible">Visible</td>
                 <td class="is-visible">Visible</td>
-                <td class="is-hidden">Hidden</td>
+                <td class="is-hidden">Oculto</td>
               </tr>
             </tbody>
           </table>
 
-          <h3>When to use</h3>
-          <p>Use on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation. Responsive utilities should not be used with tables, and as such are not supported.</p>
+          <h3>Cuándo usarlas</h3>
+          <p>Usá las clases de forma limitada y evitá crear versiones completamente diferentes de un sitio con ellas. En cambio, usalas para aportar a la presentación de un dispositivo. Las utilidades responsive no se deberían usar con tablas.</p>
 
-          <h3>Responsive utilities test case</h3>
-          <p>Resize your browser or load on different devices to test the above classes.</p>
-          <h4>Visible on...</h4>
-          <p>Green checkmarks indicate that class is visible in your current viewport.</p>
+          <h3>Caso de uso de utilidades responsive</h3>
+          <p>Redimensioná tu navegador o cargá esta página en distintos dispositivos para probar las clases de arriba.</p>
+          <h4>Visible en...</h4>
+          <p>Tildes verdes indican que la clase es visible en tu visualización actual.</p>
           <ul class="responsive-utilities-test">
-            <li>Phone<span class="visible-phone">&#10004; Phone</span></li>
-            <li>Tablet<span class="visible-tablet">&#10004; Tablet</span></li>
-            <li>Desktop<span class="visible-desktop">&#10004; Desktop</span></li>
+            <li>Teléfono<span class="visible-phone">&#10004; Teléfono</span></li>
+            <li>Tableta<span class="visible-tablet">&#10004; Tableta</span></li>
+            <li>Escritorio<span class="visible-desktop">&#10004; Escritorio</span></li>
           </ul>
-          <h4>Hidden on...</h4>
-          <p>Here, green checkmarks indicate that class is hidden in your current viewport.</p>
+          <h4>Oculto en...</h4>
+          <p>Acá, las tildes verdes indical que la clase está oculta en tu visualización actual.</p>
           <ul class="responsive-utilities-test hidden-on">
-            <li>Phone<span class="hidden-phone">&#10004; Phone</span></li>
-            <li>Tablet<span class="hidden-tablet">&#10004; Tablet</span></li>
-            <li>Desktop<span class="hidden-desktop">&#10004; Desktop</span></li>
+            <li>Teléfono<span class="hidden-phone">&#10004; Teléfono</span></li>
+            <li>Tableta<span class="hidden-tablet">&#10004; Tableta</span></li>
+            <li>Escritorio<span class="hidden-desktop">&#10004; Escritorio</span></li>
           </ul>
 
         </section>
