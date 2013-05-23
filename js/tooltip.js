@@ -167,6 +167,8 @@
           break
       }
 
+      if (tp['top'] < 10) tp['top'] = 10
+
       this.applyPlacement(tp, placement)
       this.$element.trigger('shown.bs.' + this.type)
     }
