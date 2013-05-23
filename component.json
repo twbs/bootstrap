@@ -1,8 +1,12 @@
 {
   "name": "bootstrap",
+  "repo": "twitter/bootstrap",
+  "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development.",
   "version": "3.0.0",
+  "keywords": ["bootstrap", "css"],
   "main": ["./docs/assets/js/bootstrap.js", "./docs/assets/css/bootstrap.css"],
   "dependencies": {
     "jquery": "~1.8.0"
-  }
+  },
+  "license": "Apache-2.0"
 }
