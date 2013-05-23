@@ -162,6 +162,7 @@
       , option = $(target).data('collapse') ? 'toggle' : $this.data()
     $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
     $(target).collapse(option)
+    this.blur()
   })
 
 }(window.jQuery);
