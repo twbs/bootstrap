@@ -2412,6 +2412,15 @@ button.close {
     margin-top: 2px;
     margin-left: 0; }
 
+.nav-justified {
+  width: 100%; }
+  .nav-justified > li {
+    float: none;
+    display: table-cell;
+    width: 1%; }
+    .nav-justified > li > a {
+      text-align: center; }
+
 .nav-header {
   display: block;
   padding: 3px 15px;
