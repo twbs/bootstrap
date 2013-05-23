@@ -97,6 +97,17 @@ body {
 /* Customize and Download button
 -------------------------------------------------- */
 
+.bs-customizer {
+
+}
+.bs-customizer .toggle {
+  float: right;
+}
+.bs-customizer label {
+  margin-top: 10px;
+}
+
+
 .bs-customize-download {
   text-align:center;
 }
