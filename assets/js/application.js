@@ -29,7 +29,7 @@
     // add-ons
     $('.add-on :checkbox').on('click', function () {
       var $this = $(this)
-        , method = $this.attr('checked') ? 'addClass' : 'removeClass'
+        , method = $this.prop('checked') ? 'addClass' : 'removeClass'
       $(this).parents('.add-on')[method]('active')
     })
 
@@ -77,12 +77,12 @@
     // toggle all plugin checkboxes
     $('#components.download .toggle-all').on('click', function (e) {
       e.preventDefault()
-      inputsComponent.attr('checked', !inputsComponent.is(':checked'))
+      inputsComponent.prop('checked', !inputsComponent.is(':checked'))
     })
 
     $('#plugins.download .toggle-all').on('click', function (e) {
       e.preventDefault()
-      inputsPlugin.attr('checked', !inputsPlugin.is(':checked'))
+      inputsPlugin.prop('checked', !inputsPlugin.is(':checked'))
     })
 
     $('#variables.download .toggle-all').on('click', function (e) {
