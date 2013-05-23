@@ -13,15 +13,22 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
         <button class="btn btn-default toggle" type="button">Toggle all</button>
         <h1>LESS components</h1>
       </div>
-      <p class="lead">Choose which LESS files should be compiled into your custom stylesheets.</p>
+      <p class="lead">Choose which LESS files to compile into your custom build of Bootstrap.</p>
       <div class="bs-callout">
         <h4>Read the documentation</h4>
         <p>Make an informed choice by first reading about <a href="/css/">CSS</a> and <a href="/components/">Components</a> in the docs.</p>
       </div>
+
       <h3 id="components-basics">The basics</h3>
       <div class="row">
-        <div class="col col-lg-6">
+        <div class="col col-lg-4">
           <h4>Layout</h4>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" checked value="normalize.less">
+              Normalize (CSS reset)
+            </label>
+          </div>
           <div class="checkbox">
             <label>
               <input type="checkbox" checked value="scaffolding.less">
@@ -31,13 +38,7 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <div class="checkbox">
             <label>
               <input type="checkbox" checked value="grid.less">
-              Grid
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" checked value="normalize.less">
-              Normalized base styles
+              Grid system
             </label>
           </div>
           <div class="checkbox">
@@ -47,7 +48,40 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
             </label>
           </div>
         </div>
-        <div class="col col-lg-6">
+        <div class="col col-lg-4">
+          <h4>Global CSS</h4>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" checked value="type.less">
+              Typography
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" checked value="code.less">
+              Code
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" checked value="tables.less">
+              Tables
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" checked value="forms.less">
+              Forms
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" checked value="buttons.less">
+              Buttons
+            </label>
+          </div>
+        </div>
+        <div class="col col-lg-4">
           <h4>Utility classes</h4>
           <div class="checkbox">
             <label>
@@ -64,62 +98,26 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <div class="checkbox">
             <label>
               <input type="checkbox" checked value="component-animations.less">
-              JavaScript helping classes
+              Component animations (for JS)
             </label>
           </div>
         </div>
       </div>
-      <h3 id="components-standard">Standard element styles</h3>
-      <div class="row">
-        <div class="col col-lg-6">
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" checked value="type.less">
-              Type and color
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" checked value="tables.less">
-              Tables
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" checked value="code.less">
-              Code
-            </label>
-          </div>
-        </div>
-        <div class="col col-lg-6">
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" checked value="forms.less">
-              Forms
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" checked value="buttons.less">
-              Buttons
-            </label>
-          </div>
-        </div>
-      </div>
+
       <h3 id="components-features">Bootstrap features</h3>
       <div class="row">
-        <div class="col col-lg-6">
+        <div class="col col-lg-4">
           <h4>Navigation</h4>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" checked value="navbar.less">
-              Navbar
-            </label>
-          </div>
           <div class="checkbox">
             <label>
               <input type="checkbox" checked value="navs.less">
               Navs
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" checked value="navbar.less">
+              Navbar
             </label>
           </div>
           <div class="checkbox">
@@ -141,14 +139,35 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
             </label>
           </div>
         </div>
-        <div class="col col-lg-6">
-          <h4>Additional information</h4>
+        <div class="col col-lg-4">
+          <h4>Content blocks</h4>
           <div class="checkbox">
             <label>
-              <input type="checkbox" checked value="modals.less">
-              Modals
+              <input type="checkbox" checked value="jumbotron.less">
+              Jumbotron
             </label>
           </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" checked value="accordion.less">
+              Accordion
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" checked value="panels.less">
+              Panels
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" checked value="wells.less">
+              Wells
+            </label>
+          </div>
+        </div>
+        <div class="col col-lg-4">
+          <h4>Behavioral (requires JS)</h4>
           <div class="checkbox">
             <label>
               <input type="checkbox" checked value="alerts.less">
@@ -173,15 +192,10 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
               Popovers
             </label>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col col-lg-6">
-          <h4>Content blocks</h4>
           <div class="checkbox">
             <label>
-              <input type="checkbox" checked value="jumbotron.less">
-              Jumbotron
+              <input type="checkbox" checked value="modals.less">
+              Modals
             </label>
           </div>
           <div class="checkbox">
@@ -190,26 +204,11 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
               Carousel
             </label>
           </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" checked value="accordion.less">
-              Accordion
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" checked value="panels.less">
-              Panels
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" checked value="wells.less">
-              Wells
-            </label>
-          </div>
         </div>
-        <div class="col col-lg-6">
+      </div>
+
+      <div class="row">
+        <div class="col col-lg-4">
           <h4>Media</h4>
           <div class="checkbox">
             <label>
@@ -225,21 +224,31 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" checked value="media.less">
-              Media items
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
               <input type="checkbox" checked value="list-group.less">
               List groups
             </label>
           </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" checked value="media.less">
+              Media items
+            </label>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col col-lg-6">
-          <h4>Other</h4>
+        <div class="col col-lg-4">
+          <h4>Miscellaneous</h4>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" checked value="button-groups.less">
+              Button groups
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" checked value="progress-bars.less">
+              Progress bars
+            </label>
+          </div>
           <div class="checkbox">
             <label>
               <input type="checkbox" checked value="badges.less">
@@ -254,20 +263,8 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" checked value="button-groups.less">
-              Button groups
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
               <input type="checkbox" checked value="close.less">
               Close icon
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" checked value="progress-bars.less">
-              Progress bars
             </label>
           </div>
         </div>
@@ -381,7 +378,7 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
       <h3>Body background</h3>
       <label>@body-bg</label>
       <input type="text" placeholder="#fff">
-      <p class="help-text">Background color applied to <code>&lt;body&gt;</code>.</p>
+      <p class="help-block">Background color applied to <code>&lt;body&gt;</code>.</p>
       <h3>Typography</h3>
       <div class="row">
         <div class="col col-lg-6">
