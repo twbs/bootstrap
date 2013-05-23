@@ -79,7 +79,7 @@ bootstrap/js/*.js: js/*.js
 	rm bootstrap/js/copyright.js bootstrap/js/bootstrap.min.tmp.js
 
 #
-# CSS COMPLILE
+# CSS COMPILE
 #
 
 bootstrap-css: bootstrap/css/*.css
@@ -99,18 +99,6 @@ bootstrap/fonts/*: fonts/*
 	mkdir -p bootstrap/fonts
 	cp fonts/* bootstrap/fonts/
 
-
-#
-# MAKE FOR GH-PAGES 4 FAT & MDO ONLY (O_O  )
-#
-
-gh-pages: bootstrap docs
-	rm -f docs/assets/bootstrap.zip
-	zip -r docs/assets/bootstrap.zip bootstrap
-	rm -r bootstrap
-	rm -f ../bootstrap-gh-pages/assets/bootstrap.zip
-	node docs/build production
-	cp -r docs/* ../bootstrap-gh-pages
 
 #
 # WATCH SCSS FILES

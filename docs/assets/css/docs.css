@@ -94,6 +94,40 @@ body {
 
 
 
+/* Customize and Download button
+-------------------------------------------------- */
+
+.bs-customizer {
+
+}
+.bs-customizer .toggle {
+  float: right;
+}
+.bs-customizer label {
+  margin-top: 10px;
+}
+
+
+.bs-customize-download {
+  text-align:center;
+}
+.bs-customize-download .btn {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 18px 24px;
+  font-size: 21px;
+  color: #b94a48;
+  background-color: #fff;
+  border-color: #b94a48;
+}
+.bs-customize-download .btn:hover,
+.bs-customize-download .btn:active {
+  color: #fff;
+  background-color: #b94a48;
+}
+
+
+
 /* Docs pages and sections
 -------------------------------------------------- */
 
