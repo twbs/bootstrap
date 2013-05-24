@@ -69,7 +69,7 @@
     $('.bs-docs-carousel-example').carousel()
 
     // javascript build logic
-    var inputsComponent = $("#components input")
+    var inputsComponent = $("#less input")
       , inputsPlugin = $("#plugins input")
       , inputsVariables = $("#variables input")
 

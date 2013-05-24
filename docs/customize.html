@@ -8,18 +8,14 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
   <!-- Customize
   ================================================== -->
   <form class="bs-customizer">
-    <div class="bs-docs-section" id="components">
+    <div class="bs-docs-section" id="less">
       <div class="page-header">
         <button class="btn btn-default toggle" type="button">Toggle all</button>
-        <h1>LESS components</h1>
+        <h1>LESS files</h1>
       </div>
-      <p class="lead">Choose which LESS files to compile into your custom build of Bootstrap.</p>
-      <div class="bs-callout">
-        <h4>Read the documentation</h4>
-        <p>Make an informed choice by first reading about <a href="/css/">CSS</a> and <a href="/components/">Components</a> in the docs.</p>
-      </div>
+      <p class="lead">Choose which LESS files to compile into your custom build of Bootstrap. Not sure which files to use? Read through the <a href="/css/">CSS</a> and <a href="/components/">Components</a> pages in the docs</p>
 
-      <h3 id="components-basics">The basics</h3>
+      <h3>Basics</h3>
       <div class="row">
         <div class="col col-lg-4">
           <h4>Layout</h4>
@@ -104,7 +100,7 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
         </div>
       </div>
 
-      <h3 id="components-features">Bootstrap features</h3>
+      <h3>Components</h3>
       <div class="row">
         <div class="col col-lg-4">
           <h4>Navigation</h4>
@@ -271,16 +267,14 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
       </div>
     </div>
 
+
+
     <div class="bs-docs-section" id="plugins">
       <div class="page-header">
         <button class="btn btn-default toggle" type="button">Toggle all</button>
         <h1>jQuery plugins</h1>
       </div>
-      <p class="lead">Choose which jQuery plugins should be included in your custom JavaScript files.</p>
-      <div class="bs-callout">
-        <h4>Read the documentation</h4>
-        <p>Make an informed choice by first reading about <a href="/javascript/">JavaScript</a> in the docs.</p>
-      </div>
+      <p class="lead">Choose which jQuery plugins should be included in your custom JavaScript files. Unsure what to include? Read the <a href="/javascript/">JavaScript</a> page in the docs.</p>
       <div class="row">
         <div class="col col-lg-6">
           <h4>Linked to components</h4>
@@ -368,53 +362,57 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
     </div>
 
 
-    <div class="bs-docs-section" id="variables">
+
+    <div class="bs-docs-section" id="less-variables">
       <div class="page-header">
         <button class="btn btn-default toggle" type="button">Reset to defaults</button>
         <h1>LESS variables</h1>
       </div>
       <p class="lead">Customize LESS variables to define colors, sizes and more inside your custom CSS stylesheets.</p>
-      <h2 id="customize-basics">The basics</h2>
+
+      <h2 id="variables-basics">Basics</h2>
+
       <h3>Body background</h3>
-      <label>@body-bg</label>
-      <input type="text" placeholder="#fff">
-      <p class="help-block">Background color applied to <code>&lt;body&gt;</code>.</p>
+      <div class="row">
+        <div class="col col-lg-6">
+          <label>@body-bg</label>
+          <input type="text" placeholder="#fff">
+          <p class="help-block">Background color applied to <code>&lt;body&gt;</code>.</p>
+        </div>
+      </div>
+
       <h3>Typography</h3>
       <div class="row">
         <div class="col col-lg-6">
           <label>@font-family-sans-serif</label>
-          <input type="text" placeholder="&quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif">
-          <p class="help-block">Default sans-serif fonts. Used almost anywhere in Bootstrap.</p>
+          <input type="text" placeholder="'Helvetica Neue', Helvetica, Arial, sans-serif">
+          <p class="help-block">Default sans-serif fonts.</p>
           <label>@font-family-serif</label>
-          <input type="text" placeholder="Georgia, &quot;Times New Roman&quot;, Times, serif">
+          <input type="text" placeholder="Georgia, 'Times New Roman', Times, serif">
           <p class="help-block">Default serif fonts.</p>
+          <label>@font-family-monospace</label>
+          <input type="text" placeholder="Monaco, Menlo, Consolas, 'Courier New', monospace">
+          <p class="help-block">Default monospace fonts for <code>&lt;code&gt;</code> and <code>&lt;pre&gt;</code>.</p>
         </div>
         <div class="col col-lg-6">
-          <label>@font-family-monospace</label>
-          <input type="text" placeholder="Monaco, Menlo, Consolas, &quot;Courier New&quot;, monospace">
-          <p class="help-block">Default monospace fonts. Most prominently used for <code>&lt;code&gt;</code> and <code>&lt;pre&gt;</code>.</p>
           <label>@font-family-base</label>
           <input type="text" placeholder="@font-family-sans-serif">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col col-lg-6">
+          <p class="help-block">Used to globally set font-family in Bootstrap.</p>
           <label>@font-size-base</label>
           <input type="text" placeholder="14px">
-          <p class="help-block">Will be used to calculate font sizes throughout Bootstrap.</p>
+          <p class="help-block">Used to calculate font-size throughout Bootstrap.</p>
           <label>@line-height-base</label>
           <input type="text" placeholder="1.428571429">
-          <p class="help-block">Will be used to calculate line heights throughout Bootstrap. Default is &tilde;14/20.</p>
-        </div>
-        <div class="col col-lg-6">
+          <p class="help-block">Used to calculate line-height throughout Bootstrap.</p>
           <label>@headings-font-weight</label>
           <input type="text" placeholder="500">
-          <p class="help-block">Choose a separate font weight for headings.</p>
+          <p class="help-block">Choose a separate font-weight for headings.</p>
           <label>@headings-line-height</label>
           <input type="text" placeholder="1.1">
-          <p class="help-block">Choose a separate line height for headings.</p>
+          <p class="help-block">Choose a separate line-height for headings.</p>
         </div>
       </div>
+
       <h3>Colors</h3>
       <div class="row">
         <div class="col col-lg-6">
@@ -439,15 +437,16 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <p>Define your preferred colors for standard text and links.</p>
           <label>@text-color</label>
           <input type="text" placeholder="@gray-dark">
-          <p class="help-block">Color for all standard text.</p>
+          <p class="help-block">Global color set on the body.</p>
           <label>@link-color</label>
           <input type="text" placeholder="@brand-primary">
-          <p class="help-block">Link color for links in standard text.</p>
+          <p class="help-block">Global link color for text.</p>
           <label>@link-color-hover</label>
           <input type="text" placeholder="darken(@link-color, 15%)">
-          <p class="help-block">Hovered link color. Leave this blank to compute using @link-color.</p>
+          <p class="help-block">Automatically darken links on hover via color function.</p>
         </div>
       </div>
+
       <h3>Media queries breakpoints</h3>
       <p>Define the breakpoints at which your layout will change, adapting to different screen sizes.</p>
       <div class="row">
@@ -464,7 +463,8 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <input type="text" placeholder="1200px">
         </div>
       </div>
-      <h3>The grid</h3>
+
+      <h3>Grid system</h3>
       <p>Define your custom responsive grid.</p>
       <div class="row">
         <div class="col col-lg-6">
@@ -481,6 +481,7 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <p class="help-block">Point at which the navbar stops collapsing.</p>
         </div>
       </div>
+
       <h3>Components</h3>
       <p>Define common padding and border radius sizes and more.</p>
       <div class="row">
@@ -509,11 +510,17 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <input type="text" placeholder="3px">
         </div>
       </div>
+
       <h4>Active background color</h4>
-      <label>@component-active-bg</label>
-      <input type="text" placeholder="@brand-primary">
-      <p class="help-block">Used for active or hovered items in places like navs or dropdowns.</p>
-      <h2 id="customize-buttons">Buttons</h2>
+      <div class="row">
+        <div class="col col-lg-6">
+          <label>@component-active-bg</label>
+          <input type="text" placeholder="@brand-primary">
+          <p class="help-block">Used for active or hovered items in places like navs or dropdowns.</p>
+        </div>
+      </div>
+
+      <h2 id="variables-buttons">Buttons</h2>
       <p>For each of Bootstrap's buttons, define text, background and border color.</p>
       <div class="row">
         <div class="col col-lg-6">
@@ -563,7 +570,8 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <input type="text" placeholder="@btn-danger-bg">
         </div>
       </div>
-      <h2 id="customize-form-states">Form states and alerts</h2>
+
+      <h2 id="variables-form-states">Form states and alerts</h2>
       <p>Define colors for form feedback states and, by default, alerts.</p>
       <div class="row">
         <div class="col col-lg-6">
@@ -599,7 +607,8 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <input type="text" placeholder="darken(spin(@state-info-bg, -10), 7%)">
         </div>
       </div>
-      <h2 id="customize-alerts">Alerts</h2>
+
+      <h2 id="variables-alerts">Alerts</h2>
       <p>Define alert colors and border radius.</p>
       <h4>Border radius</h4>
       <label>@alert-border-radius</label>
@@ -638,10 +647,12 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <input type="text" placeholder="@state-info-border">
         </div>
       </div>
-      <h2 id="customize-navbar">Navbar</h2>
+
+      <h2 id="variables-navbar">Navbar</h2>
       <div class="row">
         <div class="col col-lg-6">
-          <h4>The basics</h4>
+          <h3>Default navbar</h3>
+          <h4>Basics</h4>
           <label>@navbar-height</label>
           <input type="text" placeholder="50px">
           <label>@navbar-color</label>
@@ -672,8 +683,8 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <input type="text" placeholder="transparent">
         </div>
         <div class="col col-lg-6">
-          <h3>Inverted variation</h3>
-          <h4>The basics</h4>
+          <h3>Inverted navbar</h3>
+          <h4>Basics</h4>
           <label>@navbar-inverse-color</label>
           <input type="text" placeholder="@gray-light">
           <label>@navbar-inverse-bg</label>
@@ -702,28 +713,29 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <input type="text" placeholder="transparent">
         </div>
       </div>
-      <h2 id="customize-tables">Tables</h2>
+
+      <h2 id="variables-tables">Tables</h2>
       <div class="row">
-        <div class="col col-lg-4">
+        <div class="col col-lg-6">
           <label>@table-bg</label>
           <input type="text" placeholder="transparent">
           <p class="help-block">Default background color used for all tables.</p>
-        </div>
-        <div class="col col-lg-4">
+
           <label>@table-bg-accent</label>
           <input type="text" placeholder="#f9f9f9">
           <p class="help-block">Background color used for <code>.table-striped</code>.</p>
         </div>
-        <div class="col col-lg-4">
+        <div class="col col-lg-6">
           <label>@table-bg-hover</label>
           <input type="text" placeholder="#f5f5f5">
           <p class="help-block">Background color used for <code>.table-hover</code>.</p>
+          <label>@table-border-color</label>
+          <input type="text" placeholder="#ddd">
+          <p class="help-block">Border color for table and cell borders.</p>
         </div>
       </div>
-      <label>@table-border-color</label>
-      <input type="text" placeholder="#ddd">
-      <p class="help-block">Border color for table and cell borders.</p>
-      <h2 id="customize-forms">Forms</h2>
+
+      <h2 id="variables-forms">Forms</h2>
       <div class="row">
         <div class="col col-lg-6">
           <h3>Background</h3>
@@ -733,6 +745,11 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <label>@input-bg-disabled</label>
           <input type="text" placeholder="@gray-lighter">
           <p class="help-block"><code>&lt;input disabled&gt;</code>background color</p>
+
+          <h3>Placeholder</h3>
+          <label>@input-color-placeholder</label>
+          <input type="text" placeholder="@gray-light">
+          <p class="help-block">Placeholder text color</p>
         </div>
         <div class="col col-lg-6">
           <h3>Border</h3>
@@ -744,10 +761,8 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <p class="help-block"><code>&lt;input&gt;</code>border radius</p>
         </div>
       </div>
-      <label>@input-color-placeholder</label>
-      <input type="text" placeholder="@gray-light">
-      <p class="help-block">Placeholder text color</p>
-      <h2 id="customize-dropdowns">Dropdowns</h2>
+
+      <h2 id="variables-dropdowns">Dropdowns</h2>
       <div class="row">
         <div class="col col-lg-6">
           <h3>Background</h3>
@@ -780,40 +795,30 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <label>@dropdown-divider-top</label>
           <input type="text" placeholder="#e5e5e5">
           <p class="help-block">Dropdown divider top border color</p>
-        </div>
-        <div class="col col-lg-6">
           <label>@dropdown-divider-bottom</label>
           <input type="text" placeholder="#fff">
           <p class="help-block">Dropdown divider bottom border color</p>
         </div>
       </div>
-      <h2 id="customize-panels-wells">Panels and wells</h2>
-      <h3>Panel background</h3>
+
+      <h2 id="variables-panels-wells">Panels and wells</h2>
+      <h3>Default panel styles</h3>
       <div class="row">
-        <div class="col col-lg-4">
+        <div class="col col-lg-6">
           <label>@panel-bg</label>
           <input type="text" placeholder="#fff">
           <p class="help-block">Panel body background color</p>
-        </div>
-        <div class="col col-lg-4">
           <label>@panel-heading-bg</label>
           <input type="text" placeholder="#f5f5f5">
           <p class="help-block">Panel heading background color</p>
-        </div>
-        <div class="col col-lg-4">
           <label>@panel-footer-bg</label>
           <input type="text" placeholder="#f5f5f5">
           <p class="help-block">Panel footer background color</p>
         </div>
-      </div>
-      <h3>Panel border</h3>
-      <div class="row">
         <div class="col col-lg-6">
           <label>@panel-border</label>
           <input type="text" placeholder="#ddd">
           <p class="help-block">Panel border color</p>
-        </div>
-        <div class="col col-lg-6">
           <label>@panel-border-radius</label>
           <input type="text" placeholder="@border-radius-base">
           <p class="help-block">Panel border radius</p>
@@ -821,94 +826,67 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
       </div>
       <h3>Contextual panel colors</h3>
       <div class="row">
-        <div class="col col-lg-4">
+        <div class="col col-lg-6">
+          <h4>Primary</h4>
           <label>@panel-primary-text</label>
           <input type="text" placeholder="#fff">
           <p class="help-block">Primary text color</p>
-        </div>
-        <div class="col col-lg-4">
           <label>@panel-primary-border</label>
           <input type="text" placeholder="@brand-primary">
           <p class="help-block">Primary border color</p>
-        </div>
-        <div class="col col-lg-4">
           <label>@panel-primary-heading-bg</label>
           <input type="text" placeholder="@brand-primary">
           <p class="help-block">Primary heading background color</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col col-lg-4">
+          <h4>Success</h4>
           <label>@panel-success-text</label>
           <input type="text" placeholder="@state-success-text">
           <p class="help-block">Success text color</p>
-        </div>
-        <div class="col col-lg-4">
           <label>@panel-success-border</label>
           <input type="text" placeholder="@state-success-border">
           <p class="help-block">Success border color</p>
-        </div>
-        <div class="col col-lg-4">
           <label>@panel-success-heading-bg</label>
           <input type="text" placeholder="@state-success-bg">
           <p class="help-block">Success heading background color</p>
+          <h4>Info</h4>
+          <label>@panel-info-text</label>
+          <input type="text" placeholder="@state-info-text">
+          <p class="help-block">Info text color</p>
+          <label>@panel-info-border</label>
+          <input type="text" placeholder="@state-info-border">
+          <p class="help-block">Info border color</p>
+          <label>@panel-info-heading-bg</label>
+          <input type="text" placeholder="@state-info-bg">
+          <p class="help-block">Info heading background color</p>
         </div>
-      </div>
-      <div class="row">
-        <div class="col col-lg-4">
+        <div class="col col-lg-6">
+          <h4>Warning</h4>
           <label>@panel-warning-text</label>
           <input type="text" placeholder="@state-warning-text">
           <p class="help-block">Warning text color</p>
-        </div>
-        <div class="col col-lg-4">
           <label>@panel-warning-border</label>
           <input type="text" placeholder="@state-warning-border">
           <p class="help-block">Warning border color</p>
-        </div>
-        <div class="col col-lg-4">
           <label>@panel-warning-heading-bg</label>
           <input type="text" placeholder="@state-warning-bg">
           <p class="help-block">Warning heading background color</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col col-lg-4">
+          <h4>Danger</h4>
           <label>@panel-danger-text</label>
           <input type="text" placeholder="@state-danger-text">
           <p class="help-block">Danger text color</p>
-        </div>
-        <div class="col col-lg-4">
           <label>@panel-danger-border</label>
           <input type="text" placeholder="@state-danger-border">
           <p class="help-block">Danger border color</p>
-        </div>
-        <div class="col col-lg-4">
           <label>@panel-danger-heading-bg</label>
           <input type="text" placeholder="@state-danger-bg">
           <p class="help-block">Danger heading background color</p>
         </div>
       </div>
-      <div class="row">
-        <div class="col col-lg-4">
-          <label>@panel-info-text</label>
-          <input type="text" placeholder="@state-info-text">
-          <p class="help-block">Info text color</p>
-        </div>
-        <div class="col col-lg-4">
-          <label>@panel-info-border</label>
-          <input type="text" placeholder="@state-info-border">
-          <p class="help-block">Info border color</p>
-        </div>
-        <div class="col col-lg-4">
-          <label>@panel-info-heading-bg</label>
-          <input type="text" placeholder="@state-info-bg">
-          <p class="help-block">Info heading background color</p>
-        </div>
-      </div>
-      <h3>Well background</h3>
+
+      <h3>Wells</h3>
       <label>@well-bg</label>
       <input type="text" placeholder="#f5f5f5">
-      <h2 id="customize-jumbotron">Jumbotron</h2>
+
+      <h2 id="variables-jumbotron">Jumbotron</h2>
       <div class="row">
         <div class="col col-lg-4">
           <label>@jumbotron-bg</label>
@@ -926,7 +904,7 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <p class="help-block">Jumbotron lead paragraph color</p>
         </div>
       </div>
-      <h2 id="customize-modals">Modals</h2>
+      <h2 id="variables-modals">Modals</h2>
       <div class="row">
         <div class="col col-lg-4">
           <label>@modal-inner-padding</label>
@@ -944,7 +922,7 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <p class="help-block">Modal title line-height</p>
         </div>
       </div>
-      <h2 id="customize-list-group">List group</h2>
+      <h2 id="variables-list-group">List group</h2>
       <h3>Background</h3>
       <div class="row">
         <div class="col col-lg-4">
@@ -984,7 +962,7 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
       <label>@list-group-active-color</label>
       <input type="text" placeholder="#fff">
       <p class="help-block">Text color of active list elements</p>
-      <h2 id="customize-thumbnails">Thumbnails</h2>
+      <h2 id="variables-thumbnails">Thumbnails</h2>
       <div class="row">
         <div class="col col-lg-6">
           <label>@thumbnail-caption-color</label>
@@ -1003,7 +981,7 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <p class="help-block">Thumbnail border radius</p>
         </div>
       </div>
-      <h2 id="customize-progress">Progress bars</h2>
+      <h2 id="variables-progress">Progress bars</h2>
       <div class="row">
         <div class="col col-lg-4">
           <label>@progress-bg</label>
@@ -1038,7 +1016,7 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <p class="help-block">Info progress bar color</p>
         </div>
       </div>
-      <h2 id="customize-pagination">Pagination</h2>
+      <h2 id="variables-pagination">Pagination</h2>
       <div class="row">
         <div class="col col-lg-4">
           <label>@pagination-bg</label>
@@ -1056,7 +1034,8 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <p class="help-block">Active background color</p>
         </div>
       </div>
-      <h2 id="customize-labels">Labels</h2>
+
+      <h2 id="variables-labels">Labels</h2>
       <div class="row">
         <div class="col col-lg-6">
           <label>@label-success-bg</label>
@@ -1075,7 +1054,7 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <p class="help-block">Danger label background color</p>
         </div>
       </div>
-      <h2 id="customize-tooltips-popovers">Tooltips and popovers</h2>
+      <h2 id="variables-tooltips-popovers">Tooltips and popovers</h2>
       <h3>Tooltip styles</h3>
       <div class="row">
         <div class="col col-lg-6">
@@ -1126,7 +1105,7 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <p class="help-block">Popover outer arrow color</p>
         </div>
       </div>
-      <h2 id="customize-other">Other</h2>
+      <h2 id="variables-other">Other</h2>
       <div class="row">
       <div class="col col-lg-6">
           <label>@hr-border</label>

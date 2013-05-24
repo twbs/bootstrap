@@ -105,6 +105,14 @@ body {
 }
 .bs-customizer label {
   margin-top: 10px;
+  font-weight: 500;
+  color: #555;
+}
+.bs-customizer h4 {
+  margin-top: 15px;
+}
+.bs-customizer input[type="text"] {
+  background-color: #fafafa;
 }
 
 
