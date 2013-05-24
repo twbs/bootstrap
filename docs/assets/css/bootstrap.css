@@ -1579,7 +1579,7 @@ select:focus:invalid:focus {
 }
 
 .input-group-addon {
-  padding: 6px 8px;
+  padding: 8px 12px;
   font-size: 14px;
   font-weight: normal;
   line-height: 1.428571429;
