@@ -36,6 +36,7 @@
       backdrop: true
     , keyboard: true
     , show: true
+    , refresh: false
   }
 
   Modal.prototype.toggle = function () {
@@ -78,6 +79,25 @@
         that.$element.focus().trigger('shown.bs.modal')
 
     })
+  }
+
+  Modal.prototype.refresh = function () {
+    var that = this
+    var e    = $.Event('refresh.bs.modal')
+
+    this.$element.trigger(e)
+
+    if (e.isDefaultPrevented()) return
+
+    if (this.options.remote) {
+      this.$element.find('.modal-body').load(this.options.remote, function () {
+        that.$element.trigger('refreshed.bs.modal')
+        if (!that.isShown && that.options.show) that.show()
+      })
+    } else {
+      that.$element.trigger('refreshed.bs.modal')
+      if (!this.isShown && this.options.show) this.show()
+    }
   }
 
   Modal.prototype.hide = function (e) {
@@ -200,7 +220,15 @@
       var options = $.extend({}, Modal.DEFAULTS, $this.data(), typeof option == 'object' && option)
 
       if (!data) $this.data('bs.modal', (data = new Modal(this, options)))
+
+      if (options.refresh && data) {
+        data.options.remote = typeof options.remote == 'string' ? options.remote : false;
+        data.options.refresh = true;
+        $this.data('bs.modal', data);
+      }
+
       if (typeof option == 'string') data[option]()
+      else if (options.refresh) data.refresh()
       else if (options.show) data.show()
     })
   }
@@ -227,6 +255,13 @@
     var option  = $target.data('modal') ? 'toggle' : $.extend({ remote:!/#/.test(href) && href }, $target.data(), $this.data())
 
     e.preventDefault()
+
+    if ($this.data('refresh') && $target.data('bs.modal')) {
+      var data = $target.data('bs.modal');
+      data.options.remote = href;
+      data.options.refresh = true;
+      $target.data('bs.modal', data);
+    }
 
     $target
       .modal(option)

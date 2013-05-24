@@ -263,6 +263,17 @@ $('#myModal').on('show.bs.modal', function (e) {
 {% highlight html %}
 <a data-toggle="modal" href="remote.html" data-target="#modal">Click me</a>
 {% endhighlight %}
+         </td>
+       </tr>
+       <tr>
+         <td>refresh</td>
+         <td>boolean</td>
+         <td>false</td>
+         <td><p>Force the modal content to be refreshed. If a remote url is provided, jQuery's <code>load</code> method will be used to load the content again. If using the data api, you may force the content to be refreshed every time the modal is opened. An example of this is shown below:</p>
+{% highlight html %}
+<a data-toggle="modal" href="dynamic-remote.php" data-target="#modal" data-refresh="true">click me</a>
+{% endhighlight %}
+         </td>
        </tr>
       </tbody>
     </table>
@@ -289,6 +300,10 @@ $('#myModal').modal({
     <p>Manually hides a modal.</p>
     {% highlight js %}$('#myModal').modal('hide'){% endhighlight %}
 
+    <h4>.modal('refresh')</h4>
+    <p>Manually refreshes a modal.</p>
+    {% highlight js %}$('#myModal').modal('refresh'){% endhighlight %}
+
     <h3>Events</h3>
     <p>Bootstrap's modal class exposes a few events for hooking into modal functionality.</p>
     <table class="table table-bordered table-striped">
@@ -314,6 +329,14 @@ $('#myModal').modal({
        <tr>
          <td>hidden</td>
          <td>This event is fired when the modal has finished being hidden from the user (will wait for css transitions to complete).</td>
+       </tr>
+       <tr>
+         <td>refresh</td>
+         <td>This event fires immediately when the <code>refresh</code> instance method is called.</td>
+       </tr>
+       <tr>
+         <td>refreshed</td>
+         <td>This event is fired when the modal content has been refreshed.</td>
        </tr>
       </tbody>
     </table>
