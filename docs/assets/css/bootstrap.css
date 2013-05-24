@@ -1460,15 +1460,6 @@ input[type="button"].btn-block {
   .fade.in {
     opacity: 1; }
 
-/*.collapse {
-  position: relative;
-  height: 0;
-  overflow: hidden;
-  .transition(height .35s ease);
-  &.in {
-    height: auto;
-  }
-}*/
 .collapse {
   position: relative;
   height: 0;
@@ -1477,9 +1468,8 @@ input[type="button"].btn-block {
   -moz-transition: height 0.35s ease;
   -o-transition: height 0.35s ease;
   transition: height 0.35s ease; }
-
-.collapse.in {
-  height: auto; }
+  .collapse.in {
+    height: auto; }
 
 @font-face {
   font-family: 'Glyphicons Halflings';
