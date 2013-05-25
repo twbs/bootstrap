@@ -817,7 +817,7 @@
       var transition = $.support.transition && that.$element.hasClass('fade')
 
       if (!that.$element.parent().length) {
-        that.$element.appendTo(document.body) //don't move modals dom position
+        that.$element.appendTo(document.body) // don't move modals dom position
       }
 
       that.$element.show()
@@ -835,7 +835,6 @@
       transition ?
         that.$element.one($.support.transition.end, function () { that.$element.focus().trigger('shown.bs.modal') }) :
         that.$element.focus().trigger('shown.bs.modal')
-
     })
   }
 
@@ -864,7 +863,9 @@
   }
 
   Modal.prototype.enforceFocus = function () {
-    $(document).on('focusin.bs.modal', function (e) {
+    $(document)
+      .off('focusin.bs.modal') // guard against infinite focus loop
+      .on('focusin.bs.modal', function (e) {
       if (this.$element[0] !== e.target && !this.$element.has(e.target).length) {
         this.$element.focus()
       }
