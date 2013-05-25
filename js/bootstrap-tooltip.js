@@ -142,25 +142,83 @@
 
         pos = this.getPosition()
 
-        actualWidth = $tip[0].offsetWidth
-        actualHeight = $tip[0].offsetHeight
+  			actualWidth = $tip[0].offsetWidth
+				actualHeight = $tip[0].offsetHeight
+ 
+        var tpt = {top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2}
+        var tpb = {top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2}
+        var tpr = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width}
+        var tpl = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth}
 
-        switch (placement) {
-          case 'bottom':
-            tp = {top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2}
-            break
-          case 'top':
-            tp = {top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2}
-            break
-          case 'left':
-            tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth}
-            break
-          case 'right':
-            tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width}
-            break
-        }
-
-        this.applyPlacement(tp, placement)
+				switch (placement) {
+					case 'top':
+						if (tpt.top < $(window).scrollTop()) {
+							if ((tpb.top + actualHeight) < ($(window).scrollTop() + $(window).height())) {
+								placement = 'bottom'
+							} else if ((tpr.left + actualWidth) < ($(window).scrollLeft() + $(window).width())) {
+								placement = 'right'
+							} else if (tpl.left > $(window).scrollLeft()) {
+								placement = 'left'
+							} else {
+								placement = 'right'
+							}
+						}
+						break
+  				case 'bottom':
+						if ((tpb.top + actualHeight) > ($(window).scrollTop() + $(window).height())) {
+							if (tpt.top > $(window).scrollTop()) {
+								placement = 'top'
+							} else if ((tpr.left + actualWidth) < ($(window).scrollLeft() + $(window).width())) {
+								placement = 'right'
+							} else if (tpl.left > $(window).scrollLeft()) {
+								placement = 'left'
+							} else {
+								placement = 'right'
+							}
+						}
+						break
+					case 'right':
+						if ((tpr.left + actualWidth) > ($(window).scrollLeft() + $(window).width())) {
+							if (tpl.left > $(window).scrollLeft()) {
+								placement = 'left'
+							} else if (tpt.top > $(window).scrollTop()) {
+								placement = 'top'
+							} else if (tpt.top > $(window).scrollTop()) {
+								placement = 'bottom'
+							}
+						}
+						break
+  				case 'left':
+						if (tpl.left < $(window).scrollLeft()) {
+							if ((tpr.left + actualWidth) < ($(window).scrollLeft() + $(window).width())) {
+								placement = 'right'
+							} else if (tpt.top > $(window).scrollTop()) {
+								placement = 'top'
+							} else if (tpt.top > $(window).scrollTop()) {
+								placement = 'bottom'
+							} else {
+								placement = 'right'
+							}
+						}
+						break
+				}
+ 
+				switch (placement) {
+					case 'top':
+						tp = tpt;
+						break
+					case 'bottom':
+  					tp = tpb;
+						break
+  				case 'right':
+						tp = tpr;
+						break
+					case 'left':
+						tp = tpl;
+						break
+				}
+ 
+				this.applyPlacement(tp, placement)
         this.$element.trigger('shown')
       }
     }
