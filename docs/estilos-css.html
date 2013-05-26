@@ -1395,14 +1395,14 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
 &lt;/form&gt;
 </pre>
 
-          <h4>Search form</h4>
+          <h4>Formulario de búsqueda</h4>
           <form class="bs-docs-example form-search">
             <div class="input-append">
               <input type="text" class="span2 search-query">
-              <button type="submit" class="btn">Search</button>
+              <button type="submit" class="btn">Buscar</button>
             </div>
             <div class="input-prepend">
-              <button type="submit" class="btn">Search</button>
+              <button type="submit" class="btn">Buscar</button>
               <input type="text" class="span2 search-query">
             </div>
           </form>
@@ -1410,20 +1410,20 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
 &lt;form class="form-search"&gt;
   &lt;div class="input-append"&gt;
     &lt;input type="text" class="span2 search-query"&gt;
-    &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
+    &lt;button type="submit" class="btn"&gt;Buscar&lt;/button&gt;
   &lt;/div&gt;
   &lt;div class="input-prepend"&gt;
-    &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
+    &lt;button type="submit" class="btn"&gt;Buscar&lt;/button&gt;
     &lt;input type="text" class="span2 search-query"&gt;
   &lt;/div&gt;
 &lt;/form&gt;
 </pre>
 
-          <h3>Control sizing</h3>
-          <p>Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using <code>.span*</code> classes.</p>
+          <h3>Dar tamaños a los controles</h3>
+          <p>Usá clases de tamaños relativos como <code>.input-large</code> o adecuá tus inputs a los tamaños de la grilla usando clases <code>.span*</code>.</p>
 
-          <h4>Block level inputs</h4>
-          <p>Make any <code>&lt;input&gt;</code> or <code>&lt;textarea&gt;</code> element behave like a block level element.</p>
+          <h4>Inputs block level</h4>
+          <p>Hacé que cualquier <code>&lt;input&gt;</code> o <code>&lt;textarea&gt;</code> se comporte como un elemento de tipo bloque.</p>
           <form class="bs-docs-example" style="padding-bottom: 15px;">
             <div class="controls">
               <input class="input-block-level" type="text" placeholder=".input-block-level">
@@ -1433,7 +1433,7 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
 &lt;input class="input-block-level" type="text" placeholder=".input-block-level"&gt;
 </pre>
 
-          <h4>Relative sizing</h4>
+          <h4>Tamaños relativos</h4>
           <form class="bs-docs-example" style="padding-bottom: 15px;">
             <div class="controls docs-input-sizes">
               <input class="input-mini" type="text" placeholder=".input-mini">
@@ -1452,12 +1452,9 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
 &lt;input class="input-xlarge" type="text" placeholder=".input-xlarge"&gt;
 &lt;input class="input-xxlarge" type="text" placeholder=".input-xxlarge"&gt;
 </pre>
-          <p>
-            <span class="label label-info">Heads up!</span> In future versions, we'll be altering the use of these relative input classes to match our button sizes. For example, <code>.input-large</code> will increase the padding and font-size of an input.
-          </p>
 
-          <h4>Grid sizing</h4>
-          <p>Use <code>.span1</code> to <code>.span12</code> for inputs that match the same sizes of the grid columns.</p>
+          <h4>Tamaños de grilla</h4>
+          <p>Usá de <code>.span1</code> a <code>.span12</code> para tener inputs con los mismos tamaños que las columnas de la grilla.</p>
           <form class="bs-docs-example" style="padding-bottom: 15px;">
             <div class="controls docs-input-sizes">
               <input class="span1" type="text" placeholder=".span1">
@@ -1501,7 +1498,7 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
 &lt;/select&gt;
 </pre>
 
-          <p>For multiple grid inputs per line, <strong>use the <code>.controls-row</code> modifier class for proper spacing</strong>. It floats the inputs to collapse white-space, sets the proper margins, and clears the float.</p>
+          <p>Para usar varios inputs por línea, <strong>usá la clase modificadora <code>.controls-row</code> para que les de el espaciado correcto</strong>. Flota los inputs para sacar el white-space, coloca márgenes apropiados y hace un clear del float.</p>
           <form class="bs-docs-example" style="padding-bottom: 15px;">
             <div class="controls">
               <input class="span5" type="text" placeholder=".span5">
@@ -1534,68 +1531,68 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
 ...
 </pre>
 
-          <h3>Uneditable inputs</h3>
-          <p>Present data in a form that's not editable without using actual form markup.</p>
+          <h3>Inputs no editables</h3>
+          <p>Presentá información en un formulario de forma que no sea editable sin usar código de formularios.</p>
           <form class="bs-docs-example">
-            <span class="input-xlarge uneditable-input">Some value here</span>
+            <span class="input-xlarge uneditable-input">Un valor acá</span>
           </form>
 <pre class="prettyprint linenums">
-&lt;span class="input-xlarge uneditable-input"&gt;Some value here&lt;/span&gt;
+&lt;span class="input-xlarge uneditable-input"&gt;Un valor acá&lt;/span&gt;
 </pre>
 
-          <h3>Form actions</h3>
-          <p>End a form with a group of actions (buttons). When placed within a <code>.form-actions</code>, the buttons will automatically indent to line up with the form controls.</p>
+          <h3>Acciones de formularios</h3>
+          <p>Terminá un formulario con un grupo de acciones (botones). Si se colocan dentro de un <code>.form-actions</code>, los botones automáticamente se alinearán con los controles del formulario.</p>
           <form class="bs-docs-example">
             <div class="form-actions">
-              <button type="submit" class="btn btn-primary">Save changes</button>
-              <button type="button" class="btn">Cancel</button>
+              <button type="submit" class="btn btn-primary">Guardar cambios</button>
+              <button type="button" class="btn">Cancelar</button>
             </div>
           </form>
 <pre class="prettyprint linenums">
 &lt;div class="form-actions"&gt;
-  &lt;button type="submit" class="btn btn-primary"&gt;Save changes&lt;/button&gt;
-  &lt;button type="button" class="btn"&gt;Cancel&lt;/button&gt;
+  &lt;button type="submit" class="btn btn-primary"&gt;Guardar cambios&lt;/button&gt;
+  &lt;button type="button" class="btn"&gt;Cancelar&lt;/button&gt;
 &lt;/div&gt;
 </pre>
 
-          <h3>Help text</h3>
-          <p>Inline and block level support for help text that appears around form controls.</p>
-          <h4>Inline help</h4>
+          <h3>Texto de ayuda</h3>
+          <p>Apoyo para texto de ayuda inline y block, que aparece al lado de los controles.</p>
+          <h4>Ayuda inline</h4>
           <form class="bs-docs-example form-inline">
-            <input type="text"> <span class="help-inline">Inline help text</span>
+            <input type="text"> <span class="help-inline">Texto de ayuda inline</span>
           </form>
 <pre class="prettyprint linenums">
-&lt;input type="text"&gt;&lt;span class="help-inline"&gt;Inline help text&lt;/span&gt;
+&lt;input type="text"&gt;&lt;span class="help-inline"&gt;Texto de ayuda inline&lt;/span&gt;
 </pre>
 
-          <h4>Block help</h4>
+          <h4>Ayuda block</h4>
           <form class="bs-docs-example form-inline">
             <input type="text">
-            <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+            <span class="help-block">Un bloque más largo de texto de ayuda que baja a otra línea en el caso de no entrar en una sola línea.</span>
           </form>
 <pre class="prettyprint linenums">
-&lt;input type="text"&gt;&lt;span class="help-block"&gt;A longer block of help text that breaks onto a new line and may extend beyond one line.&lt;/span&gt;
+&lt;input type="text"&gt;&lt;span class="help-block"&gt;Un bloque más largo de texto de ayuda que baja a otra línea en el caso de no entrar en una sola línea.&lt;/span&gt;
 </pre>
 
 
           <hr class="bs-docs-separator">
 
 
-          <h2>Form control states</h2>
-          <p>Provide feedback to users or visitors with basic feedback states on form controls and labels.</p>
+          <h2>Estados para los controles de los formularios</h2>
+          <p>Proveé feedback a los usuarios o visitantes con estados de feedback básicos en los controles y labels.</p>
 
-          <h3>Input focus</h3>
-          <p>We remove the default <code>outline</code> styles on some form controls and apply a <code>box-shadow</code> in its place for <code>:focus</code>.</p>
+          <h3>Foco del input</h3>
+          <p>Eliminamos los estilos predeterminados de <code>outline</code> en algunos controles y aplicamos un <code>box-shadow</code> en su lugar para <code>:focus</code>.</p>
           <form class="bs-docs-example form-inline">
-            <input class="input-xlarge focused" id="focusedInput" type="text" value="This is focused...">
+            <input class="input-xlarge focused" id="focusedInput" type="text" value="Esto está en foco...">
           </form>
 <pre class="prettyprint linenums">
-&lt;input class="input-xlarge" id="focusedInput" type="text" value="This is focused..."&gt;
+&lt;input class="input-xlarge" id="focusedInput" type="text" value="Esto está en foco..."&gt;
 </pre>
 
-          <h3>Invalid inputs</h3>
-          <p>Style inputs via default browser functionality with <code>:invalid</code>. Specify a <code>type</code>, add the <code>required</code> attribute if the field is not optional, and (if applicable) specify a <code>pattern</code>.</p>
-          <p>This is not available in versions of Internet Explorer 7-9 due to lack of support for CSS pseudo selectors.</p>
+          <h3>Inputs inválidos</h3>
+          <p>Da estilos a través de la funcionalidad predeterminada del navegador usando <code>:invalid</code>. Especificá un <code>type</code>, y agregá el atributo <code>required</code> si el campo no es opcional, y (si se aplica) especificá un <code>pattern</code>.</p>
+          <p>Esto no está disponible en Internet Explorer 7-9 por la falta de implementación de pseudo selectores de CSS.</p>
           <form class="bs-docs-example form-inline">
             <input class="span3" type="email" placeholder="test@example.com" required>
           </form>
@@ -1603,78 +1600,78 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
 &lt;input class="span3" type="email" required&gt;
 </pre>
 
-          <h3>Disabled inputs</h3>
-          <p>Add the <code>disabled</code> attribute on an input to prevent user input and trigger a slightly different look.</p>
+          <h3>Inputs desactivadas</h3>
+          <p>Agregá el atributo <code>disabled</code> en un input para evitar la carga de datos y mostrar un estilo diferente.</p>
           <form class="bs-docs-example form-inline">
-            <input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here…" disabled>
+            <input class="input-xlarge" id="disabledInput" type="text" placeholder="Input desactivado acá..." disabled>
           </form>
 <pre class="prettyprint linenums">
-&lt;input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here..." disabled&gt;
+&lt;input class="input-xlarge" id="disabledInput" type="text" placeholder="Input desactivado acá..." disabled&gt;
 </pre>
 
-          <h3>Validation states</h3>
-          <p>Bootstrap includes validation styles for error, warning, info, and success messages. To use, add the appropriate class to the surrounding <code>.control-group</code>.</p>
+          <h3>Estados de validación</h3>
+          <p>Se incluyen estilos para mensajes de error, alerta, información y resultado satisfactorio. Para usarlos, agregá la clase apropiada al <code>.control-group</code>.</p>
 
           <form class="bs-docs-example form-horizontal">
             <div class="control-group warning">
-              <label class="control-label" for="inputWarning">Input with warning</label>
+              <label class="control-label" for="inputWarning">Input con alerta (warning)</label>
               <div class="controls">
                 <input type="text" id="inputWarning">
-                <span class="help-inline">Something may have gone wrong</span>
+                <span class="help-inline">Algo puede haber fallado</span>
               </div>
             </div>
             <div class="control-group error">
-              <label class="control-label" for="inputError">Input with error</label>
+              <label class="control-label" for="inputError">Input con error</label>
               <div class="controls">
                 <input type="text" id="inputError">
-                <span class="help-inline">Please correct the error</span>
+                <span class="help-inline">Por favor corrija el error</span>
               </div>
             </div>
             <div class="control-group info">
-              <label class="control-label" for="inputInfo">Input with info</label>
+              <label class="control-label" for="inputInfo">Input con información (info)</label>
               <div class="controls">
                 <input type="text" id="inputInfo">
-                <span class="help-inline">Username is taken</span>
+                <span class="help-inline">El nombre de usuario ya está tomado</span>
               </div>
             </div>
             <div class="control-group success">
-              <label class="control-label" for="inputSuccess">Input with success</label>
+              <label class="control-label" for="inputSuccess">Input satisfactorio (success)</label>
               <div class="controls">
                 <input type="text" id="inputSuccess">
-                <span class="help-inline">Woohoo!</span>
+                <span class="help-inline">Bien!</span>
               </div>
             </div>
           </form>
 <pre class="prettyprint linenums">
 &lt;div class="control-group warning"&gt;
-  &lt;label class="control-label" for="inputWarning"&gt;Input with warning&lt;/label&gt;
+  &lt;label class="control-label" for="inputWarning"&gt;Input con alerta (warning)&lt;/label&gt;
   &lt;div class="controls"&gt;
     &lt;input type="text" id="inputWarning"&gt;
-    &lt;span class="help-inline"&gt;Something may have gone wrong&lt;/span&gt;
+    &lt;span class="help-inline"&gt;Algo puede haber fallado&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;div class="control-group error"&gt;
-  &lt;label class="control-label" for="inputError"&gt;Input with error&lt;/label&gt;
+  &lt;label class="control-label" for="inputError"&gt;Input con error&lt;/label&gt;
   &lt;div class="controls"&gt;
     &lt;input type="text" id="inputError"&gt;
-    &lt;span class="help-inline"&gt;Please correct the error&lt;/span&gt;
+    &lt;span class="help-inline"&gt;Por favor corrija el error&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;div class="control-group info"&gt;
-  &lt;label class="control-label" for="inputInfo"&gt;Input with info&lt;/label&gt;
+  &lt;label class="control-label" for="inputInfo"&gt;Input con información (info)&lt;/label&gt;
   &lt;div class="controls"&gt;
     &lt;input type="text" id="inputInfo"&gt;
-    &lt;span class="help-inline"&gt;Username is already taken&lt;/span&gt;
+    &lt;span class="help-inline"&gt;El nombre de usuario ya está tomado&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;div class="control-group success"&gt;
-  &lt;label class="control-label" for="inputSuccess"&gt;Input with success&lt;/label&gt;
+  &lt;label class="control-label" for="inputSuccess"&gt;Input satisfactorio (success)&lt;/label&gt;
   &lt;div class="controls"&gt;
     &lt;input type="text" id="inputSuccess"&gt;
-    &lt;span class="help-inline"&gt;Woohoo!&lt;/span&gt;
+    &lt;span class="help-inline"&gt;Bien!&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
@@ -1687,163 +1684,163 @@ Por ejemplo, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; debería estar inl
         ================================================== -->
         <section id="buttons">
           <div class="page-header">
-            <h1>Buttons</h1>
+            <h1>Botones</h1>
           </div>
 
-          <h2>Default buttons</h2>
-          <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements for the best rendering.</p>
+          <h2>Botones predeterminados</h2>
+          <p>Los estilos de los botones se pueden aplicar a cualquier cosa que tenga la clase <code>.btn</code>. Sin embargo, usualmente vas a querer aplicarlo a elementos <code>&lt;a&gt;</code> y <code>&lt;button&gt;</code> para su mejor uso.</p>
           <table class="table table-bordered table-striped">
             <thead>
               <tr>
-                <th>Button</th>
+                <th>Botón</th>
                 <th>class=""</th>
-                <th>Description</th>
+                <th>Descripción</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><button type="button" class="btn">Default</button></td>
                 <td><code>btn</code></td>
-                <td>Standard gray button with gradient</td>
+                <td>Botón gris predeterminado con gradiente</td>
               </tr>
               <tr>
                 <td><button type="button" class="btn btn-primary">Primary</button></td>
                 <td><code>btn btn-primary</code></td>
-                <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
+                <td>Provee mayor peso visual e identifica la acción primaria en un conjunto de botones</td>
               </tr>
               <tr>
                 <td><button type="button" class="btn btn-info">Info</button></td>
                 <td><code>btn btn-info</code></td>
-                <td>Used as an alternative to the default styles</td>
+                <td>Usado como alternativa del predeterminado</td>
               </tr>
               <tr>
                 <td><button type="button" class="btn btn-success">Success</button></td>
                 <td><code>btn btn-success</code></td>
-                <td>Indicates a successful or positive action</td>
+                <td>Indica una acción satisfactoria o positiva</td>
               </tr>
               <tr>
                 <td><button type="button" class="btn btn-warning">Warning</button></td>
                 <td><code>btn btn-warning</code></td>
-                <td>Indicates caution should be taken with this action</td>
+                <td>Indica que la acción se debe tomar con precaución</td>
               </tr>
               <tr>
                 <td><button type="button" class="btn btn-danger">Danger</button></td>
                 <td><code>btn btn-danger</code></td>
-                <td>Indicates a dangerous or potentially negative action</td>
+                <td>Indica una acción peligrosa o potencialmente negativa</td>
               </tr>
               <tr>
                 <td><button type="button" class="btn btn-inverse">Inverse</button></td>
                 <td><code>btn btn-inverse</code></td>
-                <td>Alternate dark gray button, not tied to a semantic action or use</td>
+                <td>Botón gris oscuro alternativo, no atado a una acción específica</td>
               </tr>
               <tr>
                 <td><button type="button" class="btn btn-link">Link</button></td>
                 <td><code>btn btn-link</code></td>
-                <td>Deemphasize a button by making it look like a link while maintaining button behavior</td>
+                <td>Bajale el énfasis a un botón haciéndolo parecer un enlace tradicional, mientras se mantiene el comportamiento de botón</td>
               </tr>
             </tbody>
           </table>
 
-          <h4>Cross browser compatibility</h4>
-          <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot fix.</p>
+          <h4>Compatibilidad a través de navegadores</h4>
+          <p>IE9 no recorta los gradientes de fondo en los bordes redondeados, así que se los sacamos. Además, IE9 arruina los elementos <code>button</code> en estado 'disabled', mostrando el texto gris con una sombra horrible que no podemos arreglar.</p>
 
 
-          <h2>Button sizes</h2>
-          <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code> for additional sizes.</p>
+          <h2>Tamaños de botones</h2>
+          <p>¿Te interesa tener botones más grandes o más chicos? Agregá <code>.btn-large</code>, <code>.btn-small</code>, o <code>.btn-mini</code> para más tamaños.</p>
           <div class="bs-docs-example">
             <p>
-              <button type="button" class="btn btn-large btn-primary">Large button</button>
-              <button type="button" class="btn btn-large">Large button</button>
+              <button type="button" class="btn btn-large btn-primary">Botón grande</button>
+              <button type="button" class="btn btn-large">Botón grande</button>
             </p>
             <p>
-              <button type="button" class="btn btn-primary">Default button</button>
-              <button type="button" class="btn">Default button</button>
+              <button type="button" class="btn btn-primary">Botón predeterminado</button>
+              <button type="button" class="btn">Botón predeterminado</button>
             </p>
             <p>
-              <button type="button" class="btn btn-small btn-primary">Small button</button>
-              <button type="button" class="btn btn-small">Small button</button>
+              <button type="button" class="btn btn-small btn-primary">Botón pequeño</button>
+              <button type="button" class="btn btn-small">Botón pequeño</button>
             </p>
             <p>
-              <button type="button" class="btn btn-mini btn-primary">Mini button</button>
-              <button type="button" class="btn btn-mini">Mini button</button>
+              <button type="button" class="btn btn-mini btn-primary">Botón mini</button>
+              <button type="button" class="btn btn-mini">Botón mini</button>
             </p>
           </div>
 <pre class="prettyprint linenums">
 &lt;p&gt;
-  &lt;button class="btn btn-large btn-primary" type="button"&gt;Large button&lt;/button&gt;
-  &lt;button class="btn btn-large" type="button"&gt;Large button&lt;/button&gt;
+  &lt;button class="btn btn-large btn-primary" type="button"&gt;Botón grande&lt;/button&gt;
+  &lt;button class="btn btn-large" type="button"&gt;Botón grande&lt;/button&gt;
 &lt;/p&gt;
 &lt;p&gt;
-  &lt;button class="btn btn-primary" type="button"&gt;Default button&lt;/button&gt;
-  &lt;button class="btn" type="button"&gt;Default button&lt;/button&gt;
+  &lt;button class="btn btn-primary" type="button"&gt;Botón predeterminado&lt;/button&gt;
+  &lt;button class="btn" type="button"&gt;Botón predeterminado&lt;/button&gt;
 &lt;/p&gt;
 &lt;p&gt;
-  &lt;button class="btn btn-small btn-primary" type="button"&gt;Small button&lt;/button&gt;
-  &lt;button class="btn btn-small" type="button"&gt;Small button&lt;/button&gt;
+  &lt;button class="btn btn-small btn-primary" type="button"&gt;Botón pequeño&lt;/button&gt;
+  &lt;button class="btn btn-small" type="button"&gt;Botón pequeño&lt;/button&gt;
 &lt;/p&gt;
 &lt;p&gt;
-  &lt;button class="btn btn-mini btn-primary" type="button"&gt;Mini button&lt;/button&gt;
-  &lt;button class="btn btn-mini" type="button"&gt;Mini button&lt;/button&gt;
+  &lt;button class="btn btn-mini btn-primary" type="button"&gt;Botón mini&lt;/button&gt;
+  &lt;button class="btn btn-mini" type="button"&gt;Botón mini&lt;/button&gt;
 &lt;/p&gt;
 </pre>
-          <p>Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding <code>.btn-block</code>.</p>
+          <p>Creá botones como bloques&mdash;agarran todo el ancho del elemento que los contiene&mdash; agregando <code>.btn-block</code>.</p>
           <div class="bs-docs-example">
             <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
-              <button type="button" class="btn btn-large btn-block btn-primary">Block level button</button>
-              <button type="button" class="btn btn-large btn-block">Block level button</button>
+              <button type="button" class="btn btn-large btn-block btn-primary">Botón block level</button>
+              <button type="button" class="btn btn-large btn-block">Botón block level</button>
             </div>
           </div>
 <pre class="prettyprint linenums">
-&lt;button class="btn btn-large btn-block btn-primary" type="button"&gt;Block level button&lt;/button&gt;
-&lt;button class="btn btn-large btn-block" type="button"&gt;Block level button&lt;/button&gt;
+&lt;button class="btn btn-large btn-block btn-primary" type="button"&gt;Botón block level&lt;/button&gt;
+&lt;button class="btn btn-large btn-block" type="button"&gt;Botón block level&lt;/button&gt;
 </pre>
 
 
-          <h2>Disabled state</h2>
-          <p>Make buttons look unclickable by fading them back 50%.</p>
+          <h2>Estado desactivado</h2>
+          <p>Hacé que los botones se vean desactivados transparentándolos un 50%.</p>
 
-          <h3>Anchor element</h3>
-          <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
+          <h3>Elemento ancla (anchor)</h3>
+          <p>Agregá la clase <code>.disabled</code> a los botones <code>&lt;a&gt;</code>.</p>
           <p class="bs-docs-example">
-            <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
-            <a href="#" class="btn btn-large disabled">Link</a>
+            <a href="#" class="btn btn-large btn-primary disabled">Enlace primario</a>
+            <a href="#" class="btn btn-large disabled">Enlace</a>
           </p>
 <pre class="prettyprint linenums">
-&lt;a href="#" class="btn btn-large btn-primary disabled"&gt;Primary link&lt;/a&gt;
-&lt;a href="#" class="btn btn-large disabled"&gt;Link&lt;/a&gt;
+&lt;a href="#" class="btn btn-large btn-primary disabled"&gt;Enlace primario&lt;/a&gt;
+&lt;a href="#" class="btn btn-large disabled"&gt;Enlace&lt;/a&gt;
 </pre>
           <p>
-            <span class="label label-info">Heads up!</span>
-            We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required. Also, this class is only for aesthetic; you must use custom JavaScript to disable links here.
+            <span class="label label-info">¡Atención!</span>
+            Acá estamos usando <code>.disabled</code> como una clase utilitaria, similar a la clase <code>.active</code>, así que no requiere prefijos. Además esta clase es solamente estética; vas a tener que usar JavaScript para realmente desactivar los links acá.
           </p>
 
-          <h3>Button element</h3>
-          <p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
+          <h3>Elemento button</h3>
+          <p>Agregá el atributo <code>disabled</code> a los botones <code>&lt;button&gt;</code>.</p>
           <p class="bs-docs-example">
-            <button type="button" class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
-            <button type="button" class="btn btn-large" disabled>Button</button>
+            <button type="button" class="btn btn-large btn-primary disabled" disabled="disabled">Botón primario</button>
+            <button type="button" class="btn btn-large" disabled>Botón</button>
           </p>
 <pre class="prettyprint linenums">
-&lt;button type="button" class="btn btn-large btn-primary disabled" disabled="disabled"&gt;Primary button&lt;/button&gt;
-&lt;button type="button" class="btn btn-large" disabled&gt;Button&lt;/button&gt;
+&lt;button type="button" class="btn btn-large btn-primary disabled" disabled="disabled"&gt;Botón primario&lt;/button&gt;
+&lt;button type="button" class="btn btn-large" disabled&gt;Botón&lt;/button&gt;
 </pre>
 
 
-          <h2>One class, multiple tags</h2>
-          <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
+          <h2>Una clase, múltiples tags</h2>
+          <p>Usá la clase <code>.btn</code> en elementos <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, o <code>&lt;input&gt;</code>.</p>
           <form class="bs-docs-example">
-            <a class="btn" href="">Link</a>
-            <button class="btn" type="submit">Button</button>
+            <a class="btn" href="">Enlace</a>
+            <button class="btn" type="submit">Botón</button>
             <input class="btn" type="button" value="Input">
-            <input class="btn" type="submit" value="Submit">
+            <input class="btn" type="submit" value="Enviar">
           </form>
 <pre class="prettyprint linenums">
-&lt;a class="btn" href=""&gt;Link&lt;/a&gt;
-&lt;button class="btn" type="submit"&gt;Button&lt;/button&gt;
+&lt;a class="btn" href=""&gt;Enlace&lt;/a&gt;
+&lt;button class="btn" type="submit"&gt;Botón&lt;/button&gt;
 &lt;input class="btn" type="button" value="Input"&gt;
-&lt;input class="btn" type="submit" value="Submit"&gt;
+&lt;input class="btn" type="submit" value="Enviar"&gt;
 </pre>
-          <p>As a best practice, try to match the element for your context to ensure matching cross-browser rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for your button.</p>
+          <p>Como mejor práctica, tratá de usar el elemento que corresponda de acuerdo al contexto para asegurar un mejor funcionamiento en los navegadores. Si tenés un <code>input</code>, usá un <code>&lt;input type="submit"&gt;</code> para tu botón.</p>
 
         </section>
 
