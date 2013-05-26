@@ -3,7 +3,12 @@
 // --------------------------------------------------
 
 
-// Quick floats
+// Floats
+// -------------------------
+
+.clearfix {
+  @include clearfix();
+}
 .pull-right {
   float: right;
 }
@@ -11,35 +16,27 @@
   float: left;
 }
 
+
 // Toggling content
+// -------------------------
+
 .hide {
-  display: none;
+  display: none !important;
 }
 .show {
-  display: block;
+  display: block !important;
 }
-
-// Visibility
 .invisible {
   visibility: hidden;
 }
-
-// For Affix plugin
-.affix {
-  position: fixed;
-}
-
-// Clearing floats
-.clearfix {
-  @include clearfix();
-}
-
-// Accessible yet invisible text
-.hide-text {
+.text-hide {
   @include hide-text();
 }
 
-// Uses box-sizing mixin, so must be defined here
-.input-block-level {
-  @include input-block-level();
+
+// For Affix plugin
+// -------------------------
+
+.affix {
+  position: fixed;
 }
