@@ -152,60 +152,37 @@
       var actualWidth  = $tip[0].offsetWidth
       var actualHeight = $tip[0].offsetHeight
 
+      // Get positions
       var tpt = {top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2}
       var tpb = {top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2}
       var tpr = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width}
       var tpl = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth}
+      
+      // Get position room
+      var hast = (tpt.top > $(window).scrollTop())
+      var hasb = ((tpb.top + actualHeight) < ($(window).scrollTop() + $(window).height()))
+      var hasr = ((tpr.left + actualWidth) < ($(window).scrollLeft() + $(window).width()))
+      var hasl = (tpl.left > $(window).scrollLeft())
 
       switch (placement) {
         case 'top':
-          if (tpt.top < $(window).scrollTop()) {
-            if ((tpb.top + actualHeight) < ($(window).scrollTop() + $(window).height())) {
-              placement = 'bottom'
-            } else if ((tpr.left + actualWidth) < ($(window).scrollLeft() + $(window).width())) {
-              placement = 'right'
-            } else if (tpl.left > $(window).scrollLeft()) {
-              placement = 'left'
-            } else {
-              placement = 'right'
-            }
+          if (!hast) {
+            placement = hasb ? 'bottom' : (hasr ? 'right' : (hasl ? 'left' : 'right'))
           }
           break
         case 'bottom':
-          if ((tpb.top + actualHeight) > ($(window).scrollTop() + $(window).height())) {
-            if (tpt.top > $(window).scrollTop()) {
-              placement = 'top'
-            } else if ((tpr.left + actualWidth) < ($(window).scrollLeft() + $(window).width())) {
-              placement = 'right'
-            } else if (tpl.left > $(window).scrollLeft()) {
-              placement = 'left'
-            } else {
-              placement = 'right'
-            }
+          if (!hasb) {
+            placement = hast ? 'top' : (hasr ? 'right' : (hasl ? 'left' : 'right'))
           }
           break
         case 'right':
-          if ((tpr.left + actualWidth) > ($(window).scrollLeft() + $(window).width())) {
-            if (tpl.left > $(window).scrollLeft()) {
-              placement = 'left'
-            } else if (tpt.top > $(window).scrollTop()) {
-              placement = 'top'
-            } else if (tpt.top > $(window).scrollTop()) {
-              placement = 'bottom'
-            }
+          if (!hasr) {
+            placement = hasl ? 'left' : (hast ? 'top' : (hasb ? 'bottom' : 'right'))
           }
           break
         case 'left':
-          if (tpl.left < $(window).scrollLeft()) {
-            if ((tpr.left + actualWidth) < ($(window).scrollLeft() + $(window).width())) {
-              placement = 'right'
-            } else if (tpt.top > $(window).scrollTop()) {
-              placement = 'top'
-            } else if (tpt.top > $(window).scrollTop()) {
-              placement = 'bottom'
-            } else {
-              placement = 'right'
-            }
+          if (!hasl) {
+            placement = hasr ? 'right' : (hast ? 'top' : (hasb ? 'bottom' : 'right'))
           }
           break
       }
