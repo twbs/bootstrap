@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    {% include header.html %}
+    <!-- Place anything custom after this. -->
+  </head>
+  <body data-spy="scroll" data-target=".bs-sidebar">
+
+    <!-- Docs master nav -->
+    {% include nav-main.html %}
+
+    <!-- Docs page layout -->
+    <div class="bs-header">
+      <div class="container">
+        <h1>{{ page.title }}</h1>
+        <p>{{ page.lead }}</p>
+      </div>
+    </div>
+
+    <div class="container bs-docs-container">
+      <div class="row">
+        <div class="col col-lg-3">
+          <div class="bs-sidebar">
+            <ul class="nav bs-sidenav">
+              {% if page.slug == "getting-started" %}
+                 {% include nav-getting-started.html %}
+              {% elsif page.slug == "css" %}
+                 {% include nav-css.html %}
+              {% elsif page.slug == "components" %}
+                 {% include nav-components.html %}
+              {% elsif page.slug == "js" %}
+                 {% include nav-javascript.html %}
+              {% elsif page.slug == "customize" %}
+                 {% include nav-customize.html %}
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+        <div class="col col-lg-9">
+          {{ content }}
+        </div>
+      </div>
+
+      <!-- Quick back to top -->
+      <a href="#" class="bs-top">
+        Back to top
+      </a>
+
+    </div>
+
+    <!-- Main docs footer (social buttons, copyright, etc). -->
+    {% include colophon.html %}
+
+    <!-- JS and analytics only. -->
+    {% include footer.html %}
+
+  </body>
+</html>
