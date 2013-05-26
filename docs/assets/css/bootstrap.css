@@ -2001,8 +2001,10 @@ input[type="button"].btn-block {
 
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('../fonts/glyphiconshalflings-regular.eot');
-  src: url('../fonts/glyphiconshalflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphiconshalflings-regular.woff') format('woff'), url('../fonts/glyphiconshalflings-regular.ttf') format('truetype'), url('../fonts/glyphiconshalflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/glyphiconshalflings-regular.eot?2990');
+  src: url('../fonts/glyphiconshalflings-regular.eot?8538#iefix') format('embedded-opentype'), url('../fonts/glyphiconshalflings-regular.svg?5493#glyphiconshalflings-regular') format('svg'), url('../fonts/glyphiconshalflings-regular.woff?3727') format('woff'), url('../fonts/glyphiconshalflings-regular.ttf?1302') format('truetype');
 }
 
 .glyphicon:before {
