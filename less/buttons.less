@@ -135,8 +135,6 @@ input[type="button"] {
 .btn-danger.active,
 .btn-success.active,
 .btn-info.active,
-.btn-navbar.active,
-.btn-navbar-selected.active,
 .btn-inverse.active {
   color: rgba(255,255,255,.75);
 }
@@ -166,52 +164,6 @@ input[type="button"] {
 .btn-inverse {
   .buttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight);
 }
-
-.btn-navbar {
-background: url("../images/l10n/nav-normal.png") repeat-x scroll 0 0 transparent;    
-    color: #fff;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-weight: bold; 
-    line-height:25px;  
-    text-shadow: -1px -1px #777777, 1px 1px #666666;
-    background-color: #8d8d8d;
-    padding: 4px 0px;
-  &:hover,
-  &:focus {
-    color: #fff;
-    background: url("../images/l10n/nav-selected.png") repeat-x scroll 0 0 transparent;
-    text-shadow: -1px -1px #777777, 1px 1px #666666;
-    background-color: #8d8d8d;    
-    background-position: 0 0px;
-  }
-  &.active,
-  &:active {
-    color: #fff;
-    background: url("../images/l10n/nav-normal.png") repeat-x scroll 0 0 transparent;
-    text-shadow: -1px -1px #777777, 1px 1px #666666;
-    background-color: #8d8d8d;
-  }
-}
-.btn-navbar-selected {
-    color: #fff;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-weight: bold; 
-    line-height:25px;  
-    text-shadow: -1px -1px #777777, 1px 1px #666666;
-    background: url("../images/l10n/nav-selected.png") repeat-x scroll 0 0 transparent;
-    background-color: #8d8d8d;
-    padding: 4px 0px;
-  &:hover,
-  &:focus,
-  &.active,
-  &:active {
-    color: #fff;
-    background: url("../images/l10n/nav-selected.png") repeat-x scroll 0 0 transparent;
-    text-shadow: -1px -1px #777777, 1px 1px #666666;
-    background-color: #8d8d8d;;
-  }
-}
-
 
 // Cross-browser Jank
 // --------------------------------------------------
