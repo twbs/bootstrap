@@ -86,8 +86,8 @@
 ================================================== -->
 <header class="jumbotron subhead" id="overview">
   <div class="container">
-    <h1>Components</h1>
-    <p class="lead">Dozens of reusable components built to provide navigation, alerts, popovers, and more.</p>
+    <h1>Componentes</h1>
+    <p class="lead">Docenas de componentes reusables construidos para proveer navegación, alertas, popovers y más.</p>
   </div>
 </header>
 
@@ -100,19 +100,19 @@
       <div class="span3 bs-docs-sidebar">
         <ul class="nav nav-list bs-docs-sidenav">
           <li><a href="#dropdowns"><i class="icon-chevron-right"></i> Dropdowns</a></li>
-          <li><a href="#buttonGroups"><i class="icon-chevron-right"></i> Button groups</a></li>
-          <li><a href="#buttonDropdowns"><i class="icon-chevron-right"></i> Button dropdowns</a></li>
-          <li><a href="#navs"><i class="icon-chevron-right"></i> Navs</a></li>
-          <li><a href="#navbar"><i class="icon-chevron-right"></i> Navbar</a></li>
+          <li><a href="#buttonGroups"><i class="icon-chevron-right"></i> Grupos de botones</a></li>
+          <li><a href="#buttonDropdowns"><i class="icon-chevron-right"></i> Dropdowns de botones</a></li>
+          <li><a href="#navs"><i class="icon-chevron-right"></i> Navegación</a></li>
+          <li><a href="#navbar"><i class="icon-chevron-right"></i> Barra de navegación</a></li>
           <li><a href="#breadcrumbs"><i class="icon-chevron-right"></i> Breadcrumbs</a></li>
-          <li><a href="#pagination"><i class="icon-chevron-right"></i> Pagination</a></li>
-          <li><a href="#labels-badges"><i class="icon-chevron-right"></i> Labels and badges</a></li>
-          <li><a href="#typography"><i class="icon-chevron-right"></i> Typography</a></li>
-          <li><a href="#thumbnails"><i class="icon-chevron-right"></i> Thumbnails</a></li>
-          <li><a href="#alerts"><i class="icon-chevron-right"></i> Alerts</a></li>
-          <li><a href="#progress"><i class="icon-chevron-right"></i> Progress bars</a></li>
-          <li><a href="#media"><i class="icon-chevron-right"></i> Media object</a></li>
-          <li><a href="#misc"><i class="icon-chevron-right"></i> Misc</a></li>
+          <li><a href="#pagination"><i class="icon-chevron-right"></i> Paginación</a></li>
+          <li><a href="#labels-badges"><i class="icon-chevron-right"></i> Etiquetas y badges</a></li>
+          <li><a href="#typography"><i class="icon-chevron-right"></i> Tipográficos</a></li>
+          <li><a href="#thumbnails"><i class="icon-chevron-right"></i> Miniaturas</a></li>
+          <li><a href="#alerts"><i class="icon-chevron-right"></i> Alertas</a></li>
+          <li><a href="#progress"><i class="icon-chevron-right"></i> Barras de progreso</a></li>
+          <li><a href="#media"><i class="icon-chevron-right"></i> Objeto multimedia</a></li>
+          <li><a href="#misc"><i class="icon-chevron-right"></i> Otros</a></li>
         </ul>
       </div>
       <div class="span9">
@@ -123,98 +123,98 @@
         ================================================== -->
         <section id="dropdowns">
           <div class="page-header">
-            <h1>Dropdown menus</h1>
+            <h1>Menús Dropdown</h1>
           </div>
 
-          <h2>Example</h2>
-          <p>Toggleable, contextual menu for displaying lists of links. Made interactive with the <a href="./javascript.html#dropdowns">dropdown JavaScript plugin</a>.</p>
+          <h2>Ejemplo</h2>
+          <p>Menú contextual switcheable para mostrar lista de enlaces. Hecho interactivo con el <a href="./javascript.html#dropdowns">plugin JavaScript dropdown</a>.</p>
           <div class="bs-docs-example">
             <div class="dropdown clearfix">
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
-                <li><a tabindex="-1" href="#">Action</a></li>
-                <li><a tabindex="-1" href="#">Another action</a></li>
-                <li><a tabindex="-1" href="#">Something else here</a></li>
+                <li><a tabindex="-1" href="#">Acción</a></li>
+                <li><a tabindex="-1" href="#">Otra acción</a></li>
+                <li><a tabindex="-1" href="#">Otra acción más</a></li>
                 <li class="divider"></li>
-                <li><a tabindex="-1" href="#">Separated link</a></li>
+                <li><a tabindex="-1" href="#">Enlace separado</a></li>
               </ul>
             </div>
           </div>
 <pre class="prettyprint linenums">
 &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
-  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Acción&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Otra acción&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Otra acción más&lt;/a&gt;&lt;/li&gt;
   &lt;li class="divider"&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Enlace separado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
 
-          <h2>Markup</h2>
-          <p>Looking at just the dropdown menu, here's the required HTML. You need to wrap the dropdown's trigger and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Then just create the menu.</p>
+          <h2>Código</h2>
+          <p>Acá está el HTML requerido. Tendrás que poner el elemento que activa el dropdown y el menú dropdown adentro de <code>.dropdown</code>, u otro elemento que use <code>position: relative;</code>. Después nada más creá el menú.</p>
 
 <pre class="prettyprint linenums">
 &lt;div class="dropdown"&gt;
   &lt;!-- Link or button to toggle dropdown --&gt;
   &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
-    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Acción&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Otra acción&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Otra acción más&lt;/a&gt;&lt;/li&gt;
     &lt;li class="divider"&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Enlace separado&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
 
-          <h2>Options</h2>
-          <p>Align menus to the right and add include additional levels of dropdowns.</p>
+          <h2>Opciones</h2>
+          <p>Alineá menús a la derecha e incluí más niveles de dropdowns.</p>
 
-          <h3>Aligning the menus</h3>
-          <p>Add <code>.pull-right</code> to a <code>.dropdown-menu</code> to right align the dropdown menu.</p>
+          <h3>Alinear el menú</h3>
+          <p>Agregá <code>.pull-right</code> a un <code>.dropdown-menu</code> para alinear el menú a la derecha.</p>
 <pre class="prettyprint linenums">
 &lt;ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel"&gt;
   ...
 &lt;/ul&gt;
 </pre>
 
-          <h3>Disabled menu options</h3>
-          <p>Add <code>.disabled</code> to a <code>&lt;li&gt;</code> in the dropdown to disable the link.</p>
+          <h3>Opciones de menú desactivadas</h3>
+          <p>Agregá <code>.disabled</code> a un <code>&lt;li&gt;</code> en el dropdown para desactivar el enlace.</p>
           <div class="bs-docs-example">
             <div class="dropdown clearfix">
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
-                <li><a tabindex="-1" href="#">Regular link</a></li>
-                <li class="disabled"><a tabindex="-1" href="#">Disabled link</a></li>
-                <li><a tabindex="-1" href="#">Another link</a></li>
+                <li><a tabindex="-1" href="#">Enlace normal</a></li>
+                <li class="disabled"><a tabindex="-1" href="#">Enlace desactivado</a></li>
+                <li><a tabindex="-1" href="#">Otro enlace</a></li>
               </ul>
             </div>
           </div>
 <pre class="prettyprint linenums">
 &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
-  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Regular link&lt;/a&gt;&lt;/li&gt;
-  &lt;li class="disabled"&gt;&lt;a tabindex="-1" href="#"&gt;Disabled link&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Another link&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Enlace normal&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="disabled"&gt;&lt;a tabindex="-1" href="#"&gt;Enlace desactivado&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Otro enlace&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
 
-          <h3>Sub menus on dropdowns</h3>
-          <p>Add an extra level of dropdown menus, appearing on hover like those of OS X, with some simple markup additions. Add <code>.dropdown-submenu</code> to any <code>li</code> in an existing dropdown menu for automatic styling.</p>
+          <h3>Sub menús en dropdowns</h3>
+          <p>Agregá un nivel más de menús dropdown que aparezcan en hover como los de OS X con algunos agregados de código sencillos. Agregá <code>.dropdown-submenu</code> a cualquier <code>li</code> en un menú dropdown existente para darle estilo automáticamente.</p>
           <div class="bs-docs-example bs-docs-example-submenus">
 
             <div class="pull-left">
-              <p class="muted">Default</p>
+              <p class="muted">Predeterminado</p>
               <div class="dropdown clearfix">
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                  <li><a tabindex="-1" href="#">Action</a></li>
-                  <li><a tabindex="-1" href="#">Another action</a></li>
-                  <li><a tabindex="-1" href="#">Something else here</a></li>
+                  <li><a tabindex="-1" href="#">Acción</a></li>
+                  <li><a tabindex="-1" href="#">Otra acción</a></li>
+                  <li><a tabindex="-1" href="#">Otra acción más</a></li>
                   <li class="divider"></li>
                   <li class="dropdown-submenu">
-                    <a tabindex="-1" href="#">More options</a>
+                    <a tabindex="-1" href="#">Más opciones</a>
                     <ul class="dropdown-menu">
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
+                      <li><a tabindex="-1" href="#">Enlace de segundo nivel</a></li>
+                      <li><a tabindex="-1" href="#">Enlace de segundo nivel</a></li>
+                      <li><a tabindex="-1" href="#">Enlace de segundo nivel</a></li>
+                      <li><a tabindex="-1" href="#">Enlace de segundo nivel</a></li>
+                      <li><a tabindex="-1" href="#">Enlace de segundo nivel</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -225,18 +225,18 @@
               <p class="muted">Dropup</p>
               <div class="dropup">
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                  <li><a tabindex="-1" href="#">Action</a></li>
-                  <li><a tabindex="-1" href="#">Another action</a></li>
-                  <li><a tabindex="-1" href="#">Something else here</a></li>
+                  <li><a tabindex="-1" href="#">Acción</a></li>
+                  <li><a tabindex="-1" href="#">Otra acción</a></li>
+                  <li><a tabindex="-1" href="#">Otra acción más</a></li>
                   <li class="divider"></li>
                   <li class="dropdown-submenu">
-                    <a tabindex="-1" href="#">More options</a>
+                    <a tabindex="-1" href="#">Más opciones</a>
                     <ul class="dropdown-menu">
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
+                      <li><a tabindex="-1" href="#">Enlace de segundo nivel</a></li>
+                      <li><a tabindex="-1" href="#">Enlace de segundo nivel</a></li>
+                      <li><a tabindex="-1" href="#">Enlace de segundo nivel</a></li>
+                      <li><a tabindex="-1" href="#">Enlace de segundo nivel</a></li>
+                      <li><a tabindex="-1" href="#">Enlace de segundo nivel</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -244,21 +244,21 @@
             </div>
 
             <div class="pull-left">
-              <p class="muted">Left submenu</p>
+              <p class="muted">Submenú a la izquierda</p>
               <div class="dropdown">
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                  <li><a tabindex="-1" href="#">Action</a></li>
-                  <li><a tabindex="-1" href="#">Another action</a></li>
-                  <li><a tabindex="-1" href="#">Something else here</a></li>
+                  <li><a tabindex="-1" href="#">Acción</a></li>
+                  <li><a tabindex="-1" href="#">Otra acción</a></li>
+                  <li><a tabindex="-1" href="#">Otra acción más</a></li>
                   <li class="divider"></li>
                   <li class="dropdown-submenu pull-left">
-                    <a tabindex="-1" href="#">More options</a>
+                    <a tabindex="-1" href="#">Más opciones</a>
                     <ul class="dropdown-menu">
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
+                      <li><a tabindex="-1" href="#">Enlace de segundo nivel</a></li>
+                      <li><a tabindex="-1" href="#">Enlace de segundo nivel</a></li>
+                      <li><a tabindex="-1" href="#">Enlace de segundo nivel</a></li>
+                      <li><a tabindex="-1" href="#">Enlace de segundo nivel</a></li>
+                      <li><a tabindex="-1" href="#">Enlace de segundo nivel</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -270,7 +270,7 @@
 &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
   ...
   &lt;li class="dropdown-submenu"&gt;
-    &lt;a tabindex="-1" href="#"&gt;More options&lt;/a&gt;
+    &lt;a tabindex="-1" href="#"&gt;Más opciones&lt;/a&gt;
     &lt;ul class="dropdown-menu"&gt;
       ...
     &lt;/ul&gt;
@@ -287,31 +287,31 @@
         ================================================== -->
         <section id="buttonGroups">
           <div class="page-header">
-            <h1>Button groups</h1>
+            <h1>Grupos de botones</h1>
           </div>
 
-          <h2>Examples</h2>
-          <p>Two basic options, along with two more specific variations.</p>
+          <h2>Ejemplos</h2>
+          <p>Dos opciones básicas, junto con dos variaciones más específicas.</p>
 
-          <h3>Single button group</h3>
-          <p>Wrap a series of buttons with <code>.btn</code> in <code>.btn-group</code>.</p>
+          <h3>Un solo grupo de botones</h3>
+          <p>Poné una serie de botones <code>.btn</code> dentro de un <code>.btn-group</code>.</p>
           <div class="bs-docs-example">
             <div class="btn-group" style="margin: 9px 0 5px;">
-              <button class="btn">Left</button>
-              <button class="btn">Middle</button>
-              <button class="btn">Right</button>
+              <button class="btn">Izquierda</button>
+              <button class="btn">Centrado</button>
+              <button class="btn">Derecha</button>
             </div>
           </div>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
-  &lt;button class="btn"&gt;Left&lt;/button&gt;
-  &lt;button class="btn"&gt;Middle&lt;/button&gt;
-  &lt;button class="btn"&gt;Right&lt;/button&gt;
+  &lt;button class="btn"&gt;Izquierda&lt;/button&gt;
+  &lt;button class="btn"&gt;Centrado&lt;/button&gt;
+  &lt;button class="btn"&gt;Derecha&lt;/button&gt;
 &lt;/div&gt;
 </pre>
 
-          <h3>Multiple button groups</h3>
-          <p>Combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex components.</p>
+          <h3>Varios grupos de botones</h3>
+          <p>Combiná conjuntos de <code>&lt;div class="btn-group"&gt;</code> adentro de un <code>&lt;div class="btn-toolbar"&gt;</code> para hacer componentes más complejos.</p>
           <div class="bs-docs-example">
             <div class="btn-toolbar" style="margin: 0;">
               <div class="btn-group">
@@ -338,8 +338,8 @@
 &lt;/div&gt;
 </pre>
 
-          <h3>Vertical button groups</h3>
-          <p>Make a set of buttons appear vertically stacked rather than horizontally.</p>
+          <h3>Grupo de botones vertical</h3>
+          <p>Hacé que un conjunto de botones aparezca apilado verticalmente en lugar de horizontales.</p>
           <div class="bs-docs-example">
             <div class="btn-group btn-group-vertical">
               <button type="button" class="btn"><i class="icon-align-left"></i></button>
@@ -371,7 +371,7 @@
         ================================================== -->
         <section id="buttonDropdowns">
           <div class="page-header">
-            <h1>Button dropdown menus</h1>
+            <h1>Dropdowns de botones</h1>
           </div>
 
 
@@ -380,73 +380,73 @@
           <div class="bs-docs-example">
             <div class="btn-toolbar" style="margin: 0;">
               <div class="btn-group">
-                <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+                <button class="btn dropdown-toggle" data-toggle="dropdown">Acción <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
               <div class="btn-group">
-                <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+                <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Acción <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
               <div class="btn-group">
                 <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Danger <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
               <div class="btn-group">
                 <button class="btn btn-warning dropdown-toggle" data-toggle="dropdown">Warning <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
               <div class="btn-group">
                 <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">Success <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
               <div class="btn-group">
                 <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">Info <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
               <div class="btn-group">
                 <button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">Inverse <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
             </div><!-- /btn-toolbar -->
@@ -454,7 +454,7 @@
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
   &lt;a class="btn dropdown-toggle" data-toggle="dropdown" href="#"&gt;
-    Action
+    Acción
     &lt;span class="caret"&gt;&lt;/span&gt;
   &lt;/a&gt;
   &lt;ul class="dropdown-menu"&gt;
@@ -470,31 +470,31 @@
               <div class="btn-group">
                 <button class="btn btn-large dropdown-toggle" data-toggle="dropdown">Large button <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
               <div class="btn-group">
                 <button class="btn btn-small dropdown-toggle" data-toggle="dropdown">Small button <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
               <div class="btn-group">
                 <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Mini button <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
             </div><!-- /btn-toolbar -->
@@ -513,87 +513,87 @@
           <div class="bs-docs-example">
             <div class="btn-toolbar" style="margin: 0;">
               <div class="btn-group">
-                <button class="btn">Action</button>
+                <button class="btn">Acción</button>
                 <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
               <div class="btn-group">
-                <button class="btn btn-primary">Action</button>
+                <button class="btn btn-primary">Acción</button>
                 <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
               <div class="btn-group">
                 <button class="btn btn-danger">Danger</button>
                 <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
               <div class="btn-group">
                 <button class="btn btn-warning">Warning</button>
                 <button class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
               <div class="btn-group">
                 <button class="btn btn-success">Success</button>
                 <button class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
               <div class="btn-group">
                 <button class="btn btn-info">Info</button>
                 <button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
               <div class="btn-group">
                 <button class="btn btn-inverse">Inverse</button>
                 <button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
             </div><!-- /btn-toolbar -->
           </div>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
-  &lt;button class="btn"&gt;Action&lt;/button&gt;
+  &lt;button class="btn"&gt;Acción&lt;/button&gt;
   &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
     &lt;span class="caret"&gt;&lt;/span&gt;
   &lt;/button&gt;
@@ -611,11 +611,11 @@
                 <button class="btn btn-large">Large action</button>
                 <button class="btn btn-large dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
             </div><!-- /btn-toolbar -->
@@ -624,11 +624,11 @@
                 <button class="btn btn-small">Small action</button>
                 <button class="btn btn-small dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
             </div><!-- /btn-toolbar -->
@@ -637,18 +637,18 @@
                 <button class="btn btn-mini">Mini action</button>
                 <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
             </div><!-- /btn-toolbar -->
           </div>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
-  &lt;button class="btn btn-mini"&gt;Action&lt;/button&gt;
+  &lt;button class="btn btn-mini"&gt;Acción&lt;/button&gt;
   &lt;button class="btn btn-mini dropdown-toggle" data-toggle="dropdown"&gt;
     &lt;span class="caret"&gt;&lt;/span&gt;
   &lt;/button&gt;
@@ -666,22 +666,22 @@
                 <button class="btn">Dropup</button>
                 <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
               <div class="btn-group dropup">
                 <button class="btn primary">Right dropup</button>
                 <button class="btn primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                 <ul class="dropdown-menu pull-right">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </div><!-- /btn-group -->
             </div>
@@ -706,7 +706,7 @@
         ================================================== -->
         <section id="navs">
           <div class="page-header">
-            <h1>Nav: tabs, pills, and lists</small></h1>
+            <h1>Navegación: pestañas, pills y listas</small></h1>
           </div>
 
           <h2>Lightweight defaults <small>Same markup, different classes</small></h2>
@@ -820,11 +820,11 @@
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </li>
             </ul>
@@ -853,11 +853,11 @@
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Otra acción</a></li>
+                  <li><a href="#">Otra acción más</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Enlace separado</a></li>
                 </ul>
               </li>
             </ul>
@@ -1086,7 +1086,7 @@
         ================================================== -->
         <section id="navbar">
           <div class="page-header">
-            <h1>Navbar</h1>
+            <h1>Barra de navegación</h1>
           </div>
 
 
@@ -1337,12 +1337,12 @@
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                          <li><a href="#">Action</a></li>
-                          <li><a href="#">Another action</a></li>
-                          <li><a href="#">Something else here</a></li>
+                          <li><a href="#">Acción</a></li>
+                          <li><a href="#">Otra acción</a></li>
+                          <li><a href="#">Otra acción más</a></li>
                           <li class="divider"></li>
                           <li class="nav-header">Nav header</li>
-                          <li><a href="#">Separated link</a></li>
+                          <li><a href="#">Enlace separado</a></li>
                           <li><a href="#">One more separated link</a></li>
                         </ul>
                       </li>
@@ -1356,11 +1356,11 @@
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                          <li><a href="#">Action</a></li>
-                          <li><a href="#">Another action</a></li>
-                          <li><a href="#">Something else here</a></li>
+                          <li><a href="#">Acción</a></li>
+                          <li><a href="#">Otra acción</a></li>
+                          <li><a href="#">Otra acción más</a></li>
                           <li class="divider"></li>
-                          <li><a href="#">Separated link</a></li>
+                          <li><a href="#">Enlace separado</a></li>
                         </ul>
                       </li>
                     </ul>
@@ -1421,12 +1421,12 @@
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                          <li><a href="#">Action</a></li>
-                          <li><a href="#">Another action</a></li>
-                          <li><a href="#">Something else here</a></li>
+                          <li><a href="#">Acción</a></li>
+                          <li><a href="#">Otra acción</a></li>
+                          <li><a href="#">Otra acción más</a></li>
                           <li class="divider"></li>
                           <li class="nav-header">Nav header</li>
-                          <li><a href="#">Separated link</a></li>
+                          <li><a href="#">Enlace separado</a></li>
                           <li><a href="#">One more separated link</a></li>
                         </ul>
                       </li>
@@ -1440,11 +1440,11 @@
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                          <li><a href="#">Action</a></li>
-                          <li><a href="#">Another action</a></li>
-                          <li><a href="#">Something else here</a></li>
+                          <li><a href="#">Acción</a></li>
+                          <li><a href="#">Otra acción</a></li>
+                          <li><a href="#">Otra acción más</a></li>
                           <li class="divider"></li>
-                          <li><a href="#">Separated link</a></li>
+                          <li><a href="#">Enlace separado</a></li>
                         </ul>
                       </li>
                     </ul>
@@ -1502,7 +1502,7 @@
         ================================================== -->
         <section id="pagination">
           <div class="page-header">
-            <h1>Pagination <small>Two options for paging through content</small></h1>
+            <h1>Paginación <small>Two options for paging through content</small></h1>
           </div>
 
           <h2>Standard pagination</h2>
@@ -1751,7 +1751,7 @@
         ================================================== -->
         <section id="labels-badges">
           <div class="page-header">
-            <h1>Labels and badges</h1>
+            <h1>Etiquetas y badges</h1>
           </div>
           <h3>Labels</h3>
           <table class="table table-bordered table-striped">
@@ -1903,7 +1903,7 @@
         ================================================== -->
         <section id="typography">
           <div class="page-header">
-            <h1>Typographic components</h1>
+            <h1>Componentes tipográficos</h1>
           </div>
 
           <h2>Hero unit</h2>
@@ -1948,7 +1948,7 @@
         ================================================== -->
         <section id="thumbnails">
           <div class="page-header">
-            <h1>Thumbnails <small>Grids of images, videos, text, and more</small></h1>
+            <h1>Miniaturas <small>Grids of images, videos, text, and more</small></h1>
           </div>
 
           <h2>Default thumbnails</h2>
@@ -1988,7 +1988,7 @@
                   <div class="caption">
                     <h3>Thumbnail label</h3>
                     <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
+                    <p><a href="#" class="btn btn-primary">Acción</a> <a href="#" class="btn">Acción</a></p>
                   </div>
                 </div>
               </li>
@@ -1998,7 +1998,7 @@
                   <div class="caption">
                     <h3>Thumbnail label</h3>
                     <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
+                    <p><a href="#" class="btn btn-primary">Acción</a> <a href="#" class="btn">Acción</a></p>
                   </div>
                 </div>
               </li>
@@ -2008,7 +2008,7 @@
                   <div class="caption">
                     <h3>Thumbnail label</h3>
                     <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
+                    <p><a href="#" class="btn btn-primary">Acción</a> <a href="#" class="btn">Acción</a></p>
                   </div>
                 </div>
               </li>
@@ -2089,7 +2089,7 @@
         ================================================== -->
         <section id="alerts">
           <div class="page-header">
-            <h1>Alerts <small>Styles for success, warning, and error messages</small></h1>
+            <h1>Alertas <small>Styles for success, warning, and error messages</small></h1>
           </div>
 
           <h2>Default alert</h2>
@@ -2192,7 +2192,7 @@
         ================================================== -->
         <section id="progress">
           <div class="page-header">
-            <h1>Progress bars <small>For loading, redirecting, or action status</small></h1>
+            <h1>Barras de progreso <small>For loading, redirecting, or action status</small></h1>
           </div>
 
           <h2>Examples and markup</h2>
@@ -2338,7 +2338,7 @@
         ================================================== -->
         <section id="media">
           <div class="page-header">
-            <h1>Media object</h1>
+            <h1>Objeto multimedia</h1>
           </div>
           <p class="lead">Abstract object styles for building various types of components (like blog comments, Tweets, etc) that feature a left- or right-aligned image alongside textual content.</p>
 
@@ -2477,7 +2477,7 @@
         ================================================== -->
         <section id="misc">
           <div class="page-header">
-            <h1>Miscellaneous <small>Lightweight utility components</small></h1>
+            <h1>Otros <small>Lightweight utility components</small></h1>
           </div>
 
           <h2>Wells</h2>
