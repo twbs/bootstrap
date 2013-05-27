@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     rake (10.0.4)
     rb-fsevent (0.9.3)
