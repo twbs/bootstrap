@@ -29,6 +29,10 @@
 @pink:                  #c3325f;
 @purple:                #7a43b6;
 
+// DesignSkins colors
+// -------------------------
+@designSkinsGreenLight: #99bf12;       
+@designSkinsGreenDark:  #708f16;
 
 // Scaffolding
 // -------------------------
@@ -88,8 +92,8 @@
 @btnBackgroundHighlight:            darken(@white, 10%);
 @btnBorder:                         #ccc;
 
-@btnPrimaryBackground:              @linkColor;
-@btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 20%);
+@btnPrimaryBackground:              @designSkinsGreenLight;
+@btnPrimaryBackgroundHighlight:     @designSkinsGreenDark;
 
 @btnInfoBackground:                 #5bc0de;
 @btnInfoBackgroundHighlight:        #2f96b4;
@@ -105,7 +109,6 @@
 
 @btnInverseBackground:              #444;
 @btnInverseBackgroundHighlight:     @grayDarker;
-
 
 // Forms
 // -------------------------
@@ -242,8 +245,8 @@
 @successBackground:       #dff0d8;
 @successBorder:           darken(spin(@successBackground, -10), 5%);
 
-@infoText:                #3a87ad;
-@infoBackground:          #d9edf7;
+@infoText:                @white;
+@infoBackground:          @designSkinsGreenDark;
 @infoBorder:              darken(spin(@infoBackground, -10), 7%);
 
 
