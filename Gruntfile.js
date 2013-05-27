@@ -88,6 +88,9 @@ module.exports = function(grunt) {
         shell: {
             gh: {
                 command: 'node docs/build production'
+            },
+            test: {
+                command: 'phantomjs js/tests/phantom.js "http://localhost:3000/js/tests"'
             }
         },
         recess: {
@@ -128,8 +131,13 @@ module.exports = function(grunt) {
                 }
             }
         },
-        qunit: {
-            files: ['js/tests/*.html']
+        connect: {
+            server: {
+                options: {
+                    port: 3000,
+                    base: '.'
+                }
+            }
         },
         watch: {
             src: {
@@ -145,6 +153,7 @@ module.exports = function(grunt) {
 
 
     // These plugins provide necessary tasks.
+    grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-concat');
@@ -161,13 +170,22 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['jshint', 'recess:dist', 'copy:dist', 'concat:dist', 'uglify:dist']);
 
     // Test task.
-    grunt.registerTask('test', ['jshint', 'qunit']);
+    grunt.registerTask('test', ['jshint', 'connect', 'shell:test']);
 
     // Clean task.
-    grunt.registerTask('cleanit', ['clean:dist']);
+    grunt.registerTask('cleanup', ['clean:dist']);
 
-    // Bootstrap task.
-    grunt.registerTask('bootstrap', ['concat:bootstrap', 'recess:bootstrap', 'recess:min', 'copy:bootstrap', 'uglify:bootstrap']);
+    // JS COMPILE
+    grunt.registerTask('bootstrap-js', ['concat:bootstrap', 'uglify:bootstrap']);
+
+    // CSS COMPILE
+    grunt.registerTask('bootstrap-css', ['recess:bootstrap', 'recess:min']);
+
+    // FONTS
+    grunt.registerTask('bootstrap-fonts', ['copy:bootstrap']);
+
+    // BUILD SIMPLE BOOTSTRAP DIRECTORY
+    grunt.registerTask('bootstrap', ['bootstrap-fonts', 'bootstrap-css', 'bootstrap-js']);
 
     // Task for gh-pages 4 fat & mdo ONLY (O_O )
     grunt.registerTask('gh-pages', ['bootstrap', 'clean:gh1', 'compress:gh', 'clean:gh2', 'shell:gh', 'copy:gh']);
