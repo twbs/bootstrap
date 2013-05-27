@@ -27,7 +27,7 @@ task BOOTSTRAP_MIN_CSS do |target|
 end
 
 
-desc "build regular and compresed versions of bootstrap"
+desc "build regular and compressed versions of bootstrap"
 task :build => [BOOTSTRAP_CSS, BOOTSTRAP_MIN_CSS]
 
 desc "rebuild regular version of bootstrap when modifications are made"
