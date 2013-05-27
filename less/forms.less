@@ -20,9 +20,9 @@ legend {
   display: block;
   width: 100%;
   padding: 0;
-  margin-bottom: @line-height-base;
+  margin-bottom: @line-height-computed;
   font-size: (@font-size-base * 1.5);
-  line-height: (@line-height-base * 2);
+  line-height: inherit;
   color: @gray-dark;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
@@ -54,10 +54,9 @@ input[type="url"],
 input[type="search"],
 input[type="tel"],
 input[type="color"] {
-  display: inline-block;
+  display: block;
   min-height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
-  padding: 6px 9px;
-  // margin-bottom: (@line-height-base / 2);
+  padding: @padding-base-vertical @padding-base-horizontal;
   font-size: @font-size-base;
   line-height: @line-height-base;
   color: @gray;
@@ -66,7 +65,13 @@ input[type="color"] {
   border: 1px solid @input-border;
   border-radius: @input-border-radius;
   .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
-  .transition(~"border-color linear .2s, box-shadow linear .2s");
+  .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+
+  &:focus {
+    border-color: rgba(82,168,236,.8);
+    outline: 0;
+    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)");
+  }
 }
 
 // Reset appearance properties for textual inputs and textarea
@@ -98,32 +103,6 @@ textarea {
   height: auto;
 }
 
-// Everything else
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"] {
-  // Focus state
-  &:focus {
-    border-color: rgba(82,168,236,.8);
-    outline: 0;
-    outline: thin dotted \9; /* IE6-9 */
-    //.box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)");
-    .box-shadow(0 0 8px rgba(82,168,236,.6));
-  }
-}
-
 // Position radios and checkboxes better
 input[type="radio"],
 input[type="checkbox"] {
@@ -145,8 +124,14 @@ select[size] {
   height: auto;
 }
 
+// Fix optgroup Firefox bug per https://github.com/twitter/bootstrap/issues/7611
+select optgroup {
+  font-size: inherit;
+  font-style: inherit;
+  font-family: inherit;
+}
+
 // Focus for select, file, radio, and checkbox
-select:focus,
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
@@ -171,9 +156,11 @@ textarea {
 .radio,
 .checkbox {
   display: block;
-  min-height: @line-height-base; // clear the floating input if there is no label text
-  margin-bottom: (@line-height-base / 2);
+  min-height: @line-height-computed; // clear the floating input if there is no label text
+  margin-top: 10px;
+  margin-bottom: 10px;
   padding-left: 20px;
+  vertical-align: middle;
   label {
     display: inline;
     margin-bottom: 0;
@@ -181,7 +168,6 @@ textarea {
     cursor: pointer;
   }
 }
-
 .radio input[type="radio"],
 .radio-inline input[type="radio"],
 .checkbox input[type="checkbox"],
@@ -191,7 +177,7 @@ textarea {
 }
 .radio + .radio,
 .checkbox + .checkbox {
-  margin-top: ((@line-height-base / 4) * -1);
+  margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
 }
 
 /*
@@ -241,44 +227,17 @@ input[type="search"],
 input[type="tel"],
 input[type="color"] {
   &.input-large {
-    padding: @padding-large;
+    padding: @padding-large-vertical @padding-large-horizontal;
     font-size: @font-size-large;
     border-radius: @border-radius-large;
   }
   &.input-small {
     min-height: @input-height-small;
-    padding: @padding-small;
+    padding: @padding-small-vertical @padding-small-horizontal;
     font-size: @font-size-small;
     border-radius: @border-radius-small;
   }
 }
-
-
-
-// GRID SIZING FOR INPUTS
-// ----------------------
-
-// Grid style input sizes
-input[class*="span"],
-select[class*="span"],
-textarea[class*="span"] {
-  float: none;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-// Ensure input-prepend/append never wraps
-.input-append input[class*="span"],
-.input-prepend input[class*="span"] {
-  display: inline-block;
-}
-
-input[class*="span"],
-select[class*="span"],
-textarea[class*="span"] {
-  height: @input-height-base;
-}
-
 
 
 // DISABLED STATE
@@ -316,15 +275,15 @@ input[type="checkbox"] {
 
 // Warning
 .has-warning {
-  .formFieldState(@state-warning-text, @state-warning-text, @state-warning-bg);
+  .form-field-validation(@state-warning-text, @state-warning-text, @state-warning-bg);
 }
 // Error
 .has-error {
-  .formFieldState(@state-danger-text, @state-danger-text, @state-danger-bg);
+  .form-field-validation(@state-danger-text, @state-danger-text, @state-danger-bg);
 }
 // Success
 .has-success {
-  .formFieldState(@state-success-text, @state-success-text, @state-success-bg);
+  .form-field-validation(@state-success-text, @state-success-text, @state-success-bg);
 }
 
 // HTML5 invalid states
@@ -343,37 +302,15 @@ select:focus:invalid {
 
 
 
-// FORM ACTIONS
-// ------------
-
-.form-actions {
-  padding: (@line-height-base - 1) 20px @line-height-base;
-  margin-top: @line-height-base;
-  margin-bottom: @line-height-base;
-  background-color: @form-actions-bg;
-  border-top: 1px solid #e5e5e5;
-  .clearfix(); // Adding clearfix to allow for .pull-right button containers
-}
-
-
 
 // HELP TEXT
 // ---------
 
-.help-block,
-.help-inline {
-  color: lighten(@text-color, 25%); // lighten the text some for contrast
-}
-
 .help-block {
   display: block; // account for any element using help-block
-  margin-bottom: (@line-height-base / 2);
-}
-
-.help-inline {
-  display: inline-block;
-  vertical-align: middle;
-  padding-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: lighten(@text-color, 25%); // lighten the text some for contrast
 }
 
 
@@ -387,14 +324,16 @@ select:focus:invalid {
   display: table;
 
   // Undo padding and float of grid classes
-  &[class*="span"] {
+  &.col {
     float: none;
-    padding: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   input,
   select {
     width: 100%;
+    margin-bottom: 0;
   }
 }
 
@@ -404,12 +343,8 @@ select:focus:invalid {
 .input-group-btn,
 .input-group input {
   display: table-cell;
-  margin: 0;
-  border-radius: 0;
-  &.input-small {
-    border-radius: 0;
-  }
-  &.input-large {
+
+  &:not(:first-child):not(:last-child) {
     border-radius: 0;
   }
 }
@@ -424,7 +359,7 @@ select:focus:invalid {
 // -------------------------
 .input-group-addon {
   .box-sizing(border-box);
-  padding: 6px 8px;
+  padding: @padding-base-vertical @padding-base-horizontal;
   font-size: @font-size-base;
   font-weight: normal;
   line-height: @line-height-base;
@@ -432,40 +367,37 @@ select:focus:invalid {
   text-shadow: 0 1px 0 #fff;
   background-color: @gray-lighter;
   border: 1px solid #ccc;
+  border-radius: @border-radius-base;
 
-	&.input-small {
-	  padding: @padding-small;
-	  font-size: @font-size-small;
+  &.input-small {
+    padding: @padding-small-vertical @padding-small-horizontal;
+    font-size: @font-size-small;
+    border-radius: @border-radius-small;
   }
-	&.input-large {
-		padding: @padding-large;
-		font-size: @font-size-large;
-	}
+  &.input-large {
+    padding: @padding-large-vertical @padding-large-horizontal;
+    font-size: @font-size-large;
+    border-radius: @border-radius-large;
+  }
 }
 
 // Reset rounded corners
 .input-group input:first-child,
-.input-group-addon:first-child {
-  .border-left-radius(@border-radius-base);
-  &.input-small {
-    .border-left-radius(@border-radius-small);
-  }
-  &.input-large {
-    .border-left-radius(@border-radius-large);
-  }
+.input-group-addon:first-child,
+.input-group-btn:first-child > .btn,
+.input-group-btn:first-child > .dropdown-toggle,
+.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
+  .border-right-radius(0);
 }
 .input-group-addon:first-child {
   border-right: 0;
 }
 .input-group input:last-child,
-.input-group-addon:last-child {
-  .border-right-radius(@border-radius-base);
-  &.input-small {
-    .border-right-radius(@border-radius-small);
-  }
-  &.input-large {
-    .border-right-radius(@border-radius-large);
-  }
+.input-group-addon:last-child,
+.input-group-btn:last-child > .btn,
+.input-group-btn:last-child > .dropdown-toggle,
+.input-group-btn:first-child > .btn:not(:first-child) {
+  .border-left-radius(0);
 }
 .input-group-addon:last-child {
   border-left: 0;
@@ -480,7 +412,6 @@ select:focus:invalid {
 .input-group-btn > .btn {
   position: relative;
   float: left; // Collapse white-space
-  border-radius: 0;
   + .btn {
     margin-left: -1px;
   }
@@ -491,67 +422,42 @@ select:focus:invalid {
   }
 }
 
-// Prepended buttons
-.input-group-btn:first-child {
-  // Round the left corners only
-  > .btn:first-child,
-  > .dropdown-toggle:first-child {
-    .border-left-radius(@border-radius-base);
-    &.btn-large { .border-left-radius(@border-radius-large); }
-    &.btn-small { .border-left-radius(@border-radius-small); }
+
+// Inline forms
+// --------------------------------------------------
+
+.form-inline {
+  input,
+  select,
+  textarea,
+  .radio,
+  .checkbox {
+    display: inline-block;
+  }
+  .radio,
+  .checkbox {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
-
-// Appended buttons
-.input-group-btn:last-child {
-  // Round the right corners only
-  > .btn:last-child,
-  > .dropdown-toggle {
-    .border-right-radius(@border-radius-base);
-    &.btn-large { .border-right-radius(@border-radius-large); }
-    &.btn-small { .border-right-radius(@border-radius-small); }
-  }
-}
-
 
 
 // Horizontal forms
 // --------------------------------------------------
+// Horizontal forms are built on grid classes.
 
-@media screen and (min-width: @screen-tablet) {
+.form-horizontal {
+  .row + .row {
+    margin-top: 15px;
+  }
+  .control-label {
+    padding-top: 6px;
+  }
+}
 
-  .form-horizontal {
-
-    // Increase spacing between groups
-    .control-group {
-      position: relative;
-      margin-bottom: @line-height-base;
-      .clearfix();
-
-      input,
-      select,
-      textarea {
-        margin-bottom: 0;
-      }
-    }
-
-    // Float the labels left
-    .control-group > .control-label {
-      float: left;
-      width: (@component-offset-horizontal - 20);
-      padding-top: 6px;
-      text-align: right;
-    }
-
-    // Move over all input controls and content over
-    .control-group > .controls {
-      margin-left: @component-offset-horizontal;
-    }
-
-    // Make sure form actions buttons are aligned with controls
-    .form-actions {
-      padding-left: @component-offset-horizontal;
-    }
-
+// Only right aline form labels here when the columns stop stacking
+@media (min-width: 768px) {
+  .form-horizontal .control-label {
+    text-align: right;
   }
 }

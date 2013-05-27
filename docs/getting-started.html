@@ -1,0 +1,282 @@
+---
+layout: default
+title: Getting started
+slug: getting-started
+lead: "An overview of Bootstrap, how to download and use, basic templates and examples, and more."
+---
+
+
+  <!-- Getting started
+  ================================================== -->
+  <div class="bs-docs-section" id="download">
+    <div class="page-header">
+      <h1>Download Bootstrap</h1>
+    </div>
+    <p class="lead">There are a few easy ways to quickly get started with Bootstrap, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
+
+    <h3>Download compiled CSS and JS</h3>
+    <p class="lead">The fastest way to get started is to get the compiled and minified versions of our CSS, JavaScript, and fonts. No documentation or original source files are included.</p>
+    <p><a class="btn btn-large btn-primary" href="assets/bootstrap.zip" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a></p>
+
+    <hr>
+
+    <h3 id="download-options">More download options</h3>
+    <div class="bs-docs-dl-options">
+      <h4>
+        <a href="https://github.com/twitter/bootstrap/zipball/master" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download latest source code</a>
+      </h4>
+      <p>Get the original files for all CSS and JavaScript by downloading the latest version directly from GitHub.</p>
+      <h4>
+        <a href="https://github.com/twitter/bootstrap/" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'GitHub project']);">Clone or fork via GitHub</a>
+      </h4>
+      <p>Clone the entire project or fork your own version of Bootstrap to make it your own by visiting us on GitHub.</p>
+      <h4>
+        Install with <a href="http://twitter.github.com/bower">Bower</a>
+      </h4>
+      <p>Install and manage the original files for all CSS and JavaScript, along with a local copy of the docs, using <a href="http://twitter.github.com/bower">Bower</a>.</p>
+      {% highlight bash %}$ bower install bootstrap{% endhighlight %}
+    </div>
+
+    <hr>
+
+    <h3 id="download-cdn">Use the Bootstrap CDN</h3>
+    <p>The folks over at <a href="https://www.netdna.com/">NetDNA</a> have graciously provided CDN support for Bootstrap's CSS and JavaScript. To use, swap your local instances for the <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links listed below.</p>
+{% highlight html linenos %}
+<!-- Latest compiled and minified CSS -->
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+{% endhighlight %}
+  </div>
+
+  <!-- File structure
+  ================================================== -->
+  <div class="bs-docs-section" id="whats-included">
+    <div class="page-header">
+      <h1>What's included</h1>
+    </div>
+    <p class="lead">Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations.</p>
+    <p>Once downloaded, unzip the compressed folder to see the structure of (the compiled) Bootstrap. You'll see something like this:</p>
+
+{% highlight bash %}
+bootstrap/
+├── css/
+│   ├── bootstrap.css
+│   ├── bootstrap.min.css
+├── js/
+│   ├── bootstrap.js
+│   ├── bootstrap.min.js
+└── fonts/
+    ├── glyphiconshalflings-regular.eot
+    ├── glyphiconshalflings-regular.otf
+    ├── glyphiconshalflings-regular.svg
+    ├── glyphiconshalflings-regular.ttf
+    └── glyphiconshalflings-regular.woff
+{% endhighlight %}
+
+    <p>This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). The image files are compressed using <a href="http://imageoptim.com/">ImageOptim</a>, a Mac app for compressing PNGs.</p>
+    <div class="bs-callout">
+      <h4>jQuery required</h4>
+      <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included, as shown in the <a href="#examples">starter template</a>.</p>
+    </div>
+  </div>
+
+  <!-- Examples
+  ================================================== -->
+  <div class="bs-docs-section" id="examples">
+    <div class="page-header">
+      <h1>Templates and examples</h1>
+    </div>
+    <p class="lead">Make use of a super basic HTML template, or dive into a few examples we've started for you. We encourage folks to iterate on these examples and not simply use them as an end result.</p>
+
+    <h3 id="examples-template">HTML template</h3>
+    <p>Copy and paste the HTML from below to get started with a bare bones Bootstrap document.</p>
+{% highlight html %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bootstrap 101 Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+
+    <!-- JavaScript plugins (requires jQuery) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Optionally enable responsive features in IE8 -->
+    <script src="js/respond.js"></script>
+  </body>
+</html>
+{% endhighlight %}
+
+    <h3 id="examples-list">Examples</h3>
+    <div class="row bs-examples">
+      <div class="col col-lg-4">
+        <a class="thumbnail" href="/examples/starter-template/" target="_blank">
+          <img src="/assets/img/examples/bootstrap-example-starter.png" alt="">
+        </a>
+        <h4>Starter template</h4>
+        <p>A barebones HTML page with Bootstrap's CSS and JavaScript included.</p>
+      </div>
+      <div class="col col-lg-4">
+        <a class="thumbnail" href="/examples/grid/" target="_blank">
+          <img src="/assets/img/examples/bootstrap-example-grid.png" alt="">
+        </a>
+        <h4>Basic grid layouts</h4>
+        <p>Simple grid layouts to familiarize you with using the Bootstrap grid system.</p>
+      </div>
+      <div class="col col-lg-4">
+        <a class="thumbnail" href="/examples/jumbotron/" target="_blank">
+          <img src="/assets/img/examples/bootstrap-example-marketing.png" alt="">
+        </a>
+        <h4>Basic marketing site</h4>
+        <p>Features a jumbotron for primary message and three supporting elements.</p>
+      </div>
+      <div class="col col-lg-4">
+        <a class="thumbnail" href="/examples/jumbotron-narrow/" target="_blank">
+          <img src="/assets/img/examples/bootstrap-example-jumbotron-narrow.png" alt="">
+        </a>
+        <h4>Narrow marketing</h4>
+        <p>Slim, lightweight marketing template for small projects or teams.</p>
+      </div>
+      <div class="col col-lg-4">
+        <a class="thumbnail" href="/examples/justified-nav/" target="_blank">
+          <img src="/assets/img/examples/bootstrap-example-justified-nav.png" alt="">
+        </a>
+        <h4>Justified nav</h4>
+        <p>Marketing page with equal-width navigation links in a modified navbar.</p>
+      </div>
+      <div class="col col-lg-4">
+        <a class="thumbnail" href="/examples/signin/" target="_blank">
+          <img src="/assets/img/examples/bootstrap-example-signin.png" alt="">
+        </a>
+        <h4>Sign in</h4>
+        <p>Barebones sign in form with custom, larger form controls and a flexible layout.</p>
+      </div>
+      <div class="col col-lg-4">
+        <a class="thumbnail" href="/examples/sticky-footer/" target="_blank">
+          <img src="/assets/img/examples/bootstrap-example-sticky-footer.png" alt="">
+        </a>
+        <h4>Sticky footer</h4>
+        <p>Pin a fixed-height footer to the bottom of the user's viewport.</p>
+      </div>
+      <div class="col col-lg-4">
+        <a class="thumbnail" href="/examples/sticky-footer-navbar/" target="_blank">
+          <img src="/assets/img/examples/bootstrap-example-sticky-footer-navbar.png" alt="">
+        </a>
+        <h4>Sticky footer w/ navbar</h4>
+        <p>Add a fixed navbar to the default sticky footer template.</p>
+      </div>
+      <div class="col col-lg-4">
+        <a class="thumbnail" href="/examples/carousel/" target="_blank">
+          <img src="/assets/img/examples/bootstrap-example-carousel.png" alt="">
+        </a>
+        <h4>Carousel jumbotron</h4>
+        <p>An interactive riff on the basic marketing site featuring a prominent carousel.</p>
+      </div>
+
+      <div class="col col-lg-4">
+        <a class="thumbnail" href="/examples/navbar/" target="_blank">
+          <img src="/assets/img/examples/bootstrap-example-navbar.png" alt="">
+        </a>
+        <h4>Navbar</h4>
+        <p>Basic template for showcasing how the navbar works.</p>
+      </div>
+      <div class="col col-lg-4">
+        <a class="thumbnail" href="/examples/navbar-static-top/" target="_blank">
+          <img src="/assets/img/examples/bootstrap-example-navbar-static-top.png" alt="">
+        </a>
+        <h4>Static top navbar</h4>
+        <p>Basic template for showcasing the static navbar variation.</p>
+      </div>
+      <div class="col col-lg-4">
+        <a class="thumbnail" href="/examples/navbar-fixed-top/" target="_blank">
+          <img src="/assets/img/examples/bootstrap-example-navbar-fixed-top.png" alt="">
+        </a>
+        <h4>Fixed top navbar</h4>
+        <p>Basic template for showcasing the fixed navbar variation.</p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="bs-docs-section" id="customizing">
+    <div class="page-header">
+      <h1>Customizing Bootstrap</h1>
+    </div>
+    <p class="lead">Customizing Bootstrap is best accomplished when you treat it as another dependency in your development stack. Doing so ensures future upgrades are as easy as possible while also familiarizing yourself to the intricacies of the framework.</p>
+
+    <p>Once you've downloaded and included Bootstrap's CSS into your templates, you can move on to customizing the included components. To do so, create a new stylesheet (LESS, if you like, or just plain CSS) to house your customizations.</p>
+
+    <div class="bs-callout">
+      <h4>Compiled or minified?</h4>
+      <p>Unless you plan on reading a good chunk of the compiled CSS, go with the minified. It's the same code, just compacted. Less bandwidth is good, especially in production environments.</p>
+    </div>
+
+    <p>From there, include whatever Bootstrap components and HTML content you need to get your template setup. It's best to have a rough idea in mind of modifications to make and content to include, so be sure to spend a brief amount of time on that before moving on.</p>
+
+    <h3>Customizing components</h3>
+    <p>There are varying degrees to customizing components, but most fall into two camps: light customizations and complete visual overhauls. Luckily, there are plenty of examples of both.</p>
+    <p>We define light customizations as mostly surface layer changes, things like a color and font changes to existing Bootstrap components. A great example of this is the the <a href="http://translate.twitter.com">Twitter Translation Center</a> (coded by @mdo). Let's look at how to implement the custom button we wrote for this site, <code>.btn-ttc</code>.</p>
+    <p>Instead of using the provided Bootstrap buttons, which only require just one class to start, <code>.btn</code>, we'll add our own modifier class, <code>.btn-ttc</code>. This will give us a slightly custom look with minimal effort.</p>
+{% highlight html %}
+<button type="button" class="btn btn-ttc">Save changes</button>
+{% endhighlight %}
+
+  <p>In the custom stylesheet, add the following CSS:</p>
+
+{% highlight css %}
+/* Custom button
+-------------------------------------------------- */
+
+/* Override base .btn styles */
+/* Apply text and background changes to three key states: default, hover, and active (click). */
+.btn-ttc,
+.btn-ttc:hover,
+.btn-ttc:active {
+  color: white;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #007da7;
+}
+
+/* Apply the custom-colored gradients */
+/* Note: you'll need to include all the appropriate gradients for various browsers and standards. */
+.btn-ttc {
+  background-repeat: repeat-x;
+  background-image: linear-gradient(top, #009ED2 0%, #007DA7 100%);
+  ...
+}
+
+/* Set the hover state */
+/* An easy hover state is just to move the gradient up a small amount. Add other embellishments as you see fit. */
+.btn-ttc:hover {
+  background-position: 0 -15px;
+}
+{% endhighlight %}
+
+    <p>Customizing Bootstrap components takes time, but should be straightforward. <strong>Look to the source code often and duplicate the selectors you need for your modifications.</strong> Placing them after the Bootstrap source makes for easy overriding without complication. <strong>To recap, here's the basic workflow:</strong></p>
+    <ul>
+      <li>For each element you want to customize, find its code in the compiled Bootstrap CSS. Copy and paste the selector for a component as-is. For instance, to customize the navbar background, just snag <code>.navbar</code>.</li>
+      <li>Add all your custom CSS in a separate stylesheet using the selectors you just copied from the Bootstrap source. No need for prefacing with additional classes or using <code>!important</code> here.</li>
+      <li>Rinse and repeat until you're happy with your customizations.</li>
+    </ul>
+    <p>Going beyond light customizations and into visual overhauls is just as straightforward as the above custom button. For a site like <a href="http://yourkarma.com">Karma</a>, which uses Bootstrap as a CSS reset with heavy modifications, more extensive work is involved, but well worth it in the end.</p>
+
+    <div class="bs-callout">
+      <h4>Alternate customization methods</h4>
+      <p>While not recommended for folks new to Bootstrap, you may use one of two alternate methods for customization. The first is modifying the source .less files (making upgrades super difficult), and the second is mapping source LESS code to <a href="http://ruby.bvision.com/blog/please-stop-embedding-bootstrap-classes-in-your-html">your own classes via mixins</a>. For the time being, neither options are documented here.</p>
+    </div>
+
+    <h3>Removing potential bloat</h3>
+    <p>Not all sites and applications need to make use of everything Bootstrap has to offer, especially in production environments where bandwidth literally becomes a financial issue. We encourage folks to remove whatever is unused with our <a href="/customize/">Customizer</a>.</p>
+    <p>Using the Customizer, simply uncheck any component, feature, or asset you don't need. Hit download and swap out the default Bootstrap files with these newly customized ones. You'll get vanilla Bootstrap, but without the features *you* deem unnecessary. All custom builds include compiled and minified versions, so use whichever works for you.</p>
+
+  </div>

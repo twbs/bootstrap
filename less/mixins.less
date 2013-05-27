@@ -340,7 +340,7 @@
 // Dividers (basically an hr) within dropdowns and nav lists
 .nav-divider(@top: #e5e5e5, @bottom: #fff) {
   height: 2px; // 1px for background, one for border
-  margin: ((@line-height-base / 2) - 1) 0;
+  margin: ((@line-height-computed / 2) - 1) 0;
   overflow: hidden;
   background-color: @top;
   border-bottom: 1px solid @bottom;
@@ -350,7 +350,8 @@
 // -------------------------
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
-.btn-pseudo-states(@background, @border) {
+.btn-pseudo-states(@color, @background, @border) {
+  color: @color;
   background-color: @background;
   border-color: @border;
 
@@ -443,9 +444,6 @@
   }
 }
 
-
-
-
 // Small grid columns
 .generate-grid-columns(@grid-columns) {
 
@@ -524,16 +522,8 @@
 // Framework mixins
 // --------------------------------------------------
 
-// Generate rem font-sizes with pixel fallbacks
-// By default uses `@font-size-base` with an initial value of 14 (1.4rem or 14px)
-.font-size(@font-size: @font-size-base) {
-  @rem-size: (@font-size / 10);
-  font-size: ~"@{font-size}px";
-  font-size: ~"@{rem-size}rem";
-}
-
 // Generate form validation states
-.formFieldState(@text-color: #555, @border-color: #ccc, @background-color: #f5f5f5) {
+.form-field-validation(@text-color: #555, @border-color: #ccc, @background-color: #f5f5f5) {
   // Color the label text
   .control-label {
     color: @text-color;
