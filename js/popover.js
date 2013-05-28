@@ -70,8 +70,7 @@
   }
 
   Popover.prototype.tip = function () {
-    if (!this.$tip) this.$tip = $(this.options.template)
-    return this.$tip
+    return this.$tip = this.$tip || $(this.options.template)
   }
 
   Popover.prototype.destroy = function () {
