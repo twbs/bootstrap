@@ -91,7 +91,7 @@
     return options
   }
 
-  Tooltip.prototype.enter = function (e) {
+  Tooltip.prototype.enter = function (obj) {
     var defaults = this.getDefaults()
     var options  = {}
 
@@ -99,26 +99,29 @@
       if (defaults[key] != value) options[key] = value
     })
 
-    var self = $(e.currentTarget)[this.type](options).data('bs.' + this.type)
+    var self = obj instanceof this.constructor ?
+      obj : $(obj.currentTarget)[this.type](options).data('bs.' + this.type)
 
     if (!self.options.delay || !self.options.delay.show) return self.show()
 
     clearTimeout(this.timeout)
 
     self.hoverState = 'in'
-    this.timeout    = setTimeout(function() {
+    this.timeout    = setTimeout(function () {
       if (self.hoverState == 'in') self.show()
     }, self.options.delay.show)
   }
 
-  Tooltip.prototype.leave = function (e) {
-    var self = $(e.currentTarget)[this.type](this._options).data('bs.' + this.type)
+  Tooltip.prototype.leave = function (obj) {
+    var self = obj instanceof this.constructor ?
+      obj : $(obj.currentTarget)[this.type](this._options).data('bs.' + this.type)
 
-    if (this.timeout) clearTimeout(this.timeout)
+    clearTimeout(this.timeout)
+
     if (!self.options.delay || !self.options.delay.hide) return self.hide()
 
     self.hoverState = 'out'
-    this.timeout    = setTimeout(function() {
+    this.timeout    = setTimeout(function () {
       if (self.hoverState == 'out') self.hide()
     }, self.options.delay.hide)
   }
@@ -315,7 +318,7 @@
 
   Tooltip.prototype.toggle = function (e) {
     var self = e ? $(e.currentTarget)[this.type](this._options).data('bs.' + this.type) : this
-    self.tip().hasClass('in') ? self.hide() : self.show()
+    self.tip().hasClass('in') ? self.leave(self) : self.enter(self)
   }
 
   Tooltip.prototype.destroy = function () {

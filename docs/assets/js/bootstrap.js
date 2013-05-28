@@ -433,8 +433,8 @@
   // CAROUSEL DATA-API
   // =================
 
-  $(document).on('click.carousel.data-api', '[data-slide], [data-slide-to]', function (e) {
-    var $this = $(this), href
+  $(document).on('click.bs.carousel.data-api', '[data-slide], [data-slide-to]', function (e) {
+    var $this   = $(this), href
     var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
     var options = $.extend({}, $target.data(), $this.data())
     var slideIndex
@@ -446,6 +446,13 @@
     }
 
     e.preventDefault()
+  })
+
+  $(window).on('load', function () {
+    $('[data-ride="carousel"]').each(function () {
+      var $carousel = $(this)
+      $carousel.carousel($carousel.data())
+    })
   })
 
 }(window.jQuery);
@@ -590,7 +597,7 @@
   // COLLAPSE DATA-API
   // =================
 
-  $(document).on('click.collapse.data-api', '[data-toggle=collapse]', function (e) {
+  $(document).on('click.bs.collapse.data-api', '[data-toggle=collapse]', function (e) {
     var $this  = $(this), href
     var target = $this.attr('data-target')
         || e.preventDefault()
@@ -630,10 +637,7 @@
   var backdrop = '.dropdown-backdrop'
   var toggle   = '[data-toggle=dropdown]'
   var Dropdown = function (element) {
-    var $el = $(element).on('click.dropdown.data-api', this.toggle)
-    $('html').on('click.dropdown.data-api', function () {
-      $el.parent().removeClass('open')
-    })
+    var $el = $(element).on('click.bs.dropdown', this.toggle)
   }
 
   Dropdown.prototype.toggle = function (e) {
@@ -651,7 +655,14 @@
         // if mobile we we use a backdrop because click events don't delegate
         $('<div class="dropdown-backdrop"/>').insertBefore($(this)).on('click', clearMenus)
       }
-      $parent.toggleClass('open')
+
+      $parent.trigger(e = $.Event('show.bs.dropdown'))
+
+      if (e.isDefaultPrevented()) return
+
+      $parent
+        .toggleClass('open')
+        .trigger('shown.bs.dropdown')
     }
 
     $this.focus()
@@ -692,7 +703,13 @@
 
   function clearMenus() {
     $(backdrop).remove()
-    $(toggle).each(function () { getParent($(this)).removeClass('open') })
+    $(toggle).each(function (e) { 
+      var $parent = getParent($(this))
+      if (!$parent.hasClass('open')) return
+      $parent.trigger(e = $.Event('hide.bs.dropdown'))
+      if (e.isDefaultPrevented()) return
+      $parent.removeClass('open').trigger('hidden.bs.dropdown')
+    })
   }
 
   function getParent($this) {
@@ -741,10 +758,10 @@
 
 
   $(document)
-    .on('click.dropdown.data-api', clearMenus)
-    .on('click.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
-    .on('click.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
-    .on('keydown.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
+    .on('click.bs.dropdown.data-api', clearMenus)
+    .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+    .on('click.bs.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
+    .on('keydown.bs.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
 
 }(window.jQuery);
 /* ========================================================================
@@ -807,7 +824,7 @@
       var transition = $.support.transition && that.$element.hasClass('fade')
 
       if (!that.$element.parent().length) {
-        that.$element.appendTo(document.body) //don't move modals dom position
+        that.$element.appendTo(document.body) // don't move modals dom position
       }
 
       that.$element.show()
@@ -825,7 +842,6 @@
       transition ?
         that.$element.one($.support.transition.end, function () { that.$element.focus().trigger('shown.bs.modal') }) :
         that.$element.focus().trigger('shown.bs.modal')
-
     })
   }
 
@@ -854,7 +870,9 @@
   }
 
   Modal.prototype.enforceFocus = function () {
-    $(document).on('focusin.bs.modal', function (e) {
+    $(document)
+      .off('focusin.bs.modal') // guard against infinite focus loop
+      .on('focusin.bs.modal', function (e) {
       if (this.$element[0] !== e.target && !this.$element.has(e.target).length) {
         this.$element.focus()
       }
@@ -1082,7 +1100,7 @@
     return options
   }
 
-  Tooltip.prototype.enter = function (e) {
+  Tooltip.prototype.enter = function (obj) {
     var defaults = this.getDefaults()
     var options  = {}
 
@@ -1090,26 +1108,29 @@
       if (defaults[key] != value) options[key] = value
     })
 
-    var self = $(e.currentTarget)[this.type](options).data('bs.' + this.type)
+    var self = obj instanceof this.constructor ?
+      obj : $(obj.currentTarget)[this.type](options).data('bs.' + this.type)
 
     if (!self.options.delay || !self.options.delay.show) return self.show()
 
     clearTimeout(this.timeout)
 
     self.hoverState = 'in'
-    this.timeout    = setTimeout(function() {
+    this.timeout    = setTimeout(function () {
       if (self.hoverState == 'in') self.show()
     }, self.options.delay.show)
   }
 
-  Tooltip.prototype.leave = function (e) {
-    var self = $(e.currentTarget)[this.type](this._options).data('bs.' + this.type)
+  Tooltip.prototype.leave = function (obj) {
+    var self = obj instanceof this.constructor ?
+      obj : $(obj.currentTarget)[this.type](this._options).data('bs.' + this.type)
 
-    if (this.timeout) clearTimeout(this.timeout)
+    clearTimeout(this.timeout)
+
     if (!self.options.delay || !self.options.delay.hide) return self.hide()
 
     self.hoverState = 'out'
-    this.timeout    = setTimeout(function() {
+    this.timeout    = setTimeout(function () {
       if (self.hoverState == 'out') self.hide()
     }, self.options.delay.hide)
   }
@@ -1306,7 +1327,7 @@
 
   Tooltip.prototype.toggle = function (e) {
     var self = e ? $(e.currentTarget)[this.type](this._options).data('bs.' + this.type) : this
-    self.tip().hasClass('in') ? self.hide() : self.show()
+    self.tip().hasClass('in') ? self.leave(self) : self.enter(self)
   }
 
   Tooltip.prototype.destroy = function () {
@@ -1482,7 +1503,7 @@
     var $element = $(element).is('body') ? $(window) : $(element)
 
     this.$body          = $('body')
-    this.$scrollElement = $element.on('scroll.scroll-spy.data-api', process)
+    this.$scrollElement = $element.on('scroll.bs.scroll-spy.data-api', process)
     this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
     this.selector       = (this.options.target
       || ((href = $(element).attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7

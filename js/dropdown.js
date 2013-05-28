@@ -26,10 +26,7 @@
   var backdrop = '.dropdown-backdrop'
   var toggle   = '[data-toggle=dropdown]'
   var Dropdown = function (element) {
-    var $el = $(element).on('click.dropdown.data-api', this.toggle)
-    $('html').on('click.dropdown.data-api', function () {
-      $el.parent().removeClass('open')
-    })
+    var $el = $(element).on('click.bs.dropdown', this.toggle)
   }
 
   Dropdown.prototype.toggle = function (e) {
@@ -47,7 +44,14 @@
         // if mobile we we use a backdrop because click events don't delegate
         $('<div class="dropdown-backdrop"/>').insertBefore($(this)).on('click', clearMenus)
       }
-      $parent.toggleClass('open')
+
+      $parent.trigger(e = $.Event('show.bs.dropdown'))
+
+      if (e.isDefaultPrevented()) return
+
+      $parent
+        .toggleClass('open')
+        .trigger('shown.bs.dropdown')
     }
 
     $this.focus()
@@ -88,7 +92,13 @@
 
   function clearMenus() {
     $(backdrop).remove()
-    $(toggle).each(function () { getParent($(this)).removeClass('open') })
+    $(toggle).each(function (e) { 
+      var $parent = getParent($(this))
+      if (!$parent.hasClass('open')) return
+      $parent.trigger(e = $.Event('hide.bs.dropdown'))
+      if (e.isDefaultPrevented()) return
+      $parent.removeClass('open').trigger('hidden.bs.dropdown')
+    })
   }
 
   function getParent($this) {
@@ -137,9 +147,9 @@
 
 
   $(document)
-    .on('click.dropdown.data-api', clearMenus)
-    .on('click.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
-    .on('click.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
-    .on('keydown.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
+    .on('click.bs.dropdown.data-api', clearMenus)
+    .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+    .on('click.bs.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
+    .on('keydown.bs.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
 
 }(window.jQuery);
