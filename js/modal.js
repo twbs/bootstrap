@@ -201,7 +201,7 @@
       var options = $.extend({}, Modal.DEFAULTS, $this.data(), typeof option == 'object' && option)
 
       if (!data) $this.data('bs.modal', (data = new Modal(this, options)))
-	  else $.extend($this.data('bs.modal').options, option)
+      else $.extend($this.data('bs.modal').options, option)
       if (typeof option == 'string') data[option]()
       else if (options.show) data.show()
     })
