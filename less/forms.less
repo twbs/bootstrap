@@ -301,6 +301,17 @@ select:focus:invalid {
 }
 
 
+// FORM ACTIONS
+// ------------
+
+.form-actions {
+  padding: (@line-height-computed - 1) 20px @line-height-computed;
+  margin-top: @line-height-computed;
+  margin-bottom: @line-height-computed;
+  background-color: @form-actions-bg;
+  border-top: 1px solid #e5e5e5;
+  .clearfix(); // Adding clearfix to allow for .pull-right button containers
+}
 
 
 // HELP TEXT
