@@ -6798,19 +6798,6 @@ a.badge:focus {
 
 /*  agrego lo que estaba en ba.css - despu�s hay que limpiar bien esto */
 
-/* Add additional stylesheets below
--------------------------------------------------- */
-
-/*
-  Bootstrap's documentation styles
-  Special styles for presenting Bootstrap's documentation and examples
-*/
-
-/* Buttons gradient removed in buttons.less */
-
-/* Body and structure
--------------------------------------------------- */
-
 @font-face {
   font-family: 'Gotham';
   font-style: normal;
@@ -6904,8 +6891,11 @@ body {
 .header-gcba h2.slogan {
   float: right;
   margin-top: -4px;
-  font-size: 18px;
+  font-size: 16px;
+  color: #444;
+  text-rendering: geometricPrecision;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
 }
 
 .navbar-fixed-top {
@@ -6935,6 +6925,7 @@ body {
 }
 
 .footer {
+  padding: 30px 0;
   background: #252120!important;
   border-top: #000;
 }
