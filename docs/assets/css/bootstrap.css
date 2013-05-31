@@ -6891,8 +6891,11 @@ body {
 .header-gcba h2.slogan {
   float: right;
   margin-top: -4px;
-  font-size: 18px;
+  font-size: 16px;
+  color: #444;
+  text-rendering: geometricPrecision;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
 }
 
 .navbar-fixed-top {
