@@ -419,6 +419,11 @@
   // Then clear the floated columns
   .clearfix();
 
+  @media (min-width: @screen-small) {
+    margin-left:  (@grid-gutter-width / -2);
+    margin-right: (@grid-gutter-width / -2);
+  }
+
   // Negative margin nested rows out to align the content of columns
   .row {
     margin-left:  (@grid-gutter-width / -2);
@@ -457,79 +462,6 @@
   @media (min-width: @grid-float-breakpoint) {
     right: percentage((@columns / @grid-columns));
   }
-}
-
-// Small grid columns
-.generate-grid-columns(@grid-columns) {
-
-  .col-sm-X (@index) when (@index > 0) {
-    .col-sm-@{index} { .col-sm-(@index); }
-    .col-sm-X((@index - 1));
-  }
-  .col-sm-X (0) {}
-
-  // Generate columns
-  .col-sm-X(@grid-columns);
-
-  // Apply the styles
-  .col-sm-(@columns) {
-    width: percentage((@columns / @grid-columns));
-  }
-}
-
-// Large grid columns
-.generate-large-grid-columns(@grid-columns) {
-
-  .col-lg-X (@index) when (@index > 0) {
-    .col-lg-@{index} { .col-lg-(@index); }
-    .col-lg-X((@index - 1));
-  }
-  .col-lg-X (0) {}
-
-  // Generate the columns
-  .col-lg-X(@grid-columns);
-
-  // Apply the styles
-  .col-lg-(@columns) {
-    width: percentage((@columns / @grid-columns));
-  }
-
-  // Offsets (gaps between columns)
-  .col-offset-X (@index) when (@index > 0) {
-    .col-offset-@{index} { .col-offset-(@index); }
-    .col-offset-X((@index - 1));
-  }
-  .col-offset-X (0) {}
-
-  // Source ordering
-  .col-push-X (@index) when (@index > 0) {
-    .col-push-@{index} { .col-push-(@index); }
-    .col-push-X((@index - 1));
-  }
-  .col-push-X (0) {}
-
-  // Source ordering
-  .col-pull-X (@index) when (@index > 0) {
-    .col-pull-@{index} { .col-pull-(@index); }
-    .col-pull-X((@index - 1));
-  }
-  .col-pull-X (0) {}
-
-  // Apply the styles
-  .col-offset-(@columns) {
-    margin-left: percentage((@columns / @grid-columns));
-  }
-  .col-push-(@columns) {
-    left: percentage((@columns / @grid-columns));
-  }
-  .col-pull-(@columns) {
-    right: percentage((@columns / @grid-columns));
-  }
-
-  // Generate .spanX and .offsetX
-  .col-offset-X(@grid-columns);
-  .col-push-X(@grid-columns);
-  .col-pull-X(@grid-columns);
 }
 
 
