@@ -13,6 +13,8 @@
         "email": "jacobthornton@gmail.com",
       }
     ]
+  , "support": {
+      "issues": "https://github.com/twitter/bootstrap/issues"
+    }
   , "license": "Apache-2.0"
-
 }
