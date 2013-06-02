@@ -10,7 +10,7 @@ PATH := ./node_modules/.bin:$(PATH)
 # BUILD DOCS
 #
 
-build:
+build: node_modules
 	@echo "\n\n"
 	@echo "\033[36mBuilding Bootstrap...\033[39m"
 	@echo "${HR}"
@@ -36,6 +36,16 @@ build:
 	@echo "\033[36mSuccess!\n\033[39m"
 	@echo "\033[37mThanks for using Bootstrap,"
 	@echo "<3 @mdo and @fat\n\033[39m"
+
+#
+# INSTALL NEEDED NODE MODULES
+#
+
+node_modules:
+	@echo "\n\n"
+	@echo "\033[36mInstalling dependencies...\033[39m"
+	@echo "${HR}"
+	npm install
 
 #
 # RUN JSHINT & QUNIT TESTS IN PHANTOMJS
@@ -69,7 +79,7 @@ bootstrap: bootstrap-fonts bootstrap-css bootstrap-js
 #
 bootstrap-js: bootstrap/js/*.js
 
-bootstrap/js/*.js: js/*.js
+bootstrap/js/*.js: node_modules js/*.js
 	mkdir -p bootstrap/js
 	cat js/transition.js js/alert.js js/button.js js/carousel.js js/collapse.js js/dropdown.js js/modal.js js/tooltip.js js/popover.js js/scrollspy.js js/tab.js js/affix.js > bootstrap/js/bootstrap.js
 	uglifyjs -nc bootstrap/js/bootstrap.js > bootstrap/js/bootstrap.min.tmp.js
@@ -83,7 +93,7 @@ bootstrap/js/*.js: js/*.js
 
 bootstrap-css: bootstrap/css/*.css
 
-bootstrap/css/*.css: less/*.less
+bootstrap/css/*.css: node_modules less/*.less
 	mkdir -p bootstrap/css
 	recess --compile ${BOOTSTRAP_LESS} > bootstrap/css/bootstrap.css
 	recess --compress ${BOOTSTRAP_LESS} > bootstrap/css/bootstrap.min.css
