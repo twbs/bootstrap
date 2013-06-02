@@ -5,5 +5,6 @@
   , "homepage": "http://twitter.github.com/bootstrap/"
   , "author": "Twitter Inc."
   , "license": "Apache-2.0"
+  , "target-dir": "twitter/bootstrap"
 
 }
