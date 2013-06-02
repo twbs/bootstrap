@@ -194,7 +194,7 @@
     $target.carousel(options)
 
     if (slideIndex = $this.attr('data-slide-to')) {
-      $target.data('bs-carousel').pause().to(slideIndex).cycle()
+      $target.data('bs.carousel').pause().to(slideIndex).cycle()
     }
 
     e.preventDefault()
