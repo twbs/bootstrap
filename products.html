@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products</title>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.css" />
+    <link rel="stylesheet" href="/static/css/_custom.css" />
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <div class="row">
+                <div class="span2">
+                    <h1>Logo</h1>
+                </div>
+                <div class="span6">
+                    <h1>Welcome</h1>
+                </div>
+                <div class="span4">
+                    <div class="pull-right">
+                        <a href="#">Login</a> or <a href="#">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a href="/" class="brand">Logo</a>
+                    <ul class="nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active"><a href="products.html">Products</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="downloads.html">Downloads</a></li>
+                        <li><a href="developers.html">Developers</a></li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="company.html">Company</a></li>
+                                <li><a href="leadership.html">Leadership</a></li>
+                                <li><a href="careers.html">Careers</a></li>
+                                <li class="divider"></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form pull-right">
+                        <input type="text" name="q" maxlength="50" class="search-query" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-test" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h3>Modal header</h3>
+        </div>
+        <div class="modal-body">
+            <p>One fine body…</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn btn-primary">Save changes</a>
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+        </div>
+    </div>
+
+    <div id="main" class="container">
+        <div class="row">
+            <div class="span12">
+                <h3>modal</h3>
+                <button class="btn" onclick="$('#modal-test').modal('show');">Show Modal</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <h3>tabs</h3>
+                <ul id="myTab" class="nav nav-tabs">
+                    <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+                    <li><a href="#profile" data-toggle="tab">Profile</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#dropdown1" data-toggle="tab">@fat</a></li>
+                            <li><a href="#dropdown2" data-toggle="tab">@mdo</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade in active" id="home">
+                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                    </div>
+                    <div class="tab-pane fade" id="profile">
+                        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                    </div>
+                    <div class="tab-pane fade" id="dropdown1">
+                        <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+                    </div>
+                    <div class="tab-pane fade" id="dropdown2">
+                        <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span12 tooltip-toggle">
+                <h3>tooltip</h3>
+                <p>Tight pants next level keffiyeh <a href="#" data-toggle="tooltip" title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" data-toggle="tooltip" title="Another tooltip">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" data-toggle="tooltip" title="A much longer tooltip belongs right here to demonstrate the max-width we apply.">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" data-toggle="tooltip" title="The last tip!">twitter handle</a> freegan cred raw denim single-origin coffee viral.</p>
+                <p>Remember use following script to enable tooltips:</p>
+                <pre>
+&lt;script&gt;
+    $(function() {
+        $('a[data-toggle=tooltip]').tooltip();
+    });
+&lt;/script&gt;
+                </pre>
+            </div>
+        </div>
+
+<script>
+    $(function() {
+        $('a[data-toggle=tooltip]').tooltip();
+    });
+</script>
+
+        <div class="row">
+            <div class="span12">
+                <h3>popover</h3>
+                <p><a href="javascript:void(0)" class="btn btn-danger" data-toggle="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">Click to toggle popover</a>
+                <a href="#" class="btn btn-info" data-toggle="popover" data-placement="top" data-trigger="hover" title="A Title" data-content="Just hover your mouse and see popover.">Hover to toggle popover</a></p>
+                <p>Remember use following script to enable popover:</p>
+                <pre>
+&lt;script&gt;
+    $(function() {
+        $('a[data-toggle=popover]').tooltip();
+    });
+&lt;/script&gt;
+                </pre>
+            </div>
+        </div>
+
+<script>
+    $(function() {
+        $('a[data-toggle=popover]').popover();
+    });
+</script>
+
+        <div class="row">
+            <div class="span12">
+                <h3>alert</h3>
+                <div class="alert alert-block alert-error fade in">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <h4 class="alert-heading">Oh snap! You got an error!</h4>
+                    <p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
+                    <a class="btn btn-danger" href="#">Take this action</a> <a class="btn" href="#" data-dismiss="alert">Ignore</a>
+                </div>
+                <p>It seems no way to re-show a closed alert.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="span4">
+                    <h4>About our company</h4>
+                    <p>The world leading SaaS platform provider.</p>
+                </div>
+                <div class="span2">
+                    <h4>Support</h4>
+                    <p><a href="#">Documentation</a></p>
+                    <p>Step by step Learning</p>
+                    <p>API Development</p>
+                </div>
+                <div class="span2">
+                    <h4>Support</h4>
+                    <p><a href="#">Documentation</a></p>
+                    <p><a href="#">Step by step Learning</a></p>
+                    <p><a href="#">API Development</a></p>
+                </div>
+                <div class="span2">
+                    <h4>Support</h4>
+                    <p><a href="#">Documentation</a></p>
+                    <p><a href="#">Step by step Learning</a></p>
+                    <p><a href="#">API Development</a></p>
+                </div>
+                <div class="span2">
+                    <h4>Contact</h4>
+                    <p>Email: <a href="mailto:contact@example.com">contact@example.com</a></p>
+                    <p>Addr: No. 311</p>
+                    <p>Facebook Page</p>
+                    <p><a href="#">Twitter</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="hr"></div>
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <p>Stay connected:Copyright&copy;2013, <a href="/" target="_blank">Example.com Inc.</a>, all rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+</body>
+</html>
