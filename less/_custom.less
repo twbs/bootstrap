@@ -1,0 +1,35 @@
+//
+// Customized Style
+// --------------------------------------------------
+
+@import "variables.less"; // Modify this for custom colors, font-sizes, etc
+@import "mixins.less";
+
+#footer {
+  border-top: 2px solid @grayDark;
+  color: darken(@white, 15%);
+  background-color: @gray;
+  font-size: @fontSizeSmall;
+  h4 {
+    font-weight: normal;
+  }
+  p {
+    line-height: @fontSizeSmall * 2;
+    margin: 0;
+  }
+  .row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  a {
+    color: darken(@white, 20%);
+    text-decoration: underline;
+    &:hover, &:active {
+      color: @white;
+    }
+  }
+  div.hr {
+    border-top: 1px solid darken(@grayDarker, 10%);
+    border-bottom: 1px solid darken(@grayLight, 10%);
+  }
+}
