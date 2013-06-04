@@ -274,7 +274,7 @@
 // Responsive navbar
 // --------------------------------------------------
 
-@media screen and (min-width: $screen-tablet) {
+@media screen and (min-width: $grid-float-breakpoint) {
 
   .navbar-brand {
     float: left;

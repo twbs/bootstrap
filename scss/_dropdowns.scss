@@ -68,7 +68,7 @@
 .dropdown-submenu:focus > a {
   text-decoration: none;
   color: $dropdown-link-hover-color;
-  @include gradient-vertical($dropdown-link-hover-bg, darken($dropdown-link-hover-bg, 5%));
+  @include gradient-vertical($start-color: $dropdown-link-hover-bg, $end-color: darken($dropdown-link-hover-bg, 5%));
 }
 
 // Active state
@@ -79,7 +79,7 @@
   color: $dropdown-link-active-color;
   text-decoration: none;
   outline: 0;
-  @include gradient-vertical($dropdown-link-active-bg, darken($dropdown-link-active-bg, 5%));
+  @include gradient-vertical($start-color: $dropdown-link-active-bg, $end-color: darken($dropdown-link-active-bg, 5%));
 }
 
 // Disabled state

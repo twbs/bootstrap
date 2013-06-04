@@ -13,9 +13,31 @@
   @include make-row();
 }
 
-
 // Common styles for small and large grid columns
-@mixin col {
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12,
+.col-lg-1,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12 {
   position: relative;
   // Float and set width: 100%; for easy stacking on mobile devices
   float: left;
@@ -27,39 +49,51 @@
   padding-right: ($grid-gutter-width / 2);
 }
 
-.col { @include col }
+// Grid column sizing
 
-// Generate small grid classes first
-@include generate-grid-columns($grid-columns);
+// Small columns (phones and up)
+@for $i from 1 through $grid-columns {
+  .col-#{$i}  { width: percentage(($i / $grid-columns)); }
+}
+// Medium columns (tablets and up)
+@media (min-width: $screen-tablet) {
+  @for $i from 1 through $grid-columns {
+    .col-md-#{$i}  { width: percentage(($i / $grid-columns)); }
+  }
 
-// Then generate the larger grid classes via media query
-@media screen and (min-width: $screen-small) {
-  @include generate-large-grid-columns($grid-columns);
+  @for $i from 1 through $grid-columns - 1 {
+    .col-offset-#{$i}  { margin-left: percentage(($i / $grid-columns)); }
+    .col-push-#{$i}  { left: percentage(($i / $grid-columns)); }
+    .col-push-#{$i}  { left: percentage(($i / $grid-columns)); }
+    .col-pull-#{$i}  { right: percentage(($i / $grid-columns)); }
+  }
+}
+
+@media (min-width: $screen-desktop) {
+  // Large columns (desktop and up)
+  @for $i from 1 through $grid-columns {
+    .col-lg-#{$i}  { width: percentage(($i / $grid-columns)); }
+  }
 }
 
 
 // Responsive: Tablets and up
 @media screen and (min-width: $screen-tablet) {
   .container {
-    max-width: 728px;
+    max-width: $container-tablet;
   }
 }
 
 // Responsive: Desktops and up
 @media screen and (min-width: $screen-desktop) {
   .container {
-    max-width: 940px;
+    max-width: $container-desktop;
   }
 }
 
 // Responsive: Large desktops and up
 @media screen and (min-width: $screen-large-desktop) {
   .container {
-    max-width: 1170px;
+    max-width: $container-large-desktop;
   }
 }
-
-// Reset utility classes due to specificity
-/*[class*="col-span-"].pull-right {
-  float: right;
-}*/

@@ -403,6 +403,19 @@ $screen-large:               1200px !default;
 $screen-large-desktop:       $screen-large !default;
 
 
+// Container sizes
+// --------------------------------------------------
+
+// Small screen / tablet
+$container-tablet:          728px !default;
+
+// Medium screen / desktop
+$container-desktop:         940px !default;
+
+// Large screen / wide desktop
+$container-large-desktop:   1170px !default;
+
+
 // Grid system
 // --------------------------------------------------
 
