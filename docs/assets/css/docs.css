@@ -246,13 +246,13 @@ body {
 .show-grid {
   margin-bottom: 15px;
 }
-.show-grid .col {
+.show-grid [class^="col-"] {
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #eee;
   border: 1px solid #ddd;
 }
-.show-grid .col:hover {
+.show-grid [class^="col-"]:hover {
   background-color: #ddd;
 }
 
