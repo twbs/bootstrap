@@ -62,10 +62,9 @@
   }
 
   @for $i from 1 through $grid-columns - 1 {
-    .col-offset-#{$i}  { margin-left: percentage(($i / $grid-columns)); }
-    .col-push-#{$i}  { left: percentage(($i / $grid-columns)); }
-    .col-push-#{$i}  { left: percentage(($i / $grid-columns)); }
-    .col-pull-#{$i}  { right: percentage(($i / $grid-columns)); }
+    .col-offset-#{$i} { margin-left: percentage(($i / $grid-columns)); }
+    .col-push-#{$i}   { left: percentage(($i / $grid-columns)); }
+    .col-pull-#{$i}   { right: percentage(($i / $grid-columns)); }
   }
 }
 
