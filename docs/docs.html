@@ -1327,10 +1327,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Included with Bootstrap are optional form layouts for common use cases.</p>
 
     <h3 id="forms-inline">Inline form</h3>
-    <p>Add <code>.form-inline</code> for left-aligned labels and inline-block controls for a compact layout.</p>
+    <p>Add <code>.form-inline</code> for left-aligned and inline-block controls for a compact layout.</p>
+    <div class="bs-docs-sidenote">
+      <h4>Requires custom widths</h4>
+      <p>Inputs, selects, and textareas are 100% wide by default in Bootstrap. To use the inline form, you'll have to set a width on the form controls used within.</p>
+    </div>
     <form class="bs-docs-example form-inline">
-      <input type="text" class="col col-lg-3" placeholder="Email">
-      <input type="password" class="col col-lg-3" placeholder="Password">
+      <input type="text" placeholder="Email" style="width: 180px;">
+      <input type="password" placeholder="Password" style="width: 180px;">
       <div class="checkbox">
         <label>
           <input type="checkbox"> Remember me
@@ -1340,8 +1344,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </form><!-- /example -->
 {% highlight html %}
 <form class="form-inline">
-  <input type="text" class="col col-lg-3" placeholder="Email">
-  <input type="password" class="col col-lg-3" placeholder="Password">
+  <input type="text" placeholder="Email" style="width: 180px;">
+  <input type="password" placeholder="Password" style="width: 180px;">
   <div class="checkbox">
     <label>
       <input type="checkbox"> Remember me
@@ -1927,74 +1931,30 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h4>Column sizing</h4>
-    <p>Use <code>.col col-lg-1</code> to <code>.col col-lg-12</code> for setting widths on inputs that match Bootstrap's grid system.</p>
-    <form class="bs-docs-example" style="padding-bottom: 15px;">
-      <div class="controls docs-input-sizes">
-        <input class="col col-lg-1" type="text" placeholder=".col col-lg-1">
-        <input class="col col-lg-2" type="text" placeholder=".col col-lg-2">
-        <input class="col col-lg-3" type="text" placeholder=".col col-lg-3">
-        <select class="col col-lg-1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-        <select class="col col-lg-2">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-        <select class="col col-lg-3">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </div>
-    </form>
-{% highlight html %}
-<input class="col col-lg-1" type="text" placeholder=".col col-lg-1">
-<input class="col col-lg-2" type="text" placeholder=".col col-lg-2">
-<input class="col col-lg-3" type="text" placeholder=".col col-lg-3">
-<select class="col col-lg-1">
-  ...
-</select>
-<select class="col col-lg-2">
-  ...
-</select>
-<select class="col col-lg-3">
-  ...
-</select>
-{% endhighlight %}
-
-    <p>If you need multiple inputs on the same line, wrap them in the standard grid markup (with <code>.row</code> and <code>.col-span-*</code> classes). Each input should have it's own column and will expand to fill the available width automatically.</p>
+    <p>Wrap inputs in grid columns, or any custom parent element, to easily enforce desired widths.</p>
     <form class="bs-docs-example" style="padding-bottom: 15px;">
       <div class="row">
-        <div class="col col-lg-4">
-          <input type="text" placeholder=".col col-lg-4">
+        <div class="col col-lg-2">
+          <input type="text" placeholder="col col-large-2">
+        </div>
+        <div class="col col-lg-3">
+          <input type="text" placeholder="col col-large-3">
         </div>
         <div class="col col-lg-4">
-          <input type="text" placeholder=".col col-lg-4">
-        </div>
-        <div class="col col-lg-4">
-          <input type="text" placeholder=".col col-lg-4">
+          <input type="text" placeholder="col col-large-4">
         </div>
       </div>
     </form>
 {% highlight html %}
 <div class="row">
-  <div class="col col-lg-4">
-    <input type="text" placeholder=".col col-lg-4">
+  <div class="col col-lg-2">
+    <input type="text" placeholder="col col-large-2">
+  </div>
+  <div class="col col-lg-3">
+    <input type="text" placeholder="col col-large-3">
   </div>
   <div class="col col-lg-4">
-    <input type="text" placeholder=".col col-lg-4">
-  </div>
-  <div class="col col-lg-4">
-    <input type="text" placeholder=".col col-lg-4">
+    <input type="text" placeholder="col col-large-4">
   </div>
 </div>
 {% endhighlight %}
@@ -2047,7 +2007,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 
     <h2 id="buttons-options">Button options</h2>
-    <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements for the best rendering.</p>
+    <p>Use any of the available button classes to quickly create a styled button.</p>
     <div class="bs-docs-example">
       <button type="button" class="btn btn-default">Default</button>
       <button type="button" class="btn btn-primary">Primary</button>
@@ -2080,56 +2040,55 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <button type="button" class="btn btn-link">Link</button>
 {% endhighlight %}
 
-
     <h2 id="buttons-sizes">Button sizes</h2>
     <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code> for additional sizes.</p>
     <div class="bs-docs-example">
       <p>
-        <button type="button" class="btn btn-large btn-primary">Large button</button>
-        <button type="button" class="btn btn-large">Large button</button>
+        <button type="button" class="btn btn-primary btn-large">Large button</button>
+        <button type="button" class="btn btn-default btn-large">Large button</button>
       </p>
       <p>
         <button type="button" class="btn btn-primary">Default button</button>
-        <button type="button" class="btn">Default button</button>
+        <button type="button" class="btn btn-default">Default button</button>
       </p>
       <p>
-        <button type="button" class="btn btn-small btn-primary">Small button</button>
-        <button type="button" class="btn btn-small">Small button</button>
+        <button type="button" class="btn btn-primary btn-small">Small button</button>
+        <button type="button" class="btn btn-default btn-small">Small button</button>
       </p>
       <p>
-        <button type="button" class="btn btn-mini btn-primary">Mini button</button>
-        <button type="button" class="btn btn-mini">Mini button</button>
+        <button type="button" class="btn btn-primary btn-mini">Mini button</button>
+        <button type="button" class="btn btn-default btn-mini">Mini button</button>
       </p>
     </div>
 {% highlight html %}
 <p>
-  <button type="button" class="btn btn-large btn-primary">Large button</button>
-  <button type="button" class="btn btn-large">Large button</button>
+  <button type="button" class="btn btn-primary btn-large">Large button</button>
+  <button type="button" class="btn btn-default btn-large">Large button</button>
 </p>
 <p>
   <button type="button" class="btn btn-primary">Default button</button>
-  <button type="button" class="btn">Default button</button>
+  <button type="button" class="btn btn-default">Default button</button>
 </p>
 <p>
-  <button type="button" class="btn btn-small btn-primary">Small button</button>
-  <button type="button" class="btn btn-small">Small button</button>
+  <button type="button" class="btn btn-primary btn-small">Small button</button>
+  <button type="button" class="btn btn-default btn-small">Small button</button>
 </p>
 <p>
-  <button type="button" class="btn btn-mini btn-primary">Mini button</button>
-  <button type="button" class="btn btn-mini">Mini button</button>
+  <button type="button" class="btn btn-primary btn-mini">Mini button</button>
+  <button type="button" class="btn btn-default btn-mini">Mini button</button>
 </p>
 {% endhighlight %}
 
     <p>Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding <code>.btn-block</code>.</p>
     <div class="bs-docs-example">
       <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
-        <button type="button" class="btn btn-large btn-block btn-primary">Block level button</button>
-        <button type="button" class="btn btn-large btn-block">Block level button</button>
+        <button type="button" class="btn btn-primary btn-large btn-block">Block level button</button>
+        <button type="button" class="btn btn-default btn-large btn-block">Block level button</button>
       </div>
     </div>
 {% highlight html %}
-<button type="button" class="btn btn-large btn-block btn-primary">Block level button</button>
-<button type="button" class="btn btn-large btn-block">Block level button</button>
+<button type="button" class="btn btn-primary btn-large btn-block">Block level button</button>
+<button type="button" class="btn btn-default btn-large btn-block">Block level button</button>
 {% endhighlight %}
 
 
@@ -2139,12 +2098,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h3>Button element</h3>
     <p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
     <p class="bs-docs-example">
-      <button type="button" class="btn btn-large btn-primary" disabled="disabled">Primary button</button>
-      <button type="button" class="btn btn-large" disabled="disabled">Button</button>
+      <button type="button" class="btn btn-primary btn-large" disabled="disabled">Primary button</button>
+      <button type="button" class="btn btn-default btn-large" disabled="disabled">Button</button>
     </p>
 {% highlight html %}
 <button type="button" class="btn btn-large btn-primary" disabled="disabled">Primary button</button>
-<button type="button" class="btn btn-large" disabled="disabled">Button</button>
+<button type="button" class="btn btn-default btn-large" disabled="disabled">Button</button>
 {% endhighlight %}
 
     <div class="bs-docs-sidenote">
@@ -2155,12 +2114,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h3>Anchor element</h3>
     <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
     <p class="bs-docs-example">
-      <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
-      <a href="#" class="btn btn-large disabled">Link</a>
+      <a href="#" class="btn btn-primary btn-large disabled">Primary link</a>
+      <a href="#" class="btn btn-default btn-large disabled">Link</a>
     </p>
 {% highlight html %}
-<a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
-<a href="#" class="btn btn-large disabled">Link</a>
+<a href="#" class="btn btn-primary btn-large disabled">Primary link</a>
+<a href="#" class="btn btn-default btn-large disabled">Link</a>
 {% endhighlight %}
     <p>
       We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
@@ -2171,19 +2130,19 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 
 
-    <h2 id="buttons-tags">One class, multiple tags</h2>
-    <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
+    <h2 id="buttons-tags">Using multiple tags</h2>
+    <p>Use the button classes on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
     <form class="bs-docs-example">
-      <a class="btn" href="">Link</a>
-      <button class="btn" type="submit">Button</button>
-      <input class="btn" type="button" value="Input">
-      <input class="btn" type="submit" value="Submit">
+      <a class="btn btn-default" href="#">Link</a>
+      <button class="btn btn-default" type="submit">Button</button>
+      <input class="btn btn-default" type="button" value="Input">
+      <input class="btn btn-default" type="submit" value="Submit">
     </form>
 {% highlight html %}
-<a class="btn" href="">Link</a>
-<button class="btn" type="submit">Button</button>
-<input class="btn" type="button" value="Input">
-<input class="btn" type="submit" value="Submit">
+<a class="btn btn-default" href="#">Link</a>
+<button class="btn btn-default" type="submit">Button</button>
+<input class="btn btn-default" type="button" value="Input">
+<input class="btn btn-default" type="submit" value="Submit">
 {% endhighlight %}
 
     <div class="bs-docs-sidenote">
@@ -2599,20 +2558,20 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="bs-docs-example">
       <div class="btn-toolbar">
         <div class="btn-group">
-          <a class="btn" href="#"><span class="glyphicon glyphicon-align-left"></span></a>
-          <a class="btn" href="#"><span class="glyphicon glyphicon-align-center"></span></a>
-          <a class="btn" href="#"><span class="glyphicon glyphicon-align-right"></span></a>
-          <a class="btn" href="#"><span class="glyphicon glyphicon-align-justify"></span></a>
+          <a class="btn btn-default" href="#"><span class="glyphicon glyphicon-align-left"></span></a>
+          <a class="btn btn-default" href="#"><span class="glyphicon glyphicon-align-center"></span></a>
+          <a class="btn btn-default" href="#"><span class="glyphicon glyphicon-align-right"></span></a>
+          <a class="btn btn-default" href="#"><span class="glyphicon glyphicon-align-justify"></span></a>
         </div>
       </div>
     </div><!-- /bs-docs-example -->
 {% highlight html %}
 <div class="btn-toolbar">
   <div class="btn-group">
-    <a class="btn" href="#"><span class="glyphicon glyphicon-align-left"></span></a>
-    <a class="btn" href="#"><span class="glyphicon glyphicon-align-center"></span></a>
-    <a class="btn" href="#"><span class="glyphicon glyphicon-align-right"></span></a>
-    <a class="btn" href="#"><span class="glyphicon glyphicon-align-justify"></span></a>
+    <a class="btn btn-default" href="#"><span class="glyphicon glyphicon-align-left"></span></a>
+    <a class="btn btn-default" href="#"><span class="glyphicon glyphicon-align-center"></span></a>
+    <a class="btn btn-default" href="#"><span class="glyphicon glyphicon-align-right"></span></a>
+    <a class="btn btn-default" href="#"><span class="glyphicon glyphicon-align-justify"></span></a>
   </div>
 </div>
 {% endhighlight %}
@@ -2638,8 +2597,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div><!-- /bs-docs-example -->
 {% highlight html %}
 <div class="btn-group">
-  <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-user"></span> User</a>
-  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+  <a class="btn btn-default btn-primary" href="#"><span class="glyphicon glyphicon-user"></span> User</a>
+  <a class="btn btn-default btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
   <ul class="dropdown-menu">
     <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Edit</a></li>
     <li><a href="#"><span class="glyphicon glyphicon-trash"></span> Delete</a></li>
@@ -2652,18 +2611,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h5>Large button</h5>
     <div class="bs-docs-example">
-      <a class="btn btn-large" href="#"><span class="glyphicon glyphicon-star"></span> Star</a>
+      <a class="btn btn-default btn-large" href="#"><span class="glyphicon glyphicon-star"></span> Star</a>
     </div><!-- /bs-docs-example -->
 {% highlight html %}
-<a class="btn btn-large" href="#"><span class="glyphicon glyphicon-star"></span> Star</a>
+<a class="btn btn-default btn-large" href="#"><span class="glyphicon glyphicon-star"></span> Star</a>
 {% endhighlight %}
 
     <h5>Small button</h5>
     <div class="bs-docs-example">
-      <a class="btn btn-small" href="#"><span class="glyphicon glyphicon-star"></span></a>
+      <a class="btn btn-default btn-small" href="#"><span class="glyphicon glyphicon-star"></span></a>
     </div><!-- /bs-docs-example -->
 {% highlight html %}
-<a class="btn btn-small" href="#"><span class="glyphicon glyphicon-star"></span></a>
+<a class="btn btn-default btn-small" href="#"><span class="glyphicon glyphicon-star"></span></a>
 {% endhighlight %}
 
 
@@ -2878,16 +2837,16 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Wrap a series of buttons with <code>.btn</code> in <code>.btn-group</code>.</p>
     <div class="bs-docs-example">
       <div class="btn-group" style="margin: 9px 0 5px;">
-        <button type="button" class="btn">Left</button>
-        <button type="button" class="btn">Middle</button>
-        <button type="button" class="btn">Right</button>
+        <button type="button" class="btn btn-default">Left</button>
+        <button type="button" class="btn btn-default">Middle</button>
+        <button type="button" class="btn btn-default">Right</button>
       </div>
     </div>
 {% highlight html %}
 <div class="btn-group">
-  <button type="button" class="btn">Left</button>
-  <button type="button" class="btn">Middle</button>
-  <button type="button" class="btn">Right</button>
+  <button type="button" class="btn btn-default">Left</button>
+  <button type="button" class="btn btn-default">Middle</button>
+  <button type="button" class="btn btn-default">Right</button>
 </div>
 {% endhighlight %}
 
@@ -2896,18 +2855,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="bs-docs-example">
       <div class="btn-toolbar" style="margin: 0;">
         <div class="btn-group">
-          <button type="button" class="btn">1</button>
-          <button type="button" class="btn">2</button>
-          <button type="button" class="btn">3</button>
-          <button type="button" class="btn">4</button>
+          <button type="button" class="btn btn-default">1</button>
+          <button type="button" class="btn btn-default">2</button>
+          <button type="button" class="btn btn-default">3</button>
+          <button type="button" class="btn btn-default">4</button>
         </div>
         <div class="btn-group">
-          <button type="button" class="btn">5</button>
-          <button type="button" class="btn">6</button>
-          <button type="button" class="btn">7</button>
+          <button type="button" class="btn btn-default">5</button>
+          <button type="button" class="btn btn-default">6</button>
+          <button type="button" class="btn btn-default">7</button>
         </div>
         <div class="btn-group">
-          <button type="button" class="btn">8</button>
+          <button type="button" class="btn btn-default">8</button>
         </div>
       </div>
     </div>
@@ -2923,12 +2882,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Place buttons groups within button groups when you want dropdown menus mixed with a series of buttons.</p>
     <div class="bs-docs-example">
       <div class="btn-group">
-        <button type="button" class="btn">1</button>
-        <button type="button" class="btn">2</button>
-        <button type="button" class="btn">3</button>
+        <button type="button" class="btn btn-default">1</button>
+        <button type="button" class="btn btn-default">2</button>
+        <button type="button" class="btn btn-default">3</button>
 
         <div class="btn-group">
-          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
             Dropdown
             <span class="caret"></span>
           </button>
@@ -2945,10 +2904,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Make a set of buttons appear vertically stacked rather than horizontally.</p>
     <div class="bs-docs-example">
       <div class="btn-group btn-group-vertical">
-        <button type="button" class="btn"><i class="glyphicon glyphicon-align-left"></i></button>
-        <button type="button" class="btn"><i class="glyphicon glyphicon-align-center"></i></button>
-        <button type="button" class="btn"><i class="glyphicon glyphicon-align-right"></i></button>
-        <button type="button" class="btn"><i class="glyphicon glyphicon-align-justify"></i></button>
+        <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-left"></i></button>
+        <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-center"></i></button>
+        <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-right"></i></button>
+        <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-justify"></i></button>
       </div>
     </div>
 {% highlight html %}
@@ -2961,9 +2920,9 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Make a group of buttons stretch at the same size to span the entire width of its parent. <strong>This only works with <code>&lt;a&gt;</code> elements</strong> as the <code>&lt;button&gt;</code> doesn't pick up these styles.</p>
     <div class="bs-docs-example">
       <div class="btn-group btn-group-justified">
-        <a href="#" class="btn">Left</a>
-        <a href="#" class="btn">Right</a>
-        <a href="#" class="btn">Middle</a>
+        <a href="#" class="btn btn-default">Left</a>
+        <a href="#" class="btn btn-default">Right</a>
+        <a href="#" class="btn btn-default">Middle</a>
       </div>
     </div>
 {% highlight html %}
@@ -2994,7 +2953,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="bs-docs-example">
       <div class="btn-toolbar" style="margin-bottom: 10px;">
         <div class="btn-group">
-          <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+          <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -3048,7 +3007,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% highlight html %}
 <!-- Single button -->
 <div class="btn-group">
-  <button class="btn dropdown-toggle" data-toggle="dropdown">
+  <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
     Action <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
@@ -3066,8 +3025,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="bs-docs-example">
       <div class="btn-toolbar" style="margin: 0;">
         <div class="btn-group">
-          <button class="btn">Action</button>
-          <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+          <button class="btn btn-default">Action</button>
+          <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -3125,8 +3084,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% highlight html %}
 <!-- Split button -->
 <div class="btn-group">
-  <button class="btn">Action</button>
-  <button class="btn dropdown-toggle" data-toggle="dropdown">
+  <button class="btn btn-default">Action</button>
+  <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
@@ -3144,7 +3103,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="bs-docs-example">
       <div class="btn-toolbar" style="margin: 0;">
         <div class="btn-group">
-          <button class="btn btn-large dropdown-toggle" type="button" data-toggle="dropdown">
+          <button class="btn btn-default btn-large dropdown-toggle" type="button" data-toggle="dropdown">
             Large button <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
@@ -3156,7 +3115,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           </ul>
         </div><!-- /btn-group -->
         <div class="btn-group">
-          <button class="btn btn-small dropdown-toggle" type="button" data-toggle="dropdown">
+          <button class="btn btn-default btn-small dropdown-toggle" type="button" data-toggle="dropdown">
             Small button <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
@@ -3168,7 +3127,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           </ul>
         </div><!-- /btn-group -->
         <div class="btn-group">
-          <button class="btn btn-mini dropdown-toggle" type="button" data-toggle="dropdown">
+          <button class="btn btn-default btn-mini dropdown-toggle" type="button" data-toggle="dropdown">
             Mini button <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
@@ -3184,7 +3143,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% highlight html %}
 <!-- Large button group -->
 <div class="btn-group">
-  <button class="btn btn-large dropdown-toggle" type="button" data-toggle="dropdown">
+  <button class="btn btn-default btn-large dropdown-toggle" type="button" data-toggle="dropdown">
     Large button <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
@@ -3194,7 +3153,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 <!-- Small button group -->
 <div class="btn-group">
-  <button class="btn btn-small dropdown-toggle" type="button" data-toggle="dropdown">
+  <button class="btn btn-default btn-small dropdown-toggle" type="button" data-toggle="dropdown">
     Small button <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
@@ -3204,7 +3163,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 <!-- Mini button group -->
 <div class="btn-group">
-  <button class="btn btn-mini dropdown-toggle" type="button" data-toggle="dropdown">
+  <button class="btn btn-default btn-mini dropdown-toggle" type="button" data-toggle="dropdown">
     Mini button <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
@@ -3218,8 +3177,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="bs-docs-example">
       <div class="btn-toolbar">
         <div class="btn-group dropup">
-          <button class="btn">Dropup</button>
-          <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+          <button class="btn btn-default">Dropup</button>
+          <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -3229,8 +3188,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           </ul>
         </div><!-- /btn-group -->
         <div class="btn-group dropup">
-          <button class="btn primary">Right dropup</button>
-          <button class="btn primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+          <button class="btn btn-primary">Right dropup</button>
+          <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
           <ul class="dropdown-menu pull-right">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -3243,8 +3202,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div><!-- /example -->
 {% highlight html %}
 <div class="btn-group dropup">
-  <button class="btn">Dropup</button>
-  <button class="btn dropdown-toggle" data-toggle="dropdown">
+  <button class="btn btn-default">Dropup</button>
+  <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
@@ -5003,10 +4962,10 @@ $('#myModal').on('show', function (e) {
   ================================================== -->
   <div class="bs-docs-section" id="transitions">
     <div class="page-header">
-      <h1>Transitions <small>bootstrap-transition.js</small></h1>
+      <h1>Transitions <small>transition.js</small></h1>
     </div>
     <h3>About transitions</h3>
-    <p>For simple transition effects, include bootstrap-transition.js once alongside the other JS files. If you're using the compiled (or minified) bootstrap.js, there is no need to include this&mdash;it's already there.</p>
+    <p>For simple transition effects, include transition.js once alongside the other JS files. If you're using the compiled (or minified) bootstrap.js, there is no need to include this&mdash;it's already there.</p>
     <h3>Use cases</h3>
     <p>A few examples of the transition plugin:</p>
     <ul>
@@ -5025,7 +4984,7 @@ $('#myModal').on('show', function (e) {
   ================================================== -->
   <div class="bs-docs-section" id="modals">
     <div class="page-header">
-      <h1>Modals <small>bootstrap-modal.js</small></h1>
+      <h1>Modals <small>modal.js</small></h1>
     </div>
 
     <h2 id="modals-examples">Examples</h2>
@@ -5119,27 +5078,27 @@ $('#myModal').on('show', function (e) {
       <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Launch demo modal</a>
     </div><!-- /example -->
 {% highlight html %}
-<div class="modal">
   <!-- Button trigger modal -->
   <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Launch demo modal</a>
 
   <!-- Modal -->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <a href="#" class="btn">Close</a>
-        <a href="#" class="btn btn-primary">Save changes</a>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dalog -->
-</div><!-- /.modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn">Close</a>
+          <a href="#" class="btn btn-primary">Save changes</a>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dalog -->
+  </div><!-- /.modal -->
 {% endhighlight %}
 
 
@@ -5261,7 +5220,7 @@ $('#myModal').on('hidden', function () {
         ================================================== -->
         <section id="dropdowns">
           <div class="page-header">
-            <h1>Dropdowns <small>bootstrap-dropdown.js</small></h1>
+            <h1>Dropdowns <small>dropdown.js</small></h1>
           </div>
 
 
@@ -5398,7 +5357,7 @@ $('.dropdown-toggle').dropdown()
         ================================================== -->
         <section id="scrollspy">
           <div class="page-header">
-            <h1>ScrollSpy <small>bootstrap-scrollspy.js</small></h1>
+            <h1>ScrollSpy <small>scrollspy.js</small></h1>
           </div>
 
 
@@ -5517,7 +5476,7 @@ $('[data-spy="scroll"]').each(function () {
         ================================================== -->
         <section id="tabs">
           <div class="page-header">
-            <h1>Togglable tabs <small>bootstrap-tab.js</small></h1>
+            <h1>Togglable tabs <small>tab.js</small></h1>
           </div>
 
 
@@ -5644,7 +5603,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
         ================================================== -->
         <section id="tooltips">
           <div class="page-header">
-            <h1>Tooltips <small>bootstrap-tooltip.js</small></h1>
+            <h1>Tooltips <small>tooltip.js</small></h1>
           </div>
 
 
@@ -5785,7 +5744,7 @@ $('#example').tooltip(options)
       ================================================== -->
       <section id="popovers">
         <div class="page-header">
-          <h1>Popovers <small>bootstrap-popover.js</small></h1>
+          <h1>Popovers <small>popover.js</small></h1>
         </div>
 
         <h2>Examples</h2>
@@ -5833,7 +5792,6 @@ $('#example').tooltip(options)
 
           <div class="clearfix"></div>
         </div>
-        <p>No markup shown as popovers are generated from JavaScript and content within a <code>data</code> attribute.</p>
 
         <h3>Live demo</h3>
         <div class="bs-docs-example" style="padding-bottom: 24px;">
@@ -5967,7 +5925,7 @@ $('#example').tooltip(options)
       ================================================== -->
       <div class="bs-docs-section" id="js-alerts">
         <div class="page-header">
-          <h1>Alert messages <small>bootstrap-alert.js</small></h1>
+          <h1>Alert messages <small>alert.js</small></h1>
         </div>
 
 
@@ -6046,7 +6004,7 @@ $('#my-alert').bind('closed', function () {
           ================================================== -->
           <div class="bs-docs-section" id="js-buttons">
             <div class="page-header">
-              <h1>Buttons <small>bootstrap-button.js</small></h1>
+              <h1>Buttons <small>button.js</small></h1>
             </div>
 
             <h2>Example uses</h2>
@@ -6191,7 +6149,7 @@ $('.nav-tabs').button()
           ================================================== -->
           <section id="collapse">
             <div class="page-header">
-              <h1>Collapse <small>bootstrap-collapse.js</small></h1>
+              <h1>Collapse <small>collapse.js</small></h1>
             </div>
 
             <h3>About</h3>
@@ -6401,7 +6359,7 @@ $('#myCollapsible').on('hidden', function () {
           ================================================== -->
           <section id="carousel">
             <div class="page-header">
-              <h1>Carousel <small>bootstrap-carousel.js</small></h1>
+              <h1>Carousel <small>carousel.js</small></h1>
             </div>
 
             <h2>Examples</h2>
@@ -6613,7 +6571,7 @@ $('.carousel').carousel({
           ================================================== -->
           <section id="typeahead">
             <div class="page-header">
-              <h1>Typeahead <small>bootstrap-typeahead.js</small></h1>
+              <h1>Typeahead <small>typeahead.js</small></h1>
             </div>
 
 
@@ -6710,7 +6668,7 @@ $('.typeahead').typeahead()
           ================================================== -->
           <section id="affix">
             <div class="page-header">
-              <h1>Affix <small>bootstrap-affix.js</small></h1>
+              <h1>Affix <small>affix.js</small></h1>
             </div>
 
             <h2>Example</h2>

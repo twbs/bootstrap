@@ -46,27 +46,33 @@
 @font-family-base:        @font-family-sans-serif;
 
 @font-size-base:          14px;
-@font-size-large:         (@font-size-base * 1.25); // ~18px
-@font-size-small:         (@font-size-base * 0.85); // ~12px
-@font-size-mini:          (@font-size-base * 0.75); // ~11px
+@font-size-large:         ceil(@font-size-base * 1.25); // ~18px
+@font-size-small:         ceil(@font-size-base * 0.85); // ~12px
+@font-size-mini:          ceil(@font-size-base * 0.75); // ~11px
 
-@line-height-base:        20px;
+@line-height-base:        1.428571429; // 20/14
+@line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
 
-@headings-font-family:    inherit; // empty to use BS default, @font-family-base
 @headings-font-weight:    500;
+@headings-line-height:    1.1;
 
 
 // Components
 // -------------------------
-// Based on 14px font-size and 1.5 line-height
+// Based on 14px font-size and 1.428 line-height (~20px to start)
 
-@padding-large:           11px 14px; // 44px
-@padding-small:           2px 10px;  // 26px
-@padding-mini:            0 6px;   // 22px
+@padding-base-vertical:          8px;
+@padding-base-horizontal:        12px;
 
-@border-radius-base:      4px;
-@border-radius-large:     6px;
-@border-radius-small:     3px;
+@padding-large-vertical:         14px;
+@padding-large-horizontal:       16px;
+
+@padding-small-vertical:         5px;
+@padding-small-horizontal:       10px;
+
+@border-radius-base:             4px;
+@border-radius-large:            6px;
+@border-radius-small:            3px;
 
 @component-active-bg:            @brand-primary;
 
@@ -84,22 +90,27 @@
 // Buttons
 // -------------------------
 
-@btn-color:                      #fff;
-@btn-bg:                         #a7a9aa;
-@btn-border:                     @btn-bg;
+@btn-default-color:              #fff;
+@btn-default-bg:                 #a7a9aa;
+@btn-default-border:             @btn-default-bg;
 
+@btn-primary-color:              @btn-default-color;
 @btn-primary-bg:                 @brand-primary;
 @btn-primary-border:             @btn-primary-bg;
 
+@btn-success-color:              @btn-default-color;
 @btn-success-bg:                 @brand-success;
 @btn-success-border:             @btn-success-bg;
 
+@btn-warning-color:              @btn-default-color;
 @btn-warning-bg:                 @brand-warning;
 @btn-warning-border:             @btn-warning-bg;
 
+@btn-danger-color:               @btn-default-color;
 @btn-danger-bg:                  @brand-danger;
 @btn-danger-border:              @btn-danger-bg;
 
+@btn-info-color:                 @btn-default-color;
 @btn-info-bg:                    @brand-info;
 @btn-info-border:                @btn-info-bg;
 
@@ -116,11 +127,9 @@
 
 @input-color-placeholder:        @gray-light;
 
-@input-height-base:              (@line-height-base + 14px); // base line-height + 12px vertical padding + 2px top/bottom border
-@input-height-large:             (@line-height-base + 24px); // base line-height + 22px vertical padding + 2px top/bottom border
-@input-height-small:             (@line-height-base + 6px);  // base line-height + 4px vertical padding + 2px top/bottom border
-
-@form-actions-bg:                 #f5f5f5;
+@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2));
+@input-height-large:             (@line-height-computed + (@padding-large-vertical * 2));
+@input-height-small:             (@line-height-computed + (@padding-small-vertical * 2));
 
 
 // Dropdowns
@@ -314,7 +323,7 @@
 @list-group-border-radius:    @border-radius-base;
 
 @list-group-hover-bg:         #f5f5f5;
-@list-group-active-text:      #fff;
+@list-group-active-color:     #fff;
 @list-group-active-bg:        @component-active-bg;
 @list-group-active-border:    @list-group-active-bg;
 
@@ -324,6 +333,7 @@
 @panel-border:                #ddd;
 @panel-border-radius:         @border-radius-base;
 @panel-heading-bg:            #f5f5f5;
+@panel-footer-bg:             #f5f5f5;
 
 @panel-primary-text:          #fff;
 @panel-primary-border:        @brand-primary;
@@ -391,6 +401,19 @@
 // Large screen / wide desktop
 @screen-large:               1200px;
 @screen-large-desktop:       @screen-large;
+
+
+// Container sizes
+// --------------------------------------------------
+
+// Small screen / tablet
+@container-tablet:          728px;
+
+// Medium screen / desktop
+@container-desktop:         940px;
+
+// Large screen / wide desktop
+@container-large-desktop:   1170px;
 
 
 // Grid system

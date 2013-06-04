@@ -17,6 +17,7 @@
     }
   ]
   , "devDependencies": {
+<<<<<<< HEAD
       "connect": "2.1.3"
     , "grunt": "~0.4.1"
     , "grunt-cli": "~0.1.7"
@@ -30,5 +31,11 @@
     , "grunt-contrib-watch": "~0.3.1"
     , "grunt-shell": "~0.2.2"
     , "grunt-recess": "~0.3.3"
+=======
+      "uglify-js": "1.3.4"
+    , "jshint": "2.1.2"
+    , "recess": "1.1.6"
+    , "connect": "2.1.3"
+>>>>>>> upstream/3.0.0-wip
   }
 }
