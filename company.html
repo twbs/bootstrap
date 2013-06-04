@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Company</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <script>
+$(function() {
+  var data = [
+    {
+      label: 'node1',
+      children: [
+        { label: 'child1', children: [ { label: 'haha', url: 'http://www.linux.org/' } ] },
+        { label: 'child2' }
+      ]
+    },
+    {
+      label: 'node2',
+      children: [
+        { label: 'child3' }
+      ]
+    }
+  ];
+  $('#tree').tree({
+    data: data,
+    autoOpen: true,
+    dragAndDrop: true
+  });
+});
+    </script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <div class="row">
+                <div class="span2">
+                    <h1>Logo</h1>
+                </div>
+                <div class="span6">
+                    <h1>Welcome</h1>
+                </div>
+                <div class="span4">
+                    <div class="pull-right">
+                        <a href="#">Login</a> or <a href="#">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-static-top navbar-blue">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a href="/" class="brand">Logo</a>
+                    <ul class="nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="downloads.html">Downloads</a></li>
+                        <li><a href="developers.html">Developers</a></li>
+                        <li class="active"><a href="company.html">Company</a></li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="leadership.html">Leadership</a></li>
+                                <li><a href="careers.html">Careers</a></li>
+                                <li class="divider"></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form pull-right">
+                        <input type="text" name="q" maxlength="50" class="search-query" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main" class="container">
+        <div class="row" style="padding-top: 20px;">
+            <div class="span4">
+                <div class="panel">
+                    <div class="panel-heading">jqTree</div>
+                    <div class="panel-inner">
+                        <div id="tree"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="span7 offset1">
+                <div class="panel">
+                    <div class="panel-inner">
+                        <p>jqTree.</p>
+                        <pre>
+&lt;div&gt; class="panel"&lt;/div&gt;
+    &lt;div class="panel-heading"&gt;Heading&lt;/div&gt;
+    &lt;div class="panel-inner"&gt;
+        &lt;p&gt;Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                        </pre>
+                        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="span4">
+                    <h4>About our company</h4>
+                    <p>The world leading SaaS platform provider.</p>
+                </div>
+                <div class="span2">
+                    <h4>Support</h4>
+                    <p><a href="#">Documentation</a></p>
+                    <p>Step by step Learning</p>
+                    <p>API Development</p>
+                </div>
+                <div class="span2">
+                    <h4>Support</h4>
+                    <p><a href="#">Documentation</a></p>
+                    <p><a href="#">Step by step Learning</a></p>
+                    <p><a href="#">API Development</a></p>
+                </div>
+                <div class="span2">
+                    <h4>Support</h4>
+                    <p><a href="#">Documentation</a></p>
+                    <p><a href="#">Step by step Learning</a></p>
+                    <p><a href="#">API Development</a></p>
+                </div>
+                <div class="span2">
+                    <h4>Contact</h4>
+                    <p>Email: <a href="mailto:contact@example.com">contact@example.com</a></p>
+                    <p>Addr: No. 311</p>
+                    <p>Facebook Page</p>
+                    <p><a href="#">Twitter</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="hr"></div>
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <p>Stay connected:Copyright&copy;2013, <a href="/" target="_blank">Example.com Inc.</a>, all rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+</body>
+</html>

@@ -1,13 +1,18 @@
-//
+// ----------------------------------------------------------------------------
 // Customized Style
-// --------------------------------------------------
+// ----------------------------------------------------------------------------
 
 @import "variables.less"; // Modify this for custom colors, font-sizes, etc
 @import "mixins.less";
 
+// ----------------------------------------------------------------------------
+// Panel
+// ----------------------------------------------------------------------------
+
 @panelBorderColor: @dropdownDividerTop;
 
 // Panel container
+
 .panel {
   margin-bottom: @baseLineHeight;
   border: 1px solid @panelBorderColor;
@@ -43,6 +48,10 @@
   }
 }
 
+// ----------------------------------------------------------------------------
+// Footer
+// ----------------------------------------------------------------------------
+
 #footer {
   border-top: 2px solid @grayDark;
   color: darken(@white, 15%);
@@ -72,9 +81,9 @@
   }
 }
 
-// ------------
-// DatePicker:
-// ------------
+// ----------------------------------------------------------------------------
+// DatePicker
+// ----------------------------------------------------------------------------
 
 /*!
  * Datepicker for Bootstrap
@@ -315,9 +324,9 @@
   }
 }
 
-// -----------------------------
-// Bootstrap Navbar Blue Theme:
-// -----------------------------
+// ----------------------------------------------------------------------------
+// Bootstrap Navbar Blue Theme
+// ----------------------------------------------------------------------------
 
 .navbar-blue {
 
@@ -428,4 +437,171 @@
 
 }
 
-// -- End navbar-blue
+// ----------------------------------------------------------------------------
+// jqTree
+// ----------------------------------------------------------------------------
+
+ul.jqtree-tree .jqtree-toggler.jqtree-closed {
+
+  padding-top: 0px;
+  padding-left: 5px;
+
+  .caret {
+    border-top: 4px solid transparent;
+    border-left: 4px solid @black;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+  }
+}
+
+ul.jqtree-tree,
+ul.jqtree-tree ul.jqtree_common {
+  list-style: none outside;
+  margin-bottom: 2px;
+  padding: 0;
+}
+
+ul.jqtree-tree {
+
+  margin-left: 12px;
+
+  ul.jqtree_common {
+    display: block;
+    margin-left: 12px;
+    margin-right: 0;
+  }
+
+  li.jqtree_common {
+    clear: both;
+    list-style-type: none;
+  }
+
+  li.jqtree-closed {
+    > ul.jqtree_common {
+      display: none;
+    }
+  }
+
+  .jqtree-toggler {
+    display: block;
+    position: absolute;
+    width: 12px;
+    padding: 3px;
+    left: -1.5em;
+    top: 30%;
+    *top: 0;  /* fix for ie7 */
+    font-size: 12px;
+    line-height: 12px;
+    font-family: arial;  /* fix for ie9 */
+    border-bottom: none;
+    color: @grayDarker;
+  }
+}
+
+ul.jqtree-tree .jqtree-element {
+    cursor: pointer;
+    &:hover {
+      background-color: @grayLighter;
+    }
+}
+
+ul.jqtree-tree .jqtree-title {
+    vertical-align: middle;
+    padding: 0px 6px;
+    line-height: 26px;
+    height: 26px;
+}
+
+ul.jqtree-tree li.jqtree-folder {
+    margin-bottom: 2px;
+}
+
+ul.jqtree-tree li.jqtree-folder.jqtree-closed {
+    margin-bottom: 2px;
+}
+
+ul.jqtree-tree li.jqtree-folder .jqtree-title {
+    margin-left: 0;
+}
+
+ul.jqtree-tree .jqtree-toggler.jqtree-closed {
+    background-position: 0 0;
+}
+
+span.jqtree-dragging {
+    color: @white;
+    background: @grayDark;
+    opacity: 0.4;
+    cursor: pointer;
+    padding: 2px 8px;
+}
+
+ul.jqtree-tree {
+
+  li.jqtree-ghost {
+    position: relative;
+    z-index: 10;
+    margin-right: 10px;
+
+    span {
+      display: block;
+    }
+
+    span.jqtree-circle {
+      display: none;
+    }
+
+    span.jqtree-line {
+      background-color: @red;
+      height: 2px;
+      padding: 0;
+      position: absolute;
+      top: -1px;
+      left: 0px;
+      width: 100%;
+    }
+  }
+}
+
+ul.jqtree-tree li.jqtree-ghost.jqtree-inside {
+    margin-left: 48px;
+}
+
+ul.jqtree-tree {
+  span.jqtree-border {
+    position: absolute;
+    display: block;
+    left: -2px;
+    top: 0;
+    border: solid 2px @red;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    margin: 0;
+  }
+}
+
+ul.jqtree-tree {
+  .jqtree-element {
+    width: 100%; /* todo: why is this in here? */
+    *width: auto; /* ie7 fix; issue 41 */
+    position: relative;
+  }
+}
+
+ul.jqtree-tree {
+  li.jqtree-selected {
+    > .jqtree-element, > .jqtree-element:hover {
+      color: @white;
+      background-color: @linkColor;
+      #gradient > .vertical(darken(@linkColor, 5%), @linkColor);
+    }
+  }
+}
+
+ul.jqtree-tree .jqtree-moving > .jqtree-element .jqtree-title {
+    outline: dashed 1px @linkColor;
+}
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
