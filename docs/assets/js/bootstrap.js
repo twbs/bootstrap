@@ -1,3 +1,8 @@
+/**
+* bootstrap.js v3.0.0 by @fat and @mdo
+* Copyright 2013 Twitter Inc.
+* http://www.apache.org/licenses/LICENSE-2.0
+*/
 /* ========================================================================
  * Bootstrap: transition.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#transitions
@@ -45,6 +50,7 @@
   })
 
 }(window.jQuery);
+
 /* ========================================================================
  * Bootstrap: alert.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#alerts
@@ -141,6 +147,7 @@
   $(document).on('click.bs.alert.data-api', dismiss, Alert.prototype.close)
 
 }(window.jQuery);
+
 /* ========================================================================
  * Bootstrap: button.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#buttons
@@ -246,6 +253,7 @@
   })
 
 }(window.jQuery);
+
 /* ========================================================================
  * Bootstrap: carousel.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#carousel
@@ -456,6 +464,7 @@
   })
 
 }(window.jQuery);
+
 /* ========================================================================
  * Bootstrap: collapse.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#collapse
@@ -609,6 +618,7 @@
   })
 
 }(window.jQuery);
+
 /* ========================================================================
  * Bootstrap: dropdown.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#dropdowns
@@ -764,6 +774,7 @@
     .on('keydown.bs.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
 
 }(window.jQuery);
+
 /* ========================================================================
  * Bootstrap: modal.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#modals
@@ -1007,6 +1018,7 @@
       .on('bs.modal.hidden', '.modal', function () { $body.removeClass('modal-open') })
 
 }(window.jQuery);
+
 /* ========================================================================
  * Bootstrap: tooltip.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#affix
@@ -1363,6 +1375,7 @@
   }
 
 }(window.jQuery);
+
 /* ========================================================================
  * Bootstrap: popover.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#popovers
@@ -1472,6 +1485,7 @@
   }
 
 }(window.jQuery);
+
 /* ========================================================================
  * Bootstrap: scrollspy.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#scrollspy
@@ -1628,6 +1642,7 @@
   })
 
 }(window.jQuery);
+
 /* ========================================================================
  * Bootstrap: tab.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#tabs
@@ -1761,6 +1776,7 @@
   })
 
 }(window.jQuery);
+
 /* ========================================================================
  * Bootstrap: affix.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#affix
