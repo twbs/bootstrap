@@ -14,6 +14,7 @@
 // Panel container
 
 .panel {
+  background-color: @white;
   margin-bottom: @baseLineHeight;
   border: 1px solid @panelBorderColor;
   border-bottom: none;
@@ -44,6 +45,82 @@
     padding: 8px 15px;
     p {
       margin: 0;
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Quote
+// ----------------------------------------------------------------------------
+
+// quote like popover, but with 100% width, only left, right arrow, and no js required:
+
+.quote {
+  position: relative;
+  display: block;
+  background-color: @white;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.2);
+  .border-radius(6px);
+  .box-shadow(0 5px 10px rgba(0,0,0,.2));
+  margin-bottom: @baseFontSize;
+  .quote-inner {
+    padding: 9px 14px;
+  }
+}
+
+.quote.right {
+  margin-left: @popoverArrowOuterWidth;
+}
+
+.quote.left {
+  margin-right: @popoverArrowOuterWidth;
+}
+
+.quote .arrow,
+.quote .arrow:after {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+.quote .arrow {
+  border-width: @popoverArrowOuterWidth;
+}
+.quote .arrow:after {
+  border-width: @popoverArrowWidth;
+  content: "";
+}
+
+.quote {
+  &.right .arrow {
+    top: 30px;
+    left: -@popoverArrowOuterWidth;
+    margin-top: -@popoverArrowOuterWidth;
+    border-left-width: 0;
+    border-right-color: #999; // IE8 fallback
+    border-right-color: @popoverArrowOuterColor;
+    &:after {
+      left: 1px;
+      bottom: -@popoverArrowWidth;
+      border-left-width: 0;
+      border-right-color: @popoverArrowColor;
+    }
+  }
+  &.left .arrow {
+    top: 30px;
+    right: -@popoverArrowOuterWidth;
+    margin-top: -@popoverArrowOuterWidth;
+    border-right-width: 0;
+    border-left-color: #999; // IE8 fallback
+    border-left-color: @popoverArrowOuterColor;
+    &:after {
+      right: 1px;
+      border-right-width: 0;
+      border-left-color: @popoverArrowColor;
+      bottom: -@popoverArrowWidth;
     }
   }
 }

@@ -26,6 +26,7 @@
   box-sizing: border-box;
 }
 .panel {
+  background-color: #ffffff;
   margin-bottom: 20px;
   border: 1px solid #e5e5e5;
   border-bottom: none;
@@ -61,6 +62,73 @@
 }
 .panel .panel-footer p {
   margin: 0;
+}
+.quote {
+  position: relative;
+  display: block;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 14px;
+}
+.quote .quote-inner {
+  padding: 9px 14px;
+}
+.quote.right {
+  margin-left: 11px;
+}
+.quote.left {
+  margin-right: 11px;
+}
+.quote .arrow,
+.quote .arrow:after {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+.quote .arrow {
+  border-width: 11px;
+}
+.quote .arrow:after {
+  border-width: 10px;
+  content: "";
+}
+.quote.right .arrow {
+  top: 30px;
+  left: -11px;
+  margin-top: -11px;
+  border-left-width: 0;
+  border-right-color: #999;
+  border-right-color: rgba(0, 0, 0, 0.25);
+}
+.quote.right .arrow:after {
+  left: 1px;
+  bottom: -10px;
+  border-left-width: 0;
+  border-right-color: #ffffff;
+}
+.quote.left .arrow {
+  top: 30px;
+  right: -11px;
+  margin-top: -11px;
+  border-right-width: 0;
+  border-left-color: #999;
+  border-left-color: rgba(0, 0, 0, 0.25);
+}
+.quote.left .arrow:after {
+  right: 1px;
+  border-right-width: 0;
+  border-left-color: #ffffff;
+  bottom: -10px;
 }
 #footer {
   border-top: 2px solid #333333;
