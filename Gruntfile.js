@@ -1,5 +1,19 @@
 module.exports = function(grunt) {
-    "use strict";
+    var jsFiles = [
+        'js/bootstrap-transition.js',
+        'js/bootstrap-alert.js',
+        'js/bootstrap-button.js',
+        'js/bootstrap-carousel.js',
+        'js/bootstrap-collapse.js',
+        'js/bootstrap-dropdown.js',
+        'js/bootstrap-modal.js',
+        'js/bootstrap-tooltip.js',
+        'js/bootstrap-popover.js',
+        'js/bootstrap-scrollspy.js',
+        'js/bootstrap-tab.js',
+        'js/bootstrap-typeahead.js',
+        'js/bootstrap-affix.js'
+    ];
 
     // Project configuration.
     grunt.initConfig({
@@ -8,9 +22,8 @@ module.exports = function(grunt) {
         banner: '/**\n' + '* <%= pkg.name %>.js v<%= pkg.version %> by @fat and @mdo\n' + '* Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' + '* <%= _.pluck(pkg.licenses, "url").join(", ") %>\n' + '*/\n',
         // Task configuration.
         clean: {
-            gh1: ['docs/assets/<%= pkg.name %>.zip'],
-            gh2: ['bootstrap', '../bootstrap-gh-pages/assets/<%= pkg.name %>.zip'],
-            dist: ['bootstrap']
+            gh: ['<%= pkg.name %>.zip'],
+            dist: ['<%= pkg.name %>', '_gh_pages', '<%= pkg.name %>.zip', 'docs/assets/<%= pkg.name %>.zip']
         },
         compress: {
             gh: {
@@ -19,7 +32,7 @@ module.exports = function(grunt) {
                 },
                 expand: true,
                 src: ['<%= pkg.name %>/**/*'],
-                dest: 'docs/assets/'
+                dest: '.'
             }
         },
         concat: {
@@ -28,11 +41,11 @@ module.exports = function(grunt) {
                 stripBanners: false
             },
             bootstrap: {
-                src: ['js/bootstrap-transition.js', 'js/bootstrap-alert.js', 'js/bootstrap-button.js', 'js/bootstrap-carousel.js', 'js/bootstrap-collapse.js', 'js/bootstrap-dropdown.js', 'js/bootstrap-modal.js', 'js/bootstrap-tooltip.js', 'js/bootstrap-popover.js', 'js/bootstrap-scrollspy.js', 'js/bootstrap-tab.js', 'js/bootstrap-typeahead.js', 'js/bootstrap-affix.js'],
+                src: jsFiles,
                 dest: 'bootstrap/js/<%= pkg.name %>.js'
             },
             dist: {
-                src: ['js/bootstrap-transition.js', 'js/bootstrap-alert.js', 'js/bootstrap-button.js', 'js/bootstrap-carousel.js', 'js/bootstrap-collapse.js', 'js/bootstrap-dropdown.js', 'js/bootstrap-modal.js', 'js/bootstrap-tooltip.js', 'js/bootstrap-popover.js', 'js/bootstrap-scrollspy.js', 'js/bootstrap-tab.js', 'js/bootstrap-typeahead.js', 'js/bootstrap-affix.js'],
+                src: jsFiles,
                 dest: 'docs/assets/js/<%= pkg.name %>.js'
             }
         },
@@ -49,7 +62,13 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     src: ['docs/**/*'],
-                    dest: '../bootstrap-gh-pages/'
+                    dest: '_gh_pages/'
+                }]
+            },
+            zip: {
+                files: [{
+                    src: ['bootstrap.zip'],
+                    dest: 'docs/assets/'
                 }]
             },
             dist: {
@@ -86,8 +105,20 @@ module.exports = function(grunt) {
             }
         },
         shell: {
-            gh: {
+            /*gh: {
                 command: 'node docs/build production'
+            },*/
+            jekyll_win: {
+                command: 'chcp 65001'
+            },
+            jekyll_build: {
+                command: 'jekyll build'
+            },
+            jekyll_server: {
+                command: 'jekyll server',
+                options: {
+                    stdout: true
+                }
             },
             test: {
                 command: 'phantomjs js/tests/phantom.js "http://localhost:3000/js/tests"'
@@ -147,6 +178,10 @@ module.exports = function(grunt) {
             test: {
                 files: '<%= jshint.test.src %>',
                 tasks: ['jshint:test', 'qunit']
+            },
+            jekyll: {
+                files: ['_gh_pages/*.html'],
+                tasks: ['jekyll:dev']
             }
         }
     });
@@ -168,6 +203,7 @@ module.exports = function(grunt) {
 
     // Default task.
     grunt.registerTask('default', ['jshint', 'recess:dist', 'copy:dist', 'concat:dist', 'uglify:dist']);
+    //grunt.registerTask('build', ['default']);
 
     // Test task.
     grunt.registerTask('test', ['jshint', 'connect', 'shell:test']);
@@ -188,5 +224,6 @@ module.exports = function(grunt) {
     grunt.registerTask('bootstrap', ['bootstrap-fonts', 'bootstrap-css', 'bootstrap-js']);
 
     // Task for gh-pages 4 fat & mdo ONLY (O_O )
-    grunt.registerTask('gh-pages', ['bootstrap', 'clean:gh1', 'compress:gh', 'clean:gh2', 'shell:gh', 'copy:gh']);
+    grunt.registerTask('jekyll', [process.platform==="win32"?'shell:jekyll_win':'', 'shell:jekyll_build', 'shell:jekyll_server']);
+    grunt.registerTask('run', ['bootstrap', 'compress:docs', 'copy:zip', 'clean:gh', 'jekyll']);
 };
