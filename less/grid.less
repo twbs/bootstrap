@@ -25,6 +25,7 @@
 .col-9,
 .col-10,
 .col-11,
+.col-12,
 .col-lg-1,
 .col-lg-2,
 .col-lg-3,
@@ -35,7 +36,8 @@
 .col-lg-8,
 .col-lg-9,
 .col-lg-10,
-.col-lg-11 {
+.col-lg-11,
+.col-lg-12 {
   position: relative;
   // Float and set width: 100%; for easy stacking on mobile devices
   float: left;
@@ -61,6 +63,7 @@
 .col-9  { width: percentage((9 / @grid-columns)); }
 .col-10 { width: percentage((10/ @grid-columns)); }
 .col-11 { width: percentage((11/ @grid-columns)); }
+.col-12 { width: 100%; }
 
 // Medium columns (tablets and up)
 @media (min-width: @screen-tablet) {
@@ -75,6 +78,7 @@
   .col-md-9  { width: percentage((9 / @grid-columns)); }
   .col-md-10 { width: percentage((10/ @grid-columns)); }
   .col-md-11 { width: percentage((11/ @grid-columns)); }
+  .col-md-12 { width: 100%; }
 
   // Offsets
   .col-offset-1  { margin-left: percentage((1 / @grid-columns)); }
@@ -128,6 +132,7 @@
   .col-lg-9  { width: percentage((9 / @grid-columns)); }
   .col-lg-10 { width: percentage((10/ @grid-columns)); }
   .col-lg-11 { width: percentage((11/ @grid-columns)); }
+  .col-lg-12 { width: 100%; }
 }
 
 // Responsive: Tablets and up
