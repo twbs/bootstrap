@@ -197,15 +197,15 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
     <h3 id="grid-small">Small device grid</h3>
     <p>Use the small device grid classes, like <code>.col-sm-6</code>, to create columned layouts on phone and tablet devices (anything under 768px). Offsets, pushes, and pulls are not available with the small grid at this time.</p>
     <div class="row show-grid">
-      <div class="col-lg-4 col-sm-6">4 cols, 6 small cols</div>
-      <div class="col-lg-4 col-sm-6">4 cols, 6 small cols</div>
-      <div class="col-lg-4 col-sm-12">4 cols, 12 small cols</div>
+      <div class="col-sm-6 col-lg-4">6 small cols, 4 large cols</div>
+      <div class="col-sm-6 col-lg-4">6 small cols, 4 large cols</div>
+      <div class="col-sm-12 col-lg-4">12 small cols, 4 large cols</div>
     </div>
 {% highlight html %}
 <div class="row">
-  <div class="col-lg-4 col-sm-6">4 cols, 6 small cols</div>
-  <div class="col-lg-4 col-sm-6">4 cols, 6 small cols</div>
-  <div class="col-lg-4 col-sm-12">4 cols, 12 small cols</div>
+  <div class="col-sm-6 col-lg-4">6 small cols, 4 large cols</div>
+  <div class="col-sm-6 col-lg-4">6 small cols, 4 large cols</div>
+  <div class="col-sm-12 col-lg-4">12 small cols, 4 large cols</div>
 </div>
 {% endhighlight %}
 
