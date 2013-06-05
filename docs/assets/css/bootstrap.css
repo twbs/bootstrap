@@ -1544,6 +1544,12 @@ fieldset[disabled] input[type="checkbox"] {
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #dbc59e;
 }
 
+.has-warning .input-group-addon {
+  color: #c09853;
+  background-color: #fcf8e3;
+  border-color: #c09853;
+}
+
 .has-error .control-label {
   color: #b94a48;
 }
@@ -1561,6 +1567,12 @@ fieldset[disabled] input[type="checkbox"] {
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
 }
 
+.has-error .input-group-addon {
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #b94a48;
+}
+
 .has-success .control-label {
   color: #468847;
 }
@@ -1576,6 +1588,12 @@ fieldset[disabled] input[type="checkbox"] {
   border-color: #356635;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
+}
+
+.has-success .input-group-addon {
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #468847;
 }
 
 input:focus:invalid,
