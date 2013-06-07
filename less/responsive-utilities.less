@@ -20,33 +20,33 @@
 // Visibility utilities
 
 // For desktops
-.visible-phone     { display: none !important; }
-.visible-tablet    { display: none !important; }
+.visible-phone     { &, span& {display: none !important; }}
+.visible-tablet    { &, span& {display: none !important; }}
 .hidden-phone      { }
 .hidden-tablet     { }
-.hidden-desktop    { display: none !important; }
-.visible-desktop   { display: inherit !important; }
+.hidden-desktop    { &, span& {display: none !important; }}
+.visible-desktop   { display: inherit !important; span& { display: inline !important;}}
 
 // Tablets & small desktops only
 @media (min-width: 768px) and (max-width: 979px) {
   // Hide everything else
-  .hidden-desktop    { display: inherit !important; }
-  .visible-desktop   { display: none !important ; }
+  .hidden-desktop    { display: inherit !important; span& { display: inline !important;}}
+  .visible-desktop   { &, span& {display: none !important; }}
   // Show
-  .visible-tablet    { display: inherit !important; }
+  .visible-tablet    { display: inherit !important; span& { display: inline !important;}}
   // Hide
-  .hidden-tablet     { display: none !important; }
+  .hidden-tablet     { &, span& {display: none !important; }}
 }
 
 // Phones only
 @media (max-width: 767px) {
   // Hide everything else
-  .hidden-desktop    { display: inherit !important; }
-  .visible-desktop   { display: none !important; }
+  .hidden-desktop    { display: inherit !important; span& { display: inline !important;}}
+  .visible-desktop   { &, span& {display: none !important; }}
   // Show
-  .visible-phone     { display: inherit !important; } // Use inherit to restore previous behavior
+  .visible-phone     { display: inherit !important; span& { display: inline !important;}} // Use inherit to restore previous behavior
   // Hide
-  .hidden-phone      { display: none !important; }
+  .hidden-phone      { &, span& {display: none !important; }}
 }
 
 // Print utilities
