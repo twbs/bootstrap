@@ -79,7 +79,7 @@ bootstrap/js/*.js: js/*.js
 	rm bootstrap/js/copyright.js bootstrap/js/bootstrap.min.tmp.js
 
 #
-# CSS COMPLILE
+# CSS COMPILE
 #
 
 bootstrap-css: bootstrap/css/*.css
