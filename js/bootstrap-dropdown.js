@@ -27,7 +27,9 @@
   * ========================= */
 
   var toggle = '.dropdown-toggle'
-    , Dropdown = function (element) {}
+    , Dropdown = function (element) {
+        var $el = $(element).on('click.dropdown.data-api', this.toggle)
+      }
 
   Dropdown.prototype = {
 
