@@ -63,9 +63,64 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
     <div class="page-header">
       <h1>Grid system</h1>
     </div>
-    <p class="lead">Bootstrap includes a responsive, percent-based grid system that appropriately scales up to 12 columns as the device or viewport size increases&mdash;in other words, it's mobile first. It includes <a href="#grid-example">predefined classes</a> for this, as well as powerful <a href="#grid-less">mixins for generating semantic layouts</a>.</p>
+    <p class="lead">Bootstrap includes a responsive, mobile-first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. It includes <a href="#grid-example">predefined classes</a> for easy layout options, as well as powerful <a href="#grid-less">mixins for generating more semantic layouts</a>.</p>
 
-    <h3 id="grid-example">Grid example</h3>
+    <h3 id="grid-options">Grid options</h3>
+    <p>Multiple device grids, columns, offsets, and column ordering.</p>
+    <table class="table table-bordered table-striped bs-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>
+            Tiny grid
+            <small>Phones (&lt;480px)</small>
+          </th>
+          <th>
+            Small grid
+            <small>Tablets (&lt;768px)</small>
+          </th>
+          <th>
+            Medium-large grid
+            <small>Destkops (&gt;768px)</small>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Grid behavior</th>
+          <td>Horizontal at all times</td>
+          <td colspan="2">Collapsed to start, horizontal above breakpoints</td>
+        </tr>
+        <tr>
+          <th>Class prefix</th>
+          <td><code>.col-</code></td>
+          <td><code>.col-sm-</code></td>
+          <td><code>.col-lg-</code></td>
+        </tr>
+        <tr>
+          <th># of columns</th>
+          <td colspan="3">12</td>
+        </tr>
+        <tr>
+          <th>Nestable</th>
+          <td colspan="3">Yes</td>
+        </tr>
+        <tr>
+          <th>Offsets</th>
+          <td class="text-muted">N/A</td>
+          <td colspan="2">Yes</td>
+        </tr>
+        <tr>
+          <th>Column ordering</th>
+          <td class="text-muted">N/A</td>
+          <td colspan="2">Yes</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 id="grid-examples">Grid examples</h3>
+    <p>Bootstrap's grid system includes three levels of column sizing&mdash;phone, tablet, and desktop and up. Use each level in conjunction with the others for more control, or stick to the desktop classes for single-column, stacked mobile views.</p>
+
     <p>On mobile devices, the grid starts out stacked. Above 768px, it becomes horizontal as media queries kick in to apply <code>float</code>s and <code>width</code>s. To create a basic grid layout, wrap a series of <code>.col-lg-*</code> elements within a <code>.row</code>. As this is a 12-column grid, each <code>.col-lg-*</code> spans a number of those 12 columns, and should always add up to 12 for each row (or the number of columns in the parent), even at mobile resolutions.</p>
     <p>Be sure to checkout the <a href="../examples/grid/">full-page grid example</a> as well.</p>
     <div class="bs-docs-grid">

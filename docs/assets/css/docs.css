@@ -520,6 +520,7 @@ body {
 
 /* Utility classes table
 ------------------------- */
+.bs-table th small,
 .responsive-utilities th small {
   display: block;
   font-weight: normal;

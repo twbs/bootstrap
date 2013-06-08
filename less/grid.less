@@ -26,6 +26,18 @@
 .col-10,
 .col-11,
 .col-12,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
 .col-lg-1,
 .col-lg-2,
 .col-lg-3,
@@ -49,9 +61,13 @@
   padding-right: (@grid-gutter-width / 2);
 }
 
-// Grid column sizing
 
-// Small columns (phones and up)
+
+//
+// Container and grid column sizing
+//
+
+// Tiny device columns (smartphones)
 .col-1  { width: percentage((1 / @grid-columns)); }
 .col-2  { width: percentage((2 / @grid-columns)); }
 .col-3  { width: percentage((3 / @grid-columns)); }
@@ -65,20 +81,24 @@
 .col-11 { width: percentage((11/ @grid-columns)); }
 .col-12 { width: 100%; }
 
-// Medium columns (tablets and up)
+// Small device columns (phones to tablets)
 @media (min-width: @screen-tablet) {
-  .col-md-1  { width: percentage((1 / @grid-columns)); }
-  .col-md-2  { width: percentage((2 / @grid-columns)); }
-  .col-md-3  { width: percentage((3 / @grid-columns)); }
-  .col-md-4  { width: percentage((4 / @grid-columns)); }
-  .col-md-5  { width: percentage((5 / @grid-columns)); }
-  .col-md-6  { width: percentage((6 / @grid-columns)); }
-  .col-md-7  { width: percentage((7 / @grid-columns)); }
-  .col-md-8  { width: percentage((8 / @grid-columns)); }
-  .col-md-9  { width: percentage((9 / @grid-columns)); }
-  .col-md-10 { width: percentage((10/ @grid-columns)); }
-  .col-md-11 { width: percentage((11/ @grid-columns)); }
-  .col-md-12 { width: 100%; }
+  .container {
+    max-width: @container-tablet;
+  }
+
+  .col-sm-1  { width: percentage((1 / @grid-columns)); }
+  .col-sm-2  { width: percentage((2 / @grid-columns)); }
+  .col-sm-3  { width: percentage((3 / @grid-columns)); }
+  .col-sm-4  { width: percentage((4 / @grid-columns)); }
+  .col-sm-5  { width: percentage((5 / @grid-columns)); }
+  .col-sm-6  { width: percentage((6 / @grid-columns)); }
+  .col-sm-7  { width: percentage((7 / @grid-columns)); }
+  .col-sm-8  { width: percentage((8 / @grid-columns)); }
+  .col-sm-9  { width: percentage((9 / @grid-columns)); }
+  .col-sm-10 { width: percentage((10/ @grid-columns)); }
+  .col-sm-11 { width: percentage((11/ @grid-columns)); }
+  .col-sm-12 { width: 100%; }
 
   // Offsets
   .col-offset-1  { margin-left: percentage((1 / @grid-columns)); }
@@ -119,8 +139,11 @@
   .col-pull-11 { right: percentage((11/ @grid-columns)); }
 }
 
+// Medium and large device columns (desktop and up)
 @media (min-width: @screen-desktop) {
-  // Large columns (desktop and up)
+  .container {
+    max-width: @container-desktop;
+  }
   .col-lg-1  { width: percentage((1 / @grid-columns)); }
   .col-lg-2  { width: percentage((2 / @grid-columns)); }
   .col-lg-3  { width: percentage((3 / @grid-columns)); }
@@ -135,22 +158,8 @@
   .col-lg-12 { width: 100%; }
 }
 
-// Responsive: Tablets and up
-@media screen and (min-width: @screen-tablet) {
-  .container {
-    max-width: @container-tablet;
-  }
-}
-
-// Responsive: Desktops and up
-@media screen and (min-width: @screen-desktop) {
-  .container {
-    max-width: @container-desktop;
-  }
-}
-
-// Responsive: Large desktops and up
-@media screen and (min-width: @screen-large-desktop) {
+// Large desktops and up
+@media (min-width: @screen-large-desktop) {
   .container {
     max-width: @container-large-desktop;
   }
