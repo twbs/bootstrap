@@ -29,8 +29,8 @@
 	$(document).off('click.bs.dropdown.clearMenus').on('click.bs.dropdown.clearMenus', clearMenus)
 	
     var $el = $(element).on('click.bs.dropdown', this.toggle)
-	var $parent = getParent($el)
-	  .on('click.bs.dropdown', 'form', function (e) { e.stopPropagation() })
+    var $parent = getParent($el)
+      .on('click.bs.dropdown', 'form', function (e) { e.stopPropagation() })
       .on('keydown.bs.dropdown', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
   }
 
