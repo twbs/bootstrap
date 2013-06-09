@@ -23,27 +23,37 @@ $(function () {
       })
 
       asyncTest("should trigger affixed event after affix", function(){
+        expect(2)
         var template = $('<div id="affixTarget"><ul><li>Please affix</li><li>And unaffix</li></ul></div><div id="affixAfter" style="height: 20000px; display:block;"></div>')
         template.appendTo("body");
         var affixer = $('#affixTarget').affix({
           offset: $('#affixTarget ul').position()
         })
-        expect(2)
         
+        stop()
         $('#affixTarget').on('affixed', function(e){
           ok(true, 'affixed event triggered')
-          $('#affixTarget').remove()
-          $('#affixAfter').remove()
           start()
         })
         
         $('#affixTarget').on('unaffixed', function(e){
           ok(true, 'unaffixed event triggered')
-          window.scroll(0,-500)
           start()
         })
 
-        window.scroll(0,500)
+        $('html,body').animate({
+          scrollTop: $(window).scrollTop() + 5000
+        },5)
+        
+        $('html,body').animate({
+          scrollTop: $(window).scrollTop() - 5000
+        },5)
+
+        setTimeout(function(){
+          $('#affixTarget').remove()
+          $('#affixAfter').remove()
+        },30) //Don't remove until after the events fire
+        
       })
 
 })
