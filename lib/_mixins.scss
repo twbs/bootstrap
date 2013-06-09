@@ -516,11 +516,11 @@
 }
 
 @mixin col-push-($columns, $grid-columns) {
-  width: percentage(($columns / $grid-columns));
+  left: percentage(($columns / $grid-columns));
 }
 
 @mixin col-pull-($columns, $grid-columns) {
-  width: percentage(($columns / $grid-columns));
+  right: percentage(($columns / $grid-columns));
 }
 
 
