@@ -44,12 +44,14 @@
       , offset = this.options.offset
       , offsetBottom = offset.bottom
       , offsetTop = offset.top
+      , cssPositionBottom = this.options.positionbottom || false
       , reset = 'affix affix-top affix-bottom'
       , affix
 
     if (typeof offset != 'object') offsetBottom = offsetTop = offset
     if (typeof offsetTop == 'function') offsetTop = offset.top()
     if (typeof offsetBottom == 'function') offsetBottom = offset.bottom()
+    if (typeof cssPositionBottom == 'function') cssPositionBottom = this.options.positionbottom()
 
     affix = this.unpin != null && (scrollTop + this.unpin <= position.top) ?
       false    : offsetBottom != null && (position.top + this.$element.height() >= scrollHeight - offsetBottom) ?
@@ -62,6 +64,8 @@
     this.unpin = affix == 'bottom' ? position.top - scrollTop : null
 
     this.$element.removeClass(reset).addClass('affix' + (affix ? '-' + affix : ''))
+    this.$element.css('bottom',(affix == 'bottom' && cssPositionBottom)?cssPositionBottom:'');
+    
   }
 
 
