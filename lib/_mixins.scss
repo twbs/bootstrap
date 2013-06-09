@@ -512,7 +512,7 @@
 }
 
 @mixin col-offset-($columns, $grid-columns) {
-  width: percentage(($columns / $grid-columns));
+  margin-left: percentage(($columns / $grid-columns));
 }
 
 @mixin col-push-($columns, $grid-columns) {
