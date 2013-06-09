@@ -43,16 +43,16 @@ $(function () {
 
         $('html,body').animate({
           scrollTop: $(window).scrollTop() + 5000
-        },5)
+        },10)
         
         $('html,body').animate({
           scrollTop: $(window).scrollTop() - 5000
-        },5)
+        },10)
 
         setTimeout(function(){
           $('#affixTarget').remove()
           $('#affixAfter').remove()
-        },30) //Don't remove until after the events fire
+        },70)
         
       })
 
