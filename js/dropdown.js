@@ -24,7 +24,7 @@
   // =========================
 
   var backdrop = '.dropdown-backdrop'
-  var toggle   = '.dropdown-toggle'
+  var toggle   = '[data-toggle="dropdown"]'
   var Dropdown = function (element) {
 	$(document).off('click.bs.dropdown.clearMenus').on('click.bs.dropdown.clearMenus', clearMenus)
 	
