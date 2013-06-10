@@ -493,3 +493,23 @@
     background-color: @background-color;
   }  
 }
+
+// Generate font-face declarations
+.font-face(@family, @filename, @filepath, @weight: normal, @style: normal) {
+  @font-eot:    e(%("%d%d.eot%d", @filepath, @filename, @cacheBuster));
+  @font-eot-ie: e(%("%d%d.eot%d#iefix", @filepath, @filename, @cacheBuster));
+  @font-woff:   e(%("%d%d.woff%d", @filepath, @filename, @cacheBuster));
+  @font-ttf:    e(%("%d%d.ttf%d", @filepath, @filename, @cacheBuster));
+  @font-svg:    e(%("%d%d.svg%d#%d", @filepath, @filename, @cacheBuster, @filename));
+
+  @font-face {
+    font-family: '@{family}';
+    src: url('@{font-eot}');
+    src: url('@{font-eot-ie}') format('embedded-opentype'),
+         url('@{font-svg}') format('svg'),
+         url('@{font-woff}') format('woff'),
+         url('@{font-ttf}') format('truetype');
+    font-weight:  @weight;
+    font-style:   @style;
+  }
+}
