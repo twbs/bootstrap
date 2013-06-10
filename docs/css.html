@@ -63,88 +63,220 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
     <div class="page-header">
       <h1>Grid system</h1>
     </div>
-    <p class="lead">Bootstrap includes a responsive, percent-based grid system that appropriately scales up to 12 columns as the device or viewport size increases&mdash;in other words, it's mobile first. It includes <a href="#grid-example">predefined classes</a> for this, as well as powerful <a href="#grid-less">mixins for generating semantic layouts</a>.</p>
+    <p class="lead">Bootstrap includes a responsive, mobile-first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. It includes <a href="#grid-example-basic">predefined classes</a> for easy layout options, as well as powerful <a href="#grid-less">mixins for generating more semantic layouts</a>.</p>
 
-    <h3 id="grid-example">Grid example</h3>
-    <p>On mobile devices, the grid starts out stacked. Above 768px, it becomes horizontal as media queries kick in to apply <code>float</code>s and <code>width</code>s. To create a basic grid layout, wrap a series of <code>.col-lg-*</code> elements within a <code>.row</code>. As this is a 12-column grid, each <code>.col-lg-*</code> spans a number of those 12 columns, and should always add up to 12 for each row (or the number of columns in the parent), even at mobile resolutions.</p>
-    <p>Be sure to checkout the <a href="../examples/grid/">full-page grid example</a> as well.</p>
+    <h3 id="grid-options">Grid options</h3>
+    <p>See how aspects of the Bootstrap grid system work across multiple devices with a handy table.</p>
+    <table class="table table-bordered table-striped bs-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>
+            Tiny grid
+            <small>Phones (&lt;480px)</small>
+          </th>
+          <th>
+            Small grid
+            <small>Tablets (&lt;768px)</small>
+          </th>
+          <th>
+            Medium-large grid
+            <small>Destkops (&gt;768px)</small>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Grid behavior</th>
+          <td>Horizontal at all times</td>
+          <td colspan="2">Collapsed to start, horizontal above breakpoints</td>
+        </tr>
+        <tr>
+          <th>Class prefix</th>
+          <td><code>.col-</code></td>
+          <td><code>.col-sm-</code></td>
+          <td><code>.col-lg-</code></td>
+        </tr>
+        <tr>
+          <th># of columns</th>
+          <td colspan="3">12</td>
+        </tr>
+        <tr>
+          <th>Nestable</th>
+          <td colspan="3">Yes</td>
+        </tr>
+        <tr>
+          <th>Offsets</th>
+          <td class="text-muted">N/A</td>
+          <td colspan="2">Yes</td>
+        </tr>
+        <tr>
+          <th>Column ordering</th>
+          <td class="text-muted">N/A</td>
+          <td colspan="2">Yes</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 id="grid-example-basic">Example: Stacked-to-horizontal</h3>
+    <p>Using a single set of grid classes, you can create a basic grid system that starts out stacked on mobile and tablet devices before becoming horizontal on desktop devices.</p>
     <div class="bs-docs-grid">
       <div class="row show-grid">
-        <div class="col col-lg-1">1</div>
-        <div class="col col-lg-1">1</div>
-        <div class="col col-lg-1">1</div>
-        <div class="col col-lg-1">1</div>
-        <div class="col col-lg-1">1</div>
-        <div class="col col-lg-1">1</div>
-        <div class="col col-lg-1">1</div>
-        <div class="col col-lg-1">1</div>
-        <div class="col col-lg-1">1</div>
-        <div class="col col-lg-1">1</div>
-        <div class="col col-lg-1">1</div>
-        <div class="col col-lg-1">1</div>
+        <div class="col-lg-1">1</div>
+        <div class="col-lg-1">1</div>
+        <div class="col-lg-1">1</div>
+        <div class="col-lg-1">1</div>
+        <div class="col-lg-1">1</div>
+        <div class="col-lg-1">1</div>
+        <div class="col-lg-1">1</div>
+        <div class="col-lg-1">1</div>
+        <div class="col-lg-1">1</div>
+        <div class="col-lg-1">1</div>
+        <div class="col-lg-1">1</div>
+        <div class="col-lg-1">1</div>
       </div>
       <div class="row show-grid">
-        <div class="col col-lg-4">4</div>
-        <div class="col col-lg-4">4</div>
-        <div class="col col-lg-4">4</div>
+        <div class="col-lg-8">8</div>
+        <div class="col-lg-4">4</div>
       </div>
       <div class="row show-grid">
-        <div class="col col-lg-6">6</div>
-        <div class="col col-lg-6">6</div>
+        <div class="col-lg-4">4</div>
+        <div class="col-lg-4">4</div>
+        <div class="col-lg-4">4</div>
+      </div>
+      <div class="row show-grid">
+        <div class="col-lg-6">6</div>
+        <div class="col-lg-6">6</div>
       </div>
     </div>
 {% highlight html %}
 <div class="row">
-  <div class="col col-lg-1">1</div>
-  <div class="col col-lg-1">1</div>
-  <div class="col col-lg-1">1</div>
-  <div class="col col-lg-1">1</div>
-  <div class="col col-lg-1">1</div>
-  <div class="col col-lg-1">1</div>
-  <div class="col col-lg-1">1</div>
-  <div class="col col-lg-1">1</div>
-  <div class="col col-lg-1">1</div>
-  <div class="col col-lg-1">1</div>
-  <div class="col col-lg-1">1</div>
-  <div class="col col-lg-1">1</div>
+  <div class="col-lg-1">1</div>
+  <div class="col-lg-1">1</div>
+  <div class="col-lg-1">1</div>
+  <div class="col-lg-1">1</div>
+  <div class="col-lg-1">1</div>
+  <div class="col-lg-1">1</div>
+  <div class="col-lg-1">1</div>
+  <div class="col-lg-1">1</div>
+  <div class="col-lg-1">1</div>
+  <div class="col-lg-1">1</div>
+  <div class="col-lg-1">1</div>
+  <div class="col-lg-1">1</div>
+</div>
+<div class="row show-grid">
+  <div class="col-lg-8">8</div>
+  <div class="col-lg-4">4</div>
 </div>
 <div class="row">
-  <div class="col col-lg-4">4</div>
-  <div class="col col-lg-4">4</div>
-  <div class="col col-lg-4">4</div>
+  <div class="col-lg-4">4</div>
+  <div class="col-lg-4">4</div>
+  <div class="col-lg-4">4</div>
 </div>
 <div class="row">
-  <div class="col col-lg-6">6</div>
-  <div class="col col-lg-6">6</div>
+  <div class="col-lg-6">6</div>
+  <div class="col-lg-6">6</div>
 </div>
 {% endhighlight %}
 
-    <h3 id="grid-offsetting">Offsetting columns</h3>
-    <p>Move columns to the right using <code>.col-offset-*</code> classes. These classes increase the left margin of a column by <code>*</code> columns. For example, <code>.col-offset-4</code> moves <code>.col col-lg-4</code> over four columns.</p>
+    <h3 id="grid-example-mixed">Example: Combining mobile with desktop</h3>
+    <p>Don't want your columns to simply stack in smaller devices? Use the small device grid system by adding <code>.col-*</code> classes to the existing <code>.col-lg-*</code> ones. See the example below for a better idea of how it all works.</p>
     <div class="bs-docs-grid">
       <div class="row show-grid">
-        <div class="col col-lg-4">4</div>
-        <div class="col col-lg-4 col-offset-4">4 offset 4</div>
+        <div class="col-12 col-lg-8">8</div>
+        <div class="col-6 col-lg-4">4</div>
+      </div>
+      <div class="row show-grid">
+        <div class="col-6 col-lg-4">4</div>
+        <div class="col-6 col-lg-4">4</div>
+        <div class="col-6 col-lg-4">4</div>
+      </div>
+      <div class="row show-grid">
+        <div class="col-6 col-lg-6">6</div>
+        <div class="col-6 col-lg-6">6</div>
+      </div>
+    </div>
+{% highlight html %}
+<div class="row">
+  <div class="col-12 col-lg-8">8</div>
+  <div class="col-6 col-lg-4">4</div>
+</div>
+<div class="row">
+  <div class="col-6 col-lg-4">4</div>
+  <div class="col-6 col-lg-4">4</div>
+  <div class="col-6 col-lg-4">4</div>
+</div>
+<div class="row">
+  <div class="col-6 col-lg-6">6</div>
+  <div class="col-6 col-lg-6">6</div>
+</div>
+{% endhighlight %}
+
+    <h3 id="grid-example-mixed-complete">Example: Mobile, tablet, and desktop</h3>
+    <p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>.col-sm-*</code> classes.</p>
+    <div class="bs-docs-grid">
+      <div class="row show-grid">
+        <div class="col-12 col-sm-8 col-lg-8">.col-12 .col-lg-8</div>
+        <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+      </div>
+      <div class="row show-grid">
+        <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+        <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+        <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+      </div>
+      <div class="row show-grid">
+        <div class="col-6 col-sm-6 col-lg-6">.col-6 .col-lg-6</div>
+        <div class="col-6 col-sm-6 col-lg-6">.col-6 .col-lg-6</div>
+      </div>
+    </div>
+{% highlight html %}
+<div class="row">
+  <div class="col-12 col-sm-8 col-lg-8">.col-12 .col-lg-8</div>
+  <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+</div>
+<div class="row">
+  <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+  <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+  <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+</div>
+<div class="row">
+  <div class="col-6 col-sm-6 col-lg-6">.col-6 .col-lg-6</div>
+  <div class="col-6 col-sm-6 col-lg-6">.col-6 .col-lg-6</div>
+</div>
+{% endhighlight %}
+
+    <div class="bs-callout">
+      <h4>Need more examples?</h4>
+      <p>We dive into more grid layouts in a separte page, free of chrome and documentation to better show you the power of the grid.</p>
+      <p><a class="btn btn-danger" target="_blank" href="../examples/grid/">More grid examples</a></p>
+    </div>
+
+    <h3 id="grid-offsetting">Offsetting columns</h3>
+    <p>Move columns to the right using <code>.col-offset-*</code> classes. These classes increase the left margin of a column by <code>*</code> columns. For example, <code>.col-offset-4</code> moves <code>.col-lg-4</code> over four columns.</p>
+    <div class="bs-docs-grid">
+      <div class="row show-grid">
+        <div class="col-lg-4">4</div>
+        <div class="col-lg-4 col-offset-4">4 offset 4</div>
       </div><!-- /row -->
       <div class="row show-grid">
-        <div class="col col-lg-3 col-offset-3">3 offset 3</div>
-        <div class="col col-lg-3 col-offset-3">3 offset 3</div>
+        <div class="col-lg-3 col-offset-3">3 offset 3</div>
+        <div class="col-lg-3 col-offset-3">3 offset 3</div>
       </div><!-- /row -->
       <div class="row show-grid">
-        <div class="col col-lg-6 col-offset-3">6 offset 3</div>
+        <div class="col-lg-6 col-offset-3">6 offset 3</div>
       </div><!-- /row -->
     </div>
 {% highlight html %}
 <div class="row">
-  <div class="col col-lg-4">...</div>
-  <div class="col col-lg-4 col-offset-4">...</div>
+  <div class="col-lg-4">...</div>
+  <div class="col-lg-4 col-offset-4">...</div>
 </div>
 <div class="row">
-  <div class="col col-lg-3 col-offset-3">3 offset 3</div>
-  <div class="col col-lg-3 col-offset-3">3 offset 3</div>
+  <div class="col-lg-3 col-offset-3">3 offset 3</div>
+  <div class="col-lg-3 col-offset-3">3 offset 3</div>
 </div>
 <div class="row">
-  <div class="col col-lg-6 col-offset-3">...</div>
+  <div class="col-lg-6 col-offset-3">...</div>
 </div>
 {% endhighlight %}
 
@@ -152,13 +284,13 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
     <h3 id="grid-nesting">Nesting columns</h3>
     <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.col-lg-*</code> columns within an existing <code>.col-lg-*</code> column. Nested rows should include a set of columns that add up to 12.</p>
     <div class="row show-grid">
-      <div class="col col-lg-9">
+      <div class="col-lg-9">
         Level 1: 9 columns
         <div class="row show-grid">
-          <div class="col col-lg-6">
+          <div class="col-lg-6">
             Level 2: 6 columns
           </div>
-          <div class="col col-lg-6">
+          <div class="col-lg-6">
             Level 2: 6 columns
           </div>
         </div>
@@ -166,13 +298,13 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
     </div>
 {% highlight html %}
 <div class="row">
-  <div class="col col-lg-9">
+  <div class="col-lg-9">
     Level 1: 9 columns
     <div class="row">
-      <div class="col col-lg-6">
+      <div class="col-lg-6">
         Level 2: 6 columns
       </div>
-      <div class="col col-lg-6">
+      <div class="col-lg-6">
         Level 2: 6 columns
       </div>
     </div>
@@ -183,29 +315,14 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
     <h3 id="grid-column-ordering">Column ordering</h3>
     <p>Easily change the order of our built-in grid columns with <code>.col-push-*</code> and <code>.col-pull-*</code> modifier classes.</p>
     <div class="row show-grid">
-      <div class="col col-lg-9 col-push-3">9</div>
-      <div class="col col-lg-3 col-pull-9">3</div>
+      <div class="col-lg-9 col-push-3">9</div>
+      <div class="col-lg-3 col-pull-9">3</div>
     </div>
 
 {% highlight html %}
 <div class="row show-grid">
-  <div class="col col-lg-9 col-push-3">9</div>
-  <div class="col col-lg-3 col-pull-9">3</div>
-</div>
-{% endhighlight %}
-
-    <h3 id="grid-small">Small device grid</h3>
-    <p>Use the small device grid classes, like <code>.col-sm-6</code>, to create columned layouts on phone and tablet devices (anything under 768px). Offsets, pushes, and pulls are not available with the small grid at this time.</p>
-    <div class="row show-grid">
-      <div class="col col-lg-4 col-sm-6">4 cols, 6 small cols</div>
-      <div class="col col-lg-4 col-sm-6">4 cols, 6 small cols</div>
-      <div class="col col-lg-4 col-sm-12">4 cols, 12 small cols</div>
-    </div>
-{% highlight html %}
-<div class="row">
-  <div class="col col-lg-4 col-sm-6">4 cols, 6 small cols</div>
-  <div class="col col-lg-4 col-sm-6">4 cols, 6 small cols</div>
-  <div class="col col-lg-4 col-sm-12">4 cols, 12 small cols</div>
+  <div class="col-lg-9 col-push-3">9</div>
+  <div class="col-lg-3 col-pull-9">3</div>
 </div>
 {% endhighlight %}
 
@@ -504,7 +621,7 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
 {% highlight html %}
 <blockquote>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <small>Someone famous <cite title="Source Title">Source Title</cite></small>
+  <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
 </blockquote>
 {% endhighlight %}
 
@@ -918,8 +1035,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Use contextual classes to color table rows.</p>
     <table class="table table-bordered table-striped">
       <colgroup>
-        <col class="col col-lg-1">
-        <col class="col col-lg-7">
+        <col class="col-lg-1">
+        <col class="col-lg-7">
       </colgroup>
       <thead>
         <tr>
@@ -1078,14 +1195,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout.</p>
     <form class="bs-example form-horizontal">
       <div class="row">
-        <label for="inputEmail" class="col col-lg-2 control-label">Email</label>
-        <div class="col col-lg-10">
+        <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+        <div class="col-lg-10">
           <input type="text" id="inputEmail" placeholder="Email">
         </div>
       </div>
       <div class="row">
-        <label for="" class="col col-lg-2 control-label">Password</label>
-        <div class="col col-lg-10">
+        <label for="" class="col-lg-2 control-label">Password</label>
+        <div class="col-lg-10">
           <input type="password" id="inputPassword" placeholder="Password">
           <div class="checkbox">
             <label>
@@ -1093,7 +1210,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             </label>
           </div>
         </div>
-        <div class="col col-lg-10 col-offset-2">
+        <div class="col-lg-10 col-offset-2">
           <button type="submit" class="btn btn-default">Sign in</button>
         </div>
       </div>
@@ -1101,14 +1218,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% highlight html %}
 <form class="form-horizontal">
   <div class="row">
-    <label for="inputEmail" class="col col-lg-2 control-label">Email</label>
-    <div class="col col-lg-10">
+    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+    <div class="col-lg-10">
       <input type="text" id="inputEmail" placeholder="Email">
     </div>
   </div>
   <div class="row">
-    <label for="" class="col col-lg-2 control-label">Password</label>
-    <div class="col col-lg-10">
+    <label for="" class="col-lg-2 control-label">Password</label>
+    <div class="col-lg-10">
       <input type="password" id="inputPassword" placeholder="Password">
       <div class="checkbox">
         <label>
@@ -1116,7 +1233,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         </label>
       </div>
     </div>
-    <div class="col col-lg-10 col-offset-2">
+    <div class="col-lg-10 col-offset-2">
       <button type="submit" class="btn btn-default">Sign in</button>
     </div>
   </div>
@@ -1400,34 +1517,34 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 
     <form class="bs-example">
-      <div class="input-group col col-lg-9">
+      <div class="input-group col-lg-9">
         <span class="input-group-addon">@</span>
         <input type="text" placeholder="Username">
       </div>
       <br>
-      <div class="input-group col col-lg-6">
+      <div class="input-group col-lg-6">
         <input type="text">
         <span class="input-group-addon">.00</span>
       </div>
       <br>
-      <div class="input-group col col-lg-3">
+      <div class="input-group col-lg-3">
         <span class="input-group-addon">$</span>
         <input type="text">
         <span class="input-group-addon">.00</span>
       </div>
     </form>
 {% highlight html %}
-<div class="input-group col col-lg-9">
+<div class="input-group col-lg-9">
   <span class="input-group-addon">@</span>
   <input type="text" placeholder="Username">
 </div>
 
-<div class="input-group col col-lg-6">
+<div class="input-group col-lg-6">
   <input type="text">
   <span class="input-group-addon">.00</span>
 </div>
 
-<div class="input-group col col-lg-3">
+<div class="input-group col-lg-3">
   <span class="input-group-addon">$</span>
   <input type="text">
   <span class="input-group-addon">.00</span>
@@ -1437,33 +1554,33 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h4>Optional sizes</h4>
     <p>Add the relative form sizing classes to the `.input-group-addon`.</p>
     <form class="bs-example">
-      <div class="input-group col col-lg-9">
+      <div class="input-group col-lg-9">
         <span class="input-group-addon input-large">@</span>
         <input type="text" class="input-large" placeholder="Username">
       </div>
       <br>
-      <div class="input-group col col-lg-9">
+      <div class="input-group col-lg-9">
         <span class="input-group-addon">@</span>
         <input type="text" placeholder="Username">
       </div>
       <br>
-      <div class="input-group col col-lg-9">
+      <div class="input-group col-lg-9">
         <span class="input-group-addon input-small">@</span>
         <input type="text" class="input-small" placeholder="Username">
       </div>
     </form>
 {% highlight html %}
-<div class="input-group col col-lg-9">
+<div class="input-group col-lg-9">
   <span class="input-group-addon input-large">@</span>
   <input type="text" class="input-large" placeholder="Username">
 </div>
 
-<div class="input-group col col-lg-9">
+<div class="input-group col-lg-9">
   <span class="input-group-addon">@</span>
   <input type="text" placeholder="Username">
 </div>
 
-<div class="input-group col col-lg-9">
+<div class="input-group col-lg-9">
   <span class="input-group-addon input-small">@</span>
   <input type="text" class="input-small" placeholder="Username">
 </div>
@@ -1472,14 +1589,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h4>Buttons instead of text</h4>
     <p>Buttons in input groups are a bit different and require one extra level of nesting. Instead of <code>.input-group-addon</code>, you'll need to use <code>.input-group-btn</code> to wrap the buttons. This is required due to default browser styles that cannot be overridden.</p>
     <form class="bs-example">
-      <div class="input-group col col-lg-7">
+      <div class="input-group col-lg-7">
         <span class="input-group-btn">
           <button class="btn btn-default" type="button">Go!</button>
         </span>
         <input type="text">
       </div>
       <br>
-      <div class="input-group col col-lg-7">
+      <div class="input-group col-lg-7">
         <input type="text">
         <span class="input-group-btn">
           <button class="btn btn-default" type="button">Go!</button>
@@ -1487,14 +1604,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div>
     </form>
 {% highlight html %}
-<div class="input-group col col-lg-7">
+<div class="input-group col-lg-7">
   <span class="input-group-btn">
     <button class="btn btn-default" type="button">Go!</button>
   </span>
   <input type="text">
 </div>
 
-<div class="input-group col col-lg-7">
+<div class="input-group col-lg-7">
   <input type="text">
   <span class="input-group-btn">
     <button class="btn btn-default" type="button">Go!</button>
@@ -1505,7 +1622,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h4>Button dropdowns</h4>
     <p></p>
     <form class="bs-example">
-      <div class="input-group col col-lg-7">
+      <div class="input-group col-lg-7">
         <div class="input-group-btn">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
           <ul class="dropdown-menu">
@@ -1519,7 +1636,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <input type="text">
       </div><!-- /input-group -->
       <br>
-      <div class="input-group col col-lg-7">
+      <div class="input-group col-lg-7">
         <input type="text">
         <div class="input-group-btn">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
@@ -1534,7 +1651,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div><!-- /input-group -->
     </form>
 {% highlight html %}
-<div class="input-group col col-lg-7">
+<div class="input-group col-lg-7">
   <div class="input-group-btn">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
     <ul class="dropdown-menu">
@@ -1548,7 +1665,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <input type="text">
 </div><!-- /input-group -->
 
-<div class="input-group col col-lg-7">
+<div class="input-group col-lg-7">
   <input type="text">
   <div class="input-group-btn">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
@@ -1565,7 +1682,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h4>Segmented dropdown groups</h4>
     <form class="bs-example">
-      <div class="input-group col col-lg-7">
+      <div class="input-group col-lg-7">
         <div class="input-group-btn">
           <button type="button" class="btn btn-default" tabindex="-1">Action</button>
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
@@ -1584,7 +1701,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
       <br>
 
-      <div class="input-group col col-lg-7">
+      <div class="input-group col-lg-7">
         <input type="text">
         <div class="input-group-btn">
           <button type="button" class="btn btn-default" tabindex="-1">Action</button>
@@ -1602,14 +1719,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div>
     </form>
 {% highlight html %}
-<div class="input-group col col-lg-7">
+<div class="input-group col-lg-7">
   <div class="input-group-btn">
     <!-- Button and dropdown menu -->
   </div>
   <input type="text">
 </div>
 
-<div class="input-group col col-lg-7">
+<div class="input-group col-lg-7">
   <input type="text">
   <div class="input-group-btn btn-group">
     <!-- Button and dropdown menu -->
@@ -1639,27 +1756,27 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Wrap inputs in grid columns, or any custom parent element, to easily enforce desired widths.</p>
     <form class="bs-example" style="padding-bottom: 15px;">
       <div class="row">
-        <div class="col col-lg-2">
-          <input type="text" placeholder="col col-large-2">
+        <div class="col-lg-2">
+          <input type="text" placeholder="col-large-2">
         </div>
-        <div class="col col-lg-3">
-          <input type="text" placeholder="col col-large-3">
+        <div class="col-lg-3">
+          <input type="text" placeholder="col-large-3">
         </div>
-        <div class="col col-lg-4">
-          <input type="text" placeholder="col col-large-4">
+        <div class="col-lg-4">
+          <input type="text" placeholder="col-large-4">
         </div>
       </div>
     </form>
 {% highlight html %}
 <div class="row">
-  <div class="col col-lg-2">
-    <input type="text" placeholder="col col-large-2">
+  <div class="col-lg-2">
+    <input type="text" placeholder="col-large-2">
   </div>
-  <div class="col col-lg-3">
-    <input type="text" placeholder="col col-large-3">
+  <div class="col-lg-3">
+    <input type="text" placeholder="col-large-3">
   </div>
-  <div class="col col-lg-4">
-    <input type="text" placeholder="col col-large-4">
+  <div class="col-lg-4">
+    <input type="text" placeholder="col-large-4">
   </div>
 </div>
 {% endhighlight %}

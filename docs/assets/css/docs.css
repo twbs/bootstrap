@@ -246,14 +246,14 @@ body {
 .show-grid {
   margin-bottom: 15px;
 }
-.show-grid .col {
+.show-grid [class^="col-"] {
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #eee;
   border: 1px solid #ddd;
-}
-.show-grid .col:hover {
-  background-color: #ddd;
+  /* Todo: reconcile these */
+  background-color: rgba(185,74,72,.15);
+  border: 1px solid rgba(185,74,72,.2);
 }
 
 
@@ -520,6 +520,7 @@ body {
 
 /* Utility classes table
 ------------------------- */
+.bs-table th small,
 .responsive-utilities th small {
   display: block;
   font-weight: normal;

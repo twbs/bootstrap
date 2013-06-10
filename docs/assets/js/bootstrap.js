@@ -434,7 +434,7 @@
   // =================
 
   $(document).on('click.bs.carousel.data-api', '[data-slide], [data-slide-to]', function (e) {
-    var $this = $(this), href
+    var $this   = $(this), href
     var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
     var options = $.extend({}, $target.data(), $this.data())
     var slideIndex
@@ -442,10 +442,17 @@
     $target.carousel(options)
 
     if (slideIndex = $this.attr('data-slide-to')) {
-      $target.data('bs-carousel').pause().to(slideIndex).cycle()
+      $target.data('bs.carousel').pause().to(slideIndex).cycle()
     }
 
     e.preventDefault()
+  })
+
+  $(window).on('load', function () {
+    $('[data-ride="carousel"]').each(function () {
+      var $carousel = $(this)
+      $carousel.carousel($carousel.data())
+    })
   })
 
 }(window.jQuery);
@@ -865,18 +872,18 @@
   Modal.prototype.enforceFocus = function () {
     $(document)
       .off('focusin.bs.modal') // guard against infinite focus loop
-      .on('focusin.bs.modal', function (e) {
-      if (this.$element[0] !== e.target && !this.$element.has(e.target).length) {
-        this.$element.focus()
-      }
-    }, this)
+      .on('focusin.bs.modal', $.proxy(function (e) {
+        if (this.$element[0] !== e.target && !this.$element.has(e.target).length) {
+          this.$element.focus()
+        }
+      }, this))
   }
 
   Modal.prototype.escape = function () {
     if (this.isShown && this.options.keyboard) {
-      this.$element.on('keyup.dismiss.bs.modal', function ( e ) {
+      this.$element.on('keyup.dismiss.bs.modal', $.proxy(function (e) {
         e.which == 27 && this.hide()
-      }, this)
+      }, this))
     } else if (!this.isShown) {
       this.$element.off('keyup.dismiss.bs.modal')
     }
@@ -1093,7 +1100,7 @@
     return options
   }
 
-  Tooltip.prototype.enter = function (e) {
+  Tooltip.prototype.enter = function (obj) {
     var defaults = this.getDefaults()
     var options  = {}
 
@@ -1101,26 +1108,29 @@
       if (defaults[key] != value) options[key] = value
     })
 
-    var self = $(e.currentTarget)[this.type](options).data('bs.' + this.type)
+    var self = obj instanceof this.constructor ?
+      obj : $(obj.currentTarget)[this.type](options).data('bs.' + this.type)
 
     if (!self.options.delay || !self.options.delay.show) return self.show()
 
     clearTimeout(this.timeout)
 
     self.hoverState = 'in'
-    this.timeout    = setTimeout(function() {
+    this.timeout    = setTimeout(function () {
       if (self.hoverState == 'in') self.show()
     }, self.options.delay.show)
   }
 
-  Tooltip.prototype.leave = function (e) {
-    var self = $(e.currentTarget)[this.type](this._options).data('bs.' + this.type)
+  Tooltip.prototype.leave = function (obj) {
+    var self = obj instanceof this.constructor ?
+      obj : $(obj.currentTarget)[this.type](this._options).data('bs.' + this.type)
 
-    if (this.timeout) clearTimeout(this.timeout)
+    clearTimeout(this.timeout)
+
     if (!self.options.delay || !self.options.delay.hide) return self.hide()
 
     self.hoverState = 'out'
-    this.timeout    = setTimeout(function() {
+    this.timeout    = setTimeout(function () {
       if (self.hoverState == 'out') self.hide()
     }, self.options.delay.hide)
   }
@@ -1317,7 +1327,7 @@
 
   Tooltip.prototype.toggle = function (e) {
     var self = e ? $(e.currentTarget)[this.type](this._options).data('bs.' + this.type) : this
-    self.tip().hasClass('in') ? self.hide() : self.show()
+    self.tip().hasClass('in') ? self.leave(self) : self.enter(self)
   }
 
   Tooltip.prototype.destroy = function () {

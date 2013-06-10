@@ -76,11 +76,11 @@ Should you encounter problems with installing dependencies or running makefile c
 
 ## Contributing
 
-Please read through our guidelines for contributing to Bootstrap. Included are directions for opening issues, coding standards, and notes on development. 
+Please read through our guidelines for contributing to Bootstrap. Included are directions for opening issues, coding standards, and notes on development.
 
 More over, if your pull request contains JavaScript patches or features, you must include relevant unit tests. All HTML and CSS should conform to the [Code Guide](http://github.com/mdo/code-guide), maintained by [Mark Otto](http://github.com/mdo).
 
-Editor preferences are available in the [editor config](.editorconfig) for easy use in common text editors. Read more and download plugins at [http://editorconfig.com](http://editorconfig.com).
+Editor preferences are available in the [editor config](.editorconfig) for easy use in common text editors. Read more and download plugins at [http://editorconfig.org](http://editorconfig.org).
 
 
 
