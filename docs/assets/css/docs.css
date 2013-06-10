@@ -255,10 +255,6 @@ body {
   background-color: rgba(185,74,72,.15);
   border: 1px solid rgba(185,74,72,.2);
 }
-.show-grid [class^="col-"]:hover {
-  background-color: #ddd;
-  background-color: rgba(185,74,72,.25);
-}
 
 
 
