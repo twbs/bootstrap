@@ -63,10 +63,10 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
     <div class="page-header">
       <h1>Grid system</h1>
     </div>
-    <p class="lead">Bootstrap includes a responsive, mobile-first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. It includes <a href="#grid-example">predefined classes</a> for easy layout options, as well as powerful <a href="#grid-less">mixins for generating more semantic layouts</a>.</p>
+    <p class="lead">Bootstrap includes a responsive, mobile-first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. It includes <a href="#grid-example-basic">predefined classes</a> for easy layout options, as well as powerful <a href="#grid-less">mixins for generating more semantic layouts</a>.</p>
 
     <h3 id="grid-options">Grid options</h3>
-    <p>Multiple device grids, columns, offsets, and column ordering.</p>
+    <p>See how aspects of the Bootstrap grid system work across multiple devices with a handy table.</p>
     <table class="table table-bordered table-striped bs-table">
       <thead>
         <tr>
@@ -118,11 +118,8 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
       </tbody>
     </table>
 
-    <h3 id="grid-examples">Grid examples</h3>
-    <p>Bootstrap's grid system includes three levels of column sizing&mdash;phone, tablet, and desktop and up. Use each level in conjunction with the others for more control, or stick to the desktop classes for single-column, stacked mobile views.</p>
-
-    <p>On mobile devices, the grid starts out stacked. Above 768px, it becomes horizontal as media queries kick in to apply <code>float</code>s and <code>width</code>s. To create a basic grid layout, wrap a series of <code>.col-lg-*</code> elements within a <code>.row</code>. As this is a 12-column grid, each <code>.col-lg-*</code> spans a number of those 12 columns, and should always add up to 12 for each row (or the number of columns in the parent), even at mobile resolutions.</p>
-    <p>Be sure to checkout the <a href="../examples/grid/">full-page grid example</a> as well.</p>
+    <h3 id="grid-example-basic">Example: Stacked-to-horizontal</h3>
+    <p>Using a single set of grid classes, you can create a basic grid system that starts out stacked on mobile and tablet devices before becoming horizontal on desktop devices.</p>
     <div class="bs-docs-grid">
       <div class="row show-grid">
         <div class="col-lg-1">1</div>
@@ -137,6 +134,10 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
         <div class="col-lg-1">1</div>
         <div class="col-lg-1">1</div>
         <div class="col-lg-1">1</div>
+      </div>
+      <div class="row show-grid">
+        <div class="col-lg-8">8</div>
+        <div class="col-lg-4">4</div>
       </div>
       <div class="row show-grid">
         <div class="col-lg-4">4</div>
@@ -163,6 +164,10 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
   <div class="col-lg-1">1</div>
   <div class="col-lg-1">1</div>
 </div>
+<div class="row show-grid">
+  <div class="col-lg-8">8</div>
+  <div class="col-lg-4">4</div>
+</div>
 <div class="row">
   <div class="col-lg-4">4</div>
   <div class="col-lg-4">4</div>
@@ -173,6 +178,78 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
   <div class="col-lg-6">6</div>
 </div>
 {% endhighlight %}
+
+    <h3 id="grid-example-mixed">Example: Combining mobile with desktop</h3>
+    <p>Don't want your columns to simply stack in smaller devices? Use the small device grid system by adding <code>.col-*</code> classes to the existing <code>.col-lg-*</code> ones. See the example below for a better idea of how it all works.</p>
+    <div class="bs-docs-grid">
+      <div class="row show-grid">
+        <div class="col-12 col-lg-8">8</div>
+        <div class="col-6 col-lg-4">4</div>
+      </div>
+      <div class="row show-grid">
+        <div class="col-6 col-lg-4">4</div>
+        <div class="col-6 col-lg-4">4</div>
+        <div class="col-6 col-lg-4">4</div>
+      </div>
+      <div class="row show-grid">
+        <div class="col-6 col-lg-6">6</div>
+        <div class="col-6 col-lg-6">6</div>
+      </div>
+    </div>
+{% highlight html %}
+<div class="row">
+  <div class="col-12 col-lg-8">8</div>
+  <div class="col-6 col-lg-4">4</div>
+</div>
+<div class="row">
+  <div class="col-6 col-lg-4">4</div>
+  <div class="col-6 col-lg-4">4</div>
+  <div class="col-6 col-lg-4">4</div>
+</div>
+<div class="row">
+  <div class="col-6 col-lg-6">6</div>
+  <div class="col-6 col-lg-6">6</div>
+</div>
+{% endhighlight %}
+
+    <h3 id="grid-example-mixed-complete">Example: Mobile, tablet, and desktop</h3>
+    <p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>.col-sm-*</code> classes.</p>
+    <div class="bs-docs-grid">
+      <div class="row show-grid">
+        <div class="col-12 col-sm-8 col-lg-8">.col-12 .col-lg-8</div>
+        <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+      </div>
+      <div class="row show-grid">
+        <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+        <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+        <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+      </div>
+      <div class="row show-grid">
+        <div class="col-6 col-sm-6 col-lg-6">.col-6 .col-lg-6</div>
+        <div class="col-6 col-sm-6 col-lg-6">.col-6 .col-lg-6</div>
+      </div>
+    </div>
+{% highlight html %}
+<div class="row">
+  <div class="col-12 col-sm-8 col-lg-8">.col-12 .col-lg-8</div>
+  <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+</div>
+<div class="row">
+  <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+  <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+  <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+</div>
+<div class="row">
+  <div class="col-6 col-sm-6 col-lg-6">.col-6 .col-lg-6</div>
+  <div class="col-6 col-sm-6 col-lg-6">.col-6 .col-lg-6</div>
+</div>
+{% endhighlight %}
+
+    <div class="bs-callout">
+      <h4>Need more examples?</h4>
+      <p>We dive into more grid layouts in a separte page, free of chrome and documentation to better show you the power of the grid.</p>
+      <p><a class="btn btn-danger" target="_blank" href="../examples/grid/">More grid examples</a></p>
+    </div>
 
     <h3 id="grid-offsetting">Offsetting columns</h3>
     <p>Move columns to the right using <code>.col-offset-*</code> classes. These classes increase the left margin of a column by <code>*</code> columns. For example, <code>.col-offset-4</code> moves <code>.col-lg-4</code> over four columns.</p>
@@ -246,21 +323,6 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
 <div class="row show-grid">
   <div class="col-lg-9 col-push-3">9</div>
   <div class="col-lg-3 col-pull-9">3</div>
-</div>
-{% endhighlight %}
-
-    <h3 id="grid-small">Small device grid</h3>
-    <p>Use the small device grid classes, like <code>.col-sm-6</code>, to create columned layouts on phone and tablet devices (anything under 768px). Offsets, pushes, and pulls are not available with the small grid at this time.</p>
-    <div class="row show-grid">
-      <div class="col-sm-6 col-lg-4">6 small cols, 4 large cols</div>
-      <div class="col-sm-6 col-lg-4">6 small cols, 4 large cols</div>
-      <div class="col-sm-12 col-lg-4">12 small cols, 4 large cols</div>
-    </div>
-{% highlight html %}
-<div class="row">
-  <div class="col-sm-6 col-lg-4">6 small cols, 4 large cols</div>
-  <div class="col-sm-6 col-lg-4">6 small cols, 4 large cols</div>
-  <div class="col-sm-12 col-lg-4">12 small cols, 4 large cols</div>
 </div>
 {% endhighlight %}
 
