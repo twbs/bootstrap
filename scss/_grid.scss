@@ -26,6 +26,18 @@
 .col-10,
 .col-11,
 .col-12,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
 .col-lg-1,
 .col-lg-2,
 .col-lg-3,
@@ -49,49 +61,51 @@
   padding-right: ($grid-gutter-width / 2);
 }
 
-// Grid column sizing
 
-// Small columns (phones and up)
+
+//
+// Container and grid column sizing
+//
+
+// Tiny device columns (smartphones)
 @for $i from 1 through $grid-columns {
   .col-#{$i}  { width: percentage(($i / $grid-columns)); }
 }
-// Medium columns (tablets and up)
+
+// Small device columns (phones to tablets)
 @media (min-width: $screen-tablet) {
-  @for $i from 1 through $grid-columns {
-    .col-md-#{$i}  { width: percentage(($i / $grid-columns)); }
+  .container {
+    max-width: $container-tablet;
   }
 
+  @for $i from 1 through $grid-columns {
+    .col-sm-#{$i}  { width: percentage(($i / $grid-columns)); }
+  }
+
+  // Offsets
   @for $i from 1 through $grid-columns - 1 {
-    .col-offset-#{$i} { margin-left: percentage(($i / $grid-columns)); }
-    .col-push-#{$i}   { left: percentage(($i / $grid-columns)); }
-    .col-pull-#{$i}   { right: percentage(($i / $grid-columns)); }
+    .col-offset-#{$i}  { margin-left: percentage(($i / $grid-columns)); }
+  }
+
+  // Push and pull columns for source order changes
+  @for $i from 1 through $grid-columns - 1 {
+    .col-push-#{$i}  { left: percentage(($i / $grid-columns)); }
   }
 }
 
+// Medium and large device columns (desktop and up)
 @media (min-width: $screen-desktop) {
-  // Large columns (desktop and up)
+  .container {
+    max-width: $container-desktop;
+  }
+
   @for $i from 1 through $grid-columns {
     .col-lg-#{$i}  { width: percentage(($i / $grid-columns)); }
   }
 }
 
-
-// Responsive: Tablets and up
-@media screen and (min-width: $screen-tablet) {
-  .container {
-    max-width: $container-tablet;
-  }
-}
-
-// Responsive: Desktops and up
-@media screen and (min-width: $screen-desktop) {
-  .container {
-    max-width: $container-desktop;
-  }
-}
-
-// Responsive: Large desktops and up
-@media screen and (min-width: $screen-large-desktop) {
+// Large desktops and up
+@media (min-width: $screen-large-desktop) {
   .container {
     max-width: $container-large-desktop;
   }

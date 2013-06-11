@@ -9,7 +9,7 @@
     var $window = $(window)
 
     // Disable certain links in docs
-    $('section [href^=#]').click(function (e) {
+    $('[href=#]').click(function (e) {
       e.preventDefault()
     })
 
@@ -26,14 +26,6 @@
     setTimeout(function () {
       $('.bs-top').affix()
     }, 100)
-
-    // add tipsies to grid for scaffolding
-    if ($('#grid-system').length) {
-      $('#grid-system').tooltip({
-          selector: '.show-grid > [class*="span"]'
-        , title: function () { return $(this).width() + 'px' }
-      })
-    }
 
     // tooltip demo
     $('.tooltip-demo').tooltip({
