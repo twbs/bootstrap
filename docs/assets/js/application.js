@@ -63,10 +63,10 @@
     // javascript build logic
     var inputsComponent = $("#less input")
       , inputsPlugin = $("#plugins input")
-      , inputsVariables = $("#variables input")
+      , inputsVariables = $("#less-variables input")
 
     // toggle all plugin checkboxes
-    $('#components .toggle').on('click', function (e) {
+    $('#less .toggle').on('click', function (e) {
       e.preventDefault()
       inputsComponent.prop('checked', !inputsComponent.is(':checked'))
     })
@@ -76,7 +76,7 @@
       inputsPlugin.prop('checked', !inputsPlugin.is(':checked'))
     })
 
-    $('#variables .toggle').on('click', function (e) {
+    $('#less-variables .toggle').on('click', function (e) {
       e.preventDefault()
       inputsVariables.val('')
     })
