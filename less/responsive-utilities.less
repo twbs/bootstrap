@@ -42,12 +42,10 @@
 .visible-sm   { display: block !important; }
 .visible-md   { display: none !important; }
 .visible-lg   { display: none !important; }
-.visible-xl   { display: none !important; }
 
 .hidden-sm    { display: none !important; }
 .hidden-md    { display: block !important; }
 .hidden-lg    { display: block !important; }
-.hidden-xl    { display: block !important; }
 
 
 // Medium screen size
@@ -55,40 +53,22 @@
   .visible-sm   { display: none !important; }
   .visible-md   { display: block !important; }
   .visible-lg   { display: none !important; }
-  .visible-xl   { display: none !important; }
 
   .hidden-sm    { display: block !important; }
   .hidden-md    { display: none !important; }
   .hidden-lg    { display: block !important; }
-  .hidden-xl    { display: block !important; }
 }
 
 
-// Large screen size
-@media (min-width: @screen-lg-min) and (max-width: @screen-lg-max) {
+// Large (and XL) screen size
+@media (min-width: @screen-lg-min) {
   .visible-sm   { display: none !important; }
   .visible-md   { display: none !important; }
   .visible-lg   { display: block !important; }
-  .visible-xl   { display: none !important; }
   
   .hidden-sm    { display: block !important; }
   .hidden-md    { display: block !important; }
   .hidden-lg    { display: none !important; }
-  .hidden-xl    { display: block !important; }
-}
-
-
-// Extra large screen size
-@media (min-width: @screen-xl-min) {
-  .visible-sm   { display: none !important; }
-  .visible-md   { display: none !important; }
-  .visible-lg   { display: none !important; }
-  .visible-xl   { display: block !important; }
-  
-  .hidden-sm    { display: block !important; }
-  .hidden-md    { display: block !important; }
-  .hidden-lg    { display: block !important; }
-  .hidden-xl    { display: none !important; }
 }
 
 
