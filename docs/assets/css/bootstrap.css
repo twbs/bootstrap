@@ -3000,10 +3000,6 @@ a.list-group-item.active .list-group-item-text {
   margin-right: -15px;
 }
 
-.list-group-item > .glyphicon-chevron-right {
-  margin-right: -15px;
-}
-
 .list-group-item > .glyphicon + .badge {
   margin-right: 5px;
 }
