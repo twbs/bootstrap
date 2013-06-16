@@ -196,7 +196,7 @@ Running makefile now require JSHint and Recess.
 
 - Add jshint support
 - Add travis-ci support w/ headless phantom integration
-- Replace UA sniffing in bootstrap-transitions.js
+- Replace UA sniffing in transitions.js
 - Add MSTransitionEnd event to transition plugin
 - Fix pause method in carousel (shouldn't restart when hovering over controls)
 - Fix crazy opera bug #1776

@@ -44,8 +44,8 @@
 // Outer container
 .progress {
   overflow: hidden;
-  height: @line-height-base;
-  margin-bottom: @line-height-base;
+  height: @line-height-computed;
+  margin-bottom: @line-height-computed;
   background-color: @progress-bg;
   border-radius: @border-radius-base;
   .box-shadow(inset 0 1px 2px rgba(0,0,0,.1));
@@ -56,7 +56,7 @@
   float: left;
   width: 0%;
   height: 100%;
-  font-size: 12px;
+  font-size: @font-size-small;
   color: #fff;
   text-align: center;
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);

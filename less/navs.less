@@ -12,8 +12,11 @@
   padding-left: 0; // Override default ul/ol
   list-style: none;
   .clearfix();
+
   > li {
+    position: relative;
     display: block;
+
     > a {
       position: relative;
       display: block;
@@ -25,17 +28,10 @@
       }
     }
 
-    // Nav states and addons
-    // --------------------------------------------------
-
-    // Disabled state
-    // -------------------------
-
-    // Gray out text
+    // Disabled state sets text to gray and nukes hover/tab effects
     &.disabled > a {
       color: @gray-light;
     }
-    // Nuke hover effects
     &.disabled > a:hover,
     &.disabled > a:focus {
       color: @gray-light;
@@ -43,9 +39,23 @@
       background-color: transparent;
       cursor: default;
     }
+
     // Space the headers out when they follow another list item (link)
-    &+ .nav-header {
+    + .nav-header {
       margin-top: 9px;
+    }
+  }
+
+  // Open dropdowns
+  &.open > a,
+  &.open > a:hover,
+  &.open > a:focus {
+    color: #fff;
+    background-color: @link-color;
+    border-color: @link-color;
+    .caret {
+      border-top-color: #fff;
+      border-bottom-color: #fff;
     }
   }
 
@@ -56,7 +66,7 @@
   }
 
   // Dividers (basically an hr) within the dropdown
-  .divider {
+  .nav-divider {
     .nav-divider();
   }
 }
@@ -156,7 +166,9 @@
     float: none;
     display: table-cell;
     width: 1%;
-    text-align: center;
+    > a {
+      text-align: center;
+    }
   }
 }
 
@@ -183,7 +195,7 @@
 .nav-header {
   display: block;
   padding: 3px 15px;
-  font-size: 11px;
+  font-size: @font-size-mini;
   font-weight: bold;
   line-height: @line-height-base;
   color: @gray-light;
@@ -213,71 +225,23 @@
 
 
 
-/*
-// Prevent IE8 from misplacing imgs
-// See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
-.nav > li > a > img {
-  max-width: none;
-}
-
 // Dropdowns
 // -------------------------
 
-.nav-tabs .dropdown-menu {
-  // Remove the top rounded corners here since there is a hard edge above the menu
-  .border-top-radius(0);
-}
-
-// Default dropdown links
-// -------------------------
-// Make carets use linkColor to start
-.nav .dropdown-toggle .caret {
+// Make dropdown carets use link color in navs
+.nav .caret {
   border-top-color: @link-color;
   border-bottom-color: @link-color;
-  margin-top: 8px;
 }
-.nav .dropdown-toggle:hover .caret {
+.nav a:hover .caret {
   border-top-color: @link-hover-color;
   border-bottom-color: @link-hover-color;
 }
 
-// Active dropdown links
-// -------------------------
-.nav .active .dropdown-toggle .caret {
-  border-top-color: #fff;
-  border-bottom-color: #fff;
+// Specific dropdowns
+.nav-tabs .dropdown-menu {
+  // make dropdown border overlap tab border
+  margin-top: -1px;
+  // Remove the top rounded corners here since there is a hard edge above the menu
+  .border-top-radius(0);
 }
-.nav-tabs .active .dropdown-toggle .caret {
-  border-top-color: @gray;
-  border-bottom-color: @gray;
-}
-
-// Active:hover dropdown links
-// -------------------------
-.nav > .dropdown.active > a:hover {
-  cursor: pointer;
-}
-
-// Open dropdowns
-// -------------------------
-.nav-tabs .open .dropdown-toggle,
-.nav-pills .open .dropdown-toggle,
-.nav > li.dropdown.open.active > a:hover {
-  color: #fff;
-  background-color: @gray-light;
-  border-color: @gray-light;
-}
-.nav li.dropdown.open .caret,
-.nav li.dropdown.open.active .caret,
-.nav li.dropdown.open a:hover .caret {
-  border-top-color: #fff;
-  border-bottom-color: #fff;
-  .opacity(1);
-}
-
-// Dropdowns in stacked tabs
-.tabs-stacked .open > a:hover {
-  border-color: @gray-light;
-}
-
-*/

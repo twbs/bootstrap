@@ -23,11 +23,10 @@ build:
 	@echo "               ${CHECK}"
 	@printf "Prepping documentation assets..."
 	@cp fonts/* docs/assets/fonts/
-	@cp js/*.js docs/assets/js/
 	@cp js/tests/vendor/jquery.js docs/assets/js/
 	@echo "            ${CHECK}"
 	@printf "Compiling and minifying JavaScript..."
-	@cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js js/bootstrap-affix.js > docs/assets/js/bootstrap.js
+	@cat js/transition.js js/alert.js js/button.js js/carousel.js js/collapse.js js/dropdown.js js/modal.js js/tooltip.js js/popover.js js/scrollspy.js js/tab.js js/affix.js > docs/assets/js/bootstrap.js
 	@uglifyjs -nc docs/assets/js/bootstrap.js > docs/assets/js/bootstrap.min.tmp.js
 	@echo "/**\n* Bootstrap.js v3.0.0 by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > docs/assets/js/copyright.js
 	@cat docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js > docs/assets/js/bootstrap.min.js
@@ -72,14 +71,14 @@ bootstrap-js: bootstrap/js/*.js
 
 bootstrap/js/*.js: js/*.js
 	mkdir -p bootstrap/js
-	cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js js/bootstrap-affix.js > bootstrap/js/bootstrap.js
+	cat js/transition.js js/alert.js js/button.js js/carousel.js js/collapse.js js/dropdown.js js/modal.js js/tooltip.js js/popover.js js/scrollspy.js js/tab.js js/affix.js > bootstrap/js/bootstrap.js
 	uglifyjs -nc bootstrap/js/bootstrap.js > bootstrap/js/bootstrap.min.tmp.js
 	echo "/*!\n* Bootstrap.js by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > bootstrap/js/copyright.js
 	cat bootstrap/js/copyright.js bootstrap/js/bootstrap.min.tmp.js > bootstrap/js/bootstrap.min.js
 	rm bootstrap/js/copyright.js bootstrap/js/bootstrap.min.tmp.js
 
 #
-# CSS COMPLILE
+# CSS COMPILE
 #
 
 bootstrap-css: bootstrap/css/*.css
@@ -101,18 +100,6 @@ bootstrap/fonts/*: fonts/*
 
 
 #
-# MAKE FOR GH-PAGES 4 FAT & MDO ONLY (O_O  )
-#
-
-gh-pages: bootstrap docs
-	rm -f docs/assets/bootstrap.zip
-	zip -r docs/assets/bootstrap.zip bootstrap
-	rm -r bootstrap
-	rm -f ../bootstrap-gh-pages/assets/bootstrap.zip
-	node docs/build production
-	cp -r docs/* ../bootstrap-gh-pages
-
-#
 # WATCH LESS FILES
 #
 
@@ -120,5 +107,11 @@ watch:
 	echo "Watching less files..."; \
 	watchr -e "watch('less/.*\.less') { system 'make' }"
 
+#
+# BUILD AND START SERVER
+#
+
+run: build
+	jekyll build && jekyll server
 
 .PHONY: docs watch gh-pages bootstrap-img bootstrap-css bootstrap-js
