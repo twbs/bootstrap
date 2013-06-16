@@ -4958,6 +4958,24 @@ a.list-group-item.active > .badge,
   left: 100%;
 }
 
+.carousel-inner > .neighbor,
+.carousel-inner > .touch {
+  -webkit-transition: none;
+     -moz-transition: none;
+       -o-transition: none;
+          transition: none;
+}
+
+.carousel-inner > .neighbor {
+  display: block;
+}
+
+.carousel-inner > .neighbor {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
 .carousel-control {
   position: absolute;
   top: 0;

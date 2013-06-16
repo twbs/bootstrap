@@ -284,6 +284,8 @@
     this.options.pause == 'hover' && this.$element
       .on('mouseenter', $.proxy(this.pause, this))
       .on('mouseleave', $.proxy(this.cycle, this))
+      
+    this.touch();
   }
 
   Carousel.DEFAULTS = {
@@ -396,6 +398,94 @@
     isCycling && this.cycle()
 
     return this
+  }
+  
+  Carousel.prototype.touch = function (type, next) {
+      var startX, startY, offset, delta, scrolling = false;
+      var that = this;
+      var isCycling = this.interval;
+      var $active;
+      
+      var onTouchStart = function (event) {
+        var e = event.originalEvent;
+        if (e.touches.length === 1) {
+          isCycling && that.pause()
+          
+          startX = e.touches[0].pageX;
+          startY = e.touches[0].pageY;
+          delta = 0;
+          
+          that.$element.on("touchmove", { carouselTouch: that }, onTouchMove);
+          that.$element.on("touchend", { carouselTouch: that }, onTouchEnd);
+          
+          var prevItems = that.$element.find(".item.prev");
+          prevItems.removeClass("prev")
+          
+          var nextItems = that.$element.find(".item.next");
+          nextItems.removeClass("next")
+          
+          //event.preventDefault();
+        }
+        
+      };
+      this.$element.on("touchstart", onTouchStart);
+      
+      var onTouchMove = function(event) {
+        var e = event.originalEvent, $neighbor, slide, margin;
+        $active = that.$element.find(".item.active");
+        delta = startX - e.touches[0].pageX;
+        scrolling = (Math.abs(delta) < Math.abs(e.touches[0].pageY - startY));
+        if (!scrolling) {
+          if (isCycling) return;
+          if ($active.hasClass("prev") || $active.hasClass("next")) return;
+          
+          $active.addClass("touch")
+          margin = slide = (100/that.$element.width()) * delta;
+          if (that.options.sticky) margin = (slide/5) * Math.log(Math.max(1,Math.abs(slide)))/2;
+          
+          if (slide > 0) {
+            $neighbor = $active.next();
+            $neighbor = $neighbor.length ? $neighbor : that.$element.find(".item").first();
+            $neighbor.addClass("next").addClass("neighbor").css("left", ( 100 - margin ) + "%");
+          } else {
+            $neighbor = $active.prev();
+            $neighbor = $neighbor.length ? $neighbor : that.$element.find(".item").last();
+            $neighbor.addClass("prev").addClass("neighbor").css("left", ( -100 - margin ) + "%");
+          }
+          $active.css("left", (-margin) + "%")
+          e.preventDefault()
+        }
+      };
+      
+      var onTouchEnd = function (event) {
+        var e = event.originalEvent;
+        $active = that.$element.find(".item.active");
+        that.$element.off("touchmove", onTouchMove);
+        if (!scrolling) {
+          var $neighbors = that.$element.find(".item.neighbor");
+          
+          $active.removeClass("touch").css("left", "")
+          $neighbors.removeClass("neighbor").css("left", "")
+          var activeZone = Math.min(250, that.$element.width()/2);
+          if (delta > activeZone) {
+            that.next();
+          } else if  (delta < -activeZone) {
+            that.prev();
+          }
+          // 15 is finger size ;-) 
+          if (Math.abs(delta) > 15) {
+            e.preventDefault()
+          }
+          isCycling && that.cycle()
+          
+        }
+        
+        that.$element.off("touchend", onTouchEnd);
+        
+      };
+      
+      return this
+    
   }
 
 
