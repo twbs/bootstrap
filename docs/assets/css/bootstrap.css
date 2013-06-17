@@ -504,8 +504,8 @@ h4 small,
 
 ul,
 ol {
-  padding: 0;
-  margin: 0 0 10px 25px;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 ul ul,
