@@ -127,9 +127,9 @@ $input-border-radius:            $border-radius-base !default;
 
 $input-color-placeholder:        $gray-light !default;
 
-$input-height-base:              ($line-height-computed + ($padding-base-vertical * 2)) !default;
-$input-height-large:             ($line-height-computed + ($padding-large-vertical * 2)) !default;
-$input-height-small:             ($line-height-computed + ($padding-small-vertical * 2)) !default;
+$input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2) !default;
+$input-height-large:             ($line-height-computed + ($padding-large-vertical * 2) + 2) !default;
+$input-height-small:             ($line-height-computed + ($padding-small-vertical * 2) + 2) !default;
 
 
 // Dropdowns

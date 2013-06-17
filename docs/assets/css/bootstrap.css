@@ -233,7 +233,6 @@ table {
 
 html {
   font-size: 62.5%;
-  -webkit-overflow-scrolling: touch;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 body {
@@ -976,7 +975,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"] {
   display: block;
-  min-height: 36px;
+  min-height: 38px;
   padding: 8px 12px;
   font-size: 14px;
   line-height: 1.428571429;
@@ -1043,9 +1042,9 @@ input[type="checkbox"] {
 
 select,
 input[type="file"] {
-  height: 36px;
+  height: 38px;
   /* In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support */
-  line-height: 36px; }
+  line-height: 38px; }
 
 select[multiple],
 select[size] {
@@ -1151,7 +1150,7 @@ input[type="url"].input-small,
 input[type="search"].input-small,
 input[type="tel"].input-small,
 input[type="color"].input-small {
-  min-height: 30px;
+  min-height: 32px;
   padding: 5px 10px;
   font-size: 12px;
   border-radius: 3px; }
@@ -2226,9 +2225,6 @@ a.list-group-item.active {
   float: right;
   margin-right: -15px; }
 
-.list-group-item > .glyphicon-chevron-right {
-  margin-right: -15px; }
-
 .list-group-item > .glyphicon + .badge {
   margin-right: 5px; }
 
@@ -2585,8 +2581,8 @@ button.close {
     margin-top: 4px; }
 
 .navbar-form {
-  margin-top: 7px;
-  margin-bottom: 7px; }
+  margin-top: 6px;
+  margin-bottom: 6px; }
   .navbar-form input,
   .navbar-form select,
   .navbar-form textarea,
@@ -2705,7 +2701,7 @@ button.close {
     height: auto !important;
     overflow: visible !important; } }
 .navbar-btn {
-  margin-top: 7px; }
+  margin-top: 6px; }
 
 .navbar-text {
   margin-top: 15px;
