@@ -548,26 +548,6 @@ dd {
   margin-left: 10px;
 }
 
-.dl-horizontal:before,
-.dl-horizontal:after {
-  display: table;
-  content: " ";
-}
-
-.dl-horizontal:after {
-  clear: both;
-}
-
-.dl-horizontal:before,
-.dl-horizontal:after {
-  display: table;
-  content: " ";
-}
-
-.dl-horizontal:after {
-  clear: both;
-}
-
 .dl-horizontal dt {
   float: left;
   width: 160px;
@@ -580,6 +560,26 @@ dd {
 
 .dl-horizontal dd {
   margin-left: 180px;
+}
+
+.dl-horizontal dd:before,
+.dl-horizontal dd:after {
+  display: table;
+  content: " ";
+}
+
+.dl-horizontal dd:after {
+  clear: both;
+}
+
+.dl-horizontal dd:before,
+.dl-horizontal dd:after {
+  display: table;
+  content: " ";
+}
+
+.dl-horizontal dd:after {
+  clear: both;
 }
 
 hr {
