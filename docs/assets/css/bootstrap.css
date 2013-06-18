@@ -225,7 +225,18 @@ table {
     page-break-after: avoid; }
 
   .navbar {
-    display: none; } }
+    display: none; }
+
+  .table td,
+  .table th {
+    background-color: #fff !important; }
+
+  .btn > .caret,
+  .dropup > .btn > .caret {
+    border-top-color: #000 !important; }
+
+  .label {
+    border: 1px solid #000; } }
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -390,8 +401,8 @@ h4 small, .h4 small {
 
 ul,
 ol {
-  padding: 0;
-  margin: 0 0 10px 25px; }
+  margin-top: 0;
+  margin-bottom: 10px; }
 
 ul ul,
 ul ol,
@@ -399,15 +410,12 @@ ol ol,
 ol ul {
   margin-bottom: 0; }
 
-li {
-  line-height: 1.428571429; }
-
 .list-unstyled {
-  margin-left: 0;
+  padding-left: 0;
   list-style: none; }
 
 .list-inline {
-  margin-left: 0;
+  padding-left: 0;
   list-style: none; }
   .list-inline > li {
     display: inline-block;
@@ -427,13 +435,6 @@ dt {
 dd {
   margin-left: 10px; }
 
-.dl-horizontal:before, .dl-horizontal:after {
-  content: " ";
-  /* 1 */
-  display: table;
-  /* 2 */ }
-.dl-horizontal:after {
-  clear: both; }
 .dl-horizontal dt {
   float: left;
   width: 160px;
@@ -444,6 +445,13 @@ dd {
   white-space: nowrap; }
 .dl-horizontal dd {
   margin-left: 180px; }
+  .dl-horizontal dd:before, .dl-horizontal dd:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */ }
+  .dl-horizontal dd:after {
+    clear: both; }
 
 hr {
   margin: 20px 0;

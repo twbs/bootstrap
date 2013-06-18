@@ -106,8 +106,8 @@ h4 small, .h4 small { font-size: $font-size-base; }
 // Unordered and Ordered lists
 ul,
 ol {
-  padding: 0;
-  margin: 0 0 ($line-height-computed / 2) 25px;
+  margin-top: 0;
+  margin-bottom: ($line-height-computed / 2);
 }
 ul ul,
 ul ol,
@@ -115,15 +115,12 @@ ol ol,
 ol ul {
   margin-bottom: 0;
 }
-li {
-  line-height: $line-height-base;
-}
 
 // List options
 
-// Unstyled keeps list items block level, just removes list-style
+// Unstyled keeps list items block level, just removes default browser padding and list-style
 @mixin list-unstyled {
-  margin-left: 0;
+  padding-left: 0;
   list-style: none;
 }
 
@@ -155,7 +152,6 @@ dd {
 }
 // Horizontal layout (like forms)
 .dl-horizontal {
-  @include clearfix(); // Ensure dl clears floats if empty dd elements present
   dt {
     float: left;
     width: ($component-offset-horizontal - 20);
@@ -164,6 +160,7 @@ dd {
     @include text-overflow();
   }
   dd {
+    @include clearfix(); // Clear the floated `dt` if an empty `dd` is present
     margin-left: $component-offset-horizontal;
   }
 }
