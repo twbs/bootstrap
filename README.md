@@ -32,7 +32,9 @@ Bootstrap's documentation, included in this repo in the `/docs` directory, is bu
 
 1. If necessary, [install Jekyll](http://jekyllrb.com/docs/installation).
 2. From the `/bootstrap` directory, run `jekyll serve` in the command line.
-3. Open [http://getbootstrap.dev:9001](http://getbootstrap.dev:9001) in your browser, and voilà.
+3. Open [localhost:9001](localhost:9001) in your browser, and voilà.
+
+**Note:** These instructions are for Jekyll 1.0+. Older versions use the `jekyll --server` command and run on port 4000.
 
 Learn more about using Jekyll by reading their [documentation](http://jekyllrb.com/docs/home/).
 
