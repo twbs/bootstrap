@@ -1692,6 +1692,7 @@ select:focus:invalid:focus {
 }
 
 .input-group input:first-child,
+.input-group select:first-child,
 .input-group-addon:first-child,
 .input-group-btn:first-child > .btn,
 .input-group-btn:first-child > .dropdown-toggle,
@@ -1705,6 +1706,7 @@ select:focus:invalid:focus {
 }
 
 .input-group input:last-child,
+.input-group select:last-child,
 .input-group-addon:last-child,
 .input-group-btn:last-child > .btn,
 .input-group-btn:last-child > .dropdown-toggle,
