@@ -1812,16 +1812,16 @@ fieldset[disabled] .btn {
 
 .btn-default {
   color: #ffffff;
-  background-color: #a7a9aa;
-  border-color: #a7a9aa;
+  background-color: #474949;
+  border-color: #474949;
 }
 
 .btn-default:hover,
 .btn-default:focus,
 .btn-default:active,
 .btn-default.active {
-  background-color: #9a9c9d;
-  border-color: #8d9091;
+  background-color: #3a3c3c;
+  border-color: #2e2f2f;
 }
 
 .btn-default.disabled:hover,
@@ -1836,8 +1836,8 @@ fieldset[disabled] .btn-default:active,
 .btn-default.disabled.active,
 .btn-default[disabled].active,
 fieldset[disabled] .btn-default.active {
-  background-color: #a7a9aa;
-  border-color: #a7a9aa;
+  background-color: #474949;
+  border-color: #474949;
 }
 
 .btn-primary {
