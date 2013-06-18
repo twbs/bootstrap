@@ -266,6 +266,17 @@ table {
   .navbar {
     display: none;
   }
+  .table td,
+  .table th {
+    background-color: #fff !important;
+  }
+  .btn > .caret,
+  .dropup > .btn > .caret {
+    border-top-color: #000 !important;
+  }
+  .label {
+    border: 1px solid #000;
+  }
 }
 
 * {
@@ -504,8 +515,8 @@ h4 small,
 
 ul,
 ol {
-  padding: 0;
-  margin: 0 0 10px 25px;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 ul ul,
@@ -515,17 +526,13 @@ ol ul {
   margin-bottom: 0;
 }
 
-li {
-  line-height: 1.428571429;
-}
-
 .list-unstyled {
-  margin-left: 0;
+  padding-left: 0;
   list-style: none;
 }
 
 .list-inline {
-  margin-left: 0;
+  padding-left: 0;
   list-style: none;
 }
 
@@ -552,26 +559,6 @@ dd {
   margin-left: 10px;
 }
 
-.dl-horizontal:before,
-.dl-horizontal:after {
-  display: table;
-  content: " ";
-}
-
-.dl-horizontal:after {
-  clear: both;
-}
-
-.dl-horizontal:before,
-.dl-horizontal:after {
-  display: table;
-  content: " ";
-}
-
-.dl-horizontal:after {
-  clear: both;
-}
-
 .dl-horizontal dt {
   float: left;
   width: 160px;
@@ -584,6 +571,26 @@ dd {
 
 .dl-horizontal dd {
   margin-left: 180px;
+}
+
+.dl-horizontal dd:before,
+.dl-horizontal dd:after {
+  display: table;
+  content: " ";
+}
+
+.dl-horizontal dd:after {
+  clear: both;
+}
+
+.dl-horizontal dd:before,
+.dl-horizontal dd:after {
+  display: table;
+  content: " ";
+}
+
+.dl-horizontal dd:after {
+  clear: both;
 }
 
 hr {
