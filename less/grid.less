@@ -82,9 +82,9 @@
 .col-12 { width: 100%; }
 
 // Small device columns (phones to tablets)
-@media (min-width: @screen-tablet) {
+@media (min-width: @screen-md-min) {
   .container {
-    max-width: @container-tablet;
+    max-width: @container-md;
   }
 
   .col-sm-1  { width: percentage((1 / @grid-columns)); }
@@ -140,9 +140,9 @@
 }
 
 // Medium and large device columns (desktop and up)
-@media (min-width: @screen-desktop) {
+@media (min-width: @screen-lg-min) {
   .container {
-    max-width: @container-desktop;
+    max-width: @container-lg;
   }
   .col-lg-1  { width: percentage((1 / @grid-columns)); }
   .col-lg-2  { width: percentage((2 / @grid-columns)); }
@@ -159,8 +159,8 @@
 }
 
 // Large desktops and up
-@media (min-width: @screen-large-desktop) {
+@media (min-width: @screen-xl-min) {
   .container {
-    max-width: @container-large-desktop;
+    max-width: @container-xl;
   }
 }

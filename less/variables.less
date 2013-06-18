@@ -382,38 +382,24 @@
 // Media queries breakpoints
 // --------------------------------------------------
 
-// Tiny screen / phone
-@screen-tiny:                480px;
-@screen-phone:               @screen-tiny;
+// Define screen size breakpoints by max for each category
+@screen-sm-max:             768px;            // Small screen upper bound
+@screen-md-max:             992px;            // Medium screen upper bound
+@screen-lg-max:            1200px;            // Large screen upper bound
 
-// Small screen / tablet
-@screen-small:               768px;
-@screen-tablet:              @screen-small;
-
-// Medium screen / desktop
-@screen-medium:              992px;
-@screen-desktop:             @screen-medium;
-
-// So media queries don't overlap when required, provide a maximum
-@screen-small-max:           (@screen-medium - 1);
-@screen-tablet-max:          @screen-small-max;
-
-// Large screen / wide desktop
-@screen-large:               1200px;
-@screen-large-desktop:       @screen-large;
-
+// Define minimum screen sizes
+@screen-md-min:         @screen-sm-max + 1;   // Medium screen lower bound
+@screen-lg-min:         @screen-md-max + 1;   // Large screen lower bound
+@screen-xl-min:         @screen-lg-max + 1;   // Extra-large screen lower bound
 
 // Container sizes
 // --------------------------------------------------
 
-// Small screen / tablet
-@container-tablet:          728px;
+@container-sm:          440px;  // Small screen
+@container-md:          748px;  // Medium screen
+@container-lg:          940px;  // Large screen
+@container-xl:          1170px;  // XL Screen container
 
-// Medium screen / desktop
-@container-desktop:         940px;
-
-// Large screen / wide desktop
-@container-large-desktop:   1170px;
 
 
 // Grid system
@@ -423,5 +409,6 @@
 @grid-columns:              12;
 // Padding, to be divided by two and applied to the left and right of all columns
 @grid-gutter-width:         30px;
+
 // Point at which the navbar stops collapsing
-@grid-float-breakpoint:     @screen-tablet;
+@grid-float-breakpoint:     @screen-md-min;
