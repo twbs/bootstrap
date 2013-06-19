@@ -17,7 +17,7 @@
 
 !function (win, $) {
 
-  'use strict'; // jshint ;_
+  'use strict'; // jshint ;_;
 
  /* Table Sorter public class definition
   * ================================ */
