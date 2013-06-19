@@ -5167,6 +5167,15 @@ a.list-group-item.active > .badge,
   display: block !important;
 }
 
+tr.visible-sm {
+  display: table-row !important;
+}
+
+th.visible-sm,
+td.visible-sm {
+  display: table-cell !important;
+}
+
 .visible-md {
   display: none !important;
 }
@@ -5183,8 +5192,26 @@ a.list-group-item.active > .badge,
   display: block !important;
 }
 
+tr.hidden-md {
+  display: table-row !important;
+}
+
+th.hidden-md,
+td.hidden-md {
+  display: table-cell !important;
+}
+
 .hidden-lg {
   display: block !important;
+}
+
+tr.hidden-lg {
+  display: table-row !important;
+}
+
+th.hidden-lg,
+td.hidden-lg {
+  display: table-cell !important;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -5194,17 +5221,38 @@ a.list-group-item.active > .badge,
   .visible-md {
     display: block !important;
   }
+  tr.visible-md {
+    display: table-row !important;
+  }
+  th.visible-md,
+  td.visible-md {
+    display: table-cell !important;
+  }
   .visible-lg {
     display: none !important;
   }
   .hidden-sm {
     display: block !important;
   }
+  tr.hidden-sm {
+    display: table-row !important;
+  }
+  th.hidden-sm,
+  td.hidden-sm {
+    display: table-cell !important;
+  }
   .hidden-md {
     display: none !important;
   }
   .hidden-lg {
     display: block !important;
+  }
+  tr.hidden-lg {
+    display: table-row !important;
+  }
+  th.hidden-lg,
+  td.hidden-lg {
+    display: table-cell !important;
   }
 }
 
@@ -5218,11 +5266,32 @@ a.list-group-item.active > .badge,
   .visible-lg {
     display: block !important;
   }
+  tr.visible-lg {
+    display: table-row !important;
+  }
+  th.visible-lg,
+  td.visible-lg {
+    display: table-cell !important;
+  }
   .hidden-sm {
     display: block !important;
   }
+  tr.hidden-sm {
+    display: table-row !important;
+  }
+  th.hidden-sm,
+  td.hidden-sm {
+    display: table-cell !important;
+  }
   .hidden-md {
     display: block !important;
+  }
+  tr.hidden-md {
+    display: table-row !important;
+  }
+  th.hidden-md,
+  td.hidden-md {
+    display: table-cell !important;
   }
   .hidden-lg {
     display: none !important;
@@ -5236,6 +5305,13 @@ a.list-group-item.active > .badge,
 @media print {
   .visible-print {
     display: block !important;
+  }
+  tr.visible-print {
+    display: table-row !important;
+  }
+  th.visible-print,
+  td.visible-print {
+    display: table-cell !important;
   }
   .hidden-print {
     display: none !important;
