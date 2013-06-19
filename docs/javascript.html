@@ -23,7 +23,7 @@ lead: "Bring Bootstrap's components to life with over a dozen custom jQuery plug
     <h3 id="js-data-attrs">Data attributes</h3>
     <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API and should be your first consideration when using a plugin.</p>
 
-    <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the body namespaced with `'data-api'`. This looks like this:
+    <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the body namespaced with <code>data-api</code>. This looks like this:
 {% highlight js %}
 $('body').off('.data-api')
 {% endhighlight %}
@@ -46,7 +46,7 @@ $("#myModal").modal({ keyboard: false })   // initialized with no keyboard
 $("#myModal").modal('show')                // initializes and invokes show immediately</p>
 {% endhighlight %}
 
-    <p>Each plugin also exposes its raw constructor on a `Constructor` property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.</p>
+    <p>Each plugin also exposes its raw constructor on a <code>Constructor</code> property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.</p>
 
     <h3 id="js-noconflict">No conflict</h3>
     <p>Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In these circumstances, namespace collisions can occasionally occur. If this happens, you may call <code>.noConflict</code> on the plugin you wish to revert the value of.</p>
@@ -792,7 +792,7 @@ $('#example').tooltip(options)
                <td>title</td>
                <td>string | function</td>
                <td>''</td>
-               <td>default title value if `title` tag isn't present</td>
+               <td>default title value if <code>title</code> tag isn't present</td>
              </tr>
              <tr>
                <td>trigger</td>
@@ -976,13 +976,13 @@ $('#example').tooltip(options)
               <td>title</td>
               <td>string | function</td>
               <td>''</td>
-              <td>default title value if `title` attribute isn't present</td>
+              <td>default title value if <code>title</code> attribute isn't present</td>
             </tr>
             <tr>
               <td>content</td>
               <td>string | function</td>
               <td>''</td>
-              <td>default content value if `data-content` attribute isn't present</td>
+              <td>default content value if <code>data-content</code> attribute isn't present</td>
             </tr>
             <tr>
               <td>delay</td>
