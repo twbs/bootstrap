@@ -8,6 +8,10 @@ title: Static navbar template
   body {
     padding-top: 80px;
   }
+  footer {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 
   /*
    * Off canvas
@@ -16,7 +20,9 @@ title: Static navbar template
   .row-offcanvas {
     position: relative;
     overflow: hidden;
-    .transition(all 0.25s ease-out);
+    -webkit-transition: all 0.25s ease-out;
+       -moz-transition: all 0.25s ease-out;
+            transition: all 0.25s ease-out;
   }
   .row-offcanvas.active {
     overflow: visible;
@@ -48,7 +54,6 @@ title: Static navbar template
   }
 
   @media screen and (min-width: 320px) and (max-width: 480px) {
-
     .row-offcanvas-right .sidebar-offcanvas {
       right: -270px; /* 60px * 4.5 = average iPhones and Android phones */
     }
@@ -64,13 +69,11 @@ title: Static navbar template
     .sidebar-offcanvas {
       width: 270px; /* 60px * 4.5 = average iPhones and Android phones */
     }
-
   }
 
   /* Landscape phone to tablets
    * -------------------------- */
   @media screen and (min-width: 481px) and (max-width: 767px) {
-
     .row-offcanvas-right .sidebar-offcanvas {
       right: -480px; /* 60px * 8 = Tablets and wider */
     }
@@ -86,24 +89,31 @@ title: Static navbar template
     .sidebar-offcanvas {
       width: 480px; /* 60px * 8 = Tablets and wider */
     }
-
   }
 
   /* Tablets & above
    * ---------------- */
   @media screen and (min-width: 768px) {
-
     .row-offcanvas {
       position: static;
       overflow: visible;
     }
-
     .sidebar-offcanvas {
       position: static;
     }
-
+    .btn-offcanvas {
+      display: none;
+    }
   }
 </style>
+
+<script>
+  $(document).ready(function() {
+    $('[data-toggle=offcanvas]').click(function() {
+      $('.row-offcanvas').toggleClass('active');
+    });
+  });
+</script>
 
 <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
@@ -126,48 +136,48 @@ title: Static navbar template
 <div class="container">
 
   <div class="row row-offcanvas row-offcanvas-right">
-    <div class="col col-lg-9">
-      <p class="pull-right visible-phone"><a href="#sidebar" class="btn btn-primary btn-offcanvas" data-toggle="offcanvas"><i class="glyphicon glyphicon-resize-horizontal"></i></a></p>
+    <div class="col-lg-9">
+      <p class="pull-right hidden-lg">
+        <a href="#sidebar" class="btn btn-primary btn-offcanvas" data-toggle="offcanvas"><i class="glyphicon glyphicon-resize-horizontal"></i></a>
+      </p>
       <div class="jumbotron">
         <h1>Hello, world!</h1>
         <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
       </div>
       <div class="row">
-        <div class="col col-lg-4">
+        <div class="col-sm-6 col-lg-4">
           <h2>Heading</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
         </div><!--/span-->
-        <div class="col col-lg-4">
+        <div class="col-sm-6 col-lg-4">
           <h2>Heading</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
         </div><!--/span-->
-        <div class="col col-lg-4">
+        <div class="col-sm-6 col-lg-4">
           <h2>Heading</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
         </div><!--/span-->
-      </div><!--/row-->
-      <div class="row">
-        <div class="col col-lg-4">
+        <div class="col-sm-6 col-lg-4">
           <h2>Heading</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
         </div><!--/span-->
-        <div class="col col-lg-4">
+        <div class="col-sm-6 col-lg-4">
           <h2>Heading</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
         </div><!--/span-->
-        <div class="col col-lg-4">
+        <div class="col-sm-6 col-lg-4">
           <h2>Heading</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
         </div><!--/span-->
       </div><!--/row-->
     </div><!--/span-->
-    <nav class="col col-lg-3 sidebar-offcanvas" id="sidebar" role="navigation">
+    <nav class="col-lg-3 sidebar-offcanvas" id="sidebar" role="navigation">
       <div class="well sidebar-nav">
         <ul class="nav nav-list">
           <li class="nav-header">Sidebar</li>
