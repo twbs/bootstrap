@@ -1491,6 +1491,7 @@ input[type="url"].input-large,
 input[type="search"].input-large,
 input[type="tel"].input-large,
 input[type="color"].input-large {
+  min-height: 56px;
   padding: 14px 16px;
   font-size: 18px;
   border-radius: 6px;
@@ -1512,7 +1513,7 @@ input[type="url"].input-small,
 input[type="search"].input-small,
 input[type="tel"].input-small,
 input[type="color"].input-small {
-  min-height: 32px;
+  min-height: 30px;
   padding: 5px 10px;
   font-size: 12px;
   border-radius: 3px;
