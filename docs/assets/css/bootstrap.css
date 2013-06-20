@@ -4376,10 +4376,6 @@ button.close {
   border-radius: 5px 5px 0 0;
 }
 
-.popover-title:empty {
-  display: none;
-}
-
 .popover-content {
   padding: 9px 14px;
 }
