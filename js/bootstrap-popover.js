@@ -59,7 +59,7 @@
         , o = this.options
 
       content = (typeof o.content == 'function' ? o.content.call($e[0]) :  o.content)
-        || $e.attr('data-content')
+        || $e.data('content')
 
       return content
     }
