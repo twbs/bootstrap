@@ -31,6 +31,10 @@ Have suggestions? Let us know with a [new issue](https://github.com/twitter/boot
 
 Have a bug or a feature request? [Please open a new issue](https://github.com/twitter/bootstrap/issues). Before opening any issue, please search for existing issues and read the [Issue Guidelines](https://github.com/necolas/issue-guidelines), written by [Nicolas Gallagher](https://github.com/necolas/).
 
+=======
+1. If necessary, [install Jekyll](http://jekyllrb.com/docs/installation) (requires v1.x).
+2. From the `/bootstrap` directory, run `jekyll serve` in the command line.
+3. Open [http://localhost:9001](http://localhost:9001) in your browser, and voilà.
 
 
 ## Documentation

@@ -266,6 +266,17 @@ table {
   .navbar {
     display: none;
   }
+  .table td,
+  .table th {
+    background-color: #fff !important;
+  }
+  .btn > .caret,
+  .dropup > .btn > .caret {
+    border-top-color: #000 !important;
+  }
+  .label {
+    border: 1px solid #000;
+  }
 }
 
 * {
@@ -276,7 +287,6 @@ table {
 
 html {
   font-size: 62.5%;
-  -webkit-overflow-scrolling: touch;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
@@ -415,6 +425,7 @@ h6,
 .h4,
 .h5,
 .h6 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
 }
@@ -505,8 +516,8 @@ h4 small,
 
 ul,
 ol {
-  padding: 0;
-  margin: 0 0 10px 25px;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 ul ul,
@@ -516,17 +527,13 @@ ol ul {
   margin-bottom: 0;
 }
 
-li {
-  line-height: 1.428571429;
-}
-
 .list-unstyled {
-  margin-left: 0;
+  padding-left: 0;
   list-style: none;
 }
 
 .list-inline {
-  margin-left: 0;
+  padding-left: 0;
   list-style: none;
 }
 
@@ -553,26 +560,6 @@ dd {
   margin-left: 10px;
 }
 
-.dl-horizontal:before,
-.dl-horizontal:after {
-  display: table;
-  content: " ";
-}
-
-.dl-horizontal:after {
-  clear: both;
-}
-
-.dl-horizontal:before,
-.dl-horizontal:after {
-  display: table;
-  content: " ";
-}
-
-.dl-horizontal:after {
-  clear: both;
-}
-
 .dl-horizontal dt {
   float: left;
   width: 160px;
@@ -585,6 +572,26 @@ dd {
 
 .dl-horizontal dd {
   margin-left: 180px;
+}
+
+.dl-horizontal dd:before,
+.dl-horizontal dd:after {
+  display: table;
+  content: " ";
+}
+
+.dl-horizontal dd:after {
+  clear: both;
+}
+
+.dl-horizontal dd:before,
+.dl-horizontal dd:after {
+  display: table;
+  content: " ";
+}
+
+.dl-horizontal dd:after {
+  clear: both;
 }
 
 hr {
@@ -1292,7 +1299,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"] {
   display: block;
-  min-height: 36px;
+  min-height: 38px;
   padding: 8px 12px;
   font-size: 14px;
   line-height: 1.428571429;
@@ -1329,6 +1336,58 @@ input[type="color"]:focus {
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+select[disabled],
+textarea[disabled],
+input[type="text"][disabled],
+input[type="password"][disabled],
+input[type="datetime"][disabled],
+input[type="datetime-local"][disabled],
+input[type="date"][disabled],
+input[type="month"][disabled],
+input[type="time"][disabled],
+input[type="week"][disabled],
+input[type="number"][disabled],
+input[type="email"][disabled],
+input[type="url"][disabled],
+input[type="search"][disabled],
+input[type="tel"][disabled],
+input[type="color"][disabled],
+select[readonly],
+textarea[readonly],
+input[type="text"][readonly],
+input[type="password"][readonly],
+input[type="datetime"][readonly],
+input[type="datetime-local"][readonly],
+input[type="date"][readonly],
+input[type="month"][readonly],
+input[type="time"][readonly],
+input[type="week"][readonly],
+input[type="number"][readonly],
+input[type="email"][readonly],
+input[type="url"][readonly],
+input[type="search"][readonly],
+input[type="tel"][readonly],
+input[type="color"][readonly],
+fieldset[disabled] select,
+fieldset[disabled] textarea,
+fieldset[disabled] input[type="text"],
+fieldset[disabled] input[type="password"],
+fieldset[disabled] input[type="datetime"],
+fieldset[disabled] input[type="datetime-local"],
+fieldset[disabled] input[type="date"],
+fieldset[disabled] input[type="month"],
+fieldset[disabled] input[type="time"],
+fieldset[disabled] input[type="week"],
+fieldset[disabled] input[type="number"],
+fieldset[disabled] input[type="email"],
+fieldset[disabled] input[type="url"],
+fieldset[disabled] input[type="search"],
+fieldset[disabled] input[type="tel"],
+fieldset[disabled] input[type="color"] {
+  cursor: not-allowed;
+  background-color: #eeeeee;
 }
 
 input,
@@ -1368,10 +1427,10 @@ input[type="checkbox"] {
 
 select,
 input[type="file"] {
-  height: 36px;
+  height: 38px;
   /* In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support */
 
-  line-height: 36px;
+  line-height: 38px;
 }
 
 select[multiple],
@@ -1484,6 +1543,7 @@ input[type="url"].input-large,
 input[type="search"].input-large,
 input[type="tel"].input-large,
 input[type="color"].input-large {
+  min-height: 56px;
   padding: 14px 16px;
   font-size: 18px;
   border-radius: 6px;
@@ -1509,28 +1569,6 @@ input[type="color"].input-small {
   padding: 5px 10px;
   font-size: 12px;
   border-radius: 3px;
-}
-
-input[disabled],
-select[disabled],
-textarea[disabled],
-input[readonly],
-select[readonly],
-textarea[readonly],
-fieldset[disabled] input,
-fieldset[disabled] select,
-fieldset[disabled] textarea {
-  cursor: not-allowed;
-  background-color: #eeeeee;
-}
-
-input[type="radio"][disabled],
-input[type="checkbox"][disabled],
-input[type="radio"][readonly],
-input[type="checkbox"][readonly],
-fieldset[disabled] input[type="radio"],
-fieldset[disabled] input[type="checkbox"] {
-  background-color: transparent;
 }
 
 .has-warning .control-label {
@@ -1600,21 +1638,6 @@ fieldset[disabled] input[type="checkbox"] {
   color: #468847;
   background-color: #dff0d8;
   border-color: #468847;
-}
-
-input:focus:invalid,
-textarea:focus:invalid,
-select:focus:invalid {
-  color: #b94a48;
-  border-color: #ee5f5b;
-}
-
-input:focus:invalid:focus,
-textarea:focus:invalid:focus,
-select:focus:invalid:focus {
-  border-color: #e9322d;
-  -webkit-box-shadow: 0 0 6px #f8b9b7;
-          box-shadow: 0 0 6px #f8b9b7;
 }
 
 .help-block {
@@ -1806,16 +1829,16 @@ fieldset[disabled] .btn {
 
 .btn-default {
   color: #ffffff;
-  background-color: #a7a9aa;
-  border-color: #a7a9aa;
+  background-color: #474949;
+  border-color: #474949;
 }
 
 .btn-default:hover,
 .btn-default:focus,
 .btn-default:active,
 .btn-default.active {
-  background-color: #9a9c9d;
-  border-color: #8d9091;
+  background-color: #3a3c3c;
+  border-color: #2e2f2f;
 }
 
 .btn-default.disabled:hover,
@@ -1830,8 +1853,8 @@ fieldset[disabled] .btn-default:active,
 .btn-default.disabled.active,
 .btn-default[disabled].active,
 fieldset[disabled] .btn-default.active {
-  background-color: #a7a9aa;
-  border-color: #a7a9aa;
+  background-color: #474949;
+  border-color: #474949;
 }
 
 .btn-primary {
@@ -3001,10 +3024,6 @@ a.list-group-item.active .list-group-item-text {
   margin-right: -15px;
 }
 
-.list-group-item > .glyphicon-chevron-right {
-  margin-right: -15px;
-}
-
 .list-group-item > .glyphicon + .badge {
   margin-right: 5px;
 }
@@ -3462,6 +3481,10 @@ button.close {
   background-color: transparent;
 }
 
+.navbar-nav.pull-right {
+  width: 100%;
+}
+
 .navbar-static-top {
   border-radius: 0;
 }
@@ -3532,8 +3555,8 @@ button.close {
 }
 
 .navbar-form {
-  margin-top: 7px;
-  margin-bottom: 7px;
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 
 .navbar-form input,
@@ -3677,19 +3700,20 @@ button.close {
     margin-right: 5px;
     margin-left: -5px;
   }
-  .navbar .nav {
+  .navbar-nav {
     float: left;
     margin-top: 0;
     margin-bottom: 0;
   }
-  .navbar .nav > li {
+  .navbar-nav > li {
     float: left;
   }
-  .navbar .nav > li > a {
+  .navbar-nav > li > a {
     border-radius: 0;
   }
-  .navbar .nav.pull-right {
+  .navbar-nav.pull-right {
     float: right;
+    width: auto;
   }
   .navbar-toggle {
     position: relative;
@@ -3704,7 +3728,7 @@ button.close {
 }
 
 .navbar-btn {
-  margin-top: 7px;
+  margin-top: 6px;
 }
 
 .navbar-text {
@@ -4371,10 +4395,6 @@ button.close {
   background-color: #f7f7f7;
   border-bottom: 1px solid #ebebeb;
   border-radius: 5px 5px 0 0;
-}
-
-.popover-title:empty {
-  display: none;
 }
 
 .popover-content {
@@ -5165,6 +5185,15 @@ a.list-group-item.active > .badge,
   display: block !important;
 }
 
+tr.visible-sm {
+  display: table-row !important;
+}
+
+th.visible-sm,
+td.visible-sm {
+  display: table-cell !important;
+}
+
 .visible-md {
   display: none !important;
 }
@@ -5181,8 +5210,26 @@ a.list-group-item.active > .badge,
   display: block !important;
 }
 
+tr.hidden-md {
+  display: table-row !important;
+}
+
+th.hidden-md,
+td.hidden-md {
+  display: table-cell !important;
+}
+
 .hidden-lg {
   display: block !important;
+}
+
+tr.hidden-lg {
+  display: table-row !important;
+}
+
+th.hidden-lg,
+td.hidden-lg {
+  display: table-cell !important;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -5192,17 +5239,38 @@ a.list-group-item.active > .badge,
   .visible-md {
     display: block !important;
   }
+  tr.visible-md {
+    display: table-row !important;
+  }
+  th.visible-md,
+  td.visible-md {
+    display: table-cell !important;
+  }
   .visible-lg {
     display: none !important;
   }
   .hidden-sm {
     display: block !important;
   }
+  tr.hidden-sm {
+    display: table-row !important;
+  }
+  th.hidden-sm,
+  td.hidden-sm {
+    display: table-cell !important;
+  }
   .hidden-md {
     display: none !important;
   }
   .hidden-lg {
     display: block !important;
+  }
+  tr.hidden-lg {
+    display: table-row !important;
+  }
+  th.hidden-lg,
+  td.hidden-lg {
+    display: table-cell !important;
   }
 }
 
@@ -5216,11 +5284,32 @@ a.list-group-item.active > .badge,
   .visible-lg {
     display: block !important;
   }
+  tr.visible-lg {
+    display: table-row !important;
+  }
+  th.visible-lg,
+  td.visible-lg {
+    display: table-cell !important;
+  }
   .hidden-sm {
     display: block !important;
   }
+  tr.hidden-sm {
+    display: table-row !important;
+  }
+  th.hidden-sm,
+  td.hidden-sm {
+    display: table-cell !important;
+  }
   .hidden-md {
     display: block !important;
+  }
+  tr.hidden-md {
+    display: table-row !important;
+  }
+  th.hidden-md,
+  td.hidden-md {
+    display: table-cell !important;
   }
   .hidden-lg {
     display: none !important;
@@ -5234,6 +5323,13 @@ a.list-group-item.active > .badge,
 @media print {
   .visible-print {
     display: block !important;
+  }
+  tr.visible-print {
+    display: table-row !important;
+  }
+  th.visible-print,
+  td.visible-print {
+    display: table-cell !important;
   }
   .hidden-print {
     display: none !important;
