@@ -72,6 +72,17 @@ input[type="color"] {
     outline: 0;
     .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)");
   }
+
+  // Disabled and read-only inputs
+  // Note: HTML5 says that inputs under a fieldset > legend:first-child won't be
+  //   disabled if the fieldset is disabled. Due to implementation difficulty,
+  //   we don't honor that edge case; we style them as disabled anyway.
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    background-color: @input-bg-disabled;
+  }
 }
 
 // Reset appearance properties for textual inputs and textarea
@@ -239,35 +250,6 @@ input[type="color"] {
     border-radius: @border-radius-small;
   }
 }
-
-
-// DISABLED STATE
-// --------------
-
-// Disabled and read-only inputs
-// Note: HTML5 says that inputs under a fieldset > legend:first-child won't be
-//   disabled if the fieldset is disabled. Due to implementation difficulty,
-//   we don't honor that edge case; we style them as disabled anyway.
-input,
-select,
-textarea {
-  &[disabled],
-  &[readonly],
-  fieldset[disabled] & {
-    cursor: not-allowed;
-    background-color: @input-bg-disabled;
-  }
-}
-// Explicitly reset the colors here
-input[type="radio"],
-input[type="checkbox"] {
-  &[disabled],
-  &[readonly],
-  fieldset[disabled] & {
-    background-color: transparent;
-  }
-}
-
 
 
 
