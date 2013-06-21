@@ -54,6 +54,7 @@ a.text-success:focus { color: darken($state-success-text, 10%); }
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $headings-font-family;
   font-weight: $headings-font-weight;
   line-height: $headings-line-height;
   small {

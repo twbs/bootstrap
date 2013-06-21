@@ -53,6 +53,7 @@ $font-size-mini:          ceil($font-size-base * 0.75) !default; // ~11px
 $line-height-base:        1.428571429 !default; // 20/14
 $line-height-computed:    floor($font-size-base * $line-height-base) !default; // ~20px
 
+$headings-font-family:    $font-family-base !default;
 $headings-font-weight:    500 !default;
 $headings-line-height:    1.1 !default;
 
@@ -127,9 +128,9 @@ $input-border-radius:            $border-radius-base !default;
 
 $input-color-placeholder:        $gray-light !default;
 
-$input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2) !default;
-$input-height-large:             ($line-height-computed + ($padding-large-vertical * 2) + 2) !default;
-$input-height-small:             ($line-height-computed + ($padding-small-vertical * 2) + 2) !default;
+$input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2);
+$input-height-large:             (ceil($font-size-large * $line-height-base) + ($padding-large-vertical * 2) + 2);
+$input-height-small:             (ceil($font-size-small * $line-height-base) + ($padding-small-vertical * 2) + 2);
 
 
 // Dropdowns

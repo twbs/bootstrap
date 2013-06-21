@@ -48,6 +48,12 @@
     color: $navbar-link-disabled-color;
     background-color: $navbar-link-disabled-bg;
   }
+
+  // Right aligned contents
+  // Make them full width first so that they align properly on mobile
+  &.pull-right {
+    width: 100%;
+  }
 }
 
 
@@ -281,7 +287,7 @@
     margin-left: -5px;
     margin-right: 5px;
   }
-  .navbar .nav {
+  .navbar-nav {
     float: left;
     // undo margin to make nav extend full height of navbar
     margin-top: 0;
@@ -296,6 +302,7 @@
 
     &.pull-right {
       float: right;
+      width: auto;
     }
   }
 

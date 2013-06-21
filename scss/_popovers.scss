@@ -40,10 +40,6 @@
   background-color: $popover-title-bg;
   border-bottom: 1px solid darken($popover-title-bg, 5%);
   border-radius: 5px 5px 0 0;
-
-  &:empty {
-    display: none;
-  }
 }
 
 .popover-content {
