@@ -19,8 +19,8 @@
 
 
 !function($){
-
-  "use strict"; // jshint ;_;
+  /*jshint asi: true*/
+  "use strict"; // jsint ;_;
 
 
  /* TYPEAHEAD PUBLIC CLASS DEFINITION
@@ -30,6 +30,8 @@
     this.$element = $(element)
     this.options = $.extend({}, $.fn.typeahead.defaults, options)
     this.matcher = this.options.matcher || this.matcher
+    this.render = this.options.render || this.render
+    this.select = this.options.select || this.select
     this.sorter = this.options.sorter || this.sorter
     this.highlighter = this.options.highlighter || this.highlighter
     this.updater = this.options.updater || this.updater
@@ -44,15 +46,15 @@
     constructor: Typeahead
 
   , select: function () {
-      var val = this.$menu.find('.active').attr('data-value')
+      var val = this.$menu.find('.active').data('ta-data-value')
       this.$element
-        .val(this.updater(val))
-        .change()
+          .val(this.updater(val))
+          .change()
       return this.hide()
     }
 
   , updater: function (item) {
-      return item
+      return this.options.valKey ? item[this.options.valKey] : item
     }
 
   , show: function () {
@@ -109,7 +111,8 @@
     }
 
   , matcher: function (item) {
-      return ~item.toLowerCase().indexOf(this.query.toLowerCase())
+      var strItem = this.options.valKey ? item[this.options.valKey] : item
+      return ~strItem.toLowerCase().indexOf(this.query.toLowerCase())
     }
 
   , sorter: function (items) {
@@ -117,10 +120,12 @@
         , caseSensitive = []
         , caseInsensitive = []
         , item
+        , strItem
 
       while (item = items.shift()) {
-        if (!item.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
-        else if (~item.indexOf(this.query)) caseSensitive.push(item)
+        strItem = this.options.valKey ? item[this.options.valKey] : item
+        if (!strItem.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
+        else if (~strItem.indexOf(this.query)) caseSensitive.push(item)
         else caseInsensitive.push(item)
       }
 
@@ -128,8 +133,9 @@
     }
 
   , highlighter: function (item) {
+      var strItem = this.options.valKey ? item[this.options.valKey] : item
       var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
-      return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
+      return strItem.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
         return '<strong>' + match + '</strong>'
       })
     }
@@ -137,11 +143,11 @@
   , render: function (items) {
       var that = this
 
-      items = $(items).map(function (i, item) {
-        i = $(that.options.item).attr('data-value', item)
-        i.find('a').html(that.highlighter(item))
-        return i[0]
-      })
+      items = $(items).map(function (i, item){
+          i = $(that.options.item).data('ta-data-value', item)
+          i.find('a').html(that.highlighter(item))
+          return i[0]
+      });
 
       items.first().addClass('active')
       this.$menu.html(items)
@@ -172,19 +178,27 @@
 
   , listen: function () {
       this.$element
-        .on('focus',    $.proxy(this.focus, this))
-        .on('blur',     $.proxy(this.blur, this))
-        .on('keypress', $.proxy(this.keypress, this))
-        .on('keyup',    $.proxy(this.keyup, this))
+        .on('focus.typeahead.instance',    $.proxy(this.focus, this))
+        .on('blur.typeahead.instance',     $.proxy(this.blur, this))
+        .on('keypress.typeahead.instance', $.proxy(this.keypress, this))
+        .on('keyup.typeahead.instance',    $.proxy(this.keyup, this))
 
       if (this.eventSupported('keydown')) {
-        this.$element.on('keydown', $.proxy(this.keydown, this))
+        this.$element.on('keydown.typeahead.instance', $.proxy(this.keydown, this))
       }
 
       this.$menu
-        .on('click', $.proxy(this.click, this))
-        .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
-        .on('mouseleave', 'li', $.proxy(this.mouseleave, this))
+        .on('click.typeahead.instance', $.proxy(this.click, this))
+        .on('mouseenter.typeahead.instance', 'li', $.proxy(this.mouseenter, this))
+        .on('mouseleave.typeahead.instance', 'li', $.proxy(this.mouseleave, this))
+    }
+
+  , stoplisten: function () {
+      this.$element
+        .off('.typeahead.instance')
+
+      this.$menu
+        .off('.typeahead.instance')
     }
 
   , eventSupported: function(eventName) {
@@ -285,6 +299,13 @@
       if (!this.focused && this.shown) this.hide()
     }
 
+  , destroy: function(){
+      this.stoplisten();
+      this.$menu.remove();
+      this.$element.removeData('typeahead');
+      this.$element = null;
+    }
+
   }
 
 
@@ -305,6 +326,7 @@
 
   $.fn.typeahead.defaults = {
     source: []
+  , valKey: ''
   , items: 8
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
