@@ -3481,6 +3481,10 @@ button.close {
   background-color: transparent;
 }
 
+.navbar-nav.pull-right {
+  width: 100%;
+}
+
 .navbar-static-top {
   border-radius: 0;
 }
@@ -3709,6 +3713,7 @@ button.close {
   }
   .navbar-nav.pull-right {
     float: right;
+    width: auto;
   }
   .navbar-toggle {
     position: relative;
