@@ -6,8 +6,8 @@
 .navbar {
   position: relative;
   margin-bottom: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: floor(@grid-gutter-width / 2);  // ~15px
+  padding-right: floor(@grid-gutter-width / 2); // ~15px
   background-color: @navbar-bg;
   border-radius: @border-radius-base;
 
@@ -284,7 +284,7 @@
 
   .navbar-brand {
     float: left;
-    margin-left: -15px;
+    margin-left: -5px;
     margin-right: 5px;
   }
   .navbar-nav {
