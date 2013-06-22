@@ -79,11 +79,6 @@ module.exports = function(grunt) {
                 }, {
                     expand: true,
                     flatten: true,
-                    src: ['js/*.js'],
-                    dest: 'docs/assets/js/'
-                }, {
-                    expand: true,
-                    flatten: true,
                     src: ['js/tests/vendor/jquery.js'],
                     dest: 'docs/assets/js/'
                 }]
@@ -104,9 +99,6 @@ module.exports = function(grunt) {
             }
         },
         shell: {
-            /*gh: {
-                command: 'node docs/build production'
-            },*/
             jekyll_win: {
                 command: 'chcp 65001'
             },
