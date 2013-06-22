@@ -1,386 +1,328 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Javascript · Bootstrap</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+---
+layout: default
+title: JavaScript plugins
+slug: js
+lead: "Bring Bootstrap's components to life with over a dozen custom jQuery plugins. Easily include them all, or one by one."
+---
 
-    <!-- Le styles -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="assets/css/docs.css" rel="stylesheet">
-    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <!-- Le fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="assets/ico/favicon.png">
-
-  </head>
-
-  <body data-spy="scroll" data-target=".bs-docs-sidebar">
-
-    <!-- Navbar
-    ================================================== -->
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="./index.html">Bootstrap</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="">
-                <a href="./index.html">Home</a>
-              </li>
-              <li class="">
-                <a href="./getting-started.html">Get started</a>
-              </li>
-              <li class="">
-                <a href="./scaffolding.html">Scaffolding</a>
-              </li>
-              <li class="">
-                <a href="./base-css.html">Base CSS</a>
-              </li>
-              <li class="">
-                <a href="./components.html">Components</a>
-              </li>
-              <li class="active">
-                <a href="./javascript.html">JavaScript</a>
-              </li>
-              <li class="">
-                <a href="./customize.html">Customize</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+  <!-- Overview
+  ================================================== -->
+  <div class="bs-docs-section" id="js-overview">
+    <div class="page-header">
+      <h1>Overview</h1>
     </div>
 
-<!-- Subhead
-================================================== -->
-<header class="jumbotron subhead">
-  <div class="container">
-    <h1>JavaScript</h1>
-    <p class="lead">Bring Bootstrap's components to life&mdash;now with 13 custom jQuery plugins.
-  </div>
-</header>
+    <h3 id="js-individual-compiled">Individual or compiled</h3>
+    <p>Plugins can be included individually, or all at once. <strong>Do not attempt to include both.</strong> Both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all plugins in a single file.</p>
+    <div class="bs-callout">
+      <h4>Plugin dependencies</h4>
+      <p>Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs.</p>
+    </div>
 
-  <div class="container">
+    <h3 id="js-data-attrs">Data attributes</h3>
+    <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API and should be your first consideration when using a plugin.</p>
 
-    <!-- Docs nav
-    ================================================== -->
-    <div class="row">
-      <div class="span3 bs-docs-sidebar">
-        <ul class="nav nav-list bs-docs-sidenav">
-          <li><a href="#overview"><i class="icon-chevron-right"></i> Overview</a></li>
-          <li><a href="#transitions"><i class="icon-chevron-right"></i> Transitions</a></li>
-          <li><a href="#modals"><i class="icon-chevron-right"></i> Modal</a></li>
-          <li><a href="#dropdowns"><i class="icon-chevron-right"></i> Dropdown</a></li>
-          <li><a href="#scrollspy"><i class="icon-chevron-right"></i> Scrollspy</a></li>
-          <li><a href="#tabs"><i class="icon-chevron-right"></i> Tab</a></li>
-          <li><a href="#tooltips"><i class="icon-chevron-right"></i> Tooltip</a></li>
-          <li><a href="#popovers"><i class="icon-chevron-right"></i> Popover</a></li>
-          <li><a href="#alerts"><i class="icon-chevron-right"></i> Alert</a></li>
-          <li><a href="#buttons"><i class="icon-chevron-right"></i> Button</a></li>
-          <li><a href="#collapse"><i class="icon-chevron-right"></i> Collapse</a></li>
-          <li><a href="#carousel"><i class="icon-chevron-right"></i> Carousel</a></li>
-          <li><a href="#typeahead"><i class="icon-chevron-right"></i> Typeahead</a></li>
-          <li><a href="#affix"><i class="icon-chevron-right"></i> Affix</a></li>
-        </ul>
-      </div>
-      <div class="span9">
+    <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the body namespaced with <code>data-api</code>. This looks like this:
+{% highlight js %}
+$('body').off('.data-api')
+{% endhighlight %}
 
+    <p>Alternatively, to target a specific plugin, just include the plugin's name as a namespace along with the data-api namespace like this:</p>
+{% highlight js %}
+$('body').off('.alert.data-api')
+{% endhighlight %}
 
-        <!-- Overview
-        ================================================== -->
-        <section id="overview">
-          <div class="page-header">
-            <h1>JavaScript in Bootstrap</h1>
-          </div>
+    <h3 id="js-programmatic-api">Programmatic API</h3>
+    <p>We also believe you should be able to use all Bootstrap plugins purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.</p>
+{% highlight js %}
+$(".btn.danger").button("toggle").addClass("fat")
+{% endhighlight %}
 
-          <h3>Individual or compiled</h3>
-          <p>Plugins can be included individually (though some have required dependencies), or all at once. Both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all plugins in a single file.</p>
-
-          <h3>Data attributes</h3>
-          <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API and should be your first consideration when using a plugin.</p>
-
-          <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the body namespaced with `'data-api'`. This looks like this:
-          <pre class="prettyprint linenums">$('body').off('.data-api')</pre>
-
-          <p>Alternatively, to target a specific plugin, just include the plugin's name as a namespace along with the data-api namespace like this:</p>
-          <pre class="prettyprint linenums">$('body').off('.alert.data-api')</pre>
-
-          <h3>Programmatic API</h3>
-          <p>We also believe you should be able to use all Bootstrap plugins purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.</p>
-          <pre class="prettyprint linenums">$(".btn.danger").button("toggle").addClass("fat")</pre>
-          <p>All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a plugin with default behavior):</p>
-<pre class="prettyprint linenums">
-$("#myModal").modal()                       // initialized with defaults
+    <p>All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a plugin with default behavior):</p>
+{% highlight js %}
+$("#myModal").modal()                      // initialized with defaults
 $("#myModal").modal({ keyboard: false })   // initialized with no keyboard
 $("#myModal").modal('show')                // initializes and invokes show immediately</p>
-</pre>
-          <p>Each plugin also exposes its raw constructor on a `Constructor` property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.</p>
+{% endhighlight %}
 
-          <h3>No Conflict</h3>
-          <p>Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In these circumstances,  namespace collisions can occasionally occur. If this happens, you may call <code>.noConflict</code> on the plugin you wish to revert the value of.</p>
+    <p>Each plugin also exposes its raw constructor on a <code>Constructor</code> property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.</p>
 
-<pre class="prettyprint linenums">
+    <h3 id="js-noconflict">No conflict</h3>
+    <p>Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In these circumstances, namespace collisions can occasionally occur. If this happens, you may call <code>.noConflict</code> on the plugin you wish to revert the value of.</p>
+{% highlight js %}
 var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
 $.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the bootstrap functionality
-</pre>
+{% endhighlight %}
 
-          <h3>Events</h3>
-          <p>Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.</p>
-          <p>All infinitive events provide preventDefault functionality. This provides the ability to stop the execution of an action before it starts.</p>
-<pre class="prettyprint linenums">
-$('#myModal').on('show', function (e) {
-    if (!data) return e.preventDefault() // stops modal from being shown
+    <h3 id="js-events">Events</h3>
+    <p>Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.</p>
+    <p>As of 3.0.0, all bootstrap events are namespaced.</p>
+    <p>All infinitive events provide <code>preventDefault</code> functionality. This provides the ability to stop the execution of an action before it starts.</p>
+{% highlight js %}
+$('#myModal').on('show.bs.modal', function (e) {
+  if (!data) return e.preventDefault() // stops modal from being shown
 })
-</pre>
-        </section>
+{% endhighlight %}
+  </div>
 
 
 
-        <!-- Transitions
-        ================================================== -->
-        <section id="transitions">
-          <div class="page-header">
-            <h1>Transitions <small>bootstrap-transition.js</small></h1>
-          </div>
-          <h3>About transitions</h3>
-          <p>For simple transition effects, include <strong>bootstrap-transition.js</strong> once alongside the other JS files. If you're using the compiled (or minified) <strong>bootstrap.js</strong>, there is no need to include this&mdash;it's already there.</p>
-          <h3>Use cases</h3>
-          <p>A few examples of the transition plugin:</p>
-          <ul>
-            <li>Sliding or fading in modals</li>
-            <li>Fading out tabs</li>
-            <li>Fading out alerts</li>
-            <li>Sliding carousel panes</li>
-          </ul>
+  <!-- Transitions
+  ================================================== -->
+  <div class="bs-docs-section" id="transitions">
+    <div class="page-header">
+      <h1>Transitions <small>transition.js</small></h1>
+    </div>
+    <h3>About transitions</h3>
+    <p>For simple transition effects, include transition.js once alongside the other JS files. If you're using the compiled (or minified) bootstrap.js, there is no need to include this&mdash;it's already there.</p>
+    <h3>Use cases</h3>
+    <p>A few examples of the transition plugin:</p>
+    <ul>
+      <li>Sliding or fading in modals</li>
+      <li>Fading out tabs</li>
+      <li>Fading out alerts</li>
+      <li>Sliding carousel panes</li>
+    </ul>
 
-        </section>
-
-
-
-        <!-- Modal
-        ================================================== -->
-        <section id="modals">
-          <div class="page-header">
-            <h1>Modals <small>bootstrap-modal.js</small></h1>
-          </div>
+    <!-- Ideas: include docs for .fade.in, .slide.in, etc -->
+  </div>
 
 
-          <h2>Examples</h2>
-          <p>Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.</p>
 
-          <h3>Static example</h3>
-          <p>A rendered modal with header, body, and set of actions in the footer.</p>
-          <div class="bs-docs-example" style="background-color: #f5f5f5;">
-            <div class="modal" style="position: relative; top: auto; left: auto; right: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3>Modal header</h3>
-              </div>
-              <div class="modal-body">
-                <p>One fine body&hellip;</p>
-              </div>
-              <div class="modal-footer">
-                <a href="#" class="btn">Close</a>
-                <a href="#" class="btn btn-primary">Save changes</a>
-              </div>
-            </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;div class="modal hide fade"&gt;
-  &lt;div class="modal-header"&gt;
-    &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;&amp;times;&lt;/button&gt;
-    &lt;h3&gt;Modal header&lt;/h3&gt;
-  &lt;/div&gt;
-  &lt;div class="modal-body"&gt;
-    &lt;p&gt;One fine body&hellip;&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;div class="modal-footer"&gt;
-    &lt;a href="#" class="btn"&gt;Close&lt;/a&gt;
-    &lt;a href="#" class="btn btn-primary"&gt;Save changes&lt;/a&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</pre>
+  <!-- Modal
+  ================================================== -->
+  <div class="bs-docs-section" id="modals">
+    <div class="page-header">
+      <h1>Modals <small>bootstrap-modal.js</small></h1>
+    </div>
 
-          <h3>Live demo</h3>
-          <p>Toggle a modal via JavaScript by clicking the button below. It will slide down and fade in from the top of the page.</p>
-          <!-- sample modal content -->
-          <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <h2 id="modals-examples">Examples</h2>
+    <p>Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.</p>
+
+    <h3>Static example</h3>
+    <p>A rendered modal with header, body, and set of actions in the footer.</p>
+    <div class="bs-example bs-example-modal">
+      <div class="modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h3 id="myModalLabel">Modal Heading</h3>
+              <h4 class="modal-title">Modal title</h4>
             </div>
             <div class="modal-body">
-              <h4>Text in a modal</h4>
-              <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem.</p>
-
-              <h4>Popover in a modal</h4>
-              <p>This <a href="#" role="button" class="btn popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on click.</p>
-
-              <h4>Tooltips in a modal</h4>
-              <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> should have tooltips on hover.</p>
-
-              <hr>
-
-              <h4>Overflowing text to show optional scrollbar</h4>
-              <p>We set a fixed <code>max-height</code> on the <code>.modal-body</code>. Watch it overflow with all this extra lorem ipsum text we've included.</p>
-              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+              <p>One fine body&hellip;</p>
             </div>
             <div class="modal-footer">
-              <button class="btn" data-dismiss="modal">Close</button>
-              <button class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
             </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dalog -->
+      </div><!-- /.modal -->
+    </div><!-- /example -->
+{% highlight html %}
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dalog -->
+</div><!-- /.modal -->
+{% endhighlight %}
+
+    <h3>Live demo</h3>
+    <p>Toggle a modal via JavaScript by clicking the button below. It will slide down and fade in from the top of the page.</p>
+    <!-- sample modal content -->
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Modal Heading</h4>
           </div>
-          <div class="bs-docs-example" style="padding-bottom: 24px;">
-            <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Launch demo modal</a>
+          <div class="modal-body">
+            <h4>Text in a modal</h4>
+            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+
+            <h4>Popover in a modal</h4>
+            <p>This <a href="#" role="button" class="btn btn-default popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on click.</p>
+
+            <h4>Tooltips in a modal</h4>
+            <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> should have tooltips on hover.</p>
+
+            <hr>
+
+            <h4>Overflowing text to show optional scrollbar</h4>
+            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
           </div>
-<pre class="prettyprint linenums">
-&lt!-- Button to trigger modal --&gt;
-&lt;a href="#myModal" role="button" class="btn" data-toggle="modal"&gt;Launch demo modal&lt;/a&gt;
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
 
-&lt!-- Modal --&gt;
-&lt;div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"&gt;
-  &lt;div class="modal-header"&gt;
-    &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;&times;&lt;/button&gt;
-    &lt;h3 id="myModalLabel"&gt;Modal header&lt;/h3&gt;
-  &lt;/div&gt;
-  &lt;div class="modal-body"&gt;
-    &lt;p&gt;One fine body&hellip;&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;div class="modal-footer"&gt;
-    &lt;button class="btn" data-dismiss="modal" aria-hidden="true"&gt;Close&lt;/button&gt;
-    &lt;button class="btn btn-primary"&gt;Save changes&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</pre>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dalog -->
+    </div><!-- /.modal -->
+
+    <div class="bs-example" style="padding-bottom: 24px;">
+      <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Launch demo modal</a>
+    </div><!-- /example -->
+{% highlight html %}
+  <!-- Button trigger modal -->
+  <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Launch demo modal</a>
+
+  <!-- Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn">Close</a>
+          <a href="#" class="btn btn-primary">Save changes</a>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dalog -->
+  </div><!-- /.modal -->
+{% endhighlight %}
 
 
-          <hr class="bs-docs-separator">
 
+    <h2 id="modals-usage">Usage</h2>
 
-          <h2>Usage</h2>
+    <h3>Via data attributes</h3>
+    <p>Activate a modal without writing JavaScript. Set <code>data-toggle="modal"</code> on a controller element, like a button, along with a <code>data-target="#foo"</code> or <code>href="#foo"</code> to target a specific modal to toggle.</p>
+{% highlight html %}
+<button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button>
+{% endhighlight %}
 
-          <h3>Via data attributes</h3>
-          <p>Activate a modal without writing JavaScript. Set <code>data-toggle="modal"</code> on a controller element, like a button, along with a <code>data-target="#foo"</code> or <code>href="#foo"</code> to target a specific modal to toggle.</p>
-          <pre class="prettyprint linenums">&lt;button type="button" data-toggle="modal" data-target="#myModal"&gt;Launch modal&lt;/button&gt;</pre>
+    <h3>Via JavaScript</h3>
+    <p>Call a modal with id <code>myModal</code> with a single line of JavaScript:</p>
+    {% highlight js %}$('#myModal').modal(options){% endhighlight %}
 
-          <h3>Via JavaScript</h3>
-          <p>Call a modal with id <code>myModal</code> with a single line of JavaScript:</p>
-          <pre class="prettyprint linenums">$('#myModal').modal(options)</pre>
+    <h3>Options</h3>
+    <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-backdrop=""</code>.</p>
+    <table class="table table-bordered table-striped">
+      <thead>
+       <tr>
+         <th style="width: 100px;">Name</th>
+         <th style="width: 50px;">type</th>
+         <th style="width: 50px;">default</th>
+         <th>description</th>
+       </tr>
+      </thead>
+      <tbody>
+       <tr>
+         <td>backdrop</td>
+         <td>boolean</td>
+         <td>true</td>
+         <td>Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click.</td>
+       </tr>
+       <tr>
+         <td>keyboard</td>
+         <td>boolean</td>
+         <td>true</td>
+         <td>Closes the modal when escape key is pressed</td>
+       </tr>
+       <tr>
+         <td>show</td>
+         <td>boolean</td>
+         <td>true</td>
+         <td>Shows the modal when initialized.</td>
+       </tr>
+       <tr>
+         <td>remote</td>
+         <td>path</td>
+         <td>false</td>
+         <td><p>If a remote url is provided, content will be loaded via jQuery's <code>load</code> method and injected into the <code>.modal-body</code>. If you're using the data api, you may alternatively use the <code>href</code> tag to specify the remote source. An example of this is shown below:</p>
+{% highlight html %}
+<a data-toggle="modal" href="remote.html" data-target="#modal">Click me</a>
+{% endhighlight %}
+       </tr>
+      </tbody>
+    </table>
 
-          <h3>Options</h3>
-          <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-backdrop=""</code>.</p>
-          <table class="table table-bordered table-striped">
-            <thead>
-             <tr>
-               <th style="width: 100px;">Name</th>
-               <th style="width: 50px;">type</th>
-               <th style="width: 50px;">default</th>
-               <th>description</th>
-             </tr>
-            </thead>
-            <tbody>
-             <tr>
-               <td>backdrop</td>
-               <td>boolean</td>
-               <td>true</td>
-               <td>Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click.</td>
-             </tr>
-             <tr>
-               <td>keyboard</td>
-               <td>boolean</td>
-               <td>true</td>
-               <td>Closes the modal when escape key is pressed</td>
-             </tr>
-             <tr>
-               <td>show</td>
-               <td>boolean</td>
-               <td>true</td>
-               <td>Shows the modal when initialized.</td>
-             </tr>
-             <tr>
-               <td>remote</td>
-               <td>path</td>
-               <td>false</td>
-               <td><p>If a remote url is provided, content will be loaded via jQuery's <code>load</code> method and injected into the <code>.modal-body</code>. If you're using the data api, you may alternatively use the <code>href</code> tag to specify the remote source. An example of this is shown below:</p>
-              <pre class="prettyprint linenums"><code>&lt;a data-toggle="modal" href="remote.html" data-target="#modal"&gt;click me&lt;/a&gt;</code></pre></td>
-             </tr>
-            </tbody>
-          </table>
+    <h3>Methods</h3>
 
-          <h3>Methods</h3>
-          <h4>.modal(options)</h4>
-          <p>Activates your content as a modal. Accepts an optional options <code>object</code>.</p>
-<pre class="prettyprint linenums">
+    <h4>.modal(options)</h4>
+    <p>Activates your content as a modal. Accepts an optional options <code>object</code>.</p>
+{% highlight js %}
 $('#myModal').modal({
   keyboard: false
 })
-</pre>
-          <h4>.modal('toggle')</h4>
-          <p>Manually toggles a modal.</p>
-          <pre class="prettyprint linenums">$('#myModal').modal('toggle')</pre>
-          <h4>.modal('show')</h4>
-          <p>Manually opens a modal.</p>
-          <pre class="prettyprint linenums">$('#myModal').modal('show')</pre>
-          <h4>.modal('hide')</h4>
-          <p>Manually hides a modal.</p>
-          <pre class="prettyprint linenums">$('#myModal').modal('hide')</pre>
-          <h3>Events</h3>
-          <p>Bootstrap's modal class exposes a few events for hooking into modal functionality.</p>
-          <table class="table table-bordered table-striped">
-            <thead>
-             <tr>
-               <th style="width: 150px;">Event</th>
-               <th>Description</th>
-             </tr>
-            </thead>
-            <tbody>
-             <tr>
-               <td>show</td>
-               <td>This event fires immediately when the <code>show</code> instance method is called.</td>
-             </tr>
-             <tr>
-               <td>shown</td>
-               <td>This event is fired when the modal has been made visible to the user (will wait for css transitions to complete).</td>
-             </tr>
-             <tr>
-               <td>hide</td>
-               <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
-             </tr>
-             <tr>
-               <td>hidden</td>
-               <td>This event is fired when the modal has finished being hidden from the user (will wait for css transitions to complete).</td>
-             </tr>
-            </tbody>
-          </table>
-<pre class="prettyprint linenums">
-$('#myModal').on('hidden', function () {
+{% endhighlight %}
+
+    <h4>.modal('toggle')</h4>
+    <p>Manually toggles a modal.</p>
+    {% highlight js %}$('#myModal').modal('toggle'){% endhighlight %}
+
+    <h4>.modal('show')</h4>
+    <p>Manually opens a modal.</p>
+    {% highlight js %}$('#myModal').modal('show'){% endhighlight %}
+
+    <h4>.modal('hide')</h4>
+    <p>Manually hides a modal.</p>
+    {% highlight js %}$('#myModal').modal('hide'){% endhighlight %}
+
+    <h3>Events</h3>
+    <p>Bootstrap's modal class exposes a few events for hooking into modal functionality.</p>
+    <table class="table table-bordered table-striped">
+      <thead>
+       <tr>
+         <th style="width: 150px;">Event Type</th>
+         <th>Description</th>
+       </tr>
+      </thead>
+      <tbody>
+       <tr>
+         <td>show</td>
+         <td>This event fires immediately when the <code>show</code> instance method is called.</td>
+       </tr>
+       <tr>
+         <td>shown</td>
+         <td>This event is fired when the modal has been made visible to the user (will wait for css transitions to complete).</td>
+       </tr>
+       <tr>
+         <td>hide</td>
+         <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
+       </tr>
+       <tr>
+         <td>hidden</td>
+         <td>This event is fired when the modal has finished being hidden from the user (will wait for css transitions to complete).</td>
+       </tr>
+      </tbody>
+    </table>
+{% highlight js %}
+$('#myModal').on('hidden.bs.modal', function () {
   // do something…
 })
-</pre>
-        </section>
+{% endhighlight %}
+  </div>
 
 
 
@@ -396,86 +338,86 @@ $('#myModal').on('hidden', function () {
           <p>Add dropdown menus to nearly anything with this simple plugin, including the navbar, tabs, and pills.</p>
 
           <h3>Within a navbar</h3>
-          <div class="bs-docs-example">
+          <div class="bs-example">
             <div id="navbar-example" class="navbar navbar-static">
               <div class="navbar-inner">
                 <div class="container" style="width: auto;">
-                  <a class="brand" href="#">Project Name</a>
-                  <ul class="nav" role="navigation">
+                  <a class="navbar-brand" href="#">Project Name</a>
+                  <ul class="nav navbar-nav" role="navigation">
                     <li class="dropdown">
                       <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://google.com">Action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">Another action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
                         <li role="presentation" class="divider"></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
                       </ul>
                     </li>
                     <li class="dropdown">
                       <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown 2 <b class="caret"></b></a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
                         <li role="presentation" class="divider"></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
                       </ul>
                     </li>
                   </ul>
-                  <ul class="nav pull-right">
+                  <ul class="nav navbar-nav pull-right">
                     <li id="fat-menu" class="dropdown">
                       <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown 3 <b class="caret"></b></a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
                         <li role="presentation" class="divider"></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
                       </ul>
                     </li>
                   </ul>
                 </div>
               </div>
             </div> <!-- /navbar-example -->
-          </div> 
+          </div> <!-- /example -->
 
           <h3>Within tabs</h3>
-          <div class="bs-docs-example">
+          <div class="bs-example">
             <ul class="nav nav-pills">
               <li class="active"><a href="#">Regular link</a></li>
               <li class="dropdown">
                 <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
                 <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
                   <li role="presentation" class="divider"></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
                 </ul>
               </li>
               <li class="dropdown">
                 <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">Dropdown 2 <b class="caret"></b></a>
                 <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
                   <li role="presentation" class="divider"></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
                 </ul>
               </li>
               <li class="dropdown">
-                <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">Dropdown 3 <b class="caret"></b></a>
-                <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                <a class="dropdown-toggle" id="drop6" role="button" data-toggle="dropdown" href="#">Dropdown 3 <b class="caret"></b></a>
+                <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop6">
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
                   <li role="presentation" class="divider"></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
                 </ul>
               </li>
             </ul> <!-- /tabs -->
-          </div> 
+          </div> <!-- /example -->
 
 
           <hr class="bs-docs-separator">
@@ -485,30 +427,31 @@ $('#myModal').on('hidden', function () {
 
           <h3>Via data attributes</h3>
           <p>Add <code>data-toggle="dropdown"</code> to a link or button to toggle a dropdown.</p>
-<pre class="prettyprint linenums">
-&lt;div class="dropdown"&gt;
-  &lt;a class="dropdown-toggle" data-toggle="dropdown" href="#"&gt;Dropdown trigger&lt;/a&gt;
-  &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
+{% highlight html %}
+<div class="dropdown">
+  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown trigger</a>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
     ...
-  &lt;/ul&gt;
-&lt;/div&gt;
-</pre>
+  </ul>
+</div>
+{% endhighlight %}
           <p>To keep URLs intact, use the <code>data-target</code> attribute instead of <code>href="#"</code>.</p>
-<pre class="prettyprint linenums">
-&lt;div class="dropdown"&gt;
-  &lt;a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html"&gt;
-    Dropdown
-    &lt;b class="caret"&gt;&lt;/b&gt;
-  &lt;/a&gt;
-  &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
+{% highlight html %}
+<div class="dropdown">
+  <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
+    Dropdown <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
     ...
-  &lt;/ul&gt;
-&lt;/div&gt;
-</pre>
+  </ul>
+</div>
+{% endhighlight %}
 
           <h3>Via JavaScript</h3>
           <p>Call the dropdowns via JavaScript:</p>
-          <pre class="prettyprint linenums">$('.dropdown-toggle').dropdown()</pre>
+{% highlight js %}
+$('.dropdown-toggle').dropdown()
+{% endhighlight %}
 
           <h3>Options</h3>
           <p><em>None</em></p>
@@ -530,12 +473,12 @@ $('#myModal').on('hidden', function () {
 
           <h2>Example in navbar</h2>
           <p>The ScrollSpy plugin is for automatically updating nav targets based on scroll position. Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.</p>
-          <div class="bs-docs-example">
-            <div id="navbarExample" class="navbar navbar-static">
+          <div class="bs-example">
+            <div id="navbar-example2" class="navbar navbar-static">
               <div class="navbar-inner">
                 <div class="container" style="width: auto;">
-                  <a class="brand" href="#">Project Name</a>
-                  <ul class="nav">
+                  <a class="navbar-brand" href="#">Project Name</a>
+                  <ul class="nav navbar-nav">
                     <li><a href="#fat">@fat</a></li>
                     <li><a href="#mdo">@mdo</a></li>
                     <li class="dropdown">
@@ -551,7 +494,7 @@ $('#myModal').on('hidden', function () {
                 </div>
               </div>
             </div>
-            <div data-spy="scroll" data-target="#navbarExample" data-offset="0" class="scrollspy-example">
+            <div data-spy="scroll" data-target="#navbar-example" data-offset="0" class="scrollspy-example">
               <h4 id="fat">@fat</h4>
               <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
               <h4 id="mdo">@mdo</h4>
@@ -565,35 +508,39 @@ $('#myModal').on('hidden', function () {
               <p>Keytar twee blog, culpa messenger bag marfa whatever delectus food truck. Sapiente synth id assumenda. Locavore sed helvetica cliche irony, thundercats you probably haven't heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats.
               </p>
             </div>
-          </div>
-
-
-          <hr class="bs-docs-separator">
+          </div><!-- /example -->
 
 
           <h2>Usage</h2>
 
           <h3>Via data attributes</h3>
-          <p>To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body) and <code>data-target=".navbar"</code> to select which nav to use. You'll want to use scrollspy with a <code>.nav</code> component.</p>
-          <pre class="prettyprint linenums">&lt;body data-spy="scroll" data-target=".navbar"&gt;...&lt;/body&gt;</pre>
+          <p>To easily add scrollspy behavior to your topbar navigation, add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the <code>&lt;body&gt;</code>. Then add the <code>data-target</code> attribute with the ID or class of the parent element of any Bootstrap <code>.nav</code> component.</p>
+{% highlight html %}
+<body data-spy="scroll" data-target="#navbar-example">
+  ...
+</body>
+{% endhighlight %}
 
           <h3>Via JavaScript</h3>
           <p>Call the scrollspy via JavaScript:</p>
-          <pre class="prettyprint linenums">$('#navbar').scrollspy()</pre>
+{% highlight js %}
+$('#navbar-example').scrollspy()
+{% endhighlight %}
 
-          <div class="alert alert-info">
-            <strong>Heads up!</strong>
-            Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the dom like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.
+          <div class="bs-callout">
+            <h4>Resolvable ID targets required</h4>
+            <p>Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the DOM like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.</p>
           </div>
 
           <h3>Methods</h3>
           <h4>.scrollspy('refresh')</h4>
           <p>When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:</p>
-<pre class="prettyprint linenums">
+{% highlight js %}
 $('[data-spy="scroll"]').each(function () {
   var $spy = $(this).scrollspy('refresh')
 });
-</pre>
+{% endhighlight %}
+
 
           <h3>Options</h3>
           <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset=""</code>.</p>
@@ -620,7 +567,7 @@ $('[data-spy="scroll"]').each(function () {
           <table class="table table-bordered table-striped">
             <thead>
              <tr>
-               <th style="width: 150px;">Event</th>
+               <th style="width: 150px;">Event Type</th>
                <th>Description</th>
              </tr>
             </thead>
@@ -631,6 +578,11 @@ $('[data-spy="scroll"]').each(function () {
             </tr>
             </tbody>
           </table>
+{% highlight js %}
+$('#myScrollspy').on('activate.bs.scrollspy', function () {
+  // do something…
+})
+{% endhighlight %}
         </section>
 
 
@@ -645,7 +597,7 @@ $('[data-spy="scroll"]').each(function () {
 
           <h2>Example tabs</h2>
           <p>Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus.</p>
-          <div class="bs-docs-example">
+          <div class="bs-example bs-example-tabs">
             <ul id="myTab" class="nav nav-tabs">
               <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
               <li><a href="#profile" data-toggle="tab">Profile</a></li>
@@ -671,7 +623,7 @@ $('[data-spy="scroll"]').each(function () {
                 <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
               </div>
             </div>
-          </div>
+          </div><!-- /example -->
 
 
           <hr class="bs-docs-separator">
@@ -679,61 +631,66 @@ $('[data-spy="scroll"]').each(function () {
 
           <h2>Usage</h2>
           <p>Enable tabbable tabs via JavaScript (each tab needs to be activated individually):</p>
-<pre class="prettyprint linenums">
+{% highlight js %}
 $('#myTab a').click(function (e) {
   e.preventDefault();
   $(this).tab('show');
-})</pre>
+})
+{% endhighlight %}
+
           <p>You can activate individual tabs in several ways:</p>
-<pre class="prettyprint linenums">
+{% highlight js %}
 $('#myTab a[href="#profile"]').tab('show'); // Select tab by name
 $('#myTab a:first').tab('show'); // Select first tab
 $('#myTab a:last').tab('show'); // Select last tab
 $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
-</pre>
+{% endhighlight %}
 
           <h3>Markup</h3>
           <p>You can activate a tab or pill navigation without writing any JavaScript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element. Adding the <code>nav</code> and <code>nav-tabs</code> classes to the tab <code>ul</code> will apply the Bootstrap tab styling.</p>
-<pre class="prettyprint linenums">
-&lt;ul class="nav nav-tabs"&gt;
-  &lt;li&gt;&lt;a href="#home" data-toggle="tab"&gt;Home&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#profile" data-toggle="tab"&gt;Profile&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#messages" data-toggle="tab"&gt;Messages&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#settings" data-toggle="tab"&gt;Settings&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</pre>
+{% highlight html %}
+<ul class="nav nav-tabs">
+  <li><a href="#home" data-toggle="tab">Home</a></li>
+  <li><a href="#profile" data-toggle="tab">Profile</a></li>
+  <li><a href="#messages" data-toggle="tab">Messages</a></li>
+  <li><a href="#settings" data-toggle="tab">Settings</a></li>
+</ul>
+{% endhighlight %}
+
+          <p>To make tabs fade in, add <code>.fade</code> to each <code>.tab-pane</code>.</p>
 
           <h3>Methods</h3>
           <h4>$().tab</h4>
           <p>
             Activates a tab element and content container. Tab should have either a <code>data-target</code> or an <code>href</code> targeting a container node in the DOM.
           </p>
-<pre class="prettyprint linenums">
-&lt;ul class="nav nav-tabs" id="myTab"&gt;
-  &lt;li class="active"&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#profile"&gt;Profile&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#messages"&gt;Messages&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#settings"&gt;Settings&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+{% highlight html %}
+<ul class="nav nav-tabs" id="myTab">
+  <li class="active"><a href="#home">Home</a></li>
+  <li><a href="#profile">Profile</a></li>
+  <li><a href="#messages">Messages</a></li>
+  <li><a href="#settings">Settings</a></li>
+</ul>
 
-&lt;div class="tab-content"&gt;
-  &lt;div class="tab-pane active" id="home"&gt;...&lt;/div&gt;
-  &lt;div class="tab-pane" id="profile"&gt;...&lt;/div&gt;
-  &lt;div class="tab-pane" id="messages"&gt;...&lt;/div&gt;
-  &lt;div class="tab-pane" id="settings"&gt;...&lt;/div&gt;
-&lt;/div&gt;
+<div class="tab-content">
+  <div class="tab-pane active" id="home">...</div>
+  <div class="tab-pane" id="profile">...</div>
+  <div class="tab-pane" id="messages">...</div>
+  <div class="tab-pane" id="settings">...</div>
+</div>
 
-&lt;script&gt;
+<script>
   $(function () {
     $('#myTab a:last').tab('show');
   })
-&lt;/script&gt;
-</pre>
+</script>
+{% endhighlight %}
 
           <h3>Events</h3>
           <table class="table table-bordered table-striped">
             <thead>
              <tr>
-               <th style="width: 150px;">Event</th>
+               <th style="width: 150px;">Event Type</th>
                <th>Description</th>
              </tr>
             </thead>
@@ -748,12 +705,12 @@ $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
              </tr>
             </tbody>
           </table>
-<pre class="prettyprint linenums">
-$('a[data-toggle="tab"]').on('shown', function (e) {
+{% highlight js %}
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
   e.target // activated tab
   e.relatedTarget // previous tab
 })
-</pre>
+{% endhighlight %}
         </section>
 
 
@@ -764,33 +721,36 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
             <h1>Tooltips <small>bootstrap-tooltip.js</small></h1>
           </div>
 
-
           <h2>Examples</h2>
           <p>Inspired by the excellent jQuery.tipsy plugin written by Jason Frame; Tooltips are an updated version, which don't rely on images, use CSS3 for animations, and data-attributes for local title storage.</p>
-          <p>For performance reasons, the tooltip and popover data-apis are opt in, meaning <strong>you must initialize them yourself</strong>.</p>
           <p>Hover over the links below to see tooltips:</p>
-          <div class="bs-docs-example tooltip-demo">
-            <p class="muted" style="margin-bottom: 0;">Tight pants next level keffiyeh <a href="#" data-toggle="tooltip" title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" data-toggle="tooltip" title="Another tooltip">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" data-toggle="tooltip" title="A much longer tooltip belongs right here to demonstrate the max-width we apply.">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" data-toggle="tooltip" title="The last tip!">twitter handle</a> freegan cred raw denim single-origin coffee viral.
+          <div class="bs-example tooltip-demo">
+            <p class="muted" style="margin-bottom: 0;">Tight pants next level keffiyeh <a href="#" data-toggle="tooltip" title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" data-toggle="tooltip" title="Another tooltip">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" data-toggle="tooltip" title="Another one here too">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" data-toggle="tooltip" title="The last tip!">twitter handle</a> freegan cred raw denim single-origin coffee viral.
             </p>
-          </div>
+          </div><!-- /example -->
 
           <h3>Four directions</h3>
-          <div class="bs-docs-example tooltip-demo">
-            <ul class="bs-docs-tooltip-examples">
+          <div class="bs-example tooltip-demo">
+            <ul class="bs-example-tooltips">
               <li><a href="#" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</a></li>
               <li><a href="#" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</a></li>
               <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</a></li>
               <li><a href="#" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</a></li>
             </ul>
-          </div>
+          </div><!-- /example -->
 
+
+          <h3>Tooltips in input groups</h3>
+          <p>When using tooltips and popovers with the Bootstrap input groups, you'll have to set the <code>container</code> (documented below) option to avoid unwanted side effects.</p>
 
           <hr class="bs-docs-separator">
 
 
           <h2>Usage</h2>
           <p>Trigger the tooltip via JavaScript:</p>
-          <pre class="prettyprint linenums">$('#example').tooltip(options)</pre>
+{% highlight js %}
+$('#example').tooltip(options)
+{% endhighlight %}
 
           <h3>Options</h3>
           <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.</p>
@@ -832,13 +792,13 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
                <td>title</td>
                <td>string | function</td>
                <td>''</td>
-               <td>default title value if `title` tag isn't present</td>
+               <td>default title value if <code>title</code> tag isn't present</td>
              </tr>
              <tr>
                <td>trigger</td>
                <td>string</td>
                <td>'hover focus'</td>
-               <td>how tooltip is triggered - click | hover | focus | manual. Note you case pass trigger mutliple, space seperated, trigger types.</td>
+               <td>how tooltip is triggered - click | hover | focus | manual. Note you case pass trigger multiple, space seperated, trigger types.</td>
              </tr>
              <tr>
                <td>delay</td>
@@ -860,29 +820,36 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
              </tr>
             </tbody>
           </table>
-          <div class="alert alert-info">
-            <strong>Heads up!</strong>
-            Options for individual tooltips can alternatively be specified through the use of data attributes.
+          <div class="bs-callout">
+            <h4>Data attributes for individual tooltips</h4>
+            <p>Options for individual tooltips can alternatively be specified through the use of data attributes, as explained above.</p>
           </div>
 
           <h3>Markup</h3>
-          <pre class="prettyprint linenums">&lt;a href="#" data-toggle="tooltip" title="first tooltip"&gt;hover over me&lt;/a&gt;</pre>
+{% highlight html %}
+<a href="#" data-toggle="tooltip" title="first tooltip">Hover over me</a>
+{% endhighlight %}
 
           <h3>Methods</h3>
+
           <h4>$().tooltip(options)</h4>
           <p>Attaches a tooltip handler to an element collection.</p>
+
           <h4>.tooltip('show')</h4>
           <p>Reveals an element's tooltip.</p>
-          <pre class="prettyprint linenums">$('#element').tooltip('show')</pre>
+          {% highlight js %}$('#element').tooltip('show'){% endhighlight %}
+
           <h4>.tooltip('hide')</h4>
           <p>Hides an element's tooltip.</p>
-          <pre class="prettyprint linenums">$('#element').tooltip('hide')</pre>
+          {% highlight js %}$('#element').tooltip('hide'){% endhighlight %}
+
           <h4>.tooltip('toggle')</h4>
           <p>Toggles an element's tooltip.</p>
-          <pre class="prettyprint linenums">$('#element').tooltip('toggle')</pre>
+          {% highlight js %}$('#element').tooltip('toggle'){% endhighlight %}
+
           <h4>.tooltip('destroy')</h4>
           <p>Hides and destroys an element's tooltip.</p>
-          <pre class="prettyprint linenums">$('#element').tooltip('destroy')</pre>
+          {% highlight js %}$('#element').tooltip('destroy'){% endhighlight %}
         </section>
 
 
@@ -895,11 +862,16 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
         </div>
 
         <h2>Examples</h2>
-        <p>Add small overlays of content, like those on the iPad, to any element for housing secondary information. Hover over the button to trigger the popover. <strong>Requires <a href="#tooltips">Tooltip</a> to be included.</strong></p>
+        <p>Add small overlays of content, like those on the iPad, to any element for housing secondary information. Hover over the button to trigger the popover.</p>
+
+        <div class="bs-callout">
+          <h4>Plugin dependency</h4>
+          <p>Popovers require the <a href="#tooltips">tooltip plugin</a> to be included in your version of Bootstrap.</p>
+        </div>
 
         <h3>Static popover</h3>
         <p>Four options are available: top, right, bottom, and left aligned.</p>
-        <div class="bs-docs-example bs-docs-example-popover">
+        <div class="bs-example bs-example-popover">
           <div class="popover top">
             <div class="arrow"></div>
             <h3 class="popover-title">Popover top</h3>
@@ -934,22 +906,21 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
           <div class="clearfix"></div>
         </div>
-        <p>No markup shown as popovers are generated from JavaScript and content within a <code>data</code> attribute.</p>
 
         <h3>Live demo</h3>
-        <div class="bs-docs-example" style="padding-bottom: 24px;">
+        <div class="bs-example" style="padding-bottom: 24px;">
           <a href="#" class="btn btn-large btn-danger" data-toggle="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">Click to toggle popover</a>
         </div>
 
         <h4>Four directions</h4>
-        <div class="bs-docs-example tooltip-demo">
-          <ul class="bs-docs-tooltip-examples">
+        <div class="bs-example tooltip-demo">
+          <ul class="bs-example-tooltips">
             <li><a href="#" class="btn" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on top">Popover on top</a></li>
             <li><a href="#" class="btn" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on right">Popover on right</a></li>
             <li><a href="#" class="btn" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on bottom">Popover on bottom</a></li>
             <li><a href="#" class="btn" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on left">Popover on left</a></li>
           </ul>
-        </div>
+        </div><!-- /example -->
 
 
         <hr class="bs-docs-separator">
@@ -957,77 +928,85 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
         <h2>Usage</h2>
         <p>Enable popovers via JavaScript:</p>
-        <pre class="prettyprint linenums">$('#example').popover(options)</pre>
+        {% highlight js %}$('#example').popover(options){% endhighlight %}
 
         <h3>Options</h3>
         <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.</p>
         <table class="table table-bordered table-striped">
           <thead>
-           <tr>
-             <th style="width: 100px;">Name</th>
-             <th style="width: 100px;">type</th>
-             <th style="width: 50px;">default</th>
-             <th>description</th>
-           </tr>
+            <tr>
+              <th style="width: 100px;">Name</th>
+              <th style="width: 100px;">type</th>
+              <th style="width: 50px;">default</th>
+              <th>description</th>
+            </tr>
           </thead>
           <tbody>
-           <tr>
-             <td>animation</td>
-             <td>boolean</td>
-             <td>true</td>
-             <td>apply a css fade transition to the tooltip</td>
-           </tr>
-           <tr>
-             <td>html</td>
-             <td>boolean</td>
-             <td>false</td>
-             <td>Insert html into the popover. If false, jquery's <code>text</code> method will be used to insert content into the dom. Use text if you're worried about XSS attacks.</td>
-           </tr>
-           <tr>
-             <td>placement</td>
-             <td>string | function</td>
-             <td>'right'</td>
-             <td>how to position the popover - top | bottom | left | right</td>
-           </tr>
-           <tr>
-             <td>selector</td>
-             <td>string</td>
-             <td>false</td>
-             <td>if a selector is provided, tooltip objects will be delegated to the specified targets</td>
-           </tr>
-           <tr>
-             <td>trigger</td>
-             <td>string</td>
-             <td>'click'</td>
-             <td>how popover is triggered - click | hover | focus | manual</td>
-           </tr>
-           <tr>
-             <td>title</td>
-             <td>string | function</td>
-             <td>''</td>
-             <td>default title value if `title` attribute isn't present</td>
-           </tr>
-           <tr>
-             <td>content</td>
-             <td>string | function</td>
-             <td>''</td>
-             <td>default content value if `data-content` attribute isn't present</td>
-           </tr>
-           <tr>
-             <td>delay</td>
-             <td>number | object</td>
-             <td>0</td>
-             <td>
-              <p>delay showing and hiding the popover (ms) - does not apply to manual trigger type</p>
-              <p>If a number is supplied, delay is applied to both hide/show</p>
-              <p>Object structure is: <code>delay: { show: 500, hide: 100 }</code></p>
-             </td>
-           </tr>
+            <tr>
+              <td>animation</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>apply a css fade transition to the tooltip</td>
+            </tr>
+            <tr>
+              <td>html</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>Insert html into the popover. If false, jquery's <code>text</code> method will be used to insert content into the dom. Use text if   you're worried about XSS attacks.</td>
+            </tr>
+            <tr>
+              <td>placement</td>
+              <td>string | function</td>
+              <td>'right'</td>
+              <td>how to position the popover - top | bottom | left | right</td>
+            </tr>
+            <tr>
+              <td>selector</td>
+              <td>string</td>
+              <td>false</td>
+              <td>if a selector is provided, tooltip objects will be delegated to the specified targets if a selector is provided, tooltip objects will be delegated to the specified targets. in practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twitter/bootstrap/issues/4215">this</a> and <a href="http://jsfiddle.net/KPeKS/4/">an informative example</a>.</td>
+            </tr>
+            <tr>
+              <td>trigger</td>
+              <td>string</td>
+              <td>'click'</td>
+              <td>how popover is triggered - click | hover | focus | manual</td>
+            </tr>
+            <tr>
+              <td>title</td>
+              <td>string | function</td>
+              <td>''</td>
+              <td>default title value if <code>title</code> attribute isn't present</td>
+            </tr>
+            <tr>
+              <td>content</td>
+              <td>string | function</td>
+              <td>''</td>
+              <td>default content value if <code>data-content</code> attribute isn't present</td>
+            </tr>
+            <tr>
+              <td>delay</td>
+              <td>number | object</td>
+              <td>0</td>
+              <td>
+               <p>delay showing and hiding the popover (ms) - does not apply to manual trigger type</p>
+               <p>If a number is supplied, delay is applied to both hide/show</p>
+               <p>Object structure is: <code>delay: { show: 500, hide: 100 }</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td>container</td>
+              <td>string | false</td>
+              <td>false</td>
+              <td>
+               <p>Appends the popover to a specific element <code>container: 'body'</code></p>
+              </td>
+            </tr>
           </tbody>
         </table>
-        <div class="alert alert-info">
-          <strong>Heads up!</strong>
-          Options for individual popovers can alternatively be specified through the use of data attributes.
+        <div class="bs-callout">
+          <h4>Data attributes for individual popovers</h4>
+          <p>Options for individual popovers can alternatively be specified through the use of data attributes, as explained above.</p>
         </div>
 
         <h3>Markup</h3>
@@ -1036,25 +1015,29 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
         <h3>Methods</h3>
         <h4>$().popover(options)</h4>
         <p>Initializes popovers for an element collection.</p>
+
         <h4>.popover('show')</h4>
         <p>Reveals an elements popover.</p>
-        <pre class="prettyprint linenums">$('#element').popover('show')</pre>
+        {% highlight js %}$('#element').popover('show'){% endhighlight %}
+
         <h4>.popover('hide')</h4>
         <p>Hides an elements popover.</p>
-        <pre class="prettyprint linenums">$('#element').popover('hide')</pre>
+        {% highlight js %}$('#element').popover('hide'){% endhighlight %}
+
         <h4>.popover('toggle')</h4>
         <p>Toggles an elements popover.</p>
-        <pre class="prettyprint linenums">$('#element').popover('toggle')</pre>
+        {% highlight js %}$('#element').popover('toggle'){% endhighlight %}
+
         <h4>.popover('destroy')</h4>
         <p>Hides and destroys an element's popover.</p>
-        <pre class="prettyprint linenums">$('#element').popover('destroy')</pre>
+        {% highlight js %}$('#element').popover('destroy'){% endhighlight %}
       </section>
 
 
 
       <!-- Alert
       ================================================== -->
-      <section id="alerts">
+      <div class="bs-docs-section" id="js-alerts">
         <div class="page-header">
           <h1>Alert messages <small>bootstrap-alert.js</small></h1>
         </div>
@@ -1062,23 +1045,23 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
         <h2>Example alerts</h2>
         <p>Add dismiss functionality to all alert messages with this plugin.</p>
-        <div class="bs-docs-example">
+        <div class="bs-example">
           <div class="alert fade in">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
           </div>
-        </div>
+        </div><!-- /example -->
 
-        <div class="bs-docs-example">
+        <div class="bs-example">
           <div class="alert alert-block alert-error fade in">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <h4 class="alert-heading">Oh snap! You got an error!</h4>
+            <h4>Oh snap! You got an error!</h4>
             <p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
             <p>
-              <a class="btn btn-danger" href="#">Take this action</a> <a class="btn" href="#">Or do this</a>
+              <a class="btn btn-danger" href="#">Take this action</a> <a class="btn btn-default" href="#">Or do this</a>
             </p>
           </div>
-        </div>
+        </div><!-- /example -->
 
 
         <hr class="bs-docs-separator">
@@ -1086,52 +1069,54 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
         <h2>Usage</h2>
         <p>Enable dismissal of an alert via JavaScript:</p>
-        <pre class="prettyprint linenums">$(".alert").alert()</pre>
+        {% highlight js %}$(".alert").alert(){% endhighlight %}
 
         <h3>Markup</h3>
         <p>Just add <code>data-dismiss="alert"</code> to your close button to automatically give an alert close functionality.</p>
-        <pre class="prettyprint linenums">&lt;a class="close" data-dismiss="alert" href="#"&gt;&amp;times;&lt;/a&gt;</pre>
+        {% highlight html %}<a class="close" data-dismiss="alert" href="#">&times;</a>{% endhighlight %}
 
         <h3>Methods</h3>
+
         <h4>$().alert()</h4>
         <p>Wraps all alerts with close functionality. To have your alerts animate out when closed, make sure they have the <code>.fade</code> and <code>.in</code> class already applied to them.</p>
+
         <h4>.alert('close')</h4>
         <p>Closes an alert.</p>
-        <pre class="prettyprint linenums">$(".alert").alert('close')</pre>
+        {% highlight js %}$(".alert").alert('close'){% endhighlight %}
 
 
         <h3>Events</h3>
         <p>Bootstrap's alert class exposes a few events for hooking into alert functionality.</p>
         <table class="table table-bordered table-striped">
           <thead>
-           <tr>
-             <th style="width: 150px;">Event</th>
-             <th>Description</th>
-           </tr>
+            <tr>
+              <th style="width: 150px;">Event Type</th>
+              <th>Description</th>
+            </tr>
           </thead>
           <tbody>
-           <tr>
-             <td>close</td>
-             <td>This event fires immediately when the <code>close</code> instance method is called.</td>
-           </tr>
-           <tr>
-             <td>closed</td>
-             <td>This event is fired when the alert has been closed (will wait for css transitions to complete).</td>
-           </tr>
+            <tr>
+              <td>close</td>
+              <td>This event fires immediately when the <code>close</code> instance method is called.</td>
+            </tr>
+            <tr>
+              <td>closed</td>
+              <td>This event is fired when the alert has been closed (will wait for css transitions to complete).</td>
+            </tr>
           </tbody>
         </table>
-<pre class="prettyprint linenums">
-$('#my-alert').bind('closed', function () {
+{% highlight js %}
+$('#my-alert').bind('closed.bs.alert', function () {
   // do something…
 })
-</pre>
-      </section>
+{% endhighlight %}
+      </div>
 
 
 
           <!-- Buttons
           ================================================== -->
-          <section id="buttons">
+          <div class="bs-docs-section" id="js-buttons">
             <div class="page-header">
               <h1>Buttons <small>bootstrap-button.js</small></h1>
             </div>
@@ -1141,53 +1126,83 @@ $('#my-alert').bind('closed', function () {
 
             <h4>Stateful</h4>
             <p>Add <code>data-loading-text="Loading..."</code> to use a loading state on a button.</p>
-            <div class="bs-docs-example" style="padding-bottom: 24px;">
-              <button type="button" id="fat-btn" data-loading-text="loading..." class="btn btn-primary">
+            <div class="bs-example" style="padding-bottom: 24px;">
+              <button type="button" id="fat-btn" data-loading-text="Loading..." class="btn btn-primary">
                 Loading state
               </button>
-            </div>
-            <pre class="prettyprint linenums">&lt;button type="button" class="btn btn-primary" data-loading-text="Loading..."&gt;Loading state&lt;/button&gt;</pre>
+            </div><!-- /example -->
+{% highlight html %}
+<button type="button" id="fat-btn" data-loading-text="Loading..." class="btn btn-primary">
+  Loading state
+</button>
+{% endhighlight %}
 
             <h4>Single toggle</h4>
             <p>Add <code>data-toggle="button"</code> to activate toggling on a single button.</p>
-            <div class="bs-docs-example" style="padding-bottom: 24px;">
-              <button type="button" class="btn btn-primary" data-toggle="button">Single Toggle</button>
-            </div>
-            <pre class="prettyprint linenums">&lt;button type="button" class="btn btn-primary" data-toggle="button"&gt;Single Toggle&lt;/button&gt;</pre>
+            <div class="bs-example" style="padding-bottom: 24px;">
+              <button type="button" class="btn btn-primary" data-toggle="button">Single toggle</button>
+            </div><!-- /example -->
+{% highlight html %}
+<button type="button" class="btn btn-primary" data-toggle="button">Single toggle</button>
+{% endhighlight %}
 
             <h4>Checkbox</h4>
             <p>Add <code>data-toggle="buttons-checkbox"</code> for checkbox style toggling on btn-group.</p>
-            <div class="bs-docs-example" style="padding-bottom: 24px;">
+            <div class="bs-example" style="padding-bottom: 24px;">
               <div class="btn-group" data-toggle="buttons-checkbox">
-                <button type="button" class="btn btn-primary">Left</button>
-                <button type="button" class="btn btn-primary">Middle</button>
-                <button type="button" class="btn btn-primary">Right</button>
+                <label class="btn btn-primary">
+                  <input type="checkbox"> Option 1
+                </label>
+                <label class="btn btn-primary">
+                  <input type="checkbox"> Option 2
+                </label>
+                <label class="btn btn-primary">
+                  <input type="checkbox"> Option 3
+                </label>
               </div>
-            </div>
-<pre class="prettyprint linenums">
-&lt;div class="btn-group" data-toggle="buttons-checkbox"&gt;
-  &lt;button type="button" class="btn btn-primary"&gt;Left&lt;/button&gt;
-  &lt;button type="button" class="btn btn-primary"&gt;Middle&lt;/button&gt;
-  &lt;button type="button" class="btn btn-primary"&gt;Right&lt;/button&gt;
-&lt;/div&gt;
-</pre>
+            </div><!-- /example -->
+{% highlight html %}
+<div class="btn-group" data-toggle="buttons-checkbox">
+  <label class="btn btn-primary">
+    <input type="checkbox"> Option 1
+  </label>
+  <label class="btn btn-primary">
+    <input type="checkbox"> Option 2
+  </label>
+  <label class="btn btn-primary">
+    <input type="checkbox"> Option 3
+  </label>
+</div>
+{% endhighlight %}
 
             <h4>Radio</h4>
             <p>Add <code>data-toggle="buttons-radio"</code> for radio style toggling on btn-group.</p>
-            <div class="bs-docs-example" style="padding-bottom: 24px;">
+            <div class="bs-example" style="padding-bottom: 24px;">
               <div class="btn-group" data-toggle="buttons-radio">
-                <button type="button" class="btn btn-primary">Left</button>
-                <button type="button" class="btn btn-primary">Middle</button>
-                <button type="button" class="btn btn-primary">Right</button>
+                <label class="btn btn-primary">
+                  <input type="radio" name="options" id="option1"> Option 1
+                </label>
+                <label class="btn btn-primary">
+                  <input type="radio" name="options" id="option2"> Option 2
+                </label>
+                <label class="btn btn-primary">
+                  <input type="radio" name="options" id="option3"> Option 3
+                </label>
               </div>
-            </div>
-<pre class="prettyprint linenums">
-&lt;div class="btn-group" data-toggle="buttons-radio"&gt;
-  &lt;button type="button" class="btn btn-primary"&gt;Left&lt;/button&gt;
-  &lt;button type="button" class="btn btn-primary"&gt;Middle&lt;/button&gt;
-  &lt;button type="button" class="btn btn-primary"&gt;Right&lt;/button&gt;
-&lt;/div&gt;
-</pre>
+            </div><!-- /example -->
+{% highlight html %}
+<div class="btn-group" data-toggle="buttons-radio">
+  <label class="btn btn-primary">
+    <input type="radio" name="options" id="option1"> Option 1
+  </label>
+  <label class="btn btn-primary">
+    <input type="radio" name="options" id="option2"> Option 2
+  </label>
+  <label class="btn btn-primary">
+    <input type="radio" name="options" id="option3"> Option 3
+  </label>
+</div>
+{% endhighlight %}
 
 
             <hr class="bs-docs-separator">
@@ -1195,7 +1210,9 @@ $('#my-alert').bind('closed', function () {
 
             <h2>Usage</h2>
             <p>Enable buttons via JavaScript:</p>
-            <pre class="prettyprint linenums">$('.nav-tabs').button()</pre>
+{% highlight js %}
+$('.nav-tabs').button()
+{% endhighlight %}
 
             <h3>Markup</h3>
             <p>Data attributes are integral to the button plugin. Check out the example code below for the various markup types.</p>
@@ -1204,31 +1221,41 @@ $('#my-alert').bind('closed', function () {
             <p><em>None</em></p>
 
             <h3>Methods</h3>
+
             <h4>$().button('toggle')</h4>
             <p>Toggles push state. Gives the button the appearance that it has been activated.</p>
-            <div class="alert alert-info">
-              <strong>Heads up!</strong>
-              You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.
+            <div class="bs-callout">
+              <h4>Auto toggling</h4>
+              <p>You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.</p>
             </div>
-            <pre class="prettyprint linenums">&lt;button type="button" class="btn" data-toggle="button" &gt;…&lt;/button&gt;</pre>
+{% highlight html %}
+<button type="button" class="btn" data-toggle="button">...</button>
+{% endhighlight %}
+
             <h4>$().button('loading')</h4>
             <p>Sets button state to loading - disables button and swaps text to loading text. Loading text should be defined on the button element using the data attribute <code>data-loading-text</code>.
             </p>
-            <pre class="prettyprint linenums">&lt;button type="button" class="btn" data-loading-text="loading stuff..." &gt;...&lt;/button&gt;</pre>
-            <div class="alert alert-info">
-              <strong>Heads up!</strong>
-              <a href="https://github.com/twitter/bootstrap/issues/793">Firefox persists the disabled state across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>.
+{% highlight html %}
+<button type="button" class="btn" data-loading-text="loading stuff...">...</button>
+{% endhighlight %}
+
+            <div class="bs-callout">
+              <h4>Cross-browser compatibility</h4>
+              <p><a href="https://github.com/twitter/bootstrap/issues/793">Firefox persists the disabled state across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>.</p>
             </div>
+
             <h4>$().button('reset')</h4>
             <p>Resets button state - swaps text to original text.</p>
+
             <h4>$().button(string)</h4>
             <p>Resets button state - swaps text to any data defined text state.</p>
-<pre class="prettyprint linenums">&lt;button type="button" class="btn" data-complete-text="finished!" &gt;...&lt;/button&gt;
-&lt;script&gt;
+{% highlight html %}
+<button type="button" class="btn" data-complete-text="finished!" >...</button>
+<script>
   $('.btn').button('complete')
-&lt;/script&gt;
-</pre>
-          </section>
+</script>
+{% endhighlight %}
+          </div>
 
 
 
@@ -1241,12 +1268,16 @@ $('#my-alert').bind('closed', function () {
 
             <h3>About</h3>
             <p>Get base styles and flexible support for collapsible components like accordions and navigation.</p>
-            <p class="muted"><strong>*</strong> Requires the Transitions plugin to be included.</p>
+
+            <div class="bs-callout">
+              <h4>Plugin dependency</h4>
+              <p>Collapse requires the <a href="#transitions">transitions plugin</a> to be included in your version of Bootstrap.</p>
+            </div>
 
             <h2>Example accordion</h2>
             <p>Using the collapse plugin, we built a simple accordion style widget:</p>
 
-            <div class="bs-docs-example">
+            <div class="bs-example">
               <div class="accordion" id="accordion2">
                 <div class="accordion-group">
                   <div class="accordion-heading">
@@ -1285,44 +1316,56 @@ $('#my-alert').bind('closed', function () {
                   </div>
                 </div>
               </div>
-            </div>
-<pre class="prettyprint linenums">
-&lt;div class="accordion" id="accordion2"&gt;
-  &lt;div class="accordion-group"&gt;
-    &lt;div class="accordion-heading"&gt;
-      &lt;a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"&gt;
+            </div><!-- /example -->
+{% highlight html %}
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
         Collapsible Group Item #1
-      &lt;/a&gt;
-    &lt;/div&gt;
-    &lt;div id="collapseOne" class="accordion-body collapse in"&gt;
-      &lt;div class="accordion-inner"&gt;
-        Anim pariatur cliche...
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="accordion-group"&gt;
-    &lt;div class="accordion-heading"&gt;
-      &lt;a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"&gt;
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        ...
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
         Collapsible Group Item #2
-      &lt;/a&gt;
-    &lt;/div&gt;
-    &lt;div id="collapseTwo" class="accordion-body collapse"&gt;
-      &lt;div class="accordion-inner"&gt;
-        Anim pariatur cliche...
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-...
-</pre>
-            <p>You can also use the plugin without the accordion markup. Make a button toggle the expanding and collapsing of another element.</p>
-<pre class="prettyprint linenums">
-&lt;button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo"&gt;
-  simple collapsible
-&lt;/button&gt;
+      </a>
+    </div>
+    <div id="collapseTwo" class="accordion-body collapse">
+      <div class="accordion-inner">
+        ...
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+        Collapsible Group Item #3
+      </a>
+    </div>
+    <div id="collapseThree" class="accordion-body collapse">
+      <div class="accordion-inner">
+        ...
+      </div>
+    </div>
+  </div>
+</div>
+{% endhighlight %}
 
-&lt;div id="demo" class="collapse in"&gt; … &lt;/div&gt;
-</pre>
+            <p>You can also use the plugin without the accordion markup. Make a button toggle the expanding and collapsing of another element.</p>
+{% highlight html %}
+<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo">
+  simple collapsible
+</button>
+
+<div id="demo" class="collapse in">...</div>
+{% endhighlight %}
 
 
             <hr class="bs-docs-separator">
@@ -1336,7 +1379,9 @@ $('#my-alert').bind('closed', function () {
 
             <h3>Via JavaScript</h3>
             <p>Enable manually with:</p>
-            <pre class="prettyprint linenums">$(".collapse").collapse()</pre>
+{% highlight js %}
+$(".collapse").collapse()
+{% endhighlight %}
 
             <h3>Options</h3>
             <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-parent=""</code>.</p>
@@ -1367,17 +1412,21 @@ $('#my-alert').bind('closed', function () {
 
 
             <h3>Methods</h3>
+
             <h4>.collapse(options)</h4>
             <p>Activates your content as a collapsible element. Accepts an optional options <code>object</code>.
-<pre class="prettyprint linenums">
+{% highlight js %}
 $('#myCollapsible').collapse({
   toggle: false
 })
-</pre>
+{% endhighlight %}
+
             <h4>.collapse('toggle')</h4>
             <p>Toggles a collapsible element to shown or hidden.</p>
+
             <h4>.collapse('show')</h4>
             <p>Shows a collapsible element.</p>
+
             <h4>.collapse('hide')</h4>
             <p>Hides a collapsible element.</p>
 
@@ -1386,7 +1435,7 @@ $('#myCollapsible').collapse({
             <table class="table table-bordered table-striped">
               <thead>
                <tr>
-                 <th style="width: 150px;">Event</th>
+                 <th style="width: 150px;">Event Type</th>
                  <th>Description</th>
                </tr>
               </thead>
@@ -1411,10 +1460,11 @@ $('#myCollapsible').collapse({
                </tr>
               </tbody>
             </table>
-<pre class="prettyprint linenums">
-$('#myCollapsible').on('hidden', function () {
+{% highlight js %}
+$('#myCollapsible').on('hidden.bs.collapse', function () {
   // do something…
-})</pre>
+})
+{% endhighlight %}
           </section>
 
 
@@ -1426,65 +1476,118 @@ $('#myCollapsible').on('hidden', function () {
               <h1>Carousel <small>bootstrap-carousel.js</small></h1>
             </div>
 
-            <h2>Example carousel</h2>
+            <h2>Examples</h2>
             <p>The slideshow below shows a generic plugin and component for cycling through elements like a carousel.</p>
-            <div class="bs-docs-example">
-              <div id="myCarousel" class="carousel slide">
+            <div class="bs-example">
+              <div id="carousel-example-generic" class="carousel slide bs-docs-carousel-example">
                 <ol class="carousel-indicators">
-                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
                   <div class="item active">
-                    <img src="assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+                    <img data-src="holder.js/900x500/auto/#777:#fff/text:First slide" alt="">
+                  </div>
+                  <div class="item">
+                    <img data-src="holder.js/900x500/auto/#777:#fff/text:Second slide" alt="">
+                  </div>
+                  <div class="item">
+                    <img data-src="holder.js/900x500/auto/#777:#fff/text:Third slide" alt="">
+                  </div>
+                </div>
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+              </div>
+            </div><!-- /example -->
+{% highlight html %}
+<div id="carousel-example-generic" class="carousel slide">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="..." alt="">
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+    ...
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+{% endhighlight %}
+
+            <h3>Optional captions</h3>
+            <p>Add captions to your slides easily with the <code>.carousel-caption</code> element within any <code>.item</code>. Place just about any optional HTML within there and it will be automatically aligned and formatted.</p>
+            <div class="bs-callout">
+              <h4>Responsive visibility</h4>
+              <p><strong>Captions are hidden by default</strong> and will show up only with viewports greater than 768px wide.</p>
+            </div>
+            <div class="bs-example">
+              <div id="carousel-example-captions" class="carousel slide bs-docs-carousel-example">
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-example-captions" data-slide-to="1"></li>
+                  <li data-target="#carousel-example-captions" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="item active">
+                    <img data-src="holder.js/900x500/auto/#777:#777" alt="">
                     <div class="carousel-caption">
-                      <h4>First Thumbnail label</h4>
-                      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                      <h3>First slide label</h3>
+                      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                     </div>
                   </div>
                   <div class="item">
-                    <img src="assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
+                    <img data-src="holder.js/900x500/auto/#777:#777" alt="">
                     <div class="carousel-caption">
-                      <h4>Second Thumbnail label</h4>
-                      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                      <h3>Second slide label</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </div>
                   </div>
                   <div class="item">
-                    <img src="assets/img/bootstrap-mdo-sfmoma-03.jpg" alt="">
+                    <img data-src="holder.js/900x500/auto/#777:#777" alt="">
                     <div class="carousel-caption">
-                      <h4>Third Thumbnail label</h4>
-                      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                      <h3>Third slide label</h3>
+                      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                     </div>
                   </div>
                 </div>
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                <a class="left carousel-control" href="#carousel-example-captions" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-captions" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
               </div>
-            </div>
-<pre class="prettyprint linenums">
-&lt;div id="myCarousel" class="carousel slide"&gt;
-  &lt;ol class="carousel-indicators"&gt
-    &lt;li data-target="#myCarousel" data-slide-to="0" class="active"&gt&lt;/li&gt
-    &lt;li data-target="#myCarousel" data-slide-to="1"&gt&lt;/li&gt
-    &lt;li data-target="#myCarousel" data-slide-to="2"&gt&lt;/li&gt
-  &lt;/ol&gt
-  &lt;!-- Carousel items --&gt;
-  &lt;div class="carousel-inner"&gt;
-    &lt;div class="active item"&gt;…&lt;/div&gt;
-    &lt;div class="item"&gt;…&lt;/div&gt;
-    &lt;div class="item"&gt;…&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;!-- Carousel nav --&gt;
-  &lt;a class="carousel-control left" href="#myCarousel" data-slide="prev"&gt;&amp;lsaquo;&lt;/a&gt;
-  &lt;a class="carousel-control right" href="#myCarousel" data-slide="next"&gt;&amp;rsaquo;&lt;/a&gt;
-&lt;/div&gt;
-</pre>
+            </div><!-- /example -->
+{% highlight html %}
+<div class="item active">
+  <img src="..." alt="">
+  <div class="carousel-caption">
+    <h3>...</h3>
+    <p>...</p>
+  </div>
+</div>
+{% endhighlight %}
 
-            <div class="alert alert-warning">
-              <strong>Heads up!</strong>
-              When implementing this carousel, remove the images we have provided and replace them with your own.
-            </div>
 
 
             <hr class="bs-docs-separator">
@@ -1493,14 +1596,16 @@ $('#myCollapsible').on('hidden', function () {
             <h2>Usage</h2>
 
             <h3>Via data attributes</h3>
-            <p>Use data attributes to easily control the position of the carousel. <code>data-slide</code> accepts the keywords <code>prev</code> or <code>next</code>, which alters the slide position relative to it's current position. Alternatively, use <code>data-slide-to</code> to pass a raw slide index to the carousel <code>data-slide-to="2"</code>, which jump's the slide position to a particular index beginning with <code>0</code>.</p>
+            <p>Use data attributes to easily control the position of the carousel. <code>data-slide</code> accepts the keywords <code>prev</code> or <code>next</code>, which alters the slide position relative to its current position. Alternatively, use <code>data-slide-to</code> to pass a raw slide index to the carousel <code>data-slide-to="2"</code>, which shifts the slide position to a particular index beginning with <code>0</code>.</p>
 
             <h3>Via JavaScript</h3>
             <p>Call carousel manually with:</p>
-            <pre class="prettyprint linenums">$('.carousel').carousel()</pre>
+{% highlight js %}
+$('.carousel').carousel()
+{% endhighlight %}
 
             <h3>Options</h3>
-            <p>Options can be passed via data attributes or JavaScriptz. For data attributes, append the option name to <code>data-</code>, as in <code>data-interval=""</code>.</p>
+            <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-interval=""</code>.</p>
             <table class="table table-bordered table-striped">
               <thead>
                <tr>
@@ -1527,21 +1632,28 @@ $('#myCollapsible').on('hidden', function () {
             </table>
 
             <h3>Methods</h3>
+
             <h4>.carousel(options)</h4>
             <p>Initializes the carousel with an optional options <code>object</code> and starts cycling through items.</p>
-<pre class="prettyprint linenums">
+{% highlight html %}
 $('.carousel').carousel({
   interval: 2000
 })
-</pre>
+{% endhighlight %}
+
             <h4>.carousel('cycle')</h4>
             <p>Cycles through the carousel items from left to right.</p>
+
             <h4>.carousel('pause')</h4>
             <p>Stops the carousel from cycling through items.</p>
+
+
             <h4>.carousel(number)</h4>
             <p>Cycles the carousel to a particular frame (0 based, similar to an array).</p>
+
             <h4>.carousel('prev')</h4>
             <p>Cycles to the previous item.</p>
+
             <h4>.carousel('next')</h4>
             <p>Cycles to the next item.</p>
 
@@ -1550,7 +1662,7 @@ $('.carousel').carousel({
             <table class="table table-bordered table-striped">
               <thead>
                <tr>
-                 <th style="width: 150px;">Event</th>
+                 <th style="width: 150px;">Event Type</th>
                  <th>Description</th>
                </tr>
               </thead>
@@ -1565,98 +1677,11 @@ $('.carousel').carousel({
                </tr>
               </tbody>
             </table>
-          </section>
-
-
-
-          <!-- Typeahead
-          ================================================== -->
-          <section id="typeahead">
-            <div class="page-header">
-              <h1>Typeahead <small>bootstrap-typeahead.js</small></h1>
-            </div>
-
-
-            <h2>Example</h2>
-            <p>A basic, easily extended plugin for quickly creating elegant typeaheads with any form text input.</p>
-            <div class="bs-docs-example" style="background-color: #f5f5f5;">
-              <input type="text" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]'>
-            </div>
-            <pre class="prettyprint linenums">&lt;input type="text" data-provide="typeahead"&gt;</pre>
-            <p>You'll want to set <code>autocomplete="off"</code> to prevent default browser menus from appearing over the Bootstrap typeahead dropdown.</p>
-
-            <hr class="bs-docs-separator">
-
-
-            <h2>Usage</h2>
-
-            <h3>Via data attributes</h3>
-            <p>Add data attributes to register an element with typeahead functionality as shown in the example above.</p>
-
-            <h3>Via JavaScript</h3>
-            <p>Call the typeahead manually with:</p>
-            <pre class="prettyprint linenums">$('.typeahead').typeahead()</pre>
-
-            <h3>Options</h3>
-            <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-source=""</code>.</p>
-            <table class="table table-bordered table-striped">
-              <thead>
-               <tr>
-                 <th style="width: 100px;">Name</th>
-                 <th style="width: 50px;">type</th>
-                 <th style="width: 100px;">default</th>
-                 <th>description</th>
-               </tr>
-              </thead>
-              <tbody>
-                <tr>
-                 <td>source</td>
-                 <td>array, function</td>
-                 <td>[ ]</td>
-                 <td>The data source to query against. May be an array of strings or a function. The function is passed two arguments, the <code>query</code> value in the input field and the <code>process</code> callback. The function may be used synchronously by returning the data source directly or asynchronously via the <code>process</code> callback's single argument.</td>
-               </tr>
-               <tr>
-                 <td>items</td>
-                 <td>number</td>
-                 <td>8</td>
-                 <td>The max number of items to display in the dropdown.</td>
-               </tr>
-               <tr>
-                 <td>minLength</td>
-                 <td>number</td>
-                 <td>1</td>
-                 <td>The minimum character length needed before triggering autocomplete suggestions</td>
-               </tr>
-               <tr>
-                 <td>matcher</td>
-                 <td>function</td>
-                 <td>case insensitive</td>
-                 <td>The method used to determine if a query matches an item. Accepts a single argument, the <code>item</code> against which to test the query. Access the current query with <code>this.query</code>. Return a boolean <code>true</code> if query is a match.</td>
-               </tr>
-               <tr>
-                 <td>sorter</td>
-                 <td>function</td>
-                 <td>exact match,<br> case sensitive,<br> case insensitive</td>
-                 <td>Method used to sort autocomplete results. Accepts a single argument <code>items</code> and has the scope of the typeahead instance. Reference the current query with <code>this.query</code>.</td>
-               </tr>
-               <tr>
-                 <td>updater</td>
-                 <td>function</td>
-                 <td>returns selected item</td>
-                 <td>The method used to return selected item. Accepts a single argument, the <code>item</code> and has the scope of the typeahead instance.</td>
-               </tr>
-               <tr>
-                 <td>highlighter</td>
-                 <td>function</td>
-                 <td>highlights all default matches</td>
-                 <td>Method used to highlight autocomplete results. Accepts a single argument <code>item</code> and has the scope of the typeahead instance. Should return html.</td>
-               </tr>
-              </tbody>
-            </table>
-
-            <h3>Methods</h3>
-            <h4>.typeahead(options)</h4>
-            <p>Initializes an input with a typeahead.</p>
+            {% highlight js %}
+$('#myCarousel').on('slide.bs.carousel', function () {
+  // do something…
+})
+{% endhighlight %}
           </section>
 
 
@@ -1678,19 +1703,33 @@ $('.carousel').carousel({
             <h3>Via data attributes</h3>
             <p>To easily add affix behavior to any element, just add <code>data-spy="affix"</code> to the element you want to spy on. Then use offsets to define when to toggle the pinning of an element on and off.</p>
 
-            <pre class="prettyprint linenums">&lt;div data-spy="affix" data-offset-top="200"&gt;...&lt;/div&gt;</pre>
+{% highlight html %}
+<div data-spy="affix" data-offset-top="200">...</div>
+{% endhighlight %}
 
-            <div class="alert alert-info">
-              <strong>Heads up!</strong>
-              You must manage the position of a pinned element and the behavior of its immediate parent. Position is controlled by <code>affix</code>, <code>affix-top</code>, and <code>affix-bottom</code>. Remember to check for a potentially collapsed parent when the affix kicks in as it's removing content from the normal flow of the page.
+            <div class="bs-callout">
+              <h4>Requires positioning</h4>
+              <p>You must manage the position of a pinned element and the behavior of its immediate parent. Position is controlled by <code>affix</code>, <code>affix-top</code>, and <code>affix-bottom</code>. Remember to check for a potentially collapsed parent when the affix kicks in as it's removing content from the normal flow of the page.</p>
             </div>
 
             <h3>Via JavaScript</h3>
             <p>Call the affix plugin via JavaScript:</p>
-            <pre class="prettyprint linenums">$('#navbar').affix()</pre>
+{% highlight js %}
+$('#navbar').affix()
+{% endhighlight %}
+
+            <h3>Methods</h3>
+            <h4>.affix('refresh')</h4>
+            <p>When using affix in conjunction with adding or removing of elements from the DOM, you'll want to call the refresh method:</p>
+{% highlight js %}
+$('[data-spy="affix"]').each(function () {
+  $(this).affix('refresh')
+});
+{% endhighlight %}
 
           <h3>Options</h3>
           <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset-top="200"</code>.</p>
+
           <table class="table table-bordered table-striped">
             <thead>
              <tr>
@@ -1710,60 +1749,3 @@ $('.carousel').carousel({
             </tbody>
           </table>
         </section>
-
-
-
-      </div>
-    </div>
-
-  </div>
-
-
-
-    <!-- Footer
-    ================================================== -->
-    <footer class="footer">
-      <div class="container">
-        <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
-        <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-        <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-        <ul class="footer-links">
-          <li><a href="http://blog.getbootstrap.com">Blog</a></li>
-          <li class="muted">&middot;</li>
-          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Issues</a></li>
-          <li class="muted">&middot;</li>
-          <li><a href="https://github.com/twitter/bootstrap/wiki">Roadmap and changelog</a></li>
-        </ul>
-      </div>
-    </footer>
-
-
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap-transition.js"></script>
-    <script src="assets/js/bootstrap-alert.js"></script>
-    <script src="assets/js/bootstrap-modal.js"></script>
-    <script src="assets/js/bootstrap-dropdown.js"></script>
-    <script src="assets/js/bootstrap-scrollspy.js"></script>
-    <script src="assets/js/bootstrap-tab.js"></script>
-    <script src="assets/js/bootstrap-tooltip.js"></script>
-    <script src="assets/js/bootstrap-popover.js"></script>
-    <script src="assets/js/bootstrap-button.js"></script>
-    <script src="assets/js/bootstrap-collapse.js"></script>
-    <script src="assets/js/bootstrap-carousel.js"></script>
-    <script src="assets/js/bootstrap-typeahead.js"></script>
-    <script src="assets/js/bootstrap-affix.js"></script>
-
-    <script src="assets/js/holder/holder.js"></script>
-    <script src="assets/js/google-code-prettify/prettify.js"></script>
-
-    <script src="assets/js/application.js"></script>
-
-
-
-  </body>
-</html>

@@ -3,7 +3,12 @@
 // --------------------------------------------------
 
 
-// Quick floats
+// Floats
+// -------------------------
+
+.clearfix {
+  .clearfix();
+}
 .pull-right {
   float: right;
 }
@@ -11,20 +16,27 @@
   float: left;
 }
 
+
 // Toggling content
+// -------------------------
+
 .hide {
-  display: none;
+  display: none !important;
 }
 .show {
-  display: block;
+  display: block !important;
 }
-
-// Visibility
 .invisible {
   visibility: hidden;
 }
+.text-hide {
+  .hide-text();
+}
+
 
 // For Affix plugin
+// -------------------------
+
 .affix {
   position: fixed;
 }

@@ -1,0 +1,96 @@
+//
+// Panels
+// --------------------------------------------------
+
+
+// Base class
+.panel {
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: @panel-bg;
+  border: 1px solid @panel-border;
+  border-radius: @panel-border-radius;
+  .box-shadow(0 1px 1px rgba(0,0,0,.05));
+}
+
+// Optional heading
+.panel-heading {
+  margin: -15px -15px 15px;
+  padding: 10px 15px;
+  font-size: (@font-size-base * 1.25);
+  font-weight: 500;
+  background-color: @panel-heading-bg;
+  border-bottom: 1px solid @panel-border;
+  border-top-left-radius:  (@panel-border-radius - 1);
+  border-top-right-radius: (@panel-border-radius - 1);
+}
+
+// Optional footer (stays gray in every modifier class)
+.panel-footer {
+  margin: 15px -15px -15px;
+  padding: 10px 15px;
+  background-color: @panel-footer-bg;
+  border-top: 1px solid @panel-border;
+  border-bottom-left-radius:  (@panel-border-radius - 1);
+  border-bottom-right-radius: (@panel-border-radius - 1);
+}
+
+// Contextual variations
+.panel-primary {
+  border-color: @panel-primary-border;
+  .panel-heading {
+    color: @panel-primary-text;
+    background-color: @panel-primary-heading-bg;
+    border-color: @panel-primary-border;
+  }
+}
+.panel-success {
+  border-color: @panel-success-border;
+  .panel-heading {
+    color: @panel-success-text;
+    background-color: @panel-success-heading-bg;
+    border-color: @panel-success-border;
+  }
+}
+.panel-warning {
+  border-color: @panel-warning-border;
+  .panel-heading {
+    color: @panel-warning-text;
+    background-color: @panel-warning-heading-bg;
+    border-color: @panel-warning-border;
+  }
+}
+.panel-danger {
+  border-color: @panel-danger-border;
+  .panel-heading {
+    color: @panel-danger-text;
+    background-color: @panel-danger-heading-bg;
+    border-color: @panel-danger-border;
+  }
+}
+.panel-info {
+  border-color: @panel-info-border;
+  .panel-heading {
+    color: @panel-info-text;
+    background-color: @panel-info-heading-bg;
+    border-color: @panel-info-border;
+  }
+}
+
+// List groups in panels
+.list-group-flush {
+  margin: 15px -15px -15px;
+
+  .list-group-item {
+    border-width: 1px 0;
+
+    // Remove border radius for top one
+    &:first-child {
+      .border-top-radius(0);
+    }
+    // But keep it for the last one
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}
