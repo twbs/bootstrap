@@ -96,7 +96,7 @@
   max-width: 200px;
   margin-left: auto;
   margin-right: auto;
-  padding: 15px;
+  padding: floor(@grid-gutter-width / 2);  // ~15px
   font-size: @font-size-large;
   font-weight: 500;
   line-height: @line-height-computed;
@@ -284,7 +284,7 @@
 
   .navbar-brand {
     float: left;
-    margin-left: -5px;
+    margin-left: -(floor(@grid-gutter-width / 2));  // ~15px
     margin-right: 5px;
   }
   .navbar-nav {
