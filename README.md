@@ -47,9 +47,12 @@ Documentation for [previous versions](https://github.com/twitter/bootstrap/tags)
 
 ## Compiling CSS and JavaScript
 
-Bootstrap uses [GruntJS](http://gruntjs.com/) with convenient methods for working with the framework. Before getting started, be sure to install [the necessary local dependencies](package.json):
+Bootstrap uses [GruntJS](http://gruntjs.com/) with convenient methods for working with the framework. Before getting started, be sure to have `grunt-cli` installed globally (`npm install -g grunt-cli`) and then install [the necessary local dependencies](package.json):
 
 ```
+# if grunt-cli isn't already installed
+$ npm install -g grunt-cli
+
 $ npm install
 ```
 
