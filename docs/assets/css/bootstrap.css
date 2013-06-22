@@ -2956,7 +2956,8 @@ input[type="button"].btn-block {
 }
 
 .list-group {
-  margin: 0 0 20px;
+  padding-left: 0;
+  margin-bottom: 20px;
   background-color: #ffffff;
 }
 
@@ -3698,7 +3699,7 @@ button.close {
   .navbar-brand {
     float: left;
     margin-right: 5px;
-    margin-left: -5px;
+    margin-left: -15px;
   }
   .navbar-nav {
     float: left;
