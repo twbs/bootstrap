@@ -7,7 +7,8 @@
 // Easily usable on <ul>, <ol>, or <div>.
 .list-group {
   // No need to set list-style: none; since .list-group-item is block level
-  margin: 0 0 20px; // reset all margins because ul and ol
+  margin-bottom: 20px;
+  padding-left: 0; // reset padding because ul and ol
   background-color: $list-group-bg;
 }
 

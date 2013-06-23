@@ -2,10 +2,55 @@
 // Variables
 // --------------------------------------------------
 
+// Media queries breakpoints
+// --------------------------------------------------
+
+// Tiny screen / phone
+$screen-tiny:                480px !default;
+$screen-phone:               $screen-tiny !default;
+
+// Small screen / tablet
+$screen-small:               768px !default;
+$screen-tablet:              $screen-small !default;
+
+// Medium screen / desktop
+$screen-medium:              992px !default;
+$screen-desktop:             $screen-medium !default;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-small-max:           ($screen-medium - 1) !default;
+$screen-tablet-max:          $screen-small-max !default;
+
+// Large screen / wide desktop
+$screen-large:               1200px !default;
+$screen-large-desktop:       $screen-large !default;
+
+
+// Container sizes
+// --------------------------------------------------
+
+// Small screen / tablet
+$container-tablet:          728px !default;
+
+// Medium screen / desktop
+$container-desktop:         940px !default;
+
+// Large screen / wide desktop
+$container-large-desktop:   1170px !default;
+
+
+// Grid system
+// --------------------------------------------------
+
+// Number of columns in the grid system
+$grid-columns:              12 !default;
+// Padding, to be divided by two and applied to the left and right of all columns
+$grid-gutter-width:         30px !default;
+// Point at which the navbar stops collapsing
+$grid-float-breakpoint:     $screen-tablet !default;
 
 // Global values
 // --------------------------------------------------
-
 
 // Grays
 // -------------------------
@@ -178,6 +223,7 @@ $glyphicons-font-path:          "../fonts" !default;
 $navbar-height:                    50px !default;
 $navbar-color:                     #777 !default;
 $navbar-bg:                        #eee !default;
+$navbar-padding:                   floor($grid-gutter-width / 2) !default;  // ~15px
 
 // Navbar links
 $navbar-link-color:                #777 !default;
@@ -378,51 +424,3 @@ $hr-border:                   $gray-lighter !default;
 
 // Horizontal forms & lists
 $component-offset-horizontal: 180px !default;
-
-
-// Media queries breakpoints
-// --------------------------------------------------
-
-// Tiny screen / phone
-$screen-tiny:                480px !default;
-$screen-phone:               $screen-tiny !default;
-
-// Small screen / tablet
-$screen-small:               768px !default;
-$screen-tablet:              $screen-small !default;
-
-// Medium screen / desktop
-$screen-medium:              992px !default;
-$screen-desktop:             $screen-medium !default;
-
-// So media queries don't overlap when required, provide a maximum
-$screen-small-max:           ($screen-medium - 1) !default;
-$screen-tablet-max:          $screen-small-max !default;
-
-// Large screen / wide desktop
-$screen-large:               1200px !default;
-$screen-large-desktop:       $screen-large !default;
-
-
-// Container sizes
-// --------------------------------------------------
-
-// Small screen / tablet
-$container-tablet:          728px !default;
-
-// Medium screen / desktop
-$container-desktop:         940px !default;
-
-// Large screen / wide desktop
-$container-large-desktop:   1170px !default;
-
-
-// Grid system
-// --------------------------------------------------
-
-// Number of columns in the grid system
-$grid-columns:              12 !default;
-// Padding, to be divided by two and applied to the left and right of all columns
-$grid-gutter-width:         30px !default;
-// Point at which the navbar stops collapsing
-$grid-float-breakpoint:     $screen-tablet !default;

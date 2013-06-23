@@ -2203,7 +2203,8 @@ input[type="button"].btn-block {
   z-index: 1051; }
 
 .list-group {
-  margin: 0 0 20px;
+  margin-bottom: 20px;
+  padding-left: 0;
   background-color: white; }
 
 .list-group-item {
@@ -2709,7 +2710,7 @@ button.close {
 @media screen and (min-width: 768px) {
   .navbar-brand {
     float: left;
-    margin-left: -5px;
+    margin-left: -15px;
     margin-right: 5px; }
 
   .navbar-nav {
@@ -3714,6 +3715,7 @@ a.list-group-item.active > .badge,
   z-index: 15;
   width: 100px;
   margin: 0 0 0 -50px;
+  padding-left: 0;
   list-style: none;
   text-align: center; }
   .carousel-indicators li {

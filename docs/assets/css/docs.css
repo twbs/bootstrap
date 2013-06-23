@@ -81,7 +81,9 @@ body {
 
 /* Textual links */
 .bs-masthead-links {
-  margin: 20px 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 0;
   list-style: none;
 }
 .bs-masthead-links li {
