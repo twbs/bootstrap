@@ -5043,6 +5043,7 @@ a.list-group-item.active > .badge,
   left: 50%;
   z-index: 15;
   width: 100px;
+  padding-left: 0;
   margin: 0 0 0 -50px;
   text-align: center;
   list-style: none;
