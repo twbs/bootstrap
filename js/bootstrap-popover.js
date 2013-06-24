@@ -100,6 +100,7 @@
   , trigger: 'click'
   , content: ''
   , template: '<div class="popover"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+  , locatorId:'tbpopup'
   })
 
 
