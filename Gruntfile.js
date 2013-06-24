@@ -21,18 +21,7 @@ module.exports = function(grunt) {
         banner: '/**\n' + '* <%= pkg.name %>.js v<%= pkg.version %> by @fat and @mdo\n' + '* Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' + '* <%= _.pluck(pkg.licenses, "url").join(", ") %>\n' + '*/\n',
         // Task configuration.
         clean: {
-            gh: ['<%= pkg.name %>.zip'],
-            dist: ['<%= pkg.name %>', '_gh_pages', '<%= pkg.name %>.zip', 'docs/assets/<%= pkg.name %>.zip']
-        },
-        compress: {
-            gh: {
-                options: {
-                    archive: '<%= pkg.name %>.zip'
-                },
-                expand: true,
-                src: ['<%= pkg.name %>/**/*'],
-                dest: '.'
-            }
+            dist: ['bootstrap']
         },
         concat: {
             options: {
@@ -42,10 +31,6 @@ module.exports = function(grunt) {
             bootstrap: {
                 src: jsFiles,
                 dest: 'bootstrap/js/<%= pkg.name %>.js'
-            },
-            dist: {
-                src: jsFiles,
-                dest: 'docs/assets/js/<%= pkg.name %>.js'
             }
         },
         copy: {
@@ -55,32 +40,6 @@ module.exports = function(grunt) {
                     flatten: true,
                     src: ['fonts/*'],
                     dest: 'bootstrap/fonts/'
-                }]
-            },
-            gh: {
-                files: [{
-                    expand: true,
-                    src: ['docs/**/*'],
-                    dest: '_gh_pages/'
-                }]
-            },
-            zip: {
-                files: [{
-                    src: ['bootstrap.zip'],
-                    dest: 'docs/assets/'
-                }]
-            },
-            dist: {
-                files: [{
-                    expand: true,
-                    flatten: true,
-                    src: ['fonts/*'],
-                    dest: 'docs/assets/fonts/'
-                }, {
-                    expand: true,
-                    flatten: true,
-                    src: ['js/tests/vendor/jquery.js'],
-                    dest: 'docs/assets/js/'
                 }]
             }
         },
@@ -99,18 +58,6 @@ module.exports = function(grunt) {
             }
         },
         shell: {
-            jekyll_win: {
-                command: 'chcp 65001'
-            },
-            jekyll_build: {
-                command: 'jekyll build'
-            },
-            jekyll_server: {
-                command: 'jekyll server',
-                options: {
-                    stdout: true
-                }
-            },
             test: {
                 command: 'phantomjs js/tests/phantom.js "http://localhost:3000/js/tests"'
             }
@@ -131,11 +78,6 @@ module.exports = function(grunt) {
                 files: {
                     'bootstrap/css/bootstrap.min.css': ['less/bootstrap.less']
                 }
-            },
-            dist: {
-                files: {
-                    'docs/assets/css/bootstrap.css': ['less/bootstrap.less']
-                }
             }
         },
         uglify: {
@@ -145,11 +87,6 @@ module.exports = function(grunt) {
             bootstrap: {
                 files: {
                     'bootstrap/js/<%= pkg.name %>.min.js': ['<%= concat.bootstrap.dest %>']
-                }
-            },
-            dist: {
-                files: {
-                    'docs/assets/js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
                 }
             }
         },
@@ -169,10 +106,6 @@ module.exports = function(grunt) {
             test: {
                 files: '<%= jshint.test.src %>',
                 tasks: ['jshint:test', 'qunit']
-            },
-            jekyll: {
-                files: ['_gh_pages/*.html'],
-                tasks: ['jekyll:dev']
             }
         }
     });
@@ -181,7 +114,6 @@ module.exports = function(grunt) {
     // These plugins provide necessary tasks.
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -192,29 +124,21 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-recess');
 
 
-    // Default task.
-    grunt.registerTask('default', ['jshint', 'recess:dist', 'copy:dist', 'concat:dist', 'uglify:dist']);
-    //grunt.registerTask('build', ['default']);
-
     // Test task.
-    grunt.registerTask('test', ['jshint', 'connect', 'shell:test']);
+    grunt.registerTask('test', ['jshint', 'connect', 'shell']);
 
-    // Clean task.
-    grunt.registerTask('cleanup', ['clean:dist']);
+    // JS distribution task.
+    grunt.registerTask('bootstrap-js', ['concat', 'uglify']);
 
-    // JS COMPILE
-    grunt.registerTask('bootstrap-js', ['concat:bootstrap', 'uglify:bootstrap']);
+    // CSS distribution task.
+    grunt.registerTask('bootstrap-css', ['recess']);
 
-    // CSS COMPILE
-    grunt.registerTask('bootstrap-css', ['recess:bootstrap', 'recess:min']);
+    // Fonts distribution task.
+    grunt.registerTask('bootstrap-fonts', ['copy']);
 
-    // FONTS
-    grunt.registerTask('bootstrap-fonts', ['copy:bootstrap']);
+    // Full distribution task.
+    grunt.registerTask('bootstrap', ['clean', 'bootstrap-fonts', 'bootstrap-css', 'bootstrap-js']);
 
-    // BUILD SIMPLE BOOTSTRAP DIRECTORY
-    grunt.registerTask('bootstrap', ['bootstrap-fonts', 'bootstrap-css', 'bootstrap-js']);
-
-    // Task for gh-pages 4 fat & mdo ONLY (O_O )
-    grunt.registerTask('jekyll', [process.platform==="win32"?'shell:jekyll_win':'', 'shell:jekyll_build', 'shell:jekyll_server']);
-    grunt.registerTask('run', ['bootstrap', 'compress:docs', 'copy:zip', 'clean:gh', 'jekyll']);
+    // Default task.
+    grunt.registerTask('default', ['test', 'bootstrap']);
 };
