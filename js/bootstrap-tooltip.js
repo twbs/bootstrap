@@ -179,6 +179,12 @@
         .addClass(placement)
         .addClass('in')
 
+      if (this.options.locatorId) {
+        $tip
+          .attr(this.options.locatorId, this.options.locatorId)
+          .css('z-index', $('.popover[' + this.options.locatorId + ']').length)
+      }
+
       actualWidth = $tip[0].offsetWidth
       actualHeight = $tip[0].offsetHeight
 
