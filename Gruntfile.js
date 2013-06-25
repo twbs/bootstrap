@@ -57,11 +57,6 @@ module.exports = function(grunt) {
                 src: ['js/tests/unit/*.js']
             }
         },
-        shell: {
-            test: {
-                command: 'phantomjs js/tests/phantom.js "http://localhost:3000/js/tests"'
-            }
-        },
         recess: {
             options: {
                 compile: true
@@ -89,6 +84,12 @@ module.exports = function(grunt) {
                     'bootstrap/js/<%= pkg.name %>.min.js': ['<%= concat.bootstrap.dest %>']
                 }
             }
+        },
+        qunit: {
+            options: {
+                inject: 'js/tests/unit/phantom.js'
+            },
+            files: ['js/tests/*.html']
         },
         connect: {
             server: {
@@ -120,12 +121,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-recess');
 
 
     // Test task.
-    grunt.registerTask('test', ['jshint', 'connect', 'shell']);
+    grunt.registerTask('test', ['jshint', 'qunit']);
 
     // JS distribution task.
     grunt.registerTask('bootstrap-js', ['concat', 'uglify']);
