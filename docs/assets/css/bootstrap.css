@@ -1357,6 +1357,7 @@ input[type="color"].input-small {
 .input-group-addon,
 .input-group-btn {
   width: 1%;
+  white-space: nowrap;
   vertical-align: middle; }
 
 .input-group-addon {
