@@ -1382,21 +1382,6 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <input id="focusedInput" type="text" value="This is focused...">
 {% endhighlight %}
 
-    <h3 id="forms-invalid-inputs">Invalid inputs</h3>
-    <p>Style inputs via default browser functionality. Specify a <code>type</code>, add the <code>required</code> attribute if the field is not optional, and (if applicable) specify a <code>pattern</code>.</p>
-
-    <div class="bs-callout">
-      <h4>Cross-browser compatibility</h4>
-      <p>Invalid inputs are styled via the <code>:invalid</code> CSS selector, which is not supported by Internet Explorer 9 and below.</p>
-    </div>
-
-    <form class="bs-example">
-      <input type="email" placeholder="test@example.com" required>
-    </form>
-{% highlight html %}
-<input type="email" placeholder="test@example.com" required>
-{% endhighlight %}
-
     <h3 id="forms-disabled-inputs">Disabled inputs</h3>
     <p>Add the <code>disabled</code> attribute on an input to prevent user input and trigger a slightly different look.</p>
     <form class="bs-example">
