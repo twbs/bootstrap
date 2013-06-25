@@ -2,7 +2,6 @@
 // Grid system
 // --------------------------------------------------
 
-
 // Set the container width, and override it for fixed navbars in media queries
 .container {
   @include container-fixed();
@@ -51,9 +50,6 @@
 .col-lg-11,
 .col-lg-12 {
   position: relative;
-  // Float and set width: 100%; for easy stacking on mobile devices
-  float: left;
-  width: 100%;
   // Prevent columns from collapsing when empty
   min-height: 1px;
   // Inner gutter via padding
@@ -68,6 +64,21 @@
 //
 
 // Tiny device columns (smartphones)
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+  float: left;
+}
+
 @for $i from 1 through $grid-columns {
   .col-#{$i}  { width: percentage(($i / $grid-columns)); }
 }
@@ -78,18 +89,32 @@
     max-width: $container-tablet;
   }
 
-  @for $i from 1 through $grid-columns {
-    .col-sm-#{$i}  { width: percentage(($i / $grid-columns)); }
+  .col-sm-1,
+  .col-sm-2,
+  .col-sm-3,
+  .col-sm-4,
+  .col-sm-5,
+  .col-sm-6,
+  .col-sm-7,
+  .col-sm-8,
+  .col-sm-9,
+  .col-sm-10,
+  .col-sm-11,
+  .col-sm-12 {
+    float: left;
   }
 
-  // Offsets
-  @for $i from 1 through $grid-columns - 1 {
-    .col-offset-#{$i}  { margin-left: percentage(($i / $grid-columns)); }
+  @for $i from 1 through $grid-columns {
+    .col-sm-#{$i}  { width: percentage(($i / $grid-columns)); }
   }
 
   // Push and pull columns for source order changes
   @for $i from 1 through $grid-columns - 1 {
     .col-push-#{$i}  { left: percentage(($i / $grid-columns)); }
+  }
+
+  @for $i from 1 through $grid-columns - 1 {
+    .col-pull-#{$i}  { right: percentage(($i / $grid-columns)); }
   }
 }
 
@@ -98,9 +123,27 @@
   .container {
     max-width: $container-desktop;
   }
-
+  .col-lg-1,
+  .col-lg-2,
+  .col-lg-3,
+  .col-lg-4,
+  .col-lg-5,
+  .col-lg-6,
+  .col-lg-7,
+  .col-lg-8,
+  .col-lg-9,
+  .col-lg-10,
+  .col-lg-11,
+  .col-lg-12 {
+    float: left;
+  }
   @for $i from 1 through $grid-columns {
     .col-lg-#{$i}  { width: percentage(($i / $grid-columns)); }
+  }
+
+  // Offsets
+  @for $i from 1 through $grid-columns - 1 {
+    .col-offset-#{$i}  { margin-left: percentage(($i / $grid-columns)); }
   }
 }
 
