@@ -400,6 +400,16 @@
   margin-bottom: ((@navbar-height - @element-height) / 2);
 }
 
+// Responsive utilities
+// -------------------------
+// More easily include all the states for responsive-utilities.less.
+.responsive-visibility() {
+  display: block !important;
+  tr& { display: table-row !important; }
+  th&,
+  td& { display: table-cell !important; }
+}
+
 
 
 // Grid System
@@ -491,5 +501,5 @@
     color: @text-color;
     border-color: @border-color;
     background-color: @background-color;
-  }  
+  }
 }
