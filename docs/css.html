@@ -1670,16 +1670,19 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <div class="input-group col-lg-7">
         <div class="input-group-btn">
           <button type="button" class="btn btn-default" tabindex="-1">Action</button>
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
+
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div>
         </div>
         <input type="text">
       </div>
@@ -1690,31 +1693,40 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <input type="text">
         <div class="input-group-btn">
           <button type="button" class="btn btn-default" tabindex="-1">Action</button>
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu pull-right">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </form>
 {% highlight html %}
 <div class="input-group col-lg-7">
   <div class="input-group-btn">
-    <!-- Button and dropdown menu -->
+    <button type="button" class="btn btn-default" tabindex="-1">Action</button>
+    <div class="btn-group">
+      <!-- Button and dropdown menu -->
+    </div>
   </div>
   <input type="text">
 </div>
 
 <div class="input-group col-lg-7">
   <input type="text">
-  <div class="input-group-btn btn-group">
-    <!-- Button and dropdown menu -->
+  <div class="input-group-btn">
+    <button type="button" class="btn btn-default" tabindex="-1">Action</button>
+    <!-- optional btn-group used to set dropdown positions -->
+    <div class="btn-group">
+      <!-- Button and dropdown menu -->
+    </div>
   </div>
 </div>
 {% endhighlight %}
