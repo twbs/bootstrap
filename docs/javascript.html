@@ -744,9 +744,10 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
             </ul>
           </div><!-- /example -->
 
-
-          <h3>Tooltips in input groups</h3>
-          <p>When using tooltips and popovers with the Bootstrap input groups, you'll have to set the <code>container</code> (documented below) option to avoid unwanted side effects.</p>
+          <div class="bs-callout">
+            <h4>Tooltips in button groups and input groups require special setting</h4>
+            <p>When using tooltips on elements within a <code>.btn-group</code> or an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> (documented below) to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip is triggered).</p>
+          </div>
 
           <hr class="bs-docs-separator">
 
@@ -872,6 +873,10 @@ $('#example').tooltip(options)
         <div class="bs-callout">
           <h4>Plugin dependency</h4>
           <p>Popovers require the <a href="#tooltips">tooltip plugin</a> to be included in your version of Bootstrap.</p>
+        </div>
+        <div class="bs-callout">
+          <h4>Popovers in button groups and input groups require special setting</h4>
+          <p>When using popovers on elements within a <code>.btn-group</code> or an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> (documented below) to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the popover is triggered).</p>
         </div>
 
         <h3>Static popover</h3>
@@ -1004,7 +1009,7 @@ $('#example').tooltip(options)
               <td>string | false</td>
               <td>false</td>
               <td>
-               <p>Appends the popover to a specific element <code>container: 'body'</code></p>
+               <p>Appends the popover to a specific element. Example: <code>container: 'body'</code></p>
               </td>
             </tr>
           </tbody>
