@@ -31,8 +31,6 @@ pre {
   line-height: $line-height-base;
   word-break: break-all;
   word-wrap: break-word;
-  white-space: pre;
-  white-space: pre-wrap;
   background-color: #f5f5f5;
   border: 1px solid #ccc; // IE8 fallback
   border: 1px solid rgba(0,0,0,.15);
@@ -47,7 +45,6 @@ pre {
   code {
     padding: 0;
     color: inherit;
-    white-space: pre;
     white-space: pre-wrap;
     background-color: transparent;
     border: 0;

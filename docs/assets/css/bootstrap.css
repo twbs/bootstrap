@@ -529,8 +529,6 @@ pre {
   line-height: 1.428571429;
   word-break: break-all;
   word-wrap: break-word;
-  white-space: pre;
-  white-space: pre-wrap;
   background-color: #f5f5f5;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
@@ -540,7 +538,6 @@ pre {
   pre code {
     padding: 0;
     color: inherit;
-    white-space: pre;
     white-space: pre-wrap;
     background-color: transparent;
     border: 0; }
@@ -3923,7 +3920,8 @@ td.hidden-md {
 tr.hidden-lg {
   display: table-row !important; }
 
-th.hidden-lg, td.hidden-lg {
+th.hidden-lg,
+td.hidden-lg {
   display: table-cell !important; }
 
 @media (min-width: 768px) and (max-width: 991px) {

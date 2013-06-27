@@ -397,6 +397,19 @@
   margin-bottom: (($navbar-height - $element-height) / 2);
 }
 
+// Responsive utilities
+// -------------------------
+// More easily include all the states for responsive-utilities.less.
+@mixin responsive-visibility($selector) {
+  #{$selector} {
+    display: block !important;
+  }
+
+  tr#{$selector} { display: table-row !important; }
+  th#{$selector},
+  td#{$selector} { display: table-cell !important; }
+}
+
 
 
 // Grid System

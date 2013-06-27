@@ -195,7 +195,7 @@ textarea {
 // Move the options list down to align with labels
 .controls > .radio:first-child,
 .controls > .checkbox:first-child {
-  padding-top: 5px; // has to be padding because margin collaspes
+  padding-top: 5px; // has to be padding because margin collapses
 }
 */
 
@@ -425,7 +425,7 @@ input[type="color"] {
   }
 }
 
-// Only right aline form labels here when the columns stop stacking
+// Only right align form labels here when the columns stop stacking
 @media (min-width: 768px) {
   .form-horizontal .control-label {
     text-align: right;
