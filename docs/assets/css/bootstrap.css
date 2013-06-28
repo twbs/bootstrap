@@ -1679,6 +1679,7 @@ input[type="color"].input-small {
 
 .input-group {
   display: table;
+  border-collapse: separate;
 }
 
 .input-group.col {
