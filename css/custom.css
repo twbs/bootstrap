@@ -63,6 +63,28 @@
 .panel .panel-footer p {
   margin: 0;
 }
+.timeline {
+  margin: 0 20px;
+  width: 10px;
+  height: 0;
+  background-color: #eeeeee;
+  padding-bottom: 100000px;
+  margin-bottom: -100000px;
+}
+.timeline .circle {
+  position: absolute;
+  left: -5px;
+  top: 20px;
+  background-color: #d5d5d5;
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.timeline .circle:hover {
+  background-color: #c8c8c8;
+}
 .quote {
   position: relative;
   display: block;

@@ -239,6 +239,14 @@ a:focus {
   -moz-border-radius: 500px;
   border-radius: 500px;
 }
+.img-inline {
+  float: left;
+  margin: 0 14px 14px 0;
+}
+.img-inline.right {
+  float: right;
+  margin: 0 0 14px 14px;
+}
 .row {
   margin-left: 0px;
   *zoom: 1;
@@ -3918,7 +3926,7 @@ input[type="submit"].btn.btn-mini {
 }
 .navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover {
-  background-color: transparent;
+  background-color: #f0f0f0;
   color: #333333;
   text-decoration: none;
 }
