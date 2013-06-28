@@ -81,7 +81,9 @@ body {
 
 /* Textual links */
 .bs-masthead-links {
-  margin: 20px 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 0;
   list-style: none;
 }
 .bs-masthead-links li {
@@ -711,13 +713,6 @@ input.focused {
 /* Tablets and up */
 @media screen and (min-width: 768px) {
 
-  /* Reaffix the fixed sidebar */
-  .bs-sidebar.affix {
-    position: fixed; /* Undo the static from mobile-first approach */
-    top: 50px;
-    width: 160px;
-  }
-
   /* Back to top link */
   .bs-top {
     display: block; /* Unhide */
@@ -779,6 +774,8 @@ input.focused {
 
   /* Widen the fixed sidebar */
   .bs-sidebar.affix {
+    position: fixed; /* Undo the static from mobile-first approach */
+    top: 50px;
     width: 213px;
   }
 

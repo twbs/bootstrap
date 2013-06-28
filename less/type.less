@@ -23,8 +23,6 @@ p {
 // Ex: 14px base font * 85% = about 12px
 small   { font-size: 85%; }
 
-strong  { font-weight: bold; }
-em      { font-style: italic; }
 cite    { font-style: normal; }
 
 // Utility classes
@@ -54,6 +52,7 @@ a.text-success:focus { color: darken(@state-success-text, 10%); }
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: @headings-font-family;
   font-weight: @headings-font-weight;
   line-height: @headings-line-height;
   small {

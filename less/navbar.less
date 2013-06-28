@@ -6,8 +6,8 @@
 .navbar {
   position: relative;
   margin-bottom: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: @navbar-padding;
+  padding-right: @navbar-padding;
   background-color: @navbar-bg;
   border-radius: @border-radius-base;
 
@@ -47,6 +47,12 @@
   > .disabled > a:focus {
     color: @navbar-link-disabled-color;
     background-color: @navbar-link-disabled-bg;
+  }
+
+  // Right aligned contents
+  // Make them full width first so that they align properly on mobile
+  &.pull-right {
+    width: 100%;
   }
 }
 
@@ -90,7 +96,7 @@
   max-width: 200px;
   margin-left: auto;
   margin-right: auto;
-  padding: 15px;
+  padding: @navbar-padding;
   font-size: @font-size-large;
   font-weight: 500;
   line-height: @line-height-computed;
@@ -278,7 +284,7 @@
 
   .navbar-brand {
     float: left;
-    margin-left: -5px;
+    margin-left: -(@navbar-padding);
     margin-right: 5px;
   }
   .navbar-nav {
@@ -296,6 +302,7 @@
 
     &.pull-right {
       float: right;
+      width: auto;
     }
   }
 
