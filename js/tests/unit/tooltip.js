@@ -291,4 +291,18 @@ $(function () {
           container.remove()
         }, 100)
       })
+
+      test("should add position class before positioning so that position-specific styles are taken into account", function(){
+        $("head").append('<style> .tooltip.right { white-space: nowrap; } .tooltip.right .tooltip-inner { max-width: none; } </style>')
+        
+        var container = $("<div />").appendTo("body")
+          , target = $('<a href="#" rel="tooltip" title="very very very very very very very very long tooltip in one line">To my right</a>')
+          .appendTo(container)
+          .tooltip({placement: 'right'})
+          .tooltip('show')
+          , tooltip = container.find(".tooltip")
+        
+        ok( Math.round(target.offset().top + target[0].offsetHeight/2 - tooltip[0].offsetHeight/2) === tooltip.offset().top )
+        target.tooltip('hide')
+      })
 })
