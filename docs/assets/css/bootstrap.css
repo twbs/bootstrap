@@ -3210,11 +3210,6 @@ button.close {
   padding-left: 8px;
 }
 
-.btn-group > .btn-mini + .dropdown-toggle {
-  padding-right: 5px;
-  padding-left: 5px;
-}
-
 .btn-group > .btn-large + .dropdown-toggle {
   padding-right: 12px;
   padding-left: 12px;
@@ -4117,10 +4112,6 @@ a.badge:focus {
   top: -1px;
 }
 
-.btn-mini .badge {
-  top: 0;
-}
-
 a.list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
   color: #428bca;
@@ -4321,6 +4312,8 @@ a.list-group-item.active > .badge,
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   display: block;
+  height: auto;
+  max-width: 100%;
   line-height: 1;
 }
 
