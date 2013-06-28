@@ -29,25 +29,25 @@
 // Hide from screenreaders and browsers
 // Credit: HTML5 Boilerplate
 .hidden {
-  display: none;
-  visibility: hidden;
+  display: none !important;
+  visibility: hidden !important;
 }
 
 // Visibility utilities
 
 // For Phones
 .visible-sm   {
-  .responsive-visibility;
+  .responsive-visibility();
 }
 .visible-md { display: none !important; }
 .visible-lg { display: none !important; }
 
 .hidden-sm { display: none !important; }
 .hidden-md {
-  .responsive-visibility;
+  .responsive-visibility();
 }
 .hidden-lg {
-  .responsive-visibility;
+  .responsive-visibility();
 }
 
 
@@ -55,16 +55,16 @@
 @media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
   .visible-sm { display: none !important; }
   .visible-md {
-    .responsive-visibility;
+    .responsive-visibility();
   }
   .visible-lg { display: none !important; }
 
   .hidden-sm {
-    .responsive-visibility;
+    .responsive-visibility();
   }
   .hidden-md { display: none !important; }
   .hidden-lg {
-    .responsive-visibility;
+    .responsive-visibility();
   }
 }
 
@@ -73,14 +73,14 @@
   .visible-sm { display: none !important; }
   .visible-md { display: none !important; }
   .visible-lg {
-    .responsive-visibility;
+    .responsive-visibility();
   }
 
   .hidden-sm {
-    .responsive-visibility;
+    .responsive-visibility();
   }
   .hidden-md {
-    .responsive-visibility;
+    .responsive-visibility();
   }
   .hidden-lg { display: none !important; }
 }
@@ -91,7 +91,7 @@
 
 @media print {
   .visible-print {
-    .responsive-visibility;
+    .responsive-visibility();
   }
   .hidden-print { display: none !important; }
 }
