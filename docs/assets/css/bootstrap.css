@@ -3812,6 +3812,7 @@ button.close {
   margin-left: -10px;
   border-top-color: #ffffff;
   border-bottom-width: 0;
+  content: " ";
 }
 
 .popover.right .arrow {
@@ -3828,6 +3829,7 @@ button.close {
   left: 1px;
   border-right-color: #ffffff;
   border-left-width: 0;
+  content: " ";
 }
 
 .popover.bottom .arrow {
@@ -3844,6 +3846,7 @@ button.close {
   margin-left: -10px;
   border-bottom-color: #ffffff;
   border-top-width: 0;
+  content: " ";
 }
 
 .popover.left .arrow {
@@ -3860,6 +3863,7 @@ button.close {
   bottom: -10px;
   border-left-color: #ffffff;
   border-right-width: 0;
+  content: " ";
 }
 
 .alert {
