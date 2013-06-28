@@ -60,7 +60,7 @@ clean:
 # recess & uglifyjs are required
 #
 
-bootstrap: bootstrap-fonts bootstrap-css bootstrap-js
+bootstrap:  bootstrap-css bootstrap-js
 
 
 #
