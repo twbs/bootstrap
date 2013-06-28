@@ -17,6 +17,10 @@
   border-radius: @thumbnail-border-radius;
   .transition(all .2s ease-in-out);
 }
+.thumbnail > img,
+.img-thumbnail {
+  .img-responsive();
+}
 .thumbnail {
   display: block;
 }
@@ -32,8 +36,6 @@ a.thumbnail:focus {
 
 // Images and captions
 .thumbnail > img {
-  display: block;
-  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
 }

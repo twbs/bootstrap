@@ -325,9 +325,13 @@ a:focus {
 }
 
 img {
+  vertical-align: middle;
+}
+
+.img-responsive {
+  display: block;
   height: auto;
   max-width: 100%;
-  vertical-align: middle;
 }
 
 .img-rounded {
@@ -3958,6 +3962,13 @@ button.close {
           transition: all 0.2s ease-in-out;
 }
 
+.thumbnail > img,
+.img-thumbnail {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
 .thumbnail {
   display: block;
 }
@@ -3972,8 +3983,6 @@ a.thumbnail:focus {
 }
 
 .thumbnail > img {
-  display: block;
-  max-width: 100%;
   margin-right: auto;
   margin-left: auto;
 }
