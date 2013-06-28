@@ -276,9 +276,12 @@ a:focus {
   outline-offset: -2px; }
 
 img {
-  max-width: 100%;
-  height: auto;
   vertical-align: middle; }
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto; }
 
 .img-rounded {
   border-radius: 6px; }
@@ -2913,6 +2916,12 @@ button.close {
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out; }
 
+.thumbnail > img,
+.img-thumbnail {
+  display: block;
+  max-width: 100%;
+  height: auto; }
+
 .thumbnail {
   display: block; }
 
@@ -2924,8 +2933,6 @@ a.thumbnail:focus {
   border-color: #428bca; }
 
 .thumbnail > img {
-  display: block;
-  max-width: 100%;
   margin-left: auto;
   margin-right: auto; }
 

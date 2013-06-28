@@ -59,12 +59,18 @@ a:focus {
 // -------------------------
 
 img {
-  // Responsive images (ensure images don't scale beyond their parents)
+  vertical-align: middle;
+}
+
+// Responsive images (ensure images don't scale beyond their parents)
+@mixin img-responsive {
+  display: block;
   max-width: 100%; // Part 1: Set a maximum relative to the parent
   height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
+}
 
-  // Match vertical alignment with other comment elements
-  vertical-align: middle;
+.img-responsive {
+  @include img-responsive;
 }
 
 // Rounded corners
