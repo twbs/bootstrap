@@ -312,7 +312,7 @@ body {
 .bs-example > .well:last-child {
   margin-bottom: 0;
 }
-.bs-example > .close {
+.bs-example > p > .close {
   float: none;
 }
 
