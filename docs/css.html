@@ -57,6 +57,20 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
 
 
 
+  <!-- Glyphicons icont font
+  ================================================== -->
+  <div class="bs-docs-section" id="glyphicons">
+    <div class="page-header">
+      <h1>Glyphicons</h1>
+    </div>
+    <p class="lead">With the launch of Bootstrap 3, icons have been moved to a <a href="https://github.com/twbs/bootstrap-glyphicons">separate repository</a>. This keeps the primary project as lean as possible, makes it easier for folks to swap icon libraries, and makes Glyphicons icon fonts more readily available to more people outside Bootstrap.</p>
+    <p class="lead">
+      <a href="http://glyphicons.getbootstrap.com/" class="btn btn-default btn-large">Visit Glyphicons for Bootstrap</a> or <a href="https://github.com/twbs/bootstrap-glyphicons">download from GitHub</a>
+    </p>
+  </div>
+
+
+
   <!-- Grid system
   ================================================== -->
   <div class="bs-docs-section" id="grid">
@@ -1494,11 +1508,15 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Adding on top of existing browser controls, Bootstrap includes other useful form components.</p>
 
     <h3 id="forms-input-groups">Input groups</h3>
-    <p>Add text or buttons before, after, or on both sides of any text-based input. Use <code>.input-group</code> with a <code>.add-on</code> to prepend or append elements to an <code>&lt;input&gt;</code>.</p>
+    <p>Add text or buttons before, after, or on both sides of any text-based input. Use <code>.input-group</code> with an <code>.add-on</code> to prepend or append elements to an <code>&lt;input&gt;</code>.</p>
 
     <div class="bs-callout">
       <h4>Cross-browser compatibility</h4>
       <p>Avoid using <code>&lt;select&gt;</code> elements here as they cannot be fully styled in WebKit browsers.</p>
+    </div>
+    <div class="bs-callout">
+      <h4>Tooltips &amp; popovers in input groups require special setting</h4>
+      <p>When using tooltips or popovers on elements within an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).</p>
     </div>
 
     <form class="bs-example bs-example-form">

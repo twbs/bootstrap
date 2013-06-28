@@ -378,6 +378,7 @@
   &.disabled,
   &[disabled],
   fieldset[disabled] & {
+    &,
     &:hover,
     &:focus,
     &:active,
@@ -443,9 +444,6 @@
 // Generate the columns
 @mixin make-column($columns) {
   position: relative;
-  // Float and set width: 100%; for easy stacking on mobile devices
-  float: left;
-  width: 100%;
   // Prevent columns from collapsing when empty
   min-height: 1px;
   // Inner gutter via padding
@@ -454,6 +452,7 @@
 
   // Calculate width based on number of columns available
   @media (min-width: $grid-float-breakpoint) {
+    float: left;
     width: percentage(($columns / $grid-columns));
   }
 }

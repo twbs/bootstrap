@@ -23,7 +23,6 @@ build:
 	@sass --precision ${SASS_PRECISION} ${BOOTSTRAP_SCSS} > ${BOOTSTRAP}
 	@echo "               ${CHECK}"
 	@printf "Prepping documentation assets..."
-	@cp fonts/* docs/assets/fonts/
 	@cp js/tests/vendor/jquery.js docs/assets/js/
 	@echo "            ${CHECK}"
 	@printf "Compiling and minifying JavaScript..."
@@ -90,17 +89,6 @@ bootstrap/css/*.css: scss/*.scss
 	sass --precision ${SASS_PRECISION} ${BOOTSTRAP_SCSS} > bootstrap/css/bootstrap.min.css
 
 #
-# FONTS
-#
-
-bootstrap-fonts: bootstrap/fonts/*
-
-bootstrap/fonts/*: fonts/*
-	mkdir -p bootstrap/fonts
-	cp fonts/* bootstrap/fonts/
-
-
-#
 # WATCH SCSS FILES
 #
 
@@ -115,4 +103,4 @@ watch:
 run: build
 	jekyll build && jekyll server
 
-.PHONY: docs watch gh-pages bootstrap-img bootstrap-css bootstrap-js
+.PHONY: docs watch gh-pages bootstrap-css bootstrap-js

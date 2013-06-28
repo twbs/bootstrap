@@ -290,6 +290,7 @@ input[type="color"] {
 // -------------------------
 .input-group {
   display: table;
+  border-collapse: separate; // prevent input groups from inheriting border styles from table cells when placed within a table
 
   // Undo padding and float of grid classes
   &.col {

@@ -91,4 +91,39 @@ $(function () {
         target.click()
       })
 
+      test("should remove active class from inactive accordion targets", function () {
+        $.support.transition = false
+        stop()
+
+        var accordion = $('<div id="accordion"><div class="accordion-group"></div><div class="accordion-group"></div><div class="accordion-group"></div></div>')
+          .appendTo($('#qunit-fixture'))
+
+        var target1 = $('<a data-toggle="collapse" href="#body1" data-parent="#accordion"></a>')
+          .appendTo(accordion.find('.accordion-group').eq(0))
+
+        var collapsible1 = $('<div id="body1" class="in"></div>')
+          .appendTo(accordion.find('.accordion-group').eq(0))
+
+        var target2 = $('<a class="collapsed" data-toggle="collapse" href="#body2" data-parent="#accordion"></a>')
+          .appendTo(accordion.find('.accordion-group').eq(1))
+
+        var collapsible2 = $('<div id="body2"></div>')
+          .appendTo(accordion.find('.accordion-group').eq(1))
+
+        var target3 = $('<a class="collapsed" data-toggle="collapse" href="#body3" data-parent="#accordion"></a>')
+          .appendTo(accordion.find('.accordion-group').eq(2))
+
+        var collapsible3 = $('<div id="body3"></div>')
+          .appendTo(accordion.find('.accordion-group').eq(2))
+          .on('show.bs.collapse', function () {
+            ok(target1.hasClass('collapsed'))
+            ok(target2.hasClass('collapsed'))
+            ok(!target3.hasClass('collapsed'))
+
+            start()
+          })
+
+        target3.click()
+      })
+
 })
