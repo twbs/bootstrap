@@ -3303,6 +3303,7 @@ button.close {
 
 .pagination {
   display: inline-block;
+  padding-left: 0;
   margin: 20px 0;
   border-radius: 4px;
 }
@@ -3394,6 +3395,7 @@ button.close {
 }
 
 .pager {
+  padding-left: 0;
   margin: 20px 0;
   text-align: center;
   list-style: none;
@@ -4019,7 +4021,7 @@ a.thumbnail:focus {
 }
 
 .media-list {
-  margin-left: 0;
+  padding-left: 0;
   list-style: none;
 }
 
