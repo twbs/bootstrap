@@ -97,6 +97,10 @@ module.exports = function(grunt) {
             test: {
                 files: '<%= jshint.test.src %>',
                 tasks: ['jshint:test', 'qunit']
+            },
+            recess: {
+                files: 'less/*.less',
+                tasks: ['recess']
             }
         }
     });
