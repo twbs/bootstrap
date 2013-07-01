@@ -195,7 +195,7 @@ textarea {
 // Move the options list down to align with labels
 .controls > .radio:first-child,
 .controls > .checkbox:first-child {
-  padding-top: 5px; // has to be padding because margin collaspes
+  padding-top: 5px; // has to be padding because margin collapses
 }
 */
 
@@ -291,6 +291,7 @@ input[type="color"] {
 // -------------------------
 .input-group {
   display: table;
+  border-collapse: separate; // prevent input groups from inheriting border styles from table cells when placed within a table
 
   // Undo padding and float of grid classes
   &.col {
@@ -321,6 +322,7 @@ input[type="color"] {
 .input-group-addon,
 .input-group-btn {
   width: 1%;
+  white-space: nowrap;
   vertical-align: middle; // Match the inputs
 }
 
@@ -424,7 +426,7 @@ input[type="color"] {
   }
 }
 
-// Only right aline form labels here when the columns stop stacking
+// Only right align form labels here when the columns stop stacking
 @media (min-width: 768px) {
   .form-horizontal .control-label {
     text-align: right;

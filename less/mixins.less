@@ -381,6 +381,7 @@
   &.disabled,
   &[disabled],
   fieldset[disabled] & {
+    &,
     &:hover,
     &:focus,
     &:active,
@@ -398,6 +399,16 @@
 .navbar-vertical-align(@element-height) {
   margin-top: ((@navbar-height - @element-height) / 2);
   margin-bottom: ((@navbar-height - @element-height) / 2);
+}
+
+// Responsive utilities
+// -------------------------
+// More easily include all the states for responsive-utilities.less.
+.responsive-visibility() {
+  display: block !important;
+  tr& { display: table-row !important; }
+  th&,
+  td& { display: table-cell !important; }
 }
 
 
@@ -433,9 +444,6 @@
 // Generate the columns
 .make-column(@columns) {
   position: relative;
-  // Float and set width: 100%; for easy stacking on mobile devices
-  float: left;
-  width: 100%;
   // Prevent columns from collapsing when empty
   min-height: 1px;
   // Inner gutter via padding
@@ -444,6 +452,7 @@
 
   // Calculate width based on number of columns available
   @media (min-width: @grid-float-breakpoint) {
+    float: left;
     width: percentage((@columns / @grid-columns));
   }
 }
@@ -491,5 +500,5 @@
     color: @text-color;
     border-color: @border-color;
     background-color: @background-color;
-  }  
+  }
 }

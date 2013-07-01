@@ -15,7 +15,7 @@ lead: "An overview of Bootstrap, how to download and use, basic templates and ex
     <p class="lead">There are a few easy ways to quickly get started with Bootstrap, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
 
     <h3>Download compiled CSS and JS</h3>
-    <p class="lead">The fastest way to get started is to get the compiled and minified versions of our CSS, JavaScript, and fonts. No documentation or original source files are included.</p>
+    <p class="lead">The fastest way to get started is to get the compiled and minified versions of our CSS and JavaScript. No documentation or original source files are included.</p>
     <p><a class="btn btn-large btn-primary" href="assets/bootstrap.zip" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a></p>
 
     <hr>
@@ -48,6 +48,11 @@ lead: "An overview of Bootstrap, how to download and use, basic templates and ex
 <!-- Latest compiled and minified JavaScript -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 {% endhighlight %}
+
+    <div class="bs-callout" id="callout-less-compilation">
+      <h4>LESS compilation</h4>
+      <p>If you download the original files, you need to compile Bootstrap's LESS files into usable CSS. To do that, Bootstrap only officially supports <a href="http://twitter.github.io/recess/">Recess</a>, Twitter's CSS hinter built on top of <a href="http://lesscss.org">less.js</a>.</p>
+    </div>
   </div>
 
   <!-- File structure
@@ -67,12 +72,6 @@ bootstrap/
 ├── js/
 │   ├── bootstrap.js
 │   ├── bootstrap.min.js
-└── fonts/
-    ├── glyphiconshalflings-regular.eot
-    ├── glyphiconshalflings-regular.otf
-    ├── glyphiconshalflings-regular.svg
-    ├── glyphiconshalflings-regular.ttf
-    └── glyphiconshalflings-regular.woff
 {% endhighlight %}
 
     <p>This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). The image files are compressed using <a href="http://imageoptim.com/">ImageOptim</a>, a Mac app for compressing PNGs.</p>
