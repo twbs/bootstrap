@@ -123,6 +123,16 @@
       })
     }
 
+    function transitionEndHandler(event) {
+      if (event.target !== $active[0]) return
+
+      $active.off(event, transitionEndHandler)
+      $next.removeClass([type, direction].join(' ')).addClass('active')
+      $active.removeClass(['active', direction].join(' '))
+      that.sliding = false
+      setTimeout(function () { that.$element.trigger('slid') }, 0)
+    }
+
     if ($.support.transition && this.$element.hasClass('slide')) {
       this.$element.trigger(e)
       if (e.isDefaultPrevented()) return
@@ -130,12 +140,7 @@
       $next[0].offsetWidth // force reflow
       $active.addClass(direction)
       $next.addClass(direction)
-      this.$element.one($.support.transition.end, function () {
-        $next.removeClass([type, direction].join(' ')).addClass('active')
-        $active.removeClass(['active', direction].join(' '))
-        that.sliding = false
-        setTimeout(function () { that.$element.trigger('slid') }, 0)
-      })
+      $active.on($.support.transition.end, transitionEndHandler)
     } else {
       this.$element.trigger(e)
       if (e.isDefaultPrevented()) return
