@@ -33,16 +33,6 @@ module.exports = function(grunt) {
                 dest: 'bootstrap/js/<%= pkg.name %>.js'
             }
         },
-        copy: {
-            bootstrap: {
-                files: [{
-                    expand: true,
-                    flatten: true,
-                    src: ['fonts/*'],
-                    dest: 'bootstrap/fonts/'
-                }]
-            }
-        },
         jshint: {
             options: {
                 jshintrc: 'js/.jshintrc'
@@ -116,7 +106,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-qunit');
@@ -133,11 +122,8 @@ module.exports = function(grunt) {
     // CSS distribution task.
     grunt.registerTask('bootstrap-css', ['recess']);
 
-    // Fonts distribution task.
-    grunt.registerTask('bootstrap-fonts', ['copy']);
-
     // Full distribution task.
-    grunt.registerTask('bootstrap', ['clean', 'bootstrap-fonts', 'bootstrap-css', 'bootstrap-js']);
+    grunt.registerTask('bootstrap', ['clean', 'bootstrap-css', 'bootstrap-js']);
 
     // Default task.
     grunt.registerTask('default', ['test', 'bootstrap']);
