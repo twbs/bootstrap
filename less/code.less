@@ -17,8 +17,8 @@ pre {
 code {
   padding: 2px 4px;
   font-size: 90%;
-  color: #c7254e;
-  background-color: #f9f2f4;
+  color: @code-color;
+  background-color: @code-bg-color;
   white-space: nowrap;
 }
 
@@ -31,8 +31,8 @@ pre {
   line-height: @line-height-base;
   word-break: break-all;
   word-wrap: break-word;
-  background-color: #f5f5f5;
-  border: 1px solid #ccc; // IE8 fallback
+  background-color: @pre-bg-color;
+  border: 1px solid @pre-ie8-border-color; // IE8 fallback
   border: 1px solid rgba(0,0,0,.15);
   border-radius: @border-radius-base;
 

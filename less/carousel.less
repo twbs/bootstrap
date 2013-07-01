@@ -77,7 +77,7 @@
   width: 15%;
   .opacity(.5);
   font-size: 20px;
-  color: #fff;
+  color: @carousel-control-color;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0,0,0,.6);
 
@@ -103,7 +103,7 @@
   // Hover/focus state
   &:hover,
   &:focus {
-    color: #fff;
+    color: @carousel-control-hover-color;
     text-decoration: none;
     .opacity(.9);
   }
@@ -142,12 +142,12 @@
     margin-left: 0;
     margin-right: 0;
     text-indent: -999px;
-    border: 1px solid #fff;
+    border: 1px solid @carousel-indicators-li-border-color;
     border-radius: 5px;
     cursor: pointer;
   }
   .active {
-    background-color: #fff;
+    background-color: @carousel-indicators-active-bg-color;
   }
 }
 
@@ -162,7 +162,7 @@
   z-index: 10;
   padding-top: 20px;
   padding-bottom: 20px;
-  color: #fff;
+  color: @carousel-caption-color;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0,0,0,.6);
   & .btn {

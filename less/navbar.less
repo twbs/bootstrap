@@ -117,12 +117,12 @@
   right: 10px;
   padding: 8px 12px;
   background-color: transparent;
-  border: 1px solid #ddd;
+  border: 1px solid @navbar-toggle-border-color;
   border-radius: 4px;
 
   &:hover,
   &:focus {
-    background-color: #ddd;
+    background-color: @navbar-toggle-hover-color;
   }
 
   // Bars
@@ -130,7 +130,7 @@
     display: block;
     width: 22px;
     height: 2px;
-    background-color: #ccc;
+    background-color: @navbar-toggle-icon-bar-bg-color;
     border-radius: 1px;
   }
   .icon-bar + .icon-bar {
@@ -239,13 +239,13 @@
 
   // Darken the responsive nav toggle
   .navbar-toggle {
-    border-color: #333;
+    border-color: @navbar-inverse-navbar-toggle-border-color;
     &:hover,
     &:focus {
-      background-color: #333;
+      background-color: @navbar-inverse-navbar-toggle-bg-color;
     }
     .icon-bar {
-      background-color: #fff;
+      background-color: @navbar-inverse-navbar-toggle-icon-bar-bg-color;
     }
   }
 

@@ -47,8 +47,8 @@
 // Actual modal
 .modal-content {
   position: relative;
-  background-color: #fff;
-  border: 1px solid #999;
+  background-color: @modal-content-bg-color;
+  border: 1px solid @modal-content-ie8-border-color; //fallback for older browsers
   border: 1px solid rgba(0,0,0,.2);
   border-radius: 6px;
   .box-shadow(0 3px 9px rgba(0,0,0,.5));
@@ -65,7 +65,7 @@
   bottom: 0;
   left: 0;
   z-index: (@zindex-modal-background - 10);
-  background-color: #000;
+  background-color: @modal-backdrop-bg-color;
   // Fade for backdrop
   &.fade { .opacity(0); }
   &.fade.in { .opacity(.5); }
@@ -75,7 +75,7 @@
 // Top section of the modal w/ title and dismiss
 .modal-header {
   padding: @modal-title-padding;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid @modal-header-border-bottom-color;
   min-height: (@modal-title-padding + @modal-title-line-height);
 }
 // Close icon
@@ -101,7 +101,7 @@
   margin-top: 15px;
   padding: (@modal-inner-padding - 1) @modal-inner-padding @modal-inner-padding;
   text-align: right; // right align buttons
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid @modal-footer-border-top-color;
   .clearfix(); // clear it in case folks use .pull-* classes on buttons
 
   // Properly space out buttons
