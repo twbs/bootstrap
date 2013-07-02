@@ -602,6 +602,7 @@ body {
 }
 .footer-links {
   margin: 10px 0;
+  padding-left: 0;
 }
 .footer-links li {
   display: inline;
@@ -617,7 +618,8 @@ body {
 }
 .bs-social-buttons {
   display: inline-block;
-  margin: 0;
+  margin-bottom: 0;
+  padding-left: 0;
   list-style: none;
 }
 .bs-social-buttons li {

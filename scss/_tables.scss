@@ -95,33 +95,31 @@ th {
   > tbody:first-child > tr:first-child td {
     border-top: 0;
   }
-  // For first th/td in the first row in the first thead or tbody
-  > thead:first-child > tr:first-child > th:first-child,
-  > tbody:first-child > tr:first-child > td:first-child,
-  > tbody:first-child > tr:first-child > th:first-child {
-    border-top-left-radius: $border-radius-base;
+  > thead:first-child > tr:first-child > th,
+  > tbody:first-child > tr:first-child > td,
+  > tbody:first-child > tr:first-child > th {
+    // For first th/td in the first row in the first thead or tbody
+    &:first-child{
+      border-top-left-radius: $border-radius-base;
+    }
+    // For last th/td in the first row in the first thead or tbody
+    &:last-child{
+      border-top-right-radius: $border-radius-base;
+    }
   }
-  // For last th/td in the first row in the first thead or tbody
-  > thead:first-child > tr:first-child > th:last-child,
-  > tbody:first-child > tr:first-child > td:last-child,
-  > tbody:first-child > tr:first-child > th:last-child {
-    border-top-right-radius: $border-radius-base;
-  }
-  // For first th/td (can be either) in the last row in the last thead, tbody, and tfoot
-  > thead:last-child > tr:last-child > th:first-child,
-  > tbody:last-child > tr:last-child > td:first-child,
-  > tbody:last-child > tr:last-child > th:first-child,
-  > tfoot:last-child > tr:last-child > td:first-child,
-  > tfoot:last-child > tr:last-child > th:first-child {
-    border-bottom-left-radius: $border-radius-base;
-  }
-  // For last th/td (can be either) in the last row in the last thead, tbody, and tfoot
-  > thead:last-child > tr:last-child > th:last-child,
-  > tbody:last-child > tr:last-child > td:last-child,
-  > tbody:last-child > tr:last-child > th:last-child,
-  > tfoot:last-child > tr:last-child > td:last-child,
-  > tfoot:last-child > tr:last-child > th:last-child {
-    border-bottom-right-radius: $border-radius-base;
+  > thead:last-child > tr:last-child > th,
+  > tbody:last-child > tr:last-child > td,
+  > tbody:last-child > tr:last-child > th,
+  > tfoot:last-child > tr:last-child > td,
+  > tfoot:last-child > tr:last-child > th {
+    // For first th/td (can be either) in the last row in the last thead, tbody, and tfoot
+    &:first-child{
+      border-bottom-left-radius: $border-radius-base;
+    }
+    // For last th/td (can be either) in the last row in the last thead, tbody, and tfoot
+    &:last-child{
+      border-bottom-right-radius: $border-radius-base;
+    }
   }
 
   // Clear border-radius for first and last td in the last row in the last tbody for table with tfoot
@@ -133,19 +131,17 @@ th {
   }
 
   // Special fixes to round the left border on the first td/th
-  > caption + thead > tr:first-child > th:first-child,
-  > caption + tbody > tr:first-child > td:first-child,
-  > colgroup + thead > tr:first-child > th:first-child,
-  > colgroup + tbody > tr:first-child > td:first-child {
-    border-top-left-radius: $border-radius-base;
+  > caption + thead > tr:first-child > th,
+  > caption + tbody > tr:first-child > td,
+  > colgroup + thead > tr:first-child > th,
+  > colgroup + tbody > tr:first-child > td {
+    &:first-child{
+      border-top-left-radius: $border-radius-base;
+    }
+    &:last-child{
+      border-top-right-radius: $border-radius-base;
+    }
   }
-  > caption + thead > tr:first-child > th:last-child,
-  > caption + tbody > tr:first-child > td:last-child,
-  > colgroup + thead > tr:first-child > th:last-child,
-  > colgroup + tbody > tr:first-child > td:last-child {
-    border-top-right-radius: $border-radius-base;
-  }
-
 }
 
 

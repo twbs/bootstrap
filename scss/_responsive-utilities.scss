@@ -36,42 +36,42 @@
 // Visibility utilities
 
 // For Phones
-@include responsive-visibility('.visible-sm');
-.visible-md { display: none !important; }
-.visible-lg { display: none !important; }
+@include responsive-visibility(".visible-sm");
+@include responsive-invisibility(".visible-md");
+@include responsive-invisibility(".visible-lg");
 
-.hidden-sm { display: none !important; }
-@include responsive-visibility('.hidden-md');
-@include responsive-visibility('.hidden-lg');
+@include responsive-invisibility(".hidden-sm");
+@include responsive-visibility(".hidden-md");
+@include responsive-visibility(".hidden-lg");
 
 
 // Tablets & small desktops only
 @media (min-width: $screen-tablet) and (max-width: $screen-tablet-max) {
-  .visible-sm { display: none !important; }
-  @include responsive-visibility('.visible-md');
-  .visible-lg { display: none !important; }
+  @include responsive-invisibility(".visible-sm");
+  @include responsive-visibility(".visible-md");
+  @include responsive-invisibility(".visible-lg");
 
-  @include responsive-visibility('.hidden-sm');
-  .hidden-md { display: none !important; }
-  @include responsive-visibility('.hidden-lg');
+  @include responsive-visibility(".hidden-sm");
+  @include responsive-invisibility(".hidden-md");
+  @include responsive-visibility(".hidden-lg");
 }
 
 // For desktops
 @media (min-width: $screen-desktop) {
-  .visible-sm { display: none !important; }
-  .visible-md { display: none !important; }
-  @include responsive-visibility('.visible-lg');
+  @include responsive-invisibility(".visible-sm");
+  @include responsive-invisibility(".visible-md");
+  @include responsive-visibility(".visible-lg");
 
-  @include responsive-visibility('.hidden-sm');
-  @include responsive-visibility('.hidden-md');
-  .hidden-lg { display: none !important; }
+  @include responsive-visibility(".hidden-sm");
+  @include responsive-visibility(".hidden-md");
+  @include responsive-invisibility(".hidden-lg");
 }
 
 // Print utilities
-.visible-print { display: none !important; }
+@include responsive-invisibility(".visible-print");
 .hidden-print  { }
 
 @media print {
-  @include responsive-visibility('.visible-print');
-  .hidden-print { display: none !important; }
+  @include responsive-visibility(".visible-print");
+  @include responsive-invisibility(".hidden-print");
 }

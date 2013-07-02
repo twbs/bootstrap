@@ -17,15 +17,12 @@
   border-radius: $thumbnail-border-radius;
   @include transition(all .2s ease-in-out);
 }
-.thumbnail > img,
-.img-thumbnail {
-  @include img-responsive();
-}
 .thumbnail {
   display: block;
 }
+.thumbnail > img,
 .img-thumbnail {
-  display: inline-block;
+  @include img-responsive();
 }
 
 // Add a hover state for linked versions only

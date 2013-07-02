@@ -411,7 +411,14 @@
   td#{$selector} { display: table-cell !important; }
 }
 
-
+@mixin responsive-invisibility($selector) {
+  #{$selector} {
+    display: none !important;
+  }
+  tr#{$selector} { display: none !important; }
+  th#{$selector},
+  td#{$selector} { display: none !important; }
+}
 
 // Grid System
 // -----------
@@ -479,6 +486,7 @@
 // Generate form validation states
 @mixin form-field-validation($text-color: #555, $border-color: #ccc, $background-color: #f5f5f5) {
   // Color the label text
+  .help-block,
   .control-label {
     color: $text-color;
   }
