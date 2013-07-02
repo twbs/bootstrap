@@ -4414,24 +4414,26 @@ a.list-group-item.active > .badge,
   z-index: 15;
   width: 100px;
   padding-left: 0;
-  margin: 0 0 0 -50px;
+  margin-left: -50px;
   text-align: center;
   list-style: none;
 }
 
 .carousel-indicators li {
   display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-right: 0;
-  margin-left: 0;
+  width: 10px;
+  height: 10px;
+  margin: 1px;
   text-indent: -999px;
   cursor: pointer;
   border: 1px solid #fff;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .carousel-indicators .active {
+  width: 12px;
+  height: 12px;
+  margin: 0;
   background-color: #fff;
 }
 
