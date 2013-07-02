@@ -1605,6 +1605,7 @@ input[type="color"].input-small {
   border-radius: 3px;
 }
 
+.has-warning .help-block,
 .has-warning .control-label {
   color: #c09853;
 }
@@ -1628,6 +1629,7 @@ input[type="color"].input-small {
   border-color: #c09853;
 }
 
+.has-error .help-block,
 .has-error .control-label {
   color: #b94a48;
 }
@@ -1651,6 +1653,7 @@ input[type="color"].input-small {
   border-color: #b94a48;
 }
 
+.has-success .help-block,
 .has-success .control-label {
   color: #468847;
 }
