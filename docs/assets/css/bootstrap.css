@@ -4575,11 +4575,38 @@ td.visible-sm {
   display: none !important;
 }
 
+tr.visible-md {
+  display: none !important;
+}
+
+th.visible-md,
+td.visible-md {
+  display: none !important;
+}
+
 .visible-lg {
   display: none !important;
 }
 
+tr.visible-lg {
+  display: none !important;
+}
+
+th.visible-lg,
+td.visible-lg {
+  display: none !important;
+}
+
 .hidden-sm {
+  display: none !important;
+}
+
+tr.hidden-sm {
+  display: none !important;
+}
+
+th.hidden-sm,
+td.hidden-sm {
   display: none !important;
 }
 
@@ -4613,6 +4640,13 @@ td.hidden-lg {
   .visible-sm {
     display: none !important;
   }
+  tr.visible-sm {
+    display: none !important;
+  }
+  th.visible-sm,
+  td.visible-sm {
+    display: none !important;
+  }
   .visible-md {
     display: block !important;
   }
@@ -4626,6 +4660,13 @@ td.hidden-lg {
   .visible-lg {
     display: none !important;
   }
+  tr.visible-lg {
+    display: none !important;
+  }
+  th.visible-lg,
+  td.visible-lg {
+    display: none !important;
+  }
   .hidden-sm {
     display: block !important;
   }
@@ -4637,6 +4678,13 @@ td.hidden-lg {
     display: table-cell !important;
   }
   .hidden-md {
+    display: none !important;
+  }
+  tr.hidden-md {
+    display: none !important;
+  }
+  th.hidden-md,
+  td.hidden-md {
     display: none !important;
   }
   .hidden-lg {
@@ -4655,7 +4703,21 @@ td.hidden-lg {
   .visible-sm {
     display: none !important;
   }
+  tr.visible-sm {
+    display: none !important;
+  }
+  th.visible-sm,
+  td.visible-sm {
+    display: none !important;
+  }
   .visible-md {
+    display: none !important;
+  }
+  tr.visible-md {
+    display: none !important;
+  }
+  th.visible-md,
+  td.visible-md {
     display: none !important;
   }
   .visible-lg {
@@ -4691,9 +4753,23 @@ td.hidden-lg {
   .hidden-lg {
     display: none !important;
   }
+  tr.hidden-lg {
+    display: none !important;
+  }
+  th.hidden-lg,
+  td.hidden-lg {
+    display: none !important;
+  }
 }
 
 .visible-print {
+  display: none !important;
+}
+tr.visible-print {
+  display: none !important;
+}
+th.visible-print,
+td.visible-print {
   display: none !important;
 }
 
