@@ -5,6 +5,7 @@ Su propósito es que el trabajo in-house y de proveedores sea consistente estét
 
 BAStrap está basado en [Bootstrap v2.3.1](http://twitter.github.com/bootstrap)
 
+Homepage: http://gcba.github.io/BAstrap/
 
 ## Compilar el CSS y JavaScript
 
