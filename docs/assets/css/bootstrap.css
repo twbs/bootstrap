@@ -1486,6 +1486,10 @@ input[type="checkbox"]:focus {
   outline-offset: -2px;
 }
 
+input[type="number"]::-webkit-outer-spin-button input[type="number"]::-webkit-inner-spin-button {
+  height: auto;
+}
+
 input:-moz-placeholder,
 textarea:-moz-placeholder {
   color: #999999;
