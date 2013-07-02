@@ -1126,10 +1126,10 @@ th {
 }
 
 .table caption + thead tr:first-child th,
-.table caption + thead tr:first-child td,
 .table colgroup + thead tr:first-child th,
-.table colgroup + thead tr:first-child td,
 .table thead:first-child tr:first-child th,
+.table caption + thead tr:first-child td,
+.table colgroup + thead tr:first-child td,
 .table thead:first-child tr:first-child td {
   border-top: 0;
 }
@@ -1212,15 +1212,15 @@ th {
 }
 
 .table-bordered > caption + thead > tr:first-child > th:first-child,
-.table-bordered > caption + tbody > tr:first-child > td:first-child,
 .table-bordered > colgroup + thead > tr:first-child > th:first-child,
+.table-bordered > caption + tbody > tr:first-child > td:first-child,
 .table-bordered > colgroup + tbody > tr:first-child > td:first-child {
   border-top-left-radius: 4px;
 }
 
 .table-bordered > caption + thead > tr:first-child > th:last-child,
-.table-bordered > caption + tbody > tr:first-child > td:last-child,
 .table-bordered > colgroup + thead > tr:first-child > th:last-child,
+.table-bordered > caption + tbody > tr:first-child > td:last-child,
 .table-bordered > colgroup + tbody > tr:first-child > td:last-child {
   border-top-right-radius: 4px;
 }
