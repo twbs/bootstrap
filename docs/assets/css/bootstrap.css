@@ -329,7 +329,7 @@ img {
 }
 
 .img-responsive {
-  display: block;
+  display: inline-block;
   height: auto;
   max-width: 100%;
 }
@@ -3957,19 +3957,15 @@ button.close {
           transition: all 0.2s ease-in-out;
 }
 
-.thumbnail > img,
-.img-thumbnail {
-  display: block;
-  height: auto;
-  max-width: 100%;
-}
-
 .thumbnail {
   display: block;
 }
 
+.thumbnail > img,
 .img-thumbnail {
   display: inline-block;
+  height: auto;
+  max-width: 100%;
 }
 
 a.thumbnail:hover,
@@ -4308,7 +4304,7 @@ a.list-group-item.active > .badge,
 
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
-  display: block;
+  display: inline-block;
   height: auto;
   max-width: 100%;
   line-height: 1;
