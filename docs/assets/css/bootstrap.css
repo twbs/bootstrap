@@ -2326,6 +2326,11 @@ input[type="button"].btn-block {
   border-bottom-left-radius: 4px;
 }
 
+.list-group-item > .badge {
+  float: right;
+  margin-right: -15px;
+}
+
 .list-group-item-heading {
   margin-top: 0;
   margin-bottom: 5px;
@@ -2363,16 +2368,6 @@ a.list-group-item.active .list-group-item-heading {
 
 a.list-group-item.active .list-group-item-text {
   color: #e1edf7;
-}
-
-.list-group-item > .badge,
-.list-group-item > .glyphicon-chevron-right {
-  float: right;
-  margin-right: -15px;
-}
-
-.list-group-item > .glyphicon + .badge {
-  margin-right: 5px;
 }
 
 .panel {
@@ -4279,9 +4274,6 @@ a.list-group-item.active > .badge,
 .accordion-heading .accordion-toggle {
   display: block;
   padding: 8px 15px;
-}
-
-.accordion-toggle {
   cursor: pointer;
 }
 
