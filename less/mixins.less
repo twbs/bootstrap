@@ -110,56 +110,40 @@
 // Transitions
 .transition(@transition) {
   -webkit-transition: @transition;
-     -moz-transition: @transition;
-       -o-transition: @transition;
           transition: @transition;
 }
 .transition-delay(@transition-delay) {
   -webkit-transition-delay: @transition-delay;
-     -moz-transition-delay: @transition-delay;
-       -o-transition-delay: @transition-delay;
           transition-delay: @transition-delay;
 }
 .transition-duration(@transition-duration) {
   -webkit-transition-duration: @transition-duration;
-     -moz-transition-duration: @transition-duration;
-       -o-transition-duration: @transition-duration;
           transition-duration: @transition-duration;
 }
 
 // Transformations
 .rotate(@degrees) {
   -webkit-transform: rotate(@degrees);
-     -moz-transform: rotate(@degrees);
       -ms-transform: rotate(@degrees);
-       -o-transform: rotate(@degrees);
           transform: rotate(@degrees);
 }
 .scale(@ratio) {
   -webkit-transform: scale(@ratio);
-     -moz-transform: scale(@ratio);
       -ms-transform: scale(@ratio);
-       -o-transform: scale(@ratio);
           transform: scale(@ratio);
 }
 .translate(@x, @y) {
   -webkit-transform: translate(@x, @y);
-     -moz-transform: translate(@x, @y);
       -ms-transform: translate(@x, @y);
-       -o-transform: translate(@x, @y);
           transform: translate(@x, @y);
 }
 .skew(@x, @y) {
   -webkit-transform: skew(@x, @y);
-     -moz-transform: skew(@x, @y);
       -ms-transform: skewX(@x) skewY(@y); // See https://github.com/twitter/bootstrap/issues/4885
-       -o-transform: skew(@x, @y);
           transform: skew(@x, @y);
 }
 .translate3d(@x, @y, @z) {
   -webkit-transform: translate3d(@x, @y, @z);
-     -moz-transform: translate3d(@x, @y, @z);
-       -o-transform: translate3d(@x, @y, @z);
           transform: translate3d(@x, @y, @z);
 }
 
@@ -175,16 +159,11 @@
 
 // Background clipping
 .background-clip(@clip) {
-  -webkit-background-clip: @clip;
-     -moz-background-clip: @clip;
           background-clip: @clip;
 }
 
 // Background sizing
 .background-size(@size) {
-  -webkit-background-size: @size;
-     -moz-background-size: @size;
-       -o-background-size: @size;
           background-size: @size;
 }
 
