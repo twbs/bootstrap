@@ -20,7 +20,7 @@
 // The dropdown menu (ul)
 // ----------------------
 .dropdown-menu {
-  position: absolute;
+  position: relative;
   top: 100%;
   left: 0;
   z-index: @zindex-dropdown;
@@ -163,4 +163,15 @@
 // ---------------------------
 .typeahead {
   z-index: 1051;
+}
+
+// Change behaviour when navbar changes
+// ------------------------------------
+@media screen and (min-width: @grid-float-breakpoint) {
+
+  // The dropdown menu (ul)
+  // ----------------------
+  .dropdown-menu {
+    position: absolute;
+  }
 }

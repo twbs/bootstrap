@@ -2177,7 +2177,7 @@ input[type="button"].btn-block {
 }
 
 .dropdown-menu {
-  position: absolute;
+  position: relative;
   top: 100%;
   left: 0;
   z-index: 1000;
@@ -2307,6 +2307,12 @@ input[type="button"].btn-block {
 
 .typeahead {
   z-index: 1051;
+}
+
+@media screen and (min-width: 768px) {
+  .dropdown-menu {
+    position: absolute;
+  }
 }
 
 .list-group {
