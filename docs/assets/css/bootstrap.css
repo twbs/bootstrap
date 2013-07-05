@@ -3339,10 +3339,10 @@ button.close {
   cursor: default;
 }
 
-.pagination > .disabled span,
-.pagination > .disabled a,
-.pagination > .disabled a:hover,
-.pagination > .disabled a:focus {
+.pagination > .disabled > span,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
   color: #999999;
   cursor: default;
   background-color: #ffffff;
