@@ -9,3 +9,7 @@ permalink:    pretty
 source:       ./docs
 destination:  ./_gh_pages
 port:         9001
+
+# Custom base urls
+baseurl:     /
+staticurl:   /assets/

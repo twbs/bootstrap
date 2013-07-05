@@ -43,10 +43,10 @@ lead: "An overview of Bootstrap, how to download and use, basic templates and ex
     <p>The folks over at <a href="https://www.netdna.com/">NetDNA</a> have graciously provided CDN support for Bootstrap's CSS and JavaScript. To use, swap your local instances for the <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links listed below.</p>
 {% highlight html linenos %}
 <!-- Latest compiled and minified CSS -->
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+<link href="{{ site.baseurl }}/netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="{{ site.baseurl }}/netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 {% endhighlight %}
 
     <div class="bs-callout" id="callout-less-compilation">
@@ -118,22 +118,22 @@ bootstrap/
     <div class="bs-examples">
       <div class="row">
         <div class="col-lg-4">
-          <a class="thumbnail" href="/examples/starter-template/" target="_blank">
-            <img src="/assets/img/examples/bootstrap-example-starter.png" alt="">
+          <a class="thumbnail" href="{{ site.baseurl }}examples/starter-template/" target="_blank">
+            <img src="{{ site.staticurl }}img/examples/bootstrap-example-starter.png" alt="">
           </a>
           <h4>Starter template</h4>
           <p>A barebones HTML page with Bootstrap's CSS and JavaScript included.</p>
         </div>
         <div class="col-lg-4">
-          <a class="thumbnail" href="/examples/grid/" target="_blank">
-            <img src="/assets/img/examples/bootstrap-example-grid.png" alt="">
+          <a class="thumbnail" href="{{ site.baseurl }}examples/grid/" target="_blank">
+            <img src="{{ site.staticurl }}img/examples/bootstrap-example-grid.png" alt="">
           </a>
           <h4>Basic grid layouts</h4>
           <p>Simple grid layouts to familiarize you with using the Bootstrap grid system.</p>
         </div>
         <div class="col-lg-4">
-          <a class="thumbnail" href="/examples/jumbotron/" target="_blank">
-            <img src="/assets/img/examples/bootstrap-example-marketing.png" alt="">
+          <a class="thumbnail" href="{{ site.baseurl }}examples/jumbotron/" target="_blank">
+            <img src="{{ site.staticurl }}img/examples/bootstrap-example-marketing.png" alt="">
           </a>
           <h4>Basic marketing site</h4>
           <p>Features a jumbotron for primary message and three supporting elements.</p>
@@ -141,22 +141,22 @@ bootstrap/
       </div>
       <div class="row">
         <div class="col-lg-4">
-          <a class="thumbnail" href="/examples/jumbotron-narrow/" target="_blank">
-            <img src="/assets/img/examples/bootstrap-example-jumbotron-narrow.png" alt="">
+          <a class="thumbnail" href="{{ site.baseurl }}examples/jumbotron-narrow/" target="_blank">
+            <img src="{{ site.staticurl }}img/examples/bootstrap-example-jumbotron-narrow.png" alt="">
           </a>
           <h4>Narrow marketing</h4>
           <p>Slim, lightweight marketing template for small projects or teams.</p>
         </div>
         <div class="col-lg-4">
-          <a class="thumbnail" href="/examples/justified-nav/" target="_blank">
-            <img src="/assets/img/examples/bootstrap-example-justified-nav.png" alt="">
+          <a class="thumbnail" href="{{ site.baseurl }}examples/justified-nav/" target="_blank">
+            <img src="{{ site.staticurl }}img/examples/bootstrap-example-justified-nav.png" alt="">
           </a>
           <h4>Justified nav</h4>
           <p>Marketing page with equal-width navigation links in a modified navbar.</p>
         </div>
         <div class="col-lg-4">
-          <a class="thumbnail" href="/examples/signin/" target="_blank">
-            <img src="/assets/img/examples/bootstrap-example-signin.png" alt="">
+          <a class="thumbnail" href="{{ site.baseurl }}examples/signin/" target="_blank">
+            <img src="{{ site.staticurl }}img/examples/bootstrap-example-signin.png" alt="">
           </a>
           <h4>Sign in</h4>
           <p>Barebones sign in form with custom, larger form controls and a flexible layout.</p>
@@ -164,22 +164,22 @@ bootstrap/
       </div>
       <div class="row">
         <div class="col-lg-4">
-          <a class="thumbnail" href="/examples/sticky-footer/" target="_blank">
-            <img src="/assets/img/examples/bootstrap-example-sticky-footer.png" alt="">
+          <a class="thumbnail" href="{{ site.baseurl }}examples/sticky-footer/" target="_blank">
+            <img src="{{ site.staticurl }}img/examples/bootstrap-example-sticky-footer.png" alt="">
           </a>
           <h4>Sticky footer</h4>
           <p>Pin a fixed-height footer to the bottom of the user's viewport.</p>
         </div>
         <div class="col-lg-4">
-          <a class="thumbnail" href="/examples/sticky-footer-navbar/" target="_blank">
-            <img src="/assets/img/examples/bootstrap-example-sticky-footer-navbar.png" alt="">
+          <a class="thumbnail" href="{{ site.baseurl }}examples/sticky-footer-navbar/" target="_blank">
+            <img src="{{ site.staticurl }}img/examples/bootstrap-example-sticky-footer-navbar.png" alt="">
           </a>
           <h4>Sticky footer w/ navbar</h4>
           <p>Add a fixed navbar to the default sticky footer template.</p>
         </div>
         <div class="col-lg-4">
-          <a class="thumbnail" href="/examples/carousel/" target="_blank">
-            <img src="/assets/img/examples/bootstrap-example-carousel.png" alt="">
+          <a class="thumbnail" href="{{ site.baseurl }}examples/carousel/" target="_blank">
+            <img src="{{ site.staticurl }}img/examples/bootstrap-example-carousel.png" alt="">
           </a>
           <h4>Carousel jumbotron</h4>
           <p>An interactive riff on the basic marketing site featuring a prominent carousel.</p>
@@ -187,22 +187,22 @@ bootstrap/
       </div>
       <div class="row">
         <div class="col-lg-4">
-          <a class="thumbnail" href="/examples/navbar/" target="_blank">
-            <img src="/assets/img/examples/bootstrap-example-navbar.png" alt="">
+          <a class="thumbnail" href="{{ site.baseurl }}examples/navbar/" target="_blank">
+            <img src="{{ site.staticurl }}img/examples/bootstrap-example-navbar.png" alt="">
           </a>
           <h4>Navbar</h4>
           <p>Basic template for showcasing how the navbar works.</p>
         </div>
         <div class="col-lg-4">
-          <a class="thumbnail" href="/examples/navbar-static-top/" target="_blank">
-            <img src="/assets/img/examples/bootstrap-example-navbar-static-top.png" alt="">
+          <a class="thumbnail" href="{{ site.baseurl }}examples/navbar-static-top/" target="_blank">
+            <img src="{{ site.staticurl }}img/examples/bootstrap-example-navbar-static-top.png" alt="">
           </a>
           <h4>Static top navbar</h4>
           <p>Basic template for showcasing the static navbar variation.</p>
         </div>
         <div class="col-lg-4">
-          <a class="thumbnail" href="/examples/navbar-fixed-top/" target="_blank">
-            <img src="/assets/img/examples/bootstrap-example-navbar-fixed-top.png" alt="">
+          <a class="thumbnail" href="{{ site.baseurl }}examples/navbar-fixed-top/" target="_blank">
+            <img src="{{ site.staticurl }}img/examples/bootstrap-example-navbar-fixed-top.png" alt="">
           </a>
           <h4>Fixed top navbar</h4>
           <p>Basic template for showcasing the fixed navbar variation.</p>
@@ -282,7 +282,7 @@ bootstrap/
     </div>
 
     <h3>Removing potential bloat</h3>
-    <p>Not all sites and applications need to make use of everything Bootstrap has to offer, especially in production environments where bandwidth literally becomes a financial issue. We encourage folks to remove whatever is unused with our <a href="/customize/">Customizer</a>.</p>
+    <p>Not all sites and applications need to make use of everything Bootstrap has to offer, especially in production environments where bandwidth literally becomes a financial issue. We encourage folks to remove whatever is unused with our <a href="{{ site.baseurl }}customize/">Customizer</a>.</p>
     <p>Using the Customizer, simply uncheck any component, feature, or asset you don't need. Hit download and swap out the default Bootstrap files with these newly customized ones. You'll get vanilla Bootstrap, but without the features *you* deem unnecessary. All custom builds include compiled and minified versions, so use whichever works for you.</p>
 
   </div>
