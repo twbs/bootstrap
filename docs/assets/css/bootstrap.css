@@ -2310,10 +2310,6 @@ input[type="button"].btn-block {
   padding-left: 20px;
 }
 
-.typeahead {
-  z-index: 1051;
-}
-
 .list-group {
   padding-left: 0;
   margin-bottom: 20px;
