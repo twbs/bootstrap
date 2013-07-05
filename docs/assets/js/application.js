@@ -92,7 +92,6 @@
             .map(function () { return this.value })
             .toArray()
         , vars = {}
-        , img = ['glyphicons-halflings.png', 'glyphicons-halflings-white.png']
 
       $("#less-variables input")
         .each(function () {
@@ -107,7 +106,6 @@
           js: js
         , css: css
         , vars: vars
-        , img: img
       }
       })
     })
