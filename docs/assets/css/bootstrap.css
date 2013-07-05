@@ -1113,8 +1113,10 @@ th {
 
 .table thead > tr > th,
 .table tbody > tr > th,
+.table tfoot > tr > th,
 .table thead > tr > td,
-.table tbody > tr > td {
+.table tbody > tr > td,
+.table tfoot > tr > td {
   padding: 8px;
   line-height: 1.428571429;
   vertical-align: top;
@@ -1144,8 +1146,10 @@ th {
 
 .table-condensed thead > tr > th,
 .table-condensed tbody > tr > th,
+.table-condensed tfoot > tr > th,
 .table-condensed thead > tr > td,
-.table-condensed tbody > tr > td {
+.table-condensed tbody > tr > td,
+.table-condensed tfoot > tr > td {
   padding: 4px 5px;
 }
 
@@ -1158,8 +1162,10 @@ th {
 
 .table-bordered > thead > tr > th,
 .table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > th,
 .table-bordered > thead > tr > td,
-.table-bordered > tbody > tr > td {
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > td {
   border-left: 1px solid #dddddd;
 }
 
