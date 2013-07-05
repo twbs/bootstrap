@@ -342,6 +342,13 @@ img {
   border-radius: 500px;
 }
 
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eeeeee;
+}
+
 p {
   margin: 0 0 10px;
 }
@@ -588,14 +595,6 @@ dd {
 
 .dl-horizontal dd:after {
   clear: both;
-}
-
-hr {
-  margin: 20px 0;
-  border: 0;
-  border-top: 1px solid #eeeeee;
-  border-bottom: 1px solid #fff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 abbr[title],
