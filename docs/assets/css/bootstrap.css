@@ -3285,15 +3285,11 @@ button.close {
   text-shadow: 0 1px 0 #fff;
 }
 
-.breadcrumb > li:after {
+.breadcrumb > li + li:before {
   display: inline-block;
   padding: 0 5px;
   color: #ccc;
-  content: "\00a0 /";
-}
-
-.breadcrumb > li:last-child:after {
-  display: none;
+  content: "/\00a0";
 }
 
 .breadcrumb > .active {
