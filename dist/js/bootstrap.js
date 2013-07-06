@@ -1081,6 +1081,7 @@
   , delay: 0
   , html: false
   , container: false
+  , dynamicPlacement: false
   }
 
   Tooltip.prototype.init = function (type, element, options) {
@@ -1191,6 +1192,29 @@
       var pos          = this.getPosition()
       var actualWidth  = $tip[0].offsetWidth
       var actualHeight = $tip[0].offsetHeight
+
+      if (this.options.dynamicPlacement) {
+        var $parent = this.$element.parent()
+        var top = (document.documentElement.scrollTop || document.body.scrollTop)
+        var parentWidth = this.options.container == 'body' ? window.innerWidth : $parent.outerWidth()
+        var parentHeight = this.options.container == 'body' ? window.innerHeight : $parent.outerHeight()
+        var parentLeft = this.options.container == 'body' ? 0 : $parent.offset().left
+
+        switch (placement) {
+          case 'bottom':
+            if (pos.top + pos.height + actualHeight - top > parentHeight)  placement = 'top'
+            break
+          case 'top':
+            if (pos.top - top - actualHeight < 0)                          placement = 'bottom'
+            break
+          case 'right':
+            if (pos.right + actualWidth > parentWidth)                     placement = 'left'
+            break
+          case 'left':
+            if (pos.left - actualWidth < parentLeft)                       placement = 'right'
+            break
+        }
+      }
 
       switch (placement) {
         case 'bottom':
