@@ -3323,6 +3323,19 @@ button.close {
   border-left-width: 0;
 }
 
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+  border-left-width: 1px;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
 .pagination > li > a:hover,
 .pagination > li > a:focus,
 .pagination > .active > a,
@@ -3343,19 +3356,6 @@ button.close {
   color: #999999;
   cursor: default;
   background-color: #ffffff;
-}
-
-.pagination > li:first-child > a,
-.pagination > li:first-child > span {
-  border-left-width: 1px;
-  border-bottom-left-radius: 4px;
-  border-top-left-radius: 4px;
-}
-
-.pagination > li:last-child > a,
-.pagination > li:last-child > span {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
 }
 
 .pagination-large > li > a,
