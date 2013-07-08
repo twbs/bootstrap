@@ -358,6 +358,20 @@
   border-bottom: 1px solid $bottom;
 }
 
+// Alerts
+// -------------------------
+@mixin alert-variant($background, $border, $text-color) {
+  background-color: $background;
+  border-color: $border;
+  color: $text-color;
+  hr {
+    border-top-color: darken($border, 5%);
+  }
+  .alert-link {
+    color: darken($text-color, 10%);
+  }
+}
+
 // Button psuedo states
 // -------------------------
 // Easily pump out default styles, as well as :hover, :focus, :active,
@@ -389,6 +403,18 @@
   }
 }
 
+// Labels
+// -------------------------
+@mixin label-variant($color) {
+  background-color: $color;
+  &[href] {
+    &:hover,
+    &:focus {
+      background-color: darken($color, 10%);
+    }
+  }
+}
+
 // Navbar vertical align
 // -------------------------
 // Vertically center elements in the navbar.
@@ -396,6 +422,15 @@
 @mixin navbar-vertical-align($element-height) {
   margin-top: (($navbar-height - $element-height) / 2);
   margin-bottom: (($navbar-height - $element-height) / 2);
+}
+
+// Progress bars
+// -------------------------
+@mixin progress-bar-variant($color) {
+  background-color: $color;
+  .progress-striped & {
+    @include gradient-striped($color);
+  }
 }
 
 // Responsive utilities

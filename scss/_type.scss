@@ -167,15 +167,6 @@ dd {
 // MISC
 // ----
 
-// Horizontal rules
-hr {
-  margin: $line-height-computed 0;
-  border: 0;
-  border-top: 1px solid $hr-border;
-  border-bottom: 1px solid #fff;
-  border-bottom: 1px solid rgba(255,255,255,.5);
-}
-
 // Abbreviations and acronyms
 abbr[title],
 // Added data-* attribute to help out our tooltip plugin, per https://github.com/twitter/bootstrap/issues/5257

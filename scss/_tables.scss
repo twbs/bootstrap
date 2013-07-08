@@ -20,7 +20,8 @@ th {
   margin-bottom: $line-height-computed;
   // Cells
   thead,
-  tbody {
+  tbody,
+  tfoot {
     > tr {
       > th,
       > td {
@@ -63,7 +64,8 @@ th {
 
 .table-condensed {
   thead,
-  tbody {
+  tbody,
+  tfoot {
     > tr {
       > th,
       > td {
@@ -85,7 +87,8 @@ th {
   border-radius: $border-radius-base;
 
   > thead,
-  > tbody {
+  > tbody,
+  > tfoot {
     > tr {
       > th,
       > td {
@@ -200,7 +203,8 @@ table col[class^="col-"] {
   display: table-column;
 }
 table {
-  td, th {
+  td,
+  th {
     &[class^="col-"] {
       float: none;
       display: table-cell;

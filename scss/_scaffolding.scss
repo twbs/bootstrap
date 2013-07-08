@@ -85,3 +85,15 @@ img {
 .img-circle {
   border-radius: 500px; // crank the border-radius so it works with most reasonably sized images
 }
+
+
+// Horizontal rules
+// -------------------------
+
+hr {
+  margin-top:    $line-height-computed;
+  margin-bottom: $line-height-computed;
+  border: 0;
+  border-top: 1px solid $hr-border;
+}
+

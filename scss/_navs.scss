@@ -31,13 +31,14 @@
     // Disabled state sets text to gray and nukes hover/tab effects
     &.disabled > a {
       color: $gray-light;
-    }
-    &.disabled > a:hover,
-    &.disabled > a:focus {
-      color: $gray-light;
-      text-decoration: none;
-      background-color: transparent;
-      cursor: default;
+
+      &:hover,
+      &:focus {
+        color: $gray-light;
+        text-decoration: none;
+        background-color: transparent;
+        cursor: default;
+      }
     }
 
     // Space the headers out when they follow another list item (link)
@@ -47,15 +48,17 @@
   }
 
   // Open dropdowns
-  &.open > a,
-  &.open > a:hover,
-  &.open > a:focus {
-    color: #fff;
-    background-color: $link-color;
-    border-color: $link-color;
-    .caret {
-      border-top-color: #fff;
-      border-bottom-color: #fff;
+  &.open > a {
+    &,
+    &:hover,
+    &:focus {
+      color: #fff;
+      background-color: $link-color;
+      border-color: $link-color;
+      .caret {
+        border-top-color: #fff;
+        border-bottom-color: #fff;
+      }
     }
   }
 
@@ -130,14 +133,16 @@
     }
 
     // Active state, and it's :hover to override normal :hover
-    &.active > a,
-    &.active > a:hover,
-    &.active > a:focus {
-      color: $gray;
-      background-color: $body-bg;
-      border: 1px solid #ddd;
-      border-bottom-color: transparent;
-      cursor: default;
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: $gray;
+        background-color: $body-bg;
+        border: 1px solid #ddd;
+        border-bottom-color: transparent;
+        cursor: default;
+      }
     }
   }
   // pulling this in mainly for less shorthand
@@ -165,11 +170,13 @@
     }
 
     // Active state
-    &.active > a,
-    &.active > a:hover,
-    &.active > a:focus {
-      color: #fff;
-      background-color: $component-active-bg;
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: #fff;
+        background-color: $component-active-bg;
+      }
     }
   }
 }
@@ -220,9 +227,11 @@
 .pill-content > .pill-pane {
   display: none;
 }
-.tab-content > .active,
-.pill-content > .active {
-  display: block;
+.tab-content,
+.pill-content {
+  > .active {
+    display: block;
+  }
 }
 
 
