@@ -427,6 +427,15 @@
   margin-bottom: ((@navbar-height - @element-height) / 2);
 }
 
+// Progress bars
+// -------------------------
+.progress-bar-variant(@color) {
+  background-color: @color;
+  .progress-striped & {
+    #gradient > .striped(@color);
+  }
+}
+
 // Responsive utilities
 // -------------------------
 // More easily include all the states for responsive-utilities.less.
