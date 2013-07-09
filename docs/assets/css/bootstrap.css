@@ -524,9 +524,9 @@ ol {
 }
 
 ul ul,
+ol ul,
 ul ol,
-ol ol,
-ol ul {
+ol ol {
   margin-bottom: 0;
 }
 
