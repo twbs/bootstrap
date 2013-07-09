@@ -42,9 +42,42 @@
   }
   .panel-footer {
     border-bottom: 1px solid @panelBorderColor;
+    background-color: darken(@white, 4%);
     padding: 8px 15px;
     p {
       margin: 0;
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// TODO: timeline
+// ----------------------------------------------------------------------------
+
+@timelineWidth: 20px;
+@timelineColor: @grayLighter;
+
+.timeline {
+  //position: relative;
+  margin: 0 @timelineWidth;
+  width: @timelineWidth / 2;
+  height: 0;
+  background-color: @timelineColor;
+  padding-bottom: 100000px;
+  margin-bottom: -100000px;
+
+  .circle {
+    position: absolute;
+    left: -(@timelineWidth / 4);
+    top: 30px - (@timelineWidth / 2);
+    background-color: darken(@timelineColor, 10%);
+    display: block;
+    width: @timelineWidth;
+    height: @timelineWidth;
+    border-radius: @timelineWidth / 2;
+    cursor: pointer;
+    &:hover {
+      background-color: darken(@timelineColor, 15%);
     }
   }
 }
