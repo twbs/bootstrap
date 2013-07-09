@@ -1,0 +1,205 @@
+//
+// Mirror mixins
+// --------------------------------------------------
+
+
+// Base
+// ----------------------
+
+// Margin
+.margin-left(@dist) when (@dir = left){
+  margin-left: @dist;
+}
+.margin-left(@dist) when (@dir = right){
+  margin-right: @dist;
+}
+
+.margin-right(@dist) when (@dir = left){
+  margin-right: @dist;
+}
+.margin-right(@dist) when (@dir = right){
+  margin-left: @dist;
+}
+
+// Padding
+.padding-left(@dist) when (@dir = left){
+  padding-left: @dist;
+}
+.padding-left(@dist) when (@dir = right){
+  padding-right: @dist;
+}
+
+.padding-right(@dist) when (@dir = left){
+  padding-right: @dist;
+}
+.padding-right(@dist) when (@dir = right){
+  padding-left: @dist;
+}
+
+// Border
+.border-left(@val) when (@dir = left){
+  border-left: @val;
+}
+.border-left(@val) when (@dir = right){
+  border-right: @val;
+}
+
+.border-right(@val) when (@dir = left){
+  border-right: @val;
+}
+.border-right(@val) when (@dir = right){
+  border-left: @val;
+}
+
+.border-left-width(@dist) when (@dir = left){
+  border-left-width: @dist;
+}
+.border-left-width(@dist) when (@dir = right){
+  border-right-width: @dist;
+}
+.border-right-width(@dist) when (@dir = left){
+  border-right-width: @dist;
+}
+.border-right-width(@dist) when (@dir = right){
+  border-left-width: @dist;
+}
+
+// Float
+.float(@pos) when (@dir = left){
+  float: @pos;
+}
+.float(left) when (@dir = right){
+  float: right;
+}
+.float(right) when (@dir = right){
+  float: left;
+}
+
+// Clear
+.clear(@pos) when (@dir = left){
+  clear: @pos;
+}
+.clear(left) when (@dir = right){
+  clear: right;
+}
+.clear(right) when (@dir = right){
+  clear: left;
+}
+
+// Text align
+.text-align(@pos) when (@dir = left){
+  text-align: @pos;
+}
+.text-align(left) when (@dir = right){
+  text-align: right;
+}
+.text-align(right) when (@dir = right){
+  text-align: left;
+}
+
+// Position
+.left(@dist) when (@dir = left){
+  left: @dist;
+}
+.left(@dist) when (@dir = right){
+  right: @dist;
+}
+.right(@dist) when (@dir = left){
+  right: @dist;
+}
+.right(@dist) when (@dir = right){
+  left: @dist;
+}
+
+
+
+// Quotes
+.quotes() when (@dir = right) {
+  quotes: "\201D" "\201C" "\2019" "\2018";
+}
+
+.quotes() when (@dir = left) {
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+
+// CSS3 PROPERTIES
+// --------------------------------------------------
+
+// Single side border-radius
+.border-right-radius(@radius) when (@dir = right) {
+  border-bottom-left-radius: @radius;
+     border-top-left-radius: @radius;
+}
+
+.border-left-radius(@radius)  when (@dir = right) {
+  border-bottom-right-radius: @radius;
+     border-top-right-radius: @radius;
+}
+
+// Corner border-radius
+// Top-first
+.border-top-left-radius(@radius) when (@dir = left) {
+  border-top-left-radius: @radius;
+}
+.border-top-left-radius(@radius) when (@dir = right) {
+  border-top-right-radius: @radius;
+}
+// Top-last
+.border-top-right-radius(@radius) when (@dir = left) {
+  border-top-right-radius: @radius;
+}
+.border-top-right-radius(@radius) when (@dir = right) {
+  border-top-left-radius: @radius;
+}
+// Bottom-first
+.border-bottom-left-radius(@radius) when (@dir = left) {
+  border-bottom-left-radius: @radius;
+}
+.border-bottom-left-radius(@radius) when (@dir = right) {
+  border-bottom-right-radius: @radius;
+}
+// Bottom-last
+.border-bottom-right-radius(@radius) when (@dir = left) {
+  border-bottom-right-radius: @radius;
+}
+.border-bottom-right-radius(@radius) when (@dir = right) {
+  border-bottom-left-radius: @radius;
+}
+
+
+// GRADIENTS
+// --------------------------------------------------
+
+#gradient {
+
+  // Horizontal gradient, from right to left
+  .horizontal(@start-color: #555; @start-percent: 0%; @end-color: #333; @end-percent: 100%) when (@dir = right) {
+    background-color: @end-color;
+    background-image: -webkit-gradient(linear, @end-percent top, @start-percent top, from(@start-color), to(@end-color)); // Safari 4+, Chrome 2+
+    background-image: -webkit-linear-gradient(right, color-stop(@start-color @start-percent), color-stop(@end-color @end-percent)); // Safari 5.1+, Chrome 10+
+    background-image: -moz-linear-gradient(right, @start-color @start-percent, @end-color @end-percent); // FF 3.6+
+    background-image:  linear-gradient(to left, @start-color @start-percent, @end-color @end-percent); // Standard, IE10
+    background-repeat: repeat-x;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@end-color),argb(@start-color))); // IE9 and down
+  }
+  
+  .horizontal-three-colors(@start-color: #00b3ee, @mid-color: #7a43b6, @color-stop: 50%, @end-color: #c3325f) when (@dir = right) {
+    @rcolor-stop: 100% - @color-stop;
+    background-color: mix(@mid-color, @end-color, 80%);
+    background-image: -webkit-gradient(right, linear, 0 100%, 0 0, from(@start-color), color-stop(@rcolor-stop, @mid-color), to(@end-color));
+    background-image: -webkit-linear-gradient(right, @start-color, @mid-color @rcolor-stop, @end-color);
+    background-image: -moz-linear-gradient(right, @start-color, @mid-color @rcolor-stop, @end-color);
+    background-image: linear-gradient(to left, @start-color, @mid-color @rcolor-stop, @end-color);
+    background-repeat: no-repeat;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@end-color),argb(@start-color))); // IE9 and down, gets no color-stop at all for proper fallback
+  }
+
+  .striped(@color: #555, @angle: -45deg) when (@dir = right) {
+    background-color: @color;
+    background-image: -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
+    background-image: -webkit-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  }
+}

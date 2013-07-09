@@ -180,7 +180,7 @@ textarea {
   min-height: @line-height-computed; // clear the floating input if there is no label text
   margin-top: 10px;
   margin-bottom: 10px;
-  padding-left: 20px;
+  .padding-left(20px);
   vertical-align: middle;
   label {
     display: inline;
@@ -193,8 +193,8 @@ textarea {
 .radio-inline input[type="radio"],
 .checkbox input[type="checkbox"],
 .checkbox-inline input[type="checkbox"] {
-  float: left;
-  margin-left: -20px;
+  .float(left);
+  .margin-left(-20px);
 }
 .radio + .radio,
 .checkbox + .checkbox {
@@ -214,7 +214,7 @@ textarea {
 .checkbox-inline {
   display: inline-block;
 //  padding-top: 5px;
-  padding-left: 20px;
+  .padding-left(20px);
   margin-bottom: 0;
   vertical-align: middle;
   font-weight: normal;
@@ -223,7 +223,7 @@ textarea {
 .radio-inline + .radio-inline,
 .checkbox-inline + .checkbox-inline {
   margin-top: 0;
-  margin-left: 10px; // space out consecutive inline controls
+  .margin-left(10px); // space out consecutive inline controls
 }
 
 
@@ -371,7 +371,7 @@ input[type="color"] {
   .border-right-radius(0);
 }
 .input-group-addon:first-child {
-  border-right: 0;
+  .border-right(0);
 }
 .input-group input:last-child,
 .input-group-addon:last-child,
@@ -381,7 +381,7 @@ input[type="color"] {
   .border-left-radius(0);
 }
 .input-group-addon:last-child {
-  border-left: 0;
+  .border-left(0);
 }
 
 // Button input groups
@@ -392,9 +392,9 @@ input[type="color"] {
 }
 .input-group-btn > .btn {
   position: relative;
-  float: left; // Collapse white-space
+  .float(left); // Collapse white-space
   + .btn {
-    margin-left: -1px;
+    .margin-left(-1px);
   }
   // Bring the "active" button to the front
   &:hover,
@@ -439,6 +439,6 @@ input[type="color"] {
 // Only right align form labels here when the columns stop stacking
 @media (min-width: 768px) {
   .form-horizontal .control-label {
-    text-align: right;
+    .text-align(right);
   }
 }

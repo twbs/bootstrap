@@ -1,5 +1,7 @@
 BOOTSTRAP ?= ./docs/assets/css/bootstrap.css
+BOOTSTRAP_RTL ?= ./docs/assets/css/bootstrap.rtl.css
 BOOTSTRAP_LESS ?= ./less/bootstrap.less
+BOOTSTRAP_RTL_LESS ?= ./less/rtl.less
 DATE=$(shell date +%I:%M%p)
 CHECK=\033[32m✔ Done\033[39m
 HR=\033[37m--------------------------------------------------\033[39m
@@ -20,6 +22,7 @@ build:
 	@echo "             ${CHECK}"
 	@printf "Compiling LESS with Recess..."
 	@recess --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
+	@recess --compile ${BOOTSTRAP_RTL_LESS} > ${BOOTSTRAP_RTL}
 	@echo "               ${CHECK}"
 	@printf "Prepping documentation assets..."
 	@cp js/tests/vendor/jquery.js docs/assets/js/
@@ -85,7 +88,9 @@ bootstrap-css: bootstrap/css/*.css
 bootstrap/css/*.css: less/*.less
 	mkdir -p bootstrap/css
 	recess --compile ${BOOTSTRAP_LESS} > bootstrap/css/bootstrap.css
+	recess --compile ${BOOTSTRAP_RTL_LESS} > bootstrap/css/bootstrap.rtl.css
 	recess --compress ${BOOTSTRAP_LESS} > bootstrap/css/bootstrap.min.css
+	recess --compress ${BOOTSTRAP_RTL_LESS} > bootstrap/css/bootstrap.rtl.min.css
 
 #
 # WATCH LESS FILES

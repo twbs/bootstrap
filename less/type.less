@@ -147,15 +147,15 @@ dd {
 // Horizontal layout (like forms)
 .dl-horizontal {
   dt {
-    float: left;
+    .float(left);
     width: (@component-offset-horizontal - 20);
-    clear: left;
-    text-align: right;
+    .clear(left);
+    .text-align(right);
     .text-overflow();
   }
   dd {
     .clearfix(); // Clear the floated `dt` if an empty `dd` is present
-    margin-left: @component-offset-horizontal;
+    .margin-left(@component-offset-horizontal);
   }
 }
 
@@ -178,7 +178,7 @@ abbr.initialism {
 blockquote {
   padding: (@line-height-computed / 2) @line-height-computed;
   margin: 0 0 @line-height-computed;
-  border-left: 5px solid @gray-lighter;
+  .border-left(5px solid @gray-lighter);
   p {
     font-size: (@font-size-base * 1.25);
     font-weight: 300;
@@ -197,15 +197,15 @@ blockquote {
   }
 
   // Float right with text-align: right
-  &.pull-right {
-    float: right;
-    padding-right: 15px;
-    padding-left: 0;
-    border-right: 5px solid @gray-lighter;
-    border-left: 0;
+  &.pull-@{opdir} {
+    .float(right);
+    .padding-right(15px);
+    .padding-left(0);
+    .border-right(5px solid @gray-lighter);
+    .border-left(0);
     p,
     small {
-      text-align: right;
+      .text-align(right);
     }
     small {
       &:before {

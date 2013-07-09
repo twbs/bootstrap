@@ -9,7 +9,7 @@
   display: inline-block;
   width: 0;
   height: 0;
-  margin-left: 2px;
+  .margin-left(2px);
   vertical-align: middle;
   border-top:   4px solid #000;
   border-right: 4px solid transparent;
@@ -22,10 +22,10 @@
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 0;
+  .left(0);
   z-index: @zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
-  float: left;
+  .float(left);
   min-width: 160px;
   padding: 5px 0;
   margin: 2px 0 0; // override default ul
@@ -38,7 +38,7 @@
   .background-clip(padding-box);
 
   // Aligns the dropdown menu to right
-  &.pull-right {
+  &.pull-@{opdir} {
     right: 0;
     left: auto;
   }
@@ -134,9 +134,9 @@
 
 // Right aligned dropdowns
 // ---------------------------
-.pull-right > .dropdown-menu {
-  right: 0;
-  left: auto;
+.pull-@{opdir} > .dropdown-menu {
+  .right(0);
+  .left(auto);
 }
 
 // Allow for dropdowns to go bottom up (aka, dropup-menu)

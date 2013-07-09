@@ -100,22 +100,22 @@
 .modal-footer {
   margin-top: 15px;
   padding: (@modal-inner-padding - 1) @modal-inner-padding @modal-inner-padding;
-  text-align: right; // right align buttons
+  .text-align(right); // right align buttons
   border-top: 1px solid #e5e5e5;
   .clearfix(); // clear it in case folks use .pull-* classes on buttons
 
   // Properly space out buttons
   .btn + .btn {
-    margin-left: 5px;
+    .margin-left(5px);
     margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
   }
   // but override that for button groups
   .btn-group .btn + .btn {
-    margin-left: -1px;
+    .margin-left(-1px);
   }
   // and override it for block buttons as well
   .btn-block + .btn-block {
-    margin-left: 0;
+    .margin-left(0);
   }
 }
 
@@ -123,10 +123,10 @@
 @media screen and (min-width: @screen-tablet) {
 
   .modal-dialog {
-    left: 50%;
-    right: auto;
+    .left(50%);
+    .right(auto);
     width: 560px;
-    margin-left: -280px;
+    .margin-left(-280px);
     padding-top: 30px;
     padding-bottom: 30px;
   }
