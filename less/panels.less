@@ -21,8 +21,7 @@
   font-weight: 500;
   background-color: @panel-heading-bg;
   border-bottom: 1px solid @panel-border;
-  border-top-left-radius:  (@panel-border-radius - 1);
-  border-top-right-radius: (@panel-border-radius - 1);
+  .border-top-radius(@panel-border-radius - 1);
 }
 
 // Optional footer (stays gray in every modifier class)
@@ -31,8 +30,7 @@
   padding: 10px 15px;
   background-color: @panel-footer-bg;
   border-top: 1px solid @panel-border;
-  border-bottom-left-radius:  (@panel-border-radius - 1);
-  border-bottom-right-radius: (@panel-border-radius - 1);
+  .border-bottom-radius(@panel-border-radius - 1);
 }
 
 // Contextual variations

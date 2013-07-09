@@ -1,7 +1,7 @@
 BOOTSTRAP ?= ./docs/assets/css/bootstrap.css
 BOOTSTRAP_RTL ?= ./docs/assets/css/bootstrap.rtl.css
 BOOTSTRAP_LESS ?= ./less/bootstrap.less
-BOOTSTRAP_RTL_LESS ?= ./less/rtl/bootstrap.less
+BOOTSTRAP_RTL_LESS ?= ./less/rtl.less
 DATE=$(shell date +%I:%M%p)
 CHECK=\033[32m✔ Done\033[39m
 HR=\033[37m--------------------------------------------------\033[39m

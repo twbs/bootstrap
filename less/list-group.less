@@ -8,7 +8,7 @@
 .list-group {
   // No need to set list-style: none; since .list-group-item is block level
   margin-bottom: 20px;
-  padding-left: 0; // reset padding because ul and ol
+  .padding-left(0); // reset padding because ul and ol
   background-color: @list-group-bg;
 }
 
@@ -18,7 +18,10 @@
 .list-group-item {
   position: relative;
   display: block;
-  padding: 10px 30px 10px 15px;
+  //padding: 10px 30px 10px 15px; // TODO: create mirror-mixin for this
+  padding: 10px; // Top & bottom
+  .padding-right(30px);
+  .padding-left(15px);
   // Place the border on the list items and negative margin up for better styling
   margin-bottom: -1px;
   border: 1px solid @list-group-border;
@@ -34,8 +37,8 @@
 
   // Align badges within list items
   > .badge {
-    float: right;
-    margin-right: -15px;
+    .float(right);
+    .margin-right(-15px);
   }
 }
 

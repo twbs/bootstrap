@@ -55,7 +55,7 @@
 
   // Right aligned contents
   // Make them full width first so that they align properly on mobile
-  &.pull-right {
+  &.pull-@{opdir} {
     width: 100%;
   }
 }
@@ -118,7 +118,7 @@
 .navbar-toggle {
   position: absolute;
   top: 10px;
-  right: 10px;
+  .right(10px);
   padding: 8px 12px;
   background-color: transparent;
   border: 1px solid #ddd;
@@ -153,13 +153,13 @@
 // Menu position and menu carets
 .navbar-nav > li > .dropdown-menu {
   margin-top: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  .border-top-radius(0);
+  .border-top-radius(0);
 }
 // Menu position and menu caret support for dropups via extra dropup class
 .navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  .border-bottom-radius(0);
+  .border-bottom-radius(0);
 }
 
 // Dropdown menu items and carets
@@ -193,8 +193,8 @@
 // Right aligned menus need alt position
 .navbar-nav.pull-right > li > .dropdown-menu,
 .navbar-nav > li > .dropdown-menu.pull-right {
-  left: auto;
-  right: 0;
+  .left(auto);
+  .right(0);
 }
 
 
@@ -297,25 +297,25 @@
 @media screen and (min-width: @grid-float-breakpoint) {
 
   .navbar-brand {
-    float: left;
-    margin-left: -(@navbar-padding);
-    margin-right: 5px;
+    .float(left);
+    .margin-left(-(@navbar-padding));
+    .margin-right(5px);
   }
   .navbar-nav {
-    float: left;
+    .float(left);
     // undo margin to make nav extend full height of navbar
     margin-top: 0;
     margin-bottom: 0;
 
     > li {
-      float: left;
+      .float(left);
       > a {
         border-radius: 0;
       }
     }
 
     &.pull-right {
-      float: right;
+      .float(right);
       width: auto;
     }
   }

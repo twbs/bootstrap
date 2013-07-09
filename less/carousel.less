@@ -16,7 +16,7 @@
   > .item {
     display: none;
     position: relative;
-    .transition(.6s ease-in-out left);
+    .transition(.6s ease-in-out @dir);
 
     // Account for jankitude on images
     > img,
@@ -31,7 +31,7 @@
   > .prev { display: block; }
 
   > .active {
-    left: 0;
+    .left(0);
   }
 
   > .next,
@@ -42,21 +42,21 @@
   }
 
   > .next {
-    left: 100%;
+    .left(100%);
   }
   > .prev {
-    left: -100%;
+    .left(-100%);
   }
   > .next.left,
   > .prev.right {
-    left: 0;
+    .left(0);
   }
 
   > .active.left {
-    left: -100%;
+    .left(-100%);
   }
   > .active.right {
-    left: 100%;
+    .left(100%);
   }
 
 }
@@ -67,7 +67,7 @@
 .carousel-control {
   position: absolute;
   top: 0;
-  left: 0;
+  .left(0);
   bottom: 0;
   width: 15%;
   .opacity(.5);
@@ -84,8 +84,8 @@
     background-color: transparent;
   }
   &.right {
-    left: auto;
-    right: 0;
+    .left(auto);
+    .right(0);
     #gradient > .horizontal(@start-color: rgba(0,0,0,.0001); @end-color: rgba(0,0,0,.5));
     background-color: transparent;
   }
@@ -102,13 +102,13 @@
   .glyphicon {
     position: absolute;
     top: 50%;
-    left: 50%;
+    .left(50%);
     z-index: 5;
     display: inline-block;
     width:  20px;
     height: 20px;
     margin-top: -10px;
-    margin-left: -10px;
+    .margin-left(-10px);
   }
 }
 
@@ -117,11 +117,11 @@
 .carousel-indicators {
   position: absolute;
   bottom: 20px;
-  left: 50%;
+  .left(50%);
   z-index: 15;
   width: 100px;
-  margin-left: -50px;
-  padding-left: 0;
+  .margin-left(-50px);
+  .padding-left(0);
   list-style: none;
   text-align: center;
 
@@ -171,7 +171,7 @@
     width: 30px;
     height: 30px;
     margin-top: -15px;
-    margin-left: -15px;
+    .margin-left(-15px);
     font-size: 30px;
   }
 

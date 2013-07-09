@@ -88,7 +88,7 @@
   border-top-right-radius: @radius;
    border-top-left-radius: @radius;
 }
-.border-right-radius(@radius) {
+.border-right-radius(@radius) when (@dir = left) {
   border-bottom-right-radius: @radius;
      border-top-right-radius: @radius;
 }
@@ -96,7 +96,7 @@
   border-bottom-right-radius: @radius;
    border-bottom-left-radius: @radius;
 }
-.border-left-radius(@radius) {
+.border-left-radius(@radius) when (@dir = left) {
   border-bottom-left-radius: @radius;
      border-top-left-radius: @radius;
 }
@@ -250,7 +250,7 @@
   //
   // Creates two color stops, start and end, by specifying a color and position for each color stop.
   // Color stops are not available in IE9 and below.
-  .horizontal(@start-color: #555; @start-percent: 0%; @end-color: #333; @end-percent: 100%) {
+  .horizontal(@start-color: #555; @start-percent: 0%; @end-color: #333; @end-percent: 100%) when (@dir = left) {
     background-color: @end-color;
     background-image: -webkit-gradient(linear, @start-percent top, @end-percent top, from(@start-color), to(@end-color)); // Safari 4+, Chrome 2+
     background-image: -webkit-linear-gradient(left, color-stop(@start-color @start-percent), color-stop(@end-color @end-percent)); // Safari 5.1+, Chrome 10+
@@ -281,7 +281,7 @@
     background-image: -moz-linear-gradient(@deg, @start-color, @end-color); // FF 3.6+
     background-image: linear-gradient(@deg, @start-color, @end-color); // Standard, IE10
   }
-  .horizontal-three-colors(@start-color: #00b3ee, @mid-color: #7a43b6, @color-stop: 50%, @end-color: #c3325f) {
+  .horizontal-three-colors(@start-color: #00b3ee, @mid-color: #7a43b6, @color-stop: 50%, @end-color: #c3325f) when (@dir = left) {
     background-color: mix(@mid-color, @end-color, 80%);
     background-image: -webkit-gradient(left, linear, 0 0, 0 100%, from(@start-color), color-stop(@color-stop, @mid-color), to(@end-color));
     background-image: -webkit-linear-gradient(left, @start-color, @mid-color @color-stop, @end-color);
@@ -308,7 +308,7 @@
     background-image: radial-gradient(circle, @inner-color, @outer-color);
     background-repeat: no-repeat;
   }
-  .striped(@color: #555, @angle: 45deg) {
+  .striped(@color: #555, @angle: 45deg) when (@dir = left) {
     background-color: @color;
     background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
     background-image: -webkit-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
@@ -492,24 +492,24 @@
 
   // Calculate width based on number of columns available
   @media (min-width: @grid-float-breakpoint) {
-    float: left;
+    .float(left);
     width: percentage((@columns / @grid-columns));
   }
 }
 // Generate the column offsets
 .make-column-offset(@columns) {
   @media (min-width: @grid-float-breakpoint) {
-    margin-left: percentage((@columns / @grid-columns));
+    .margin-left(percentage((@columns / @grid-columns)));
   }
 }
 .make-column-push(@columns) {
   @media (min-width: @grid-float-breakpoint) {
-    left: percentage((@columns / @grid-columns));
+    .left(percentage((@columns / @grid-columns)));
   }
 }
 .make-column-pull(@columns) {
   @media (min-width: @grid-float-breakpoint) {
-    right: percentage((@columns / @grid-columns));
+    .right(percentage((@columns / @grid-columns)));
   }
 }
 
@@ -527,7 +527,7 @@
   }
   // Set the border and box shadow on specific inputs to match
   .input-with-feedback {
-    padding-right: 32px; // to account for the feedback icon
+    .padding-right(32px); // to account for the feedback icon
     border-color: @border-color;
     .box-shadow(inset 0 1px 1px rgba(0,0,0,.075)); // Redeclare so transitions work
     &:focus {

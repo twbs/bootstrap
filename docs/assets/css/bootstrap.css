@@ -2317,7 +2317,9 @@ input[type="button"].btn-block {
 .list-group-item {
   position: relative;
   display: block;
-  padding: 10px 30px 10px 15px;
+  padding: 10px;
+  padding-right: 30px;
+  padding-left: 15px;
   margin-bottom: -1px;
   border: 1px solid #dddddd;
 }
