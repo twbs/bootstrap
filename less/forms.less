@@ -392,7 +392,6 @@ input[type="color"] {
 }
 .input-group-btn > .btn {
   position: relative;
-  float: left; // Collapse white-space
   + .btn {
     margin-left: -1px;
   }
@@ -403,6 +402,9 @@ input[type="color"] {
   }
 }
 
+.input-group-btn > .btn:first-child {
+  margin-right: -3px; // collapse whitespace
+}
 
 // Inline forms
 // --------------------------------------------------
