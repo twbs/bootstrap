@@ -6,8 +6,8 @@
 .navbar {
   position: relative;
   margin-bottom: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: @navbar-padding;
+  padding-right: @navbar-padding;
   background-color: @navbar-bg;
   border-radius: @border-radius-base;
 
@@ -22,29 +22,41 @@
   // Space out from .navbar .brand and .btn-navbar when stacked in mobile views
   // and outdent nav links so text lines up with logo.
   margin-top: 10px;
+  margin-bottom: 15px;
 
   > li > a {
-    padding-top: ((@navbar-height - @line-height-base) / 2);
-    padding-bottom: ((@navbar-height - @line-height-base) / 2);
+    padding-top: ((@navbar-height - @line-height-computed) / 2);
+    padding-bottom: ((@navbar-height - @line-height-computed) / 2);
     color: @navbar-link-color;
     line-height: 20px;
+    border-radius: @border-radius-base;
+    &:hover,
+    &:focus {
+      color: @navbar-link-hover-color;
+      background-color: @navbar-link-hover-bg;
+    }
   }
-  > li > a:hover,
-  > li > a:focus {
-    color: @navbar-link-hover-color;
-    background-color: @navbar-link-hover-bg;
+  > .active > a {
+    &,
+    &:hover,
+    &:focus {
+      color: @navbar-link-active-color;
+      background-color: @navbar-link-active-bg;
+    }
   }
-  > .active > a,
-  > .active > a:hover,
-  > .active > a:focus {
-    color: @navbar-link-active-color;
-    background-color: @navbar-link-active-bg;
+  > .disabled > a {
+    &,
+    &:hover,
+    &:focus {
+      color: @navbar-link-disabled-color;
+      background-color: @navbar-link-disabled-bg;
+    }
   }
-  > .disabled > a,
-  > .disabled > a:hover,
-  > .disabled > a:focus {
-    color: @navbar-link-disabled-color;
-    background-color: @navbar-link-disabled-bg;
+
+  // Right aligned contents
+  // Make them full width first so that they align properly on mobile
+  &.pull-right {
+    width: 100%;
   }
 }
 
@@ -88,10 +100,10 @@
   max-width: 200px;
   margin-left: auto;
   margin-right: auto;
-  padding: 15px;
+  padding: @navbar-padding;
   font-size: @font-size-large;
   font-weight: 500;
-  line-height: @line-height-base;
+  line-height: @line-height-computed;
   color: @navbar-brand-color;
   text-align: center;
   &:hover,
@@ -132,7 +144,8 @@
 
 // Navbar form
 .navbar-form {
-  .navbar-vertical-align(34px); // Vertically center in navbar
+  .form-inline();
+  .navbar-vertical-align(@input-height-base); // Vertically center in navbar
 }
 
 // Dropdown menus
@@ -152,28 +165,28 @@
 // Dropdown menu items and carets
 .navbar-nav {
   // Caret should match text color on hover
-  li.dropdown > a:hover .caret,
-  li.dropdown > a:focus .caret {
+  > .dropdown > a:hover .caret,
+  > .dropdown > a:focus .caret {
     border-top-color: @navbar-link-hover-color;
     border-bottom-color: @navbar-link-hover-color;
   }
 
   // Remove background color from open dropdown
-  li.dropdown.open > .dropdown-toggle,
-  li.dropdown.active > .dropdown-toggle,
-  li.dropdown.open.active > .dropdown-toggle {
-    background-color: @navbar-link-active-bg;
-    color: @navbar-link-active-color;
+  > .open > a {
+    &,
+    &:hover,
+    &:focus {
+      background-color: @navbar-link-active-bg;
+      color: @navbar-link-active-color;
+      .caret {
+        border-top-color: @navbar-link-active-color;
+        border-bottom-color: @navbar-link-active-color;
+      }
+    }
   }
-  li.dropdown > .dropdown-toggle .caret {
+  > .dropdown > a .caret {
     border-top-color: @navbar-link-color;
     border-bottom-color: @navbar-link-color;
-  }
-  li.dropdown.open > .dropdown-toggle .caret,
-  li.dropdown.active > .dropdown-toggle .caret,
-  li.dropdown.open.active > .dropdown-toggle .caret {
-    border-top-color: @navbar-link-active-color;
-    border-bottom-color: @navbar-link-active-color;
   }
 }
 
@@ -208,23 +221,28 @@
   .navbar-nav {
     > li > a {
       color: @navbar-inverse-link-color;
+
+      &:hover,
+      &:focus {
+        color: @navbar-inverse-link-hover-color;
+        background-color: @navbar-inverse-link-hover-bg;
+      }
     }
-    > li > a:hover,
-    > li > a:focus {
-      color: @navbar-inverse-link-hover-color;
-      background-color: @navbar-inverse-link-hover-bg;
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-inverse-link-active-color;
+        background-color: @navbar-inverse-link-active-bg;
+      }
     }
-    > .active > a,
-    > .active > a:hover,
-    > .active > a:focus {
-      color: @navbar-inverse-link-active-color;
-      background-color: @navbar-inverse-link-active-bg;
-    }
-    > .disabled > a,
-    > .disabled > a:hover,
-    > .disabled > a:focus {
-      color: @navbar-inverse-link-disabled-color;
-      background-color: @navbar-inverse-link-disabled-bg;
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-inverse-link-disabled-color;
+        background-color: @navbar-inverse-link-disabled-bg;
+      }
     }
   }
 
@@ -242,27 +260,32 @@
 
   // Dropdowns
   .navbar-nav {
-    li.dropdown.open > .dropdown-toggle,
-    li.dropdown.active > .dropdown-toggle,
-    li.dropdown.open.active > .dropdown-toggle {
-      background-color: @navbar-inverse-link-active-bg;
-      color: @navbar-inverse-link-active-color;
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: @navbar-inverse-link-active-bg;
+        color: @navbar-inverse-link-active-color;
+      }
     }
-    li.dropdown > a:hover .caret {
+    > .dropdown > a:hover .caret {
       border-top-color: @navbar-inverse-link-hover-color;
       border-bottom-color: @navbar-inverse-link-hover-color;
     }
-    li.dropdown > .dropdown-toggle .caret {
+    > .dropdown > a .caret {
       border-top-color: @navbar-inverse-link-color;
       border-bottom-color: @navbar-inverse-link-color;
     }
-    li.dropdown.open > .dropdown-toggle .caret,
-    li.dropdown.active > .dropdown-toggle .caret,
-    li.dropdown.open.active > .dropdown-toggle .caret {
-      border-top-color: @navbar-inverse-link-active-color;
-      border-bottom-color: @navbar-inverse-link-active-color;
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        .caret {
+          border-top-color: @navbar-inverse-link-active-color;
+          border-bottom-color: @navbar-inverse-link-active-color;
+        }
+      }
     }
-
   }
 }
 
@@ -271,23 +294,29 @@
 // Responsive navbar
 // --------------------------------------------------
 
-@media screen and (min-width: @screen-tablet) {
+@media screen and (min-width: @grid-float-breakpoint) {
 
   .navbar-brand {
     float: left;
-    margin-left: -5px;
+    margin-left: -(@navbar-padding);
     margin-right: 5px;
   }
-  .navbar .nav {
+  .navbar-nav {
     float: left;
-    margin-top: 0; // undo top margin to make nav extend full height of navbar
+    // undo margin to make nav extend full height of navbar
+    margin-top: 0;
+    margin-bottom: 0;
 
     > li {
       float: left;
+      > a {
+        border-radius: 0;
+      }
     }
 
     &.pull-right {
       float: right;
+      width: auto;
     }
   }
 
@@ -322,7 +351,7 @@
 // Add a class to make any element properly align itself vertically within the navbars.
 
 .navbar-text {
-
+  .navbar-vertical-align(@line-height-computed);
 }
 
 

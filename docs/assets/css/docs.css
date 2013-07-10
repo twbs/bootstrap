@@ -21,12 +21,18 @@ body {
 .bs-docs-nav {
   background-color: #b94a48;
 }
-.bs-docs-nav .navbar-brand,
+.bs-docs-nav .navbar-brand {
+  color: #fff;
+}
 .bs-docs-nav .navbar-nav > li > a {
+  color: #e6cac8;
+}
+.bs-docs-nav .navbar-nav > li > a:hover {
   color: #fff;
 }
 .bs-docs-nav .navbar-nav > .active > a,
 .bs-docs-nav .navbar-nav > .active > a:hover {
+  color: #fff;
   background-color: #993c3a;
 }
 .bs-docs-nav .navbar-toggle {
@@ -52,6 +58,9 @@ body {
   font-size: 50px;
   line-height: 1;
 }
+.bs-masthead .bs-social {
+  margin-top: 80px;
+}
 
 /* Download button */
 .bs-masthead .btn {
@@ -72,7 +81,9 @@ body {
 
 /* Textual links */
 .bs-masthead-links {
-  margin: 20px 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 0;
   list-style: none;
 }
 .bs-masthead-links li {
@@ -81,6 +92,47 @@ body {
 }
 .bs-masthead-links li + li {
   margin-left: 20px;
+}
+
+
+/* Customize and Download button
+-------------------------------------------------- */
+
+.bs-customizer {
+
+}
+.bs-customizer .toggle {
+  float: right;
+}
+.bs-customizer label {
+  margin-top: 10px;
+  font-weight: 500;
+  color: #555;
+}
+.bs-customizer h4 {
+  margin-top: 15px;
+}
+.bs-customizer input[type="text"] {
+  background-color: #fafafa;
+}
+
+
+.bs-customize-download {
+  text-align:center;
+}
+.bs-customize-download .btn {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 18px 24px;
+  font-size: 21px;
+  color: #b94a48;
+  background-color: #fff;
+  border-color: #b94a48;
+}
+.bs-customize-download .btn:hover,
+.bs-customize-download .btn:active {
+  color: #fff;
+  background-color: #b94a48;
 }
 
 
@@ -161,7 +213,7 @@ body {
 .bs-sidebar .nav .nav > li > a {
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 40px;
+  padding-left: 30px;
   font-size: 90%;
 }
 
@@ -195,14 +247,14 @@ body {
 .show-grid {
   margin-bottom: 15px;
 }
-.show-grid .col {
+.show-grid [class^="col-"] {
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #eee;
   border: 1px solid #ddd;
-}
-.show-grid .col:hover {
-  background-color: #ddd;
+  /* Todo: reconcile these */
+  background-color: rgba(185,74,72,.15);
+  border: 1px solid rgba(185,74,72,.2);
 }
 
 
@@ -252,12 +304,16 @@ body {
 .bs-example > select:last-child,
 .bs-example > textarea:last-child,
 .bs-example > .table:last-child,
+.bs-example > .navbar:last-child
 .bs-example > .jumbotron:last-child,
 .bs-example > .alert:last-child,
 .bs-example > .panel:last-child,
 .bs-example > .list-group:last-child,
 .bs-example > .well:last-child {
   margin-bottom: 0;
+}
+.bs-example > p > .close {
+  float: none;
 }
 
 /* Typography */
@@ -282,6 +338,22 @@ body {
 .bs-example-type h5,
 .bs-example-type h6 {
   margin: 0;
+}
+
+/* Forms */
+.bs-example.form-inline select,
+.bs-example.form-inline input[type="text"],
+.bs-example.form-inline input[type="password"] {
+  width: 180px;
+}
+.bs-example-control-sizing input[type="text"] + input[type="text"] {
+  margin-top: 10px;
+}
+.bs-example-form {
+  overflow: hidden;
+}
+.bs-example-form .input-group {
+  margin-bottom: 10px;
 }
 
 /* List groups */
@@ -407,43 +479,6 @@ body {
 
 
 
-/* Icons
--------------------------------------------------- */
-
-.the-icons {
-  padding-bottom: 1px;
-  margin-left: 0;
-  list-style: none;
-  margin-bottom: 20px;
-  overflow: hidden;
-}
-.the-icons li {
-  float: left;
-  width: 100px;
-  height: 110px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  font-size: 12px;
-  line-height: 1.25;
-  text-align: center;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-  margin: 0 -1px -1px 0;
-}
-.the-icons .glyphicon {
-  display: block;
-  margin: 5px auto;
-  vertical-align: middle;
-  margin-right: 3px;
-  font-size: 24px;
-}
-.the-icons li:hover {
-  background-color: rgba(255,0,0,.1);
-}
-
-
-
 /* Responsive docs
 -------------------------------------------------- */
 
@@ -455,6 +490,7 @@ body {
 
 /* Utility classes table
 ------------------------- */
+.bs-table th small,
 .responsive-utilities th small {
   display: block;
   font-weight: normal;
@@ -487,31 +523,25 @@ body {
   position: relative;
   float: left;
   width: 25%;
-  height: 43px;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 43px;
-  color: #999;
-  text-align: center;
-  border: 1px solid #ddd;
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
 }
 .responsive-utilities-test li + li {
   margin-left: 10px;
 }
 .responsive-utilities-test span {
-  position: absolute;
-  top:    -1px;
-  left:   -1px;
-  right:  -1px;
-  bottom: -1px;
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
+  padding: 15px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.1;
+  text-align: center;
+  border-radius: 4px;
 }
-.responsive-utilities-test span {
+.responsive-utilities-test.visible-on [class*="hidden"],
+.responsive-utilities-test.hidden-on [class*="visible"] {
+  color: #999;
+  border: 1px solid #ddd;
+}
+.responsive-utilities-test.visible-on [class*="visible"],
+.responsive-utilities-test.hidden-on [class*="hidden"] {
   color: #468847;
   background-color: #dff0d8;
   border: 1px solid #d6e9c6;
@@ -523,9 +553,10 @@ body {
 -------------------------------------------------- */
 
 .bs-footer {
-  padding-top: 30px;
+  padding-top: 40px;
   padding-bottom: 30px;
   margin-top: 100px;
+  text-align: center;
   border-top: 1px solid #e5e5e5;
 }
 .bs-footer p {
@@ -534,6 +565,7 @@ body {
 }
 .footer-links {
   margin: 10px 0;
+  padding-left: 0;
 }
 .footer-links li {
   display: inline;
@@ -545,12 +577,12 @@ body {
 
 /* Social proof buttons from GitHub & Twitter */
 .bs-social {
-  margin-top: 80px;
   margin-bottom: 20px;
 }
 .bs-social-buttons {
   display: inline-block;
-  margin: 0;
+  margin-bottom: 0;
+  padding-left: 0;
   list-style: none;
 }
 .bs-social-buttons li {
@@ -598,6 +630,7 @@ input.focused {
 }
 .highlight pre {
   padding: 0;
+  margin-top: 0;
   margin-bottom: 0;
   background-color: transparent;
   border: 0;
@@ -622,6 +655,10 @@ input.focused {
   margin-bottom: 5px;
 }
 
+/* Hide the top link initially */
+.bs-top {
+  display: none;
+}
 
 
 /* Responsive variations
@@ -640,15 +677,9 @@ input.focused {
 /* Tablets and up */
 @media screen and (min-width: 768px) {
 
-  /* Reaffix the fixed sidebar */
-  .bs-sidebar.affix {
-    position: fixed; /* Undo the static from mobile-first approach */
-    top: 50px;
-    width: 160px;
-  }
-
   /* Back to top link */
   .bs-top {
+    display: block; /* Unhide */
     float: left;
     padding: 7px 15px;
     font-weight: 500;
@@ -707,6 +738,8 @@ input.focused {
 
   /* Widen the fixed sidebar */
   .bs-sidebar.affix {
+    position: fixed; /* Undo the static from mobile-first approach */
+    top: 50px;
     width: 213px;
   }
 

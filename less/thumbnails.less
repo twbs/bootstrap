@@ -20,8 +20,9 @@
 .thumbnail {
   display: block;
 }
+.thumbnail > img,
 .img-thumbnail {
-  display: inline-block;
+  .img-responsive();
 }
 
 // Add a hover state for linked versions only
@@ -32,8 +33,6 @@ a.thumbnail:focus {
 
 // Images and captions
 .thumbnail > img {
-  display: block;
-  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
 }

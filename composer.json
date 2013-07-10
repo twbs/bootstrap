@@ -2,8 +2,19 @@
     "name": "twitter/bootstrap"
   , "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development."
   , "keywords": ["bootstrap", "css"]
-  , "homepage": "http://twitter.github.com/bootstrap/"
-  , "author": "Twitter Inc."
+  , "homepage": "http://getbootstrap.com"
+  , "authors": [
+      {
+        "name": "Mark Otto",
+        "email": "markdotto@gmail.com"
+      },
+      {
+        "name": "Jacob Thornton",
+        "email": "jacobthornton@gmail.com"
+      }
+    ]
+  , "support": {
+      "issues": "https://github.com/twitter/bootstrap/issues"
+    }
   , "license": "Apache-2.0"
-
 }

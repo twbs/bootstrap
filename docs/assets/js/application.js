@@ -9,7 +9,7 @@
     var $window = $(window)
 
     // Disable certain links in docs
-    $('section [href^=#]').click(function (e) {
+    $('[href=#]').click(function (e) {
       e.preventDefault()
     })
 
@@ -26,24 +26,6 @@
     setTimeout(function () {
       $('.bs-top').affix()
     }, 100)
-
-    // make code pretty
-    window.prettyPrint && prettyPrint()
-
-    // add-ons
-    $('.add-on :checkbox').on('click', function () {
-      var $this = $(this)
-        , method = $this.attr('checked') ? 'addClass' : 'removeClass'
-      $(this).parents('.add-on')[method]('active')
-    })
-
-    // add tipsies to grid for scaffolding
-    if ($('#grid-system').length) {
-      $('#grid-system').tooltip({
-          selector: '.show-grid > [class*="span"]'
-        , title: function () { return $(this).width() + 'px' }
-      })
-    }
 
     // tooltip demo
     $('.tooltip-demo').tooltip({
@@ -79,52 +61,51 @@
     $('.bs-docs-carousel-example').carousel()
 
     // javascript build logic
-    var inputsComponent = $("#components.download input")
-      , inputsPlugin = $("#plugins.download input")
-      , inputsVariables = $("#variables.download input")
+    var inputsComponent = $("#less input")
+      , inputsPlugin = $("#plugins input")
+      , inputsVariables = $("#less-variables input")
 
     // toggle all plugin checkboxes
-    $('#components.download .toggle-all').on('click', function (e) {
+    $('#less .toggle').on('click', function (e) {
       e.preventDefault()
-      inputsComponent.attr('checked', !inputsComponent.is(':checked'))
+      inputsComponent.prop('checked', !inputsComponent.is(':checked'))
     })
 
-    $('#plugins.download .toggle-all').on('click', function (e) {
+    $('#plugins .toggle').on('click', function (e) {
       e.preventDefault()
-      inputsPlugin.attr('checked', !inputsPlugin.is(':checked'))
+      inputsPlugin.prop('checked', !inputsPlugin.is(':checked'))
     })
 
-    $('#variables.download .toggle-all').on('click', function (e) {
+    $('#less-variables .toggle').on('click', function (e) {
       e.preventDefault()
       inputsVariables.val('')
     })
 
     // request built javascript
-    $('.download-btn .btn').on('click', function () {
+    $('.bs-customize-download .btn').on('click', function (e) {
+      e.preventDefault()
 
-      var css = $("#components.download input:checked")
+      var css = $("#less input:checked")
             .map(function () { return this.value })
             .toArray()
-        , js = $("#plugins.download input:checked")
+        , js = $("#plugins input:checked")
             .map(function () { return this.value })
             .toArray()
         , vars = {}
-        , img = ['glyphicons-halflings.png', 'glyphicons-halflings-white.png']
 
-    $("#variables.download input")
-      .each(function () {
-        $(this).val() && (vars[ $(this).prev().text() ] = $(this).val())
+      $("#less-variables input")
+        .each(function () {
+          $(this).val() && (vars[ $(this).prev().text() ] = $(this).val())
       })
 
       $.ajax({
         type: 'POST'
-      , url: /\?dev/.test(window.location) ? 'http://localhost:3000' : 'http://bootstrap.herokuapp.com'
+      , url: /localhost/.test(window.location) ? 'http://localhost:9001' : 'http://bootstrap.herokuapp.com'
       , dataType: 'jsonpi'
       , params: {
           js: js
         , css: css
         , vars: vars
-        , img: img
       }
       })
     })

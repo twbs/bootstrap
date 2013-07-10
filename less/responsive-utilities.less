@@ -29,49 +29,91 @@
 // Hide from screenreaders and browsers
 // Credit: HTML5 Boilerplate
 .hidden {
-  display: none;
-  visibility: hidden;
+  display: none !important;
+  visibility: hidden !important;
 }
 
 // Visibility utilities
 
 // For Phones
-.visible-phone     { display: inherit !important; }
-.visible-tablet    { display: none !important; }
-.visible-desktop   { display: none !important; }
+.visible-sm {
+  .responsive-visibility();
+}
+.visible-md {
+  .responsive-invisibility();
+}
+.visible-lg {
+  .responsive-invisibility();
+}
 
-.hidden-phone      { display: none !important; }
-.hidden-tablet     { display: inherit !important; }
-.hidden-desktop    { display: inherit !important; }
+.hidden-sm {
+  .responsive-invisibility();
+}
+.hidden-md {
+  .responsive-visibility();
+}
+.hidden-lg {
+  .responsive-visibility();
+}
 
 
 // Tablets & small desktops only
 @media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
-  .visible-phone    { display: none !important; }
-  .visible-tablet    { display: inherit !important; }
-  .visible-desktop   { display: none !important; }
+  .visible-sm {
+    .responsive-invisibility();
+  }
+  .visible-md {
+    .responsive-visibility();
+  }
+  .visible-lg {
+    .responsive-invisibility();
+  }
 
-  .hidden-phone      { display: inherit !important; }
-  .hidden-tablet     { display: none !important; }
-  .hidden-desktop    { display: inherit !important; }
+  .hidden-sm {
+    .responsive-visibility();
+  }
+  .hidden-md {
+    .responsive-invisibility();
+  }
+  .hidden-lg {
+    .responsive-visibility();
+  }
 }
 
 // For desktops
 @media (min-width: @screen-desktop) {
-  .visible-phone     { display: none !important; }
-  .visible-tablet    { display: none !important; }
-  .visible-desktop   { display: inherit !important; }
+  .visible-sm {
+    .responsive-invisibility();
+  }
+  .visible-md {
+    .responsive-invisibility();
+  }
+  .visible-lg {
+    .responsive-visibility();
+  }
 
-  .hidden-phone      { display: inherit !important; }
-  .hidden-tablet     { display: inherit !important; }
-  .hidden-desktop    { display: none !important; }
+  .hidden-sm {
+    .responsive-visibility();
+  }
+  .hidden-md {
+    .responsive-visibility();
+  }
+  .hidden-lg {
+    .responsive-invisibility();
+  }
 }
 
 // Print utilities
-.visible-print    { display: none !important; }
-.hidden-print     { }
+.visible-print {
+  .responsive-invisibility();
+}
+.hidden-print  { }
 
 @media print {
-  .visible-print  { display: inherit !important; }
-  .hidden-print   { display: none !important; }
+  .visible-print {
+    .responsive-visibility();
+  }
+  .hidden-print {
+    .responsive-invisibility();
+  }
 }
