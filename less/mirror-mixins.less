@@ -1,0 +1,46 @@
+//
+// Mirror mixins
+// --------------------------------------------------
+
+
+// Base CSS
+//------------
+
+// Margin
+.margin-left(@dist) when (@dir = ltr){
+  margin-left: @dist;
+}
+.margin-left(@dist) when (@dir = rtl){
+  margin-right: @dist;
+}
+.margin-right(@dist) when (@dir = ltr){
+  margin-right: @dist;
+}
+.margin-right(@dist) when (@dir = rtl){
+  margin-left: @dist;
+}
+
+// Padding
+.padding-left(@dist) when (@dir = ltr){
+  padding-left: @dist;
+}
+.padding-left(@dist) when (@dir = rtl){
+  padding-right: @dist;
+}
+.padding-right(@dist) when (@dir = ltr){
+  padding-right: @dist;
+}
+.padding-right(@dist) when (@dir = rtl){
+  padding-left: @dist;
+}
+
+// Float
+.float(@pos) when (@dir = ltr){
+  float: @pos;
+}
+.float(left) when (@dir = rtl){
+  float: right;
+}
+.float(right) when (@dir = rtl){
+  float: left;
+}
