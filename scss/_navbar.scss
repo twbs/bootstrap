@@ -30,23 +30,27 @@
     color: $navbar-link-color;
     line-height: 20px;
     border-radius: $border-radius-base;
+    &:hover,
+    &:focus {
+      color: $navbar-link-hover-color;
+      background-color: $navbar-link-hover-bg;
+    }
   }
-  > li > a:hover,
-  > li > a:focus {
-    color: $navbar-link-hover-color;
-    background-color: $navbar-link-hover-bg;
+  > .active > a {
+    &,
+    &:hover,
+    &:focus {
+      color: $navbar-link-active-color;
+      background-color: $navbar-link-active-bg;
+    }
   }
-  > .active > a,
-  > .active > a:hover,
-  > .active > a:focus {
-    color: $navbar-link-active-color;
-    background-color: $navbar-link-active-bg;
-  }
-  > .disabled > a,
-  > .disabled > a:hover,
-  > .disabled > a:focus {
-    color: $navbar-link-disabled-color;
-    background-color: $navbar-link-disabled-bg;
+  > .disabled > a {
+    &,
+    &:hover,
+    &:focus {
+      color: $navbar-link-disabled-color;
+      background-color: $navbar-link-disabled-bg;
+    }
   }
 
   // Right aligned contents
@@ -168,21 +172,21 @@
   }
 
   // Remove background color from open dropdown
-  > .open > a,
-  > .open > a:hover,
-  > .open > a:focus {
-    background-color: $navbar-link-active-bg;
-    color: $navbar-link-active-color;
+  > .open > a {
+    &,
+    &:hover,
+    &:focus {
+      background-color: $navbar-link-active-bg;
+      color: $navbar-link-active-color;
+      .caret {
+        border-top-color: $navbar-link-active-color;
+        border-bottom-color: $navbar-link-active-color;
+      }
+    }
   }
   > .dropdown > a .caret {
     border-top-color: $navbar-link-color;
     border-bottom-color: $navbar-link-color;
-  }
-  > .open > a .caret,
-  > .open > a:hover .caret,
-  > .open > a:focus .caret {
-    border-top-color: $navbar-link-active-color;
-    border-bottom-color: $navbar-link-active-color;
   }
 }
 
@@ -217,23 +221,28 @@
   .navbar-nav {
     > li > a {
       color: $navbar-inverse-link-color;
+
+      &:hover,
+      &:focus {
+        color: $navbar-inverse-link-hover-color;
+        background-color: $navbar-inverse-link-hover-bg;
+      }
     }
-    > li > a:hover,
-    > li > a:focus {
-      color: $navbar-inverse-link-hover-color;
-      background-color: $navbar-inverse-link-hover-bg;
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: $navbar-inverse-link-active-color;
+        background-color: $navbar-inverse-link-active-bg;
+      }
     }
-    > .active > a,
-    > .active > a:hover,
-    > .active > a:focus {
-      color: $navbar-inverse-link-active-color;
-      background-color: $navbar-inverse-link-active-bg;
-    }
-    > .disabled > a,
-    > .disabled > a:hover,
-    > .disabled > a:focus {
-      color: $navbar-inverse-link-disabled-color;
-      background-color: $navbar-inverse-link-disabled-bg;
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: $navbar-inverse-link-disabled-color;
+        background-color: $navbar-inverse-link-disabled-bg;
+      }
     }
   }
 
@@ -251,11 +260,13 @@
 
   // Dropdowns
   .navbar-nav {
-    > .open > a,
-    > .open > a:hover,
-    > .open > a:focus {
-      background-color: $navbar-inverse-link-active-bg;
-      color: $navbar-inverse-link-active-color;
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: $navbar-inverse-link-active-bg;
+        color: $navbar-inverse-link-active-color;
+      }
     }
     > .dropdown > a:hover .caret {
       border-top-color: $navbar-inverse-link-hover-color;
@@ -265,13 +276,16 @@
       border-top-color: $navbar-inverse-link-color;
       border-bottom-color: $navbar-inverse-link-color;
     }
-    > .open > a .caret,
-    > .open > a:hover .caret,
-    > .open > a:focus .caret {
-      border-top-color: $navbar-inverse-link-active-color;
-      border-bottom-color: $navbar-inverse-link-active-color;
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        .caret {
+          border-top-color: $navbar-inverse-link-active-color;
+          border-bottom-color: $navbar-inverse-link-active-color;
+        }
+      }
     }
-
   }
 }
 

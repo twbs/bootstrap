@@ -62,40 +62,48 @@
 
 // Hover/Focus state
 // -----------
-.dropdown-menu > li > a:hover,
-.dropdown-menu > li > a:focus {
-  text-decoration: none;
-  color: $dropdown-link-hover-color;
-  @include gradient-vertical($start-color: $dropdown-link-hover-bg, $end-color: darken($dropdown-link-hover-bg, 5%));
+.dropdown-menu > li > a {
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: $dropdown-link-hover-color;
+    @include gradient-vertical($start-color: $dropdown-link-hover-bg, $end-color: darken($dropdown-link-hover-bg, 5%));
+  }
 }
 
 // Active state
 // ------------
-.dropdown-menu > .active > a,
-.dropdown-menu > .active > a:hover,
-.dropdown-menu > .active > a:focus {
-  color: $dropdown-link-active-color;
-  text-decoration: none;
-  outline: 0;
-  @include gradient-vertical($start-color: $dropdown-link-active-bg, $end-color: darken($dropdown-link-active-bg, 5%));
+.dropdown-menu > .active > a {
+  &,
+  &:hover,
+  &:focus {
+    color: $dropdown-link-active-color;
+    text-decoration: none;
+    outline: 0;
+    @include gradient-vertical($start-color: $dropdown-link-active-bg, $end-color: darken($dropdown-link-active-bg, 5%));
+  }
 }
 
 // Disabled state
 // --------------
 // Gray out text and ensure the hover/focus state remains gray
-.dropdown-menu > .disabled > a,
-.dropdown-menu > .disabled > a:hover,
-.dropdown-menu > .disabled > a:focus {
-  color: $gray-light;
+.dropdown-menu > .disabled > a {
+  &,
+  &:hover,
+  &:focus {
+    color: $gray-light;
+  }
 }
 // Nuke hover/focus effects
-.dropdown-menu > .disabled > a:hover,
-.dropdown-menu > .disabled > a:focus {
-  text-decoration: none;
-  background-color: transparent;
-  background-image: none; // Remove CSS gradient
-  @include reset-filter();
-  cursor: default;
+.dropdown-menu > .disabled > a {
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    background-color: transparent;
+    background-image: none; // Remove CSS gradient
+    @include reset-filter();
+    cursor: default;
+  }
 }
 
 // Open state for the dropdown

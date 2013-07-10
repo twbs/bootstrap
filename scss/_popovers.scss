@@ -50,14 +50,16 @@
 //
 // .arrow is outer, .arrow:after is inner
 
-.popover .arrow,
-.popover .arrow:after {
-  position: absolute;
-  display: block;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
+.popover .arrow {
+  &,
+  &:after {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+  }
 }
 .popover .arrow {
   border-width: $popover-arrow-outer-width;
