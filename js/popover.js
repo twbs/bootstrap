@@ -68,7 +68,7 @@
       this.options.content.call(this.$element[0]) :
       this.options.content
 
-    return content || this.$element.attr('data-content')
+    return content || this.$element.data('content')
   }
 
   Popover.prototype.tip = function () {
