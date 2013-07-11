@@ -12,14 +12,11 @@
   > li {
     display: inline-block;
     text-shadow: 0 1px 0 #fff;
-    &:after {
+    &+li:before {
       display: inline-block;
-      content: "\00a0 /"; // Unicode space added since inline-block means non-collapsing white-space
+      content: "/\00a0"; // Unicode space added since inline-block means non-collapsing white-space
       padding: 0 5px;
       color: #ccc;
-    }
-    &:last-child:after {
-      display: none; // No divider after last element
     }
   }
   > .active {

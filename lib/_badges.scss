@@ -35,16 +35,9 @@ a.badge {
 }
 
 // Quick fix for labels/badges in buttons
-.btn {
-  .badge {
-    position: relative;
-    top: -1px;
-  }
-}
-.btn-mini {
-  .badge {
-    top: 0;
-  }
+.btn .badge {
+  position: relative;
+  top: -1px;
 }
 
 // Account for counters in navs

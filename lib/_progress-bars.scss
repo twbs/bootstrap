@@ -87,32 +87,20 @@
 
 // Danger (red)
 .progress-bar-danger {
-  background-color: $progress-bar-danger-bg;
-  .progress-striped & {
-    @include gradient-striped($progress-bar-danger-bg);
-  }
+  @include progress-bar-variant($progress-bar-danger-bg);
 }
 
 // Success (green)
 .progress-bar-success {
-  background-color: $progress-bar-success-bg;
-  .progress-striped & {
-    @include gradient-striped($progress-bar-success-bg);
-  }
+  @include progress-bar-variant($progress-bar-success-bg);
 }
 
 // Warning (orange)
 .progress-bar-warning {
-  background-color: $progress-bar-warning-bg;
-  .progress-striped & {
-    @include gradient-striped($progress-bar-warning-bg);
-  }
+  @include progress-bar-variant($progress-bar-warning-bg);
 }
 
 // Info (teal)
 .progress-bar-info {
-  background-color: $progress-bar-info-bg;
-  .progress-striped & {
-    @include gradient-striped($progress-bar-info-bg);
-  }
+  @include progress-bar-variant($progress-bar-info-bg);
 }
