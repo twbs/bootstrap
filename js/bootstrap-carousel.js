@@ -28,7 +28,7 @@
 
   var Carousel = function (element, options) {
     this.$element = $(element)
-    this.$indicators = this.$element.find('.carousel-indicators')
+    this.$indicators = this.$element.find('> .carousel-indicators')
     this.options = options
     this.options.pause == 'hover' && this.$element
       .on('mouseenter', $.proxy(this.pause, this))
@@ -47,7 +47,7 @@
     }
 
   , getActiveIndex: function () {
-      this.$active = this.$element.find('.item.active')
+      this.$active = this.$element.find('> .item.active')
       this.$items = this.$active.parent().children()
       return this.$items.index(this.$active)
     }
@@ -73,7 +73,7 @@
 
   , pause: function (e) {
       if (!e) this.paused = true
-      if (this.$element.find('.next, .prev').length && $.support.transition.end) {
+      if (this.$element.find('> .carousel-inner > .next, > .carousel-inner > .prev').length && $.support.transition.end) {
         this.$element.trigger($.support.transition.end)
         this.cycle(true)
       }
@@ -93,7 +93,7 @@
     }
 
   , slide: function (type, next) {
-      var $active = this.$element.find('.item.active')
+      var $active = this.$element.find('> .carousel-inner > .item.active')
         , $next = next || $active[type]()
         , isCycling = this.interval
         , direction = type == 'next' ? 'left' : 'right'
@@ -105,7 +105,7 @@
 
       isCycling && this.pause()
 
-      $next = $next.length ? $next : this.$element.find('.item')[fallback]()
+      $next = $next.length ? $next : this.$element.find('> .carousel-inner > .item')[fallback]()
 
       e = $.Event('slide', {
         relatedTarget: $next[0]
