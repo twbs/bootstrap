@@ -328,8 +328,8 @@
 // --------------------------------------------------
 
 // Short retina mixin for setting background-image and -size
-@mixin retina-image($file-1x, $file-2x, $width-1x, $height-1x) {
-  background-image: url("#{file-1x}");
+@mixin img-retina($file-1x, $file-2x, $width-1x, $height-1x) {
+  background-image: url("#{$file-1x}");
 
   @media
   only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -338,7 +338,7 @@
   only screen and (        min-device-pixel-ratio: 2),
   only screen and (                min-resolution: 192dpi),
   only screen and (                min-resolution: 2dppx) {
-    background-image: url("#{file-2x}");
+    background-image: url("#{$file-2x}");
     background-size: $width-1x $height-1x;
   }
 }
