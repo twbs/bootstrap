@@ -3605,7 +3605,7 @@ button.close {
   }
 }
 
-.tooltip {
+[role="tooltip"] {
   position: absolute;
   z-index: 1030;
   display: block;
@@ -3616,27 +3616,27 @@ button.close {
   visibility: visible;
 }
 
-.tooltip.in {
+[role="tooltip"].in {
   opacity: 1;
   filter: alpha(opacity=100);
 }
 
-.tooltip.top {
+[role="tooltip"].top {
   padding: 5px 0;
   margin-top: -3px;
 }
 
-.tooltip.right {
+[role="tooltip"].right {
   padding: 0 5px;
   margin-left: 3px;
 }
 
-.tooltip.bottom {
+[role="tooltip"].bottom {
   padding: 5px 0;
   margin-top: 3px;
 }
 
-.tooltip.left {
+[role="tooltip"].left {
   padding: 0 5px;
   margin-left: -3px;
 }
@@ -3659,7 +3659,7 @@ button.close {
   border-style: solid;
 }
 
-.tooltip.top .tooltip-arrow {
+[role="tooltip"].top .tooltip-arrow {
   bottom: 0;
   left: 50%;
   margin-left: -5px;
@@ -3667,21 +3667,21 @@ button.close {
   border-width: 5px 5px 0;
 }
 
-.tooltip.top-left .tooltip-arrow {
+[role="tooltip"].top-left .tooltip-arrow {
   bottom: 0;
   left: 5px;
   border-top-color: rgba(0, 0, 0, 0.9);
   border-width: 5px 5px 0;
 }
 
-.tooltip.top-right .tooltip-arrow {
+[role="tooltip"].top-right .tooltip-arrow {
   right: 5px;
   bottom: 0;
   border-top-color: rgba(0, 0, 0, 0.9);
   border-width: 5px 5px 0;
 }
 
-.tooltip.right .tooltip-arrow {
+[role="tooltip"].right .tooltip-arrow {
   top: 50%;
   left: 0;
   margin-top: -5px;
@@ -3689,7 +3689,7 @@ button.close {
   border-width: 5px 5px 5px 0;
 }
 
-.tooltip.left .tooltip-arrow {
+[role="tooltip"].left .tooltip-arrow {
   top: 50%;
   right: 0;
   margin-top: -5px;
@@ -3697,7 +3697,7 @@ button.close {
   border-width: 5px 0 5px 5px;
 }
 
-.tooltip.bottom .tooltip-arrow {
+[role="tooltip"].bottom .tooltip-arrow {
   top: 0;
   left: 50%;
   margin-left: -5px;
@@ -3705,14 +3705,14 @@ button.close {
   border-width: 0 5px 5px;
 }
 
-.tooltip.bottom-left .tooltip-arrow {
+[role="tooltip"].bottom-left .tooltip-arrow {
   top: 0;
   left: 5px;
   border-bottom-color: rgba(0, 0, 0, 0.9);
   border-width: 0 5px 5px;
 }
 
-.tooltip.bottom-right .tooltip-arrow {
+[role="tooltip"].bottom-right .tooltip-arrow {
   top: 0;
   right: 5px;
   border-bottom-color: rgba(0, 0, 0, 0.9);
@@ -3724,7 +3724,6 @@ button.close {
   top: 0;
   left: 0;
   z-index: 1010;
-  display: none;
   max-width: 276px;
   padding: 1px;
   text-align: left;

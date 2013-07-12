@@ -1051,7 +1051,7 @@
     animation: true
   , placement: 'top'
   , selector: false
-  , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+  , template: '<div role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
   , trigger: 'hover focus'
   , title: ''
   , delay: 0
@@ -1158,7 +1158,10 @@
 
       $tip
         .detach()
-        .css({ top: 0, left: 0, display: 'block' })
+        .css({ top: 0, left: 0 })
+        .setUniqueId()
+
+      this.$element.attr('aria-describedby', $tip.attr('id'));
 
       this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
 
@@ -1249,6 +1252,7 @@
     if (e.isDefaultPrevented()) return
 
     $tip.removeClass('in')
+    this.$element.removeAttr('aria-describedby');
 
     function removeWithAnimation() {
       var timeout = setTimeout(function () {
@@ -1884,5 +1888,41 @@
       $spy.affix(data)
     })
   })
+
+}(window.jQuery);
+/* ========================================================================
+ * Bootstrap: transition.js v3.0.0
+ * http://twitter.github.com/bootstrap/javascript.html#uniqueid
+ * ========================================================================
+ * Copyright 2013 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ======================================================================== */
+
+
++function ($) { "use strict";
+
+  // Set a unique ID on an element (Shoutout: http://www.mootools.net/)
+  // ============================================================
+
+  var UID = Date.now();
+
+  $.fn.setUniqueId = function() {
+    return this.each(function() {
+      if ( !this.id ) {
+        this.id = (UID++).toString(36);
+      }
+    });
+  }
 
 }(window.jQuery);
