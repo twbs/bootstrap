@@ -35,13 +35,13 @@ a:focus {
 
 // Rounded corners
 .img-rounded {
-  .border-radius(6px);
+  .border-radius(@borderRadiusLarge);
 }
 
 // Add polaroid-esque trim
 .img-polaroid {
-  padding: 4px;
-  background-color: #fff;
+  padding: @baseBorderRadius;
+  background-color: @white;
   border: 1px solid #ccc;
   border: 1px solid rgba(0,0,0,.2);
   .box-shadow(0 1px 3px rgba(0,0,0,.1));
@@ -49,5 +49,5 @@ a:focus {
 
 // Perfect circle
 .img-circle {
-  .border-radius(500px); // crank the border-radius so it works with most reasonably sized images
+  .border-radius(@gridRowWidth); // crank the border-radius so it works with most reasonably sized images
 }
