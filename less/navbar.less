@@ -44,7 +44,7 @@
       background-color: @navbar-link-active-bg;
     }
   }
-  > .disabled > a {
+  > [aria-disabled="true"] > a {
     &,
     &:hover,
     &:focus {
@@ -236,7 +236,7 @@
         background-color: @navbar-inverse-link-active-bg;
       }
     }
-    > .disabled > a {
+    > [aria-disabled="true"] > a {
       &,
       &:hover,
       &:focus {

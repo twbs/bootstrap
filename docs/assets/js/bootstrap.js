@@ -177,6 +177,7 @@
 
   Button.prototype.setState = function (state) {
     var d    = 'disabled'
+    var ad   = 'aria-disabled'
     var $el  = this.$element
     var val  = $el.is('input') ? 'val' : 'html'
     var data = $el.data()
@@ -190,8 +191,8 @@
     // push to event loop to allow forms to submit
     setTimeout(function () {
       state == 'loadingText' ?
-        $el.addClass(d).attr(d, d) :
-        $el.removeClass(d).removeAttr(d);
+        $el.attr(ad, 'true').attr(d, d) :
+        $el.removeAttr(ad).removeAttr(d);
     }, 0)
   }
 

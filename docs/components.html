@@ -49,12 +49,12 @@ lead: "Dozens of reusable components built to provide iconography, dropdowns, na
 {% endhighlight %}
 
     <h3 id="dropdowns-disabled">Disabled menu options</h3>
-    <p>Add <code>.disabled</code> to a <code>&lt;li&gt;</code> in the dropdown to disable the link.</p>
+    <p>Add <code>aria-disabled="true"</code> to a <code>&lt;li&gt;</code> in the dropdown to disable the link.</p>
     <div class="bs-example">
       <div class="dropdown clearfix">
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
           <li><a tabindex="-1" href="#">Regular link</a></li>
-          <li class="disabled"><a tabindex="-1" href="#">Disabled link</a></li>
+          <li aria-disabled="true"><a tabindex="-1" href="#">Disabled link</a></li>
           <li><a tabindex="-1" href="#">Another link</a></li>
         </ul>
       </div>
@@ -62,7 +62,7 @@ lead: "Dozens of reusable components built to provide iconography, dropdowns, na
 {% highlight html %}
 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
   <li><a tabindex="-1" href="#">Regular link</a></li>
-  <li class="disabled"><a tabindex="-1" href="#">Disabled link</a></li>
+  <li aria-disabled="true"><a tabindex="-1" href="#">Disabled link</a></li>
   <li><a tabindex="-1" href="#">Another link</a></li>
 </ul>
 {% endhighlight %}
@@ -528,24 +528,24 @@ lead: "Dozens of reusable components built to provide iconography, dropdowns, na
 {% endhighlight %}
 
     <h3 id="nav-disabled-links">Disabled state</h3>
-    <p>For any nav component (tabs, pills, or list), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>.</p>
+    <p>For any nav component (tabs, pills, or list), add <code>aria-disabled="true"</code> for <strong>gray links and no hover effects</strong>.</p>
 
     <div class="bs-callout">
       <h4>Link functionality not impacted</h4>
-      <p>This class will only change the <code>&lt;a&gt;</code>'s appearance, not its functionality. Use custom JavaScript to disable links here.</p>
+      <p>This class will only change the <code>&lt;a&gt;</code>'s appearance and accessibility state, not its functionality. Use custom JavaScript to disable links here.</p>
     </div>
 
     <div class="bs-example">
       <ul class="nav nav-pills">
         <li><a href="#">Clickable link</a></li>
         <li><a href="#">Clickable link</a></li>
-        <li class="disabled"><a href="#">Disabled link</a></li>
+        <li aria-disabled="true"><a href="#">Disabled link</a></li>
       </ul>
     </div>
 {% highlight html %}
 <ul class="nav nav-pills">
   ...
-  <li class="disabled"><a href="#">Disabled link</a></li>
+  <li aria-disabled="true"><a href="#">Disabled link</a></li>
   ...
 </ul>
 {% endhighlight %}
@@ -684,7 +684,7 @@ lead: "Dozens of reusable components built to provide iconography, dropdowns, na
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">Link</a></li>
-          <li class="disabled"><a href="#">Disabled</a></li>
+          <li aria-disabled="true"><a href="#">Disabled</a></li>
         </ul>
       </div>
     </div><!-- /example -->
@@ -692,7 +692,7 @@ lead: "Dozens of reusable components built to provide iconography, dropdowns, na
 <ul class="nav navbar-nav">
   <li class="active"><a href="#">Home</a></li>
   <li><a href="#">Link</a></li>
-  <li class="disabled"><a href="#">Disabled</a></li>
+  <li aria-disabled="true"><a href="#">Disabled</a></li>
 </ul>
 {% endhighlight %}
 
@@ -1076,10 +1076,10 @@ body { padding-bottom: 70px; }
 {% endhighlight %}
 
     <h3>Disabled and active states</h3>
-    <p>Links are customizable for different circumstances. Use <code>.disabled</code> for unclickable links and <code>.active</code> to indicate the current page.</p>
+    <p>Links are customizable for different circumstances. Use <code>aria-disabled="true"</code> for unclickable links and <code>.active</code> to indicate the current page.</p>
     <div class="bs-example">
       <ul class="pagination">
-        <li class="disabled"><a href="#">&laquo;</a></li>
+        <li aria-disabled="true"><a href="#">&laquo;</a></li>
         <li class="active"><a href="#">1</a></li>
         <li><a href="#">2</a></li>
         <li><a href="#">3</a></li>
@@ -1090,7 +1090,7 @@ body { padding-bottom: 70px; }
     </div>
 {% highlight html %}
 <ul class="pagination">
-  <li class="disabled"><a href="#">&laquo;</a></li>
+  <li aria-disabled="true"><a href="#">&laquo;</a></li>
   <li class="active"><a href="#">1</a></li>
   ...
 </ul>
@@ -1098,7 +1098,7 @@ body { padding-bottom: 70px; }
     <p>You can optionally swap out active or disabled anchors for <code>&lt;span&gt;</code> to remove click functionality while retaining intended styles.</p>
 {% highlight html %}
 <ul class="pagination">
-  <li class="disabled"><span>&laquo;</span></li>
+  <li aria-disabled="true"><span>&laquo;</span></li>
   <li class="active"><span>1</span></li>
   ...
 </ul>
@@ -1184,16 +1184,16 @@ body { padding-bottom: 70px; }
 
 
     <h3>Optional disabled state</h3>
-    <p>Pager links also use the general <code>.disabled</code> utility class from the pagination.</p>
+    <p>Pager links also use the general <code>aria-disabled="true"</code> utility class from the pagination.</p>
     <div class="bs-example">
       <ul class="pager">
-        <li class="previous disabled"><a href="#">&larr; Older</a></li>
+        <li class="previous" aria-disabled="true"><a href="#">&larr; Older</a></li>
         <li class="next"><a href="#">Newer &rarr;</a></li>
       </ul>
     </div>
 {% highlight html %}
 <ul class="pager">
-  <li class="previous disabled"><a href="#">&larr; Older</a></li>
+  <li class="previous" aria-disabled="true"><a href="#">&larr; Older</a></li>
   <li class="next"><a href="#">Newer &rarr;</a></li>
 </ul>
 {% endhighlight %}

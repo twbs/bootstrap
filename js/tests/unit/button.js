@@ -24,7 +24,7 @@ $(function () {
         stop()
         setTimeout(function () {
           ok(btn.attr('disabled'), 'btn is disabled')
-          ok(btn.hasClass('disabled'), 'btn has disabled class')
+          ok(btn.attr('aria-disabled') == "true", 'btn has aria-disabled')
           start()
         }, 0)
       })
@@ -37,7 +37,7 @@ $(function () {
         stop()
         setTimeout(function () {
           ok(btn.attr('disabled'), 'btn is disabled')
-          ok(btn.hasClass('disabled'), 'btn has disabled class')
+          ok(btn.attr('aria-disabled') == "true", 'btn has aria-disabled')
           start()
           stop()
         }, 0)
@@ -45,7 +45,7 @@ $(function () {
         equals(btn.html(), 'mdo', 'btn text equals mdo')
         setTimeout(function () {
           ok(!btn.attr('disabled'), 'btn is not disabled')
-          ok(!btn.hasClass('disabled'), 'btn does not have disabled class')
+          ok(btn.attr('aria-disabled') != "true", 'btn does not have aria-disabled')
           start()
         }, 0)
       })
