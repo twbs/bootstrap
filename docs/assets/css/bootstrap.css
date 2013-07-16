@@ -3976,6 +3976,11 @@ a.thumbnail:focus {
   margin-left: auto;
 }
 
+.thumbnail > video {
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .thumbnail .caption {
   padding: 9px;
   color: #333333;
