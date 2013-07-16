@@ -3471,7 +3471,6 @@ button.close {
   display: none;
   overflow: auto;
   overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
 }
 
 .modal.fade {
