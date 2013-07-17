@@ -1885,7 +1885,6 @@ button.close {
   -webkit-appearance: none; }
 
 .nav {
-  margin-left: 0;
   margin-bottom: 0;
   padding-left: 0;
   list-style: none; }
@@ -2499,8 +2498,7 @@ button.close {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1040;
-  -webkit-overflow-scrolling: touch; }
+  z-index: 1040; }
   .modal.fade {
     top: -25%;
     -webkit-transition: opacity 0.3s linear, top 0.3s ease-out;
