@@ -87,7 +87,7 @@
 // Disabled state
 // --------------
 // Gray out text and ensure the hover/focus state remains gray
-.dropdown-menu > .disabled > a {
+.dropdown-menu > [aria-disabled="true"] > a {
   &,
   &:hover,
   &:focus {
@@ -95,7 +95,7 @@
   }
 }
 // Nuke hover/focus effects
-.dropdown-menu > .disabled > a {
+.dropdown-menu > [aria-disabled="true"] > a {
   &:hover,
   &:focus {
     text-decoration: none;

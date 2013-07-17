@@ -1897,18 +1897,15 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 
     <h3>Anchor element</h3>
-    <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
+    <p>Add the <code>aria-disabled="true"</code> class to <code>&lt;a&gt;</code> buttons.</p>
     <p class="bs-example">
-      <a href="#" class="btn btn-primary btn-large disabled">Primary link</a>
-      <a href="#" class="btn btn-default btn-large disabled">Link</a>
+      <a href="#" class="btn btn-primary btn-large" aria-disabled="true">Primary link</a>
+      <a href="#" class="btn btn-default btn-large" aria-disabled="true">Link</a>
     </p>
 {% highlight html %}
-<a href="#" class="btn btn-primary btn-large disabled">Primary link</a>
-<a href="#" class="btn btn-default btn-large disabled">Link</a>
+<a href="#" class="btn btn-primary btn-large" aria-disabled="true">Primary link</a>
+<a href="#" class="btn btn-default btn-large" aria-disabled="true">Link</a>
 {% endhighlight %}
-    <p>
-      We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
-    </p>
     <div class="bs-callout">
       <h4>Link functionality not impacted</h4>
       <p>This class will only change the <code>&lt;a&gt;</code>'s appearance, not its functionality. Use custom JavaScript to disable links here.</p>

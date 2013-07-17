@@ -28,7 +28,7 @@
     }
 
     // Disabled state sets text to gray and nukes hover/tab effects
-    &.disabled > a {
+    &[aria-disabled="true"] > a {
       color: @gray-light;
 
       &:hover,
