@@ -12,31 +12,31 @@ HR=\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\
 #
 
 build:
-	@echo "\n${HR}"
-	@echo "Building Bootstrap..."
-	@echo "${HR}\n"
+	@printf "\n${HR}\n"
+	@printf "Building Bootstrap...\n"
+	@printf "${HR}\n\n"
 	@./node_modules/.bin/jshint js/*.js --config js/.jshintrc
 	@./node_modules/.bin/jshint js/tests/unit/*.js --config js/.jshintrc
-	@echo "Running JSHint on javascript...             ${CHECK} Done"
+	@printf "Running JSHint on javascript...             ${CHECK} Done\n"
 	@./node_modules/.bin/recess --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
 	@./node_modules/.bin/recess --compile ${BOOTSTRAP_RESPONSIVE_LESS} > ${BOOTSTRAP_RESPONSIVE}
-	@echo "Compiling LESS with Recess...               ${CHECK} Done"
+	@printf  "Compiling LESS with Recess...               ${CHECK} Done\n"
 	@node docs/build
 	@cp img/* docs/assets/img/
 	@cp js/*.js docs/assets/js/
 	@cp js/tests/vendor/jquery.js docs/assets/js/
-	@echo "Compiling documentation...                  ${CHECK} Done"
+	@printf "Compiling documentation...                  ${CHECK} Done\n"
 	@cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js js/bootstrap-affix.js > docs/assets/js/bootstrap.js
 	@./node_modules/.bin/uglifyjs -nc docs/assets/js/bootstrap.js > docs/assets/js/bootstrap.min.tmp.js
-	@echo "/**\n* Bootstrap.js v2.3.2 by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > docs/assets/js/copyright.js
+	@printf "/**\n* Bootstrap.js v2.3.2 by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > docs/assets/js/copyright.js
 	@cat docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js > docs/assets/js/bootstrap.min.js
 	@rm docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js
-	@echo "Compiling and minifying javascript...       ${CHECK} Done"
-	@echo "\n${HR}"
-	@echo "Bootstrap successfully built at ${DATE}."
-	@echo "${HR}\n"
-	@echo "Thanks for using Bootstrap,"
-	@echo "<3 @mdo and @fat\n"
+	@printf "Compiling and minifying javascript...       ${CHECK} Done\n"
+	@printf "\n${HR}\n"
+	@printf "Bootstrap successfully built at ${DATE}.\n"
+	@printf "${HR}\n\n"
+	@printf "Thanks for using Bootstrap,\n"
+	@printf "<3 @mdo and @fat\n\n"
 
 #
 # RUN JSHINT & QUNIT TESTS IN PHANTOMJS
