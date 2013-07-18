@@ -714,4 +714,139 @@ ul.jqtree-tree .jqtree-moving > .jqtree-element .jqtree-title {
 }
 
 // ----------------------------------------------------------------------------
+// Time Picker
+// ----------------------------------------------------------------------------
+
+.bootstrap-timepicker {
+    position: relative;
+
+    &.pull-right {
+        .bootstrap-timepicker-widget {
+            &.dropdown-menu {
+                left: auto;
+                right: 0;
+
+                &:before {
+                    left: auto;
+                    right: 12px;
+                }
+                &:after {
+                    left: auto;
+                    right: 13px;
+                }
+            }
+        }
+    }
+
+    .add-on { 
+        cursor: pointer;
+        i {
+           display: inline-block;
+           width: 16px;
+           height: 16px;
+        }
+    }
+}
+.bootstrap-timepicker-widget {
+    &.dropdown-menu {
+        padding: 2px 3px 2px 2px; 
+        &.open {
+            display: inline-block;
+        }
+        &:before {
+            border-bottom: 7px solid rgba(0, 0, 0, 0.2);
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            content: "";
+            display: inline-block;
+            left: 9px;
+            position: absolute;
+            top: -7px;
+        }
+        &:after {
+            border-bottom: 6px solid #FFFFFF;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            content: "";
+            display: inline-block;
+            left: 10px;
+            position: absolute;
+            top: -6px;
+        }
+    }
+
+    a.btn, input {
+        border-radius: 4px;
+    }
+
+    table {
+        width: 100%;
+        margin: 0;
+
+        td { 
+            text-align: center;
+            height: 30px;
+            margin: 0;
+            padding: 2px;
+
+            &:not(.separator) {
+                min-width: 30px;
+            }
+
+            span {
+                width: 100%;
+            }
+            a {
+                border: 1px transparent solid;
+                width: 100%;
+                display: inline-block;
+                margin: 0;
+                padding: 8px 0;
+                outline: 0;
+                color: #333;
+
+                &:hover {
+                    text-decoration: none;
+                    background-color: #eee;
+                    -webkit-border-radius: 4px;
+                    -moz-border-radius: 4px;
+                    border-radius: 4px;
+                    border-color: #ddd;
+                }
+
+                i {
+                    margin-top: 2px;
+                }
+            }
+            input {
+                width: 25px;
+                margin: 0;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.bootstrap-timepicker-widget .modal-content {
+    padding: 4px;
+}
+
+@media (min-width: 767px) {
+    .bootstrap-timepicker-widget.modal {
+        width: 200px; 
+        margin-left: -100px; 
+    }
+}
+
+@media (max-width: 767px) {
+    .bootstrap-timepicker {
+        width: 100%;
+
+        .dropdown-menu {
+            width: 100%;
+        }
+    }
+}
+
+// ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------

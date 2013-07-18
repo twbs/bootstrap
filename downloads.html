@@ -20,6 +20,10 @@ $(function() {
     var d = e.date.getDate();
     $('div.showdate').text(y + '-' + m + '-' + d);
   });
+  $('input.timepicker').timepicker({
+    showSeconds: true,
+    default: false,
+  });
 });
     </script>
 </head>
@@ -88,9 +92,13 @@ $(function() {
                             <input class="span2" type="text" />
                             <span class="add-on">.00</span>
                         </div>
-                        <div class="input-append">
-                            <input name="date" type="text" class="span2 datepicker" />
+                        <div class="input-prepend">
                             <span class="add-on"><i class="icon-calendar"></i></span>
+                            <input name="date" type="text" class="span1 datepicker" />
+                        </div>
+                        <div class="input-append bootstrap-timepicker">
+                            <input name="time" type="text" class="span1 timepicker" />
+                            <span class="add-on"><i class="icon-time"></i></span>
                         </div>
                         <label class="checkbox">
                             <input type="checkbox"> Check me out
