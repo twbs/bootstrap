@@ -1792,11 +1792,10 @@ input[type="color"].input-small {
 
 .input-group-btn > .btn {
   position: relative;
-  float: left;
 }
 
 .input-group-btn > .btn + .btn {
-  margin-left: -1px;
+  margin-left: -4px;
 }
 
 .input-group-btn > .btn:hover,
