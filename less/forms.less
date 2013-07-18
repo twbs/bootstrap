@@ -366,7 +366,9 @@ input[type="color"] {
 .input-group input:first-child,
 .input-group-addon:first-child,
 .input-group-btn:first-child > .btn,
+.input-group-btn:first-child > .btn-group > .btn,
 .input-group-btn:first-child > .dropdown-toggle,
+.input-group-btn:last-child > .btn-group:not(:last-child) > .btn,
 .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
   .border-right-radius(0);
 }
@@ -376,7 +378,9 @@ input[type="color"] {
 .input-group input:last-child,
 .input-group-addon:last-child,
 .input-group-btn:last-child > .btn,
+.input-group-btn:last-child > .btn-group > .btn,
 .input-group-btn:last-child > .dropdown-toggle,
+.input-group-btn:first-child > .btn-group:not(:first-child) > .btn,
 .input-group-btn:first-child > .btn:not(:first-child) {
   .border-left-radius(0);
 }
@@ -390,11 +394,11 @@ input[type="color"] {
   position: relative;
   white-space: nowrap;
 }
-.input-group-btn > .btn {
+.input-group-btn > .btn,
+.input-group-btn > .btn-group {
   position: relative;
-  float: left; // Collapse white-space
-  + .btn {
-    margin-left: -1px;
+  + .btn, + .btn-group {
+    margin-left: -4px;
   }
   // Bring the "active" button to the front
   &:hover,
@@ -402,6 +406,7 @@ input[type="color"] {
     z-index: 2;
   }
 }
+
 
 
 // Inline forms
