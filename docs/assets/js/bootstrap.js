@@ -502,6 +502,10 @@
   Collapse.prototype.show = function () {
     if (this.transitioning || this.$element.hasClass('in')) return
 
+    var startEvent = $.Event('show.bs.collapse')
+    this.$element.trigger(startEvent)
+    if (startEvent.isDefaultPrevented()) return
+
     var dimension = this.dimension()
     var scroll    = $.camelCase(['scroll', dimension].join('-'))
     var actives   = this.$parent && this.$parent.find('> .accordion-group > .in')
@@ -514,16 +518,21 @@
     }
 
     this.$element[dimension](0)
-    this.transition('addClass', $.Event('show.bs.collapse'), 'shown.bs.collapse')
+    this.transition('addClass', 'shown.bs.collapse')
 
     if ($.support.transition) this.$element[dimension](this.$element[0][scroll])
   }
 
   Collapse.prototype.hide = function () {
     if (this.transitioning || !this.$element.hasClass('in')) return
+
+    var startEvent = $.Event('hide.bs.collapse')
+    this.$element.trigger(startEvent)
+    if (startEvent.isDefaultPrevented()) return
+
     var dimension = this.dimension()
     this.reset(this.$element[dimension]())
-    this.transition('removeClass', $.Event('hide.bs.collapse'), 'hidden')
+    this.transition('removeClass', 'shown.bs.hidden')
     this.$element[dimension](0)
   }
 
@@ -540,17 +549,13 @@
     return this
   }
 
-  Collapse.prototype.transition = function (method, startEvent, completeEvent) {
+  Collapse.prototype.transition = function (method, completeEvent) {
     var that     = this
     var complete = function () {
-      if (startEvent.type == 'show') that.reset()
+      if (completeEvent == 'shown.bs.collapse') that.reset()
       that.transitioning = 0
       that.$element.trigger(completeEvent)
     }
-
-    this.$element.trigger(startEvent)
-
-    if (startEvent.isDefaultPrevented()) return
 
     this.transitioning = 1
 
