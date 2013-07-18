@@ -1249,6 +1249,12 @@ table th[class^="col-"] {
   float: none;
 }
 
+.table > tbody > tr > td.active,
+.table > tbody > tr > th.active,
+.table > tbody > tr.active > td {
+  background-color: #f5f5f5;
+}
+
 .table > tbody > tr > td.success,
 .table > tbody > tr > th.success,
 .table > tbody > tr.success > td {

@@ -1048,8 +1048,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
 
-    <h2 id="tables-row-classes">Optional row classes</h2>
-    <p>Use contextual classes to color table rows.</p>
+    <h2 id="tables-row-classes">Contextual table classes</h2>
+    <p>Use contextual classes to color table rows or individual cells.</p>
     <table class="table table-bordered table-striped">
       <colgroup>
         <col class="col-lg-1">
@@ -1066,19 +1066,25 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           <td>
             <code>.success</code>
           </td>
-          <td>Indicates a successful or positive action.</td>
+          <td>Indicates a successful or positive action</td>
         </tr>
         <tr>
           <td>
             <code>.danger</code>
           </td>
-          <td>Indicates a dangerous or potentially negative action.</td>
+          <td>Indicates a dangerous or potentially negative action</td>
         </tr>
         <tr>
           <td>
             <code>.warning</code>
           </td>
-          <td>Indicates a warning that might need attention.</td>
+          <td>Indicates a warning that might need attention</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.active</code>
+          </td>
+          <td>Applies the hover color to a particular row or cell</td>
         </tr>
       </tbody>
     </table>
@@ -1087,42 +1093,64 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <thead>
           <tr>
             <th>#</th>
-            <th>Product</th>
-            <th>Payment Taken</th>
-            <th>Status</th>
+            <th>Column heading</th>
+            <th>Column heading</th>
+            <th>Column heading</th>
           </tr>
         </thead>
         <tbody>
           <tr class="success">
             <td>1</td>
-            <td>TB - Monthly</td>
-            <td>01/04/2012</td>
-            <td>Approved</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
           </tr>
           <tr class="danger">
-            <td>2</td>
-            <td>TB - Monthly</td>
-            <td>02/04/2012</td>
-            <td>Declined</td>
+            <td>3</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
           </tr>
           <tr class="warning">
-            <td>3</td>
-            <td>TB - Monthly</td>
-            <td>03/04/2012</td>
-            <td>Pending</td>
+            <td>5</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+          </tr>
+          <tr class="active">
+            <td>7</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
           </tr>
         </tbody>
       </table>
     </div><!-- /example -->
 {% highlight html %}
-...
 <tr class="success">
   <td>1</td>
-  <td>TB - Monthly</td>
-  <td>01/04/2012</td>
-  <td>Approved</td>
+  <td>Column content</td>
+  <td>Column content</td>
+  <td>Column content</td>
 </tr>
-...
 {% endhighlight %}
 
   </div>
