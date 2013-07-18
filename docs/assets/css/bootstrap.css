@@ -4390,7 +4390,9 @@ a.list-group-item.active > .badge,
   filter: alpha(opacity=90);
 }
 
-.carousel-control .glyphicon {
+.carousel-control .glyphicon,
+.carousel-control .icon-prev,
+.carousel-control .icon-next {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -4400,6 +4402,14 @@ a.list-group-item.active > .badge,
   height: 20px;
   margin-top: -10px;
   margin-left: -10px;
+}
+
+.carousel-control .icon-prev:before {
+  content: '\00ab';
+}
+
+.carousel-control .icon-next:before {
+  content: '\00bb';
 }
 
 .carousel-indicators {
@@ -4450,7 +4460,9 @@ a.list-group-item.active > .badge,
 }
 
 @media screen and (min-width: 768px) {
-  .carousel-control .glyphicon {
+  .carousel-control .glyphicon,
+  .carousel-control .icon-prev,
+  .carousel-control .icon-next {
     width: 30px;
     height: 30px;
     margin-top: -15px;
