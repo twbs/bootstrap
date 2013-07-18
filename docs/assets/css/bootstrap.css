@@ -2275,6 +2275,14 @@ input[type="button"].btn-block {
   outline: 0;
 }
 
+.dropdown-header {
+  display: block;
+  padding: 3px 20px;
+  font-size: 12px;
+  line-height: 1.428571429;
+  color: #999999;
+}
+
 .dropdown-backdrop {
   position: fixed;
   top: 0;
@@ -2301,11 +2309,6 @@ input[type="button"].btn-block {
   top: auto;
   bottom: 100%;
   margin-bottom: 1px;
-}
-
-.dropdown .dropdown-menu .nav-header {
-  padding-right: 20px;
-  padding-left: 20px;
 }
 
 .list-group {
@@ -2708,17 +2711,6 @@ button.close {
 
 .nav-justified > li > a {
   text-align: center;
-}
-
-.nav-header {
-  display: block;
-  padding: 3px 15px;
-  font-size: 11px;
-  font-weight: bold;
-  line-height: 1.428571429;
-  color: #999999;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-  text-transform: uppercase;
 }
 
 .tabbable:before,
