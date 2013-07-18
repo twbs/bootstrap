@@ -803,7 +803,7 @@ input.focused {
   }
   .carbonad {
     position: absolute;
-    top: 0;
+    top: 20px;
     right: 0;
     padding: 15px !important;
     width: 330px !important;
