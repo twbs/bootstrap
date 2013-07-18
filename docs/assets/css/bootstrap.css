@@ -4405,11 +4405,11 @@ a.list-group-item.active > .badge,
 }
 
 .carousel-control .icon-prev:before {
-  content: '\00ab';
+  content: '\2039';
 }
 
 .carousel-control .icon-next:before {
-  content: '\00bb';
+  content: '\203a';
 }
 
 .carousel-indicators {
