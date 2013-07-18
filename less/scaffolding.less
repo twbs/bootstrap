@@ -71,7 +71,7 @@ img {
 
 // Rounded corners
 .img-rounded {
-  border-radius: 6px;
+  border-radius: @border-radius-large;
 }
 
 // Image thumbnails
@@ -79,7 +79,8 @@ img {
 
 // Perfect circle
 .img-circle {
-  border-radius: 500px; // crank the border-radius so it works with most reasonably sized images
+  border-radius: @container-desktop; // crank the border-radius so it works with most reasonably sized images
+  //Actually image size is up to page width or default container width here 
 }
 
 
