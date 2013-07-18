@@ -6,6 +6,54 @@
 // Wrapper for the slide container and indicators
 .carousel {
   position: relative;
+  &.slide .carousel-inner {
+    > .item {
+      .transition(.6s ease-in-out left);
+    }
+    > .next,
+    > .prev {
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    > .next {
+      left: 100%;
+    }
+    > .prev {
+      left: -100%;
+    }
+    > .next.left,
+    > .prev.right {
+      left: 0;
+    }
+
+    > .active.left {
+      left: -100%;
+    }
+    > .active.right {
+      left: 100%;
+    }
+  }
+  &.fading .carousel-inner {
+	> .item {
+	  .transition(2s ease-in-out opacity);
+	  z-index: 1;
+	  opacity: 0;
+	  display: block;
+	  top: 0;
+	  left: 0;
+      width: 100%;
+	  position: absolute;
+	}
+	> .active {
+	  opacity: 1;
+	  z-index: 2;
+	}
+	> .next {
+	  z-index: 3;
+	}
+  }
 }
 
 .carousel-inner {
@@ -16,7 +64,6 @@
   > .item {
     display: none;
     position: relative;
-    .transition(.6s ease-in-out left);
 
     // Account for jankitude on images
     > img,
@@ -33,32 +80,6 @@
   > .active {
     left: 0;
   }
-
-  > .next,
-  > .prev {
-    position: absolute;
-    top: 0;
-    width: 100%;
-  }
-
-  > .next {
-    left: 100%;
-  }
-  > .prev {
-    left: -100%;
-  }
-  > .next.left,
-  > .prev.right {
-    left: 0;
-  }
-
-  > .active.left {
-    left: -100%;
-  }
-  > .active.right {
-    left: 100%;
-  }
-
 }
 
 // Left/right controls for nav
@@ -69,6 +90,7 @@
   top: 0;
   left: 0;
   bottom: 0;
+  z-index: 4;
   width: 15%;
   .opacity(.5);
   font-size: 20px;

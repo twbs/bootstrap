@@ -136,6 +136,18 @@
         that.sliding = false
         setTimeout(function () { that.$element.trigger('slid') }, 0)
       })
+	} else if ($.support.transition && this.$element.hasClass('fading')) {
+      $('.carousel-inner', this.$element).height($('.item', this.$element).height())
+      this.$element.trigger(e)
+      if (e.isDefaultPrevented()) return
+      $next.addClass(['active', type].join(' '))
+      $next[0].offsetWidth // force reflow
+      $next.one($.support.transition.end, function () {
+        $next.removeClass(type).addClass('active')
+        $active.removeClass('active')
+        that.sliding = false
+        setTimeout(function () { that.$element.trigger('slid') }, 0)
+      })
     } else {
       this.$element.trigger(e)
       if (e.isDefaultPrevented()) return
