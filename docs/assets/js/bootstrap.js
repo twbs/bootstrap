@@ -1159,6 +1159,7 @@
       $tip
         .detach()
         .css({ top: 0, left: 0, display: 'block' })
+        .addClass(placement)
 
       this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
 
@@ -1195,7 +1196,6 @@
 
     $tip
       .offset(offset)
-      .addClass(placement)
       .addClass('in')
 
     var actualWidth  = $tip[0].offsetWidth
