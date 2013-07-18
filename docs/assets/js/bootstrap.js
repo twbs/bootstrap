@@ -1011,7 +1011,7 @@
     $target
       .modal(option)
       .one('hide', function () {
-        $this.focus()
+        $this.is(':visible') && $this.focus()
       })
     })
 
