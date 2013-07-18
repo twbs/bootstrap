@@ -48,7 +48,6 @@
 @font-size-base:          14px;
 @font-size-large:         ceil(@font-size-base * 1.25); // ~18px
 @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
-@font-size-mini:          ceil(@font-size-base * 0.75); // ~11px
 
 @line-height-base:        1.428571429; // 20/14
 @line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
@@ -86,7 +85,8 @@
 
 @table-bg:                           transparent; // overall background-color
 @table-bg-accent:                    #f9f9f9; // for striping
-@table-bg-hover:                     #f5f5f5; // for hover
+@table-bg-hover:                     #f5f5f5;
+@table-bg-active:                    @table-bg-hover;
 
 @table-border-color:                 #ddd; // table and cell border
 
@@ -176,7 +176,8 @@
 @navbar-height:                    50px;
 @navbar-color:                     #777;
 @navbar-bg:                        #eee;
-@navbar-padding:                   floor(@grid-gutter-width / 2);  // ~15px
+@navbar-padding-horizontal:        floor(@grid-gutter-width / 2);  // ~15px
+@navbar-padding-vertical:          15px;
 
 // Navbar links
 @navbar-link-color:                #777;

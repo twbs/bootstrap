@@ -48,6 +48,31 @@ lead: "Dozens of reusable components built to provide iconography, dropdowns, na
 </ul>
 {% endhighlight %}
 
+    <h3 id="dropdowns-headers">Dropdown headers</h3>
+    <p>Add a header to break up label sections of actions in any dropdown menu.</p>
+    <div class="bs-example">
+      <div class="dropdown clearfix">
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+          <li class="dropdown-header">Dropdown header</li>
+          <li><a tabindex="-1" href="#">Action</a></li>
+          <li><a tabindex="-1" href="#">Another action</a></li>
+          <li><a tabindex="-1" href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li class="dropdown-header">Dropdown header</li>
+          <li><a tabindex="-1" href="#">Separated link</a></li>
+        </ul>
+      </div>
+    </div><!-- /example -->
+{% highlight html %}
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+  <li class="dropdown-header">Dropdown header</li>
+  ...
+  <li class="divider"></li>
+  <li class="dropdown-header">Dropdown header</li>
+  ...
+</ul>
+{% endhighlight %}
+
     <h3 id="dropdowns-disabled">Disabled menu options</h3>
     <p>Add <code>.disabled</code> to a <code>&lt;li&gt;</code> in the dropdown to disable the link.</p>
     <div class="bs-example">

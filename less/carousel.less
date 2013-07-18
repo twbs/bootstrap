@@ -99,7 +99,9 @@
   }
 
   // Toggles
-  .glyphicon {
+  .glyphicon,
+  .icon-prev,
+  .icon-next {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -109,6 +111,17 @@
     height: 20px;
     margin-top: -10px;
     margin-left: -10px;
+  }
+  // Non-glyphicon toggles
+  .icon-prev {
+    &:before {
+      content: '\2039';
+    }
+  }
+  .icon-next {
+    &:before {
+      content: '\203a';
+    }
   }
 }
 
@@ -167,7 +180,9 @@
 @media screen and (min-width: @screen-tablet) {
 
   // Scale up the controls a smidge
-  .carousel-control .glyphicon {
+  .carousel-control .glyphicon,
+  .carousel-control .icon-prev,
+  .carousel-control .icon-next {
     width: 30px;
     height: 30px;
     margin-top: -15px;

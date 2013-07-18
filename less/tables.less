@@ -219,6 +219,11 @@ table {
 // Exact selectors below required to override .table-striped
 
 .table > tbody > tr {
+  > td.active,
+  > th.active,
+  &.active > td {
+    background-color: @table-bg-hover;
+  }
   > td.success,
   > th.success,
   &.success > td {
