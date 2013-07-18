@@ -192,7 +192,7 @@ blockquote {
     line-height: @line-height-base;
     color: @gray-light;
     &:before {
-      content: '\2014 \00A0';
+      content: '\2014 \00A0';// EM DASH, NBSP
     }
   }
 
@@ -212,7 +212,7 @@ blockquote {
         content: '';
       }
       &:after {
-        content: '\00A0 \2014';
+        content: '\00A0 \2014';// NBSP, EM DASH
       }
     }
   }
