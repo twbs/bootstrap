@@ -145,21 +145,22 @@
   // =================
 
   $(document).on('click.bs.collapse.data-api', '[data-toggle=collapse]', function (e) {
-    var $this  = $(this), href
-    var target = $this.attr('data-target')
+    var $this   = $(this), href
+    var target  = $this.attr('data-target')
         || e.preventDefault()
         || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
-    var data   = $(target).data('bs.collapse')
-    var option = data ? 'toggle' : $this.data()
-    var parent = $this.attr('data-parent')
+    var $target = $(target)
+    var data    = $target.data('bs.collapse')
+    var option  = data ? 'toggle' : $this.data()
+    var parent  = $this.attr('data-parent')
     var $parent = parent && $(parent)
 
     if (!data || !data.transitioning) {
       if ($parent) $parent.find('[data-toggle=collapse][data-parent=' + parent + ']').not($this).addClass('collapsed')
-      $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
+      $this[$target.hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
     }
 
-    $(target).collapse(option)
+    $target.collapse(option)
   })
 
 }(window.jQuery);
