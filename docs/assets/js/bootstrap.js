@@ -378,7 +378,7 @@
       $next[0].offsetWidth // force reflow
       $active.addClass(direction)
       $next.addClass(direction)
-      this.$element.one($.support.transition.end, function () {
+      this.$element.find('.item').one($.support.transition.end, function () {
         $next.removeClass([type, direction].join(' ')).addClass('active')
         $active.removeClass(['active', direction].join(' '))
         that.sliding = false
