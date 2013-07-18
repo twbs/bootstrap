@@ -511,10 +511,10 @@
     var actives   = this.$parent && this.$parent.find('> .accordion-group > .in')
 
     if (actives && actives.length) {
-      var hasData = actives.data('collapse')
+      var hasData = actives.data('bs.collapse')
       if (hasData && hasData.transitioning) return
       actives.collapse('hide')
-      hasData || actives.data('collapse', null)
+      hasData || actives.data('bs.collapse', null)
     }
 
     this.$element[dimension](0)
@@ -579,10 +579,10 @@
   $.fn.collapse = function (option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('collapse')
+      var data    = $this.data('bs.collapse')
       var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option)
 
-      if (!data) $this.data('collapse', (data = new Collapse(this, options)))
+      if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
@@ -607,12 +607,17 @@
     var target = $this.attr('data-target')
         || e.preventDefault()
         || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
-    var option = $(target).data('collapse') ? 'toggle' : $this.data()
+    var data   = $(target).data('bs.collapse')
+    var option = data ? 'toggle' : $this.data()
     var parent = $this.attr('data-parent')
     var $parent = parent && $(parent)
 
-    if ($parent) $parent.find('[data-toggle=collapse][data-parent=' + parent + ']').not($this).addClass('collapsed')
-    $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
+    console.log(data, data && data.transitioning)
+    if (data && !data.transitioning) {
+      if ($parent) $parent.find('[data-toggle=collapse][data-parent=' + parent + ']').not($this).addClass('collapsed')
+      $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
+    }
+
     $(target).collapse(option)
   })
 
