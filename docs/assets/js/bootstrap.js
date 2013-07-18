@@ -196,10 +196,11 @@
   }
 
   Button.prototype.toggle = function () {
-    var $parent = this.$element.closest('[data-toggle="buttons-radio"]')
+    var $parent = this.$element.closest('[data-toggle="buttons"]')
 
-    if ($parent) {
-      $parent.find('.active').removeClass('active')
+    if ($parent.length) {
+      var $input = this.$element.find('input').prop('checked', !this.$element.hasClass('active'))
+      if ($input.prop('type') === 'radio') $parent.find('.active').removeClass('active')
     }
 
     this.$element.toggleClass('active')
@@ -243,6 +244,7 @@
     var $btn = $(e.target)
     if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
     $btn.button('toggle')
+    e.preventDefault()
   })
 
 }(window.jQuery);
