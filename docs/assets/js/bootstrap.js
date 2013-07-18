@@ -378,7 +378,7 @@
       $next[0].offsetWidth // force reflow
       $active.addClass(direction)
       $next.addClass(direction)
-      this.$element.one($.support.transition.end, function () {
+      this.$element.find('.item').one($.support.transition.end, function () {
         $next.removeClass([type, direction].join(' ')).addClass('active')
         $active.removeClass(['active', direction].join(' '))
         that.sliding = false
@@ -437,12 +437,13 @@
     var $this   = $(this), href
     var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
     var options = $.extend({}, $target.data(), $this.data())
-    var slideIndex
+    var slideIndex = $this.attr('data-slide-to')
+    if (slideIndex) options.interval = false
 
     $target.carousel(options)
 
     if (slideIndex = $this.attr('data-slide-to')) {
-      $target.data('bs.carousel').pause().to(slideIndex).cycle()
+      $target.data('bs.carousel').to(slideIndex)
     }
 
     e.preventDefault()
@@ -502,28 +503,37 @@
   Collapse.prototype.show = function () {
     if (this.transitioning || this.$element.hasClass('in')) return
 
+    var startEvent = $.Event('show.bs.collapse')
+    this.$element.trigger(startEvent)
+    if (startEvent.isDefaultPrevented()) return
+
     var dimension = this.dimension()
     var scroll    = $.camelCase(['scroll', dimension].join('-'))
     var actives   = this.$parent && this.$parent.find('> .accordion-group > .in')
 
     if (actives && actives.length) {
-      var hasData = actives.data('collapse')
+      var hasData = actives.data('bs.collapse')
       if (hasData && hasData.transitioning) return
       actives.collapse('hide')
-      hasData || actives.data('collapse', null)
+      hasData || actives.data('bs.collapse', null)
     }
 
     this.$element[dimension](0)
-    this.transition('addClass', $.Event('show.bs.collapse'), 'shown.bs.collapse')
+    this.transition('addClass', 'shown.bs.collapse')
 
     if ($.support.transition) this.$element[dimension](this.$element[0][scroll])
   }
 
   Collapse.prototype.hide = function () {
     if (this.transitioning || !this.$element.hasClass('in')) return
+
+    var startEvent = $.Event('hide.bs.collapse')
+    this.$element.trigger(startEvent)
+    if (startEvent.isDefaultPrevented()) return
+
     var dimension = this.dimension()
     this.reset(this.$element[dimension]())
-    this.transition('removeClass', $.Event('hide.bs.collapse'), 'hidden')
+    this.transition('removeClass', 'shown.bs.hidden')
     this.$element[dimension](0)
   }
 
@@ -540,17 +550,13 @@
     return this
   }
 
-  Collapse.prototype.transition = function (method, startEvent, completeEvent) {
+  Collapse.prototype.transition = function (method, completeEvent) {
     var that     = this
     var complete = function () {
-      if (startEvent.type == 'show') that.reset()
+      if (completeEvent == 'shown.bs.collapse') that.reset()
       that.transitioning = 0
       that.$element.trigger(completeEvent)
     }
-
-    this.$element.trigger(startEvent)
-
-    if (startEvent.isDefaultPrevented()) return
 
     this.transitioning = 1
 
@@ -574,10 +580,10 @@
   $.fn.collapse = function (option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('collapse')
+      var data    = $this.data('bs.collapse')
       var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option)
 
-      if (!data) $this.data('collapse', (data = new Collapse(this, options)))
+      if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
@@ -602,12 +608,16 @@
     var target = $this.attr('data-target')
         || e.preventDefault()
         || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
-    var option = $(target).data('collapse') ? 'toggle' : $this.data()
+    var data   = $(target).data('bs.collapse')
+    var option = data ? 'toggle' : $this.data()
     var parent = $this.attr('data-parent')
     var $parent = parent && $(parent)
 
-    if ($parent) $parent.find('[data-toggle=collapse][data-parent=' + parent + ']').not($this).addClass('collapsed')
-    $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
+    if (!data || !data.transitioning) {
+      if ($parent) $parent.find('[data-toggle=collapse][data-parent=' + parent + ']').not($this).addClass('collapsed')
+      $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
+    }
+
     $(target).collapse(option)
   })
 
@@ -794,7 +804,7 @@
 
   var Modal = function (element, options) {
     this.options   = options
-    this.$element  = $(element).delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
+    this.$element  = $(element).on('click.dismiss.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
     this.$backdrop =
     this.isShown   = null
 
@@ -929,11 +939,12 @@
       this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
         .appendTo(document.body)
 
-      this.$backdrop.click(
-        this.options.backdrop == 'static' ?
-          $.proxy(this.$element[0].focus, this.$element[0])
-        : $.proxy(this.hide, this)
-      )
+      this.$element.on('click', $.proxy(function (e) {
+        if (e.target !== e.currentTarget) return
+        this.options.backdrop == 'static'
+          ? this.$element[0].focus.call(this.$element[0])
+          : this.hide.call(this)
+      }, this))
 
       if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
 
@@ -1001,7 +1012,7 @@
     $target
       .modal(option)
       .one('hide', function () {
-        $this.focus()
+        $this.is(':visible') && $this.focus()
       })
     })
 
@@ -1159,6 +1170,7 @@
       $tip
         .detach()
         .css({ top: 0, left: 0, display: 'block' })
+        .addClass(placement)
 
       this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
 
@@ -1195,7 +1207,6 @@
 
     $tip
       .offset(offset)
-      .addClass(placement)
       .addClass('in')
 
     var actualWidth  = $tip[0].offsetWidth
@@ -1432,11 +1443,13 @@
   }
 
   Popover.prototype.getContent = function () {
-    var content = typeof this.options.content == 'function' ?
-      this.options.content.call(this.$element[0]) :
-      this.options.content
+    var $e = this.$element
+    var o  = this.options
 
-    return content || this.$element.attr('data-content')
+    return $e.attr('data-content')
+      || (typeof o.content == 'function' ?
+            o.content.call($e[0]) :
+            o.content)
   }
 
   Popover.prototype.tip = function () {

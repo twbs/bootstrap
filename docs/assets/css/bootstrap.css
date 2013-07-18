@@ -909,7 +909,7 @@ th {
 .table-condensed tbody > tr > td,
 .table-condensed tfoot > tr > th,
 .table-condensed tfoot > tr > td {
-  padding: 4px 5px; }
+  padding: 5px; }
 
 .table-bordered {
   border: 1px solid #dddddd;
