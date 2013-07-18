@@ -155,6 +155,45 @@ body {
   font-weight: 300;
   line-height: 1.5;
 }
+.bs-header .container {
+  position: relative;
+}
+
+/* Ads in page headers */
+.carbonad {
+  width: auto !important;
+  margin: 50px -30px -40px !important;
+  padding: 20px !important;
+  overflow: hidden; /* clearfix */
+  height: auto !important;
+  font-size: 13px !important;
+  line-height: 16px !important;
+  text-align: left;
+  background: none !important;
+  border: 0 !important;
+  border-top: 1px solid #e5e5e5 !important;
+}
+.carbonad-img {
+  margin: 0 !important;
+}
+.carbonad-text,
+.carbonad-tag {
+  float: none !important;
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  margin-left: 145px !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+.carbonad-text {
+  padding-top: 0 !important;
+}
+.carbonad-tag {
+  text-align: left !important;
+}
+.carbonad #azcarbon > img {
+  display: none; /* hide what I assume are tracking images */
+}
 
 /* Padding for in-page bookmarks */
 .bs-docs-section {
@@ -720,6 +759,12 @@ input.focused {
     line-height: 1;
   }
 
+  .carbonad {
+    margin: 0 !important;
+    border: 1px solid #e5e5e5 !important;
+    border-radius: 4px;
+  }
+
   /* Show the docs nav */
   .bs-sidebar {
     display: block;
@@ -756,9 +801,17 @@ input.focused {
     width: 213px;
   }
 
-  /* Icons */
-  .the-icons li {
-    width: 12.5%;
+  .bs-header h1,
+  .bs-header p {
+    margin-right: 380px;
+  }
+  .carbonad {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15px !important;
+    width: 330px !important;
+    min-height: 132px;
   }
 
 }
