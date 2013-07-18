@@ -222,11 +222,10 @@ body {
 /* Side notes for calling out things
 -------------------------------------------------- */
 
+/* Base styles (regardless of theme) */
 .bs-callout {
   margin: 20px 0;
   padding: 15px 30px 15px 15px;
-  background-color: #fcf2f2;
-  border-left: 5px solid #df7c7b;
 }
 .bs-callout h4 {
   margin-top: 0;
@@ -237,6 +236,20 @@ body {
 .bs-callout code,
 .bs-callout .highlight {
   background-color: #fff;
+}
+
+/* Themes for different contexts */
+.bs-callout-danger {
+  background-color: #fcf2f2;
+  border-left: 5px solid #df7c7b;
+}
+.bs-callout-warning {
+  background-color: #fefbed;
+  border-left: 5px solid #f5d659;
+}
+.bs-callout-info {
+  background-color: #f0f7fd;
+  border-left: 5px solid #55a9e1;
 }
 
 
