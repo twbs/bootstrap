@@ -167,7 +167,13 @@ lead: "Dozens of reusable components built to provide iconography, dropdowns, na
 {% endhighlight %}
 
     <h3 id="btn-groups-justified">Justified button groups</h3>
-    <p>Make a group of buttons stretch at the same size to span the entire width of its parent. <strong>This only works with <code>&lt;a&gt;</code> elements</strong> as the <code>&lt;button&gt;</code> doesn't pick up these styles.</p>
+    <p>Make a group of buttons stretch at the same size to span the entire width of its parent.</p>
+
+    <div class="bs-callout bs-callout-warning">
+      <h4>Element-specific usage</h4>
+      <p>This only works with <code>&lt;a&gt;</code> elements as the <code>&lt;button&gt;</code> doesn't pick up these styles.</p>
+    </div>
+
     <div class="bs-example">
       <div class="btn-group btn-group-justified">
         <a href="#" class="btn btn-default">Left</a>
@@ -193,7 +199,7 @@ lead: "Dozens of reusable components built to provide iconography, dropdowns, na
     </div>
     <p class="lead">Use any button to trigger a dropdown menu by placing it within a <code>.btn-group</code> and providing the proper menu markup.</p>
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Plugin dependency</h4>
       <p>Button dropdowns require the <a href="/javascript/#dropdowns">dropdown plugin</a> to be included in your version of Bootstrap.</p>
     </div>
@@ -530,7 +536,7 @@ lead: "Dozens of reusable components built to provide iconography, dropdowns, na
     <h3 id="nav-disabled-links">Disabled state</h3>
     <p>For any nav component (tabs, pills, or list), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>.</p>
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-warning">
       <h4>Link functionality not impacted</h4>
       <p>This class will only change the <code>&lt;a&gt;</code>'s appearance, not its functionality. Use custom JavaScript to disable links here.</p>
     </div>
@@ -814,7 +820,7 @@ lead: "Dozens of reusable components built to provide iconography, dropdowns, na
 </div>
 {% endhighlight %}
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Body padding required</h4>
       <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the top of the <code>&lt;body&gt;</code>. Try out your own values or use our snippet below. Tip: By default, the navbar is 50px high.</p>
 {% highlight css %}
@@ -843,7 +849,7 @@ body { padding-top: 70px; }
 </div>
 {% endhighlight %}
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Body padding required</h4>
       <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the bottom of the <code>&lt;body&gt;</code>. Try out your own values or use our snippet below. Tip: By default, the navbar is 50px high.</p>
 {% highlight css %}
@@ -944,7 +950,7 @@ body { padding-bottom: 70px; }
 </div><!-- /.navbar -->
 {% endhighlight %}
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Plugin dependency</h4>
       <p>The responsive navbar requires the <a href="/javascript/#collapse">collapse plugin</a> to be included in your version of Bootstrap.</p>
     </div>
@@ -1261,7 +1267,7 @@ body { padding-bottom: 70px; }
     <h4>Self collapsing</h4>
     <p>When there are no new or unread items, badges will simply collapse (via CSS's <code>:empty</code> selector) provided no content exists within.</p>
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Cross-browser compatibility</h4>
       <p>Badges won't self collapse in Internet Explorer 8 because it lacks support for the <code>:empty</code> selector.</p>
     </div>
@@ -1455,7 +1461,13 @@ body { padding-bottom: 70px; }
     <p class="lead">Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages. For inline dismissal, use the <a href="/javascript/#js-alerts">alerts jQuery plugin</a>.</p>
 
     <h3 id="alerts-default">Default alert</h3>
-    <p>Wrap any text and an optional dismiss button in <code>.alert</code> for a basic warning alert message. <strong>To ensure proper behavior across all devices</strong>, be sure to use <code>&lt;button&gt;</code> element with the <code>data-dismiss="alert"</code> data attribute.</p>
+    <p>Wrap any text and an optional dismiss button in <code>.alert</code> for a basic warning alert message.</p>
+
+    <div class="bs-callout bs-callout-warning">
+      <h4>Ensure proper behavior across all devices</h4>
+      <p>Be sure to use the <code>&lt;button&gt;</code> element with the <code>data-dismiss="alert"</code> data attribute.</p>
+    </div>
+
     <div class="bs-example">
       <div class="alert">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -1548,7 +1560,7 @@ body { padding-bottom: 70px; }
     </div>
     <p class="lead">Provide up-to-date feedback on the progress of a workflow or action with simple yet flexible progress bars.</p>
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Cross-browser compatibility</h4>
       <p>Progress bars use CSS3 transitions and animations to achieve some of their effects. These features are not supported in Internet Explorer 9 and below or older versions of Firefox. Opera 12 does not support animations.</p>
     </div>

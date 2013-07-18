@@ -14,8 +14,14 @@ lead: "Bring Bootstrap's components to life with over a dozen custom jQuery plug
     </div>
 
     <h3 id="js-individual-compiled">Individual or compiled</h3>
-    <p>Plugins can be included individually, or all at once. <strong>Do not attempt to include both.</strong> Both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all plugins in a single file.</p>
-    <div class="bs-callout">
+    <p>Plugins can be included individually (using <code>bootstrap-*.js</code> original files, or all at once (using <code>bootstrap.js</code> or the minified <code>bootstrap.min.js</code>.</p>
+
+    <div class="bs-callout bs-callout-danger">
+      <h4>Do not attempt to include both.</h4>
+      <p>Both <code>bootstrap.js</code> and <code>bootstrap.min.js</code> contain all plugins in a single file.</p>
+    </div>
+
+    <div class="bs-callout bs-callout-danger">
       <h4>Plugin dependencies</h4>
       <p>Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs.</p>
     </div>
@@ -65,7 +71,7 @@ $('#myModal').on('show.bs.modal', function (e) {
 })
 {% endhighlight %}
 
-    <div class="bs-callout" id="callout-third-party-libs">
+    <div class="bs-callout bs-callout-warning" id="callout-third-party-libs">
       <h4>Third-party libraries</h4>
       <p><strong>Bootstrap does not officially support third-party JavaScript libraries</strong> like Prototype or jQuery UI. Despite <code>.noConflict</code> and namespaced events, there may be compatibility problems that you need to fix on your own. Ask on the <a href="http://groups.google.com/group/twitter-bootstrap">mailing list</a> if you need help.</p>
     </div>
@@ -537,7 +543,7 @@ $('.dropdown-toggle').dropdown()
 $('#navbar-example').scrollspy()
 {% endhighlight %}
 
-          <div class="bs-callout">
+          <div class="bs-callout bs-callout-danger">
             <h4>Resolvable ID targets required</h4>
             <p>Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the DOM like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.</p>
           </div>
@@ -831,7 +837,7 @@ $('#example').tooltip(options)
              </tr>
             </tbody>
           </table>
-          <div class="bs-callout">
+          <div class="bs-callout bs-callout-info">
             <h4>Data attributes for individual tooltips</h4>
             <p>Options for individual tooltips can alternatively be specified through the use of data attributes, as explained above.</p>
           </div>
@@ -875,7 +881,7 @@ $('#example').tooltip(options)
         <h2>Examples</h2>
         <p>Add small overlays of content, like those on the iPad, to any element for housing secondary information. Hover over the button to trigger the popover.</p>
 
-        <div class="bs-callout">
+        <div class="bs-callout bs-callout-danger">
           <h4>Plugin dependency</h4>
           <p>Popovers require the <a href="#tooltips">tooltip plugin</a> to be included in your version of Bootstrap.</p>
         </div>
@@ -1019,7 +1025,7 @@ $('#example').tooltip(options)
             </tr>
           </tbody>
         </table>
-        <div class="bs-callout">
+        <div class="bs-callout bs-callout-info">
           <h4>Data attributes for individual popovers</h4>
           <p>Options for individual popovers can alternatively be specified through the use of data attributes, as explained above.</p>
         </div>
@@ -1239,7 +1245,7 @@ $('.nav-tabs').button()
 
             <h4>$().button('toggle')</h4>
             <p>Toggles push state. Gives the button the appearance that it has been activated.</p>
-            <div class="bs-callout">
+            <div class="bs-callout bs-callout-info">
               <h4>Auto toggling</h4>
               <p>You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.</p>
             </div>
@@ -1254,7 +1260,7 @@ $('.nav-tabs').button()
 <button type="button" class="btn" data-loading-text="loading stuff...">...</button>
 {% endhighlight %}
 
-            <div class="bs-callout">
+            <div class="bs-callout bs-callout-danger">
               <h4>Cross-browser compatibility</h4>
               <p><a href="https://github.com/twitter/bootstrap/issues/793">Firefox persists the disabled state across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>.</p>
             </div>
@@ -1284,7 +1290,7 @@ $('.nav-tabs').button()
             <h3>About</h3>
             <p>Get base styles and flexible support for collapsible components like accordions and navigation.</p>
 
-            <div class="bs-callout">
+            <div class="bs-callout bs-callout-danger">
               <h4>Plugin dependency</h4>
               <p>Collapse requires the <a href="#transitions">transitions plugin</a> to be included in your version of Bootstrap.</p>
             </div>
@@ -1551,7 +1557,7 @@ $('#myCollapsible').on('hidden.bs.collapse', function () {
 
             <h3>Optional captions</h3>
             <p>Add captions to your slides easily with the <code>.carousel-caption</code> element within any <code>.item</code>. Place just about any optional HTML within there and it will be automatically aligned and formatted.</p>
-            <div class="bs-callout">
+            <div class="bs-callout bs-callout-info">
               <h4>Responsive visibility</h4>
               <p><strong>Captions are hidden by default</strong> and will show up only with viewports greater than 768px wide.</p>
             </div>
@@ -1722,7 +1728,7 @@ $('#myCarousel').on('slide.bs.carousel', function () {
 <div data-spy="affix" data-offset-top="200">...</div>
 {% endhighlight %}
 
-            <div class="bs-callout">
+            <div class="bs-callout bs-callout-warning">
               <h4>Requires positioning</h4>
               <p>You must manage the position of a pinned element and the behavior of its immediate parent. Position is controlled by <code>affix</code>, <code>affix-top</code>, and <code>affix-bottom</code>. Remember to check for a potentially collapsed parent when the affix kicks in as it's removing content from the normal flow of the page.</p>
             </div>
