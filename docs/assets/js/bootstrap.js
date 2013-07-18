@@ -1443,11 +1443,13 @@
   }
 
   Popover.prototype.getContent = function () {
-    var content = typeof this.options.content == 'function' ?
-      this.options.content.call(this.$element[0]) :
-      this.options.content
+    var $e = this.$element
+    var o  = this.options
 
-    return content || this.$element.attr('data-content')
+    return $e.attr('data-content')
+      || (typeof o.content == 'function' ?
+            o.content.call($e[0]) :
+            o.content)
   }
 
   Popover.prototype.tip = function () {

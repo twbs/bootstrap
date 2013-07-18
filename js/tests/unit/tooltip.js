@@ -296,7 +296,7 @@ $(function () {
         $("head").append('<style> .tooltip.right { white-space: nowrap; } .tooltip.right .tooltip-inner { max-width: none; } </style>')
 
         var container = $("<div />").appendTo("body")
-          , target = $('<a href="#" rel="tooltip" title="very very very very very very very very long tooltip in one line">To my right</a>')
+          , target = $('<a href="#" rel="tooltip" title="very very very very very very very very long tooltip in one line"></a>')
               .appendTo(container)
               .tooltip({placement: 'right'})
               .tooltip('show')
@@ -305,4 +305,40 @@ $(function () {
         ok( Math.round(target.offset().top + target[0].offsetHeight/2 - tooltip[0].offsetHeight/2) === Math.round(tooltip.offset().top) )
         target.tooltip('hide')
       })
+
+      test("tooltip title test #1", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Simple tooltip" style="display: inline-block; position: absolute; top: 0; left: 0;"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({
+          })
+          .tooltip('show')
+        equal($('.tooltip').children('.tooltip-inner').text(), 'Simple tooltip', 'title from title attribute is set')
+        tooltip.tooltip('hide')
+        ok(!$(".tooltip").length, 'tooltip removed')
+      })
+
+      test("tooltip title test #2", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Simple tooltip" style="display: inline-block; position: absolute; top: 0; left: 0;"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({
+            title: 'This is a tooltip with some content'
+          })
+          .tooltip('show')
+        equal($('.tooltip').children('.tooltip-inner').text(), 'Simple tooltip', 'title is set from title attribute while prefered over title option')
+        tooltip.tooltip('hide')
+        ok(!$(".tooltip").length, 'tooltip removed')
+      })
+
+      test("tooltip title test #3", function () {
+        var tooltip = $('<a href="#" rel="tooltip" style="display: inline-block; position: absolute; top: 0; left: 0;"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({
+            title: 'This is a tooltip with some content'
+          })
+          .tooltip('show')
+        equal($('.tooltip').children('.tooltip-inner').text(), 'This is a tooltip with some content', 'title from title option is set')
+        tooltip.tooltip('hide')
+        ok(!$(".tooltip").length, 'tooltip removed')
+      })
+
 })
