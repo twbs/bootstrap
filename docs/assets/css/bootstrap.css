@@ -2759,6 +2759,7 @@ button.close {
 
 .navbar {
   position: relative;
+  min-height: 50px;
   padding-right: 15px;
   padding-left: 15px;
   margin-bottom: 20px;
