@@ -64,6 +64,77 @@ $(function () {
           .modal("show")
       })
 
+      test("should call shown and insert into dom when refresh method is called", function () {
+        stop()
+        $.support.transition = false
+        $("<div id='modal-test'></div>")
+          .on("shown.bs.modal", function () {
+            ok($('#modal-test').length, 'modal insterted into dom')
+            $(this).remove()
+            start()
+          })
+          .modal("refresh")
+      })
+
+      test("should fire refresh event", function () {
+        stop()
+        $.support.transition = false
+        $("<div id='modal-test'></div>")
+          .on("refresh.bs.modal", function () {
+            ok(true, "refresh was called")
+          })
+          .on("shown.bs.modal", function () {
+            $(this).remove()
+            start()
+          })
+          .modal("refresh")
+      })
+
+      test("should update content when refresh is called", function () {
+        stop()
+        $.support.transition = false
+        $("<div id='modal-test'><div class='modal-body'>content</div></div>")
+          .on('shown.bs.modal', function(){
+            ok($(this).find('.modal-body').html()=='<h1>Modal Example 1</h1>\n', 'content was updated')
+            $(this).remove()
+            start()
+          })
+          .modal({
+            show: true,
+            refresh: true,
+            remote: 'http://localhost:3000/modal/example1.html'
+          })
+      })
+
+      test("should not update content when refresh is called without a remote", function () {
+        stop()
+        $.support.transition = false
+        $("<div id='modal-test'>content</div>")
+          .on("shown.bs.modal", function () {
+            ok($('#modal-test').html()=='content', 'content was not updated')
+          })
+          .on("shown.bs.modal", function () {
+            $(this).remove()
+            start()
+          })
+          .modal("refresh")
+      })
+
+      test("should not fire refreshed when default prevented", function () {
+        stop()
+        $.support.transition = false
+        $("<div id='modal-test'></div>")
+          .on("refresh.bs.modal", function (e) {
+            e.preventDefault()
+            ok(true, "refresh was called")
+            start()
+          })
+          .on("refreshed.bs.modal", function () {
+            ok(false, "refreshed was called")
+          })
+          .modal("refresh")
+      })
+
       test("should hide modal when hide is called", function () {
         stop()
         $.support.transition = false
