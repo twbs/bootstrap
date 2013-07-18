@@ -196,10 +196,11 @@
   }
 
   Button.prototype.toggle = function () {
-    var $parent = this.$element.closest('[data-toggle="buttons-radio"]')
+    var $parent = this.$element.closest('[data-toggle="buttons"]')
 
-    if ($parent) {
-      $parent.find('.active').removeClass('active')
+    if ($parent.length) {
+      var $input = this.$element.find('input').prop('checked', !this.$element.hasClass('active'))
+      if ($input.prop('type') === 'radio') $parent.find('.active').removeClass('active')
     }
 
     this.$element.toggleClass('active')
@@ -241,6 +242,7 @@
 
   $(document).on('click.bs.button.data-api', '[data-toggle^=button]', function (e) {
     var $btn = $(e.target)
+    if ($btn.has('input').length) return // throw away double event for inputs
     if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
     $btn.button('toggle')
   })
@@ -604,21 +606,22 @@
   // =================
 
   $(document).on('click.bs.collapse.data-api', '[data-toggle=collapse]', function (e) {
-    var $this  = $(this), href
-    var target = $this.attr('data-target')
+    var $this   = $(this), href
+    var target  = $this.attr('data-target')
         || e.preventDefault()
         || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
-    var data   = $(target).data('bs.collapse')
-    var option = data ? 'toggle' : $this.data()
-    var parent = $this.attr('data-parent')
+    var $target = $(target)
+    var data    = $target.data('bs.collapse')
+    var option  = data ? 'toggle' : $this.data()
+    var parent  = $this.attr('data-parent')
     var $parent = parent && $(parent)
 
     if (!data || !data.transitioning) {
       if ($parent) $parent.find('[data-toggle=collapse][data-parent=' + parent + ']').not($this).addClass('collapsed')
-      $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
+      $this[$target.hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
     }
 
-    $(target).collapse(option)
+    $target.collapse(option)
   })
 
 }(window.jQuery);

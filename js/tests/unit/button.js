@@ -69,7 +69,7 @@ $(function () {
       })
 
       test("should toggle active when btn children are clicked within btn-group", function () {
-        var btngroup = $('<div class="btn-group" data-toggle="buttons-checkbox"></div>')
+        var btngroup = $('<div class="btn-group" data-toggle="buttons"></div>')
           , btn = $('<button class="btn">fat</button>')
           , inner = $('<i></i>')
         btngroup
@@ -81,22 +81,35 @@ $(function () {
       })
 
       test("should check for closest matching toggle", function () {
-        var group = $("<div data-toggle='buttons-radio'></div>")
-          , btn1  = $("<button class='btn active'></button>")
-          , btn2  = $("<button class='btn'></button>")
-          , wrap  = $("<div></div>")
+        var group = '<div class="btn-group" data-toggle="buttons"> \
+          <label class="btn btn-primary active"> \
+            <input type="radio" name="options" id="option1" checked="true"> Option 1 \
+          </label> \
+          <label class="btn btn-primary"> \
+            <input type="radio" name="options" id="option2"> Option 2 \
+          </label> \
+          <label class="btn btn-primary"> \
+            <input type="radio" name="options" id="option3"> Option 3 \
+          </label> \
+        </div>'
 
-        wrap.append(btn1, btn2)
+        var group = $(group)
 
-        group
-          .append(wrap)
-          .appendTo($('#qunit-fixture'))
+        var btn1 = $(group.children()[0])
+        var btn2 = $(group.children()[1])
+        var btn3 = $(group.children()[2])
+
+        group.appendTo($('#qunit-fixture'))
 
         ok(btn1.hasClass('active'), 'btn1 has active class')
+        ok(btn1.find('input').prop('checked'), 'btn1 is checked')
         ok(!btn2.hasClass('active'), 'btn2 does not have active class')
-        btn2.click()
+        ok(!btn2.find('input').prop('checked'), 'btn2 is not checked')
+        btn2.find('input').click()
         ok(!btn1.hasClass('active'), 'btn1 does not have active class')
+        ok(!btn1.find('input').prop('checked'), 'btn1 is checked')
         ok(btn2.hasClass('active'), 'btn2 has active class')
+        ok(btn2.find('input').prop('checked'), 'btn2 is checked')
       })
 
 })
