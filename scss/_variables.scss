@@ -93,7 +93,6 @@ $font-family-base:        $font-family-sans-serif !default;
 $font-size-base:          14px !default;
 $font-size-large:         ceil($font-size-base * 1.25) !default; // ~18px
 $font-size-small:         ceil($font-size-base * 0.85) !default; // ~12px
-$font-size-mini:          ceil($font-size-base * 0.75) !default; // ~11px
 
 $line-height-base:        1.428571429 !default; // 20/14
 $line-height-computed:    floor($font-size-base * $line-height-base) !default; // ~20px

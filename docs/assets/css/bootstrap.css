@@ -1694,6 +1694,13 @@ input[type="button"].btn-block {
 .open > a {
   outline: 0; }
 
+.dropdown-header {
+  display: block;
+  padding: 3px 20px;
+  font-size: 12px;
+  line-height: 1.428571429;
+  color: #999999; }
+
 .dropdown-backdrop {
   position: fixed;
   left: 0;
@@ -1716,10 +1723,6 @@ input[type="button"].btn-block {
   top: auto;
   bottom: 100%;
   margin-bottom: 1px; }
-
-.dropdown .dropdown-menu .nav-header {
-  padding-left: 20px;
-  padding-right: 20px; }
 
 .list-group {
   margin-bottom: 20px;
@@ -1987,16 +1990,6 @@ button.close {
     width: 1%; }
     .nav-justified > li > a {
       text-align: center; }
-
-.nav-header {
-  display: block;
-  padding: 3px 15px;
-  font-size: 11px;
-  font-weight: bold;
-  line-height: 1.428571429;
-  color: #999999;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-  text-transform: uppercase; }
 
 .tabbable:before, .tabbable:after {
   content: " ";
@@ -2598,7 +2591,7 @@ button.close {
   z-index: 1030;
   display: block;
   visibility: visible;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.4;
   opacity: 0;
   filter: alpha(opacity=opacity-ie); }
