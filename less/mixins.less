@@ -442,8 +442,6 @@
   .clearfix();
 }
 
-// Make a grid
-
 // Creates a wrapper for a series of columns
 .make-row() {
   // Then clear the floated columns
@@ -460,6 +458,7 @@
     margin-right: (@grid-gutter-width / -2);
   }
 }
+
 // Generate the columns
 .make-column(@columns) {
   position: relative;
@@ -475,6 +474,7 @@
     width: percentage((@columns / @grid-columns));
   }
 }
+
 // Generate the column offsets
 .make-column-offset(@columns) {
   @media (min-width: @grid-float-breakpoint) {
@@ -501,9 +501,10 @@
   // Inner gutter via padding
   padding-left:  (@grid-gutter-width / 2);
   padding-right: (@grid-gutter-width / 2);
-  @max : (@grid-float-breakpoint - 1 );
+  @max-width: (@grid-float-breakpoint - 1);
+
   // Calculate width based on number of columns available
-  @media (max-width: @max) {
+  @media (max-width: @max-width) {
     width: percentage((@columns / @grid-columns));
   }
 }
