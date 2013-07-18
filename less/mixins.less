@@ -492,7 +492,21 @@
   }
 }
 
-
+// Generate the small columns
+.make-small-column(@columns) {
+  position: relative;
+  float: left;
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Inner gutter via padding
+  padding-left:  (@grid-gutter-width / 2);
+  padding-right: (@grid-gutter-width / 2);
+  @max : (@grid-float-breakpoint - 1 );
+  // Calculate width based on number of columns available
+  @media (max-width: @max) {
+    width: percentage((@columns / @grid-columns));
+  }
+}
 
 // Framework mixins
 // --------------------------------------------------
