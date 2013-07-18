@@ -43,7 +43,7 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
     </ul>
     <p>These styles can be found within <strong>scaffolding.less</strong>.</p>
 
-    <h3 id="overview-reset">Normalize reset</h3>
+    <h3 id="overview-normalize">Normalize reset</h3>
     <p>For improved cross-browser rendering, we use <a href="http://necolas.github.com/normalize.css/" target="_blank">Normalize</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a>.</p>
 
     <h3 id="overview-container">Centering with container</h3>
@@ -53,6 +53,20 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
   ...
 </div>
 {% endhighlight %}
+  </div>
+
+
+
+  <!-- Glyphicons icon font
+  ================================================== -->
+  <div class="bs-docs-section" id="glyphicons">
+    <div class="page-header">
+      <h1>Glyphicons</h1>
+    </div>
+    <p class="lead">With the launch of Bootstrap 3, icons have been moved to a <a href="https://github.com/twbs/bootstrap-glyphicons">separate repository</a>. This keeps the primary project as lean as possible, makes it easier for folks to swap icon libraries, and makes Glyphicons icon fonts more readily available to more people outside Bootstrap.</p>
+    <p class="lead">
+      <a href="http://glyphicons.getbootstrap.com/" class="btn btn-default btn-large">Visit Glyphicons for Bootstrap</a> or <a href="https://github.com/twbs/bootstrap-glyphicons">download from GitHub</a>
+    </p>
   </div>
 
 
@@ -245,9 +259,9 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
 </div>
 {% endhighlight %}
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Need more examples?</h4>
-      <p>We dive into more grid layouts in a separte page, free of chrome and documentation to better show you the power of the grid.</p>
+      <p>We dive into more grid layouts in a separate page, free of chrome and documentation to better show you the power of the grid.</p>
       <p><a class="btn btn-danger" target="_blank" href="../examples/grid/">More grid examples</a></p>
     </div>
 
@@ -327,7 +341,7 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
 {% endhighlight %}
 
     <h3 id="grid-less">LESS mixins and variables</h3>
-    <p>In addition to <a href="#grid-example">prebuilt grid classes</a> for fast layouts, Bootstrap includes LESS variables and mixins for quickly generating your own simple, semantic layouts.</p>
+    <p>In addition to <a href="#grid-example-basic">prebuilt grid classes</a> for fast layouts, Bootstrap includes LESS variables and mixins for quickly generating your own simple, semantic layouts.</p>
 
     <h4>Variables</h4>
     <p>Variables determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.</p>
@@ -506,7 +520,10 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
 <em>rendered as italicized text</em>
 {% endhighlight %}
 
-    <p>Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
+    <div class="bs-callout bs-callout-info">
+      <h4>Alternate elements</h4>
+      <p>Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
+    </div>
 
     <h3>Alignment classes</h3>
     <p>Easily realign text to components with text alignment classes.</p>
@@ -774,10 +791,10 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
 </dl>
 {% endhighlight %}
 
-    <h5>Auto-truncating</h5>
-    <p>
-      Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.
-    </p>
+    <div class="bs-callout bs-callout-info">
+      <h4>Auto-truncating</h4>
+      <p>Horizontal description lists will truncate terms that are too long to fit in the left column with <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.</p>
+    </div>
   </div>
 
 
@@ -864,7 +881,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h3 id="tables-striped">Striped</h3>
     <p>Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p>
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Cross-browser compatibility</h4>
       <p>Striped tables are styled via the <code>:nth-child</code> CSS selector, which is not available in IE8.</p>
     </div>
@@ -1063,12 +1080,6 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           </td>
           <td>Indicates a warning that might need attention.</td>
         </tr>
-        <tr>
-          <td>
-            <code>.info</code>
-          </td>
-          <td>Used as an alternative to the default styles.</td>
-        </tr>
       </tbody>
     </table>
     <div class="bs-example">
@@ -1164,7 +1175,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h3 id="forms-inline">Inline form</h3>
     <p>Add <code>.form-inline</code> for left-aligned and inline-block controls for a compact layout.</p>
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Requires custom widths</h4>
       <p>Inputs, selects, and textareas are 100% wide by default in Bootstrap. To use the inline form, you'll have to set a width on the form controls used within.</p>
     </div>
@@ -1246,7 +1257,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h3>Inputs</h3>
     <p>Most common form control, text-based input fields. Includes support for all HTML5 types: text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color.</p>
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Type declaration required</h4>
       <p>Inputs will only be fully styled if their <code>type</code> is properly declared.</p>
     </div>
@@ -1382,21 +1393,6 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <input id="focusedInput" type="text" value="This is focused...">
 {% endhighlight %}
 
-    <h3 id="forms-invalid-inputs">Invalid inputs</h3>
-    <p>Style inputs via default browser functionality. Specify a <code>type</code>, add the <code>required</code> attribute if the field is not optional, and (if applicable) specify a <code>pattern</code>.</p>
-
-    <div class="bs-callout">
-      <h4>Cross-browser compatibility</h4>
-      <p>Invalid inputs are styled via the <code>:invalid</code> CSS selector, which is not supported by Internet Explorer 9 and below.</p>
-    </div>
-
-    <form class="bs-example">
-      <input type="email" placeholder="test@example.com" required>
-    </form>
-{% highlight html %}
-<input type="email" placeholder="test@example.com" required>
-{% endhighlight %}
-
     <h3 id="forms-disabled-inputs">Disabled inputs</h3>
     <p>Add the <code>disabled</code> attribute on an input to prevent user input and trigger a slightly different look.</p>
     <form class="bs-example">
@@ -1409,12 +1405,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h3 id="forms-disabled-fieldsets">Disabled fieldsets</h3>
     <p>Add the <code>disabled</code> attribute to a <code>&lt;fieldset&gt;</code> to disable all the controls within the <code>&lt;fieldset&gt;</code> at once.</p>
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-warning">
       <h4>Link functionality of <code>&lt;a&gt;</code> not impacted</h4>
       <p>This class will only change the appearance of <code>&lt;a class="btn btn-default"&gt;</code> buttons, not their functionality. Use custom JavaScript to disable links here.</p>
     </div>
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Cross-browser compatibility</h4>
       <p>While Bootstrap will apply these styles in all browsers, IE and Safari don't actually support the <code>&lt;disabled&gt;</code> attribute on a <code>&lt;fieldset&gt;</code>. Use custom JavaScript to disable the fieldset in these browsers.</p>
     </div>
@@ -1463,19 +1459,19 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Validation styles are applied on a per-input basis. With horizontal forms, the <code>&lt;label class="control-label"&gt;</code> will always be styled.</p>
 
     <form class="bs-example form-horizontal">
-      <div class="control-group has-warning">
+      <div class="has-warning">
         <label class="control-label" for="inputWarning">Input with warning</label>
         <div class="controls">
           <input type="text" class="input-with-feedback" id="inputWarning">
         </div>
       </div>
-      <div class="control-group has-error">
+      <div class="has-error">
         <label class="control-label" for="inputError">Input with error</label>
         <div class="controls">
           <input type="text" class="input-with-feedback" id="inputError">
         </div>
       </div>
-      <div class="control-group has-success">
+      <div class="has-success">
         <label class="control-label" for="inputSuccess">Input with success</label>
         <div class="controls">
           <input type="text" class="input-with-feedback" id="inputSuccess">
@@ -1483,19 +1479,19 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div>
     </form>
 {% highlight html %}
-<div class="control-group has-warning">
+<div class="has-warning">
   <label class="control-label" for="inputWarning">Input with warning</label>
   <div class="controls">
     <input type="text" class="input-with-feedback" id="inputWarning">
   </div>
 </div>
-<div class="control-group has-error">
+<div class="has-error">
   <label class="control-label" for="inputError">Input with error</label>
   <div class="controls">
     <input type="text" class="input-with-feedback" id="inputError">
   </div>
 </div>
-<div class="control-group has-success">
+<div class="has-success">
   <label class="control-label" for="inputSuccess">Input with success</label>
   <div class="controls">
     <input type="text" class="input-with-feedback" id="inputSuccess">
@@ -1509,11 +1505,15 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Adding on top of existing browser controls, Bootstrap includes other useful form components.</p>
 
     <h3 id="forms-input-groups">Input groups</h3>
-    <p>Add text or buttons before, after, or on both sides of any text-based input. Use <code>.input-group</code> with a <code>.add-on</code> to prepend or append elements to an <code>&lt;input&gt;</code>.</p>
+    <p>Add text or buttons before, after, or on both sides of any text-based input. Use <code>.input-group</code> with an <code>.add-on</code> to prepend or append elements to an <code>&lt;input&gt;</code>.</p>
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Cross-browser compatibility</h4>
       <p>Avoid using <code>&lt;select&gt;</code> elements here as they cannot be fully styled in WebKit browsers.</p>
+    </div>
+    <div class="bs-callout bs-callout-info">
+      <h4>Tooltips &amp; popovers in input groups require special setting</h4>
+      <p>When using tooltips or popovers on elements within an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).</p>
     </div>
 
     <form class="bs-example bs-example-form">
@@ -1757,26 +1757,26 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <form class="bs-example" style="padding-bottom: 15px;">
       <div class="row">
         <div class="col-lg-2">
-          <input type="text" placeholder="col-large-2">
+          <input type="text" placeholder=".col-lg-2">
         </div>
         <div class="col-lg-3">
-          <input type="text" placeholder="col-large-3">
+          <input type="text" placeholder=".col-lg-3">
         </div>
         <div class="col-lg-4">
-          <input type="text" placeholder="col-large-4">
+          <input type="text" placeholder=".col-lg-4">
         </div>
       </div>
     </form>
 {% highlight html %}
 <div class="row">
   <div class="col-lg-2">
-    <input type="text" placeholder="col-large-2">
+    <input type="text" placeholder=".col-lg-2">
   </div>
   <div class="col-lg-3">
-    <input type="text" placeholder="col-large-3">
+    <input type="text" placeholder=".col-lg-3">
   </div>
   <div class="col-lg-4">
-    <input type="text" placeholder="col-large-4">
+    <input type="text" placeholder=".col-lg-4">
   </div>
 </div>
 {% endhighlight %}
@@ -1894,7 +1894,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <button type="button" class="btn btn-default btn-large" disabled="disabled">Button</button>
 {% endhighlight %}
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Cross-browser compatibility</h4>
       <p>If you add the <code>disabled</code> attribute to a <code>&lt;button&gt;</code>, Internet Explorer 9 and below will render text gray with a nasty text-shadow that we cannot fix.</p>
     </div>
@@ -1912,7 +1912,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>
       We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
     </p>
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-warning">
       <h4>Link functionality not impacted</h4>
       <p>This class will only change the <code>&lt;a&gt;</code>'s appearance, not its functionality. Use custom JavaScript to disable links here.</p>
     </div>
@@ -1933,7 +1933,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <input class="btn btn-default" type="submit" value="Submit">
 {% endhighlight %}
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-warning">
       <h4>Cross-browser rendering</h4>
       <p>As a best practice, <strong>we highly recommend using the <code>&lt;button&gt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
     </div>
@@ -1950,7 +1950,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 
     <p>Add classes to an <code>&lt;img&gt;</code> element to easily style images in any project.</p>
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Cross-browser compatibility</h4>
       <p>Keep in mind that Internet Explorer 8 lacks support for rounded corners.</p>
     </div>

@@ -15,7 +15,7 @@ lead: "An overview of Bootstrap, how to download and use, basic templates and ex
     <p class="lead">There are a few easy ways to quickly get started with Bootstrap, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
 
     <h3>Download compiled CSS and JS</h3>
-    <p class="lead">The fastest way to get started is to get the compiled and minified versions of our CSS, JavaScript, and fonts. No documentation or original source files are included.</p>
+    <p class="lead">The fastest way to get started is to get the compiled and minified versions of our CSS and JavaScript. No documentation or original source files are included.</p>
     <p><a class="btn btn-large btn-primary" href="assets/bootstrap.zip" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a></p>
 
     <hr>
@@ -48,6 +48,11 @@ lead: "An overview of Bootstrap, how to download and use, basic templates and ex
 <!-- Latest compiled and minified JavaScript -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 {% endhighlight %}
+
+    <div class="bs-callout bs-callout-warning" id="callout-less-compilation">
+      <h4>LESS compilation</h4>
+      <p>If you download the original files, you need to compile Bootstrap's LESS files into usable CSS. To do that, Bootstrap only officially supports <a href="http://twitter.github.io/recess/">Recess</a>, Twitter's CSS hinter built on top of <a href="http://lesscss.org">less.js</a>.</p>
+    </div>
   </div>
 
   <!-- File structure
@@ -67,19 +72,37 @@ bootstrap/
 ├── js/
 │   ├── bootstrap.js
 │   ├── bootstrap.min.js
-└── fonts/
-    ├── glyphiconshalflings-regular.eot
-    ├── glyphiconshalflings-regular.otf
-    ├── glyphiconshalflings-regular.svg
-    ├── glyphiconshalflings-regular.ttf
-    └── glyphiconshalflings-regular.woff
 {% endhighlight %}
 
     <p>This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). The image files are compressed using <a href="http://imageoptim.com/">ImageOptim</a>, a Mac app for compressing PNGs.</p>
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>jQuery required</h4>
       <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included, as shown in the <a href="#examples">starter template</a>.</p>
     </div>
+  </div>
+
+
+  <!-- Browser compatibility
+  ================================================== -->
+  <div class="bs-docs-section" id="browsers">
+    <div class="page-header">
+      <h1>Browser compatibility</h1>
+    </div>
+    <p class="lead">Bootstrap is built to work best in the latest desktop and mobile browsers, meaning older and less advanced browsers might receive a less stylized, though fully functional, version of certain components.</p>
+
+    <h4>Supported browsers</h4>
+    <p>Specifically, we support the latest versions of the following:</p>
+    <ul>
+      <li>Chrome (Mac, Windows, iOS, and Android)</li>
+      <li>Safari (Mac and iOS only, as Windows has more or less been discontinued)</li>
+      <li>Firefox (Mac, Windows)</li>
+      <li>Internet Explorer</li>
+      <li>Opera (Mac, Windows)</li>
+    </ul>
+    <p>Unofficially, Bootstrap should look and behave just fine in Chromium for Linux and Internet Explorer 7-8, though full support is not guaranteed.</p>
+
+    <h4>IE Compatibility modes</h4>
+    <p>Bootstrap is not supported in the old Internet Explorer compatibility modes. To be sure you're using the latest rendering mode for IE, consider including <code>&lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;</code> in your pages. See <a href="http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge">this StackOverflow question</a> for more information.</p>
   </div>
 
   <!-- Template
@@ -123,6 +146,52 @@ bootstrap/
 
 
 
+  <!-- License FAQs
+  ================================================== -->
+  <div class="bs-docs-section" id="license-faqs">
+    <div class="page-header">
+      <h1>License FAQs</h1>
+    </div>
+    <p class="lead">Bootstrap is released under the Apache 2 license. Boiled down to smaller chunks, it can be described with the following conditions.</p>
+
+    <div class="row">
+      <div class="col-12 col-lg-6">
+        <h4>It allows you to:</h4>
+        <ul>
+          <li>Freely download and use Twitter open source software, in whole or in part, for personal, company internal or commercial purposes</li>
+          <li>Use Twitter open source software in packages or distributions that you create</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <h4>It forbids you to:</h4>
+        <ul>
+          <li>Redistribute any piece of Twitter open source originated software without proper attribution</li>
+          <li>Use any marks owned by Twitter in any way that might state or imply that Twitter endorses your distribution</li>
+          <li>Use any marks owned by Twitter in any way that might state or imply that you created the Twitter software in question</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-lg-6">
+        <h4>It requires you to:</h4>
+        <ul>
+          <li>Include a copy of the license in any redistribution you may make that includes Twitter software</li>
+          <li>Provide clear attribution to Twitter for any distributions that include Twitter open source software</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <h4>It does not require you to:</h4>
+        <ul>
+          <li>Include the source of the Twitter software itself, or of any modifications you may have made to it, in any redistribution you may assemble that includes it</li>
+          <li>Submit changes that you make to the software back to Twitter (though such feedback is encouraged)</li>
+        </ul>
+      </div>
+    </div>
+    <p>The full Bootstrap license is located <a href="https://github.com/twbs/bootstrap/blob/master/README.md">in the project repository</a> for more information.</p>
+  </div><!-- /.bs-docs-section -->
+
+
+
 
   <div class="bs-docs-section" id="customizing">
     <div class="page-header">
@@ -132,7 +201,7 @@ bootstrap/
 
     <p>Once you've downloaded and included Bootstrap's CSS into your templates, you can move on to customizing the included components. To do so, create a new stylesheet (LESS, if you like, or just plain CSS) to house your customizations.</p>
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-info">
       <h4>Compiled or minified?</h4>
       <p>Unless you plan on reading a good chunk of the compiled CSS, go with the minified. It's the same code, just compacted. Less bandwidth is good, especially in production environments.</p>
     </div>
@@ -186,7 +255,7 @@ bootstrap/
     </ul>
     <p>Going beyond light customizations and into visual overhauls is just as straightforward as the above custom button. For a site like <a href="http://yourkarma.com">Karma</a>, which uses Bootstrap as a CSS reset with heavy modifications, more extensive work is involved, but well worth it in the end.</p>
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-info">
       <h4>Alternate customization methods</h4>
       <p>While not recommended for folks new to Bootstrap, you may use one of two alternate methods for customization. The first is modifying the source .less files (making upgrades super difficult), and the second is mapping source LESS code to <a href="http://ruby.bvision.com/blog/please-stop-embedding-bootstrap-classes-in-your-html">your own classes via mixins</a>. For the time being, neither options are documented here.</p>
     </div>

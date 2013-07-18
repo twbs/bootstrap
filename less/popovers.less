@@ -40,10 +40,6 @@
   background-color: @popover-title-bg;
   border-bottom: 1px solid darken(@popover-title-bg, 5%);
   border-radius: 5px 5px 0 0;
-
-  &:empty {
-    display: none;
-  }
 }
 
 .popover-content {
@@ -54,14 +50,16 @@
 //
 // .arrow is outer, .arrow:after is inner
 
-.popover .arrow,
-.popover .arrow:after {
-  position: absolute;
-  display: block;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
+.popover .arrow {
+  &,
+  &:after {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+  }
 }
 .popover .arrow {
   border-width: @popover-arrow-outer-width;
@@ -80,6 +78,7 @@
     border-top-color: @popover-arrow-outer-color;
     bottom: -@popover-arrow-outer-width;
     &:after {
+      content: " ";
       bottom: 1px;
       margin-left: -@popover-arrow-width;
       border-bottom-width: 0;
@@ -94,6 +93,7 @@
     border-right-color: #999; // IE8 fallback
     border-right-color: @popover-arrow-outer-color;
     &:after {
+      content: " ";
       left: 1px;
       bottom: -@popover-arrow-width;
       border-left-width: 0;
@@ -108,6 +108,7 @@
     border-bottom-color: @popover-arrow-outer-color;
     top: -@popover-arrow-outer-width;
     &:after {
+      content: " ";
       top: 1px;
       margin-left: -@popover-arrow-width;
       border-top-width: 0;
@@ -123,6 +124,7 @@
     border-left-color: #999; // IE8 fallback
     border-left-color: @popover-arrow-outer-color;
     &:after {
+      content: " ";
       right: 1px;
       border-right-width: 0;
       border-left-color: @popover-arrow-color;

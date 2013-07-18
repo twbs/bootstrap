@@ -22,7 +22,6 @@ build:
 	@recess --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
 	@echo "               ${CHECK}"
 	@printf "Prepping documentation assets..."
-	@cp fonts/* docs/assets/fonts/
 	@cp js/tests/vendor/jquery.js docs/assets/js/
 	@echo "            ${CHECK}"
 	@printf "Compiling and minifying JavaScript..."
@@ -61,7 +60,7 @@ clean:
 # recess & uglifyjs are required
 #
 
-bootstrap: bootstrap-fonts bootstrap-css bootstrap-js
+bootstrap: bootstrap-css bootstrap-js
 
 
 #
@@ -89,17 +88,6 @@ bootstrap/css/*.css: less/*.less
 	recess --compress ${BOOTSTRAP_LESS} > bootstrap/css/bootstrap.min.css
 
 #
-# FONTS
-#
-
-bootstrap-fonts: bootstrap/fonts/*
-
-bootstrap/fonts/*: fonts/*
-	mkdir -p bootstrap/fonts
-	cp fonts/* bootstrap/fonts/
-
-
-#
 # WATCH LESS FILES
 #
 
@@ -114,4 +102,4 @@ watch:
 run: build
 	jekyll build && jekyll server
 
-.PHONY: docs watch gh-pages bootstrap-img bootstrap-css bootstrap-js
+.PHONY: docs watch gh-pages bootstrap-css bootstrap-js

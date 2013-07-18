@@ -81,7 +81,9 @@ body {
 
 /* Textual links */
 .bs-masthead-links {
-  margin: 20px 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 0;
   list-style: none;
 }
 .bs-masthead-links li {
@@ -91,7 +93,6 @@ body {
 .bs-masthead-links li + li {
   margin-left: 20px;
 }
-
 
 
 /* Customize and Download button
@@ -221,11 +222,10 @@ body {
 /* Side notes for calling out things
 -------------------------------------------------- */
 
+/* Base styles (regardless of theme) */
 .bs-callout {
   margin: 20px 0;
   padding: 15px 30px 15px 15px;
-  background-color: #fcf2f2;
-  border-left: 5px solid #df7c7b;
 }
 .bs-callout h4 {
   margin-top: 0;
@@ -236,6 +236,20 @@ body {
 .bs-callout code,
 .bs-callout .highlight {
   background-color: #fff;
+}
+
+/* Themes for different contexts */
+.bs-callout-danger {
+  background-color: #fcf2f2;
+  border-left: 5px solid #df7c7b;
+}
+.bs-callout-warning {
+  background-color: #fefbed;
+  border-left: 5px solid #f5d659;
+}
+.bs-callout-info {
+  background-color: #f0f7fd;
+  border-left: 5px solid #55a9e1;
 }
 
 
@@ -311,7 +325,7 @@ body {
 .bs-example > .well:last-child {
   margin-bottom: 0;
 }
-.bs-example > .close {
+.bs-example > p > .close {
   float: none;
 }
 
@@ -478,43 +492,6 @@ body {
 
 
 
-/* Icons
--------------------------------------------------- */
-
-.the-icons {
-  padding-bottom: 1px;
-  margin-left: 0;
-  list-style: none;
-  margin-bottom: 20px;
-  overflow: hidden;
-}
-.the-icons li {
-  float: left;
-  width: 100px;
-  height: 110px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  font-size: 12px;
-  line-height: 1.25;
-  text-align: center;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-  margin: 0 -1px -1px 0;
-}
-.the-icons .glyphicon {
-  display: block;
-  margin: 5px auto;
-  vertical-align: middle;
-  margin-right: 3px;
-  font-size: 24px;
-}
-.the-icons li:hover {
-  background-color: rgba(255,0,0,.1);
-}
-
-
-
 /* Responsive docs
 -------------------------------------------------- */
 
@@ -601,6 +578,7 @@ body {
 }
 .footer-links {
   margin: 10px 0;
+  padding-left: 0;
 }
 .footer-links li {
   display: inline;
@@ -616,7 +594,8 @@ body {
 }
 .bs-social-buttons {
   display: inline-block;
-  margin: 0;
+  margin-bottom: 0;
+  padding-left: 0;
   list-style: none;
 }
 .bs-social-buttons li {
@@ -711,13 +690,6 @@ input.focused {
 /* Tablets and up */
 @media screen and (min-width: 768px) {
 
-  /* Reaffix the fixed sidebar */
-  .bs-sidebar.affix {
-    position: fixed; /* Undo the static from mobile-first approach */
-    top: 50px;
-    width: 160px;
-  }
-
   /* Back to top link */
   .bs-top {
     display: block; /* Unhide */
@@ -779,6 +751,8 @@ input.focused {
 
   /* Widen the fixed sidebar */
   .bs-sidebar.affix {
+    position: fixed; /* Undo the static from mobile-first approach */
+    top: 50px;
     width: 213px;
   }
 

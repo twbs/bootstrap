@@ -72,6 +72,17 @@ input[type="color"] {
     outline: 0;
     .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)");
   }
+
+  // Disabled and read-only inputs
+  // Note: HTML5 says that inputs under a fieldset > legend:first-child won't be
+  //   disabled if the fieldset is disabled. Due to implementation difficulty,
+  //   we don't honor that edge case; we style them as disabled anyway.
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    background-color: @input-bg-disabled;
+  }
 }
 
 // Reset appearance properties for textual inputs and textarea
@@ -138,6 +149,16 @@ input[type="checkbox"]:focus {
   .tab-focus();
 }
 
+// Fix for Chrome number input
+// Setting certain font-sizes causes the `I` bar to appear on hover of the bottom increment button.
+// See https://github.com/twitter/bootstrap/issues/8350 for more.
+input[type="number"] {
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button  {
+    height: auto;
+  }
+}
+
 
 // Placeholder
 // -------------------------
@@ -184,7 +205,7 @@ textarea {
 // Move the options list down to align with labels
 .controls > .radio:first-child,
 .controls > .checkbox:first-child {
-  padding-top: 5px; // has to be padding because margin collaspes
+  padding-top: 5px; // has to be padding because margin collapses
 }
 */
 
@@ -227,6 +248,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"] {
   &.input-large {
+    min-height: @input-height-large;
     padding: @padding-large-vertical @padding-large-horizontal;
     font-size: @font-size-large;
     border-radius: @border-radius-large;
@@ -238,35 +260,6 @@ input[type="color"] {
     border-radius: @border-radius-small;
   }
 }
-
-
-// DISABLED STATE
-// --------------
-
-// Disabled and read-only inputs
-// Note: HTML5 says that inputs under a fieldset > legend:first-child won't be
-//   disabled if the fieldset is disabled. Due to implementation difficulty,
-//   we don't honor that edge case; we style them as disabled anyway.
-input,
-select,
-textarea {
-  &[disabled],
-  &[readonly],
-  fieldset[disabled] & {
-    cursor: not-allowed;
-    background-color: @input-bg-disabled;
-  }
-}
-// Explicitly reset the colors here
-input[type="radio"],
-input[type="checkbox"] {
-  &[disabled],
-  &[readonly],
-  fieldset[disabled] & {
-    background-color: transparent;
-  }
-}
-
 
 
 
@@ -284,20 +277,6 @@ input[type="checkbox"] {
 // Success
 .has-success {
   .form-field-validation(@state-success-text, @state-success-text, @state-success-bg);
-}
-
-// HTML5 invalid states
-// Shares styles with the .control-group.error above
-input:focus:invalid,
-textarea:focus:invalid,
-select:focus:invalid {
-  color: #b94a48;
-  border-color: #ee5f5b;
-  &:focus {
-    border-color: darken(#ee5f5b, 10%);
-    @shadow: 0 0 6px lighten(#ee5f5b, 20%);
-    .box-shadow(@shadow);
-  }
 }
 
 
@@ -322,6 +301,7 @@ select:focus:invalid {
 // -------------------------
 .input-group {
   display: table;
+  border-collapse: separate; // prevent input groups from inheriting border styles from table cells when placed within a table
 
   // Undo padding and float of grid classes
   &.col {
@@ -352,6 +332,7 @@ select:focus:invalid {
 .input-group-addon,
 .input-group-btn {
   width: 1%;
+  white-space: nowrap;
   vertical-align: middle; // Match the inputs
 }
 
@@ -455,8 +436,8 @@ select:focus:invalid {
   }
 }
 
-// Only right aline form labels here when the columns stop stacking
-@media (min-width: 768px) {
+// Only right align form labels here when the columns stop stacking
+@media (min-width: @screen-tablet) {
   .form-horizontal .control-label {
     text-align: right;
   }

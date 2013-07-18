@@ -53,6 +53,7 @@
 @line-height-base:        1.428571429; // 20/14
 @line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
 
+@headings-font-family:    @font-family-base;
 @headings-font-weight:    500;
 @headings-line-height:    1.1;
 
@@ -128,8 +129,8 @@
 @input-color-placeholder:        @gray-light;
 
 @input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
-@input-height-large:             (@line-height-computed + (@padding-large-vertical * 2) + 2);
-@input-height-small:             (@line-height-computed + (@padding-small-vertical * 2) + 2);
+@input-height-large:             (ceil(@font-size-large * @line-height-base) + (@padding-large-vertical * 2) + 2);
+@input-height-small:             (ceil(@font-size-small * @line-height-base) + (@padding-small-vertical * 2) + 2);
 
 
 // Dropdowns
@@ -165,11 +166,6 @@
 @zindex-modal:             1050;
 
 
-// Glyphicons font path
-// -------------------------
-@glyphicons-font-path:          "../fonts";
-
-
 // Navbar
 // -------------------------
 
@@ -177,6 +173,7 @@
 @navbar-height:                    50px;
 @navbar-color:                     #777;
 @navbar-bg:                        #eee;
+@navbar-padding:                   floor(@grid-gutter-width / 2);  // ~15px
 
 // Navbar links
 @navbar-link-color:                #777;

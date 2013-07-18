@@ -8,15 +8,10 @@
   position: relative;
 }
 
-// Wrap all slides, but only show the active one
 .carousel-inner {
   position: relative;
   overflow: hidden;
   width: 100%;
-}
-
-// Immediate parent of all slides
-.carousel-inner {
 
   > .item {
     display: none;
@@ -26,7 +21,7 @@
     // Account for jankitude on images
     > img,
     > a > img {
-      display: block;
+      .img-responsive();
       line-height: 1;
     }
   }
@@ -80,13 +75,8 @@
   color: #fff;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0,0,0,.6);
-
-  // we can't have this transition here
-  // because webkit cancels the carousel
-  // animation if you trip this while
-  // in the middle of another animation
-  // ;_;
-  // .transition(opacity .2s linear);
+  // We can't have this transition here because webkit cancels the carousel
+  // animation if you trip this while in the middle of another animation.
 
   // Set gradients for backgrounds
   &.left {
@@ -130,22 +120,25 @@
   left: 50%;
   z-index: 15;
   width: 100px;
-  margin: 0 0 0 -50px;
+  margin-left: -50px;
+  padding-left: 0;
   list-style: none;
   text-align: center;
 
   li {
     display: inline-block;
-    width: 8px;
-    height: 8px;
-    margin-left: 0;
-    margin-right: 0;
+    width:  10px;
+    height: 10px;
+    margin: 1px;
     text-indent: -999px;
     border: 1px solid #fff;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
   }
   .active {
+    margin: 0;
+    width:  12px;
+    height: 12px;
     background-color: #fff;
   }
 }

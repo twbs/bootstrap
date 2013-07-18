@@ -15,7 +15,7 @@
   background-color: @gray-light;
   border-radius: .25em;
 
-  // Add hover effects, but only for links 
+  // Add hover effects, but only for links
   &[href] {
     &:hover,
     &:focus {
@@ -30,41 +30,17 @@
 // Colors
 // Contextual variations (linked labels get darker on :hover)
 .label-danger {
-  background-color: @label-danger-bg;
-  &[href] {
-    &:hover, 
-    &:focus {
-      background-color: darken(@label-danger-bg, 10%);
-    }
-  }
+  .label-variant(@label-danger-bg);
 }
 
 .label-success {
-  background-color: @label-success-bg;
-  &[href] {
-    &:hover,
-    &:focus {
-      background-color: darken(@label-success-bg, 10%);
-    }
-  }
+  .label-variant(@label-success-bg);
 }
 
 .label-warning {
-  background-color: @label-warning-bg;
-  &[href] {
-    &:hover,
-    &:focus {
-      background-color: darken(@label-warning-bg, 10%);
-    }
-  }
+  .label-variant(@label-warning-bg);
 }
 
 .label-info {
-  background-color: @label-info-bg;
-  &[href] {
-    &:hover,
-    &:focus {
-      background-color: darken(@label-info-bg, 10%);
-    }
-  }
+  .label-variant(@label-info-bg);
 }

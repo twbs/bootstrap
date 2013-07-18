@@ -43,37 +43,13 @@
 // -------------------------
 
 .alert-success {
-  background-color: @alert-success-bg;
-  border-color: @alert-success-border;
-  color: @alert-success-text;
-  hr {
-    border-top-color: darken(@alert-success-border, 5%);
-  }
-  .alert-link {
-    color: darken(@alert-success-text, 10%);
-  }
+  .alert-variant(@alert-success-bg, @alert-success-border, @alert-success-text);
 }
 .alert-danger {
-  background-color: @alert-danger-bg;
-  border-color: @alert-danger-border;
-  color: @alert-danger-text;
-  hr {
-    border-top-color: darken(@alert-danger-border, 5%);
-  }
-  .alert-link {
-    color: darken(@alert-danger-text, 10%);
-  }
+  .alert-variant(@alert-danger-bg, @alert-danger-border, @alert-danger-text);
 }
 .alert-info {
-  background-color: @alert-info-bg;
-  border-color: @alert-info-border;
-  color: @alert-info-text;
-  hr {
-    border-top-color: darken(@alert-info-border, 5%);
-  }
-  .alert-link {
-    color: darken(@alert-info-text, 10%);
-  }
+  .alert-variant(@alert-info-bg, @alert-info-border, @alert-info-text);
 }
 
 // Block alerts
@@ -82,11 +58,12 @@
 .alert-block {
   padding-top: 15px;
   padding-bottom: 15px;
-}
-.alert-block > p,
-.alert-block > ul {
-  margin-bottom: 0;
-}
-.alert-block p + p {
-  margin-top: 5px;
+
+  > p,
+  > ul {
+    margin-bottom: 0;
+  }
+  p + p {
+    margin-top: 5px;
+  }
 }

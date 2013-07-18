@@ -71,7 +71,7 @@
 // CSS image replacement
 // Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
 .hide-text() {
-  font: 0/0 a;
+  font: ~"0/0" a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;
@@ -165,7 +165,7 @@
 
 // Backface visibility
 // Prevent browsers from flickering when using CSS 3D transforms.
-// Default value is `visible`, but can be changed to `hidden
+// Default value is `visible`, but can be changed to `hidden`
 // See git pull https://github.com/dannykeane/bootstrap.git backface-visibility for examples
 .backface-visibility(@visibility){
 	-webkit-backface-visibility: @visibility;
@@ -331,7 +331,7 @@
 // --------------------------------------------------
 
 // Short retina mixin for setting background-image and -size
-.retina-image(@file-1x, @file-2x, @width-1x, @height-1x) {
+.img-retina(@file-1x, @file-2x, @width-1x, @height-1x) {
   background-image: url("@{file-1x}");
 
   @media
@@ -361,6 +361,20 @@
   border-bottom: 1px solid @bottom;
 }
 
+// Alerts
+// -------------------------
+.alert-variant(@background, @border, @text-color) {
+  background-color: @background;
+  border-color: @border;
+  color: @text-color;
+  hr {
+    border-top-color: darken(@border, 5%);
+  }
+  .alert-link {
+    color: darken(@text-color, 10%);
+  }
+}
+
 // Button psuedo states
 // -------------------------
 // Easily pump out default styles, as well as :hover, :focus, :active,
@@ -381,12 +395,25 @@
   &.disabled,
   &[disabled],
   fieldset[disabled] & {
+    &,
     &:hover,
     &:focus,
     &:active,
     &.active {
       background-color: @background;
           border-color: @border
+    }
+  }
+}
+
+// Labels
+// -------------------------
+.label-variant(@color) {
+  background-color: @color;
+  &[href] {
+    &:hover,
+    &:focus {
+      background-color: darken(@color, 10%);
     }
   }
 }
@@ -400,7 +427,31 @@
   margin-bottom: ((@navbar-height - @element-height) / 2);
 }
 
+// Progress bars
+// -------------------------
+.progress-bar-variant(@color) {
+  background-color: @color;
+  .progress-striped & {
+    #gradient > .striped(@color);
+  }
+}
 
+// Responsive utilities
+// -------------------------
+// More easily include all the states for responsive-utilities.less.
+.responsive-visibility() {
+  display: block !important;
+  tr& { display: table-row !important; }
+  th&,
+  td& { display: table-cell !important; }
+}
+
+.responsive-invisibility() {
+  display: none !important;
+  tr& { display: none !important; }
+  th&,
+  td& { display: none !important; }
+}
 
 // Grid System
 // -----------
@@ -433,9 +484,6 @@
 // Generate the columns
 .make-column(@columns) {
   position: relative;
-  // Float and set width: 100%; for easy stacking on mobile devices
-  float: left;
-  width: 100%;
   // Prevent columns from collapsing when empty
   min-height: 1px;
   // Inner gutter via padding
@@ -444,6 +492,7 @@
 
   // Calculate width based on number of columns available
   @media (min-width: @grid-float-breakpoint) {
+    float: left;
     width: percentage((@columns / @grid-columns));
   }
 }
@@ -472,6 +521,7 @@
 // Generate form validation states
 .form-field-validation(@text-color: #555, @border-color: #ccc, @background-color: #f5f5f5) {
   // Color the label text
+  .help-block,
   .control-label {
     color: @text-color;
   }
@@ -491,5 +541,5 @@
     color: @text-color;
     border-color: @border-color;
     background-color: @background-color;
-  }  
+  }
 }

@@ -208,12 +208,6 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <h4>Media</h4>
           <div class="checkbox">
             <label>
-              <input type="checkbox" checked value="glyphicons.less">
-              Glyphicons
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
               <input type="checkbox" checked value="thumbnails.less">
               Thumbnails
             </label>
@@ -355,9 +349,15 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           </div>
         </div>
       </div>
-      <div class="bs-callout">
-        <h4>Heads up!</h4>
-        <p>All checked plugins will be compiled into a single file, bootstrap.js. All plugins require the latest version of <a href="http://jquery.com/" target="_blank">jQuery</a> to be included.</p>
+
+      <div class="bs-callout bs-callout-info">
+        <h4>Produces two files</h4>
+        <p>All checked plugins will be compiled into a readable <code>bootstrap.js</code> and a minified <code>bootstrap.min.js</code>. We recommend you use the minified version in production.</p>
+      </div>
+
+      <div class="bs-callout bs-callout-danger">
+        <h4>jQuery required</h4>
+        <p>All plugins require the latest version of <a href="http://jquery.com/" target="_blank">jQuery</a> to be included.</p>
       </div>
     </div>
 
@@ -404,9 +404,20 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <label>@line-height-base</label>
           <input type="text" placeholder="1.428571429">
           <p class="help-block">Used to calculate line-height throughout Bootstrap.</p>
+        </div>
+      </div>
+
+      <h4>Headings</h4>
+      <div class="row">
+        <div class="col-lg-6">
+          <label>@headings-font-family</label>
+          <input type="text" placeholder="@font-family-base">
+          <p class="help-block">Choose a separate font-family for headings.</p>
           <label>@headings-font-weight</label>
           <input type="text" placeholder="500">
           <p class="help-block">Choose a separate font-weight for headings.</p>
+        </div>
+        <div class="col-lg-6">
           <label>@headings-line-height</label>
           <input type="text" placeholder="1.1">
           <p class="help-block">Choose a separate line-height for headings.</p>
@@ -461,6 +472,24 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <input type="text" placeholder="992px">
           <label>@screen-large</label>
           <input type="text" placeholder="1200px">
+        </div>
+      </div>
+
+      <h3>Container sizes</h3>
+      <p>Define the maximum width of <code>.container</code> for different screen sizes.</p>
+      <div class="row">
+        <div class="col-lg-6">
+          <label>@container-tablet</label>
+          <input type="text" placeholder="728px">
+          <p class="help-block">For <code>@screen-small</code> and up.</p>
+          <label>@container-desktop</label>
+          <input type="text" placeholder="940px">
+          <p class="help-block">For <code>@screen-medium</code> and up.</p>
+        </div>
+        <div class="col-lg-6">
+          <label>@container-large-desktop</label>
+          <input type="text" placeholder="1170px">
+          <p class="help-block">For <code>@screen-large</code> and up.</p>
         </div>
       </div>
 
@@ -528,7 +557,7 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <label>@btn-default-color</label>
           <input type="text" placeholder="#fff">
           <label>@btn-default-bg</label>
-          <input type="text" placeholder="#a7a99aa">
+          <input type="text" placeholder="#474949">
           <label>@btn-default-border</label>
           <input type="text" placeholder="@btn-default-bg">
           <h4>Primary</h4>
@@ -1128,7 +1157,7 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
       <div class="bs-customize-download">
         <a class="btn" href="#" onclick="_gaq.push(['_trackEvent', 'Customize', 'Download', 'Customize and Download']);">Customize and Download</a>
       </div>
-      <div class="bs-callout">
+      <div class="bs-callout bs-callout-danger">
         <h4>What's included?</h4>
         <p>Downloads include compiled CSS, compiled and minified CSS, and compiled jQuery plugins, all nicely packed up into a zipball for your convenience.</p>
       </div>

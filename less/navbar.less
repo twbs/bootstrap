@@ -6,8 +6,8 @@
 .navbar {
   position: relative;
   margin-bottom: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: @navbar-padding;
+  padding-right: @navbar-padding;
   background-color: @navbar-bg;
   border-radius: @border-radius-base;
 
@@ -30,23 +30,33 @@
     color: @navbar-link-color;
     line-height: 20px;
     border-radius: @border-radius-base;
+    &:hover,
+    &:focus {
+      color: @navbar-link-hover-color;
+      background-color: @navbar-link-hover-bg;
+    }
   }
-  > li > a:hover,
-  > li > a:focus {
-    color: @navbar-link-hover-color;
-    background-color: @navbar-link-hover-bg;
+  > .active > a {
+    &,
+    &:hover,
+    &:focus {
+      color: @navbar-link-active-color;
+      background-color: @navbar-link-active-bg;
+    }
   }
-  > .active > a,
-  > .active > a:hover,
-  > .active > a:focus {
-    color: @navbar-link-active-color;
-    background-color: @navbar-link-active-bg;
+  > .disabled > a {
+    &,
+    &:hover,
+    &:focus {
+      color: @navbar-link-disabled-color;
+      background-color: @navbar-link-disabled-bg;
+    }
   }
-  > .disabled > a,
-  > .disabled > a:hover,
-  > .disabled > a:focus {
-    color: @navbar-link-disabled-color;
-    background-color: @navbar-link-disabled-bg;
+
+  // Right aligned contents
+  // Make them full width first so that they align properly on mobile
+  &.pull-right {
+    width: 100%;
   }
 }
 
@@ -90,7 +100,7 @@
   max-width: 200px;
   margin-left: auto;
   margin-right: auto;
-  padding: 15px;
+  padding: @navbar-padding;
   font-size: @font-size-large;
   font-weight: 500;
   line-height: @line-height-computed;
@@ -162,21 +172,21 @@
   }
 
   // Remove background color from open dropdown
-  > .open > a,
-  > .open > a:hover,
-  > .open > a:focus {
-    background-color: @navbar-link-active-bg;
-    color: @navbar-link-active-color;
+  > .open > a {
+    &,
+    &:hover,
+    &:focus {
+      background-color: @navbar-link-active-bg;
+      color: @navbar-link-active-color;
+      .caret {
+        border-top-color: @navbar-link-active-color;
+        border-bottom-color: @navbar-link-active-color;
+      }
+    }
   }
   > .dropdown > a .caret {
     border-top-color: @navbar-link-color;
     border-bottom-color: @navbar-link-color;
-  }
-  > .open > a .caret,
-  > .open > a:hover .caret,
-  > .open > a:focus .caret {
-    border-top-color: @navbar-link-active-color;
-    border-bottom-color: @navbar-link-active-color;
   }
 }
 
@@ -211,23 +221,28 @@
   .navbar-nav {
     > li > a {
       color: @navbar-inverse-link-color;
+
+      &:hover,
+      &:focus {
+        color: @navbar-inverse-link-hover-color;
+        background-color: @navbar-inverse-link-hover-bg;
+      }
     }
-    > li > a:hover,
-    > li > a:focus {
-      color: @navbar-inverse-link-hover-color;
-      background-color: @navbar-inverse-link-hover-bg;
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-inverse-link-active-color;
+        background-color: @navbar-inverse-link-active-bg;
+      }
     }
-    > .active > a,
-    > .active > a:hover,
-    > .active > a:focus {
-      color: @navbar-inverse-link-active-color;
-      background-color: @navbar-inverse-link-active-bg;
-    }
-    > .disabled > a,
-    > .disabled > a:hover,
-    > .disabled > a:focus {
-      color: @navbar-inverse-link-disabled-color;
-      background-color: @navbar-inverse-link-disabled-bg;
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-inverse-link-disabled-color;
+        background-color: @navbar-inverse-link-disabled-bg;
+      }
     }
   }
 
@@ -245,11 +260,13 @@
 
   // Dropdowns
   .navbar-nav {
-    > .open > a,
-    > .open > a:hover,
-    > .open > a:focus {
-      background-color: @navbar-inverse-link-active-bg;
-      color: @navbar-inverse-link-active-color;
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: @navbar-inverse-link-active-bg;
+        color: @navbar-inverse-link-active-color;
+      }
     }
     > .dropdown > a:hover .caret {
       border-top-color: @navbar-inverse-link-hover-color;
@@ -259,13 +276,16 @@
       border-top-color: @navbar-inverse-link-color;
       border-bottom-color: @navbar-inverse-link-color;
     }
-    > .open > a .caret,
-    > .open > a:hover .caret,
-    > .open > a:focus .caret {
-      border-top-color: @navbar-inverse-link-active-color;
-      border-bottom-color: @navbar-inverse-link-active-color;
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        .caret {
+          border-top-color: @navbar-inverse-link-active-color;
+          border-bottom-color: @navbar-inverse-link-active-color;
+        }
+      }
     }
-
   }
 }
 
@@ -278,7 +298,7 @@
 
   .navbar-brand {
     float: left;
-    margin-left: -5px;
+    margin-left: -(@navbar-padding);
     margin-right: 5px;
   }
   .navbar-nav {
@@ -296,6 +316,7 @@
 
     &.pull-right {
       float: right;
+      width: auto;
     }
   }
 

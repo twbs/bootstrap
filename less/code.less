@@ -6,11 +6,7 @@
 // Inline and block code styles
 code,
 pre {
-  padding: 0 3px 2px;
   font-family: @font-family-monospace;
-  font-size: (@font-size-base - 2);
-  color: @gray-dark;
-  border-radius: 4px;
 }
 
 // Inline code
@@ -20,6 +16,7 @@ code {
   color: #c7254e;
   background-color: #f9f2f4;
   white-space: nowrap;
+  border-radius: 4px;
 }
 
 // Blocks of code
@@ -31,8 +28,7 @@ pre {
   line-height: @line-height-base;
   word-break: break-all;
   word-wrap: break-word;
-  white-space: pre;
-  white-space: pre-wrap;
+  color: @gray-dark;
   background-color: #f5f5f5;
   border: 1px solid #ccc; // IE8 fallback
   border: 1px solid rgba(0,0,0,.15);
@@ -47,7 +43,6 @@ pre {
   code {
     padding: 0;
     color: inherit;
-    white-space: pre;
     white-space: pre-wrap;
     background-color: transparent;
     border: 0;

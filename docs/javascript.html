@@ -14,8 +14,14 @@ lead: "Bring Bootstrap's components to life with over a dozen custom jQuery plug
     </div>
 
     <h3 id="js-individual-compiled">Individual or compiled</h3>
-    <p>Plugins can be included individually, or all at once. <strong>Do not attempt to include both.</strong> Both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all plugins in a single file.</p>
-    <div class="bs-callout">
+    <p>Plugins can be included individually (using <code>bootstrap-*.js</code> original files, or all at once (using <code>bootstrap.js</code> or the minified <code>bootstrap.min.js</code>.</p>
+
+    <div class="bs-callout bs-callout-danger">
+      <h4>Do not attempt to include both.</h4>
+      <p>Both <code>bootstrap.js</code> and <code>bootstrap.min.js</code> contain all plugins in a single file.</p>
+    </div>
+
+    <div class="bs-callout bs-callout-danger">
       <h4>Plugin dependencies</h4>
       <p>Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs.</p>
     </div>
@@ -64,6 +70,11 @@ $('#myModal').on('show.bs.modal', function (e) {
   if (!data) return e.preventDefault() // stops modal from being shown
 })
 {% endhighlight %}
+
+    <div class="bs-callout bs-callout-warning" id="callout-third-party-libs">
+      <h4>Third-party libraries</h4>
+      <p><strong>Bootstrap does not officially support third-party JavaScript libraries</strong> like Prototype or jQuery UI. Despite <code>.noConflict</code> and namespaced events, there may be compatibility problems that you need to fix on your own. Ask on the <a href="http://groups.google.com/group/twitter-bootstrap">mailing list</a> if you need help.</p>
+    </div>
   </div>
 
 
@@ -75,7 +86,7 @@ $('#myModal').on('show.bs.modal', function (e) {
       <h1>Transitions <small>transition.js</small></h1>
     </div>
     <h3>About transitions</h3>
-    <p>For simple transition effects, include transition.js once alongside the other JS files. If you're using the compiled (or minified) bootstrap.js, there is no need to include this&mdash;it's already there.</p>
+    <p>For simple transition effects, include <code>transition.js</code> once alongside the other JS files. If you're using the compiled (or minified) <code>bootstrap.js</code>, there is no need to include this&mdash;it's already there.</p>
     <h3>Use cases</h3>
     <p>A few examples of the transition plugin:</p>
     <ul>
@@ -94,7 +105,7 @@ $('#myModal').on('show.bs.modal', function (e) {
   ================================================== -->
   <div class="bs-docs-section" id="modals">
     <div class="page-header">
-      <h1>Modals <small>bootstrap-modal.js</small></h1>
+      <h1>Modals <small>modal.js</small></h1>
     </div>
 
     <h2 id="modals-examples">Examples</h2>
@@ -118,7 +129,7 @@ $('#myModal').on('show.bs.modal', function (e) {
               <button type="button" class="btn btn-primary">Save changes</button>
             </div>
           </div><!-- /.modal-content -->
-        </div><!-- /.modal-dalog -->
+        </div><!-- /.modal-dialog -->
       </div><!-- /.modal -->
     </div><!-- /example -->
 {% highlight html %}
@@ -137,7 +148,7 @@ $('#myModal').on('show.bs.modal', function (e) {
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div><!-- /.modal-content -->
-  </div><!-- /.modal-dalog -->
+  </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 {% endhighlight %}
 
@@ -181,7 +192,7 @@ $('#myModal').on('show.bs.modal', function (e) {
           </div>
 
         </div><!-- /.modal-content -->
-      </div><!-- /.modal-dalog -->
+      </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
     <div class="bs-example" style="padding-bottom: 24px;">
@@ -207,7 +218,7 @@ $('#myModal').on('show.bs.modal', function (e) {
           <a href="#" class="btn btn-primary">Save changes</a>
         </div>
       </div><!-- /.modal-content -->
-    </div><!-- /.modal-dalog -->
+    </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 {% endhighlight %}
 
@@ -259,7 +270,7 @@ $('#myModal').on('show.bs.modal', function (e) {
          <td>remote</td>
          <td>path</td>
          <td>false</td>
-         <td><p>If a remote url is provided, content will be loaded via jQuery's <code>load</code> method and injected into the <code>.modal-body</code>. If you're using the data api, you may alternatively use the <code>href</code> tag to specify the remote source. An example of this is shown below:</p>
+         <td><p>If a remote URL is provided, content will be loaded via jQuery's <code>load</code> method and injected into the <code>.modal-body</code>. If you're using the data api, you may alternatively use the <code>href</code> tag to specify the remote source. An example of this is shown below:</p>
 {% highlight html %}
 <a data-toggle="modal" href="remote.html" data-target="#modal">Click me</a>
 {% endhighlight %}
@@ -305,7 +316,7 @@ $('#myModal').modal({
        </tr>
        <tr>
          <td>shown</td>
-         <td>This event is fired when the modal has been made visible to the user (will wait for css transitions to complete).</td>
+         <td>This event is fired when the modal has been made visible to the user (will wait for CSS transitions to complete).</td>
        </tr>
        <tr>
          <td>hide</td>
@@ -313,7 +324,7 @@ $('#myModal').modal({
        </tr>
        <tr>
          <td>hidden</td>
-         <td>This event is fired when the modal has finished being hidden from the user (will wait for css transitions to complete).</td>
+         <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).</td>
        </tr>
       </tbody>
     </table>
@@ -330,7 +341,7 @@ $('#myModal').on('hidden.bs.modal', function () {
         ================================================== -->
         <section id="dropdowns">
           <div class="page-header">
-            <h1>Dropdowns <small>bootstrap-dropdown.js</small></h1>
+            <h1>Dropdowns <small>dropdown.js</small></h1>
           </div>
 
 
@@ -340,9 +351,14 @@ $('#myModal').on('hidden.bs.modal', function () {
           <h3>Within a navbar</h3>
           <div class="bs-example">
             <div id="navbar-example" class="navbar navbar-static">
-              <div class="navbar-inner">
-                <div class="container" style="width: auto;">
-                  <a class="navbar-brand" href="#">Project Name</a>
+              <div class="container" style="width: auto;">
+                <a class="navbar-brand" href="#">Project Name</a>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-js-navbar-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <div class="nav-collapse collapse bs-js-navbar-collapse">
                   <ul class="nav navbar-nav" role="navigation">
                     <li class="dropdown">
                       <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -377,8 +393,8 @@ $('#myModal').on('hidden.bs.modal', function () {
                       </ul>
                     </li>
                   </ul>
-                </div>
-              </div>
+                </div><!-- /.nav-collapse -->
+              </div><!-- /.container -->
             </div> <!-- /navbar-example -->
           </div> <!-- /example -->
 
@@ -467,7 +483,7 @@ $('.dropdown-toggle').dropdown()
         ================================================== -->
         <section id="scrollspy">
           <div class="page-header">
-            <h1>ScrollSpy <small>bootstrap-scrollspy.js</small></h1>
+            <h1>ScrollSpy <small>scrollspy.js</small></h1>
           </div>
 
 
@@ -494,7 +510,7 @@ $('.dropdown-toggle').dropdown()
                 </div>
               </div>
             </div>
-            <div data-spy="scroll" data-target="#navbar-example" data-offset="0" class="scrollspy-example">
+            <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="scrollspy-example">
               <h4 id="fat">@fat</h4>
               <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
               <h4 id="mdo">@mdo</h4>
@@ -527,7 +543,7 @@ $('.dropdown-toggle').dropdown()
 $('#navbar-example').scrollspy()
 {% endhighlight %}
 
-          <div class="bs-callout">
+          <div class="bs-callout bs-callout-danger">
             <h4>Resolvable ID targets required</h4>
             <p>Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the DOM like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.</p>
           </div>
@@ -591,7 +607,7 @@ $('#myScrollspy').on('activate.bs.scrollspy', function () {
         ================================================== -->
         <section id="tabs">
           <div class="page-header">
-            <h1>Togglable tabs <small>bootstrap-tab.js</small></h1>
+            <h1>Togglable tabs <small>tab.js</small></h1>
           </div>
 
 
@@ -718,7 +734,7 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         ================================================== -->
         <section id="tooltips">
           <div class="page-header">
-            <h1>Tooltips <small>bootstrap-tooltip.js</small></h1>
+            <h1>Tooltips <small>tooltip.js</small></h1>
           </div>
 
           <h2>Examples</h2>
@@ -739,9 +755,10 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
             </ul>
           </div><!-- /example -->
 
-
-          <h3>Tooltips in input groups</h3>
-          <p>When using tooltips and popovers with the Bootstrap input groups, you'll have to set the <code>container</code> (documented below) option to avoid unwanted side effects.</p>
+          <div class="bs-callout bs-callout-info">
+            <h4>Tooltips in button groups and input groups require special setting</h4>
+            <p>When using tooltips on elements within a <code>.btn-group</code> or an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> (documented below) to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip is triggered).</p>
+          </div>
 
           <hr class="bs-docs-separator">
 
@@ -768,13 +785,13 @@ $('#example').tooltip(options)
                <td>animation</td>
                <td>boolean</td>
                <td>true</td>
-               <td>apply a css fade transition to the tooltip</td>
+               <td>apply a CSS fade transition to the tooltip</td>
              </tr>
              <tr>
                <td>html</td>
                <td>boolean</td>
                <td>false</td>
-               <td>Insert html into the tooltip. If false, jquery's <code>text</code> method will be used to insert content into the dom. Use text if you're worried about XSS attacks.</td>
+               <td>Insert HTML into the tooltip. If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</td>
              </tr>
              <tr>
                <td>placement</td>
@@ -798,7 +815,7 @@ $('#example').tooltip(options)
                <td>trigger</td>
                <td>string</td>
                <td>'hover focus'</td>
-               <td>how tooltip is triggered - click | hover | focus | manual. Note you case pass trigger multiple, space seperated, trigger types.</td>
+               <td>how tooltip is triggered - click | hover | focus | manual. Note you case pass trigger multiple, space separated, trigger types.</td>
              </tr>
              <tr>
                <td>delay</td>
@@ -815,12 +832,12 @@ $('#example').tooltip(options)
                <td>string | false</td>
                <td>false</td>
                <td>
-                <p>Appends the tooltip to a specific element <code>container: 'body'</code></p>
+                <p>Appends the tooltip to a specific element. Example: <code>container: 'body'</code></p>
                </td>
              </tr>
             </tbody>
           </table>
-          <div class="bs-callout">
+          <div class="bs-callout bs-callout-info">
             <h4>Data attributes for individual tooltips</h4>
             <p>Options for individual tooltips can alternatively be specified through the use of data attributes, as explained above.</p>
           </div>
@@ -858,15 +875,19 @@ $('#example').tooltip(options)
       ================================================== -->
       <section id="popovers">
         <div class="page-header">
-          <h1>Popovers <small>bootstrap-popover.js</small></h1>
+          <h1>Popovers <small>popover.js</small></h1>
         </div>
 
         <h2>Examples</h2>
         <p>Add small overlays of content, like those on the iPad, to any element for housing secondary information. Hover over the button to trigger the popover.</p>
 
-        <div class="bs-callout">
+        <div class="bs-callout bs-callout-danger">
           <h4>Plugin dependency</h4>
           <p>Popovers require the <a href="#tooltips">tooltip plugin</a> to be included in your version of Bootstrap.</p>
+        </div>
+        <div class="bs-callout bs-callout-info">
+          <h4>Popovers in button groups and input groups require special setting</h4>
+          <p>When using popovers on elements within a <code>.btn-group</code> or an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> (documented below) to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the popover is triggered).</p>
         </div>
 
         <h3>Static popover</h3>
@@ -915,10 +936,10 @@ $('#example').tooltip(options)
         <h4>Four directions</h4>
         <div class="bs-example tooltip-demo">
           <ul class="bs-example-tooltips">
-            <li><a href="#" class="btn" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on top">Popover on top</a></li>
-            <li><a href="#" class="btn" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on right">Popover on right</a></li>
-            <li><a href="#" class="btn" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on bottom">Popover on bottom</a></li>
-            <li><a href="#" class="btn" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on left">Popover on left</a></li>
+            <li><a href="#" class="btn btn-default" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on top">Popover on top</a></li>
+            <li><a href="#" class="btn btn-default" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on right">Popover on right</a></li>
+            <li><a href="#" class="btn btn-default" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on bottom">Popover on bottom</a></li>
+            <li><a href="#" class="btn btn-default" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on left">Popover on left</a></li>
           </ul>
         </div><!-- /example -->
 
@@ -946,13 +967,13 @@ $('#example').tooltip(options)
               <td>animation</td>
               <td>boolean</td>
               <td>true</td>
-              <td>apply a css fade transition to the tooltip</td>
+              <td>apply a CSS fade transition to the tooltip</td>
             </tr>
             <tr>
               <td>html</td>
               <td>boolean</td>
               <td>false</td>
-              <td>Insert html into the popover. If false, jquery's <code>text</code> method will be used to insert content into the dom. Use text if   you're worried about XSS attacks.</td>
+              <td>Insert HTML into the popover. If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</td>
             </tr>
             <tr>
               <td>placement</td>
@@ -999,12 +1020,12 @@ $('#example').tooltip(options)
               <td>string | false</td>
               <td>false</td>
               <td>
-               <p>Appends the popover to a specific element <code>container: 'body'</code></p>
+               <p>Appends the popover to a specific element. Example: <code>container: 'body'</code></p>
               </td>
             </tr>
           </tbody>
         </table>
-        <div class="bs-callout">
+        <div class="bs-callout bs-callout-info">
           <h4>Data attributes for individual popovers</h4>
           <p>Options for individual popovers can alternatively be specified through the use of data attributes, as explained above.</p>
         </div>
@@ -1039,7 +1060,7 @@ $('#example').tooltip(options)
       ================================================== -->
       <div class="bs-docs-section" id="js-alerts">
         <div class="page-header">
-          <h1>Alert messages <small>bootstrap-alert.js</small></h1>
+          <h1>Alert messages <small>alert.js</small></h1>
         </div>
 
 
@@ -1101,7 +1122,7 @@ $('#example').tooltip(options)
             </tr>
             <tr>
               <td>closed</td>
-              <td>This event is fired when the alert has been closed (will wait for css transitions to complete).</td>
+              <td>This event is fired when the alert has been closed (will wait for CSS transitions to complete).</td>
             </tr>
           </tbody>
         </table>
@@ -1118,7 +1139,7 @@ $('#my-alert').bind('closed.bs.alert', function () {
           ================================================== -->
           <div class="bs-docs-section" id="js-buttons">
             <div class="page-header">
-              <h1>Buttons <small>bootstrap-button.js</small></h1>
+              <h1>Buttons <small>button.js</small></h1>
             </div>
 
             <h2>Example uses</h2>
@@ -1224,7 +1245,7 @@ $('.nav-tabs').button()
 
             <h4>$().button('toggle')</h4>
             <p>Toggles push state. Gives the button the appearance that it has been activated.</p>
-            <div class="bs-callout">
+            <div class="bs-callout bs-callout-info">
               <h4>Auto toggling</h4>
               <p>You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.</p>
             </div>
@@ -1239,7 +1260,7 @@ $('.nav-tabs').button()
 <button type="button" class="btn" data-loading-text="loading stuff...">...</button>
 {% endhighlight %}
 
-            <div class="bs-callout">
+            <div class="bs-callout bs-callout-danger">
               <h4>Cross-browser compatibility</h4>
               <p><a href="https://github.com/twitter/bootstrap/issues/793">Firefox persists the disabled state across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>.</p>
             </div>
@@ -1263,13 +1284,13 @@ $('.nav-tabs').button()
           ================================================== -->
           <section id="collapse">
             <div class="page-header">
-              <h1>Collapse <small>bootstrap-collapse.js</small></h1>
+              <h1>Collapse <small>collapse.js</small></h1>
             </div>
 
             <h3>About</h3>
             <p>Get base styles and flexible support for collapsible components like accordions and navigation.</p>
 
-            <div class="bs-callout">
+            <div class="bs-callout bs-callout-danger">
               <h4>Plugin dependency</h4>
               <p>Collapse requires the <a href="#transitions">transitions plugin</a> to be included in your version of Bootstrap.</p>
             </div>
@@ -1374,7 +1395,7 @@ $('.nav-tabs').button()
             <h2>Usage</h2>
 
             <h3>Via data attributes</h3>
-            <p>Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a css selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
+            <p>Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a CSS selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
             <p>To add accordion-like group management to a collapsible control, add the data attribute <code>data-parent="#selector"</code>. Refer to the demo to see this in action.</p>
 
             <h3>Via JavaScript</h3>
@@ -1446,7 +1467,7 @@ $('#myCollapsible').collapse({
                </tr>
                <tr>
                  <td>shown</td>
-                 <td>This event is fired when a collapse element has been made visible to the user (will wait for css transitions to complete).</td>
+                 <td>This event is fired when a collapse element has been made visible to the user (will wait for CSS transitions to complete).</td>
                </tr>
                <tr>
                  <td>hide</td>
@@ -1456,7 +1477,7 @@ $('#myCollapsible').collapse({
                </tr>
                <tr>
                  <td>hidden</td>
-                 <td>This event is fired when a collapse element has been hidden from the user (will wait for css transitions to complete).</td>
+                 <td>This event is fired when a collapse element has been hidden from the user (will wait for CSS transitions to complete).</td>
                </tr>
               </tbody>
             </table>
@@ -1473,7 +1494,7 @@ $('#myCollapsible').on('hidden.bs.collapse', function () {
           ================================================== -->
           <section id="carousel">
             <div class="page-header">
-              <h1>Carousel <small>bootstrap-carousel.js</small></h1>
+              <h1>Carousel <small>carousel.js</small></h1>
             </div>
 
             <h2>Examples</h2>
@@ -1536,7 +1557,7 @@ $('#myCollapsible').on('hidden.bs.collapse', function () {
 
             <h3>Optional captions</h3>
             <p>Add captions to your slides easily with the <code>.carousel-caption</code> element within any <code>.item</code>. Place just about any optional HTML within there and it will be automatically aligned and formatted.</p>
-            <div class="bs-callout">
+            <div class="bs-callout bs-callout-info">
               <h4>Responsive visibility</h4>
               <p><strong>Captions are hidden by default</strong> and will show up only with viewports greater than 768px wide.</p>
             </div>
@@ -1690,7 +1711,7 @@ $('#myCarousel').on('slide.bs.carousel', function () {
           ================================================== -->
           <section id="affix">
             <div class="page-header">
-              <h1>Affix <small>bootstrap-affix.js</small></h1>
+              <h1>Affix <small>affix.js</small></h1>
             </div>
 
             <h2>Example</h2>
@@ -1707,7 +1728,7 @@ $('#myCarousel').on('slide.bs.carousel', function () {
 <div data-spy="affix" data-offset-top="200">...</div>
 {% endhighlight %}
 
-            <div class="bs-callout">
+            <div class="bs-callout bs-callout-warning">
               <h4>Requires positioning</h4>
               <p>You must manage the position of a pinned element and the behavior of its immediate parent. Position is controlled by <code>affix</code>, <code>affix-top</code>, and <code>affix-bottom</code>. Remember to check for a potentially collapsed parent when the affix kicks in as it's removing content from the normal flow of the page.</p>
             </div>
