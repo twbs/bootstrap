@@ -6,8 +6,8 @@
 .navbar {
   position: relative;
   margin-bottom: 20px;
-  padding-left: @navbar-padding;
-  padding-right: @navbar-padding;
+  padding-left: @navbar-padding-horizontal;
+  padding-right: @navbar-padding-horizontal;
   background-color: @navbar-bg;
   border-radius: @border-radius-base;
 
@@ -100,7 +100,7 @@
   max-width: 200px;
   margin-left: auto;
   margin-right: auto;
-  padding: @navbar-padding;
+  padding: @navbar-padding-vertical @navbar-padding-horizontal;
   font-size: @font-size-large;
   font-weight: 500;
   line-height: @line-height-computed;
@@ -298,7 +298,7 @@
 
   .navbar-brand {
     float: left;
-    margin-left: -(@navbar-padding);
+    margin-left: -(@navbar-padding-horizontal);
     margin-right: 5px;
   }
   .navbar-nav {
