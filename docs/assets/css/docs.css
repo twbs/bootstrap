@@ -135,7 +135,17 @@ body {
   background-color: #b94a48;
 }
 
-
+.swatch { padding: 0 }
+.swatch div {
+  margin-top: 35px;
+  width: 38px;
+  display: block;
+  height: 38px;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
 
 /* Docs pages and sections
 -------------------------------------------------- */

@@ -81,6 +81,17 @@
       inputsVariables.val('')
     })
 
+    // color preview
+    $('.color-preview input').on('input', function (e) {
+      var color = $(e.target).val().replace('#', '');
+      var $swatch = $(e.target).closest('.color-preview').find('.swatch div');
+      if (color) {
+        $swatch.css('background-color', '#' + color);
+      } else {
+        $swatch.css('background-color', $swatch.data('default-color'));
+      }
+    });
+
     // request built javascript
     $('.bs-customize-download .btn').on('click', function (e) {
       e.preventDefault()

@@ -372,15 +372,6 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
 
       <h2 id="variables-basics">Basics</h2>
 
-      <h3>Body background</h3>
-      <div class="row">
-        <div class="col-lg-6">
-          <label>@body-bg</label>
-          <input type="text" placeholder="#fff">
-          <p class="help-block">Background color applied to <code>&lt;body&gt;</code>.</p>
-        </div>
-      </div>
-
       <h3>Typography</h3>
       <div class="row">
         <div class="col-lg-6">
@@ -426,35 +417,111 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
 
       <h3>Colors</h3>
       <div class="row">
+
+        <!--Primary Colors-->
         <div class="col-lg-6">
-          <p>Define custom colors used in several contexts.</p>
-          <label>@brand-primary</label>
-          <input type="text" placeholder="#428bca">
-          <p class="help-block">Used for primary buttons, panels and more.</p>
-          <label>@brand-success</label>
-          <input type="text" placeholder="#5cb85c">
-          <p class="help-block">Used to indicate success.</p>
-          <label>@brand-warning</label>
-          <input type="text" placeholder="#f0ad4e">
-          <p class="help-block">Used to indicate a warning.</p>
-          <label>@brand-danger</label>
-          <input type="text" placeholder="#d9534f">
-          <p class="help-block">Used to indicate danger.</p>
-          <label>@brand-info</label>
-          <input type="text" placeholder="#5bc0de">
-          <p class="help-block">Used to indicate informational content.</p>
+          <div class="row color-preview">
+            <div class="col-11 col-lg-10">
+              <label>@body-bg</label>
+              <input type="text" placeholder="#fff">
+              <p class="help-block">Background color applied to <code>&lt;body&gt;</code>.</p>
+            </div>
+            <div class="col-1 col-lg-2 swatch">
+              <div class="swatch" data-default-color="#fff" style="background-color: #fff"></div>
+            </div>
+          </div>
+
+          <div class="row color-preview">
+            <div class="col-11 col-lg-10">
+              <label>@brand-primary</label>
+              <input type="text" placeholder="#428bca">
+              <p class="help-block">Used for primary buttons, panels and more.</p>
+            </div>
+            <div class="col-1 col-lg-2 swatch">
+              <div data-default-color="#428bca" style="background-color: #428bca"></div>
+            </div>
+          </div>
+
+          <div class="row color-preview">
+            <div class="col-11 col-lg-10">
+              <label>@brand-success</label>
+              <input type="text" placeholder="#5cb85c">
+              <p class="help-block">Used to indicate success.</p>
+            </div>
+            <div class="col-1 col-lg-2 swatch">
+              <div data-default-color="#5cb85c" style="background-color: #5cb85c"></div>
+            </div>
+          </div>
+
+          <div class="row color-preview">
+            <div class="col-11 col-lg-10">
+              <label>@brand-warning</label>
+              <input type="text" placeholder="#f0ad4e">
+              <p class="help-block">Used to indicate a warning.</p>
+            </div>
+            <div class="col-1 col-lg-2 swatch">
+              <div data-default-color="#f0ad4e" style="background-color: #f0ad4e"></div>
+            </div>
+          </div>
+
+          <div class="row color-preview">
+            <div class="col-11 col-lg-10">
+              <label>@brand-danger</label>
+              <input type="text" placeholder="#d9534f">
+              <p class="help-block">Used to indicate danger.</p>
+            </div>
+            <div class="col-1 col-lg-2 swatch">
+              <div data-default-color="#d9534f" style="background-color: #d9534f"></div>
+            </div>
+          </div>
+
+          <div class="row color-preview">
+            <div class="col-11 col-lg-10">
+              <label>@brand-info</label>
+              <input type="text" placeholder="#5bc0de">
+              <p class="help-block">Used to indicate informational content.</p>
+            </div>
+            <div class="col-1 col-lg-2 swatch">
+              <div data-default-color="#5bc0de" style="background-color: #5bc0de"></div>
+            </div>
+          </div>
         </div>
+
+        <!--Text Colors-->
         <div class="col-lg-6">
-          <p>Define your preferred colors for standard text and links.</p>
-          <label>@text-color</label>
-          <input type="text" placeholder="@gray-dark">
-          <p class="help-block">Global color set on the body.</p>
-          <label>@link-color</label>
-          <input type="text" placeholder="@brand-primary">
-          <p class="help-block">Global link color for text.</p>
-          <label>@link-color-hover</label>
-          <input type="text" placeholder="darken(@link-color, 15%)">
-          <p class="help-block">Automatically darken links on hover via color function.</p>
+          <div class="row color-preview">
+            <div class="col-11 col-lg-10">
+              <label>@text-color</label>
+              <input type="text" placeholder="#333333">
+              <p class="help-block">Global color set on the body.</p>
+            </div>
+            <div class="col-1 col-lg-2 swatch" style="padding: 0">
+              <div data-default-color="#333333" style="background-color: #333333"></div>
+            </div>
+          </div>
+
+          <div class="row color-preview">
+            <div class="col-11 col-lg-10">
+              <label>@link-color</label>
+              <input type="text" placeholder="#428bca">
+              <p class="help-block">Global link color for text.</p>
+            </div>
+            <div class="col-1 col-lg-2 swatch">
+              <div data-default-color="#428bca" style="background-color: #428bca"></div>
+            </div>
+          </div>
+
+          <div class="row color-preview">
+            <div class="col-11 col-lg-10">
+              <label>@link-color-hover</label>
+              <input type="text" placeholder="#2a6496">
+              <p class="help-block">Automatically darken links on hover via color function.</p>
+            </div>
+            <div class="col-1 col-lg-2 swatch">
+              <div data-default-color="#2a6496" style="background-color: #2a6496"></div>
+            </div>
+          </div>
+
         </div>
       </div>
 
