@@ -1573,7 +1573,6 @@ textarea::-webkit-input-placeholder {
   margin-left: 10px;
 }
 
-select.input-large,
 textarea.input-large,
 input[type="text"].input-large,
 input[type="password"].input-large,
@@ -1595,7 +1594,6 @@ input[type="color"].input-large {
   border-radius: 6px;
 }
 
-select.input-small,
 textarea.input-small,
 input[type="text"].input-small,
 input[type="password"].input-small,
@@ -1615,6 +1613,16 @@ input[type="color"].input-small {
   padding: 5px 10px;
   font-size: 12px;
   border-radius: 3px;
+}
+
+select.input-large {
+  height: 56px;
+  line-height: 56px;
+}
+
+select.input-small {
+  height: 30px;
+  line-height: 30px;
 }
 
 .has-warning .help-block,
