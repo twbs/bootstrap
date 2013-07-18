@@ -296,7 +296,7 @@ $(function () {
         $("head").append('<style> .tooltip.right { white-space: nowrap; } .tooltip.right .tooltip-inner { max-width: none; } </style>')
 
         var container = $("<div />").appendTo("body")
-          , target = $('<a href="#" rel="tooltip" title="very very very very very very very very long tooltip in one line">To my right</a>')
+          , target = $('<a href="#" rel="tooltip" title="very very very very very very very very long tooltip in one line"></a>')
               .appendTo(container)
               .tooltip({placement: 'right'})
               .tooltip('show')

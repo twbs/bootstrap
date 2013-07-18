@@ -804,7 +804,7 @@
 
   var Modal = function (element, options) {
     this.options   = options
-    this.$element  = $(element).delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
+    this.$element  = $(element).on('click.dismiss.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
     this.$backdrop =
     this.isShown   = null
 
@@ -939,11 +939,12 @@
       this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
         .appendTo(document.body)
 
-      this.$backdrop.click(
-        this.options.backdrop == 'static' ?
-          $.proxy(this.$element[0].focus, this.$element[0])
-        : $.proxy(this.hide, this)
-      )
+      this.$element.on('click', $.proxy(function (e) {
+        if (e.target !== e.currentTarget) return
+        this.options.backdrop == 'static'
+          ? this.$element[0].focus.call(this.$element[0])
+          : this.hide.call(this)
+      }, this))
 
       if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
 
@@ -1442,11 +1443,13 @@
   }
 
   Popover.prototype.getContent = function () {
-    var content = typeof this.options.content == 'function' ?
-      this.options.content.call(this.$element[0]) :
-      this.options.content
+    var $e = this.$element
+    var o  = this.options
 
-    return content || this.$element.attr('data-content')
+    return $e.attr('data-content')
+      || (typeof o.content == 'function' ?
+            o.content.call($e[0]) :
+            o.content)
   }
 
   Popover.prototype.tip = function () {
