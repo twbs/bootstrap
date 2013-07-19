@@ -3277,7 +3277,7 @@ button.close {
 
 .breadcrumb {
   padding: 8px 15px;
-  margin: 0 0 20px;
+  margin-bottom: 20px;
   list-style: none;
   background-color: #f5f5f5;
   border-radius: 4px;
@@ -3285,13 +3285,12 @@ button.close {
 
 .breadcrumb > li {
   display: inline-block;
-  text-shadow: 0 1px 0 #fff;
 }
 
 .breadcrumb > li + li:before {
   display: inline-block;
   padding: 0 5px;
-  color: #ccc;
+  color: #cccccc;
   content: "/\00a0";
 }
 
@@ -4077,7 +4076,7 @@ a.thumbnail:focus {
   font-size: 12px;
   font-weight: bold;
   line-height: 1;
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -4091,7 +4090,7 @@ a.thumbnail:focus {
 
 a.badge:hover,
 a.badge:focus {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   cursor: pointer;
 }
@@ -4104,7 +4103,7 @@ a.badge:focus {
 a.list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
   color: #428bca;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 .nav-pills > li > a > .badge {

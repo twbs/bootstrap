@@ -5,21 +5,20 @@
 
 .breadcrumb {
   padding: 8px 15px;
-  margin: 0 0 @line-height-computed;
+  margin-bottom: @line-height-computed;
   list-style: none;
   background-color: @breadcrumb-bg;
   border-radius: @border-radius-base;
   > li {
     display: inline-block;
-    text-shadow: @breadcrumb-text-shadow;
     &+li:before {
       display: inline-block;
       content: "/\00a0"; // Unicode space added since inline-block means non-collapsing white-space
       padding: 0 5px;
-      color: #ccc;
+      color: @breadcrumb-color;
     }
   }
   > .active {
-    color: @gray-light;
+    color: @breadcrumb-active-color;
   }
 }
