@@ -1573,6 +1573,7 @@ textarea::-webkit-input-placeholder {
   margin-left: 10px;
 }
 
+select.input-large,
 textarea.input-large,
 input[type="text"].input-large,
 input[type="password"].input-large,
@@ -1594,6 +1595,7 @@ input[type="color"].input-large {
   border-radius: 6px;
 }
 
+select.input-small,
 textarea.input-small,
 input[type="text"].input-small,
 input[type="password"].input-small,
