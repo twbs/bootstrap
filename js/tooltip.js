@@ -102,9 +102,8 @@
     var self = obj instanceof this.constructor ?
       obj : $(obj.currentTarget)[this.type](options).data('bs.' + this.type)
 
-    if (!self.options.delay || !self.options.delay.show) return self.show()
-
     clearTimeout(this.timeout)
+    if (!self.options.delay || !self.options.delay.show) return self.show()
 
     self.hoverState = 'in'
     this.timeout    = setTimeout(function () {
@@ -240,12 +239,12 @@
 
     function removeWithAnimation() {
       var timeout = setTimeout(function () {
-        $tip.off($.support.transition.end).detach()
+        $tip.filter(':not(.in)').off($.support.transition.end).detach()
       }, 500)
 
       $tip.one($.support.transition.end, function () {
         clearTimeout(timeout)
-        $tip.detach()
+        $tip.filter(':not(.in)').detach()
       })
     }
 
