@@ -1,4 +1,5 @@
 BOOTSTRAP ?= ./dist/css/bootstrap.css
+BOOTSTRAP_MIN ?= ./dist/css/bootstrap.min.css
 BOOTSTRAP_LESS ?= ./less/bootstrap.less
 DATE=$(shell date +%I:%M%p)
 CHECK=\033[32m✔ Done\033[39m
@@ -20,6 +21,7 @@ build:
 	@echo "             ${CHECK}"
 	@printf "Compiling LESS with Recess..."
 	@recess --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
+	@recess --compress ${BOOTSTRAP_LESS} > ${BOOTSTRAP_MIN}
 	@echo "               ${CHECK}"
 	@printf "Prepping documentation assets..."
 	@cp js/tests/vendor/jquery.js assets/js/
