@@ -87,32 +87,20 @@
 
 // Danger (red)
 .progress-bar-danger {
-  background-color: @progress-bar-danger-bg;
-  .progress-striped & {
-    #gradient > .striped(@progress-bar-danger-bg);
-  }
+  .progress-bar-variant(@progress-bar-danger-bg);
 }
 
 // Success (green)
 .progress-bar-success {
-  background-color: @progress-bar-success-bg;
-  .progress-striped & {
-    #gradient > .striped(@progress-bar-success-bg);
-  }
+  .progress-bar-variant(@progress-bar-success-bg);
 }
 
 // Warning (orange)
 .progress-bar-warning {
-  background-color: @progress-bar-warning-bg;
-  .progress-striped & {
-    #gradient > .striped(@progress-bar-warning-bg);
-  }
+  .progress-bar-variant(@progress-bar-warning-bg);
 }
 
 // Info (teal)
 .progress-bar-info {
-  background-color: @progress-bar-info-bg;
-  .progress-striped & {
-    #gradient > .striped(@progress-bar-info-bg);
-  }
+  .progress-bar-variant(@progress-bar-info-bg);
 }

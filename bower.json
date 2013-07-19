@@ -3,6 +3,6 @@
   "version": "3.0.0",
   "main": ["./docs/assets/js/bootstrap.js", "./docs/assets/css/bootstrap.css"],
   "dependencies": {
-    "jquery": "~1.8.0"
+    "jquery": ">= 1.9.0"
   }
 }

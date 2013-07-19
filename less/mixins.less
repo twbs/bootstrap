@@ -71,7 +71,7 @@
 // CSS image replacement
 // Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
 .hide-text() {
-  font: 0/0 a;
+  font: ~"0/0" a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;
@@ -110,62 +110,46 @@
 // Transitions
 .transition(@transition) {
   -webkit-transition: @transition;
-     -moz-transition: @transition;
-       -o-transition: @transition;
           transition: @transition;
 }
 .transition-delay(@transition-delay) {
   -webkit-transition-delay: @transition-delay;
-     -moz-transition-delay: @transition-delay;
-       -o-transition-delay: @transition-delay;
           transition-delay: @transition-delay;
 }
 .transition-duration(@transition-duration) {
   -webkit-transition-duration: @transition-duration;
-     -moz-transition-duration: @transition-duration;
-       -o-transition-duration: @transition-duration;
           transition-duration: @transition-duration;
 }
 
 // Transformations
 .rotate(@degrees) {
   -webkit-transform: rotate(@degrees);
-     -moz-transform: rotate(@degrees);
       -ms-transform: rotate(@degrees);
-       -o-transform: rotate(@degrees);
           transform: rotate(@degrees);
 }
 .scale(@ratio) {
   -webkit-transform: scale(@ratio);
-     -moz-transform: scale(@ratio);
       -ms-transform: scale(@ratio);
-       -o-transform: scale(@ratio);
           transform: scale(@ratio);
 }
 .translate(@x, @y) {
   -webkit-transform: translate(@x, @y);
-     -moz-transform: translate(@x, @y);
       -ms-transform: translate(@x, @y);
-       -o-transform: translate(@x, @y);
           transform: translate(@x, @y);
 }
 .skew(@x, @y) {
   -webkit-transform: skew(@x, @y);
-     -moz-transform: skew(@x, @y);
       -ms-transform: skewX(@x) skewY(@y); // See https://github.com/twitter/bootstrap/issues/4885
-       -o-transform: skew(@x, @y);
           transform: skew(@x, @y);
 }
 .translate3d(@x, @y, @z) {
   -webkit-transform: translate3d(@x, @y, @z);
-     -moz-transform: translate3d(@x, @y, @z);
-       -o-transform: translate3d(@x, @y, @z);
           transform: translate3d(@x, @y, @z);
 }
 
 // Backface visibility
 // Prevent browsers from flickering when using CSS 3D transforms.
-// Default value is `visible`, but can be changed to `hidden
+// Default value is `visible`, but can be changed to `hidden`
 // See git pull https://github.com/dannykeane/bootstrap.git backface-visibility for examples
 .backface-visibility(@visibility){
 	-webkit-backface-visibility: @visibility;
@@ -175,16 +159,11 @@
 
 // Background clipping
 .background-clip(@clip) {
-  -webkit-background-clip: @clip;
-     -moz-background-clip: @clip;
           background-clip: @clip;
 }
 
 // Background sizing
 .background-size(@size) {
-  -webkit-background-size: @size;
-     -moz-background-size: @size;
-       -o-background-size: @size;
           background-size: @size;
 }
 
@@ -331,7 +310,7 @@
 // --------------------------------------------------
 
 // Short retina mixin for setting background-image and -size
-.retina-image(@file-1x, @file-2x, @width-1x, @height-1x) {
+.img-retina(@file-1x, @file-2x, @width-1x, @height-1x) {
   background-image: url("@{file-1x}");
 
   @media
@@ -359,6 +338,20 @@
   overflow: hidden;
   background-color: @top;
   border-bottom: 1px solid @bottom;
+}
+
+// Alerts
+// -------------------------
+.alert-variant(@background, @border, @text-color) {
+  background-color: @background;
+  border-color: @border;
+  color: @text-color;
+  hr {
+    border-top-color: darken(@border, 5%);
+  }
+  .alert-link {
+    color: darken(@text-color, 10%);
+  }
 }
 
 // Button psuedo states
@@ -392,6 +385,18 @@
   }
 }
 
+// Labels
+// -------------------------
+.label-variant(@color) {
+  background-color: @color;
+  &[href] {
+    &:hover,
+    &:focus {
+      background-color: darken(@color, 10%);
+    }
+  }
+}
+
 // Navbar vertical align
 // -------------------------
 // Vertically center elements in the navbar.
@@ -399,6 +404,15 @@
 .navbar-vertical-align(@element-height) {
   margin-top: ((@navbar-height - @element-height) / 2);
   margin-bottom: ((@navbar-height - @element-height) / 2);
+}
+
+// Progress bars
+// -------------------------
+.progress-bar-variant(@color) {
+  background-color: @color;
+  .progress-striped & {
+    #gradient > .striped(@color);
+  }
 }
 
 // Responsive utilities
@@ -411,7 +425,12 @@
   td& { display: table-cell !important; }
 }
 
-
+.responsive-invisibility() {
+  display: none !important;
+  tr& { display: none !important; }
+  th&,
+  td& { display: none !important; }
+}
 
 // Grid System
 // -----------
@@ -422,8 +441,6 @@
   margin-left: auto;
   .clearfix();
 }
-
-// Make a grid
 
 // Creates a wrapper for a series of columns
 .make-row() {
@@ -441,6 +458,7 @@
     margin-right: (@grid-gutter-width / -2);
   }
 }
+
 // Generate the columns
 .make-column(@columns) {
   position: relative;
@@ -456,6 +474,7 @@
     width: percentage((@columns / @grid-columns));
   }
 }
+
 // Generate the column offsets
 .make-column-offset(@columns) {
   @media (min-width: @grid-float-breakpoint) {
@@ -473,7 +492,22 @@
   }
 }
 
+// Generate the small columns
+.make-small-column(@columns) {
+  position: relative;
+  float: left;
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Inner gutter via padding
+  padding-left:  (@grid-gutter-width / 2);
+  padding-right: (@grid-gutter-width / 2);
+  @max-width: (@grid-float-breakpoint - 1);
 
+  // Calculate width based on number of columns available
+  @media (max-width: @max-width) {
+    width: percentage((@columns / @grid-columns));
+  }
+}
 
 // Framework mixins
 // --------------------------------------------------
@@ -481,6 +515,7 @@
 // Generate form validation states
 .form-field-validation(@text-color: #555, @border-color: #ccc, @background-color: #f5f5f5) {
   // Color the label text
+  .help-block,
   .control-label {
     color: @text-color;
   }

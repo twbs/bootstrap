@@ -2,7 +2,7 @@
 layout: default
 title: CSS
 slug: css
-lead: "Fundamental HTML elements styled and enhanced with extensible classes."
+lead: "Global CSS settings, fundamental HTML elements styled and enhanced with extensible classes, and an advanced grid system."
 ---
 
 
@@ -57,7 +57,7 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
 
 
 
-  <!-- Glyphicons icont font
+  <!-- Glyphicons icon font
   ================================================== -->
   <div class="bs-docs-section" id="glyphicons">
     <div class="page-header">
@@ -259,10 +259,10 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
 </div>
 {% endhighlight %}
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Need more examples?</h4>
       <p>We dive into more grid layouts in a separate page, free of chrome and documentation to better show you the power of the grid.</p>
-      <p><a class="btn btn-danger" target="_blank" href="../examples/grid/">More grid examples</a></p>
+      <p><a class="btn btn-danger" target="_blank" href="http://examples.getbootstrap.com/grid/">More grid examples</a></p>
     </div>
 
     <h3 id="grid-offsetting">Offsetting columns</h3>
@@ -341,7 +341,7 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
 {% endhighlight %}
 
     <h3 id="grid-less">LESS mixins and variables</h3>
-    <p>In addition to <a href="#grid-example">prebuilt grid classes</a> for fast layouts, Bootstrap includes LESS variables and mixins for quickly generating your own simple, semantic layouts.</p>
+    <p>In addition to <a href="#grid-example-basic">prebuilt grid classes</a> for fast layouts, Bootstrap includes LESS variables and mixins for quickly generating your own simple, semantic layouts.</p>
 
     <h4>Variables</h4>
     <p>Variables determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.</p>
@@ -520,7 +520,10 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
 <em>rendered as italicized text</em>
 {% endhighlight %}
 
-    <p>Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
+    <div class="bs-callout bs-callout-info">
+      <h4>Alternate elements</h4>
+      <p>Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
+    </div>
 
     <h3>Alignment classes</h3>
     <p>Easily realign text to components with text alignment classes.</p>
@@ -788,10 +791,10 @@ lead: "Fundamental HTML elements styled and enhanced with extensible classes."
 </dl>
 {% endhighlight %}
 
-    <h5>Auto-truncating</h5>
-    <p>
-      Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.
-    </p>
+    <div class="bs-callout bs-callout-info">
+      <h4>Auto-truncating</h4>
+      <p>Horizontal description lists will truncate terms that are too long to fit in the left column with <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.</p>
+    </div>
   </div>
 
 
@@ -878,7 +881,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h3 id="tables-striped">Striped</h3>
     <p>Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p>
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Cross-browser compatibility</h4>
       <p>Striped tables are styled via the <code>:nth-child</code> CSS selector, which is not available in IE8.</p>
     </div>
@@ -1045,8 +1048,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
 
-    <h2 id="tables-row-classes">Optional row classes</h2>
-    <p>Use contextual classes to color table rows.</p>
+    <h2 id="tables-row-classes">Contextual table classes</h2>
+    <p>Use contextual classes to color table rows or individual cells.</p>
     <table class="table table-bordered table-striped">
       <colgroup>
         <col class="col-lg-1">
@@ -1063,25 +1066,25 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           <td>
             <code>.success</code>
           </td>
-          <td>Indicates a successful or positive action.</td>
+          <td>Indicates a successful or positive action</td>
         </tr>
         <tr>
           <td>
             <code>.danger</code>
           </td>
-          <td>Indicates a dangerous or potentially negative action.</td>
+          <td>Indicates a dangerous or potentially negative action</td>
         </tr>
         <tr>
           <td>
             <code>.warning</code>
           </td>
-          <td>Indicates a warning that might need attention.</td>
+          <td>Indicates a warning that might need attention</td>
         </tr>
         <tr>
           <td>
-            <code>.info</code>
+            <code>.active</code>
           </td>
-          <td>Used as an alternative to the default styles.</td>
+          <td>Applies the hover color to a particular row or cell</td>
         </tr>
       </tbody>
     </table>
@@ -1090,42 +1093,64 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <thead>
           <tr>
             <th>#</th>
-            <th>Product</th>
-            <th>Payment Taken</th>
-            <th>Status</th>
+            <th>Column heading</th>
+            <th>Column heading</th>
+            <th>Column heading</th>
           </tr>
         </thead>
         <tbody>
           <tr class="success">
             <td>1</td>
-            <td>TB - Monthly</td>
-            <td>01/04/2012</td>
-            <td>Approved</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
           </tr>
           <tr class="danger">
-            <td>2</td>
-            <td>TB - Monthly</td>
-            <td>02/04/2012</td>
-            <td>Declined</td>
+            <td>3</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
           </tr>
           <tr class="warning">
-            <td>3</td>
-            <td>TB - Monthly</td>
-            <td>03/04/2012</td>
-            <td>Pending</td>
+            <td>5</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+          </tr>
+          <tr class="active">
+            <td>7</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
           </tr>
         </tbody>
       </table>
     </div><!-- /example -->
 {% highlight html %}
-...
 <tr class="success">
   <td>1</td>
-  <td>TB - Monthly</td>
-  <td>01/04/2012</td>
-  <td>Approved</td>
+  <td>Column content</td>
+  <td>Column content</td>
+  <td>Column content</td>
 </tr>
-...
 {% endhighlight %}
 
   </div>
@@ -1178,7 +1203,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h3 id="forms-inline">Inline form</h3>
     <p>Add <code>.form-inline</code> for left-aligned and inline-block controls for a compact layout.</p>
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Requires custom widths</h4>
       <p>Inputs, selects, and textareas are 100% wide by default in Bootstrap. To use the inline form, you'll have to set a width on the form controls used within.</p>
     </div>
@@ -1260,7 +1285,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h3>Inputs</h3>
     <p>Most common form control, text-based input fields. Includes support for all HTML5 types: text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color.</p>
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Type declaration required</h4>
       <p>Inputs will only be fully styled if their <code>type</code> is properly declared.</p>
     </div>
@@ -1408,12 +1433,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h3 id="forms-disabled-fieldsets">Disabled fieldsets</h3>
     <p>Add the <code>disabled</code> attribute to a <code>&lt;fieldset&gt;</code> to disable all the controls within the <code>&lt;fieldset&gt;</code> at once.</p>
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-warning">
       <h4>Link functionality of <code>&lt;a&gt;</code> not impacted</h4>
       <p>This class will only change the appearance of <code>&lt;a class="btn btn-default"&gt;</code> buttons, not their functionality. Use custom JavaScript to disable links here.</p>
     </div>
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Cross-browser compatibility</h4>
       <p>While Bootstrap will apply these styles in all browsers, IE and Safari don't actually support the <code>&lt;disabled&gt;</code> attribute on a <code>&lt;fieldset&gt;</code>. Use custom JavaScript to disable the fieldset in these browsers.</p>
     </div>
@@ -1462,19 +1487,19 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Validation styles are applied on a per-input basis. With horizontal forms, the <code>&lt;label class="control-label"&gt;</code> will always be styled.</p>
 
     <form class="bs-example form-horizontal">
-      <div class="control-group has-warning">
+      <div class="has-warning">
         <label class="control-label" for="inputWarning">Input with warning</label>
         <div class="controls">
           <input type="text" class="input-with-feedback" id="inputWarning">
         </div>
       </div>
-      <div class="control-group has-error">
+      <div class="has-error">
         <label class="control-label" for="inputError">Input with error</label>
         <div class="controls">
           <input type="text" class="input-with-feedback" id="inputError">
         </div>
       </div>
-      <div class="control-group has-success">
+      <div class="has-success">
         <label class="control-label" for="inputSuccess">Input with success</label>
         <div class="controls">
           <input type="text" class="input-with-feedback" id="inputSuccess">
@@ -1482,19 +1507,19 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div>
     </form>
 {% highlight html %}
-<div class="control-group has-warning">
+<div class="has-warning">
   <label class="control-label" for="inputWarning">Input with warning</label>
   <div class="controls">
     <input type="text" class="input-with-feedback" id="inputWarning">
   </div>
 </div>
-<div class="control-group has-error">
+<div class="has-error">
   <label class="control-label" for="inputError">Input with error</label>
   <div class="controls">
     <input type="text" class="input-with-feedback" id="inputError">
   </div>
 </div>
-<div class="control-group has-success">
+<div class="has-success">
   <label class="control-label" for="inputSuccess">Input with success</label>
   <div class="controls">
     <input type="text" class="input-with-feedback" id="inputSuccess">
@@ -1510,11 +1535,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h3 id="forms-input-groups">Input groups</h3>
     <p>Add text or buttons before, after, or on both sides of any text-based input. Use <code>.input-group</code> with an <code>.add-on</code> to prepend or append elements to an <code>&lt;input&gt;</code>.</p>
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Cross-browser compatibility</h4>
       <p>Avoid using <code>&lt;select&gt;</code> elements here as they cannot be fully styled in WebKit browsers.</p>
     </div>
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-info">
       <h4>Tooltips &amp; popovers in input groups require special setting</h4>
       <p>When using tooltips or popovers on elements within an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).</p>
     </div>
@@ -1747,12 +1772,26 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <input class="input-large" type="text" placeholder=".input-large">
         <input type="text" placeholder="Default input">
         <input class="input-small" type="text" placeholder=".input-small">
+
+        <select class="input-large">
+          <option value="">.input-large</option>
+        </select>
+        <select>
+          <option value="">Default select</option>
+        </select>
+        <select class="input-small">
+          <option value="">.input-small</option>
+        </select>
       </div>
     </form>
 {% highlight html %}
 <input class="input-large" type="text" placeholder=".input-large">
 <input type="text" placeholder="Default input">
 <input class="input-small" type="text" placeholder=".input-small">
+
+<select class="input-large">...</select>
+<select>...</select>
+<select class="input-small">...</select>
 {% endhighlight %}
 
     <h4>Column sizing</h4>
@@ -1897,7 +1936,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <button type="button" class="btn btn-default btn-large" disabled="disabled">Button</button>
 {% endhighlight %}
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Cross-browser compatibility</h4>
       <p>If you add the <code>disabled</code> attribute to a <code>&lt;button&gt;</code>, Internet Explorer 9 and below will render text gray with a nasty text-shadow that we cannot fix.</p>
     </div>
@@ -1915,7 +1954,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>
       We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
     </p>
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-warning">
       <h4>Link functionality not impacted</h4>
       <p>This class will only change the <code>&lt;a&gt;</code>'s appearance, not its functionality. Use custom JavaScript to disable links here.</p>
     </div>
@@ -1936,7 +1975,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <input class="btn btn-default" type="submit" value="Submit">
 {% endhighlight %}
 
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-warning">
       <h4>Cross-browser rendering</h4>
       <p>As a best practice, <strong>we highly recommend using the <code>&lt;button&gt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
     </div>
@@ -1953,7 +1992,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 
     <p>Add classes to an <code>&lt;img&gt;</code> element to easily style images in any project.</p>
-    <div class="bs-callout">
+    <div class="bs-callout bs-callout-danger">
       <h4>Cross-browser compatibility</h4>
       <p>Keep in mind that Internet Explorer 8 lacks support for rounded corners.</p>
     </div>
