@@ -6,6 +6,6 @@ pygments:     true
 permalink:    pretty
 
 # Server
-source:       ./docs
 destination:  ./_gh_pages
+exclude:      [".editorconfig", ".gitignore", ".ruby-version", "bower.json", "composer.json", "CONTRIBUTING.md", "LICENSE", "Makefile", "package.json", "node_modules", "README.md"]
 port:         9001

@@ -985,6 +985,9 @@ table th[class^="col-"] {
   float: none;
   display: table-cell; }
 
+.table > tbody > tr > td.active,
+.table > tbody > tr > th.active, .table > tbody > tr.active > td {
+  background-color: whitesmoke; }
 .table > tbody > tr > td.success,
 .table > tbody > tr > th.success, .table > tbody > tr.success > td {
   background-color: #dff0d8;
@@ -1052,7 +1055,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"] {
   display: block;
-  min-height: 38px;
+  height: 38px;
   padding: 8px 12px;
   font-size: 14px;
   line-height: 1.428571429;
@@ -1064,8 +1067,6 @@ input[type="color"] {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  -moz-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; }
   select:focus,
   textarea:focus,
@@ -1165,7 +1166,6 @@ input[type="checkbox"] {
   /* IE8-9 */
   line-height: normal; }
 
-select,
 input[type="file"] {
   height: 38px;
   /* In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support */
@@ -1259,7 +1259,7 @@ input[type="url"].input-large,
 input[type="search"].input-large,
 input[type="tel"].input-large,
 input[type="color"].input-large {
-  min-height: 56px;
+  height: 56px;
   padding: 14px 16px;
   font-size: 18px;
   border-radius: 6px; }
@@ -1279,10 +1279,17 @@ input[type="url"].input-small,
 input[type="search"].input-small,
 input[type="tel"].input-small,
 input[type="color"].input-small {
-  min-height: 30px;
+  height: 30px;
   padding: 5px 10px;
   font-size: 12px;
   border-radius: 3px; }
+
+select.input-large {
+  height: 56px;
+  line-height: 56px; }
+select.input-small {
+  height: 30px;
+  line-height: 30px; }
 
 .has-warning .help-block,
 .has-warning .control-label {
@@ -1417,10 +1424,9 @@ input[type="color"].input-small {
   white-space: nowrap; }
 
 .input-group-btn > .btn {
-  position: relative;
-  float: left; }
+  position: relative; }
   .input-group-btn > .btn + .btn {
-    margin-left: -1px; }
+    margin-left: -4px; }
   .input-group-btn > .btn:hover, .input-group-btn > .btn:active {
     z-index: 2; }
 
@@ -1590,8 +1596,6 @@ input[type="button"].btn-block {
 .fade {
   opacity: 0;
   -webkit-transition: opacity 0.15s linear;
-  -moz-transition: opacity 0.15s linear;
-  -o-transition: opacity 0.15s linear;
   transition: opacity 0.15s linear; }
   .fade.in {
     opacity: 1; }
@@ -1601,8 +1605,6 @@ input[type="button"].btn-block {
   height: 0;
   overflow: hidden;
   -webkit-transition: height 0.35s ease;
-  -moz-transition: height 0.35s ease;
-  -o-transition: height 0.35s ease;
   transition: height 0.35s ease; }
   .collapse.in {
     height: auto; }
@@ -1635,8 +1637,6 @@ input[type="button"].btn-block {
   border-radius: 4px;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding-box;
   background-clip: padding-box; }
   .dropdown-menu.pull-right {
     right: 0;
@@ -2022,6 +2022,7 @@ button.close {
 
 .navbar {
   position: relative;
+  min-height: 50px;
   margin-bottom: 20px;
   padding-left: 15px;
   padding-right: 15px;
@@ -2079,7 +2080,7 @@ button.close {
   max-width: 200px;
   margin-left: auto;
   margin-right: auto;
-  padding: 15px;
+  padding: 15px 15px;
   font-size: 18px;
   font-weight: 500;
   line-height: 20px;
@@ -2094,6 +2095,8 @@ button.close {
   position: absolute;
   top: 10px;
   right: 10px;
+  width: 48px;
+  height: 32px;
   padding: 8px 12px;
   background-color: transparent;
   border: 1px solid #ddd;
@@ -2351,8 +2354,8 @@ button.close {
     display: table-cell;
     width: 1%; }
 
-.btn-group[data-toggle="buttons-radio"] > .btn > input[type="radio"],
-.btn-group[data-toggle="buttons-checkbox"] > .btn > input[type="checkbox"] {
+.btn-group[data-toggle="buttons"] > .btn > input[type="radio"],
+.btn-group[data-toggle="buttons"] > .btn > input[type="checkbox"] {
   display: none; }
 
 .breadcrumb {
@@ -2495,8 +2498,6 @@ button.close {
   .modal.fade {
     top: -25%;
     -webkit-transition: opacity 0.3s linear, top 0.3s ease-out;
-    -moz-transition: opacity 0.3s linear, top 0.3s ease-out;
-    -o-transition: opacity 0.3s linear, top 0.3s ease-out;
     transition: opacity 0.3s linear, top 0.3s ease-out; }
   .modal.fade.in {
     top: 0; }
@@ -2518,8 +2519,6 @@ button.close {
   border-radius: 6px;
   -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
   box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding-box;
   background-clip: padding-box;
   outline: none; }
 
@@ -2846,8 +2845,6 @@ button.close {
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out; }
 
 .thumbnail {
@@ -3025,8 +3022,6 @@ a.list-group-item.active > .badge,
   -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   -webkit-transition: width 0.6s ease;
-  -moz-transition: width 0.6s ease;
-  -o-transition: width 0.6s ease;
   transition: width 0.6s ease; }
 
 .progress-striped .progress-bar {
@@ -3035,9 +3030,6 @@ a.list-group-item.active > .badge,
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  -webkit-background-size: 40px 40px;
-  -moz-background-size: 40px 40px;
-  -o-background-size: 40px 40px;
   background-size: 40px 40px; }
 
 .progress.active .progress-bar {
@@ -3113,8 +3105,6 @@ a.list-group-item.active > .badge,
     display: none;
     position: relative;
     -webkit-transition: 0.6s ease-in-out left;
-    -moz-transition: 0.6s ease-in-out left;
-    -o-transition: 0.6s ease-in-out left;
     transition: 0.6s ease-in-out left; }
     .carousel-inner > .item > img,
     .carousel-inner > .item > a > img {
@@ -3182,7 +3172,9 @@ a.list-group-item.active > .badge,
     text-decoration: none;
     opacity: 0.9;
     filter: alpha(opacity=opacity-ie); }
-  .carousel-control .glyphicon {
+  .carousel-control .glyphicon,
+  .carousel-control .icon-prev,
+  .carousel-control .icon-next {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -3192,6 +3184,10 @@ a.list-group-item.active > .badge,
     height: 20px;
     margin-top: -10px;
     margin-left: -10px; }
+  .carousel-control .icon-prev:before {
+    content: '\2039'; }
+  .carousel-control .icon-next:before {
+    content: '\203a'; }
 
 .carousel-indicators {
   position: absolute;
@@ -3233,7 +3229,9 @@ a.list-group-item.active > .badge,
     text-shadow: none; }
 
 @media screen and (min-width: 768px) {
-  .carousel-control .glyphicon {
+  .carousel-control .glyphicon,
+  .carousel-control .icon-prev,
+  .carousel-control .icon-next {
     width: 30px;
     height: 30px;
     margin-top: -15px;

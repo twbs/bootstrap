@@ -5,9 +5,10 @@
 // Wrapper and base class
 .navbar {
   position: relative;
+  min-height: $navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
   margin-bottom: 20px;
-  padding-left: $navbar-padding;
-  padding-right: $navbar-padding;
+  padding-left: $navbar-padding-horizontal;
+  padding-right: $navbar-padding-horizontal;
   background-color: $navbar-bg;
   border-radius: $border-radius-base;
 
@@ -20,7 +21,6 @@
 
 .navbar-nav {
   // Space out from .navbar .brand and .btn-navbar when stacked in mobile views
-  // and outdent nav links so text lines up with logo.
   margin-top: 10px;
   margin-bottom: 15px;
 
@@ -100,7 +100,7 @@
   max-width: 200px;
   margin-left: auto;
   margin-right: auto;
-  padding: $navbar-padding;
+  padding: $navbar-padding-vertical $navbar-padding-horizontal;
   font-size: $font-size-large;
   font-weight: 500;
   line-height: $line-height-computed;
@@ -119,6 +119,8 @@
   position: absolute;
   top: 10px;
   right: 10px;
+  width: 48px;
+  height: 32px;
   padding: 8px 12px;
   background-color: transparent;
   border: 1px solid #ddd;
@@ -298,7 +300,7 @@
 
   .navbar-brand {
     float: left;
-    margin-left: -($navbar-padding);
+    margin-left: -($navbar-padding-horizontal);
     margin-right: 5px;
   }
   .navbar-nav {

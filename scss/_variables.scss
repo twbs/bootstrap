@@ -130,7 +130,8 @@ $table-condensed-cell-padding:       5px !default;
 
 $table-bg:                           transparent !default; // overall background-color
 $table-bg-accent:                    #f9f9f9 !default; // for striping
-$table-bg-hover:                     #f5f5f5 !default; // for hover
+$table-bg-hover:                     #f5f5f5 !default;
+$table-bg-active:                    $table-bg-hover !default;
 
 $table-border-color:                 #ddd !default; // table and cell border
 
@@ -221,7 +222,8 @@ $zindex-modal:             1050 !default;
 $navbar-height:                    50px !default;
 $navbar-color:                     #777 !default;
 $navbar-bg:                        #eee !default;
-$navbar-padding:                   floor($grid-gutter-width / 2) !default;  // ~15px
+$navbar-padding-horizontal:        floor($grid-gutter-width / 2) !default;  // ~15px
+$navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2) !default;
 
 // Navbar links
 $navbar-link-color:                #777 !default;

@@ -1,4 +1,5 @@
-BOOTSTRAP ?= ./docs/assets/css/bootstrap.css
+BOOTSTRAP ?= ./dist/css/bootstrap.css
+BOOTSTRAP_MIN ?= ./dist/css/bootstrap.min.css
 BOOTSTRAP_SCSS ?= ./scss/bootstrap.scss
 SASS_PRECISION ?= 15
 DATE=$(shell date +%I:%M%p)
@@ -21,16 +22,17 @@ build:
 	@echo "             ${CHECK}"
 	@printf "Compiling scss with Sass..."
 	@sass --precision ${SASS_PRECISION} ${BOOTSTRAP_SCSS} > ${BOOTSTRAP}
+	@recess --compress ${BOOTSTRAP_LESS} > ${BOOTSTRAP_MIN}
 	@echo "               ${CHECK}"
 	@printf "Prepping documentation assets..."
-	@cp js/tests/vendor/jquery.js docs/assets/js/
+	@cp js/tests/vendor/jquery.js assets/js/
 	@echo "            ${CHECK}"
 	@printf "Compiling and minifying JavaScript..."
-	@cat js/transition.js js/alert.js js/button.js js/carousel.js js/collapse.js js/dropdown.js js/modal.js js/tooltip.js js/popover.js js/scrollspy.js js/tab.js js/affix.js > docs/assets/js/bootstrap.js
-	@uglifyjs -nc docs/assets/js/bootstrap.js > docs/assets/js/bootstrap.min.tmp.js
-	@echo "/**\n* Bootstrap.js v3.0.0 by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > docs/assets/js/copyright.js
-	@cat docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js > docs/assets/js/bootstrap.min.js
-	@rm docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js
+	@cat js/transition.js js/alert.js js/button.js js/carousel.js js/collapse.js js/dropdown.js js/modal.js js/tooltip.js js/popover.js js/scrollspy.js js/tab.js js/affix.js > dist/js/bootstrap.js
+	@uglifyjs -nc dist/js/bootstrap.js > dist/js/bootstrap.min.tmp.js
+	@echo "/**\n* Bootstrap.js v3.0.0 by @fat & @mdo\n* Copyright 2013 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > dist/js/copyright.js
+	@cat dist/js/copyright.js dist/js/bootstrap.min.tmp.js > dist/js/bootstrap.min.js
+	@rm dist/js/copyright.js dist/js/bootstrap.min.tmp.js
 	@echo "       ${CHECK}"
 	@echo "${HR}"
 	@echo "\033[36mSuccess!\n\033[39m"
@@ -73,7 +75,7 @@ bootstrap/js/*.js: js/*.js
 	mkdir -p bootstrap/js
 	cat js/transition.js js/alert.js js/button.js js/carousel.js js/collapse.js js/dropdown.js js/modal.js js/tooltip.js js/popover.js js/scrollspy.js js/tab.js js/affix.js > bootstrap/js/bootstrap.js
 	uglifyjs -nc bootstrap/js/bootstrap.js > bootstrap/js/bootstrap.min.tmp.js
-	echo "/*!\n* Bootstrap.js by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > bootstrap/js/copyright.js
+	echo "/*!\n* Bootstrap.js by @fat & @mdo\n* Copyright 2013 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > bootstrap/js/copyright.js
 	cat bootstrap/js/copyright.js bootstrap/js/bootstrap.min.tmp.js > bootstrap/js/bootstrap.min.js
 	rm bootstrap/js/copyright.js bootstrap/js/bootstrap.min.tmp.js
 
