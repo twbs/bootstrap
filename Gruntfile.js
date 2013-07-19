@@ -11,7 +11,7 @@ module.exports = function(grunt) {
                 '*/\n',
         // Task configuration.
         clean: {
-            dist: ['bootstrap']
+            dist: ['dist']
         },
         concat: {
             options: {
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
             },
             bootstrap: {
                 src: ['js/*.js'],
-                dest: 'bootstrap/js/<%= pkg.name %>.js'
+                dest: 'dist/js/<%= pkg.name %>.js'
             }
         },
         jshint: {
@@ -43,7 +43,7 @@ module.exports = function(grunt) {
             },
             bootstrap: {
                 files: {
-                    'bootstrap/css/bootstrap.css': ['less/bootstrap.less']
+                    'dist/css/bootstrap.css': ['less/bootstrap.less']
                 }
             },
             min: {
@@ -51,7 +51,7 @@ module.exports = function(grunt) {
                     compress: true
                 },
                 files: {
-                    'bootstrap/css/bootstrap.min.css': ['less/bootstrap.less']
+                    'dist/css/bootstrap.min.css': ['less/bootstrap.less']
                 }
             }
         },
@@ -61,7 +61,7 @@ module.exports = function(grunt) {
             },
             bootstrap: {
                 files: {
-                    'bootstrap/js/<%= pkg.name %>.min.js': ['<%= concat.bootstrap.dest %>']
+                    'dist/js/<%= pkg.name %>.min.js': ['<%= concat.bootstrap.dest %>']
                 }
             }
         },
