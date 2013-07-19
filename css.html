@@ -1772,12 +1772,26 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <input class="input-large" type="text" placeholder=".input-large">
         <input type="text" placeholder="Default input">
         <input class="input-small" type="text" placeholder=".input-small">
+
+        <select class="input-large">
+          <option value="">.input-large</option>
+        </select>
+        <select>
+          <option value="">Default select</option>
+        </select>
+        <select class="input-small">
+          <option value="">.input-small</option>
+        </select>
       </div>
     </form>
 {% highlight html %}
 <input class="input-large" type="text" placeholder=".input-large">
 <input type="text" placeholder="Default input">
 <input class="input-small" type="text" placeholder=".input-small">
+
+<select class="input-large">...</select>
+<select>...</select>
+<select class="input-small">...</select>
 {% endhighlight %}
 
     <h4>Column sizing</h4>

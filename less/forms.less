@@ -55,7 +55,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"] {
   display: block;
-  min-height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   padding: @padding-base-vertical @padding-base-horizontal;
   font-size: @font-size-base;
   line-height: @line-height-base;
@@ -123,7 +123,6 @@ input[type="checkbox"] {
 }
 
 // Set the height of select and file controls to match text inputs
-select,
 input[type="file"] {
   height: @input-height-base; /* In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support */
   line-height: @input-height-base;
@@ -231,6 +230,7 @@ textarea {
 // INPUT SIZES
 // -----------
 
+select,
 textarea,
 input[type="text"],
 input[type="password"],
@@ -247,13 +247,13 @@ input[type="search"],
 input[type="tel"],
 input[type="color"] {
   &.input-large {
-    min-height: @input-height-large;
+    height: @input-height-large;
     padding: @padding-large-vertical @padding-large-horizontal;
     font-size: @font-size-large;
     border-radius: @border-radius-large;
   }
   &.input-small {
-    min-height: @input-height-small;
+    height: @input-height-small;
     padding: @padding-small-vertical @padding-small-horizontal;
     font-size: @font-size-small;
     border-radius: @border-radius-small;

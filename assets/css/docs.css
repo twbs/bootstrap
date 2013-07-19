@@ -394,6 +394,7 @@ body {
 .bs-example.form-inline input[type="password"] {
   width: 180px;
 }
+.bs-example-control-sizing select,
 .bs-example-control-sizing input[type="text"] + input[type="text"] {
   margin-top: 10px;
 }
