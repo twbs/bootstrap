@@ -13,8 +13,8 @@ pre {
 code {
   padding: 2px 4px;
   font-size: 90%;
-  color: #c7254e;
-  background-color: #f9f2f4;
+  color: @code-color:;
+  background-color: @code-bg;
   white-space: nowrap;
   border-radius: 4px;
 }
@@ -29,9 +29,9 @@ pre {
   word-break: break-all;
   word-wrap: break-word;
   color: @gray-dark;
-  background-color: #f5f5f5;
-  border: 1px solid #ccc; // IE8 fallback
-  border: 1px solid rgba(0,0,0,.15);
+  background-color: @pre-bg;
+  border: 1px solid @pre-fallback-border-color; // IE8 fallback
+  border: 1px solid @pre-border-color;
   border-radius: @border-radius-base;
 
   // Make prettyprint styles more spaced out for readability
