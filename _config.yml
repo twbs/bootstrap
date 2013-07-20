@@ -7,5 +7,5 @@ permalink:    pretty
 
 # Server
 destination:  ./_gh_pages
-exclude:      [".editorconfig", ".gitignore", ".ruby-version", "bower.json", "composer.json", "CONTRIBUTING.md", "LICENSE", "Makefile", "package.json", "node_modules", "README.md"]
+exclude:      [".editorconfig", ".gitignore", ".ruby-version", "bower.json", "composer.json", "CONTRIBUTING.md", "LICENSE", "Makefile", "package.json", "node_modules", "README.md", "less", "js"]
 port:         9001
