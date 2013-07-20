@@ -4410,12 +4410,12 @@ a.list-group-item.active > .badge,
 
 .carousel-indicators {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 50%;
   z-index: 15;
-  width: 100px;
+  width: 120px;
   padding-left: 0;
-  margin-left: -50px;
+  margin-left: -60px;
   text-align: center;
   list-style: none;
 }
@@ -4469,6 +4469,9 @@ a.list-group-item.active > .badge,
     right: 20%;
     left: 20%;
     padding-bottom: 30px;
+  }
+  .carousel-indicators {
+    bottom: 20px;
   }
 }
 
