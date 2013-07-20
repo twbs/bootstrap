@@ -261,6 +261,7 @@ body {
 .bs-callout {
   margin: 20px 0;
   padding: 15px 30px 15px 15px;
+  border-left: 5px solid #eee;
 }
 .bs-callout h4 {
   margin-top: 0;
@@ -276,15 +277,15 @@ body {
 /* Themes for different contexts */
 .bs-callout-danger {
   background-color: #fcf2f2;
-  border-left: 5px solid #df7c7b;
+  border-color: #dFb5b4;
 }
 .bs-callout-warning {
   background-color: #fefbed;
-  border-left: 5px solid #f5d659;
+  border-color: #f1e7bc;
 }
 .bs-callout-info {
   background-color: #f0f7fd;
-  border-left: 5px solid #55a9e1;
+  border-color: #d0e3f0;
 }
 
 
