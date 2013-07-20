@@ -313,26 +313,25 @@ body {
 /* Base class */
 .bs-example {
   position: relative;
-  padding: 39px 14px 14px;
-  margin-bottom: -1px;
-  border: 1px solid #ddd;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  padding: 45px 15px 15px;
+  margin: 0 -15px -1px;
+  background-color: #fafafa;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+  border-color: #e5e5e5 #eee #eee;
+  border-style: solid;
+  border-width: 1px 0;
 }
 /* Echo out a label for the example */
 .bs-example:after {
   content: "Example";
   position: absolute;
-  top: -1px;
-  left: -1px;
-  padding: 3px 7px;
+  top:  15px;
+  left: 15px;
   font-size: 12px;
   font-weight: bold;
-  color: #9da0a4;
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
-  border-top-left-radius: 4px;
-  border-bottom-right-radius: 4px;
+  color: #bbb;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* Tweak display of the examples */
@@ -715,9 +714,6 @@ input.focused {
 
 /* Hide code snippets on mobile devices */
 @media screen and (max-width: 480px) {
-  .bs-example {
-    border-radius: 4px;
-  }
   .highlight {
     display: none;
   }
@@ -754,6 +750,16 @@ input.focused {
   .bs-header h1 {
     font-size: 60px;
     line-height: 1;
+  }
+
+  .bs-example {
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #fff;
+    border-width: 1px;
+    border-color: #ddd;
+    border-radius: 4px 4px 0 0;
+    box-shadow: none;
   }
 
   .carbonad {
