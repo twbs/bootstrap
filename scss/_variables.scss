@@ -49,9 +49,6 @@ $grid-gutter-width:         30px !default;
 // Point at which the navbar stops collapsing
 $grid-float-breakpoint:     $screen-tablet !default;
 
-// Global values
-// --------------------------------------------------
-
 // Grays
 // -------------------------
 
@@ -414,6 +411,28 @@ $thumbnail-border-radius:     $border-radius-base !default;
 // Wells
 // -------------------------
 $well-bg:                     #f5f5f5 !default;
+
+
+// Accordion
+// -------------------------
+$accordion-border-color:      #e5e5e5 !default;
+
+
+// Badges
+// -------------------------
+$badge-color:                 #fff !default;
+$badge-link-hover-color:      #fff !default;
+
+$badge-bg:                    #f5f5f5 !default;
+$badge-active-color:          $link-color !default;
+$badge-active-bg:             #fff !default;
+
+
+// Breadcrumbs
+// -------------------------
+$breadcrumb-bg:               #f5f5f5 !default;
+$breadcrumb-color:            #ccc !default;
+$breadcrumb-active-color:     $gray-light !default;
 
 
 // Miscellaneous

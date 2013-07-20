@@ -236,7 +236,14 @@ table {
     border-top-color: #000 !important; }
 
   .label {
-    border: 1px solid #000; } }
+    border: 1px solid #000; }
+
+  .table {
+    border-collapse: collapse !important; }
+
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #ddd !important; } }
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -2360,18 +2367,17 @@ button.close {
 
 .breadcrumb {
   padding: 8px 15px;
-  margin: 0 0 20px;
+  margin-bottom: 20px;
   list-style: none;
-  background-color: #f5f5f5;
+  background-color: whitesmoke;
   border-radius: 4px; }
   .breadcrumb > li {
-    display: inline-block;
-    text-shadow: 0 1px 0 #fff; }
+    display: inline-block; }
     .breadcrumb > li + li:before {
       display: inline-block;
       content: "/\00a0";
       padding: 0 5px;
-      color: #ccc; }
+      color: #cccccc; }
   .breadcrumb > .active {
     color: #999999; }
 
@@ -2939,18 +2945,18 @@ a.thumbnail:focus {
   padding: 3px 7px;
   font-size: 12px;
   font-weight: bold;
-  color: #fff;
+  color: white;
   line-height: 1;
   vertical-align: middle;
   white-space: nowrap;
   text-align: center;
-  background-color: #999999;
+  background-color: whitesmoke;
   border-radius: 10px; }
   .badge:empty {
     display: none; }
 
 a.badge:hover, a.badge:focus {
-  color: #fff;
+  color: white;
   text-decoration: none;
   cursor: pointer; }
 
@@ -2961,7 +2967,7 @@ a.badge:hover, a.badge:focus {
 a.list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
   color: #428bca;
-  background-color: #fff; }
+  background-color: white; }
 
 .nav-pills > li > a > .badge {
   margin-left: 3px; }
@@ -3191,11 +3197,11 @@ a.list-group-item.active > .badge,
 
 .carousel-indicators {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 50%;
   z-index: 15;
-  width: 100px;
-  margin-left: -50px;
+  width: 120px;
+  margin-left: -60px;
   padding-left: 0;
   list-style: none;
   text-align: center; }
@@ -3241,7 +3247,10 @@ a.list-group-item.active > .badge,
   .carousel-caption {
     left: 20%;
     right: 20%;
-    padding-bottom: 30px; } }
+    padding-bottom: 30px; }
+
+  .carousel-indicators {
+    bottom: 20px; } }
 .jumbotron {
   padding: 30px;
   margin-bottom: 30px;

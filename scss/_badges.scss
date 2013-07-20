@@ -10,12 +10,12 @@
   padding: 3px 7px;
   font-size: $font-size-small;
   font-weight: bold;
-  color: #fff;
+  color: $badge-color;
   line-height: 1;
   vertical-align: middle;
   white-space: nowrap;
   text-align: center;
-  background-color: $gray-light;
+  background-color: $badge-bg;
   border-radius: 10px;
 
   // Empty labels/badges collapse
@@ -28,7 +28,7 @@
 a.badge {
   &:hover,
   &:focus {
-    color: #fff;
+    color: $badge-link-hover-color;
     text-decoration: none;
     cursor: pointer;
   }
@@ -43,8 +43,8 @@ a.badge {
 // Account for counters in navs
 a.list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
-  color: $link-color;
-  background-color: #fff;
+  color: $badge-active-color;
+  background-color: $badge-active-bg;
 }
 .nav-pills > li > a > .badge {
   margin-left: 3px;
