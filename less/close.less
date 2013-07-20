@@ -8,13 +8,13 @@
   font-size: (@font-size-base * 1.5);
   font-weight: bold;
   line-height: 1;
-  color: #000;
-  text-shadow: 0 1px 0 rgba(255,255,255,1);
+  color: @close-color;
+  text-shadow: @close-text-shadow;
   .opacity(.2);
 
   &:hover,
   &:focus {
-    color: #000;
+    color: @close-hover-color;
     text-decoration: none;
     cursor: pointer;
     .opacity(.5);
