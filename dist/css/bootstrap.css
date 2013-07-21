@@ -1555,14 +1555,6 @@ textarea::-webkit-input-placeholder {
   margin-top: -5px;
 }
 
-/*
-// Move the options list down to align with labels
-.controls > .radio:first-child,
-.controls > .checkbox:first-child {
-  padding-top: 5px; // has to be padding because margin collapses
-}
-*/
-
 .radio-inline,
 .checkbox-inline {
   display: inline-block;
