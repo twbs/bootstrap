@@ -26,7 +26,7 @@ Have a bug or a feature request? [Please open a new issue](https://github.com/tw
 
 ## Documentation
 
-Bootstrap's documentation, included in this repo in the `/docs` directory, is built with [Jekyll](http://jekyllrb.com) and publicly hosted on GitHub Pages at [http://getbootstrap.com](http://getbootstrap.com). The docs maybe also be run locally.
+Bootstrap's documentation, included in this repo in the `/docs` directory, is built with [Jekyll](http://jekyllrb.com) and publicly hosted on GitHub Pages at [http://getbootstrap.com](http://getbootstrap.com). The docs may also be run locally.
 
 ### Running documentation locally
 
