@@ -3284,7 +3284,6 @@ button.close {
 }
 
 .breadcrumb > li + li:before {
-  display: inline-block;
   padding: 0 5px;
   color: #cccccc;
   content: "/\00a0";

@@ -40,11 +40,12 @@
     float: left;
   }
   // Space out series of button groups
-  > .btn + .btn,
-  > .btn-group + .btn,
-  > .btn + .btn-group,
-  > .btn-group + .btn-group {
-    margin-left: 5px;
+  > .btn,
+  > .btn-group {
+    + .btn,
+    + .btn-group {
+      margin-left: 5px;
+    }
   }
 }
 
