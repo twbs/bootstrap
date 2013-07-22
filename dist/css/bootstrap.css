@@ -1174,9 +1174,7 @@ input[type="checkbox"] {
   line-height: normal; }
 
 input[type="file"] {
-  height: 38px;
-  /* In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support */
-  line-height: 38px; }
+  display: block; }
 
 select[multiple],
 select[size] {
@@ -2277,8 +2275,8 @@ button.close {
 .btn-toolbar .btn-group {
   float: left; }
 .btn-toolbar > .btn + .btn,
-.btn-toolbar > .btn-group + .btn,
 .btn-toolbar > .btn + .btn-group,
+.btn-toolbar > .btn-group + .btn,
 .btn-toolbar > .btn-group + .btn-group {
   margin-left: 5px; }
 
@@ -2374,7 +2372,6 @@ button.close {
   .breadcrumb > li {
     display: inline-block; }
     .breadcrumb > li + li:before {
-      display: inline-block;
       content: "/\00a0";
       padding: 0 5px;
       color: #cccccc; }
