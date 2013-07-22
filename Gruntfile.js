@@ -111,14 +111,14 @@ module.exports = function(grunt) {
     grunt.registerTask('test', ['jshint', 'qunit']);
 
     // JS distribution task.
-    grunt.registerTask('bootstrap-js', ['concat', 'uglify']);
+    grunt.registerTask('dist-js', ['concat', 'uglify']);
 
     // CSS distribution task.
-    grunt.registerTask('bootstrap-css', ['recess']);
+    grunt.registerTask('dist-css', ['recess']);
 
     // Full distribution task.
-    grunt.registerTask('bootstrap', ['clean', 'bootstrap-css', 'bootstrap-js']);
+    grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js']);
 
     // Default task.
-    grunt.registerTask('default', ['test', 'bootstrap']);
+    grunt.registerTask('default', ['test', 'dist']);
 };
