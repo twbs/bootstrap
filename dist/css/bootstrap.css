@@ -567,7 +567,7 @@ dt {
 }
 
 dd {
-  margin-left: 10px;
+  margin-left: 0;
 }
 
 .dl-horizontal dt {
