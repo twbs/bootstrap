@@ -50,7 +50,7 @@
 
     var dimension = this.dimension()
     var scroll    = $.camelCase(['scroll', dimension].join('-'))
-    var actives   = this.$parent && this.$parent.find('.collapse.in')
+    var actives   = this.$parent && this.$parent.find('> .accordion-group > .in')
 
     if (actives && actives.length) {
       var hasData = actives.data('bs.collapse')
@@ -104,7 +104,9 @@
     this.$element[method]('in')
 
     $.support.transition && this.$element.hasClass('collapse') ?
-      this.$element.one($.support.transition.end, complete) :
+      this.$element
+        .one($.support.transition.end, complete)
+        .emulateTransitionEnd(350) :
       complete()
   }
 

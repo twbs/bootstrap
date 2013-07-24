@@ -238,19 +238,10 @@
 
     $tip.removeClass('in')
 
-    function removeWithAnimation() {
-      var timeout = setTimeout(function () {
-        $tip.off($.support.transition.end).detach()
-      }, 500)
-
-      $tip.one($.support.transition.end, function () {
-        clearTimeout(timeout)
-        $tip.detach()
-      })
-    }
-
     $.support.transition && this.$tip.hasClass('fade') ?
-      removeWithAnimation() :
+      $tip
+        .one($.support.transition.end, $tip.detach)
+        .emulateTransitionEnd(150) :
       $tip.detach()
 
     this.$element.trigger('hidden.bs.' + this.type)

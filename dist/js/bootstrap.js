@@ -40,6 +40,14 @@
     }
   }
 
+  // http://blog.alexmaccaw.com/css-transitions
+  $.fn.emulateTransitionEnd = function (duration) {
+    var called = false, $el    = this
+    $(this).one('webkitTransitionEnd', function () { called = true })
+    var callback = function () { if (!called) $($el).trigger('webkitTransitionEnd') }
+    setTimeout(callback, duration)
+  }
+
   $(function () {
     $.support.transition = transitionEnd()
   })
@@ -103,7 +111,9 @@
     }
 
     $.support.transition && $parent.hasClass('fade') ?
-      $parent.on($.support.transition.end, removeElement) :
+      $parent
+        .one($.support.transition.end, removeElement)
+        .emulateTransitionEnd(150) :
       removeElement()
   }
 
@@ -380,12 +390,14 @@
       $next[0].offsetWidth // force reflow
       $active.addClass(direction)
       $next.addClass(direction)
-      this.$element.find('.item').one($.support.transition.end, function () {
-        $next.removeClass([type, direction].join(' ')).addClass('active')
-        $active.removeClass(['active', direction].join(' '))
-        that.sliding = false
-        setTimeout(function () { that.$element.trigger('slid') }, 0)
-      })
+      this.$element.find('.item')
+        .one($.support.transition.end, function () {
+          $next.removeClass([type, direction].join(' ')).addClass('active')
+          $active.removeClass(['active', direction].join(' '))
+          that.sliding = false
+          setTimeout(function () { that.$element.trigger('slid') }, 0)
+        })
+        .emulateTransitionEnd(600)
     } else {
       this.$element.trigger(e)
       if (e.isDefaultPrevented()) return
@@ -511,7 +523,7 @@
 
     var dimension = this.dimension()
     var scroll    = $.camelCase(['scroll', dimension].join('-'))
-    var actives   = this.$parent && this.$parent.find('.collapse.in')
+    var actives   = this.$parent && this.$parent.find('> .accordion-group > .in')
 
     if (actives && actives.length) {
       var hasData = actives.data('bs.collapse')
@@ -565,7 +577,9 @@
     this.$element[method]('in')
 
     $.support.transition && this.$element.hasClass('collapse') ?
-      this.$element.one($.support.transition.end, complete) :
+      this.$element
+        .one($.support.transition.end, complete)
+        .emulateTransitionEnd(350) :
       complete()
   }
 
@@ -719,7 +733,7 @@
 
   function clearMenus() {
     $(backdrop).remove()
-    $(toggle).each(function (e) { 
+    $(toggle).each(function (e) {
       var $parent = getParent($(this))
       if (!$parent.hasClass('open')) return
       $parent.trigger(e = $.Event('hide.bs.dropdown'))
@@ -771,7 +785,6 @@
 
   // APPLY TO STANDARD DROPDOWN ELEMENTS
   // ===================================
-
 
   $(document)
     .on('click.bs.dropdown.data-api', clearMenus)
@@ -856,7 +869,11 @@
       that.enforceFocus()
 
       transition ?
-        that.$element.one($.support.transition.end, function () { that.$element.focus().trigger('shown.bs.modal') }) :
+        that.$element
+          .one($.support.transition.end, function () {
+            that.$element.focus().trigger('shown.bs.modal')
+          })
+          .emulateTransitionEnd(300) :
         that.$element.focus().trigger('shown.bs.modal')
     })
   }
@@ -881,7 +898,9 @@
       .attr('aria-hidden', true)
 
     $.support.transition && this.$element.hasClass('fade') ?
-      this.hideWithTransition() :
+      this.$element
+        .one($.support.transition.end, $.proxy(this.hideModal, this))
+        .emulateTransitionEnd(300) :
       this.hideModal()
   }
 
@@ -903,19 +922,6 @@
     } else if (!this.isShown) {
       this.$element.off('keyup.dismiss.bs.modal')
     }
-  }
-
-  Modal.prototype.hideWithTransition = function () {
-    var that    = this
-    var timeout = setTimeout(function () {
-      that.$element.off($.support.transition.end)
-      that.hideModal()
-    }, 500)
-
-    this.$element.one($.support.transition.end, function () {
-      clearTimeout(timeout)
-      that.hideModal()
-    })
   }
 
   Modal.prototype.hideModal = function () {
@@ -956,14 +962,18 @@
       if (!callback) return
 
       doAnimate ?
-        this.$backdrop.one($.support.transition.end, callback) :
+        this.$backdrop
+          .one($.support.transition.end, callback)
+          .emulateTransitionEnd(150) :
         callback()
 
     } else if (!this.isShown && this.$backdrop) {
       this.$backdrop.removeClass('in')
 
       $.support.transition && this.$element.hasClass('fade')?
-        this.$backdrop.one($.support.transition.end, callback) :
+        this.$backdrop
+          .one($.support.transition.end, callback)
+          .emulateTransitionEnd(150) :
         callback()
 
     } else if (callback) {
@@ -1020,8 +1030,8 @@
     })
 
     var $body = $(document.body)
-      .on('bs.modal.shown',  '.modal', function () { $body.addClass('modal-open') })
-      .on('bs.modal.hidden', '.modal', function () { $body.removeClass('modal-open') })
+      .on('shown.bs.modal',  '.modal', function () { $body.addClass('modal-open') })
+      .on('hidden.bs.modal', '.modal', function () { $body.removeClass('modal-open') })
 
 }(window.jQuery);
 /* ========================================================================
@@ -1264,19 +1274,10 @@
 
     $tip.removeClass('in')
 
-    function removeWithAnimation() {
-      var timeout = setTimeout(function () {
-        $tip.off($.support.transition.end).detach()
-      }, 500)
-
-      $tip.one($.support.transition.end, function () {
-        clearTimeout(timeout)
-        $tip.detach()
-      })
-    }
-
     $.support.transition && this.$tip.hasClass('fade') ?
-      removeWithAnimation() :
+      $tip
+        .one($.support.transition.end, $tip.detach)
+        .emulateTransitionEnd(150) :
       $tip.detach()
 
     this.$element.trigger('hidden.bs.' + this.type)
@@ -1739,7 +1740,9 @@
     }
 
     transition ?
-      $active.one($.support.transition.end, next) :
+      $active
+        .one($.support.transition.end, next)
+        .emulateTransitionEnd(150) :
       next()
 
     $active.removeClass('in')
