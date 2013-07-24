@@ -700,8 +700,7 @@ pre {
   word-break: break-all;
   word-wrap: break-word;
   background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid #cccccc;
   border-radius: 4px;
 }
 
@@ -1702,9 +1701,8 @@ select.input-small {
   font-weight: normal;
   line-height: 1.428571429;
   text-align: center;
-  text-shadow: 0 1px 0 #fff;
   background-color: #eeeeee;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   border-radius: 4px;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
@@ -1818,7 +1816,7 @@ select.input-small {
 
 .btn:hover,
 .btn:focus {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -2136,7 +2134,7 @@ input[type="button"].btn-block {
   height: 0;
   margin-left: 2px;
   vertical-align: middle;
-  border-top: 4px solid #000;
+  border-top: 4px solid #000000;
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
   content: "";
@@ -2154,7 +2152,7 @@ input[type="button"].btn-block {
   margin: 2px 0 0;
   list-style: none;
   background-color: #ffffff;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
@@ -2168,11 +2166,10 @@ input[type="button"].btn-block {
 }
 
 .dropdown-menu .divider {
-  height: 2px;
+  height: 1px;
   margin: 9px 0;
   overflow: hidden;
   background-color: #e5e5e5;
-  border-bottom: 1px solid #ffffff;
 }
 
 .dropdown-menu > li > a {
@@ -2261,7 +2258,7 @@ input[type="button"].btn-block {
 .dropup .caret,
 .navbar-fixed-bottom .dropdown .caret {
   border-top: 0;
-  border-bottom: 4px solid #000;
+  border-bottom: 4px solid #000000;
   content: "";
 }
 
@@ -2313,11 +2310,11 @@ input[type="button"].btn-block {
 }
 
 a.list-group-item .list-group-item-heading {
-  color: #333;
+  color: #333333;
 }
 
 a.list-group-item .list-group-item-text {
-  color: #555;
+  color: #555555;
 }
 
 a.list-group-item:hover,
@@ -2469,7 +2466,7 @@ a.list-group-item.active .list-group-item-text {
   font-size: 21px;
   font-weight: bold;
   line-height: 1;
-  color: #000;
+  color: #000000;
   text-shadow: 0 1px 0 #ffffff;
   opacity: 0.2;
   filter: alpha(opacity=20);
@@ -2477,7 +2474,7 @@ a.list-group-item.active .list-group-item-text {
 
 .close:hover,
 .close:focus {
-  color: #000;
+  color: #000000;
   text-decoration: none;
   cursor: pointer;
   opacity: 0.5;
@@ -2571,11 +2568,10 @@ button.close {
 }
 
 .nav .nav-divider {
-  height: 2px;
+  height: 1px;
   margin: 9px 0;
   overflow: hidden;
   background-color: #e5e5e5;
-  border-bottom: 1px solid #ffffff;
 }
 
 .nav-tabs {
@@ -3971,7 +3967,7 @@ a.thumbnail:focus {
   font-size: 75%;
   font-weight: 500;
   line-height: 1;
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -3981,7 +3977,7 @@ a.thumbnail:focus {
 
 .label[href]:hover,
 .label[href]:focus {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   cursor: pointer;
   background-color: #808080;
@@ -4294,7 +4290,7 @@ a.list-group-item.active > .badge,
   left: 0;
   width: 15%;
   font-size: 20px;
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
   opacity: 0.5;
@@ -4327,7 +4323,7 @@ a.list-group-item.active > .badge,
 
 .carousel-control:hover,
 .carousel-control:focus {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   opacity: 0.9;
   filter: alpha(opacity=90);
@@ -4374,7 +4370,7 @@ a.list-group-item.active > .badge,
   margin: 1px;
   text-indent: -999px;
   cursor: pointer;
-  border: 1px solid #fff;
+  border: 1px solid #ffffff;
   border-radius: 10px;
 }
 
@@ -4382,7 +4378,7 @@ a.list-group-item.active > .badge,
   width: 12px;
   height: 12px;
   margin: 0;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 .carousel-caption {
@@ -4393,7 +4389,7 @@ a.list-group-item.active > .badge,
   z-index: 10;
   padding-top: 20px;
   padding-bottom: 20px;
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
