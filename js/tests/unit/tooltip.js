@@ -43,6 +43,52 @@ $(function () {
         tooltip.tooltip('hide')
       })
 
+      test("tooltips should be placed dynamically, with the dynamicPlacement option", function () {
+        $.support.transition = false
+        var ttContainer = $('<div id="dynamic-tt-test"/>').css({
+          'height' : 400
+          , 'overflow' : 'hidden'
+          , 'position' : 'absolute'
+          , 'top' : 0
+          , 'left' : 0
+          , 'width' : 600})
+          .appendTo('body')
+
+        var topTooltip = $('<div style="display: inline-block; position: absolute; left: 0; top: 0;" rel="tooltip" title="Top tooltip">Top Dynamic Tooltip</div>')
+          .appendTo('#dynamic-tt-test')
+          .tooltip({placement: 'top', dynamicPlacement: true})
+          .tooltip('show')
+
+        ok($(".tooltip").is('.bottom'),  'top positioned tooltip is dynamically positioned bottom')
+        topTooltip.tooltip('hide')
+
+        var rightTooltip = $('<div style="display: inline-block; position: absolute; right: 0;" rel="tooltip" title="Right tooltip">Right Dynamic Tooltip</div>')
+          .appendTo('#dynamic-tt-test')
+          .tooltip({placement: 'right', dynamicPlacement: true})
+          .tooltip('show')
+
+        ok($(".tooltip").is('.left'),  'right positioned tooltip is dynamically positioned left')
+        rightTooltip.tooltip('hide')
+
+        var bottomTooltip = $('<div style="display: inline-block; position: absolute; bottom: 0;" rel="tooltip" title="Bottom tooltip">Bottom Dynamic Tooltip</div>')
+          .appendTo('#dynamic-tt-test')
+          .tooltip({placement: 'bottom', dynamicPlacement: true})
+          .tooltip('show')
+
+        ok($(".tooltip").is('.top'),  'bottom positioned tooltip is dynamically positioned top')
+        bottomTooltip.tooltip('hide')
+
+        var leftTooltip = $('<div style="display: inline-block; position: absolute; left: 0;" rel="tooltip" title="Left tooltip">Left Dynamic Tooltip</div>')
+          .appendTo('#dynamic-tt-test')
+          .tooltip({placement: 'left', dynamicPlacement: true})
+          .tooltip('show')
+
+        ok($(".tooltip").is('.right'),  'left positioned tooltip is dynamically positioned right')
+        leftTooltip.tooltip('hide')
+
+        ttContainer.remove()
+      })
+
       test("should allow html entities", function () {
         $.support.transition = false
         var tooltip = $('<a href="#" rel="tooltip" title="<b>@fat</b>"></a>')
