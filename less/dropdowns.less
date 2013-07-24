@@ -11,7 +11,7 @@
   height: 0;
   margin-left: 2px;
   vertical-align: middle;
-  border-top:   4px solid @caret-border-top-color;
+  border-top:   4px solid @dropdown-caret-color;
   border-right: 4px solid transparent;
   border-left:  4px solid transparent;
   content: "";
@@ -45,7 +45,7 @@
 
   // Dividers (basically an hr) within the dropdown
   .divider {
-    .nav-divider(@dropdown-divider-top, @dropdown-divider-bottom);
+    .nav-divider(@dropdown-divider-bg);
   }
 
   // Links within the dropdown menu
@@ -159,7 +159,7 @@
   // Reverse the caret
   .caret {
     border-top: 0;
-    border-bottom: 4px solid @dropup-caret-border-color;
+    border-bottom: 4px solid @dropdown-caret-color;
     content: "";
   }
   // Different positioning for bottom up menu
