@@ -64,11 +64,13 @@
                 offsetTop    != null && (scrollTop <= offsetTop) ? 'top' : false
 
     if (this.affixed === affix) return
-
+    
     this.affixed = affix
     this.unpin   = affix == 'bottom' ? position.top - scrollTop : null
 
     this.$element.removeClass(reset).addClass('affix' + (affix ? '-' + affix : ''))
+
+    this.$element.trigger(affix ? 'affixed' : 'unaffixed')
   }
 
 
