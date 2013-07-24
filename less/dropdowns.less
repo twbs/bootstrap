@@ -11,7 +11,7 @@
   height: 0;
   margin-left: 2px;
   vertical-align: middle;
-  border-top:   4px solid #000;
+  border-top:   4px solid @dropdown-caret-color;
   border-right: 4px solid transparent;
   border-left:  4px solid transparent;
   content: "";
@@ -31,7 +31,7 @@
   margin: 2px 0 0; // override default ul
   list-style: none;
   background-color: @dropdown-bg;
-  border: 1px solid #ccc; // IE8 fallback
+  border: 1px solid @dropdown-fallback-border; // IE8 fallback
   border: 1px solid @dropdown-border;
   border-radius: @border-radius-base;
   .box-shadow(0 6px 12px rgba(0,0,0,.175));
@@ -45,7 +45,7 @@
 
   // Dividers (basically an hr) within the dropdown
   .divider {
-    .nav-divider(@dropdown-divider-top, @dropdown-divider-bottom);
+    .nav-divider(@dropdown-divider-bg);
   }
 
   // Links within the dropdown menu
@@ -159,7 +159,7 @@
   // Reverse the caret
   .caret {
     border-top: 0;
-    border-bottom: 4px solid #000;
+    border-bottom: 4px solid @dropdown-caret-color;
     content: "";
   }
   // Different positioning for bottom up menu

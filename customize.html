@@ -407,6 +407,22 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
         </div>
       </div>
 
+      <h3>Code blocks</h3>
+      <div class="row">
+        <div class="col-lg-6">
+          <label>@code-color</label>
+          <input type="text" placeholder="#c7254e">
+          <label>@code-bg</label>
+          <input type="text" placeholder="#f9f2f4">
+        </div>
+        <div class="col-lg-6">
+          <label>@pre-bg</label>
+          <input type="text" placeholder="#f5f5f5">
+          <label>@code-border-color</label>
+          <input type="text" placeholder="#ccc">
+        </div>
+      </div>
+
       <h4>Headings</h4>
       <div class="row">
         <div class="col-lg-6">
@@ -569,6 +585,9 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <input type="text" placeholder="@brand-info">
           <label>@btn-info-border</label>
           <input type="text" placeholder="@btn-info-bg">
+          <h4>Button hover</h4>
+          <label>@btn-hover-color</label>
+          <input type="text" placeholder="@btn-default-color">
         </div>
         <div class="col-lg-6">
           <h4>Success</h4>
@@ -761,46 +780,60 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
       <h2 id="variables-forms">Forms</h2>
       <div class="row">
         <div class="col-lg-6">
-          <h3>Background</h3>
+          <h3>Inputs</h3>
           <label>@input-bg</label>
           <input type="text" placeholder="#fff">
           <p class="help-block"><code>&lt;input&gt;</code> background color</p>
-          <label>@input-bg-disabled</label>
-          <input type="text" placeholder="@gray-lighter">
-          <p class="help-block"><code>&lt;input disabled&gt;</code>background color</p>
-
-          <h3>Placeholder</h3>
-          <label>@input-color-placeholder</label>
-          <input type="text" placeholder="@gray-light">
-          <p class="help-block">Placeholder text color</p>
-        </div>
-        <div class="col-lg-6">
-          <h3>Border</h3>
           <label>@input-border</label>
           <input type="text" placeholder="#ccc">
           <p class="help-block"><code>&lt;input&gt;</code> border color</p>
           <label>@input-border-radius</label>
           <input type="text" placeholder="@border-radius-base">
-          <p class="help-block"><code>&lt;input&gt;</code>border radius</p>
+          <p class="help-block"><code>&lt;input&gt;</code> border radius</p>
+          <label>@input-bg-disabled</label>
+          <input type="text" placeholder="@gray-lighter">
+          <p class="help-block"><code>&lt;input disabled&gt;</code> background color</p>
+        </div>
+        <div class="col-lg-6">
+          <h3>Placeholder</h3>
+          <label>@input-color-placeholder</label>
+          <input type="text" placeholder="@gray-light">
+          <p class="help-block">Placeholder text color</p>
+
+          <h3>Legend</h3>
+          <label>@legend-border-color</label>
+          <input type="text" placeholder="#e5e5e5">
+          <p class="help-block"><code>&lt;legend&gt;</code> border color</p>
+
+          <h3>Input groups</h3>
+          <label>@input-group-addon-border-color</label>
+          <input type="text" placeholder="@input-border">
+          <p class="help-block">Border color for textual input addons</p>
         </div>
       </div>
 
       <h2 id="variables-dropdowns">Dropdowns</h2>
       <div class="row">
         <div class="col-lg-6">
-          <h3>Background</h3>
+          <h3>Dropdown menu</h3>
           <label>@dropdown-bg</label>
           <input type="text" placeholder="#fff">
           <p class="help-block">Dropdown menu background color</p>
-          <label>@dropdown-link-active-bg</label>
-          <input type="text" placeholder="@component-active-bg">
-          <p class="help-block">Active dropdown menu entry background color</p>
-          <label>@dropdown-link-hover-bg</label>
-          <input type="text" placeholder="@dropdown-link-active-bg">
-          <p class="help-block">Hovered dropdown menu entry background color</p>
+          <label>@dropdown-border</label>
+          <input type="text" placeholder="rgba(0,0,0,.15)">
+          <p class="help-block">Dropdown menu border color</p>
+          <label>@dropdown-fallback-border</label>
+          <input type="text" placeholder="#ccc">
+          <p class="help-block">Dropdown menu border color <strong>for IE8</strong></p>
+          <label>@dropdown-caret-color</label>
+          <input type="text" placeholder="@dropdown-caret-color">
+          <p class="help-block">Indicator arrow for showing an element has a dropdown</p>
+          <label>@dropdown-divider-bg</label>
+          <input type="text" placeholder="#e5e5e5">
+          <p class="help-block">Dropdown divider top border color</p>
         </div>
         <div class="col-lg-6">
-          <h3>Colors</h3>
+          <h3>Dropdown items</h3>
           <label>@dropdown-link-color</label>
           <input type="text" placeholder="@gray-dark">
           <p class="help-block">Dropdown text color</p>
@@ -810,17 +843,12 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <label>@dropdown-link-hover-bg</label>
           <input type="text" placeholder="#fff">
           <p class="help-block">Hovered dropdown menu entry text color</p>
-        </div>
-      </div>
-      <h3>Dividers</h3>
-      <div class="row">
-        <div class="col-lg-6">
-          <label>@dropdown-divider-top</label>
-          <input type="text" placeholder="#e5e5e5">
-          <p class="help-block">Dropdown divider top border color</p>
-          <label>@dropdown-divider-bottom</label>
-          <input type="text" placeholder="#fff">
-          <p class="help-block">Dropdown divider bottom border color</p>
+          <label>@dropdown-link-active-bg</label>
+          <input type="text" placeholder="@component-active-bg">
+          <p class="help-block">Active dropdown menu entry background color</p>
+          <label>@dropdown-link-hover-bg</label>
+          <input type="text" placeholder="@dropdown-link-active-bg">
+          <p class="help-block">Hovered dropdown menu entry background color</p>
         </div>
       </div>
 
@@ -973,6 +1001,7 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <p class="help-block">Jumbotron lead paragraph color</p>
         </div>
       </div>
+
       <h2 id="variables-modals">Modals</h2>
       <div class="row">
         <div class="col-lg-4">
@@ -991,6 +1020,19 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <p class="help-block">Modal title line-height</p>
         </div>
       </div>
+
+      <h2 id="variables-carousel">Carousel</h2>
+      <label>@carousel-text-shadow</label>
+      <input type="text" placeholder="0 1px 2px rgba(0,0,0,.6)">
+      <label>@carousel-control-color</label>
+      <input type="text" placeholder="#fff">
+      <label>@carousel-indicator-border-color</label>
+      <input type="text" placeholder="#fff">
+      <label>@carousel-indicator-active-bg</label>
+      <input type="text" placeholder="#fff">
+      <label>@carousel-caption-color</label>
+      <input type="text" placeholder="#fff">
+
       <h2 id="variables-list-group">List group</h2>
       <h3>Background</h3>
       <div class="row">
@@ -1174,9 +1216,16 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <p class="help-block">Popover outer arrow color</p>
         </div>
       </div>
+
+      <h2 id="variables-close">Close button</h2>
+      <label>@close-color</label>
+      <input type="text" placeholder="#000">
+      <label>@close-text-shadow</label>
+      <input type="text" placeholder="0 1px 0 #fff">
+
       <h2 id="variables-other">Other</h2>
       <div class="row">
-      <div class="col-lg-6">
+        <div class="col-lg-6">
           <label>@hr-border</label>
           <input type="text" placeholder="@gray-lighter">
           <p class="help-block">Horizontal line color</p>

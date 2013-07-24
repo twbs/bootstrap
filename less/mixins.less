@@ -332,12 +332,11 @@
 // Horizontal dividers
 // -------------------------
 // Dividers (basically an hr) within dropdowns and nav lists
-.nav-divider(@top: #e5e5e5, @bottom: #fff) {
-  height: 2px; // 1px for background, one for border
+.nav-divider(@color: #e5e5e5) {
+  height: 1px;
   margin: ((@line-height-computed / 2) - 1) 0;
   overflow: hidden;
-  background-color: @top;
-  border-bottom: 1px solid @bottom;
+  background-color: @color;
 }
 
 // Alerts

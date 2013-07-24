@@ -117,6 +117,7 @@
 @btn-info-bg:                    @brand-info;
 @btn-info-border:                @btn-info-bg;
 
+@btn-hover-color:                @btn-default-color;
 
 
 // Forms
@@ -134,14 +135,18 @@
 @input-height-large:             (ceil(@font-size-large * @line-height-base) + (@padding-large-vertical * 2) + 2);
 @input-height-small:             (ceil(@font-size-small * @line-height-base) + (@padding-small-vertical * 2) + 2);
 
+@legend-border-color:            #e5e5e5;
+
+@input-group-addon-border-color: @input-border;
+
 
 // Dropdowns
 // -------------------------
 
 @dropdown-bg:                    #fff;
 @dropdown-border:                rgba(0,0,0,.15);
-@dropdown-divider-top:           #e5e5e5;
-@dropdown-divider-bottom:        #fff;
+@dropdown-fallback-border:       #ccc;
+@dropdown-divider-bg:            #e5e5e5;
 
 @dropdown-link-active-color:     #fff;
 @dropdown-link-active-bg:        @component-active-bg;
@@ -149,6 +154,8 @@
 @dropdown-link-color:            @gray-dark;
 @dropdown-link-hover-color:      #fff;
 @dropdown-link-hover-bg:         @dropdown-link-active-bg;
+
+@dropdown-caret-color:           #000;
 
 
 // COMPONENT VARIABLES
@@ -278,6 +285,9 @@
 @label-warning-bg:            @brand-warning;
 @label-danger-bg:             @brand-danger;
 
+@label-color:                 #fff;
+@label-link-hover-color:      #fff;
+
 
 // Modals
 // -------------------------
@@ -326,6 +336,10 @@
 @list-group-active-color:     #fff;
 @list-group-active-bg:        @component-active-bg;
 @list-group-active-border:    @list-group-active-bg;
+
+@list-group-link-color:          #555;
+@list-group-link-heading-color:  #333;
+
 
 // Panels
 // -------------------------
@@ -389,6 +403,33 @@
 @breadcrumb-bg:               #f5f5f5;
 @breadcrumb-color:            #ccc;
 @breadcrumb-active-color:     @gray-light;
+
+
+// Carousel
+// ------------------------
+@carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6);
+
+@carousel-control-color:                      #fff;
+
+@carousel-indicator-border-color:             #fff;
+@carousel-indicator-active-bg:                #fff;
+
+@carousel-caption-color:                      #fff;
+
+
+// Close
+// ------------------------
+@close-color:                 #000;
+@close-text-shadow:           0 1px 0 #fff;
+
+
+// Code
+// ------------------------
+@code-color:                  #c7254e;
+@code-bg:                     #f9f2f4;
+
+@pre-bg:                      #f5f5f5;
+@pre-border-color:            #ccc;
 
 
 // Miscellaneous
