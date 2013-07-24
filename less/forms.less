@@ -25,7 +25,7 @@ legend {
   line-height: inherit;
   color: @gray-dark;
   border: 0;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid @legend-border-color;
 }
 
 label {
@@ -344,9 +344,9 @@ select {
   font-weight: normal;
   line-height: @line-height-base;
   text-align: center;
-  text-shadow: 0 1px 0 #fff;
+  text-shadow: @input-group-addon-text-shadow;
   background-color: @gray-lighter;
-  border: 1px solid #ccc;
+  border: 1px solid @input-group-addon-border-color;
   border-radius: @border-radius-base;
 
   &.input-small {
