@@ -3444,8 +3444,8 @@ button.close {
 
 .modal-content {
   position: relative;
-  background-color: #fff;
-  border: 1px solid #999;
+  background-color: #ffffff;
+  border: 1px solid #999999;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 6px;
   outline: none;
@@ -3461,7 +3461,7 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1030;
-  background-color: #000;
+  background-color: #000000;
 }
 
 .modal-backdrop.fade {
