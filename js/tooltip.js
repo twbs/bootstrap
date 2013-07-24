@@ -104,10 +104,10 @@
 
     if (!self.options.delay || !self.options.delay.show) return self.show()
 
-    clearTimeout(this.timeout)
+    clearTimeout(self.timeout)
 
     self.hoverState = 'in'
-    this.timeout    = setTimeout(function () {
+    self.timeout    = setTimeout(function () {
       if (self.hoverState == 'in') self.show()
     }, self.options.delay.show)
   }
@@ -116,12 +116,12 @@
     var self = obj instanceof this.constructor ?
       obj : $(obj.currentTarget)[this.type](this._options).data('bs.' + this.type)
 
-    clearTimeout(this.timeout)
+    clearTimeout(self.timeout)
 
     if (!self.options.delay || !self.options.delay.hide) return self.hide()
 
     self.hoverState = 'out'
-    this.timeout    = setTimeout(function () {
+    self.timeout    = setTimeout(function () {
       if (self.hoverState == 'out') self.hide()
     }, self.options.delay.hide)
   }
