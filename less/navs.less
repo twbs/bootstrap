@@ -115,8 +115,8 @@
   }
   // pulling this in mainly for less shorthand
   &.nav-justified {
-    .nav-justified;
-    .nav-tabs-justified;
+    .nav-justified();
+    .nav-tabs-justified();
   }
 }
 
@@ -180,7 +180,7 @@
 }
 
 // Move borders to anchors instead of bottom of list
-.nav-tabs-justified () {
+.nav-tabs-justified {
   border-bottom: 0;
   > li > a {
     border-bottom: 1px solid #ddd;

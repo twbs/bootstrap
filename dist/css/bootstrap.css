@@ -2672,6 +2672,19 @@ button.close {
   text-align: center;
 }
 
+.nav-tabs-justified {
+  border-bottom: 0;
+}
+
+.nav-tabs-justified > li > a {
+  margin-right: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-tabs-justified > .active > a {
+  border-bottom-color: #ffffff;
+}
+
 .tabbable:before,
 .tabbable:after {
   display: table;
