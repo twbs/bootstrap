@@ -149,8 +149,10 @@
 
     if (this.isShown && this.options.backdrop) {
       var doAnimate = $.support.transition && animate
+      /* add a custom CSS class to the modal backdrop */
+      var bdCustom = this.$element.attr('data-modal-backdrop-custom') || ''
 
-      this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
+      this.$backdrop = $('<div class="modal-backdrop ' + animate + ' ' + bdCustom + '" />')
         .appendTo(document.body)
 
       this.$element.on('click', $.proxy(function (e) {
