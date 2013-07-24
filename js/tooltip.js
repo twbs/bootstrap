@@ -310,6 +310,7 @@
   Tooltip.prototype.toggle = function (e) {
     var self = e ? $(e.currentTarget)[this.type](this._options).data('bs.' + this.type) : this
     self.tip().hasClass('in') ? self.leave(self) : self.enter(self)
+    e.preventDefault();
   }
 
   Tooltip.prototype.destroy = function () {
