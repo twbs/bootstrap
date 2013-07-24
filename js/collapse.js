@@ -104,7 +104,9 @@
     this.$element[method]('in')
 
     $.support.transition && this.$element.hasClass('collapse') ?
-      this.$element.one($.support.transition.end, complete) :
+      this.$element
+        .one($.support.transition.end, complete)
+        .emulateTransitionEnd(350) :
       complete()
   }
 

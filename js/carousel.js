@@ -130,12 +130,14 @@
       $next[0].offsetWidth // force reflow
       $active.addClass(direction)
       $next.addClass(direction)
-      this.$element.find('.item').one($.support.transition.end, function () {
-        $next.removeClass([type, direction].join(' ')).addClass('active')
-        $active.removeClass(['active', direction].join(' '))
-        that.sliding = false
-        setTimeout(function () { that.$element.trigger('slid') }, 0)
-      })
+      this.$element.find('.item')
+        .one($.support.transition.end, function () {
+          $next.removeClass([type, direction].join(' ')).addClass('active')
+          $active.removeClass(['active', direction].join(' '))
+          that.sliding = false
+          setTimeout(function () { that.$element.trigger('slid') }, 0)
+        })
+        .emulateTransitionEnd(600)
     } else {
       this.$element.trigger(e)
       if (e.isDefaultPrevented()) return
@@ -160,7 +162,7 @@
     return this.each(function () {
       var $this   = $(this)
       var data    = $this.data('bs.carousel')
-      var options = $.extend({}, Carousel.DEFAULTS, typeof option == 'object' && option)
+      var options = $.extend({}, Carousel.DEFAULTS, $this.data(), typeof option == 'object' && option)
       var action  = typeof option == 'string' ? option : options.slide
 
       if (!data) $this.data('bs.carousel', (data = new Carousel(this, options)))

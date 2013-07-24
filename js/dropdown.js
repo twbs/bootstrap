@@ -42,7 +42,7 @@
     if (!isActive) {
       if ('ontouchstart' in document.documentElement) {
         // if mobile we we use a backdrop because click events don't delegate
-        $('<div class="dropdown-backdrop"/>').insertBefore($(this)).on('click', clearMenus)
+        $('<div class="dropdown-backdrop"/>').insertAfter($(this)).on('click', clearMenus)
       }
 
       $parent.trigger(e = $.Event('show.bs.dropdown'))
@@ -92,7 +92,7 @@
 
   function clearMenus() {
     $(backdrop).remove()
-    $(toggle).each(function (e) { 
+    $(toggle).each(function (e) {
       var $parent = getParent($(this))
       if (!$parent.hasClass('open')) return
       $parent.trigger(e = $.Event('hide.bs.dropdown'))
@@ -144,7 +144,6 @@
 
   // APPLY TO STANDARD DROPDOWN ELEMENTS
   // ===================================
-
 
   $(document)
     .on('click.bs.dropdown.data-api', clearMenus)

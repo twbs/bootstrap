@@ -40,6 +40,14 @@
     }
   }
 
+  // http://blog.alexmaccaw.com/css-transitions
+  $.fn.emulateTransitionEnd = function (duration) {
+    var called = false, $el    = this
+    $(this).one('webkitTransitionEnd', function () { called = true })
+    var callback = function () { if (!called) $($el).trigger('webkitTransitionEnd') }
+    setTimeout(callback, duration)
+  }
+
   $(function () {
     $.support.transition = transitionEnd()
   })

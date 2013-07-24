@@ -160,6 +160,7 @@ $btn-info-color:                 $btn-default-color !default;
 $btn-info-bg:                    $brand-info !default;
 $btn-info-border:                $btn-info-bg !default;
 
+$btn-hover-color:                $btn-default-color !default;
 
 
 // Forms
@@ -177,14 +178,18 @@ $input-height-base:              ($line-height-computed + ($padding-base-vertica
 $input-height-large:             (ceil($font-size-large * $line-height-base) + ($padding-large-vertical * 2) + 2);
 $input-height-small:             (ceil($font-size-small * $line-height-base) + ($padding-small-vertical * 2) + 2);
 
+$legend-border-color:            #e5e5e5 !default;
+
+$input-group-addon-border-color: $input-border !default;
+
 
 // Dropdowns
 // -------------------------
 
 $dropdown-bg:                    #fff !default;
 $dropdown-border:                rgba(0,0,0,.15) !default;
-$dropdown-divider-top:           #e5e5e5 !default;
-$dropdown-divider-bottom:        #fff !default;
+$dropdown-fallback-border:       #ccc !default;
+$dropdown-divider-bg:            #e5e5e5 !default;
 
 $dropdown-link-active-color:     #fff !default;
 $dropdown-link-active-bg:        $component-active-bg !default;
@@ -192,6 +197,8 @@ $dropdown-link-active-bg:        $component-active-bg !default;
 $dropdown-link-color:            $gray-dark !default;
 $dropdown-link-hover-color:      #fff !default;
 $dropdown-link-hover-bg:         $dropdown-link-active-bg !default;
+
+$dropdown-caret-color:           #000 !default;
 
 
 // COMPONENT VARIABLES
@@ -322,6 +329,9 @@ $label-info-bg:               $brand-info !default;
 $label-warning-bg:            $brand-warning !default;
 $label-danger-bg:             $brand-danger !default;
 
+$label-color:                 #fff !default;
+$label-link-hover-color:      #fff !default;
+
 
 // Modals
 // -------------------------
@@ -370,6 +380,10 @@ $list-group-hover-bg:         #f5f5f5 !default;
 $list-group-active-color:     #fff !default;
 $list-group-active-bg:        $component-active-bg !default;
 $list-group-active-border:    $list-group-active-bg !default;
+
+$list-group-link-color:          #555 !default;
+$list-group-link-heading-color:  #333 !default;
+
 
 // Panels
 // -------------------------
@@ -423,7 +437,7 @@ $accordion-border-color:      #e5e5e5 !default;
 $badge-color:                 #fff !default;
 $badge-link-hover-color:      #fff !default;
 
-$badge-bg:                    #f5f5f5 !default;
+$badge-bg:                    $gray-light !default;
 $badge-active-color:          $link-color !default;
 $badge-active-bg:             #fff !default;
 
@@ -433,6 +447,33 @@ $badge-active-bg:             #fff !default;
 $breadcrumb-bg:               #f5f5f5 !default;
 $breadcrumb-color:            #ccc !default;
 $breadcrumb-active-color:     $gray-light !default;
+
+
+// Carousel
+// ------------------------
+$carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6) !default;
+
+$carousel-control-color:                      #fff !default;
+
+$carousel-indicator-border-color:             #fff !default;
+$carousel-indicator-active-bg:                #fff !default;
+
+$carousel-caption-color:                      #fff !default;
+
+
+// Close
+// ------------------------
+$close-color:                 #000 !default;
+$close-text-shadow:           0 1px 0 #fff !default;
+
+
+// Code
+// ------------------------
+$code-color:                  #c7254e !default;
+$code-bg:                     #f9f2f4 !default;
+
+$pre-bg:                      #f5f5f5 !default;
+$pre-border-color:            #ccc !default;
 
 
 // Miscellaneous

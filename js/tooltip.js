@@ -104,10 +104,10 @@
 
     if (!self.options.delay || !self.options.delay.show) return self.show()
 
-    clearTimeout(this.timeout)
+    clearTimeout(self.timeout)
 
     self.hoverState = 'in'
-    this.timeout    = setTimeout(function () {
+    self.timeout    = setTimeout(function () {
       if (self.hoverState == 'in') self.show()
     }, self.options.delay.show)
   }
@@ -116,12 +116,12 @@
     var self = obj instanceof this.constructor ?
       obj : $(obj.currentTarget)[this.type](this._options).data('bs.' + this.type)
 
-    clearTimeout(this.timeout)
+    clearTimeout(self.timeout)
 
     if (!self.options.delay || !self.options.delay.hide) return self.hide()
 
     self.hoverState = 'out'
-    this.timeout    = setTimeout(function () {
+    self.timeout    = setTimeout(function () {
       if (self.hoverState == 'out') self.hide()
     }, self.options.delay.hide)
   }
@@ -144,6 +144,10 @@
         this.options.placement.call(this, $tip[0], this.$element[0]) :
         this.options.placement
 
+      var autoToken = /\s?auto?\s?/i
+      var autoPlace = autoToken.test(placement)
+      if (autoPlace) placement = placement.replace(autoToken, '') || 'top'
+
       $tip
         .detach()
         .css({ top: 0, left: 0, display: 'block' })
@@ -155,6 +159,26 @@
       var pos          = this.getPosition()
       var actualWidth  = $tip[0].offsetWidth
       var actualHeight = $tip[0].offsetHeight
+
+      if (autoPlace) {
+        var $parent = this.$element.parent()
+
+        var orgPlacement = placement
+        var docScroll    = document.documentElement.scrollTop || document.body.scrollTop
+        var parentWidth  = this.options.container == 'body' ? window.innerWidth  : $parent.outerWidth()
+        var parentHeight = this.options.container == 'body' ? window.innerHeight : $parent.outerHeight()
+        var parentLeft   = this.options.container == 'body' ? 0 : $parent.offset().left
+
+        placement = placement == 'bottom' && pos.top   + pos.height  + actualHeight - docScroll > parentHeight  ? 'top'    :
+                    placement == 'top'    && pos.top   - docScroll   - actualHeight < 0                         ? 'bottom' :
+                    placement == 'right'  && pos.right + actualWidth > parentWidth                              ? 'left'   :
+                    placement == 'left'   && pos.left  - actualWidth < parentLeft                               ? 'right'  :
+                    placement
+
+        $tip
+          .removeClass(orgPlacement)
+          .addClass(placement)
+      }
 
       switch (placement) {
         case 'bottom':
@@ -238,19 +262,10 @@
 
     $tip.removeClass('in')
 
-    function removeWithAnimation() {
-      var timeout = setTimeout(function () {
-        $tip.off($.support.transition.end).detach()
-      }, 500)
-
-      $tip.one($.support.transition.end, function () {
-        clearTimeout(timeout)
-        $tip.detach()
-      })
-    }
-
     $.support.transition && this.$tip.hasClass('fade') ?
-      removeWithAnimation() :
+      $tip
+        .one($.support.transition.end, $tip.detach)
+        .emulateTransitionEnd(150) :
       $tip.detach()
 
     this.$element.trigger('hidden.bs.' + this.type)
