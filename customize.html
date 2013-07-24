@@ -807,23 +807,25 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
       <h2 id="variables-dropdowns">Dropdowns</h2>
       <div class="row">
         <div class="col-lg-6">
-          <h3>Background</h3>
+          <h3>Dropdown menu</h3>
           <label>@dropdown-bg</label>
           <input type="text" placeholder="#fff">
           <p class="help-block">Dropdown menu background color</p>
-          <label>@dropdown-link-active-bg</label>
-          <input type="text" placeholder="@component-active-bg">
-          <p class="help-block">Active dropdown menu entry background color</p>
-          <label>@dropdown-link-hover-bg</label>
-          <input type="text" placeholder="@dropdown-link-active-bg">
-          <p class="help-block">Hovered dropdown menu entry background color</p>
-          <h3>Dropdown caret</h3>
+          <label>@dropdown-border</label>
+          <input type="text" placeholder="rgba(0,0,0,.15)">
+          <p class="help-block">Dropdown menu border color</p>
+          <label>@dropdown-fallback-border</label>
+          <input type="text" placeholder="#ccc">
+          <p class="help-block">Dropdown menu border color <strong>for IE8</strong></p>
           <label>@dropdown-caret-color</label>
           <input type="text" placeholder="@dropdown-caret-color">
           <p class="help-block">Indicator arrow for showing an element has a dropdown</p>
+          <label>@dropdown-divider-bg</label>
+          <input type="text" placeholder="#e5e5e5">
+          <p class="help-block">Dropdown divider top border color</p>
         </div>
         <div class="col-lg-6">
-          <h3>Colors</h3>
+          <h3>Dropdown items</h3>
           <label>@dropdown-link-color</label>
           <input type="text" placeholder="@gray-dark">
           <p class="help-block">Dropdown text color</p>
@@ -833,14 +835,12 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
           <label>@dropdown-link-hover-bg</label>
           <input type="text" placeholder="#fff">
           <p class="help-block">Hovered dropdown menu entry text color</p>
-        </div>
-      </div>
-      <h3>Dividers</h3>
-      <div class="row">
-        <div class="col-lg-6">
-          <label>@dropdown-divider-bg</label>
-          <input type="text" placeholder="#e5e5e5">
-          <p class="help-block">Dropdown divider top border color</p>
+          <label>@dropdown-link-active-bg</label>
+          <input type="text" placeholder="@component-active-bg">
+          <p class="help-block">Active dropdown menu entry background color</p>
+          <label>@dropdown-link-hover-bg</label>
+          <input type="text" placeholder="@dropdown-link-active-bg">
+          <p class="help-block">Hovered dropdown menu entry background color</p>
         </div>
       </div>
 
