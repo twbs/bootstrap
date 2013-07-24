@@ -93,7 +93,7 @@
   // Hover/focus state
   &:hover,
   &:focus {
-    color: @carousel-control-hover-color;
+    color: @carousel-control-color;
     text-decoration: none;
     .opacity(.9);
   }
@@ -144,7 +144,7 @@
     height: 10px;
     margin: 1px;
     text-indent: -999px;
-    border: 1px solid @carousel-indicators-li-border-color;
+    border: 1px solid @carousel-indicator-border-color;
     border-radius: 10px;
     cursor: pointer;
   }
@@ -152,7 +152,7 @@
     margin: 0;
     width:  12px;
     height: 12px;
-    background-color: @carousel-indicators-active-bg;
+    background-color: @carousel-indicator-active-bg;
   }
 }
 
@@ -169,7 +169,7 @@
   padding-bottom: 20px;
   color: @carousel-caption-color;
   text-align: center;
-  text-shadow: @carousel-caption-text-shadow;
+  text-shadow: @carousel-text-shadow;
   & .btn {
     text-shadow: none; // No shadow for button elements in carousel-caption
   }
