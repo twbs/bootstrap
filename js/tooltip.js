@@ -191,7 +191,10 @@
 
     if (placement == 'top' && actualHeight != height) {
       replace = true
-      offset.top  = offset.top + height - actualHeight
+      offset.top = offset.top + height - actualHeight
+    } else if (placement == 'left' && actualWidth != width) {
+      replace = true
+      offset.left = offset.left + width - actualWidth
     }
 
     if (placement == 'bottom' || placement == 'top') {
