@@ -1191,29 +1191,53 @@ table th[class^="col-"] {
   float: none;
 }
 
+.table > thead > tr > td.active,
 .table > tbody > tr > td.active,
+.table > tfoot > tr > td.active,
+.table > thead > tr > th.active,
 .table > tbody > tr > th.active,
-.table > tbody > tr.active > td {
+.table > tfoot > tr > th.active,
+.table > thead > tr.active > td,
+.table > tbody > tr.active > td,
+.table > tfoot > tr.active > td {
   background-color: #f5f5f5;
 }
 
+.table > thead > tr > td.success,
 .table > tbody > tr > td.success,
+.table > tfoot > tr > td.success,
+.table > thead > tr > th.success,
 .table > tbody > tr > th.success,
-.table > tbody > tr.success > td {
+.table > tfoot > tr > th.success,
+.table > thead > tr.success > td,
+.table > tbody > tr.success > td,
+.table > tfoot > tr.success > td {
   background-color: #dff0d8;
   border-color: #d6e9c6;
 }
 
+.table > thead > tr > td.danger,
 .table > tbody > tr > td.danger,
+.table > tfoot > tr > td.danger,
+.table > thead > tr > th.danger,
 .table > tbody > tr > th.danger,
-.table > tbody > tr.danger > td {
+.table > tfoot > tr > th.danger,
+.table > thead > tr.danger > td,
+.table > tbody > tr.danger > td,
+.table > tfoot > tr.danger > td {
   background-color: #f2dede;
   border-color: #eed3d7;
 }
 
+.table > thead > tr > td.warning,
 .table > tbody > tr > td.warning,
+.table > tfoot > tr > td.warning,
+.table > thead > tr > th.warning,
 .table > tbody > tr > th.warning,
-.table > tbody > tr.warning > td {
+.table > tfoot > tr > th.warning,
+.table > thead > tr.warning > td,
+.table > tbody > tr.warning > td,
+.table > tfoot > tr.warning > td {
   background-color: #fcf8e3;
   border-color: #fbeed5;
 }

@@ -152,9 +152,12 @@ table {
 
 // Table backgrounds
 // -----------------
-// Exact selectors below required to override .table-striped
+// Exact selectors below required to override `.table-striped` and prevent
+// inheritance to nested tables.
 
-.table > tbody > tr {
+.table > thead > tr,
+.table > tbody > tr,
+.table > tfoot > tr {
   > td.active,
   > th.active,
   &.active > td {
@@ -180,7 +183,8 @@ table {
   }
 }
 
-// Hover states for .table-hover
+// Hover states for `.table-hover`
+// Note: this is not available for cells or rows within `thead` or `tfoot`.
 .table-hover > tbody > tr {
   > td.success:hover,
   > th.success:hover,
