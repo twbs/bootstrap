@@ -2219,7 +2219,7 @@ input[type="button"].btn-block {
 .dropdown-menu > .disabled > a:hover,
 .dropdown-menu > .disabled > a:focus {
   text-decoration: none;
-  cursor: default;
+  cursor: not-allowed;
   background-color: transparent;
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
@@ -2540,7 +2540,7 @@ button.close {
 .nav > li.disabled > a:focus {
   color: #999999;
   text-decoration: none;
-  cursor: default;
+  cursor: not-allowed;
   background-color: transparent;
 }
 
@@ -3301,7 +3301,7 @@ button.close {
 .pagination > .disabled > a:hover,
 .pagination > .disabled > a:focus {
   color: #999999;
-  cursor: default;
+  cursor: not-allowed;
   background-color: #ffffff;
 }
 
@@ -3402,7 +3402,7 @@ button.close {
 .pager .disabled > a:focus,
 .pager .disabled > span {
   color: #999999;
-  cursor: default;
+  cursor: not-allowed;
   background-color: #ffffff;
 }
 
