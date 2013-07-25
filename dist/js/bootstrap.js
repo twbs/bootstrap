@@ -390,7 +390,7 @@
       $next[0].offsetWidth // force reflow
       $active.addClass(direction)
       $next.addClass(direction)
-      this.$element.find('.item')
+      $active
         .one($.support.transition.end, function () {
           $next.removeClass([type, direction].join(' ')).addClass('active')
           $active.removeClass(['active', direction].join(' '))
@@ -1027,11 +1027,11 @@
       .one('hide', function () {
         $this.is(':visible') && $this.focus()
       })
-    })
+  })
 
-    var $body = $(document.body)
-      .on('shown.bs.modal',  '.modal', function () { $body.addClass('modal-open') })
-      .on('hidden.bs.modal', '.modal', function () { $body.removeClass('modal-open') })
+  var $body = $(document.body)
+    .on('shown.bs.modal',  '.modal', function () { $body.addClass('modal-open') })
+    .on('hidden.bs.modal', '.modal', function () { $body.removeClass('modal-open') })
 
 }(window.jQuery);
 /* ========================================================================
@@ -1138,9 +1138,9 @@
     var self = obj instanceof this.constructor ?
       obj : $(obj.currentTarget)[this.type](options).data('bs.' + this.type)
 
-    if (!self.options.delay || !self.options.delay.show) return self.show()
-
     clearTimeout(self.timeout)
+
+    if (!self.options.delay || !self.options.delay.show) return self.show()
 
     self.hoverState = 'in'
     self.timeout    = setTimeout(function () {
@@ -1191,7 +1191,6 @@
 
       this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
 
-      var tp
       var pos          = this.getPosition()
       var actualWidth  = $tip[0].offsetWidth
       var actualHeight = $tip[0].offsetHeight
@@ -1216,20 +1215,10 @@
           .addClass(placement)
       }
 
-      switch (placement) {
-        case 'bottom':
-          tp = {top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2}
-          break
-        case 'top':
-          tp = {top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2}
-          break
-        case 'left':
-          tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth}
-          break
-        case 'right':
-          tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width}
-          break
-      }
+      var tp = placement == 'bottom' ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2  } :
+               placement == 'top'    ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2  } :
+               placement == 'left'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
+            /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width   }
 
       this.applyPlacement(tp, placement)
       this.$element.trigger('shown.bs.' + this.type)
@@ -1241,6 +1230,10 @@
     var $tip   = this.tip()
     var width  = $tip[0].offsetWidth
     var height = $tip[0].offsetHeight
+
+    // manually read margins because getBoundingClientRect includes difference
+    offset.top  = offset.top  + parseInt($tip.css('margin-top'), 10)
+    offset.left = offset.left + parseInt($tip.css('margin-left'), 10)
 
     $tip
       .offset(offset)
