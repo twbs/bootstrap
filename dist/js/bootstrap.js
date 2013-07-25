@@ -547,7 +547,7 @@
 
     var dimension = this.dimension()
     this.reset(this.$element[dimension]())
-    this.transition('removeClass', 'shown.bs.hidden')
+    this.transition('removeClass', 'hidden.bs.collapse')
     this.$element[dimension](0)
   }
 
