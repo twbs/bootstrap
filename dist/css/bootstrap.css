@@ -2563,7 +2563,7 @@ button.close {
 .nav.open > a,
 .nav.open > a:hover,
 .nav.open > a:focus {
-  color: #fff;
+  color: #ffffff;
   background-color: #428bca;
   border-color: #428bca;
 }
@@ -2571,8 +2571,8 @@ button.close {
 .nav.open > a .caret,
 .nav.open > a:hover .caret,
 .nav.open > a:focus .caret {
-  border-top-color: #fff;
-  border-bottom-color: #fff;
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
 }
 
 .nav > .pull-right {
@@ -2587,7 +2587,7 @@ button.close {
 }
 
 .nav-tabs {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #dddddd;
 }
 
 .nav-tabs > li {
@@ -2603,7 +2603,7 @@ button.close {
 }
 
 .nav-tabs > li > a:hover {
-  border-color: #eeeeee #eeeeee #dddddd;
+  border-color: #eeeeee;
 }
 
 .nav-tabs > li.active > a,
@@ -2612,7 +2612,7 @@ button.close {
   color: #555555;
   cursor: default;
   background-color: #ffffff;
-  border: 1px solid #ddd;
+  border: 1px solid #dddddd;
   border-bottom-color: transparent;
 }
 
@@ -2634,7 +2634,7 @@ button.close {
 
 .nav-tabs.nav-justified > li > a {
   margin-right: 0;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #dddddd;
 }
 
 .nav-tabs.nav-justified > .active > a {
@@ -2656,7 +2656,7 @@ button.close {
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
-  color: #fff;
+  color: #ffffff;
   background-color: #428bca;
 }
 
@@ -2690,7 +2690,7 @@ button.close {
 
 .nav-tabs-justified > li > a {
   margin-right: 0;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #dddddd;
 }
 
 .nav-tabs-justified > .active > a {
@@ -2860,20 +2860,20 @@ button.close {
   height: 32px;
   padding: 8px 12px;
   background-color: transparent;
-  border: 1px solid #ddd;
+  border: 1px solid #dddddd;
   border-radius: 4px;
 }
 
 .navbar-toggle:hover,
 .navbar-toggle:focus {
-  background-color: #ddd;
+  background-color: #dddddd;
 }
 
 .navbar-toggle .icon-bar {
   display: block;
   width: 22px;
   height: 2px;
-  background-color: #ccc;
+  background-color: #cccccc;
   border-radius: 1px;
 }
 
@@ -2985,16 +2985,16 @@ button.close {
 }
 
 .navbar-inverse .navbar-toggle {
-  border-color: #333;
+  border-color: #333333;
 }
 
 .navbar-inverse .navbar-toggle:hover,
 .navbar-inverse .navbar-toggle:focus {
-  background-color: #333;
+  background-color: #333333;
 }
 
 .navbar-inverse .navbar-toggle .icon-bar {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 .navbar-inverse .navbar-nav > .open > a,
