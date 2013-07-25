@@ -493,12 +493,6 @@ body {
 /* Tooltips */
 .bs-example-tooltips {
   text-align: center;
-  margin: 0 0 10px;
-  list-style: none;
-}
-.bs-example-tooltips li {
-  display: inline;
-  padding: 0 10px;
 }
 
 /* Popovers */

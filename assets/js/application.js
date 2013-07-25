@@ -29,7 +29,7 @@
 
     // tooltip demo
     $('.tooltip-demo').tooltip({
-      selector: "a[data-toggle=tooltip]"
+      selector: "[data-toggle=tooltip]"
     })
 
     $('.tooltip-test').tooltip()
