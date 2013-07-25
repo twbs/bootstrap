@@ -14,7 +14,7 @@
       }
     ]
   , "support": {
-      "issues": "https://github.com/twitter/bootstrap/issues"
+      "issues": "https://github.com/twbs/bootstrap/issues"
     }
   , "license": "Apache-2.0"
 }
