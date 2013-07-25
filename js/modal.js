@@ -232,10 +232,10 @@
       .one('hide', function () {
         $this.is(':visible') && $this.focus()
       })
-    })
+  })
 
-    var $body = $(document.body)
-      .on('shown.bs.modal',  '.modal', function () { $body.addClass('modal-open') })
-      .on('hidden.bs.modal', '.modal', function () { $body.removeClass('modal-open') })
+  var $body = $(document.body)
+    .on('shown.bs.modal',  '.modal', function () { $body.addClass('modal-open') })
+    .on('hidden.bs.modal', '.modal', function () { $body.removeClass('modal-open') })
 
 }(window.jQuery);

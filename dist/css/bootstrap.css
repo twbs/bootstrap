@@ -1666,7 +1666,7 @@ input[type="button"].btn-block {
   background-color: transparent;
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-  cursor: default; }
+  cursor: not-allowed; }
 
 .open > .dropdown-menu {
   display: block; }
@@ -1893,7 +1893,7 @@ button.close {
         color: #999999;
         text-decoration: none;
         background-color: transparent;
-        cursor: default; }
+        cursor: not-allowed; }
     .nav > li + .nav-header {
       margin-top: 9px; }
   .nav.open > a, .nav.open > a:hover, .nav.open > a:focus {
@@ -1930,12 +1930,13 @@ button.close {
       border-bottom-color: transparent;
       cursor: default; }
   .nav-tabs.nav-justified {
+    display: table;
     width: 100%;
     border-bottom: 0; }
     .nav-tabs.nav-justified > li {
       float: none;
       display: table-cell;
-      width: 1%; }
+      width: auto; }
       .nav-tabs.nav-justified > li > a {
         text-align: center; }
     .nav-tabs.nav-justified > li > a {
@@ -1961,11 +1962,12 @@ button.close {
     margin-left: 0; }
 
 .nav-justified {
+  display: table;
   width: 100%; }
   .nav-justified > li {
     float: none;
     display: table-cell;
-    width: 1%; }
+    width: auto; }
     .nav-justified > li > a {
       text-align: center; }
 
@@ -2391,7 +2393,7 @@ button.close {
   .pagination > .disabled > a:focus {
     color: #999999;
     background-color: white;
-    cursor: default; }
+    cursor: not-allowed; }
 
 .pagination-large > li > a,
 .pagination-large > li > span {
@@ -2456,7 +2458,7 @@ button.close {
   .pager .disabled > span {
     color: #999999;
     background-color: white;
-    cursor: default; }
+    cursor: not-allowed; }
 
 .modal-open {
   overflow: hidden; }
@@ -2489,8 +2491,8 @@ button.close {
 
 .modal-content {
   position: relative;
-  background-color: #fff;
-  border: 1px solid #999;
+  background-color: white;
+  border: 1px solid #999999;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 6px;
   -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
@@ -2505,7 +2507,7 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1030;
-  background-color: #000; }
+  background-color: black; }
   .modal-backdrop.fade {
     opacity: 0;
     filter: alpha(opacity=opacity-ie); }

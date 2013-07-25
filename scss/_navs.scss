@@ -36,7 +36,7 @@
         color: $gray-light;
         text-decoration: none;
         background-color: transparent;
-        cursor: default;
+        cursor: not-allowed;
       }
     }
 
@@ -73,20 +73,16 @@
   }
 }
 
-
-
-// Nav variations
-// --------------------------------------------------
-
 // Justified nav links
 // -------------------------
 
 @mixin nav-justified {
+  display: table;
   width: 100%;
   > li {
     float: none;
     display: table-cell;
-    width: 1%;
+    width: auto;
     > a {
       text-align: center;
     }
@@ -94,7 +90,7 @@
 }
 
 // Move borders to anchors instead of bottom of list
-@mixin nav-tabs-justified () {
+@mixin nav-tabs-justified {
   border-bottom: 0;
   > li > a {
     border-bottom: 1px solid #ddd;
@@ -108,6 +104,8 @@
 
 }
 
+// Nav variations
+// --------------------------------------------------
 
 // Tabs
 // -------------------------
@@ -146,8 +144,8 @@
   }
   // pulling this in mainly for less shorthand
   &.nav-justified {
-    @include nav-justified;
-    @include nav-tabs-justified;
+    @include nav-justified();
+    @include nav-tabs-justified();
   }
 }
 
@@ -194,8 +192,7 @@
   }
 }
 
-.nav-justified { @include nav-justified }
-
+.nav-justified { @include nav-justified; }
 
 // Tabbable tabs
 // -------------------------

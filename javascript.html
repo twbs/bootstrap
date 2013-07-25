@@ -29,14 +29,14 @@ lead: "Bring Bootstrap's components to life with over a dozen custom jQuery plug
     <h3 id="js-data-attrs">Data attributes</h3>
     <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API and should be your first consideration when using a plugin.</p>
 
-    <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the body namespaced with <code>data-api</code>. This looks like this:
+    <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the document namespaced with <code>data-api</code>. This looks like this:
 {% highlight js %}
-$('body').off('.data-api')
+$(document).off('.data-api')
 {% endhighlight %}
 
     <p>Alternatively, to target a specific plugin, just include the plugin's name as a namespace along with the data-api namespace like this:</p>
 {% highlight js %}
-$('body').off('.alert.data-api')
+$(document).off('.alert.data-api')
 {% endhighlight %}
 
     <h3 id="js-programmatic-api">Programmatic API</h3>
