@@ -23,17 +23,17 @@
       &:hover,
       &:focus {
         text-decoration: none;
-        background-color: @gray-lighter;
+        background-color: @nav-link-hover-bg;
       }
     }
 
     // Disabled state sets text to gray and nukes hover/tab effects
     &.disabled > a {
-      color: @gray-light;
+      color: @nav-disabled-link-color;
 
       &:hover,
       &:focus {
-        color: @gray-light;
+        color: @nav-disabled-link-hover-color;
         text-decoration: none;
         background-color: transparent;
         cursor: not-allowed;
@@ -51,12 +51,12 @@
     &,
     &:hover,
     &:focus {
-      color: #fff;
+      color: @nav-open-link-hover-color;
       background-color: @link-color;
       border-color: @link-color;
       .caret {
-        border-top-color: #fff;
-        border-bottom-color: #fff;
+        border-top-color: @nav-open-caret-border-color;
+        border-bottom-color: @nav-open-caret-border-color;
       }
     }
   }
@@ -83,7 +83,7 @@
 
 // Give the tabs something to sit on
 .nav-tabs {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid @nav-tabs-border-color;
   > li {
     float: left;
     // Make the list-items overlay the bottom border
@@ -96,7 +96,7 @@
       border: 1px solid transparent;
       border-radius: @border-radius-base @border-radius-base 0 0;
       &:hover {
-        border-color: @gray-lighter @gray-lighter #ddd;
+        border-color: @nav-tabs-link-hover-border-color;
       }
     }
 
@@ -105,9 +105,9 @@
       &,
       &:hover,
       &:focus {
-        color: @gray;
-        background-color: @body-bg;
-        border: 1px solid #ddd;
+        color: @nav-tabs-active-link-hover-color;
+        background-color: @nav-tabs-active-link-hover-bg;
+        border: 1px solid @nav-tabs-active-link-hover-border-color;
         border-bottom-color: transparent;
         cursor: default;
       }
@@ -142,8 +142,8 @@
       &,
       &:hover,
       &:focus {
-        color: #fff;
-        background-color: @component-active-bg;
+        color: @nav-pills-active-link-hover-color;
+        background-color: @nav-pills-active-link-hover-bg;
       }
     }
   }
@@ -183,13 +183,13 @@
 .nav-tabs-justified {
   border-bottom: 0;
   > li > a {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid @nav-tabs-justified-link-border-color;
 
     // Override margin from .nav-tabs
     margin-right: 0;
   }
   > .active > a {
-    border-bottom-color: @body-bg;
+    border-bottom-color: @nav-tabs-justified-active-link-border-color;
   }
 
 }
