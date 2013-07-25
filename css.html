@@ -640,15 +640,15 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
 {% endhighlight %}
 
     <h4>Alternate displays</h4>
-    <p>Use <code>.pull-right</code> for a floated, right-aligned blockquote.</p>
+    <p>Use <code>.pull-direction</code> for a floated, right-aligned blockquote.</p>
     <div class="bs-example" style="overflow: hidden;">
-      <blockquote class="pull-right">
+      <blockquote class="pull-direction">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
         <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
       </blockquote>
     </div>
 {% highlight html %}
-<blockquote class="pull-right">
+<blockquote class="pull-direction">
   ...
 </blockquote>
 {% endhighlight %}
@@ -2031,24 +2031,24 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <button type="button" class="close">&times;</button>
 {% endhighlight %}
 
-    <h3>.pull-left</h3>
+    <h3>.pull-origin</h3>
     <p>Float an element left</p>
 {% highlight html %}
-<div class="pull-left">...</div>
+<div class="pull-origin">...</div>
 {% endhighlight %}
 {% highlight css %}
-.pull-left {
+.pull-origin {
   float: left;
 }
 {% endhighlight %}
 
-    <h3>.pull-right</h3>
+    <h3>.pull-direction</h3>
     <p>Float an element right</p>
 {% highlight html %}
-<div class="pull-right">...</div>
+<div class="pull-direction">...</div>
 {% endhighlight %}
 {% highlight css %}
-.pull-right {
+.pull-direction {
   float: right;
 }
 {% endhighlight %}

@@ -641,7 +641,7 @@ blockquote small:before {
   content: '\2014 \00A0';
 }
 
-blockquote.pull-right {
+blockquote.pull-direction {
   float: right;
   padding-right: 15px;
   padding-left: 0;
@@ -649,16 +649,16 @@ blockquote.pull-right {
   border-left: 0;
 }
 
-blockquote.pull-right p,
-blockquote.pull-right small {
+blockquote.pull-direction p,
+blockquote.pull-direction small {
   text-align: right;
 }
 
-blockquote.pull-right small:before {
+blockquote.pull-direction small:before {
   content: '';
 }
 
-blockquote.pull-right small:after {
+blockquote.pull-direction small:after {
   content: '\00A0 \2014';
 }
 
@@ -2160,7 +2160,7 @@ input[type="button"].btn-block {
   background-clip: padding-box;
 }
 
-.dropdown-menu.pull-right {
+.dropdown-menu.pull-direction {
   right: 0;
   left: auto;
 }
@@ -2250,7 +2250,7 @@ input[type="button"].btn-block {
   z-index: 990;
 }
 
-.pull-right > .dropdown-menu {
+.pull-direction > .dropdown-menu {
   right: 0;
   left: auto;
 }
@@ -2563,7 +2563,7 @@ button.close {
   border-bottom-color: #fff;
 }
 
-.nav > .pull-right {
+.nav > .pull-direction {
   float: right;
 }
 
@@ -2794,7 +2794,7 @@ button.close {
   background-color: transparent;
 }
 
-.navbar-nav.pull-right {
+.navbar-nav.pull-direction {
   width: 100%;
 }
 
@@ -2924,8 +2924,8 @@ button.close {
   border-bottom-color: #777777;
 }
 
-.navbar-nav.pull-right > li > .dropdown-menu,
-.navbar-nav > li > .dropdown-menu.pull-right {
+.navbar-nav.pull-direction > li > .dropdown-menu,
+.navbar-nav > li > .dropdown-menu.pull-direction {
   right: 0;
   left: auto;
 }
@@ -3026,7 +3026,7 @@ button.close {
   .navbar-nav > li > a {
     border-radius: 0;
   }
-  .navbar-nav.pull-right {
+  .navbar-nav.pull-direction {
     float: right;
     width: auto;
   }
@@ -3963,11 +3963,11 @@ a.thumbnail:focus {
   margin: 0 0 5px;
 }
 
-.media > .pull-left {
+.media > .pull-origin {
   margin-right: 10px;
 }
 
-.media > .pull-right {
+.media > .pull-direction {
   margin-left: 10px;
 }
 
@@ -4472,11 +4472,11 @@ a.list-group-item.active > .badge,
   clear: both;
 }
 
-.pull-right {
+.pull-direction {
   float: right;
 }
 
-.pull-left {
+.pull-origin {
   float: left;
 }
 
