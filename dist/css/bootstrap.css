@@ -1198,7 +1198,10 @@ table th[class^="col-"] {
 .table > tfoot > tr > th.active,
 .table > thead > tr.active > td,
 .table > tbody > tr.active > td,
-.table > tfoot > tr.active > td {
+.table > tfoot > tr.active > td,
+.table > thead > tr.active > th,
+.table > tbody > tr.active > th,
+.table > tfoot > tr.active > th {
   background-color: #f5f5f5;
 }
 
@@ -1210,7 +1213,10 @@ table th[class^="col-"] {
 .table > tfoot > tr > th.success,
 .table > thead > tr.success > td,
 .table > tbody > tr.success > td,
-.table > tfoot > tr.success > td {
+.table > tfoot > tr.success > td,
+.table > thead > tr.success > th,
+.table > tbody > tr.success > th,
+.table > tfoot > tr.success > th {
   background-color: #dff0d8;
   border-color: #d6e9c6;
 }
@@ -1223,7 +1229,10 @@ table th[class^="col-"] {
 .table > tfoot > tr > th.danger,
 .table > thead > tr.danger > td,
 .table > tbody > tr.danger > td,
-.table > tfoot > tr.danger > td {
+.table > tfoot > tr.danger > td,
+.table > thead > tr.danger > th,
+.table > tbody > tr.danger > th,
+.table > tfoot > tr.danger > th {
   background-color: #f2dede;
   border-color: #eed3d7;
 }
@@ -1236,7 +1245,10 @@ table th[class^="col-"] {
 .table > tfoot > tr > th.warning,
 .table > thead > tr.warning > td,
 .table > tbody > tr.warning > td,
-.table > tfoot > tr.warning > td {
+.table > tfoot > tr.warning > td,
+.table > thead > tr.warning > th,
+.table > tbody > tr.warning > th,
+.table > tfoot > tr.warning > th {
   background-color: #fcf8e3;
   border-color: #fbeed5;
 }

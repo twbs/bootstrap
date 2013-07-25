@@ -160,24 +160,28 @@ table {
 .table > tfoot > tr {
   > td.active,
   > th.active,
-  &.active > td {
+  &.active > td,
+  &.active > th  {
     background-color: @table-bg-hover;
   }
   > td.success,
   > th.success,
-  &.success > td {
+  &.success > td,
+  &.success > th {
     background-color: @state-success-bg;
     border-color: @state-success-border;
   }
   > td.danger,
   > th.danger,
-  &.danger > td {
+  &.danger > td,
+  &.danger > th {
     background-color: @state-danger-bg;
     border-color: @state-danger-border;
   }
   > td.warning,
   > th.warning,
-  &.warning > td {
+  &.warning > td,
+  &.warning > th {
     background-color: @state-warning-bg;
     border-color: @state-warning-border;
   }
