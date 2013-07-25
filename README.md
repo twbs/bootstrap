@@ -54,6 +54,8 @@ $ npm install
 
 When completed, you'll be able to run the various make commands provided.
 
+**Unfamiliar with `npm`? Don't have node installed?** That's a-okay. npm stands for [node packaged modules](http://npmjs.org/) and is a way to manage development dependencies through node.js. [Download and install node.js](http://nodejs.org/download/) before proceeding.
+
 ### Available makefile commands
 
 #### Build - `make`
