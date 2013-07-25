@@ -2219,7 +2219,7 @@ input[type="button"].btn-block {
 .dropdown-menu > .disabled > a:hover,
 .dropdown-menu > .disabled > a:focus {
   text-decoration: none;
-  cursor: default;
+  cursor: not-allowed;
   background-color: transparent;
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
@@ -2540,7 +2540,7 @@ button.close {
 .nav > li.disabled > a:focus {
   color: #999999;
   text-decoration: none;
-  cursor: default;
+  cursor: not-allowed;
   background-color: transparent;
 }
 
@@ -2605,6 +2605,7 @@ button.close {
 }
 
 .nav-tabs.nav-justified {
+  display: table;
   width: 100%;
   border-bottom: 0;
 }
@@ -2612,7 +2613,7 @@ button.close {
 .nav-tabs.nav-justified > li {
   display: table-cell;
   float: none;
-  width: 1%;
+  width: auto;
 }
 
 .nav-tabs.nav-justified > li > a {
@@ -2657,17 +2658,31 @@ button.close {
 }
 
 .nav-justified {
+  display: table;
   width: 100%;
 }
 
 .nav-justified > li {
   display: table-cell;
   float: none;
-  width: 1%;
+  width: auto;
 }
 
 .nav-justified > li > a {
   text-align: center;
+}
+
+.nav-tabs-justified {
+  border-bottom: 0;
+}
+
+.nav-tabs-justified > li > a {
+  margin-right: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-tabs-justified > .active > a {
+  border-bottom-color: #ffffff;
 }
 
 .tabbable:before,
@@ -3301,7 +3316,7 @@ button.close {
 .pagination > .disabled > a:hover,
 .pagination > .disabled > a:focus {
   color: #999999;
-  cursor: default;
+  cursor: not-allowed;
   background-color: #ffffff;
 }
 
@@ -3402,7 +3417,7 @@ button.close {
 .pager .disabled > a:focus,
 .pager .disabled > span {
   color: #999999;
-  cursor: default;
+  cursor: not-allowed;
   background-color: #ffffff;
 }
 
@@ -3444,8 +3459,8 @@ button.close {
 
 .modal-content {
   position: relative;
-  background-color: #fff;
-  border: 1px solid #999;
+  background-color: #ffffff;
+  border: 1px solid #999999;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 6px;
   outline: none;
@@ -3461,7 +3476,7 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1030;
-  background-color: #000;
+  background-color: #000000;
 }
 
 .modal-backdrop.fade {

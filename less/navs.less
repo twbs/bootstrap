@@ -36,7 +36,7 @@
         color: @gray-light;
         text-decoration: none;
         background-color: transparent;
-        cursor: default;
+        cursor: not-allowed;
       }
     }
 
@@ -115,8 +115,8 @@
   }
   // pulling this in mainly for less shorthand
   &.nav-justified {
-    .nav-justified;
-    .nav-tabs-justified;
+    .nav-justified();
+    .nav-tabs-justified();
   }
 }
 
@@ -167,11 +167,12 @@
 // -------------------------
 
 .nav-justified {
+  display: table;
   width: 100%;
   > li {
     float: none;
     display: table-cell;
-    width: 1%;
+    width: auto;
     > a {
       text-align: center;
     }
@@ -179,7 +180,7 @@
 }
 
 // Move borders to anchors instead of bottom of list
-.nav-tabs-justified () {
+.nav-tabs-justified {
   border-bottom: 0;
   > li > a {
     border-bottom: 1px solid #ddd;
