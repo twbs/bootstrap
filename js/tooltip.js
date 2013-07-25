@@ -102,9 +102,9 @@
     var self = obj instanceof this.constructor ?
       obj : $(obj.currentTarget)[this.type](options).data('bs.' + this.type)
 
-    if (!self.options.delay || !self.options.delay.show) return self.show()
-
     clearTimeout(self.timeout)
+
+    if (!self.options.delay || !self.options.delay.show) return self.show()
 
     self.hoverState = 'in'
     self.timeout    = setTimeout(function () {

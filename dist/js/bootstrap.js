@@ -390,7 +390,7 @@
       $next[0].offsetWidth // force reflow
       $active.addClass(direction)
       $next.addClass(direction)
-      this.$element.find('.item')
+      $active
         .one($.support.transition.end, function () {
           $next.removeClass([type, direction].join(' ')).addClass('active')
           $active.removeClass(['active', direction].join(' '))
@@ -1138,9 +1138,9 @@
     var self = obj instanceof this.constructor ?
       obj : $(obj.currentTarget)[this.type](options).data('bs.' + this.type)
 
-    if (!self.options.delay || !self.options.delay.show) return self.show()
-
     clearTimeout(self.timeout)
+
+    if (!self.options.delay || !self.options.delay.show) return self.show()
 
     self.hoverState = 'in'
     self.timeout    = setTimeout(function () {
