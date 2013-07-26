@@ -272,6 +272,14 @@
 @pagination-bg:                        #fff;
 @pagination-border:                    #ddd;
 @pagination-active-bg:                 #f5f5f5;
+@pagination-active-color:              @gray-light;
+@pagination-disabled-color:            @gray-light;
+
+// Pager
+// -------------------------
+
+@pager-border-radius:                  15px;
+@pager-disabled-color:                 @gray-light;
 
 
 // Jumbotron
@@ -309,14 +317,21 @@
 @tooltip-arrow-width:         5px;
 @tooltip-arrow-color:         @tooltip-bg;
 
+@tooltip-max-width:           200px;
+
 @popover-bg:                  #fff;
 @popover-arrow-width:         10px;
 @popover-arrow-color:         #fff;
 @popover-title-bg:            darken(@popover-bg, 3%);
 
 // Special enhancement for popovers
-@popover-arrow-outer-width:   (@popover-arrow-width + 1);
-@popover-arrow-outer-color:   rgba(0,0,0,.25);
+@popover-arrow-outer-width:                  (@popover-arrow-width + 1);
+@popover-arrow-outer-color:                  rgba(0,0,0,.25);
+@popover-arrow-outer-fallback-color:         #999; 
+
+@popover-max-width:                 276px;
+@popover-border-color:              rgba(0,0,0,.2)
+@popover-fallback-border-color:     #ccc;
 
 
 // Labels
@@ -374,6 +389,8 @@
 @progress-bar-warning-bg:     @brand-warning;
 @progress-bar-danger-bg:      @brand-danger;
 @progress-bar-info-bg:        @brand-info;
+@progress-bar-color:          #fff;
+@progress-bar-text-shadow:    0 -1px 0 rgba(0,0,0,.25);
 
 
 // List group
@@ -481,6 +498,14 @@
 @pre-bg:                      #f5f5f5;
 @pre-border-color:            #ccc;
 
+// Type
+// ------------------------
+@text-muted:                  @gray-light;
+@abbr-border-color:           @gray-light;
+@headings-small-color:        @gray-light;
+@blockquote-small-color:      @gray-light;
+@blockquote-border-color:     @gray-lighter;
+@page-header-border-color:    @gray-lighter;
 
 // Miscellaneous
 // -------------------------

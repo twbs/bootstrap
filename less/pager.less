@@ -17,7 +17,7 @@
       padding: 5px 14px;
       background-color: @pagination-bg;
       border: 1px solid @pagination-border;
-      border-radius: 15px;
+      border-radius: @pager-border-radius;
     }
 
     > a:hover,
@@ -46,7 +46,7 @@
     > a:hover,
     > a:focus,
     > span {
-      color: @gray-light;
+      color: @pager-disabled-color;
       background-color: @pagination-bg;
       cursor: not-allowed;
     }

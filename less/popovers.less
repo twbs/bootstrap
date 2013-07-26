@@ -9,16 +9,16 @@
   left: 0;
   z-index: @zindex-popover;
   display: none;
-  max-width: 276px;
+  max-width: @popover-max-width;
   padding: 1px;
   text-align: left; // Reset given new insertion method
   background-color: @popover-bg;
   -webkit-bg-clip: padding-box;
      -moz-bg-clip: padding;
   background-clip: padding-box;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0,0,0,.2);
-  border-radius: 6px;
+  border: 1px solid @popover-fallback-border-color;
+  border: 1px solid @popover-border-color;
+  border-radius: @border-radius-large;
   .box-shadow(0 5px 10px rgba(0,0,0,.2));
 
   // Overrides for proper insertion
@@ -74,7 +74,7 @@
     left: 50%;
     margin-left: -@popover-arrow-outer-width;
     border-bottom-width: 0;
-    border-top-color: #999; // IE8 fallback
+    border-top-color: @popover-arrow-outer-fallback-color; // IE8 fallback
     border-top-color: @popover-arrow-outer-color;
     bottom: -@popover-arrow-outer-width;
     &:after {
@@ -90,7 +90,7 @@
     left: -@popover-arrow-outer-width;
     margin-top: -@popover-arrow-outer-width;
     border-left-width: 0;
-    border-right-color: #999; // IE8 fallback
+    border-right-color: @popover-arrow-outer-fallback-color; // IE8 fallback
     border-right-color: @popover-arrow-outer-color;
     &:after {
       content: " ";
@@ -104,7 +104,7 @@
     left: 50%;
     margin-left: -@popover-arrow-outer-width;
     border-top-width: 0;
-    border-bottom-color: #999; // IE8 fallback
+    border-bottom-color: @popover-arrow-outer-fallback-color; // IE8 fallback
     border-bottom-color: @popover-arrow-outer-color;
     top: -@popover-arrow-outer-width;
     &:after {
@@ -121,7 +121,7 @@
     right: -@popover-arrow-outer-width;
     margin-top: -@popover-arrow-outer-width;
     border-right-width: 0;
-    border-left-color: #999; // IE8 fallback
+    border-left-color: @popover-arrow-outer-fallback-color; // IE8 fallback
     border-left-color: @popover-arrow-outer-color;
     &:after {
       content: " ";
