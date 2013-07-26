@@ -15,30 +15,37 @@ body {
 
 /* Custom docs button */
 .btn-bs {
-  color: #b94a48;
+  color: #563d7c;
   background-color: #fff;
   border-color: #e5e5e5;
 }
 .btn-bs:hover,
 .btn-bs:active {
   color: #fff;
-  background-color: #b94a48;
-  border-color: #b94a48;
+  background-color: #563d7c;
+  border-color: #563d7c;
 }
 
+/* Temp CSS until RC2 */
+.bs-customize-placeholder {
+  margin-bottom: -100px;
+  padding: 80px 30px;
+  text-align: center;
+  background-color: #f5f5f5;
+}
 
 
 /* Top nav and header
 -------------------------------------------------- */
 
 .bs-docs-nav {
-  background-color: #b94a48;
+  background-color: #563d7c;
 }
 .bs-docs-nav .navbar-brand {
   color: #fff;
 }
 .bs-docs-nav .navbar-nav > li > a {
-  color: #e6cac8;
+  color: #cdbfe3;
 }
 .bs-docs-nav .navbar-nav > li > a:hover {
   color: #fff;
@@ -46,14 +53,14 @@ body {
 .bs-docs-nav .navbar-nav > .active > a,
 .bs-docs-nav .navbar-nav > .active > a:hover {
   color: #fff;
-  background-color: #993c3a;
+  background-color: #463265;
 }
 .bs-docs-nav .navbar-toggle {
-  border-color: #b94a48;
+  border-color: #563d7c;
 }
 .bs-docs-nav .navbar-toggle:hover {
-  background-color: #993c3a;
-  border-color: #993c3a;
+  background-color: #463265;
+  border-color: #463265;
 }
 
 /* Old docs callout */
@@ -65,6 +72,10 @@ body {
 .bs-old-docs strong {
   color: #555;
 }
+.bs-docs-home .bs-old-docs {
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+}
 
 
 /* Homepage masthead
@@ -72,16 +83,12 @@ body {
 
 .bs-masthead {
   position: relative;
-  margin-bottom: 20px;
   padding: 30px 15px;
   text-align: center;
 }
 .bs-masthead h1 {
   font-size: 50px;
   line-height: 1;
-}
-.bs-masthead .bs-social {
-  margin-top: 80px;
 }
 
 /* Download button */
@@ -93,11 +100,16 @@ body {
 }
 
 /* Textual links */
+.bs-social {
+  margin-top: 30px;
+  text-align: center;
+}
 .bs-masthead-links {
   margin-top: 20px;
   margin-bottom: 20px;
   padding-left: 0;
   list-style: none;
+  text-align: center;
 }
 .bs-masthead-links li {
   display: inline;
@@ -145,7 +157,7 @@ body {
   border-bottom: 1px solid #e5e5e5;
 }
 .bs-header h1 {
-  color: #b94a48;
+  color: #563d7c;
 }
 .bs-header p {
   font-weight: 300;
@@ -232,9 +244,9 @@ body {
 .bs-sidebar .nav > .active:hover > a,
 .bs-sidebar .nav > .active:focus > a {
   font-weight: 500;
-  color: #b94a48;
+  color: #563d7c;
   background-color: transparent;
-  border-right: 1px solid #b94a48;
+  border-right: 1px solid #563d7c;
 }
 
 /* Nav: second level (shown on .active) */
@@ -301,9 +313,8 @@ body {
   padding-bottom: 10px;
   background-color: #eee;
   border: 1px solid #ddd;
-  /* Todo: reconcile these */
-  background-color: rgba(185,74,72,.15);
-  border: 1px solid rgba(185,74,72,.2);
+  background-color: rgba(86,61,124,.15);
+  border: 1px solid rgba(86,61,124,.2);
 }
 
 
@@ -493,12 +504,6 @@ body {
 /* Tooltips */
 .bs-example-tooltips {
   text-align: center;
-  margin: 0 0 10px;
-  list-style: none;
-}
-.bs-example-tooltips li {
-  display: inline;
-  padding: 0 10px;
 }
 
 /* Popovers */
@@ -743,7 +748,6 @@ input.focused {
     right:  15px;
     bottom: 15px;
   }
-
   .bs-header {
     font-size: 21px;
     text-align: left;
@@ -799,12 +803,22 @@ input.focused {
 @media screen and (min-width: 992px) {
 
   /* Widen the fixed sidebar */
-  .bs-sidebar.affix {
-    position: fixed; /* Undo the static from mobile-first approach */
-    top: 50px;
+  .bs-sidebar.affix,
+  .bs-sidebar.affix-bottom {
     width: 213px;
   }
-
+  .bs-sidebar.affix {
+    position: fixed; /* Undo the static from mobile-first approach */
+    top: 80px;
+  }
+  .bs-sidebar.affix-bottom {
+    position: absolute; /* Undo the static from mobile-first approach */
+  }
+  .bs-sidebar.affix-bottom .bs-sidenav,
+  .bs-sidebar.affix .bs-sidenav {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
   .bs-header h1,
   .bs-header p {
     margin-right: 380px;
@@ -824,6 +838,7 @@ input.focused {
 @media screen and (min-width: 1200px) {
 
   /* Widen the fixed sidebar again */
+  .bs-sidebar.affix-bottom,
   .bs-sidebar.affix {
     width: 270px;
   }

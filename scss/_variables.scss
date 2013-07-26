@@ -243,8 +243,15 @@ $navbar-brand-color:               $navbar-link-color !default;
 $navbar-brand-hover-color:         darken($navbar-link-color, 10%) !default;
 $navbar-brand-hover-bg:            transparent !default;
 
-// Inverted navbar
-$navbar-inverse-color:                       $gray-light !default;
+// Navbar toggle
+$navbar-toggle-hover-bg:           #ddd !default;
+$navbar-toggle-icon-bar-bg:        #ccc !default;
+$navbar-toggle-border-color:       #ddd !default;
+
+
+//
+// Reset inverted navbar basics
+$navbar-inverse-color:                      $gray-light !default;
 $navbar-inverse-bg:                         #222 !default;
 
 // Inverted navbar links
@@ -267,6 +274,39 @@ $navbar-inverse-search-bg:                  lighten($navbar-inverse-bg, 25%) !de
 $navbar-inverse-search-bg-focus:            #fff !default;
 $navbar-inverse-search-border:              $navbar-inverse-bg !default;
 $navbar-inverse-search-placeholder-color:   #ccc !default;
+
+// Inverted navbar toggle
+$navbar-inverse-toggle-hover-bg:            #333 !default;
+$navbar-inverse-toggle-icon-bar-bg:         #fff !default;
+$navbar-inverse-toggle-border-color:        #333 !default;
+
+
+// Navs
+// -------------------------
+
+$nav-link-hover-bg:                         $gray-lighter !default;
+
+$nav-disabled-link-color:                   $gray-light !default;
+$nav-disabled-link-hover-color:             $gray-light !default;
+
+$nav-open-link-hover-color:                 #fff !default;
+$nav-open-caret-border-color:               #fff !default;
+
+// Tabs
+$nav-tabs-border-color:                     #ddd !default;
+
+$nav-tabs-link-hover-border-color:          $gray-lighter !default;
+
+$nav-tabs-active-link-hover-bg:             $body-bg !default;
+$nav-tabs-active-link-hover-color:          $gray !default;
+$nav-tabs-active-link-hover-border-color:   #ddd !default;
+
+$nav-tabs-justified-link-border-color:            #ddd !default;
+$nav-tabs-justified-active-link-border-color:     $body-bg !default;
+
+// Pills
+$nav-pills-active-link-hover-bg:            $component-active-bg !default;
+$nav-pills-active-link-hover-color:         #fff !default;
 
 
 // Pagination
