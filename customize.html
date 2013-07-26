@@ -1,5 +1,5 @@
 ---
-layout: customize
+layout: default
 title: Customize and download
 slug: customize
 lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to get your very own version.
@@ -8,1424 +8,1424 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
 <!-- Customize
 ================================================== -->
 <form class="bs-customizer">
-    <div class="bs-docs-section" id="less">
-        <div class="page-header">
-            <button class="btn btn-default toggle" type="button">Toggle all</button>
-            <h1>LESS files</h1>
-        </div>
-        <p class="lead">Choose which LESS files to compile into your custom build of Bootstrap. Not sure which files to use? Read through the <a href="/css/">CSS</a> and <a href="/components/">Components</a> pages in the docs</p>
+  <div class="bs-docs-section" id="less">
+    <div class="page-header">
+      <button class="btn btn-default toggle" type="button">Toggle all</button>
+      <h1>LESS files</h1>
+    </div>
+    <p class="lead">Choose which LESS files to compile into your custom build of Bootstrap. Not sure which files to use? Read through the <a href="/css/">CSS</a> and <a href="/components/">Components</a> pages in the docs</p>
 
-        <h3>Basics</h3>
-        <div class="row">
-            <div class="col-lg-4">
-                <h4>Layout</h4>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="normalize.less">
-                        Normalize (CSS reset)
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="scaffolding.less">
-                        Scaffolding
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="grid.less">
-                        Grid system
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="print.less">
-                        Print media styles
-                    </label>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <h4>Global CSS</h4>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="type.less">
-                        Typography
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="code.less">
-                        Code
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="tables.less">
-                        Tables
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="forms.less">
-                        Forms
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="buttons.less">
-                        Buttons
-                    </label>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <h4>Utility classes</h4>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="utilities.less">
-                        Basic utilities
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="responsive-utilities.less">
-                        Responsive utilities
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="component-animations.less">
-                        Component animations (for JS)
-                    </label>
-                </div>
-            </div>
+    <h3>Basics</h3>
+    <div class="row">
+      <div class="col-lg-4">
+        <h4>Layout</h4>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="normalize.less">
+            Normalize (CSS reset)
+          </label>
         </div>
-
-        <h3>Components</h3>
-        <div class="row">
-            <div class="col-lg-4">
-                <h4>Navigation</h4>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="navs.less">
-                        Navs
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="navbar.less">
-                        Navbar
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="pagination.less">
-                        Pagination
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="pager.less">
-                        Pager
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="breadcrumbs.less">
-                        Breadcrumbs
-                    </label>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <h4>Content blocks</h4>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="jumbotron.less">
-                        Jumbotron
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="accordion.less">
-                        Accordion
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="panels.less">
-                        Panels
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="wells.less">
-                        Wells
-                    </label>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <h4>Behavioral (requires JS)</h4>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="alerts.less">
-                        Alerts
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="dropdowns.less">
-                        Dropdowns
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="tooltip.less">
-                        Tooltips
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="popovers.less">
-                        Popovers
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="modals.less">
-                        Modals
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="carousel.less">
-                        Carousel
-                    </label>
-                </div>
-            </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="scaffolding.less">
+            Scaffolding
+          </label>
         </div>
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h4>Media</h4>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="thumbnails.less">
-                        Thumbnails
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="list-group.less">
-                        List groups
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="media.less">
-                        Media items
-                    </label>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <h4>Miscellaneous</h4>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="button-groups.less">
-                        Button groups
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="progress-bars.less">
-                        Progress bars
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="badges.less">
-                        Badges
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="labels.less">
-                        Labels
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="close.less">
-                        Close icon
-                    </label>
-                </div>
-            </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="grid.less">
+            Grid system
+          </label>
         </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="print.less">
+            Print media styles
+          </label>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <h4>Global CSS</h4>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="type.less">
+            Typography
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="code.less">
+            Code
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="tables.less">
+            Tables
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="forms.less">
+            Forms
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="buttons.less">
+            Buttons
+          </label>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <h4>Utility classes</h4>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="utilities.less">
+            Basic utilities
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="responsive-utilities.less">
+            Responsive utilities
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="component-animations.less">
+            Component animations (for JS)
+          </label>
+        </div>
+      </div>
     </div>
 
-
-
-    <div class="bs-docs-section" id="plugins">
-        <div class="page-header">
-            <button class="btn btn-default toggle" type="button">Toggle all</button>
-            <h1>jQuery plugins</h1>
+    <h3>Components</h3>
+    <div class="row">
+      <div class="col-lg-4">
+        <h4>Navigation</h4>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="navs.less">
+            Navs
+          </label>
         </div>
-        <p class="lead">Choose which jQuery plugins should be included in your custom JavaScript files. Unsure what to include? Read the <a href="/javascript/">JavaScript</a> page in the docs.</p>
-        <div class="row">
-            <div class="col-lg-6">
-                <h4>Linked to components</h4>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="alert.js">
-                        Alert dismissal
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="button.js">
-                        Advanced buttons
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="carousel.js">
-                        Carousel functionality
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="dropdown.js">
-                        Dropdowns
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="modal.js">
-                        Modals
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="tooltip.js">
-                        Tooltips
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="popover.js">
-                        Popovers <small>(requires Tooltips)</small>
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="tab.js">
-                        Toggable tabs
-                    </label>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <h4>Magic</h4>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="affix.js">
-                        Affix
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="collapse.js">
-                        Collapse
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="scrollspy.js">
-                        Scrollspy
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" checked value="transition.js">
-                        Transitions <small>(required for any kind of animation)</small>
-                    </label>
-                </div>
-            </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="navbar.less">
+            Navbar
+          </label>
         </div>
-
-        <div class="bs-callout bs-callout-info">
-            <h4>Produces two files</h4>
-            <p>All checked plugins will be compiled into a readable <code>bootstrap.js</code> and a minified <code>bootstrap.min.js</code>. We recommend you use the minified version in production.</p>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="pagination.less">
+            Pagination
+          </label>
         </div>
-
-        <div class="bs-callout bs-callout-danger">
-            <h4>jQuery required</h4>
-            <p>All plugins require the latest version of <a href="http://jquery.com/" target="_blank">jQuery</a> to be included.</p>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="pager.less">
+            Pager
+          </label>
         </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="breadcrumbs.less">
+            Breadcrumbs
+          </label>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <h4>Content blocks</h4>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="jumbotron.less">
+            Jumbotron
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="accordion.less">
+            Accordion
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="panels.less">
+            Panels
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="wells.less">
+            Wells
+          </label>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <h4>Behavioral (requires JS)</h4>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="alerts.less">
+            Alerts
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="dropdowns.less">
+            Dropdowns
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="tooltip.less">
+            Tooltips
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="popovers.less">
+            Popovers
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="modals.less">
+            Modals
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="carousel.less">
+            Carousel
+          </label>
+        </div>
+      </div>
     </div>
 
-
-
-    <div class="bs-docs-section" id="less-variables">
-        <div class="page-header">
-            <button class="btn btn-default toggle" type="button">Reset to defaults</button>
-            <h1>LESS variables</h1>
+    <div class="row">
+      <div class="col-lg-4">
+        <h4>Media</h4>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="thumbnails.less">
+            Thumbnails
+          </label>
         </div>
-        <p class="lead">Customize LESS variables to define colors, sizes and more inside your custom CSS stylesheets.</p>
-
-        <h2 id="variables-basics">Basics</h2>
-
-        <h3>Body background</h3>
-        <div class="row">
-            <div class="col-lg-6">
-                <label>@body-bg</label>
-                <input type="text" placeholder="#fff">
-                <p class="help-block">Background color applied to <code>&lt;body&gt;</code>.</p>
-            </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="list-group.less">
+            List groups
+          </label>
         </div>
-
-        <h3>Typography</h3>
-        <div class="row">
-            <div class="col-lg-6">
-                <label>@font-family-sans-serif</label>
-                <input type="text" placeholder="'Helvetica Neue', Helvetica, Arial, sans-serif">
-                <p class="help-block">Default sans-serif fonts.</p>
-                <label>@font-family-serif</label>
-                <input type="text" placeholder="Georgia, 'Times New Roman', Times, serif">
-                <p class="help-block">Default serif fonts.</p>
-                <label>@font-family-monospace</label>
-                <input type="text" placeholder="Monaco, Menlo, Consolas, 'Courier New', monospace">
-                <p class="help-block">Default monospace fonts for <code>&lt;code&gt;</code> and <code>&lt;pre&gt;</code>.</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@font-family-base</label>
-                <input type="text" placeholder="@font-family-sans-serif">
-                <p class="help-block">Used to globally set font-family in Bootstrap.</p>
-                <label>@font-size-base</label>
-                <input type="text" placeholder="14px">
-                <p class="help-block">Used to calculate font-size throughout Bootstrap.</p>
-                <label>@line-height-base</label>
-                <input type="text" placeholder="1.428571429">
-                <p class="help-block">Used to calculate line-height throughout Bootstrap.</p>
-            </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="media.less">
+            Media items
+          </label>
         </div>
-
-        <h3>Code blocks</h3>
-        <div class="row">
-            <div class="col-lg-6">
-                <label>@code-color</label>
-                <input type="text" placeholder="#c7254e">
-                <label>@code-bg</label>
-                <input type="text" placeholder="#f9f2f4">
-            </div>
-            <div class="col-lg-6">
-                <label>@pre-bg</label>
-                <input type="text" placeholder="#f5f5f5">
-                <label>@code-border-color</label>
-                <input type="text" placeholder="#ccc">
-            </div>
+      </div>
+      <div class="col-lg-4">
+        <h4>Miscellaneous</h4>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="button-groups.less">
+            Button groups
+          </label>
         </div>
-
-        <h4>Headings</h4>
-        <div class="row">
-            <div class="col-lg-6">
-                <label>@headings-font-family</label>
-                <input type="text" placeholder="@font-family-base">
-                <p class="help-block">Choose a separate font-family for headings.</p>
-                <label>@headings-font-weight</label>
-                <input type="text" placeholder="500">
-                <p class="help-block">Choose a separate font-weight for headings.</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@headings-line-height</label>
-                <input type="text" placeholder="1.1">
-                <p class="help-block">Choose a separate line-height for headings.</p>
-            </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="progress-bars.less">
+            Progress bars
+          </label>
         </div>
-
-        <h3>Colors</h3>
-        <div class="row">
-            <div class="col-lg-6">
-                <p>Define custom colors used in several contexts.</p>
-                <label>@brand-primary</label>
-                <input type="text" placeholder="#428bca">
-                <p class="help-block">Used for primary buttons, panels and more.</p>
-                <label>@brand-success</label>
-                <input type="text" placeholder="#5cb85c">
-                <p class="help-block">Used to indicate success.</p>
-                <label>@brand-warning</label>
-                <input type="text" placeholder="#f0ad4e">
-                <p class="help-block">Used to indicate a warning.</p>
-                <label>@brand-danger</label>
-                <input type="text" placeholder="#d9534f">
-                <p class="help-block">Used to indicate danger.</p>
-                <label>@brand-info</label>
-                <input type="text" placeholder="#5bc0de">
-                <p class="help-block">Used to indicate informational content.</p>
-            </div>
-            <div class="col-lg-6">
-                <p>Define your preferred colors for standard text and links.</p>
-                <label>@text-color</label>
-                <input type="text" placeholder="@gray-dark">
-                <p class="help-block">Global color set on the body.</p>
-                <label>@link-color</label>
-                <input type="text" placeholder="@brand-primary">
-                <p class="help-block">Global link color for text.</p>
-                <label>@link-color-hover</label>
-                <input type="text" placeholder="darken(@link-color, 15%)">
-                <p class="help-block">Automatically darken links on hover via color function.</p>
-            </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="badges.less">
+            Badges
+          </label>
         </div>
-
-        <h3>Media queries breakpoints</h3>
-        <p>Define the breakpoints at which your layout will change, adapting to different screen sizes.</p>
-        <div class="row">
-            <div class="col-lg-6">
-                <label>@screen-tiny</label>
-                <input type="text" placeholder="480px">
-                <label>@screen-small</label>
-                <input type="text" placeholder="768px">
-            </div>
-            <div class="col-lg-6">
-                <label>@screen-medium</label>
-                <input type="text" placeholder="992px">
-                <label>@screen-large</label>
-                <input type="text" placeholder="1200px">
-            </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="labels.less">
+            Labels
+          </label>
         </div>
-
-        <h3>Container sizes</h3>
-        <p>Define the maximum width of <code>.container</code> for different screen sizes.</p>
-        <div class="row">
-            <div class="col-lg-6">
-                <label>@container-tablet</label>
-                <input type="text" placeholder="728px">
-                <p class="help-block">For <code>@screen-small</code> and up.</p>
-                <label>@container-desktop</label>
-                <input type="text" placeholder="940px">
-                <p class="help-block">For <code>@screen-medium</code> and up.</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@container-large-desktop</label>
-                <input type="text" placeholder="1170px">
-                <p class="help-block">For <code>@screen-large</code> and up.</p>
-            </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="close.less">
+            Close icon
+          </label>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <h3>Grid system</h3>
-        <p>Define your custom responsive grid.</p>
-        <div class="row">
-            <div class="col-lg-6">
-                <label>@grid-columns</label>
-                <input type="text" placeholder="12">
-                <p class="help-block">Number of columns in the grid.</p>
-                <label>@grid-gutter-width</label>
-                <input type="text" placeholder="30px">
-                <p class="help-block">Padding between columns.</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@grid-float-breakpoint</label>
-                <input type="text" placeholder="@screen-tablet">
-                <p class="help-block">Point at which the navbar stops collapsing.</p>
-            </div>
+
+
+  <div class="bs-docs-section" id="plugins">
+    <div class="page-header">
+      <button class="btn btn-default toggle" type="button">Toggle all</button>
+      <h1>jQuery plugins</h1>
+    </div>
+    <p class="lead">Choose which jQuery plugins should be included in your custom JavaScript files. Unsure what to include? Read the <a href="/javascript/">JavaScript</a> page in the docs.</p>
+    <div class="row">
+      <div class="col-lg-6">
+        <h4>Linked to components</h4>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="alert.js">
+            Alert dismissal
+          </label>
         </div>
-
-        <h3>Components</h3>
-        <p>Define common padding and border radius sizes and more.</p>
-        <div class="row">
-            <div class="col-lg-6">
-                <h4>Padding</h4>
-                <label>@padding-base-vertical</label>
-                <input type="text" placeholder="8px">
-                <label>@padding-base-horizontal</label>
-                <input type="text" placeholder="12px">
-                <label>@padding-large-vertical</label>
-                <input type="text" placeholder="14px">
-                <label>@padding-large-horizontal</label>
-                <input type="text" placeholder="16px">
-                <label>@padding-small-vertical</label>
-                <input type="text" placeholder="5px">
-                <label>@padding-small-horizontal</label>
-                <input type="text" placeholder="10px">
-            </div>
-            <div class="col-lg-6">
-                <h4>Border radius sizes</h4>
-                <label>@border-radius-base</label>
-                <input type="text" placeholder="4px">
-                <label>@border-radius-large</label>
-                <input type="text" placeholder="6px">
-                <label>@border-radius-small</label>
-                <input type="text" placeholder="3px">
-                <h4>Active background color</h4>
-                <label>@component-active-bg</label>
-                <input type="text" placeholder="@brand-primary">
-                <p class="help-block">Used for active or hovered items in places like navs or dropdowns.</p>
-            </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="button.js">
+            Advanced buttons
+          </label>
         </div>
-
-        <h2 id="variables-buttons">Buttons</h2>
-        <p>For each of Bootstrap's buttons, define text, background and border color.</p>
-        <div class="row">
-            <div class="col-lg-6">
-                <h4>Default</h4>
-                <label>@btn-default-color</label>
-                <input type="text" placeholder="#fff">
-                <label>@btn-default-bg</label>
-                <input type="text" placeholder="#474949">
-                <label>@btn-default-border</label>
-                <input type="text" placeholder="@btn-default-bg">
-                <h4>Primary</h4>
-                <label>@btn-primary-color</label>
-                <input type="text" placeholder="@btn-default-color">
-                <label>@btn-primary-bg</label>
-                <input type="text" placeholder="@brand-primary">
-                <label>@btn-primary-border</label>
-                <input type="text" placeholder="@btn-primary-bg">
-                <h4>Info</h4>
-                <label>@btn-info-color</label>
-                <input type="text" placeholder="@btn-default-color">
-                <label>@btn-info-bg</label>
-                <input type="text" placeholder="@brand-info">
-                <label>@btn-info-border</label>
-                <input type="text" placeholder="@btn-info-bg">
-                <h4>Button hover</h4>
-                <label>@btn-hover-color</label>
-                <input type="text" placeholder="@btn-default-color">
-            </div>
-            <div class="col-lg-6">
-                <h4>Success</h4>
-                <label>@btn-success-color</label>
-                <input type="text" placeholder="@btn-default-color">
-                <label>@btn-success-bg</label>
-                <input type="text" placeholder="@brand-success">
-                <label>@btn-success-border</label>
-                <input type="text" placeholder="@btn-success-bg">
-                <h4>Warning</h4>
-                <label>@btn-warning-color</label>
-                <input type="text" placeholder="@btn-default-color">
-                <label>@btn-warning-bg</label>
-                <input type="text" placeholder="@brand-warning">
-                <label>@btn-warning-border</label>
-                <input type="text" placeholder="@btn-warning-bg">
-                <h4>Danger</h4>
-                <label>@btn-danger-color</label>
-                <input type="text" placeholder="@btn-default-color">
-                <label>@btn-danger-bg</label>
-                <input type="text" placeholder="@brand-danger">
-                <label>@btn-danger-border</label>
-                <input type="text" placeholder="@btn-danger-bg">
-            </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="carousel.js">
+            Carousel functionality
+          </label>
         </div>
-
-        <h2 id="variables-form-states">Form states and alerts</h2>
-        <p>Define colors for form feedback states and, by default, alerts.</p>
-        <div class="row">
-            <div class="col-lg-6">
-                <h4>Success</h4>
-                <label>@state-success-text</label>
-                <input type="text" placeholder="#468847">
-                <label>@state-success-bg</label>
-                <input type="text" placeholder="#dff0d8">
-                <label>@state-success-border</label>
-                <input type="text" placeholder="darken(spin(@state-success-bg, -10), 5%)">
-                <h4>Warning</h4>
-                <label>@state-warning-text</label>
-                <input type="text" placeholder="#c09853">
-                <label>@state-warning-bg</label>
-                <input type="text" placeholder="#fcf8e3">
-                <label>@state-warning-border</label>
-                <input type="text" placeholder="darken(spin(@state-warning-bg, -10), 3%)">
-            </div>
-            <div class="col-lg-6">
-                <h4>Danger</h4>
-                <label>@state-danger-text</label>
-                <input type="text" placeholder="#b94a48">
-                <label>@state-danger-bg</label>
-                <input type="text" placeholder="#f2dede">
-                <label>@state-danger-border</label>
-                <input type="text" placeholder="darken(spin(@state-danger-bg, -10), 3%)">
-                <h4>Info</h4>
-                <label>@state-info-text</label>
-                <input type="text" placeholder="#3a87ad">
-                <label>@state-info-bg</label>
-                <input type="text" placeholder="#d9edf7">
-                <label>@state-info-border</label>
-                <input type="text" placeholder="darken(spin(@state-info-bg, -10), 7%)">
-            </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="dropdown.js">
+            Dropdowns
+          </label>
         </div>
-
-        <h2 id="variables-alerts">Alerts</h2>
-        <p>Define alert colors and border radius.</p>
-        <h4>Border radius</h4>
-        <label>@alert-border-radius</label>
-        <input type="text" placeholder="@border-radius-base">
-        <div class="row">
-            <div class="col-lg-6">
-                <h4>Success</h4>
-                <label>@alert-success-text</label>
-                <input type="text" placeholder="@state-success-text">
-                <label>@alert-success-bg</label>
-                <input type="text" placeholder="@state-success-bg">
-                <label>@alert-success-border</label>
-                <input type="text" placeholder="@state-success-border">
-                <h4>Warning</h4>
-                <label>@alert-warning-text</label>
-                <input type="text" placeholder="@state-warning-text">
-                <label>@alert-warning-bg</label>
-                <input type="text" placeholder="@state-warning-bg">
-                <label>@alert-warning-border</label>
-                <input type="text" placeholder="@state-warning-border">
-            </div>
-            <div class="col-lg-6">
-                <h4>Danger</h4>
-                <label>@alert-danger-text</label>
-                <input type="text" placeholder="@state-danger-text">
-                <label>@alert-danger-bg</label>
-                <input type="text" placeholder="@state-danger-bg">
-                <label>@alert-danger-border</label>
-                <input type="text" placeholder="@state-danger-border">
-                <h4>Info</h4>
-                <label>@alert-info-text</label>
-                <input type="text" placeholder="@state-info-text">
-                <label>@alert-info-bg</label>
-                <input type="text" placeholder="@state-info-bg">
-                <label>@alert-info-border</label>
-                <input type="text" placeholder="@state-info-border">
-            </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="modal.js">
+            Modals
+          </label>
         </div>
-
-        <h2 id="variables-navbar">Navbar</h2>
-        <div class="row">
-            <div class="col-lg-6">
-                <h3>Default navbar</h3>
-                <h4>Basics</h4>
-                <label>@navbar-height</label>
-                <input type="text" placeholder="50px">
-                <label>@navbar-color</label>
-                <input type="text" placeholder="#777">
-                <label>@navbar-bg</label>
-                <input type="text" placeholder="#eee">
-                <h4>Links</h4>
-                <label>@navbar-link-color</label>
-                <input type="text" placeholder="#777">
-                <label>@navbar-link-hover-color</label>
-                <input type="text" placeholder="#333">
-                <label>@navbar-link-hover-bg</label>
-                <input type="text" placeholder="transparent">
-                <label>@navbar-link-active-color</label>
-                <input type="text" placeholder="#555">
-                <label>@navbar-link-active-bg</label>
-                <input type="text" placeholder="darken(@navbar-bg, 10%)">
-                <label>@navbar-link-disabled-color</label>
-                <input type="text" placeholder="#ccc">
-                <label>@navbar-link-disabled-bg</label>
-                <input type="text" placeholder="transparent">
-                <h4>Brand</h4>
-                <label>@navbar-brand-color</label>
-                <input type="text" placeholder="@navbar-link-color">
-                <label>@navbar-brand-hover-color</label>
-                <input type="text" placeholder="darken(@navbar-link-color, 10%)">
-                <label>@navbar-brand-hover-bg</label>
-                <input type="text" placeholder="transparent">
-                <h4>Toggle</h4>
-                <label>@navbar-toggle-hover-bg</label>
-                <input type="text" placeholder="#ddd">
-                <label>@navbar-toggle-icon-bar-bg</label>
-                <input type="text" placeholder="#ccc">
-                <label>@navbar-toggle-border-color</label>
-                <input type="text" placeholder="#ddd">
-            </div>
-            <div class="col-lg-6">
-                <h3>Inverted navbar</h3>
-                <h4>Basics</h4>
-                <label>@navbar-inverse-color</label>
-                <input type="text" placeholder="@gray-light">
-                <label>@navbar-inverse-bg</label>
-                <input type="text" placeholder="#222">
-                <h4>Links</h4>
-                <label>@navbar-inverse-link-color</label>
-                <input type="text" placeholder="@gray-light">
-                <label>@navbar-inverse-link-hover-color</label>
-                <input type="text" placeholder="#fff">
-                <label>@navbar-inverse-link-hover-bg</label>
-                <input type="text" placeholder="transparent">
-                <label>@navbar-inverse-link-active-color</label>
-                <input type="text" placeholder="@navbar-inverse-link-hover-color">
-                <label>@navbar-inverse-link-active-bg</label>
-                <input type="text" placeholder="darken(@navbar-inverse-bg, 10%)">
-                <label>@navbar-inverse-link-disabled-color</label>
-                <input type="text" placeholder="#444">
-                <label>@navbar-inverse-link-disabled-bg</label>
-                <input type="text" placeholder="transparent">
-                <h4>Brand</h4>
-                <label>@navbar-inverse-brand-color</label>
-                <input type="text" placeholder="@navbar-inverse-link-color">
-                <label>@navbar-inverse-brand-hover-color</label>
-                <input type="text" placeholder="#fff">
-                <label>@navbar-inverse-brand-hover-bg</label>
-                <input type="text" placeholder="transparent">
-                <h4>Toggle</h4>
-                <label>@navbar-inverse-toggle-hover-bg</label>
-                <input type="text" placeholder="#333">
-                <label>@navbar-inverse-toggle-icon-bar-bg</label>
-                <input type="text" placeholder="#fff">
-                <label>@navbar-inverse-toggle-border-color</label>
-                <input type="text" placeholder="#333">
-            </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="tooltip.js">
+            Tooltips
+          </label>
         </div>
-
-
-        <h2 id="variables-nav">Nav</h2>
-        <div class="row">
-            <div class="col-lg-6">
-                <h3>Default nav</h3>
-                <h4>Basics</h4>
-                <label>@nav-link-hover-bg</label>
-                <input type="text" placeholder="@gray-lighter">
-                <label>@nav-disabled-link-color</label>
-                <input type="text" placeholder="@gray-light">
-                <label>@nav-disabled-link-hover-color</label>
-                <input type="text" placeholder="@gray-light">
-                <label>@nav-open-link-hover-color</label>
-                <input type="text" placeholder="#fff">
-                <label>@nav-open-caret-border-color</label>
-                <input type="text" placeholder="@fff">
-                <h4>Tabs</h4>
-                <label>@nav-tabs-border-color</label>
-                <input type="text" placeholder="@ddd">
-                <label>@nav-tabs-link-hover-border-color</label>
-                <input type="text" placeholder="@gray-lighter">
-                <label>@nav-tabs-active-link-hover-color</label>
-                <input type="text" placeholder="@gray">
-                <label>@nav-tabs-active-link-hover-bg</label>
-                <input type="text" placeholder="@body-bg">
-                <label>@nav-tabs-active-link-hover-border-color</label>
-                <input type="text" placeholder="#ddd">
-                <label>@nav-tabs-justified-link-border-color</label>
-                <input type="text" placeholder="#ddd">
-                <label>@nav-tabs-justified-active-link-border-color</label>
-                <input type="text" placeholder="@body-bg">
-                <h4>Pills</h4>
-                <label>@nav-pills-active-link-hover-color</label>
-                <input type="text" placeholder="@fff">
-                <label>@nav-pills-active-link-hover-bg</label>
-                <input type="text" placeholder="@component-active-bg">
-            </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="popover.js">
+            Popovers <small>(requires Tooltips)</small>
+          </label>
         </div>
-
-
-        <h2 id="variables-tables">Tables</h2>
-        <div class="row">
-            <div class="col-lg-6">
-                <label>@table-bg</label>
-                <input type="text" placeholder="transparent">
-                <p class="help-block">Default background color used for all tables.</p>
-                <label>@table-bg-accent</label>
-                <input type="text" placeholder="#f9f9f9">
-                <p class="help-block">Background color used for <code>.table-striped</code>.</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@table-bg-hover</label>
-                <input type="text" placeholder="#f5f5f5">
-                <p class="help-block">Background color used for <code>.table-hover</code>.</p>
-                <label>@table-border-color</label>
-                <input type="text" placeholder="#ddd">
-                <p class="help-block">Border color for table and cell borders.</p>
-            </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="tab.js">
+            Toggable tabs
+          </label>
         </div>
-
-        <h2 id="variables-forms">Forms</h2>
-        <div class="row">
-            <div class="col-lg-6">
-                <h3>Inputs</h3>
-                <label>@input-bg</label>
-                <input type="text" placeholder="#fff">
-                <p class="help-block"><code>&lt;input&gt;</code> background color</p>
-                <label>@input-border</label>
-                <input type="text" placeholder="#ccc">
-                <p class="help-block"><code>&lt;input&gt;</code> border color</p>
-                <label>@input-border-radius</label>
-                <input type="text" placeholder="@border-radius-base">
-                <p class="help-block"><code>&lt;input&gt;</code> border radius</p>
-                <label>@input-bg-disabled</label>
-                <input type="text" placeholder="@gray-lighter">
-                <p class="help-block"><code>&lt;input disabled&gt;</code> background color</p>
-            </div>
-            <div class="col-lg-6">
-                <h3>Placeholder</h3>
-                <label>@input-color-placeholder</label>
-                <input type="text" placeholder="@gray-light">
-                <p class="help-block">Placeholder text color</p>
-
-                <h3>Legend</h3>
-                <label>@legend-border-color</label>
-                <input type="text" placeholder="#e5e5e5">
-                <p class="help-block"><code>&lt;legend&gt;</code> border color</p>
-
-                <h3>Input groups</h3>
-                <label>@input-group-addon-border-color</label>
-                <input type="text" placeholder="@input-border">
-                <p class="help-block">Border color for textual input addons</p>
-            </div>
+      </div>
+      <div class="col-lg-6">
+        <h4>Magic</h4>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="affix.js">
+            Affix
+          </label>
         </div>
-
-        <h2 id="variables-dropdowns">Dropdowns</h2>
-        <div class="row">
-            <div class="col-lg-6">
-                <h3>Dropdown menu</h3>
-                <label>@dropdown-bg</label>
-                <input type="text" placeholder="#fff">
-                <p class="help-block">Dropdown menu background color</p>
-                <label>@dropdown-border</label>
-                <input type="text" placeholder="rgba(0,0,0,.15)">
-                <p class="help-block">Dropdown menu border color</p>
-                <label>@dropdown-fallback-border</label>
-                <input type="text" placeholder="#ccc">
-                <p class="help-block">Dropdown menu border color <strong>for IE8</strong></p>
-                <label>@dropdown-caret-color</label>
-                <input type="text" placeholder="@dropdown-caret-color">
-                <p class="help-block">Indicator arrow for showing an element has a dropdown</p>
-                <label>@dropdown-divider-bg</label>
-                <input type="text" placeholder="#e5e5e5">
-                <p class="help-block">Dropdown divider top border color</p>
-            </div>
-            <div class="col-lg-6">
-                <h3>Dropdown items</h3>
-                <label>@dropdown-link-color</label>
-                <input type="text" placeholder="@gray-dark">
-                <p class="help-block">Dropdown text color</p>
-                <label>@dropdown-link-active-color</label>
-                <input type="text" placeholder="#fff">
-                <p class="help-block">Active dropdown menu entry text color</p>
-                <label>@dropdown-link-hover-bg</label>
-                <input type="text" placeholder="#fff">
-                <p class="help-block">Hovered dropdown menu entry text color</p>
-                <label>@dropdown-link-active-bg</label>
-                <input type="text" placeholder="@component-active-bg">
-                <p class="help-block">Active dropdown menu entry background color</p>
-                <label>@dropdown-link-hover-bg</label>
-                <input type="text" placeholder="@dropdown-link-active-bg">
-                <p class="help-block">Hovered dropdown menu entry background color</p>
-            </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="collapse.js">
+            Collapse
+          </label>
         </div>
-
-        <h2 id="variables-panels-wells">Panels and wells</h2>
-        <h3>Default panel styles</h3>
-        <div class="row">
-            <div class="col-lg-6">
-                <label>@panel-bg</label>
-                <input type="text" placeholder="#fff">
-                <p class="help-block">Panel body background color</p>
-                <label>@panel-heading-bg</label>
-                <input type="text" placeholder="#f5f5f5">
-                <p class="help-block">Panel heading background color</p>
-                <label>@panel-footer-bg</label>
-                <input type="text" placeholder="#f5f5f5">
-                <p class="help-block">Panel footer background color</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@panel-border</label>
-                <input type="text" placeholder="#ddd">
-                <p class="help-block">Panel border color</p>
-                <label>@panel-border-radius</label>
-                <input type="text" placeholder="@border-radius-base">
-                <p class="help-block">Panel border radius</p>
-            </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="scrollspy.js">
+            Scrollspy
+          </label>
         </div>
-        <h3>Contextual panel colors</h3>
-        <div class="row">
-            <div class="col-lg-6">
-                <h4>Primary</h4>
-                <label>@panel-primary-text</label>
-                <input type="text" placeholder="#fff">
-                <p class="help-block">Primary text color</p>
-                <label>@panel-primary-border</label>
-                <input type="text" placeholder="@brand-primary">
-                <p class="help-block">Primary border color</p>
-                <label>@panel-primary-heading-bg</label>
-                <input type="text" placeholder="@brand-primary">
-                <p class="help-block">Primary heading background color</p>
-                <h4>Success</h4>
-                <label>@panel-success-text</label>
-                <input type="text" placeholder="@state-success-text">
-                <p class="help-block">Success text color</p>
-                <label>@panel-success-border</label>
-                <input type="text" placeholder="@state-success-border">
-                <p class="help-block">Success border color</p>
-                <label>@panel-success-heading-bg</label>
-                <input type="text" placeholder="@state-success-bg">
-                <p class="help-block">Success heading background color</p>
-                <h4>Info</h4>
-                <label>@panel-info-text</label>
-                <input type="text" placeholder="@state-info-text">
-                <p class="help-block">Info text color</p>
-                <label>@panel-info-border</label>
-                <input type="text" placeholder="@state-info-border">
-                <p class="help-block">Info border color</p>
-                <label>@panel-info-heading-bg</label>
-                <input type="text" placeholder="@state-info-bg">
-                <p class="help-block">Info heading background color</p>
-            </div>
-            <div class="col-lg-6">
-                <h4>Warning</h4>
-                <label>@panel-warning-text</label>
-                <input type="text" placeholder="@state-warning-text">
-                <p class="help-block">Warning text color</p>
-                <label>@panel-warning-border</label>
-                <input type="text" placeholder="@state-warning-border">
-                <p class="help-block">Warning border color</p>
-                <label>@panel-warning-heading-bg</label>
-                <input type="text" placeholder="@state-warning-bg">
-                <p class="help-block">Warning heading background color</p>
-                <h4>Danger</h4>
-                <label>@panel-danger-text</label>
-                <input type="text" placeholder="@state-danger-text">
-                <p class="help-block">Danger text color</p>
-                <label>@panel-danger-border</label>
-                <input type="text" placeholder="@state-danger-border">
-                <p class="help-block">Danger border color</p>
-                <label>@panel-danger-heading-bg</label>
-                <input type="text" placeholder="@state-danger-bg">
-                <p class="help-block">Danger heading background color</p>
-            </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="transition.js">
+            Transitions <small>(required for any kind of animation)</small>
+          </label>
         </div>
+      </div>
+    </div>
 
-        <h3>Wells</h3>
-        <label>@well-bg</label>
+    <div class="bs-callout bs-callout-info">
+      <h4>Produces two files</h4>
+      <p>All checked plugins will be compiled into a readable <code>bootstrap.js</code> and a minified <code>bootstrap.min.js</code>. We recommend you use the minified version in production.</p>
+    </div>
+
+    <div class="bs-callout bs-callout-danger">
+      <h4>jQuery required</h4>
+      <p>All plugins require the latest version of <a href="http://jquery.com/" target="_blank">jQuery</a> to be included.</p>
+    </div>
+  </div>
+
+
+
+  <div class="bs-docs-section" id="less-variables">
+    <div class="page-header">
+      <button class="btn btn-default toggle" type="button">Reset to defaults</button>
+      <h1>LESS variables</h1>
+    </div>
+    <p class="lead">Customize LESS variables to define colors, sizes and more inside your custom CSS stylesheets.</p>
+
+    <h2 id="variables-basics">Basics</h2>
+
+    <h3>Body background</h3>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>@body-bg</label>
+        <input type="text" placeholder="#fff">
+        <p class="help-block">Background color applied to <code>&lt;body&gt;</code>.</p>
+      </div>
+    </div>
+
+    <h3>Typography</h3>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>@font-family-sans-serif</label>
+        <input type="text" placeholder="'Helvetica Neue', Helvetica, Arial, sans-serif">
+        <p class="help-block">Default sans-serif fonts.</p>
+        <label>@font-family-serif</label>
+        <input type="text" placeholder="Georgia, 'Times New Roman', Times, serif">
+        <p class="help-block">Default serif fonts.</p>
+        <label>@font-family-monospace</label>
+        <input type="text" placeholder="Monaco, Menlo, Consolas, 'Courier New', monospace">
+        <p class="help-block">Default monospace fonts for <code>&lt;code&gt;</code> and <code>&lt;pre&gt;</code>.</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@font-family-base</label>
+        <input type="text" placeholder="@font-family-sans-serif">
+        <p class="help-block">Used to globally set font-family in Bootstrap.</p>
+        <label>@font-size-base</label>
+        <input type="text" placeholder="14px">
+        <p class="help-block">Used to calculate font-size throughout Bootstrap.</p>
+        <label>@line-height-base</label>
+        <input type="text" placeholder="1.428571429">
+        <p class="help-block">Used to calculate line-height throughout Bootstrap.</p>
+      </div>
+    </div>
+
+    <h3>Code blocks</h3>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>@code-color</label>
+        <input type="text" placeholder="#c7254e">
+        <label>@code-bg</label>
+        <input type="text" placeholder="#f9f2f4">
+      </div>
+      <div class="col-lg-6">
+        <label>@pre-bg</label>
         <input type="text" placeholder="#f5f5f5">
-
-        <h2 id="variables-accordion">Accordion</h2>
-        <label>@accordion-border-bg</label>
-        <input type="text" placeholder="#e5e5e5">
-
-        <h2 id="variables-badges">Badges</h2>
-        <div class="row">
-            <div class="col-lg-6">
-                <label>@badge-color</label>
-                <input type="text" placeholder="#fff">
-                <p>Badge text color</p>
-                <label>@badge-bg</label>
-                <input type="text" placeholder="@gray-light">
-                <p>Badge background color</p>
-                <label>@badge-link-hover-color</label>
-                <input type="text" placeholder="#fff">
-                <p>Linked badge text color on hover</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@badge-active-color</label>
-                <input type="text" placeholder="@link-color">
-                <p>Badge text color in active nav link</p>
-                <label>@badge-active-bg</label>
-                <input type="text" placeholder="#fff">
-                <p>Badge text color in active nav link</p>
-            </div>
-        </div>
-
-        <h2 id="variables-breadcrumbs">Breadcrumbs</h2>
-        <div class="row">
-            <div class="col-lg-4">
-                <label>@breadcrumb-color</label>
-                <input type="text" placeholder="#ccc">
-                <p>Breadcrumb text color</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@breadcrumb-bg</label>
-                <input type="text" placeholder="#f5f5f5">
-                <p>Breadcrumb background color</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@breadcrumb-active-color</label>
-                <input type="text" placeholder="@gray-light">
-                <p>Text color of current page in the breadcrumb</p>
-            </div>
-        </div>
-
-        <h2 id="variables-jumbotron">Jumbotron</h2>
-        <div class="row">
-            <div class="col-lg-4">
-                <label>@jumbotron-bg</label>
-                <input type="text" placeholder="@gray-lighter">
-                <p class="help-block">Jumbotron background color</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@jumbotron-heading-color</label>
-                <input type="text" placeholder="inherit">
-                <p class="help-block">Jumbotron heading color</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@jumbotron-lead-color</label>
-                <input type="text" placeholder="inherit">
-                <p class="help-block">Jumbotron lead paragraph color</p>
-            </div>
-        </div>
-
-        <h2 id="variables-modals">Modals</h2>
-        <div class="row">
-            <div class="col-lg-4">
-                <label>@modal-inner-padding</label>
-                <input type="text" placeholder="20px">
-                <p class="help-block">Padding applied to the modal body</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@modal-title-padding</label>
-                <input type="text" placeholder="15px">
-                <p class="help-block">Padding applied to the modal title</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@modal-title-line-height</label>
-                <input type="text" placeholder="@line-height-base">
-                <p class="help-block">Modal title line-height</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@modal-content-bg</label>
-                <input type="text" placeholder="#fff">
-                <p class="help-block">Background color of modal content area</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@modal-content-border-color</label>
-                <input type="text" placeholder="rgba(0,0,0,.2)">
-                <p class="help-block">Modal content border color</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@modal-content-fallback-border-color</label>
-                <input type="text" placeholder="#999">
-                <p class="help-block">Modal content border color <strong>for IE8</strong></p>
-            </div>
-            <div class="col-lg-4">
-                <label>@modal-backdrop-bg</label>
-                <input type="text" placeholder="#000">
-                <p class="help-block">Modal backdrop background color</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@modal-header-border-color</label>
-                <input type="text" placeholder="#e5e5e5">
-                <p class="help-block">Modal header border color</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@modal-footer-border-color</label>
-                <input type="text" placeholder="@modal-header-border-color">
-                <p class="help-block">Modal footer border color</p>
-            </div>
-        </div>
-
-        <h2 id="variables-carousel">Carousel</h2>
-        <label>@carousel-text-shadow</label>
-        <input type="text" placeholder="0 1px 2px rgba(0,0,0,.6)">
-        <label>@carousel-control-color</label>
-        <input type="text" placeholder="#fff">
-        <label>@carousel-indicator-border-color</label>
-        <input type="text" placeholder="#fff">
-        <label>@carousel-indicator-active-bg</label>
-        <input type="text" placeholder="#fff">
-        <label>@carousel-caption-color</label>
-        <input type="text" placeholder="#fff">
-
-        <h2 id="variables-list-group">List group</h2>
-        <h3>Background</h3>
-        <div class="row">
-            <div class="col-lg-4">
-                <label>@list-group-bg</label>
-                <input type="text" placeholder="#fff">
-                <p class="help-block">Default background color</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@list-group-hover-bg</label>
-                <input type="text" placeholder="#f5f5f5">
-                <p class="help-block">Background color of single list elements on hover</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@list-group-active-bg</label>
-                <input type="text" placeholder="@component-active-bg">
-                <p class="help-block">Background color of active list elements</p>
-            </div>
-        </div>
-        <h3>Borders</h3>
-        <div class="row">
-            <div class="col-lg-4">
-                <label>@list-group-border</label>
-                <input type="text" placeholder="#ddd">
-                <p class="help-block">Default border color</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@list-group-border-radius</label>
-                <input type="text" placeholder="@border-radius-base">
-                <p class="help-block">List group border radius</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@list-group-active-border</label>
-                <input type="text" placeholder="@list-group-active-bg">
-                <p class="help-block">Border color of active list elements</p>
-            </div>
-        </div>
-        <label>@list-group-active-color</label>
-        <input type="text" placeholder="#fff">
-        <p class="help-block">Text color of active list elements</p>
-        <h2 id="variables-thumbnails">Thumbnails</h2>
-        <div class="row">
-            <div class="col-lg-6">
-                <label>@thumbnail-caption-color</label>
-                <input type="text" placeholder="@text-color">
-                <p class="help-block">Custom text color for thumbnail captions</p>
-                <label>@thumbnail-bg</label>
-                <input type="text" placeholder="@body-bg">
-                <p class="help-block">Thumbnail background color</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@thumbnail-border</label>
-                <input type="text" placeholder="#ddd">
-                <p class="help-block">Thumbnail border color</p>
-                <label>@thumbnail-border-radius</label>
-                <input type="text" placeholder="@border-radius-base">
-                <p class="help-block">Thumbnail border radius</p>
-            </div>
-        </div>
-        <h2 id="variables-progress">Progress bars</h2>
-        <div class="row">
-            <div class="col-lg-4">
-                <label>@progress-bg</label>
-                <input type="text" placeholder="#f5f5f5">
-                <p class="help-block">Background color of the whole progress component</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@progress-bar-bg</label>
-                <input type="text" placeholder="@brand-primary">
-                <p class="help-block">Default progress bar color</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@progress-bar-success-bg</label>
-                <input type="text" placeholder="@brand-success">
-                <p class="help-block">Success progress bar color</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
-                <label>@progress-bar-warning-bg</label>
-                <input type="text" placeholder="@brand-warning">
-                <p class="help-block">Warning progress bar color</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@progress-bar-danger-bg</label>
-                <input type="text" placeholder="@brand-danger">
-                <p class="help-block">Danger progress bar color</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@progress-bar-info-bg</label>
-                <input type="text" placeholder="@brand-info">
-                <p class="help-block">Info progress bar color</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@progress-bar-color</label>
-                <input type="text" placeholder="#fff">
-                <p class="help-block">Info progress bar text color</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@progress-bar-text-shadow</label>
-                <input type="text" placeholder="0 -1px 0 rgba(0,0,0,.25)">
-                <p class="help-block">Info progress bar text shadow</p>
-            </div>
-        </div>
-        <h2 id="variables-pagination">Pagination</h2>
-        <div class="row">
-            <div class="col-lg-4">
-                <label>@pagination-bg</label>
-                <input type="text" placeholder="#fff">
-                <p class="help-block">Background color</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@pagination-border</label>
-                <input type="text" placeholder="#ddd">
-                <p class="help-block">Border color</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@pagination-active-bg</label>
-                <input type="text" placeholder="#f5f5f5">
-                <p class="help-block">Active background color</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@pagination-active-color</label>
-                <input type="text" placeholder="@gray-light">
-                <p class="help-block">Active text color</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@pagination-disabled-color</label>
-                <input type="text" placeholder="@gray-light">
-                <p class="help-block">Disabled text color</p>
-            </div>   
-        </div>
-        <h2 id="variables-pager">Pager</h2>
-        <div class="row">
-            <div class="col-lg-4">
-                <label>@pager-border-radius</label>
-                <input type="text" placeholder="15px">
-                <p class="help-block">Pager border radius</p>
-            </div>
-            <div class="col-lg-4">
-                <label>@pager-disabled-color</label>
-                <input type="text" placeholder="@gray-light">
-                <p class="help-block">Pager disabled state color</p>
-            </div>
-        </div>
-
-        <h2 id="variables-labels">Labels</h2>
-        <div class="row">
-            <div class="col-lg-6">
-                <label>@label-success-bg</label>
-                <input type="text" placeholder="@brand-success">
-                <p class="help-block">Success label background color</p>
-                <label>@label-info-bg</label>
-                <input type="text" placeholder="@brand-info">
-                <p class="help-block">Info label background color</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@label-warning-bg</label>
-                <input type="text" placeholder="@brand-warning">
-                <p class="help-block">Warning label background color</p>
-                <label>@label-danger-bg</label>
-                <input type="text" placeholder="@brand-danger">
-                <p class="help-block">Danger label background color</p>
-            </div>
-        </div>
-        <h2 id="variables-tooltips-popovers">Tooltips and popovers</h2>
-        <h3>Tooltip styles</h3>
-        <div class="row">
-            <div class="col-lg-6">
-                <label>@tooltip-color</label>
-                <input type="text" placeholder="#fff">
-                <p class="help-block">Tooltip text color</p>
-                <label>@tooltip-bg</label>
-                <input type="text" placeholder="rgba(0,0,0,.9)">
-                <p class="help-block">Tooltip background color</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@tooltip-arrow-width</label>
-                <input type="text" placeholder="5px">
-                <p class="help-block">Tooltip arrow width</p>
-                <label>@tooltip-arrow-color</label>
-                <input type="text" placeholder="@tooltip-bg">
-                <p class="help-block">Tooltip arrow color</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@tooltip-max-width</label>
-                <input type="text" placeholder="200px">                
-                <p class="help-block">Tooltip max width</p>
-            </div>
-        </div>
-        <h3>Popover styles</h3>
-        <div class="row">
-            <div class="col-lg-6">
-                <label>@popover-bg</label>
-                <input type="text" placeholder="#fff">
-                <p class="help-block">Popover body background color</p>
-                <label>@popover-title-bg</label>
-                <input type="text" placeholder="darken(@popover-bg, 3%)">
-                <p class="help-block">Popover title background color</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@popover-arrow-width</label>
-                <input type="text" placeholder="10px">
-                <p class="help-block">Popover arrow width</p>
-                <label>@popover-arrow-color</label>
-                <input type="text" placeholder="#fff">
-                <p class="help-block">Popover arrow color</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <label>@popover-arrow-outer-width</label>
-                <input type="text" placeholder="(@popover-arrow-width 1)">
-                <p class="help-block">Popover outer arrow width</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@popover-arrow-outer-color</label>
-                <input type="text" placeholder="rgba(0,0,0,.25)">
-                <p class="help-block">Popover outer arrow color</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@popover-arrow-outer-fallback-color</label>
-                <input type="text" placeholder="#999">
-                <p class="help-block">Popover outer arrow fallback color</p>
-            </div>            
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <label>@popover-max-width</label>
-                <input type="text" placeholder="276px">
-                <p class="help-block">Popover maximum width</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@popover-border-color</label>
-                <input type="text" placeholder="rgba(0,0,0,.2)">
-                <p class="help-block">Popover border color</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@popover-fallback-border-color</label>
-                <input type="text" placeholder="#ccc">
-                <p class="help-block">Popover fallback border color</p>
-            </div>            
-        </div>
-
-        <h2 id="variables-close">Close button</h2>
-        <label>@close-color</label>
-        <input type="text" placeholder="#000">
-        <label>@close-text-shadow</label>
-        <input type="text" placeholder="0 1px 0 #fff">
-
-        <h2 id="variables-type">Type</h2>
-        <div class="row">
-            <div class="col-lg-6">
-                <label>@text-muted</label>
-                <input type="text" placeholder="@gray-light">
-                <p class="help-block">Text muted color</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@abbr-border-color</label>
-                <input type="text" placeholder="@gray-light">
-                <p class="help-block">Abbreviations and acronyms border color</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@headings-small-color</label>
-                <input type="text" placeholder="@gray-light">
-                <p class="help-block">Headings small color</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@blockquote-small-color</label>
-                <input type="text" placeholder="@gray-light">
-                <p class="help-block">Blockquote small color</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@blockquote-border-color</label>
-                <input type="text" placeholder="@gray-lighter">
-                <p class="help-block">Blockquote border color</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@page-header-border-color</label>
-                <input type="text" placeholder="@gray-lighter">
-                <p class="help-block">Pag header border color</p>
-            </div>
-        </div>
-        <h2 id="variables-other">Other</h2>
-        <div class="row">
-            <div class="col-lg-6">
-                <label>@hr-border</label>
-                <input type="text" placeholder="@gray-lighter">
-                <p class="help-block">Horizontal line color</p>
-            </div>
-            <div class="col-lg-6">
-                <label>@component-offset-horizontal</label>
-                <input type="text" placeholder="180px">
-                <p class="help-block">Horizontal offset for forms and lists</p>
-            </div>
-        </div>
+        <label>@code-border-color</label>
+        <input type="text" placeholder="#ccc">
+      </div>
     </div>
 
-    <div class="bs-docs-section" id="download">
-        <div class="page-header">
-            <h1>Download</h1>
-        </div>
-        <p class="lead">Hooray! Your custom version of Bootstrap is now ready to be compiled. Just click the button below to finish the process.</p>
-        <div class="bs-customize-download">
-            <a class="btn btn-bs" href="#" onclick="_gaq.push(['_trackEvent', 'Customize', 'Download', 'Customize and Download']);">Customize and Download</a>
-        </div>
-        <div class="bs-callout bs-callout-danger">
-            <h4>What's included?</h4>
-            <p>Downloads include compiled CSS, compiled and minified CSS, and compiled jQuery plugins, all nicely packed up into a zipball for your convenience.</p>
-        </div>
-    </div><!-- /download -->
+    <h4>Headings</h4>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>@headings-font-family</label>
+        <input type="text" placeholder="@font-family-base">
+        <p class="help-block">Choose a separate font-family for headings.</p>
+        <label>@headings-font-weight</label>
+        <input type="text" placeholder="500">
+        <p class="help-block">Choose a separate font-weight for headings.</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@headings-line-height</label>
+        <input type="text" placeholder="1.1">
+        <p class="help-block">Choose a separate line-height for headings.</p>
+      </div>
+    </div>
+
+    <h3>Colors</h3>
+    <div class="row">
+      <div class="col-lg-6">
+        <p>Define custom colors used in several contexts.</p>
+        <label>@brand-primary</label>
+        <input type="text" placeholder="#428bca">
+        <p class="help-block">Used for primary buttons, panels and more.</p>
+        <label>@brand-success</label>
+        <input type="text" placeholder="#5cb85c">
+        <p class="help-block">Used to indicate success.</p>
+        <label>@brand-warning</label>
+        <input type="text" placeholder="#f0ad4e">
+        <p class="help-block">Used to indicate a warning.</p>
+        <label>@brand-danger</label>
+        <input type="text" placeholder="#d9534f">
+        <p class="help-block">Used to indicate danger.</p>
+        <label>@brand-info</label>
+        <input type="text" placeholder="#5bc0de">
+        <p class="help-block">Used to indicate informational content.</p>
+      </div>
+      <div class="col-lg-6">
+        <p>Define your preferred colors for standard text and links.</p>
+        <label>@text-color</label>
+        <input type="text" placeholder="@gray-dark">
+        <p class="help-block">Global color set on the body.</p>
+        <label>@link-color</label>
+        <input type="text" placeholder="@brand-primary">
+        <p class="help-block">Global link color for text.</p>
+        <label>@link-color-hover</label>
+        <input type="text" placeholder="darken(@link-color, 15%)">
+        <p class="help-block">Automatically darken links on hover via color function.</p>
+      </div>
+    </div>
+
+    <h3>Media queries breakpoints</h3>
+    <p>Define the breakpoints at which your layout will change, adapting to different screen sizes.</p>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>@screen-tiny</label>
+        <input type="text" placeholder="480px">
+        <label>@screen-small</label>
+        <input type="text" placeholder="768px">
+      </div>
+      <div class="col-lg-6">
+        <label>@screen-medium</label>
+        <input type="text" placeholder="992px">
+        <label>@screen-large</label>
+        <input type="text" placeholder="1200px">
+      </div>
+    </div>
+
+    <h3>Container sizes</h3>
+    <p>Define the maximum width of <code>.container</code> for different screen sizes.</p>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>@container-tablet</label>
+        <input type="text" placeholder="728px">
+        <p class="help-block">For <code>@screen-small</code> and up.</p>
+        <label>@container-desktop</label>
+        <input type="text" placeholder="940px">
+        <p class="help-block">For <code>@screen-medium</code> and up.</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@container-large-desktop</label>
+        <input type="text" placeholder="1170px">
+        <p class="help-block">For <code>@screen-large</code> and up.</p>
+      </div>
+    </div>
+
+    <h3>Grid system</h3>
+    <p>Define your custom responsive grid.</p>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>@grid-columns</label>
+        <input type="text" placeholder="12">
+        <p class="help-block">Number of columns in the grid.</p>
+        <label>@grid-gutter-width</label>
+        <input type="text" placeholder="30px">
+        <p class="help-block">Padding between columns.</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@grid-float-breakpoint</label>
+        <input type="text" placeholder="@screen-tablet">
+        <p class="help-block">Point at which the navbar stops collapsing.</p>
+      </div>
+    </div>
+
+    <h3>Components</h3>
+    <p>Define common padding and border radius sizes and more.</p>
+    <div class="row">
+      <div class="col-lg-6">
+        <h4>Padding</h4>
+        <label>@padding-base-vertical</label>
+        <input type="text" placeholder="8px">
+        <label>@padding-base-horizontal</label>
+        <input type="text" placeholder="12px">
+        <label>@padding-large-vertical</label>
+        <input type="text" placeholder="14px">
+        <label>@padding-large-horizontal</label>
+        <input type="text" placeholder="16px">
+        <label>@padding-small-vertical</label>
+        <input type="text" placeholder="5px">
+        <label>@padding-small-horizontal</label>
+        <input type="text" placeholder="10px">
+      </div>
+      <div class="col-lg-6">
+        <h4>Border radius sizes</h4>
+        <label>@border-radius-base</label>
+        <input type="text" placeholder="4px">
+        <label>@border-radius-large</label>
+        <input type="text" placeholder="6px">
+        <label>@border-radius-small</label>
+        <input type="text" placeholder="3px">
+        <h4>Active background color</h4>
+        <label>@component-active-bg</label>
+        <input type="text" placeholder="@brand-primary">
+        <p class="help-block">Used for active or hovered items in places like navs or dropdowns.</p>
+      </div>
+    </div>
+
+    <h2 id="variables-buttons">Buttons</h2>
+    <p>For each of Bootstrap's buttons, define text, background and border color.</p>
+    <div class="row">
+      <div class="col-lg-6">
+        <h4>Default</h4>
+        <label>@btn-default-color</label>
+        <input type="text" placeholder="#fff">
+        <label>@btn-default-bg</label>
+        <input type="text" placeholder="#474949">
+        <label>@btn-default-border</label>
+        <input type="text" placeholder="@btn-default-bg">
+        <h4>Primary</h4>
+        <label>@btn-primary-color</label>
+        <input type="text" placeholder="@btn-default-color">
+        <label>@btn-primary-bg</label>
+        <input type="text" placeholder="@brand-primary">
+        <label>@btn-primary-border</label>
+        <input type="text" placeholder="@btn-primary-bg">
+        <h4>Info</h4>
+        <label>@btn-info-color</label>
+        <input type="text" placeholder="@btn-default-color">
+        <label>@btn-info-bg</label>
+        <input type="text" placeholder="@brand-info">
+        <label>@btn-info-border</label>
+        <input type="text" placeholder="@btn-info-bg">
+        <h4>Button hover</h4>
+        <label>@btn-hover-color</label>
+        <input type="text" placeholder="@btn-default-color">
+      </div>
+      <div class="col-lg-6">
+        <h4>Success</h4>
+        <label>@btn-success-color</label>
+        <input type="text" placeholder="@btn-default-color">
+        <label>@btn-success-bg</label>
+        <input type="text" placeholder="@brand-success">
+        <label>@btn-success-border</label>
+        <input type="text" placeholder="@btn-success-bg">
+        <h4>Warning</h4>
+        <label>@btn-warning-color</label>
+        <input type="text" placeholder="@btn-default-color">
+        <label>@btn-warning-bg</label>
+        <input type="text" placeholder="@brand-warning">
+        <label>@btn-warning-border</label>
+        <input type="text" placeholder="@btn-warning-bg">
+        <h4>Danger</h4>
+        <label>@btn-danger-color</label>
+        <input type="text" placeholder="@btn-default-color">
+        <label>@btn-danger-bg</label>
+        <input type="text" placeholder="@brand-danger">
+        <label>@btn-danger-border</label>
+        <input type="text" placeholder="@btn-danger-bg">
+      </div>
+    </div>
+
+    <h2 id="variables-form-states">Form states and alerts</h2>
+    <p>Define colors for form feedback states and, by default, alerts.</p>
+    <div class="row">
+      <div class="col-lg-6">
+        <h4>Success</h4>
+        <label>@state-success-text</label>
+        <input type="text" placeholder="#468847">
+        <label>@state-success-bg</label>
+        <input type="text" placeholder="#dff0d8">
+        <label>@state-success-border</label>
+        <input type="text" placeholder="darken(spin(@state-success-bg, -10), 5%)">
+        <h4>Warning</h4>
+        <label>@state-warning-text</label>
+        <input type="text" placeholder="#c09853">
+        <label>@state-warning-bg</label>
+        <input type="text" placeholder="#fcf8e3">
+        <label>@state-warning-border</label>
+        <input type="text" placeholder="darken(spin(@state-warning-bg, -10), 3%)">
+      </div>
+      <div class="col-lg-6">
+        <h4>Danger</h4>
+        <label>@state-danger-text</label>
+        <input type="text" placeholder="#b94a48">
+        <label>@state-danger-bg</label>
+        <input type="text" placeholder="#f2dede">
+        <label>@state-danger-border</label>
+        <input type="text" placeholder="darken(spin(@state-danger-bg, -10), 3%)">
+        <h4>Info</h4>
+        <label>@state-info-text</label>
+        <input type="text" placeholder="#3a87ad">
+        <label>@state-info-bg</label>
+        <input type="text" placeholder="#d9edf7">
+        <label>@state-info-border</label>
+        <input type="text" placeholder="darken(spin(@state-info-bg, -10), 7%)">
+      </div>
+    </div>
+
+    <h2 id="variables-alerts">Alerts</h2>
+    <p>Define alert colors and border radius.</p>
+    <h4>Border radius</h4>
+    <label>@alert-border-radius</label>
+    <input type="text" placeholder="@border-radius-base">
+    <div class="row">
+      <div class="col-lg-6">
+        <h4>Success</h4>
+        <label>@alert-success-text</label>
+        <input type="text" placeholder="@state-success-text">
+        <label>@alert-success-bg</label>
+        <input type="text" placeholder="@state-success-bg">
+        <label>@alert-success-border</label>
+        <input type="text" placeholder="@state-success-border">
+        <h4>Warning</h4>
+        <label>@alert-warning-text</label>
+        <input type="text" placeholder="@state-warning-text">
+        <label>@alert-warning-bg</label>
+        <input type="text" placeholder="@state-warning-bg">
+        <label>@alert-warning-border</label>
+        <input type="text" placeholder="@state-warning-border">
+      </div>
+      <div class="col-lg-6">
+        <h4>Danger</h4>
+        <label>@alert-danger-text</label>
+        <input type="text" placeholder="@state-danger-text">
+        <label>@alert-danger-bg</label>
+        <input type="text" placeholder="@state-danger-bg">
+        <label>@alert-danger-border</label>
+        <input type="text" placeholder="@state-danger-border">
+        <h4>Info</h4>
+        <label>@alert-info-text</label>
+        <input type="text" placeholder="@state-info-text">
+        <label>@alert-info-bg</label>
+        <input type="text" placeholder="@state-info-bg">
+        <label>@alert-info-border</label>
+        <input type="text" placeholder="@state-info-border">
+      </div>
+    </div>
+
+    <h2 id="variables-navbar">Navbar</h2>
+    <div class="row">
+      <div class="col-lg-6">
+        <h3>Default navbar</h3>
+        <h4>Basics</h4>
+        <label>@navbar-height</label>
+        <input type="text" placeholder="50px">
+        <label>@navbar-color</label>
+        <input type="text" placeholder="#777">
+        <label>@navbar-bg</label>
+        <input type="text" placeholder="#eee">
+        <h4>Links</h4>
+        <label>@navbar-link-color</label>
+        <input type="text" placeholder="#777">
+        <label>@navbar-link-hover-color</label>
+        <input type="text" placeholder="#333">
+        <label>@navbar-link-hover-bg</label>
+        <input type="text" placeholder="transparent">
+        <label>@navbar-link-active-color</label>
+        <input type="text" placeholder="#555">
+        <label>@navbar-link-active-bg</label>
+        <input type="text" placeholder="darken(@navbar-bg, 10%)">
+        <label>@navbar-link-disabled-color</label>
+        <input type="text" placeholder="#ccc">
+        <label>@navbar-link-disabled-bg</label>
+        <input type="text" placeholder="transparent">
+        <h4>Brand</h4>
+        <label>@navbar-brand-color</label>
+        <input type="text" placeholder="@navbar-link-color">
+        <label>@navbar-brand-hover-color</label>
+        <input type="text" placeholder="darken(@navbar-link-color, 10%)">
+        <label>@navbar-brand-hover-bg</label>
+        <input type="text" placeholder="transparent">
+        <h4>Toggle</h4>
+        <label>@navbar-toggle-hover-bg</label>
+        <input type="text" placeholder="#ddd">
+        <label>@navbar-toggle-icon-bar-bg</label>
+        <input type="text" placeholder="#ccc">
+        <label>@navbar-toggle-border-color</label>
+        <input type="text" placeholder="#ddd">
+      </div>
+      <div class="col-lg-6">
+        <h3>Inverted navbar</h3>
+        <h4>Basics</h4>
+        <label>@navbar-inverse-color</label>
+        <input type="text" placeholder="@gray-light">
+        <label>@navbar-inverse-bg</label>
+        <input type="text" placeholder="#222">
+        <h4>Links</h4>
+        <label>@navbar-inverse-link-color</label>
+        <input type="text" placeholder="@gray-light">
+        <label>@navbar-inverse-link-hover-color</label>
+        <input type="text" placeholder="#fff">
+        <label>@navbar-inverse-link-hover-bg</label>
+        <input type="text" placeholder="transparent">
+        <label>@navbar-inverse-link-active-color</label>
+        <input type="text" placeholder="@navbar-inverse-link-hover-color">
+        <label>@navbar-inverse-link-active-bg</label>
+        <input type="text" placeholder="darken(@navbar-inverse-bg, 10%)">
+        <label>@navbar-inverse-link-disabled-color</label>
+        <input type="text" placeholder="#444">
+        <label>@navbar-inverse-link-disabled-bg</label>
+        <input type="text" placeholder="transparent">
+        <h4>Brand</h4>
+        <label>@navbar-inverse-brand-color</label>
+        <input type="text" placeholder="@navbar-inverse-link-color">
+        <label>@navbar-inverse-brand-hover-color</label>
+        <input type="text" placeholder="#fff">
+        <label>@navbar-inverse-brand-hover-bg</label>
+        <input type="text" placeholder="transparent">
+        <h4>Toggle</h4>
+        <label>@navbar-inverse-toggle-hover-bg</label>
+        <input type="text" placeholder="#333">
+        <label>@navbar-inverse-toggle-icon-bar-bg</label>
+        <input type="text" placeholder="#fff">
+        <label>@navbar-inverse-toggle-border-color</label>
+        <input type="text" placeholder="#333">
+      </div>
+    </div>
+
+
+    <h2 id="variables-nav">Nav</h2>
+    <div class="row">
+      <div class="col-lg-6">
+        <h3>Default nav</h3>
+        <h4>Basics</h4>
+        <label>@nav-link-hover-bg</label>
+        <input type="text" placeholder="@gray-lighter">
+        <label>@nav-disabled-link-color</label>
+        <input type="text" placeholder="@gray-light">
+        <label>@nav-disabled-link-hover-color</label>
+        <input type="text" placeholder="@gray-light">
+        <label>@nav-open-link-hover-color</label>
+        <input type="text" placeholder="#fff">
+        <label>@nav-open-caret-border-color</label>
+        <input type="text" placeholder="@fff">
+        <h4>Tabs</h4>
+        <label>@nav-tabs-border-color</label>
+        <input type="text" placeholder="@ddd">
+        <label>@nav-tabs-link-hover-border-color</label>
+        <input type="text" placeholder="@gray-lighter">
+        <label>@nav-tabs-active-link-hover-color</label>
+        <input type="text" placeholder="@gray">
+        <label>@nav-tabs-active-link-hover-bg</label>
+        <input type="text" placeholder="@body-bg">
+        <label>@nav-tabs-active-link-hover-border-color</label>
+        <input type="text" placeholder="#ddd">
+        <label>@nav-tabs-justified-link-border-color</label>
+        <input type="text" placeholder="#ddd">
+        <label>@nav-tabs-justified-active-link-border-color</label>
+        <input type="text" placeholder="@body-bg">
+        <h4>Pills</h4>
+        <label>@nav-pills-active-link-hover-color</label>
+        <input type="text" placeholder="@fff">
+        <label>@nav-pills-active-link-hover-bg</label>
+        <input type="text" placeholder="@component-active-bg">
+      </div>
+    </div>
+
+
+    <h2 id="variables-tables">Tables</h2>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>@table-bg</label>
+        <input type="text" placeholder="transparent">
+        <p class="help-block">Default background color used for all tables.</p>
+        <label>@table-bg-accent</label>
+        <input type="text" placeholder="#f9f9f9">
+        <p class="help-block">Background color used for <code>.table-striped</code>.</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@table-bg-hover</label>
+        <input type="text" placeholder="#f5f5f5">
+        <p class="help-block">Background color used for <code>.table-hover</code>.</p>
+        <label>@table-border-color</label>
+        <input type="text" placeholder="#ddd">
+        <p class="help-block">Border color for table and cell borders.</p>
+      </div>
+    </div>
+
+    <h2 id="variables-forms">Forms</h2>
+    <div class="row">
+      <div class="col-lg-6">
+        <h3>Inputs</h3>
+        <label>@input-bg</label>
+        <input type="text" placeholder="#fff">
+        <p class="help-block"><code>&lt;input&gt;</code> background color</p>
+        <label>@input-border</label>
+        <input type="text" placeholder="#ccc">
+        <p class="help-block"><code>&lt;input&gt;</code> border color</p>
+        <label>@input-border-radius</label>
+        <input type="text" placeholder="@border-radius-base">
+        <p class="help-block"><code>&lt;input&gt;</code> border radius</p>
+        <label>@input-bg-disabled</label>
+        <input type="text" placeholder="@gray-lighter">
+        <p class="help-block"><code>&lt;input disabled&gt;</code> background color</p>
+      </div>
+      <div class="col-lg-6">
+        <h3>Placeholder</h3>
+        <label>@input-color-placeholder</label>
+        <input type="text" placeholder="@gray-light">
+        <p class="help-block">Placeholder text color</p>
+
+        <h3>Legend</h3>
+        <label>@legend-border-color</label>
+        <input type="text" placeholder="#e5e5e5">
+        <p class="help-block"><code>&lt;legend&gt;</code> border color</p>
+
+        <h3>Input groups</h3>
+        <label>@input-group-addon-border-color</label>
+        <input type="text" placeholder="@input-border">
+        <p class="help-block">Border color for textual input addons</p>
+      </div>
+    </div>
+
+    <h2 id="variables-dropdowns">Dropdowns</h2>
+    <div class="row">
+      <div class="col-lg-6">
+        <h3>Dropdown menu</h3>
+        <label>@dropdown-bg</label>
+        <input type="text" placeholder="#fff">
+        <p class="help-block">Dropdown menu background color</p>
+        <label>@dropdown-border</label>
+        <input type="text" placeholder="rgba(0,0,0,.15)">
+        <p class="help-block">Dropdown menu border color</p>
+        <label>@dropdown-fallback-border</label>
+        <input type="text" placeholder="#ccc">
+        <p class="help-block">Dropdown menu border color <strong>for IE8</strong></p>
+        <label>@dropdown-caret-color</label>
+        <input type="text" placeholder="@dropdown-caret-color">
+        <p class="help-block">Indicator arrow for showing an element has a dropdown</p>
+        <label>@dropdown-divider-bg</label>
+        <input type="text" placeholder="#e5e5e5">
+        <p class="help-block">Dropdown divider top border color</p>
+      </div>
+      <div class="col-lg-6">
+        <h3>Dropdown items</h3>
+        <label>@dropdown-link-color</label>
+        <input type="text" placeholder="@gray-dark">
+        <p class="help-block">Dropdown text color</p>
+        <label>@dropdown-link-active-color</label>
+        <input type="text" placeholder="#fff">
+        <p class="help-block">Active dropdown menu entry text color</p>
+        <label>@dropdown-link-hover-bg</label>
+        <input type="text" placeholder="#fff">
+        <p class="help-block">Hovered dropdown menu entry text color</p>
+        <label>@dropdown-link-active-bg</label>
+        <input type="text" placeholder="@component-active-bg">
+        <p class="help-block">Active dropdown menu entry background color</p>
+        <label>@dropdown-link-hover-bg</label>
+        <input type="text" placeholder="@dropdown-link-active-bg">
+        <p class="help-block">Hovered dropdown menu entry background color</p>
+      </div>
+    </div>
+
+    <h2 id="variables-panels-wells">Panels and wells</h2>
+    <h3>Default panel styles</h3>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>@panel-bg</label>
+        <input type="text" placeholder="#fff">
+        <p class="help-block">Panel body background color</p>
+        <label>@panel-heading-bg</label>
+        <input type="text" placeholder="#f5f5f5">
+        <p class="help-block">Panel heading background color</p>
+        <label>@panel-footer-bg</label>
+        <input type="text" placeholder="#f5f5f5">
+        <p class="help-block">Panel footer background color</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@panel-border</label>
+        <input type="text" placeholder="#ddd">
+        <p class="help-block">Panel border color</p>
+        <label>@panel-border-radius</label>
+        <input type="text" placeholder="@border-radius-base">
+        <p class="help-block">Panel border radius</p>
+      </div>
+    </div>
+    <h3>Contextual panel colors</h3>
+    <div class="row">
+      <div class="col-lg-6">
+        <h4>Primary</h4>
+        <label>@panel-primary-text</label>
+        <input type="text" placeholder="#fff">
+        <p class="help-block">Primary text color</p>
+        <label>@panel-primary-border</label>
+        <input type="text" placeholder="@brand-primary">
+        <p class="help-block">Primary border color</p>
+        <label>@panel-primary-heading-bg</label>
+        <input type="text" placeholder="@brand-primary">
+        <p class="help-block">Primary heading background color</p>
+        <h4>Success</h4>
+        <label>@panel-success-text</label>
+        <input type="text" placeholder="@state-success-text">
+        <p class="help-block">Success text color</p>
+        <label>@panel-success-border</label>
+        <input type="text" placeholder="@state-success-border">
+        <p class="help-block">Success border color</p>
+        <label>@panel-success-heading-bg</label>
+        <input type="text" placeholder="@state-success-bg">
+        <p class="help-block">Success heading background color</p>
+        <h4>Info</h4>
+        <label>@panel-info-text</label>
+        <input type="text" placeholder="@state-info-text">
+        <p class="help-block">Info text color</p>
+        <label>@panel-info-border</label>
+        <input type="text" placeholder="@state-info-border">
+        <p class="help-block">Info border color</p>
+        <label>@panel-info-heading-bg</label>
+        <input type="text" placeholder="@state-info-bg">
+        <p class="help-block">Info heading background color</p>
+      </div>
+      <div class="col-lg-6">
+        <h4>Warning</h4>
+        <label>@panel-warning-text</label>
+        <input type="text" placeholder="@state-warning-text">
+        <p class="help-block">Warning text color</p>
+        <label>@panel-warning-border</label>
+        <input type="text" placeholder="@state-warning-border">
+        <p class="help-block">Warning border color</p>
+        <label>@panel-warning-heading-bg</label>
+        <input type="text" placeholder="@state-warning-bg">
+        <p class="help-block">Warning heading background color</p>
+        <h4>Danger</h4>
+        <label>@panel-danger-text</label>
+        <input type="text" placeholder="@state-danger-text">
+        <p class="help-block">Danger text color</p>
+        <label>@panel-danger-border</label>
+        <input type="text" placeholder="@state-danger-border">
+        <p class="help-block">Danger border color</p>
+        <label>@panel-danger-heading-bg</label>
+        <input type="text" placeholder="@state-danger-bg">
+        <p class="help-block">Danger heading background color</p>
+      </div>
+    </div>
+
+    <h3>Wells</h3>
+    <label>@well-bg</label>
+    <input type="text" placeholder="#f5f5f5">
+
+    <h2 id="variables-accordion">Accordion</h2>
+    <label>@accordion-border-bg</label>
+    <input type="text" placeholder="#e5e5e5">
+
+    <h2 id="variables-badges">Badges</h2>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>@badge-color</label>
+        <input type="text" placeholder="#fff">
+        <p>Badge text color</p>
+        <label>@badge-bg</label>
+        <input type="text" placeholder="@gray-light">
+        <p>Badge background color</p>
+        <label>@badge-link-hover-color</label>
+        <input type="text" placeholder="#fff">
+        <p>Linked badge text color on hover</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@badge-active-color</label>
+        <input type="text" placeholder="@link-color">
+        <p>Badge text color in active nav link</p>
+        <label>@badge-active-bg</label>
+        <input type="text" placeholder="#fff">
+        <p>Badge text color in active nav link</p>
+      </div>
+    </div>
+
+    <h2 id="variables-breadcrumbs">Breadcrumbs</h2>
+    <div class="row">
+      <div class="col-lg-4">
+        <label>@breadcrumb-color</label>
+        <input type="text" placeholder="#ccc">
+        <p>Breadcrumb text color</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@breadcrumb-bg</label>
+        <input type="text" placeholder="#f5f5f5">
+        <p>Breadcrumb background color</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@breadcrumb-active-color</label>
+        <input type="text" placeholder="@gray-light">
+        <p>Text color of current page in the breadcrumb</p>
+      </div>
+    </div>
+
+    <h2 id="variables-jumbotron">Jumbotron</h2>
+    <div class="row">
+      <div class="col-lg-4">
+        <label>@jumbotron-bg</label>
+        <input type="text" placeholder="@gray-lighter">
+        <p class="help-block">Jumbotron background color</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@jumbotron-heading-color</label>
+        <input type="text" placeholder="inherit">
+        <p class="help-block">Jumbotron heading color</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@jumbotron-lead-color</label>
+        <input type="text" placeholder="inherit">
+        <p class="help-block">Jumbotron lead paragraph color</p>
+      </div>
+    </div>
+
+    <h2 id="variables-modals">Modals</h2>
+    <div class="row">
+      <div class="col-lg-4">
+        <label>@modal-inner-padding</label>
+        <input type="text" placeholder="20px">
+        <p class="help-block">Padding applied to the modal body</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@modal-title-padding</label>
+        <input type="text" placeholder="15px">
+        <p class="help-block">Padding applied to the modal title</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@modal-title-line-height</label>
+        <input type="text" placeholder="@line-height-base">
+        <p class="help-block">Modal title line-height</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@modal-content-bg</label>
+        <input type="text" placeholder="#fff">
+        <p class="help-block">Background color of modal content area</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@modal-content-border-color</label>
+        <input type="text" placeholder="rgba(0,0,0,.2)">
+        <p class="help-block">Modal content border color</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@modal-content-fallback-border-color</label>
+        <input type="text" placeholder="#999">
+        <p class="help-block">Modal content border color <strong>for IE8</strong></p>
+      </div>
+      <div class="col-lg-4">
+        <label>@modal-backdrop-bg</label>
+        <input type="text" placeholder="#000">
+        <p class="help-block">Modal backdrop background color</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@modal-header-border-color</label>
+        <input type="text" placeholder="#e5e5e5">
+        <p class="help-block">Modal header border color</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@modal-footer-border-color</label>
+        <input type="text" placeholder="@modal-header-border-color">
+        <p class="help-block">Modal footer border color</p>
+      </div>
+    </div>
+
+    <h2 id="variables-carousel">Carousel</h2>
+    <label>@carousel-text-shadow</label>
+    <input type="text" placeholder="0 1px 2px rgba(0,0,0,.6)">
+    <label>@carousel-control-color</label>
+    <input type="text" placeholder="#fff">
+    <label>@carousel-indicator-border-color</label>
+    <input type="text" placeholder="#fff">
+    <label>@carousel-indicator-active-bg</label>
+    <input type="text" placeholder="#fff">
+    <label>@carousel-caption-color</label>
+    <input type="text" placeholder="#fff">
+
+    <h2 id="variables-list-group">List group</h2>
+    <h3>Background</h3>
+    <div class="row">
+      <div class="col-lg-4">
+        <label>@list-group-bg</label>
+        <input type="text" placeholder="#fff">
+        <p class="help-block">Default background color</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@list-group-hover-bg</label>
+        <input type="text" placeholder="#f5f5f5">
+        <p class="help-block">Background color of single list elements on hover</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@list-group-active-bg</label>
+        <input type="text" placeholder="@component-active-bg">
+        <p class="help-block">Background color of active list elements</p>
+      </div>
+    </div>
+    <h3>Borders</h3>
+    <div class="row">
+      <div class="col-lg-4">
+        <label>@list-group-border</label>
+        <input type="text" placeholder="#ddd">
+        <p class="help-block">Default border color</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@list-group-border-radius</label>
+        <input type="text" placeholder="@border-radius-base">
+        <p class="help-block">List group border radius</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@list-group-active-border</label>
+        <input type="text" placeholder="@list-group-active-bg">
+        <p class="help-block">Border color of active list elements</p>
+      </div>
+    </div>
+    <label>@list-group-active-color</label>
+    <input type="text" placeholder="#fff">
+    <p class="help-block">Text color of active list elements</p>
+    <h2 id="variables-thumbnails">Thumbnails</h2>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>@thumbnail-caption-color</label>
+        <input type="text" placeholder="@text-color">
+        <p class="help-block">Custom text color for thumbnail captions</p>
+        <label>@thumbnail-bg</label>
+        <input type="text" placeholder="@body-bg">
+        <p class="help-block">Thumbnail background color</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@thumbnail-border</label>
+        <input type="text" placeholder="#ddd">
+        <p class="help-block">Thumbnail border color</p>
+        <label>@thumbnail-border-radius</label>
+        <input type="text" placeholder="@border-radius-base">
+        <p class="help-block">Thumbnail border radius</p>
+      </div>
+    </div>
+    <h2 id="variables-progress">Progress bars</h2>
+    <div class="row">
+      <div class="col-lg-4">
+        <label>@progress-bg</label>
+        <input type="text" placeholder="#f5f5f5">
+        <p class="help-block">Background color of the whole progress component</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@progress-bar-bg</label>
+        <input type="text" placeholder="@brand-primary">
+        <p class="help-block">Default progress bar color</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@progress-bar-success-bg</label>
+        <input type="text" placeholder="@brand-success">
+        <p class="help-block">Success progress bar color</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <label>@progress-bar-warning-bg</label>
+        <input type="text" placeholder="@brand-warning">
+        <p class="help-block">Warning progress bar color</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@progress-bar-danger-bg</label>
+        <input type="text" placeholder="@brand-danger">
+        <p class="help-block">Danger progress bar color</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@progress-bar-info-bg</label>
+        <input type="text" placeholder="@brand-info">
+        <p class="help-block">Info progress bar color</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@progress-bar-color</label>
+        <input type="text" placeholder="#fff">
+        <p class="help-block">Info progress bar text color</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@progress-bar-text-shadow</label>
+        <input type="text" placeholder="0 -1px 0 rgba(0,0,0,.25)">
+        <p class="help-block">Info progress bar text shadow</p>
+      </div>
+    </div>
+    <h2 id="variables-pagination">Pagination</h2>
+    <div class="row">
+      <div class="col-lg-4">
+        <label>@pagination-bg</label>
+        <input type="text" placeholder="#fff">
+        <p class="help-block">Background color</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@pagination-border</label>
+        <input type="text" placeholder="#ddd">
+        <p class="help-block">Border color</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@pagination-active-bg</label>
+        <input type="text" placeholder="#f5f5f5">
+        <p class="help-block">Active background color</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@pagination-active-color</label>
+        <input type="text" placeholder="@gray-light">
+        <p class="help-block">Active text color</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@pagination-disabled-color</label>
+        <input type="text" placeholder="@gray-light">
+        <p class="help-block">Disabled text color</p>
+      </div>
+    </div>
+    <h2 id="variables-pager">Pager</h2>
+    <div class="row">
+      <div class="col-lg-4">
+        <label>@pager-border-radius</label>
+        <input type="text" placeholder="15px">
+        <p class="help-block">Pager border radius</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@pager-disabled-color</label>
+        <input type="text" placeholder="@gray-light">
+        <p class="help-block">Pager disabled state color</p>
+      </div>
+    </div>
+
+    <h2 id="variables-labels">Labels</h2>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>@label-success-bg</label>
+        <input type="text" placeholder="@brand-success">
+        <p class="help-block">Success label background color</p>
+        <label>@label-info-bg</label>
+        <input type="text" placeholder="@brand-info">
+        <p class="help-block">Info label background color</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@label-warning-bg</label>
+        <input type="text" placeholder="@brand-warning">
+        <p class="help-block">Warning label background color</p>
+        <label>@label-danger-bg</label>
+        <input type="text" placeholder="@brand-danger">
+        <p class="help-block">Danger label background color</p>
+      </div>
+    </div>
+    <h2 id="variables-tooltips-popovers">Tooltips and popovers</h2>
+    <h3>Tooltip styles</h3>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>@tooltip-color</label>
+        <input type="text" placeholder="#fff">
+        <p class="help-block">Tooltip text color</p>
+        <label>@tooltip-bg</label>
+        <input type="text" placeholder="rgba(0,0,0,.9)">
+        <p class="help-block">Tooltip background color</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@tooltip-arrow-width</label>
+        <input type="text" placeholder="5px">
+        <p class="help-block">Tooltip arrow width</p>
+        <label>@tooltip-arrow-color</label>
+        <input type="text" placeholder="@tooltip-bg">
+        <p class="help-block">Tooltip arrow color</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@tooltip-max-width</label>
+        <input type="text" placeholder="200px">
+        <p class="help-block">Tooltip max width</p>
+      </div>
+    </div>
+    <h3>Popover styles</h3>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>@popover-bg</label>
+        <input type="text" placeholder="#fff">
+        <p class="help-block">Popover body background color</p>
+        <label>@popover-title-bg</label>
+        <input type="text" placeholder="darken(@popover-bg, 3%)">
+        <p class="help-block">Popover title background color</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@popover-arrow-width</label>
+        <input type="text" placeholder="10px">
+        <p class="help-block">Popover arrow width</p>
+        <label>@popover-arrow-color</label>
+        <input type="text" placeholder="#fff">
+        <p class="help-block">Popover arrow color</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>@popover-arrow-outer-width</label>
+        <input type="text" placeholder="(@popover-arrow-width 1)">
+        <p class="help-block">Popover outer arrow width</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@popover-arrow-outer-color</label>
+        <input type="text" placeholder="rgba(0,0,0,.25)">
+        <p class="help-block">Popover outer arrow color</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@popover-arrow-outer-fallback-color</label>
+        <input type="text" placeholder="#999">
+        <p class="help-block">Popover outer arrow fallback color</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>@popover-max-width</label>
+        <input type="text" placeholder="276px">
+        <p class="help-block">Popover maximum width</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@popover-border-color</label>
+        <input type="text" placeholder="rgba(0,0,0,.2)">
+        <p class="help-block">Popover border color</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@popover-fallback-border-color</label>
+        <input type="text" placeholder="#ccc">
+        <p class="help-block">Popover fallback border color</p>
+      </div>
+    </div>
+
+    <h2 id="variables-close">Close button</h2>
+    <label>@close-color</label>
+    <input type="text" placeholder="#000">
+    <label>@close-text-shadow</label>
+    <input type="text" placeholder="0 1px 0 #fff">
+
+    <h2 id="variables-type">Type</h2>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>@text-muted</label>
+        <input type="text" placeholder="@gray-light">
+        <p class="help-block">Text muted color</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@abbr-border-color</label>
+        <input type="text" placeholder="@gray-light">
+        <p class="help-block">Abbreviations and acronyms border color</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@headings-small-color</label>
+        <input type="text" placeholder="@gray-light">
+        <p class="help-block">Headings small color</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@blockquote-small-color</label>
+        <input type="text" placeholder="@gray-light">
+        <p class="help-block">Blockquote small color</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@blockquote-border-color</label>
+        <input type="text" placeholder="@gray-lighter">
+        <p class="help-block">Blockquote border color</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@page-header-border-color</label>
+        <input type="text" placeholder="@gray-lighter">
+        <p class="help-block">Pag header border color</p>
+      </div>
+    </div>
+    <h2 id="variables-other">Other</h2>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>@hr-border</label>
+        <input type="text" placeholder="@gray-lighter">
+        <p class="help-block">Horizontal line color</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@component-offset-horizontal</label>
+        <input type="text" placeholder="180px">
+        <p class="help-block">Horizontal offset for forms and lists</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bs-docs-section" id="download">
+    <div class="page-header">
+      <h1>Download</h1>
+    </div>
+    <p class="lead">Hooray! Your custom version of Bootstrap is now ready to be compiled. Just click the button below to finish the process.</p>
+    <div class="bs-customize-download">
+      <a class="btn btn-bs" href="#" onclick="_gaq.push(['_trackEvent', 'Customize', 'Download', 'Customize and Download']);">Customize and Download</a>
+    </div>
+    <div class="bs-callout bs-callout-danger">
+      <h4>What's included?</h4>
+      <p>Downloads include compiled CSS, compiled and minified CSS, and compiled jQuery plugins, all nicely packed up into a zipball for your convenience.</p>
+    </div>
+  </div><!-- /download -->
 </form>
