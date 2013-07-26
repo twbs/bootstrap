@@ -46,7 +46,7 @@ Documentation for v2.3.2 has been made available for the time being at [http://g
 
 ## Compiling CSS and JavaScript
 
-Bootstrap uses [GruntJS](http://gruntjs.com/) with convenient methods for working with the framework. Before getting started, be sure to have `grunt-cli` installed globally (`npm install -g grunt-cli`) and then install [the necessary local dependencies](package.json):
+Bootstrap uses [Grunt](http://gruntjs.com/) with convenient methods for working with the framework. Before getting started, be sure to have `grunt-cli` installed globally (`npm install -g grunt-cli`) and then install [the necessary local dependencies](package.json):
 
 ```
 # if grunt-cli isn't already installed
