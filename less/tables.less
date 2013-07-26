@@ -185,6 +185,13 @@ table {
     background-color: @state-warning-bg;
     border-color: @state-warning-border;
   }
+  > td.info,
+  > th.info,
+  &.info > td,
+  &.info > th {
+    background-color: @state-info-bg;
+    border-color: @state-info-border;
+  }
 }
 
 // Hover states for `.table-hover`
@@ -207,5 +214,11 @@ table {
   &.warning:hover > td {
     background-color: darken(@state-warning-bg, 5%);
     border-color: darken(@state-warning-border, 5%);
+  }
+  > td.info:hover,
+  > th.info:hover,
+  &.info:hover > td {
+    background-color: darken(@state-info-bg, 5%);
+    border-color: darken(@state-info-border, 5%);
   }
 }
