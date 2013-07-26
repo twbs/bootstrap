@@ -1496,51 +1496,34 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3 id="forms-validation">Validation states</h3>
-    <p>Bootstrap includes validation styles for error, warning, info, and success messages. To use:</p>
-    <ul>
-      <li>Add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element</li>
-      <li>Add .input-with-feedback to the field(s) in question</li>
-    </ul>
-    <p>Validation styles are applied on a per-input basis. With horizontal forms, the <code>&lt;label class="control-label"&gt;</code> will always be styled.</p>
+    <p>Bootstrap includes validation styles for error, warning, and success states on from controls. To use, add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element. Any <code>.control-label</code>, <code>.form-control</code>, and <code>.help-block</code> within that element will receive the validation styles.</li>
 
-    <form class="bs-example form-horizontal">
-      <div class="has-warning">
+    <form class="bs-example">
+      <div class="form-group has-warning">
         <label class="control-label" for="inputWarning">Input with warning</label>
-        <div class="controls">
-          <input type="text" class="form-control input-with-feedback" id="inputWarning">
-        </div>
+        <input type="text" class="form-control" id="inputWarning">
       </div>
-      <div class="has-error">
+      <div class="form-group has-error">
         <label class="control-label" for="inputError">Input with error</label>
-        <div class="controls">
-          <input type="text" class="form-control input-with-feedback" id="inputError">
-        </div>
+        <input type="text" class="form-control" id="inputError">
       </div>
-      <div class="has-success">
+      <div class="form-group has-success">
         <label class="control-label" for="inputSuccess">Input with success</label>
-        <div class="controls">
-          <input type="text" class="form-control input-with-feedback" id="inputSuccess">
-        </div>
+        <input type="text" class="form-control" id="inputSuccess">
       </div>
     </form>
 {% highlight html %}
-<div class="has-warning">
+<div class="form-group has-warning">
   <label class="control-label" for="inputWarning">Input with warning</label>
-  <div class="controls">
-    <input type="text" class="form-control input-with-feedback" id="inputWarning">
-  </div>
+  <input type="text" class="form-control" id="inputWarning">
 </div>
-<div class="has-error">
+<div class="form-group has-error">
   <label class="control-label" for="inputError">Input with error</label>
-  <div class="controls">
-    <input type="text" class="form-control input-with-feedback" id="inputError">
-  </div>
+  <input type="text" class="form-control" id="inputError">
 </div>
-<div class="has-success">
+<div class="form-group has-success">
   <label class="control-label" for="inputSuccess">Input with success</label>
-  <div class="controls">
-    <input type="text" class="form-control input-with-feedback" id="inputSuccess">
-  </div>
+  <input type="text" class="form-control" id="inputSuccess">
 </div>
 {% endhighlight %}
 
