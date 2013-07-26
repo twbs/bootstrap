@@ -2,6 +2,10 @@
 // Component animations
 // --------------------------------------------------
 
+// Heads up!
+//
+// We don't use the `.opacity()` mixin here since it causes a bug with text
+// fields in IE7-8. Source: https://github.com/twitter/bootstrap/pull/3552.
 
 .fade {
   opacity: 0;
