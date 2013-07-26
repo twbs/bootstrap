@@ -39,7 +39,7 @@ Learn more about using Jekyll by reading their [documentation](http://jekyllrb.c
 
 ### Documentation for previous releases
 
-Documentation for v2.3.3 has been made available for the time being at [http://getbootstrap.com/2.3.3/](http://getbootstrap.com/2.3.2/) while folks transition to Bootstrap 3.
+Documentation for v2.3.3 has been made available for the time being at [http://getbootstrap.com/2.3.3/](http://getbootstrap.com/2.3.3/) while folks transition to Bootstrap 3.
 
 [Previous releases](https://github.com/twbs/bootstrap/releases) and their documentation are also available for download.
 
