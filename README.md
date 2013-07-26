@@ -10,38 +10,37 @@ To get started, check out [http://getbootstrap.com](http://getbootstrap.com)!
 
 Three quick start options are available:
 
-* [Download the latest release](https://github.com/twitter/bootstrap/zipball/master).
-* Clone the repo: `git clone git://github.com/twitter/bootstrap.git`.
-* Install with Twitter's [Bower](http://github.com/bower/bower): `bower install bootstrap`.
+* [Download the latest release](https://github.com/twbs/bootstrap/zipball/master).
+* Clone the repo: `git clone git://github.com/twbs/bootstrap.git`.
+* Install with [Bower](http://bower.io): `bower install bootstrap`.
 
-Read the [Getting Started page](http://getbootstrap.com/getting-started/) for information on the framework contents, basic template guidelines, and more.
-
-
-## Bootstrap elsewhere
-
-Beyond getting started with the Bootstrap core, there are ways to use Bootstrap in other tools and services:
-
-* [Roots WordPress theme](https://github.com/retlehs/roots) - A WordPress starter theme based on HTML5 Boilerplate & Bootstrap from Twitter.
-
-Have suggestions? Let us know with a [new issue](https://github.com/twitter/bootstrap/issues).
+Read the [Getting Started page](http://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
 
 
 
 ## Bugs and feature requests
 
-Have a bug or a feature request? [Please open a new issue](https://github.com/twitter/bootstrap/issues). Before opening any issue, please search for existing issues and read the [Issue Guidelines](https://github.com/necolas/issue-guidelines), written by [Nicolas Gallagher](https://github.com/necolas/).
+Have a bug or a feature request? [Please open a new issue](https://github.com/twbs/bootstrap/issues). Before opening any issue, please search for existing issues and read the [Issue Guidelines](https://github.com/necolas/issue-guidelines), written by [Nicolas Gallagher](https://github.com/necolas/).
 
-=======
-1. If necessary, [install Jekyll](http://jekyllrb.com/docs/installation) (requires v1.x).
-2. From the `/bootstrap` directory, run `jekyll serve` in the command line.
-3. Open [http://localhost:9001](http://localhost:9001) in your browser, and voilà.
 
 
 ## Documentation
 
-Bootstrap's docs are built using [Jekyll](http://jekyllrb.com) and hosted on GitHub Pages at [http://getbootstrap.com](http://getbootstrap.com). To view our docs locally, you'll need to [install Jekyll](https://github.com/mojombo/jekyll/wiki/install) to run a local server.
+Bootstrap's documentation, included in this repo in the root directory, is built with [Jekyll](http://jekyllrb.com) and publicly hosted on GitHub Pages at [http://getbootstrap.com](http://getbootstrap.com). The docs may also be run locally.
 
-Documentation for [previous versions](https://github.com/twitter/bootstrap/tags) is also available via tags.
+### Running documentation locally
+
+1. If necessary, [install Jekyll](http://jekyllrb.com/docs/installation) (requires v1.x).
+2. From the `/bootstrap` directory, run `jekyll serve` in the command line.
+3. Open [http://localhost:9001](http://localhost:9001) in your browser, and voilà.
+
+Learn more about using Jekyll by reading their [documentation](http://jekyllrb.com/docs/home/).
+
+### Documentation for previous releases
+
+Documentation for v2.3.2 has been made available for the time being at [http://getbootstrap.com/2.3.2/docs](http://getbootstrap.com/2.3.2/docs) while folks transition to Bootstrap 3.
+
+[Previous releases](https://github.com/twbs/bootstrap/releases) and their documentation are also available for download.
 
 
 
@@ -56,13 +55,17 @@ $ npm install -g grunt-cli
 $ npm install
 ```
 
-When completed, you'll be able to run the various grunt commands provided:
+When completed, you'll be able to run the various grunt commands provided.
+
+**Unfamiliar with `npm`? Don't have node installed?** That's a-okay. npm stands for [node packaged modules](http://npmjs.org/) and is a way to manage development dependencies through node.js. [Download and install node.js](http://nodejs.org/download/) before proceeding.
+
+### Available grunt commands
 
 #### Build - `grunt`
 `grunt` runs the Recess compiler to rebuild the `/less` files and compile the docs. **Requires recess and uglify-js.**
 
-#### Compile CSS, JS, and fonts - `grunt bootstrap`
-`grunt bootstrap` creates the `/bootstrap` directory with compiled files. **Requires recess and uglify-js.**
+#### Compile CSS, and JavaScript - `grunt dist`
+`grunt dist` creates the `/dist` directory with compiled files. **Requires recess and uglify-js.**
 
 #### Tests - `grunt test`
 Runs jshint and qunit tests headlessly in [phantomjs](http://code.google.com/p/phantomjs/) (used for ci). **Requires phantomjs.**
@@ -70,15 +73,19 @@ Runs jshint and qunit tests headlessly in [phantomjs](http://code.google.com/p/p
 #### Watch - `grunt watch`
 This is a convenience method for watching just Less files and automatically building them whenever you save.
 
-Should you encounter problems with installing dependencies or running the grunt commands, uninstall any previous versions (global and local) you may have installed, and then rerun `npm install`.
+### Troubleshooting dependencies
+
+Should you encounter problems with installing dependencies or running grunt commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
 
 
 
 ## Contributing
 
-Please submit all pull requests against *-wip branches. If your pull request contains JavaScript patches or features, you must include relevant unit tests. All HTML and CSS should conform to the [Code Guide](http://github.com/mdo/code-guide), maintained by [Mark Otto](http://github.com/mdo).
+Please read through our guidelines for contributing to Bootstrap. Included are directions for opening issues, coding standards, and notes on development.
 
-Editor preferences are also available in the [editor config](.editorconfig) for easy application in common text editors. Read more and download plugins at [http://editorconfig.com](http://editorconfig.com).
+More over, if your pull request contains JavaScript patches or features, you must include relevant unit tests. All HTML and CSS should conform to the [Code Guide](http://github.com/mdo/code-guide), maintained by [Mark Otto](http://github.com/mdo).
+
+Editor preferences are available in the [editor config](.editorconfig) for easy use in common text editors. Read more and download plugins at [http://editorconfig.org](http://editorconfig.org).
 
 
 
@@ -87,7 +94,7 @@ Editor preferences are also available in the [editor config](.editorconfig) for 
 Keep track of development and community news.
 
 * Follow [@twbootstrap on Twitter](http://twitter.com/twbootstrap).
-* Read and subscribe to the [The Official Twitter Bootstrap Blog](http://blog.getbootstrap.com).
+* Read and subscribe to the [The Official Bootstrap Blog](http://blog.getbootstrap.com).
 * Have a question that's not a feature request or bug report? [Ask on the mailing list.](http://groups.google.com/group/twitter-bootstrap)
 * Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##twitter-bootstrap` channel.
 
