@@ -19,7 +19,7 @@ module.exports = function(grunt) {
                 stripBanners: false
             },
             bootstrap: {
-                src: ['js/*.js'],
+                src: ['js/transition.js', 'js/alert.js', 'js/button.js', 'js/carousel.js', 'js/collapse.js', 'js/dropdown.js', 'js/modal.js', 'js/tooltip.js', 'js/popover.js', 'js/scrollspy.js', 'js/tab.js', 'js/affix.js'],
                 dest: 'dist/js/<%= pkg.name %>.js'
             }
         },
