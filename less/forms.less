@@ -3,12 +3,9 @@
 // --------------------------------------------------
 
 
-// Non-controls
-// -------------------------
-
-form {
-  margin: 0;
-}
+// Normalize non-controls
+//
+// Restyle and baseline non-control form elements.
 
 fieldset {
   padding: 0;
@@ -34,84 +31,12 @@ label {
   font-weight: bold;
 }
 
-// Form controls
-// -------------------------
 
-// Shared size and type resets
-select,
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"] {
-  display: block;
-  height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
-  padding: @padding-base-vertical @padding-base-horizontal;
-  font-size: @font-size-base;
-  line-height: @line-height-base;
-  color: @gray;
-  vertical-align: middle;
-  background-color: @input-bg;
-  border: 1px solid @input-border;
-  border-radius: @input-border-radius;
-  .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
-  .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
-
-  &:focus {
-    border-color: rgba(82,168,236,.8);
-    outline: 0;
-    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)");
-  }
-
-  // Disabled and read-only inputs
-  // Note: HTML5 says that inputs under a fieldset > legend:first-child won't be
-  //   disabled if the fieldset is disabled. Due to implementation difficulty,
-  //   we don't honor that edge case; we style them as disabled anyway.
-  &[disabled],
-  &[readonly],
-  fieldset[disabled] & {
-    cursor: not-allowed;
-    background-color: @input-bg-disabled;
-  }
-}
-
-// Reset appearance properties for textual inputs and textarea
-// Can't be on input[type=*] selectors or it's too specific
-input,
-select,
-textarea {
-  width: 100%;
-}
-
-// Reset width of input images, buttons, radios, checkboxes
-input[type="file"],
-input[type="image"],
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
-input[type="radio"],
-input[type="checkbox"] {
-  width: auto; // Override of generic input selector
-}
+// Normalize form controls
 
 // Override content-box in Normalize (* isn't specific enough)
 input[type="search"] {
   .box-sizing(border-box);
-}
-
-// Reset height since textareas have rows
-textarea {
-  height: auto;
 }
 
 // Position radios and checkboxes better
@@ -159,19 +84,89 @@ input[type="number"] {
 
 
 // Placeholder
-// -------------------------
-
-// Placeholder text gets special styles because when browsers invalidate entire lines if it doesn't understand a selector
-input,
-textarea {
+//
+// Placeholder text gets special styles because when browsers invalidate entire
+// lines if it doesn't understand a selector/
+.form-control {
   .placeholder();
 }
 
 
-// CHECKBOXES & RADIOS
-// -------------------
+// Common form controls
+//
+// Shared size and type resets for form controls. Apply `.form-control` to any
+// of the following form controls:
+//
+// select
+// textarea
+// input[type="text"]
+// input[type="password"]
+// input[type="datetime"]
+// input[type="datetime-local"]
+// input[type="date"]
+// input[type="month"]
+// input[type="time"]
+// input[type="week"]
+// input[type="number"]
+// input[type="email"]
+// input[type="url"]
+// input[type="search"]
+// input[type="tel"]
+// input[type="color"]
 
-// Indent the labels to position radios/checkboxes as hanging
+.form-control {
+  display: block;
+  width: 100%;
+  height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  padding: @padding-base-vertical @padding-base-horizontal;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  color: @gray;
+  vertical-align: middle;
+  background-color: @input-bg;
+  border: 1px solid @input-border;
+  border-radius: @input-border-radius;
+  .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+  .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+
+  &:focus {
+    border-color: rgba(82,168,236,.8);
+    outline: 0;
+    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)");
+  }
+
+  // Disabled and read-only inputs
+  // Note: HTML5 says that inputs under a fieldset > legend:first-child won't be
+  //   disabled if the fieldset is disabled. Due to implementation difficulty,
+  //   we don't honor that edge case; we style them as disabled anyway.
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    background-color: @input-bg-disabled;
+  }
+
+  // Reset height for `textarea`s
+  textarea& {
+    height: auto;
+  }
+}
+
+
+// Form groups
+//
+// Designed to help with the organization and spacing of vertical forms. For
+// horizontal forms, use the predefined grid classes.
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+
+// Checkboxes and radios
+//
+// Indent the labels to position radios/checkboxes as hanging controls.
+
 .radio,
 .checkbox {
   display: block;
@@ -217,8 +212,10 @@ textarea {
 
 
 
-// INPUT SIZES
-// -----------
+// Form control sizing
+//
+// Relative text size, padding, and border-radii changes for form controls. For
+// horizontal sizing, wrap controls in the predefined grid classes.
 
 select,
 textarea,
@@ -261,28 +258,28 @@ select {
 }
 
 
-
-// FORM FIELD FEEDBACK STATES
-// --------------------------
+// Form control feedback states
+//
+// Apply contextual and semantic states to individual form controls.
 
 // Warning
 .has-warning {
-  .form-field-validation(@state-warning-text, @state-warning-text, @state-warning-bg);
+  .form-control-validation(@state-warning-text, @state-warning-text, @state-warning-bg);
 }
 // Error
 .has-error {
-  .form-field-validation(@state-danger-text, @state-danger-text, @state-danger-bg);
+  .form-control-validation(@state-danger-text, @state-danger-text, @state-danger-bg);
 }
 // Success
 .has-success {
-  .form-field-validation(@state-success-text, @state-success-text, @state-success-bg);
+  .form-control-validation(@state-success-text, @state-success-text, @state-success-bg);
 }
 
 
-
-
-// HELP TEXT
-// ---------
+// Help text
+//
+// Apply to any element you wish to create light text for placement immediately
+// below a form control. Use for general help, formatting, or instructional text.
 
 .help-block {
   display: block; // account for any element using help-block

@@ -1162,17 +1162,23 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 
     <h2 id="forms-example">Basic example</h2>
-    <p>Individual form controls automatically receive some global styling. All textual <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> elements are set to <code>width: 100%;</code> by default.</p>
+    <p>Individual form controls automatically receive some global styling. All textual <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> elements are set to <code>width: 100%;</code> by default. Wrap labels and controls in <code>.form-group</code> for optimum spacing.</p>
     <form class="bs-example">
       <fieldset>
         <legend>Legend</legend>
-        <label for="exampleInputEmail">Email address</label>
-        <input type="text" id="exampleInputEmail" placeholder="Enter email">
-        <label for="exampleInputPassword">Password</label>
-        <input type="password" id="exampleInputPassword" placeholder="Password">
-        <label for="exampleInputFile">File input</label>
-        <input type="file" id="exampleInputFile">
-        <p class="help-block">Example block-level help text here.</p>
+        <div class="form-group">
+          <label for="exampleInputEmail">Email address</label>
+          <input type="text" class="form-control" id="exampleInputEmail" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputFile">File input</label>
+          <input type="file" id="exampleInputFile">
+          <p class="help-block">Example block-level help text here.</p>
+        </div>
         <div class="checkbox">
           <label>
             <input type="checkbox"> Check me out
@@ -1185,9 +1191,19 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <form>
   <fieldset>
     <legend>Legend</legend>
-    <label for="exampleInput">Label name</label>
-    <input type="text" id="exampleInput" placeholder="Type something…">
-    <p class="help-block">Example block-level help text here.</p>
+    <div class="form-group">
+      <label for="exampleInputEmail">Email address</label>
+      <input type="text" class="form-control" id="exampleInputEmail" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputFile">File input</label>
+      <input type="file" id="exampleInputFile">
+      <p class="help-block">Example block-level help text here.</p>
+    </div>
     <div class="checkbox">
       <label>
         <input type="checkbox"> Check me out
@@ -1209,8 +1225,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <p>Inputs, selects, and textareas are 100% wide by default in Bootstrap. To use the inline form, you'll have to set a width on the form controls used within.</p>
     </div>
     <form class="bs-example form-inline">
-      <input type="text" placeholder="Email">
-      <input type="password" placeholder="Password">
+      <input type="text" class="form-control" placeholder="Email">
+      <input type="password" class="form-control" placeholder="Password">
       <div class="checkbox">
         <label>
           <input type="checkbox"> Remember me
@@ -1220,8 +1236,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </form><!-- /example -->
 {% highlight html %}
 <form class="form-inline">
-  <input type="text" placeholder="Email">
-  <input type="password" placeholder="Password">
+  <input type="text" class="form-control" placeholder="Email">
+  <input type="password" class="form-control" placeholder="Password">
   <div class="checkbox">
     <label>
       <input type="checkbox"> Remember me
@@ -1237,13 +1253,13 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <div class="row">
         <label for="inputEmail" class="col-lg-2 control-label">Email</label>
         <div class="col-lg-10">
-          <input type="text" id="inputEmail" placeholder="Email">
+          <input type="text" class="form-control" id="inputEmail" placeholder="Email">
         </div>
       </div>
       <div class="row">
         <label for="inputPassword" class="col-lg-2 control-label">Password</label>
         <div class="col-lg-10">
-          <input type="password" id="inputPassword" placeholder="Password">
+          <input type="password" class="form-control" id="inputPassword" placeholder="Password">
           <div class="checkbox">
             <label>
               <input type="checkbox"> Remember me
@@ -1258,7 +1274,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% highlight html %}
 <form class="form-horizontal">
   <div class="row">
-    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+    <label for="inputEmail" class="form-control" class="col-lg-2 control-label">Email</label>
     <div class="col-lg-10">
       <input type="text" id="inputEmail" placeholder="Email">
     </div>
@@ -1266,7 +1282,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <div class="row">
     <label for="inputPassword" class="col-lg-2 control-label">Password</label>
     <div class="col-lg-10">
-      <input type="password" id="inputPassword" placeholder="Password">
+      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
       <div class="checkbox">
         <label>
           <input type="checkbox"> Remember me
@@ -1291,16 +1307,16 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <p>Inputs will only be fully styled if their <code>type</code> is properly declared.</p>
     </div>
     <form class="bs-example">
-      <input type="text" placeholder="Text input">
+      <input type="text" class="form-control" placeholder="Text input">
     </form>
 {% highlight html %}
-<input type="text" placeholder="Text input">
+<input type="text" class="form-control" placeholder="Text input">
 {% endhighlight %}
 
     <h3>Textarea</h3>
     <p>Form control which supports multiple lines of text. Change <code>rows</code> attribute as necessary.</p>
     <form class="bs-example">
-      <textarea rows="3"></textarea>
+      <textarea class="form-control" rows="3"></textarea>
     </form>
 {% highlight html %}
 <textarea rows="3"></textarea>
@@ -1378,7 +1394,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h3>Selects</h3>
     <p>Use the default option or specify a <code>multiple="multiple"</code> to show multiple options at once.</p>
     <form class="bs-example">
-      <select>
+      <select class="form-control">
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -1386,7 +1402,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <option>5</option>
       </select>
       <br>
-      <select multiple="multiple">
+      <select multiple="multiple" class="form-control">
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -1395,7 +1411,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </select>
     </form>
 {% highlight html %}
-<select>
+<select class="form-control">
   <option>1</option>
   <option>2</option>
   <option>3</option>
@@ -1403,7 +1419,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <option>5</option>
 </select>
 
-<select multiple="multiple">
+<select multiple="multiple" class="form-control">
   <option>1</option>
   <option>2</option>
   <option>3</option>
@@ -1420,19 +1436,19 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h3 id="forms-input-focus">Input focus</h3>
     <p>We remove the default <code>outline</code> styles on some form controls and apply a <code>box-shadow</code> in its place for <code>:focus</code>.</p>
     <form class="bs-example">
-      <input class="focused" id="focusedInput" type="text" value="This is focused...">
+      <input class="form-control" id="focusedInput" type="text" value="This is focused...">
     </form>
 {% highlight html %}
-<input id="focusedInput" type="text" value="This is focused...">
+<input class="form-control" id="focusedInput" type="text" value="This is focused...">
 {% endhighlight %}
 
     <h3 id="forms-disabled-inputs">Disabled inputs</h3>
     <p>Add the <code>disabled</code> attribute on an input to prevent user input and trigger a slightly different look.</p>
     <form class="bs-example">
-      <input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here…" disabled>
+      <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here…" disabled>
     </form>
 {% highlight html %}
-<input id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
 {% endhighlight %}
 
     <h3 id="forms-disabled-fieldsets">Disabled fieldsets</h3>
@@ -1450,8 +1466,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <form class="bs-example form-inline">
       <fieldset disabled>
-        <input type="text" placeholder="Disabled input">
-        <select>
+        <input type="text" class="form-control" placeholder="Disabled input">
+        <select class="form-control">
           <option>Disabled select</option>
         </select>
         <div class="checkbox">
@@ -1465,14 +1481,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% highlight html %}
 <form class="form-inline">
   <fieldset disabled>
-    <div>
-      <input type="text" placeholder="Disabled input">
-    </div>
-    <div>
-      <select>
-        <option>Disabled select</option>
-      </select>
-    </div>
+    <input type="text" class="form-control" placeholder="Disabled input">
+    <select class="form-control">
+      <option>Disabled select</option>
+    </select>
     <div class="checkbox">
       <label>
         <input type="checkbox"> Can't check this
@@ -1484,51 +1496,34 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3 id="forms-validation">Validation states</h3>
-    <p>Bootstrap includes validation styles for error, warning, info, and success messages. To use:</p>
-    <ul>
-      <li>Add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element</li>
-      <li>Add .input-with-feedback to the field(s) in question</li>
-    </ul>
-    <p>Validation styles are applied on a per-input basis. With horizontal forms, the <code>&lt;label class="control-label"&gt;</code> will always be styled.</p>
+    <p>Bootstrap includes validation styles for error, warning, and success states on from controls. To use, add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element. Any <code>.control-label</code>, <code>.form-control</code>, and <code>.help-block</code> within that element will receive the validation styles.</li>
 
-    <form class="bs-example form-horizontal">
-      <div class="has-warning">
+    <form class="bs-example">
+      <div class="form-group has-warning">
         <label class="control-label" for="inputWarning">Input with warning</label>
-        <div class="controls">
-          <input type="text" class="input-with-feedback" id="inputWarning">
-        </div>
+        <input type="text" class="form-control" id="inputWarning">
       </div>
-      <div class="has-error">
+      <div class="form-group has-error">
         <label class="control-label" for="inputError">Input with error</label>
-        <div class="controls">
-          <input type="text" class="input-with-feedback" id="inputError">
-        </div>
+        <input type="text" class="form-control" id="inputError">
       </div>
-      <div class="has-success">
+      <div class="form-group has-success">
         <label class="control-label" for="inputSuccess">Input with success</label>
-        <div class="controls">
-          <input type="text" class="input-with-feedback" id="inputSuccess">
-        </div>
+        <input type="text" class="form-control" id="inputSuccess">
       </div>
     </form>
 {% highlight html %}
-<div class="has-warning">
+<div class="form-group has-warning">
   <label class="control-label" for="inputWarning">Input with warning</label>
-  <div class="controls">
-    <input type="text" class="input-with-feedback" id="inputWarning">
-  </div>
+  <input type="text" class="form-control" id="inputWarning">
 </div>
-<div class="has-error">
+<div class="form-group has-error">
   <label class="control-label" for="inputError">Input with error</label>
-  <div class="controls">
-    <input type="text" class="input-with-feedback" id="inputError">
-  </div>
+  <input type="text" class="form-control" id="inputError">
 </div>
-<div class="has-success">
+<div class="form-group has-success">
   <label class="control-label" for="inputSuccess">Input with success</label>
-  <div class="controls">
-    <input type="text" class="input-with-feedback" id="inputSuccess">
-  </div>
+  <input type="text" class="form-control" id="inputSuccess">
 </div>
 {% endhighlight %}
 
@@ -1552,34 +1547,34 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <form class="bs-example bs-example-form">
       <div class="input-group col-lg-9">
         <span class="input-group-addon">@</span>
-        <input type="text" placeholder="Username">
+        <input type="text" class="form-control" placeholder="Username">
       </div>
       <br>
       <div class="input-group col-lg-6">
-        <input type="text">
+        <input type="text" class="form-control">
         <span class="input-group-addon">.00</span>
       </div>
       <br>
       <div class="input-group col-lg-3">
         <span class="input-group-addon">$</span>
-        <input type="text">
+        <input type="text" class="form-control">
         <span class="input-group-addon">.00</span>
       </div>
     </form>
 {% highlight html %}
 <div class="input-group col-lg-9">
   <span class="input-group-addon">@</span>
-  <input type="text" placeholder="Username">
+  <input type="text" class="form-control" placeholder="Username">
 </div>
 
 <div class="input-group col-lg-6">
-  <input type="text">
+  <input type="text" class="form-control">
   <span class="input-group-addon">.00</span>
 </div>
 
 <div class="input-group col-lg-3">
   <span class="input-group-addon">$</span>
-  <input type="text">
+  <input type="text" class="form-control">
   <span class="input-group-addon">.00</span>
 </div>
 {% endhighlight %}
@@ -1589,33 +1584,33 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <form class="bs-example bs-example-form">
       <div class="input-group col-lg-9">
         <span class="input-group-addon input-large">@</span>
-        <input type="text" class="input-large" placeholder="Username">
+        <input type="text" class="form-control input-large" placeholder="Username">
       </div>
       <br>
       <div class="input-group col-lg-9">
         <span class="input-group-addon">@</span>
-        <input type="text" placeholder="Username">
+        <input type="text" class="form-control" placeholder="Username">
       </div>
       <br>
       <div class="input-group col-lg-9">
         <span class="input-group-addon input-small">@</span>
-        <input type="text" class="input-small" placeholder="Username">
+        <input type="text" class="form-control input-small" placeholder="Username">
       </div>
     </form>
 {% highlight html %}
 <div class="input-group col-lg-9">
   <span class="input-group-addon input-large">@</span>
-  <input type="text" class="input-large" placeholder="Username">
+  <input type="text" class="form-control input-large" placeholder="Username">
 </div>
 
 <div class="input-group col-lg-9">
   <span class="input-group-addon">@</span>
-  <input type="text" placeholder="Username">
+  <input type="text" class="form-control" placeholder="Username">
 </div>
 
 <div class="input-group col-lg-9">
   <span class="input-group-addon input-small">@</span>
-  <input type="text" class="input-small" placeholder="Username">
+  <input type="text" class="form-control input-small" placeholder="Username">
 </div>
 {% endhighlight %}
 
@@ -1626,11 +1621,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <span class="input-group-btn">
           <button class="btn btn-default" type="button">Go!</button>
         </span>
-        <input type="text">
+        <input type="text" class="form-control">
       </div>
       <br>
       <div class="input-group col-lg-7">
-        <input type="text">
+        <input type="text" class="form-control">
         <span class="input-group-btn">
           <button class="btn btn-default" type="button">Go!</button>
         </span>
@@ -1641,11 +1636,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <span class="input-group-btn">
     <button class="btn btn-default" type="button">Go!</button>
   </span>
-  <input type="text">
+  <input type="text" class="form-control">
 </div>
 
 <div class="input-group col-lg-7">
-  <input type="text">
+  <input type="text" class="form-control">
   <span class="input-group-btn">
     <button class="btn btn-default" type="button">Go!</button>
   </span>
@@ -1666,11 +1661,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             <li><a href="#">Separated link</a></li>
           </ul>
         </div><!-- /btn-group -->
-        <input type="text">
+        <input type="text" class="form-control">
       </div><!-- /input-group -->
       <br>
       <div class="input-group col-lg-7">
-        <input type="text">
+        <input type="text" class="form-control">
         <div class="input-group-btn">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
           <ul class="dropdown-menu">
@@ -1695,11 +1690,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <li><a href="#">Separated link</a></li>
     </ul>
   </div><!-- /btn-group -->
-  <input type="text">
+  <input type="text" class="form-control">
 </div><!-- /input-group -->
 
 <div class="input-group col-lg-7">
-  <input type="text">
+  <input type="text" class="form-control">
   <div class="input-group-btn">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
     <ul class="dropdown-menu">
@@ -1729,13 +1724,13 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             <li><a href="#">Separated link</a></li>
           </ul>
         </div>
-        <input type="text">
+        <input type="text" class="form-control">
       </div>
 
       <br>
 
       <div class="input-group col-lg-7">
-        <input type="text">
+        <input type="text" class="form-control">
         <div class="input-group-btn">
           <button type="button" class="btn btn-default" tabindex="-1">Action</button>
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
@@ -1756,11 +1751,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <div class="input-group-btn">
     <!-- Button and dropdown menu -->
   </div>
-  <input type="text">
+  <input type="text" class="form-control">
 </div>
 
 <div class="input-group col-lg-7">
-  <input type="text">
+  <input type="text" class="form-control">
   <div class="input-group-btn btn-group">
     <!-- Button and dropdown menu -->
   </div>
@@ -1774,29 +1769,29 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Create larger or smaller form controls that match button sizes.</p>
     <form class="bs-example bs-example-control-sizing">
       <div class="controls docs-input-sizes">
-        <input class="input-large" type="text" placeholder=".input-large">
-        <input type="text" placeholder="Default input">
-        <input class="input-small" type="text" placeholder=".input-small">
+        <input class="form-control input-large" type="text" placeholder=".input-large">
+        <input type="text" class="form-control" placeholder="Default input">
+        <input class="form-control input-small" type="text" placeholder=".input-small">
 
-        <select class="input-large">
+        <select class="form-control input-large">
           <option value="">.input-large</option>
         </select>
-        <select>
+        <select class="form-control">
           <option value="">Default select</option>
         </select>
-        <select class="input-small">
+        <select class="form-control input-small">
           <option value="">.input-small</option>
         </select>
       </div>
     </form>
 {% highlight html %}
-<input class="input-large" type="text" placeholder=".input-large">
-<input type="text" placeholder="Default input">
-<input class="input-small" type="text" placeholder=".input-small">
+<input class="form-control input-large" type="text" placeholder=".input-large">
+<input class="form-control"type="text" placeholder="Default input">
+<input class="form-control input-small" type="text" placeholder=".input-small">
 
-<select class="input-large">...</select>
-<select>...</select>
-<select class="input-small">...</select>
+<select class="form-control input-large">...</select>
+<select class="form-control">...</select>
+<select class="form-control input-small">...</select>
 {% endhighlight %}
 
     <h4>Column sizing</h4>
@@ -1804,26 +1799,26 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <form class="bs-example" style="padding-bottom: 15px;">
       <div class="row">
         <div class="col-lg-2">
-          <input type="text" placeholder=".col-lg-2">
+          <input type="text" class="form-control" placeholder=".col-lg-2">
         </div>
         <div class="col-lg-3">
-          <input type="text" placeholder=".col-lg-3">
+          <input type="text" class="form-control" placeholder=".col-lg-3">
         </div>
         <div class="col-lg-4">
-          <input type="text" placeholder=".col-lg-4">
+          <input type="text" class="form-control" placeholder=".col-lg-4">
         </div>
       </div>
     </form>
 {% highlight html %}
 <div class="row">
   <div class="col-lg-2">
-    <input type="text" placeholder=".col-lg-2">
+    <input type="text" class="form-control" placeholder=".col-lg-2">
   </div>
   <div class="col-lg-3">
-    <input type="text" placeholder=".col-lg-3">
+    <input type="text" class="form-control" placeholder=".col-lg-3">
   </div>
   <div class="col-lg-4">
-    <input type="text" placeholder=".col-lg-4">
+    <input type="text" class="form-control" placeholder=".col-lg-4">
   </div>
 </div>
 {% endhighlight %}
@@ -1831,7 +1826,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h3 id="forms-help-text">Help text</h3>
     <p>Block level help text for form controls.</p>
     <form class="bs-example">
-      <input type="text">
+      <input type="text" class="form-control">
       <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
     </form>
 {% highlight html %}
