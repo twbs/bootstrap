@@ -1,5 +1,5 @@
 /* ===================================================
- * bootstrap-transition.js v2.3.2
+ * bootstrap-transition.js v2.3.3
  * http://getbootstrap.com/2.3.3/javascript.html#transitions
  * ===================================================
  * Copyright 2013 Twitter, Inc.

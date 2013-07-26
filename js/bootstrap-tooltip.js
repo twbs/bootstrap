@@ -1,5 +1,5 @@
 /* ===========================================================
- * bootstrap-tooltip.js v2.3.2
+ * bootstrap-tooltip.js v2.3.3
  * http://getbootstrap.com/2.3.3/javascript.html#tooltips
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ===========================================================
