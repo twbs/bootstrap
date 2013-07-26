@@ -31,7 +31,8 @@ Bootstrap's documentation, included in this repo in the root directory, is built
 ### Running documentation locally
 
 1. If necessary, [install Jekyll](http://jekyllrb.com/docs/installation) (requires v1.x).
-2. From the `/bootstrap` directory, run `jekyll serve` in the command line. (on Windows, run `chcp 65001` before `jekyll serve`)
+2. From the root `/bootstrap` directory, run `jekyll serve` in the command line.
+  - **Windows users:** run `chcp 65001` first to change the command prompt's encoding (character page) to UTF-8 so Jekyll runs without errors.
 3. Open [http://localhost:9001](http://localhost:9001) in your browser, and voilà.
 
 Learn more about using Jekyll by reading their [documentation](http://jekyllrb.com/docs/home/).
