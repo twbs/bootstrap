@@ -26,6 +26,13 @@ body {
   border-color: #b94a48;
 }
 
+/* Temp CSS until RC2 */
+.bs-customize-placeholder {
+  margin-bottom: -100px;
+  padding: 80px 30px;
+  text-align: center;
+  background-color: #f5f5f5;
+}
 
 
 /* Top nav and header
