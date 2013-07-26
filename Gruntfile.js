@@ -9,13 +9,14 @@ module.exports = function(grunt) {
                 '* Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
                 '* <%= _.pluck(pkg.licenses, "url").join(", ") %>\n' +
                 '*/\n',
+        jqueryCheck: 'if (!jQuery) { throw new Error(\"Bootstrap requires jQuery\") }\n\n',
         // Task configuration.
         clean: {
             dist: ['dist']
         },
         concat: {
             options: {
-                banner: '<%= banner %>',
+                banner: '<%= banner %><%= jqueryCheck %>',
                 stripBanners: false
             },
             bootstrap: {
