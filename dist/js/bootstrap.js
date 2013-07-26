@@ -1,4 +1,5 @@
-if (!jQuery) throw new Error("Bootstrap requires jQuery")
+if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
+
 
 /* ========================================================================
  * Bootstrap: transition.js v3.0.0
