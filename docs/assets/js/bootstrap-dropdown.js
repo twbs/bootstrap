@@ -1,6 +1,6 @@
 /* ============================================================
- * bootstrap-dropdown.js v2.3.2
- * http://twitter.github.com/bootstrap/javascript.html#dropdowns
+ * bootstrap-dropdown.js v2.3.3
+ * http://twbs.github.com/bootstrap/javascript.html#dropdowns
  * ============================================================
  * Copyright 2012 Twitter, Inc.
  *
