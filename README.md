@@ -64,7 +64,7 @@ When completed, you'll be able to run the various grunt commands provided.
 #### Build - `grunt`
 `grunt` runs the Recess compiler to rebuild the `/less` files and compile the docs. **Requires recess and uglify-js.**
 
-#### Compile CSS, JS, and fonts - `grunt bootstrap`
+#### Compile CSS, and JavaScript - `grunt bootstrap`
 `grunt bootstrap` creates the `/bootstrap` directory with compiled files. **Requires recess and uglify-js.**
 
 #### Tests - `grunt test`
