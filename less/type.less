@@ -27,7 +27,7 @@ small   { font-size: 85%; }
 cite    { font-style: normal; }
 
 // Contextual emphasis
-.text-muted          { color: @gray-light; }
+.text-muted          { color: @text-muted; }
 .text-primary        { color: @brand-primary; }
 .text-warning        { color: @state-warning-text; }
 .text-danger         { color: @state-danger-text; }
@@ -51,7 +51,7 @@ h1, h2, h3, h4, h5, h6,
   small {
     font-weight: normal;
     line-height: 1;
-    color: @gray-light;
+    color: @headings-small-color;
   }
 }
 
@@ -87,7 +87,7 @@ h4 small, .h4 small { font-size: @font-size-base; }
 .page-header {
   padding-bottom: ((@line-height-computed / 2) - 1);
   margin: (@line-height-computed * 2) 0 @line-height-computed;
-  border-bottom: 1px solid @gray-lighter;
+  border-bottom: 1px solid @page-header-border-color;
 }
 
 
@@ -160,7 +160,7 @@ abbr[title],
 // Added data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
 abbr[data-original-title] {
   cursor: help;
-  border-bottom: 1px dotted @gray-light;
+  border-bottom: 1px dotted @abbr-border-color;
 }
 abbr.initialism {
   font-size: 90%;
@@ -171,7 +171,7 @@ abbr.initialism {
 blockquote {
   padding: (@line-height-computed / 2) @line-height-computed;
   margin: 0 0 @line-height-computed;
-  border-left: 5px solid @gray-lighter;
+  border-left: 5px solid @blockquote-border-color;
   p {
     font-size: (@font-size-base * 1.25);
     font-weight: 300;
@@ -183,7 +183,7 @@ blockquote {
   small {
     display: block;
     line-height: @line-height-base;
-    color: @gray-light;
+    color: @blockquote-small-color;
     &:before {
       content: '\2014 \00A0';// EM DASH, NBSP
     }
@@ -194,7 +194,7 @@ blockquote {
     float: right;
     padding-right: 15px;
     padding-left: 0;
-    border-right: 5px solid @gray-lighter;
+    border-right: 5px solid @blockquote-border-color;
     border-left: 0;
     p,
     small {
