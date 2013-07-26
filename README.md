@@ -46,33 +46,36 @@ Documentation for v2.3.2 has been made available for the time being at [http://g
 
 ## Compiling CSS and JavaScript
 
-Bootstrap includes a [makefile](Makefile) with convenient methods for working with the framework. Before getting started, install [the necessary local dependencies](package.json):
+Bootstrap uses [GruntJS](http://gruntjs.com/) with convenient methods for working with the framework. Before getting started, be sure to have `grunt-cli` installed globally (`npm install -g grunt-cli`) and then install [the necessary local dependencies](package.json):
 
 ```
+# if grunt-cli isn't already installed
+$ npm install -g grunt-cli
+
 $ npm install
 ```
 
-When completed, you'll be able to run the various make commands provided.
+When completed, you'll be able to run the various grunt commands provided.
 
 **Unfamiliar with `npm`? Don't have node installed?** That's a-okay. npm stands for [node packaged modules](http://npmjs.org/) and is a way to manage development dependencies through node.js. [Download and install node.js](http://nodejs.org/download/) before proceeding.
 
-### Available makefile commands
+### Available grunt commands
 
-#### Build - `make`
-`make` runs the Recess compiler to rebuild the `/less` files and compile the docs. **Requires recess and uglify-js.**
+#### Build - `grunt`
+`grunt` runs the Recess compiler to rebuild the `/less` files and compile the docs. **Requires recess and uglify-js.**
 
-#### Compile CSS, JS, and fonts - `make bootstrap`
-`make bootstrap` creates the `/bootstrap` directory with compiled files. **Requires recess and uglify-js.**
+#### Compile CSS, JS, and fonts - `grunt bootstrap`
+`grunt bootstrap` creates the `/bootstrap` directory with compiled files. **Requires recess and uglify-js.**
 
-#### Tests - `make test`
+#### Tests - `grunt test`
 Runs jshint and qunit tests headlessly in [phantomjs](http://code.google.com/p/phantomjs/) (used for ci). **Requires phantomjs.**
 
-#### Watch - `make watch`
-This is a convenience method for watching just Less files and automatically building them whenever you save. **Requires the watchr gem.**
+#### Watch - `grunt watch`
+This is a convenience method for watching just Less files and automatically building them whenever you save.
 
 ### Troubleshooting dependencies
 
-Should you encounter problems with installing dependencies or running makefile commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
+Should you encounter problems with installing dependencies or running grunt commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
 
 
 
