@@ -27,7 +27,7 @@ build:
 	@cp js/tests/vendor/jquery.js assets/js/
 	@echo "            ${CHECK}"
 	@printf "Compiling and minifying JavaScript..."
-	@cat js/transition.js js/alert.js js/button.js js/carousel.js js/collapse.js js/dropdown.js js/modal.js js/tooltip.js js/popover.js js/scrollspy.js js/tab.js js/affix.js > dist/js/bootstrap.js
+	@echo "if (!jQuery) throw new Error(\"Bootstrap requires jQuery\")\n" | cat - js/transition.js js/alert.js js/button.js js/carousel.js js/collapse.js js/dropdown.js js/modal.js js/tooltip.js js/popover.js js/scrollspy.js js/tab.js js/affix.js > dist/js/bootstrap.js
 	@uglifyjs -nc dist/js/bootstrap.js > dist/js/bootstrap.min.tmp.js
 	@echo "/**\n* Bootstrap.js v3.0.0 by @fat & @mdo\n* Copyright 2013 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > dist/js/copyright.js
 	@cat dist/js/copyright.js dist/js/bootstrap.min.tmp.js > dist/js/bootstrap.min.js
