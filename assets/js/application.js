@@ -13,12 +13,23 @@
       e.preventDefault()
     })
 
+
     // back to top
     setTimeout(function () {
-      $('.bs-sidebar').affix({
+      var $sideBar = $('.bs-sidebar')
+
+      $sideBar.affix({
         offset: {
-          top: function () { return $window.width() <= 980 ? 290 : 210 }
-        , bottom: 270
+          top: function () {
+            var offsetTop      = $sideBar.offset().top
+            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
+            var navOuterHeight = $('.bs-docs-nav').height()
+
+            return (this.top = offsetTop - navOuterHeight - sideBarMargin)
+          }
+        , bottom: function () {
+            return (this.bottom = $('.bs-footer').outerHeight(true))
+          }
         }
       })
     }, 100)
