@@ -1166,7 +1166,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 
     <h2 id="forms-example">Basic example</h2>
-    <p>Individual form controls automatically receive some global styling. All textual <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> elements are set to <code>width: 100%;</code> by default. Wrap labels and controls in <code>.form-group</code> for optimum spacing.</p>
+    <p>Individual form controls automatically receive some global styling. All textual <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> elements with <code>.form-control</code> are set to <code>width: 100%;</code> by default. Wrap labels and controls in <code>.form-group</code> for optimum spacing.</p>
     <form class="bs-example">
       <fieldset>
         <legend>Legend</legend>
@@ -1252,15 +1252,15 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3 id="forms-horizontal">Horizontal form</h3>
-    <p>Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout.</p>
+    <p>Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout by adding <code>.form-horizontal</code> to the form. Doing so changes <code>.form-group</code>s to behave as grid rows, so no need for <code>.row</code>.</p>
     <form class="bs-example form-horizontal">
-      <div class="row form-group">
+      <div class="form-group">
         <label for="inputEmail" class="col-lg-2 control-label">Email</label>
         <div class="col-lg-10">
           <input type="text" class="form-control" id="inputEmail" placeholder="Email">
         </div>
       </div>
-      <div class="row form-group">
+      <div class="form-group">
         <label for="inputPassword" class="col-lg-2 control-label">Password</label>
         <div class="col-lg-10">
           <input type="password" class="form-control" id="inputPassword" placeholder="Password">
@@ -1277,13 +1277,13 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </form>
 {% highlight html %}
 <form class="form-horizontal">
-  <div class="row form-group">
+  <div class="form-group">
     <label for="inputEmail" class="col-lg-2 control-label">Email</label>
     <div class="col-lg-10">
       <input type="text" class="form-control" id="inputEmail" placeholder="Email">
     </div>
   </div>
-  <div class="row form-group">
+  <div class="form-group">
     <label for="inputPassword" class="col-lg-2 control-label">Password</label>
     <div class="col-lg-10">
       <input type="password" class="form-control" id="inputPassword" placeholder="Password">

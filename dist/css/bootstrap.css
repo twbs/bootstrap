@@ -1640,9 +1640,7 @@ select.input-small {
   z-index: 2;
 }
 
-.form-inline input,
-.form-inline select,
-.form-inline textarea,
+.form-inline .form-control,
 .form-inline .radio,
 .form-inline .checkbox {
   display: inline-block;
@@ -1656,6 +1654,38 @@ select.input-small {
 
 .form-horizontal .control-label {
   padding-top: 6px;
+}
+
+.form-horizontal .form-group:before,
+.form-horizontal .form-group:after {
+  display: table;
+  content: " ";
+}
+
+.form-horizontal .form-group:after {
+  clear: both;
+}
+
+.form-horizontal .form-group:before,
+.form-horizontal .form-group:after {
+  display: table;
+  content: " ";
+}
+
+.form-horizontal .form-group:after {
+  clear: both;
+}
+
+@media (min-width: 768px) {
+  .form-horizontal .form-group {
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+}
+
+.form-horizontal .form-group .row {
+  margin-right: -15px;
+  margin-left: -15px;
 }
 
 @media (min-width: 768px) {
@@ -2748,9 +2778,7 @@ button.close {
   margin-bottom: 6px;
 }
 
-.navbar-form input,
-.navbar-form select,
-.navbar-form textarea,
+.navbar-form .form-control,
 .navbar-form .radio,
 .navbar-form .checkbox {
   display: inline-block;

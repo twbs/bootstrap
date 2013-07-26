@@ -388,9 +388,7 @@ select {
 // --------------------------------------------------
 
 .form-inline {
-  input,
-  select,
-  textarea,
+  .form-control,
   .radio,
   .checkbox {
     display: inline-block;
@@ -408,7 +406,13 @@ select {
 // Horizontal forms are built on grid classes.
 
 .form-horizontal .control-label {
-    padding-top: 6px;
+  padding-top: 6px;
+}
+
+.form-horizontal {
+  .form-group {
+    .make-row();
+  }
 }
 
 // Only right align form labels here when the columns stop stacking
