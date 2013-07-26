@@ -23,25 +23,18 @@ p {
 // Ex: 14px base font * 85% = about 12px
 small   { font-size: 85%; }
 
+// Undo browser default styling
 cite    { font-style: normal; }
 
-// Utility classes
+// Contextual emphasis
 .text-muted          { color: @gray-light; }
-a.text-muted:hover,
-a.text-muted:focus   { color: darken(@gray-light, 10%); }
-
+.text-primary        { color: @brand-primary; }
 .text-warning        { color: @state-warning-text; }
-a.text-warning:hover,
-a.text-warning:focus { color: darken(@state-warning-text, 10%); }
-
 .text-danger         { color: @state-danger-text; }
-a.text-danger:hover,
-a.text-danger:focus  { color: darken(@state-danger-text, 10%); }
-
 .text-success        { color: @state-success-text; }
-a.text-success:hover,
-a.text-success:focus { color: darken(@state-success-text, 10%); }
+.text-info           { color: @state-info-text; }
 
+// Alignment
 .text-left           { text-align: left; }
 .text-right          { text-align: right; }
 .text-center         { text-align: center; }
