@@ -310,28 +310,31 @@
 @state-info-border:              darken(spin(@state-info-bg, -10), 7%);
 
 
-// Tooltips and popovers
+// Tooltips
 // -------------------------
+@tooltip-max-width:           200px;
 @tooltip-color:               #fff;
 @tooltip-bg:                  rgba(0,0,0,.9);
+
 @tooltip-arrow-width:         5px;
 @tooltip-arrow-color:         @tooltip-bg;
 
-@tooltip-max-width:           200px;
 
-@popover-bg:                  #fff;
-@popover-arrow-width:         10px;
-@popover-arrow-color:         #fff;
-@popover-title-bg:            darken(@popover-bg, 3%);
+// Popovers
+// -------------------------
+@popover-bg:                          #fff;
+@popover-max-width:                   276px;
+@popover-border-color:                rgba(0,0,0,.2);
+@popover-fallback-border-color:       #ccc;
 
-// Special enhancement for popovers
-@popover-arrow-outer-width:                  (@popover-arrow-width + 1);
-@popover-arrow-outer-color:                  rgba(0,0,0,.25);
-@popover-arrow-outer-fallback-color:         #999; 
+@popover-title-bg:                    darken(@popover-bg, 3%);
 
-@popover-max-width:                 276px;
-@popover-border-color:              rgba(0,0,0,.2)
-@popover-fallback-border-color:     #ccc;
+@popover-arrow-width:                 10px;
+@popover-arrow-color:                 #fff;
+
+@popover-arrow-outer-width:           (@popover-arrow-width + 1);
+@popover-arrow-outer-color:           rgba(0,0,0,.25);
+@popover-arrow-outer-fallback-color:  #999;
 
 
 // Labels
@@ -384,13 +387,13 @@
 // Progress bars
 // -------------------------
 @progress-bg:                 #f5f5f5;
+@progress-bar-color:          #fff;
+
 @progress-bar-bg:             @brand-primary;
 @progress-bar-success-bg:     @brand-success;
 @progress-bar-warning-bg:     @brand-warning;
 @progress-bar-danger-bg:      @brand-danger;
 @progress-bar-info-bg:        @brand-info;
-@progress-bar-color:          #fff;
-@progress-bar-text-shadow:    0 -1px 0 rgba(0,0,0,.25);
 
 
 // List group
