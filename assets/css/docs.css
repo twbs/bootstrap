@@ -15,15 +15,15 @@ body {
 
 /* Custom docs button */
 .btn-bs {
-  color: #b94a48;
+  color: #563d7c;
   background-color: #fff;
   border-color: #e5e5e5;
 }
 .btn-bs:hover,
 .btn-bs:active {
   color: #fff;
-  background-color: #b94a48;
-  border-color: #b94a48;
+  background-color: #563d7c;
+  border-color: #563d7c;
 }
 
 /* Temp CSS until RC2 */
@@ -39,13 +39,13 @@ body {
 -------------------------------------------------- */
 
 .bs-docs-nav {
-  background-color: #b94a48;
+  background-color: #563d7c;
 }
 .bs-docs-nav .navbar-brand {
   color: #fff;
 }
 .bs-docs-nav .navbar-nav > li > a {
-  color: #e6cac8;
+  color: #cdbfe3;
 }
 .bs-docs-nav .navbar-nav > li > a:hover {
   color: #fff;
@@ -53,14 +53,14 @@ body {
 .bs-docs-nav .navbar-nav > .active > a,
 .bs-docs-nav .navbar-nav > .active > a:hover {
   color: #fff;
-  background-color: #993c3a;
+  background-color: #463265;
 }
 .bs-docs-nav .navbar-toggle {
-  border-color: #b94a48;
+  border-color: #563d7c;
 }
 .bs-docs-nav .navbar-toggle:hover {
-  background-color: #993c3a;
-  border-color: #993c3a;
+  background-color: #463265;
+  border-color: #463265;
 }
 
 /* Old docs callout */
@@ -152,7 +152,7 @@ body {
   border-bottom: 1px solid #e5e5e5;
 }
 .bs-header h1 {
-  color: #b94a48;
+  color: #563d7c;
 }
 .bs-header p {
   font-weight: 300;
@@ -239,9 +239,9 @@ body {
 .bs-sidebar .nav > .active:hover > a,
 .bs-sidebar .nav > .active:focus > a {
   font-weight: 500;
-  color: #b94a48;
+  color: #563d7c;
   background-color: transparent;
-  border-right: 1px solid #b94a48;
+  border-right: 1px solid #563d7c;
 }
 
 /* Nav: second level (shown on .active) */
@@ -308,9 +308,8 @@ body {
   padding-bottom: 10px;
   background-color: #eee;
   border: 1px solid #ddd;
-  /* Todo: reconcile these */
-  background-color: rgba(185,74,72,.15);
-  border: 1px solid rgba(185,74,72,.2);
+  background-color: rgba(86,61,124,.15);
+  border: 1px solid rgba(86,61,124,.2);
 }
 
 

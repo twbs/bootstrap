@@ -379,36 +379,24 @@ cite {
   color: #999999;
 }
 
-a.text-muted:hover,
-a.text-muted:focus {
-  color: #808080;
+.text-primary {
+  color: #428bca;
 }
 
 .text-warning {
   color: #c09853;
 }
 
-a.text-warning:hover,
-a.text-warning:focus {
-  color: #a47e3c;
-}
-
 .text-danger {
   color: #b94a48;
-}
-
-a.text-danger:hover,
-a.text-danger:focus {
-  color: #953b39;
 }
 
 .text-success {
   color: #468847;
 }
 
-a.text-success:hover,
-a.text-success:focus {
-  color: #356635;
+.text-info {
+  color: #3a87ad;
 }
 
 .text-left {
