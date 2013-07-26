@@ -1965,16 +1965,29 @@ body { padding-bottom: 70px; }
 {% endhighlight %}
 
     <h3 id="panels-heading">Panel with heading</h3>
-    <p>Easily add a heading to your panel with <code>.panel-heading</code>. Use it on a <code>&lt;div&gt;</code> or any heading element (e.g., <code>&lt;h3&gt;</code>).</p>
+    <p>Easily add a heading container to your panel with <code>.panel-heading</code>. You may also include any <code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code> with a <code>.panel-title</code> class to add a pre-styled heading.</p>
     <div class="bs-example">
       <div class="panel">
         <div class="panel-heading">Panel heading</div>
+        Panel content
+      </div>
+      <div class="panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">Panel title</h3>
+        </div>
         Panel content
       </div>
     </div>
 {% highlight html %}
 <div class="panel">
   <div class="panel-heading">Panel heading</div>
+  Panel content
+</div>
+
+<div class="panel">
+  <div class="panel-heading">
+    <h3 class="panel-title">Panel title</h3>
+  </div>
   Panel content
 </div>
 {% endhighlight %}
@@ -1998,23 +2011,33 @@ body { padding-bottom: 70px; }
     <p>Like other components, easily make a panel more meaningful to a particular context by adding any of the contextual state classes.</p>
     <div class="bs-example">
       <div class="panel panel-primary">
-        <div class="panel-heading">Panel heading</div>
+        <div class="panel-heading">
+          <h3 class="panel-title">Panel title</h3>
+        </div>
         Panel content
       </div>
       <div class="panel panel-success">
-        <div class="panel-heading">Panel heading</div>
+        <div class="panel-heading">
+          <h3 class="panel-title">Panel title</h3>
+        </div>
         Panel content
       </div>
       <div class="panel panel-warning">
-        <div class="panel-heading">Panel heading</div>
+        <div class="panel-heading">
+          <h3 class="panel-title">Panel title</h3>
+        </div>
         Panel content
       </div>
       <div class="panel panel-danger">
-        <div class="panel-heading">Panel heading</div>
+        <div class="panel-heading">
+          <h3 class="panel-title">Panel title</h3>
+        </div>
         Panel content
       </div>
       <div class="panel panel-info">
-        <div class="panel-heading">Panel heading</div>
+        <div class="panel-heading">
+          <h3 class="panel-title">Panel title</h3>
+        </div>
         Panel content
       </div>
     </div>

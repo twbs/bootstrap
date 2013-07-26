@@ -2269,12 +2269,17 @@ a.list-group-item.active .list-group-item-text {
 .panel-heading {
   padding: 10px 15px;
   margin: -15px -15px 15px;
-  font-size: 17.5px;
-  font-weight: 500;
   background-color: #f5f5f5;
   border-bottom: 1px solid #dddddd;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
+}
+
+.panel-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 17.5px;
+  font-weight: 500;
 }
 
 .panel-footer {
