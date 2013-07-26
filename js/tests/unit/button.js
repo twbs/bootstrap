@@ -40,14 +40,15 @@ $(function () {
           ok(btn.hasClass('disabled'), 'btn has disabled class')
           start()
           stop()
+          btn.button('reset')
+          equals(btn.html(), 'mdo', 'btn text equals mdo')
+          setTimeout(function () {
+            ok(!btn.attr('disabled'), 'btn is not disabled')
+            ok(!btn.hasClass('disabled'), 'btn does not have disabled class')
+            start()
+          }, 0)
         }, 0)
-        btn.button('reset')
-        equals(btn.html(), 'mdo', 'btn text equals mdo')
-        setTimeout(function () {
-          ok(!btn.attr('disabled'), 'btn is not disabled')
-          ok(!btn.hasClass('disabled'), 'btn does not have disabled class')
-          start()
-        }, 0)
+
       })
 
       test("should toggle active", function () {
