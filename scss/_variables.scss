@@ -315,6 +315,14 @@ $nav-pills-active-link-hover-color:         #fff !default;
 $pagination-bg:                        #fff !default;
 $pagination-border:                    #ddd !default;
 $pagination-active-bg:                 #f5f5f5 !default;
+$pagination-active-color:              $gray-light !default;
+$pagination-disabled-color:            $gray-light !default;
+
+// Pager
+// -------------------------
+
+$pager-border-radius:                  15px !default;
+$pager-disabled-color:                 $gray-light !default;
 
 
 // Jumbotron
@@ -345,21 +353,31 @@ $state-info-bg:                  #d9edf7 !default;
 $state-info-border:              darken(adjust-hue($state-info-bg, -10%), 7%) !default;
 
 
-// Tooltips and popovers
+// Tooltips
 // -------------------------
+$tooltip-max-width:           200px !default;
 $tooltip-color:               #fff !default;
 $tooltip-bg:                  rgba(0,0,0,.9) !default;
+
 $tooltip-arrow-width:         5px !default;
 $tooltip-arrow-color:         $tooltip-bg !default;
 
-$popover-bg:                  #fff !default;
-$popover-arrow-width:         10px !default;
-$popover-arrow-color:         #fff !default;
-$popover-title-bg:            darken($popover-bg, 3%) !default;
 
-// Special enhancement for popovers
-$popover-arrow-outer-width:   ($popover-arrow-width + 1) !default;
-$popover-arrow-outer-color:   rgba(0,0,0,.25) !default;
+// Popovers
+// -------------------------
+$popover-bg:                          #fff !default;
+$popover-max-width:                   276px !default;
+$popover-border-color:                rgba(0,0,0,.2) !default;
+$popover-fallback-border-color:       #ccc !default;
+
+$popover-title-bg:                    darken($popover-bg, 3%) !default;
+
+$popover-arrow-width:                 10px !default;
+$popover-arrow-color:                 #fff !default;
+
+$popover-arrow-outer-width:           ($popover-arrow-width + 1) !default;
+$popover-arrow-outer-color:           rgba(0,0,0,.25) !default;
+$popover-arrow-outer-fallback-color:  #999 !default;
 
 
 // Labels
@@ -412,6 +430,8 @@ $alert-info-border:           $state-info-border !default;
 // Progress bars
 // -------------------------
 $progress-bg:                 #f5f5f5 !default;
+$progress-bar-color:          #fff !default;
+
 $progress-bar-bg:             $brand-primary !default;
 $progress-bar-success-bg:     $brand-success !default;
 $progress-bar-warning-bg:     $brand-warning !default;
@@ -524,6 +544,14 @@ $code-bg:                     #f9f2f4 !default;
 $pre-bg:                      #f5f5f5 !default;
 $pre-border-color:            #ccc !default;
 
+// Type
+// ------------------------
+$text-muted:                  $gray-light !default;
+$abbr-border-color:           $gray-light !default;
+$headings-small-color:        $gray-light !default;
+$blockquote-small-color:      $gray-light !default;
+$blockquote-border-color:     $gray-lighter !default;
+$page-header-border-color:    $gray-lighter !default;
 
 // Miscellaneous
 // -------------------------

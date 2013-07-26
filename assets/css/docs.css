@@ -130,13 +130,21 @@ body {
 .bs-customizer label {
   margin-top: 10px;
   font-weight: 500;
-  color: #555;
+  color: #444;
+}
+.bs-customizer h2 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  padding-top: 30px;
 }
 .bs-customizer h4 {
   margin-top: 15px;
 }
 .bs-customizer input[type="text"] {
   background-color: #fafafa;
+}
+.bs-customizer .help-block {
+  font-size: 12px;
 }
 
 .bs-customize-download {

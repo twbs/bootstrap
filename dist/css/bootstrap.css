@@ -1664,7 +1664,6 @@ select.input-small {
 }
 .btn:active, .btn.active {
   outline: 0;
-  background-image: none;
   -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
@@ -1672,7 +1671,7 @@ select.input-small {
   cursor: default;
   pointer-events: none;
   opacity: 0.65;
-  filter: alpha(opacity=opacity-ie);
+  filter: alpha(opacity=65);
   -webkit-box-shadow: none;
   box-shadow: none;
 }
@@ -1769,7 +1768,6 @@ select.input-small {
 }
 .btn-link, .btn-link:active, .btn-link[disabled], fieldset[disabled] .btn-link {
   background-color: transparent;
-  background-image: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
@@ -2153,14 +2151,14 @@ a.list-group-item.active .list-group-item-text {
   color: black;
   text-shadow: 0 1px 0 white;
   opacity: 0.2;
-  filter: alpha(opacity=opacity-ie);
+  filter: alpha(opacity=20);
 }
 .close:hover, .close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
   opacity: 0.5;
-  filter: alpha(opacity=opacity-ie);
+  filter: alpha(opacity=50);
 }
 
 button.close {
@@ -2979,11 +2977,11 @@ button.close {
 }
 .modal-backdrop.fade {
   opacity: 0;
-  filter: alpha(opacity=opacity-ie);
+  filter: alpha(opacity=0);
 }
 .modal-backdrop.fade.in {
   opacity: 0.5;
-  filter: alpha(opacity=opacity-ie);
+  filter: alpha(opacity=50);
 }
 
 .modal-header {
@@ -3055,11 +3053,11 @@ button.close {
   font-size: 12px;
   line-height: 1.4;
   opacity: 0;
-  filter: alpha(opacity=opacity-ie);
+  filter: alpha(opacity=0);
 }
 .tooltip.in {
   opacity: 1;
-  filter: alpha(opacity=opacity-ie);
+  filter: alpha(opacity=100);
 }
 .tooltip.top {
   margin-top: -3px;
@@ -3162,7 +3160,7 @@ button.close {
   -webkit-bg-clip: padding-box;
   -moz-bg-clip: padding;
   background-clip: padding-box;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 6px;
   -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -3219,7 +3217,7 @@ button.close {
   left: 50%;
   margin-left: -11px;
   border-bottom-width: 0;
-  border-top-color: #999;
+  border-top-color: #999999;
   border-top-color: rgba(0, 0, 0, 0.25);
   bottom: -11px;
 }
@@ -3235,7 +3233,7 @@ button.close {
   left: -11px;
   margin-top: -11px;
   border-left-width: 0;
-  border-right-color: #999;
+  border-right-color: #999999;
   border-right-color: rgba(0, 0, 0, 0.25);
 }
 .popover.right .arrow:after {
@@ -3249,7 +3247,7 @@ button.close {
   left: 50%;
   margin-left: -11px;
   border-top-width: 0;
-  border-bottom-color: #999;
+  border-bottom-color: #999999;
   border-bottom-color: rgba(0, 0, 0, 0.25);
   top: -11px;
 }
@@ -3265,7 +3263,7 @@ button.close {
   right: -11px;
   margin-top: -11px;
   border-right-width: 0;
-  border-left-color: #999;
+  border-left-color: #999999;
   border-left-color: rgba(0, 0, 0, 0.25);
 }
 .popover.left .arrow:after {
@@ -3574,9 +3572,8 @@ a.list-group-item.active > .badge,
   width: 0%;
   height: 100%;
   font-size: 12px;
-  color: #fff;
+  color: white;
   text-align: center;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #428bca;
   -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
@@ -3729,7 +3726,7 @@ a.list-group-item.active > .badge,
   bottom: 0;
   width: 15%;
   opacity: 0.5;
-  filter: alpha(opacity=opacity-ie);
+  filter: alpha(opacity=50);
   font-size: 20px;
   color: white;
   text-align: center;
@@ -3761,7 +3758,7 @@ a.list-group-item.active > .badge,
   color: white;
   text-decoration: none;
   opacity: 0.9;
-  filter: alpha(opacity=opacity-ie);
+  filter: alpha(opacity=90);
 }
 .carousel-control .glyphicon,
 .carousel-control .icon-prev,
