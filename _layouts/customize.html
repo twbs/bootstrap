@@ -24,35 +24,10 @@
       </div>
     </div>
 
-    <div class="container bs-docs-container">
-      <div class="row">
-        <div class="col-lg-3">
-          <div class="bs-sidebar">
-            <ul class="nav bs-sidenav">
-              {% if page.slug == "getting-started" %}
-                {% include nav-getting-started.html %}
-              {% elsif page.slug == "css" %}
-                {% include nav-css.html %}
-              {% elsif page.slug == "components" %}
-                {% include nav-components.html %}
-              {% elsif page.slug == "js" %}
-                {% include nav-javascript.html %}
-              {% elsif page.slug == "customize" %}
-                {% include nav-customize.html %}
-              {% endif %}
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-9">
-          {{ content }}
-        </div>
+    <div class="bs-customize-placeholder">
+      <div class="container bs-docs-container">
+        <p class="lead">Until RC2, the Bootstrap 3 customizer will be disabled. In the mean time, snag the <a href="https://github.com/twbs/bootstrap/releases">compiled CSS and JavaScript</a>. Hang tight!</p>
       </div>
-
-      <!-- Quick back to top -->
-      <a href="#" class="bs-top">
-        Back to top
-      </a>
-
     </div>
 
     <!-- Footer
