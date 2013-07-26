@@ -72,6 +72,10 @@ body {
 .bs-old-docs strong {
   color: #555;
 }
+.bs-docs-home .bs-old-docs {
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+}
 
 
 /* Homepage masthead
@@ -79,16 +83,12 @@ body {
 
 .bs-masthead {
   position: relative;
-  margin-bottom: 20px;
   padding: 30px 15px;
   text-align: center;
 }
 .bs-masthead h1 {
   font-size: 50px;
   line-height: 1;
-}
-.bs-masthead .bs-social {
-  margin-top: 80px;
 }
 
 /* Download button */
@@ -100,11 +100,16 @@ body {
 }
 
 /* Textual links */
+.bs-social {
+  margin-top: 30px;
+  text-align: center;
+}
 .bs-masthead-links {
   margin-top: 20px;
   margin-bottom: 20px;
   padding-left: 0;
   list-style: none;
+  text-align: center;
 }
 .bs-masthead-links li {
   display: inline;
