@@ -306,8 +306,7 @@ select {
     padding-right: 0;
   }
 
-  input,
-  select {
+  .form-control {
     width: 100%;
     margin-bottom: 0;
   }
@@ -317,7 +316,7 @@ select {
 // -------------------------
 .input-group-addon,
 .input-group-btn,
-.input-group input {
+.input-group .form-control {
   display: table-cell;
 
   &:not(:first-child):not(:last-child) {
@@ -358,7 +357,7 @@ select {
 }
 
 // Reset rounded corners
-.input-group input:first-child,
+.input-group .form-control:first-child,
 .input-group-addon:first-child,
 .input-group-btn:first-child > .btn,
 .input-group-btn:first-child > .dropdown-toggle,
@@ -368,7 +367,7 @@ select {
 .input-group-addon:first-child {
   border-right: 0;
 }
-.input-group input:last-child,
+.input-group .form-control:last-child,
 .input-group-addon:last-child,
 .input-group-btn:last-child > .btn,
 .input-group-btn:last-child > .dropdown-toggle,
