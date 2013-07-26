@@ -743,7 +743,6 @@ input.focused {
     right:  15px;
     bottom: 15px;
   }
-
   .bs-header {
     font-size: 21px;
     text-align: left;
@@ -799,12 +798,22 @@ input.focused {
 @media screen and (min-width: 992px) {
 
   /* Widen the fixed sidebar */
-  .bs-sidebar.affix {
-    position: fixed; /* Undo the static from mobile-first approach */
-    top: 50px;
+  .bs-sidebar.affix,
+  .bs-sidebar.affix-bottom {
     width: 213px;
   }
-
+  .bs-sidebar.affix {
+    position: fixed; /* Undo the static from mobile-first approach */
+    top: 80px;
+  }
+  .bs-sidebar.affix-bottom {
+    position: absolute; /* Undo the static from mobile-first approach */
+  }
+  .bs-sidebar.affix-bottom .bs-sidenav,
+  .bs-sidebar.affix .bs-sidenav {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
   .bs-header h1,
   .bs-header p {
     margin-right: 380px;
@@ -824,6 +833,7 @@ input.focused {
 @media screen and (min-width: 1200px) {
 
   /* Widen the fixed sidebar again */
+  .bs-sidebar.affix-bottom,
   .bs-sidebar.affix {
     width: 270px;
   }
