@@ -1684,10 +1684,6 @@ select.input-small {
   margin-bottom: 0;
 }
 
-.form-horizontal .row + .row {
-  margin-top: 15px;
-}
-
 .form-horizontal .control-label {
   padding-top: 6px;
 }
