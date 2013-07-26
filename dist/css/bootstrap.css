@@ -1274,10 +1274,6 @@ table th[class^="col-"] {
   border-color: #f8e5be;
 }
 
-form {
-  margin: 0;
-}
-
 fieldset {
   padding: 0;
   margin: 0;
@@ -1302,136 +1298,10 @@ label {
   font-weight: bold;
 }
 
-select,
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"] {
-  display: block;
-  height: 38px;
-  padding: 8px 12px;
-  font-size: 14px;
-  line-height: 1.428571429;
-  color: #555555;
-  vertical-align: middle;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-          transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-}
-
-select:focus,
-textarea:focus,
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="time"]:focus,
-input[type="week"]:focus,
-input[type="number"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="color"]:focus {
-  border-color: rgba(82, 168, 236, 0.8);
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-}
-
-select[disabled],
-textarea[disabled],
-input[type="text"][disabled],
-input[type="password"][disabled],
-input[type="datetime"][disabled],
-input[type="datetime-local"][disabled],
-input[type="date"][disabled],
-input[type="month"][disabled],
-input[type="time"][disabled],
-input[type="week"][disabled],
-input[type="number"][disabled],
-input[type="email"][disabled],
-input[type="url"][disabled],
-input[type="search"][disabled],
-input[type="tel"][disabled],
-input[type="color"][disabled],
-select[readonly],
-textarea[readonly],
-input[type="text"][readonly],
-input[type="password"][readonly],
-input[type="datetime"][readonly],
-input[type="datetime-local"][readonly],
-input[type="date"][readonly],
-input[type="month"][readonly],
-input[type="time"][readonly],
-input[type="week"][readonly],
-input[type="number"][readonly],
-input[type="email"][readonly],
-input[type="url"][readonly],
-input[type="search"][readonly],
-input[type="tel"][readonly],
-input[type="color"][readonly],
-fieldset[disabled] select,
-fieldset[disabled] textarea,
-fieldset[disabled] input[type="text"],
-fieldset[disabled] input[type="password"],
-fieldset[disabled] input[type="datetime"],
-fieldset[disabled] input[type="datetime-local"],
-fieldset[disabled] input[type="date"],
-fieldset[disabled] input[type="month"],
-fieldset[disabled] input[type="time"],
-fieldset[disabled] input[type="week"],
-fieldset[disabled] input[type="number"],
-fieldset[disabled] input[type="email"],
-fieldset[disabled] input[type="url"],
-fieldset[disabled] input[type="search"],
-fieldset[disabled] input[type="tel"],
-fieldset[disabled] input[type="color"] {
-  cursor: not-allowed;
-  background-color: #eeeeee;
-}
-
-input,
-select,
-textarea {
-  width: 100%;
-}
-
-input[type="file"],
-input[type="image"],
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
-input[type="radio"],
-input[type="checkbox"] {
-  width: auto;
-}
-
 input[type="search"] {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
-}
-
-textarea {
-  height: auto;
 }
 
 input[type="radio"],
@@ -1471,24 +1341,60 @@ input[type="number"]::-webkit-inner-spin-button {
   height: auto;
 }
 
-input:-moz-placeholder,
-textarea:-moz-placeholder {
+.form-control:-moz-placeholder {
   color: #999999;
 }
 
-input::-moz-placeholder,
-textarea::-moz-placeholder {
+.form-control::-moz-placeholder {
   color: #999999;
 }
 
-input:-ms-input-placeholder,
-textarea:-ms-input-placeholder {
+.form-control:-ms-input-placeholder {
   color: #999999;
 }
 
-input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
+.form-control::-webkit-input-placeholder {
   color: #999999;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 38px;
+  padding: 8px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #555555;
+  vertical-align: middle;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+          transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.form-control:focus {
+  border-color: rgba(82, 168, 236, 0.8);
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+}
+
+textarea.form-control {
+  height: auto;
+}
+
+.form-group {
+  margin-bottom: 15px;
 }
 
 .radio,
