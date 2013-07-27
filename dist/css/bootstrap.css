@@ -2550,7 +2550,7 @@ button.close {
   border-radius: 5px;
 }
 
-.nav-pills > li + li > a {
+.nav-pills > li + li {
   margin-left: 2px;
 }
 
