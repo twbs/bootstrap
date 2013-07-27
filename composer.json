@@ -1,8 +1,8 @@
 {
-    "name": "twitter/bootstrap"
+    "name": "twbs/bootstrap"
   , "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development."
   , "keywords": ["bootstrap", "css"]
-  , "homepage": "http://twitter.github.com/bootstrap/"
+  , "homepage": "http://twbs.github.com/bootstrap/"
   , "author": "Twitter Inc."
   , "license": "Apache-2.0"
 

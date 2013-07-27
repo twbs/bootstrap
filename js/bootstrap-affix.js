@@ -1,8 +1,8 @@
 /* ==========================================================
  * bootstrap-affix.js v2.3.2
- * http://twitter.github.com/bootstrap/javascript.html#affix
+ * http://getbootstrap.com/2.3.2/javascript.html#affix
  * ==========================================================
- * Copyright 2012 Twitter, Inc.
+ * Copyright 2013 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
