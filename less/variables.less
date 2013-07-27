@@ -48,11 +48,13 @@
 @font-size-large:         ceil(@font-size-base * 1.25); // ~18px
 @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 
+@font-weight-base:        500;
+
 @line-height-base:        1.428571429; // 20/14
 @line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
 
 @headings-font-family:    @font-family-base;
-@headings-font-weight:    500;
+@headings-font-weight:    @font-weight-base;
 @headings-line-height:    1.1;
 
 
@@ -119,6 +121,9 @@
 
 @btn-hover-color:                @btn-default-color;
 
+
+@btn-small-line-height:          1.5;
+@btn-link-disabled-color:        @gray-dark;
 @btn-large-caret-border-width:   5px;
 
 
@@ -385,7 +390,7 @@
 @alert-info-text:             @state-info-text;
 @alert-info-border:           @state-info-border;
 
-@alert-link-font-weight:      500;
+@alert-link-font-weight:      @font-weight-base;
 
 
 // Progress bars

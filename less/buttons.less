@@ -12,7 +12,7 @@
   padding: @padding-base-vertical @padding-base-horizontal;
   margin-bottom: 0; // For input.btn
   font-size: @font-size-base;
-  font-weight: 500;
+  font-weight: @font-weight-base;
   line-height: @line-height-base;
   text-align: center;
   vertical-align: middle;
@@ -109,7 +109,7 @@
   fieldset[disabled] & {
     &:hover,
     &:focus {
-      color: @gray-dark;
+      color: @btn-link-disabled-color;
       text-decoration: none;
     }
   }
@@ -127,7 +127,7 @@
 .btn-small {
   padding: @padding-small-vertical @padding-small-horizontal;
   font-size: @font-size-small;
-  line-height: 1.5; // ensure proper height of button next to small input
+  line-height: @btn-small-line-height; // ensure proper height of button next to small input
   border-radius: @border-radius-small;
 }
 

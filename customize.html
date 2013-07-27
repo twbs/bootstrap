@@ -404,6 +404,9 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
                 <label>@line-height-base</label>
                 <input type="text" class="form-control" placeholder="1.428571429">
                 <p class="help-block">Used to calculate line-height throughout Bootstrap.</p>
+                <label>@font-weight-base</label>
+                <input type="text" class="form-control" placeholder="500">
+                <p class="help-block">Used to globally set font-weight in Bootstrap</p>
             </div>
         </div>
 
@@ -430,7 +433,7 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
                 <input type="text" class="form-control" placeholder="@font-family-base">
                 <p class="help-block">Choose a separate font-family for headings.</p>
                 <label>@headings-font-weight</label>
-                <input type="text" class="form-control" placeholder="500">
+                <input type="text" class="form-control" placeholder="@font-weight-base">
                 <p class="help-block">Choose a separate font-weight for headings.</p>
             </div>
             <div class="col-lg-6">
@@ -567,6 +570,12 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
                 <h4>Basic</h4>
                 <label>@btn-large-caret-border-width</label>
                 <input type="text" class="form-control" placeholder="5px">
+                <label>@btn-small-line-height</label>
+                <input type="text" class="form-control" placeholder="1.5">
+                <label>@btn-link-disabled-color</label>
+                <input type="text" class="form-control" placeholder="@gray-dark">
+                <label>@btn-large-caret-border-width</label>
+                <input type="text" class="form-control" placeholder="5px">
                 <h4>Default</h4>
                 <label>@btn-default-color</label>
                 <input type="text" class="form-control" placeholder="#fff">
@@ -623,7 +632,7 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
             <div class="col-lg-6">
                 <h4>Basic</h4>
                 <label>@alert-link-font-weight</label>
-                <input type="text" class="form-control" placeholder="500">
+                <input type="text" class="form-control" placeholder="@font-weight-base">
                 <h4>Success</h4>
                 <label>@state-success-text</label>
                 <input type="text" class="form-control" placeholder="#468847">
