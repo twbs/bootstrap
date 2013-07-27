@@ -428,6 +428,9 @@ body {
 }
 
 /* Navbar examples */
+.bs-example .navbar:last-child {
+  margin-bottom: 0;
+}
 .bs-navbar-top-example,
 .bs-navbar-bottom-example {
   z-index: 1;
@@ -454,7 +457,7 @@ body {
 }
 .bs-navbar-top-example:after {
   top: auto;
-  bottom: -1px;
+  bottom: 15px;
   -webkit-border-radius: 0 4px 0 4px;
      -moz-border-radius: 0 4px 0 4px;
           border-radius: 0 4px 0 4px;
