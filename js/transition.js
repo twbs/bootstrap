@@ -46,6 +46,7 @@
     $(this).one('webkitTransitionEnd', function () { called = true })
     var callback = function () { if (!called) $($el).trigger('webkitTransitionEnd') }
     setTimeout(callback, duration)
+    return this
   }
 
   $(function () {

@@ -15,13 +15,11 @@
       offset: navHeight
     })
 
-    // Disable certain links in docs
-    $('.bs-docs-container [href=#]').click(function (e) {
+    $('[href^=#]').click(function (e) {
       e.preventDefault()
     })
 
-    $(document.body).on('click', '[href^=#]', function (e) {
-
+    $(document.body).on('click', '.bs-sidenav [href^=#]', function (e) {
       var $target = $(this.getAttribute('href'))
 
       e.preventDefault() // prevent browser scroll
