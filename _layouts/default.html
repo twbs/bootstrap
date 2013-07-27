@@ -15,9 +15,7 @@
       <div class="container">
         <h1>{{ page.title }}</h1>
         <p>{{ page.lead }}</p>
-        {% unless site.port != "9001" %}
-          {% include ads.html %}
-        {% endunless %}
+        {% include ads.html %}
       </div>
     </div>
 
