@@ -69,9 +69,9 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 15%;
-  .opacity(.5);
-  font-size: 20px;
+  width: @carousel-control-width;
+  .opacity(@carousel-control-opacity);
+  font-size: @carousel-control-font-size;
   color: @carousel-control-color;
   text-align: center;
   text-shadow: @carousel-text-shadow;
@@ -133,7 +133,7 @@
   bottom: 10px;
   left: 50%;
   z-index: 15;
-  width: 120px;
+  width: @carousel-indicators-width;
   margin-left: -60px;
   padding-left: 0;
   list-style: none;
