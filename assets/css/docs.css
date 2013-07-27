@@ -67,6 +67,7 @@ body {
 .bs-old-docs {
   padding: 15px 20px;
   color: #777;
+  background-color: #fafafa;
   border-bottom: 1px solid #e5e5e5;
 }
 .bs-old-docs strong {
