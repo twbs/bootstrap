@@ -230,8 +230,8 @@ body {
 .bs-sidenav {
   margin-top: 30px;
   margin-bottom: 30px;
-  padding-top:    5px;
-  padding-bottom: 5px;
+  padding-top:    10px;
+  padding-bottom: 10px;
   text-shadow: 0 1px 0 #fff;
   background-color: #f5f5f5;
   border-radius: 5px;
