@@ -14,3 +14,15 @@ port:             9001
 repo:             https://github.com/twbs/bootstrap
 download:         https://github.com/twbs/bootstrap/archive/v3.0.0-rc1.zip
 download_dist:    https://github.com/twbs/bootstrap/archive/v3.0.0-rc1-dist.zip
+
+examples:         http://examples.getbootstrap.com
+examples_repo:    https://github.com/twbs/bootstrap-examples
+
+glyphicons:       http://glyphicons.getbootstrap.com
+glyphicons_repo:  https://github.com/twbs/bootstrap-glyphicons
+
+blog:             http://blog.getbootstrap.com
+expo:             http://expo.getbootstrap.com
+
+cdn_css:          //netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css
+cdn_js:           //netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js
