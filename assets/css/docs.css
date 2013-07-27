@@ -545,6 +545,36 @@ body {
 /* Responsive docs
 -------------------------------------------------- */
 
+/* Responsive (scrollable) doc tables */
+@media (max-width: 768px) {
+  .bs-table-scrollable {
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    border: 1px solid #ddd;
+  }
+  .bs-table-scrollable .bs-table {
+    margin-bottom: 0;
+    border: 0;
+  }
+  .bs-table-scrollable .bs-table th,
+  .bs-table-scrollable .bs-table td {
+    white-space: nowrap;
+  }
+  .bs-table-scrollable .bs-table th:first-child,
+  .bs-table-scrollable .bs-table td:first-child {
+    border-left: 0;
+  }
+  .bs-table-scrollable .bs-table th:last-child,
+  .bs-table-scrollable .bs-table td:last-child {
+    border-right: 0;
+  }
+  .bs-table-scrollable .bs-table tr:last-child th,
+  .bs-table-scrollable .bs-table tr:last-child td {
+    border-bottom: 0;
+  }
+}
+
 /* Related: responsive utilities tables */
 .table code {
   font-size: 13px;

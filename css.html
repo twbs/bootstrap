@@ -78,56 +78,58 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
 
     <h3 id="grid-options">Grid options</h3>
     <p>See how aspects of the Bootstrap grid system work across multiple devices with a handy table.</p>
-    <table class="table table-bordered table-striped bs-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>
-            Tiny grid
-            <small>Phones (&lt;480px)</small>
-          </th>
-          <th>
-            Small grid
-            <small>Tablets (&lt;768px)</small>
-          </th>
-          <th>
-            Medium-large grid
-            <small>Destkops (&gt;768px)</small>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>Grid behavior</th>
-          <td>Horizontal at all times</td>
-          <td colspan="2">Collapsed to start, horizontal above breakpoints</td>
-        </tr>
-        <tr>
-          <th>Class prefix</th>
-          <td><code>.col-</code></td>
-          <td><code>.col-sm-</code></td>
-          <td><code>.col-lg-</code></td>
-        </tr>
-        <tr>
-          <th># of columns</th>
-          <td colspan="3">12</td>
-        </tr>
-        <tr>
-          <th>Nestable</th>
-          <td colspan="3">Yes</td>
-        </tr>
-        <tr>
-          <th>Offsets</th>
-          <td colspan="2" class="text-muted">N/A</td>
-          <td>Yes</td>
-        </tr>
-        <tr>
-          <th>Column ordering</th>
-          <td class="text-muted">N/A</td>
-          <td colspan="2">Yes</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="bs-table-scrollable">
+      <table class="table table-bordered table-striped bs-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>
+              Tiny grid
+              <small>Phones (&lt;480px)</small>
+            </th>
+            <th>
+              Small grid
+              <small>Tablets (&lt;768px)</small>
+            </th>
+            <th>
+              Medium-large grid
+              <small>Destkops (&gt;768px)</small>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Grid behavior</th>
+            <td>Horizontal at all times</td>
+            <td colspan="2">Collapsed to start, horizontal above breakpoints</td>
+          </tr>
+          <tr>
+            <th>Class prefix</th>
+            <td><code>.col-</code></td>
+            <td><code>.col-sm-</code></td>
+            <td><code>.col-lg-</code></td>
+          </tr>
+          <tr>
+            <th># of columns</th>
+            <td colspan="3">12</td>
+          </tr>
+          <tr>
+            <th>Nestable</th>
+            <td colspan="3">Yes</td>
+          </tr>
+          <tr>
+            <th>Offsets</th>
+            <td colspan="2" class="text-muted">N/A</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <th>Column ordering</th>
+            <td class="text-muted">N/A</td>
+            <td colspan="2">Yes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <h3 id="grid-example-basic">Example: Stacked-to-horizontal</h3>
     <p>Using a single set of grid classes, you can create a basic grid system that starts out stacked on mobile and tablet devices before becoming horizontal on desktop devices.</p>
