@@ -175,6 +175,10 @@ body {
   position: relative;
 }
 
+.bs-docs-section + .bs-docs-section {
+  margin-top: 80px;
+}
+
 /* Ads in page headers */
 .carbonad {
   width: auto !important;
@@ -209,11 +213,6 @@ body {
 }
 .carbonad #azcarbon > img {
   display: none; /* hide what I assume are tracking images */
-}
-
-/* Padding for in-page bookmarks */
-.bs-docs-section {
-  padding-top: 30px;
 }
 
 
