@@ -1,6 +1,6 @@
 /* ===========================================================
- * bootstrap-tooltip.js v2.3.3
- * http://getbootstrap.com/2.3.3/javascript.html#tooltips
+ * bootstrap-tooltip.js v2.3.2
+ * http://getbootstrap.com/2.3.2/javascript.html#tooltips
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ===========================================================
  * Copyright 2013 Twitter, Inc.

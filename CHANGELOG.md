@@ -1,9 +1,10 @@
-## 2.3.3 (July 26, 2013)
+## 2.3.2 re-release (July 26, 2013)
 
-Patch to update jQuery in Bower and bump Recess to 1.1.9
+Patch to update jQuery in Bower and bump Recess to 1.1.9.
 
 ## 2.3.2 (May 17, 2013)
-- Fix dropdown for firefox (middleclick) and mobile
+
+Fix dropdown for firefox (middleclick) and mobile.
 
 ## 2.3.1 (February 28, 2013)
 

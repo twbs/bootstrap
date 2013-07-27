@@ -1,6 +1,6 @@
 /* ========================================================
- * bootstrap-tab.js v2.3.3
- * http://getbootstrap.com/2.3.3/javascript.html#tabs
+ * bootstrap-tab.js v2.3.2
+ * http://getbootstrap.com/2.3.2/javascript.html#tabs
  * ========================================================
  * Copyright 2013 Twitter, Inc.
  *
