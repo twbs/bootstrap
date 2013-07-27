@@ -67,11 +67,8 @@
     })
 
     // popover demo
-    $("a[data-toggle=popover]")
+    $("[data-toggle=popover]")
       .popover()
-      .click(function(e) {
-        e.preventDefault()
-      })
 
     // button state demo
     $('#fat-btn')

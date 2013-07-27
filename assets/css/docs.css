@@ -175,6 +175,10 @@ body {
   position: relative;
 }
 
+.bs-docs-section + .bs-docs-section {
+  margin-top: 80px;
+}
+
 /* Ads in page headers */
 .carbonad {
   width: auto !important;
@@ -211,11 +215,6 @@ body {
   display: none; /* hide what I assume are tracking images */
 }
 
-/* Padding for in-page bookmarks */
-.bs-docs-section {
-  padding-top: 30px;
-}
-
 
 
 /* Docs sidebar
@@ -230,23 +229,24 @@ body {
 .bs-sidenav {
   margin-top: 30px;
   margin-bottom: 30px;
-  padding-top:    5px;
-  padding-bottom: 5px;
+  padding-top:    10px;
+  padding-bottom: 10px;
   text-shadow: 0 1px 0 #fff;
-  background-color: #f5f5f5;
+  background-color: #f2f0f5;
   border-radius: 5px;
 }
 
 /* All levels of nav */
 .bs-sidebar .nav > li > a {
   display: block;
-  color: #666;
+  color: #716b7a;
   padding: 5px 20px;
 }
 .bs-sidebar .nav > li > a:hover,
 .bs-sidebar .nav > li > a:focus {
   text-decoration: none;
-  border-right: 1px solid #d5d5d5;
+  background-color: #e5e3e9;
+  border-right: 1px solid #dbd8e0;
 }
 .bs-sidebar .nav > .active > a,
 .bs-sidebar .nav > .active:hover > a,
