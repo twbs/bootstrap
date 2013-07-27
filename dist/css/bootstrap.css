@@ -2458,10 +2458,6 @@ button.close {
   background-color: transparent;
 }
 
-.nav > li + .nav-header {
-  margin-top: 9px;
-}
-
 .nav.open > a,
 .nav.open > a:hover,
 .nav.open > a:focus {
