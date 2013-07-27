@@ -1,7 +1,3 @@
-# Ignore compiled docs
-_gh_pages
-_site
-
 # Numerous always-ignore extensions
 *.diff
 *.err
@@ -39,4 +35,3 @@ nbproject
 .CVS
 .idea
 node_modules
-dist
