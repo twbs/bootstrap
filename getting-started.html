@@ -16,18 +16,18 @@ lead: "An overview of Bootstrap, how to download and use, basic templates and ex
 
     <h3>Download compiled CSS and JS</h3>
     <p class="lead">The fastest way to get started is to get the compiled and minified versions of our CSS and JavaScript. No documentation or original source files are included.</p>
-    <p><a class="btn btn-large btn-primary" href="assets/bootstrap.zip" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a></p>
+    <p><a class="btn btn-large btn-primary" href="{{ site.download_dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a></p>
 
     <hr>
 
     <h3 id="download-options">More download options</h3>
     <div class="bs-docs-dl-options">
       <h4>
-        <a href="https://github.com/twbs/bootstrap/zipball/master" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download latest source code</a>
+        <a href="{{ site.download }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download latest source code</a>
       </h4>
       <p>Get the original files for all CSS and JavaScript by downloading the latest version directly from GitHub.</p>
       <h4>
-        <a href="https://github.com/twbs/bootstrap/" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'GitHub project']);">Clone or fork via GitHub</a>
+        <a href="{{ site.repo }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'GitHub project']);">Clone or fork via GitHub</a>
       </h4>
       <p>Clone the entire project or fork your own version of Bootstrap to make it your own by visiting us on GitHub.</p>
       <h4>
@@ -43,10 +43,10 @@ lead: "An overview of Bootstrap, how to download and use, basic templates and ex
     <p>The folks over at <a href="https://www.netdna.com/">NetDNA</a> have graciously provided CDN support for Bootstrap's CSS and JavaScript. To use, swap your local instances for the <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links listed below.</p>
 {% highlight html linenos %}
 <!-- Latest compiled and minified CSS -->
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
 {% endhighlight %}
 
     <div class="bs-callout bs-callout-warning" id="callout-less-compilation">
