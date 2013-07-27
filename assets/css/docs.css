@@ -1,0 +1,137 @@
+body {
+  font-weight: 300;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+h2 {
+  text-align: center;
+  font-weight: 300;
+}
+
+
+/* Header
+-------------------------------------------------- */
+
+.jumbotron {
+  position: relative;
+  font-size: 16px;
+  color: #fff;
+  color: rgba(255,255,255,.75);
+  text-align: center;
+  background-color: #563d7c;
+  border-radius: 0;
+}
+.jumbotron .container {
+  max-width: 800px;
+}
+.jumbotron h1,
+.jumbotron .glyphicon-ok {
+  margin-bottom: 15px;
+  font-weight: 300;
+  letter-spacing: -1px;
+  color: #fff;
+}
+.jumbotron .glyphicon-ok {
+  font-size: 40px;
+  line-height: 1;
+}
+.btn-outline {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 18px 24px;
+  font-size: inherit;
+  font-weight: 500;
+  color: #fff; /* redeclare to override the `.jumbotron a` */
+  background-color: transparent;
+  border-color: #fff;
+  border-color: rgba(255,255,255,.5);
+  transition: all .1s ease-in-out;
+}
+.btn-outline:hover,
+.btn-outline:active {
+  color: #563d7c;
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.jumbotron:after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  display: block;
+  content: "";
+  height: 30px;
+  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0), rgba(0,0,0,.1));
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0), rgba(0,0,0,.1));
+}
+
+.jumbotron p a,
+.jumbotron-links a {
+  font-weight: 500;
+  color: #fff;
+  transition: all .1s ease-in-out;
+}
+.jumbotron p a:hover,
+.jumbotron-links a:hover {
+  text-shadow: 0 0 10px rgba(255,255,255,.55);
+}
+
+/* Textual links */
+.jumbotron-links {
+  margin-top: 15px;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+  font-size: 14px;
+}
+.jumbotron-links li {
+  display: inline;
+}
+.jumbotron-links li + li {
+  margin-left: 20px;
+}
+
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    font-size: 21px;
+  }
+  .jumbotron h1,
+  .jumbotron .glyphicon-ok {
+    font-size: 50px;
+  }
+}
+
+
+/* Gallery list
+-------------------------------------------------- */
+
+.gallery {
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+.gallery .col-lg-4 {
+  margin-bottom: 20px;
+}
+.gallery h3 {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+
+/* Footer
+-------------------------------------------------- */
+
+.footer {
+  padding: 50px 30px;
+  color: #777;
+  text-align: center;
+  border-top: 1px solid #eee;
+}
