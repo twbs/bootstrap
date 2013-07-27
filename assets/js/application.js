@@ -15,7 +15,7 @@
       offset: navHeight
     })
 
-    $('[href^=#]').click(function (e) {
+    $('[href=#]').click(function (e) {
       e.preventDefault()
     })
 
