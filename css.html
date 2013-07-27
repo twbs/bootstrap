@@ -78,56 +78,58 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
 
     <h3 id="grid-options">Grid options</h3>
     <p>See how aspects of the Bootstrap grid system work across multiple devices with a handy table.</p>
-    <table class="table table-bordered table-striped bs-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>
-            Tiny grid
-            <small>Phones (&lt;480px)</small>
-          </th>
-          <th>
-            Small grid
-            <small>Tablets (&lt;768px)</small>
-          </th>
-          <th>
-            Medium-large grid
-            <small>Destkops (&gt;768px)</small>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>Grid behavior</th>
-          <td>Horizontal at all times</td>
-          <td colspan="2">Collapsed to start, horizontal above breakpoints</td>
-        </tr>
-        <tr>
-          <th>Class prefix</th>
-          <td><code>.col-</code></td>
-          <td><code>.col-sm-</code></td>
-          <td><code>.col-lg-</code></td>
-        </tr>
-        <tr>
-          <th># of columns</th>
-          <td colspan="3">12</td>
-        </tr>
-        <tr>
-          <th>Nestable</th>
-          <td colspan="3">Yes</td>
-        </tr>
-        <tr>
-          <th>Offsets</th>
-          <td colspan="2" class="text-muted">N/A</td>
-          <td>Yes</td>
-        </tr>
-        <tr>
-          <th>Column ordering</th>
-          <td class="text-muted">N/A</td>
-          <td colspan="2">Yes</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="bs-table-scrollable">
+      <table class="table table-bordered table-striped bs-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>
+              Tiny grid
+              <small>Phones (&lt;480px)</small>
+            </th>
+            <th>
+              Small grid
+              <small>Tablets (&lt;768px)</small>
+            </th>
+            <th>
+              Medium-large grid
+              <small>Destkops (&gt;768px)</small>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Grid behavior</th>
+            <td>Horizontal at all times</td>
+            <td colspan="2">Collapsed to start, horizontal above breakpoints</td>
+          </tr>
+          <tr>
+            <th>Class prefix</th>
+            <td><code>.col-</code></td>
+            <td><code>.col-sm-</code></td>
+            <td><code>.col-lg-</code></td>
+          </tr>
+          <tr>
+            <th># of columns</th>
+            <td colspan="3">12</td>
+          </tr>
+          <tr>
+            <th>Nestable</th>
+            <td colspan="3">Yes</td>
+          </tr>
+          <tr>
+            <th>Offsets</th>
+            <td colspan="2" class="text-muted">N/A</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <th>Column ordering</th>
+            <td class="text-muted">N/A</td>
+            <td colspan="2">Yes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <h3 id="grid-example-basic">Example: Stacked-to-horizontal</h3>
     <p>Using a single set of grid classes, you can create a basic grid system that starts out stacked on mobile and tablet devices before becoming horizontal on desktop devices.</p>
@@ -1051,44 +1053,46 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h2 id="tables-row-classes">Contextual table classes</h2>
     <p>Use contextual classes to color table rows or individual cells.</p>
-    <table class="table table-bordered table-striped">
-      <colgroup>
-        <col class="col-lg-1">
-        <col class="col-lg-7">
-      </colgroup>
-      <thead>
-        <tr>
-          <th>Class</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <code>.success</code>
-          </td>
-          <td>Indicates a successful or positive action</td>
-        </tr>
-        <tr>
-          <td>
-            <code>.danger</code>
-          </td>
-          <td>Indicates a dangerous or potentially negative action</td>
-        </tr>
-        <tr>
-          <td>
-            <code>.warning</code>
-          </td>
-          <td>Indicates a warning that might need attention</td>
-        </tr>
-        <tr>
-          <td>
-            <code>.active</code>
-          </td>
-          <td>Applies the hover color to a particular row or cell</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="bs-table-scrollable">
+      <table class="table table-bordered table-striped bs-table">
+        <colgroup>
+          <col class="col-lg-1">
+          <col class="col-lg-7">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <code>.success</code>
+            </td>
+            <td>Indicates a successful or positive action</td>
+          </tr>
+          <tr>
+            <td>
+              <code>.danger</code>
+            </td>
+            <td>Indicates a dangerous or potentially negative action</td>
+          </tr>
+          <tr>
+            <td>
+              <code>.warning</code>
+            </td>
+            <td>Indicates a warning that might need attention</td>
+          </tr>
+          <tr>
+            <td>
+              <code>.active</code>
+            </td>
+            <td>Applies the hover color to a particular row or cell</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="bs-example">
       <table class="table">
         <thead>
@@ -1528,11 +1532,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
-
-    <h2 id="forms-extending">Extending form controls</h2>
-    <p>Adding on top of existing browser controls, Bootstrap includes other useful form components.</p>
-
-    <h3 id="forms-input-groups">Input groups</h3>
+    <h2 id="forms-input-groups">Input groups</h3>
     <p>Add text or buttons before, after, or on both sides of any text-based input. Use <code>.input-group</code> with an <code>.add-on</code> to prepend or append elements to an <code>&lt;input&gt;</code>.</p>
 
     <div class="bs-callout bs-callout-danger">
@@ -1545,216 +1545,239 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 
     <form class="bs-example bs-example-form">
-      <div class="input-group col-lg-9">
+      <div class="input-group">
         <span class="input-group-addon">@</span>
         <input type="text" class="form-control" placeholder="Username">
       </div>
       <br>
-      <div class="input-group col-lg-6">
+      <div class="input-group">
         <input type="text" class="form-control">
         <span class="input-group-addon">.00</span>
       </div>
       <br>
-      <div class="input-group col-lg-3">
+      <div class="input-group">
         <span class="input-group-addon">$</span>
         <input type="text" class="form-control">
         <span class="input-group-addon">.00</span>
       </div>
     </form>
 {% highlight html %}
-<div class="input-group col-lg-9">
+<div class="input-group">
   <span class="input-group-addon">@</span>
   <input type="text" class="form-control" placeholder="Username">
 </div>
 
-<div class="input-group col-lg-6">
+<div class="input-group">
   <input type="text" class="form-control">
   <span class="input-group-addon">.00</span>
 </div>
 
-<div class="input-group col-lg-3">
+<div class="input-group">
   <span class="input-group-addon">$</span>
   <input type="text" class="form-control">
   <span class="input-group-addon">.00</span>
 </div>
 {% endhighlight %}
 
-    <h4>Optional sizes</h4>
+    <h3>Optional sizes</h3>
     <p>Add the relative form sizing classes to the <code>.input-group-addon</code>.</p>
     <form class="bs-example bs-example-form">
-      <div class="input-group col-lg-9">
+      <div class="input-group">
         <span class="input-group-addon input-large">@</span>
         <input type="text" class="form-control input-large" placeholder="Username">
       </div>
       <br>
-      <div class="input-group col-lg-9">
+      <div class="input-group">
         <span class="input-group-addon">@</span>
         <input type="text" class="form-control" placeholder="Username">
       </div>
       <br>
-      <div class="input-group col-lg-9">
+      <div class="input-group">
         <span class="input-group-addon input-small">@</span>
         <input type="text" class="form-control input-small" placeholder="Username">
       </div>
     </form>
 {% highlight html %}
-<div class="input-group col-lg-9">
+<div class="input-group">
   <span class="input-group-addon input-large">@</span>
   <input type="text" class="form-control input-large" placeholder="Username">
 </div>
 
-<div class="input-group col-lg-9">
+<div class="input-group">
   <span class="input-group-addon">@</span>
   <input type="text" class="form-control" placeholder="Username">
 </div>
 
-<div class="input-group col-lg-9">
+<div class="input-group">
   <span class="input-group-addon input-small">@</span>
   <input type="text" class="form-control input-small" placeholder="Username">
 </div>
 {% endhighlight %}
 
-    <h4>Buttons instead of text</h4>
+    <h3>Buttons instead of text</h3>
     <p>Buttons in input groups are a bit different and require one extra level of nesting. Instead of <code>.input-group-addon</code>, you'll need to use <code>.input-group-btn</code> to wrap the buttons. This is required due to default browser styles that cannot be overridden.</p>
     <form class="bs-example bs-example-form">
-      <div class="input-group col-lg-7">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">Go!</button>
-        </span>
-        <input type="text" class="form-control">
-      </div>
-      <br>
-      <div class="input-group col-lg-7">
-        <input type="text" class="form-control">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">Go!</button>
-        </span>
-      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Go!</button>
+            </span>
+            <input type="text" class="form-control">
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+        <div class="col-lg-6">
+          <div class="input-group">
+            <input type="text" class="form-control">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Go!</button>
+            </span>
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+      </div><!-- /.row -->
     </form>
 {% highlight html %}
-<div class="input-group col-lg-7">
-  <span class="input-group-btn">
-    <button class="btn btn-default" type="button">Go!</button>
-  </span>
-  <input type="text" class="form-control">
-</div>
-
-<div class="input-group col-lg-7">
-  <input type="text" class="form-control">
-  <span class="input-group-btn">
-    <button class="btn btn-default" type="button">Go!</button>
-  </span>
-</div>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+      <input type="text" class="form-control">
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+  <div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
 {% endhighlight %}
 
-    <h4>Button dropdowns</h4>
+    <h3>Button dropdowns</h3>
     <p></p>
     <form class="bs-example bs-example-form">
-      <div class="input-group col-lg-7">
-        <div class="input-group-btn">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-        <input type="text" class="form-control">
-      </div><!-- /input-group -->
-      <br>
-      <div class="input-group col-lg-7">
-        <input type="text" class="form-control">
-        <div class="input-group-btn">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-          <ul class="dropdown-menu pull-right">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-      </div><!-- /input-group -->
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div><!-- /btn-group -->
+            <input type="text" class="form-control">
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+        <div class="col-lg-6">
+          <div class="input-group">
+            <input type="text" class="form-control">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div><!-- /btn-group -->
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+      </div><!-- /.row -->
     </form>
 {% highlight html %}
-<div class="input-group col-lg-7">
-  <div class="input-group-btn">
-    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href="#">Action</a></li>
-      <li><a href="#">Another action</a></li>
-      <li><a href="#">Something else here</a></li>
-      <li class="divider"></li>
-      <li><a href="#">Separated link</a></li>
-    </ul>
-  </div><!-- /btn-group -->
-  <input type="text" class="form-control">
-</div><!-- /input-group -->
-
-<div class="input-group col-lg-7">
-  <input type="text" class="form-control">
-  <div class="input-group-btn">
-    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-    <ul class="dropdown-menu pull-right">
-      <li><a href="#">Action</a></li>
-      <li><a href="#">Another action</a></li>
-      <li><a href="#">Something else here</a></li>
-      <li class="divider"></li>
-      <li><a href="#">Separated link</a></li>
-    </ul>
-  </div><!-- /btn-group -->
-</div><!-- /input-group -->
+<div class="row">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </div><!-- /btn-group -->
+      <input type="text" class="form-control">
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+  <div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control">
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </div><!-- /btn-group -->
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
 {% endhighlight %}
 
-    <h4>Segmented dropdown groups</h4>
+    <h3>Segmented dropdown groups</h3>
     <form class="bs-example bs-example-form">
-      <div class="input-group col-lg-7">
-        <div class="input-group-btn">
-          <button type="button" class="btn btn-default" tabindex="-1">Action</button>
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </div>
-        <input type="text" class="form-control">
-      </div>
-
-      <br>
-
-      <div class="input-group col-lg-7">
-        <input type="text" class="form-control">
-        <div class="input-group-btn">
-          <button type="button" class="btn btn-default" tabindex="-1">Action</button>
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu pull-right">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </div>
-      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default" tabindex="-1">Action</button>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div>
+            <input type="text" class="form-control">
+          </div><!-- /.input-group -->
+        </div><!-- /.col-lg-6 -->
+        <div class="col-lg-6">
+          <div class="input-group">
+            <input type="text" class="form-control">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default" tabindex="-1">Action</button>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu pull-right">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div>
+          </div><!-- /.input-group -->
+        </div><!-- /.col-lg-6 -->
+      </div><!-- /.row -->
     </form>
 {% highlight html %}
-<div class="input-group col-lg-7">
+<div class="input-group">
   <div class="input-group-btn">
     <!-- Button and dropdown menu -->
   </div>
   <input type="text" class="form-control">
 </div>
 
-<div class="input-group col-lg-7">
+<div class="input-group">
   <input type="text" class="form-control">
   <div class="input-group-btn btn-group">
     <!-- Button and dropdown menu -->
@@ -1762,10 +1785,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 {% endhighlight %}
 
-    <h3 id="forms-control-sizes">Control sizing</h3>
+    <h2 id="forms-control-sizes">Control sizing</h2>
     <p>Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using <code>.col-lg-*</code> classes.</p>
 
-    <h4>Relative sizing</h4>
+    <h3>Relative sizing</h3>
     <p>Create larger or smaller form controls that match button sizes.</p>
     <form class="bs-example bs-example-control-sizing">
       <div class="controls docs-input-sizes">
@@ -1794,7 +1817,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <select class="form-control input-small">...</select>
 {% endhighlight %}
 
-    <h4>Column sizing</h4>
+    <h3>Column sizing</h3>
     <p>Wrap inputs in grid columns, or any custom parent element, to easily enforce desired widths.</p>
     <form class="bs-example" style="padding-bottom: 15px;">
       <div class="row">
@@ -1823,7 +1846,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 {% endhighlight %}
 
-    <h3 id="forms-help-text">Help text</h3>
+    <h2 id="forms-help-text">Help text</h2>
     <p>Block level help text for form controls.</p>
     <form class="bs-example">
       <input type="text" class="form-control">
@@ -2082,7 +2105,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p class="lead">For faster mobile-friendly development, use these utility classes for showing and hiding content by device via media query. Also included are utility classes for toggling content when printed.</p>
 
     <h3>Responsive classes</h3>
-    <div class="hidden-sm">
+    <div class="bs-table-scrollable">
       <table class="table table-bordered table-striped responsive-utilities">
         <thead>
           <tr>
@@ -2134,27 +2157,29 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 
     <h3>Print classes</h3>
-    <table class="table table-bordered table-striped responsive-utilities">
-      <thead>
-        <tr>
-          <th>Class</th>
-          <th>Browser</th>
-          <th>Print</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th><code>.visible-print</code></th>
-          <td class="is-hidden">Hidden</td>
-          <td class="is-visible">Visible</td>
-        </tr>
-        <tr>
-          <th><code>.hidden-print</code></th>
-          <td class="is-visible">Visible</td>
-          <td class="is-hidden">Hidden</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="bs-table-scrollable">
+      <table class="table table-bordered table-striped responsive-utilities">
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Browser</th>
+            <th>Print</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><code>.visible-print</code></th>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-visible">Visible</td>
+          </tr>
+          <tr>
+            <th><code>.hidden-print</code></th>
+            <td class="is-visible">Visible</td>
+            <td class="is-hidden">Hidden</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <h3>When to use</h3>
     <p>Use on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation. Responsive utilities are currently only available for block-level toggling, meaning <code>display: none;</code> or <code>display: block;</code>. Use with inline and table elements is currently not supported.</p>

@@ -418,9 +418,6 @@ body {
 .bs-example-control-sizing input[type="text"] + input[type="text"] {
   margin-top: 10px;
 }
-.bs-example-form {
-  overflow: hidden;
-}
 .bs-example-form .input-group {
   margin-bottom: 10px;
 }
@@ -431,6 +428,9 @@ body {
 }
 
 /* Navbar examples */
+.bs-example .navbar:last-child {
+  margin-bottom: 0;
+}
 .bs-navbar-top-example,
 .bs-navbar-bottom-example {
   z-index: 1;
@@ -457,7 +457,7 @@ body {
 }
 .bs-navbar-top-example:after {
   top: auto;
-  bottom: -1px;
+  bottom: 15px;
   -webkit-border-radius: 0 4px 0 4px;
      -moz-border-radius: 0 4px 0 4px;
           border-radius: 0 4px 0 4px;
@@ -545,6 +545,37 @@ body {
 /* Responsive docs
 -------------------------------------------------- */
 
+/* Responsive (scrollable) doc tables */
+@media (max-width: 768px) {
+  .bs-table-scrollable {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    border: 1px solid #ddd;
+  }
+  .bs-table-scrollable .table {
+    margin-bottom: 0;
+    border: 0;
+  }
+  .bs-table-scrollable .table th,
+  .bs-table-scrollable .table td {
+    white-space: nowrap;
+  }
+  .bs-table-scrollable .table th:first-child,
+  .bs-table-scrollable .table td:first-child {
+    border-left: 0;
+  }
+  .bs-table-scrollable .table th:last-child,
+  .bs-table-scrollable .table td:last-child {
+    border-right: 0;
+  }
+  .bs-table-scrollable .table tr:last-child th,
+  .bs-table-scrollable .table tr:last-child td {
+    border-bottom: 0;
+  }
+}
+
 /* Related: responsive utilities tables */
 .table code {
   font-size: 13px;
@@ -578,7 +609,7 @@ body {
 ------------------------- */
 .responsive-utilities-test {
   margin-top: 5px;
-  margin-left: 0;
+  padding-left: 0;
   list-style: none;
   overflow: hidden; /* clear floats */
 }
