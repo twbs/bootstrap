@@ -77,12 +77,11 @@
 // -------------------------
 
 @mixin nav-justified {
-  display: table;
   width: 100%;
   > li {
     float: none;
     display: table-cell;
-    width: auto;
+    width: 1%;
     > a {
       text-align: center;
     }
@@ -162,9 +161,7 @@
       border-radius: 5px;
     }
     + li {
-      > a {
-        margin-left: 2px;
-      }
+      margin-left: 2px;
     }
 
     // Active state
@@ -194,6 +191,7 @@
 }
 
 .nav-justified { @include nav-justified; }
+
 
 // Tabbable tabs
 // -------------------------
