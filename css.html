@@ -2086,7 +2086,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p class="lead">For faster mobile-friendly development, use these utility classes for showing and hiding content by device via media query. Also included are utility classes for toggling content when printed.</p>
 
     <h3>Responsive classes</h3>
-    <div class="hidden-sm">
+    <div class="bs-scrollable-table">
       <table class="table table-bordered table-striped responsive-utilities">
         <thead>
           <tr>
@@ -2138,27 +2138,29 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 
     <h3>Print classes</h3>
-    <table class="table table-bordered table-striped responsive-utilities">
-      <thead>
-        <tr>
-          <th>Class</th>
-          <th>Browser</th>
-          <th>Print</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th><code>.visible-print</code></th>
-          <td class="is-hidden">Hidden</td>
-          <td class="is-visible">Visible</td>
-        </tr>
-        <tr>
-          <th><code>.hidden-print</code></th>
-          <td class="is-visible">Visible</td>
-          <td class="is-hidden">Hidden</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="bs-scrollable-table">
+      <table class="table table-bordered table-striped responsive-utilities">
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Browser</th>
+            <th>Print</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><code>.visible-print</code></th>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-visible">Visible</td>
+          </tr>
+          <tr>
+            <th><code>.hidden-print</code></th>
+            <td class="is-visible">Visible</td>
+            <td class="is-hidden">Hidden</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <h3>When to use</h3>
     <p>Use on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation. Responsive utilities are currently only available for block-level toggling, meaning <code>display: none;</code> or <code>display: block;</code>. Use with inline and table elements is currently not supported.</p>
