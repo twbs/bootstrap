@@ -8,11 +8,28 @@
 
     var $window = $(window)
 
+    var navHeight = $('.navbar').outerHeight(true) + 10
+
+    $(document.body).scrollspy({
+      target: '.bs-sidebar',
+      offset: navHeight
+    })
+
     // Disable certain links in docs
     $('.bs-docs-container [href=#]').click(function (e) {
       e.preventDefault()
     })
 
+    $(document.body).on('click', '[href^=#]', function (e) {
+
+      var $target = $(this.getAttribute('href'))
+
+      e.preventDefault() // prevent browser scroll
+
+      document.body.scrollTop =
+        $target.offset().top -
+        navHeight + 5 // offset scroll by nav
+    })
 
     // back to top
     setTimeout(function () {

@@ -8,9 +8,9 @@ lead: "Bring Bootstrap's components to life with over a dozen custom jQuery plug
 
   <!-- Overview
   ================================================== -->
-  <div class="bs-docs-section" id="js-overview">
+  <div class="bs-docs-section">
     <div class="page-header">
-      <h1>Overview</h1>
+      <h1 id="js-overview">Overview</h1>
     </div>
 
     <h3 id="js-individual-compiled">Individual or compiled</h3>
@@ -81,9 +81,9 @@ $('#myModal').on('show.bs.modal', function (e) {
 
   <!-- Transitions
   ================================================== -->
-  <div class="bs-docs-section" id="transitions">
+  <div class="bs-docs-section">
     <div class="page-header">
-      <h1>Transitions <small>transition.js</small></h1>
+      <h1 id="transitions">Transitions <small>transition.js</small></h1>
     </div>
     <h3>About transitions</h3>
     <p>For simple transition effects, include <code>transition.js</code> once alongside the other JS files. If you're using the compiled (or minified) <code>bootstrap.js</code>, there is no need to include this&mdash;it's already there.</p>
@@ -103,9 +103,9 @@ $('#myModal').on('show.bs.modal', function (e) {
 
   <!-- Modal
   ================================================== -->
-  <div class="bs-docs-section" id="modals">
+  <div class="bs-docs-section">
     <div class="page-header">
-      <h1>Modals <small>modal.js</small></h1>
+      <h1 id="modals">Modals <small>modal.js</small></h1>
     </div>
 
     <h2 id="modals-examples">Examples</h2>
@@ -339,9 +339,9 @@ $('#myModal').on('hidden.bs.modal', function () {
 
         <!-- Dropdowns
         ================================================== -->
-        <section id="dropdowns">
+        <div class="bs-docs-section">
           <div class="page-header">
-            <h1>Dropdowns <small>dropdown.js</small></h1>
+            <h1 id="dropdowns">Dropdowns <small>dropdown.js</small></h1>
           </div>
 
 
@@ -481,9 +481,9 @@ $('.dropdown-toggle').dropdown()
 
         <!-- ScrollSpy
         ================================================== -->
-        <section id="scrollspy">
+        <div class="bs-docs-section">
           <div class="page-header">
-            <h1>ScrollSpy <small>scrollspy.js</small></h1>
+            <h1 id="scrollspy">ScrollSpy <small>scrollspy.js</small></h1>
           </div>
 
 
@@ -527,7 +527,7 @@ $('.dropdown-toggle').dropdown()
           </div><!-- /example -->
 
 
-          <h2 id="scrollspy-examples">Usage</h2>
+          <h2 id="scrollspy-usage">Usage</h2>
 
           <h3>Via data attributes</h3>
           <p>To easily add scrollspy behavior to your topbar navigation, add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the <code>&lt;body&gt;</code>. Then add the <code>data-target</code> attribute with the ID or class of the parent element of any Bootstrap <code>.nav</code> component.</p>
@@ -605,9 +605,9 @@ $('#myScrollspy').on('activate.bs.scrollspy', function () {
 
         <!-- Tabs
         ================================================== -->
-        <section id="tabs">
+        <div class="bs-docs-section">
           <div class="page-header">
-            <h1>Togglable tabs <small>tab.js</small></h1>
+            <h1 id="tabs">Togglable tabs <small>tab.js</small></h1>
           </div>
 
 
@@ -645,7 +645,7 @@ $('#myScrollspy').on('activate.bs.scrollspy', function () {
           <hr class="bs-docs-separator">
 
 
-          <h2 id="tabs-examples">Usage</h2>
+          <h2 id="tabs-usage">Usage</h2>
           <p>Enable tabbable tabs via JavaScript (each tab needs to be activated individually):</p>
 {% highlight js %}
 $('#myTab a').click(function (e) {
@@ -732,9 +732,9 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 
         <!-- Tooltips
         ================================================== -->
-        <section id="tooltips">
+        <div class="bs-docs-section">
           <div class="page-header">
-            <h1>Tooltips <small>tooltip.js</small></h1>
+            <h1 id="tooltips">Tooltips <small>tooltip.js</small></h1>
           </div>
 
           <h2 id="tooltips-examples">Examples</h2>
@@ -763,7 +763,7 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
           <hr class="bs-docs-separator">
 
 
-          <h2 id="tooltips-examples">Usage</h2>
+          <h2 id="tooltips-usage">Usage</h2>
           <p>Trigger the tooltip via JavaScript:</p>
 {% highlight js %}
 $('#example').tooltip(options)
@@ -873,9 +873,9 @@ $('#example').tooltip(options)
 
       <!-- Popovers
       ================================================== -->
-      <section id="popovers">
+      <div class="bs-docs-section">
         <div class="page-header">
-          <h1>Popovers <small>popover.js</small></h1>
+          <h1 id="popovers">Popovers <small>popover.js</small></h1>
         </div>
 
         <h2 id="popovers-examples">Examples</h2>
@@ -947,7 +947,7 @@ $('#example').tooltip(options)
         <hr class="bs-docs-separator">
 
 
-        <h2 id="popovers-examples">Usage</h2>
+        <h2 id="popovers-usage">Usage</h2>
         <p>Enable popovers via JavaScript:</p>
         {% highlight js %}$('#example').popover(options){% endhighlight %}
 
@@ -1058,9 +1058,9 @@ $('#example').tooltip(options)
 
       <!-- Alert
       ================================================== -->
-      <div class="bs-docs-section" id="alerts">
+      <div class="bs-docs-section">
         <div class="page-header">
-          <h1>Alert messages <small>alert.js</small></h1>
+          <h1 id="alerts">Alert messages <small>alert.js</small></h1>
         </div>
 
 
@@ -1088,7 +1088,7 @@ $('#example').tooltip(options)
         <hr class="bs-docs-separator">
 
 
-        <h2 id="alerts-examples">Usage</h2>
+        <h2 id="alerts-usage">Usage</h2>
         <p>Enable dismissal of an alert via JavaScript:</p>
         {% highlight js %}$(".alert").alert(){% endhighlight %}
 
@@ -1137,9 +1137,9 @@ $('#my-alert').bind('closed.bs.alert', function () {
 
           <!-- Buttons
           ================================================== -->
-          <div class="bs-docs-section" id="buttons">
+          <div class="bs-docs-section">
             <div class="page-header">
-              <h1>Buttons <small>button.js</small></h1>
+              <h1 id="buttons">Buttons <small>button.js</small></h1>
             </div>
 
             <h2 id="buttons-examples">Example uses</h2>
@@ -1229,7 +1229,7 @@ $('#my-alert').bind('closed.bs.alert', function () {
             <hr class="bs-docs-separator">
 
 
-            <h2 id="buttons-examples">Usage</h2>
+            <h2 id="buttons-usage">Usage</h2>
             <p>Enable buttons via JavaScript:</p>
 {% highlight js %}
 $('.nav-tabs').button()
@@ -1282,9 +1282,9 @@ $('.nav-tabs').button()
 
           <!-- Collapse
           ================================================== -->
-          <section id="collapse">
+          <div class="bs-docs-section">
             <div class="page-header">
-              <h1>Collapse <small>collapse.js</small></h1>
+              <h1 id="collapse">Collapse <small>collapse.js</small></h1>
             </div>
 
             <h3>About</h3>
@@ -1392,7 +1392,7 @@ $('.nav-tabs').button()
             <hr class="bs-docs-separator">
 
 
-            <h2 id="collapse-examples">Usage</h2>
+            <h2 id="collapse-usage">Usage</h2>
 
             <h3>Via data attributes</h3>
             <p>Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a CSS selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
@@ -1492,9 +1492,9 @@ $('#myCollapsible').on('hidden.bs.collapse', function () {
 
            <!-- Carousel
           ================================================== -->
-          <section id="carousel">
+          <div class="bs-docs-section">
             <div class="page-header">
-              <h1>Carousel <small>carousel.js</small></h1>
+              <h1 id="carousel">Carousel <small>carousel.js</small></h1>
             </div>
 
             <h2 id="carousel-examples">Examples</h2>
@@ -1614,7 +1614,7 @@ $('#myCollapsible').on('hidden.bs.collapse', function () {
             <hr class="bs-docs-separator">
 
 
-            <h2 id="carousel-examples">Usage</h2>
+            <h2 id="carousel-usage">Usage</h2>
 
             <h3>Via data attributes</h3>
             <p>Use data attributes to easily control the position of the carousel. <code>data-slide</code> accepts the keywords <code>prev</code> or <code>next</code>, which alters the slide position relative to its current position. Alternatively, use <code>data-slide-to</code> to pass a raw slide index to the carousel <code>data-slide-to="2"</code>, which shifts the slide position to a particular index beginning with <code>0</code>.</p>
@@ -1709,9 +1709,9 @@ $('#myCarousel').on('slide.bs.carousel', function () {
 
           <!-- Affix
           ================================================== -->
-          <section id="affix">
+          <div class="bs-docs-section">
             <div class="page-header">
-              <h1>Affix <small>affix.js</small></h1>
+              <h1 id="affix">Affix <small>affix.js</small></h1>
             </div>
 
             <h2 id="affix-examples">Example</h2>
@@ -1719,7 +1719,7 @@ $('#myCarousel').on('slide.bs.carousel', function () {
 
             <hr class="bs-docs-separator">
 
-            <h2 id="affix-examples">Usage</h2>
+            <h2 id="affix-usage">Usage</h2>
 
             <h3>Via data attributes</h3>
             <p>To easily add affix behavior to any element, just add <code>data-spy="affix"</code> to the element you want to spy on. Then use offsets to define when to toggle the pinning of an element on and off.</p>
