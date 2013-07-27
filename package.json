@@ -3,12 +3,12 @@
   , "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development."
   , "version": "2.3.2"
   , "keywords": ["bootstrap", "css"]
-  , "homepage": "http://twitter.github.com/bootstrap/"
+  , "homepage": "http://twbs.github.com/bootstrap/"
   , "author": "Twitter Inc."
   , "scripts": { "test": "make test" }
   , "repository": {
       "type": "git"
-    , "url": "https://github.com/twitter/bootstrap.git"
+    , "url": "https://github.com/twbs/bootstrap.git"
   }
   , "licenses": [
     {
@@ -19,7 +19,7 @@
   , "devDependencies": {
       "uglify-js": "1.3.4"
     , "jshint": "0.9.1"
-    , "recess": "1.1.8"
+    , "recess": "1.1.9"
     , "connect": "2.1.3"
     , "hogan.js": "2.0.0"
   }

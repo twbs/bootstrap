@@ -1,8 +1,8 @@
 /* ===================================================
  * bootstrap-transition.js v2.3.2
- * http://twitter.github.com/bootstrap/javascript.html#transitions
+ * http://twbs.github.com/bootstrap/javascript.html#transitions
  * ===================================================
- * Copyright 2012 Twitter, Inc.
+ * Copyright 2013 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

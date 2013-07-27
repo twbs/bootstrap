@@ -1,5 +1,10 @@
+## 2.3.2 re-release (July 26, 2013)
+
+Patch to update jQuery in Bower and bump Recess to 1.1.9.
+
 ## 2.3.2 (May 17, 2013)
-- Fix dropdown for firefox (middleclick) and mobile
+
+Fix dropdown for firefox (middleclick) and mobile.
 
 ## 2.3.1 (February 28, 2013)
 
@@ -23,8 +28,8 @@ Minor release to add carousel indicators, improve tooltips, improve dev setup, a
   - **Added carousel indicators!** Add the HTML and it automagically works.
   - **Added `container` option to tooltips.** The default option is still `insertAfter`, but now you may specify where to insert tooltips (and by extension, popovers) with the optional container parameter.
   - Improved popovers now utilize `max-width` instead of `width`, have been widened from 240px to 280px, and will automatically hide the title if one has not been set via CSS `:empty` selector.
-  - Improved tooltip alignment on edges with [#6713](https://github.com/twitter/bootstrap/pull/6713).
-  - **Improved accessibility for links in all components.** After merging [#6441](https://github.com/twitter/bootstrap/pull/6441), link hover states now apply to the `:focus` state as well. This goes for basic `<a>` tags, as well as buttons, navs, dropdowns, and more.
+  - Improved tooltip alignment on edges with [#6713](https://github.com/twbs/bootstrap/pull/6713).
+  - **Improved accessibility for links in all components.** After merging [#6441](https://github.com/twbs/bootstrap/pull/6441), link hover states now apply to the `:focus` state as well. This goes for basic `<a>` tags, as well as buttons, navs, dropdowns, and more.
   - Added print utility classes to show and hide content between `screen` and `print` via CSS.
   - Updated input groups to make them behave more like default form controls. Added `display: inline-block;`, increased `margin-bottom`, and added `vertical-align: middle;`  to match `<input>` styles.
   - Added `.horizontal-three-colors()` gradient mixin (with example in the CSS tests file).
@@ -34,7 +39,7 @@ Minor release to add carousel indicators, improve tooltips, improve dev setup, a
   - Added [new justified navigation example](https://f.cloud.github.com/assets/98681/25869/5e2f812c-4afa-11e2-9293-501cd689232d.png).
   - Added sticky footer with fixed navbar example.
 
-See more on the [2.3.0 pull request](https://github.com/twitter/bootstrap/pull/6346).
+See more on the [2.3.0 pull request](https://github.com/twbs/bootstrap/pull/6346).
 
 
 ## 2.2.2 (December 8, 2012)
@@ -49,14 +54,14 @@ Bugfix release addressing docs, CSS, and some JavaScript issues. Key changes inc
   - No longer inherits `font-size: 0;` when placed in button groups.
   - Arrows refactored to work in IE8, and use less code.
   - Plugin no longer inserts popover content into a `<p>`, but rather directly into `.popover-content`.
-- **Labels and badges:** Now [automatically collapse](https://github.com/twitter/bootstrap/commit/ead5dbeba5cd7acfa560bfb353f5e7c4f4a19256) if they have no content.
+- **Labels and badges:** Now [automatically collapse](https://github.com/twbs/bootstrap/commit/ead5dbeba5cd7acfa560bfb353f5e7c4f4a19256) if they have no content.
 - **Tables:** Nesting support with `.table-bordered` and `.table-striped` greatly improved.
 - **Typeahead:**
-  - Now [inserts dropdown menu after the input](https://github.com/twitter/bootstrap/commit/1747caf19d59cad7fdc90ae56a00e0e2849f95f4) instead of at the close of the document.
+  - Now [inserts dropdown menu after the input](https://github.com/twbs/bootstrap/commit/1747caf19d59cad7fdc90ae56a00e0e2849f95f4) instead of at the close of the document.
   - Hitting escape will place focus back on the `<input>`.
 - Print styles, from HTML5 Boilerplate, have been added.
 
-See more on the [2.2.2 milestone](https://github.com/twitter/bootstrap/issues?milestone=17&state=closed).
+See more on the [2.2.2 milestone](https://github.com/twbs/bootstrap/issues?milestone=17&state=closed).
 
 
 ## 2.2.1 (October 30, 2012)
@@ -68,7 +73,7 @@ Hotfix release to address the carousel bug reports.
 
 ### tl;dr
 
-2.1.2 is now 2.2.0: four new example templates, added media component, new typographic scale, fixed that box-shadow mixin bug, fixed z-index issues, and [more](https://github.com/twitter/bootstrap/issues?milestone=15&page=1&state=closed).
+2.1.2 is now 2.2.0: four new example templates, added media component, new typographic scale, fixed that box-shadow mixin bug, fixed z-index issues, and [more](https://github.com/twbs/bootstrap/issues?milestone=15&page=1&state=closed).
 
 ### Highlights
 
@@ -86,13 +91,13 @@ Hotfix release to address the carousel bug reports.
 - Miscellaneous variable improvements across the board.
 - Miscellaneous documentation typos fixed.
 
-For the full list of issues included in this release, visit the [2.2.0 milestone on GitHub](https://github.com/twitter/bootstrap/issues?milestone=15&page=1&state=closed)
+For the full list of issues included in this release, visit the [2.2.0 milestone on GitHub](https://github.com/twbs/bootstrap/issues?milestone=15&page=1&state=closed)
 
 
 
 ## 2.1.1 (September 4, 2012)
 
-* New feature: alert text. We documented these new classes, like `.text-success`, at the bottom of the [Typography section](http://twitter.github.com/bootstrap/base-css.html#typography) along with the long undocumented `.muted`.
+* New feature: alert text. We documented these new classes, like `.text-success`, at the bottom of the [Typography section](http://twbs.github.com/bootstrap/base-css.html#typography) along with the long undocumented `.muted`.
 * Fixed a lot of typos in the docs. Spelling is hard.
 * Made the `.box-shadow()` mixin more durable. It no longer requires escaping for multiple shadows, meaning you can easily use variables and functions in them once again.
 * Widened `.dl-horizontal dt` and `.horizontal-form .control-group` to better handle the increased font-size.
@@ -103,7 +108,7 @@ For the full list of issues included in this release, visit the [2.2.0 milestone
 * Fixed the vertical three color gradient in latest Firefox.
 * Reordered some variables that caused errors in certain Less compilers.
 
-View all closed issues on the [2.1.1 milestone](https://github.com/twitter/bootstrap/issues?milestone=14&state=closed).
+View all closed issues on the [2.1.1 milestone](https://github.com/twbs/bootstrap/issues?milestone=14&state=closed).
 
 
 ## 2.1.0 (August 20, 2012)
@@ -123,7 +128,7 @@ View all closed issues on the [2.1.1 milestone](https://github.com/twitter/boots
 * Fluid grid system variables are no longer fixed percentages
 * Removed LESS docs page
 
-For full set of changes, see the completed milestone: https://github.com/twitter/bootstrap/issues?milestone=7&page=1&state=closed
+For full set of changes, see the completed milestone: https://github.com/twbs/bootstrap/issues?milestone=7&page=1&state=closed
 
 ## 2.0.4 (June 1, 2012)
 
@@ -280,7 +285,7 @@ Overview of docs changes, bugfixes, and new features.
 - Added `.disabled` class support to the pager component (also added a mention of this to the docs)
 - Added `.well-large` and `.well-small` classes for extending the well component
 
-For a full issue-by-issue rundown of the release, check out the now closed [2.0.2 milestone on GitHub](https://github.com/twitter/bootstrap/issues?sort=created&direction=desc&state=closed&page=1&milestone=9)
+For a full issue-by-issue rundown of the release, check out the now closed [2.0.2 milestone on GitHub](https://github.com/twbs/bootstrap/issues?sort=created&direction=desc&state=closed&page=1&milestone=9)
 
 ## v2.0.1 (February 17, 2012)
 
@@ -296,10 +301,10 @@ Overview of changes:
 - Rearranged Scaffolding docs page to split fixed and fluid grid systems.
 - Tons of docs updates for typos and language changes.
 
-For full list of changes, see the now closed [v2.0.1 milestone](https://github.com/twitter/bootstrap/issues?milestone=8&state=closed).
+For full list of changes, see the now closed [v2.0.1 milestone](https://github.com/twbs/bootstrap/issues?milestone=8&state=closed).
 
 ## v2.0.0 (January 28, 2012)
-Complete rewrite of the library. For full details, head to the upgrading doc at http://twitter.github.com/bootstrap/upgrading.html.
+Complete rewrite of the library. For full details, head to the upgrading doc at http://twbs.github.com/bootstrap/upgrading.html.
 
 ## v1.4.0
 ### Key bug fixes and changes
@@ -308,7 +313,7 @@ Complete rewrite of the library. For full details, head to the upgrading doc at 
 - New javascript plugin for button states
 - Switched to strict mode for Javascript plugins
 - Added more data attribute controls to our plugins
-- Full list of 25+ issues fixed: https://github.com/twitter/bootstrap/issues?milestone=6&state=closed
+- Full list of 25+ issues fixed: https://github.com/twbs/bootstrap/issues?milestone=6&state=closed
 
 ## v1.3.0
 ### New features
