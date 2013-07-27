@@ -15,6 +15,7 @@ body {
 
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
+  position: relative;
   z-index: 10;
 }
 
