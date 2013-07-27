@@ -4272,6 +4272,7 @@ a.list-group-item.active > .badge,
   height: 20px;
   margin-top: -10px;
   margin-left: -10px;
+  font-family: serif;
 }
 
 .carousel-control .icon-prev:before {
