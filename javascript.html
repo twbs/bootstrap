@@ -867,6 +867,39 @@ $('#example').tooltip(options)
           <h4>.tooltip('destroy')</h4>
           <p>Hides and destroys an element's tooltip.</p>
           {% highlight js %}$('#element').tooltip('destroy'){% endhighlight %}
+
+          <h3>Events</h3>
+          <table class="table table-bordered table-striped">
+            <thead>
+             <tr>
+               <th style="width: 150px;">Event Type</th>
+               <th>Description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>show</td>
+               <td>This event fires immediately when the <code>show</code> instance method is called.</td>
+             </tr>
+             <tr>
+               <td>shown</td>
+               <td>This event is fired when the tooltip has been made visible to the user (will wait for CSS transitions to complete).</td>
+             </tr>
+             <tr>
+               <td>hide</td>
+               <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
+             </tr>
+             <tr>
+               <td>hidden</td>
+               <td>This event is fired when the tooltip has finished being hidden from the user (will wait for CSS transitions to complete).</td>
+             </tr>
+            </tbody>
+          </table>
+{% highlight js %}
+$('#myTooltip').on('hidden.bs.tooltip', function () {
+  // do something…
+})
+{% endhighlight %}
         </section>
 
 
@@ -1052,6 +1085,39 @@ $('#example').tooltip(options)
         <h4>.popover('destroy')</h4>
         <p>Hides and destroys an element's popover.</p>
         {% highlight js %}$('#element').popover('destroy'){% endhighlight %}
+
+        <h3>Events</h3>
+        <table class="table table-bordered table-striped">
+          <thead>
+           <tr>
+             <th style="width: 150px;">Event Type</th>
+             <th>Description</th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+             <td>show</td>
+             <td>This event fires immediately when the <code>show</code> instance method is called.</td>
+           </tr>
+           <tr>
+             <td>shown</td>
+             <td>This event is fired when the popover has been made visible to the user (will wait for CSS transitions to complete).</td>
+           </tr>
+           <tr>
+             <td>hide</td>
+             <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
+           </tr>
+           <tr>
+             <td>hidden</td>
+             <td>This event is fired when the popover has finished being hidden from the user (will wait for CSS transitions to complete).</td>
+           </tr>
+          </tbody>
+        </table>
+{% highlight js %}
+$('#myPopover').on('hidden.bs.popover', function () {
+  // do something…
+})
+{% endhighlight %}
       </section>
 
 
