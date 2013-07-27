@@ -2519,7 +2519,6 @@ button.close {
 }
 
 .nav-tabs.nav-justified {
-  display: table;
   width: 100%;
   border-bottom: 0;
 }
@@ -2527,7 +2526,7 @@ button.close {
 .nav-tabs.nav-justified > li {
   display: table-cell;
   float: none;
-  width: auto;
+  width: 1%;
 }
 
 .nav-tabs.nav-justified > li > a {
@@ -2572,14 +2571,13 @@ button.close {
 }
 
 .nav-justified {
-  display: table;
   width: 100%;
 }
 
 .nav-justified > li {
   display: table-cell;
   float: none;
-  width: auto;
+  width: 1%;
 }
 
 .nav-justified > li > a {
