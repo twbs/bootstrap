@@ -418,9 +418,6 @@ body {
 .bs-example-control-sizing input[type="text"] + input[type="text"] {
   margin-top: 10px;
 }
-.bs-example-form {
-  overflow: hidden;
-}
 .bs-example-form .input-group {
   margin-bottom: 10px;
 }
