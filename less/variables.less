@@ -48,11 +48,13 @@
 @font-size-large:         ceil(@font-size-base * 1.25); // ~18px
 @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 
+@font-weight-base:        500;
+
 @line-height-base:        1.428571429; // 20/14
 @line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
 
 @headings-font-family:    @font-family-base;
-@headings-font-weight:    500;
+@headings-font-weight:    @font-weight-base;
 @headings-line-height:    1.1;
 
 
@@ -118,6 +120,11 @@
 @btn-info-border:                @btn-info-bg;
 
 @btn-hover-color:                @btn-default-color;
+
+
+@btn-small-line-height:          1.5;
+@btn-link-disabled-color:        @gray-dark;
+@btn-large-caret-border-width:   5px;
 
 
 // Forms
@@ -383,6 +390,8 @@
 @alert-info-text:             @state-info-text;
 @alert-info-border:           @state-info-border;
 
+@alert-link-font-weight:      @font-weight-base;
+
 
 // Progress bars
 // -------------------------
@@ -467,6 +476,10 @@
 @badge-active-color:          @link-color;
 @badge-active-bg:             #fff;
 
+@badge-font-weight:           bold;
+@badge-line-height:           1;
+@badge-border-radius:         10px;
+
 
 // Breadcrumbs
 // -------------------------
@@ -480,9 +493,13 @@
 @carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6);
 
 @carousel-control-color:                      #fff;
+@carousel-control-width:                      15%;
+@carousel-control-opacity:                    .5;
+@carousel-control-font-size:                  20px;
 
-@carousel-indicator-border-color:             #fff;
+@carousel-indicators-width:                   120px;
 @carousel-indicator-active-bg:                #fff;
+@carousel-indicator-border-color:             #fff;
 
 @carousel-caption-color:                      #fff;
 
@@ -491,6 +508,9 @@
 // ------------------------
 @close-color:                 #000;
 @close-text-shadow:           0 1px 0 #fff;
+
+@close-font-weight:           bold;
+@close-line-height:           1;
 
 
 // Code
