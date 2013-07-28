@@ -3366,13 +3366,11 @@ button.close {
 }
 
 .modal-dialog {
-  position: relative;
-  top: 0;
-  right: 0;
-  left: 0;
   z-index: 1050;
   width: auto;
   padding: 10px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .modal-content {
@@ -3471,10 +3469,9 @@ button.close {
   .modal-dialog {
     right: auto;
     left: 50%;
-    width: 560px;
+    width: 600px;
     padding-top: 30px;
     padding-bottom: 30px;
-    margin-left: -280px;
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
