@@ -234,8 +234,10 @@
       })
   })
 
-  var $body = $(document.body)
-    .on('shown.bs.modal',  '.modal', function () { $body.addClass('modal-open') })
-    .on('hidden.bs.modal', '.modal', function () { $body.removeClass('modal-open') })
+  $(window).on('load', function(){
+    var $body = $(document.body)
+      .on('shown.bs.modal',  '.modal', function () { $body.addClass('modal-open') })
+      .on('hidden.bs.modal', '.modal', function () { $body.removeClass('modal-open') })
+  })
 
 }(window.jQuery);
