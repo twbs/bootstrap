@@ -261,11 +261,8 @@ body {
 
 /* Nav: second level (shown on .active) */
 .bs-sidebar .nav .nav {
-  display: none;
+  display: none; /* Hide by default, but at >768px, show it */
   margin-bottom: 8px;
-}
-.bs-sidebar .nav > .active > ul {
-  display: block;
 }
 .bs-sidebar .nav .nav > li > a {
   padding-top:    3px;
@@ -790,6 +787,10 @@ input.focused {
 
   /* Show the docs nav */
   .bs-sidebar {
+    display: block;
+  }
+  /* Show the hidden subnavs when space allows it */
+  .bs-sidebar .nav > .active > ul {
     display: block;
   }
 
