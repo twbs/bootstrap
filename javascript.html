@@ -790,7 +790,7 @@ $('#example').tooltip(options)
            <td>placement</td>
            <td>string | function</td>
            <td>'top'</td>
-           <td>how to position the tooltip - top | bottom | left | right | auto. <br> When "auto" is specified, it will dynamically reorient the tooltip. For example, if placement is "auto left", the tooltip will display to the left when possible, otherwise it will display right.</td>
+           <td>how to position the tooltip - left | top | bottom | right | auto. <br> When "auto" is specified, it will dynamically reorient the tooltip. For example, if placement is "auto left", the tooltip will display to the left when possible, otherwise it will display right.</td>
          </tr>
          <tr>
            <td>selector</td>
@@ -918,19 +918,19 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
     </div>
 
     <h3>Static popover</h3>
-    <p>Four options are available: top, right, bottom, and left aligned.</p>
+    <p>Four options are available: left, top, bottom, and right aligned.</p>
     <div class="bs-example bs-example-popover">
-      <div class="popover top">
+      <div class="popover left">
         <div class="arrow"></div>
-        <h3 class="popover-title">Popover top</h3>
+        <h3 class="popover-title">Popover left</h3>
         <div class="popover-content">
           <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
         </div>
       </div>
 
-      <div class="popover right">
+      <div class="popover top">
         <div class="arrow"></div>
-        <h3 class="popover-title">Popover right</h3>
+        <h3 class="popover-title">Popover top</h3>
         <div class="popover-content">
           <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
         </div>
@@ -944,9 +944,9 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
         </div>
       </div>
 
-      <div class="popover left">
+      <div class="popover right">
         <div class="arrow"></div>
-        <h3 class="popover-title">Popover left</h3>
+        <h3 class="popover-title">Popover right</h3>
         <div class="popover-content">
           <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
         </div>
@@ -963,17 +963,17 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
     <h4>Four directions</h4>
     <div class="bs-example tooltip-demo">
       <div class="bs-example-tooltips">
+        <button type="button" class="btn btn-default" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+          Popover on left
+        </button>
         <button type="button" class="btn btn-default" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
           Popover on top
-        </button>
-        <button type="button" class="btn btn-default" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-          Popover on right
         </button>
         <button type="button" class="btn btn-default" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
           Popover on bottom
         </button>
-        <button type="button" class="btn btn-default" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-          Popover on left
+        <button type="button" class="btn btn-default" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+          Popover on right
         </button>
       </div>
     </div><!-- /example -->
@@ -1012,7 +1012,7 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
             <td>placement</td>
             <td>string | function</td>
             <td>'right'</td>
-            <td>how to position the popover - top | bottom | left | right | auto.<br> When "auto" is specified, it will dynamically reorient the popover. For example, if placement is "auto left", the tooltip will display to the left when possible, otherwise it will display right.</td>
+            <td>how to position the popover - left | top | bottom | right | auto.<br> When "auto" is specified, it will dynamically reorient the popover. For example, if placement is "auto left", the tooltip will display to the left when possible, otherwise it will display right.</td>
           </tr>
           <tr>
             <td>selector</td>

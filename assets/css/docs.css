@@ -511,7 +511,7 @@ body {
 
 /* Tooltips */
 .bs-example-tooltips {
-  text-align: center;
+  text-align: left;
 }
 
 /* Popovers */
