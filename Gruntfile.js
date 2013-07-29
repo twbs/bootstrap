@@ -60,12 +60,10 @@ module.exports = function(grunt) {
             }
         },
         sass: {
-            options: {
-                precision: 10
-            },
             bootstrap: {
                 options: {
-                    style: 'expanded'
+                    style: 'expanded',
+                    precision: 15
                 },
                 files: {
                     'dist/css/bootstrap.css': ['scss/bootstrap.scss']
@@ -73,7 +71,8 @@ module.exports = function(grunt) {
             },
             min: {
                 options: {
-                    style: 'compressed'
+                    style: 'compressed',
+                    precision: 15
                 },
                 files: {
                     'dist/css/bootstrap.min.css': ['scss/bootstrap.scss']
