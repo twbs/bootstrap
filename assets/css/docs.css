@@ -388,7 +388,6 @@ body {
 .bs-example-type .table td {
   color: #999;
   vertical-align: middle;
-  border-color: ;
 }
 .bs-example-type .table td,
 .bs-example-type .table th {
@@ -749,11 +748,6 @@ input.focused {
   margin-bottom: 5px;
 }
 
-/* Hide the top link initially */
-.bs-top {
-  display: none;
-}
-
 
 /* Responsive variations
 -------------------------------------------------- */
@@ -768,26 +762,6 @@ input.focused {
 /* Tablets and up */
 @media screen and (min-width: 768px) {
 
-  /* Back to top link */
-  .bs-top {
-    display: block; /* Unhide */
-    float: left;
-    padding: 7px 15px;
-    font-weight: 500;
-    color: #999;
-    background-color: #eee;
-    border-radius: 4px;
-  }
-  .bs-top:hover {
-    color: #fff;
-    text-decoration: none;
-    background-color: #999;
-  }
-  .bs-top.affix {
-    position: fixed;
-    right:  15px;
-    bottom: 15px;
-  }
   .bs-header {
     font-size: 21px;
     text-align: left;

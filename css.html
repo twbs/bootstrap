@@ -31,6 +31,12 @@ base_url: "../"
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% endhighlight %}
 
+    <h3 id="overview-responsive-images">Responsive images</h3>
+    <p>Images in Bootstrap 3 can be made responsive-friendly via the addition of the <code>.img-responsive</code> class. This applies <code>max-width: 100%;</code> and <code>height: auto;</code> to the image so that it scales nicely to the parent element.</p>
+{% highlight html %}
+<img src="..." class="img-responsive" alt="Reponsive image">
+{% endhighlight %}
+
     <h3 id="overview-type-links">Typography and links</h3>
     <p>Bootstrap sets basic global display, typography, and link styles. Specifically, we:</p>
     <ul>
@@ -39,13 +45,13 @@ base_url: "../"
       <li>Use the <code>@font-family-base</code>, <code>@font-size-base</code>, and <code>@line-height-base</code> attributes as our typographic base</li>
       <li>Set the global link color via <code>@link-color</code> and apply link underlines only on <code>:hover</code></li>
     </ul>
-    <p>These styles can be found within <strong>scaffolding.less</strong>.</p>
+    <p>These styles can be found within <code>scaffolding.less</code>.</p>
 
     <h3 id="overview-normalize">Normalize reset</h3>
     <p>For improved cross-browser rendering, we use <a href="http://necolas.github.io/normalize.css/" target="_blank">Normalize</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a>.</p>
 
     <h3 id="overview-container">Centering with container</h3>
-    <p>Easily center a page's contents by wrapping its contents in a container. Containers set <code>max-width</code> at various media query breakpoints to match our grid system.</p>
+    <p>Easily center a page's contents by wrapping its contents in a <code>.container</code>. Containers set <code>max-width</code> at various media query breakpoints to match our grid system.</p>
 {% highlight html %}
 <div class="container">
   ...
@@ -85,16 +91,20 @@ base_url: "../"
           <tr>
             <th></th>
             <th>
-              Tiny grid
+              Tiny devices
               <small>Phones (&lt;480px)</small>
             </th>
             <th>
-              Small grid
+              Small devices
               <small>Tablets (&lt;768px)</small>
             </th>
             <th>
-              Medium-large grid
-              <small>Desktops (&gt;768px)</small>
+              Medium devices
+              <small>Desktops (&gt;992px)</small>
+            </th>
+            <th>
+              Large devices
+              <small>Desktops (&gt;1200px)</small>
             </th>
           </tr>
         </thead>
@@ -102,31 +112,49 @@ base_url: "../"
           <tr>
             <th>Grid behavior</th>
             <td>Horizontal at all times</td>
-            <td colspan="2">Collapsed to start, horizontal above breakpoints</td>
+            <td colspan="3">Collapsed to start, horizontal above breakpoints</td>
+          </tr>
+          <tr>
+            <th>Max container width</th>
+            <td>None (auto)</td>
+            <td>728px</td>
+            <td>940px</td>
+            <td>1170px</td>
           </tr>
           <tr>
             <th>Class prefix</th>
             <td><code>.col-</code></td>
             <td><code>.col-sm-</code></td>
-            <td><code>.col-lg-</code></td>
+            <td colspan="2"><code>.col-lg-</code></td>
           </tr>
           <tr>
             <th># of columns</th>
-            <td colspan="3">12</td>
+            <td colspan="4">12</td>
+          </tr>
+          <tr>
+            <th>Max column width</th>
+            <td>Auto</td>
+            <td>~60px</td>
+            <td>~78px</td>
+            <td>~98px</td>
+          </tr>
+          <tr>
+            <th>Gutter width</th>
+            <td colspan="4">30px (15px on each side of a column)</td>
           </tr>
           <tr>
             <th>Nestable</th>
-            <td colspan="3">Yes</td>
+            <td colspan="4">Yes</td>
           </tr>
           <tr>
             <th>Offsets</th>
             <td colspan="2" class="text-muted">N/A</td>
-            <td>Yes</td>
+            <td colspan="2">Yes</td>
           </tr>
           <tr>
             <th>Column ordering</th>
             <td class="text-muted">N/A</td>
-            <td colspan="2">Yes</td>
+            <td colspan="3">Yes</td>
           </tr>
         </tbody>
       </table>
@@ -616,7 +644,7 @@ base_url: "../"
     <p>For quoting blocks of content from another source within your document.</p>
 
     <h3>Default blockquote</h3>
-    <p>Wrap <code>&lt;blockquote&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes we recommend a <code>&lt;p&gt;</code>.</p>
+    <p>Wrap <code>&lt;blockquote&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes, we recommend a <code>&lt;p&gt;</code>.</p>
     <div class="bs-example">
       <blockquote>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -629,7 +657,7 @@ base_url: "../"
 {% endhighlight %}
 
     <h3>Blockquote options</h3>
-    <p>Style and content changes for simple variations on a standard blockquote.</p>
+    <p>Style and content changes for simple variations on a standard <code>&lt;blockquote&gt;</code>.</p>
 
     <h4>Naming a source</h4>
     <p>Add <code>&lt;small&gt;</code> tag for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
@@ -827,7 +855,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
 {% endhighlight %}
 
-    <p>You may optionally add the <code>.pre-scrollable</code> class which will set a max-height of 350px and provide a y-axis scrollbar.</p>
+    <p>You may optionally add the <code>.pre-scrollable</code> class, which will set a max-height of 350px and provide a y-axis scrollbar.</p>
   </div>
 
 
@@ -887,7 +915,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p>
     <div class="bs-callout bs-callout-danger">
       <h4>Cross-browser compatibility</h4>
-      <p>Striped tables are styled via the <code>:nth-child</code> CSS selector, which is not available in IE8.</p>
+      <p>Striped tables are styled via the <code>:nth-child</code> CSS selector, which is not available in Internet Explorer 8.</p>
     </div>
     <div class="bs-example">
       <table class="table table-striped">
@@ -1306,7 +1334,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Examples of standard form controls supported in an example form layout.</p>
 
     <h3>Inputs</h3>
-    <p>Most common form control, text-based input fields. Includes support for all HTML5 types: text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color.</p>
+    <p>Most common form control, text-based input fields. Includes support for all HTML5 types: <code>text</code>, <code>password</code>, <code>datetime</code>, <code>datetime-local</code>, <code>date</code>, <code>month</code>, <code>time</code>, <code>week</code>, <code>number</code>, <code>email</code>, <code>url</code>, <code>search</code>, <code>tel</code>, and <code>color</code>.</p>
     <div class="bs-callout bs-callout-danger">
       <h4>Type declaration required</h4>
       <p>Inputs will only be fully styled if their <code>type</code> is properly declared.</p>
@@ -1397,7 +1425,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3>Selects</h3>
-    <p>Use the default option or specify a <code>multiple="multiple"</code> to show multiple options at once.</p>
+    <p>Use the default option, or add <code>multiple</code> to show multiple options at once.</p>
     <form class="bs-example">
       <select class="form-control">
         <option>1</option>
@@ -1407,7 +1435,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <option>5</option>
       </select>
       <br>
-      <select multiple="multiple" class="form-control">
+      <select multiple class="form-control">
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -1466,7 +1494,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <div class="bs-callout bs-callout-danger">
       <h4>Cross-browser compatibility</h4>
-      <p>While Bootstrap will apply these styles in all browsers, IE and Safari don't actually support the <code>disabled</code> attribute on a <code>&lt;fieldset&gt;</code>. Use custom JavaScript to disable the fieldset in these browsers.</p>
+      <p>While Bootstrap will apply these styles in all browsers, Internet Explorer 9 and below don't actually support the <code>disabled</code> attribute on a <code>&lt;fieldset&gt;</code>. Use custom JavaScript to disable the fieldset in these browsers.</p>
     </div>
 
     <form class="bs-example form-inline">
@@ -1533,263 +1561,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
-    <h2 id="forms-input-groups">Input groups</h3>
-    <p>Add text or buttons before, after, or on both sides of any text-based input. Use <code>.input-group</code> with an <code>.input-group-addon</code> to prepend or append elements to an <code>&lt;input&gt;</code>.</p>
-
-    <div class="bs-callout bs-callout-danger">
-      <h4>Cross-browser compatibility</h4>
-      <p>Avoid using <code>&lt;select&gt;</code> elements here as they cannot be fully styled in WebKit browsers.</p>
-    </div>
-    <div class="bs-callout bs-callout-info">
-      <h4>Tooltips &amp; popovers in input groups require special setting</h4>
-      <p>When using tooltips or popovers on elements within an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).</p>
-    </div>
-
-    <form class="bs-example bs-example-form">
-      <div class="input-group">
-        <span class="input-group-addon">@</span>
-        <input type="text" class="form-control" placeholder="Username">
-      </div>
-      <br>
-      <div class="input-group">
-        <input type="text" class="form-control">
-        <span class="input-group-addon">.00</span>
-      </div>
-      <br>
-      <div class="input-group">
-        <span class="input-group-addon">$</span>
-        <input type="text" class="form-control">
-        <span class="input-group-addon">.00</span>
-      </div>
-    </form>
-{% highlight html %}
-<div class="input-group">
-  <span class="input-group-addon">@</span>
-  <input type="text" class="form-control" placeholder="Username">
-</div>
-
-<div class="input-group">
-  <input type="text" class="form-control">
-  <span class="input-group-addon">.00</span>
-</div>
-
-<div class="input-group">
-  <span class="input-group-addon">$</span>
-  <input type="text" class="form-control">
-  <span class="input-group-addon">.00</span>
-</div>
-{% endhighlight %}
-
-    <h3>Optional sizes</h3>
-    <p>Add the relative form sizing classes to the <code>.input-group-addon</code>.</p>
-    <form class="bs-example bs-example-form">
-      <div class="input-group">
-        <span class="input-group-addon input-large">@</span>
-        <input type="text" class="form-control input-large" placeholder="Username">
-      </div>
-      <br>
-      <div class="input-group">
-        <span class="input-group-addon">@</span>
-        <input type="text" class="form-control" placeholder="Username">
-      </div>
-      <br>
-      <div class="input-group">
-        <span class="input-group-addon input-small">@</span>
-        <input type="text" class="form-control input-small" placeholder="Username">
-      </div>
-    </form>
-{% highlight html %}
-<div class="input-group">
-  <span class="input-group-addon input-large">@</span>
-  <input type="text" class="form-control input-large" placeholder="Username">
-</div>
-
-<div class="input-group">
-  <span class="input-group-addon">@</span>
-  <input type="text" class="form-control" placeholder="Username">
-</div>
-
-<div class="input-group">
-  <span class="input-group-addon input-small">@</span>
-  <input type="text" class="form-control input-small" placeholder="Username">
-</div>
-{% endhighlight %}
-
-    <h3>Buttons instead of text</h3>
-    <p>Buttons in input groups are a bit different and require one extra level of nesting. Instead of <code>.input-group-addon</code>, you'll need to use <code>.input-group-btn</code> to wrap the buttons. This is required due to default browser styles that cannot be overridden.</p>
-    <form class="bs-example bs-example-form">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="input-group">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button">Go!</button>
-            </span>
-            <input type="text" class="form-control">
-          </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-        <div class="col-lg-6">
-          <div class="input-group">
-            <input type="text" class="form-control">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button">Go!</button>
-            </span>
-          </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-      </div><!-- /.row -->
-    </form>
-{% highlight html %}
-<div class="row">
-  <div class="col-lg-6">
-    <div class="input-group">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
-      </span>
-      <input type="text" class="form-control">
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-  <div class="col-lg-6">
-    <div class="input-group">
-      <input type="text" class="form-control">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
-      </span>
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-</div><!-- /.row -->
-{% endhighlight %}
-
-    <h3>Button dropdowns</h3>
-    <p></p>
-    <form class="bs-example bs-example-form">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="input-group">
-            <div class="input-group-btn">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </div><!-- /btn-group -->
-            <input type="text" class="form-control">
-          </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-        <div class="col-lg-6">
-          <div class="input-group">
-            <input type="text" class="form-control">
-            <div class="input-group-btn">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </div><!-- /btn-group -->
-          </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-      </div><!-- /.row -->
-    </form>
-{% highlight html %}
-<div class="row">
-  <div class="col-lg-6">
-    <div class="input-group">
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </div><!-- /btn-group -->
-      <input type="text" class="form-control">
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-  <div class="col-lg-6">
-    <div class="input-group">
-      <input type="text" class="form-control">
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </div><!-- /btn-group -->
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-</div><!-- /.row -->
-{% endhighlight %}
-
-    <h3>Segmented dropdown groups</h3>
-    <form class="bs-example bs-example-form">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="input-group">
-            <div class="input-group-btn">
-              <button type="button" class="btn btn-default" tabindex="-1">Action</button>
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </div>
-            <input type="text" class="form-control">
-          </div><!-- /.input-group -->
-        </div><!-- /.col-lg-6 -->
-        <div class="col-lg-6">
-          <div class="input-group">
-            <input type="text" class="form-control">
-            <div class="input-group-btn">
-              <button type="button" class="btn btn-default" tabindex="-1">Action</button>
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu pull-right">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </div>
-          </div><!-- /.input-group -->
-        </div><!-- /.col-lg-6 -->
-      </div><!-- /.row -->
-    </form>
-{% highlight html %}
-<div class="input-group">
-  <div class="input-group-btn">
-    <!-- Button and dropdown menu -->
-  </div>
-  <input type="text" class="form-control">
-</div>
-
-<div class="input-group">
-  <input type="text" class="form-control">
-  <div class="input-group-btn btn-group">
-    <!-- Button and dropdown menu -->
-  </div>
-</div>
-{% endhighlight %}
-
     <h2 id="forms-control-sizes">Control sizing</h2>
-    <p>Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using <code>.col-lg-*</code> classes.</p>
+    <p>Set heights using classes like <code>.input-large</code>, and set widths using grid column classes like <code>.col-lg-*</code>.</p>
 
-    <h3>Relative sizing</h3>
+    <h3>Height sizing</h3>
     <p>Create larger or smaller form controls that match button sizes.</p>
     <form class="bs-example bs-example-control-sizing">
       <div class="controls docs-input-sizes">
@@ -2031,6 +1806,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <img src="..." class="img-thumbnail">
 {% endhighlight %}
 
+    <div class="bs-callout bs-callout-warning">
+      <h4>Responsive images</h4>
+      <p>Looking for how to make images more responsive? <a href="../css#overview-responsive-images">Check out the responsive images section</a> up top.</p>
+    </div>
+
   </div>
 
 
@@ -2216,7 +1996,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </li>
       <li>
         <span class="visible-lg">Large</span>
-        <span class="hidden-lg">&#10004; Hidden on desktop</span>
+        <span class="hidden-lg">&#10004; Hidden on large</span>
       </li>
     </ul>
 

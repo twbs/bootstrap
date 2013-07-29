@@ -7,26 +7,25 @@
   $(function(){
 
     var $window = $(window)
+    var $body   = $(document.body)
 
     var navHeight = $('.navbar').outerHeight(true) + 10
 
-    $(document.body).scrollspy({
+    $body.scrollspy({
       target: '.bs-sidebar',
       offset: navHeight
     })
 
-    $('[href=#]').click(function (e) {
+    $('.bs-docs-container [href=#]').click(function (e) {
       e.preventDefault()
     })
 
-    $(document.body).on('click', '.bs-sidenav [href^=#]', function (e) {
+    $body.on('click', '.bs-sidenav [href^=#]', function (e) {
       var $target = $(this.getAttribute('href'))
 
       e.preventDefault() // prevent browser scroll
 
-      document.body.scrollTop =
-        $target.offset().top -
-        navHeight + 5 // offset scroll by nav
+      $window.scrollTop($target.offset().top - navHeight + 5)
     })
 
     // back to top
