@@ -1554,6 +1554,11 @@ select.input-small {
   cursor: pointer;
   border: 1px solid transparent;
   border-radius: 4px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+       -o-user-select: none;
+          user-select: none;
 }
 
 .btn:focus {

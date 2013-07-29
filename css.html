@@ -206,7 +206,7 @@ base_url: "../"
   <div class="col-lg-1">1</div>
   <div class="col-lg-1">1</div>
 </div>
-<div class="row show-grid">
+<div class="row">
   <div class="col-lg-8">8</div>
   <div class="col-lg-4">4</div>
 </div>
@@ -362,7 +362,7 @@ base_url: "../"
     </div>
 
 {% highlight html %}
-<div class="row show-grid">
+<div class="row">
   <div class="col-lg-9 col-push-3">9</div>
   <div class="col-lg-3 col-pull-9">3</div>
 </div>
@@ -1425,7 +1425,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3>Selects</h3>
-    <p>Use the default option or specify a <code>multiple="multiple"</code> to show multiple options at once.</p>
+    <p>Use the default option, or add <code>multiple</code> to show multiple options at once.</p>
     <form class="bs-example">
       <select class="form-control">
         <option>1</option>
@@ -1435,7 +1435,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <option>5</option>
       </select>
       <br>
-      <select multiple="multiple" class="form-control">
+      <select multiple class="form-control">
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -1452,7 +1452,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <option>5</option>
 </select>
 
-<select multiple="multiple" class="form-control">
+<select multiple class="form-control">
   <option>1</option>
   <option>2</option>
   <option>3</option>
@@ -1562,9 +1562,9 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
     <h2 id="forms-control-sizes">Control sizing</h2>
-    <p>Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using <code>.col-lg-*</code> classes.</p>
+    <p>Set heights using classes like <code>.input-large</code>, and set widths using grid column classes like <code>.col-lg-*</code>.</p>
 
-    <h3>Relative sizing</h3>
+    <h3>Height sizing</h3>
     <p>Create larger or smaller form controls that match button sizes.</p>
     <form class="bs-example bs-example-control-sizing">
       <div class="controls docs-input-sizes">

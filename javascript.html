@@ -963,17 +963,17 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
     <h4>Four directions</h4>
     <div class="bs-example tooltip-demo">
       <div class="bs-example-tooltips">
+        <button type="button" class="btn btn-default" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+          Popover on left
+        </button>
         <button type="button" class="btn btn-default" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
           Popover on top
-        </button>
-        <button type="button" class="btn btn-default" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-          Popover on right
         </button>
         <button type="button" class="btn btn-default" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
           Popover on bottom
         </button>
-        <button type="button" class="btn btn-default" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-          Popover on left
+        <button type="button" class="btn btn-default" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+          Popover on right
         </button>
       </div>
     </div><!-- /example -->
@@ -1218,7 +1218,7 @@ $('#my-alert').bind('closed.bs.alert', function () {
       </button>
     </div><!-- /example -->
 {% highlight html %}
-<button type="button" id="fat-btn" data-loading-text="Loading..." class="btn btn-primary">
+<button type="button" data-loading-text="Loading..." class="btn btn-primary">
   Loading state
 </button>
 {% endhighlight %}
