@@ -31,6 +31,12 @@ base_url: "../"
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% endhighlight %}
 
+    <h3 id="overview-responsive-images">Responsive images</h3>
+    <p>Images in Bootstrap 3 can be made responsive-friendly via the addition of the <code>.img-responsive</code> class. This applies <code>max-width: 100%;</code> and <code>height: auto;</code> to the image so that it scales nicely to the parent element.</p>
+{% highlight html %}
+<img src="..." class="img-responsive" alt="Reponsive image">
+{% endhighlight %}
+
     <h3 id="overview-type-links">Typography and links</h3>
     <p>Bootstrap sets basic global display, typography, and link styles. Specifically, we:</p>
     <ul>
@@ -1777,6 +1783,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <img src="..." class="img-circle">
 <img src="..." class="img-thumbnail">
 {% endhighlight %}
+
+    <div class="bs-callout bs-callout-warning">
+      <h4>Responsive images</h4>
+      <p>Looking for how to make images more responsive? <a href="../css#overview-responsive-images">Check out the responsive images section</a> up top.</p>
+    </div>
 
   </div>
 
