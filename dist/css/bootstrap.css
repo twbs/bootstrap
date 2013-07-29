@@ -2566,7 +2566,7 @@ button.close {
   float: none;
 }
 
-.nav-stacked > li + li > a {
+.nav-stacked > li + li {
   margin-top: 2px;
   margin-left: 0;
 }

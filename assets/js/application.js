@@ -22,7 +22,7 @@
     $(document.body).on('click', '.bs-sidenav [href^=#]', function (e) {
       var $target = $(this.getAttribute('href'))
 
-      e.preventDefault() // prevent browser scroll
+      // e.preventDefault() // prevent browser scroll
 
       document.body.scrollTop =
         $target.offset().top -
