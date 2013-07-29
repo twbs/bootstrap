@@ -20,6 +20,7 @@ body {
   border-color: #e5e5e5;
 }
 .btn-bs:hover,
+.btn-bs:focus,
 .btn-bs:active {
   color: #fff;
   background-color: #563d7c;
