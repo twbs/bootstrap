@@ -91,16 +91,20 @@ base_url: "../"
           <tr>
             <th></th>
             <th>
-              Tiny grid
+              Tiny devices
               <small>Phones (&lt;480px)</small>
             </th>
             <th>
-              Small grid
+              Small devices
               <small>Tablets (&lt;768px)</small>
             </th>
             <th>
-              Medium-large grid
-              <small>Desktops (&gt;768px)</small>
+              Medium devices
+              <small>Desktops (&gt;992px)</small>
+            </th>
+            <th>
+              Large devices
+              <small>Desktops (&gt;1200px)</small>
             </th>
           </tr>
         </thead>
@@ -108,31 +112,49 @@ base_url: "../"
           <tr>
             <th>Grid behavior</th>
             <td>Horizontal at all times</td>
-            <td colspan="2">Collapsed to start, horizontal above breakpoints</td>
+            <td colspan="3">Collapsed to start, horizontal above breakpoints</td>
+          </tr>
+          <tr>
+            <th>Max container width</th>
+            <td>None (auto)</td>
+            <td>728px</td>
+            <td>940px</td>
+            <td>1170px</td>
           </tr>
           <tr>
             <th>Class prefix</th>
             <td><code>.col-</code></td>
             <td><code>.col-sm-</code></td>
-            <td><code>.col-lg-</code></td>
+            <td colspan="2"><code>.col-lg-</code></td>
           </tr>
           <tr>
             <th># of columns</th>
-            <td colspan="3">12</td>
+            <td colspan="4">12</td>
+          </tr>
+          <tr>
+            <th>Max column width</th>
+            <td>Auto</td>
+            <td>~60px</td>
+            <td>~78px</td>
+            <td>~98px</td>
+          </tr>
+          <tr>
+            <th>Gutter width</th>
+            <td colspan="4">30px (15px on each side of a column)</td>
           </tr>
           <tr>
             <th>Nestable</th>
-            <td colspan="3">Yes</td>
+            <td colspan="4">Yes</td>
           </tr>
           <tr>
             <th>Offsets</th>
             <td colspan="2" class="text-muted">N/A</td>
-            <td>Yes</td>
+            <td colspan="2">Yes</td>
           </tr>
           <tr>
             <th>Column ordering</th>
             <td class="text-muted">N/A</td>
-            <td colspan="2">Yes</td>
+            <td colspan="3">Yes</td>
           </tr>
         </tbody>
       </table>
