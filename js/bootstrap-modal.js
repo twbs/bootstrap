@@ -60,7 +60,12 @@
             that.$element.appendTo(document.body) //don't move modals dom position
           }
 
-          that.$element.show()
+          // FIXED: IE will be hanged if doing focus on hidden elements.
+          // Reference jQuery #1486, #12518
+          //that.$element.show()
+          that.$element.show('fast', function () {
+            that.enforceFocus
+          })
 
           if (transition) {
             that.$element[0].offsetWidth // force reflow
@@ -70,7 +75,9 @@
             .addClass('in')
             .attr('aria-hidden', false)
 
-          that.enforceFocus()
+          // FIXED: IE will be hanged if doing focus on hidden elements.
+          // Reference jQuery #1486, #12518
+          //that.enforceFocus()
 
           transition ?
             that.$element.one($.support.transition.end, function () { that.$element.focus().trigger('shown') }) :
