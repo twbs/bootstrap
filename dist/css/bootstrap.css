@@ -1833,11 +1833,16 @@ fieldset[disabled] .btn-link:focus {
   border-radius: 6px;
 }
 
-.btn-small {
+.btn-small,
+.btn-mini {
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
+}
+
+.btn-mini {
+  padding: 3px 5px;
 }
 
 .btn-block {
