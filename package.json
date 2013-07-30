@@ -5,7 +5,7 @@
   , "keywords": ["bootstrap", "css"]
   , "homepage": "http://twbs.github.com/bootstrap/"
   , "author": "Twitter Inc."
-  , "scripts": { "test": "grunt test" }
+  , "scripts": { "test": "grunt test && PATH=\"$PATH:$(npm bin)\" browserstack-runner" }
   , "repository": {
       "type": "git"
     , "url": "https://github.com/twbs/bootstrap.git"
@@ -26,5 +26,6 @@
     , "grunt-contrib-qunit": "~0.2.2"
     , "grunt-contrib-watch": "~0.5.1"
     , "grunt-recess": "~0.3.3"
+    , "browserstack-runner": "git://github.com/browserstack/browserstack-runner"
   }
 }
