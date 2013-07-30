@@ -1438,14 +1438,14 @@ textarea.form-control {
   margin-left: 10px;
 }
 
-.form-control.input-large {
+.input-large {
   height: 56px;
   padding: 14px 16px;
   font-size: 18px;
   border-radius: 6px;
 }
 
-.form-control.input-small {
+.input-small {
   height: 30px;
   padding: 5px 10px;
   font-size: 12px;
@@ -1460,6 +1460,11 @@ select.input-large {
 select.input-small {
   height: 30px;
   line-height: 30px;
+}
+
+textarea.input-large,
+textarea.input-small {
+  height: auto;
 }
 
 .has-warning .help-block,

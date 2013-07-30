@@ -218,20 +218,19 @@ input[type="number"] {
 // horizontal sizing, wrap controls in the predefined grid classes. `<select>`
 // element gets special love because it's special, and that's a fact!
 
-.form-control {
-  &.input-large {
-    height: @input-height-large;
-    padding: @padding-large-vertical @padding-large-horizontal;
-    font-size: @font-size-large;
-    border-radius: @border-radius-large;
-  }
-  &.input-small {
-    height: @input-height-small;
-    padding: @padding-small-vertical @padding-small-horizontal;
-    font-size: @font-size-small;
-    border-radius: @border-radius-small;
-  }
+.input-large {
+  height: @input-height-large;
+  padding: @padding-large-vertical @padding-large-horizontal;
+  font-size: @font-size-large;
+  border-radius: @border-radius-large;
 }
+.input-small {
+  height: @input-height-small;
+  padding: @padding-small-vertical @padding-small-horizontal;
+  font-size: @font-size-small;
+  border-radius: @border-radius-small;
+}
+
 select {
   &.input-large {
     height: @input-height-large;
@@ -240,6 +239,12 @@ select {
   &.input-small {
     height: @input-height-small;
     line-height: @input-height-small;
+  }
+}
+textarea {
+  &.input-large,
+  &.input-small {
+    height: auto;
   }
 }
 
