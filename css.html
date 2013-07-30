@@ -1792,6 +1792,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="bs-callout bs-callout-warning">
       <h4>Cross-browser rendering</h4>
       <p>As a best practice, <strong>we highly recommend using the <code>&lt;button&gt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
+      <p>Among other things, there's <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697451">a Firefox bug</a> that prevents us from setting the <code>line-height</code> of <code>&lt;input&gt;</code>-based buttons, causing them to not exactly match the height of other buttons on Firefox.</p>
     </div>
 
   </div>
