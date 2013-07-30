@@ -1,4 +1,3 @@
-
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
@@ -16,7 +15,7 @@ body {
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
   position: relative;
-  z-index: 10;
+  z-index: 15;
 }
 
 
