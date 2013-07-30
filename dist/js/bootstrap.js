@@ -50,8 +50,8 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
   // http://blog.alexmaccaw.com/css-transitions
   $.fn.emulateTransitionEnd = function (duration) {
     var called = false, $el    = this
-    $(this).one('webkitTransitionEnd', function () { called = true })
-    var callback = function () { if (!called) $($el).trigger('webkitTransitionEnd') }
+    $(this).one($.support.transition.end, function () { called = true })
+    var callback = function () { if (!called) $($el).trigger($.support.transition.end) }
     setTimeout(callback, duration)
     return this
   }
@@ -1054,9 +1054,11 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
       })
   })
 
-  var $body = $(document.body)
-    .on('shown.bs.modal',  '.modal', function () { $body.addClass('modal-open') })
-    .on('hidden.bs.modal', '.modal', function () { $body.removeClass('modal-open') })
+  $(function () {
+    var $body = $(document.body)
+      .on('shown.bs.modal',  '.modal', function () { $body.addClass('modal-open') })
+      .on('hidden.bs.modal', '.modal', function () { $body.removeClass('modal-open') })
+  })
 
 }(window.jQuery);
 

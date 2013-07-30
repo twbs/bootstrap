@@ -196,7 +196,7 @@ $('#myModal').on('show.bs.modal', function (e) {
   <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Launch demo modal</a>
 
   <!-- Modal -->
-  <div class="modal" id="myModal">
+  <div class="modal fade" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -742,10 +742,10 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     <h3>Four directions</h3>
     <div class="bs-example tooltip-demo">
       <div class="bs-example-tooltips">
-        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</button>
-        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</button>
-        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
         <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button>
+        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</button>
+        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
+        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</button>
       </div>
     </div><!-- /example -->
 
@@ -963,17 +963,17 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
     <h4>Four directions</h4>
     <div class="bs-example tooltip-demo">
       <div class="bs-example-tooltips">
+        <button type="button" class="btn btn-default" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+          Popover on left
+        </button>
         <button type="button" class="btn btn-default" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
           Popover on top
-        </button>
-        <button type="button" class="btn btn-default" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-          Popover on right
         </button>
         <button type="button" class="btn btn-default" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
           Popover on bottom
         </button>
-        <button type="button" class="btn btn-default" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-          Popover on left
+        <button type="button" class="btn btn-default" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+          Popover on right
         </button>
       </div>
     </div><!-- /example -->
@@ -1218,7 +1218,7 @@ $('#my-alert').bind('closed.bs.alert', function () {
       </button>
     </div><!-- /example -->
 {% highlight html %}
-<button type="button" id="fat-btn" data-loading-text="Loading..." class="btn btn-primary">
+<button type="button" data-loading-text="Loading..." class="btn btn-primary">
   Loading state
 </button>
 {% endhighlight %}
