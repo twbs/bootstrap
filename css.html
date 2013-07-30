@@ -206,7 +206,7 @@ base_url: "../"
   <div class="col-lg-1">1</div>
   <div class="col-lg-1">1</div>
 </div>
-<div class="row show-grid">
+<div class="row">
   <div class="col-lg-8">8</div>
   <div class="col-lg-4">4</div>
 </div>
@@ -239,15 +239,20 @@ base_url: "../"
       </div>
     </div>
 {% highlight html %}
+<!-- Stack the columns on mobile by making one full-width and the other half-width -->
 <div class="row">
   <div class="col-12 col-lg-8">8</div>
   <div class="col-6 col-lg-4">4</div>
 </div>
+
+<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
 <div class="row">
   <div class="col-6 col-lg-4">4</div>
   <div class="col-6 col-lg-4">4</div>
   <div class="col-6 col-lg-4">4</div>
 </div>
+
+<!-- Columns are always 50% wide, on mobile and desktop -->
 <div class="row">
   <div class="col-6 col-lg-6">6</div>
   <div class="col-6 col-lg-6">6</div>
@@ -362,7 +367,7 @@ base_url: "../"
     </div>
 
 {% highlight html %}
-<div class="row show-grid">
+<div class="row">
   <div class="col-lg-9 col-push-3">9</div>
   <div class="col-lg-3 col-pull-9">3</div>
 </div>
@@ -1392,6 +1397,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
     Option one is this and that&mdash;be sure to include why it's great
   </label>
+</div>
+<div class="radio">
   <label>
     <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
     Option two can be something else and selecting it will deselect option one
@@ -1452,7 +1459,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <option>5</option>
 </select>
 
-<select multiple="multiple" class="form-control">
+<select multiple class="form-control">
   <option>1</option>
   <option>2</option>
   <option>3</option>
@@ -1692,6 +1699,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <button type="button" class="btn btn-primary btn-small">Small button</button>
         <button type="button" class="btn btn-default btn-small">Small button</button>
       </p>
+      <p>
+        <button type="button" class="btn btn-primary btn-mini">Mini button</button>
+        <button type="button" class="btn btn-default btn-mini">Mini button</button>
+      </p>
     </div>
 {% highlight html %}
 <p>
@@ -1705,6 +1716,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <p>
   <button type="button" class="btn btn-primary btn-small">Small button</button>
   <button type="button" class="btn btn-default btn-small">Small button</button>
+</p>
+<p>
+  <button type="button" class="btn btn-primary btn-mini">Mini button</button>
+  <button type="button" class="btn btn-default btn-mini">Mini button</button>
 </p>
 {% endhighlight %}
 
@@ -1777,6 +1792,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="bs-callout bs-callout-warning">
       <h4>Cross-browser rendering</h4>
       <p>As a best practice, <strong>we highly recommend using the <code>&lt;button&gt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
+      <p>Among other things, there's <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697451">a Firefox bug</a> that prevents us from setting the <code>line-height</code> of <code>&lt;input&gt;</code>-based buttons, causing them to not exactly match the height of other buttons on Firefox.</p>
     </div>
 
   </div>
