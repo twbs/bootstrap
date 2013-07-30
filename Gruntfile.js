@@ -125,10 +125,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-recess');
+  grunt.loadNpmTasks('browserstack-runner');
 
 
   // Test task.
-  grunt.registerTask('test', ['jshint', 'qunit']);
+  grunt.registerTask('test', ['jshint', 'qunit', 'browserstack_runner']);
 
   // JS distribution task.
   grunt.registerTask('dist-js', ['concat', 'uglify']);
