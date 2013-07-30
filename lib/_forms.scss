@@ -118,14 +118,14 @@ textarea {
 input[type="radio"],
 input[type="checkbox"] {
   margin: 4px 0 0;
-  margin-top: 1px \9; /* IE8-9 */
+  margin-top: 1px \9; // IE8-9
   line-height: normal;
 }
 
 // Set the height of select and file controls to match text inputs
 select,
 input[type="file"] {
-  height: $input-height-base; /* In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support */
+  height: $input-height-base; // In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support
   line-height: $input-height-base;
 }
 
