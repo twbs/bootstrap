@@ -1509,10 +1509,6 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     return this.$tip
   }
 
-  Popover.prototype.destroy = function () {
-    this.hide().$element.off('.' + this.type).removeData(this.type)
-  }
-
 
   // POPOVER PLUGIN DEFINITION
   // =========================
