@@ -122,6 +122,59 @@ bootstrap/
     <p>Check out the new <a href="{{ site.examples_repo }}">Examples repository on GitHub</a>, or <a href="{{ site.examples }}">view them in your browser</a>. Included are over a dozen example templates for building with and extending Bootstrap.</p>
   </div>
 
+<!-- Migration guide
+  ================================================== -->
+<div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="browsers">Migration Guide</h1>
+    </div>
+    <p class="lead">Bootstrap 3 is a major overhaul, and there are a lot of changes from Bootstrap 2.x</p>
+
+    <p>
+    For starters, the 2.x grid has been completely rethought in an effort to make Bootstrap mobile first, simpler to use, and easier to customize.
+   	From Bootstrap 2.3.2 to 3.0 RC 1 there were over 1,600 commits, 72,000 additions/deletions and 300 changed files.
+    </p>
+	
+  	<h3>Major Changes in 3.0</h3>
+    
+  	<p>Now, everything is in one <code>bootstrap.css</code> file that also contains the responsive features.
+    There is no longer a separate <code>bootstrap-responsive.css</code>.
+    Bootstrap 3 has a <a href="http://getbootstrap.com/css/#grid">single fluid grid</a>. The <code>.span*</code> classes have been replaced with <code>.col-*</code> CSS classes that control three grid "sizes". <strong>Tiny</strong> for smartphones, <strong>small</strong> for tablets, and <strong>large</strong> for desktops.
+    The fixed grid has been deprecated, so the <code>.container</code> and <code>.row</code> classes are now used to contain the fluid grid.
+    Also, the icons, now <code>.glyphicons</code> live in a <a href="http://glyphicons.getbootstrap.com">separate CSS file and repository</a>.
+    </p>
+  
+  	<h3>CSS Class Changes</h3>
+  
+  	<div class="row">
+      <div class="col-12 col-lg-6">
+      <table class="table">
+        <tbody><tr><td><a href="#">Bootstrap 2.x</a></td><td><a href="#">Bootstrap 3 Equivalent</a></td></tr>
+        <tr><td>.container-fluid</td><td>.container</td></tr>
+        <tr><td>.row-fluid</td><td>.row</td></tr>
+        <tr><td>.span*</td><td>.col-lg-*, col-sm-*, col-*</td></tr>
+        <tr><td>.offset*</td><td>.col-offset-*</td></tr>
+        <tr><td>.brand</td><td>.navbar-brand</td></tr>
+        <tr><td>.navbar .nav</td><td>.nav .navbar-nav</td></tr>
+        <tr><td>.hero-unit</td><td>.jumbotron</td></tr>
+        <tr><td>.icon</td><td>.glyphicon</td></tr>
+        <tr><td>.btn</td><td>.btn .btn-default</td></tr>
+        <tr><td>.visible-phone</td><td>.visible-sm</td></tr>
+        <tr><td>.visible-tablet</td><td>.visible-md</td></tr>
+        <tr><td>.visible-desktop</td><td>.visible-lg</td></tr>
+        <tr><td>.hidden-phone</td><td>.hidden-sm</td></tr>
+        <tr><td>.hidden-tablet</td><td>.hidden-md</td></tr>
+        <tr><td>.hidden-desktop</td><td>.hidden-lg</td></tr>
+        <tr><td>.input-prepend</td><td>.input-group</td></tr>
+        <tr><td>.input-append</td><td>.input-group</td></tr>
+        <tr><td>.add-on</td><td>.input-group-addon</td></tr>
+        <tr><td>.btn-navbar</td><td>.navbar-btn</td></tr>
+        </tbody></table>
+      </div><!--/col-->
+  	</div><!--/row-->
+  
+  	<p>See the <a href="http://www.bootply.com/bootstrap-3-migration-guide">Migration Guide at Bootply.com</a> for a complete list of changes and additional guidance that is intended to help 2.x developers transition to Bootstrap 3.</p>
+</div>
 
 
   <!-- Browser compatibility
