@@ -2974,6 +2974,8 @@ button.close {
 }
 
 .navbar-text {
+  float: left;
+  padding: 0 15px;
   margin-top: 15px;
   margin-bottom: 15px;
 }
