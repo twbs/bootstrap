@@ -3917,7 +3917,7 @@ a.thumbnail:focus {
   color: #ffffff;
   text-align: center;
   white-space: nowrap;
-  vertical-align: middle;
+  vertical-align: baseline;
   background-color: #999999;
   border-radius: .25em;
 }
@@ -3976,7 +3976,7 @@ a.thumbnail:focus {
   color: #ffffff;
   text-align: center;
   white-space: nowrap;
-  vertical-align: middle;
+  vertical-align: baseline;
   background-color: #999999;
   border-radius: 10px;
 }
