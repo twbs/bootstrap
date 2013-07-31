@@ -2613,6 +2613,14 @@ button.close {
   border-bottom-color: #ffffff;
 }
 
+.nav-header {
+  display: block;
+  padding: 3px 20px;
+  font-size: 12px;
+  line-height: 1.428571429;
+  color: #999999;
+}
+
 .tabbable:before,
 .tabbable:after {
   display: table;
