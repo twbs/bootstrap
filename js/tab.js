@@ -1,6 +1,6 @@
 /* ========================================================================
  * Bootstrap: tab.js v3.0.0
- * http://twitter.github.com/bootstrap/javascript.html#tabs
+ * http://twbs.github.com/bootstrap/javascript.html#tabs
  * ========================================================================
  * Copyright 2012 Twitter, Inc.
  *
@@ -88,7 +88,9 @@
     }
 
     transition ?
-      $active.one($.support.transition.end, next) :
+      $active
+        .one($.support.transition.end, next)
+        .emulateTransitionEnd(150) :
       next()
 
     $active.removeClass('in')
