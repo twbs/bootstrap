@@ -40,7 +40,7 @@ body {
 .carousel .item {
   height: 500px;
 }
-.carousel img {
+.carousel-inner > .item > img {
   position: absolute;
   top: 0;
   left: 0;
