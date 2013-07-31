@@ -16,9 +16,6 @@ SASS_COMMAND = "sass --precision 16 --load-path lib --style"
 
 task BOOTSTRAP_CSS do |target|
   sh "#{SASS_COMMAND} expanded lib/bootstrap.scss:dist/css/#{target}"
-  css = IO.read(target.to_s)
-  css.gsub!('@DATE', `date`.strip)
-  File.open(target.to_s, 'w+') { |f| f.write(css) }
 end
 
 task BOOTSTRAP_MIN_CSS do |target|
