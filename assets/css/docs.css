@@ -315,7 +315,8 @@ body {
 .show-grid {
   margin-bottom: 15px;
 }
-.show-grid [class^="col-"] {
+.show-grid [class^="col-"] .show-bg {
+  text-align:center;
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #eee;
@@ -323,7 +324,6 @@ body {
   background-color: rgba(86,61,124,.15);
   border: 1px solid rgba(86,61,124,.2);
 }
-
 
 
 /* Bootstrap code examples
