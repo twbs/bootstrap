@@ -2938,7 +2938,7 @@ button.close {
 @media screen and (min-width: 768px) {
   .navbar-brand {
     float: left;
-    max-width: none;
+    max-width: 400px;
     margin-right: 5px;
     margin-left: -15px;
   }
