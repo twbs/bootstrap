@@ -18,8 +18,6 @@
  * ======================================================================== */
 
 
-+function ($) { "use strict";
-
   // TAB CLASS DEFINITION
   // ====================
 
@@ -131,5 +129,3 @@
     e.preventDefault()
     $(this).tab('show')
   })
-
-}(window.jQuery);

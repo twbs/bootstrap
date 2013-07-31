@@ -18,8 +18,6 @@
  * ======================================================================== */
 
 
-+function ($) { "use strict";
-
   // SCROLLSPY CLASS DEFINITION
   // ==========================
 
@@ -154,5 +152,3 @@
       $spy.scrollspy($spy.data())
     })
   })
-
-}(window.jQuery);

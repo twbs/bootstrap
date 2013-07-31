@@ -18,8 +18,6 @@
  * ======================================================================== */
 
 
-+function ($) { "use strict";
-
   // MODAL CLASS DEFINITION
   // ======================
 
@@ -239,5 +237,3 @@
       .on('shown.bs.modal',  '.modal', function () { $body.addClass('modal-open') })
       .on('hidden.bs.modal', '.modal', function () { $body.removeClass('modal-open') })
   })
-
-}(window.jQuery);

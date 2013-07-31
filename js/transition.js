@@ -18,8 +18,6 @@
  * ======================================================================== */
 
 
-+function ($) { "use strict";
-
   // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
   // ============================================================
 
@@ -52,5 +50,3 @@
   $(function () {
     $.support.transition = transitionEnd()
   })
-
-}(window.jQuery);

@@ -18,8 +18,6 @@
  * ======================================================================== */
 
 
-+function ($) { "use strict";
-
   // CAROUSEL CLASS DEFINITION
   // =========================
 
@@ -209,5 +207,3 @@
       $carousel.carousel($carousel.data())
     })
   })
-
-}(window.jQuery);

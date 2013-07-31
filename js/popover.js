@@ -18,8 +18,6 @@
  * ======================================================================== */
 
 
-+function ($) { "use strict";
-
   // POPOVER PUBLIC CLASS DEFINITION
   // ===============================
 
@@ -107,5 +105,3 @@
     $.fn.popover = old
     return this
   }
-
-}(window.jQuery);

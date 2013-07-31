@@ -18,8 +18,6 @@
  * ======================================================================== */
 
 
-+function ($) { "use strict";
-
   // BUTTON PUBLIC CLASS DEFINITION
   // ==============================
 
@@ -103,5 +101,3 @@
     $btn.button('toggle')
     e.preventDefault()
   })
-
-}(window.jQuery);

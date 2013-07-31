@@ -18,8 +18,6 @@
  * ======================================================================== */
 
 
-+function ($) { "use strict";
-
   // COLLAPSE PUBLIC CLASS DEFINITION
   // ================================
 
@@ -175,5 +173,3 @@
 
     $target.collapse(option)
   })
-
-}(window.jQuery);

@@ -19,8 +19,6 @@
  * ======================================================================== */
 
 
-+function ($) { "use strict";
-
   // TOOLTIP PUBLIC CLASS DEFINITION
   // ===============================
 
@@ -360,5 +358,3 @@
     $.fn.tooltip = old
     return this
   }
-
-}(window.jQuery);
