@@ -26,7 +26,6 @@ We only accept issues that are bug reports or feature requests. Bugs must be iso
 ## Pull requests
 
 - Try to submit pull requests against the latest `*-wip` branch for easier merging
-- Any changes to the docs must be made to the Mustache templates, not just the compiled HTML pages
 - CSS changes must be done in .less files first, never just the compiled files
 - If modifying the .less files, always recompile and commit the compiled files bootstrap.css and bootstrap.min.css
 - Try not to pollute your pull request with unintended changes--keep them simple and small
@@ -64,4 +63,4 @@ We only accept issues that are bug reports or feature requests. Bugs must be iso
 
 ## License
 
-By contributing your code, you agree to license your contribution under the terms of the APLv2: https://github.com/twitter/bootstrap/blob/master/LICENSE
+By contributing your code, you agree to license your contribution under the terms of the APLv2: https://github.com/twbs/bootstrap/blob/master/LICENSE
