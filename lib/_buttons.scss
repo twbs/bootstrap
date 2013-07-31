@@ -20,6 +20,7 @@
   border: 1px solid transparent;
   border-radius: $border-radius-base;
   white-space: nowrap;
+  @include user-select(none);
 
   &:focus {
     @include tab-focus();
@@ -27,7 +28,7 @@
 
   &:hover,
   &:focus {
-    color: #fff;
+    color: $btn-hover-color;
     text-decoration: none;
   }
 
@@ -92,7 +93,6 @@
   &[disabled],
   fieldset[disabled] & {
     background-color: transparent;
-    background-image: none;
     @include box-shadow(none);
   }
   &,
