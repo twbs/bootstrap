@@ -40,11 +40,11 @@
     offset: 0
   }
 
-  Affix.prototype.checkPositionWithEventLoop = function () {
+  addToPrototype(Affix, 'checkPositionWithEventLoop', function () {
     setTimeout($.proxy(this.checkPosition, this), 1)
-  }
+  })
 
-  Affix.prototype.checkPosition = function () {
+  addToPrototype(Affix, 'checkPosition', function () {
     if (!this.$element.is(':visible')) return
 
     var scrollHeight = $(document).height()
@@ -73,7 +73,7 @@
     if (affix == 'bottom') {
       this.$element.offset({ top: document.body.offsetHeight - offsetBottom - this.$element.height() })
     }
-  }
+  })
 
 
   // AFFIX PLUGIN DEFINITION

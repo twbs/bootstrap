@@ -26,7 +26,7 @@
     $(el).on('click', dismiss, this.close)
   }
 
-  Alert.prototype.close = function (e) {
+  addToPrototype(Alert, 'close', function (e) {
     var $this    = $(this)
     var selector = $this.attr('data-target')
 
@@ -58,7 +58,7 @@
         .one($.support.transition.end, removeElement)
         .emulateTransitionEnd(150) :
       removeElement()
-  }
+  })
 
 
   // ALERT PLUGIN DEFINITION

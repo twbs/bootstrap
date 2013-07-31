@@ -44,7 +44,7 @@
     offset: 10
   }
 
-  ScrollSpy.prototype.refresh = function () {
+  addToPrototype(ScrollSpy, 'refresh', function () {
     var offsetMethod = this.$element[0] == window ? 'offset' : 'position'
 
     this.offsets = $([])
@@ -67,9 +67,9 @@
         self.offsets.push(this[0])
         self.targets.push(this[1])
       })
-  }
+  })
 
-  ScrollSpy.prototype.process = function () {
+  addToPrototype(ScrollSpy, 'process', function () {
     var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
     var scrollHeight = this.$scrollElement[0].scrollHeight || this.$body[0].scrollHeight
     var maxScroll    = scrollHeight - this.$scrollElement.height()
@@ -88,9 +88,9 @@
         && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
         && this.activate( targets[i] )
     }
-  }
+  })
 
-  ScrollSpy.prototype.activate = function (target) {
+  addToPrototype(ScrollSpy, 'activate', function (target) {
     this.activeTarget = target
 
     $(this.selector)
@@ -112,7 +112,7 @@
     }
 
     active.trigger('activate')
-  }
+  })
 
 
   // SCROLLSPY PLUGIN DEFINITION

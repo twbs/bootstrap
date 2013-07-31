@@ -6,6 +6,9 @@
 if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
 +function ($) { "use strict";
+  function addToPrototype(obj, name, value) {
+    obj.prototype[name] = value
+  }
 
 /* ========================================================================
  * Bootstrap: transition.js v3.0.0
@@ -88,7 +91,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     $(el).on('click', dismiss, this.close)
   }
 
-  Alert.prototype.close = function (e) {
+  addToPrototype(Alert, 'close', function (e) {
     var $this    = $(this)
     var selector = $this.attr('data-target')
 
@@ -120,7 +123,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
         .one($.support.transition.end, removeElement)
         .emulateTransitionEnd(150) :
       removeElement()
-  }
+  })
 
 
   // ALERT PLUGIN DEFINITION
@@ -187,7 +190,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     loadingText: 'loading...'
   }
 
-  Button.prototype.setState = function (state) {
+  addToPrototype(Button, 'setState', function (state) {
     var d    = 'disabled'
     var $el  = this.$element
     var val  = $el.is('input') ? 'val' : 'html'
@@ -205,9 +208,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
         $el.addClass(d).attr(d, d) :
         $el.removeClass(d).removeAttr(d);
     }, 0)
-  }
+  })
 
-  Button.prototype.toggle = function () {
+  addToPrototype(Button, 'toggle', function () {
     var $parent = this.$element.closest('[data-toggle="buttons"]')
 
     if ($parent.length) {
@@ -216,7 +219,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     }
 
     this.$element.toggleClass('active')
-  }
+  })
 
 
   // BUTTON PLUGIN DEFINITION
@@ -302,7 +305,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
   , pause: 'hover'
   }
 
-  Carousel.prototype.cycle =  function (e) {
+  addToPrototype(Carousel, 'cycle', function (e) {
     e || (this.paused = false)
 
     this.interval && clearInterval(this.interval)
@@ -312,16 +315,16 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
       && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
 
     return this
-  }
+  })
 
-  Carousel.prototype.getActiveIndex = function () {
+  addToPrototype(Carousel, 'getActiveIndex', function () {
     this.$active = this.$element.find('.item.active')
     this.$items  = this.$active.parent().children()
 
     return this.$items.index(this.$active)
-  }
+  })
 
-  Carousel.prototype.to = function (pos) {
+  addToPrototype(Carousel, 'to', function (pos) {
     var that        = this
     var activeIndex = this.getActiveIndex()
 
@@ -331,9 +334,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     if (activeIndex == pos) return this.pause().cycle()
 
     return this.slide(pos > activeIndex ? 'next' : 'prev', $(this.$items[pos]))
-  }
+  })
 
-  Carousel.prototype.pause = function (e) {
+  addToPrototype(Carousel, 'pause', function (e) {
     e || (this.paused = true)
 
     if (this.$element.find('.next, .prev').length && $.support.transition.end) {
@@ -344,19 +347,19 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     this.interval = clearInterval(this.interval)
 
     return this
-  }
+  })
 
-  Carousel.prototype.next = function () {
+  addToPrototype(Carousel, 'next', function () {
     if (this.sliding) return
     return this.slide('next')
-  }
+  })
 
-  Carousel.prototype.prev = function () {
+  addToPrototype(Carousel, 'prev', function () {
     if (this.sliding) return
     return this.slide('prev')
-  }
+  })
 
-  Carousel.prototype.slide = function (type, next) {
+  addToPrototype(Carousel, 'slide', function (type, next) {
     var $active   = this.$element.find('.item.active')
     var $next     = next || $active[type]()
     var isCycling = this.interval
@@ -409,7 +412,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     isCycling && this.cycle()
 
     return this
-  }
+  })
 
 
   // CAROUSEL PLUGIN DEFINITION
@@ -505,12 +508,12 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     toggle: true
   }
 
-  Collapse.prototype.dimension = function () {
+  addToPrototype(Collapse, 'dimension', function () {
     var hasWidth = this.$element.hasClass('width')
     return hasWidth ? 'width' : 'height'
-  }
+  })
 
-  Collapse.prototype.show = function () {
+  addToPrototype(Collapse, 'show', function () {
     if (this.transitioning || this.$element.hasClass('in')) return
 
     var startEvent = $.Event('show.bs.collapse')
@@ -552,9 +555,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
       .one($.support.transition.end, $.proxy(complete, this))
       .emulateTransitionEnd(350)
       [dimension](this.$element[0][scrollSize])
-  }
+  })
 
-  Collapse.prototype.hide = function () {
+  addToPrototype(Collapse, 'hide', function () {
     if (this.transitioning || !this.$element.hasClass('in')) return
 
     var startEvent = $.Event('hide.bs.collapse')
@@ -588,11 +591,11 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
       [dimension](0)
       .one($.support.transition.end, $.proxy(complete, this))
       .emulateTransitionEnd(350)
-  }
+  })
 
-  Collapse.prototype.toggle = function () {
+  addToPrototype(Collapse, 'toggle', function () {
     this[this.$element.hasClass('in') ? 'hide' : 'show']()
-  }
+  })
 
 
   // COLLAPSE PLUGIN DEFINITION
@@ -674,7 +677,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     var $el = $(element).on('click.bs.dropdown', this.toggle)
   }
 
-  Dropdown.prototype.toggle = function (e) {
+  addToPrototype(Dropdown, 'toggle', function (e) {
     var $this = $(this)
 
     if ($this.is('.disabled, :disabled')) return
@@ -702,9 +705,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     $this.focus()
 
     return false
-  }
+  })
 
-  Dropdown.prototype.keydown = function (e) {
+  addToPrototype(Dropdown, 'keydown', function (e) {
     if (!/(38|40|27)/.test(e.keyCode)) return
 
     var $this = $(this)
@@ -733,7 +736,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     if (!~index)                                      index=0
 
     $items.eq(index).focus()
-  }
+  })
 
   function clearMenus() {
     $(backdrop).remove()
@@ -834,11 +837,11 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     , show: true
   }
 
-  Modal.prototype.toggle = function () {
+  addToPrototype(Modal, 'toggle', function () {
     return this[!this.isShown ? 'show' : 'hide']()
-  }
+  })
 
-  Modal.prototype.show = function () {
+  addToPrototype(Modal, 'show', function () {
     var that = this
     var e    = $.Event('show.bs.modal')
 
@@ -877,9 +880,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
           .emulateTransitionEnd(300) :
         that.$element.focus().trigger('shown.bs.modal')
     })
-  }
+  })
 
-  Modal.prototype.hide = function (e) {
+  addToPrototype(Modal, 'hide', function (e) {
     if (e) e.preventDefault()
 
     e = $.Event('hide.bs.modal')
@@ -903,9 +906,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
         .one($.support.transition.end, $.proxy(this.hideModal, this))
         .emulateTransitionEnd(300) :
       this.hideModal()
-  }
+  })
 
-  Modal.prototype.enforceFocus = function () {
+  addToPrototype(Modal, 'enforceFocus', function () {
     $(document)
       .off('focusin.bs.modal') // guard against infinite focus loop
       .on('focusin.bs.modal', $.proxy(function (e) {
@@ -913,9 +916,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
           this.$element.focus()
         }
       }, this))
-  }
+  })
 
-  Modal.prototype.escape = function () {
+  addToPrototype(Modal, 'escape', function () {
     if (this.isShown && this.options.keyboard) {
       this.$element.on('keyup.dismiss.bs.modal', $.proxy(function (e) {
         e.which == 27 && this.hide()
@@ -923,23 +926,23 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     } else if (!this.isShown) {
       this.$element.off('keyup.dismiss.bs.modal')
     }
-  }
+  })
 
-  Modal.prototype.hideModal = function () {
+  addToPrototype(Modal, 'hideModal', function () {
     var that = this
     this.$element.hide()
     this.backdrop(function () {
       that.removeBackdrop()
       that.$element.trigger('hidden.bs.modal')
     })
-  }
+  })
 
-  Modal.prototype.removeBackdrop = function () {
+  addToPrototype(Modal, 'removeBackdrop', function () {
     this.$backdrop && this.$backdrop.remove()
     this.$backdrop = null
-  }
+  })
 
-  Modal.prototype.backdrop = function (callback) {
+  addToPrototype(Modal, 'backdrop', function (callback) {
     var that    = this
     var animate = this.$element.hasClass('fade') ? 'fade' : ''
 
@@ -980,7 +983,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     } else if (callback) {
       callback()
     }
-  }
+  })
 
 
   // MODAL PLUGIN DEFINITION
@@ -1083,7 +1086,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
   , container: false
   }
 
-  Tooltip.prototype.init = function (type, element, options) {
+  addToPrototype(Tooltip, 'init', function (type, element, options) {
     this.enabled  = true
     this.type     = type
     this.$element = $(element)
@@ -1108,13 +1111,13 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     this.options.selector ?
       (this._options = $.extend({}, this.options, { trigger: 'manual', selector: '' })) :
       this.fixTitle()
-  }
+  })
 
-  Tooltip.prototype.getDefaults = function () {
+  addToPrototype(Tooltip, 'getDefaults', function () {
     return Tooltip.DEFAULTS
-  }
+  })
 
-  Tooltip.prototype.getOptions = function (options) {
+  addToPrototype(Tooltip, 'getOptions', function (options) {
     options = $.extend({}, this.getDefaults(), this.$element.data(), options)
 
     if (options.delay && typeof options.delay == 'number') {
@@ -1125,9 +1128,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     }
 
     return options
-  }
+  })
 
-  Tooltip.prototype.enter = function (obj) {
+  addToPrototype(Tooltip, 'enter', function (obj) {
     var defaults = this.getDefaults()
     var options  = {}
 
@@ -1146,9 +1149,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     self.timeout    = setTimeout(function () {
       if (self.hoverState == 'in') self.show()
     }, self.options.delay.show)
-  }
+  })
 
-  Tooltip.prototype.leave = function (obj) {
+  addToPrototype(Tooltip, 'leave', function (obj) {
     var self = obj instanceof this.constructor ?
       obj : $(obj.currentTarget)[this.type](this._options).data('bs.' + this.type)
 
@@ -1160,9 +1163,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     self.timeout    = setTimeout(function () {
       if (self.hoverState == 'out') self.hide()
     }, self.options.delay.hide)
-  }
+  })
 
-  Tooltip.prototype.show = function () {
+  addToPrototype(Tooltip, 'show', function () {
     var e = $.Event('show.bs.'+ this.type)
 
     if (this.hasContent() && this.enabled) {
@@ -1223,9 +1226,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
       this.applyPlacement(tp, placement)
       this.$element.trigger('shown.bs.' + this.type)
     }
-  }
+  })
 
-  Tooltip.prototype.applyPlacement = function(offset, placement) {
+  addToPrototype(Tooltip, 'applyPlacement', function(offset, placement) {
     var replace
     var $tip   = this.tip()
     var width  = $tip[0].offsetWidth
@@ -1266,21 +1269,21 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     }
 
     if (replace) $tip.offset(offset)
-  }
+  })
 
-  Tooltip.prototype.replaceArrow = function(delta, dimension, position) {
+  addToPrototype(Tooltip, 'replaceArrow', function(delta, dimension, position) {
     this.arrow().css(position, delta ? (50 * (1 - delta / dimension) + "%") : '')
-  }
+  })
 
-  Tooltip.prototype.setContent = function () {
+  addToPrototype(Tooltip, 'setContent', function () {
     var $tip  = this.tip()
     var title = this.getTitle()
 
     $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title)
     $tip.removeClass('fade in top bottom left right')
-  }
+  })
 
-  Tooltip.prototype.hide = function () {
+  addToPrototype(Tooltip, 'hide', function () {
     var that = this
     var $tip = this.tip()
     var e    = $.Event('hide.bs.' + this.type)
@@ -1300,28 +1303,28 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     this.$element.trigger('hidden.bs.' + this.type)
 
     return this
-  }
+  })
 
-  Tooltip.prototype.fixTitle = function () {
+  addToPrototype(Tooltip, 'fixTitle', function () {
     var $e = this.$element
     if ($e.attr('title') || typeof($e.attr('data-original-title')) != 'string') {
       $e.attr('data-original-title', $e.attr('title') || '').attr('title', '')
     }
-  }
+  })
 
-  Tooltip.prototype.hasContent = function () {
+  addToPrototype(Tooltip, 'hasContent', function () {
     return this.getTitle()
-  }
+  })
 
-  Tooltip.prototype.getPosition = function () {
+  addToPrototype(Tooltip, 'getPosition', function () {
     var el = this.$element[0]
     return $.extend({}, (typeof el.getBoundingClientRect == 'function') ? el.getBoundingClientRect() : {
       width: el.offsetWidth
     , height: el.offsetHeight
     }, this.$element.offset())
-  }
+  })
 
-  Tooltip.prototype.getTitle = function () {
+  addToPrototype(Tooltip, 'getTitle', function () {
     var title
     var $e = this.$element
     var o  = this.options
@@ -1330,44 +1333,44 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
       || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
 
     return title
-  }
+  })
 
-  Tooltip.prototype.tip = function () {
+  addToPrototype(Tooltip, 'tip', function () {
     return this.$tip = this.$tip || $(this.options.template)
-  }
+  })
 
-  Tooltip.prototype.arrow =function(){
+  addToPrototype(Tooltip, 'arrow', function(){
     return this.$arrow = this.$arrow || this.tip().find(".tooltip-arrow")
-  }
+  })
 
-  Tooltip.prototype.validate = function () {
+  addToPrototype(Tooltip, 'validate', function () {
     if (!this.$element[0].parentNode) {
       this.hide()
       this.$element = null
       this.options  = null
     }
-  }
+  })
 
-  Tooltip.prototype.enable = function () {
+  addToPrototype(Tooltip, 'enable', function () {
     this.enabled = true
-  }
+  })
 
-  Tooltip.prototype.disable = function () {
+  addToPrototype(Tooltip, 'disable', function () {
     this.enabled = false
-  }
+  })
 
-  Tooltip.prototype.toggleEnabled = function () {
+  addToPrototype(Tooltip, 'toggleEnabled', function () {
     this.enabled = !this.enabled
-  }
+  })
 
-  Tooltip.prototype.toggle = function (e) {
+  addToPrototype(Tooltip, 'toggle', function (e) {
     var self = e ? $(e.currentTarget)[this.type](this._options).data('bs.' + this.type) : this
     self.tip().hasClass('in') ? self.leave(self) : self.enter(self)
-  }
+  })
 
-  Tooltip.prototype.destroy = function () {
+  addToPrototype(Tooltip, 'destroy', function () {
     this.hide().$element.off('.' + this.type).removeData('bs.' + this.type)
-  }
+  })
 
 
   // TOOLTIP PLUGIN DEFINITION
@@ -1441,11 +1444,11 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
   Popover.prototype.constructor = Popover
 
-  Popover.prototype.getDefaults = function () {
+  addToPrototype(Popover, 'getDefaults', function () {
     return Popover.DEFAULTS
-  }
+  })
 
-  Popover.prototype.setContent = function () {
+  addToPrototype(Popover, 'setContent', function () {
     var $tip    = this.tip()
     var title   = this.getTitle()
     var content = this.getContent()
@@ -1456,13 +1459,13 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     $tip.removeClass('fade top bottom left right in')
 
     $tip.find('.popover-title:empty').hide()
-  }
+  })
 
-  Popover.prototype.hasContent = function () {
+  addToPrototype(Popover, 'hasContent', function () {
     return this.getTitle() || this.getContent()
-  }
+  })
 
-  Popover.prototype.getContent = function () {
+  addToPrototype(Popover, 'getContent', function () {
     var $e = this.$element
     var o  = this.options
 
@@ -1470,12 +1473,12 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
       || (typeof o.content == 'function' ?
             o.content.call($e[0]) :
             o.content)
-  }
+  })
 
-  Popover.prototype.tip = function () {
+  addToPrototype(Popover, 'tip', function () {
     if (!this.$tip) this.$tip = $(this.options.template)
     return this.$tip
-  }
+  })
 
 
   // POPOVER PLUGIN DEFINITION
@@ -1551,7 +1554,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     offset: 10
   }
 
-  ScrollSpy.prototype.refresh = function () {
+  addToPrototype(ScrollSpy, 'refresh', function () {
     var offsetMethod = this.$element[0] == window ? 'offset' : 'position'
 
     this.offsets = $([])
@@ -1574,9 +1577,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
         self.offsets.push(this[0])
         self.targets.push(this[1])
       })
-  }
+  })
 
-  ScrollSpy.prototype.process = function () {
+  addToPrototype(ScrollSpy, 'process', function () {
     var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
     var scrollHeight = this.$scrollElement[0].scrollHeight || this.$body[0].scrollHeight
     var maxScroll    = scrollHeight - this.$scrollElement.height()
@@ -1595,9 +1598,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
         && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
         && this.activate( targets[i] )
     }
-  }
+  })
 
-  ScrollSpy.prototype.activate = function (target) {
+  addToPrototype(ScrollSpy, 'activate', function (target) {
     this.activeTarget = target
 
     $(this.selector)
@@ -1619,7 +1622,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     }
 
     active.trigger('activate')
-  }
+  })
 
 
   // SCROLLSPY PLUGIN DEFINITION
@@ -1687,7 +1690,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     this.element = $(element)
   }
 
-  Tab.prototype.show = function () {
+  addToPrototype(Tab, 'show', function () {
     var $this    = this.element
     var $ul      = $this.closest('ul:not(.dropdown-menu)')
     var selector = $this.attr('data-target')
@@ -1717,9 +1720,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
       , relatedTarget: previous
       })
     })
-  }
+  })
 
-  Tab.prototype.activate = function (element, container, callback) {
+  addToPrototype(Tab, 'activate', function (element, container, callback) {
     var $active    = container.find('> .active')
     var transition = callback
       && $.support.transition
@@ -1754,7 +1757,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
       next()
 
     $active.removeClass('in')
-  }
+  })
 
 
   // TAB PLUGIN DEFINITION
@@ -1834,11 +1837,11 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     offset: 0
   }
 
-  Affix.prototype.checkPositionWithEventLoop = function () {
+  addToPrototype(Affix, 'checkPositionWithEventLoop', function () {
     setTimeout($.proxy(this.checkPosition, this), 1)
-  }
+  })
 
-  Affix.prototype.checkPosition = function () {
+  addToPrototype(Affix, 'checkPosition', function () {
     if (!this.$element.is(':visible')) return
 
     var scrollHeight = $(document).height()
@@ -1867,7 +1870,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     if (affix == 'bottom') {
       this.$element.offset({ top: document.body.offsetHeight - offsetBottom - this.$element.height() })
     }
-  }
+  })
 
 
   // AFFIX PLUGIN DEFINITION

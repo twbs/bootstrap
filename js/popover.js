@@ -42,11 +42,11 @@
 
   Popover.prototype.constructor = Popover
 
-  Popover.prototype.getDefaults = function () {
+  addToPrototype(Popover, 'getDefaults', function () {
     return Popover.DEFAULTS
-  }
+  })
 
-  Popover.prototype.setContent = function () {
+  addToPrototype(Popover, 'setContent', function () {
     var $tip    = this.tip()
     var title   = this.getTitle()
     var content = this.getContent()
@@ -57,13 +57,13 @@
     $tip.removeClass('fade top bottom left right in')
 
     $tip.find('.popover-title:empty').hide()
-  }
+  })
 
-  Popover.prototype.hasContent = function () {
+  addToPrototype(Popover, 'hasContent', function () {
     return this.getTitle() || this.getContent()
-  }
+  })
 
-  Popover.prototype.getContent = function () {
+  addToPrototype(Popover, 'getContent', function () {
     var $e = this.$element
     var o  = this.options
 
@@ -71,12 +71,12 @@
       || (typeof o.content == 'function' ?
             o.content.call($e[0]) :
             o.content)
-  }
+  })
 
-  Popover.prototype.tip = function () {
+  addToPrototype(Popover, 'tip', function () {
     if (!this.$tip) this.$tip = $(this.options.template)
     return this.$tip
-  }
+  })
 
 
   // POPOVER PLUGIN DEFINITION

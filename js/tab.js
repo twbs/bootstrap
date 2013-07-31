@@ -25,7 +25,7 @@
     this.element = $(element)
   }
 
-  Tab.prototype.show = function () {
+  addToPrototype(Tab, 'show', function () {
     var $this    = this.element
     var $ul      = $this.closest('ul:not(.dropdown-menu)')
     var selector = $this.attr('data-target')
@@ -55,9 +55,9 @@
       , relatedTarget: previous
       })
     })
-  }
+  })
 
-  Tab.prototype.activate = function (element, container, callback) {
+  addToPrototype(Tab, 'activate', function (element, container, callback) {
     var $active    = container.find('> .active')
     var transition = callback
       && $.support.transition
@@ -92,7 +92,7 @@
       next()
 
     $active.removeClass('in')
-  }
+  })
 
 
   // TAB PLUGIN DEFINITION

@@ -45,7 +45,7 @@
   , container: false
   }
 
-  Tooltip.prototype.init = function (type, element, options) {
+  addToPrototype(Tooltip, 'init', function (type, element, options) {
     this.enabled  = true
     this.type     = type
     this.$element = $(element)
@@ -70,13 +70,13 @@
     this.options.selector ?
       (this._options = $.extend({}, this.options, { trigger: 'manual', selector: '' })) :
       this.fixTitle()
-  }
+  })
 
-  Tooltip.prototype.getDefaults = function () {
+  addToPrototype(Tooltip, 'getDefaults', function () {
     return Tooltip.DEFAULTS
-  }
+  })
 
-  Tooltip.prototype.getOptions = function (options) {
+  addToPrototype(Tooltip, 'getOptions', function (options) {
     options = $.extend({}, this.getDefaults(), this.$element.data(), options)
 
     if (options.delay && typeof options.delay == 'number') {
@@ -87,9 +87,9 @@
     }
 
     return options
-  }
+  })
 
-  Tooltip.prototype.enter = function (obj) {
+  addToPrototype(Tooltip, 'enter', function (obj) {
     var defaults = this.getDefaults()
     var options  = {}
 
@@ -108,9 +108,9 @@
     self.timeout    = setTimeout(function () {
       if (self.hoverState == 'in') self.show()
     }, self.options.delay.show)
-  }
+  })
 
-  Tooltip.prototype.leave = function (obj) {
+  addToPrototype(Tooltip, 'leave', function (obj) {
     var self = obj instanceof this.constructor ?
       obj : $(obj.currentTarget)[this.type](this._options).data('bs.' + this.type)
 
@@ -122,9 +122,9 @@
     self.timeout    = setTimeout(function () {
       if (self.hoverState == 'out') self.hide()
     }, self.options.delay.hide)
-  }
+  })
 
-  Tooltip.prototype.show = function () {
+  addToPrototype(Tooltip, 'show', function () {
     var e = $.Event('show.bs.'+ this.type)
 
     if (this.hasContent() && this.enabled) {
@@ -185,9 +185,9 @@
       this.applyPlacement(tp, placement)
       this.$element.trigger('shown.bs.' + this.type)
     }
-  }
+  })
 
-  Tooltip.prototype.applyPlacement = function(offset, placement) {
+  addToPrototype(Tooltip, 'applyPlacement', function(offset, placement) {
     var replace
     var $tip   = this.tip()
     var width  = $tip[0].offsetWidth
@@ -228,21 +228,21 @@
     }
 
     if (replace) $tip.offset(offset)
-  }
+  })
 
-  Tooltip.prototype.replaceArrow = function(delta, dimension, position) {
+  addToPrototype(Tooltip, 'replaceArrow', function(delta, dimension, position) {
     this.arrow().css(position, delta ? (50 * (1 - delta / dimension) + "%") : '')
-  }
+  })
 
-  Tooltip.prototype.setContent = function () {
+  addToPrototype(Tooltip, 'setContent', function () {
     var $tip  = this.tip()
     var title = this.getTitle()
 
     $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title)
     $tip.removeClass('fade in top bottom left right')
-  }
+  })
 
-  Tooltip.prototype.hide = function () {
+  addToPrototype(Tooltip, 'hide', function () {
     var that = this
     var $tip = this.tip()
     var e    = $.Event('hide.bs.' + this.type)
@@ -262,28 +262,28 @@
     this.$element.trigger('hidden.bs.' + this.type)
 
     return this
-  }
+  })
 
-  Tooltip.prototype.fixTitle = function () {
+  addToPrototype(Tooltip, 'fixTitle', function () {
     var $e = this.$element
     if ($e.attr('title') || typeof($e.attr('data-original-title')) != 'string') {
       $e.attr('data-original-title', $e.attr('title') || '').attr('title', '')
     }
-  }
+  })
 
-  Tooltip.prototype.hasContent = function () {
+  addToPrototype(Tooltip, 'hasContent', function () {
     return this.getTitle()
-  }
+  })
 
-  Tooltip.prototype.getPosition = function () {
+  addToPrototype(Tooltip, 'getPosition', function () {
     var el = this.$element[0]
     return $.extend({}, (typeof el.getBoundingClientRect == 'function') ? el.getBoundingClientRect() : {
       width: el.offsetWidth
     , height: el.offsetHeight
     }, this.$element.offset())
-  }
+  })
 
-  Tooltip.prototype.getTitle = function () {
+  addToPrototype(Tooltip, 'getTitle', function () {
     var title
     var $e = this.$element
     var o  = this.options
@@ -292,44 +292,44 @@
       || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
 
     return title
-  }
+  })
 
-  Tooltip.prototype.tip = function () {
+  addToPrototype(Tooltip, 'tip', function () {
     return this.$tip = this.$tip || $(this.options.template)
-  }
+  })
 
-  Tooltip.prototype.arrow =function(){
+  addToPrototype(Tooltip, 'arrow', function(){
     return this.$arrow = this.$arrow || this.tip().find(".tooltip-arrow")
-  }
+  })
 
-  Tooltip.prototype.validate = function () {
+  addToPrototype(Tooltip, 'validate', function () {
     if (!this.$element[0].parentNode) {
       this.hide()
       this.$element = null
       this.options  = null
     }
-  }
+  })
 
-  Tooltip.prototype.enable = function () {
+  addToPrototype(Tooltip, 'enable', function () {
     this.enabled = true
-  }
+  })
 
-  Tooltip.prototype.disable = function () {
+  addToPrototype(Tooltip, 'disable', function () {
     this.enabled = false
-  }
+  })
 
-  Tooltip.prototype.toggleEnabled = function () {
+  addToPrototype(Tooltip, 'toggleEnabled', function () {
     this.enabled = !this.enabled
-  }
+  })
 
-  Tooltip.prototype.toggle = function (e) {
+  addToPrototype(Tooltip, 'toggle', function (e) {
     var self = e ? $(e.currentTarget)[this.type](this._options).data('bs.' + this.type) : this
     self.tip().hasClass('in') ? self.leave(self) : self.enter(self)
-  }
+  })
 
-  Tooltip.prototype.destroy = function () {
+  addToPrototype(Tooltip, 'destroy', function () {
     this.hide().$element.off('.' + this.type).removeData('bs.' + this.type)
-  }
+  })
 
 
   // TOOLTIP PLUGIN DEFINITION

@@ -36,11 +36,11 @@
     , show: true
   }
 
-  Modal.prototype.toggle = function () {
+  addToPrototype(Modal, 'toggle', function () {
     return this[!this.isShown ? 'show' : 'hide']()
-  }
+  })
 
-  Modal.prototype.show = function () {
+  addToPrototype(Modal, 'show', function () {
     var that = this
     var e    = $.Event('show.bs.modal')
 
@@ -79,9 +79,9 @@
           .emulateTransitionEnd(300) :
         that.$element.focus().trigger('shown.bs.modal')
     })
-  }
+  })
 
-  Modal.prototype.hide = function (e) {
+  addToPrototype(Modal, 'hide', function (e) {
     if (e) e.preventDefault()
 
     e = $.Event('hide.bs.modal')
@@ -105,9 +105,9 @@
         .one($.support.transition.end, $.proxy(this.hideModal, this))
         .emulateTransitionEnd(300) :
       this.hideModal()
-  }
+  })
 
-  Modal.prototype.enforceFocus = function () {
+  addToPrototype(Modal, 'enforceFocus', function () {
     $(document)
       .off('focusin.bs.modal') // guard against infinite focus loop
       .on('focusin.bs.modal', $.proxy(function (e) {
@@ -115,9 +115,9 @@
           this.$element.focus()
         }
       }, this))
-  }
+  })
 
-  Modal.prototype.escape = function () {
+  addToPrototype(Modal, 'escape', function () {
     if (this.isShown && this.options.keyboard) {
       this.$element.on('keyup.dismiss.bs.modal', $.proxy(function (e) {
         e.which == 27 && this.hide()
@@ -125,23 +125,23 @@
     } else if (!this.isShown) {
       this.$element.off('keyup.dismiss.bs.modal')
     }
-  }
+  })
 
-  Modal.prototype.hideModal = function () {
+  addToPrototype(Modal, 'hideModal', function () {
     var that = this
     this.$element.hide()
     this.backdrop(function () {
       that.removeBackdrop()
       that.$element.trigger('hidden.bs.modal')
     })
-  }
+  })
 
-  Modal.prototype.removeBackdrop = function () {
+  addToPrototype(Modal, 'removeBackdrop', function () {
     this.$backdrop && this.$backdrop.remove()
     this.$backdrop = null
-  }
+  })
 
-  Modal.prototype.backdrop = function (callback) {
+  addToPrototype(Modal, 'backdrop', function (callback) {
     var that    = this
     var animate = this.$element.hasClass('fade') ? 'fade' : ''
 
@@ -182,7 +182,7 @@
     } else if (callback) {
       callback()
     }
-  }
+  })
 
 
   // MODAL PLUGIN DEFINITION

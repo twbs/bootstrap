@@ -27,7 +27,7 @@
     var $el = $(element).on('click.bs.dropdown', this.toggle)
   }
 
-  Dropdown.prototype.toggle = function (e) {
+  addToPrototype(Dropdown, 'toggle', function (e) {
     var $this = $(this)
 
     if ($this.is('.disabled, :disabled')) return
@@ -55,9 +55,9 @@
     $this.focus()
 
     return false
-  }
+  })
 
-  Dropdown.prototype.keydown = function (e) {
+  addToPrototype(Dropdown, 'keydown', function (e) {
     if (!/(38|40|27)/.test(e.keyCode)) return
 
     var $this = $(this)
@@ -86,7 +86,7 @@
     if (!~index)                                      index=0
 
     $items.eq(index).focus()
-  }
+  })
 
   function clearMenus() {
     $(backdrop).remove()
