@@ -16,14 +16,14 @@ BOOTSTRAP_MIN_CSS = "bootstrap-#{VERSION}.min.css"
 SASS_COMMAND = "sass --precision 16 --load-path lib --style"
 
 task BOOTSTRAP_CSS do |target|
-  sh "#{SASS_COMMAND} expanded lib/bootstrap.scss:#{target}"
+  sh "#{SASS_COMMAND} expanded lib/bootstrap.scss:dist/css/#{target}"
   css = IO.read(target.to_s)
   css.gsub!('@DATE', `date`.strip)
   File.open(target.to_s, 'w+') { |f| f.write(css) }
 end
 
 task BOOTSTRAP_MIN_CSS do |target|
-  sh "#{SASS_COMMAND} compressed lib/bootstrap.scss:#{target}"
+  sh "#{SASS_COMMAND} compressed lib/bootstrap.scss:dist/css/#{target}"
 end
 
 
@@ -32,7 +32,7 @@ task :build => [BOOTSTRAP_CSS, BOOTSTRAP_MIN_CSS]
 
 desc "rebuild regular version of bootstrap when modifications are made"
 task :watch do
-  sh "#{SASS_COMMAND} expanded --watch lib/bootstrap.scss:#{BOOTSTRAP_CSS}"
+  sh "#{SASS_COMMAND} expanded --watch lib/bootstrap.scss:dist/css/#{BOOTSTRAP_CSS}"
 end
 
 task :default => :build
