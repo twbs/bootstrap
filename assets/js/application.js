@@ -7,18 +7,43 @@
   $(function(){
 
     var $window = $(window)
+    var $body   = $(document.body)
 
-    // Disable certain links in docs
-    $('section [href^=#]').click(function (e) {
+    var navHeight = $('.navbar').outerHeight(true) + 10
+
+    $body.scrollspy({
+      target: '.bs-sidebar',
+      offset: navHeight
+    })
+
+    $('.bs-docs-container [href=#]').click(function (e) {
       e.preventDefault()
+    })
+
+    $body.on('click', '.bs-sidenav [href^=#]', function (e) {
+      var $target = $(this.getAttribute('href'))
+
+      e.preventDefault() // prevent browser scroll
+
+      $window.scrollTop($target.offset().top - navHeight + 5)
     })
 
     // back to top
     setTimeout(function () {
-      $('.bs-sidebar').affix({
+      var $sideBar = $('.bs-sidebar')
+
+      $sideBar.affix({
         offset: {
-          top: function () { return $window.width() <= 980 ? 290 : 210 }
-        , bottom: 270
+          top: function () {
+            var offsetTop      = $sideBar.offset().top
+            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
+            var navOuterHeight = $('.bs-docs-nav').height()
+
+            return (this.top = offsetTop - navOuterHeight - sideBarMargin)
+          }
+        , bottom: function () {
+            return (this.bottom = $('.bs-footer').outerHeight(true))
+          }
         }
       })
     }, 100)
@@ -27,17 +52,9 @@
       $('.bs-top').affix()
     }, 100)
 
-    // add tipsies to grid for scaffolding
-    if ($('#grid-system').length) {
-      $('#grid-system').tooltip({
-          selector: '.show-grid > [class*="span"]'
-        , title: function () { return $(this).width() + 'px' }
-      })
-    }
-
     // tooltip demo
     $('.tooltip-demo').tooltip({
-      selector: "a[data-toggle=tooltip]"
+      selector: "[data-toggle=tooltip]"
     })
 
     $('.tooltip-test').tooltip()
@@ -49,11 +66,8 @@
     })
 
     // popover demo
-    $("a[data-toggle=popover]")
+    $("[data-toggle=popover]")
       .popover()
-      .click(function(e) {
-        e.preventDefault()
-      })
 
     // button state demo
     $('#fat-btn')
@@ -71,10 +85,10 @@
     // javascript build logic
     var inputsComponent = $("#less input")
       , inputsPlugin = $("#plugins input")
-      , inputsVariables = $("#variables input")
+      , inputsVariables = $("#less-variables input")
 
     // toggle all plugin checkboxes
-    $('#components .toggle').on('click', function (e) {
+    $('#less .toggle').on('click', function (e) {
       e.preventDefault()
       inputsComponent.prop('checked', !inputsComponent.is(':checked'))
     })
@@ -84,37 +98,36 @@
       inputsPlugin.prop('checked', !inputsPlugin.is(':checked'))
     })
 
-    $('#variables .toggle').on('click', function (e) {
+    $('#less-variables .toggle').on('click', function (e) {
       e.preventDefault()
       inputsVariables.val('')
     })
 
     // request built javascript
-    $('.download-btn .btn').on('click', function () {
+    $('.bs-customize-download .btn').on('click', function (e) {
+      e.preventDefault()
 
-      var css = $("#components input:checked")
+      var css = $("#less input:checked")
             .map(function () { return this.value })
             .toArray()
         , js = $("#plugins input:checked")
             .map(function () { return this.value })
             .toArray()
         , vars = {}
-        , img = ['glyphicons-halflings.png', 'glyphicons-halflings-white.png']
 
-    $("#variables input")
-      .each(function () {
-        $(this).val() && (vars[ $(this).prev().text() ] = $(this).val())
+      $("#less-variables input")
+        .each(function () {
+          $(this).val() && (vars[ $(this).prev().text() ] = $(this).val())
       })
 
       $.ajax({
         type: 'POST'
-      , url: /\?dev/.test(window.location) ? 'http://localhost:3000' : 'http://bootstrap.herokuapp.com'
+      , url: /localhost/.test(window.location) ? 'http://localhost:9001' : 'http://bootstrap.herokuapp.com'
       , dataType: 'jsonpi'
       , params: {
           js: js
         , css: css
         , vars: vars
-        , img: img
       }
       })
     })
