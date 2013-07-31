@@ -165,9 +165,9 @@ $(function () {
             .appendTo('#qunit-fixture')
             .find('[data-toggle="dropdown"]')
             .dropdown()
- 
+
         stop()
- 
+
         dropdown
           .parent('.dropdown')
           .bind('show.bs.dropdown', function () {
@@ -177,7 +177,7 @@ $(function () {
             ok(true, 'hide was called')
             start()
           })
-  
+
         dropdown.click()
         $(document.body).click()
       })
@@ -199,9 +199,9 @@ $(function () {
             .appendTo('#qunit-fixture')
             .find('[data-toggle="dropdown"]')
             .dropdown()
- 
+
         stop()
- 
+
         dropdown
           .parent('.dropdown')
           .bind('shown.bs.dropdown', function () {
@@ -211,7 +211,7 @@ $(function () {
             ok(true, 'hide was called')
             start()
           })
-  
+
         dropdown.click()
         $(document.body).click()
       })
