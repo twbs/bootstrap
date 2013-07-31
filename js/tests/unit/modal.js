@@ -134,4 +134,23 @@ $(function () {
           })
           .modal("show")
       })
+
+      test("should close modal when clicking outside of modal-content", function () {
+        stop()
+        $.support.transition = false
+        var div = $("<div id='modal-test'><div class='contents'></div></div>")
+        div
+          .bind("shown.bs.modal", function () {
+            ok($('#modal-test').length, 'modal insterted into dom')
+            $('.contents').click()
+            ok($('#modal-test').is(":visible"), 'modal visible')
+            $('#modal-test').click()
+          })
+          .bind("hidden.bs.modal", function() {
+            ok(!$('#modal-test').is(":visible"), 'modal hidden')
+            div.remove()
+            start()
+          })
+          .modal("show")
+      })
 })
