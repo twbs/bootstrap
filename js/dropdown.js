@@ -54,6 +54,8 @@
         .trigger('shown.bs.dropdown')
     }
 
+    $this.attr('aria-haspopup', !$parent.hasClass('open'))
+    $this.attr('aria-expanded', $parent.hasClass('open'))
     $this.focus()
 
     return false

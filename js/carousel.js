@@ -146,7 +146,8 @@
       this.sliding = false
       this.$element.trigger('slid')
     }
-
+    $active.removeAttr('aria-live aria-atomic')
+    $next.attr({'aria-live': 'polite', 'aria-atomic': 'true'})
     isCycling && this.cycle()
 
     return this
