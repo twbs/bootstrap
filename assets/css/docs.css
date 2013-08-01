@@ -104,6 +104,10 @@ body {
 .bs-docs-home {
   color: #cdbfe3;
   background-color: #563d7c;
+  background-image: url("../img/map.png");
+}
+.bs-docs-home .navbar {
+  background-color: transparent;
 }
 
 
