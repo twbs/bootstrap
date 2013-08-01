@@ -421,18 +421,19 @@
 // Responsive utilities
 // -------------------------
 // More easily include all the states for responsive-utilities.less.
-@mixin responsive-visibility() {
-  display: block !important;
-  tr & { display: table-row !important; }
-  th &,
-  td & { display: table-cell !important; }
+// $parent hack because sass doesn't support tr& (without space)
+@mixin responsive-visibility($parent) {
+  #{$parent} { display: block !important; }
+  tr#{$parent} { display: table-row !important; }
+  th#{$parent},
+  td#{$parent} { display: table-cell !important; }
 }
 
-@mixin responsive-invisibility() {
-  display: none !important;
-  tr & { display: none !important; }
-  th &,
-  td & { display: none !important; }
+@mixin responsive-invisibility($parent) {
+  #{$parent} { display: none !important; }
+  tr#{$parent} { display: none !important; }
+  th#{$parent},
+  td#{$parent} { display: none !important; }
 }
 
 // Grid System
