@@ -18,8 +18,6 @@
  * ======================================================================== */
 
 
-+function ($) { "use strict";
-
   // COLLAPSE PUBLIC CLASS DEFINITION
   // ================================
 
@@ -36,12 +34,12 @@
     toggle: true
   }
 
-  Collapse.prototype.dimension = function () {
+  addToPrototype(Collapse, 'dimension', function () {
     var hasWidth = this.$element.hasClass('width')
     return hasWidth ? 'width' : 'height'
-  }
+  })
 
-  Collapse.prototype.show = function () {
+  addToPrototype(Collapse, 'show', function () {
     if (this.transitioning || this.$element.hasClass('in')) return
 
     var startEvent = $.Event('show.bs.collapse')
@@ -83,9 +81,9 @@
       .one($.support.transition.end, $.proxy(complete, this))
       .emulateTransitionEnd(350)
       [dimension](this.$element[0][scrollSize])
-  }
+  })
 
-  Collapse.prototype.hide = function () {
+  addToPrototype(Collapse, 'hide', function () {
     if (this.transitioning || !this.$element.hasClass('in')) return
 
     var startEvent = $.Event('hide.bs.collapse')
@@ -119,11 +117,11 @@
       [dimension](0)
       .one($.support.transition.end, $.proxy(complete, this))
       .emulateTransitionEnd(350)
-  }
+  })
 
-  Collapse.prototype.toggle = function () {
+  addToPrototype(Collapse, 'toggle', function () {
     this[this.$element.hasClass('in') ? 'hide' : 'show']()
-  }
+  })
 
 
   // COLLAPSE PLUGIN DEFINITION
@@ -175,5 +173,3 @@
 
     $target.collapse(option)
   })
-
-}(window.jQuery);

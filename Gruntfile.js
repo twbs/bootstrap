@@ -22,7 +22,7 @@ module.exports = function(grunt) {
                 stripBanners: false
             },
             bootstrap: {
-                src: ['js/transition.js', 'js/alert.js', 'js/button.js', 'js/carousel.js', 'js/collapse.js', 'js/dropdown.js', 'js/modal.js', 'js/tooltip.js', 'js/popover.js', 'js/scrollspy.js', 'js/tab.js', 'js/affix.js'],
+                src: ['js/intro.js', 'js/transition.js', 'js/alert.js', 'js/button.js', 'js/carousel.js', 'js/collapse.js', 'js/dropdown.js', 'js/modal.js', 'js/tooltip.js', 'js/popover.js', 'js/scrollspy.js', 'js/tab.js', 'js/affix.js', 'js/outro.js'],
                 dest: 'dist/js/<%= pkg.name %>.js'
             }
         },
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
                 src: 'Gruntfile.js'
             },
             src: {
-                src: ['js/*.js']
+                src: ['js/*.js', '!js/intro.js', '!js/outro.js']
             },
             test: {
                 src: ['js/tests/unit/*.js']

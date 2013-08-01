@@ -18,8 +18,6 @@
  * ======================================================================== */
 
 
-+function ($) { "use strict";
-
   // DROPDOWN CLASS DEFINITION
   // =========================
 
@@ -29,7 +27,7 @@
     var $el = $(element).on('click.bs.dropdown', this.toggle)
   }
 
-  Dropdown.prototype.toggle = function (e) {
+  addToPrototype(Dropdown, 'toggle', function (e) {
     var $this = $(this)
 
     if ($this.is('.disabled, :disabled')) return
@@ -57,9 +55,9 @@
     $this.focus()
 
     return false
-  }
+  })
 
-  Dropdown.prototype.keydown = function (e) {
+  addToPrototype(Dropdown, 'keydown', function (e) {
     if (!/(38|40|27)/.test(e.keyCode)) return
 
     var $this = $(this)
@@ -88,7 +86,7 @@
     if (!~index)                                      index=0
 
     $items.eq(index).focus()
-  }
+  })
 
   function clearMenus() {
     $(backdrop).remove()
@@ -150,5 +148,3 @@
     .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
     .on('click.bs.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
     .on('keydown.bs.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
-
-}(window.jQuery);

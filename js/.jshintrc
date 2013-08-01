@@ -1,4 +1,5 @@
 {
+  "globals"  : {"addToPrototype": true},
   "validthis": true,
   "laxcomma" : true,
   "laxbreak" : true,

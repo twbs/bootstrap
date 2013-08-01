@@ -18,8 +18,6 @@
  * ======================================================================== */
 
 
-+function ($) { "use strict";
-
   // CAROUSEL CLASS DEFINITION
   // =========================
 
@@ -43,7 +41,7 @@
   , pause: 'hover'
   }
 
-  Carousel.prototype.cycle =  function (e) {
+  addToPrototype(Carousel, 'cycle', function (e) {
     e || (this.paused = false)
 
     this.interval && clearInterval(this.interval)
@@ -53,16 +51,16 @@
       && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
 
     return this
-  }
+  })
 
-  Carousel.prototype.getActiveIndex = function () {
+  addToPrototype(Carousel, 'getActiveIndex', function () {
     this.$active = this.$element.find('.item.active')
     this.$items  = this.$active.parent().children()
 
     return this.$items.index(this.$active)
-  }
+  })
 
-  Carousel.prototype.to = function (pos) {
+  addToPrototype(Carousel, 'to', function (pos) {
     var that        = this
     var activeIndex = this.getActiveIndex()
 
@@ -72,9 +70,9 @@
     if (activeIndex == pos) return this.pause().cycle()
 
     return this.slide(pos > activeIndex ? 'next' : 'prev', $(this.$items[pos]))
-  }
+  })
 
-  Carousel.prototype.pause = function (e) {
+  addToPrototype(Carousel, 'pause', function (e) {
     e || (this.paused = true)
 
     if (this.$element.find('.next, .prev').length && $.support.transition.end) {
@@ -85,19 +83,19 @@
     this.interval = clearInterval(this.interval)
 
     return this
-  }
+  })
 
-  Carousel.prototype.next = function () {
+  addToPrototype(Carousel, 'next', function () {
     if (this.sliding) return
     return this.slide('next')
-  }
+  })
 
-  Carousel.prototype.prev = function () {
+  addToPrototype(Carousel, 'prev', function () {
     if (this.sliding) return
     return this.slide('prev')
-  }
+  })
 
-  Carousel.prototype.slide = function (type, next) {
+  addToPrototype(Carousel, 'slide', function (type, next) {
     var $active   = this.$element.find('.item.active')
     var $next     = next || $active[type]()
     var isCycling = this.interval
@@ -150,7 +148,7 @@
     isCycling && this.cycle()
 
     return this
-  }
+  })
 
 
   // CAROUSEL PLUGIN DEFINITION
@@ -209,5 +207,3 @@
       $carousel.carousel($carousel.data())
     })
   })
-
-}(window.jQuery);

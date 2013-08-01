@@ -18,8 +18,6 @@
  * ======================================================================== */
 
 
-+function ($) { "use strict";
-
   // BUTTON PUBLIC CLASS DEFINITION
   // ==============================
 
@@ -32,7 +30,7 @@
     loadingText: 'loading...'
   }
 
-  Button.prototype.setState = function (state) {
+  addToPrototype(Button, 'setState', function (state) {
     var d    = 'disabled'
     var $el  = this.$element
     var val  = $el.is('input') ? 'val' : 'html'
@@ -50,9 +48,9 @@
         $el.addClass(d).attr(d, d) :
         $el.removeClass(d).removeAttr(d);
     }, 0)
-  }
+  })
 
-  Button.prototype.toggle = function () {
+  addToPrototype(Button, 'toggle', function () {
     var $parent = this.$element.closest('[data-toggle="buttons"]')
 
     if ($parent.length) {
@@ -61,7 +59,7 @@
     }
 
     this.$element.toggleClass('active')
-  }
+  })
 
 
   // BUTTON PLUGIN DEFINITION
@@ -103,5 +101,3 @@
     $btn.button('toggle')
     e.preventDefault()
   })
-
-}(window.jQuery);

@@ -18,8 +18,6 @@
  * ======================================================================== */
 
 
-+function ($) { "use strict";
-
   // ALERT CLASS DEFINITION
   // ======================
 
@@ -28,7 +26,7 @@
     $(el).on('click', dismiss, this.close)
   }
 
-  Alert.prototype.close = function (e) {
+  addToPrototype(Alert, 'close', function (e) {
     var $this    = $(this)
     var selector = $this.attr('data-target')
 
@@ -60,7 +58,7 @@
         .one($.support.transition.end, removeElement)
         .emulateTransitionEnd(150) :
       removeElement()
-  }
+  })
 
 
   // ALERT PLUGIN DEFINITION
@@ -94,5 +92,3 @@
   // ==============
 
   $(document).on('click.bs.alert.data-api', dismiss, Alert.prototype.close)
-
-}(window.jQuery);
