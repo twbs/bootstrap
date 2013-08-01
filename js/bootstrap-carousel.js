@@ -135,6 +135,8 @@
           that.sliding = false
           setTimeout(function () { that.$element.trigger('slid') }, 0)
         })
+        $active.removeAttr('aria-live aria-atomic')
+        $next.attr({'aria-live': 'polite', 'aria-atomic': 'true'})
       } else {
         this.$element.trigger(e)
         if (e.isDefaultPrevented()) return
