@@ -249,6 +249,8 @@
     var $tip = this.tip()
     var e    = $.Event('hide.bs.' + this.type)
 
+    function complete() { $tip.detach() }
+
     this.$element.trigger(e)
 
     if (e.isDefaultPrevented()) return
@@ -257,9 +259,9 @@
 
     $.support.transition && this.$tip.hasClass('fade') ?
       $tip
-        .one($.support.transition.end, $tip.detach)
+        .one($.support.transition.end, complete)
         .emulateTransitionEnd(150) :
-      $tip.detach()
+      complete()
 
     this.$element.trigger('hidden.bs.' + this.type)
 
