@@ -1,0 +1,52 @@
+//
+// Input groups
+// --------------------------------------------------
+
+// Reset rounded corners
+.input-group .form-control:first-child,
+.input-group-addon:first-child,
+.input-group-btn:first-child > .btn,
+.input-group-btn:first-child > .dropdown-toggle {
+  .border-right-radius(@border-radius-base);
+  .border-left-radius(0);
+}
+.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
+  .border-left-radius(0);
+}
+.input-group-addon:first-child {
+  border-right: 1px solid @input-group-addon-border-color;
+  border-left: 0;
+}
+.input-group .form-control:last-child,
+.input-group-addon:last-child,
+.input-group-btn:last-child > .btn,
+.input-group-btn:last-child > .dropdown-toggle {
+  .border-right-radius(0);
+  .border-left-radius(@border-radius-base);
+}
+.input-group-btn:first-child > .btn:not(:first-child) {
+  .border-right-radius(0);
+}
+.input-group-addon:last-child {
+  border-right: 0;
+  border-left: 1px solid @input-group-addon-border-color;
+}
+
+
+// Button input groups
+// -------------------------
+
+.input-group-btn > .btn {
+  // Jankily prevent input button groups from wrapping
+  + .btn {
+    margin-right: -4px;
+  	margin-left: 0;
+  }
+}
+
+// Only left align form labels here when the columns stop stacking
+@media (min-width: @screen-tablet) {
+  .form-horizontal .control-label {
+    text-align: left;
+  }
+}

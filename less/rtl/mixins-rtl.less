@@ -1,0 +1,57 @@
+//
+// Mixins
+// --------------------------------------------------
+
+
+// Grid System
+// -----------
+
+// Generate the columns
+.make-rtl-column(@columns) {
+  position: relative;
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Inner gutter via padding
+  padding-left:  (@grid-gutter-width / 2);
+  padding-right: (@grid-gutter-width / 2);
+
+  // Calculate width based on number of columns available
+  @media (min-width: @grid-float-breakpoint) {
+    float: right;
+    width: percentage((@columns / @grid-columns));
+  }
+}
+
+// Generate the column offsets
+.make-rtl-column-offset(@columns) {
+  @media (min-width: @grid-float-breakpoint) {
+    margin-right: percentage((@columns / @grid-columns));
+  }
+}
+.make-rtl-column-push(@columns) {
+  @media (min-width: @grid-float-breakpoint) {
+    right: percentage((@columns / @grid-columns));
+  }
+}
+.make-rtl-column-pull(@columns) {
+  @media (min-width: @grid-float-breakpoint) {
+    left: percentage((@columns / @grid-columns));
+  }
+}
+
+// Generate the small columns
+.make-rtl-small-column(@columns) {
+  position: relative;
+  float: right;
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Inner gutter via padding
+  padding-left:  (@grid-gutter-width / 2);
+  padding-right: (@grid-gutter-width / 2);
+  @max-width: (@grid-float-breakpoint - 1);
+
+  // Calculate width based on number of columns available
+  @media (max-width: @max-width) {
+    width: percentage((@columns / @grid-columns));
+  }
+}
