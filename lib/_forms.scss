@@ -145,11 +145,11 @@ input[type="number"] {
     cursor: not-allowed;
     background-color: $input-bg-disabled;
   }
+}
 
-  // Reset height for `textarea`s
-  textarea & {
-    height: auto;
-  }
+// Reset height for `textarea`s
+textarea.form-control {
+  height: auto;
 }
 
 

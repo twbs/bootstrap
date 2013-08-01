@@ -43,7 +43,7 @@
 // Text input groups
 // -------------------------
 .input-group-addon {
-  @incudle box-sizing(border-box);
+  @include box-sizing(border-box);
   padding: $padding-base-vertical $padding-base-horizontal;
   font-size: $font-size-base;
   font-weight: normal;
