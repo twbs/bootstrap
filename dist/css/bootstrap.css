@@ -1894,6 +1894,7 @@ input[type="button"].btn-block {
 }
 
 .input-group {
+  position: relative;
   display: table;
   border-collapse: separate;
 }
