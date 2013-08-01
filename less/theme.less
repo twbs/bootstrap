@@ -1,0 +1,55 @@
+
+//
+// Buttons
+// --------------------------------------------------
+
+// Button mixin for generating new styles
+.btn-styles(@btn-color: #555) {
+  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+  #gradient > .vertical(@start-color: @btn-color; @end-color: darken(@btn-color, 10%));
+  border-color: darken(@btn-color, 12%);
+  @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+  .box-shadow(@shadow);
+
+  // Reset the shadow
+  &:active,
+  &.active {
+    background-color: darken(@btn-color, 10%);
+    border-color: darken(@btn-color, 12%);
+    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+  }
+}
+
+// Common styles
+.btn {
+  // Remove the gradient for the pressed/active state
+  &:active,
+  &.active {
+    background-image: none;
+  }
+}
+
+// Apply the mixin to the buttons
+.btn-default { .btn-styles(@btn-default-bg); }
+.btn-primary { .btn-styles(@btn-primary-bg); }
+.btn-success { .btn-styles(@btn-success-bg); }
+.btn-warning { .btn-styles(@btn-warning-bg); }
+.btn-danger  { .btn-styles(@btn-danger-bg); }
+.btn-info    { .btn-styles(@btn-info-bg); }
+
+
+
+
+//
+// Navbar
+// --------------------------------------------------
+
+// Basic navbar
+.navbar {
+  #gradient > .vertical(@start-color: lighten(@navbar-bg, 10%); @end-color: @navbar-bg;);
+}
+
+// Inverted navbar
+.navbar-inverse {
+  #gradient > .vertical(@start-color: lighten(@navbar-inverse-bg, 10%); @end-color: @navbar-inverse-bg;);
+}
