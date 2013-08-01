@@ -3158,6 +3158,7 @@ button.close {
 .btn-group-justified {
   display: table;
   width: 100%;
+  table-layout: fixed;
 }
 
 .btn-group-justified .btn {
