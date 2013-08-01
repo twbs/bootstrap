@@ -1,0 +1,50 @@
+//
+// Forms
+// --------------------------------------------------
+
+
+// Checkboxes and radios
+//
+// Indent the labels to position radios/checkboxes as hanging controls.
+
+.radio,
+.checkbox {
+  padding-right: 20px;
+  padding-left: 0;
+}
+
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+  float: right;
+  margin-right: -20px;
+  margin-left: 0;
+}
+
+// Radios and checkboxes on same line
+.radio-inline,
+.checkbox-inline {
+  padding-right: 20px;
+  padding-left: 0;
+}
+.radio-inline + .radio-inline,
+.checkbox-inline + .checkbox-inline {
+  margin-right: 10px; // space out consecutive inline controls
+  margin-left: 0;
+}
+
+// Form control feedback states
+//
+// Apply contextual and semantic states to individual form controls.
+
+.has-warning,
+.has-error,
+.has-success {
+  // Set the border and box shadow on specific inputs to match
+  .form-control {
+    padding-right: @padding-base-horizontal;
+    padding-left: 32px; // to account for the feedback icon
+  }
+}
+
