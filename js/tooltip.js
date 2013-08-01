@@ -149,7 +149,7 @@
       if (autoPlace) placement = placement.replace(autoToken, '') || 'top'
 
       $tip
-        .detach()
+        .remove()
         .css({ top: 0, left: 0, display: 'block' })
         .addClass(placement)
 
@@ -257,9 +257,9 @@
 
     $.support.transition && this.$tip.hasClass('fade') ?
       $tip
-        .one($.support.transition.end, $tip.detach)
+        .one($.support.transition.end, $tip.remove)
         .emulateTransitionEnd(150) :
-      $tip.detach()
+      $tip.remove()
 
     this.$element.trigger('hidden.bs.' + this.type)
 
