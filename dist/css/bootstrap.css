@@ -2016,7 +2016,9 @@ input[type="button"].btn-block {
   margin-bottom: 0;
 }
 
-.form-horizontal .control-label {
+.form-horizontal .control-label,
+.form-horizontal .radio-inline,
+.form-horizontal .checkbox-inline {
   padding-top: 9px;
 }
 
@@ -2068,6 +2070,10 @@ input[type="button"].btn-block {
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
   content: "";
+}
+
+.dropdown {
+  position: relative;
 }
 
 .dropdown-menu {
