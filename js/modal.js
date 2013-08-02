@@ -28,6 +28,7 @@
     this.$element  = $(element).on('click.dismiss.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
     this.$backdrop =
     this.isShown   = null
+    this.scrollbarWidth = this.getScrollbarWidth()
 
     if (this.options.remote) this.$element.find('.modal-body').load(this.options.remote)
   }
@@ -66,6 +67,8 @@
       if (transition) {
         that.$element[0].offsetWidth // force reflow
       }
+
+      that.disableBodyScroll()
 
       that.$element
         .addClass('in')
@@ -134,6 +137,7 @@
     this.$element.hide()
     this.backdrop(function () {
       that.removeBackdrop()
+      that.restoreBodyScroll()
       that.$element.trigger('hidden.bs.modal')
     })
   }
@@ -186,6 +190,29 @@
     }
   }
 
+  Modal.prototype.disableBodyScroll = function () {
+    var $body = $(document.body)
+    this.bodyMargin = $body.css('margin-right')
+    $body.css('margin-right', parseInt( this.bodyMargin, 10 ) + this.scrollbarWidth).addClass('modal-open')
+  }
+
+  Modal.prototype.restoreBodyScroll = function () {
+    $(document.body).removeClass('modal-open').css('margin-right', this.bodyMargin)
+  }
+
+  Modal.prototype.getScrollbarWidth = function() {
+    var $div = $('<div><div/></div>')
+
+    $div.css({ width: 100, height: 100, overflow: 'auto', position: 'absolute'})
+        .appendTo('body')
+
+    var $inner = $div.find('div')
+    var width  = $inner.innerWidth() - $inner.height( 200 ).innerWidth()
+
+    $div.remove()
+
+    return width
+  }
 
   // MODAL PLUGIN DEFINITION
   // =======================
@@ -232,12 +259,6 @@
       .one('hide', function () {
         $this.is(':visible') && $this.focus()
       })
-  })
-
-  $(function () {
-    var $body = $(document.body)
-      .on('shown.bs.modal',  '.modal', function () { $body.addClass('modal-open') })
-      .on('hidden.bs.modal', '.modal', function () { $body.removeClass('modal-open') })
   })
 
 }(window.jQuery);
