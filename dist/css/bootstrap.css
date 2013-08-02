@@ -1453,8 +1453,8 @@ input[type="number"]::-webkit-inner-spin-button {
 .form-control {
   display: block;
   width: 100%;
-  height: 38px;
-  padding: 8px 12px;
+  height: 34px;
+  padding: 6px 12px;
   font-size: 14px;
   line-height: 1.428571429;
   color: #555555;
@@ -1538,9 +1538,10 @@ textarea.form-control {
 }
 
 .input-large {
-  height: 56px;
-  padding: 14px 16px;
+  height: 45px;
+  padding: 10px 16px;
   font-size: 18px;
+  line-height: 1.33;
   border-radius: 6px;
 }
 
@@ -1548,12 +1549,13 @@ textarea.form-control {
   height: 30px;
   padding: 5px 10px;
   font-size: 12px;
+  line-height: 1.5;
   border-radius: 3px;
 }
 
 select.input-large {
-  height: 56px;
-  line-height: 56px;
+  height: 45px;
+  line-height: 45px;
 }
 
 select.input-small {
@@ -1647,7 +1649,7 @@ textarea.input-small {
 
 .btn {
   display: inline-block;
-  padding: 8px 12px;
+  padding: 6px 12px;
   margin-bottom: 0;
   font-size: 14px;
   font-weight: 500;
@@ -1932,8 +1934,9 @@ fieldset[disabled] .btn-link:focus {
 }
 
 .btn-large {
-  padding: 14px 16px;
+  padding: 10px 16px;
   font-size: 18px;
+  line-height: 1.33;
   border-radius: 6px;
 }
 
@@ -2029,7 +2032,7 @@ input[type="button"].btn-block {
 }
 
 .input-group-addon {
-  padding: 8px 12px;
+  padding: 6px 12px;
   font-size: 14px;
   font-weight: normal;
   line-height: 1.428571429;
@@ -2049,7 +2052,7 @@ input[type="button"].btn-block {
 }
 
 .input-group-addon.input-large {
-  padding: 14px 16px;
+  padding: 10px 16px;
   font-size: 18px;
   border-radius: 6px;
 }
@@ -2904,8 +2907,8 @@ button.close {
 }
 
 .navbar-form {
-  margin-top: 6px;
-  margin-bottom: 6px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .navbar-form .form-control,
@@ -3076,7 +3079,7 @@ button.close {
 }
 
 .navbar-btn {
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 .navbar-text {
@@ -3357,7 +3360,7 @@ button.close {
 
 .pagination-large > li > a,
 .pagination-large > li > span {
-  padding: 14px 16px;
+  padding: 10px 16px;
   font-size: 18px;
 }
 
