@@ -42,9 +42,9 @@
 
   // http://blog.alexmaccaw.com/css-transitions
   $.fn.emulateTransitionEnd = function (duration) {
-    var called = false, $el    = this
-    $(this).one($.support.transition.end, function () { called = true })
-    var callback = function () { if (!called) $($el).trigger($.support.transition.end) }
+    var called = false, $el = this, eventName = $.support.transition && $.support.transition.end || 'transitionend'
+    $(this).one(eventName, function () { called = true })
+    var callback = function () { if (!called) $($el).trigger(eventName) }
     setTimeout(callback, duration)
     return this
   }
