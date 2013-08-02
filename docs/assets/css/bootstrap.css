@@ -6133,12 +6133,6 @@ a.badge:focus {
   line-height: 30px;
 }
 
-.footer-ba {
-  padding: 18px 0;
-  background: url(../img/logo-white.png) no-repeat center top;
-  border: none;
-}
-
 @font-face {
   font-family: 'Gotham';
   font-style: normal;
