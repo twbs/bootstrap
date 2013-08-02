@@ -2505,33 +2505,6 @@ button.close {
   background-color: #e5e5e5;
 }
 
-.nav-justified {
-  width: 100%;
-}
-
-.nav-justified > li {
-  display: table-cell;
-  float: none;
-  width: 1%;
-}
-
-.nav-justified > li > a {
-  text-align: center;
-}
-
-.nav-tabs-justified {
-  border-bottom: 0;
-}
-
-.nav-tabs-justified > li > a {
-  margin-right: 0;
-  border-bottom: 1px solid #dddddd;
-}
-
-.nav-tabs-justified > .active > a {
-  border-bottom-color: #ffffff;
-}
-
 .nav-tabs {
   border-bottom: 1px solid #dddddd;
 }
@@ -2612,6 +2585,33 @@ button.close {
 .nav-stacked > li + li {
   margin-top: 2px;
   margin-left: 0;
+}
+
+.nav-justified {
+  width: 100%;
+}
+
+.nav-justified > li {
+  display: table-cell;
+  float: none;
+  width: 1%;
+}
+
+.nav-justified > li > a {
+  text-align: center;
+}
+
+.nav-tabs-justified {
+  border-bottom: 0;
+}
+
+.nav-tabs-justified > li > a {
+  margin-right: 0;
+  border-bottom: 1px solid #dddddd;
+}
+
+.nav-tabs-justified > .active > a {
+  border-bottom-color: #ffffff;
 }
 
 .tabbable:before,
