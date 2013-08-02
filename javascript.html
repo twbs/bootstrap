@@ -168,7 +168,7 @@ $('#myModal').on('show.bs.modal', function (e) {
 
             <hr>
 
-            <h4>Overflowing text to show optional scrollbar</h4>
+            <h4>Overflowing text to show scroll behavior</h4>
             <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
             <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
@@ -262,7 +262,7 @@ $('#myModal').on('show.bs.modal', function (e) {
            <td>remote</td>
            <td>path</td>
            <td>false</td>
-           <td><p>If a remote URL is provided, content will be loaded via jQuery's <code>load</code> method and injected into the <code>.modal-body</code>. If you're using the data api, you may alternatively use the <code>href</code> tag to specify the remote source. An example of this is shown below:</p>
+           <td><p>If a remote URL is provided, content will be loaded via jQuery's <code>load</code> method and injected into the <code>.modal-body</code>. If you're using the data api, you may alternatively use the <code>href</code> attribute to specify the remote source. An example of this is shown below:</p>
 {% highlight html %}
 <a data-toggle="modal" href="remote.html" data-target="#modal">Click me</a>
 {% endhighlight %}
@@ -397,7 +397,7 @@ $('#myModal').on('hidden.bs.modal', function () {
       <ul class="nav nav-pills">
         <li class="active"><a href="#">Regular link</a></li>
         <li class="dropdown">
-          <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
+          <a id="drop4" role="button" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
           <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
             <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
@@ -407,7 +407,7 @@ $('#myModal').on('hidden.bs.modal', function () {
           </ul>
         </li>
         <li class="dropdown">
-          <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">Dropdown 2 <b class="caret"></b></a>
+          <a id="drop5" role="button" data-toggle="dropdown" href="#">Dropdown 2 <b class="caret"></b></a>
           <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
             <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
@@ -417,7 +417,7 @@ $('#myModal').on('hidden.bs.modal', function () {
           </ul>
         </li>
         <li class="dropdown">
-          <a class="dropdown-toggle" id="drop6" role="button" data-toggle="dropdown" href="#">Dropdown 3 <b class="caret"></b></a>
+          <a id="drop6" role="button" data-toggle="dropdown" href="#">Dropdown 3 <b class="caret"></b></a>
           <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop6">
             <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
@@ -436,7 +436,7 @@ $('#myModal').on('hidden.bs.modal', function () {
     <p>Add <code>data-toggle="dropdown"</code> to a link or button to toggle a dropdown.</p>
 {% highlight html %}
 <div class="dropdown">
-  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown trigger</a>
+  <a data-toggle="dropdown" href="#">Dropdown trigger</a>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
     ...
   </ul>
@@ -445,7 +445,7 @@ $('#myModal').on('hidden.bs.modal', function () {
           <p>To keep URLs intact, use the <code>data-target</code> attribute instead of <code>href="#"</code>.</p>
 {% highlight html %}
 <div class="dropdown">
-  <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
+  <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
     Dropdown <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -802,7 +802,7 @@ $('#example').tooltip(options)
            <td>title</td>
            <td>string | function</td>
            <td>''</td>
-           <td>default title value if <code>title</code> tag isn't present</td>
+           <td>default title value if <code>title</code> attribute isn't present</td>
          </tr>
          <tr>
            <td>trigger</td>
@@ -1480,7 +1480,7 @@ $(".collapse").collapse()
            <td>parent</td>
            <td>selector</td>
            <td>false</td>
-           <td>If selector then all collapsible elements under the specified parent will be closed when this collapsible item is shown. (similar to traditional accordion behavior)</td>
+           <td>If selector then all collapsible elements under the specified parent will be closed when this collapsible item is shown. (similar to traditional accordion behavior - this dependent on the <code>accordion-group</code> class)</td>
          </tr>
          <tr>
            <td>toggle</td>

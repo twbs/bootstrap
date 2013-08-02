@@ -5,6 +5,7 @@
 // Base styles
 // -------------------------
 .input-group {
+  position: relative; // For dropdowns
   display: table;
   border-collapse: separate; // prevent input groups from inheriting border styles from table cells when placed within a table
 
@@ -135,7 +136,9 @@
 // --------------------------------------------------
 // Horizontal forms are built on grid classes.
 
-.form-horizontal .control-label {
+.form-horizontal .control-label, 
+.form-horizontal .radio-inline, 
+.form-horizontal .checkbox-inline {
   padding-top: 9px;
 }
 
