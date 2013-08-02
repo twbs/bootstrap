@@ -7,7 +7,7 @@
 // -------------------------
 
 .alert {
-  padding: 10px 35px 10px 15px;
+  padding: 15px 35px 15px 15px;
   margin-bottom: @line-height-computed;
   color: @alert-text;
   background-color: @alert-bg;
@@ -37,6 +37,15 @@
     right: -21px;
     color: inherit;
   }
+
+  // Improve alignment and spacing of inner content
+  > p,
+  > ul {
+    margin-bottom: 0;
+  }
+  > p + p {
+    margin-top: 5px;
+  }
 }
 
 // Alternate styles
@@ -50,20 +59,4 @@
 }
 .alert-info {
   .alert-variant(@alert-info-bg, @alert-info-border, @alert-info-text);
-}
-
-// Block alerts
-// -------------------------
-
-.alert-block {
-  padding-top: 15px;
-  padding-bottom: 15px;
-
-  > p,
-  > ul {
-    margin-bottom: 0;
-  }
-  p + p {
-    margin-top: 5px;
-  }
 }

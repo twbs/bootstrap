@@ -3751,7 +3751,7 @@ button.close {
 }
 
 .alert {
-  padding: 10px 35px 10px 15px;
+  padding: 15px 35px 15px 15px;
   margin-bottom: 20px;
   color: #c09853;
   background-color: #fcf8e3;
@@ -3778,6 +3778,15 @@ button.close {
   top: -2px;
   right: -21px;
   color: inherit;
+}
+
+.alert > p,
+.alert > ul {
+  margin-bottom: 0;
+}
+
+.alert > p + p {
+  margin-top: 5px;
 }
 
 .alert-success {
@@ -3820,20 +3829,6 @@ button.close {
 
 .alert-info .alert-link {
   color: #2d6987;
-}
-
-.alert-block {
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-
-.alert-block > p,
-.alert-block > ul {
-  margin-bottom: 0;
-}
-
-.alert-block p + p {
-  margin-top: 5px;
 }
 
 .thumbnail,
