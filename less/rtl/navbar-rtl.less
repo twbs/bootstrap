@@ -1,0 +1,53 @@
+.navbar-nav {
+  // Left aligned contents
+  // Make them full width first so that they align properly on mobile
+  &.pull-left {
+    width: 100%;
+  }
+  &.pull-right {
+  	width: auto;
+  }
+}
+
+// Collapsible navbar toggle
+.navbar-toggle {
+  right: auto;
+	left: 10px;
+}
+
+// Left aligned menus need alt position
+.navbar-nav.pull-left > li > .dropdown-menu,
+.navbar-nav > li > .dropdown-menu.pull-left {
+  right: auto;
+  left: 0;
+}
+
+// Responsive navbar
+// --------------------------------------------------
+
+@media screen and (min-width: @grid-float-breakpoint) {
+
+  .navbar-brand {
+    float: right;
+    margin-right: -(@navbar-padding-horizontal);
+    margin-left: 5px;
+  }
+  .navbar-nav {
+    float: right;
+
+    > li {
+      float: right;
+    }
+
+    &.pull-left {
+      float: left;
+      width: auto;
+    }
+  }
+
+  // Required to make the collapsing navbar work on regular desktops
+  .navbar-toggle {
+    right: auto;
+  }
+
+}
