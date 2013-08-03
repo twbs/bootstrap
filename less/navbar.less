@@ -116,12 +116,12 @@
 
 // Collapsible navbar toggle
 .navbar-toggle {
-  position: absolute;
-  top: floor((@navbar-height - 32) / 2);
-  right: 10px;
+  position: relative;
+  float: right;
+  height: 34px;
   width: 48px;
-  height: 32px;
-  padding: 8px 12px;
+  .navbar-vertical-align(34px);
+  padding: @padding-base-vertical @padding-base-horizontal; 
   background-color: transparent;
   border: 1px solid @navbar-toggle-border-color;
   border-radius: @border-radius-base;
