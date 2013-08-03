@@ -2386,6 +2386,23 @@ a.list-group-item.active .list-group-item-text {
           box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
+.panel .list-group {
+  margin: 15px -15px -15px;
+}
+
+.panel .list-group .list-group-item {
+  border-width: 1px 0;
+}
+
+.panel .list-group .list-group-item:first-child {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.panel .list-group .list-group-item:last-child {
+  border-bottom: 0;
+}
+
 .panel-heading {
   padding: 10px 15px;
   margin: -15px -15px 15px;
@@ -2459,23 +2476,6 @@ a.list-group-item.active .list-group-item-text {
   color: #3a87ad;
   background-color: #d9edf7;
   border-color: #bce8f1;
-}
-
-.list-group-flush {
-  margin: 15px -15px -15px;
-}
-
-.list-group-flush .list-group-item {
-  border-width: 1px 0;
-}
-
-.list-group-flush .list-group-item:first-child {
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-}
-
-.list-group-flush .list-group-item:last-child {
-  border-bottom: 0;
 }
 
 .well {
