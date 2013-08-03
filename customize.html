@@ -664,22 +664,44 @@ base_url: "../"
     <h4>Border radius</h4>
     <label>@alert-border-radius</label>
     <input type="text" class="form-control" placeholder="@border-radius-base">
+	<label>@alert-border-thickness</label>
+    <input type="text" class="form-control" placeholder="1px">
+	<label>@alert-link-darken-base</label>
+    <input type="text" class="form-control" placeholder="10%">
+	<label>@alert-hr-darken-base</label>
+    <input type="text" class="form-control" placeholder="5%">
+	<label>@alert-padding-top</label>
+    <input type="text" class="form-control" placeholder="15px">
+	<label>@alert-padding-right</label>
+    <input type="text" class="form-control" placeholder="35px">
+	<label>@alert-padding-bottom</label>
+    <input type="text" class="form-control" placeholder="@alert-padding-top">
+	<label>@alert-padding-left</label>
+    <input type="text" class="form-control" placeholder="@alert-padding-top">
     <div class="row">
       <div class="col-lg-6">
-        <h4>Success</h4>
+        <h4>Default (Warning)</h4>
+        <label>@alert-text</label>
+        <input type="text" class="form-control" placeholder="@state-warning-text">
+        <label>@alert-bg</label>
+        <input type="text" class="form-control" placeholder="@state-warning-bg">
+        <label>@alert-border</label>
+        <input type="text" class="form-control" placeholder="@state-warning-border">
+		<label>@alert-hr-color</label>
+        <input type="text" class="form-control" placeholder="darken(@alert-border, @alert-hr-darken-base)">
+        <label>@alert-link-color</label>
+        <input type="text" class="form-control" placeholder="darken(@alert-text, @alert-link-darken-base)">
+		<h4>Success</h4>
         <label>@alert-success-text</label>
         <input type="text" class="form-control" placeholder="@state-success-text">
         <label>@alert-success-bg</label>
         <input type="text" class="form-control" placeholder="@state-success-bg">
         <label>@alert-success-border</label>
         <input type="text" class="form-control" placeholder="@state-success-border">
-        <h4>Warning</h4>
-        <label>@alert-warning-text</label>
-        <input type="text" class="form-control" placeholder="@state-warning-text">
-        <label>@alert-warning-bg</label>
-        <input type="text" class="form-control" placeholder="@state-warning-bg">
-        <label>@alert-warning-border</label>
-        <input type="text" class="form-control" placeholder="@state-warning-border">
+		<label>@alert-success-hr-color</label>
+        <input type="text" class="form-control" placeholder="darken(@alert-success-border, @alert-hr-darken-base)">
+        <label>@alert-success-link-color</label>
+        <input type="text" class="form-control" placeholder="darken(@alert-success-text, @alert-link-darken-base)">
       </div>
       <div class="col-lg-6">
         <h4>Danger</h4>
@@ -689,6 +711,10 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="@state-danger-bg">
         <label>@alert-danger-border</label>
         <input type="text" class="form-control" placeholder="@state-danger-border">
+		<label>@alert-danger-hr-color</label>
+        <input type="text" class="form-control" placeholder="darken(@alert-danger-border, @alert-hr-darken-base)">
+        <label>@alert-danger-link-color</label>
+        <input type="text" class="form-control" placeholder="darken(@alert-danger-text, @alert-link-darken-base)">
         <h4>Info</h4>
         <label>@alert-info-text</label>
         <input type="text" class="form-control" placeholder="@state-info-text">
@@ -696,6 +722,10 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="@state-info-bg">
         <label>@alert-info-border</label>
         <input type="text" class="form-control" placeholder="@state-info-border">
+		<label>@alert-info-hr-color</label>
+        <input type="text" class="form-control" placeholder="darken(@alert-info-border, @alert-hr-darken-base)">
+        <label>@alert-info-link-color</label>
+        <input type="text" class="form-control" placeholder="darken(@alert-info-text, @alert-link-darken-base)">
       </div>
     </div>
 

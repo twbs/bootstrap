@@ -402,23 +402,40 @@
 
 // Alerts
 // -------------------------
+@alert-border-radius:         @border-radius-base;
+@alert-border-thickness:      1px;
+
+@alert-padding-top:           15px;
+@alert-padding-right:         35px;
+@alert-padding-bottom:        @alert-padding-top;
+@alert-padding-left:          @alert-padding-top;
+
+@alert-link-darken-base:      10%;
+@alert-hr-darken-base:        5%;
+
 @alert-bg:                    @state-warning-bg;
 @alert-text:                  @state-warning-text;
 @alert-border:                @state-warning-border;
-@alert-border-radius:         @border-radius-base;
+@alert-hr-color:              darken(@alert-border, @alert-hr-darken-base);
+@alert-link-color:            darken(@alert-text, @alert-link-darken-base);
 
 @alert-success-bg:            @state-success-bg;
 @alert-success-text:          @state-success-text;
 @alert-success-border:        @state-success-border;
+@alert-success-hr-color:      darken(@state-success-border, @alert-hr-darken-base);
+@alert-success-link-color:    darken(@state-success-text, @alert-link-darken-base);
 
 @alert-danger-bg:             @state-danger-bg;
 @alert-danger-text:           @state-danger-text;
 @alert-danger-border:         @state-danger-border;
+@alert-danger-hr-color:       darken(@state-danger-border, @alert-hr-darken-base);
+@alert-danger-link-color:     darken(@state-danger-text, @alert-link-darken-base);
 
 @alert-info-bg:               @state-info-bg;
 @alert-info-text:             @state-info-text;
 @alert-info-border:           @state-info-border;
-
+@alert-info-hr-color:         darken(@state-info-border, @alert-hr-darken-base);
+@alert-info-link-color:       darken(@state-info-text, @alert-link-darken-base);
 
 // Progress bars
 // -------------------------
