@@ -1694,7 +1694,7 @@ body { padding-bottom: 70px; }
     </div>
     <p class="lead">Extend Bootstrap's <a href="../css/#grid">grid system</a> with the thumbnail component to easily display grids of images, videos, text, and more.</p>
 
-    <h3>Default thumbnails</h3>
+    <h3 id="thumbnails-default">Default thumbnails</h3>
     <p>By default, Bootstrap's thumbnails are designed to showcase linked images with minimal required markup.</p>
     <div class="bs-example">
       <div class="row">
@@ -1731,7 +1731,7 @@ body { padding-bottom: 70px; }
 </div>
 {% endhighlight %}
 
-    <h3>Custom content thumbnails</h3>
+    <h3 id="thumbnails-custom-content">Custom content thumbnails</h3>
     <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.</p>
     <div class="bs-example">
       <div class="row">
@@ -1812,23 +1812,6 @@ body { padding-bottom: 70px; }
 <div class="alert">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <strong>Warning!</strong> Best check yo self, you're not looking too good.
-</div>
-{% endhighlight %}
-
-    <h3 id="alerts-block">Block alerts</h3>
-    <p>For longer messages, increase the padding on the top and bottom of the alert wrapper by adding <code>.alert-block</code>.</p>
-    <div class="bs-example">
-      <div class="alert alert-block">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <h4>Warning!</h4>
-        <p>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-      </div>
-    </div>
-{% highlight html %}
-<div class="alert alert-block">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <h4>Warning!</h4>
-  <p>...</p>
 </div>
 {% endhighlight %}
 
@@ -2016,7 +1999,7 @@ body { padding-bottom: 70px; }
     </div>
     <p class="lead">Abstract object styles for building various types of components (like blog comments, Tweets, etc) that feature a left- or right-aligned image alongside textual content.</p>
 
-    <h3>Default example</h3>
+    <h3 id="media-default">Default media</h3>
     <p>The default media allow to float a media object (images, video, audio) to the left or right of a content block.</p>
     <div class="bs-example">
       <div class="media">
@@ -2059,7 +2042,7 @@ body { padding-bottom: 70px; }
 </div>
 {% endhighlight %}
 
-    <h3>Media list</h3>
+    <h3 id="media-list">Media list</h3>
     <p>With a bit of extra markup, you can use media inside list (useful for comment threads or articles lists).</p>
     <div class="bs-example">
       <ul class="media-list">
@@ -2367,7 +2350,7 @@ body { padding-bottom: 70px; }
         <p>Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 
         <!-- List group -->
-        <ul class="list-group list-group-flush">
+        <ul class="list-group">
           <li class="list-group-item">Cras justo odio</li>
           <li class="list-group-item">Dapibus ac facilisis in</li>
           <li class="list-group-item">Morbi leo risus</li>
@@ -2383,7 +2366,7 @@ body { padding-bottom: 70px; }
   <p>...</p>
 
   <!-- List group -->
-  <ul class="list-group list-group-flush">
+  <ul class="list-group">
     <li class="list-group-item">Cras justo odio</li>
     <li class="list-group-item">Dapibus ac facilisis in</li>
     <li class="list-group-item">Morbi leo risus</li>

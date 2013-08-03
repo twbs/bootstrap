@@ -89,14 +89,17 @@ $headings-line-height:    1.1 !default;
 // -------------------------
 // Based on 14px font-size and 1.428 line-height (~20px to start)
 
-$padding-base-vertical:          8px !default;
+$padding-base-vertical:          6px !default;
 $padding-base-horizontal:        12px !default;
 
-$padding-large-vertical:         14px !default;
+$padding-large-vertical:         10px !default;
 $padding-large-horizontal:       16px !default;
 
 $padding-small-vertical:         5px !default;
 $padding-small-horizontal:       10px !default;
+
+$line-height-large:              1.33 !default;
+$line-height-small:              1.5 !default;
 
 $border-radius-base:             4px !default;
 $border-radius-large:            6px !default;
@@ -160,9 +163,9 @@ $input-border-radius:            $border-radius-base !default;
 
 $input-color-placeholder:        $gray-light !default;
 
-$input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2);
-$input-height-large:             (ceil($font-size-large * $line-height-base) + ($padding-large-vertical * 2) + 2);
-$input-height-small:             (ceil($font-size-small * $line-height-base) + ($padding-small-vertical * 2) + 2);
+$input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2) !default;
+$input-height-large:             (floor($font-size-large * $line-height-large) + ($padding-large-vertical * 2) + 2) !default;
+$input-height-small:             (floor($font-size-small * $line-height-small) + ($padding-small-vertical * 2) + 2) !default;
 
 $legend-border-color:            #e5e5e5 !default;
 

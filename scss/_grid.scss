@@ -110,11 +110,16 @@
 
   // Push and pull columns for source order changes
   @for $i from 1 through $grid-columns - 1 {
-    .col-push-#{$i}  { left: percentage(($i / $grid-columns)); }
+    .col-sm-push-#{$i}  { left: percentage(($i / $grid-columns)); }
   }
 
   @for $i from 1 through $grid-columns - 1 {
-    .col-pull-#{$i}  { right: percentage(($i / $grid-columns)); }
+    .col-sm-pull-#{$i}  { right: percentage(($i / $grid-columns)); }
+  }
+
+  // Offsets
+  @for $i from 1 through $grid-columns - 1 {
+    .col-sm-offset-#{$i}  { margin-left: percentage(($i / $grid-columns)); }
   }
 }
 
@@ -141,9 +146,18 @@
     .col-lg-#{$i}  { width: percentage(($i / $grid-columns)); }
   }
 
+  // Push and pull columns for source order changes
+  @for $i from 1 through $grid-columns - 1 {
+    .col-lg-push-#{$i}  { left: percentage(($i / $grid-columns)); }
+  }
+
+  @for $i from 1 through $grid-columns - 1 {
+    .col-lg-pull-#{$i}  { right: percentage(($i / $grid-columns)); }
+  }
+
   // Offsets
   @for $i from 1 through $grid-columns - 1 {
-    .col-offset-#{$i}  { margin-left: percentage(($i / $grid-columns)); }
+    .col-lg-offset-#{$i}  { margin-left: percentage(($i / $grid-columns)); }
   }
 }
 
