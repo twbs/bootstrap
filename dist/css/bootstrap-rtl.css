@@ -1,0 +1,37 @@
+body {
+  direction: rtl;
+}
+
+.radio,
+.checkbox {
+  padding-right: 20px;
+  padding-left: 0;
+}
+
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+  float: right;
+  margin-right: -20px;
+  margin-left: 0;
+}
+
+.radio-inline,
+.checkbox-inline {
+  padding-right: 20px;
+  padding-left: 0;
+}
+
+.radio-inline + .radio-inline,
+.checkbox-inline + .checkbox-inline {
+  margin-right: 10px;
+  margin-left: 0;
+}
+
+.has-warning .form-control,
+.has-error .form-control,
+.has-success .form-control {
+  padding-right: 12px;
+  padding-left: 32px;
+}
