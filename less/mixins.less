@@ -6,6 +6,35 @@
 // Utilities
 // -------------------------
 
+// Direction
+.padding(left, @val) {
+  padding-left: @val;
+}
+.padding(right, @val) {
+  padding-right: @val;
+}
+
+.margin(left, @val) {
+  margin-left: @val;
+}
+.margin(right, @val) {
+  margin-right: @val;
+}
+
+.left(@val) when (@dirStart = left) {
+  left: @val;
+}
+.left(@val) when (@dirStart = right) {
+  right: @val;
+}
+
+.right(@val) when (@dirStart = left) {
+  right: @val;
+}
+.right(@val) when (@dirStart = right) {
+  left: @val;
+}
+
 // Clearfix
 // Source: http://nicolasgallagher.com/micro-clearfix-hack/
 //
