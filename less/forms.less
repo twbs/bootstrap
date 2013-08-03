@@ -280,3 +280,47 @@ textarea {
   margin-bottom: 10px;
   color: lighten(@text-color, 25%); // lighten the text some for contrast
 }
+
+
+
+// Inline forms
+//
+// Make forms appear inline(-block).
+
+.form-inline {
+  .form-control,
+  .radio,
+  .checkbox {
+    display: inline-block;
+  }
+  .radio,
+  .checkbox {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+
+// Horizontal forms
+//
+// Horizontal forms are built on grid classes and allow you to create forms with
+// labels on the left and inputs on the right.
+
+.form-horizontal .control-label,
+.form-horizontal .radio-inline,
+.form-horizontal .checkbox-inline {
+  padding-top: 9px;
+}
+
+.form-horizontal {
+  .form-group {
+    .make-row();
+  }
+}
+
+// Only right align form labels here when the columns stop stacking
+@media (min-width: @screen-tablet) {
+  .form-horizontal .control-label {
+    text-align: right;
+  }
+}

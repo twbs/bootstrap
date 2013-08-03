@@ -1647,6 +1647,62 @@ textarea.input-small {
   color: #737373;
 }
 
+.form-inline .form-control,
+.form-inline .radio,
+.form-inline .checkbox {
+  display: inline-block;
+}
+
+.form-inline .radio,
+.form-inline .checkbox {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.form-horizontal .control-label,
+.form-horizontal .radio-inline,
+.form-horizontal .checkbox-inline {
+  padding-top: 9px;
+}
+
+.form-horizontal .form-group:before,
+.form-horizontal .form-group:after {
+  display: table;
+  content: " ";
+}
+
+.form-horizontal .form-group:after {
+  clear: both;
+}
+
+.form-horizontal .form-group:before,
+.form-horizontal .form-group:after {
+  display: table;
+  content: " ";
+}
+
+.form-horizontal .form-group:after {
+  clear: both;
+}
+
+@media (min-width: 768px) {
+  .form-horizontal .form-group {
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+}
+
+.form-horizontal .form-group .row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+@media (min-width: 768px) {
+  .form-horizontal .control-label {
+    text-align: right;
+  }
+}
+
 .btn {
   display: inline-block;
   padding: 6px 12px;
@@ -2104,62 +2160,6 @@ input[type="button"].btn-block {
 .input-group-btn > .btn:hover,
 .input-group-btn > .btn:active {
   z-index: 2;
-}
-
-.form-inline .form-control,
-.form-inline .radio,
-.form-inline .checkbox {
-  display: inline-block;
-}
-
-.form-inline .radio,
-.form-inline .checkbox {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.form-horizontal .control-label,
-.form-horizontal .radio-inline,
-.form-horizontal .checkbox-inline {
-  padding-top: 9px;
-}
-
-.form-horizontal .form-group:before,
-.form-horizontal .form-group:after {
-  display: table;
-  content: " ";
-}
-
-.form-horizontal .form-group:after {
-  clear: both;
-}
-
-.form-horizontal .form-group:before,
-.form-horizontal .form-group:after {
-  display: table;
-  content: " ";
-}
-
-.form-horizontal .form-group:after {
-  clear: both;
-}
-
-@media (min-width: 768px) {
-  .form-horizontal .form-group {
-    margin-right: -15px;
-    margin-left: -15px;
-  }
-}
-
-.form-horizontal .form-group .row {
-  margin-right: -15px;
-  margin-left: -15px;
-}
-
-@media (min-width: 768px) {
-  .form-horizontal .control-label {
-    text-align: right;
-  }
 }
 
 .caret {
