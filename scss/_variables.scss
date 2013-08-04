@@ -2,12 +2,13 @@
 // Variables
 // --------------------------------------------------
 
+
 // Media queries breakpoints
 // --------------------------------------------------
 
-// Tiny screen / phone
-$screen-tiny:                480px !default;
-$screen-phone:               $screen-tiny !default;
+// Extra small screen / phone
+$screen-xsmall:              480px !default;
+$screen-phone:               $screen-xsmall !default;
 
 // Small screen / tablet
 $screen-small:               768px !default;
@@ -24,6 +25,7 @@ $screen-tablet-max:          $screen-small-max !default;
 // Large screen / wide desktop
 $screen-large:               1200px !default;
 $screen-large-desktop:       $screen-large !default;
+
 
 // Grid system
 // --------------------------------------------------
