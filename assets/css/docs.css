@@ -27,6 +27,20 @@ body {
   border-color: #563d7c;
 }
 
+/* Homepage button */
+.btn-outline {
+  color: #fff;
+  background-color: transparent;
+  border-color: #cdbfe3;
+}
+.btn-outline:hover,
+.btn-outline:focus,
+.btn-outline:active {
+  color: #563d7c;
+  background-color: #fff;
+  border-color: #fff;
+}
+
 /* Temp CSS until RC2 */
 .bs-customize-placeholder {
   margin-bottom: -100px;
@@ -75,8 +89,21 @@ body {
   color: #555;
 }
 .bs-docs-home .bs-old-docs {
+  padding-top: 0;
+  padding-bottom: 0;
   text-align: center;
-  border-top: 1px solid #e5e5e5;
+  color: inherit;
+  background-color: transparent;
+  border-color: transparent;
+}
+.bs-docs-home .bs-old-docs a {
+  color: #fff;
+}
+
+/* Homepage */
+.bs-docs-home {
+  color: #cdbfe3;
+  background-color: #563d7c;
 }
 
 
@@ -91,10 +118,11 @@ body {
 .bs-masthead h1 {
   font-size: 50px;
   line-height: 1;
+  color: #fff;
 }
 
 /* Download button */
-.bs-masthead .btn-bs {
+.bs-masthead .btn-outline {
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 18px 24px;
@@ -119,6 +147,9 @@ body {
 }
 .bs-masthead-links li + li {
   margin-left: 20px;
+}
+.bs-masthead-links a {
+  color: #fff;
 }
 
 
@@ -796,8 +827,8 @@ input.focused {
 
   /* Tweak display of docs jumbotrons */
   .bs-masthead {
-    padding-top:    100px;
-    padding-bottom: 100px;
+    padding-top:    140px;
+    padding-bottom: 140px;
   }
   .bs-masthead h1 {
     font-size: 100px;
