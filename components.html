@@ -385,7 +385,7 @@ base_url: "../"
     <div class="bs-example">
       <div class="btn-toolbar" style="margin: 0;">
         <div class="btn-group">
-          <button class="btn btn-default btn-large dropdown-toggle" type="button" data-toggle="dropdown">
+          <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown">
             Large button <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
@@ -397,8 +397,20 @@ base_url: "../"
           </ul>
         </div><!-- /btn-group -->
         <div class="btn-group">
-          <button class="btn btn-default btn-small dropdown-toggle" type="button" data-toggle="dropdown">
+          <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
             Small button <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group">
+          <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            Extra small button <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
@@ -413,7 +425,7 @@ base_url: "../"
 {% highlight html %}
 <!-- Large button group -->
 <div class="btn-group">
-  <button class="btn btn-default btn-large dropdown-toggle" type="button" data-toggle="dropdown">
+  <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown">
     Large button <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
@@ -423,13 +435,22 @@ base_url: "../"
 
 <!-- Small button group -->
 <div class="btn-group">
-  <button class="btn btn-default btn-small dropdown-toggle" type="button" data-toggle="dropdown">
+  <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
     Small button <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
     ...
   </ul>
 </div>
+
+<!-- Extra small button group -->
+<div class="btn-group">
+  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+    Extra small button <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    ...
+  </ul>
 </div>
 {% endhighlight %}
 
@@ -535,8 +556,8 @@ base_url: "../"
     <p>Add the relative form sizing classes to the <code>.input-group-addon</code>.</p>
     <form class="bs-example bs-example-form">
       <div class="input-group">
-        <span class="input-group-addon input-large">@</span>
-        <input type="text" class="form-control input-large" placeholder="Username">
+        <span class="input-group-addon input-lg">@</span>
+        <input type="text" class="form-control input-lg" placeholder="Username">
       </div>
       <br>
       <div class="input-group">
@@ -545,14 +566,14 @@ base_url: "../"
       </div>
       <br>
       <div class="input-group">
-        <span class="input-group-addon input-small">@</span>
-        <input type="text" class="form-control input-small" placeholder="Username">
+        <span class="input-group-addon input-sm">@</span>
+        <input type="text" class="form-control input-sm" placeholder="Username">
       </div>
     </form>
 {% highlight html %}
 <div class="input-group">
-  <span class="input-group-addon input-large">@</span>
-  <input type="text" class="form-control input-large" placeholder="Username">
+  <span class="input-group-addon input-lg">@</span>
+  <input type="text" class="form-control input-lg" placeholder="Username">
 </div>
 
 <div class="input-group">
@@ -561,8 +582,8 @@ base_url: "../"
 </div>
 
 <div class="input-group">
-  <span class="input-group-addon input-small">@</span>
-  <input type="text" class="form-control input-small" placeholder="Username">
+  <span class="input-group-addon input-sm">@</span>
+  <input type="text" class="form-control input-sm" placeholder="Username">
 </div>
 {% endhighlight %}
 
@@ -1446,10 +1467,10 @@ body { padding-bottom: 70px; }
 
 
     <h3>Sizes</h3>
-    <p>Fancy larger or smaller pagination? Add <code>.pagination-large</code> or <code>.pagination-small</code>  for additional sizes.</p>
+    <p>Fancy larger or smaller pagination? Add <code>.pagination-lg</code> or <code>.pagination-sm</code> for additional sizes.</p>
     <div class="bs-example">
       <div>
-        <ul class="pagination pagination-large">
+        <ul class="pagination pagination-lg">
           <li><a href="#">&laquo;</a></li>
           <li><a href="#">1</a></li>
           <li><a href="#">2</a></li>
@@ -1471,7 +1492,7 @@ body { padding-bottom: 70px; }
         </ul>
       </div>
       <div>
-        <ul class="pagination pagination-small">
+        <ul class="pagination pagination-sm">
           <li><a href="#">&laquo;</a></li>
           <li><a href="#">1</a></li>
           <li><a href="#">2</a></li>
@@ -1483,9 +1504,9 @@ body { padding-bottom: 70px; }
       </div>
     </div>
 {% highlight html %}
-<ul class="pagination pagination-large">...</ul>
+<ul class="pagination pagination-lg">...</ul>
 <ul class="pagination pagination">...</ul>
-<ul class="pagination pagination-small">...</ul>
+<ul class="pagination pagination-sm">...</ul>
 {% endhighlight %}
 
 
@@ -1659,14 +1680,14 @@ body { padding-bottom: 70px; }
       <div class="jumbotron">
         <h1>Hello, world!</h1>
         <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <p><a class="btn btn-primary btn-large">Learn more</a></p>
+        <p><a class="btn btn-primary btn-lg">Learn more</a></p>
       </div>
     </div>
 {% highlight html %}
 <div class="jumbotron">
   <h1>Hello, world!</h1>
   <p>...</p>
-  <p><a class="btn btn-primary btn-large">Learn more</a></p>
+  <p><a class="btn btn-primary btn-lg">Learn more</a></p>
 </div>
 {% endhighlight %}
 
@@ -2402,20 +2423,20 @@ body { padding-bottom: 70px; }
     <h3>Optional classes</h3>
     <p>Control padding and rounded corners with two optional modifier classes.</p>
     <div class="bs-example">
-      <div class="well well-large">
+      <div class="well well-lg">
         Look, I'm in a well!
       </div>
     </div>
 {% highlight html %}
-<div class="well well-large">...</div>
+<div class="well well-lg">...</div>
 {% endhighlight %}
 
     <div class="bs-example">
-      <div class="well well-small">
+      <div class="well well-sm">
         Look, I'm in a well!
       </div>
     </div>
 {% highlight html %}
-<div class="well well-small">...</div>
+<div class="well well-sm">...</div>
 {% endhighlight %}
   </div>
