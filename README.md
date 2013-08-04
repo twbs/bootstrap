@@ -137,3 +137,4 @@ For more information on SemVer, please visit [http://semver.org/](http://semver.
 ## Copyright and license
 
 Copyright 2012 Twitter, Inc under [the Apache 2.0 license](LICENSE).
+NOTE: We are in the process of changing the license to MIT and are in the process of getting approval of all committers of code in the version 3.0 code base. If you commit to v3 after this announcement, you are assumed to agree with the MIT license. Please see details at: https://github.com/twbs/bootstrap/issues/2054
