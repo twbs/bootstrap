@@ -6,13 +6,13 @@
   padding-left: 0;
   margin: $line-height-computed 0;
   border-radius: $border-radius-base;
-  
+
   > li {
     display: inline; // Remove list-style and block-level defaults
     > a,
     > span {
       float: left; // Collapse white-space
-      padding: 4px 12px;
+      padding: $padding-base-vertical $padding-base-horizontal;
       line-height: $line-height-base;
       text-decoration: none;
       background-color: $pagination-bg;
@@ -33,7 +33,7 @@
       }
     }
   }
-  
+
   > li > a:hover,
   > li > a:focus,
   > .active > a,
@@ -45,7 +45,7 @@
     color: $pagination-active-color;
     cursor: default;
   }
-  
+
   > .disabled {
     > span,
     > a,
@@ -62,7 +62,7 @@
 // --------------------------------------------------
 
 // Large
-.pagination-large {
+.pagination-lg {
   > li {
     > a,
     > span {
@@ -85,7 +85,7 @@
 }
 
 // Small
-.pagination-small {
+.pagination-sm {
   > li {
     > a,
     > span {
