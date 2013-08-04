@@ -15,7 +15,7 @@ base_url: "../"
     </div>
 
     <h3 id="js-individual-compiled">Individual or compiled</h3>
-    <p>Plugins can be included individually (using bootstrap's individual <code>*.js</code> files, or all at once (using <code>bootstrap.js</code> or the minified <code>bootstrap.min.js</code>.</p>
+    <p>Plugins can be included individually (using Bootstrap's individual <code>*.js</code> files, or all at once (using <code>bootstrap.js</code> or the minified <code>bootstrap.min.js</code>.</p>
 
     <div class="bs-callout bs-callout-danger">
       <h4>Do not attempt to include both.</h4>
@@ -28,7 +28,7 @@ base_url: "../"
     </div>
 
     <h3 id="js-data-attrs">Data attributes</h3>
-    <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API and should be your first consideration when using a plugin.</p>
+    <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first-class API and should be your first consideration when using a plugin.</p>
 
     <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the document namespaced with <code>data-api</code>. This looks like this:
 {% highlight js %}
@@ -59,12 +59,12 @@ $("#myModal").modal('show')                // initializes and invokes show immed
     <p>Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In these circumstances, namespace collisions can occasionally occur. If this happens, you may call <code>.noConflict</code> on the plugin you wish to revert the value of.</p>
 {% highlight js %}
 var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
-$.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the bootstrap functionality
+$.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the Bootstrap functionality
 {% endhighlight %}
 
     <h3 id="js-events">Events</h3>
     <p>Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.</p>
-    <p>As of 3.0.0, all bootstrap events are namespaced.</p>
+    <p>As of 3.0.0, all Bootstrap events are namespaced.</p>
     <p>All infinitive events provide <code>preventDefault</code> functionality. This provides the ability to stop the execution of an action before it starts.</p>
 {% highlight js %}
 $('#myModal').on('show.bs.modal', function (e) {
@@ -89,7 +89,7 @@ $('#myModal').on('show.bs.modal', function (e) {
     <h3>About transitions</h3>
     <p>For simple transition effects, include <code>transition.js</code> once alongside the other JS files. If you're using the compiled (or minified) <code>bootstrap.js</code>, there is no need to include this&mdash;it's already there.</p>
     <h3>What's inside</h3>
-    <p>Transition.js is a basic helper for transitionEnd events as well as a css transition emulator. It's used by the other plugins to check for css transition support and to catch hanging transitions.</p>
+    <p>Transition.js is a basic helper for <code>transitionEnd</code> events as well as a CSS transition emulator. It's used by the other plugins to check for CSS transition support and to catch hanging transitions.</p>
   </div>
 
 
@@ -189,11 +189,11 @@ $('#myModal').on('show.bs.modal', function (e) {
     </div><!-- /.modal -->
 
     <div class="bs-example" style="padding-bottom: 24px;">
-      <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Launch demo modal</a>
+      <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Launch demo modal</a>
     </div><!-- /example -->
 {% highlight html %}
   <!-- Button trigger modal -->
-  <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Launch demo modal</a>
+  <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Launch demo modal</a>
 
   <!-- Modal -->
   <div class="modal fade" id="myModal">
@@ -465,7 +465,7 @@ $('.dropdown-toggle').dropdown()
 
     <h3>Methods</h3>
     <h4>$().dropdown('toggle')</h4>
-    <p>A programmatic api for toggling menus for a given navbar or tabbed navigation.</p>
+    <p>Toggles the dropdown menu of a given navbar or tabbed navigation.</p>
   </div>
 
 
@@ -957,7 +957,7 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
 
     <h3>Live demo</h3>
     <div class="bs-example" style="padding-bottom: 24px;">
-      <a href="#" class="btn btn-large btn-danger" data-toggle="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">Click to toggle popover</a>
+      <a href="#" class="btn btn-lg btn-danger" data-toggle="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">Click to toggle popover</a>
     </div>
 
     <h4>Four directions</h4>
@@ -1794,7 +1794,7 @@ $('#myCarousel').on('slide.bs.carousel', function () {
       <h4>Requires independent styling ;)</h4>
       <p>
         Affix toggles between three states/classes: <code>affix</code>, <code>affix-top</code>, and <code>affix-bottom</code>. You must provide the styles for these classes yourself (independent of this plugin).
-        The <code>affix-top</code> class should be in the regular flow of the document. The <code>affix</code> class should be fixed to the page. And <code>affix-bottom</code> should be positioned absolute. Note, <code>affix-bottom</code> is special in that the plugin will place the element with js relative to the <code>offset: { bottom: number }</code> option you've provided.
+        The <code>affix-top</code> class should be in the regular flow of the document. The <code>affix</code> class should be fixed to the page. And <code>affix-bottom</code> should be positioned absolute. Note, <code>affix-bottom</code> is special in that the plugin will place the element with JS relative to the <code>offset: { bottom: number }</code> option you've provided.
       </p>
     </div>
 

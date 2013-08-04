@@ -28,7 +28,7 @@
     padding-top: ((@navbar-height - @line-height-computed) / 2);
     padding-bottom: ((@navbar-height - @line-height-computed) / 2);
     color: @navbar-link-color;
-    line-height: 20px;
+    line-height: @line-height-computed;
     border-radius: @border-radius-base;
     &:hover,
     &:focus {
@@ -354,6 +354,8 @@
 // Add a class to make any element properly align itself vertically within the navbars.
 
 .navbar-text {
+  float: left;
+  padding: 0 @navbar-padding-horizontal;
   .navbar-vertical-align(@line-height-computed);
 }
 
