@@ -16,7 +16,8 @@
       offset: navHeight
     })
 
-    $('.bs-docs-container [href=#]').click(function (e) {
+    // Disable example links in the documentation
+    $('.bs-docs-container [href=#], .bs-example [href^=#]').click(function (e) {
       e.preventDefault()
     })
 
