@@ -69,7 +69,7 @@ base_url: "../"
     </div>
     <p class="lead">With the launch of Bootstrap 3, icons have been moved to a <a href="https://github.com/twbs/bootstrap-glyphicons">separate repository</a>. This keeps the primary project as lean as possible, makes it easier for folks to swap icon libraries, and makes Glyphicons icon fonts more readily available to more people outside Bootstrap.</p>
     <p class="lead">
-      <a href="http://glyphicons.getbootstrap.com/" class="btn btn-default btn-large">Visit Glyphicons for Bootstrap</a> or <a href="https://github.com/twbs/bootstrap-glyphicons">download from GitHub</a>
+      <a href="http://glyphicons.getbootstrap.com/" class="btn btn-default btn-lg">Visit Glyphicons for Bootstrap</a> or <a href="https://github.com/twbs/bootstrap-glyphicons">download from GitHub</a>
     </p>
   </div>
 
@@ -91,7 +91,7 @@ base_url: "../"
           <tr>
             <th></th>
             <th>
-              Tiny devices
+              Extra small devices
               <small>Phones (&lt;768px)</small>
             </th>
             <th>
@@ -1585,35 +1585,35 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
     <h2 id="forms-control-sizes">Control sizing</h2>
-    <p>Set heights using classes like <code>.input-large</code>, and set widths using grid column classes like <code>.col-lg-*</code>.</p>
+    <p>Set heights using classes like <code>.input-lg</code>, and set widths using grid column classes like <code>.col-lg-*</code>.</p>
 
     <h3>Height sizing</h3>
     <p>Create larger or smaller form controls that match button sizes.</p>
     <form class="bs-example bs-example-control-sizing">
       <div class="controls docs-input-sizes">
-        <input class="form-control input-large" type="text" placeholder=".input-large">
+        <input class="form-control input-lg" type="text" placeholder=".input-lg">
         <input type="text" class="form-control" placeholder="Default input">
-        <input class="form-control input-small" type="text" placeholder=".input-small">
+        <input class="form-control input-sm" type="text" placeholder=".input-sm">
 
-        <select class="form-control input-large">
-          <option value="">.input-large</option>
+        <select class="form-control input-lg">
+          <option value="">.input-lg</option>
         </select>
         <select class="form-control">
           <option value="">Default select</option>
         </select>
-        <select class="form-control input-small">
-          <option value="">.input-small</option>
+        <select class="form-control input-sm">
+          <option value="">.input-sm</option>
         </select>
       </div>
     </form>
 {% highlight html %}
-<input class="form-control input-large" type="text" placeholder=".input-large">
+<input class="form-control input-lg" type="text" placeholder=".input-lg">
 <input class="form-control" type="text" placeholder="Default input">
-<input class="form-control input-small" type="text" placeholder=".input-small">
+<input class="form-control input-sm" type="text" placeholder=".input-sm">
 
-<select class="form-control input-large">...</select>
+<select class="form-control input-lg">...</select>
 <select class="form-control">...</select>
-<select class="form-control input-small">...</select>
+<select class="form-control input-sm">...</select>
 {% endhighlight %}
 
     <h3>Column sizing</h3>
@@ -1701,54 +1701,54 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h2 id="buttons-sizes">Button sizes</h2>
-    <p>Fancy larger or smaller buttons? Add <code>.btn-large</code> or <code>.btn-small</code> for additional sizes.</p>
+    <p>Fancy larger or smaller buttons? Add <code>.btn-lg</code> or <code>.btn-sm</code> for additional sizes.</p>
     <div class="bs-example">
       <p>
-        <button type="button" class="btn btn-primary btn-large">Large button</button>
-        <button type="button" class="btn btn-default btn-large">Large button</button>
+        <button type="button" class="btn btn-primary btn-lg">Large button</button>
+        <button type="button" class="btn btn-default btn-lg">Large button</button>
       </p>
       <p>
         <button type="button" class="btn btn-primary">Default button</button>
         <button type="button" class="btn btn-default">Default button</button>
       </p>
       <p>
-        <button type="button" class="btn btn-primary btn-small">Small button</button>
-        <button type="button" class="btn btn-default btn-small">Small button</button>
+        <button type="button" class="btn btn-primary btn-sm">Small button</button>
+        <button type="button" class="btn btn-default btn-sm">Small button</button>
       </p>
       <p>
-        <button type="button" class="btn btn-primary btn-mini">Mini button</button>
-        <button type="button" class="btn btn-default btn-mini">Mini button</button>
+        <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
+        <button type="button" class="btn btn-default btn-xs">Extra small button</button>
       </p>
     </div>
 {% highlight html %}
 <p>
-  <button type="button" class="btn btn-primary btn-large">Large button</button>
-  <button type="button" class="btn btn-default btn-large">Large button</button>
+  <button type="button" class="btn btn-primary btn-lg">Large button</button>
+  <button type="button" class="btn btn-default btn-lg">Large button</button>
 </p>
 <p>
   <button type="button" class="btn btn-primary">Default button</button>
   <button type="button" class="btn btn-default">Default button</button>
 </p>
 <p>
-  <button type="button" class="btn btn-primary btn-small">Small button</button>
-  <button type="button" class="btn btn-default btn-small">Small button</button>
+  <button type="button" class="btn btn-primary btn-sm">Small button</button>
+  <button type="button" class="btn btn-default btn-sm">Small button</button>
 </p>
 <p>
-  <button type="button" class="btn btn-primary btn-mini">Mini button</button>
-  <button type="button" class="btn btn-default btn-mini">Mini button</button>
+  <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
+  <button type="button" class="btn btn-default btn-xs">Extra small button</button>
 </p>
 {% endhighlight %}
 
     <p>Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding <code>.btn-block</code>.</p>
     <div class="bs-example">
       <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
-        <button type="button" class="btn btn-primary btn-large btn-block">Block level button</button>
-        <button type="button" class="btn btn-default btn-large btn-block">Block level button</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+        <button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
       </div>
     </div>
 {% highlight html %}
-<button type="button" class="btn btn-primary btn-large btn-block">Block level button</button>
-<button type="button" class="btn btn-default btn-large btn-block">Block level button</button>
+<button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+<button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
 {% endhighlight %}
 
 
@@ -1758,12 +1758,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h3>Button element</h3>
     <p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
     <p class="bs-example">
-      <button type="button" class="btn btn-primary btn-large" disabled="disabled">Primary button</button>
-      <button type="button" class="btn btn-default btn-large" disabled="disabled">Button</button>
+      <button type="button" class="btn btn-primary btn-lg" disabled="disabled">Primary button</button>
+      <button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
     </p>
 {% highlight html %}
-<button type="button" class="btn btn-large btn-primary" disabled="disabled">Primary button</button>
-<button type="button" class="btn btn-default btn-large" disabled="disabled">Button</button>
+<button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary button</button>
+<button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
 {% endhighlight %}
 
     <div class="bs-callout bs-callout-danger">
@@ -1774,12 +1774,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h3>Anchor element</h3>
     <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
     <p class="bs-example">
-      <a href="#" class="btn btn-primary btn-large disabled">Primary link</a>
-      <a href="#" class="btn btn-default btn-large disabled">Link</a>
+      <a href="#" class="btn btn-primary btn-lg disabled">Primary link</a>
+      <a href="#" class="btn btn-default btn-lg disabled">Link</a>
     </p>
 {% highlight html %}
-<a href="#" class="btn btn-primary btn-large disabled">Primary link</a>
-<a href="#" class="btn btn-default btn-large disabled">Link</a>
+<a href="#" class="btn btn-primary btn-lg disabled">Primary link</a>
+<a href="#" class="btn btn-default btn-lg disabled">Link</a>
 {% endhighlight %}
     <p>
       We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
