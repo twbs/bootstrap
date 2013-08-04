@@ -2104,12 +2104,14 @@ input[type="button"].btn-block {
 .input-group-addon.input-small {
   padding: 5px 10px;
   font-size: 12px;
+  line-height: 1.5;
   border-radius: 3px;
 }
 
 .input-group-addon.input-large {
   padding: 10px 16px;
   font-size: 18px;
+  line-height: 1.33;
   border-radius: 6px;
 }
 
@@ -3318,7 +3320,7 @@ button.close {
 .pagination > li > a,
 .pagination > li > span {
   float: left;
-  padding: 4px 12px;
+  padding: 6px 12px;
   line-height: 1.428571429;
   text-decoration: none;
   background-color: #ffffff;
