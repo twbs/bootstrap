@@ -1,7 +1,7 @@
 /**
 * bootstrap.js v3.0.0 by @fat and @mdo
 * Copyright 2013 Twitter Inc.
-* http://www.apache.org/licenses/LICENSE-2.0
+* http://opensource.org/licenses/MIT
 */
 if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
@@ -11,11 +11,11 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
  * ========================================================================
  * Copyright 2013 Twitter, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the MIT License (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * http://opensource.org/licenses/MIT
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -68,11 +68,11 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
  * ========================================================================
  * Copyright 2013 Twitter, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the MIT License (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * http://opensource.org/licenses/MIT
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -167,11 +167,11 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
  * ========================================================================
  * Copyright 2013 Twitter, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the MIT License (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * http://opensource.org/licenses/MIT
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -277,11 +277,11 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
  * ========================================================================
  * Copyright 2012 Twitter, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the MIT License (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * http://opensource.org/licenses/MIT
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -491,11 +491,11 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
  * ========================================================================
  * Copyright 2012 Twitter, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the MIT License (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * http://opensource.org/licenses/MIT
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -671,11 +671,11 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
  * ========================================================================
  * Copyright 2012 Twitter, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the MIT License (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * http://opensource.org/licenses/MIT
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -826,11 +826,11 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
  * ========================================================================
  * Copyright 2012 Twitter, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the MIT License (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * http://opensource.org/licenses/MIT
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -1071,11 +1071,11 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
  * ========================================================================
  * Copyright 2012 Twitter, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the MIT License (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * http://opensource.org/licenses/MIT
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -1437,11 +1437,11 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
  * ========================================================================
  * Copyright 2012 Twitter, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the MIT License (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * http://opensource.org/licenses/MIT
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -1549,11 +1549,11 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
  * ========================================================================
  * Copyright 2012 Twitter, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the MIT License (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * http://opensource.org/licenses/MIT
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -1708,11 +1708,11 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
  * ========================================================================
  * Copyright 2012 Twitter, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the MIT License (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * http://opensource.org/licenses/MIT
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -1844,11 +1844,11 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
  * ========================================================================
  * Copyright 2012 Twitter, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the MIT License (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * http://opensource.org/licenses/MIT
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
