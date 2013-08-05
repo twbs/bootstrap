@@ -2881,12 +2881,13 @@ button.close {
 }
 
 .navbar-toggle {
-  position: absolute;
-  top: 9px;
-  right: 10px;
+  position: relative;
+  float: right;
   width: 48px;
-  height: 32px;
-  padding: 8px 12px;
+  height: 34px;
+  padding: 6px 12px;
+  margin-top: 8px;
+  margin-bottom: 8px;
   background-color: transparent;
   border: 1px solid #dddddd;
   border-radius: 4px;
