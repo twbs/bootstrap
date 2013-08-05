@@ -130,22 +130,22 @@
 // Transformations
 .rotate(@degrees) {
   -webkit-transform: rotate(@degrees);
-      -ms-transform: rotate(@degrees);
+      -ms-transform: rotate(@degrees); // IE9+
           transform: rotate(@degrees);
 }
 .scale(@ratio) {
   -webkit-transform: scale(@ratio);
-      -ms-transform: scale(@ratio);
+      -ms-transform: scale(@ratio); // IE9+
           transform: scale(@ratio);
 }
 .translate(@x; @y) {
   -webkit-transform: translate(@x, @y);
-      -ms-transform: translate(@x, @y);
+      -ms-transform: translate(@x, @y); // IE9+
           transform: translate(@x, @y);
 }
 .skew(@x; @y) {
   -webkit-transform: skew(@x, @y);
-      -ms-transform: skewX(@x) skewY(@y); // See https://github.com/twbs/bootstrap/issues/4885
+      -ms-transform: skewX(@x) skewY(@y); // See https://github.com/twbs/bootstrap/issues/4885; IE9+
           transform: skew(@x, @y);
 }
 .translate3d(@x; @y; @z) {
@@ -165,12 +165,12 @@
 
 // Background clipping
 .background-clip(@clip) {
-          background-clip: @clip;
+  background-clip: @clip;
 }
 
 // Background sizing
 .background-size(@size) {
-          background-size: @size;
+  background-size: @size;
 }
 
 // Box sizing
@@ -185,7 +185,7 @@
 .user-select(@select) {
   -webkit-user-select: @select;
      -moz-user-select: @select;
-      -ms-user-select: @select;
+      -ms-user-select: @select; // IE10+
        -o-user-select: @select;
           user-select: @select;
 }
@@ -211,7 +211,7 @@
   word-wrap: break-word;
   -webkit-hyphens: @mode;
      -moz-hyphens: @mode;
-      -ms-hyphens: @mode;
+      -ms-hyphens: @mode; // IE10+
        -o-hyphens: @mode;
           hyphens: @mode;
 }
@@ -528,7 +528,6 @@
   }
   // Set the border and box shadow on specific inputs to match
   .form-control {
-    padding-right: 32px; // to account for the feedback icon
     border-color: @border-color;
     .box-shadow(inset 0 1px 1px rgba(0,0,0,.075)); // Redeclare so transitions work
     &:focus {
@@ -542,5 +541,27 @@
     color: @text-color;
     border-color: @border-color;
     background-color: @background-color;
+  }
+}
+
+// Form control focus state
+//
+// Generate a customized focus state and for any input with the specified color,
+// which defaults to the `@input-focus-border` variable.
+//
+// We highly encourage you to not customize the default value, but instead use
+// this to tweak colors on an as-needed basis. This aesthetic change is based on
+// WebKit's default styles, but applicable to a wider range of browsers. Its
+// usability and accessibility should be taken into account with any change.
+//
+// Example usage: change the default blue border and shadow to white for better
+// contrast against a dark gray background.
+
+.form-control-focus(@color: @input-border-focus) {
+  @color-rgba: rgba(red(@color), green(@color), blue(@color), .6);
+  &:focus {
+    border-color: @color;
+    outline: 0;
+    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @{color-rgba}");
   }
 }

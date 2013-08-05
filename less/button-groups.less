@@ -22,7 +22,8 @@
     // Bring the "active" button to the front
     &:hover,
     &:focus,
-    &:active {
+    &:active,
+    &.active {
       z-index: 2;
     }
   }
@@ -100,7 +101,7 @@
   padding-left: 8px;
   padding-right: 8px;
 }
-.btn-group > .btn-large + .dropdown-toggle {
+.btn-group > .btn-lg + .dropdown-toggle {
   padding-left: 12px;
   padding-right: 12px;
 }
@@ -117,11 +118,11 @@
   margin-left: 0;
 }
 // Carets in other button sizes
-.btn-large .caret {
+.btn-lg .caret {
   border-width: 5px;
 }
 // Upside down carets for .dropup
-.dropup .btn-large .caret {
+.dropup .btn-lg .caret {
   border-bottom-width: 5px;
 }
 
@@ -142,10 +143,10 @@
   &:not(:first-child):not(:last-child) {
     border-radius: 0;
   }
-  &:first-child {
+  &:first-child:not(:last-child) {
     .border-bottom-radius(0);
   }
-  &:last-child {
+  &:last-child:not(:first-child) {
     .border-top-radius(0);
   }
 }
@@ -157,6 +158,7 @@
 .btn-group-justified {
   display: table;
   width: 100%;
+  table-layout: fixed;
   .btn {
     float: none;
     display: table-cell;

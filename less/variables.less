@@ -131,6 +131,7 @@
 
 @input-border:                   #ccc;
 @input-border-radius:            @border-radius-base;
+@input-border-focus:             #66afe9;
 
 @input-color-placeholder:        @gray-light;
 
@@ -180,9 +181,9 @@
 // Media queries breakpoints
 // --------------------------------------------------
 
-// Tiny screen / phone
-@screen-tiny:                480px;
-@screen-phone:               @screen-tiny;
+// Extra small screen / phone
+@screen-xsmall:              480px;
+@screen-phone:               @screen-xsmall;
 
 // Small screen / tablet
 @screen-small:               768px;
@@ -218,6 +219,7 @@
 @navbar-height:                    50px;
 @navbar-color:                     #777;
 @navbar-bg:                        #eee;
+@navbar-border-radius:             @border-radius-base;
 @navbar-padding-horizontal:        floor(@grid-gutter-width / 2);  // ~15px
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 
