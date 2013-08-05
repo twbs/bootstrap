@@ -2418,6 +2418,10 @@ a.list-group-item.active .list-group-item-text {
   font-weight: 500;
 }
 
+.panel-title > a {
+  color: inherit;
+}
+
 .panel-footer {
   padding: 10px 15px;
   margin: 15px -15px -15px;
