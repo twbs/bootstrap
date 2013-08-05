@@ -127,14 +127,17 @@
 }
 
 // Optional indicator pips
-// -----------------------------
+//
+// Add an unordered list with the follow class and add a list item for each
+// slide your carousel holds.
+
 .carousel-indicators {
   position: absolute;
   bottom: 10px;
   left: 50%;
   z-index: 15;
-  width: 120px;
-  margin-left: -60px;
+  width: 60%;
+  margin-left: -30%;
   padding-left: 0;
   list-style: none;
   text-align: center;

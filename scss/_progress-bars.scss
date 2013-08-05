@@ -18,19 +18,13 @@
   to    { background-position: 0 0; }
 }
 
-// IE9
-@-ms-keyframes progress-bar-stripes {
-  from  { background-position: 40px 0; }
-  to    { background-position: 0 0; }
-}
-
 // Opera
 @-o-keyframes progress-bar-stripes {
   from  { background-position: 0 0; }
   to    { background-position: 40px 0; }
 }
 
-// Spec
+// Spec and IE10+
 @keyframes progress-bar-stripes {
   from  { background-position: 40px 0; }
   to    { background-position: 0 0; }

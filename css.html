@@ -34,7 +34,7 @@ base_url: "../"
     <h3 id="overview-responsive-images">Responsive images</h3>
     <p>Images in Bootstrap 3 can be made responsive-friendly via the addition of the <code>.img-responsive</code> class. This applies <code>max-width: 100%;</code> and <code>height: auto;</code> to the image so that it scales nicely to the parent element.</p>
 {% highlight html %}
-<img src="..." class="img-responsive" alt="Reponsive image">
+<img src="..." class="img-responsive" alt="Responsive image">
 {% endhighlight %}
 
     <h3 id="overview-type-links">Typography and links</h3>
@@ -807,7 +807,7 @@ base_url: "../"
 {% endhighlight %}
 
     <h4>Horizontal description</h4>
-    <p>Make terms and descriptions in <code>&lt;dl&gt;</code> line up side-by-side.</p>
+    <p>Make terms and descriptions in <code>&lt;dl&gt;</code> line up side-by-side. Starts off stacked like default <code>&lt;dl&gt;</code>s, but when the navbar expands, so do these.</p>
     <div class="bs-example">
       <dl class="dl-horizontal">
         <dt>Description lists</dt>
@@ -1257,10 +1257,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
-    <h2>Optional layouts</h2>
-    <p>Included with Bootstrap are optional form layouts for common use cases.</p>
-
-    <h3 id="forms-inline">Inline form</h3>
+    <h3 id="forms-inline">Inline form</h2>
     <p>Add <code>.form-inline</code> for left-aligned and inline-block controls for a compact layout.</p>
     <div class="bs-callout bs-callout-danger">
       <h4>Requires custom widths</h4>
@@ -1289,7 +1286,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </form>
 {% endhighlight %}
 
-    <h3 id="forms-horizontal">Horizontal form</h3>
+    <h2 id="forms-horizontal">Horizontal form</h2>
     <p>Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout by adding <code>.form-horizontal</code> to the form. Doing so changes <code>.form-group</code>s to behave as grid rows, so no need for <code>.row</code>.</p>
     <form class="bs-example form-horizontal">
       <div class="form-group">
@@ -1485,6 +1482,39 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
+    <h2 id="forms-controls-static">Static text in horizontal forms</h2>
+    <p>When you need to place regular, static text next to a form label within a horizontal form, use the <code>.form-control-static</code> class on a <code>&lt;p&gt;</code>.</p>
+    <form class="bs-example form-horizontal">
+      <div class="form-group">
+        <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+        <div class="col-lg-10">
+          <p class="form-control-static">email@example.com</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+        <div class="col-lg-10">
+          <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+        </div>
+      </div>
+    </form>
+{% highlight html %}
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="inputEmail2" class="col-lg-2 control-label">Email</label>
+    <div class="col-lg-10">
+      <p class="form-control-static">email@example.com</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword2" class="col-lg-2 control-label">Password</label>
+    <div class="col-lg-10">
+      <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+    </div>
+  </div>
+</form>
+{% endhighlight %}
+
 
     <h2 id="forms-control-states">Form control states</h2>
     <p>Provide feedback to users or visitors with basic feedback states on form controls and labels.</p>
@@ -1649,10 +1679,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Block level help text for form controls.</p>
     <form class="bs-example">
       <input type="text" class="form-control">
-      <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+      <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
     </form>
 {% highlight html %}
-<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+<span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
 {% endhighlight %}
 
   </div>

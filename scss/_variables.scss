@@ -127,31 +127,29 @@ $table-border-color:                 #ddd !default; // table and cell border
 // Buttons
 // -------------------------
 
-$btn-default-color:              #fff !default;
-$btn-default-bg:                 #474949 !default;
-$btn-default-border:             $btn-default-bg !default;
+$btn-default-color:              #333 !default;
+$btn-default-bg:                 #fff !default;
+$btn-default-border:             #ccc !default;
 
-$btn-primary-color:              $btn-default-color !default;
+$btn-primary-color:              #fff !default;
 $btn-primary-bg:                 $brand-primary !default;
-$btn-primary-border:             $btn-primary-bg !default;
+$btn-primary-border:             darken($btn-primary-bg, 5%) !default;
 
-$btn-success-color:              $btn-default-color !default;
+$btn-success-color:              #fff !default;
 $btn-success-bg:                 $brand-success !default;
-$btn-success-border:             $btn-success-bg !default;
+$btn-success-border:             darken($btn-success-bg, 5%) !default;
 
-$btn-warning-color:              $btn-default-color !default;
+$btn-warning-color:              #fff !default;
 $btn-warning-bg:                 $brand-warning !default;
-$btn-warning-border:             $btn-warning-bg !default;
+$btn-warning-border:             darken($btn-warning-bg, 5%) !default;
 
-$btn-danger-color:               $btn-default-color !default;
+$btn-danger-color:               #fff !default;
 $btn-danger-bg:                  $brand-danger !default;
-$btn-danger-border:              $btn-danger-bg !default;
+$btn-danger-border:              darken($btn-danger-bg, 5%) !default;
 
-$btn-info-color:                 $btn-default-color !default;
+$btn-info-color:                 #fff !default;
 $btn-info-bg:                    $brand-info !default;
-$btn-info-border:                $btn-info-bg !default;
-
-$btn-hover-color:                $btn-default-color !default;
+$btn-info-border:                darken($btn-info-bg, 5%) !default;
 
 
 // Forms
