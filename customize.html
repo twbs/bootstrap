@@ -660,12 +660,21 @@ base_url: "../"
     </div>
 
     <h2 id="variables-alerts">Alerts</h2>
-    <p>Define alert colors and border radius.</p>
+    <p>Define alert colors, border radius, and padding.</p>
     <h4>Border radius</h4>
+    <label>@alert-padding</label>
+    <input type="text" class="form-control" placeholder="15px">
     <label>@alert-border-radius</label>
     <input type="text" class="form-control" placeholder="@border-radius-base">
     <div class="row">
       <div class="col-lg-6">
+        <h4>Default (Warning)</h4>
+        <label>@alert-text</label>
+        <input type="text" class="form-control" placeholder="@state-warning-text">
+        <label>@alert-bg</label>
+        <input type="text" class="form-control" placeholder="@state-warning-bg">
+        <label>@alert-border</label>
+        <input type="text" class="form-control" placeholder="@state-warning-border">
         <h4>Success</h4>
         <label>@alert-success-text</label>
         <input type="text" class="form-control" placeholder="@state-success-text">
@@ -673,13 +682,6 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="@state-success-bg">
         <label>@alert-success-border</label>
         <input type="text" class="form-control" placeholder="@state-success-border">
-        <h4>Warning</h4>
-        <label>@alert-warning-text</label>
-        <input type="text" class="form-control" placeholder="@state-warning-text">
-        <label>@alert-warning-bg</label>
-        <input type="text" class="form-control" placeholder="@state-warning-bg">
-        <label>@alert-warning-border</label>
-        <input type="text" class="form-control" placeholder="@state-warning-border">
       </div>
       <div class="col-lg-6">
         <h4>Danger</h4>
