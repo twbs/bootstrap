@@ -7,7 +7,7 @@
       "browser": "firefox",
       "browser_version": "latest",
       "os": "OS X",
-      "os_version": "Lion"
+      "os_version": "Mountain Lion"
     },
     {
       "browser": "safari",
@@ -32,6 +32,12 @@
       "browser_version": "latest",
       "os": "Windows",
       "os_version": "7"
+    },
+    {
+      "browser": "ie",
+      "browser_version": "8.0",
+      "os": "Windows",
+      "os_version": "XP"
     },
     {
       "browser": "ie",
