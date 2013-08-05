@@ -20,14 +20,6 @@
       e.preventDefault()
     })
 
-    $body.on('click', '.bs-sidenav [href^=#]', function (e) {
-      var $target = $(this.getAttribute('href'))
-
-      e.preventDefault() // prevent browser scroll
-
-      $window.scrollTop($target.offset().top - navHeight + 5)
-    })
-
     // back to top
     setTimeout(function () {
       var $sideBar = $('.bs-sidebar')

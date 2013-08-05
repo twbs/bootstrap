@@ -162,6 +162,7 @@ $input-bg-disabled:              $gray-lighter !default;
 
 $input-border:                   #ccc !default;
 $input-border-radius:            $border-radius-base !default;
+$input-border-focus:             #66afe9 !default;
 
 $input-color-placeholder:        $gray-light !default;
 
@@ -217,6 +218,7 @@ $zindex-modal:             1050 !default;
 $navbar-height:                    50px !default;
 $navbar-color:                     #777 !default;
 $navbar-bg:                        #eee !default;
+$navbar-border-radius:             $border-radius-base !default;
 $navbar-padding-horizontal:        floor($grid-gutter-width / 2) !default;  // ~15px
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2) !default;
 
