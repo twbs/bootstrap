@@ -2107,9 +2107,6 @@ input[type="button"].btn-block {
   background-color: #eeeeee;
   border: 1px solid #cccccc;
   border-radius: 4px;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 .input-group-addon.input-sm {
