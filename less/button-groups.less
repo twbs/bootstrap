@@ -3,11 +3,32 @@
 // --------------------------------------------------
 
 // Button carets
-.btn .caret {
-  border-top-color: @btn-default-color;
+//
+// Match the button text color to the arrow/caret for indicating dropdown-ness.
+
+.caret {
+  .btn-default & {
+    border-top-color: @btn-default-color;
+  }
+  .btn-primary &,
+  .btn-success &,
+  .btn-warning &,
+  .btn-danger &,
+  .btn-info & {
+    border-top-color: #fff;
+  }
 }
-.dropup .btn .caret {
-  border-bottom-color: @btn-default-color;
+.dropup .caret {
+  .btn-default & {
+    border-bottom-color: @btn-default-color;
+  }
+  .btn-primary &,
+  .btn-success &,
+  .btn-warning &,
+  .btn-danger &,
+  .btn-info & {
+    border-bottom-color: #fff;
+  }
 }
 
 // Make the div behave like a button
