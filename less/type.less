@@ -141,18 +141,25 @@ dt {
 dd {
   margin-left: 0; // Undo browser default
 }
-// Horizontal layout (like forms)
-.dl-horizontal {
-  dt {
-    float: left;
-    width: (@component-offset-horizontal - 20);
-    clear: left;
-    text-align: right;
-    .text-overflow();
-  }
-  dd {
-    .clearfix(); // Clear the floated `dt` if an empty `dd` is present
-    margin-left: @component-offset-horizontal;
+
+// Horizontal description lists
+//
+// Defaults to being stacked without any of the below styles applied, until the
+// grid breakpoint is reached (default of ~768px).
+
+@media (min-width: @grid-float-breakpoint) {
+  .dl-horizontal {
+    dt {
+      float: left;
+      width: (@component-offset-horizontal - 20);
+      clear: left;
+      text-align: right;
+      .text-overflow();
+    }
+    dd {
+      margin-left: @component-offset-horizontal;
+      .clearfix(); // Clear the floated `dt` if an empty `dd` is present
+    }
   }
 }
 
