@@ -633,7 +633,6 @@ blockquote small:before {
 }
 
 blockquote.pull-right {
-  float: right;
   padding-right: 15px;
   padding-left: 0;
   border-right: 5px solid #eeeeee;
@@ -1636,6 +1635,7 @@ textarea.input-sm {
 
 .form-control-static {
   padding-top: 6px;
+  margin-bottom: 0;
 }
 
 .help-block {
@@ -2619,10 +2619,6 @@ button.close {
   border-bottom-color: #ffffff;
 }
 
-.nav > .pull-right {
-  float: right;
-}
-
 .nav .nav-divider {
   height: 1px;
   margin: 9px 0;
@@ -3088,7 +3084,6 @@ button.close {
     border-radius: 0;
   }
   .navbar-nav.pull-right {
-    float: right;
     width: auto;
   }
   .navbar-toggle {
@@ -4547,11 +4542,11 @@ a.list-group-item.active > .badge,
 }
 
 .pull-right {
-  float: right;
+  float: right !important;
 }
 
 .pull-left {
-  float: left;
+  float: left !important;
 }
 
 .hide {
