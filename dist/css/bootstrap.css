@@ -2874,7 +2874,6 @@ button.close {
   .nav-collapse-scrollable {
     max-height: 360px;
     margin-bottom: 15px;
-    overflow-x: hidden;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
   }

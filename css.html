@@ -1550,12 +1550,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <p>While Bootstrap will apply these styles in all browsers, Internet Explorer 9 and below don't actually support the <code>disabled</code> attribute on a <code>&lt;fieldset&gt;</code>. Use custom JavaScript to disable the fieldset in these browsers.</p>
     </div>
 
-    <form class="bs-example form-inline">
+    <form class="bs-example">
       <fieldset disabled>
-        <input type="text" class="form-control" placeholder="Disabled input">
-        <select class="form-control">
-          <option>Disabled select</option>
-        </select>
+        <div class="form-group">
+          <label for="disabledInput">Disabled input</label>
+          <input type="text" id="disabledInput" class="form-control" placeholder="Disabled input">
+        </div>
+        <div class="form-group">
+          <label for="disabledInput">Disabled select menu</label>
+          <select id="disabledSelect" class="form-control">
+            <option>Disabled select</option>
+          </select>
+        </div>
         <div class="checkbox">
           <label>
             <input type="checkbox"> Can't check this
@@ -1567,10 +1573,16 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% highlight html %}
 <form class="form-inline">
   <fieldset disabled>
-    <input type="text" class="form-control" placeholder="Disabled input">
-    <select class="form-control">
-      <option>Disabled select</option>
-    </select>
+    <div class="form-group">
+      <label for="disabledInput">Disabled input</label>
+      <input type="text" id="disabledInput" class="form-control" placeholder="Disabled input">
+    </div>
+    <div class="form-group">
+      <label for="disabledInput">Disabled select menu</label>
+      <select id="disabledSelect" class="form-control">
+        <option>Disabled select</option>
+      </select>
+    </div>
     <div class="checkbox">
       <label>
         <input type="checkbox"> Can't check this
