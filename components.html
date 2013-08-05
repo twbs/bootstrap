@@ -1326,7 +1326,49 @@ body { padding-bottom: 70px; }
     </div>
 
 
-    <h2>Inverted variation</h2>
+    <h2 id="navbar-scrollable">Scrollable responsive navbar</h2>
+    <p>For instances where you have too many items in your navbar to fight within the viewport of a small device, add <code>.nav-collapse-scrollable</code> to your navbar's <code>.nav-collapse</code> to set a <code>max-height</code> and smooth scrolling.</p>
+    <div class="bs-example">
+      <div class="navbar">
+        <div class="container">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-scroll-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Title</a>
+          <div class="collapse nav-collapse nav-collapse-scrollable bs-navbar-scroll-collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+            </ul>
+            <form class="navbar-form pull-left" action="">
+              <input type="text" class="form-control col-lg-8" placeholder="Search">
+            </form>
+          </div><!-- /.nav-collapse -->
+        </div><!-- /.container -->
+      </div><!-- /.navbar -->
+    </div><!-- /example -->
+{% highlight html %}
+<div class="navbar">
+  <div class="container">
+		...
+
+    <div class="collapse nav-collapse nav-collapse-scrollable">
+      ...
+    </div><!-- /.nav-collapse -->
+
+  </div><!-- /.container -->
+</div><!-- /.navbar -->
+{% endhighlight %}
+
+
+    <h2 id="navbar-inverted">Inverted variation</h2>
     <p>Modify the look of the navbar by adding <code>.navbar-inverse</code>.</p>
     <div class="bs-example">
       <div class="navbar navbar-inverse">
