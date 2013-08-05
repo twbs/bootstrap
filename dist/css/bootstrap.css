@@ -3257,12 +3257,12 @@ button.close {
   border-radius: 0;
 }
 
-.btn-group-vertical .btn:first-child {
+.btn-group-vertical .btn:first-child:not(:last-child) {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.btn-group-vertical .btn:last-child {
+.btn-group-vertical .btn:last-child:not(:first-child) {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
