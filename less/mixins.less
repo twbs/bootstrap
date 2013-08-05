@@ -514,6 +514,21 @@
   }
 }
 
+// Generate the large columns
+.make-large-column(@columns) {
+  position: relative;
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Inner gutter via padding
+  padding-left:  (@grid-gutter-width / 2);
+  padding-right: (@grid-gutter-width / 2);
+
+  // Calculate width based on number of columns available
+  @media (min-width: @screen-desktop) {
+    float: left;
+    width: percentage((@columns / @grid-columns));
+  }
+}
 
 // Form validation states
 //
