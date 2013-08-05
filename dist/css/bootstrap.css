@@ -1713,7 +1713,7 @@ textarea.input-sm {
   padding: 6px 12px;
   margin-bottom: 0;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 1.428571429;
   text-align: center;
   white-space: nowrap;
@@ -1996,7 +1996,7 @@ fieldset[disabled] .btn-link {
 fieldset[disabled] .btn-link:hover,
 .btn-link[disabled]:focus,
 fieldset[disabled] .btn-link:focus {
-  color: #333333;
+  color: #999999;
   text-decoration: none;
 }
 
