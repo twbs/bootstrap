@@ -4441,9 +4441,9 @@ a.list-group-item.active > .badge,
   bottom: 10px;
   left: 50%;
   z-index: 15;
-  width: 120px;
+  width: 60%;
   padding-left: 0;
-  margin-left: -60px;
+  margin-left: -30%;
   text-align: center;
   list-style: none;
 }
