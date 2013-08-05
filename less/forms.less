@@ -290,10 +290,20 @@ textarea {
   .checkbox {
     display: inline-block;
   }
+
+  // Remove default margin on radios/checkboxes that were used for stacking, and
+  // then undo the floating of radios and checkboxes to match (which also avoids
+  // a bug in WebKit: https://github.com/twbs/bootstrap/issues/1969).
   .radio,
   .checkbox {
     margin-top: 0;
     margin-bottom: 0;
+    padding-left: 0;
+  }
+  .radio input[type="radio"],
+  .checkbox input[type="checkbox"] {
+    float: none;
+    margin-left: 0;
   }
 }
 

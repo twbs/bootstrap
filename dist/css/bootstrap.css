@@ -1649,8 +1649,15 @@ textarea.input-sm {
 
 .form-inline .radio,
 .form-inline .checkbox {
+  padding-left: 0;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.form-inline .radio input[type="radio"],
+.form-inline .checkbox input[type="checkbox"] {
+  float: none;
+  margin-left: 0;
 }
 
 .form-horizontal .control-label,
@@ -2926,8 +2933,15 @@ button.close {
 
 .navbar-form .radio,
 .navbar-form .checkbox {
+  padding-left: 0;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.navbar-form .radio input[type="radio"],
+.navbar-form .checkbox input[type="checkbox"] {
+  float: none;
+  margin-left: 0;
 }
 
 .navbar-nav > li > .dropdown-menu {
