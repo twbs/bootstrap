@@ -12,7 +12,6 @@
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  background-color: @gray-light;
   border-radius: .25em;
 
   // Add hover effects, but only for links
@@ -29,6 +28,11 @@
 
 // Colors
 // Contextual variations (linked labels get darker on :hover)
+
+.label-default {
+  .label-variant(@label-default-bg);
+}
+
 .label-danger {
   .label-variant(@label-danger-bg);
 }
