@@ -130,22 +130,22 @@
 // Transformations
 .rotate(@degrees) {
   -webkit-transform: rotate(@degrees);
-      -ms-transform: rotate(@degrees);
+      -ms-transform: rotate(@degrees); // IE9+
           transform: rotate(@degrees);
 }
 .scale(@ratio) {
   -webkit-transform: scale(@ratio);
-      -ms-transform: scale(@ratio);
+      -ms-transform: scale(@ratio); // IE9+
           transform: scale(@ratio);
 }
 .translate(@x; @y) {
   -webkit-transform: translate(@x, @y);
-      -ms-transform: translate(@x, @y);
+      -ms-transform: translate(@x, @y); // IE9+
           transform: translate(@x, @y);
 }
 .skew(@x; @y) {
   -webkit-transform: skew(@x, @y);
-      -ms-transform: skewX(@x) skewY(@y); // See https://github.com/twbs/bootstrap/issues/4885
+      -ms-transform: skewX(@x) skewY(@y); // See https://github.com/twbs/bootstrap/issues/4885; IE9+
           transform: skew(@x, @y);
 }
 .translate3d(@x; @y; @z) {
@@ -165,12 +165,12 @@
 
 // Background clipping
 .background-clip(@clip) {
-          background-clip: @clip;
+  background-clip: @clip;
 }
 
 // Background sizing
 .background-size(@size) {
-          background-size: @size;
+  background-size: @size;
 }
 
 // Box sizing
@@ -185,7 +185,7 @@
 .user-select(@select) {
   -webkit-user-select: @select;
      -moz-user-select: @select;
-      -ms-user-select: @select;
+      -ms-user-select: @select; // IE10+
        -o-user-select: @select;
           user-select: @select;
 }
@@ -211,7 +211,7 @@
   word-wrap: break-word;
   -webkit-hyphens: @mode;
      -moz-hyphens: @mode;
-      -ms-hyphens: @mode;
+      -ms-hyphens: @mode; // IE10+
        -o-hyphens: @mode;
           hyphens: @mode;
 }

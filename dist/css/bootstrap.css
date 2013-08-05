@@ -4139,15 +4139,6 @@ a.list-group-item.active > .badge,
   }
 }
 
-@-ms-keyframes progress-bar-stripes {
-  from {
-    background-position: 40px 0;
-  }
-  to {
-    background-position: 0 0;
-  }
-}
-
 @-o-keyframes progress-bar-stripes {
   from {
     background-position: 0 0;
