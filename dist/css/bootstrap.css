@@ -1634,6 +1634,10 @@ textarea.input-sm {
   border-color: #468847;
 }
 
+.form-control-static {
+  padding-top: 6px;
+}
+
 .help-block {
   display: block;
   margin-top: 5px;
@@ -1663,7 +1667,7 @@ textarea.input-sm {
 .form-horizontal .control-label,
 .form-horizontal .radio-inline,
 .form-horizontal .checkbox-inline {
-  padding-top: 9px;
+  padding-top: 6px;
 }
 
 .form-horizontal .form-group:before,

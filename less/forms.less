@@ -266,6 +266,17 @@ textarea {
 }
 
 
+// Static form control text
+//
+// Apply class to a `p` element to make any string of text align with labels in
+// a horizontal form layout.
+
+.form-control-static {
+  margin-bottom: 0; // Remove default margin from `p`
+  padding-top: @padding-base-vertical;
+}
+
+
 // Help text
 //
 // Apply to any element you wish to create light text for placement immediately
@@ -316,7 +327,7 @@ textarea {
 .form-horizontal .control-label,
 .form-horizontal .radio-inline,
 .form-horizontal .checkbox-inline {
-  padding-top: 9px;
+  padding-top: @padding-base-vertical;
 }
 
 .form-horizontal {
