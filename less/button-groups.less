@@ -142,10 +142,10 @@
   &:not(:first-child):not(:last-child) {
     border-radius: 0;
   }
-  &:first-child {
+  &:first-child:not(:last-child) {
     .border-bottom-radius(0);
   }
-  &:last-child {
+  &:last-child:not(:first-child) {
     .border-top-radius(0);
   }
 }
