@@ -235,7 +235,7 @@
   //
   // Creates two color stops, start and end, by specifying a color and position for each color stop.
   // Color stops are not available in IE9 and below.
-  .horizontal(@start-color: #555; @start-percent: 0%; @end-color: #333; @end-percent: 100%) {
+  .horizontal(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
     background-color: @end-color;
     background-image: -webkit-gradient(linear, @start-percent top, @end-percent top, from(@start-color), to(@end-color)); // Safari 4+, Chrome 2+
     background-image: -webkit-linear-gradient(left, color-stop(@start-color @start-percent), color-stop(@end-color @end-percent)); // Safari 5.1+, Chrome 10+
@@ -249,7 +249,7 @@
   //
   // Creates two color stops, start and end, by specifying a color and position for each color stop.
   // Color stops are not available in IE9 and below.
-  .vertical(@start-color: #555; @start-percent: 0%; @end-color: #333; @end-percent: 100%) {
+  .vertical(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
     background-color: @end-color;
     background-image: -webkit-gradient(linear, left @start-percent, left @end-percent, from(@start-color), to(@end-color)); // Safari 4+, Chrome 2+
     background-image: -webkit-linear-gradient(top, @start-color, @start-percent, @end-color, @end-percent); // Safari 5.1+, Chrome 10+
