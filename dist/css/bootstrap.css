@@ -3490,7 +3490,7 @@ button.close {
           transition: transform 0.3s ease-out;
 }
 
-.modal.fade.in .modal-dialog {
+.modal.in .modal-dialog {
   -webkit-transform: translate(0, 0);
       -ms-transform: translate(0, 0);
           transform: translate(0, 0);
@@ -3531,7 +3531,7 @@ button.close {
   filter: alpha(opacity=0);
 }
 
-.modal-backdrop.fade.in {
+.modal-backdrop.in {
   opacity: 0.5;
   filter: alpha(opacity=50);
 }
