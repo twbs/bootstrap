@@ -314,7 +314,7 @@
     return this.$tip = this.$tip || $(this.options.template)
   }
 
-  Tooltip.prototype.arrow =function () {
+  Tooltip.prototype.arrow = function () {
     return this.$arrow = this.$arrow || this.tip().find('.tooltip-arrow')
   }
 
