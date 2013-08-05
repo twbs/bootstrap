@@ -160,6 +160,10 @@
           : this.hide.call(this)
       }, this))
 
+      this.$element.one('hide.bs.modal', $.proxy(function (e) {
+        this.$element.off('click');
+      }, this))
+
       if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
 
       this.$backdrop.addClass('in')
