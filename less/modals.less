@@ -3,6 +3,7 @@
 // --------------------------------------------------
 
 // .modal-open      - body class for killing the scroll
+// .modal-shiftfix  - prevent page shift as a result of the scroll killing
 // .modal           - container to scroll within
 // .modal-dialog    - positioning shell for the actual modal
 // .modal-content   - actual modal w/ bg and corners and shit
@@ -10,13 +11,26 @@
 // Kill the scroll on the body
 .modal-open {
   overflow: hidden;
+
+  .modal {
+    overflow-y: scroll;
+  }
+}
+
+// Wrapper for page content that prevents page shift when body scroll is killed/reanimated
+.modal-shiftfix {
+  .modal-open &,
+  .modal-open & .navbar-fixed-top,
+  .modal-open & .navbar-fixed-bottom {
+      overflow-y: scroll;
+  }
 }
 
 // Container that the modal scrolls within
 .modal {
   display: none;
   overflow: auto;
-  overflow-y: scroll;
+  overflow-y: hidden;
   position: fixed;
   top: 0;
   right: 0;

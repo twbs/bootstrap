@@ -3468,6 +3468,16 @@ button.close {
   overflow: hidden;
 }
 
+.modal-open .modal {
+  overflow-y: scroll;
+}
+
+.modal-open .modal-shiftfix,
+.modal-open .modal-shiftfix .navbar-fixed-top,
+.modal-open .modal-shiftfix .navbar-fixed-bottom {
+  overflow-y: scroll;
+}
+
 .modal {
   position: fixed;
   top: 0;
@@ -3477,7 +3487,7 @@ button.close {
   z-index: 1040;
   display: none;
   overflow: auto;
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 .modal.fade .modal-dialog {
