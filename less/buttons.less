@@ -12,7 +12,7 @@
   padding: @padding-base-vertical @padding-base-horizontal;
   margin-bottom: 0; // For input.btn
   font-size: @font-size-base;
-  font-weight: 500;
+  font-weight: @btn-font-weight;
   line-height: @line-height-base;
   text-align: center;
   vertical-align: middle;
@@ -110,7 +110,7 @@
   fieldset[disabled] & {
     &:hover,
     &:focus {
-      color: @gray-dark;
+      color: @btn-link-disabled-color;
       text-decoration: none;
     }
   }

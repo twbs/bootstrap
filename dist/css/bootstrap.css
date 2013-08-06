@@ -1713,7 +1713,7 @@ textarea.input-sm {
   padding: 6px 12px;
   margin-bottom: 0;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 1.428571429;
   text-align: center;
   white-space: nowrap;
@@ -1996,7 +1996,7 @@ fieldset[disabled] .btn-link {
 fieldset[disabled] .btn-link:hover,
 .btn-link[disabled]:focus,
 fieldset[disabled] .btn-link:focus {
-  color: #333333;
+  color: #999999;
   text-decoration: none;
 }
 
@@ -2102,27 +2102,22 @@ input[type="button"].btn-block {
   padding: 6px 12px;
   font-size: 14px;
   font-weight: normal;
-  line-height: 1.428571429;
+  line-height: 1;
   text-align: center;
   background-color: #eeeeee;
   border: 1px solid #cccccc;
   border-radius: 4px;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 .input-group-addon.input-sm {
   padding: 5px 10px;
   font-size: 12px;
-  line-height: 1.5;
   border-radius: 3px;
 }
 
 .input-group-addon.input-lg {
   padding: 10px 16px;
   font-size: 18px;
-  line-height: 1.33;
   border-radius: 6px;
 }
 
@@ -3181,6 +3176,11 @@ button.close {
 .btn-group > .btn.active,
 .btn-group-vertical > .btn.active {
   z-index: 2;
+}
+
+.btn-group > .btn:focus,
+.btn-group-vertical > .btn:focus {
+  outline: none;
 }
 
 .btn-group .btn + .btn {

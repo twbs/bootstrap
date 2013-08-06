@@ -47,6 +47,10 @@
     &.active {
       z-index: 2;
     }
+    &:focus {
+      // Remove focus outline when dropdown JS adds it after closing the menu
+      outline: none;
+    }
   }
 }
 
@@ -140,11 +144,11 @@
 }
 // Carets in other button sizes
 .btn-lg .caret {
-  border-width: 5px;
+  border-width: @caret-width-large;
 }
 // Upside down carets for .dropup
 .dropup .btn-lg .caret {
-  border-bottom-width: 5px;
+  border-bottom-width: @caret-width-large;
 }
 
 

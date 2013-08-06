@@ -78,6 +78,8 @@
 
 @component-active-bg:            @brand-primary;
 
+@caret-width-base:               4px;
+@caret-width-large:              5px;
 
 // Tables
 // -------------------------
@@ -95,6 +97,8 @@
 
 // Buttons
 // -------------------------
+
+@btn-font-weight:                bold;
 
 @btn-default-color:              #333;
 @btn-default-bg:                 #fff;
@@ -119,6 +123,8 @@
 @btn-info-color:                 #fff;
 @btn-info-bg:                    @brand-info;
 @btn-info-border:                darken(@btn-info-bg, 5%);
+
+@btn-link-disabled-color:        @gray-light;
 
 
 // Forms
@@ -404,10 +410,13 @@
 
 // Alerts
 // -------------------------
+@alert-padding:               15px;
+@alert-border-radius:         @border-radius-base;
+@alert-link-font-weight:      bold;
+
 @alert-bg:                    @state-warning-bg;
 @alert-text:                  @state-warning-text;
 @alert-border:                @state-warning-border;
-@alert-border-radius:         @border-radius-base;
 
 @alert-success-bg:            @state-success-bg;
 @alert-success-text:          @state-success-text;
@@ -500,10 +509,14 @@
 // -------------------------
 @badge-color:                 #fff;
 @badge-link-hover-color:      #fff;
-
 @badge-bg:                    @gray-light;
+
 @badge-active-color:          @link-color;
 @badge-active-bg:             #fff;
+
+@badge-font-weight:           bold;
+@badge-line-height:           1;
+@badge-border-radius:         10px;
 
 
 // Breadcrumbs
@@ -515,12 +528,16 @@
 
 // Carousel
 // ------------------------
+
 @carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6);
 
 @carousel-control-color:                      #fff;
+@carousel-control-width:                      15%;
+@carousel-control-opacity:                    .5;
+@carousel-control-font-size:                  20px;
 
-@carousel-indicator-border-color:             #fff;
 @carousel-indicator-active-bg:                #fff;
+@carousel-indicator-border-color:             #fff;
 
 @carousel-caption-color:                      #fff;
 
@@ -528,6 +545,7 @@
 // Close
 // ------------------------
 @close-color:                 #000;
+@close-font-weight:           bold;
 @close-text-shadow:           0 1px 0 #fff;
 
 
