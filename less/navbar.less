@@ -82,14 +82,18 @@
 }
 .navbar-fixed-top {
   top: 0;
-  .nav-collapse {
-  }
 }
 .navbar-fixed-bottom {
   bottom: 0;
   margin-bottom: 0; // override .navbar defaults
 }
 
+.nav-collapse {
+  // Space out collapsed contents within the mobile navbar
+  padding-bottom: @navbar-padding-vertical;
+  // Clear floated elements and prevent collapsing of padding
+  .clearfix();
+}
 
 // Scrollable navbar navigation
 //
@@ -353,6 +357,7 @@
   .nav-collapse.collapse {
     display: block !important;
     height: auto !important;
+    padding-bottom: 0; // Override default setting
     overflow: visible !important;
   }
 
