@@ -2345,6 +2345,10 @@ input[type="button"].btn-block {
   margin-right: -15px;
 }
 
+.list-group-item > .badge + .badge {
+  margin-right: 0;
+}
+
 .list-group-item-heading {
   margin-top: 0;
   margin-bottom: 5px;
