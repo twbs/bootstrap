@@ -197,13 +197,15 @@
 @screen-medium:              992px;
 @screen-desktop:             @screen-medium;
 
-// So media queries don't overlap when required, provide a maximum
-@screen-small-max:           (@screen-medium - 1);
-@screen-tablet-max:          @screen-small-max;
-
 // Large screen / wide desktop
 @screen-large:               1200px;
 @screen-large-desktop:       @screen-large;
+
+// So media queries don't overlap when required, provide a maximum
+@screen-small-max:           (@screen-medium - 1);
+@screen-tablet-max:          (@screen-desktop - 1);
+@screen-desktop-max:         (@screen-large-desktop - 1);
+
 
 // Grid system
 // --------------------------------------------------
