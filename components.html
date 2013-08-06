@@ -1326,7 +1326,49 @@ body { padding-bottom: 70px; }
     </div>
 
 
-    <h2>Inverted variation</h2>
+    <h2 id="navbar-scrollable">Scrollable responsive navbar</h2>
+    <p>For instances where you have too many items in your navbar to fight within the viewport of a small device, add <code>.nav-collapse-scrollable</code> to your navbar's <code>.nav-collapse</code> to set a <code>max-height</code> and smooth scrolling.</p>
+    <div class="bs-example">
+      <div class="navbar">
+        <div class="container">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-scroll-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Title</a>
+          <div class="collapse nav-collapse nav-collapse-scrollable bs-navbar-scroll-collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+            </ul>
+            <form class="navbar-form pull-left" action="">
+              <input type="text" class="form-control col-lg-8" placeholder="Search">
+            </form>
+          </div><!-- /.nav-collapse -->
+        </div><!-- /.container -->
+      </div><!-- /.navbar -->
+    </div><!-- /example -->
+{% highlight html %}
+<div class="navbar">
+  <div class="container">
+		...
+
+    <div class="collapse nav-collapse nav-collapse-scrollable">
+      ...
+    </div><!-- /.nav-collapse -->
+
+  </div><!-- /.container -->
+</div><!-- /.navbar -->
+{% endhighlight %}
+
+
+    <h2 id="navbar-inverted">Inverted variation</h2>
     <p>Modify the look of the navbar by adding <code>.navbar-inverse</code>.</p>
     <div class="bs-example">
       <div class="navbar navbar-inverse">
@@ -1520,7 +1562,7 @@ body { padding-bottom: 70px; }
     </div>
 {% highlight html %}
 <ul class="pagination pagination-lg">...</ul>
-<ul class="pagination pagination">...</ul>
+<ul class="pagination">...</ul>
 <ul class="pagination pagination-sm">...</ul>
 {% endhighlight %}
 
@@ -1587,28 +1629,28 @@ body { padding-bottom: 70px; }
 
     <h3>Example</h3>
     <div class="bs-example">
-      <h1>Example heading <span class="label">New</span></h1>
-      <h2>Example heading <span class="label">New</span></h2>
-      <h3>Example heading <span class="label">New</span></h3>
-      <h4>Example heading <span class="label">New</span></h4>
-      <h5>Example heading <span class="label">New</span></h5>
-      <h6>Example heading <span class="label">New</span></h6>
+      <h1>Example heading <span class="label label-default">New</span></h1>
+      <h2>Example heading <span class="label label-default">New</span></h2>
+      <h3>Example heading <span class="label label-default">New</span></h3>
+      <h4>Example heading <span class="label label-default">New</span></h4>
+      <h5>Example heading <span class="label label-default">New</span></h5>
+      <h6>Example heading <span class="label label-default">New</span></h6>
     </div>
 {% highlight html %}
-<h3>Example heading <span class="label">New</span></h3>
+<h3>Example heading <span class="label label-default">New</span></h3>
 {% endhighlight %}
 
     <h3>Available variations</h3>
     <p>Add any of the below mentioned modifier classes to change the appearance of a label.</p>
     <div class="bs-example">
-      <span class="label">Default</span>
+      <span class="label label-default">Default</span>
       <span class="label label-success">Success</span>
       <span class="label label-warning">Warning</span>
       <span class="label label-danger">Danger</span>
       <span class="label label-info">Info</span>
     </div>
 {% highlight html %}
-<span class="label">Default</span>
+<span class="label label-default">Default</span>
 <span class="label label-success">Success</span>
 <span class="label label-warning">Warning</span>
 <span class="label label-danger">Danger</span>
