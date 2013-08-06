@@ -120,11 +120,11 @@ bootstrap/
 
 
 
-  <!-- Browser compatibility
+  <!-- Browser support
   ================================================== -->
   <div class="bs-docs-section">
     <div class="page-header">
-      <h1 id="browsers">Browser compatibility</h1>
+      <h1 id="browsers">Browser support</h1>
     </div>
     <p class="lead">Bootstrap is built to work best in the latest desktop and mobile browsers, meaning older and less advanced browsers might receive a less stylized, though fully functional, version of certain components.</p>
 
@@ -150,6 +150,37 @@ bootstrap/
 {% endhighlight %}
     <p>See <a href="http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge">this StackOverflow question</a> for more information.</p>
   </div>
+
+
+
+  <!-- Third party support
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="third-parties">Third party support</h1>
+    </div>
+    <p class="lead">While we don't officially support any third party plugins or add-ons, we do offer some helpful advice to help avoid some potential issues in your projects.</p>
+
+    <h3>Google Maps</h3>
+    <p>If you're using Google Maps on a Bootstrapped project, you might run into some display problems due to our use of <code>* { box-sizing: border-box; }</code>. Previously, you may have also ran into issues with the use of <code>max-width</code> on images. The following snippet should avoid all those problems.</p>
+{% highlight css %}
+/* Fix Google Maps canvas
+ *
+ * Wrap your Google Maps embed in a `.google-map-canvas` to reset Bootstrap's
+ * global `box-sizing` changes. You may optionally need to reset the `max-width`
+ * on images in case you've applied that anywhere else. (That shouldn't be as
+ * necessary with Bootstrap 3 though as that behavior is relegated to the
+ * `.img-responsive` class.)
+ */
+
+.google-map-canvas,
+.google-map-canvas * { .box-sizing(content-box); }
+
+/* Optional responsive image override */
+img { max-width: none; }
+{% endhighlight %}
+  </div>
+
 
 
 
