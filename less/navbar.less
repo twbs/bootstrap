@@ -21,7 +21,7 @@
 
 .navbar-nav {
   // Space out from .navbar .brand and .btn-navbar when stacked in mobile views
-  margin-top: 10px;
+  margin-top: 8px;
   margin-bottom: 15px;
 
   > li > a {
@@ -138,10 +138,12 @@
 // Collapsible navbar toggle
 .navbar-toggle {
   position: relative;
+  z-index: 1;
   float: right;
   height: 34px;
   width: 48px;
   .navbar-vertical-align(34px);
+  margin-left: 5px;
   padding: @padding-base-vertical @padding-base-horizontal;
   background-color: transparent;
   border: 1px solid @navbar-toggle-border-color;
@@ -163,6 +165,9 @@
   .icon-bar + .icon-bar {
     margin-top: 4px;
   }
+}
+.nav-collapse {
+  overflow: hidden;
 }
 
 // Navbar form
