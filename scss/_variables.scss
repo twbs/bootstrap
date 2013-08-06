@@ -18,24 +18,25 @@ $screen-tablet:              $screen-small !default;
 $screen-medium:              992px !default;
 $screen-desktop:             $screen-medium !default;
 
-// So media queries don't overlap when required, provide a maximum
-$screen-small-max:           ($screen-medium - 1) !default;
-$screen-tablet-max:          $screen-small-max !default;
-
 // Large screen / wide desktop
 $screen-large:               1200px !default;
 $screen-large-desktop:       $screen-large !default;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-small-max:           ($screen-medium - 1) !default;
+$screen-tablet-max:          ($screen-desktop - 1) !default;
+$screen-desktop-max:         ($screen-large-desktop - 1) !default;
 
 
 // Grid system
 // --------------------------------------------------
 
 // Number of columns in the grid system
-$grid-columns:              12 !default;
+$grid-columns:              12;
 // Padding, to be divided by two and applied to the left and right of all columns
-$grid-gutter-width:         30px !default;
+$grid-gutter-width:         30px;
 // Point at which the navbar stops collapsing
-$grid-float-breakpoint:     $screen-tablet !default;
+$grid-float-breakpoint:     $screen-tablet;
 
 // Grays
 // -------------------------
@@ -354,7 +355,7 @@ $state-info-border:              darken(adjust-hue($state-info-bg, -10%), 7%) !d
 // -------------------------
 $tooltip-max-width:           200px !default;
 $tooltip-color:               #fff !default;
-$tooltip-bg:                  rgba(0,0,0,.9) !default;
+$tooltip-bg:                  #000 !default;
 
 $tooltip-arrow-width:         5px !default;
 $tooltip-arrow-color:         $tooltip-bg !default;
