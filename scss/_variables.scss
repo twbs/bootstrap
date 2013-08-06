@@ -109,6 +109,8 @@ $border-radius-small:            3px !default;
 
 $component-active-bg:            $brand-primary !default;
 
+$caret-width-base:               4px !default;
+$caret-width-large:              5px !default;
 
 // Tables
 // -------------------------
@@ -126,6 +128,8 @@ $table-border-color:                 #ddd !default; // table and cell border
 
 // Buttons
 // -------------------------
+
+$btn-font-weight:                bold !default;
 
 $btn-default-color:              #333 !default;
 $btn-default-bg:                 #fff !default;
@@ -150,6 +154,8 @@ $btn-danger-border:              darken($btn-danger-bg, 5%) !default;
 $btn-info-color:                 #fff !default;
 $btn-info-bg:                    $brand-info !default;
 $btn-info-border:                darken($btn-info-bg, 5%) !default;
+
+$btn-link-disabled-color:        $gray-light !default;
 
 
 // Forms
@@ -373,6 +379,8 @@ $popover-arrow-outer-fallback-color:  #999 !default;
 
 // Labels
 // -------------------------
+
+$label-default-bg:            $gray-light !default;
 $label-success-bg:            $brand-success !default;
 $label-info-bg:               $brand-info !default;
 $label-warning-bg:            $brand-warning !default;
@@ -400,10 +408,13 @@ $modal-footer-border-color:   $modal-header-border-color !default;
 
 // Alerts
 // -------------------------
+$alert-padding:               15px !default;
+$alert-border-radius:         $border-radius-base !default;
+$alert-link-font-weight:      bold !default;
+
 $alert-bg:                    $state-warning-bg !default;
 $alert-text:                  $state-warning-text !default;
 $alert-border:                $state-warning-border !default;
-$alert-border-radius:         $border-radius-base !default;
 
 $alert-success-bg:            $state-success-bg !default;
 $alert-success-text:          $state-success-text !default;
@@ -496,10 +507,14 @@ $accordion-border-color:      #e5e5e5 !default;
 // -------------------------
 $badge-color:                 #fff !default;
 $badge-link-hover-color:      #fff !default;
-
 $badge-bg:                    $gray-light !default;
+
 $badge-active-color:          $link-color !default;
 $badge-active-bg:             #fff !default;
+
+$badge-font-weight:           bold !default;
+$badge-line-height:           1 !default;
+$badge-border-radius:         10px !default;
 
 
 // Breadcrumbs
@@ -514,9 +529,12 @@ $breadcrumb-active-color:     $gray-light !default;
 $carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6) !default;
 
 $carousel-control-color:                      #fff !default;
+$carousel-control-width:                      15% !default;
+$carousel-control-opacity:                    .5 !default;
+$carousel-control-font-size:                  20px !default;
 
-$carousel-indicator-border-color:             #fff !default;
 $carousel-indicator-active-bg:                #fff !default;
+$carousel-indicator-border-color:             #fff !default;
 
 $carousel-caption-color:                      #fff !default;
 
@@ -524,6 +542,7 @@ $carousel-caption-color:                      #fff !default;
 // Close
 // ------------------------
 $close-color:                 #000 !default;
+$close-font-weight:           bold !default;
 $close-text-shadow:           0 1px 0 #fff !default;
 
 

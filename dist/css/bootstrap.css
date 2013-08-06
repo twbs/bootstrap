@@ -1685,7 +1685,7 @@ textarea.input-lg, textarea.input-sm {
   padding: 6px 12px;
   margin-bottom: 0;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 1.428571429;
   text-align: center;
   vertical-align: middle;
@@ -1832,7 +1832,7 @@ textarea.input-lg, textarea.input-sm {
   background-color: transparent;
 }
 .btn-link[disabled]:hover, .btn-link[disabled]:focus, fieldset[disabled] .btn-link:hover, fieldset[disabled] .btn-link:focus {
-  color: #333333;
+  color: #999999;
   text-decoration: none;
 }
 
@@ -1930,13 +1930,10 @@ input[type="button"].btn-block {
 }
 
 .input-group-addon {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
   padding: 6px 12px;
   font-size: 14px;
   font-weight: normal;
-  line-height: 1.428571429;
+  line-height: 1;
   text-align: center;
   background-color: #eeeeee;
   border: 1px solid #cccccc;
@@ -1946,13 +1943,11 @@ input[type="button"].btn-block {
   padding: 5px 10px;
   font-size: 12px;
   border-radius: 3px;
-  line-height: 1.5;
 }
 .input-group-addon.input-lg {
   padding: 10px 16px;
   font-size: 18px;
   border-radius: 6px;
-  line-height: 1.33;
 }
 .input-group-addon input[type="radio"],
 .input-group-addon input[type="checkbox"] {
@@ -2574,6 +2569,14 @@ button.close {
   margin-bottom: 0;
 }
 
+@media (max-width: 768px) {
+  .nav-collapse-scrollable {
+    margin-bottom: 15px;
+    max-height: 360px;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+}
 .navbar-brand {
   display: block;
   max-width: 200px;
@@ -2820,6 +2823,10 @@ button.close {
 .btn-group-vertical > .btn:active,
 .btn-group-vertical > .btn.active {
   z-index: 2;
+}
+.btn-group > .btn:focus,
+.btn-group-vertical > .btn:focus {
+  outline: none;
 }
 
 .btn-group .btn + .btn {
@@ -3609,13 +3616,18 @@ a.thumbnail:focus {
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  background-color: #999999;
   border-radius: .25em;
 }
 .label[href]:hover, .label[href]:focus {
   color: white;
   text-decoration: none;
   cursor: pointer;
+}
+
+.label-default {
+  background-color: #999999;
+}
+.label-default[href]:hover, .label-default[href]:focus {
   background-color: gray;
 }
 
