@@ -1970,12 +1970,12 @@ body { padding-bottom: 70px; }
     <p>Default progress bar with a vertical gradient.</p>
     <div class="bs-example">
       <div class="progress">
-        <div class="progress-bar" style="width: 60%;"><span class='sr-only'>60% Complete</span></div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="sr-only">60% Complete</span></div>
       </div>
     </div>
 {% highlight html %}
 <div class="progress">
-  <div class="progress-bar" style="width: 60%;"><span class='sr-only'>60% Complete</span></div>
+  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="sr-only">60% Complete</span></div>
 </div>
 {% endhighlight %}
 
@@ -1983,37 +1983,37 @@ body { padding-bottom: 70px; }
     <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
     <div class="bs-example">
       <div class="progress" style="margin-bottom: 9px;">
-        <div class="progress-bar progress-bar-info" style="width: 20%"><span class='sr-only'>20% Complete</span></div>
+        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"><span class="sr-only">20% Complete</span></div>
       </div>
       <div class="progress" style="margin-bottom: 9px;">
-        <div class="progress-bar progress-bar-success" style="width: 40%"><span class='sr-only'>40% Complete</span></div>
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span></div>
       </div>
       <div class="progress" style="margin-bottom: 9px;">
-        <div class="progress-bar progress-bar-warning" style="width: 60%"><span class='sr-only'>60% Complete</span></div>
+        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete (warning)</span></div>
       </div>
       <div class="progress">
-        <div class="progress-bar progress-bar-danger" style="width: 80%"><span class='sr-only'>80% Complete</span></div>
+        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"><span class="sr-only">80% Complete (danger)</span></div>
       </div>
     </div>
 {% highlight html %}
 <div class="progress">
-  <div class="progress-bar progress-bar-info" style="width: 20%">
-    <span class='sr-only'>20% Complete</span>
+  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+    <span class="sr-only">20% Complete</span>
   </div>
 </div>
 <div class="progress">
-  <div class="progress-bar progress-bar-success" style="width: 40%">
-    <span class='sr-only'>40% Complete</span>
+  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+    <span class="sr-only">40% Complete (success)</span>
   </div>
 </div>
 <div class="progress">
-  <div class="progress-bar progress-bar-warning" style="width: 60%">
-    <span class='sr-only'>60% Complete</span>
+  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+    <span class="sr-only">60% Complete (warning)</span>
   </div>
 </div>
 <div class="progress">
-  <div class="progress-bar progress-bar-danger" style="width: 80%">
-    <span class='sr-only'>80% Complete</span>
+  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+    <span class="sr-only">80% Complete</span>
   </div>
 </div>
 {% endhighlight %}
@@ -2022,37 +2022,37 @@ body { padding-bottom: 70px; }
     <p>Uses a gradient to create a striped effect. Not available in IE8.</p>
     <div class="bs-example">
       <div class="progress progress-striped" style="margin-bottom: 9px;">
-        <div class="progress-bar progress-bar-info" style="width: 20%"><span class='sr-only'>20% Complete</span></div>
+        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"><span class="sr-only">20% Complete</span></div>
       </div>
       <div class="progress progress-striped" style="margin-bottom: 9px;">
-        <div class="progress-bar progress-bar-success" style="width: 40%"><span class='sr-only'>40% Complete</span></div>
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span></div>
       </div>
       <div class="progress progress-striped" style="margin-bottom: 9px;">
-        <div class="progress-bar progress-bar-warning" style="width: 60%"><span class='sr-only'>60% Complete</span></div>
+        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete (warning)</span></div>
       </div>
       <div class="progress progress-striped">
-        <div class="progress-bar progress-bar-danger" style="width: 80%"><span class='sr-only'>80% Complete</span></div>
+        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"><span class="sr-only">80% Complete (danger)</span></div>
       </div>
     </div>
 {% highlight html %}
 <div class="progress progress-striped">
-  <div class="progress-bar progress-bar-info" style="width: 20%">
-    <span class='sr-only'>20% Complete</span>
+  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+    <span class="sr-only">20% Complete</span>
   </div>
 </div>
 <div class="progress progress-striped">
-  <div class="progress-bar progress-bar-success" style="width: 40%">
-    <span class='sr-only'>40% Complete</span>
+  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+    <span class="sr-only">40% Complete (success)</span>
   </div>
 </div>
 <div class="progress progress-striped">
-  <div class="progress-bar progress-bar-warning" style="width: 60%">
-    <span class='sr-only'>60% Complete</span>
+  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+    <span class="sr-only">60% Complete (warning)</span>
   </div>
 </div>
 <div class="progress progress-striped">
-  <div class="progress-bar progress-bar-danger" style="width: 80%">
-    <span class='sr-only'>80% Complete</span>
+  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+    <span class="sr-only">80% Complete (danger)</span>
   </div>
 </div>
 {% endhighlight %}
@@ -2061,12 +2061,12 @@ body { padding-bottom: 70px; }
     <p>Add <code>.active</code> to <code>.progress-striped</code> to animate the stripes right to left. Not available in all versions of IE.</p>
     <div class="bs-example">
       <div class="progress progress-striped active">
-        <div class="progress-bar" style="width: 45%"><span class='sr-only'>45% Complete</span></div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%"><span class="sr-only">45% Complete</span></div>
       </div>
     </div>
 {% highlight html %}
 <div class="progress progress-striped active">
-  <div class="progress-bar" style="width: 45%">
+  <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
     <span class='sr-only'>45% Complete</span>
   </div>
 </div>
@@ -2076,17 +2076,17 @@ body { padding-bottom: 70px; }
     <p>Place multiple bars into the same <code>.progress</code> to stack them.</p>
     <div class="bs-example">
       <div class="progress">
-        <div class="progress-bar progress-bar-success" style="width: 35%"></div>
-        <div class="progress-bar progress-bar-warning" style="width: 20%"></div>
+        <div class="progress-bar progress-bar-success" style="width: 35%"><span class="sr-only">35% Complete (success)</span></div>
+        <div class="progress-bar progress-bar-warning" style="width: 20%"><span class="sr-only">20% Complete (warning)</span></div>
         <div class="progress-bar progress-bar-danger" style="width: 10%"></div>
-        <span class='sr-only'>Some kind of explanatory text</span>
+        <span class='sr-only'>10% Complete (danger)</span>
       </div>
     </div>
 {% highlight html %}
 <div class="progress">
-  <div class="progress-bar progress-bar-success" style="width: 35%"></div>
-  <div class="progress-bar progress-bar-warning" style="width: 20%"></div>
-  <div class="progress-bar progress-bar-danger" style="width: 10%"></div>
+  <div class="progress-bar progress-bar-success" style="width: 35%"><span class="sr-only">35% Complete (success)</span></div>
+  <div class="progress-bar progress-bar-warning" style="width: 20%"><span class="sr-only">20% Complete (warning)</span></div>
+  <div class="progress-bar progress-bar-danger" style="width: 10%"><span class="sr-only">10% Complete (danger)</span></div>
   <span class='sr-only'>Some kind of explanatory text</span>
 </div>
 {% endhighlight %}
