@@ -1259,7 +1259,7 @@ body { padding-bottom: 70px; }
       <div class="navbar" role="navigation">
         <div class="container">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-            <span class="visually-hidden">Expand Navigation</span>
+            <span class="sr-only">Expand Navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -1309,7 +1309,7 @@ body { padding-bottom: 70px; }
 
     <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      <span class="visually-hidden">Expand Navigation</span>
+      <span class="sr-only">Expand Navigation</span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
@@ -1504,7 +1504,7 @@ body { padding-bottom: 70px; }
     <div class="bs-example">
       <ul class="pagination">
         <li class="disabled"><a href="#">&laquo;</a></li>
-        <li class="active"><a href="#">1<span class='visually-hidden'>(current)</span></a></li>
+        <li class="active"><a href="#">1<span class='sr-only'>(current)</span></a></li>
         <li><a href="#">2</a></li>
         <li><a href="#">3</a></li>
         <li><a href="#">4</a></li>
@@ -1515,7 +1515,7 @@ body { padding-bottom: 70px; }
 {% highlight html %}
 <ul class="pagination">
   <li class="disabled"><a href="#">&laquo;</a></li>
-  <li class="active"><a href="#">1<span class='visually-hidden'>(current)</span></a></li>
+  <li class="active"><a href="#">1<span class='sr-only'>(current)</span></a></li>
   ...
 </ul>
 {% endhighlight %}
@@ -1523,7 +1523,7 @@ body { padding-bottom: 70px; }
 {% highlight html %}
 <ul class="pagination">
   <li class="disabled"><span>&laquo;</span></li>
-  <li class="active"><span>1<span class='visually-hidden'>(current)</span></span></li>
+  <li class="active"><span>1<span class='sr-only'>(current)</span></span></li>
   ...
 </ul>
 {% endhighlight %}
@@ -1970,12 +1970,12 @@ body { padding-bottom: 70px; }
     <p>Default progress bar with a vertical gradient.</p>
     <div class="bs-example">
       <div class="progress">
-        <div class="progress-bar" style="width: 60%;"><span class='visually-hidden'>60% Complete</span></div>
+        <div class="progress-bar" style="width: 60%;"><span class='sr-only'>60% Complete</span></div>
       </div>
     </div>
 {% highlight html %}
 <div class="progress">
-  <div class="progress-bar" style="width: 60%;"><span class='visually-hidden'>60% Complete</span></div>
+  <div class="progress-bar" style="width: 60%;"><span class='sr-only'>60% Complete</span></div>
 </div>
 {% endhighlight %}
 
@@ -1983,37 +1983,37 @@ body { padding-bottom: 70px; }
     <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
     <div class="bs-example">
       <div class="progress" style="margin-bottom: 9px;">
-        <div class="progress-bar progress-bar-info" style="width: 20%"><span class='visually-hidden'>20% Complete</span></div>
+        <div class="progress-bar progress-bar-info" style="width: 20%"><span class='sr-only'>20% Complete</span></div>
       </div>
       <div class="progress" style="margin-bottom: 9px;">
-        <div class="progress-bar progress-bar-success" style="width: 40%"><span class='visually-hidden'>40% Complete</span></div>
+        <div class="progress-bar progress-bar-success" style="width: 40%"><span class='sr-only'>40% Complete</span></div>
       </div>
       <div class="progress" style="margin-bottom: 9px;">
-        <div class="progress-bar progress-bar-warning" style="width: 60%"><span class='visually-hidden'>60% Complete</span></div>
+        <div class="progress-bar progress-bar-warning" style="width: 60%"><span class='sr-only'>60% Complete</span></div>
       </div>
       <div class="progress">
-        <div class="progress-bar progress-bar-danger" style="width: 80%"><span class='visually-hidden'>80% Complete</span></div>
+        <div class="progress-bar progress-bar-danger" style="width: 80%"><span class='sr-only'>80% Complete</span></div>
       </div>
     </div>
 {% highlight html %}
 <div class="progress">
   <div class="progress-bar progress-bar-info" style="width: 20%">
-    <span class='visually-hidden'>20% Complete</span>
+    <span class='sr-only'>20% Complete</span>
   </div>
 </div>
 <div class="progress">
   <div class="progress-bar progress-bar-success" style="width: 40%">
-    <span class='visually-hidden'>40% Complete</span>
+    <span class='sr-only'>40% Complete</span>
   </div>
 </div>
 <div class="progress">
   <div class="progress-bar progress-bar-warning" style="width: 60%">
-    <span class='visually-hidden'>60% Complete</span>
+    <span class='sr-only'>60% Complete</span>
   </div>
 </div>
 <div class="progress">
   <div class="progress-bar progress-bar-danger" style="width: 80%">
-    <span class='visually-hidden'>80% Complete</span>
+    <span class='sr-only'>80% Complete</span>
   </div>
 </div>
 {% endhighlight %}
@@ -2022,37 +2022,37 @@ body { padding-bottom: 70px; }
     <p>Uses a gradient to create a striped effect. Not available in IE8.</p>
     <div class="bs-example">
       <div class="progress progress-striped" style="margin-bottom: 9px;">
-        <div class="progress-bar progress-bar-info" style="width: 20%"><span class='visually-hidden'>20% Complete</span></div>
+        <div class="progress-bar progress-bar-info" style="width: 20%"><span class='sr-only'>20% Complete</span></div>
       </div>
       <div class="progress progress-striped" style="margin-bottom: 9px;">
-        <div class="progress-bar progress-bar-success" style="width: 40%"><span class='visually-hidden'>40% Complete</span></div>
+        <div class="progress-bar progress-bar-success" style="width: 40%"><span class='sr-only'>40% Complete</span></div>
       </div>
       <div class="progress progress-striped" style="margin-bottom: 9px;">
-        <div class="progress-bar progress-bar-warning" style="width: 60%"><span class='visually-hidden'>60% Complete</span></div>
+        <div class="progress-bar progress-bar-warning" style="width: 60%"><span class='sr-only'>60% Complete</span></div>
       </div>
       <div class="progress progress-striped">
-        <div class="progress-bar progress-bar-danger" style="width: 80%"><span class='visually-hidden'>80% Complete</span></div>
+        <div class="progress-bar progress-bar-danger" style="width: 80%"><span class='sr-only'>80% Complete</span></div>
       </div>
     </div>
 {% highlight html %}
 <div class="progress progress-striped">
   <div class="progress-bar progress-bar-info" style="width: 20%">
-    <span class='visually-hidden'>20% Complete</span>
+    <span class='sr-only'>20% Complete</span>
   </div>
 </div>
 <div class="progress progress-striped">
   <div class="progress-bar progress-bar-success" style="width: 40%">
-    <span class='visually-hidden'>40% Complete</span>
+    <span class='sr-only'>40% Complete</span>
   </div>
 </div>
 <div class="progress progress-striped">
   <div class="progress-bar progress-bar-warning" style="width: 60%">
-    <span class='visually-hidden'>60% Complete</span>
+    <span class='sr-only'>60% Complete</span>
   </div>
 </div>
 <div class="progress progress-striped">
   <div class="progress-bar progress-bar-danger" style="width: 80%">
-    <span class='visually-hidden'>80% Complete</span>
+    <span class='sr-only'>80% Complete</span>
   </div>
 </div>
 {% endhighlight %}
@@ -2061,13 +2061,13 @@ body { padding-bottom: 70px; }
     <p>Add <code>.active</code> to <code>.progress-striped</code> to animate the stripes right to left. Not available in all versions of IE.</p>
     <div class="bs-example">
       <div class="progress progress-striped active">
-        <div class="progress-bar" style="width: 45%"><span class='visually-hidden'>45% Complete</span></div>
+        <div class="progress-bar" style="width: 45%"><span class='sr-only'>45% Complete</span></div>
       </div>
     </div>
 {% highlight html %}
 <div class="progress progress-striped active">
   <div class="progress-bar" style="width: 45%">
-    <span class='visually-hidden'>45% Complete</span>
+    <span class='sr-only'>45% Complete</span>
   </div>
 </div>
 {% endhighlight %}
@@ -2079,7 +2079,7 @@ body { padding-bottom: 70px; }
         <div class="progress-bar progress-bar-success" style="width: 35%"></div>
         <div class="progress-bar progress-bar-warning" style="width: 20%"></div>
         <div class="progress-bar progress-bar-danger" style="width: 10%"></div>
-        <span class='visually-hidden'>Some kind of explanatory text</span>
+        <span class='sr-only'>Some kind of explanatory text</span>
       </div>
     </div>
 {% highlight html %}
@@ -2087,7 +2087,7 @@ body { padding-bottom: 70px; }
   <div class="progress-bar progress-bar-success" style="width: 35%"></div>
   <div class="progress-bar progress-bar-warning" style="width: 20%"></div>
   <div class="progress-bar progress-bar-danger" style="width: 10%"></div>
-  <span class='visually-hidden'>Some kind of explanatory text</span>
+  <span class='sr-only'>Some kind of explanatory text</span>
 </div>
 {% endhighlight %}
   </div>

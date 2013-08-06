@@ -1265,12 +1265,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
     <div class="bs-callout bs-callout-danger">
       <h4>Always add labels</h4>
-      <p>Screenreaders will have trouble with your forms if you don't include a label for every input. For this inline forms, you can hide the labels using the <code>.visually-hidden</code> class.</p>
+      <p>Screenreaders will have trouble with your forms if you don't include a label for every input. For this inline forms, you can hide the labels using the <code>.sr-only</code> class.</p>
     </div>
     <form class="bs-example form-inline">
-      <label class="visually-hidden" for="exampleInputEmail">Email address</label>
+      <label class="sr-only" for="exampleInputEmail">Email address</label>
       <input type="text" class="form-control" id="exampleInputEmail" placeholder="Enter email">
-      <label class="visually-hidden" for="exampleInputPassword">Password</label>
+      <label class="sr-only" for="exampleInputPassword">Password</label>
       <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
       <div class="checkbox">
         <label>
@@ -1281,9 +1281,9 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </form><!-- /example -->
 {% highlight html %}
 <form class="form-inline">
-  <label class="visually-hidden" for="exampleInputEmail">Email address</label>
+  <label class="sr-only" for="exampleInputEmail">Email address</label>
   <input type="text" class="form-control" id="exampleInputEmail" placeholder="Enter email">
-  <label class="visually-hidden" for="exampleInputPassword">Password</label>
+  <label class="sr-only" for="exampleInputPassword">Password</label>
   <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
   <div class="checkbox">
     <label>

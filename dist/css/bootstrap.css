@@ -356,7 +356,7 @@ hr {
   border-top: 1px solid #eeeeee;
 }
 
-.visually-hidden {
+.sr-only {
   position: absolute !important;
   width: 1px !important;
   height: 1px !important;
@@ -367,9 +367,9 @@ hr {
   border: 0 !important;
 }
 
-body:hover .visually-hidden a,
-body:hover .visually-hidden input,
-body:hover .visually-hidden button {
+body:hover .sr-only a,
+body:hover .sr-only input,
+body:hover .sr-only button {
   display: none !important;
 }
 
