@@ -4073,7 +4073,6 @@ a.thumbnail:focus {
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  background-color: #999999;
   border-radius: .25em;
 }
 
@@ -4082,6 +4081,14 @@ a.thumbnail:focus {
   color: #ffffff;
   text-decoration: none;
   cursor: pointer;
+}
+
+.label-default {
+  background-color: #999999;
+}
+
+.label-default[href]:hover,
+.label-default[href]:focus {
   background-color: #808080;
 }
 
