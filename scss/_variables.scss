@@ -32,11 +32,12 @@ $screen-desktop-max:         ($screen-large-desktop - 1) !default;
 // --------------------------------------------------
 
 // Number of columns in the grid system
-$grid-columns:              12;
+$grid-columns:              12 !default;
 // Padding, to be divided by two and applied to the left and right of all columns
-$grid-gutter-width:         30px;
+$grid-gutter-width:         30px !default;
 // Point at which the navbar stops collapsing
-$grid-float-breakpoint:     $screen-tablet;
+$grid-float-breakpoint:     $screen-tablet !default;
+
 
 // Grays
 // -------------------------
