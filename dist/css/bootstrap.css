@@ -2807,7 +2807,7 @@ button.close {
 }
 
 .navbar-nav {
-  margin-top: 10px;
+  margin-top: 8px;
   margin-bottom: 15px;
 }
 
@@ -2896,12 +2896,14 @@ button.close {
 
 .navbar-toggle {
   position: relative;
+  z-index: 1;
   float: right;
   width: 48px;
   height: 34px;
   padding: 6px 12px;
   margin-top: 8px;
   margin-bottom: 8px;
+  margin-left: 5px;
   background-color: transparent;
   border: 1px solid #dddddd;
   border-radius: 4px;
@@ -2922,6 +2924,10 @@ button.close {
 
 .navbar-toggle .icon-bar + .icon-bar {
   margin-top: 4px;
+}
+
+.nav-collapse {
+  overflow: hidden;
 }
 
 .navbar-form {
