@@ -129,7 +129,11 @@ module.exports = function(grunt) {
 
 
   // Test task.
-  grunt.registerTask('test', ['jshint', 'qunit', 'browserstack_runner']);
+  var testSubtasks = ['jshint', 'qunit'];
+  if (process.env.TRAVIS) {
+    testSubtasks.push('browserstack_runner');
+  }
+  grunt.registerTask('test', testSubtasks);
 
   // JS distribution task.
   grunt.registerTask('dist-js', ['concat', 'uglify']);
