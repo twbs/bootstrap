@@ -149,6 +149,29 @@ bootstrap/
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 {% endhighlight %}
     <p>See <a href="http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge">this StackOverflow question</a> for more information.</p>
+
+    <h3>Windows Phone 8 and Internet Explorer 10</h3>
+    <p>Internet Explorer 10 doesn't differentiate device width from viewport width, and thus doesn't properly apply the media queries in Bootstrap's CSS. To address this, you can optionally include the following CSS and JavaScript to work around this problem until Microsoft issues a fix.</p>
+{% highlight css %}
+@-webkit-viewport   { width: device-width; }
+@-moz-viewport      { width: device-width; }
+@-ms-viewport       { width: device-width; }
+@-o-viewport        { width: device-width; }
+@viewport           { width: device-width; }
+{% endhighlight %}
+
+{% highlight js %}
+if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+  var msViewportStyle = document.createElement("style");
+  msViewportStyle.appendChild(
+    document.createTextNode(
+      "@-ms-viewport{width:auto!important}"
+    )
+  );
+  document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+}
+{% endhighlight %}
+    <p>For more information and usage guidelines, read <a href="http://timkadlec.com/2013/01/windows-phone-8-and-device-width/">Windows Phone 8 and Device-Width</a>.</p>
   </div>
 
 
