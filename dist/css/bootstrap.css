@@ -757,7 +757,7 @@ pre code {
 }
 
 @media (min-width: 768px) {
-  .row {
+  .container .row {
     margin-right: -15px;
     margin-left: -15px;
   }
@@ -1691,7 +1691,7 @@ textarea.input-sm {
 }
 
 @media (min-width: 768px) {
-  .form-horizontal .form-group {
+  .container .form-horizontal .form-group {
     margin-right: -15px;
     margin-left: -15px;
   }

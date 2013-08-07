@@ -445,9 +445,11 @@
   // Then clear the floated columns
   .clearfix();
 
-  @media (min-width: @screen-small) {
-    margin-left:  (@gutter / -2);
-    margin-right: (@gutter / -2);
+  .container & {
+    @media (min-width: @screen-small) {
+      margin-left:  (@gutter / -2);
+      margin-right: (@gutter / -2);
+    }
   }
 
   // Negative margin nested rows out to align the content of columns
