@@ -32,30 +32,6 @@
       "browser_version": "latest",
       "os": "Windows",
       "os_version": "7"
-    },
-    {
-      "browser": "ie",
-      "browser_version": "8.0",
-      "os": "Windows",
-      "os_version": "XP"
-    },
-    {
-      "browser": "ie",
-      "browser_version": "9.0",
-      "os": "Windows",
-      "os_version": "7"
-    },
-    {
-      "browser": "ie",
-      "browser_version": "10.0",
-      "os": "Windows",
-      "os_version": "8"
-    },
-    {
-      "browser": "ie",
-      "browser_version": "11.0",
-      "os": "Windows",
-      "os_version": "7"
     }
   ]
 }
