@@ -27,7 +27,20 @@
   // Offset the popover to account for the popover arrow
   &.top     { margin-top: -10px; }
   &.right   { margin-left: 10px; }
-  &.bottom  { margin-top: 10px; }
+  &.bottom  {
+    margin-top: 10px;
+    // Fill the 1px white line (padding) under the arrow
+    .popover-title:before {
+      position: absolute;
+      left: 50%;
+      width: 2 * @popover-arrow-width;
+      height: 1px;
+      margin-top: -@popover-arrow-width + 1;
+      margin-left: -@popover-arrow-width;
+      background-color: @popover-title-bg;
+      content: " ";
+    }
+  }
   &.left    { margin-left: -10px; }
 }
 
@@ -112,7 +125,7 @@
       top: 1px;
       margin-left: -@popover-arrow-width;
       border-top-width: 0;
-      border-bottom-color: @popover-arrow-color;
+      border-bottom-color: @popover-title-bg;
     }
   }
 
