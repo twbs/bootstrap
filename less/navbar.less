@@ -6,7 +6,7 @@
 .navbar {
   position: relative;
   min-height: @navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
-  margin-bottom: 20px;
+  margin-bottom: @navbar-margin-bottom;
   padding-left: @navbar-padding-horizontal;
   padding-right: @navbar-padding-horizontal;
   background-color: @navbar-bg;
@@ -20,7 +20,7 @@
 // -------------------------
 
 .navbar-nav {
-  margin-bottom: 15px;
+  margin-bottom: @navbar-nav-margin-bottom;
 
   > li > a {
     padding-top: ((@navbar-height - @line-height-computed) / 2);
@@ -128,12 +128,12 @@
 // Brand/project name
 .navbar-brand {
   display: block;
-  max-width: 200px;
+  max-width: @navbar-brand-max-width;
   margin-left: auto;
   margin-right: auto;
   padding: @navbar-padding-vertical @navbar-padding-horizontal;
   font-size: @font-size-large;
-  font-weight: 500;
+  font-weight: @navbar-brand-font-weight;
   line-height: @line-height-computed;
   color: @navbar-brand-color;
   text-align: center;
