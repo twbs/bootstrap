@@ -20,8 +20,6 @@
 // -------------------------
 
 .navbar-nav {
-  // Space out from .navbar .brand and .btn-navbar when stacked in mobile views
-  margin-top: 10px;
   margin-bottom: 15px;
 
   > li > a {
@@ -82,12 +80,24 @@
 }
 .navbar-fixed-top {
   top: 0;
-  .nav-collapse {
-  }
 }
 .navbar-fixed-bottom {
   bottom: 0;
   margin-bottom: 0; // override .navbar defaults
+}
+
+.nav-collapse {
+  // Space out collapsed contents within the mobile navbar
+  padding-bottom: @navbar-padding-vertical;
+  // Clear floated elements and prevent collapsing of padding
+  .clearfix();
+
+  // When there is no `.navbar-brand` present (which normally sits between the
+  // navbar brand and toggle), prevent the nav from overlapping the toggle.
+  .navbar-toggle + & {
+    width: 100%;
+    margin-top: @navbar-height;
+  }
 }
 
 
@@ -353,6 +363,7 @@
   .nav-collapse.collapse {
     display: block !important;
     height: auto !important;
+    padding-bottom: 0; // Override default setting
     overflow: visible !important;
   }
 

@@ -2811,7 +2811,6 @@ button.close {
 }
 
 .navbar-nav {
-  margin-top: 10px;
   margin-bottom: 15px;
 }
 
@@ -2867,6 +2866,35 @@ button.close {
 .navbar-fixed-bottom {
   bottom: 0;
   margin-bottom: 0;
+}
+
+.nav-collapse {
+  padding-bottom: 15px;
+}
+
+.nav-collapse:before,
+.nav-collapse:after {
+  display: table;
+  content: " ";
+}
+
+.nav-collapse:after {
+  clear: both;
+}
+
+.nav-collapse:before,
+.nav-collapse:after {
+  display: table;
+  content: " ";
+}
+
+.nav-collapse:after {
+  clear: both;
+}
+
+.navbar-toggle + .nav-collapse {
+  width: 100%;
+  margin-top: 50px;
 }
 
 @media (max-width: 768px) {
@@ -3103,6 +3131,7 @@ button.close {
   .nav-collapse.collapse {
     display: block !important;
     height: auto !important;
+    padding-bottom: 0;
     overflow: visible !important;
   }
 }
