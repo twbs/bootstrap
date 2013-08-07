@@ -12,7 +12,7 @@ p {
 .lead {
   margin-bottom: @line-height-computed;
   font-size: (@font-size-base * 1.15);
-  font-weight: 200;
+  font-weight: @lead-font-weight;
   line-height: 1.4;
 
   @media (min-width: 768px) {
@@ -182,10 +182,10 @@ abbr.initialism {
 blockquote {
   padding: (@line-height-computed / 2) @line-height-computed;
   margin: 0 0 @line-height-computed;
-  border-left: 5px solid @blockquote-border-color;
+  border-left: @blockquote-border-width @border-style-base @blockquote-border-color;
   p {
     font-size: (@font-size-base * 1.25);
-    font-weight: 300;
+    font-weight: @blockquote-paragraph-font-weight;
     line-height: 1.25;
   }
   p:last-child {
