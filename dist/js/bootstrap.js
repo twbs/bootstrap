@@ -1503,7 +1503,13 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
     $tip.removeClass('fade top bottom left right in')
 
-    $tip.find('.popover-title:empty').hide()
+    // Hide empty titles
+    //
+    // IE8 doesn't accept hiding via the `:empty` pseudo selector, we have to do
+    // this manually by checking the contents.
+    if ($tip.find('.popover-title').html() === '') {
+      $tip.find('.popover-title').hide();
+    }
   }
 
   Popover.prototype.hasContent = function () {
@@ -1520,7 +1526,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
             o.content)
   }
 
-  Popover.prototype.arrow =function () {
+  Popover.prototype.arrow = function () {
     return this.$arrow = this.$arrow || this.tip().find('.arrow')
   }
 

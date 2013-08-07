@@ -120,11 +120,11 @@ bootstrap/
 
 
 
-  <!-- Browser compatibility
+  <!-- Browser support
   ================================================== -->
   <div class="bs-docs-section">
     <div class="page-header">
-      <h1 id="browsers">Browser compatibility</h1>
+      <h1 id="browsers">Browser support</h1>
     </div>
     <p class="lead">Bootstrap is built to work best in the latest desktop and mobile browsers, meaning older and less advanced browsers might receive a less stylized, though fully functional, version of certain components.</p>
 
@@ -149,6 +149,91 @@ bootstrap/
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 {% endhighlight %}
     <p>See <a href="http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge">this StackOverflow question</a> for more information.</p>
+
+    <h3>Windows Phone 8 and Internet Explorer 10</h3>
+    <p>Internet Explorer 10 doesn't differentiate device width from viewport width, and thus doesn't properly apply the media queries in Bootstrap's CSS. To address this, you can optionally include the following CSS and JavaScript to work around this problem until Microsoft issues a fix.</p>
+{% highlight css %}
+@-webkit-viewport   { width: device-width; }
+@-moz-viewport      { width: device-width; }
+@-ms-viewport       { width: device-width; }
+@-o-viewport        { width: device-width; }
+@viewport           { width: device-width; }
+{% endhighlight %}
+
+{% highlight js %}
+if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+  var msViewportStyle = document.createElement("style");
+  msViewportStyle.appendChild(
+    document.createTextNode(
+      "@-ms-viewport{width:auto!important}"
+    )
+  );
+  document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+}
+{% endhighlight %}
+    <p>For more information and usage guidelines, read <a href="http://timkadlec.com/2013/01/windows-phone-8-and-device-width/">Windows Phone 8 and Device-Width</a>.</p>
+  </div>
+
+
+
+  <!-- Third party support
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="third-parties">Third party support</h1>
+    </div>
+    <p class="lead">While we don't officially support any third party plugins or add-ons, we do offer some helpful advice to help avoid potential issues in your projects.</p>
+
+    <h3>Google Maps</h3>
+    <p>If you're using Google Maps on a Bootstrapped project, you might run into some display problems due to our use of <code>* { box-sizing: border-box; }</code>. Previously, you may have also ran into issues with the use of <code>max-width</code> on images. The following snippet should avoid all those problems.</p>
+{% highlight css %}
+/* Fix Google Maps canvas
+ *
+ * Wrap your Google Maps embed in a `.google-map-canvas` to reset Bootstrap's
+ * global `box-sizing` changes. You may optionally need to reset the `max-width`
+ * on images in case you've applied that anywhere else. (That shouldn't be as
+ * necessary with Bootstrap 3 though as that behavior is relegated to the
+ * `.img-responsive` class.)
+ */
+
+.google-map-canvas,
+.google-map-canvas * { .box-sizing(content-box); }
+
+/* Optional responsive image override */
+img { max-width: none; }
+{% endhighlight %}
+  </div>
+
+
+
+  <!-- Accessibility
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="accessibility">Accessibility</h1>
+    </div>
+    <p class="lead">Bootstrap follows common web standards, and with minimal extra effort, can be used to create sites that are accessibile to those using <abbr title="Assistive Technology" class="initialism">AT</abbr>.</p>
+
+    <h3>Skip navigation</h3>
+    <p>If your navigation contains many links and comes before the main content in the DOM, add a <code>Skip to content</code> link immediately after your opening <code>&lt;body&gt;</code> tag. <a href="http://a11yproject.com/posts/skip-nav-links/">(read why)</a></p>
+{% highlight html %}
+<body>
+  <a href="#content" class="sr-only">Skip to content</a>
+  <div class="container" id="content">
+    The main page content.
+  </div>
+</body>
+{% endhighlight %}
+
+    <h3>Nested headers</h3>
+    <p>Another "gotcha" has to do with how you nest your <code>&lt;header&gt;</code> elements. <a href="http://squizlabs.github.io/HTML_CodeSniffer/Standards/Section508/">Section 508</a> states that your largest header must be an <code>h1</code>, and the next header must be an <code>&lt;h2&gt;</code>, etc. This is hard to achieve in practice, but if the largest header on your site is smaller than Bootstrap's default 38px, you should consider modifying your stylesheets before using a smaller header element.</p>
+
+    <h3>Additional resources</h3>
+    <ul>
+      <li><a href="https://github.com/squizlabs/HTML_CodeSniffer">"HTML Codesniffer" bookmarklet for identifying accessibility issues</a></li>
+      <li><a href="http://a11yproject.com/">The A11Y Project</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Accessibility">MDN accessibility documentation</a></li>
+    </ul>
   </div>
 
 
