@@ -2811,7 +2811,6 @@ button.close {
 }
 
 .navbar-nav {
-  margin-top: 10px;
   margin-bottom: 15px;
 }
 
@@ -2891,6 +2890,11 @@ button.close {
 
 .nav-collapse:after {
   clear: both;
+}
+
+.navbar-toggle + .nav-collapse {
+  width: 100%;
+  margin-top: 50px;
 }
 
 @media (max-width: 768px) {
