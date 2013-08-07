@@ -129,11 +129,8 @@ input[type="number"] {
   .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
   .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 
-  &:focus {
-    border-color: rgba(82,168,236,.8);
-    outline: 0;
-    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)");
-  }
+  // Customize the `:focus` state to imitate native WebKit styles.
+  .form-control-focus();
 
   // Disabled and read-only inputs
   // Note: HTML5 says that inputs under a fieldset > legend:first-child won't be
@@ -218,32 +215,34 @@ input[type="number"] {
 // horizontal sizing, wrap controls in the predefined grid classes. `<select>`
 // element gets special love because it's special, and that's a fact!
 
-.input-large {
+.input-lg {
   height: @input-height-large;
   padding: @padding-large-vertical @padding-large-horizontal;
   font-size: @font-size-large;
+  line-height: @line-height-large;
   border-radius: @border-radius-large;
 }
-.input-small {
+.input-sm {
   height: @input-height-small;
   padding: @padding-small-vertical @padding-small-horizontal;
   font-size: @font-size-small;
+  line-height: @line-height-small;
   border-radius: @border-radius-small;
 }
 
 select {
-  &.input-large {
+  &.input-lg {
     height: @input-height-large;
     line-height: @input-height-large;
   }
-  &.input-small {
+  &.input-sm {
     height: @input-height-small;
     line-height: @input-height-small;
   }
 }
 textarea {
-  &.input-large,
-  &.input-small {
+  &.input-lg,
+  &.input-sm {
     height: auto;
   }
 }
@@ -255,15 +254,26 @@ textarea {
 
 // Warning
 .has-warning {
-  .form-control-validation(@state-warning-text, @state-warning-text, @state-warning-bg);
+  .form-control-validation(@state-warning-text; @state-warning-text; @state-warning-bg);
 }
 // Error
 .has-error {
-  .form-control-validation(@state-danger-text, @state-danger-text, @state-danger-bg);
+  .form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
 }
 // Success
 .has-success {
-  .form-control-validation(@state-success-text, @state-success-text, @state-success-bg);
+  .form-control-validation(@state-success-text; @state-success-text; @state-success-bg);
+}
+
+
+// Static form control text
+//
+// Apply class to a `p` element to make any string of text align with labels in
+// a horizontal form layout.
+
+.form-control-static {
+  margin-bottom: 0; // Remove default margin from `p`
+  padding-top: @padding-base-vertical;
 }
 
 
@@ -277,4 +287,58 @@ textarea {
   margin-top: 5px;
   margin-bottom: 10px;
   color: lighten(@text-color, 25%); // lighten the text some for contrast
+}
+
+
+
+// Inline forms
+//
+// Make forms appear inline(-block).
+
+.form-inline {
+  .form-control,
+  .radio,
+  .checkbox {
+    display: inline-block;
+  }
+
+  // Remove default margin on radios/checkboxes that were used for stacking, and
+  // then undo the floating of radios and checkboxes to match (which also avoids
+  // a bug in WebKit: https://github.com/twbs/bootstrap/issues/1969).
+  .radio,
+  .checkbox {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+  .radio input[type="radio"],
+  .checkbox input[type="checkbox"] {
+    float: none;
+    margin-left: 0;
+  }
+}
+
+
+// Horizontal forms
+//
+// Horizontal forms are built on grid classes and allow you to create forms with
+// labels on the left and inputs on the right.
+
+.form-horizontal .control-label,
+.form-horizontal .radio-inline,
+.form-horizontal .checkbox-inline {
+  padding-top: @padding-base-vertical;
+}
+
+.form-horizontal {
+  .form-group {
+    .make-row();
+  }
+}
+
+// Only right align form labels here when the columns stop stacking
+@media (min-width: @screen-tablet) {
+  .form-horizontal .control-label {
+    text-align: right;
+  }
 }

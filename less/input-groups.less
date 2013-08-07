@@ -5,6 +5,7 @@
 // Base styles
 // -------------------------
 .input-group {
+  position: relative; // For dropdowns
   display: table;
   border-collapse: separate; // prevent input groups from inheriting border styles from table cells when placed within a table
 
@@ -43,23 +44,22 @@
 // Text input groups
 // -------------------------
 .input-group-addon {
-  .box-sizing(border-box);
   padding: @padding-base-vertical @padding-base-horizontal;
   font-size: @font-size-base;
   font-weight: normal;
-  line-height: @line-height-base;
+  line-height: 1;
   text-align: center;
   background-color: @gray-lighter;
   border: 1px solid @input-group-addon-border-color;
   border-radius: @border-radius-base;
 
   // Sizing
-  &.input-small {
+  &.input-sm {
     padding: @padding-small-vertical @padding-small-horizontal;
     font-size: @font-size-small;
     border-radius: @border-radius-small;
   }
-  &.input-large {
+  &.input-lg {
     padding: @padding-large-vertical @padding-large-horizontal;
     font-size: @font-size-large;
     border-radius: @border-radius-large;
@@ -110,44 +110,5 @@
   &:hover,
   &:active {
     z-index: 2;
-  }
-}
-
-
-// Inline forms
-// --------------------------------------------------
-
-.form-inline {
-  .form-control,
-  .radio,
-  .checkbox {
-    display: inline-block;
-  }
-  .radio,
-  .checkbox {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-
-
-// Horizontal forms
-// --------------------------------------------------
-// Horizontal forms are built on grid classes.
-
-.form-horizontal .control-label {
-  padding-top: 9px;
-}
-
-.form-horizontal {
-  .form-group {
-    .make-row();
-  }
-}
-
-// Only right align form labels here when the columns stop stacking
-@media (min-width: @screen-tablet) {
-  .form-horizontal .control-label {
-    text-align: right;
   }
 }

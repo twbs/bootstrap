@@ -11,6 +11,24 @@
   border: 1px solid @panel-border;
   border-radius: @panel-border-radius;
   .box-shadow(0 1px 1px rgba(0,0,0,.05));
+
+  // List groups in panels
+  .list-group {
+    margin: 15px -15px -15px;
+
+    .list-group-item {
+      border-width: 1px 0;
+
+      // Remove border radius for top one
+      &:first-child {
+        .border-top-radius(0);
+      }
+      // But keep it for the last one
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
 }
 
 // Optional heading
@@ -29,6 +47,9 @@
   margin-bottom: 0;
   font-size: (@font-size-base * 1.25);
   font-weight: 500;
+  > a {
+    color: inherit;
+  }
 }
 
 // Optional footer (stays gray in every modifier class)
@@ -80,23 +101,5 @@
     color: @panel-info-text;
     background-color: @panel-info-heading-bg;
     border-color: @panel-info-border;
-  }
-}
-
-// List groups in panels
-.list-group-flush {
-  margin: 15px -15px -15px;
-
-  .list-group-item {
-    border-width: 1px 0;
-
-    // Remove border radius for top one
-    &:first-child {
-      .border-top-radius(0);
-    }
-    // But keep it for the last one
-    &:last-child {
-      border-bottom: 0;
-    }
   }
 }

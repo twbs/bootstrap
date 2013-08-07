@@ -179,12 +179,9 @@
           .addClass(placement)
       }
 
-      var tp = placement == 'bottom' ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2  } :
-               placement == 'top'    ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2  } :
-               placement == 'left'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-            /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width   }
+      var calculatedOffset = this.getCalcuatedOffset(placement, pos, actualWidth, actualHeight)
 
-      this.applyPlacement(tp, placement)
+      this.applyPlacement(calculatedOffset, placement)
       this.$element.trigger('shown.bs.' + this.type)
     }
   }
@@ -196,25 +193,33 @@
     var height = $tip[0].offsetHeight
 
     // manually read margins because getBoundingClientRect includes difference
-    offset.top  = offset.top  + parseInt($tip.css('margin-top'), 10)
-    offset.left = offset.left + parseInt($tip.css('margin-left'), 10)
+    var marginTop = parseInt($tip.css('margin-top'), 10)
+    var marginLeft = parseInt($tip.css('margin-left'), 10)
+
+    // we must check for NaN for ie 8/9
+    if (isNaN(marginTop))  marginTop  = 0
+    if (isNaN(marginLeft)) marginLeft = 0
+
+    offset.top  = offset.top  + marginTop
+    offset.left = offset.left + marginLeft
 
     $tip
       .offset(offset)
       .addClass('in')
 
+    // check to see if placing tip in new offset caused the tip to resize itself
     var actualWidth  = $tip[0].offsetWidth
     var actualHeight = $tip[0].offsetHeight
 
     if (placement == 'top' && actualHeight != height) {
       replace = true
-      offset.top  = offset.top + height - actualHeight
+      offset.top = offset.top + height - actualHeight
     }
 
-    if (placement == 'bottom' || placement == 'top') {
+    if (/bottom|top/.test(placement)) {
       var delta = 0
 
-      if (offset.left < 0){
+      if (offset.left < 0) {
         delta       = offset.left * -2
         offset.left = 0
 
@@ -249,6 +254,8 @@
     var $tip = this.tip()
     var e    = $.Event('hide.bs.' + this.type)
 
+    function complete() { $tip.detach() }
+
     this.$element.trigger(e)
 
     if (e.isDefaultPrevented()) return
@@ -257,9 +264,9 @@
 
     $.support.transition && this.$tip.hasClass('fade') ?
       $tip
-        .one($.support.transition.end, $tip.detach)
+        .one($.support.transition.end, complete)
         .emulateTransitionEnd(150) :
-      $tip.detach()
+      complete()
 
     this.$element.trigger('hidden.bs.' + this.type)
 
@@ -285,6 +292,13 @@
     }, this.$element.offset())
   }
 
+  Tooltip.prototype.getCalcuatedOffset = function (placement, pos, actualWidth, actualHeight) {
+    return placement == 'bottom' ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2  } :
+           placement == 'top'    ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2  } :
+           placement == 'left'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
+        /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width   }
+  }
+
   Tooltip.prototype.getTitle = function () {
     var title
     var $e = this.$element
@@ -300,8 +314,8 @@
     return this.$tip = this.$tip || $(this.options.template)
   }
 
-  Tooltip.prototype.arrow =function(){
-    return this.$arrow = this.$arrow || this.tip().find(".tooltip-arrow")
+  Tooltip.prototype.arrow = function () {
+    return this.$arrow = this.$arrow || this.tip().find('.tooltip-arrow')
   }
 
   Tooltip.prototype.validate = function () {

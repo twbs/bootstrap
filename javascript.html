@@ -15,7 +15,7 @@ base_url: "../"
     </div>
 
     <h3 id="js-individual-compiled">Individual or compiled</h3>
-    <p>Plugins can be included individually (using bootstrap's individual <code>*.js</code> files, or all at once (using <code>bootstrap.js</code> or the minified <code>bootstrap.min.js</code>.</p>
+    <p>Plugins can be included individually (using Bootstrap's individual <code>*.js</code> files, or all at once (using <code>bootstrap.js</code> or the minified <code>bootstrap.min.js</code>.</p>
 
     <div class="bs-callout bs-callout-danger">
       <h4>Do not attempt to include both.</h4>
@@ -24,11 +24,11 @@ base_url: "../"
 
     <div class="bs-callout bs-callout-danger">
       <h4>Plugin dependencies</h4>
-      <p>Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs.</p>
+      <p>Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that all plugins depend on jQuery (this means jQuery must be included <strong>before</strong> the plugin files).</p>
     </div>
 
     <h3 id="js-data-attrs">Data attributes</h3>
-    <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API and should be your first consideration when using a plugin.</p>
+    <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first-class API and should be your first consideration when using a plugin.</p>
 
     <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the document namespaced with <code>data-api</code>. This looks like this:
 {% highlight js %}
@@ -59,12 +59,12 @@ $("#myModal").modal('show')                // initializes and invokes show immed
     <p>Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In these circumstances, namespace collisions can occasionally occur. If this happens, you may call <code>.noConflict</code> on the plugin you wish to revert the value of.</p>
 {% highlight js %}
 var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
-$.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the bootstrap functionality
+$.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the Bootstrap functionality
 {% endhighlight %}
 
     <h3 id="js-events">Events</h3>
     <p>Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.</p>
-    <p>As of 3.0.0, all bootstrap events are namespaced.</p>
+    <p>As of 3.0.0, all Bootstrap events are namespaced.</p>
     <p>All infinitive events provide <code>preventDefault</code> functionality. This provides the ability to stop the execution of an action before it starts.</p>
 {% highlight js %}
 $('#myModal').on('show.bs.modal', function (e) {
@@ -89,7 +89,7 @@ $('#myModal').on('show.bs.modal', function (e) {
     <h3>About transitions</h3>
     <p>For simple transition effects, include <code>transition.js</code> once alongside the other JS files. If you're using the compiled (or minified) <code>bootstrap.js</code>, there is no need to include this&mdash;it's already there.</p>
     <h3>What's inside</h3>
-    <p>Transition.js is a basic helper for transitionEnd events as well as a css transition emulator. It's used by the other plugins to check for css transition support and to catch hanging transitions.</p>
+    <p>Transition.js is a basic helper for <code>transitionEnd</code> events as well as a CSS transition emulator. It's used by the other plugins to check for CSS transition support and to catch hanging transitions.</p>
   </div>
 
 
@@ -189,11 +189,11 @@ $('#myModal').on('show.bs.modal', function (e) {
     </div><!-- /.modal -->
 
     <div class="bs-example" style="padding-bottom: 24px;">
-      <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Launch demo modal</a>
+      <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Launch demo modal</a>
     </div><!-- /example -->
 {% highlight html %}
   <!-- Button trigger modal -->
-  <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Launch demo modal</a>
+  <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Launch demo modal</a>
 
   <!-- Modal -->
   <div class="modal fade" id="myModal">
@@ -207,8 +207,8 @@ $('#myModal').on('show.bs.modal', function (e) {
           ...
         </div>
         <div class="modal-footer">
-          <a href="#" class="btn">Close</a>
-          <a href="#" class="btn btn-primary">Save changes</a>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -262,7 +262,7 @@ $('#myModal').on('show.bs.modal', function (e) {
            <td>remote</td>
            <td>path</td>
            <td>false</td>
-           <td><p>If a remote URL is provided, content will be loaded via jQuery's <code>load</code> method and injected into the <code>.modal-body</code>. If you're using the data api, you may alternatively use the <code>href</code> tag to specify the remote source. An example of this is shown below:</p>
+           <td><p>If a remote URL is provided, content will be loaded via jQuery's <code>load</code> method and injected into the <code>.modal-body</code>. If you're using the data api, you may alternatively use the <code>href</code> attribute to specify the remote source. An example of this is shown below:</p>
 {% highlight html %}
 <a data-toggle="modal" href="remote.html" data-target="#modal">Click me</a>
 {% endhighlight %}
@@ -397,7 +397,7 @@ $('#myModal').on('hidden.bs.modal', function () {
       <ul class="nav nav-pills">
         <li class="active"><a href="#">Regular link</a></li>
         <li class="dropdown">
-          <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
+          <a id="drop4" role="button" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
           <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
             <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
@@ -407,7 +407,7 @@ $('#myModal').on('hidden.bs.modal', function () {
           </ul>
         </li>
         <li class="dropdown">
-          <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">Dropdown 2 <b class="caret"></b></a>
+          <a id="drop5" role="button" data-toggle="dropdown" href="#">Dropdown 2 <b class="caret"></b></a>
           <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
             <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
@@ -417,7 +417,7 @@ $('#myModal').on('hidden.bs.modal', function () {
           </ul>
         </li>
         <li class="dropdown">
-          <a class="dropdown-toggle" id="drop6" role="button" data-toggle="dropdown" href="#">Dropdown 3 <b class="caret"></b></a>
+          <a id="drop6" role="button" data-toggle="dropdown" href="#">Dropdown 3 <b class="caret"></b></a>
           <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop6">
             <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
@@ -436,7 +436,7 @@ $('#myModal').on('hidden.bs.modal', function () {
     <p>Add <code>data-toggle="dropdown"</code> to a link or button to toggle a dropdown.</p>
 {% highlight html %}
 <div class="dropdown">
-  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown trigger</a>
+  <a data-toggle="dropdown" href="#">Dropdown trigger</a>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
     ...
   </ul>
@@ -445,7 +445,7 @@ $('#myModal').on('hidden.bs.modal', function () {
           <p>To keep URLs intact, use the <code>data-target</code> attribute instead of <code>href="#"</code>.</p>
 {% highlight html %}
 <div class="dropdown">
-  <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
+  <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
     Dropdown <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -465,7 +465,7 @@ $('.dropdown-toggle').dropdown()
 
     <h3>Methods</h3>
     <h4>$().dropdown('toggle')</h4>
-    <p>A programmatic api for toggling menus for a given navbar or tabbed navigation.</p>
+    <p>Toggles the dropdown menu of a given navbar or tabbed navigation.</p>
   </div>
 
 
@@ -531,7 +531,7 @@ $('.dropdown-toggle').dropdown()
     <h3>Via JavaScript</h3>
     <p>Call the scrollspy via JavaScript:</p>
 {% highlight js %}
-$('#navbar-example').scrollspy(options)
+$('body').scrollspy({ target: '#navbar-example' })
 {% endhighlight %}
 
     <div class="bs-callout bs-callout-danger">
@@ -802,7 +802,7 @@ $('#example').tooltip(options)
            <td>title</td>
            <td>string | function</td>
            <td>''</td>
-           <td>default title value if <code>title</code> tag isn't present</td>
+           <td>default title value if <code>title</code> attribute isn't present</td>
          </tr>
          <tr>
            <td>trigger</td>
@@ -957,22 +957,22 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
 
     <h3>Live demo</h3>
     <div class="bs-example" style="padding-bottom: 24px;">
-      <a href="#" class="btn btn-large btn-danger" data-toggle="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">Click to toggle popover</a>
+      <a href="#" class="btn btn-lg btn-danger" data-toggle="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">Click to toggle popover</a>
     </div>
 
     <h4>Four directions</h4>
     <div class="bs-example tooltip-demo">
       <div class="bs-example-tooltips">
-        <button type="button" class="btn btn-default" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
           Popover on left
         </button>
-        <button type="button" class="btn btn-default" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
           Popover on top
         </button>
-        <button type="button" class="btn btn-default" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
           Popover on bottom
         </button>
-        <button type="button" class="btn btn-default" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
           Popover on right
         </button>
       </div>
@@ -1480,7 +1480,7 @@ $(".collapse").collapse()
            <td>parent</td>
            <td>selector</td>
            <td>false</td>
-           <td>If selector then all collapsible elements under the specified parent will be closed when this collapsible item is shown. (similar to traditional accordion behavior)</td>
+           <td>If selector then all collapsible elements under the specified parent will be closed when this collapsible item is shown. (similar to traditional accordion behavior - this dependent on the <code>accordion-group</code> class)</td>
          </tr>
          <tr>
            <td>toggle</td>
@@ -1794,7 +1794,7 @@ $('#myCarousel').on('slide.bs.carousel', function () {
       <h4>Requires independent styling ;)</h4>
       <p>
         Affix toggles between three states/classes: <code>affix</code>, <code>affix-top</code>, and <code>affix-bottom</code>. You must provide the styles for these classes yourself (independent of this plugin).
-        The <code>affix-top</code> class should be in the regular flow of the document. The <code>affix</code> class should be fixed to the page. And <code>affix-bottom</code> should be positioned absolute. Note, <code>affix-bottom</code> is special in that the plugin will place the element with js relative to the <code>offset: { bottom: number }</code> option you've provided.
+        The <code>affix-top</code> class should be in the regular flow of the document. The <code>affix</code> class should be fixed to the page. And <code>affix-bottom</code> should be positioned absolute. Note, <code>affix-bottom</code> is special in that the plugin will place the element with JS relative to the <code>offset: { bottom: number }</code> option you've provided.
       </p>
     </div>
 

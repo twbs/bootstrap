@@ -10,7 +10,7 @@
   padding-left: @navbar-padding-horizontal;
   padding-right: @navbar-padding-horizontal;
   background-color: @navbar-bg;
-  border-radius: @border-radius-base;
+  border-radius: @navbar-border-radius;
 
   // Prevent floats from breaking the navbar
   .clearfix();
@@ -20,15 +20,13 @@
 // -------------------------
 
 .navbar-nav {
-  // Space out from .navbar .brand and .btn-navbar when stacked in mobile views
-  margin-top: 10px;
   margin-bottom: 15px;
 
   > li > a {
     padding-top: ((@navbar-height - @line-height-computed) / 2);
     padding-bottom: ((@navbar-height - @line-height-computed) / 2);
     color: @navbar-link-color;
-    line-height: 20px;
+    line-height: @line-height-computed;
     border-radius: @border-radius-base;
     &:hover,
     &:focus {
@@ -88,6 +86,39 @@
   margin-bottom: 0; // override .navbar defaults
 }
 
+.nav-collapse {
+  // Space out collapsed contents within the mobile navbar
+  padding-bottom: @navbar-padding-vertical;
+  // Clear floated elements and prevent collapsing of padding
+  .clearfix();
+
+  // When there is no `.navbar-brand` present (which normally sits between the
+  // navbar brand and toggle), prevent the nav from overlapping the toggle.
+  .navbar-toggle + & {
+    width: 100%;
+    margin-top: @navbar-height;
+  }
+}
+
+
+// Scrollable navbar navigation
+//
+// Sometimes you might have too many links in your fixed navbar and you need to
+// maintain access to all that content. To help, add `.nav-collapse-scrollable`
+// to your `.nav-collapse` to prevent the the content from flowing past the max-
+// height of your browser.
+//
+// This is not automatically added to the `.navbar-fixed-top` because it causes
+// z-index bugs in iOS7 (possibly earlier).
+
+@media (max-width: @screen-small) {
+  .nav-collapse-scrollable {
+    margin-bottom: @navbar-padding-vertical;
+    max-height: 360px;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+}
 
 
 //
@@ -116,12 +147,12 @@
 
 // Collapsible navbar toggle
 .navbar-toggle {
-  position: absolute;
-  top: floor((@navbar-height - 32) / 2);
-  right: 10px;
+  position: relative;
+  float: right;
+  height: 34px;
   width: 48px;
-  height: 32px;
-  padding: 8px 12px;
+  .navbar-vertical-align(34px);
+  padding: @padding-base-vertical @padding-base-horizontal;
   background-color: transparent;
   border: 1px solid @navbar-toggle-border-color;
   border-radius: @border-radius-base;
@@ -302,6 +333,7 @@
     float: left;
     margin-left: -(@navbar-padding-horizontal);
     margin-right: 5px;
+    max-width: none; // Disables the default mobile setting
   }
   .navbar-nav {
     float: left;
@@ -317,7 +349,6 @@
     }
 
     &.pull-right {
-      float: right;
       width: auto;
     }
   }
@@ -332,6 +363,7 @@
   .nav-collapse.collapse {
     display: block !important;
     height: auto !important;
+    padding-bottom: 0; // Override default setting
     overflow: visible !important;
   }
 
@@ -354,6 +386,8 @@
 // Add a class to make any element properly align itself vertically within the navbars.
 
 .navbar-text {
+  float: left;
+  padding: 0 @navbar-padding-horizontal;
   .navbar-vertical-align(@line-height-computed);
 }
 

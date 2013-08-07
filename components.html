@@ -50,7 +50,7 @@ base_url: "../"
 {% endhighlight %}
 
     <h3 id="dropdowns-headers">Dropdown headers</h3>
-    <p>Add a header to break up label sections of actions in any dropdown menu.</p>
+    <p>Add a header to label sections of actions in any dropdown menu.</p>
     <div class="bs-example">
       <div class="dropdown clearfix">
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
@@ -155,12 +155,11 @@ base_url: "../"
 {% endhighlight %}
 
     <h3 id="btn-groups-nested">Nested button groups</h3>
-    <p>Place buttons groups within button groups when you want dropdown menus mixed with a series of buttons.</p>
+    <p>Place a <code>.btn-group</code> within another <code>.btn-group</code> when you want dropdown menus mixed with a series of buttons.</p>
     <div class="bs-example">
       <div class="btn-group">
         <button type="button" class="btn btn-default">1</button>
         <button type="button" class="btn btn-default">2</button>
-        <button type="button" class="btn btn-default">3</button>
 
         <div class="btn-group">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -170,11 +169,27 @@ base_url: "../"
           <ul class="dropdown-menu">
             <li><a href="#">Dropdown link</a></li>
             <li><a href="#">Dropdown link</a></li>
-            <li><a href="#">Dropdown link</a></li>
-           </ul>
+          </ul>
         </div>
       </div>
     </div>
+{% highlight html %}
+<div class="btn-group">
+  <button type="button" class="btn btn-default">1</button>
+  <button type="button" class="btn btn-default">2</button>
+
+  <div class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+      Dropdown
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Dropdown link</a></li>
+      <li><a href="#">Dropdown link</a></li>
+    </ul>
+  </div>
+</div>
+{% endhighlight %}
 
     <h3 id="btn-groups-vertical">Vertical button groups</h3>
     <p>Make a set of buttons appear vertically stacked rather than horizontally.</p>
@@ -231,7 +246,7 @@ base_url: "../"
     </div>
 
     <h3 id="btn-dropdowns-single">Single button dropdowns</h3>
-    <p>Turn a button into dropdown toggle with some basic markup changes.</p>
+    <p>Turn a button into a dropdown toggle with some basic markup changes.</p>
     <div class="bs-example">
       <div class="btn-toolbar" style="margin-bottom: 10px;">
         <div class="btn-group">
@@ -385,7 +400,7 @@ base_url: "../"
     <div class="bs-example">
       <div class="btn-toolbar" style="margin: 0;">
         <div class="btn-group">
-          <button class="btn btn-default btn-large dropdown-toggle" type="button" data-toggle="dropdown">
+          <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown">
             Large button <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
@@ -397,8 +412,20 @@ base_url: "../"
           </ul>
         </div><!-- /btn-group -->
         <div class="btn-group">
-          <button class="btn btn-default btn-small dropdown-toggle" type="button" data-toggle="dropdown">
+          <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
             Small button <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group">
+          <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            Extra small button <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
@@ -413,7 +440,7 @@ base_url: "../"
 {% highlight html %}
 <!-- Large button group -->
 <div class="btn-group">
-  <button class="btn btn-default btn-large dropdown-toggle" type="button" data-toggle="dropdown">
+  <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown">
     Large button <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
@@ -423,13 +450,22 @@ base_url: "../"
 
 <!-- Small button group -->
 <div class="btn-group">
-  <button class="btn btn-default btn-small dropdown-toggle" type="button" data-toggle="dropdown">
+  <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
     Small button <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
     ...
   </ul>
 </div>
+
+<!-- Extra small button group -->
+<div class="btn-group">
+  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+    Extra small button <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    ...
+  </ul>
 </div>
 {% endhighlight %}
 
@@ -535,8 +571,8 @@ base_url: "../"
     <p>Add the relative form sizing classes to the <code>.input-group-addon</code>.</p>
     <form class="bs-example bs-example-form">
       <div class="input-group">
-        <span class="input-group-addon input-large">@</span>
-        <input type="text" class="form-control input-large" placeholder="Username">
+        <span class="input-group-addon input-lg">@</span>
+        <input type="text" class="form-control input-lg" placeholder="Username">
       </div>
       <br>
       <div class="input-group">
@@ -545,14 +581,14 @@ base_url: "../"
       </div>
       <br>
       <div class="input-group">
-        <span class="input-group-addon input-small">@</span>
-        <input type="text" class="form-control input-small" placeholder="Username">
+        <span class="input-group-addon input-sm">@</span>
+        <input type="text" class="form-control input-sm" placeholder="Username">
       </div>
     </form>
 {% highlight html %}
 <div class="input-group">
-  <span class="input-group-addon input-large">@</span>
-  <input type="text" class="form-control input-large" placeholder="Username">
+  <span class="input-group-addon input-lg">@</span>
+  <input type="text" class="form-control input-lg" placeholder="Username">
 </div>
 
 <div class="input-group">
@@ -561,8 +597,8 @@ base_url: "../"
 </div>
 
 <div class="input-group">
-  <span class="input-group-addon input-small">@</span>
-  <input type="text" class="form-control input-small" placeholder="Username">
+  <span class="input-group-addon input-sm">@</span>
+  <input type="text" class="form-control input-sm" placeholder="Username">
 </div>
 {% endhighlight %}
 
@@ -1276,7 +1312,7 @@ body { padding-bottom: 70px; }
     <!-- Be sure to leave the brand out there if you want it shown -->
     <a class="navbar-brand" href="#">Title</a>
 
-    <!-- Place everything within .navbar-collapse to hide it until above 768px -->
+    <!-- Place everything within .nav-collapse to hide it until above 768px -->
     <div class="nav-collapse collapse navbar-responsive-collapse">
       ...
     </div><!-- /.nav-collapse -->
@@ -1290,7 +1326,49 @@ body { padding-bottom: 70px; }
     </div>
 
 
-    <h2>Inverted variation</h2>
+    <h2 id="navbar-scrollable">Scrollable responsive navbar</h2>
+    <p>For instances where you have too many items in your navbar to fight within the viewport of a small device, add <code>.nav-collapse-scrollable</code> to your navbar's <code>.nav-collapse</code> to set a <code>max-height</code> and smooth scrolling.</p>
+    <div class="bs-example">
+      <div class="navbar">
+        <div class="container">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-scroll-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Title</a>
+          <div class="collapse nav-collapse nav-collapse-scrollable bs-navbar-scroll-collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+            </ul>
+            <form class="navbar-form pull-left" action="">
+              <input type="text" class="form-control col-lg-8" placeholder="Search">
+            </form>
+          </div><!-- /.nav-collapse -->
+        </div><!-- /.container -->
+      </div><!-- /.navbar -->
+    </div><!-- /example -->
+{% highlight html %}
+<div class="navbar">
+  <div class="container">
+		...
+
+    <div class="collapse nav-collapse nav-collapse-scrollable">
+      ...
+    </div><!-- /.nav-collapse -->
+
+  </div><!-- /.container -->
+</div><!-- /.navbar -->
+{% endhighlight %}
+
+
+    <h2 id="navbar-inverted">Inverted variation</h2>
     <p>Modify the look of the navbar by adding <code>.navbar-inverse</code>.</p>
     <div class="bs-example">
       <div class="navbar navbar-inverse">
@@ -1446,10 +1524,10 @@ body { padding-bottom: 70px; }
 
 
     <h3>Sizes</h3>
-    <p>Fancy larger or smaller pagination? Add <code>.pagination-large</code> or <code>.pagination-small</code>  for additional sizes.</p>
+    <p>Fancy larger or smaller pagination? Add <code>.pagination-lg</code> or <code>.pagination-sm</code> for additional sizes.</p>
     <div class="bs-example">
       <div>
-        <ul class="pagination pagination-large">
+        <ul class="pagination pagination-lg">
           <li><a href="#">&laquo;</a></li>
           <li><a href="#">1</a></li>
           <li><a href="#">2</a></li>
@@ -1471,7 +1549,7 @@ body { padding-bottom: 70px; }
         </ul>
       </div>
       <div>
-        <ul class="pagination pagination-small">
+        <ul class="pagination pagination-sm">
           <li><a href="#">&laquo;</a></li>
           <li><a href="#">1</a></li>
           <li><a href="#">2</a></li>
@@ -1483,9 +1561,9 @@ body { padding-bottom: 70px; }
       </div>
     </div>
 {% highlight html %}
-<ul class="pagination pagination-large">...</ul>
-<ul class="pagination pagination">...</ul>
-<ul class="pagination pagination-small">...</ul>
+<ul class="pagination pagination-lg">...</ul>
+<ul class="pagination">...</ul>
+<ul class="pagination pagination-sm">...</ul>
 {% endhighlight %}
 
 
@@ -1551,28 +1629,28 @@ body { padding-bottom: 70px; }
 
     <h3>Example</h3>
     <div class="bs-example">
-      <h1>Example heading <span class="label">New</span></h1>
-      <h2>Example heading <span class="label">New</span></h2>
-      <h3>Example heading <span class="label">New</span></h3>
-      <h4>Example heading <span class="label">New</span></h4>
-      <h5>Example heading <span class="label">New</span></h5>
-      <h6>Example heading <span class="label">New</span></h6>
+      <h1>Example heading <span class="label label-default">New</span></h1>
+      <h2>Example heading <span class="label label-default">New</span></h2>
+      <h3>Example heading <span class="label label-default">New</span></h3>
+      <h4>Example heading <span class="label label-default">New</span></h4>
+      <h5>Example heading <span class="label label-default">New</span></h5>
+      <h6>Example heading <span class="label label-default">New</span></h6>
     </div>
 {% highlight html %}
-<h3>Example heading <span class="label">New</span></h3>
+<h3>Example heading <span class="label label-default">New</span></h3>
 {% endhighlight %}
 
     <h3>Available variations</h3>
     <p>Add any of the below mentioned modifier classes to change the appearance of a label.</p>
     <div class="bs-example">
-      <span class="label">Default</span>
+      <span class="label label-default">Default</span>
       <span class="label label-success">Success</span>
       <span class="label label-warning">Warning</span>
       <span class="label label-danger">Danger</span>
       <span class="label label-info">Info</span>
     </div>
 {% highlight html %}
-<span class="label">Default</span>
+<span class="label label-default">Default</span>
 <span class="label label-success">Success</span>
 <span class="label label-warning">Warning</span>
 <span class="label label-danger">Danger</span>
@@ -1659,14 +1737,14 @@ body { padding-bottom: 70px; }
       <div class="jumbotron">
         <h1>Hello, world!</h1>
         <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <p><a class="btn btn-primary btn-large">Learn more</a></p>
+        <p><a class="btn btn-primary btn-lg">Learn more</a></p>
       </div>
     </div>
 {% highlight html %}
 <div class="jumbotron">
   <h1>Hello, world!</h1>
   <p>...</p>
-  <p><a class="btn btn-primary btn-large">Learn more</a></p>
+  <p><a class="btn btn-primary btn-lg">Learn more</a></p>
 </div>
 {% endhighlight %}
 
@@ -1694,7 +1772,7 @@ body { padding-bottom: 70px; }
     </div>
     <p class="lead">Extend Bootstrap's <a href="../css/#grid">grid system</a> with the thumbnail component to easily display grids of images, videos, text, and more.</p>
 
-    <h3>Default thumbnails</h3>
+    <h3 id="thumbnails-default">Default thumbnails</h3>
     <p>By default, Bootstrap's thumbnails are designed to showcase linked images with minimal required markup.</p>
     <div class="bs-example">
       <div class="row">
@@ -1731,7 +1809,7 @@ body { padding-bottom: 70px; }
 </div>
 {% endhighlight %}
 
-    <h3>Custom content thumbnails</h3>
+    <h3 id="thumbnails-custom-content">Custom content thumbnails</h3>
     <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.</p>
     <div class="bs-example">
       <div class="row">
@@ -1812,23 +1890,6 @@ body { padding-bottom: 70px; }
 <div class="alert">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <strong>Warning!</strong> Best check yo self, you're not looking too good.
-</div>
-{% endhighlight %}
-
-    <h3 id="alerts-block">Block alerts</h3>
-    <p>For longer messages, increase the padding on the top and bottom of the alert wrapper by adding <code>.alert-block</code>.</p>
-    <div class="bs-example">
-      <div class="alert alert-block">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <h4>Warning!</h4>
-        <p>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-      </div>
-    </div>
-{% highlight html %}
-<div class="alert alert-block">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <h4>Warning!</h4>
-  <p>...</p>
 </div>
 {% endhighlight %}
 
@@ -2016,7 +2077,7 @@ body { padding-bottom: 70px; }
     </div>
     <p class="lead">Abstract object styles for building various types of components (like blog comments, Tweets, etc) that feature a left- or right-aligned image alongside textual content.</p>
 
-    <h3>Default example</h3>
+    <h3 id="media-default">Default media</h3>
     <p>The default media allow to float a media object (images, video, audio) to the left or right of a content block.</p>
     <div class="bs-example">
       <div class="media">
@@ -2059,7 +2120,7 @@ body { padding-bottom: 70px; }
 </div>
 {% endhighlight %}
 
-    <h3>Media list</h3>
+    <h3 id="media-list">Media list</h3>
     <p>With a bit of extra markup, you can use media inside list (useful for comment threads or articles lists).</p>
     <div class="bs-example">
       <ul class="media-list">
@@ -2367,7 +2428,7 @@ body { padding-bottom: 70px; }
         <p>Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 
         <!-- List group -->
-        <ul class="list-group list-group-flush">
+        <ul class="list-group">
           <li class="list-group-item">Cras justo odio</li>
           <li class="list-group-item">Dapibus ac facilisis in</li>
           <li class="list-group-item">Morbi leo risus</li>
@@ -2383,7 +2444,7 @@ body { padding-bottom: 70px; }
   <p>...</p>
 
   <!-- List group -->
-  <ul class="list-group list-group-flush">
+  <ul class="list-group">
     <li class="list-group-item">Cras justo odio</li>
     <li class="list-group-item">Dapibus ac facilisis in</li>
     <li class="list-group-item">Morbi leo risus</li>
@@ -2419,20 +2480,20 @@ body { padding-bottom: 70px; }
     <h3>Optional classes</h3>
     <p>Control padding and rounded corners with two optional modifier classes.</p>
     <div class="bs-example">
-      <div class="well well-large">
+      <div class="well well-lg">
         Look, I'm in a well!
       </div>
     </div>
 {% highlight html %}
-<div class="well well-large">...</div>
+<div class="well well-lg">...</div>
 {% endhighlight %}
 
     <div class="bs-example">
-      <div class="well well-small">
+      <div class="well well-sm">
         Look, I'm in a well!
       </div>
     </div>
 {% highlight html %}
-<div class="well well-small">...</div>
+<div class="well well-sm">...</div>
 {% endhighlight %}
   </div>

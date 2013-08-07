@@ -69,9 +69,9 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 15%;
-  .opacity(.5);
-  font-size: 20px;
+  width: @carousel-control-width;
+  .opacity(@carousel-control-opacity);
+  font-size: @carousel-control-font-size;
   color: @carousel-control-color;
   text-align: center;
   text-shadow: @carousel-text-shadow;
@@ -81,13 +81,11 @@
   // Set gradients for backgrounds
   &.left {
     #gradient > .horizontal(@start-color: rgba(0,0,0,.5); @end-color: rgba(0,0,0,.0001));
-    background-color: transparent;
   }
   &.right {
     left: auto;
     right: 0;
     #gradient > .horizontal(@start-color: rgba(0,0,0,.0001); @end-color: rgba(0,0,0,.5));
-    background-color: transparent;
   }
 
   // Hover/focus state
@@ -127,14 +125,17 @@
 }
 
 // Optional indicator pips
-// -----------------------------
+//
+// Add an unordered list with the following class and add a list item for each
+// slide your carousel holds.
+
 .carousel-indicators {
   position: absolute;
   bottom: 10px;
   left: 50%;
   z-index: 15;
-  width: 120px;
-  margin-left: -60px;
+  width: 60%;
+  margin-left: -30%;
   padding-left: 0;
   list-style: none;
   text-align: center;

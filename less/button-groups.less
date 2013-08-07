@@ -3,11 +3,32 @@
 // --------------------------------------------------
 
 // Button carets
-.btn .caret {
-  border-top-color: @btn-default-color;
+//
+// Match the button text color to the arrow/caret for indicating dropdown-ness.
+
+.caret {
+  .btn-default & {
+    border-top-color: @btn-default-color;
+  }
+  .btn-primary &,
+  .btn-success &,
+  .btn-warning &,
+  .btn-danger &,
+  .btn-info & {
+    border-top-color: #fff;
+  }
 }
-.dropup .btn .caret {
-  border-bottom-color: @btn-default-color;
+.dropup .caret {
+  .btn-default & {
+    border-bottom-color: @btn-default-color;
+  }
+  .btn-primary &,
+  .btn-success &,
+  .btn-warning &,
+  .btn-danger &,
+  .btn-info & {
+    border-bottom-color: #fff;
+  }
 }
 
 // Make the div behave like a button
@@ -22,8 +43,13 @@
     // Bring the "active" button to the front
     &:hover,
     &:focus,
-    &:active {
+    &:active,
+    &.active {
       z-index: 2;
+    }
+    &:focus {
+      // Remove focus outline when dropdown JS adds it after closing the menu
+      outline: none;
     }
   }
 }
@@ -100,7 +126,7 @@
   padding-left: 8px;
   padding-right: 8px;
 }
-.btn-group > .btn-large + .dropdown-toggle {
+.btn-group > .btn-lg + .dropdown-toggle {
   padding-left: 12px;
   padding-right: 12px;
 }
@@ -117,12 +143,12 @@
   margin-left: 0;
 }
 // Carets in other button sizes
-.btn-large .caret {
-  border-width: 5px;
+.btn-lg .caret {
+  border-width: @caret-width-large;
 }
 // Upside down carets for .dropup
-.dropup .btn-large .caret {
-  border-bottom-width: 5px;
+.dropup .btn-lg .caret {
+  border-bottom-width: @caret-width-large;
 }
 
 
@@ -142,10 +168,10 @@
   &:not(:first-child):not(:last-child) {
     border-radius: 0;
   }
-  &:first-child {
+  &:first-child:not(:last-child) {
     .border-bottom-radius(0);
   }
-  &:last-child {
+  &:last-child:not(:first-child) {
     .border-top-radius(0);
   }
 }
@@ -157,6 +183,7 @@
 .btn-group-justified {
   display: table;
   width: 100%;
+  table-layout: fixed;
   .btn {
     float: none;
     display: table-cell;
