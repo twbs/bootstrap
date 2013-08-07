@@ -117,6 +117,7 @@ module.exports = function(grunt) {
 
 
   // These plugins provide necessary tasks.
+  grunt.loadNpmTasks('browserstack-runner');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-connect');
@@ -125,15 +126,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-recess');
-  grunt.loadNpmTasks('browserstack-runner');
 
+  // Browser tests.
+  grunt.registerTask('browser', ['test', 'browserstack_runner']);
 
-  // Test task.
-  var testSubtasks = ['jshint', 'qunit'];
-  if (process.env.TRAVIS) {
-    testSubtasks.push('browserstack_runner');
-  }
-  grunt.registerTask('test', testSubtasks);
+  // Unit testing and linting.
+  grunt.registerTask('test', ['qunit', 'jshint']);
 
   // JS distribution task.
   grunt.registerTask('dist-js', ['concat', 'uglify']);
