@@ -1300,9 +1300,15 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <h4>Requires custom widths</h4>
       <p>Inputs, selects, and textareas are 100% wide by default in Bootstrap. To use the inline form, you'll have to set a width on the form controls used within.</p>
     </div>
+    <div class="bs-callout bs-callout-danger">
+      <h4>Always add labels</h4>
+      <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the <code>.sr-only</code> class.</p>
+    </div>
     <form class="bs-example form-inline">
-      <input type="text" class="form-control" placeholder="Email">
-      <input type="password" class="form-control" placeholder="Password">
+      <label class="sr-only" for="exampleInputEmail">Email address</label>
+      <input type="text" class="form-control" id="exampleInputEmail" placeholder="Enter email">
+      <label class="sr-only" for="exampleInputPassword">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
       <div class="checkbox">
         <label>
           <input type="checkbox"> Remember me
@@ -1312,8 +1318,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </form><!-- /example -->
 {% highlight html %}
 <form class="form-inline">
-  <input type="text" class="form-control" placeholder="Email">
-  <input type="password" class="form-control" placeholder="Password">
+  <label class="sr-only" for="exampleInputEmail">Email address</label>
+  <input type="text" class="form-control" id="exampleInputEmail" placeholder="Enter email">
+  <label class="sr-only" for="exampleInputPassword">Password</label>
+  <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
   <div class="checkbox">
     <label>
       <input type="checkbox"> Remember me
@@ -1985,6 +1993,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 .element {
   .clearfix();
 }
+{% endhighlight %}
+
+    <h3>.sr-only</h3>
+    <p>Hide an element to all users <em>except</em> screen readers. Necessary for following <a href="{{ page.base_url }}getting-started#accessibility">accessibility best practices</a>.</p>
+{% highlight html %}
+<a class="sr-only" href="#content">Skip to content</a>
 {% endhighlight %}
   </div>
 
