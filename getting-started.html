@@ -212,31 +212,29 @@ img { max-width: none; }
     <div class="page-header">
       <h1 id="accessibility">Accessibility</h1>
     </div>
-    <p class="lead">Bootstrap follows common web standards, and with minimal extra effort, can be used to create sites that are accessibile to users using assistive technology (AT). However, it's useful to take the following into consideration:</p>
+    <p class="lead">Bootstrap follows common web standards, and with minimal extra effort, can be used to create sites that are accessibile to those using <abbr title="Assistive Technology" class="initialism">AT</abbr>.</p>
 
-    <p>If your navigation contains many links and comes before your main content in the DOM, add a <code>Skip to content</code> link immediately after your opening <code>body</code> tag. <a href="http://a11yproject.com/posts/skip-nav-links/">(read why)</a></p>
-
+    <h3>Skip navigation</h3>
+    <p>If your navigation contains many links and comes before the main content in the DOM, add a <code>Skip to content</code> link immediately after your opening <code>&lt;body&gt;</code> tag. <a href="http://a11yproject.com/posts/skip-nav-links/">(read why)</a></p>
 {% highlight html %}
 <body>
   <a href="#content" class="sr-only">Skip to content</a>
-  ...
   <div class="container" id="content">
     The main page content.
   </div>
-  ...
 </body>
 {% endhighlight %}
 
-    <p>Another "gotcha" has to do with how you nest your <code>header</code> elements. <a href="http://squizlabs.github.io/HTML_CodeSniffer/Standards/Section508/">Section 508</a> states that your largest header must be an <code>h1</code>, and the next header must be an <code>h2</code>, etc. This is hard to achieve in practice, but if the largest header on your site is smaller than Bootstrap's default 38px, you should consider modifying your stylesheets before using a smaller header element.</p>
+    <h3>Nested headers</h3>
+    <p>Another "gotcha" has to do with how you nest your <code>&lt;header&gt;</code> elements. <a href="http://squizlabs.github.io/HTML_CodeSniffer/Standards/Section508/">Section 508</a> states that your largest header must be an <code>h1</code>, and the next header must be an <code>&lt;h2&gt;</code>, etc. This is hard to achieve in practice, but if the largest header on your site is smaller than Bootstrap's default 38px, you should consider modifying your stylesheets before using a smaller header element.</p>
 
-    <h4>Resources</h4>
+    <h3>Additional resources</h3>
     <ul>
       <li><a href="https://github.com/squizlabs/HTML_CodeSniffer">"HTML Codesniffer" bookmarklet for identifying accessibility issues</a></li>
       <li><a href="http://a11yproject.com/">The A11Y Project</a></li>
       <li><a href="https://developer.mozilla.org/en-US/docs/Accessibility">MDN accessibility documentation</a></li>
     </ul>
   </div>
-
 
 
 
