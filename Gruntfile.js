@@ -146,10 +146,19 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   // grunt.loadNpmTasks('grunt-recess');
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('browserstack-runner');
 
 
   // Test task.
-  grunt.registerTask('test', ['jshint', 'qunit']);
+  var testSubtasks = ['jshint', 'qunit'];
+  // Only run BrowserStack tests under Travis
+  if (process.env.TRAVIS) {
+    // Only run BrowserStack tests if you are twbs or have your own BrowserStack key
+    if (process.env.TRAVIS_REPO_SLUG === 'twbs/bootstrap' || process.env.TWBS_HAVE_OWN_BROWSERSTACK_KEY) {
+      testSubtasks.push('browserstack_runner');
+    }
+  }
+  grunt.registerTask('test', testSubtasks);
 
   // JS distribution task.
   grunt.registerTask('dist-js', ['concat', 'uglify']);

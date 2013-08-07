@@ -27,5 +27,6 @@
     , "grunt-contrib-watch": "~0.5.1"
     , "grunt-recess": "~0.3.3"
     , "grunt-contrib-sass": "~0.4.1"
+    , "browserstack-runner": "~0.0.11"
   }
 }

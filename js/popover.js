@@ -81,7 +81,7 @@
             o.content)
   }
 
-  Popover.prototype.arrow =function () {
+  Popover.prototype.arrow = function () {
     return this.$arrow = this.$arrow || this.tip().find('.arrow')
   }
 

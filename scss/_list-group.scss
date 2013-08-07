@@ -37,6 +37,9 @@
     float: right;
     margin-right: -15px;
   }
+  > .badge + .badge {
+    margin-right: 0;
+  }
 }
 
 // Custom content options
