@@ -132,8 +132,8 @@ module.exports = function(grunt) {
   var testSubtasks = ['jshint', 'qunit'];
   // Only run BrowserStack tests under Travis
   if (process.env.TRAVIS) {
-    // Only run BrowserStack tests if you are twbs or have your own BrowserStack key
-    if (process.env.TRAVIS_REPO_SLUG === 'twbs/bootstrap' || process.env.TWBS_HAVE_OWN_BROWSERSTACK_KEY) {
+    // Only run BrowserStack tests if this is a mainline commit in twbs/bootstrap, or you have your own BrowserStack key
+    if ((process.env.TRAVIS_REPO_SLUG === 'twbs/bootstrap' && process.env.TRAVIS_PULL_REQUEST === 'false') || process.env.TWBS_HAVE_OWN_BROWSERSTACK_KEY) {
       testSubtasks.push('browserstack_runner');
     }
   }
