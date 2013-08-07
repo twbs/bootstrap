@@ -130,8 +130,12 @@ module.exports = function(grunt) {
 
   // Test task.
   var testSubtasks = ['jshint', 'qunit'];
+  // Only run BrowserStack tests under Travis
   if (process.env.TRAVIS) {
-    testSubtasks.push('browserstack_runner');
+    // Only run BrowserStack tests if you are twbs or have your own BrowserStack key
+    if (process.env.TRAVIS_REPO_SLUG === 'twbs/bootstrap' || process.env.TWBS_HAVE_OWN_BROWSERSTACK_KEY) {
+      testSubtasks.push('browserstack_runner');
+    }
   }
   grunt.registerTask('test', testSubtasks);
 
