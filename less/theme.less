@@ -30,7 +30,7 @@
 }
 
 // Apply the mixin to the buttons
-.btn-default { .btn-styles(@btn-default-bg); }
+.btn-default { .btn-styles(@btn-default-bg); text-shadow: 0 1px 0 #fff; border-color: #ccc; }
 .btn-primary { .btn-styles(@btn-primary-bg); }
 .btn-success { .btn-styles(@btn-success-bg); }
 .btn-warning { .btn-styles(@btn-warning-bg); }
@@ -47,9 +47,17 @@
 // Basic navbar
 .navbar {
   #gradient > .vertical(@start-color: lighten(@navbar-bg, 10%); @end-color: @navbar-bg;);
+
+  .navbar-nav > .active > a {
+    background-color: @navbar-bg;
+  }
 }
 
 // Inverted navbar
 .navbar-inverse {
   #gradient > .vertical(@start-color: lighten(@navbar-inverse-bg, 10%); @end-color: @navbar-inverse-bg;);
+
+  .navbar-nav > .active > a {
+    background-color: @navbar-inverse-bg;
+  }
 }

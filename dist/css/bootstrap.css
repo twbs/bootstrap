@@ -4875,12 +4875,14 @@ td.visible-print {
 
 .btn-default {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 0 #fff;
   background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ffffff), to(#e6e6e6));
   background-image: -webkit-linear-gradient(top, #ffffff, 0%, #e6e6e6, 100%);
   background-image: -moz-linear-gradient(top, #ffffff 0%, #e6e6e6 100%);
   background-image: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 100%);
   background-repeat: repeat-x;
   border-color: #e0e0e0;
+  border-color: #ccc;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -5008,6 +5010,10 @@ td.visible-print {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffeeeeee', GradientType=0);
 }
 
+.navbar .navbar-nav > .active > a {
+  background-color: #eeeeee;
+}
+
 .navbar-inverse {
   background-image: -webkit-gradient(linear, left 0%, left 100%, from(#3c3c3c), to(#222222));
   background-image: -webkit-linear-gradient(top, #3c3c3c, 0%, #222222, 100%);
@@ -5015,4 +5021,8 @@ td.visible-print {
   background-image: linear-gradient(to bottom, #3c3c3c 0%, #222222 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3c3c3c', endColorstr='#ff222222', GradientType=0);
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+  background-color: #222222;
 }
