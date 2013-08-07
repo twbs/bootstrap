@@ -35,11 +35,11 @@
   margin: 0; // reset heading margin
   padding: 8px 14px;
   font-size: @font-size-base;
-  font-weight: normal;
-  line-height: 18px;
+  font-weight: @popover-title-font-weight;
+  line-height: @popover-title-line-height;
   background-color: @popover-title-bg;
   border-bottom: 1px solid darken(@popover-title-bg, 5%);
-  border-radius: 5px 5px 0 0;
+  border-radius: @border-radius-base @border-radius-base 0 0;
 }
 
 .popover-content {
