@@ -130,7 +130,15 @@ input[type="number"] {
   .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 
   // Customize the `:focus` state to imitate native WebKit styles.
-  .form-control-focus();
+  &:focus {
+    .form-control-focus();
+  }
+
+  // HTML5 invalid states
+  &:invalid,
+  &:focus:invalid {
+    .form-control-focus(@brand-danger);
+  }
 
   // Disabled and read-only inputs
   // Note: HTML5 says that inputs under a fieldset > legend:first-child won't be
@@ -148,7 +156,6 @@ input[type="number"] {
     height: auto;
   }
 }
-
 
 // Form groups
 //
