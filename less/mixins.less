@@ -396,12 +396,18 @@
 
 // Labels
 // -------------------------
-.label-variant(@color) {
-  background-color: @color;
+// Mixin overload to allow users to call it without providing the second parameter
+.label-variant(@background) {
+  @link-hover-color: darken(@background, 10%);
+  .label-variant(@background; @link-hover-color);
+}
+
+.label-variant(@background; @link-hover-color) {
+  background-color: @background;
   &[href] {
     &:hover,
     &:focus {
-      background-color: darken(@color, 10%);
+      background-color: @link-hover-color;
     }
   }
 }
