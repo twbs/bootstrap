@@ -34,6 +34,7 @@ module.exports = function(grunt) {
         src: ['js/tests/unit/*.js']
       }
     },
+
     concat: {
       options: {
         banner: '<%= banner %><%= jqueryCheck %>',
@@ -57,6 +58,7 @@ module.exports = function(grunt) {
         dest: 'dist/js/<%= pkg.name %>.js'
       }
     },
+
     uglify: {
       options: {
         banner: '<%= banner %>'
@@ -90,6 +92,7 @@ module.exports = function(grunt) {
       },
       files: ['js/tests/*.html']
     },
+
     connect: {
       server: {
         options: {
@@ -141,4 +144,25 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', ['test', 'dist']);
+
+  // task for building customizer
+  grunt.registerTask('build-customizer', 'Add scripts/less files to customizer.', function () {
+    var fs = require('fs')
+
+    function getFiles(type) {
+      var files = {}
+      fs.readdirSync(type)
+        .filter(function (path) {
+          return new RegExp('\\.' + type + '$').test(path)
+        })
+        .forEach(function (path) {
+          return files[path] = fs.readFileSync(type + '/' + path, 'utf8')
+        })
+      return 'var __' + type + ' = ' + JSON.stringify(files) + '\n'
+    }
+
+    var customize = fs.readFileSync('customize.html', 'utf-8')
+    var files = '<!-- generated -->\n<script id="files">\n' + getFiles('js') + getFiles('less') + '<\/script>\n<!-- /generated -->'
+    fs.writeFileSync('customize.html', customize.replace(/<!-- generated -->(.|[\n\r])*<!-- \/generated -->/, files))
+  });
 };
