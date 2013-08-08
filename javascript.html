@@ -196,7 +196,7 @@ $('#myModal').on('show.bs.modal', function (e) {
   <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Launch demo modal</a>
 
   <!-- Modal -->
-  <div class="modal fade" id="myModal">
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -214,6 +214,17 @@ $('#myModal').on('show.bs.modal', function (e) {
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 {% endhighlight %}
+
+
+    <div class="bs-callout bs-callout-warning">
+      <h4>Make modals accessible</h4>
+      <p>
+        Be sure to add <code>role="dialog"</code> to your primary modal div. In the example above, <code>div#myModal</code>.<br>
+        Also, the <code>aria-labelledby</code> attribute references your modal title. In this example, <code>h4#myModalLabel</code>.<br>
+        Finally, <code>aria-hidden="true"</code> tells assistive technologies to skip DOM elements.<br>
+        Additionally, you may give a description of your modal dialog. Use the <code>aria-describedby</code> attribute in the modal's primary <code>&lt;div&gt;</code> to point to this description (this is not shown in the above example).
+      </p>
+    </div>
 
     <h2 id="modals-usage">Usage</h2>
 
@@ -344,10 +355,11 @@ $('#myModal').on('hidden.bs.modal', function () {
 
     <h3>Within a navbar</h3>
     <div class="bs-example">
-      <div id="navbar-example" class="navbar navbar-static">
+      <div id="navbar-example" class="navbar navbar-static" role="navigation">
         <div class="container" style="width: auto;">
           <a class="navbar-brand" href="#">Project Name</a>
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-js-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -481,7 +493,7 @@ $('.dropdown-toggle').dropdown()
     <h2 id="scrollspy-examples">Example in navbar</h2>
     <p>The ScrollSpy plugin is for automatically updating nav targets based on scroll position. Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.</p>
     <div class="bs-example">
-      <div id="navbar-example2" class="navbar navbar-static">
+      <div id="navbar-example2" class="navbar navbar-static" role="navigation">
         <div class="navbar-inner">
           <div class="container" style="width: auto;">
             <a class="navbar-brand" href="#">Project Name</a>
@@ -531,7 +543,7 @@ $('.dropdown-toggle').dropdown()
     <h3>Via JavaScript</h3>
     <p>Call the scrollspy via JavaScript:</p>
 {% highlight js %}
-$('#navbar-example').scrollspy(options)
+$('body').scrollspy({ target: '#navbar-example' })
 {% endhighlight %}
 
     <div class="bs-callout bs-callout-danger">
@@ -963,16 +975,16 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
     <h4>Four directions</h4>
     <div class="bs-example tooltip-demo">
       <div class="bs-example-tooltips">
-        <button type="button" class="btn btn-default" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
           Popover on left
         </button>
-        <button type="button" class="btn btn-default" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
           Popover on top
         </button>
-        <button type="button" class="btn btn-default" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
           Popover on bottom
         </button>
-        <button type="button" class="btn btn-default" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
           Popover on right
         </button>
       </div>
@@ -1671,6 +1683,10 @@ $('#myCollapsible').on('hidden.bs.collapse', function () {
 </div>
 {% endhighlight %}
 
+<div class="bs-callout bs-callout-danger">
+  <h4>Accessibility issue</h4>
+  <p>The carousel component is generally not compliant with accessibility standards. If you need to be compliant, please consider other options for presenting your content.</p>
+</div>
 
     <h2 id="carousel-usage">Usage</h2>
 

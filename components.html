@@ -102,7 +102,7 @@ base_url: "../"
     <div class="page-header">
       <h1 id="btn-groups">Button groups</h1>
     </div>
-    <p class="lead">Group a series of buttons together on a single line with the button group. Add on optional JavaScript radio and checkbox style behavior with <a href="../javascript/#js-buttons">our buttons plugin</a>.</p>
+    <p class="lead">Group a series of buttons together on a single line with the button group. Add on optional JavaScript radio and checkbox style behavior with <a href="../javascript/#buttons">our buttons plugin</a>.</p>
 
     <div class="bs-callout bs-callout-info">
       <h4>Tooltips &amp; popovers in button groups require special setting</h4>
@@ -1020,7 +1020,7 @@ base_url: "../"
     <h2 id="navbar-basic">Basic navbar</h2>
     <p>To start, navbars are static (not fixed to the top) and include support for a project name and basic navigation. Place one anywhere within a <code>.container</code>, which sets the width of your site and content.</p>
     <div class="bs-example">
-      <div class="navbar">
+      <div class="navbar" role="navigation">
         <a class="navbar-brand" href="#">Title</a>
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
@@ -1030,7 +1030,7 @@ base_url: "../"
       </div>
     </div><!-- /example -->
 {% highlight html %}
-<div class="navbar">
+<div class="navbar" role="navigation">
   <a class="navbar-brand" href="#">Title</a>
   <ul class="nav navbar-nav">
     <li class="active"><a href="#">Home</a></li>
@@ -1039,13 +1039,17 @@ base_url: "../"
   </ul>
 </div>
 {% endhighlight %}
+<div class="bs-callout bs-callout-warning">
+  <h4>Make navbars accessible</h4>
+  <p>Be sure to add a <code>role="navigation"</code> to every navbar to help with accessibility.</p>
+</div>
 
     <h2>Navbar components</h2>
 
     <h3 id="navbar-brand">Brand</h3>
     <p>A simple link to show your brand or project name only requires an anchor tag.</p>
     <div class="bs-example">
-      <div class="navbar">
+      <div class="navbar" role="navigation">
         <a class="navbar-brand" href="#">Title</a>
       </div>
     </div><!-- /example -->
@@ -1056,7 +1060,7 @@ base_url: "../"
     <h3 id="navbar-nav">Nav links</h3>
     <p>Nav items are simple to add via unordered lists.</p>
     <div class="bs-example">
-      <div class="navbar">
+      <div class="navbar" role="navigation">
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">Link</a></li>
@@ -1076,14 +1080,14 @@ base_url: "../"
     <p>To properly style and position a form within the navbar, add the appropriate classes as shown below. For a default form, include <code>.navbar-form</code> and either <code>.pull-left</code> or <code>.pull-right</code> to properly align it.</p>
     <div class="bs-example">
 
-      <div class="navbar">
+      <div class="navbar" role="navigation">
         <form class="navbar-form pull-left">
           <input type="text" class="form-control" style="width: 200px;">
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
       </div>
 
-      <div class="navbar">
+      <div class="navbar" role="navigation">
         <form class="navbar-form pull-left">
           <select name="" id="" class="form-control" style="width: 200px;">
             <option value="1">1</option>
@@ -1095,7 +1099,7 @@ base_url: "../"
         </form>
       </div>
 
-      <div class="navbar">
+      <div class="navbar" role="navigation">
         <form class="navbar-form pull-left">
           <input type="text" class="form-control" style="width: 200px;">
           <input type="checkbox">
@@ -1103,7 +1107,7 @@ base_url: "../"
         </form>
       </div>
 
-      <div class="navbar">
+      <div class="navbar" role="navigation">
         <form class="navbar-form pull-left">
           <input type="text" class="form-control" style="width: 200px;">
           <label class="checkbox-inline">
@@ -1124,7 +1128,7 @@ base_url: "../"
     <h3 id="navbar-buttons">Buttons</h3>
     <p>For buttons not residing in a <code>&lt;form&gt;</code>, add this class to vertically center buttons within a navbar.</p>
     <div class="bs-example">
-      <div class="navbar">
+      <div class="navbar" role="navigation">
         <a href="#" class="navbar-brand">Brand</a>
         <button type="button" class="btn btn-default navbar-btn">Sign in</button>
       </div>
@@ -1136,13 +1140,13 @@ base_url: "../"
     <h3 id="navbar-text">Text</h3>
     <p>Wrap strings of text in an element with <code>.navbar-text</code>, usually on a <code>&lt;p&gt;</code> tag for proper leading and color.</p>
     <div class="bs-example">
-      <div class="navbar">
+      <div class="navbar" role="navigation">
         <a href="#" class="navbar-brand">Brand</a>
         <p class="navbar-text">Signed in as Mark Otto</p>
       </div>
     </div>
 {% highlight html %}
-<div class="navbar">
+<div class="navbar" role="navigation">
   <a href="#" class="navbar-brand">Brand</a>
   <p class="navbar-text">Signed in as Mark Otto</p>
 </div>
@@ -1151,13 +1155,13 @@ base_url: "../"
     <h3 id="navbar-links">Links</h3>
     <p>For folks using standard links that are not within the regular navbar navigation component, use the <code>.navbar-link</code> class to add the proper colors for the default and inverse navbar options.</p>
     <div class="bs-example">
-      <div class="navbar">
+      <div class="navbar" role="navigation">
         <a href="#" class="navbar-brand">Brand</a>
         <p class="navbar-text pull-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
       </div>
     </div>
 {% highlight html %}
-<div class="navbar">
+<div class="navbar" role="navigation">
   <a href="#" class="navbar-brand">Brand</a>
   <p class="navbar-text pull-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
 </div>
@@ -1185,7 +1189,7 @@ base_url: "../"
       </div>
     </div><!-- /example -->
 {% highlight html %}
-<div class="navbar navbar-fixed-top">
+<div class="navbar navbar-fixed-top" role="navigation">
   ...
 </div>
 {% endhighlight %}
@@ -1202,7 +1206,7 @@ body { padding-top: 70px; }
     <h3 id="navbar-fixed-bottom">Fixed to bottom</h3>
     <p>Add <code>.navbar-fixed-bottom</code> instead.</p>
     <div class="bs-example bs-navbar-bottom-example">
-      <div class="navbar navbar-fixed-bottom">
+      <div class="navbar navbar-fixed-bottom" role="navigation">
         <div class="container" style="width: auto;">
           <a class="navbar-brand" href="#">Title</a>
           <ul class="nav navbar-nav">
@@ -1214,7 +1218,7 @@ body { padding-top: 70px; }
       </div>
     </div><!-- /example -->
 {% highlight html %}
-<div class="navbar navbar-fixed-bottom">
+<div class="navbar navbar-fixed-bottom" role="navigation">
   ...
 </div>
 {% endhighlight %}
@@ -1231,7 +1235,7 @@ body { padding-bottom: 70px; }
     <h3 id="navbar-static-top">Static top navbar</h3>
     <p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.navbar-fixed-*</code> classes, you do not need to change any padding on the <code>body</code>.</p>
     <div class="bs-example bs-navbar-top-example">
-      <div class="navbar navbar-static-top" style="margin: -1px -1px 0;">
+      <div class="navbar navbar-static-top" role="navigation" style="margin: -1px -1px 0;">
         <div class="container" style="width: auto;">
           <a class="navbar-brand" href="#">Title</a>
           <ul class="nav navbar-nav">
@@ -1243,7 +1247,7 @@ body { padding-bottom: 70px; }
       </div>
     </div><!-- /example -->
 {% highlight html %}
-<div class="navbar navbar-static-top">
+<div class="navbar navbar-static-top" role="navigation">
   ...
 </div>
 {% endhighlight %}
@@ -1252,9 +1256,10 @@ body { padding-bottom: 70px; }
     <h2 id="navbar-responsive">Responsive navbar</h2>
     <p>To implement a collapsing responsive navbar, wrap your navbar content in a containing div, <code>.nav-collapse.collapse</code>, and add the navbar toggle button, <code>.navbar-toggle</code>.</p>
     <div class="bs-example">
-      <div class="navbar">
+      <div class="navbar" role="navigation">
         <div class="container">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -1299,11 +1304,12 @@ body { padding-bottom: 70px; }
       </div><!-- /.navbar -->
     </div><!-- /example -->
 {% highlight html %}
-<div class="navbar">
+<div class="navbar" role="navigation">
   <div class="container">
 
     <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
@@ -1312,7 +1318,7 @@ body { padding-bottom: 70px; }
     <!-- Be sure to leave the brand out there if you want it shown -->
     <a class="navbar-brand" href="#">Title</a>
 
-    <!-- Place everything within .navbar-collapse to hide it until above 768px -->
+    <!-- Place everything within .nav-collapse to hide it until above 768px -->
     <div class="nav-collapse collapse navbar-responsive-collapse">
       ...
     </div><!-- /.nav-collapse -->
@@ -1371,7 +1377,7 @@ body { padding-bottom: 70px; }
     <h2 id="navbar-inverted">Inverted variation</h2>
     <p>Modify the look of the navbar by adding <code>.navbar-inverse</code>.</p>
     <div class="bs-example">
-      <div class="navbar navbar-inverse">
+      <div class="navbar navbar-inverse" role="navigation">
         <div class="container">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
             <span class="icon-bar"></span>
@@ -1418,7 +1424,7 @@ body { padding-bottom: 70px; }
       </div><!-- /.navbar -->
     </div><!-- /example -->
 {% highlight html %}
-<div class="navbar navbar-inverse">
+<div class="navbar navbar-inverse" role="navigation">
   ...
 </div>
 {% endhighlight %}
@@ -1498,7 +1504,7 @@ body { padding-bottom: 70px; }
     <div class="bs-example">
       <ul class="pagination">
         <li class="disabled"><a href="#">&laquo;</a></li>
-        <li class="active"><a href="#">1</a></li>
+        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
         <li><a href="#">2</a></li>
         <li><a href="#">3</a></li>
         <li><a href="#">4</a></li>
@@ -1509,7 +1515,7 @@ body { padding-bottom: 70px; }
 {% highlight html %}
 <ul class="pagination">
   <li class="disabled"><a href="#">&laquo;</a></li>
-  <li class="active"><a href="#">1</a></li>
+  <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
   ...
 </ul>
 {% endhighlight %}
@@ -1517,7 +1523,7 @@ body { padding-bottom: 70px; }
 {% highlight html %}
 <ul class="pagination">
   <li class="disabled"><span>&laquo;</span></li>
-  <li class="active"><span>1</span></li>
+  <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
   ...
 </ul>
 {% endhighlight %}
@@ -1964,12 +1970,12 @@ body { padding-bottom: 70px; }
     <p>Default progress bar with a vertical gradient.</p>
     <div class="bs-example">
       <div class="progress">
-        <div class="progress-bar" style="width: 60%;"></div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="sr-only">60% Complete</span></div>
       </div>
     </div>
 {% highlight html %}
 <div class="progress">
-  <div class="progress-bar" style="width: 60%;"></div>
+  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="sr-only">60% Complete</span></div>
 </div>
 {% endhighlight %}
 
@@ -1977,30 +1983,38 @@ body { padding-bottom: 70px; }
     <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
     <div class="bs-example">
       <div class="progress" style="margin-bottom: 9px;">
-        <div class="progress-bar progress-bar-info" style="width: 20%"></div>
+        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"><span class="sr-only">20% Complete</span></div>
       </div>
       <div class="progress" style="margin-bottom: 9px;">
-        <div class="progress-bar progress-bar-success" style="width: 40%"></div>
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span></div>
       </div>
       <div class="progress" style="margin-bottom: 9px;">
-        <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
+        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete (warning)</span></div>
       </div>
       <div class="progress">
-        <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
+        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"><span class="sr-only">80% Complete (danger)</span></div>
       </div>
     </div>
 {% highlight html %}
 <div class="progress">
-  <div class="progress-bar progress-bar-info" style="width: 20%"></div>
+  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+    <span class="sr-only">20% Complete</span>
+  </div>
 </div>
 <div class="progress">
-  <div class="progress-bar progress-bar-success" style="width: 40%"></div>
+  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+    <span class="sr-only">40% Complete (success)</span>
+  </div>
 </div>
 <div class="progress">
-  <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
+  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+    <span class="sr-only">60% Complete (warning)</span>
+  </div>
 </div>
 <div class="progress">
-  <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
+  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+    <span class="sr-only">80% Complete</span>
+  </div>
 </div>
 {% endhighlight %}
 
@@ -2008,30 +2022,38 @@ body { padding-bottom: 70px; }
     <p>Uses a gradient to create a striped effect. Not available in IE8.</p>
     <div class="bs-example">
       <div class="progress progress-striped" style="margin-bottom: 9px;">
-        <div class="progress-bar progress-bar-info" style="width: 20%"></div>
+        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"><span class="sr-only">20% Complete</span></div>
       </div>
       <div class="progress progress-striped" style="margin-bottom: 9px;">
-        <div class="progress-bar progress-bar-success" style="width: 40%"></div>
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span></div>
       </div>
       <div class="progress progress-striped" style="margin-bottom: 9px;">
-        <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
+        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete (warning)</span></div>
       </div>
       <div class="progress progress-striped">
-        <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
+        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"><span class="sr-only">80% Complete (danger)</span></div>
       </div>
     </div>
 {% highlight html %}
 <div class="progress progress-striped">
-  <div class="progress-bar progress-bar-info" style="width: 20%"></div>
+  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+    <span class="sr-only">20% Complete</span>
+  </div>
 </div>
 <div class="progress progress-striped">
-  <div class="progress-bar progress-bar-success" style="width: 40%"></div>
+  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+    <span class="sr-only">40% Complete (success)</span>
+  </div>
 </div>
 <div class="progress progress-striped">
-  <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
+  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+    <span class="sr-only">60% Complete (warning)</span>
+  </div>
 </div>
 <div class="progress progress-striped">
-  <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
+  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+    <span class="sr-only">80% Complete (danger)</span>
+  </div>
 </div>
 {% endhighlight %}
 
@@ -2039,12 +2061,14 @@ body { padding-bottom: 70px; }
     <p>Add <code>.active</code> to <code>.progress-striped</code> to animate the stripes right to left. Not available in all versions of IE.</p>
     <div class="bs-example">
       <div class="progress progress-striped active">
-        <div class="progress-bar" style="width: 45%"></div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%"><span class="sr-only">45% Complete</span></div>
       </div>
     </div>
 {% highlight html %}
 <div class="progress progress-striped active">
-  <div class="progress-bar" style="width: 45%"></div>
+  <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+    <span class='sr-only'>45% Complete</span>
+  </div>
 </div>
 {% endhighlight %}
 
@@ -2052,16 +2076,16 @@ body { padding-bottom: 70px; }
     <p>Place multiple bars into the same <code>.progress</code> to stack them.</p>
     <div class="bs-example">
       <div class="progress">
-        <div class="progress-bar progress-bar-success" style="width: 35%"></div>
-        <div class="progress-bar progress-bar-warning" style="width: 20%"></div>
-        <div class="progress-bar progress-bar-danger" style="width: 10%"></div>
+        <div class="progress-bar progress-bar-success" style="width: 35%"><span class="sr-only">35% Complete (success)</span></div>
+        <div class="progress-bar progress-bar-warning" style="width: 20%"><span class="sr-only">20% Complete (warning)</span></div>
+        <div class="progress-bar progress-bar-danger" style="width: 10%"><span class='sr-only'>10% Complete (danger)</span></div>
       </div>
     </div>
 {% highlight html %}
 <div class="progress">
-  <div class="progress-bar progress-bar-success" style="width: 35%"></div>
-  <div class="progress-bar progress-bar-warning" style="width: 20%"></div>
-  <div class="progress-bar progress-bar-danger" style="width: 10%"></div>
+  <div class="progress-bar progress-bar-success" style="width: 35%"><span class="sr-only">35% Complete (success)</span></div>
+  <div class="progress-bar progress-bar-warning" style="width: 20%"><span class="sr-only">20% Complete (warning)</span></div>
+  <div class="progress-bar progress-bar-danger" style="width: 10%"><span class="sr-only">10% Complete (danger)</span></div>
 </div>
 {% endhighlight %}
   </div>

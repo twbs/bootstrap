@@ -64,42 +64,17 @@
 
 // Contextual variations
 .panel-primary {
-  border-color: @panel-primary-border;
-  .panel-heading {
-    color: @panel-primary-text;
-    background-color: @panel-primary-heading-bg;
-    border-color: @panel-primary-border;
-  }
+  .panel-variant(@panel-primary-border; @panel-primary-text; @panel-primary-heading-bg; @panel-primary-border);
 }
 .panel-success {
-  border-color: @panel-success-border;
-  .panel-heading {
-    color: @panel-success-text;
-    background-color: @panel-success-heading-bg;
-    border-color: @panel-success-border;
-  }
+  .panel-variant(@panel-success-border; @panel-success-text; @panel-success-heading-bg; @panel-success-border);
 }
 .panel-warning {
-  border-color: @panel-warning-border;
-  .panel-heading {
-    color: @panel-warning-text;
-    background-color: @panel-warning-heading-bg;
-    border-color: @panel-warning-border;
-  }
+  .panel-variant(@panel-warning-border; @panel-warning-text; @panel-warning-heading-bg; @panel-warning-border);
 }
 .panel-danger {
-  border-color: @panel-danger-border;
-  .panel-heading {
-    color: @panel-danger-text;
-    background-color: @panel-danger-heading-bg;
-    border-color: @panel-danger-border;
-  }
+  .panel-variant(@panel-danger-border; @panel-danger-text; @panel-danger-heading-bg; @panel-danger-border);
 }
 .panel-info {
-  border-color: @panel-info-border;
-  .panel-heading {
-    color: @panel-info-text;
-    background-color: @panel-info-heading-bg;
-    border-color: @panel-info-border;
-  }
+  .panel-variant(@panel-info-border; @panel-info-text; @panel-info-heading-bg; @panel-info-border);
 }
