@@ -1465,7 +1465,7 @@ var __less = {"accordion.less":"//\n// Accordion\n// ---------------------------
 window.onload = function () { // wait for load in a dumb way because B-0
   var cw = '/*!\n * Bootstrap v3.0.0-rc.2\n *\n * Copyright 2013 Twitter, Inc\n * Licensed under the Apache License v2.0\n * http://www.apache.org/licenses/LICENSE-2.0\n *\n * Designed and built with all the love in the world @twitter by @mdo and @fat.\n */\n\n'
 
-  function generateZip(css, js) {
+  function generateZip(css, js, complete) {
     if (!css && !js) return alert('you want to build nothing… o_O')
 
     var zip = new JSZip()
@@ -1487,6 +1487,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
     var content = zip.generate()
 
     location.href = 'data:application/zip;base64,' + content
+
+    complete()
   }
 
   function generateCustomCSS(vars) {
@@ -1558,9 +1560,12 @@ window.onload = function () { // wait for load in a dumb way because B-0
     }
   }
 
-  $('#btn-download').on('click', function (e) {
+  var $downloadBtn = $('#btn-download').on('click', function (e) {
     e.preventDefault()
-    generateZip(generateCSS(), generateJavascript())
+    $downloadBtn.addClass('loading')
+    generateZip(generateCSS(), generateJavascript(), function () {
+      $downloadBtn.removeClass('loading')
+    })
   })
 
   var inputsComponent = $('#less-section input')
