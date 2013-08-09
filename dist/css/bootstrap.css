@@ -2231,8 +2231,8 @@ a.list-group-item.active .list-group-item-text {
   padding: 10px 15px;
   background-color: whitesmoke;
   border-bottom: 1px solid #dddddd;
-  border-top-left-radius: 3px;
   border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
 }
 
 .panel-title {
@@ -2250,8 +2250,8 @@ a.list-group-item.active .list-group-item-text {
   padding: 10px 15px;
   background-color: whitesmoke;
   border-top: 1px solid #dddddd;
-  border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .panel-primary {
@@ -2674,13 +2674,13 @@ button.close {
 
 .navbar-nav > li > .dropdown-menu {
   margin-top: 0;
-  border-top-left-radius: 0;
   border-top-right-radius: 0;
+  border-top-left-radius: 0;
 }
 
 .navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {
-  border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .navbar-nav > .dropdown > a:hover .caret,
@@ -3379,8 +3379,8 @@ button.close {
   padding: 1px;
   text-align: left;
   background-color: white;
-  -webkit-bg-clip: padding-box;
-  -moz-bg-clip: padding;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
   background-clip: padding-box;
   border: 1px solid #cccccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
