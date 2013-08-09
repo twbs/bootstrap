@@ -19,8 +19,6 @@ base_url: "../"
     <p class="lead">The fastest way to get started is to get the compiled and minified versions of our CSS and JavaScript. No documentation or original source files are included.</p>
     <p><a class="btn btn-lg btn-primary" href="{{ site.download_dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a></p>
 
-    <hr>
-
     <h3 id="download-options">More download options</h3>
     <div class="bs-docs-dl-options">
       <h4>
@@ -37,8 +35,6 @@ base_url: "../"
       <p>Install and manage the original files for all CSS and JavaScript, along with a local copy of the docs, using <a href="http://bower.io">Bower</a>.</p>
       {% highlight bash %}$ bower install bootstrap{% endhighlight %}
     </div>
-
-    <hr>
 
     <h3 id="download-cdn">Use the Bootstrap CDN</h3>
     <p>The folks over at <a href="https://www.netdna.com/">NetDNA</a> have graciously provided CDN support for Bootstrap's CSS and JavaScript. To use, swap your local instances for the <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links listed below.</p>
@@ -77,7 +73,7 @@ bootstrap/
 │   ├── bootstrap.min.js
 {% endhighlight %}
 
-    <p>This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). The image files are compressed using <a href="http://imageoptim.com/">ImageOptim</a>, a Mac app for compressing PNGs.</p>
+    <p>This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>).</p>
     <div class="bs-callout bs-callout-danger">
       <h4>jQuery required</h4>
       <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included, as shown in the <a href="#template">starter template</a>.</p>
@@ -112,7 +108,7 @@ bootstrap/
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 
-    <!-- Optionally enable responsive features in IE8. Respond.js can be obtained from https://github.com/scottjehl/Respond -->
+    <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
     <script src="js/respond.js"></script>
   </body>
 </html>
@@ -124,11 +120,11 @@ bootstrap/
 
 
 
-  <!-- Browser compatibility
+  <!-- Browser support
   ================================================== -->
   <div class="bs-docs-section">
     <div class="page-header">
-      <h1 id="browsers">Browser compatibility</h1>
+      <h1 id="browsers">Browser support</h1>
     </div>
     <p class="lead">Bootstrap is built to work best in the latest desktop and mobile browsers, meaning older and less advanced browsers might receive a less stylized, though fully functional, version of certain components.</p>
 
@@ -153,6 +149,91 @@ bootstrap/
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 {% endhighlight %}
     <p>See <a href="http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge">this StackOverflow question</a> for more information.</p>
+
+    <h3>Windows Phone 8 and Internet Explorer 10</h3>
+    <p>Internet Explorer 10 doesn't differentiate device width from viewport width, and thus doesn't properly apply the media queries in Bootstrap's CSS. To address this, you can optionally include the following CSS and JavaScript to work around this problem until Microsoft issues a fix.</p>
+{% highlight css %}
+@-webkit-viewport   { width: device-width; }
+@-moz-viewport      { width: device-width; }
+@-ms-viewport       { width: device-width; }
+@-o-viewport        { width: device-width; }
+@viewport           { width: device-width; }
+{% endhighlight %}
+
+{% highlight js %}
+if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+  var msViewportStyle = document.createElement("style");
+  msViewportStyle.appendChild(
+    document.createTextNode(
+      "@-ms-viewport{width:auto!important}"
+    )
+  );
+  document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+}
+{% endhighlight %}
+    <p>For more information and usage guidelines, read <a href="http://timkadlec.com/2013/01/windows-phone-8-and-device-width/">Windows Phone 8 and Device-Width</a>.</p>
+  </div>
+
+
+
+  <!-- Third party support
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="third-parties">Third party support</h1>
+    </div>
+    <p class="lead">While we don't officially support any third party plugins or add-ons, we do offer some helpful advice to help avoid potential issues in your projects.</p>
+
+    <h3>Google Maps</h3>
+    <p>If you're using Google Maps on a Bootstrapped project, you might run into some display problems due to our use of <code>* { box-sizing: border-box; }</code>. Previously, you may have also ran into issues with the use of <code>max-width</code> on images. The following snippet should avoid all those problems.</p>
+{% highlight css %}
+/* Fix Google Maps canvas
+ *
+ * Wrap your Google Maps embed in a `.google-map-canvas` to reset Bootstrap's
+ * global `box-sizing` changes. You may optionally need to reset the `max-width`
+ * on images in case you've applied that anywhere else. (That shouldn't be as
+ * necessary with Bootstrap 3 though as that behavior is relegated to the
+ * `.img-responsive` class.)
+ */
+
+.google-map-canvas,
+.google-map-canvas * { .box-sizing(content-box); }
+
+/* Optional responsive image override */
+img { max-width: none; }
+{% endhighlight %}
+  </div>
+
+
+
+  <!-- Accessibility
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="accessibility">Accessibility</h1>
+    </div>
+    <p class="lead">Bootstrap follows common web standards, and with minimal extra effort, can be used to create sites that are accessibile to those using <abbr title="Assistive Technology" class="initialism">AT</abbr>.</p>
+
+    <h3>Skip navigation</h3>
+    <p>If your navigation contains many links and comes before the main content in the DOM, add a <code>Skip to content</code> link immediately after your opening <code>&lt;body&gt;</code> tag. <a href="http://a11yproject.com/posts/skip-nav-links/">(read why)</a></p>
+{% highlight html %}
+<body>
+  <a href="#content" class="sr-only">Skip to content</a>
+  <div class="container" id="content">
+    The main page content.
+  </div>
+</body>
+{% endhighlight %}
+
+    <h3>Nested headers</h3>
+    <p>Another "gotcha" has to do with how you nest your <code>&lt;header&gt;</code> elements. <a href="http://squizlabs.github.io/HTML_CodeSniffer/Standards/Section508/">Section 508</a> states that your largest header must be an <code>h1</code>, and the next header must be an <code>&lt;h2&gt;</code>, etc. This is hard to achieve in practice, but if the largest header on your site is smaller than Bootstrap's default 38px, you should consider modifying your stylesheets before using a smaller header element.</p>
+
+    <h3>Additional resources</h3>
+    <ul>
+      <li><a href="https://github.com/squizlabs/HTML_CodeSniffer">"HTML Codesniffer" bookmarklet for identifying accessibility issues</a></li>
+      <li><a href="http://a11yproject.com/">The A11Y Project</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Accessibility">MDN accessibility documentation</a></li>
+    </ul>
   </div>
 
 

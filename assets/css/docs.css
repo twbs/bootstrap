@@ -123,8 +123,8 @@ body {
 
 /* Download button */
 .bs-masthead .btn-outline {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 18px 24px;
   font-size: 21px;
 }
@@ -208,8 +208,8 @@ body {
   position: relative;
 }
 
-.bs-docs-section + .bs-docs-section {
-  margin-top: 80px;
+.bs-docs-section h1[id] {
+  padding-top: 80px;
 }
 
 /* Ads in page headers */
@@ -833,7 +833,7 @@ input.focused {
   .bs-masthead h1 {
     font-size: 100px;
   }
-  .bs-masthead p {
+  .bs-masthead .lead {
     margin-left: 15%;
     margin-right: 15%;
     font-size: 30px;
@@ -878,7 +878,6 @@ input.focused {
     width: 330px !important;
     min-height: 132px;
   }
-
 }
 
 /* Large desktops and up */
