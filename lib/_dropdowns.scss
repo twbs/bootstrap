@@ -11,9 +11,9 @@
   height: 0;
   margin-left: 2px;
   vertical-align: middle;
-  border-top:   4px solid $dropdown-caret-color;
-  border-right: 4px solid transparent;
-  border-left:  4px solid transparent;
+  border-top:   $caret-width-base solid $dropdown-caret-color;
+  border-right: $caret-width-base solid transparent;
+  border-left:  $caret-width-base solid transparent;
   content: "";
 }
 
@@ -74,6 +74,7 @@
     text-decoration: none;
     color: $dropdown-link-hover-color;
     @include gradient-vertical($start-color: $dropdown-link-hover-bg, $end-color: darken($dropdown-link-hover-bg, 5%));
+    background-color: darken($dropdown-link-hover-bg, 5%);
   }
 }
 
@@ -87,6 +88,7 @@
     text-decoration: none;
     outline: 0;
     @include gradient-vertical($start-color: $dropdown-link-active-bg, $end-color: darken($dropdown-link-active-bg, 5%));
+    background-color: darken($dropdown-link-active-bg, 5%);
   }
 }
 
