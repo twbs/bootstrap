@@ -656,7 +656,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     var $parent = parent && $(parent)
 
     if (!data || !data.transitioning) {
-      if ($parent) $parent.find('[data-toggle=collapse][data-parent=' + parent + ']').not($this).addClass('collapsed')
+      if ($parent) $parent.find('[data-toggle=collapse][data-parent="' + parent + '"]').not($this).addClass('collapsed')
       $this[$target.hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
     }
 
@@ -860,13 +860,13 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     , show: true
   }
 
-  Modal.prototype.toggle = function () {
-    return this[!this.isShown ? 'show' : 'hide']()
+  Modal.prototype.toggle = function (_relatedTarget) {
+    return this[!this.isShown ? 'show' : 'hide'](_relatedTarget)
   }
 
-  Modal.prototype.show = function () {
+  Modal.prototype.show = function (_relatedTarget) {
     var that = this
-    var e    = $.Event('show.bs.modal')
+    var e    = $.Event('show.bs.modal', { relatedTarget: _relatedTarget })
 
     this.$element.trigger(e)
 
@@ -895,13 +895,15 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
       that.enforceFocus()
 
+      var e = $.Event('shown.bs.modal', { relatedTarget: _relatedTarget })
+
       transition ?
         that.$element
           .one($.support.transition.end, function () {
-            that.$element.focus().trigger('shown.bs.modal')
+            that.$element.focus().trigger(e)
           })
           .emulateTransitionEnd(300) :
-        that.$element.focus().trigger('shown.bs.modal')
+        that.$element.focus().trigger(e)
     })
   }
 
@@ -1014,15 +1016,15 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
   var old = $.fn.modal
 
-  $.fn.modal = function (option) {
+  $.fn.modal = function (option, _relatedTarget) {
     return this.each(function () {
       var $this   = $(this)
       var data    = $this.data('bs.modal')
       var options = $.extend({}, Modal.DEFAULTS, $this.data(), typeof option == 'object' && option)
 
       if (!data) $this.data('bs.modal', (data = new Modal(this, options)))
-      if (typeof option == 'string') data[option]()
-      else if (options.show) data.show()
+      if (typeof option == 'string') data[option](_relatedTarget)
+      else if (options.show) data.show(_relatedTarget)
     })
   }
 
@@ -1045,12 +1047,12 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     var $this   = $(this)
     var href    = $this.attr('href')
     var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) //strip for ie7
-    var option  = $target.data('modal') ? 'toggle' : $.extend({ remote:!/#/.test(href) && href }, $target.data(), $this.data())
+    var option  = $target.data('modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
 
     e.preventDefault()
 
     $target
-      .modal(option)
+      .modal(option, this)
       .one('hide', function () {
         $this.is(':visible') && $this.focus()
       })
@@ -1245,12 +1247,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
           .addClass(placement)
       }
 
-      var tp = placement == 'bottom' ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2  } :
-               placement == 'top'    ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2  } :
-               placement == 'left'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-            /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width   }
+      var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
 
-      this.applyPlacement(tp, placement)
+      this.applyPlacement(calculatedOffset, placement)
       this.$element.trigger('shown.bs.' + this.type)
     }
   }
@@ -1262,25 +1261,33 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     var height = $tip[0].offsetHeight
 
     // manually read margins because getBoundingClientRect includes difference
-    offset.top  = offset.top  + parseInt($tip.css('margin-top'), 10)
-    offset.left = offset.left + parseInt($tip.css('margin-left'), 10)
+    var marginTop = parseInt($tip.css('margin-top'), 10)
+    var marginLeft = parseInt($tip.css('margin-left'), 10)
+
+    // we must check for NaN for ie 8/9
+    if (isNaN(marginTop))  marginTop  = 0
+    if (isNaN(marginLeft)) marginLeft = 0
+
+    offset.top  = offset.top  + marginTop
+    offset.left = offset.left + marginLeft
 
     $tip
       .offset(offset)
       .addClass('in')
 
+    // check to see if placing tip in new offset caused the tip to resize itself
     var actualWidth  = $tip[0].offsetWidth
     var actualHeight = $tip[0].offsetHeight
 
     if (placement == 'top' && actualHeight != height) {
       replace = true
-      offset.top  = offset.top + height - actualHeight
+      offset.top = offset.top + height - actualHeight
     }
 
-    if (placement == 'bottom' || placement == 'top') {
+    if (/bottom|top/.test(placement)) {
       var delta = 0
 
-      if (offset.left < 0){
+      if (offset.left < 0) {
         delta       = offset.left * -2
         offset.left = 0
 
@@ -1353,6 +1360,13 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     }, this.$element.offset())
   }
 
+  Tooltip.prototype.getCalculatedOffset = function (placement, pos, actualWidth, actualHeight) {
+    return placement == 'bottom' ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2  } :
+           placement == 'top'    ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2  } :
+           placement == 'left'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
+        /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width   }
+  }
+
   Tooltip.prototype.getTitle = function () {
     var title
     var $e = this.$element
@@ -1368,8 +1382,8 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     return this.$tip = this.$tip || $(this.options.template)
   }
 
-  Tooltip.prototype.arrow =function(){
-    return this.$arrow = this.$arrow || this.tip().find(".tooltip-arrow")
+  Tooltip.prototype.arrow = function () {
+    return this.$arrow = this.$arrow || this.tip().find('.tooltip-arrow')
   }
 
   Tooltip.prototype.validate = function () {
@@ -1491,7 +1505,13 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
     $tip.removeClass('fade top bottom left right in')
 
-    $tip.find('.popover-title:empty').hide()
+    // Hide empty titles
+    //
+    // IE8 doesn't accept hiding via the `:empty` pseudo selector, we have to do
+    // this manually by checking the contents.
+    if ($tip.find('.popover-title').html() === '') {
+      $tip.find('.popover-title').hide();
+    }
   }
 
   Popover.prototype.hasContent = function () {
@@ -1506,6 +1526,10 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
       || (typeof o.content == 'function' ?
             o.content.call($e[0]) :
             o.content)
+  }
+
+  Popover.prototype.arrow = function () {
+    return this.$arrow = this.$arrow || this.tip().find('.arrow')
   }
 
   Popover.prototype.tip = function () {
