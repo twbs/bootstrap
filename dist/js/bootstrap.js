@@ -925,6 +925,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     this.$element
       .removeClass('in')
       .attr('aria-hidden', true)
+      .off('click.dismiss.modal')
 
     $.support.transition && this.$element.hasClass('fade') ?
       this.$element
@@ -977,7 +978,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
       this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
         .appendTo(document.body)
 
-      this.$element.on('click', $.proxy(function (e) {
+      this.$element.on('click.dismiss.modal', $.proxy(function (e) {
         if (e.target !== e.currentTarget) return
         this.options.backdrop == 'static'
           ? this.$element[0].focus.call(this.$element[0])
