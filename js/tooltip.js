@@ -1,6 +1,6 @@
 /* ========================================================================
  * Bootstrap: tooltip.js v3.0.0
- * http://twitter.github.com/bootstrap/javascript.html#affix
+ * http://twbs.github.com/bootstrap/javascript.html#affix
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ========================================================================
  * Copyright 2012 Twitter, Inc.
@@ -102,12 +102,12 @@
     var self = obj instanceof this.constructor ?
       obj : $(obj.currentTarget)[this.type](options).data('bs.' + this.type)
 
+    clearTimeout(self.timeout)
+
     if (!self.options.delay || !self.options.delay.show) return self.show()
 
-    clearTimeout(this.timeout)
-
     self.hoverState = 'in'
-    this.timeout    = setTimeout(function () {
+    self.timeout    = setTimeout(function () {
       if (self.hoverState == 'in') self.show()
     }, self.options.delay.show)
   }
@@ -116,12 +116,12 @@
     var self = obj instanceof this.constructor ?
       obj : $(obj.currentTarget)[this.type](this._options).data('bs.' + this.type)
 
-    clearTimeout(this.timeout)
+    clearTimeout(self.timeout)
 
     if (!self.options.delay || !self.options.delay.hide) return self.hide()
 
     self.hoverState = 'out'
-    this.timeout    = setTimeout(function () {
+    self.timeout    = setTimeout(function () {
       if (self.hoverState == 'out') self.hide()
     }, self.options.delay.hide)
   }
@@ -144,33 +144,44 @@
         this.options.placement.call(this, $tip[0], this.$element[0]) :
         this.options.placement
 
+      var autoToken = /\s?auto?\s?/i
+      var autoPlace = autoToken.test(placement)
+      if (autoPlace) placement = placement.replace(autoToken, '') || 'top'
+
       $tip
         .detach()
         .css({ top: 0, left: 0, display: 'block' })
+        .addClass(placement)
 
       this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
 
-      var tp
       var pos          = this.getPosition()
       var actualWidth  = $tip[0].offsetWidth
       var actualHeight = $tip[0].offsetHeight
 
-      switch (placement) {
-        case 'bottom':
-          tp = {top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2}
-          break
-        case 'top':
-          tp = {top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2}
-          break
-        case 'left':
-          tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth}
-          break
-        case 'right':
-          tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width}
-          break
+      if (autoPlace) {
+        var $parent = this.$element.parent()
+
+        var orgPlacement = placement
+        var docScroll    = document.documentElement.scrollTop || document.body.scrollTop
+        var parentWidth  = this.options.container == 'body' ? window.innerWidth  : $parent.outerWidth()
+        var parentHeight = this.options.container == 'body' ? window.innerHeight : $parent.outerHeight()
+        var parentLeft   = this.options.container == 'body' ? 0 : $parent.offset().left
+
+        placement = placement == 'bottom' && pos.top   + pos.height  + actualHeight - docScroll > parentHeight  ? 'top'    :
+                    placement == 'top'    && pos.top   - docScroll   - actualHeight < 0                         ? 'bottom' :
+                    placement == 'right'  && pos.right + actualWidth > parentWidth                              ? 'left'   :
+                    placement == 'left'   && pos.left  - actualWidth < parentLeft                               ? 'right'  :
+                    placement
+
+        $tip
+          .removeClass(orgPlacement)
+          .addClass(placement)
       }
 
-      this.applyPlacement(tp, placement)
+      var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
+
+      this.applyPlacement(calculatedOffset, placement)
       this.$element.trigger('shown.bs.' + this.type)
     }
   }
@@ -181,23 +192,34 @@
     var width  = $tip[0].offsetWidth
     var height = $tip[0].offsetHeight
 
+    // manually read margins because getBoundingClientRect includes difference
+    var marginTop = parseInt($tip.css('margin-top'), 10)
+    var marginLeft = parseInt($tip.css('margin-left'), 10)
+
+    // we must check for NaN for ie 8/9
+    if (isNaN(marginTop))  marginTop  = 0
+    if (isNaN(marginLeft)) marginLeft = 0
+
+    offset.top  = offset.top  + marginTop
+    offset.left = offset.left + marginLeft
+
     $tip
       .offset(offset)
-      .addClass(placement)
       .addClass('in')
 
+    // check to see if placing tip in new offset caused the tip to resize itself
     var actualWidth  = $tip[0].offsetWidth
     var actualHeight = $tip[0].offsetHeight
 
     if (placement == 'top' && actualHeight != height) {
       replace = true
-      offset.top  = offset.top + height - actualHeight
+      offset.top = offset.top + height - actualHeight
     }
 
-    if (placement == 'bottom' || placement == 'top') {
+    if (/bottom|top/.test(placement)) {
       var delta = 0
 
-      if (offset.left < 0){
+      if (offset.left < 0) {
         delta       = offset.left * -2
         offset.left = 0
 
@@ -232,26 +254,19 @@
     var $tip = this.tip()
     var e    = $.Event('hide.bs.' + this.type)
 
+    function complete() { $tip.detach() }
+
     this.$element.trigger(e)
 
     if (e.isDefaultPrevented()) return
 
     $tip.removeClass('in')
 
-    function removeWithAnimation() {
-      var timeout = setTimeout(function () {
-        $tip.off($.support.transition.end).detach()
-      }, 500)
-
-      $tip.one($.support.transition.end, function () {
-        clearTimeout(timeout)
-        $tip.detach()
-      })
-    }
-
     $.support.transition && this.$tip.hasClass('fade') ?
-      removeWithAnimation() :
-      $tip.detach()
+      $tip
+        .one($.support.transition.end, complete)
+        .emulateTransitionEnd(150) :
+      complete()
 
     this.$element.trigger('hidden.bs.' + this.type)
 
@@ -277,6 +292,13 @@
     }, this.$element.offset())
   }
 
+  Tooltip.prototype.getCalculatedOffset = function (placement, pos, actualWidth, actualHeight) {
+    return placement == 'bottom' ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2  } :
+           placement == 'top'    ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2  } :
+           placement == 'left'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
+        /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width   }
+  }
+
   Tooltip.prototype.getTitle = function () {
     var title
     var $e = this.$element
@@ -292,8 +314,8 @@
     return this.$tip = this.$tip || $(this.options.template)
   }
 
-  Tooltip.prototype.arrow =function(){
-    return this.$arrow = this.$arrow || this.tip().find(".tooltip-arrow")
+  Tooltip.prototype.arrow = function () {
+    return this.$arrow = this.$arrow || this.tip().find('.tooltip-arrow')
   }
 
   Tooltip.prototype.validate = function () {

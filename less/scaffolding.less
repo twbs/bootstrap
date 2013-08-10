@@ -27,7 +27,7 @@ body {
   background-color: @body-bg;
 }
 
-// Reset fonts for revelant elements
+// Reset fonts for relevant elements
 input,
 button,
 select,
@@ -59,17 +59,19 @@ a:focus {
 // -------------------------
 
 img {
-  // Responsive images (ensure images don't scale beyond their parents)
-  max-width: 100%; // Part 1: Set a maxium relative to the parent
-  height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
-
-  // Match vertical alignment with other comment elements
   vertical-align: middle;
+}
+
+// Responsive images (ensure images don't scale beyond their parents)
+.img-responsive {
+  display: inline-block;
+  max-width: 100%; // Part 1: Set a maximum relative to the parent
+  height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
 }
 
 // Rounded corners
 .img-rounded {
-  border-radius: 6px;
+  border-radius: @border-radius-large;
 }
 
 // Image thumbnails
@@ -78,4 +80,30 @@ img {
 // Perfect circle
 .img-circle {
   border-radius: 500px; // crank the border-radius so it works with most reasonably sized images
+}
+
+
+// Horizontal rules
+// -------------------------
+
+hr {
+  margin-top:    @line-height-computed;
+  margin-bottom: @line-height-computed;
+  border: 0;
+  border-top: 1px solid @hr-border;
+}
+
+// Only display content to screen readers
+// See: http://a11yproject.com/posts/how-to-hide-content/
+// -------------------------
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
 }

@@ -3,11 +3,32 @@
 // --------------------------------------------------
 
 // Button carets
-.btn .caret {
-  border-top-color: @btn-default-color;
+//
+// Match the button text color to the arrow/caret for indicating dropdown-ness.
+
+.caret {
+  .btn-default & {
+    border-top-color: @btn-default-color;
+  }
+  .btn-primary &,
+  .btn-success &,
+  .btn-warning &,
+  .btn-danger &,
+  .btn-info & {
+    border-top-color: #fff;
+  }
 }
-.dropup .btn .caret {
-  border-bottom-color: @btn-default-color;
+.dropup .caret {
+  .btn-default & {
+    border-bottom-color: @btn-default-color;
+  }
+  .btn-primary &,
+  .btn-success &,
+  .btn-warning &,
+  .btn-danger &,
+  .btn-info & {
+    border-bottom-color: #fff;
+  }
 }
 
 // Make the div behave like a button
@@ -21,8 +42,14 @@
     float: left;
     // Bring the "active" button to the front
     &:hover,
-    &:active {
+    &:focus,
+    &:active,
+    &.active {
       z-index: 2;
+    }
+    &:focus {
+      // Remove focus outline when dropdown JS adds it after closing the menu
+      outline: none;
     }
   }
 }
@@ -40,11 +67,12 @@
     float: left;
   }
   // Space out series of button groups
-  > .btn + .btn,
-  > .btn-group + .btn,
-  > .btn + .btn-group,
-  > .btn-group + .btn-group {
-    margin-left: 5px;
+  > .btn,
+  > .btn-group {
+    + .btn,
+    + .btn-group {
+      margin-left: 5px;
+    }
   }
 }
 
@@ -72,9 +100,11 @@
 .btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
   border-radius: 0;
 }
-.btn-group > .btn-group:first-child > .btn:last-child,
-.btn-group > .btn-group:first-child > .dropdown-toggle {
-  .border-right-radius(0);
+.btn-group > .btn-group:first-child {
+  > .btn:last-child,
+  > .dropdown-toggle {
+    .border-right-radius(0);
+  }
 }
 .btn-group > .btn-group:last-child > .btn:first-child {
   .border-left-radius(0);
@@ -96,11 +126,7 @@
   padding-left: 8px;
   padding-right: 8px;
 }
-.btn-group > .btn-mini + .dropdown-toggle {
-  padding-left: 5px;
-  padding-right: 5px;
-}
-.btn-group > .btn-large + .dropdown-toggle {
+.btn-group > .btn-lg + .dropdown-toggle {
   padding-left: 12px;
   padding-right: 12px;
 }
@@ -117,12 +143,12 @@
   margin-left: 0;
 }
 // Carets in other button sizes
-.btn-large .caret {
-  border-width: 5px;
+.btn-lg .caret {
+  border-width: @caret-width-large;
 }
 // Upside down carets for .dropup
-.dropup .btn-large .caret {
-  border-bottom-width: 5px;
+.dropup .btn-lg .caret {
+  border-bottom-width: @caret-width-large;
 }
 
 
@@ -138,14 +164,16 @@
     margin-top: -1px;
   }
 }
-.btn-group-vertical .btn:not(:first-child):not(:last-child) {
-  border-radius: 0;
-}
-.btn-group-vertical .btn:first-child {
-  .border-bottom-radius(0);
-}
-.btn-group-vertical .btn:last-child {
-  .border-top-radius(0);
+.btn-group-vertical .btn {
+  &:not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+  &:first-child:not(:last-child) {
+    .border-bottom-radius(0);
+  }
+  &:last-child:not(:first-child) {
+    .border-top-radius(0);
+  }
 }
 
 
@@ -155,6 +183,7 @@
 .btn-group-justified {
   display: table;
   width: 100%;
+  table-layout: fixed;
   .btn {
     float: none;
     display: table-cell;
@@ -164,7 +193,7 @@
 
 
 // Checkbox and radio options
-.btn-group[data-toggle="buttons-radio"] > .btn > input[type="radio"],
-.btn-group[data-toggle="buttons-checkbox"] > .btn > input[type="checkbox"] {
+.btn-group[data-toggle="buttons"] > .btn > input[type="radio"],
+.btn-group[data-toggle="buttons"] > .btn > input[type="checkbox"] {
   display: none;
 }

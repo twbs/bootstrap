@@ -1,8 +1,11 @@
 {
   "name": "bootstrap",
   "version": "3.0.0",
-  "main": ["./docs/assets/js/bootstrap.js", "./docs/assets/css/bootstrap.css"],
+  "main": ["./dist/js/bootstrap.min.js", "./dist/js/bootstrap.js", "./dist/css/bootstrap.min.css", "./dist/css/bootstrap.css"],
+  "ignore": [
+      "**/.*"
+  ],
   "dependencies": {
-    "jquery": "~1.8.0"
+    "jquery": ">= 1.9.0"
   }
 }

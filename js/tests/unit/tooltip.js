@@ -181,6 +181,51 @@ $(function () {
         }, 100)
       })
 
+      test("should wait 200 ms before hiding the tooltip", 3, function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({ delay: { show: 0, hide: 200} })
+
+        stop()
+
+        tooltip.trigger('mouseenter')
+
+        setTimeout(function () {
+          ok($(".tooltip").is('.fade.in'), 'tooltip is faded in')
+          tooltip.trigger('mouseout')
+          setTimeout(function () {
+            ok($(".tooltip").is('.fade.in'), '100ms:tooltip is still faded in')
+            setTimeout(function () {
+              ok(!$(".tooltip").is('.in'), 'tooltip removed')
+              start()
+            }, 150)
+          }, 100)
+        }, 1)
+      })
+
+      test("should not hide tooltip if leave event occurs, then tooltip is show immediately again", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({ delay: { show: 0, hide: 200} })
+
+        stop()
+
+        tooltip.trigger('mouseenter')
+
+        setTimeout(function () {
+          ok($(".tooltip").is('.fade.in'), 'tooltip is faded in')
+          tooltip.trigger('mouseout')
+          setTimeout(function () {
+            ok($(".tooltip").is('.fade.in'), '100ms:tooltip is still faded in')
+            tooltip.trigger('mouseenter')
+            setTimeout(function () {
+              ok($(".tooltip").is('.in'), 'tooltip removed')
+              start()
+            }, 150)
+          }, 100)
+        }, 1)
+      })
+
       test("should not show tooltip if leave event occurs before delay expires", function () {
         var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
           .appendTo('#qunit-fixture')
@@ -291,4 +336,102 @@ $(function () {
           container.remove()
         }, 100)
       })
+
+      test("should add position class before positioning so that position-specific styles are taken into account", function(){
+        $("head").append('<style> .tooltip.right { white-space: nowrap; } .tooltip.right .tooltip-inner { max-width: none; } </style>')
+
+        var container = $("<div />").appendTo("body")
+          , target = $('<a href="#" rel="tooltip" title="very very very very very very very very long tooltip in one line"></a>')
+              .appendTo(container)
+              .tooltip({placement: 'right'})
+              .tooltip('show')
+          , tooltip = container.find(".tooltip")
+
+        ok( Math.round(target.offset().top + target[0].offsetHeight/2 - tooltip[0].offsetHeight/2) === Math.round(tooltip.offset().top) )
+        target.tooltip('hide')
+      })
+
+      test("tooltip title test #1", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Simple tooltip" style="display: inline-block; position: absolute; top: 0; left: 0;"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({
+          })
+          .tooltip('show')
+        equal($('.tooltip').children('.tooltip-inner').text(), 'Simple tooltip', 'title from title attribute is set')
+        tooltip.tooltip('hide')
+        ok(!$(".tooltip").length, 'tooltip removed')
+      })
+
+      test("tooltip title test #2", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Simple tooltip" style="display: inline-block; position: absolute; top: 0; left: 0;"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({
+            title: 'This is a tooltip with some content'
+          })
+          .tooltip('show')
+        equal($('.tooltip').children('.tooltip-inner').text(), 'Simple tooltip', 'title is set from title attribute while prefered over title option')
+        tooltip.tooltip('hide')
+        ok(!$(".tooltip").length, 'tooltip removed')
+      })
+
+      test("tooltip title test #3", function () {
+        var tooltip = $('<a href="#" rel="tooltip" style="display: inline-block; position: absolute; top: 0; left: 0;"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({
+            title: 'This is a tooltip with some content'
+          })
+          .tooltip('show')
+        equal($('.tooltip').children('.tooltip-inner').text(), 'This is a tooltip with some content', 'title from title option is set')
+        tooltip.tooltip('hide')
+        ok(!$(".tooltip").length, 'tooltip removed')
+      })
+
+      test("tooltips should be placed dynamically, with the dynamic placement option", function () {
+        $.support.transition = false
+        var ttContainer = $('<div id="dynamic-tt-test"/>').css({
+          'height' : 400
+          , 'overflow' : 'hidden'
+          , 'position' : 'absolute'
+          , 'top' : 0
+          , 'left' : 0
+          , 'width' : 600})
+          .appendTo('body')
+
+        var topTooltip = $('<div style="display: inline-block; position: absolute; left: 0; top: 0;" rel="tooltip" title="Top tooltip">Top Dynamic Tooltip</div>')
+          .appendTo('#dynamic-tt-test')
+          .tooltip({placement: 'auto'})
+          .tooltip('show')
+
+
+        ok($(".tooltip").is('.bottom'),  'top positioned tooltip is dynamically positioned bottom')
+
+        topTooltip.tooltip('hide')
+
+        var rightTooltip = $('<div style="display: inline-block; position: absolute; right: 0;" rel="tooltip" title="Right tooltip">Right Dynamic Tooltip</div>')
+          .appendTo('#dynamic-tt-test')
+          .tooltip({placement: 'right auto'})
+          .tooltip('show')
+
+        ok($(".tooltip").is('.left'),  'right positioned tooltip is dynamically positioned left')
+        rightTooltip.tooltip('hide')
+
+        var bottomTooltip = $('<div style="display: inline-block; position: absolute; bottom: 0;" rel="tooltip" title="Bottom tooltip">Bottom Dynamic Tooltip</div>')
+          .appendTo('#dynamic-tt-test')
+          .tooltip({placement: 'auto bottom'})
+          .tooltip('show')
+
+        ok($(".tooltip").is('.top'),  'bottom positioned tooltip is dynamically positioned top')
+        bottomTooltip.tooltip('hide')
+
+        var leftTooltip = $('<div style="display: inline-block; position: absolute; left: 0;" rel="tooltip" title="Left tooltip">Left Dynamic Tooltip</div>')
+          .appendTo('#dynamic-tt-test')
+          .tooltip({placement: 'auto left'})
+          .tooltip('show')
+
+        ok($(".tooltip").is('.right'),  'left positioned tooltip is dynamically positioned right')
+        leftTooltip.tooltip('hide')
+
+        ttContainer.remove()
+      })
+
 })

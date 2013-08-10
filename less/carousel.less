@@ -8,15 +8,10 @@
   position: relative;
 }
 
-// Wrap all slides, but only show the active one
 .carousel-inner {
   position: relative;
   overflow: hidden;
   width: 100%;
-}
-
-// Immediate parent of all slides
-.carousel-inner {
 
   > .item {
     display: none;
@@ -26,7 +21,7 @@
     // Account for jankitude on images
     > img,
     > a > img {
-      display: block;
+      .img-responsive();
       line-height: 1;
     }
   }
@@ -74,42 +69,37 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 15%;
-  .opacity(.5);
-  font-size: 20px;
-  color: #fff;
+  width: @carousel-control-width;
+  .opacity(@carousel-control-opacity);
+  font-size: @carousel-control-font-size;
+  color: @carousel-control-color;
   text-align: center;
-  text-shadow: 0 1px 2px rgba(0,0,0,.6);
-
-  // we can't have this transition here
-  // because webkit cancels the carousel
-  // animation if you trip this while
-  // in the middle of another animation
-  // ;_;
-  // .transition(opacity .2s linear);
+  text-shadow: @carousel-text-shadow;
+  // We can't have this transition here because webkit cancels the carousel
+  // animation if you trip this while in the middle of another animation.
 
   // Set gradients for backgrounds
   &.left {
     #gradient > .horizontal(@start-color: rgba(0,0,0,.5); @end-color: rgba(0,0,0,.0001));
-    background-color: transparent;
   }
   &.right {
     left: auto;
     right: 0;
     #gradient > .horizontal(@start-color: rgba(0,0,0,.0001); @end-color: rgba(0,0,0,.5));
-    background-color: transparent;
   }
 
   // Hover/focus state
   &:hover,
   &:focus {
-    color: #fff;
+    color: @carousel-control-color;
     text-decoration: none;
     .opacity(.9);
   }
 
   // Toggles
-  .glyphicon {
+  .glyphicon,
+  .icon-prev,
+  .icon-next {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -119,34 +109,52 @@
     height: 20px;
     margin-top: -10px;
     margin-left: -10px;
+    font-family: serif;
+  }
+  // Non-glyphicon toggles
+  .icon-prev {
+    &:before {
+      content: '\2039';// SINGLE LEFT-POINTING ANGLE QUOTATION MARK (U+2039)
+    }
+  }
+  .icon-next {
+    &:before {
+      content: '\203a';// SINGLE RIGHT-POINTING ANGLE QUOTATION MARK (U+203A)
+    }
   }
 }
 
 // Optional indicator pips
-// -----------------------------
+//
+// Add an unordered list with the following class and add a list item for each
+// slide your carousel holds.
+
 .carousel-indicators {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 50%;
   z-index: 15;
-  width: 100px;
-  margin: 0 0 0 -50px;
+  width: 60%;
+  margin-left: -30%;
+  padding-left: 0;
   list-style: none;
   text-align: center;
 
   li {
     display: inline-block;
-    width: 8px;
-    height: 8px;
-    margin-left: 0;
-    margin-right: 0;
+    width:  10px;
+    height: 10px;
+    margin: 1px;
     text-indent: -999px;
-    border: 1px solid #fff;
-    border-radius: 5px;
+    border: 1px solid @carousel-indicator-border-color;
+    border-radius: 10px;
     cursor: pointer;
   }
   .active {
-    background-color: #fff;
+    margin: 0;
+    width:  12px;
+    height: 12px;
+    background-color: @carousel-indicator-active-bg;
   }
 }
 
@@ -161,9 +169,9 @@
   z-index: 10;
   padding-top: 20px;
   padding-bottom: 20px;
-  color: #fff;
+  color: @carousel-caption-color;
   text-align: center;
-  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+  text-shadow: @carousel-text-shadow;
   & .btn {
     text-shadow: none; // No shadow for button elements in carousel-caption
   }
@@ -174,7 +182,9 @@
 @media screen and (min-width: @screen-tablet) {
 
   // Scale up the controls a smidge
-  .carousel-control .glyphicon {
+  .carousel-control .glyphicon,
+  .carousel-control .icon-prev,
+  .carousel-control .icon-next {
     width: 30px;
     height: 30px;
     margin-top: -15px;
@@ -187,5 +197,10 @@
     left: 20%;
     right: 20%;
     padding-bottom: 30px;
+  }
+
+  // Move up the indicators
+  .carousel-indicators {
+    bottom: 20px;
   }
 }

@@ -1,6 +1,6 @@
 /* ========================================================================
  * Bootstrap: carousel.js v3.0.0
- * http://twitter.github.com/bootstrap/javascript.html#carousel
+ * http://twbs.github.com/bootstrap/javascript.html#carousel
  * ========================================================================
  * Copyright 2012 Twitter, Inc.
  *
@@ -130,12 +130,14 @@
       $next[0].offsetWidth // force reflow
       $active.addClass(direction)
       $next.addClass(direction)
-      this.$element.one($.support.transition.end, function () {
-        $next.removeClass([type, direction].join(' ')).addClass('active')
-        $active.removeClass(['active', direction].join(' '))
-        that.sliding = false
-        setTimeout(function () { that.$element.trigger('slid') }, 0)
-      })
+      $active
+        .one($.support.transition.end, function () {
+          $next.removeClass([type, direction].join(' ')).addClass('active')
+          $active.removeClass(['active', direction].join(' '))
+          that.sliding = false
+          setTimeout(function () { that.$element.trigger('slid') }, 0)
+        })
+        .emulateTransitionEnd(600)
     } else {
       this.$element.trigger(e)
       if (e.isDefaultPrevented()) return
@@ -160,7 +162,7 @@
     return this.each(function () {
       var $this   = $(this)
       var data    = $this.data('bs.carousel')
-      var options = $.extend({}, Carousel.DEFAULTS, typeof option == 'object' && option)
+      var options = $.extend({}, Carousel.DEFAULTS, $this.data(), typeof option == 'object' && option)
       var action  = typeof option == 'string' ? option : options.slide
 
       if (!data) $this.data('bs.carousel', (data = new Carousel(this, options)))
@@ -189,12 +191,13 @@
     var $this   = $(this), href
     var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
     var options = $.extend({}, $target.data(), $this.data())
-    var slideIndex
+    var slideIndex = $this.attr('data-slide-to')
+    if (slideIndex) options.interval = false
 
     $target.carousel(options)
 
     if (slideIndex = $this.attr('data-slide-to')) {
-      $target.data('bs.carousel').pause().to(slideIndex).cycle()
+      $target.data('bs.carousel').to(slideIndex)
     }
 
     e.preventDefault()

@@ -29,49 +29,91 @@
 // Hide from screenreaders and browsers
 // Credit: HTML5 Boilerplate
 .hidden {
-  display: none;
-  visibility: hidden;
+  display: none !important;
+  visibility: hidden !important;
 }
 
 // Visibility utilities
 
 // For Phones
-.visible-sm   { display: block !important; }
-.visible-md   { display: none !important; }
-.visible-lg   { display: none !important; }
+.visible-sm {
+  .responsive-visibility();
+}
+.visible-md {
+  .responsive-invisibility();
+}
+.visible-lg {
+  .responsive-invisibility();
+}
 
-.hidden-sm    { display: none !important; }
-.hidden-md    { display: block !important; }
-.hidden-lg    { display: block !important; }
+.hidden-sm {
+  .responsive-invisibility();
+}
+.hidden-md {
+  .responsive-visibility();
+}
+.hidden-lg {
+  .responsive-visibility();
+}
 
 
 // Tablets & small desktops only
 @media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
-  .visible-sm   { display: none !important; }
-  .visible-md   { display: block !important; }
-  .visible-lg   { display: none !important; }
+  .visible-sm {
+    .responsive-invisibility();
+  }
+  .visible-md {
+    .responsive-visibility();
+  }
+  .visible-lg {
+    .responsive-invisibility();
+  }
 
-  .hidden-sm    { display: block !important; }
-  .hidden-md    { display: none !important; }
-  .hidden-lg    { display: block !important; }
+  .hidden-sm {
+    .responsive-visibility();
+  }
+  .hidden-md {
+    .responsive-invisibility();
+  }
+  .hidden-lg {
+    .responsive-visibility();
+  }
 }
 
 // For desktops
 @media (min-width: @screen-desktop) {
-  .visible-sm   { display: none !important; }
-  .visible-md   { display: none !important; }
-  .visible-lg   { display: block !important; }
+  .visible-sm {
+    .responsive-invisibility();
+  }
+  .visible-md {
+    .responsive-invisibility();
+  }
+  .visible-lg {
+    .responsive-visibility();
+  }
 
-  .hidden-sm    { display: block !important; }
-  .hidden-md    { display: block !important; }
-  .hidden-lg    { display: none !important; }
+  .hidden-sm {
+    .responsive-visibility();
+  }
+  .hidden-md {
+    .responsive-visibility();
+  }
+  .hidden-lg {
+    .responsive-invisibility();
+  }
 }
 
 // Print utilities
-.visible-print  { display: none !important; }
-.hidden-print   { }
+.visible-print {
+  .responsive-invisibility();
+}
+.hidden-print  { }
 
 @media print {
-  .visible-print  { display: block !important; }
-  .hidden-print   { display: none !important; }
+  .visible-print {
+    .responsive-visibility();
+  }
+  .hidden-print {
+    .responsive-invisibility();
+  }
 }

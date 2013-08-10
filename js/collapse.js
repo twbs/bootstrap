@@ -1,6 +1,6 @@
 /* ========================================================================
  * Bootstrap: collapse.js v3.0.0
- * http://twitter.github.com/bootstrap/javascript.html#collapse
+ * http://twbs.github.com/bootstrap/javascript.html#collapse
  * ========================================================================
  * Copyright 2012 Twitter, Inc.
  *
@@ -44,63 +44,81 @@
   Collapse.prototype.show = function () {
     if (this.transitioning || this.$element.hasClass('in')) return
 
-    var dimension = this.dimension()
-    var scroll    = $.camelCase(['scroll', dimension].join('-'))
-    var actives   = this.$parent && this.$parent.find('> .accordion-group > .in')
+    var startEvent = $.Event('show.bs.collapse')
+    this.$element.trigger(startEvent)
+    if (startEvent.isDefaultPrevented()) return
+
+    var actives = this.$parent && this.$parent.find('> .accordion-group > .in')
 
     if (actives && actives.length) {
-      var hasData = actives.data('collapse')
+      var hasData = actives.data('bs.collapse')
       if (hasData && hasData.transitioning) return
       actives.collapse('hide')
-      hasData || actives.data('collapse', null)
+      hasData || actives.data('bs.collapse', null)
     }
 
-    this.$element[dimension](0)
-    this.transition('addClass', $.Event('show.bs.collapse'), 'shown.bs.collapse')
-
-    if ($.support.transition) this.$element[dimension](this.$element[0][scroll])
-  }
-
-  Collapse.prototype.hide = function () {
-    if (this.transitioning || !this.$element.hasClass('in')) return
-    var dimension = this.dimension()
-    this.reset(this.$element[dimension]())
-    this.transition('removeClass', $.Event('hide.bs.collapse'), 'hidden')
-    this.$element[dimension](0)
-  }
-
-  Collapse.prototype.reset = function (size) {
     var dimension = this.dimension()
 
     this.$element
       .removeClass('collapse')
-      [dimension](size || 'auto')
-      [0].offsetWidth
-
-    this.$element[size !== null ? 'addClass' : 'removeClass']('collapse')
-
-    return this
-  }
-
-  Collapse.prototype.transition = function (method, startEvent, completeEvent) {
-    var that     = this
-    var complete = function () {
-      if (startEvent.type == 'show') that.reset()
-      that.transitioning = 0
-      that.$element.trigger(completeEvent)
-    }
-
-    this.$element.trigger(startEvent)
-
-    if (startEvent.isDefaultPrevented()) return
+      .addClass('collapsing')
+      [dimension](0)
 
     this.transitioning = 1
 
-    this.$element[method]('in')
+    var complete = function () {
+      this.$element
+        .removeClass('collapsing')
+        .addClass('in')
+        [dimension]('auto')
+      this.transitioning = 0
+      this.$element.trigger('shown.bs.collapse')
+    }
 
-    $.support.transition && this.$element.hasClass('collapse') ?
-      this.$element.one($.support.transition.end, complete) :
-      complete()
+    if (!$.support.transition) return complete.call(this)
+
+    var scrollSize = $.camelCase(['scroll', dimension].join('-'))
+
+    this.$element
+      .one($.support.transition.end, $.proxy(complete, this))
+      .emulateTransitionEnd(350)
+      [dimension](this.$element[0][scrollSize])
+  }
+
+  Collapse.prototype.hide = function () {
+    if (this.transitioning || !this.$element.hasClass('in')) return
+
+    var startEvent = $.Event('hide.bs.collapse')
+    this.$element.trigger(startEvent)
+    if (startEvent.isDefaultPrevented()) return
+
+    var dimension = this.dimension()
+
+    this.$element
+      [dimension](this.$element[dimension]())
+      [0].offsetHeight
+
+    this.$element
+      .addClass('collapsing')
+      .removeClass('collapse')
+      .removeClass('in')
+
+    this.transitioning = 1
+
+    var complete = function () {
+      this.transitioning = 0
+      this.$element
+        .trigger('hidden.bs.collapse')
+        .removeClass('collapsing')
+        .addClass('collapse')
+    }
+
+    if (!$.support.transition) return complete.call(this)
+
+    this.$element
+      [dimension](0)
+      .one($.support.transition.end, $.proxy(complete, this))
+      .emulateTransitionEnd(350)
   }
 
   Collapse.prototype.toggle = function () {
@@ -116,10 +134,10 @@
   $.fn.collapse = function (option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('collapse')
+      var data    = $this.data('bs.collapse')
       var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option)
 
-      if (!data) $this.data('collapse', (data = new Collapse(this, options)))
+      if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
@@ -140,14 +158,22 @@
   // =================
 
   $(document).on('click.bs.collapse.data-api', '[data-toggle=collapse]', function (e) {
-    var $this  = $(this), href
-    var target = $this.attr('data-target')
+    var $this   = $(this), href
+    var target  = $this.attr('data-target')
         || e.preventDefault()
         || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
-    var option = $(target).data('collapse') ? 'toggle' : $this.data()
+    var $target = $(target)
+    var data    = $target.data('bs.collapse')
+    var option  = data ? 'toggle' : $this.data()
+    var parent  = $this.attr('data-parent')
+    var $parent = parent && $(parent)
 
-    $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
-    $(target).collapse(option)
+    if (!data || !data.transitioning) {
+      if ($parent) $parent.find('[data-toggle=collapse][data-parent="' + parent + '"]').not($this).addClass('collapsed')
+      $this[$target.hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
+    }
+
+    $target.collapse(option)
   })
 
 }(window.jQuery);

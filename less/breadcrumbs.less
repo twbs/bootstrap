@@ -5,24 +5,19 @@
 
 .breadcrumb {
   padding: 8px 15px;
-  margin: 0 0 @line-height-computed;
+  margin-bottom: @line-height-computed;
   list-style: none;
-  background-color: #f5f5f5;
+  background-color: @breadcrumb-bg;
   border-radius: @border-radius-base;
   > li {
     display: inline-block;
-    text-shadow: 0 1px 0 #fff;
-    &:after {
-      display: inline-block;
-      content: "\00a0 /"; // Unicode space added since inline-block means non-collapsing white-space
+    &+li:before {
+      content: "/\00a0"; // Unicode space added since inline-block means non-collapsing white-space
       padding: 0 5px;
-      color: #ccc;
-    }
-    &:last-child:after {
-      display: none; // No divider after last element
+      color: @breadcrumb-color;
     }
   }
   > .active {
-    color: @gray-light;
+    color: @breadcrumb-active-color;
   }
 }

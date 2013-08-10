@@ -1,6 +1,6 @@
 /* ========================================================================
  * Bootstrap: alert.js v3.0.0
- * http://twitter.github.com/bootstrap/javascript.html#alerts
+ * http://twbs.github.com/bootstrap/javascript.html#alerts
  * ========================================================================
  * Copyright 2013 Twitter, Inc.
  *
@@ -56,7 +56,9 @@
     }
 
     $.support.transition && $parent.hasClass('fade') ?
-      $parent.on($.support.transition.end, removeElement) :
+      $parent
+        .one($.support.transition.end, removeElement)
+        .emulateTransitionEnd(150) :
       removeElement()
   }
 

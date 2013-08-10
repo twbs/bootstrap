@@ -1,6 +1,6 @@
 /* ========================================================================
  * Bootstrap: affix.js v3.0.0
- * http://twitter.github.com/bootstrap/javascript.html#affix
+ * http://twbs.github.com/bootstrap/javascript.html#affix
  * ========================================================================
  * Copyright 2012 Twitter, Inc.
  *
@@ -36,6 +36,8 @@
     this.checkPosition()
   }
 
+  Affix.RESET = 'affix affix-top affix-bottom'
+
   Affix.DEFAULTS = {
     offset: 0
   }
@@ -53,7 +55,6 @@
     var offset       = this.options.offset
     var offsetTop    = offset.top
     var offsetBottom = offset.bottom
-    var reset        = 'affix affix-top affix-bottom'
 
     if (typeof offset != 'object')         offsetBottom = offsetTop = offset
     if (typeof offsetTop == 'function')    offsetTop    = offset.top()
@@ -64,11 +65,16 @@
                 offsetTop    != null && (scrollTop <= offsetTop) ? 'top' : false
 
     if (this.affixed === affix) return
+    if (this.unpin) this.$element.css('top', '')
 
     this.affixed = affix
     this.unpin   = affix == 'bottom' ? position.top - scrollTop : null
 
-    this.$element.removeClass(reset).addClass('affix' + (affix ? '-' + affix : ''))
+    this.$element.removeClass(Affix.RESET).addClass('affix' + (affix ? '-' + affix : ''))
+
+    if (affix == 'bottom') {
+      this.$element.offset({ top: document.body.offsetHeight - offsetBottom - this.$element.height() })
+    }
   }
 
 
