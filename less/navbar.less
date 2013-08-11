@@ -20,8 +20,6 @@
 // -------------------------
 
 .navbar-nav {
-  // Space out from .navbar .brand and .btn-navbar when stacked in mobile views
-  margin-top: 10px;
   margin-bottom: 15px;
 
   > li > a {
@@ -88,6 +86,39 @@
   margin-bottom: 0; // override .navbar defaults
 }
 
+.nav-collapse {
+  // Space out collapsed contents within the mobile navbar
+  padding-bottom: @navbar-padding-vertical;
+  // Clear floated elements and prevent collapsing of padding
+  .clearfix();
+
+  // When there is no `.navbar-brand` present (which normally sits between the
+  // navbar brand and toggle), prevent the nav from overlapping the toggle.
+  .navbar-toggle + & {
+    width: 100%;
+    margin-top: @navbar-height;
+  }
+}
+
+
+// Scrollable navbar navigation
+//
+// Sometimes you might have too many links in your fixed navbar and you need to
+// maintain access to all that content. To help, add `.nav-collapse-scrollable`
+// to your `.nav-collapse` to prevent the the content from flowing past the max-
+// height of your browser.
+//
+// This is not automatically added to the `.navbar-fixed-top` because it causes
+// z-index bugs in iOS7 (possibly earlier).
+
+@media (max-width: @screen-small) {
+  .nav-collapse-scrollable {
+    margin-bottom: @navbar-padding-vertical;
+    max-height: 360px;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+}
 
 
 //
@@ -155,13 +186,11 @@
 // Menu position and menu carets
 .navbar-nav > li > .dropdown-menu {
   margin-top: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  .border-top-radius(0);
 }
 // Menu position and menu caret support for dropups via extra dropup class
 .navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  .border-bottom-radius(0);
 }
 
 // Dropdown menu items and carets
@@ -318,7 +347,6 @@
     }
 
     &.pull-right {
-      float: right;
       width: auto;
     }
   }
@@ -333,6 +361,7 @@
   .nav-collapse.collapse {
     display: block !important;
     height: auto !important;
+    padding-bottom: 0; // Override default setting
     overflow: visible !important;
   }
 
