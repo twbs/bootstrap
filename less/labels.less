@@ -23,6 +23,11 @@
       cursor: pointer;
     }
   }
+
+  // Empty labels collapse automatically (not available in IE8)
+  &:empty {
+    display: none;
+  }
 }
 
 // Colors

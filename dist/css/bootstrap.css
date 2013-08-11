@@ -4127,6 +4127,10 @@ a.thumbnail:focus {
   cursor: pointer;
 }
 
+.label:empty {
+  display: none;
+}
+
 .label-default {
   background-color: #999999;
 }
