@@ -3618,6 +3618,17 @@ button.close {
   }
 }
 
+.modal-ios {
+  position: absolute;
+  overflow: visible;
+  overflow-x: visible;
+  overflow-y: visible;
+}
+
+.modal-backdrop-ios {
+  position: absolute;
+}
+
 .tooltip {
   position: absolute;
   z-index: 1030;
