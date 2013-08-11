@@ -11,8 +11,14 @@
   border: 1px solid @panel-border;
   border-radius: @panel-border-radius;
   .box-shadow(0 1px 1px rgba(0,0,0,.05));
+}
 
-  // List groups in panels
+// List groups in panels
+//
+// By default, space out list group content from panel headings to account for
+// any kind of custom content between the two.
+
+.panel {
   .list-group {
     margin: 15px -15px -15px;
 
@@ -28,6 +34,13 @@
         border-bottom: 0;
       }
     }
+  }
+}
+// Collapse space between when there's no additional content.
+.panel-heading + .list-group {
+  margin-top: -15px;
+  .list-group-item:first-child {
+    border-top-width: 0;
   }
 }
 
