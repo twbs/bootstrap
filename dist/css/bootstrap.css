@@ -2426,6 +2426,14 @@ a.list-group-item.active .list-group-item-text {
   border-bottom: 0;
 }
 
+.panel-heading + .list-group {
+  margin-top: -15px;
+}
+
+.panel-heading + .list-group .list-group-item:first-child {
+  border-top-width: 0;
+}
+
 .panel-heading {
   padding: 10px 15px;
   margin: -15px -15px 15px;
