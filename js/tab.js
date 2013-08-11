@@ -71,6 +71,7 @@
         .find('> .dropdown-menu > .active')
         .removeClass('active')
 
+      element.parent().find(" > .active").removeClass('active');
       element.addClass('active')
 
       if (transition) {
