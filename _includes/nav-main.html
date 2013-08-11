@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="navigation">
+<div class="navbar navbar-inverse navbar-fixed-top bs-docs-nav">
   <div class="container">
     <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
       <span class="sr-only">Toggle navigation</span>
@@ -7,7 +7,7 @@
       <span class="icon-bar"></span>
     </button>
     <a href="{{ page.base_url }}" class="navbar-brand">Bootstrap 3 RC1</a>
-    <div class="nav-collapse collapse bs-navbar-collapse">
+    <nav class="nav-collapse collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
         <li{% if page.slug == "getting-started" %} class="active"{% endif %}>
           <a href="{{ page.base_url }}getting-started">Getting started</a>
@@ -25,6 +25,6 @@
           <a href="{{ page.base_url }}customize">Customize</a>
         </li>
       </ul>
-    </div>
+    </nav>
   </div>
 </div>

@@ -355,7 +355,7 @@ $('#myModal').on('hidden.bs.modal', function () {
 
     <h3>Within a navbar</h3>
     <div class="bs-example">
-      <div id="navbar-example" class="navbar navbar-static" role="navigation">
+      <nav id="navbar-example" class="navbar navbar-static" role="navigation">
         <div class="container" style="width: auto;">
           <a class="navbar-brand" href="#">Project Name</a>
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-js-navbar-collapse">
@@ -365,7 +365,7 @@ $('#myModal').on('hidden.bs.modal', function () {
             <span class="icon-bar"></span>
           </button>
           <div class="nav-collapse collapse bs-js-navbar-collapse">
-            <ul class="nav navbar-nav" role="navigation">
+            <ul class="nav navbar-nav">
               <li class="dropdown">
                 <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
@@ -493,7 +493,7 @@ $('.dropdown-toggle').dropdown()
     <h2 id="scrollspy-examples">Example in navbar</h2>
     <p>The ScrollSpy plugin is for automatically updating nav targets based on scroll position. Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.</p>
     <div class="bs-example">
-      <div id="navbar-example2" class="navbar navbar-static" role="navigation">
+      <nav id="navbar-example2" class="navbar navbar-static" role="navigation">
         <div class="navbar-inner">
           <div class="container" style="width: auto;">
             <a class="navbar-brand" href="#">Project Name</a>
@@ -511,7 +511,7 @@ $('.dropdown-toggle').dropdown()
               </li>
             </ul>
           </div>
-        </div>
+        </nav>
       </div>
       <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="scrollspy-example">
         <h4 id="fat">@fat</h4>
