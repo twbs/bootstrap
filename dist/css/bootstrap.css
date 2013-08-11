@@ -346,7 +346,7 @@ img {
 }
 
 .img-circle {
-  border-radius: 500px;
+  border-radius: 50%;
 }
 
 hr {
@@ -4475,7 +4475,6 @@ a.list-group-item.active > .badge,
   filter: alpha(opacity=90);
 }
 
-.carousel-control .glyphicon,
 .carousel-control .icon-prev,
 .carousel-control .icon-next {
   position: absolute;
