@@ -401,7 +401,7 @@ $('#myModal').on('hidden.bs.modal', function () {
             </ul>
           </div><!-- /.nav-collapse -->
         </div><!-- /.container -->
-      </div> <!-- /navbar-example -->
+      </nav> <!-- /navbar-example -->
     </div> <!-- /example -->
 
     <h3>Within tabs</h3>
@@ -494,25 +494,23 @@ $('.dropdown-toggle').dropdown()
     <p>The ScrollSpy plugin is for automatically updating nav targets based on scroll position. Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.</p>
     <div class="bs-example">
       <nav id="navbar-example2" class="navbar navbar-static" role="navigation">
-        <div class="navbar-inner">
-          <div class="container" style="width: auto;">
-            <a class="navbar-brand" href="#">Project Name</a>
-            <ul class="nav navbar-nav">
-              <li><a href="#fat">@fat</a></li>
-              <li><a href="#mdo">@mdo</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#one">one</a></li>
-                  <li><a href="#two">two</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#three">three</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
+        <div class="container" style="width: auto;">
+          <a class="navbar-brand" href="#">Project Name</a>
+          <ul class="nav navbar-nav">
+            <li><a href="#fat">@fat</a></li>
+            <li><a href="#mdo">@mdo</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#one">one</a></li>
+                <li><a href="#two">two</a></li>
+                <li class="divider"></li>
+                <li><a href="#three">three</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
       <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="scrollspy-example">
         <h4 id="fat">@fat</h4>
         <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
