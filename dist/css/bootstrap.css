@@ -2521,6 +2521,10 @@ a.list-group-item.active .list-group-item-text {
   border-color: rgba(0, 0, 0, 0.15);
 }
 
+.well > *:last-child {
+  margin-bottom: 0;
+}
+
 .well-lg {
   padding: 24px;
   border-radius: 6px;
