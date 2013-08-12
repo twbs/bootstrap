@@ -24,5 +24,5 @@ glyphicons_repo:  https://github.com/twbs/bootstrap-glyphicons
 blog:             http://blog.getbootstrap.com
 expo:             http://expo.getbootstrap.com
 
-cdn_css:          //netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css
-cdn_js:           //netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js
+cdn_css:          //netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css
+cdn_js:           //netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js
