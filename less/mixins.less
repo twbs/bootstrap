@@ -406,6 +406,27 @@
   }
 }
 
+// Badges
+// -------------------------
+.badge-variant(@background; @link-hover-color; @active-color; @active-bg) {
+  background-color: @background;
+  
+  // Hover state, but only for links
+  a& {
+    &:hover,
+    &:focus {
+      color: @link-hover-color;
+    }
+  }
+
+  // Account for counters in navs  
+  a.list-group-item.active > &,
+  .nav-pills > .active > a > & {
+    color: @active-color;
+    background-color: @active-bg;
+  }
+}
+
 // Navbar vertical align
 // -------------------------
 // Vertically center elements in the navbar.
