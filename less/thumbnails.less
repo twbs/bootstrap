@@ -10,7 +10,7 @@
 // Can be `a`, `div`, or `img`
 .thumbnail,
 .img-thumbnail {
-  padding: 4px;
+  padding: @thumbnail-padding;
   line-height: @line-height-base;
   background-color: @thumbnail-bg;
   border: 1px solid @thumbnail-border;
@@ -37,6 +37,6 @@ a.thumbnail:focus {
   margin-right: auto;
 }
 .thumbnail .caption {
-  padding: 9px;
+  padding: @thumbnail-caption-padding;
   color: @thumbnail-caption-color;
 }

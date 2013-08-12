@@ -426,8 +426,12 @@ base_url: "../"
       <div class="col-lg-6">
         <label>@pre-bg</label>
         <input type="text" class="form-control" placeholder="#f5f5f5">
+        <label>@pre-color</label>
+        <input type="text" class="form-control" placeholder="@gray-dark">        
         <label>@code-border-color</label>
         <input type="text" class="form-control" placeholder="#ccc">
+        <label>@pre-scrollable-max-height</label>
+        <input type="text" class="form-control" placeholder="340px">
       </div>
     </div>
 
@@ -561,6 +565,10 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="6px">
         <label>@border-radius-small</label>
         <input type="text" class="form-control" placeholder="3px">
+        <label>@border-width-base</label>
+        <input type="text" class="form-control" placeholder="1px">
+        <label>@border-style-base</label>
+        <input type="text" class="form-control" placeholder="solid">
         <h4>Active background color</h4>
         <label>@component-active-bg</label>
         <input type="text" class="form-control" placeholder="@brand-primary">
@@ -780,6 +788,14 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="#fff">
         <label>@navbar-inverse-toggle-border-color</label>
         <input type="text" class="form-control" placeholder="#333">
+        <label>@navbar-margin-bottom</label>
+        <input type="text" class="form-control" placeholder="20px">
+        <label>@navbar-nav-margin-bottom</label>
+        <input type="text" class="form-control" placeholder="15px">
+        <label>@navbar-brand-max-width</label>
+        <input type="text" class="form-control" placeholder="200px">
+        <label>@navbar-brand-font-weight</label>
+        <input type="text" class="form-control" placeholder="500">
       </div>
     </div>
 
@@ -871,11 +887,23 @@ base_url: "../"
         <p class="help-block">Placeholder text color</p>
 
         <h3>Legend</h3>
+        <label>@legend-color</label>
+        <input type="text" class="form-control" placeholder="@gray-dark">
+        <p class="help-block"><code>&lt;legend&gt;</code> color</p>
         <label>@legend-border-color</label>
         <input type="text" class="form-control" placeholder="#e5e5e5">
         <p class="help-block"><code>&lt;legend&gt;</code> border color</p>
+        
+        <h3>Controls</h3>
+        <label>@form-control-color</label>
+        <input type="text" class="form-control" placeholder="@gray">
+        <p class="help-block"><code>&lt;form control&gt;</code> color</p>
+        
 
         <h3>Input groups</h3>
+        <label>@input-group-addon-bg</label>
+        <input type="text" class="form-control" placeholder="@gray-lighter">
+        <p class="help-block">Background color for textual input addons</p>
         <label>@input-group-addon-border-color</label>
         <input type="text" class="form-control" placeholder="@input-border">
         <p class="help-block">Border color for textual input addons</p>
@@ -901,6 +929,9 @@ base_url: "../"
         <label>@dropdown-divider-bg</label>
         <input type="text" class="form-control" placeholder="#e5e5e5">
         <p class="help-block">Dropdown divider top border color</p>
+        <label>@dropdown-menu-disabled-link-color</label>
+        <input type="text" class="form-control" placeholder="@gray-light">
+        <p class="help-block">Dropdown menu disabled link color</p>
       </div>
       <div class="col-lg-6">
         <h3>Dropdown items</h3>
@@ -919,6 +950,9 @@ base_url: "../"
         <label>@dropdown-link-hover-bg</label>
         <input type="text" class="form-control" placeholder="@dropdown-link-active-bg">
         <p class="help-block">Hovered dropdown menu entry background color</p>
+        <label>@dropdown-header-color</label>
+        <input type="text" class="form-control" placeholder="@gray-light">
+        <p class="help-block">Dropdown header color</p>
       </div>
     </div>
 
@@ -978,6 +1012,9 @@ base_url: "../"
         <label>@panel-info-heading-bg</label>
         <input type="text" class="form-control" placeholder="@state-info-bg">
         <p class="help-block">Info heading background color</p>
+        <label>@panel-title-font-weight</label>
+        <input type="text" class="form-control" placeholder="500">
+        <p class="help-block">Panel title font weight</p>
       </div>
       <div class="col-lg-6">
         <h4>Warning</h4>
@@ -1069,6 +1106,16 @@ base_url: "../"
         <label>@jumbotron-lead-color</label>
         <input type="text" class="form-control" placeholder="inherit">
         <p class="help-block">Jumbotron lead paragraph color</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@jumbotron-padding</label>
+        <input type="text" class="form-control" placeholder="30px">
+        <p class="help-block">Jumbotron padding (note: this also applies to margin-bottom)</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@jumbotron-font-weight</label>
+        <input type="text" class="form-control" placeholder="200">
+        <p class="help-block">Jumbotron font weight</p>
       </div>
     </div>
 
@@ -1191,6 +1238,14 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="@border-radius-base">
         <p class="help-block">Thumbnail border radius</p>
       </div>
+      <div class="col-lg-6">
+        <label>@thumbnail-padding</label>
+        <input type="text" class="form-control" placeholder="4px">
+        <p class="help-block">Thumbnail padding</p>
+        <label>@thumbnail-caption-padding</label>
+        <input type="text" class="form-control" placeholder="9px">
+        <p class="help-block">Thumbnail caption padding</p>
+      </div>
     </div>
     <h2 id="variables-progress">Progress bars</h2>
     <div class="row">
@@ -1297,6 +1352,22 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="@brand-danger">
         <p class="help-block">Danger label background color</p>
       </div>
+      <div class="col-lg-6">
+        <label>@label-default-bg</label>
+        <input type="text" class="form-control" placeholder="@gray-light">
+        <p class="help-block">Default label background color</p>
+        <label>@label-color</label>
+        <input type="text" class="form-control" placeholder="#fff">
+        <p class="help-block">Label text color</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@label-link-hover-color</label>
+        <input type="text" class="form-control" placeholder="#fff">
+        <p class="help-block">Label link hover color</p>
+        <label>@label-font-weight</label>
+        <input type="text" class="form-control" placeholder="500">
+        <p class="help-block">Label font weight</p>
+      </div>
     </div>
     <h2 id="variables-tooltips-popovers">Tooltips and popovers</h2>
     <h3>Tooltip styles</h3>
@@ -1357,6 +1428,16 @@ base_url: "../"
         <label>@popover-arrow-outer-fallback-color</label>
         <input type="text" class="form-control" placeholder="#999">
         <p class="help-block">Popover outer arrow fallback color</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@popover-title-font-weight</label>
+        <input type="text" class="form-control" placeholder="normal">
+        <p class="help-block">Popover title font weight</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@popover-title-line-height</label>
+        <input type="text" class="form-control" placeholder="18px">
+        <p class="help-block">Popover title line height</p>
       </div>
     </div>
     <div class="row">
@@ -1419,7 +1500,22 @@ base_url: "../"
       <div class="col-lg-6">
         <label>@page-header-border-color</label>
         <input type="text" class="form-control" placeholder="@gray-lighter">
-        <p class="help-block">Pag header border color</p>
+        <p class="help-block">Page header border color</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@lead-font-weight</label>
+        <input type="text" class="form-control" placeholder="200">
+        <p class="help-block">Lead font weight</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@blockquote-paragraph-font-weight</label>
+        <input type="text" class="form-control" placeholder="300">
+        <p class="help-block">Paragraph font weight wrapped in blockquote</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@blockquote-border-width</label>
+        <input type="text" class="form-control" placeholder="5px">
+        <p class="help-block">Blockquote border width</p>
       </div>
     </div>
     <h2 id="variables-other">Other</h2>
