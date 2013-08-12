@@ -414,17 +414,15 @@ body {
 }
 
 /* Typography */
-.bs-example-type .table td {
+.bs-example-type .table td:last-child {
   color: #999;
   vertical-align: middle;
 }
-.bs-example-type .table td,
-.bs-example-type .table th {
+.bs-example-type .table td {
   padding: 15px 0;
   border-color: #eee;
 }
-.bs-example-type .table tr:first-child td,
-.bs-example-type .table tr:first-child th {
+.bs-example-type .table tr:first-child td {
   border-top: 0;
 }
 .bs-example-type h1,
