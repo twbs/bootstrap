@@ -488,7 +488,7 @@
 }
 
 // Generate the small columns
-.make-small-column(@columns; @gutter: @grid-gutter-width) {
+.make-sm-column(@columns; @gutter: @grid-gutter-width) {
   position: relative;
   // Prevent columns from collapsing when empty
   min-height: 1px;
@@ -504,24 +504,24 @@
 }
 
 // Generate the small column offsets
-.make-small-column-offset(@columns) {
+.make-sm-column-offset(@columns) {
   @media (min-width: @screen-small) {
     margin-left: percentage((@columns / @grid-columns));
   }
 }
-.make-small-column-push(@columns) {
+.make-sm-column-push(@columns) {
   @media (min-width: @screen-small) {
     left: percentage((@columns / @grid-columns));
   }
 }
-.make-small-column-pull(@columns) {
+.make-sm-column-pull(@columns) {
   @media (min-width: @screen-small) {
     right: percentage((@columns / @grid-columns));
   }
 }
 
-// Generate the large columns
-.make-large-column(@columns; @gutter: @grid-gutter-width) {
+// Generate the medium columns
+.make-md-column(@columns; @gutter: @grid-gutter-width) {
   position: relative;
   // Prevent columns from collapsing when empty
   min-height: 1px;
@@ -537,18 +537,51 @@
 }
 
 // Generate the large column offsets
-.make-large-column-offset(@columns) {
+.make-md-column-offset(@columns) {
   @media (min-width: @screen-medium) {
     margin-left: percentage((@columns / @grid-columns));
   }
 }
-.make-large-column-push(@columns) {
+.make-md-column-push(@columns) {
   @media (min-width: @screen-medium) {
     left: percentage((@columns / @grid-columns));
   }
 }
-.make-large-column-pull(@columns) {
+.make-md-column-pull(@columns) {
   @media (min-width: @screen-medium) {
+    right: percentage((@columns / @grid-columns));
+  }
+}
+
+// Generate the large columns
+.make-lg-column(@columns; @gutter: @grid-gutter-width) {
+  position: relative;
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Inner gutter via padding
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
+
+  // Calculate width based on number of columns available
+  @media (min-width: @screen-large) {
+    float: left;
+    width: percentage((@columns / @grid-columns));
+  }
+}
+
+// Generate the large column offsets
+.make-lg-column-offset(@columns) {
+  @media (min-width: @screen-large) {
+    margin-left: percentage((@columns / @grid-columns));
+  }
+}
+.make-lg-column-push(@columns) {
+  @media (min-width: @screen-large) {
+    left: percentage((@columns / @grid-columns));
+  }
+}
+.make-lg-column-pull(@columns) {
+  @media (min-width: @screen-large) {
     right: percentage((@columns / @grid-columns));
   }
 }
