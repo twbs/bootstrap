@@ -4,7 +4,6 @@
 
 
 // Dropdown arrow/caret
-// --------------------
 .caret {
   display: inline-block;
   width: 0;
@@ -18,13 +17,11 @@
 }
 
 // The dropdown wrapper (div)
-// --------------------------
 .dropdown {
   position: relative;
 }
 
 // The dropdown menu (ul)
-// ----------------------
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -67,7 +64,6 @@
 }
 
 // Hover/Focus state
-// -----------
 .dropdown-menu > li > a {
   &:hover,
   &:focus {
@@ -79,7 +75,6 @@
 }
 
 // Active state
-// ------------
 .dropdown-menu > .active > a {
   &,
   &:hover,
@@ -93,13 +88,14 @@
 }
 
 // Disabled state
-// --------------
+//
 // Gray out text and ensure the hover/focus state remains gray
+
 .dropdown-menu > .disabled > a {
   &,
   &:hover,
   &:focus {
-    color: @gray-light;
+    color: @dropdown-link-disabled-color;
   }
 }
 // Nuke hover/focus effects
@@ -115,7 +111,6 @@
 }
 
 // Open state for the dropdown
-// ---------------------------
 .open {
   // Show the menu
   > .dropdown-menu {
@@ -129,19 +124,15 @@
 }
 
 // Dropdown section headers
-// ---------------------------
 .dropdown-header {
   display: block;
   padding: 3px 20px;
   font-size: @font-size-small;
   line-height: @line-height-base;
-  color: @gray-light;
+  color: @dropdown-header-color;
 }
 
-
-
 // Backdrop to catch body clicks on mobile, etc.
-// ---------------------------
 .dropdown-backdrop {
   position: fixed;
   left: 0;
@@ -152,16 +143,16 @@
 }
 
 // Right aligned dropdowns
-// ---------------------------
 .pull-right > .dropdown-menu {
   right: 0;
   left: auto;
 }
 
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
-// ------------------------------------------------------
+//
 // Just add .dropup after the standard .dropdown class and you're set, bro.
 // TODO: abstract this so that the navbar fixed styles are not placed here?
+
 .dropup,
 .navbar-fixed-bottom .dropdown {
   // Reverse the caret
