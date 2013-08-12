@@ -1394,10 +1394,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the <code>.sr-only</code> class.</p>
     </div>
     <form class="bs-example form-inline" role="form">
-      <label class="sr-only" for="exampleInputEmail">Email address</label>
-      <input type="text" class="form-control" id="exampleInputEmail" placeholder="Enter email">
-      <label class="sr-only" for="exampleInputPassword">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
+      <div class="form-group">
+        <label class="sr-only" for="exampleInputEmail">Email address</label>
+        <input type="text" class="form-control" id="exampleInputEmail" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="exampleInputPassword">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
+      </div>
       <div class="checkbox">
         <label>
           <input type="checkbox"> Remember me
@@ -1407,10 +1411,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </form><!-- /example -->
 {% highlight html %}
 <form class="form-inline" role="form">
-  <label class="sr-only" for="exampleInputEmail">Email address</label>
-  <input type="text" class="form-control" id="exampleInputEmail" placeholder="Enter email">
-  <label class="sr-only" for="exampleInputPassword">Password</label>
-  <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputEmail">Email address</label>
+    <input type="text" class="form-control" id="exampleInputEmail" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputPassword">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
+  </div>
   <div class="checkbox">
     <label>
       <input type="checkbox"> Remember me
