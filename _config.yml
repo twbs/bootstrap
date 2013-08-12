@@ -13,7 +13,7 @@ port:             9001
 # Custom vars
 repo:             https://github.com/twbs/bootstrap
 download:         https://github.com/twbs/bootstrap/archive/3.0.0-wip.zip
-download_dist:    http://getbootstrap.com/bs-v3.0.0-rc1-dist.zip
+download_dist:    http://getbootstrap.com/bs-v3.0.0-rc.2-dist.zip
 
 examples:         http://examples.getbootstrap.com
 examples_repo:    https://github.com/twbs/bootstrap-examples
