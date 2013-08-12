@@ -12,7 +12,7 @@
     {% include nav-main.html %}
 
     <!-- Docs page layout -->
-    <div class="bs-header" id="content" role="banner">
+    <div class="bs-header" id="content">
       <div class="container">
         <h1>{{ page.title }}</h1>
         <p>{{ page.lead }}</p>
@@ -25,8 +25,8 @@
 
     <div class="container bs-docs-container">
       <div class="row">
-        <div class="col-lg-3">
-          <div class="bs-sidebar" role="complementary">
+        <div class="col-md-3">
+          <aside class="bs-sidebar" role="complementary">
             <ul class="nav bs-sidenav">
               {% if page.slug == "getting-started" %}
                 {% include nav-getting-started.html %}
@@ -40,11 +40,11 @@
                 {% include nav-customize.html %}
               {% endif %}
             </ul>
-          </div>
+          </aside>
         </div>
-        <div class="col-lg-9" role="main">
+        <main class="col-md-9" role="main">
           {{ content }}
-        </div>
+        </main>
       </div>
 
     </div>
