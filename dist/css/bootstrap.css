@@ -2526,12 +2526,12 @@ input[type="button"].btn-block {
   margin-right: 5px;
 }
 
-a.list-group-item .list-group-item-heading {
-  color: #333333;
+a.list-group-item {
+  color: #555555;
 }
 
-a.list-group-item .list-group-item-text {
-  color: #555555;
+a.list-group-item .list-group-item-heading {
+  color: #333333;
 }
 
 a.list-group-item:hover,
