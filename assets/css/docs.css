@@ -878,7 +878,7 @@ input.focused {
   /* Widen the fixed sidebar again */
   .bs-sidebar.affix-bottom,
   .bs-sidebar.affix {
-    width: 270px;
+    width: 263px;
   }
 
 }
