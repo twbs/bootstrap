@@ -352,11 +352,11 @@
   }
 }
 
-// Button pseudo states
+// Button variants
 // -------------------------
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
-.btn-pseudo-states(@color; @background; @border) {
+.button-variant(@color; @background; @border) {
   color: @color;
   background-color: @background;
   border-color: @border;
@@ -382,6 +382,15 @@
           border-color: @border
     }
   }
+}
+
+// Button sizes
+// -------------------------
+.button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
+  padding: @padding-vertical @padding-horizontal;
+  font-size: @font-size;
+  line-height: @line-height;
+  border-radius: @border-radius;
 }
 
 // Labels
