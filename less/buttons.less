@@ -121,17 +121,13 @@
 // --------------------------------------------------
 
 .btn-lg {
-  padding: @padding-large-vertical @padding-large-horizontal;
-  font-size: @font-size-large;
-  line-height: @line-height-large; // ensure even-numbered height of button next to large input
-  border-radius: @border-radius-large;
+  // line-height: ensure even-numbered height of button next to large input
+  .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
 }
 .btn-sm,
 .btn-xs {
-  padding: @padding-small-vertical @padding-small-horizontal;
-  font-size: @font-size-small;
-  line-height: @line-height-small; // ensure proper height of button next to small input
-  border-radius: @border-radius-small;
+  // line-height: ensure proper height of button next to small input
+  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
 }
 .btn-xs {
   padding: 3px 5px;
