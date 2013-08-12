@@ -2815,6 +2815,10 @@ button.close {
   background-color: #e5e5e5;
 }
 
+.nav > li > a > img {
+  max-width: none;
+}
+
 .nav-tabs {
   border-bottom: 1px solid #dddddd;
 }
