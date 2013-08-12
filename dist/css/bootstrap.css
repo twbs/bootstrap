@@ -4117,7 +4117,7 @@ button.close {
 }
 
 .alert {
-  padding: 15px 35px 15px 15px;
+  padding: 15px;
   margin-bottom: 20px;
   color: #c09853;
   background-color: #fcf8e3;
@@ -4139,13 +4139,6 @@ button.close {
   color: #a47e3c;
 }
 
-.alert .close {
-  position: relative;
-  top: -2px;
-  right: -21px;
-  color: inherit;
-}
-
 .alert > p,
 .alert > ul {
   margin-bottom: 0;
@@ -4153,6 +4146,17 @@ button.close {
 
 .alert > p + p {
   margin-top: 5px;
+}
+
+.alert-dismissable {
+  padding-right: 35px;
+}
+
+.alert-dismissable .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  color: inherit;
 }
 
 .alert-success {

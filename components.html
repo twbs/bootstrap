@@ -1880,40 +1880,30 @@ body { padding-bottom: 70px; }
     </div>
     <p class="lead">Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages. For inline dismissal, use the <a href="../javascript/#js-alerts">alerts jQuery plugin</a>.</p>
 
-    <h3 id="alerts-default">Default alert</h3>
+    <h2 id="alerts-default">Default alert</h2>
     <p>Wrap any text and an optional dismiss button in <code>.alert</code> for a basic warning alert message.</p>
-
-    <div class="bs-callout bs-callout-warning">
-      <h4>Ensure proper behavior across all devices</h4>
-      <p>Be sure to use the <code>&lt;button&gt;</code> element with the <code>data-dismiss="alert"</code> data attribute.</p>
-    </div>
 
     <div class="bs-example">
       <div class="alert">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Warning!</strong> Best check yo self, you're not looking too good.
       </div>
     </div>
 {% highlight html %}
 <div class="alert">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
   <strong>Warning!</strong> Best check yo self, you're not looking too good.
 </div>
 {% endhighlight %}
 
-    <h3 id="alerts-alternatives">Contextual alternatives</h3>
+    <h2 id="alerts-alternatives">Contextual alternatives</h2>
     <p>Add optional classes to change an alert's connotation.</p>
     <div class="bs-example">
       <div class="alert alert-danger">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Oh snap!</strong> Change a few things up and try submitting again.
       </div>
       <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Well done!</strong> You successfully read this important alert message.
       </div>
       <div class="alert alert-info">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
       </div>
     </div>
@@ -1923,19 +1913,36 @@ body { padding-bottom: 70px; }
 <div class="alert alert-info">...</div>
 {% endhighlight %}
 
-    <h3 id="alerts-links">Links in alerts</h3>
+    <h2 id="alerts-dismissable">Dismissable alerts</h2>
+    <p>Build on any alert by adding an optional <code>.alert-dismissable</code> and close button.</p>
+    <div class="bs-example">
+      <div class="alert alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Warning!</strong> Best check yo self, you're not looking too good.
+      </div>
+    </div>
+{% highlight html %}
+<div class="alert alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Warning!</strong> Best check yo self, you're not looking too good.
+</div>
+{% endhighlight %}
+
+    <div class="bs-callout bs-callout-warning">
+      <h4>Ensure proper behavior across all devices</h4>
+      <p>Be sure to use the <code>&lt;button&gt;</code> element with the <code>data-dismiss="alert"</code> data attribute.</p>
+    </div>
+
+    <h2 id="alerts-links">Links in alerts</h2>
     <p>Use the <code>.alert-link</code> utility class to quickly provide matching colored links within any alert.</p>
     <div class="bs-example">
       <div class="alert alert-danger">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
       </div>
       <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
       </div>
       <div class="alert alert-info">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
       </div>
     </div>

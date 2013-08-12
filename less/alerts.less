@@ -7,7 +7,7 @@
 // -------------------------
 
 .alert {
-  padding: @alert-padding (@alert-padding + 20) @alert-padding @alert-padding;
+  padding: @alert-padding;
   margin-bottom: @line-height-computed;
   color: @alert-text;
   background-color: @alert-bg;
@@ -30,14 +30,6 @@
     color: darken(@alert-text, 10%);
   }
 
-  // Adjust close link position
-  .close {
-    position: relative;
-    top: -2px;
-    right: -21px;
-    color: inherit;
-  }
-
   // Improve alignment and spacing of inner content
   > p,
   > ul {
@@ -48,8 +40,25 @@
   }
 }
 
+// Dismissable alerts
+//
+// Expand the right padding and account for the close button's positioning.
+
+.alert-dismissable {
+ padding-right: (@alert-padding + 20);
+
+  // Adjust close link position
+  .close {
+    position: relative;
+    top: -2px;
+    right: -21px;
+    color: inherit;
+  }
+}
+
 // Alternate styles
-// -------------------------
+//
+// Generate contextual modifier classes for colorizing the alert.
 
 .alert-success {
   .alert-variant(@alert-success-bg; @alert-success-border; @alert-success-text);
