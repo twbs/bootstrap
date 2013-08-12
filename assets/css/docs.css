@@ -208,7 +208,7 @@ body {
   position: relative;
 }
 
-.bs-docs-section h1[id] {
+.bs-docs-section + .bs-docs-section {
   padding-top: 80px;
 }
 
