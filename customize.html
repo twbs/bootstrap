@@ -708,6 +708,8 @@ base_url: "../"
         <h4>Basics</h4>
         <label>@navbar-height</label>
         <input type="text" class="form-control" placeholder="50px">
+        <label>@navbar-margin-bottom</label>
+        <input type="text" class="form-control" placeholder="@line-height-computed">
         <label>@navbar-color</label>
         <input type="text" class="form-control" placeholder="#777">
         <label>@navbar-bg</label>
@@ -851,6 +853,9 @@ base_url: "../"
     <div class="row">
       <div class="col-lg-6">
         <h3>Inputs</h3>
+        <label>@input-color</label>
+        <input type="text" class="form-control" placeholder="@gray">
+        <p class="help-block">Text color for <code>&lt;input&gt;</code>s</p>
         <label>@input-bg</label>
         <input type="text" class="form-control" placeholder="#fff">
         <p class="help-block"><code>&lt;input&gt;</code> background color</p>
@@ -871,11 +876,15 @@ base_url: "../"
         <p class="help-block">Placeholder text color</p>
 
         <h3>Legend</h3>
+        <label>@legend-color</label>
+        <input type="text" class="form-control" placeholder="@gray">
         <label>@legend-border-color</label>
         <input type="text" class="form-control" placeholder="#e5e5e5">
-        <p class="help-block"><code>&lt;legend&gt;</code> border color</p>
 
         <h3>Input groups</h3>
+        <label>@input-group-addon-bg</label>
+        <input type="text" class="form-control" placeholder="@gray-lighter">
+        <p class="help-block">Background color for textual input addons</p>
         <label>@input-group-addon-border-color</label>
         <input type="text" class="form-control" placeholder="@input-border">
         <p class="help-block">Border color for textual input addons</p>
@@ -901,24 +910,33 @@ base_url: "../"
         <label>@dropdown-divider-bg</label>
         <input type="text" class="form-control" placeholder="#e5e5e5">
         <p class="help-block">Dropdown divider top border color</p>
+        <label>@dropdown-header-color</label>
+        <input type="text" class="form-control" placeholder="@gray-light">
+        <p class="help-block">Text color for headers within dropdown menus</p>
       </div>
       <div class="col-lg-6">
         <h3>Dropdown items</h3>
         <label>@dropdown-link-color</label>
         <input type="text" class="form-control" placeholder="@gray-dark">
         <p class="help-block">Dropdown text color</p>
-        <label>@dropdown-link-active-color</label>
+
+        <label>@dropdown-link-hover-color</label>
         <input type="text" class="form-control" placeholder="#fff">
-        <p class="help-block">Active dropdown menu entry text color</p>
+        <p class="help-block">Hovered dropdown menu entry text color</p>
         <label>@dropdown-link-hover-bg</label>
         <input type="text" class="form-control" placeholder="#fff">
         <p class="help-block">Hovered dropdown menu entry text color</p>
+
+        <label>@dropdown-link-active-color</label>
+        <input type="text" class="form-control" placeholder="#fff">
+        <p class="help-block">Active dropdown menu entry text color</p>
         <label>@dropdown-link-active-bg</label>
         <input type="text" class="form-control" placeholder="@component-active-bg">
         <p class="help-block">Active dropdown menu entry background color</p>
-        <label>@dropdown-link-hover-bg</label>
-        <input type="text" class="form-control" placeholder="@dropdown-link-active-bg">
-        <p class="help-block">Hovered dropdown menu entry background color</p>
+
+        <label>@dropdown-link-disabled-color</label>
+        <input type="text" class="form-control" placeholder="@dropdown-link-disabled-color">
+        <p class="help-block">Disabled dropdown menu entry background color</p>
       </div>
     </div>
 
@@ -1176,20 +1194,26 @@ base_url: "../"
     <h2 id="variables-thumbnails">Thumbnails</h2>
     <div class="row">
       <div class="col-lg-6">
-        <label>@thumbnail-caption-color</label>
-        <input type="text" class="form-control" placeholder="@text-color">
-        <p class="help-block">Custom text color for thumbnail captions</p>
+        <label>@thumbnail-padding</label>
+        <input type="text" class="form-control" placeholder="4px">
+        <p class="help-block">Padding around the thumbnail image</p>
         <label>@thumbnail-bg</label>
         <input type="text" class="form-control" placeholder="@body-bg">
         <p class="help-block">Thumbnail background color</p>
-      </div>
-      <div class="col-lg-6">
         <label>@thumbnail-border</label>
         <input type="text" class="form-control" placeholder="#ddd">
         <p class="help-block">Thumbnail border color</p>
         <label>@thumbnail-border-radius</label>
         <input type="text" class="form-control" placeholder="@border-radius-base">
         <p class="help-block">Thumbnail border radius</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@thumbnail-caption-padding</label>
+        <input type="text" class="form-control" placeholder="@text-color">
+        <p class="help-block">Padding around the thumbnail caption</p>
+        <label>@thumbnail-caption-color</label>
+        <input type="text" class="form-control" placeholder="@text-color">
+        <p class="help-block">Custom text color for thumbnail captions</p>
       </div>
     </div>
     <h2 id="variables-progress">Progress bars</h2>
