@@ -29,3 +29,20 @@
   padding: 9px 15px;
   border-top: 1px solid @accordion-border-color;
 }
+
+// Contextual variations
+.accordion-primary {
+  .accordion-variant(@accordion-primary-border; @accordion-primary-text; @accordion-primary-heading-bg; @accordion-primary-border);
+}
+.accordion-success {
+  .accordion-variant(@accordion-success-border; @accordion-success-text; @accordion-success-heading-bg; @accordion-success-border);
+}
+.accordion-warning {
+  .accordion-variant(@accordion-warning-border; @accordion-warning-text; @accordion-warning-heading-bg; @accordion-warning-border);
+}
+.accordion-danger {
+  .accordion-variant(@accordion-danger-border; @accordion-danger-text; @accordion-danger-heading-bg; @accordion-danger-border);
+}
+.accordion-info {
+  .accordion-variant(@accordion-info-border; @accordion-info-text; @accordion-info-heading-bg; @accordion-info-border);
+}

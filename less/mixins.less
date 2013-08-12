@@ -348,6 +348,17 @@
   }
 }
 
+// Accordions
+// -------------------------
+.accordion-variant(@border; @heading-text-color; @heading-bg-color; @heading-border) {
+  border-color: @border;
+  .accordion-heading, .accordion-heading a {
+    color: @heading-text-color;
+    background-color: @heading-bg-color;
+    border-color: @heading-border;
+  }
+}
+
 // Alerts
 // -------------------------
 .alert-variant(@background; @border; @text-color) {
