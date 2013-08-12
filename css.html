@@ -1242,7 +1242,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h2 id="forms-example">Basic example</h2>
     <p>Individual form controls automatically receive some global styling. All textual <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> elements with <code>.form-control</code> are set to <code>width: 100%;</code> by default. Wrap labels and controls in <code>.form-group</code> for optimum spacing.</p>
-    <form class="bs-example">
+    <form class="bs-example" role="form">
       <fieldset>
         <legend>Legend</legend>
         <div class="form-group">
@@ -1267,7 +1267,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </fieldset>
     </form><!-- /example -->
 {% highlight html %}
-<form>
+<form role="form">
   <fieldset>
     <legend>Legend</legend>
     <div class="form-group">
@@ -1304,7 +1304,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <h4>Always add labels</h4>
       <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the <code>.sr-only</code> class.</p>
     </div>
-    <form class="bs-example form-inline">
+    <form class="bs-example form-inline" role="form">
       <label class="sr-only" for="exampleInputEmail">Email address</label>
       <input type="text" class="form-control" id="exampleInputEmail" placeholder="Enter email">
       <label class="sr-only" for="exampleInputPassword">Password</label>
@@ -1317,7 +1317,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <button type="submit" class="btn btn-default">Sign in</button>
     </form><!-- /example -->
 {% highlight html %}
-<form class="form-inline">
+<form class="form-inline" role="form">
   <label class="sr-only" for="exampleInputEmail">Email address</label>
   <input type="text" class="form-control" id="exampleInputEmail" placeholder="Enter email">
   <label class="sr-only" for="exampleInputPassword">Password</label>
@@ -1362,7 +1362,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div>
     </form>
 {% highlight html %}
-<form class="form-horizontal">
+<form class="form-horizontal" role="form">
   <div class="form-group">
     <label for="inputEmail" class="col-lg-2 control-label">Email</label>
     <div class="col-lg-10">
@@ -1544,7 +1544,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div>
     </form>
 {% highlight html %}
-<form class="form-horizontal">
+<form class="form-horizontal" role="form">
   <div class="form-group">
     <label for="inputEmail2" class="col-lg-2 control-label">Email</label>
     <div class="col-lg-10">
@@ -1616,7 +1616,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </fieldset>
     </form>
 {% highlight html %}
-<form class="form-inline">
+<form class="form-inline" role="form">
   <fieldset disabled>
     <div class="form-group">
       <label for="disabledInput">Disabled input</label>

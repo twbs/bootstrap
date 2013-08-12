@@ -35,70 +35,58 @@
 
 // Visibility utilities
 
-// For Phones
 .visible-sm {
   .responsive-visibility();
+  @media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
+    .responsive-invisibility();
+  }
+  @media (min-width: @screen-desktop) {
+    .responsive-invisibility();
+  }
 }
 .visible-md {
   .responsive-invisibility();
+  @media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
+    .responsive-visibility();
+  }
+  @media (min-width: @screen-desktop) {
+    .responsive-invisibility();
+  }
 }
 .visible-lg {
   .responsive-invisibility();
+  @media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
+    .responsive-invisibility();
+  }
+  @media (min-width: @screen-desktop) {
+    .responsive-visibility();
+  }
 }
 
 .hidden-sm {
   .responsive-invisibility();
+  @media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
+    .responsive-visibility();
+  }
+  @media (min-width: @screen-desktop) {
+    .responsive-visibility();
+  }
 }
 .hidden-md {
   .responsive-visibility();
+  @media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
+    .responsive-invisibility();
+  }
+  @media (min-width: @screen-desktop) {
+    .responsive-visibility();
+  }
 }
 .hidden-lg {
   .responsive-visibility();
-}
-
-
-// Tablets & small desktops only
-@media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
-  .visible-sm {
-    .responsive-invisibility();
-  }
-  .visible-md {
+  @media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
     .responsive-visibility();
   }
-  .visible-lg {
-    .responsive-invisibility();
-  }
-
-  .hidden-sm {
-    .responsive-visibility();
-  }
-  .hidden-md {
-    .responsive-invisibility();
-  }
-  .hidden-lg {
-    .responsive-visibility();
-  }
-}
-
-// For desktops
-@media (min-width: @screen-desktop) {
-  .visible-sm {
-    .responsive-invisibility();
-  }
-  .visible-md {
-    .responsive-invisibility();
-  }
-  .visible-lg {
-    .responsive-visibility();
-  }
-
-  .hidden-sm {
-    .responsive-visibility();
-  }
-  .hidden-md {
-    .responsive-visibility();
-  }
-  .hidden-lg {
+  @media (min-width: @screen-desktop) {
     .responsive-invisibility();
   }
 }
