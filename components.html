@@ -154,6 +154,39 @@ base_url: "../"
 </div>
 {% endhighlight %}
 
+    <h3 id="btn-groups-sizing">Button group sizing</h3>
+    <p>Instead of applying button sizing classes to every button in a group, just add <code>.btn-group-*</code> to the <code>.btn-group</code>.</p>
+    <div class="bs-example">
+      <div class="btn-group btn-group-lg">
+        <button type="button" class="btn btn-default">Left</button>
+        <button type="button" class="btn btn-default">Middle</button>
+        <button type="button" class="btn btn-default">Right</button>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-default">Left</button>
+        <button type="button" class="btn btn-default">Middle</button>
+        <button type="button" class="btn btn-default">Right</button>
+      </div>
+      <div class="btn-group btn-group-sm">
+        <button type="button" class="btn btn-default">Left</button>
+        <button type="button" class="btn btn-default">Middle</button>
+        <button type="button" class="btn btn-default">Right</button>
+      </div>
+      <div class="btn-group btn-group-xs">
+        <button type="button" class="btn btn-default">Left</button>
+        <button type="button" class="btn btn-default">Middle</button>
+        <button type="button" class="btn btn-default">Right</button>
+      </div>
+    </div>
+{% highlight html %}
+<div class="btn-toolbar">
+  <div class="btn-group btn-group-lg">...</div>
+  <div class="btn-group">...</div>
+  <div class="btn-group btn-group-sm">...</div>
+  <div class="btn-group btn-group-xs">...</div>
+</div>
+{% endhighlight %}
+
     <h3 id="btn-groups-nested">Nested button groups</h3>
     <p>Place a <code>.btn-group</code> within another <code>.btn-group</code> when you want dropdown menus mixed with a series of buttons.</p>
     <div class="bs-example">
@@ -568,11 +601,11 @@ base_url: "../"
 {% endhighlight %}
 
     <h2 id="input-groups-sizes">Optional sizes</h2>
-    <p>Add the relative form sizing classes to the <code>.input-group-addon</code>.</p>
+    <p>Add the relative form sizing classes to the <code>.input-group</code> itself and contents within will automatically resize—no need for repeating the form control size classes on each element.</p>
     <form class="bs-example bs-example-form" role="form">
-      <div class="input-group">
-        <span class="input-group-addon input-lg">@</span>
-        <input type="text" class="form-control input-lg" placeholder="Username">
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon">@</span>
+        <input type="text" class="form-control" placeholder="Username">
       </div>
       <br>
       <div class="input-group">
@@ -580,14 +613,14 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="Username">
       </div>
       <br>
-      <div class="input-group">
-        <span class="input-group-addon input-sm">@</span>
-        <input type="text" class="form-control input-sm" placeholder="Username">
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">@</span>
+        <input type="text" class="form-control" placeholder="Username">
       </div>
     </form>
 {% highlight html %}
-<div class="input-group">
-  <span class="input-group-addon input-lg">@</span>
+<div class="input-group input-group-lg">
+  <span class="input-group-addon">@</span>
   <input type="text" class="form-control input-lg" placeholder="Username">
 </div>
 
@@ -596,9 +629,9 @@ base_url: "../"
   <input type="text" class="form-control" placeholder="Username">
 </div>
 
-<div class="input-group">
-  <span class="input-group-addon input-sm">@</span>
-  <input type="text" class="form-control input-sm" placeholder="Username">
+<div class="input-group input-group-sm">
+  <span class="input-group-addon">@</span>
+  <input type="text" class="form-control" placeholder="Username">
 </div>
 {% endhighlight %}
 
