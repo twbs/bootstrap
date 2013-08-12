@@ -2334,7 +2334,7 @@ input[type="button"].btn-block {
 .list-group-item {
   position: relative;
   display: block;
-  padding: 10px 30px 10px 15px;
+  padding: 10px 15px;
   margin-bottom: -1px;
   background-color: #ffffff;
   border: 1px solid #dddddd;
@@ -2353,11 +2353,10 @@ input[type="button"].btn-block {
 
 .list-group-item > .badge {
   float: right;
-  margin-right: -15px;
 }
 
 .list-group-item > .badge + .badge {
-  margin-right: 0;
+  margin-right: 5px;
 }
 
 .list-group-item-heading {
