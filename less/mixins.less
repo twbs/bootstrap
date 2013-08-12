@@ -470,41 +470,8 @@
   }
 }
 
-// Generate the columns
+// Generate the default columns
 .make-column(@columns; @gutter: @grid-gutter-width) {
-  position: relative;
-  // Prevent columns from collapsing when empty
-  min-height: 1px;
-  // Inner gutter via padding
-  padding-left:  (@gutter / 2);
-  padding-right: (@gutter / 2);
-
-  // Calculate width based on number of columns available
-  @media (min-width: @grid-float-breakpoint) {
-    float: left;
-    width: percentage((@columns / @grid-columns));
-  }
-}
-
-// Generate the column offsets
-.make-column-offset(@columns) {
-  @media (min-width: @grid-float-breakpoint) {
-    margin-left: percentage((@columns / @grid-columns));
-  }
-}
-.make-column-push(@columns) {
-  @media (min-width: @grid-float-breakpoint) {
-    left: percentage((@columns / @grid-columns));
-  }
-}
-.make-column-pull(@columns) {
-  @media (min-width: @grid-float-breakpoint) {
-    right: percentage((@columns / @grid-columns));
-  }
-}
-
-// Generate the small columns
-.make-small-column(@columns; @gutter: @grid-gutter-width) {
   position: relative;
   float: left;
   // Prevent columns from collapsing when empty
@@ -512,11 +479,77 @@
   // Inner gutter via padding
   padding-left:  (@gutter / 2);
   padding-right: (@gutter / 2);
-  @max-width: (@grid-float-breakpoint - 1);
+  @max-width: (@screen-small - 1);
 
   // Calculate width based on number of columns available
   @media (max-width: @max-width) {
     width: percentage((@columns / @grid-columns));
+  }
+}
+
+// Generate the small columns
+.make-small-column(@columns; @gutter: @grid-gutter-width) {
+  position: relative;
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Inner gutter via padding
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
+
+  // Calculate width based on number of columns available
+  @media (min-width: @screen-small) {
+    float: left;
+    width: percentage((@columns / @grid-columns));
+  }
+}
+
+// Generate the small column offsets
+.make-small-column-offset(@columns) {
+  @media (min-width: @screen-small) {
+    margin-left: percentage((@columns / @grid-columns));
+  }
+}
+.make-small-column-push(@columns) {
+  @media (min-width: @screen-small) {
+    left: percentage((@columns / @grid-columns));
+  }
+}
+.make-small-column-pull(@columns) {
+  @media (min-width: @screen-small) {
+    right: percentage((@columns / @grid-columns));
+  }
+}
+
+// Generate the large columns
+.make-large-column(@columns; @gutter: @grid-gutter-width) {
+  position: relative;
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Inner gutter via padding
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
+
+  // Calculate width based on number of columns available
+  @media (min-width: @screen-medium) {
+    float: left;
+    width: percentage((@columns / @grid-columns));
+  }
+}
+
+// Generate the large column offsets
+.make-large-column-offset(@columns) {
+  @media (min-width: @screen-medium) {
+    margin-left: percentage((@columns / @grid-columns));
+  }
+}
+.make-large-column-push(@columns) {
+  @media (min-width: @screen-medium) {
+    left: percentage((@columns / @grid-columns));
+  }
+}
+.make-large-column-pull(@columns) {
+  @media (min-width: @screen-medium) {
+    right: percentage((@columns / @grid-columns));
   }
 }
 
