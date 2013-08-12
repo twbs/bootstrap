@@ -1177,14 +1177,14 @@ $('#myPopover').on('hidden.bs.popover', function () {
     <p>Add dismiss functionality to all alert messages with this plugin.</p>
     <div class="bs-example">
       <div class="alert fade in">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
       </div>
     </div><!-- /example -->
 
     <div class="bs-example">
       <div class="alert alert-block alert-error fade in">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h4>Oh snap! You got an error!</h4>
         <p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
         <p>
@@ -1200,7 +1200,7 @@ $('#myPopover').on('hidden.bs.popover', function () {
 
     <h3>Markup</h3>
     <p>Just add <code>data-dismiss="alert"</code> to your close button to automatically give an alert close functionality.</p>
-    {% highlight html %}<a class="close" data-dismiss="alert" href="#">&times;</a>{% endhighlight %}
+    {% highlight html %}<a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>{% endhighlight %}
 
     <h3>Methods</h3>
 
