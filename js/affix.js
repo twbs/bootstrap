@@ -74,6 +74,8 @@
 
     if (affix == 'bottom') {
       this.$element.offset({ top: document.body.offsetHeight - offsetBottom - this.$element.height() })
+    } else {
+      this.$element.css('position', '')
     }
   }
 
