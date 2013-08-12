@@ -4525,6 +4525,61 @@ a.list-group-item.active > .badge,
   border-top: 1px solid #e5e5e5;
 }
 
+.accordion-primary {
+  border-color: #428bca;
+}
+
+.accordion-primary .accordion-heading,
+.accordion-primary .accordion-heading a {
+  color: #ffffff;
+  background-color: #428bca;
+  border-color: #428bca;
+}
+
+.accordion-success {
+  border-color: #d6e9c6;
+}
+
+.accordion-success .accordion-heading,
+.accordion-success .accordion-heading a {
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.accordion-warning {
+  border-color: #fbeed5;
+}
+
+.accordion-warning .accordion-heading,
+.accordion-warning .accordion-heading a {
+  color: #c09853;
+  background-color: #fcf8e3;
+  border-color: #fbeed5;
+}
+
+.accordion-danger {
+  border-color: #eed3d7;
+}
+
+.accordion-danger .accordion-heading,
+.accordion-danger .accordion-heading a {
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+}
+
+.accordion-info {
+  border-color: #bce8f1;
+}
+
+.accordion-info .accordion-heading,
+.accordion-info .accordion-heading a {
+  color: #3a87ad;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
 .carousel {
   position: relative;
 }
