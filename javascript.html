@@ -478,9 +478,42 @@ $('.dropdown-toggle').dropdown()
     <h3>Methods</h3>
     <h4>$().dropdown('toggle')</h4>
     <p>Toggles the dropdown menu of a given navbar or tabbed navigation.</p>
+
+    <h3>Events</h3>
+    <div class="bs-table-scrollable">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th style="width: 150px;">Event Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>show.bs.dropdown</td>
+            <td>This event fires immediately when the show instance method is called.</td>
+          </tr>
+          <tr>
+            <td>shown.bs.dropdown</td>
+            <td>This event is fired when the dropdown has been made visible to the user (will wait for CSS transitions, to complete).</td>
+          </tr>
+          <tr>
+            <td>hide.bs.dropdown</td>
+            <td>This event is fired immediately when the hide instance method has been called.</td>
+          </tr>
+          <tr>
+            <td>hidden.bs.dropdown</td>
+            <td>This event is fired when the dropdown has finished being hidden from the user (will wait for CSS transitions, to complete).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div><!-- ./bs-table-scrollable -->
+{% highlight js %}
+$('#myDropdown').on('show.bs.dropdown', function () {
+  // do something…
+})
+{% endhighlight %}
   </div>
-
-
 
   <!-- ScrollSpy
   ================================================== -->
