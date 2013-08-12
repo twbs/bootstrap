@@ -428,8 +428,8 @@ base_url: "../"
   }
 }
 
-// Generate the columns
-.make-column(@columns; @gutter: @grid-gutter-width) {
+// Generate the extra small columns
+.make-xs-column(@columns; @gutter: @grid-gutter-width) {
   position: relative;
   // Prevent columns from collapsing when empty
   min-height: 1px;
@@ -551,11 +551,11 @@ base_url: "../"
   .make-row();
 }
 .content-main {
-  .make-column(8);
+  .make-lg-column(8);
 }
 .content-secondary {
-  .make-column(3);
-  .make-column-offset(1);
+  .make-lg-column(3);
+  .make-lg-column-offset(1);
 }
 {% endhighlight %}
 {% highlight html %}
