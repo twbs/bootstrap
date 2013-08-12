@@ -1830,9 +1830,6 @@ textarea.input-sm {
     margin-bottom: 0;
     vertical-align: middle;
   }
-  .form-inline .form-control {
-    width: auto;
-  }
   .form-inline .radio,
   .form-inline .checkbox {
     display: inline-block;
@@ -3176,9 +3173,6 @@ button.close {
     display: inline-block;
     margin-bottom: 0;
     vertical-align: middle;
-  }
-  .navbar-form .form-control {
-    width: auto;
   }
   .navbar-form .radio,
   .navbar-form .checkbox {
