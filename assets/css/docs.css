@@ -637,17 +637,9 @@ body {
 ------------------------- */
 .responsive-utilities-test {
   margin-top: 5px;
-  padding-left: 0;
-  list-style: none;
-  overflow: hidden; /* clear floats */
 }
-.responsive-utilities-test li {
-  position: relative;
-  float: left;
-  width: 25%;
-}
-.responsive-utilities-test li + li {
-  margin-left: 10px;
+.responsive-utilities-test .col-xs-6 {
+  margin-bottom: 10px;
 }
 .responsive-utilities-test span {
   padding: 15px 10px;
