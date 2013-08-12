@@ -128,6 +128,7 @@
 // Brand/project name
 .navbar-brand {
   float: left;
+  margin-right: 15px;
   padding-top: @navbar-padding-vertical;
   padding-bottom: @navbar-padding-vertical;
   font-size: @font-size-large;
@@ -321,6 +322,11 @@
 // --------------------------------------------------
 
 @media screen and (min-width: @grid-float-breakpoint) {
+
+  // Undo clearing to keep nav and brand horizontal
+  .nav-collapse {
+    clear: none;
+  }
 
   .navbar-nav {
     float: left;

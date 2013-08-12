@@ -2926,6 +2926,7 @@ button.close {
   float: left;
   padding-top: 15px;
   padding-bottom: 15px;
+  margin-right: 15px;
   font-size: 18px;
   line-height: 20px;
   color: #777777;
@@ -3113,6 +3114,9 @@ button.close {
 }
 
 @media screen and (min-width: 768px) {
+  .nav-collapse {
+    clear: none;
+  }
   .navbar-nav {
     float: left;
     margin-top: 0;
