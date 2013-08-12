@@ -74,7 +74,10 @@
 // Extra small grid
 //
 // Grid classes for extra small devices like smartphones. No offset, push, or
-// pull classes are present here due to the size of the target
+// pull classes are present here due to the size of the target.
+//
+// Note that `.col-xs-12` doesn't get floated on purpose—there's no need since
+// it's full-width.
 
 .col-xs-1,
 .col-xs-2,
@@ -86,8 +89,7 @@
 .col-xs-8,
 .col-xs-9,
 .col-xs-10,
-.col-xs-11,
-.col-xs-12 {
+.col-xs-11 {
   float: left;
 }
 .col-xs-1  { width: percentage((1 / @grid-columns)); }
@@ -108,6 +110,9 @@
 //
 // Columns, offsets, pushes, and pulls for the small device range, from phones
 // to tablets.
+//
+// Note that `.col-sm-12` doesn't get floated on purpose—there's no need since
+// it's full-width.
 
 @media (min-width: @screen-tablet) {
   .container {
@@ -124,8 +129,7 @@
   .col-sm-8,
   .col-sm-9,
   .col-sm-10,
-  .col-sm-11,
-  .col-sm-12 {
+  .col-sm-11 {
     float: left;
   }
   .col-sm-1  { width: percentage((1 / @grid-columns)); }
@@ -184,6 +188,9 @@
 // Medium grid
 //
 // Columns, offsets, pushes, and pulls for the desktop device range.
+//
+// Note that `.col-md-12` doesn't get floated on purpose—there's no need since
+// it's full-width.
 
 @media (min-width: @screen-desktop) {
   .container {
@@ -199,8 +206,7 @@
   .col-md-8,
   .col-md-9,
   .col-md-10,
-  .col-md-11,
-  .col-md-12 {
+  .col-md-11 {
     float: left;
   }
   .col-md-1  { width: percentage((1 / @grid-columns)); }
@@ -259,6 +265,9 @@
 // Large grid
 //
 // Columns, offsets, pushes, and pulls for the large desktop device range.
+//
+// Note that `.col-lg-12` doesn't get floated on purpose—there's no need since
+// it's full-width.
 
 @media (min-width: @screen-large-desktop) {
   .container {
@@ -275,8 +284,7 @@
   .col-lg-8,
   .col-lg-9,
   .col-lg-10,
-  .col-lg-11,
-  .col-lg-12 {
+  .col-lg-11 {
     float: left;
   }
   .col-lg-1  { width: percentage((1 / @grid-columns)); }
