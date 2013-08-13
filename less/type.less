@@ -43,6 +43,23 @@ cite    { font-style: normal; }
 .text-right          { text-align: right; }
 .text-center         { text-align: center; }
 
+// Responsive alignment
+@media (min-width: @screen-tablet) {
+  .col-sm-text-left   { text-align: left; }
+  .col-sm-text-right  { text-align: right; }
+  .col-sm-text-center { text-align: center; }
+}
+@media (min-width: @screen-desktop) {
+  .col-md-text-left   { text-align: left; }
+  .col-md-text-right  { text-align: right; }
+  .col-md-text-center { text-align: center; }
+}
+@media (min-width: @screen-large-desktop) {
+  .col-lg-text-left   { text-align: left; }
+  .col-lg-text-right  { text-align: right; }
+  .col-lg-text-center { text-align: center; }
+}
+
 
 // Headings
 // -------------------------
