@@ -19,24 +19,25 @@ base_url: "../"
     <p>Wrap the dropdown's trigger and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Then add the menu's HTML.</p>
     <div class="bs-example">
       <div class="dropdown clearfix">
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-          <li><a tabindex="-1" href="#">Action</a></li>
-          <li><a tabindex="-1" href="#">Another action</a></li>
-          <li><a tabindex="-1" href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a tabindex="-1" href="#">Separated link</a></li>
+        <a id="dropdownMenu1" href="#" role="button" class="sr-only dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
         </ul>
       </div>
     </div><!-- /example -->
 {% highlight html %}
 <div class="dropdown">
   <!-- Link or button to toggle dropdown -->
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-    <li><a tabindex="-1" href="#">Action</a></li>
-    <li><a tabindex="-1" href="#">Another action</a></li>
-    <li><a tabindex="-1" href="#">Something else here</a></li>
-    <li class="divider"></li>
-    <li><a tabindex="-1" href="#">Separated link</a></li>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+    <li role="presentation" class="divider"></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
   </ul>
 </div>
 {% endhighlight %}
@@ -53,23 +54,24 @@ base_url: "../"
     <p>Add a header to label sections of actions in any dropdown menu.</p>
     <div class="bs-example">
       <div class="dropdown clearfix">
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-          <li class="dropdown-header">Dropdown header</li>
-          <li><a tabindex="-1" href="#">Action</a></li>
-          <li><a tabindex="-1" href="#">Another action</a></li>
-          <li><a tabindex="-1" href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li class="dropdown-header">Dropdown header</li>
-          <li><a tabindex="-1" href="#">Separated link</a></li>
+        <a id="dropdownMenu2" href="#" role="button" class="sr-only dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+          <li role="presentation" class="dropdown-header">Dropdown header</li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation" class="dropdown-header">Dropdown header</li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
         </ul>
       </div>
     </div><!-- /example -->
 {% highlight html %}
-<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-  <li class="dropdown-header">Dropdown header</li>
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+  <li role="presentation" class="dropdown-header">Dropdown header</li>
   ...
-  <li class="divider"></li>
-  <li class="dropdown-header">Dropdown header</li>
+  <li role="presentation" class="divider"></li>
+  <li role="presentation" class="dropdown-header">Dropdown header</li>
   ...
 </ul>
 {% endhighlight %}
@@ -78,18 +80,19 @@ base_url: "../"
     <p>Add <code>.disabled</code> to a <code>&lt;li&gt;</code> in the dropdown to disable the link.</p>
     <div class="bs-example">
       <div class="dropdown clearfix">
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-          <li><a tabindex="-1" href="#">Regular link</a></li>
-          <li class="disabled"><a tabindex="-1" href="#">Disabled link</a></li>
-          <li><a tabindex="-1" href="#">Another link</a></li>
+        <a id="dropdownMenu3" href="#" role="button" class="sr-only dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
+          <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
         </ul>
       </div>
     </div><!-- /example -->
 {% highlight html %}
-<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-  <li><a tabindex="-1" href="#">Regular link</a></li>
-  <li class="disabled"><a tabindex="-1" href="#">Disabled link</a></li>
-  <li><a tabindex="-1" href="#">Another link</a></li>
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
+  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
+  <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
+  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
 </ul>
 {% endhighlight %}
   </div>
@@ -1819,22 +1822,22 @@ body { padding-bottom: 70px; }
       <div class="row">
         <div class="col-lg-3">
           <a href="#" class="thumbnail">
-            <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail">
+            <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
           </a>
         </div>
         <div class="col-lg-3">
           <a href="#" class="thumbnail">
-            <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail">
+            <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
           </a>
         </div>
         <div class="col-lg-3">
           <a href="#" class="thumbnail">
-            <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail">
+            <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
           </a>
         </div>
         <div class="col-lg-3">
           <a href="#" class="thumbnail">
-            <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail">
+            <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
           </a>
         </div>
       </div>
@@ -1856,7 +1859,7 @@ body { padding-bottom: 70px; }
       <div class="row">
         <div class="col-lg-4">
           <div class="thumbnail">
-            <img data-src="holder.js/300x200" alt="">
+            <img data-src="holder.js/300x200" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
             <div class="caption">
               <h3>Thumbnail label</h3>
               <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -1866,7 +1869,7 @@ body { padding-bottom: 70px; }
         </div>
         <div class="col-lg-4">
           <div class="thumbnail">
-            <img data-src="holder.js/300x200" alt="">
+            <img data-src="holder.js/300x200" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
             <div class="caption">
               <h3>Thumbnail label</h3>
               <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -1876,7 +1879,7 @@ body { padding-bottom: 70px; }
         </div>
         <div class="col-lg-4">
           <div class="thumbnail">
-            <img data-src="holder.js/300x200" alt="">
+            <img data-src="holder.js/300x200" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
             <div class="caption">
               <h3>Thumbnail label</h3>
               <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -1890,7 +1893,7 @@ body { padding-bottom: 70px; }
 <div class="row">
   <div class="col-lg-4">
     <div class="thumbnail">
-      <img data-src="holder.js/300x200" alt="">
+      <img data-src="holder.js/300x200" alt="...">
       <div class="caption">
         <h3>Thumbnail label</h3>
         <p>...</p>
@@ -2148,7 +2151,7 @@ body { padding-bottom: 70px; }
     <div class="bs-example">
       <div class="media">
         <a class="pull-left" href="#">
-          <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
+          <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
         </a>
         <div class="media-body">
           <h4 class="media-heading">Media heading</h4>
@@ -2157,14 +2160,14 @@ body { padding-bottom: 70px; }
       </div>
       <div class="media">
         <a class="pull-left" href="#">
-          <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
+          <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
         </a>
         <div class="media-body">
           <h4 class="media-heading">Media heading</h4>
           Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
           <div class="media">
             <a class="pull-left" href="#">
-              <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
+              <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
             </a>
             <div class="media-body">
               <h4 class="media-heading">Media heading</h4>
@@ -2192,7 +2195,7 @@ body { padding-bottom: 70px; }
       <ul class="media-list">
         <li class="media">
           <a class="pull-left" href="#">
-            <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
+            <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
           </a>
           <div class="media-body">
             <h4 class="media-heading">Media heading</h4>
@@ -2200,7 +2203,7 @@ body { padding-bottom: 70px; }
             <!-- Nested media object -->
             <div class="media">
               <a class="pull-left" href="#">
-                <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
+                <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
               </a>
               <div class="media-body">
                 <h4 class="media-heading">Nested media heading</h4>
@@ -2208,7 +2211,7 @@ body { padding-bottom: 70px; }
                 <!-- Nested media object -->
                 <div class="media">
                   <a class="pull-left" href="#">
-                    <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
+                    <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
                   </a>
                   <div class="media-body">
                     <h4 class="media-heading">Nested media heading</h4>
@@ -2220,7 +2223,7 @@ body { padding-bottom: 70px; }
             <!-- Nested media object -->
             <div class="media">
               <a class="pull-left" href="#">
-                <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
+                <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
               </a>
               <div class="media-body">
                 <h4 class="media-heading">Nested media heading</h4>
@@ -2231,7 +2234,7 @@ body { padding-bottom: 70px; }
         </li>
         <li class="media">
           <a class="pull-right" href="#">
-            <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
+            <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
           </a>
           <div class="media-body">
             <h4 class="media-heading">Media heading</h4>
