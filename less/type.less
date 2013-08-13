@@ -11,12 +11,12 @@ p {
 }
 .lead {
   margin-bottom: @line-height-computed;
-  font-size: (@font-size-base * 1.15);
+  font-size: 1.15rem;
   font-weight: 200;
   line-height: 1.4;
 
   @media (min-width: 768px) {
-    font-size: (@font-size-base * 1.5);
+    font-size: 1.5rem;
   }
 }
 
@@ -25,7 +25,7 @@ p {
 // -------------------------
 
 // Ex: 14px base font * 85% = about 12px
-small   { font-size: 85%; }
+small   { font-size: 0.85rem; }
 
 // Undo browser default styling
 cite    { font-style: normal; }
@@ -72,17 +72,17 @@ h6 {
   margin-bottom: (@line-height-computed / 2);
 }
 
-h1, .h1 { font-size: ceil(@font-size-base * 2.70); } // ~38px
-h2, .h2 { font-size: ceil(@font-size-base * 2.25); } // ~32px
-h3, .h3 { font-size: ceil(@font-size-base * 1.70); } // ~24px
-h4, .h4 { font-size: ceil(@font-size-base * 1.25); } // ~18px
-h5, .h5 { font-size:  @font-size-base; }
-h6, .h6 { font-size: ceil(@font-size-base * 0.85); } // ~12px
+h1, .h1 { font-size: 2.70rem; } // ~38px
+h2, .h2 { font-size: 2.25rem; } // ~32px
+h3, .h3 { font-size: 1.70rem; } // ~24px
+h4, .h4 { font-size: 1.25rem; } // ~18px
+h5, .h5 { font-size: 1rem; }
+h6, .h6 { font-size: 0.85rem; } // ~12px
 
-h1 small, .h1 small { font-size: ceil(@font-size-base * 1.70); } // ~24px
-h2 small, .h2 small { font-size: ceil(@font-size-base * 1.25); } // ~18px
+h1 small, .h1 small { font-size: 1.70rem; } // ~24px
+h2 small, .h2 small { font-size: 1.25rem; } // ~18px
 h3 small, .h3 small,
-h4 small, .h4 small { font-size: @font-size-base; }
+h4 small, .h4 small { font-size: 1rem; }
 
 
 // Page header
@@ -174,7 +174,7 @@ abbr[data-original-title] {
   border-bottom: 1px dotted @abbr-border-color;
 }
 abbr.initialism {
-  font-size: 90%;
+  font-size: 0.9rem;
   text-transform: uppercase;
 }
 
@@ -184,7 +184,7 @@ blockquote {
   margin: 0 0 @line-height-computed;
   border-left: 5px solid @blockquote-border-color;
   p {
-    font-size: (@font-size-base * 1.25);
+    font-size: 1.25rem;
     font-weight: 300;
     line-height: 1.25;
   }
