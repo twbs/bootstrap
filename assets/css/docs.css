@@ -717,7 +717,7 @@ body {
 -------------------------------------------------- */
 
 /* Pseudo :focus state for showing how it looks in the docs */
-input.focused {
+#focusedInput {
   border-color: rgba(82,168,236,.8);
   outline: 0;
   outline: thin dotted \9; /* IE6-9 */
