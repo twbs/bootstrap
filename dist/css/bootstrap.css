@@ -286,7 +286,9 @@ table {
   }
 }
 
-* {
+*,
+*:before,
+*:after {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -2253,7 +2255,8 @@ input[type="button"].btn-block {
 }
 
 .input-group-lg > .form-control,
-.input-group-lg > .input-group-addon {
+.input-group-lg > .input-group-addon,
+.input-group-lg > .input-group-btn > .btn {
   height: 45px;
   padding: 10px 16px;
   font-size: 18px;
@@ -2262,7 +2265,8 @@ input[type="button"].btn-block {
 }
 
 .input-group-sm > .form-control,
-.input-group-sm > .input-group-addon {
+.input-group-sm > .input-group-addon,
+.input-group-lg > .input-group-btn > .btn {
   height: 30px;
   padding: 5px 10px;
   font-size: 12px;
