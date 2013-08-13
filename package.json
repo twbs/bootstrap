@@ -12,8 +12,8 @@
   }
   , "licenses": [
     {
-        "type": "Apache-2.0"
-      , "url": "http://www.apache.org/licenses/LICENSE-2.0"
+        "type": "MIT"
+      , "url": "http://www.opensource.org/licenses/MIT"
     }
   ]
   , "devDependencies": {
