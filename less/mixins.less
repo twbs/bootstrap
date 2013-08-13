@@ -335,6 +335,14 @@
     color: @heading-text-color;
     background-color: @heading-bg-color;
     border-color: @heading-border;
+    + .panel-collapse .panel-body {
+      border-top-color: @border;
+    }
+  }
+  .panel-footer {
+    + .panel-collapse .panel-body {
+      border-bottom-color: @border;
+    }
   }
 }
 
