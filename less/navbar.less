@@ -13,6 +13,7 @@
   min-height: @navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
   margin-bottom: @navbar-margin-bottom;
   background-color: @navbar-bg;
+  border: 1px solid @navbar-border;
 
   // Prevent floats from breaking the navbar
   .clearfix();
@@ -50,8 +51,7 @@
 // content for the user's viewport.
 
 .navbar-collapse {
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 5px @navbar-padding-horizontal;
   border-top: 1px solid darken(@navbar-bg, 7%);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
   // Clear floated elements and prevent collapsing of padding
@@ -82,6 +82,7 @@
 // Static top (unfixed, but 100% wide) navbar
 .navbar-static-top {
   @media (min-width: @grid-float-breakpoint) {
+    border-width: 0 0 1px;
     border-radius: 0;
   }
 }
@@ -93,6 +94,7 @@
   right: 0;
   left: 0;
   z-index: @zindex-navbar-fixed;
+  border-width: 0 0 1px;
 
   // Undo the rounded corners
   @media (min-width: @grid-float-breakpoint) {
@@ -166,6 +168,14 @@
 // the nav the full height of the horizontal nav (above 768px).
 
 .navbar-nav {
+  margin-left: -@navbar-padding-horizontal;
+  margin-right: -@navbar-padding-horizontal;
+
+  @media (min-width: @grid-float-breakpoint) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   > li > a {
     padding-top:    10px;
     padding-bottom: 10px;
@@ -333,6 +343,7 @@
 
 .navbar-inverse {
   background-color: @navbar-inverse-bg;
+  border-color: @navbar-inverse-border;
 
   .navbar-brand {
     color: @navbar-inverse-brand-color;
@@ -513,7 +524,6 @@
 
 .navbar-text {
   float: left;
-  padding: 0 @navbar-padding-horizontal;
   .navbar-vertical-align(@line-height-computed);
 }
 

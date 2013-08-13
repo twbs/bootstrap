@@ -2999,7 +2999,8 @@ button.close {
   position: relative;
   min-height: 50px;
   margin-bottom: 20px;
-  background-color: #eeeeee;
+  background-color: #f8f8f8;
+  border: 1px solid #e7e7e7;
 }
 
 .navbar:before,
@@ -3061,11 +3062,10 @@ button.close {
 
 .navbar-collapse {
   max-height: 360px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 5px 15px;
   overflow-x: visible;
   overflow-y: scroll;
-  border-top: 1px solid #dcdcdc;
+  border-top: 1px solid #e6e6e6;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   -webkit-overflow-scrolling: touch;
 }
@@ -3101,6 +3101,7 @@ button.close {
 
 @media (min-width: 768px) {
   .navbar-static-top {
+    border-width: 0 0 1px;
     border-radius: 0;
   }
 }
@@ -3111,6 +3112,7 @@ button.close {
   right: 0;
   left: 0;
   z-index: 1030;
+  border-width: 0 0 1px;
 }
 
 @media (min-width: 768px) {
@@ -3174,6 +3176,18 @@ button.close {
   margin-top: 4px;
 }
 
+.navbar-nav {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
 .navbar-nav > li > a {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -3191,7 +3205,7 @@ button.close {
 .navbar-nav > .active > a:hover,
 .navbar-nav > .active > a:focus {
   color: #555555;
-  background-color: #d5d5d5;
+  background-color: #e7e7e7;
 }
 
 .navbar-nav > .disabled > a,
@@ -3233,7 +3247,7 @@ button.close {
   .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #555555;
-    background-color: #d5d5d5;
+    background-color: #e7e7e7;
   }
   .navbar-nav .open .dropdown-menu > .disabled > a,
   .navbar-nav .open .dropdown-menu > .disabled > a:hover,
@@ -3248,8 +3262,8 @@ button.close {
   padding: 10px 15px;
   margin-top: 8px;
   margin-bottom: 8px;
-  border-top: 1px solid #dcdcdc;
-  border-bottom: 1px solid #dcdcdc;
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
 }
 
 @media (min-width: 768px) {
@@ -3311,7 +3325,7 @@ button.close {
 .navbar-nav > .open > a:hover,
 .navbar-nav > .open > a:focus {
   color: #555555;
-  background-color: #d5d5d5;
+  background-color: #e7e7e7;
 }
 
 .navbar-nav > .open > a .caret,
@@ -3334,6 +3348,7 @@ button.close {
 
 .navbar-inverse {
   background-color: #222222;
+  border-color: #080808;
 }
 
 .navbar-inverse .navbar-brand {
@@ -3474,7 +3489,6 @@ button.close {
 
 .navbar-text {
   float: left;
-  padding: 0 15px;
   margin-top: 15px;
   margin-bottom: 15px;
 }
