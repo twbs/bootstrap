@@ -602,7 +602,7 @@ base_url: "../"
           </tr>
           <tr>
             <td><h5>Bootstrap heading</h5></td>
-            <td>Semibold 16px</td>
+            <td>Semibold 14px</td>
           </tr>
           <tr>
             <td><h6>Bootstrap heading</h6></td>
@@ -2012,9 +2012,9 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <p>Keep in mind that Internet Explorer 8 lacks support for rounded corners.</p>
     </div>
     <div class="bs-example bs-example-images">
-      <img data-src="holder.js/140x140" class="img-rounded" alt="A generic square placeholder image with rounded corners">
-      <img data-src="holder.js/140x140" class="img-circle" alt="A generic square placeholder image where only the portion within the circle circumscribed about said square is visible">
-      <img data-src="holder.js/140x140" class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera">
+      <img data-src="holder.js/140x140" src="data:image/png;base64," class="img-rounded" alt="A generic square placeholder image with rounded corners">
+      <img data-src="holder.js/140x140" src="data:image/png;base64," class="img-circle" alt="A generic square placeholder image where only the portion within the circle circumscribed about said square is visible">
+      <img data-src="holder.js/140x140" src="data:image/png;base64," class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera">
     </div>
 {% highlight html %}
 <img src="..." alt="..." class="img-rounded">
@@ -2075,7 +2075,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 {% highlight css %}
 // Mixin
-.clearfix {
+.clearfix() {
   &:before,
   &:after {
     content: " ";

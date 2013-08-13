@@ -15,9 +15,14 @@ base_url: "../"
     </div>
     <p class="lead">There are a few easy ways to quickly get started with Bootstrap, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
 
+    <h3>Download latest full source</h3>
+    <p class="lead">Until Bootstrap 3.0.0 is finalized, download the latest full source code (includes compiled and minified versions of our CSS and JavaScript under the <code>dist/</code> directory).</p>
+    <a href="{{ site.download }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download latest Bootstrap 3</a>
+    <!--
     <h3>Download compiled CSS and JS</h3>
     <p class="lead">The fastest way to get started is to get the compiled and minified versions of our CSS and JavaScript. No documentation or original source files are included.</p>
     <p><a class="btn btn-lg btn-primary" href="{{ site.download_dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a></p>
+    -->
 
     <h3 id="download-options">More download options</h3>
     <div class="bs-docs-dl-options">
@@ -180,6 +185,9 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
       <li>Tweak your percentages manually to get the perfect rounding for Safari (more difficult than the first option)</li>
     </ul>
     <p>We'll keep an eye on this though and update our code if we have an easy solution.</p>
+
+    <h3>Modals and mobile devices</h3>
+    <p>Support for <code>overflow: hidden</code> on the <code>&lt;body&gt;</code> element is quite limited in iOS and Android. To that end, when you scroll past the top or bottom of a modal in either of those devices' browsers, the <code>&lt;body&gt;</code> content will begin to scroll.</p>
   </div>
 
 
