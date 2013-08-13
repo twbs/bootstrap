@@ -860,7 +860,7 @@ body {
   }
 }
 
-@media screen and (min-width: 992px) and (min-height: 800px) {
+@media screen and (min-width: 992px) and (min-height: 700px) {
   /* Show the hidden subnavs when space allows it */
   .bs-sidebar .nav > .active > ul {
     display: block;
