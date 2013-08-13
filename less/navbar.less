@@ -205,12 +205,6 @@
     }
   }
 
-  // Right aligned contents
-  // Make them full width first so that they align properly on mobile
-  &.pull-right {
-    width: 100%;
-  }
-
   @media (max-width: @screen-phone-max) {
     // Dropdowns get custom display
     .open .dropdown-menu {
@@ -257,13 +251,26 @@
 }
 
 
+// Component alignment
+//
+// Repurpose the pull utilities as their own navbar utilities to avoid specifity
+// issues with parents and chaining. Only do this when the navbar is uncollapsed
+// though so that navbar contents properly stack and align in mobile.
+
+@media (min-width: @grid-float-breakpoint) {
+  .navbar-left  { .pull-left(); }
+  .navbar-right { .pull-right(); }
+}
+
+
 // Navbar form
 //
 // Extension of the `.form-inline` with some extra flavor for optimum display in
 // our navbars.
 
 .navbar-form {
-  width: 100%; // Counteract the float from `.pull-` classes
+  margin-left: -@navbar-padding-horizontal;
+  margin-right: -@navbar-padding-horizontal;
   padding: 10px @navbar-padding-horizontal;
   border-top: 1px solid darken(@navbar-bg, 7%);
   border-bottom: 1px solid darken(@navbar-bg, 7%);
@@ -284,6 +291,8 @@
   @media (min-width: @grid-float-breakpoint) {
     width: auto;
     border: 0;
+    margin-left: 0;
+    margin-right: 0;
     padding-top: 0;
     padding-bottom: 0;
   }
@@ -435,6 +444,9 @@
     @media (max-width: @screen-phone-max) {
       // Dropdowns get custom display
       .open .dropdown-menu {
+        > .dropdown-header {
+          border-color: @navbar-inverse-border;
+        }
         > li > a {
           color: @navbar-inverse-link-color;
           &:hover,
@@ -484,10 +496,6 @@
         padding-top: ((@navbar-height - @line-height-computed) / 2);
         padding-bottom: ((@navbar-height - @line-height-computed) / 2);
       }
-    }
-
-    &.pull-right {
-      width: auto;
     }
   }
 
