@@ -393,6 +393,30 @@
   border-radius: @border-radius;
 }
 
+// Pagination
+// -------------------------
+.pagination-size(@padding-large-vertical; @padding-large-horizontal; @font-size; @border-radius) {
+  > li {
+    > a,
+    > span {
+      padding: @padding-vertical @padding-horizontal;
+      font-size: @font-size;
+    }
+    &:first-child {
+      > a,
+      > span {
+        .border-left-radius(@border-radius);
+      }
+    }
+    &:last-child {
+      > a,
+      > span {
+        .border-right-radius(@border-radius);
+      }
+    }
+  }
+}
+
 // Labels
 // -------------------------
 .label-variant(@color) {
