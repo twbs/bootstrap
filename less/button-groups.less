@@ -55,11 +55,13 @@
 }
 
 // Prevent double borders when buttons are next to each other
-.btn-group .btn + .btn,
-.btn-group .btn + .btn-group,
-.btn-group .btn-group + .btn,
-.btn-group .btn-group + .btn-group {
-  margin-left: -1px;
+.btn-group {
+  .btn + .btn,
+  .btn + .btn-group,
+  .btn-group + .btn,
+  .btn-group + .btn-group {
+    margin-left: -1px;
+  }
 }
 
 // Optional: Group multiple button groups together for a toolbar
@@ -166,26 +168,51 @@
 // Vertical button groups
 // ----------------------
 
-.btn-group-vertical > .btn {
+.btn-group-vertical > .btn,
+.btn-group-vertical > .btn-group {
   display: block;
   float: none;
   width: 100%;
   max-width: 100%;
-  + .btn {
+}
+.btn-group-vertical {
+  .btn + .btn,
+  .btn + .btn-group,
+  .btn-group + .btn,
+  .btn-group + .btn-group {
     margin-top: -1px;
+    margin-left: 0;
   }
 }
-.btn-group-vertical .btn {
+
+.btn-group-vertical > .btn {
   &:not(:first-child):not(:last-child) {
     border-radius: 0;
   }
   &:first-child:not(:last-child) {
+    border-top-right-radius: @border-radius-base;
     .border-bottom-radius(0);
   }
   &:last-child:not(:first-child) {
+    border-bottom-left-radius: @border-radius-base;
     .border-top-radius(0);
   }
 }
+.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
+  border-radius: 0;
+}
+.btn-group-vertical > .btn-group:first-child {
+  > .btn:last-child,
+  > .dropdown-toggle {
+    border-top-right-radius: @border-radius-base;
+    .border-bottom-radius(0);
+  }
+}
+.btn-group-vertical > .btn-group:last-child > .btn:first-child {
+  border-bottom-left-radius: @border-radius-base;
+  .border-top-radius(0);
+}
+
 
 
 // Justified button groups
