@@ -3872,6 +3872,7 @@ button.close {
 .btn-group-justified {
   display: table;
   width: 100%;
+  border-collapse: separate;
   table-layout: fixed;
 }
 
