@@ -25,6 +25,17 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+.img-profile {
+  width: 80px;
+  height: 80px;
+  padding: 4px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
 .panel {
   background-color: #ffffff;
   margin-bottom: 20px;
