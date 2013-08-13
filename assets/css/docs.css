@@ -55,6 +55,7 @@ body {
 
 .bs-docs-nav {
   background-color: #563d7c;
+  border-color: #463265;
 }
 .bs-docs-nav .navbar-collapse {
   border-color: #463265;
