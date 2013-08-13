@@ -20,11 +20,11 @@ base_url: "../"
     <div class="bs-example">
       <div class="dropdown clearfix">
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-          <li><a tabindex="-1" href="#">Action</a></li>
-          <li><a tabindex="-1" href="#">Another action</a></li>
-          <li><a tabindex="-1" href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a tabindex="-1" href="#">Separated link</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
         </ul>
       </div>
     </div><!-- /example -->
@@ -32,11 +32,11 @@ base_url: "../"
 <div class="dropdown">
   <!-- Link or button to toggle dropdown -->
   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-    <li><a tabindex="-1" href="#">Action</a></li>
-    <li><a tabindex="-1" href="#">Another action</a></li>
-    <li><a tabindex="-1" href="#">Something else here</a></li>
-    <li class="divider"></li>
-    <li><a tabindex="-1" href="#">Separated link</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+    <li role="presentation" class="divider"></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
   </ul>
 </div>
 {% endhighlight %}
@@ -54,22 +54,22 @@ base_url: "../"
     <div class="bs-example">
       <div class="dropdown clearfix">
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-          <li class="dropdown-header">Dropdown header</li>
-          <li><a tabindex="-1" href="#">Action</a></li>
-          <li><a tabindex="-1" href="#">Another action</a></li>
-          <li><a tabindex="-1" href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li class="dropdown-header">Dropdown header</li>
-          <li><a tabindex="-1" href="#">Separated link</a></li>
+          <li role="presentation" class="dropdown-header">Dropdown header</li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation" class="dropdown-header">Dropdown header</li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
         </ul>
       </div>
     </div><!-- /example -->
 {% highlight html %}
 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-  <li class="dropdown-header">Dropdown header</li>
+  <li role="presentation" class="dropdown-header">Dropdown header</li>
   ...
-  <li class="divider"></li>
-  <li class="dropdown-header">Dropdown header</li>
+  <li role="presentation" class="divider"></li>
+  <li role="presentation" class="dropdown-header">Dropdown header</li>
   ...
 </ul>
 {% endhighlight %}
@@ -79,17 +79,17 @@ base_url: "../"
     <div class="bs-example">
       <div class="dropdown clearfix">
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-          <li><a tabindex="-1" href="#">Regular link</a></li>
-          <li class="disabled"><a tabindex="-1" href="#">Disabled link</a></li>
-          <li><a tabindex="-1" href="#">Another link</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
+          <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
         </ul>
       </div>
     </div><!-- /example -->
 {% highlight html %}
 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-  <li><a tabindex="-1" href="#">Regular link</a></li>
-  <li class="disabled"><a tabindex="-1" href="#">Disabled link</a></li>
-  <li><a tabindex="-1" href="#">Another link</a></li>
+  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
+  <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
+  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
 </ul>
 {% endhighlight %}
   </div>
