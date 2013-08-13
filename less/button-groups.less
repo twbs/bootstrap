@@ -55,7 +55,10 @@
 }
 
 // Prevent double borders when buttons are next to each other
-.btn-group .btn + .btn {
+.btn-group .btn + .btn,
+.btn-group .btn + .btn-group,
+.btn-group .btn-group + .btn,
+.btn-group .btn-group + .btn-group {
   margin-left: -1px;
 }
 
@@ -116,6 +119,14 @@
   outline: 0;
 }
 
+
+// Sizing
+//
+// Remix the default button sizing classes into new ones for easier manipulation.
+
+.btn-group-xs > .btn { .btn-xs(); }
+.btn-group-sm > .btn { .btn-sm(); }
+.btn-group-lg > .btn { .btn-lg(); }
 
 
 // Split button dropdowns
@@ -193,7 +204,7 @@
 
 
 // Checkbox and radio options
-.btn-group[data-toggle="buttons"] > .btn > input[type="radio"],
-.btn-group[data-toggle="buttons"] > .btn > input[type="checkbox"] {
+[data-toggle="buttons"] > .btn > input[type="radio"],
+[data-toggle="buttons"] > .btn > input[type="checkbox"] {
   display: none;
 }

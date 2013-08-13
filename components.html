@@ -19,24 +19,25 @@ base_url: "../"
     <p>Wrap the dropdown's trigger and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Then add the menu's HTML.</p>
     <div class="bs-example">
       <div class="dropdown clearfix">
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-          <li><a tabindex="-1" href="#">Action</a></li>
-          <li><a tabindex="-1" href="#">Another action</a></li>
-          <li><a tabindex="-1" href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a tabindex="-1" href="#">Separated link</a></li>
+        <a id="dropdownMenu1" href="#" role="button" class="sr-only dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
         </ul>
       </div>
     </div><!-- /example -->
 {% highlight html %}
 <div class="dropdown">
   <!-- Link or button to toggle dropdown -->
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-    <li><a tabindex="-1" href="#">Action</a></li>
-    <li><a tabindex="-1" href="#">Another action</a></li>
-    <li><a tabindex="-1" href="#">Something else here</a></li>
-    <li class="divider"></li>
-    <li><a tabindex="-1" href="#">Separated link</a></li>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+    <li role="presentation" class="divider"></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
   </ul>
 </div>
 {% endhighlight %}
@@ -53,23 +54,24 @@ base_url: "../"
     <p>Add a header to label sections of actions in any dropdown menu.</p>
     <div class="bs-example">
       <div class="dropdown clearfix">
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-          <li class="dropdown-header">Dropdown header</li>
-          <li><a tabindex="-1" href="#">Action</a></li>
-          <li><a tabindex="-1" href="#">Another action</a></li>
-          <li><a tabindex="-1" href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li class="dropdown-header">Dropdown header</li>
-          <li><a tabindex="-1" href="#">Separated link</a></li>
+        <a id="dropdownMenu2" href="#" role="button" class="sr-only dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+          <li role="presentation" class="dropdown-header">Dropdown header</li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation" class="dropdown-header">Dropdown header</li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
         </ul>
       </div>
     </div><!-- /example -->
 {% highlight html %}
-<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-  <li class="dropdown-header">Dropdown header</li>
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+  <li role="presentation" class="dropdown-header">Dropdown header</li>
   ...
-  <li class="divider"></li>
-  <li class="dropdown-header">Dropdown header</li>
+  <li role="presentation" class="divider"></li>
+  <li role="presentation" class="dropdown-header">Dropdown header</li>
   ...
 </ul>
 {% endhighlight %}
@@ -78,18 +80,19 @@ base_url: "../"
     <p>Add <code>.disabled</code> to a <code>&lt;li&gt;</code> in the dropdown to disable the link.</p>
     <div class="bs-example">
       <div class="dropdown clearfix">
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-          <li><a tabindex="-1" href="#">Regular link</a></li>
-          <li class="disabled"><a tabindex="-1" href="#">Disabled link</a></li>
-          <li><a tabindex="-1" href="#">Another link</a></li>
+        <a id="dropdownMenu3" href="#" role="button" class="sr-only dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
+          <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
         </ul>
       </div>
     </div><!-- /example -->
 {% highlight html %}
-<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-  <li><a tabindex="-1" href="#">Regular link</a></li>
-  <li class="disabled"><a tabindex="-1" href="#">Disabled link</a></li>
-  <li><a tabindex="-1" href="#">Another link</a></li>
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
+  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
+  <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
+  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
 </ul>
 {% endhighlight %}
   </div>
@@ -151,6 +154,39 @@ base_url: "../"
   <div class="btn-group">...</div>
   <div class="btn-group">...</div>
   <div class="btn-group">...</div>
+</div>
+{% endhighlight %}
+
+    <h3 id="btn-groups-sizing">Button group sizing</h3>
+    <p>Instead of applying button sizing classes to every button in a group, just add <code>.btn-group-*</code> to the <code>.btn-group</code>.</p>
+    <div class="bs-example">
+      <div class="btn-group btn-group-lg">
+        <button type="button" class="btn btn-default">Left</button>
+        <button type="button" class="btn btn-default">Middle</button>
+        <button type="button" class="btn btn-default">Right</button>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-default">Left</button>
+        <button type="button" class="btn btn-default">Middle</button>
+        <button type="button" class="btn btn-default">Right</button>
+      </div>
+      <div class="btn-group btn-group-sm">
+        <button type="button" class="btn btn-default">Left</button>
+        <button type="button" class="btn btn-default">Middle</button>
+        <button type="button" class="btn btn-default">Right</button>
+      </div>
+      <div class="btn-group btn-group-xs">
+        <button type="button" class="btn btn-default">Left</button>
+        <button type="button" class="btn btn-default">Middle</button>
+        <button type="button" class="btn btn-default">Right</button>
+      </div>
+    </div>
+{% highlight html %}
+<div class="btn-toolbar">
+  <div class="btn-group btn-group-lg">...</div>
+  <div class="btn-group">...</div>
+  <div class="btn-group btn-group-sm">...</div>
+  <div class="btn-group btn-group-xs">...</div>
 </div>
 {% endhighlight %}
 
@@ -568,11 +604,11 @@ base_url: "../"
 {% endhighlight %}
 
     <h2 id="input-groups-sizes">Optional sizes</h2>
-    <p>Add the relative form sizing classes to the <code>.input-group-addon</code>.</p>
+    <p>Add the relative form sizing classes to the <code>.input-group</code> itself and contents within will automatically resize—no need for repeating the form control size classes on each element.</p>
     <form class="bs-example bs-example-form" role="form">
-      <div class="input-group">
-        <span class="input-group-addon input-lg">@</span>
-        <input type="text" class="form-control input-lg" placeholder="Username">
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon">@</span>
+        <input type="text" class="form-control" placeholder="Username">
       </div>
       <br>
       <div class="input-group">
@@ -580,14 +616,14 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="Username">
       </div>
       <br>
-      <div class="input-group">
-        <span class="input-group-addon input-sm">@</span>
-        <input type="text" class="form-control input-sm" placeholder="Username">
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">@</span>
+        <input type="text" class="form-control" placeholder="Username">
       </div>
     </form>
 {% highlight html %}
-<div class="input-group">
-  <span class="input-group-addon input-lg">@</span>
+<div class="input-group input-group-lg">
+  <span class="input-group-addon">@</span>
   <input type="text" class="form-control input-lg" placeholder="Username">
 </div>
 
@@ -596,9 +632,9 @@ base_url: "../"
   <input type="text" class="form-control" placeholder="Username">
 </div>
 
-<div class="input-group">
-  <span class="input-group-addon input-sm">@</span>
-  <input type="text" class="form-control input-sm" placeholder="Username">
+<div class="input-group input-group-sm">
+  <span class="input-group-addon">@</span>
+  <input type="text" class="form-control" placeholder="Username">
 </div>
 {% endhighlight %}
 
@@ -1091,7 +1127,7 @@ base_url: "../"
 
       <nav class="navbar" role="navigation">
         <form class="navbar-form pull-left" role="form">
-          <select name="" id="" class="form-control" style="width: 200px;">
+          <select name="" class="form-control" style="width: 200px;">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -1285,7 +1321,7 @@ body { padding-bottom: 70px; }
                 </ul>
               </li>
             </ul>
-            <form class="navbar-form pull-left" action="" role="search">
+            <form class="navbar-form pull-left" action="." role="search">
               <input type="text" class="form-control col-lg-8" placeholder="Search">
             </form>
             <ul class="nav navbar-nav pull-right">
@@ -1355,7 +1391,7 @@ body { padding-bottom: 70px; }
               <li><a href="#">Link</a></li>
               <li><a href="#">Link</a></li>
             </ul>
-            <form class="navbar-form pull-left" action="" role="search">
+            <form class="navbar-form pull-left" action="." role="search">
               <input type="text" class="form-control col-lg-8" placeholder="Search">
             </form>
           </div><!-- /.nav-collapse -->
@@ -1405,7 +1441,7 @@ body { padding-bottom: 70px; }
                 </ul>
               </li>
             </ul>
-            <form class="navbar-form pull-left" action="" role="search">
+            <form class="navbar-form pull-left" action="." role="search">
               <input type="text" class="form-control col-lg-8" placeholder="Search">
             </form>
             <ul class="nav navbar-nav pull-right">
@@ -1786,22 +1822,22 @@ body { padding-bottom: 70px; }
       <div class="row">
         <div class="col-lg-3">
           <a href="#" class="thumbnail">
-            <img data-src="holder.js/100%x180" alt="">
+            <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
           </a>
         </div>
         <div class="col-lg-3">
           <a href="#" class="thumbnail">
-            <img data-src="holder.js/100%x180" alt="">
+            <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
           </a>
         </div>
         <div class="col-lg-3">
           <a href="#" class="thumbnail">
-            <img data-src="holder.js/100%x180" alt="">
+            <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
           </a>
         </div>
         <div class="col-lg-3">
           <a href="#" class="thumbnail">
-            <img data-src="holder.js/100%x180" alt="">
+            <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
           </a>
         </div>
       </div>
@@ -1810,7 +1846,7 @@ body { padding-bottom: 70px; }
 <div class="row">
   <div class="col-lg-3">
     <a href="#" class="thumbnail">
-      <img data-src="holder.js/100%x180" alt="">
+      <img data-src="holder.js/100%x180" alt="...">
     </a>
   </div>
   ...
@@ -1823,7 +1859,7 @@ body { padding-bottom: 70px; }
       <div class="row">
         <div class="col-lg-4">
           <div class="thumbnail">
-            <img data-src="holder.js/300x200" alt="">
+            <img data-src="holder.js/300x200" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
             <div class="caption">
               <h3>Thumbnail label</h3>
               <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -1833,7 +1869,7 @@ body { padding-bottom: 70px; }
         </div>
         <div class="col-lg-4">
           <div class="thumbnail">
-            <img data-src="holder.js/300x200" alt="">
+            <img data-src="holder.js/300x200" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
             <div class="caption">
               <h3>Thumbnail label</h3>
               <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -1843,7 +1879,7 @@ body { padding-bottom: 70px; }
         </div>
         <div class="col-lg-4">
           <div class="thumbnail">
-            <img data-src="holder.js/300x200" alt="">
+            <img data-src="holder.js/300x200" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
             <div class="caption">
               <h3>Thumbnail label</h3>
               <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -1857,7 +1893,7 @@ body { padding-bottom: 70px; }
 <div class="row">
   <div class="col-lg-4">
     <div class="thumbnail">
-      <img data-src="holder.js/300x200" alt="">
+      <img data-src="holder.js/300x200" alt="...">
       <div class="caption">
         <h3>Thumbnail label</h3>
         <p>...</p>
@@ -2115,7 +2151,7 @@ body { padding-bottom: 70px; }
     <div class="bs-example">
       <div class="media">
         <a class="pull-left" href="#">
-          <img class="media-object" data-src="holder.js/64x64">
+          <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
         </a>
         <div class="media-body">
           <h4 class="media-heading">Media heading</h4>
@@ -2124,14 +2160,14 @@ body { padding-bottom: 70px; }
       </div>
       <div class="media">
         <a class="pull-left" href="#">
-          <img class="media-object" data-src="holder.js/64x64">
+          <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
         </a>
         <div class="media-body">
           <h4 class="media-heading">Media heading</h4>
           Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
           <div class="media">
             <a class="pull-left" href="#">
-              <img class="media-object" data-src="holder.js/64x64">
+              <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
             </a>
             <div class="media-body">
               <h4 class="media-heading">Media heading</h4>
@@ -2144,7 +2180,7 @@ body { padding-bottom: 70px; }
 {% highlight html %}
 <div class="media">
   <a class="pull-left" href="#">
-    <img class="media-object" src="...">
+    <img class="media-object" src="..." alt="...">
   </a>
   <div class="media-body">
     <h4 class="media-heading">Media heading</h4>
@@ -2159,7 +2195,7 @@ body { padding-bottom: 70px; }
       <ul class="media-list">
         <li class="media">
           <a class="pull-left" href="#">
-            <img class="media-object" data-src="holder.js/64x64">
+            <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
           </a>
           <div class="media-body">
             <h4 class="media-heading">Media heading</h4>
@@ -2167,7 +2203,7 @@ body { padding-bottom: 70px; }
             <!-- Nested media object -->
             <div class="media">
               <a class="pull-left" href="#">
-                <img class="media-object" data-src="holder.js/64x64">
+                <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
               </a>
               <div class="media-body">
                 <h4 class="media-heading">Nested media heading</h4>
@@ -2175,7 +2211,7 @@ body { padding-bottom: 70px; }
                 <!-- Nested media object -->
                 <div class="media">
                   <a class="pull-left" href="#">
-                    <img class="media-object" data-src="holder.js/64x64">
+                    <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
                   </a>
                   <div class="media-body">
                     <h4 class="media-heading">Nested media heading</h4>
@@ -2187,7 +2223,7 @@ body { padding-bottom: 70px; }
             <!-- Nested media object -->
             <div class="media">
               <a class="pull-left" href="#">
-                <img class="media-object" data-src="holder.js/64x64">
+                <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
               </a>
               <div class="media-body">
                 <h4 class="media-heading">Nested media heading</h4>
@@ -2198,7 +2234,7 @@ body { padding-bottom: 70px; }
         </li>
         <li class="media">
           <a class="pull-right" href="#">
-            <img class="media-object" data-src="holder.js/64x64">
+            <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
           </a>
           <div class="media-body">
             <h4 class="media-heading">Media heading</h4>
@@ -2211,7 +2247,7 @@ body { padding-bottom: 70px; }
 <ul class="media-list">
   <li class="media">
     <a class="pull-left" href="#">
-      <img class="media-object" src="...">
+      <img class="media-object" src="..." alt="...">
     </a>
     <div class="media-body">
       <h4 class="media-heading">Media heading</h4>

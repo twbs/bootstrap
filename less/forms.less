@@ -299,6 +299,8 @@ textarea {
 //
 // Requires wrapping inputs and labels with `.form-group` for proper display of
 // default HTML form controls and our custom form controls (e.g., input groups).
+//
+// Heads up! This is mixin-ed into `.navbar-form` in navbars.less.
 
 .form-inline {
 
@@ -311,9 +313,9 @@ textarea {
       vertical-align: middle;
     }
 
-    // Reset form control's default 100% width
+    // In navbar-form, allow folks to *not* use `.form-group`
     .form-control {
-      width: auto;
+      display: inline-block;
     }
 
     // Remove default margin on radios/checkboxes that were used for stacking, and
