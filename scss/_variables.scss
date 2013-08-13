@@ -23,6 +23,7 @@ $screen-large:               1200px !default;
 $screen-large-desktop:       $screen-large !default;
 
 // So media queries don't overlap when required, provide a maximum
+$screen-phone-max:           ($screen-small - 1) !default;
 $screen-small-max:           ($screen-medium - 1) !default;
 $screen-tablet-max:          ($screen-desktop - 1) !default;
 $screen-desktop-max:         ($screen-large-desktop - 1) !default;
@@ -166,6 +167,7 @@ $btn-link-disabled-color:        $gray-light !default;
 $input-bg:                       #fff !default;
 $input-bg-disabled:              $gray-lighter !default;
 
+$input-color:                    $gray !default;
 $input-border:                   #ccc !default;
 $input-border-radius:            $border-radius-base !default;
 $input-border-focus:             #66afe9 !default;
@@ -176,8 +178,10 @@ $input-height-base:              ($line-height-computed + ($padding-base-vertica
 $input-height-large:             (floor($font-size-large * $line-height-large) + ($padding-large-vertical * 2) + 2) !default;
 $input-height-small:             (floor($font-size-small * $line-height-small) + ($padding-small-vertical * 2) + 2) !default;
 
+$legend-color:                   $gray-dark !default;
 $legend-border-color:            #e5e5e5 !default;
 
+$input-group-addon-bg:           $gray-lighter !default;
 $input-group-addon-border-color: $input-border !default;
 
 
@@ -195,6 +199,10 @@ $dropdown-link-active-bg:        $component-active-bg !default;
 $dropdown-link-color:            $gray-dark !default;
 $dropdown-link-hover-color:      #fff !default;
 $dropdown-link-hover-bg:         $dropdown-link-active-bg !default;
+
+$dropdown-link-disabled-color:   $gray-light !default;
+
+$dropdown-header-color:          $gray-light !default;
 
 $dropdown-caret-color:           #000 !default;
 
@@ -224,8 +232,9 @@ $zindex-modal:             1050 !default;
 $navbar-height:                    50px !default;
 $navbar-color:                     #777 !default;
 $navbar-bg:                        #eee !default;
+$navbar-margin-bottom:             $line-height-computed !default;
 $navbar-border-radius:             $border-radius-base !default;
-$navbar-padding-horizontal:        floor($grid-gutter-width / 2) !default;  // ~15px
+$navbar-padding-horizontal:        floor($grid-gutter-width / 2) !default;
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2) !default;
 
 // Navbar links
@@ -489,10 +498,12 @@ $panel-info-heading-bg:       $state-info-bg !default;
 
 // Thumbnails
 // -------------------------
-$thumbnail-caption-color:     $text-color !default;
+$thumbnail-padding:           4px !default;
 $thumbnail-bg:                $body-bg !default;
 $thumbnail-border:            #ddd !default;
 $thumbnail-border-radius:     $border-radius-base !default;
+$thumbnail-caption-color:     $text-color !default;
+$thumbnail-caption-padding:   9px !default;
 
 
 // Wells
@@ -554,7 +565,9 @@ $code-color:                  #c7254e !default;
 $code-bg:                     #f9f2f4 !default;
 
 $pre-bg:                      #f5f5f5 !default;
+$pre-color:                   $gray-dark !default;
 $pre-border-color:            #ccc !default;
+$pre-scrollable-max-height:   340px !default;
 
 // Type
 // ------------------------
@@ -579,10 +592,10 @@ $component-offset-horizontal: 180px !default;
 // --------------------------------------------------
 
 // Small screen / tablet
-$container-tablet:          728px !default;
+$container-tablet:          720px !default;
 
 // Medium screen / desktop
 $container-desktop:         940px !default;
 
 // Large screen / wide desktop
-$container-large-desktop:   1170px !default;
+$container-large-desktop:   1140px !default;

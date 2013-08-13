@@ -20,7 +20,7 @@ legend {
   margin-bottom: $line-height-computed;
   font-size: ($font-size-base * 1.5);
   line-height: inherit;
-  color: $gray-dark;
+  color: $legend-color;
   border: 0;
   border-bottom: 1px solid $legend-border-color;
 }
@@ -121,7 +121,7 @@ input[type="number"] {
   padding: $padding-base-vertical $padding-base-horizontal;
   font-size: $font-size-base;
   line-height: $line-height-base;
-  color: $gray;
+  color: $input-color;
   vertical-align: middle;
   background-color: $input-bg;
   border: 1px solid $input-border;
@@ -214,20 +214,23 @@ textarea.form-control {
 // horizontal sizing, wrap controls in the predefined grid classes. `<select>`
 // element gets special love because it's special, and that's a fact!
 
-.input-lg {
+@mixin input-lg {
   height: $input-height-large;
   padding: $padding-large-vertical $padding-large-horizontal;
   font-size: $font-size-large;
   line-height: $line-height-large;
   border-radius: $border-radius-large;
 }
-.input-sm {
+@mixin input-sm {
   height: $input-height-small;
   padding: $padding-small-vertical $padding-small-horizontal;
   font-size: $font-size-small;
   line-height: $line-height-small;
   border-radius: $border-radius-small;
 }
+
+.input-lg {@include input-lg}
+.input-sm {@include input-sm}
 
 select {
   &.input-lg {
@@ -292,28 +295,46 @@ textarea {
 
 // Inline forms
 //
-// Make forms appear inline(-block).
+// Make forms appear inline(-block) by adding the `.form-inline` class. Inline
+// forms begin stacked on extra small (mobile) devices and then go inline when
+// viewports reach <768px.
+//
+// Requires wrapping inputs and labels with `.form-group` for proper display of
+// default HTML form controls and our custom form controls (e.g., input groups).
+//
+// Heads up! This is mixin-ed into `.navbar-form` in navbars.less.
 
 @mixin form-inline {
-  .form-control,
-  .radio,
-  .checkbox {
-    display: inline-block;
-  }
 
-  // Remove default margin on radios/checkboxes that were used for stacking, and
-  // then undo the floating of radios and checkboxes to match (which also avoids
-  // a bug in WebKit: https://github.com/twbs/bootstrap/issues/1969).
-  .radio,
-  .checkbox {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-  }
-  .radio input[type="radio"],
-  .checkbox input[type="checkbox"] {
-    float: none;
-    margin-left: 0;
+  // Kick in the inline
+  @media (min-width: $screen-tablet) {
+    // Inline-block all the things for "inline"
+    .form-group  {
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+
+    // In navbar-form, allow folks to *not* use `.form-group`
+    .form-control {
+      display: inline-block;
+    }
+
+    // Remove default margin on radios/checkboxes that were used for stacking, and
+    // then undo the floating of radios and checkboxes to match (which also avoids
+    // a bug in WebKit: https://github.com/twbs/bootstrap/issues/1969).
+    .radio,
+    .checkbox {
+      display: inline-block;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-left: 0;
+    }
+    .radio input[type="radio"],
+    .checkbox input[type="checkbox"] {
+      float: none;
+      margin-left: 0;
+    }
   }
 }
 

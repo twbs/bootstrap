@@ -208,7 +208,7 @@ body {
   position: relative;
 }
 
-.bs-docs-section h1[id] {
+.bs-docs-section + .bs-docs-section {
   padding-top: 80px;
 }
 
@@ -414,17 +414,15 @@ body {
 }
 
 /* Typography */
-.bs-example-type .table td {
+.bs-example-type .table td:last-child {
   color: #999;
   vertical-align: middle;
 }
-.bs-example-type .table td,
-.bs-example-type .table th {
+.bs-example-type .table td {
   padding: 15px 0;
   border-color: #eee;
 }
-.bs-example-type .table tr:first-child td,
-.bs-example-type .table tr:first-child th {
+.bs-example-type .table tr:first-child td {
   border-top: 0;
 }
 .bs-example-type h1,
@@ -437,11 +435,6 @@ body {
 }
 
 /* Forms */
-.bs-example.form-inline select,
-.bs-example.form-inline input[type="text"],
-.bs-example.form-inline input[type="password"] {
-  width: 180px;
-}
 .bs-example-control-sizing select,
 .bs-example-control-sizing input[type="text"] + input[type="text"] {
   margin-top: 10px;
@@ -637,17 +630,9 @@ body {
 ------------------------- */
 .responsive-utilities-test {
   margin-top: 5px;
-  padding-left: 0;
-  list-style: none;
-  overflow: hidden; /* clear floats */
 }
-.responsive-utilities-test li {
-  position: relative;
-  float: left;
-  width: 25%;
-}
-.responsive-utilities-test li + li {
-  margin-left: 10px;
+.responsive-utilities-test .col-xs-6 {
+  margin-bottom: 10px;
 }
 .responsive-utilities-test span {
   padding: 15px 10px;
@@ -719,6 +704,11 @@ body {
 }
 .bs-social-buttons .twitter-share-button {
   width: 98px !important;
+}
+/* Style the GitHub buttons via CSS instead of inline attributes */
+.github-btn {
+  border: 0;
+  overflow: hidden;
 }
 
 
@@ -886,7 +876,7 @@ input.focused {
   /* Widen the fixed sidebar again */
   .bs-sidebar.affix-bottom,
   .bs-sidebar.affix {
-    width: 270px;
+    width: 263px;
   }
 
 }

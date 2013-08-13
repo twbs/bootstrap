@@ -6,7 +6,7 @@
 .navbar {
   position: relative;
   min-height: $navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
-  margin-bottom: 20px;
+  margin-bottom: $navbar-margin-bottom;
   padding-left: $navbar-padding-horizontal;
   padding-right: $navbar-padding-horizontal;
   background-color: $navbar-bg;
@@ -20,8 +20,6 @@
 // -------------------------
 
 .navbar-nav {
-  margin-bottom: 15px;
-
   > li > a {
     padding-top: (($navbar-height - $line-height-computed) / 2);
     padding-bottom: (($navbar-height - $line-height-computed) / 2);
@@ -87,6 +85,8 @@
 }
 
 .nav-collapse {
+  // Prevent overlap of `.navbar-brand` and `.navbar-toggle`
+  clear: both;
   // Space out collapsed contents within the mobile navbar
   padding-bottom: $navbar-padding-vertical;
   // Clear floated elements and prevent collapsing of padding
@@ -127,16 +127,13 @@
 
 // Brand/project name
 .navbar-brand {
-  display: block;
-  max-width: 200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: $navbar-padding-vertical $navbar-padding-horizontal;
+  float: left;
+  margin-right: 15px;
+  padding-top: $navbar-padding-vertical;
+  padding-bottom: $navbar-padding-vertical;
   font-size: $font-size-large;
-  font-weight: 500;
   line-height: $line-height-computed;
   color: $navbar-brand-color;
-  text-align: center;
   &:hover,
   &:focus {
     color: $navbar-brand-hover-color;
@@ -149,10 +146,9 @@
 .navbar-toggle {
   position: relative;
   float: right;
-  height: 34px;
-  width: 48px;
+  padding: 9px 10px;
   @include navbar-vertical-align(34px);
-  padding: $padding-base-vertical $padding-base-horizontal;
+  margin-right: -10px;
   background-color: transparent;
   border: 1px solid $navbar-toggle-border-color;
   border-radius: $border-radius-base;
@@ -327,12 +323,11 @@
 
 @media screen and (min-width: $grid-float-breakpoint) {
 
-  .navbar-brand {
-    float: left;
-    margin-left: -($navbar-padding-horizontal);
-    margin-right: 5px;
-    max-width: none; // Disables the default mobile setting
+  // Undo clearing to keep nav and brand horizontal
+  .nav-collapse {
+    clear: none;
   }
+
   .navbar-nav {
     float: left;
     // undo margin to make nav extend full height of navbar

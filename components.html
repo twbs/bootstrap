@@ -19,24 +19,25 @@ base_url: "../"
     <p>Wrap the dropdown's trigger and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Then add the menu's HTML.</p>
     <div class="bs-example">
       <div class="dropdown clearfix">
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-          <li><a tabindex="-1" href="#">Action</a></li>
-          <li><a tabindex="-1" href="#">Another action</a></li>
-          <li><a tabindex="-1" href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a tabindex="-1" href="#">Separated link</a></li>
+        <a id="dropdownMenu1" href="#" role="button" class="sr-only dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
         </ul>
       </div>
     </div><!-- /example -->
 {% highlight html %}
 <div class="dropdown">
   <!-- Link or button to toggle dropdown -->
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-    <li><a tabindex="-1" href="#">Action</a></li>
-    <li><a tabindex="-1" href="#">Another action</a></li>
-    <li><a tabindex="-1" href="#">Something else here</a></li>
-    <li class="divider"></li>
-    <li><a tabindex="-1" href="#">Separated link</a></li>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+    <li role="presentation" class="divider"></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
   </ul>
 </div>
 {% endhighlight %}
@@ -53,23 +54,24 @@ base_url: "../"
     <p>Add a header to label sections of actions in any dropdown menu.</p>
     <div class="bs-example">
       <div class="dropdown clearfix">
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-          <li class="dropdown-header">Dropdown header</li>
-          <li><a tabindex="-1" href="#">Action</a></li>
-          <li><a tabindex="-1" href="#">Another action</a></li>
-          <li><a tabindex="-1" href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li class="dropdown-header">Dropdown header</li>
-          <li><a tabindex="-1" href="#">Separated link</a></li>
+        <a id="dropdownMenu2" href="#" role="button" class="sr-only dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+          <li role="presentation" class="dropdown-header">Dropdown header</li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation" class="dropdown-header">Dropdown header</li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
         </ul>
       </div>
     </div><!-- /example -->
 {% highlight html %}
-<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-  <li class="dropdown-header">Dropdown header</li>
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+  <li role="presentation" class="dropdown-header">Dropdown header</li>
   ...
-  <li class="divider"></li>
-  <li class="dropdown-header">Dropdown header</li>
+  <li role="presentation" class="divider"></li>
+  <li role="presentation" class="dropdown-header">Dropdown header</li>
   ...
 </ul>
 {% endhighlight %}
@@ -78,18 +80,19 @@ base_url: "../"
     <p>Add <code>.disabled</code> to a <code>&lt;li&gt;</code> in the dropdown to disable the link.</p>
     <div class="bs-example">
       <div class="dropdown clearfix">
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-          <li><a tabindex="-1" href="#">Regular link</a></li>
-          <li class="disabled"><a tabindex="-1" href="#">Disabled link</a></li>
-          <li><a tabindex="-1" href="#">Another link</a></li>
+        <a id="dropdownMenu3" href="#" role="button" class="sr-only dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
+          <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
         </ul>
       </div>
     </div><!-- /example -->
 {% highlight html %}
-<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-  <li><a tabindex="-1" href="#">Regular link</a></li>
-  <li class="disabled"><a tabindex="-1" href="#">Disabled link</a></li>
-  <li><a tabindex="-1" href="#">Another link</a></li>
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
+  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
+  <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
+  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
 </ul>
 {% endhighlight %}
   </div>
@@ -151,6 +154,39 @@ base_url: "../"
   <div class="btn-group">...</div>
   <div class="btn-group">...</div>
   <div class="btn-group">...</div>
+</div>
+{% endhighlight %}
+
+    <h3 id="btn-groups-sizing">Button group sizing</h3>
+    <p>Instead of applying button sizing classes to every button in a group, just add <code>.btn-group-*</code> to the <code>.btn-group</code>.</p>
+    <div class="bs-example">
+      <div class="btn-group btn-group-lg">
+        <button type="button" class="btn btn-default">Left</button>
+        <button type="button" class="btn btn-default">Middle</button>
+        <button type="button" class="btn btn-default">Right</button>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-default">Left</button>
+        <button type="button" class="btn btn-default">Middle</button>
+        <button type="button" class="btn btn-default">Right</button>
+      </div>
+      <div class="btn-group btn-group-sm">
+        <button type="button" class="btn btn-default">Left</button>
+        <button type="button" class="btn btn-default">Middle</button>
+        <button type="button" class="btn btn-default">Right</button>
+      </div>
+      <div class="btn-group btn-group-xs">
+        <button type="button" class="btn btn-default">Left</button>
+        <button type="button" class="btn btn-default">Middle</button>
+        <button type="button" class="btn btn-default">Right</button>
+      </div>
+    </div>
+{% highlight html %}
+<div class="btn-toolbar">
+  <div class="btn-group btn-group-lg">...</div>
+  <div class="btn-group">...</div>
+  <div class="btn-group btn-group-sm">...</div>
+  <div class="btn-group btn-group-xs">...</div>
 </div>
 {% endhighlight %}
 
@@ -532,7 +568,7 @@ base_url: "../"
     </div>
 
     <h2 id="input-groups-basic">Basic input group</h2>
-    <form class="bs-example bs-example-form">
+    <form class="bs-example bs-example-form" role="form">
       <div class="input-group">
         <span class="input-group-addon">@</span>
         <input type="text" class="form-control" placeholder="Username">
@@ -568,11 +604,11 @@ base_url: "../"
 {% endhighlight %}
 
     <h2 id="input-groups-sizes">Optional sizes</h2>
-    <p>Add the relative form sizing classes to the <code>.input-group-addon</code>.</p>
-    <form class="bs-example bs-example-form">
-      <div class="input-group">
-        <span class="input-group-addon input-lg">@</span>
-        <input type="text" class="form-control input-lg" placeholder="Username">
+    <p>Add the relative form sizing classes to the <code>.input-group</code> itself and contents within will automatically resize—no need for repeating the form control size classes on each element.</p>
+    <form class="bs-example bs-example-form" role="form">
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon">@</span>
+        <input type="text" class="form-control" placeholder="Username">
       </div>
       <br>
       <div class="input-group">
@@ -580,14 +616,14 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="Username">
       </div>
       <br>
-      <div class="input-group">
-        <span class="input-group-addon input-sm">@</span>
-        <input type="text" class="form-control input-sm" placeholder="Username">
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">@</span>
+        <input type="text" class="form-control" placeholder="Username">
       </div>
     </form>
 {% highlight html %}
-<div class="input-group">
-  <span class="input-group-addon input-lg">@</span>
+<div class="input-group input-group-lg">
+  <span class="input-group-addon">@</span>
   <input type="text" class="form-control input-lg" placeholder="Username">
 </div>
 
@@ -596,9 +632,9 @@ base_url: "../"
   <input type="text" class="form-control" placeholder="Username">
 </div>
 
-<div class="input-group">
-  <span class="input-group-addon input-sm">@</span>
-  <input type="text" class="form-control input-sm" placeholder="Username">
+<div class="input-group input-group-sm">
+  <span class="input-group-addon">@</span>
+  <input type="text" class="form-control" placeholder="Username">
 </div>
 {% endhighlight %}
 
@@ -692,7 +728,7 @@ base_url: "../"
 
     <h2 id="input-groups-buttons-dropdowns">Buttons with dropdowns</h2>
     <p></p>
-    <form class="bs-example bs-example-form">
+    <form class="bs-example bs-example-form" role="form">
       <div class="row">
         <div class="col-lg-6">
           <div class="input-group">
@@ -762,7 +798,7 @@ base_url: "../"
 {% endhighlight %}
 
     <h2 id="input-groups-buttons-segmented">Segmented dropdown groups</h2>
-    <form class="bs-example bs-example-form">
+    <form class="bs-example bs-example-form" role="form">
       <div class="row">
         <div class="col-lg-6">
           <div class="input-group">
@@ -940,22 +976,24 @@ base_url: "../"
 
     <h3>Tabs with dropdowns</h3>
     <div class="bs-example">
-      <ul class="nav nav-tabs">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Help</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            Dropdown <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
-      </ul>
+      <nav class="navbar" role="navigation">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Help</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              Dropdown <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
     </div>
 {% highlight html %}
 <ul class="nav nav-tabs">
@@ -1020,24 +1058,24 @@ base_url: "../"
     <h2 id="navbar-basic">Basic navbar</h2>
     <p>To start, navbars are static (not fixed to the top) and include support for a project name and basic navigation. Place one anywhere within a <code>.container</code>, which sets the width of your site and content.</p>
     <div class="bs-example">
-      <div class="navbar" role="navigation">
+      <nav class="navbar" role="navigation">
         <a class="navbar-brand" href="#">Title</a>
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">Link</a></li>
           <li><a href="#">Link</a></li>
         </ul>
-      </div>
+      </nav>
     </div><!-- /example -->
 {% highlight html %}
-<div class="navbar" role="navigation">
+<nav class="navbar" role="navigation">
   <a class="navbar-brand" href="#">Title</a>
   <ul class="nav navbar-nav">
     <li class="active"><a href="#">Home</a></li>
     <li><a href="#">Link</a></li>
     <li><a href="#">Link</a></li>
   </ul>
-</div>
+</nav>
 {% endhighlight %}
 <div class="bs-callout bs-callout-warning">
   <h4>Make navbars accessible</h4>
@@ -1049,9 +1087,9 @@ base_url: "../"
     <h3 id="navbar-brand">Brand</h3>
     <p>A simple link to show your brand or project name only requires an anchor tag.</p>
     <div class="bs-example">
-      <div class="navbar" role="navigation">
+      <nav class="navbar" role="navigation">
         <a class="navbar-brand" href="#">Title</a>
-      </div>
+      </nav>
     </div><!-- /example -->
 {% highlight html %}
 <a class="navbar-brand" href="#">Title</a>
@@ -1060,13 +1098,13 @@ base_url: "../"
     <h3 id="navbar-nav">Nav links</h3>
     <p>Nav items are simple to add via unordered lists.</p>
     <div class="bs-example">
-      <div class="navbar" role="navigation">
+      <nav class="navbar" role="navigation">
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">Link</a></li>
           <li class="disabled"><a href="#">Disabled</a></li>
         </ul>
-      </div>
+      </nav>
     </div><!-- /example -->
 {% highlight html %}
 <ul class="nav navbar-nav">
@@ -1080,16 +1118,16 @@ base_url: "../"
     <p>To properly style and position a form within the navbar, add the appropriate classes as shown below. For a default form, include <code>.navbar-form</code> and either <code>.pull-left</code> or <code>.pull-right</code> to properly align it.</p>
     <div class="bs-example">
 
-      <div class="navbar" role="navigation">
-        <form class="navbar-form pull-left">
+      <nav class="navbar" role="navigation">
+        <form class="navbar-form pull-left" role="form">
           <input type="text" class="form-control" style="width: 200px;">
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
-      </div>
+      </nav>
 
-      <div class="navbar" role="navigation">
-        <form class="navbar-form pull-left">
-          <select name="" id="" class="form-control" style="width: 200px;">
+      <nav class="navbar" role="navigation">
+        <form class="navbar-form pull-left" role="form">
+          <select name="" class="form-control" style="width: 200px;">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -1097,29 +1135,29 @@ base_url: "../"
           </select>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
-      </div>
+      </nav>
 
-      <div class="navbar" role="navigation">
-        <form class="navbar-form pull-left">
+      <nav class="navbar" role="navigation">
+        <form class="navbar-form pull-left" role="form">
           <input type="text" class="form-control" style="width: 200px;">
           <input type="checkbox">
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
-      </div>
+      </nav>
 
-      <div class="navbar" role="navigation">
-        <form class="navbar-form pull-left">
+      <nav class="navbar" role="navigation">
+        <form class="navbar-form pull-left" role="form">
           <input type="text" class="form-control" style="width: 200px;">
           <label class="checkbox-inline">
             <input type="checkbox"> Remember me
           </label>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
-      </div>
+      </nav>
 
     </div><!-- /example -->
 {% highlight html %}
-<form class="navbar-form pull-left">
+<form class="navbar-form pull-left" role="form">
   <input type="text" class="form-control" style="width: 200px;">
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
@@ -1128,10 +1166,10 @@ base_url: "../"
     <h3 id="navbar-buttons">Buttons</h3>
     <p>For buttons not residing in a <code>&lt;form&gt;</code>, add this class to vertically center buttons within a navbar.</p>
     <div class="bs-example">
-      <div class="navbar" role="navigation">
+      <nav class="navbar" role="navigation">
         <a href="#" class="navbar-brand">Brand</a>
         <button type="button" class="btn btn-default navbar-btn">Sign in</button>
-      </div>
+      </nav>
     </div>
 {% highlight html %}
 <button type="button" class="btn btn-default navbar-btn">Sign in</button>
@@ -1140,31 +1178,31 @@ base_url: "../"
     <h3 id="navbar-text">Text</h3>
     <p>Wrap strings of text in an element with <code>.navbar-text</code>, usually on a <code>&lt;p&gt;</code> tag for proper leading and color.</p>
     <div class="bs-example">
-      <div class="navbar" role="navigation">
+      <nav class="navbar" role="navigation">
         <a href="#" class="navbar-brand">Brand</a>
         <p class="navbar-text">Signed in as Mark Otto</p>
-      </div>
+      </nav>
     </div>
 {% highlight html %}
-<div class="navbar" role="navigation">
+<nav class="navbar" role="navigation">
   <a href="#" class="navbar-brand">Brand</a>
   <p class="navbar-text">Signed in as Mark Otto</p>
-</div>
+</nav>
 {% endhighlight %}
 
     <h3 id="navbar-links">Links</h3>
     <p>For folks using standard links that are not within the regular navbar navigation component, use the <code>.navbar-link</code> class to add the proper colors for the default and inverse navbar options.</p>
     <div class="bs-example">
-      <div class="navbar" role="navigation">
+      <nav class="navbar" role="navigation">
         <a href="#" class="navbar-brand">Brand</a>
         <p class="navbar-text pull-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
-      </div>
+      </nav>
     </div>
 {% highlight html %}
-<div class="navbar" role="navigation">
+<nav class="navbar" role="navigation">
   <a href="#" class="navbar-brand">Brand</a>
   <p class="navbar-text pull-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
-</div>
+</nav>
 {% endhighlight %}
 
     <h3 id="navbar-component-alignment">Component alignment</h3>
@@ -1177,7 +1215,7 @@ base_url: "../"
     <h3 id="navbar-fixed-top">Fixed to top</h3>
     <p>Add <code>.navbar-fixed-top</code>.</p>
     <div class="bs-example bs-navbar-top-example">
-      <div class="navbar navbar-fixed-top">
+      <nav class="navbar navbar-fixed-top">
         <div class="container" style="width: auto;">
           <a class="navbar-brand" href="#">Title</a>
           <ul class="nav navbar-nav">
@@ -1186,12 +1224,12 @@ base_url: "../"
             <li><a href="#">Link</a></li>
           </ul>
         </div>
-      </div>
+      </nav>
     </div><!-- /example -->
 {% highlight html %}
-<div class="navbar navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-fixed-top" role="navigation">
   ...
-</div>
+</nav>
 {% endhighlight %}
 
     <div class="bs-callout bs-callout-danger">
@@ -1206,7 +1244,7 @@ body { padding-top: 70px; }
     <h3 id="navbar-fixed-bottom">Fixed to bottom</h3>
     <p>Add <code>.navbar-fixed-bottom</code> instead.</p>
     <div class="bs-example bs-navbar-bottom-example">
-      <div class="navbar navbar-fixed-bottom" role="navigation">
+      <nav class="navbar navbar-fixed-bottom" role="navigation">
         <div class="container" style="width: auto;">
           <a class="navbar-brand" href="#">Title</a>
           <ul class="nav navbar-nav">
@@ -1215,12 +1253,12 @@ body { padding-top: 70px; }
             <li><a href="#">Link</a></li>
           </ul>
         </div>
-      </div>
+      </nav>
     </div><!-- /example -->
 {% highlight html %}
-<div class="navbar navbar-fixed-bottom" role="navigation">
+<nav class="navbar navbar-fixed-bottom" role="navigation">
   ...
-</div>
+</nav>
 {% endhighlight %}
 
     <div class="bs-callout bs-callout-danger">
@@ -1235,7 +1273,7 @@ body { padding-bottom: 70px; }
     <h3 id="navbar-static-top">Static top navbar</h3>
     <p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.navbar-fixed-*</code> classes, you do not need to change any padding on the <code>body</code>.</p>
     <div class="bs-example bs-navbar-top-example">
-      <div class="navbar navbar-static-top" role="navigation" style="margin: -1px -1px 0;">
+      <nav class="navbar navbar-static-top" role="navigation" style="margin: -1px -1px 0;">
         <div class="container" style="width: auto;">
           <a class="navbar-brand" href="#">Title</a>
           <ul class="nav navbar-nav">
@@ -1244,19 +1282,19 @@ body { padding-bottom: 70px; }
             <li><a href="#">Link</a></li>
           </ul>
         </div>
-      </div>
+      </nav>
     </div><!-- /example -->
 {% highlight html %}
-<div class="navbar navbar-static-top" role="navigation">
+<nav class="navbar navbar-static-top" role="navigation">
   ...
-</div>
+</nav>
 {% endhighlight %}
 
 
     <h2 id="navbar-responsive">Responsive navbar</h2>
     <p>To implement a collapsing responsive navbar, wrap your navbar content in a containing div, <code>.nav-collapse.collapse</code>, and add the navbar toggle button, <code>.navbar-toggle</code>.</p>
     <div class="bs-example">
-      <div class="navbar" role="navigation">
+      <nav class="navbar" role="navigation">
         <div class="container">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -1283,7 +1321,7 @@ body { padding-bottom: 70px; }
                 </ul>
               </li>
             </ul>
-            <form class="navbar-form pull-left" action="">
+            <form class="navbar-form pull-left" action="." role="search">
               <input type="text" class="form-control col-lg-8" placeholder="Search">
             </form>
             <ul class="nav navbar-nav pull-right">
@@ -1301,10 +1339,10 @@ body { padding-bottom: 70px; }
             </ul>
           </div><!-- /.nav-collapse -->
         </div><!-- /.container -->
-      </div><!-- /.navbar -->
+      </nav><!-- /.navbar -->
     </div><!-- /example -->
 {% highlight html %}
-<div class="navbar" role="navigation">
+<nav class="navbar" role="navigation">
   <div class="container">
 
     <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
@@ -1323,7 +1361,7 @@ body { padding-bottom: 70px; }
       ...
     </div><!-- /.nav-collapse -->
   </div><!-- /.container -->
-</div><!-- /.navbar -->
+</nav><!-- /.navbar -->
 {% endhighlight %}
 
     <div class="bs-callout bs-callout-danger">
@@ -1335,7 +1373,7 @@ body { padding-bottom: 70px; }
     <h2 id="navbar-scrollable">Scrollable responsive navbar</h2>
     <p>For instances where you have too many items in your navbar to fight within the viewport of a small device, add <code>.nav-collapse-scrollable</code> to your navbar's <code>.nav-collapse</code> to set a <code>max-height</code> and smooth scrolling.</p>
     <div class="bs-example">
-      <div class="navbar">
+      <nav class="navbar">
         <div class="container">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-scroll-collapse">
             <span class="icon-bar"></span>
@@ -1353,15 +1391,15 @@ body { padding-bottom: 70px; }
               <li><a href="#">Link</a></li>
               <li><a href="#">Link</a></li>
             </ul>
-            <form class="navbar-form pull-left" action="">
+            <form class="navbar-form pull-left" action="." role="search">
               <input type="text" class="form-control col-lg-8" placeholder="Search">
             </form>
           </div><!-- /.nav-collapse -->
         </div><!-- /.container -->
-      </div><!-- /.navbar -->
+      </nav><!-- /.navbar -->
     </div><!-- /example -->
 {% highlight html %}
-<div class="navbar">
+<nav class="navbar">
   <div class="container">
 		...
 
@@ -1370,14 +1408,14 @@ body { padding-bottom: 70px; }
     </div><!-- /.nav-collapse -->
 
   </div><!-- /.container -->
-</div><!-- /.navbar -->
+</nav><!-- /.navbar -->
 {% endhighlight %}
 
 
     <h2 id="navbar-inverted">Inverted variation</h2>
     <p>Modify the look of the navbar by adding <code>.navbar-inverse</code>.</p>
     <div class="bs-example">
-      <div class="navbar navbar-inverse" role="navigation">
+      <nav class="navbar navbar-inverse" role="navigation">
         <div class="container">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
             <span class="icon-bar"></span>
@@ -1403,7 +1441,7 @@ body { padding-bottom: 70px; }
                 </ul>
               </li>
             </ul>
-            <form class="navbar-form pull-left" action="">
+            <form class="navbar-form pull-left" action="." role="search">
               <input type="text" class="form-control col-lg-8" placeholder="Search">
             </form>
             <ul class="nav navbar-nav pull-right">
@@ -1421,12 +1459,12 @@ body { padding-bottom: 70px; }
             </ul>
           </div><!-- /.nav-collapse -->
         </div><!-- /.container -->
-      </div><!-- /.navbar -->
+      </nav><!-- /.navbar -->
     </div><!-- /example -->
 {% highlight html %}
-<div class="navbar navbar-inverse" role="navigation">
+<nav class="navbar navbar-inverse" role="navigation">
   ...
-</div>
+</nav>
 {% endhighlight %}
 
   </div>
@@ -1784,22 +1822,22 @@ body { padding-bottom: 70px; }
       <div class="row">
         <div class="col-lg-3">
           <a href="#" class="thumbnail">
-            <img data-src="holder.js/100%x180" alt="">
+            <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
           </a>
         </div>
         <div class="col-lg-3">
           <a href="#" class="thumbnail">
-            <img data-src="holder.js/100%x180" alt="">
+            <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
           </a>
         </div>
         <div class="col-lg-3">
           <a href="#" class="thumbnail">
-            <img data-src="holder.js/100%x180" alt="">
+            <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
           </a>
         </div>
         <div class="col-lg-3">
           <a href="#" class="thumbnail">
-            <img data-src="holder.js/100%x180" alt="">
+            <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
           </a>
         </div>
       </div>
@@ -1808,7 +1846,7 @@ body { padding-bottom: 70px; }
 <div class="row">
   <div class="col-lg-3">
     <a href="#" class="thumbnail">
-      <img data-src="holder.js/100%x180" alt="">
+      <img data-src="holder.js/100%x180" alt="...">
     </a>
   </div>
   ...
@@ -1821,7 +1859,7 @@ body { padding-bottom: 70px; }
       <div class="row">
         <div class="col-lg-4">
           <div class="thumbnail">
-            <img data-src="holder.js/300x200" alt="">
+            <img data-src="holder.js/300x200" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
             <div class="caption">
               <h3>Thumbnail label</h3>
               <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -1831,7 +1869,7 @@ body { padding-bottom: 70px; }
         </div>
         <div class="col-lg-4">
           <div class="thumbnail">
-            <img data-src="holder.js/300x200" alt="">
+            <img data-src="holder.js/300x200" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
             <div class="caption">
               <h3>Thumbnail label</h3>
               <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -1841,7 +1879,7 @@ body { padding-bottom: 70px; }
         </div>
         <div class="col-lg-4">
           <div class="thumbnail">
-            <img data-src="holder.js/300x200" alt="">
+            <img data-src="holder.js/300x200" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
             <div class="caption">
               <h3>Thumbnail label</h3>
               <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -1855,7 +1893,7 @@ body { padding-bottom: 70px; }
 <div class="row">
   <div class="col-lg-4">
     <div class="thumbnail">
-      <img data-src="holder.js/300x200" alt="">
+      <img data-src="holder.js/300x200" alt="...">
       <div class="caption">
         <h3>Thumbnail label</h3>
         <p>...</p>
@@ -1878,40 +1916,30 @@ body { padding-bottom: 70px; }
     </div>
     <p class="lead">Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages. For inline dismissal, use the <a href="../javascript/#js-alerts">alerts jQuery plugin</a>.</p>
 
-    <h3 id="alerts-default">Default alert</h3>
+    <h2 id="alerts-default">Default alert</h2>
     <p>Wrap any text and an optional dismiss button in <code>.alert</code> for a basic warning alert message.</p>
-
-    <div class="bs-callout bs-callout-warning">
-      <h4>Ensure proper behavior across all devices</h4>
-      <p>Be sure to use the <code>&lt;button&gt;</code> element with the <code>data-dismiss="alert"</code> data attribute.</p>
-    </div>
 
     <div class="bs-example">
       <div class="alert">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Warning!</strong> Best check yo self, you're not looking too good.
       </div>
     </div>
 {% highlight html %}
 <div class="alert">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
   <strong>Warning!</strong> Best check yo self, you're not looking too good.
 </div>
 {% endhighlight %}
 
-    <h3 id="alerts-alternatives">Contextual alternatives</h3>
+    <h2 id="alerts-alternatives">Contextual alternatives</h2>
     <p>Add optional classes to change an alert's connotation.</p>
     <div class="bs-example">
       <div class="alert alert-danger">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Oh snap!</strong> Change a few things up and try submitting again.
       </div>
       <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Well done!</strong> You successfully read this important alert message.
       </div>
       <div class="alert alert-info">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
       </div>
     </div>
@@ -1921,19 +1949,36 @@ body { padding-bottom: 70px; }
 <div class="alert alert-info">...</div>
 {% endhighlight %}
 
-    <h3 id="alerts-links">Links in alerts</h3>
+    <h2 id="alerts-dismissable">Dismissable alerts</h2>
+    <p>Build on any alert by adding an optional <code>.alert-dismissable</code> and close button.</p>
+    <div class="bs-example">
+      <div class="alert alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Warning!</strong> Best check yo self, you're not looking too good.
+      </div>
+    </div>
+{% highlight html %}
+<div class="alert alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong>Warning!</strong> Best check yo self, you're not looking too good.
+</div>
+{% endhighlight %}
+
+    <div class="bs-callout bs-callout-warning">
+      <h4>Ensure proper behavior across all devices</h4>
+      <p>Be sure to use the <code>&lt;button&gt;</code> element with the <code>data-dismiss="alert"</code> data attribute.</p>
+    </div>
+
+    <h2 id="alerts-links">Links in alerts</h2>
     <p>Use the <code>.alert-link</code> utility class to quickly provide matching colored links within any alert.</p>
     <div class="bs-example">
       <div class="alert alert-danger">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
       </div>
       <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
       </div>
       <div class="alert alert-info">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
       </div>
     </div>
@@ -2106,7 +2151,7 @@ body { padding-bottom: 70px; }
     <div class="bs-example">
       <div class="media">
         <a class="pull-left" href="#">
-          <img class="media-object" data-src="holder.js/64x64">
+          <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
         </a>
         <div class="media-body">
           <h4 class="media-heading">Media heading</h4>
@@ -2115,14 +2160,14 @@ body { padding-bottom: 70px; }
       </div>
       <div class="media">
         <a class="pull-left" href="#">
-          <img class="media-object" data-src="holder.js/64x64">
+          <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
         </a>
         <div class="media-body">
           <h4 class="media-heading">Media heading</h4>
           Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
           <div class="media">
             <a class="pull-left" href="#">
-              <img class="media-object" data-src="holder.js/64x64">
+              <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
             </a>
             <div class="media-body">
               <h4 class="media-heading">Media heading</h4>
@@ -2135,7 +2180,7 @@ body { padding-bottom: 70px; }
 {% highlight html %}
 <div class="media">
   <a class="pull-left" href="#">
-    <img class="media-object" src="...">
+    <img class="media-object" src="..." alt="...">
   </a>
   <div class="media-body">
     <h4 class="media-heading">Media heading</h4>
@@ -2150,7 +2195,7 @@ body { padding-bottom: 70px; }
       <ul class="media-list">
         <li class="media">
           <a class="pull-left" href="#">
-            <img class="media-object" data-src="holder.js/64x64">
+            <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
           </a>
           <div class="media-body">
             <h4 class="media-heading">Media heading</h4>
@@ -2158,7 +2203,7 @@ body { padding-bottom: 70px; }
             <!-- Nested media object -->
             <div class="media">
               <a class="pull-left" href="#">
-                <img class="media-object" data-src="holder.js/64x64">
+                <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
               </a>
               <div class="media-body">
                 <h4 class="media-heading">Nested media heading</h4>
@@ -2166,7 +2211,7 @@ body { padding-bottom: 70px; }
                 <!-- Nested media object -->
                 <div class="media">
                   <a class="pull-left" href="#">
-                    <img class="media-object" data-src="holder.js/64x64">
+                    <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
                   </a>
                   <div class="media-body">
                     <h4 class="media-heading">Nested media heading</h4>
@@ -2178,7 +2223,7 @@ body { padding-bottom: 70px; }
             <!-- Nested media object -->
             <div class="media">
               <a class="pull-left" href="#">
-                <img class="media-object" data-src="holder.js/64x64">
+                <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
               </a>
               <div class="media-body">
                 <h4 class="media-heading">Nested media heading</h4>
@@ -2189,7 +2234,7 @@ body { padding-bottom: 70px; }
         </li>
         <li class="media">
           <a class="pull-right" href="#">
-            <img class="media-object" data-src="holder.js/64x64">
+            <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image" src="data:image/png;base64,">
           </a>
           <div class="media-body">
             <h4 class="media-heading">Media heading</h4>
@@ -2202,7 +2247,7 @@ body { padding-bottom: 70px; }
 <ul class="media-list">
   <li class="media">
     <a class="pull-left" href="#">
-      <img class="media-object" src="...">
+      <img class="media-object" src="..." alt="...">
     </a>
     <div class="media-body">
       <h4 class="media-heading">Media heading</h4>
@@ -2280,14 +2325,10 @@ body { padding-bottom: 70px; }
         <a href="#" class="list-group-item active">
           Cras justo odio
         </a>
-        <a href="#" class="list-group-item">Dapibus ac facilisis in
-        </a>
-        <a href="#" class="list-group-item">Morbi leo risus
-        </a>
-        <a href="#" class="list-group-item">Porta ac consectetur ac
-        </a>
-        <a href="#" class="list-group-item">Vestibulum at eros
-        </a>
+        <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+        <a href="#" class="list-group-item">Morbi leo risus</a>
+        <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+        <a href="#" class="list-group-item">Vestibulum at eros</a>
       </div>
     </div>
 {% highlight html %}
@@ -2295,14 +2336,10 @@ body { padding-bottom: 70px; }
   <a href="#" class="list-group-item active">
     Cras justo odio
   </a>
-  <a href="#" class="list-group-item">Dapibus ac facilisis in
-  </a>
-  <a href="#" class="list-group-item">Morbi leo risus
-  </a>
-  <a href="#" class="list-group-item">Porta ac consectetur ac
-  </a>
-  <a href="#" class="list-group-item">Vestibulum at eros
-  </a>
+  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item">Morbi leo risus</a>
+  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+  <a href="#" class="list-group-item">Vestibulum at eros</a>
 </div>
 {% endhighlight %}
 

@@ -29,7 +29,7 @@
     this.$backdrop =
     this.isShown   = null
 
-    if (this.options.remote) this.$element.find('.modal-body').load(this.options.remote)
+    if (this.options.remote) this.$element.load(this.options.remote)
   }
 
   Modal.DEFAULTS = {
@@ -237,10 +237,8 @@
       })
   })
 
-  $(function () {
-    var $body = $(document.body)
-      .on('shown.bs.modal',  '.modal', function () { $body.addClass('modal-open') })
-      .on('hidden.bs.modal', '.modal', function () { $body.removeClass('modal-open') })
-  })
+  $(document)
+    .on('shown.bs.modal',  '.modal', function () { $(document.body).addClass('modal-open') })
+    .on('hidden.bs.modal', '.modal', function () { $(document.body).removeClass('modal-open') })
 
 }(window.jQuery);
