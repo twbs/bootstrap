@@ -2420,6 +2420,7 @@ textarea.input-group-lg > .input-group-btn > .btn {
   min-width: 160px;
   padding: 5px 0;
   margin: 2px 0 0;
+  font-size: 14px;
   list-style: none;
   background-color: #ffffff;
   border: 1px solid #cccccc;
