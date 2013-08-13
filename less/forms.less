@@ -208,43 +208,13 @@ input[type="number"] {
 }
 
 
-
 // Form control sizing
-//
-// Relative text size, padding, and border-radii changes for form controls. For
-// horizontal sizing, wrap controls in the predefined grid classes. `<select>`
-// element gets special love because it's special, and that's a fact!
+.input-sm {
+  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
+}
 
 .input-lg {
-  height: @input-height-large;
-  padding: @padding-large-vertical @padding-large-horizontal;
-  font-size: @font-size-large;
-  line-height: @line-height-large;
-  border-radius: @border-radius-large;
-}
-.input-sm {
-  height: @input-height-small;
-  padding: @padding-small-vertical @padding-small-horizontal;
-  font-size: @font-size-small;
-  line-height: @line-height-small;
-  border-radius: @border-radius-small;
-}
-
-select {
-  &.input-lg {
-    height: @input-height-large;
-    line-height: @input-height-large;
-  }
-  &.input-sm {
-    height: @input-height-small;
-    line-height: @input-height-small;
-  }
-}
-textarea {
-  &.input-lg,
-  &.input-sm {
-    height: auto;
-  }
+  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
 }
 
 
