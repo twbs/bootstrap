@@ -2,30 +2,185 @@
 // Navbars
 // --------------------------------------------------
 
+
 // Wrapper and base class
+//
+// Provide a static navbar from which we expand to create full-width, fixed, and
+// other navbar variations.
+
 .navbar {
   position: relative;
   min-height: @navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
   margin-bottom: @navbar-margin-bottom;
-  padding-left: @navbar-padding-horizontal;
-  padding-right: @navbar-padding-horizontal;
   background-color: @navbar-bg;
-  border-radius: @navbar-border-radius;
+  border: 1px solid @navbar-border;
 
   // Prevent floats from breaking the navbar
   .clearfix();
+
+  @media (min-width: @grid-float-breakpoint) {
+    border-radius: @navbar-border-radius;
+  }
 }
 
+
+// Navbar heading
+//
+// Groups `.navbar-brand` and `.navbar-toggle` into a single component for easy
+// styling of responsive aspects.
+
+.navbar-header {
+  padding-left:  @navbar-padding-horizontal;
+  padding-right: @navbar-padding-horizontal;
+  .clearfix();
+
+  @media (min-width: @grid-float-breakpoint) {
+    float: left;
+  }
+}
+
+
+// Navbar collapse (body)
+//
+// Group your navbar content into this for easy collapsing and expanding across
+// various device sizes. By default, this content is collapsed when <768px, but
+// will expand past that for a horizontal display.
+//
+// To start (on mobile devices) the navbar links, forms, and buttons are stacked
+// vertically and include a `max-height` to overflow in case you have too much
+// content for the user's viewport.
+
+.navbar-collapse {
+  padding: 5px @navbar-padding-horizontal;
+  border-top: 1px solid darken(@navbar-bg, 7%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+  // Clear floated elements and prevent collapsing of padding
+  .clearfix();
+
+  // This is not automatically added to the `.navbar-fixed-top` because it causes
+  // z-index bugs in iOS7 (possibly earlier).
+  max-height: 360px;
+  overflow-x: visible;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+
+  @media (min-width: @grid-float-breakpoint) {
+    width: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-top: 0;
+  }
+}
+
+
+//
+// Navbar alignment options
+//
+// Display the navbar across the entirity of the page or fixed it to the top or
+// bottom of the page.
+
+// Static top (unfixed, but 100% wide) navbar
+.navbar-static-top {
+  @media (min-width: @grid-float-breakpoint) {
+    border-width: 0 0 1px;
+    border-radius: 0;
+  }
+}
+
+// Fix the top/bottom navbars when screen real estate supports it
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: @zindex-navbar-fixed;
+  border-width: 0 0 1px;
+
+  // Undo the rounded corners
+  @media (min-width: @grid-float-breakpoint) {
+    border-radius: 0;
+  }
+}
+.navbar-fixed-top {
+  top: 0;
+}
+.navbar-fixed-bottom {
+  bottom: 0;
+  margin-bottom: 0; // override .navbar defaults
+}
+
+
+// Brand/project name
+
+.navbar-brand {
+  float: left;
+  margin-right: (@navbar-padding-horizontal / 2);
+  padding-top: @navbar-padding-vertical;
+  padding-bottom: @navbar-padding-vertical;
+  font-size: @font-size-large;
+  line-height: @line-height-computed;
+  color: @navbar-brand-color;
+  &:hover,
+  &:focus {
+    color: @navbar-brand-hover-color;
+    text-decoration: none;
+    background-color: @navbar-brand-hover-bg;
+  }
+}
+
+
+// Navbar toggle
+//
+// Custom button for toggling the `.navbar-collapse`, powered by the collapse
+// JavaScript plugin.
+
+.navbar-toggle {
+  position: relative;
+  float: right;
+  padding: 9px 10px;
+  .navbar-vertical-align(34px);
+  background-color: transparent;
+  border: 1px solid @navbar-toggle-border-color;
+  border-radius: @border-radius-base;
+
+  &:hover,
+  &:focus {
+    background-color: @navbar-toggle-hover-bg;
+  }
+
+  // Bars
+  .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: @navbar-toggle-icon-bar-bg;
+    border-radius: 1px;
+  }
+  .icon-bar + .icon-bar {
+    margin-top: 4px;
+  }
+}
+
+
 // Navbar nav links
-// -------------------------
+//
+// Builds on top of the `.nav` components with it's own modifier class to make
+// the nav the full height of the horizontal nav (above 768px).
 
 .navbar-nav {
+  margin-left: -@navbar-padding-horizontal;
+  margin-right: -@navbar-padding-horizontal;
+
+  @media (min-width: @grid-float-breakpoint) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   > li > a {
-    padding-top: ((@navbar-height - @line-height-computed) / 2);
-    padding-bottom: ((@navbar-height - @line-height-computed) / 2);
+    padding-top:    10px;
+    padding-bottom: 10px;
     color: @navbar-link-color;
     line-height: @line-height-computed;
-    border-radius: @border-radius-base;
     &:hover,
     &:focus {
       color: @navbar-link-hover-color;
@@ -54,128 +209,85 @@
   &.pull-right {
     width: 100%;
   }
-}
 
-
-
-//
-// Navbar alignment options
-// --------------------------------------------------
-
-// Static navbar
-.navbar-static-top {
-  border-radius: 0;
-}
-
-// Fix the top/bottom navbars when screen real estate supports it
-.navbar-fixed-top,
-.navbar-fixed-bottom {
-  position: fixed;
-  right: 0;
-  left: 0;
-  z-index: @zindex-navbar-fixed;
-  border-radius: 0;
-}
-.navbar-fixed-top {
-  top: 0;
-}
-.navbar-fixed-bottom {
-  bottom: 0;
-  margin-bottom: 0; // override .navbar defaults
-}
-
-.nav-collapse {
-  // Prevent overlap of `.navbar-brand` and `.navbar-toggle`
-  clear: both;
-  // Space out collapsed contents within the mobile navbar
-  padding-bottom: @navbar-padding-vertical;
-  // Clear floated elements and prevent collapsing of padding
-  .clearfix();
-
-  // When there is no `.navbar-brand` present (which normally sits between the
-  // navbar brand and toggle), prevent the nav from overlapping the toggle.
-  .navbar-toggle + & {
-    width: 100%;
-    margin-top: @navbar-height;
-  }
-}
-
-
-// Scrollable navbar navigation
-//
-// Sometimes you might have too many links in your fixed navbar and you need to
-// maintain access to all that content. To help, add `.nav-collapse-scrollable`
-// to your `.nav-collapse` to prevent the the content from flowing past the max-
-// height of your browser.
-//
-// This is not automatically added to the `.navbar-fixed-top` because it causes
-// z-index bugs in iOS7 (possibly earlier).
-
-@media (max-width: @screen-small) {
-  .nav-collapse-scrollable {
-    margin-bottom: @navbar-padding-vertical;
-    max-height: 360px;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-  }
-}
-
-
-//
-// Navbar optional components
-// --------------------------------------------------
-
-// Brand/project name
-.navbar-brand {
-  float: left;
-  margin-right: 15px;
-  padding-top: @navbar-padding-vertical;
-  padding-bottom: @navbar-padding-vertical;
-  font-size: @font-size-large;
-  line-height: @line-height-computed;
-  color: @navbar-brand-color;
-  &:hover,
-  &:focus {
-    color: @navbar-brand-hover-color;
-    text-decoration: none;
-    background-color: @navbar-brand-hover-bg;
-  }
-}
-
-// Collapsible navbar toggle
-.navbar-toggle {
-  position: relative;
-  float: right;
-  padding: 9px 10px;
-  .navbar-vertical-align(34px);
-  margin-right: -10px;
-  background-color: transparent;
-  border: 1px solid @navbar-toggle-border-color;
-  border-radius: @border-radius-base;
-
-  &:hover,
-  &:focus {
-    background-color: @navbar-toggle-hover-bg;
+  @media (max-width: @screen-phone-max) {
+    // Dropdowns get custom display
+    .open .dropdown-menu {
+      position: static;
+      float: none;
+      width: auto;
+      margin-top: 0;
+      background-color: transparent;
+      border: 0;
+      box-shadow: none;
+      > li > a,
+      .dropdown-header {
+        padding: 5px 15px 5px 25px;
+      }
+      > li > a {
+        color: @navbar-link-color;
+        line-height: @line-height-computed;
+        &:hover,
+        &:focus {
+          color: @navbar-link-hover-color;
+          background-color: @navbar-link-hover-bg;
+          background-image: none;
+        }
+      }
+      > .active > a {
+        &,
+        &:hover,
+        &:focus {
+          color: @navbar-link-active-color;
+          background-color: @navbar-link-active-bg;
+        }
+      }
+      > .disabled > a {
+        &,
+        &:hover,
+        &:focus {
+          color: @navbar-link-disabled-color;
+          background-color: @navbar-link-disabled-bg;
+        }
+      }
+    }
   }
 
-  // Bars
-  .icon-bar {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background-color: @navbar-toggle-icon-bar-bg;
-    border-radius: 1px;
-  }
-  .icon-bar + .icon-bar {
-    margin-top: 4px;
-  }
 }
+
 
 // Navbar form
+//
+// Extension of the `.form-inline` with some extra flavor for optimum display in
+// our navbars.
+
 .navbar-form {
+  width: 100%; // Counteract the float from `.pull-` classes
+  padding: 10px @navbar-padding-horizontal;
+  border-top: 1px solid darken(@navbar-bg, 7%);
+  border-bottom: 1px solid darken(@navbar-bg, 7%);
+
+  // Mixin behavior for optimum display
   .form-inline();
-  .navbar-vertical-align(@input-height-base); // Vertically center in navbar
+
+  .form-group {
+    @media (max-width: @screen-phone-max) {
+      margin-bottom: 5px;
+    }
+  }
+
+  // Vertically center in expanded, horizontal navbar
+  .navbar-vertical-align(@input-height-base);
+
+  // Undo 100% width for pull classes
+  @media (min-width: @grid-float-breakpoint) {
+    width: auto;
+    border: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }
+
 
 // Dropdown menus
 
@@ -231,6 +343,7 @@
 
 .navbar-inverse {
   background-color: @navbar-inverse-bg;
+  border-color: @navbar-inverse-border;
 
   .navbar-brand {
     color: @navbar-inverse-brand-color;
@@ -285,6 +398,10 @@
     }
   }
 
+  .navbar-collapse {
+    border-top-color: darken(@navbar-inverse-bg, 7%);
+  }
+
   // Dropdowns
   .navbar-nav {
     > .open > a {
@@ -313,7 +430,38 @@
         }
       }
     }
+
+    @media (max-width: @screen-phone-max) {
+      // Dropdowns get custom display
+      .open .dropdown-menu {
+        > li > a {
+          color: @navbar-inverse-link-color;
+          &:hover,
+          &:focus {
+            color: @navbar-inverse-link-hover-color;
+            background-color: @navbar-inverse-link-hover-bg;
+          }
+        }
+        > .active > a {
+          &,
+          &:hover,
+          &:focus {
+            color: @navbar-inverse-link-active-color;
+            background-color: @navbar-inverse-link-active-bg;
+          }
+        }
+        > .disabled > a {
+          &,
+          &:hover,
+          &:focus {
+            color: @navbar-inverse-link-disabled-color;
+            background-color: @navbar-inverse-link-disabled-bg;
+          }
+        }
+      }
+    }
   }
+
 }
 
 
@@ -322,11 +470,6 @@
 // --------------------------------------------------
 
 @media screen and (min-width: @grid-float-breakpoint) {
-
-  // Undo clearing to keep nav and brand horizontal
-  .nav-collapse {
-    clear: none;
-  }
 
   .navbar-nav {
     float: left;
@@ -337,7 +480,8 @@
     > li {
       float: left;
       > a {
-        border-radius: 0;
+        padding-top: ((@navbar-height - @line-height-computed) / 2);
+        padding-bottom: ((@navbar-height - @line-height-computed) / 2);
       }
     }
 
@@ -353,7 +497,7 @@
     left: auto;
     display: none;
   }
-  .nav-collapse.collapse {
+  .navbar-collapse.collapse {
     display: block !important;
     height: auto !important;
     padding-bottom: 0; // Override default setting
@@ -380,7 +524,6 @@
 
 .navbar-text {
   float: left;
-  padding: 0 @navbar-padding-horizontal;
   .navbar-vertical-align(@line-height-computed);
 }
 
