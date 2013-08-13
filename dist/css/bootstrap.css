@@ -1704,7 +1704,7 @@ textarea.form-control {
   margin-left: 10px;
 }
 
-.input-lg {
+.input-sm {
   height: 45px;
   padding: 10px 16px;
   font-size: 18px;
@@ -1712,7 +1712,16 @@ textarea.form-control {
   border-radius: 6px;
 }
 
-.input-sm {
+select.input-sm {
+  height: 45px;
+  line-height: 45px;
+}
+
+textarea.input-sm {
+  height: auto;
+}
+
+.input-lg {
   height: 30px;
   padding: 5px 10px;
   font-size: 12px;
@@ -1721,17 +1730,11 @@ textarea.form-control {
 }
 
 select.input-lg {
-  height: 45px;
-  line-height: 45px;
-}
-
-select.input-sm {
   height: 30px;
   line-height: 30px;
 }
 
-textarea.input-lg,
-textarea.input-sm {
+textarea.input-lg {
   height: auto;
 }
 
@@ -2257,6 +2260,29 @@ input[type="button"].btn-block {
 .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
+  height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+select.input-group-lg > .form-control,
+select.input-group-lg > .input-group-addon,
+select.input-group-lg > .input-group-btn > .btn {
+  height: 30px;
+  line-height: 30px;
+}
+
+textarea.input-group-lg > .form-control,
+textarea.input-group-lg > .input-group-addon,
+textarea.input-group-lg > .input-group-btn > .btn {
+  height: auto;
+}
+
+.input-group-sm > .form-control,
+.input-group-sm > .input-group-addon,
+.input-group-lg > .input-group-btn > .btn {
   height: 45px;
   padding: 10px 16px;
   font-size: 18px;
@@ -2264,14 +2290,17 @@ input[type="button"].btn-block {
   border-radius: 6px;
 }
 
-.input-group-sm > .form-control,
-.input-group-sm > .input-group-addon,
-.input-group-lg > .input-group-btn > .btn {
-  height: 30px;
-  padding: 5px 10px;
-  font-size: 12px;
-  line-height: 1.5;
-  border-radius: 3px;
+select.input-group-sm > .form-control,
+select.input-group-sm > .input-group-addon,
+select.input-group-lg > .input-group-btn > .btn {
+  height: 45px;
+  line-height: 45px;
+}
+
+textarea.input-group-sm > .form-control,
+textarea.input-group-sm > .input-group-addon,
+textarea.input-group-lg > .input-group-btn > .btn {
+  height: auto;
 }
 
 .input-group-addon,
@@ -3484,7 +3513,10 @@ button.close {
   outline: none;
 }
 
-.btn-group .btn + .btn {
+.btn-group .btn + .btn,
+.btn-group .btn + .btn-group,
+.btn-group .btn-group + .btn,
+.btn-group .btn-group + .btn-group {
   margin-left: -1px;
 }
 
@@ -3611,27 +3643,73 @@ button.close {
   border-bottom-width: 5px;
 }
 
-.btn-group-vertical > .btn {
+.btn-group-vertical > .btn,
+.btn-group-vertical > .btn-group {
   display: block;
   float: none;
   width: 100%;
   max-width: 100%;
 }
 
-.btn-group-vertical > .btn + .btn {
-  margin-top: -1px;
+.btn-group-vertical > .btn-group:before,
+.btn-group-vertical > .btn-group:after {
+  display: table;
+  content: " ";
 }
 
-.btn-group-vertical .btn:not(:first-child):not(:last-child) {
+.btn-group-vertical > .btn-group:after {
+  clear: both;
+}
+
+.btn-group-vertical > .btn-group:before,
+.btn-group-vertical > .btn-group:after {
+  display: table;
+  content: " ";
+}
+
+.btn-group-vertical > .btn-group:after {
+  clear: both;
+}
+
+.btn-group-vertical > .btn-group > .btn {
+  float: none;
+}
+
+.btn-group-vertical > .btn + .btn,
+.btn-group-vertical > .btn + .btn-group,
+.btn-group-vertical > .btn-group + .btn,
+.btn-group-vertical > .btn-group + .btn-group {
+  margin-top: -1px;
+  margin-left: 0;
+}
+
+.btn-group-vertical > .btn:not(:first-child):not(:last-child) {
   border-radius: 0;
 }
 
-.btn-group-vertical .btn:first-child:not(:last-child) {
+.btn-group-vertical > .btn:first-child:not(:last-child) {
+  border-top-right-radius: 4px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.btn-group-vertical .btn:last-child:not(:first-child) {
+.btn-group-vertical > .btn:last-child:not(:first-child) {
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 0;
+}
+
+.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
+  border-radius: 0;
+}
+
+.btn-group-vertical > .btn-group:first-child > .btn:last-child,
+.btn-group-vertical > .btn-group:first-child > .dropdown-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.btn-group-vertical > .btn-group:last-child > .btn:first-child {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
@@ -4616,31 +4694,6 @@ a.list-group-item.active > .badge,
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-}
-
-.accordion {
-  margin-bottom: 20px;
-}
-
-.accordion-group {
-  margin-bottom: 2px;
-  border: 1px solid #e5e5e5;
-  border-radius: 4px;
-}
-
-.accordion-heading {
-  border-bottom: 0;
-}
-
-.accordion-heading .accordion-toggle {
-  display: block;
-  padding: 8px 15px;
-  cursor: pointer;
-}
-
-.accordion-inner {
-  padding: 9px 15px;
-  border-top: 1px solid #e5e5e5;
 }
 
 .carousel {
