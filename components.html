@@ -19,7 +19,8 @@ base_url: "../"
     <p>Wrap the dropdown's trigger and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Then add the menu's HTML.</p>
     <div class="bs-example">
       <div class="dropdown clearfix">
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+        <a id="dropdownMenu1" href="#" role="button" class="sr-only dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
@@ -31,7 +32,7 @@ base_url: "../"
 {% highlight html %}
 <div class="dropdown">
   <!-- Link or button to toggle dropdown -->
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
@@ -53,7 +54,8 @@ base_url: "../"
     <p>Add a header to label sections of actions in any dropdown menu.</p>
     <div class="bs-example">
       <div class="dropdown clearfix">
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+        <a id="dropdownMenu2" href="#" role="button" class="sr-only dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
           <li role="presentation" class="dropdown-header">Dropdown header</li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
@@ -65,7 +67,7 @@ base_url: "../"
       </div>
     </div><!-- /example -->
 {% highlight html %}
-<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
   <li role="presentation" class="dropdown-header">Dropdown header</li>
   ...
   <li role="presentation" class="divider"></li>
@@ -78,7 +80,8 @@ base_url: "../"
     <p>Add <code>.disabled</code> to a <code>&lt;li&gt;</code> in the dropdown to disable the link.</p>
     <div class="bs-example">
       <div class="dropdown clearfix">
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+        <a id="dropdownMenu3" href="#" role="button" class="sr-only dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
           <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
@@ -86,7 +89,7 @@ base_url: "../"
       </div>
     </div><!-- /example -->
 {% highlight html %}
-<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
   <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
   <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
   <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
