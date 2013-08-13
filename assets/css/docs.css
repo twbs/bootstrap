@@ -55,6 +55,10 @@ body {
 
 .bs-docs-nav {
   background-color: #563d7c;
+  border-color: #463265;
+}
+.bs-docs-nav .navbar-collapse {
+  border-color: #463265;
 }
 .bs-docs-nav .navbar-brand {
   color: #fff;
@@ -124,7 +128,7 @@ body {
 /* Download button */
 .bs-masthead .btn-outline {
   margin-top: 20px;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
   padding: 18px 24px;
   font-size: 21px;
 }
@@ -209,7 +213,7 @@ body {
 }
 
 .bs-docs-section + .bs-docs-section {
-  margin-top: 80px;
+  padding-top: 80px;
 }
 
 /* Ads in page headers */
@@ -385,11 +389,10 @@ body {
 }
 
 /* Tweak display of the examples */
-.bs-example + .prettyprint,
 .bs-example + .highlight {
-  margin-top: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  margin: 0 -15px;
+  border-radius: 0;
+  border-width: 0 0 1px;
 }
 
 /* Tweak content of examples for optimum awesome */
@@ -414,17 +417,15 @@ body {
 }
 
 /* Typography */
-.bs-example-type .table td {
+.bs-example-type .table td:last-child {
   color: #999;
   vertical-align: middle;
 }
-.bs-example-type .table td,
-.bs-example-type .table th {
+.bs-example-type .table td {
   padding: 15px 0;
   border-color: #eee;
 }
-.bs-example-type .table tr:first-child td,
-.bs-example-type .table tr:first-child th {
+.bs-example-type .table tr:first-child td {
   border-top: 0;
 }
 .bs-example-type h1,
@@ -437,11 +438,6 @@ body {
 }
 
 /* Forms */
-.bs-example.form-inline select,
-.bs-example.form-inline input[type="text"],
-.bs-example.form-inline input[type="password"] {
-  width: 180px;
-}
 .bs-example-control-sizing select,
 .bs-example-control-sizing input[type="text"] + input[type="text"] {
   margin-top: 10px;
@@ -637,17 +633,9 @@ body {
 ------------------------- */
 .responsive-utilities-test {
   margin-top: 5px;
-  padding-left: 0;
-  list-style: none;
-  overflow: hidden; /* clear floats */
 }
-.responsive-utilities-test li {
-  position: relative;
-  float: left;
-  width: 25%;
-}
-.responsive-utilities-test li + li {
-  margin-left: 10px;
+.responsive-utilities-test .col-xs-6 {
+  margin-bottom: 10px;
 }
 .responsive-utilities-test span {
   padding: 15px 10px;
@@ -720,6 +708,11 @@ body {
 .bs-social-buttons .twitter-share-button {
   width: 98px !important;
 }
+/* Style the GitHub buttons via CSS instead of inline attributes */
+.github-btn {
+  border: 0;
+  overflow: hidden;
+}
 
 
 
@@ -727,7 +720,7 @@ body {
 -------------------------------------------------- */
 
 /* Pseudo :focus state for showing how it looks in the docs */
-input.focused {
+#focusedInput {
   border-color: rgba(82,168,236,.8);
   outline: 0;
   outline: thin dotted \9; /* IE6-9 */
@@ -809,6 +802,15 @@ input.focused {
     border-radius: 4px 4px 0 0;
     box-shadow: none;
   }
+  .bs-example + .prettyprint,
+  .bs-example + .highlight {
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    border-width: 1px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
 
   .carbonad {
     margin: 0 !important;
@@ -818,10 +820,6 @@ input.focused {
 
   /* Show the docs nav */
   .bs-sidebar {
-    display: block;
-  }
-  /* Show the hidden subnavs when space allows it */
-  .bs-sidebar .nav > .active > ul {
     display: block;
   }
 
@@ -848,7 +846,25 @@ input.focused {
 
 /* Tablets/desktops and up */
 @media screen and (min-width: 992px) {
+  .bs-header h1,
+  .bs-header p {
+    margin-right: 380px;
+  }
+  .carbonad {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    padding: 15px !important;
+    width: 330px !important;
+    min-height: 132px;
+  }
+}
 
+@media screen and (min-width: 992px) and (min-height: 700px) {
+  /* Show the hidden subnavs when space allows it */
+  .bs-sidebar .nav > .active > ul {
+    display: block;
+  }
   /* Widen the fixed sidebar */
   .bs-sidebar.affix,
   .bs-sidebar.affix-bottom {
@@ -866,18 +882,6 @@ input.focused {
     margin-top: 0;
     margin-bottom: 0;
   }
-  .bs-header h1,
-  .bs-header p {
-    margin-right: 380px;
-  }
-  .carbonad {
-    position: absolute;
-    top: 20px;
-    right: 0;
-    padding: 15px !important;
-    width: 330px !important;
-    min-height: 132px;
-  }
 }
 
 /* Large desktops and up */
@@ -886,7 +890,7 @@ input.focused {
   /* Widen the fixed sidebar again */
   .bs-sidebar.affix-bottom,
   .bs-sidebar.affix {
-    width: 270px;
+    width: 263px;
   }
 
 }

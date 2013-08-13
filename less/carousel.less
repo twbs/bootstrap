@@ -81,13 +81,11 @@
   // Set gradients for backgrounds
   &.left {
     #gradient > .horizontal(@start-color: rgba(0,0,0,.5); @end-color: rgba(0,0,0,.0001));
-    background-color: transparent;
   }
   &.right {
     left: auto;
     right: 0;
     #gradient > .horizontal(@start-color: rgba(0,0,0,.0001); @end-color: rgba(0,0,0,.5));
-    background-color: transparent;
   }
 
   // Hover/focus state
@@ -99,7 +97,6 @@
   }
 
   // Toggles
-  .glyphicon,
   .icon-prev,
   .icon-next {
     position: absolute;
@@ -113,7 +110,7 @@
     margin-left: -10px;
     font-family: serif;
   }
-  // Non-glyphicon toggles
+
   .icon-prev {
     &:before {
       content: '\2039';// SINGLE LEFT-POINTING ANGLE QUOTATION MARK (U+2039)
@@ -184,7 +181,6 @@
 @media screen and (min-width: @screen-tablet) {
 
   // Scale up the controls a smidge
-  .carousel-control .glyphicon,
   .carousel-control .icon-prev,
   .carousel-control .icon-next {
     width: 30px;
