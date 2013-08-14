@@ -360,6 +360,37 @@
   }
 }
 
+// Tables
+// -------------------------
+.table-row-variant(@state; @background; @border) {
+  // Exact selectors below required to override `.table-striped` and prevent
+  // inheritance to nested tables.
+  .table > thead > tr,
+  .table > tbody > tr,
+  .table > tfoot > tr {
+    > td.@{state},
+    > th.@{state},
+    &.@{state} > td,
+    &.@{state} > th {
+      background-color: @background;
+      border-color: @border;
+    }
+  }
+  
+  // Hover states for `.table-hover`
+  // Note: this is not available for cells or rows within `thead` or `tfoot`.
+  .table-hover > tbody > tr {
+    > td.@{state}:hover,
+    > th.@{state}:hover,
+    &.@{state}:hover > td {
+      background-color: darken(@background, 5%);
+      border-color: darken(@border, 5%);
+      //background-color: darken(@background, 5%);
+      //border-color: darken(@border, 5%);
+    }
+  }
+}
+
 // Button variants
 // -------------------------
 // Easily pump out default styles, as well as :hover, :focus, :active,
