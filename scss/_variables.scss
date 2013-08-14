@@ -230,9 +230,10 @@ $zindex-modal:             1050 !default;
 
 // Basics of a navbar
 $navbar-height:                    50px !default;
-$navbar-color:                     #777 !default;
-$navbar-bg:                        #eee !default;
 $navbar-margin-bottom:             $line-height-computed !default;
+$navbar-color:                     #777 !default;
+$navbar-bg:                        #f8f8f8 !default;
+$navbar-border:                    darken($navbar-bg, 6.5%) !default;
 $navbar-border-radius:             $border-radius-base !default;
 $navbar-padding-horizontal:        floor($grid-gutter-width / 2) !default;
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2) !default;
@@ -242,7 +243,7 @@ $navbar-link-color:                #777 !default;
 $navbar-link-hover-color:          #333 !default;
 $navbar-link-hover-bg:             transparent !default;
 $navbar-link-active-color:         #555 !default;
-$navbar-link-active-bg:            darken($navbar-bg, 10%) !default;
+$navbar-link-active-bg:            darken($navbar-bg, 6.5%) !default;
 $navbar-link-disabled-color:       #ccc !default;
 $navbar-link-disabled-bg:          transparent !default;
 
@@ -261,6 +262,7 @@ $navbar-toggle-border-color:       #ddd !default;
 // Reset inverted navbar basics
 $navbar-inverse-color:                      $gray-light !default;
 $navbar-inverse-bg:                         #222 !default;
+$navbar-inverse-border:                     darken($navbar-inverse-bg, 10%) !default;
 
 // Inverted navbar links
 $navbar-inverse-link-color:                 $gray-light !default;
