@@ -58,13 +58,9 @@
 
     $tip.removeClass('fade top bottom left right in')
 
-    // Hide empty titles
-    //
     // IE8 doesn't accept hiding via the `:empty` pseudo selector, we have to do
     // this manually by checking the contents.
-    if ($tip.find('.popover-title').html() === '') {
-      $tip.find('.popover-title').hide();
-    }
+    if (!$tip.find('.popover-title').html()) $tip.find('.popover-title').hide()
   }
 
   Popover.prototype.hasContent = function () {
