@@ -9,11 +9,12 @@
 .clearfix {
   @include clearfix();
 }
+
 .pull-right {
-  float: right !important;
+  @include pull-right;
 }
 .pull-left {
-  float: left !important;
+  @include pull-left;
 }
 
 

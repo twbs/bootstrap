@@ -696,3 +696,11 @@
     height: auto;
   }
 }
+
+@mixin pull-right {
+  float: right !important;
+}
+
+@mixin pull-left {
+  float: left !important;
+}

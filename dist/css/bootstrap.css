@@ -3011,6 +3011,19 @@ button.close {
   }
 }
 
+@media (min-width: 768px) {
+  .navbar-left {
+    float: left !important;
+  }
+
+  .navbar-right {
+    float: right !important;
+  }
+  .navbar-right .dropdown-menu {
+    left: auto;
+    right: 0;
+  }
+}
 .navbar-form {
   margin-left: -15px;
   margin-right: -15px;
