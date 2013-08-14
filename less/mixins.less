@@ -331,7 +331,7 @@
 // -------------------------
 .panel-variant(@border; @heading-text-color; @heading-bg-color; @heading-border) {
   border-color: @border;
-  .panel-heading {
+  & > .panel-heading {
     color: @heading-text-color;
     background-color: @heading-bg-color;
     border-color: @heading-border;
@@ -339,7 +339,7 @@
       border-top-color: @border;
     }
   }
-  .panel-footer {
+  & > .panel-footer {
     + .panel-collapse .panel-body {
       border-bottom-color: @border;
     }
