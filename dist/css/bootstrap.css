@@ -3186,8 +3186,7 @@ button.close {
 @media (min-width: 768px) {
   .navbar-collapse {
     width: auto;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0;
     border-top: 0;
     box-shadow: none;
   }
