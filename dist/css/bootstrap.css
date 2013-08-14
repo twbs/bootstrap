@@ -3190,6 +3190,7 @@ button.close {
     padding-bottom: 0;
     border-top: 0;
     box-shadow: none;
+    overflow-y: visible;
   }
 }
 
