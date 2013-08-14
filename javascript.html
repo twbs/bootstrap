@@ -683,17 +683,17 @@ $('#myScrollspy').on('activate.bs.scrollspy', function () {
     <p>Enable tabbable tabs via JavaScript (each tab needs to be activated individually):</p>
 {% highlight js %}
 $('#myTab a').click(function (e) {
-  e.preventDefault();
-  $(this).tab('show');
+  e.preventDefault()
+  $(this).tab('show')
 })
 {% endhighlight %}
 
           <p>You can activate individual tabs in several ways:</p>
 {% highlight js %}
-$('#myTab a[href="#profile"]').tab('show'); // Select tab by name
-$('#myTab a:first').tab('show'); // Select first tab
-$('#myTab a:last').tab('show'); // Select last tab
-$('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
+$('#myTab a[href="#profile"]').tab('show') // Select tab by name
+$('#myTab a:first').tab('show') // Select first tab
+$('#myTab a:last').tab('show') // Select last tab
+$('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
 {% endhighlight %}
 
     <h3>Markup</h3>
@@ -936,7 +936,7 @@ $('#example').tooltip(options)
     </div><!-- /.bs-table-scrollable -->
 {% highlight js %}
 $('#myTooltip').on('hidden.bs.tooltip', function () {
-// do something…
+  // do something…
 })
 {% endhighlight %}
   </div>
