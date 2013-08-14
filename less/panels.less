@@ -5,12 +5,16 @@
 
 // Base class
 .panel {
-  padding: 15px;
-  margin-bottom: 20px;
+  margin-bottom: @line-height-computed;
   background-color: @panel-bg;
   border: 1px solid @panel-border;
   border-radius: @panel-border-radius;
   .box-shadow(0 1px 1px rgba(0,0,0,.05));
+}
+
+// Panel contents
+.panel-body {
+  padding: 15px;
 }
 
 // List groups in panels
@@ -20,7 +24,7 @@
 
 .panel {
   .list-group {
-    margin: 15px -15px -15px;
+    margin-bottom: 0;
 
     .list-group-item {
       border-width: 1px 0;
@@ -38,7 +42,6 @@
 }
 // Collapse space between when there's no additional content.
 .panel-heading + .list-group {
-  margin-top: -15px;
   .list-group-item:first-child {
     border-top-width: 0;
   }
@@ -46,7 +49,6 @@
 
 // Optional heading
 .panel-heading {
-  margin: -15px -15px 15px;
   padding: 10px 15px;
   background-color: @panel-heading-bg;
   border-bottom: 1px solid @panel-border;
@@ -65,12 +67,48 @@
 
 // Optional footer (stays gray in every modifier class)
 .panel-footer {
-  margin: 15px -15px -15px;
   padding: 10px 15px;
   background-color: @panel-footer-bg;
   border-top: 1px solid @panel-border;
   .border-bottom-radius(@panel-border-radius - 1);
 }
+
+
+// Collapsable panels (aka, accordion)
+//
+// Wrap a series of panels in `.panel-group` to turn them into an accordion with
+// the help of our collapse JavaScript plugin.
+
+.panel-group {
+  // Tighten up margin so it's only between panels
+  .panel {
+    margin-bottom: 0;
+    border-radius: @panel-border-radius;
+    overflow: hidden; // crop contents when collapsed
+    + .panel {
+      margin-top: 5px;
+    }
+  }
+
+  .panel-heading {
+    border-bottom: 0;
+    + .panel-collapse .panel-body {
+      border-top: 1px solid @panel-border;
+    }
+  }
+  .panel-footer {
+    border-top: 0;
+    + .panel-collapse .panel-body {
+      border-bottom: 1px solid @panel-border;
+    }
+  }
+
+  // New subcomponent for wrapping collapsable content for proper animations
+  .panel-collapse {
+
+  }
+}
+
 
 // Contextual variations
 .panel-primary {
