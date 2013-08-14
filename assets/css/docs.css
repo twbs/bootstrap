@@ -578,9 +578,6 @@ body {
     overflow-x: scroll;
     border: 1px solid #ddd;
   }
-  .bs-table-scrollable .highlight pre {
-    white-space: normal;
-  }
   .bs-table-scrollable .table {
     margin-bottom: 0;
     border: 0;
@@ -602,6 +599,10 @@ body {
     border-bottom: 0;
   }
 }
+.bs-table-scrollable .highlight pre {
+  white-space: normal;
+}
+
 
 /* Related: responsive utilities tables */
 .table code {
