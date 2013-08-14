@@ -164,48 +164,12 @@ table {
   &.active > th  {
     background-color: @table-bg-active;
   }
-  > td.success,
-  > th.success,
-  &.success > td,
-  &.success > th {
-    background-color: @state-success-bg;
-    border-color: @state-success-border;
-  }
-  > td.danger,
-  > th.danger,
-  &.danger > td,
-  &.danger > th {
-    background-color: @state-danger-bg;
-    border-color: @state-danger-border;
-  }
-  > td.warning,
-  > th.warning,
-  &.warning > td,
-  &.warning > th {
-    background-color: @state-warning-bg;
-    border-color: @state-warning-border;
-  }
 }
 
-// Hover states for `.table-hover`
-// Note: this is not available for cells or rows within `thead` or `tfoot`.
-.table-hover > tbody > tr {
-  > td.success:hover,
-  > th.success:hover,
-  &.success:hover > td {
-    background-color: darken(@state-success-bg, 5%);
-    border-color: darken(@state-success-border, 5%);
-  }
-  > td.danger:hover,
-  > th.danger:hover,
-  &.danger:hover > td {
-    background-color: darken(@state-danger-bg, 5%);
-    border-color: darken(@state-danger-border, 5%);
-  }
-  > td.warning:hover,
-  > th.warning:hover,
-  &.warning:hover > td {
-    background-color: darken(@state-warning-bg, 5%);
-    border-color: darken(@state-warning-border, 5%);
-  }
-}
+// Contextual variants
+// -------------------
+.table-row-variant(success; @state-success-bg; @state-success-border);
+
+.table-row-variant(danger; @state-danger-bg; @state-danger-border);
+
+.table-row-variant(warning; @state-warning-bg; @state-warning-border);
