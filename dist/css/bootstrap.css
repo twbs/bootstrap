@@ -3352,9 +3352,11 @@ button.close {
     float: left !important;
   }
   .navbar-right {
+    float: right !important;
+  }
+  .navbar-right .dropdown-menu {
     right: 0;
     left: auto;
-    float: right !important;
   }
 }
 

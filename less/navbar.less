@@ -261,7 +261,9 @@
   .navbar-left  { .pull-left(); }
   .navbar-right {
     .pull-right();
-    .pull-right > .dropdown-menu();
+    .dropdown-menu {
+      .pull-right > .dropdown-menu();
+    }
   }
 }
 
