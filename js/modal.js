@@ -236,8 +236,17 @@
 
   $(function () {
     var $body = $(document.body)
-      .on('shown.bs.modal',  '.modal', function () { $body.addClass('modal-open') })
-      .on('hidden.bs.modal', '.modal', function () { $body.removeClass('modal-open') })
+      .on('show.bs.modal',  '.modal', function () {
+		w1 = $(window).width();
+      	$body.addClass('modal-open modal-margin');
+      	$('.affix,.navbar-fixed-top,.navbar-fixed-bottom').addClass('modal-margin');
+      	w2 = $(window).width();
+      	$("<style type='text/css'>.modal-margin{margin-right:" + (w2 - w1) + "px;}</style>").appendTo("head");
+      })
+      .on('hidden.bs.modal', '.modal', function () {
+      	$body.removeClass('modal-open');
+      	$('.modal-margin').removeClass('modal-margin');
+      })
   })
 
 }(window.jQuery);
