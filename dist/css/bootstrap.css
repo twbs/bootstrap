@@ -3352,6 +3352,8 @@ button.close {
     float: left !important;
   }
   .navbar-right {
+    right: 0;
+    left: auto;
     float: right !important;
   }
 }

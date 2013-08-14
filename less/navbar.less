@@ -259,7 +259,10 @@
 
 @media (min-width: @grid-float-breakpoint) {
   .navbar-left  { .pull-left(); }
-  .navbar-right { .pull-right(); }
+  .navbar-right {
+    .pull-right();
+    .pull-right > .dropdown-menu();
+  }
 }
 
 
