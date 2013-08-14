@@ -437,6 +437,12 @@ body {
   margin: 0;
 }
 
+/* Buttons */
+.bs-example > .btn {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 /* Forms */
 .bs-example-control-sizing select,
 .bs-example-control-sizing input[type="text"] + input[type="text"] {
