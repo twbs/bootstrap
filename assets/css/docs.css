@@ -368,7 +368,7 @@ body {
 .bs-example {
   position: relative;
   padding: 45px 15px 15px;
-  margin: 0 -15px -1px;
+  margin: 0 -15px 15px;
   background-color: #fafafa;
   box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
   border-color: #e5e5e5 #eee #eee;
@@ -390,7 +390,7 @@ body {
 
 /* Tweak display of the examples */
 .bs-example + .highlight {
-  margin: 0 -15px;
+  margin: -15px -15px 15px;
   border-radius: 0;
   border-width: 0 0 1px;
 }
