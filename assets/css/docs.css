@@ -642,13 +642,25 @@ body {
   text-align: center;
   border-radius: 4px;
 }
-.responsive-utilities-test.visible-on [class*="hidden"],
-.responsive-utilities-test.hidden-on [class*="visible"] {
+.visible-on .col-xs-6 .hidden-xs,
+.visible-on .col-xs-6 .hidden-sm,
+.visible-on .col-xs-6 .hidden-md,
+.visible-on .col-xs-6 .hidden-lg,
+.hidden-on .col-xs-6 .visible-xs,
+.hidden-on .col-xs-6 .visible-sm,
+.hidden-on .col-xs-6 .visible-md,
+.hidden-on .col-xs-6 .visible-lg {
   color: #999;
   border: 1px solid #ddd;
 }
-.responsive-utilities-test.visible-on [class*="visible"],
-.responsive-utilities-test.hidden-on [class*="hidden"] {
+.visible-on .col-xs-6 .visible-xs,
+.visible-on .col-xs-6 .visible-sm,
+.visible-on .col-xs-6 .visible-md,
+.visible-on .col-xs-6 .visible-lg,
+.hidden-on .col-xs-6 .hidden-xs,
+.hidden-on .col-xs-6 .hidden-sm,
+.hidden-on .col-xs-6 .hidden-md,
+.hidden-on .col-xs-6 .hidden-lg {
   color: #468847;
   background-color: #dff0d8;
   border: 1px solid #d6e9c6;
