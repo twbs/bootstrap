@@ -812,7 +812,7 @@ body {
   }
   .bs-example + .prettyprint,
   .bs-example + .highlight {
-    margin-top: -1px;
+    margin-top: -16px;
     margin-left: 0;
     margin-right: 0;
     border-width: 1px;
