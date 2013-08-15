@@ -400,9 +400,7 @@ body {
 .bs-example > ul:last-child,
 .bs-example > ol:last-child,
 .bs-example > blockquote:last-child,
-.bs-example > input:last-child,
-.bs-example > select:last-child,
-.bs-example > textarea:last-child,
+.bs-example > .form-control:last-child,
 .bs-example > .table:last-child,
 .bs-example > .navbar:last-child
 .bs-example > .jumbotron:last-child,
