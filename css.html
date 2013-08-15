@@ -1226,7 +1226,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
 
-    <h2 id="tables-row-classes">Contextual table classes</h2>
+    <h2 id="tables-contextual-classes">Contextual table classes</h2>
     <p>Use contextual classes to color table rows or individual cells.</p>
     <div class="bs-table-scrollable">
       <table class="table table-bordered table-striped bs-table">
@@ -1243,15 +1243,15 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <tbody>
           <tr>
             <td>
-              <code>.success</code>
+              <code>.active</code>
             </td>
-            <td>Indicates a successful or positive action</td>
+            <td>Applies the hover color to a particular row or cell</td>
           </tr>
           <tr>
             <td>
-              <code>.danger</code>
+              <code>.success</code>
             </td>
-            <td>Indicates a dangerous or potentially negative action</td>
+            <td>Indicates a successful or positive action</td>
           </tr>
           <tr>
             <td>
@@ -1261,9 +1261,9 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           </tr>
           <tr>
             <td>
-              <code>.active</code>
+              <code>.danger</code>
             </td>
-            <td>Applies the hover color to a particular row or cell</td>
+            <td>Indicates a dangerous or potentially negative action</td>
           </tr>
         </tbody>
       </table>
@@ -1279,7 +1279,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           </tr>
         </thead>
         <tbody>
-          <tr class="success">
+          <tr class="active">
             <td>1</td>
             <td>Column content</td>
             <td>Column content</td>
@@ -1291,7 +1291,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             <td>Column content</td>
             <td>Column content</td>
           </tr>
-          <tr class="danger">
+          <tr class="success">
             <td>3</td>
             <td>Column content</td>
             <td>Column content</td>
@@ -1315,7 +1315,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             <td>Column content</td>
             <td>Column content</td>
           </tr>
-          <tr class="active">
+          <tr class="danger">
             <td>7</td>
             <td>Column content</td>
             <td>Column content</td>
@@ -1325,11 +1325,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </table>
     </div><!-- /example -->
 {% highlight html %}
-<tr class="success">
-  <td>1</td>
-  <td>Column content</td>
-  <td>Column content</td>
-  <td>Column content</td>
+<!-- On rows -->
+<tr class="active">...</tr>
+<tr class="success">...</tr>
+<tr class="warning">...</tr>
+<tr class="danger">...</tr>
+
+<!-- On cells (`td` or `th`) -->
+<tr>
+  <td class="active">...</td>
+  <td class="success">...</td>
+  <td class="warning">...</td>
+  <td class="danger">...</td>
 </tr>
 {% endhighlight %}
 
