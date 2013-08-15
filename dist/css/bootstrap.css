@@ -3196,6 +3196,12 @@ button.close {
     border-top: 0;
     box-shadow: none;
   }
+  .navbar-collapse.collapse {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+  }
 }
 
 @media (min-width: 768px) {
@@ -3275,16 +3281,18 @@ button.close {
   margin-top: 4px;
 }
 
+@media (min-width: 768px) {
+  .navbar-toggle {
+    position: relative;
+    top: auto;
+    left: auto;
+    display: none;
+  }
+}
+
 .navbar-nav {
   margin-right: -15px;
   margin-left: -15px;
-}
-
-@media (min-width: 768px) {
-  .navbar-nav {
-    margin-right: 0;
-    margin-left: 0;
-  }
 }
 
 .navbar-nav > li > a {
@@ -3349,6 +3357,20 @@ button.close {
   .navbar-nav .open .dropdown-menu > .disabled > a:focus {
     color: #cccccc;
     background-color: transparent;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-nav {
+    float: left;
+    margin: 0;
+  }
+  .navbar-nav > li {
+    float: left;
+  }
+  .navbar-nav > li > a {
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 }
 
@@ -3455,6 +3477,25 @@ button.close {
 .navbar-nav > li > .dropdown-menu.pull-right {
   right: 0;
   left: auto;
+}
+
+.navbar-btn {
+  margin-top: 8px;
+}
+
+.navbar-text {
+  float: left;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: #777777;
+}
+
+.navbar-link {
+  color: #777777;
+}
+
+.navbar-link:hover {
+  color: #333333;
 }
 
 .navbar-inverse {
@@ -3565,51 +3606,6 @@ button.close {
     color: #444444;
     background-color: transparent;
   }
-}
-
-@media screen and (min-width: 768px) {
-  .navbar-nav {
-    float: left;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  .navbar-nav > li {
-    float: left;
-  }
-  .navbar-nav > li > a {
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
-  .navbar-toggle {
-    position: relative;
-    top: auto;
-    left: auto;
-    display: none;
-  }
-  .navbar-collapse.collapse {
-    display: block !important;
-    height: auto !important;
-    padding-bottom: 0;
-    overflow: visible !important;
-  }
-}
-
-.navbar-btn {
-  margin-top: 8px;
-}
-
-.navbar-text {
-  float: left;
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
-
-.navbar-link {
-  color: #777777;
-}
-
-.navbar-link:hover {
-  color: #333333;
 }
 
 .navbar-inverse .navbar-link {

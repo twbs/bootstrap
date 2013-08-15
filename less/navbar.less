@@ -69,6 +69,13 @@
     padding: 0;
     border-top: 0;
     box-shadow: none;
+
+    &.collapse {
+      display: block !important;
+      height: auto !important;
+      padding-bottom: 0; // Override default setting
+      overflow: visible !important;
+    }
   }
 }
 
@@ -159,6 +166,13 @@
   .icon-bar + .icon-bar {
     margin-top: 4px;
   }
+
+  @media (min-width: @grid-float-breakpoint) {
+    position: relative;
+    top: auto;
+    left: auto;
+    display: none;
+  }
 }
 
 
@@ -170,11 +184,6 @@
 .navbar-nav {
   margin-left: -@navbar-padding-horizontal;
   margin-right: -@navbar-padding-horizontal;
-
-  @media (min-width: @grid-float-breakpoint) {
-    margin-left: 0;
-    margin-right: 0;
-  }
 
   > li > a {
     padding-top:    10px;
@@ -205,7 +214,7 @@
   }
 
   @media (max-width: @screen-phone-max) {
-    // Dropdowns get custom display
+    // Dropdowns get custom display when collapsed
     .open .dropdown-menu {
       position: static;
       float: none;
@@ -243,6 +252,20 @@
           color: @navbar-link-disabled-color;
           background-color: @navbar-link-disabled-bg;
         }
+      }
+    }
+  }
+
+  // Uncollapse the nav
+  @media (min-width: @grid-float-breakpoint) {
+    float: left;
+    margin: 0;
+
+    > li {
+      float: left;
+      > a {
+        padding-top: ((@navbar-height - @line-height-computed) / 2);
+        padding-bottom: ((@navbar-height - @line-height-computed) / 2);
       }
     }
   }
@@ -350,6 +373,38 @@
   right: 0;
 }
 
+
+// Buttons in navbars
+//
+// Vertically center a button within a navbar (when *not* in a form).
+
+.navbar-btn {
+  margin-top: ((@navbar-height - @input-height-base) / 2);
+}
+
+
+// Text in navbars
+//
+// Add a class to make any element properly align itself vertically within the navbars.
+
+.navbar-text {
+  float: left;
+  color: @navbar-color;
+  .navbar-vertical-align(@line-height-computed);
+}
+
+
+// Links in navbars
+//
+// Add a class to ensure links outside the navbar nav are colored correctly.
+
+// Default navbar variables
+.navbar-link {
+  color: @navbar-link-color;
+  &:hover {
+    color: @navbar-link-hover-color;
+  }
+}
 
 
 // Inverse navbar
@@ -479,85 +534,11 @@
     }
   }
 
-}
-
-
-
-// Responsive navbar
-// --------------------------------------------------
-
-@media screen and (min-width: @grid-float-breakpoint) {
-
-  .navbar-nav {
-    float: left;
-    // undo margin to make nav extend full height of navbar
-    margin-top: 0;
-    margin-bottom: 0;
-
-    > li {
-      float: left;
-      > a {
-        padding-top: ((@navbar-height - @line-height-computed) / 2);
-        padding-bottom: ((@navbar-height - @line-height-computed) / 2);
-      }
+  .navbar-link {
+    color: @navbar-inverse-link-color;
+    &:hover {
+      color: @navbar-inverse-link-hover-color;
     }
   }
 
-  // Required to make the collapsing navbar work on regular desktops
-  .navbar-toggle {
-    position: relative;
-    top: auto;
-    left: auto;
-    display: none;
-  }
-  .navbar-collapse.collapse {
-    display: block !important;
-    height: auto !important;
-    padding-bottom: 0; // Override default setting
-    overflow: visible !important;
-  }
-
-}
-
-
-
-// Buttons in navbars
-//
-// Vertically center a button within a navbar (when *not* in a form).
-
-.navbar-btn {
-  margin-top: ((@navbar-height - @input-height-base) / 2);
-}
-
-
-
-// Text in navbars
-//
-// Add a class to make any element properly align itself vertically within the navbars.
-
-.navbar-text {
-  float: left;
-  .navbar-vertical-align(@line-height-computed);
-}
-
-
-
-// Links in navbars
-//
-// Add a class to ensure links outside the navbar nav are colored correctly.
-
-// Default navbar variables
-.navbar-link {
-  color: @navbar-link-color;
-  &:hover {
-    color: @navbar-link-hover-color;
-  }
-}
-
-// Use the inverse navbar variables
-.navbar-inverse .navbar-link {
-  color: @navbar-inverse-link-color;
-  &:hover {
-    color: @navbar-inverse-link-hover-color;
-  }
 }
