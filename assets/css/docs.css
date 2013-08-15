@@ -521,18 +521,10 @@ body {
 }
 
 /* Example dropdowns */
-.bs-example > .dropdown > .dropdown-menu,
-.bs-example-submenu > .pull-left > .dropup > .dropdown-menu,
-.bs-example-submenu > .pull-left > .dropdown > .dropdown-menu {
+.bs-example > .dropdown > .dropdown-menu {
   position: static;
   display: block;
   margin-bottom: 5px;
-}
-.bs-example-submenu {
-  min-height: 230px;
-}
-.bs-example-submenu > .pull-left + .pull-left {
-  margin-left: 20px;
 }
 
 /* Example tabbable tabs */
