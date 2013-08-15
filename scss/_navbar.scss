@@ -308,6 +308,8 @@
   padding: 10px $navbar-padding-horizontal;
   border-top: 1px solid darken($navbar-bg, 7%);
   border-bottom: 1px solid darken($navbar-bg, 7%);
+  $shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1);
+  @include box-shadow($shadow);
 
   // Mixin behavior for optimum display
   @include form-inline();
@@ -329,6 +331,7 @@
     margin-right: 0;
     padding-top: 0;
     padding-bottom: 0;
+    @include box-shadow(none);
   }
 }
 
@@ -474,8 +477,9 @@
     }
   }
 
-  .navbar-collapse {
-    border-top-color: darken($navbar-inverse-bg, 7%);
+  .navbar-collapse,
+  .navbar-form {
+    border-color: darken($navbar-inverse-bg, 7%);
   }
 
   // Dropdowns

@@ -178,6 +178,7 @@ body {
   margin-top: 15px;
 }
 .bs-customizer input[type="text"] {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;;
   background-color: #fafafa;
 }
 .bs-customizer .help-block {
@@ -400,9 +401,7 @@ body {
 .bs-example > ul:last-child,
 .bs-example > ol:last-child,
 .bs-example > blockquote:last-child,
-.bs-example > input:last-child,
-.bs-example > select:last-child,
-.bs-example > textarea:last-child,
+.bs-example > .form-control:last-child,
 .bs-example > .table:last-child,
 .bs-example > .navbar:last-child
 .bs-example > .jumbotron:last-child,
