@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customized Bootstrap</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/bootstrap-ex.css" />
+    <script>
+    </script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <div class="row">
+                <div class="span2">
+                    <h1>Logo</h1>
+                </div>
+                <div class="span6">
+                    <h1>Welcome</h1>
+                </div>
+                <div class="span4">
+                    <div class="pull-right">
+                        <a href="#">Login</a> or <a href="#">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a href="http://michaelliao.github.io/bootstrap/" class="brand">Logo</a>
+                    <ul class="nav">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li class="divider-vertical"></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="downloads.html">Downloads</a></li>
+                        <li><a href="developers.html">Developers</a></li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="company.html">Company</a></li>
+                                <li><a href="leadership.html">Leadership</a></li>
+                                <li><a href="careers.html">Careers</a></li>
+                                <li class="divider"></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form pull-right">
+                        <input type="text" name="q" maxlength="50" class="search-query" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main" class="container">
+        <div class="row">
+            <div class="span12">
+                <h3>Span* Test</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span1" style="background-color:#ccc;">span1</div>
+            <div class="span2" style="background-color:#ddd;">span2</div>
+            <div class="span3" style="background-color:#ccc;">span3</div>
+            <div class="span4" style="background-color:#ddd;">span4</div>
+            <div class="span2" style="background-color:#ccc;">span2</div>
+        </div>
+        <div class="row">
+            <div class="span1 offset1" style="background-color:#ccc;">span1 offset1</div>
+            <div class="span2 offset2" style="background-color:#ddd;">span2 offset2</div>
+            <div class="span3 offset3" style="background-color:#ccc;">span3 offset3</div>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <h3>breadcrumb</h3>
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a> <span class="divider">/</span></li>
+                    <li><a href="#">Library</a> <span class="divider">/</span></li>
+                    <li class="active">Data</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <h3>table table-bordered</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">1</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@TwBootstrap</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <h3>buttongroup</h3>
+                <div class="btn-group">
+                    <button class="btn">Left</button>
+                    <button class="btn">Middle</button>
+                    <button class="btn">Right</button>
+                </div>
+                <div class="btn-group">
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Dropdown menu 1</a></li>
+                        <li><a href="#">Dropdown menu 2</a></li>
+                        <li><a href="#">Dropdown menu 3</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Dropdown menu 4</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="span4">
+                    <h4>About our company</h4>
+                    <p>The world leading SaaS platform provider.</p>
+                </div>
+                <div class="span2">
+                    <h4>Support</h4>
+                    <p><a href="#">Documentation</a></p>
+                    <p>Step by step Learning</p>
+                    <p>API Development</p>
+                </div>
+                <div class="span2">
+                    <h4>Support</h4>
+                    <p><a href="#">Documentation</a></p>
+                    <p><a href="#">Step by step Learning</a></p>
+                    <p><a href="#">API Development</a></p>
+                </div>
+                <div class="span2">
+                    <h4>Support</h4>
+                    <p><a href="#">Documentation</a></p>
+                    <p><a href="#">Step by step Learning</a></p>
+                    <p><a href="#">API Development</a></p>
+                </div>
+                <div class="span2">
+                    <h4>Contact</h4>
+                    <p>Email: <a href="mailto:contact@example.com">contact@example.com</a></p>
+                    <p>Addr: No. 311</p>
+                    <p>Facebook Page</p>
+                    <p><a href="#">Twitter</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="hr"></div>
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <p>Stay connected:Copyright&copy;2013, <a href="/" target="_blank">Example.com Inc.</a>, all rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+</body>
+</html>

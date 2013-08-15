@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Downloads</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/bootstrap-ex.css" />
+    <script>
+$(function() {
+  $('input.datepicker').datepicker({
+    autoclose: true
+  });
+  $('div.datepicker').datepicker().on('changeDate', function(e) {
+    var y = e.date.getFullYear();
+    var m = e.date.getMonth() + 1;
+    var d = e.date.getDate();
+    $('div.showdate').text(y + '-' + m + '-' + d);
+  });
+  $('input.timepicker').timepicker({
+    showSeconds: true,
+    default: false,
+  });
+});
+    </script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <div class="row">
+                <div class="span2">
+                    <h1>Logo</h1>
+                </div>
+                <div class="span6">
+                    <h1>Welcome</h1>
+                </div>
+                <div class="span4">
+                    <div class="pull-right">
+                        <a href="#">Login</a> or <a href="#">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a href="http://michaelliao.github.io/bootstrap/" class="brand">Logo</a>
+                    <ul class="nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li class="active"><a href="downloads.html">Downloads</a></li>
+                        <li><a href="developers.html">Developers</a></li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="company.html">Company</a></li>
+                                <li><a href="leadership.html">Leadership</a></li>
+                                <li><a href="careers.html">Careers</a></li>
+                                <li class="divider"></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form pull-right">
+                        <input type="text" name="q" maxlength="50" class="search-query" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main" class="container">
+        <div class="row">
+            <div class="span12">
+                <h3>forms</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span3">
+                <form>
+                    <fieldset>
+                        <legend>Legend</legend>
+                        <label>Label name</label>
+                        <input type="text" placeholder="Type something…" />
+                        <span class="help-block">Example block-level help text here.</span>
+                        <div class="input-prepend input-append">
+                            <span class="add-on">$</span>
+                            <input class="span2" type="text" />
+                            <span class="add-on">.00</span>
+                        </div>
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-calendar"></i></span>
+                            <input name="date" type="text" class="span1 datepicker" />
+                        </div>
+                        <div class="input-append bootstrap-timepicker">
+                            <input name="time" type="text" class="span1 timepicker" />
+                            <span class="add-on"><i class="icon-time"></i></span>
+                        </div>
+                        <label class="checkbox">
+                            <input type="checkbox"> Check me out
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="r" value="1" checked="checked" /> Select 1
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="r" value="2" /> Select 2
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="r" value="3" /> Select 3
+                        </label>
+                        <label class="checkbox inline">
+                            <input type="checkbox" value="1"> A
+                        </label>
+                        <label class="checkbox inline">
+                            <input type="checkbox" value="2"> B
+                        </label>
+                        <label class="checkbox inline">
+                            <input type="checkbox" value="3"> C
+                        </label>
+                        <div class="clearfix"></div>
+                        <button type="submit" class="btn">Submit</button>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="span8 offset1">
+                <form class="form-horizontal">
+                    <div class="control-group">
+                        <label class="control-label">Email</label>
+                        <div class="controls">
+                            <input type="text" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="control-group error">
+                        <label class="control-label">Password</label>
+                        <div class="controls">
+                            <input type="password" placeholder="Password">
+                            <span class="help-inline">Something wrong</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="checkbox">
+                                <input type="checkbox" checked="checked" /> Remember me
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" /> Remember me 2
+                            </label>
+                        </div>
+                    </div>
+                    <div class="control-group error">
+                        <div class="controls">
+                            <label class="checkbox">
+                                <input type="checkbox" /> Accept Agreement
+                            </label>
+                            <span class="help-inline">You must accept the agreement.</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="radio">
+                                <input type="radio" name="a" value="a" checked="checked" /> Option A
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="a" value="b" /> Option B
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="a" value="c" /> Option C
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn">Cancel</button>
+                    </div>
+                </form>
+                <div class="showdate">Please select date:</div>
+                <div data-date="12-02-2013" data-date-format="dd-mm-yyyy" class="datepicker"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="span4">
+                    <h4>About our company</h4>
+                    <p>The world leading SaaS platform provider.</p>
+                </div>
+                <div class="span2">
+                    <h4>Support</h4>
+                    <p><a href="#">Documentation</a></p>
+                    <p>Step by step Learning</p>
+                    <p>API Development</p>
+                </div>
+                <div class="span2">
+                    <h4>Support</h4>
+                    <p><a href="#">Documentation</a></p>
+                    <p><a href="#">Step by step Learning</a></p>
+                    <p><a href="#">API Development</a></p>
+                </div>
+                <div class="span2">
+                    <h4>Support</h4>
+                    <p><a href="#">Documentation</a></p>
+                    <p><a href="#">Step by step Learning</a></p>
+                    <p><a href="#">API Development</a></p>
+                </div>
+                <div class="span2">
+                    <h4>Contact</h4>
+                    <p>Email: <a href="mailto:contact@example.com">contact@example.com</a></p>
+                    <p>Addr: No. 311</p>
+                    <p>Facebook Page</p>
+                    <p><a href="#">Twitter</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="hr"></div>
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <p>Stay connected:Copyright&copy;2013, <a href="/" target="_blank">Example.com Inc.</a>, all rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+</body>
+</html>
