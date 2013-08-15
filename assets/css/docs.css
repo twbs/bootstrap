@@ -408,7 +408,8 @@ body {
 .bs-example > .alert:last-child,
 .bs-example > .panel:last-child,
 .bs-example > .list-group:last-child,
-.bs-example > .well:last-child {
+.bs-example > .well:last-child,
+.bs-example > .progress:last-child {
   margin-bottom: 0;
 }
 .bs-example > p > .close {
