@@ -2860,7 +2860,8 @@ button.close {
 }
 
 .navbar-collapse {
-  padding: 5px 15px;
+  padding-right: 15px;
+  padding-left: 15px;
   border-top: 1px solid #e6e6e6;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   max-height: 340px;
@@ -2880,7 +2881,8 @@ button.close {
 @media (min-width: 768px) {
   .navbar-collapse {
     width: auto;
-    padding: 0;
+    padding-right: 0;
+    padding-left: 0;
     border-top: 0;
     box-shadow: none;
   }
@@ -2970,6 +2972,8 @@ button.close {
 }
 
 .navbar-nav {
+  padding-top: 7.5px;
+  padding-bottom: 7.5px;
   margin-left: -15px;
   margin-right: -15px;
 }
@@ -3027,6 +3031,8 @@ button.close {
   .navbar-nav {
     float: left;
     margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
   }
   .navbar-nav > li {
     float: left;

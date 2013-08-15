@@ -292,12 +292,12 @@
 
 
 
-// RETINA IMAGE SUPPORT
-// --------------------------------------------------
-
+// Retina images
+//
 // Short retina mixin for setting background-image and -size
+
 @mixin img-retina($file-1x, $file-2x, $width-1x, $height-1x) {
-  background-image: url("#{$file-1x}");
+  background-image: url($file-1x);
 
   @media
   only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -309,6 +309,17 @@
     background-image: url("#{$file-2x}");
     background-size: $width-1x $height-1x;
   }
+}
+
+
+// Responsive image
+//
+// Keep images from scaling beyond the width of their parents.
+
+@mixin img-responsive($display: block) {
+  display: $display;
+  max-width: 100%; // Part 1: Set a maximum relative to the parent
+  height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
 }
 
 
@@ -374,7 +385,7 @@
       border-color: $border;
     }
   }
-  
+
   // Hover states for `.table-hover`
   // Note: this is not available for cells or rows within `thead` or `tfoot`.
   .table-hover > tbody > tr {
