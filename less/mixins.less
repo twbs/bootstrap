@@ -418,7 +418,11 @@
     background-color: darken(@background, 8%);
         border-color: darken(@border, 12%);
   }
-
+  &:active,
+  &.active,
+  .open .dropdown-toggle& {
+    background-image: none;
+  }
   &.disabled,
   &[disabled],
   fieldset[disabled] & {
