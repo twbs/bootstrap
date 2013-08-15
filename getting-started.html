@@ -131,14 +131,14 @@ bootstrap/
     <div class="page-header">
       <h1 id="disable-responsive">Disabling responsiveness</h1>
     </div>
-    <p class="lead">Don't want your site or application to be scale on different device? With a little bit of work you can disable the responsive features of Bootstrap so that mobile users see your full desktop-version site.</p>
+    <p class="lead">Don't want your site or application to be scale on different device? With a little bit of work, you can disable the responsive features of Bootstrap so that mobile users see your full desktop-version site.</p>
 
     <h3>Steps to disable responsive views</h3>
     <p>To disable responsive features, follow these steps. See it in action in the modified template below.</p>
     <ol>
-      <li>Remove (or just don't add) the meta viewport mentioned in <a href="../css/#overview-mobile">the CSS docs</a></li>
-      <li>Force a single <code>max-width</code> on the <code>.container</code> (e.g., <code>.container { max-width: 940px; }</code>). Be sure this comes after the default Bootstrap CSS otherwise you'll need <code>!important</code>.</li>
-      <li>For grid layouts, make use of <code>.col-xs-*</code> classes in addition to or in place of the medium/large ones. Don't worry, the extra small device grid scales up to all resolutions, so you're set there.</li>
+      <li>Remove (or just don't add) the viewport <code>&lt;meta&gt;</code> mentioned in <a href="../css/#overview-mobile">the CSS docs</a></li>
+      <li>Force a single <code>max-width</code> on the <code>.container</code> (e.g., <code>.container { max-width: 940px; }</code>). Be sure that this comes after the default Bootstrap CSS; otherwise, you'll need <code>!important</code>.</li>
+      <li>For grid layouts, make use of <code>.col-xs-*</code> classes in addition to or in place of the medium/large ones. Don't worry, the extra-small device grid scales up to all resolutions, so you're set there.</li>
     </ol>
     <p>You'll still need respond.js for IE8 (since our media queries are still there and need to be picked up). This just disables the "mobile site" of Bootstrap.</p>
 
@@ -228,13 +228,13 @@ bootstrap/
 
 {% highlight js %}
 if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-  var msViewportStyle = document.createElement("style");
+  var msViewportStyle = document.createElement("style")
   msViewportStyle.appendChild(
     document.createTextNode(
       "@-ms-viewport{width:auto!important}"
     )
-  );
-  document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+  )
+  document.getElementsByTagName("head")[0].appendChild(msViewportStyle)
 }
 {% endhighlight %}
     <p>For more information and usage guidelines, read <a href="http://timkadlec.com/2013/01/windows-phone-8-and-device-width/">Windows Phone 8 and Device-Width</a>.</p>
