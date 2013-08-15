@@ -3507,6 +3507,13 @@ button.close {
   color: #777777;
 }
 
+@media (min-width: 768px) {
+  .navbar-text {
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+}
+
 .navbar-link {
   color: #777777;
 }

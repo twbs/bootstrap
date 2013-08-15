@@ -403,6 +403,11 @@
   float: left;
   color: @navbar-color;
   .navbar-vertical-align(@line-height-computed);
+
+  @media (min-width: @grid-float-breakpoint) {
+    margin-left: @navbar-padding-horizontal;
+    margin-right: @navbar-padding-horizontal;
+  }
 }
 
 
