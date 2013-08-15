@@ -485,8 +485,14 @@ body {
   margin-left: 0;
   margin-right: 0;
 }
+.bs-navbar-top-example {
+  padding-bottom: 45px;
+}
 .bs-navbar-top-example .navbar-fixed-top {
   top: -1px;
+}
+.bs-navbar-bottom-example {
+  padding-top: 45px;
 }
 .bs-navbar-bottom-example .navbar-fixed-bottom {
   bottom: -1px;
