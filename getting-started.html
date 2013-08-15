@@ -125,6 +125,57 @@ bootstrap/
 
 
 
+  <!-- Template
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="disable-responsive">Disabling responsiveness</h1>
+    </div>
+    <p class="lead">Don't want your site or application to be scale on different device? With a little bit of work you can disable the responsive features of Bootstrap so that mobile users see your full desktop-version site.</p>
+
+    <p>To disable responsive features, follow these steps. See it in action in the modified template below.</p>
+    <ol>
+      <li>Remove (or just don't add) the meta viewport mentioned in <a href="../css/#overview-mobile">the CSS docs</a></li>
+      <li>Force a single <code>max-width</code> on the <code>.container</code> (e.g., <code>.container { max-width: 940px; }</code>). Be sure this comes after the default Bootstrap CSS otherwise you'll need <code>!important</code>.</li>
+      <li>For grid layouts, make use of <code>.col-xs-*</code> classes in addition to or in place of the medium/large ones. Don't worry, the extra small device grid scales up to all resolutions, so you're set there.</li>
+    </ol>
+    <p>You'll still need respond.js for IE8 (since our media queries are still there and need to be picked up). This just disables the "mobile site" of Bootstrap.</p>
+
+{% highlight html %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Disabling responsiveness in Bootstrap</title>
+
+    <!-- 1. Note there is no meta tag here -->
+
+    <!-- Load default Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+    <!-- 2. Add our custom CSS to set the container's fixed width -->
+    <style>
+      .container { max-width: 940px; }
+    </style>
+  </head>
+  <body>
+
+    <h1>Hello, world!</h1>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//code.jquery.com/jquery.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+    <script src="js/respond.js"></script>
+  </body>
+</html>
+{% endhighlight %}
+  </div>
+
+
+
   <!-- Browser support
   ================================================== -->
   <div class="bs-docs-section">
