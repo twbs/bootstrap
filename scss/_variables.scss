@@ -294,6 +294,7 @@ $navbar-inverse-toggle-border-color:        #333 !default;
 // Navs
 // -------------------------
 
+$nav-link-padding:                          10px 15px !default;
 $nav-link-hover-bg:                         $gray-lighter !default;
 
 $nav-disabled-link-color:                   $gray-light !default;
@@ -324,9 +325,14 @@ $nav-pills-active-link-hover-color:         #fff !default;
 
 $pagination-bg:                        #fff !default;
 $pagination-border:                    #ddd !default;
-$pagination-active-bg:                 #f5f5f5 !default;
-$pagination-active-color:              $gray-light !default;
+
+$pagination-hover-bg:                  $gray-lighter !default;
+
+$pagination-active-bg:                 $brand-primary !default;
+$pagination-active-color:              #fff !default;
+
 $pagination-disabled-color:            $gray-light !default;
+
 
 // Pager
 // -------------------------

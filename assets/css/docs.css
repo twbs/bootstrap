@@ -178,7 +178,7 @@ body {
   margin-top: 15px;
 }
 .bs-customizer input[type="text"] {
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   background-color: #fafafa;
 }
 .bs-customizer .help-block {
@@ -408,7 +408,8 @@ body {
 .bs-example > .alert:last-child,
 .bs-example > .panel:last-child,
 .bs-example > .list-group:last-child,
-.bs-example > .well:last-child {
+.bs-example > .well:last-child,
+.bs-example > .progress:last-child {
   margin-bottom: 0;
 }
 .bs-example > p > .close {
@@ -436,10 +437,21 @@ body {
   margin: 0;
 }
 
+/* Images */
+.bs-example > .img-circle,
+.bs-example > .img-rounded,
+.bs-example > .img-thumbnail {
+  margin: 5px;
+}
+
 /* Buttons */
-.bs-example > .btn {
+.bs-example > .btn,
+.bs-example > .btn-group {
   margin-top: 5px;
   margin-bottom: 5px;
+}
+.bs-example > .btn-toolbar + .btn-toolbar {
+  margin-top: 10px;
 }
 
 /* Forms */
@@ -449,6 +461,9 @@ body {
 }
 .bs-example-form .input-group {
   margin-bottom: 10px;
+}
+.bs-example > textarea.form-control {
+  resize: vertical;
 }
 
 /* List groups */
@@ -464,7 +479,6 @@ body {
 .bs-navbar-bottom-example {
   z-index: 1;
   padding: 0;
-  min-height: 110px;
   overflow: hidden; /* cut the drop shadows off */
 }
 .bs-navbar-top-example .navbar-fixed-top,
@@ -473,31 +487,33 @@ body {
   margin-left: 0;
   margin-right: 0;
 }
-.bs-navbar-top-example .navbar-fixed-top {
-  top: -1px;
-}
-.bs-navbar-bottom-example .navbar-fixed-bottom {
-  bottom: -1px;
-}
 .bs-navbar-top-example {
-  -webkit-border-radius: 0 0 4px 4px;
-     -moz-border-radius: 0 0 4px 4px;
-          border-radius: 0 0 4px 4px;
+  padding-bottom: 45px;
 }
 .bs-navbar-top-example:after {
   top: auto;
   bottom: 15px;
-  -webkit-border-radius: 0 4px 0 4px;
-     -moz-border-radius: 0 4px 0 4px;
-          border-radius: 0 4px 0 4px;
+}
+.bs-navbar-top-example .navbar-fixed-top {
+  top: -1px;
 }
 .bs-navbar-bottom-example {
-  -webkit-border-radius: 4px 4px 0 0;
-     -moz-border-radius: 4px 4px 0 0;
-          border-radius: 4px 4px 0 0;
+  padding-top: 45px;
+}
+.bs-navbar-bottom-example .navbar-fixed-bottom {
+  bottom: -1px;
 }
 .bs-navbar-bottom-example .navbar {
   margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .bs-navbar-top-example {
+    border-radius: 0 0 4px 4px;
+  }
+  .bs-navbar-bottom-example {
+    border-radius: 4px 4px 0 0;
+  }
 }
 
 /* Example modals */
@@ -520,18 +536,10 @@ body {
 }
 
 /* Example dropdowns */
-.bs-example > .dropdown > .dropdown-menu,
-.bs-example-submenu > .pull-left > .dropup > .dropdown-menu,
-.bs-example-submenu > .pull-left > .dropdown > .dropdown-menu {
+.bs-example > .dropdown > .dropdown-menu {
   position: static;
   display: block;
   margin-bottom: 5px;
-}
-.bs-example-submenu {
-  min-height: 230px;
-}
-.bs-example-submenu > .pull-left + .pull-left {
-  margin-left: 20px;
 }
 
 /* Example tabbable tabs */
@@ -542,6 +550,10 @@ body {
 /* Tooltips */
 .bs-example-tooltips {
   text-align: center;
+}
+.bs-example-tooltips > .btn {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 /* Popovers */
@@ -812,7 +824,7 @@ body {
   }
   .bs-example + .prettyprint,
   .bs-example + .highlight {
-    margin-top: -1px;
+    margin-top: -16px;
     margin-left: 0;
     margin-right: 0;
     border-width: 1px;

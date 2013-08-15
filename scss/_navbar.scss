@@ -78,6 +78,10 @@
       padding-bottom: 0; // Override default setting
       overflow: visible !important;
     }
+
+    &.in {
+      overflow-y: visible;
+    }
   }
 }
 
@@ -401,6 +405,11 @@
   float: left;
   color: $navbar-color;
   @include navbar-vertical-align($line-height-computed);
+
+  @media (min-width: $grid-float-breakpoint) {
+    margin-left: $navbar-padding-horizontal;
+    margin-right: $navbar-padding-horizontal;
+  }
 }
 
 

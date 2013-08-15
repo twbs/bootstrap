@@ -20,9 +20,11 @@
 .thumbnail {
   display: block;
 }
-.thumbnail > img,
-.img-thumbnail {
+.thumbnail > img {
   @include img-responsive();
+}
+.img-thumbnail {
+  @include img-responsive(inline-block);
 }
 
 // Add a hover state for linked versions only

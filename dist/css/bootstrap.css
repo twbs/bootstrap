@@ -2896,6 +2896,9 @@ button.close {
     padding-bottom: 0;
     overflow: visible !important;
   }
+  .navbar-collapse.in {
+    overflow-y: visible;
+  }
 }
 
 @media (min-width: 768px) {
@@ -3156,6 +3159,12 @@ button.close {
   color: #777777;
   margin-top: 15px;
   margin-bottom: 15px;
+}
+@media (min-width: 768px) {
+  .navbar-text {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
 }
 
 .navbar-link {
@@ -3503,17 +3512,18 @@ button.close {
 }
 .pagination > li > a,
 .pagination > li > span {
+  position: relative;
   float: left;
   padding: 6px 12px;
   line-height: 1.428571429;
   text-decoration: none;
   background-color: white;
   border: 1px solid #dddddd;
-  border-left-width: 0;
+  margin-left: -1px;
 }
 .pagination > li:first-child > a,
 .pagination > li:first-child > span {
-  border-left-width: 1px;
+  margin-left: 0;
   border-bottom-left-radius: 4px;
   border-top-left-radius: 4px;
 }
@@ -3522,15 +3532,19 @@ button.close {
   border-bottom-right-radius: 4px;
   border-top-right-radius: 4px;
 }
-.pagination > li > a:hover,
-.pagination > li > a:focus,
-.pagination > .active > a,
-.pagination > .active > span {
-  background-color: whitesmoke;
+.pagination > li > a:hover, .pagination > li > a:focus,
+.pagination > li > span:hover,
+.pagination > li > span:focus {
+  background-color: #eeeeee;
 }
-.pagination > .active > a,
-.pagination > .active > span {
-  color: #999999;
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus,
+.pagination > .active > span,
+.pagination > .active > span:hover,
+.pagination > .active > span:focus {
+  z-index: 2;
+  color: white;
+  background-color: #428bca;
+  border-color: #428bca;
   cursor: default;
 }
 .pagination > .disabled > span,
@@ -3539,6 +3553,7 @@ button.close {
 .pagination > .disabled > a:focus {
   color: #999999;
   background-color: white;
+  border-color: #dddddd;
   cursor: not-allowed;
 }
 
@@ -3603,7 +3618,7 @@ button.close {
 .pager li > a:hover,
 .pager li > a:focus {
   text-decoration: none;
-  background-color: whitesmoke;
+  background-color: #428bca;
 }
 .pager .next > a,
 .pager .next > span {
@@ -4065,9 +4080,14 @@ button.close {
   display: block;
 }
 
-.thumbnail > img,
-.img-thumbnail {
+.thumbnail > img {
   display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.img-thumbnail {
+  display: inline-block;
   max-width: 100%;
   height: auto;
 }
