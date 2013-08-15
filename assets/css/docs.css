@@ -801,7 +801,7 @@ body {
   }
   .bs-example + .prettyprint,
   .bs-example + .highlight {
-    margin-top: 0;
+    margin-top: -1px;
     margin-left: 0;
     margin-right: 0;
     border-width: 1px;
@@ -855,9 +855,7 @@ body {
     width: 330px !important;
     min-height: 132px;
   }
-}
 
-@media screen and (min-width: 992px) and (min-height: 700px) {
   /* Show the hidden subnavs when space allows it */
   .bs-sidebar .nav > .active > ul {
     display: block;
