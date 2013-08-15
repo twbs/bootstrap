@@ -3634,15 +3634,15 @@ button.close {
   border-top-color: #fff;
 }
 
-.btn-default .dropup .caret {
+.dropup .btn-default .caret {
   border-bottom-color: #333333;
 }
 
-.btn-primary .dropup .caret,
-.btn-success .dropup .caret,
-.btn-warning .dropup .caret,
-.btn-danger .dropup .caret,
-.btn-info .dropup .caret {
+.dropup .btn-primary .caret,
+.dropup .btn-success .caret,
+.dropup .btn-warning .caret,
+.dropup .btn-danger .caret,
+.dropup .btn-info .caret {
   border-bottom-color: #fff;
 }
 

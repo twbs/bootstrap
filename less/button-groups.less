@@ -18,16 +18,18 @@
     border-top-color: #fff;
   }
 }
-.dropup .caret {
-  .btn-default & {
+.dropup {
+  & .btn-default .caret {
     border-bottom-color: @btn-default-color;
   }
-  .btn-primary &,
-  .btn-success &,
-  .btn-warning &,
-  .btn-danger &,
-  .btn-info & {
-    border-bottom-color: #fff;
+  & .btn-primary,
+  & .btn-success,
+  & .btn-warning,
+  & .btn-danger,
+  & .btn-info {
+   .caret {
+      border-bottom-color: #fff;
+    }
   }
 }
 
