@@ -133,6 +133,7 @@ bootstrap/
     </div>
     <p class="lead">Don't want your site or application to be scale on different device? With a little bit of work you can disable the responsive features of Bootstrap so that mobile users see your full desktop-version site.</p>
 
+    <h3>Steps to disable responsive views</h3>
     <p>To disable responsive features, follow these steps. See it in action in the modified template below.</p>
     <ol>
       <li>Remove (or just don't add) the meta viewport mentioned in <a href="../css/#overview-mobile">the CSS docs</a></li>
@@ -141,6 +142,8 @@ bootstrap/
     </ol>
     <p>You'll still need respond.js for IE8 (since our media queries are still there and need to be picked up). This just disables the "mobile site" of Bootstrap.</p>
 
+    <h3>Bootstrap template with disabled responsive</h3>
+    <p>We've taken the above steps and applied them to a basic template here. Note the steps above are called out in comments here, e.g. <code>&lt;-- 1. --&gt;</code>.</p>
 {% highlight html %}
 <!DOCTYPE html>
 <html>
@@ -160,6 +163,13 @@ bootstrap/
   <body>
 
     <h1>Hello, world!</h1>
+
+    <!-- 3. When using grid columns, use the `.col-xs-*` classes -->
+    <div class="row">
+      <div class="col-xs-4">One third</div>
+      <div class="col-xs-4">One third</div>
+      <div class="col-xs-4">One third</div>
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery.js"></script>
