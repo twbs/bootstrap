@@ -131,18 +131,18 @@ input[type="number"] {
 
   // Customize the `:focus` state to imitate native WebKit styles.
   @include form-control-focus();
-}
-// Disabled and read-only inputs
-// Note: HTML5 says that inputs under a fieldset > legend:first-child won't be
-//   disabled if the fieldset is disabled. Due to implementation difficulty,
-//   we don't honor that edge case; we style them as disabled anyway.
-.form-control[disabled],
-.form-control[readonly],
-fieldset[disabled] .form-control {
-  cursor: not-allowed;
-  background-color: $input-bg-disabled;
-}
 
+  // Disabled and read-only inputs
+  // Note: HTML5 says that controls under a fieldset > legend:first-child won't be
+  //   disabled if the fieldset is disabled. Due to implementation difficulty,
+  //   we don't honor that edge case; we style them as disabled anyway.
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    background-color: $input-bg-disabled;
+  }
+}
 // Reset height for `textarea`s
 textarea.form-control {
   height: auto;
@@ -206,6 +206,20 @@ textarea.form-control {
   margin-left: 10px; // space out consecutive inline controls
 }
 
+// Apply same disabled cursor tweak as for inputs
+// Note: HTML5 says that controls under a fieldset > legend:first-child won't be
+//   disabled if the fieldset is disabled. Due to implementation difficulty,
+//   we don't honor that edge case; we style them as disabled anyway.
+// Note: Neither radios nor checkboxes can be readonly.
+.radio,
+.radio-inline,
+.checkbox,
+.checkbox-inline {
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+  }
+}
 
 // Form control sizing
 @include input-size(".input-sm", $input-height-small, $padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, $border-radius-small);

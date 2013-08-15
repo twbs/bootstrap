@@ -39,6 +39,14 @@ textarea {
   line-height: inherit;
 }
 
+// Reset unusual Firefox-on-Android default style, see https://github.com/necolas/normalize.css/issues/214
+button,
+input,
+select[multiple],
+textarea {
+  background-image: none;
+}
+
 
 // Links
 // -------------------------
@@ -65,8 +73,8 @@ img {
 }
 
 // Responsive images (ensure images don't scale beyond their parents)
-@mixin img-responsive {
-  display: inline-block;
+@mixin img-responsive($display: block) {
+  display: $display;
   max-width: 100%; // Part 1: Set a maximum relative to the parent
   height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
 }

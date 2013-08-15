@@ -30,6 +30,10 @@ base_url: "../"
 {% highlight html %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% endhighlight %}
+    <p>You can disable zooming capabilities on mobile devices by adding <code>user-scalable=no</code> to the viewport meta tag. This disables zooming, meaning users are only able to scroll, and results in your site feeling a bit more like a native application. Overall we don't recommend this on every site, so use caution!</p>
+{% highlight html %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+{% endhighlight %}
 
     <h3 id="overview-responsive-images">Responsive images</h3>
     <p>Images in Bootstrap 3 can be made responsive-friendly via the addition of the <code>.img-responsive</code> class. This applies <code>max-width: 100%;</code> and <code>height: auto;</code> to the image so that it scales nicely to the parent element.</p>
@@ -119,7 +123,7 @@ base_url: "../"
             </th>
             <th>
               Small devices
-              <small>Tablets (&gt;768px)</small>
+              <small>Tablets (&ge;768px)</small>
             </th>
             <th>
               Medium devices
@@ -321,6 +325,21 @@ base_url: "../"
       <p>We dive into more grid layouts in a separate page, free of chrome and documentation to better show you the power of the grid.</p>
       <p><a class="btn btn-danger" target="_blank" href="http://examples.getbootstrap.com/grid/">More grid examples</a></p>
     </div>
+
+    <h3 id="grid-responsive-clearing">Responsive column clearing</h3>
+    <p>With the four tiers of grids available you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a <code>.clearfix</code> and our <a href="../css#responsive-utilities">responsive utility classes</a>.</p>
+{% highlight html %}
+<div class="row">
+  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+
+  <!-- Add the extra clearfix for only the required viewport -->
+  <div class="clearfix visible-xs"></div>
+
+  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+</div>
+{% endhighlight %}
 
     <h3 id="grid-offsetting">Offsetting columns</h3>
     <p>Move columns to the right using <code>.col-md-offset-*</code> classes. These classes increase the left margin of a column by <code>*</code> columns. For example, <code>.col-md-offset-4</code> moves <code>.col-md-4</code> over four columns.</p>
@@ -2119,7 +2138,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             </th>
             <th>
               Small devices
-              <small>Tablets (&gt;768px)</small>
+              <small>Tablets (&ge;768px)</small>
             </th>
             <th>
               Medium devices
@@ -2131,15 +2150,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             </th>
           </tr>
         </thead>
-<!--         <thead>
-          <tr>
-            <th>Class</th>
-            <th>Small devices <small>Up to 768px</small></th>
-            <th>Medium devices <small>768px to 991px</small></th>
-            <th>Large devices <small>992px and up</small></th>
-          </tr>
-        </thead>
- -->        <tbody>
+        <tbody>
           <tr>
             <th><code>.visible-xs</code></th>
             <td class="is-visible">Visible</td>

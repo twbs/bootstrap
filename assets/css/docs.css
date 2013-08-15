@@ -368,7 +368,7 @@ body {
 .bs-example {
   position: relative;
   padding: 45px 15px 15px;
-  margin: 0 -15px -1px;
+  margin: 0 -15px 15px;
   background-color: #fafafa;
   box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
   border-color: #e5e5e5 #eee #eee;
@@ -390,7 +390,7 @@ body {
 
 /* Tweak display of the examples */
 .bs-example + .highlight {
-  margin: 0 -15px;
+  margin: -15px -15px 15px;
   border-radius: 0;
   border-width: 0 0 1px;
 }
@@ -435,6 +435,12 @@ body {
 .bs-example-type h5,
 .bs-example-type h6 {
   margin: 0;
+}
+
+/* Buttons */
+.bs-example > .btn {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 /* Forms */
@@ -553,19 +559,6 @@ body {
 }
 
 
-
-/* Example templates
--------------------------------------------------- */
-
-.bs-examples h4 {
-  margin-bottom: 5px;
-}
-.bs-examples p {
-  margin-bottom: 20px;
-}
-
-
-
 /* Responsive docs
 -------------------------------------------------- */
 
@@ -599,6 +592,10 @@ body {
     border-bottom: 0;
   }
 }
+.bs-table-scrollable .highlight pre {
+  white-space: normal;
+}
+
 
 /* Related: responsive utilities tables */
 .table code {
@@ -804,7 +801,7 @@ body {
   }
   .bs-example + .prettyprint,
   .bs-example + .highlight {
-    margin-top: 0;
+    margin-top: -1px;
     margin-left: 0;
     margin-right: 0;
     border-width: 1px;
@@ -858,9 +855,7 @@ body {
     width: 330px !important;
     min-height: 132px;
   }
-}
 
-@media screen and (min-width: 992px) and (min-height: 700px) {
   /* Show the hidden subnavs when space allows it */
   .bs-sidebar .nav > .active > ul {
     display: block;

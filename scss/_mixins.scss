@@ -329,7 +329,7 @@
 // -------------------------
 @mixin panel-variant($border, $heading-text-color, $heading-bg-color, $heading-border) {
   border-color: $border;
-  .panel-heading {
+  & > .panel-heading {
     color: $heading-text-color;
     background-color: $heading-bg-color;
     border-color: $heading-border;
@@ -337,7 +337,7 @@
       border-top-color: $border;
     }
   }
-  .panel-footer {
+  & > .panel-footer {
     + .panel-collapse .panel-body {
       border-bottom-color: $border;
     }
@@ -355,6 +355,35 @@
   }
   .alert-link {
     color: darken($text-color, 10%);
+  }
+}
+
+// Tables
+// -------------------------
+@mixin table-row-variant($state, $background, $border) {
+  // Exact selectors below required to override `.table-striped` and prevent
+  // inheritance to nested tables.
+  .table > thead > tr,
+  .table > tbody > tr,
+  .table > tfoot > tr {
+    > td.#{state},
+    > th.#{state},
+    &.#{state} > td,
+    &.#{state} > th {
+      background-color: $background;
+      border-color: $border;
+    }
+  }
+  
+  // Hover states for `.table-hover`
+  // Note: this is not available for cells or rows within `thead` or `tfoot`.
+  .table-hover > tbody > tr {
+    > td.#{state}:hover,
+    > th.#{state}:hover,
+    &.#{state}:hover > td {
+      background-color: darken($background, 5%);
+      border-color: darken($border, 5%);
+    }
   }
 }
 
