@@ -2956,7 +2956,7 @@ button.close {
 }
 
 .nav-tabs > li > a:hover {
-  border-color: #eeeeee;
+  border-color: #eeeeee #eeeeee #dddddd;
 }
 
 .nav-tabs > li.active > a,
