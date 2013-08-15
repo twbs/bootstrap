@@ -3155,7 +3155,8 @@ button.close {
 
 .navbar-collapse {
   max-height: 340px;
-  padding: 5px 15px;
+  padding-right: 15px;
+  padding-left: 15px;
   overflow-x: visible;
   overflow-y: auto;
   border-top: 1px solid #e6e6e6;
@@ -3186,7 +3187,8 @@ button.close {
 @media (min-width: 768px) {
   .navbar-collapse {
     width: auto;
-    padding: 0;
+    padding-right: 0;
+    padding-left: 0;
     border-top: 0;
     box-shadow: none;
   }
@@ -3284,6 +3286,8 @@ button.close {
 }
 
 .navbar-nav {
+  padding-top: 7.5px;
+  padding-bottom: 7.5px;
   margin-right: -15px;
   margin-left: -15px;
 }
@@ -3356,6 +3360,8 @@ button.close {
 @media (min-width: 768px) {
   .navbar-nav {
     float: left;
+    padding-top: 0;
+    padding-bottom: 0;
     margin: 0;
   }
   .navbar-nav > li {
