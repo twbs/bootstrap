@@ -1711,10 +1711,14 @@ textarea.form-control {
   margin-left: 10px;
 }
 
+input[type="radio"][disabled],
+input[type="checkbox"][disabled],
 .radio[disabled],
 .radio-inline[disabled],
 .checkbox[disabled],
 .checkbox-inline[disabled],
+fieldset[disabled] input[type="radio"],
+fieldset[disabled] input[type="checkbox"],
 fieldset[disabled] .radio,
 fieldset[disabled] .radio-inline,
 fieldset[disabled] .checkbox,

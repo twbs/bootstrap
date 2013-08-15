@@ -133,9 +133,9 @@ input[type="number"] {
   .form-control-focus();
 
   // Disabled and read-only inputs
-  // Note: HTML5 says that controls under a fieldset > legend:first-child won't be
-  //   disabled if the fieldset is disabled. Due to implementation difficulty,
-  //   we don't honor that edge case; we style them as disabled anyway.
+  // Note: HTML5 says that controls under a fieldset > legend:first-child won't
+  // be disabled if the fieldset is disabled. Due to implementation difficulty,
+  // we don't honor that edge case; we style them as disabled anyway.
   &[disabled],
   &[readonly],
   fieldset[disabled] & {
@@ -208,10 +208,10 @@ input[type="number"] {
 }
 
 // Apply same disabled cursor tweak as for inputs
-// Note: HTML5 says that controls under a fieldset > legend:first-child won't be
-//   disabled if the fieldset is disabled. Due to implementation difficulty,
-//   we don't honor that edge case; we style them as disabled anyway.
+//
 // Note: Neither radios nor checkboxes can be readonly.
+input[type="radio"],
+input[type="checkbox"],
 .radio,
 .radio-inline,
 .checkbox,
