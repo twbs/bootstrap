@@ -437,6 +437,13 @@ body {
   margin: 0;
 }
 
+/* Images */
+.bs-example > .img-circle,
+.bs-example > .img-rounded,
+.bs-example > .img-thumbnail {
+  margin: 5px;
+}
+
 /* Buttons */
 .bs-example > .btn,
 .bs-example > .btn-group {

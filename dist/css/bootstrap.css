@@ -4592,9 +4592,14 @@ button.close {
   display: block;
 }
 
-.thumbnail > img,
-.img-thumbnail {
+.thumbnail > img {
   display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.img-thumbnail {
+  display: inline-block;
   height: auto;
   max-width: 100%;
 }
