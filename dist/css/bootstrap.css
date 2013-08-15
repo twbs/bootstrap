@@ -3938,18 +3938,19 @@ button.close {
 
 .pagination > li > a,
 .pagination > li > span {
+  position: relative;
   float: left;
   padding: 6px 12px;
+  margin-left: -1px;
   line-height: 1.428571429;
   text-decoration: none;
   background-color: #ffffff;
   border: 1px solid #dddddd;
-  border-left-width: 0;
 }
 
 .pagination > li:first-child > a,
 .pagination > li:first-child > span {
-  border-left-width: 1px;
+  margin-left: 0;
   border-bottom-left-radius: 4px;
   border-top-left-radius: 4px;
 }
@@ -3961,16 +3962,23 @@ button.close {
 }
 
 .pagination > li > a:hover,
+.pagination > li > span:hover,
 .pagination > li > a:focus,
-.pagination > .active > a,
-.pagination > .active > span {
-  background-color: #f5f5f5;
+.pagination > li > span:focus {
+  background-color: #eeeeee;
 }
 
 .pagination > .active > a,
-.pagination > .active > span {
-  color: #999999;
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  z-index: 2;
+  color: #ffffff;
   cursor: default;
+  background-color: #428bca;
+  border-color: #428bca;
 }
 
 .pagination > .disabled > span,
@@ -3980,6 +3988,7 @@ button.close {
   color: #999999;
   cursor: not-allowed;
   background-color: #ffffff;
+  border-color: #dddddd;
 }
 
 .pagination-lg > li > a,
@@ -4061,7 +4070,7 @@ button.close {
 .pager li > a:hover,
 .pager li > a:focus {
   text-decoration: none;
-  background-color: #f5f5f5;
+  background-color: #428bca;
 }
 
 .pager .next > a,
@@ -4833,22 +4842,22 @@ a.list-group-item.active > .badge,
           animation: progress-bar-stripes 2s linear infinite;
 }
 
-.progress-bar-danger {
-  background-color: #d9534f;
+.progress-bar-success {
+  background-color: #5cb85c;
 }
 
-.progress-striped .progress-bar-danger {
+.progress-striped .progress-bar-success {
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 
-.progress-bar-success {
-  background-color: #5cb85c;
+.progress-bar-info {
+  background-color: #5bc0de;
 }
 
-.progress-striped .progress-bar-success {
+.progress-striped .progress-bar-info {
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
@@ -4866,11 +4875,11 @@ a.list-group-item.active > .badge,
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 
-.progress-bar-info {
-  background-color: #5bc0de;
+.progress-bar-danger {
+  background-color: #d9534f;
 }
 
-.progress-striped .progress-bar-info {
+.progress-striped .progress-bar-danger {
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
