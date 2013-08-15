@@ -1755,6 +1755,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element. Any <code>.control-label</code>, <code>.form-control</code>, and <code>.help-block</code> within that element will receive the validation styles.</p>
 
     <form class="bs-example">
+      <div class="form-group has-success">
+        <label class="control-label" for="inputSuccess">Input with success</label>
+        <input type="text" class="form-control" id="inputSuccess">
+      </div>
       <div class="form-group has-warning">
         <label class="control-label" for="inputWarning">Input with warning</label>
         <input type="text" class="form-control" id="inputWarning">
@@ -1763,12 +1767,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <label class="control-label" for="inputError">Input with error</label>
         <input type="text" class="form-control" id="inputError">
       </div>
-      <div class="form-group has-success">
-        <label class="control-label" for="inputSuccess">Input with success</label>
-        <input type="text" class="form-control" id="inputSuccess">
-      </div>
     </form>
 {% highlight html %}
+<div class="form-group has-success">
+  <label class="control-label" for="inputSuccess">Input with success</label>
+  <input type="text" class="form-control" id="inputSuccess">
+</div>
 <div class="form-group has-warning">
   <label class="control-label" for="inputWarning">Input with warning</label>
   <input type="text" class="form-control" id="inputWarning">
@@ -1776,10 +1780,6 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <div class="form-group has-error">
   <label class="control-label" for="inputError">Input with error</label>
   <input type="text" class="form-control" id="inputError">
-</div>
-<div class="form-group has-success">
-  <label class="control-label" for="inputSuccess">Input with success</label>
-  <input type="text" class="form-control" id="inputSuccess">
 </div>
 {% endhighlight %}
 
