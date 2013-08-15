@@ -438,9 +438,13 @@ body {
 }
 
 /* Buttons */
-.bs-example > .btn {
+.bs-example > .btn,
+.bs-example > .btn-group {
   margin-top: 5px;
   margin-bottom: 5px;
+}
+.bs-example > .btn-toolbar + .btn-toolbar {
+  margin-top: 10px;
 }
 
 /* Forms */
@@ -535,6 +539,10 @@ body {
 /* Tooltips */
 .bs-example-tooltips {
   text-align: center;
+}
+.bs-example-tooltips > .btn {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 /* Popovers */
