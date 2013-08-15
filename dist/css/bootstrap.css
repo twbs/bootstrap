@@ -3400,6 +3400,8 @@ button.close {
   margin-left: -15px;
   border-top: 1px solid #e6e6e6;
   border-bottom: 1px solid #e6e6e6;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 @media (min-width: 768px) {
@@ -3439,6 +3441,8 @@ button.close {
     margin-right: 0;
     margin-left: 0;
     border: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
   }
 }
 
@@ -3560,8 +3564,9 @@ button.close {
   background-color: #ffffff;
 }
 
-.navbar-inverse .navbar-collapse {
-  border-top-color: #101010;
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+  border-color: #101010;
 }
 
 .navbar-inverse .navbar-nav > .open > a,
