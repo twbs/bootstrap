@@ -178,6 +178,7 @@ body {
   margin-top: 15px;
 }
 .bs-customizer input[type="text"] {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;;
   background-color: #fafafa;
 }
 .bs-customizer .help-block {
