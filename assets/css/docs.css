@@ -476,7 +476,6 @@ body {
 .bs-navbar-bottom-example {
   z-index: 1;
   padding: 0;
-  min-height: 110px;
   overflow: hidden; /* cut the drop shadows off */
 }
 .bs-navbar-top-example .navbar-fixed-top,
@@ -488,6 +487,10 @@ body {
 .bs-navbar-top-example {
   padding-bottom: 45px;
 }
+.bs-navbar-top-example:after {
+  top: auto;
+  bottom: 15px;
+}
 .bs-navbar-top-example .navbar-fixed-top {
   top: -1px;
 }
@@ -497,25 +500,17 @@ body {
 .bs-navbar-bottom-example .navbar-fixed-bottom {
   bottom: -1px;
 }
-.bs-navbar-top-example {
-  -webkit-border-radius: 0 0 4px 4px;
-     -moz-border-radius: 0 0 4px 4px;
-          border-radius: 0 0 4px 4px;
-}
-.bs-navbar-top-example:after {
-  top: auto;
-  bottom: 15px;
-  -webkit-border-radius: 0 4px 0 4px;
-     -moz-border-radius: 0 4px 0 4px;
-          border-radius: 0 4px 0 4px;
-}
-.bs-navbar-bottom-example {
-  -webkit-border-radius: 4px 4px 0 0;
-     -moz-border-radius: 4px 4px 0 0;
-          border-radius: 4px 4px 0 0;
-}
 .bs-navbar-bottom-example .navbar {
   margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .bs-navbar-top-example {
+    border-radius: 0 0 4px 4px;
+  }
+  .bs-navbar-bottom-example {
+    border-radius: 4px 4px 0 0;
+  }
 }
 
 /* Example modals */
