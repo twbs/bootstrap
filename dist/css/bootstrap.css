@@ -3208,6 +3208,9 @@ button.close {
     padding-bottom: 0;
     overflow: visible !important;
   }
+  .navbar-collapse.in {
+    overflow-y: visible;
+  }
 }
 
 @media (min-width: 768px) {
