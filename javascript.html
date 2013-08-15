@@ -365,7 +365,7 @@ $('#myModal').on('hidden.bs.modal', function () {
           </button>
           <a class="navbar-brand" href="#">Project Name</a>
         </div>
-        <div class="navbar-collapse collapse bs-js-navbar-collapse">
+        <div class="collapse navbar-collapse bs-js-navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
               <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -528,21 +528,29 @@ $('#myDropdown').on('show.bs.dropdown', function () {
     <div class="bs-example">
       <nav id="navbar-example2" class="navbar navbar-static" role="navigation">
         <div class="navbar-header">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-js-navbar-scrollspy">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
           <a class="navbar-brand" href="#">Project Name</a>
         </div>
-        <ul class="nav navbar-nav">
-          <li><a href="#fat">@fat</a></li>
-          <li><a href="#mdo">@mdo</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#one">one</a></li>
-              <li><a href="#two">two</a></li>
-              <li class="divider"></li>
-              <li><a href="#three">three</a></li>
-            </ul>
-          </li>
-        </ul>
+        <div class="collapse navbar-collapse bs-js-navbar-scrollspy">
+          <ul class="nav navbar-nav">
+            <li><a href="#fat">@fat</a></li>
+            <li><a href="#mdo">@mdo</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#one">one</a></li>
+                <li><a href="#two">two</a></li>
+                <li class="divider"></li>
+                <li><a href="#three">three</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </nav>
       <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="scrollspy-example">
         <h4 id="fat">@fat</h4>
