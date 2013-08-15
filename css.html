@@ -291,36 +291,32 @@ base_url: "../"
     <p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>.col-sm-*</code> classes.</p>
     <div class="bs-docs-grid">
       <div class="row show-grid">
-        <div class="col-xs-12 col-sm-8 col-md-8">.col-xs-12 .col-sm-8 .col-md-8</div>
-        <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
+        <div class="col-xs-12 col-sm-6 col-md-8">.col-xs-12 .col-sm-6 .col-md-8</div>
+        <div class="col-xs-6 col-sm-6 col-md-4">.col-xs-6 .col-sm-6 .col-md-4</div>
       </div>
       <div class="row show-grid">
         <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
         <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
+        <!-- Optional: clear the XS cols if their content doesn't match in height -->
+        <div class="clearfix visible-xs"></div>
         <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
-      </div>
-      <div class="row show-grid">
-        <div class="col-xs-6 col-sm-6 col-md-6">.col-xs-6 .col-sm-6 .col-md-6</div>
-        <div class="col-xs-6 col-sm-6 col-md-6">.col-xs-6 .col-sm-6 .col-md-6</div>
       </div>
     </div>
 {% highlight html %}
 <div class="row">
-  <div class="col-xs-12 col-sm-8 col-md-8">.col-xs-12 .col-sm-8 .col-md-8</div>
-  <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
+  <div class="col-xs-12 col-sm-6 col-md-8">.col-xs-12 .col-sm-6 .col-md-8</div>
+  <div class="col-xs-6 col-sm-6 col-md-4">.col-xs-6 .col-sm-6 .col-md-4</div>
 </div>
 <div class="row">
   <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
   <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
+  <!-- Optional: clear the XS cols if their content doesn't match in height -->
+  <div class="clearfix visible-xs"></div>
   <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
-</div>
-<div class="row">
-  <div class="col-xs-6 col-sm-6 col-md-6">.col-xs-6 .col-sm-6 .col-md-6</div>
-  <div class="col-xs-6 col-sm-6 col-md-6">.col-xs-6 .col-sm-6 .col-md-6</div>
 </div>
 {% endhighlight %}
 
-    <div class="bs-callout bs-callout-danger">
+    <div class="bs-callout bs-callout-info">
       <h4>Need more examples?</h4>
       <p>We dive into more grid layouts in a separate page, free of chrome and documentation to better show you the power of the grid.</p>
       <p><a class="btn btn-danger" target="_blank" href="http://examples.getbootstrap.com/grid/">More grid examples</a></p>
