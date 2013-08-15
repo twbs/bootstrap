@@ -56,6 +56,9 @@
     var offsetTop    = offset.top
     var offsetBottom = offset.bottom
 
+    if (typeof offset == 'function') {
+      offset = offset()
+    }
     if (typeof offset != 'object')         offsetBottom = offsetTop = offset
     if (typeof offsetTop == 'function')    offsetTop    = offset.top()
     if (typeof offsetBottom == 'function') offsetBottom = offset.bottom()
