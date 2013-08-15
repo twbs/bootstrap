@@ -344,12 +344,6 @@ img {
   vertical-align: middle;
 }
 
-.img-responsive {
-  display: inline-block;
-  height: auto;
-  max-width: 100%;
-}
-
 .img-rounded {
   border-radius: 6px;
 }
@@ -4567,7 +4561,7 @@ button.close {
 
 .thumbnail > img,
 .img-thumbnail {
-  display: inline-block;
+  display: block;
   height: auto;
   max-width: 100%;
 }
@@ -4872,7 +4866,7 @@ a.list-group-item.active > .badge,
 
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
-  display: inline-block;
+  display: block;
   height: auto;
   max-width: 100%;
   line-height: 1;
