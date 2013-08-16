@@ -25,7 +25,7 @@
 
   var Modal = function (element, options) {
     this.options   = options
-    this.$element  = $(element).on('click.dismiss.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
+    this.$element  = $(element)
     this.$backdrop =
     this.isShown   = null
 
@@ -53,6 +53,8 @@
     this.isShown = true
 
     this.escape()
+
+    this.$element.on('click.dismiss.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
 
     this.backdrop(function () {
       var transition = $.support.transition && that.$element.hasClass('fade')
