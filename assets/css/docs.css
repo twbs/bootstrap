@@ -189,6 +189,10 @@ body {
   text-align: center;
 }
 
+#less-section label {
+  font-weight: normal;
+}
+
 
 
 /* Docs pages and sections
