@@ -1178,6 +1178,9 @@ pre code {
   .col-md-pull-11 {
     right: 91.66666666666666%;
   }
+  .col-md-offset-0 {
+    margin-left: 0;
+  }
   .col-md-offset-1 {
     margin-left: 8.333333333333332%;
   }
@@ -1331,6 +1334,9 @@ pre code {
   }
   .col-lg-pull-11 {
     right: 91.66666666666666%;
+  }
+  .col-lg-offset-0 {
+    margin-left: 0;
   }
   .col-lg-offset-1 {
     margin-left: 8.333333333333332%;
