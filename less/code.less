@@ -16,7 +16,7 @@ code {
   color: @code-color;
   background-color: @code-bg;
   white-space: nowrap;
-  border-radius: 4px;
+  border-radius: @border-radius-base;
 }
 
 // Blocks of code
@@ -28,7 +28,7 @@ pre {
   line-height: @line-height-base;
   word-break: break-all;
   word-wrap: break-word;
-  color: @gray-dark;
+  color: @pre-color;
   background-color: @pre-bg;
   border: 1px solid @pre-border-color;
   border-radius: @border-radius-base;
@@ -41,6 +41,7 @@ pre {
   // Account for some code outputs that place code tags in pre tags
   code {
     padding: 0;
+    font-size: inherit;
     color: inherit;
     white-space: pre-wrap;
     background-color: transparent;
@@ -50,6 +51,6 @@ pre {
 
 // Enable scrollable blocks of code
 .pre-scrollable {
-  max-height: 340px;
+  max-height: @pre-scrollable-max-height;
   overflow-y: scroll;
 }

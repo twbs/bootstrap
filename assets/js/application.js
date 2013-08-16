@@ -16,6 +16,10 @@
       offset: navHeight
     })
 
+    $window.on('load', function () {
+      $body.scrollspy('refresh')
+    })
+
     $('.bs-docs-container [href=#]').click(function (e) {
       e.preventDefault()
     })
@@ -46,7 +50,8 @@
 
     // tooltip demo
     $('.tooltip-demo').tooltip({
-      selector: "[data-toggle=tooltip]"
+      selector: "[data-toggle=tooltip]",
+      container: "body"
     })
 
     $('.tooltip-test').tooltip()
