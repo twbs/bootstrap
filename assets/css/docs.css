@@ -189,6 +189,10 @@ body {
   text-align: center;
 }
 
+#less-section label {
+  font-weight: normal;
+}
+
 
 
 /* Docs pages and sections
@@ -341,6 +345,17 @@ body {
 .bs-callout-info {
   background-color: #f0f7fd;
   border-color: #d0e3f0;
+}
+
+
+/* Examples grid
+-------------------------------------------------- */
+
+.bs-examples h4 {
+  margin-bottom: 5px;
+}
+.bs-examples p {
+  margin-bottom: 20px;
 }
 
 

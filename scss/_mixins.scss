@@ -402,23 +402,30 @@
 // -------------------------
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
-@mixin button-variant($color, $background, $border) {
-  color: $color;
-  background-color: $background;
-  border-color: $border;
+@mixin button-variant($selector, $color, $background, $border) {
+  #{$selector} {
+    color: $color;
+    background-color: $background;
+    border-color: $border;
+  }
 
-  &:hover,
-  &:focus,
-  &:active,
-  &.active {
+  #{$selector}:hover,
+  #{$selector}:focus,
+  #{$selector}:active,
+  #{$selector}.active,
+  .open .dropdown-toggle#{$selector} {
     color: $color;
     background-color: darken($background, 8%);
         border-color: darken($border, 12%);
   }
-
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
+  #{$selector}:active,
+  #{$selector}.active,
+  .open .dropdown-toggle#{$selector} {
+    background-image: none;
+  }
+  #{$selector}.disabled,
+  #{$selector}[disabled],
+  fieldset[disabled] #{$selector} {
     &,
     &:hover,
     &:focus,
@@ -548,17 +555,12 @@
 @mixin make-xs-column($columns, $gutter: $grid-gutter-width) {
   position: relative;
   float: left;
+  width: percentage(($columns / $grid-columns));
   // Prevent columns from collapsing when empty
   min-height: 1px;
   // Inner gutter via padding
   padding-left:  ($gutter / 2);
   padding-right: ($gutter / 2);
-  $max-width: ($screen-small - 1);
-
-  // Calculate width based on number of columns available
-  @media (max-width: $max-width) {
-    width: percentage(($columns / $grid-columns));
-  }
 }
 
 // Generate the small columns
