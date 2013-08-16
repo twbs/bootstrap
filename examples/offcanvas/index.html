@@ -9,7 +9,7 @@
     <title>Off Canvas Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="offcanvas.css" rel="stylesheet">
@@ -18,16 +18,15 @@
   <body>
     <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
       <div class="container">
-
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-
-        <a class="navbar-brand" href="#">Project name</a>
-
-        <div class="nav-collapse collapse navbar-responsive-collapse">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -40,8 +39,8 @@
     <div class="container">
 
       <div class="row row-offcanvas row-offcanvas-right">
-        <div class="col-12 col-sm-9 col-lg-9">
-          <p class="pull-right visible-sm">
+        <div class="col-xs-12 col-sm-9">
+          <p class="pull-right visible-xs">
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
           </p>
           <div class="jumbotron">
@@ -81,7 +80,8 @@
             </div><!--/span-->
           </div><!--/row-->
         </div><!--/span-->
-        <nav class="col-3 col-sm-3 col-lg-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+        <div class="col-xs-12 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
           <div class="well sidebar-nav">
             <ul class="nav">
               <li>Sidebar</li>
@@ -97,7 +97,7 @@
               <li><a href="#">Link</a></li>
             </ul>
           </div><!--/.well -->
-        </nav><!--/span-->
+        </div><!--/span-->
       </div><!--/row-->
 
       <hr>
@@ -109,8 +109,8 @@
     </div><!--/.container-->
 
     <!-- jQuery and plugin -->
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/jquery.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
     <script src="offcanvas.js"></script>
   </body>
 </html>

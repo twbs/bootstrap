@@ -16,8 +16,7 @@ body {
 .form-signin .checkbox {
   font-weight: normal;
 }
-.form-signin input[type="text"],
-.form-signin input[type="password"] {
+.form-signin .form-control {
   position: relative;
   font-size: 16px;
   height: auto;
@@ -26,8 +25,7 @@ body {
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
-.form-signin input[type="text"]:focus,
-.form-signin input[type="password"]:focus {
+.form-signin .form-control:focus {
   z-index: 2;
 }
 .form-signin input[type="text"] {
