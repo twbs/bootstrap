@@ -4,12 +4,6 @@ body {
   padding-bottom: 20px;
 }
 
-/* Set widths on the navbar form inputs since otherwise they're 100% wide */
-.navbar-form input[type="text"],
-.navbar-form input[type="password"] {
-  width: 180px;
-}
-
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
