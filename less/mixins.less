@@ -546,6 +546,16 @@
   }
 }
 
+// Generate a mixin for mobile full width columns, to maintain the same attributes
+.make-column(@gutter: @grid-gutter-width) {
+  position: relative;
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Inner gutter via padding
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
+}
+
 // Generate the extra small columns
 .make-xs-column(@columns; @gutter: @grid-gutter-width) {
   position: relative;
