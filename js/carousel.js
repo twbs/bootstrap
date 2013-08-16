@@ -41,6 +41,7 @@
   Carousel.DEFAULTS = {
     interval: 5000
   , pause: 'hover'
+  , wrap: true
   }
 
   Carousel.prototype.cycle =  function (e) {
@@ -105,11 +106,14 @@
     var fallback  = type == 'next' ? 'first' : 'last'
     var that      = this
 
+    if (!$next.length) {
+      if (!this.options.wrap) return
+      $next = this.$element.find('.item')[fallback]()
+    }
+
     this.sliding = true
 
     isCycling && this.pause()
-
-    $next = $next.length ? $next : this.$element.find('.item')[fallback]()
 
     var e = $.Event('slide.bs.carousel', { relatedTarget: $next[0], direction: direction })
 

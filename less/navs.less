@@ -19,7 +19,7 @@
     > a {
       position: relative;
       display: block;
-      padding: 10px 15px;
+      padding: @nav-link-padding;
       &:hover,
       &:focus {
         text-decoration: none;
@@ -60,6 +60,12 @@
   .nav-divider {
     .nav-divider();
   }
+
+  // Prevent IE8 from misplacing imgs
+  // See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
+  > li > a > img {
+    max-width: none;
+  }
 }
 
 
@@ -81,7 +87,7 @@
       border: 1px solid transparent;
       border-radius: @border-radius-base @border-radius-base 0 0;
       &:hover {
-        border-color: @nav-tabs-link-hover-border-color;
+        border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
       }
     }
 

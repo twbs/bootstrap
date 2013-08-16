@@ -18,16 +18,18 @@
     border-top-color: #fff;
   }
 }
-.dropup .caret {
-  .btn-default & {
+.dropup {
+  & .btn-default .caret {
     border-bottom-color: @btn-default-color;
   }
-  .btn-primary &,
-  .btn-success &,
-  .btn-warning &,
-  .btn-danger &,
-  .btn-info & {
-    border-bottom-color: #fff;
+  & .btn-primary,
+  & .btn-success,
+  & .btn-warning,
+  & .btn-danger,
+  & .btn-info {
+   .caret {
+      border-bottom-color: #fff;
+    }
   }
 }
 
@@ -55,8 +57,13 @@
 }
 
 // Prevent double borders when buttons are next to each other
-.btn-group .btn + .btn {
-  margin-left: -1px;
+.btn-group {
+  .btn + .btn,
+  .btn + .btn-group,
+  .btn-group + .btn,
+  .btn-group + .btn-group {
+    margin-left: -1px;
+  }
 }
 
 // Optional: Group multiple button groups together for a toolbar
@@ -117,6 +124,14 @@
 }
 
 
+// Sizing
+//
+// Remix the default button sizing classes into new ones for easier manipulation.
+
+.btn-group-xs > .btn { .btn-xs(); }
+.btn-group-sm > .btn { .btn-sm(); }
+.btn-group-lg > .btn { .btn-lg(); }
+
 
 // Split button dropdowns
 // ----------------------
@@ -155,26 +170,58 @@
 // Vertical button groups
 // ----------------------
 
-.btn-group-vertical > .btn {
-  display: block;
-  float: none;
-  width: 100%;
-  max-width: 100%;
-  + .btn {
+.btn-group-vertical {
+  > .btn,
+  > .btn-group {
+    display: block;
+    float: none;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  // Clear floats so dropdown menus can be properly placed
+  > .btn-group {
+    .clearfix();
+    > .btn {
+      float: none;
+    }
+  }
+
+  > .btn + .btn,
+  > .btn + .btn-group,
+  > .btn-group + .btn,
+  > .btn-group + .btn-group {
     margin-top: -1px;
+    margin-left: 0;
   }
 }
-.btn-group-vertical .btn {
+
+.btn-group-vertical > .btn {
   &:not(:first-child):not(:last-child) {
     border-radius: 0;
   }
   &:first-child:not(:last-child) {
+    border-top-right-radius: @border-radius-base;
     .border-bottom-radius(0);
   }
   &:last-child:not(:first-child) {
+    border-bottom-left-radius: @border-radius-base;
     .border-top-radius(0);
   }
 }
+.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
+  border-radius: 0;
+}
+.btn-group-vertical > .btn-group:first-child {
+  > .btn:last-child,
+  > .dropdown-toggle {
+    .border-bottom-radius(0);
+  }
+}
+.btn-group-vertical > .btn-group:last-child > .btn:first-child {
+  .border-top-radius(0);
+}
+
 
 
 // Justified button groups
@@ -184,6 +231,7 @@
   display: table;
   width: 100%;
   table-layout: fixed;
+  border-collapse: separate;
   .btn {
     float: none;
     display: table-cell;
@@ -193,7 +241,7 @@
 
 
 // Checkbox and radio options
-.btn-group[data-toggle="buttons"] > .btn > input[type="radio"],
-.btn-group[data-toggle="buttons"] > .btn > input[type="checkbox"] {
+[data-toggle="buttons"] > .btn > input[type="radio"],
+[data-toggle="buttons"] > .btn > input[type="checkbox"] {
   display: none;
 }

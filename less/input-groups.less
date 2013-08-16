@@ -22,6 +22,19 @@
   }
 }
 
+// Sizing options
+//
+// Remix the default form control sizing classes into new ones for easier
+// manipulation.
+
+.input-group-lg > .form-control,
+.input-group-lg > .input-group-addon,
+.input-group-lg > .input-group-btn > .btn { .input-lg(); }
+.input-group-sm > .form-control,
+.input-group-sm > .input-group-addon,
+.input-group-sm > .input-group-btn > .btn { .input-sm(); }
+
+
 // Display as table-cell
 // -------------------------
 .input-group-addon,
@@ -49,7 +62,7 @@
   font-weight: normal;
   line-height: 1;
   text-align: center;
-  background-color: @gray-lighter;
+  background-color: @input-group-addon-bg;
   border: 1px solid @input-group-addon-border-color;
   border-radius: @border-radius-base;
 
