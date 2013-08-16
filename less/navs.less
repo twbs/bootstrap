@@ -154,12 +154,18 @@
 
 .nav-justified {
   width: 100%;
+
   > li {
     float: none;
-    display: table-cell;
-    width: 1%;
-    > a {
+     > a {
       text-align: center;
+    }
+  }
+
+  @media (min-width: @screen-small) {
+    > li {
+      display: table-cell;
+      width: 1%;
     }
   }
 }

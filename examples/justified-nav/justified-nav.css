@@ -27,8 +27,8 @@ body {
 }
 
 /* Customize the nav-justified links to be fill the entire space of the .navbar */
+
 .nav-justified {
-  max-height: 52px;
   background-color: #eee;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -39,8 +39,7 @@ body {
   color: #777;
   font-weight: bold;
   text-align: center;
-  border-left: 1px solid rgba(255,255,255,.75);
-  border-right: 1px solid rgba(0,0,0,.1);
+  border-bottom: 1px solid #d5d5d5;
   background-color: #e5e5e5; /* Old browsers */
   background-repeat: repeat-x; /* Repeat the gradient */
   background-image: -moz-linear-gradient(top, #f5f5f5 0%, #e5e5e5 100%); /* FF3.6+ */
@@ -59,15 +58,31 @@ body {
   box-shadow: inset 0 3px 7px rgba(0,0,0,.15);
 }
 .nav-justified > li:first-child > a {
-  border-left: 0;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-radius: 5px 5px 0 0;
 }
 .nav-justified > li:last-child > a {
-  border-right: 0;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom: 0;
+  border-radius: 0 0 5px 5px;
 }
+
+@media (min-width: 768px) {
+  .nav-justified {
+    max-height: 52px;
+  }
+  .nav-justified > li > a {
+    border-left: 1px solid #fff;
+    border-right: 1px solid #d5d5d5;
+  }
+  .nav-justified > li:first-child > a {
+    border-left: 0;
+    border-radius: 5px 0 0 5px;
+  }
+  .nav-justified > li:last-child > a {
+    border-radius: 0 5px 5px 0;
+    border-right: 0;
+  }
+}
+
 
 
 /* Responsive: Portrait tablets and up */

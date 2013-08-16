@@ -3032,13 +3032,18 @@ button.close {
 }
 
 .nav-tabs.nav-justified > li {
-  display: table-cell;
   float: none;
-  width: 1%;
 }
 
 .nav-tabs.nav-justified > li > a {
   text-align: center;
+}
+
+@media (min-width: 768px) {
+  .nav-tabs.nav-justified > li {
+    display: table-cell;
+    width: 1%;
+  }
 }
 
 .nav-tabs.nav-justified > li > a {
@@ -3083,13 +3088,18 @@ button.close {
 }
 
 .nav-justified > li {
-  display: table-cell;
   float: none;
-  width: 1%;
 }
 
 .nav-justified > li > a {
   text-align: center;
+}
+
+@media (min-width: 768px) {
+  .nav-justified > li {
+    display: table-cell;
+    width: 1%;
+  }
 }
 
 .nav-tabs-justified {
