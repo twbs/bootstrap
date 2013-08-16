@@ -3295,6 +3295,10 @@ button.close {
   .navbar-fixed-bottom {
     border-radius: 0;
   }
+  .navbar-fixed-top .navbar-header,
+  .navbar-fixed-bottom .navbar-header {
+    margin-left: -15px;
+  }
 }
 
 .navbar-fixed-top {
