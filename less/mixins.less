@@ -529,21 +529,9 @@
 
 // Creates a wrapper for a series of columns
 .make-row(@gutter: @grid-gutter-width) {
-  // Then clear the floated columns
+  margin-left:  (@gutter / -2);
+  margin-right: (@gutter / -2);
   .clearfix();
-
-  .container & {
-    @media (min-width: @screen-small) {
-      margin-left:  (@gutter / -2);
-      margin-right: (@gutter / -2);
-    }
-  }
-
-  // Negative margin nested rows out to align the content of columns
-  .row {
-    margin-left:  (@gutter / -2);
-    margin-right: (@gutter / -2);
-  }
 }
 
 // Generate the extra small columns
