@@ -4,10 +4,18 @@
 <script src="{{ page.base_url }}assets/js/jquery.js"></script>
 <script src="{{ page.base_url }}dist/js/bootstrap.js"></script>
 
-<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
 <script src="{{ page.base_url }}assets/js/holder.js"></script>
 
 <script src="{{ page.base_url }}assets/js/application.js"></script>
+
+{% if page.slug == "customize" %}
+<script src="{{ page.base_url }}assets/js/less.js"></script>
+<script src="{{ page.base_url }}assets/js/jszip.js"></script>
+<script src="{{ page.base_url }}assets/js/uglify.js"></script>
+<script src="{{ page.base_url }}assets/js/jquery.bbq.min.js"></script>
+<script src="{{ page.base_url }}assets/js/customizer.js"></script>
+{% endif %}
 
 <!-- Analytics
 ================================================== -->
@@ -15,7 +23,6 @@
   var _gauges = _gauges || [];
   (function() {
     var t   = document.createElement('script');
-    t.type  = 'text/javascript';
     t.async = true;
     t.id    = 'gauges-tracker';
     t.setAttribute('data-site-id', '4f0dc9fef5a1f55508000013');

@@ -20,7 +20,7 @@ legend {
   margin-bottom: @line-height-computed;
   font-size: (@font-size-base * 1.5);
   line-height: inherit;
-  color: @gray-dark;
+  color: @legend-color;
   border: 0;
   border-bottom: 1px solid @legend-border-color;
 }
@@ -121,7 +121,7 @@ input[type="number"] {
   padding: @padding-base-vertical @padding-base-horizontal;
   font-size: @font-size-base;
   line-height: @line-height-base;
-  color: @gray;
+  color: @input-color;
   vertical-align: middle;
   background-color: @input-bg;
   border: 1px solid @input-border;
@@ -129,16 +129,13 @@ input[type="number"] {
   .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
   .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 
-  &:focus {
-    border-color: rgba(82,168,236,.8);
-    outline: 0;
-    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)");
-  }
+  // Customize the `:focus` state to imitate native WebKit styles.
+  .form-control-focus();
 
   // Disabled and read-only inputs
-  // Note: HTML5 says that inputs under a fieldset > legend:first-child won't be
-  //   disabled if the fieldset is disabled. Due to implementation difficulty,
-  //   we don't honor that edge case; we style them as disabled anyway.
+  // Note: HTML5 says that controls under a fieldset > legend:first-child won't
+  // be disabled if the fieldset is disabled. Due to implementation difficulty,
+  // we don't honor that edge case; we style them as disabled anyway.
   &[disabled],
   &[readonly],
   fieldset[disabled] & {
@@ -210,42 +207,28 @@ input[type="number"] {
   margin-left: 10px; // space out consecutive inline controls
 }
 
-
+// Apply same disabled cursor tweak as for inputs
+//
+// Note: Neither radios nor checkboxes can be readonly.
+input[type="radio"],
+input[type="checkbox"],
+.radio,
+.radio-inline,
+.checkbox,
+.checkbox-inline {
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+  }
+}
 
 // Form control sizing
-//
-// Relative text size, padding, and border-radii changes for form controls. For
-// horizontal sizing, wrap controls in the predefined grid classes. `<select>`
-// element gets special love because it's special, and that's a fact!
-
-.input-large {
-  height: @input-height-large;
-  padding: @padding-large-vertical @padding-large-horizontal;
-  font-size: @font-size-large;
-  border-radius: @border-radius-large;
-}
-.input-small {
-  height: @input-height-small;
-  padding: @padding-small-vertical @padding-small-horizontal;
-  font-size: @font-size-small;
-  border-radius: @border-radius-small;
+.input-sm {
+  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
 }
 
-select {
-  &.input-large {
-    height: @input-height-large;
-    line-height: @input-height-large;
-  }
-  &.input-small {
-    height: @input-height-small;
-    line-height: @input-height-small;
-  }
-}
-textarea {
-  &.input-large,
-  &.input-small {
-    height: auto;
-  }
+.input-lg {
+  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
 }
 
 
@@ -255,15 +238,26 @@ textarea {
 
 // Warning
 .has-warning {
-  .form-control-validation(@state-warning-text, @state-warning-text, @state-warning-bg);
+  .form-control-validation(@state-warning-text; @state-warning-text; @state-warning-bg);
 }
 // Error
 .has-error {
-  .form-control-validation(@state-danger-text, @state-danger-text, @state-danger-bg);
+  .form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
 }
 // Success
 .has-success {
-  .form-control-validation(@state-success-text, @state-success-text, @state-success-bg);
+  .form-control-validation(@state-success-text; @state-success-text; @state-success-bg);
+}
+
+
+// Static form control text
+//
+// Apply class to a `p` element to make any string of text align with labels in
+// a horizontal form layout.
+
+.form-control-static {
+  margin-bottom: 0; // Remove default margin from `p`
+  padding-top: @padding-base-vertical;
 }
 
 
@@ -277,4 +271,76 @@ textarea {
   margin-top: 5px;
   margin-bottom: 10px;
   color: lighten(@text-color, 25%); // lighten the text some for contrast
+}
+
+
+
+// Inline forms
+//
+// Make forms appear inline(-block) by adding the `.form-inline` class. Inline
+// forms begin stacked on extra small (mobile) devices and then go inline when
+// viewports reach <768px.
+//
+// Requires wrapping inputs and labels with `.form-group` for proper display of
+// default HTML form controls and our custom form controls (e.g., input groups).
+//
+// Heads up! This is mixin-ed into `.navbar-form` in navbars.less.
+
+.form-inline {
+
+  // Kick in the inline
+  @media (min-width: @screen-tablet) {
+    // Inline-block all the things for "inline"
+    .form-group  {
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+
+    // In navbar-form, allow folks to *not* use `.form-group`
+    .form-control {
+      display: inline-block;
+    }
+
+    // Remove default margin on radios/checkboxes that were used for stacking, and
+    // then undo the floating of radios and checkboxes to match (which also avoids
+    // a bug in WebKit: https://github.com/twbs/bootstrap/issues/1969).
+    .radio,
+    .checkbox {
+      display: inline-block;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-left: 0;
+    }
+    .radio input[type="radio"],
+    .checkbox input[type="checkbox"] {
+      float: none;
+      margin-left: 0;
+    }
+  }
+}
+
+
+// Horizontal forms
+//
+// Horizontal forms are built on grid classes and allow you to create forms with
+// labels on the left and inputs on the right.
+
+.form-horizontal .control-label,
+.form-horizontal .radio-inline,
+.form-horizontal .checkbox-inline {
+  padding-top: @padding-base-vertical;
+}
+
+.form-horizontal {
+  .form-group {
+    .make-row();
+  }
+}
+
+// Only right align form labels here when the columns stop stacking
+@media (min-width: @screen-tablet) {
+  .form-horizontal .control-label {
+    text-align: right;
+  }
 }

@@ -30,11 +30,15 @@ base_url: "../"
 {% highlight html %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% endhighlight %}
+    <p>You can disable zooming capabilities on mobile devices by adding <code>user-scalable=no</code> to the viewport meta tag. This disables zooming, meaning users are only able to scroll, and results in your site feeling a bit more like a native application. Overall we don't recommend this on every site, so use caution!</p>
+{% highlight html %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+{% endhighlight %}
 
     <h3 id="overview-responsive-images">Responsive images</h3>
     <p>Images in Bootstrap 3 can be made responsive-friendly via the addition of the <code>.img-responsive</code> class. This applies <code>max-width: 100%;</code> and <code>height: auto;</code> to the image so that it scales nicely to the parent element.</p>
 {% highlight html %}
-<img src="..." class="img-responsive" alt="Reponsive image">
+<img src="..." class="img-responsive" alt="Responsive image">
 {% endhighlight %}
 
     <h3 id="overview-type-links">Typography and links</h3>
@@ -69,7 +73,7 @@ base_url: "../"
     </div>
     <p class="lead">With the launch of Bootstrap 3, icons have been moved to a <a href="https://github.com/twbs/bootstrap-glyphicons">separate repository</a>. This keeps the primary project as lean as possible, makes it easier for folks to swap icon libraries, and makes Glyphicons icon fonts more readily available to more people outside Bootstrap.</p>
     <p class="lead">
-      <a href="http://glyphicons.getbootstrap.com/" class="btn btn-default btn-large">Visit Glyphicons for Bootstrap</a> or <a href="https://github.com/twbs/bootstrap-glyphicons">download from GitHub</a>
+      <a href="http://glyphicons.getbootstrap.com/" class="btn btn-default btn-lg">Visit Glyphicons for Bootstrap</a> or <a href="https://github.com/twbs/bootstrap-glyphicons">download from GitHub</a>
     </p>
   </div>
 
@@ -83,6 +87,29 @@ base_url: "../"
     </div>
     <p class="lead">Bootstrap includes a responsive, mobile-first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. It includes <a href="#grid-example-basic">predefined classes</a> for easy layout options, as well as powerful <a href="#grid-less">mixins for generating more semantic layouts</a>.</p>
 
+    <h3 id="grid-media-queries">Media queries</h3>
+    <p>We use the following media queries to create the key breakpoints in our grid system.</p>
+{% highlight css %}
+/* Extra small devices (phones, up to 480px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-tablet) { ... }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-desktop) { ... }
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-large-desktop) { ... }
+{% endhighlight %}
+    <p>We occasionally expand on these media queries to include a <code>max-width</code> to limit CSS to a narrower set of devices.</p>
+{% highlight css %}
+@media (max-width: @screen-phone-max) { ... }
+@media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) { ... }
+@media (min-width: @screen-desktop) and (max-width: @screen-desktop-max) { ... }
+@media (min-width: @screen-large-desktop) { ... }
+{% endhighlight %}
+
     <h3 id="grid-options">Grid options</h3>
     <p>See how aspects of the Bootstrap grid system work across multiple devices with a handy table.</p>
     <div class="bs-table-scrollable">
@@ -91,20 +118,20 @@ base_url: "../"
           <tr>
             <th></th>
             <th>
-              Tiny devices
+              Extra small devices
               <small>Phones (&lt;768px)</small>
             </th>
             <th>
               Small devices
-              <small>Tablets (&gt;768px)</small>
+              <small>Tablets (&ge;768px)</small>
             </th>
             <th>
               Medium devices
-              <small>Desktops (&gt;992px)</small>
+              <small>Desktops (&ge;992px)</small>
             </th>
             <th>
               Large devices
-              <small>Desktops (&gt;1200px)</small>
+              <small>Desktops (&ge;1200px)</small>
             </th>
           </tr>
         </thead>
@@ -117,15 +144,16 @@ base_url: "../"
           <tr>
             <th>Max container width</th>
             <td>None (auto)</td>
-            <td>728px</td>
+            <td>720px</td>
             <td>940px</td>
-            <td>1170px</td>
+            <td>1140px</td>
           </tr>
           <tr>
             <th>Class prefix</th>
-            <td><code>.col-</code></td>
+            <td><code>.col-xs-</code></td>
             <td><code>.col-sm-</code></td>
-            <td colspan="2"><code>.col-lg-</code></td>
+            <td><code>.col-md-</code></td>
+            <td><code>.col-lg-</code></td>
           </tr>
           <tr>
             <th># of columns</th>
@@ -133,10 +161,10 @@ base_url: "../"
           </tr>
           <tr>
             <th>Max column width</th>
-            <td>Auto</td>
-            <td>~60px</td>
-            <td>~78px</td>
-            <td>~98px</td>
+            <td class="text-muted">Auto</td>
+            <td>60px</td>
+            <td>78px</td>
+            <td>95px</td>
           </tr>
           <tr>
             <th>Gutter width</th>
@@ -148,8 +176,8 @@ base_url: "../"
           </tr>
           <tr>
             <th>Offsets</th>
-            <td colspan="2" class="text-muted">N/A</td>
-            <td colspan="2">Yes</td>
+            <td colspan="1" class="text-muted">N/A</td>
+            <td colspan="3">Yes</td>
           </tr>
           <tr>
             <th>Column ordering</th>
@@ -161,101 +189,101 @@ base_url: "../"
     </div>
 
     <h3 id="grid-example-basic">Example: Stacked-to-horizontal</h3>
-    <p>Using a single set of grid classes, you can create a basic grid system that starts out stacked on mobile and tablet devices before becoming horizontal on desktop devices.</p>
+    <p>Using a single set of <code>.col-md-*</code> grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices.</p>
     <div class="bs-docs-grid">
       <div class="row show-grid">
-        <div class="col-lg-1">1</div>
-        <div class="col-lg-1">1</div>
-        <div class="col-lg-1">1</div>
-        <div class="col-lg-1">1</div>
-        <div class="col-lg-1">1</div>
-        <div class="col-lg-1">1</div>
-        <div class="col-lg-1">1</div>
-        <div class="col-lg-1">1</div>
-        <div class="col-lg-1">1</div>
-        <div class="col-lg-1">1</div>
-        <div class="col-lg-1">1</div>
-        <div class="col-lg-1">1</div>
+        <div class="col-md-1">1</div>
+        <div class="col-md-1">1</div>
+        <div class="col-md-1">1</div>
+        <div class="col-md-1">1</div>
+        <div class="col-md-1">1</div>
+        <div class="col-md-1">1</div>
+        <div class="col-md-1">1</div>
+        <div class="col-md-1">1</div>
+        <div class="col-md-1">1</div>
+        <div class="col-md-1">1</div>
+        <div class="col-md-1">1</div>
+        <div class="col-md-1">1</div>
       </div>
       <div class="row show-grid">
-        <div class="col-lg-8">8</div>
-        <div class="col-lg-4">4</div>
+        <div class="col-md-8">8</div>
+        <div class="col-md-4">4</div>
       </div>
       <div class="row show-grid">
-        <div class="col-lg-4">4</div>
-        <div class="col-lg-4">4</div>
-        <div class="col-lg-4">4</div>
+        <div class="col-md-4">4</div>
+        <div class="col-md-4">4</div>
+        <div class="col-md-4">4</div>
       </div>
       <div class="row show-grid">
-        <div class="col-lg-6">6</div>
-        <div class="col-lg-6">6</div>
+        <div class="col-md-6">6</div>
+        <div class="col-md-6">6</div>
       </div>
     </div>
 {% highlight html %}
 <div class="row">
-  <div class="col-lg-1">1</div>
-  <div class="col-lg-1">1</div>
-  <div class="col-lg-1">1</div>
-  <div class="col-lg-1">1</div>
-  <div class="col-lg-1">1</div>
-  <div class="col-lg-1">1</div>
-  <div class="col-lg-1">1</div>
-  <div class="col-lg-1">1</div>
-  <div class="col-lg-1">1</div>
-  <div class="col-lg-1">1</div>
-  <div class="col-lg-1">1</div>
-  <div class="col-lg-1">1</div>
+  <div class="col-md-1">1</div>
+  <div class="col-md-1">1</div>
+  <div class="col-md-1">1</div>
+  <div class="col-md-1">1</div>
+  <div class="col-md-1">1</div>
+  <div class="col-md-1">1</div>
+  <div class="col-md-1">1</div>
+  <div class="col-md-1">1</div>
+  <div class="col-md-1">1</div>
+  <div class="col-md-1">1</div>
+  <div class="col-md-1">1</div>
+  <div class="col-md-1">1</div>
 </div>
 <div class="row">
-  <div class="col-lg-8">8</div>
-  <div class="col-lg-4">4</div>
+  <div class="col-md-8">8</div>
+  <div class="col-md-4">4</div>
 </div>
 <div class="row">
-  <div class="col-lg-4">4</div>
-  <div class="col-lg-4">4</div>
-  <div class="col-lg-4">4</div>
+  <div class="col-md-4">4</div>
+  <div class="col-md-4">4</div>
+  <div class="col-md-4">4</div>
 </div>
 <div class="row">
-  <div class="col-lg-6">6</div>
-  <div class="col-lg-6">6</div>
+  <div class="col-md-6">6</div>
+  <div class="col-md-6">6</div>
 </div>
 {% endhighlight %}
 
     <h3 id="grid-example-mixed">Example: Combining mobile with desktop</h3>
-    <p>Don't want your columns to simply stack in smaller devices? Use the small device grid system by adding <code>.col-*</code> classes to the existing <code>.col-lg-*</code> ones. See the example below for a better idea of how it all works.</p>
+    <p>Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid classes by adding <code>.col-xs-*</code> <code>.col-md-*</code> to your columns. See the example below for a better idea of how it all works.</p>
     <div class="bs-docs-grid">
       <div class="row show-grid">
-        <div class="col-12 col-lg-8">8</div>
-        <div class="col-6 col-lg-4">4</div>
+        <div class="col-xs-12 col-md-8">8</div>
+        <div class="col-xs-6 col-md-4">4</div>
       </div>
       <div class="row show-grid">
-        <div class="col-6 col-lg-4">4</div>
-        <div class="col-6 col-lg-4">4</div>
-        <div class="col-6 col-lg-4">4</div>
+        <div class="col-xs-6 col-md-4">4</div>
+        <div class="col-xs-6 col-md-4">4</div>
+        <div class="col-xs-6 col-md-4">4</div>
       </div>
       <div class="row show-grid">
-        <div class="col-6 col-lg-6">6</div>
-        <div class="col-6 col-lg-6">6</div>
+        <div class="col-xs-6 col-md-6">6</div>
+        <div class="col-xs-6 col-md-6">6</div>
       </div>
     </div>
 {% highlight html %}
 <!-- Stack the columns on mobile by making one full-width and the other half-width -->
 <div class="row">
-  <div class="col-12 col-lg-8">8</div>
-  <div class="col-6 col-lg-4">4</div>
+  <div class="col-xs-12 col-md-8">8</div>
+  <div class="col-xs-6 col-md-4">4</div>
 </div>
 
 <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
 <div class="row">
-  <div class="col-6 col-lg-4">4</div>
-  <div class="col-6 col-lg-4">4</div>
-  <div class="col-6 col-lg-4">4</div>
+  <div class="col-xs-6 col-md-4">4</div>
+  <div class="col-xs-6 col-md-4">4</div>
+  <div class="col-xs-6 col-md-4">4</div>
 </div>
 
 <!-- Columns are always 50% wide, on mobile and desktop -->
 <div class="row">
-  <div class="col-6 col-lg-6">6</div>
-  <div class="col-6 col-lg-6">6</div>
+  <div class="col-xs-6 col-md-6">6</div>
+  <div class="col-xs-6 col-md-6">6</div>
 </div>
 {% endhighlight %}
 
@@ -263,81 +291,99 @@ base_url: "../"
     <p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>.col-sm-*</code> classes.</p>
     <div class="bs-docs-grid">
       <div class="row show-grid">
-        <div class="col-12 col-sm-8 col-lg-8">.col-12 .col-lg-8</div>
-        <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+        <div class="col-xs-12 col-sm-6 col-md-8">.col-xs-12 .col-sm-6 .col-md-8</div>
+        <div class="col-xs-6 col-sm-6 col-md-4">.col-xs-6 .col-sm-6 .col-md-4</div>
       </div>
       <div class="row show-grid">
-        <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
-        <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
-        <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
-      </div>
-      <div class="row show-grid">
-        <div class="col-6 col-sm-6 col-lg-6">.col-6 .col-lg-6</div>
-        <div class="col-6 col-sm-6 col-lg-6">.col-6 .col-lg-6</div>
+        <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
+        <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
+        <!-- Optional: clear the XS cols if their content doesn't match in height -->
+        <div class="clearfix visible-xs"></div>
+        <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
       </div>
     </div>
 {% highlight html %}
 <div class="row">
-  <div class="col-12 col-sm-8 col-lg-8">.col-12 .col-lg-8</div>
-  <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
+  <div class="col-xs-12 col-sm-6 col-md-8">.col-xs-12 .col-sm-6 .col-md-8</div>
+  <div class="col-xs-6 col-sm-6 col-md-4">.col-xs-6 .col-sm-6 .col-md-4</div>
 </div>
 <div class="row">
-  <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
-  <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
-  <div class="col-6 col-sm-4 col-lg-4">.col-6 .col-lg-4</div>
-</div>
-<div class="row">
-  <div class="col-6 col-sm-6 col-lg-6">.col-6 .col-lg-6</div>
-  <div class="col-6 col-sm-6 col-lg-6">.col-6 .col-lg-6</div>
+  <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
+  <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
+  <!-- Optional: clear the XS cols if their content doesn't match in height -->
+  <div class="clearfix visible-xs"></div>
+  <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
 </div>
 {% endhighlight %}
 
-    <div class="bs-callout bs-callout-danger">
-      <h4>Need more examples?</h4>
-      <p>We dive into more grid layouts in a separate page, free of chrome and documentation to better show you the power of the grid.</p>
-      <p><a class="btn btn-danger" target="_blank" href="http://examples.getbootstrap.com/grid/">More grid examples</a></p>
-    </div>
+    <h3 id="grid-responsive-resets">Responsive column resets</h3>
+    <p>With the four tiers of grids available you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a <code>.clearfix</code> and our <a href="../css#responsive-utilities">responsive utility classes</a>.</p>
+{% highlight html %}
+<div class="row">
+  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+
+  <!-- Add the extra clearfix for only the required viewport -->
+  <div class="clearfix visible-xs"></div>
+
+  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+</div>
+{% endhighlight %}
+    <p>In addition to column clearing at responsive breakpoints, you may need to <strong>reset offsets, pushes, or pulls</strong>. Those resets are available for medium and large grid tiers only, since they start only at the (second) small grid tier.</p>
+{% highlight html %}
+<div class="row">
+  <div class="col-sm-5 col-md-6">.col-sm-5 .col-md-6</div>
+  <div class="col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0">.col-sm-5 .col-sm-offset-2 .col-md-6 .col-md-offset-0</div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 col-md-5 col-lg-6">.col-sm-6 .col-md-5 .col-lg-6</div>
+  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0">.col-sm-6 .col-md-5 .col-md-offset-2 .col-lg-6 .col-lg-offset-0</div>
+</div>
+{% endhighlight %}
+
 
     <h3 id="grid-offsetting">Offsetting columns</h3>
-    <p>Move columns to the right using <code>.col-offset-*</code> classes. These classes increase the left margin of a column by <code>*</code> columns. For example, <code>.col-offset-4</code> moves <code>.col-lg-4</code> over four columns.</p>
+    <p>Move columns to the right using <code>.col-md-offset-*</code> classes. These classes increase the left margin of a column by <code>*</code> columns. For example, <code>.col-md-offset-4</code> moves <code>.col-md-4</code> over four columns.</p>
     <div class="bs-docs-grid">
       <div class="row show-grid">
-        <div class="col-lg-4">4</div>
-        <div class="col-lg-4 col-offset-4">4 offset 4</div>
+        <div class="col-md-4">4</div>
+        <div class="col-md-4 col-md-offset-4">4 offset 4</div>
       </div><!-- /row -->
       <div class="row show-grid">
-        <div class="col-lg-3 col-offset-3">3 offset 3</div>
-        <div class="col-lg-3 col-offset-3">3 offset 3</div>
+        <div class="col-md-3 col-md-offset-3">3 offset 3</div>
+        <div class="col-md-3 col-md-offset-3">3 offset 3</div>
       </div><!-- /row -->
       <div class="row show-grid">
-        <div class="col-lg-6 col-offset-3">6 offset 3</div>
+        <div class="col-md-6 col-md-offset-3">6 offset 3</div>
       </div><!-- /row -->
     </div>
 {% highlight html %}
 <div class="row">
-  <div class="col-lg-4">...</div>
-  <div class="col-lg-4 col-offset-4">...</div>
+  <div class="col-md-4">...</div>
+  <div class="col-md-4 col-md-offset-4">...</div>
 </div>
 <div class="row">
-  <div class="col-lg-3 col-offset-3">3 offset 3</div>
-  <div class="col-lg-3 col-offset-3">3 offset 3</div>
+  <div class="col-md-3 col-md-offset-3">3 offset 3</div>
+  <div class="col-md-3 col-md-offset-3">3 offset 3</div>
 </div>
 <div class="row">
-  <div class="col-lg-6 col-offset-3">...</div>
+  <div class="col-md-6 col-md-offset-3">...</div>
 </div>
 {% endhighlight %}
 
 
     <h3 id="grid-nesting">Nesting columns</h3>
-    <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.col-lg-*</code> columns within an existing <code>.col-lg-*</code> column. Nested rows should include a set of columns that add up to 12.</p>
+    <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.col-md-*</code> columns within an existing <code>.col-md-*</code> column. Nested rows should include a set of columns that add up to 12.</p>
     <div class="row show-grid">
-      <div class="col-lg-9">
+      <div class="col-md-9">
         Level 1: 9 columns
         <div class="row show-grid">
-          <div class="col-lg-6">
+          <div class="col-md-6">
             Level 2: 6 columns
           </div>
-          <div class="col-lg-6">
+          <div class="col-md-6">
             Level 2: 6 columns
           </div>
         </div>
@@ -345,13 +391,13 @@ base_url: "../"
     </div>
 {% highlight html %}
 <div class="row">
-  <div class="col-lg-9">
+  <div class="col-md-9">
     Level 1: 9 columns
     <div class="row">
-      <div class="col-lg-6">
+      <div class="col-md-6">
         Level 2: 6 columns
       </div>
-      <div class="col-lg-6">
+      <div class="col-md-6">
         Level 2: 6 columns
       </div>
     </div>
@@ -360,16 +406,16 @@ base_url: "../"
 {% endhighlight %}
 
     <h3 id="grid-column-ordering">Column ordering</h3>
-    <p>Easily change the order of our built-in grid columns with <code>.col-push-*</code> and <code>.col-pull-*</code> modifier classes.</p>
+    <p>Easily change the order of our built-in grid columns with <code>.col-md-push-*</code> and <code>.col-md-pull-*</code> modifier classes.</p>
     <div class="row show-grid">
-      <div class="col-lg-9 col-push-3">9</div>
-      <div class="col-lg-3 col-pull-9">3</div>
+      <div class="col-md-9 col-md-push-3">9</div>
+      <div class="col-md-3 col-md-pull-9">3</div>
     </div>
 
 {% highlight html %}
 <div class="row">
-  <div class="col-lg-9 col-push-3">9</div>
-  <div class="col-lg-3 col-pull-9">3</div>
+  <div class="col-md-9 col-md-push-3">9</div>
+  <div class="col-md-3 col-md-pull-9">3</div>
 </div>
 {% endhighlight %}
 
@@ -388,32 +434,134 @@ base_url: "../"
     <p>Mixins are used in conjunction with the grid variables to generate semantic CSS for individual grid columns.</p>
 {% highlight css %}
 // Creates a wrapper for a series of columns
-.make-row() {
-  // Negative margin the row out to align the content of columns
-  margin-left:  (@grid-gutter-width / -2);
-  margin-right: (@grid-gutter-width / -2);
+.make-row(@gutter: @grid-gutter-width) {
   // Then clear the floated columns
   .clearfix();
+
+  @media (min-width: @screen-small) {
+    margin-left:  (@gutter / -2);
+    margin-right: (@gutter / -2);
+  }
+
+  // Negative margin nested rows out to align the content of columns
+  .row {
+    margin-left:  (@gutter / -2);
+    margin-right: (@gutter / -2);
+  }
 }
 
-// Generate the columns
-.make-column(@columns) {
-  @media (min-width: @grid-float-breakpoint) {
-    float: left;
-    // Calculate width based on number of columns available
-    width: percentage(@columns / @grid-columns);
-  }
+// Generate the extra small columns
+.make-xs-column(@columns; @gutter: @grid-gutter-width) {
+  position: relative;
   // Prevent columns from collapsing when empty
   min-height: 1px;
-  // Set inner padding as gutters instead of margin
-  padding-left:  (@grid-gutter-width / 2);
-  padding-right: (@grid-gutter-width / 2);
+  // Inner gutter via padding
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
+
+  // Calculate width based on number of columns available
+  @media (min-width: @grid-float-breakpoint) {
+    float: left;
+    width: percentage((@columns / @grid-columns));
+  }
 }
 
-// Generate the column offsets
-.make-column-offset(@columns) {
-  @media (min-width: @grid-float-breakpoint) {
+// Generate the small columns
+.make-sm-column(@columns; @gutter: @grid-gutter-width) {
+  position: relative;
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Inner gutter via padding
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
+
+  // Calculate width based on number of columns available
+  @media (min-width: @screen-small) {
+    float: left;
+    width: percentage((@columns / @grid-columns));
+  }
+}
+
+// Generate the small column offsets
+.make-sm-column-offset(@columns) {
+  @media (min-width: @screen-small) {
     margin-left: percentage((@columns / @grid-columns));
+  }
+}
+.make-sm-column-push(@columns) {
+  @media (min-width: @screen-small) {
+    left: percentage((@columns / @grid-columns));
+  }
+}
+.make-sm-column-pull(@columns) {
+  @media (min-width: @screen-small) {
+    right: percentage((@columns / @grid-columns));
+  }
+}
+
+// Generate the medium columns
+.make-md-column(@columns; @gutter: @grid-gutter-width) {
+  position: relative;
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Inner gutter via padding
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
+
+  // Calculate width based on number of columns available
+  @media (min-width: @screen-medium) {
+    float: left;
+    width: percentage((@columns / @grid-columns));
+  }
+}
+
+// Generate the large column offsets
+.make-md-column-offset(@columns) {
+  @media (min-width: @screen-medium) {
+    margin-left: percentage((@columns / @grid-columns));
+  }
+}
+.make-md-column-push(@columns) {
+  @media (min-width: @screen-medium) {
+    left: percentage((@columns / @grid-columns));
+  }
+}
+.make-md-column-pull(@columns) {
+  @media (min-width: @screen-medium) {
+    right: percentage((@columns / @grid-columns));
+  }
+}
+
+// Generate the large columns
+.make-lg-column(@columns; @gutter: @grid-gutter-width) {
+  position: relative;
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Inner gutter via padding
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
+
+  // Calculate width based on number of columns available
+  @media (min-width: @screen-large) {
+    float: left;
+    width: percentage((@columns / @grid-columns));
+  }
+}
+
+// Generate the large column offsets
+.make-lg-column-offset(@columns) {
+  @media (min-width: @screen-large) {
+    margin-left: percentage((@columns / @grid-columns));
+  }
+}
+.make-lg-column-push(@columns) {
+  @media (min-width: @screen-large) {
+    left: percentage((@columns / @grid-columns));
+  }
+}
+.make-lg-column-pull(@columns) {
+  @media (min-width: @screen-large) {
+    right: percentage((@columns / @grid-columns));
   }
 }
 {% endhighlight %}
@@ -425,11 +573,11 @@ base_url: "../"
   .make-row();
 }
 .content-main {
-  .make-column(8);
+  .make-lg-column(8);
 }
 .content-secondary {
-  .make-column(3);
-  .make-column-offset(1);
+  .make-lg-column(3);
+  .make-lg-column-offset(1);
 }
 {% endhighlight %}
 {% highlight html %}
@@ -459,27 +607,27 @@ base_url: "../"
       <table class="table">
         <tbody>
           <tr>
-            <th><h1>Bootstrap heading</h1></th>
+            <td><h1>Bootstrap heading</h1></td>
             <td>Semibold 38px</td>
           </tr>
           <tr>
-            <th><h2>Bootstrap heading</h2></th>
+            <td><h2>Bootstrap heading</h2></td>
             <td>Semibold 32px</td>
           </tr>
           <tr>
-            <th><h3>Bootstrap heading</h3></th>
+            <td><h3>Bootstrap heading</h3></td>
             <td>Semibold 24px</td>
           </tr>
           <tr>
-            <th><h4>Bootstrap heading</h4></th>
+            <td><h4>Bootstrap heading</h4></td>
             <td>Semibold 18px</td>
           </tr>
           <tr>
-            <th><h5>Bootstrap heading</h5></th>
-            <td>Semibold 16px</td>
+            <td><h5>Bootstrap heading</h5></td>
+            <td>Semibold 14px</td>
           </tr>
           <tr>
-            <th><h6>Bootstrap heading</h6></th>
+            <td><h6>Bootstrap heading</h6></td>
             <td>Semibold 12px</td>
           </tr>
         </tbody>
@@ -576,18 +724,18 @@ base_url: "../"
     <div class="bs-example">
       <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
       <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-      <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
-      <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
       <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
       <p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+      <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+      <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
     </div>
 {% highlight html %}
 <p class="text-muted">...</p>
 <p class="text-primary">...</p>
-<p class="text-warning">...</p>
-<p class="text-danger">...</p>
 <p class="text-success">...</p>
 <p class="text-info">...</p>
+<p class="text-warning">...</p>
+<p class="text-danger">...</p>
 {% endhighlight %}
 
 
@@ -807,7 +955,7 @@ base_url: "../"
 {% endhighlight %}
 
     <h4>Horizontal description</h4>
-    <p>Make terms and descriptions in <code>&lt;dl&gt;</code> line up side-by-side.</p>
+    <p>Make terms and descriptions in <code>&lt;dl&gt;</code> line up side-by-side. Starts off stacked like default <code>&lt;dl&gt;</code>s, but when the navbar expands, so do these.</p>
     <div class="bs-example">
       <dl class="dl-horizontal">
         <dt>Description lists</dt>
@@ -1085,7 +1233,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
 
-    <h2 id="tables-row-classes">Contextual table classes</h2>
+    <h2 id="tables-contextual-classes">Contextual table classes</h2>
     <p>Use contextual classes to color table rows or individual cells.</p>
     <div class="bs-table-scrollable">
       <table class="table table-bordered table-striped bs-table">
@@ -1102,15 +1250,15 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <tbody>
           <tr>
             <td>
-              <code>.success</code>
+              <code>.active</code>
             </td>
-            <td>Indicates a successful or positive action</td>
+            <td>Applies the hover color to a particular row or cell</td>
           </tr>
           <tr>
             <td>
-              <code>.danger</code>
+              <code>.success</code>
             </td>
-            <td>Indicates a dangerous or potentially negative action</td>
+            <td>Indicates a successful or positive action</td>
           </tr>
           <tr>
             <td>
@@ -1120,9 +1268,9 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           </tr>
           <tr>
             <td>
-              <code>.active</code>
+              <code>.danger</code>
             </td>
-            <td>Applies the hover color to a particular row or cell</td>
+            <td>Indicates a dangerous or potentially negative action</td>
           </tr>
         </tbody>
       </table>
@@ -1138,7 +1286,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           </tr>
         </thead>
         <tbody>
-          <tr class="success">
+          <tr class="active">
             <td>1</td>
             <td>Column content</td>
             <td>Column content</td>
@@ -1150,7 +1298,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             <td>Column content</td>
             <td>Column content</td>
           </tr>
-          <tr class="danger">
+          <tr class="success">
             <td>3</td>
             <td>Column content</td>
             <td>Column content</td>
@@ -1174,7 +1322,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             <td>Column content</td>
             <td>Column content</td>
           </tr>
-          <tr class="active">
+          <tr class="danger">
             <td>7</td>
             <td>Column content</td>
             <td>Column content</td>
@@ -1184,11 +1332,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </table>
     </div><!-- /example -->
 {% highlight html %}
-<tr class="success">
-  <td>1</td>
-  <td>Column content</td>
-  <td>Column content</td>
-  <td>Column content</td>
+<!-- On rows -->
+<tr class="active">...</tr>
+<tr class="success">...</tr>
+<tr class="warning">...</tr>
+<tr class="danger">...</tr>
+
+<!-- On cells (`td` or `th`) -->
+<tr>
+  <td class="active">...</td>
+  <td class="success">...</td>
+  <td class="warning">...</td>
+  <td class="danger">...</td>
 </tr>
 {% endhighlight %}
 
@@ -1205,60 +1360,51 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h2 id="forms-example">Basic example</h2>
     <p>Individual form controls automatically receive some global styling. All textual <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> elements with <code>.form-control</code> are set to <code>width: 100%;</code> by default. Wrap labels and controls in <code>.form-group</code> for optimum spacing.</p>
-    <form class="bs-example">
-      <fieldset>
-        <legend>Legend</legend>
-        <div class="form-group">
-          <label for="exampleInputEmail">Email address</label>
-          <input type="text" class="form-control" id="exampleInputEmail" placeholder="Enter email">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputFile">File input</label>
-          <input type="file" id="exampleInputFile">
-          <p class="help-block">Example block-level help text here.</p>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox"> Check me out
-          </label>
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </fieldset>
+    <form class="bs-example" role="form">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputFile">File input</label>
+        <input type="file" id="exampleInputFile">
+        <p class="help-block">Example block-level help text here.</p>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Check me out
+        </label>
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
     </form><!-- /example -->
 {% highlight html %}
-<form>
-  <fieldset>
-    <legend>Legend</legend>
-    <div class="form-group">
-      <label for="exampleInputEmail">Email address</label>
-      <input type="text" class="form-control" id="exampleInputEmail" placeholder="Enter email">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputFile">File input</label>
-      <input type="file" id="exampleInputFile">
-      <p class="help-block">Example block-level help text here.</p>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"> Check me out
-      </label>
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-  </fieldset>
+<form role="form">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputFile">File input</label>
+    <input type="file" id="exampleInputFile">
+    <p class="help-block">Example block-level help text here.</p>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"> Check me out
+    </label>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
 </form>
 {% endhighlight %}
 
-
-    <h2>Optional layouts</h2>
-    <p>Included with Bootstrap are optional form layouts for common use cases.</p>
 
     <h3 id="forms-inline">Inline form</h3>
     <p>Add <code>.form-inline</code> for left-aligned and inline-block controls for a compact layout.</p>
@@ -1266,9 +1412,19 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <h4>Requires custom widths</h4>
       <p>Inputs, selects, and textareas are 100% wide by default in Bootstrap. To use the inline form, you'll have to set a width on the form controls used within.</p>
     </div>
-    <form class="bs-example form-inline">
-      <input type="text" class="form-control" placeholder="Email">
-      <input type="password" class="form-control" placeholder="Password">
+    <div class="bs-callout bs-callout-danger">
+      <h4>Always add labels</h4>
+      <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the <code>.sr-only</code> class.</p>
+    </div>
+    <form class="bs-example form-inline" role="form">
+      <div class="form-group">
+        <label class="sr-only" for="exampleInputEmail2">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="exampleInputPassword2">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+      </div>
       <div class="checkbox">
         <label>
           <input type="checkbox"> Remember me
@@ -1277,9 +1433,15 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <button type="submit" class="btn btn-default">Sign in</button>
     </form><!-- /example -->
 {% highlight html %}
-<form class="form-inline">
-  <input type="text" class="form-control" placeholder="Email">
-  <input type="password" class="form-control" placeholder="Password">
+<form class="form-inline" role="form">
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputEmail2">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputPassword2">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+  </div>
   <div class="checkbox">
     <label>
       <input type="checkbox"> Remember me
@@ -1289,45 +1451,61 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </form>
 {% endhighlight %}
 
-    <h3 id="forms-horizontal">Horizontal form</h3>
+    <h2 id="forms-horizontal">Horizontal form</h2>
     <p>Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout by adding <code>.form-horizontal</code> to the form. Doing so changes <code>.form-group</code>s to behave as grid rows, so no need for <code>.row</code>.</p>
     <form class="bs-example form-horizontal">
       <div class="form-group">
-        <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+        <label for="inputEmail1" class="col-lg-2 control-label">Email</label>
         <div class="col-lg-10">
-          <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+          <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
         </div>
       </div>
       <div class="form-group">
-        <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+        <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
         <div class="col-lg-10">
-          <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+          <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
           <div class="checkbox">
             <label>
               <input type="checkbox"> Remember me
             </label>
           </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
           <button type="submit" class="btn btn-default">Sign in</button>
         </div>
       </div>
     </form>
 {% highlight html %}
-<form class="form-horizontal">
+<form class="form-horizontal" role="form">
   <div class="form-group">
-    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+    <label for="inputEmail1" class="col-lg-2 control-label">Email</label>
     <div class="col-lg-10">
-      <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+      <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
     </div>
   </div>
   <div class="form-group">
-    <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+    <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
     <div class="col-lg-10">
-      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+      <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
       <div class="checkbox">
         <label>
           <input type="checkbox"> Remember me
         </label>
       </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
       <button type="submit" class="btn btn-default">Sign in</button>
     </div>
   </div>
@@ -1469,6 +1647,39 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
+    <h2 id="forms-controls-static">Static text in horizontal forms</h2>
+    <p>When you need to place regular, static text next to a form label within a horizontal form, use the <code>.form-control-static</code> class on a <code>&lt;p&gt;</code>.</p>
+    <form class="bs-example form-horizontal">
+      <div class="form-group">
+        <label class="col-lg-2 control-label">Email</label>
+        <div class="col-lg-10">
+          <p class="form-control-static">email@example.com</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+        <div class="col-lg-10">
+          <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+        </div>
+      </div>
+    </form>
+{% highlight html %}
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label class="col-lg-2 control-label">Email</label>
+    <div class="col-lg-10">
+      <p class="form-control-static">email@example.com</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+    <div class="col-lg-10">
+      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+    </div>
+  </div>
+</form>
+{% endhighlight %}
+
 
     <h2 id="forms-control-states">Form control states</h2>
     <p>Provide feedback to users or visitors with basic feedback states on form controls and labels.</p>
@@ -1504,12 +1715,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <p>While Bootstrap will apply these styles in all browsers, Internet Explorer 9 and below don't actually support the <code>disabled</code> attribute on a <code>&lt;fieldset&gt;</code>. Use custom JavaScript to disable the fieldset in these browsers.</p>
     </div>
 
-    <form class="bs-example form-inline">
+    <form class="bs-example">
       <fieldset disabled>
-        <input type="text" class="form-control" placeholder="Disabled input">
-        <select class="form-control">
-          <option>Disabled select</option>
-        </select>
+        <div class="form-group">
+          <label for="disabledTextInput">Disabled input</label>
+          <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+        </div>
+        <div class="form-group">
+          <label for="disabledSelect">Disabled select menu</label>
+          <select id="disabledSelect" class="form-control">
+            <option>Disabled select</option>
+          </select>
+        </div>
         <div class="checkbox">
           <label>
             <input type="checkbox"> Can't check this
@@ -1519,12 +1736,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </fieldset>
     </form>
 {% highlight html %}
-<form class="form-inline">
+<form class="form-inline" role="form">
   <fieldset disabled>
-    <input type="text" class="form-control" placeholder="Disabled input">
-    <select class="form-control">
-      <option>Disabled select</option>
-    </select>
+    <div class="form-group">
+      <label for="disabledTextInput">Disabled input</label>
+      <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+    </div>
+    <div class="form-group">
+      <label for="disabledSelect">Disabled select menu</label>
+      <select id="disabledSelect" class="form-control">
+        <option>Disabled select</option>
+      </select>
+    </div>
     <div class="checkbox">
       <label>
         <input type="checkbox"> Can't check this
@@ -1536,9 +1759,13 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3 id="forms-validation">Validation states</h3>
-    <p>Bootstrap includes validation styles for error, warning, and success states on from controls. To use, add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element. Any <code>.control-label</code>, <code>.form-control</code>, and <code>.help-block</code> within that element will receive the validation styles.</li>
+    <p>Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element. Any <code>.control-label</code>, <code>.form-control</code>, and <code>.help-block</code> within that element will receive the validation styles.</p>
 
     <form class="bs-example">
+      <div class="form-group has-success">
+        <label class="control-label" for="inputSuccess">Input with success</label>
+        <input type="text" class="form-control" id="inputSuccess">
+      </div>
       <div class="form-group has-warning">
         <label class="control-label" for="inputWarning">Input with warning</label>
         <input type="text" class="form-control" id="inputWarning">
@@ -1547,12 +1774,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <label class="control-label" for="inputError">Input with error</label>
         <input type="text" class="form-control" id="inputError">
       </div>
-      <div class="form-group has-success">
-        <label class="control-label" for="inputSuccess">Input with success</label>
-        <input type="text" class="form-control" id="inputSuccess">
-      </div>
     </form>
 {% highlight html %}
+<div class="form-group has-success">
+  <label class="control-label" for="inputSuccess">Input with success</label>
+  <input type="text" class="form-control" id="inputSuccess">
+</div>
 <div class="form-group has-warning">
   <label class="control-label" for="inputWarning">Input with warning</label>
   <input type="text" class="form-control" id="inputWarning">
@@ -1561,43 +1788,39 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <label class="control-label" for="inputError">Input with error</label>
   <input type="text" class="form-control" id="inputError">
 </div>
-<div class="form-group has-success">
-  <label class="control-label" for="inputSuccess">Input with success</label>
-  <input type="text" class="form-control" id="inputSuccess">
-</div>
 {% endhighlight %}
 
 
     <h2 id="forms-control-sizes">Control sizing</h2>
-    <p>Set heights using classes like <code>.input-large</code>, and set widths using grid column classes like <code>.col-lg-*</code>.</p>
+    <p>Set heights using classes like <code>.input-lg</code>, and set widths using grid column classes like <code>.col-lg-*</code>.</p>
 
     <h3>Height sizing</h3>
     <p>Create larger or smaller form controls that match button sizes.</p>
     <form class="bs-example bs-example-control-sizing">
       <div class="controls docs-input-sizes">
-        <input class="form-control input-large" type="text" placeholder=".input-large">
+        <input class="form-control input-lg" type="text" placeholder=".input-lg">
         <input type="text" class="form-control" placeholder="Default input">
-        <input class="form-control input-small" type="text" placeholder=".input-small">
+        <input class="form-control input-sm" type="text" placeholder=".input-sm">
 
-        <select class="form-control input-large">
-          <option value="">.input-large</option>
+        <select class="form-control input-lg">
+          <option value="">.input-lg</option>
         </select>
         <select class="form-control">
           <option value="">Default select</option>
         </select>
-        <select class="form-control input-small">
-          <option value="">.input-small</option>
+        <select class="form-control input-sm">
+          <option value="">.input-sm</option>
         </select>
       </div>
     </form>
 {% highlight html %}
-<input class="form-control input-large" type="text" placeholder=".input-large">
+<input class="form-control input-lg" type="text" placeholder=".input-lg">
 <input class="form-control" type="text" placeholder="Default input">
-<input class="form-control input-small" type="text" placeholder=".input-small">
+<input class="form-control input-sm" type="text" placeholder=".input-sm">
 
-<select class="form-control input-large">...</select>
+<select class="form-control input-lg">...</select>
 <select class="form-control">...</select>
-<select class="form-control input-small">...</select>
+<select class="form-control input-sm">...</select>
 {% endhighlight %}
 
     <h3>Column sizing</h3>
@@ -1633,10 +1856,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Block level help text for form controls.</p>
     <form class="bs-example">
       <input type="text" class="form-control">
-      <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+      <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
     </form>
 {% highlight html %}
-<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+<span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
 {% endhighlight %}
 
   </div>
@@ -1685,54 +1908,54 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h2 id="buttons-sizes">Button sizes</h2>
-    <p>Fancy larger or smaller buttons? Add <code>.btn-large</code> or <code>.btn-small</code> for additional sizes.</p>
+    <p>Fancy larger or smaller buttons? Add <code>.btn-lg</code>, <code>.btn-sm</code>, or <code>.btn-xs</code> for additional sizes.</p>
     <div class="bs-example">
       <p>
-        <button type="button" class="btn btn-primary btn-large">Large button</button>
-        <button type="button" class="btn btn-default btn-large">Large button</button>
+        <button type="button" class="btn btn-primary btn-lg">Large button</button>
+        <button type="button" class="btn btn-default btn-lg">Large button</button>
       </p>
       <p>
         <button type="button" class="btn btn-primary">Default button</button>
         <button type="button" class="btn btn-default">Default button</button>
       </p>
       <p>
-        <button type="button" class="btn btn-primary btn-small">Small button</button>
-        <button type="button" class="btn btn-default btn-small">Small button</button>
+        <button type="button" class="btn btn-primary btn-sm">Small button</button>
+        <button type="button" class="btn btn-default btn-sm">Small button</button>
       </p>
       <p>
-        <button type="button" class="btn btn-primary btn-mini">Mini button</button>
-        <button type="button" class="btn btn-default btn-mini">Mini button</button>
+        <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
+        <button type="button" class="btn btn-default btn-xs">Extra small button</button>
       </p>
     </div>
 {% highlight html %}
 <p>
-  <button type="button" class="btn btn-primary btn-large">Large button</button>
-  <button type="button" class="btn btn-default btn-large">Large button</button>
+  <button type="button" class="btn btn-primary btn-lg">Large button</button>
+  <button type="button" class="btn btn-default btn-lg">Large button</button>
 </p>
 <p>
   <button type="button" class="btn btn-primary">Default button</button>
   <button type="button" class="btn btn-default">Default button</button>
 </p>
 <p>
-  <button type="button" class="btn btn-primary btn-small">Small button</button>
-  <button type="button" class="btn btn-default btn-small">Small button</button>
+  <button type="button" class="btn btn-primary btn-sm">Small button</button>
+  <button type="button" class="btn btn-default btn-sm">Small button</button>
 </p>
 <p>
-  <button type="button" class="btn btn-primary btn-mini">Mini button</button>
-  <button type="button" class="btn btn-default btn-mini">Mini button</button>
+  <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
+  <button type="button" class="btn btn-default btn-xs">Extra small button</button>
 </p>
 {% endhighlight %}
 
     <p>Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding <code>.btn-block</code>.</p>
     <div class="bs-example">
       <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
-        <button type="button" class="btn btn-primary btn-large btn-block">Block level button</button>
-        <button type="button" class="btn btn-default btn-large btn-block">Block level button</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+        <button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
       </div>
     </div>
 {% highlight html %}
-<button type="button" class="btn btn-primary btn-large btn-block">Block level button</button>
-<button type="button" class="btn btn-default btn-large btn-block">Block level button</button>
+<button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+<button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
 {% endhighlight %}
 
 
@@ -1742,12 +1965,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h3>Button element</h3>
     <p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
     <p class="bs-example">
-      <button type="button" class="btn btn-primary btn-large" disabled="disabled">Primary button</button>
-      <button type="button" class="btn btn-default btn-large" disabled="disabled">Button</button>
+      <button type="button" class="btn btn-primary btn-lg" disabled="disabled">Primary button</button>
+      <button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
     </p>
 {% highlight html %}
-<button type="button" class="btn btn-large btn-primary" disabled="disabled">Primary button</button>
-<button type="button" class="btn btn-default btn-large" disabled="disabled">Button</button>
+<button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary button</button>
+<button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
 {% endhighlight %}
 
     <div class="bs-callout bs-callout-danger">
@@ -1758,12 +1981,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h3>Anchor element</h3>
     <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
     <p class="bs-example">
-      <a href="#" class="btn btn-primary btn-large disabled">Primary link</a>
-      <a href="#" class="btn btn-default btn-large disabled">Link</a>
+      <a href="#" class="btn btn-primary btn-lg disabled">Primary link</a>
+      <a href="#" class="btn btn-default btn-lg disabled">Link</a>
     </p>
 {% highlight html %}
-<a href="#" class="btn btn-primary btn-large disabled">Primary link</a>
-<a href="#" class="btn btn-default btn-large disabled">Link</a>
+<a href="#" class="btn btn-primary btn-lg disabled">Primary link</a>
+<a href="#" class="btn btn-default btn-lg disabled">Link</a>
 {% endhighlight %}
     <p>
       We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
@@ -1812,14 +2035,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <p>Keep in mind that Internet Explorer 8 lacks support for rounded corners.</p>
     </div>
     <div class="bs-example bs-example-images">
-      <img data-src="holder.js/140x140" class="img-rounded">
-      <img data-src="holder.js/140x140" class="img-circle">
-      <img data-src="holder.js/140x140" class="img-thumbnail">
+      <img data-src="holder.js/140x140" src="data:image/png;base64," class="img-rounded" alt="A generic square placeholder image with rounded corners">
+      <img data-src="holder.js/140x140" src="data:image/png;base64," class="img-circle" alt="A generic square placeholder image where only the portion within the circle circumscribed about said square is visible">
+      <img data-src="holder.js/140x140" src="data:image/png;base64," class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera">
     </div>
 {% highlight html %}
-<img src="..." class="img-rounded">
-<img src="..." class="img-circle">
-<img src="..." class="img-thumbnail">
+<img src="..." alt="..." class="img-rounded">
+<img src="..." alt="..." class="img-circle">
+<img src="..." alt="..." class="img-thumbnail">
 {% endhighlight %}
 
     <div class="bs-callout bs-callout-warning">
@@ -1840,10 +2063,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h3>Close icon</h3>
     <p>Use the generic close icon for dismissing content like modals and alerts.</p>
     <div class="bs-example">
-      <p><button type="button" class="close">&times;</button></p>
+      <p><button type="button" class="close" aria-hidden="true">&times;</button></p>
     </div>
 {% highlight html %}
-<button type="button" class="close">&times;</button>
+<button type="button" class="close" aria-hidden="true">&times;</button>
 {% endhighlight %}
 
     <h3>.pull-left</h3>
@@ -1875,7 +2098,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 {% highlight css %}
 // Mixin
-.clearfix {
+.clearfix() {
   &:before,
   &:after {
     content: " ";
@@ -1890,6 +2113,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 .element {
   .clearfix();
 }
+{% endhighlight %}
+
+    <h3>.sr-only</h3>
+    <p>Hide an element to all users <em>except</em> screen readers. Necessary for following <a href="{{ page.base_url }}getting-started#accessibility">accessibility best practices</a>.</p>
+{% highlight html %}
+<a class="sr-only" href="#content">Skip to content</a>
 {% endhighlight %}
   </div>
 
@@ -1906,21 +2135,43 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <table class="table table-bordered table-striped responsive-utilities">
         <thead>
           <tr>
-            <th>Class</th>
-            <th>Small devices <small>Up to 768px</small></th>
-            <th>Medium devices <small>768px to 979px</small></th>
-            <th>Large devices <small>980px and up</small></th>
+            <th></th>
+            <th>
+              Extra small devices
+              <small>Phones (&lt;768px)</small>
+            </th>
+            <th>
+              Small devices
+              <small>Tablets (&ge;768px)</small>
+            </th>
+            <th>
+              Medium devices
+              <small>Desktops (&ge;992px)</small>
+            </th>
+            <th>
+              Large devices
+              <small>Desktops (&ge;1200px)</small>
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr>
+            <th><code>.visible-xs</code></th>
+            <td class="is-visible">Visible</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+          </tr>
+          <tr>
             <th><code>.visible-sm</code></th>
+            <td class="is-hidden">Hidden</td>
             <td class="is-visible">Visible</td>
             <td class="is-hidden">Hidden</td>
             <td class="is-hidden">Hidden</td>
           </tr>
           <tr>
             <th><code>.visible-md</code></th>
+            <td class="is-hidden">Hidden</td>
             <td class="is-hidden">Hidden</td>
             <td class="is-visible">Visible</td>
             <td class="is-hidden">Hidden</td>
@@ -1929,10 +2180,21 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             <th><code>.visible-lg</code></th>
             <td class="is-hidden">Hidden</td>
             <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-visible">Visible</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th><code>.hidden-xs</code></th>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
             <td class="is-visible">Visible</td>
           </tr>
           <tr>
             <th><code>.hidden-sm</code></th>
+            <td class="is-visible">Visible</td>
             <td class="is-hidden">Hidden</td>
             <td class="is-visible">Visible</td>
             <td class="is-visible">Visible</td>
@@ -1940,11 +2202,13 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           <tr>
             <th><code>.hidden-md</code></th>
             <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
             <td class="is-hidden">Hidden</td>
             <td class="is-visible">Visible</td>
           </tr>
           <tr>
             <th><code>.hidden-lg</code></th>
+            <td class="is-visible">Visible</td>
             <td class="is-visible">Visible</td>
             <td class="is-visible">Visible</td>
             <td class="is-hidden">Hidden</td>
@@ -1985,35 +2249,45 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Resize your browser or load on different devices to test the responsive utility classes.</p>
     <h4>Visible on...</h4>
     <p>Green checkmarks indicate the element <strong>is visible</strong> in your current viewport.</p>
-    <ul class="responsive-utilities-test visible-on">
-      <li>
+    <div class="row responsive-utilities-test visible-on">
+      <div class="col-xs-6 col-sm-3">
+        <span class="hidden-xs">Extra small</span>
+        <span class="visible-xs">&#10004; Visible on x-small</span>
+      </div>
+      <div class="col-xs-6 col-sm-3">
         <span class="hidden-sm">Small</span>
         <span class="visible-sm">&#10004; Visible on small</span>
-      </li>
-      <li>
+      </div>
+      <div class="clearfix visible-xs"></div>
+      <div class="col-xs-6 col-sm-3">
         <span class="hidden-md">Medium</span>
         <span class="visible-md">&#10004; Visible on medium</span>
-      </li>
-      <li>
+      </div>
+      <div class="col-xs-6 col-sm-3">
         <span class="hidden-lg">Large</span>
         <span class="visible-lg">&#10004; Visible on large</span>
-      </li>
-    </ul>
+      </div>
+    </div>
     <h4>Hidden on...</h4>
     <p>Here, green checkmarks indicate the element <strong>is hidden</strong> in your current viewport.</p>
-    <ul class="responsive-utilities-test hidden-on">
-      <li>
+    <div class="row responsive-utilities-test hidden-on">
+      <div class="col-xs-6 col-sm-3">
+        <span class="visible-xs">Extra small</span>
+        <span class="hidden-xs">&#10004; Hidden on x-small</span>
+      </div>
+      <div class="col-xs-6 col-sm-3">
         <span class="visible-sm">Small</span>
         <span class="hidden-sm">&#10004; Hidden on small</span>
-      </li>
-      <li>
+      </div>
+      <div class="clearfix visible-xs"></div>
+      <div class="col-xs-6 col-sm-3">
         <span class="visible-md">Medium</span>
         <span class="hidden-md">&#10004; Hidden on medium</span>
-      </li>
-      <li>
+      </div>
+      <div class="col-xs-6 col-sm-3">
         <span class="visible-lg">Large</span>
         <span class="hidden-lg">&#10004; Hidden on large</span>
-      </li>
-    </ul>
+      </div>
+    </div>
 
   </div>

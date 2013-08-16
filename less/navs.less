@@ -19,7 +19,7 @@
     > a {
       position: relative;
       display: block;
-      padding: 10px 15px;
+      padding: @nav-link-padding;
       &:hover,
       &:focus {
         text-decoration: none;
@@ -56,52 +56,18 @@
     }
   }
 
-  // Redeclare pull classes because of specificity
-  // Todo: consider making these utilities !important to avoid this bullshit
-  > .pull-right {
-    float: right;
-  }
-
   // Dividers (basically an hr) within the dropdown
   .nav-divider {
     .nav-divider();
   }
-}
 
-
-
-// Nav variations
-// --------------------------------------------------
-
-// Justified nav links
-// -------------------------
-
-.nav-justified {
-  width: 100%;
-  > li {
-    float: none;
-    display: table-cell;
-    width: 1%;
-    > a {
-      text-align: center;
-    }
+  // Prevent IE8 from misplacing imgs
+  // See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
+  > li > a > img {
+    max-width: none;
   }
 }
 
-// Move borders to anchors instead of bottom of list
-.nav-tabs-justified {
-  border-bottom: 0;
-  > li > a {
-    border-bottom: 1px solid @nav-tabs-justified-link-border-color;
-
-    // Override margin from .nav-tabs
-    margin-right: 0;
-  }
-  > .active > a {
-    border-bottom-color: @nav-tabs-justified-active-link-border-color;
-  }
-
-}
 
 // Tabs
 // -------------------------
@@ -121,7 +87,7 @@
       border: 1px solid transparent;
       border-radius: @border-radius-base @border-radius-base 0 0;
       &:hover {
-        border-color: @nav-tabs-link-hover-border-color;
+        border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
       }
     }
 
@@ -181,6 +147,39 @@
       margin-top: 2px;
       margin-left: 0; // no need for this gap between nav items
     }
+  }
+}
+
+
+// Nav variations
+// --------------------------------------------------
+
+// Justified nav links
+// -------------------------
+
+.nav-justified {
+  width: 100%;
+  > li {
+    float: none;
+    display: table-cell;
+    width: 1%;
+    > a {
+      text-align: center;
+    }
+  }
+}
+
+// Move borders to anchors instead of bottom of list
+.nav-tabs-justified {
+  border-bottom: 0;
+  > li > a {
+    border-bottom: 1px solid @nav-tabs-justified-link-border-color;
+
+    // Override margin from .nav-tabs
+    margin-right: 0;
+  }
+  > .active > a {
+    border-bottom-color: @nav-tabs-justified-active-link-border-color;
   }
 }
 
