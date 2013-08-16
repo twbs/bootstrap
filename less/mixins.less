@@ -294,10 +294,10 @@
 
 
 
-// RETINA IMAGE SUPPORT
-// --------------------------------------------------
-
+// Retina images
+//
 // Short retina mixin for setting background-image and -size
+
 .img-retina(@file-1x; @file-2x; @width-1x; @height-1x) {
   background-image: url("@{file-1x}");
 
@@ -311,6 +311,17 @@
     background-image: url("@{file-2x}");
     background-size: @width-1x @height-1x;
   }
+}
+
+
+// Responsive image
+//
+// Keep images from scaling beyond the width of their parents.
+
+.img-responsive(@display: block;) {
+  display: @display;
+  max-width: 100%; // Part 1: Set a maximum relative to the parent
+  height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
 }
 
 
@@ -331,7 +342,7 @@
 // -------------------------
 .panel-variant(@border; @heading-text-color; @heading-bg-color; @heading-border) {
   border-color: @border;
-  .panel-heading {
+  & > .panel-heading {
     color: @heading-text-color;
     background-color: @heading-bg-color;
     border-color: @heading-border;
@@ -339,7 +350,7 @@
       border-top-color: @border;
     }
   }
-  .panel-footer {
+  & > .panel-footer {
     + .panel-collapse .panel-body {
       border-bottom-color: @border;
     }
@@ -360,6 +371,35 @@
   }
 }
 
+// Tables
+// -------------------------
+.table-row-variant(@state; @background; @border) {
+  // Exact selectors below required to override `.table-striped` and prevent
+  // inheritance to nested tables.
+  .table > thead > tr,
+  .table > tbody > tr,
+  .table > tfoot > tr {
+    > td.@{state},
+    > th.@{state},
+    &.@{state} > td,
+    &.@{state} > th {
+      background-color: @background;
+      border-color: @border;
+    }
+  }
+
+  // Hover states for `.table-hover`
+  // Note: this is not available for cells or rows within `thead` or `tfoot`.
+  .table-hover > tbody > tr {
+    > td.@{state}:hover,
+    > th.@{state}:hover,
+    &.@{state}:hover > td {
+      background-color: darken(@background, 5%);
+      border-color: darken(@border, 5%);
+    }
+  }
+}
+
 // Button variants
 // -------------------------
 // Easily pump out default styles, as well as :hover, :focus, :active,
@@ -372,12 +412,17 @@
   &:hover,
   &:focus,
   &:active,
-  &.active {
+  &.active,
+  .open .dropdown-toggle& {
     color: @color;
     background-color: darken(@background, 8%);
         border-color: darken(@border, 12%);
   }
-
+  &:active,
+  &.active,
+  .open .dropdown-toggle& {
+    background-image: none;
+  }
   &.disabled,
   &[disabled],
   fieldset[disabled] & {
@@ -484,38 +529,21 @@
 
 // Creates a wrapper for a series of columns
 .make-row(@gutter: @grid-gutter-width) {
-  // Then clear the floated columns
+  margin-left:  (@gutter / -2);
+  margin-right: (@gutter / -2);
   .clearfix();
-
-  .container & {
-    @media (min-width: @screen-small) {
-      margin-left:  (@gutter / -2);
-      margin-right: (@gutter / -2);
-    }
-  }
-
-  // Negative margin nested rows out to align the content of columns
-  .row {
-    margin-left:  (@gutter / -2);
-    margin-right: (@gutter / -2);
-  }
 }
 
 // Generate the extra small columns
 .make-xs-column(@columns; @gutter: @grid-gutter-width) {
   position: relative;
   float: left;
+  width: percentage((@columns / @grid-columns));
   // Prevent columns from collapsing when empty
   min-height: 1px;
   // Inner gutter via padding
   padding-left:  (@gutter / 2);
   padding-right: (@gutter / 2);
-  @max-width: (@screen-small - 1);
-
-  // Calculate width based on number of columns available
-  @media (max-width: @max-width) {
-    width: percentage((@columns / @grid-columns));
-  }
 }
 
 // Generate the small columns
@@ -681,12 +709,12 @@
   font-size: @font-size;
   line-height: @line-height;
   border-radius: @border-radius;
-  
+
   select& {
     height: @input-height;
     line-height: @input-height;
   }
-  
+
   textarea& {
     height: auto;
   }

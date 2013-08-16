@@ -18,7 +18,7 @@ base_url: "../"
 
     <h3>Basics</h3>
     <div class="row">
-      <div class="col-lg-4">
+      <div class="col-xs-6 col-sm-4">
         <h4>Layout</h4>
         <div class="checkbox">
           <label>
@@ -45,7 +45,7 @@ base_url: "../"
           </label>
         </div>
       </div>
-      <div class="col-lg-4">
+      <div class="col-xs-6 col-sm-4">
         <h4>Global CSS</h4>
         <div class="checkbox">
           <label>
@@ -78,7 +78,7 @@ base_url: "../"
           </label>
         </div>
       </div>
-      <div class="col-lg-4">
+      <div class="col-xs-6 col-sm-4">
         <h4>Utility classes</h4>
         <div class="checkbox">
           <label>
@@ -103,14 +103,7 @@ base_url: "../"
 
     <h3>Components</h3>
     <div class="row">
-      <div class="col-lg-4">
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" checked value="input-groups.less">
-            Input groups
-          </label>
-        </div>
-
+      <div class="col-xs-6 col-sm-4">
         <h4>Navigation</h4>
         <div class="checkbox">
           <label>
@@ -143,7 +136,7 @@ base_url: "../"
           </label>
         </div>
       </div>
-      <div class="col-lg-4">
+      <div class="col-xs-6 col-sm-4">
         <h4>Content blocks</h4>
         <div class="checkbox">
           <label>
@@ -164,7 +157,7 @@ base_url: "../"
           </label>
         </div>
       </div>
-      <div class="col-lg-4">
+      <div class="col-xs-6 col-sm-4">
         <h4>Behavioral (requires JS)</h4>
         <div class="checkbox">
           <label>
@@ -206,7 +199,7 @@ base_url: "../"
     </div>
 
     <div class="row">
-      <div class="col-lg-4">
+      <div class="col-xs-6 col-sm-4">
         <h4>Media</h4>
         <div class="checkbox">
           <label>
@@ -227,8 +220,14 @@ base_url: "../"
           </label>
         </div>
       </div>
-      <div class="col-lg-4">
+      <div class="col-xs-6 col-sm-4">
         <h4>Miscellaneous</h4>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="input-groups.less">
+            Input groups
+          </label>
+        </div>
         <div class="checkbox">
           <label>
             <input type="checkbox" checked value="button-groups.less">
@@ -788,6 +787,8 @@ base_url: "../"
     <div class="row">
       <div class="col-lg-6">
         <h4>Common values</h4>
+        <label>@nav-link-padding</label>
+        <input type="text" class="form-control" placeholder="10px 15px">
         <label>@nav-link-hover-bg</label>
         <input type="text" class="form-control" placeholder="@gray-lighter">
         <label>@nav-disabled-link-color</label>
@@ -1271,12 +1272,12 @@ base_url: "../"
       </div>
       <div class="col-lg-4">
         <label>@pagination-active-bg</label>
-        <input type="text" class="form-control" placeholder="#f5f5f5">
+        <input type="text" class="form-control" placeholder="@brand-primary">
         <p class="help-block">Active background color</p>
       </div>
       <div class="col-lg-4">
         <label>@pagination-active-color</label>
-        <input type="text" class="form-control" placeholder="@gray-light">
+        <input type="text" class="form-control" placeholder="#fff">
         <p class="help-block">Active text color</p>
       </div>
       <div class="col-lg-4">
@@ -1302,14 +1303,20 @@ base_url: "../"
     <h2 id="variables-labels">Labels</h2>
     <div class="row">
       <div class="col-lg-6">
+        <label>@label-default-bg</label>
+        <input type="text" class="form-control" placeholder="@gray-light">
+        <p class="help-block">Default label background color</p>
+        <label>@label-primary-bg</label>
+        <input type="text" class="form-control" placeholder="@brand-primary">
+        <p class="help-block">Primary label background color</p>
         <label>@label-success-bg</label>
         <input type="text" class="form-control" placeholder="@brand-success">
         <p class="help-block">Success label background color</p>
+      </div>
+      <div class="col-lg-6">
         <label>@label-info-bg</label>
         <input type="text" class="form-control" placeholder="@brand-info">
         <p class="help-block">Info label background color</p>
-      </div>
-      <div class="col-lg-6">
         <label>@label-warning-bg</label>
         <input type="text" class="form-control" placeholder="@brand-warning">
         <p class="help-block">Warning label background color</p>

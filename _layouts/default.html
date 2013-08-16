@@ -26,7 +26,7 @@
     <div class="container bs-docs-container">
       <div class="row">
         <div class="col-md-3">
-          <aside class="bs-sidebar hidden-print" role="complementary">
+          <div class="bs-sidebar hidden-print" role="complementary">
             <ul class="nav bs-sidenav">
               {% if page.slug == "getting-started" %}
                 {% include nav-getting-started.html %}
@@ -40,11 +40,11 @@
                 {% include nav-customize.html %}
               {% endif %}
             </ul>
-          </aside>
+          </div>
         </div>
-        <main class="col-md-9" role="main">
+        <div class="col-md-9" role="main">
           {{ content }}
-        </main>
+        </div>
       </div>
 
     </div>

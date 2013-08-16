@@ -50,7 +50,8 @@
 
     // tooltip demo
     $('.tooltip-demo').tooltip({
-      selector: "[data-toggle=tooltip]"
+      selector: "[data-toggle=tooltip]",
+      container: "body"
     })
 
     $('.tooltip-test').tooltip()
