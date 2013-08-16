@@ -2978,19 +2978,11 @@ button.close {
   background-color: transparent;
 }
 
-.nav.open > a,
-.nav.open > a:hover,
-.nav.open > a:focus {
-  color: #ffffff;
-  background-color: #428bca;
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+  background-color: #eeeeee;
   border-color: #428bca;
-}
-
-.nav.open > a .caret,
-.nav.open > a:hover .caret,
-.nav.open > a:focus .caret {
-  border-top-color: #ffffff;
-  border-bottom-color: #ffffff;
 }
 
 .nav .nav-divider {
