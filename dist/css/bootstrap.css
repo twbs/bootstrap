@@ -2277,7 +2277,7 @@ fieldset[disabled] .btn-link:focus {
 }
 
 .btn-xs {
-  padding: 3px 5px;
+  padding: 1px 5px;
 }
 
 .btn-block {
@@ -2978,19 +2978,11 @@ button.close {
   background-color: transparent;
 }
 
-.nav.open > a,
-.nav.open > a:hover,
-.nav.open > a:focus {
-  color: #ffffff;
-  background-color: #428bca;
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+  background-color: #eeeeee;
   border-color: #428bca;
-}
-
-.nav.open > a .caret,
-.nav.open > a:hover .caret,
-.nav.open > a:focus .caret {
-  border-top-color: #ffffff;
-  border-bottom-color: #ffffff;
 }
 
 .nav .nav-divider {
@@ -3274,9 +3266,12 @@ button.close {
   }
 }
 
+.navbar-static-top {
+  border-width: 0 0 1px;
+}
+
 @media (min-width: 768px) {
   .navbar-static-top {
-    border-width: 0 0 1px;
     border-radius: 0;
   }
 }
@@ -3838,7 +3833,7 @@ button.close {
 
 .btn-group-xs > .btn {
   padding: 5px 10px;
-  padding: 3px 5px;
+  padding: 1px 5px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
