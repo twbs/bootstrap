@@ -2688,20 +2688,20 @@ a.list-group-item:focus {
   padding: 15px;
 }
 
-.panel .list-group {
+.panel > .list-group {
   margin-bottom: 0;
 }
 
-.panel .list-group .list-group-item {
+.panel > .list-group .list-group-item {
   border-width: 1px 0;
 }
 
-.panel .list-group .list-group-item:first-child {
+.panel > .list-group .list-group-item:first-child {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
 
-.panel .list-group .list-group-item:last-child {
+.panel > .list-group .list-group-item:last-child {
   border-bottom: 0;
 }
 
