@@ -41,14 +41,6 @@ body {
   border-color: #fff;
 }
 
-/* Temp CSS until RC2 */
-.bs-customize-placeholder {
-  margin-bottom: -100px;
-  padding: 80px 30px;
-  text-align: center;
-  background-color: #f5f5f5;
-}
-
 
 /* Top nav and header
 -------------------------------------------------- */
@@ -56,6 +48,7 @@ body {
 .bs-docs-nav {
   background-color: #563d7c;
   border-color: #463265;
+  box-shadow: 0 1px 0 rgba(255,255,255,.1);
 }
 .bs-docs-nav .navbar-collapse {
   border-color: #463265;
@@ -87,6 +80,7 @@ body {
   padding: 15px 20px;
   color: #777;
   background-color: #fafafa;
+  border-top: 1px solid #fff;
   border-bottom: 1px solid #e5e5e5;
 }
 .bs-old-docs strong {
@@ -95,7 +89,6 @@ body {
 .bs-docs-home .bs-old-docs {
   padding-top: 0;
   padding-bottom: 0;
-  text-align: center;
   color: inherit;
   background-color: transparent;
   border-color: transparent;
@@ -105,13 +98,14 @@ body {
 }
 
 /* Homepage */
-.bs-docs-home {
+.bs-docs-home,
+.bs-header {
   color: #cdbfe3;
   background-color: #563d7c;
   background-image: url("../img/map.png");
 }
 .bs-docs-home .navbar {
-  background-color: transparent;
+  /*background-color: transparent;*/
 }
 
 
@@ -140,14 +134,12 @@ body {
 /* Textual links */
 .bs-social {
   margin-top: 30px;
-  text-align: center;
 }
 .bs-masthead-links {
   margin-top: 20px;
   margin-bottom: 20px;
   padding-left: 0;
   list-style: none;
-  text-align: center;
 }
 .bs-masthead-links li {
   display: inline;
@@ -206,12 +198,10 @@ body {
 .bs-header {
   padding: 30px 30px 40px;
   font-size: 16px;
-  color: #5a5a5a;
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
 }
 .bs-header h1 {
-  color: #563d7c;
+  color: #fff;
 }
 .bs-header p {
   font-weight: 300;
@@ -235,9 +225,9 @@ body {
   font-size: 13px !important;
   line-height: 16px !important;
   text-align: left;
-  background: none !important;
+  background: #463265 !important;
   border: 0 !important;
-  border-top: 1px solid #e5e5e5 !important;
+  border-top: 1px solid #463265 !important;
 }
 .carbonad-img {
   margin: 0 !important;
@@ -255,7 +245,12 @@ body {
   padding-top: 0 !important;
 }
 .carbonad-tag {
+  color: #cdbfe3 !important;
   text-align: left !important;
+}
+.carbonad-text a,
+.carbonad-tag a {
+  color: #fff !important;
 }
 .carbonad #azcarbon > img {
   display: none; /* hide what I assume are tracking images */
@@ -500,6 +495,10 @@ body {
   padding: 0;
   overflow: hidden; /* cut the drop shadows off */
 }
+.bs-navbar-top-example .navbar-header,
+.bs-navbar-bottom-example .navbar-header {
+  margin-left: 0;
+}
 .bs-navbar-top-example .navbar-fixed-top,
 .bs-navbar-bottom-example .navbar-fixed-bottom {
   position: relative;
@@ -705,7 +704,6 @@ body {
   padding-top: 40px;
   padding-bottom: 30px;
   margin-top: 100px;
-  text-align: center;
   border-top: 1px solid #e5e5e5;
 }
 .bs-footer p {
@@ -853,8 +851,9 @@ body {
 
   .carbonad {
     margin: 0 !important;
-    border: 1px solid #e5e5e5 !important;
+    border: 1px solid #463265 !important;
     border-radius: 4px;
+    box-shadow: 0 1px 0 rgba(255,255,255,.1);
   }
 
   /* Show the docs nav */
@@ -864,6 +863,7 @@ body {
 
   /* Tweak display of docs jumbotrons */
   .bs-masthead {
+    text-align: left;
     padding-top:    140px;
     padding-bottom: 140px;
   }
@@ -871,8 +871,7 @@ body {
     font-size: 100px;
   }
   .bs-masthead .lead {
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-right: 25%;
     font-size: 30px;
   }
 

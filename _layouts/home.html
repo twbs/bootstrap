@@ -14,13 +14,11 @@
     <!-- Page content of course! -->
     {{ content }}
 
-    <!-- Callout for the old docs link -->
-    {% include old-bs-docs.html %}
-
     <footer class="container" role="contentinfo">
       {% include social-buttons.html %}
 
       <ul class="bs-masthead-links">
+        <li><a href="{{ page.base_url }}2.3.2/">Bootstrap 2.3.2 docs</a></li>
         <li>
           <a href="{{ site.repo }}" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'GitHub project']);">GitHub project</a>
         </li>
