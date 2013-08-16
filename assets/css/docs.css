@@ -344,6 +344,17 @@ body {
 }
 
 
+/* Examples grid
+-------------------------------------------------- */
+
+.bs-examples h4 {
+  margin-bottom: 5px;
+}
+.bs-examples p {
+  margin-bottom: 20px;
+}
+
+
 
 /* Special grid styles
 -------------------------------------------------- */
