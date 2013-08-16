@@ -187,10 +187,7 @@
 // the nav the full height of the horizontal nav (above 768px).
 
 .navbar-nav {
-  padding-top:    (@navbar-padding-vertical / 2);
-  padding-bottom: (@navbar-padding-vertical / 2);
-  margin-left: -@navbar-padding-horizontal;
-  margin-right: -@navbar-padding-horizontal;
+  margin: (@navbar-padding-vertical / 2) -@navbar-padding-horizontal;
 
   > li > a {
     padding-top:    10px;
@@ -267,8 +264,6 @@
   @media (min-width: @grid-float-breakpoint) {
     float: left;
     margin: 0;
-    padding-top: 0;
-    padding-bottom: 0;
 
     > li {
       float: left;
