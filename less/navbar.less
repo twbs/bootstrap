@@ -51,19 +51,18 @@
 // content for the user's viewport.
 
 .navbar-collapse {
+  max-height: 340px;
+  overflow-x: visible;
   padding-right: @navbar-padding-horizontal;
   padding-left:  @navbar-padding-horizontal;
   border-top: 1px solid darken(@navbar-bg, 7%);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
-  // Clear floated elements and prevent collapsing of padding
   .clearfix();
-
-  // This is not automatically added to the `.navbar-fixed-top` because it causes
-  // z-index bugs in iOS7 (possibly earlier).
-  max-height: 340px;
-  overflow-x: visible;
-  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+
+  &.in {
+    overflow-y: auto;
+  }
 
   @media (min-width: @grid-float-breakpoint) {
     width: auto;

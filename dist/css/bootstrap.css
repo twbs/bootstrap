@@ -3231,7 +3231,6 @@ button.close {
   padding-right: 15px;
   padding-left: 15px;
   overflow-x: visible;
-  overflow-y: auto;
   border-top: 1px solid #e6e6e6;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   -webkit-overflow-scrolling: touch;
@@ -3255,6 +3254,10 @@ button.close {
 
 .navbar-collapse:after {
   clear: both;
+}
+
+.navbar-collapse.in {
+  overflow-y: auto;
 }
 
 @media (min-width: 768px) {
