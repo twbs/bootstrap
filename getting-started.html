@@ -19,7 +19,7 @@ base_url: "../"
     <p class="lead">The fastest way to get started is to get the compiled and minified versions of our CSS and JavaScript. No documentation or original source files are included.</p>
     <p><a class="btn btn-lg btn-primary" href="{{ site.download_dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a></p>
 
-    <h3 id="download-options">More download options</h3>
+    <h3 id="download-additional">Additional downloads</h3>
     <div class="bs-docs-dl-options">
       <h4>
         <a href="{{ site.download }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download latest source code</a>
@@ -36,7 +36,7 @@ base_url: "../"
       {% highlight bash %}$ bower install bootstrap{% endhighlight %}
     </div>
 
-    <h3 id="download-cdn">Use the Bootstrap CDN</h3>
+    <h3 id="download-cdn">Bootstrap CDN</h3>
     <p>The folks over at <a href="https://www.netdna.com/">NetDNA</a> have graciously provided CDN support for Bootstrap's CSS and JavaScript. To use, swap your local instances for the <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links listed below.</p>
 {% highlight html linenos %}
 <!-- Latest compiled and minified CSS -->
@@ -202,10 +202,17 @@ bootstrap/
           <img src="../examples/screenshots/sticky-footer-navbar.jpg" alt="">
         </a>
         <h4>Sticky footer with navbar</h4>
-        <p>Attach a footer to the bottom of the viewport along with a fixed navbar at the top.</p>
+        <p>Attach a footer to the bottom of the viewport with a fixed navbar at the top.</p>
       </div>
       <div class="clearfix visible-xs"></div>
 
+      <div class="col-xs-6 col-md-4">
+        <a class="thumbnail" href="../examples/justified-nav/">
+          <img src="../examples/screenshots/justified-nav.jpg" alt="">
+        </a>
+        <h4>Justified nav</h4>
+        <p>Expand on the default navbar and more to create justified navigation links.</p>
+      </div>
       <div class="col-xs-6 col-md-4">
         <a class="thumbnail" href="../examples/offcanvas/">
           <img src="../examples/screenshots/offcanvas.jpg" alt="">
@@ -213,6 +220,8 @@ bootstrap/
         <h4>Offcanvas</h4>
         <p>Build a toggleable off-canvas navigation menu for use with Bootstrap.</p>
       </div>
+      <div class="clearfix visible-xs"></div>
+
       <div class="col-xs-6 col-md-4">
         <a class="thumbnail" href="../examples/carousel/">
           <img src="../examples/screenshots/carousel.jpg" alt="">
@@ -351,6 +360,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
 
     <h3>Modals and mobile devices</h3>
     <p>Support for <code>overflow: hidden</code> on the <code>&lt;body&gt;</code> element is quite limited in iOS and Android. To that end, when you scroll past the top or bottom of a modal in either of those devices' browsers, the <code>&lt;body&gt;</code> content will begin to scroll.</p>
+    <p>Also, note that if you're using inputs in your modal – iOS has a rendering bug which doesn't update the position of fixed elements when the virtual keyboard is triggered. There are a few work arounds for this including transforming your elements to position absolute or invoking a timer on focus to try to correct the positioning manually. This is not handled by Bootstrap, so it is up to you to decide which solution is best for your application.</p>
 
     <h3>Browser zooming</h3>
     <p>Page zooming inevitably presents rendering artifacts in some components, both in Bootstrap and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.</p>

@@ -42,17 +42,12 @@
   }
 
   // Open dropdowns
-  &.open > a {
+  .open > a {
     &,
     &:hover,
     &:focus {
-      color: @nav-open-link-hover-color;
-      background-color: @link-color;
+      background-color: @nav-link-hover-bg;
       border-color: @link-color;
-      .caret {
-        border-top-color: @nav-open-caret-border-color;
-        border-bottom-color: @nav-open-caret-border-color;
-      }
     }
   }
 
@@ -159,12 +154,18 @@
 
 .nav-justified {
   width: 100%;
+
   > li {
     float: none;
-    display: table-cell;
-    width: 1%;
-    > a {
+     > a {
       text-align: center;
+    }
+  }
+
+  @media (min-width: @screen-small) {
+    > li {
+      display: table-cell;
+      width: 1%;
     }
   }
 }

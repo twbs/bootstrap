@@ -733,6 +733,8 @@ pre code {
 }
 
 .container {
+  padding-right: 15px;
+  padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -757,36 +759,29 @@ pre code {
   clear: both;
 }
 
-.row:before,
-.row:after {
-  display: table;
-  content: " ";
-}
-
-.row:after {
-  clear: both;
-}
-
-.row:before,
-.row:after {
-  display: table;
-  content: " ";
-}
-
-.row:after {
-  clear: both;
-}
-
-@media (min-width: 768px) {
-  .container .row {
-    margin-right: -15px;
-    margin-left: -15px;
-  }
-}
-
-.row .row {
+.row {
   margin-right: -15px;
   margin-left: -15px;
+}
+
+.row:before,
+.row:after {
+  display: table;
+  content: " ";
+}
+
+.row:after {
+  clear: both;
+}
+
+.row:before,
+.row:after {
+  display: table;
+  content: " ";
+}
+
+.row:after {
+  clear: both;
 }
 
 .col-xs-1,
@@ -907,7 +902,7 @@ pre code {
 
 @media (min-width: 768px) {
   .container {
-    max-width: 720px;
+    max-width: 750px;
   }
   .col-sm-1,
   .col-sm-2,
@@ -1061,7 +1056,7 @@ pre code {
 
 @media (min-width: 992px) {
   .container {
-    max-width: 940px;
+    max-width: 970px;
   }
   .col-md-1,
   .col-md-2,
@@ -1224,7 +1219,7 @@ pre code {
 
 @media (min-width: 1200px) {
   .container {
-    max-width: 1140px;
+    max-width: 1170px;
   }
   .col-lg-1,
   .col-lg-2,
@@ -1413,6 +1408,7 @@ th {
 
 .table thead > tr > th {
   vertical-align: bottom;
+  border-bottom: 2px solid #dddddd;
 }
 
 .table caption + thead tr:first-child th,
@@ -1452,6 +1448,11 @@ th {
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > td {
   border: 1px solid #dddddd;
+}
+
+.table-bordered > thead > tr > th,
+.table-bordered > thead > tr > td {
+  border-bottom-width: 2px;
 }
 
 .table-striped > tbody > tr:nth-child(odd) > td,
@@ -1888,36 +1889,29 @@ textarea.input-lg {
   padding-top: 6px;
 }
 
-.form-horizontal .form-group:before,
-.form-horizontal .form-group:after {
-  display: table;
-  content: " ";
-}
-
-.form-horizontal .form-group:after {
-  clear: both;
-}
-
-.form-horizontal .form-group:before,
-.form-horizontal .form-group:after {
-  display: table;
-  content: " ";
-}
-
-.form-horizontal .form-group:after {
-  clear: both;
-}
-
-@media (min-width: 768px) {
-  .container .form-horizontal .form-group {
-    margin-right: -15px;
-    margin-left: -15px;
-  }
-}
-
-.form-horizontal .form-group .row {
+.form-horizontal .form-group {
   margin-right: -15px;
   margin-left: -15px;
+}
+
+.form-horizontal .form-group:before,
+.form-horizontal .form-group:after {
+  display: table;
+  content: " ";
+}
+
+.form-horizontal .form-group:after {
+  clear: both;
+}
+
+.form-horizontal .form-group:before,
+.form-horizontal .form-group:after {
+  display: table;
+  content: " ";
+}
+
+.form-horizontal .form-group:after {
+  clear: both;
 }
 
 @media (min-width: 768px) {
@@ -2277,7 +2271,7 @@ fieldset[disabled] .btn-link:focus {
 }
 
 .btn-xs {
-  padding: 3px 5px;
+  padding: 1px 5px;
 }
 
 .btn-block {
@@ -2485,6 +2479,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   vertical-align: middle;
   border-top: 4px solid #000000;
   border-right: 4px solid transparent;
+  border-bottom: 0 dotted;
   border-left: 4px solid transparent;
   content: "";
 }
@@ -2603,7 +2598,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .dropup .caret,
 .navbar-fixed-bottom .dropdown .caret {
-  border-top: 0;
+  border-top: 0 dotted;
   border-bottom: 4px solid #000000;
   content: "";
 }
@@ -2738,7 +2733,7 @@ a.list-group-item:focus {
 .panel-title {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 17.5px;
+  font-size: 16px;
 }
 
 .panel-title > a {
@@ -2978,19 +2973,11 @@ button.close {
   background-color: transparent;
 }
 
-.nav.open > a,
-.nav.open > a:hover,
-.nav.open > a:focus {
-  color: #ffffff;
-  background-color: #428bca;
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+  background-color: #eeeeee;
   border-color: #428bca;
-}
-
-.nav.open > a .caret,
-.nav.open > a:hover .caret,
-.nav.open > a:focus .caret {
-  border-top-color: #ffffff;
-  border-bottom-color: #ffffff;
 }
 
 .nav .nav-divider {
@@ -3040,13 +3027,18 @@ button.close {
 }
 
 .nav-tabs.nav-justified > li {
-  display: table-cell;
   float: none;
-  width: 1%;
 }
 
 .nav-tabs.nav-justified > li > a {
   text-align: center;
+}
+
+@media (min-width: 768px) {
+  .nav-tabs.nav-justified > li {
+    display: table-cell;
+    width: 1%;
+  }
 }
 
 .nav-tabs.nav-justified > li > a {
@@ -3091,13 +3083,18 @@ button.close {
 }
 
 .nav-justified > li {
-  display: table-cell;
   float: none;
-  width: 1%;
 }
 
 .nav-justified > li > a {
   text-align: center;
+}
+
+@media (min-width: 768px) {
+  .nav-justified > li {
+    display: table-cell;
+    width: 1%;
+  }
 }
 
 .nav-tabs-justified {
@@ -3229,7 +3226,6 @@ button.close {
   padding-right: 15px;
   padding-left: 15px;
   overflow-x: visible;
-  overflow-y: auto;
   border-top: 1px solid #e6e6e6;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   -webkit-overflow-scrolling: touch;
@@ -3255,6 +3251,10 @@ button.close {
   clear: both;
 }
 
+.navbar-collapse.in {
+  overflow-y: auto;
+}
+
 @media (min-width: 768px) {
   .navbar-collapse {
     width: auto;
@@ -3274,9 +3274,12 @@ button.close {
   }
 }
 
+.navbar-static-top {
+  border-width: 0 0 1px;
+}
+
 @media (min-width: 768px) {
   .navbar-static-top {
-    border-width: 0 0 1px;
     border-radius: 0;
   }
 }
@@ -3364,10 +3367,7 @@ button.close {
 }
 
 .navbar-nav {
-  padding-top: 7.5px;
-  padding-bottom: 7.5px;
-  margin-right: -15px;
-  margin-left: -15px;
+  margin: 7.5px -15px;
 }
 
 .navbar-nav > li > a {
@@ -3438,8 +3438,6 @@ button.close {
 @media (min-width: 768px) {
   .navbar-nav {
     float: left;
-    padding-top: 0;
-    padding-bottom: 0;
     margin: 0;
   }
   .navbar-nav > li {
@@ -3842,7 +3840,7 @@ button.close {
 
 .btn-group-xs > .btn {
   padding: 5px 10px;
-  padding: 3px 5px;
+  padding: 1px 5px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
@@ -4145,7 +4143,7 @@ button.close {
 .pager li > a:hover,
 .pager li > a:focus {
   text-decoration: none;
-  background-color: #428bca;
+  background-color: #eeeeee;
 }
 
 .pager .next > a,

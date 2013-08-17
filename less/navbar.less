@@ -51,19 +51,18 @@
 // content for the user's viewport.
 
 .navbar-collapse {
+  max-height: 340px;
+  overflow-x: visible;
   padding-right: @navbar-padding-horizontal;
   padding-left:  @navbar-padding-horizontal;
   border-top: 1px solid darken(@navbar-bg, 7%);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
-  // Clear floated elements and prevent collapsing of padding
   .clearfix();
-
-  // This is not automatically added to the `.navbar-fixed-top` because it causes
-  // z-index bugs in iOS7 (possibly earlier).
-  max-height: 340px;
-  overflow-x: visible;
-  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+
+  &.in {
+    overflow-y: auto;
+  }
 
   @media (min-width: @grid-float-breakpoint) {
     width: auto;
@@ -94,8 +93,8 @@
 
 // Static top (unfixed, but 100% wide) navbar
 .navbar-static-top {
+  border-width: 0 0 1px;
   @media (min-width: @grid-float-breakpoint) {
-    border-width: 0 0 1px;
     border-radius: 0;
   }
 }
@@ -191,10 +190,7 @@
 // the nav the full height of the horizontal nav (above 768px).
 
 .navbar-nav {
-  padding-top:    (@navbar-padding-vertical / 2);
-  padding-bottom: (@navbar-padding-vertical / 2);
-  margin-left: -@navbar-padding-horizontal;
-  margin-right: -@navbar-padding-horizontal;
+  margin: (@navbar-padding-vertical / 2) -@navbar-padding-horizontal;
 
   > li > a {
     padding-top:    10px;
@@ -271,8 +267,6 @@
   @media (min-width: @grid-float-breakpoint) {
     float: left;
     margin: 0;
-    padding-top: 0;
-    padding-bottom: 0;
 
     > li {
       float: left;
