@@ -196,7 +196,7 @@ body {
 
 /* Page headers */
 .bs-header {
-  padding: 30px 30px 40px;
+  padding: 30px 15px 40px; /* side padding builds on .container 15px, so 30px */
   font-size: 16px;
   text-align: center;
 }
@@ -227,7 +227,7 @@ body {
   text-align: left;
   background: #463265 !important;
   border: 0 !important;
-  border-top: 1px solid #463265 !important;
+  box-shadow: inset 0 3px 5px rgba(0,0,0,.075);
 }
 .carbonad-img {
   margin: 0 !important;
@@ -859,9 +859,8 @@ body {
 
   .carbonad {
     margin: 0 !important;
-    border: 1px solid #463265 !important;
     border-radius: 4px;
-    box-shadow: 0 1px 0 rgba(255,255,255,.1);
+    box-shadow: inset 0 3px 5px rgba(0,0,0,.075), 0 1px 0 rgba(255,255,255,.1);
   }
 
   /* Show the docs nav */
