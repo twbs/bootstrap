@@ -145,7 +145,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-recess');
   grunt.loadNpmTasks('browserstack-runner');
 
-
   // Docs HTML validation task
   grunt.registerTask('validate-docs', ['jekyll', 'validation']);
 
