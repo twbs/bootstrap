@@ -1408,6 +1408,7 @@ th {
 
 .table thead > tr > th {
   vertical-align: bottom;
+  border-bottom: 2px solid #dddddd;
 }
 
 .table caption + thead tr:first-child th,
@@ -1447,6 +1448,11 @@ th {
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > td {
   border: 1px solid #dddddd;
+}
+
+.table-bordered > thead > tr > th,
+.table-bordered > thead > tr > td {
+  border-bottom-width: 2px;
 }
 
 .table-striped > tbody > tr:nth-child(odd) > td,

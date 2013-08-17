@@ -35,6 +35,7 @@ th {
   // Bottom align for column headings
   thead > tr > th {
     vertical-align: bottom;
+    border-bottom: 2px solid @table-border-color;
   }
   // Remove top border from thead by default
   caption + thead,
@@ -89,6 +90,14 @@ th {
       > th,
       > td {
         border: 1px solid @table-border-color;
+      }
+    }
+  }
+  > thead {
+    > tr {
+      > th,
+      > td {
+        border-bottom-width: 2px;
       }
     }
   }
