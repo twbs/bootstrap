@@ -1,0 +1,9 @@
+{
+  "name":        "bootstrap",
+  "repo":        "twbs/bootstrap",
+  "description": "Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.",
+  "version":     "3.0.0",
+  "keywords":    ["bootstrap", "css"],
+  "scripts":     ["dist/js/bootstrap.js"],
+  "styles":      ["dist/css/bootstrap.css"]
+}
