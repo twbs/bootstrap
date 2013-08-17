@@ -260,7 +260,7 @@ bootstrap/
     <p>To disable responsive features, follow these steps. See it in action in the modified template below.</p>
     <ol>
       <li>Remove (or just don't add) the viewport <code>&lt;meta&gt;</code> mentioned in <a href="../css/#overview-mobile">the CSS docs</a></li>
-      <li>Force a single <code>max-width</code> on the <code>.container</code> (e.g., <code>.container { max-width: 940px; }</code>). Be sure that this comes after the default Bootstrap CSS; otherwise, you'll need <code>!important</code>.</li>
+      <li>Remove the <code>max-width</code> on the <code>.container</code> for all grid tiers with <code>.container { max-width: none !important; }</code> and set a regular width like <code>width: 970px;</code>. Be sure that this comes after the default Bootstrap CSS. You can optionally avoid the <code>!important</code> with media queries or some selector-fu.</li>
       <li>For grid layouts, make use of <code>.col-xs-*</code> classes in addition to or in place of the medium/large ones. Don't worry, the extra-small device grid scales up to all resolutions, so you're set there.</li>
     </ol>
     <p>You'll still need respond.js for IE8 (since our media queries are still there and need to be picked up). This just disables the "mobile site" of Bootstrap.</p>
@@ -280,7 +280,10 @@ bootstrap/
 
     <!-- 2. Add our custom CSS to set the container's fixed width -->
     <style>
-      .container { max-width: 940px; }
+      .container {
+        max-width: none !important;
+        width: 970px;
+      }
     </style>
   </head>
   <body>
