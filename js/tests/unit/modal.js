@@ -174,4 +174,23 @@ $(function () {
         })
         .modal("show")
     })
+
+    test("should close reopened modal with [data-dismiss=modal] click", function () {
+      stop()
+      $.support.transition = false
+      var div = $("<div id='modal-test'><div class='contents'><div id='close' data-dismiss='modal'></div></div></div>")
+      div
+        .bind("shown.bs.modal", function () {
+          $('#close').click()
+          ok(!$('#modal-test').is(":visible"), 'modal hidden')
+        })
+        .one("hidden.bs.modal", function() {
+          div.one('hidden.bs.modal', function () {
+            start()
+          }).modal("show")
+        })
+        .modal("show")
+
+      div.remove()
+    })
 })
