@@ -851,7 +851,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
   var Modal = function (element, options) {
     this.options   = options
-    this.$element  = $(element).on('click.dismiss.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
+    this.$element  = $(element)
     this.$backdrop =
     this.isShown   = null
 
@@ -879,6 +879,8 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     this.isShown = true
 
     this.escape()
+
+    this.$element.on('click.dismiss.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
 
     this.backdrop(function () {
       var transition = $.support.transition && that.$element.hasClass('fade')
