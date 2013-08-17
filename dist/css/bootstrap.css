@@ -2473,6 +2473,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   vertical-align: middle;
   border-top: 4px solid #000000;
   border-right: 4px solid transparent;
+  border-bottom: 0 dotted;
   border-left: 4px solid transparent;
   content: "";
 }
@@ -2591,7 +2592,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .dropup .caret,
 .navbar-fixed-bottom .dropdown .caret {
-  border-top: 0;
+  border-top: 0 dotted;
   border-bottom: 4px solid #000000;
   content: "";
 }
@@ -2726,7 +2727,7 @@ a.list-group-item:focus {
 .panel-title {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 17.5px;
+  font-size: 16px;
 }
 
 .panel-title > a {
@@ -4207,12 +4208,12 @@ button.close {
 }
 
 .modal-backdrop {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
+  bottom: 0;
   left: 0;
   z-index: 1030;
-  height: 100%;
   background-color: #000000;
 }
 
