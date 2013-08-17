@@ -2473,6 +2473,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   vertical-align: middle;
   border-top: 4px solid #000000;
   border-right: 4px solid transparent;
+  border-bottom: 0 dotted;
   border-left: 4px solid transparent;
   content: "";
 }
@@ -2591,7 +2592,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .dropup .caret,
 .navbar-fixed-bottom .dropdown .caret {
-  border-top: 0;
+  border-top: 0 dotted;
   border-bottom: 4px solid #000000;
   content: "";
 }
