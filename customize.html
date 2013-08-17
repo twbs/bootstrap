@@ -480,16 +480,16 @@ base_url: "../"
     <h3>Media queries breakpoints</h3>
     <p>Define the breakpoints at which your layout will change, adapting to different screen sizes.</p>
     <div class="row">
-      <div class="col-lg-6">
-        <label>@screen-xsmall</label>
+      <div class="col-xs-6">
+        <label>@screen-xs</label>
         <input type="text" class="form-control" placeholder="480px">
-        <label>@screen-small</label>
+        <label>@screen-sm</label>
         <input type="text" class="form-control" placeholder="768px">
       </div>
-      <div class="col-lg-6">
-        <label>@screen-medium</label>
+      <div class="col-xs-6">
+        <label>@screen-md</label>
         <input type="text" class="form-control" placeholder="992px">
-        <label>@screen-large</label>
+        <label>@screen-lg</label>
         <input type="text" class="form-control" placeholder="1200px">
       </div>
     </div>
@@ -497,35 +497,41 @@ base_url: "../"
     <h3>Container sizes</h3>
     <p>Define the maximum width of <code>.container</code> for different screen sizes.</p>
     <div class="row">
-      <div class="col-lg-6">
+      <div class="col-xs-6 col-sm-4">
         <label>@container-tablet</label>
         <input type="text" class="form-control" placeholder="728px">
-        <p class="help-block">For <code>@screen-small</code> and up.</p>
+        <p class="help-block">For <code>@screen-sm</code> and up.</p>
+      </div>
+      <div class="col-xs-6 col-sm-4">
         <label>@container-desktop</label>
         <input type="text" class="form-control" placeholder="940px">
-        <p class="help-block">For <code>@screen-medium</code> and up.</p>
+        <p class="help-block">For <code>@screen-md</code> and up.</p>
       </div>
-      <div class="col-lg-6">
-        <label>@container-large-desktop</label>
+      <div class="clearfix visible-xs"></div>
+      <div class="col-xs-6 col-sm-4">
+        <label>@container-lg-desktop</label>
         <input type="text" class="form-control" placeholder="1170px">
-        <p class="help-block">For <code>@screen-large</code> and up.</p>
+        <p class="help-block">For <code>@screen-lg</code> and up.</p>
       </div>
     </div>
 
     <h3>Grid system</h3>
     <p>Define your custom responsive grid.</p>
     <div class="row">
-      <div class="col-lg-6">
+      <div class="col-xs-6 col-sm-4">
         <label>@grid-columns</label>
         <input type="text" class="form-control" placeholder="12">
         <p class="help-block">Number of columns in the grid.</p>
+      </div>
+      <div class="col-xs-6 col-sm-4">
         <label>@grid-gutter-width</label>
         <input type="text" class="form-control" placeholder="30px">
         <p class="help-block">Padding between columns.</p>
       </div>
-      <div class="col-lg-6">
+      <div class="clearfix visible-xs"></div>
+      <div class="col-xs-6 col-sm-4">
         <label>@grid-float-breakpoint</label>
-        <input type="text" class="form-control" placeholder="@screen-tablet">
+        <input type="text" class="form-control" placeholder="@screen-sm">
         <p class="help-block">Point at which the navbar stops collapsing.</p>
       </div>
     </div>
