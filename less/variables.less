@@ -600,10 +600,10 @@
 // --------------------------------------------------
 
 // Small screen / tablet
-@container-tablet:          750px; // 720px + 30px left/right padding
+@container-tablet:          ((720px + @grid-gutter-width));
 
 // Medium screen / desktop
-@container-desktop:         970px; // 940px + 30px left/right padding
+@container-desktop:         ((940px + @grid-gutter-width));
 
 // Large screen / wide desktop
-@container-large-desktop:   1170px; // 1140px + 30px left/right padding
+@container-large-desktop:   ((1140px + @grid-gutter-width));
