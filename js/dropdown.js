@@ -60,7 +60,7 @@
   }
 
   Dropdown.prototype.keydown = function (e) {
-    if (!/(9|38|40|27)/.test(e.keyCode)) return
+    if (!/(38|40|27)/.test(e.keyCode)) return
 
     var $this = $(this)
 
