@@ -723,9 +723,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
       $parent
         .toggleClass('open')
         .trigger('shown.bs.dropdown')
-    }
 
-    $this.focus()
+      $this.focus()
+    }
 
     return false
   }
