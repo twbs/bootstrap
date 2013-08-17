@@ -84,4 +84,29 @@ $(function () {
         ok($('#myCarousel').data('bs.carousel').options.interval === false, "data attribute has higher priority than default options");
         $('#myCarousel').remove();
       })
+
+      test("should skip over non-items", 4, function () {
+        var template = $('<div id="myCarousel" class="carousel">' +
+                            '<div class="carousel-inner">' +
+                              '<div class="item active">' +
+                                '<img alt="">' +
+                              '</div>' +
+                              '<script type="text/x-metamorph" id="thingy"></script>' +
+                              '<div class="item">' +
+                                '<img alt="">' +
+                              '</div>' +
+                              '<div class="item">' +
+                              '</div>' +
+                            '</div>' +
+                          '</div>');
+        template.attr("data-interval", 1814);
+
+        template.appendTo("body");
+        $("#myCarousel").carousel(1);
+
+        equal($("#myCarousel .item.active").length, 1);
+        equal($("#myCarousel .item:nth-of-type(2)").length, 1);
+        ok($("#myCarousel .item.active")[0] == $("#myCarousel .item:nth-of-type(2)")[0], "The 2nd item should be active after advancing");
+        ok(!$("#thingy").is(":visible"), "2nd child of .carousel-inner should not be visible");
+      })
 })
