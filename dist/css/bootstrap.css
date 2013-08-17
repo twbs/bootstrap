@@ -2701,6 +2701,26 @@ a.list-group-item:focus {
   padding: 15px;
 }
 
+.panel-body:before,
+.panel-body:after {
+  display: table;
+  content: " ";
+}
+
+.panel-body:after {
+  clear: both;
+}
+
+.panel-body:before,
+.panel-body:after {
+  display: table;
+  content: " ";
+}
+
+.panel-body:after {
+  clear: both;
+}
+
 .panel > .list-group {
   margin-bottom: 0;
 }
