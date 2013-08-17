@@ -596,10 +596,10 @@ $component-offset-horizontal: 180px !default;
 // --------------------------------------------------
 
 // Small screen / tablet
-$container-tablet:          720px !default;
+$container-tablet:          750px !default; // 720px + 30px left/right padding
 
 // Medium screen / desktop
-$container-desktop:         940px !default;
+$container-desktop:         970px !default; // 940px + 30px left/right padding
 
 // Large screen / wide desktop
-$container-large-desktop:   1140px !default;
+$container-large-desktop:   1170px !default; // 1140px + 30px left/right padding

@@ -697,6 +697,8 @@ pre code {
 .container {
   margin-right: auto;
   margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .container:before, .container:after {
   content: " ";
@@ -708,6 +710,10 @@ pre code {
   clear: both;
 }
 
+.row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
 .row:before, .row:after {
   content: " ";
   /* 1 */
@@ -716,16 +722,6 @@ pre code {
 }
 .row:after {
   clear: both;
-}
-@media (min-width: 768px) {
-  .container .row {
-    margin-left: -15px;
-    margin-right: -15px;
-  }
-}
-.row .row {
-  margin-left: -15px;
-  margin-right: -15px;
 }
 
 .col-xs-1,
@@ -846,7 +842,7 @@ pre code {
 
 @media (min-width: 768px) {
   .container {
-    max-width: 720px;
+    max-width: 750px;
   }
 
   .col-sm-1,
@@ -1045,7 +1041,7 @@ pre code {
 }
 @media (min-width: 992px) {
   .container {
-    max-width: 940px;
+    max-width: 970px;
   }
 
   .col-md-1,
@@ -1256,7 +1252,7 @@ pre code {
 }
 @media (min-width: 1200px) {
   .container {
-    max-width: 1140px;
+    max-width: 1170px;
   }
 
   .col-lg-1,
@@ -1942,6 +1938,10 @@ textarea.input-lg, .input-group-lg > textarea.form-control,
   padding-top: 6px;
 }
 
+.form-horizontal .form-group {
+  margin-left: -15px;
+  margin-right: -15px;
+}
 .form-horizontal .form-group:before, .form-horizontal .form-group:after {
   content: " ";
   /* 1 */
@@ -1950,16 +1950,6 @@ textarea.input-lg, .input-group-lg > textarea.form-control,
 }
 .form-horizontal .form-group:after {
   clear: both;
-}
-@media (min-width: 768px) {
-  .container .form-horizontal .form-group {
-    margin-left: -15px;
-    margin-right: -15px;
-  }
-}
-.form-horizontal .form-group .row {
-  margin-left: -15px;
-  margin-right: -15px;
 }
 
 @media (min-width: 768px) {
@@ -2272,7 +2262,7 @@ fieldset[disabled] .btn-info.active {
 }
 
 .btn-xs {
-  padding: 3px 5px;
+  padding: 1px 5px;
 }
 
 .btn-block {
@@ -2847,14 +2837,9 @@ button.close {
   background-color: transparent;
   cursor: not-allowed;
 }
-.nav.open > a, .nav.open > a:hover, .nav.open > a:focus {
-  color: white;
-  background-color: #428bca;
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background-color: #eeeeee;
   border-color: #428bca;
-}
-.nav.open > a .caret, .nav.open > a:hover .caret, .nav.open > a:focus .caret {
-  border-top-color: white;
-  border-bottom-color: white;
 }
 .nav .nav-divider {
   height: 1px;
@@ -2892,11 +2877,15 @@ button.close {
 }
 .nav-tabs.nav-justified > li {
   float: none;
-  display: table-cell;
-  width: 1%;
 }
 .nav-tabs.nav-justified > li > a {
   text-align: center;
+}
+@media (min-width: 768px) {
+  .nav-tabs.nav-justified > li {
+    display: table-cell;
+    width: 1%;
+  }
 }
 .nav-tabs.nav-justified > li > a {
   border-bottom: 1px solid #dddddd;
@@ -2904,9 +2893,6 @@ button.close {
 }
 .nav-tabs.nav-justified > .active > a {
   border-bottom-color: white;
-}
-.nav-tabs.nav-justified > li > a > img {
-  max-width: none;
 }
 
 .nav-pills > li {
@@ -2936,11 +2922,15 @@ button.close {
 }
 .nav-justified > li {
   float: none;
-  display: table-cell;
-  width: 1%;
 }
 .nav-justified > li > a {
   text-align: center;
+}
+@media (min-width: 768px) {
+  .nav-justified > li {
+    display: table-cell;
+    width: 1%;
+  }
 }
 
 .tabbable:before, .tabbable:after {
@@ -3021,13 +3011,12 @@ button.close {
 }
 
 .navbar-collapse {
+  max-height: 340px;
+  overflow-x: visible;
   padding-right: 15px;
   padding-left: 15px;
   border-top: 1px solid #e6e6e6;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  max-height: 340px;
-  overflow-x: visible;
-  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 .navbar-collapse:before, .navbar-collapse:after {
@@ -3038,6 +3027,9 @@ button.close {
 }
 .navbar-collapse:after {
   clear: both;
+}
+.navbar-collapse.in {
+  overflow-y: auto;
 }
 @media (min-width: 768px) {
   .navbar-collapse {
@@ -3058,9 +3050,11 @@ button.close {
   }
 }
 
+.navbar-static-top {
+  border-width: 0 0 1px;
+}
 @media (min-width: 768px) {
   .navbar-static-top {
-    border-width: 0 0 1px;
     border-radius: 0;
   }
 }
@@ -3136,10 +3130,7 @@ button.close {
 }
 
 .navbar-nav {
-  padding-top: 7.5px;
-  padding-bottom: 7.5px;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin: -7.5px;
 }
 .navbar-nav > li > a {
   padding-top: 10px;
@@ -3195,8 +3186,6 @@ button.close {
   .navbar-nav {
     float: left;
     margin: 0;
-    padding-top: 0;
-    padding-bottom: 0;
   }
   .navbar-nav > li {
     float: left;
@@ -3522,7 +3511,7 @@ button.close {
 }
 
 .btn-group-xs > .btn {
-  padding: 3px 5px;
+  padding: 1px 5px;
 }
 
 .btn-group-sm > .btn {

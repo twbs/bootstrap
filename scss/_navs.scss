@@ -42,17 +42,12 @@
   }
 
   // Open dropdowns
-  &.open > a {
+  .open > a {
     &,
     &:hover,
     &:focus {
-      color: $nav-open-link-hover-color;
-      background-color: $link-color;
+      background-color: $nav-link-hover-bg;
       border-color: $link-color;
-      .caret {
-        border-top-color: $nav-open-caret-border-color;
-        border-bottom-color: $nav-open-caret-border-color;
-      }
     }
   }
 
@@ -70,12 +65,18 @@
 
 @mixin nav-justified {
   width: 100%;
+
   > li {
     float: none;
-    display: table-cell;
-    width: 1%;
-    > a {
+     > a {
       text-align: center;
+    }
+  }
+
+  @media (min-width: $screen-small) {
+    > li {
+      display: table-cell;
+      width: 1%;
     }
   }
 }
@@ -91,12 +92,6 @@
   }
   > .active > a {
     border-bottom-color: $nav-tabs-justified-active-link-border-color;
-  }
-
-  // Prevent IE8 from misplacing imgs
-  // See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
-  > li > a > img {
-    max-width: none;
   }
 }
 
@@ -183,7 +178,6 @@
 }
 
 .nav-justified { @include nav-justified; }
-
 
 // Tabbable tabs
 // -------------------------

@@ -11,7 +11,7 @@ base_url: "../"
   ================================================== -->
   <div class="bs-docs-section">
     <div class="page-header">
-      <h1 id="dropdowns">Dropdown menus</h1>
+      <h1 id="dropdowns">Dropdowns</h1>
     </div>
     <p class="lead">Toggleable, contextual menu for displaying lists of links. Made interactive with the <a href="../javascript/#dropdowns">dropdown JavaScript plugin</a>.</p>
 
@@ -42,7 +42,7 @@ base_url: "../"
 </div>
 {% endhighlight %}
 
-    <h3 id="dropdowns-alignment">Aligning the menus</h3>
+    <h3 id="dropdowns-alignment">Aligninment options</h3>
     <p>Add <code>.pull-right</code> to a <code>.dropdown-menu</code> to right align the dropdown menu.</p>
 {% highlight html %}
 <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
@@ -50,7 +50,7 @@ base_url: "../"
 </ul>
 {% endhighlight %}
 
-    <h3 id="dropdowns-headers">Dropdown headers</h3>
+    <h3 id="dropdowns-headers">Headers</h3>
     <p>Add a header to label sections of actions in any dropdown menu.</p>
     <div class="bs-example">
       <div class="dropdown clearfix">
@@ -76,7 +76,7 @@ base_url: "../"
 </ul>
 {% endhighlight %}
 
-    <h3 id="dropdowns-disabled">Disabled menu options</h3>
+    <h3 id="dropdowns-disabled">Disabled menu items</h3>
     <p>Add <code>.disabled</code> to a <code>&lt;li&gt;</code> in the dropdown to disable the link.</p>
     <div class="bs-example">
       <div class="dropdown clearfix">
@@ -112,7 +112,7 @@ base_url: "../"
       <p>When using tooltips or popovers on elements within a <code>.btn-group</code>, you'll have to specify the option <code>container: 'body'</code> to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).</p>
     </div>
 
-    <h3 id="btn-groups-single">Basic button group</h3>
+    <h3 id="btn-groups-single">Basic example</h3>
     <p>Wrap a series of buttons with <code>.btn</code> in <code>.btn-group</code>.</p>
     <div class="bs-example">
       <div class="btn-group" style="margin: 9px 0 5px;">
@@ -129,7 +129,7 @@ base_url: "../"
 </div>
 {% endhighlight %}
 
-    <h3 id="btn-groups-toolbar">Multiple button groups</h3>
+    <h3 id="btn-groups-toolbar">Button toolbar</h3>
     <p>Combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex components.</p>
     <div class="bs-example">
       <div class="btn-toolbar" style="margin: 0;">
@@ -157,7 +157,7 @@ base_url: "../"
 </div>
 {% endhighlight %}
 
-    <h3 id="btn-groups-sizing">Button group sizing</h3>
+    <h3 id="btn-groups-sizing">Sizing</h3>
     <p>Instead of applying button sizing classes to every button in a group, just add <code>.btn-group-*</code> to the <code>.btn-group</code>.</p>
     <div class="bs-example">
       <div class="btn-toolbar">
@@ -196,7 +196,7 @@ base_url: "../"
 <div class="btn-group btn-group-xs">...</div>
 {% endhighlight %}
 
-    <h3 id="btn-groups-nested">Nested button groups</h3>
+    <h3 id="btn-groups-nested">Nesting</h3>
     <p>Place a <code>.btn-group</code> within another <code>.btn-group</code> when you want dropdown menus mixed with a series of buttons.</p>
     <div class="bs-example">
       <div class="btn-group">
@@ -233,7 +233,7 @@ base_url: "../"
 </div>
 {% endhighlight %}
 
-    <h3 id="btn-groups-vertical">Vertical button groups</h3>
+    <h3 id="btn-groups-vertical">Vertical variation</h3>
     <p>Make a set of buttons appear vertically stacked rather than horizontally.</p>
     <div class="bs-example">
       <div class="btn-group-vertical">
@@ -289,7 +289,7 @@ base_url: "../"
 </div>
 {% endhighlight %}
 
-    <h3 id="btn-groups-justified">Justified button groups</h3>
+    <h3 id="btn-groups-justified">Justified link variation</h3>
     <p>Make a group of buttons stretch at the same size to span the entire width of its parent.</p>
 
     <div class="bs-callout bs-callout-warning">
@@ -318,7 +318,7 @@ base_url: "../"
   ================================================== -->
   <div class="bs-docs-section">
     <div class="page-header">
-      <h1 id="btn-dropdowns">Button dropdown menus</h1>
+      <h1 id="btn-dropdowns">Button dropdowns</h1>
     </div>
     <p class="lead">Use any button to trigger a dropdown menu by placing it within a <code>.btn-group</code> and providing the proper menu markup.</p>
 
@@ -494,7 +494,7 @@ base_url: "../"
 </div>
 {% endhighlight %}
 
-    <h3 id="btn-dropdowns-sizes">Works with all button sizes</h3>
+    <h3 id="btn-dropdowns-sizing">Sizing</h3>
     <p>Button dropdowns work with buttons of all sizes.</p>
     <div class="bs-example">
       <div class="btn-toolbar">
@@ -572,7 +572,7 @@ base_url: "../"
 </div>
 {% endhighlight %}
 
-    <h3 id="btn-dropdowns-dropup">Dropup buttons</h3>
+    <h3 id="btn-dropdowns-dropup">Dropup variation</h3>
     <p>Trigger dropdown menus above elements by adding <code>.dropup</code> to the parent.</p>
     <div class="bs-example">
       <div class="btn-toolbar">
@@ -634,7 +634,7 @@ base_url: "../"
       <p>When using tooltips or popovers on elements within an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).</p>
     </div>
 
-    <h2 id="input-groups-basic">Basic input group</h2>
+    <h2 id="input-groups-basic">Basic example</h2>
     <form class="bs-example bs-example-form" role="form">
       <div class="input-group">
         <span class="input-group-addon">@</span>
@@ -670,7 +670,8 @@ base_url: "../"
 </div>
 {% endhighlight %}
 
-    <h2 id="input-groups-sizes">Optional sizes</h2>
+
+    <h2 id="input-groups-sizing">Sizing</h2>
     <p>Add the relative form sizing classes to the <code>.input-group</code> itself and contents within will automatically resize—no need for repeating the form control size classes on each element.</p>
     <form class="bs-example bs-example-form" role="form">
       <div class="input-group input-group-lg">
@@ -706,7 +707,7 @@ base_url: "../"
 {% endhighlight %}
 
 
-    <h2 id="input-groups-checkboxes-radios">Checkboxes and radio buttons</h2>
+    <h2 id="input-groups-checkboxes-radios">Checkboxes and radio addons</h2>
     <p>Place any checkbox or radio option within an input group's addon instead of text.</p>
     <form class="bs-example bs-example-form">
       <div class="row">
@@ -750,7 +751,7 @@ base_url: "../"
 {% endhighlight %}
 
 
-    <h2 id="input-groups-buttons">Buttons instead of text</h2>
+    <h2 id="input-groups-buttons">Button addons</h2>
     <p>Buttons in input groups are a bit different and require one extra level of nesting. Instead of <code>.input-group-addon</code>, you'll need to use <code>.input-group-btn</code> to wrap the buttons. This is required due to default browser styles that cannot be overridden.</p>
     <form class="bs-example bs-example-form">
       <div class="row">
@@ -864,7 +865,7 @@ base_url: "../"
 </div><!-- /.row -->
 {% endhighlight %}
 
-    <h2 id="input-groups-buttons-segmented">Segmented dropdown groups</h2>
+    <h2 id="input-groups-buttons-segmented">Segmented buttons</h2>
     <form class="bs-example bs-example-form" role="form">
       <div class="row">
         <div class="col-lg-6">
@@ -981,9 +982,8 @@ base_url: "../"
 </ul>
 {% endhighlight %}
 
-    <h2>Options</h2>
 
-    <h3 id="nav-justified">Justified links</h3>
+    <h2 id="nav-justified">Justified</h2>
     <p>Easily make tabs or pills equal widths of their parent with <code>.nav-justified</code>.</p>
     <div class="bs-example">
       <ul class="nav nav-tabs nav-justified">
@@ -1007,7 +1007,8 @@ base_url: "../"
 </ul>
 {% endhighlight %}
 
-    <h3 id="nav-disabled-links">Disabled state</h3>
+
+    <h2 id="nav-disabled-links">Disabled links</h2>
     <p>For any nav component (tabs, pills, or list), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>.</p>
 
     <div class="bs-callout bs-callout-warning">
@@ -1031,14 +1032,11 @@ base_url: "../"
 {% endhighlight %}
 
 
-    <h3 id="nav-alignment">Component alignment</h3>
+    <h2 id="nav-alignment">Alignment options</h2>
     <p>To align nav links, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
 
 
-    <hr class="bs-docs-separator">
-
-
-    <h2 id="nav-dropdowns">Dropdowns</h2>
+    <h2 id="nav-dropdowns">Using dropdowns</h2>
     <p>Add dropdown menus with a little extra HTML and the <a href="../javascript/#dropdowns">dropdowns JavaScript plugin</a>.</p>
 
     <h3>Tabs with dropdowns</h3>
@@ -1244,10 +1242,7 @@ base_url: "../"
 </div>
 
 
-    <h2 id="navbar-optional-content">Optional navbar content</h2>
-    <p>Quickly add other types of content, beyond links or forms, to a navbar with a few classes.</p>
-
-    <h3 id="navbar-buttons">Buttons</h3>
+    <h2 id="navbar-buttons">Buttons</h2>
     <p>For buttons not residing in a <code>&lt;form&gt;</code>, add this class to vertically center buttons within a navbar.</p>
     <div class="bs-example">
       <nav class="navbar" role="navigation">
@@ -1269,7 +1264,8 @@ base_url: "../"
 <button type="button" class="btn btn-default navbar-btn">Sign in</button>
 {% endhighlight %}
 
-    <h3 id="navbar-text">Text in navbars</h3>
+
+    <h2 id="navbar-text">Text</h2>
     <p>Wrap strings of text in an element with <code>.navbar-text</code>, usually on a <code>&lt;p&gt;</code> tag for proper leading and color.</p>
     <div class="bs-example">
       <nav class="navbar" role="navigation">
@@ -1291,7 +1287,8 @@ base_url: "../"
 <p class="navbar-text">Signed in as Mark Otto</p>
 {% endhighlight %}
 
-    <h3 id="navbar-links">Non-nav links</h3>
+
+    <h2 id="navbar-links">Non-nav links</h2>
     <p>For folks using standard links that are not within the regular navbar navigation component, use the <code>.navbar-link</code> class to add the proper colors for the default and inverse navbar options.</p>
     <div class="bs-example">
       <nav class="navbar" role="navigation">
@@ -1313,15 +1310,13 @@ base_url: "../"
 <p class="navbar-text pull-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
 {% endhighlight %}
 
-    <h3 id="navbar-component-alignment">Component alignment</h3>
+
+    <h2 id="navbar-component-alignment">Component alignment</h2>
     <p>Align nav links, forms, buttons, or text, using the <code>.navbar-left</code> or <code>.navbar-right</code> utility classes. Both classes will add a CSS float in the specified direction. For example, to align nav links, put them in a separate <code>&lt;ul&gt;</code> with the respective utility class applied.</p>
     <p>These classes are mixin-ed versions of <code>.pull-left</code> and <code>.pull-right</code>, but they're scoped to media queries for easier handling of navbar components across device sizes.</p>
 
 
-    <h2>Optional display variations</h2>
-    <p>Fix the navbar to the top or bottom of the viewport with an additional class on the outermost div, <code>.navbar</code>. These will also remove rounded corners.</p>
-
-    <h3 id="navbar-fixed-top">Fixed to top</h3>
+    <h2 id="navbar-fixed-top">Fixed to top</h2>
     <p>Add <code>.navbar-fixed-top</code>.</p>
     <div class="bs-example bs-navbar-top-example">
       <nav class="navbar navbar-fixed-top" role="navigation">
@@ -1361,7 +1356,8 @@ body { padding-top: 70px; }
       <p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
     </div>
 
-    <h3 id="navbar-fixed-bottom">Fixed to bottom</h3>
+
+    <h2 id="navbar-fixed-bottom">Fixed to bottom</h2>
     <p>Add <code>.navbar-fixed-bottom</code> instead.</p>
     <div class="bs-example bs-navbar-bottom-example">
       <nav class="navbar navbar-fixed-bottom" role="navigation">
@@ -1401,7 +1397,8 @@ body { padding-bottom: 70px; }
       <p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
     </div>
 
-    <h3 id="navbar-static-top">Static top navbar</h3>
+
+    <h2 id="navbar-static-top">Static top</h2>
     <p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.navbar-fixed-*</code> classes, you do not need to change any padding on the <code>body</code>.</p>
     <div class="bs-example bs-navbar-top-example">
       <nav class="navbar navbar-static-top" role="navigation">
@@ -1433,7 +1430,7 @@ body { padding-bottom: 70px; }
 {% endhighlight %}
 
 
-    <h2 id="navbar-inverted">Inverted variation</h2>
+    <h2 id="navbar-inverted">Inverted navbar</h2>
     <p>Modify the look of the navbar by adding <code>.navbar-inverse</code>.</p>
     <div class="bs-example">
       <nav class="navbar navbar-inverse" role="navigation">
@@ -1564,7 +1561,7 @@ body { padding-bottom: 70px; }
 {% endhighlight %}
 
 
-    <h3>Sizes</h3>
+    <h3>Sizing</h3>
     <p>Fancy larger or smaller pagination? Add <code>.pagination-lg</code> or <code>.pagination-sm</code> for additional sizes.</p>
     <div class="bs-example">
       <div>
@@ -1767,14 +1764,12 @@ body { padding-bottom: 70px; }
 
 
 
-  <!-- Typographic components
+  <!-- Jumbotron
   ================================================== -->
   <div class="bs-docs-section">
     <div class="page-header">
-      <h1 id="type-components">Typographic components</h1>
+      <h1 id="jumbotron">Jumbotron</h1>
     </div>
-
-    <h2 id="type-components-jumbotron">Jumbotron</h2>
     <p>A lightweight, flexible component to showcase key content on your site. It works well on marketing and content-heavy sites.</p>
     <div class="bs-example">
       <div class="jumbotron">
@@ -1790,8 +1785,16 @@ body { padding-bottom: 70px; }
   <p><a class="btn btn-primary btn-lg">Learn more</a></p>
 </div>
 {% endhighlight %}
+  </div>
 
-    <h2 id="type-components-page-header">Page header</h2>
+
+
+  <!-- Page header
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="page-header">Page header</h1>
+    </div>
     <p>A simple shell for an <code>h1</code> to appropriately space out and segment sections of content on a page. It can utilize the <code>h1</code>'s default <code>small</code> element, as well as most other components (with additional styles).</p>
     <div class="bs-example">
       <div class="page-header">
@@ -1815,7 +1818,7 @@ body { padding-bottom: 70px; }
     </div>
     <p class="lead">Extend Bootstrap's <a href="../css/#grid">grid system</a> with the thumbnail component to easily display grids of images, videos, text, and more.</p>
 
-    <h3 id="thumbnails-default">Default thumbnails</h3>
+    <h3 id="thumbnails-default">Default example</h3>
     <p>By default, Bootstrap's thumbnails are designed to showcase linked images with minimal required markup.</p>
     <div class="bs-example">
       <div class="row">
@@ -1852,7 +1855,7 @@ body { padding-bottom: 70px; }
 </div>
 {% endhighlight %}
 
-    <h3 id="thumbnails-custom-content">Custom content thumbnails</h3>
+    <h3 id="thumbnails-custom-content">Custom content</h3>
     <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.</p>
     <div class="bs-example">
       <div class="row">
@@ -2010,7 +2013,7 @@ body { padding-bottom: 70px; }
       <p>Progress bars use CSS3 transitions and animations to achieve some of their effects. These features are not supported in Internet Explorer 9 and below or older versions of Firefox. Opera 12 does not support animations.</p>
     </div>
 
-    <h3 id="progress-basic">Basic</h3>
+    <h3 id="progress-basic">Basic example</h3>
     <p>Default progress bar with a vertical gradient.</p>
     <div class="bs-example">
       <div class="progress">
@@ -2259,8 +2262,6 @@ body { padding-bottom: 70px; }
 
 
 
-
-
   <!-- List group
   ================================================== -->
   <div class="bs-docs-section">
@@ -2269,7 +2270,7 @@ body { padding-bottom: 70px; }
     </div>
     <p class="lead">List groups are a flexible and powerful component for displaying not only simple lists of elements, but complex ones with custom content.</p>
 
-    <h3 id="list-group-basic">Basic list group</h3>
+    <h3 id="list-group-basic">Basic example</h3>
     <p>The most basic list group is simply an unordered list with list items, and the proper classes. Build upon it with the options that follow, or your own CSS as needed.</p>
     <div class="bs-example">
       <ul class="list-group">
@@ -2290,7 +2291,7 @@ body { padding-bottom: 70px; }
 </ul>
 {% endhighlight %}
 
-    <h3 id="list-group-badges">With badges</h3>
+    <h3 id="list-group-badges">Badges</h3>
     <p>Add the badges component to any list group item and it will automatically be positioned on the right.</p>
     <div class="bs-example">
       <ul class="list-group">
@@ -2317,7 +2318,7 @@ body { padding-bottom: 70px; }
 </ul>
 {% endhighlight %}
 
-    <h3 id="list-group-linked">Linked list group</h3>
+    <h3 id="list-group-linked">Linked items</h3>
     <p>Linkify list group items by using anchor tags instead of list items (that also means a parent <code>&lt;div&gt;</code> instead of an <code>&lt;ul&gt;</code>). No need for individual parents around each element.</p>
     <div class="bs-example">
       <div class="list-group">
@@ -2381,7 +2382,7 @@ body { padding-bottom: 70px; }
     </div>
     <p class="lead">While not always necessary, sometimes you need to put your DOM in a box. For those situations, try the panel component.</p>
 
-    <h3 id="panels-basic">Basic panel</h3>
+    <h3 id="panels-basic">Basic example</h3>
     <p>By default, all the <code>.panel</code> does is apply some basic border and padding to contain some content.</p>
     <div class="bs-example">
       <div class="panel">

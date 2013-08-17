@@ -15,7 +15,7 @@ base_url: "../"
     </div>
     <p class="lead">Get the lowdown on the key pieces of Bootstrap's infrastructure, including our approach to better, faster, stronger web development.</p>
 
-    <h3 id="overview-doctype">HTML5 doctype required</h3>
+    <h3 id="overview-doctype">HTML5 doctype</h3>
     <p>Bootstrap makes use of certain HTML elements and CSS properties that require the use of the HTML5 doctype. Include it at the beginning of all your projects.</p>
 {% highlight html %}
 <!DOCTYPE html>
@@ -51,10 +51,10 @@ base_url: "../"
     </ul>
     <p>These styles can be found within <code>scaffolding.less</code>.</p>
 
-    <h3 id="overview-normalize">Normalize reset</h3>
+    <h3 id="overview-normalize">Normalize</h3>
     <p>For improved cross-browser rendering, we use <a href="http://necolas.github.io/normalize.css/" target="_blank">Normalize</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a>.</p>
 
-    <h3 id="overview-container">Centering with container</h3>
+    <h3 id="overview-container">Containers</h3>
     <p>Easily center a page's contents by wrapping its contents in a <code>.container</code>. Containers set <code>max-width</code> at various media query breakpoints to match our grid system.</p>
 {% highlight html %}
 <div class="container">
@@ -249,7 +249,7 @@ base_url: "../"
 </div>
 {% endhighlight %}
 
-    <h3 id="grid-example-mixed">Example: Combining mobile with desktop</h3>
+    <h3 id="grid-example-mixed">Example: Mobile and desktop</h3>
     <p>Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid classes by adding <code>.col-xs-*</code> <code>.col-md-*</code> to your columns. See the example below for a better idea of how it all works.</p>
     <div class="bs-docs-grid">
       <div class="row show-grid">
@@ -287,7 +287,7 @@ base_url: "../"
 </div>
 {% endhighlight %}
 
-    <h3 id="grid-example-mixed-complete">Example: Mobile, tablet, and desktop</h3>
+    <h3 id="grid-example-mixed-complete">Example: Mobile, tablet, desktops</h3>
     <p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>.col-sm-*</code> classes.</p>
     <div class="bs-docs-grid">
       <div class="row show-grid">
@@ -1061,10 +1061,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
-    <h2>Optional classes</h2>
-    <p>Add any of the following classes to the <code>.table</code> base class.</p>
-
-    <h3 id="tables-striped">Striped</h3>
+    <h2 id="tables-striped">Striped rows</h2>
     <p>Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p>
     <div class="bs-callout bs-callout-danger">
       <h4>Cross-browser compatibility</h4>
@@ -1108,7 +1105,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </table>
 {% endhighlight %}
 
-    <h3 id="tables-bordered">Bordered</h3>
+
+    <h2 id="tables-bordered">Bordered table</h2>
     <p>Add <code>.table-bordered</code> for borders on all sides of the table and cells.</p>
     <div class="bs-example">
       <table class="table table-bordered">
@@ -1152,7 +1150,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </table>
 {% endhighlight %}
 
-    <h3 id="tables-hover-rows">Hover rows</h3>
+
+    <h2 id="tables-hover-rows">Hover rows</h2>
     <p>Add <code>.table-hover</code> to enable a hover state on table rows within a <code>&lt;tbody&gt;</code>.</p>
     <div class="bs-example">
       <table class="table table-hover">
@@ -1192,7 +1191,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
-    <h3 id="tables-condensed">Condensed</h3>
+    <h2 id="tables-condensed">Condensed table</h2>
     <p>Add <code>.table-condensed</code> to make tables more compact by cutting cell padding in half.</p>
     <div class="bs-example">
       <table class="table table-condensed">
@@ -1233,7 +1232,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
 
-    <h2 id="tables-contextual-classes">Contextual table classes</h2>
+    <h2 id="tables-contextual-classes">Contextual classes</h2>
     <p>Use contextual classes to color table rows or individual cells.</p>
     <div class="bs-table-scrollable">
       <table class="table table-bordered table-striped bs-table">
@@ -1406,7 +1405,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
-    <h3 id="forms-inline">Inline form</h3>
+    <h2 id="forms-inline">Inline form</h2>
     <p>Add <code>.form-inline</code> for left-aligned and inline-block controls for a compact layout.</p>
     <div class="bs-callout bs-callout-danger">
       <h4>Requires custom widths</h4>
@@ -1450,6 +1449,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <button type="submit" class="btn btn-default">Sign in</button>
 </form>
 {% endhighlight %}
+
 
     <h2 id="forms-horizontal">Horizontal form</h2>
     <p>Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout by adding <code>.form-horizontal</code> to the form. Doing so changes <code>.form-group</code>s to behave as grid rows, so no need for <code>.row</code>.</p>
@@ -1513,7 +1513,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
-    <h2 id="forms-controls">Supported form controls</h2>
+    <h2 id="forms-controls">Supported controls</h2>
     <p>Examples of standard form controls supported in an example form layout.</p>
 
     <h3>Inputs</h3>
@@ -1647,8 +1647,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
-    <h2 id="forms-controls-static">Static text in horizontal forms</h2>
-    <p>When you need to place regular, static text next to a form label within a horizontal form, use the <code>.form-control-static</code> class on a <code>&lt;p&gt;</code>.</p>
+    <h2 id="forms-controls-static">Static control</h2>
+    <p>When you need to place plain text next to a form label within a horizontal form, use the <code>.form-control-static</code> class on a <code>&lt;p&gt;</code>.</p>
     <form class="bs-example form-horizontal">
       <div class="form-group">
         <label class="col-lg-2 control-label">Email</label>
@@ -1681,7 +1681,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
-    <h2 id="forms-control-states">Form control states</h2>
+    <h2 id="forms-control-states">Form states</h2>
     <p>Provide feedback to users or visitors with basic feedback states on form controls and labels.</p>
 
     <h3 id="forms-input-focus">Input focus</h3>
@@ -1873,7 +1873,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <h1 id="buttons">Buttons</h1>
     </div>
 
-    <h2 id="buttons-options">Button options</h2>
+    <h2 id="buttons-options">Options</h2>
     <p>Use any of the available button classes to quickly create a styled button.</p>
     <div class="bs-example">
       <button type="button" class="btn btn-default">Default</button>
@@ -1907,7 +1907,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <button type="button" class="btn btn-link">Link</button>
 {% endhighlight %}
 
-    <h2 id="buttons-sizes">Button sizes</h2>
+    <h2 id="buttons-sizes">Sizes</h2>
     <p>Fancy larger or smaller buttons? Add <code>.btn-lg</code>, <code>.btn-sm</code>, or <code>.btn-xs</code> for additional sizes.</p>
     <div class="bs-example">
       <p>
@@ -1997,7 +1997,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 
 
-    <h2 id="buttons-tags">Using multiple tags</h2>
+    <h2 id="buttons-tags">Button tags</h2>
     <p>Use the button classes on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
     <form class="bs-example">
       <a class="btn btn-default" href="#">Link</a>

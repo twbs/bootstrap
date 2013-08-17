@@ -123,7 +123,7 @@
   @include button-size($padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, $border-radius-small);
 }
 @mixin btn-xs {
-  padding: 3px 5px;
+  padding: 1px 5px;
 }
 
 .btn-lg {@include btn-lg}
