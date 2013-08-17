@@ -541,8 +541,8 @@ $('#myDropdown').on('show.bs.dropdown', function () {
             <li><a href="#fat">@fat</a></li>
             <li><a href="#mdo">@mdo</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
+              <a href="#" id="navbarDrop1" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="navbarDrop1">
                 <li><a href="#one">one</a></li>
                 <li><a href="#two">two</a></li>
                 <li class="divider"></li>
@@ -663,8 +663,8 @@ $('#myScrollspy').on('activate.bs.scrollspy', function () {
         <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
         <li><a href="#profile" data-toggle="tab">Profile</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-          <ul class="dropdown-menu">
+          <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
             <li><a href="#dropdown1" data-toggle="tab">@fat</a></li>
             <li><a href="#dropdown2" data-toggle="tab">@mdo</a></li>
           </ul>
