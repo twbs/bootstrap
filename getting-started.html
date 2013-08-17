@@ -321,6 +321,10 @@ bootstrap/
     </ul>
     <p>Unofficially, Bootstrap should look and behave well enough in Chromium for Linux and Internet Explorer 7, though they are not officially supported.</p>
 
+    <h3>Safari on iOS</h2>
+
+    <p>Modals with input controls <a href="https://github.com/twbs/bootstrap/issues/9023">may not work well on iOS</a>, with symptoms being the background fade not covering the entire page, and not all of the modal being visible even though there is space on the screen. This is caused by Safari not updating the positions of fixed elements when the virtual keyboard is displayed. A <a href="https://github.com/twbs/bootstrap/pull/9339">workaround is possible</a>.</p>
+
     <h3>Internet Explorer 8 and 9</h3>
     <p>Internet Explorer 8 and 9 are also supported, however, please be aware that many CSS3 properties—e.g., rounded corners and shadows—are not supported by IE8. The <code>placeholder</code> attribute is also not supported in either of these versions.</p>
     <p>In addition, <strong>Internet Explorer 8 requires the use of <a href="https://github.com/scottjehl/Respond">respond.js</a> to enable media query support.</strong></p>
