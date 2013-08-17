@@ -4132,7 +4132,7 @@ button.close {
 .pager li > a:hover,
 .pager li > a:focus {
   text-decoration: none;
-  background-color: #428bca;
+  background-color: #eeeeee;
 }
 
 .pager .next > a,
