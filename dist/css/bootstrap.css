@@ -5266,7 +5266,7 @@ td.visible-lg {
   display: none !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .visible-xs {
     display: block !important;
   }
@@ -5343,7 +5343,7 @@ td.hidden-lg {
   display: table-cell !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .hidden-xs {
     display: none !important;
   }
