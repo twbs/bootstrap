@@ -15,9 +15,6 @@ repo:             https://github.com/twbs/bootstrap
 download:         https://github.com/twbs/bootstrap/archive/3.0.0-wip.zip
 download_dist:    http://getbootstrap.com/bs-v3.0.0-rc.2-dist.zip
 
-glyphicons:       http://glyphicons.getbootstrap.com
-glyphicons_repo:  https://github.com/twbs/bootstrap-glyphicons
-
 blog:             http://blog.getbootstrap.com
 expo:             http://expo.getbootstrap.com
 
