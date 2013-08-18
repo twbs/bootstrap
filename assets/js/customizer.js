@@ -1,6 +1,36 @@
 window.onload = function () { // wait for load in a dumb way because B-0
   var cw = '/*!\n * Bootstrap v3.0.0-rc.2\n *\n * Copyright 2013 Twitter, Inc\n * Licensed under the Apache License v2.0\n * http://www.apache.org/licenses/LICENSE-2.0\n *\n * Designed and built with all the love in the world @twitter by @mdo and @fat.\n */\n\n'
 
+  function getQueryParam(key) {
+    key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
+    var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
+    return match && decodeURIComponent(match[1].replace(/\+/g, " "));
+  }
+
+  function createGist (configData) {
+    var data = {
+      "description": "Bootstrap Customizer Config",
+      "public": true,
+      "files": {
+        "config.json": {
+          "content": JSON.stringify(configData)
+        }
+      }
+    }
+    $.ajax({
+      url: 'https://api.github.com/gists',
+      type: 'POST',
+      dataType: 'json',
+      data: JSON.stringify(data)
+    })
+    .success( function(e) {
+      history.replaceState(false, document.title, window.location.origin + window.location.pathname + '?id=' + e.id)
+    })
+    .error( function(e) {
+      console.warn("gist save error", e);
+    })
+  }
+
   function generateUrl() {
     var vars = {}
 
@@ -11,39 +41,50 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
     var data = {
       vars: vars,
-      css: $('#less-section input:not(:checked)').map(function () { return this.value }).toArray(),
-      js: $('#plugin-section input:not(:checked)').map(function () { return this.value }).toArray()
+      css: $('#less-section input:checked')  .map(function () { return this.value }).toArray(),
+      js:  $('#plugin-section input:checked').map(function () { return this.value }).toArray()
     }
 
     if ($.isEmptyObject(data.vars) && !data.css.length && !data.js.length) return
 
-    window.location = jQuery.param.querystring('/customize/', data)
+    createGist(data)
   }
 
   function parseUrl() {
-    var data = jQuery.deparam.querystring()
+    var id = getQueryParam('id')
 
-    if (data.js) {
-      for (var i = 0; i < data.js.length; i++) {
-        var input = $('input[value="'+data.js[i]+'"]')
-        input && input.prop('checked', false)
+    if (!id) return
+
+    $.ajax({
+      url: 'https://api.github.com/gists/' + id,
+      type: 'GET',
+      dataType: 'json'
+    })
+    .success(function(result) {
+      var data = JSON.parse(result.files['config.json'].content)
+      if (data.js) {
+        $('#plugin-section input').each(function () {
+          $(this).prop('checked', ~$.inArray(this.value, data.js))
+        })
       }
-    }
-
-    if (data.css) {
-      for (var i = 0; i < data.css.length; i++) {
-        var input = $('input[value="'+data.css[i]+'"]')
-        input && input.prop('checked', false)
+      if (data.css) {
+        $('#less-section input').each(function () {
+          $(this).prop('checked', ~$.inArray(this.value, data.css))
+        })
       }
-    }
-
-    if (data.vars) {
-      // todo (fat): vars
-    }
+      if (data.vars) {
+        for (var i in data.vars) {
+          $('input[data-var="' + i + '"]').val(data.vars[i])
+        }
+      }
+    })
+    .error(function(result) {
+      console.warn("gist save error", e)
+    })
   }
 
   function generateZip(css, js, complete) {
-    if (!css && !js) return alert('you want to build nothing… o_O')
+    if (!css && !js) return console.warn('you want to build nothing… o_O')
 
     var zip = new JSZip()
 
@@ -108,7 +149,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
         , optimization: 0
         , filename: 'bootstrap.css'
       }).parse(css, function (err, tree) {
-        if (err) return alert(err)
+        if (err) return console.warn(err)
 
         result = {
           'bootstrap.css'     : cw + tree.toCSS(),
@@ -116,7 +157,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
         }
       })
     } catch (err) {
-      return alert(err)
+      return console.warn(err)
     }
 
     return result
@@ -142,9 +183,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     $downloadBtn.addClass('loading')
     generateZip(generateCSS(), generateJavascript(), function () {
       $downloadBtn.removeClass('loading')
-      setTimeout(function () {
-        generateUrl()
-      }, 1)
+      setTimeout(generateUrl, 500)
     })
   })
 
@@ -167,9 +206,5 @@ window.onload = function () { // wait for load in a dumb way because B-0
     inputsVariables.val('')
   })
 
-  try {
-    parseUrl()
-  } catch (e) {
-    // maybe alert user that we can't parse their url
-  }
+  parseUrl()
 }
