@@ -193,6 +193,27 @@ body {
   font-weight: normal;
 }
 
+/* Alerts */
+.bs-customizer-alert {
+  position: fixed;
+  top: 51px;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  padding: 15px 0;
+  color: #fff;
+  background-color: #d9534f;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
+  border-bottom: 1px solid #b94441;
+}
+.bs-customizer-alert .close {
+  margin-top: -2px;
+  color: #fff;
+  text-shadow: none;
+}
+.bs-customizer-alert p {
+  margin-bottom: 0;
+}
 
 
 /* Docs pages and sections
