@@ -66,13 +66,13 @@ base_url: "../"
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="forms.less">
+            <input type="checkbox" checked value="forms.less" data-dependents="navbar.less,input-groups.less">
             Forms
           </label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="buttons.less">
+            <input type="checkbox" checked value="buttons.less" data-dependents="button-groups.less">
             Buttons
           </label>
         </div>
@@ -112,7 +112,7 @@ base_url: "../"
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="navbar.less" data-dependency="forms.less">
+            <input type="checkbox" checked value="navbar.less" data-dependencies="forms.less">
             Navbar
           </label>
         </div>
@@ -223,13 +223,13 @@ base_url: "../"
         <h4>Miscellaneous</h4>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="input-groups.less" data-dependency="forms.less">
+            <input type="checkbox" checked value="input-groups.less" data-dependencies="forms.less">
             Input groups
           </label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="button-groups.less" data-dependency="buttons.less">
+            <input type="checkbox" checked value="button-groups.less" data-dependencies="buttons.less">
             Button groups
           </label>
         </div>
@@ -304,13 +304,13 @@ base_url: "../"
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="tooltip.js">
+            <input type="checkbox" checked value="tooltip.js" data-dependents="popover.js">
             Tooltips
           </label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="popover.js" data-dependency="tooltip.js">
+            <input type="checkbox" checked value="popover.js" data-dependencies="tooltip.js">
             Popovers <small>(requires Tooltips)</small>
           </label>
         </div>
