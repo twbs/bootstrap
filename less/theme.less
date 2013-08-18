@@ -30,7 +30,7 @@
   }
 }
 
-// Button mixin for generating new styles
+// Mixin for generating new styles
 .btn-styles(@btn-color: #555;) {
   #gradient > .vertical(@start-color: @btn-color; @end-color: darken(@btn-color, 10%));
   border-color: darken(@btn-color, 12%);
@@ -141,7 +141,7 @@
   .box-shadow(@shadow);
 }
 
-// Alert mixin for generating new styles
+// Mixin for generating new styles
 .alert-styles(@color) {
   #gradient > .vertical(@start-color: @color; @end-color: darken(@color, 7.5%));
   border-color: darken(@color, 15%);
@@ -164,7 +164,7 @@
   #gradient > .vertical(@start-color: darken(@progress-bg, 4%); @end-color: @progress-bg;)
 }
 
-// Progress bar mixin for generating new styles
+// Mixin for generating new styles
 .progress-bar-styles(@color) {
   #gradient > .vertical(@start-color: @color; @end-color: darken(@color, 10%));
 }
@@ -205,7 +205,7 @@
   .box-shadow(0 1px 2px rgba(0,0,0,.05));
 }
 
-// Alert mixin for generating new styles
+// Mixin for generating new styles
 .panel-heading-styles(@color) {
   #gradient > .vertical(@start-color: @color; @end-color: darken(@color, 5%));
 }
