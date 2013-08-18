@@ -5231,6 +5231,10 @@ a.list-group-item:focus {
   clear: both;
 }
 
+.panel > .table {
+  margin-bottom: 0;
+}
+
 .panel > .list-group {
   margin-bottom: 0;
 }
@@ -5250,6 +5254,14 @@ a.list-group-item:focus {
 
 .panel-heading + .list-group .list-group-item:first-child {
   border-top-width: 0;
+}
+
+.panel > .table {
+  margin-bottom: 0;
+}
+
+.panel > .panel-body + .table {
+  border-top: 1px solid #dddddd;
 }
 
 .panel-heading {
