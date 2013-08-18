@@ -83,6 +83,17 @@ module.exports = function(grunt) {
         },
         src: ['less/bootstrap.less'],
         dest: 'dist/css/<%= pkg.name %>.min.css'
+      },
+      theme: {
+        src: ['less/theme.less'],
+        dest: 'dist/css/<%= pkg.name %>-theme.css'
+      },
+      theme_min: {
+        options: {
+          compress: true
+        },
+        src: ['less/theme.less'],
+        dest: 'dist/css/<%= pkg.name %>-theme.min.css'
       }
     },
 
@@ -145,7 +156,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-recess');
   grunt.loadNpmTasks('browserstack-runner');
 
-
   // Docs HTML validation task
   grunt.registerTask('validate-docs', ['jekyll', 'validation']);
 
@@ -170,7 +180,7 @@ module.exports = function(grunt) {
   grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['test', 'dist']);
+  grunt.registerTask('default', ['test', 'dist', 'build-customizer']);
 
   // task for building customizer
   grunt.registerTask('build-customizer', 'Add scripts/less files to customizer.', function () {

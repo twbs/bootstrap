@@ -141,7 +141,7 @@ body {
 .bs-masthead-links {
   margin-top: 20px;
   margin-bottom: 20px;
-  padding-left: 0;
+  padding: 0 15px;
   list-style: none;
   text-align: center;
 }
@@ -193,6 +193,27 @@ body {
   font-weight: normal;
 }
 
+/* Alerts */
+.bs-customizer-alert {
+  position: fixed;
+  top: 51px;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  padding: 15px 0;
+  color: #fff;
+  background-color: #d9534f;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
+  border-bottom: 1px solid #b94441;
+}
+.bs-customizer-alert .close {
+  margin-top: -2px;
+  color: #fff;
+  text-shadow: none;
+}
+.bs-customizer-alert p {
+  margin-bottom: 0;
+}
 
 
 /* Docs pages and sections
@@ -418,7 +439,7 @@ body {
 .bs-example > blockquote:last-child,
 .bs-example > .form-control:last-child,
 .bs-example > .table:last-child,
-.bs-example > .navbar:last-child
+.bs-example > .navbar:last-child,
 .bs-example > .jumbotron:last-child,
 .bs-example > .alert:last-child,
 .bs-example > .panel:last-child,
@@ -529,6 +550,12 @@ body {
   .bs-navbar-bottom-example {
     border-radius: 4px 4px 0 0;
   }
+}
+
+/* Pagination */
+.bs-example .pagination {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 /* Example modals */
@@ -733,9 +760,7 @@ body {
 .bs-social-buttons li {
   display: inline-block;
   line-height: 1;
-}
-.bs-social-buttons li + li {
-  margin-left: 15px;
+  padding: 5px 8px;
 }
 .bs-social-buttons .twitter-follow-button {
   width: 225px !important;
@@ -845,6 +870,10 @@ body {
     border-width: 1px;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
+  }
+
+  .bs-masthead-links {
+    padding: 0;
   }
 
   .carbonad {
