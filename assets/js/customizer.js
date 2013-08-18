@@ -216,5 +216,27 @@ window.onload = function () { // wait for load in a dumb way because B-0
     inputsVariables.val('')
   })
 
+  $('[data-dependencies]').on('click', function () {
+    if (!$(this).is(':checked')) return
+    var dependencies = this.getAttribute('data-dependencies')
+    if (!dependencies) return
+    dependencies = dependencies.split(',')
+    for (var i = 0; i < dependencies.length; i++) {
+      var dependency = $('[value="' + dependencies[i] + '"]')
+      dependency && dependency.prop('checked', true)
+    }
+  })
+
+  $('[data-dependents]').on('click', function () {
+    if ($(this).is(':checked')) return
+    var dependents = this.getAttribute('data-dependents')
+    if (!dependents) return
+    dependents = dependents.split(',')
+    for (var i = 0; i < dependents.length; i++) {
+      var dependent = $('[value="' + dependents[i] + '"]')
+      dependent && dependent.prop('checked', false)
+    }
+  })
+
   parseUrl()
 }
