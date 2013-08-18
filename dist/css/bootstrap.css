@@ -2334,6 +2334,34 @@ input[type="button"].btn-block {
   line-height: 1;
 }
 
+.glyphicon-asterisk:before {
+  content: "\2a";
+}
+
+.glyphicon-plus:before {
+  content: "\2b";
+}
+
+.glyphicon-euro:before {
+  content: "\20ac";
+}
+
+.glyphicon-minus:before {
+  content: "\2212";
+}
+
+.glyphicon-cloud:before {
+  content: "\2601";
+}
+
+.glyphicon-envelope:before {
+  content: "\2709";
+}
+
+.glyphicon-pencil:before {
+  content: "\270f";
+}
+
 .glyphicon-glass:before {
   content: "\e001";
 }
@@ -2344,10 +2372,6 @@ input[type="button"].btn-block {
 
 .glyphicon-search:before {
   content: "\e003";
-}
-
-.glyphicon-envelope:before {
-  content: "\2709";
 }
 
 .glyphicon-heart:before {
@@ -2462,10 +2486,6 @@ input[type="button"].btn-block {
   content: "\e032";
 }
 
-.glyphicon-lock:before {
-  content: "\e033";
-}
-
 .glyphicon-flag:before {
   content: "\e034";
 }
@@ -2506,16 +2526,8 @@ input[type="button"].btn-block {
   content: "\e043";
 }
 
-.glyphicon-bookmark:before {
-  content: "\e044";
-}
-
 .glyphicon-print:before {
   content: "\e045";
-}
-
-.glyphicon-camera:before {
-  content: "\e046";
 }
 
 .glyphicon-font:before {
@@ -2572,10 +2584,6 @@ input[type="button"].btn-block {
 
 .glyphicon-picture:before {
   content: "\e060";
-}
-
-.glyphicon-pencil:before {
-  content: "\270f";
 }
 
 .glyphicon-map-marker:before {
@@ -2722,18 +2730,6 @@ input[type="button"].btn-block {
   content: "\e097";
 }
 
-.glyphicon-plus:before {
-  content: "\002b";
-}
-
-.glyphicon-minus:before {
-  content: "\2212";
-}
-
-.glyphicon-asterisk:before {
-  content: "\002a";
-}
-
 .glyphicon-exclamation-sign:before {
   content: "\e101";
 }
@@ -2744,10 +2740,6 @@ input[type="button"].btn-block {
 
 .glyphicon-leaf:before {
   content: "\e103";
-}
-
-.glyphicon-fire:before {
-  content: "\e104";
 }
 
 .glyphicon-eye-open:before {
@@ -2764,10 +2756,6 @@ input[type="button"].btn-block {
 
 .glyphicon-plane:before {
   content: "\e108";
-}
-
-.glyphicon-calendar:before {
-  content: "\e109";
 }
 
 .glyphicon-random:before {
@@ -2822,10 +2810,6 @@ input[type="button"].btn-block {
   content: "\e122";
 }
 
-.glyphicon-bell:before {
-  content: "\e123";
-}
-
 .glyphicon-certificate:before {
   content: "\e124";
 }
@@ -2874,10 +2858,6 @@ input[type="button"].btn-block {
   content: "\e135";
 }
 
-.glyphicon-wrench:before {
-  content: "\e136";
-}
-
 .glyphicon-tasks:before {
   content: "\e137";
 }
@@ -2886,20 +2866,12 @@ input[type="button"].btn-block {
   content: "\e138";
 }
 
-.glyphicon-briefcase:before {
-  content: "\e139";
-}
-
 .glyphicon-fullscreen:before {
   content: "\e140";
 }
 
 .glyphicon-dashboard:before {
   content: "\e141";
-}
-
-.glyphicon-paperclip:before {
-  content: "\e142";
 }
 
 .glyphicon-heart-empty:before {
@@ -2912,14 +2884,6 @@ input[type="button"].btn-block {
 
 .glyphicon-phone:before {
   content: "\e145";
-}
-
-.glyphicon-pushpin:before {
-  content: "\e146";
-}
-
-.glyphicon-euro:before {
-  content: "\20ac";
 }
 
 .glyphicon-usd:before {
@@ -2966,11 +2930,11 @@ input[type="button"].btn-block {
   content: "\e158";
 }
 
-.glyphicon-collapse:before {
+.glyphicon-collapse-down:before {
   content: "\e159";
 }
 
-.glyphicon-collapse-top:before {
+.glyphicon-collapse-up:before {
   content: "\e160";
 }
 
@@ -3114,10 +3078,6 @@ input[type="button"].btn-block {
   content: "\e195";
 }
 
-.glyphicon-cloud:before {
-  content: "\2601";
-}
-
 .glyphicon-cloud-download:before {
   content: "\e197";
 }
@@ -3132,6 +3092,46 @@ input[type="button"].btn-block {
 
 .glyphicon-tree-deciduous:before {
   content: "\e200";
+}
+
+.glyphicon-briefcase:before {
+  content: "\1f4bc";
+}
+
+.glyphicon-calendar:before {
+  content: "\1f4c5";
+}
+
+.glyphicon-pushpin:before {
+  content: "\1f4cc";
+}
+
+.glyphicon-paperclip:before {
+  content: "\1f4ce";
+}
+
+.glyphicon-camera:before {
+  content: "\1f4f7";
+}
+
+.glyphicon-lock:before {
+  content: "\1f512";
+}
+
+.glyphicon-bell:before {
+  content: "\1f514";
+}
+
+.glyphicon-bookmark:before {
+  content: "\1f516";
+}
+
+.glyphicon-fire:before {
+  content: "\1f525";
+}
+
+.glyphicon-wrench:before {
+  content: "\1f527";
 }
 
 .caret {
