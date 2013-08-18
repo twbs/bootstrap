@@ -3238,6 +3238,9 @@ button.close {
 @media (min-width: 768px) {
   .navbar-header {
     float: left;
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 15px;
   }
 }
 
