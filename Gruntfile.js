@@ -97,6 +97,14 @@ module.exports = function(grunt) {
       }
     },
 
+    copy: {
+      fonts: {
+        expand: true,
+        src: ["fonts/*"],
+        dest: 'dist/'
+      }
+    },
+
     qunit: {
       options: {
         inject: 'js/tests/unit/phantom.js'
@@ -147,6 +155,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -176,8 +185,11 @@ module.exports = function(grunt) {
   // CSS distribution task.
   grunt.registerTask('dist-css', ['recess']);
 
+  // Fonts distribution task.
+  grunt.registerTask('dist-fonts', ['copy']);
+
   // Full distribution task.
-  grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js']);
+  grunt.registerTask('dist', ['clean', 'dist-css', 'dist-fonts', 'dist-js']);
 
   // Default task.
   grunt.registerTask('default', ['test', 'dist', 'build-customizer']);
