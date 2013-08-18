@@ -1,6 +1,17 @@
 window.onload = function () { // wait for load in a dumb way because B-0
   var cw = '/*!\n * Bootstrap v3.0.0-rc.2\n *\n * Copyright 2013 Twitter, Inc\n * Licensed under the Apache License v2.0\n * http://www.apache.org/licenses/LICENSE-2.0\n *\n * Designed and built with all the love in the world @twitter by @mdo and @fat.\n */\n\n'
 
+  function showError (msg, err) {
+    $('<div id="bsCustomizerAlert" class="bs-customizer-alert">\
+        <div class="container">\
+          <a href="#bsCustomizerAlert" data-dismiss="alert" class="close pull-right">&times;</a>\
+          <p class="bs-customizer-alert-text">' + msg + '</p>' +
+          (err.extract ? '<pre class="bs-customizer-alert-extract">' + err.extract.join('\n') + '</pre>' : '') + '\
+        </div>\
+      </div>').appendTo('body').alert()
+    throw err
+  }
+
   function getQueryParam(key) {
     key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
     var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
@@ -23,11 +34,11 @@ window.onload = function () { // wait for load in a dumb way because B-0
       dataType: 'json',
       data: JSON.stringify(data)
     })
-    .success( function(e) {
+    .success(function(err) {
       history.replaceState(false, document.title, window.location.origin + window.location.pathname + '?id=' + e.id)
     })
-    .error( function(e) {
-      console.warn("gist save error", e);
+    .error(function(err) {
+      showError('<strong>Error</strong> Could not save gist file, configuration not saved.', err)
     })
   }
 
@@ -78,13 +89,13 @@ window.onload = function () { // wait for load in a dumb way because B-0
         }
       }
     })
-    .error(function(result) {
-      console.warn("gist save error", e)
+    .error(function(err) {
+      showError('Error fetching bootstrap config file', err)
     })
   }
 
   function generateZip(css, js, complete) {
-    if (!css && !js) return console.warn('you want to build nothing… o_O')
+    if (!css && !js) return showError('<strong>Error</strong> No Bootstrap files selected.', new Error('no Bootstrap'))
 
     var zip = new JSZip()
 
@@ -149,15 +160,16 @@ window.onload = function () { // wait for load in a dumb way because B-0
         , optimization: 0
         , filename: 'bootstrap.css'
       }).parse(css, function (err, tree) {
-        if (err) return console.warn(err)
-
+        if (err) {
+          return showError('<strong>Error</strong> Could not parse less files.', err)
+        }
         result = {
           'bootstrap.css'     : cw + tree.toCSS(),
           'bootstrap.min.css' : cw + tree.toCSS({ compress: true })
         }
       })
     } catch (err) {
-      return console.warn(err)
+      return showError('<strong>Error</strong> Could not parse less files.', err)
     }
 
     return result
