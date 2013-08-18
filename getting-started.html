@@ -317,6 +317,146 @@ bootstrap/
 </html>
 {% endhighlight %}
   </div>
+  
+  
+  
+  <!-- Migration
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="migration">Migration</h1>
+    </div>
+  
+   <p>Bootstrap 3 is a major overhaul, and there are a lot of changes from Bootstrap 2.x.
+   The following is a summary of changes that is intended to help developers transition to 3.</p>
+
+   <p class="lead">Major CSS class changes from 2.x to 3.0</p>
+   <div class="row">
+     <div class="col-md-10">
+      <table class="table table-condensed table-bordered table-striped bs-table">
+        <thead>
+          <tr><th>Bootstrap 2.x</th><th>Bootstrap 3.0</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>.container-fluid</code></td><td><code>.container</code></td></tr>
+          <tr><td><code>.row-fluid</code></td><td><code>.row</code></td></tr>
+          <tr><td><code>.span*</code></td><td><code>.col-md-*</code></td></tr>
+          <tr><td><code>.offset*</code></td><td><code>.col-md-offset-*</code></td></tr>
+          <tr><td><code>.brand</code></td><td><code>.navbar-brand</code></td></tr>
+          <tr><td><code>.hero-unit</code></td><td><code>.jumbotron</code></td></tr>
+          <tr><td><code>.icon-*</code></td><td><code>.glyphicon .glyphicon-*</code></td></tr>
+          <tr><td><code>.btn</code></td><td><code>.btn .btn-default</code></td></tr>
+          <tr><td><code>.btn-mini</code></td><td><code>.btn-xs</code></td></tr>
+          <tr><td><code>.btn-small</code></td><td><code>.btn-sm</code></td></tr>
+          <tr><td><code>.btn-large</code></td><td><code>.btn-lg</code></td></tr>        
+          <tr><td><code>.visible-phone</code></td><td><code>.visible-sm</code></td></tr>
+          <tr><td><code>.visible-tablet</code></td><td><code>.visible-md</code></td></tr>
+          <tr><td><code>.visible-desktop</code></td><td><code>.visible-lg</code></td></tr>
+          <tr><td><code>.hidden-phone</code></td><td><code>.hidden-sm</code></td></tr>
+          <tr><td><code>.hidden-tablet</code></td><td><code>.hidden-md</code></td></tr>
+          <tr><td><code>.hidden-desktop</code></td><td><code>.hidden-lg</code></td></tr>
+          <tr><td><code>.input-small</code></td><td><code>.input-sm</code></td></tr>
+          <tr><td><code>.input-large</code></td><td><code>.input-lg</code></td></tr>
+          <tr><td><code>.input-prepend</code></td><td><code>.input-group</code></td></tr>
+          <tr><td><code>.input-append</code></td><td><code>.input-group</code></td></tr>
+          <tr><td><code>.add-on</code></td><td><code>.input-group-addon</code></td></tr>
+          <tr><td><code>.btn-navbar</code></td><td><code>.navbar-btn</code></td></tr>
+          <tr><td><code>.thumbnail</code></td><td><code>.img-thumbnail</code></td></tr>
+          <tr><td><code>ul.inline</code></td><td><code>.list-inline</code></td></tr>
+        </tbody></table>
+    </div>
+  </div>
+
+  <p class="lead">New Classes &amp; Elements</p>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-bordered table-striped bs-table">
+        <thead>
+          <tr><th>Element</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Panels</td><td><code>.panel</code> <code>.panel-body</code> <code>.panel-title</code> <code>.panel-heading</code> <code>.panel-footer</code> <code>.panel-collapse</code></td></tr>
+          <tr><td>List groups</td><td><code>.list-group</code> <code>.list-group-item</code> <code>.list-group-item-text</code> <code>.list-group-item-heading</code></td></tr>
+          <tr><td>Glyphicons</td><td><code>.glyphicon</code></td></tr>
+          <tr><td>Jumbotron</td><td><code>.jumbotron</code></td></tr>
+          <tr><td>Tiny grid (&lt;768 px)</td><td><code>.col-xs-*</code></td></tr>
+          <tr><td>Small grid (&gt;768 px)</td><td><code>.col-sm-*</code></td></tr>
+          <tr><td>Medium grid (&gt;992 px)</td><td><code>.col-md-*</code></td></tr>
+          <tr><td>Large grid (&gt;1200 px)</td><td><code>.col-lg-*</code></td></tr>
+          <tr><td>Offsets</td><td><code>.col-sm-offset-*</code> <code>.col-md-offset-*</code> <code>.col-lg-offset-*</code></td></tr>
+          <tr><td>Push</td><td><code>.col-sm-push-*</code> <code>.col-md-push-*</code> <code>.col-lg-push-*</code></td></tr>
+          <tr><td>Pull</td><td><code>.col-sm-pull-*</code> <code>.col-md-pull-*</code> <code>.col-lg-pull-*</code></td></tr>
+          <tr><td>Input groups</td><td><code>.input-group</code> <code>.input-group-addon</code> <code>.input-group-btn</code></td></tr>
+          <tr><td>Form controls</td><td><code>.form-control</code> <code>.form-group</code></td></tr>
+          <tr><td>Inline controls</td><td><code>.checkbox-inline</code> <code>.radio-inline</code></td></tr>
+          <tr><td>Button group sizes</td><td><code>.btn-group-xs</code> <code>.btn-group-sm</code> <code>.btn-group-lg</code></td></tr>
+          <tr><td>Navbar text</td><td><code>.navbar-text</code></td></tr>
+          <tr><td>Navbar header</td><td><code>.navbar-header</code></td></tr>
+          <tr><td>Justified tabs / pills</td><td><code>.nav-justified</code></td></tr>
+          <tr><td>Responsive images</td><td><code>.img-responsive</code></td></tr>
+          <tr><td>Contextual table rows</td><td><code>.success</code> <code>.danger</code> <code>.warning</code> <code>.active</code></td></tr>
+          <tr><td>Contextual panels</td><td><code>.panel-success</code> <code>.panel-danger</code> <code>.panel-warning</code> <code>.panel-info</code></td></tr>
+          <tr><td>Modal</td><td><code>.modal-dialog</code> <code>.modal-content</code></td></tr>
+          <tr><td>Thumbnail image</td><td><code>.img-thumbnail</code></td></tr>
+          <tr><td>Well sizes</td><td><code>.well-small</code> <code>.well-large</code></td></tr>
+          <tr><td>Alert links</td><td><code>.alert-link</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <p class="lead">Deprecated Classes &amp; Elements</p>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered table-striped bs-table">
+        <thead>
+          <tr><th>Element</th><th>Removed from 2.x</th><th>3.0 Equivalent</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Hero Unit</td><td><code>.hero-unit</code></td><td><code>.jumbotron</code></td></tr>
+          <tr><td>Form actions</td><td><code>.form-actions</code></td><td>-</td></tr>
+          <tr><td>Grid</td><td><code>.span*</code></td><td><code>.col-md-*</code></td></tr>
+          <tr><td>Fluid container</td><td><code>.container-fluid</code></td><td><code>.container</code> (no more fixed grid)</td></tr>
+          <tr><td>Fluid row</td><td><code>.row-fluid</code></td><td><code>.row</code> (no more fixed grid)</td></tr>
+          <tr><td>Icons</td><td><code>.icon-*</code></td><td><code>.glyphicon-*</code></td></tr>
+          <tr><td>Navbar button</td><td><code>.btn-navbar</code></td><td><code>.navbar-btn</code></td></tr>
+          <tr><td>Navbar inner</td><td><code>.navbar-inner</code></td><td>-</td></tr>  	
+          <tr><td>Thumbnails</td><td><code>.thumbnails</code></td><td><code>.col-*</code> and <code>.thumbnail</code></td></tr>
+          <tr><td>Input append / prepend</td><td><code>.input-append</code> <code>.input-prepend</code> <code>.add-on</code></td><td><code>.input-group</code></td></tr>
+          <tr><td>Dropdown submenu</td><td><code>.dropdown-submenu</code></td><td>-</td></tr>  
+          <tr><td>Tab alignments</td><td><code>.tabs-left</code> <code>.tabs-right</code> <code>.tabs-below</code></td><td>-</td></tr>  
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <p class="lead">Additional Migration Notes</p>
+  <div class="row">
+    <div class="options-list">
+      <div class="col-md-12">
+        <ul class="list-group">
+          <li class="list-group-item"><code>.input-*</code> are 100% width. Wrap inputs inside <code>&lt;div class="col-*"&gt;&lt;/div&gt;</code> to control input widths.</li>
+          <li class="list-group-item"><code>.badge</code> no longer has contextual (-success,-primary,etc..) classes</li>
+          <li class="list-group-item"><code>.btn</code> must also use <code>.btn-default</code> to get the 'default' button</li>
+          <li class="list-group-item"><code>.container</code> and <code>.row</code> are now fluid (percentage-based)</li>
+          <li class="list-group-item">Images are not responsive by default. Use <code>.img-responsive</code> for fluid IMG size</li>
+          <li class="list-group-item">The icons, now <code>.glyphicon</code> are in a separate CSS file.</li>
+          <li class="list-group-item">Include <code>.glyphicon</code> base class in all icons (ie: <code>.glyphicon .glyphicon-asterisk</code>).</li>
+          <li class="list-group-item">Typeahead has been dropped, in favor of using <a href="http://twitter.github.io/typeahead.js/">Twitter Typeahead</a>.</li>
+          <li class="list-group-item">Modal markup has changed <code>.modal-header</code> <code>.modal-body</code> <code>.modal-footer</code> now get wrapped in <code>.modal-content</code> and <code>.modal-dialog</code></li>
+          <li class="list-group-item">Events are namespaced. For example to handle the modal 'show' event, use <code>'show.bs.modal'</code>. For tabs 'shown' use <code>'shown.bs.tab'</code>, etc..</li> 
+        </ul>
+      </div>
+    </div>
+   </div>
+   
+   <div class="row">
+     <div class="bs-callout bs-callout-info">
+       <h4>More Tools &amp; Examples</h4>
+       <p>You may also find this <a href="https://github.com/iatek/bootstrap-3-upgrade">upgrade tool</a> and collection of <a href="http://bootply.com/tagged/bootstrap-3">code snippets at Bootply</a> useful for migrating to Bootstrap 3.</p>
+     </div>
+   </div>
+  </div>
 
 
 
