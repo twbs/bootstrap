@@ -2632,13 +2632,12 @@ input[type="button"].btn-block {
 }
 
 .btn-lg .caret {
-  border-width: 5px;
+  border-width: 5px 5px 0;
   border-bottom-width: 0;
 }
 
 .dropup .btn-lg .caret {
-  border-width: 5px;
-  border-top-width: 0;
+  border-width: 0 5px 5px;
 }
 
 .btn-group-vertical > .btn,
