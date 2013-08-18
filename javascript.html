@@ -541,12 +541,12 @@ $('#myDropdown').on('show.bs.dropdown', function () {
             <li><a href="#fat">@fat</a></li>
             <li><a href="#mdo">@mdo</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#one">one</a></li>
-                <li><a href="#two">two</a></li>
+              <a href="#" id="navbarDrop1" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="navbarDrop1">
+                <li><a href="#one" tabindex="-1">one</a></li>
+                <li><a href="#two" tabindex="-1">two</a></li>
                 <li class="divider"></li>
-                <li><a href="#three">three</a></li>
+                <li><a href="#three" tabindex="-1">three</a></li>
               </ul>
             </li>
           </ul>
@@ -663,10 +663,10 @@ $('#myScrollspy').on('activate.bs.scrollspy', function () {
         <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
         <li><a href="#profile" data-toggle="tab">Profile</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#dropdown1" data-toggle="tab">@fat</a></li>
-            <li><a href="#dropdown2" data-toggle="tab">@mdo</a></li>
+          <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+            <li><a href="#dropdown1" tabindex="-1" data-toggle="tab">@fat</a></li>
+            <li><a href="#dropdown2" tabindex="-1" data-toggle="tab">@mdo</a></li>
           </ul>
         </li>
       </ul>
@@ -1104,7 +1104,7 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
             <td>string | false</td>
             <td>false</td>
             <td>
-             <p>Appends the popover to a specific element. Example: <code>container: 'body'</code></p>
+             <p>Appends the popover to a specific element. Example: <code>container: 'body'</code>. This option is particularly useful in that it allows you to position the popover in the flow of the document near the triggering element - which will prevent the popover from floating away from the triggering element during a window resize.</p>
             </td>
           </tr>
         </tbody>
@@ -1415,11 +1415,11 @@ $('.nav-tabs').button()
       <div class="panel-group" id="accordion">
         <div class="panel">
           <div class="panel-heading">
-            <h3 class="panel-title">
+            <h4 class="panel-title">
               <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
                 Collapsible Group Item #1
               </a>
-            </h3>
+            </h4>
           </div>
           <div id="collapseOne" class="panel-collapse collapse in">
             <div class="panel-body">
@@ -1429,11 +1429,11 @@ $('.nav-tabs').button()
         </div>
         <div class="panel">
           <div class="panel-heading">
-            <h3 class="panel-title">
+            <h4 class="panel-title">
               <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
                 Collapsible Group Item #2
               </a>
-            </h3>
+            </h4>
           </div>
           <div id="collapseTwo" class="panel-collapse collapse">
             <div class="panel-body">
@@ -1443,11 +1443,11 @@ $('.nav-tabs').button()
         </div>
         <div class="panel">
           <div class="panel-heading">
-            <h3 class="panel-title">
+            <h4 class="panel-title">
               <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
                 Collapsible Group Item #3
               </a>
-            </h3>
+            </h4>
           </div>
           <div id="collapseThree" class="panel-collapse collapse">
             <div class="panel-body">
@@ -1461,11 +1461,11 @@ $('.nav-tabs').button()
 <div class="panel-group" id="accordion">
   <div class="panel">
     <div class="panel-heading">
-      <h3 class="panel-title">
+      <h4 class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
           Collapsible Group Item #1
         </a>
-      </h3>
+      </h4>
     </div>
     <div id="collapseOne" class="panel-collapse collapse in">
       <div class="panel-body">
@@ -1475,11 +1475,11 @@ $('.nav-tabs').button()
   </div>
   <div class="panel">
     <div class="panel-heading">
-      <h3 class="panel-title">
+      <h4 class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
           Collapsible Group Item #2
         </a>
-      </h3>
+      </h4>
     </div>
     <div id="collapseTwo" class="panel-collapse collapse">
       <div class="panel-body">
@@ -1489,11 +1489,11 @@ $('.nav-tabs').button()
   </div>
   <div class="panel">
     <div class="panel-heading">
-      <h3 class="panel-title">
+      <h4 class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
           Collapsible Group Item #3
         </a>
-      </h3>
+      </h4>
     </div>
     <div id="collapseThree" class="panel-collapse collapse">
       <div class="panel-body">
@@ -1903,7 +1903,7 @@ $('#myCarousel').on('slide.bs.carousel', function () {
            <td>offset</td>
            <td>number | function | object</td>
            <td>10</td>
-           <td>Pixels to offset from screen when calculating position of scroll. If a single number is provided, the offset will be applied in both top and left directions. To provide a unique, bottom and top offset just provide an object <code>offset: { top: 10 }</code> or <code>offset: { top: 10, bottom: 5 }</code>. Use a function when you need to dynamically calculate an offset.</td>
+           <td>Pixels to offset from screen when calculating position of scroll. If a single number is provided, the offset will be applied in both top and bottom directions. To provide a unique, bottom and top offset just provide an object <code>offset: { top: 10 }</code> or <code>offset: { top: 10, bottom: 5 }</code>. Use a function when you need to dynamically calculate an offset.</td>
          </tr>
         </tbody>
       </table>

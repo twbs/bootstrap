@@ -204,11 +204,11 @@ base_url: "../"
         <button type="button" class="btn btn-default">2</button>
 
         <div class="btn-group">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          <button id="btnGroupDrop1" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
             Dropdown
             <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" role="menu" aria-labelledby="btnGroupDrop1">
             <li><a href="#">Dropdown link</a></li>
             <li><a href="#">Dropdown link</a></li>
           </ul>
@@ -240,11 +240,11 @@ base_url: "../"
         <button type="button" class="btn btn-default">Button</button>
         <button type="button" class="btn btn-default">Button</button>
         <div class="btn-group">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          <button id="btnGroupVerticalDrop1" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
             Dropdown
             <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" role="menu" aria-labelledby="btnGroupVerticalDrop1">
             <li><a href="#">Dropdown link</a></li>
             <li><a href="#">Dropdown link</a></li>
           </ul>
@@ -252,31 +252,31 @@ base_url: "../"
         <button type="button" class="btn btn-default">Button</button>
         <button type="button" class="btn btn-default">Button</button>
         <div class="btn-group">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          <button id="btnGroupVerticalDrop2" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
             Dropdown
             <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" role="menu" aria-labelledby="btnGroupVerticalDrop2">
             <li><a href="#">Dropdown link</a></li>
             <li><a href="#">Dropdown link</a></li>
           </ul>
         </div>
         <div class="btn-group">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          <button id="btnGroupVerticalDrop3" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
             Dropdown
             <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" role="menu" aria-labelledby="btnGroupVerticalDrop3">
             <li><a href="#">Dropdown link</a></li>
             <li><a href="#">Dropdown link</a></li>
           </ul>
         </div>
         <div class="btn-group">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          <button id="btnGroupVerticalDrop4" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
             Dropdown
             <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" role="menu" aria-labelledby="btnGroupVerticalDrop4">
             <li><a href="#">Dropdown link</a></li>
             <li><a href="#">Dropdown link</a></li>
           </ul>
@@ -332,7 +332,7 @@ base_url: "../"
     <div class="bs-example">
       <div class="btn-group">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Default <span class="caret"></span></button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" role="menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
           <li><a href="#">Something else here</a></li>
@@ -342,7 +342,7 @@ base_url: "../"
       </div><!-- /btn-group -->
       <div class="btn-group">
         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Primary <span class="caret"></span></button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" role="menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
           <li><a href="#">Something else here</a></li>
@@ -352,7 +352,7 @@ base_url: "../"
       </div><!-- /btn-group -->
       <div class="btn-group">
         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Success <span class="caret"></span></button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" role="menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
           <li><a href="#">Something else here</a></li>
@@ -362,7 +362,7 @@ base_url: "../"
       </div><!-- /btn-group -->
       <div class="btn-group">
         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Info <span class="caret"></span></button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" role="menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
           <li><a href="#">Something else here</a></li>
@@ -372,7 +372,7 @@ base_url: "../"
       </div><!-- /btn-group -->
       <div class="btn-group">
         <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">Warning <span class="caret"></span></button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" role="menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
           <li><a href="#">Something else here</a></li>
@@ -382,7 +382,7 @@ base_url: "../"
       </div><!-- /btn-group -->
       <div class="btn-group">
         <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Danger <span class="caret"></span></button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" role="menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
           <li><a href="#">Something else here</a></li>
@@ -397,7 +397,7 @@ base_url: "../"
   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
     Action <span class="caret"></span>
   </button>
-  <ul class="dropdown-menu">
+  <ul class="dropdown-menu" role="menu">
     <li><a href="#">Action</a></li>
     <li><a href="#">Another action</a></li>
     <li><a href="#">Something else here</a></li>
@@ -413,7 +413,7 @@ base_url: "../"
       <div class="btn-group">
         <button type="button" class="btn btn-default">Default</button>
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" role="menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
           <li><a href="#">Something else here</a></li>
@@ -424,7 +424,7 @@ base_url: "../"
       <div class="btn-group">
         <button type="button" class="btn btn-primary">Primary</button>
         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" role="menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
           <li><a href="#">Something else here</a></li>
@@ -435,7 +435,7 @@ base_url: "../"
       <div class="btn-group">
         <button type="button" class="btn btn-success">Success</button>
         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" role="menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
           <li><a href="#">Something else here</a></li>
@@ -446,7 +446,7 @@ base_url: "../"
       <div class="btn-group">
         <button type="button" class="btn btn-info">Info</button>
         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" role="menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
           <li><a href="#">Something else here</a></li>
@@ -457,7 +457,7 @@ base_url: "../"
       <div class="btn-group">
         <button type="button" class="btn btn-warning">Warning</button>
         <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" role="menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
           <li><a href="#">Something else here</a></li>
@@ -468,7 +468,7 @@ base_url: "../"
       <div class="btn-group">
         <button type="button" class="btn btn-danger">Danger</button>
         <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" role="menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
           <li><a href="#">Something else here</a></li>
@@ -484,7 +484,7 @@ base_url: "../"
   <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
     <span class="caret"></span>
   </button>
-  <ul class="dropdown-menu">
+  <ul class="dropdown-menu" role="menu">
     <li><a href="#">Action</a></li>
     <li><a href="#">Another action</a></li>
     <li><a href="#">Something else here</a></li>
@@ -502,7 +502,7 @@ base_url: "../"
           <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown">
             Large button <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" role="menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
@@ -516,7 +516,7 @@ base_url: "../"
           <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
             Small button <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" role="menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
@@ -530,7 +530,7 @@ base_url: "../"
           <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
             Extra small button <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" role="menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
@@ -579,7 +579,7 @@ base_url: "../"
         <div class="btn-group dropup">
           <button type="button" class="btn btn-default">Dropup</button>
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" role="menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
@@ -590,7 +590,7 @@ base_url: "../"
         <div class="btn-group dropup">
           <button type="button" class="btn btn-primary">Right dropup</button>
           <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-          <ul class="dropdown-menu pull-right">
+          <ul class="dropdown-menu pull-right" role="menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
@@ -802,7 +802,7 @@ base_url: "../"
           <div class="input-group">
             <div class="input-group-btn">
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
                 <li><a href="#">Something else here</a></li>
@@ -818,7 +818,7 @@ base_url: "../"
             <input type="text" class="form-control">
             <div class="input-group-btn">
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-              <ul class="dropdown-menu pull-right">
+              <ul class="dropdown-menu pull-right" role="menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
                 <li><a href="#">Something else here</a></li>
@@ -875,7 +875,7 @@ base_url: "../"
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
                 <span class="caret"></span>
               </button>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
                 <li><a href="#">Something else here</a></li>
@@ -894,7 +894,7 @@ base_url: "../"
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
                 <span class="caret"></span>
               </button>
-              <ul class="dropdown-menu pull-right">
+              <ul class="dropdown-menu pull-right" role="menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
                 <li><a href="#">Something else here</a></li>
@@ -1049,7 +1049,7 @@ base_url: "../"
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
               Dropdown <span class="caret"></span>
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" role="menu">
               <li><a href="#">Action</a></li>
               <li><a href="#">Another action</a></li>
               <li><a href="#">Something else here</a></li>
@@ -1084,7 +1084,7 @@ base_url: "../"
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             Dropdown <span class="caret"></span>
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" role="menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
@@ -1138,18 +1138,17 @@ base_url: "../"
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Title</a>
+          <a class="navbar-brand" href="#">Brand</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Link</a></li>
+            <li class="active"><a href="#">Link</a></li>
             <li><a href="#">Link</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
                 <li><a href="#">Something else here</a></li>
@@ -1168,7 +1167,7 @@ base_url: "../"
             <li><a href="#">Link</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
                 <li><a href="#">Something else here</a></li>
@@ -1189,14 +1188,13 @@ base_url: "../"
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">Title</a>
+    <a class="navbar-brand" href="#">Brand</a>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Link</a></li>
+      <li class="active"><a href="#">Link</a></li>
       <li><a href="#">Link</a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -1253,7 +1251,7 @@ base_url: "../"
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Title</a>
+          <a class="navbar-brand" href="#">Brand</a>
         </div>
         <div class="collapse navbar-collapse navbar-ex2-collapse">
           <button type="button" class="btn btn-default navbar-btn">Sign in</button>
@@ -1276,7 +1274,7 @@ base_url: "../"
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Title</a>
+          <a class="navbar-brand" href="#">Brand</a>
         </div>
         <div class="collapse navbar-collapse navbar-ex3-collapse">
           <p class="navbar-text">Signed in as Mark Otto</p>
@@ -1299,7 +1297,7 @@ base_url: "../"
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Title</a>
+          <a class="navbar-brand" href="#">Brand</a>
         </div>
         <div class="collapse navbar-collapse navbar-ex4-collapse">
           <p class="navbar-text pull-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
@@ -1328,7 +1326,7 @@ base_url: "../"
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Title</a>
+          <a class="navbar-brand" href="#">Brand</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -1369,7 +1367,7 @@ body { padding-top: 70px; }
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Title</a>
+          <a class="navbar-brand" href="#">Brand</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -1410,7 +1408,7 @@ body { padding-bottom: 70px; }
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Title</a>
+          <a class="navbar-brand" href="#">Brand</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -1442,7 +1440,7 @@ body { padding-bottom: 70px; }
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Title</a>
+          <a class="navbar-brand" href="#">Brand</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -1770,19 +1768,23 @@ body { padding-bottom: 70px; }
     <div class="page-header">
       <h1 id="jumbotron">Jumbotron</h1>
     </div>
-    <p>A lightweight, flexible component to showcase key content on your site. It works well on marketing and content-heavy sites.</p>
+    <p>A lightweight, flexible component that can optional extend the entire viewport to showcase key content on your site. To make the jumbotron full width, don't include it within a <code>.container</code>. Placing it within a container will keep it at the width of the rest of your content and provide rounded corners.</p>
     <div class="bs-example">
       <div class="jumbotron">
-        <h1>Hello, world!</h1>
-        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+        <div class="container">
+          <h1>Hello, world!</h1>
+          <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+          <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+        </div>
       </div>
     </div>
 {% highlight html %}
 <div class="jumbotron">
-  <h1>Hello, world!</h1>
-  <p>...</p>
-  <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+  <div class="container">
+    <h1>Hello, world!</h1>
+    <p>...</p>
+    <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+  </div>
 </div>
 {% endhighlight %}
   </div>
@@ -1865,7 +1867,7 @@ body { padding-bottom: 70px; }
             <div class="caption">
               <h3>Thumbnail label</h3>
               <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn btn-default">Action</a></p>
+              <p><a href="#" class="btn btn-primary">Button</a> <a href="#" class="btn btn-default">Button</a></p>
             </div>
           </div>
         </div>
@@ -1875,7 +1877,7 @@ body { padding-bottom: 70px; }
             <div class="caption">
               <h3>Thumbnail label</h3>
               <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn btn-default">Action</a></p>
+              <p><a href="#" class="btn btn-primary">Button</a> <a href="#" class="btn btn-default">Button</a></p>
             </div>
           </div>
         </div>
@@ -1885,7 +1887,7 @@ body { padding-bottom: 70px; }
             <div class="caption">
               <h3>Thumbnail label</h3>
               <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn btn-default">Action</a></p>
+              <p><a href="#" class="btn btn-primary">Button</a> <a href="#" class="btn btn-default">Button</a></p>
             </div>
           </div>
         </div>
@@ -1899,7 +1901,7 @@ body { padding-bottom: 70px; }
       <div class="caption">
         <h3>Thumbnail label</h3>
         <p>...</p>
-        <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn btn-default">Action</a></p>
+        <p><a href="#" class="btn btn-primary">Button</a> <a href="#" class="btn btn-default">Button</a></p>
       </div>
     </div>
   </div>
@@ -2403,7 +2405,7 @@ body { padding-bottom: 70px; }
     <p>Easily add a heading container to your panel with <code>.panel-heading</code>. You may also include any <code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code> with a <code>.panel-title</code> class to add a pre-styled heading.</p>
     <div class="bs-example">
       <div class="panel">
-        <div class="panel-heading">Panel heading</div>
+        <div class="panel-heading">Panel heading without title</div>
         <div class="panel-body">
           Panel content
         </div>
@@ -2419,7 +2421,7 @@ body { padding-bottom: 70px; }
     </div>
 {% highlight html %}
 <div class="panel">
-  <div class="panel-heading">Panel heading</div>
+  <div class="panel-heading">Panel heading without title</div>
   <div class="panel-body">
     Panel content
   </div>
@@ -2436,7 +2438,7 @@ body { padding-bottom: 70px; }
 {% endhighlight %}
 
     <h3 id="panels-footer">Panel with footer</h3>
-    <p>Wrap buttons or secondary text in <code>.panel-footer</code>.</p>
+    <p>Wrap buttons or secondary text in <code>.panel-footer</code>. Note that panel footers <strong>do not</strong> inherit colors and borders when using contextual variations as they are not meant to be in the foreground.</p>
     <div class="bs-example">
       <div class="panel">
         <div class="panel-body">

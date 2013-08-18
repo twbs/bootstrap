@@ -83,13 +83,24 @@ module.exports = function(grunt) {
         },
         src: ['less/bootstrap.less'],
         dest: 'dist/css/<%= pkg.name %>.min.css'
+      },
+      theme: {
+        src: ['less/theme.less'],
+        dest: 'dist/css/<%= pkg.name %>-theme.css'
+      },
+      theme_min: {
+        options: {
+          compress: true
+        },
+        src: ['less/theme.less'],
+        dest: 'dist/css/<%= pkg.name %>-theme.min.css'
       }
     },
     sass: {
       bootstrap: {
         options: {
-            style: 'expanded',
-            precision: 15
+          style: 'expanded',
+          precision: 15
         },
         files: {
             'dist/css/bootstrap.css': ['scss/bootstrap.scss']
@@ -97,11 +108,28 @@ module.exports = function(grunt) {
       },
       min: {
         options: {
-            style: 'compressed',
-            precision: 15
+          style: 'compressed',
+          precision: 15
         },
         files: {
-            'dist/css/bootstrap.min.css': ['scss/bootstrap.scss']
+          'dist/css/bootstrap.min.css': ['scss/bootstrap.scss']
+        }
+      },
+      theme: {
+        options: {
+          precision: 15
+        },
+        files: {
+          'dist/css/<%= pkg.name %>-theme.css': ['scss/theme.scss']
+        }
+      },
+      theme_min: {
+        options: {
+          style: 'compressed',
+          precision: 15
+        },
+        files: {
+          'dist/css/<%= pkg.name %>-theme.min.css': ['scss/theme.scss']
         }
       }
     },
@@ -166,7 +194,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('browserstack-runner');
 
-
   // Docs HTML validation task
   grunt.registerTask('validate-docs', ['jekyll', 'validation']);
 
@@ -192,7 +219,7 @@ module.exports = function(grunt) {
   grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['test', 'dist']);
+  grunt.registerTask('default', ['test', 'dist', 'build-customizer']);
 
   // task for building customizer
   grunt.registerTask('build-customizer', 'Add scripts/less files to customizer.', function () {

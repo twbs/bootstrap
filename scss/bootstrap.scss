@@ -21,43 +21,38 @@
 @import "type";
 @import "code";
 @import "grid";
-
 @import "tables";
 @import "forms";
 @import "buttons";
 
-// Components: common
+// Components
 @import "component-animations";
-@import "input-groups";
 @import "dropdowns";
+@import "button-groups";
+@import "input-groups";
+@import "navs";
+@import "navbar";
+@import "breadcrumbs";
+@import "pagination";
+@import "pager";
+@import "labels";
+@import "badges";
+@import "jumbotron";
+@import "thumbnails";
+@import "alerts";
+@import "progress-bars";
+@import "media";
 @import "list-group";
 @import "panels";
 @import "wells";
 @import "close";
 
-// Components: Nav
-@import "navs";
-@import "navbar";
-@import "button-groups";
-@import "breadcrumbs";
-@import "pagination";
-@import "pager";
-
-// Components: Popovers
+// Components w/ JavaScript
 @import "modals";
 @import "tooltip";
 @import "popovers";
-
-// Components: Misc
-@import "alerts";
-@import "thumbnails";
-@import "media";
-@import "labels";
-@import "badges";
-@import "progress-bars";
 @import "carousel";
-@import "jumbotron";
 
 // Utility classes
-@import "utilities"; // Has to be last to override when necessary
+@import "utilities";
 @import "responsive-utilities";
