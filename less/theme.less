@@ -93,13 +93,13 @@
 
 // Basic navbar
 .navbar {
-  #gradient > .vertical(@start-color: lighten(@navbar-bg, 10%); @end-color: @navbar-bg;);
+  #gradient > .vertical(@start-color: lighten(@navbar-default-bg, 10%); @end-color: @navbar-default-bg;);
   border-radius: @navbar-border-radius;
   @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
   .box-shadow(@shadow);
 
   .navbar-nav > .active > a {
-    background-color: @navbar-bg;
+    background-color: @navbar-default-bg;
   }
 }
 .navbar-brand,

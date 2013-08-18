@@ -12,8 +12,7 @@
   position: relative;
   min-height: @navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
   margin-bottom: @navbar-margin-bottom;
-  background-color: @navbar-bg;
-  border: 1px solid @navbar-border;
+  border: 1px solid transparent;
 
   // Prevent floats from breaking the navbar
   .clearfix();
@@ -53,7 +52,7 @@
   overflow-x: visible;
   padding-right: @navbar-padding-horizontal;
   padding-left:  @navbar-padding-horizontal;
-  border-top: 1px solid darken(@navbar-bg, 7%);
+  border-top: 1px solid transparent;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
   .clearfix();
   -webkit-overflow-scrolling: touch;
@@ -145,12 +144,9 @@
   padding: @navbar-padding-vertical @navbar-padding-horizontal;
   font-size: @font-size-large;
   line-height: @line-height-computed;
-  color: @navbar-brand-color;
   &:hover,
   &:focus {
-    color: @navbar-brand-hover-color;
     text-decoration: none;
-    background-color: @navbar-brand-hover-bg;
   }
 
   @media (min-width: @grid-float-breakpoint) {
@@ -173,20 +169,14 @@
   padding: 9px 10px;
   .navbar-vertical-align(34px);
   background-color: transparent;
-  border: 1px solid @navbar-toggle-border-color;
+  border: 1px solid transparent;
   border-radius: @border-radius-base;
-
-  &:hover,
-  &:focus {
-    background-color: @navbar-toggle-hover-bg;
-  }
 
   // Bars
   .icon-bar {
     display: block;
     width: 22px;
     height: 2px;
-    background-color: @navbar-toggle-icon-bar-bg;
     border-radius: 1px;
   }
   .icon-bar + .icon-bar {
@@ -210,29 +200,7 @@
   > li > a {
     padding-top:    10px;
     padding-bottom: 10px;
-    color: @navbar-link-color;
     line-height: @line-height-computed;
-    &:hover,
-    &:focus {
-      color: @navbar-link-hover-color;
-      background-color: @navbar-link-hover-bg;
-    }
-  }
-  > .active > a {
-    &,
-    &:hover,
-    &:focus {
-      color: @navbar-link-active-color;
-      background-color: @navbar-link-active-bg;
-    }
-  }
-  > .disabled > a {
-    &,
-    &:hover,
-    &:focus {
-      color: @navbar-link-disabled-color;
-      background-color: @navbar-link-disabled-bg;
-    }
   }
 
   @media (max-width: @screen-xs-max) {
@@ -250,29 +218,10 @@
         padding: 5px 15px 5px 25px;
       }
       > li > a {
-        color: @navbar-link-color;
         line-height: @line-height-computed;
         &:hover,
         &:focus {
-          color: @navbar-link-hover-color;
-          background-color: @navbar-link-hover-bg;
           background-image: none;
-        }
-      }
-      > .active > a {
-        &,
-        &:hover,
-        &:focus {
-          color: @navbar-link-active-color;
-          background-color: @navbar-link-active-bg;
-        }
-      }
-      > .disabled > a {
-        &,
-        &:hover,
-        &:focus {
-          color: @navbar-link-disabled-color;
-          background-color: @navbar-link-disabled-bg;
         }
       }
     }
@@ -321,8 +270,8 @@
   margin-left: -@navbar-padding-horizontal;
   margin-right: -@navbar-padding-horizontal;
   padding: 10px @navbar-padding-horizontal;
-  border-top: 1px solid darken(@navbar-bg, 7%);
-  border-bottom: 1px solid darken(@navbar-bg, 7%);
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
   @shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1);
   .box-shadow(@shadow);
 
@@ -363,34 +312,6 @@
   .border-bottom-radius(0);
 }
 
-// Dropdown menu items and carets
-.navbar-nav {
-  // Caret should match text color on hover
-  > .dropdown > a:hover .caret,
-  > .dropdown > a:focus .caret {
-    border-top-color: @navbar-link-hover-color;
-    border-bottom-color: @navbar-link-hover-color;
-  }
-
-  // Remove background color from open dropdown
-  > .open > a {
-    &,
-    &:hover,
-    &:focus {
-      background-color: @navbar-link-active-bg;
-      color: @navbar-link-active-color;
-      .caret {
-        border-top-color: @navbar-link-active-color;
-        border-bottom-color: @navbar-link-active-color;
-      }
-    }
-  }
-  > .dropdown > a .caret {
-    border-top-color: @navbar-link-color;
-    border-bottom-color: @navbar-link-color;
-  }
-}
-
 // Right aligned menus need alt position
 .navbar-nav.pull-right > li > .dropdown-menu,
 .navbar-nav > li > .dropdown-menu.pull-right {
@@ -414,7 +335,6 @@
 
 .navbar-text {
   float: left;
-  color: @navbar-color;
   .navbar-vertical-align(@line-height-computed);
 
   @media (min-width: @grid-float-breakpoint) {
@@ -423,22 +343,145 @@
   }
 }
 
+// Alternate navbars
+// --------------------------------------------------
 
-// Links in navbars
-//
-// Add a class to ensure links outside the navbar nav are colored correctly.
+// Default navbar
+.navbar-default {
+  background-color: @navbar-default-bg;
+  border-color: @navbar-default-border;
 
-// Default navbar variables
-.navbar-link {
-  color: @navbar-link-color;
-  &:hover {
-    color: @navbar-link-hover-color;
+  .navbar-brand {
+    color: @navbar-default-brand-color;
+    &:hover,
+    &:focus {
+      color: @navbar-default-brand-hover-color;
+      background-color: @navbar-default-brand-hover-bg;
+    }
   }
+
+  .navbar-text {
+    color: @navbar-default-color;
+  }
+
+  .navbar-nav {
+    > li > a {
+      color: @navbar-default-link-color;
+
+      &:hover,
+      &:focus {
+        color: @navbar-default-link-hover-color;
+        background-color: @navbar-default-link-hover-bg;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-default-link-active-color;
+        background-color: @navbar-default-link-active-bg;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-default-link-disabled-color;
+        background-color: @navbar-default-link-disabled-bg;
+      }
+    }
+  }
+
+  .navbar-toggle {
+    border-color: @navbar-default-toggle-border-color;
+    &:hover,
+    &:focus {
+      background-color: @navbar-default-toggle-hover-bg;
+    }
+    .icon-bar {
+      background-color: @navbar-default-toggle-icon-bar-bg;
+    }
+  }
+
+  .navbar-collapse,
+  .navbar-form {
+    border-color: darken(@navbar-default-bg, 7%);
+  }
+
+  // Dropdown menu items and carets
+  .navbar-nav {
+    // Caret should match text color on hover
+    > .dropdown > a:hover .caret,
+    > .dropdown > a:focus .caret {
+      border-top-color: @navbar-default-link-hover-color;
+      border-bottom-color: @navbar-default-link-hover-color;
+    }
+
+    // Remove background color from open dropdown
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: @navbar-default-link-active-bg;
+        color: @navbar-default-link-active-color;
+        .caret {
+          border-top-color: @navbar-default-link-active-color;
+          border-bottom-color: @navbar-default-link-active-color;
+        }
+      }
+    }
+    > .dropdown > a .caret {
+      border-top-color: @navbar-default-link-color;
+      border-bottom-color: @navbar-default-link-color;
+    }
+
+
+    @media (max-width: @screen-xs-max) {
+      // Dropdowns get custom display when collapsed
+      .open .dropdown-menu {
+        > li > a {
+          color: @navbar-default-link-color;
+          &:hover,
+          &:focus {
+            color: @navbar-default-link-hover-color;
+            background-color: @navbar-default-link-hover-bg;
+          }
+        }
+        > .active > a {
+          &,
+          &:hover,
+          &:focus {
+            color: @navbar-default-link-active-color;
+            background-color: @navbar-default-link-active-bg;
+          }
+        }
+        > .disabled > a {
+          &,
+          &:hover,
+          &:focus {
+            color: @navbar-default-link-disabled-color;
+            background-color: @navbar-default-link-disabled-bg;
+          }
+        }
+      }
+    }
+  }
+
+
+  // Links in navbars
+  //
+  // Add a class to ensure links outside the navbar nav are colored correctly.
+
+  .navbar-link {
+    color: @navbar-default-link-color;
+    &:hover {
+      color: @navbar-default-link-hover-color;
+    }
+  }
+
 }
 
-
 // Inverse navbar
-// --------------------------------------------------
 
 .navbar-inverse {
   background-color: @navbar-inverse-bg;
