@@ -17,7 +17,7 @@
 .list-group-item {
   position: relative;
   display: block;
-  padding: 10px 30px 10px 15px;
+  padding: 10px 15px;
   // Place the border on the list items and negative margin up for better styling
   margin-bottom: -1px;
   background-color: @list-group-bg;
@@ -25,57 +25,41 @@
 
   // Round the first and last items
   &:first-child {
-    .border-top-radius(@border-radius-base);
+    .border-top-radius(@list-group-border-radius);
   }
   &:last-child {
     margin-bottom: 0;
-    .border-bottom-radius(@border-radius-base);
+    .border-bottom-radius(@list-group-border-radius);
   }
 
   // Align badges within list items
   > .badge {
     float: right;
-    margin-right: -15px;
   }
   > .badge + .badge {
-    margin-right: 0;
+    margin-right: 5px;
   }
-}
 
-// Custom content options
-// -------------------------
-
-.list-group-item-heading {
-  margin-top: 0;
-  margin-bottom: 5px;
-}
-.list-group-item-text {
-  margin-bottom: 0;
-  line-height: 1.3;
-}
-
-// Linked list items
-// -------------------------
-
-// Custom content within linked items
-a.list-group-item {
-  // Colorize content accordingly
-  .list-group-item-heading {
-    color: @list-group-link-heading-color;
-  }
-  .list-group-item-text {
+  // Linked list items
+  a& {
     color: @list-group-link-color;
-  }
 
-  // Hover state
-  &:hover,
-  &:focus {
-    text-decoration: none;
-    background-color: @list-group-hover-bg;
+    .list-group-item-heading {
+      color: @list-group-link-heading-color;
+    }
+
+    // Hover state
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      background-color: @list-group-hover-bg;
+    }
   }
 
   // Active class on item itself, not parent
-  &.active {
+  &.active,
+  &.active:hover,
+  &.active:focus {
     z-index: 2; // Place active items above their siblings for proper border styling
     color: @list-group-active-color;
     background-color: @list-group-active-bg;
@@ -89,4 +73,16 @@ a.list-group-item {
       color: lighten(@list-group-active-bg, 40%);
     }
   }
+}
+
+// Custom content options
+// -------------------------
+
+.list-group-item-heading {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.list-group-item-text {
+  margin-bottom: 0;
+  line-height: 1.3;
 }

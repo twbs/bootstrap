@@ -61,7 +61,7 @@
 // Striped bars
 .progress-striped .progress-bar {
   #gradient > .striped(@progress-bar-bg);
-  .background-size(40px 40px);
+  background-size: 40px 40px;
 }
 
 // Call animation for the active one
@@ -78,22 +78,18 @@
 // Variations
 // -------------------------
 
-// Danger (red)
-.progress-bar-danger {
-  .progress-bar-variant(@progress-bar-danger-bg);
-}
-
-// Success (green)
 .progress-bar-success {
   .progress-bar-variant(@progress-bar-success-bg);
 }
 
-// Warning (orange)
+.progress-bar-info {
+  .progress-bar-variant(@progress-bar-info-bg);
+}
+
 .progress-bar-warning {
   .progress-bar-variant(@progress-bar-warning-bg);
 }
 
-// Info (teal)
-.progress-bar-info {
-  .progress-bar-variant(@progress-bar-info-bg);
+.progress-bar-danger {
+  .progress-bar-variant(@progress-bar-danger-bg);
 }

@@ -6,12 +6,13 @@
     <!-- Place anything custom after this. -->
   </head>
   <body>
+    <a class="sr-only" href="#content">Skip navigation</a>
 
     <!-- Docs master nav -->
     {% include nav-main.html %}
 
     <!-- Docs page layout -->
-    <div class="bs-header">
+    <div class="bs-header" id="content">
       <div class="container">
         <h1>{{ page.title }}</h1>
         <p>{{ page.lead }}</p>
@@ -24,8 +25,8 @@
 
     <div class="container bs-docs-container">
       <div class="row">
-        <div class="col-lg-3">
-          <div class="bs-sidebar">
+        <div class="col-md-3">
+          <div class="bs-sidebar hidden-print" role="complementary">
             <ul class="nav bs-sidenav">
               {% if page.slug == "getting-started" %}
                 {% include nav-getting-started.html %}
@@ -41,7 +42,7 @@
             </ul>
           </div>
         </div>
-        <div class="col-lg-9">
+        <div class="col-md-9" role="main">
           {{ content }}
         </div>
       </div>
@@ -50,7 +51,7 @@
 
     <!-- Footer
     ================================================== -->
-    <footer class="bs-footer">
+    <footer class="bs-footer" role="contentinfo">
       {% include social-buttons.html %}
 
       <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>

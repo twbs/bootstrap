@@ -133,6 +133,7 @@
 @input-bg:                       #fff;
 @input-bg-disabled:              @gray-lighter;
 
+@input-color:                    @gray;
 @input-border:                   #ccc;
 @input-border-radius:            @border-radius-base;
 @input-border-focus:             #66afe9;
@@ -143,8 +144,10 @@
 @input-height-large:             (floor(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
 @input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
 
+@legend-color:                   @gray-dark;
 @legend-border-color:            #e5e5e5;
 
+@input-group-addon-bg:           @gray-lighter;
 @input-group-addon-border-color: @input-border;
 
 
@@ -162,6 +165,10 @@
 @dropdown-link-color:            @gray-dark;
 @dropdown-link-hover-color:      #fff;
 @dropdown-link-hover-bg:         @dropdown-link-active-bg;
+
+@dropdown-link-disabled-color:   @gray-light;
+
+@dropdown-header-color:          @gray-light;
 
 @dropdown-caret-color:           #000;
 
@@ -186,25 +193,25 @@
 // --------------------------------------------------
 
 // Extra small screen / phone
-@screen-xsmall:              480px;
-@screen-phone:               @screen-xsmall;
+@screen-xs:                  480px;
+@screen-phone:               @screen-xs;
 
 // Small screen / tablet
-@screen-small:               768px;
-@screen-tablet:              @screen-small;
+@screen-sm:                  768px;
+@screen-tablet:              @screen-sm;
 
 // Medium screen / desktop
-@screen-medium:              992px;
-@screen-desktop:             @screen-medium;
+@screen-md:                  992px;
+@screen-desktop:             @screen-md;
 
 // Large screen / wide desktop
-@screen-large:               1200px;
-@screen-large-desktop:       @screen-large;
+@screen-lg:                  1200px;
+@screen-lg-desktop:          @screen-lg;
 
 // So media queries don't overlap when required, provide a maximum
-@screen-small-max:           (@screen-medium - 1);
-@screen-tablet-max:          (@screen-desktop - 1);
-@screen-desktop-max:         (@screen-large-desktop - 1);
+@screen-xs-max:              (@screen-sm - 1);
+@screen-sm-max:              (@screen-md - 1);
+@screen-md-max:              (@screen-lg - 1);
 
 
 // Grid system
@@ -223,10 +230,12 @@
 
 // Basics of a navbar
 @navbar-height:                    50px;
+@navbar-margin-bottom:             @line-height-computed;
 @navbar-color:                     #777;
-@navbar-bg:                        #eee;
+@navbar-bg:                        #f8f8f8;
+@navbar-border:                    darken(@navbar-bg, 6.5%);
 @navbar-border-radius:             @border-radius-base;
-@navbar-padding-horizontal:        floor(@grid-gutter-width / 2);  // ~15px
+@navbar-padding-horizontal:        floor(@grid-gutter-width / 2);
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 
 // Navbar links
@@ -234,7 +243,7 @@
 @navbar-link-hover-color:          #333;
 @navbar-link-hover-bg:             transparent;
 @navbar-link-active-color:         #555;
-@navbar-link-active-bg:            darken(@navbar-bg, 10%);
+@navbar-link-active-bg:            darken(@navbar-bg, 6.5%);
 @navbar-link-disabled-color:       #ccc;
 @navbar-link-disabled-bg:          transparent;
 
@@ -254,6 +263,7 @@
 // Reset inverted navbar basics
 @navbar-inverse-color:                      @gray-light;
 @navbar-inverse-bg:                         #222;
+@navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
 
 // Inverted navbar links
 @navbar-inverse-link-color:                 @gray-light;
@@ -285,6 +295,7 @@
 // Navs
 // -------------------------
 
+@nav-link-padding:                          10px 15px;
 @nav-link-hover-bg:                         @gray-lighter;
 
 @nav-disabled-link-color:                   @gray-light;
@@ -315,9 +326,14 @@
 
 @pagination-bg:                        #fff;
 @pagination-border:                    #ddd;
-@pagination-active-bg:                 #f5f5f5;
-@pagination-active-color:              @gray-light;
+
+@pagination-hover-bg:                  @gray-lighter;
+
+@pagination-active-bg:                 @brand-primary;
+@pagination-active-color:              #fff;
+
 @pagination-disabled-color:            @gray-light;
+
 
 // Pager
 // -------------------------
@@ -385,6 +401,7 @@
 // -------------------------
 
 @label-default-bg:            @gray-light;
+@label-primary-bg:            @brand-primary;
 @label-success-bg:            @brand-success;
 @label-info-bg:               @brand-info;
 @label-warning-bg:            @brand-warning;
@@ -491,20 +508,18 @@
 
 // Thumbnails
 // -------------------------
-@thumbnail-caption-color:     @text-color;
+@thumbnail-padding:           4px;
 @thumbnail-bg:                @body-bg;
 @thumbnail-border:            #ddd;
 @thumbnail-border-radius:     @border-radius-base;
+
+@thumbnail-caption-color:     @text-color;
+@thumbnail-caption-padding:   9px;
 
 
 // Wells
 // -------------------------
 @well-bg:                     #f5f5f5;
-
-
-// Accordion
-// -------------------------
-@accordion-border-color:      #e5e5e5;
 
 
 // Badges
@@ -557,7 +572,9 @@
 @code-bg:                     #f9f2f4;
 
 @pre-bg:                      #f5f5f5;
+@pre-color:                   @gray-dark;
 @pre-border-color:            #ccc;
+@pre-scrollable-max-height:   340px;
 
 // Type
 // ------------------------
@@ -582,10 +599,10 @@
 // --------------------------------------------------
 
 // Small screen / tablet
-@container-tablet:          728px;
+@container-tablet:            ((720px + @grid-gutter-width));
 
 // Medium screen / desktop
-@container-desktop:         940px;
+@container-desktop:           ((940px + @grid-gutter-width));
 
 // Large screen / wide desktop
-@container-large-desktop:   1170px;
+@container-lg-desktop:        ((1140px + @grid-gutter-width));

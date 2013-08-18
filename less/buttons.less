@@ -35,13 +35,14 @@
   &:active,
   &.active {
     outline: 0;
+    background-image: none;
     .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
   }
 
   &.disabled,
   &[disabled],
   fieldset[disabled] & {
-    cursor: default;
+    cursor: not-allowed;
     pointer-events: none; // Future-proof disabling of clicks
     .opacity(.65);
     .box-shadow(none);
@@ -54,26 +55,26 @@
 // --------------------------------------------------
 
 .btn-default {
-  .btn-pseudo-states(@btn-default-color; @btn-default-bg; @btn-default-border);
+  .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
 }
 .btn-primary {
-  .btn-pseudo-states(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+  .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
 }
 // Warning appears as orange
 .btn-warning {
-  .btn-pseudo-states(@btn-warning-color; @btn-warning-bg; @btn-warning-border);
+  .button-variant(@btn-warning-color; @btn-warning-bg; @btn-warning-border);
 }
 // Danger and error appear as red
 .btn-danger {
-  .btn-pseudo-states(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
+  .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
 }
 // Success appears as green
 .btn-success {
-  .btn-pseudo-states(@btn-success-color; @btn-success-bg; @btn-success-border);
+  .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
 }
 // Info appears as blue-green
 .btn-info {
-  .btn-pseudo-states(@btn-info-color; @btn-info-bg; @btn-info-border);
+  .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
 }
 
 
@@ -121,20 +122,16 @@
 // --------------------------------------------------
 
 .btn-lg {
-  padding: @padding-large-vertical @padding-large-horizontal;
-  font-size: @font-size-large;
-  line-height: @line-height-large; // ensure even-numbered height of button next to large input
-  border-radius: @border-radius-large;
+  // line-height: ensure even-numbered height of button next to large input
+  .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
 }
 .btn-sm,
 .btn-xs {
-  padding: @padding-small-vertical @padding-small-horizontal;
-  font-size: @font-size-small;
-  line-height: @line-height-small; // ensure proper height of button next to small input
-  border-radius: @border-radius-small;
+  // line-height: ensure proper height of button next to small input
+  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
 }
 .btn-xs {
-  padding: 3px 5px;
+  padding: 1px 5px;
 }
 
 

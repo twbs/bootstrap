@@ -16,6 +16,10 @@
       offset: navHeight
     })
 
+    $window.on('load', function () {
+      $body.scrollspy('refresh')
+    })
+
     $('.bs-docs-container [href=#]').click(function (e) {
       e.preventDefault()
     })
@@ -46,7 +50,8 @@
 
     // tooltip demo
     $('.tooltip-demo').tooltip({
-      selector: "[data-toggle=tooltip]"
+      selector: "[data-toggle=tooltip]",
+      container: "body"
     })
 
     $('.tooltip-test').tooltip()
@@ -73,88 +78,6 @@
 
     // carousel demo
     $('.bs-docs-carousel-example').carousel()
-
-    // javascript build logic
-    var inputsComponent = $("#less input")
-      , inputsPlugin = $("#plugins input")
-      , inputsVariables = $("#less-variables input")
-
-    // toggle all plugin checkboxes
-    $('#less .toggle').on('click', function (e) {
-      e.preventDefault()
-      inputsComponent.prop('checked', !inputsComponent.is(':checked'))
-    })
-
-    $('#plugins .toggle').on('click', function (e) {
-      e.preventDefault()
-      inputsPlugin.prop('checked', !inputsPlugin.is(':checked'))
-    })
-
-    $('#less-variables .toggle').on('click', function (e) {
-      e.preventDefault()
-      inputsVariables.val('')
-    })
-
-    // request built javascript
-    $('.bs-customize-download .btn').on('click', function (e) {
-      e.preventDefault()
-
-      var css = $("#less input:checked")
-            .map(function () { return this.value })
-            .toArray()
-        , js = $("#plugins input:checked")
-            .map(function () { return this.value })
-            .toArray()
-        , vars = {}
-
-      $("#less-variables input")
-        .each(function () {
-          $(this).val() && (vars[ $(this).prev().text() ] = $(this).val())
-      })
-
-      $.ajax({
-        type: 'POST'
-      , url: /localhost/.test(window.location) ? 'http://localhost:9001' : 'http://bootstrap.herokuapp.com'
-      , dataType: 'jsonpi'
-      , params: {
-          js: js
-        , css: css
-        , vars: vars
-      }
-      })
-    })
-  })
-
-// Modified from the original jsonpi https://github.com/benvinegar/jquery-jsonpi
-$.ajaxTransport('jsonpi', function(opts, originalOptions, jqXHR) {
-  var url = opts.url;
-
-  return {
-    send: function(_, completeCallback) {
-      var name = 'jQuery_iframe_' + jQuery.now()
-        , iframe, form
-
-      iframe = $('<iframe>')
-        .attr('name', name)
-        .appendTo('head')
-
-      form = $('<form>')
-        .attr('method', opts.type) // GET or POST
-        .attr('action', url)
-        .attr('target', name)
-
-      $.each(opts.params, function(k, v) {
-
-        $('<input>')
-          .attr('type', 'hidden')
-          .attr('name', k)
-          .attr('value', typeof v == 'string' ? v : JSON.stringify(v))
-          .appendTo(form)
-      })
-
-      form.appendTo('body').submit()
-    }
-  }
 })
 
 }(window.jQuery)
