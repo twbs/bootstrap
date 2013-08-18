@@ -13,10 +13,6 @@ body {
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  /* Let the jumbotron breathe */
-  .jumbotron {
-    margin-top: 20px;
-  }
   /* Remove padding from wrapping element since we kick in the grid classes here */
   .body-content {
     padding: 0;

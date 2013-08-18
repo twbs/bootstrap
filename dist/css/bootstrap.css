@@ -5177,7 +5177,7 @@ a.list-group-item.active > .badge,
 }
 
 .jumbotron {
-  padding: 30px;
+  padding: 30px 15px;
   margin-bottom: 30px;
   font-size: 21px;
   font-weight: 200;
@@ -5195,10 +5195,18 @@ a.list-group-item.active > .badge,
   line-height: 1.4;
 }
 
+.container .jumbotron {
+  border-radius: 6px;
+}
+
 @media screen and (min-width: 768px) {
   .jumbotron {
-    padding: 50px 60px;
-    border-radius: 6px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .container .jumbotron {
+    padding-right: 60px;
+    padding-left: 60px;
   }
   .jumbotron h1 {
     font-size: 63px;
