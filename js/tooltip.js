@@ -108,10 +108,11 @@
 
     clearTimeout(self.timeout)
 
+    self.hoverState = 'in'
+
     if (!self.options.delay || !self.options.delay.show) return self.show()
 
-    self.hoverState = 'in'
-    self.timeout    = setTimeout(function () {
+    self.timeout = setTimeout(function () {
       if (self.hoverState == 'in') self.show()
     }, self.options.delay.show)
   }
@@ -122,10 +123,11 @@
 
     clearTimeout(self.timeout)
 
+    self.hoverState = 'out'
+
     if (!self.options.delay || !self.options.delay.hide) return self.hide()
 
-    self.hoverState = 'out'
-    self.timeout    = setTimeout(function () {
+    self.timeout = setTimeout(function () {
       if (self.hoverState == 'out') self.hide()
     }, self.options.delay.hide)
   }
@@ -258,7 +260,9 @@
     var $tip = this.tip()
     var e    = $.Event('hide.bs.' + this.type)
 
-    function complete() { $tip.detach() }
+    function complete() {
+      if (that.hoverState != 'in') $tip.detach()
+    }
 
     this.$element.trigger(e)
 
