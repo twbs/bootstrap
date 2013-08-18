@@ -437,6 +437,18 @@ cite {
   text-align: center;
 }
 
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
 h1,
 h2,
 h3,
