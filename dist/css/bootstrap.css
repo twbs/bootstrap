@@ -2633,10 +2633,12 @@ input[type="button"].btn-block {
 
 .btn-lg .caret {
   border-width: 5px;
+  border-bottom-width: 0;
 }
 
 .dropup .btn-lg .caret {
-  border-bottom-width: 5px;
+  border-width: 5px;
+  border-top-width: 0;
 }
 
 .btn-group-vertical > .btn,
