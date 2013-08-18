@@ -3210,11 +3210,6 @@ button.close {
   }
 }
 
-.navbar-header {
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
 .navbar-header:before,
 .navbar-header:after {
   display: table;
@@ -3238,9 +3233,6 @@ button.close {
 @media (min-width: 768px) {
   .navbar-header {
     float: left;
-    padding-right: 0;
-    padding-left: 0;
-    margin-right: 15px;
   }
 }
 
@@ -3281,8 +3273,6 @@ button.close {
 @media (min-width: 768px) {
   .navbar-collapse {
     width: auto;
-    padding-right: 0;
-    padding-left: 0;
     border-top: 0;
     box-shadow: none;
   }
@@ -3294,6 +3284,20 @@ button.close {
   }
   .navbar-collapse.in {
     overflow-y: visible;
+  }
+}
+
+.container > .navbar-header,
+.container > .navbar-collapse {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+@media (min-width: 768px) {
+  .container > .navbar-header,
+  .container > .navbar-collapse {
+    margin-right: 0;
+    margin-left: 0;
   }
 }
 
@@ -3334,8 +3338,7 @@ button.close {
 
 .navbar-brand {
   float: left;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
   color: #777777;
@@ -3348,11 +3351,18 @@ button.close {
   background-color: transparent;
 }
 
+@media (min-width: 768px) {
+  .navbar > .container .navbar-brand {
+    margin-left: -15px;
+  }
+}
+
 .navbar-toggle {
   position: relative;
   float: right;
   padding: 9px 10px;
   margin-top: 8px;
+  margin-right: 15px;
   margin-bottom: 8px;
   background-color: transparent;
   border: 1px solid #dddddd;
@@ -3378,9 +3388,6 @@ button.close {
 
 @media (min-width: 768px) {
   .navbar-toggle {
-    position: relative;
-    top: auto;
-    left: auto;
     display: none;
   }
 }
@@ -5177,7 +5184,7 @@ a.list-group-item.active > .badge,
 }
 
 .jumbotron {
-  padding: 30px 15px;
+  padding: 30px;
   margin-bottom: 30px;
   font-size: 21px;
   font-weight: 200;
