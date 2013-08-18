@@ -382,7 +382,9 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     <p>We'll keep an eye on this though and update our code if we have an easy solution.</p>
 
     <h3>Modals and mobile devices</h3>
+    <h4>Overflow and scrolling</h4>
     <p>Support for <code>overflow: hidden</code> on the <code>&lt;body&gt;</code> element is quite limited in iOS and Android. To that end, when you scroll past the top or bottom of a modal in either of those devices' browsers, the <code>&lt;body&gt;</code> content will begin to scroll.</p>
+    <h4>Virtual keyboards</h4>
     <p>Also, note that if you're using inputs in your modal – iOS has a rendering bug which doesn't update the position of fixed elements when the virtual keyboard is triggered. There are a few work arounds for this, including transforming your elements to <code>position: absolute</code> or invoking a timer on focus to try to correct the positioning manually. This is not handled by Bootstrap, so it is up to you to decide which solution is best for your application.</p>
 
     <h3>Browser zooming</h3>
