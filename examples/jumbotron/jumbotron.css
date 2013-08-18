@@ -3,18 +3,3 @@ body {
   padding-top: 50px;
   padding-bottom: 20px;
 }
-
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove padding from wrapping element since we kick in the grid classes here */
-  .body-content {
-    padding: 0;
-  }
-}

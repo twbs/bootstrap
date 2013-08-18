@@ -81,7 +81,7 @@ base_url: "../"
         <h4>Utility classes</h4>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="utilities.less">
+            <input type="checkbox" checked value="utilities.less" data-dependents="navbar.less">
             Basic utilities
           </label>
         </div>
@@ -112,7 +112,7 @@ base_url: "../"
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="navbar.less" data-dependencies="forms.less">
+            <input type="checkbox" checked value="navbar.less" data-dependencies="forms.less,utilities.less">
             Navbar
           </label>
         </div>
@@ -1475,11 +1475,7 @@ base_url: "../"
     </div>
     <p class="lead">Hooray! Your custom version of Bootstrap is now ready to be compiled. Just click the button below to finish the process.</p>
     <div class="bs-customize-download">
-      <button id="btn-download" class="btn btn-block btn-lg btn-bs" onclick="_gaq.push(['_trackEvent', 'Customize', 'Download', 'Customize and Download']);">Customize and Download</button>
-    </div>
-    <div class="bs-callout bs-callout-danger">
-      <h4>What's included?</h4>
-      <p>Downloads include compiled CSS, compiled and minified CSS, and compiled jQuery plugins, all nicely packed up into a zipball for your convenience.</p>
+      <button id="btn-compile" class="btn btn-block btn-lg btn-bs" onclick="_gaq.push(['_trackEvent', 'Customize', 'Download', 'Customize and Download']);">Compile and Download</button>
     </div>
   </div><!-- /download -->
 </form>
