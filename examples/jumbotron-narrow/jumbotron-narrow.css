@@ -31,10 +31,11 @@ body {
   border-top: 1px solid #e5e5e5;
 }
 
-/* Custom container */
-.container-narrow {
-  margin: 0 auto;
-  max-width: 700px;
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
 }
 .container-narrow > hr {
   margin: 30px 0;

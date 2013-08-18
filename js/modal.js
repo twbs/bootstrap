@@ -25,7 +25,7 @@
 
   var Modal = function (element, options) {
     this.options   = options
-    this.$element  = $(element).on('click.dismiss.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
+    this.$element  = $(element)
     this.$backdrop =
     this.isShown   = null
 
@@ -54,6 +54,8 @@
 
     this.escape()
 
+    this.$element.on('click.dismiss.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
+
     this.backdrop(function () {
       var transition = $.support.transition && that.$element.hasClass('fade')
 
@@ -76,7 +78,7 @@
       var e = $.Event('shown.bs.modal', { relatedTarget: _relatedTarget })
 
       transition ?
-        that.$element
+        that.$element.find('.modal-dialog') // wait for modal to slide in
           .one($.support.transition.end, function () {
             that.$element.focus().trigger(e)
           })

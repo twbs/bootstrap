@@ -30,8 +30,6 @@
 // styling of responsive aspects.
 
 .navbar-header {
-  padding-left:  @navbar-padding-horizontal;
-  padding-right: @navbar-padding-horizontal;
   .clearfix();
 
   @media (min-width: @grid-float-breakpoint) {
@@ -66,8 +64,6 @@
 
   @media (min-width: @grid-float-breakpoint) {
     width: auto;
-    padding-right: 0;
-    padding-left:  0;
     border-top: 0;
     box-shadow: none;
 
@@ -81,6 +77,22 @@
     &.in {
       overflow-y: visible;
     }
+  }
+}
+
+
+// Both navbar header and collapse
+//
+// When a container is present, change the behavior of the header and collapse.
+
+.container > .navbar-header,
+.container > .navbar-collapse {
+  margin-right: -@navbar-padding-horizontal;
+  margin-left:  -@navbar-padding-horizontal;
+
+  @media (min-width: @grid-float-breakpoint) {
+    margin-right: 0;
+    margin-left:  0;
   }
 }
 
@@ -130,8 +142,7 @@
 
 .navbar-brand {
   float: left;
-  padding-top: @navbar-padding-vertical;
-  padding-bottom: @navbar-padding-vertical;
+  padding: @navbar-padding-vertical @navbar-padding-horizontal;
   font-size: @font-size-large;
   line-height: @line-height-computed;
   color: @navbar-brand-color;
@@ -140,6 +151,12 @@
     color: @navbar-brand-hover-color;
     text-decoration: none;
     background-color: @navbar-brand-hover-bg;
+  }
+
+  @media (min-width: @grid-float-breakpoint) {
+    .navbar > .container & {
+      margin-left: -@navbar-padding-horizontal;
+    }
   }
 }
 
@@ -152,6 +169,7 @@
 .navbar-toggle {
   position: relative;
   float: right;
+  margin-right: @navbar-padding-horizontal;
   padding: 9px 10px;
   .navbar-vertical-align(34px);
   background-color: transparent;
@@ -176,9 +194,6 @@
   }
 
   @media (min-width: @grid-float-breakpoint) {
-    position: relative;
-    top: auto;
-    left: auto;
     display: none;
   }
 }
@@ -220,7 +235,7 @@
     }
   }
 
-  @media (max-width: @screen-phone-max) {
+  @media (max-width: @screen-xs-max) {
     // Dropdowns get custom display when collapsed
     .open .dropdown-menu {
       position: static;
@@ -315,7 +330,7 @@
   .form-inline();
 
   .form-group {
-    @media (max-width: @screen-phone-max) {
+    @media (max-width: @screen-xs-max) {
       margin-bottom: 5px;
     }
   }
@@ -516,7 +531,7 @@
       }
     }
 
-    @media (max-width: @screen-phone-max) {
+    @media (max-width: @screen-xs-max) {
       // Dropdowns get custom display
       .open .dropdown-menu {
         > .dropdown-header {
