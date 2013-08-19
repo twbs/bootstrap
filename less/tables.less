@@ -13,7 +13,6 @@ th {
 
 
 // Baseline styles
-// ---------------
 
 .table {
   width: 100%;
@@ -59,9 +58,7 @@ th {
 }
 
 
-
 // Condensed table w/ half padding
-// -------------------------------
 
 .table-condensed {
   thead,
@@ -77,9 +74,9 @@ th {
 }
 
 
-
 // Bordered version
-// ----------------
+//
+// Add borders all around the table and between all the columns.
 
 .table-bordered {
   border: 1px solid @table-border-color;
@@ -104,11 +101,10 @@ th {
 }
 
 
-
 // Zebra-striping
-// --------------
-
+//
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
+
 .table-striped {
   > tbody {
     > tr:nth-child(odd) {
@@ -121,11 +117,10 @@ th {
 }
 
 
-
 // Hover effect
-// ------------
-
+//
 // Placed here since it has to come after the potential zebra striping
+
 .table-hover {
   > tbody {
     > tr:hover {
@@ -138,11 +133,10 @@ th {
 }
 
 
-
 // Table cell sizing
-// -----------------
-
+//
 // Reset default table behavior
+
 table col[class^="col-"] {
   float: none;
   display: table-column;
@@ -158,9 +152,8 @@ table {
 }
 
 
-
 // Table backgrounds
-// -----------------
+//
 // Exact selectors below required to override `.table-striped` and prevent
 // inheritance to nested tables.
 
@@ -175,10 +168,69 @@ table {
   }
 }
 
-// Contextual variants
-// -------------------
+// Generate the contextual variants
 .table-row-variant(success; @state-success-bg; @state-success-border);
-
 .table-row-variant(danger; @state-danger-bg; @state-danger-border);
-
 .table-row-variant(warning; @state-warning-bg; @state-warning-border);
+
+
+// Responsive tables
+//
+// Wrap your tables in `.table-scrollable` and we'll make them mobile friendly
+// by enabling horizontal scrolling. Only applies <768px. Everything above that
+// will display normally.
+
+@media (max-width: @screen-sm) {
+  .table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    border: 1px solid @table-border-color;
+
+    // Tighten up spacing and give a background color
+    > .table {
+      margin-bottom: 0;
+      background-color: #fff;
+
+      // Ensure the content doesn't wrap
+      > thead,
+      > tbody,
+      > tfoot {
+        > tr {
+          > th,
+          > td {
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+
+    // Special overrides for the bordered tables
+    > .table-bordered {
+      border: 0;
+
+      // Nuke the appropriate borders so that the parent can handle them
+      > thead,
+      > tbody,
+      > tfoot {
+        > tr {
+          > th:first-child,
+          > td:first-child {
+            border-left: 0;
+          }
+          > th:last-child,
+          > td:last-child {
+            border-right: 0;
+          }
+        }
+        > tr:last-child {
+          > th,
+          > td {
+            border-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}

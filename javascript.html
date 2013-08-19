@@ -240,7 +240,7 @@ $('#myModal').on('show.bs.modal', function (e) {
 
     <h3>Options</h3>
     <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-backdrop=""</code>.</p>
-    <div class="bs-table-scrollable">
+    <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
          <tr>
@@ -280,7 +280,7 @@ $('#myModal').on('show.bs.modal', function (e) {
          </tr>
         </tbody>
       </table>
-    </div><!-- /.bs-table-scrollable -->
+    </div><!-- /.table-responsive -->
 
     <h3>Methods</h3>
 
@@ -306,7 +306,7 @@ $('#myModal').modal({
 
     <h3>Events</h3>
     <p>Bootstrap's modal class exposes a few events for hooking into modal functionality.</p>
-    <div class="bs-table-scrollable">
+    <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
          <tr>
@@ -333,7 +333,7 @@ $('#myModal').modal({
          </tr>
         </tbody>
       </table>
-    </div><!-- /.bs-table-scrollable -->
+    </div><!-- /.table-responsive -->
 {% highlight js %}
 $('#myModal').on('hidden.bs.modal', function () {
   // do something…
@@ -480,7 +480,7 @@ $('.dropdown-toggle').dropdown()
     <p>Toggles the dropdown menu of a given navbar or tabbed navigation.</p>
 
     <h3>Events</h3>
-    <div class="bs-table-scrollable">
+    <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -507,7 +507,7 @@ $('.dropdown-toggle').dropdown()
           </tr>
         </tbody>
       </table>
-    </div><!-- ./bs-table-scrollable -->
+    </div><!-- ./bs-table-responsive -->
 {% highlight js %}
 $('#myDropdown').on('show.bs.dropdown', function () {
   // do something…
@@ -602,7 +602,7 @@ $('[data-spy="scroll"]').each(function () {
 
     <h3>Options</h3>
     <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset=""</code>.</p>
-    <div class="bs-table-scrollable">
+    <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
          <tr>
@@ -621,10 +621,10 @@ $('[data-spy="scroll"]').each(function () {
          </tr>
         </tbody>
       </table>
-    </div><!-- ./bs-table-scrollable -->
+    </div><!-- ./bs-table-responsive -->
 
     <h3>Events</h3>
-    <div class="bs-table-scrollable">
+    <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
          <tr>
@@ -639,7 +639,7 @@ $('[data-spy="scroll"]').each(function () {
         </tr>
         </tbody>
       </table>
-    </div><!-- ./bs-table-scrollable -->
+    </div><!-- ./bs-table-responsive -->
 {% highlight js %}
 $('#myScrollspy').on('activate.bs.scrollspy', function () {
   // do something…
@@ -745,7 +745,7 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
 {% endhighlight %}
 
     <h3>Events</h3>
-    <div class="bs-table-scrollable">
+    <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
          <tr>
@@ -764,7 +764,7 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
          </tr>
         </tbody>
       </table>
-    </div><!-- /.bs-table-scrollable -->
+    </div><!-- /.table-responsive -->
 {% highlight js %}
 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
   e.target // activated tab
@@ -814,7 +814,7 @@ $('#example').tooltip(options)
 
     <h3>Options</h3>
     <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.</p>
-    <div class="bs-table-scrollable">
+    <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
          <tr>
@@ -881,7 +881,7 @@ $('#example').tooltip(options)
          </tr>
         </tbody>
       </table>
-    </div><!-- /.bs-table-scrollable -->
+    </div><!-- /.table-responsive -->
     <div class="bs-callout bs-callout-info">
       <h4>Data attributes for individual tooltips</h4>
       <p>Options for individual tooltips can alternatively be specified through the use of data attributes, as explained above.</p>
@@ -914,7 +914,7 @@ $('#example').tooltip(options)
     {% highlight js %}$('#element').tooltip('destroy'){% endhighlight %}
 
     <h3>Events</h3>
-    <div class="bs-table-scrollable">
+    <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
          <tr>
@@ -941,7 +941,7 @@ $('#example').tooltip(options)
          </tr>
         </tbody>
       </table>
-    </div><!-- /.bs-table-scrollable -->
+    </div><!-- /.table-responsive -->
 {% highlight js %}
 $('#myTooltip').on('hidden.bs.tooltip', function () {
   // do something…
@@ -1036,7 +1036,7 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
 
     <h3>Options</h3>
     <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.</p>
-    <div class="bs-table-scrollable">
+    <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -1109,7 +1109,7 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
           </tr>
         </tbody>
       </table>
-    </div><!-- /.bs-table-scrollable -->
+    </div><!-- /.table-responsive -->
     <div class="bs-callout bs-callout-info">
       <h4>Data attributes for individual popovers</h4>
       <p>Options for individual popovers can alternatively be specified through the use of data attributes, as explained above.</p>
@@ -1138,7 +1138,7 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
     <p>Hides and destroys an element's popover.</p>
     {% highlight js %}$('#element').popover('destroy'){% endhighlight %}
     <h3>Events</h3>
-    <div class="bs-table-scrollable">
+    <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
          <tr>
@@ -1165,7 +1165,7 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
          </tr>
         </tbody>
       </table>
-    </div><!-- /.bs-table-scrollable -->
+    </div><!-- /.table-responsive -->
 {% highlight js %}
 $('#myPopover').on('hidden.bs.popover', function () {
   // do something…
@@ -1222,7 +1222,7 @@ $('#myPopover').on('hidden.bs.popover', function () {
 
     <h3>Events</h3>
     <p>Bootstrap's alert class exposes a few events for hooking into alert functionality.</p>
-    <div class="bs-table-scrollable">
+    <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -1241,7 +1241,7 @@ $('#myPopover').on('hidden.bs.popover', function () {
           </tr>
         </tbody>
       </table>
-    </div><!-- /.bs-table-scrollable -->
+    </div><!-- /.table-responsive -->
 {% highlight js %}
 $('#my-alert').bind('closed.bs.alert', function () {
   // do something…
@@ -1528,7 +1528,7 @@ $(".collapse").collapse()
 
     <h3>Options</h3>
     <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-parent=""</code>.</p>
-    <div class="bs-table-scrollable">
+    <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
          <tr>
@@ -1553,7 +1553,7 @@ $(".collapse").collapse()
          </tr>
         </tbody>
       </table>
-    </div><!-- /.bs-table-scrollable -->
+    </div><!-- /.table-responsive -->
 
     <h3>Methods</h3>
 
@@ -1576,7 +1576,7 @@ $('#myCollapsible').collapse({
 
     <h3>Events</h3>
     <p>Bootstrap's collapse class exposes a few events for hooking into collapse functionality.</p>
-    <div class="bs-table-scrollable">
+    <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
          <tr>
@@ -1605,7 +1605,7 @@ $('#myCollapsible').collapse({
          </tr>
         </tbody>
       </table>
-    </div><!-- /.bs-table-scrollable -->
+    </div><!-- /.table-responsive -->
 {% highlight js %}
 $('#myCollapsible').on('hidden.bs.collapse', function () {
   // do something…
@@ -1752,7 +1752,7 @@ $('.carousel').carousel()
 
     <h3>Options</h3>
     <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-interval=""</code>.</p>
-    <div class="bs-table-scrollable">
+    <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
          <tr>
@@ -1783,7 +1783,7 @@ $('.carousel').carousel()
          </tr>
         </tbody>
       </table>
-    </div><!-- /.bs-table-scrollable -->
+    </div><!-- /.table-responsive -->
 
     <h3>Methods</h3>
 
@@ -1813,7 +1813,7 @@ $('.carousel').carousel({
 
     <h3>Events</h3>
     <p>Bootstrap's carousel class exposes two events for hooking into carousel functionality.</p>
-    <div class="bs-table-scrollable">
+    <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
          <tr>
@@ -1832,7 +1832,7 @@ $('.carousel').carousel({
          </tr>
         </tbody>
       </table>
-    </div><!-- /.bs-table-scrollable -->
+    </div><!-- /.table-responsive -->
 {% highlight js %}
 $('#myCarousel').on('slide.bs.carousel', function () {
   // do something…
@@ -1888,7 +1888,7 @@ $('#myCarousel').on('slide.bs.carousel', function () {
     <h3>Options</h3>
     <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset-top="200"</code>.</p>
 
-    <div class="bs-table-scrollable">
+    <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
          <tr>
@@ -1907,6 +1907,6 @@ $('#myCarousel').on('slide.bs.carousel', function () {
          </tr>
         </tbody>
       </table>
-    </div><!-- /.bs-table-scrollable -->
+    </div><!-- /.table-responsive -->
 
   </div>

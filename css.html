@@ -98,8 +98,8 @@ base_url: "../"
 
     <h3 id="grid-options">Grid options</h3>
     <p>See how aspects of the Bootstrap grid system work across multiple devices with a handy table.</p>
-    <div class="bs-table-scrollable">
-      <table class="table table-bordered table-striped bs-table">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
         <thead>
           <tr>
             <th></th>
@@ -1217,11 +1217,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
-
     <h2 id="tables-contextual-classes">Contextual classes</h2>
     <p>Use contextual classes to color table rows or individual cells.</p>
-    <div class="bs-table-scrollable">
-      <table class="table table-bordered table-striped bs-table">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
         <colgroup>
           <col class="col-lg-1">
           <col class="col-lg-7">
@@ -1330,6 +1329,108 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <td class="warning">...</td>
   <td class="danger">...</td>
 </tr>
+{% endhighlight %}
+
+
+    <h2 id="tables-responsive">Responsive tables</h2>
+    <p>Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code> to make them scroll horizontally up to small devices (under 768px).</p>
+    <div class="bs-example">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!-- /.table-responsive -->
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!-- /.table-responsive -->
+    </div><!-- /example -->
+{% highlight html %}
+<div class="table-responsive">
+  <table class="table">
+    ...
+  </table>
+</div>
 {% endhighlight %}
 
   </div>
@@ -2117,7 +2218,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p class="lead">For faster mobile-friendly development, use these utility classes for showing and hiding content by device via media query. Also included are utility classes for toggling content when printed.</p>
 
     <h3>Responsive classes</h3>
-    <div class="bs-table-scrollable">
+    <div class="table-responsive">
       <table class="table table-bordered table-striped responsive-utilities">
         <thead>
           <tr>
@@ -2204,7 +2305,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 
     <h3>Print classes</h3>
-    <div class="bs-table-scrollable">
+    <div class="table-responsive">
       <table class="table table-bordered table-striped responsive-utilities">
         <thead>
           <tr>
