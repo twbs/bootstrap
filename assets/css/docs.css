@@ -493,15 +493,13 @@ body {
 
 /* Space things out */
 .bs-docs-section + .bs-docs-section {
-  padding-top: 80px;
+  padding-top: 40px;
 }
 
 /* Janky fix for preventing navbar from overlapping */
-h1[id],
-h2[id],
-h3[id] {
+h1[id] {
   padding-top: 80px;
-  margin-top: -70px;
+  margin-top: -45px;
 }
 
 
@@ -1069,14 +1067,5 @@ h3[id] {
 /* Better spacing on download options in getting started */
 .bs-docs-dl-options h4 {
   margin-top: 15px;
-  margin-bottom: 5px;
-}
-
-/* Migration overview spacing */
-.bs-migration-overview {
-  margin-bottom: 30px;
-}
-.bs-migration-overview h4 {
-  margin-top: 20px;
   margin-bottom: 5px;
 }
