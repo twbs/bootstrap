@@ -7,7 +7,7 @@
 .panel {
   margin-bottom: @line-height-computed;
   background-color: @panel-bg;
-  border: 1px solid @panel-border;
+  border: 1px solid transparent;
   border-radius: @panel-border-radius;
   .box-shadow(0 1px 1px rgba(0,0,0,.05));
 }
@@ -71,8 +71,7 @@
 // Optional heading
 .panel-heading {
   padding: 10px 15px;
-  background-color: @panel-heading-bg;
-  border-bottom: 1px solid @panel-border;
+  border-bottom: 1px solid transparent;
   .border-top-radius(@panel-border-radius - 1);
 }
 
@@ -90,7 +89,7 @@
 .panel-footer {
   padding: 10px 15px;
   background-color: @panel-footer-bg;
-  border-top: 1px solid @panel-border;
+  border-top: 1px solid @panel-inner-border;
   .border-bottom-radius(@panel-border-radius - 1);
 }
 
@@ -114,13 +113,13 @@
   .panel-heading {
     border-bottom: 0;
     + .panel-collapse .panel-body {
-      border-top: 1px solid @panel-border;
+      border-top: 1px solid @panel-inner-border;
     }
   }
   .panel-footer {
     border-top: 0;
     + .panel-collapse .panel-body {
-      border-bottom: 1px solid @panel-border;
+      border-bottom: 1px solid @panel-inner-border;
     }
   }
 
@@ -132,6 +131,9 @@
 
 
 // Contextual variations
+.panel-default {
+  .panel-variant(@panel-default-border; @panel-default-text; @panel-default-heading-bg; @panel-default-border);
+}
 .panel-primary {
   .panel-variant(@panel-primary-border; @panel-primary-text; @panel-primary-heading-bg; @panel-primary-border);
 }
