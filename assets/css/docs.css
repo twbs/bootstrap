@@ -13,7 +13,7 @@
  * Old docs callout
  * Ads
  * Side navigation
- * Page structure
+ * Docs sections
  * Callouts
  * Grid styles
  * Examples
@@ -477,15 +477,12 @@ body {
   }
 }
 @media screen and (min-width: 1200px) {
-
   /* Widen the fixed sidebar again */
   .bs-sidebar.affix-bottom,
   .bs-sidebar.affix {
     width: 263px;
   }
-
 }
-
 
 
 /*
