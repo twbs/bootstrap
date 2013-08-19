@@ -305,7 +305,7 @@ base_url: "../"
         <div class="checkbox">
           <label>
             <input type="checkbox" checked value="tab.js">
-            Toggable tabs
+            Togglable tabs
           </label>
         </div>
       </div>
@@ -651,9 +651,9 @@ base_url: "../"
     <p>Define alert colors, border radius, and padding.</p>
     <h4>Border radius</h4>
     <label>@alert-padding</label>
-    <input type="text" class="form-control" placeholder="15px">
+    <input type="text" class="form-control" placeholder="15px" data-var="@alert-padding">
     <label>@alert-border-radius</label>
-    <input type="text" class="form-control" placeholder="@border-radius-base">
+    <input type="text" class="form-control" placeholder="@border-radius-base" data-var="@alert-border-radius">
     <div class="row">
       <div class="col-lg-6">
         <h4>Default (Warning)</h4>
@@ -999,7 +999,7 @@ base_url: "../"
 
     <h3>Wells</h3>
     <label>@well-bg</label>
-    <input type="text" class="form-control" placeholder="#f5f5f5">
+    <input type="text" class="form-control" placeholder="#f5f5f5" data-var="@well-bg">
 
     <h2 id="variables-accordion">Accordion</h2>
     <label>@accordion-border-bg</label>
@@ -1425,7 +1425,7 @@ base_url: "../"
       <div class="col-lg-6">
         <label>@page-header-border-color</label>
         <input type="text" class="form-control" placeholder="@gray-lighter" data-var="@page-header-border-color">
-        <p class="help-block">Pag header border color</p>
+        <p class="help-block">Page header border color</p>
       </div>
     </div>
     <h2 id="variables-other">Other</h2>
