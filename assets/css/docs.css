@@ -633,7 +633,8 @@ h1[id] {
 .bs-example > .panel:last-child,
 .bs-example > .list-group:last-child,
 .bs-example > .well:last-child,
-.bs-example > .progress:last-child {
+.bs-example > .progress:last-child,
+.bs-example > .table-responsive:last-child > .table {
   margin-bottom: 0;
 }
 .bs-example > p > .close {
