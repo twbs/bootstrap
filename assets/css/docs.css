@@ -491,9 +491,17 @@ body {
  * Content blocks for each component or feature.
  */
 
-/* Space things out for fixed navbar */
+/* Space things out */
 .bs-docs-section + .bs-docs-section {
   padding-top: 80px;
+}
+
+/* Ghetto fix for preventing navbar from overlapping */
+h1[id],
+h2[id],
+h3[id] {
+  padding-top: 80px;
+  margin-top: -80px;
 }
 
 
