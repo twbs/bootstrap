@@ -148,9 +148,9 @@
 }
 
 // Apply the mixin to the alerts
-.alert            { .alert-styles(@alert-bg); }
 .alert-success    { .alert-styles(@alert-success-bg); }
 .alert-info       { .alert-styles(@alert-info-bg); }
+.alert-warning    { .alert-styles(@alert-warning-bg); }
 .alert-danger     { .alert-styles(@alert-danger-bg); }
 
 
@@ -211,7 +211,7 @@
 }
 
 // Apply the mixin to the panel headings only
-.panel-heading                    { .panel-heading-styles(@panel-heading-bg); }
+.panel-default > .panel-heading   { .panel-heading-styles(@panel-default-heading-bg); }
 .panel-primary > .panel-heading   { .panel-heading-styles(@panel-primary-heading-bg); }
 .panel-success > .panel-heading   { .panel-heading-styles(@panel-success-heading-bg); }
 .panel-info > .panel-heading      { .panel-heading-styles(@panel-info-heading-bg); }

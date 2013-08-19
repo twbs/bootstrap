@@ -7,45 +7,6 @@ base_url: "../"
 ---
 
 
-<style>
-/* Icons
--------------------------------------------------- */
-
-.bs-glyphicons {
-  padding-left: 0;
-  padding-bottom: 1px;
-  margin-bottom: 20px;
-  list-style: none;
-  overflow: hidden;
-}
-.bs-glyphicons li {
-  float: left;
-  width: 25%;
-  height: 115px;
-  padding: 10px;
-  margin: 0 -1px -1px 0;
-  font-size: 12px;
-  line-height: 1.4;
-  text-align: center;
-  border: 1px solid #ddd;
-}
-.bs-glyphicons .glyphicon {
-  display: block;
-  margin: 5px auto 10px;
-  font-size: 24px;
-}
-.bs-glyphicons li:hover {
-  background-color: rgba(86,61,124,.1);
-}
-
-@media (min-width: 768px) {
-  .bs-glyphicons li {
-    width: 12.5%;
-  }
-}
-</style>
-
-
   <!-- Glyphicons
   ================================================== -->
   <div class="bs-docs-section">
@@ -287,7 +248,7 @@ base_url: "../"
 {% highlight html %}
 <button type="button" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-star"></span> Star
-</a>
+</button>
 {% endhighlight %}
 
   </div>
@@ -1318,33 +1279,27 @@ base_url: "../"
 {% endhighlight %}
 
 
-    <h2 id="nav-alignment">Alignment options</h2>
-    <p>To align nav links, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
-
-
     <h2 id="nav-dropdowns">Using dropdowns</h2>
     <p>Add dropdown menus with a little extra HTML and the <a href="../javascript/#dropdowns">dropdowns JavaScript plugin</a>.</p>
 
     <h3>Tabs with dropdowns</h3>
     <div class="bs-example">
-      <nav class="navbar navbar-default" role="navigation">
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Help</a></li>
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              Dropdown <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">Help</a></li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        Dropdown <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </li>
+  </ul>
     </div>
 {% highlight html %}
 <ul class="nav nav-tabs">
@@ -2110,22 +2065,22 @@ body { padding-bottom: 70px; }
     <p>By default, Bootstrap's thumbnails are designed to showcase linked images with minimal required markup.</p>
     <div class="bs-example">
       <div class="row">
-        <div class="col-lg-3">
+        <div class="col-sm-6 col-md-3">
           <a href="#" class="thumbnail">
             <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
           </a>
         </div>
-        <div class="col-lg-3">
+        <div class="col-sm-6 col-md-3">
           <a href="#" class="thumbnail">
             <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
           </a>
         </div>
-        <div class="col-lg-3">
+        <div class="col-sm-6 col-md-3">
           <a href="#" class="thumbnail">
             <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
           </a>
         </div>
-        <div class="col-lg-3">
+        <div class="col-sm-6 col-md-3">
           <a href="#" class="thumbnail">
             <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
           </a>
@@ -2134,7 +2089,7 @@ body { padding-bottom: 70px; }
     </div><!-- /.bs-example -->
 {% highlight html %}
 <div class="row">
-  <div class="col-lg-3">
+  <div class="col-sm-6 col-md-3">
     <a href="#" class="thumbnail">
       <img data-src="holder.js/100%x180" alt="...">
     </a>
@@ -2147,7 +2102,7 @@ body { padding-bottom: 70px; }
     <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.</p>
     <div class="bs-example">
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-sm-6 col-md-3">
           <div class="thumbnail">
             <img data-src="holder.js/300x200" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
             <div class="caption">
@@ -2157,7 +2112,7 @@ body { padding-bottom: 70px; }
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-sm-6 col-md-3">
           <div class="thumbnail">
             <img data-src="holder.js/300x200" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
             <div class="caption">
@@ -2167,7 +2122,7 @@ body { padding-bottom: 70px; }
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-sm-6 col-md-3">
           <div class="thumbnail">
             <img data-src="holder.js/300x200" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
             <div class="caption">
@@ -2181,7 +2136,7 @@ body { padding-bottom: 70px; }
     </div><!-- /.bs-example -->
 {% highlight html %}
 <div class="row">
-  <div class="col-lg-4">
+  <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
       <img data-src="holder.js/300x200" alt="...">
       <div class="caption">
@@ -2206,28 +2161,23 @@ body { padding-bottom: 70px; }
     </div>
     <p class="lead">Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages. For inline dismissal, use the <a href="../javascript/#js-alerts">alerts jQuery plugin</a>.</p>
 
-    <h2 id="alerts-default">Default alert</h2>
-    <p>Wrap any text and an optional dismiss button in <code>.alert</code> for a basic warning alert message.</p>
+    <h2 id="alerts-examples">Examples</h2>
+    <p>Wrap any text and an optional dismiss button in <code>.alert</code> and one of the four contextual classes (e.g., <code>.alert-success</code>) for basic alert messages.</p>
 
-    <div class="bs-example">
-      <div class="alert">
-        <strong>Warning!</strong> Best check yo self, you're not looking too good.
-      </div>
+    <div class="bs-callout bs-callout-info">
+      <h4>No default class</h4>
+      <p>Alerts don't have default classes, only base and modifier classes. A default gray alert doesn't make too much sense, so you're required to specify a type via contextual class. Choose from success, info, warning, or danger.</p>
     </div>
-{% highlight html %}
-<div class="alert">
-  <strong>Warning!</strong> Best check yo self, you're not looking too good.
-</div>
-{% endhighlight %}
 
-    <h2 id="alerts-alternatives">Contextual alternatives</h2>
-    <p>Add optional classes to change an alert's connotation.</p>
     <div class="bs-example">
       <div class="alert alert-success">
         <strong>Well done!</strong> You successfully read this important alert message.
       </div>
       <div class="alert alert-info">
         <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+      </div>
+      <div class="alert alert-warning">
+        <strong>Warning!</strong> Best check yo self, you're not looking too good.
       </div>
       <div class="alert alert-danger">
         <strong>Oh snap!</strong> Change a few things up and try submitting again.
@@ -2236,6 +2186,7 @@ body { padding-bottom: 70px; }
 {% highlight html %}
 <div class="alert alert-success">...</div>
 <div class="alert alert-info">...</div>
+<div class="alert alert-warning">...</div>
 <div class="alert alert-danger">...</div>
 {% endhighlight %}
 
@@ -2262,24 +2213,30 @@ body { padding-bottom: 70px; }
     <h2 id="alerts-links">Links in alerts</h2>
     <p>Use the <code>.alert-link</code> utility class to quickly provide matching colored links within any alert.</p>
     <div class="bs-example">
-      <div class="alert alert-danger">
-        <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
-      </div>
       <div class="alert alert-success">
         <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
       </div>
       <div class="alert alert-info">
         <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
       </div>
+      <div class="alert alert-warning">
+        <strong>Warning!</strong> Best check yo self, you're <a href="#" class="alert-link">not looking too good</a>.
+      </div>
+      <div class="alert alert-danger">
+        <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+      </div>
     </div>
 {% highlight html %}
-<div class="alert alert-danger">
-  <a href="#" class="alert-link">...</a>
-</div>
 <div class="alert alert-success">
   <a href="#" class="alert-link">...</a>
 </div>
 <div class="alert alert-info">
+  <a href="#" class="alert-link">...</a>
+</div>
+<div class="alert alert-warning">
+  <a href="#" class="alert-link">...</a>
+</div>
+<div class="alert alert-danger">
   <a href="#" class="alert-link">...</a>
 </div>
 {% endhighlight %}
@@ -2305,12 +2262,16 @@ body { padding-bottom: 70px; }
     <p>Default progress bar.</p>
     <div class="bs-example">
       <div class="progress">
-        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="sr-only">60% Complete</span></div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+          <span class="sr-only">60% Complete</span>
+        </div>
       </div>
     </div>
 {% highlight html %}
 <div class="progress">
-  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="sr-only">60% Complete</span></div>
+  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+    <span class="sr-only">60% Complete</span>
+  </div>
 </div>
 {% endhighlight %}
 
@@ -2318,16 +2279,24 @@ body { padding-bottom: 70px; }
     <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
     <div class="bs-example">
       <div class="progress">
-        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span></div>
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+          <span class="sr-only">40% Complete (success)</span>
+        </div>
       </div>
       <div class="progress">
-        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"><span class="sr-only">20% Complete</span></div>
+        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+          <span class="sr-only">20% Complete</span>
+        </div>
       </div>
       <div class="progress">
-        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete (warning)</span></div>
+        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+          <span class="sr-only">60% Complete (warning)</span>
+        </div>
       </div>
       <div class="progress">
-        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"><span class="sr-only">80% Complete (danger)</span></div>
+        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+          <span class="sr-only">80% Complete (danger)</span>
+        </div>
       </div>
     </div>
 {% highlight html %}
@@ -2357,16 +2326,24 @@ body { padding-bottom: 70px; }
     <p>Uses a gradient to create a striped effect. Not available in IE8.</p>
     <div class="bs-example">
       <div class="progress progress-striped" >
-        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span></div>
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+          <span class="sr-only">40% Complete (success)</span>
+        </div>
       </div>
       <div class="progress progress-striped">
-        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"><span class="sr-only">20% Complete</span></div>
+        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+          <span class="sr-only">20% Complete</span>
+        </div>
       </div>
       <div class="progress progress-striped">
-        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete (warning)</span></div>
+        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+          <span class="sr-only">60% Complete (warning)</span>
+        </div>
       </div>
       <div class="progress progress-striped">
-        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"><span class="sr-only">80% Complete (danger)</span></div>
+        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+          <span class="sr-only">80% Complete (danger)</span>
+        </div>
       </div>
     </div>
 {% highlight html %}
@@ -2402,7 +2379,7 @@ body { padding-bottom: 70px; }
 {% highlight html %}
 <div class="progress progress-striped active">
   <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-    <span class='sr-only'>45% Complete</span>
+    <span class="sr-only">45% Complete</span>
   </div>
 </div>
 {% endhighlight %}
@@ -2411,16 +2388,28 @@ body { padding-bottom: 70px; }
     <p>Place multiple bars into the same <code>.progress</code> to stack them.</p>
     <div class="bs-example">
       <div class="progress">
-        <div class="progress-bar progress-bar-success" style="width: 35%"><span class="sr-only">35% Complete (success)</span></div>
-        <div class="progress-bar progress-bar-warning" style="width: 20%"><span class="sr-only">20% Complete (warning)</span></div>
-        <div class="progress-bar progress-bar-danger" style="width: 10%"><span class='sr-only'>10% Complete (danger)</span></div>
+        <div class="progress-bar progress-bar-success" style="width: 35%">
+          <span class="sr-only">35% Complete (success)</span>
+        </div>
+        <div class="progress-bar progress-bar-warning" style="width: 20%">
+          <span class="sr-only">20% Complete (warning)</span>
+        </div>
+        <div class="progress-bar progress-bar-danger" style="width: 10%">
+          <span class="sr-only">10% Complete (danger)</span>
+        </div>
       </div>
     </div>
 {% highlight html %}
 <div class="progress">
-  <div class="progress-bar progress-bar-success" style="width: 35%"><span class="sr-only">35% Complete (success)</span></div>
-  <div class="progress-bar progress-bar-warning" style="width: 20%"><span class="sr-only">20% Complete (warning)</span></div>
-  <div class="progress-bar progress-bar-danger" style="width: 10%"><span class="sr-only">10% Complete (danger)</span></div>
+  <div class="progress-bar progress-bar-success" style="width: 35%">
+    <span class="sr-only">35% Complete (success)</span>
+  </div>
+  <div class="progress-bar progress-bar-warning" style="width: 20%">
+    <span class="sr-only">20% Complete (warning)</span>
+  </div>
+  <div class="progress-bar progress-bar-danger" style="width: 10%">
+    <span class="sr-only">10% Complete (danger)</span>
+  </div>
 </div>
 {% endhighlight %}
   </div>
@@ -2673,14 +2662,14 @@ body { padding-bottom: 70px; }
     <h3 id="panels-basic">Basic example</h3>
     <p>By default, all the <code>.panel</code> does is apply some basic border and padding to contain some content.</p>
     <div class="bs-example">
-      <div class="panel">
+      <div class="panel panel-default">
         <div class="panel-body">
           Basic panel example
         </div>
       </div>
     </div>
 {% highlight html %}
-<div class="panel">
+<div class="panel panel-default">
   <div class="panel-body">
     Basic panel example
   </div>
@@ -2690,13 +2679,13 @@ body { padding-bottom: 70px; }
     <h3 id="panels-heading">Panel with heading</h3>
     <p>Easily add a heading container to your panel with <code>.panel-heading</code>. You may also include any <code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code> with a <code>.panel-title</code> class to add a pre-styled heading.</p>
     <div class="bs-example">
-      <div class="panel">
+      <div class="panel panel-default">
         <div class="panel-heading">Panel heading without title</div>
         <div class="panel-body">
           Panel content
         </div>
       </div>
-      <div class="panel">
+      <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Panel title</h3>
         </div>
@@ -2706,14 +2695,14 @@ body { padding-bottom: 70px; }
       </div>
     </div>
 {% highlight html %}
-<div class="panel">
+<div class="panel panel-default">
   <div class="panel-heading">Panel heading without title</div>
   <div class="panel-body">
     Panel content
   </div>
 </div>
 
-<div class="panel">
+<div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Panel title</h3>
   </div>
@@ -2726,7 +2715,7 @@ body { padding-bottom: 70px; }
     <h3 id="panels-footer">Panel with footer</h3>
     <p>Wrap buttons or secondary text in <code>.panel-footer</code>. Note that panel footers <strong>do not</strong> inherit colors and borders when using contextual variations as they are not meant to be in the foreground.</p>
     <div class="bs-example">
-      <div class="panel">
+      <div class="panel panel-default">
         <div class="panel-body">
           Panel content
         </div>
@@ -2734,7 +2723,7 @@ body { padding-bottom: 70px; }
       </div>
     </div>
 {% highlight html %}
-<div class="panel">
+<div class="panel panel-default">
   <div class="panel-body">
     Panel content
   </div>
@@ -2797,7 +2786,7 @@ body { padding-bottom: 70px; }
     <h3 id="panels-tables">With tables</h3>
     <p>Add any non-bordered <code>.table</code> within a panel for a seamless design. If there is a <code>.panel-body</code>, we add an extra border to the top of the table for separation.</p>
     <div class="bs-example">
-      <div class="panel">
+      <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading">Panel heading</div>
         <div class="panel-body">
@@ -2838,7 +2827,7 @@ body { padding-bottom: 70px; }
       </div>
     </div>
 {% highlight html %}
-<div class="panel">
+<div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">Panel heading</div>
   <div class="panel-body">
@@ -2854,7 +2843,7 @@ body { padding-bottom: 70px; }
 
     <p>If there is no panel body, the component moves from panel header to table without interruption.</p>
     <div class="bs-example">
-      <div class="panel">
+      <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading">Panel heading</div>
 
@@ -2892,7 +2881,7 @@ body { padding-bottom: 70px; }
       </div>
     </div>
 {% highlight html %}
-<div class="panel">
+<div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">Panel heading</div>
 
@@ -2908,7 +2897,7 @@ body { padding-bottom: 70px; }
     <h3 id="panels-list-group">With list groups</h3>
     <p>Easily include full-width <a href="#list-group">list groups</a> within any panel.</p>
     <div class="bs-example">
-      <div class="panel">
+      <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading">Panel heading</div>
         <div class="panel-body">
@@ -2926,7 +2915,7 @@ body { padding-bottom: 70px; }
       </div>
     </div>
 {% highlight html %}
-<div class="panel">
+<div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">Panel heading</div>
   <div class="panel-body">

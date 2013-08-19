@@ -10,6 +10,7 @@
 
 .navbar {
   position: relative;
+  z-index: @zindex-navbar;
   min-height: @navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
   margin-bottom: @navbar-margin-bottom;
   border: 1px solid transparent;
@@ -77,8 +78,15 @@
       overflow-y: visible;
     }
 
+    // Account for first and last children spacing
+    .navbar-nav.navbar-left:first-child {
+      margin-left: -@navbar-padding-horizontal;
+    }
     .navbar-nav.navbar-right:last-child {
       margin-right: -@navbar-padding-horizontal;
+    }
+    .navbar-text:last-child {
+      margin-right: 0;
     }
   }
 }
@@ -120,7 +128,6 @@
   position: fixed;
   right: 0;
   left: 0;
-  z-index: @zindex-navbar-fixed;
   border-width: 0 0 1px;
 
   // Undo the rounded corners
@@ -129,6 +136,7 @@
   }
 }
 .navbar-fixed-top {
+  z-index: @zindex-navbar-fixed;
   top: 0;
 }
 .navbar-fixed-bottom {
@@ -252,12 +260,7 @@
 
 @media (min-width: @grid-float-breakpoint) {
   .navbar-left  { .pull-left(); }
-  .navbar-right {
-    .pull-right();
-    .dropdown-menu {
-      .pull-right > .dropdown-menu();
-    }
-  }
+  .navbar-right { .pull-right(); }
 }
 
 

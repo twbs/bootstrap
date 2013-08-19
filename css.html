@@ -71,7 +71,7 @@ base_url: "../"
     <div class="page-header">
       <h1 id="grid">Grid system</h1>
     </div>
-    <p class="lead">Bootstrap includes a responsive, mobile-first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. It includes <a href="#grid-example-basic">predefined classes</a> for easy layout options, as well as powerful <a href="#grid-less">mixins for generating more semantic layouts</a>.</p>
+    <p class="lead">Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. It includes <a href="#grid-example-basic">predefined classes</a> for easy layout options, as well as powerful <a href="#grid-less">mixins for generating more semantic layouts</a>.</p>
 
     <h3 id="grid-media-queries">Media queries</h3>
     <p>We use the following media queries to create the key breakpoints in our grid system.</p>
@@ -98,8 +98,8 @@ base_url: "../"
 
     <h3 id="grid-options">Grid options</h3>
     <p>See how aspects of the Bootstrap grid system work across multiple devices with a handy table.</p>
-    <div class="bs-table-scrollable">
-      <table class="table table-bordered table-striped bs-table">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
         <thead>
           <tr>
             <th></th>
@@ -130,9 +130,9 @@ base_url: "../"
           <tr>
             <th>Max container width</th>
             <td>None (auto)</td>
-            <td>720px</td>
-            <td>940px</td>
-            <td>1140px</td>
+            <td>750px</td>
+            <td>970px</td>
+            <td>1170px</td>
           </tr>
           <tr>
             <th>Class prefix</th>
@@ -594,11 +594,11 @@ base_url: "../"
         <tbody>
           <tr>
             <td><h1>h1. Bootstrap heading</h1></td>
-            <td>Semibold 38px</td>
+            <td>Semibold 36px</td>
           </tr>
           <tr>
             <td><h2>h2. Bootstrap heading</h2></td>
-            <td>Semibold 32px</td>
+            <td>Semibold 30px</td>
           </tr>
           <tr>
             <td><h3>h3. Bootstrap heading</h3></td>
@@ -906,7 +906,7 @@ base_url: "../"
 {% endhighlight %}
 
     <h3>Inline</h3>
-    <p>Place all list items on a single line with <code>inline-block</code> and some light padding.</p>
+    <p>Place all list items on a single line with <code>display: inline-block;</code> and some light padding.</p>
     <div class="bs-example">
       <ul class="list-inline">
         <li>Lorem ipsum</li>
@@ -1217,11 +1217,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
-
     <h2 id="tables-contextual-classes">Contextual classes</h2>
     <p>Use contextual classes to color table rows or individual cells.</p>
-    <div class="bs-table-scrollable">
-      <table class="table table-bordered table-striped bs-table">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
         <colgroup>
           <col class="col-lg-1">
           <col class="col-lg-7">
@@ -1330,6 +1329,108 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <td class="warning">...</td>
   <td class="danger">...</td>
 </tr>
+{% endhighlight %}
+
+
+    <h2 id="tables-responsive">Responsive tables</h2>
+    <p>Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code> to make them scroll horizontally up to small devices (under 768px). When viewing on anything larger than 768px wide, you will not see any difference in these tables.</p>
+    <div class="bs-example">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!-- /.table-responsive -->
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!-- /.table-responsive -->
+    </div><!-- /example -->
+{% highlight html %}
+<div class="table-responsive">
+  <table class="table">
+    ...
+  </table>
+</div>
 {% endhighlight %}
 
   </div>
@@ -2115,9 +2216,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <h1>Responsive utilities</h1>
     </div>
     <p class="lead">For faster mobile-friendly development, use these utility classes for showing and hiding content by device via media query. Also included are utility classes for toggling content when printed.</p>
+    <p>Try to use these on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation. <strong>Responsive utilities are currently only available for block and table toggling.</strong> Use with inline and table elements is currently not supported.</p>
 
-    <h3>Responsive classes</h3>
-    <div class="bs-table-scrollable">
+
+    <h2 id="responsive-utilities-classes">Available classes</h2>
+    <p>Use a single or combination of the available classes for toggling content across viewport breakpoints.</p>
+    <div class="table-responsive">
       <table class="table table-bordered table-striped responsive-utilities">
         <thead>
           <tr>
@@ -2203,8 +2307,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </table>
     </div>
 
-    <h3>Print classes</h3>
-    <div class="bs-table-scrollable">
+
+    <h2 id="responsive-utilities-print">Print classes</h2>
+    <p>Similar to the regular responsive classes, use these for toggling content for print.</p>
+    <div class="table-responsive">
       <table class="table table-bordered table-striped responsive-utilities">
         <thead>
           <tr>
@@ -2228,12 +2334,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </table>
     </div>
 
-    <h3>When to use</h3>
-    <p>Use on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation. Responsive utilities are currently only available for block-level toggling, meaning <code>display: none;</code> or <code>display: block;</code>. Use with inline and table elements is currently not supported.</p>
 
-    <h3>Test case</h3>
+    <h2 id="responsive-utilities-tests">Test cases</h2>
     <p>Resize your browser or load on different devices to test the responsive utility classes.</p>
-    <h4>Visible on...</h4>
+
+    <h3>Visible on...</h3>
     <p>Green checkmarks indicate the element <strong>is visible</strong> in your current viewport.</p>
     <div class="row responsive-utilities-test visible-on">
       <div class="col-xs-6 col-sm-3">
@@ -2254,7 +2359,36 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <span class="visible-lg">&#10004; Visible on large</span>
       </div>
     </div>
-    <h4>Hidden on...</h4>
+    <div class="row responsive-utilities-test visible-on">
+      <div class="col-xs-6 col-sm-6">
+        <span class="hidden-xs hidden-sm">Extra small and small</span>
+        <span class="visible-xs visible-sm">&#10004; Visible on x-small and small</span>
+      </div>
+      <div class="col-xs-6 col-sm-6">
+        <span class="hidden-md hidden-lg">Medium and large</span>
+        <span class="visible-md visible-lg">&#10004; Visible on medium and large</span>
+      </div>
+      <div class="clearfix visible-xs"></div>
+      <div class="col-xs-6 col-sm-6">
+        <span class="hidden-xs hidden-md">Extra small and medium</span>
+        <span class="visible-xs visible-md">&#10004; Visible on x-small and medium</span>
+      </div>
+      <div class="col-xs-6 col-sm-6">
+        <span class="hidden-sm hidden-lg">Small and large</span>
+        <span class="visible-sm visible-lg">&#10004; Visible on small and large</span>
+      </div>
+      <div class="clearfix visible-xs"></div>
+      <div class="col-xs-6 col-sm-6">
+        <span class="hidden-xs hidden-lg">Extra small and large</span>
+        <span class="visible-xs visible-lg">&#10004; Visible on x-small and large</span>
+      </div>
+      <div class="col-xs-6 col-sm-6">
+        <span class="hidden-sm hidden-md">Small and medium</span>
+        <span class="visible-sm visible-md">&#10004; Visible on small and medium</span>
+      </div>
+    </div>
+
+    <h3>Hidden on...</h3>
     <p>Here, green checkmarks indicate the element <strong>is hidden</strong> in your current viewport.</p>
     <div class="row responsive-utilities-test hidden-on">
       <div class="col-xs-6 col-sm-3">
@@ -2273,6 +2407,34 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <div class="col-xs-6 col-sm-3">
         <span class="visible-lg">Large</span>
         <span class="hidden-lg">&#10004; Hidden on large</span>
+      </div>
+    </div>
+    <div class="row responsive-utilities-test hidden-on">
+      <div class="col-xs-6 col-sm-6">
+        <span class="visible-xs visible-sm">Extra small and small</span>
+        <span class="hidden-xs hidden-sm">&#10004; Hidden on x-small and small</span>
+      </div>
+      <div class="col-xs-6 col-sm-6">
+        <span class="visible-md visible-lg">Medium and large</span>
+        <span class="hidden-md hidden-lg">&#10004; Hidden on medium and large</span>
+      </div>
+      <div class="clearfix visible-xs"></div>
+      <div class="col-xs-6 col-sm-6">
+        <span class="visible-xs visible-md">Extra small and medium</span>
+        <span class="hidden-xs hidden-md">&#10004; Hidden on x-small and medium</span>
+      </div>
+      <div class="col-xs-6 col-sm-6">
+        <span class="visible-sm visible-lg">Small and large</span>
+        <span class="hidden-sm hidden-lg">&#10004; Hidden on small and large</span>
+      </div>
+      <div class="clearfix visible-xs"></div>
+      <div class="col-xs-6 col-sm-6">
+        <span class="visible-xs visible-lg">Extra small and large</span>
+        <span class="hidden-xs hidden-lg">&#10004; Hidden on x-small and large</span>
+      </div>
+      <div class="col-xs-6 col-sm-6">
+        <span class="visible-sm visible-md">Small and medium</span>
+        <span class="hidden-sm hidden-md">&#10004; Hidden on small and medium</span>
       </div>
     </div>
 
