@@ -496,7 +496,7 @@ body {
   padding-top: 80px;
 }
 
-/* Ghetto fix for preventing navbar from overlapping */
+/* Janky fix for preventing navbar from overlapping */
 h1[id],
 h2[id],
 h3[id] {
