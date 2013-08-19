@@ -1025,8 +1025,8 @@ body {
 }
 
 /* Downloads */
-.bs-customize-download {
-  text-align: center;
+.bs-customize-download .btn-outline {
+  padding: 20px;
 }
 
 /* Error handling */
