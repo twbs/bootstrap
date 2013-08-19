@@ -127,7 +127,7 @@ module.exports = function(grunt) {
 
     validation: {
       options: {
-        reset: true,
+        reset: true
       },
       files: {
         src: ["_gh_pages/**/*.html"]
