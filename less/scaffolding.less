@@ -4,7 +4,6 @@
 
 
 // Reset the box-sizing
-// -------------------------
 
 *,
 *:before,
@@ -14,7 +13,6 @@
 
 
 // Body reset
-// -------------------------
 
 html {
   font-size: 62.5%;
@@ -39,7 +37,10 @@ textarea {
   line-height: inherit;
 }
 
-// Reset unusual Firefox-on-Android default style, see https://github.com/necolas/normalize.css/issues/214
+// Reset unusual Firefox-on-Android default style.
+//
+// See https://github.com/necolas/normalize.css/issues/214
+
 button,
 input,
 select[multiple],
@@ -49,7 +50,6 @@ textarea {
 
 
 // Links
-// -------------------------
 
 a {
   color: @link-color;
@@ -68,7 +68,6 @@ a {
 
 
 // Images
-// -------------------------
 
 img {
   vertical-align: middle;
@@ -85,7 +84,19 @@ img {
 }
 
 // Image thumbnails
-// See thumbnails.less for `.img-thumbnail`
+//
+// Heads up! This is mixin-ed into thumbnails.less for `.thumbnail`.
+.img-thumbnail {
+  padding: @thumbnail-padding;
+  line-height: @line-height-base;
+  background-color: @thumbnail-bg;
+  border: 1px solid @thumbnail-border;
+  border-radius: @thumbnail-border-radius;
+  .transition(all .2s ease-in-out);
+
+  // Keep them at most 100% wide
+  .img-responsive(inline-block);
+}
 
 // Perfect circle
 .img-circle {
@@ -94,7 +105,6 @@ img {
 
 
 // Horizontal rules
-// -------------------------
 
 hr {
   margin-top:    @line-height-computed;
@@ -103,9 +113,10 @@ hr {
   border-top: 1px solid @hr-border;
 }
 
+
 // Only display content to screen readers
+//
 // See: http://a11yproject.com/posts/how-to-hide-content/
-// -------------------------
 
 .sr-only {
   position: absolute;
