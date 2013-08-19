@@ -5346,10 +5346,6 @@ a.list-group-item:focus {
   clear: both;
 }
 
-.panel > .table {
-  margin-bottom: 0;
-}
-
 .panel > .list-group {
   margin-bottom: 0;
 }
