@@ -1043,7 +1043,14 @@ h1[id] {
   margin-bottom: 0;
 }
 .bs-customizer-alert .glyphicon {
-  margin-right: 3px;
+  margin-right: 5px;
+}
+.bs-customizer-alert pre {
+  margin: 10px 0 0;
+  color: #fff;
+  background-color: #a83c3a;
+  border-color: #973634;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
 }
 
 

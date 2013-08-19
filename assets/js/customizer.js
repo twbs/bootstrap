@@ -5,8 +5,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     $('<div id="bsCustomizerAlert" class="bs-customizer-alert">\
         <div class="container">\
           <a href="#bsCustomizerAlert" data-dismiss="alert" class="close pull-right">&times;</a>\
-          <span class="glyphicon glyphicon-warning-sign"></span>
-          <p class="bs-customizer-alert-text">' + msg + '</p>' +
+          <p class="bs-customizer-alert-text"><span class="glyphicon glyphicon-warning-sign"></span>' + msg + '</p>' +
           (err.extract ? '<pre class="bs-customizer-alert-extract">' + err.extract.join('\n') + '</pre>' : '') + '\
         </div>\
       </div>').appendTo('body').alert()
