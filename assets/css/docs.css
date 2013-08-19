@@ -19,6 +19,7 @@
  * Examples
  * Code snippets (highlight)
  * Responsive tests
+ * Glyphicons
  * Customizer
  * Miscellaneous
  */
@@ -941,6 +942,46 @@ body {
   color: #468847;
   background-color: #dff0d8;
   border: 1px solid #d6e9c6;
+}
+
+
+/*
+ * Glyphicons
+ *
+ * Special styles for displaying the icons and their classes in the docs.
+ */
+
+.bs-glyphicons {
+  padding-left: 0;
+  padding-bottom: 1px;
+  margin-bottom: 20px;
+  list-style: none;
+  overflow: hidden;
+}
+.bs-glyphicons li {
+  float: left;
+  width: 25%;
+  height: 115px;
+  padding: 10px;
+  margin: 0 -1px -1px 0;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+.bs-glyphicons .glyphicon {
+  display: block;
+  margin: 5px auto 10px;
+  font-size: 24px;
+}
+.bs-glyphicons li:hover {
+  background-color: rgba(86,61,124,.1);
+}
+
+@media (min-width: 768px) {
+  .bs-glyphicons li {
+    width: 12.5%;
+  }
 }
 
 
