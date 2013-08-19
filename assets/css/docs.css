@@ -1032,12 +1032,14 @@ h3[id] {
   border-bottom: 1px solid #b94441;
 }
 .bs-customizer-alert .close {
-  margin-top: -2px;
-  color: #fff;
-  text-shadow: none;
+  margin-top: -4px;
+  font-size: 24px;
 }
 .bs-customizer-alert p {
   margin-bottom: 0;
+}
+.bs-customizer-alert .glyphicon {
+  margin-right: 3px;
 }
 
 

@@ -15,25 +15,15 @@ base_url: "../"
     </div>
     <p class="lead">Choose which LESS files to compile into your custom build of Bootstrap. Not sure which files to use? Read through the <a href="../css/">CSS</a> and <a href="../components/">Components</a> pages in the docs</p>
 
-    <h3>Basics</h3>
     <div class="row">
       <div class="col-xs-6 col-sm-4">
-        <h4>Layout</h4>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" checked value="grid.less">
-            Grid system
-          </label>
-        </div>
+        <h3>Common CSS</h3>
         <div class="checkbox">
           <label>
             <input type="checkbox" checked value="print.less">
             Print media styles
           </label>
         </div>
-      </div>
-      <div class="col-xs-6 col-sm-4">
-        <h4>Global CSS</h4>
         <div class="checkbox">
           <label>
             <input type="checkbox" checked value="type.less">
@@ -44,6 +34,12 @@ base_url: "../"
           <label>
             <input type="checkbox" checked value="code.less">
             Code
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="grid.less">
+            Grid system
           </label>
         </div>
         <div class="checkbox">
@@ -64,44 +60,44 @@ base_url: "../"
             Buttons
           </label>
         </div>
-      </div>
-      <div class="col-xs-6 col-sm-4">
-        <h4>Utility classes</h4>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" checked value="utilities.less" data-dependents="navbar.less">
-            Basic utilities
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" checked value="responsive-utilities.less">
-            Responsive utilities
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" checked value="component-animations.less">
-            Component animations (for JS)
-          </label>
-        </div>
-      </div>
-    </div>
+      </div><!-- .col-xs-6 .col-sm-4 -->
 
-    <h3>Components</h3>
-    <div class="row">
       <div class="col-xs-6 col-sm-4">
-        <h4>Navigation</h4>
+        <h3>Components</h3>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="navs.less">
+            <input type="checkbox" checked value="glyphicons.less">
+            Glyphicons
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="button-groups.less" data-dependency="buttons.less">
+            Button groups
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="input-groups.less" data-dependency="forms.less">
+            Input groups
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="navs.less" data-dependents="navbar.less">
             Navs
           </label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="navbar.less" data-dependencies="forms.less,utilities.less">
+            <input type="checkbox" checked value="navbar.less" data-dependencies="forms.less,utilities.less,navs.less">
             Navbar
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="breadcrumbs.less">
+            Breadcrumbs
           </label>
         </div>
         <div class="checkbox">
@@ -118,17 +114,50 @@ base_url: "../"
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="breadcrumbs.less">
-            Breadcrumbs
+            <input type="checkbox" checked value="labels.less">
+            Labels
           </label>
         </div>
-      </div>
-      <div class="col-xs-6 col-sm-4">
-        <h4>Content blocks</h4>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="badges.less">
+            Badges
+          </label>
+        </div>
         <div class="checkbox">
           <label>
             <input type="checkbox" checked value="jumbotron.less">
             Jumbotron
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="thumbnails.less">
+            Thumbnails
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="alerts.less">
+            Alerts
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="progress-bars.less">
+            Progress bars
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="media.less">
+            Media items
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="list-group.less">
+            List groups
           </label>
         </div>
         <div class="checkbox">
@@ -143,15 +172,16 @@ base_url: "../"
             Wells
           </label>
         </div>
-      </div>
-      <div class="col-xs-6 col-sm-4">
-        <h4>Behavioral (requires JS)</h4>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="alerts.less">
-            Alerts
+            <input type="checkbox" checked value="close.less">
+            Close icon
           </label>
         </div>
+      </div><!-- .col-xs-6 .col-sm-4 -->
+
+      <div class="col-xs-6 col-sm-4">
+        <h3>JavaScript components</h3>
         <div class="checkbox">
           <label>
             <input type="checkbox" checked value="dropdowns.less">
@@ -182,71 +212,28 @@ base_url: "../"
             Carousel
           </label>
         </div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-xs-6 col-sm-4">
-        <h4>Media</h4>
+        <h3>Utilities</h3>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="thumbnails.less">
-            Thumbnails
+            <input type="checkbox" checked value="utilities.less" data-dependents="navbar.less">
+            Basic utilities
           </label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="list-group.less">
-            List groups
+            <input type="checkbox" checked value="responsive-utilities.less">
+            Responsive utilities
           </label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="media.less">
-            Media items
+            <input type="checkbox" checked value="component-animations.less">
+            Component animations (for JS)
           </label>
         </div>
-      </div>
-      <div class="col-xs-6 col-sm-4">
-        <h4>Miscellaneous</h4>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" checked value="input-groups.less" data-dependency="forms.less">
-            Input groups
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" checked value="button-groups.less" data-dependency="buttons.less">
-            Button groups
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" checked value="progress-bars.less">
-            Progress bars
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" checked value="badges.less">
-            Badges
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" checked value="labels.less">
-            Labels
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" checked value="close.less">
-            Close icon
-          </label>
-        </div>
-      </div>
-    </div>
+      </div><!-- .col-xs-6 .col-sm-4 -->
+    </div><!-- /.row -->
   </div>
 
 
