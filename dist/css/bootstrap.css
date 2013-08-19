@@ -3852,7 +3852,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
   margin-right: 2px;
   line-height: 1.428571429;
   border: 1px solid transparent;
-  border-radius: 4px 4px 0 0;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
 }
 
 .nav-tabs > li > a:hover {
@@ -4800,7 +4801,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: .25em;
+  border-radius: 0.25em;
 }
 
 .label[href]:hover,
@@ -5889,7 +5890,8 @@ button.close {
   line-height: 18px;
   background-color: #f7f7f7;
   border-bottom: 1px solid #ebebeb;
-  border-radius: 5px 5px 0 0;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 }
 
 .popover-content {

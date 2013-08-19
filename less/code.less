@@ -16,7 +16,7 @@ code {
   color: @code-color;
   background-color: @code-bg;
   white-space: nowrap;
-  border-radius: @border-radius-base;
+  .border-radius(@border-radius-base);
 }
 
 // Blocks of code
@@ -31,7 +31,7 @@ pre {
   color: @pre-color;
   background-color: @pre-bg;
   border: 1px solid @pre-border-color;
-  border-radius: @border-radius-base;
+  .border-radius(@border-radius-base);
 
   // Make prettyprint styles more spaced out for readability
   &.prettyprint {

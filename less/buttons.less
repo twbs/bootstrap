@@ -18,7 +18,7 @@
   vertical-align: middle;
   cursor: pointer;
   border: 1px solid transparent;
-  border-radius: @border-radius-base;
+  .border-radius(@border-radius-base);
   white-space: nowrap;
   .user-select(none);
 
@@ -86,7 +86,7 @@
   color: @link-color;
   font-weight: normal;
   cursor: pointer;
-  border-radius: 0;
+  .border-radius(0);
 
   &,
   &:active,
