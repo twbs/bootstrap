@@ -77,6 +77,10 @@
       overflow-y: visible;
     }
 
+    // Account for first and last children spacing
+    .navbar-nav.navbar-left:first-child {
+      margin-left: -@navbar-padding-horizontal;
+    }
     .navbar-nav.navbar-right:last-child {
       margin-right: -@navbar-padding-horizontal;
     }
