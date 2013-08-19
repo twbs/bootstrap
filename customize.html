@@ -81,7 +81,7 @@ base_url: "../"
         <h4>Utility classes</h4>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="utilities.less">
+            <input type="checkbox" checked value="utilities.less" data-dependents="navbar.less">
             Basic utilities
           </label>
         </div>
@@ -112,7 +112,7 @@ base_url: "../"
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="navbar.less" data-dependency="forms.less">
+            <input type="checkbox" checked value="navbar.less" data-dependencies="forms.less,utilities.less">
             Navbar
           </label>
         </div>
@@ -710,41 +710,41 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="50px" data-var="@navbar-height">
         <label>@navbar-margin-bottom</label>
         <input type="text" class="form-control" placeholder="@line-height-computed" data-var="@navbar-margin-bottom">
-        <label>@navbar-color</label>
-        <input type="text" class="form-control" placeholder="#777" data-var="@navbar-color">
-        <label>@navbar-bg</label>
-        <input type="text" class="form-control" placeholder="#eee" data-var="@navbar-bg">
+        <label>@navbar-default-color</label>
+        <input type="text" class="form-control" placeholder="#777" data-var="@navbar-default-color">
+        <label>@navbar-default-bg</label>
+        <input type="text" class="form-control" placeholder="#eee" data-var="@navbar-default-bg">
         <label>@navbar-border-radius</label>
         <input type="text" class="form-control" placeholder="@border-radius-base" data-var="@navbar-border-radius">
         <h4>Links</h4>
-        <label>@navbar-link-color</label>
-        <input type="text" class="form-control" placeholder="#777" data-var="@navbar-link-color">
-        <label>@navbar-link-hover-color</label>
-        <input type="text" class="form-control" placeholder="#333" data-var="@navbar-link-hover-color">
-        <label>@navbar-link-hover-bg</label>
-        <input type="text" class="form-control" placeholder="transparent" data-var="@navbar-link-hover-bg">
-        <label>@navbar-link-active-color</label>
-        <input type="text" class="form-control" placeholder="#555" data-var="@navbar-link-active-color">
-        <label>@navbar-link-active-bg</label>
-        <input type="text" class="form-control" placeholder="darken(@navbar-bg, 10%)" data-var="@navbar-link-active-bg">
-        <label>@navbar-link-disabled-color</label>
-        <input type="text" class="form-control" placeholder="#ccc" data-var="@navbar-link-disabled-color">
-        <label>@navbar-link-disabled-bg</label>
-        <input type="text" class="form-control" placeholder="transparent" data-var="@navbar-link-disabled-bg">
+        <label>@navbar-default-link-color</label>
+        <input type="text" class="form-control" placeholder="#777" data-var="@navbar-default-link-color">
+        <label>@navbar-default-link-hover-color</label>
+        <input type="text" class="form-control" placeholder="#333" data-var="@navbar-default-link-hover-color">
+        <label>@navbar-default-link-hover-bg</label>
+        <input type="text" class="form-control" placeholder="transparent" data-var="@navbar-default-link-hover-bg">
+        <label>@navbar-default-link-active-color</label>
+        <input type="text" class="form-control" placeholder="#555" data-var="@navbar-default-link-active-color">
+        <label>@navbar-default-link-active-bg</label>
+        <input type="text" class="form-control" placeholder="darken(@navbar-bg, 10%)" data-var="@navbar-default-link-active-bg">
+        <label>@navbar-default-link-disabled-color</label>
+        <input type="text" class="form-control" placeholder="#ccc" data-var="@navbar-default-link-disabled-color">
+        <label>@navbar-default-link-disabled-bg</label>
+        <input type="text" class="form-control" placeholder="transparent" data-var="@navbar-default-link-disabled-bg">
         <h4>Brand</h4>
-        <label>@navbar-brand-color</label>
-        <input type="text" class="form-control" placeholder="@navbar-link-color" data-var="@navbar-brand-color">
-        <label>@navbar-brand-hover-color</label>
-        <input type="text" class="form-control" placeholder="darken(@navbar-link-color, 10%)" data-var="@navbar-brand-hover-color">
-        <label>@navbar-brand-hover-bg</label>
-        <input type="text" class="form-control" placeholder="transparent" data-var="@navbar-brand-hover-bg">
+        <label>@navbar-default-brand-color</label>
+        <input type="text" class="form-control" placeholder="@navbar-link-color" data-var="@navbar-default-brand-color">
+        <label>@navbar-default-brand-hover-color</label>
+        <input type="text" class="form-control" placeholder="darken(@navbar-link-color, 10%)" data-var="@navbar-default-brand-hover-color">
+        <label>@navbar-default-brand-hover-bg</label>
+        <input type="text" class="form-control" placeholder="transparent" data-var="@navbar-default-brand-hover-bg">
         <h4>Toggle</h4>
-        <label>@navbar-toggle-hover-bg</label>
-        <input type="text" class="form-control" placeholder="#ddd" data-var="@navbar-toggle-hover-bg">
-        <label>@navbar-toggle-icon-bar-bg</label>
-        <input type="text" class="form-control" placeholder="#ccc" data-var="@navbar-toggle-icon-bar-bg">
-        <label>@navbar-toggle-border-color</label>
-        <input type="text" class="form-control" placeholder="#ddd" data-var="@navbar-toggle-border-color">
+        <label>@navbar-default-toggle-hover-bg</label>
+        <input type="text" class="form-control" placeholder="#ddd" data-var="@navbar-default-toggle-hover-bg">
+        <label>@navbar-default-toggle-icon-bar-bg</label>
+        <input type="text" class="form-control" placeholder="#ccc" data-var="@navbar-default-toggle-icon-bar-bg">
+        <label>@navbar-default-toggle-border-color</label>
+        <input type="text" class="form-control" placeholder="#ddd" data-var="@navbar-default-toggle-border-color">
       </div>
       <div class="col-lg-6">
         <h3>Inverted navbar</h3>
@@ -1475,11 +1475,7 @@ base_url: "../"
     </div>
     <p class="lead">Hooray! Your custom version of Bootstrap is now ready to be compiled. Just click the button below to finish the process.</p>
     <div class="bs-customize-download">
-      <button id="btn-download" class="btn btn-block btn-lg btn-bs" onclick="_gaq.push(['_trackEvent', 'Customize', 'Download', 'Customize and Download']);">Customize and Download</button>
-    </div>
-    <div class="bs-callout bs-callout-danger">
-      <h4>What's included?</h4>
-      <p>Downloads include compiled CSS, compiled and minified CSS, and compiled jQuery plugins, all nicely packed up into a zipball for your convenience.</p>
+      <button id="btn-compile" class="btn btn-block btn-lg btn-bs" onclick="_gaq.push(['_trackEvent', 'Customize', 'Download', 'Customize and Download']);">Compile and Download</button>
     </div>
   </div><!-- /download -->
 </form>

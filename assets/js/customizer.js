@@ -1,7 +1,7 @@
 window.onload = function () { // wait for load in a dumb way because B-0
   var cw = '/*!\n * Bootstrap v3.0.0-rc.2\n *\n * Copyright 2013 Twitter, Inc\n * Licensed under the Apache License v2.0\n * http://www.apache.org/licenses/LICENSE-2.0\n *\n * Designed and built with all the love in the world @twitter by @mdo and @fat.\n */\n\n'
 
-  function showError (msg, err) {
+  function showError(msg, err) {
     $('<div id="bsCustomizerAlert" class="bs-customizer-alert">\
         <div class="container">\
           <a href="#bsCustomizerAlert" data-dismiss="alert" class="close pull-right">&times;</a>\
@@ -12,19 +12,32 @@ window.onload = function () { // wait for load in a dumb way because B-0
     throw err
   }
 
+  function showCallout(msg, showUpTop) {
+    var callout = $('<div class="bs-callout bs-callout-danger">\
+       <h4>Attention!</h4>\
+      <p>' + msg + '</p>\
+    </div>')
+
+    if (showUpTop) {
+      callout.appendTo('.bs-docs-container')
+    } else {
+      callout.insertAfter('.bs-customize-download')
+    }
+  }
+
   function getQueryParam(key) {
     key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
     var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
     return match && decodeURIComponent(match[1].replace(/\+/g, " "));
   }
 
-  function createGist (configData) {
+  function createGist(configData) {
     var data = {
       "description": "Bootstrap Customizer Config",
       "public": true,
       "files": {
         "config.json": {
-          "content": JSON.stringify(configData)
+          "content": JSON.stringify(configData, null, 2)
         }
       }
     }
@@ -42,7 +55,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     })
   }
 
-  function generateUrl() {
+  function getCustomizerData() {
     var vars = {}
 
     $('#less-variables-section input')
@@ -58,7 +71,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
     if ($.isEmptyObject(data.vars) && !data.css.length && !data.js.length) return
 
-    createGist(data)
+    return data
   }
 
   function parseUrl() {
@@ -113,9 +126,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
       }
     }
 
-    var content = zip.generate()
-    location.href = 'data:application/zip;base64,' + content
-    complete()
+    var content = zip.generate({type:"blob"})
+
+    complete(content)
   }
 
   function generateCustomCSS(vars) {
@@ -188,15 +201,6 @@ window.onload = function () { // wait for load in a dumb way because B-0
     }
   }
 
-  var $downloadBtn = $('#btn-download').on('click', function (e) {
-    e.preventDefault()
-    $downloadBtn.addClass('loading')
-    generateZip(generateCSS(), generateJavascript(), function () {
-      $downloadBtn.removeClass('loading')
-      setTimeout(generateUrl, 500)
-    })
-  })
-
   var inputsComponent = $('#less-section input')
   var inputsPlugin    = $('#plugin-section input')
   var inputsVariables = $('#less-variables-section input')
@@ -237,6 +241,34 @@ window.onload = function () { // wait for load in a dumb way because B-0
       dependent && dependent.prop('checked', false)
     }
   })
+
+  var $compileBtn = $('#btn-compile')
+  var $downloadBtn = $('#btn-download')
+
+  $compileBtn.on('click', function (e) {
+    e.preventDefault()
+
+    $compileBtn.attr('disabled', 'disabled')
+
+    generateZip(generateCSS(), generateJavascript(), function (blob) {
+      $compileBtn.removeAttr('disabled')
+      saveAs(blob, "bootstrap.zip")
+      createGist(getCustomizerData())
+    })
+  })
+
+  // browser support alerts
+  if (!window.URL && navigator.userAgent.toLowerCase().indexOf('safari') != -1) {
+    showCallout("Looks like you're using safari, which sadly doesn't have the best support\
+                 for HTML5 blobs. Because of this your file will be downloaded with the name <code>\"untitled\"</code>.\
+                 However, if you check your downloads folder, just rename this <code>\"untitled\"</code> file\
+                 to <code>\"bootstrap.zip\"</code> and you should be good to go!")
+  } else if (!window.URL && !window.webkitURL) {
+    $('.bs-docs-section, .bs-sidebar').css('display', 'none')
+
+    showCallout("Looks like your current browser doesn't support the Bootstrap Customizer. Please take a second\
+                to <a href=\"https://www.google.com/intl/en/chrome/browser/\"> upgrade to a more modern browser</a>.", true)
+  }
 
   parseUrl()
 }

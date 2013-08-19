@@ -22,11 +22,11 @@
   & .btn-default .caret {
     border-bottom-color: @btn-default-color;
   }
-  & .btn-primary,
-  & .btn-success,
-  & .btn-warning,
-  & .btn-danger,
-  & .btn-info {
+  .btn-primary,
+  .btn-success,
+  .btn-warning,
+  .btn-danger,
+  .btn-info {
    .caret {
       border-bottom-color: #fff;
     }
@@ -159,11 +159,12 @@
 }
 // Carets in other button sizes
 .btn-lg .caret {
-  border-width: @caret-width-large;
+  border-width: @caret-width-large @caret-width-large 0;
+  border-bottom-width: 0;
 }
 // Upside down carets for .dropup
 .dropup .btn-lg .caret {
-  border-bottom-width: @caret-width-large;
+  border-width: 0 @caret-width-large @caret-width-large;
 }
 
 

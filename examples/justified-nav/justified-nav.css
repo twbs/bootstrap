@@ -2,13 +2,6 @@ body {
   padding-top: 20px;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.masthead,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
 .footer {
   border-top: 1px solid #eee;
   margin-top: 40px;
@@ -82,8 +75,6 @@ body {
     border-right: 0;
   }
 }
-
-
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
