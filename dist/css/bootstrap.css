@@ -2329,7 +2329,7 @@ input[type="button"].btn-block {
 
 .glyphicon {
   position: relative;
-  top: 2px;
+  top: 1px;
   display: inline-block;
   font-family: 'Glyphicons Halflings';
   -webkit-font-smoothing: antialiased;
