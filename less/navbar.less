@@ -10,6 +10,7 @@
 
 .navbar {
   position: relative;
+  z-index: @zindex-navbar;
   min-height: @navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
   margin-bottom: @navbar-margin-bottom;
   border: 1px solid transparent;
@@ -127,7 +128,6 @@
   position: fixed;
   right: 0;
   left: 0;
-  z-index: @zindex-navbar-fixed;
   border-width: 0 0 1px;
 
   // Undo the rounded corners
@@ -136,6 +136,7 @@
   }
 }
 .navbar-fixed-top {
+  z-index: @zindex-navbar-fixed;
   top: 0;
 }
 .navbar-fixed-bottom {
