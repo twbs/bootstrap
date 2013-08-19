@@ -36,99 +36,171 @@
 // Visibility utilities
 
 .visible-xs {
-  .responsive-visibility();
-  @media (min-width: @screen-sm) and (max-width: @screen-sm-max) {
-    .responsive-invisibility();
+  .responsive-invisibility();
+  @media (max-width: @screen-phone-max) {
+    .responsive-visibility();
   }
-  @media (min-width: @screen-md) and (max-width: @screen-md-max) {
-    .responsive-invisibility();
+  &.visible-sm {
+    @media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
+      .responsive-visibility();
+    }
   }
-  @media (min-width: @screen-lg) {
-    .responsive-invisibility();
+  &.visible-md {
+    @media (min-width: @screen-desktop) and (max-width: @screen-desktop-max) {
+      .responsive-visibility();
+    }    
+  }
+  &.visible-lg {
+    @media (min-width: @screen-large-desktop) {
+      .responsive-visibility();
+    }    
   }
 }
 .visible-sm {
   .responsive-invisibility();
-  @media (min-width: @screen-sm) and (max-width: @screen-sm-max) {
+  &.visible-xs {
+    @media (max-width: @screen-phone-max) {
+      .responsive-visibility();
+    }    
+  }
+  @media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
     .responsive-visibility();
   }
-  @media (min-width: @screen-md) and (max-width: @screen-md-max) {
-    .responsive-invisibility();
+  &.visible-md {
+    @media (min-width: @screen-desktop) and (max-width: @screen-desktop-max) {
+      .responsive-visibility();
+    }    
   }
-  @media (min-width: @screen-lg) {
-    .responsive-invisibility();
+  &.visible-lg {
+    @media (min-width: @screen-large-desktop) {
+      .responsive-visibility();
+    }    
   }
 }
 .visible-md {
   .responsive-invisibility();
-  @media (min-width: @screen-sm) and (max-width: @screen-sm-max) {
-    .responsive-invisibility();
+  &.visible-xs {
+    @media (max-width: @screen-phone-max) {
+      .responsive-visibility();
+    }    
   }
-  @media (min-width: @screen-md) and (max-width: @screen-md-max) {
+  &.visible-sm {
+    @media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
+      .responsive-visibility();
+    }
+  }
+  @media (min-width: @screen-desktop) and (max-width: @screen-desktop-max) {
     .responsive-visibility();
   }
-  @media (min-width: @screen-lg) {
-    .responsive-invisibility();
+  &.visible-lg {
+    @media (min-width: @screen-large-desktop) {
+      .responsive-visibility();
+    }    
   }
 }
 .visible-lg {
   .responsive-invisibility();
-  @media (min-width: @screen-sm) and (max-width: @screen-sm-max) {
-    .responsive-invisibility();
+  &.visible-xs {
+    @media (max-width: @screen-phone-max) {
+      .responsive-visibility();
+    }    
   }
-  @media (min-width: @screen-md) and (max-width: @screen-md-max) {
-    .responsive-invisibility();
+  &.visible-sm {
+    @media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
+      .responsive-visibility();
+    }
   }
-  @media (min-width: @screen-lg) {
+  &.visible-md {
+    @media (min-width: @screen-desktop) and (max-width: @screen-desktop-max) {
+      .responsive-visibility();
+    }    
+  }
+  @media (min-width: @screen-large-desktop) {
     .responsive-visibility();
   }
 }
 
 .hidden-xs {
-  .responsive-invisibility();
-  @media (min-width: @screen-sm) and (max-width: @screen-sm-max) {
-    .responsive-visibility();
+  .responsive-visibility();
+  @media (max-width: @screen-phone-max) {
+    .responsive-invisibility();
   }
-  @media (min-width: @screen-md) and (max-width: @screen-md-max) {
-    .responsive-visibility();
+  &.hidden-sm {
+    @media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
+      .responsive-invisibility();
+    }    
   }
-  @media (min-width: @screen-lg) {
-    .responsive-visibility();
+  &.hidden-md {
+    @media (min-width: @screen-desktop) and (max-width: @screen-desktop-max) {
+      .responsive-invisibility();
+    }    
+  }
+  &.hidden-lg {
+    @media (min-width: @screen-large-desktop) {
+      .responsive-invisibility();
+    }    
   }
 }
 .hidden-sm {
   .responsive-visibility();
-  @media (min-width: @screen-sm) and (max-width: @screen-sm-max) {
+  &.hidden-xs {
+    @media (max-width: @screen-phone-max) {
+      .responsive-invisibility();
+    }
+  }
+  @media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
     .responsive-invisibility();
   }
-  @media (min-width: @screen-md) and (max-width: @screen-md-max) {
-    .responsive-visibility();
+  &.hidden-md {
+    @media (min-width: @screen-desktop) and (max-width: @screen-desktop-max) {
+      .responsive-invisibility();
+    }    
   }
-  @media (min-width: @screen-lg) {
-    .responsive-visibility();
+  &.hidden-lg {
+    @media (min-width: @screen-large-desktop) {
+      .responsive-invisibility();
+    }    
   }
 }
 .hidden-md {
   .responsive-visibility();
-  @media (min-width: @screen-sm) and (max-width: @screen-sm-max) {
-    .responsive-visibility();
+  &.hidden-xs {
+    @media (max-width: @screen-phone-max) {
+      .responsive-invisibility();
+    }    
   }
-  @media (min-width: @screen-md) and (max-width: @screen-md-max) {
+  &.hidden-sm {
+    @media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
+      .responsive-invisibility();
+    }    
+  }
+  @media (min-width: @screen-desktop) and (max-width: @screen-desktop-max) {
     .responsive-invisibility();
   }
-  @media (min-width: @screen-lg) {
-    .responsive-visibility();
+  &.hidden-lg {
+    @media (min-width: @screen-large-desktop) {
+      .responsive-invisibility();
+    }    
   }
 }
 .hidden-lg {
   .responsive-visibility();
-  @media (min-width: @screen-sm) and (max-width: @screen-sm-max) {
-    .responsive-visibility();
+  &.hidden-xs {
+    @media (max-width: @screen-phone-max) {
+      .responsive-invisibility();
+    }    
   }
-  @media (min-width: @screen-md) and (max-width: @screen-md-max) {
-    .responsive-visibility();
+  &.hidden-sm {
+    @media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
+      .responsive-invisibility();
+    }    
   }
-  @media (min-width: @screen-lg) {
+  &.hidden-md {
+    @media (min-width: @screen-desktop) and (max-width: @screen-desktop-max) {
+      .responsive-invisibility();
+    }    
+  }
+  @media (min-width: @screen-large-desktop) {
     .responsive-invisibility();
   }
 }
