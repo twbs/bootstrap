@@ -2216,8 +2216,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <h1>Responsive utilities</h1>
     </div>
     <p class="lead">For faster mobile-friendly development, use these utility classes for showing and hiding content by device via media query. Also included are utility classes for toggling content when printed.</p>
+    <p>Try to use these on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation. <strong>Responsive utilities are currently only available for block and table toggling.</strong> Use with inline and table elements is currently not supported.</p>
 
-    <h3>Responsive classes</h3>
+
+    <h2 id="responsive-utilities-classes">Available classes</h2>
+    <p>Use a single or combination of the available classes for toggling content across viewport breakpoints.</p>
     <div class="table-responsive">
       <table class="table table-bordered table-striped responsive-utilities">
         <thead>
@@ -2304,7 +2307,9 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </table>
     </div>
 
-    <h3>Print classes</h3>
+
+    <h2 id="responsive-utilities-print">Print classes</h2>
+    <p>Similar to the regular responsive classes, use these for toggling content for print.</p>
     <div class="table-responsive">
       <table class="table table-bordered table-striped responsive-utilities">
         <thead>
@@ -2329,12 +2334,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </table>
     </div>
 
-    <h3>When to use</h3>
-    <p>Use on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation. Responsive utilities are currently only available for block-level toggling, meaning <code>display: none;</code> or <code>display: block;</code>. Use with inline and table elements is currently not supported.</p>
 
-    <h3>Test case</h3>
+    <h2 id="responsive-utilities-tests">Test cases</h2>
     <p>Resize your browser or load on different devices to test the responsive utility classes.</p>
-    <h4>Visible on...</h4>
+
+    <h3>Visible on...</h3>
     <p>Green checkmarks indicate the element <strong>is visible</strong> in your current viewport.</p>
     <div class="row responsive-utilities-test visible-on">
       <div class="col-xs-6 col-sm-3">
@@ -2355,7 +2359,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <span class="visible-lg">&#10004; Visible on large</span>
       </div>
     </div>
-    <div class="row responsive-utilities-test hidden-on">
+    <div class="row responsive-utilities-test visible-on">
       <div class="col-xs-6 col-sm-6">
         <span class="hidden-xs hidden-sm">Extra small and small</span>
         <span class="visible-xs visible-sm">&#10004; Visible on x-small and small</span>
@@ -2364,7 +2368,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <span class="hidden-md hidden-lg">Medium and large</span>
         <span class="visible-md visible-lg">&#10004; Visible on medium and large</span>
       </div>
-      <div class="clearfix visible-xs"></div>  
+      <div class="clearfix visible-xs"></div>
       <div class="col-xs-6 col-sm-6">
         <span class="hidden-xs hidden-md">Extra small and medium</span>
         <span class="visible-xs visible-md">&#10004; Visible on x-small and medium</span>
@@ -2373,7 +2377,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <span class="hidden-sm hidden-lg">Small and large</span>
         <span class="visible-sm visible-lg">&#10004; Visible on small and large</span>
       </div>
-      <div class="clearfix visible-xs"></div>  
+      <div class="clearfix visible-xs"></div>
       <div class="col-xs-6 col-sm-6">
         <span class="hidden-xs hidden-lg">Extra small and large</span>
         <span class="visible-xs visible-lg">&#10004; Visible on x-small and large</span>
@@ -2381,9 +2385,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <div class="col-xs-6 col-sm-6">
         <span class="hidden-sm hidden-md">Small and medium</span>
         <span class="visible-sm visible-md">&#10004; Visible on small and medium</span>
-      </div>  
+      </div>
     </div>
-    <h4>Hidden on...</h4>
+
+    <h3>Hidden on...</h3>
     <p>Here, green checkmarks indicate the element <strong>is hidden</strong> in your current viewport.</p>
     <div class="row responsive-utilities-test hidden-on">
       <div class="col-xs-6 col-sm-3">
