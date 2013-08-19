@@ -169,7 +169,7 @@ module.exports = function(grunt) {
   grunt.registerTask('validate-html', ['jekyll', 'validation']);
 
   // Test task.
-  var testSubtasks = ['dist-css', 'jshint', 'qunit'];
+  var testSubtasks = ['dist-css', 'jshint', 'qunit', 'validate-html'];
   // Only run BrowserStack tests under Travis
   if (process.env.TRAVIS) {
     // Only run BrowserStack tests if this is a mainline commit in twbs/bootstrap, or you have your own BrowserStack key
@@ -211,7 +211,7 @@ module.exports = function(grunt) {
     }
 
     var customize = fs.readFileSync('customize.html', 'utf-8')
-    var files = '{% raw %}<!-- generated -->\n<script id="files">\n' + getFiles('js') + getFiles('less') + getFiles('fonts') + '<\/script>\n<!-- /generated -->{% endraw %}'
-    fs.writeFileSync('customize.html', customize.replace(/<!-- generated -->(.|[\n\r])*<!-- \/generated -->/, '') + files)
+    var files = getFiles('js') + getFiles('less') + getFiles('fonts')
+    fs.writeFileSync('assets/js/raw-files.js', files)
   });
 };
