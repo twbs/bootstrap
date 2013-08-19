@@ -2206,28 +2206,23 @@ body { padding-bottom: 70px; }
     </div>
     <p class="lead">Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages. For inline dismissal, use the <a href="../javascript/#js-alerts">alerts jQuery plugin</a>.</p>
 
-    <h2 id="alerts-default">Default alert</h2>
-    <p>Wrap any text and an optional dismiss button in <code>.alert</code> for a basic warning alert message.</p>
+    <h2 id="alerts-examples">Examples</h2>
+    <p>Wrap any text and an optional dismiss button in <code>.alert</code> and one of the four contextual classes (e.g., <code>.alert-success</code>) for basic alert messages.</p>
 
-    <div class="bs-example">
-      <div class="alert">
-        <strong>Warning!</strong> Best check yo self, you're not looking too good.
-      </div>
+    <div class="bs-callout bs-callout-info">
+      <h4>No default class</h4>
+      <p>Alerts don't have default classes, only base and modifier classes. A default gray alert doesn't make too much sense, so you're required to specify a type via contextual class. Choose from success, info, warning, or danger.</p>
     </div>
-{% highlight html %}
-<div class="alert">
-  <strong>Warning!</strong> Best check yo self, you're not looking too good.
-</div>
-{% endhighlight %}
 
-    <h2 id="alerts-alternatives">Contextual alternatives</h2>
-    <p>Add optional classes to change an alert's connotation.</p>
     <div class="bs-example">
       <div class="alert alert-success">
         <strong>Well done!</strong> You successfully read this important alert message.
       </div>
       <div class="alert alert-info">
         <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+      </div>
+      <div class="alert alert-warning">
+        <strong>Warning!</strong> Best check yo self, you're not looking too good.
       </div>
       <div class="alert alert-danger">
         <strong>Oh snap!</strong> Change a few things up and try submitting again.
@@ -2236,6 +2231,7 @@ body { padding-bottom: 70px; }
 {% highlight html %}
 <div class="alert alert-success">...</div>
 <div class="alert alert-info">...</div>
+<div class="alert alert-warning">...</div>
 <div class="alert alert-danger">...</div>
 {% endhighlight %}
 
