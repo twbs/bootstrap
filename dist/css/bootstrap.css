@@ -1478,13 +1478,13 @@ th {
   background-color: #f5f5f5;
 }
 
-table col[class^="col-"] {
+table col[class*="col-"] {
   display: table-column;
   float: none;
 }
 
-table td[class^="col-"],
-table th[class^="col-"] {
+table td[class*="col-"],
+table th[class*="col-"] {
   display: table-cell;
   float: none;
 }
