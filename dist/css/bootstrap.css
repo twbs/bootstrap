@@ -354,6 +354,19 @@ img {
   border-radius: 6px;
 }
 
+.img-thumbnail {
+  display: inline-block;
+  height: auto;
+  max-width: 100%;
+  padding: 4px;
+  line-height: 1.428571429;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+}
+
 .img-circle {
   border-radius: 50%;
 }
@@ -4884,8 +4897,11 @@ a.list-group-item.active > .badge,
   }
 }
 
-.thumbnail,
-.img-thumbnail {
+.thumbnail {
+  display: inline-block;
+  display: block;
+  height: auto;
+  max-width: 100%;
   padding: 4px;
   line-height: 1.428571429;
   background-color: #ffffff;
@@ -4895,18 +4911,8 @@ a.list-group-item.active > .badge,
           transition: all 0.2s ease-in-out;
 }
 
-.thumbnail {
-  display: block;
-}
-
 .thumbnail > img {
   display: block;
-  height: auto;
-  max-width: 100%;
-}
-
-.img-thumbnail {
-  display: inline-block;
   height: auto;
   max-width: 100%;
 }
