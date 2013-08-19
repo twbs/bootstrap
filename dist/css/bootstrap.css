@@ -3339,6 +3339,13 @@ input[type="button"].btn-block {
   margin-bottom: 1px;
 }
 
+@media (min-width: 768px) {
+  .navbar-right .dropdown-menu {
+    right: 0;
+    left: auto;
+  }
+}
+
 .btn-default .caret {
   border-top-color: #333333;
 }
@@ -4272,10 +4279,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
   }
   .navbar-right {
     float: right !important;
-  }
-  .navbar-right .dropdown-menu {
-    right: 0;
-    left: auto;
   }
 }
 
