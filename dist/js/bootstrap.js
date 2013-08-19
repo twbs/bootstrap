@@ -855,7 +855,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     this.$backdrop =
     this.isShown   = null
 
-    if (this.options.remote) this.$element.load(this.options.remote)
+    if (this.options.remote) this.$element.find('.modal-body').load(this.options.remote)
   }
 
   Modal.DEFAULTS = {
