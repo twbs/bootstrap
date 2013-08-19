@@ -4,8 +4,8 @@
 
 
 .jumbotron {
-  padding: 30px;
-  margin-bottom: 30px;
+  padding: @jumbotron-padding;
+  margin-bottom: @jumbotron-padding;
   font-size: (@font-size-base * 1.5);
   font-weight: 200;
   line-height: (@line-height-base * 1.5);
@@ -25,12 +25,12 @@
   }
 
   @media screen and (min-width: @screen-tablet) {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top:    (@jumbotron-padding * 1.6);
+    padding-bottom: (@jumbotron-padding * 1.6);
 
     .container & {
-      padding-left: 60px;
-      padding-right: 60px;
+      padding-left:  (@jumbotron-padding * 2);
+      padding-right: (@jumbotron-padding * 2);
     }
 
     h1 {
