@@ -80,20 +80,20 @@ base_url: "../"
 /* No media query since this is the default in Bootstrap */
 
 /* Small devices (tablets, 768px and up) */
-@media (min-width: @screen-tablet) { ... }
+@media (min-width: @screen-sm) { ... }
 
 /* Medium devices (desktops, 992px and up) */
-@media (min-width: @screen-desktop) { ... }
+@media (min-width: @screen-md) { ... }
 
 /* Large devices (large desktops, 1200px and up) */
-@media (min-width: @screen-large-desktop) { ... }
+@media (min-width: @screen-lg) { ... }
 {% endhighlight %}
     <p>We occasionally expand on these media queries to include a <code>max-width</code> to limit CSS to a narrower set of devices.</p>
 {% highlight css %}
 @media (max-width: @screen-phone-max) { ... }
-@media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) { ... }
-@media (min-width: @screen-desktop) and (max-width: @screen-desktop-max) { ... }
-@media (min-width: @screen-large-desktop) { ... }
+@media (min-width: @screen-sm) and (max-width: @screen-sm-max) { ... }
+@media (min-width: @screen-md) and (max-width: @screen-md-max) { ... }
+@media (min-width: @screen-lg) { ... }
 {% endhighlight %}
 
     <h3 id="grid-options">Grid options</h3>
