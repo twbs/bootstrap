@@ -80,7 +80,7 @@
       margin-right: 2px;
       line-height: @line-height-base;
       border: 1px solid transparent;
-      border-radius: @border-radius-base @border-radius-base 0 0;
+      .border-top-radius(@border-radius-base);
       &:hover {
         border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
       }
@@ -115,7 +115,7 @@
 
     // Links rendered as pills
     > a {
-      border-radius: 5px;
+      .border-radius(5px);
     }
     + li {
       margin-left: 2px;
