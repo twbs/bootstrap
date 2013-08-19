@@ -43,28 +43,28 @@ body {
 }
 
 /* Outline button for use within the docs */
-.btn-bs {
+.btn-outline {
   color: #563d7c;
   background-color: #fff;
   border-color: #e5e5e5;
 }
-.btn-bs:hover,
-.btn-bs:focus,
-.btn-bs:active {
+.btn-outline:hover,
+.btn-outline:focus,
+.btn-outline:active {
   color: #fff;
   background-color: #563d7c;
   border-color: #563d7c;
 }
 
-/* Homepage outline button */
-.btn-outline {
+/* Inverted outline button (white on dark) */
+.btn-outline-inverse {
   color: #fff;
   background-color: transparent;
   border-color: #cdbfe3;
 }
-.btn-outline:hover,
-.btn-outline:focus,
-.btn-outline:active {
+.btn-outline-inverse:hover,
+.btn-outline-inverse:focus,
+.btn-outline-inverse:active {
   color: #563d7c;
   text-shadow: none;
   background-color: #fff;
