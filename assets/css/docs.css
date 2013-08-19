@@ -493,15 +493,13 @@ body {
 
 /* Space things out */
 .bs-docs-section + .bs-docs-section {
-  padding-top: 80px;
+  padding-top: 40px;
 }
 
 /* Janky fix for preventing navbar from overlapping */
-h1[id],
-h2[id],
-h3[id] {
+h1[id] {
   padding-top: 80px;
-  margin-top: -70px;
+  margin-top: -45px;
 }
 
 
@@ -635,7 +633,8 @@ h3[id] {
 .bs-example > .panel:last-child,
 .bs-example > .list-group:last-child,
 .bs-example > .well:last-child,
-.bs-example > .progress:last-child {
+.bs-example > .progress:last-child,
+.bs-example > .table-responsive:last-child > .table {
   margin-bottom: 0;
 }
 .bs-example > p > .close {
@@ -753,6 +752,11 @@ h3[id] {
 .bs-example .pagination {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+/* Pager */
+.bs-example > .pager {
+  margin-top: 0;
 }
 
 /* Example modals */
@@ -1032,12 +1036,21 @@ h3[id] {
   border-bottom: 1px solid #b94441;
 }
 .bs-customizer-alert .close {
-  margin-top: -2px;
-  color: #fff;
-  text-shadow: none;
+  margin-top: -4px;
+  font-size: 24px;
 }
 .bs-customizer-alert p {
   margin-bottom: 0;
+}
+.bs-customizer-alert .glyphicon {
+  margin-right: 5px;
+}
+.bs-customizer-alert pre {
+  margin: 10px 0 0;
+  color: #fff;
+  background-color: #a83c3a;
+  border-color: #973634;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
 }
 
 
@@ -1067,14 +1080,5 @@ h3[id] {
 /* Better spacing on download options in getting started */
 .bs-docs-dl-options h4 {
   margin-top: 15px;
-  margin-bottom: 5px;
-}
-
-/* Migration overview spacing */
-.bs-migration-overview {
-  margin-bottom: 30px;
-}
-.bs-migration-overview h4 {
-  margin-top: 20px;
   margin-bottom: 5px;
 }

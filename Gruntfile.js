@@ -164,7 +164,7 @@ module.exports = function(grunt) {
 
     validation: {
       options: {
-        reset: true,
+        reset: true
       },
       files: {
         src: ["_gh_pages/**/*.html"]
@@ -231,7 +231,7 @@ module.exports = function(grunt) {
   grunt.registerTask('dist', ['clean', 'dist-css', 'dist-fonts', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['test', 'dist', 'build-customizer']);
+  grunt.registerTask('default', ['test', 'dist']);
 
   // task for building customizer
   grunt.registerTask('build-customizer', 'Add scripts/less files to customizer.', function () {
