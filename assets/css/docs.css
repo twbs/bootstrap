@@ -983,6 +983,7 @@ h3[id] {
 
 .bs-customizer .toggle {
   float: right;
+  margin-top: 85px; /* On account of ghetto navbar fix */
 }
 
 /* Headings and form contrls */
@@ -1066,5 +1067,14 @@ h3[id] {
 /* Better spacing on download options in getting started */
 .bs-docs-dl-options h4 {
   margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+/* Migration overview spacing */
+.bs-migration-overview {
+  margin-bottom: 30px;
+}
+.bs-migration-overview h4 {
+  margin-top: 20px;
   margin-bottom: 5px;
 }

@@ -324,10 +324,60 @@ bootstrap/
     <div class="page-header">
       <h1 id="migration">Migrating from 2.x to 3.0</h1>
     </div>
-    <p class="lead">We've put together a helpful guide that outlines some of the key changes from Bootstrap 2.x to 3.0.</p>
+    <p class="lead">To help folks who are looking to upgrade to v3, we've put together a helpful guide that outlines some of the key changes since 2.x. We've outlined some of the major changes and provided tables that summarize additions, deletions, and changes in classes.</p>
 
-    <h3 id="migration-classes">Major class changes</h3>
-    <p></p>
+    <h2 id="migration-overview">Overview of changes</h2>
+    <p>With v3 being a near complete rewrite of all the things, it's important to call out a few of the big themes before diving into the specifics below.</p>
+    <div class="row bs-migration-overview">
+      <div class="col-sm-6">
+        <h4>New design and an optional theme!</h4>
+        <p>With v3 we've gone flat. Don't call it a trend—it's all about customization, folks. Since we simplified the aesthetics though, we thought it'd help to have an optional theme. To use it, check out the <a href="../examples/theme/">Bootstrap theme example</a>.</p>
+
+        <h4>Mobile first and always responsive!</h4>
+        <p>Nearly everything has been redesigned and rebuilt to start from your handheld devices and scale up.</p>
+
+        <h4>Brand new Customizer!</h4>
+        <p>It's been redesigned, is now compiled in the browser instead of Heroku, has better dependency support, and even has built-in error handling. Better yet, we now save your customizations to an anonymous Gist for easy reuse, sharing, and modifications.</p>
+
+        <h4>Better box model by default.</h4>
+        <p>Everything in Bootstrap gets `box-sizing: border-box`, making for easier sizing options and an enhanced grid system.</p>
+
+        <h4>Super-powered grid system.</h4>
+        <p>With four tiers of grid classes—phones, tablets, desktops, and large desktops—you can do some super crazy awesome layouts.</p>
+
+        <h4>Rewritten JavaScript plugins.</h4>
+        <p>All events are now namespaced, no conflict stuff works way better, and more.</p>
+
+        <h4>New Glyphicons icon font!</h4>
+        <p>While they were gone for awhile, we've since restored the Glyphicons to the main repo. In 2.x they were images, but now they're in font format and we've added 40 new glyphs.</p>
+      </div>
+      <div class="col-sm-6">
+        <h4>Overhauled navbar.</h4>
+        <p>It's now always responsive and comes with some super handy and re-arrangable subcomponents.</p>
+
+        <h4>Modals are way more responsive.</h4>
+        <p>We've overhauled the modal code to make it way more responsive on mobile devices. They now scroll the entire viewport instead of having a max-height.</p>
+
+        <h4>Added some components!</h4>
+        <p>New to the mix are panels and list groups.</p>
+
+        <h4>Removed some components!</h4>
+        <p>We've dropped the accordion (replaced with collapsible panels), submenus, typeahead, and a few more small items. (Worth celebrating as much as adding new ones.)</p>
+
+        <h4>More consistent base and sizing classes.</h4>
+        <p>Buttons, tables, forms, alerts, and more have been updated to have more consistent classes for easier customizer and extensibility.</p>
+
+        <h4>Docs have been blown up, yo.</h4>
+        <p>We've added a lot of new documentation, not only for our components, but for browser support (including gotchas and bugs), license FAQs, third party support (and workarounds), accessibility, and more.</p>
+
+        <h4>Dropped Internet Explorer 7 and Firefox 3.6 support.</h4>
+        <p>For Internet Explorer 8, you'll need to include Respond.js for all the media queries to work correctly.</p>
+      </div>
+    </div>
+
+
+    <h2 id="migration-classes">Major class changes</h2>
+    <p>Reference table for classes that have changed between v2.x and v3.0.</p>
     <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
@@ -356,6 +406,18 @@ bootstrap/
           <tr>
             <td><code>.brand</code></td>
             <td><code>.navbar-brand</code></td>
+          </tr>
+          <tr>
+            <td><code>.nav-collapse</code></td>
+            <td><code>.navbar-collapse</code></td>
+          </tr>
+          <tr>
+            <td><code>.nav-toggle</code></td>
+            <td><code>.navbar-toggle</code></td>
+          </tr>
+          <tr>
+            <td><code>.btn-navbar</code></td>
+            <td><code>.navbar-btn</code></td>
           </tr>
           <tr>
             <td><code>.hero-unit</code></td>
@@ -414,11 +476,11 @@ bootstrap/
             <td><code>.input-lg</code></td>
           </tr>
           <tr>
-            <td><code>.input-prepend</code></td>
-            <td><code>.input-group</code></td>
+            <td><code>.checkbox.inline</code> <code>.radio.inline</code></td>
+            <td><code>.checkbox-inline</code> <code>.radio-inline</code></td>
           </tr>
           <tr>
-            <td><code>.input-append</code></td>
+            <td><code>.input-prepend</code> <code>.input-append</code></td>
             <td><code>.input-group</code></td>
           </tr>
           <tr>
@@ -426,12 +488,12 @@ bootstrap/
             <td><code>.input-group-addon</code></td>
           </tr>
           <tr>
-            <td><code>.btn-navbar</code></td>
-            <td><code>.navbar-btn</code></td>
-          </tr>
-          <tr>
             <td><code>.thumbnail</code></td>
             <td><code>.img-thumbnail</code></td>
+          </tr>
+          <tr>
+            <td><code>ul.unstyled</code></td>
+            <td><code>.list-unstyled</code></td>
           </tr>
           <tr>
             <td><code>ul.inline</code></td>
@@ -442,7 +504,7 @@ bootstrap/
     </div><!-- /.table-responsive -->
 
 
-    <h3 id="migration-new">What's new</h3>
+    <h2 id="migration-new">What's new</h2>
     <p>We've added a few new elements and changed some existing ones. Here's their new or updated classes.</p>
     <div class="table-responsive">
       <table class="table table-bordered table-striped">
@@ -455,7 +517,7 @@ bootstrap/
         <tbody>
           <tr>
             <td>Panels</td>
-            <td><code>.panel</code> <code>.panel-body</code> <code>.panel-title</code> <code>.panel-heading</code> <code>.panel-footer</code> <code>.panel-collapse</code></td>
+            <td><code>.panel .panel-default</code> <code>.panel-body</code> <code>.panel-title</code> <code>.panel-heading</code> <code>.panel-footer</code> <code>.panel-collapse</code></td>
           </tr>
           <tr>
             <td>List groups</td>
@@ -506,10 +568,6 @@ bootstrap/
             <td><code>.form-control</code> <code>.form-group</code></td>
           </tr>
           <tr>
-            <td>Inline controls</td>
-            <td><code>.checkbox-inline</code> <code>.radio-inline</code></td>
-          </tr>
-          <tr>
             <td>Button group sizes</td>
             <td><code>.btn-group-xs</code> <code>.btn-group-sm</code> <code>.btn-group-lg</code></td>
           </tr>
@@ -558,7 +616,7 @@ bootstrap/
     </div><!-- /.table-responsive -->
 
 
-    <h3 id="migration-dropped">What's removed</h3>
+    <h2 id="migration-dropped">What's removed</h2>
     <p>The following elements have been dropped or changed in v3.</p>
     <div class="table-responsive">
       <table class="table table-bordered table-striped">
@@ -571,19 +629,14 @@ bootstrap/
         </thead>
         <tbody>
           <tr>
-            <td>Hero Unit</td>
-            <td><code>.hero-unit</code></td>
-            <td><code>.jumbotron</code></td>
-          </tr>
-          <tr>
             <td>Form actions</td>
             <td><code>.form-actions</code></td>
             <td>-</td>
           </tr>
           <tr>
-            <td>Grid</td>
-            <td><code>.span*</code></td>
-            <td><code>.col-md-*</code></td>
+            <td>Search form</td>
+            <td><code>.form-search</code></td>
+            <td>-</td>
           </tr>
           <tr>
             <td>Fluid container</td>
@@ -596,29 +649,9 @@ bootstrap/
             <td><code>.row</code> (no more fixed grid)</td>
           </tr>
           <tr>
-            <td>Icons</td>
-            <td><code>.icon-*</code></td>
-            <td><code>.glyphicon-*</code></td>
-          </tr>
-          <tr>
-            <td>Navbar button</td>
-            <td><code>.btn-navbar</code></td>
-            <td><code>.navbar-btn</code></td>
-          </tr>
-          <tr>
             <td>Navbar inner</td>
             <td><code>.navbar-inner</code></td>
             <td>-</td>
-          </tr>
-          <tr>
-            <td>Thumbnails</td>
-            <td><code>.thumbnails</code></td>
-            <td><code>.col-*</code> and <code>.thumbnail</code></td>
-          </tr>
-          <tr>
-            <td>Input append / prepend</td>
-            <td><code>.input-append</code> <code>.input-prepend</code> <code>.add-on</code></td>
-            <td><code>.input-group</code></td>
           </tr>
           <tr>
             <td>Dropdown submenu</td>
@@ -635,7 +668,7 @@ bootstrap/
     </div><!-- /.table-responsive -->
 
 
-    <h3 id="migration-notes">Additional notes</h3>
+    <h2 id="migration-notes">Additional notes</h2>
     <p>We've made many underlying changes in v3 that are not immediately apparent without closer inspection. Base classes, key styles, and behaviors have been adjusted for flexibility and our mobile first approach.</p>
     <ul>
       <li><code>.input-*</code> are 100% width. Wrap inputs inside <code>&lt;div class="col-*"&gt;&lt;/div&gt;</code> to control input widths.</li>
