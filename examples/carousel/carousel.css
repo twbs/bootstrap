@@ -18,6 +18,12 @@ body {
   z-index: 15;
 }
 
+/* Vertically aligns left and right chevrons. */
+.carousel-control > .glyphicon-chevron-left, .carousel-control > .glyphicon-chevron-right {
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+}
 
 
 /* CUSTOMIZE THE CAROUSEL
