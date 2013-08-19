@@ -93,13 +93,13 @@
 
 // Basic navbar
 .navbar {
-  @include gradient-vertical($start-color: lighten($navbar-bg, 10%), $end-color: $navbar-bg);
-  border-radius: $border-radius-base;
+  @include gradient-vertical($start-color: lighten($navbar-default-bg, 10%), $end-color: $navbar-default-bg);
+  border-radius: $navbar-border-radius;
   $shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
   @include box-shadow($shadow);
 
   .navbar-nav > .active > a {
-    background-color: $navbar-bg;
+    background-color: $navbar-default-bg;
   }
 }
 .navbar-brand,
@@ -148,9 +148,9 @@
 }
 
 // Apply the mixin to the alerts
-.alert            { @include alert-styles($alert-bg); }
 .alert-success    { @include alert-styles($alert-success-bg); }
 .alert-info       { @include alert-styles($alert-info-bg); }
+.alert-warning    { @include alert-styles($alert-warning-bg); }
 .alert-danger     { @include alert-styles($alert-danger-bg); }
 
 
@@ -211,7 +211,7 @@
 }
 
 // Apply the mixin to the panel headings only
-.panel-heading                    { @include panel-heading-styles($panel-heading-bg); }
+.panel-default > .panel-heading   { @include panel-heading-styles($panel-default-heading-bg); }
 .panel-primary > .panel-heading   { @include panel-heading-styles($panel-primary-heading-bg); }
 .panel-success > .panel-heading   { @include panel-heading-styles($panel-success-heading-bg); }
 .panel-info > .panel-heading      { @include panel-heading-styles($panel-info-heading-bg); }

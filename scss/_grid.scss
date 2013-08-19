@@ -8,7 +8,7 @@
   @include container-fixed();
 }
 
-// Mobile-first defaults
+// mobile first defaults
 .row {
   @include make-row();
 }

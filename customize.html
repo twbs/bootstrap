@@ -21,18 +21,6 @@ base_url: "../"
         <h4>Layout</h4>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="normalize.less">
-            Normalize (CSS reset)
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" checked value="scaffolding.less">
-            Scaffolding
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
             <input type="checkbox" checked value="grid.less">
             Grid system
           </label>
@@ -66,13 +54,13 @@ base_url: "../"
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="forms.less" data-dependents="navbar.less,input-groups.less">
+            <input type="checkbox" checked value="forms.less">
             Forms
           </label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="buttons.less" data-dependents="button-groups.less">
+            <input type="checkbox" checked value="buttons.less">
             Buttons
           </label>
         </div>
@@ -223,13 +211,13 @@ base_url: "../"
         <h4>Miscellaneous</h4>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="input-groups.less" data-dependencies="forms.less">
+            <input type="checkbox" checked value="input-groups.less" data-dependency="forms.less">
             Input groups
           </label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="button-groups.less" data-dependencies="buttons.less">
+            <input type="checkbox" checked value="button-groups.less" data-dependency="buttons.less">
             Button groups
           </label>
         </div>
@@ -304,20 +292,20 @@ base_url: "../"
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="tooltip.js" data-dependents="popover.js">
+            <input type="checkbox" checked value="tooltip.js">
             Tooltips
           </label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="popover.js" data-dependencies="tooltip.js">
+            <input type="checkbox" checked value="popover.js" data-dependency="tooltip.js">
             Popovers <small>(requires Tooltips)</small>
           </label>
         </div>
         <div class="checkbox">
           <label>
             <input type="checkbox" checked value="tab.js">
-            Toggable tabs
+            Togglable tabs
           </label>
         </div>
       </div>
@@ -663,9 +651,9 @@ base_url: "../"
     <p>Define alert colors, border radius, and padding.</p>
     <h4>Border radius</h4>
     <label>@alert-padding</label>
-    <input type="text" class="form-control" placeholder="15px">
+    <input type="text" class="form-control" placeholder="15px" data-var="@alert-padding">
     <label>@alert-border-radius</label>
-    <input type="text" class="form-control" placeholder="@border-radius-base">
+    <input type="text" class="form-control" placeholder="@border-radius-base" data-var="@alert-border-radius">
     <div class="row">
       <div class="col-lg-6">
         <h4>Default (Warning)</h4>
@@ -710,41 +698,41 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="50px" data-var="@navbar-height">
         <label>@navbar-margin-bottom</label>
         <input type="text" class="form-control" placeholder="@line-height-computed" data-var="@navbar-margin-bottom">
-        <label>@navbar-color</label>
-        <input type="text" class="form-control" placeholder="#777" data-var="@navbar-color">
-        <label>@navbar-bg</label>
-        <input type="text" class="form-control" placeholder="#eee" data-var="@navbar-bg">
+        <label>@navbar-default-color</label>
+        <input type="text" class="form-control" placeholder="#777" data-var="@navbar-default-color">
+        <label>@navbar-default-bg</label>
+        <input type="text" class="form-control" placeholder="#eee" data-var="@navbar-default-bg">
         <label>@navbar-border-radius</label>
         <input type="text" class="form-control" placeholder="@border-radius-base" data-var="@navbar-border-radius">
         <h4>Links</h4>
-        <label>@navbar-link-color</label>
-        <input type="text" class="form-control" placeholder="#777" data-var="@navbar-link-color">
-        <label>@navbar-link-hover-color</label>
-        <input type="text" class="form-control" placeholder="#333" data-var="@navbar-link-hover-color">
-        <label>@navbar-link-hover-bg</label>
-        <input type="text" class="form-control" placeholder="transparent" data-var="@navbar-link-hover-bg">
-        <label>@navbar-link-active-color</label>
-        <input type="text" class="form-control" placeholder="#555" data-var="@navbar-link-active-color">
-        <label>@navbar-link-active-bg</label>
-        <input type="text" class="form-control" placeholder="darken(@navbar-bg, 10%)" data-var="@navbar-link-active-bg">
-        <label>@navbar-link-disabled-color</label>
-        <input type="text" class="form-control" placeholder="#ccc" data-var="@navbar-link-disabled-color">
-        <label>@navbar-link-disabled-bg</label>
-        <input type="text" class="form-control" placeholder="transparent" data-var="@navbar-link-disabled-bg">
+        <label>@navbar-default-link-color</label>
+        <input type="text" class="form-control" placeholder="#777" data-var="@navbar-default-link-color">
+        <label>@navbar-default-link-hover-color</label>
+        <input type="text" class="form-control" placeholder="#333" data-var="@navbar-default-link-hover-color">
+        <label>@navbar-default-link-hover-bg</label>
+        <input type="text" class="form-control" placeholder="transparent" data-var="@navbar-default-link-hover-bg">
+        <label>@navbar-default-link-active-color</label>
+        <input type="text" class="form-control" placeholder="#555" data-var="@navbar-default-link-active-color">
+        <label>@navbar-default-link-active-bg</label>
+        <input type="text" class="form-control" placeholder="darken(@navbar-bg, 10%)" data-var="@navbar-default-link-active-bg">
+        <label>@navbar-default-link-disabled-color</label>
+        <input type="text" class="form-control" placeholder="#ccc" data-var="@navbar-default-link-disabled-color">
+        <label>@navbar-default-link-disabled-bg</label>
+        <input type="text" class="form-control" placeholder="transparent" data-var="@navbar-default-link-disabled-bg">
         <h4>Brand</h4>
-        <label>@navbar-brand-color</label>
-        <input type="text" class="form-control" placeholder="@navbar-link-color" data-var="@navbar-brand-color">
-        <label>@navbar-brand-hover-color</label>
-        <input type="text" class="form-control" placeholder="darken(@navbar-link-color, 10%)" data-var="@navbar-brand-hover-color">
-        <label>@navbar-brand-hover-bg</label>
-        <input type="text" class="form-control" placeholder="transparent" data-var="@navbar-brand-hover-bg">
+        <label>@navbar-default-brand-color</label>
+        <input type="text" class="form-control" placeholder="@navbar-link-color" data-var="@navbar-default-brand-color">
+        <label>@navbar-default-brand-hover-color</label>
+        <input type="text" class="form-control" placeholder="darken(@navbar-link-color, 10%)" data-var="@navbar-default-brand-hover-color">
+        <label>@navbar-default-brand-hover-bg</label>
+        <input type="text" class="form-control" placeholder="transparent" data-var="@navbar-default-brand-hover-bg">
         <h4>Toggle</h4>
-        <label>@navbar-toggle-hover-bg</label>
-        <input type="text" class="form-control" placeholder="#ddd" data-var="@navbar-toggle-hover-bg">
-        <label>@navbar-toggle-icon-bar-bg</label>
-        <input type="text" class="form-control" placeholder="#ccc" data-var="@navbar-toggle-icon-bar-bg">
-        <label>@navbar-toggle-border-color</label>
-        <input type="text" class="form-control" placeholder="#ddd" data-var="@navbar-toggle-border-color">
+        <label>@navbar-default-toggle-hover-bg</label>
+        <input type="text" class="form-control" placeholder="#ddd" data-var="@navbar-default-toggle-hover-bg">
+        <label>@navbar-default-toggle-icon-bar-bg</label>
+        <input type="text" class="form-control" placeholder="#ccc" data-var="@navbar-default-toggle-icon-bar-bg">
+        <label>@navbar-default-toggle-border-color</label>
+        <input type="text" class="form-control" placeholder="#ddd" data-var="@navbar-default-toggle-border-color">
       </div>
       <div class="col-lg-6">
         <h3>Inverted navbar</h3>
@@ -943,89 +931,75 @@ base_url: "../"
     </div>
 
     <h2 id="variables-panels-wells">Panels and wells</h2>
-    <h3>Default panel styles</h3>
+    <h3>Common panel styles</h3>
     <div class="row">
       <div class="col-lg-6">
         <label>@panel-bg</label>
         <input type="text" class="form-control" placeholder="#fff" data-var="@panel-bg">
-        <p class="help-block">Panel body background color</p>
-        <label>@panel-heading-bg</label>
-        <input type="text" class="form-control" placeholder="#f5f5f5" data-var="@panel-heading-bg">
-        <p class="help-block">Panel heading background color</p>
-        <label>@panel-footer-bg</label>
-        <input type="text" class="form-control" placeholder="#f5f5f5" data-var="@panel-footer-bg">
-        <p class="help-block">Panel footer background color</p>
+        <label>@panel-inner-border</label>
+        <input type="text" class="form-control" placeholder="#ddd" data-var="@panel-inner-border">
+        <p class="help-block">Border color for elements within panels</p>
       </div>
       <div class="col-lg-6">
-        <label>@panel-border</label>
-        <input type="text" class="form-control" placeholder="#ddd" data-var="@panel-border">
-        <p class="help-block">Panel border color</p>
         <label>@panel-border-radius</label>
         <input type="text" class="form-control" placeholder="@border-radius-base" data-var="@panel-border-radius">
-        <p class="help-block">Panel border radius</p>
+        <label>@panel-footer-bg</label>
+        <input type="text" class="form-control" placeholder="#f5f5f5" data-var="@panel-footer-bg">
       </div>
     </div>
     <h3>Contextual panel colors</h3>
     <div class="row">
       <div class="col-lg-6">
+        <h4>Default</h4>
+        <label>@panel-default-text</label>
+        <input type="text" class="form-control" placeholder="@gray-dark" data-var="@panel-default-text">
+        <label>@panel-default-border</label>
+        <input type="text" class="form-control" placeholder="#ddd" data-var="@panel-default-border">
+        <label>@panel-default-heading-bg</label>
+        <input type="text" class="form-control" placeholder="#f5f5f5" data-var="@panel-default-heading-bg">
         <h4>Primary</h4>
         <label>@panel-primary-text</label>
         <input type="text" class="form-control" placeholder="#fff" data-var="@panel-primary-text">
-        <p class="help-block">Primary text color</p>
         <label>@panel-primary-border</label>
         <input type="text" class="form-control" placeholder="@brand-primary" data-var="@panel-primary-border">
-        <p class="help-block">Primary border color</p>
         <label>@panel-primary-heading-bg</label>
         <input type="text" class="form-control" placeholder="@brand-primary" data-var="@panel-primary-heading-bg">
-        <p class="help-block">Primary heading background color</p>
         <h4>Success</h4>
         <label>@panel-success-text</label>
         <input type="text" class="form-control" placeholder="@state-success-text" data-var="@panel-success-text">
-        <p class="help-block">Success text color</p>
         <label>@panel-success-border</label>
         <input type="text" class="form-control" placeholder="@state-success-border" data-var="@panel-success-border">
-        <p class="help-block">Success border color</p>
         <label>@panel-success-heading-bg</label>
         <input type="text" class="form-control" placeholder="@state-success-bg" data-var="@panel-success-heading-bg">
-        <p class="help-block">Success heading background color</p>
+      </div>
+      <div class="col-lg-6">
         <h4>Info</h4>
         <label>@panel-info-text</label>
         <input type="text" class="form-control" placeholder="@state-info-text" data-var="@panel-info-text">
-        <p class="help-block">Info text color</p>
         <label>@panel-info-border</label>
         <input type="text" class="form-control" placeholder="@state-info-border" data-var="@panel-info-border">
-        <p class="help-block">Info border color</p>
         <label>@panel-info-heading-bg</label>
         <input type="text" class="form-control" placeholder="@state-info-bg" data-var="@panel-info-heading-bg">
-        <p class="help-block">Info heading background color</p>
-      </div>
-      <div class="col-lg-6">
         <h4>Warning</h4>
         <label>@panel-warning-text</label>
         <input type="text" class="form-control" placeholder="@state-warning-text" data-var="@panel-warning-text">
-        <p class="help-block">Warning text color</p>
         <label>@panel-warning-border</label>
         <input type="text" class="form-control" placeholder="@state-warning-border" data-var="@panel-warning-border">
-        <p class="help-block">Warning border color</p>
         <label>@panel-warning-heading-bg</label>
         <input type="text" class="form-control" placeholder="@state-warning-bg" data-var="@panel-warning-heading-bg">
-        <p class="help-block">Warning heading background color</p>
         <h4>Danger</h4>
         <label>@panel-danger-text</label>
         <input type="text" class="form-control" placeholder="@state-danger-text" data-var="@panel-danger-text">
-        <p class="help-block">Danger text color</p>
         <label>@panel-danger-border</label>
         <input type="text" class="form-control" placeholder="@state-danger-border" data-var="@panel-danger-border">
-        <p class="help-block">Danger border color</p>
         <label>@panel-danger-heading-bg</label>
         <input type="text" class="form-control" placeholder="@state-danger-bg" data-var="@panel-danger-heading-bg">
-        <p class="help-block">Danger heading background color</p>
       </div>
     </div>
 
     <h3>Wells</h3>
     <label>@well-bg</label>
-    <input type="text" class="form-control" placeholder="#f5f5f5">
+    <input type="text" class="form-control" placeholder="#f5f5f5" data-var="@well-bg">
 
     <h2 id="variables-accordion">Accordion</h2>
     <label>@accordion-border-bg</label>
@@ -1451,7 +1425,7 @@ base_url: "../"
       <div class="col-lg-6">
         <label>@page-header-border-color</label>
         <input type="text" class="form-control" placeholder="@gray-lighter" data-var="@page-header-border-color">
-        <p class="help-block">Pag header border color</p>
+        <p class="help-block">Page header border color</p>
       </div>
     </div>
     <h2 id="variables-other">Other</h2>
@@ -1475,7 +1449,7 @@ base_url: "../"
     </div>
     <p class="lead">Hooray! Your custom version of Bootstrap is now ready to be compiled. Just click the button below to finish the process.</p>
     <div class="bs-customize-download">
-      <button id="btn-compile" class="btn btn-block btn-lg btn-bs" onclick="_gaq.push(['_trackEvent', 'Customize', 'Download', 'Customize and Download']);">Compile and Download</button>
+      <button id="btn-compile" class="btn btn-block btn-lg btn-outline" onclick="_gaq.push(['_trackEvent', 'Customize', 'Download', 'Customize and Download']);">Compile and Download</button>
     </div>
   </div><!-- /download -->
 </form>

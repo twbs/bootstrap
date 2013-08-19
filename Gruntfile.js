@@ -134,6 +134,14 @@ module.exports = function(grunt) {
       }
     },
 
+    copy: {
+      fonts: {
+        expand: true,
+        src: ["fonts/*"],
+        dest: 'dist/'
+      }
+    },
+
     qunit: {
       options: {
         inject: 'js/tests/unit/phantom.js'
@@ -184,6 +192,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -195,10 +204,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('browserstack-runner');
 
   // Docs HTML validation task
-  grunt.registerTask('validate-docs', ['jekyll', 'validation']);
+  grunt.registerTask('validate-html', ['jekyll', 'validation']);
 
   // Test task.
-  var testSubtasks = ['jshint', 'qunit', 'validate-docs'];
+  var testSubtasks = ['dist-css', 'jshint', 'qunit', 'validate-html'];
   // Only run BrowserStack tests under Travis
   if (process.env.TRAVIS) {
     // Only run BrowserStack tests if this is a mainline commit in twbs/bootstrap, or you have your own BrowserStack key
@@ -215,8 +224,11 @@ module.exports = function(grunt) {
   // grunt.registerTask('dist-css', ['recess']);
   grunt.registerTask('dist-css', ['sass']);
 
+  // Fonts distribution task.
+  grunt.registerTask('dist-fonts', ['copy']);
+
   // Full distribution task.
-  grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js']);
+  grunt.registerTask('dist', ['clean', 'dist-css', 'dist-fonts', 'dist-js']);
 
   // Default task.
   grunt.registerTask('default', ['test', 'dist', 'build-customizer']);

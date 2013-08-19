@@ -7,7 +7,7 @@
 .panel {
   margin-bottom: $line-height-computed;
   background-color: $panel-bg;
-  border: 1px solid $panel-border;
+  border: 1px solid transparent;
   border-radius: $panel-border-radius;
   @include box-shadow(0 1px 1px rgba(0,0,0,.05));
 }
@@ -18,12 +18,16 @@
   @include clearfix();
 }
 
+
 // List groups in panels
 //
 // By default, space out list group content from panel headings to account for
 // any kind of custom content between the two.
 
 .panel {
+  > .table {
+    margin-bottom: 0;
+  }
   > .list-group {
     margin-bottom: 0;
 
@@ -48,11 +52,26 @@
   }
 }
 
+
+// Tables in panels
+//
+// Place a non-bordered `.table` within a panel (not within a `.panel-body`) and
+// watch it go full width.
+
+.panel {
+  > .table {
+    margin-bottom: 0;
+  }
+  > .panel-body + .table {
+    border-top: 1px solid $table-border-color;
+  }
+}
+
+
 // Optional heading
 .panel-heading {
   padding: 10px 15px;
-  background-color: $panel-heading-bg;
-  border-bottom: 1px solid $panel-border;
+  border-bottom: 1px solid transparent;
   @include border-top-radius($panel-border-radius - 1);
 }
 
@@ -70,7 +89,7 @@
 .panel-footer {
   padding: 10px 15px;
   background-color: $panel-footer-bg;
-  border-top: 1px solid $panel-border;
+  border-top: 1px solid $panel-inner-border;
   @include border-bottom-radius($panel-border-radius - 1);
 }
 
@@ -94,13 +113,13 @@
   .panel-heading {
     border-bottom: 0;
     + .panel-collapse .panel-body {
-      border-top: 1px solid $panel-border;
+      border-top: 1px solid $panel-inner-border;
     }
   }
   .panel-footer {
     border-top: 0;
     + .panel-collapse .panel-body {
-      border-bottom: 1px solid $panel-border;
+      border-bottom: 1px solid $panel-inner-border;
     }
   }
 
@@ -112,6 +131,9 @@
 
 
 // Contextual variations
+.panel-default {
+  @include panel-variant($panel-default-border, $panel-default-text, $panel-default-heading-bg, $panel-default-border);
+}
 .panel-primary {
   @include panel-variant($panel-primary-border, $panel-primary-text, $panel-primary-heading-bg, $panel-primary-border);
 }
