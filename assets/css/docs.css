@@ -120,11 +120,9 @@ body {
   padding-top: 40px;
   padding-bottom: 30px;
   margin-top: 100px;
-  border-top: 1px solid #e5e5e5;
-}
-.bs-footer p {
-  margin-bottom: 0;
   color: #777;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
 }
 .footer-links {
   margin: 10px 0;
@@ -138,6 +136,15 @@ body {
   padding-left: 0;
 }
 
+@media (min-width: 768px) {
+  .bs-footer {
+    text-align: left;
+  }
+  .bs-footer p {
+    margin-bottom: 0;
+  }
+}
+
 
 /*
  * Social buttons
@@ -148,6 +155,7 @@ body {
 .bs-social {
   margin-top: 20px;
   margin-bottom: 20px;
+  text-align: center;
 }
 .bs-social-buttons {
   display: inline-block;
@@ -173,6 +181,9 @@ body {
 }
 
 @media screen and (min-width: 768px) {
+  .bs-social {
+    text-align: left;
+  }
   .bs-social-buttons li:first-child {
     padding-left: 0;
   }
@@ -224,10 +235,10 @@ body {
   margin-bottom: 20px;
   padding: 0 15px;
   list-style: none;
+  text-align: center;
 }
 .bs-masthead-links li {
   display: inline;
-  color: #999;
 }
 .bs-masthead-links li + li {
   margin-left: 20px;
@@ -251,6 +262,7 @@ body {
   }
   .bs-masthead-links {
     padding: 0;
+    text-align: left;
   }
 }
 
