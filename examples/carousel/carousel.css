@@ -18,6 +18,12 @@ body {
   z-index: 15;
 }
 
+/* Vertically aligns left and right chevrons. */
+.carousel-control > .glyphicon-chevron-left, .carousel-control > .glyphicon-chevron-right {
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+}
 
 
 /* CUSTOMIZE THE CAROUSEL
@@ -38,6 +44,7 @@ body {
 /* Declare heights because of positioning of img element */
 .carousel .item {
   height: 500px;
+  background-color: #777;
 }
 .carousel-inner > .item > img {
   position: absolute;
@@ -93,7 +100,7 @@ body {
 
 @media (min-width: 768px) {
 
-  /* Remve the edge padding needed for mobile */
+  /* Remove the edge padding needed for mobile */
   .marketing {
     padding-left: 0;
     padding-right: 0;
