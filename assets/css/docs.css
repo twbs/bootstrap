@@ -753,6 +753,11 @@ h1[id] {
   margin-bottom: 10px;
 }
 
+/* Pager */
+.bs-example > .pager {
+  margin-top: 0;
+}
+
 /* Example modals */
 .bs-example-modal {
   background-color: #f5f5f5;
