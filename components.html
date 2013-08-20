@@ -230,7 +230,7 @@ base_url: "../"
     <h2 id="glyphicons-examples">Examples</h2>
     <p>Use them in buttons, button groups for a toolbar, navigation, or prepended form inputs.</p>
     <div class="bs-example">
-      <div class="btn-toolbar">
+      <div class="btn-toolbar" role="toolbar">
         <div class="btn-group">
           <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-align-left"></span></button>
           <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-align-center"></span></button>
@@ -238,7 +238,7 @@ base_url: "../"
           <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-align-justify"></span></button>
         </div>
       </div>
-      <div class="btn-toolbar">
+      <div class="btn-toolbar" role="toolbar">
         <button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-star"></span> Star</button>
         <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-star"></span> Star</button>
         <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star"></span> Star</button>
@@ -379,7 +379,7 @@ base_url: "../"
     <h3 id="btn-groups-toolbar">Button toolbar</h3>
     <p>Combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex components.</p>
     <div class="bs-example">
-      <div class="btn-toolbar" style="margin: 0;">
+      <div class="btn-toolbar" role="toolbar" style="margin: 0;">
         <div class="btn-group">
           <button type="button" class="btn btn-default">1</button>
           <button type="button" class="btn btn-default">2</button>
@@ -397,7 +397,7 @@ base_url: "../"
       </div>
     </div>
 {% highlight html %}
-<div class="btn-toolbar">
+<div class="btn-toolbar" role="toolbar">
   <div class="btn-group">...</div>
   <div class="btn-group">...</div>
   <div class="btn-group">...</div>
@@ -407,28 +407,28 @@ base_url: "../"
     <h3 id="btn-groups-sizing">Sizing</h3>
     <p>Instead of applying button sizing classes to every button in a group, just add <code>.btn-group-*</code> to the <code>.btn-group</code>.</p>
     <div class="bs-example">
-      <div class="btn-toolbar">
+      <div class="btn-toolbar" role="toolbar">
         <div class="btn-group btn-group-lg">
           <button type="button" class="btn btn-default">Left</button>
           <button type="button" class="btn btn-default">Middle</button>
           <button type="button" class="btn btn-default">Right</button>
         </div>
       </div>
-      <div class="btn-toolbar">
+      <div class="btn-toolbar" role="toolbar">
         <div class="btn-group">
           <button type="button" class="btn btn-default">Left</button>
           <button type="button" class="btn btn-default">Middle</button>
           <button type="button" class="btn btn-default">Right</button>
         </div>
       </div>
-      <div class="btn-toolbar">
+      <div class="btn-toolbar" role="toolbar">
         <div class="btn-group btn-group-sm">
           <button type="button" class="btn btn-default">Left</button>
           <button type="button" class="btn btn-default">Middle</button>
           <button type="button" class="btn btn-default">Right</button>
         </div>
       </div>
-      <div class="btn-toolbar">
+      <div class="btn-toolbar" role="toolbar">
         <div class="btn-group btn-group-xs">
           <button type="button" class="btn btn-default">Left</button>
           <button type="button" class="btn btn-default">Middle</button>
@@ -744,7 +744,7 @@ base_url: "../"
     <h3 id="btn-dropdowns-sizing">Sizing</h3>
     <p>Button dropdowns work with buttons of all sizes.</p>
     <div class="bs-example">
-      <div class="btn-toolbar">
+      <div class="btn-toolbar" role="toolbar">
         <div class="btn-group">
           <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown">
             Large button <span class="caret"></span>
@@ -758,7 +758,7 @@ base_url: "../"
           </ul>
         </div><!-- /btn-group -->
       </div><!-- /btn-toolbar -->
-      <div class="btn-toolbar">
+      <div class="btn-toolbar" role="toolbar">
         <div class="btn-group">
           <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
             Small button <span class="caret"></span>
@@ -772,7 +772,7 @@ base_url: "../"
           </ul>
         </div><!-- /btn-group -->
       </div><!-- /btn-toolbar -->
-      <div class="btn-toolbar">
+      <div class="btn-toolbar" role="toolbar">
         <div class="btn-group">
           <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
             Extra small button <span class="caret"></span>
@@ -822,7 +822,7 @@ base_url: "../"
     <h3 id="btn-dropdowns-dropup">Dropup variation</h3>
     <p>Trigger dropdown menus above elements by adding <code>.dropup</code> to the parent.</p>
     <div class="bs-example">
-      <div class="btn-toolbar">
+      <div class="btn-toolbar" role="toolbar">
         <div class="btn-group dropup">
           <button type="button" class="btn btn-default">Dropup</button>
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
