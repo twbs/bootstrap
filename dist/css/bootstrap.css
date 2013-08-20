@@ -4391,6 +4391,30 @@ textarea.input-group-sm > .input-group-btn > .btn {
   color: #777777;
 }
 
+.navbar-default .navbar-text.text-muted {
+  color: #999999;
+}
+
+.navbar-default .navbar-text.text-primary {
+  color: #428bca;
+}
+
+.navbar-default .navbar-text.text-warning {
+  color: #c09853;
+}
+
+.navbar-default .navbar-text.text-danger {
+  color: #b94a48;
+}
+
+.navbar-default .navbar-text.text-success {
+  color: #468847;
+}
+
+.navbar-default .navbar-text.text-info {
+  color: #3a87ad;
+}
+
 .navbar-default .navbar-nav > li > a {
   color: #777777;
 }
@@ -4506,6 +4530,30 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-inverse .navbar-text {
   color: #999999;
+}
+
+.navbar-inverse .navbar-text.text-muted {
+  color: #999999;
+}
+
+.navbar-inverse .navbar-text.text-primary {
+  color: #428bca;
+}
+
+.navbar-inverse .navbar-text.text-warning {
+  color: #c09853;
+}
+
+.navbar-inverse .navbar-text.text-danger {
+  color: #b94a48;
+}
+
+.navbar-inverse .navbar-text.text-success {
+  color: #468847;
+}
+
+.navbar-inverse .navbar-text.text-info {
+  color: #3a87ad;
 }
 
 .navbar-inverse .navbar-nav > li > a {

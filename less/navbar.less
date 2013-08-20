@@ -365,6 +365,14 @@
 
   .navbar-text {
     color: @navbar-default-color;
+
+    // Fix for emphasis classes in navbar-text
+    &.text-muted          { color: @text-muted; }
+    &.text-primary        { color: @brand-primary; }
+    &.text-warning        { color: @state-warning-text; }
+    &.text-danger         { color: @state-danger-text; }
+    &.text-success        { color: @state-success-text; }
+    &.text-info           { color: @state-info-text; }
   }
 
   .navbar-nav {
@@ -501,6 +509,14 @@
 
   .navbar-text {
     color: @navbar-inverse-color;
+
+    // Fix for emphasis classes in navbar-text
+    &.text-muted          { color: @text-muted; }
+    &.text-primary        { color: @brand-primary; }
+    &.text-warning        { color: @state-warning-text; }
+    &.text-danger         { color: @state-danger-text; }
+    &.text-success        { color: @state-success-text; }
+    &.text-info           { color: @state-info-text; }
   }
 
   .navbar-nav {
