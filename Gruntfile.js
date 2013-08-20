@@ -55,7 +55,7 @@ module.exports = function(grunt) {
           'js/tab.js',
           'js/affix.js'
         ],
-        dest: '_gh_pages/dist/js/<%= pkg.name %>.js'
+        dest: 'dist/js/<%= pkg.name %>.js'
       }
     },
 
@@ -65,7 +65,7 @@ module.exports = function(grunt) {
       },
       bootstrap: {
         src: ['<%= concat.bootstrap.dest %>'],
-        dest: '_gh_pages/dist/js/<%= pkg.name %>.min.js'
+        dest: 'dist/js/<%= pkg.name %>.min.js'
       }
     },
 
@@ -75,25 +75,25 @@ module.exports = function(grunt) {
       },
       bootstrap: {
         src: ['less/bootstrap.less'],
-        dest: '_gh_pages/dist/css/<%= pkg.name %>.css'
+        dest: 'dist/css/<%= pkg.name %>.css'
       },
       min: {
         options: {
           compress: true
         },
         src: ['less/bootstrap.less'],
-        dest: '_gh_pages/dist/css/<%= pkg.name %>.min.css'
+        dest: 'dist/css/<%= pkg.name %>.min.css'
       },
       theme: {
         src: ['less/theme.less'],
-        dest: '_gh_pages/dist/css/<%= pkg.name %>-theme.css'
+        dest: 'dist/css/<%= pkg.name %>-theme.css'
       },
       theme_min: {
         options: {
           compress: true
         },
         src: ['less/theme.less'],
-        dest: '_gh_pages/dist/css/<%= pkg.name %>-theme.min.css'
+        dest: 'dist/css/<%= pkg.name %>-theme.min.css'
       }
     },
 
@@ -101,7 +101,7 @@ module.exports = function(grunt) {
       fonts: {
         expand: true,
         src: ["fonts/*"],
-        dest: '_gh_pages/dist/'
+        dest: 'dist/'
       }
     },
 
@@ -149,7 +149,7 @@ module.exports = function(grunt) {
       },
       includes: {
         files: '_includes/*.html',
-        tasks: ['jekyll','dist']
+        tasks: []
       }
     }
   });
@@ -194,9 +194,6 @@ module.exports = function(grunt) {
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean', 'dist-css', 'dist-fonts', 'dist-js']);
-
-  // Template Includes distribution task.
-  grunt.registerTask('dist-includes', ['clean']);
 
   // Default task.
   grunt.registerTask('default', ['test', 'dist', 'build-customizer']);
