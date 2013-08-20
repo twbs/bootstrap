@@ -15,21 +15,13 @@ We only accept issues that are bug reports or feature requests. Bugs must be iso
 
 
 
-## Key branches
-
-- `master` is the latest, deployed version.
-- `gh-pages` is the hosted docs (not to be used for pull requests).
-- `*-wip` is the official work in progress branch for the next release.
-
-
-
 ## Pull requests
 
-- Try to submit pull requests against the latest `*-wip` branch for easier merging
-- CSS changes must be done in .less files first, never just the compiled files
-- If modifying the .less files, always recompile and commit the compiled files bootstrap.css and bootstrap.min.css
+- CSS changes must be done in `.less` files first, never just the compiled `.css` files
+- If modifying the `.less` files, always recompile and commit the compiled files `bootstrap.css` and `bootstrap.min.css`
 - Try not to pollute your pull request with unintended changes--keep them simple and small
 - Try to share which browsers your code has been tested in before submitting a pull request
+- Pull requests should always be against the `master` branch, never against `gh-pages`.
 
 
 
