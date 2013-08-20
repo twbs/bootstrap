@@ -1,9 +1,9 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
-    rake (10.0.4)
+    rake (10.1.0)
     rb-fsevent (0.9.3)
-    sass (3.2.9)
+    sass (3.2.10)
 
 PLATFORMS
   ruby

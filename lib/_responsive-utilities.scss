@@ -5,70 +5,205 @@
 
 // IE10 Metro responsive
 // Required for Windows 8 Metro split-screen snapping with IE10
+//
 // Source: http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
 @-ms-viewport{
   width: device-width;
 }
 
+// IE10 on Windows Phone 8
+// IE10 on WP8 doesn't report CSS pixels, but actual device pixels. In
+// other words, say on a Lumia, you'll get 768px as the device width,
+// meaning users will see the tablet styles and not phone styles.
+//
+// Alternatively you can override this with JS (see source below), but
+// we won't be doing that here given our limited scope.
+//
+// Source: http://timkadlec.com/2013/01/windows-phone-8-and-device-width/
+@media screen and (max-width: 400px) {
+  @-ms-viewport{
+    width: 320px;
+  }
+}
+
 // Hide from screenreaders and browsers
 // Credit: HTML5 Boilerplate
 .hidden {
-  display: none;
-  visibility: hidden;
+  display: none !important;
+  visibility: hidden !important;
 }
 
 // Visibility utilities
 
-// For desktops
-.visible-phone     { display: none !important; }
-.visible-tablet    { display: none !important; }
-.hidden-phone      { }
-.hidden-tablet     { }
-.hidden-desktop    { display: none !important; }
-.visible-desktop   { display: inherit !important; }
-
-// Tablets & small desktops only
-@media (min-width: 768px) and (max-width: 979px) {
-  // Hide everything else
-  .hidden-desktop    { display: inherit !important; }
-  .visible-desktop   { display: none !important ; }
-  // Show
-  .visible-tablet    { display: inherit !important; }
-  // Hide
-  .hidden-tablet     { display: none !important; }
+@include responsive-invisibility('.visible-xs');
+@media (max-width: $screen-xs-max) {
+  @include responsive-visibility('.visible-xs');
 }
 
-// Phones only
-@media (max-width: 767px) {
-  // Hide everything else
-  .hidden-desktop    { display: inherit !important; }
-  .visible-desktop   { display: none !important; }
-  // Show
-  .visible-phone     { display: inherit !important; } // Use inherit to restore previous behavior
-  // Hide
-  .hidden-phone      { display: none !important; }
+@media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+  @include responsive-visibility('.visible-xs.visible-sm');
+}
+
+
+@media (min-width: $screen-md) and (max-width: $screen-md-max) {
+  @include responsive-visibility('.visible-xs.visible-md');
+}
+
+
+@media (min-width: $screen-lg) {
+  @include responsive-visibility('.visible-xs.visible-lg');
+}
+
+
+@include responsive-invisibility('.visible-sm');
+
+@media (max-width: $screen-xs-max) {
+  @include responsive-visibility('.visible-sm.visible-xs');
+}
+
+@media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+  @include responsive-visibility('.visible-sm');
+}
+
+@media (min-width: $screen-md) and (max-width: $screen-md-max) {
+  @include responsive-visibility('.visible-sm.visible-md');
+}
+
+
+@media (min-width: $screen-lg) {
+  @include responsive-visibility('.visible-sm.visible-lg');
+}
+
+
+@include responsive-invisibility('.visible-md');
+
+@media (max-width: $screen-xs-max) {
+  @include responsive-visibility('.visible-md.visible-xs');
+}
+
+
+@media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+  @include responsive-visibility('.visible-md.visible-sm');
+}
+
+@media (min-width: $screen-md) and (max-width: $screen-md-max) {
+  @include responsive-visibility('.visible-md');
+}
+
+@media (min-width: $screen-lg) {
+  @include responsive-visibility('.visible-md.visible-lg');
+}
+
+
+@include responsive-invisibility('.visible-lg');
+
+@media (max-width: $screen-xs-max) {
+  @include responsive-visibility('.visible-lg.visible-xs');
+}
+
+
+@media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+  @include responsive-visibility('.visible-lg.visible-sm');
+}
+
+
+@media (min-width: $screen-md) and (max-width: $screen-md-max) {
+  @include responsive-visibility('.visible-lg.visible-md');
+}
+
+@media (min-width: $screen-lg) {
+  @include responsive-visibility('.visible-lg');
+}
+
+@include responsive-visibility('.hidden-xs');
+@media (max-width: $screen-xs-max) {
+  @include responsive-invisibility('.hidden-xs');
+}
+
+@media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+  @include responsive-invisibility('.hidden-xs.hidden-sm');
+}
+
+
+@media (min-width: $screen-md) and (max-width: $screen-md-max) {
+  @include responsive-invisibility('.hidden-xs.hidden-md');
+}
+
+
+@media (min-width: $screen-lg) {
+  @include responsive-invisibility('.hidden-xs.hidden-lg');
+}
+
+
+@include responsive-visibility('.hidden-sm');
+
+@media (max-width: $screen-xs-max) {
+  @include responsive-invisibility('.hidden-sm.hidden-xs');
+}
+
+@media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+  @include responsive-invisibility('.hidden-sm');
+}
+
+@media (min-width: $screen-md) and (max-width: $screen-md-max) {
+  @include responsive-invisibility('.hidden-sm.hidden-md');
+}
+
+
+@media (min-width: $screen-lg) {
+  @include responsive-invisibility('.hidden-sm.hidden-lg');
+}
+
+
+@include responsive-visibility('.hidden-md');
+
+@media (max-width: $screen-xs-max) {
+  @include responsive-invisibility('.hidden-md.hidden-xs');
+}
+
+
+@media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+  @include responsive-invisibility('.hidden-md.hidden-sm');
+}
+
+@media (min-width: $screen-md) and (max-width: $screen-md-max) {
+  @include responsive-invisibility('.hidden-md');
+}
+
+@media (min-width: $screen-lg) {
+  @include responsive-invisibility('.hidden-md.hidden-lg');
+}
+
+
+@include responsive-visibility('.hidden-lg');
+
+@media (max-width: $screen-xs-max) {
+  @include responsive-invisibility('.hidden-lg.hidden-xs');
+}
+
+
+@media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+  @include responsive-invisibility('.hidden-lg.hidden-sm');
+}
+
+
+@media (min-width: $screen-md) and (max-width: $screen-md-max) {
+  @include responsive-invisibility('.hidden-lg.hidden-md');
+}
+
+@media (min-width: $screen-lg) {
+  @include responsive-invisibility('.hidden-lg');
 }
 
 // Print utilities
-.visible-print    { display: none !important; }
-.hidden-print     { }
+
+@include responsive-invisibility('.visible-print');
 
 @media print {
-  .visible-print  { display: inherit !important; }
-  .hidden-print   { display: none !important; }
-}
 
-// Clearing floats
-.clearfix {
-  @include clearfix();
-}
+  @include responsive-visibility('.visible-print');
 
-// Accessible yet invisible text
-.hide-text {
-  @include hide-text();
-}
 
-// Uses box-sizing mixin, so must be defined here
-.input-block-level {
-  @include input-block-level();
+  @include responsive-invisibility('.hidden-print');
+
 }

@@ -6,109 +6,143 @@
 // Base styles
 // --------------------------------------------------
 
-// Core
+// Core styles
 .btn {
   display: inline-block;
-  @include ie7-inline-block();
-  padding: 4px 12px;
+  padding: $padding-base-vertical $padding-base-horizontal;
   margin-bottom: 0; // For input.btn
-  font-size: $baseFontSize;
-  line-height: $baseLineHeight;
+  font-size: $font-size-base;
+  font-weight: $btn-font-weight;
+  line-height: $line-height-base;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  @include buttonBackground($btnBackground, $btnBackgroundHighlight, $grayDark, 0 1px 1px rgba(255,255,255,.75));
-  border: 1px solid $btnBorder;
-  *border: 0; // Remove the border to prevent IE7's black border on input:focus
-  border-bottom-color: darken($btnBorder, 10%);
-  @include border-radius($baseBorderRadius);
-  @include ie7-restore-left-whitespace(); // Give IE7 some love
-  @include box-shadow(inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05));
+  border: 1px solid transparent;
+  border-radius: $border-radius-base;
+  white-space: nowrap;
+  @include user-select(none);
 
-  // Hover/focus state
-  &:hover,
-  &:focus {
-    color: $grayDark;
-    text-decoration: none;
-    background-position: 0 -15px;
-
-    // transition is only when going to hover/focus, otherwise the background
-    // behind the gradient (there for IE<=9 fallback) gets mismatched
-    @include transition(background-position .1s linear);
-  }
-
-  // Focus state for keyboard and accessibility
   &:focus {
     @include tab-focus();
   }
 
-  // Active state
-  &.active,
-  &:active {
-    background-image: none;
-    outline: 0;
-    @include box-shadow(inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05));
+  &:hover,
+  &:focus {
+    color: $btn-default-color;
+    text-decoration: none;
   }
 
-  // Disabled state
-  &.disabled,
-  &[disabled] {
-    cursor: default;
+  &:active,
+  &.active {
+    outline: 0;
     background-image: none;
-    @include opacity(65);
+    @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    pointer-events: none; // Future-proof disabling of clicks
+    @include opacity(.65);
     @include box-shadow(none);
   }
 
 }
 
 
+// Alternate buttons
+// --------------------------------------------------
+
+.btn-default {
+  @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
+}
+.btn-primary {
+  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+}
+// Warning appears as orange
+.btn-warning {
+  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+}
+// Danger and error appear as red
+.btn-danger {
+  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+}
+// Success appears as green
+.btn-success {
+  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
+}
+// Info appears as blue-green
+.btn-info {
+  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
+}
+
+
+// Link buttons
+// -------------------------
+
+// Make a button look and behave like a link
+.btn-link {
+  color: $link-color;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+
+  &,
+  &:active,
+  &[disabled],
+  fieldset[disabled] & {
+    background-color: transparent;
+    @include box-shadow(none);
+  }
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: transparent;
+  }
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+    text-decoration: underline;
+    background-color: transparent;
+  }
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus {
+      color: $btn-link-disabled-color;
+      text-decoration: none;
+    }
+  }
+}
+
 
 // Button Sizes
 // --------------------------------------------------
 
-// Large
-.btn-large {
-  padding: $paddingLarge;
-  font-size: $fontSizeLarge;
-  @include border-radius($borderRadiusLarge);
+.btn-lg {
+  // line-height: ensure even-numbered height of button next to large input
+  @include button-size($padding-large-vertical, $padding-large-horizontal, $font-size-large, $line-height-large, $border-radius-large);
 }
-.btn-large [class^="icon-"],
-.btn-large [class*=" icon-"] {
-  margin-top: 4px;
+.btn-sm,
+.btn-xs {
+  // line-height: ensure proper height of button next to small input
+  @include button-size($padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, $border-radius-small);
 }
-
-// Small
-.btn-small {
-  padding: $paddingSmall;
-  font-size: $fontSizeSmall;
-  @include border-radius($borderRadiusSmall);
-}
-.btn-small [class^="icon-"],
-.btn-small [class*=" icon-"] {
-  margin-top: 0;
-}
-.btn-mini [class^="icon-"],
-.btn-mini [class*=" icon-"] {
-  margin-top: -1px;
-}
-
-// Mini
-.btn-mini {
-  padding: $paddingMini;
-  font-size: $fontSizeMini;
-  @include border-radius($borderRadiusSmall);
+.btn-xs {
+  padding: 1px 5px;
 }
 
 
 // Block button
-// -------------------------
+// --------------------------------------------------
 
 .btn-block {
   display: block;
   width: 100%;
   padding-left: 0;
   padding-right: 0;
-  @include box-sizing(border-box);
 }
 
 // Vertically space out multiple block buttons
@@ -123,106 +157,4 @@ input[type="button"] {
   &.btn-block {
     width: 100%;
   }
-}
-
-
-
-// Alternate buttons
-// --------------------------------------------------
-
-// Provide *some* extra contrast for those who can get it
-.btn-primary.active,
-.btn-warning.active,
-.btn-danger.active,
-.btn-success.active,
-.btn-info.active,
-.btn-inverse.active {
-  color: rgba(255,255,255,.75);
-}
-
-// Set the backgrounds
-// -------------------------
-.btn-primary {
-  @include buttonBackground($btnPrimaryBackground, $btnPrimaryBackgroundHighlight);
-}
-// Warning appears are orange
-.btn-warning {
-  @include buttonBackground($btnWarningBackground, $btnWarningBackgroundHighlight);
-}
-// Danger and error appear as red
-.btn-danger {
-  @include buttonBackground($btnDangerBackground, $btnDangerBackgroundHighlight);
-}
-// Success appears as green
-.btn-success {
-  @include buttonBackground($btnSuccessBackground, $btnSuccessBackgroundHighlight);
-}
-// Info appears as a neutral blue
-.btn-info {
-  @include buttonBackground($btnInfoBackground, $btnInfoBackgroundHighlight);
-}
-// Inverse appears as dark gray
-.btn-inverse {
-  @include buttonBackground($btnInverseBackground, $btnInverseBackgroundHighlight);
-}
-
-
-// Cross-browser Jank
-// --------------------------------------------------
-
-button.btn,
-input[type="submit"].btn {
-
-  // Firefox 3.6 only I believe
-  &::-moz-focus-inner {
-    padding: 0;
-    border: 0;
-  }
-
-  // IE7 has some default padding on button controls
-  *padding-top: 3px;
-  *padding-bottom: 3px;
-
-  &.btn-large {
-    *padding-top: 7px;
-    *padding-bottom: 7px;
-  }
-  &.btn-small {
-    *padding-top: 3px;
-    *padding-bottom: 3px;
-  }
-  &.btn-mini {
-    *padding-top: 1px;
-    *padding-bottom: 1px;
-  }
-}
-
-
-// Link buttons
-// --------------------------------------------------
-
-// Make a button look and behave like a link
-.btn-link,
-.btn-link:active,
-.btn-link[disabled] {
-  background-color: transparent;
-  background-image: none;
-  @include box-shadow(none);
-}
-.btn-link {
-  border-color: transparent;
-  cursor: pointer;
-  color: $linkColor;
-  @include border-radius(0);
-}
-.btn-link:hover,
-.btn-link:focus {
-  color: $linkColorHover;
-  text-decoration: underline;
-  background-color: transparent;
-}
-.btn-link[disabled]:hover,
-.btn-link[disabled]:focus {
-  color: $grayDark;
-  text-decoration: none;
 }

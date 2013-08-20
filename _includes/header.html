@@ -1,0 +1,43 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>
+  {% if page.title == "Bootstrap" %}
+    {{ page.title }}
+  {% else if %}
+    {{ page.title }} &middot; Bootstrap
+  {% endif %}
+</title>
+
+<!-- Bootstrap core CSS -->
+<link href="{{ page.base_url }}dist/css/bootstrap.css" rel="stylesheet">
+
+<!-- Documentation extras -->
+<link href="{{ page.base_url }}assets/css/docs.css" rel="stylesheet">
+<link href="{{ page.base_url }}assets/css/pygments-manni.css" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="{{ page.base_url }}assets/js/html5shiv.js"></script>
+  <script src="{{ page.base_url }}assets/js/respond.min.js"></script>
+<![endif]-->
+
+<!-- Favicons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ page.base_url }}assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ page.base_url }}assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ page.base_url }}assets/ico/apple-touch-icon-72-precomposed.png">
+                <link rel="apple-touch-icon-precomposed" href="{{ page.base_url }}assets/ico/apple-touch-icon-57-precomposed.png">
+                               <link rel="shortcut icon" href="{{ page.base_url }}assets/ico/favicon.png">
+
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-146052-10']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>

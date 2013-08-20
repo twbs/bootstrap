@@ -3,43 +3,40 @@
 // --------------------------------------------------
 
 
-// Quick floats
-.pull-right {
-  float: right;
-}
-.pull-left {
-  float: left;
-}
+// Floats
+// -------------------------
 
-// Toggling content
-.hide {
-  display: none;
-}
-.show {
-  display: block;
-}
-
-// Visibility
-.invisible {
-  visibility: hidden;
-}
-
-// For Affix plugin
-.affix {
-  position: fixed;
-}
-
-// Clearing floats
 .clearfix {
   @include clearfix();
 }
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
+}
 
-// Accessible yet invisible text
-.hide-text {
+
+// Toggling content
+// -------------------------
+
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
+.invisible {
+  visibility: hidden;
+}
+.text-hide {
   @include hide-text();
 }
 
-// Uses box-sizing mixin, so must be defined here
-.input-block-level {
-  @include input-block-level();
+
+// For Affix plugin
+// -------------------------
+
+.affix {
+  position: fixed;
 }
