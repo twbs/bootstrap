@@ -1,0 +1,5 @@
+$(function () {
+
+    module("uniqueid")
+
+})
