@@ -75,17 +75,14 @@
 @padding-small-vertical:         5px;
 @padding-small-horizontal:       10px;
 
-@line-height-large:              1.33;
-@line-height-small:              1.5;
+@line-height-large:              1.5;
+@line-height-small:              1.33;
 
 @border-radius-base:             4px;
 @border-radius-large:            6px;
 @border-radius-small:            3px;
 
 @component-active-bg:            @brand-primary;
-
-@caret-width-base:               4px;
-@caret-width-large:              5px;
 
 // Tables
 // -------------------------
@@ -110,23 +107,23 @@
 @btn-default-bg:                 #fff;
 @btn-default-border:             #ccc;
 
-@btn-primary-color:              #fff;
+@btn-primary-color:              @btn-default-color;
 @btn-primary-bg:                 @brand-primary;
 @btn-primary-border:             darken(@btn-primary-bg, 5%);
 
-@btn-success-color:              #fff;
+@btn-success-color:              @btn-default-color;
 @btn-success-bg:                 @brand-success;
 @btn-success-border:             darken(@btn-success-bg, 5%);
 
-@btn-warning-color:              #fff;
+@btn-warning-color:              @btn-default-color;
 @btn-warning-bg:                 @brand-warning;
 @btn-warning-border:             darken(@btn-warning-bg, 5%);
 
-@btn-danger-color:               #fff;
+@btn-danger-color:               @btn-default-color;
 @btn-danger-bg:                  @brand-danger;
 @btn-danger-border:              darken(@btn-danger-bg, 5%);
 
-@btn-info-color:                 #fff;
+@btn-info-color:                 @btn-default-color;
 @btn-info-bg:                    @brand-info;
 @btn-info-border:                darken(@btn-info-bg, 5%);
 
@@ -267,7 +264,7 @@
 // Navbar toggle
 @navbar-default-toggle-hover-bg:           #ddd;
 @navbar-default-toggle-icon-bar-bg:        #ccc;
-@navbar-default-toggle-border-color:       #ddd;
+@navbar-default-toggle-border-color:       @navbar-default-toggle-hover-bg;
 
 
 // Inverted navbar
@@ -314,7 +311,7 @@
 @nav-disabled-link-hover-color:             @gray-light;
 
 @nav-open-link-hover-color:                 #fff;
-@nav-open-caret-border-color:               #fff;
+@nav-open-caret-border-color:               @nav-open-link-hover-color;
 
 // Tabs
 @nav-tabs-border-color:                     #ddd;
@@ -392,7 +389,8 @@
 // -------------------------
 @tooltip-max-width:           200px;
 @tooltip-color:               #fff;
-@tooltip-bg:                  #000;
+@tooltip-bg:                  rgba(0,0,0,.9);
+@tooltip-fallback-bg:         #000;  //old browsers fallback (ie8 etc)
 
 @tooltip-arrow-width:         5px;
 @tooltip-arrow-color:         @tooltip-bg;
@@ -459,6 +457,14 @@
 @alert-border-radius:         @border-radius-base;
 @alert-link-font-weight:      bold;
 
+// TODO: make sure .alert and .alert-warning can be differentiated easily,
+// I think we should not assume the default state to be warning, 
+// let user specify the alert state via class (warning, success, info and danger)
+
+@alert-warning-bg:            @state-warning-bg;
+@alert-warning-text:          @state-warning-text;
+@alert-warning-border:        @state-warning-border;
+
 @alert-success-bg:            @state-success-bg;
 @alert-success-text:          @state-success-text;
 @alert-success-border:        @state-success-border;
@@ -466,10 +472,6 @@
 @alert-info-bg:               @state-info-bg;
 @alert-info-text:             @state-info-text;
 @alert-info-border:           @state-info-border;
-
-@alert-warning-bg:            @state-warning-bg;
-@alert-warning-text:          @state-warning-text;
-@alert-warning-border:        @state-warning-border;
 
 @alert-danger-bg:             @state-danger-bg;
 @alert-danger-text:           @state-danger-text;
@@ -503,6 +505,12 @@
 @list-group-link-heading-color:    #333;
 
 @list-group-item-text-line-height: 1.3;
+
+
+// Button Groups
+// --------------------------
+@caret-width-base:               4px;
+@caret-width-large:              5px;
 
 
 // Panels
@@ -556,11 +564,11 @@
 // Badges
 // -------------------------
 @badge-color:                 #fff;
-@badge-link-hover-color:      #fff;
+@badge-link-hover-color:      @badge-color;
 @badge-bg:                    @gray-light;
 
 @badge-active-color:          @link-color;
-@badge-active-bg:             #fff;
+@badge-active-bg:             @badge-color;
 
 @badge-font-weight:           bold;
 @badge-line-height:           1;

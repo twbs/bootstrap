@@ -358,6 +358,13 @@ base_url: "../"
 
     <h3>Typography</h3>
     <div class="row">
+      <div class="col-lg-12">
+        <label>@icon-font-path</label>
+        <input type="text" class="form-control" placeholder="../fonts/" data-var="@icon-font-path">
+        <p class="help-block">Fonts path.</p>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-lg-6">
         <label>@font-family-sans-serif</label>
         <input type="text" class="form-control" placeholder="'Helvetica Neue', Helvetica, Arial, sans-serif" data-var="@font-family-sans-serif">
@@ -376,9 +383,15 @@ base_url: "../"
         <label>@font-size-base</label>
         <input type="text" class="form-control" placeholder="14px" data-var="@font-size-base">
         <p class="help-block">Used to calculate font-size throughout Bootstrap.</p>
+        <label>@font-size-large</label>
+        <input type="text" class="form-control" placeholder="ceil(@font-size-base * 1.25)" data-var="@font-size-large">
+        <label>@font-size-small</label>
+        <input type="text" class="form-control" placeholder="ceil(@font-size-base * 0.85)" data-var="@font-size-small">
         <label>@line-height-base</label>
         <input type="text" class="form-control" placeholder="1.428571429" data-var="@line-height-base">
         <p class="help-block">Used to calculate line-height throughout Bootstrap.</p>
+        <label>@line-height-computed</label>
+        <input type="text" class="form-control" placeholder="floor(@font-size-base * @line-height-base)" data-var="@line-height-computed">
       </div>
     </div>
 
@@ -399,6 +412,8 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="#f5f5f5" data-var="@pre-bg">
         <label>@pre-border-color</label>
         <input type="text" class="form-control" placeholder="#ccc" data-var="@pre-border-color">
+        <label>@pre-scrollable-max-height</label>
+        <input type="text" class="form-control" placeholder="340px" data-var="@pre-scrollable-max-height">
       </div>
     </div>
 
@@ -421,6 +436,19 @@ base_url: "../"
 
     <h3>Colors</h3>
     <div class="row">
+      <div class="col-lg-6">
+        <p>Define gray colors used in several contexts. (Preferably don't customize)</p>
+        <label>@gray-darker</label>
+        <input type="text" class="form-control" placeholder="lighten(#000, 13.5%)" data-var="@gray-darker">
+        <label>@gray-dark</label>
+        <input type="text" class="form-control" placeholder="lighten(#000, 20%)" data-var="@gray-dark">
+        <label>@gray</label>
+        <input type="text" class="form-control" placeholder="lighten(#000, 33.5%)" data-var="@gray">
+        <label>@gray-light</label>
+        <input type="text" class="form-control" placeholder="lighten(#000, 60%)" data-var="@gray-light">
+        <label>@gray-lighter</label>
+        <input type="text" class="form-control" placeholder="lighten(#000, 93.5%)" data-var="@gray-lighter">
+      </div>
       <div class="col-lg-6">
         <p>Define custom colors used in several contexts.</p>
         <label>@brand-primary</label>
@@ -447,8 +475,8 @@ base_url: "../"
         <label>@link-color</label>
         <input type="text" class="form-control" placeholder="@brand-primary" data-var="@link-color">
         <p class="help-block">Global link color for text.</p>
-        <label>@link-color-hover</label>
-        <input type="text" class="form-control" placeholder="darken(@link-color, 15%)" data-var="@link-color-hover">
+        <label>@link-hover-color</label>
+        <input type="text" class="form-control" placeholder="darken(@link-color, 15%)" data-var="@link-hover-color">
         <p class="help-block">Automatically darken links on hover via color function.</p>
       </div>
     </div>
@@ -459,14 +487,22 @@ base_url: "../"
       <div class="col-xs-6">
         <label>@screen-xs</label>
         <input type="text" class="form-control" placeholder="480px" data-var="@screen-xs">
+        <label>@screen-phone</label>
+        <input type="text" class="form-control" placeholder="@screen-xs" data-var="@screen-phone">
         <label>@screen-sm</label>
         <input type="text" class="form-control" placeholder="768px" data-var="@screen-sm">
+        <label>@screen-tablet</label>
+        <input type="text" class="form-control" placeholder="@screen-sm" data-var="@screen-tablet">
       </div>
       <div class="col-xs-6">
         <label>@screen-md</label>
         <input type="text" class="form-control" placeholder="992px" data-var="@screen-md">
+        <label>@screen-desktop</label>
+        <input type="text" class="form-control" placeholder="@screen-md" data-var="@screen-desktop">
         <label>@screen-lg</label>
         <input type="text" class="form-control" placeholder="1200px" data-var="@screen-lg">
+        <label>@screen-lg-desktop</label>
+        <input type="text" class="form-control" placeholder="@screen-lg" data-var="@screen-lg-desktop">
       </div>
     </div>
 
@@ -475,18 +511,18 @@ base_url: "../"
     <div class="row">
       <div class="col-xs-6 col-sm-4">
         <label>@container-tablet</label>
-        <input type="text" class="form-control" placeholder="728px" data-var="@container-tablet">
+        <input type="text" class="form-control" placeholder="((720px + @grid-gutter-width))" data-var="@container-tablet">
         <p class="help-block">For <code>@screen-sm</code> and up.</p>
       </div>
       <div class="col-xs-6 col-sm-4">
         <label>@container-desktop</label>
-        <input type="text" class="form-control" placeholder="940px" data-var="@container-desktop">
+        <input type="text" class="form-control" placeholder="((940px + @grid-gutter-width))" data-var="@container-desktop">
         <p class="help-block">For <code>@screen-md</code> and up.</p>
       </div>
       <div class="clearfix visible-xs"></div>
       <div class="col-xs-6 col-sm-4">
         <label>@container-lg-desktop</label>
-        <input type="text" class="form-control" placeholder="1170px" data-var="@container-lg-desktop">
+        <input type="text" class="form-control" placeholder="((1140px + @grid-gutter-width))" data-var="@container-lg-desktop">
         <p class="help-block">For <code>@screen-lg</code> and up.</p>
       </div>
     </div>
@@ -510,7 +546,7 @@ base_url: "../"
       <div class="clearfix visible-xs"></div>
       <div class="col-xs-6 col-sm-4">
         <label>@grid-float-breakpoint</label>
-        <input type="text" class="form-control" placeholder="@screen-sm" data-var="@grid-float-breakpoint">
+        <input type="text" class="form-control" placeholder="@screen-tablet" data-var="@grid-float-breakpoint">
         <p class="help-block">Point at which the navbar stops collapsing.</p>
       </div>
     </div>
@@ -521,11 +557,11 @@ base_url: "../"
       <div class="col-lg-6">
         <h4>Padding</h4>
         <label>@padding-base-vertical</label>
-        <input type="text" class="form-control" placeholder="8px" data-var="@padding-base-vertical">
+        <input type="text" class="form-control" placeholder="6px" data-var="@padding-base-vertical">
         <label>@padding-base-horizontal</label>
         <input type="text" class="form-control" placeholder="12px" data-var="@padding-base-horizontal">
         <label>@padding-large-vertical</label>
-        <input type="text" class="form-control" placeholder="14px" data-var="@padding-large-vertical">
+        <input type="text" class="form-control" placeholder="10px" data-var="@padding-large-vertical">
         <label>@padding-large-horizontal</label>
         <input type="text" class="form-control" placeholder="16px" data-var="@padding-large-horizontal">
         <label>@padding-small-vertical</label>
@@ -546,33 +582,52 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="@brand-primary" data-var="@component-active-bg">
         <p class="help-block">Used for active or hovered items in places like navs or dropdowns.</p>
       </div>
+       <div class="col-lg-6">
+        <h4>Others</h4>
+        <label>@line-height-small</label>
+        <input type="text" class="form-control" placeholder="1.33" data-var="@line-height-small">
+        <label>@line-height-large</label>
+        <input type="text" class="form-control" placeholder="1.5" data-var="@line-height-large">
+      </div>
     </div>
 
     <h2 id="variables-buttons">Buttons</h2>
     <p>For each of Bootstrap's buttons, define text, background and border color.</p>
     <div class="row">
       <div class="col-lg-6">
+        <h4>Basics</h4>
+        <label>@btn-font-weight</label>
+        <input type="text" class="form-control" placeholder="normal" data-var="@btn-font-weight">
+      </div>
+      <div class="col-lg-6">
+        <h4>Others</h4>
+        <label>@btn-link-disabled-color</label>
+        <input type="text" class="form-control" placeholder="@gray-light" data-var="@btn-link-disabled-color">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
         <h4>Default</h4>
         <label>@btn-default-color</label>
-        <input type="text" class="form-control" placeholder="#fff" data-var="@btn-default-color">
+        <input type="text" class="form-control" placeholder="#333" data-var="@btn-default-color">
         <label>@btn-default-bg</label>
-        <input type="text" class="form-control" placeholder="#474949" data-var="@btn-default-bg">
+        <input type="text" class="form-control" placeholder="#fff" data-var="@btn-default-bg">
         <label>@btn-default-border</label>
-        <input type="text" class="form-control" placeholder="@btn-default-bg" data-var="@btn-default-border">
+        <input type="text" class="form-control" placeholder="#ccc" data-var="@btn-default-border">
         <h4>Primary</h4>
         <label>@btn-primary-color</label>
         <input type="text" class="form-control" placeholder="@btn-default-color" data-var="@btn-primary-color">
         <label>@btn-primary-bg</label>
         <input type="text" class="form-control" placeholder="@brand-primary" data-var="@btn-primary-bg">
         <label>@btn-primary-border</label>
-        <input type="text" class="form-control" placeholder="@btn-primary-bg" data-var="@btn-primary-border">
+        <input type="text" class="form-control" placeholder="darken(@btn-primary-bg, 5%)" data-var="@btn-primary-border">
         <h4>Info</h4>
         <label>@btn-info-color</label>
         <input type="text" class="form-control" placeholder="@btn-default-color" data-var="@btn-info-color">
         <label>@btn-info-bg</label>
         <input type="text" class="form-control" placeholder="@brand-info" data-var="@btn-info-bg">
         <label>@btn-info-border</label>
-        <input type="text" class="form-control" placeholder="@btn-info-bg" data-var="@btn-info-border">
+        <input type="text" class="form-control" placeholder="darken(@btn-info-bg, 5%)" data-var="@btn-info-border">
         <h4>Button hover</h4>
         <label>@btn-hover-color</label>
         <input type="text" class="form-control" placeholder="@btn-default-color" data-var="@btn-hover-color">
@@ -584,21 +639,36 @@ base_url: "../"
         <label>@btn-success-bg</label>
         <input type="text" class="form-control" placeholder="@brand-success" data-var="@btn-success-bg">
         <label>@btn-success-border</label>
-        <input type="text" class="form-control" placeholder="@btn-success-bg" data-var="@btn-success-border">
+        <input type="text" class="form-control" placeholder="darken(@btn-success-bg, 5%)" data-var="@btn-success-border">
         <h4>Warning</h4>
         <label>@btn-warning-color</label>
         <input type="text" class="form-control" placeholder="@btn-default-color" data-var="@btn-warning-color">
         <label>@btn-warning-bg</label>
         <input type="text" class="form-control" placeholder="@brand-warning" data-var="@btn-warning-bg">
         <label>@btn-warning-border</label>
-        <input type="text" class="form-control" placeholder="@btn-warning-bg" data-var="@btn-warning-border">
+        <input type="text" class="form-control" placeholder="darken(@btn-warning-bg, 5%)" data-var="@btn-warning-border">
         <h4>Danger</h4>
         <label>@btn-danger-color</label>
         <input type="text" class="form-control" placeholder="@btn-default-color" data-var="@btn-danger-color">
         <label>@btn-danger-bg</label>
         <input type="text" class="form-control" placeholder="@brand-danger" data-var="@btn-danger-bg">
         <label>@btn-danger-border</label>
-        <input type="text" class="form-control" placeholder="@btn-danger-bg" data-var="@btn-danger-border">
+        <input type="text" class="form-control" placeholder="darken(@btn-danger-bg, 5%)" data-var="@btn-danger-border">
+      </div>
+    </div>
+
+    <h2 id="variables-button-groups">Button groups</h2>
+    <p>For button groups customization.</p>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>@caret-width-base</label>
+        <input type="text" class="form-control" placeholder="4px" data-var="@caret-width-base">
+        <p class="help-block">Caret base border width</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@caret-width-large</label>
+        <input type="text" class="form-control" placeholder="5px" data-var="@caret-width-large">
+        <p class="help-block">Caret large border width</p>
       </div>
     </div>
 
@@ -641,20 +711,26 @@ base_url: "../"
 
     <h2 id="variables-alerts">Alerts</h2>
     <p>Define alert colors, border radius, and padding.</p>
-    <h4>Border radius</h4>
-    <label>@alert-padding</label>
-    <input type="text" class="form-control" placeholder="15px" data-var="@alert-padding">
-    <label>@alert-border-radius</label>
-    <input type="text" class="form-control" placeholder="@border-radius-base" data-var="@alert-border-radius">
+    <div class="row">
+      <div class="col-lg-12">
+        <h4>Basics</h4>
+        <label>@alert-padding</label>
+        <input type="text" class="form-control" placeholder="15px" data-var="@alert-padding">
+        <label>@alert-border-radius</label>
+        <input type="text" class="form-control" placeholder="@border-radius-base" data-var="@alert-border-radius">
+        <label>@alert-link-font-weight</label>
+        <input type="text" class="form-control" placeholder="bold" data-var="@alert-link-font-weight">            
+      </div>
+    </div>
     <div class="row">
       <div class="col-lg-6">
-        <h4>Default (Warning)</h4>
-        <label>@alert-text</label>
-        <input type="text" class="form-control" placeholder="@state-warning-text" data-var="@alert-text">
-        <label>@alert-bg</label>
-        <input type="text" class="form-control" placeholder="@state-warning-bg" data-var="@alert-bg">
-        <label>@alert-border</label>
-        <input type="text" class="form-control" placeholder="@state-warning-border" data-var="@alert-border">
+        <h4>Warning</h4>
+        <label>@alert-warning-text</label>
+        <input type="text" class="form-control" placeholder="@state-warning-text" data-var="@alert-warning-text">
+        <label>@alert-warning-bg</label>
+        <input type="text" class="form-control" placeholder="@state-warning-bg" data-var="@alert-warning-bg">
+        <label>@alert-warning-border</label>
+        <input type="text" class="form-control" placeholder="@state-warning-border" data-var="@alert-warning-border">
         <h4>Success</h4>
         <label>@alert-success-text</label>
         <input type="text" class="form-control" placeholder="@state-success-text" data-var="@alert-success-text">
@@ -693,9 +769,17 @@ base_url: "../"
         <label>@navbar-default-color</label>
         <input type="text" class="form-control" placeholder="#777" data-var="@navbar-default-color">
         <label>@navbar-default-bg</label>
-        <input type="text" class="form-control" placeholder="#eee" data-var="@navbar-default-bg">
+        <input type="text" class="form-control" placeholder="#f8f8f8" data-var="@navbar-default-bg">
         <label>@navbar-border-radius</label>
         <input type="text" class="form-control" placeholder="@border-radius-base" data-var="@navbar-border-radius">
+        <label>@navbar-default-border</label>
+        <input type="text" class="form-control" placeholder="darken(@navbar-default-bg, 6.5%)" data-var="@navbar-default-border">
+        <label>@navbar-padding-horizontal</label>
+        <input type="text" class="form-control" placeholder="floor(@grid-gutter-width / 2)" data-var="@navbar-padding-horizontal">
+        <label>@navbar-padding-vertical</label>
+        <input type="text" class="form-control" placeholder="((@navbar-height - @line-height-computed) / 2)" data-var="@@navbar-padding-vertical">
+
+
         <h4>Links</h4>
         <label>@navbar-default-link-color</label>
         <input type="text" class="form-control" placeholder="#777" data-var="@navbar-default-link-color">
@@ -706,16 +790,16 @@ base_url: "../"
         <label>@navbar-default-link-active-color</label>
         <input type="text" class="form-control" placeholder="#555" data-var="@navbar-default-link-active-color">
         <label>@navbar-default-link-active-bg</label>
-        <input type="text" class="form-control" placeholder="darken(@navbar-bg, 10%)" data-var="@navbar-default-link-active-bg">
+        <input type="text" class="form-control" placeholder="darken(@navbar-default-bg, 6.5%)" data-var="@navbar-default-link-active-bg">
         <label>@navbar-default-link-disabled-color</label>
         <input type="text" class="form-control" placeholder="#ccc" data-var="@navbar-default-link-disabled-color">
         <label>@navbar-default-link-disabled-bg</label>
         <input type="text" class="form-control" placeholder="transparent" data-var="@navbar-default-link-disabled-bg">
         <h4>Brand</h4>
         <label>@navbar-default-brand-color</label>
-        <input type="text" class="form-control" placeholder="@navbar-link-color" data-var="@navbar-default-brand-color">
+        <input type="text" class="form-control" placeholder="@navbar-default-link-color" data-var="@navbar-default-brand-color">
         <label>@navbar-default-brand-hover-color</label>
-        <input type="text" class="form-control" placeholder="darken(@navbar-link-color, 10%)" data-var="@navbar-default-brand-hover-color">
+        <input type="text" class="form-control" placeholder="darken(@navbar-default-link-color, 10%)" data-var="@navbar-default-brand-hover-color">
         <label>@navbar-default-brand-hover-bg</label>
         <input type="text" class="form-control" placeholder="transparent" data-var="@navbar-default-brand-hover-bg">
         <h4>Toggle</h4>
@@ -724,7 +808,7 @@ base_url: "../"
         <label>@navbar-default-toggle-icon-bar-bg</label>
         <input type="text" class="form-control" placeholder="#ccc" data-var="@navbar-default-toggle-icon-bar-bg">
         <label>@navbar-default-toggle-border-color</label>
-        <input type="text" class="form-control" placeholder="#ddd" data-var="@navbar-default-toggle-border-color">
+        <input type="text" class="form-control" placeholder="@navbar-default-toggle-hover-bg" data-var="@navbar-default-toggle-border-color">
       </div>
       <div class="col-lg-6">
         <h3>Inverted navbar</h3>
@@ -733,6 +817,8 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="@gray-light" data-var="@navbar-inverse-color">
         <label>@navbar-inverse-bg</label>
         <input type="text" class="form-control" placeholder="#222" data-var="@navbar-inverse-bg">
+        <label>@navbar-inverse-border</label>
+        <input type="text" class="form-control" placeholder="darken(@navbar-inverse-bg, 10%)" data-var="@navbar-inverse-border">
         <h4>Links</h4>
         <label>@navbar-inverse-link-color</label>
         <input type="text" class="form-control" placeholder="@gray-light" data-var="@navbar-inverse-link-color">
@@ -748,6 +834,7 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="#444" data-var="@navbar-inverse-link-disabled-color">
         <label>@navbar-inverse-link-disabled-bg</label>
         <input type="text" class="form-control" placeholder="transparent" data-var="@navbar-inverse-link-disabled-bg">
+
         <h4>Brand</h4>
         <label>@navbar-inverse-brand-color</label>
         <input type="text" class="form-control" placeholder="@navbar-inverse-link-color" data-var="@navbar-inverse-brand-color">
@@ -755,6 +842,18 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="#fff" data-var="@navbar-inverse-brand-hover-color">
         <label>@navbar-inverse-brand-hover-bg</label>
         <input type="text" class="form-control" placeholder="transparent" data-var="@navbar-inverse-brand-hover-bg">
+
+        <h4>Navbar Search</h4>
+        <label>@navbar-inverse-search-bg</label>
+        <input type="text" class="form-control" placeholder="lighten(@navbar-inverse-bg, 25%)" data-var="@navbar-inverse-search-bg">
+        <label>@navbar-inverse-search-bg-focus</label>
+        <input type="text" class="form-control" placeholder="#fff" data-var="@navbar-inverse-search-bg-focus">
+        <label>@navbar-inverse-search-border</label>
+        <input type="text" class="form-control" placeholder="@navbar-inverse-bg" data-var="@navbar-inverse-search-border">
+        <label>@navbar-inverse-search-placeholder-color</label>
+        <input type="text" class="form-control" placeholder="#ccc" data-var="@navbar-inverse-search-placeholder-color">
+
+
         <h4>Toggle</h4>
         <label>@navbar-inverse-toggle-hover-bg</label>
         <input type="text" class="form-control" placeholder="#333" data-var="@navbar-inverse-toggle-hover-bg">
@@ -783,18 +882,18 @@ base_url: "../"
         <label>@nav-open-link-hover-color</label>
         <input type="text" class="form-control" placeholder="#fff" data-var="@nav-open-link-hover-color">
         <label>@nav-open-caret-border-color</label>
-        <input type="text" class="form-control" placeholder="@fff" data-var="@nav-open-caret-border-color">
+        <input type="text" class="form-control" placeholder="@nav-open-link-hover-color" data-var="@nav-open-caret-border-color">
 
         <h4>Pills</h4>
         <label>@nav-pills-active-link-hover-color</label>
-        <input type="text" class="form-control" placeholder="@fff" data-var="@nav-pills-active-link-hover-color">
+        <input type="text" class="form-control" placeholder="#fff" data-var="@nav-pills-active-link-hover-color">
         <label>@nav-pills-active-link-hover-bg</label>
         <input type="text" class="form-control" placeholder="@component-active-bg" data-var="@nav-pills-active-link-hover-bg">
       </div>
       <div class="col-lg-6">
         <h4>Tabs</h4>
         <label>@nav-tabs-border-color</label>
-        <input type="text" class="form-control" placeholder="@ddd" data-var="@nav-tabs-border-color">
+        <input type="text" class="form-control" placeholder="#ddd" data-var="@nav-tabs-border-color">
         <label>@nav-tabs-link-hover-border-color</label>
         <input type="text" class="form-control" placeholder="@gray-lighter" data-var="@nav-tabs-link-hover-border-color">
         <label>@nav-tabs-active-link-hover-color</label>
@@ -825,7 +924,20 @@ base_url: "../"
         <label>@table-bg-hover</label>
         <input type="text" class="form-control" placeholder="#f5f5f5" data-var="@table-bg-hover">
         <p class="help-block">Background color used for <code>.table-hover</code>.</p>
-        <label>@table-border-color</label>
+        <label>@table-bg-active</label>
+        <input type="text" class="form-control" placeholder="@table-bg-hover" data-var="@table-bg-active">
+        <p class="help-block">Background color for table row (active state).</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@table-cell-padding</label>
+        <input type="text" class="form-control" placeholder="8px" data-var="@table-cell-padding">
+        <p class="help-block">Table cell padding.</p>
+        <label>@table-condensed-cell-padding</label>
+        <input type="text" class="form-control" placeholder="5px" data-var="@table-condensed-cell-padding">
+        <p class="help-block">Table cell padding for <code>.table-condensed</code>.</p>
+      </div>
+      <div class="col-lg-6">
+       <label>@table-border-color</label>
         <input type="text" class="form-control" placeholder="#ddd" data-var="@table-border-color">
         <p class="help-block">Border color for table and cell borders.</p>
       </div>
@@ -847,9 +959,24 @@ base_url: "../"
         <label>@input-border-radius</label>
         <input type="text" class="form-control" placeholder="@border-radius-base" data-var="@input-border-radius">
         <p class="help-block"><code>&lt;input&gt;</code> border radius</p>
+        <label>@input-border-focus</label>
+        <input type="text" class="form-control" placeholder="#66afe9" data-var="@input-border-focus">
+        <p class="help-block"><code>&lt;input&gt;</code> border focus color</p>
+        
         <label>@input-bg-disabled</label>
         <input type="text" class="form-control" placeholder="@gray-lighter" data-var="@input-bg-disabled">
         <p class="help-block"><code>&lt;input disabled&gt;</code> background color</p>
+
+        <label>@input-height-base</label>
+        <input type="text" class="form-control" placeholder="(@line-height-computed + (@padding-base-vertical * 2) + 2)" data-var="@input-height-base">
+        <p class="help-block"><code>&lt;input&gt;</code> height base</p>
+        <label>@input-height-large</label>
+        <input type="text" class="form-control" placeholder="(floor(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2)" data-var="@input-height-large">
+        <p class="help-block"><code>&lt;input&gt;</code> height large</p>
+        <label>@input-height-small</label>
+        <input type="text" class="form-control" placeholder="(floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2)" data-var="@input-height-small">
+        <p class="help-block"><code>&lt;input&gt;</code> height small</p>
+        
       </div>
       <div class="col-lg-6">
         <h3>Placeholder</h3>
@@ -859,7 +986,7 @@ base_url: "../"
 
         <h3>Legend</h3>
         <label>@legend-color</label>
-        <input type="text" class="form-control" placeholder="@gray" data-var="@legend-color">
+        <input type="text" class="form-control" placeholder="@gray-dark" data-var="@legend-color">
         <label>@legend-border-color</label>
         <input type="text" class="form-control" placeholder="#e5e5e5" data-var="@legend-border-color">
 
@@ -899,7 +1026,7 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="#ccc" data-var="@dropdown-fallback-border">
         <p class="help-block">Dropdown menu border color <strong>for IE8</strong></p>
         <label>@dropdown-caret-color</label>
-        <input type="text" class="form-control" placeholder="@dropdown-caret-color" data-var="@dropdown-caret-color">
+        <input type="text" class="form-control" placeholder="#000" data-var="@dropdown-caret-color">
         <p class="help-block">Indicator arrow for showing an element has a dropdown</p>
         <label>@dropdown-divider-bg</label>
         <input type="text" class="form-control" placeholder="#e5e5e5" data-var="@dropdown-divider-bg">
@@ -922,7 +1049,7 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="#fff" data-var="@dropdown-link-hover-color">
         <p class="help-block">Hovered dropdown menu entry text color</p>
         <label>@dropdown-link-hover-bg</label>
-        <input type="text" class="form-control" placeholder="#fff" data-var="@dropdown-link-hover-bg">
+        <input type="text" class="form-control" placeholder="@dropdown-link-active-bg" data-var="@dropdown-link-hover-bg">
         <p class="help-block">Hovered dropdown menu entry text color</p>
 
         <label>@dropdown-link-active-color</label>
@@ -933,7 +1060,7 @@ base_url: "../"
         <p class="help-block">Active dropdown menu entry background color</p>
 
         <label>@dropdown-link-disabled-color</label>
-        <input type="text" class="form-control" placeholder="@dropdown-link-disabled-color" data-var="@dropdown-link-disabled-color">
+        <input type="text" class="form-control" placeholder="@gray-light" data-var="@dropdown-link-disabled-color">
         <p class="help-block">Disabled dropdown menu entry background color</p>
       </div>
     </div>
@@ -1023,7 +1150,7 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="@gray-light" data-var="@badge-bg">
         <p>Badge background color</p>
         <label>@badge-link-hover-color</label>
-        <input type="text" class="form-control" placeholder="#fff" data-var="@badge-link-hover-color">
+        <input type="text" class="form-control" placeholder="@badge-color" data-var="@badge-link-hover-color">
         <p>Linked badge text color on hover</p>
       </div>
       <div class="col-lg-6">
@@ -1031,8 +1158,19 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="@link-color" data-var="@badge-active-color">
         <p>Badge text color in active nav link</p>
         <label>@badge-active-bg</label>
-        <input type="text" class="form-control" placeholder="#fff" data-var="@badge-active-bg">
+        <input type="text" class="form-control" placeholder="@badge-color" data-var="@badge-active-bg">
         <p>Badge text color in active nav link</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@badge-font-weight</label>
+        <input type="text" class="form-control" placeholder="bold" data-var="@badge-font-weight">
+        <p>Badge font weight</p>
+        <label>@badge-line-height</label>
+        <input type="text" class="form-control" placeholder="1" data-var="@badge-line-height">
+        <p>Badge line height</p>
+        <label>@badge-border-radius</label>
+        <input type="text" class="form-control" placeholder="10px" data-var="@badge-border-radius">
+        <p>Badge border radius</p>
       </div>
     </div>
 
@@ -1141,6 +1279,12 @@ base_url: "../"
     <input type="text" class="form-control" placeholder="0 1px 2px rgba(0,0,0,.6)" data-var="@carousel-text-shadow">
     <label>@carousel-control-color</label>
     <input type="text" class="form-control" placeholder="#fff" data-var="@carousel-control-color">
+    <label>@carousel-control-width</label>
+    <input type="text" class="form-control" placeholder="15%" data-var="@carousel-control-width">
+    <label>@carousel-control-opacity</label>
+    <input type="text" class="form-control" placeholder=".5" data-var="@carousel-control-opacity">
+    <label>@carousel-control-font-size</label>
+    <input type="text" class="form-control" placeholder="20px" data-var="@carousel-control-font-size">
     <label>@carousel-indicator-border-color</label>
     <input type="text" class="form-control" placeholder="#fff" data-var="@carousel-indicator-border-color">
     <label>@carousel-indicator-active-bg</label>
@@ -1189,6 +1333,16 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="1.3" data-var="@list-group-item-text-line-height">
         <p class="help-block">Line height of list text elements</p>
       </div>
+      <div class="col-lg-4">
+        <label>@list-group-link-color</label>
+        <input type="text" class="form-control" placeholder="#555" data-var="@list-group-link-color">
+        <p class="help-block">Link color of list elements</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@list-group-link-heading-color</label>
+        <input type="text" class="form-control" placeholder="#333" data-var="@list-group-link-heading-color">
+        <p class="help-block">Heading color of list elements</p>
+      </div>
     </div>
     <label>@list-group-active-color</label>
     <input type="text" class="form-control" placeholder="#fff" data-var="@list-group-active-color">
@@ -1211,7 +1365,7 @@ base_url: "../"
       </div>
       <div class="col-lg-6">
         <label>@thumbnail-caption-padding</label>
-        <input type="text" class="form-control" placeholder="@text-color" data-var="@thumbnail-caption-padding">
+        <input type="text" class="form-control" placeholder="9px" data-var="@thumbnail-caption-padding">
         <p class="help-block">Padding around the thumbnail caption</p>
         <label>@thumbnail-caption-color</label>
         <input type="text" class="form-control" placeholder="@text-color" data-var="@thumbnail-caption-color">
@@ -1269,6 +1423,11 @@ base_url: "../"
         <label>@pagination-bg</label>
         <input type="text" class="form-control" placeholder="#fff" data-var="@pagination-bg">
         <p class="help-block">Background color</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@pagination-hover-bg</label>
+        <input type="text" class="form-control" placeholder="@gray-lighter" data-var="@pagination-hover-bg">
+        <p class="help-block">Background hover color</p>
       </div>
       <div class="col-lg-4">
         <label>@pagination-border</label>
@@ -1331,7 +1490,7 @@ base_url: "../"
       </div>
       <div class="col-lg-6">
         <label>@label-font-weight</label>
-        <input type="text" class="form-control" placeholder="normal" data-var="@label-font-weight">
+        <input type="text" class="form-control" placeholder="bold" data-var="@label-font-weight">
         <p class="help-block">Label font weight</p>
         <label>@label-line-height</label>
         <input type="text" class="form-control" placeholder="1" data-var="@label-line-height">
@@ -1340,6 +1499,16 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="75%" data-var="@label-font-size">
         <p class="help-block">Label font size</p>
       </div>
+      <div class="col-lg-6">
+        <label>@label-color</label>
+        <input type="text" class="form-control" placeholder="#fff" data-var="@label-color">
+        <p class="help-block">Label text color</p>
+        <label>@label-link-hover-color</label>
+        <input type="text" class="form-control" placeholder="@label-color" data-var="@label-link-hover-color">
+        <p class="help-block">Label link hover color</p>
+      </div>
+
+      
     </div>
     <h2 id="variables-tooltips-popovers">Tooltips and popovers</h2>
     <h3>Tooltip styles</h3>
@@ -1351,6 +1520,9 @@ base_url: "../"
         <label>@tooltip-bg</label>
         <input type="text" class="form-control" placeholder="rgba(0,0,0,.9)" data-var="@tooltip-bg">
         <p class="help-block">Tooltip background color</p>
+        <label>@tooltip-fallback-bg</label>
+        <input type="text" class="form-control" placeholder="#000" data-var="@tooltip-fallback-bg">
+        <p class="help-block">Tooltip background color (old browsers fallback (ie8 etc))</p>
       </div>
       <div class="col-lg-6">
         <label>@tooltip-arrow-width</label>
@@ -1393,7 +1565,7 @@ base_url: "../"
     <div class="row">
       <div class="col-lg-6">
         <label>@popover-arrow-outer-width</label>
-        <input type="text" class="form-control" placeholder="(@popover-arrow-width 1)" data-var="@popover-arrow-outer-width">
+        <input type="text" class="form-control" placeholder="(@popover-arrow-width + 1)" data-var="@popover-arrow-outer-width">
         <p class="help-block">Popover outer arrow width</p>
       </div>
       <div class="col-lg-6">
@@ -1440,6 +1612,10 @@ base_url: "../"
       <div class="col-lg-6">
         <label>@close-color</label>
         <input type="text" class="form-control" placeholder="#000" data-var="@close-color">
+      </div>
+      <div class="col-lg-6">
+        <label>@close-font-weight</label>
+        <input type="text" class="form-control" placeholder="bold" data-var="@close-font-weight">
       </div>
       <div class="col-lg-6">
         <label>@close-line-height</label>
@@ -1517,6 +1693,29 @@ base_url: "../"
         <label>@headings-small-line-height</label>
         <input type="text" class="form-control" placeholder="1" data-var="@headings-small-line-height">
         <p class="help-block">Small (.small) line height inside headings</p>
+      </div>
+    </div>
+    <h2 id="variables-z-index">Z-Index Master List</h2>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>@zindex-navbar</label>
+        <input type="text" class="form-control" placeholder="1000" data-var="@zindex-navbar">
+        <label>@zindex-dropdown</label>
+        <input type="text" class="form-control" placeholder="1000" data-var="@zindex-dropdown">
+        <label>@zindex-popover</label>
+        <input type="text" class="form-control" placeholder="1010" data-var="@zindex-popover">        
+      </div>
+      <div class="col-lg-6">
+        <label>@zindex-tooltip</label>
+        <input type="text" class="form-control" placeholder="1030" data-var="@zindex-tooltip">
+        <label>@zindex-navbar-fixed</label>
+        <input type="text" class="form-control" placeholder="1030" data-var="@zindex-navbar-fixed">
+        <label>@zindex-modal-background</label>
+        <input type="text" class="form-control" placeholder="1040" data-var="@zindex-modal-background">
+      </div>
+      <div class="col-lg-6">
+        <label>@zindex-modal</label>
+        <input type="text" class="form-control" placeholder="1050" data-var="@zindex-modal">
       </div>
     </div>
     <h2 id="variables-other">Other</h2>
