@@ -1,7 +1,7 @@
 {
   "name": "sass-bootstrap",
   "version": "3.0.0",
-  "main": ["lib/bootstrap.scss" ],
+  "main": ["./dist/js/bootstrap.js", "./dist/css/bootstrap.css"],
   "ignore": [
       "**/.*"
   ],

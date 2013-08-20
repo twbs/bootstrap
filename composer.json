@@ -4,6 +4,18 @@
   , "keywords": ["bootstrap", "css", "sass"]
   , "homepage": "http://github.com/jlong/sass-twitter-bootstrap/"
   , "author": "John W. Long"
+  , "authors": [
+      {
+        "name": "Mark Otto",
+        "email": "markdotto@gmail.com"
+      },
+      {
+        "name": "Jacob Thornton",
+        "email": "jacobthornton@gmail.com"
+      }
+    ]
+  , "support": {
+      "issues": "https://github.com/twbs/bootstrap/issues"
+    }
   , "license": "Apache-2.0"
-
 }

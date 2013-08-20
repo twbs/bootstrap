@@ -54,6 +54,8 @@ SASS runs as a local GEM on your system. You can run `sass --watch lib/bootstrap
 
 Have a bug or a feature request? [Please open a new issue](https://github.com/twbs/bootstrap/issues). Before opening any issue, please search for existing issues and read the [Issue Guidelines](https://github.com/necolas/issue-guidelines), written by [Nicolas Gallagher](https://github.com/necolas/).
 
+You may use [this JS Bin](http://jsbin.com/aKiCIDO/1/edit) as a template for your bug reports.
+
 
 
 ## Documentation
