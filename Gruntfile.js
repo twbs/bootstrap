@@ -146,6 +146,10 @@ module.exports = function(grunt) {
       recess: {
         files: 'less/*.less',
         tasks: ['recess']
+      },
+      includes: {
+        files: '_includes/*.html',
+        tasks: ['jekyll','dist']
       }
     }
   });
@@ -190,6 +194,9 @@ module.exports = function(grunt) {
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean', 'dist-css', 'dist-fonts', 'dist-js']);
+
+  // Template Includes distribution task.
+  grunt.registerTask('dist-includes', ['clean']);
 
   // Default task.
   grunt.registerTask('default', ['test', 'dist', 'build-customizer']);
