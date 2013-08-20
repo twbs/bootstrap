@@ -34,7 +34,7 @@ You can use the SASS Twitter Bootstrap by dropping the compiled CSS into any new
 
 Because SASS always outputs standard css, just link to the final output like normal:
 
-`<link rel="stylesheet" type="text/css" href="bootstrap-3.0.0.css">`
+`<link rel="stylesheet" type="text/css" href="./dist/css/bootstrap.css">`
 
 For more info, refer to the docs!
 
@@ -46,7 +46,7 @@ You can learn more about SASS at:
 
 [sass-lang.com](http://sass-lang.com)
 
-SASS runs as a local GEM on your system. You can run `sass --watch lib/bootstrap.scss:bootstrap-3.0.0.css`
+SASS runs as a local GEM on your system. You can run `sass --watch lib/bootstrap.scss:dist/css/bootstrap.css`
 
 
 
