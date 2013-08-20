@@ -28,7 +28,7 @@ legend {
 label {
   display: inline-block;
   margin-bottom: 5px;
-  font-weight: bold;
+  font-weight: @label-font-weight;
 }
 
 
@@ -175,7 +175,7 @@ input[type="number"] {
   label {
     display: inline;
     margin-bottom: 0;
-    font-weight: normal;
+    font-weight: @checkbox-radio-font-weight;
     cursor: pointer;
   }
 }
@@ -198,7 +198,7 @@ input[type="number"] {
   padding-left: 20px;
   margin-bottom: 0;
   vertical-align: middle;
-  font-weight: normal;
+  font-weight: @checkbox-radio-font-weight;
   cursor: pointer;
 }
 .radio-inline + .radio-inline,

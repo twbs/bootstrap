@@ -389,6 +389,8 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="#c7254e" data-var="@code-color">
         <label>@code-bg</label>
         <input type="text" class="form-control" placeholder="#f9f2f4" data-var="@code-bg">
+        <label>@code-font-size</label>
+        <input type="text" class="form-control" placeholder="90%" data-var="@code-font-size">
       </div>
       <div class="col-lg-6">
         <label>@pre-color</label>
@@ -868,6 +870,18 @@ base_url: "../"
         <label>@input-group-addon-border-color</label>
         <input type="text" class="form-control" placeholder="@input-border" data-var="@input-group-addon-border-color">
         <p class="help-block">Border color for textual input addons</p>
+
+        <label>@input-group-addon-font-weight</label>
+        <input type="text" class="form-control" placeholder="normal" data-var="@input-group-addon-font-weight">
+        <p class="help-block">Font weight for textual input addons</p>
+
+        <label>@input-group-addon-line-height</label>
+        <input type="text" class="form-control" placeholder="1" data-var="@input-group-addon-line-height">
+        <p class="help-block">Line height for textual input addons</p>
+
+        <label>@checkbox-radio-font-weight</label>
+        <input type="text" class="form-control" placeholder="normal" data-var="@checkbox-radio-font-weight">
+        <p class="help-block">Checkbox / Radio Button font weight</p>        
       </div>
     </div>
 
@@ -899,6 +913,10 @@ base_url: "../"
         <label>@dropdown-link-color</label>
         <input type="text" class="form-control" placeholder="@gray-dark" data-var="@dropdown-link-color">
         <p class="help-block">Dropdown text color</p>
+
+        <label>@dropdown-link-font-weight</label>
+        <input type="text" class="form-control" placeholder="normal" data-var="@dropdown-link-font-weight">
+        <p class="help-block">Dropdown link font weight</p>
 
         <label>@dropdown-link-hover-color</label>
         <input type="text" class="form-control" placeholder="#fff" data-var="@dropdown-link-hover-color">
@@ -1048,12 +1066,24 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="@gray-lighter" data-var="@jumbotron-bg">
       </div>
       <div class="col-lg-3">
+        <label>@jumbotron-font-weight</label>
+        <input type="text" class="form-control" placeholder="200" data-var="@jumbotron-font-weight">
+      </div>
+      <div class="col-lg-3">
         <label>@jumbotron-color</label>
         <input type="text" class="form-control" placeholder="inherit" data-var="@jumbotron-color">
       </div>
       <div class="col-lg-3">
         <label>@jumbotron-heading-color</label>
         <input type="text" class="form-control" placeholder="inherit" data-var="@jumbotron-heading-color">
+      </div>
+      <div class="col-lg-3">
+        <label>@jumbotron-heading-line-height</label>
+        <input type="text" class="form-control" placeholder="1" data-var="@jumbotron-heading-line-height">
+      </div>
+      <div class="col-lg-3">
+        <label>@jumbotron-p-line-height</label>
+        <input type="text" class="form-control" placeholder="1.4" data-var="@jumbotron-p-line-height">
       </div>
     </div>
 
@@ -1153,6 +1183,11 @@ base_url: "../"
         <label>@list-group-active-border</label>
         <input type="text" class="form-control" placeholder="@list-group-active-bg" data-var="@list-group-active-border">
         <p class="help-block">Border color of active list elements</p>
+      </div>
+      <div class="col-lg-4">
+        <label>@list-group-item-text-line-height</label>
+        <input type="text" class="form-control" placeholder="1.3" data-var="@list-group-item-text-line-height">
+        <p class="help-block">Line height of list text elements</p>
       </div>
     </div>
     <label>@list-group-active-color</label>
@@ -1294,6 +1329,17 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="@brand-danger" data-var="@label-danger-bg">
         <p class="help-block">Danger label background color</p>
       </div>
+      <div class="col-lg-6">
+        <label>@label-font-weight</label>
+        <input type="text" class="form-control" placeholder="normal" data-var="@label-font-weight">
+        <p class="help-block">Label font weight</p>
+        <label>@label-line-height</label>
+        <input type="text" class="form-control" placeholder="1" data-var="@label-line-height">
+        <p class="help-block">Label line height</p>
+        <label>@label-font-size</label>
+        <input type="text" class="form-control" placeholder="75%" data-var="@label-font-size">
+        <p class="help-block">Label font size</p>
+      </div>
     </div>
     <h2 id="variables-tooltips-popovers">Tooltips and popovers</h2>
     <h3>Tooltip styles</h3>
@@ -1318,6 +1364,11 @@ base_url: "../"
         <label>@tooltip-max-width</label>
         <input type="text" class="form-control" placeholder="200px" data-var="@tooltip-max-width">
         <p class="help-block">Tooltip max width</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@tooltip-line-height</label>
+        <input type="text" class="form-control" placeholder="1.4" data-var="@tooltip-line-height">
+        <p class="help-block">Tooltip line height</p>
       </div>
     </div>
     <h3>Popover styles</h3>
@@ -1372,6 +1423,16 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="#ccc" data-var="@popover-fallback-border-color">
         <p class="help-block">Popover fallback border color</p>
       </div>
+      <div class="col-lg-6">
+        <label>@popover-font-weight</label>
+        <input type="text" class="form-control" placeholder="normal" data-var="@popover-font-weight">
+        <p class="help-block">Popover font weight</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@popover-line-height</label>
+        <input type="text" class="form-control" placeholder="18px" data-var="@popover-line-height">
+        <p class="help-block">Popover line height</p>
+      </div>
     </div>
 
     <h2 id="variables-close">Close button</h2>
@@ -1379,6 +1440,10 @@ base_url: "../"
       <div class="col-lg-6">
         <label>@close-color</label>
         <input type="text" class="form-control" placeholder="#000" data-var="@close-color">
+      </div>
+      <div class="col-lg-6">
+        <label>@close-line-height</label>
+        <input type="text" class="form-control" placeholder="1" data-var="@close-line-height">
       </div>
       <div class="col-lg-6">
       <label>@close-text-shadow</label>
@@ -1417,6 +1482,41 @@ base_url: "../"
         <label>@page-header-border-color</label>
         <input type="text" class="form-control" placeholder="@gray-lighter" data-var="@page-header-border-color">
         <p class="help-block">Page header border color</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@lead-font-weight</label>
+        <input type="text" class="form-control" placeholder="200" data-var="@lead-font-weight">
+        <p class="help-block">Lead (.lead) font weight</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@lead-line-height</label>
+        <input type="text" class="form-control" placeholder="1.4" data-var="@lead-line-height">
+        <p class="help-block">Lead (.lead) line height</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@dt-font-weight</label>
+        <input type="text" class="form-control" placeholder="bold" data-var="@dt-font-weight">
+        <p class="help-block">dt font weight</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@blockquote-p-font-weight</label>
+        <input type="text" class="form-control" placeholder="300" data-var="@blockquote-p-font-weight">
+        <p class="help-block">Paragraph font weight inside blockquote</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@blockquote-p-line-height</label>
+        <input type="text" class="form-control" placeholder="1.25" data-var="@blockquote-p-line-height">
+        <p class="help-block">Paragraph line height inside blockquote</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@headings-small-font-weight</label>
+        <input type="text" class="form-control" placeholder="normal" data-var="@headings-small-font-weight">
+        <p class="help-block">Small (.small) font weight inside headings</p>
+      </div>
+      <div class="col-lg-6">
+        <label>@headings-small-line-height</label>
+        <input type="text" class="form-control" placeholder="1" data-var="@headings-small-line-height">
+        <p class="help-block">Small (.small) line height inside headings</p>
       </div>
     </div>
     <h2 id="variables-other">Other</h2>

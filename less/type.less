@@ -12,8 +12,8 @@ p {
 .lead {
   margin-bottom: @line-height-computed;
   font-size: (@font-size-base * 1.15);
-  font-weight: 200;
-  line-height: 1.4;
+  font-weight: @lead-font-weight;
+  line-height: @lead-line-height;
 
   @media (min-width: 768px) {
     font-size: (@font-size-base * 1.5);
@@ -53,8 +53,8 @@ h1, h2, h3, h4, h5, h6,
   font-weight: @headings-font-weight;
   line-height: @headings-line-height;
   small {
-    font-weight: normal;
-    line-height: 1;
+    font-weight: @headings-small-font-weight;
+    line-height: @headings-small-line-height;
     color: @headings-small-color;
   }
 }
@@ -136,7 +136,7 @@ dd {
   line-height: @line-height-base;
 }
 dt {
-  font-weight: bold;
+  font-weight: @dt-font-weight;
 }
 dd {
   margin-left: 0; // Undo browser default
@@ -185,8 +185,8 @@ blockquote {
   border-left: 5px solid @blockquote-border-color;
   p {
     font-size: (@font-size-base * 1.25);
-    font-weight: 300;
-    line-height: 1.25;
+    font-weight: @blockquote-p-font-weight;
+    line-height: @blockquote-p-line-height;
   }
   p:last-child {
     margin-bottom: 0;
