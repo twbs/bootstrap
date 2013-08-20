@@ -283,7 +283,6 @@
   background-image: linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
 }
 
-
 // Reset filters for IE
 //
 // When you need to remove a gradient background, do not forget to use this to reset
@@ -412,17 +411,23 @@
   &:hover,
   &:focus,
   &:active,
-  &.active,
-  .open .dropdown-toggle & {
+  &.active {
     color: $color;
     background-color: darken($background, 8%);
         border-color: darken($border, 12%);
   }
+  .open & { &.dropdown-toggle {
+    color: $color;
+    background-color: darken($background, 8%);
+        border-color: darken($border, 12%);
+  } }
   &:active,
-  &.active,
-  .open .dropdown-toggle & {
+  &.active {
     background-image: none;
   }
+  .open & { &.dropdown-toggle {
+    background-image: none;
+  } }
   &.disabled,
   &[disabled],
   fieldset[disabled] & {
@@ -706,7 +711,6 @@
 // horizontal sizing, wrap controls in the predefined grid classes. `<select>`
 // element gets special love because it's special, and that's a fact!
 
-// [converter] $parent hack
 @mixin input-size($parent, $input-height, $padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius) {
   #{$parent} { height: $input-height;
   padding: $padding-vertical $padding-horizontal;

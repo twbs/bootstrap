@@ -489,12 +489,12 @@ $list-group-link-heading-color:  #333 !default;
 // Panels
 // -------------------------
 $panel-bg:                    #fff !default;
-$panel-border:                #ddd !default;
+$panel-inner-border:          #ddd !default;
 $panel-border-radius:         $border-radius-base !default;
-$panel-heading-bg:            #f5f5f5 !default;
+$panel-footer-bg:             #f5f5f5 !default;
 
 $panel-default-text:          $gray-dark !default;
-$panel-footer-bg:             #f5f5f5 !default;
+$panel-default-border:        #ddd !default;
 $panel-default-heading-bg:    #f5f5f5 !default;
 
 $panel-primary-text:          #fff !default;

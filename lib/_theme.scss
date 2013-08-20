@@ -31,7 +31,7 @@
 }
 
 // Mixin for generating new styles
-@include btn-styles($btn-color: #555) {
+@mixin btn-styles($btn-color: #555) {
   @include gradient-vertical($start-color: $btn-color, $end-color: darken($btn-color, 10%));
   border-color: darken($btn-color, 12%);
 
@@ -142,15 +142,15 @@
 }
 
 // Mixin for generating new styles
-@include alert-styles($color) {
+@mixin alert-styles($color) {
   @include gradient-vertical($start-color: $color, $end-color: darken($color, 7.5%));
   border-color: darken($color, 15%);
 }
 
 // Apply the mixin to the alerts
-.alert            { @include alert-styles($alert-bg); }
 .alert-success    { @include alert-styles($alert-success-bg); }
 .alert-info       { @include alert-styles($alert-info-bg); }
+.alert-warning    { @include alert-styles($alert-warning-bg); }
 .alert-danger     { @include alert-styles($alert-danger-bg); }
 
 
@@ -165,7 +165,7 @@
 }
 
 // Mixin for generating new styles
-@include progress-bar-styles($color) {
+@mixin progress-bar-styles($color) {
   @include gradient-vertical($start-color: $color, $end-color: darken($color, 10%));
 }
 
@@ -206,12 +206,12 @@
 }
 
 // Mixin for generating new styles
-@include panel-heading-styles($color) {
+@mixin panel-heading-styles($color) {
   @include gradient-vertical($start-color: $color, $end-color: darken($color, 5%));
 }
 
 // Apply the mixin to the panel headings only
-.panel-heading                    { @include panel-heading-styles($panel-heading-bg); }
+.panel-default > .panel-heading   { @include panel-heading-styles($panel-default-heading-bg); }
 .panel-primary > .panel-heading   { @include panel-heading-styles($panel-primary-heading-bg); }
 .panel-success > .panel-heading   { @include panel-heading-styles($panel-success-heading-bg); }
 .panel-info > .panel-heading      { @include panel-heading-styles($panel-info-heading-bg); }

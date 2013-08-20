@@ -142,8 +142,6 @@ input[type="number"] {
     cursor: not-allowed;
     background-color: $input-bg-disabled;
   }
-
-  // [converter] extracted textarea& to textarea.form-control
 }
 
 // Reset height for `textarea`s
@@ -225,6 +223,7 @@ input[type="checkbox"],
 }
 
 // Form control sizing
+
 @include input-size('.input-sm', $input-height-small, $padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, $border-radius-small);
 
 @include input-size('.input-lg', $input-height-large, $padding-large-vertical, $padding-large-horizontal, $font-size-large, $line-height-large, $border-radius-large);

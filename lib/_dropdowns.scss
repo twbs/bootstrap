@@ -183,11 +183,12 @@
 //
 // Reiterate per navbar.less and the modified component alignment there.
 
-//@media (min-width: $grid-float-breakpoint) {
-//  .navbar-right {
-//    .dropdown-menu {
-//      .pull-right > .dropdown-menu();
-//    }
-//  }
-//}
+@media (min-width: $grid-float-breakpoint) {
+  .navbar-right {
+    .dropdown-menu {
+      right: 0;
+      left: auto;
+    }
+  }
+}
 
