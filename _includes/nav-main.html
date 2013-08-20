@@ -10,23 +10,44 @@
       <a href="{{ page.base_url }}" class="navbar-brand">Manta Bootstrap</a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Find products, services, businesses">
+        </div>
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+        </span>
+     </form>
       <ul class="nav navbar-nav">
-        <li{% if page.slug == "getting-started" %} class="active"{% endif %}>
-          <a href="{{ page.base_url }}getting-started">Getting started</a>
-        </li>
-        <li{% if page.slug == "css" %} class="active"{% endif %}>
-          <a href="{{ page.base_url }}css">CSS</a>
-        </li>
-        <li{% if page.slug == "components" %} class="active"{% endif %}>
-          <a href="{{ page.base_url }}components">Components</a>
-        </li>
-        <li{% if page.slug == "js" %} class="active"{% endif %}>
-          <a href="{{ page.base_url }}javascript">JavaScript</a>
-        </li>
-        <li{% if page.slug == "customize" %} class="active"{% endif %}>
-          <a href="{{ page.base_url }}customize">Customize</a>
+        <li class="dropdown">
+	      <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-list"></span> Browse</a>
+	      <ul class="dropdown-menu">
+		<li{% if page.slug == "getting-started" %} class="active"{% endif %}>
+		  <a href="{{ page.base_url }}getting-started">Getting started</a>
+		</li>
+		<li{% if page.slug == "css" %} class="active"{% endif %}>
+		  <a href="{{ page.base_url }}css">CSS</a>
+		</li>
+		<li{% if page.slug == "components" %} class="active"{% endif %}>
+		  <a href="{{ page.base_url }}components">Components</a>
+		</li>
+		<li{% if page.slug == "js" %} class="active"{% endif %}>
+		  <a href="{{ page.base_url }}javascript">JavaScript</a>
+		</li>
+		<li{% if page.slug == "customize" %} class="active"{% endif %}>
+		  <a href="{{ page.base_url }}customize">Customize</a>
+		</li>
+	      </ul>
         </li>
       </ul>
+<div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
     </nav>
   </div>
 </header>
