@@ -137,14 +137,14 @@ th {
 //
 // Reset default table behavior
 
-table col[class^="col-"] {
+table col[class*="col-"] {
   float: none;
   display: table-column;
 }
 table {
   td,
   th {
-    &[class^="col-"] {
+    &[class*="col-"] {
       float: none;
       display: table-cell;
     }

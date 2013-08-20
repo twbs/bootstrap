@@ -1548,13 +1548,13 @@ th {
   background-color: whitesmoke;
 }
 
-table col[class^="col-"] {
+table col[class*="col-"] {
   float: none;
   display: table-column;
 }
 
-table td[class^="col-"],
-table th[class^="col-"] {
+table td[class*="col-"],
+table th[class*="col-"] {
   float: none;
   display: table-cell;
 }
@@ -1962,7 +1962,7 @@ textarea.input-lg, .input-group-lg > textarea.form-control,
 
 .form-control-static {
   margin-bottom: 0;
-  padding-top: 6px;
+  padding-top: 7px;
 }
 
 .help-block {
@@ -3317,6 +3317,12 @@ input[type="button"].btn-block {
   margin-bottom: 1px;
 }
 
+@media (min-width: 768px) {
+  .navbar-right .dropdown-menu {
+    right: 0;
+    left: auto;
+  }
+}
 .btn-default .caret {
   border-top-color: #333333;
 }
@@ -3818,6 +3824,7 @@ input[type="button"].btn-block {
 
 .navbar {
   position: relative;
+  z-index: 1000;
   min-height: 50px;
   margin-bottom: 20px;
   border: 1px solid transparent;
@@ -3926,7 +3933,6 @@ input[type="button"].btn-block {
   position: fixed;
   right: 0;
   left: 0;
-  z-index: 1030;
   border-width: 0 0 1px;
 }
 @media (min-width: 768px) {
@@ -3937,6 +3943,7 @@ input[type="button"].btn-block {
 }
 
 .navbar-fixed-top {
+  z-index: 1030;
   top: 0;
 }
 
@@ -4036,10 +4043,6 @@ input[type="button"].btn-block {
 
   .navbar-right {
     float: right !important;
-  }
-  .navbar-right .dropdown-menu {
-    left: auto;
-    right: 0;
   }
 }
 .navbar-form {
@@ -4573,8 +4576,8 @@ a.list-group-item.active > .badge,
 }
 @media screen and (min-width: 768px) {
   .jumbotron {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 48px;
+    padding-bottom: 48px;
   }
   .container .jumbotron {
     padding-left: 60px;
@@ -4927,9 +4930,6 @@ a.list-group-item:hover, a.list-group-item:focus {
   clear: both;
 }
 
-.panel > .table {
-  margin-bottom: 0;
-}
 .panel > .list-group {
   margin-bottom: 0;
 }
@@ -5143,6 +5143,12 @@ button.close {
 
 .modal-open {
   overflow: hidden;
+}
+
+body.modal-open,
+.modal-open .navbar-fixed-top,
+.modal-open .navbar-fixed-bottom {
+  margin-right: 15px;
 }
 
 .modal {

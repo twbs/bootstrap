@@ -3,6 +3,9 @@
 // --------------------------------------------------
 
 
+// Global values
+// --------------------------------------------------
+
 // Grays
 // -------------------------
 
@@ -141,7 +144,7 @@ $input-border:                   #ccc !default;
 $input-border-radius:            $border-radius-base !default;
 $input-border-focus:             #66afe9 !default;
 
-$input-color-placeholder:        $gray-light !default;
+$input-color-placeholder:        $gray-light;
 
 $input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2) !default;
 $input-height-large:             (floor($font-size-large * $line-height-large) + ($padding-large-vertical * 2) + 2) !default;
@@ -185,6 +188,7 @@ $dropdown-caret-color:           #000 !default;
 // Used for a bird's eye view of components dependent on the z-axis
 // Try to avoid customizing these :)
 
+$zindex-navbar:            1000 !default;
 $zindex-dropdown:          1000 !default;
 $zindex-popover:           1010 !default;
 $zindex-tooltip:           1030 !default;
@@ -261,6 +265,7 @@ $navbar-default-toggle-icon-bar-bg:        #ccc !default;
 $navbar-default-toggle-border-color:       #ddd !default;
 
 
+// Inverted navbar
 //
 // Reset inverted navbar basics
 $navbar-inverse-color:                      $gray-light !default;
@@ -347,9 +352,11 @@ $pager-disabled-color:                 $gray-light !default;
 // Jumbotron
 // -------------------------
 
+$jumbotron-padding:              30px !default;
+$jumbotron-color:                inherit !default;
 $jumbotron-bg:                   $gray-lighter !default;
+
 $jumbotron-heading-color:        inherit !default;
-$jumbotron-lead-color:           inherit !default;
 
 
 // Form states and alerts
@@ -517,6 +524,7 @@ $thumbnail-padding:           4px !default;
 $thumbnail-bg:                $body-bg !default;
 $thumbnail-border:            #ddd !default;
 $thumbnail-border-radius:     $border-radius-base !default;
+
 $thumbnail-caption-color:     $text-color !default;
 $thumbnail-caption-padding:   9px !default;
 
@@ -549,6 +557,7 @@ $breadcrumb-active-color:     $gray-light !default;
 
 // Carousel
 // ------------------------
+
 $carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6) !default;
 
 $carousel-control-color:                      #fff !default;
