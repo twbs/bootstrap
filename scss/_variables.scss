@@ -144,7 +144,7 @@ $input-border:                   #ccc !default;
 $input-border-radius:            $border-radius-base !default;
 $input-border-focus:             #66afe9 !default;
 
-$input-color-placeholder:        $gray-light;
+$input-color-placeholder:        $gray-light !default;
 
 $input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2) !default;
 $input-height-large:             (floor($font-size-large * $line-height-large) + ($padding-large-vertical * 2) + 2) !default;
