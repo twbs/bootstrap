@@ -1,6 +1,8 @@
-# [Bootstrap v3.0.0](http://getbootstrap.com) [![Build Status](https://secure.travis-ci.org/twbs/bootstrap.png)](http://travis-ci.org/twbs/bootstrap)
+# [Sass Bootstrap v3.0.0](http://getbootstrap.com) [![Build Status](https://secure.travis-ci.org/twbs/bootstrap.png)](http://travis-ci.org/twbs/bootstrap)
 
 Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created and maintained by [Mark Otto](http://twitter.com/mdo) and [Jacob Thornton](http://twitter.com/fat).
+
+This is the Sass version of Bootstrap. A port of Bootsrap from Less to Sass. This project is focused on being a 1:1 port of the original. Please do not submit issues or pull requests for issues with Bootstrap itself. Those should be pushed upstream in the Less version.
 
 To get started, check out [http://getbootstrap.com](http://getbootstrap.com)!
 
@@ -10,27 +12,15 @@ To get started, check out [http://getbootstrap.com](http://getbootstrap.com)!
 
 Three quick start options are available:
 
-* [Download the latest release](https://github.com/twbs/bootstrap/zipball/3.0.0-wip).
-* Clone the repo: `git clone git://github.com/twbs/bootstrap.git`.
-* Install with [Bower](http://bower.io): `bower install bootstrap`.
-
-Read the [Getting Started page](http://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
-
-
-
-## SASS: Quick start
-
-Three quick start options are available:
-
 * [Download the latest release](https://github.com/jlong/sass-twitter-bootstrap/zipball/master).
 * Clone the repo: `git clone git://github.com/jlong/sass-twitter-bootstrap.git`.
 * Install with [Bower](http://bower.io): `bower install --save sass-bootstrap`.
 
 
 
-## SASS: Usage
+## Usage
 
-You can use the SASS Twitter Bootstrap by dropping the compiled CSS into any new project and start cranking.
+You can use the Sass Bootstrap by dropping the compiled CSS into any new project and start cranking.
 
 Because SASS always outputs standard css, just link to the final output like normal:
 
@@ -40,19 +30,19 @@ For more info, refer to the docs!
 
 
 
-## SASS: Basic modification
+## Basic modification
 
-You can learn more about SASS at:
+You can learn more about Sass at:
 
 [sass-lang.com](http://sass-lang.com)
 
-SASS runs as a local GEM on your system. You can run `sass --watch lib/bootstrap.scss:dist/css/bootstrap.css`
+Sass runs as a local GEM on your system. You can run `sass --watch lib/bootstrap.scss:dist/css/bootstrap.css`
 
 
 
 ## Bugs and feature requests
 
-Have a bug or a feature request? [Please open a new issue](https://github.com/twbs/bootstrap/issues). Before opening any issue, please search for existing issues and read the [Issue Guidelines](https://github.com/necolas/issue-guidelines), written by [Nicolas Gallagher](https://github.com/necolas/).
+Please do not submit issues or pull requests for issues with Bootstrap itself. Those should be pushed upstream in the Less version. [Please open a new issue](https://github.com/twbs/bootstrap/issues). Before opening any issue, please search for existing issues and read the [Issue Guidelines](https://github.com/necolas/issue-guidelines), written by [Nicolas Gallagher](https://github.com/necolas/).
 
 You may use [this JS Bin](http://jsbin.com/aKiCIDO/1/edit) as a template for your bug reports.
 
@@ -226,7 +216,7 @@ And [others](https://github.com/jlong/sass-twitter-bootstrap/contributors)
 
 
 
-## SASS: Installation via Composer
+## Sass: Installation via Composer
 
 If you already use Composer, the php dependency manager, installing
 sass-twitter-bootstrap is as simple as typing :
