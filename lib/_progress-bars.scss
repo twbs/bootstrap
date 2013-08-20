@@ -78,22 +78,18 @@
 // Variations
 // -------------------------
 
-// Danger (red)
-.progress-bar-danger {
-  @include progress-bar-variant($progress-bar-danger-bg);
-}
-
-// Success (green)
 .progress-bar-success {
   @include progress-bar-variant($progress-bar-success-bg);
 }
 
-// Warning (orange)
+.progress-bar-info {
+  @include progress-bar-variant($progress-bar-info-bg);
+}
+
 .progress-bar-warning {
   @include progress-bar-variant($progress-bar-warning-bg);
 }
 
-// Info (teal)
-.progress-bar-info {
-  @include progress-bar-variant($progress-bar-info-bg);
+.progress-bar-danger {
+  @include progress-bar-variant($progress-bar-danger-bg);
 }

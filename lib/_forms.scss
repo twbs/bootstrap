@@ -13,11 +13,6 @@ fieldset {
   border: 0;
 }
 
-// Reset height for `textarea`s
-textarea.form-control {
-  height: auto;
-}
-
 legend {
   display: block;
   width: 100%;
@@ -138,15 +133,22 @@ input[type="number"] {
   @include form-control-focus();
 
   // Disabled and read-only inputs
-  // Note: HTML5 says that inputs under a fieldset > legend:first-child won't be
-  //   disabled if the fieldset is disabled. Due to implementation difficulty,
-  //   we don't honor that edge case; we style them as disabled anyway.
+  // Note: HTML5 says that controls under a fieldset > legend:first-child won't
+  // be disabled if the fieldset is disabled. Due to implementation difficulty,
+  // we don't honor that edge case; we style them as disabled anyway.
   &[disabled],
   &[readonly],
   fieldset[disabled] & {
     cursor: not-allowed;
     background-color: $input-bg-disabled;
   }
+
+  // [converter] extracted textarea& to textarea.form-control
+}
+
+// Reset height for `textarea`s
+textarea.form-control {
+  height: auto;
 }
 
 
@@ -207,6 +209,20 @@ input[type="number"] {
   margin-left: 10px; // space out consecutive inline controls
 }
 
+// Apply same disabled cursor tweak as for inputs
+//
+// Note: Neither radios nor checkboxes can be readonly.
+input[type="radio"],
+input[type="checkbox"],
+.radio,
+.radio-inline,
+.checkbox,
+.checkbox-inline {
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+  }
+}
 
 // Form control sizing
 @include input-size('.input-sm', $input-height-small, $padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, $border-radius-small);
@@ -239,7 +255,7 @@ input[type="number"] {
 
 .form-control-static {
   margin-bottom: 0; // Remove default margin from `p`
-  padding-top: $padding-base-vertical;
+  padding-top: ($padding-base-vertical + 1);
 }
 
 
@@ -308,21 +324,28 @@ input[type="number"] {
 // Horizontal forms are built on grid classes and allow you to create forms with
 // labels on the left and inputs on the right.
 
-.form-horizontal .control-label,
-.form-horizontal .radio-inline,
-.form-horizontal .checkbox-inline {
-  padding-top: $padding-base-vertical;
-}
-
 .form-horizontal {
+
+  // Consistent vertical alignment of labels, radios, and checkboxes
+  .control-label,
+  .radio,
+  .checkbox,
+  .radio-inline,
+  .checkbox-inline {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: ($padding-base-vertical + 1); // Default padding plus a border
+  }
+
+  // Make form groups behave like rows
   .form-group {
     @include make-row();
   }
-}
 
-// Only right align form labels here when the columns stop stacking
-@media (min-width: $screen-tablet) {
-  .form-horizontal .control-label {
-    text-align: right;
+  // Only right align form labels here when the columns stop stacking
+  @media (min-width: $screen-tablet) {
+    .control-label {
+      text-align: right;
+    }
   }
 }
