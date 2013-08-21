@@ -137,19 +137,19 @@ module.exports = function(grunt) {
     watch: {
       src: {
         files: '<%= jshint.src.src %>',
-        tasks: ['jshint:src', 'qunit']
+        tasks: ['jshint:src', 'qunit', 'jekyll']
       },
       test: {
         files: '<%= jshint.test.src %>',
-        tasks: ['jshint:test', 'qunit']
+        tasks: ['jshint:test', 'qunit', 'jekyll']
       },
       recess: {
         files: 'less/*.less',
-        tasks: ['recess']
+        tasks: ['recess', 'jekyll']
       },
       includes: {
         files: '_includes/*.html',
-        tasks: []
+        tasks: ['jekyll']
       }
     }
   });
