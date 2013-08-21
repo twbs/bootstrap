@@ -2307,8 +2307,8 @@ input[type="button"].btn-block {
 
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url("${icon-font-path}${icon-font-name}.eot");
-  src: url("${icon-font-path}${icon-font-name}.eot?#iefix") format("embedded-opentype"), url("${icon-font-path}${icon-font-name}.woff") format("woff"), url("${icon-font-path}${icon-font-name}.ttf") format("truetype"), url("${icon-font-path}${icon-font-name}.svg#glyphicons-halflingsregular") format("svg");
+  src: url("../fonts/glyphicons-halflings-regular.eot");
+  src: url("../fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular") format("svg");
 }
 
 .glyphicon {
@@ -3900,7 +3900,7 @@ input[type="button"].btn-block {
 }
 
 .navbar-nav {
-  margin: -7.5px;
+  margin: 7.5px -15px;
 }
 .navbar-nav > li > a {
   padding-top: 10px;
