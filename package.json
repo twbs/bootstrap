@@ -20,7 +20,8 @@
     }
   ]
   , "devDependencies": {
-      "grunt": "~0.4.1"
+      "btoa": "~1.1.1"
+    , "grunt": "~0.4.1"
     , "grunt-contrib-clean": "~0.5.0"
     , "grunt-contrib-concat": "~0.3.0"
     , "grunt-contrib-connect": "~0.5.0"

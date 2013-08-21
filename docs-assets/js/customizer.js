@@ -129,7 +129,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     if (fonts) {
       var fontsFolder = zip.folder('fonts')
       for (var fileName in fonts) {
-        fontsFolder.file(fileName, fonts[fileName])
+        fontsFolder.file(fileName, fonts[fileName], {base64: true})
       }
     }
 
