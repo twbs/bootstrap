@@ -207,7 +207,7 @@ module.exports = function(grunt) {
         })
         .forEach(function (path) {
           return type == 'fonts' ? files[path] = btoa(fs.readFileSync(type + '/' + path)) :
-        	  files[path] = fs.readFileSync(type + '/' + path, 'utf8')
+              files[path] = fs.readFileSync(type + '/' + path, 'utf8')
         })
       return 'var __' + type + ' = ' + JSON.stringify(files) + '\n'
     }
