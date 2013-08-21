@@ -200,25 +200,29 @@
 // --------------------------------------------------
 
 // Extra small screen / phone
-@screen-xs:                  480px;
-@screen-phone:               @screen-xs;
+@screen-xs:                  480px;// NOTE: Deprecated in favor of @screen-xs-min
+@screen-xs-min:              @screen-xs;
+@screen-phone:               @screen-xs-min;
 
 // Small screen / tablet
-@screen-sm:                  768px;
-@screen-tablet:              @screen-sm;
+@screen-sm:                  768px;// NOTE: Deprecated in favor of @screen-sm-min
+@screen-sm-min:              @screen-sm;
+@screen-tablet:              @screen-sm-min;
 
 // Medium screen / desktop
-@screen-md:                  992px;
-@screen-desktop:             @screen-md;
+@screen-md:                  992px;// NOTE: Deprecated in favor of @screen-md-min
+@screen-md-min:              @screen-md;
+@screen-desktop:             @screen-md-min;
 
 // Large screen / wide desktop
-@screen-lg:                  1200px;
-@screen-lg-desktop:          @screen-lg;
+@screen-lg:                  1200px;// NOTE: Deprecated in favor of @screen-lg-min
+@screen-lg-min:              @screen-lg;
+@screen-lg-desktop:          @screen-lg-min;
 
 // So media queries don't overlap when required, provide a maximum
-@screen-xs-max:              (@screen-sm - 1);
-@screen-sm-max:              (@screen-md - 1);
-@screen-md-max:              (@screen-lg - 1);
+@screen-xs-max:              (@screen-sm-min - 1);
+@screen-sm-max:              (@screen-md-min - 1);
+@screen-md-max:              (@screen-lg-min - 1);
 
 
 // Grid system
