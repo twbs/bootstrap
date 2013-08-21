@@ -65,13 +65,13 @@ When completed, you'll be able to run the various Grunt commands provided from t
 ### Available Grunt commands
 
 #### Build - `grunt`
-Run `grunt` to run tests locally and compile the CSS and JavaScript into `/dist`. **Requires [recess](https://github.com/twitter/recess) and [uglify-js](https://github.com/mishoo/UglifyJS).**
+Run `grunt` to run tests locally and compile the CSS and JavaScript into `/dist`. **Uses [recess] and [UglifyJS].**
 
 #### Only compile CSS and JavaScript - `grunt dist`
-`grunt dist` creates the `/dist` directory with compiled files. **Requires [recess](https://github.com/twitter/recess) and [uglify-js](https://github.com/mishoo/UglifyJS).**
+`grunt dist` creates the `/dist` directory with compiled files. **Uses [recess] and [UglifyJS].**
 
 #### Tests - `grunt test`
-Runs jshint and qunit tests headlessly in [phantomjs](https://github.com/ariya/phantomjs/) (used for CI). **Requires [phantomjs](https://github.com/ariya/phantomjs/).**
+Runs [JSHint](http://jshint.com) and [QUnit](http://qunitjs.com/) tests headlessly in [PhantomJS](http://phantomjs.org/) (used for CI).
 
 #### Watch - `grunt watch`
 This is a convenience method for watching just Less files and automatically building them whenever you save.
@@ -139,3 +139,7 @@ For more information on SemVer, please visit [http://semver.org/](http://semver.
 ## Copyright and license
 
 Copyright 2013 Twitter, Inc under [the Apache 2.0 license](LICENSE).
+
+  [recess]:     http://twitter.github.io/recess/  "recess"
+  [uglifyjs]:   http://lisperator.net/uglifyjs/   "UglifyJS"
+  
