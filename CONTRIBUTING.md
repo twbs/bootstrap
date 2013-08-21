@@ -56,3 +56,7 @@ We only accept issues that are bug reports or feature requests. Bugs must be iso
 ## License
 
 By contributing your code, you agree to license your contribution under the terms of the APLv2: https://github.com/twbs/bootstrap/blob/master/LICENSE
+
+NOTE FOR VERSION 3.0.1: For v3.1 we will be changing the license from Apache to MIT and are in the process of getting approval of all commiteers of coder in the version 3.x code base.
+By contributing your code, you agree to license your contirbution under the terms of the MIT License: https://github.com/twbs/bootstrap/blob/master/LICENSE
+For details please see issue #2054 at https://github.com/twbs/bootstrap/issues/2054
