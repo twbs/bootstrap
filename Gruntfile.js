@@ -150,6 +150,10 @@ module.exports = function(grunt) {
       includes: {
         files: '_includes/*.html',
         tasks: ['jekyll']
+      },
+      pages: {
+        files: '*html',
+	tasks: ['jekyll']
       }
     }
   });
