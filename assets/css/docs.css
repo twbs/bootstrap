@@ -477,7 +477,7 @@ body {
   /* Widen the fixed sidebar again */
   .bs-sidebar.affix-bottom,
   .bs-sidebar.affix {
-    width: 263px;
+    /*width: 263px;*/
   }
 }
 
