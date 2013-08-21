@@ -201,19 +201,19 @@
 
 // Extra small screen / phone
 @screen-xs:                  480px;
-@screen-phone:               @screen-xs;
+@screen-phone:               @screen-xs;// NOTE: Deprecated in favor of @screen-xs
 
 // Small screen / tablet
 @screen-sm:                  768px;
-@screen-tablet:              @screen-sm;
+@screen-tablet:              @screen-sm;// NOTE: Deprecated in favor of @screen-sm
 
 // Medium screen / desktop
 @screen-md:                  992px;
-@screen-desktop:             @screen-md;
+@screen-desktop:             @screen-md;// NOTE: Deprecated in favor of @screen-md
 
 // Large screen / wide desktop
 @screen-lg:                  1200px;
-@screen-lg-desktop:          @screen-lg;
+@screen-lg-desktop:          @screen-lg;// NOTE: Deprecated in favor of @screen-lg
 
 // So media queries don't overlap when required, provide a maximum
 @screen-xs-max:              (@screen-sm - 1);
@@ -229,7 +229,7 @@
 // Padding, to be divided by two and applied to the left and right of all columns
 @grid-gutter-width:         30px;
 // Point at which the navbar stops collapsing
-@grid-float-breakpoint:     @screen-tablet;
+@grid-float-breakpoint:     @screen-sm;
 
 
 // Navbar
