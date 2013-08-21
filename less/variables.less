@@ -80,7 +80,7 @@
 @font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 
-@font-size-base:          12px; //14px;
+@font-size-base:          14px;
 @font-size-large:         ceil(@font-size-base * 1.25); // ~18px
 @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 
@@ -244,11 +244,11 @@
 @screen-tablet:              @screen-sm;
 
 // Medium screen / desktop
-@screen-md:                  996px; //992px;
+@screen-md:                  992px;
 @screen-desktop:             @screen-md;
 
 // Large screen / wide desktop
-@screen-lg:                  996px; //1200px;
+@screen-lg:                  1200px;
 @screen-lg-desktop:          @screen-lg;
 
 // So media queries don't overlap when required, provide a maximum
@@ -410,7 +410,7 @@
 @state-success-bg:               lighten(@state-success-text, 50%); //#dff0d8;
 @state-success-border:           darken(spin(@state-success-bg, -10), 5%);
 
-@state-info-text:                @coolDark; //#3a87ad;
+@state-info-text:                @coolMiddark; //#3a87ad;
 @state-info-bg:                  @coolLightest;
 @state-info-border:              darken(spin(@state-info-bg, -10), 7%);
 
@@ -650,7 +650,8 @@
 @container-tablet:            ((720px + @grid-gutter-width));
 
 // Medium screen / desktop
-@container-desktop:           ((940px + @grid-gutter-width));
+@container-desktop:           ((966px + @grid-gutter-width));
 
 // Large screen / wide desktop
-@container-lg-desktop:        ((1140px + @grid-gutter-width));
+//@container-lg-desktop:        ((1140px + @grid-gutter-width));
+@container-lg-desktop:        ((966px + @grid-gutter-width));
