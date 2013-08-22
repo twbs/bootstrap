@@ -462,7 +462,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: 'vegurlight', arial, helvetica, clean, sans-serif;
+  font-family: arial, helvetica, clean, sans-serif;
   font-weight: 500;
   line-height: 1.1;
 }
@@ -6846,6 +6846,11 @@ td.visible-print {
     width: 326px;
     margin-left: -100px;
   }
+}
+
+h1,
+.h1 {
+  font-family: 'vegurlight', arial, helvetica, clean, sans-serif;
 }
 
 @font-face {
