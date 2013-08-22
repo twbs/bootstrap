@@ -318,12 +318,12 @@
 }
 
 .panel-default > .panel-heading {
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#1b7fb7), to(#1870a1));
-  background-image: -webkit-linear-gradient(top, #1b7fb7, 0%, #1870a1, 100%);
-  background-image: -moz-linear-gradient(top, #1b7fb7 0%, #1870a1 100%);
-  background-image: linear-gradient(to bottom, #1b7fb7 0%, #1870a1 100%);
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#006ba5), to(#005a8c));
+  background-image: -webkit-linear-gradient(top, #006ba5, 0%, #005a8c, 100%);
+  background-image: -moz-linear-gradient(top, #006ba5 0%, #005a8c 100%);
+  background-image: linear-gradient(to bottom, #006ba5 0%, #005a8c 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff1b7fb7', endColorstr='#ff1870a1', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff006ba5', endColorstr='#ff005a8c', GradientType=0);
 }
 
 .panel-primary > .panel-heading {
