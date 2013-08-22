@@ -5245,22 +5245,20 @@ a.thumbnail:focus {
   position: relative;
   display: block;
   padding: 10px 15px;
+  margin-bottom: -1px;
   background-color: #ffffff;
-  border-bottom: 1px solid #dddddd;
-  /*  &:first-child {
-    .border-top-radius(@list-group-border-radius);
-  }
-  &:last-child {
-    margin-bottom: 0;
-    .border-bottom-radius(@list-group-border-radius);
-  }
-*/
+  border: 1px solid #dddddd;
+}
 
+.list-group-item:first-child {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 }
 
 .list-group-item:last-child {
   margin-bottom: 0;
-  border-bottom: 0;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .list-group-item > .badge {
@@ -6860,6 +6858,24 @@ td.visible-print {
 h1,
 .h1 {
   font-family: 'vegurlight', arial, helvetica, clean, sans-serif;
+}
+
+.list-group-item {
+  margin-bottom: 0;
+  border: 0;
+  border-bottom: 1px solid #dddddd;
+}
+
+.list-group-item:first-child {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.list-group-item:last-child {
+  margin-bottom: 0;
+  border-bottom: 0;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
 }
 
 .navbar-default.navbar {

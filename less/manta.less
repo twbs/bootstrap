@@ -57,6 +57,20 @@ h1, .h1 {
   font-family: @font-family-serif;
 }
 
+.list-group-item {
+  margin-bottom: 0;
+  border: 0;
+  border-bottom: 1px solid @list-group-border;
+  &:first-child {
+    .border-top-radius(0);
+  }
+  &:last-child {
+    .border-top-radius(0);
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+}
+
 
 //------------------ sub navbar overrides ------------
 
