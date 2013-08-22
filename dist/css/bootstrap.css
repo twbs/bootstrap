@@ -6803,3 +6803,58 @@ td.visible-print {
     display: none !important;
   }
 }
+
+.content {
+  background-color: #ffffff;
+}
+
+.bar {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top: 30px;
+  color: #f1f1f1;
+  background-color: #006ba5;
+}
+
+.hidden-info-box {
+  background-color: #f1f1f1;
+}
+
+.add-info-bar {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #cfe4ee;
+}
+
+@media (min-width: 768px) {
+  .navbar-search {
+    -webkit-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+  }
+  .navbar-search:focus {
+    width: 244px;
+    margin-left: -100px;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-search {
+    -webkit-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+  }
+  .navbar-search:focus {
+    width: 326px;
+    margin-left: -100px;
+  }
+}
+
+h1,
+.h1 {
+  font-family: 'vegurlight', arial, helvetica, clean, sans-serif;
+}
+
+@font-face {
+  font-family: 'vegurlight';
+  src: url('../fonts/Vegur-Light.eot');
+  src: url('../fonts/Vegur-Light.eot?#iefix') format('embedded-opentype'), url('../fonts/Vegur-Light.woff') format('woff'), url('../fonts/Vegur-Light.ttf') format('truetype'), url('../fonts/Vegur-Light.svg#Vegur-Light') format('svg');
+}

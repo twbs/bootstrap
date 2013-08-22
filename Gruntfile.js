@@ -1,5 +1,5 @@
 /* jshint node: true */
-
+// This is a test.
 module.exports = function(grunt) {
   "use strict";
 
@@ -150,6 +150,10 @@ module.exports = function(grunt) {
       includes: {
         files: '_includes/*.html',
         tasks: ['jekyll']
+      },
+      pages: {
+        files: '*html',
+	tasks: ['jekyll']
       }
     }
   });

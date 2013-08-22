@@ -1,0 +1,62 @@
+// Manta customized LESS file, using the Bootstrap lib.
+
+
+
+//------------------ mixins --------------------------
+
+.navbar-search-expander(@screen, @width) {
+  @media (min-width: @screen) {
+    .transition(all 100ms ease-in);
+    &:focus {
+      width: @width;
+      margin-left: -100px;
+    }
+  }
+}
+
+
+
+//------------------  generic  -----------------------
+
+.content {
+  background-color: @neutralWhite;
+}
+
+.bar {
+  background-color: @coolDarker;
+  color: @neutralLightest;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top: 30px;
+}
+//------------------ END of generic ------------------
+
+
+.hidden-info-box {
+  background-color: @neutralLightest;
+}
+.add-info-bar {
+  background-color: @coolLightest;
+  padding-top: @padding-base-vertical;
+  padding-bottom: @padding-base-vertical;
+}
+.navbar-search {
+  .navbar-search-expander(@screen-sm, 244px);
+  .navbar-search-expander(@screen-md, 326px);
+}
+
+h1, .h1 {
+  font-family: @font-family-serif;
+}
+
+//------------------ fonts ---------------------------
+
+@font-face {
+  font-family: 'vegurlight';
+  src: url('@{display-font-path}@{display-font-name}.eot');
+  src: url('@{display-font-path}@{display-font-name}.eot?#iefix') format('embedded-opentype'),
+       url('@{display-font-path}@{display-font-name}.woff') format('woff'),
+       url('@{display-font-path}@{display-font-name}.ttf') format('truetype'),
+       url('@{display-font-path}@{display-font-name}.svg#Vegur-Light') format('svg');
+}
+
