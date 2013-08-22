@@ -6808,6 +6808,11 @@ td.visible-print {
   background-color: #ffffff;
 }
 
+.footer {
+  margin-top: 20px;
+  background-color: #ffffff;
+}
+
 /*
 .add-info-bar {
   background-color: @coolLightest;
@@ -6815,6 +6820,13 @@ td.visible-print {
   padding-bottom: @padding-base-vertical;
 }
 */
+
+/*  Shan He's ad-hoc
+*/
+
+.panel-map {
+  margin-bottom: 20px;
+}
 
 @media (min-width: 768px) {
   .navbar-search {
