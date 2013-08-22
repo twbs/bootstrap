@@ -6808,6 +6808,24 @@ td.visible-print {
   background-color: #ffffff;
 }
 
+.bar {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top: 30px;
+  color: #f1f1f1;
+  background-color: #006ba5;
+}
+
+.hidden-info-box {
+  background-color: #f1f1f1;
+}
+
+.add-info-bar {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #cfe4ee;
+}
+
 @media (min-width: 768px) {
   .navbar-search {
     -webkit-transition: all 100ms ease-in;
