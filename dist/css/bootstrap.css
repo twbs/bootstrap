@@ -4041,7 +4041,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 @media (min-width: 768px) {
   .navbar {
-    border-radius: 5px;
+    border-radius: 0;
   }
 }
 

@@ -154,7 +154,7 @@
   background-image: -moz-linear-gradient(top, #0068a0 0%, #00476d 100%);
   background-image: linear-gradient(to bottom, #0068a0 0%, #00476d 100%);
   background-repeat: repeat-x;
-  border-radius: 5px;
+  border-radius: 0;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0068a0', endColorstr='#ff00476d', GradientType=0);
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
