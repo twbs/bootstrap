@@ -6803,3 +6803,7 @@ td.visible-print {
     display: none !important;
   }
 }
+
+.content {
+  background-color: #ffffff;
+}
