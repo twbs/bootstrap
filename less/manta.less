@@ -1,7 +1,28 @@
 // Manta customized LESS file, using the Bootstrap lib.
 
+
+
+//------------------ mixins --------------------------
+
+.navbar-search-expander(@screen, @width) {
+  @media (min-width: @screen) {
+    .transition(all 100ms ease-in);
+    &:focus {
+      width: @width;
+      margin-left: -100px;
+    }
+  }
+}
+
+
+
 //------------------  generic  -----------------------
 
 .content {
   background-color: @neutralWhite;
+}
+
+.navbar-search {
+  .navbar-search-expander(@screen-sm, 244px);
+  .navbar-search-expander(@screen-md, 326px);
 }

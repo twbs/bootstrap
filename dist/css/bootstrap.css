@@ -6807,3 +6807,25 @@ td.visible-print {
 .content {
   background-color: #ffffff;
 }
+
+@media (min-width: 768px) {
+  .navbar-search {
+    -webkit-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+  }
+  .navbar-search:focus {
+    width: 244px;
+    margin-left: -100px;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-search {
+    -webkit-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+  }
+  .navbar-search:focus {
+    width: 326px;
+    margin-left: -100px;
+  }
+}
