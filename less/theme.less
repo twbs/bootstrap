@@ -35,9 +35,14 @@
   #gradient > .vertical(@start-color: @btn-color; @end-color: darken(@btn-color, 10%));
   border-color: darken(@btn-color, 12%);
 
+  &:hover,
+  &:active,
+  &.active { 
+    #gradient > .vertical(@start-color: darken(@btn-color, 7%); @end-color: darken(@btn-color, 17%));
+  }
+  
   &:active,
   &.active {
-    background-color: darken(@btn-color, 10%);
     border-color: darken(@btn-color, 12%);
   }
 }
@@ -58,8 +63,6 @@
 .btn-warning { .btn-styles(@btn-warning-bg); }
 .btn-danger  { .btn-styles(@btn-danger-bg); }
 .btn-info    { .btn-styles(@btn-info-bg); }
-
-
 
 //
 // Images
