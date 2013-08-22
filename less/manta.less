@@ -52,6 +52,40 @@ h1, .h1 {
   font-family: @font-family-serif;
 }
 
+
+//------------------ sub navbar overrides ------------
+
+@subnavbar-height:                    30px;
+@subnavbar-padding-horizontal:        @navbar-padding-horizontal;
+@subnavbar-padding-vertical:          ((@subnavbar-height - @line-height-computed) / 2);
+
+.navbar-default.navbar {
+  min-height: @subnavbar-height;
+  font-size: @font-size-small;
+}
+
+.navbar-default {
+ .navbar-nav {
+  margin: (@subnavbar-padding-vertical / 2) -@subnavbar-padding-horizontal;
+
+  > li > a {
+    padding-top:    5px;
+    padding-bottom: 5px;
+  }
+
+  // Uncollapse the nav
+  @media (min-width: @grid-float-breakpoint) {
+
+    > li > a {
+      padding-top: ((@subnavbar-height - @line-height-computed) / 2);
+      padding-bottom: ((@subnavbar-height - @line-height-computed) / 2);
+    }
+  }
+
+ }
+}
+
+
 //------------------ fonts ---------------------------
 
 @font-face {
