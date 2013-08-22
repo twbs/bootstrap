@@ -1,6 +1,6 @@
-<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+<header class="navbar navbar-inverse navbar-fixed-top" role="banner">
   <div class="container">
-	<nav class="collapse navbar-collapse" role="navigation">
+	<nav role="navigation">
 	  <!-- Brand and toggle get grouped for better mobile display -->
 	  <div class="navbar-header">
 	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -9,23 +9,22 @@
 	      <span class="icon-bar"></span>
 	      <span class="icon-bar"></span>
 	    </button>
-	    <a href="{{ page.base_url }}" class="navbar-brand" style="background: url(http://m4.manta-r1.com/manta/images/manta-logo-sp.png) -50px 0px;height: 25px;width: 100px;background-size: 150px 25px;margin-right: 5px;margin-top: 15px;overflow:hidden; padding:0;"></a>
+	    <a href="{{ page.base_url }}" class="navbar-brand" style="background: url(http://m4.manta-r1.com/manta/images/manta-logo-sp.png) -50px 0px;height: 25px;width: 100px;background-size: 150px 25px;margin-right: 5px;margin-top: 14px;overflow:hidden; padding:0;"></a>
 	  </div>
 
-	  <!-- Collect the nav links, forms, and other content for toggling -->
-	  <div>
-	<div class="col-md-4">
-	    <form class="navbar-form navbar-left form-inline" role="search">
-	     <div class="form-group">
-	      <div class="input-group">
-		<input type="search" class="form-control" placeholder="Find products, services, businesses">
-		<span class="input-group-btn">
-		  <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span></button>
-		</span>
-	      </div>
-	     </div>
-	    </form>
-        </div>
+		<div class="col-lg-4 col-md-4 col-sm-4">
+		    <form class="navbar-form navbar-left form-inline" role="search">
+		     <div class="form-group">
+		      <div class="input-group">
+			<input type="search" class="form-control navbar-search" placeholder="Find products, services, businesses">
+			<span class="input-group-btn">
+			  <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span></button>
+			</span>
+		      </div>
+		     </div>
+		    </form>
+		</div>
+	  <div class="collapse navbar-collapse navbar-ex1-collapse">
             <div class="nav navbar-nav navbar-btn">
 		<div class="dropdown">
 		      <button type="button" class="dropdown-toggle btn btn-default" data-toggle="dropdown"><span class="glyphicon glyphicon-list text-info"></span> Browse</button>
@@ -58,7 +57,7 @@
 	        <button type="button" class="btn btn-default navbar-btn">Sign In</button>
 	      </div>
 	    </div>
-	  </div><!-- /.navbar-collapse -->
+          </div>
 	</nav>
   </div>
 </header>
