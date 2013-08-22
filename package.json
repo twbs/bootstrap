@@ -30,5 +30,6 @@
     , "grunt-jekyll": "~0.3.8"
     , "grunt-recess": "~0.3.3"
     , "browserstack-runner": "~0.0.11"
+    , "btoa": "~1.1.1"
   }
 }
