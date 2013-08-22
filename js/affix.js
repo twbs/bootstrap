@@ -123,4 +123,4 @@
     })
   })
 
-}(window.jQuery);
+}(jQuery);

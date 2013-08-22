@@ -155,4 +155,4 @@
     })
   })
 
-}(window.jQuery);
+}(jQuery);

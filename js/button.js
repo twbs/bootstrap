@@ -106,4 +106,4 @@
     e.preventDefault()
   })
 
-}(window.jQuery);
+}(jQuery);
