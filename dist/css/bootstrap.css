@@ -6805,6 +6805,7 @@ td.visible-print {
 }
 
 .content {
+  margin-top: 79px;
   background-color: #ffffff;
 }
 
@@ -6879,12 +6880,16 @@ h1,
 }
 
 .navbar-default.navbar {
-  min-height: 30px;
+  min-height: 25px;
   font-size: 12px;
 }
 
+.navbar-default.navbar.navbar-fixed-top {
+  margin-top: 54px;
+}
+
 .navbar-default .navbar-nav {
-  margin: 2.5px -15px;
+  margin: 0;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -6894,8 +6899,8 @@ h1,
 
 @media (min-width: 768px) {
   .navbar-default .navbar-nav > li > a {
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
   }
 }
 
