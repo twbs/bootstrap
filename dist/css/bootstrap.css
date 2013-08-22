@@ -6831,6 +6831,10 @@ td.visible-print {
   margin-bottom: 20px;
 }
 
+.fs-small {
+  font-size: 12px;
+}
+
 @media (min-width: 768px) {
   .navbar-search {
     -webkit-transition: all 100ms ease-in;
