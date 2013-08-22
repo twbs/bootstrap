@@ -6880,6 +6880,7 @@ h1,
 }
 
 .navbar-default.navbar {
+  z-index: 990;
   min-height: 25px;
   font-size: 12px;
 }

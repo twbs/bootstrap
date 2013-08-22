@@ -79,6 +79,7 @@ h1, .h1 {
 @subnavbar-padding-vertical:          ((@subnavbar-height - @line-height-computed) / 2);
 
 .navbar-default.navbar {
+  z-index: @zindex-navbar - 10;
   min-height: @subnavbar-height;
   font-size: @font-size-small;
   &.navbar-fixed-top {
