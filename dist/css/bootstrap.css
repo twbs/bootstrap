@@ -3807,7 +3807,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav > li > a {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: 10px 10px;
 }
 
 .nav > li > a:hover,
@@ -5433,7 +5433,7 @@ a.list-group-item:focus {
 
 .panel-default > .panel-heading {
   color: #ffffff;
-  background-color: #1b7fb7;
+  background-color: #006ba5;
   border-color: none;
 }
 
@@ -6808,6 +6808,12 @@ td.visible-print {
   background-color: #ffffff;
 }
 
+.footer {
+  margin-top: 20px;
+  font-size: 12px;
+  background-color: #ffffff;
+}
+
 /*
 .add-info-bar {
   background-color: @coolLightest;
@@ -6815,6 +6821,13 @@ td.visible-print {
   padding-bottom: @padding-base-vertical;
 }
 */
+
+/*  Shan He's ad-hoc
+*/
+
+.panel-map {
+  margin-bottom: 20px;
+}
 
 @media (min-width: 768px) {
   .navbar-search {
