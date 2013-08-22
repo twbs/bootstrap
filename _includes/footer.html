@@ -1,13 +1,13 @@
 
-<div class="row navbar-inverse">
-    <div class="col-md-7">
-        <ul class="list-inline">
-            <li class=""><a href="http://www.manta.com/coms2/page_about_manta">About Manta</a></li>
-            <li class=""><a href="http://www.manta.com/coms2/page_about_manta_contact">Contact Manta</a></li>
-            <li class=""><a href="http://www.manta.com/manta-careers" target="_top">Manta Careers </a></li>
-            <li class=""><a href="http://www.manta.com/media/">Media Resources</a></li>
-            <li class=""><a href="http://www.manta.com/coms2/page_faq">FAQ</a></li>
-            <li class=""><a href="http://www.manta.com/coms2/page_advertise" target="_top">Advertise With Us</a></li>
+<div class="row navbar navbar-inverse">
+    <div class="col-md-7 ">
+        <ul class="nav navbar-nav">
+            <li class=""><a href="http://www.manta.com/coms2/page_about_manta" class="navbar-link">About Manta</a></li>
+            <li class=""><a href="http://www.manta.com/coms2/page_about_manta_contact" class="navbar-link">Contact Manta</a></li>
+            <li class=""><a href="http://www.manta.com/manta-careers" target="_top" class="navbar-link">Manta Careers </a></li>
+            <li class=""><a href="http://www.manta.com/media/" class="navbar-link">Media Resources</a></li>
+            <li class=""><a href="http://www.manta.com/coms2/page_faq" class="navbar-link">FAQ</a></li>
+            <li class=""><a href="http://www.manta.com/coms2/page_advertise" target="_top" class="navbar-link">Advertise With Us</a></li>
         </ul>
     </div>
     <div class="col-md-5">
@@ -36,3 +36,32 @@
 <!-- Manta JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ page.base_url }}assets/js/jquery.js"></script>
+<script src="{{ page.base_url }}dist/js/bootstrap.js"></script>
+
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="{{ page.base_url }}assets/js/holder.js"></script>
+<script src="{{ page.base_url }}assets/js/application.js"></script>
+<!-- Placed at the end of the document so the pages load faster -->
+
+{% if page.slug == "customize" %}
+    <script src="{{ page.base_url }}assets/js/less.js"></script>
+    <script src="{{ page.base_url }}assets/js/jszip.js"></script>
+    <script src="{{ page.base_url }}assets/js/uglify.js"></script>
+    <script src="{{ page.base_url }}assets/js/filesaver.js"></script>
+    <script src="{{ page.base_url }}assets/js/raw-files.js"></script>
+    <script src="{{ page.base_url }}assets/js/customizer.js"></script>
+{% endif %}
+
+<script>
+      var _gauges = _gauges || [];
+      (function() {
+            var t   = document.createElement('script');
+            t.async = true;
+            t.id    = 'gauges-tracker';
+            t.setAttribute('data-site-id', '4f0dc9fef5a1f55508000013');
+            t.src = '//secure.gaug.es/track.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(t, s);
+          })();
+</script>
