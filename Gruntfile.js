@@ -152,7 +152,7 @@ module.exports = function(grunt) {
         tasks: ['jekyll']
       },
       pages: {
-        files: '*html',
+        files: './*.html',
 	tasks: ['jekyll']
       }
     }

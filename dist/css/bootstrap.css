@@ -5428,21 +5428,21 @@ a.list-group-item:focus {
 }
 
 .panel-default {
-  border-color: #dddddd;
+  border-color: none;
 }
 
 .panel-default > .panel-heading {
-  color: #898989;
-  background-color: #f1f1f1;
-  border-color: #dddddd;
+  color: #ffffff;
+  background-color: #1b7fb7;
+  border-color: none;
 }
 
 .panel-default > .panel-heading + .panel-collapse .panel-body {
-  border-top-color: #dddddd;
+  border-top-color: none;
 }
 
 .panel-default > .panel-footer + .panel-collapse .panel-body {
-  border-bottom-color: #dddddd;
+  border-bottom-color: none;
 }
 
 .panel-primary {
