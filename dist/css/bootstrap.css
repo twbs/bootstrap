@@ -6858,6 +6858,27 @@ h1,
   font-family: 'vegurlight', arial, helvetica, clean, sans-serif;
 }
 
+.navbar-default.navbar {
+  min-height: 30px;
+  font-size: 12px;
+}
+
+.navbar-default .navbar-nav {
+  margin: 2.5px -15px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+@media (min-width: 768px) {
+  .navbar-default .navbar-nav > li > a {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
 @font-face {
   font-family: 'vegurlight';
   src: url('../fonts/Vegur-Light.eot');
