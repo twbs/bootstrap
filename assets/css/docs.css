@@ -31,11 +31,6 @@
  * Update the basics of our documents to prep for docs content.
  */
 
-body {
-  position: relative; /* For scrollyspy */
-  padding-top: 50px; /* Account for fixed navbar */
-}
-
 /* Keep code small in tables on account of limited space */
 .table code {
   font-size: 13px;
