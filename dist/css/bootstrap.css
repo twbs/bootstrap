@@ -462,7 +462,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: arial, helvetica, clean, sans-serif;
+  font-family: 'vegurlight', arial, helvetica, clean, sans-serif;
   font-weight: 500;
   line-height: 1.1;
 }
@@ -6828,4 +6828,10 @@ td.visible-print {
     width: 326px;
     margin-left: -100px;
   }
+}
+
+@font-face {
+  font-family: 'vegurlight';
+  src: url('../fonts/Vegur-Light.eot');
+  src: url('../fonts/Vegur-Light.eot?#iefix') format('embedded-opentype'), url('../fonts/Vegur-Light.woff') format('woff'), url('../fonts/Vegur-Light.ttf') format('truetype'), url('../fonts/Vegur-Light.svg#Vegur-Light') format('svg');
 }
