@@ -149,19 +149,19 @@
 }
 
 .navbar {
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ffffff), to(#f1f1f1));
-  background-image: -webkit-linear-gradient(top, #ffffff, 0%, #f1f1f1, 100%);
-  background-image: -moz-linear-gradient(top, #ffffff 0%, #f1f1f1 100%);
-  background-image: linear-gradient(to bottom, #ffffff 0%, #f1f1f1 100%);
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#0068a0), to(#00476d));
+  background-image: -webkit-linear-gradient(top, #0068a0, 0%, #00476d, 100%);
+  background-image: -moz-linear-gradient(top, #0068a0 0%, #00476d 100%);
+  background-image: linear-gradient(to bottom, #0068a0 0%, #00476d 100%);
   background-repeat: repeat-x;
   border-radius: 5px;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff1f1f1', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0068a0', endColorstr='#ff00476d', GradientType=0);
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
 }
 
 .navbar .navbar-nav > .active > a {
-  background-color: #f1f1f1;
+  background-color: #00476d;
 }
 
 .navbar-brand,

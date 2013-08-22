@@ -275,19 +275,19 @@
 
 // Basics of a navbar
 @navbar-height:                    54px; //50px;
-@navbar-margin-bottom:             @line-height-computed;
+@navbar-margin-bottom:             0; //@line-height-computed;
 @navbar-default-color:             @coolDark; //#777;
-@navbar-default-bg:                @neutralLightest; //#f8f8f8;
+@navbar-default-bg:                @coolDarkest; //#f8f8f8;
 @navbar-default-border:            darken(@navbar-default-bg, 6.5%);
 @navbar-border-radius:             @border-radius-base;
 @navbar-padding-horizontal:        floor(@grid-gutter-width / 2);
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 
 // Navbar links
-@navbar-default-link-color:                @neutralMiddark; //#777;
-@navbar-default-link-hover-color:          @neutralDarkest; //#333;
+@navbar-default-link-color:                @coolLight; //#777;
+@navbar-default-link-hover-color:          @neutralWhite; //#333;
 @navbar-default-link-hover-bg:             transparent;
-@navbar-default-link-active-color:         @neutralDarker; //#555;
+@navbar-default-link-active-color:         @neutralWhite; //#555;
 @navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
 @navbar-default-link-disabled-color:       @neutralLight;
 @navbar-default-link-disabled-bg:          transparent;
