@@ -222,12 +222,12 @@
 }
 
 .navbar-inverse .navbar-nav > .active > a {
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#222222), to(#272727));
-  background-image: -webkit-linear-gradient(top, #222222, 0%, #272727, 100%);
-  background-image: -moz-linear-gradient(top, #222222 0%, #272727 100%);
-  background-image: linear-gradient(to bottom, #222222 0%, #272727 100%);
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#222222), to(#282828));
+  background-image: -webkit-linear-gradient(top, #222222, 0%, #282828, 100%);
+  background-image: -moz-linear-gradient(top, #222222 0%, #282828 100%);
+  background-image: linear-gradient(to bottom, #222222 0%, #282828 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff272727', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff282828', GradientType=0);
   -webkit-box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.25);
           box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.25);
 }
