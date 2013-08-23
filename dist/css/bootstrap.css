@@ -3737,6 +3737,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .input-group-btn:first-child > .btn,
 .input-group-btn:first-child > .dropdown-toggle,
 .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
+  border-right: 0;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
