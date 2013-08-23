@@ -540,12 +540,6 @@ h6,
   font-size: 12px;
 }
 
-/*h1 small, .h1 small { font-size: ceil(@font-size-base * 1.70); } // ~24px
-h2 small, .h2 small { font-size: ceil(@font-size-base * 1.25); } // ~18px
-h3 small, .h3 small,
-h4 small, .h4 small { font-size: @font-size-base; }
-*/
-
 .page-header {
   padding-bottom: 9px;
   margin: 40px 0 20px;
