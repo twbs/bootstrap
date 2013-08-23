@@ -733,8 +733,9 @@ img { max-width: none; }
 {% endhighlight %}
 
     <h3>Nested headers</h3>
-    <p>Another "gotcha" has to do with how you nest your <code>&lt;header&gt;</code> elements. <a href="http://squizlabs.github.io/HTML_CodeSniffer/Standards/Section508/">Section 508</a> states that your largest header must be an <code>h1</code>, and the next header must be an <code>&lt;h2&gt;</code>, etc. This is hard to achieve in practice, but if the largest header on your site is smaller than Bootstrap's default 38px, you should consider modifying your stylesheets before using a smaller header element.</p>
-
+    <p>Another "gotcha" has to do with how you nest your header elements (the H1, H2, H3...H6 tags). <a href="http://squizlabs.github.io/HTML_CodeSniffer/Standards/Section508/">Section 508</a> states that your largest header must be an <code>&lt;h1&gt;</code> followed by an other <code>&lt;h1&gt;</code> or a subordinate heading element (h2 to h6). The structure of the headers should reflex the structure of your document. So the heading structure should be logically nested. Screen readers read this semantic heading structure to construct a table of contents. Screen readers don't use any formatted style. Visual readers use the formatted style in stead of the semantic structure. See also: <a href="http://accessibility.psu.edu/headings">http://accessibility.psu.edu/headings</a>.</p>
+    <p>The hierachical default font size of Bootstrap's header elements helps you to make the semantic stucture consistent with the visual (formatted) style. Consider this when you change any default font size of Bootstrap by modifying your stylesheets.</p>
+    
     <h3>Additional resources</h3>
     <ul>
       <li><a href="https://github.com/squizlabs/HTML_CodeSniffer">"HTML Codesniffer" bookmarklet for identifying accessibility issues</a></li>
