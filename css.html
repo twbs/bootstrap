@@ -1802,7 +1802,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <p>While Bootstrap will apply these styles in all browsers, Internet Explorer 9 and below don't actually support the <code>disabled</code> attribute on a <code>&lt;fieldset&gt;</code>. Use custom JavaScript to disable the fieldset in these browsers.</p>
     </div>
 
-    <form class="bs-example">
+    <form class="bs-example" role="form">
       <fieldset disabled>
         <div class="form-group">
           <label for="disabledTextInput">Disabled input</label>
@@ -1823,7 +1823,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </fieldset>
     </form>
 {% highlight html %}
-<form class="form-inline" role="form">
+<form role="form">
   <fieldset disabled>
     <div class="form-group">
       <label for="disabledTextInput">Disabled input</label>
