@@ -10,7 +10,7 @@
   display: block;
   visibility: visible;
   font-size: @font-size-small;
-  line-height: 1.4;
+  line-height: @tooltip-line-height;
   .opacity(0);
 
   &.in     { .opacity(.9); }
@@ -27,6 +27,7 @@
   color: @tooltip-color;
   text-align: center;
   text-decoration: none;
+  background-color: @tooltip-fallback-bg;  //old browsers fallback (ie8 etc)
   background-color: @tooltip-bg;
   border-radius: @border-radius-base;
 }
