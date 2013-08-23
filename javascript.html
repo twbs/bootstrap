@@ -805,6 +805,10 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       <p>When using tooltips on elements within a <code>.btn-group</code> or an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> (documented below) to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip is triggered).</p>
     </div>
 
+    <div class="bs-callout bs-callout-info">
+      <h4>Tooltips on disabled elements require placing the tooltip on an outer element instead</h4>
+      <p>If you'd like to add a tooltip to a <code>disabled</code> element, place the element inside of a <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code> and apply the tooltip to that element instead.</p>
+    </div>
 
     <h2 id="tooltips-usage">Usage</h2>
     <p>Trigger the tooltip via JavaScript:</p>
