@@ -1,3 +1,10 @@
+// TWBSClipboard Class borrowed heavily from Trello style clipboard
+// http://stackoverflow.com/questions/17527870/how-does-trello-access-the-users-clipboard
+// Handles tooltip and action for copying glyphicon span while hovering
+//
+// Dave Gaeddert, 8/22/2013
+// ++++++++++++++++++++++++++++++++++++++++++
+
 var TWBSClipboard
 
 TWBSClipboard = new ((function() {
@@ -44,6 +51,7 @@ TWBSClipboard = new ((function() {
 
   $(function(){
 
+    // Change tooltip text based on OS
     var copyKey = navigator.platform.indexOf("Mac") != -1 ? "Cmd" : "Ctrl"
 
     $(".bs-glyphicons li").mouseenter(function() {
