@@ -2,7 +2,7 @@
 layout: default
 title: JavaScript
 slug: js
-lead: "Bring Bootstrap's components to life with over a dozen custom jQuery plugins. Easily include them all, or one by one."
+lead: "Bring Bootstrap's components to life with over a dozen custom jQuery plugins. Easily include them all or one by one."
 base_url: "../"
 ---
 
@@ -15,7 +15,7 @@ base_url: "../"
     </div>
 
     <h3 id="js-individual-compiled">Individual or compiled</h3>
-    <p>Plugins can be included individually (using Bootstrap's individual <code>*.js</code> files), or all at once (using <code>bootstrap.js</code> or the minified <code>bootstrap.min.js</code>).</p>
+    <p>Plugins can be included individually (using Bootstrap's individual <code>*.js</code> files) or all at once (using <code>bootstrap.js</code> or the minified <code>bootstrap.min.js</code>).</p>
 
     <div class="bs-callout bs-callout-danger">
       <h4>Do not attempt to include both.</h4>
@@ -30,7 +30,7 @@ base_url: "../"
     <h3 id="js-data-attrs">Data attributes</h3>
     <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first-class API and should be your first consideration when using a plugin.</p>
 
-    <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the document namespaced with <code>data-api</code>. This looks like this:
+    <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the document namespaced with <code>data-api</code>:
 {% highlight js %}
 $(document).off('.data-api')
 {% endhighlight %}
@@ -74,7 +74,7 @@ $('#myModal').on('show.bs.modal', function (e) {
 
     <div class="bs-callout bs-callout-warning" id="callout-third-party-libs">
       <h4>Third-party libraries</h4>
-      <p><strong>Bootstrap does not officially support third-party JavaScript libraries</strong> like Prototype or jQuery UI. Despite <code>.noConflict</code> and namespaced events, there may be compatibility problems that you need to fix on your own. Ask on the <a href="http://groups.google.com/group/twitter-bootstrap">mailing list</a> if you need help.</p>
+      <p><strong>Bootstrap does not officially support third-party JavaScript libraries</strong> like Prototype or jQuery UI. Despite <code>.noConflict</code> and namespaced events, compatibility problems may exist that you need to fix on your own. Ask on the <a href="http://groups.google.com/group/twitter-bootstrap">mailing list</a> if you need help.</p>
     </div>
   </div>
 
@@ -235,7 +235,7 @@ $('#myModal').on('show.bs.modal', function (e) {
 {% endhighlight %}
 
     <h3>Via JavaScript</h3>
-    <p>Call a modal with id <code>myModal</code> with a single line of JavaScript:</p>
+    <p>Call a modal with id <code>myModal</code> using a single line of JavaScript:</p>
     {% highlight js %}$('#myModal').modal(options){% endhighlight %}
 
     <h3>Options</h3>
@@ -273,7 +273,7 @@ $('#myModal').on('show.bs.modal', function (e) {
            <td>remote</td>
            <td>path</td>
            <td>false</td>
-           <td><p>If a remote URL is provided, content will be loaded via jQuery's <code>load</code> method and injected into the root of the modal element. If you're using the data api, you may alternatively use the <code>href</code> attribute to specify the remote source. An example of this is shown below:</p>
+           <td><p>If a remote URL is provided, content will be loaded via jQuery's <code>load</code> method and injected into the root of the modal element. If you're using the data API, you may alternatively use the <code>href</code> attribute to specify the remote source. An example of this is shown below:</p>
 {% highlight html %}
 <a data-toggle="modal" href="remote.html" data-target="#modal">Click me</a>
 {% endhighlight %}
