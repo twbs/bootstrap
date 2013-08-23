@@ -32,13 +32,20 @@
 
 // Mixin for generating new styles
 .btn-styles(@btn-color: #555;) {
-  #gradient > .vertical(@start-color: @btn-color; @end-color: darken(@btn-color, 10%));
-  border-color: darken(@btn-color, 12%);
+  #gradient > .vertical(@start-color: @btn-color; @end-color: darken(@btn-color, 12%));
+  background-repeat: repeat-x;
+  border-color: darken(@btn-color, 14%);
+
+  &:hover,
+  &:focus  {
+    background-color: darken(@btn-color, 12%);
+    background-position: 0 -15px;
+  }
 
   &:active,
   &.active {
-    background-color: darken(@btn-color, 10%);
-    border-color: darken(@btn-color, 12%);
+    background-color: darken(@btn-color, 12%);
+    border-color: darken(@btn-color, 14%);
   }
 }
 
@@ -91,15 +98,16 @@
 // Navbar
 // --------------------------------------------------
 
-// Basic navbar
-.navbar {
+// Default navbar
+.navbar-default {
   #gradient > .vertical(@start-color: lighten(@navbar-default-bg, 10%); @end-color: @navbar-default-bg;);
   border-radius: @navbar-border-radius;
   @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
   .box-shadow(@shadow);
 
   .navbar-nav > .active > a {
-    background-color: @navbar-default-bg;
+    #gradient > .vertical(@start-color: darken(@navbar-default-bg, 5%); @end-color: darken(@navbar-default-bg, 2%););
+    .box-shadow(inset 0 3px 9px rgba(0,0,0,.075));
   }
 }
 .navbar-brand,
@@ -112,7 +120,8 @@
   #gradient > .vertical(@start-color: lighten(@navbar-inverse-bg, 10%); @end-color: @navbar-inverse-bg;);
 
   .navbar-nav > .active > a {
-    background-color: @navbar-inverse-bg;
+    #gradient > .vertical(@start-color: @navbar-inverse-bg; @end-color: lighten(@navbar-inverse-bg, 2.5%););
+    .box-shadow(inset 0 3px 9px rgba(0,0,0,.25));
   }
 
   .navbar-brand,

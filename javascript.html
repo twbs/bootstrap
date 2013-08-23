@@ -273,7 +273,7 @@ $('#myModal').on('show.bs.modal', function (e) {
            <td>remote</td>
            <td>path</td>
            <td>false</td>
-           <td><p>If a remote URL is provided, content will be loaded via jQuery's <code>load</code> method and injected into the root of the modal element. If you're using the data api, you may alternatively use the <code>href</code> attribute to specify the remote source. An example of this is shown below:</p>
+           <td><p>If a remote URL is provided, content will be loaded via jQuery's <code>load</code> method and injected into the root of the modal element. If you're using the data-api, you may alternatively use the <code>href</code> attribute to specify the remote source. An example of this is shown below:</p>
 {% highlight html %}
 <a data-toggle="modal" href="remote.html" data-target="#modal">Click me</a>
 {% endhighlight %}
@@ -804,7 +804,10 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       <h4>Tooltips in button groups and input groups require special setting</h4>
       <p>When using tooltips on elements within a <code>.btn-group</code> or an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> (documented below) to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip is triggered).</p>
     </div>
-
+    <div class="bs-callout bs-callout-info">
+      <h4>Tooltips on disabled elements require wrapper elements</h4>
+      <p>To add a tooltip to a <code>disabled</code> or <code>.disabled</code> element, put the element inside of a <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code>, and apply the tooltip to that element instead.</p>
+    </div>
 
     <h2 id="tooltips-usage">Usage</h2>
     <p>Trigger the tooltip via JavaScript:</p>
@@ -967,6 +970,10 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
       <h4>Popovers in button groups and input groups require special setting</h4>
       <p>When using popovers on elements within a <code>.btn-group</code> or an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> (documented below) to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the popover is triggered).</p>
     </div>
+    <div class="bs-callout bs-callout-info">
+      <h4>Popovers on disabled elements require wrapper elements</h4>
+      <p>To add a popover to a <code>disabled</code> or <code>.disabled</code> element, put the element inside of a <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code>, and apply the popover to that element instead.</p>
+    </div>
 
     <h3>Static popover</h3>
     <p>Four options are available: top, right, bottom, and left aligned.</p>
@@ -1069,7 +1076,7 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
             <td>selector</td>
             <td>string</td>
             <td>false</td>
-            <td>if a selector is provided, tooltip objects will be delegated to the specified targets if a selector is provided, tooltip objects will be delegated to the specified targets. in practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="http://jsfiddle.net/KPeKS/4/">an informative example</a>.</td>
+            <td>if a selector is provided, tooltip objects will be delegated to the specified targets if a selector is provided, tooltip objects will be delegated to the specified targets. in practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="http://jsfiddle.net/fScua/">an informative example</a>.</td>
           </tr>
           <tr>
             <td>trigger</td>
