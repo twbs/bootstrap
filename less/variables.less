@@ -626,10 +626,13 @@
 // --------------------------------------------------
 
 // Small screen / tablet
-@container-tablet:            ((720px + @grid-gutter-width));
+@container-sm:             ((720px + @grid-gutter-width));
+@container-tablet:         @container-sm;
 
 // Medium screen / desktop
-@container-desktop:           ((940px + @grid-gutter-width));
+@container-md:             ((940px + @grid-gutter-width));
+@container-desktop:        @container-md;
 
 // Large screen / wide desktop
-@container-lg-desktop:        ((1140px + @grid-gutter-width));
+@container-lg:             ((1140px + @grid-gutter-width));
+@container-large-desktop:  @container-lg;
