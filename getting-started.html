@@ -17,7 +17,7 @@ base_url: "../"
 
     <h3 id="download-compiled">Compiled CSS, JS, and fonts</h3>
     <p>The fastest way to get Bootstrap is to download the compiled and minified versions of our CSS and JavaScript, along with the included fonts. No documentation or original source files are included.</p>
-    <p><a class="btn btn-lg btn-primary" href="{{ site.download_dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a></p>
+    <p><a class="btn btn-lg btn-primary" href="{{ site.download_dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download precompiled Bootstrap</a></p>
 
     <h3 id="download-additional">Additional downloads</h3>
     <div class="bs-docs-dl-options">
@@ -297,7 +297,7 @@ bootstrap/
     <div class="page-header">
       <h1 id="migration">Migrating from 2.x to 3.0</h1>
     </div>
-    <p class="lead">Folks looking to upgrade to v3 should use this section as a general upgrade guide. We've outlined some of the major changes and provided tables that highlight key changes. For an overview, <a href="http://blog.getbootstrap.com/2013/08/19/bootstrap-3-released/">read the announcement blog post</a>.</p>
+    <p class="lead">Bootstrap 3 is not backwards compatible with v2.x. Folks looking to upgrade to v3 should use this section as a general upgrade guide. We've outlined some of the major changes and provided tables that highlight key changes. For an overview, <a href="http://blog.getbootstrap.com/2013/08/19/bootstrap-3-released/">read the announcement blog post</a>.</p>
 
 
     <h2 id="migration-classes">Major class changes</h2>
@@ -422,6 +422,10 @@ bootstrap/
           <tr>
             <td><code>ul.inline</code></td>
             <td><code>.list-inline</code></td>
+          </tr>
+          <tr>
+            <td><code>.muted</code></td>
+            <td><code>.text-muted</code></td>
           </tr>
         </tbody>
       </table>
