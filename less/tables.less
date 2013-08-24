@@ -176,7 +176,7 @@ table {
 
 // Responsive tables
 //
-// Wrap your tables in `.table-scrollable` and we'll make them mobile friendly
+// Wrap your tables in `.table-responsive` and we'll make them mobile friendly
 // by enabling horizontal scrolling. Only applies <768px. Everything above that
 // will display normally.
 
@@ -186,6 +186,7 @@ table {
     margin-bottom: 15px;
     overflow-y: hidden;
     overflow-x: scroll;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
     border: 1px solid @table-border-color;
     -webkit-overflow-scrolling: touch;
 
