@@ -588,45 +588,79 @@ base_url: "../"
     <!-- Headings -->
     <h2 id="type-headings">Headings</h2>
     <p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available.</p>
-
     <div class="bs-example bs-example-type">
       <table class="table">
         <tbody>
           <tr>
             <td><h1>h1. Bootstrap heading</h1></td>
-            <td>Semibold 36px</td>
+            <td class="info">Semibold 36px</td>
           </tr>
           <tr>
             <td><h2>h2. Bootstrap heading</h2></td>
-            <td>Semibold 30px</td>
+            <td class="info">Semibold 30px</td>
           </tr>
           <tr>
             <td><h3>h3. Bootstrap heading</h3></td>
-            <td>Semibold 24px</td>
+            <td class="info">Semibold 24px</td>
           </tr>
           <tr>
             <td><h4>h4. Bootstrap heading</h4></td>
-            <td>Semibold 18px</td>
+            <td class="info">Semibold 18px</td>
           </tr>
           <tr>
             <td><h5>h5. Bootstrap heading</h5></td>
-            <td>Semibold 14px</td>
+            <td class="info">Semibold 14px</td>
           </tr>
           <tr>
             <td><h6>h6. Bootstrap heading</h6></td>
-            <td>Semibold 12px</td>
+            <td class="info">Semibold 12px</td>
           </tr>
         </tbody>
       </table>
     </div>
 {% highlight html %}
-<h1>...</h1>
-<h2>...</h2>
-<h3>...</h3>
-<h4>...</h4>
-<h5>...</h5>
-<h6>...</h6>
+<h1>h1. Bootstrap heading</h1>
+<h2>h2. Bootstrap heading</h2>
+<h3>h3. Bootstrap heading</h3>
+<h4>h4. Bootstrap heading</h4>
+<h5>h5. Bootstrap heading</h5>
+<h6>h6. Bootstrap heading</h6>
 {% endhighlight %}
+
+    <p>Also included with headings is an autoscaling <code>&lt;small&gt;</code> element. Use it for smaller, gray secondary text in any heading.</p>
+    <div class="bs-example bs-example-type">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><h1>h1. Bootstrap heading <small>Secondary text</small></h1></td>
+          </tr>
+          <tr>
+            <td><h2>h2. Bootstrap heading <small>Secondary text</small></h2></td>
+          </tr>
+          <tr>
+            <td><h3>h3. Bootstrap heading <small>Secondary text</small></h3></td>
+          </tr>
+          <tr>
+            <td><h4>h4. Bootstrap heading <small>Secondary text</small></h4></td>
+          </tr>
+          <tr>
+            <td><h5>h5. Bootstrap heading <small>Secondary text</small></h5></td>
+          </tr>
+          <tr>
+            <td><h6>h6. Bootstrap heading <small>Secondary text</small></h6></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+{% highlight html %}
+<h1>h1. Bootstrap heading <small>Secondary text</small></h1>
+<h2>h2. Bootstrap heading <small>Secondary text</small></h2>
+<h3>h3. Bootstrap heading <small>Secondary text</small></h3>
+<h4>h4. Bootstrap heading <small>Secondary text</small></h4>
+<h5>h5. Bootstrap heading <small>Secondary text</small></h5>
+<h6>h6. Bootstrap heading <small>Secondary text</small></h6>
+{% endhighlight %}
+
 
     <!-- Body copy -->
     <h2 id="type-body-copy">Body copy</h2>
@@ -1794,7 +1828,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="bs-example">
       <form role="form">
         <input class="form-control" id="focusedInput" type="text" value="This is focused...">
-      </div>
+      </form>
     </div>
 {% highlight html %}
 <input class="form-control" id="focusedInput" type="text" value="This is focused...">
