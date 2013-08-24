@@ -227,7 +227,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
       if ($input.prop('type') === 'radio') $parent.find('.active').removeClass('active')
     }
 
-    this.$element.toggleClass('active')
+    this.$element.toggleClass('active').trigger('change')
   }
 
 
