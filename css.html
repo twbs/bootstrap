@@ -2225,7 +2225,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
     <h3 id="helper-classes-floats">Quick floats</h3>
-    <p>Float an element to the left or right with a class. Classes can also be used as mixins.</p>
+    <p>Float an element to the left or right with a class. <code>!important</code> is included to avoid specificity issues. Classes can also be used as mixins.</p>
 {% highlight html %}
 <div class="pull-left">...</div>
 <div class="pull-right">...</div>
@@ -2276,6 +2276,31 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 // Usage as a Mixin
 .element {
   .clearfix();
+}
+{% endhighlight %}
+
+
+    <h3 id="helper-classes-show-hide">Showing and hiding content</h3>
+    <p>Force an element to be shown or hidden via <code>display</code> with the use of <code>.show</code> and <code>.hide</code> classes. These classes use <code>!important</code> to avoid specificity conflicts, just like the <a href="../css/#helper-classes-floats">quick floats</a>. They are only available for block level toggling. They can also be used as mixins.</p>
+{% highlight html %}
+<div class="show">...</div>
+<div class="hide">...</div>
+{% endhighlight %}
+{% highlight css %}
+// Classes
+.show {
+  display: block !important;
+}
+.hide {
+  display: none !important;
+}
+
+// Usage as mixins
+.element {
+  .show();
+}
+.another-element {
+  .hide();
 }
 {% endhighlight %}
 
