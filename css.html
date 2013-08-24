@@ -2213,7 +2213,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <h1 id="helper-classes">Helper classes</h1>
     </div>
 
-    <h3>Close icon</h3>
+
+    <h3 id="helper-classes-close">Close icon</h3>
     <p>Use the generic close icon for dismissing content like modals and alerts.</p>
     <div class="bs-example">
       <p><button type="button" class="close" aria-hidden="true">&times;</button></p>
@@ -2222,43 +2223,45 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <button type="button" class="close" aria-hidden="true">&times;</button>
 {% endhighlight %}
 
-    <h3>.pull-left</h3>
-    <p>Float an element left with a class. Can also be used as a mixin.</p>
+
+    <h3 id="helper-classes-floats">Quick floats</h3>
+    <p>Float an element to the left or right with a class. Classes can also be used as mixins.</p>
 {% highlight html %}
 <div class="pull-left">...</div>
-{% endhighlight %}
-{% highlight css %}
-.pull-left {
-  float: left !important;
-}
-{% endhighlight %}
-    <div class="bs-callout bs-callout-warning">
-      <h4>Not for use in navbars</h4>
-      <p>To left-align components in navbars, use <code>.navbar-left</code> instead. <a href="../components/#navbar-component-alignment">See the navbar docs</a> for details.</p>
-    </div>
-
-    <h3>.pull-right</h3>
-    <p>Float an element right with a class. Can also be used as a mixin.</p>
-{% highlight html %}
 <div class="pull-right">...</div>
 {% endhighlight %}
 {% highlight css %}
+// Classes
+.pull-left {
+  float: left !important;
+}
 .pull-right {
   float: right !important;
 }
+
+// Usage as mixins
+.element {
+  .pull-left();
+}
+.another-element {
+  .pull-right();
+}
 {% endhighlight %}
+
     <div class="bs-callout bs-callout-warning">
       <h4>Not for use in navbars</h4>
-      <p>To right-align components in navbars, use <code>.navbar-right</code> instead. <a href="../components/#navbar-component-alignment">See the navbar docs</a> for details.</p>
+      <p>To align components in navbars with utility classes, use <code>.navbar-left</code> or <code>.navbar-right</code> instead. <a href="../components/#navbar-component-alignment">See the navbar docs</a> for details.</p>
     </div>
 
-    <h3>.clearfix</h3>
-    <p>Clear the <code>float</code> on any element. Utilizes <a href="http://nicolasgallagher.com/micro-clearfix-hack/">the micro clearfix</a> as popularized by Nicolas Gallagher. Can also be used as a mixin.</p>
+
+    <h3 id="helper-classes-clearfix">Clearfix</h3>
+    <p>Clear the <code>float</code> on any element with the <code>.clearfix</code> class. Utilizes <a href="http://nicolasgallagher.com/micro-clearfix-hack/">the micro clearfix</a> as popularized by Nicolas Gallagher. Can also be used as a mixin.</p>
 {% highlight html %}
+<!-- Usage as a class -->
 <div class="clearfix">...</div>
 {% endhighlight %}
 {% highlight css %}
-// Mixin
+// Mixin itself
 .clearfix() {
   &:before,
   &:after {
@@ -2270,18 +2273,28 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   }
 }
 
-// Usage
+// Usage as a Mixin
 .element {
   .clearfix();
 }
 {% endhighlight %}
 
-    <h3>.sr-only</h3>
-    <p>Hide an element to all users <em>except</em> screen readers. Necessary for following <a href="{{ page.base_url }}getting-started#accessibility">accessibility best practices</a>.</p>
+
+    <h3 id="helper-classes-screen-readers">Screen reader content</h3>
+    <p>Hide an element to all users <em>except</em> screen readers with <code>.sr-only</code>. Necessary for following <a href="{{ page.base_url }}getting-started#accessibility">accessibility best practices</a>. Can also be used as a mixin.</p>
 {% highlight html %}
 <a class="sr-only" href="#content">Skip to content</a>
 {% endhighlight %}
+{% highlight css %}
+// Usage as a Mixin
+.skip-navigation {
+  .sr-only();
+}
+{% endhighlight %}
+
   </div>
+
+
 
   <!-- Responsive utilities
   ================================================== -->
