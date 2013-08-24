@@ -72,11 +72,20 @@
 //
 // Heads up! v3 launched with with only `.hide-text()`, but per our pattern for
 // mixins being reused as classes with the same name, this doesn't hold up. As
-// of v3.0.1 we have added `.text-hide()` and deprecated `.hide-text()`.
+// of v3.0.1 we have added `.text-hide()` and deprecated `.hide-text()`. Note
+// that we cannot chain the mixins together in Less, so they are repeated.
 //
 // Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
 
-.hide-text(),
+// Deprecated as of v3.0.1 (will be removed in v4)
+.hide-text() {
+  font: ~"0/0" a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+// New mixin to use as of v3.0.1
 .text-hide() {
   font: ~"0/0" a;
   color: transparent;
