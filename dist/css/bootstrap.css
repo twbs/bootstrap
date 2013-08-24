@@ -1689,6 +1689,15 @@ input[type="number"]::-webkit-inner-spin-button {
   height: auto;
 }
 
+output {
+  display: block;
+  padding-top: 7px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #555555;
+  vertical-align: middle;
+}
+
 .form-control:-moz-placeholder {
   color: #999999;
 }
