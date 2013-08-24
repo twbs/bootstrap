@@ -11,6 +11,7 @@ exclude:          [".editorconfig", ".gitignore", ".ruby-version", "bower.json",
 port:             9001
 
 # Custom vars
+current_version:  3.0.0
 repo:             https://github.com/twbs/bootstrap
 download:         https://github.com/twbs/bootstrap/archive/v3.0.0.zip
 download_dist:    https://github.com/twbs/bootstrap/releases/download/v3.0.0/bootstrap-3.0.0-dist.zip

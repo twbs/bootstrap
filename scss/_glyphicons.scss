@@ -27,6 +27,10 @@
   font-weight: normal;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
+
+  &:empty{
+    width: 1em;
+  }
 }
 
 // Individual icons

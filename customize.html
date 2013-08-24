@@ -380,6 +380,22 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="1.428571429" data-var="@line-height-base">
         <p class="help-block">Used to calculate line-height throughout Bootstrap.</p>
       </div>
+      <div class="col-lg-6">
+        <label>@font-size-h1</label>
+        <input type="text" class="form-control" placeholder="floor(@font-size-base * 2.60)" data-var="@font-size-h1">
+        <label>@font-size-h2</label>
+        <input type="text" class="form-control" placeholder="floor(@font-size-base * 2.15)" data-var="@font-size-h2">
+        <label>@font-size-h3</label>
+        <input type="text" class="form-control" placeholder="ceil(@font-size-base * 1.70)" data-var="@font-size-h3">
+      </div>
+      <div class="col-lg-6">
+        <label>@font-size-h4</label>
+        <input type="text" class="form-control" placeholder="ceil(@font-size-base * 1.25)" data-var="@font-size-h4">
+        <label>@font-size-h5</label>
+        <input type="text" class="form-control" placeholder="@font-size-base" data-var="@font-size-h5">
+        <label>@font-size-h6</label>
+        <input type="text" class="form-control" placeholder="ceil(@font-size-base * 0.85)" data-var="@font-size-h6">
+      </div>
     </div>
 
     <h3>Code blocks</h3>
@@ -455,16 +471,16 @@ base_url: "../"
     <p>Define the breakpoints at which your layout will change, adapting to different screen sizes.</p>
     <div class="row">
       <div class="col-xs-6">
-        <label>@screen-xs</label>
-        <input type="text" class="form-control" placeholder="480px" data-var="@screen-xs">
-        <label>@screen-sm</label>
-        <input type="text" class="form-control" placeholder="768px" data-var="@screen-sm">
+        <label>@screen-xs-min</label>
+        <input type="text" class="form-control" placeholder="480px" data-var="@screen-xs-min">
+        <label>@screen-sm-min</label>
+        <input type="text" class="form-control" placeholder="768px" data-var="@screen-sm-min">
       </div>
       <div class="col-xs-6">
-        <label>@screen-md</label>
-        <input type="text" class="form-control" placeholder="992px" data-var="@screen-md">
-        <label>@screen-lg</label>
-        <input type="text" class="form-control" placeholder="1200px" data-var="@screen-lg">
+        <label>@screen-md-min</label>
+        <input type="text" class="form-control" placeholder="992px" data-var="@screen-md-min">
+        <label>@screen-lg-min</label>
+        <input type="text" class="form-control" placeholder="1200px" data-var="@screen-lg-min">
       </div>
     </div>
 
@@ -474,18 +490,18 @@ base_url: "../"
       <div class="col-xs-6 col-sm-4">
         <label>@container-tablet</label>
         <input type="text" class="form-control" placeholder="728px" data-var="@container-tablet">
-        <p class="help-block">For <code>@screen-sm</code> and up.</p>
+        <p class="help-block">For <code>@screen-sm-min</code> and up.</p>
       </div>
       <div class="col-xs-6 col-sm-4">
         <label>@container-desktop</label>
         <input type="text" class="form-control" placeholder="940px" data-var="@container-desktop">
-        <p class="help-block">For <code>@screen-md</code> and up.</p>
+        <p class="help-block">For <code>@screen-md-min</code> and up.</p>
       </div>
       <div class="clearfix visible-xs"></div>
       <div class="col-xs-6 col-sm-4">
         <label>@container-lg-desktop</label>
         <input type="text" class="form-control" placeholder="1170px" data-var="@container-lg-desktop">
-        <p class="help-block">For <code>@screen-lg</code> and up.</p>
+        <p class="help-block">For <code>@screen-lg-min</code> and up.</p>
       </div>
     </div>
 
@@ -508,7 +524,7 @@ base_url: "../"
       <div class="clearfix visible-xs"></div>
       <div class="col-xs-6 col-sm-4">
         <label>@grid-float-breakpoint</label>
-        <input type="text" class="form-control" placeholder="@screen-sm" data-var="@grid-float-breakpoint">
+        <input type="text" class="form-control" placeholder="@screen-sm-min" data-var="@grid-float-breakpoint">
         <p class="help-block">Point at which the navbar stops collapsing.</p>
       </div>
     </div>

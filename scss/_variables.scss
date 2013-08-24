@@ -48,6 +48,13 @@ $font-size-base:          14px !default;
 $font-size-large:         ceil($font-size-base * 1.25) !default; // ~18px
 $font-size-small:         ceil($font-size-base * 0.85) !default; // ~12px
 
+$font-size-h1:            floor($font-size-base * 2.60) !default; // ~36px
+$font-size-h2:            floor($font-size-base * 2.15) !default; // ~30px
+$font-size-h3:            ceil($font-size-base * 1.70) !default; // ~24px
+$font-size-h4:            ceil($font-size-base * 1.25) !default; // ~18px
+$font-size-h5:            $font-size-base !default;
+$font-size-h6:            ceil($font-size-base * 0.85) !default; // ~12px
+
 $line-height-base:        1.428571429 !default; // 20/14
 $line-height-computed:    floor($font-size-base * $line-height-base) !default; // ~20px
 
@@ -200,25 +207,33 @@ $zindex-modal:             1050 !default;
 // --------------------------------------------------
 
 // Extra small screen / phone
+// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
 $screen-xs:                  480px !default;
-$screen-phone:               $screen-xs !default;
+$screen-xs-min:              $screen-xs !default;
+$screen-phone:               $screen-xs-min !default;
 
 // Small screen / tablet
+// Note: Deprecated @screen-sm and @screen-tablet as of v3.0.1
 $screen-sm:                  768px !default;
-$screen-tablet:              $screen-sm !default;
+$screen-sm-min:              $screen-sm !default;
+$screen-tablet:              $screen-sm-min !default;
 
 // Medium screen / desktop
+// Note: Deprecated @screen-md and @screen-desktop as of v3.0.1
 $screen-md:                  992px !default;
-$screen-desktop:             $screen-md !default;
+$screen-md-min:              $screen-md !default;
+$screen-desktop:             $screen-md-min !default;
 
 // Large screen / wide desktop
+// Note: Deprecated @screen-lg and @screen-lg-desktop as of v3.0.1
 $screen-lg:                  1200px !default;
-$screen-lg-desktop:          $screen-lg !default;
+$screen-lg-min:              $screen-lg !default;
+$screen-lg-desktop:          $screen-lg-min !default;
 
 // So media queries don't overlap when required, provide a maximum
-$screen-xs-max:              ($screen-sm - 1) !default;
-$screen-sm-max:              ($screen-md - 1) !default;
-$screen-md-max:              ($screen-lg - 1) !default;
+$screen-xs-max:              ($screen-sm-min - 1) !default;
+$screen-sm-max:              ($screen-md-min - 1) !default;
+$screen-md-max:              ($screen-lg-min - 1) !default;
 
 
 // Grid system
@@ -229,7 +244,7 @@ $grid-columns:              12 !default;
 // Padding, to be divided by two and applied to the left and right of all columns
 $grid-gutter-width:         30px !default;
 // Point at which the navbar stops collapsing
-$grid-float-breakpoint:     $screen-tablet !default;
+$grid-float-breakpoint:     $screen-sm !default;
 
 
 // Navbar

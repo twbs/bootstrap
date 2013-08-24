@@ -642,7 +642,7 @@ h1[id] {
 }
 
 /* Typography */
-.bs-example-type .table td:last-child {
+.bs-example-type .table .info {
   color: #999;
   vertical-align: middle;
 }

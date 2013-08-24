@@ -31,7 +31,7 @@
   visibility: hidden;
 }
 .text-hide {
-  @include hide-text();
+  @include text-hide();
 }
 
 

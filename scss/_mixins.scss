@@ -69,8 +69,24 @@
 }
 
 // CSS image replacement
+//
+// Heads up! v3 launched with with only `.hide-text()`, but per our pattern for
+// mixins being reused as classes with the same name, this doesn't hold up. As
+// of v3.0.1 we have added `.text-hide()` and deprecated `.hide-text()`. Note
+// that we cannot chain the mixins together in Less, so they are repeated.
+//
 // Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
+
+// Deprecated as of v3.0.1 (will be removed in v4)
 @mixin hide-text() {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+// New mixin to use as of v3.0.1
+@mixin text-hide() {
   font: 0/0 a;
   color: transparent;
   text-shadow: none;
@@ -110,6 +126,10 @@
 @mixin transition($transition) {
   -webkit-transition: $transition;
           transition: $transition;
+}
+@mixin transition-property($transition-property) {
+  -webkit-transition-property: $transition-property;
+          transition-property: $transition-property;
 }
 @mixin transition-delay($transition-delay) {
   -webkit-transition-delay: $transition-delay;
@@ -564,7 +584,7 @@
   padding-right: ($gutter / 2);
 
   // Calculate width based on number of columns available
-  @media (min-width: $screen-sm) {
+  @media (min-width: $screen-sm-min) {
     float: left;
     width: percentage(($columns / $grid-columns));
   }
@@ -572,17 +592,17 @@
 
 // Generate the small column offsets
 @mixin make-sm-column-offset($columns) {
-  @media (min-width: $screen-sm) {
+  @media (min-width: $screen-sm-min) {
     margin-left: percentage(($columns / $grid-columns));
   }
 }
 @mixin make-sm-column-push($columns) {
-  @media (min-width: $screen-sm) {
+  @media (min-width: $screen-sm-min) {
     left: percentage(($columns / $grid-columns));
   }
 }
 @mixin make-sm-column-pull($columns) {
-  @media (min-width: $screen-sm) {
+  @media (min-width: $screen-sm-min) {
     right: percentage(($columns / $grid-columns));
   }
 }
@@ -597,7 +617,7 @@
   padding-right: ($gutter / 2);
 
   // Calculate width based on number of columns available
-  @media (min-width: $screen-md) {
+  @media (min-width: $screen-md-min) {
     float: left;
     width: percentage(($columns / $grid-columns));
   }
@@ -605,7 +625,7 @@
 
 // Generate the large column offsets
 @mixin make-md-column-offset($columns) {
-  @media (min-width: $screen-md) {
+  @media (min-width: $screen-md-min) {
     margin-left: percentage(($columns / $grid-columns));
   }
 }
@@ -615,7 +635,7 @@
   }
 }
 @mixin make-md-column-pull($columns) {
-  @media (min-width: $screen-md) {
+  @media (min-width: $screen-md-min) {
     right: percentage(($columns / $grid-columns));
   }
 }
@@ -630,7 +650,7 @@
   padding-right: ($gutter / 2);
 
   // Calculate width based on number of columns available
-  @media (min-width: $screen-lg) {
+  @media (min-width: $screen-lg-min) {
     float: left;
     width: percentage(($columns / $grid-columns));
   }
@@ -638,17 +658,17 @@
 
 // Generate the large column offsets
 @mixin make-lg-column-offset($columns) {
-  @media (min-width: $screen-lg) {
+  @media (min-width: $screen-lg-min) {
     margin-left: percentage(($columns / $grid-columns));
   }
 }
 @mixin make-lg-column-push($columns) {
-  @media (min-width: $screen-lg) {
+  @media (min-width: $screen-lg-min) {
     left: percentage(($columns / $grid-columns));
   }
 }
 @mixin make-lg-column-pull($columns) {
-  @media (min-width: $screen-lg) {
+  @media (min-width: $screen-lg-min) {
     right: percentage(($columns / $grid-columns));
   }
 }
