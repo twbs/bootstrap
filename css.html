@@ -2292,6 +2292,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 }
 {% endhighlight %}
 
+
+    <h3 id="helper-classes-image-replacement">Image replacement</h3>
+    <p>Utilize the <code>.hide-text</code> mixin or <code>.text-hide</code> class to help replace an element's text content with a background image.</p>
+{% highlight html %}
+<h1 class="text-hide">Custom heading</h1>
+{% endhighlight %}
+  {% highlight css %}
+// Usage as a Mixin
+.heading {
+  .hide-text();
+}
+{% endhighlight %}
   </div>
 
 
