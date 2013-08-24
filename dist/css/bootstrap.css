@@ -2409,6 +2409,10 @@ input[type="button"].btn-block {
   line-height: 1;
 }
 
+.glyphicon:empty {
+  width: 1em;
+}
+
 .glyphicon-asterisk:before {
   content: "\2a";
 }
@@ -4366,6 +4370,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-btn {
   margin-top: 8px;
   margin-bottom: 8px;
+  margin-left: 5px;
 }
 
 .navbar-text {
