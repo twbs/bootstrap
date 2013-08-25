@@ -555,6 +555,9 @@ base_url: "../"
     <h4>Example usage</h4>
     <p>You can modify the variables to your own custom values, or just use the mixins with their default values. Here's an example of using the default settings to create a two-column layout with a gap between.</p>
 {% highlight css %}
+#main {
+  .make-container();
+}
 .wrapper {
   .make-row();
 }
@@ -567,9 +570,11 @@ base_url: "../"
 }
 {% endhighlight %}
 {% highlight html %}
-<div class="wrapper">
-  <div class="content-main">...</div>
-  <div class="content-secondary">...</div>
+<div id="main">
+    <div class="wrapper">
+      <div class="content-main">...</div>
+      <div class="content-secondary">...</div>
+    </div>
 </div>
 {% endhighlight %}
 
