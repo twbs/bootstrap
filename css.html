@@ -80,20 +80,20 @@ base_url: "../"
 /* No media query since this is the default in Bootstrap */
 
 /* Small devices (tablets, 768px and up) */
-@media (min-width: @screen-sm) { ... }
+@media (min-width: @screen-sm-min) { ... }
 
 /* Medium devices (desktops, 992px and up) */
-@media (min-width: @screen-md) { ... }
+@media (min-width: @screen-md-min) { ... }
 
 /* Large devices (large desktops, 1200px and up) */
-@media (min-width: @screen-lg) { ... }
+@media (min-width: @screen-lg-min) { ... }
 {% endhighlight %}
     <p>We occasionally expand on these media queries to include a <code>max-width</code> to limit CSS to a narrower set of devices.</p>
 {% highlight css %}
-@media (max-width: @screen-phone-max) { ... }
-@media (min-width: @screen-sm) and (max-width: @screen-sm-max) { ... }
-@media (min-width: @screen-md) and (max-width: @screen-md-max) { ... }
-@media (min-width: @screen-lg) { ... }
+@media (max-width: @screen-xs-max) { ... }
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { ... }
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) { ... }
+@media (min-width: @screen-lg-min) { ... }
 {% endhighlight %}
 
     <h3 id="grid-options">Grid options</h3>
@@ -1828,7 +1828,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="bs-example">
       <form role="form">
         <input class="form-control" id="focusedInput" type="text" value="This is focused...">
-      </div>
+      </form>
     </div>
 {% highlight html %}
 <input class="form-control" id="focusedInput" type="text" value="This is focused...">
@@ -2038,7 +2038,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <button type="button" class="btn btn-link">Link</button>
     </div>
 {% highlight html %}
-<!-- Standard gray button with gradient -->
+<!-- Standard button -->
 <button type="button" class="btn btn-default">Default</button>
 
 <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
@@ -2134,12 +2134,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h3>Anchor element</h3>
     <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
     <p class="bs-example">
-      <a href="#" class="btn btn-primary btn-lg disabled">Primary link</a>
-      <a href="#" class="btn btn-default btn-lg disabled">Link</a>
+      <a href="#" class="btn btn-primary btn-lg disabled" role="button">Primary link</a>
+      <a href="#" class="btn btn-default btn-lg disabled" role="button">Link</a>
     </p>
 {% highlight html %}
-<a href="#" class="btn btn-primary btn-lg disabled">Primary link</a>
-<a href="#" class="btn btn-default btn-lg disabled">Link</a>
+<a href="#" class="btn btn-primary btn-lg disabled" role="button">Primary link</a>
+<a href="#" class="btn btn-default btn-lg disabled" role="button">Link</a>
 {% endhighlight %}
     <p>
       We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
@@ -2153,13 +2153,13 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h2 id="buttons-tags">Button tags</h2>
     <p>Use the button classes on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
     <form class="bs-example">
-      <a class="btn btn-default" href="#">Link</a>
+      <a class="btn btn-default" href="#" role="button">Link</a>
       <button class="btn btn-default" type="submit">Button</button>
       <input class="btn btn-default" type="button" value="Input">
       <input class="btn btn-default" type="submit" value="Submit">
     </form>
 {% highlight html %}
-<a class="btn btn-default" href="#">Link</a>
+<a class="btn btn-default" href="#" role="button">Link</a>
 <button class="btn btn-default" type="submit">Button</button>
 <input class="btn btn-default" type="button" value="Input">
 <input class="btn btn-default" type="submit" value="Submit">
@@ -2213,7 +2213,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <h1 id="helper-classes">Helper classes</h1>
     </div>
 
-    <h3>Close icon</h3>
+
+    <h3 id="helper-classes-close">Close icon</h3>
     <p>Use the generic close icon for dismissing content like modals and alerts.</p>
     <div class="bs-example">
       <p><button type="button" class="close" aria-hidden="true">&times;</button></p>
@@ -2222,43 +2223,45 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <button type="button" class="close" aria-hidden="true">&times;</button>
 {% endhighlight %}
 
-    <h3>.pull-left</h3>
-    <p>Float an element left with a class. Can also be used as a mixin.</p>
+
+    <h3 id="helper-classes-floats">Quick floats</h3>
+    <p>Float an element to the left or right with a class. <code>!important</code> is included to avoid specificity issues. Classes can also be used as mixins.</p>
 {% highlight html %}
 <div class="pull-left">...</div>
-{% endhighlight %}
-{% highlight css %}
-.pull-left {
-  float: left !important;
-}
-{% endhighlight %}
-    <div class="bs-callout bs-callout-warning">
-      <h4>Not for use in navbars</h4>
-      <p>To left-align components in navbars, use <code>.navbar-left</code> instead. <a href="../components/#navbar-component-alignment">See the navbar docs</a> for details.</p>
-    </div>
-
-    <h3>.pull-right</h3>
-    <p>Float an element right with a class. Can also be used as a mixin.</p>
-{% highlight html %}
 <div class="pull-right">...</div>
 {% endhighlight %}
 {% highlight css %}
+// Classes
+.pull-left {
+  float: left !important;
+}
 .pull-right {
   float: right !important;
 }
+
+// Usage as mixins
+.element {
+  .pull-left();
+}
+.another-element {
+  .pull-right();
+}
 {% endhighlight %}
+
     <div class="bs-callout bs-callout-warning">
       <h4>Not for use in navbars</h4>
-      <p>To right-align components in navbars, use <code>.navbar-right</code> instead. <a href="../components/#navbar-component-alignment">See the navbar docs</a> for details.</p>
+      <p>To align components in navbars with utility classes, use <code>.navbar-left</code> or <code>.navbar-right</code> instead. <a href="../components/#navbar-component-alignment">See the navbar docs</a> for details.</p>
     </div>
 
-    <h3>.clearfix</h3>
-    <p>Clear the <code>float</code> on any element. Utilizes <a href="http://nicolasgallagher.com/micro-clearfix-hack/">the micro clearfix</a> as popularized by Nicolas Gallagher. Can also be used as a mixin.</p>
+
+    <h3 id="helper-classes-clearfix">Clearfix</h3>
+    <p>Clear the <code>float</code> on any element with the <code>.clearfix</code> class. Utilizes <a href="http://nicolasgallagher.com/micro-clearfix-hack/">the micro clearfix</a> as popularized by Nicolas Gallagher. Can also be used as a mixin.</p>
 {% highlight html %}
+<!-- Usage as a class -->
 <div class="clearfix">...</div>
 {% endhighlight %}
 {% highlight css %}
-// Mixin
+// Mixin itself
 .clearfix() {
   &:before,
   &:after {
@@ -2270,18 +2273,65 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   }
 }
 
-// Usage
+// Usage as a Mixin
 .element {
   .clearfix();
 }
 {% endhighlight %}
 
-    <h3>.sr-only</h3>
-    <p>Hide an element to all users <em>except</em> screen readers. Necessary for following <a href="{{ page.base_url }}getting-started#accessibility">accessibility best practices</a>.</p>
+
+    <h3 id="helper-classes-show-hide">Showing and hiding content</h3>
+    <p>Force an element to be shown or hidden via <code>display</code> with the use of <code>.show</code> and <code>.hide</code> classes. These classes use <code>!important</code> to avoid specificity conflicts, just like the <a href="../css/#helper-classes-floats">quick floats</a>. They are only available for block level toggling. They can also be used as mixins.</p>
+{% highlight html %}
+<div class="show">...</div>
+<div class="hide">...</div>
+{% endhighlight %}
+{% highlight css %}
+// Classes
+.show {
+  display: block !important;
+}
+.hide {
+  display: none !important;
+}
+
+// Usage as mixins
+.element {
+  .show();
+}
+.another-element {
+  .hide();
+}
+{% endhighlight %}
+
+
+    <h3 id="helper-classes-screen-readers">Screen reader content</h3>
+    <p>Hide an element to all users <em>except</em> screen readers with <code>.sr-only</code>. Necessary for following <a href="{{ page.base_url }}getting-started#accessibility">accessibility best practices</a>. Can also be used as a mixin.</p>
 {% highlight html %}
 <a class="sr-only" href="#content">Skip to content</a>
 {% endhighlight %}
+{% highlight css %}
+// Usage as a Mixin
+.skip-navigation {
+  .sr-only();
+}
+{% endhighlight %}
+
+
+    <h3 id="helper-classes-image-replacement">Image replacement</h3>
+    <p>Utilize the <code>.text-hide</code> class or mixin to help replace an element's text content with a background image.</p>
+{% highlight html %}
+<h1 class="text-hide">Custom heading</h1>
+{% endhighlight %}
+  {% highlight css %}
+// Usage as a Mixin
+.heading {
+  .text-hide();
+}
+{% endhighlight %}
   </div>
+
+
 
   <!-- Responsive utilities
   ================================================== -->
