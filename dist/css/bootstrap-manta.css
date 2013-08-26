@@ -6803,3 +6803,110 @@ td.visible-print {
     display: none !important;
   }
 }
+
+.content {
+  margin-top: 79px;
+  background-color: #ffffff;
+}
+
+.footer {
+  margin-top: 20px;
+  font-size: 12px;
+  background-color: #ffffff;
+}
+
+/*
+.add-info-bar {
+  background-color: @coolLightest;
+  padding-top: @padding-base-vertical;
+  padding-bottom: @padding-base-vertical;
+}
+*/
+
+/*  Shan He's ad-hoc
+*/
+
+.panel-map {
+  margin-bottom: 20px;
+}
+
+.fs-small {
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  .navbar-search {
+    -webkit-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+  }
+  .navbar-search:focus {
+    width: 244px;
+    margin-left: -100px;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-search {
+    -webkit-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+  }
+  .navbar-search:focus {
+    width: 326px;
+    margin-left: -100px;
+  }
+}
+
+h1,
+.h1 {
+  font-family: 'vegurlight', arial, helvetica, clean, sans-serif;
+}
+
+.list-group-item {
+  margin-bottom: 0;
+  border: 0;
+  border-bottom: 1px solid #dddddd;
+}
+
+.list-group-item:first-child {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.list-group-item:last-child {
+  margin-bottom: 0;
+  border-bottom: 0;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.navbar-default.navbar {
+  z-index: 990;
+  min-height: 25px;
+  font-size: 12px;
+}
+
+.navbar-default.navbar.navbar-fixed-top {
+  margin-top: 54px;
+}
+
+.navbar-default .navbar-nav {
+  margin: 0;
+}
+
+.navbar-default .navbar-nav > li > a {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+@media (min-width: 768px) {
+  .navbar-default .navbar-nav > li > a {
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+  }
+}
+
+@font-face {
+  font-family: 'vegurlight';
+  src: url('../fonts/Vegur-Light.eot');
+  src: url('../fonts/Vegur-Light.eot?#iefix') format('embedded-opentype'), url('../fonts/Vegur-Light.woff') format('woff'), url('../fonts/Vegur-Light.ttf') format('truetype'), url('../fonts/Vegur-Light.svg#Vegur-Light') format('svg');
+}

@@ -94,7 +94,18 @@ module.exports = function(grunt) {
         },
         src: ['less/theme.less'],
         dest: 'dist/css/<%= pkg.name %>-theme.min.css'
-      }
+      },
+      manta: {
+        src: ['less/manta.less'],
+        dest: 'dist/css/<%= pkg.name %>-manta.css'
+      },
+      manta_min: {
+        options: {
+          compress: true
+        },
+        src: ['less/manta.less'],
+        dest: 'dist/css/<%= pkg.name %>-manta.min.css'
+      },
     },
 
     copy: {
