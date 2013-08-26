@@ -1,0 +1,122 @@
+// Manta customized LESS file.
+
+
+//------------------ mixins --------------------------
+
+.navbar-search-expander(@screen, @width) {
+  @media (min-width: @screen) {
+    .transition(all 100ms ease-in);
+    &:focus {
+      width: @width;
+      margin-left: -100px;
+    }
+  }
+}
+
+
+
+//------------------  generic  -----------------------
+
+.content {
+  background-color: @neutralWhite;
+  margin-top: @navbar-height + @subnavbar-height;
+}
+
+.footer {
+  margin-top: @line-height-computed;
+  background-color: @neutralWhite;
+  font-size: @font-size-small;
+}
+
+//------------------ END of generic ------------------
+
+/*
+.add-info-bar {
+  background-color: @coolLightest;
+  padding-top: @padding-base-vertical;
+  padding-bottom: @padding-base-vertical;
+}
+*/
+/*  Shan He's ad-hoc
+*/
+.panel-map {
+  margin-bottom: 20px;
+}
+
+.fs-small {
+  font-size: @font-size-small;
+}
+
+.navbar-search {
+  .navbar-search-expander(@screen-sm, 244px);
+  .navbar-search-expander(@screen-md, 326px);
+}
+
+h1, .h1 {
+  font-family: @font-family-serif;
+}
+
+.list-group-item {
+  margin-bottom: 0;
+  border: 0;
+  border-bottom: 1px solid @list-group-border;
+  &:first-child {
+    .border-top-radius(0);
+  }
+  &:last-child {
+    .border-top-radius(0);
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+}
+
+
+//------------------ sub navbar overrides ------------
+
+@subnavbar-height:                    25px;
+@subnavbar-padding-horizontal:        @navbar-padding-horizontal;
+@subnavbar-padding-vertical:          ((@subnavbar-height - @line-height-computed) / 2);
+
+.navbar-default.navbar {
+  z-index: @zindex-navbar - 10;
+  min-height: @subnavbar-height;
+  font-size: @font-size-small;
+  &.navbar-fixed-top {
+    margin-top: @navbar-height;
+  }
+}
+
+.navbar-default {
+ .navbar-nav {
+  margin: 0;
+  //margin: (@subnavbar-padding-vertical / 2) -@subnavbar-padding-horizontal;
+
+  > li > a {
+    padding-top:    5px;
+    padding-bottom: 5px;
+  }
+
+  // Uncollapse the nav
+  @media (min-width: @grid-float-breakpoint) {
+
+    > li > a {
+      padding-top: ((@subnavbar-height - @line-height-computed) / 2);
+      padding-bottom: ((@subnavbar-height - @line-height-computed) / 2);
+    }
+  }
+
+ }
+}
+
+
+//------------------ fonts ---------------------------
+
+@font-face {
+  font-family: 'vegurlight';
+  src: url('@{display-font-path}@{display-font-name}.eot');
+  src: url('@{display-font-path}@{display-font-name}.eot?#iefix') format('embedded-opentype'),
+       url('@{display-font-path}@{display-font-name}.woff') format('woff'),
+       url('@{display-font-path}@{display-font-name}.ttf') format('truetype'),
+       url('@{display-font-path}@{display-font-name}.svg#Vegur-Light') format('svg');
+}
+
