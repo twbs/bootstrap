@@ -139,6 +139,7 @@
       this.$element.trigger(e)
 
       if (e.isDefaultPrevented()) return
+      var that = this;
 
       var $tip = this.tip()
 
@@ -188,7 +189,17 @@
       var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
 
       this.applyPlacement(calculatedOffset, placement)
-      this.$element.trigger('shown.bs.' + this.type)
+
+      var complete = function() {
+        that.$element.trigger('shown.bs.' + that.type)
+      }
+
+      $.support.transition && this.$tip.hasClass('fade') ?
+      $tip
+        .one($.support.transition.end, complete)
+        .emulateTransitionEnd(150) :
+      complete()
+
     }
   }
 
@@ -262,6 +273,7 @@
 
     function complete() {
       if (that.hoverState != 'in') $tip.detach()
+      that.$element.trigger('hidden.bs.' + that.type)
     }
 
     this.$element.trigger(e)
@@ -275,8 +287,6 @@
         .one($.support.transition.end, complete)
         .emulateTransitionEnd(150) :
       complete()
-
-    this.$element.trigger('hidden.bs.' + this.type)
 
     return this
   }
