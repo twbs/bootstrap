@@ -4,6 +4,10 @@
 * Markdown Editor plugin for jQuery.
 */
 
+function markdown2html(text) {
+    return markdown.toHTML(text);
+}
+
 !function($) {
     var Markdown = function(element, options, commands) {
         this.options = options;
@@ -15,17 +19,42 @@
         this.buildMarkdown(commands);
     };
 
-    var TextAreaDelegate = function(the_toolbar, the_textarea, options) {
+    var TextAreaDelegate = function(the_toolbar, the_textarea, the_preview, options) {
         this.$toolbar = the_toolbar;
         this.$textarea = the_textarea;
         this.$container = the_textarea.parent();
         this.$dom = the_textarea.get(0);
+        this.$preview = the_preview;
         this.$options = options;
     };
 
     TextAreaDelegate.prototype = {
 
         constructor: TextAreaDelegate,
+
+        enableAllButtons: function(enabled) {
+            var btns = this.$toolbar.find('button[data-cmd]');
+            if (enabled) {
+                btns.removeAttr('disabled');
+            }
+            else {
+                btns.attr('disabled', 'disabled');
+            }
+        },
+
+        enableButton: function(key, enabled) {
+            var btn = this.$toolbar.find('button[data-cmd="' + key + '"]');
+            if (enabled) {
+                btn.removeAttr('disabled');
+            }
+            else {
+                btn.attr('disabled', 'disabled');
+            }
+        },
+
+        getText: function() {
+            return this.$textarea.val();
+        },
 
         getOption: function(key) {
             return this.$options[key];
@@ -105,7 +134,7 @@
                     $icon = $that.options.icons[ele] || 'icon-star';
                     $tooltip = $that.options.tooltips[ele] || '';
                     if (ele=='heading') {
-                        L.push('<button class="btn dropdown-toggle" data-toggle="dropdown" title="' + $tooltip + '"><i class="' + $icon + '"></i> <span class="caret"></span></button>');
+                        L.push('<button class="btn dropdown-toggle" data-toggle="dropdown" data-cmd="heading" title="' + $tooltip + '"><i class="' + $icon + '"></i> <span class="caret"></span></button>');
                         L.push('<ul class="dropdown-menu">');
                         L.push('<li><a href="javascript:void(0)" data-type="md" data-cmd="heading1"># Heading 1</a></li>');
                         L.push('<li><a href="javascript:void(0)" data-type="md" data-cmd="heading2">## Heading 2</a></li>');
@@ -120,12 +149,15 @@
                     }
                 }
             });
-            L.push('</div></div>');
+            var tw = this.$textarea.width();
+            var th = this.$textarea.height();
+            L.push('</div></div><div class="markdown-preview" style="display:none;padding:0;margin:0;width:' + tw + 'px;height:' + th + 'px;overflow:scroll;background-color:white;"></div>');
             this.$commands = commands;
             this.$textarea.before(L.join(''));
-            this.$toolbar = this.$textarea.prev();
-            this.$delegate = new TextAreaDelegate(this.$toolbar, this.$textarea, this.options);
-            this.$textarea.prev().find('*[data-type=md]').each(function() {
+            this.$toolbar = this.$textarea.parent().find('div.markdown-toolbar');
+            this.$preview = this.$textarea.parent().find('div.markdown-preview');
+            this.$delegate = new TextAreaDelegate(this.$toolbar, this.$textarea, this.$preview, this.options);
+            this.$toolbar.find('*[data-type=md]').each(function() {
                 $btn = $(this);
                 var cmd = $btn.attr('data-cmd');
                 $btn.click(function() {
@@ -386,9 +418,26 @@
             });
         },
 
+        preview: function(delegate) {
+            if ( ! delegate.is_preview) {
+                delegate.is_preview = true;
+                delegate.enableAllButtons(false);
+                delegate.enableButton('preview', true);
+                delegate.$textarea.hide();
+                delegate.$preview.html('<div style="padding:3px;">' + markdown2html(delegate.$textarea.val()) + '</div>').show();
+            }
+            else {
+                delegate.is_preview = false;
+                delegate.enableAllButtons(true);
+                delegate.$preview.html('').hide();
+                delegate.$textarea.show();
+            }
+        },
+
         fullscreen: function(delegate) {
             if ( ! delegate.is_full_screen) {
                 delegate.is_full_screen = true;
+                delegate.enableButton('preview', false);
                 // z-index=1040, on top of navbar, but on bottom of other modals:
                 var s = '<div data-backdrop="false" class="modal hide" style="z-index:1040;top:0;left:0;margin-left:0;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;">'
                       + '<div class="left" style="margin:0;padding:0 2px 2px 2px;float:left;"></div><div class="right" style="float:left;padding:0;margin:0;border-left:solid 1px #ccc;overflow:scroll;"></div>'
@@ -420,12 +469,17 @@
                     delegate.$textarea.css('width', (w - rw - 18) + 'px').css('height', (h - 64) + 'px');
                 };
                 $(window).bind('resize', delegate.$fn_resize).trigger('resize');
+                // bind text change:
+                // TODO:
+                $right.html(markdown.toHTML(delegate.getText()));
             }
             else {
                 // unbind:
                 $(window).unbind('resize', delegate.$fn_resize);
                 delegate.is_full_screen = false;
+                delegate.enableButton('preview', true);
                 delegate.$toolbar.appendTo(delegate.$container);
+                delegate.$preview.appendTo(delegate.$container);
                 delegate.$textarea.appendTo(delegate.$container);
                 delegate.$fullscreen.modal('hide');
                 delegate.$fullscreen.remove();
