@@ -205,7 +205,7 @@ $('#myModal').on('show.bs.modal', function (e) {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
         ...
@@ -222,12 +222,8 @@ $('#myModal').on('show.bs.modal', function (e) {
 
     <div class="bs-callout bs-callout-warning">
       <h4>Make modals accessible</h4>
-      <p>
-        Be sure to add <code>role="dialog"</code> to your primary modal div. In the example above, <code>div#myModal</code>.<br>
-        Also, the <code>aria-labelledby</code> attribute references your modal title. In this example, <code>h4#myModalLabel</code>.<br>
-        Finally, <code>aria-hidden="true"</code> tells assistive technologies to skip DOM elements.<br>
-        Additionally, you may give a description of your modal dialog. Use the <code>aria-describedby</code> attribute in the modal's primary <code>&lt;div&gt;</code> to point to this description (this is not shown in the above example).
-      </p>
+      <p>Be sure to add <code>role="dialog"</code> to <code>.modal</code>, <code>aria-labelledby="myModalLabel"</code> attribute to reference the modal title, and <code>aria-hidden="true"</code> to tell assistive technologies to skip the modal's DOM elements.</p>
+      <p>Additionally, you may give a description of your modal dialog with <code>aria-describedby</code> on <code>.modal</code>.</p>
     </div>
 
     <h2 id="modals-usage">Usage</h2>
