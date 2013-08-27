@@ -149,9 +149,9 @@ function markdown2html(text) {
                     }
                 }
             });
-            var tw = this.$textarea.width();
-            var th = this.$textarea.height();
-            L.push('</div></div><div class="markdown-preview" style="display:none;padding:0;margin:0;width:' + tw + 'px;height:' + th + 'px;overflow:scroll;background-color:white;"></div>');
+            var tw = this.$textarea.outerWidth() - 2;
+            var th = this.$textarea.outerHeight() - 2;
+            L.push('</div></div><div class="markdown-preview" style="display:none;padding:0;margin:0;width:' + tw + 'px;height:' + th + 'px;overflow:scroll;background-color:white;border:1px solid #ccc;border-radius:4px"></div>');
             this.$commands = commands;
             this.$textarea.before(L.join(''));
             this.$toolbar = this.$textarea.parent().find('div.markdown-toolbar');
@@ -169,9 +169,6 @@ function markdown2html(text) {
                 catch (e) { /* ignore if tooltip.js not exist */}
             });
             this.applyCss();
-            this.$textarea.keypress(function() {
-                console.log('TEXTAREA:keypress.');
-            });
         },
 
         showBackdrop: function() {
@@ -264,9 +261,36 @@ function markdown2html(text) {
             }
             $modal.modal('show');
             $modal.find('.btn-primary').click(function() {
-                var text = $modal.find('input[name=text]').val();
-                var link = $modal.find('input[name=link]').val();
+                var text = $.trim($modal.find('input[name=text]').val());
+                var link = $.trim($modal.find('input[name=link]').val());
+                if (link=='') link = 'http://';
+                if (text=='') text = link;
                 delegate.paste('[' + text + '](' + link + ')');
+                $modal.modal('hide');
+            });
+            $modal.on('hidden', function() {
+                $modal.remove();
+            });
+        },
+
+        email: function(delegate) {
+            var s = '<div data-backdrop="static" class="modal hide fade"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h3>Email Address</h3></div>'
+                  + '<div class="modal-body"><form class="form-horizontal"><div class="control-group"><label class="control-label">Name:</label><div class="controls"><input name="text" type="text" value="" /></div></div>'
+                  + '<div class="control-group"><label class="control-label">Email:</label><div class="controls"><input name="email" type="text" placeholder="email@example.com" value="" /></div></div>'
+                  + '</form></div><div class="modal-footer"><a href="#" class="btn btn-primary">OK</a><a href="#" class="btn" data-dismiss="modal">Close</a></div></div>';
+            $('body').prepend(s);
+            var $modal = $('body').children(':first');
+            var sel = delegate.getSelection();
+            if (sel != '') {
+                $modal.find('input[name=text]').val(sel);
+            }
+            $modal.modal('show');
+            $modal.find('.btn-primary').click(function() {
+                var text = $.trim($modal.find('input[name=text]').val());
+                var email = $.trim($modal.find('input[name=email]').val());
+                if (email=='') email = 'email@example.com';
+                if (text=='') text = email;
+                delegate.paste('[' + text + '](' + email + ')');
                 $modal.modal('hide');
             });
             $modal.on('hidden', function() {
@@ -469,13 +493,36 @@ function markdown2html(text) {
                     delegate.$textarea.css('width', (w - rw - 18) + 'px').css('height', (h - 64) + 'px');
                 };
                 $(window).bind('resize', delegate.$fn_resize).trigger('resize');
+                $right.html(markdown2html(delegate.getText()));
                 // bind text change:
-                // TODO:
-                $right.html(markdown.toHTML(delegate.getText()));
+                delegate.$n_wait_for_update = 0;
+                delegate.$b_need_update = false;
+                delegate.$fn_update_count = function() {
+                    if (delegate.$b_need_update && delegate.$n_wait_for_update > 10) {
+                        delegate.$b_need_update = false;
+                        delegate.$n_wait_for_update = 0;
+                        $right.html(markdown2html(delegate.getText()));
+                    }
+                    else {
+                        delegate.$n_wait_for_update ++;
+                    }
+                };
+                setInterval(delegate.$fn_update_count, 100);
+                delegate.$fn_keypress = function() {
+                    console.log('Keypress...');
+                    delegate.$b_need_update = true; // should update in N seconds
+                    delegate.$n_wait_for_update = 0; // reset count from 0
+                };
+                delegate.$textarea.bind('keypress', delegate.$fn_keypress);
             }
             else {
                 // unbind:
+                delegate.$textarea.unbind('keypress', delegate.$fn_keypress);
                 $(window).unbind('resize', delegate.$fn_resize);
+                delegate.$fn_keypress = null;
+                delegate.$fn_resize = null;
+                delegate.$fn_update_count = null;
+
                 delegate.is_full_screen = false;
                 delegate.enableButton('preview', true);
                 delegate.$toolbar.appendTo(delegate.$container);
@@ -487,6 +534,7 @@ function markdown2html(text) {
                 delegate.$textarea.css('width', delegate.$textarea_old_width).css('height', delegate.$textarea_old_height);
             }
         },
+
     };
 
     $.fn.markdown = function(option) {

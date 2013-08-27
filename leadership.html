@@ -9,9 +9,11 @@
     <script src="js/custom.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/bootstrap-ex.css" />
+    <script src="/js/markdown.js"></script>
+    <script src="/js/markdown-editor.js"></script>
     <script>
 $(function() {
-  //
+    $('#markdown-editor').markdown();
 });
     </script>
 </head>
@@ -70,39 +72,7 @@ $(function() {
                         <label>Markdown</label>
                         <input type="text" placeholder="Type something…" />
                         <label>Markdown</label>
-                        <div class="btn-toolbar">
-                            <div class="btn-group">
-                                <button class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-font"></i> <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#"># Heading 1</a></li>
-                                    <li><a href="#">## Heading 2</a></li>
-                                    <li><a href="#">### Heading 3</a></li>
-                                    <li><a href="#">#### Heading 4</a></li>
-                                    <li><a href="#">##### Heading 5</a></li>
-                                </ul>
-                            </div>
-                            <div class="btn-group">
-                                <button type="button" class="btn"><i class="icon-bold"></i></button>
-                                <button type="button" class="btn"><i class="icon-italic"></i></button>
-                                <button type="button" class="btn"><i class="icon-list"></i></button>
-                                <button type="button" class="btn"><i class="icon-comment"></i></button>
-                            </div>
-                            <div class="btn-group">
-                                <button type="button" class="btn"><i class="icon-globe"></i></button>
-                                <button type="button" class="btn"><i class="icon-envelope"></i></button>
-                            </div>
-                            <div class="btn-group">
-                                <button type="button" class="btn"><i class="icon-picture"></i></button>
-                                <button type="button" class="btn"><i class="icon-facetime-video"></i></button>
-                            </div>
-                            <div class="btn-group">
-                                <button type="button" class="btn"><i class="icon-eye-open"></i></button>
-                            </div>
-                            <div class="btn-group">
-                                <button type="button" class="btn"><i class="icon-fullscreen"></i></button>
-                            </div>
-                        </div>
-                        <textarea data-provider="markdown" rows="12" class="span7"></textarea>
+                        <textarea id="markdown-editor" rows="12" class="span7"></textarea>
                     </fieldset>
                 </form>
             </div>
@@ -112,14 +82,15 @@ $(function() {
                     <div class="panel-inner">
                         <p>Markdown editor is a WYSIWYG editor.</p>
                         <pre>
-&lt;div&gt; class="panel"&lt;/div&gt;
-    &lt;div class="panel-heading"&gt;Heading&lt;/div&gt;
-    &lt;div class="panel-inner"&gt;
-        &lt;p&gt;Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+&lt;script src="markdown.js"&gt;&lt;/script&gt;
+&lt;script src="markdown-editor.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  $(function() {
+    $('#textarea-id').markdown();
+  });
+&lt;/script&gt;
                         </pre>
-                        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                        <p>Cool! Have a try!</p>
                     </div>
                 </div>
             </div>
