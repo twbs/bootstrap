@@ -558,21 +558,21 @@
   padding-right: (@gutter / 2);
   padding-left: (@gutter / 2);
 
-  @media (min-width: @screen-sm) {
+  @media (min-width: @screen-sm-min) {
     max-width: @container-tablet;
   }
 
-  @media (min-width: @screen-md) {
+  @media (min-width: @screen-md-min) {
     max-width: @container-desktop;
   }
 
-  @media (min-width: @screen-lg) {
+  @media (min-width: @screen-lg-min) {
     max-width: @container-lg-desktop;
   }
 }
 
 // Fluid container element
-.make-container-fluid(@max-width: @screen-lg; @gutter: @grid-gutter-width) {
+.make-container-fluid(@max-width: @container-lg-desktop; @gutter: @grid-gutter-width) {
   .clearfix();
   margin-right: auto;
   margin-left: auto;
