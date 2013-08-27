@@ -10,6 +10,9 @@
       "type": "git"
     , "url": "https://github.com/twbs/bootstrap.git"
   }
+  , "bugs": {
+      "url": "https://github.com/twbs/bootstrap/issues"
+  }
   , "licenses": [
     {
         "type": "Apache-2.0"
