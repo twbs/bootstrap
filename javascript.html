@@ -708,15 +708,33 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
     <h3>Markup</h3>
     <p>You can activate a tab or pill navigation without writing any JavaScript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element. Adding the <code>nav</code> and <code>nav-tabs</code> classes to the tab <code>ul</code> will apply the Bootstrap tab styling.</p>
 {% highlight html %}
+<!-- Nav tabs -->
 <ul class="nav nav-tabs">
   <li><a href="#home" data-toggle="tab">Home</a></li>
   <li><a href="#profile" data-toggle="tab">Profile</a></li>
   <li><a href="#messages" data-toggle="tab">Messages</a></li>
   <li><a href="#settings" data-toggle="tab">Settings</a></li>
 </ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="home">...</div>
+  <div class="tab-pane" id="profile">...</div>
+  <div class="tab-pane" id="messages">...</div>
+  <div class="tab-pane" id="settings">...</div>
+</div>
 {% endhighlight %}
 
-    <p>To make tabs fade in, add <code>.fade</code> to each <code>.tab-pane</code>.</p>
+    <h3>Fade effect</h3>
+    <p>To make tabs fade in, add <code>.fade</code> to each <code>.tab-pane</code>. The first tab pane must also have <code>.in</code> to properly fade in initial content.</p>
+{% highlight html %}
+<div class="tab-content">
+  <div class="tab-pane fade in active" id="home">...</div>
+  <div class="tab-pane fade" id="profile">...</div>
+  <div class="tab-pane fade" id="messages">...</div>
+  <div class="tab-pane fade" id="settings">...</div>
+</div>
+{% endhighlight %}
 
     <h3>Methods</h3>
     <h4>$().tab</h4>
