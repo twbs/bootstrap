@@ -384,7 +384,7 @@
           <div class="bs-docs-example">
             <div class="btn-toolbar" style="margin: 0;">
               <div class="btn-group">
-                <button class="btn btn-large dropdown-toggle" data-toggle="dropdown">Botòn grande <span class="caret"></span></button>
+                <button class="btn btn-large dropdown-toggle" data-toggle="dropdown">Botón grande <span class="caret"></span></button>
                 <ul class="dropdown-menu">
                   <li><a href="#">Acción</a></li>
                   <li><a href="#">Otra acción</a></li>
@@ -625,80 +625,80 @@
             <h1>Navegación: pestañas, pills y listas</small></h1>
           </div>
 
-          <h2>Lightweight defaults <small>Same markup, different classes</small></h2>
-          <p>All nav components here&mdash;tabs, pills, and lists&mdash;<strong>share the same base markup and styles</strong> through the <code>.nav</code> class.</p>
+          <h2>Predeterminados livianos <small>Mismo código, diferentes clases</small></h2>
+          <p>Todos los componentes de navegación de acá &mdash;pestañas, pills y listas&mdash;<strong>usan el mismo código base y estilos</strong> a través de la clase <code>.nav</code>.</p>
 
-          <h3>Basic tabs</h3>
-          <p>Take a regular <code>&lt;ul&gt;</code> of links and add <code>.nav-tabs</code>:</p>
+          <h3>Pestañas básicas</h3>
+          <p>Agarrá un <code>&lt;ul&gt;</code> básico con enlaces y agregale <code>.nav-tabs</code>:</p>
           <div class="bs-docs-example">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">Messages</a></li>
+              <li class="active"><a href="#">Inicio</a></li>
+              <li><a href="#">Perfil</a></li>
+              <li><a href="#">Mensajes</a></li>
             </ul>
           </div>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-tabs"&gt;
   &lt;li class="active"&gt;
-    &lt;a href="#"&gt;Home&lt;/a&gt;
+    &lt;a href="#"&gt;Inicio&lt;/a&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
 
-          <h3>Basic pills</h3>
-          <p>Take that same HTML, but use <code>.nav-pills</code> instead:</p>
+          <h3>Pills básicas</h3>
+          <p>Usando el mismo HTML, reemplazá la clase por <code>.nav-pills</code>:</p>
           <div class="bs-docs-example">
             <ul class="nav nav-pills">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">Messages</a></li>
+              <li class="active"><a href="#">Inicio</a></li>
+              <li><a href="#">Perfil</a></li>
+              <li><a href="#">Mensajes</a></li>
             </ul>
           </div>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-pills"&gt;
   &lt;li class="active"&gt;
-    &lt;a href="#"&gt;Home&lt;/a&gt;
+    &lt;a href="#"&gt;Inicio&lt;/a&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
 
-          <h3>Disabled state</h3>
-          <p>For any nav component (tabs, pills, or list), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>. Links will remain clickable, however, unless you remove the <code>href</code> attribute. Alternatively, you could implement custom JavaScript to prevent those clicks.</p>
+          <h3>Estado desactivado</h3>
+          <p>Para cualquier componente de navegación (pestaña, pills, o lista), agregá <code>.disabled</code> para <strong>hacer los enlaces grises y sin efectos hover</strong>. Los enlaces seguirán siendo cliqueables, igualmente, a menos que elimines el atributo <code>href</code>. Como opción, podés implementar JavaScript personalizado para prevenir esos clics.</p>
           <div class="bs-docs-example">
             <ul class="nav nav-pills">
-              <li><a href="#">Clickable link</a></li>
-              <li><a href="#">Clickable link</a></li>
-              <li class="disabled"><a href="#">Disabled link</a></li>
+              <li><a href="#">Enlace cliqueable</a></li>
+              <li><a href="#">Enlace cliqueable</a></li>
+              <li class="disabled"><a href="#">Enlace desactivado</a></li>
             </ul>
           </div>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-pills"&gt;
   ...
-  &lt;li class="disabled"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="disabled"&gt;&lt;a href="#"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
   ...
 &lt;/ul&gt;
 </pre>
 
-          <h3>Component alignment</h3>
-          <p>To align nav links, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
+          <h3>Alineación de los componentes</h3>
+          <p>Para alinear los enlaces de navegación, usá las clases utilitarias <code>.pull-left</code> o <code>.pull-right</code>. Ambas agregan un float en la dirección indicada.</p>
 
 
           <hr class="bs-docs-separator">
 
 
-          <h2>Stackable</h2>
-          <p>As tabs and pills are horizontal by default, just add a second class, <code>.nav-stacked</code>, to make them appear vertically stacked.</p>
+          <h2>Apilable</h2>
+          <p>Como las pestañas y pills son horizontales de forma predeterminada, con agregar <code>.nav-stacked</code> se verán apiladas verticalmente.</p>
 
-          <h3>Stacked tabs</h3>
+          <h3>Pestañas apiladas</h3>
           <div class="bs-docs-example">
             <ul class="nav nav-tabs nav-stacked">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">Messages</a></li>
+              <li class="active"><a href="#">Inicio</a></li>
+              <li><a href="#">Perfil</a></li>
+              <li><a href="#">Mensajes</a></li>
             </ul>
           </div>
 <pre class="prettyprint linenums">
@@ -707,12 +707,12 @@
 &lt;/ul&gt;
 </pre>
 
-          <h3>Stacked pills</h3>
+          <h3>Pills apiladas</h3>
           <div class="bs-docs-example">
             <ul class="nav nav-pills nav-stacked">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">Messages</a></li>
+              <li class="active"><a href="#">Inicio</a></li>
+              <li><a href="#">Perfil</a></li>
+              <li><a href="#">Mensajes</a></li>
             </ul>
           </div>
 <pre class="prettyprint linenums">
@@ -726,13 +726,13 @@
 
 
           <h2>Dropdowns</h2>
-          <p>Add dropdown menus with a little extra HTML and the <a href="./javascript.html#dropdowns">dropdowns JavaScript plugin</a>.</p>
+          <p>Agregá menúes dropdown con un poco de HTML y el <a href="./javascript.html#dropdowns">plugin de JavaScript para dropdowns</a>.</p>
 
-          <h3>Tabs with dropdowns</h3>
+          <h3>Pestañas con dropdowns</h3>
           <div class="bs-docs-example">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Help</a></li>
+              <li class="active"><a href="#">Inicio</a></li>
+              <li><a href="#">Ayuda</a></li>
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -761,11 +761,11 @@
 &lt;/ul&gt;
 </pre>
 
-          <h3>Pills with dropdowns</h3>
+          <h3>Pills con dropdowns</h3>
           <div class="bs-docs-example">
             <ul class="nav nav-pills">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Help</a></li>
+              <li class="active"><a href="#">Inicio</a></li>
+              <li><a href="#">Ayuda</a></li>
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -798,41 +798,41 @@
           <hr class="bs-docs-separator">
 
 
-          <h2>Nav lists</h2>
-          <p>A simple and easy way to build groups of nav links with optional headers. They're best used in sidebars like the Finder in OS X.</p>
+          <h2>Listas de navegación</h2>
+          <p>Una forma simple y fácil de crear grupos de enlaces de navegación con encabezados opcionales. Quedan mejor en las barras laterales como el Finder de OS X.</p>
 
-          <h3>Example nav list</h3>
-          <p>Take a list of links and add <code>class="nav nav-list"</code>:</p>
+          <h3>Lista de navegación de ejemplo</h3>
+          <p>Tomá una lista de enlaces y agregale <code>class="nav nav-list"</code>:</p>
           <div class="bs-docs-example">
             <div class="well" style="max-width: 340px; padding: 8px 0;">
               <ul class="nav nav-list">
-                <li class="nav-header">List header</li>
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Library</a></li>
-                <li><a href="#">Applications</a></li>
-                <li class="nav-header">Another list header</li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Settings</a></li>
+                <li class="nav-header">Encabezado de la lista</li>
+                <li class="active"><a href="#">Inicio</a></li>
+                <li><a href="#">Biblioteca</a></li>
+                <li><a href="#">Aplicaciones</a></li>
+                <li class="nav-header">Otro encabezado de la lista</li>
+                <li><a href="#">Perfil</a></li>
+                <li><a href="#">Configuración</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Help</a></li>
+                <li><a href="#">Ayuda</a></li>
               </ul>
             </div> <!-- /well -->
           </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-list"&gt;
-  &lt;li class="nav-header"&gt;List header&lt;/li&gt;
-  &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Library&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-header"&gt;Encabezado de la lista&lt;/li&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Biblioteca&lt;/a&gt;&lt;/li&gt;
   ...
 &lt;/ul&gt;
 </pre>
           <p>
-            <span class="label label-info">Note</span>
-            For nesting within a nav list, include <code>class="nav nav-list"</code> on any nested <code>&lt;ul&gt;</code>.
+            <span class="label label-info">Nota</span>
+            Para anidar dentro de una lista de navegación, incluí <code>class="nav nav-list"</code> en todos los <code>&lt;ul&gt;</code> anidados.
           </p>
 
-          <h3>Horizontal dividers</h3>
-          <p>Add a horizontal divider by creating an empty list item with the class <code>.divider</code>, like so:</p>
+          <h3>Divisores horizontales</h3>
+          <p>Agregá un divisor horizontal creando un ítem de menú vacío con la clase <code>.divider</code>, como este:</p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-list"&gt;
   ...
@@ -845,27 +845,27 @@
           <hr class="bs-docs-separator">
 
 
-          <h2>Tabbable nav</h2>
-          <p>Bring your tabs to life with a simple plugin to toggle between content via tabs. Bootstrap integrates tabbable tabs in four styles: top (default), right, bottom, and left.</p>
+          <h2>Pestañas navegables</h2>
+          <p>Hacé que tus pestañas vivan con un simple plugin para cambiar el contenido a través de pestañas. BAstrap integra pestañas navegables en cuatro estilos: top (default), right, bottom, y left.</p>
 
-          <h3>Tabbable example</h3>
-          <p>To make tabs tabbable, create a <code>.tab-pane</code> with unique ID for every tab and wrap them in <code>.tab-content</code>.</p>
+          <h3>Ejemplo de pestañas navegables</h3>
+          <p>Para hacer que las pestañas sean navegables, creá un <code>.tab-pane</code> con un ID único para cada pestaña y colocalas adentro de un <code>.tab-content</code>.</p>
           <div class="bs-docs-example">
             <div class="tabbable" style="margin-bottom: 18px;">
               <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab1" data-toggle="tab">Section 1</a></li>
-                <li><a href="#tab2" data-toggle="tab">Section 2</a></li>
-                <li><a href="#tab3" data-toggle="tab">Section 3</a></li>
+                <li class="active"><a href="#tab1" data-toggle="tab">Sección 1</a></li>
+                <li><a href="#tab2" data-toggle="tab">Sección 2</a></li>
+                <li><a href="#tab3" data-toggle="tab">Sección 3</a></li>
               </ul>
               <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
                 <div class="tab-pane active" id="tab1">
-                  <p>I'm in Section 1.</p>
+                  <p>Estoy en la Sección 1.</p>
                 </div>
                 <div class="tab-pane" id="tab2">
-                  <p>Howdy, I'm in Section 2.</p>
+                  <p>Hola, estoy en la Sección 2.</p>
                 </div>
                 <div class="tab-pane" id="tab3">
-                  <p>What up girl, this is Section 3.</p>
+                  <p>Qué tal, esta es la Sección 3.</p>
                 </div>
               </div>
             </div> <!-- /tabbable -->
@@ -873,47 +873,45 @@
 <pre class="prettyprint linenums">
 &lt;div class="tabbable"&gt; &lt;!-- Only required for left/right tabs --&gt;
   &lt;ul class="nav nav-tabs"&gt;
-    &lt;li class="active"&gt;&lt;a href="#tab1" data-toggle="tab"&gt;Section 1&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#tab2" data-toggle="tab"&gt;Section 2&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="active"&gt;&lt;a href="#tab1" data-toggle="tab"&gt;Sección 1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#tab2" data-toggle="tab"&gt;Sección 2&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
   &lt;div class="tab-content"&gt;
     &lt;div class="tab-pane active" id="tab1"&gt;
-      &lt;p&gt;I'm in Section 1.&lt;/p&gt;
+      &lt;p&gt;Estoy en la Sección 1.&lt;/p&gt;
     &lt;/div&gt;
     &lt;div class="tab-pane" id="tab2"&gt;
-      &lt;p&gt;Howdy, I'm in Section 2.&lt;/p&gt;
+      &lt;p&gt;Hola, estoy en la Sección 2.&lt;/p&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
-          <h4>Fade in tabs</h4>
-          <p>To make tabs fade in, add <code>.fade</code> to each <code>.tab-pane</code>.</p>
+          <h4>Fundido en las pestañas</h4>
+          <p>Para que las pestañas entren por fundido, agregá <code>.fade</code> a cada <code>.tab-pane</code>.</p>
 
-          <h4>Requires jQuery plugin</h4>
-          <p>All tabbable tabs are powered by our lightweight jQuery plugin. Read more about how to bring tabbable tabs to life <a href="./javascript.html#tabs">on the JavaScript docs page</a>.</p>
 
-          <h3>Tabbable in any direction</h3>
+          <h3>Navegables en cualquier dirección</h3>
 
-          <h4>Tabs on the bottom</h4>
-          <p>Flip the order of the HTML and add a class to put tabs on the bottom.</p>
+          <h4>Pestañas desde abajo</h4>
+          <p>Da vuelta el orden del HTML y agregá una clase para poner las pestañas abajo.</p>
           <div class="bs-docs-example">
             <div class="tabbable tabs-below">
               <div class="tab-content">
                 <div class="tab-pane active" id="A">
-                  <p>I'm in Section A.</p>
+                  <p>Estoy en la Sección A.</p>
                 </div>
                 <div class="tab-pane" id="B">
-                  <p>Howdy, I'm in Section B.</p>
+                  <p>Hola, estoy en la Sección B.</p>
                 </div>
                 <div class="tab-pane" id="C">
-                  <p>What up girl, this is Section C.</p>
+                  <p>Qué tal, esta es la Sección C.</p>
                 </div>
               </div>
               <ul class="nav nav-tabs">
-                <li class="active"><a href="#A" data-toggle="tab">Section 1</a></li>
-                <li><a href="#B" data-toggle="tab">Section 2</a></li>
-                <li><a href="#C" data-toggle="tab">Section 3</a></li>
+                <li class="active"><a href="#A" data-toggle="tab">Sección 1</a></li>
+                <li><a href="#B" data-toggle="tab">Sección 2</a></li>
+                <li><a href="#C" data-toggle="tab">Sección 3</a></li>
               </ul>
             </div> <!-- /tabbable -->
           </div>{{! /example }}
@@ -928,24 +926,24 @@
 &lt;/div&gt;
 </pre>
 
-          <h4>Tabs on the left</h4>
-          <p>Swap the class to put tabs on the left.</p>
+          <h4>Pestañas a la izquierda</h4>
+          <p>Cambiá la clase para poner las pestañas a la izquierda.</p>
           <div class="bs-docs-example">
             <div class="tabbable tabs-left">
               <ul class="nav nav-tabs">
-                <li class="active"><a href="#lA" data-toggle="tab">Section 1</a></li>
-                <li><a href="#lB" data-toggle="tab">Section 2</a></li>
-                <li><a href="#lC" data-toggle="tab">Section 3</a></li>
+                <li class="active"><a href="#lA" data-toggle="tab">Sección 1</a></li>
+                <li><a href="#lB" data-toggle="tab">Sección 2</a></li>
+                <li><a href="#lC" data-toggle="tab">Sección 3</a></li>
               </ul>
               <div class="tab-content">
                 <div class="tab-pane active" id="lA">
-                  <p>I'm in Section A.</p>
+                  <p>Estoy en la Sección A.</p>
                 </div>
                 <div class="tab-pane" id="lB">
-                  <p>Howdy, I'm in Section B.</p>
+                  <p>Hola, estoy en la Sección B.</p>
                 </div>
                 <div class="tab-pane" id="lC">
-                  <p>What up girl, this is Section C.</p>
+                  <p>Qué tal, esta es la Sección C.</p>
                 </div>
               </div>
             </div> <!-- /tabbable -->
@@ -961,24 +959,24 @@
 &lt;/div&gt;
 </pre>
 
-          <h4>Tabs on the right</h4>
-          <p>Swap the class to put tabs on the right.</p>
+          <h4>Pestañas a la derecha</h4>
+          <p>Cambiá la clase para poner las pestañas a la derecha.</p>
           <div class="bs-docs-example">
             <div class="tabbable tabs-right">
               <ul class="nav nav-tabs">
-                <li class="active"><a href="#rA" data-toggle="tab">Section 1</a></li>
-                <li><a href="#rB" data-toggle="tab">Section 2</a></li>
-                <li><a href="#rC" data-toggle="tab">Section 3</a></li>
+                <li class="active"><a href="#rA" data-toggle="tab">Sección 1</a></li>
+                <li><a href="#rB" data-toggle="tab">Sección 2</a></li>
+                <li><a href="#rC" data-toggle="tab">Sección 3</a></li>
               </ul>
               <div class="tab-content">
                 <div class="tab-pane active" id="rA">
-                  <p>I'm in Section A.</p>
+                  <p>Estoy en la Sección A.</p>
                 </div>
                 <div class="tab-pane" id="rB">
-                  <p>Howdy, I'm in Section B.</p>
+                  <p>Hola, estoy en la Sección B.</p>
                 </div>
                 <div class="tab-pane" id="rC">
-                  <p>What up girl, this is Section C.</p>
+                  <p>Qué tal, esta es la Sección C.</p>
                 </div>
               </div>
             </div> <!-- /tabbable -->
@@ -1006,16 +1004,16 @@
           </div>
 
 
-          <h2>Basic navbar</h2>
-          <p>To start, navbars are static (not fixed to the top) and include support for a project name and basic navigation. Place one anywhere within a <code>.container</code>, which sets the width of your site and content.</p>
+          <h2>Barra de navegación básica</h2>
+          <p>Para empezar, las barras de navegación son estáticas (no están fijas arriba del todo) e incluyen la posibilidad de colocar un nombre de proyecto y navegación básica. Colocala en cualquier lado dentro de un <code>.container</code>, que le da el ancho a tu sitio y su contenido.</p>
           <div class="bs-docs-example">
             <div class="navbar">
               <div class="navbar-inner">
-                <a class="brand" href="#">Title</a>
+                <a class="brand" href="#">Título</a>
                 <ul class="nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
+                  <li class="active"><a href="#">Inicio</a></li>
+                  <li><a href="#">Enlace</a></li>
+                  <li><a href="#">Enlace</a></li>
                 </ul>
               </div>
             </div>
@@ -1023,11 +1021,11 @@
 <pre class="prettyprint linenums">
 &lt;div class="navbar"&gt;
   &lt;div class="navbar-inner"&gt;
-    &lt;a class="brand" href="#"&gt;Title&lt;/a&gt;
+    &lt;a class="brand" href="#"&gt;Título&lt;/a&gt;
     &lt;ul class="nav"&gt;
-      &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="active"&gt;&lt;a href="#"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Enlace&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Enlace&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -1037,30 +1035,30 @@
           <hr class="bs-docs-separator">
 
 
-          <h2>Navbar components</h2>
+          <h2>Componentes de la barra de navegación</h2>
 
-          <h3>Brand</h3>
-          <p>A simple link to show your brand or project name only requires an anchor tag.</p>
+          <h3>Marca</h3>
+          <p>Un simple enlace para mostrar tu marca o nombre de proyecto solamente requiere una etiqueta <code>&lt;a&gt;</code></p>
           <div class="bs-docs-example">
             <div class="navbar">
               <div class="navbar-inner">
-                <a class="brand" href="#">Title</a>
+                <a class="brand" href="#">Título</a>
               </div>
             </div>
           </div>{{! /example }}
 <pre class="prettyprint linenums">
-&lt;a class="brand" href="#"&gt;Project name&lt;/a&gt;
+&lt;a class="brand" href="#"&gt;Nombre del proyecto&lt;/a&gt;
 </pre>
 
-          <h3>Nav links</h3>
-          <p>Nav items are simple to add via unordered lists.</p>
+          <h3>Enlaces de navegación</h3>
+          <p>Los ítems de navegación se agregan a través de una lista no ordenada.</p>
           <div class="bs-docs-example">
             <div class="navbar">
               <div class="navbar-inner">
                 <ul class="nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
+                  <li class="active"><a href="#">Inicio</a></li>
+                  <li><a href="#">Enlace</a></li>
+                  <li><a href="#">Enlace</a></li>
                 </ul>
               </div>
             </div>
@@ -1068,22 +1066,22 @@
 <pre class="prettyprint linenums">
 &lt;ul class="nav"&gt;
   &lt;li class="active"&gt;
-    &lt;a href="#">Home&lt;/a&gt;
+    &lt;a href="#"&gt;Inicio&lt;/a&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Enlace&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Enlace&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-          <p>You can easily add dividers to your nav links with an empty list item and a simple class. Just add this between links:</p>
+          <p>Podés agregar divisores fácilmente a tus enlaces de navegación usando un ítem de lista vacío con una clase:</p>
           <div class="bs-docs-example">
             <div class="navbar">
               <div class="navbar-inner">
                 <ul class="nav">
-                  <li class="active"><a href="#">Home</a></li>
+                  <li class="active"><a href="#">Inicio</a></li>
                   <li class="divider-vertical"></li>
-                  <li><a href="#">Link</a></li>
+                  <li><a href="#">Enlace</a></li>
                   <li class="divider-vertical"></li>
-                  <li><a href="#">Link</a></li>
+                  <li><a href="#">Enlace</a></li>
                   <li class="divider-vertical"></li>
                 </ul>
               </div>
@@ -1097,14 +1095,14 @@
 &lt;/ul&gt;
 </pre>
 
-          <h3>Forms</h3>
-          <p>To properly style and position a form within the navbar, add the appropriate classes as shown below. For a default form, include <code>.navbar-form</code> and either <code>.pull-left</code> or <code>.pull-right</code> to properly align it.</p>
+          <h3>Formularios</h3>
+          <p>Para darle estilo y posicionamiento correcto a un formulario dentro de la barra de navegación, agregá las clases apropiadas como se muestra abajo. Para un formulario predeterminado, incluí <code>.navbar-form</code> y <code>.pull-left</code> o <code>.pull-right</code> para alinearlo correctamente.</p>
           <div class="bs-docs-example">
             <div class="navbar">
               <div class="navbar-inner">
                 <form class="navbar-form pull-left">
                   <input type="text" class="span2">
-                  <button type="submit" class="btn">Submit</button>
+                  <button type="submit" class="btn">Enviar</button>
                 </form>
               </div>
             </div>
@@ -1112,32 +1110,32 @@
 <pre class="prettyprint linenums">
 &lt;form class="navbar-form pull-left"&gt;
   &lt;input type="text" class="span2"&gt;
-  &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
+  &lt;button type="submit" class="btn"&gt;Enviar&lt;/button&gt;
 &lt;/form&gt;
 </pre>
 
-          <h3>Search form</h3>
-          <p>For a more customized search form, add <code>.navbar-search</code> to the <code>form</code> and <code>.search-query</code> to the input for specialized styles in the navbar.</p>
+          <h3>Formulario de búsqueda</h3>
+          <p>Para un formulario de búsqueda más personalizado, agregá <code>.navbar-search</code> al <code>form</code> y <code>.search-query</code> al input para darle estilo especializado en la barra de navegación.</p>
           <div class="bs-docs-example">
             <div class="navbar">
               <div class="navbar-inner">
                 <form class="navbar-search pull-left">
-                  <input type="text" class="search-query" placeholder="Search">
+                  <input type="text" class="search-query" placeholder="Buscar">
                 </form>
               </div>
             </div>
           </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;form class="navbar-search pull-left"&gt;
-  &lt;input type="text" class="search-query" placeholder="Search"&gt;
+  &lt;input type="text" class="search-query" placeholder="Buscar"&gt;
 &lt;/form&gt;
 </pre>
 
-          <h3>Component alignment</h3>
-          <p>Align nav links, search form, or text, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
+          <h3>Alineación de componentes</h3>
+          <p>Alineá enlaces de navegación, formulario de búsqueda o texto usando <code>.pull-left</code> o <code>.pull-right</code>. Ambas clases van a agregar un float CSS apuntando a la dirección especificada.</p>
 
-          <h3>Using dropdowns</h3>
-          <p>Add dropdowns and dropups to the nav with a bit of markup and the <a href="./javascript.html#dropdowns">dropdowns JavaScript plugin</a>.</p>
+          <h3>Usando dropdowns</h3>
+          <p>Agregá dropdowns y dropups a la navegación con un poco de código y el <a href="./javascript.html#dropdowns">plugin JavaScript de dropdowns</a>.</p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav"&gt;
   &lt;li class="dropdown"&gt;
@@ -1151,29 +1149,29 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-          <p>Visit the <a href="./javascript.html#dropdowns">JavaScript dropdowns documentation</a> for more markup and information on calling dropdowns.</p>
+          <p>Visitá la <a href="./javascript.html#dropdowns">documentación de JavaScript dropdowns</a> para más código e información sobre cómo llamar dropdowns.</p>
 
-          <h3>Text</h3>
-          <p>Wrap strings of text in an element with <code>.navbar-text</code>, usually on a <code>&lt;p&gt;</code> tag for proper leading and color.</p>
+          <h3>Texto</h3>
+          <p>Incluí textos dentro de elementos con clase <code>.navbar-text</code>, usualmente en una etiqueta <code>&lt;p&gt;</code> para un correcto espaciado y color.</p>
 
 
           <hr class="bs-docs-separator">
 
 
-          <h2>Optional display variations</h2>
-          <p>Fix the navbar to the top or bottom of the viewport with an additional class on the outermost div, <code>.navbar</code>.</p>
+          <h2>Variaciones opcionales de visualización</h2>
+          <p>Fijá la barra de navegación arriba de todo o abajo de todo en el navegador usando una clase adicional en el primer div <code>.navbar</code>.</p>
 
-          <h3>Fixed to top</h3>
-          <p>Add <code>.navbar-fixed-top</code> and remember to account for the hidden area underneath it by adding at least 40px <code>padding</code> to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.</p>
+          <h3>Fija arriba</h3>
+          <p>Agregá <code>.navbar-fixed-top</code> y recordá tener en cuenta el área oculta abajo agregando como mínimo 40px de <code>padding</code> al <code>&lt;body&gt;</code>. Asegurate de agregar esto después del código BAstrap CSS y antes del CSS responsive.</p>
           <div class="bs-docs-example bs-navbar-top-example">
             <div class="navbar navbar-fixed-top" style="position: absolute;">
               <div class="navbar-inner">
                 <div class="container" style="width: auto; padding: 0 20px;">
-                  <a class="brand" href="#">Title</a>
+                  <a class="brand" href="#">Título</a>
                   <ul class="nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
+                    <li class="active"><a href="#">Inicio</a></li>
+                    <li><a href="#">Enlace</a></li>
+                    <li><a href="#">Enlace</a></li>
                   </ul>
                 </div>
               </div>
@@ -1185,17 +1183,17 @@
 &lt;/div&gt;
 </pre>
 
-          <h3>Fixed to bottom</h3>
-          <p>Add <code>.navbar-fixed-bottom</code> instead.</p>
+          <h3>Fija abajo</h3>
+          <p>Agregá <code>.navbar-fixed-bottom</code> en su lugar.</p>
           <div class="bs-docs-example bs-navbar-bottom-example">
             <div class="navbar navbar-fixed-bottom" style="position: absolute;">
               <div class="navbar-inner">
                 <div class="container" style="width: auto; padding: 0 20px;">
-                  <a class="brand" href="#">Title</a>
+                  <a class="brand" href="#">Título</a>
                   <ul class="nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
+                    <li class="active"><a href="#">Inicio</a></li>
+                    <li><a href="#">Enlace</a></li>
+                    <li><a href="#">Enlace</a></li>
                   </ul>
                 </div>
               </div>
@@ -1207,17 +1205,17 @@
 &lt;/div&gt;
 </pre>
 
-          <h3>Static top navbar</h3>
-          <p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.navbar-fixed-top</code> class, you do not need to change any padding on the <code>body</code>.</p>
+          <h3>Barra de navegación estática arriba</h3>
+          <p>Creá una barra de navegación de ancho máximo que se va al hacer scroll en la página agregando <code>.navbar-static-top</code>. A diferencia de la clase <code>.navbar-fixed-top</code>, no necesitás cambiar el padding en el <code>body</code>.</p>
           <div class="bs-docs-example bs-navbar-top-example">
             <div class="navbar navbar-static-top" style="margin: -1px -1px 0;">
               <div class="navbar-inner">
                 <div class="container" style="width: auto; padding: 0 20px;">
-                  <a class="brand" href="#">Title</a>
+                  <a class="brand" href="#">Título</a>
                   <ul class="nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
+                    <li class="active"><a href="#">Inicio</a></li>
+                    <li><a href="#">Enlace</a></li>
+                    <li><a href="#">Enlace</a></li>
                   </ul>
                 </div>
               </div>
@@ -1233,8 +1231,8 @@
           <hr class="bs-docs-separator">
 
 
-          <h2>Responsive navbar</h2>
-          <p>To implement a collapsing responsive navbar, wrap your navbar content in a containing div, <code>.nav-collapse.collapse</code>, and add the navbar toggle button, <code>.btn-navbar</code>.</p>
+          <h2>Barra de navegación responsive</h2>
+          <p>Para implementar una barra de navegación que colapse en responsive, meté el contenido de tu barra de navegación en un div contenedor , <code>.nav-collapse.collapse</code>, y agregá el botón de activación/desactivación de la barra, <code>.btn-navbar</code>.</p>
           <div class="bs-docs-example">
             <div class="navbar">
               <div class="navbar-inner">
@@ -1244,12 +1242,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </a>
-                  <a class="brand" href="#">Title</a>
+                  <a class="brand" href="#">Título</a>
                   <div class="nav-collapse collapse navbar-responsive-collapse">
                     <ul class="nav">
-                      <li class="active"><a href="#">Home</a></li>
-                      <li><a href="#">Link</a></li>
-                      <li><a href="#">Link</a></li>
+                      <li class="active"><a href="#">Inicio</a></li>
+                      <li><a href="#">Enlace</a></li>
+                      <li><a href="#">Enlace</a></li>
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -1257,17 +1255,17 @@
                           <li><a href="#">Otra acción</a></li>
                           <li><a href="#">Otra acción más</a></li>
                           <li class="divider"></li>
-                          <li class="nav-header">Nav header</li>
+                          <li class="nav-header">Encabezado</li>
                           <li><a href="#">Enlace separado</a></li>
                           <li><a href="#">One more separated link</a></li>
                         </ul>
                       </li>
                     </ul>
                     <form class="navbar-search pull-left" action="">
-                      <input type="text" class="search-query span2" placeholder="Search">
+                      <input type="text" class="search-query span2" placeholder="Buscar">
                     </form>
                     <ul class="nav pull-right">
-                      <li><a href="#">Link</a></li>
+                      <li><a href="#">Enlace</a></li>
                       <li class="divider-vertical"></li>
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -1298,7 +1296,7 @@
       &lt;/a&gt;
 
       &lt;!-- Be sure to leave the brand out there if you want it shown --&gt;
-      &lt;a class="brand" href="#"&gt;Project name&lt;/a&gt;
+      &lt;a class="brand" href="#"&gt;Nombre del proyecto&lt;/a&gt;
 
       &lt;!-- Everything you want hidden at 940px or less, place within here --&gt;
       &lt;div class="nav-collapse collapse"&gt;
@@ -1310,14 +1308,14 @@
 &lt;/div&gt;
 </pre>
           <div class="alert alert-info">
-            <strong>Heads up!</strong> The responsive navbar requires the <a href="./javascript.html#collapse">collapse plugin</a> and <a href="./scaffolding.html#responsive">responsive Bootstrap CSS file</a>.
+            <strong>¡Atención!</strong> La barra de navegación responsive requiere el <a href="./javascript.html#collapse">plugin collapse </a> y <a href="./scaffolding.html#responsive">el CSS responsive de BAstrap</a>.
           </div>
 
 
           <hr class="bs-docs-separator">
 
 
-          <h2>Inverted variation</h2>
+          <h2>Variación invertida</h2>
           <p>Modify the look of the navbar by adding <code>.navbar-inverse</code>.</p>
           <div class="bs-docs-example">
             <div class="navbar navbar-inverse" style="position: static;">
@@ -1328,12 +1326,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </a>
-                  <a class="brand" href="#">Title</a>
+                  <a class="brand" href="#">Título</a>
                   <div class="nav-collapse collapse navbar-inverse-collapse">
                     <ul class="nav">
-                      <li class="active"><a href="#">Home</a></li>
-                      <li><a href="#">Link</a></li>
-                      <li><a href="#">Link</a></li>
+                      <li class="active"><a href="#">Inicio</a></li>
+                      <li><a href="#">Enlace</a></li>
+                      <li><a href="#">Enlace</a></li>
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -1351,7 +1349,7 @@
                       <input type="text" class="search-query span2" placeholder="Search">
                     </form>
                     <ul class="nav pull-right">
-                      <li><a href="#">Link</a></li>
+                      <li><a href="#">Enlace</a></li>
                       <li class="divider-vertical"></li>
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -1404,7 +1402,7 @@
           </div>
 <pre class="prettyprint linenums">
 &lt;ul class="breadcrumb"&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Inicio&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#"&gt;Library&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;&lt;/li&gt;
   &lt;li class="active"&gt;Data&lt;/li&gt;
 &lt;/ul&gt;
@@ -1457,7 +1455,7 @@
           <h2>Options</h2>
 
           <h3>Disabled and active states</h3>
-          <p>Links are customizable for different circumstances. Use <code>.disabled</code> for unclickable links and <code>.active</code> to indicate the current page.</p>
+          <p>Links are customizable for different circumstances. Use <code>.disabled</code> for unEnlace cliqueables and <code>.active</code> to indicate the current page.</p>
           <div class="bs-docs-example">
             <div class="pagination pagination-centered">
               <ul>
