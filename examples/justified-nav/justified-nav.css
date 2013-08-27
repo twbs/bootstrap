@@ -27,6 +27,7 @@ body {
   border: 1px solid #ccc;
 }
 .nav-justified > li > a {
+  margin-bottom: 0;
   padding-top: 15px;
   padding-bottom: 15px;
   color: #777;
