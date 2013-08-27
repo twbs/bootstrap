@@ -740,8 +740,9 @@ img { max-width: none; }
 </body>
 {% endhighlight %}
 
-    <h3>Nested headers</h3>
-    <p>Another "gotcha" has to do with how you nest your <code>&lt;header&gt;</code> elements. <a href="http://squizlabs.github.io/HTML_CodeSniffer/Standards/Section508/">Section 508</a> states that your largest header must be an <code>h1</code>, and the next header must be an <code>&lt;h2&gt;</code>, etc. This is hard to achieve in practice, but if the largest header on your site is smaller than Bootstrap's default 38px, you should consider modifying your stylesheets before using a smaller header element.</p>
+    <h3>Nested headings</h3>
+    <p>When nesting headings (<code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code>), your primary document header should be an <code>&lt;h1&gt;</code>. Subsequent headings should make logical use of <code>&lt;h2&gt;</code> - <code>&lt;h6&gt;</code> such that screen readers can construct a table of contents for your pages.</p>
+    <p>Learn more at <a href="http://squizlabs.github.io/HTML_CodeSniffer/Standards/Section508/">HTML CodeSniffer</a> and <a href="http://accessibility.psu.edu/headings">Penn State's AccessAbility</a>.</p>
 
     <h3>Additional resources</h3>
     <ul>
