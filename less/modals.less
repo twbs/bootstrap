@@ -27,9 +27,9 @@
   overflow-y: scroll;
   position: fixed;
   top: 0;
-  right: 0;
+  .right(0);
   bottom: 0;
-  left: 0;
+  .left(0);
   z-index: @zindex-modal-background;
 
   // When fading in the modal, animate it to slide down
@@ -42,8 +42,8 @@
 
 // Shell div to position the modal with bottom padding
 .modal-dialog {
-  margin-left: auto;
-  margin-right: auto;
+  .margin-left(auto);
+  .margin-right(auto);
   width: auto;
   padding: 10px;
   z-index: (@zindex-modal-background + 10);
@@ -66,9 +66,9 @@
 .modal-backdrop {
   position: fixed;
   top: 0;
-  right: 0;
+  .right(0);
   bottom: 0;
-  left: 0;
+  .left(0);
   z-index: (@zindex-modal-background - 10);
   background-color: @modal-backdrop-bg;
   // Fade for backdrop
@@ -105,22 +105,22 @@
 .modal-footer {
   margin-top: 15px;
   padding: (@modal-inner-padding - 1) @modal-inner-padding @modal-inner-padding;
-  text-align: right; // right align buttons
+  .text-align(right); // right align buttons
   border-top: 1px solid @modal-footer-border-color;
   .clearfix(); // clear it in case folks use .pull-* classes on buttons
 
   // Properly space out buttons
   .btn + .btn {
-    margin-left: 5px;
+    .margin-left(5px);
     margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
   }
   // but override that for button groups
   .btn-group .btn + .btn {
-    margin-left: -1px;
+    .margin-left(-1px);
   }
   // and override it for block buttons as well
   .btn-block + .btn-block {
-    margin-left: 0;
+    .margin-left(0);
   }
 }
 
@@ -128,8 +128,8 @@
 @media screen and (min-width: @screen-sm) {
 
   .modal-dialog {
-    left: 50%;
-    right: auto;
+    .left(50%);
+    .right(auto);
     width: 600px;
     padding-top: 30px;
     padding-bottom: 30px;

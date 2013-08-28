@@ -11,7 +11,7 @@
   display: none;
   max-width: @popover-max-width;
   padding: 1px;
-  text-align: left; // Reset given new insertion method
+  .text-align(left); // Reset given new insertion method
   background-color: @popover-bg;
   background-clip: padding-box;
   border: 1px solid @popover-fallback-border-color;
@@ -69,8 +69,8 @@
 
 .popover {
   &.top .arrow {
-    left: 50%;
-    margin-left: -@popover-arrow-outer-width;
+    .left(50%);
+    .margin-left(-@popover-arrow-outer-width);
     border-bottom-width: 0;
     border-top-color: @popover-arrow-outer-fallback-color; // IE8 fallback
     border-top-color: @popover-arrow-outer-color;
@@ -78,7 +78,7 @@
     &:after {
       content: " ";
       bottom: 1px;
-      margin-left: -@popover-arrow-width;
+      .margin-left(-@popover-arrow-width);
       border-bottom-width: 0;
       border-top-color: @popover-arrow-color;
     }
@@ -99,8 +99,8 @@
     }
   }
   &.bottom .arrow {
-    left: 50%;
-    margin-left: -@popover-arrow-outer-width;
+    .left(50%);
+    .margin-left(-@popover-arrow-outer-width);
     border-top-width: 0;
     border-bottom-color: @popover-arrow-outer-fallback-color; // IE8 fallback
     border-bottom-color: @popover-arrow-outer-color;
@@ -108,7 +108,7 @@
     &:after {
       content: " ";
       top: 1px;
-      margin-left: -@popover-arrow-width;
+      .margin-left(-@popover-arrow-width);
       border-top-width: 0;
       border-bottom-color: @popover-arrow-color;
     }

@@ -33,7 +33,7 @@
   .clearfix();
 
   @media (min-width: @grid-float-breakpoint) {
-    float: left;
+    .float(left);
   }
 }
 
@@ -51,8 +51,8 @@
 .navbar-collapse {
   max-height: 340px;
   overflow-x: visible;
-  padding-right: @navbar-padding-horizontal;
-  padding-left:  @navbar-padding-horizontal;
+  .padding-right(@navbar-padding-horizontal);
+  .padding-left( @navbar-padding-horizontal);
   border-top: 1px solid transparent;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
   .clearfix();
@@ -80,13 +80,13 @@
 
     // Account for first and last children spacing
     .navbar-nav.navbar-left:first-child {
-      margin-left: -@navbar-padding-horizontal;
+      .margin-left(-@navbar-padding-horizontal);
     }
     .navbar-nav.navbar-right:last-child {
-      margin-right: -@navbar-padding-horizontal;
+      .margin-right(-@navbar-padding-horizontal);
     }
     .navbar-text:last-child {
-      margin-right: 0;
+      .margin-right(0);
     }
   }
 }
@@ -98,12 +98,12 @@
 
 .container > .navbar-header,
 .container > .navbar-collapse {
-  margin-right: -@navbar-padding-horizontal;
-  margin-left:  -@navbar-padding-horizontal;
+  .margin-right(-@navbar-padding-horizontal);
+  .margin-left( -@navbar-padding-horizontal);
 
   @media (min-width: @grid-float-breakpoint) {
-    margin-right: 0;
-    margin-left:  0;
+    .margin-right(0);
+    .margin-left( 0);
   }
 }
 
@@ -126,8 +126,8 @@
 .navbar-fixed-top,
 .navbar-fixed-bottom {
   position: fixed;
-  right: 0;
-  left: 0;
+  .right(0);
+  .left(0);
   border-width: 0 0 1px;
 
   // Undo the rounded corners
@@ -148,7 +148,7 @@
 // Brand/project name
 
 .navbar-brand {
-  float: left;
+  .float(left);
   padding: @navbar-padding-vertical @navbar-padding-horizontal;
   font-size: @font-size-large;
   line-height: @line-height-computed;
@@ -159,7 +159,7 @@
 
   @media (min-width: @grid-float-breakpoint) {
     .navbar > .container & {
-      margin-left: -@navbar-padding-horizontal;
+      .margin-left(-@navbar-padding-horizontal);
     }
   }
 }
@@ -172,8 +172,8 @@
 
 .navbar-toggle {
   position: relative;
-  float: right;
-  margin-right: @navbar-padding-horizontal;
+  .float(right);
+  .margin-right(@navbar-padding-horizontal);
   padding: 9px 10px;
   .navbar-vertical-align(34px);
   background-color: transparent;
@@ -237,11 +237,11 @@
 
   // Uncollapse the nav
   @media (min-width: @grid-float-breakpoint) {
-    float: left;
+    .float(left);
     margin: 0;
 
     > li {
-      float: left;
+      .float(left);
       > a {
         padding-top: ((@navbar-height - @line-height-computed) / 2);
         padding-bottom: ((@navbar-height - @line-height-computed) / 2);
@@ -270,8 +270,8 @@
 // our navbars.
 
 .navbar-form {
-  margin-left: -@navbar-padding-horizontal;
-  margin-right: -@navbar-padding-horizontal;
+  .margin-left(-@navbar-padding-horizontal);
+  .margin-right(-@navbar-padding-horizontal);
   padding: 10px @navbar-padding-horizontal;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
@@ -294,8 +294,8 @@
   @media (min-width: @grid-float-breakpoint) {
     width: auto;
     border: 0;
-    margin-left: 0;
-    margin-right: 0;
+    .margin-left(0);
+    .margin-right(0);
     padding-top: 0;
     padding-bottom: 0;
     .box-shadow(none);
@@ -318,8 +318,8 @@
 // Right aligned menus need alt position
 .navbar-nav.pull-right > li > .dropdown-menu,
 .navbar-nav > li > .dropdown-menu.pull-right {
-  left: auto;
-  right: 0;
+  .left(auto);
+  .right(0);
 }
 
 
@@ -337,12 +337,12 @@
 // Add a class to make any element properly align itself vertically within the navbars.
 
 .navbar-text {
-  float: left;
+  .float(left);
   .navbar-vertical-align(@line-height-computed);
 
   @media (min-width: @grid-float-breakpoint) {
-    margin-left: @navbar-padding-horizontal;
-    margin-right: @navbar-padding-horizontal;
+    .margin-left(@navbar-padding-horizontal);
+    .margin-right(@navbar-padding-horizontal);
   }
 }
 

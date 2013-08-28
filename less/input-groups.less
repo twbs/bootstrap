@@ -12,8 +12,8 @@
   // Undo padding and float of grid classes
   &.col {
     float: none;
-    padding-left: 0;
-    padding-right: 0;
+    .padding-left(0);
+    .padding-right(0);
   }
 
   .form-control {
@@ -94,7 +94,7 @@
   .border-right-radius(0);
 }
 .input-group-addon:first-child {
-  border-right: 0;
+  .border-right(0);
 }
 .input-group .form-control:last-child,
 .input-group-addon:last-child,
@@ -104,7 +104,7 @@
   .border-left-radius(0);
 }
 .input-group-addon:last-child {
-  border-left: 0;
+  .border-left(0);
 }
 
 // Button input groups
@@ -117,7 +117,7 @@
   position: relative;
   // Jankily prevent input button groups from wrapping
   + .btn {
-    margin-left: -4px;
+    .margin-left(-4px);
   }
   // Bring the "active" button to the front
   &:hover,
