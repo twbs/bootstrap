@@ -1,6 +1,6 @@
 # A customized bootstrap css
 
-[Demo web site](http://michaelliao.github.io/bootstrap/index.html)
+Please see [demo web site](http://michaelliao.github.io/bootstrap/index.html)
 
 ## Copyright and license
 
