@@ -16,8 +16,8 @@
   > .item {
     display: none;
     position: relative;
-    .transition(.6s ease-in-out left);
-
+    .carousel-transition(.6s ease-in-out);
+    
     // Account for jankitude on images
     > img,
     > a > img {
@@ -206,4 +206,12 @@
   .carousel-indicators {
     bottom: 20px;
   }
+}
+
+// until LESS allow mixin with @content
+.carousel-transition(@time-ease) when (@text-direction = ltr) {
+  .transition( @time-ease left);
+}
+.carousel-transition(@time-ease) when (@text-direction = rtl) {
+  .transition( @time-ease right);
 }

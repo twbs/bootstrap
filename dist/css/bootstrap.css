@@ -7,13 +7,6 @@
  *
  * Designed and built with all the love in the world by @mdo and @fat.
  */
-/* uncomment
-@text-direction         : ltr;
-@bi-app-left            : left;
-@bi-app-right           : right;
-@bi-app-direction       : ltr;
-@bi-app-invert-direction: rtl;
-//*/
 .bi-app-float-left {
   float: right;
 }
@@ -3025,8 +3018,6 @@ input[type="button"].btn-block {
   margin-right: 0;
 }
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
   -webkit-border-top-left-radius: 0;
   border-top-left-radius: 0;
   -webkit-border-bottom-left-radius: 0;
@@ -3034,8 +3025,6 @@ input[type="button"].btn-block {
 }
 .btn-group > .btn:last-child:not(:first-child),
 .btn-group > .dropdown-toggle:not(:first-child) {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
   -webkit-border-top-right-radius: 0;
   border-top-right-radius: 0;
   -webkit-border-bottom-right-radius: 0;
@@ -3049,16 +3038,12 @@ input[type="button"].btn-block {
 }
 .btn-group > .btn-group:first-child > .btn:last-child,
 .btn-group > .btn-group:first-child > .dropdown-toggle {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
   -webkit-border-top-left-radius: 0;
   border-top-left-radius: 0;
   -webkit-border-bottom-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 .btn-group > .btn-group:last-child > .btn:first-child {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
   -webkit-border-top-right-radius: 0;
   border-top-right-radius: 0;
   -webkit-border-bottom-right-radius: 0;
@@ -3297,8 +3282,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .input-group-btn:first-child > .btn,
 .input-group-btn:first-child > .dropdown-toggle,
 .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
   -webkit-border-top-left-radius: 0;
   border-top-left-radius: 0;
   -webkit-border-bottom-left-radius: 0;
@@ -3312,8 +3295,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .input-group-btn:last-child > .btn,
 .input-group-btn:last-child > .dropdown-toggle,
 .input-group-btn:first-child > .btn:not(:first-child) {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
   -webkit-border-top-right-radius: 0;
   border-top-right-radius: 0;
   -webkit-border-bottom-right-radius: 0;
@@ -4160,8 +4141,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pagination > li:first-child > a,
 .pagination > li:first-child > span {
   margin-right: 0;
-  border-bottom-left-radius: 4px;
-  border-top-left-radius: 4px;
   -webkit-border-top-right-radius: 4px;
   border-top-right-radius: 4px;
   -webkit-border-bottom-right-radius: 4px;
@@ -4169,8 +4148,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .pagination > li:last-child > a,
 .pagination > li:last-child > span {
-  border-bottom-right-radius: 4px;
-  border-top-right-radius: 4px;
   -webkit-border-top-left-radius: 4px;
   border-top-left-radius: 4px;
   -webkit-border-bottom-left-radius: 4px;
@@ -4212,8 +4189,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .pagination-lg > li:first-child > a,
 .pagination-lg > li:first-child > span {
-  border-bottom-left-radius: 6px;
-  border-top-left-radius: 6px;
   -webkit-border-top-right-radius: 6px;
   border-top-right-radius: 6px;
   -webkit-border-bottom-right-radius: 6px;
@@ -4221,8 +4196,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .pagination-lg > li:last-child > a,
 .pagination-lg > li:last-child > span {
-  border-bottom-right-radius: 6px;
-  border-top-right-radius: 6px;
   -webkit-border-top-left-radius: 6px;
   border-top-left-radius: 6px;
   -webkit-border-bottom-left-radius: 6px;
@@ -4235,8 +4208,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .pagination-sm > li:first-child > a,
 .pagination-sm > li:first-child > span {
-  border-bottom-left-radius: 3px;
-  border-top-left-radius: 3px;
   -webkit-border-top-right-radius: 3px;
   border-top-right-radius: 3px;
   -webkit-border-bottom-right-radius: 3px;
@@ -4244,8 +4215,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .pagination-sm > li:last-child > a,
 .pagination-sm > li:last-child > span {
-  border-bottom-right-radius: 3px;
-  border-top-right-radius: 3px;
   -webkit-border-top-left-radius: 3px;
   border-top-left-radius: 3px;
   -webkit-border-bottom-left-radius: 3px;
@@ -4988,7 +4957,7 @@ button.close {
 body.modal-open,
 .modal-open .navbar-fixed-top,
 .modal-open .navbar-fixed-bottom {
-  margin-right: 15px;
+  margin-left: 15px;
 }
 .modal {
   display: none;
@@ -5347,8 +5316,8 @@ body.modal-open,
 .carousel-inner > .item {
   display: none;
   position: relative;
-  -webkit-transition: 0.6s ease-in-out left;
-  transition: 0.6s ease-in-out left;
+  -webkit-transition: 0.6s ease-in-out right;
+  transition: 0.6s ease-in-out right;
 }
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {

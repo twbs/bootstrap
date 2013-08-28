@@ -99,24 +99,6 @@
 // CSS3 PROPERTIES
 // --------------------------------------------------
 
-// Single side border-radius
-.border-top-radius(@radius) {
-  border-top-right-radius: @radius;
-   border-top-left-radius: @radius;
-}
-.border-right-radius(@radius) {
-  border-bottom-right-radius: @radius;
-     border-top-right-radius: @radius;
-}
-.border-bottom-radius(@radius) {
-  border-bottom-right-radius: @radius;
-   border-bottom-left-radius: @radius;
-}
-.border-left-radius(@radius) {
-  border-bottom-left-radius: @radius;
-     border-top-left-radius: @radius;
-}
-
 // Drop shadows
 .box-shadow(@shadow) {
   -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
@@ -741,4 +723,305 @@
   textarea& {
     height: auto;
   }
+}
+
+
+// ------------------------------------------
+// Bi app mixins (https://github.com/anasnakawa/bi-app-less)
+// ------------------------------------------
+
+// padding
+// ------------------------------------------
+.padding-left(@distance) when (@bi-app-left = left) {
+  padding-left: @distance;
+}
+
+.padding-left(@distance) when (@bi-app-left = right) {
+  padding-right: @distance;
+}
+
+.padding-right(@distance) when (@bi-app-right = right) {
+  padding-right: @distance;
+}
+
+.padding-right(@distance) when (@bi-app-right = left) {
+  padding-left: @distance;
+}
+
+.padding(@top, @right, @bottom, @left) when (@bi-app-left = left) {
+  padding: @top @right @bottom @left;
+}
+
+.padding(@top, @right, @bottom, @left) when (@bi-app-left = right) {
+  padding: @top @left @bottom @right;
+}
+
+.padding(@values) {
+  padding: @values;
+}
+
+// margin
+// ------------------------------------------
+.margin-left(@distance) when (@bi-app-left = left) {
+  margin-left: @distance;
+}
+
+.margin-left(@distance) when (@bi-app-left = right) {
+  margin-right: @distance;
+}
+
+.margin-right(@distance) when (@bi-app-right = right) {
+  margin-right: @distance;
+}
+
+.margin-right(@distance) when (@bi-app-right = left) {
+  margin-left: @distance;
+}
+
+.margin(@top, @right, @bottom, @left) when (@bi-app-left = left) {
+  margin: @top @right @bottom @left;
+}
+
+.margin(@top, @right, @bottom, @left) when (@bi-app-left = right) {
+  margin: @top @left @bottom @right;
+}
+
+// float
+// ------------------------------------------
+.bi-app-float-left {
+  float: @bi-app-left;
+}
+
+.bi-app-float-right {
+  float: @bi-app-right;
+}
+
+.float(@direction) when (@direction = left) {
+  .bi-app-float-left;
+}
+
+.float(@direction) when (@direction = right) {
+  .bi-app-float-right;
+}
+
+// text-align
+// ------------------------------------------
+.bi-app-text-align-left {
+  text-align: @bi-app-left;
+}
+
+.bi-app-text-align-right {
+  text-align: @bi-app-right;
+}
+
+.text-align(@direction) when (@direction = left) {
+  .bi-app-text-align-left;
+}
+
+.text-align(@direction) when (@direction = right) {
+  .bi-app-text-align-right;
+}
+
+// clear
+// ------------------------------------------
+.bi-app-clear-left {
+  clear: @bi-app-left;
+}
+
+.bi-app-clear-right {
+  clear: @bi-app-right;
+}
+
+.clear(@direction) when (@direction = left) {
+  .bi-app-clear-left;
+}
+
+.clear(@direction) when (@direction = right) {
+  .bi-app-clear-right;
+}
+
+// left / right
+// ------------------------------------------
+.left(@distance) when (@bi-app-left = left) {
+  left: @distance;
+}
+
+.left(@distance) when (@bi-app-left = right) {
+  right: @distance;
+}
+
+.right(@distance) when (@bi-app-right = right) {
+  right: @distance;
+}
+
+.right(@distance) when (@bi-app-right = left) {
+  left: @distance;
+}
+
+// border
+// ------------------------------------------
+
+// width
+.border-left-width(@width) when (@bi-app-left = left) {
+  border-left-width: @width;
+}
+
+.border-left-width(@width) when (@bi-app-left = right) {
+  border-right-width: @width;
+}
+
+.border-right-width(@width) when (@bi-app-right = right) {
+  border-right-width: @width;
+}
+
+.border-right-width(@width) when (@bi-app-right = left) {
+  border-left-width: @width;
+}
+
+.border-width(@top, @right, @bottom, @left) when (@bi-app-left = left) {
+  border-width: @top @right @bottom @left;
+}
+
+.border-width(@top, @right, @bottom, @left) when (@bi-app-left = right) {
+  border-width: @top @left @bottom @right;
+}
+
+// style
+.border-left-style(@style) when (@bi-app-left = left) {
+  border-left-style: @style;
+}
+
+.border-left-style(@style) when (@bi-app-left = right) {
+  border-right-style: @style;
+}
+
+.border-right-style(@style) when (@bi-app-right = right) {
+  border-right-style: @style;
+}
+
+.border-right-style(@style) when (@bi-app-right = left) {
+  border-left-style: @style;
+}
+
+.border-style(@top, @right, @bottom, @left) when (@bi-app-left = left) {
+  border-style: @top @right @bottom @left;
+}
+
+.border-style(@top, @right, @bottom, @left) when (@bi-app-left = right) {
+  border-style: @top @left @bottom @right;
+}
+
+// color
+.border-left-color(@color) when (@bi-app-left = left) {
+  border-left-color: @color;
+}
+
+.border-left-color(@color) when (@bi-app-left = right) {
+  border-right-color: @color;
+}
+
+.border-right-color(@color) when (@bi-app-right = right) {
+  border-right-color: @color;
+}
+
+.border-right-color(@color) when (@bi-app-right = left) {
+  border-left-color: @color;
+}
+
+.border-color(@top, @right, @bottom, @left) when (@bi-app-left = left) {
+  border-color: @top @right @bottom @left;
+}
+
+.border-color(@top, @right, @bottom, @left) when (@bi-app-left = right) {
+  border-color: @top @left @bottom @right;
+}
+
+// generic border
+.border-left(@border) when (@bi-app-left = left) {
+  border-left: @border;
+}
+
+.border-left(@border) when (@bi-app-left = right) {
+  border-right: @border;
+}
+
+.border-right(@border) when (@bi-app-right = right) {
+  border-right: @border;
+}
+
+.border-right(@border) when (@bi-app-right = left) {
+  border-left: @border;
+}
+
+// radius
+.border-top-left-radius(@radius) when (@bi-app-left = left) {
+  -webkit-border-top-left-radius: @radius;
+          border-top-left-radius: @radius;
+}
+
+.border-top-left-radius(@radius) when (@bi-app-left = right) {
+  -webkit-border-top-right-radius: @radius;
+          border-top-right-radius: @radius;
+}
+
+.border-top-right-radius(@radius) when (@bi-app-right = right) {
+  -webkit-border-top-right-radius: @radius;
+          border-top-right-radius: @radius;
+}
+
+.border-top-right-radius(@radius) when (@bi-app-right = left) {
+  -webkit-border-top-left-radius: @radius;
+          border-top-left-radius: @radius;
+}
+
+.border-bottom-left-radius(@radius) when (@bi-app-left = left) {
+  -webkit-border-bottom-left-radius: @radius;
+          border-bottom-left-radius: @radius;
+}
+
+.border-bottom-left-radius(@radius) when (@bi-app-left = right) {
+  -webkit-border-bottom-right-radius: @radius;
+          border-bottom-right-radius: @radius;
+}
+
+.border-bottom-right-radius(@radius) when (@bi-app-right = right) {
+  -webkit-border-bottom-right-radius: @radius;
+          border-bottom-right-radius: @radius;
+}
+
+.border-bottom-right-radius(@radius) when (@bi-app-right = left) {
+  -webkit-border-bottom-left-radius: @radius;
+          border-bottom-left-radius: @radius;
+}
+
+.border-right-radius(@radius) {
+  .border-top-right-radius(@radius);
+  .border-bottom-right-radius(@radius);
+}
+
+.border-left-radius(@radius) {
+  .border-top-left-radius(@radius);
+  .border-bottom-left-radius(@radius);
+}
+
+.border-top-radius(@radius) {
+  .border-top-left-radius(@radius);
+  .border-top-right-radius(@radius);
+}
+
+.border-bottom-radius(@radius) {
+  .border-bottom-left-radius(@radius);
+  .border-bottom-right-radius(@radius);
+}
+
+.border-radius(@topLeft, @topRight: null, @bottomRight: null, @bottomLeft: null) when (@topRight = null) {
+  -webkit-border-radius: @topLeft;
+          border-radius: @topLeft;
+}
+
+.border-radius(@topLeft, @topRight: null, @bottomRight: null, @bottomLeft: null) when not (@topRight = null) {
+  .border-top-left-radius(@topLeft);
+  .border-top-right-radius(@topRight);
+  .border-bottom-right-radius(@bottomRight);
+  .border-bottom-left-radius(@bottomLeft);
 }

@@ -31,28 +31,16 @@
 @text-color:            @gray-dark;
 
 
-// Bi App LTR
+// Bi App 
 // -------------------------
 
-/* uncomment
-@text-direction         : ltr;
-@bi-app-left            : left;
-@bi-app-right           : right;
-@bi-app-direction       : ltr;
-@bi-app-invert-direction: rtl;
-//*/
+// ltr or rtl
+@text-direction:        rtl;
 
-
-// Bi App RTL
-// -------------------------
-
-@text-direction         : rtl;
-@bi-app-left            : right;
-@bi-app-right           : left;
-@bi-app-direction       : rtl;
-@bi-app-invert-direction: ltr;
-//*/
-
+@bi-app-left            : ~`"@{text-direction}" === 'ltr' ? 'left'  : 'right'`;
+@bi-app-right           : ~`"@{text-direction}" === 'ltr' ? 'right' : 'left'`;
+@bi-app-direction       : @text-direction;
+@bi-app-invert-direction: ~`"@{text-direction}" === 'ltr' ? 'rtl' : 'ltr'`;
 
 // Links
 // -------------------------
