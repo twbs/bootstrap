@@ -17,6 +17,235 @@
 }
 
 // ----------------------------------------------------------------------------
+// Bootstrap Navbar Red Theme
+// ----------------------------------------------------------------------------
+
+@navRed: #b61824;
+
+.navbar-red {
+
+  .navbar-inner {
+    #gradient > .vertical(darken(@navRed, 5%), @navRed);
+    border-color: @navRed;
+    font-size: 16px;
+  }
+
+  .brand,
+  .nav > li > a {
+    color: @white;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    &:hover,
+    &:focus {
+      color: @white;
+    }
+  }
+
+  .brand {
+    color: @white;
+  }
+
+  .navbar-text {
+    color: @white;
+  }
+
+  .nav > li > a:focus,
+  .nav > li > a:hover {
+    background-color: darken(@navRed, 10%);
+    #gradient > .vertical(darken(@navRed, 10%), darken(@navRed, 5%));
+    color: @white;
+  }
+
+  .nav .active > a,
+  .nav .active > a:hover,
+  .nav .active > a:focus {
+    color: @white;
+    background-color: darken(@navRed, 20%);
+    #gradient > .vertical(darken(@navRed, 15%), darken(@navRed, 10%));
+  }
+
+  // Inline text links
+  .navbar-link {
+    color: @white;
+    &:hover,
+    &:focus {
+      color: @white;
+    }
+  }
+
+  // Dividers in navbar
+  .divider-vertical {
+    border-left-color: darken(@navRed, 15%);
+    border-right-color: lighten(@navRed, 5%);
+  }
+
+  // Dropdowns
+  .nav li.dropdown.open > .dropdown-toggle,
+  .nav li.dropdown.active > .dropdown-toggle,
+  .nav li.dropdown.open.active > .dropdown-toggle {
+    background-color: @navRed;
+    color: @white;
+  }
+  .nav li.dropdown > a:hover .caret,
+  .nav li.dropdown > a:focus .caret {
+    border-top-color: @white;
+    border-bottom-color: @white;
+  }
+  .nav li.dropdown > .dropdown-toggle .caret {
+    border-top-color: @white;
+    border-bottom-color: @white;
+  }
+  .nav li.dropdown.open > .dropdown-toggle .caret,
+  .nav li.dropdown.active > .dropdown-toggle .caret,
+  .nav li.dropdown.open.active > .dropdown-toggle .caret {
+    border-top-color: @white;
+    border-bottom-color: @white;
+  }
+
+  // Navbar search
+  .navbar-search {
+    .search-query {
+      color: @white;
+      background-color: @navbarInverseSearchBackground;
+      border-color: @navbarInverseSearchBorder;
+      .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15)");
+      .transition(none);
+      .placeholder(@navbarInverseSearchPlaceholderColor);
+
+      // Focus states (we use .focused since IE7-8 and down doesn't support :focus)
+      &:focus,
+      &.focused {
+        padding: 5px 15px;
+        color: @grayDark;
+        text-shadow: 0 1px 0 @white;
+        background-color: @navbarInverseSearchBackgroundFocus;
+        border: 0;
+        .box-shadow(0 0 3px rgba(0,0,0,.15));
+        outline: 0;
+      }
+    }
+  }
+
+  // Navbar collapse button
+  .btn-navbar {
+    .buttonBackground(darken(@navbarInverseBackgroundHighlight, 5%), darken(@navbarInverseBackground, 5%));
+  }
+
+}
+
+// ----------------------------------------------------------------------------
+// Bootstrap Navbar Blue Theme
+// ----------------------------------------------------------------------------
+
+.navbar-blue {
+
+  .navbar-inner {
+    #gradient > .vertical(darken(@linkColor, 5%), @linkColor);
+    border-color: @linkColor;
+  }
+
+  .brand,
+  .nav > li > a {
+    color: @white;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    &:hover,
+    &:focus {
+      color: @white;
+    }
+  }
+
+  .brand {
+    color: @white;
+  }
+
+  .navbar-text {
+    color: @white;
+  }
+
+  .nav > li > a:focus,
+  .nav > li > a:hover {
+    background-color: darken(@linkColor, 10%);
+    #gradient > .vertical(darken(@linkColor, 10%), darken(@linkColor, 5%));
+    color: @white;
+  }
+
+  .nav .active > a,
+  .nav .active > a:hover,
+  .nav .active > a:focus {
+    color: @white;
+    background-color: darken(@linkColor, 20%);
+    #gradient > .vertical(darken(@linkColor, 15%), darken(@linkColor, 10%));
+  }
+
+  // Inline text links
+  .navbar-link {
+    color: @white;
+    &:hover,
+    &:focus {
+      color: @white;
+    }
+  }
+
+  // Dividers in navbar
+  .divider-vertical {
+    border-left-color: darken(@linkColor, 15%);
+    border-right-color: lighten(@linkColor, 5%);
+  }
+
+  // Dropdowns
+  .nav li.dropdown.open > .dropdown-toggle,
+  .nav li.dropdown.active > .dropdown-toggle,
+  .nav li.dropdown.open.active > .dropdown-toggle {
+    background-color: @linkColor;
+    color: @white;
+  }
+  .nav li.dropdown > a:hover .caret,
+  .nav li.dropdown > a:focus .caret {
+    border-top-color: @white;
+    border-bottom-color: @white;
+  }
+  .nav li.dropdown > .dropdown-toggle .caret {
+    border-top-color: @white;
+    border-bottom-color: @white;
+  }
+  .nav li.dropdown.open > .dropdown-toggle .caret,
+  .nav li.dropdown.active > .dropdown-toggle .caret,
+  .nav li.dropdown.open.active > .dropdown-toggle .caret {
+    border-top-color: @white;
+    border-bottom-color: @white;
+  }
+
+  // Navbar search
+  .navbar-search {
+    .search-query {
+      color: @white;
+      background-color: @navbarInverseSearchBackground;
+      border-color: @navbarInverseSearchBorder;
+      .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15)");
+      .transition(none);
+      .placeholder(@navbarInverseSearchPlaceholderColor);
+
+      // Focus states (we use .focused since IE7-8 and down doesn't support :focus)
+      &:focus,
+      &.focused {
+        padding: 5px 15px;
+        color: @grayDark;
+        text-shadow: 0 1px 0 @white;
+        background-color: @navbarInverseSearchBackgroundFocus;
+        border: 0;
+        .box-shadow(0 0 3px rgba(0,0,0,.15));
+        outline: 0;
+      }
+    }
+  }
+
+  // Navbar collapse button
+  .btn-navbar {
+    .buttonBackground(darken(@navbarInverseBackgroundHighlight, 5%), darken(@navbarInverseBackground, 5%));
+  }
+
+}
+
+// ----------------------------------------------------------------------------
 // Panel
 // ----------------------------------------------------------------------------
 
@@ -443,119 +672,6 @@
     margin-left:-5px;
     margin-right:-5px;
   }
-}
-
-// ----------------------------------------------------------------------------
-// Bootstrap Navbar Blue Theme
-// ----------------------------------------------------------------------------
-
-.navbar-blue {
-
-  .navbar-inner {
-    #gradient > .vertical(darken(@linkColor, 5%), @linkColor);
-    border-color: @linkColor;
-  }
-
-  .brand,
-  .nav > li > a {
-    color: @white;
-    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-    &:hover,
-    &:focus {
-      color: @white;
-    }
-  }
-
-  .brand {
-    color: @white;
-  }
-
-  .navbar-text {
-    color: @white;
-  }
-
-  .nav > li > a:focus,
-  .nav > li > a:hover {
-    background-color: darken(@linkColor, 10%);
-    #gradient > .vertical(darken(@linkColor, 10%), darken(@linkColor, 5%));
-    color: @white;
-  }
-
-  .nav .active > a,
-  .nav .active > a:hover,
-  .nav .active > a:focus {
-    color: @white;
-    background-color: darken(@linkColor, 20%);
-    #gradient > .vertical(darken(@linkColor, 15%), darken(@linkColor, 10%));
-  }
-
-  // Inline text links
-  .navbar-link {
-    color: @white;
-    &:hover,
-    &:focus {
-      color: @white;
-    }
-  }
-
-  // Dividers in navbar
-  .divider-vertical {
-    border-left-color: darken(@linkColor, 15%);
-    border-right-color: lighten(@linkColor, 5%);
-  }
-
-  // Dropdowns
-  .nav li.dropdown.open > .dropdown-toggle,
-  .nav li.dropdown.active > .dropdown-toggle,
-  .nav li.dropdown.open.active > .dropdown-toggle {
-    background-color: @linkColor;
-    color: @white;
-  }
-  .nav li.dropdown > a:hover .caret,
-  .nav li.dropdown > a:focus .caret {
-    border-top-color: @white;
-    border-bottom-color: @white;
-  }
-  .nav li.dropdown > .dropdown-toggle .caret {
-    border-top-color: @white;
-    border-bottom-color: @white;
-  }
-  .nav li.dropdown.open > .dropdown-toggle .caret,
-  .nav li.dropdown.active > .dropdown-toggle .caret,
-  .nav li.dropdown.open.active > .dropdown-toggle .caret {
-    border-top-color: @white;
-    border-bottom-color: @white;
-  }
-
-  // Navbar search
-  .navbar-search {
-    .search-query {
-      color: @white;
-      background-color: @navbarInverseSearchBackground;
-      border-color: @navbarInverseSearchBorder;
-      .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15)");
-      .transition(none);
-      .placeholder(@navbarInverseSearchPlaceholderColor);
-
-      // Focus states (we use .focused since IE7-8 and down doesn't support :focus)
-      &:focus,
-      &.focused {
-        padding: 5px 15px;
-        color: @grayDark;
-        text-shadow: 0 1px 0 @white;
-        background-color: @navbarInverseSearchBackgroundFocus;
-        border: 0;
-        .box-shadow(0 0 3px rgba(0,0,0,.15));
-        outline: 0;
-      }
-    }
-  }
-
-  // Navbar collapse button
-  .btn-navbar {
-    .buttonBackground(darken(@navbarInverseBackgroundHighlight, 5%), darken(@navbarInverseBackground, 5%));
-  }
-
 }
 
 // ----------------------------------------------------------------------------
