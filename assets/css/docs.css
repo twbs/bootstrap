@@ -326,7 +326,7 @@ body {
   height: auto !important;
   font-size: 13px !important;
   line-height: 16px !important;
-  text-align: right; 
+  text-align: left; 
   background: #463265 !important;
   border: 0 !important;
   box-shadow: inset 0 3px 5px rgba(0,0,0,.075);
@@ -340,7 +340,7 @@ body {
   display: block !important;
   width: auto !important;
   height: auto !important;
-  margin-right: 145px !important; 
+  margin-left: 145px !important; 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
 .carbonad-text {
