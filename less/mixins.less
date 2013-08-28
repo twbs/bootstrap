@@ -526,6 +526,8 @@
 // More easily include all the states for responsive-utilities.less.
 .responsive-visibility() {
   display: block !important;
+  &-inline { display: inline !important; }
+  &-inline-block { display: inline-block !important; }
   tr& { display: table-row !important; }
   th&,
   td& { display: table-cell !important; }
@@ -533,6 +535,8 @@
 
 .responsive-invisibility() {
   display: none !important;
+  &-inline { display: none !important; }
+  &-inline-block { display: none !important; }
   tr& { display: none !important; }
   th&,
   td& { display: none !important; }
