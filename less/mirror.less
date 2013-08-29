@@ -1,1 +1,87 @@
- 
+/*!
+ * This is Additional file, Include it only the RTL pages
+ */ 
+
+//
+// Override LTR styles
+//
+
+
+/*
+ * General edits
+ *************************/
+
+//
+// pre tag direction LTR, Because most programming languages ​​are LTR
+//
+
+pre {
+  direction: ltr;
+}
+
+pre.rtl {
+  direction: rtl;
+}
+
+
+/*
+ * normalize.less
+ ************************/
+
+//
+// Set consistent quote types.
+//
+
+q {
+  quotes: "\201D" "\201C" "\2019" "\2018";
+}
+
+
+/*
+ * type.less
+ *******************/
+
+// Description Lists
+dd {
+  margin-right: 0; // Undo browser default
+}
+
+@media (min-width: @grid-float-breakpoint) {
+  .dl-horizontal {
+    dt {
+      float: right;
+      clear: right;
+      text-align: left;
+    }
+    dd {
+      margin-left: 0;
+      margin-right: @component-offset-horizontal;
+    }
+  }
+}
+
+// Blockquotes
+blockquote {
+  border-left: none;
+  border-right: 5px solid @blockquote-border-color;
+
+  // Float right with text-align: right
+  &.pull-left {
+    padding-left: 15px;
+    padding-right: 0;
+    border-left: 5px solid @blockquote-border-color;
+    border-right: 0;
+    p,
+    small {
+      text-align: left;
+    }
+    small {
+      &:before {
+        content: '';
+      }
+      &:after {
+        content: '\00A0 \2014';// NBSP, EM DASH
+      }
+    }
+  }
+}
