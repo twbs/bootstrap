@@ -14,6 +14,11 @@
   vertical-align: baseline;
   border-radius: .25em;
 
+  // for adjacent labels, some spacing is needed
+  + .label {
+    margin-left: .2em;
+  }
+
   // Add hover effects, but only for links
   &[href] {
     &:hover,
