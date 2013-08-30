@@ -538,16 +538,45 @@
   td& { display: none !important; }
 }
 
+.mq-min-width(@min-width, @property, @value) {
+  @media (min-width: @min-width) {
+    @property: @value;
+  }
+}
+
 // Grid System
 // -----------
 
-// Centered container element
-.container-fixed() {
+// Fluid container element
+.make-container(@gutter: @grid-gutter-width; @clearfix: true) when (@clearfix) {
+  .clearfix();
   margin-right: auto;
   margin-left: auto;
-  padding-left:  (@grid-gutter-width / 2);
-  padding-right: (@grid-gutter-width / 2);
+  padding-right: (@gutter / 2);
+  padding-left: (@gutter / 2);
+}
+.make-container(@gutter: @grid-gutter-width; @clearfix: true) {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: (@gutter / 2);
+  padding-left: (@gutter / 2);
+}
+
+// Centered container element
+.make-container-fixed(@gutter: @grid-gutter-width) {
   .clearfix();
+  .make-container-fixed-custom(@screen-sm-min, @container-tablet, @gutter);
+  .make-container-fixed-custom(@screen-md-min, @container-desktop, @gutter);
+  .make-container-fixed-custom(@screen-lg-min, @container-lg-desktop, @gutter);
+}
+
+// Custom centered container element
+.make-container-fixed-custom(@mq-width; @max-width; @gutter: @grid-gutter-width; @clearfix: false) {
+  .make-container(@gutter, @clearfix);
+
+  @media (min-width: @mq-width) {
+    max-width: @max-width;
+  }
 }
 
 // Creates a wrapper for a series of columns
