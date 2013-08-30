@@ -16,7 +16,7 @@ base_url: "../"
     <p class="lead">Bootstrap has a few easy ways to quickly get started, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
 
     <h3 id="download-compiled">Compiled CSS, JS, and fonts</h3>
-    <p>The fastest way to get Bootstrap is to download the precompiled and minified versions of our CSS, JavaScript, and the included fonts. No documentation or original source code files are included.</p>
+    <p>The fastest way to get Bootstrap is to download the precompiled and minified versions of our CSS, JavaScript, and fonts. No documentation or original source code files are included.</p>
     <p><a class="btn btn-lg btn-primary" href="{{ site.download_dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);" role="button">Download precompiled Bootstrap</a></p>
 
     <h3 id="download-additional">Additional downloads</h3>
@@ -24,20 +24,20 @@ base_url: "../"
       <h4>
         <a href="{{ site.download }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download source code</a>
       </h4>
-      <p>Get the original files for all CSS and JavaScript by downloading the full release directly from GitHub.</p>
+      <p>Get the latest Bootstrap CSS and JavaScript source code by downloading it directly from GitHub.</p>
       <h4>
         <a href="{{ site.repo }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'GitHub project']);">Clone or fork via GitHub</a>
       </h4>
-      <p>Clone the entire project or fork your own version of Bootstrap to make it your own by visiting us on GitHub.</p>
+      <p>Visit us on GitHub to clone or fork the Bootstrap project.</p>
       <h4>
         Install with <a href="http://bower.io">Bower</a>
       </h4>
-      <p>Install and manage the original files for all CSS and JavaScript, along with a local copy of the docs, using <a href="http://bower.io">Bower</a>.</p>
+      <p>Install and manage Bootstrap's CSS, JavaScript, and documentation using <a href="http://bower.io">Bower</a>.</p>
       {% highlight bash %}$ bower install bootstrap{% endhighlight %}
     </div>
 
     <h3 id="download-cdn">Bootstrap CDN</h3>
-    <p>The folks over at <a href="https://www.netdna.com/">NetDNA</a> have graciously provided CDN support for Bootstrap's CSS and JavaScript. To use, swap your local instances for the <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links listed below.</p>
+    <p>The folks over at <a href="https://www.netdna.com/">NetDNA</a> graciously provide CDN support for Bootstrap's CSS and JavaScript. Just use these <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links.</p>
 {% highlight html %}
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="{{ site.cdn_css }}">
@@ -50,12 +50,10 @@ base_url: "../"
 {% endhighlight %}
 
     <div class="bs-callout bs-callout-warning" id="callout-less-compilation">
-      <h4>LESS compilation</h4>
-      <p>If you download the original files, you need to compile Bootstrap's LESS files into usable CSS. To do that, Bootstrap only officially supports <a href="http://twitter.github.io/recess/">Recess</a>, Twitter's CSS hinter built on top of <a href="http://lesscss.org">less.js</a>.</p>
+      <h4>Compiling Bootstrap's LESS files</h4>
+      <p>If you work with Bootstrap's uncompiled source code, you need to compile the LESS files to produce usable CSS files. We officially support <a href="http://twitter.github.io/recess/">Recess</a>, which is Twitter's CSS hinter based on <a href="http://lesscss.org">less.js</a>.</p>
     </div>
   </div>
-
-
 
   <!-- File structure
   ================================================== -->
