@@ -16,7 +16,7 @@
     position: relative;
     display: block;
 
-    > a {
+    > a, > span {
       position: relative;
       display: block;
       padding: @nav-link-padding;
@@ -76,7 +76,8 @@
     margin-bottom: -1px;
 
     // Actual tabs (as links)
-    > a {
+    > a, 
+    > span {
       margin-right: 2px;
       line-height: @line-height-base;
       border: 1px solid transparent;
@@ -87,7 +88,8 @@
     }
 
     // Active state, and it's :hover to override normal :hover
-    &.active > a {
+    &.active > a, 
+    &.active > span {
       &,
       &:hover,
       &:focus {
@@ -114,7 +116,8 @@
     float: left;
 
     // Links rendered as pills
-    > a {
+    > a, 
+    > span {
       border-radius: 5px;
     }
     + li {
@@ -122,7 +125,8 @@
     }
 
     // Active state
-    &.active > a {
+    &.active > a, 
+    &.active > span {
       &,
       &:hover,
       &:focus {
@@ -157,7 +161,8 @@
 
   > li {
     float: none;
-     > a {
+     > a, 
+     > span {
       text-align: center;
       margin-bottom: 5px;
     }
@@ -167,7 +172,8 @@
     > li {
       display: table-cell;
       width: 1%;
-      > a {
+      > a, 
+      > span {
         margin-bottom: 0;
       }
     }
@@ -178,7 +184,8 @@
 .nav-tabs-justified {
   border-bottom: 0;
 
-  > li > a {
+  > li > a, 
+  > li > span {
     // Override margin from .nav-tabs
     margin-right: 0;
     border-radius: @border-radius-base;
@@ -191,12 +198,15 @@
   }
 
   @media (min-width: @screen-sm-min) {
-    > li > a {
+    > li > a,
+    > li > span {
       border-bottom: 1px solid @nav-tabs-justified-link-border-color;
       border-radius: @border-radius-base @border-radius-base 0 0;
     }
     > .active > a,
+    > .active > span,
     > .active > a:hover,
+    > .active > span:hover,
     > .active > a:focus {
       border-bottom-color: @nav-tabs-justified-active-link-border-color;
     }
