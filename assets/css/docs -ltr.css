@@ -1,5 +1,5 @@
 /*
- * Bootstrap Documentation (RTL)
+ * Bootstrap Documentation
  * Special styles for presenting Bootstrap's documentation and code examples.
  *
  * Table of contents:
@@ -126,19 +126,19 @@ body {
 }
 .footer-links {
   margin: 10px 0;
-  padding-right: 0; 
+  padding-left: 0;
 }
 .footer-links li {
   display: inline;
   padding: 0 2px;
 }
 .footer-links li:first-child {
-  padding-right: 0; 
+  padding-left: 0;
 }
 
 @media (min-width: 768px) {
   .bs-footer {
-    text-align: right; 
+    text-align: left;
   }
   .bs-footer p {
     margin-bottom: 0;
@@ -160,7 +160,7 @@ body {
 .bs-social-buttons {
   display: inline-block;
   margin-bottom: 0;
-  padding-right: 0; 
+  padding-left: 0;
   list-style: none;
 }
 .bs-social-buttons li {
@@ -182,10 +182,10 @@ body {
 
 @media screen and (min-width: 768px) {
   .bs-social {
-    text-align: right; 
+    text-align: left;
   }
   .bs-social-buttons li:first-child {
-    padding-right: 0; 
+    padding-left: 0;
   }
 }
 
@@ -241,7 +241,7 @@ body {
   display: inline;
 }
 .bs-masthead-links li + li {
-  margin-right: 20px; 
+  margin-left: 20px;
 }
 .bs-masthead-links a {
   color: #fff;
@@ -249,7 +249,7 @@ body {
 
 @media screen and (min-width: 768px) {
   .bs-masthead {
-    text-align: right; 
+    text-align: left;
     padding-top:    140px;
     padding-bottom: 140px;
   }
@@ -257,12 +257,12 @@ body {
     font-size: 100px;
   }
   .bs-masthead .lead {
-    margin-left: 25%; 
+    margin-right: 25%;
     font-size: 30px;
   }
   .bs-masthead-links {
     padding: 0;
-    text-align: right; 
+    text-align: left;
   }
 }
 
@@ -295,7 +295,7 @@ body {
 @media screen and (min-width: 768px) {
   .bs-header {
     font-size: 21px;
-    text-align: right; 
+    text-align: left;
   }
   .bs-header h1 {
     font-size: 60px;
@@ -306,7 +306,7 @@ body {
 @media screen and (min-width: 992px) {
   .bs-header h1,
   .bs-header p {
-    margin-left: 380px; 
+    margin-right: 380px;
   }
 }
 
@@ -326,7 +326,7 @@ body {
   height: auto !important;
   font-size: 13px !important;
   line-height: 16px !important;
-  text-align: left; 
+  text-align: left;
   background: #463265 !important;
   border: 0 !important;
   box-shadow: inset 0 3px 5px rgba(0,0,0,.075);
@@ -340,7 +340,7 @@ body {
   display: block !important;
   width: auto !important;
   height: auto !important;
-  margin-left: 145px !important; 
+  margin-left: 145px !important;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
 .carbonad-text {
@@ -348,7 +348,7 @@ body {
 }
 .carbonad-tag {
   color: #cdbfe3 !important;
-  text-align: left !important; 
+  text-align: left !important;
 }
 .carbonad-text a,
 .carbonad-tag a {
@@ -370,7 +370,7 @@ body {
   .carbonad {
     position: absolute;
     top: 20px;
-    left: 0; 
+    right: 0;
     padding: 15px !important;
     width: 330px !important;
     min-height: 132px;
@@ -430,7 +430,7 @@ body {
 .bs-sidebar .nav > li > a:focus {
   text-decoration: none;
   background-color: #e5e3e9;
-  border-left: 1px solid #dbd8e0; 
+  border-right: 1px solid #dbd8e0;
 }
 .bs-sidebar .nav > .active > a,
 .bs-sidebar .nav > .active:hover > a,
@@ -438,7 +438,7 @@ body {
   font-weight: bold;
   color: #563d7c;
   background-color: transparent;
-  border-left: 1px solid #563d7c; 
+  border-right: 1px solid #563d7c;
 }
 
 /* Nav: second level (shown on .active) */
@@ -449,7 +449,7 @@ body {
 .bs-sidebar .nav .nav > li > a {
   padding-top:    3px;
   padding-bottom: 3px;
-  padding-right: 30px; 
+  padding-left: 30px;
   font-size: 90%;
 }
 
@@ -513,9 +513,8 @@ h1[id] {
 /* Common styles for all types */
 .bs-callout {
   margin: 20px 0;
-  padding: 15px;
-  padding-left: 30px; 
-  border-right: 5px solid #eee; 
+  padding: 15px 30px 15px 15px;
+  border-left: 5px solid #eee;
 }
 .bs-callout h4 {
   margin-top: 0;
@@ -585,7 +584,7 @@ h1[id] {
   content: "Example";
   position: absolute;
   top:  15px;
-  right: 15px; 
+  left: 15px;
   font-size: 12px;
   font-weight: bold;
   color: #bbb;
@@ -603,8 +602,8 @@ h1[id] {
 /* Make the examples and snippets not full-width */
 @media screen and (min-width: 768px) {
   .bs-example {
-    margin-left: 0; 
-    margin-right: 0; 
+    margin-left: 0;
+    margin-right: 0;
     background-color: #fff;
     border-width: 1px;
     border-color: #ddd;
@@ -613,8 +612,8 @@ h1[id] {
   }
   .bs-example + .highlight {
     margin-top: -16px;
-    margin-left: 0; 
-    margin-right: 0; 
+    margin-left: 0;
+    margin-right: 0;
     border-width: 1px;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
@@ -709,13 +708,13 @@ h1[id] {
 }
 .bs-navbar-top-example .navbar-header,
 .bs-navbar-bottom-example .navbar-header {
-  margin-right: 0; 
+  margin-left: 0;
 }
 .bs-navbar-top-example .navbar-fixed-top,
 .bs-navbar-bottom-example .navbar-fixed-bottom {
   position: relative;
-  margin-left: 0; 
-  margin-right: 0; 
+  margin-left: 0;
+  margin-right: 0;
 }
 .bs-navbar-top-example {
   padding-bottom: 45px;
@@ -774,9 +773,9 @@ h1[id] {
   display: block;
 }
 .bs-example-modal .modal-dialog {
-  right: auto; 
-  margin-left: auto; 
-  margin-right: auto; 
+  left: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Example dropdowns */
@@ -808,7 +807,7 @@ h1[id] {
 .bs-example-popover .popover {
   position: relative;
   display: block;
-  float: right;
+  float: left;
   width: 260px;
   margin: 20px;
 }
@@ -851,9 +850,9 @@ h1[id] {
 .highlight pre .lineno {
   display: inline-block;
   width: 22px;
-  padding-left: 5px; 
-  margin-left: 10px; 
-  text-align: left; 
+  padding-right: 5px;
+  margin-right: 10px;
+  text-align: right;
   color: #bebec5;
 }
 
@@ -945,14 +944,14 @@ h1[id] {
  */
 
 .bs-glyphicons {
-  padding-right: 0; 
+  padding-left: 0;
   padding-bottom: 1px;
   margin-bottom: 20px;
   list-style: none;
   overflow: hidden;
 }
 .bs-glyphicons li {
-  float: right;
+  float: left;
   width: 25%;
   height: 115px;
   padding: 10px;
@@ -987,7 +986,7 @@ h1[id] {
  */
 
 .bs-customizer .toggle {
-  float: left;
+  float: right;
   margin-top: 85px; /* On account of ghetto navbar fix */
 }
 
@@ -1044,7 +1043,7 @@ h1[id] {
   margin-bottom: 0;
 }
 .bs-customizer-alert .glyphicon {
-  margin-left: 5px; 
+  margin-right: 5px;
 }
 .bs-customizer-alert pre {
   margin: 10px 0 0;

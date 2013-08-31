@@ -179,7 +179,7 @@ output {
   min-height: @line-height-computed; // clear the floating input if there is no label text
   margin-top: 10px;
   margin-bottom: 10px;
-  padding-left: 20px;
+  .padding-left(20px);
   vertical-align: middle;
   label {
     display: inline;
@@ -192,8 +192,8 @@ output {
 .radio-inline input[type="radio"],
 .checkbox input[type="checkbox"],
 .checkbox-inline input[type="checkbox"] {
-  float: left;
-  margin-left: -20px;
+  .float(left);
+  .margin-left(-20px);
 }
 .radio + .radio,
 .checkbox + .checkbox {
@@ -204,7 +204,7 @@ output {
 .radio-inline,
 .checkbox-inline {
   display: inline-block;
-  padding-left: 20px;
+  .padding-left(20px);
   margin-bottom: 0;
   vertical-align: middle;
   font-weight: normal;
@@ -213,7 +213,7 @@ output {
 .radio-inline + .radio-inline,
 .checkbox-inline + .checkbox-inline {
   margin-top: 0;
-  margin-left: 10px; // space out consecutive inline controls
+  .margin-left(10px); // space out consecutive inline controls
 }
 
 // Apply same disabled cursor tweak as for inputs
@@ -319,12 +319,12 @@ input[type="checkbox"],
       display: inline-block;
       margin-top: 0;
       margin-bottom: 0;
-      padding-left: 0;
+      .padding-left(0);
     }
     .radio input[type="radio"],
     .checkbox input[type="checkbox"] {
       float: none;
-      margin-left: 0;
+      .margin-left(0);
     }
   }
 }
@@ -356,7 +356,7 @@ input[type="checkbox"],
   // Only right align form labels here when the columns stop stacking
   @media (min-width: @screen-sm) {
     .control-label {
-      text-align: right;
+      .text-align(right);
     }
   }
 }

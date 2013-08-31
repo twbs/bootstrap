@@ -16,8 +16,8 @@
   > .item {
     display: none;
     position: relative;
-    .transition(.6s ease-in-out left);
-
+    .carousel-transition(.6s ease-in-out);
+    
     // Account for jankitude on images
     > img,
     > a > img {
@@ -31,7 +31,7 @@
   > .prev { display: block; }
 
   > .active {
-    left: 0;
+    .left(0);
   }
 
   > .next,
@@ -42,21 +42,21 @@
   }
 
   > .next {
-    left: 100%;
+    .left(100%);
   }
   > .prev {
-    left: -100%;
+    .left(-100%);
   }
   > .next.left,
   > .prev.right {
-    left: 0;
+    .left(0);
   }
 
   > .active.left {
-    left: -100%;
+    .left(-100%);
   }
   > .active.right {
-    left: 100%;
+    .left(100%);
   }
 
 }
@@ -67,7 +67,7 @@
 .carousel-control {
   position: absolute;
   top: 0;
-  left: 0;
+  .left(0);
   bottom: 0;
   width: @carousel-control-width;
   .opacity(@carousel-control-opacity);
@@ -83,8 +83,8 @@
     #gradient > .horizontal(@start-color: rgba(0,0,0,.5); @end-color: rgba(0,0,0,.0001));
   }
   &.right {
-    left: auto;
-    right: 0;
+    .left(auto);
+    .right(0);
     #gradient > .horizontal(@start-color: rgba(0,0,0,.0001); @end-color: rgba(0,0,0,.5));
   }
 
@@ -103,7 +103,7 @@
   .glyphicon-chevron-right {
     position: absolute;
     top: 50%;
-    left: 50%;
+    .left(50%);
     z-index: 5;
     display: inline-block;
   }
@@ -112,7 +112,7 @@
     width:  20px;
     height: 20px;
     margin-top: -10px;
-    margin-left: -10px;
+    .margin-left(-10px);
     font-family: serif;
   }
 
@@ -136,11 +136,11 @@
 .carousel-indicators {
   position: absolute;
   bottom: 10px;
-  left: 50%;
+  .left(50%);
   z-index: 15;
   width: 60%;
-  margin-left: -30%;
-  padding-left: 0;
+  .margin-left(-30%);
+  .padding-left(0);
   list-style: none;
   text-align: center;
 
@@ -167,8 +167,8 @@
 // Hidden by default for smaller viewports
 .carousel-caption {
   position: absolute;
-  left: 15%;
-  right: 15%;
+  .left(15%);
+  .right(15%);
   bottom: 20px;
   z-index: 10;
   padding-top: 20px;
@@ -191,14 +191,14 @@
     width: 30px;
     height: 30px;
     margin-top: -15px;
-    margin-left: -15px;
+    .margin-left(-15px);
     font-size: 30px;
   }
 
   // Show and left align the captions
   .carousel-caption {
-    left: 20%;
-    right: 20%;
+    .left(20%);
+    .right(20%);
     padding-bottom: 30px;
   }
 
@@ -206,4 +206,12 @@
   .carousel-indicators {
     bottom: 20px;
   }
+}
+
+// until LESS allow mixin with @content
+.carousel-transition(@time-ease) when (@text-direction = ltr) {
+  .transition( @time-ease left);
+}
+.carousel-transition(@time-ease) when (@text-direction = rtl) {
+  .transition( @time-ease right);
 }

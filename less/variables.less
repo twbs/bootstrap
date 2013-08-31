@@ -30,6 +30,18 @@
 @body-bg:               #fff;
 @text-color:            @gray-dark;
 
+
+// Bi App 
+// -------------------------
+
+// ltr or rtl
+@text-direction:        rtl;
+
+@bi-app-left            : ~`"@{text-direction}" === 'ltr' ? 'left'  : 'right'`;
+@bi-app-right           : ~`"@{text-direction}" === 'ltr' ? 'right' : 'left'`;
+@bi-app-direction       : @text-direction;
+@bi-app-invert-direction: ~`"@{text-direction}" === 'ltr' ? 'rtl' : 'ltr'`;
+
 // Links
 // -------------------------
 

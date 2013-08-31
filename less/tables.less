@@ -8,7 +8,7 @@ table {
   background-color: @table-bg;
 }
 th {
-  text-align: left;
+  .text-align(left);
 }
 
 
@@ -219,11 +219,11 @@ table {
         > tr {
           > th:first-child,
           > td:first-child {
-            border-left: 0;
+            .border-left(0);
           }
           > th:last-child,
           > td:last-child {
-            border-right: 0;
+            .border-right(0);
           }
         }
         > tr:last-child {
