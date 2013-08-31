@@ -461,6 +461,8 @@ $('#myModal').on('hidden.bs.modal', function () {
   <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
     Dropdown <span class="caret"></span>
   </a>
+
+
   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
     ...
   </ul>
@@ -819,6 +821,10 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       </div>
     </div><!-- /example -->
 
+    <div class="bs-callout bs-callout-danger">
+      <h4>Opt-in functionality</h4>
+      <p>For performance reasons, the Tooltip and Popover data-apis are opt-in. If you would like to use them just specify a selector option.</p>
+    </div>
     <div class="bs-callout bs-callout-info">
       <h4>Tooltips in button groups and input groups require special setting</h4>
       <p>When using tooltips on elements within a <code>.btn-group</code> or an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> (documented below) to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip is triggered).</p>
@@ -985,6 +991,10 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
       <h4>Plugin dependency</h4>
       <p>Popovers require the <a href="#tooltips">tooltip plugin</a> to be included in your version of Bootstrap.</p>
     </div>
+    <div class="bs-callout bs-callout-danger">
+      <h4>Opt-in functionality</h4>
+      <p>For performance reasons, the Tooltip and Popover data-apis are opt-in. If you would like to use them just specify a selector option.</p>
+    </div>
     <div class="bs-callout bs-callout-info">
       <h4>Popovers in button groups and input groups require special setting</h4>
       <p>When using popovers on elements within a <code>.btn-group</code> or an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> (documented below) to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the popover is triggered).</p>
@@ -1016,6 +1026,7 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
       <div class="popover bottom">
         <div class="arrow"></div>
         <h3 class="popover-title">Popover bottom</h3>
+
         <div class="popover-content">
           <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
         </div>
@@ -1140,9 +1151,6 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
       <h4>Data attributes for individual popovers</h4>
       <p>Options for individual popovers can alternatively be specified through the use of data attributes, as explained above.</p>
     </div>
-
-    <h3>Markup</h3>
-    <p>For performance reasons, the Tooltip and Popover data-apis are opt in. If you would like to use them just specify a selector option.</p>
 
     <h3>Methods</h3>
     <h4>$().popover(options)</h4>
