@@ -316,13 +316,6 @@ textarea {
   line-height: inherit;
 }
 
-button,
-input,
-select[multiple],
-textarea {
-  background-image: none;
-}
-
 a {
   color: #428bca;
   text-decoration: none;
@@ -1724,6 +1717,7 @@ output {
   color: #555555;
   vertical-align: middle;
   background-color: #ffffff;
+  background-image: none;
   border: 1px solid #cccccc;
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -2006,6 +2000,7 @@ textarea.input-lg {
   white-space: nowrap;
   vertical-align: middle;
   cursor: pointer;
+  background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
   -webkit-user-select: none;
