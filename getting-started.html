@@ -13,7 +13,7 @@ base_url: "../"
     <div class="page-header">
       <h1 id="download">Download Bootstrap</h1>
     </div>
-    <p class="lead">There are a few easy ways to quickly get started with Bootstrap, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
+    <p class="lead">Bootstrap has a few easy ways to quickly get started, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
 
     <h3 id="download-compiled">Compiled CSS, JS, and fonts</h3>
     <p>The fastest way to get Bootstrap is to download the compiled and minified versions of our CSS and JavaScript, along with the included fonts. No documentation or original source files are included.</p>
@@ -368,6 +368,10 @@ bootstrap/
             <td><code>.btn-lg</code></td>
           </tr>
           <tr>
+            <td><code>.alert-error</code></td>
+            <td><code>.alert-danger</code></td>
+          </tr>
+          <tr>
             <td><code>.visible-phone</code></td>
             <td><code>.visible-xs</code></td>
           </tr>
@@ -426,6 +430,10 @@ bootstrap/
           <tr>
             <td><code>.muted</code></td>
             <td><code>.text-muted</code></td>
+          </tr>
+          <tr>
+            <td><code>.text-error</code></td>
+            <td><code>.text-danger</code></td>
           </tr>
         </tbody>
       </table>
@@ -672,7 +680,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     <p>For more information and usage guidelines, read <a href="http://timkadlec.com/2013/01/windows-phone-8-and-device-width/">Windows Phone 8 and Device-Width</a>.</p>
 
     <h3>Safari percent rounding</h3>
-    <p>In the latest Safari for Mac, its rendering engine has a little trouble with the long decimal places of our <code>.col-*-1</code> grid classes, meaning if you have 12 individual columns you'll notice they come up short compared to other rows of columns. There's not much we can do here (<a href="https://github.com/twbs/bootstrap/issues/9282">see #9282</a>) but you do have some options:</p>
+    <p>In the latest Safari for Mac, its rendering engine has a little trouble with the long decimal places of our <code>.col-*-1</code> grid classes, meaning if you have 12 individual columns you'll notice they come up short compared to other rows of columns. We can't do much here (<a href="https://github.com/twbs/bootstrap/issues/9282">see #9282</a>) but you do have some options:</p>
     <ul>
       <li>Add <code>.pull-right</code> to your last grid column to get the hard-right alignment</li>
       <li>Tweak your percentages manually to get the perfect rounding for Safari (more difficult than the first option)</li>
@@ -683,7 +691,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     <h4>Overflow and scrolling</h4>
     <p>Support for <code>overflow: hidden</code> on the <code>&lt;body&gt;</code> element is quite limited in iOS and Android. To that end, when you scroll past the top or bottom of a modal in either of those devices' browsers, the <code>&lt;body&gt;</code> content will begin to scroll.</p>
     <h4>Virtual keyboards</h4>
-    <p>Also, note that if you're using inputs in your modal – iOS has a rendering bug which doesn't update the position of fixed elements when the virtual keyboard is triggered. There are a few work arounds for this, including transforming your elements to <code>position: absolute</code> or invoking a timer on focus to try to correct the positioning manually. This is not handled by Bootstrap, so it is up to you to decide which solution is best for your application.</p>
+    <p>Also, note that if you're using inputs in your modal – iOS has a rendering bug that doesn't update the position of fixed elements when the virtual keyboard is triggered. A few work arounds for this include transforming your elements to <code>position: absolute</code> or invoking a timer on focus to try to correct the positioning manually. This is not handled by Bootstrap, so it is up to you to decide which solution is best for your application.</p>
 
     <h3>Browser zooming</h3>
     <p>Page zooming inevitably presents rendering artifacts in some components, both in Bootstrap and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.</p>
@@ -817,7 +825,7 @@ img { max-width: none; }
     <p>From there, include whatever Bootstrap components and HTML content you need to get your template setup. It's best to have a rough idea in mind of modifications to make and content to include, so be sure to spend a brief amount of time on that before moving on.</p>
 
     <h3>Customizing components</h3>
-    <p>There are varying degrees to customizing components, but most fall into two camps: light customizations and complete visual overhauls. Luckily, there are plenty of examples of both.</p>
+    <p>You can customize components to varying degrees, but most fall into two camps: light customizations and complete visual overhauls. Luckily, plenty examples of both are available.</p>
     <p>We define light customizations as mostly surface layer changes, things like a color and font changes to existing Bootstrap components. A great example of this is the the <a href="http://translate.twitter.com">Twitter Translation Center</a> (coded by @mdo). Let's look at how to implement the custom button we wrote for this site, <code>.btn-ttc</code>.</p>
     <p>Instead of using the provided Bootstrap buttons, which only require just one class to start, <code>.btn</code>, we'll add our own modifier class, <code>.btn-ttc</code>. This will give us a slightly custom look with minimal effort.</p>
 {% highlight html %}
