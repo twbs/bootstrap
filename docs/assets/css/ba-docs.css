@@ -12,3 +12,7 @@
 .bs-docs-sidenav.affix {
    top: 75px;
 }
+
+.bs-docs-example:after {
+  content: "Ejemplo";
+}
