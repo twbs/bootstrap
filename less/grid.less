@@ -116,7 +116,7 @@
 
 @media (min-width: @screen-sm) {
   .container {
-    max-width: @container-tablet;
+    max-width: @container-sm;
   }
 
   .col-sm-1,
@@ -194,7 +194,7 @@
 
 @media (min-width: @screen-md) {
   .container {
-    max-width: @container-desktop;
+    max-width: @container-md;
   }
   .col-md-1,
   .col-md-2,
@@ -272,9 +272,9 @@
 // Note that `.col-lg-12` doesn't get floated on purpose—there's no need since
 // it's full-width.
 
-@media (min-width: @screen-lg-desktop) {
+@media (min-width: @screen-lg-min) {
   .container {
-    max-width: @container-lg-desktop;
+    max-width: @container-lg;
   }
 
   .col-lg-1,
