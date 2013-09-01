@@ -61,6 +61,7 @@ $line-height-computed:    floor($font-size-base * $line-height-base) !default; /
 $headings-font-family:    $font-family-base !default;
 $headings-font-weight:    500 !default;
 $headings-line-height:    1.1 !default;
+$headings-color:          inherit !default;
 
 // Iconography
 // -------------------------
@@ -271,7 +272,7 @@ $navbar-default-link-disabled-bg:          transparent !default;
 
 // Navbar brand label
 $navbar-default-brand-color:               $navbar-default-link-color !default;
-$navbar-default-brand-hover-color:         darken($navbar-default-link-color, 10%) !default;
+$navbar-default-brand-hover-color:         darken($navbar-default-brand-color, 10%) !default;
 $navbar-default-brand-hover-bg:            transparent !default;
 
 // Navbar toggle
@@ -561,6 +562,7 @@ $badge-border-radius:         10px !default;
 $breadcrumb-bg:               #f5f5f5 !default;
 $breadcrumb-color:            #ccc !default;
 $breadcrumb-active-color:     $gray-light !default;
+$breadcrumb-separator:        "/" !default;
 
 
 // Carousel
