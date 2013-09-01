@@ -25,7 +25,8 @@ p {
 // -------------------------
 
 // Ex: 14px base font * 85% = about 12px
-small   { font-size: 85%; }
+small,
+.small  { font-size: 85%; }
 
 // Undo browser default styling
 cite    { font-style: normal; }
@@ -52,6 +53,7 @@ h1, h2, h3, h4, h5, h6,
   font-family: @headings-font-family;
   font-weight: @headings-font-weight;
   line-height: @headings-line-height;
+  color: inherit;
 
   small {
     font-weight: normal;

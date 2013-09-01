@@ -316,13 +316,6 @@ textarea {
   line-height: inherit;
 }
 
-button,
-input,
-select[multiple],
-textarea {
-  background-image: none;
-}
-
 a {
   color: #428bca;
   text-decoration: none;
@@ -406,7 +399,8 @@ p {
   }
 }
 
-small {
+small,
+.small {
   font-size: 85%;
 }
 
@@ -465,6 +459,7 @@ h6,
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
+  color: inherit;
 }
 
 h1 small,
@@ -1724,6 +1719,7 @@ output {
   color: #555555;
   vertical-align: middle;
   background-color: #ffffff;
+  background-image: none;
   border: 1px solid #cccccc;
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -2006,6 +2002,7 @@ textarea.input-lg {
   white-space: nowrap;
   vertical-align: middle;
   cursor: pointer;
+  background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -3719,6 +3716,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   font-size: 14px;
   font-weight: normal;
   line-height: 1;
+  color: #555555;
   text-align: center;
   background-color: #eeeeee;
   border: 1px solid #cccccc;
