@@ -3716,6 +3716,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   font-size: 14px;
   font-weight: normal;
   line-height: 1;
+  color: #555555;
   text-align: center;
   background-color: #eeeeee;
   border: 1px solid #cccccc;
