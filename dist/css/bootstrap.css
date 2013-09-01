@@ -5440,6 +5440,7 @@ a.list-group-item:focus {
 }
 
 .panel-title > a {
+  display: block;
   color: inherit;
 }
 
