@@ -13,31 +13,31 @@ base_url: "../"
     <div class="page-header">
       <h1 id="download">Download Bootstrap</h1>
     </div>
-    <p class="lead">There are a few easy ways to quickly get started with Bootstrap, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
+    <p class="lead">Bootstrap has a few easy ways to quickly get started, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
 
     <h3 id="download-compiled">Compiled CSS, JS, and fonts</h3>
-    <p>The fastest way to get Bootstrap is to download the compiled and minified versions of our CSS and JavaScript, along with the included fonts. No documentation or original source files are included.</p>
-    <p><a class="btn btn-lg btn-primary" href="{{ site.download_dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download precompiled Bootstrap</a></p>
+    <p>The fastest way to get Bootstrap is to download the precompiled and minified versions of our CSS, JavaScript, and fonts. No documentation or original source code files are included.</p>
+    <p><a class="btn btn-lg btn-primary" href="{{ site.download_dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);" role="button">Download precompiled Bootstrap</a></p>
 
     <h3 id="download-additional">Additional downloads</h3>
     <div class="bs-docs-dl-options">
       <h4>
         <a href="{{ site.download }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download source code</a>
       </h4>
-      <p>Get the original files for all CSS and JavaScript by downloading the full release directly from GitHub.</p>
+      <p>Get the latest Bootstrap CSS and JavaScript source code by downloading it directly from GitHub.</p>
       <h4>
         <a href="{{ site.repo }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'GitHub project']);">Clone or fork via GitHub</a>
       </h4>
-      <p>Clone the entire project or fork your own version of Bootstrap to make it your own by visiting us on GitHub.</p>
+      <p>Visit us on GitHub to clone or fork the Bootstrap project.</p>
       <h4>
         Install with <a href="http://bower.io">Bower</a>
       </h4>
-      <p>Install and manage the original files for all CSS and JavaScript, along with a local copy of the docs, using <a href="http://bower.io">Bower</a>.</p>
+      <p>Install and manage Bootstrap's CSS, JavaScript, and documentation using <a href="http://bower.io">Bower</a>.</p>
       {% highlight bash %}$ bower install bootstrap{% endhighlight %}
     </div>
 
     <h3 id="download-cdn">Bootstrap CDN</h3>
-    <p>The folks over at <a href="https://www.netdna.com/">NetDNA</a> have graciously provided CDN support for Bootstrap's CSS and JavaScript. To use, swap your local instances for the <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links listed below.</p>
+    <p>The folks over at <a href="https://www.netdna.com/">NetDNA</a> graciously provide CDN support for Bootstrap's CSS and JavaScript. Just use these <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links.</p>
 {% highlight html %}
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="{{ site.cdn_css }}">
@@ -50,12 +50,10 @@ base_url: "../"
 {% endhighlight %}
 
     <div class="bs-callout bs-callout-warning" id="callout-less-compilation">
-      <h4>LESS compilation</h4>
-      <p>If you download the original files, you need to compile Bootstrap's LESS files into usable CSS. To do that, Bootstrap only officially supports <a href="http://twitter.github.io/recess/">Recess</a>, Twitter's CSS hinter built on top of <a href="http://lesscss.org">less.js</a>.</p>
+      <h4>Compiling Bootstrap's LESS files</h4>
+      <p>If you work with Bootstrap's uncompiled source code, you need to compile the LESS files to produce usable CSS files. We officially support <a href="http://twitter.github.io/recess/">Recess</a>, which is Twitter's CSS hinter based on <a href="http://lesscss.org">less.js</a>.</p>
     </div>
   </div>
-
-
 
   <!-- File structure
   ================================================== -->
@@ -72,10 +70,10 @@ bootstrap/
 │   ├── bootstrap.css
 │   ├── bootstrap.min.css
 │   ├── bootstrap-theme.css
-│   ├── bootstrap-theme.min.css
+│   └── bootstrap-theme.min.css
 ├── js/
 │   ├── bootstrap.js
-│   ├── bootstrap.min.js
+│   └── bootstrap.min.js
 └── fonts/
     ├── glyphicons-halflings-regular.eot
     ├── glyphicons-halflings-regular.svg
@@ -98,9 +96,10 @@ bootstrap/
     <div class="page-header">
       <h1 id="template">Basic template</h1>
     </div>
-    <p class="lead">Make use of a super basic HTML template, or dive into a <a href="../getting-started#examples">few examples</a> we've started for you. We encourage folks to iterate on these examples and not simply use them as an end result.</p>
+    <p class="lead">Start with this basic HTML template, or modify <a href="../getting-started#examples">these examples</a>. 
+    We hope you'll customize our templates and examples, adapting them to suit your needs.</p>
 
-    <p>Copy and paste the HTML from below to get started with a bare bones Bootstrap document.</p>
+    <p>Copy the HTML below to begin working with a minimal Bootstrap document.</p>
 {% highlight html %}
 <!DOCTYPE html>
 <html>
@@ -224,7 +223,7 @@ bootstrap/
           <img src="../examples/screenshots/justified-nav.jpg" alt="">
         </a>
         <h4>Justified nav</h4>
-        <p>Expand on the default navbar and more to create justified navigation links.</p>
+        <p>Create a custom navbar with justified links. Heads up! <a href="../components/#nav-justified">Not too WebKit friendly.</a></p>
       </div>
       <div class="col-xs-6 col-md-4">
         <a class="thumbnail" href="../examples/offcanvas/">
@@ -368,28 +367,32 @@ bootstrap/
             <td><code>.btn-lg</code></td>
           </tr>
           <tr>
+            <td><code>.alert-error</code></td>
+            <td><code>.alert-danger</code></td>
+          </tr>
+          <tr>
             <td><code>.visible-phone</code></td>
-            <td><code>.visible-sm</code></td>
+            <td><code>.visible-xs</code></td>
           </tr>
           <tr>
             <td><code>.visible-tablet</code></td>
-            <td><code>.visible-md</code></td>
+            <td><code>.visible-sm</code></td>
           </tr>
           <tr>
             <td><code>.visible-desktop</code></td>
-            <td><code>.visible-lg</code></td>
+            <td><code>.visible-md</code></td>
           </tr>
           <tr>
             <td><code>.hidden-phone</code></td>
-            <td><code>.hidden-sm</code></td>
+            <td><code>.hidden-xs</code></td>
           </tr>
           <tr>
             <td><code>.hidden-tablet</code></td>
-            <td><code>.hidden-md</code></td>
+            <td><code>.hidden-sm</code></td>
           </tr>
           <tr>
             <td><code>.hidden-desktop</code></td>
-            <td><code>.hidden-lg</code></td>
+            <td><code>.hidden-md</code></td>
           </tr>
           <tr>
             <td><code>.input-small</code></td>
@@ -427,6 +430,10 @@ bootstrap/
             <td><code>.muted</code></td>
             <td><code>.text-muted</code></td>
           </tr>
+          <tr>
+            <td><code>.text-error</code></td>
+            <td><code>.text-danger</code></td>
+          </tr>
         </tbody>
       </table>
     </div><!-- /.table-responsive -->
@@ -460,20 +467,24 @@ bootstrap/
             <td><code>.jumbotron</code></td>
           </tr>
           <tr>
-            <td>Tiny grid (&lt;768 px)</td>
+            <td>Tiny grid (&lt;768px)</td>
             <td><code>.col-xs-*</code></td>
           </tr>
           <tr>
-            <td>Small grid (&gt;768 px)</td>
+            <td>Small grid (&ge;768px)</td>
             <td><code>.col-sm-*</code></td>
           </tr>
           <tr>
-            <td>Medium grid (&gt;992 px)</td>
+            <td>Medium grid (&ge;992px)</td>
             <td><code>.col-md-*</code></td>
           </tr>
           <tr>
-            <td>Large grid (&gt;1200 px)</td>
+            <td>Large grid (&ge;1200px)</td>
             <td><code>.col-lg-*</code></td>
+          </tr>
+          <tr>
+            <td>Responsive utility classes (&ge;1200px)</td>
+            <td><code>.visible-lg</code> <code>.hidden-lg</code></td>
           </tr>
           <tr>
             <td>Offsets</td>
@@ -668,7 +679,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     <p>For more information and usage guidelines, read <a href="http://timkadlec.com/2013/01/windows-phone-8-and-device-width/">Windows Phone 8 and Device-Width</a>.</p>
 
     <h3>Safari percent rounding</h3>
-    <p>In the latest Safari for Mac, its rendering engine has a little trouble with the long decimal places of our <code>.col-*-1</code> grid classes, meaning if you have 12 individual columns you'll notice they come up short compared to other rows of columns. There's not much we can do here (<a href="https://github.com/twbs/bootstrap/issues/9282">see #9282</a>) but you do have some options:</p>
+    <p>In the latest Safari for Mac, its rendering engine has a little trouble with the long decimal places of our <code>.col-*-1</code> grid classes, meaning if you have 12 individual columns you'll notice they come up short compared to other rows of columns. We can't do much here (<a href="https://github.com/twbs/bootstrap/issues/9282">see #9282</a>) but you do have some options:</p>
     <ul>
       <li>Add <code>.pull-right</code> to your last grid column to get the hard-right alignment</li>
       <li>Tweak your percentages manually to get the perfect rounding for Safari (more difficult than the first option)</li>
@@ -679,7 +690,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     <h4>Overflow and scrolling</h4>
     <p>Support for <code>overflow: hidden</code> on the <code>&lt;body&gt;</code> element is quite limited in iOS and Android. To that end, when you scroll past the top or bottom of a modal in either of those devices' browsers, the <code>&lt;body&gt;</code> content will begin to scroll.</p>
     <h4>Virtual keyboards</h4>
-    <p>Also, note that if you're using inputs in your modal – iOS has a rendering bug which doesn't update the position of fixed elements when the virtual keyboard is triggered. There are a few work arounds for this, including transforming your elements to <code>position: absolute</code> or invoking a timer on focus to try to correct the positioning manually. This is not handled by Bootstrap, so it is up to you to decide which solution is best for your application.</p>
+    <p>Also, note that if you're using inputs in your modal – iOS has a rendering bug that doesn't update the position of fixed elements when the virtual keyboard is triggered. A few work arounds for this include transforming your elements to <code>position: absolute</code> or invoking a timer on focus to try to correct the positioning manually. This is not handled by Bootstrap, so it is up to you to decide which solution is best for your application.</p>
 
     <h3>Browser zooming</h3>
     <p>Page zooming inevitably presents rendering artifacts in some components, both in Bootstrap and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.</p>
@@ -736,8 +747,9 @@ img { max-width: none; }
 </body>
 {% endhighlight %}
 
-    <h3>Nested headers</h3>
-    <p>Another "gotcha" has to do with how you nest your <code>&lt;header&gt;</code> elements. <a href="http://squizlabs.github.io/HTML_CodeSniffer/Standards/Section508/">Section 508</a> states that your largest header must be an <code>h1</code>, and the next header must be an <code>&lt;h2&gt;</code>, etc. This is hard to achieve in practice, but if the largest header on your site is smaller than Bootstrap's default 38px, you should consider modifying your stylesheets before using a smaller header element.</p>
+    <h3>Nested headings</h3>
+    <p>When nesting headings (<code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code>), your primary document header should be an <code>&lt;h1&gt;</code>. Subsequent headings should make logical use of <code>&lt;h2&gt;</code> - <code>&lt;h6&gt;</code> such that screen readers can construct a table of contents for your pages.</p>
+    <p>Learn more at <a href="http://squizlabs.github.io/HTML_CodeSniffer/Standards/Section508/">HTML CodeSniffer</a> and <a href="http://accessibility.psu.edu/headings">Penn State's AccessAbility</a>.</p>
 
     <h3>Additional resources</h3>
     <ul>
@@ -812,7 +824,7 @@ img { max-width: none; }
     <p>From there, include whatever Bootstrap components and HTML content you need to get your template setup. It's best to have a rough idea in mind of modifications to make and content to include, so be sure to spend a brief amount of time on that before moving on.</p>
 
     <h3>Customizing components</h3>
-    <p>There are varying degrees to customizing components, but most fall into two camps: light customizations and complete visual overhauls. Luckily, there are plenty of examples of both.</p>
+    <p>You can customize components to varying degrees, but most fall into two camps: light customizations and complete visual overhauls. Luckily, plenty examples of both are available.</p>
     <p>We define light customizations as mostly surface layer changes, things like a color and font changes to existing Bootstrap components. A great example of this is the the <a href="http://translate.twitter.com">Twitter Translation Center</a> (coded by @mdo). Let's look at how to implement the custom button we wrote for this site, <code>.btn-ttc</code>.</p>
     <p>Instead of using the provided Bootstrap buttons, which only require just one class to start, <code>.btn</code>, we'll add our own modifier class, <code>.btn-ttc</code>. This will give us a slightly custom look with minimal effort.</p>
 {% highlight html %}
