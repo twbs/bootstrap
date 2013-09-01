@@ -554,10 +554,14 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="6px" data-var="@border-radius-large">
         <label>@border-radius-small</label>
         <input type="text" class="form-control" placeholder="3px" data-var="@border-radius-small">
+        <h4>Active text color</h4>
+        <label>@component-active-color</label>
+        <input type="text" class="form-control" placeholder="#fff" data-var="@component-active-color">
+        <p class="help-block">Global color for active items (e.g., navs or dropdowns)</p>
         <h4>Active background color</h4>
         <label>@component-active-bg</label>
         <input type="text" class="form-control" placeholder="@brand-primary" data-var="@component-active-bg">
-        <p class="help-block">Used for active or hovered items in places like navs or dropdowns.</p>
+        <p class="help-block">Global background color for active items (e.g., navs or dropdowns)</p>
       </div>
     </div>
 
@@ -923,7 +927,7 @@ base_url: "../"
         <p class="help-block">Hovered dropdown menu entry text color</p>
 
         <label>@dropdown-link-active-color</label>
-        <input type="text" class="form-control" placeholder="#fff" data-var="@dropdown-link-active-color">
+        <input type="text" class="form-control" placeholder="@component-active-color" data-var="@dropdown-link-active-color">
         <p class="help-block">Active dropdown menu entry text color</p>
         <label>@dropdown-link-active-bg</label>
         <input type="text" class="form-control" placeholder="@component-active-bg" data-var="@dropdown-link-active-bg">
