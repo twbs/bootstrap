@@ -2254,6 +2254,27 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 
 
+    <h3 id="helper-classes-center">Center content blocks</h3>
+    <p>Set an element to <code>display: block</code> and center via <code>margin</code>. Available as a mixin and class.</p>
+{% highlight html %}
+<div class="center-block">...</div>
+{% endhighlight %}
+{% highlight css %}
+// Classes
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Usage as mixins
+.element {
+  .center-block();
+}
+{% endhighlight %}
+
+
+
     <h3 id="helper-classes-clearfix">Clearfix</h3>
     <p>Clear the <code>float</code> on any element with the <code>.clearfix</code> class. Utilizes <a href="http://nicolasgallagher.com/micro-clearfix-hack/">the micro clearfix</a> as popularized by Nicolas Gallagher. Can also be used as a mixin.</p>
 {% highlight html %}
