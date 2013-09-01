@@ -399,7 +399,8 @@ p {
   }
 }
 
-small {
+small,
+.small {
   font-size: 85%;
 }
 
@@ -458,6 +459,7 @@ h6,
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
+  color: inherit;
 }
 
 h1 small,
@@ -3714,6 +3716,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   font-size: 14px;
   font-weight: normal;
   line-height: 1;
+  color: #555555;
   text-align: center;
   background-color: #eeeeee;
   border: 1px solid #cccccc;
