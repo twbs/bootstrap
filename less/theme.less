@@ -84,12 +84,15 @@
 // --------------------------------------------------
 
 .dropdown-menu > li > a:hover,
-.dropdown-menu > li > a:focus,
+.dropdown-menu > li > a:focus {
+  #gradient > .vertical(@start-color: @dropdown-link-hover-bg; @end-color: darken(@dropdown-link-hover-bg, 5%));
+  background-color: darken(@dropdown-link-hover-bg, 5%);
+}
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
-  #gradient > .vertical(@start-color: @dropdown-link-hover-bg; @end-color: darken(@dropdown-link-hover-bg, 5%));
-  background-color: darken(@dropdown-link-hover-bg, 5%);
+  #gradient > .vertical(@start-color: @dropdown-link-active-bg; @end-color: darken(@dropdown-link-active-bg, 5%));
+  background-color: darken(@dropdown-link-active-bg, 5%);
 }
 
 
