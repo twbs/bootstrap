@@ -9,6 +9,10 @@
 
 <script src="{{ page.base_url }}assets/js/application.js"></script>
 
+{% if page.slug == "components" %}
+<script src="{{ page.base_url }}assets/js/clipboard.js"></script>
+{% endif %}
+
 {% if page.slug == "customize" %}
 <script src="{{ page.base_url }}assets/js/less.js"></script>
 <script src="{{ page.base_url }}assets/js/jszip.js"></script>
