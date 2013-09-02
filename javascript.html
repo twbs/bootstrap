@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Javascript · BAstrap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="BAStrap">
+    <meta name="description" content="BAstrap - Framework para desarrollo del GCBA">
     <meta name="author" content="Gobierno de la Ciudad de Buenos Aires">
 	<!-- Invocando Open Sans y Gotham -->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,800,300' rel='stylesheet' type='text/css'>
@@ -87,7 +87,7 @@
 <header class="jumbotron subhead">
   <div class="container">
     <h1>JavaScript</h1>
-    <p class="lead">Bring Bootstrap's components to life&mdash;now with 13 custom jQuery plugins.
+    <p class="lead">Plugins de jQuery para mejorar los componentes.
   </div>
 </header>
 
@@ -98,19 +98,19 @@
     <div class="row">
       <div class="span3 bs-docs-sidebar">
         <ul class="nav nav-list bs-docs-sidenav">
-          <li><a href="#overview"><i class="icon-chevron-right"></i> Overview</a></li>
-          <li><a href="#transitions"><i class="icon-chevron-right"></i> Transitions</a></li>
+          <li><a href="#overview"><i class="icon-chevron-right"></i> General</a></li>
+          <li><a href="#transitions"><i class="icon-chevron-right"></i> Transiciones</a></li>
           <li><a href="#modals"><i class="icon-chevron-right"></i> Modal</a></li>
           <li><a href="#dropdowns"><i class="icon-chevron-right"></i> Dropdown</a></li>
           <li><a href="#scrollspy"><i class="icon-chevron-right"></i> Scrollspy</a></li>
-          <li><a href="#tabs"><i class="icon-chevron-right"></i> Tab</a></li>
+          <li><a href="#tabs"><i class="icon-chevron-right"></i> Pestaña</a></li>
           <li><a href="#tooltips"><i class="icon-chevron-right"></i> Tooltip</a></li>
           <li><a href="#popovers"><i class="icon-chevron-right"></i> Popover</a></li>
-          <li><a href="#alerts"><i class="icon-chevron-right"></i> Alert</a></li>
-          <li><a href="#buttons"><i class="icon-chevron-right"></i> Button</a></li>
-          <li><a href="#collapse"><i class="icon-chevron-right"></i> Collapse</a></li>
-          <li><a href="#carousel"><i class="icon-chevron-right"></i> Carousel</a></li>
-          <li><a href="#typeahead"><i class="icon-chevron-right"></i> Typeahead</a></li>
+          <li><a href="#alerts"><i class="icon-chevron-right"></i> Alerta</a></li>
+          <li><a href="#buttons"><i class="icon-chevron-right"></i> Botón</a></li>
+          <li><a href="#collapse"><i class="icon-chevron-right"></i> Acordeón</a></li>
+          <li><a href="#carousel"><i class="icon-chevron-right"></i> Carrusel</a></li>
+          <li><a href="#typeahead"><i class="icon-chevron-right"></i> Suggest</a></li>
           <li><a href="#affix"><i class="icon-chevron-right"></i> Affix</a></li>
         </ul>
       </div>
@@ -121,46 +121,42 @@
         ================================================== -->
         <section id="overview">
           <div class="page-header">
-            <h1>JavaScript in Bootstrap</h1>
+            <h1>JavaScript en BAstrap</h1>
           </div>
 
-          <h3>Individual or compiled</h3>
-          <p>Plugins can be included individually (though some have required dependencies), or all at once. Both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all plugins in a single file.</p>
-
-          <h3>Data attributes</h3>
-          <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API and should be your first consideration when using a plugin.</p>
-
-          <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the body namespaced with `'data-api'`. This looks like this:
+          <h3>Atributos data</h3>
+          <p>Podés usar todos los plugins solamente usando el atributo data sin tener que escribir nada de JavaScript.</p>
+          <p>Sin embargo, en algunas situaciones puede ser útil desactivar esta funcionalidad. Por lo tanto, también proveemos la habilidad de desactivar la funcionalidad de los atributos data. Esto se hace así:
           <pre class="prettyprint linenums">$('body').off('.data-api')</pre>
 
-          <p>Alternatively, to target a specific plugin, just include the plugin's name as a namespace along with the data-api namespace like this:</p>
+          <p>También podés desactivar un plugin específico, incluí el nombre como un namespace junto con el namespace data-api de esta forma:</p>
           <pre class="prettyprint linenums">$('body').off('.alert.data-api')</pre>
 
-          <h3>Programmatic API</h3>
-          <p>We also believe you should be able to use all Bootstrap plugins purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.</p>
+          <h3>API programática</h3>
+          <p>También se pueden usar los plugins a través de la API. Todas las APIs son métodos únicos (single) y encadenables (chainable) y devuelven la colección sobre la que actuaron.</p>
           <pre class="prettyprint linenums">$(".btn.danger").button("toggle").addClass("fat")</pre>
-          <p>All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a plugin with default behavior):</p>
+          <p>Todos los métodos deberían aceptar un objeto opcional de opciones, un string que apunte a un método particular, o a nada (lo que inicia el plugin con su comportamiento predeterminado):</p>
 <pre class="prettyprint linenums">
-$("#myModal").modal()                       // initialized with defaults
-$("#myModal").modal({ keyboard: false })   // initialized with no keyboard
-$("#myModal").modal('show')                // initializes and invokes show immediately</p>
+$("#myModal").modal()                       // iniciado con los valores predeterminados
+$("#myModal").modal({ keyboard: false })   // iniciado sin teclado
+$("#myModal").modal('show')                // inicia e invoca 'show' inmediatamente</p>
 </pre>
-          <p>Each plugin also exposes its raw constructor on a `Constructor` property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.</p>
+          <p>Cada plugin también expone a su constructor en la propiedad `Constructor`: <code>$.fn.popover.Constructor</code>. Si querés llegar a una instancia particular de un plugin, traela directamente del elemento: <code>$('[rel=popover]').data('popover')</code>.</p>
 
-          <h3>No Conflict</h3>
-          <p>Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In these circumstances,  namespace collisions can occasionally occur. If this happens, you may call <code>.noConflict</code> on the plugin you wish to revert the value of.</p>
+          <h3>Sin conflicto</h3>
+          <p>A veces es necesario usar los plugins con otros frameworks. En esas circunstancias, las colisiones de namespace pueden ocurrir. Si pasa esto, podés llamar a <code>.noConflict</code> sobre el plugin al que le querés revertir el valor.</p>
 
 <pre class="prettyprint linenums">
-var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
-$.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the bootstrap functionality
+var bootstrapButton = $.fn.button.noConflict() // devolver $.fn.button a su valor previamente asignado
+$.fn.bootstrapBtn = bootstrapButton            // darle $().bootstrapBtn la funcionalidad de bootstrap
 </pre>
 
-          <h3>Events</h3>
-          <p>Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.</p>
-          <p>All infinitive events provide preventDefault functionality. This provides the ability to stop the execution of an action before it starts.</p>
+          <h3>Eventos</h3>
+          <p>BAstrap provee eventos personalizados para la mayoría de las acciones de los plugins. En general, vienen en forma infinitiva y en participio, el infinitivo (ej. <code>show</code>) es disparado al inicio del eventoo, y su participio (ej. <code>shown</code>) se dispara cuando la acción se completó.</p>
+          <p>Todos los eventos en infinitivo proveen la funcionalidad preventDefault. Esto provee la capacidad de detener la ejecución de una acción antes de que empiece.</p>
 <pre class="prettyprint linenums">
 $('#myModal').on('show', function (e) {
-    if (!data) return e.preventDefault() // stops modal from being shown
+    if (!data) return e.preventDefault() // hace que el modal no se muestre
 })
 </pre>
         </section>
@@ -171,17 +167,15 @@ $('#myModal').on('show', function (e) {
         ================================================== -->
         <section id="transitions">
           <div class="page-header">
-            <h1>Transitions <small>bootstrap-transition.js</small></h1>
+            <h1>Transiciones <small>bootstrap-transition.js</small></h1>
           </div>
-          <h3>About transitions</h3>
-          <p>For simple transition effects, include <strong>bootstrap-transition.js</strong> once alongside the other JS files. If you're using the compiled (or minified) <strong>bootstrap.js</strong>, there is no need to include this&mdash;it's already there.</p>
-          <h3>Use cases</h3>
-          <p>A few examples of the transition plugin:</p>
+          <h3>Casos de uso</h3>
+          <p>Algunos ejemplos del plugin de transiciones:</p>
           <ul>
-            <li>Sliding or fading in modals</li>
-            <li>Fading out tabs</li>
-            <li>Fading out alerts</li>
-            <li>Sliding carousel panes</li>
+            <li>Slide o fade en modales</li>
+            <li>Fade out de pestañas</li>
+            <li>Fade out de alertas</li>
+            <li>Slide de placas de carrusel</li>
           </ul>
 
         </section>
@@ -192,27 +186,27 @@ $('#myModal').on('show', function (e) {
         ================================================== -->
         <section id="modals">
           <div class="page-header">
-            <h1>Modals <small>bootstrap-modal.js</small></h1>
+            <h1>Modales <small>bootstrap-modal.js</small></h1>
           </div>
 
 
-          <h2>Examples</h2>
-          <p>Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.</p>
+          <h2>Ejemplos</h2>
+          <p>Los modales son cuadros de diálogo simples pero flexibles, con la funcionalidad mínima requerida y algunos predeterminados bien armados.</p>
 
-          <h3>Static example</h3>
-          <p>A rendered modal with header, body, and set of actions in the footer.</p>
+          <h3>Ejemplo estático</h3>
+          <p>Un modal renderizado con encabezado, cuerpo y un conjunto de acciones en el pie.</p>
           <div class="bs-docs-example" style="background-color: #f5f5f5;">
             <div class="modal" style="position: relative; top: auto; left: auto; right: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3>Modal header</h3>
+                <h3>Encabezado del modal</h3>
               </div>
               <div class="modal-body">
-                <p>One fine body&hellip;</p>
+                <p>Un lindo cuerpo&hellip;</p>
               </div>
               <div class="modal-footer">
-                <a href="#" class="btn">Close</a>
-                <a href="#" class="btn btn-primary">Save changes</a>
+                <a href="#" class="btn">Cerrar</a>
+                <a href="#" class="btn btn-primary">Guardar cambios</a>
               </div>
             </div>
           </div>
@@ -220,18 +214,18 @@ $('#myModal').on('show', function (e) {
 &lt;div class="modal hide fade"&gt;
   &lt;div class="modal-header"&gt;
     &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;&amp;times;&lt;/button&gt;
-    &lt;h3&gt;Modal header&lt;/h3&gt;
+    &lt;h3&gt;Encabezado del modal&lt;/h3&gt;
   &lt;/div&gt;
   &lt;div class="modal-body"&gt;
-    &lt;p&gt;One fine body&hellip;&lt;/p&gt;
+    &lt;p&gt;Un lindo cuerpo&hellip;&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="modal-footer"&gt;
-    &lt;a href="#" class="btn"&gt;Close&lt;/a&gt;
-    &lt;a href="#" class="btn btn-primary"&gt;Save changes&lt;/a&gt;
+    &lt;a href="#" class="btn"&gt;Cerrar&lt;/a&gt;
+    &lt;a href="#" class="btn btn-primary"&gt;Guardar cambios&lt;/a&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-
+<!-- seguir acá -->
           <h3>Live demo</h3>
           <p>Toggle a modal via JavaScript by clicking the button below. It will slide down and fade in from the top of the page.</p>
           <!-- sample modal content -->
@@ -1747,7 +1741,7 @@ $('.carousel').carousel({
     <!-- Footer
     ================================================== -->
     <footer class="footer">
-      <hr class="footer-ba">
+      <a href="http://www.buenosaires.gob.ar"><img src="assets/img/logo-white.png" alt="Buenos Aires Ciudad"></a>
     </footer>
 
     <!-- Le javascript
