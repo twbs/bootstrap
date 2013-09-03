@@ -229,7 +229,7 @@ body {
 /* Links to project-level content like the repo, Expo, etc */
 .bs-masthead-links {
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   padding: 0 15px;
   list-style: none;
   text-align: center;
