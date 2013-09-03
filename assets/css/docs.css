@@ -222,11 +222,8 @@ body {
   line-height: 1;
   color: #fff;
 }
-.bs-masthead .btn-outline {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 18px 24px;
-  font-size: 21px;
+.bs-masthead .btn-outline-inverse {
+  margin: 10px;
 }
 
 /* Links to project-level content like the repo, Expo, etc */
@@ -259,6 +256,12 @@ body {
   .bs-masthead .lead {
     margin-right: 25%;
     font-size: 30px;
+  }
+  .bs-masthead .btn-outline-inverse {
+    width: auto;
+    margin: 20px 5px 20px 0;
+    padding: 18px 24px;
+    font-size: 21px;
   }
   .bs-masthead-links {
     padding: 0;
