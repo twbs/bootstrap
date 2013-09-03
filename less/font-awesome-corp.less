@@ -1,0 +1,63 @@
+/*!
+ *  Font Awesome More
+ *
+ */
+
+@FontAwesomePath:   "../font";
+
+@font-face {
+  font-family: 'Font-Awesome-Corp';
+  src: url('@{FontAwesomePath}/fontawesome-corp-webfont.eot');
+  src: url('@{FontAwesomePath}/fontawesome-corp-webfont.eot?#iefix') format('embedded-opentype'),
+    url('@{FontAwesomePath}/fontawesome-corp-webfont.woff') format('woff'),
+    url('@{FontAwesomePath}/fontawesome-corp-webfont.ttf') format('truetype'),
+    url('@{FontAwesomePath}/fontawesome-corp-webfont.svg#Font-Awesome-More') format('svg');
+
+
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*  Font Awesome Social styles
+    ------------------------------------------------------- */
+    
+.icon-amazon-sign:before, .icon-amazon:before, .icon-android:before, .icon-apple-itunes:before, .icon-apple:before, .icon-aws:before, .icon-bing-sign:before, .icon-bing:before, .icon-duck-duck-go:before, .icon-google-sign:before, .icon-google:before, .icon-sparrow-sign:before, .icon-sparrow:before, .icon-windows:before, .icon-windows8:before, .icon-yahoo:before {
+	font-family: 'Font-Awesome-Corp';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: inherit;
+	-webkit-font-smoothing: antialiased;
+	
+	/* sprites.less reset */
+  display: inline;
+  width: auto;
+  height: auto;
+  line-height: normal;
+  vertical-align: baseline;
+  background-image: none;
+  background-position: 0% 0%;
+  background-repeat: repeat;
+  margin-top: 0;
+}
+
+
+/*  Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+    readers do not read off random characters that represent icons */
+
+.icon-amazon-sign:before 				{ content: "\f340"; }
+.icon-amazon:before 						{	content: "\f341"; }
+.icon-android:before 						{ content: "\f342"; }
+.icon-apple-itunes:before 			{ content: "\f343"; }
+.icon-apple:before 							{	content: "\f344"; }
+.icon-aws:before 								{	content: "\f345"; }
+.icon-bing-sign:before 					{	content: "\f346"; }
+.icon-bing:before 							{	content: "\f347"; }
+.icon-duck-duck-go:before 			{	content: "\f348"; }
+.icon-google-sign:before 				{	content: "\f349"; }
+.icon-google:before 						{	content: "\f34a"; }
+.icon-sparrow-sign:before 			{	content: "\f34b"; }
+.icon-sparrow:before 						{	content: "\f34c"; }
+.icon-windows:before 						{	content: "\f34d";	}
+.icon-windows8:before 					{ content: "\f34e"; }
+.icon-yahoo:before 							{ content: "\f34f"; }
