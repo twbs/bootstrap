@@ -761,16 +761,28 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     <p class="lead">While we don't officially support any third party plugins or add-ons, we do offer some useful advice to help avoid potential issues in your projects.</p>
 
     <h3>Box-sizing</h3>
-    <p>Certain third party tools—such as Google Maps—have trouble working out of the box with Bootstrap due to our use of <code>* { box-sizing: border-box; }</code>. Use the following snippet to override it when necessary.</p>
+    <p>Certain third party tools—such as Google Maps and Google Custom Search Engine—have trouble working out of the box with Bootstrap due to our use of <code>* { box-sizing: border-box; }</code>. Use the following snippet to override it when necessary.</p>
 {% highlight css %}
 /* Box-sizing reset
  *
  * Wrap your third party code in a `.reset-box-sizing` to override Bootstrap's
- * global `box-sizing` changes.
+ * global `box-sizing` changes. Use Option A if you're writing regular CSS or
+ * Option B for use in Less via mixin (requires access to Bootstrap's mixins).
  */
 
+/* Option A: CSS */
 .reset-box-sizing,
-.reset-box-sizing * { .box-sizing(content-box); }
+.reset-box-sizing * {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+/* Option B: Less mixin */
+.reset-box-sizing,
+.reset-box-sizing * {
+  .box-sizing(content-box);
+}
 {% endhighlight %}
   </div>
 
