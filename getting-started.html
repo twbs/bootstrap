@@ -275,12 +275,9 @@ bootstrap/
     <h3>Steps to disable page responsiveness</h3>
     <ol>
       <li>Omit the viewport <code>&lt;meta&gt;</code> mentioned in <a href="../css/#overview-mobile">the CSS docs</a></li>
-      <li>Remove the <code>max-width</code> on the <code>.container</code> for all grids with <code>max-width: none !important;</code> and set a regular
-          width, for example <code>width: 970px;</code>. Be sure that this comes after the default Bootstrap CSS.
-          You can optionally avoid the <code>!important</code> with media queries or some selector-fu.</li>
+      <li>Override the <code>width</code> on the <code>.container</code> for each grid tier with a single width, for example <code>width: 970px !important;</code> Be sure that this comes after the default Bootstrap CSS. You can optionally avoid the <code>!important</code> with media queries or some selector-fu.</li>
       <li>If using navbars, remove all navbar collapsing and expanding behavior.</li>
-      <li>For grid layouts, use <code>.col-xs-*</code> classes in addition to, or in place of, the medium/large ones.
-	      Don't worry, the extra-small device grid scales to all resolutions.</li>
+      <li>For grid layouts, use <code>.col-xs-*</code> classes in addition to, or in place of, the medium/large ones. Don't worry, the extra-small device grid scales to all resolutions.</li>
     </ol>
     <p>You'll still need Respond.js for IE8 (since our media queries are still there and need to be processed).
 	   This disables the "mobile site" aspects of Bootstrap.</p>
@@ -709,6 +706,9 @@ bootstrap/
     </div>
 
     <p>Visit <a href="http://caniuse.com/">Can I use...</a> for details and additional browser support of CSS3 and HTML5 features.</p>
+
+    <h3>Internet Explorer 8 and box-sizing</h3>
+    <p>IE8 does not fully support <code>box-sizing: border-box;</code> when combined with <code>min-width</code>, <code>max-width</code>, <code>min-height</code>, and <code>max-height</code>. For that reason, as of v3.0.1, we have moved from <code>max-width</code> on <code>.container</code>s.</p>
 
     <h3>IE Compatibility modes</h3>
     <p>Bootstrap is not supported in the old Internet Explorer compatibility modes. To be sure you're using the latest rendering mode for IE, consider including the appropriate <code>&lt;meta&gt;</code> tag in your pages:</p>
