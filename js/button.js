@@ -54,15 +54,19 @@
 
   Button.prototype.toggle = function () {
     var $parent = this.$element.closest('[data-toggle="buttons"]')
+    var state   = this.$element.hasClass('active')
 
     if ($parent.length) {
       var $input = this.$element.find('input')
-        .prop('checked', !this.$element.hasClass('active'))
-        .trigger('change')
-      if ($input.prop('type') === 'radio') $parent.find('.active').removeClass('active')
+      var isRadio = $input.prop('type') === 'radio'
+      if (!isRadio || !state) state = !state
+      $input.prop('checked', state).trigger('change')
+      if (isRadio) $parent.find('.active').removeClass('active')
+    } else {
+      state = !state
     }
 
-    this.$element.toggleClass('active')
+    this.$element.toggleClass('active', state)
   }
 
 

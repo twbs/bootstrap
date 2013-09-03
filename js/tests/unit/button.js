@@ -111,6 +111,12 @@ $(function () {
         ok(!btn1.find('input').prop('checked'), 'btn1 is checked')
         ok(btn2.hasClass('active'), 'btn2 has active class')
         ok(btn2.find('input').prop('checked'), 'btn2 is checked')
+
+        btn2.find('input').click() /* clicking an already checked radio should not un-check it */
+        ok(!btn1.hasClass('active'), 'btn1 does not have active class')
+        ok(!btn1.find('input').prop('checked'), 'btn1 is checked')
+        ok(btn2.hasClass('active'), 'btn2 has active class')
+        ok(btn2.find('input').prop('checked'), 'btn2 is checked')
       })
 
 })
