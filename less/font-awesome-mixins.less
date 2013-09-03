@@ -1,0 +1,48 @@
+// Mixins
+// --------------------------
+
+.icon(@icon) {
+  .icon-FontAwesome();
+  content: @icon;
+}
+
+.icon-FontAwesome() {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+  -webkit-font-smoothing: antialiased;
+  *margin-right: .3em; // fixes ie7 issues
+}
+
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.icon-stack(@width: 2em, @height: 2em, @top-font-size: 1em, @base-font-size: 2em) {
+  .icon-stack {
+    position: relative;
+    display: inline-block;
+    width: @width;
+    height: @height;
+    line-height: @width;
+    vertical-align: -35%;
+    [class^="icon-"],
+    [class*=" icon-"] {
+      display: block;
+      text-align: center;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      font-size: @top-font-size;
+      line-height: inherit;
+      *line-height: @height;
+    }
+    .icon-stack-base {
+      font-size: @base-font-size;
+      *line-height: @height / @base-font-size;
+    }
+  }
+}

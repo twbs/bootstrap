@@ -633,3 +633,739 @@
 // Large screen / wide desktop
 @container-large-desktop:      ((1140px + @grid-gutter-width));
 @container-lg:                 @container-large-desktop;
+
+// Font-Awesome
+// --------------------------
+
+@FontAwesomePath:    "../font";
+//@FontAwesomePath:    "//netdna.bootstrapcdn.com/font-awesome/3.2.1/font"; // for referencing Bootstrap CDN font files directly
+@FontAwesomeVersion: "3.2.1";
+@borderColor:        #eee;
+@iconMuted:          #eee;
+@iconLight:          #fff;
+@iconDark:           #333;
+@icons-li-width:     30/14em;
+
+
+  @glass: "\f000";
+
+  @music: "\f001";
+
+  @search: "\f002";
+
+  @envelope-alt: "\f003";
+
+  @heart: "\f004";
+
+  @star: "\f005";
+
+  @star-empty: "\f006";
+
+  @user: "\f007";
+
+  @film: "\f008";
+
+  @th-large: "\f009";
+
+  @th: "\f00a";
+
+  @th-list: "\f00b";
+
+  @ok: "\f00c";
+
+  @remove: "\f00d";
+
+  @zoom-in: "\f00e";
+
+  @zoom-out: "\f010";
+
+  @off: "\f011";
+
+  @signal: "\f012";
+
+  @cog: "\f013";
+
+  @trash: "\f014";
+
+  @home: "\f015";
+
+  @file-alt: "\f016";
+
+  @time: "\f017";
+
+  @road: "\f018";
+
+  @download-alt: "\f019";
+
+  @download: "\f01a";
+
+  @upload: "\f01b";
+
+  @inbox: "\f01c";
+
+  @play-circle: "\f01d";
+
+  @repeat: "\f01e";
+
+  @refresh: "\f021";
+
+  @list-alt: "\f022";
+
+  @lock: "\f023";
+
+  @flag: "\f024";
+
+  @headphones: "\f025";
+
+  @volume-off: "\f026";
+
+  @volume-down: "\f027";
+
+  @volume-up: "\f028";
+
+  @qrcode: "\f029";
+
+  @barcode: "\f02a";
+
+  @tag: "\f02b";
+
+  @tags: "\f02c";
+
+  @book: "\f02d";
+
+  @bookmark: "\f02e";
+
+  @print: "\f02f";
+
+  @camera: "\f030";
+
+  @font: "\f031";
+
+  @bold: "\f032";
+
+  @italic: "\f033";
+
+  @text-height: "\f034";
+
+  @text-width: "\f035";
+
+  @align-left: "\f036";
+
+  @align-center: "\f037";
+
+  @align-right: "\f038";
+
+  @align-justify: "\f039";
+
+  @list: "\f03a";
+
+  @indent-left: "\f03b";
+
+  @indent-right: "\f03c";
+
+  @facetime-video: "\f03d";
+
+  @picture: "\f03e";
+
+  @pencil: "\f040";
+
+  @map-marker: "\f041";
+
+  @adjust: "\f042";
+
+  @tint: "\f043";
+
+  @edit: "\f044";
+
+  @share: "\f045";
+
+  @check: "\f046";
+
+  @move: "\f047";
+
+  @step-backward: "\f048";
+
+  @fast-backward: "\f049";
+
+  @backward: "\f04a";
+
+  @play: "\f04b";
+
+  @pause: "\f04c";
+
+  @stop: "\f04d";
+
+  @forward: "\f04e";
+
+  @fast-forward: "\f050";
+
+  @step-forward: "\f051";
+
+  @eject: "\f052";
+
+  @chevron-left: "\f053";
+
+  @chevron-right: "\f054";
+
+  @plus-sign: "\f055";
+
+  @minus-sign: "\f056";
+
+  @remove-sign: "\f057";
+
+  @ok-sign: "\f058";
+
+  @question-sign: "\f059";
+
+  @info-sign: "\f05a";
+
+  @screenshot: "\f05b";
+
+  @remove-circle: "\f05c";
+
+  @ok-circle: "\f05d";
+
+  @ban-circle: "\f05e";
+
+  @arrow-left: "\f060";
+
+  @arrow-right: "\f061";
+
+  @arrow-up: "\f062";
+
+  @arrow-down: "\f063";
+
+  @share-alt: "\f064";
+
+  @resize-full: "\f065";
+
+  @resize-small: "\f066";
+
+  @plus: "\f067";
+
+  @minus: "\f068";
+
+  @asterisk: "\f069";
+
+  @exclamation-sign: "\f06a";
+
+  @gift: "\f06b";
+
+  @leaf: "\f06c";
+
+  @fire: "\f06d";
+
+  @eye-open: "\f06e";
+
+  @eye-close: "\f070";
+
+  @warning-sign: "\f071";
+
+  @plane: "\f072";
+
+  @calendar: "\f073";
+
+  @random: "\f074";
+
+  @comment: "\f075";
+
+  @magnet: "\f076";
+
+  @chevron-up: "\f077";
+
+  @chevron-down: "\f078";
+
+  @retweet: "\f079";
+
+  @shopping-cart: "\f07a";
+
+  @folder-close: "\f07b";
+
+  @folder-open: "\f07c";
+
+  @resize-vertical: "\f07d";
+
+  @resize-horizontal: "\f07e";
+
+  @bar-chart: "\f080";
+
+  @twitter-sign: "\f081";
+
+  @facebook-sign: "\f082";
+
+  @camera-retro: "\f083";
+
+  @key: "\f084";
+
+  @cogs: "\f085";
+
+  @comments: "\f086";
+
+  @thumbs-up-alt: "\f087";
+
+  @thumbs-down-alt: "\f088";
+
+  @star-half: "\f089";
+
+  @heart-empty: "\f08a";
+
+  @signout: "\f08b";
+
+  @linkedin-sign: "\f08c";
+
+  @pushpin: "\f08d";
+
+  @external-link: "\f08e";
+
+  @signin: "\f090";
+
+  @trophy: "\f091";
+
+  @github-sign: "\f092";
+
+  @upload-alt: "\f093";
+
+  @lemon: "\f094";
+
+  @phone: "\f095";
+
+  @check-empty: "\f096";
+
+  @bookmark-empty: "\f097";
+
+  @phone-sign: "\f098";
+
+  @twitter: "\f099";
+
+  @facebook: "\f09a";
+
+  @github: "\f09b";
+
+  @unlock: "\f09c";
+
+  @credit-card: "\f09d";
+
+  @rss: "\f09e";
+
+  @hdd: "\f0a0";
+
+  @bullhorn: "\f0a1";
+
+  @bell: "\f0a2";
+
+  @certificate: "\f0a3";
+
+  @hand-right: "\f0a4";
+
+  @hand-left: "\f0a5";
+
+  @hand-up: "\f0a6";
+
+  @hand-down: "\f0a7";
+
+  @circle-arrow-left: "\f0a8";
+
+  @circle-arrow-right: "\f0a9";
+
+  @circle-arrow-up: "\f0aa";
+
+  @circle-arrow-down: "\f0ab";
+
+  @globe: "\f0ac";
+
+  @wrench: "\f0ad";
+
+  @tasks: "\f0ae";
+
+  @filter: "\f0b0";
+
+  @briefcase: "\f0b1";
+
+  @fullscreen: "\f0b2";
+
+  @group: "\f0c0";
+
+  @link: "\f0c1";
+
+  @cloud: "\f0c2";
+
+  @beaker: "\f0c3";
+
+  @cut: "\f0c4";
+
+  @copy: "\f0c5";
+
+  @paper-clip: "\f0c6";
+
+  @save: "\f0c7";
+
+  @sign-blank: "\f0c8";
+
+  @reorder: "\f0c9";
+
+  @list-ul: "\f0ca";
+
+  @list-ol: "\f0cb";
+
+  @strikethrough: "\f0cc";
+
+  @underline: "\f0cd";
+
+  @table: "\f0ce";
+
+  @magic: "\f0d0";
+
+  @truck: "\f0d1";
+
+  @pinterest: "\f0d2";
+
+  @pinterest-sign: "\f0d3";
+
+  @google-plus-sign: "\f0d4";
+
+  @google-plus: "\f0d5";
+
+  @money: "\f0d6";
+
+  @caret-down: "\f0d7";
+
+  @caret-up: "\f0d8";
+
+  @caret-left: "\f0d9";
+
+  @caret-right: "\f0da";
+
+  @columns: "\f0db";
+
+  @sort: "\f0dc";
+
+  @sort-down: "\f0dd";
+
+  @sort-up: "\f0de";
+
+  @envelope: "\f0e0";
+
+  @linkedin: "\f0e1";
+
+  @undo: "\f0e2";
+
+  @legal: "\f0e3";
+
+  @dashboard: "\f0e4";
+
+  @comment-alt: "\f0e5";
+
+  @comments-alt: "\f0e6";
+
+  @bolt: "\f0e7";
+
+  @sitemap: "\f0e8";
+
+  @umbrella: "\f0e9";
+
+  @paste: "\f0ea";
+
+  @lightbulb: "\f0eb";
+
+  @exchange: "\f0ec";
+
+  @cloud-download: "\f0ed";
+
+  @cloud-upload: "\f0ee";
+
+  @user-md: "\f0f0";
+
+  @stethoscope: "\f0f1";
+
+  @suitcase: "\f0f2";
+
+  @bell-alt: "\f0f3";
+
+  @coffee: "\f0f4";
+
+  @food: "\f0f5";
+
+  @file-text-alt: "\f0f6";
+
+  @building: "\f0f7";
+
+  @hospital: "\f0f8";
+
+  @ambulance: "\f0f9";
+
+  @medkit: "\f0fa";
+
+  @fighter-jet: "\f0fb";
+
+  @beer: "\f0fc";
+
+  @h-sign: "\f0fd";
+
+  @plus-sign-alt: "\f0fe";
+
+  @double-angle-left: "\f100";
+
+  @double-angle-right: "\f101";
+
+  @double-angle-up: "\f102";
+
+  @double-angle-down: "\f103";
+
+  @angle-left: "\f104";
+
+  @angle-right: "\f105";
+
+  @angle-up: "\f106";
+
+  @angle-down: "\f107";
+
+  @desktop: "\f108";
+
+  @laptop: "\f109";
+
+  @tablet: "\f10a";
+
+  @mobile-phone: "\f10b";
+
+  @circle-blank: "\f10c";
+
+  @quote-left: "\f10d";
+
+  @quote-right: "\f10e";
+
+  @spinner: "\f110";
+
+  @circle: "\f111";
+
+  @reply: "\f112";
+
+  @github-alt: "\f113";
+
+  @folder-close-alt: "\f114";
+
+  @folder-open-alt: "\f115";
+
+  @expand-alt: "\f116";
+
+  @collapse-alt: "\f117";
+
+  @smile: "\f118";
+
+  @frown: "\f119";
+
+  @meh: "\f11a";
+
+  @gamepad: "\f11b";
+
+  @keyboard: "\f11c";
+
+  @flag-alt: "\f11d";
+
+  @flag-checkered: "\f11e";
+
+  @terminal: "\f120";
+
+  @code: "\f121";
+
+  @reply-all: "\f122";
+
+  @mail-reply-all: "\f122";
+
+  @star-half-empty: "\f123";
+
+  @location-arrow: "\f124";
+
+  @crop: "\f125";
+
+  @code-fork: "\f126";
+
+  @unlink: "\f127";
+
+  @question: "\f128";
+
+  @info: "\f129";
+
+  @exclamation: "\f12a";
+
+  @superscript: "\f12b";
+
+  @subscript: "\f12c";
+
+  @eraser: "\f12d";
+
+  @puzzle-piece: "\f12e";
+
+  @microphone: "\f130";
+
+  @microphone-off: "\f131";
+
+  @shield: "\f132";
+
+  @calendar-empty: "\f133";
+
+  @fire-extinguisher: "\f134";
+
+  @rocket: "\f135";
+
+  @maxcdn: "\f136";
+
+  @chevron-sign-left: "\f137";
+
+  @chevron-sign-right: "\f138";
+
+  @chevron-sign-up: "\f139";
+
+  @chevron-sign-down: "\f13a";
+
+  @html5: "\f13b";
+
+  @css3: "\f13c";
+
+  @anchor: "\f13d";
+
+  @unlock-alt: "\f13e";
+
+  @bullseye: "\f140";
+
+  @ellipsis-horizontal: "\f141";
+
+  @ellipsis-vertical: "\f142";
+
+  @rss-sign: "\f143";
+
+  @play-sign: "\f144";
+
+  @ticket: "\f145";
+
+  @minus-sign-alt: "\f146";
+
+  @check-minus: "\f147";
+
+  @level-up: "\f148";
+
+  @level-down: "\f149";
+
+  @check-sign: "\f14a";
+
+  @edit-sign: "\f14b";
+
+  @external-link-sign: "\f14c";
+
+  @share-sign: "\f14d";
+
+  @compass: "\f14e";
+
+  @collapse: "\f150";
+
+  @collapse-top: "\f151";
+
+  @expand: "\f152";
+
+  @eur: "\f153";
+
+  @gbp: "\f154";
+
+  @usd: "\f155";
+
+  @inr: "\f156";
+
+  @jpy: "\f157";
+
+  @cny: "\f158";
+
+  @krw: "\f159";
+
+  @btc: "\f15a";
+
+  @file: "\f15b";
+
+  @file-text: "\f15c";
+
+  @sort-by-alphabet: "\f15d";
+
+  @sort-by-alphabet-alt: "\f15e";
+
+  @sort-by-attributes: "\f160";
+
+  @sort-by-attributes-alt: "\f161";
+
+  @sort-by-order: "\f162";
+
+  @sort-by-order-alt: "\f163";
+
+  @thumbs-up: "\f164";
+
+  @thumbs-down: "\f165";
+
+  @youtube-sign: "\f166";
+
+  @youtube: "\f167";
+
+  @xing: "\f168";
+
+  @xing-sign: "\f169";
+
+  @youtube-play: "\f16a";
+
+  @dropbox: "\f16b";
+
+  @stackexchange: "\f16c";
+
+  @instagram: "\f16d";
+
+  @flickr: "\f16e";
+
+  @adn: "\f170";
+
+  @bitbucket: "\f171";
+
+  @bitbucket-sign: "\f172";
+
+  @tumblr: "\f173";
+
+  @tumblr-sign: "\f174";
+
+  @long-arrow-down: "\f175";
+
+  @long-arrow-up: "\f176";
+
+  @long-arrow-left: "\f177";
+
+  @long-arrow-right: "\f178";
+
+  @apple: "\f179";
+
+  @windows: "\f17a";
+
+  @android: "\f17b";
+
+  @linux: "\f17c";
+
+  @dribbble: "\f17d";
+
+  @skype: "\f17e";
+
+  @foursquare: "\f180";
+
+  @trello: "\f181";
+
+  @female: "\f182";
+
+  @male: "\f183";
+
+  @gittip: "\f184";
+
+  @sun: "\f185";
+
+  @moon: "\f186";
+
+  @archive: "\f187";
+
+  @bug: "\f188";
+
+  @vk: "\f189";
+
+  @weibo: "\f18a";
+
+  @renren: "\f18b";
+
