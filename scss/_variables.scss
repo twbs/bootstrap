@@ -90,6 +90,7 @@ $border-radius-base:             4px !default;
 $border-radius-large:            6px !default;
 $border-radius-small:            3px !default;
 
+$component-active-color:         #fff !default;
 $component-active-bg:            $brand-primary !default;
 
 $caret-width-base:               4px !default;
@@ -173,12 +174,12 @@ $dropdown-border:                rgba(0,0,0,.15) !default;
 $dropdown-fallback-border:       #ccc !default;
 $dropdown-divider-bg:            #e5e5e5 !default;
 
-$dropdown-link-active-color:     #fff !default;
-$dropdown-link-active-bg:        $component-active-bg !default;
-
 $dropdown-link-color:            $gray-dark !default;
-$dropdown-link-hover-color:      #fff !default;
-$dropdown-link-hover-bg:         $dropdown-link-active-bg !default;
+$dropdown-link-hover-color:      darken($gray-dark, 5%) !default;
+$dropdown-link-hover-bg:         #f5f5f5 !default;
+
+$dropdown-link-active-color:     $component-active-color !default;
+$dropdown-link-active-bg:        $component-active-bg !default;
 
 $dropdown-link-disabled-color:   $gray-light !default;
 
@@ -334,7 +335,7 @@ $nav-tabs-justified-active-link-border-color:     $body-bg !default;
 
 // Pills
 $nav-pills-active-link-hover-bg:            $component-active-bg !default;
-$nav-pills-active-link-hover-color:         #fff !default;
+$nav-pills-active-link-hover-color:         $component-active-color !default;
 
 
 // Pagination
@@ -487,7 +488,7 @@ $list-group-border:           #ddd !default;
 $list-group-border-radius:    $border-radius-base !default;
 
 $list-group-hover-bg:         #f5f5f5 !default;
-$list-group-active-color:     #fff !default;
+$list-group-active-color:     $component-active-color !default;
 $list-group-active-bg:        $component-active-bg !default;
 $list-group-active-border:    $list-group-active-bg !default;
 
@@ -621,10 +622,13 @@ $component-offset-horizontal: 180px !default;
 // --------------------------------------------------
 
 // Small screen / tablet
-$container-tablet:            ((720px + $grid-gutter-width)) !default;
+$container-tablet:             ((720px + $grid-gutter-width)) !default;
+$container-sm:                 $container-tablet !default;
 
 // Medium screen / desktop
-$container-desktop:           ((940px + $grid-gutter-width)) !default;
+$container-desktop:            ((940px + $grid-gutter-width)) !default;
+$container-md:                 $container-desktop !default;
 
 // Large screen / wide desktop
-$container-lg-desktop:        ((1140px + $grid-gutter-width)) !default;
+$container-large-desktop:      ((1140px + $grid-gutter-width)) !default;
+$container-lg:                 $container-large-desktop !default;

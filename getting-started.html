@@ -22,7 +22,7 @@ base_url: "../"
     <h3 id="download-additional">Additional downloads</h3>
     <div class="bs-docs-dl-options">
       <h4>
-        <a href="{{ site.download }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download source code</a>
+        <a href="{{ site.download_source }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download source code</a>
       </h4>
       <p>Get the latest Bootstrap CSS and JavaScript source code by downloading it directly from GitHub.</p>
       <h4>
@@ -96,7 +96,7 @@ bootstrap/
     <div class="page-header">
       <h1 id="template">Basic template</h1>
     </div>
-    <p class="lead">Start with this basic HTML template, or modify <a href="../getting-started#examples">these examples</a>. 
+    <p class="lead">Start with this basic HTML template, or modify <a href="../getting-started#examples">these examples</a>.
     We hope you'll customize our templates and examples, adapting them to suit your needs.</p>
 
     <p>Copy the HTML below to begin working with a minimal Bootstrap document.</p>
@@ -135,7 +135,7 @@ bootstrap/
     <div class="page-header">
       <h1 id="examples">Examples</h1>
     </div>
-    <p class="lead">Build on the basic template above with Bootstrap's many components. Check out some of the more advanced tips for how to customize and build on top of them.</p>
+    <p class="lead">Build on the basic template above with Bootstrap's many components. See also <a href="#customizing">Customizing Bootstrap</a> for tips on maintaining your own Bootstrap variants.</p>
 
     <div class="row bs-examples">
       <div class="col-xs-6 col-md-4">
@@ -269,20 +269,24 @@ bootstrap/
     <div class="page-header">
       <h1 id="disable-responsive">Disabling responsiveness</h1>
     </div>
-    <p class="lead">Don't want your site or application to be scaled on different devices? With a little bit of work, you can disable the responsive features of Bootstrap so that mobile users see your full desktop-version site. Read below or check out <a href="../examples/non-responsive/">the non-responsive example</a>.</p>
+    <p class="lead">Bootstrap automatically adapts your pages for various screen sizes.
+	Here's how to disable this feature so your page works like in <a href="../examples/non-responsive/">this non-responsive example</a>.</p>
 
-    <h3>Steps to disable responsive views</h3>
-    <p>To disable responsive features, follow these steps. See it in action in the modified template below.</p>
+    <h3>Steps to disable page responsiveness</h3>
     <ol>
-      <li>Remove (or just don't add) the viewport <code>&lt;meta&gt;</code> mentioned in <a href="../css/#overview-mobile">the CSS docs</a></li>
-      <li>Remove the <code>max-width</code> on the <code>.container</code> for all grid tiers with <code>max-width: none !important;</code> and set a regular width like <code>width: 970px;</code>. Be sure that this comes after the default Bootstrap CSS. You can optionally avoid the <code>!important</code> with media queries or some selector-fu.</li>
-      <li>If using navbars, undo all the navbar collapsing and expanding behavior (this is too much to show here, so peep the example).</li>
-      <li>For grid layouts, make use of <code>.col-xs-*</code> classes in addition to or in place of the medium/large ones. Don't worry, the extra-small device grid scales up to all resolutions, so you're set there.</li>
+      <li>Omit the viewport <code>&lt;meta&gt;</code> mentioned in <a href="../css/#overview-mobile">the CSS docs</a></li>
+      <li>Remove the <code>max-width</code> on the <code>.container</code> for all grids with <code>max-width: none !important;</code> and set a regular 
+          width, for example <code>width: 970px;</code>. Be sure that this comes after the default Bootstrap CSS. 
+          You can optionally avoid the <code>!important</code> with media queries or some selector-fu.</li>
+      <li>If using navbars, remove all navbar collapsing and expanding behavior.</li>
+      <li>For grid layouts, use <code>.col-xs-*</code> classes in addition to, or in place of, the medium/large ones. 
+	      Don't worry, the extra-small device grid scales to all resolutions.</li>
     </ol>
-    <p>You'll still need Respond.js for IE8 (since our media queries are still there and need to be picked up). This just disables the "mobile site" of Bootstrap.</p>
+    <p>You'll still need Respond.js for IE8 (since our media queries are still there and need to be processed). 
+	   This disables the "mobile site" aspects of Bootstrap.</p>
 
-    <h3>Bootstrap template with disabled responsive</h3>
-    <p>We've taken the above steps and applied them to an example. Read it's source code to see the specific changes called out.</p>
+    <h3>Bootstrap template with responsiveness disabled</h3>
+    <p>We've applied these steps to an example. Read its source code to see the specific changes implemented.</p>
     <p>
       <a href="../examples/non-responsive/" class="btn btn-primary">View non-responsive example</a>
     </p>
@@ -601,6 +605,11 @@ bootstrap/
             <td class="text-muted">N/A</td>
           </tr>
           <tr>
+            <td>Navbar vertical dividers</td>
+            <td><code>.navbar .divider-vertical</code></td>
+            <td class="text-muted">N/A</td>
+          </tr>
+          <tr>
             <td>Dropdown submenu</td>
             <td><code>.dropdown-submenu</code></td>
             <td class="text-muted">N/A</td>
@@ -653,8 +662,49 @@ bootstrap/
     <p>Unofficially, Bootstrap should look and behave well enough in Chromium for Linux and Internet Explorer 7, though they are not officially supported.</p>
 
     <h3>Internet Explorer 8 and 9</h3>
-    <p>Internet Explorer 8 and 9 are also supported, however, please be aware that many CSS3 properties—e.g., rounded corners and shadows—are not supported by IE8. The <code>placeholder</code> attribute is also not supported in either of these versions.</p>
-    <p>In addition, <strong>Internet Explorer 8 requires the use of <a href="https://github.com/scottjehl/Respond">respond.js</a> to enable media query support.</strong></p>
+    <p>Internet Explorer 8 and 9 are also supported, however, please be aware that some CSS3 properties and HTML5 elements are not fully supported by these browsers. In addition, <strong>Internet Explorer 8 requires the use of <a href="https://github.com/scottjehl/Respond">respond.js</a> to enable media query support.</strong></p>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Internet Explorer 8</th>
+            <th>Internet Explorer 9</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="row"><code>border-radius</code></td>
+            <td class="text-muted">No</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td scope="row"><code>box-shadow</code></td>
+            <td class="text-muted">No</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td scope="row"><code>transform</code></td>
+            <td class="text-muted">No</td>
+            <td>Yes, with <code>-ms</code></td>
+          </tr>
+          <tr>
+            <td scope="row"><code>transition</code></td>
+            <td class="text-muted">No</td>
+            <td class="text-muted">No</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td scope="row"><code>placehoder</code></td>
+            <td class="text-muted">No</td>
+            <td class="text-muted">No</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Visit <a href="http://caniuse.com/">Can I use...</a> for details and additional browser support of CSS3 and HTML5 features.</p>
 
     <h3>IE Compatibility modes</h3>
     <p>Bootstrap is not supported in the old Internet Explorer compatibility modes. To be sure you're using the latest rendering mode for IE, consider including the appropriate <code>&lt;meta&gt;</code> tag in your pages:</p>
@@ -714,23 +764,51 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     </div>
     <p class="lead">While we don't officially support any third party plugins or add-ons, we do offer some useful advice to help avoid potential issues in your projects.</p>
 
-    <h3>Google Maps</h3>
-    <p>If you're using Google Maps on a Bootstrapped project, you might run into some display problems due to our use of <code>* { box-sizing: border-box; }</code>. Previously, you may have also ran into issues with the use of <code>max-width</code> on images. The following snippet should avoid all those problems.</p>
+    <h3>Box-sizing</h3>
+    <p>Some third party software, including Google Maps and Google Custom Search Engine, conflict with Bootstrap due to <code>* { box-sizing: border-box; }</code>, a rule which makes it so <code>padding</code> does not affect the final computed width of an element. Learn more about <a href="http://css-tricks.com/box-sizing/">box model and sizing at CSS Tricks</a>.</p>
+    <p>Depending on the context, you may override as-needed (Option 1) or reset the box-sizing for entire regions (Option 2).</p>
 {% highlight css %}
-/* Fix Google Maps canvas
+/* Box-sizing resets
  *
- * Wrap your Google Maps embed in a `.google-map-canvas` to reset Bootstrap's
- * global `box-sizing` changes. You may optionally need to reset the `max-width`
- * on images in case you've applied that anywhere else. (That shouldn't be as
- * necessary with Bootstrap 3 though as that behavior is relegated to the
- * `.img-responsive` class.)
+ * Reset individual elements or override regions to avoid conflicts due to
+ * global box model settings of Bootstrap. Two options—individual overrides and
+ * region resets—are available as plain CSS and Less.
  */
 
-.google-map-canvas,
-.google-map-canvas * { .box-sizing(content-box); }
+/* Option 1A: Override a single element's box model via CSS */
+.element {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
 
-/* Optional responsive image override */
-img { max-width: none; }
+/* Option 1B: Override a single element's box model via Bootstrap Less mixin */
+.element {
+  .box-sizing(content-box);
+}
+
+/* Option 2A: Reset an entire region via CSS */
+.reset-box-sizing,
+.reset-box-sizing *,
+.reset-box-sizing *:before,
+.reset-box-sizing *:after {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+/* Option 2B: Reset an entire region via custom Less mixin */
+.reset-box-sizing {
+  &,
+  *,
+  *:before,
+  *:after {
+    .box-sizing(content-box);
+  }
+}
+.element {
+  .reset-box-sizing();
+}
 {% endhighlight %}
   </div>
 

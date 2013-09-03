@@ -9,7 +9,9 @@
 .clearfix {
   @include clearfix();
 }
-
+.center-block {
+  @include center-block();
+}
 .pull-right {
   @include pull-right;
 }
