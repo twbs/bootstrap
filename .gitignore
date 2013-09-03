@@ -1,3 +1,7 @@
+# Ignore compiled docs
+_gh_pages
+_site
+
 # Numerous always-ignore extensions
 *.diff
 *.err
@@ -10,6 +14,7 @@
 *.vi
 *~
 *.sass-cache
+*.ruby-version
 
 # OS or Editor folders
 .DS_Store
@@ -28,10 +33,13 @@ nbproject
 *.komodoproject
 .komodotools
 
+# grunt-html-validation
+validation-status.json
+validation-report.json
+
 # Folders to ignore
 .hg
 .svn
 .CVS
 .idea
 node_modules
-dist
