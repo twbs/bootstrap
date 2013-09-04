@@ -2,6 +2,9 @@
  * Style tweaks
  * --------------------------------------------------
  */
+html {
+  overflow-x: hidden;
+}
 body {
   padding-top: 70px;
 }
@@ -13,7 +16,7 @@ footer {
  * Off Canvas
  * --------------------------------------------------
  */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .row-offcanvas {
     position: relative;
     -webkit-transition: all 0.25s ease-out;
