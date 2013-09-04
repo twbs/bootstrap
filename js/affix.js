@@ -67,7 +67,7 @@
     if (this.affixed === affix) return
     if (this.unpin) 
     {
-	  this.$element.css('top', '')	
+    this.$element.css('top', '')	
     this.$element.css('position', '')
     } 
 
