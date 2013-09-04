@@ -1711,6 +1711,10 @@ $('#myCollapsible').on('hidden.bs.collapse', function () {
   </a>
 </div>
 {% endhighlight %}
+<div class="bs-callout bs-callout-warning" id="callout-carousel-transitions">
+  <h4>Transition animations not supported in Internet Explorer 8 &amp; 9</h4>
+  <p>Bootstrap exclusively uses CSS3 for its animations, but Internet Explorer 8 &amp; 9 don't support the necessary CSS properties. Thus, there are no slide transition animations when using these browsers. We have intentionally decided not to include jQuery-based fallbacks for the transitions.</p>
+</div>
 <div class="bs-callout bs-callout-info">
   <h4>Glyphicon Alternative</h4>
   <p>With <a href="{{ page.base_url }}components/#glyphicons">Glyphicons</a> available, you may choose to style the left and right toggle buttons with <code>.glyphicon .glyphicon-chevron-left</code> and <code>.glyphicon .glyphicon-chevron-right</code>.</p>
