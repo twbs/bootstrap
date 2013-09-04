@@ -2353,7 +2353,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
     <h3 id="helper-classes-screen-readers">Screen reader content</h3>
-    <p>Hide an element to all users <em>except</em> screen readers with <code>.sr-only</code>. Necessary for following <a href="{{ page.base_url }}getting-started#accessibility">accessibility best practices</a>. Can also be used as a mixin.</p>
+    <p>Hide an element everywhere, <strong>including screen readers</strong>, with <code>.hidden</code>. Can also be used as a mixin.</p>
+{% highlight html %}
+<div class="hidden"></div>
+{% endhighlight %}
+{% highlight css %}
+// Usage as a Mixin
+.example {
+  .hidden();
+}
+{% endhighlight %}
+
+    <p>Hide an element to all devices <strong>except screen readers</strong> with <code>.sr-only</code>. Necessary for following <a href="{{ page.base_url }}getting-started#accessibility">accessibility best practices</a>. Can also be used as a mixin.</p>
 {% highlight html %}
 <a class="sr-only" href="#content">Skip to content</a>
 {% endhighlight %}
