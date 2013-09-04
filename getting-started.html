@@ -24,7 +24,7 @@ base_url: "../"
       <h4>
         <a href="{{ site.download_source }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download source code</a>
       </h4>
-      <p>Get the latest Bootstrap CSS and JavaScript source code by downloading it directly from GitHub.</p>
+      <p>Get the latest Bootstrap LESS and JavaScript source code by downloading it directly from GitHub.</p>
       <h4>
         <a href="{{ site.repo }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'GitHub project']);">Clone or fork via GitHub</a>
       </h4>
@@ -32,7 +32,7 @@ base_url: "../"
       <h4>
         Install with <a href="http://bower.io">Bower</a>
       </h4>
-      <p>Install and manage Bootstrap's CSS, JavaScript, and documentation using <a href="http://bower.io">Bower</a>.</p>
+      <p>Install and manage Bootstrap's styles, JavaScript, and documentation using <a href="http://bower.io">Bower</a>.</p>
       {% highlight bash %}$ bower install bootstrap{% endhighlight %}
     </div>
 
@@ -81,7 +81,7 @@ bootstrap/
     └── glyphicons-halflings-regular.woff
 {% endhighlight %}
 
-    <p>This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). Fonts from Glyphicons are included, as is the optional Bootstrap theme.</p>
+    <p>This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). Fonts from Glyphicons are included, as is the optional Bootstrap theme.</p>
     <div class="bs-callout bs-callout-danger">
       <h4>jQuery required</h4>
       <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included, as shown in the <a href="#template">starter template</a>.</p>
@@ -275,14 +275,11 @@ bootstrap/
     <h3>Steps to disable page responsiveness</h3>
     <ol>
       <li>Omit the viewport <code>&lt;meta&gt;</code> mentioned in <a href="../css/#overview-mobile">the CSS docs</a></li>
-      <li>Remove the <code>max-width</code> on the <code>.container</code> for all grids with <code>max-width: none !important;</code> and set a regular 
-          width, for example <code>width: 970px;</code>. Be sure that this comes after the default Bootstrap CSS. 
-          You can optionally avoid the <code>!important</code> with media queries or some selector-fu.</li>
+      <li>Override the <code>width</code> on the <code>.container</code> for each grid tier with a single width, for example <code>width: 970px !important;</code> Be sure that this comes after the default Bootstrap CSS. You can optionally avoid the <code>!important</code> with media queries or some selector-fu.</li>
       <li>If using navbars, remove all navbar collapsing and expanding behavior.</li>
-      <li>For grid layouts, use <code>.col-xs-*</code> classes in addition to, or in place of, the medium/large ones. 
-	      Don't worry, the extra-small device grid scales to all resolutions.</li>
+      <li>For grid layouts, use <code>.col-xs-*</code> classes in addition to, or in place of, the medium/large ones. Don't worry, the extra-small device grid scales to all resolutions.</li>
     </ol>
-    <p>You'll still need Respond.js for IE8 (since our media queries are still there and need to be processed). 
+    <p>You'll still need Respond.js for IE8 (since our media queries are still there and need to be processed).
 	   This disables the "mobile site" aspects of Bootstrap.</p>
 
     <h3>Bootstrap template with responsiveness disabled</h3>
@@ -437,6 +434,10 @@ bootstrap/
           <tr>
             <td><code>.text-error</code></td>
             <td><code>.text-danger</code></td>
+          </tr>
+          <tr>
+            <td><code>.table .error</code></td>
+            <td><code>.table .danger</code></td>
           </tr>
           <tr>
             <td><code>.bar</code></td>
@@ -619,6 +620,11 @@ bootstrap/
             <td><code>.tabs-left</code> <code>.tabs-right</code> <code>.tabs-below</code></td>
             <td class="text-muted">N/A</td>
           </tr>
+          <tr>
+            <td>Nav lists</td>
+            <td><code>.nav-list</code> <code>.nav-header</code></td>
+            <td>No direct equivalent, but <a href="../components/#list-group">List groups</a> and <a href="../javascript/#collapse"><code>.panel-group</code>s</a> are similar.</td>
+          </tr>
         </tbody>
       </table>
     </div><!-- /.table-responsive -->
@@ -659,7 +665,7 @@ bootstrap/
       <li>Internet Explorer</li>
       <li>Opera (Mac, Windows)</li>
     </ul>
-    <p>Unofficially, Bootstrap should look and behave well enough in Chromium for Linux and Internet Explorer 7, though they are not officially supported.</p>
+    <p>Unofficially, Bootstrap should look and behave well enough in Chromium for Linux, Firefox for Linux, and Internet Explorer 7, though they are not officially supported.</p>
 
     <h3>Internet Explorer 8 and 9</h3>
     <p>Internet Explorer 8 and 9 are also supported, however, please be aware that some CSS3 properties and HTML5 elements are not fully supported by these browsers. In addition, <strong>Internet Explorer 8 requires the use of <a href="https://github.com/scottjehl/Respond">respond.js</a> to enable media query support.</strong></p>
@@ -667,44 +673,45 @@ bootstrap/
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
-            <th>Feature</th>
-            <th>Internet Explorer 8</th>
-            <th>Internet Explorer 9</th>
+            <th class="col-xs-4">Feature</th>
+            <th class="col-xs-4">Internet Explorer 8</th>
+            <th class="col-xs-4">Internet Explorer 9</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td scope="row"><code>border-radius</code></td>
-            <td class="text-muted">No</td>
-            <td>Yes</td>
+            <td class="text-danger"><span class="glyphicon glyphicon-remove"></span> Not supported</td>
+            <td class="text-success"><span class="glyphicon glyphicon-ok"></span> Supported</td>
           </tr>
           <tr>
             <td scope="row"><code>box-shadow</code></td>
-            <td class="text-muted">No</td>
-            <td>Yes</td>
+            <td class="text-danger"><span class="glyphicon glyphicon-remove"></span> Not supported</td>
+            <td class="text-success"><span class="glyphicon glyphicon-ok"></span> Supported</td>
           </tr>
           <tr>
             <td scope="row"><code>transform</code></td>
-            <td class="text-muted">No</td>
-            <td>Yes, with <code>-ms</code></td>
+            <td class="text-danger"><span class="glyphicon glyphicon-remove"></span> Not supported</td>
+            <td class="text-success"><span class="glyphicon glyphicon-ok"></span> Supported, with <code>-ms</code> prefix</td>
           </tr>
           <tr>
             <td scope="row"><code>transition</code></td>
-            <td class="text-muted">No</td>
-            <td class="text-muted">No</td>
+            <td colspan="2" class="text-danger"><span class="glyphicon glyphicon-remove"></span> Not supported</td>
           </tr>
         </tbody>
         <tbody>
           <tr>
-            <td scope="row"><code>placehoder</code></td>
-            <td class="text-muted">No</td>
-            <td class="text-muted">No</td>
+            <td scope="row"><code>placeholder</code></td>
+            <td colspan="2" class="text-danger"><span class="glyphicon glyphicon-remove"></span> Not supported</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <p>Visit <a href="http://caniuse.com/">Can I use...</a> for details and additional browser support of CSS3 and HTML5 features.</p>
+    <p>Visit <a href="http://caniuse.com/">Can I use...</a> for details on browser support of CSS3 and HTML5 features.</p>
+
+    <h3>Internet Explorer 8 and box-sizing</h3>
+    <p>IE8 does not fully support <code>box-sizing: border-box;</code> when combined with <code>min-width</code>, <code>max-width</code>, <code>min-height</code>, or <code>max-height</code>. For that reason, as of v3.0.1, we no longer use <code>max-width</code> on <code>.container</code>s.</p>
 
     <h3>IE Compatibility modes</h3>
     <p>Bootstrap is not supported in the old Internet Explorer compatibility modes. To be sure you're using the latest rendering mode for IE, consider including the appropriate <code>&lt;meta&gt;</code> tag in your pages:</p>

@@ -844,7 +844,7 @@ pre code {
 
 @media (min-width: 768px) {
   .container {
-    max-width: 750px;
+    width: 750px;
   }
 
   .col-sm-1,
@@ -1043,7 +1043,7 @@ pre code {
 }
 @media (min-width: 992px) {
   .container {
-    max-width: 970px;
+    width: 970px;
   }
 
   .col-md-1,
@@ -1254,7 +1254,7 @@ pre code {
 }
 @media (min-width: 1200px) {
   .container {
-    max-width: 1170px;
+    width: 1170px;
   }
 
   .col-lg-1,
@@ -4760,6 +4760,7 @@ a.thumbnail:focus {
   width: 0%;
   height: 100%;
   font-size: 12px;
+  line-height: 20px;
   color: white;
   text-align: center;
   background-color: #428bca;
