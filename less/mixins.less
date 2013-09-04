@@ -360,7 +360,7 @@
 
 // Panels
 // -------------------------
-.panel-variant(@border; @heading-text-color; @heading-bg-color; @heading-border;) {
+.panel-variant(@border; @heading-text-color; @heading-bg-color; @heading-border; @body-bg-color:transparent;) {
   border-color: @border;
   & > .panel-heading {
     color: @heading-text-color;
@@ -368,6 +368,7 @@
     border-color: @heading-border;
     + .panel-collapse .panel-body {
       border-top-color: @border;
+      background-color: @body-bg-color;
     }
   }
   & > .panel-footer {
