@@ -5181,6 +5181,7 @@ a.thumbnail:focus {
   width: 0;
   height: 100%;
   font-size: 12px;
+  line-height: 20px;
   color: #ffffff;
   text-align: center;
   background-color: #428bca;
