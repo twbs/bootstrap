@@ -96,8 +96,7 @@ bootstrap/
     <div class="page-header">
       <h1 id="template">Basic template</h1>
     </div>
-    <p class="lead">Start with this basic HTML template, or modify <a href="../getting-started#examples">these examples</a>.
-    We hope you'll customize our templates and examples, adapting them to suit your needs.</p>
+    <p class="lead">Start with this basic HTML template, or modify <a href="../getting-started#examples">these examples</a>. We hope you'll customize our templates and examples, adapting them to suit your needs.</p>
 
     <p>Copy the HTML below to begin working with a minimal Bootstrap document.</p>
 {% highlight html %}
@@ -270,7 +269,7 @@ bootstrap/
       <h1 id="disable-responsive">Disabling responsiveness</h1>
     </div>
     <p class="lead">Bootstrap automatically adapts your pages for various screen sizes.
-	Here's how to disable this feature so your page works like in <a href="../examples/non-responsive/">this non-responsive example</a>.</p>
+      Here's how to disable this feature so your page works like in <a href="../examples/non-responsive/">this non-responsive example</a>.</p>
 
     <h3>Steps to disable page responsiveness</h3>
     <ol>
@@ -280,7 +279,7 @@ bootstrap/
       <li>For grid layouts, use <code>.col-xs-*</code> classes in addition to, or in place of, the medium/large ones. Don't worry, the extra-small device grid scales to all resolutions.</li>
     </ol>
     <p>You'll still need Respond.js for IE8 (since our media queries are still there and need to be processed).
-	   This disables the "mobile site" aspects of Bootstrap.</p>
+      This disables the "mobile site" aspects of Bootstrap.</p>
 
     <h3>Bootstrap template with responsiveness disabled</h3>
     <p>We've applied these steps to an example. Read its source code to see the specific changes implemented.</p>
@@ -297,11 +296,10 @@ bootstrap/
     <div class="page-header">
       <h1 id="migration">Migrating from 2.x to 3.0</h1>
     </div>
-    <p class="lead">Bootstrap 3 is not backwards compatible with v2.x. Folks looking to upgrade to v3 should use this section as a general upgrade guide. We've outlined some of the major changes and provided tables that highlight key changes. For an overview, <a href="http://blog.getbootstrap.com/2013/08/19/bootstrap-3-released/">read the announcement blog post</a>.</p>
-
+    <p class="lead">Bootstrap 3 is not backwards compatible with v2.x. Use this section as a general guide to upgrading from v2.x to v3.0. For a broader overview, see <a href="http://blog.getbootstrap.com/2013/08/19/bootstrap-3-released/">what's new</a> in the v3.0 release announcement.</p>
 
     <h2 id="migration-classes">Major class changes</h2>
-    <p>Reference table for classes that have changed between v2.x and v3.0.</p>
+    <p>This table shows the style changes between v2.x and v3.0.</p>
     <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
@@ -453,7 +451,7 @@ bootstrap/
 
 
     <h2 id="migration-new">What's new</h2>
-    <p>We've added a few new elements and changed some existing ones. Here's their new or updated classes.</p>
+    <p>We've added new elements and changed some existing ones. Here are the new or updated styles.</p>
     <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
@@ -569,7 +567,7 @@ bootstrap/
 
 
     <h2 id="migration-dropped">What's removed</h2>
-    <p>The following elements have been dropped or changed in v3.</p>
+    <p>The following elements have been dropped or changed in v3.0.</p>
     <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
@@ -631,19 +629,19 @@ bootstrap/
 
 
     <h2 id="migration-notes">Additional notes</h2>
-    <p>We've made many underlying changes in v3 that are not immediately apparent. Base classes, key styles, and behaviors have been adjusted for flexibility and our mobile first approach.</p>
+    <p>Other changes in v3.0 are not immediately apparent. Base classes, key styles, and behaviors have been adjusted for flexibility and our <em>mobile first</em> approach. Here's a partial list:</p>
     <ul>
       <li>Text-based form controls are now 100% wide. Wrap inputs inside <code>&lt;div class="col-*"&gt;&lt;/div&gt;</code> to control input widths.</li>
       <li><code>.badge</code> no longer has contextual (-success,-primary,etc..) classes.</li>
       <li><code>.btn</code> must also use <code>.btn-default</code> to get the "default" button.</li>
       <li><code>.container</code> and <code>.row</code> are now fluid (percentage-based).</li>
       <li>Images are no longer responsive by default. Use <code>.img-responsive</code> for fluid <code>&lt;img&gt;</code> size.</li>
-      <li>The icons, now <code>.glyphicon</code>, are now font based. They also require a base and icon class (e.g. <code>.glyphicon .glyphicon-asterisk</code>).</li>
+      <li>The icons, now <code>.glyphicon</code>, are now font based. Icons also require a base and icon class (e.g. <code>.glyphicon .glyphicon-asterisk</code>).</li>
       <li>Typeahead has been dropped, in favor of using <a href="http://twitter.github.io/typeahead.js/">Twitter Typeahead</a>.</li>
-      <li>Modal markup has changed significantly. The <code>.modal-header</code>, <code>.modal-body</code>, and <code>.modal-footer</code> sections now get wrapped in <code>.modal-content</code> and <code>.modal-dialog</code> for improved mobile styling and behavior.</li>
+      <li>Modal markup has changed significantly. The <code>.modal-header</code>, <code>.modal-body</code>, and <code>.modal-footer</code> sections are now wrapped in <code>.modal-content</code> and <code>.modal-dialog</code> for better mobile styling and behavior.</li>
       <li>JavaScript events are namespaced. For example, to handle the modal "show" event, use <code>'show.bs.modal'</code>. For tabs "shown" use <code>'shown.bs.tab'</code>, etc..</li>
     </ul>
-    <p>For more information on upgrades and code snippets from the community check out <a href="http://bootply.com/">Bootply</a>.</p>
+    <p>For more information on upgrading to v3.0, and code snippets from the community, see <a href="http://bootply.com/">Bootply</a>.</p>
   </div>
 
 
