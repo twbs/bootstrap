@@ -65,7 +65,11 @@
                 offsetTop    != null && (scrollTop <= offsetTop) ? 'top' : false
 
     if (this.affixed === affix) return
-    if (this.unpin) this.$element.css('top', '')
+    if (this.unpin) 
+    {
+	  this.$element.css('top', '')	
+    this.$element.css('position', '')
+    } 
 
     this.affixed = affix
     this.unpin   = affix == 'bottom' ? position.top - scrollTop : null
