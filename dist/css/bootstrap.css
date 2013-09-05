@@ -4690,7 +4690,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .breadcrumb > li + li:before {
   padding: 0 5px;
   color: #cccccc;
-  content: "/\00a0";
+  content: "/";
 }
 
 .breadcrumb > .active {
