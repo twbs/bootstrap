@@ -623,7 +623,7 @@
   }
 }
 
-// Generate the large column offsets
+// Generate the medium column offsets
 @mixin make-md-column-offset($columns) {
   @media (min-width: $screen-md-min) {
     margin-left: percentage(($columns / $grid-columns));

@@ -239,7 +239,7 @@ base_url: "../"
     <p>Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid classes by adding <code>.col-xs-*</code> <code>.col-md-*</code> to your columns. See the example below for a better idea of how it all works.</p>
     <div class="bs-docs-grid">
       <div class="row show-grid">
-        <div class="col-xs-12 col-md-8">.col-xs-12 col-md-8</div>
+        <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
         <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
       </div>
       <div class="row show-grid">
@@ -255,7 +255,7 @@ base_url: "../"
 {% highlight html %}
 <!-- Stack the columns on mobile by making one full-width and the other half-width -->
 <div class="row">
-  <div class="col-xs-12 col-md-8">.col-xs-12 col-md-8</div>
+  <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
   <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
 </div>
 
@@ -740,7 +740,7 @@ base_url: "../"
 {% endhighlight %}
 
     <h3>Emphasis classes</h3>
-    <p>Convey meaning through color with a handful of emphasis utility classes.</p>
+    <p>Convey meaning through color with a handful of emphasis utility classes. These may also be applied to links and will darken on hover just like our default link styles.</p>
     <div class="bs-example">
       <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
       <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -757,6 +757,10 @@ base_url: "../"
 <p class="text-warning">...</p>
 <p class="text-danger">...</p>
 {% endhighlight %}
+    <div class="bs-callout bs-callout-info">
+      <h4>Dealing with specificity</h4>
+      <p>Sometimes emphasis classes cannot be applied due to the specificity of another selector. In most cases, a sufficient workaround is to wrap your text in a <code>&lt;span&gt;</code> with the class.</p>
+    </div>
 
 
     <!-- Abbreviations -->
@@ -2353,7 +2357,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
     <h3 id="helper-classes-screen-readers">Screen reader content</h3>
-    <p>Hide an element to all users <em>except</em> screen readers with <code>.sr-only</code>. Necessary for following <a href="{{ page.base_url }}getting-started#accessibility">accessibility best practices</a>. Can also be used as a mixin.</p>
+    <p>Hide an element everywhere, <strong>including screen readers</strong>, with <code>.hidden</code>. Can also be used as a mixin.</p>
+{% highlight html %}
+<div class="hidden"></div>
+{% endhighlight %}
+{% highlight css %}
+// Usage as a Mixin
+.example {
+  .hidden();
+}
+{% endhighlight %}
+
+    <p>Hide an element to all devices <strong>except screen readers</strong> with <code>.sr-only</code>. Necessary for following <a href="{{ page.base_url }}getting-started#accessibility">accessibility best practices</a>. Can also be used as a mixin.</p>
 {% highlight html %}
 <a class="sr-only" href="#content">Skip to content</a>
 {% endhighlight %}
