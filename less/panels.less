@@ -63,18 +63,23 @@
     border-top: 1px solid @table-border-color;
   }
   > .table-bordered {
-    border: none;
+    border: 0;
     > thead,
     > tbody,
     > tfoot {
       > tr {
         > th:first-child,
         > td:first-child {
-          border-left: none;
+          border-left: 0;
         }
         > th:last-child,
         > td:last-child {
-          border-right: none;
+          border-right: 0;
+        }
+
+        &:last-child > th,
+        &:last-child > td {
+          border-bottom: 0;
         }
       }
     }
