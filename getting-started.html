@@ -24,7 +24,7 @@ base_url: "../"
       <h4>
         <a href="{{ site.download_source }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download source code</a>
       </h4>
-      <p>Get the latest Bootstrap LESS and JavaScript source code by downloading it directly from GitHub.</p>
+      <p>Get the latest Bootstrap .LESS and JavaScript source code by downloading it directly from GitHub.</p>
       <h4>
         <a href="{{ site.repo }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'GitHub project']);">Clone or fork via GitHub</a>
       </h4>
@@ -50,8 +50,8 @@ base_url: "../"
 {% endhighlight %}
 
     <div class="bs-callout bs-callout-warning" id="callout-less-compilation">
-      <h4>Compiling Bootstrap's LESS files</h4>
-      <p>If you work with Bootstrap's uncompiled source code, you need to compile the LESS files to produce usable CSS files. For LESS compilation, we only officially support <a href="http://twitter.github.io/recess/">Recess</a>, which is Twitter's CSS hinter based on <a href="http://lesscss.org">less.js</a>.</p>
+      <h4>Compiling Bootstrap's .LESS files</h4>
+      <p>If you work with Bootstrap's uncompiled source code, you need to compile the .LESS files to produce usable CSS files. For compiling LESS files into CSS, we only officially support <a href="http://twitter.github.io/recess/">Recess</a>, which is Twitter's CSS hinter based on <a href="http://lesscss.org">less.js</a>.</p>
     </div>
   </div>
 
@@ -647,13 +647,13 @@ bootstrap/
     <div class="page-header">
       <h1 id="browsers">Browser support</h1>
     </div>
-    <p class="lead">Bootstrap is built to work best in the latest desktop and mobile browsers, meaning older and less advanced browsers might receive a less stylized, though fully functional, version of certain components.</p>
+    <p class="lead">Bootstrap is built to work best in the latest desktop and mobile browsers, meaning older browsers might display differently styled, though fully functional, renderings of certain components.</p>
 
     <h3>Supported browsers</h3>
     <p>Specifically, we support the latest versions of the following:</p>
     <ul>
       <li>Chrome (Mac, Windows, iOS, and Android)</li>
-      <li>Safari (Mac and iOS only, as Windows has more or less been discontinued)</li>
+      <li>Safari (Mac and iOS only, as the Windows version is being abandoned)</li>
       <li>Firefox (Mac, Windows)</li>
       <li>Internet Explorer</li>
       <li>Opera (Mac, Windows)</li>
@@ -770,8 +770,8 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
 /* Box-sizing resets
  *
  * Reset individual elements or override regions to avoid conflicts due to
- * global box model settings of Bootstrap. Two options—individual overrides and
- * region resets—are available as plain CSS and Less.
+ * global box model settings of Bootstrap. Two options, individual overrides and
+ * region resets, are available as plain CSS and uncompiled LESS formats.
  */
 
 /* Option 1A: Override a single element's box model via CSS */
@@ -781,7 +781,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
           box-sizing: content-box;
 }
 
-/* Option 1B: Override a single element's box model via Bootstrap Less mixin */
+/* Option 1B: Override a single element's box model by using a Bootstrap LESS mixin */
 .element {
   .box-sizing(content-box);
 }
@@ -796,7 +796,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
           box-sizing: content-box;
 }
 
-/* Option 2B: Reset an entire region via custom Less mixin */
+/* Option 2B: Reset an entire region with a custom LESS mixin */
 .reset-box-sizing {
   &,
   *,
@@ -957,7 +957,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
 
     <div class="bs-callout bs-callout-info">
       <h4>Alternate customization methods</h4>
-      <p>For more advanced Bootstrap developers, you could use one of two alternate methods for customization. The first is modifying the source .less files (and potentially making upgrades super difficult), and the second is mapping source LESS code to <a href="http://ruby.bvision.com/blog/please-stop-embedding-bootstrap-classes-in-your-html">your own classes via mixins</a>. For the time being, neither of those options are documented here.</p>
+      <p>For more advanced Bootstrap developers, you could use one of two alternate methods for customization. The first is modifying the source .LESS files (and potentially making upgrades super difficult), and the second is mapping source LESS code to <a href="http://ruby.bvision.com/blog/please-stop-embedding-bootstrap-classes-in-your-html">your own classes via mixins</a>. For the time being, neither of those options are documented here.</p>
     </div>
 
     <h3>Removing potential bloat</h3>
