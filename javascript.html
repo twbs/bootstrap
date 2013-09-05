@@ -1379,7 +1379,12 @@ $('.btn-group').button()
     <p>Data attributes are integral to the button plugin. Check out the example code below for the various markup types.</p>
 
     <h3>Options</h3>
-    <p><em>None</em></p>
+    <p>It is possible pass in the loading-text as a parameter:</p>
+{% highlight js %}
+$('.btn-group').button({
+    loading-text: "Custom text"
+})
+{% endhighlight %}
 
     <h3>Methods</h3>
 
