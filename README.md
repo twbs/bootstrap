@@ -56,7 +56,7 @@ Bootstrap uses [Grunt](http://gruntjs.com/) with convenient methods for working 
 From the command line:
 
 1. Install `grunt-cli` globally with `npm install -g grunt-cli`.
-2. Install the [necessary local dependencies](package.json) via `npm install`
+2. From the root `/bootstrap` directory, install the [necessary local dependencies](package.json) via `npm install`.
 
 When completed, you'll be able to run the various Grunt commands provided from the command line.
 
