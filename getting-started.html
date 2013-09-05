@@ -893,9 +893,9 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     <div class="page-header">
       <h1 id="customizing">Customizing Bootstrap</h1>
     </div>
-    <p class="lead">A customized instance of Bootstrap is best maintained when you treat it as a separate and independently-versioned dependency in your development environment. Doing this makes future upgrades easier.</p>
+    <p class="lead">Bootstrap is best maintained when you treat it as a separate and independently-versioned dependency in your development environment. Doing this makes upgrading Bootstrap easier in the future.</p>
 
-    <p>Once you've downloaded and included Bootstrap's styles and scripts, you can customize its theme and components. Just create a new stylesheet (LESS, if you like, or just plain CSS) to house your customizations.</p>
+    <p>Once you've downloaded and included Bootstrap's styles and scripts, you can customize its components. Just create a new stylesheet (LESS, if you like, or just plain CSS) to house your customizations.</p>
 
     <div class="bs-callout bs-callout-info">
       <h4>Compiled or minified?</h4>
@@ -908,7 +908,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     <p>You can customize components to varying degrees, but most fall into two camps: <em>light customizations</em> and <em>overhauls</em>. Plenty examples of both are available from third parties.</p>
     <p>We define <em>light customizations</em> as superficial changes, for example, color and font changes to existing Bootstrap components. A light customization example is the <a href="http://translate.twitter.com">Twitter Translation Center</a> (coded by <a href="https://twitter.com/mdo">@mdo</a>). Let's look at how to implement the custom button we wrote for this site, <code>.btn-ttc</code>.</p>
     <p>The stock Bootstrap buttons require just one class, <code>.btn</code>, to start.  Here we extend the <code>.btn</code> style with a new modifier class, <code>.btn-ttc</code>, that we will create. This gives us a distinct custom look with minimal effort.</p>
-    <p>Our customized button will be invoked like this:</p>
+    <p>Our customized button will be coded like this:</p>
 {% highlight html %}
 <button type="button" class="btn btn-ttc">Save changes</button>
 {% endhighlight %}
@@ -953,7 +953,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
       <li>In your custom stylesheet, edit the CSS you just copied from the Bootstrap source. No need for prepending additional classes, or appending <code>!important</code> here.  Keep it simple.</li>
       <li>Rinse and repeat until you're happy with your customizations.</li>
     </ul>
-    <p>Once you are comfortable performing light customizations, visual overhauls are just as straightforward. For a site like <a href="http://yourkarma.com">Karma</a>, which uses Bootstrap as a CSS reset with heavy modifications, more extensive work is involved.  But the same principle applies: invoke Bootstrap's default stylesheet first, then invoke your custom stylesheets.</p>
+    <p>Once you are comfortable performing light customizations, visual overhauls are just as straightforward. For a site like <a href="http://yourkarma.com">Karma</a>, which uses Bootstrap as a CSS reset with heavy modifications, more extensive work is involved.  But the same principle applies: include Bootstrap's default stylesheet first, then apply your custom stylesheet.</p>
 
     <div class="bs-callout bs-callout-info">
       <h4>Alternate customization methods</h4>
