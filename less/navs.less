@@ -51,12 +51,17 @@
     }
   }
 
-  // Dividers (basically an hr) within the dropdown
+  // Nav dividers (deprecated with v3.0.1)
+  //
+  // This should have been removed in v3 with the dropping of `.nav-list`, but
+  // we missed it. We don't currently support this anywhere, but in the interest
+  // of maintaining backward compatibility in case you use it, it's deprecated.
   .nav-divider {
     .nav-divider();
   }
 
   // Prevent IE8 from misplacing imgs
+  //
   // See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
   > li > a > img {
     max-width: none;
