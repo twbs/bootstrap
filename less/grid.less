@@ -6,6 +6,18 @@
 // Set the container width, and override it for fixed navbars in media queries
 .container {
   .container-fixed();
+
+  @media (min-width: @screen-sm) {
+    width: @container-sm;
+  }
+
+  @media (min-width: @screen-md) {
+    width: @container-md;
+  }
+
+  @media (min-width: @screen-lg-min) {
+    width: @container-lg;
+  }
 }
 
 // mobile first defaults
@@ -115,10 +127,6 @@
 // it's full-width.
 
 @media (min-width: @screen-sm) {
-  .container {
-    width: @container-sm;
-  }
-
   .col-sm-1,
   .col-sm-2,
   .col-sm-3,
@@ -193,9 +201,6 @@
 // it's full-width.
 
 @media (min-width: @screen-md) {
-  .container {
-    width: @container-md;
-  }
   .col-md-1,
   .col-md-2,
   .col-md-3,
@@ -273,10 +278,6 @@
 // it's full-width.
 
 @media (min-width: @screen-lg-min) {
-  .container {
-    width: @container-lg;
-  }
-
   .col-lg-1,
   .col-lg-2,
   .col-lg-3,
