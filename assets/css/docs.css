@@ -622,6 +622,11 @@ h1[id] {
   }
 }
 
+/* Undo width of container */
+.bs-example .container {
+  width: auto;
+}
+
 /* Tweak content of examples for optimum awesome */
 .bs-example > p:last-child,
 .bs-example > ul:last-child,
