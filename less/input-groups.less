@@ -113,6 +113,14 @@
 .input-group-btn {
   position: relative;
   white-space: nowrap;
+
+  // Negative margin to only have a 1px border between the two
+  &:first-child > .btn {
+    margin-right: -1px;
+  }
+  &:last-child > .btn {
+    margin-left: -1px;
+  }
 }
 .input-group-btn > .btn {
   position: relative;
