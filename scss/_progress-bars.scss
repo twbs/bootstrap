@@ -61,7 +61,7 @@
 
 // Striped bars
 .progress-striped .progress-bar {
-  @include gradient-striped($progress-bar-bg);
+  @include gradient-striped();
   background-size: 40px 40px;
 }
 

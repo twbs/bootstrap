@@ -103,9 +103,16 @@
   .glyphicon-chevron-right {
     position: absolute;
     top: 50%;
-    left: 50%;
     z-index: 5;
     display: inline-block;
+  }
+  .icon-prev,
+  .glyphicon-chevron-left {
+    left: 50%;
+  }
+  .icon-next,
+  .glyphicon-chevron-right {
+    right: 50%;
   }
   .icon-prev,
   .icon-next {

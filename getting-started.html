@@ -51,7 +51,7 @@ base_url: "../"
 
     <div class="bs-callout bs-callout-warning" id="callout-less-compilation">
       <h4>Compiling Bootstrap's LESS files</h4>
-      <p>If you work with Bootstrap's uncompiled source code, you need to compile the LESS files to produce usable CSS files. For LESS compilation, we only officially support <a href="http://twitter.github.io/recess/">Recess</a>, which is Twitter's CSS hinter based on <a href="http://lesscss.org">less.js</a>.</p>
+      <p>If you work with Bootstrap's uncompiled source code, you need to compile the LESS files to produce usable CSS files. For compiling LESS files into CSS, we only officially support <a href="http://twitter.github.io/recess/">Recess</a>, which is Twitter's CSS hinter based on <a href="http://lesscss.org">less.js</a>.</p>
     </div>
   </div>
 
@@ -89,7 +89,6 @@ bootstrap/
   </div>
 
 
-
   <!-- Template
   ================================================== -->
   <div class="bs-docs-section">
@@ -125,7 +124,6 @@ bootstrap/
 </html>
 {% endhighlight %}
   </div>
-
 
 
   <!-- Template
@@ -261,7 +259,6 @@ bootstrap/
   </div>
 
 
-
   <!-- Template
   ================================================== -->
   <div class="bs-docs-section">
@@ -287,7 +284,6 @@ bootstrap/
       <a href="../examples/non-responsive/" class="btn btn-primary">View non-responsive example</a>
     </p>
   </div>
-
 
 
   <!-- Migration
@@ -645,20 +641,19 @@ bootstrap/
   </div>
 
 
-
   <!-- Browser support
   ================================================== -->
   <div class="bs-docs-section">
     <div class="page-header">
       <h1 id="browsers">Browser support</h1>
     </div>
-    <p class="lead">Bootstrap is built to work best in the latest desktop and mobile browsers, meaning older and less advanced browsers might receive a less stylized, though fully functional, version of certain components.</p>
+    <p class="lead">Bootstrap is built to work best in the latest desktop and mobile browsers, meaning older browsers might display differently styled, though fully functional, renderings of certain components.</p>
 
     <h3>Supported browsers</h3>
     <p>Specifically, we support the latest versions of the following:</p>
     <ul>
       <li>Chrome (Mac, Windows, iOS, and Android)</li>
-      <li>Safari (Mac and iOS only, as Windows has more or less been discontinued)</li>
+      <li>Safari (Mac and iOS only, as the Windows version is being abandoned)</li>
       <li>Firefox (Mac, Windows)</li>
       <li>Internet Explorer</li>
       <li>Opera (Mac, Windows)</li>
@@ -760,7 +755,6 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
   </div>
 
 
-
   <!-- Third party support
   ================================================== -->
   <div class="bs-docs-section">
@@ -776,8 +770,8 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
 /* Box-sizing resets
  *
  * Reset individual elements or override regions to avoid conflicts due to
- * global box model settings of Bootstrap. Two options—individual overrides and
- * region resets—are available as plain CSS and Less.
+ * global box model settings of Bootstrap. Two options, individual overrides and
+ * region resets, are available as plain CSS and uncompiled LESS formats.
  */
 
 /* Option 1A: Override a single element's box model via CSS */
@@ -787,7 +781,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
           box-sizing: content-box;
 }
 
-/* Option 1B: Override a single element's box model via Bootstrap Less mixin */
+/* Option 1B: Override a single element's box model by using a Bootstrap LESS mixin */
 .element {
   .box-sizing(content-box);
 }
@@ -802,7 +796,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
           box-sizing: content-box;
 }
 
-/* Option 2B: Reset an entire region via custom Less mixin */
+/* Option 2B: Reset an entire region with a custom LESS mixin */
 .reset-box-sizing {
   &,
   *,
@@ -816,7 +810,6 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
 }
 {% endhighlight %}
   </div>
-
 
 
   <!-- Accessibility
@@ -849,7 +842,6 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
       <li><a href="https://developer.mozilla.org/en-US/docs/Accessibility">MDN accessibility documentation</a></li>
     </ul>
   </div>
-
 
 
   <!-- License FAQs
@@ -897,32 +889,32 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
   </div><!-- /.bs-docs-section -->
 
 
-
-
   <div class="bs-docs-section">
     <div class="page-header">
       <h1 id="customizing">Customizing Bootstrap</h1>
     </div>
-    <p class="lead">Customizing Bootstrap is best accomplished when you treat it as another dependency in your development stack. Doing so ensures future upgrades are as easy as possible while also familiarizing yourself to the intricacies of the framework.</p>
+    <p class="lead">Bootstrap is best maintained when you treat it as a separate and independently-versioned dependency in your development environment. Doing this makes upgrading Bootstrap easier in the future.</p>
 
-    <p>Once you've downloaded and included Bootstrap's CSS into your templates, you can move on to customizing the included components. To do so, create a new stylesheet (LESS, if you like, or just plain CSS) to house your customizations.</p>
+    <p>Once you've downloaded and included Bootstrap's styles and scripts, you can customize its components. Just create a new stylesheet (LESS, if you like, or just plain CSS) to house your customizations.</p>
 
     <div class="bs-callout bs-callout-info">
       <h4>Compiled or minified?</h4>
-      <p>Unless you plan on reading a good chunk of the compiled CSS, go with the minified. It's the same code, just compacted. Less bandwidth is good, especially in production environments.</p>
+      <p>Unless you plan on reading the CSS, go with minified stylesheets. It's the same code, just compacted. Minified styles use less bandwidth, which is good, especially in production environments.</p>
     </div>
 
-    <p>From there, include whatever Bootstrap components and HTML content you need to get your template setup. It's best to have a rough idea in mind of modifications to make and content to include, so be sure to spend a brief amount of time on that before moving on.</p>
+    <p>From there, include whatever Bootstrap components and HTML content you need to create templates for your site's pages.</p>
 
     <h3>Customizing components</h3>
-    <p>You can customize components to varying degrees, but most fall into two camps: light customizations and complete visual overhauls. Luckily, plenty examples of both are available.</p>
-    <p>We define light customizations as mostly surface layer changes, things like a color and font changes to existing Bootstrap components. A great example of this is the the <a href="http://translate.twitter.com">Twitter Translation Center</a> (coded by @mdo). Let's look at how to implement the custom button we wrote for this site, <code>.btn-ttc</code>.</p>
-    <p>Instead of using the provided Bootstrap buttons, which only require just one class to start, <code>.btn</code>, we'll add our own modifier class, <code>.btn-ttc</code>. This will give us a slightly custom look with minimal effort.</p>
+    <p>You can customize components to varying degrees, but most fall into two camps: <em>light customizations</em> and <em>overhauls</em>. Plenty examples of both are available from third parties.</p>
+    <p>We define <em>light customizations</em> as superficial changes, for example, color and font changes to existing Bootstrap components. A light customization example is the <a href="http://translate.twitter.com">Twitter Translation Center</a> (coded by <a href="https://twitter.com/mdo">@mdo</a>). Let's look at how to implement the custom button we wrote for this site, <code>.btn-ttc</code>.</p>
+    <p>The stock Bootstrap buttons require just one class, <code>.btn</code>, to start.  Here we extend the <code>.btn</code> style with a new modifier class, <code>.btn-ttc</code>, that we will create. This gives us a distinct custom look with minimal effort.</p>
+    <p>Our customized button will be coded like this:</p>
 {% highlight html %}
 <button type="button" class="btn btn-ttc">Save changes</button>
 {% endhighlight %}
+    <p>Note how <code>.btn-ttc</code> is added to the standard <code>.btn</code> class.</p>
 
-  <p>In the custom stylesheet, add the following CSS:</p>
+    <p>To implement this, in the custom stylesheet, add the following CSS:</p>
 
 {% highlight css %}
 /* Custom button
@@ -953,13 +945,15 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
 }
 {% endhighlight %}
 
-    <p>Customizing Bootstrap components takes time, but should be straightforward. <strong>Look to the source code often and duplicate the selectors you need for your modifications.</strong> Placing them after the Bootstrap source makes for easy overriding without complication. <strong>To recap, here's the basic workflow:</strong></p>
+    <p>In short: Look to the style source and duplicate the selectors you need for your modifications.</p>
+    <p><strong>In summary, here's the basic workflow:</strong></p>
     <ul>
-      <li>For each element you want to customize, find its code in the compiled Bootstrap CSS. Copy and paste the selector for a component as-is. For instance, to customize the navbar background, just snag <code>.navbar</code>.</li>
-      <li>Add all your custom CSS in a separate stylesheet using the selectors you just copied from the Bootstrap source. No need for prefacing with additional classes or using <code>!important</code> here.</li>
+      <li>For each element you want to customize, find its code in the compiled Bootstrap CSS.</li>
+      <li>Copy the component's selector and styles and paste them in your custom stylesheet. For instance, to customize the navbar background, just copy the <code>.navbar</code> style specificaton.</li>
+      <li>In your custom stylesheet, edit the CSS you just copied from the Bootstrap source. No need for prepending additional classes, or appending <code>!important</code> here.  Keep it simple.</li>
       <li>Rinse and repeat until you're happy with your customizations.</li>
     </ul>
-    <p>Going beyond light customizations and into visual overhauls is just as straightforward as the above custom button. For a site like <a href="http://yourkarma.com">Karma</a>, which uses Bootstrap as a CSS reset with heavy modifications, more extensive work is involved, but well worth it in the end.</p>
+    <p>Once you are comfortable performing light customizations, visual overhauls are just as straightforward. For a site like <a href="http://yourkarma.com">Karma</a>, which uses Bootstrap as a CSS reset with heavy modifications, more extensive work is involved.  But the same principle applies: include Bootstrap's default stylesheet first, then apply your custom stylesheet.</p>
 
     <div class="bs-callout bs-callout-info">
       <h4>Alternate customization methods</h4>
@@ -967,7 +961,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     </div>
 
     <h3>Removing potential bloat</h3>
-    <p>Not all sites and applications need to make use of everything Bootstrap has to offer, especially in production environments where bandwidth literally becomes a financial issue. We encourage folks to remove whatever is unused with our <a href="../customize/">Customizer</a>.</p>
+    <p>Not all sites and applications need to make use of everything Bootstrap has to offer, especially in production environments where optimizing bandwidth is an issue. We encourage you to remove whatever is unused with our <a href="../customize/">Customizer</a>.</p>
     <p>Using the Customizer, simply uncheck any component, feature, or asset you don't need. Hit download and swap out the default Bootstrap files with these newly customized ones. You'll get vanilla Bootstrap, but without the features *you* deem unnecessary. All custom builds include compiled and minified versions, so use whichever works for you.</p>
 
   </div>
