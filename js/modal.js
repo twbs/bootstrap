@@ -28,8 +28,6 @@
     this.$element  = $(element)
     this.$backdrop =
     this.isShown   = null
-
-    if (this.options.remote) this.$element.load(this.options.remote)
   }
 
   Modal.DEFAULTS = {
@@ -45,6 +43,8 @@
   Modal.prototype.show = function (_relatedTarget) {
     var that = this
     var e    = $.Event('show.bs.modal', { relatedTarget: _relatedTarget })
+
+    if (this.options.remote) this.$element.load(this.options.remote)
 
     this.$element.trigger(e)
 
@@ -204,6 +204,8 @@
       var options = $.extend({}, Modal.DEFAULTS, $this.data(), typeof option == 'object' && option)
 
       if (!data) $this.data('bs.modal', (data = new Modal(this, options)))
+      else data.options = options
+      
       if (typeof option == 'string') data[option](_relatedTarget)
       else if (options.show) data.show(_relatedTarget)
     })
