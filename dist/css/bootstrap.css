@@ -1627,10 +1627,8 @@ table th[class*="col-"] {
   .table-responsive > .table-bordered > tfoot > tr > td:last-child {
     border-right: 0;
   }
-  .table-responsive > .table-bordered > thead > tr:last-child > th,
   .table-responsive > .table-bordered > tbody > tr:last-child > th,
   .table-responsive > .table-bordered > tfoot > tr:last-child > th,
-  .table-responsive > .table-bordered > thead > tr:last-child > td,
   .table-responsive > .table-bordered > tbody > tr:last-child > td,
   .table-responsive > .table-bordered > tfoot > tr:last-child > td {
     border-bottom: 0;
