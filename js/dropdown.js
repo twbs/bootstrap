@@ -150,5 +150,10 @@
     .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
     .on('click.bs.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
     .on('keydown.bs.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
+    // make the collapsing navbar close itself when a menu item is clicked
+    .on('click', '.navbar-collapse.in', function(e) {if($(e.target).is('a')){$(this).collapse('hide');}})
+    // make the collapsing navbar close itself when clicked outside
+    .on('blur', '.navbar', function(e) {$('.navbar-collapse.in').collapse('hide');})
+
 
 }(window.jQuery);
