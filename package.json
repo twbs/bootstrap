@@ -4,7 +4,7 @@
   , "version": "3.0.0"
   , "keywords": ["bootstrap", "css"]
   , "homepage": "http://twbs.github.com/bootstrap/"
-  , "author": "Twitter Inc."
+  , "author": "Mark Otto and Jacob Thornton"
   , "scripts": { "test": "grunt test" }
   , "repository": {
       "type": "git"
