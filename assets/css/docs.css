@@ -722,6 +722,11 @@ h1[id] {
   margin: 5px;
 }
 
+/* Tables */
+.bs-example > .table-responsive > .table {
+  background-color: #fff;
+}
+
 /* Buttons */
 .bs-example > .btn,
 .bs-example > .btn-group {

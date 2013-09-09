@@ -1551,7 +1551,7 @@ table th[class*="col-"] {
 .table > tbody > tr.danger > th,
 .table > tfoot > tr.danger > th {
   background-color: #f2dede;
-  border-color: #eed3d7;
+  border-color: #ebccd1;
 }
 
 .table-hover > tbody > tr > td.danger:hover,
@@ -1559,7 +1559,7 @@ table th[class*="col-"] {
 .table-hover > tbody > tr.danger:hover > td,
 .table-hover > tbody > tr.danger:hover > th {
   background-color: #ebcccc;
-  border-color: #e6c1c7;
+  border-color: #e4b9c0;
 }
 
 .table > thead > tr > td.warning,
@@ -1598,7 +1598,6 @@ table th[class*="col-"] {
   }
   .table-responsive > .table {
     margin-bottom: 0;
-    background-color: #fff;
   }
   .table-responsive > .table > thead > tr > th,
   .table-responsive > .table > tbody > tr > th,
@@ -5145,11 +5144,11 @@ a.thumbnail:focus {
 .alert-danger {
   color: #b94a48;
   background-color: #f2dede;
-  border-color: #eed3d7;
+  border-color: #ebccd1;
 }
 
 .alert-danger hr {
-  border-top-color: #e6c1c7;
+  border-top-color: #e4b9c0;
 }
 
 .alert-danger .alert-link {
@@ -5608,21 +5607,21 @@ a.list-group-item:focus {
 }
 
 .panel-danger {
-  border-color: #eed3d7;
+  border-color: #ebccd1;
 }
 
 .panel-danger > .panel-heading {
   color: #b94a48;
   background-color: #f2dede;
-  border-color: #eed3d7;
+  border-color: #ebccd1;
 }
 
 .panel-danger > .panel-heading + .panel-collapse .panel-body {
-  border-top-color: #eed3d7;
+  border-top-color: #ebccd1;
 }
 
 .panel-danger > .panel-footer + .panel-collapse .panel-body {
-  border-bottom-color: #eed3d7;
+  border-bottom-color: #ebccd1;
 }
 
 .panel-info {
