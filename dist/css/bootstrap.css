@@ -1611,13 +1611,13 @@ table th[class*="col-"] {
 .table > tfoot > tr.danger > td,
 .table > tfoot > tr.danger > th {
   background-color: #f2dede;
-  border-color: #eed3d7;
+  border-color: #ebccd1;
 }
 
 .table-hover > tbody > tr > td.danger:hover,
 .table-hover > tbody > tr > th.danger:hover, .table-hover > tbody > tr.danger:hover > td, .table-hover > tbody > tr.danger:hover > th {
   background-color: #ebcccc;
-  border-color: #e6c1c7;
+  border-color: #e4b9c0;
 }
 
 .table > thead > tr > td.warning,
@@ -1631,13 +1631,13 @@ table th[class*="col-"] {
 .table > tfoot > tr.warning > td,
 .table > tfoot > tr.warning > th {
   background-color: #fcf8e3;
-  border-color: #fbeed5;
+  border-color: #faebcc;
 }
 
 .table-hover > tbody > tr > td.warning:hover,
 .table-hover > tbody > tr > th.warning:hover, .table-hover > tbody > tr.warning:hover > td, .table-hover > tbody > tr.warning:hover > th {
   background-color: #faf2cc;
-  border-color: #f8e5be;
+  border-color: #f7e1b5;
 }
 
 @media (max-width: 768px) {
@@ -1652,7 +1652,6 @@ table th[class*="col-"] {
   }
   .table-responsive > .table {
     margin-bottom: 0;
-    background-color: #fff;
   }
   .table-responsive > .table > thead > tr > th,
   .table-responsive > .table > thead > tr > td,
@@ -1681,8 +1680,6 @@ table th[class*="col-"] {
   .table-responsive > .table-bordered > tfoot > tr > td:last-child {
     border-right: 0;
   }
-  .table-responsive > .table-bordered > thead > tr:last-child > th,
-  .table-responsive > .table-bordered > thead > tr:last-child > td,
   .table-responsive > .table-bordered > tbody > tr:last-child > th,
   .table-responsive > .table-bordered > tbody > tr:last-child > td,
   .table-responsive > .table-bordered > tfoot > tr:last-child > th,
@@ -4696,11 +4693,11 @@ a.thumbnail:focus {
 
 .alert-warning {
   background-color: #fcf8e3;
-  border-color: #fbeed5;
+  border-color: #faebcc;
   color: #c09853;
 }
 .alert-warning hr {
-  border-top-color: #f8e5be;
+  border-top-color: #f7e1b5;
 }
 .alert-warning .alert-link {
   color: #a47e3c;
@@ -4708,11 +4705,11 @@ a.thumbnail:focus {
 
 .alert-danger {
   background-color: #f2dede;
-  border-color: #eed3d7;
+  border-color: #ebccd1;
   color: #b94a48;
 }
 .alert-danger hr {
-  border-top-color: #e6c1c7;
+  border-top-color: #e4b9c0;
 }
 .alert-danger .alert-link {
   color: #953b39;
@@ -5100,33 +5097,33 @@ a.list-group-item:hover, a.list-group-item:focus {
 }
 
 .panel-warning {
-  border-color: #fbeed5;
+  border-color: #faebcc;
 }
 .panel-warning > .panel-heading {
   color: #c09853;
   background-color: #fcf8e3;
-  border-color: #fbeed5;
+  border-color: #faebcc;
 }
 .panel-warning > .panel-heading + .panel-collapse .panel-body {
-  border-top-color: #fbeed5;
+  border-top-color: #faebcc;
 }
 .panel-warning > .panel-footer + .panel-collapse .panel-body {
-  border-bottom-color: #fbeed5;
+  border-bottom-color: #faebcc;
 }
 
 .panel-danger {
-  border-color: #eed3d7;
+  border-color: #ebccd1;
 }
 .panel-danger > .panel-heading {
   color: #b94a48;
   background-color: #f2dede;
-  border-color: #eed3d7;
+  border-color: #ebccd1;
 }
 .panel-danger > .panel-heading + .panel-collapse .panel-body {
-  border-top-color: #eed3d7;
+  border-top-color: #ebccd1;
 }
 .panel-danger > .panel-footer + .panel-collapse .panel-body {
-  border-bottom-color: #eed3d7;
+  border-bottom-color: #ebccd1;
 }
 
 .panel-info {

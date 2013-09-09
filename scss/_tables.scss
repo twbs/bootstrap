@@ -194,7 +194,6 @@ table {
     // Tighten up spacing and give a background color
     > .table {
       margin-bottom: 0;
-      background-color: #fff;
 
       // Ensure the content doesn't wrap
       > thead,
@@ -227,6 +226,13 @@ table {
             border-right: 0;
           }
         }
+      }
+
+      // Only nuke the last row's bottom-border in `tbody` and `tfoot` since
+      // chances are there will be only one `tr` in a `thead` and that would
+      // remove the border altogether.
+      > tbody,
+      > tfoot {
         > tr:last-child {
           > th,
           > td {
@@ -234,6 +240,7 @@ table {
           }
         }
       }
+
     }
   }
 }

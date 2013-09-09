@@ -372,21 +372,21 @@ $jumbotron-heading-color:        inherit !default;
 // Form states and alerts
 // -------------------------
 
-$state-warning-text:             #c09853 !default;
-$state-warning-bg:               #fcf8e3 !default;
-$state-warning-border:           darken(adjust-hue($state-warning-bg, -10%), 3%) !default;
-
-$state-danger-text:              #b94a48 !default;
-$state-danger-bg:                #f2dede !default;
-$state-danger-border:            darken(adjust-hue($state-danger-bg, -10%), 3%) !default;
-
 $state-success-text:             #468847 !default;
 $state-success-bg:               #dff0d8 !default;
-$state-success-border:           darken(adjust-hue($state-success-bg, -10%), 5%) !default;
+$state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%) !default;
 
 $state-info-text:                #3a87ad !default;
 $state-info-bg:                  #d9edf7 !default;
 $state-info-border:              darken(adjust-hue($state-info-bg, -10%), 7%) !default;
+
+$state-warning-text:             #c09853 !default;
+$state-warning-bg:               #fcf8e3 !default;
+$state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%) !default;
+
+$state-danger-text:              #b94a48 !default;
+$state-danger-bg:                #f2dede !default;
+$state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%) !default;
 
 
 // Tooltips
