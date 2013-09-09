@@ -15,7 +15,7 @@ base_url: "../"
     </div>
     <p class="lead">Bootstrap has a few easy ways to quickly get started, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
 
-    <h3 id="download-compiled">Compiled CSS, JS, and fonts</h3>
+    <h3 id="download-compiled">Precompiled CSS, JS, and fonts</h3>
     <p>The fastest way to get Bootstrap is to download the precompiled and minified versions of our CSS, JavaScript, and fonts. No documentation or original source code files are included.</p>
     <p><a class="btn btn-lg btn-primary" href="{{ site.download_dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);" role="button">Download precompiled Bootstrap</a></p>
 
@@ -61,7 +61,7 @@ base_url: "../"
     <div class="page-header">
       <h1 id="whats-included">What's included</h1>
     </div>
-    <p class="lead">Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations.</p>
+    <p class="lead">Within the download you'll find the following directories and files, logically grouping common assets and providing both precompiled and minified variations.</p>
     <p>Once downloaded, unzip the compressed folder to see the structure of (the compiled) Bootstrap. You'll see something like this:</p>
 
 {% highlight bash %}
@@ -81,7 +81,7 @@ bootstrap/
     └── glyphicons-halflings-regular.woff
 {% endhighlight %}
 
-    <p>This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). Fonts from Glyphicons are included, as is the optional Bootstrap theme.</p>
+    <p>This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide precompiled CSS and JS (<code>bootstrap.*</code>), as well as minified CSS and JS (<code>bootstrap.min.*</code>). Fonts from Glyphicons are included, as is the optional Bootstrap theme.</p>
     <div class="bs-callout bs-callout-danger">
       <h4>jQuery required</h4>
       <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included, as shown in the <a href="#template">starter template</a>.</p>
@@ -140,7 +140,7 @@ bootstrap/
           <img src="../examples/screenshots/starter-template.jpg" alt="">
         </a>
         <h4>Starter template</h4>
-        <p>Nothing but the basics: compiled CSS and JavaScript along with a container.</p>
+        <p>Nothing but the basics: precompiled CSS and JavaScript along with a container.</p>
       </div>
       <div class="col-xs-6 col-md-4">
         <a class="thumbnail" href="../examples/grid/">
@@ -902,12 +902,12 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     <p><strong>Finally the <code>bootstrap.css</code> file is compressed and saved as <code>bootstrap.min.css</code></strong>. By compressing, we remove all white space and comments for a smaller file size, perfect for production deployment.</p>
     <p>In short, you have two choices: customize on top of the precompiled CSS, or use build tools to customize using LESS files.
 
-    <h2>Customizing from compiled CSS</h2>
+    <h2>Customizing from precompiled CSS</h2>
     <p>You can customize Bootstrap and its components to varying degrees, but most fall into two categories: <em>light customizations</em> and <em>overhauls</em>.  We define <em>light customizations</em> as superficial changes, for example, color and font changes to existing Bootstrap components.</p>
-    <p>Most light customizations can be made by extending Bootstrap's compiled CSS with an additional and separate style sheet of your own.
+    <p>Most light customizations can be made by extending Bootstrap's precompiled CSS with an additional and separate style sheet of your own.
     <div class="panel panel-info">
       <div class="panel-heading">
-        <h3 class="panel-title">Example: extending Bootstrap's compiled CSS to customize a component</h3>
+        <h3 class="panel-title">Example: extending Bootstrap's precompiled CSS to customize a component</h3>
       </div>
       <div class="panel-body">
         <p>This example comes from the <a href="http://translate.twitter.com">Twitter Translation Center</a> (coded by <a href="https://twitter.com/mdo">@mdo</a>). Let's look at how to implement the custom button we wrote for this site, <code>.btn-ttc</code>.</p>
@@ -955,9 +955,9 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     </div>
 
 
-    <p><strong>In summary, here's the basic workflow for customizing Bootstrap from its compiled CSS:</strong></p>
+    <p><strong>In summary, here's the basic workflow for customizing Bootstrap from its precompiled CSS:</strong></p>
     <ul>
-      <li>For each element you want to customize, find its code in the compiled Bootstrap CSS.</li>
+      <li>For each element you want to customize, find its code in the precompiled, unminified Bootstrap CSS.</li>
       <li>Copy the component's selector and styles and paste them in your custom stylesheet. For instance, to customize the navbar background, just copy the <code>.navbar</code> style specificaton.</li>
       <li>In your custom stylesheet, edit the CSS you just copied from the Bootstrap source. No need for prepending additional classes, or appending <code>!important</code> here.  Keep it simple.</li>
       <li>Rinse and repeat until you're happy with your customizations.</li>
@@ -969,7 +969,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
           </div>
           <div class="panel-body">
             <p>Not all sites and applications need to make use of everything Bootstrap has to offer, especially in production environments where optimizing bandwidth is an issue. We encourage you to remove whatever is unused with our <a href="../customize/">Customizer</a>.</p>
-            <p>Using the <a href="/customize">Customizer</a>, simply uncheck any component, feature, or asset you don't need. Hit download and swap out the default Bootstrap files with these newly customized ones. You'll get vanilla Bootstrap, but without the features *you* deem unnecessary. All custom builds include compiled and minified versions, so use whichever works for you.</p>
+            <p>Using the <a href="/customize">Customizer</a>, simply uncheck any component, feature, or asset you don't need. Hit download and swap out the default Bootstrap files with these newly customized ones. You'll get vanilla Bootstrap, but without the features *you* deem unnecessary. All custom builds include precompiled and minified versions, so use whichever works for you.</p>
           </div>
         </div>
     </div>
