@@ -737,10 +737,6 @@ pre {
   border-radius: 4px;
 }
 
-pre.prettyprint {
-  margin-bottom: 20px;
-}
-
 pre code {
   padding: 0;
   font-size: inherit;
