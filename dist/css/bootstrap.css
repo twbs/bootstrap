@@ -6348,12 +6348,6 @@ body.modal-open,
   width: device-width;
 }
 
-@media screen and (max-width: 400px) {
-  @-ms-viewport {
-    width: 320px;
-  }
-}
-
 .hidden {
   display: none !important;
   visibility: hidden !important;
