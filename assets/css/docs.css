@@ -1013,7 +1013,7 @@ h1[id] {
   margin-bottom: 5px;
   padding-top: 30px;
 }
-.bs-customizer h4 {
+.bs-customizer .bs-docs-section > h4 {
   margin-top: 15px;
 }
 .bs-customizer input[type="text"] {
