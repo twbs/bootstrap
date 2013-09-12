@@ -1006,15 +1006,23 @@ h1[id] {
 .bs-customizer label {
   margin-top: 10px;
   font-weight: 500;
-  color: #444;
+  color: #555;
 }
 .bs-customizer h2 {
   margin-top: 0;
   margin-bottom: 5px;
   padding-top: 30px;
 }
-.bs-customizer .bs-docs-section > h4 {
+.bs-customizer h3 {
+  margin-bottom: 0;
+}
+.bs-customizer h4 {
   margin-top: 15px;
+  margin-bottom: 0;
+}
+.bs-customizer .bs-callout h4 {
+  margin-top: 0; /* lame, but due to specificity we have to duplicate */
+  magin-bottom: 5px;
 }
 .bs-customizer input[type="text"] {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -1022,6 +1030,7 @@ h1[id] {
 }
 .bs-customizer .help-block {
   font-size: 12px;
+  margin-bottom: 5px;
 }
 
 /* For the variables, use regular weight */
