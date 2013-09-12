@@ -515,9 +515,11 @@
 
 .responsive-invisibility() {
   display: none !important;
-  tr& { display: none !important; }
+  table&,
+  col&,
+  tr&,
   th&,
-  td& { display: none !important; }
+  td&       { display: none         !important; }
 }
 
 // Grid System
