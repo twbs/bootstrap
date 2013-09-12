@@ -84,7 +84,7 @@ bootstrap/
     <p>This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). Fonts from Glyphicons are included, as is the optional Bootstrap theme.</p>
     <div class="bs-callout bs-callout-danger">
       <h4>jQuery required</h4>
-      <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included, as shown in the <a href="#template">starter template</a>.</p>
+      <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included, as shown in the <a href="#template">starter template</a>. <a href="{{ site.repo }}/blob/v{{ site.current_version }}/bower.json">Consult our <code>bower.json</code></a> to see which versions of jQuery are supported.</p>
     </div>
   </div>
 
@@ -631,7 +631,7 @@ bootstrap/
           <tr>
             <td>Nav lists</td>
             <td><code>.nav-list</code> <code>.nav-header</code></td>
-            <td>No direct equivalent, but <a href="../components/#list-group">List groups</a> and <a href="../javascript/#collapse"><code>.panel-group</code>s</a> are similar.</td>
+            <td>No direct equivalent, but <a href="../components/#list-group">list groups</a> and <a href="../javascript/#collapse"><code>.panel-group</code>s</a> are similar.</td>
           </tr>
         </tbody>
       </table>
@@ -649,6 +649,7 @@ bootstrap/
       <li>The icons, now <code>.glyphicon</code>, are now font based. Icons also require a base and icon class (e.g. <code>.glyphicon .glyphicon-asterisk</code>).</li>
       <li>Typeahead has been dropped, in favor of using <a href="http://twitter.github.io/typeahead.js/">Twitter Typeahead</a>.</li>
       <li>Modal markup has changed significantly. The <code>.modal-header</code>, <code>.modal-body</code>, and <code>.modal-footer</code> sections are now wrapped in <code>.modal-content</code> and <code>.modal-dialog</code> for better mobile styling and behavior.</li>
+      <li>The HTML loaded by the <code>remote</code> modal option is now injected into the <code>.modal</code> instead of into the <code>.modal-body</code>. This allows you to also easily vary the header and footer of the modal, not just the modal body.</li>
       <li>JavaScript events are namespaced. For example, to handle the modal "show" event, use <code>'show.bs.modal'</code>. For tabs "shown" use <code>'shown.bs.tab'</code>, etc..</li>
     </ul>
     <p>For more information on upgrading to v3.0, and code snippets from the community, see <a href="http://bootply.com/">Bootply</a>.</p>
@@ -727,8 +728,12 @@ bootstrap/
 {% endhighlight %}
     <p>See <a href="http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge">this StackOverflow question</a> for more information.</p>
 
-    <h3>Windows Phone 8 and Internet Explorer 10</h3>
-    <p>Internet Explorer 10 doesn't differentiate device width from viewport width, and thus doesn't properly apply the media queries in Bootstrap's CSS. To address this, you can optionally include the following CSS and JavaScript to work around this problem until Microsoft issues a fix.</p>
+    <h3>Internet Explorer 10 in Windows 8 and Windows Phone 8</h3>
+    <p>Internet Explorer 10 doesn't differentiate <strong>device width</strong> from <strong>viewport width</strong>, and thus doesn't properly apply the media queries in Bootstrap's CSS. Normally you'd just add a quick snippet of CSS to fix this:</p>
+{% highlight css %}
+@-ms-viewport       { width: device-width; }
+{% endhighlight %}
+    <p>However, this doesn't work as it causes Windows Phone 8 devices to show a mostly desktop view instead of narrow "phone" view. To address this, you'll need to <strong>include the following CSS and JavaScript to work around the bug until Microsoft issues a fix</strong>.</p>
 {% highlight css %}
 @-webkit-viewport   { width: device-width; }
 @-moz-viewport      { width: device-width; }
@@ -749,6 +754,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
 }
 {% endhighlight %}
     <p>For more information and usage guidelines, read <a href="http://timkadlec.com/2013/01/windows-phone-8-and-device-width/">Windows Phone 8 and Device-Width</a>.</p>
+    <p>As a heads up, we include this in the Bootstrap docs as an example.</p>
 
     <h3>Safari percent rounding</h3>
     <p>In the latest Safari for Mac, its rendering engine has a little trouble with the long decimal places of our <code>.col-*-1</code> grid classes, meaning if you have 12 individual columns you'll notice they come up short compared to other rows of columns. We can't do much here (<a href="https://github.com/twbs/bootstrap/issues/9282">see #9282</a>) but you do have some options:</p>

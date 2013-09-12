@@ -124,11 +124,9 @@ body.modal-open,
 }
 
 // Scale up the modal
-@media screen and (min-width: $screen-sm) {
+@media screen and (min-width: $screen-sm-min) {
 
   .modal-dialog {
-    left: 50%;
-    right: auto;
     width: 600px;
     padding-top: 30px;
     padding-bottom: 30px;

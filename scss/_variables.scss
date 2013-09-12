@@ -246,7 +246,7 @@ $grid-columns:              12 !default;
 // Padding, to be divided by two and applied to the left and right of all columns
 $grid-gutter-width:         30px !default;
 // Point at which the navbar stops collapsing
-$grid-float-breakpoint:     $screen-sm !default;
+$grid-float-breakpoint:     $screen-sm-min !default;
 
 
 // Navbar
@@ -255,12 +255,13 @@ $grid-float-breakpoint:     $screen-sm !default;
 // Basics of a navbar
 $navbar-height:                    50px !default;
 $navbar-margin-bottom:             $line-height-computed !default;
-$navbar-default-color:             #777 !default;
-$navbar-default-bg:                #f8f8f8 !default;
-$navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
 $navbar-border-radius:             $border-radius-base !default;
 $navbar-padding-horizontal:        floor($grid-gutter-width / 2) !default;
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2) !default;
+
+$navbar-default-color:             #777 !default;
+$navbar-default-bg:                #f8f8f8 !default;
+$navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
 
 // Navbar links
 $navbar-default-link-color:                #777 !default;
@@ -584,8 +585,8 @@ $carousel-caption-color:                      #fff !default;
 
 // Close
 // ------------------------
-$close-color:                 #000 !default;
 $close-font-weight:           bold !default;
+$close-color:                 #000 !default;
 $close-text-shadow:           0 1px 0 #fff !default;
 
 
