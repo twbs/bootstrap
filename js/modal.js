@@ -143,7 +143,7 @@
     this.$element.hide()
     this.backdrop(function () {
       that.removeBackdrop()
-      that.$element.trigger('hidden.bs.modal', {openClasses: that.openClasses})
+      that.$element.trigger('hidden.bs.modal', [that.openClasses])
     })
   }
 
@@ -260,6 +260,6 @@
 
   $(document)
     .on('show.bs.modal',  '.modal', function (event) { $(document.body).addClass(event.openClasses) })
-    .on('hidden.bs.modal', '.modal', function (event) { $(document.body).removeClass(event.openClasses) })
+    .on('hidden.bs.modal', '.modal', function (event, openClasses) { $(document.body).removeClass(openClasses) })
 
 }(window.jQuery);
