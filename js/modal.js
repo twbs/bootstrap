@@ -196,10 +196,7 @@
   }
 
   Modal.prototype.checkForScrollBar = function () {
-    if ( $(document.body).outerHeight() > $(window).height() ) {
-      return true
-    }
-    return false
+    return $(document.body).outerHeight() > $(window).height();
   }
 
   Modal.prototype.calculateScrollbarWidth = function () {
