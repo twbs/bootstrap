@@ -204,8 +204,9 @@
         return
       var a = $('<div class="modal-measure-scrollbar"/>').prependTo($("body")), 
           b = $('<div class="inner"/>').appendTo(a), 
-          c = a.width() - b.width();
-      a.remove(), $("head").append('<style id="scrollbar-width">.modal-open.scrollbar { margin-right: ' + c + 'px }</style>')
+          c = a.width() - b.width()
+      a.remove()
+      $("head").append('<style id="scrollbar-width">.modal-open.scrollbar { margin-right: ' + c + 'px }</style>')
   }
 
   // MODAL PLUGIN DEFINITION
