@@ -259,7 +259,7 @@
   })
 
   $(document)
-    .on('show.bs.modal',  '.modal', function (event) { debugger;$(document.body).addClass(event.openClasses) })
+    .on('show.bs.modal',  '.modal', function (event) { $(document.body).addClass(event.openClasses) })
     .on('hidden.bs.modal', '.modal', function (event) { $(document.body).removeClass(event.openClasses) })
 
 }(window.jQuery);
