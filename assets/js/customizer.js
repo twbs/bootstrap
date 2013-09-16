@@ -107,7 +107,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     })
   }
 
-  function generateZip(css, js, fonts, complete) {
+  function generateZip(css, js, fonts, config, complete) {
     if (!css && !js) return showError('<strong>Ruh roh!</strong> No Bootstrap files selected.', new Error('no Bootstrap'))
 
     var zip = new JSZip()
@@ -131,6 +131,10 @@ window.onload = function () { // wait for load in a dumb way because B-0
       for (var fileName in fonts) {
         fontsFolder.file(fileName, fonts[fileName])
       }
+    }
+    
+    if (config) {
+      zip.file('config.json', config)
     }
 
     var content = zip.generate({type:"blob"})
@@ -262,14 +266,16 @@ window.onload = function () { // wait for load in a dumb way because B-0
   var $downloadBtn = $('#btn-download')
 
   $compileBtn.on('click', function (e) {
+    var config = getCustomizerData()
+    
     e.preventDefault()
 
     $compileBtn.attr('disabled', 'disabled')
 
-    generateZip(generateCSS(), generateJavascript(), generateFonts(), function (blob) {
+    generateZip(generateCSS(), generateJavascript(), generateFonts(), config, function (blob) {
       $compileBtn.removeAttr('disabled')
       saveAs(blob, "bootstrap.zip")
-      createGist(getCustomizerData())
+      createGist(config)
     })
   })
 
