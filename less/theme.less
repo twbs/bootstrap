@@ -31,7 +31,7 @@
 }
 
 // Mixin for generating new styles
-.btn-styles(@btn-color: #555;) {
+.btn-styles(@btn-color: #555) {
   #gradient > .vertical(@start-color: @btn-color; @end-color: darken(@btn-color, 12%));
   background-repeat: repeat-x;
   border-color: darken(@btn-color, 14%);
@@ -59,7 +59,7 @@
 }
 
 // Apply the mixin to the buttons
-.btn-default { .btn-styles(@btn-default-bg;); text-shadow: 0 1px 0 #fff; border-color: #ccc; }
+.btn-default { .btn-styles(@btn-default-bg); text-shadow: 0 1px 0 #fff; border-color: #ccc; }
 .btn-primary { .btn-styles(@btn-primary-bg); }
 .btn-success { .btn-styles(@btn-success-bg); }
 .btn-warning { .btn-styles(@btn-warning-bg); }
