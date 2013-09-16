@@ -2,8 +2,8 @@
     "name": "bootstrap"
   , "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development."
   , "version": "3.0.0"
-  , "keywords": ["bootstrap", "css"]
-  , "homepage": "http://twbs.github.com/bootstrap/"
+  , "keywords": ["bootstrap", "css", "js"]
+  , "homepage": "http://getbootstrap.com"
   , "author": "Twitter, Inc."
   , "scripts": { "test": "grunt test" }
   , "repository": {
@@ -22,7 +22,7 @@
   , "devDependencies": {
       "grunt": "~0.4.1"
     , "grunt-contrib-clean": "~0.5.0"
-    , "grunt-contrib-connect": "~0.4.1"
+    , "grunt-contrib-connect": "~0.5.0"
     , "grunt-contrib-concat": "~0.3.0"
     , "grunt-contrib-copy": "~0.4.1"
     , "grunt-contrib-jshint": "~0.6.4"
