@@ -4,7 +4,8 @@
 
 
 .close {
-  float: right;
+  html:not([dir="rtl"]) & { float: right; }
+  html[dir="rtl"] & { float: right; }
   font-size: (@font-size-base * 1.5);
   font-weight: @close-font-weight;
   line-height: 1;

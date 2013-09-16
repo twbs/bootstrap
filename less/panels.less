@@ -73,11 +73,13 @@
       > tr {
         > th:first-child,
         > td:first-child {
-          border-left: 0;
+          html:not([dir="rtl"]) & { border-left: 0; }
+          html[dir="rtl"] & { border-right: 0; }
         }
         > th:last-child,
         > td:last-child {
-          border-right: 0;
+          html:not([dir="rtl"]) & { border-right: 0; }
+          html[dir="rtl"] & { border-left: 0; }
         }
 
         &:last-child > th,

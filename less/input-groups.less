@@ -92,20 +92,24 @@
 .input-group-btn:first-child > .btn,
 .input-group-btn:first-child > .dropdown-toggle,
 .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
-  .border-right-radius(0);
+  html:not([dir="rtl"]) & { .border-right-radius(0); }
+  html[dir="rtl"] & { .border-left-radius(0); }
 }
 .input-group-addon:first-child {
-  border-right: 0;
+  html:not([dir="rtl"]) & { border-right: 0; }
+  html[dir="rtl"] & { border-left: 0; }
 }
 .input-group .form-control:last-child,
 .input-group-addon:last-child,
 .input-group-btn:last-child > .btn,
 .input-group-btn:last-child > .dropdown-toggle,
 .input-group-btn:first-child > .btn:not(:first-child) {
-  .border-left-radius(0);
+  html:not([dir="rtl"]) & { .border-left-radius(0); }
+  html[dir="rtl"] & { .border-right-radius(0); }
 }
 .input-group-addon:last-child {
-  border-left: 0;
+  html:not([dir="rtl"]) & { border-left: 0; }
+  html[dir="rtl"] & { border-right: 0; }
 }
 
 // Button input groups
@@ -116,17 +120,20 @@
 
   // Negative margin to only have a 1px border between the two
   &:first-child > .btn {
-    margin-right: -1px;
+    html:not([dir="rtl"]) & { margin-right: -1px; }
+    html[dir="rtl"] & { margin-left: -1px; }
   }
   &:last-child > .btn {
-    margin-left: -1px;
+    html:not([dir="rtl"]) & { margin-left: -1px; }
+    html[dir="rtl"] & { margin-right: -1px; }
   }
 }
 .input-group-btn > .btn {
   position: relative;
   // Jankily prevent input button groups from wrapping
   + .btn {
-    margin-left: -4px;
+    html:not([dir="rtl"]) & { margin-left: -4px; }
+    html[dir="rtl"] & { margin-right: -4px; }
   }
   // Bring the "active" button to the front
   &:hover,

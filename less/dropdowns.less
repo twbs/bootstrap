@@ -8,7 +8,8 @@
   display: inline-block;
   width: 0;
   height: 0;
-  margin-left: 2px;
+  html:not([dir="rtl"]) & { margin-left: 2px; }
+  html[dir="rtl"] & { margin-right: 2px; }
   vertical-align: middle;
   border-top:   @caret-width-base solid @dropdown-caret-color;
   border-right: @caret-width-base solid transparent;
@@ -33,10 +34,12 @@
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 0;
+  html:not([dir="rtl"]) & { left: 0; }
+  html[dir="rtl"] & { right: 0; }
   z-index: @zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
-  float: left;
+  html:not([dir="rtl"]) & { float: left; }
+  html[dir="rtl"] & { float: right; }
   min-width: 160px;
   padding: 5px 0;
   margin: 2px 0 0; // override default ul

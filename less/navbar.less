@@ -33,7 +33,8 @@
   .clearfix();
 
   @media (min-width: @grid-float-breakpoint) {
-    float: left;
+    html:not([dir="rtl"]) & { float: left; }
+    html[dir="rtl"] & { float: right; }
   }
 }
 
@@ -86,7 +87,8 @@
       margin-right: -@navbar-padding-horizontal;
     }
     .navbar-text:last-child {
-      margin-right: 0;
+      html:not([dir="rtl"]) & { margin-right: 0; }
+      html[dir="rtl"] & { margin-left: 0; }
     }
   }
 }
@@ -159,7 +161,8 @@
 
   @media (min-width: @grid-float-breakpoint) {
     .navbar > .container & {
-      margin-left: -@navbar-padding-horizontal;
+      html:not([dir="rtl"]) & { margin-left: -@navbar-padding-horizontal; }
+      html[dir="rtl"] & { margin-right: -@navbar-padding-horizontal; }
     }
   }
 }
@@ -172,8 +175,14 @@
 
 .navbar-toggle {
   position: relative;
-  float: right;
-  margin-right: @navbar-padding-horizontal;
+  html:not([dir="rtl"]) & {
+    float: right;
+    margin-right: @navbar-padding-horizontal;
+  }
+  html[dir="rtl"] & {
+    float: left;
+    margin-left: @navbar-padding-horizontal;
+  }
   padding: 9px 10px;
   .navbar-vertical-align(34px);
   background-color: transparent;
@@ -237,11 +246,13 @@
 
   // Uncollapse the nav
   @media (min-width: @grid-float-breakpoint) {
-    float: left;
+    html:not([dir="rtl"]) & { float: left; }
+    html[dir="rtl"] & { float: right; }
     margin: 0;
 
     > li {
-      float: left;
+      html:not([dir="rtl"]) & { float: left; }
+      html[dir="rtl"] & { float: right; }
       > a {
         padding-top: ((@navbar-height - @line-height-computed) / 2);
         padding-bottom: ((@navbar-height - @line-height-computed) / 2);
@@ -337,7 +348,8 @@
 // Add a class to make any element properly align itself vertically within the navbars.
 
 .navbar-text {
-  float: left;
+  html:not([dir="rtl"]) & { float: left; }
+  html[dir="rtl"] & { float: right; }
   .navbar-vertical-align(@line-height-computed);
 
   @media (min-width: @grid-float-breakpoint) {

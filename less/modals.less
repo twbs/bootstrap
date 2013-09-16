@@ -16,7 +16,8 @@
   body&,
   .navbar-fixed-top,
   .navbar-fixed-bottom {
-    margin-right: 15px
+    html:not([dir="rtl"]) & { margin-right: 15px; }
+    html[dir="rtl"] & { margin-left: 15px; }
   }
 }
 
@@ -105,22 +106,26 @@
 .modal-footer {
   margin-top: 15px;
   padding: (@modal-inner-padding - 1) @modal-inner-padding @modal-inner-padding;
-  text-align: right; // right align buttons
+  html:not([dir="rtl"]) & { text-align: right; } // right align buttons
+  html[dir="rtl"] & { text-align: left; } // left align buttons
   border-top: 1px solid @modal-footer-border-color;
   .clearfix(); // clear it in case folks use .pull-* classes on buttons
 
   // Properly space out buttons
   .btn + .btn {
-    margin-left: 5px;
+    html:not([dir="rtl"]) & { margin-left: 5px; }
+    html[dir="rtl"] & { margin-right: 5px; }
     margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
   }
   // but override that for button groups
   .btn-group .btn + .btn {
-    margin-left: -1px;
+    html:not([dir="rtl"]) & { margin-left: -1px; }
+    html[dir="rtl"] & { margin-right: -1px; }
   }
   // and override it for block buttons as well
   .btn-block + .btn-block {
-    margin-left: 0;
+    html:not([dir="rtl"]) & { margin-left: 0; }
+    html[dir="rtl"] & { margin-right: 0; }
   }
 }
 

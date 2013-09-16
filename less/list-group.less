@@ -8,7 +8,9 @@
 .list-group {
   // No need to set list-style: none; since .list-group-item is block level
   margin-bottom: 20px;
-  padding-left: 0; // reset padding because ul and ol
+  // reset padding because ul and ol
+  html:not([dir="rtl"]) & { padding-left: 0; }
+  html[dir="rtl"] & { padding-right: 0; }
 }
 
 // Individual list items
@@ -34,10 +36,12 @@
 
   // Align badges within list items
   > .badge {
-    float: right;
+    html:not([dir="rtl"]) & { float: right; }
+    html[dir="rtl"] & { float: left; }
   }
   > .badge + .badge {
-    margin-right: 5px;
+    html:not([dir="rtl"]) & { margin-right: 5px; }
+    html[dir="rtl"] & { margin-left: 5px; }
   }
 
   // Linked list items

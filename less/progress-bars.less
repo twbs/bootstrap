@@ -47,7 +47,8 @@
 
 // Bar of progress
 .progress-bar {
-  float: left;
+  html:not([dir="rtl"]) & { float: left; }
+  html[dir="rtl"] & { float: right; }
   width: 0%;
   height: 100%;
   font-size: @font-size-small;

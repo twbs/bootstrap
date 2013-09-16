@@ -3,7 +3,8 @@
 // --------------------------------------------------
 .pagination {
   display: inline-block;
-  padding-left: 0;
+  html:not([dir="rtl"]) & { padding-left: 0; }
+  html[dir="rtl"] & { padding-right: 0; }
   margin: @line-height-computed 0;
   border-radius: @border-radius-base;
 
@@ -12,18 +13,22 @@
     > a,
     > span {
       position: relative;
-      float: left; // Collapse white-space
+       // Collapse white-space
+      html:not([dir="rtl"]) & { float: left; }
+      html[dir="rtl"] & { float: right; }
       padding: @padding-base-vertical @padding-base-horizontal;
       line-height: @line-height-base;
       text-decoration: none;
       background-color: @pagination-bg;
       border: 1px solid @pagination-border;
-      margin-left: -1px;
+      html:not([dir="rtl"]) & { margin-left: -1px; }
+      html[dir="rtl"] & { margin-left: -1px; }
     }
     &:first-child {
       > a,
       > span {
-        margin-left: 0;
+        html:not([dir="rtl"]) & { margin-left: 0; }
+        html[dir="rtl"] & { margin-left: 0; }
         .border-left-radius(@border-radius-base);
       }
     }

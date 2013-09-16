@@ -4,7 +4,8 @@
 
 
 .pager {
-  padding-left: 0;
+  html:not([dir="rtl"]) & { padding-left: 0; }
+  html[dir="rtl"] & { padding-right: 0; }
   margin: @line-height-computed 0;
   list-style: none;
   text-align: center;
@@ -30,14 +31,16 @@
   .next {
     > a,
     > span {
-      float: right;
+      html:not([dir="rtl"]) & { float: right; }
+      html[dir="rtl"] & { float: left; }
     }
   }
 
   .previous {
     > a,
     > span {
-      float: left;
+      html:not([dir="rtl"]) & { float: left; }
+      html[dir="rtl"] & { float: right; }
     }
   }
 

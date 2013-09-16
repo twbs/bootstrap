@@ -8,7 +8,8 @@ table {
   background-color: @table-bg;
 }
 th {
-  text-align: left;
+  html:not([dir="rtl"]) & { text-align: left; }
+  html[dir="rtl"] & { text-align: right; }
 }
 
 
@@ -219,11 +220,13 @@ table {
         > tr {
           > th:first-child,
           > td:first-child {
-            border-left: 0;
+            html:not([dir="rtl"]) & { border-left: 0; }
+            html[dir="rtl"] & { border-right: 0; }
           }
           > th:last-child,
           > td:last-child {
-            border-right: 0;
+            html:not([dir="rtl"]) & { border-right: 0; }
+            html[dir="rtl"] & { border-left: 0; }
           }
         }
       }

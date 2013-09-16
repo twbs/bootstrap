@@ -180,7 +180,6 @@ output {
   min-height: @line-height-computed; // clear the floating input if there is no label text
   margin-top: 10px;
   margin-bottom: 10px;
-  padding-left: 20px;
   vertical-align: middle;
   label {
     display: inline;
@@ -189,13 +188,39 @@ output {
     cursor: pointer;
   }
 }
-.radio input[type="radio"],
-.radio-inline input[type="radio"],
-.checkbox input[type="checkbox"],
-.checkbox-inline input[type="checkbox"] {
-  float: left;
-  margin-left: -20px;
+
+html:not([dir="rtl"]) {
+  .radio,
+  .checkbox {
+    padding-left: 20px;
+  }
 }
+html[dir="rtl"] {
+  .radio,
+  .checkbox {
+    padding-right: 20px;
+  }
+}
+
+html:not([dir="rtl"]) {
+  .radio input[type="radio"],
+  .radio-inline input[type="radio"],
+  .checkbox input[type="checkbox"],
+  .checkbox-inline input[type="checkbox"] {
+    float: left;
+    margin-left: -20px;
+  }
+}
+html[dir="rtl"] {
+  .radio input[type="radio"],
+  .radio-inline input[type="radio"],
+  .checkbox input[type="checkbox"],
+  .checkbox-inline input[type="checkbox"] {
+    float: right;
+    margin-right: -20px;
+  }
+}
+
 .radio + .radio,
 .checkbox + .checkbox {
   margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
@@ -205,16 +230,40 @@ output {
 .radio-inline,
 .checkbox-inline {
   display: inline-block;
-  padding-left: 20px;
   margin-bottom: 0;
   vertical-align: middle;
   font-weight: normal;
   cursor: pointer;
 }
+html:not([dir="rtl"]) {
+  .radio-inline,
+  .checkbox-inline {
+    padding-left: 20px;
+  }
+}
+html[dir="rtl"] {
+  .radio-inline,
+  .checkbox-inline {
+    padding-right: 20px;
+  }
+}
+
 .radio-inline + .radio-inline,
 .checkbox-inline + .checkbox-inline {
   margin-top: 0;
-  margin-left: 10px; // space out consecutive inline controls
+}
+// space out consecutive inline controls
+html:not([dir="rtl"]) {
+  .radio-inline,
+  .checkbox-inline {
+    margin-left: 10px;
+  }
+}
+html[dir="rtl"] {
+  .radio-inline,
+  .checkbox-inline {
+    margin-left: 10px; // space out consecutive inline controls
+  }
 }
 
 // Apply same disabled cursor tweak as for inputs
@@ -329,7 +378,26 @@ input[type="checkbox"],
     }
   }
 }
-
+html:not([dir="rtl"]) {
+  .radio,
+  .checkbox {
+    padding-left: 0;
+  }
+  .radio input[type="radio"],
+  .checkbox input[type="checkbox"] {
+    margin-left: 0;
+  }
+}
+html[dir="rtl"] {
+  .radio,
+  .checkbox {
+    padding-right: 0;
+  }
+  .radio input[type="radio"],
+  .checkbox input[type="checkbox"] {
+    margin-right: 0;
+  }
+}
 
 // Horizontal forms
 //
@@ -356,8 +424,11 @@ input[type="checkbox"],
 
   // Only right align form labels here when the columns stop stacking
   @media (min-width: @screen-sm-min) {
-    .control-label {
+    html:not([dir="rtl"]) .control-label {
       text-align: right;
+    }
+    html[dir="rtl"] .control-label {
+      text-align: left;
     }
   }
 }

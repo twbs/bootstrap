@@ -31,7 +31,8 @@
   > .prev { display: block; }
 
   > .active {
-    left: 0;
+    html:not([dir="rtl"]) & { left: 0; }
+    html[dir="rtl"] & { right: 0; }
   }
 
   > .next,
@@ -42,21 +43,26 @@
   }
 
   > .next {
-    left: 100%;
+    html:not([dir="rtl"]) & { left: 100%; }
+    html[dir="rtl"] & { right: 100%; }
   }
   > .prev {
-    left: -100%;
+    html:not([dir="rtl"]) & { left: -100%; }
+    html[dir="rtl"] & { right: -100%; }
   }
   > .next.left,
   > .prev.right {
-    left: 0;
+    html:not([dir="rtl"]) & { left: 0; }
+    html[dir="rtl"] & { right: 0; }
   }
 
   > .active.left {
-    left: -100%;
+    html:not([dir="rtl"]) & { left: -100%; }
+    html[dir="rtl"] & { right: -100%; }
   }
   > .active.right {
-    left: 100%;
+    html:not([dir="rtl"]) & { left: 100%; }
+    html[dir="rtl"] & { right: 100%; }
   }
 
 }
@@ -67,7 +73,8 @@
 .carousel-control {
   position: absolute;
   top: 0;
-  left: 0;
+  html:not([dir="rtl"]) & { left: 0; }
+  html[dir="rtl"] & { right: 0; }
   bottom: 0;
   width: @carousel-control-width;
   .opacity(@carousel-control-opacity);
@@ -119,7 +126,8 @@
     width:  20px;
     height: 20px;
     margin-top: -10px;
-    margin-left: -10px;
+    html:not([dir="rtl"]) & { margin-left: -10px; }
+    html[dir="rtl"] & { margin-right: -10px; }
     font-family: serif;
   }
 
@@ -143,7 +151,8 @@
 .carousel-indicators {
   position: absolute;
   bottom: 10px;
-  left: 50%;
+  html:not([dir="rtl"]) & { left: 50%; }
+  html[dir="rtl"] & { right: 50%; }
   z-index: 15;
   width: 60%;
   margin-left: -30%;
@@ -201,7 +210,8 @@
       width: 30px;
       height: 30px;
       margin-top: -15px;
-      margin-left: -15px;
+      html:not([dir="rtl"]) & { margin-left: -15px; }
+      html[dir="rtl"] & { margin-right: -15px; }
       font-size: 30px;
     }
   }
