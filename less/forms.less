@@ -180,6 +180,8 @@ output {
   min-height: @line-height-computed; // clear the floating input if there is no label text
   margin-top: 10px;
   margin-bottom: 10px;
+  html:not([dir="rtl"]) { padding-left: 20px; }
+  html[dir="rtl"] { padding-right: 20px; }
   vertical-align: middle;
   label {
     display: inline;
@@ -188,39 +190,13 @@ output {
     cursor: pointer;
   }
 }
-
-html:not([dir="rtl"]) {
-  .radio,
-  .checkbox {
-    padding-left: 20px;
-  }
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+  html:not([dir="rtl"]) { float: left; margin-left: -20px; }
+  html[dir="rtl"] { float: right; margin-right: -20px; }
 }
-html[dir="rtl"] {
-  .radio,
-  .checkbox {
-    padding-right: 20px;
-  }
-}
-
-html:not([dir="rtl"]) {
-  .radio input[type="radio"],
-  .radio-inline input[type="radio"],
-  .checkbox input[type="checkbox"],
-  .checkbox-inline input[type="checkbox"] {
-    float: left;
-    margin-left: -20px;
-  }
-}
-html[dir="rtl"] {
-  .radio input[type="radio"],
-  .radio-inline input[type="radio"],
-  .checkbox input[type="checkbox"],
-  .checkbox-inline input[type="checkbox"] {
-    float: right;
-    margin-right: -20px;
-  }
-}
-
 .radio + .radio,
 .checkbox + .checkbox {
   margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
@@ -230,40 +206,20 @@ html[dir="rtl"] {
 .radio-inline,
 .checkbox-inline {
   display: inline-block;
+  html:not([dir="rtl"]) { padding-left: 20px; }
+  html[dir="rtl"] { padding-right: 20px; }
   margin-bottom: 0;
   vertical-align: middle;
   font-weight: normal;
   cursor: pointer;
 }
-html:not([dir="rtl"]) {
-  .radio-inline,
-  .checkbox-inline {
-    padding-left: 20px;
-  }
-}
-html[dir="rtl"] {
-  .radio-inline,
-  .checkbox-inline {
-    padding-right: 20px;
-  }
-}
-
 .radio-inline + .radio-inline,
 .checkbox-inline + .checkbox-inline {
   margin-top: 0;
-}
-// space out consecutive inline controls
-html:not([dir="rtl"]) {
-  .radio-inline,
-  .checkbox-inline {
-    margin-left: 10px;
-  }
-}
-html[dir="rtl"] {
-  .radio-inline,
-  .checkbox-inline {
-    margin-left: 10px; // space out consecutive inline controls
-  }
+
+  // space out consecutive inline controls
+  html:not([dir="rtl"]) { margin-left: 10px; }
+  html[dir="rtl"] { margin-right: 10px; }
 }
 
 // Apply same disabled cursor tweak as for inputs
@@ -369,35 +325,18 @@ input[type="checkbox"],
       display: inline-block;
       margin-top: 0;
       margin-bottom: 0;
-      padding-left: 0;
+      html:not([dir="rtl"]) { padding-left: 0; }
+      html[dir="rtl"] { padding-right: 0; }
     }
     .radio input[type="radio"],
     .checkbox input[type="checkbox"] {
       float: none;
-      margin-left: 0;
+      html:not([dir="rtl"]) { margin-left: 0; }
+      html[dir="rtl"] { margin-right: 0; }
     }
   }
 }
-html:not([dir="rtl"]) {
-  .radio,
-  .checkbox {
-    padding-left: 0;
-  }
-  .radio input[type="radio"],
-  .checkbox input[type="checkbox"] {
-    margin-left: 0;
-  }
-}
-html[dir="rtl"] {
-  .radio,
-  .checkbox {
-    padding-right: 0;
-  }
-  .radio input[type="radio"],
-  .checkbox input[type="checkbox"] {
-    margin-right: 0;
-  }
-}
+
 
 // Horizontal forms
 //
@@ -424,11 +363,9 @@ html[dir="rtl"] {
 
   // Only right align form labels here when the columns stop stacking
   @media (min-width: @screen-sm-min) {
-    html:not([dir="rtl"]) .control-label {
-      text-align: right;
-    }
-    html[dir="rtl"] .control-label {
-      text-align: left;
+    .control-label {
+      html:not([dir="rtl"]) { text-align: right; }
+      html[dir="rtl"] { text-align: left; }
     }
   }
 }
