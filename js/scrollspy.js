@@ -58,7 +58,7 @@
       .map(function () {
         var $el   = $(this)
         var href  = $el.data('target') || $el.attr('href')
-        var $href = /^#\w/.test(href) && $(href)
+        var $href = /^#[\u2e80-\u9fff\w]/.test(href) && $(href)
 
         return ($href
           && $href.length
