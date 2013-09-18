@@ -1,7 +1,7 @@
 /* jshint node: true */
 
 module.exports = function (grunt) {
-  "use strict";
+  'use strict';
 
   // Force use of Unix newlines
   grunt.util.linefeed = '\n';
@@ -135,7 +135,7 @@ module.exports = function (grunt) {
     copy: {
       fonts: {
         expand: true,
-        src: ["fonts/*"],
+        src: ['fonts/*'],
         dest: 'dist/'
       }
     },
@@ -164,12 +164,12 @@ module.exports = function (grunt) {
       options: {
         reset: true,
         relaxerror: [
-          "Bad value X-UA-Compatible for attribute http-equiv on element meta.",
-          "Element img is missing required attribute src."
+          'Bad value X-UA-Compatible for attribute http-equiv on element meta.',
+          'Element img is missing required attribute src.'
         ]
       },
       files: {
-        src: ["_gh_pages/**/*.html"]
+        src: ['_gh_pages/**/*.html']
       }
     },
 

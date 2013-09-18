@@ -35,18 +35,18 @@ window.onload = function () { // wait for load in a dumb way because B-0
   }
 
   function getQueryParam(key) {
-    key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
-    var match = location.search.match(new RegExp("[?&]" + key + "=([^&]+)(&|$)"));
-    return match && decodeURIComponent(match[1].replace(/\+/g, " "));
+    key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, '\\$&'); // escape RegEx meta chars
+    var match = location.search.match(new RegExp('[?&]' + key + '=([^&]+)(&|$)'));
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
   }
 
   function createGist(configJson) {
     var data = {
-      "description": "Bootstrap Customizer Config",
-      "public": true,
-      "files": {
-        "config.json": {
-          "content": configJson
+      'description': 'Bootstrap Customizer Config',
+      'public': true,
+      'files': {
+        'config.json': {
+          'content': configJson
         }
       }
     }
@@ -57,7 +57,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
       data: JSON.stringify(data)
     })
     .success(function (result) {
-      var origin = window.location.protocol + "//" + window.location.host
+      var origin = window.location.protocol + '//' + window.location.host
       history.replaceState(false, document.title, origin + window.location.pathname + '?id=' + result.id)
     })
     .error(function (err) {
@@ -144,10 +144,10 @@ window.onload = function () { // wait for load in a dumb way because B-0
     }
 
     if (config) {
-      zip.file("config.json", config)
+      zip.file('config.json', config)
     }
 
-    var content = zip.generate({ type: "blob" })
+    var content = zip.generate({ type: 'blob' })
 
     complete(content)
   }
@@ -311,22 +311,22 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
     generateZip(generateCSS(), generateJavascript(), generateFonts(), configJson, function (blob) {
       $compileBtn.removeAttr('disabled')
-      saveAs(blob, "bootstrap.zip")
+      saveAs(blob, 'bootstrap.zip')
       createGist(configJson)
     })
   })
 
   // browser support alerts
   if (!window.URL && navigator.userAgent.toLowerCase().indexOf('safari') != -1) {
-    showCallout("Looks like you're using safari, which sadly doesn't have the best support\
-                 for HTML5 blobs. Because of this your file will be downloaded with the name <code>\"untitled\"</code>.\
-                 However, if you check your downloads folder, just rename this <code>\"untitled\"</code> file\
-                 to <code>\"bootstrap.zip\"</code> and you should be good to go!")
+    showCallout('Looks like you\'re using safari, which sadly doesn\'t have the best support\
+                 for HTML5 blobs. Because of this your file will be downloaded with the name <code>"untitled"</code>.\
+                 However, if you check your downloads folder, just rename this <code>"untitled"</code> file\
+                 to <code>"bootstrap.zip"</code> and you should be good to go!')
   } else if (!window.URL && !window.webkitURL) {
     $('.bs-docs-section, .bs-sidebar').css('display', 'none')
 
-    showCallout("Looks like your current browser doesn't support the Bootstrap Customizer. Please take a second\
-                 to <a href=\"https://www.google.com/intl/en/chrome/browser/\"> upgrade to a more modern browser</a>.", true)
+    showCallout('Looks like your current browser doesn\'t support the Bootstrap Customizer. Please take a second\
+                 to <a href="https://www.google.com/intl/en/chrome/browser/"> upgrade to a more modern browser</a>.', true)
   }
 
   parseUrl()
