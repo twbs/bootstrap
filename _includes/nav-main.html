@@ -25,31 +25,34 @@
 		    </form>
 		</div>
 	  <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <div class="nav navbar-nav navbar-btn">
-		<div class="dropdown">
-		      <button type="button" class="dropdown-toggle btn btn-default" data-toggle="dropdown"><span class="glyphicon glyphicon-list text-info"></span> Browse</button>
-		      <ul class="dropdown-menu">
-			<li{% if page.slug == "getting-started" %} class="active"{% endif %}>
-			  <a href="{{ page.base_url }}getting-started">Getting started</a>
-			</li>
-			<li{% if page.slug == "css" %} class="active"{% endif %}>
-			  <a href="{{ page.base_url }}css">CSS</a>
-			</li>
-			<li{% if page.slug == "components" %} class="active"{% endif %}>
-			  <a href="{{ page.base_url }}components">Components</a>
-			</li>
-			<li{% if page.slug == "js" %} class="active"{% endif %}>
-			  <a href="{{ page.base_url }}javascript">JavaScript</a>
-			</li>
-			<li{% if page.slug == "customize" %} class="active"{% endif %}>
-			  <a href="{{ page.base_url }}customize">Customize</a>
-			</li>
-			<li{% if page.slug == "demo-company" %} class="active"{% endif %}>
-			  <a href="{{ page.base_url }}demo-company">Example Company</a>
-			</li>
-		      </ul>
-		</div>
-            </div>
+      <div class="nav navbar-nav navbar-btn">
+        <div class="dropdown">
+          <button type="button" class="dropdown-toggle btn btn-default" data-toggle="dropdown"><span class="glyphicon glyphicon-list text-info"></span> Browse</button>
+          <ul class="dropdown-menu">
+              <li{% if page.slug == "getting-started" %} class="active"{% endif %}>
+                <a href="{{ page.base_url }}getting-started">Getting started</a>
+              </li>
+              <li{% if page.slug == "css" %} class="active"{% endif %}>
+                <a href="{{ page.base_url }}css">CSS</a>
+              </li>
+              <li{% if page.slug == "components" %} class="active"{% endif %}>
+                <a href="{{ page.base_url }}components">Components</a>
+              </li>
+              <li{% if page.slug == "js" %} class="active"{% endif %}>
+                <a href="{{ page.base_url }}javascript">JavaScript</a>
+              </li>
+              <li{% if page.slug == "customize" %} class="active"{% endif %}>
+                <a href="{{ page.base_url }}customize">Customize</a>
+              </li>
+              <li{% if page.slug == "demo-company" %} class="active"{% endif %}>
+                <a href="{{ page.base_url }}demo-company">Example Company</a>
+              </li>
+              <li{% if page.slug == "manta-components" %} class="active"{% endif %}>
+                <a href="{{ page.base_url }}manta-components">Manta Components</a>
+              </li>
+          </ul>
+        </div>
+      </div>
 
 	    <div class="nav navbar-nav navbar-right">
 	      <div class="btn-toolbar">
