@@ -5,6 +5,30 @@
 *
 * Designed and built with all the love in the world by @mdo and @fat.
 */
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: " ";
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.center-block {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.text-hide {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
 /*! normalize.css v2.1.3 | MIT License | git.io/normalize */
 
 article,
@@ -630,14 +654,6 @@ dd {
   .dl-horizontal dd:after {
     clear: both;
   }
-  .dl-horizontal dd:before,
-  .dl-horizontal dd:after {
-    display: table;
-    content: " ";
-  }
-  .dl-horizontal dd:after {
-    clear: both;
-  }
 }
 
 abbr[title],
@@ -771,29 +787,9 @@ pre code {
   clear: both;
 }
 
-.container:before,
-.container:after {
-  display: table;
-  content: " ";
-}
-
-.container:after {
-  clear: both;
-}
-
 .row {
   margin-right: -15px;
   margin-left: -15px;
-}
-
-.row:before,
-.row:after {
-  display: table;
-  content: " ";
-}
-
-.row:after {
-  clear: both;
 }
 
 .row:before,
@@ -1979,16 +1975,6 @@ textarea.input-lg {
 .form-horizontal .form-group {
   margin-right: -15px;
   margin-left: -15px;
-}
-
-.form-horizontal .form-group:before,
-.form-horizontal .form-group:after {
-  display: table;
-  content: " ";
-}
-
-.form-horizontal .form-group:after {
-  clear: both;
 }
 
 .form-horizontal .form-group:before,
@@ -3442,16 +3428,6 @@ input[type="button"].btn-block {
   clear: both;
 }
 
-.btn-toolbar:before,
-.btn-toolbar:after {
-  display: table;
-  content: " ";
-}
-
-.btn-toolbar:after {
-  clear: both;
-}
-
 .btn-toolbar .btn-group {
   float: left;
 }
@@ -3562,16 +3538,6 @@ input[type="button"].btn-block {
   float: none;
   width: 100%;
   max-width: 100%;
-}
-
-.btn-group-vertical > .btn-group:before,
-.btn-group-vertical > .btn-group:after {
-  display: table;
-  content: " ";
-}
-
-.btn-group-vertical > .btn-group:after {
-  clear: both;
 }
 
 .btn-group-vertical > .btn-group:before,
@@ -3824,16 +3790,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
   clear: both;
 }
 
-.nav:before,
-.nav:after {
-  display: table;
-  content: " ";
-}
-
-.nav:after {
-  clear: both;
-}
-
 .nav > li {
   position: relative;
   display: block;
@@ -4046,16 +4002,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
   clear: both;
 }
 
-.tabbable:before,
-.tabbable:after {
-  display: table;
-  content: " ";
-}
-
-.tabbable:after {
-  clear: both;
-}
-
 .tab-content > .tab-pane,
 .pill-content > .pill-pane {
   display: none;
@@ -4100,30 +4046,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
   clear: both;
 }
 
-.navbar:before,
-.navbar:after {
-  display: table;
-  content: " ";
-}
-
-.navbar:after {
-  clear: both;
-}
-
 @media (min-width: 768px) {
   .navbar {
     border-radius: 4px;
   }
-}
-
-.navbar-header:before,
-.navbar-header:after {
-  display: table;
-  content: " ";
-}
-
-.navbar-header:after {
-  clear: both;
 }
 
 .navbar-header:before,
@@ -4150,16 +4076,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
   border-top: 1px solid transparent;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   -webkit-overflow-scrolling: touch;
-}
-
-.navbar-collapse:before,
-.navbar-collapse:after {
-  display: table;
-  content: " ";
-}
-
-.navbar-collapse:after {
-  clear: both;
 }
 
 .navbar-collapse:before,
@@ -4822,16 +4738,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
   clear: both;
 }
 
-.pager:before,
-.pager:after {
-  display: table;
-  content: " ";
-}
-
-.pager:after {
-  clear: both;
-}
-
 .pager li {
   display: inline;
 }
@@ -5412,16 +5318,6 @@ a.list-group-item:focus {
   clear: both;
 }
 
-.panel-body:before,
-.panel-body:after {
-  display: table;
-  content: " ";
-}
-
-.panel-body:after {
-  clear: both;
-}
-
 .panel > .list-group {
   margin-bottom: 0;
 }
@@ -5819,16 +5715,6 @@ body.modal-open,
   margin-top: 15px;
   text-align: right;
   border-top: 1px solid #e5e5e5;
-}
-
-.modal-footer:before,
-.modal-footer:after {
-  display: table;
-  content: " ";
-}
-
-.modal-footer:after {
-  clear: both;
 }
 
 .modal-footer:before,
@@ -6327,22 +6213,6 @@ body.modal-open,
   }
 }
 
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: " ";
-}
-
-.clearfix:after {
-  clear: both;
-}
-
-.center-block {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-}
-
 .pull-right {
   float: right !important;
 }
@@ -6361,14 +6231,6 @@ body.modal-open,
 
 .invisible {
   visibility: hidden;
-}
-
-.text-hide {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
 }
 
 .affix {
