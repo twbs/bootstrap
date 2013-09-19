@@ -562,7 +562,7 @@
 }
 
 @mixin responsive-invisibility($selector) {
-	#{$selector},
+    #{$selector},
   tr#{$selector},
   th#{$selector},
   td#{$selector} { display: none !important; }
