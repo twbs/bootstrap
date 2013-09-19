@@ -248,6 +248,8 @@
 @grid-gutter-width:         30px;
 // Point at which the navbar stops collapsing
 @grid-float-breakpoint:     @screen-sm-min;
+// So media queries don't overlap when required, provide a maximum
+@grid-float-breakpoint-max: (@grid-float-breakpoint - 1);
 
 
 // Navbar
