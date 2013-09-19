@@ -72,6 +72,16 @@ module.exports = function(grunt) {
       bootstrap: {
         src: ['<%= concat.bootstrap.dest %>'],
         dest: 'dist/js/<%= pkg.name %>.min.js'
+      },
+      customize: {
+        src: [
+          'docs-assets/js/less.js',
+          'docs-assets/js/jszip.js',
+          'docs-assets/js/uglify.js',
+          'docs-assets/js/filesaver.js',
+          'docs-assets/js/customizer.js'
+        ],
+        dest: 'docs-assets/js/customize.js'
       }
     },
 
