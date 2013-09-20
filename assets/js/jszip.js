@@ -659,7 +659,7 @@ JSZip.prototype = (function () {
             if ( !this.files.hasOwnProperty(name) ) { continue; }
             var file = this.files[name];
 
-            var compressionName = file.compression || options.compression.toUpperCase();
+            var compressionName = file.options.compression || options.compression.toUpperCase();
             var compression = JSZip.compressions[compressionName];
             if (!compression) {
                throw new Error(compressionName + " is not a valid compression method !");
