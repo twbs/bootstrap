@@ -2023,6 +2023,15 @@ textarea.input-lg {
           user-select: none;
 }
 
+input[type="button"].btn,
+input[type="reset"].btn,
+input[type="submit"].btn {
+  height: 20.000000006px;
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
 .btn:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
@@ -2345,12 +2354,33 @@ fieldset[disabled] .btn-link:focus {
   border-radius: 6px;
 }
 
+input[type="button"].btn-lg,
+input[type="reset"].btn-lg,
+input[type="submit"].btn-lg {
+  height: 23.94px;
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
 .btn-sm,
 .btn-xs {
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
+}
+
+input[type="button"].btn-sm,
+input[type="button"].btn-xs,
+input[type="reset"].btn-sm,
+input[type="reset"].btn-xs,
+input[type="submit"].btn-sm,
+input[type="submit"].btn-xs {
+  height: 18px;
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
 }
 
 .btn-xs {
@@ -3509,6 +3539,15 @@ input[type="button"].btn-block {
   border-radius: 3px;
 }
 
+input[type="button"].btn-group-xs > .btn,
+input[type="reset"].btn-group-xs > .btn,
+input[type="submit"].btn-group-xs > .btn {
+  height: 18px;
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
 .btn-group-sm > .btn {
   padding: 5px 10px;
   font-size: 12px;
@@ -3516,11 +3555,29 @@ input[type="button"].btn-block {
   border-radius: 3px;
 }
 
+input[type="button"].btn-group-sm > .btn,
+input[type="reset"].btn-group-sm > .btn,
+input[type="submit"].btn-group-sm > .btn {
+  height: 18px;
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
 .btn-group-lg > .btn {
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.33;
   border-radius: 6px;
+}
+
+input[type="button"].btn-group-lg > .btn,
+input[type="reset"].btn-group-lg > .btn,
+input[type="submit"].btn-group-lg > .btn {
+  height: 23.94px;
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
 }
 
 .btn-group > .btn + .dropdown-toggle {

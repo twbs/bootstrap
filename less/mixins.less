@@ -492,6 +492,14 @@
   font-size: @font-size;
   line-height: @line-height;
   border-radius: @border-radius;
+
+  // work around for FireFox, that ignores line-height for input elements.
+  input[type="button"]&,
+  input[type="reset"]&,
+  input[type="submit"]& {
+    .box-sizing(content-box);
+    height : (@font-size * @line-height);
+  }
 }
 
 // Pagination
