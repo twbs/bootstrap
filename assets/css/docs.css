@@ -1022,7 +1022,7 @@ h1[id] {
 }
 .bs-customizer .bs-callout h4 {
   margin-top: 0; /* lame, but due to specificity we have to duplicate */
-  magin-bottom: 5px;
+  margin-bottom: 5px;
 }
 .bs-customizer input[type="text"] {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
