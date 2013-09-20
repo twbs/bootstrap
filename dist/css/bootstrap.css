@@ -3224,7 +3224,6 @@ input[type="button"].btn-block {
   border-right: 4px solid transparent;
   border-bottom: 0 dotted;
   border-left: 4px solid transparent;
-  content: "";
 }
 
 .dropdown {
