@@ -265,8 +265,7 @@ bootstrap/
     <div class="page-header">
       <h1 id="disable-responsive">Disabling responsiveness</h1>
     </div>
-    <p class="lead">Bootstrap automatically adapts your pages for various screen sizes.
-      Here's how to disable this feature so your page works like in <a href="../examples/non-responsive/">this non-responsive example</a>.</p>
+    <p class="lead">Bootstrap automatically adapts your pages for various screen sizes. Here's how to disable this feature so your page works like in <a href="../examples/non-responsive/">this non-responsive example</a>.</p>
 
     <h3>Steps to disable page responsiveness</h3>
     <ol>
@@ -275,14 +274,11 @@ bootstrap/
       <li>If using navbars, remove all navbar collapsing and expanding behavior.</li>
       <li>For grid layouts, use <code>.col-xs-*</code> classes in addition to, or in place of, the medium/large ones. Don't worry, the extra-small device grid scales to all resolutions.</li>
     </ol>
-    <p>You'll still need Respond.js for IE8 (since our media queries are still there and need to be processed).
-      This disables the "mobile site" aspects of Bootstrap.</p>
+    <p>You'll still need Respond.js for IE8 (since our media queries are still there and need to be processed). This disables the "mobile site" aspects of Bootstrap.</p>
 
     <h3>Bootstrap template with responsiveness disabled</h3>
     <p>We've applied these steps to an example. Read its source code to see the specific changes implemented.</p>
-    <p>
-      <a href="../examples/non-responsive/" class="btn btn-primary">View non-responsive example</a>
-    </p>
+    <p><a href="../examples/non-responsive/" class="btn btn-primary">View non-responsive example</a></p>
   </div>
 
 
@@ -844,7 +840,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
   </div>
 
 
-  <!-- License FAQs
+ <!-- License FAQs
   ================================================== -->
   <div class="bs-docs-section">
     <div class="page-header">
@@ -888,6 +884,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     <p>The full Bootstrap license is located <a href="{{ site.repo }}/blob/master/README.md">in the project repository</a> for more information.</p>
   </div><!-- /.bs-docs-section -->
 
+
   <!-- Customizing Bootstrap
   ================================================== -->
   <div class="bs-docs-section">
@@ -900,11 +897,11 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     <p><strong>The CSS source code is authored and maintained in LESS files</strong> named for their functionality. For example, in <code>grid.less</code>, you'll find the code for generating our grid system's CSS. If you are comfortable using build tools, then consider using LESS to customize Bootstrap.</p>
     <p><strong>Next individual LESS files are gathered and compiled into an unminified CSS file named <code>bootstrap.css</code></strong>.  See the source in <code>bootstrap.less</code> to understand how it all comes together. If you require only modest customizations, then extending Bootstrap's precompiled CSS directly with your own CSS stylesheet will work for you.</p>
     <p><strong>Finally the <code>bootstrap.css</code> file is compressed and saved as <code>bootstrap.min.css</code></strong>. By compressing, we remove all white space and comments for a smaller file size, perfect for production deployment.</p>
-    <p>In short, you have two choices: customize on top of the precompiled CSS, or use build tools to customize using LESS files.
+    <p>In short, you have two choices: customize on top of the precompiled CSS, or use build tools to customize using LESS files.</p>
 
     <h2>Customizing from precompiled CSS</h2>
     <p>You can customize Bootstrap and its components to varying degrees, but most fall into two categories: <em>light customizations</em> and <em>overhauls</em>.  We define <em>light customizations</em> as superficial changes, for example, color and font changes to existing Bootstrap components.</p>
-    <p>Most light customizations can be made by extending Bootstrap's precompiled CSS with an additional and separate style sheet of your own.
+    <p>Most light customizations can be made by extending Bootstrap's precompiled CSS with an additional and separate style sheet of your own.</p>
     <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title">Example: extending Bootstrap's precompiled CSS to customize a component</h3>
@@ -954,7 +951,6 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
       </div>
     </div>
 
-
     <p><strong>In summary, here's the basic workflow for customizing Bootstrap from its precompiled CSS:</strong></p>
     <ul>
       <li>For each element you want to customize, find its code in the precompiled, unminified Bootstrap CSS.</li>
@@ -966,15 +962,14 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     <div class="panel panel-danger">
       <div class="panel-heading">
         <h3 class="panel-title">Controlling bloat</h3>
-          </div>
-          <div class="panel-body">
-            <p>Not all sites and applications need to make use of everything Bootstrap has to offer, especially in production environments where optimizing bandwidth is an issue. We encourage you to remove whatever is unused with our <a href="../customize/">Customizer</a>.</p>
-            <p>Using the <a href="/customize">Customizer</a>, simply uncheck any component, feature, or asset you don't need. Hit download and swap out the default Bootstrap files with these newly customized ones. You'll get vanilla Bootstrap, but without the features *you* deem unnecessary. All custom builds include precompiled and minified versions, so use whichever works for you.</p>
-          </div>
-        </div>
+      </div>
+      <div class="panel-body">
+        <p>Not all sites and applications need to make use of everything Bootstrap has to offer, especially in production environments where optimizing bandwidth is an issue. We encourage you to remove whatever is unused with our <a href="../customize/">Customizer</a>.</p>
+        <p>Using the <a href="/customize">Customizer</a>, simply uncheck any component, feature, or asset you don't need. Hit download and swap out the default Bootstrap files with these newly customized ones. You'll get vanilla Bootstrap, but without the features *you* deem unnecessary. All custom builds include precompiled and minified versions, so use whichever works for you.</p>
+      </div>
     </div>
 
     <h2>Overhauls</h2>
     <p>Once you are comfortable performing light customizations, visual overhauls are usually just as straightforward. For a site like <a href="http://yourkarma.com">Karma</a>, which uses Bootstrap as a CSS reset with heavy modifications, more extensive work is involved.</p>
     <p>But the same principle applies: include Bootstrap's default stylesheet first, then apply your custom stylesheet.</p>
-  </div>
+  </div><!-- /.bs-docs-section -->
