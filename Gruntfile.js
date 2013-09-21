@@ -63,7 +63,8 @@ module.exports = function(grunt) {
 
     uglify: {
       options: {
-        banner: '<%= banner %>'
+        banner: '<%= banner %>',
+        report: 'min'
       },
       bootstrap: {
         src: ['<%= concat.bootstrap.dest %>'],
