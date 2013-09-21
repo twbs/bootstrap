@@ -51,15 +51,15 @@
 
     $parent.removeClass('in')
 
-    function removeElement() {
-      $parent.trigger('closed.bs.alert').remove()
+    function hideElement() {
+      $parent.trigger('closed.bs.alert').hide()
     }
 
     $.support.transition && $parent.hasClass('fade') ?
       $parent
-        .one($.support.transition.end, removeElement)
+        .one($.support.transition.end, hideElement)
         .emulateTransitionEnd(150) :
-      removeElement()
+      hideElement()
   }
 
 
