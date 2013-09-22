@@ -48,6 +48,11 @@
     &:focus {
       background-color: @nav-link-hover-bg;
       border-color: @link-color;
+
+      .caret {
+        border-top-color: @link-hover-color;
+        border-bottom-color: @link-hover-color;
+      }
     }
   }
 
@@ -133,6 +138,11 @@
       &:focus {
         color: @nav-pills-active-link-hover-color;
         background-color: @nav-pills-active-link-hover-bg;
+
+        .caret {
+          border-top-color: @nav-pills-active-link-hover-color;
+          border-bottom-color: @nav-pills-active-link-hover-color;
+        }
       }
     }
   }
