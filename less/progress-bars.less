@@ -20,14 +20,38 @@
 
 // Opera
 @-o-keyframes progress-bar-stripes {
-  from  { background-position: 0 0; }
-  to    { background-position: 40px 0; }
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
 }
 
 // Spec and IE10+
 @keyframes progress-bar-stripes {
   from  { background-position: 40px 0; }
   to    { background-position: 0 0; }
+}
+
+// Webkit
+@-webkit-keyframes progress-bar-stripes-right {
+  from  { background-position: 0 0; }
+  to    { background-position: 40px 0; }
+}
+
+// Firefox
+@-moz-keyframes progress-bar-stripes-right {
+  from  { background-position: 0 0; }
+  to    { background-position: 40px 0; }
+}
+
+// Opera
+@-o-keyframes progress-bar-stripes-right {
+  from  { background-position: 0 0; }
+  to    { background-position: 40px 0; }
+}
+
+// Spec and IE10+
+@keyframes progress-bar-stripes-right {
+  from  { background-position: 0 0; }
+  to    { background-position: 40px 0; }
 }
 
 
@@ -72,6 +96,13 @@
       -ms-animation: progress-bar-stripes 2s linear infinite;
        -o-animation: progress-bar-stripes 2s linear infinite;
           animation: progress-bar-stripes 2s linear infinite;
+}
+.progress.active-right .progress-bar {
+  -webkit-animation: progress-bar-stripes-right 2s linear infinite;
+     -moz-animation: progress-bar-stripes-right 2s linear infinite;
+      -ms-animation: progress-bar-stripes-right 2s linear infinite;
+       -o-animation: progress-bar-stripes-right 2s linear infinite;
+          animation: progress-bar-stripes-right 2s linear infinite;
 }
 
 
