@@ -2,7 +2,7 @@
 
 Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created and maintained by [Mark Otto](http://twitter.com/mdo) and [Jacob Thornton](http://twitter.com/fat).
 
-This is the Sass version of Bootstrap. A port of Bootsrap from Less to Sass. This project is focused on being a 1:1 port of the original. Please do not submit issues or pull requests for issues with Bootstrap itself. Those should be pushed upstream in the Less version.
+This is the Sass version of Bootstrap. A port of Bootstrap from Less to Sass. This project is focused on being a 1:1 port of the original. Please do not submit issues or pull requests for issues with Bootstrap itself. Those should be pushed upstream in the Less version.
 
 To get started, check out [http://getbootstrap.com](http://getbootstrap.com)!
 
