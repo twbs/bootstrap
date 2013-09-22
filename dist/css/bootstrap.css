@@ -690,8 +690,6 @@ blockquote.pull-right small:after {
   content: '\00A0 \2014';
 }
 
-q:before,
-q:after,
 blockquote:before,
 blockquote:after {
   content: "";
