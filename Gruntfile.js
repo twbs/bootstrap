@@ -116,6 +116,17 @@ module.exports = function(grunt) {
       files: ['js/tests/*.html']
     },
 
+    "bower-verify": {
+      options: {
+        ignorePatch: false,
+        showTasksOutput: true,
+        completeOnError: true,
+      },
+      qunit: {
+        tasks : ['qunit']
+      }
+    },
+
     connect: {
       server: {
         options: {
@@ -165,6 +176,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-html-validation');
+  grunt.loadNpmTasks('grunt-bower-verify');
   grunt.loadNpmTasks('grunt-jekyll');
   grunt.loadNpmTasks('grunt-recess');
   grunt.loadNpmTasks('browserstack-runner');
@@ -176,6 +188,8 @@ module.exports = function(grunt) {
   var testSubtasks = ['dist-css', 'jshint', 'qunit', 'validate-html'];
   // Only run BrowserStack tests under Travis
   if (process.env.TRAVIS) {
+    //If in travis grunt test will do a full bower-verify test process
+    testSubtasks.splice(2, 1, 'bower-verify');
     // Only run BrowserStack tests if this is a mainline commit in twbs/bootstrap, or you have your own BrowserStack key
     if ((process.env.TRAVIS_REPO_SLUG === 'twbs/bootstrap' && process.env.TRAVIS_PULL_REQUEST === 'false') || process.env.TWBS_HAVE_OWN_BROWSERSTACK_KEY) {
       testSubtasks.push('browserstack_runner');
