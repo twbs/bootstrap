@@ -96,6 +96,7 @@
     return this.each(function () {
       var $this   = $(this)
       var data    = $this.data('bs.popover')
+      if (!data && option === 'destroy') return
       var options = typeof option == 'object' && option
 
       if (!data) $this.data('bs.popover', (data = new Popover(this, options)))
