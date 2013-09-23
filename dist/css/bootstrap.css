@@ -649,8 +649,6 @@ blockquote.pull-right small:after {
   content: '\00A0 \2014';
 }
 
-q:before,
-q:after,
 blockquote:before,
 blockquote:after {
   content: "";
@@ -3717,6 +3715,10 @@ input[type="button"].btn-block {
   background-color: #eeeeee;
   border-color: #428bca;
 }
+.nav .open > a .caret, .nav .open > a:hover .caret, .nav .open > a:focus .caret {
+  border-top-color: #2a6496;
+  border-bottom-color: #2a6496;
+}
 .nav .nav-divider {
   height: 1px;
   margin: 9px 0;
@@ -3792,6 +3794,10 @@ input[type="button"].btn-block {
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
   color: white;
   background-color: #428bca;
+}
+.nav-pills > li.active > a .caret, .nav-pills > li.active > a:hover .caret, .nav-pills > li.active > a:focus .caret {
+  border-top-color: white;
+  border-bottom-color: white;
 }
 
 .nav-stacked > li {
