@@ -92,12 +92,10 @@ th {
       }
     }
   }
-  > thead {
-    > tr {
-      > th,
-      > td {
-        border-bottom-width: 2px;
-      }
+  > thead > tr {
+    > th,
+    > td {
+      border-bottom-width: 2px;
     }
   }
 }
@@ -107,14 +105,10 @@ th {
 //
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 
-.table-striped {
-  > tbody {
-    > tr:nth-child(odd) {
-      > td,
-      > th {
-        background-color: @table-bg-accent;
-      }
-    }
+.table-striped > tbody > tr:nth-child(odd) {
+  > td,
+  > th {
+    background-color: @table-bg-accent;
   }
 }
 
@@ -123,14 +117,10 @@ th {
 //
 // Placed here since it has to come after the potential zebra striping
 
-.table-hover {
-  > tbody {
-    > tr:hover {
-      > td,
-      > th {
-        background-color: @table-bg-hover;
-      }
-    }
+.table-hover > tbody > tr:hover {
+  > td,
+  > th {
+    background-color: @table-bg-hover;
   }
 }
 
@@ -192,7 +182,7 @@ table {
     border: 1px solid @table-border-color;
     -webkit-overflow-scrolling: touch;
 
-    // Tighten up spacing and give a background color
+    // Tighten up spacing
     > .table {
       margin-bottom: 0;
 
