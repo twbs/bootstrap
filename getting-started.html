@@ -749,6 +749,7 @@ bootstrap/
 {% highlight html %}
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 {% endhighlight %}
+    <p>This tag is included in all docs pages and examples to ensure the best rendering possible in each supported version of Internet Explorer.</p>
     <p>See <a href="http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge">this StackOverflow question</a> for more information.</p>
 
     <h3>Internet Explorer 10 in Windows 8 and Windows Phone 8</h3>
@@ -864,10 +865,10 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     <p class="lead">Bootstrap follows common web standards, and with minimal extra effort, can be used to create sites that are accessibile to those using <abbr title="Assistive Technology" class="initialism">AT</abbr>.</p>
 
     <h3>Skip navigation</h3>
-    <p>If your navigation contains many links and comes before the main content in the DOM, add a <code>Skip to content</code> link immediately after your opening <code>&lt;body&gt;</code> tag. <a href="http://a11yproject.com/posts/skip-nav-links/">(read why)</a></p>
+    <p>If your navigation contains many links and comes before the main content in the DOM, add a <code>Skip to main content</code> link immediately after your opening <code>&lt;body&gt;</code> tag. <a href="http://a11yproject.com/posts/skip-nav-links/">(read why)</a></p>
 {% highlight html %}
 <body>
-  <a href="#content" class="sr-only">Skip to content</a>
+  <a href="#content" class="sr-only">Skip to main content</a>
   <div class="container" id="content">
     The main page content.
   </div>
