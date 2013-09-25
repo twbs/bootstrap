@@ -1583,6 +1583,33 @@ table th[class*="col-"] {
   border-color: #f7e1b5;
 }
 
+th[data-sort="true"] {
+	text-decoration: underline;
+}
+th[data-sort="true"] {
+	text-decoration: underline;
+}
+th[data-sort="true"][data-sorting="DESC"]:after {
+	display: inline-block;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-width: 4px 4px 0px;
+    border-style: solid solid dotted;
+    border-color: rgb(0, 0, 0) transparent -moz-use-text-color;
+    content: "";
+}
+th[data-sort="true"][data-sorting="ASC"]:after {
+	display: inline-block;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-width: 4px 4px 0px;
+    border-style: solid solid dotted;
+    border-color: rgb(0, 0, 0) transparent -moz-use-text-color;
+	border-top: 0px dotted;
+	border-bottom: 4px solid rgb(0, 0, 0);
+	content: "";
+}
+
 @media (max-width: 768px) {
   .table-responsive {
     width: 100%;
