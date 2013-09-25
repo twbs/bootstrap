@@ -39,7 +39,7 @@
     animation: true
   , placement: 'top'
   , selector: false
-  , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+  , template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
   , trigger: 'hover focus'
   , title: ''
   , delay: 0
@@ -158,6 +158,9 @@
         .detach()
         .css({ top: 0, left: 0, display: 'block' })
         .addClass(placement)
+        .setUniqueId()
+
+      this.$element.attr('aria-describedby', $tip.attr('id'));
 
       this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
 
@@ -269,6 +272,7 @@
     if (e.isDefaultPrevented()) return
 
     $tip.removeClass('in')
+    this.$element.removeAttr('aria-describedby');
 
     $.support.transition && this.$tip.hasClass('fade') ?
       $tip
