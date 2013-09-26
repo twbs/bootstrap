@@ -1,3 +1,10 @@
+/*!
+* Bootstrap v3.0.0 by @fat and @mdo
+* Copyright 2013 Twitter, Inc.
+* Licensed under http://www.apache.org/licenses/LICENSE-2.0
+*
+* Designed and built with all the love in the world by @mdo and @fat.
+*/
 .btn-default,
 .btn-primary,
 .btn-success,
@@ -222,21 +229,21 @@
 }
 
 .navbar-inverse {
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#3c3c3c), to(#222222));
-  background-image: -webkit-linear-gradient(top, #3c3c3c, 0%, #222222, 100%);
-  background-image: -moz-linear-gradient(top, #3c3c3c 0%, #222222 100%);
-  background-image: linear-gradient(to bottom, #3c3c3c 0%, #222222 100%);
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#464646), to(#2c2c2c));
+  background-image: -webkit-linear-gradient(top, #464646, 0%, #2c2c2c, 100%);
+  background-image: -moz-linear-gradient(top, #464646 0%, #2c2c2c 100%);
+  background-image: linear-gradient(to bottom, #464646 0%, #2c2c2c 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3c3c3c', endColorstr='#ff222222', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff464646', endColorstr='#ff2c2c2c', GradientType=0);
 }
 
 .navbar-inverse .navbar-nav > .active > a {
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#222222), to(#282828));
-  background-image: -webkit-linear-gradient(top, #222222, 0%, #282828, 100%);
-  background-image: -moz-linear-gradient(top, #222222 0%, #282828 100%);
-  background-image: linear-gradient(to bottom, #222222 0%, #282828 100%);
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#2c2c2c), to(#323232));
+  background-image: -webkit-linear-gradient(top, #2c2c2c, 0%, #323232, 100%);
+  background-image: -moz-linear-gradient(top, #2c2c2c 0%, #323232 100%);
+  background-image: linear-gradient(to bottom, #2c2c2c 0%, #323232 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff282828', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2c2c2c', endColorstr='#ff323232', GradientType=0);
   -webkit-box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.25);
           box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.25);
 }
