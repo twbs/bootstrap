@@ -6804,6 +6804,10 @@ td.visible-print {
   }
 }
 
+.bg-cool-darker {
+  background-color: #006ba5 !important;
+}
+
 .content {
   margin-top: 79px;
   background-color: #ffffff;
