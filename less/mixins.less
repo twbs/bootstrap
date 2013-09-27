@@ -16,7 +16,7 @@
 //    that are clearfixed.
 // 2. The use of `table` rather than `block` is only necessary if using
 //    `:before` to contain the top-margins of child elements.
-.clearfix() {
+.clear-fix() {
   &:before,
   &:after {
     content: " "; /* 1 */
@@ -574,14 +574,14 @@
   margin-left: auto;
   padding-left:  (@grid-gutter-width / 2);
   padding-right: (@grid-gutter-width / 2);
-  .clearfix();
+  .clear-fix();
 }
 
 // Creates a wrapper for a series of columns
 .make-row(@gutter: @grid-gutter-width) {
   margin-left:  (@gutter / -2);
   margin-right: (@gutter / -2);
-  .clearfix();
+  .clear-fix();
 }
 
 // Generate the extra small columns
