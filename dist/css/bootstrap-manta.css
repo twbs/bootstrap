@@ -6840,7 +6840,7 @@ td.visible-print {
             transition: all 100ms ease-in;
   }
   .navbar-search:focus {
-    width: 244px;
+    width: 254px;
     margin-left: -100px;
   }
 }
@@ -6851,7 +6851,7 @@ td.visible-print {
             transition: all 100ms ease-in;
   }
   .navbar-search:focus {
-    width: 326px;
+    width: 336px;
     margin-left: -100px;
   }
 }
@@ -6902,6 +6902,109 @@ h1,
   .navbar-default .navbar-nav > li > a {
     padding-top: 2.5px;
     padding-bottom: 2.5px;
+  }
+}
+
+.navbar-brand {
+  float: left;
+  padding: 17px 15px;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .navbar > .container .navbar-brand {
+    margin-left: 0;
+  }
+}
+
+.navbar-inverse .navbar-brand {
+  width: 100px;
+  height: 25px;
+  padding: 0;
+  margin: 14px 5px 0 0;
+  margin-left: 0;
+  overflow: hidden;
+  background: url(http://m4.manta-r1.com/manta/images/manta-logo-sp.png) -50px 0;
+  background-size: 150px 25px;
+}
+
+.navbar-header.col-lg-1 {
+  width: 12%;
+}
+
+@media (max-width: 768px) {
+  .navbar-inverse .navbar-brand {
+    width: 50px;
+    height: 25px;
+    padding: 0;
+    margin: 14px 5px 0 5px;
+    margin-left: 5px;
+    overflow: hidden;
+    background: url(http://m4.manta-r1.com/manta/images/manta-logo-sp.png) 0 0px;
+  }
+  .navbar-header.col-xs-3 {
+    width: 25%;
+  }
+}
+
+.navbar-form {
+  padding: 0 15px;
+  margin-top: 11px;
+  margin-right: -15px;
+  margin-bottom: 11px;
+  margin-left: -15px;
+  border-top: 0 solid transparent;
+  border-bottom: 0 solid transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+@media (min-width: 768px) {
+  .navbar-form .form-group {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+  }
+  .navbar-form .form-control {
+    display: inline-block;
+  }
+  .navbar-form .radio,
+  .navbar-form .checkbox {
+    display: inline-block;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .navbar-form .radio input[type="radio"],
+  .navbar-form .checkbox input[type="checkbox"] {
+    float: none;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-form .form-group {
+    margin-bottom: 5px;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-form {
+    display: inline;
+    width: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-right: 0;
+    margin-left: 0;
+    border: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
   }
 }
 

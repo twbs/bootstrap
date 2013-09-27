@@ -7,7 +7,7 @@
   @media (min-width: @screen) {
     .transition(all 100ms ease-in);
     &:focus {
-      width: @width;
+      width: @width+10;
       margin-left: -100px;
     }
   }
@@ -95,7 +95,6 @@ h1, .h1 {
     padding-top:    5px;
     padding-bottom: 5px;
   }
-
   // Uncollapse the nav
   @media (min-width: @grid-float-breakpoint) {
 
@@ -104,8 +103,93 @@ h1, .h1 {
       padding-bottom: ((@subnavbar-height - @line-height-computed) / 2);
     }
   }
-
  }
+}
+//override negative left margin
+.navbar-brand {
+  float: left;
+  padding: @navbar-padding-vertical @navbar-padding-horizontal;
+  font-size: @font-size-large;
+  line-height: @line-height-computed;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  @media (min-width: @grid-float-breakpoint) {
+    .navbar > .container & {
+      margin-left: 0;
+    }
+  }
+}
+
+
+//set brand logo for sm, md, lg
+.navbar-inverse .navbar-brand{
+  background: url(http://m4.manta-r1.com/manta/images/manta-logo-sp.png) -50px 0px;
+  height: 25px;
+  width: 100px;
+  background-size: 150px 25px;
+  margin: 14px 5px 0 0;
+  margin-left:0;
+  overflow: hidden;
+  padding: 0;
+}
+.navbar-header.col-lg-1{
+  width:12%;
+}
+// set brand for xs
+@media (max-width:@screen-sm){
+  .navbar-inverse .navbar-brand{
+    background: url(http://m4.manta-r1.com/manta/images/manta-logo-sp.png) 0px 0px;
+    height: 25px;
+    width: 50px;
+    margin: 14px 5px 0 5px;
+    margin-left:5px;
+    overflow: hidden;
+    padding: 0;
+  }
+  .navbar-header.col-xs-3{
+    width:25%;
+  }
+}
+// Navbar form
+//
+// Extension of the `.form-inline` with some extra flavor for optimum display in
+// our navbars.
+
+.navbar-form {
+  margin-left: -@navbar-padding-horizontal;
+  margin-right: -@navbar-padding-horizontal;
+  padding: 0 @navbar-padding-horizontal;
+  border-top: 0px solid transparent;
+  border-bottom: 0px solid transparent;
+  @shadow: none;
+  .box-shadow(@shadow);
+
+  // Mixin behavior for optimum display
+  .form-inline();
+
+  .form-group {
+    @media (max-width: @screen-xs-max) {
+      margin-bottom: 5px;
+    }
+  }
+
+  // Vertically center in expanded, horizontal navbar
+  .navbar-vertical-align(@input-height-base);
+
+  // Undo 100% width for pull classes
+  @media (min-width: @grid-float-breakpoint) {
+    display:inline;
+    width: auto;
+    border: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    .box-shadow(none);
+  }
 }
 
 
