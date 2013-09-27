@@ -434,4 +434,61 @@ $(function () {
         ttContainer.remove()
       })
 
+      test("tooltips should not be placed on disabled elements if showOnDisabled is set to false", function () {
+        var tooltipWithAttr = $('<button href="#" rel="tooltip" style="display: inline-block; position: absolute; top: 0; left: 0;" disabled></button>')
+          .appendTo('#qunit-fixture')
+          .tooltip({
+            title: 'This is a tooltip with some content'
+            , showOnDisabled: false
+          })
+          .tooltip('show')
+
+        var tooltipWithProp = $('<button href="#" rel="tooltip" style="display: inline-block; position: absolute; top: 0; left: 0;"></button>')
+          .prop('disabled', true)
+          .appendTo('#qunit-fixture')
+          .tooltip({
+            title: 'This is a tooltip with some content'
+            , showOnDisabled: false
+          })
+          .tooltip('show')
+        equal($('.tooltip').length, 0, 'tooltips with `disabled` property are not shown')
+      })
+
+      test("tooltips should not be placed on disabled elements if showOnDisabled is set to true", function () {
+        var tooltipWithAttr = $('<button href="#" rel="tooltip" style="display: inline-block; position: absolute; top: 0; left: 0;" disabled></button>')
+          .appendTo('#qunit-fixture')
+          .tooltip({
+            title: 'This is a tooltip with some content'
+            , showOnDisabled: true
+          })
+          .tooltip('show')
+
+        var tooltipWithProp = $('<button href="#" rel="tooltip" style="display: inline-block; position: absolute; top: 0; left: 0;"></button>')
+          .prop('disabled', true)
+          .appendTo('#qunit-fixture')
+          .tooltip({
+            title: 'This is a tooltip with some content'
+            , showOnDisabled: true
+          })
+          .tooltip('show')
+        equal($('.tooltip').length, 2, 'tooltips with `disabled` property are shown')
+      })
+
+      test("tooltips should not be placed on disabled elements if showOnDisabled is not set", function () {
+        var tooltipWithAttr = $('<button href="#" rel="tooltip" style="display: inline-block; position: absolute; top: 0; left: 0;" disabled></button>')
+          .appendTo('#qunit-fixture')
+          .tooltip({
+            title: 'This is a tooltip with some content'
+          })
+          .tooltip('show')
+
+        var tooltipWithProp = $('<button href="#" rel="tooltip" style="display: inline-block; position: absolute; top: 0; left: 0;"></button>')
+          .prop('disabled', true)
+          .appendTo('#qunit-fixture')
+          .tooltip({
+            title: 'This is a tooltip with some content'
+          })
+          .tooltip('show')
+        equal($('.tooltip').length, 2, 'tooltips with `disabled` property are shown')
+      })
 })
