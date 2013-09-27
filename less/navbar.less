@@ -82,11 +82,22 @@
     .navbar-nav.navbar-left:first-child {
       margin-left: -@navbar-padding-horizontal;
     }
-    .navbar-nav.navbar-right:last-child {
+    .navbar-nav.navbar-right {
       margin-right: -@navbar-padding-horizontal;
+      ~ .navbar-right {
+        margin-right: 0;
+      }
     }
-    .navbar-text:last-child {
-      margin-right: 0;
+    .navbar-text {
+      &:last-child {
+        margin-right: 0;
+      }
+      &.pull-right {
+        margin-right: 0;
+        ~ .navbar-text {
+          margin-right: @navbar-padding-horizontal;
+        }
+      }
     }
   }
 }
