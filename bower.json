@@ -5,7 +5,7 @@
   "ignore": [
     "**/.*",
     "_*",
-    "assets",
+    "docs-assets",
     "examples",
     "/fonts",
     "js/tests",
