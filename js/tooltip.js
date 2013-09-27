@@ -45,6 +45,7 @@
   , delay: 0
   , html: false
   , container: false
+  , showOnDisabled: true
   }
 
   Tooltip.prototype.init = function (type, element, options) {
@@ -133,6 +134,11 @@
   }
 
   Tooltip.prototype.show = function () {
+    // Disable tooltip on a disabled element
+    if (!this.options.showOnDisabled && (this.$element.prop('disabled') || this.$element.attr('disabled'))) {
+      return;
+    }
+
     var e = $.Event('show.bs.'+ this.type)
 
     if (this.hasContent() && this.enabled) {
