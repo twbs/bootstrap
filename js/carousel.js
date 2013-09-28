@@ -207,7 +207,7 @@
     e.preventDefault()
   })
 
-  $(window).on('load', function () {
+  $(function () {
     $('[data-ride="carousel"]').each(function () {
       var $carousel = $(this)
       $carousel.carousel($carousel.data())

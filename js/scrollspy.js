@@ -148,7 +148,7 @@
   // SCROLLSPY DATA-API
   // ==================
 
-  $(window).on('load', function () {
+  $(function () {
     $('[data-spy="scroll"]').each(function () {
       var $spy = $(this)
       $spy.scrollspy($spy.data())
