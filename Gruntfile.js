@@ -15,7 +15,7 @@ module.exports = function(grunt) {
               '*\n' +
               '* Designed and built with all the love in the world by @mdo and @fat.\n' +
               '*/\n',
-    jqueryCheck: 'if (typeof jQuery === "undefined") { throw new Error(\"Bootstrap requires jQuery\") }\n\n',
+    jqueryCheck: 'if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery") }\n\n',
 
     // Task configuration.
     clean: {
