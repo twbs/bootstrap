@@ -482,7 +482,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     e.preventDefault()
   })
 
-  $(window).on('load', function () {
+  $(function () {
     $('[data-ride="carousel"]').each(function () {
       var $carousel = $(this)
       $carousel.carousel($carousel.data())
@@ -1728,7 +1728,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
   // SCROLLSPY DATA-API
   // ==================
 
-  $(window).on('load', function () {
+  $(function () {
     $('[data-spy="scroll"]').each(function () {
       var $spy = $(this)
       $spy.scrollspy($spy.data())
@@ -1984,7 +1984,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
   // AFFIX DATA-API
   // ==============
 
-  $(window).on('load', function () {
+  $(function () {
     $('[data-spy="affix"]').each(function () {
       var $spy = $(this)
       var data = $spy.data()
