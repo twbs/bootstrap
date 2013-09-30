@@ -6951,6 +6951,10 @@ h1,
   .navbar-header.col-xs-3 {
     width: 25%;
   }
+  .navbar-collapse {
+    border-top: 0;
+    box-shadow: none;
+  }
 }
 
 .navbar-form {
