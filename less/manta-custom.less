@@ -1,5 +1,5 @@
 // Manta customized LESS file.
-
+@import "manta-glyphicons.less";
 
 //------------------ mixins --------------------------
 
@@ -21,11 +21,30 @@
   background-color: @neutralWhite;
   margin-top: @navbar-height + @subnavbar-height;
 }
+.neutralDarkest{
+  color:@neutralDarkest;
+}
+.coolLightest{
+  color:@coolLightest;
+}
 
+//----------------- manta footer specific classes-------
 .footer {
   margin-top: @line-height-computed;
   background-color: @neutralWhite;
   font-size: @font-size-small;
+}
+.footer .container{
+  padding: 0;
+}
+.footer .navbar-nav > li > a{
+  padding:0 10px;
+  margin-top:17px;
+  margin-bottom:17px;
+  border-right: 1px solid #fff;
+}
+.footer .navbar-nav > li:last-child > a{
+  border-right:none;
 }
 
 //------------------ END of generic ------------------
@@ -200,11 +219,21 @@ h1, .h1 {
 //------------------ fonts ---------------------------
 
 @font-face {
-  font-family: 'vegurlight';
-  src: url('@{display-font-path}@{display-font-name}.eot');
-  src: url('@{display-font-path}@{display-font-name}.eot?#iefix') format('embedded-opentype'),
-       url('@{display-font-path}@{display-font-name}.woff') format('woff'),
-       url('@{display-font-path}@{display-font-name}.ttf') format('truetype'),
-       url('@{display-font-path}@{display-font-name}.svg#Vegur-Light') format('svg');
+  font-family: 'icomanta';
+  src: url('@{icon-font-path}@{mantaicon-font-name}.eot');
+  src: url('@{icon-font-path}@{mantaicon-font-name}.eot?#iefix') format('embedded-opentype'),
+  url('@{icon-font-path}@{mantaicon-font-name}.woff') format('woff'),
+  url('@{icon-font-path}@{mantaicon-font-name}.ttf') format('truetype'),
+  url('@{icon-font-path}@{mantaicon-font-name}.svg#icomanta') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
+@font-face {
+  font-family: 'vegurlight';
+  src: url('@{icon-font-path}@{display-font-name}.eot');
+  src: url('@{icon-font-path}@{display-font-name}.eot?#iefix') format('embedded-opentype'),
+       url('@{icon-font-path}@{display-font-name}.woff') format('woff'),
+       url('@{icon-font-path}@{display-font-name}.ttf') format('truetype'),
+       url('@{icon-font-path}@{display-font-name}.svg#Vegur-Light') format('svg');
+}
