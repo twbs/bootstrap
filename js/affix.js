@@ -70,7 +70,7 @@
 
     this.$element.removeClass(reset).addClass('affix' + (affix ? '-' + affix : ''))
 
-    this.$element.trigger(affix ? 'affixed' : 'unaffixed')
+    this.$element.trigger($.Event((affix ? 'affixed' : 'unaffixed') + '.bs.affix'))
   }
 
 
