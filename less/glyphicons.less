@@ -5,7 +5,7 @@
 // thus automatically sized to match the surrounding child. To use, create an
 // inline element with the appropriate classes, like so:
 //
-// <a href="#"><span class="glyphicon glyphicon-star"></span> Star</a>
+// <a href="#"><i class="icon star"></i> Star</a>
 
 // Import the fonts
 @font-face {
@@ -17,16 +17,33 @@
        url('@{icon-font-path}@{icon-font-name}.svg#glyphicons-halflingsregular') format('svg');
 }
 
+@-moz-document url-prefix() { /* Fixes FF font-weight in all versions */
+  i.icon, i.icon:before {
+    font-weight: 100 !important;
+  }
+}
+
 // Catchall baseclass
-.glyphicon {
+i.icon {
   position: relative;
   top: 1px;
   display: inline-block;
   font-family: 'Glyphicons Halflings';
   font-style: normal;
   font-weight: normal;
-  line-height: 1;
+  font-size: 1em; 
+  line-height: 1em;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; /* Will correct font-weight begining in FF 25 */  
+  text-transform: none;
+  text-decoration: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: moz-none;
+  -ms-user-select: none;
+  user-select: none;
+  text-rendering: optimizeLegibility;
 
   &:empty{
     width: 1em;
@@ -34,203 +51,203 @@
 }
 
 // Individual icons
-.glyphicon-asterisk               { &:before { content: "\2a"; } }
-.glyphicon-plus                   { &:before { content: "\2b"; } }
-.glyphicon-euro                   { &:before { content: "\20ac"; } }
-.glyphicon-minus                  { &:before { content: "\2212"; } }
-.glyphicon-cloud                  { &:before { content: "\2601"; } }
-.glyphicon-envelope               { &:before { content: "\2709"; } }
-.glyphicon-pencil                 { &:before { content: "\270f"; } }
-.glyphicon-glass                  { &:before { content: "\e001"; } }
-.glyphicon-music                  { &:before { content: "\e002"; } }
-.glyphicon-search                 { &:before { content: "\e003"; } }
-.glyphicon-heart                  { &:before { content: "\e005"; } }
-.glyphicon-star                   { &:before { content: "\e006"; } }
-.glyphicon-star-empty             { &:before { content: "\e007"; } }
-.glyphicon-user                   { &:before { content: "\e008"; } }
-.glyphicon-film                   { &:before { content: "\e009"; } }
-.glyphicon-th-large               { &:before { content: "\e010"; } }
-.glyphicon-th                     { &:before { content: "\e011"; } }
-.glyphicon-th-list                { &:before { content: "\e012"; } }
-.glyphicon-ok                     { &:before { content: "\e013"; } }
-.glyphicon-remove                 { &:before { content: "\e014"; } }
-.glyphicon-zoom-in                { &:before { content: "\e015"; } }
-.glyphicon-zoom-out               { &:before { content: "\e016"; } }
-.glyphicon-off                    { &:before { content: "\e017"; } }
-.glyphicon-signal                 { &:before { content: "\e018"; } }
-.glyphicon-cog                    { &:before { content: "\e019"; } }
-.glyphicon-trash                  { &:before { content: "\e020"; } }
-.glyphicon-home                   { &:before { content: "\e021"; } }
-.glyphicon-file                   { &:before { content: "\e022"; } }
-.glyphicon-time                   { &:before { content: "\e023"; } }
-.glyphicon-road                   { &:before { content: "\e024"; } }
-.glyphicon-download-alt           { &:before { content: "\e025"; } }
-.glyphicon-download               { &:before { content: "\e026"; } }
-.glyphicon-upload                 { &:before { content: "\e027"; } }
-.glyphicon-inbox                  { &:before { content: "\e028"; } }
-.glyphicon-play-circle            { &:before { content: "\e029"; } }
-.glyphicon-repeat                 { &:before { content: "\e030"; } }
-.glyphicon-refresh                { &:before { content: "\e031"; } }
-.glyphicon-list-alt               { &:before { content: "\e032"; } }
-.glyphicon-lock                   { &:before { content: "\e033"; } }
-.glyphicon-flag                   { &:before { content: "\e034"; } }
-.glyphicon-headphones             { &:before { content: "\e035"; } }
-.glyphicon-volume-off             { &:before { content: "\e036"; } }
-.glyphicon-volume-down            { &:before { content: "\e037"; } }
-.glyphicon-volume-up              { &:before { content: "\e038"; } }
-.glyphicon-qrcode                 { &:before { content: "\e039"; } }
-.glyphicon-barcode                { &:before { content: "\e040"; } }
-.glyphicon-tag                    { &:before { content: "\e041"; } }
-.glyphicon-tags                   { &:before { content: "\e042"; } }
-.glyphicon-book                   { &:before { content: "\e043"; } }
-.glyphicon-bookmark               { &:before { content: "\e044"; } }
-.glyphicon-print                  { &:before { content: "\e045"; } }
-.glyphicon-camera                 { &:before { content: "\e046"; } }
-.glyphicon-font                   { &:before { content: "\e047"; } }
-.glyphicon-bold                   { &:before { content: "\e048"; } }
-.glyphicon-italic                 { &:before { content: "\e049"; } }
-.glyphicon-text-height            { &:before { content: "\e050"; } }
-.glyphicon-text-width             { &:before { content: "\e051"; } }
-.glyphicon-align-left             { &:before { content: "\e052"; } }
-.glyphicon-align-center           { &:before { content: "\e053"; } }
-.glyphicon-align-right            { &:before { content: "\e054"; } }
-.glyphicon-align-justify          { &:before { content: "\e055"; } }
-.glyphicon-list                   { &:before { content: "\e056"; } }
-.glyphicon-indent-left            { &:before { content: "\e057"; } }
-.glyphicon-indent-right           { &:before { content: "\e058"; } }
-.glyphicon-facetime-video         { &:before { content: "\e059"; } }
-.glyphicon-picture                { &:before { content: "\e060"; } }
-.glyphicon-map-marker             { &:before { content: "\e062"; } }
-.glyphicon-adjust                 { &:before { content: "\e063"; } }
-.glyphicon-tint                   { &:before { content: "\e064"; } }
-.glyphicon-edit                   { &:before { content: "\e065"; } }
-.glyphicon-share                  { &:before { content: "\e066"; } }
-.glyphicon-check                  { &:before { content: "\e067"; } }
-.glyphicon-move                   { &:before { content: "\e068"; } }
-.glyphicon-step-backward          { &:before { content: "\e069"; } }
-.glyphicon-fast-backward          { &:before { content: "\e070"; } }
-.glyphicon-backward               { &:before { content: "\e071"; } }
-.glyphicon-play                   { &:before { content: "\e072"; } }
-.glyphicon-pause                  { &:before { content: "\e073"; } }
-.glyphicon-stop                   { &:before { content: "\e074"; } }
-.glyphicon-forward                { &:before { content: "\e075"; } }
-.glyphicon-fast-forward           { &:before { content: "\e076"; } }
-.glyphicon-step-forward           { &:before { content: "\e077"; } }
-.glyphicon-eject                  { &:before { content: "\e078"; } }
-.glyphicon-chevron-left           { &:before { content: "\e079"; } }
-.glyphicon-chevron-right          { &:before { content: "\e080"; } }
-.glyphicon-plus-sign              { &:before { content: "\e081"; } }
-.glyphicon-minus-sign             { &:before { content: "\e082"; } }
-.glyphicon-remove-sign            { &:before { content: "\e083"; } }
-.glyphicon-ok-sign                { &:before { content: "\e084"; } }
-.glyphicon-question-sign          { &:before { content: "\e085"; } }
-.glyphicon-info-sign              { &:before { content: "\e086"; } }
-.glyphicon-screenshot             { &:before { content: "\e087"; } }
-.glyphicon-remove-circle          { &:before { content: "\e088"; } }
-.glyphicon-ok-circle              { &:before { content: "\e089"; } }
-.glyphicon-ban-circle             { &:before { content: "\e090"; } }
-.glyphicon-arrow-left             { &:before { content: "\e091"; } }
-.glyphicon-arrow-right            { &:before { content: "\e092"; } }
-.glyphicon-arrow-up               { &:before { content: "\e093"; } }
-.glyphicon-arrow-down             { &:before { content: "\e094"; } }
-.glyphicon-share-alt              { &:before { content: "\e095"; } }
-.glyphicon-resize-full            { &:before { content: "\e096"; } }
-.glyphicon-resize-small           { &:before { content: "\e097"; } }
-.glyphicon-exclamation-sign       { &:before { content: "\e101"; } }
-.glyphicon-gift                   { &:before { content: "\e102"; } }
-.glyphicon-leaf                   { &:before { content: "\e103"; } }
-.glyphicon-fire                   { &:before { content: "\e104"; } }
-.glyphicon-eye-open               { &:before { content: "\e105"; } }
-.glyphicon-eye-close              { &:before { content: "\e106"; } }
-.glyphicon-warning-sign           { &:before { content: "\e107"; } }
-.glyphicon-plane                  { &:before { content: "\e108"; } }
-.glyphicon-calendar               { &:before { content: "\e109"; } }
-.glyphicon-random                 { &:before { content: "\e110"; } }
-.glyphicon-comment                { &:before { content: "\e111"; } }
-.glyphicon-magnet                 { &:before { content: "\e112"; } }
-.glyphicon-chevron-up             { &:before { content: "\e113"; } }
-.glyphicon-chevron-down           { &:before { content: "\e114"; } }
-.glyphicon-retweet                { &:before { content: "\e115"; } }
-.glyphicon-shopping-cart          { &:before { content: "\e116"; } }
-.glyphicon-folder-close           { &:before { content: "\e117"; } }
-.glyphicon-folder-open            { &:before { content: "\e118"; } }
-.glyphicon-resize-vertical        { &:before { content: "\e119"; } }
-.glyphicon-resize-horizontal      { &:before { content: "\e120"; } }
-.glyphicon-hdd                    { &:before { content: "\e121"; } }
-.glyphicon-bullhorn               { &:before { content: "\e122"; } }
-.glyphicon-bell                   { &:before { content: "\e123"; } }
-.glyphicon-certificate            { &:before { content: "\e124"; } }
-.glyphicon-thumbs-up              { &:before { content: "\e125"; } }
-.glyphicon-thumbs-down            { &:before { content: "\e126"; } }
-.glyphicon-hand-right             { &:before { content: "\e127"; } }
-.glyphicon-hand-left              { &:before { content: "\e128"; } }
-.glyphicon-hand-up                { &:before { content: "\e129"; } }
-.glyphicon-hand-down              { &:before { content: "\e130"; } }
-.glyphicon-circle-arrow-right     { &:before { content: "\e131"; } }
-.glyphicon-circle-arrow-left      { &:before { content: "\e132"; } }
-.glyphicon-circle-arrow-up        { &:before { content: "\e133"; } }
-.glyphicon-circle-arrow-down      { &:before { content: "\e134"; } }
-.glyphicon-globe                  { &:before { content: "\e135"; } }
-.glyphicon-wrench                 { &:before { content: "\e136"; } }
-.glyphicon-tasks                  { &:before { content: "\e137"; } }
-.glyphicon-filter                 { &:before { content: "\e138"; } }
-.glyphicon-briefcase              { &:before { content: "\e139"; } }
-.glyphicon-fullscreen             { &:before { content: "\e140"; } }
-.glyphicon-dashboard              { &:before { content: "\e141"; } }
-.glyphicon-paperclip              { &:before { content: "\e142"; } }
-.glyphicon-heart-empty            { &:before { content: "\e143"; } }
-.glyphicon-link                   { &:before { content: "\e144"; } }
-.glyphicon-phone                  { &:before { content: "\e145"; } }
-.glyphicon-pushpin                { &:before { content: "\e146"; } }
-.glyphicon-usd                    { &:before { content: "\e148"; } }
-.glyphicon-gbp                    { &:before { content: "\e149"; } }
-.glyphicon-sort                   { &:before { content: "\e150"; } }
-.glyphicon-sort-by-alphabet       { &:before { content: "\e151"; } }
-.glyphicon-sort-by-alphabet-alt   { &:before { content: "\e152"; } }
-.glyphicon-sort-by-order          { &:before { content: "\e153"; } }
-.glyphicon-sort-by-order-alt      { &:before { content: "\e154"; } }
-.glyphicon-sort-by-attributes     { &:before { content: "\e155"; } }
-.glyphicon-sort-by-attributes-alt { &:before { content: "\e156"; } }
-.glyphicon-unchecked              { &:before { content: "\e157"; } }
-.glyphicon-expand                 { &:before { content: "\e158"; } }
-.glyphicon-collapse-down          { &:before { content: "\e159"; } }
-.glyphicon-collapse-up            { &:before { content: "\e160"; } }
-.glyphicon-log-in                 { &:before { content: "\e161"; } }
-.glyphicon-flash                  { &:before { content: "\e162"; } }
-.glyphicon-log-out                { &:before { content: "\e163"; } }
-.glyphicon-new-window             { &:before { content: "\e164"; } }
-.glyphicon-record                 { &:before { content: "\e165"; } }
-.glyphicon-save                   { &:before { content: "\e166"; } }
-.glyphicon-open                   { &:before { content: "\e167"; } }
-.glyphicon-saved                  { &:before { content: "\e168"; } }
-.glyphicon-import                 { &:before { content: "\e169"; } }
-.glyphicon-export                 { &:before { content: "\e170"; } }
-.glyphicon-send                   { &:before { content: "\e171"; } }
-.glyphicon-floppy-disk            { &:before { content: "\e172"; } }
-.glyphicon-floppy-saved           { &:before { content: "\e173"; } }
-.glyphicon-floppy-remove          { &:before { content: "\e174"; } }
-.glyphicon-floppy-save            { &:before { content: "\e175"; } }
-.glyphicon-floppy-open            { &:before { content: "\e176"; } }
-.glyphicon-credit-card            { &:before { content: "\e177"; } }
-.glyphicon-transfer               { &:before { content: "\e178"; } }
-.glyphicon-cutlery                { &:before { content: "\e179"; } }
-.glyphicon-header                 { &:before { content: "\e180"; } }
-.glyphicon-compressed             { &:before { content: "\e181"; } }
-.glyphicon-earphone               { &:before { content: "\e182"; } }
-.glyphicon-phone-alt              { &:before { content: "\e183"; } }
-.glyphicon-tower                  { &:before { content: "\e184"; } }
-.glyphicon-stats                  { &:before { content: "\e185"; } }
-.glyphicon-sd-video               { &:before { content: "\e186"; } }
-.glyphicon-hd-video               { &:before { content: "\e187"; } }
-.glyphicon-subtitles              { &:before { content: "\e188"; } }
-.glyphicon-sound-stereo           { &:before { content: "\e189"; } }
-.glyphicon-sound-dolby            { &:before { content: "\e190"; } }
-.glyphicon-sound-5-1              { &:before { content: "\e191"; } }
-.glyphicon-sound-6-1              { &:before { content: "\e192"; } }
-.glyphicon-sound-7-1              { &:before { content: "\e193"; } }
-.glyphicon-copyright-mark         { &:before { content: "\e194"; } }
-.glyphicon-registration-mark      { &:before { content: "\e195"; } }
-.glyphicon-cloud-download         { &:before { content: "\e197"; } }
-.glyphicon-cloud-upload           { &:before { content: "\e198"; } }
-.glyphicon-tree-conifer           { &:before { content: "\e199"; } }
-.glyphicon-tree-deciduous         { &:before { content: "\e200"; } }
+.icon.asterisk               { &:before { content: "\2a"; } }
+.icon.plus                   { &:before { content: "\2b"; } }
+.icon.euro                   { &:before { content: "\20ac"; } }
+.icon.minus                  { &:before { content: "\2212"; } }
+.icon.cloud                  { &:before { content: "\2601"; } }
+.icon.envelope               { &:before { content: "\2709"; } }
+.icon.pencil                 { &:before { content: "\270f"; } }
+.icon.glass                  { &:before { content: "\e001"; } }
+.icon.music                  { &:before { content: "\e002"; } }
+.icon.search                 { &:before { content: "\e003"; } }
+.icon.heart                  { &:before { content: "\e005"; } }
+.icon.star                   { &:before { content: "\e006"; } }
+.icon.star-empty             { &:before { content: "\e007"; } }
+.icon.user                   { &:before { content: "\e008"; } }
+.icon.film                   { &:before { content: "\e009"; } }
+.icon.th-large               { &:before { content: "\e010"; } }
+.icon.th                     { &:before { content: "\e011"; } }
+.icon.th-list                { &:before { content: "\e012"; } }
+.icon.ok                     { &:before { content: "\e013"; } }
+.icon.remove                 { &:before { content: "\e014"; } }
+.icon.zoom-in                { &:before { content: "\e015"; } }
+.icon.zoom-out               { &:before { content: "\e016"; } }
+.icon.off                    { &:before { content: "\e017"; } }
+.icon.signal                 { &:before { content: "\e018"; } }
+.icon.cog                    { &:before { content: "\e019"; } }
+.icon.trash                  { &:before { content: "\e020"; } }
+.icon.home                   { &:before { content: "\e021"; } }
+.icon.file                   { &:before { content: "\e022"; } }
+.icon.time                   { &:before { content: "\e023"; } }
+.icon.road                   { &:before { content: "\e024"; } }
+.icon.download-alt           { &:before { content: "\e025"; } }
+.icon.download               { &:before { content: "\e026"; } }
+.icon.upload                 { &:before { content: "\e027"; } }
+.icon.inbox                  { &:before { content: "\e028"; } }
+.icon.play-circle            { &:before { content: "\e029"; } }
+.icon.repeat                 { &:before { content: "\e030"; } }
+.icon.refresh                { &:before { content: "\e031"; } }
+.icon.list-alt               { &:before { content: "\e032"; } }
+.icon.lock                   { &:before { content: "\e033"; } }
+.icon.flag                   { &:before { content: "\e034"; } }
+.icon.headphones             { &:before { content: "\e035"; } }
+.icon.volume-off             { &:before { content: "\e036"; } }
+.icon.volume-down            { &:before { content: "\e037"; } }
+.icon.volume-up              { &:before { content: "\e038"; } }
+.icon.qrcode                 { &:before { content: "\e039"; } }
+.icon.barcode                { &:before { content: "\e040"; } }
+.icon.tag                    { &:before { content: "\e041"; } }
+.icon.tags                   { &:before { content: "\e042"; } }
+.icon.book                   { &:before { content: "\e043"; } }
+.icon.bookmark               { &:before { content: "\e044"; } }
+.icon.print                  { &:before { content: "\e045"; } }
+.icon.camera                 { &:before { content: "\e046"; } }
+.icon.font                   { &:before { content: "\e047"; } }
+.icon.bold                   { &:before { content: "\e048"; } }
+.icon.italic                 { &:before { content: "\e049"; } }
+.icon.text-height            { &:before { content: "\e050"; } }
+.icon.text-width             { &:before { content: "\e051"; } }
+.icon.align-left             { &:before { content: "\e052"; } }
+.icon.align-center           { &:before { content: "\e053"; } }
+.icon.align-right            { &:before { content: "\e054"; } }
+.icon.align-justify          { &:before { content: "\e055"; } }
+.icon.list                   { &:before { content: "\e056"; } }
+.icon.indent-left            { &:before { content: "\e057"; } }
+.icon.indent-right           { &:before { content: "\e058"; } }
+.icon.facetime-video         { &:before { content: "\e059"; } }
+.icon.picture                { &:before { content: "\e060"; } }
+.icon.map-marker             { &:before { content: "\e062"; } }
+.icon.adjust                 { &:before { content: "\e063"; } }
+.icon.tint                   { &:before { content: "\e064"; } }
+.icon.edit                   { &:before { content: "\e065"; } }
+.icon.share                  { &:before { content: "\e066"; } }
+.icon.check                  { &:before { content: "\e067"; } }
+.icon.move                   { &:before { content: "\e068"; } }
+.icon.step-backward          { &:before { content: "\e069"; } }
+.icon.fast-backward          { &:before { content: "\e070"; } }
+.icon.backward               { &:before { content: "\e071"; } }
+.icon.play                   { &:before { content: "\e072"; } }
+.icon.pause                  { &:before { content: "\e073"; } }
+.icon.stop                   { &:before { content: "\e074"; } }
+.icon.forward                { &:before { content: "\e075"; } }
+.icon.fast-forward           { &:before { content: "\e076"; } }
+.icon.step-forward           { &:before { content: "\e077"; } }
+.icon.eject                  { &:before { content: "\e078"; } }
+.icon.chevron-left           { &:before { content: "\e079"; } }
+.icon.chevron-right          { &:before { content: "\e080"; } }
+.icon.plus-sign              { &:before { content: "\e081"; } }
+.icon.minus-sign             { &:before { content: "\e082"; } }
+.icon.remove-sign            { &:before { content: "\e083"; } }
+.icon.ok-sign                { &:before { content: "\e084"; } }
+.icon.question-sign          { &:before { content: "\e085"; } }
+.icon.info-sign              { &:before { content: "\e086"; } }
+.icon.screenshot             { &:before { content: "\e087"; } }
+.icon.remove-circle          { &:before { content: "\e088"; } }
+.icon.ok-circle              { &:before { content: "\e089"; } }
+.icon.ban-circle             { &:before { content: "\e090"; } }
+.icon.arrow-left             { &:before { content: "\e091"; } }
+.icon.arrow-right            { &:before { content: "\e092"; } }
+.icon.arrow-up               { &:before { content: "\e093"; } }
+.icon.arrow-down             { &:before { content: "\e094"; } }
+.icon.share-alt              { &:before { content: "\e095"; } }
+.icon.resize-full            { &:before { content: "\e096"; } }
+.icon.resize-small           { &:before { content: "\e097"; } }
+.icon.exclamation-sign       { &:before { content: "\e101"; } }
+.icon.gift                   { &:before { content: "\e102"; } }
+.icon.leaf                   { &:before { content: "\e103"; } }
+.icon.fire                   { &:before { content: "\e104"; } }
+.icon.eye-open               { &:before { content: "\e105"; } }
+.icon.eye-close              { &:before { content: "\e106"; } }
+.icon.warning-sign           { &:before { content: "\e107"; } }
+.icon.plane                  { &:before { content: "\e108"; } }
+.icon.calendar               { &:before { content: "\e109"; } }
+.icon.random                 { &:before { content: "\e110"; } }
+.icon.comment                { &:before { content: "\e111"; } }
+.icon.magnet                 { &:before { content: "\e112"; } }
+.icon.chevron-up             { &:before { content: "\e113"; } }
+.icon.chevron-down           { &:before { content: "\e114"; } }
+.icon.retweet                { &:before { content: "\e115"; } }
+.icon.shopping-cart          { &:before { content: "\e116"; } }
+.icon.folder-close           { &:before { content: "\e117"; } }
+.icon.folder-open            { &:before { content: "\e118"; } }
+.icon.resize-vertical        { &:before { content: "\e119"; } }
+.icon.resize-horizontal      { &:before { content: "\e120"; } }
+.icon.hdd                    { &:before { content: "\e121"; } }
+.icon.bullhorn               { &:before { content: "\e122"; } }
+.icon.bell                   { &:before { content: "\e123"; } }
+.icon.certificate            { &:before { content: "\e124"; } }
+.icon.thumbs-up              { &:before { content: "\e125"; } }
+.icon.thumbs-down            { &:before { content: "\e126"; } }
+.icon.hand-right             { &:before { content: "\e127"; } }
+.icon.hand-left              { &:before { content: "\e128"; } }
+.icon.hand-up                { &:before { content: "\e129"; } }
+.icon.hand-down              { &:before { content: "\e130"; } }
+.icon.circle-arrow-right     { &:before { content: "\e131"; } }
+.icon.circle-arrow-left      { &:before { content: "\e132"; } }
+.icon.circle-arrow-up        { &:before { content: "\e133"; } }
+.icon.circle-arrow-down      { &:before { content: "\e134"; } }
+.icon.globe                  { &:before { content: "\e135"; } }
+.icon.wrench                 { &:before { content: "\e136"; } }
+.icon.tasks                  { &:before { content: "\e137"; } }
+.icon.filter                 { &:before { content: "\e138"; } }
+.icon.briefcase              { &:before { content: "\e139"; } }
+.icon.fullscreen             { &:before { content: "\e140"; } }
+.icon.dashboard              { &:before { content: "\e141"; } }
+.icon.paperclip              { &:before { content: "\e142"; } }
+.icon.heart-empty            { &:before { content: "\e143"; } }
+.icon.link                   { &:before { content: "\e144"; } }
+.icon.phone                  { &:before { content: "\e145"; } }
+.icon.pushpin                { &:before { content: "\e146"; } }
+.icon.usd                    { &:before { content: "\e148"; } }
+.icon.gbp                    { &:before { content: "\e149"; } }
+.icon.sort                   { &:before { content: "\e150"; } }
+.icon.sort-by-alphabet       { &:before { content: "\e151"; } }
+.icon.sort-by-alphabet-alt   { &:before { content: "\e152"; } }
+.icon.sort-by-order          { &:before { content: "\e153"; } }
+.icon.sort-by-order-alt      { &:before { content: "\e154"; } }
+.icon.sort-by-attributes     { &:before { content: "\e155"; } }
+.icon.sort-by-attributes-alt { &:before { content: "\e156"; } }
+.icon.unchecked              { &:before { content: "\e157"; } }
+.icon.expand                 { &:before { content: "\e158"; } }
+.icon.collapse-down          { &:before { content: "\e159"; } }
+.icon.collapse-up            { &:before { content: "\e160"; } }
+.icon.log-in                 { &:before { content: "\e161"; } }
+.icon.flash                  { &:before { content: "\e162"; } }
+.icon.log-out                { &:before { content: "\e163"; } }
+.icon.new-window             { &:before { content: "\e164"; } }
+.icon.record                 { &:before { content: "\e165"; } }
+.icon.save                   { &:before { content: "\e166"; } }
+.icon.open                   { &:before { content: "\e167"; } }
+.icon.saved                  { &:before { content: "\e168"; } }
+.icon.import                 { &:before { content: "\e169"; } }
+.icon.export                 { &:before { content: "\e170"; } }
+.icon.send                   { &:before { content: "\e171"; } }
+.icon.floppy-disk            { &:before { content: "\e172"; } }
+.icon.floppy-saved           { &:before { content: "\e173"; } }
+.icon.floppy-remove          { &:before { content: "\e174"; } }
+.icon.floppy-save            { &:before { content: "\e175"; } }
+.icon.floppy-open            { &:before { content: "\e176"; } }
+.icon.credit-card            { &:before { content: "\e177"; } }
+.icon.transfer               { &:before { content: "\e178"; } }
+.icon.cutlery                { &:before { content: "\e179"; } }
+.icon.header                 { &:before { content: "\e180"; } }
+.icon.compressed             { &:before { content: "\e181"; } }
+.icon.earphone               { &:before { content: "\e182"; } }
+.icon.phone-alt              { &:before { content: "\e183"; } }
+.icon.tower                  { &:before { content: "\e184"; } }
+.icon.stats                  { &:before { content: "\e185"; } }
+.icon.sd-video               { &:before { content: "\e186"; } }
+.icon.hd-video               { &:before { content: "\e187"; } }
+.icon.subtitles              { &:before { content: "\e188"; } }
+.icon.sound-stereo           { &:before { content: "\e189"; } }
+.icon.sound-dolby            { &:before { content: "\e190"; } }
+.icon.sound-5-1              { &:before { content: "\e191"; } }
+.icon.sound-6-1              { &:before { content: "\e192"; } }
+.icon.sound-7-1              { &:before { content: "\e193"; } }
+.icon.copyright-mark         { &:before { content: "\e194"; } }
+.icon.registration-mark      { &:before { content: "\e195"; } }
+.icon.cloud-download         { &:before { content: "\e197"; } }
+.icon.cloud-upload           { &:before { content: "\e198"; } }
+.icon.tree-conifer           { &:before { content: "\e199"; } }
+.icon.tree-deciduous         { &:before { content: "\e200"; } }
