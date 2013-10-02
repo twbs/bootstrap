@@ -153,13 +153,11 @@ body {
  */
 
 .bs-social {
-  margin-top: 20px;
-  margin-bottom: 20px;
   text-align: center;
 }
 .bs-social-buttons {
   display: inline-block;
-  margin-bottom: 0;
+  margin-bottom: 20px;
   padding-left: 0;
   list-style: none;
 }
@@ -183,9 +181,6 @@ body {
 @media screen and (min-width: 768px) {
   .bs-social {
     text-align: left;
-  }
-  .bs-social-buttons li:first-child {
-    padding-left: 0;
   }
 }
 
@@ -222,26 +217,23 @@ body {
   line-height: 1;
   color: #fff;
 }
-.bs-masthead .btn-outline {
+.bs-masthead .btn-outline-inverse {
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 18px 24px;
-  font-size: 21px;
+  font-size: 24px;
 }
 
 /* Links to project-level content like the repo, Expo, etc */
 .bs-masthead-links {
-  margin-top: 20px;
   margin-bottom: 20px;
-  padding: 0 15px;
+  padding-left: 0;
   list-style: none;
   text-align: center;
 }
 .bs-masthead-links li {
-  display: inline;
-}
-.bs-masthead-links li + li {
-  margin-left: 20px;
+  display: inline-block;
+  padding: 4px 8px;
 }
 .bs-masthead-links a {
   color: #fff;
@@ -374,6 +366,40 @@ body {
     padding: 15px !important;
     width: 330px !important;
     min-height: 132px;
+  }
+}
+
+
+/* Homepage variations */
+.bs-docs-home .carbonad {
+  margin: 0 -15px 40px !important;
+}
+@media screen and (min-width: 480px) {
+  .bs-docs-home .carbonad {
+    width: 330px !important;
+    margin: 0 auto 40px !important;
+    border-radius: 4px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .bs-docs-home .carbonad {
+    float: left;
+    width: 330px !important;
+    margin: 0 0 30px !important;
+  }
+  .bs-docs-home .bs-social,
+  .bs-docs-home .bs-masthead-links {
+    margin-left: 350px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .bs-docs-home .carbonad {
+    position: static;
+  }
+}
+@media screen and (min-width: 1170px) {
+  .bs-docs-home .carbonad {
+    margin-top: -25px !important;
   }
 }
 
