@@ -15,7 +15,7 @@ module.exports = function(grunt) {
               '*\n' +
               '* Designed and built with all the love in the world by @mdo and @fat.\n' +
               '*/\n',
-    jqueryCheck: 'if (!jQuery) { throw new Error(\"Bootstrap requires jQuery\") }\n\n',
+    jqueryCheck: 'if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery") }\n\n',
 
     // Task configuration.
     clean: {
@@ -214,7 +214,6 @@ module.exports = function(grunt) {
       return 'var __' + type + ' = ' + JSON.stringify(files) + '\n'
     }
 
-    var customize = fs.readFileSync('customize.html', 'utf-8')
     var files = getFiles('js') + getFiles('less') + getFiles('fonts')
     fs.writeFileSync('docs-assets/js/raw-files.js', files)
   });

@@ -44,7 +44,6 @@ base_url: "../"
     <h3 id="overview-type-links">Typography and links</h3>
     <p>Bootstrap sets basic global display, typography, and link styles. Specifically, we:</p>
     <ul>
-      <li>Remove <code>margin</code> on the body</li>
       <li>Set <code>background-color: #fff;</code> on the <code>body</code></li>
       <li>Use the <code>@font-family-base</code>, <code>@font-size-base</code>, and <code>@line-height-base</code> attributes as our typographic base</li>
       <li>Set the global link color via <code>@link-color</code> and apply link underlines only on <code>:hover</code></li>
@@ -173,6 +172,7 @@ base_url: "../"
         </tbody>
       </table>
     </div>
+    <p>Grid classes apply to devices with screen widths greater than or equal to the breakpoint sizes, and override grid classes targeted at smaller devices. Therefore, applying any <code>.col-md-</code> class to an element will not only affect its styling on medium devices but also on large devices if a <code>.col-lg-</code> class is not present.</p>
 
     <h3 id="grid-example-basic">Example: Stacked-to-horizontal</h3>
     <p>Using a single set of <code>.col-md-*</code> grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices.</p>
@@ -278,27 +278,27 @@ base_url: "../"
     <div class="bs-docs-grid">
       <div class="row show-grid">
         <div class="col-xs-12 col-sm-6 col-md-8">.col-xs-12 .col-sm-6 .col-md-8</div>
-        <div class="col-xs-6 col-sm-6 col-md-4">.col-xs-6 .col-sm-6 .col-md-4</div>
+        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
       </div>
       <div class="row show-grid">
-        <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
-        <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
+        <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+        <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
         <!-- Optional: clear the XS cols if their content doesn't match in height -->
         <div class="clearfix visible-xs"></div>
-        <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
+        <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
       </div>
     </div>
 {% highlight html %}
 <div class="row">
   <div class="col-xs-12 col-sm-6 col-md-8">.col-xs-12 .col-sm-6 .col-md-8</div>
-  <div class="col-xs-6 col-sm-6 col-md-4">.col-xs-6 .col-sm-6 .col-md-4</div>
+  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
 </div>
 <div class="row">
-  <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
-  <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
+  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
   <!-- Optional: clear the XS cols if their content doesn't match in height -->
   <div class="clearfix visible-xs"></div>
-  <div class="col-xs-6 col-sm-4 col-md-4">.col-xs-6 .col-sm-4 .col-md-4</div>
+  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
 </div>
 {% endhighlight %}
 
@@ -1260,8 +1260,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <colgroup>
-          <col class="col-lg-1">
-          <col class="col-lg-7">
+          <col class="col-xs-1">
+          <col class="col-xs-7">
         </colgroup>
         <thead>
           <tr>
@@ -1797,14 +1797,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="bs-example">
       <form class="form-horizontal" role="form">
         <div class="form-group">
-          <label class="col-lg-2 control-label">Email</label>
-          <div class="col-lg-10">
+          <label class="col-sm-2 control-label">Email</label>
+          <div class="col-sm-10">
             <p class="form-control-static">email@example.com</p>
           </div>
         </div>
         <div class="form-group">
-          <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-          <div class="col-lg-10">
+          <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+          <div class="col-sm-10">
             <input type="password" class="form-control" id="inputPassword" placeholder="Password">
           </div>
         </div>
@@ -1813,14 +1813,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% highlight html %}
 <form class="form-horizontal" role="form">
   <div class="form-group">
-    <label class="col-lg-2 control-label">Email</label>
-    <div class="col-lg-10">
+    <label class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
       <p class="form-control-static">email@example.com</p>
     </div>
   </div>
   <div class="form-group">
-    <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-    <div class="col-lg-10">
+    <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-10">
       <input type="password" class="form-control" id="inputPassword" placeholder="Password">
     </div>
   </div>
@@ -1985,28 +1985,28 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="bs-example">
       <form role="form">
         <div class="row">
-          <div class="col-lg-2">
-            <input type="text" class="form-control" placeholder=".col-lg-2">
+          <div class="col-xs-2">
+            <input type="text" class="form-control" placeholder=".col-xs-2">
           </div>
-          <div class="col-lg-3">
-            <input type="text" class="form-control" placeholder=".col-lg-3">
+          <div class="col-xs-3">
+            <input type="text" class="form-control" placeholder=".col-xs-3">
           </div>
-          <div class="col-lg-4">
-            <input type="text" class="form-control" placeholder=".col-lg-4">
+          <div class="col-xs-4">
+            <input type="text" class="form-control" placeholder=".col-xs-4">
           </div>
         </div>
       </form>
     </div><!-- /.bs-example -->
 {% highlight html %}
 <div class="row">
-  <div class="col-lg-2">
-    <input type="text" class="form-control" placeholder=".col-lg-2">
+  <div class="col-xs-2">
+    <input type="text" class="form-control" placeholder=".col-xs-2">
   </div>
-  <div class="col-lg-3">
-    <input type="text" class="form-control" placeholder=".col-lg-3">
+  <div class="col-xs-3">
+    <input type="text" class="form-control" placeholder=".col-xs-3">
   </div>
-  <div class="col-lg-4">
-    <input type="text" class="form-control" placeholder=".col-lg-4">
+  <div class="col-xs-4">
+    <input type="text" class="form-control" placeholder=".col-xs-4">
   </div>
 </div>
 {% endhighlight %}
