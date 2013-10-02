@@ -5,6 +5,14 @@
 !function ($) {
 
   $(function(){
+    
+    //fix scrolling beyond secondary nav items from the left nav:
+    $('.nav.bs-sidenav a[href^="#"]').each(function(){
+      $('h2'+$(this).attr('href')).css({
+        'paddingTop':'50px',
+        'margintop': '-50px'
+      });
+    });
 
     // IE10 viewport hack for Surface/desktop Windows 8 bug
     //
