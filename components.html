@@ -1579,7 +1579,7 @@ base_url: "../"
 
 
     <h2 id="navbar-buttons">Buttons</h2>
-    <p>Add the <code>navbar-btn</code> class to <code>&lt;button&gt;</code> elements not residing in a <code>&lt;form&gt;</code> to vertically center them in the navbar. Unlike the standard <a href="{{ page.base_url }}css#buttons">button classes</a> that can also be applied to <code>a</code> and <code>input</code> tags, <code>.navbar-btn</code> should only be applied to buttons.</p>
+    <p>Add the <code>navbar-btn</code> class to <code>&lt;button&gt;</code> elements not residing in a <code>&lt;form&gt;</code> to vertically center them in the navbar.</p>
     <div class="bs-example">
       <nav class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
@@ -1600,6 +1600,10 @@ base_url: "../"
 <button type="button" class="btn btn-default navbar-btn">Sign in</button>
 {% endhighlight %}
 
+<div class="bs-callout bs-callout-warning">
+    <h4>Context-specific usage</h4>
+    <p>Like the standard <a href="{{ page.base_url }}css#buttons">button classes</a>, <code>.navbar-btn</code> can be used to style <code>a</code> and <code>input</code> elements in most contexts. However, when used within <code>.navbar-nav</code> lists the class is only supported for <code>&lt;button&gt;</code> tags.</p>
+</div>
 
     <h2 id="navbar-text">Text</h2>
     <p>Wrap strings of text in an element with <code>.navbar-text</code>, usually on a <code>&lt;p&gt;</code> tag for proper leading and color.</p>
