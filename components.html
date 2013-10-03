@@ -1533,15 +1533,15 @@ base_url: "../"
 </nav>
 {% endhighlight %}
 
-<div class="bs-callout bs-callout-danger">
-  <h4>Plugin dependency</h4>
-  <p>The responsive navbar requires the <a href="../javascript/#collapse">collapse plugin</a> to be included in your version of Bootstrap.</p>
-</div>
+    <div class="bs-callout bs-callout-danger">
+      <h4>Plugin dependency</h4>
+      <p>The responsive navbar requires the <a href="../javascript/#collapse">collapse plugin</a> to be included in your version of Bootstrap.</p>
+    </div>
 
-<div class="bs-callout bs-callout-warning">
-  <h4>Make navbars accessible</h4>
-  <p>Be sure to add a <code>role="navigation"</code> to every navbar to help with accessibility.</p>
-</div>
+    <div class="bs-callout bs-callout-warning">
+      <h4>Make navbars accessible</h4>
+      <p>Be sure to add a <code>role="navigation"</code> to every navbar to help with accessibility.</p>
+    </div>
 
 
     <h2 id="navbar-forms">Forms</h2>
@@ -1577,14 +1577,14 @@ base_url: "../"
 </form>
 {% endhighlight %}
 
-<div class="bs-callout bs-callout-danger">
-  <h4>Always add labels</h4>
-  <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline navbar forms, you can hide the labels using the <code>.sr-only</code> class.</p>
-</div>
+    <div class="bs-callout bs-callout-danger">
+      <h4>Always add labels</h4>
+      <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline navbar forms, you can hide the labels using the <code>.sr-only</code> class.</p>
+    </div>
 
 
     <h2 id="navbar-buttons">Buttons</h2>
-    <p>For buttons not residing in a <code>&lt;form&gt;</code>, add this class to vertically center buttons within a navbar.</p>
+    <p>Add the <code>.navbar-btn</code> class to <code>&lt;button&gt;</code> elements not residing in a <code>&lt;form&gt;</code> to vertically center them in the navbar.</p>
     <div class="bs-example">
       <nav class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
@@ -1605,6 +1605,10 @@ base_url: "../"
 <button type="button" class="btn btn-default navbar-btn">Sign in</button>
 {% endhighlight %}
 
+    <div class="bs-callout bs-callout-warning">
+      <h4>Context-specific usage</h4>
+      <p>Like the standard <a href="{{ page.base_url }}css#buttons">button classes</a>, <code>.navbar-btn</code> can be used to style <code>&lt;a&gt;</code> and <code>&lt;input&gt;</code> elements in most contexts. However, neither <code>.navbar-btn</code> nor the other button classes should be used within a <code>.navbar-nav</code>.</p>
+    </div>
 
     <h2 id="navbar-text">Text</h2>
     <p>Wrap strings of text in an element with <code>.navbar-text</code>, usually on a <code>&lt;p&gt;</code> tag for proper leading and color.</p>
