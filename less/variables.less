@@ -18,7 +18,7 @@
 // Brand colors
 // -------------------------
 
-@brand-primary:         #428bca;
+@brand-primary:         #333;
 @brand-success:         #5cb85c;
 @brand-warning:         #f0ad4e;
 @brand-danger:          #d9534f;
@@ -28,18 +28,18 @@
 // -------------------------
 
 @body-bg:               #fff;
-@text-color:            @gray-dark;
+@text-color:            @gray-darker;
 
 // Links
 // -------------------------
 
 @link-color:            @brand-primary;
-@link-hover-color:      darken(@link-color, 15%);
+@link-hover-color:      #999;
 
 // Typography
 // -------------------------
 
-@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-sans-serif:  "ProximaNova-Regular", Helvetica Neue, Helvetica, Arial, sans-serif;
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 @font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
@@ -67,7 +67,7 @@
 // Iconography
 // -------------------------
 
-@icon-font-path:          "../fonts/";
+@icon-font-path:          "/fonts/";
 @icon-font-name:          "glyphicons-halflings-regular";
 
 
@@ -87,9 +87,9 @@
 @line-height-large:              1.33;
 @line-height-small:              1.5;
 
-@border-radius-base:             4px;
-@border-radius-large:            6px;
-@border-radius-small:            3px;
+@border-radius-base:             0;
+@border-radius-large:            0;
+@border-radius-small:            0;
 
 @component-active-color:         #fff;
 @component-active-bg:            @brand-primary;
@@ -118,11 +118,11 @@
 
 @btn-default-color:              #333;
 @btn-default-bg:                 #fff;
-@btn-default-border:             #ccc;
+@btn-default-border:             #333;
 
 @btn-primary-color:              #fff;
 @btn-primary-bg:                 @brand-primary;
-@btn-primary-border:             darken(@btn-primary-bg, 5%);
+@btn-primary-border:             #333;
 
 @btn-success-color:              #fff;
 @btn-success-bg:                 @brand-success;
@@ -140,7 +140,7 @@
 @btn-info-bg:                    @brand-info;
 @btn-info-border:                darken(@btn-info-bg, 5%);
 
-@btn-link-disabled-color:        @gray-light;
+@btn-link-disabled-color:        #333;
 
 
 // Forms
@@ -395,8 +395,8 @@
 // Tooltips
 // -------------------------
 @tooltip-max-width:           200px;
-@tooltip-color:               #fff;
-@tooltip-bg:                  #000;
+@tooltip-color:               #333; 
+@tooltip-bg:                  #fff;
 
 @tooltip-arrow-width:         5px;
 @tooltip-arrow-color:         @tooltip-bg;
