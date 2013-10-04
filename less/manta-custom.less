@@ -139,17 +139,13 @@ h1, .h1 {
   }
 }
 
-
 //set brand logo for sm, md, lg
 .navbar-inverse .navbar-brand{
-  background: url(http://m4.manta-r1.com/manta/images/manta-logo-sp.png) -50px 0px;
-  height: 25px;
+  background: url(http://m4.manta-r1.com/manta/images/manta-logo-sp.png) -50px 0px no-repeat;
+  height: @subnavbar-height;
   width: 100px;
-  background-size: 150px 25px;
   margin: 14px 5px 0 0;
-  margin-left:0;
   overflow: hidden;
-  padding: 0;
 }
 .navbar-header.col-lg-1{
   width:12%;
@@ -157,11 +153,9 @@ h1, .h1 {
 // set brand for xs
 @media (max-width:@screen-sm){
   .navbar-inverse .navbar-brand{
-    background: url(http://m4.manta-r1.com/manta/images/manta-logo-sp.png) 0px 0px;
-    height: 25px;
+    background-position: 0px 0px;
     width: 50px;
     margin: 14px 5px 0 5px;
-    margin-left:5px;
     overflow: hidden;
     padding: 0;
   }

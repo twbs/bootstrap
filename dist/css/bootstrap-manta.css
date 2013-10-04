@@ -7196,12 +7196,9 @@ h1,
 .navbar-inverse .navbar-brand {
   width: 100px;
   height: 25px;
-  padding: 0;
   margin: 14px 5px 0 0;
-  margin-left: 0;
   overflow: hidden;
-  background: url(http://m4.manta-r1.com/manta/images/manta-logo-sp.png) -50px 0;
-  background-size: 150px 25px;
+  background: url(http://m4.manta-r1.com/manta/images/manta-logo-sp.png) -50px 0 no-repeat;
 }
 
 .navbar-header.col-lg-1 {
@@ -7211,12 +7208,10 @@ h1,
 @media (max-width: 768px) {
   .navbar-inverse .navbar-brand {
     width: 50px;
-    height: 25px;
     padding: 0;
     margin: 14px 5px 0 5px;
-    margin-left: 5px;
     overflow: hidden;
-    background: url(http://m4.manta-r1.com/manta/images/manta-logo-sp.png) 0 0px;
+    background-position: 0 0px;
   }
   .navbar-header.col-xs-3 {
     width: 25%;
