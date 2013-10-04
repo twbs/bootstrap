@@ -1,5 +1,5 @@
 // Manta customized LESS file.
-
+@import "manta-glyphicons.less";
 
 //------------------ mixins --------------------------
 
@@ -7,7 +7,7 @@
   @media (min-width: @screen) {
     .transition(all 100ms ease-in);
     &:focus {
-      width: @width;
+      width: @width+10;
       margin-left: -100px;
     }
   }
@@ -28,11 +28,27 @@
   background-color: @neutralWhite;
   margin-top: @navbar-height + @subnavbar-height;
 }
+.coolLightest{
+  color:@coolLightest;
+}
 
+//----------------- manta footer specific classes-------
 .footer {
   margin-top: @line-height-computed;
   background-color: @neutralWhite;
   font-size: @font-size-small;
+}
+.footer .container{
+  padding: 0;
+}
+.footer .navbar-nav > li > a{
+  padding:0 10px;
+  margin-top:17px;
+  margin-bottom:17px;
+  border-right: 1px solid #fff;
+}
+.footer .navbar-nav > li:last-child > a{
+  border-right:none;
 }
 
 //------------------ END of generic ------------------
@@ -102,7 +118,6 @@ h1, .h1 {
     padding-top:    5px;
     padding-bottom: 5px;
   }
-
   // Uncollapse the nav
   @media (min-width: @grid-float-breakpoint) {
 
@@ -111,19 +126,112 @@ h1, .h1 {
       padding-bottom: ((@subnavbar-height - @line-height-computed) / 2);
     }
   }
-
  }
+}
+//override negative left margin
+.navbar-brand {
+  float: left;
+  padding: @navbar-padding-vertical @navbar-padding-horizontal;
+  font-size: @font-size-large;
+  line-height: @line-height-computed;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  @media (min-width: @grid-float-breakpoint) {
+    .navbar > .container & {
+      margin-left: 0;
+    }
+  }
+}
+
+//set brand logo for sm, md, lg
+.navbar-inverse .navbar-brand{
+  background: url(http://m4.manta-r1.com/manta/images/manta-logo-sp.png) -50px 0px no-repeat;
+  height: @subnavbar-height;
+  width: 100px;
+  margin: 14px 5px 0 0;
+  overflow: hidden;
+}
+.navbar-header.col-lg-1{
+  width:12%;
+}
+// set brand for xs
+@media (max-width:@screen-sm){
+  .navbar-inverse .navbar-brand{
+    background-position: 0px 0px;
+    width: 50px;
+    margin: 14px 5px 0 5px;
+    overflow: hidden;
+    padding: 0;
+  }
+  .navbar-header.col-xs-3{
+    width:25%;
+  }
+  .navbar-collapse{
+    box-shadow:none;
+    border-top:0px;
+  }
+}
+// Navbar form
+//
+// Extension of the `.form-inline` with some extra flavor for optimum display in
+// our navbars.
+
+.navbar-form {
+  margin-left: -@navbar-padding-horizontal;
+  margin-right: -@navbar-padding-horizontal;
+  padding: 0 @navbar-padding-horizontal;
+  border-top: 0px solid transparent;
+  border-bottom: 0px solid transparent;
+  @shadow: none;
+  .box-shadow(@shadow);
+
+  // Mixin behavior for optimum display
+  .form-inline();
+
+  .form-group {
+    @media (max-width: @screen-xs-max) {
+      margin-bottom: 5px;
+    }
+  }
+
+  // Vertically center in expanded, horizontal navbar
+  .navbar-vertical-align(@input-height-base);
+
+  // Undo 100% width for pull classes
+  @media (min-width: @grid-float-breakpoint) {
+    display:inline;
+    width: auto;
+    border: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    .box-shadow(none);
+  }
 }
 
 
 //------------------ fonts ---------------------------
 
 @font-face {
-  font-family: 'vegurlight';
-  src: url('@{display-font-path}@{display-font-name}.eot');
-  src: url('@{display-font-path}@{display-font-name}.eot?#iefix') format('embedded-opentype'),
-       url('@{display-font-path}@{display-font-name}.woff') format('woff'),
-       url('@{display-font-path}@{display-font-name}.ttf') format('truetype'),
-       url('@{display-font-path}@{display-font-name}.svg#Vegur-Light') format('svg');
+  font-family: 'icomanta';
+  src: url('@{icon-font-path}@{mantaicon-font-name}.eot');
+  src: url('@{icon-font-path}@{mantaicon-font-name}.eot?#iefix') format('embedded-opentype'),
+  url('@{icon-font-path}@{mantaicon-font-name}.woff') format('woff'),
+  url('@{icon-font-path}@{mantaicon-font-name}.ttf') format('truetype'),
+  url('@{icon-font-path}@{mantaicon-font-name}.svg#icomanta') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
+@font-face {
+  font-family: 'vegurlight';
+  src: url('@{icon-font-path}@{display-font-name}.eot');
+  src: url('@{icon-font-path}@{display-font-name}.eot?#iefix') format('embedded-opentype'),
+       url('@{icon-font-path}@{display-font-name}.woff') format('woff'),
+       url('@{icon-font-path}@{display-font-name}.ttf') format('truetype'),
+       url('@{icon-font-path}@{display-font-name}.svg#Vegur-Light') format('svg');
+}

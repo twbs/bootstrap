@@ -1,84 +1,96 @@
 <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
-  <div class="container">
-	<nav role="navigation">
-	  <!-- Brand and toggle get grouped for better mobile display -->
-	  <div class="navbar-header">
-	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-	      <span class="sr-only">Toggle navigation</span>
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	    </button>
-	    <a href="{{ page.base_url }}" class="navbar-brand" style="background: url(http://m4.manta-r1.com/manta/images/manta-logo-sp.png) -50px 0px;height: 25px;width: 100px;background-size: 150px 25px;margin-right: 5px;margin-top: 14px;overflow:hidden; padding:0;"></a>
-	  </div>
+    <div class="container">
+        <nav role="navigation">
+            <div class="row">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header col-lg-1 col-md-2 col-sm-2 col-xs-3">
+                    <a href="{{ page.base_url }}" class="navbar-brand hidden-xs"></a>
+                    <span class="navbar-brand visible-xs" data-toggle="collapse" data-target=".navbar-mobile-collapse"></span>
+                </div>
 
-		<div class="col-lg-4 col-md-4 col-sm-4">
-		    <form class="navbar-form navbar-left form-inline" role="search">
-		     <div class="form-group">
-		      <div class="input-group">
-			<input type="search" class="form-control navbar-search fs-small" placeholder="Find products, services, businesses">
-			<span class="input-group-btn">
-			  <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span></button>
-			</span>
-		      </div>
-		     </div>
-		    </form>
-		</div>
-	  <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <div class="nav navbar-nav navbar-btn">
-        <div class="dropdown">
-          <button type="button" class="dropdown-toggle btn btn-default" data-toggle="dropdown"><span class="glyphicon glyphicon-list text-info"></span> Browse</button>
-          <ul class="dropdown-menu">
-              <li{% if page.slug == "getting-started" %} class="active"{% endif %}>
-                <a href="{{ page.base_url }}getting-started">Getting started</a>
-              </li>
-              <li{% if page.slug == "css" %} class="active"{% endif %}>
-                <a href="{{ page.base_url }}css">CSS</a>
-              </li>
-              <li{% if page.slug == "components" %} class="active"{% endif %}>
-                <a href="{{ page.base_url }}components">Components</a>
-              </li>
-              <li{% if page.slug == "js" %} class="active"{% endif %}>
-                <a href="{{ page.base_url }}javascript">JavaScript</a>
-              </li>
-              <li{% if page.slug == "customize" %} class="active"{% endif %}>
-                <a href="{{ page.base_url }}customize">Customize</a>
-              </li>
-              <li{% if page.slug == "demo-company" %} class="active"{% endif %}>
-                <a href="{{ page.base_url }}demo-company">Example Company</a>
-              </li>
-              <li{% if page.slug == "manta-components" %} class="active"{% endif %}>
-                <a href="{{ page.base_url }}manta-components">Manta Components</a>
-              </li>
-          </ul>
-        </div>
-      </div>
-
-	    <div class="nav navbar-nav navbar-right">
-	      <div class="btn-toolbar">
-	        <button type="button" class="btn btn-default navbar-btn">Sign Up</button>
-	        <button type="button" class="btn btn-default navbar-btn">Sign In</button>
-	      </div>
-	    </div>
-          </div>
-	</nav>
-  </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-9">
+                    <form class="navbar-form navbar-left form-inline" role="search">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="search" class="form-control navbar-search fs-small" placeholder="Find products, services, businesses">
+                <span class="input-group-btn">
+                  <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="collapse navbar-collapse navbar-mobile-collapse">
+                    <div class="nav navbar-nav navbar-btn hidden-xs">
+                        <div class="dropdown">
+                            <button type="button" class="dropdown-toggle btn btn-default" data-toggle="dropdown"><span class="glyphicon glyphicon-list text-info"></span> Browse</button>
+                            <ul class="dropdown-menu">
+                                <li{% if page.slug == "getting-started" %} class="active"{% endif %}>
+                                <a href="{{ page.base_url }}getting-started">Getting started</a>
+                                </li>
+                                <li{% if page.slug == "css" %} class="active"{% endif %}>
+                                <a href="{{ page.base_url }}css">CSS</a>
+                                </li>
+                                <li{% if page.slug == "components" %} class="active"{% endif %}>
+                                <a href="{{ page.base_url }}components">Components</a>
+                                </li>
+                                <li{% if page.slug == "js" %} class="active"{% endif %}>
+                                <a href="{{ page.base_url }}javascript">JavaScript</a>
+                                </li>
+                                <li{% if page.slug == "customize" %} class="active"{% endif %}>
+                                <a href="{{ page.base_url }}customize">Customize</a>
+                                </li>
+                                <li{% if page.slug == "demo-company" %} class="active"{% endif %}>
+                                <a href="{{ page.base_url }}demo-company">Example Company</a>
+                                </li>
+                                <li{% if page.slug == "manta-components" %} class="active"{% endif %}>
+                                <a href="{{ page.base_url }}manta-components">Manta Components</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="nav navbar-nav navbar-right pull-right hidden-xs">
+                        <div class="btn-toolbar">
+                            <button type="button" class="btn btn-default navbar-btn">Sign Up</button>
+                            <button type="button" class="btn btn-default navbar-btn">Sign In</button>
+                        </div>
+                    </div>
+                    <div class="visible-xs">
+                        <p><button type="button" class="btn btn-default btn-lg col-xs-12">Home</button></p>
+                        <p><button type="button" class="btn btn-default btn-lg col-xs-12">Sign In</button></p>
+                        <p><button type="button" class="btn btn-default btn-lg col-xs-12">Sign Up</button></p>
+                        <p><button type="button" class="btn btn-default btn-lg col-xs-12">Add Your Business</button></p>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
 </header>
 
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-        <div class="">
+        <div class="hidden-xs">
             <ul class="nav navbar-nav">
                 <li>
                     <a href="/" class="navbar-link">Home</a>
                 </li>
             </ul>
         </div>
-        <div class="nav navbar-right">
+        <div class="nav navbar-right hidden-xs">
             <ul class="nav navbar-nav">
                 <li>
                     <a href="#"><span class="text-warning"> + </span>Add your business</a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav navbar-right visible-xs">
+            <ul class="nav navbar-nav">
+                <li class="pull-left">
+                    <a href="#"><span class="glyphicon glyphicon-pushpin text-warning"></span> Near Columbus, OH</a>
+                </li>
+                <li class="pull-right">
+                    <a href="#">Change Location</a>
                 </li>
             </ul>
         </div>

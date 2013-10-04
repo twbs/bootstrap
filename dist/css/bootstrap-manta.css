@@ -6804,6 +6804,257 @@ td.visible-print {
   }
 }
 
+[data-icon]:before {
+  font-family: 'icomanta';
+  -webkit-font-smoothing: antialiased;
+  font-weight: normal;
+  line-height: 1;
+  text-transform: none;
+  content: attr(data-icon);
+  speak: none;
+  font-variant: normal;
+}
+
+.icon-automotive,
+.icon-bars,
+.icon-beauty,
+.icon-camera,
+.icon-comment,
+.icon-company,
+.icon-contractors,
+.icon-daycare,
+.icon-delete,
+.icon-dentists,
+.icon-doctors,
+.icon-fitness,
+.icon-galleries,
+.icon-home,
+.icon-insurance,
+.icon-legal,
+.icon-location,
+.icon-lodging,
+.icon-marketing,
+.icon-messages,
+.icon-notifications-alt,
+.icon-notifications,
+.icon-post,
+.icon-realestate,
+.icon-restaurants,
+.icon-search,
+.icon-shopping,
+.icon-theaters,
+.icon-browse,
+.icon-current-location,
+.icon-arrow-down,
+.icon-arrow-left,
+.icon-arrow-right,
+.icon-arrow-up,
+.icon-arrowExt-left,
+.icon-arrowExt-right,
+.icon-manta,
+.icon-google-plus,
+.icon-linkedin,
+.icon-twitter,
+.icon-facebook,
+.icon-close,
+.icon-checkbox,
+.icon-arrowExt-up,
+.icon-arrowExt-down {
+  font-family: 'icomanta';
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  text-transform: none;
+  speak: none;
+  font-variant: normal;
+}
+
+.icon-automotive:before {
+  content: "\3e";
+}
+
+.icon-bars:before {
+  content: "\3d";
+}
+
+.icon-beauty:before {
+  content: "\3c";
+}
+
+.icon-camera:before {
+  content: "\24";
+}
+
+.icon-comment:before {
+  content: "\25";
+}
+
+.icon-company:before {
+  content: "\26";
+}
+
+.icon-contractors:before {
+  content: "\27";
+}
+
+.icon-daycare:before {
+  content: "\28";
+}
+
+.icon-delete:before {
+  content: "\29";
+}
+
+.icon-dentists:before {
+  content: "\2a";
+}
+
+.icon-doctors:before {
+  content: "\2b";
+}
+
+.icon-fitness:before {
+  content: "\2c";
+}
+
+.icon-galleries:before {
+  content: "\2d";
+}
+
+.icon-home:before {
+  content: "\2e";
+}
+
+.icon-insurance:before {
+  content: "\2f";
+}
+
+.icon-legal:before {
+  content: "\30";
+}
+
+.icon-location:before {
+  content: "\31";
+}
+
+.icon-lodging:before {
+  content: "\32";
+}
+
+.icon-marketing:before {
+  content: "\33";
+}
+
+.icon-messages:before {
+  content: "\34";
+}
+
+.icon-notifications-alt:before {
+  content: "\35";
+}
+
+.icon-notifications:before {
+  content: "\36";
+}
+
+.icon-post:before {
+  content: "\37";
+}
+
+.icon-realestate:before {
+  content: "\38";
+}
+
+.icon-restaurants:before {
+  content: "\39";
+}
+
+.icon-search:before {
+  content: "\3a";
+}
+
+.icon-shopping:before {
+  content: "\3b";
+}
+
+.icon-theaters:before {
+  content: "\3f";
+}
+
+.icon-browse:before {
+  content: "\21";
+}
+
+.icon-current-location:before {
+  content: "\40";
+}
+
+.icon-arrow-down:before {
+  content: "\22";
+}
+
+.icon-arrow-left:before {
+  content: "\23";
+}
+
+.icon-arrow-right:before {
+  content: "\41";
+}
+
+.icon-arrow-up:before {
+  content: "\42";
+}
+
+.icon-arrowExt-left:before {
+  content: "\43";
+}
+
+.icon-arrowExt-right:before {
+  content: "\44";
+}
+
+.icon-manta:before {
+  color: #FBB919;
+  content: "\45";
+}
+
+.icon-google-plus:before {
+  color: #C63D2D;
+  content: "\46";
+}
+
+.icon-linkedin:before {
+  color: #4875B4;
+  content: "\47";
+}
+
+.icon-twitter:before {
+  color: #4099FF;
+  content: "\48";
+}
+
+.icon-facebook:before {
+  color: #3B5998;
+  content: "\49";
+}
+
+.icon-close:before {
+  content: "\58";
+}
+
+.icon-checkbox:before {
+  content: "\4a";
+}
+
+.icon-arrowExt-up:before {
+  content: "\4c";
+}
+
+.icon-arrowExt-down:before {
+  content: "\4b";
+}
+
 .bg-cool-darker {
   background-color: #006ba5 !important;
 }
@@ -6813,10 +7064,29 @@ td.visible-print {
   background-color: #ffffff;
 }
 
+.coolLightest {
+  color: #cfe4ee;
+}
+
 .footer {
   margin-top: 20px;
   font-size: 12px;
   background-color: #ffffff;
+}
+
+.footer .container {
+  padding: 0;
+}
+
+.footer .navbar-nav > li > a {
+  padding: 0 10px;
+  margin-top: 17px;
+  margin-bottom: 17px;
+  border-right: 1px solid #fff;
+}
+
+.footer .navbar-nav > li:last-child > a {
+  border-right: none;
 }
 
 /*
@@ -6844,7 +7114,7 @@ td.visible-print {
             transition: all 100ms ease-in;
   }
   .navbar-search:focus {
-    width: 244px;
+    width: 254px;
     margin-left: -100px;
   }
 }
@@ -6855,7 +7125,7 @@ td.visible-print {
             transition: all 100ms ease-in;
   }
   .navbar-search:focus {
-    width: 326px;
+    width: 336px;
     margin-left: -100px;
   }
 }
@@ -6907,6 +7177,116 @@ h1,
     padding-top: 2.5px;
     padding-bottom: 2.5px;
   }
+}
+
+.navbar-brand {
+  float: left;
+  padding: 17px 15px;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .navbar > .container .navbar-brand {
+    margin-left: 0;
+  }
+}
+
+.navbar-inverse .navbar-brand {
+  width: 100px;
+  height: 25px;
+  margin: 14px 5px 0 0;
+  overflow: hidden;
+  background: url(http://m4.manta-r1.com/manta/images/manta-logo-sp.png) -50px 0 no-repeat;
+}
+
+.navbar-header.col-lg-1 {
+  width: 12%;
+}
+
+@media (max-width: 768px) {
+  .navbar-inverse .navbar-brand {
+    width: 50px;
+    padding: 0;
+    margin: 14px 5px 0 5px;
+    overflow: hidden;
+    background-position: 0 0px;
+  }
+  .navbar-header.col-xs-3 {
+    width: 25%;
+  }
+  .navbar-collapse {
+    border-top: 0;
+    box-shadow: none;
+  }
+}
+
+.navbar-form {
+  padding: 0 15px;
+  margin-top: 11px;
+  margin-right: -15px;
+  margin-bottom: 11px;
+  margin-left: -15px;
+  border-top: 0 solid transparent;
+  border-bottom: 0 solid transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+@media (min-width: 768px) {
+  .navbar-form .form-group {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+  }
+  .navbar-form .form-control {
+    display: inline-block;
+  }
+  .navbar-form .radio,
+  .navbar-form .checkbox {
+    display: inline-block;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .navbar-form .radio input[type="radio"],
+  .navbar-form .checkbox input[type="checkbox"] {
+    float: none;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-form .form-group {
+    margin-bottom: 5px;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-form {
+    display: inline;
+    width: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-right: 0;
+    margin-left: 0;
+    border: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+}
+
+@font-face {
+  font-family: 'icomanta';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/icomanta.eot');
+  src: url('../fonts/icomanta.eot?#iefix') format('embedded-opentype'), url('../fonts/icomanta.woff') format('woff'), url('../fonts/icomanta.ttf') format('truetype'), url('../fonts/icomanta.svg#icomanta') format('svg');
 }
 
 @font-face {
