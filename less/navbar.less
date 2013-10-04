@@ -81,10 +81,12 @@
 
     // Account for first and last children spacing
     .navbar-nav.navbar-left:first-child {
-      margin-left: -@navbar-padding-horizontal;
+      html:not([dir="rtl"]) & { margin-left: -@navbar-padding-horizontal; }
+      html[dir="rtl"] & { margin-right: -@navbar-padding-horizontal; }
     }
     .navbar-nav.navbar-right:last-child {
-      margin-right: -@navbar-padding-horizontal;
+      html:not([dir="rtl"]) & { margin-right: -@navbar-padding-horizontal; }
+      html[dir="rtl"] & { margin-left: -@navbar-padding-horizontal; }
     }
     .navbar-text:last-child {
       html:not([dir="rtl"]) & { margin-right: 0; }
@@ -150,7 +152,8 @@
 // Brand/project name
 
 .navbar-brand {
-  float: left;
+  html:not([dir="rtl"]) & { float: left; }
+  html[dir="rtl"] & { float: right; }
   padding: @navbar-padding-vertical @navbar-padding-horizontal;
   font-size: @font-size-large;
   line-height: @line-height-computed;
