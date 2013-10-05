@@ -5747,6 +5747,7 @@ body.modal-open,
   display: none;
   overflow: auto;
   overflow-y: scroll;
+  outline: 0;
 }
 
 .modal.fade .modal-dialog {
