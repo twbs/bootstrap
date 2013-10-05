@@ -156,6 +156,7 @@ module.exports = function(grunt) {
 
 
   // These plugins provide necessary tasks.
+  grunt.loadNpmTasks('browserstack-runner');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-connect');
@@ -167,7 +168,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-html-validation');
   grunt.loadNpmTasks('grunt-jekyll');
   grunt.loadNpmTasks('grunt-recess');
-  grunt.loadNpmTasks('browserstack-runner');
 
   // Docs HTML validation task
   grunt.registerTask('validate-html', ['jekyll', 'validation']);
