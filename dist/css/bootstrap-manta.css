@@ -302,7 +302,7 @@ html {
 body {
   font-family: arial, helvetica, clean, sans-serif;
   font-size: 14px;
-  line-height: 1.428571429;
+  line-height: 1.2;
   color: #252525;
   background-color: #cccccc;
 }
@@ -359,7 +359,7 @@ img {
   height: auto;
   max-width: 100%;
   padding: 4px;
-  line-height: 1.428571429;
+  line-height: 1.2;
   background-color: #cccccc;
   border: 1px solid #dddddd;
   border-radius: 5px;
@@ -372,8 +372,8 @@ img {
 }
 
 hr {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 16px;
+  margin-bottom: 16px;
   border: 0;
   border-top: 1px solid #dddddd;
 }
@@ -390,11 +390,11 @@ hr {
 }
 
 p {
-  margin: 0 0 10px;
+  margin: 0 0 8px;
 }
 
 .lead {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   font-size: 16.099999999999998px;
   font-weight: 200;
   line-height: 1.4;
@@ -487,15 +487,15 @@ h6 small,
 h1,
 h2,
 h3 {
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-top: 16px;
+  margin-bottom: 8px;
 }
 
 h4,
 h5,
 h6 {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 h1,
@@ -546,15 +546,15 @@ h4 small,
 }
 
 .page-header {
-  padding-bottom: 9px;
-  margin: 40px 0 20px;
+  padding-bottom: 7px;
+  margin: 32px 0 16px;
   border-bottom: 1px solid #dddddd;
 }
 
 ul,
 ol {
   margin-top: 0;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 ul ul,
@@ -581,12 +581,12 @@ ol ol {
 }
 
 dl {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 dt,
 dd {
-  line-height: 1.428571429;
+  line-height: 1.2;
 }
 
 dt {
@@ -640,8 +640,8 @@ abbr.initialism {
 }
 
 blockquote {
-  padding: 10px 20px;
-  margin: 0 0 20px;
+  padding: 8px 16px;
+  margin: 0 0 16px;
   border-left: 5px solid #dddddd;
 }
 
@@ -657,7 +657,7 @@ blockquote p:last-child {
 
 blockquote small {
   display: block;
-  line-height: 1.428571429;
+  line-height: 1.2;
   color: #aaaaaa;
 }
 
@@ -694,9 +694,9 @@ blockquote:after {
 
 address {
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   font-style: normal;
-  line-height: 1.428571429;
+  line-height: 1.2;
 }
 
 code,
@@ -715,10 +715,10 @@ code {
 
 pre {
   display: block;
-  padding: 9.5px;
-  margin: 0 0 10px;
+  padding: 7.5px;
+  margin: 0 0 8px;
   font-size: 13px;
-  line-height: 1.428571429;
+  line-height: 1.2;
   color: #555555;
   word-break: break-all;
   word-wrap: break-word;
@@ -728,7 +728,7 @@ pre {
 }
 
 pre.prettyprint {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 pre code {
@@ -1404,7 +1404,7 @@ th {
 
 .table {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .table thead > tr > th,
@@ -1414,7 +1414,7 @@ th {
 .table tbody > tr > td,
 .table tfoot > tr > td {
   padding: 10px;
-  line-height: 1.428571429;
+  line-height: 1.2;
   vertical-align: top;
   border-top: 1px solid #dddddd;
 }
@@ -1632,7 +1632,7 @@ legend {
   display: block;
   width: 100%;
   padding: 0;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   font-size: 21px;
   line-height: inherit;
   color: #555555;
@@ -1708,10 +1708,10 @@ input[type="number"]::-webkit-inner-spin-button {
 .form-control {
   display: block;
   width: 100%;
-  height: 32px;
+  height: 28px;
   padding: 5px 10px;
   font-size: 14px;
-  line-height: 1.428571429;
+  line-height: 1.2;
   color: #898989;
   vertical-align: middle;
   background-color: #ffffff;
@@ -1748,7 +1748,7 @@ textarea.form-control {
 .radio,
 .checkbox {
   display: block;
-  min-height: 20px;
+  min-height: 16px;
   padding-left: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -1992,7 +1992,7 @@ textarea.input-lg {
   margin-bottom: 0;
   font-size: 14px;
   font-weight: normal;
-  line-height: 1.428571429;
+  line-height: 1.2;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -3249,7 +3249,7 @@ input[type="button"].btn-block {
 
 .dropdown-menu .divider {
   height: 1px;
-  margin: 9px 0;
+  margin: 7px 0;
   overflow: hidden;
   background-color: #dddddd;
 }
@@ -3259,7 +3259,7 @@ input[type="button"].btn-block {
   padding: 3px 20px;
   clear: both;
   font-weight: normal;
-  line-height: 1.428571429;
+  line-height: 1.2;
   color: #555555;
   white-space: nowrap;
 }
@@ -3307,7 +3307,7 @@ input[type="button"].btn-block {
   display: block;
   padding: 3px 20px;
   font-size: 12px;
-  line-height: 1.428571429;
+  line-height: 1.2;
   color: #aaaaaa;
 }
 
@@ -3837,7 +3837,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .nav .nav-divider {
   height: 1px;
-  margin: 9px 0;
+  margin: 7px 0;
   overflow: hidden;
   background-color: #e5e5e5;
 }
@@ -3857,7 +3857,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .nav-tabs > li > a {
   margin-right: 2px;
-  line-height: 1.428571429;
+  line-height: 1.2;
   border: 1px solid transparent;
   border-radius: 5px 5px 0 0;
 }
@@ -4182,9 +4182,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-brand {
   float: left;
-  padding: 17px 15px;
+  padding: 19px 15px;
   font-size: 18px;
-  line-height: 20px;
+  line-height: 16px;
 }
 
 .navbar-brand:hover,
@@ -4228,13 +4228,13 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-nav {
-  margin: 8.5px -15px;
+  margin: 9.5px -15px;
 }
 
 .navbar-nav > li > a {
   padding-top: 10px;
   padding-bottom: 10px;
-  line-height: 20px;
+  line-height: 16px;
 }
 
 @media (max-width: 767px) {
@@ -4252,7 +4252,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
     padding: 5px 15px 5px 25px;
   }
   .navbar-nav .open .dropdown-menu > li > a {
-    line-height: 20px;
+    line-height: 16px;
   }
   .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-nav .open .dropdown-menu > li > a:focus {
@@ -4269,8 +4269,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
     float: left;
   }
   .navbar-nav > li > a {
-    padding-top: 17px;
-    padding-bottom: 17px;
+    padding-top: 19px;
+    padding-bottom: 19px;
   }
 }
 
@@ -4285,9 +4285,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-form {
   padding: 10px 15px;
-  margin-top: 11px;
+  margin-top: 13px;
   margin-right: -15px;
-  margin-bottom: 11px;
+  margin-bottom: 13px;
   margin-left: -15px;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
@@ -4355,14 +4355,14 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-btn {
-  margin-top: 11px;
-  margin-bottom: 11px;
+  margin-top: 13px;
+  margin-bottom: 13px;
 }
 
 .navbar-text {
   float: left;
-  margin-top: 17px;
-  margin-bottom: 17px;
+  margin-top: 19px;
+  margin-bottom: 19px;
 }
 
 @media (min-width: 768px) {
@@ -4610,7 +4610,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .breadcrumb {
   padding: 8px 15px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   list-style: none;
   background-color: #f1f1f1;
   border-radius: 5px;
@@ -4633,7 +4633,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pagination {
   display: inline-block;
   padding-left: 0;
-  margin: 20px 0;
+  margin: 16px 0;
   border-radius: 5px;
 }
 
@@ -4647,7 +4647,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   float: left;
   padding: 5px 10px;
   margin-left: -1px;
-  line-height: 1.428571429;
+  line-height: 1.2;
   text-decoration: none;
   background-color: #ffffff;
   border: 1px solid #dddddd;
@@ -4734,7 +4734,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .pager {
   padding-left: 0;
-  margin: 20px 0;
+  margin: 16px 0;
   text-align: center;
   list-style: none;
 }
@@ -4921,7 +4921,7 @@ a.list-group-item.active > .badge,
   margin-bottom: 30px;
   font-size: 21px;
   font-weight: 200;
-  line-height: 2.1428571435;
+  line-height: 1.7999999999999998;
   color: inherit;
   background-color: #dddddd;
 }
@@ -4959,7 +4959,7 @@ a.list-group-item.active > .badge,
   height: auto;
   max-width: 100%;
   padding: 4px;
-  line-height: 1.428571429;
+  line-height: 1.2;
   background-color: #cccccc;
   border: 1px solid #dddddd;
   border-radius: 5px;
@@ -4990,7 +4990,7 @@ a.thumbnail:focus {
 
 .alert {
   padding: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   border: 1px solid transparent;
   border-radius: 5px;
 }
@@ -5117,8 +5117,8 @@ a.thumbnail:focus {
 }
 
 .progress {
-  height: 20px;
-  margin-bottom: 20px;
+  height: 16px;
+  margin-bottom: 16px;
   overflow: hidden;
   background-color: #f1f1f1;
   border-radius: 5px;
@@ -5315,7 +5315,7 @@ a.list-group-item:focus {
 }
 
 .panel {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   background-color: #ffffff;
   border: 1px solid transparent;
   border-radius: 5px;
@@ -5668,7 +5668,7 @@ body.modal-open,
 }
 
 .modal-header {
-  min-height: 16.428571429px;
+  min-height: 16.2px;
   padding: 15px;
   border-bottom: 1px solid #dddddd;
 }
@@ -5679,7 +5679,7 @@ body.modal-open,
 
 .modal-title {
   margin: 0;
-  line-height: 1.428571429;
+  line-height: 1.2;
 }
 
 .modal-body {
@@ -7075,7 +7075,7 @@ a.text-default:active {
 }
 
 .footer {
-  margin-top: 20px;
+  margin-top: 16px;
   font-size: 12px;
   background-color: #ffffff;
 }
@@ -7106,10 +7106,6 @@ a.text-default:active {
 /*  Shan He's ad-hoc
 */
 
-.panel-map {
-  margin-bottom: 20px;
-}
-
 .fs-small {
   font-size: 12px;
 }
@@ -7137,8 +7133,28 @@ a.text-default:active {
 }
 
 h1,
-.h1 {
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
   font-family: 'vegurlight', arial, helvetica, clean, sans-serif;
+}
+
+.strong,
+h1.strong,
+h2.strong,
+h3.strong,
+h4.strong,
+h5.strong,
+h6.strong,
+.h1.strong,
+.h2.strong,
+.h3.strong,
+.h4.strong,
+.h5.strong,
+.h6.strong {
+  font-weight: bold;
 }
 
 .list-group-item {
@@ -7157,6 +7173,10 @@ h1,
   border-bottom: 0;
   border-top-right-radius: 0;
   border-top-left-radius: 0;
+}
+
+.well {
+  color: #898989;
 }
 
 .navbar-default.navbar {
@@ -7180,16 +7200,16 @@ h1,
 
 @media (min-width: 768px) {
   .navbar-default .navbar-nav > li > a {
-    padding-top: 2.5px;
-    padding-bottom: 2.5px;
+    padding-top: 4.5px;
+    padding-bottom: 4.5px;
   }
 }
 
 .navbar-brand {
   float: left;
-  padding: 17px 15px;
+  padding: 19px 15px;
   font-size: 18px;
-  line-height: 20px;
+  line-height: 16px;
 }
 
 .navbar-brand:hover,
@@ -7234,9 +7254,9 @@ h1,
 
 .navbar-form {
   padding: 0 15px;
-  margin-top: 11px;
+  margin-top: 13px;
   margin-right: -15px;
-  margin-bottom: 11px;
+  margin-bottom: 13px;
   margin-left: -15px;
   border-top: 0 solid transparent;
   border-bottom: 0 solid transparent;

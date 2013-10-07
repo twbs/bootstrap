@@ -1,6 +1,14 @@
 // Manta customized LESS file.
 @import "manta-glyphicons.less";
 
+//------------------ variables -----------------------
+
+@well-color:                        @neutralMiddark;
+@subnavbar-height:                  25px;
+@subnavbar-padding-horizontal:      @navbar-padding-horizontal;
+@subnavbar-padding-vertical:        ((@subnavbar-height - @line-height-computed) / 2);
+
+
 //------------------ mixins --------------------------
 
 .navbar-search-expander(@screen, @width) {
@@ -65,9 +73,6 @@
 */
 /*  Shan He's ad-hoc
 */
-.panel-map {
-  margin-bottom: 20px;
-}
 
 .fs-small {
   font-size: @font-size-small;
@@ -78,8 +83,14 @@
   .navbar-search-expander(@screen-md, 326px);
 }
 
-h1, .h1 {
+h1, .h1, h2, .h2, h3, .h3 {
   font-family: @font-family-serif;
+}
+
+.strong,
+h1.strong,h2.strong,h3.strong,h4.strong,h5.strong,h6.strong,
+.h1.strong,.h2.strong,.h3.strong,.h4.strong,.h5.strong,.h6.strong {
+  font-weight: bold;
 }
 
 .list-group-item {
@@ -96,12 +107,12 @@ h1, .h1 {
   }
 }
 
+.well {
+  color: @well-color;
+}
+
 
 //------------------ sub navbar overrides ------------
-
-@subnavbar-height:                    25px;
-@subnavbar-padding-horizontal:        @navbar-padding-horizontal;
-@subnavbar-padding-vertical:          ((@subnavbar-height - @line-height-computed) / 2);
 
 .navbar-default.navbar {
   z-index: @zindex-navbar - 10;
