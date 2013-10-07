@@ -152,7 +152,7 @@
   padding: @navbar-padding-vertical @navbar-padding-horizontal;
   font-size: @font-size-large;
   line-height: @line-height-computed;
-  &:hover,
+  @{hover-prefix} &:hover,
   &:focus {
     text-decoration: none;
   }
@@ -227,7 +227,7 @@
       }
       > li > a {
         line-height: @line-height-computed;
-        &:hover,
+        @{hover-prefix} &:hover,
         &:focus {
           background-image: none;
         }
@@ -356,7 +356,7 @@
 
   .navbar-brand {
     color: @navbar-default-brand-color;
-    &:hover,
+    @{hover-prefix} &:hover,
     &:focus {
       color: @navbar-default-brand-hover-color;
       background-color: @navbar-default-brand-hover-bg;
@@ -371,7 +371,7 @@
     > li > a {
       color: @navbar-default-link-color;
 
-      &:hover,
+      @{hover-prefix} &:hover,
       &:focus {
         color: @navbar-default-link-hover-color;
         background-color: @navbar-default-link-hover-bg;
@@ -379,7 +379,7 @@
     }
     > .active > a {
       &,
-      &:hover,
+      @{hover-prefix} &:hover,
       &:focus {
         color: @navbar-default-link-active-color;
         background-color: @navbar-default-link-active-bg;
@@ -387,7 +387,7 @@
     }
     > .disabled > a {
       &,
-      &:hover,
+      @{hover-prefix} &:hover,
       &:focus {
         color: @navbar-default-link-disabled-color;
         background-color: @navbar-default-link-disabled-bg;
@@ -397,7 +397,7 @@
 
   .navbar-toggle {
     border-color: @navbar-default-toggle-border-color;
-    &:hover,
+    @{hover-prefix} &:hover,
     &:focus {
       background-color: @navbar-default-toggle-hover-bg;
     }
@@ -414,7 +414,7 @@
   // Dropdown menu items and carets
   .navbar-nav {
     // Caret should match text color on hover
-    > .dropdown > a:hover .caret,
+    @{hover-prefix} > .dropdown > a:hover .caret,
     > .dropdown > a:focus .caret {
       border-top-color: @navbar-default-link-hover-color;
       border-bottom-color: @navbar-default-link-hover-color;
@@ -423,7 +423,7 @@
     // Remove background color from open dropdown
     > .open > a {
       &,
-      &:hover,
+      @{hover-prefix} &:hover,
       &:focus {
         background-color: @navbar-default-link-active-bg;
         color: @navbar-default-link-active-color;
@@ -444,7 +444,7 @@
       .open .dropdown-menu {
         > li > a {
           color: @navbar-default-link-color;
-          &:hover,
+          @{hover-prefix} &:hover,
           &:focus {
             color: @navbar-default-link-hover-color;
             background-color: @navbar-default-link-hover-bg;
@@ -452,7 +452,7 @@
         }
         > .active > a {
           &,
-          &:hover,
+          @{hover-prefix} &:hover,
           &:focus {
             color: @navbar-default-link-active-color;
             background-color: @navbar-default-link-active-bg;
@@ -460,7 +460,7 @@
         }
         > .disabled > a {
           &,
-          &:hover,
+          @{hover-prefix} &:hover,
           &:focus {
             color: @navbar-default-link-disabled-color;
             background-color: @navbar-default-link-disabled-bg;
@@ -477,7 +477,7 @@
 
   .navbar-link {
     color: @navbar-default-link-color;
-    &:hover {
+    @{hover-prefix} &:hover {
       color: @navbar-default-link-hover-color;
     }
   }
@@ -492,7 +492,7 @@
 
   .navbar-brand {
     color: @navbar-inverse-brand-color;
-    &:hover,
+    @{hover-prefix} &:hover,
     &:focus {
       color: @navbar-inverse-brand-hover-color;
       background-color: @navbar-inverse-brand-hover-bg;
@@ -507,7 +507,7 @@
     > li > a {
       color: @navbar-inverse-link-color;
 
-      &:hover,
+      @{hover-prefix} &:hover,
       &:focus {
         color: @navbar-inverse-link-hover-color;
         background-color: @navbar-inverse-link-hover-bg;
@@ -515,7 +515,7 @@
     }
     > .active > a {
       &,
-      &:hover,
+      @{hover-prefix} &:hover,
       &:focus {
         color: @navbar-inverse-link-active-color;
         background-color: @navbar-inverse-link-active-bg;
@@ -523,7 +523,7 @@
     }
     > .disabled > a {
       &,
-      &:hover,
+      @{hover-prefix} &:hover,
       &:focus {
         color: @navbar-inverse-link-disabled-color;
         background-color: @navbar-inverse-link-disabled-bg;
@@ -534,7 +534,7 @@
   // Darken the responsive nav toggle
   .navbar-toggle {
     border-color: @navbar-inverse-toggle-border-color;
-    &:hover,
+    @{hover-prefix} &:hover,
     &:focus {
       background-color: @navbar-inverse-toggle-hover-bg;
     }
@@ -552,7 +552,7 @@
   .navbar-nav {
     > .open > a {
       &,
-      &:hover,
+      @{hover-prefix} &:hover,
       &:focus {
         background-color: @navbar-inverse-link-active-bg;
         color: @navbar-inverse-link-active-color;
@@ -568,7 +568,7 @@
     }
     > .open > a {
       &,
-      &:hover,
+      @{hover-prefix} &:hover,
       &:focus {
         .caret {
           border-top-color: @navbar-inverse-link-active-color;
@@ -585,7 +585,7 @@
         }
         > li > a {
           color: @navbar-inverse-link-color;
-          &:hover,
+          @{hover-prefix} &:hover,
           &:focus {
             color: @navbar-inverse-link-hover-color;
             background-color: @navbar-inverse-link-hover-bg;
@@ -593,7 +593,7 @@
         }
         > .active > a {
           &,
-          &:hover,
+          @{hover-prefix} &:hover,
           &:focus {
             color: @navbar-inverse-link-active-color;
             background-color: @navbar-inverse-link-active-bg;
@@ -601,7 +601,7 @@
         }
         > .disabled > a {
           &,
-          &:hover,
+          @{hover-prefix} &:hover,
           &:focus {
             color: @navbar-inverse-link-disabled-color;
             background-color: @navbar-inverse-link-disabled-bg;
@@ -613,7 +613,7 @@
 
   .navbar-link {
     color: @navbar-inverse-link-color;
-    &:hover {
+    @{hover-prefix} &:hover {
       color: @navbar-inverse-link-hover-color;
     }
   }

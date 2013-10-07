@@ -20,7 +20,7 @@
       position: relative;
       display: block;
       padding: @nav-link-padding;
-      &:hover,
+      @{hover-prefix} &:hover,
       &:focus {
         text-decoration: none;
         background-color: @nav-link-hover-bg;
@@ -31,7 +31,7 @@
     &.disabled > a {
       color: @nav-disabled-link-color;
 
-      &:hover,
+      @{hover-prefix} &:hover,
       &:focus {
         color: @nav-disabled-link-hover-color;
         text-decoration: none;
@@ -44,7 +44,7 @@
   // Open dropdowns
   .open > a {
     &,
-    &:hover,
+    @{hover-prefix} &:hover,
     &:focus {
       background-color: @nav-link-hover-bg;
       border-color: @link-color;
@@ -91,7 +91,7 @@
       line-height: @line-height-base;
       border: 1px solid transparent;
       border-radius: @border-radius-base @border-radius-base 0 0;
-      &:hover {
+      @{hover-prefix} &:hover {
         border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
       }
     }
@@ -99,7 +99,7 @@
     // Active state, and it's :hover to override normal :hover
     &.active > a {
       &,
-      &:hover,
+      @{hover-prefix} &:hover,
       &:focus {
         color: @nav-tabs-active-link-hover-color;
         background-color: @nav-tabs-active-link-hover-bg;
@@ -134,7 +134,7 @@
     // Active state
     &.active > a {
       &,
-      &:hover,
+      @{hover-prefix} &:hover,
       &:focus {
         color: @nav-pills-active-link-hover-color;
         background-color: @nav-pills-active-link-hover-bg;
@@ -200,7 +200,7 @@
   }
 
   > .active > a,
-  > .active > a:hover,
+  @{hover-prefix} > .active > a:hover,
   > .active > a:focus {
     border: 1px solid @nav-tabs-justified-link-border-color;
   }
@@ -211,7 +211,7 @@
       border-radius: @border-radius-base @border-radius-base 0 0;
     }
     > .active > a,
-    > .active > a:hover,
+    @{hover-prefix} > .active > a:hover,
     > .active > a:focus {
       border-bottom-color: @nav-tabs-justified-active-link-border-color;
     }
@@ -249,7 +249,7 @@
   border-top-color: @link-color;
   border-bottom-color: @link-color;
 }
-.nav a:hover .caret {
+@{hover-prefix} .nav a:hover .caret {
   border-top-color: @link-hover-color;
   border-bottom-color: @link-hover-color;
 }

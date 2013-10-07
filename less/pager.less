@@ -21,7 +21,7 @@
     }
 
     > a:hover,
-    > a:focus {
+    @{hover-prefix} > a:focus {
       text-decoration: none;
       background-color: @pagination-hover-bg;
     }
@@ -43,7 +43,7 @@
 
   .disabled {
     > a,
-    > a:hover,
+    @{hover-prefix} > a:hover,
     > a:focus,
     > span {
       color: @pager-disabled-color;

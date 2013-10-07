@@ -36,7 +36,7 @@
   background-repeat: repeat-x;
   border-color: darken(@btn-color, 14%);
 
-  &:hover,
+  @{hover-prefix} &:hover,
   &:focus  {
     background-color: darken(@btn-color, 12%);
     background-position: 0 -15px;
@@ -83,13 +83,13 @@
 // Dropdowns
 // --------------------------------------------------
 
-.dropdown-menu > li > a:hover,
+@{hover-prefix} .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
   #gradient > .vertical(@start-color: @dropdown-link-hover-bg; @end-color: darken(@dropdown-link-hover-bg, 5%));
   background-color: darken(@dropdown-link-hover-bg, 5%);
 }
 .dropdown-menu > .active > a,
-.dropdown-menu > .active > a:hover,
+@{hover-prefix} .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
   #gradient > .vertical(@start-color: @dropdown-link-active-bg; @end-color: darken(@dropdown-link-active-bg, 5%));
   background-color: darken(@dropdown-link-active-bg, 5%);
@@ -199,7 +199,7 @@
   .box-shadow(0 1px 2px rgba(0,0,0,.075));
 }
 .list-group-item.active,
-.list-group-item.active:hover,
+@{hover-prefix} .list-group-item.active:hover,
 .list-group-item.active:focus {
   text-shadow: 0 -1px 0 darken(@list-group-active-bg, 10%);
   #gradient > .vertical(@start-color: @list-group-active-bg; @end-color: darken(@list-group-active-bg, 7.5%));
