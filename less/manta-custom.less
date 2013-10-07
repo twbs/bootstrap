@@ -124,6 +124,11 @@ h1.strong,h2.strong,h3.strong,h4.strong,h5.strong,h6.strong,
 .breadcrumb {
   border-radius: @breadcrumb-border-radius;
   font-size: 10px;
+  > li {
+    &+li:before {
+      content: ">\00a0"; // Unicode space added since inline-block means non-collapsing white-space
+    }
+  }
 }
 
 //------------------ sub navbar overrides ------------

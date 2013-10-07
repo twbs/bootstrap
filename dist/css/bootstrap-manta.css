@@ -7205,6 +7205,10 @@ h6.strong,
   border-radius: 0;
 }
 
+.breadcrumb > li + li:before {
+  content: ">\00a0";
+}
+
 .navbar-default.navbar {
   z-index: 990;
   min-height: 25px;
