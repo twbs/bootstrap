@@ -303,7 +303,7 @@ body {
   font-family: arial, helvetica, clean, sans-serif;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #898989;
+  color: #252525;
   background-color: #cccccc;
 }
 
@@ -375,7 +375,7 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid #f1f1f1;
+  border-top: 1px solid #dddddd;
 }
 
 .sr-only {
@@ -415,7 +415,7 @@ cite {
 }
 
 .text-muted {
-  color: #cccccc;
+  color: #aaaaaa;
 }
 
 .text-primary {
@@ -481,7 +481,7 @@ h6 small,
 .h6 small {
   font-weight: normal;
   line-height: 1;
-  color: #cccccc;
+  color: #aaaaaa;
 }
 
 h1,
@@ -548,7 +548,7 @@ h4 small,
 .page-header {
   padding-bottom: 9px;
   margin: 40px 0 20px;
-  border-bottom: 1px solid #f1f1f1;
+  border-bottom: 1px solid #dddddd;
 }
 
 ul,
@@ -631,7 +631,7 @@ dd {
 abbr[title],
 abbr[data-original-title] {
   cursor: help;
-  border-bottom: 1px dotted #cccccc;
+  border-bottom: 1px dotted #aaaaaa;
 }
 
 abbr.initialism {
@@ -642,7 +642,7 @@ abbr.initialism {
 blockquote {
   padding: 10px 20px;
   margin: 0 0 20px;
-  border-left: 5px solid #f1f1f1;
+  border-left: 5px solid #dddddd;
 }
 
 blockquote p {
@@ -658,7 +658,7 @@ blockquote p:last-child {
 blockquote small {
   display: block;
   line-height: 1.428571429;
-  color: #cccccc;
+  color: #aaaaaa;
 }
 
 blockquote small:before {
@@ -668,7 +668,7 @@ blockquote small:before {
 blockquote.pull-right {
   padding-right: 15px;
   padding-left: 0;
-  border-right: 5px solid #f1f1f1;
+  border-right: 5px solid #dddddd;
   border-left: 0;
 }
 
@@ -719,7 +719,7 @@ pre {
   margin: 0 0 10px;
   font-size: 13px;
   line-height: 1.428571429;
-  color: #898989;
+  color: #555555;
   word-break: break-all;
   word-wrap: break-word;
   background-color: #f1f1f1;
@@ -1635,7 +1635,7 @@ legend {
   margin-bottom: 20px;
   font-size: 21px;
   line-height: inherit;
-  color: #898989;
+  color: #555555;
   border: 0;
   border-bottom: 1px solid #dddddd;
 }
@@ -1690,19 +1690,19 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .form-control:-moz-placeholder {
-  color: #cccccc;
+  color: #aaaaaa;
 }
 
 .form-control::-moz-placeholder {
-  color: #cccccc;
+  color: #aaaaaa;
 }
 
 .form-control:-ms-input-placeholder {
-  color: #cccccc;
+  color: #aaaaaa;
 }
 
 .form-control::-webkit-input-placeholder {
-  color: #cccccc;
+  color: #aaaaaa;
 }
 
 .form-control {
@@ -1712,7 +1712,7 @@ input[type="number"]::-webkit-inner-spin-button {
   padding: 5px 10px;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #aaaaaa;
+  color: #898989;
   vertical-align: middle;
   background-color: #ffffff;
   border: 1px solid #cccccc;
@@ -1734,7 +1734,7 @@ input[type="number"]::-webkit-inner-spin-button {
 .form-control[readonly],
 fieldset[disabled] .form-control {
   cursor: not-allowed;
-  background-color: #f1f1f1;
+  background-color: #dddddd;
 }
 
 textarea.form-control {
@@ -1919,7 +1919,7 @@ textarea.input-lg {
   display: block;
   margin-top: 5px;
   margin-bottom: 10px;
-  color: #c9c9c9;
+  color: #656565;
 }
 
 @media (min-width: 768px) {
@@ -2317,7 +2317,7 @@ fieldset[disabled] .btn-link {
 fieldset[disabled] .btn-link:hover,
 .btn-link[disabled]:focus,
 fieldset[disabled] .btn-link:focus {
-  color: #cccccc;
+  color: #aaaaaa;
   text-decoration: none;
 }
 
@@ -3260,7 +3260,7 @@ input[type="button"].btn-block {
   clear: both;
   font-weight: normal;
   line-height: 1.428571429;
-  color: #898989;
+  color: #555555;
   white-space: nowrap;
 }
 
@@ -3283,7 +3283,7 @@ input[type="button"].btn-block {
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,
 .dropdown-menu > .disabled > a:focus {
-  color: #cccccc;
+  color: #aaaaaa;
 }
 
 .dropdown-menu > .disabled > a:hover,
@@ -3308,7 +3308,7 @@ input[type="button"].btn-block {
   padding: 3px 20px;
   font-size: 12px;
   line-height: 1.428571429;
-  color: #cccccc;
+  color: #aaaaaa;
 }
 
 .dropdown-backdrop {
@@ -3707,7 +3707,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   font-weight: normal;
   line-height: 1;
   text-align: center;
-  background-color: #f1f1f1;
+  background-color: #dddddd;
   border: 1px solid #cccccc;
   border-radius: 5px;
 }
@@ -3813,16 +3813,16 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #f1f1f1;
+  background-color: #dddddd;
 }
 
 .nav > li.disabled > a {
-  color: #cccccc;
+  color: #aaaaaa;
 }
 
 .nav > li.disabled > a:hover,
 .nav > li.disabled > a:focus {
-  color: #cccccc;
+  color: #aaaaaa;
   text-decoration: none;
   cursor: not-allowed;
   background-color: transparent;
@@ -3831,7 +3831,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
-  background-color: #f1f1f1;
+  background-color: #dddddd;
   border-color: #006ba5;
 }
 
@@ -3863,13 +3863,13 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .nav-tabs > li > a:hover {
-  border-color: #f1f1f1 #f1f1f1 #dddddd;
+  border-color: #dddddd #dddddd #dddddd;
 }
 
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
-  color: #aaaaaa;
+  color: #898989;
   cursor: default;
   background-color: #cccccc;
   border: 1px solid #dddddd;
@@ -4627,7 +4627,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .breadcrumb > .active {
-  color: #cccccc;
+  color: #aaaaaa;
 }
 
 .pagination {
@@ -4670,7 +4670,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
-  background-color: #f1f1f1;
+  background-color: #dddddd;
 }
 
 .pagination > .active > a,
@@ -4690,7 +4690,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pagination > .disabled > a,
 .pagination > .disabled > a:hover,
 .pagination > .disabled > a:focus {
-  color: #cccccc;
+  color: #aaaaaa;
   cursor: not-allowed;
   background-color: #ffffff;
   border-color: #dddddd;
@@ -4775,7 +4775,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pager li > a:hover,
 .pager li > a:focus {
   text-decoration: none;
-  background-color: #f1f1f1;
+  background-color: #dddddd;
 }
 
 .pager .next > a,
@@ -4792,7 +4792,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pager .disabled > a:hover,
 .pager .disabled > a:focus,
 .pager .disabled > span {
-  color: #cccccc;
+  color: #aaaaaa;
   cursor: not-allowed;
   background-color: #ffffff;
 }
@@ -4822,12 +4822,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .label-default {
-  background-color: #cccccc;
+  background-color: #aaaaaa;
 }
 
 .label-default[href]:hover,
 .label-default[href]:focus {
-  background-color: #b3b3b3;
+  background-color: #919191;
 }
 
 .label-primary {
@@ -4886,7 +4886,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  background-color: #cccccc;
+  background-color: #aaaaaa;
   border-radius: 10px;
 }
 
@@ -4923,7 +4923,7 @@ a.list-group-item.active > .badge,
   font-weight: 200;
   line-height: 2.1428571435;
   color: inherit;
-  background-color: #f1f1f1;
+  background-color: #dddddd;
 }
 
 .jumbotron h1 {
@@ -4985,7 +4985,7 @@ a.thumbnail:focus {
 
 .thumbnail .caption {
   padding: 9px;
-  color: #898989;
+  color: #252525;
 }
 
 .alert {
@@ -7064,8 +7064,14 @@ td.visible-print {
   background-color: #ffffff;
 }
 
-.coolLightest {
+.cool-lightest {
   color: #cfe4ee;
+}
+
+.text-default,
+a.text-default:hover,
+a.text-default:active {
+  color: #252525;
 }
 
 .footer {
