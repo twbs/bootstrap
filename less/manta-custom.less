@@ -1,6 +1,15 @@
 // Manta customized LESS file.
 @import "manta-glyphicons.less";
 
+//------------------ variables -----------------------
+
+@well-color:                        @neutralMiddark;
+@subnavbar-height:                  25px;
+@subnavbar-padding-horizontal:      @navbar-padding-horizontal;
+@subnavbar-padding-vertical:        ((@subnavbar-height - @line-height-computed) / 2);
+@well-border-radius:                0;
+@breadcrumb-border-radius:          0;
+
 //------------------ mixins --------------------------
 
 .navbar-search-expander(@screen, @width) {
@@ -28,8 +37,11 @@
   background-color: @neutralWhite;
   margin-top: @navbar-height + @subnavbar-height;
 }
-.coolLightest{
+.cool-lightest {
   color:@coolLightest;
+}
+.text-default, a.text-default:hover, a.text-default:active {
+  color: @text-color;
 }
 
 //----------------- manta footer specific classes-------
@@ -62,9 +74,6 @@
 */
 /*  Shan He's ad-hoc
 */
-.panel-map {
-  margin-bottom: 20px;
-}
 
 .fs-small {
   font-size: @font-size-small;
@@ -75,8 +84,20 @@
   .navbar-search-expander(@screen-md, 326px);
 }
 
-h1, .h1 {
+h1, h2, h3,
+.h1, .h2, .h3 {
   font-family: @font-family-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: (@line-height-computed / 4);
+}
+
+.strong,
+h1.strong,h2.strong,h3.strong,h4.strong,h5.strong,h6.strong,
+.h1.strong,.h2.strong,.h3.strong,.h4.strong,.h5.strong,.h6.strong {
+  font-weight: bold;
 }
 
 .list-group-item {
@@ -93,12 +114,19 @@ h1, .h1 {
   }
 }
 
+.well {
+  color: @well-color;
+}
+.well, .well-lg, .well-sm {
+  border-radius: @well-border-radius;
+}
+
+.breadcrumb {
+  border-radius: @breadcrumb-border-radius;
+  font-size: 10px;
+}
 
 //------------------ sub navbar overrides ------------
-
-@subnavbar-height:                    25px;
-@subnavbar-padding-horizontal:        @navbar-padding-horizontal;
-@subnavbar-padding-vertical:          ((@subnavbar-height - @line-height-computed) / 2);
 
 .navbar-default.navbar {
   z-index: @zindex-navbar - 10;

@@ -46,10 +46,10 @@
 // -------------------------
 
 @gray-darker:            @neutralDarkest; //lighten(#000, 13.5%); // #222
-@gray-dark:              @neutralMiddark; //lighten(#000, 20%);   // #333
-@gray:                   @neutralMidlight; //lighten(#000, 33.5%); // #555
-@gray-light:             @neutralLight; //lighten(#000, 60%);   // #999
-@gray-lighter:           @neutralLightest; //lighten(#000, 93.5%); // #eee
+@gray-dark:              @neutralDarker; //lighten(#000, 20%);   // #333
+@gray:                   @neutralMiddark; //lighten(#000, 33.5%); // #555
+@gray-light:             @neutralMidlight; //lighten(#000, 60%);   // #999
+@gray-lighter:           @neutralLighter; //lighten(#000, 93.5%); // #eee
 
 // Brand colors
 // -------------------------
@@ -64,7 +64,7 @@
 // -------------------------
 
 @body-bg:               @neutralLight; //@neutralWhite;
-@text-color:            @gray-dark;
+@text-color:            @gray-darker;
 
 // Links
 // -------------------------
@@ -84,8 +84,8 @@
 @font-size-large:         ceil(@font-size-base * 1.25); // ~18px
 @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 
-@line-height-base:        1.428571429; // 20/14
-@line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
+@line-height-base:        1.2;
+@line-height-computed:    floor(@font-size-base * @line-height-base); // 16.8px
 
 @headings-font-family:    @font-family-base;
 @headings-font-weight:    500;
@@ -529,7 +529,7 @@
 // -------------------------
 @panel-bg:                    @neutralWhite; //@neutralWhite;
 @panel-inner-border:          @neutralLighter;
-@panel-border-radius:         @border-radius-base;
+@panel-border-radius:         0;
 @panel-footer-bg:             @neutralLightest;
 
 @panel-default-text:          @navbar-inverse-color; //@neutralWhite;
@@ -570,7 +570,7 @@
 
 // Wells
 // -------------------------
-@well-bg:                     @neutralLightest; //@neutralLightest;
+@well-bg:                     @neutralLightest;
 
 
 // Badges
@@ -589,10 +589,9 @@
 
 // Breadcrumbs
 // -------------------------
-@breadcrumb-bg:               @neutralLightest;
-@breadcrumb-color:            @neutralLight;
-@breadcrumb-active-color:     @gray-light;
-
+@breadcrumb-bg:               @body-bg;
+@breadcrumb-color:            @gray-dark;
+@breadcrumb-active-color:     @gray;
 
 // Carousel
 // ------------------------
