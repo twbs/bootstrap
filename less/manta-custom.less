@@ -7,7 +7,8 @@
 @subnavbar-height:                  25px;
 @subnavbar-padding-horizontal:      @navbar-padding-horizontal;
 @subnavbar-padding-vertical:        ((@subnavbar-height - @line-height-computed) / 2);
-
+@well-border-radius:                0;
+@breadcrumb-border-radius:          0;
 
 //------------------ mixins --------------------------
 
@@ -83,8 +84,14 @@
   .navbar-search-expander(@screen-md, 326px);
 }
 
-h1, .h1, h2, .h2, h3, .h3 {
+h1, h2, h3,
+.h1, .h2, .h3 {
   font-family: @font-family-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: (@line-height-computed / 4);
 }
 
 .strong,
@@ -110,7 +117,14 @@ h1.strong,h2.strong,h3.strong,h4.strong,h5.strong,h6.strong,
 .well {
   color: @well-color;
 }
+.well, .well-lg, .well-sm {
+  border-radius: @well-border-radius;
+}
 
+.breadcrumb {
+  border-radius: @breadcrumb-border-radius;
+  font-size: 10px;
+}
 
 //------------------ sub navbar overrides ------------
 

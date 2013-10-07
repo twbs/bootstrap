@@ -4612,7 +4612,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   padding: 8px 15px;
   margin-bottom: 16px;
   list-style: none;
-  background-color: #f1f1f1;
+  background-color: #cccccc;
   border-radius: 5px;
 }
 
@@ -4622,12 +4622,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .breadcrumb > li + li:before {
   padding: 0 5px;
-  color: #cccccc;
+  color: #555555;
   content: "/\00a0";
 }
 
 .breadcrumb > .active {
-  color: #aaaaaa;
+  color: #898989;
 }
 
 .pagination {
@@ -5318,7 +5318,7 @@ a.list-group-item:focus {
   margin-bottom: 16px;
   background-color: #ffffff;
   border: 1px solid transparent;
-  border-radius: 5px;
+  border-radius: 0;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
           box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
@@ -5379,8 +5379,8 @@ a.list-group-item:focus {
 .panel-heading {
   padding: 10px 15px;
   border-bottom: 1px solid transparent;
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
+  border-top-right-radius: -1;
+  border-top-left-radius: -1;
 }
 
 .panel-title {
@@ -5397,14 +5397,14 @@ a.list-group-item:focus {
   padding: 10px 15px;
   background-color: #f1f1f1;
   border-top: 1px solid #dddddd;
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: -1;
+  border-bottom-left-radius: -1;
 }
 
 .panel-group .panel {
   margin-bottom: 0;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 0;
 }
 
 .panel-group .panel + .panel {
@@ -7133,12 +7133,27 @@ a.text-default:active {
 }
 
 h1,
-.h1,
 h2,
-.h2,
 h3,
+.h1,
+.h2,
 .h3 {
   font-family: 'vegurlight', arial, helvetica, clean, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  margin-bottom: 4px;
 }
 
 .strong,
@@ -7177,6 +7192,17 @@ h6.strong,
 
 .well {
   color: #898989;
+}
+
+.well,
+.well-lg,
+.well-sm {
+  border-radius: 0;
+}
+
+.breadcrumb {
+  font-size: 10px;
+  border-radius: 0;
 }
 
 .navbar-default.navbar {
