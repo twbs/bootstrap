@@ -424,7 +424,7 @@ base_url: "../"
   // Then clear the floated columns
   .clearfix();
 
-  @media (min-width: @screen-sm) {
+  @media (min-width: @screen-sm-min) {
     margin-left:  (@gutter / -2);
     margin-right: (@gutter / -2);
   }
@@ -462,7 +462,7 @@ base_url: "../"
   padding-right: (@gutter / 2);
 
   // Calculate width based on number of columns available
-  @media (min-width: @screen-sm) {
+  @media (min-width: @screen-sm-min) {
     float: left;
     width: percentage((@columns / @grid-columns));
   }
@@ -470,17 +470,17 @@ base_url: "../"
 
 // Generate the small column offsets
 .make-sm-column-offset(@columns) {
-  @media (min-width: @screen-sm) {
+  @media (min-width: @screen-sm-min) {
     margin-left: percentage((@columns / @grid-columns));
   }
 }
 .make-sm-column-push(@columns) {
-  @media (min-width: @screen-sm) {
+  @media (min-width: @screen-sm-min) {
     left: percentage((@columns / @grid-columns));
   }
 }
 .make-sm-column-pull(@columns) {
-  @media (min-width: @screen-sm) {
+  @media (min-width: @screen-sm-min) {
     right: percentage((@columns / @grid-columns));
   }
 }
@@ -495,7 +495,7 @@ base_url: "../"
   padding-right: (@gutter / 2);
 
   // Calculate width based on number of columns available
-  @media (min-width: @screen-md) {
+  @media (min-width: @screen-md-min) {
     float: left;
     width: percentage((@columns / @grid-columns));
   }
@@ -503,17 +503,17 @@ base_url: "../"
 
 // Generate the medium column offsets
 .make-md-column-offset(@columns) {
-  @media (min-width: @screen-md) {
+  @media (min-width: @screen-md-min) {
     margin-left: percentage((@columns / @grid-columns));
   }
 }
 .make-md-column-push(@columns) {
-  @media (min-width: @screen-md) {
+  @media (min-width: @screen-md-min) {
     left: percentage((@columns / @grid-columns));
   }
 }
 .make-md-column-pull(@columns) {
-  @media (min-width: @screen-md) {
+  @media (min-width: @screen-md-min) {
     right: percentage((@columns / @grid-columns));
   }
 }
@@ -528,7 +528,7 @@ base_url: "../"
   padding-right: (@gutter / 2);
 
   // Calculate width based on number of columns available
-  @media (min-width: @screen-lg) {
+  @media (min-width: @screen-lg-min) {
     float: left;
     width: percentage((@columns / @grid-columns));
   }
@@ -536,17 +536,17 @@ base_url: "../"
 
 // Generate the large column offsets
 .make-lg-column-offset(@columns) {
-  @media (min-width: @screen-lg) {
+  @media (min-width: @screen-lg-min) {
     margin-left: percentage((@columns / @grid-columns));
   }
 }
 .make-lg-column-push(@columns) {
-  @media (min-width: @screen-lg) {
+  @media (min-width: @screen-lg-min) {
     left: percentage((@columns / @grid-columns));
   }
 }
 .make-lg-column-pull(@columns) {
-  @media (min-width: @screen-lg) {
+  @media (min-width: @screen-lg-min) {
     right: percentage((@columns / @grid-columns));
   }
 }
