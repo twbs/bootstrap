@@ -84,6 +84,14 @@
   .navbar-search-expander(@screen-md, 326px);
 }
 
+//
+// Typography
+// -------------------------------------------------
+
+p {
+  margin: 0 0 floor(@line-height-computed * 0.75);
+}
+
 h1, h2, h3,
 .h1, .h2, .h3 {
   font-family: @font-family-serif;
@@ -92,6 +100,7 @@ h1, h2, h3,
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: (@line-height-computed / 4);
+  margin-top: 0;
 }
 
 .strong,
