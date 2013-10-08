@@ -248,7 +248,16 @@
 @grid-gutter-width:         30px;
 // Point at which the navbar stops collapsing
 @grid-float-breakpoint:     @screen-sm;
-@grid-float-breakpoint-max: max(0,grid-float-breakpoint-1);
+//define @grid-float-breakpoint-max, always >= 0
+.grid-float-breakpoint-max(@a)
+{
+   @grid-float-breakpoint-max: 0;
+}
+.grid-float-breakpoint-max(@a) when (@a>0)
+{
+   @grid-float-breakpoint-max: @a;
+}
+.grid-float-breakpoint-max( (@grid-float-breakpoint - 1) );
 
 // Navbar
 // -------------------------
