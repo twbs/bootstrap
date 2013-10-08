@@ -18,7 +18,7 @@ We only accept issues that are bug reports or feature requests. Bugs must be iso
 ## Pull requests
 
 - CSS changes must be done in `.less` files first, never just the compiled `.css` files
-- If modifying the `.less` files, always recompile and commit the compiled files `bootstrap.css` and `bootstrap.min.css`
+- If modifying the `.less` files, always recompile and commit the compiled files `bootstrap-tobi.css` and `bootstrap-tobi.min.css`
 - Try not to pollute your pull request with unintended changes--keep them simple and small
 - Try to share which browsers your code has been tested in before submitting a pull request
 - Pull requests should always be against the `master` branch, never against `gh-pages`.

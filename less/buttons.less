@@ -11,7 +11,8 @@
   display: inline-block;
   padding: @padding-base-vertical @padding-base-horizontal;
   margin-bottom: 0; // For input.btn
-  font-size: @font-size-base;
+  font-family: @btn-font-family;
+  font-size: @font-size-large;
   font-weight: @btn-font-weight;
   line-height: @line-height-base;
   text-align: center;
@@ -21,6 +22,7 @@
   border: 1px solid transparent;
   border-radius: @border-radius-base;
   white-space: nowrap;
+  text-transform: uppercase;
   .user-select(none);
 
   &:focus {
@@ -121,20 +123,18 @@
 
 // Button Sizes
 // --------------------------------------------------
-
 .btn-lg {
   // line-height: ensure even-numbered height of button next to large input
-  .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
+  .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-extra-large; @line-height-extra-large; @border-radius-large);
 }
-.btn-sm,
+.btn-sm {
+  // line-height: ensure proper height of button next to small input
+  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-base; @line-height-small; @border-radius-small);
+}
 .btn-xs {
   // line-height: ensure proper height of button next to small input
-  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+  .button-size(@padding-extra-small-vertical; @padding-extra-small-horizontal; @font-size-base; @line-height-small; @border-radius-small);
 }
-.btn-xs {
-  padding: 1px 5px;
-}
-
 
 // Block button
 // --------------------------------------------------

@@ -9,11 +9,11 @@
 // Grays
 // -------------------------
 
-@gray-darker:            lighten(#000, 13.5%); // #222
+@gray-darker:            lighten(#000, 20%);   // #333
 @gray-dark:              lighten(#000, 20%);   // #333
-@gray:                   lighten(#000, 33.5%); // #555
+@gray:                   lighten(#000, 40%);   // #666
 @gray-light:             lighten(#000, 60%);   // #999
-@gray-lighter:           lighten(#000, 93.5%); // #eee
+@gray-lighter:           lighten(#000, 80%);  // #ccc
 
 // Brand colors
 // -------------------------
@@ -39,26 +39,32 @@
 // Typography
 // -------------------------
 
-@font-family-sans-serif:  "ProximaNova-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-serif:       Georgia, "Times New Roman", Times, serif;
-@font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
-@font-family-base:        @font-family-sans-serif;
+@font-family-sans-serif:  								"ProximaNova-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-sans-serif-condensed: 				"ProximaNova-Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-sans-serif-extra-condensed: 	"ProximaNova-ExtraCondensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif:       								Georgia, "Times New Roman", Times, serif;
+@font-family-monospace:   								Monaco, Menlo, Consolas, "Courier New", monospace;
+@font-family-base:        								@font-family-sans-serif;
+@font-family-base-condensed:							@font-family-sans-serif-condensed;
+@font-family-base-extra-condensed: 				@font-family-sans-serif-extra-condensed;
 
-@font-size-base:          14px;
-@font-size-large:         ceil(@font-size-base * 1.25); // ~18px
-@font-size-small:         ceil(@font-size-base * 0.85); // ~12px
+@font-size-base:          14px; // 14px (based on 16px browser norm)
+@font-size-large:         ceil(@font-size-base * 1.28); // ~18px
+@font-size-extra-large:		ceil(@font-size-base * 1.5); // ~21px
+@font-size-small:   			ceil(@font-size-base * 0.9); // ~13px
+@font-size-extra-small:   ceil(@font-size-base * 0.85); // ~12px
 
-@font-size-h1:            floor(@font-size-base * 2.60); // ~36px
-@font-size-h2:            floor(@font-size-base * 2.15); // ~30px
+@font-size-h1:            floor(@font-size-base * 3.43); // ~48px
+@font-size-h2:            floor(@font-size-base * 2.285); // ~32px
 @font-size-h3:            ceil(@font-size-base * 1.70); // ~24px
-@font-size-h4:            ceil(@font-size-base * 1.25); // ~18px
-@font-size-h5:            @font-size-base;
-@font-size-h6:            ceil(@font-size-base * 0.85); // ~12px
+@font-size-h4:            ceil(@font-size-base * 1.5); // ~21px
+@font-size-h5:            ceil(@font-size-base * 1.25); // ~18px
+@font-size-h6:            @font-size-base;
 
 @line-height-base:        1.428571429; // 20/14
 @line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
 
-@headings-font-family:    @font-family-base;
+@headings-font-family:    @font-family-base-extra-condensed;
 @headings-font-weight:    500;
 @headings-line-height:    1.1;
 @headings-color:          inherit;
@@ -78,14 +84,19 @@
 @padding-base-vertical:          6px;
 @padding-base-horizontal:        12px;
 
-@padding-large-vertical:         10px;
-@padding-large-horizontal:       16px;
+@padding-large-vertical:         8px;
+@padding-large-horizontal:       14px;
 
 @padding-small-vertical:         5px;
 @padding-small-horizontal:       10px;
 
-@line-height-large:              1.33;
-@line-height-small:              1.5;
+@padding-extra-small-vertical:   3px;
+@padding-extra-small-horizontal: 5px;
+
+@line-height-large:              floor(@font-size-large * @line-height-base);
+@line-height-extra-large:        floor(@font-size-extra-large * @line-height-base);;
+@line-height-small:              floor(@font-size-small * @line-height-base);;
+@line-height-extra-small:        floor(@font-size-extra-small * @line-height-base);;
 
 @border-radius-base:             0;
 @border-radius-large:            0;
@@ -113,7 +124,7 @@
 
 // Buttons
 // -------------------------
-
+@btn-font-family:								 @font-family-base-extra-condensed;
 @btn-font-weight:                normal;
 
 @btn-default-color:              #333;
@@ -375,21 +386,21 @@
 // Form states and alerts
 // -------------------------
 
-@state-success-text:             #468847;
-@state-success-bg:               #dff0d8;
-@state-success-border:           darken(spin(@state-success-bg, -10), 5%);
+@state-success-text:             #06753c;
+@state-success-bg:               #fff;
+@state-success-border:           @state-success-bg;
 
 @state-info-text:                #3a87ad;
-@state-info-bg:                  #d9edf7;
-@state-info-border:              darken(spin(@state-info-bg, -10), 7%);
+@state-info-bg:                  #fff;
+@state-info-border:              @state-info-bg;
 
 @state-warning-text:             #c09853;
-@state-warning-bg:               #fcf8e3;
-@state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
+@state-warning-bg:               #fff;
+@state-warning-border:           @state-warning-bg;
 
-@state-danger-text:              #b94a48;
-@state-danger-bg:                #f2dede;
-@state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
+@state-danger-text:              #cc0000;
+@state-danger-bg:                #fff;
+@state-danger-border:            @state-danger-bg;
 
 
 // Tooltips

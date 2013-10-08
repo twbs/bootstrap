@@ -10,49 +10,65 @@ base_url: "../"
   <!-- Getting started
   ================================================== -->
   <div class="bs-docs-section">
-    <div class="page-header">
-      <h1 id="download">Download Bootstrap</h1>
-    </div>
-    <p class="lead">Bootstrap has a few easy ways to quickly get started, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
 
-    <h3 id="download-compiled">Compiled CSS, JS, and fonts</h3>
-    <p>The fastest way to get Bootstrap is to download the precompiled and minified versions of our CSS, JavaScript, and fonts. No documentation or original source code files are included.</p>
-    <p><a class="btn btn-lg btn-primary" href="{{ site.download_dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);" role="button">Download precompiled Bootstrap</a></p>
 
-    <h3 id="download-additional">Additional downloads</h3>
-    <div class="bs-docs-dl-options">
-      <h4>
-        <a href="{{ site.download_source }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download source code</a>
-      </h4>
-      <p>Get the latest Bootstrap LESS and JavaScript source code by downloading it directly from GitHub.</p>
-      <h4>
-        <a href="{{ site.repo }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'GitHub project']);">Clone or fork via GitHub</a>
-      </h4>
-      <p>Visit us on GitHub to clone or fork the Bootstrap project.</p>
-      <h4>
-        Install with <a href="http://bower.io">Bower</a>
-      </h4>
-      <p>Install and manage Bootstrap's styles, JavaScript, and documentation using <a href="http://bower.io">Bower</a>.</p>
-      {% highlight bash %}$ bower install bootstrap{% endhighlight %}
-    </div>
+		<h3 id="running_documentation_locally">Running documentation locally</h3>
 
-    <h3 id="download-cdn">Bootstrap CDN</h3>
-    <p>The folks over at <a href="http://www.maxcdn.com/">MaxCDN</a> graciously provide CDN support for Bootstrap's CSS and JavaScript. Just use these <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links.</p>
-{% highlight html %}
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="{{ site.cdn_css }}">
+		<ol>
+		<li>If necessary, <a href="http://jekyllrb.com/docs/installation">install Jekyll</a> (requires v1.x).</li>
+		<li>From the root <code>/bootstrap</code> directory, run <code>jekyll serve</code> in the command line.
+		<ul>
+		<li><strong>Windows users:</strong> run <code>chcp 65001</code> first to change the command prompt&#8217;s character encoding (<a href="http://en.wikipedia.org/wiki/Windows_code_page">code page</a>) to UTF-8 so Jekyll runs without errors.</li>
+		</ul></li>
+		<li>Open <a href="http://localhost:9001">http://localhost:9001</a> in your browser, and voilà.</li>
+		</ol>
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="{{ site.cdn_theme_css }}">
+		<p>Learn more about using Jekyll by reading their <a href="http://jekyllrb.com/docs/home/">documentation</a>.</p>
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="{{ site.cdn_js }}"></script>
-{% endhighlight %}
+		<h3 id="documentation_for_previous_releases">Documentation for previous releases</h3>
 
-    <div class="bs-callout bs-callout-warning" id="callout-less-compilation">
-      <h4>Compiling Bootstrap's LESS files</h4>
-      <p>If you work with Bootstrap's uncompiled source code, you need to compile the LESS files to produce usable CSS files. For compiling LESS files into CSS, we only officially support <a href="http://twitter.github.io/recess/">Recess</a>, which is Twitter's CSS hinter based on <a href="http://lesscss.org">less.js</a>.</p>
-    </div>
+		<p>Documentation for v2.3.2 has been made available for the time being at <a href="http://getbootstrap.com/2.3.2/">http://getbootstrap.com/2.3.2/</a> while folks transition to Bootstrap 3.</p>
+
+		<p><a href="https://github.com/twbs/bootstrap/releases">Previous releases</a> and their documentation are also available for download.</p>
+
+		<h2 id="compiling_css_and_javascript">Compiling CSS and JavaScript</h2>
+
+		<p>Bootstrap uses <a href="http://gruntjs.com/">Grunt</a> with convenient methods for working with the framework. It&#8217;s how we compile our code, run tests, and more. To use it, install the required dependencies as directed and then run some Grunt commands.</p>
+
+		<h3 id="install_grunt">Install Grunt</h3>
+
+		<p>From the command line:</p>
+
+		<ol>
+		<li>Install <code>grunt-cli</code> globally with <code>npm install -g grunt-cli</code>.</li>
+		<li>Navigate to the root <code>/bootstrap</code> directory, then run <code>npm install</code>. npm will look at <a href="package.json">package.json</a> and automatically install the necessary local dependencies listed there.</li>
+		</ol>
+
+		<p>When completed, you&#8217;ll be able to run the various Grunt commands provided from the command line.</p>
+
+		<p><strong>Unfamiliar with <code>npm</code>? Don&#8217;t have node installed?</strong> That&#8217;s a-okay. npm stands for <a href="http://npmjs.org/">node packaged modules</a> and is a way to manage development dependencies through node.js. <a href="http://nodejs.org/download/">Download and install node.js</a> before proceeding.</p>
+
+		<h3 id="available_grunt_commands">Available Grunt commands</h3>
+
+		<h4 id="build_grunt">Build - <code>grunt</code></h4>
+
+		<p>Run <code>grunt</code> to run tests locally and compile the CSS and JavaScript into <code>/dist</code>. <strong>Uses <a href="http://twitter.github.io/recess/">recess</a> and <a href="http://lisperator.net/uglifyjs/">UglifyJS</a>.</strong></p>
+
+		<h4 id="only_compile_css_and_javascript_grunt_dist">Only compile CSS and JavaScript - <code>grunt dist</code></h4>
+
+		<p><code>grunt dist</code> creates the <code>/dist</code> directory with compiled files. <strong>Uses <a href="http://twitter.github.io/recess/">recess</a> and <a href="http://lisperator.net/uglifyjs/">UglifyJS</a>.</strong></p>
+
+		<h4 id="tests_grunt_test">Tests - <code>grunt test</code></h4>
+
+		<p>Runs <a href="http://jshint.com">JSHint</a> and <a href="http://qunitjs.com/">QUnit</a> tests headlessly in <a href="http://phantomjs.org/">PhantomJS</a> (used for CI).</p>
+
+		<h4 id="watch_grunt_watch">Watch - <code>grunt watch</code></h4>
+
+		<p>This is a convenience method for watching just Less files and automatically building them whenever you save.</p>
+
+		<h3 id="troubleshooting_dependencies">Troubleshooting dependencies</h3>
+
+		<p>Should you encounter problems with installing dependencies or running Grunt commands, uninstall all previous dependency versions (global and local). Then, rerun <code>npm install</code>.</p>
   </div>
 
   <!-- File structure
@@ -69,13 +85,13 @@ Copy any changes made here over to the README too. -->
 {% highlight bash %}
 bootstrap/
 ├── css/
-│   ├── bootstrap.css
-│   ├── bootstrap.min.css
-│   ├── bootstrap-theme.css
-│   └── bootstrap-theme.min.css
+│   ├── bootstrap-tobi.css
+│   ├── bootstrap-tobi.min.css
+│   ├── bootstrap-tobi-theme.css
+│   └── bootstrap-tobi-theme.min.css
 ├── js/
-│   ├── bootstrap.js
-│   └── bootstrap.min.js
+│   ├── bootstrap-tobi.js
+│   └── bootstrap-tobi.min.js
 └── fonts/
     ├── glyphicons-halflings-regular.eot
     ├── glyphicons-halflings-regular.svg
@@ -83,11 +99,7 @@ bootstrap/
     └── glyphicons-halflings-regular.woff
 {% endhighlight %}
 
-    <p>This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). Fonts from Glyphicons are included, as is the optional Bootstrap theme.</p>
-    <div class="bs-callout bs-callout-danger">
-      <h4>jQuery required</h4>
-      <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included, as shown in the <a href="#template">starter template</a>. <a href="{{ site.repo }}/blob/v{{ site.current_version }}/bower.json">Consult our <code>bower.json</code></a> to see which versions of jQuery are supported.</p>
-    </div>
+    <p>This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap-tobi.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap-tobi.min.*</code>). Fonts from Glyphicons are included, as is the optional Bootstrap theme.</p>
   </div>
 
 
@@ -107,7 +119,7 @@ bootstrap/
     <title>Bootstrap 101 Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-tobi.min.css" rel="stylesheet" media="screen">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -121,7 +133,7 @@ bootstrap/
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-tobi.min.js"></script>
   </body>
 </html>
 {% endhighlight %}
