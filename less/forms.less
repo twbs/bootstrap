@@ -27,7 +27,7 @@ legend {
 
 label {
   display: inline-block;
-  margin-bottom: 5px;
+  margin-bottom: @label-margin-bottom;
 	font-size: @font-size-small;
   font-weight: bold;
 }
@@ -130,7 +130,7 @@ output {
   height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   padding: @padding-base-vertical @padding-base-horizontal;
   font-size: @font-size-base;
-  line-height: @line-height-base;
+  line-height: @line-height-computed;
   color: @input-color;
   vertical-align: middle;
   background-color: @input-bg;

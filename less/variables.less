@@ -10,16 +10,16 @@
 // -------------------------
 
 @gray-darker:            lighten(#000, 20%);   // #333
-@gray-dark:              lighten(#000, 20%);   // #333
-@gray:                   lighten(#000, 40%);   // #666
-@gray-light:             lighten(#000, 60%);   // #999
-@gray-lighter:           lighten(#000, 80%);  // #ccc
+@gray-dark:              lighten(#000, 40%);   // #666
+@gray:                   lighten(#000, 60%);   // #999
+@gray-light:             lighten(#000, 80%);   // #ccc
+@gray-lighter:           lighten(#000, 90%);   // #e5e5e5
 
 // Brand colors
 // -------------------------
 
-@brand-primary:         #333;
-@brand-success:         #5cb85c;
+@brand-primary:         #333;    // tobi color
+@brand-success:         #5cb85c; // tobi color
 @brand-warning:         #f0ad4e;
 @brand-danger:          #d9534f;
 @brand-info:            #5bc0de;
@@ -39,6 +39,7 @@
 // Typography
 // -------------------------
 
+// TOBI fonts - ProximaNova Family
 @font-family-sans-serif:  								"ProximaNova-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
 @font-family-sans-serif-condensed: 				"ProximaNova-Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
 @font-family-sans-serif-extra-condensed: 	"ProximaNova-ExtraCondensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -48,24 +49,27 @@
 @font-family-base-condensed:							@font-family-sans-serif-condensed;
 @font-family-base-extra-condensed: 				@font-family-sans-serif-extra-condensed;
 
-@font-size-base:          14px; // 14px (based on 16px browser norm)
-@font-size-large:         ceil(@font-size-base * 1.28); // ~18px
-@font-size-extra-large:		ceil(@font-size-base * 1.5); // ~21px
-@font-size-small:   			ceil(@font-size-base * 0.9); // ~13px
-@font-size-extra-small:   ceil(@font-size-base * 0.85); // ~12px
 
-@font-size-h1:            floor(@font-size-base * 3.43); // ~48px
-@font-size-h2:            floor(@font-size-base * 2.285); // ~32px
-@font-size-h3:            ceil(@font-size-base * 1.70); // ~24px
-@font-size-h4:            ceil(@font-size-base * 1.5); // ~21px
-@font-size-h5:            ceil(@font-size-base * 1.25); // ~18px
-@font-size-h6:            @font-size-base;
+// Tobi Customized Font Sizes
+@font-size-base:          14px; // 14px (based on 16px browser norm)
+@font-size-large:         ceil(@font-size-base * 1.285); 	// ~18px
+@font-size-extra-large:		ceil(@font-size-base * 1.5); 		// ~21px
+@font-size-small:   			ceil(@font-size-base * 0.925); 	// ~13px
+@font-size-extra-small:   ceil(@font-size-base * 0.852); 	// ~12px
+
+@font-size-h1:            floor(@font-size-base * 2.58); 	// ~36px
+@font-size-h2:            floor(@font-size-base * 2.18); 	// ~30px
+@font-size-h3:            ceil(@font-size-base * 1.71); 	// ~24px
+@font-size-h4:            ceil(@font-size-base * 1.5); 		// ~21px
+@font-size-h5:            ceil(@font-size-base * 1.285); 	// 18px
+@font-size-h6:            ceil(@font-size-base * 1); 			// ~14px
 
 @line-height-base:        1.428571429; // 20/14
+
 @line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
 
 @headings-font-family:    @font-family-base-extra-condensed;
-@headings-font-weight:    500;
+@headings-font-weight:    normal;
 @headings-line-height:    1.1;
 @headings-color:          inherit;
 
@@ -84,19 +88,17 @@
 @padding-base-vertical:          6px;
 @padding-base-horizontal:        12px;
 
-@padding-large-vertical:         8px;
-@padding-large-horizontal:       14px;
+@padding-large-vertical:         10px;
+@padding-large-horizontal:       16px;
 
-@padding-small-vertical:         5px;
+@padding-small-vertical:         6px;
 @padding-small-horizontal:       10px;
 
 @padding-extra-small-vertical:   3px;
 @padding-extra-small-horizontal: 5px;
 
-@line-height-large:              floor(@font-size-large * @line-height-base);
-@line-height-extra-large:        floor(@font-size-extra-large * @line-height-base);;
-@line-height-small:              floor(@font-size-small * @line-height-base);;
-@line-height-extra-small:        floor(@font-size-extra-small * @line-height-base);;
+@line-height-large:              1.33;
+@line-height-small:              @line-height-base;
 
 @border-radius-base:             0;
 @border-radius-large:            0;
@@ -167,9 +169,11 @@
 
 @input-color-placeholder:        @gray-light;
 
-@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
+@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) - 2);
 @input-height-large:             (floor(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
 @input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
+
+@label-margin-bottom:						 1px;
 
 @legend-color:                   @gray-dark;
 @legend-border-color:            #e5e5e5;

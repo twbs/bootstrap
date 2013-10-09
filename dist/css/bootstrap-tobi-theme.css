@@ -5,6 +5,23 @@
 *
 * Designed and built with all the love in the world by @mdo and @fat.
 */
+/*@padding-base-vertical:          5px;
+@padding-base-horizontal:        24px;
+
+@padding-large-vertical:         8px;
+@padding-large-horizontal:       30px;
+
+@padding-small-vertical:         7px;
+@padding-small-horizontal:       14px;
+*/
+
+/*
+@line-height-large:              @line-height-base;
+@line-height-extra-large:        @line-height-base;
+@line-height-small:              floor(@font-size-small * @line-height-base);
+@line-height-extra-small:        floor(@font-size-extra-small * @line-height-base);
+*/
+
 .btn-default,
 .btn-primary,
 .btn-success,

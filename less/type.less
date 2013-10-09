@@ -24,9 +24,11 @@ p {
 // Emphasis & misc
 // -------------------------
 
-// Ex: 14px base font * 85% = about 12px
+// Ex: 14px base font * 90% = about 12px
 small,
-.small  { font-size: 85%; }
+.small  {
+	font-size: 90%; 
+}
 
 // Undo browser default styling
 cite    { font-style: normal; }
@@ -85,6 +87,7 @@ h1, h2, h3, h4, h5, h6,
 
   small {
     font-weight: normal;
+		font-family: @font-family-base;
     line-height: 1;
     color: @headings-small-color;
 		text-transform: none;
@@ -110,6 +113,12 @@ h6 {
   small {
     font-size: 75%;
   }
+}
+
+h6 {
+	small {
+		font-size: 85%;
+	}
 }
 
 h1, .h1 { font-size: @font-size-h1; }

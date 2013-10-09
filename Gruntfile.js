@@ -98,6 +98,17 @@ module.exports = function(grunt) {
         },
         src: ['less/theme.less'],
         dest: 'dist/css/<%= pkg.name %>-theme.min.css'
+      },
+      tobi_bootstrap: {
+        src: ['less/bootstrap-master.less'],
+        dest: 'dist/css/<%= pkg.name %>-master.css'
+      },
+      tobi_min: {
+        options: {
+          compress: true
+        },
+        src: ['less/bootstrap-master.less'],
+        dest: 'dist/css/<%= pkg.name %>-master.min.css'
       }
     },
 
@@ -170,10 +181,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('browserstack-runner');
 
   // Docs HTML validation task
-  grunt.registerTask('validate-html', ['jekyll', 'validation']);
+  //grunt.registerTask('validate-html', ['jekyll', 'validation']);
 
   // Test task.
-  var testSubtasks = ['dist-css', 'jshint', 'qunit', 'validate-html'];
+  var testSubtasks = ['dist-css', 'jshint', 'qunit'];
   grunt.registerTask('test', testSubtasks);
 
   // JS distribution task.

@@ -422,7 +422,9 @@ h1[id] {
 .show-grid {
   margin-bottom: 15px;
 }
-.show-grid [class^="col-"] {
+.show-grid [class^="col-"],
+.show-grid [class^="grid-"]
+ {
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #eee;
