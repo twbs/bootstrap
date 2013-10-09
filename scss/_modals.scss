@@ -12,13 +12,6 @@
   overflow: hidden;
 }
 
-// Account for hiding of scrollbar
-body.modal-open,
-.modal-open .navbar-fixed-top,
-.modal-open .navbar-fixed-bottom {
-  margin-right: 15px
-}
-
 // Container that the modal scrolls within
 .modal {
   display: none;
