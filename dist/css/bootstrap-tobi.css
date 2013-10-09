@@ -21,23 +21,6 @@
  * Updated to TOBI specs, with only what we need.
  */
 
-/*@padding-base-vertical:          5px;
-@padding-base-horizontal:        24px;
-
-@padding-large-vertical:         8px;
-@padding-large-horizontal:       30px;
-
-@padding-small-vertical:         7px;
-@padding-small-horizontal:       14px;
-*/
-
-/*
-@line-height-large:              @line-height-base;
-@line-height-extra-large:        @line-height-base;
-@line-height-small:              floor(@font-size-small * @line-height-base);
-@line-height-extra-small:        floor(@font-size-extra-small * @line-height-base);
-*/
-
 /*
 Font:       Proxima Nova
 Style:      Regular
@@ -698,7 +681,6 @@ h6 small,
 .h4 small,
 .h5 small,
 .h6 small {
-  font-family: "ProximaNova-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   line-height: 1;
   color: #cccccc;
@@ -728,7 +710,7 @@ h6 {
 h4 small,
 h5 small,
 h6 small {
-  font-size: 75%;
+  font-size: 65%;
 }
 
 h6 small {
@@ -1608,6 +1590,22 @@ pre code {
   }
 }
 
+/**
+customized grids for TOBI v1.0, css shared from http://css-tricks.com/dont-overthink-it-grids/
+
+usage example: three column grid, second column spans 2 columns
+  
+  <div class="grid">
+    <div class="grid-1-3"></div>
+    <div class="grid-2-3"></div>
+  </div>
+
+TOBI only uses 1, 2, 3, and 5 column grids as of v1.0
+
+Included is a dynamic version of the above grid 
+-- this can be triggered on any inner divs by placing <div class="grid-dynamic grid">
+**/
+
 .grid {
   width: 100%;
   margin: 0 auto;
@@ -1621,7 +1619,7 @@ pre code {
 
 [class*='grid-'] {
   float: left;
-  margin-right: 4.237%;
+  margin-right: 50px;
 }
 
 [class*='grid-']:last-of-type {
@@ -1629,35 +1627,88 @@ pre code {
 }
 
 .grid-1-6 {
+  width: 170px;
+  margin-right: 20px;
+}
+
+.grid-1-2 {
+  width: 540px;
+}
+
+.grid-1-3 {
+  width: 360px;
+}
+
+.grid-2-3 {
+  width: 770px;
+}
+
+.grid-1-5 {
+  width: 196px;
+}
+
+.grid-2-5 {
+  width: 442px;
+}
+
+.grid-3-5 {
+  width: 688px;
+}
+
+.grid-4-5 {
+  width: 934px;
+}
+
+.grid-dynamic .grid {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.grid-dynamic .grid:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.grid-dynamic [class*='grid-'] {
+  float: left;
+  margin-right: 4.237%;
+}
+
+.grid-dynamic [class*='grid-']:last-of-type {
+  margin-right: 0;
+}
+
+.grid-dynamic .grid-1-6 {
   width: 15.254%;
   margin-right: 1.695%;
 }
 
-.grid-1-2 {
+.grid-dynamic .grid-1-2 {
   width: 47.881%;
 }
 
-.grid-1-3 {
+.grid-dynamic .grid-1-3 {
   width: 30.508%;
 }
 
-.grid-2-3 {
+.grid-dynamic .grid-2-3 {
   width: 65.254%;
 }
 
-.grid-1-5 {
+.grid-dynamic .grid-1-5 {
   width: 16.610%;
 }
 
-.grid-2-5 {
+.grid-dynamic .grid-2-5 {
   width: 37.458%;
 }
 
-.grid-3-5 {
+.grid-dynamic .grid-3-5 {
   width: 58.305%;
 }
 
-.grid-4-5 {
+.grid-dynamic .grid-4-5 {
   width: 79.153%;
 }
 
