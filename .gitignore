@@ -1,5 +1,5 @@
 # Ignore compiled docs
-#_gh_pages
+_gh_pages
 _site
 
 # Numerous always-ignore extensions
