@@ -102,13 +102,6 @@ module.exports = function(grunt) {
       tobi_bootstrap: {
         src: ['less/bootstrap-master.less'],
         dest: 'dist/css/<%= pkg.name %>-master.css'
-      },
-      tobi_min: {
-        options: {
-          compress: true
-        },
-        src: ['less/bootstrap-master.less'],
-        dest: 'dist/css/<%= pkg.name %>-master.min.css'
       }
     },
 

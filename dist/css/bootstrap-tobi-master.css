@@ -509,7 +509,7 @@ a {
 
 a:hover,
 a:focus {
-  color: #999999;
+  color: #000000;
   text-decoration: underline;
 }
 
@@ -1655,7 +1655,7 @@ textarea.input-lg {
 .btn:hover,
 .btn:focus {
   color: #333333;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .btn:active,
@@ -1948,7 +1948,7 @@ fieldset[disabled] .btn-link {
 
 .btn-link:hover,
 .btn-link:focus {
-  color: #999999;
+  color: #000000;
   text-decoration: underline;
   background-color: transparent;
 }
