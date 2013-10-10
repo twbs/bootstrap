@@ -3,6 +3,7 @@
 module.exports = function(grunt) {
   "use strict";
 
+  var btoa = require('btoa')
   // Project configuration.
   grunt.initConfig({
 
@@ -156,6 +157,7 @@ module.exports = function(grunt) {
 
 
   // These plugins provide necessary tasks.
+  grunt.loadNpmTasks('browserstack-runner');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-connect');
@@ -167,7 +169,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-html-validation');
   grunt.loadNpmTasks('grunt-jekyll');
   grunt.loadNpmTasks('grunt-recess');
-  grunt.loadNpmTasks('browserstack-runner');
 
   // Docs HTML validation task
   grunt.registerTask('validate-html', ['jekyll', 'validation']);
@@ -209,7 +210,8 @@ module.exports = function(grunt) {
           return type == 'fonts' ? true : new RegExp('\\.' + type + '$').test(path)
         })
         .forEach(function (path) {
-          return files[path] = fs.readFileSync(type + '/' + path, 'utf8')
+          var fullPath = type + '/' + path
+          return files[path] = (type == 'fonts' ? btoa(fs.readFileSync(fullPath)) : fs.readFileSync(fullPath, 'utf8'))
         })
       return 'var __' + type + ' = ' + JSON.stringify(files) + '\n'
     }

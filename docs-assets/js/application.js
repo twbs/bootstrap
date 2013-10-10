@@ -90,9 +90,6 @@
           btn.button('reset')
         }, 3000)
       })
-
-    // carousel demo
-    $('.bs-docs-carousel-example').carousel()
 })
 
 }(window.jQuery)
