@@ -28,7 +28,7 @@ $(function () {
         ok(!alert.hasClass('in'), 'remove .in class on .close click')
       })
 
-      test("should remove element when clicking .close", function () {
+      test("should hide element when clicking .close", function () {
         $.support.transition = false
 
         var alertHTML = '<div class="alert-message warning fade in">'
@@ -41,7 +41,7 @@ $(function () {
 
         alert.find('.close').click()
 
-        ok(!$('#qunit-fixture').find('.alert-message').length, 'element removed from dom')
+        ok(!$('#qunit-fixture').find('.alert-message').is(':visible'), 'element hidden')
       })
 
       test("should not fire closed when close is prevented", function () {
