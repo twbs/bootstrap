@@ -1,0 +1,49 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    RedCloth (4.2.9)
+    classifier (1.3.3)
+      fast-stemmer (>= 1.0.0)
+    colorator (0.1)
+    commander (4.1.5)
+      highline (~> 1.6.11)
+    directory_watcher (1.4.1)
+    fast-stemmer (1.0.2)
+    github-pages (8)
+      RedCloth (= 4.2.9)
+      jekyll (= 1.2.0)
+      kramdown (= 1.0.2)
+      liquid (= 2.5.1)
+      maruku (= 0.6.1)
+      rdiscount (= 1.6.8)
+      redcarpet (= 2.2.2)
+    highline (1.6.19)
+    jekyll (1.2.0)
+      classifier (~> 1.3)
+      colorator (~> 0.1)
+      commander (~> 4.1.3)
+      directory_watcher (~> 1.4.1)
+      liquid (~> 2.5.1)
+      maruku (~> 0.5)
+      pygments.rb (~> 0.5.0)
+      redcarpet (~> 2.2.2)
+      safe_yaml (~> 0.7.0)
+    kramdown (1.0.2)
+    liquid (2.5.1)
+    maruku (0.6.1)
+      syntax (>= 1.0.0)
+    posix-spawn (0.3.6)
+    pygments.rb (0.5.2)
+      posix-spawn (~> 0.3.6)
+      yajl-ruby (~> 1.1.0)
+    rdiscount (1.6.8)
+    redcarpet (2.2.2)
+    safe_yaml (0.7.1)
+    syntax (1.0.0)
+    yajl-ruby (1.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  github-pages
