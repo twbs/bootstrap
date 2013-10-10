@@ -1,0 +1,975 @@
+/*
+ * Bootstrap Documentation
+ * Special styles for presenting Bootstrap's documentation and code examples.
+ *
+ * Table of contents:
+ *
+ * Scaffolding
+ * Main navigation
+ * Footer
+ * Social buttons
+ * Homepage
+ * Page headers
+ * Old docs callout
+ * Ads
+ * Side navigation
+ * Docs sections
+ * Callouts
+ * Grid styles
+ * Examples
+ * Code snippets (highlight)
+ * Responsive tests
+ * Glyphicons
+ * Customizer
+ * Miscellaneous
+ */
+
+
+/*
+ * Scaffolding
+ *
+ * Update the basics of our documents to prep for docs content.
+ */
+
+body {
+  position: relative; /* For scrollyspy */
+  padding-top: 50px; /* Account for fixed navbar */
+}
+
+/* Keep code small in tables on account of limited space */
+.table code {
+  font-size: 13px;
+  font-weight: normal;
+}
+
+/* Outline button for use within the docs */
+.btn-outline {
+  color: #563d7c;
+  background-color: #fff;
+  border-color: #e5e5e5;
+}
+.btn-outline:hover,
+.btn-outline:focus,
+.btn-outline:active {
+  color: #fff;
+  background-color: #333;
+  border-color: #563d7c;
+}
+
+/* Inverted outline button (white on dark) */
+.btn-outline-inverse {
+  color: #fff;
+  background-color: transparent;
+  border-color: #eee;
+}
+.btn-outline-inverse:hover,
+.btn-outline-inverse:focus,
+.btn-outline-inverse:active {
+  color: #563d7c;
+  text-shadow: none;
+  background-color: #fff;
+  border-color: #fff;
+}
+
+
+/*
+ * Main navigation
+ *
+ * Turn the `.navbar` at the top of the docs purple.
+ */
+
+.bs-docs-nav {
+  text-shadow: 0 -1px 0 rgba(0,0,0,.15);
+  background-color: #333;
+  border-color: #;
+  box-shadow: 0 1px 0 rgba(255,255,255,.1);
+}
+.bs-docs-nav .navbar-collapse {
+  border-color: #;
+}
+.bs-docs-nav .navbar-brand {
+  color: #fff;
+}
+.bs-docs-nav .navbar-nav > li > a {
+  color: #eee;
+}
+.bs-docs-nav .navbar-nav > li > a:hover {
+  color: #fff;
+}
+.bs-docs-nav .navbar-nav > .active > a,
+.bs-docs-nav .navbar-nav > .active > a:hover {
+  color: #fff;
+  background-color: #;
+}
+.bs-docs-nav .navbar-toggle {
+  border-color: #563d7c;
+}
+.bs-docs-nav .navbar-toggle:hover {
+  background-color: #;
+  border-color: #;
+}
+
+
+/*
+ * Footer
+ *
+ * Separated section of content at the bottom of all pages, save the homepage.
+ */
+
+.bs-footer {
+  padding-top: 40px;
+  padding-bottom: 30px;
+  margin-top: 100px;
+  color: #777;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+}
+.footer-links {
+  margin: 10px 0;
+  padding-left: 0;
+}
+.footer-links li {
+  display: inline;
+  padding: 0 2px;
+}
+.footer-links li:first-child {
+  padding-left: 0;
+}
+
+@media (min-width: 768px) {
+  .bs-footer {
+    text-align: left;
+  }
+  .bs-footer p {
+    margin-bottom: 0;
+  }
+}
+
+/*
+ * Topography, yo!
+ *
+ * Apply the map background via base64 and relevant colors where we need 'em.
+ */
+
+.bs-docs-home,
+.bs-header {
+  color: #eee;
+  background-color: #999;
+}
+
+
+/*
+ * Homepage
+ *
+ * Tweaks to the custom homepage and the masthead (main jumbotron).
+ */
+
+ /* Masthead (headings and download button) */
+ .bs-masthead {
+  position: relative;
+  padding: 30px 15px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0,0,0,.15);
+}
+.bs-masthead h1 {
+  font-size: 50px;
+  line-height: 1;
+  color: #fff;
+}
+.bs-masthead .btn-outline-inverse {
+  margin: 10px;
+}
+
+/* Links to project-level content like the repo, Expo, etc */
+.bs-masthead-links {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  padding: 0 15px;
+  list-style: none;
+  text-align: center;
+}
+.bs-masthead-links li {
+  display: inline;
+}
+.bs-masthead-links li + li {
+  margin-left: 20px;
+}
+.bs-masthead-links a {
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .bs-masthead {
+    text-align: left;
+    padding-top:    140px;
+    padding-bottom: 140px;
+  }
+  .bs-masthead h1 {
+    font-size: 100px;
+  }
+  .bs-masthead .lead {
+    margin-right: 25%;
+    font-size: 30px;
+  }
+  .bs-masthead .btn-outline-inverse {
+    width: auto;
+    margin: 20px 5px 20px 0;
+    padding: 18px 24px;
+    font-size: 21px;
+  }
+  .bs-masthead-links {
+    padding: 0;
+    text-align: left;
+  }
+}
+
+
+/*
+ * Page headers
+ *
+ * Jumbotron-esque headers at the top of every page that's not the homepage.
+ */
+
+
+/* Page headers */
+.bs-header {
+  padding: 30px 15px 40px; /* side padding builds on .container 15px, so 30px */
+  font-size: 16px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0,0,0,.15);
+}
+.bs-header h1 {
+  color: #fff;
+}
+.bs-header p {
+  font-weight: 300;
+  line-height: 1.5;
+}
+.bs-header .container {
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .bs-header {
+    font-size: 21px;
+    text-align: left;
+  }
+  .bs-header h1 {
+    font-size: 60px;
+    line-height: 1;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .bs-header h1,
+  .bs-header p {
+    margin-right: 380px;
+  }
+}
+
+/*
+ * Side navigation
+ *
+ * Scrollspy and affixed enhanced navigation to highlight sections and secondary
+ * sections of docs content.
+ */
+
+/* By default it's not affixed in mobile views, so undo that */
+.bs-sidebar.affix {
+  position: static;
+}
+
+/* First level of nav */
+.bs-sidenav {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top:    10px;
+  padding-bottom: 10px;
+  text-shadow: 0 1px 0 #fff;
+  background-color: #f7f5fa;
+  border-radius: 5px;
+}
+
+/* All levels of nav */
+.bs-sidebar .nav > li > a {
+  display: block;
+  color: #716b7a;
+  padding: 5px 20px;
+}
+.bs-sidebar .nav > li > a:hover,
+.bs-sidebar .nav > li > a:focus {
+  text-decoration: none;
+  background-color: #e5e3e9;
+  border-right: 1px solid #dbd8e0;
+}
+.bs-sidebar .nav > .active > a,
+.bs-sidebar .nav > .active:hover > a,
+.bs-sidebar .nav > .active:focus > a {
+  font-weight: bold;
+  color: #563d7c;
+  background-color: transparent;
+  border-right: 1px solid #563d7c;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-sidebar .nav .nav {
+  display: none; /* Hide by default, but at >768px, show it */
+  margin-bottom: 8px;
+}
+.bs-sidebar .nav .nav > li > a {
+  padding-top:    3px;
+  padding-bottom: 3px;
+  padding-left: 30px;
+  font-size: 90%;
+}
+
+/* Show and affix the side nav when space allows it */
+@media screen and (min-width: 992px) {
+  .bs-sidebar .nav > .active > ul {
+    display: block;
+  }
+  /* Widen the fixed sidebar */
+  .bs-sidebar.affix,
+  .bs-sidebar.affix-bottom {
+    width: 213px;
+  }
+  .bs-sidebar.affix {
+    position: fixed; /* Undo the static from mobile first approach */
+    top: 80px;
+  }
+  .bs-sidebar.affix-bottom {
+    position: absolute; /* Undo the static from mobile first approach */
+  }
+  .bs-sidebar.affix-bottom .bs-sidenav,
+  .bs-sidebar.affix .bs-sidenav {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+@media screen and (min-width: 1200px) {
+  /* Widen the fixed sidebar again */
+  .bs-sidebar.affix-bottom,
+  .bs-sidebar.affix {
+    width: 263px;
+  }
+}
+
+
+/*
+ * Docs sections
+ *
+ * Content blocks for each component or feature.
+ */
+
+/* Space things out */
+.bs-docs-section + .bs-docs-section {
+  padding-top: 40px;
+}
+
+/* Janky fix for preventing navbar from overlapping */
+h1[id] {
+  padding-top: 80px;
+  margin-top: -45px;
+}
+
+
+/*
+ * Callouts
+ *
+ * Not quite alerts, but custom and helpful notes for folks reading the docs.
+ * Requires a base and modifier class.
+ */
+
+/* Common styles for all types */
+.bs-callout {
+  margin: 20px 0;
+  padding: 15px 30px 15px 15px;
+  border-left: 5px solid #eee;
+}
+.bs-callout h4 {
+  margin-top: 0;
+}
+.bs-callout p:last-child {
+  margin-bottom: 0;
+}
+.bs-callout code,
+.bs-callout .highlight {
+  background-color: #fff;
+}
+
+/* Variations */
+.bs-callout-danger {
+  background-color: #fcf2f2;
+  border-color: #dFb5b4;
+}
+.bs-callout-warning {
+  background-color: #fefbed;
+  border-color: #f1e7bc;
+}
+.bs-callout-info {
+  background-color: #f0f7fd;
+  border-color: #d0e3f0;
+}
+
+
+/*
+ * Grid examples
+ *
+ * Highlight the grid columns within the docs so folks can see their padding,
+ * alignment, sizing, etc.
+ */
+
+.show-grid {
+  margin-bottom: 15px;
+}
+.show-grid [class^="col-"],
+.show-grid [class^="grid-"]
+ {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #eee;
+  border: 1px solid #ddd;
+  background-color: rgba(86,61,124,.15);
+  border: 1px solid rgba(86,61,124,.2);
+}
+
+
+/*
+ * Examples
+ *
+ * Isolated sections of example content for each component or feature. Usually
+ * followed by a code snippet.
+ */
+
+.bs-example {
+  position: relative;
+  padding: 45px 15px 15px;
+  margin: 0 -15px 15px;
+  background-color: #fafafa;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+  border-color: #e5e5e5 #eee #eee;
+  border-style: solid;
+  border-width: 1px 0;
+}
+/* Echo out a label for the example */
+.bs-example:after {
+  content: "Example";
+  position: absolute;
+  top:  15px;
+  left: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #bbb;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Tweak display of the code snippets when following an example */
+.bs-example + .highlight {
+  margin: -15px -15px 15px;
+  border-radius: 0;
+  border-width: 0 0 1px;
+}
+
+/* Make the examples and snippets not full-width */
+@media screen and (min-width: 768px) {
+  .bs-example {
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #fff;
+    border-width: 1px;
+    border-color: #ddd;
+    border-radius: 4px 4px 0 0;
+    box-shadow: none;
+  }
+  .bs-example + .highlight {
+    margin-top: -16px;
+    margin-left: 0;
+    margin-right: 0;
+    border-width: 1px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+}
+
+/* Undo width of container */
+.bs-example .container {
+  width: auto;
+}
+
+/* Tweak content of examples for optimum awesome */
+.bs-example > p:last-child,
+.bs-example > ul:last-child,
+.bs-example > ol:last-child,
+.bs-example > blockquote:last-child,
+.bs-example > .form-control:last-child,
+.bs-example > .table:last-child,
+.bs-example > .navbar:last-child,
+.bs-example > .jumbotron:last-child,
+.bs-example > .alert:last-child,
+.bs-example > .panel:last-child,
+.bs-example > .list-group:last-child,
+.bs-example > .well:last-child,
+.bs-example > .progress:last-child,
+.bs-example > .table-responsive:last-child > .table {
+  margin-bottom: 0;
+}
+.bs-example > p > .close {
+  float: none;
+}
+
+/* Typography */
+.bs-example-type .table .info {
+  color: #999;
+  vertical-align: middle;
+}
+.bs-example-type .table td {
+  padding: 15px 0;
+  border-color: #eee;
+}
+.bs-example-type .table tr:first-child td {
+  border-top: 0;
+}
+.bs-example-type h1,
+.bs-example-type h2,
+.bs-example-type h3,
+.bs-example-type h4,
+.bs-example-type h5,
+.bs-example-type h6 {
+  margin: 0;
+}
+
+/* Images */
+.bs-example > .img-circle,
+.bs-example > .img-rounded,
+.bs-example > .img-thumbnail {
+  margin: 5px;
+}
+
+/* Tables */
+.bs-example > .table-responsive > .table {
+  background-color: #fff;
+}
+
+/* Buttons */
+.bs-example > .btn,
+.bs-example > .btn-group {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.bs-example > .btn-toolbar + .btn-toolbar {
+  margin-top: 10px;
+}
+
+/* Forms */
+.bs-example-control-sizing select,
+.bs-example-control-sizing input[type="text"] + input[type="text"] {
+  margin-top: 10px;
+}
+.bs-example-form .input-group {
+  margin-bottom: 10px;
+}
+.bs-example > textarea.form-control {
+  resize: vertical;
+}
+
+/* List groups */
+.bs-example > .list-group {
+  max-width: 400px;
+}
+
+/* Navbars */
+.bs-example .navbar:last-child {
+  margin-bottom: 0;
+}
+.bs-navbar-top-example,
+.bs-navbar-bottom-example {
+  z-index: 1;
+  padding: 0;
+  overflow: hidden; /* cut the drop shadows off */
+}
+.bs-navbar-top-example .navbar-header,
+.bs-navbar-bottom-example .navbar-header {
+  margin-left: 0;
+}
+.bs-navbar-top-example .navbar-fixed-top,
+.bs-navbar-bottom-example .navbar-fixed-bottom {
+  position: relative;
+  margin-left: 0;
+  margin-right: 0;
+}
+.bs-navbar-top-example {
+  padding-bottom: 45px;
+}
+.bs-navbar-top-example:after {
+  top: auto;
+  bottom: 15px;
+}
+.bs-navbar-top-example .navbar-fixed-top {
+  top: -1px;
+}
+.bs-navbar-bottom-example {
+  padding-top: 45px;
+}
+.bs-navbar-bottom-example .navbar-fixed-bottom {
+  bottom: -1px;
+}
+.bs-navbar-bottom-example .navbar {
+  margin-bottom: 0;
+}
+@media (min-width: 768px) {
+  .bs-navbar-top-example .navbar-fixed-top,
+  .bs-navbar-bottom-example .navbar-fixed-bottom {
+    position: absolute;
+  }
+  .bs-navbar-top-example {
+    border-radius: 0 0 4px 4px;
+  }
+  .bs-navbar-bottom-example {
+    border-radius: 4px 4px 0 0;
+  }
+}
+
+/* Pagination */
+.bs-example .pagination {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Pager */
+.bs-example > .pager {
+  margin-top: 0;
+}
+
+/* Example modals */
+.bs-example-modal {
+  background-color: #f5f5f5;
+}
+.bs-example-modal .modal {
+  position: relative;
+  top: auto;
+  right: auto;
+  left: auto;
+  bottom: auto;
+  z-index: 1;
+  display: block;
+}
+.bs-example-modal .modal-dialog {
+  left: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Example dropdowns */
+.bs-example > .dropdown > .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Example tabbable tabs */
+.bs-example-tabs .nav-tabs {
+  margin-bottom: 15px;
+}
+
+/* Tooltips */
+.bs-example-tooltips {
+  text-align: center;
+}
+.bs-example-tooltips > .btn {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* Popovers */
+.bs-example-popover {
+  padding-bottom: 24px;
+  background-color: #f9f9f9;
+}
+.bs-example-popover .popover {
+  position: relative;
+  display: block;
+  float: left;
+  width: 260px;
+  margin: 20px;
+}
+
+/* Scrollspy demo on fixed height div */
+.scrollspy-example {
+  position: relative;
+  height: 200px;
+  margin-top: 10px;
+  overflow: auto;
+}
+
+
+/*
+ * Code snippets
+ *
+ * Generated via Pygments and Jekyll, these are snippets of HTML, CSS, and JS.
+ */
+
+.highlight {
+  display: none; /* hidden by default, until >480px */
+  padding: 9px 14px;
+  margin-bottom: 14px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  border-radius: 4px;
+}
+.highlight pre {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  background-color: transparent;
+  border: 0;
+  white-space: nowrap;
+}
+.highlight pre code {
+  font-size: inherit;
+  color: #333; /* Effectively the base text color */
+}
+.highlight pre .lineno {
+  display: inline-block;
+  width: 22px;
+  padding-right: 5px;
+  margin-right: 10px;
+  text-align: right;
+  color: #bebec5;
+}
+
+/* Show code snippets when we have the space */
+@media screen and (min-width: 481px) {
+  .highlight {
+    display: block;
+  }
+}
+
+
+/*
+ * Responsive tests
+ *
+ * Generate a set of tests to show the responsive utilities in action.
+ */
+
+/* Responsive (scrollable) doc tables */
+.table-responsive .highlight pre {
+  white-space: normal;
+}
+
+/* Utility classes table  */
+.bs-table th small,
+.responsive-utilities th small {
+  display: block;
+  font-weight: normal;
+  color: #999;
+}
+.responsive-utilities tbody th {
+  font-weight: normal;
+}
+.responsive-utilities td {
+  text-align: center;
+}
+.responsive-utilities td.is-visible {
+  color: #468847;
+  background-color: #dff0d8 !important;
+}
+.responsive-utilities td.is-hidden {
+  color: #ccc;
+  background-color: #f9f9f9 !important;
+}
+
+/* Responsive tests */
+.responsive-utilities-test {
+  margin-top: 5px;
+}
+.responsive-utilities-test .col-xs-6 {
+  margin-bottom: 10px;
+}
+.responsive-utilities-test span {
+  padding: 15px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.1;
+  text-align: center;
+  border-radius: 4px;
+}
+.visible-on .col-xs-6 .hidden-xs,
+.visible-on .col-xs-6 .hidden-sm,
+.visible-on .col-xs-6 .hidden-md,
+.visible-on .col-xs-6 .hidden-lg,
+.hidden-on .col-xs-6 .visible-xs,
+.hidden-on .col-xs-6 .visible-sm,
+.hidden-on .col-xs-6 .visible-md,
+.hidden-on .col-xs-6 .visible-lg {
+  color: #999;
+  border: 1px solid #ddd;
+}
+.visible-on .col-xs-6 .visible-xs,
+.visible-on .col-xs-6 .visible-sm,
+.visible-on .col-xs-6 .visible-md,
+.visible-on .col-xs-6 .visible-lg,
+.hidden-on .col-xs-6 .hidden-xs,
+.hidden-on .col-xs-6 .hidden-sm,
+.hidden-on .col-xs-6 .hidden-md,
+.hidden-on .col-xs-6 .hidden-lg {
+  color: #468847;
+  background-color: #dff0d8;
+  border: 1px solid #d6e9c6;
+}
+
+
+/*
+ * Glyphicons
+ *
+ * Special styles for displaying the icons and their classes in the docs.
+ */
+
+.bs-glyphicons {
+  padding-left: 0;
+  padding-bottom: 1px;
+  margin-bottom: 20px;
+  list-style: none;
+  overflow: hidden;
+}
+.bs-glyphicons li {
+  float: left;
+  width: 25%;
+  height: 115px;
+  padding: 10px;
+  margin: 0 -1px -1px 0;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+.bs-glyphicons .glyphicon {
+  display: block;
+  margin: 5px auto 10px;
+  font-size: 24px;
+}
+.bs-glyphicons li:hover {
+  background-color: rgba(86,61,124,.1);
+}
+
+@media (min-width: 768px) {
+  .bs-glyphicons li {
+    width: 12.5%;
+  }
+}
+
+
+/*
+ * Customizer
+ *
+ * Since this is so form control heavy, we have quite a few styles to customize
+ * the display of inputs, headings, and more. Also included are all the download
+ * buttons and actions.
+ */
+
+.bs-customizer .toggle {
+  float: right;
+  margin-top: 85px; /* On account of ghetto navbar fix */
+}
+
+/* Headings and form contrls */
+.bs-customizer label {
+  margin-top: 10px;
+  font-weight: 500;
+  color: #555;
+}
+.bs-customizer h2 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  padding-top: 30px;
+}
+.bs-customizer h3 {
+  margin-bottom: 0;
+}
+.bs-customizer h4 {
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+.bs-customizer .bs-callout h4 {
+  margin-top: 0; /* lame, but due to specificity we have to duplicate */
+  margin-bottom: 5px;
+}
+.bs-customizer input[type="text"] {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  background-color: #fafafa;
+}
+.bs-customizer .help-block {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+/* For the variables, use regular weight */
+#less-section label {
+  font-weight: normal;
+}
+
+/* Downloads */
+.bs-customize-download .btn-outline {
+  padding: 20px;
+}
+
+/* Error handling */
+.bs-customizer-alert {
+  position: fixed;
+  top: 51px;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  padding: 15px 0;
+  color: #fff;
+  background-color: #d9534f;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
+  border-bottom: 1px solid #b94441;
+}
+.bs-customizer-alert .close {
+  margin-top: -4px;
+  font-size: 24px;
+}
+.bs-customizer-alert p {
+  margin-bottom: 0;
+}
+.bs-customizer-alert .glyphicon {
+  margin-right: 5px;
+}
+.bs-customizer-alert pre {
+  margin: 10px 0 0;
+  color: #fff;
+  background-color: #a83c3a;
+  border-color: #973634;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
+}
+
+
+/*
+ * Miscellaneous
+ *
+ * Odds and ends for optimum docs display.
+ */
+
+/* Examples gallery: space out content better */
+.bs-examples h4 {
+  margin-bottom: 5px;
+}
+.bs-examples p {
+  margin-bottom: 20px;
+}
+
+/* Pseudo :focus state for showing how it looks in the docs */
+#focusedInput {
+  border-color: rgba(82,168,236,.8);
+  outline: 0;
+  outline: thin dotted \9; /* IE6-9 */
+  -moz-box-shadow: 0 0 8px rgba(82,168,236,.6);
+       box-shadow: 0 0 8px rgba(82,168,236,.6);
+}
+
+/* Better spacing on download options in getting started */
+.bs-docs-dl-options h4 {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
