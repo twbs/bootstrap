@@ -2,21 +2,28 @@
 
 Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created and maintained by [Mark Otto](http://twitter.com/mdo) and [Jacob Thornton](http://twitter.com/fat).
 
+
+
+## Documentation
+
+For Tobi-Bootstrap documentation - go here: [http://gittobi.github.io/bootstrap](http://gittobi.github.io/bootstrap)!
+
 For Bootstrap documentation - go here: [http://getbootstrap.com](http://getbootstrap.com)!
 
-For Tobi-Bootstrap documentation - go here: [http://gittobi.github.io](http://gittobi.github.io)!
 
-## Authors
 
-**Mark Otto**
 
-+ [http://twitter.com/mdo](http://twitter.com/mdo)
-+ [http://github.com/mdo](http://github.com/mdo)
 
-**Jacob Thornton**
 
-+ [http://twitter.com/fat](http://twitter.com/fat)
-+ [http://github.com/fat](http://github.com/fat)
+
+
+
+
+
+
+
+
+
 
 
 
