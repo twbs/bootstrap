@@ -38,11 +38,11 @@ License:    The WebFont(s) listed in this document must follow the YouWorkForThe
 */
 
 @font-face {
-  font-family: 'ProximaNova-Regular';
+  font-family: "ProximaNova-Regular";
   font-style: normal;
   font-weight: normal;
-  src: url('/bootstrap/fonts/proxima-nova-regular.eot');
-  src: url('/bootstrap/fonts/proxima-nova-regular.eot?#iefix') format('embedded-opentype'), url('/bootstrap/fonts/proxima-nova-regular.woff') format('woff'), url('/bootstrap/fonts/proxima-nova-regular.ttf') format('truetype'), url('/bootstrap/fonts/proxima-nova-regular.svg#ywftsvg') format('svg');
+  src: url("/fonts/proxima-nova-regular.eot");
+  src: url("/fonts/proxima-nova-regular.eot?#iefix") format("embedded-opentype"), url("/fonts/proxima-nova-regular.woff") format("woff"), url("/fonts/proxima-nova-regular.ttf") format("truetype"), url("/fonts/proxima-nova-regular.svg#ywftsvg") format("svg");
 }
 
 /*
@@ -62,11 +62,11 @@ License:    The WebFont(s) listed in this document must follow the YouWorkForThe
 */
 
 @font-face {
-  font-family: 'ProximaNova-Regular';
+  font-family: "ProximaNova-Regular";
   font-style: italic;
   font-weight: normal;
-  src: url('/bootstrap/fonts/proxima-nova-regular-italic.eot');
-  src: url('/bootstrap/fonts/proxima-nova-regular-italic.eot?#iefix') format('embedded-opentype'), url('/bootstrap/fonts/proxima-nova-regular-italic.woff') format('woff'), url('/bootstrap/fonts/proxima-nova-regular-italic.ttf') format('truetype'), url('/bootstrap/fonts/proxima-nova-regular-italic.svg#ywftsvg') format('svg');
+  src: url("/fonts/proxima-nova-regular-italic.eot");
+  src: url("/fonts/proxima-nova-regular-italic.eot?#iefix") format("embedded-opentype"), url("/fonts/proxima-nova-regular-italic.woff") format("woff"), url("/fonts/proxima-nova-regular-italic.ttf") format("truetype"), url("/fonts/proxima-nova-regular-italic.svg#ywftsvg") format("svg");
 }
 
 /*
@@ -86,11 +86,11 @@ License:    The WebFont(s) listed in this document must follow the YouWorkForThe
 */
 
 @font-face {
-  font-family: 'ProximaNova-Regular';
+  font-family: "ProximaNova-Regular";
   font-style: normal;
   font-weight: bold;
-  src: url('/bootstrap/fonts/proxima-nova-bold.eot');
-  src: url('/bootstrap/fonts/proxima-nova-bold.eot?#iefix') format('embedded-opentype'), url('/bootstrap/fonts/proxima-nova-bold.woff') format('woff'), url('/bootstrap/fonts/proxima-nova-bold.ttf') format('truetype'), url('/bootstrap/fonts/proxima-nova-bold.svg#ywftsvg') format('svg');
+  src: url("/fonts/proxima-nova-bold.eot");
+  src: url("/fonts/proxima-nova-bold.eot?#iefix") format("embedded-opentype"), url("/fonts/proxima-nova-bold.woff") format("woff"), url("/fonts/proxima-nova-bold.ttf") format("truetype"), url("/fonts/proxima-nova-bold.svg#ywftsvg") format("svg");
 }
 
 /*
@@ -110,11 +110,11 @@ License:    The WebFont(s) listed in this document must follow the YouWorkForThe
 */
 
 @font-face {
-  font-family: 'ProximaNova-Condensed';
+  font-family: "ProximaNova-Condensed";
   font-style: normal;
   font-weight: normal;
-  src: url('/bootstrap/fonts/proxima-nova-condensed-thin.eot');
-  src: url('/bootstrap/fonts/proxima-nova-condensed-thin.eot?#iefix') format('embedded-opentype'), url('/bootstrap/fonts/proxima-nova-condensed-thin.woff') format('woff'), url('/bootstrap/fonts/proxima-nova-condensed-thin.ttf') format('truetype'), url('/bootstrap/fonts/proxima-nova-condensed-thin.svg#ywftsvg') format('svg');
+  src: url("/fonts/proxima-nova-condensed-thin.eot");
+  src: url("/fonts/proxima-nova-condensed-thin.eot?#iefix") format("embedded-opentype"), url("/fonts/proxima-nova-condensed-thin.woff") format("woff"), url("/fonts/proxima-nova-condensed-thin.ttf") format("truetype"), url("/fonts/proxima-nova-condensed-thin.svg#ywftsvg") format("svg");
 }
 
 /*
@@ -134,11 +134,11 @@ License:    The WebFont(s) listed in this document must follow the YouWorkForThe
 */
 
 @font-face {
-  font-family: 'ProximaNova-Condensed';
+  font-family: "ProximaNova-Condensed";
   font-style: italic;
   font-weight: normal;
-  src: url('/bootstrap/fonts/proxima-nova-condensed-thin-italic.eot');
-  src: url('/bootstrap/fonts/proxima-nova-condensed-thin-italic.eot?#iefix') format('embedded-opentype'), url('/bootstrap/fonts/proxima-nova-condensed-thin-italic.woff') format('woff'), url('/bootstrap/fonts/proxima-nova-condensed-thin-italic.ttf') format('truetype'), url('/bootstrap/fonts/proxima-nova-condensed-thin-italic.svg#ywftsvg') format('svg');
+  src: url("/fonts/proxima-nova-condensed-thin-italic.eot");
+  src: url("/fonts/proxima-nova-condensed-thin-italic.eot?#iefix") format("embedded-opentype"), url("/fonts/proxima-nova-condensed-thin-italic.woff") format("woff"), url("/fonts/proxima-nova-condensed-thin-italic.ttf") format("truetype"), url("/fonts/proxima-nova-condensed-thin-italic.svg#ywftsvg") format("svg");
 }
 
 /*
@@ -158,11 +158,11 @@ License:    The WebFont(s) listed in this document must follow the YouWorkForThe
 */
 
 @font-face {
-  font-family: 'ProximaNova-ExtraCondensed';
+  font-family: "ProximaNova-ExtraCondensed";
   font-style: normal;
   font-weight: normal;
-  src: url('/bootstrap/fonts/proxima-nova-extra-condensed-regular.eot');
-  src: url('/bootstrap/fonts/proxima-nova-extra-condensed-regular.eot?#iefix') format('embedded-opentype'), url('/bootstrap/fonts/proxima-nova-extra-condensed-regular.woff') format('woff'), url('/bootstrap/fonts/proxima-nova-extra-condensed-regular.ttf') format('truetype'), url('/bootstrap/fonts/proxima-nova-extra-condensed-regular.svg#ywftsvg') format('svg');
+  src: url("/fonts/proxima-nova-extra-condensed-regular.eot");
+  src: url("/fonts/proxima-nova-extra-condensed-regular.eot?#iefix") format("embedded-opentype"), url("/fonts/proxima-nova-extra-condensed-regular.woff") format("woff"), url("/fonts/proxima-nova-extra-condensed-regular.ttf") format("truetype"), url("/fonts/proxima-nova-extra-condensed-regular.svg#ywftsvg") format("svg");
 }
 
 /*
@@ -182,11 +182,11 @@ License:    The WebFont(s) listed in this document must follow the YouWorkForThe
 */
 
 @font-face {
-  font-family: 'ProximaNova-ExtraCondensed';
+  font-family: "ProximaNova-ExtraCondensed";
   font-style: normal;
   font-weight: bold;
-  src: url('/bootstrap/fonts/proxima-nova-extra-condensed-semibold.eot');
-  src: url('/bootstrap/fonts/proxima-nova-extra-condensed-semibold.eot?#iefix') format('embedded-opentype'), url('/bootstrap/fonts/proxima-nova-extra-condensed-semibold.woff') format('woff'), url('/bootstrap/fonts/proxima-nova-extra-condensed-semibold.ttf') format('truetype'), url('/bootstrap/fonts/proxima-nova-extra-condensed-semibold.svg#ywftsvg') format('svg');
+  src: url("/fonts/proxima-nova-extra-condensed-semibold.eot");
+  src: url("/fonts/proxima-nova-extra-condensed-semibold.eot?#iefix") format("embedded-opentype"), url("/fonts/proxima-nova-extra-condensed-semibold.woff") format("woff"), url("/fonts/proxima-nova-extra-condensed-semibold.ttf") format("truetype"), url("/fonts/proxima-nova-extra-condensed-semibold.svg#ywftsvg") format("svg");
 }
 
 /*! normalize.css v2.1.3 | MIT License | git.io/normalize */

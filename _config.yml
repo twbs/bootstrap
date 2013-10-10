@@ -9,8 +9,6 @@ permalink:        pretty
 destination:      ./_gh_pages
 exclude:          [".editorconfig", ".gitignore", ".ruby-version", "bower.json", "composer.json", "CONTRIBUTING.md", "CNAME", "LICENSE", "Gruntfile.js", "package.json", "node_modules", "README.md", "less"]
 port:             9001
-baseurl:          /bootstrap
-base_url:         /bootstrap
 
 # Custom vars
 current_version:  3.0.0

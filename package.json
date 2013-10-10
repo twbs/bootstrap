@@ -3,7 +3,7 @@
   , "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development."
   , "version": "3.0.0"
   , "keywords": ["bootstrap", "css"]
-  , "homepage": "http://getbootstrap.com"
+  , "homepage": "http://gittobi.github.io/bootstrap"
   , "author": "Twitter, Inc."
   , "scripts": { "test": "grunt test" }
   , "repository": {
