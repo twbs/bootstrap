@@ -35,6 +35,9 @@ module.exports = function(grunt) {
       },
       test: {
         src: ['js/tests/unit/*.js']
+      },
+      'docs-assets': {
+        src:['docs-assets/js/*.js','!docs-assets/js/*.min.js']
       }
     },
 
