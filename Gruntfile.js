@@ -108,7 +108,7 @@ module.exports = function(grunt) {
     copy: {
       fonts: {
         expand: true,
-        src: ["bootstrap/fonts/*"],
+        src: ["/fonts/*"],
         dest: 'dist/'
       }
     },
