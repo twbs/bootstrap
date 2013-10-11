@@ -572,6 +572,15 @@ p {
   margin: 0 0 10px;
 }
 
+p > a {
+  border-bottom: 1px solid #333333;
+}
+
+p > a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
 .lead {
   margin-bottom: 20px;
   font-size: 16.099999999999998px;
@@ -663,7 +672,7 @@ h6,
 .h5,
 .h6 {
   font-family: "ProximaNova-ExtraCondensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: bold;
   line-height: 1.1;
   color: inherit;
   text-transform: uppercase;
@@ -2613,8 +2622,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .breadcrumb {
-  padding: 8px 15px;
+  padding: 8px 0;
   margin-bottom: 20px;
+  font-family: "ProximaNova-ExtraCondensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  text-transform: uppercase;
   list-style: none;
   background-color: #f5f5f5;
   border-radius: 0;
@@ -2624,14 +2636,25 @@ textarea.input-group-sm > .input-group-btn > .btn {
   display: inline-block;
 }
 
-.breadcrumb > li + li:before {
-  padding: 0 5px;
+.breadcrumb > li > a {
   color: #cccccc;
-  content: "/\00a0";
+  border-bottom: 1px solid transparent;
+}
+
+.breadcrumb > li > a:hover {
+  color: #cccccc;
+  text-decoration: none;
+  border-bottom: 1px solid #cccccc;
+}
+
+.breadcrumb > li + li:before {
+  padding: 0 15px;
+  color: #cccccc;
+  content: ">\00a0";
 }
 
 .breadcrumb > .active {
-  color: #cccccc;
+  color: #333333;
 }
 
 .pagination {
@@ -2742,7 +2765,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   padding: 15px;
   margin-bottom: 20px;
   font-family: "ProximaNova-ExtraCondensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 21px;
+  font-size: 30px;
   text-transform: uppercase;
   border: 1px solid transparent;
   border-radius: 0;

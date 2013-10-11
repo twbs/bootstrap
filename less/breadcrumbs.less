@@ -4,16 +4,29 @@
 
 
 .breadcrumb {
-  padding: 8px 15px;
+	font-size: @font-size-h3;
+	text-transform: uppercase;
+	font-family: @font-family-base-extra-condensed;
+  padding: 8px 0px;
   margin-bottom: @line-height-computed;
   list-style: none;
   background-color: @breadcrumb-bg;
   border-radius: @border-radius-base;
   > li {
+	
+		> a {
+			color: @breadcrumb-color;
+			border-bottom: 1px solid transparent;
+			&:hover {
+				color: @breadcrumb-color;
+				text-decoration: none;
+				border-bottom: 1px solid @breadcrumb-color;
+			}
+		}
     display: inline-block;
     &+li:before {
       content: "@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
-      padding: 0 5px;
+      padding: 0 15px;
       color: @breadcrumb-color;
     }
   }

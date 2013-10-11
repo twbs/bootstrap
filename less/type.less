@@ -8,6 +8,13 @@
 
 p {
   margin: 0 0 (@line-height-computed / 2);
+	> a {
+		border-bottom: 1px solid @link-color;
+		&:hover {
+			text-decoration: none;
+			border-bottom: 1px solid transparent;
+		}
+	}
 }
 .lead {
   margin-bottom: @line-height-computed;
