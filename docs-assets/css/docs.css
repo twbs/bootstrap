@@ -233,7 +233,7 @@ body {
 
 /* Page headers */
 .bs-header {
-  padding: 30px 15px 40px; /* side padding builds on .container 15px, so 30px */
+  padding: 5px 5px 20px; /* side padding builds on .container 15px, so 30px */
   font-size: 16px;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0,0,0,.15);
