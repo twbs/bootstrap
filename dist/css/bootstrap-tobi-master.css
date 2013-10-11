@@ -2868,7 +2868,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .alert {
-  padding: 15px;
+  padding: 0;
   margin-bottom: 20px;
   font-family: "ProximaNova-ExtraCondensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 30px;
@@ -2896,7 +2896,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .alert-dismissable {
-  padding-right: 35px;
+  padding-right: 20px;
 }
 
 .alert-dismissable .close {
