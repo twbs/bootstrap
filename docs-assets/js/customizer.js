@@ -31,13 +31,13 @@ window.onload = function () { // wait for load in a dumb way because B-0
     return match && decodeURIComponent(match[1].replace(/\+/g, " "));
   }
 
-  function createGist(configData) {
+  function createGist(configJson) {
     var data = {
       "description": "Bootstrap Customizer Config",
       "public": true,
       "files": {
         "config.json": {
-          "content": JSON.stringify(configData, null, 2)
+          "content": configJson
         }
       }
     }
@@ -107,7 +107,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     })
   }
 
-  function generateZip(css, js, fonts, complete) {
+  function generateZip(css, js, fonts, config, complete) {
     if (!css && !js) return showError('<strong>Ruh roh!</strong> No Bootstrap files selected.', new Error('no Bootstrap'))
 
     var zip = new JSZip()
@@ -129,8 +129,12 @@ window.onload = function () { // wait for load in a dumb way because B-0
     if (fonts) {
       var fontsFolder = zip.folder('fonts')
       for (var fileName in fonts) {
-        fontsFolder.file(fileName, fonts[fileName])
+        fontsFolder.file(fileName, fonts[fileName], {base64: true})
       }
+    }
+
+    if (config) {
+      zip.file('config.json', config)
     }
 
     var content = zip.generate({type:"blob"})
@@ -262,14 +266,17 @@ window.onload = function () { // wait for load in a dumb way because B-0
   var $downloadBtn = $('#btn-download')
 
   $compileBtn.on('click', function (e) {
+    var configData = getCustomizerData()
+    var configJson = JSON.stringify(configData, null, 2)
+
     e.preventDefault()
 
     $compileBtn.attr('disabled', 'disabled')
 
-    generateZip(generateCSS(), generateJavascript(), generateFonts(), function (blob) {
+    generateZip(generateCSS(), generateJavascript(), generateFonts(), configJson, function (blob) {
       $compileBtn.removeAttr('disabled')
       saveAs(blob, "bootstrap.zip")
-      createGist(getCustomizerData())
+      createGist(configJson)
     })
   })
 
