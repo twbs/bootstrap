@@ -80,6 +80,35 @@
   .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
 }
 
+// Social Media buttons
+// --------------------------------------------------
+// Facebook
+.btn-facebook {
+  .button-variant(@btn-facebook-color; @btn-facebook-bg; @btn-facebook-border);
+	&:focus,
+	&:hover {
+		text-decoration: none;
+	}
+	.fb-logo {
+		text-transform: none;
+		&:before {
+			content: 'f';
+			padding: 0 10px 0 0;
+		}
+		&:after {
+	    content: '|';
+			padding: 0 10px 0 0;
+	  }
+	}
+}
+// Twitter
+.btn-twitter {
+  .button-variant(@btn-twitter-color; @btn-twitter-bg; @btn-twitter-border);
+	&:focus,
+	&:hover {
+		text-decoration: none;
+	}
+}
 
 // Link buttons
 // -------------------------

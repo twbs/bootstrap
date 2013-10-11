@@ -2065,10 +2065,10 @@ output {
 }
 
 .form-control:focus {
-  border-color: #66afe9;
+  border-color: #000000;
   outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.6);
 }
 
 .form-control[disabled],
@@ -2622,6 +2622,112 @@ fieldset[disabled] .btn-info:active,
 fieldset[disabled] .btn-info.active {
   background-color: #5bc0de;
   border-color: #46b8da;
+}
+
+.btn-facebook {
+  color: #ffffff;
+  background-color: #3b5998;
+  border-color: #344e86;
+}
+
+.btn-facebook:hover,
+.btn-facebook:focus,
+.btn-facebook:active,
+.btn-facebook.active,
+.open .dropdown-toggle.btn-facebook {
+  color: #ffffff;
+  background-color: #30487b;
+  border-color: #23345a;
+}
+
+.btn-facebook:active,
+.btn-facebook.active,
+.open .dropdown-toggle.btn-facebook {
+  background-image: none;
+}
+
+.btn-facebook.disabled,
+.btn-facebook[disabled],
+fieldset[disabled] .btn-facebook,
+.btn-facebook.disabled:hover,
+.btn-facebook[disabled]:hover,
+fieldset[disabled] .btn-facebook:hover,
+.btn-facebook.disabled:focus,
+.btn-facebook[disabled]:focus,
+fieldset[disabled] .btn-facebook:focus,
+.btn-facebook.disabled:active,
+.btn-facebook[disabled]:active,
+fieldset[disabled] .btn-facebook:active,
+.btn-facebook.disabled.active,
+.btn-facebook[disabled].active,
+fieldset[disabled] .btn-facebook.active {
+  background-color: #3b5998;
+  border-color: #344e86;
+}
+
+.btn-facebook:focus,
+.btn-facebook:hover {
+  text-decoration: none;
+}
+
+.btn-facebook .fb-logo {
+  text-transform: none;
+}
+
+.btn-facebook .fb-logo:before {
+  padding: 0 10px 0 0;
+  content: 'f';
+}
+
+.btn-facebook .fb-logo:after {
+  padding: 0 10px 0 0;
+  content: '|';
+}
+
+.btn-twitter {
+  color: #ffffff;
+  background-color: #00aced;
+  border-color: #0099d4;
+}
+
+.btn-twitter:hover,
+.btn-twitter:focus,
+.btn-twitter:active,
+.btn-twitter.active,
+.open .dropdown-toggle.btn-twitter {
+  color: #ffffff;
+  background-color: #008ec4;
+  border-color: #006d96;
+}
+
+.btn-twitter:active,
+.btn-twitter.active,
+.open .dropdown-toggle.btn-twitter {
+  background-image: none;
+}
+
+.btn-twitter.disabled,
+.btn-twitter[disabled],
+fieldset[disabled] .btn-twitter,
+.btn-twitter.disabled:hover,
+.btn-twitter[disabled]:hover,
+fieldset[disabled] .btn-twitter:hover,
+.btn-twitter.disabled:focus,
+.btn-twitter[disabled]:focus,
+fieldset[disabled] .btn-twitter:focus,
+.btn-twitter.disabled:active,
+.btn-twitter[disabled]:active,
+fieldset[disabled] .btn-twitter:active,
+.btn-twitter.disabled.active,
+.btn-twitter[disabled].active,
+fieldset[disabled] .btn-twitter.active {
+  background-color: #00aced;
+  border-color: #0099d4;
+}
+
+.btn-twitter:focus,
+.btn-twitter:hover {
+  text-decoration: none;
 }
 
 .btn-link {
@@ -5031,7 +5137,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   font-size: 24px;
   text-transform: uppercase;
   list-style: none;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
   border-radius: 0;
 }
 

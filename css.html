@@ -1750,6 +1750,37 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <button type="button" class="btn btn-link">Link</button>
 {% endhighlight %}
 
+    <h2 id="buttons-social">Social Media Options</h2>
+    <p>We have classes for the social media buttons we use too</p>
+        <div class="bs-example">
+          <!-- Facebook button -->
+          <button type="button" class="btn btn-lg btn-facebook"><span class='fb-logo'></span>Connect To Facebook</button>
+
+          <!-- Twitter button -->
+          <button type="button" class="btn btn-lg btn-twitter">Twitter</button>
+
+          <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
+            <button type="button" class="btn btn-lg btn-facebook btn-block"><span class='fb-logo'></span>Connect To Facebook</button>
+            <!-- Twitter button -->
+            <button type="button" class="btn btn-lg btn-twitter btn-block">Twitter</button>
+          </div>
+        </div>
+{% highlight html %}
+<!-- Facebook button -->
+<button type="button" class="btn btn-lg btn-facebook"><span class='fb-logo'></span>Connect To Facebook</button>
+
+<!-- Twitter button -->
+<button type="button" class="btn btn-lg btn-twitter">Twitter</button>
+
+<!-- Block Button Versions -->
+<div class="well" style="max-width: 400px; margin: 0 auto 10px;">
+  <!-- Facebook button -->
+  <button type="button" class="btn btn-lg btn-facebook btn-block"><span class='fb-logo'></span>Connect To Facebook</button>
+  
+  <!-- Twitter button -->
+  <button type="button" class="btn btn-lg btn-twitter btn-block">Twitter</button>
+</div>
+{% endhighlight %}
     <h2 id="buttons-sizes">Sizes</h2>
     <p>Fancy larger or smaller buttons? Add <code>.btn-lg</code>, <code>.btn-sm</code>, or <code>.btn-xs</code> for additional sizes.</p>
     <div class="bs-example">
