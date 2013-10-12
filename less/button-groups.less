@@ -233,10 +233,13 @@
   width: 100%;
   table-layout: fixed;
   border-collapse: separate;
-  .btn {
-    float: none;
+  > * {
+    float: none !important;
     display: table-cell;
     width: 1%;
+    > * {
+      width: 100$;
+    }
   }
 }
 
