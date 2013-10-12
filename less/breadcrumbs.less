@@ -9,7 +9,12 @@
   list-style: none;
   background-color: @breadcrumb-bg;
   border-radius: @border-radius-base;
-  > li {
+  ol {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+  }
+  li {
     display: inline-block;
     &+li:before {
       content: "@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
@@ -17,7 +22,7 @@
       color: @breadcrumb-color;
     }
   }
-  > .active {
+  .active {
     color: @breadcrumb-active-color;
   }
 }
