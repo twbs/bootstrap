@@ -37,6 +37,8 @@
     var $parent  = getParent($this)
     var isActive = $parent.hasClass('open')
 
+    clearMenus()
+
     if (!isActive) {
       if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
         // if mobile we we use a backdrop because click events don't delegate
@@ -48,21 +50,12 @@
       if (e.isDefaultPrevented()) return
 
       $parent
-        .addClass('open')
+        .toggleClass('open')
         .trigger('shown.bs.dropdown')
 
       $this.focus()
-    } else {
-      $parent.trigger($.Event("hide.bs.dropdown"))
-
-      if (e.isDefaultPrevented()) return
-
-      $parent
-        .removeClass("open")
-        .trigger("hidden.bs.dropdown")
-
-      $this.focus()
     }
+
     return false
   }
 
@@ -97,8 +90,7 @@
     $items.eq(index).focus()
   }
 
-  function clearMenus(event) {
-    if ($(event.target).is('.dropdown-toggle')) return
+  function clearMenus() {
     $(backdrop).remove()
     $(toggle).each(function (e) {
       var $parent = getParent($(this))
