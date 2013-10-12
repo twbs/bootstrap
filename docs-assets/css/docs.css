@@ -400,6 +400,12 @@ body {
   .bs-docs-home .bs-masthead-links {
     margin-left: 350px;
   }
+  .bs-docs-home .bs-social {
+    margin-bottom: 10px;
+  }
+  .bs-docs-home .bs-masthead-links {
+    margin-top: 10px;
+  }
 }
 @media screen and (min-width: 992px) {
   .bs-docs-home .carbonad {
