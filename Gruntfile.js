@@ -1,7 +1,7 @@
 /* jshint node: true */
 
 module.exports = function(grunt) {
-  "use strict";
+  'use strict'
 
   var btoa = require('btoa')
   // Project configuration.
