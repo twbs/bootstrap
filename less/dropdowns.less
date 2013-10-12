@@ -6,8 +6,11 @@
 // Dropdown arrow/caret
 .caret {
   display: inline-block;
-  width: 0;
-  height: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 8px;
+  height: 4px;
+  margin: 2px 0;
   margin-left: 2px;
   vertical-align: middle;
   border-top:   @caret-width-base solid @dropdown-caret-color;
@@ -16,6 +19,28 @@
   // Firefox fix for https://github.com/twbs/bootstrap/issues/9538. Once fixed,
   // we can just straight up remove this.
   border-bottom: 0 dotted;
+}
+
+// Dropdown arrow, pointing right
+.caret.caret-right {
+  border-left: 4px solid;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-right: 0 dotted;
+  height: 8px;
+  width: 4px;
+  margin: 0 2px;
+}
+
+// Dropdown arrow, pointing left
+.caret.caret-left {
+  border-right: 4px solid;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 0 dotted;
+  height: 8px;
+  width: 4px;
+  margin:0 2px;
 }
 
 // The dropdown wrapper (div)
