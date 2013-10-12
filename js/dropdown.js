@@ -53,14 +53,7 @@
         .toggleClass('open')
         .trigger('shown.bs.dropdown')
 
-      $parent.find('.caret').addClass('caret-right')
-
       $this.focus()
-
-    } else {
-
-			$parent.find('.caret').removeClass('caret-right').removeClass('caret-left')
-
     }
 
     return false
@@ -103,11 +96,6 @@
       var $parent = getParent($(this))
       if (!$parent.hasClass('open')) return
       $parent.trigger(e = $.Event('hide.bs.dropdown'))
-    	// Toggle Dropdown Caret
-			$parent.find('.caret').removeClass('caret-right').removeClass('caret-left');
-		});
-	});
-
       if (e.isDefaultPrevented()) return
       $parent.removeClass('open').trigger('hidden.bs.dropdown')
     })
