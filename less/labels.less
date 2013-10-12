@@ -16,7 +16,7 @@
 
   // Add hover effects, but only for links
   &[href] {
-    &:hover,
+    @{hover-prefix} &:hover,
     &:focus {
       color: @label-link-hover-color;
       text-decoration: none;

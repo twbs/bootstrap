@@ -438,10 +438,10 @@
   // Hover states for `.table-hover`
   // Note: this is not available for cells or rows within `thead` or `tfoot`.
   .table-hover > tbody > tr {
-    > td.@{state}:hover,
-    > th.@{state}:hover,
-    &.@{state}:hover > td,
-    &.@{state}:hover > th {
+    @{hover-prefix} > td.@{state}:hover,
+    @{hover-prefix} > th.@{state}:hover,
+    @{hover-prefix} &.@{state}:hover > td,
+    @{hover-prefix} &.@{state}:hover > th {
       background-color: darken(@background, 5%);
       border-color: darken(@border, 5%);
     }
@@ -457,7 +457,7 @@
   background-color: @background;
   border-color: @border;
 
-  &:hover,
+  @{hover-prefix} &:hover,
   &:focus,
   &:active,
   &.active,
@@ -475,7 +475,7 @@
   &[disabled],
   fieldset[disabled] & {
     &,
-    &:hover,
+    @{hover-prefix} &:hover,
     &:focus,
     &:active,
     &.active {
@@ -523,7 +523,7 @@
 .label-variant(@color) {
   background-color: @color;
   &[href] {
-    &:hover,
+    @{hover-prefix} &:hover,
     &:focus {
       background-color: darken(@color, 10%);
     }

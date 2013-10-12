@@ -26,7 +26,7 @@
 
 // Hover state, but only for links
 a.badge {
-  &:hover,
+  @{hover-prefix} &:hover,
   &:focus {
     color: @badge-link-hover-color;
     text-decoration: none;
