@@ -180,7 +180,7 @@ body {
   overflow: hidden;
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .bs-social {
     text-align: left;
   }
@@ -244,7 +244,7 @@ body {
   color: #fff;
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .bs-masthead {
     text-align: left;
     padding-top:    140px;
@@ -295,7 +295,7 @@ body {
   position: relative;
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .bs-header {
     font-size: 21px;
     text-align: left;
@@ -306,7 +306,7 @@ body {
   }
 }
 
-@media screen and (min-width: 992px) {
+@media (min-width: 992px) {
   .bs-header h1,
   .bs-header p {
     margin-right: 380px;
@@ -361,7 +361,7 @@ body {
   display: none; /* hide what I assume are tracking images */
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .carbonad {
     margin: 0 !important;
     border-radius: 4px;
@@ -369,7 +369,7 @@ body {
   }
 }
 
-@media screen and (min-width: 992px) {
+@media (min-width: 992px) {
   .carbonad {
     position: absolute;
     top: 20px;
@@ -383,14 +383,14 @@ body {
 .bs-docs-home .carbonad {
   margin: 0 -15px 40px !important;
 }
-@media screen and (min-width: 480px) {
+@media (min-width: 480px) {
   .bs-docs-home .carbonad {
     width: 330px !important;
     margin: 0 auto 40px !important;
     border-radius: 4px;
   }
 }
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .bs-docs-home .carbonad {
     float: left;
     width: 330px !important;
@@ -401,12 +401,12 @@ body {
     margin-left: 350px;
   }
 }
-@media screen and (min-width: 992px) {
+@media (min-width: 992px) {
   .bs-docs-home .carbonad {
     position: static;
   }
 }
-@media screen and (min-width: 1170px) {
+@media (min-width: 1170px) {
   .bs-docs-home .carbonad {
     margin-top: -25px !important;
   }
@@ -489,7 +489,7 @@ body {
 }
 
 /* Show and affix the side nav when space allows it */
-@media screen and (min-width: 992px) {
+@media (min-width: 992px) {
   .bs-sidebar .nav > .active > ul {
     display: block;
   }
@@ -511,7 +511,7 @@ body {
     margin-bottom: 0;
   }
 }
-@media screen and (min-width: 1200px) {
+@media (min-width: 1200px) {
   /* Widen the fixed sidebar again */
   .bs-sidebar.affix-bottom,
   .bs-sidebar.affix {
@@ -635,7 +635,7 @@ h1[id] {
 }
 
 /* Make the examples and snippets not full-width */
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .bs-example {
     margin-left: 0;
     margin-right: 0;
@@ -902,7 +902,7 @@ h1[id] {
 }
 
 /* Show code snippets when we have the space */
-@media screen and (min-width: 481px) {
+@media (min-width: 481px) {
   .highlight {
     display: block;
   }
