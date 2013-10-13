@@ -72,6 +72,13 @@ base_url: "../"
     </div>
     <p class="lead">Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. It includes <a href="#grid-example-basic">predefined classes</a> for easy layout options, as well as powerful <a href="#grid-less">mixins for generating more semantic layouts</a>.</p>
 
+    <h3 id="grid-how-it-works">How it works</h3>
+    <p>Grid systems are great for building easy to use and maintain web pages. In the most basic implementation, you create rows of columns to house your content. Bootstrap's grid system enables this in two ways: predefined CSS classes and LESS mixins. In both cases, the following guidelines apply.</p>
+    <ul>
+      <li>Create a <code>.row</code> to house your columns. No content should be placed directly within a row, only in columns.</li>
+      <li>Each column is created by specifying the number of available grid columns you'd like to span. By default, we have 12 columns. For an even layout, you'd create two columns, each spanning six columns.</li>
+    </ul>
+
     <h3 id="grid-media-queries">Media queries</h3>
     <p>We use the following media queries in our LESS files to create the key breakpoints in our grid system.</p>
 {% highlight css %}
@@ -2255,6 +2262,16 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 {% highlight html %}
 <button type="button" class="close" aria-hidden="true">&times;</button>
+{% endhighlight %}
+
+
+    <h3 id="helper-classes-carets">Carets</h3>
+    <p>Use carets to indicate dropdown functionality and direction. Note that the default caret will reverse automatically in <a href="../components/#btn-dropdowns-dropup">dropup menus</a>.</p>
+    <div class="bs-example">
+      <span class="caret"></span>
+    </div>
+{% highlight html %}
+<span class="caret"></span>
 {% endhighlight %}
 
 
