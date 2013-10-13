@@ -1,11 +1,14 @@
 {
   "name": "bootstrap",
   "version": "3.0.5",
-  "main": ["./dist/js/bootstrap.js", "./dist/css/bootstrap-manta.css"],
+  "main": [
+    "./dist/js/bootstrap.js",
+    "./dist/css/bootstrap-manta.css"
+  ],
   "ignore": [
-      "**/.*"
+    "**/.*"
   ],
   "dependencies": {
-    "jquery": ">= 1.9.0"
+    "jquery": "~2.0.3"
   }
 }
