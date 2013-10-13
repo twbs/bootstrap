@@ -234,11 +234,11 @@ input[type="checkbox"],
 
 // Form control sizing
 .input-sm {
-  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+  .input-size(@input-height-small, @padding-small-vertical, @padding-small-horizontal, @font-size-small, @line-height-small, @border-radius-small);
 }
 
 .input-lg {
-  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
+  .input-size(@input-height-large, @padding-large-vertical, @padding-large-horizontal, @font-size-large, @line-height-large, @border-radius-large);
 }
 
 
@@ -248,15 +248,15 @@ input[type="checkbox"],
 
 // Warning
 .has-warning {
-  .form-control-validation(@state-warning-text; @state-warning-text; @state-warning-bg);
+  .form-control-validation(@state-warning-text, @state-warning-text, @state-warning-bg);
 }
 // Error
 .has-error {
-  .form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
+  .form-control-validation(@state-danger-text, @state-danger-text, @state-danger-bg);
 }
 // Success
 .has-success {
-  .form-control-validation(@state-success-text; @state-success-text; @state-success-bg);
+  .form-control-validation(@state-success-text, @state-success-text, @state-success-bg);
 }
 
 
