@@ -111,13 +111,13 @@
       $next = this.$element.find('.item')[fallback]()
     }
 
-    this.sliding = true
+    this.sliding = true;
 
-    isCycling && this.pause()
+    isCycling && this.pause();
 
-    var e = $.Event('slide.bs.carousel', { relatedTarget: $next[0], direction: direction })
+    var e = $.Event('slide.bs.carousel', { relatedTarget: $next[0], direction: direction });
 
-    if ($next.hasClass('active')) return
+    if ($next.hasClass('active')) return;
 
     if (this.$indicators.length) {
       this.$indicators.find('.active').removeClass('active')
@@ -142,6 +142,17 @@
           setTimeout(function () { that.$element.trigger('slid') }, 0)
         })
         .emulateTransitionEnd(600)
+    } else if(!$.support.transition && this.$element.hasClass('slide')) {
+        this.$element.trigger(e)
+        if (e.isDefaultPrevented()) return
+        $active.animate({left: (direction == 'right' ? '100%' : '-100%')}, 600, function(){
+            $active.removeClass('active')
+            that.sliding = false
+            setTimeout(function () { that.$element.trigger('slid') }, 0)
+        })
+        $next.addClass(type).css({left: (direction == 'right' ? '-100%' : '100%')}).animate({left: '0'}, 600,  function(){
+            $next.removeClass(type).addClass('active')
+        })
     } else {
       this.$element.trigger(e)
       if (e.isDefaultPrevented()) return
