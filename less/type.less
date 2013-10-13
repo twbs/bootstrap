@@ -82,7 +82,8 @@ h1, h2, h3, h4, h5, h6,
   line-height: @headings-line-height;
   color: @headings-color;
 
-  small {
+  small,
+  .small {
     font-weight: normal;
     line-height: 1;
     color: @headings-small-color;
@@ -95,7 +96,8 @@ h3 {
   margin-top: @line-height-computed;
   margin-bottom: (@line-height-computed / 2);
 
-  small {
+  small,
+  .small {
     font-size: 65%;
   }
 }
@@ -105,7 +107,8 @@ h6 {
   margin-top: (@line-height-computed / 2);
   margin-bottom: (@line-height-computed / 2);
 
-  small {
+  small,
+  .small {
     font-size: 75%;
   }
 }
@@ -240,10 +243,12 @@ blockquote {
     border-right: 5px solid @blockquote-border-color;
     border-left: 0;
     p,
-    small {
+    small,
+    .small {
       text-align: right;
     }
-    small {
+    small,
+    .small {
       &:before {
         content: '';
       }
