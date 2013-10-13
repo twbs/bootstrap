@@ -227,13 +227,11 @@
   .clearfix();
 }
 
-// Show/hide tabbable areas
-.tab-content > .tab-pane,
-.pill-content > .pill-pane {
-  display: none;
-}
-.tab-content,
-.pill-content {
+// Hide tabbable panes to start, show them when `.active`
+.tab-content {
+  > .tab-pane {
+    display: none;
+  }
   > .active {
     display: block;
   }
