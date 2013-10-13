@@ -495,7 +495,19 @@ h6 small,
 .h3 small,
 .h4 small,
 .h5 small,
-.h6 small {
+.h6 small,
+h1 .small,
+h2 .small,
+h3 .small,
+h4 .small,
+h5 .small,
+h6 .small,
+.h1 .small,
+.h2 .small,
+.h3 .small,
+.h4 .small,
+.h5 .small,
+.h6 .small {
   font-weight: normal;
   line-height: 1;
   color: #999999;
@@ -510,7 +522,10 @@ h3 {
 
 h1 small,
 h2 small,
-h3 small {
+h3 small,
+h1 .small,
+h2 .small,
+h3 .small {
   font-size: 65%;
 }
 
@@ -523,7 +538,10 @@ h6 {
 
 h4 small,
 h5 small,
-h6 small {
+h6 small,
+h4 .small,
+h5 .small,
+h6 .small {
   font-size: 75%;
 }
 
@@ -685,15 +703,18 @@ blockquote.pull-right {
 }
 
 blockquote.pull-right p,
-blockquote.pull-right small {
+blockquote.pull-right small,
+blockquote.pull-right .small {
   text-align: right;
 }
 
-blockquote.pull-right small:before {
+blockquote.pull-right small:before,
+blockquote.pull-right .small:before {
   content: '';
 }
 
-blockquote.pull-right small:after {
+blockquote.pull-right small:after,
+blockquote.pull-right .small:after {
   content: '\00A0 \2014';
 }
 
@@ -744,7 +765,7 @@ pre code {
   color: inherit;
   white-space: pre-wrap;
   background-color: transparent;
-  border: 0;
+  border-radius: 0;
 }
 
 .pre-scrollable {
