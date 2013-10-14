@@ -373,7 +373,7 @@ body {
   .carbonad {
     position: absolute;
     top: 20px;
-    right: 0;
+    right: 15px; /* 15px instead of 0 since box-sizing */
     padding: 15px !important;
     width: 330px !important;
   }
@@ -1117,6 +1117,11 @@ h1[id] {
  *
  * Odds and ends for optimum docs display.
  */
+
+ /* About page */
+ .bs-about {
+  font-size: 16px;
+ }
 
 /* Examples gallery: space out content better */
 .bs-examples h4 {
