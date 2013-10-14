@@ -10,14 +10,6 @@
 // Kill the scroll on the body
 .modal-open {
   overflow: hidden;
-
-
-  // Account for hiding of scrollbar
-  body&,
-  .navbar-fixed-top,
-  .navbar-fixed-bottom {
-    margin-right: 15px
-  }
 }
 
 // Container that the modal scrolls within
@@ -73,7 +65,7 @@
   background-color: @modal-backdrop-bg;
   // Fade for backdrop
   &.fade { .opacity(0); }
-  &.in { .opacity(.5); }
+  &.in { .opacity(.95); }
 }
 
 // Modal header
