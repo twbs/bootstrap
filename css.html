@@ -72,12 +72,15 @@ base_url: "../"
     </div>
     <p class="lead">Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. It includes <a href="#grid-example-basic">predefined classes</a> for easy layout options, as well as powerful <a href="#grid-less">mixins for generating more semantic layouts</a>.</p>
 
-    <h3 id="grid-how-it-works">How it works</h3>
-    <p>Grid systems are great for building easy to use and maintain web pages. In the most basic implementation, you create rows of columns to house your content. Bootstrap's grid system enables this in two ways: predefined CSS classes and LESS mixins. In both cases, the following guidelines apply.</p>
+    <h3 id="grid-intro">Introduction</h3>
+    <p>Grid systems are used for creating page layouts through a series of rows and columns that house your content. Here's how the Bootstrap grid system works:</p>
     <ul>
-      <li>Create a <code>.row</code> to house your columns. No content should be placed directly within a row, only in columns.</li>
-      <li>Each column is created by specifying the number of available grid columns you'd like to span. By default, we have 12 columns. For an even layout, you'd create two columns, each spanning six columns.</li>
+      <li>Use rows to create horizontal groups of columns.</li>
+      <li>Content should be placed within columns, and only columns may be immediate children of rows.</li>
+      <li>Predefined grid classes like <code>.row</code> and <code>.col-xs-4</code> are available for quickly making grid layouts. LESS mixins can also be used for more semantic layouts.</li>
+      <li>Grid columns are created by specifying the number of twelve available columns you wish to span. For example, three equal columns would use three <code>.col-xs-4</code>.</li>
     </ul>
+    <p>Look to the examples for applying these principles to your code.</p>
 
     <h3 id="grid-media-queries">Media queries</h3>
     <p>We use the following media queries in our LESS files to create the key breakpoints in our grid system.</p>
