@@ -5214,7 +5214,8 @@ a.list-group-item.active > .badge,
 }
 
 a.thumbnail:hover,
-a.thumbnail:focus {
+a.thumbnail:focus,
+a.thumbnail.active {
   border-color: #428bca;
 }
 
