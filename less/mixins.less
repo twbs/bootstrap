@@ -702,9 +702,13 @@
 // and successes.
 
 .form-control-validation(@text-color: #555; @border-color: #ccc; @background-color: #f5f5f5) {
+
+  color: @text-color;
   // Color the label and help text
+  label,
   .help-block,
-  .control-label {
+  .control-label,
+	.fieldWithErrors {
     color: @text-color;
   }
   // Set the border and box shadow on specific inputs to match

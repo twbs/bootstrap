@@ -572,13 +572,14 @@ p {
   margin: 0 0 10px;
 }
 
-p > a {
-  border-bottom: 1px solid #333333;
+p > a,
+.show-link > a {
+  text-decoration: underline;
 }
 
-p > a:hover {
+p > a:hover,
+.show-link > a:hover {
   text-decoration: none;
-  border-bottom: 1px solid transparent;
 }
 
 .lead {
@@ -670,10 +671,12 @@ h6,
 .h3,
 .h4,
 .h5,
-.h6 {
+.h6,
+.header,
+.sub-header {
   font-family: "ProximaNova-ExtraCondensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  line-height: 1.1;
+  font-weight: normal;
+  line-height: 1;
   color: inherit;
   text-transform: uppercase;
 }
@@ -689,17 +692,23 @@ h6 small,
 .h3 small,
 .h4 small,
 .h5 small,
-.h6 small {
+.h6 small,
+.header small,
+.sub-header small {
   font-weight: normal;
   line-height: 1;
   color: #cccccc;
   text-transform: none;
 }
 
+.no-transform {
+  text-transform: none;
+}
+
 h1,
 h2,
 h3 {
-  margin-top: 20px;
+  margin-top: 0;
   margin-bottom: 10px;
 }
 
@@ -712,7 +721,7 @@ h3 small {
 h4,
 h5,
 h6 {
-  margin-top: 10px;
+  margin-top: 0;
   margin-bottom: 10px;
 }
 
@@ -757,8 +766,12 @@ h6,
 }
 
 .page-header {
-  padding-bottom: 9px;
-  margin: 40px 0 20px;
+  padding: 0 0 14px 0;
+  margin: 0 0 20px 0;
+}
+
+.page-header,
+.divider {
   border-bottom: 1px solid #e6e6e6;
 }
 
@@ -925,7 +938,6 @@ Included is a dynamic version of the above grid
 
 .grid {
   width: 100%;
-  margin: 0 auto;
 }
 
 .grid:after {
@@ -978,7 +990,6 @@ Included is a dynamic version of the above grid
 
 .grid-dynamic .grid {
   width: 100%;
-  margin: 0 auto;
 }
 
 .grid-dynamic .grid:after {
@@ -1280,6 +1291,7 @@ legend {
 
 label {
   display: inline-block;
+  padding-right: 4px;
   margin-bottom: 1px;
   font-size: 13px;
   font-weight: bold;
@@ -1391,7 +1403,7 @@ textarea.form-control {
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin: 0 10px 15px 0;
 }
 
 .radio,
@@ -1490,8 +1502,14 @@ textarea.input-lg {
   height: auto;
 }
 
+.has-warning {
+  color: #c09853;
+}
+
+.has-warning label,
 .has-warning .help-block,
-.has-warning .control-label {
+.has-warning .control-label,
+.has-warning .fieldWithErrors {
   color: #c09853;
 }
 
@@ -1513,31 +1531,51 @@ textarea.input-lg {
   border-color: #c09853;
 }
 
-.has-error .help-block,
-.has-error .control-label {
+.has-error,
+.fieldWithErrors {
   color: #cc0000;
 }
 
-.has-error .form-control {
+.has-error label,
+.fieldWithErrors label,
+.has-error .help-block,
+.fieldWithErrors .help-block,
+.has-error .control-label,
+.fieldWithErrors .control-label,
+.has-error .fieldWithErrors,
+.fieldWithErrors .fieldWithErrors {
+  color: #cc0000;
+}
+
+.has-error .form-control,
+.fieldWithErrors .form-control {
   border-color: #cc0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-.has-error .form-control:focus {
+.has-error .form-control:focus,
+.fieldWithErrors .form-control:focus {
   border-color: #990000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ff3333;
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ff3333;
 }
 
-.has-error .input-group-addon {
+.has-error .input-group-addon,
+.fieldWithErrors .input-group-addon {
   color: #cc0000;
   background-color: #ffffff;
   border-color: #cc0000;
 }
 
+.has-success {
+  color: #06753c;
+}
+
+.has-success label,
 .has-success .help-block,
-.has-success .control-label {
+.has-success .control-label,
+.has-success .fieldWithErrors {
   color: #06753c;
 }
 
@@ -2728,10 +2766,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .breadcrumb {
-  padding: 8px 0;
-  margin-bottom: 20px;
+  padding: 0;
+  margin: 0;
   font-family: "ProximaNova-ExtraCondensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 24px;
+  font-weight: bold;
+  line-height: 1;
   text-transform: uppercase;
   list-style: none;
   background-color: #ffffff;
@@ -2740,6 +2780,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .breadcrumb > li {
   display: inline-block;
+  color: #cccccc;
 }
 
 .breadcrumb > li > a {

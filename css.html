@@ -92,16 +92,18 @@ base_url: "../"
 			</div>
 		</div>
 {% highlight html %}
-<div class="grid-dynamic grid show-grid">
+<div class="grid">
   <div class="grid-1-3">.grid-1-3</div>
   <div class="grid-1-3">.grid-1-3</div>
   <div class="grid-1-3">.grid-1-3</div>
 </div>
-<div class="grid-dynamic grid show-grid">
+
+<div class="grid">
   <div class="grid-2-3">.grid-2-3</div>
   <div class="grid-1-3">.grid-1-3</div>
 </div>
-<div class="grid-dynamic grid show-grid">
+
+<div class="grid">
   <div class="grid-1-3">.grid-1-3</div>
   <div class="grid-2-3">.grid-2-3</div>
 </div>
@@ -132,23 +134,26 @@ base_url: "../"
 		</div>
 
 {% highlight html %}
-<div class="grid-dynamic grid show-grid">
+<div class="grid">
   <div class="grid-1-5">.grid-1-5</div>
   <div class="grid-1-5">.grid-1-5</div>
   <div class="grid-1-5">.grid-1-5</div>
   <div class="grid-1-5">.grid-1-5</div>
   <div class="grid-1-5">.grid-1-5</div>
 </div>
-<div class="grid-dynamic grid show-grid">
+
+<div class="grid">
   <div class="grid-2-5">.grid-2-5</div>
   <div class="grid-1-5">.grid-1-5</div>
   <div class="grid-2-5">.grid-2-5</div>
 </div>
-<div class="grid-dynamic grid show-grid">
+
+<div class="grid">
   <div class="grid-2-5">.grid-2-5</div>
   <div class="grid-3-5">.grid-3-5</div>
 </div>
-<div class="grid-dynamic grid show-grid">
+
+<div class="grid">
   <div class="grid-1-5">.grid-1-5</div>
   <div class="grid-4-5">.grid-4-5</div>
 </div>
@@ -163,7 +168,7 @@ base_url: "../"
 		</div>
 
 {% highlight html %}
-<div class="grid-dynamic grid show-grid">
+<div class="grid">
   <div class="grid-1-2">.grid-1-2</div>
   <div class="grid-1-2">.grid-1-2</div>
 </div>
@@ -183,7 +188,7 @@ base_url: "../"
 		</div>
 
 {% highlight html %}
-<div class="grid-dynamic grid show-grid">
+<div class="grid">
   <div class="grid-1-6">.grid-1-6</div>
   <div class="grid-1-6">.grid-1-6</div>
   <div class="grid-1-6">.grid-1-6</div>
@@ -211,23 +216,22 @@ base_url: "../"
 		      <div class="grid-1-2">.grid-1-2</div>
 		      <div class="grid-1-2">.grid-1-2</div>
 				</div>
-				</div>
-				<div class="grid-1-3">.grid-1-3</div>
 			</div>
-			<div class="grid-dynamic grid show-grid">
-			  <div class="grid-1-2">
-					.grid-1-2 with nested grids<br />
-					<div class="grid">
-						<div class="grid-2-3">.grid-2-2</div>
-						<div class="grid-1-3">.grid-1-3</div>
-					</div>
+			<div class="grid-1-3">.grid-1-3</div>
+		</div>
+		<div class="grid-dynamic grid show-grid">
+			<div class="grid-1-2">
+				.grid-1-2 with nested grids<br />
+				<div class="grid">
+					<div class="grid-2-3">.grid-2-3</div>
+					<div class="grid-1-3">.grid-1-3</div>
 				</div>
-			  <div class="grid-1-2">.grid-1-2</div>
 			</div>
+			<div class="grid-1-2">.grid-1-2</div>
 		</div>
 
 {% highlight html %}
-<div class="grid-dynamic grid show-grid">
+<div class="grid">
 	<div class="grid-1-3">
 	.grid-1-3 with nested columns
 	<br />
@@ -245,17 +249,16 @@ base_url: "../"
 	</div>
 	</div>
 	<div class="grid-1-3">.grid-1-3</div>
-	</div>
-	<div class="grid-dynamic grid show-grid">
-	 <div class="grid-1-2">
-		.grid-1-2 with nested grids<br />
-		<div class="grid">
-			<div class="grid-2-3">.grid-2-2</div>
-			<div class="grid-1-3">.grid-1-3</div>
-		</div>
-	</div>
-	 <div class="grid-1-2">.grid-1-2</div>
-	</div>
+</div>
+<div class="grid">
+  <div class="grid-1-2">
+    .grid-1-2 with nested grids<br />
+	  <div class="grid">
+		  <div class="grid-2-3">.grid-2-3</div>
+		  <div class="grid-1-3">.grid-1-3</div>
+	  </div>
+  </div>
+	<div class="grid-1-2">.grid-1-2</div>
 </div>
 {% endhighlight %}
 

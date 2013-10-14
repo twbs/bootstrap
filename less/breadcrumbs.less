@@ -5,18 +5,20 @@
 
 .breadcrumb {
 	font-size: @font-size-h3;
+	line-height: @breadcrumb-line-height;
 	text-transform: uppercase;
 	font-family: @font-family-base-extra-condensed;
-  padding: 8px 0px;
-  margin-bottom: @line-height-computed;
+	font-weight: bold;
+  padding: 0;
+  margin: 0;
   list-style: none;
   background-color: @breadcrumb-bg;
   border-radius: @border-radius-base;
   > li {
-	
+		color: @breadcrumb-color;
 		> a {
 			color: @breadcrumb-color;
-			border-bottom: 1px solid transparent;
+ 		  border-bottom: 1px solid transparent;
 			&:hover {
 				color: @breadcrumb-color;
 				text-decoration: none;

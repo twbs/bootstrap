@@ -99,7 +99,7 @@ module.exports = function(grunt) {
         src: ['less/theme.less'],
         dest: 'dist/css/<%= pkg.name %>-theme.min.css'
       },
-      tobi_bootstrap: {
+      tobi_bootstrap_master: {
         src: ['less/bootstrap-master.less'],
         dest: 'dist/css/<%= pkg.name %>-master.css'
       }
@@ -110,6 +110,11 @@ module.exports = function(grunt) {
         expand: true,
         src: ["/fonts/*"],
         dest: 'dist/'
+      },
+      tobi_master: {
+        expand: false,
+        src: ["dist/css/bootstrap-tobi-master.css"],
+        dest: '../trunk/app/assets/stylesheets/plugin/bootstrap-3.0.0-tobi.css'
       }
     },
 
@@ -180,6 +185,9 @@ module.exports = function(grunt) {
   var testSubtasks = ['dist-css', 'jshint', 'qunit'];
   grunt.registerTask('test', testSubtasks);
 
+	// Dist Tobi Task - copies latest CSS / JS etc to local trunk
+  grunt.registerTask('dist-tobi', ['dist', 'copy:tobi_master']);
+
   // JS distribution task.
   grunt.registerTask('dist-js', ['concat', 'uglify']);
 
@@ -187,7 +195,7 @@ module.exports = function(grunt) {
   grunt.registerTask('dist-css', ['recess']);
 
   // Fonts distribution task.
-  grunt.registerTask('dist-fonts', ['copy']);
+  grunt.registerTask('dist-fonts', ['copy:fonts']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean', 'dist-css', 'dist-fonts', 'dist-js']);

@@ -28,6 +28,7 @@ legend {
 label {
   display: inline-block;
   margin-bottom: @label-margin-bottom;
+  padding-right: 4px;
 	font-size: @font-size-small;
   font-weight: bold;
 }
@@ -167,7 +168,7 @@ output {
 // horizontal forms, use the predefined grid classes.
 
 .form-group {
-  margin-bottom: 15px;
+  margin: 0 10px 15px 0;
 }
 
 
@@ -252,7 +253,7 @@ input[type="checkbox"],
   .form-control-validation(@state-warning-text; @state-warning-text; @state-warning-bg);
 }
 // Error
-.has-error {
+.has-error, .fieldWithErrors {
   .form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
 }
 // Success

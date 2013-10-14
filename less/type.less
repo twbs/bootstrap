@@ -8,11 +8,12 @@
 
 p {
   margin: 0 0 (@line-height-computed / 2);
+}
+p, .show-link {
 	> a {
-		border-bottom: 1px solid @link-color;
+		text-decoration: underline;
 		&:hover {
 			text-decoration: none;
-			border-bottom: 1px solid transparent;
 		}
 	}
 }
@@ -85,7 +86,8 @@ cite    { font-style: normal; }
 // -------------------------
 
 h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+.h1, .h2, .h3, .h4, .h5, .h6,
+.header, .sub-header {
   font-family: @headings-font-family;
   font-weight: @headings-font-weight;
   line-height: @headings-line-height;
@@ -100,10 +102,14 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
+.no-transform {
+	text-transform: none;	
+}
+
 h1,
 h2,
 h3 {
-  margin-top: @line-height-computed;
+  margin-top: 0;
   margin-bottom: (@line-height-computed / 2);
 
   small {
@@ -113,7 +119,7 @@ h3 {
 h4,
 h5,
 h6 {
-  margin-top: (@line-height-computed / 2);
+  margin-top: 0;
   margin-bottom: (@line-height-computed / 2);
 
   small {
@@ -139,9 +145,13 @@ h6, .h6 { font-size: @font-size-h6; }
 // -------------------------
 
 .page-header {
-  padding-bottom: ((@line-height-computed / 2) - 1);
-  margin: (@line-height-computed * 2) 0 @line-height-computed;
-  border-bottom: 1px solid @page-header-border-color;
+  // padding-bottom: ((@line-height-computed / 2) - 1);
+  // margin: (@line-height-computed * 2) 0 @line-height-computed;
+	padding: 0 0 @font-size-base 0;
+	margin: 0 0 @line-height-computed 0;
+}
+.page-header, .divider {
+  border-bottom: 1px solid @page-header-border-color;	
 }
 
 
