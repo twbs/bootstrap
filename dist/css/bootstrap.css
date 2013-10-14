@@ -5510,15 +5510,19 @@ a.thumbnail:focus {
   margin-right: 5px;
 }
 
+.list-group-item.link,
 a.list-group-item {
   color: #555555;
 }
 
+.list-group-item.link .list-group-item-heading,
 a.list-group-item .list-group-item-heading {
   color: #333333;
 }
 
+.list-group-item.link:hover,
 a.list-group-item:hover,
+.list-group-item.link:focus,
 a.list-group-item:focus {
   text-decoration: none;
   background-color: #f5f5f5;
