@@ -847,9 +847,21 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     </div>
 
     <h2 id="tooltips-usage">Usage</h2>
+    <p>The tooltip plugin generates content and markup on demand, and by default places tooltips after their trigger element.</p>
     <p>Trigger the tooltip via JavaScript:</p>
 {% highlight js %}
 $('#example').tooltip(options)
+{% endhighlight %}
+
+    <h3>Markup</h3>
+    <p>The generated markup of a tooltip is rather simple, though it does require a position (by default, set to <code>top</code> by the plugin).</p>
+{% highlight html linenos %}
+<div class="tooltip">
+  <div class="tooltip-inner">
+    Tooltip!
+  </div>
+  <div class="tooltip-arrow"></div>
+</div>
 {% endhighlight %}
 
     <h3>Options</h3>
