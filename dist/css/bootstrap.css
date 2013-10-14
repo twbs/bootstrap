@@ -4221,26 +4221,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
   }
 }
 
-.tabbable:before,
-.tabbable:after {
-  display: table;
-  content: " ";
-}
-
-.tabbable:after {
-  clear: both;
-}
-
-.tabbable:before,
-.tabbable:after {
-  display: table;
-  content: " ";
-}
-
-.tabbable:after {
-  clear: both;
-}
-
 .tab-content > .tab-pane {
   display: none;
 }

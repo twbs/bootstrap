@@ -2357,7 +2357,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h3 id="helper-classes-show-hide">Showing and hiding content</h3>
     <p>Force an element to be shown or hidden (<strong>including for screen readers</strong>) with the use of <code>.show</code> and <code>.hidden</code> classes. These classes use <code>!important</code> to avoid specificity conflicts, just like the <a href="../css/#helper-classes-floats">quick floats</a>. They are only available for block level toggling. They can also be used as mixins.</p>
-    <p><code>.hide</code> is also available, but it does not always affect screen readers and is <strong>deprecated</strong> as of v3.0.1. Use <code>.hidden</code> or <code>.sr-only</code> instead.</p>
+    <p><code>.hide</code> is available, but it does not always affect screen readers and is <strong>deprecated</strong> as of v3.0.1. Use <code>.hidden</code> or <code>.sr-only</code> instead.</p>
+    <p>Furthermore, <code>.invisible</code> can be used to toggle only the visibility of an element, meaning its <code>display</code> is not modified and the element can still affect the flow of the document.</p>
 {% highlight html %}
 <div class="show">...</div>
 <div class="hidden">...</div>
@@ -2370,6 +2371,9 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 .hidden {
   display: none !important;
   visibility: hidden !important;
+}
+.invisible {
+  visibility: hidden;
 }
 
 // Usage as mixins
