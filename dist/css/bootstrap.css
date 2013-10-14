@@ -1757,7 +1757,7 @@ table th[class*="col-"] {
   border-color: #f7e1b5;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .table-responsive {
     width: 100%;
     margin-bottom: 15px;
