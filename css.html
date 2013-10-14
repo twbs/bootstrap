@@ -79,9 +79,15 @@ base_url: "../"
       <li>Use rows to create horizontal groups of columns.</li>
       <li>Content should be placed within columns, and only columns may be immediate children of rows.</li>
       <li>Predefined grid classes like <code>.row</code> and <code>.col-xs-4</code> are available for quickly making grid layouts. LESS mixins can also be used for more semantic layouts.</li>
+      <li>Columns create gutters (gaps between column content) via <code>padding</code>. That padding is offset in rows for the first and last column via negative margin on <code>.row</code>s.</li>
       <li>Grid columns are created by specifying the number of twelve available columns you wish to span. For example, three equal columns would use three <code>.col-xs-4</code>.</li>
     </ul>
     <p>Look to the examples for applying these principles to your code.</p>
+
+    <div class="bs-callout bs-callout-info">
+      <h4>Grids and full-width layouts</h4>
+      <p>Folks looking to create fully fluid layouts (meaning your site stretches the entire width of the viewport) must wrap their grid content in a containing element with <code>padding: 0 15px;</code> to offset the <code>margin: 0 -15px;</code> used on <code>.row</code>s.</p>
+    </div>
 
     <h3 id="grid-media-queries">Media queries</h3>
     <p>We use the following media queries in our LESS files to create the key breakpoints in our grid system.</p>
