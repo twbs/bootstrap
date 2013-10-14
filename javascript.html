@@ -1574,6 +1574,13 @@ $('.btn-group').button()
 
 
     <h2 id="collapse-usage">Usage</h2>
+    <p>The collapse plugin utilizes a few classes to handle the heavy lifting:</p>
+    <ul>
+      <li><code>.collapse</code> hides the content</li>
+      <li><code>.collapse.in</code> shows the content</li>
+      <li><code>.collapsing</code> is added when the transition starts, and removed when it finishes</li>
+    </ul>
+    <p>These classes can be found in <code>component-animations.less</code>.</p>
 
     <h3>Via data attributes</h3>
     <p>Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a CSS selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
