@@ -120,7 +120,7 @@ Editor preferences are available in the [editor config](.editorconfig) for easy 
 Keep track of development and community news.
 
 * Follow [@twbootstrap on Twitter](http://twitter.com/twbootstrap).
-* Read and subscribe to the [The Official Bootstrap Blog](http://blog.getbootstrap.com).
+* Read and subscribe to [The Official Bootstrap Blog](http://blog.getbootstrap.com).
 * Have a question that's not a feature request or bug report? [Ask on the mailing list.](http://groups.google.com/group/twitter-bootstrap)
 * Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##twitter-bootstrap` channel.
 
