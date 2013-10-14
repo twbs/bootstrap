@@ -5482,6 +5482,20 @@ a.thumbnail:focus {
   margin-bottom: 20px;
 }
 
+a.list-group-item {
+  color: #555555;
+}
+
+a.list-group-item .list-group-item-heading {
+  color: #333333;
+}
+
+a.list-group-item:hover,
+a.list-group-item:focus {
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+
 .list-group-item {
   position: relative;
   display: block;
@@ -5508,20 +5522,6 @@ a.thumbnail:focus {
 
 .list-group-item > .badge + .badge {
   margin-right: 5px;
-}
-
-a.list-group-item {
-  color: #555555;
-}
-
-a.list-group-item .list-group-item-heading {
-  color: #333333;
-}
-
-a.list-group-item:hover,
-a.list-group-item:focus {
-  text-decoration: none;
-  background-color: #f5f5f5;
 }
 
 .list-group-item.active,
