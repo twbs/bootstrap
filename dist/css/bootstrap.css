@@ -2104,7 +2104,6 @@ textarea.input-lg {
 }
 
 .form-control-static {
-  padding-top: 7px;
   margin-bottom: 0;
 }
 
@@ -2171,6 +2170,10 @@ textarea.input-lg {
 
 .form-horizontal .form-group:after {
   clear: both;
+}
+
+.form-horizontal .form-control-static {
+  padding-top: 7px;
 }
 
 @media (min-width: 768px) {
