@@ -617,9 +617,11 @@ h1[id] {
   color: #333;
   text-decoration: none;
 }
-.bs-team iframe {
+.bs-team .github-btn {
   float: right;
   margin-top: 6px;
+  width: 120px;
+  height: 20px;
 }
 .bs-team img {
   float: left;
