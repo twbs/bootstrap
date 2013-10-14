@@ -232,6 +232,7 @@ $('#myModal').on('show.bs.modal', function (e) {
     </div>
 
     <h2 id="modals-usage">Usage</h2>
+    <p>The modal plugin toggles your hidden content on demand, via data attributes or JavaScript. It also adds <code>.model-open</code> to the <code>&lt;body&gt;</code> to override default scrolling behavior and generates a <code>.modal-backdrop</code> to provide a click area for dismissing shown modals when clicking outside the modal.</p>
 
     <h3>Via data attributes</h3>
     <p>Activate a modal without writing JavaScript. Set <code>data-toggle="modal"</code> on a controller element, like a button, along with a <code>data-target="#foo"</code> or <code>href="#foo"</code> to target a specific modal to toggle.</p>
@@ -449,6 +450,7 @@ $('#myModal').on('hidden.bs.modal', function () {
 
 
     <h2 id="dropdowns-usage">Usage</h2>
+    <p>Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the <code>.open</code> class on the parent list item. When opened, the plugin also adds <code>.dropdown-backdrop</code> as a click area for closing dropdown menus when clicking outside the menu.</p>
 
     <h3>Via data attributes</h3>
     <p>Add <code>data-toggle="dropdown"</code> to a link or button to toggle a dropdown.</p>
@@ -845,9 +847,21 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     </div>
 
     <h2 id="tooltips-usage">Usage</h2>
+    <p>The tooltip plugin generates content and markup on demand, and by default places tooltips after their trigger element.</p>
     <p>Trigger the tooltip via JavaScript:</p>
 {% highlight js %}
 $('#example').tooltip(options)
+{% endhighlight %}
+
+    <h3>Markup</h3>
+    <p>The generated markup of a tooltip is rather simple, though it does require a position (by default, set to <code>top</code> by the plugin).</p>
+{% highlight html linenos %}
+<div class="tooltip">
+  <div class="tooltip-inner">
+    Tooltip!
+  </div>
+  <div class="tooltip-arrow"></div>
+</div>
 {% endhighlight %}
 
     <h3>Options</h3>
@@ -1560,6 +1574,13 @@ $('.btn-group').button()
 
 
     <h2 id="collapse-usage">Usage</h2>
+    <p>The collapse plugin utilizes a few classes to handle the heavy lifting:</p>
+    <ul>
+      <li><code>.collapse</code> hides the content</li>
+      <li><code>.collapse.in</code> shows the content</li>
+      <li><code>.collapsing</code> is added when the transition starts, and removed when it finishes</li>
+    </ul>
+    <p>These classes can be found in <code>component-animations.less</code>.</p>
 
     <h3>Via data attributes</h3>
     <p>Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a CSS selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
