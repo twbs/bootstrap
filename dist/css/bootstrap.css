@@ -6528,17 +6528,17 @@ button.close {
   border: 0;
 }
 
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
 .affix {
   position: fixed;
 }
 
 @-ms-viewport {
   width: device-width;
-}
-
-.hidden {
-  display: none !important;
-  visibility: hidden !important;
 }
 
 .visible-xs,
