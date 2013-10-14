@@ -600,12 +600,16 @@ small,
   font-size: 90%;
 }
 
+.large {
+  font-size: 18px;
+}
+
 cite {
   font-style: normal;
 }
 
 .text-muted {
-  color: #cccccc;
+  color: #999999;
 }
 
 .text-primary {
@@ -646,6 +650,11 @@ cite {
 
 .text-info:hover {
   color: #2d6987;
+}
+
+.text-strike {
+  color: #999999;
+  text-decoration: line-through;
 }
 
 .text-left {
@@ -2428,7 +2437,7 @@ fieldset[disabled] .btn {
 .btn-default.active,
 .open .dropdown-toggle.btn-default {
   color: #333333;
-  background-color: #ebebeb;
+  background-color: #ffffff;
   border-color: #141414;
 }
 

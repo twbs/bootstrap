@@ -38,6 +38,10 @@ small,
 	font-size: 90%; 
 }
 
+.large {
+	font-size: @font-size-large;
+}
+
 // Undo browser default styling
 cite    { font-style: normal; }
 
@@ -74,6 +78,10 @@ cite    { font-style: normal; }
   &:hover {
     color: darken(@state-info-text, 10%);
   }
+}
+.text-strike {
+	color: @text-muted;
+	text-decoration: line-through;
 }
 
 // Alignment
