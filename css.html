@@ -72,6 +72,16 @@ base_url: "../"
     </div>
     <p class="lead">Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. It includes <a href="#grid-example-basic">predefined classes</a> for easy layout options, as well as powerful <a href="#grid-less">mixins for generating more semantic layouts</a>.</p>
 
+    <h3 id="grid-intro">Introduction</h3>
+    <p>Grid systems are used for creating page layouts through a series of rows and columns that house your content. Here's how the Bootstrap grid system works:</p>
+    <ul>
+      <li>Use rows to create horizontal groups of columns.</li>
+      <li>Content should be placed within columns, and only columns may be immediate children of rows.</li>
+      <li>Predefined grid classes like <code>.row</code> and <code>.col-xs-4</code> are available for quickly making grid layouts. LESS mixins can also be used for more semantic layouts.</li>
+      <li>Grid columns are created by specifying the number of twelve available columns you wish to span. For example, three equal columns would use three <code>.col-xs-4</code>.</li>
+    </ul>
+    <p>Look to the examples for applying these principles to your code.</p>
+
     <h3 id="grid-media-queries">Media queries</h3>
     <p>We use the following media queries in our LESS files to create the key breakpoints in our grid system.</p>
 {% highlight css %}
@@ -175,7 +185,7 @@ base_url: "../"
     <p>Grid classes apply to devices with screen widths greater than or equal to the breakpoint sizes, and override grid classes targeted at smaller devices. Therefore, applying any <code>.col-md-</code> class to an element will not only affect its styling on medium devices but also on large devices if a <code>.col-lg-</code> class is not present.</p>
 
     <h3 id="grid-example-basic">Example: Stacked-to-horizontal</h3>
-    <p>Using a single set of <code>.col-md-*</code> grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices.</p>
+    <p>Using a single set of <code>.col-md-*</code> grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices. Place grid columns in any <code>.row</code>.</p>
     <div class="bs-docs-grid">
       <div class="row show-grid">
         <div class="col-md-1">.col-md-1</div>
@@ -627,7 +637,7 @@ base_url: "../"
 <h6>h6. Bootstrap heading</h6>
 {% endhighlight %}
 
-    <p>Also included with headings is an autoscaling <code>&lt;small&gt;</code> element. Use it for smaller, gray secondary text in any heading.</p>
+    <p>Create lighter, secondary text in any heading with a generic <code>&lt;small&gt;</code> tag or the <code>.small</code> class.</p>
     <div class="bs-example bs-example-type">
       <table class="table">
         <tbody>
@@ -2255,6 +2265,16 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 {% highlight html %}
 <button type="button" class="close" aria-hidden="true">&times;</button>
+{% endhighlight %}
+
+
+    <h3 id="helper-classes-carets">Carets</h3>
+    <p>Use carets to indicate dropdown functionality and direction. Note that the default caret will reverse automatically in <a href="../components/#btn-dropdowns-dropup">dropup menus</a>.</p>
+    <div class="bs-example">
+      <span class="caret"></span>
+    </div>
+{% highlight html %}
+<span class="caret"></span>
 {% endhighlight %}
 
 

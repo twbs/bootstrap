@@ -104,6 +104,11 @@ $('#myModal').on('show.bs.modal', function (e) {
     <h2 id="modals-examples">Examples</h2>
     <p>Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.</p>
 
+    <div class="bs-callout bs-callout-warning">
+      <h4>Overlapping modals not supported</h4>
+      <p>Be sure not to open a modal while another is still visible. Showing more than one modal at a time requires custom code.</p>
+    </div>
+
     <h3>Static example</h3>
     <p>A rendered modal with header, body, and set of actions in the footer.</p>
     <div class="bs-example bs-example-modal">
@@ -253,7 +258,7 @@ $('#myModal').on('show.bs.modal', function (e) {
         <tbody>
          <tr>
            <td>backdrop</td>
-           <td>boolean</td>
+           <td>boolean or the string <code>'static'</code></td>
            <td>true</td>
            <td>Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click.</td>
          </tr>
@@ -1665,7 +1670,7 @@ $('#myCollapsible').on('hidden.bs.collapse', function () {
     <h2 id="carousel-examples">Examples</h2>
     <p>The slideshow below shows a generic plugin and component for cycling through elements like a carousel.</p>
     <div class="bs-example">
-      <div id="carousel-example-generic" class="carousel slide bs-docs-carousel-example">
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
           <li data-target="#carousel-example-generic" data-slide-to="1"></li>
@@ -1691,7 +1696,7 @@ $('#myCollapsible').on('hidden.bs.collapse', function () {
       </div>
     </div><!-- /example -->
 {% highlight html %}
-<div id="carousel-example-generic" class="carousel slide">
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -1727,7 +1732,7 @@ $('#myCollapsible').on('hidden.bs.collapse', function () {
     <h3>Optional captions</h3>
     <p>Add captions to your slides easily with the <code>.carousel-caption</code> element within any <code>.item</code>. Place just about any optional HTML within there and it will be automatically aligned and formatted.</p>
     <div class="bs-example">
-      <div id="carousel-example-captions" class="carousel slide bs-docs-carousel-example">
+      <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
           <li data-target="#carousel-example-captions" data-slide-to="1"></li>
