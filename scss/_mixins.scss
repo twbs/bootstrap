@@ -715,9 +715,8 @@
   @return $list;
 }
 
-@mixin make-grid-columns() {
+@mixin make-grid-columns($list: make-columns-selector()) {
   // Common styles for all sizes of grid columns, widths 1-12
-  $list: make-columns-selector();
 
   #{$list} {
     position: relative;
@@ -755,7 +754,6 @@
   }
 }
 
-// Basic looping in LESS
 @mixin make-grid($columns, $class, $type) {
   @for $i from 1 through $columns {
     @include calc-grid($i, $class, $type);
