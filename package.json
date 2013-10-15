@@ -34,5 +34,6 @@
     , "grunt-html-validation": "~0.1.5"
     , "grunt-jekyll": "~0.4.0"
     , "grunt-recess": "~0.4.0"
+    , "load-grunt-tasks": "~0.1.0"
   }
 }
