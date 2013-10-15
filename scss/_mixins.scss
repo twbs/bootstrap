@@ -568,6 +568,7 @@
   td#{$selector} { display: none !important; }
 }
 
+
 // Grid System
 // -----------
 
@@ -695,6 +696,69 @@
 @mixin make-lg-column-pull($columns) {
   @media (min-width: $screen-lg-min) {
     right: percentage(($columns / $grid-columns));
+  }
+}
+
+
+// Framework grid generation
+//
+// Used only by Bootstrap to generate the correct number of grid classes given
+// any value of `$grid-columns`.
+
+@function make-columns-selector($classes: (xs, sm, md, lg), $columns: $grid-columns) {
+  $list: ();
+  @for $i from 1 through $columns {
+    @each $class in $classes {
+      $list: append($list, unquote(".col-#{$class}-#{$i}"), comma);
+    }
+  }
+  @return $list;
+}
+
+@mixin make-grid-columns() {
+  // Common styles for all sizes of grid columns, widths 1-12
+  $list: make-columns-selector();
+
+  #{$list} {
+    position: relative;
+    // Prevent columns from collapsing when empty
+    min-height: 1px;
+    // Inner gutter via padding
+    padding-left:  ($grid-gutter-width / 2);
+    padding-right: ($grid-gutter-width / 2);
+  }
+}
+
+@mixin make-grid-columns-float($class) {
+  $list: make-columns-selector($class, $grid-columns - 1);
+
+  #{$list} {
+    float: left;
+  }
+}
+
+@mixin calc-grid($index, $class, $type) {
+  $specifier: '';
+  @if $type != width {
+    $specifier: "-#{$type}"
+  }
+  .col-#{$class}#{$specifier}-#{$index} {
+    @if $type == width {
+      width: percentage(($index / $grid-columns));
+    } @else if $type == push {
+      left: percentage(($index / $grid-columns));
+    } @else if $type == pull {
+      right: percentage(($index / $grid-columns));
+    } @else if $type == offset {
+      margin-left: percentage(($index / $grid-columns));
+    }
+  }
+}
+
+// Basic looping in LESS
+@mixin make-grid($columns, $class, $type) {
+  @for $i from 1 through $columns {
+    @include calc-grid($i, $class, $type);
   }
 }
 

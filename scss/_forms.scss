@@ -262,7 +262,6 @@ input[type="checkbox"],
 
 .form-control-static {
   margin-bottom: 0; // Remove default margin from `p`
-  padding-top: ($padding-base-vertical + 1);
 }
 
 
@@ -349,6 +348,10 @@ input[type="checkbox"],
   // Make form groups behave like rows
   .form-group {
     @include make-row();
+  }
+
+  .form-control-static {
+    padding-top: ($padding-base-vertical + 1);
   }
 
   // Only right align form labels here when the columns stop stacking

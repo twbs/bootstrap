@@ -48,9 +48,9 @@ $font-size-base:          14px !default;
 $font-size-large:         ceil($font-size-base * 1.25) !default; // ~18px
 $font-size-small:         ceil($font-size-base * 0.85) !default; // ~12px
 
-$font-size-h1:            floor($font-size-base * 2.60) !default; // ~36px
+$font-size-h1:            floor($font-size-base * 2.6) !default; // ~36px
 $font-size-h2:            floor($font-size-base * 2.15) !default; // ~30px
-$font-size-h3:            ceil($font-size-base * 1.70) !default; // ~24px
+$font-size-h3:            ceil($font-size-base * 1.7) !default; // ~24px
 $font-size-h4:            ceil($font-size-base * 1.25) !default; // ~18px
 $font-size-h5:            $font-size-base !default;
 $font-size-h6:            ceil($font-size-base * 0.85) !default; // ~12px
@@ -367,8 +367,8 @@ $pager-disabled-color:                 $gray-light !default;
 $jumbotron-padding:              30px !default;
 $jumbotron-color:                inherit !default;
 $jumbotron-bg:                   $gray-lighter !default;
-
 $jumbotron-heading-color:        inherit !default;
+$jumbotron-font-size:            ceil($font-size-base * 1.5) !default;
 
 
 // Form states and alerts

@@ -95,6 +95,8 @@
 }
 
 // Move borders to anchors instead of bottom of list
+//
+// Mixin for adding on top the shared `.nav-justified` styles for our tabs
 @mixin nav-tabs-justified {
   border-bottom: 0;
 
@@ -110,11 +112,16 @@
     border: 1px solid $nav-tabs-justified-link-border-color;
   }
 
-  // Prevent IE8 from misplacing imgs
-  //
-  // See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
-  > li > a > img {
-    max-width: none;
+  @media (min-width: $screen-sm-min) {
+    > li > a {
+      border-bottom: 1px solid $nav-tabs-justified-link-border-color;
+      border-radius: $border-radius-base $border-radius-base 0 0;
+    }
+    > .active > a,
+    > .active > a:hover,
+    > .active > a:focus {
+      border-bottom-color: $nav-tabs-justified-active-link-border-color;
+    }
   }
 }
 
@@ -210,23 +217,15 @@
 // Tabbable tabs
 // -------------------------
 
-// Clear any floats
-.tabbable {
-  @include clearfix();
-}
-
-// Show/hide tabbable areas
-.tab-content > .tab-pane,
-.pill-content > .pill-pane {
-  display: none;
-}
-.tab-content,
-.pill-content {
+// Hide tabbable panes to start, show them when `.active`
+.tab-content {
+  > .tab-pane {
+    display: none;
+  }
   > .active {
     display: block;
   }
 }
-
 
 
 // Dropdowns
