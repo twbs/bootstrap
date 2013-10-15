@@ -11,7 +11,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     // Metadata.
-    pkg: grunt.file.readJSON('package.json'), 
+    pkg: grunt.file.readJSON('package.json'),
     banner: '/*!\n' +
               ' * Bootstrap v<%= pkg.version %> by @fat and @mdo\n' +
               ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
