@@ -114,7 +114,7 @@ module.exports = function(grunt) {
       tobi_master: {
         expand: false,
         src: ["dist/css/bootstrap-tobi-master.css"],
-        dest: '../trunk/app/assets/stylesheets/plugin/bootstrap-3.0.0-tobi.css'
+        dest: '~/code/trunk/app/assets/stylesheets/plugin/bootstrap-3.0.0-tobi.css'
       }
     },
 
@@ -179,14 +179,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('browserstack-runner');
 
   // Docs HTML validation task
-  //grunt.registerTask('validate-html', ['jekyll', 'validation']);
+  grunt.registerTask('validate-html', ['jekyll', 'validation']);
 
   // Test task.
-  var testSubtasks = ['dist-css', 'jshint', 'qunit'];
+  var testSubtasks = ['dist-css', 'jshint', 'qunit', 'validate-html'];
   grunt.registerTask('test', testSubtasks);
 
-	// Dist Tobi Task - copies latest CSS / JS etc to local trunk
-  grunt.registerTask('dist-tobi', ['dist', 'copy:tobi_master']);
+	// Tobi Task - Builds and then copies latest CSS / JS etc to local trunk
+  grunt.registerTask('tobi', ['dist', 'copy:tobi_master']);
 
   // JS distribution task.
   grunt.registerTask('dist-js', ['concat', 'uglify']);
