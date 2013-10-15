@@ -19,13 +19,14 @@ p, .show-link {
 }
 .lead {
   margin-bottom: @line-height-computed;
-  font-size: (@font-size-base * 1.15);
+  font-size: @font-size-lead;
   font-weight: 200;
-  line-height: 1.4;
+  line-height: 1.33;
 
-  @media (min-width: @screen-sm-min) {
+// TOBI  - commented out so we can better control and use .lead (order confirmation)
+/*  @media (min-width: @screen-sm-min) {
     font-size: (@font-size-base * 1.5);
-  }
+  }*/
 }
 
 
@@ -36,10 +37,6 @@ p, .show-link {
 small,
 .small  {
 	font-size: 90%; 
-}
-
-.large {
-	font-size: @font-size-large;
 }
 
 // Undo browser default styling

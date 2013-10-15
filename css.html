@@ -272,7 +272,7 @@ base_url: "../"
 
     <!-- Headings -->
     <h2 id="type-headings">TOBI Headings</h2>
-    <p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available.</p>
+    <p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available.  We also have one special class, <strong>.header</strong>, that applies the font-family and text-transform: uppercase styles but does not affect font-size.</p>
     <div class="bs-example bs-example-type">
       <table class="table">
         <tbody>
@@ -300,6 +300,39 @@ base_url: "../"
             <td><h6>h6. Bootstrap heading</h6></td>
             <td class="info">Semibold 14px</td>
           </tr>
+          <tr>
+            <td><div class="header">.header class</div></td>
+            <td class="info">TOBI header class</td>
+          </tr>
+          <tr>
+            <td><h1 class="no-transform">h1. with .no-transform class</h1></td>
+            <td class="info">override class prevents uppercase</td>
+          </tr>
+          <tr>
+            <td><h2 class="no-transform">h2. no-transform</h2></td>
+            <td class="info">no uppercase</td>
+          </tr>
+          <tr>
+            <td><h3 class="no-transform">h3. no-transform</h3></td>
+            <td class="info">no uppercase</td>
+          </tr>
+          <tr>
+            <td><h4 class="no-transform">h4. no-transform</h4></td>
+            <td class="info">no uppercase</td>
+          </tr>
+          <tr>
+            <td><h5 class="no-transform">h5. no-transform</h5></td>
+            <td class="info">no uppercase</td>
+          </tr>
+          <tr>
+            <td><h6 class="no-transform">h6. no-transform</h6></td>
+            <td class="info">no uppercase</td>
+          </tr>
+          <tr>
+            <td><div class="header no-transform">.header .no-transform</div></td>
+            <td class="info">no uppercase</td>
+          </tr>          
+          
         </tbody>
       </table>
     </div>
@@ -310,6 +343,14 @@ base_url: "../"
 <h4>h4. Bootstrap heading</h4>
 <h5>h5. Bootstrap heading</h5>
 <h6>h6. Bootstrap heading</h6>
+<div class="header">.header class</div>
+<h1 class="no-transform">h1. no-transform</h1>
+<h2 class="no-transform">h2. no-transform</h2>
+<h3 class="no-transform">h3. no-transform</h3>
+<h4 class="no-transform">h4. no-transform</h4>
+<h5 class="no-transform">h5. no-transform</h5>
+<h6 class="no-transform">h6. no-transform</h6>
+<div class="header no-transform">.header .no-transform</div>
 {% endhighlight %}
 
     <p>Also included with headings is an autoscaling <code>&lt;small&gt;</code> element. Use it for smaller, gray secondary text in any heading.</p>
@@ -346,10 +387,9 @@ base_url: "../"
 <h6>h6. Bootstrap heading <small>Secondary text</small></h6>
 {% endhighlight %}
 
-
     <!-- Body copy -->
     <h2 id="type-body-copy">Body copy</h2>
-    <p>Bootstrap's global default <code>font-size</code> is <strong>14px</strong>, with a <code>line-height</code> of <strong>1.428</strong>. This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition, <code>&lt;p&gt;</code> (paragraphs) receive a bottom margin of half their computed line-height (10px by default).</p>
+    <p>Bootstrap's global default <code>font-size</code> is <strong>14px</strong>, with a <code>line-height</code> of <strong>1.428</strong>. But... TOBI uses 13px font size by default on the site.  This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition, <code>&lt;p&gt;</code> (paragraphs) receive a bottom margin of half their computed line-height (10px by default).</p>
     <div class="bs-example">
       <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
       <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
@@ -372,7 +412,6 @@ base_url: "../"
     <!-- Using LESS -->
     <h3>Built with Less</h3>
     <p>The typographic scale is based on two LESS variables in <strong>variables.less</strong>: <code>@font-size-base</code> and <code>@line-height-base</code>. The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.</p>
-
 
     <!-- Emphasis -->
     <h2 id="type-emphasis">Emphasis</h2>
@@ -433,6 +472,8 @@ base_url: "../"
       <p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
       <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
       <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <p class="text-strike">TOBI Special .strike Class - used for old prices</p>
+
     </div>
 {% highlight html %}
 <p class="text-muted">...</p>
@@ -441,6 +482,7 @@ base_url: "../"
 <p class="text-info">...</p>
 <p class="text-warning">...</p>
 <p class="text-danger">...</p>
+<p class="text-strike">TOBI special .strike class - used for old prices</p>
 {% endhighlight %}
     <div class="bs-callout bs-callout-info">
       <h4>Dealing with specificity</h4>
@@ -1920,6 +1962,23 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <p>As a best practice, <strong>we highly recommend using the <code>&lt;button&gt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
       <p>Among other things, there's <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697451">a Firefox bug</a> that prevents us from setting the <code>line-height</code> of <code>&lt;input&gt;</code>-based buttons, causing them to not exactly match the height of other buttons on Firefox.</p>
     </div>
+    
+        <!-- Links -->
+        <h2 id="buttons-links">Links</h2>
+        <p>As seen in the button classes, by default TOBI does not show underlines for any links.  This can be overridden though with the <strong>.show-link</strong> helper class</p>
+
+        <div class="bs-example">
+          <div>This is a <a href="#"><strong>link</strong></a> which only shows inside paragraph tags or with the special .show-link class.</div>
+          <br />
+          <span class="show-link">This is a <a href="#"><strong>.show-link link</strong></a>.</span>
+          <br /><br />
+          <p>This is a <a href="#"><strong>link</strong></a> inside a paragraph tag which shows by default.</p>
+        </div>
+    {% highlight html %}
+    <div>This is a <a href="#">link</a>.</div>
+    <span class="show-link">This is a <a href="#">.show-link link</a>.</span>
+    <p>This is a <a href="#">link</a> inside a paragraph tag which shows by default.</p>
+    {% endhighlight %}
 
   </div>
 
@@ -1963,6 +2022,16 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <h1 id="helper-classes">Helper classes</h1>
     </div>
 
+    <h3 id="helper-classes-close">Divider</h3>
+    <p>TOBI's <strong>.divider</strong> class puts a TOBI thin divider line on the bottom border of whatever you apply it to.</p>
+    <div class="bs-example">
+      <div class="divider">
+        TOBI's <strong>.divider</strong> class puts a TOBI thin divider line on the bottom border of whatever you apply it to. TOBI's <strong>.divider</strong> class puts a TOBI thin divider line on the bottom border of whatever you apply it to. TOBI's <strong>.divider</strong> class puts a TOBI thin divider line on the bottom border of whatever you apply it to. TOBI's <strong>.divider</strong> class puts a TOBI thin divider line on the bottom border of whatever you apply it to. TOBI's <strong>.divider</strong> class puts a TOBI thin divider line on the bottom border of whatever you apply it to.
+      </div>
+    </div>
+{% highlight html %}
+<div class="divider">. . .</div>
+{% endhighlight %}
 
     <h3 id="helper-classes-close">Close icon</h3>
     <p>Use the generic close icon for dismissing content like modals and alerts.</p>
