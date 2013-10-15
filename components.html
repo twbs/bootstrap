@@ -2111,25 +2111,30 @@ body { padding-bottom: 70px; }
     <div class="page-header">
       <h1 id="jumbotron">Jumbotron</h1>
     </div>
-    <p>A lightweight, flexible component that can optionally extend the entire viewport to showcase key content on your site. To make the jumbotron full width, don't include it within a <code>.container</code>. Placing it within a container will keep it at the width of the rest of your content and provide rounded corners.</p>
+    <p>A lightweight, flexible component that can optionally extend the entire viewport to showcase key content on your site.</p>
     <div class="bs-example">
       <div class="jumbotron">
-        <div class="container">
-          <h1>Hello, world!</h1>
-          <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-          <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
-        </div>
+        <h1>Hello, world!</h1>
+        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
       </div>
     </div>
 {% highlight html %}
 <div class="jumbotron">
+  <h1>Hello, world!</h1>
+  <p>...</p>
+  <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+</div>
+{% endhighlight %}
+    <p>To make the jumbotron full width, and without rounded corners, place it outside all <code>.container</code>s and instead add a <code>.container</code> within.</p>
+{% highlight html %}
+<div class="jumbotron">
   <div class="container">
-    <h1>Hello, world!</h1>
-    <p>...</p>
-    <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+    ...
   </div>
 </div>
 {% endhighlight %}
+
   </div>
 
 
