@@ -136,7 +136,7 @@ When completed, you'll be able to run the various Grunt commands provided from t
 
 ## Grunt Commands
 
-### Build TOBI Bootstrap Master & Copy to Trunk - 'grunt tobi`
+### Build TOBI Bootstrap Master & Copy to Trunk - `grunt tobi`
 
         $ grunt tobi
 
