@@ -73,7 +73,7 @@ $(function () {
 
         template.appendTo("body");
         $('[data-slide]').first().click();
-        $('#myCarousel').attr('data-interval', 1860);
+        $('#myCarousel').data('interval', 1860);
         $('[data-slide]').first().click();
         ok($('#myCarousel').data('bs.carousel').options.interval == 1814, "attributes should be read only on intitialization");
         $('#myCarousel').remove();

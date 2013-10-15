@@ -102,7 +102,7 @@
   }
 
   function getParent($this) {
-    var selector = $this.attr('data-target')
+    var selector = $this.data('target')
 
     if (!selector) {
       selector = $this.attr('href')
