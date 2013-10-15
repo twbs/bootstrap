@@ -553,30 +553,16 @@ h1[id] {
 
 /* Common styles for all types */
 .bs-callout {
-  /*position: relative;*/
   margin: 20px 0;
   padding: 20px;
   border-left: 3px solid #eee;
-  /*border-width: 1px 1px 1px 10px;*/
 }
-/*.bs-callout:before {
-  position: absolute;
-  top: 0;
-  left: -20px;
-  color: #fff;
-  width: 20px;
-  height: 20px;
-}*/
 .bs-callout h4 {
   margin-top: 0;
   margin-bottom: 5px;
 }
 .bs-callout p:last-child {
   margin-bottom: 0;
-}
-.bs-callout code,
-.bs-callout .highlight {
-  /*background-color: #fff;*/
 }
 
 /* Variations */
