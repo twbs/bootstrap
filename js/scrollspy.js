@@ -24,7 +24,6 @@
   // ==========================
 
   function ScrollSpy(element, options) {
-    var href
     var process  = $.proxy(this.process, this)
 
     this.$element       = $(element).is('body') ? $(window) : $(element)
@@ -32,7 +31,7 @@
     this.$scrollElement = this.$element.on('scroll.bs.scroll-spy.data-api', process)
     this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
     this.selector       = (this.options.target
-      || (href = $(element).attr('href'))
+      || $(element).attr('href')
       || '') + ' .nav li > a'
     this.offsets        = $([])
     this.targets        = $([])
