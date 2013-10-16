@@ -75,6 +75,22 @@ base_url: "../"
 		<h3>Dynamic Grid</h3>
 		<p>The Dynamic Grid is triggered by including the tag 'grid-dynamic' in the wrapping div.  We are rendering the dynamic grid here because it displays properly within the Bootstrap Docs, but the main TOBI.com site currently uses the static grid based on a fixed width of 1180px.</p>
 
+		<h4 id="grid-two-column">Two Column</h4>
+		<div class="bs-docs-grid">
+			<div class="grid-dynamic grid show-grid">
+			  <div class="grid-1-2">.grid-1-2</div>
+			  <div class="grid-1-2">.grid-1-2</div>
+			</div>
+		</div>
+
+{% highlight html %}
+<div class="grid">
+  <div class="grid-1-2">.grid-1-2</div>
+  <div class="grid-1-2">.grid-1-2</div>
+</div>
+{% endhighlight %}
+
+
 		<h4 id="grid-three-column">Three Column</h4>
 		<div class="bs-docs-grid">
 			<div class="grid-dynamic grid show-grid">
@@ -106,6 +122,26 @@ base_url: "../"
 <div class="grid">
   <div class="grid-1-3">.grid-1-3</div>
   <div class="grid-2-3">.grid-2-3</div>
+</div>
+{% endhighlight %}
+
+		<h4 id="grid-four-column">Four Column</h4>
+		<p>This is used on the product list page. Currently only .grid-1-4 is supported.  (.grid-2-4 and .grid-3-4 are not yet implemented)</p>
+		<div class="bs-docs-grid">
+			<div class="grid-dynamic grid show-grid">
+		    <div class="grid-1-4">.grid-1-4</div>
+		    <div class="grid-1-4">.grid-1-4</div>
+		    <div class="grid-1-4">.grid-1-4</div>
+		    <div class="grid-1-4">.grid-1-4</div>
+			</div>
+		</div>
+
+{% highlight html %}
+<div class="grid">
+  <div class="grid-1-4">.grid-1-4</div>
+  <div class="grid-1-4">.grid-1-4</div>
+  <div class="grid-1-4">.grid-1-4</div>
+  <div class="grid-1-4">.grid-1-4</div>
 </div>
 {% endhighlight %}
 
@@ -159,23 +195,8 @@ base_url: "../"
 </div>
 {% endhighlight %}
 
-		<h4 id="grid-two-column">Two Column</h4>
-		<div class="bs-docs-grid">
-			<div class="grid-dynamic grid show-grid">
-			  <div class="grid-1-2">.grid-1-2</div>
-			  <div class="grid-1-2">.grid-1-2</div>
-			</div>
-		</div>
-
-{% highlight html %}
-<div class="grid">
-  <div class="grid-1-2">.grid-1-2</div>
-  <div class="grid-1-2">.grid-1-2</div>
-</div>
-{% endhighlight %}
-
 		<h4 id="grid-six-column">Six Column</h4>
-		<p>This is used on the Checkout Review page only right now in production</p>
+		<p>This is used on the Checkout Review page only right now in production. Currently only .grid-1-6 is supported.  (.grid-2-6, .grid-3-6, .grid-4-6 and .grid-5-6 are not yet implemented)</p>
 		<div class="bs-docs-grid">
 			<div class="grid-dynamic grid show-grid">
 		    <div class="grid-1-6">.grid-1-6</div>

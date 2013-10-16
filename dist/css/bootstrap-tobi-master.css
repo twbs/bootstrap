@@ -969,6 +969,10 @@ Included is a dynamic version of the above grid
   width: 360px;
 }
 
+.grid-1-4 {
+  width: 257.5px;
+}
+
 .grid-2-3 {
   width: 770px;
 }
@@ -1019,6 +1023,10 @@ Included is a dynamic version of the above grid
 
 .grid-dynamic .grid-1-3 {
   width: 30.508%;
+}
+
+.grid-dynamic .grid-1-4 {
+  width: 21.822%;
 }
 
 .grid-dynamic .grid-2-3 {
@@ -1706,8 +1714,8 @@ textarea.input-lg {
 .btn.active {
   background-image: none;
   outline: 0;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-          box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .btn.disabled,
