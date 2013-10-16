@@ -9,17 +9,17 @@
 // Grays
 // -------------------------
 
-@gray-darker:            lighten(#000, 13.5%); // #222
-@gray-dark:              lighten(#000, 20%);   // #333
-@gray:                   lighten(#000, 33.5%); // #555
-@gray-light:             lighten(#000, 60%);   // #999
-@gray-lighter:           lighten(#000, 93.5%); // #eee
+@gray-darker:            lighten(#000, 20%);   // #333
+@gray-dark:              lighten(#000, 40%);   // #666
+@gray:                   lighten(#000, 60%);   // #999
+@gray-light:             lighten(#000, 80%);   // #ccc
+@gray-lighter:           lighten(#000, 90%);   // #e5e5e5
 
 // Brand colors
 // -------------------------
 
-@brand-primary:         #333;
-@brand-success:         #5cb85c;
+@brand-primary:         #333;    // tobi color
+@brand-success:         #5cb85c; // tobi color
 @brand-warning:         #f0ad4e;
 @brand-danger:          #d9534f;
 @brand-info:            #5bc0de;
@@ -34,40 +34,54 @@
 // -------------------------
 
 @link-color:            @brand-primary;
-@link-hover-color:      #999;
+@link-hover-color:      #000;
 
 // Typography
 // -------------------------
 
-@font-family-sans-serif:  "ProximaNova-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-serif:       Georgia, "Times New Roman", Times, serif;
-@font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
-@font-family-base:        @font-family-sans-serif;
+// TOBI fonts - ProximaNova Family
+@font-family-sans-serif:  								"ProximaNova-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-sans-serif-condensed: 				"ProximaNova-Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-sans-serif-extra-condensed: 	"ProximaNova-ExtraCondensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif:       								Georgia, "Times New Roman", Times, serif;
+@font-family-monospace:   								Monaco, Menlo, Consolas, "Courier New", monospace;
+@font-family-base:        								@font-family-sans-serif;
+@font-family-base-condensed:							@font-family-sans-serif-condensed;
+@font-family-base-extra-condensed: 				@font-family-sans-serif-extra-condensed;
 
-@font-size-base:          14px;
-@font-size-large:         ceil(@font-size-base * 1.25); // ~18px
-@font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 
-@font-size-h1:            floor(@font-size-base * 2.60); // ~36px
-@font-size-h2:            floor(@font-size-base * 2.15); // ~30px
-@font-size-h3:            ceil(@font-size-base * 1.70); // ~24px
-@font-size-h4:            ceil(@font-size-base * 1.25); // ~18px
-@font-size-h5:            @font-size-base;
-@font-size-h6:            ceil(@font-size-base * 0.85); // ~12px
+// Tobi Customized Font Sizes
+@font-size-base:          14px; // 14px
+
+@font-size-large:         ceil(@font-size-base * 1.285); 	// ~18px
+@font-size-xl:						ceil(@font-size-base * 1.5); 		// ~21px
+
+@font-size-small:   			ceil(@font-size-base * 0.925); 	// ~13px
+@font-size-xs:   					ceil(@font-size-base * 0.852); 	// ~12px
+
+@font-size-h1:            floor(@font-size-base * 2.58); 	// ~36px
+@font-size-h2:            floor(@font-size-base * 2.18); 	// ~30px
+@font-size-h3:            ceil(@font-size-base * 1.71); 	// ~24px
+@font-size-h4:            @font-size-xl;						 			// ~21px
+@font-size-h5:            @font-size-large; 							// ~18px
+@font-size-h6:            @font-size-base;					 			// ~14px
+
+@font-size-lead:					@font-size-large;
 
 @line-height-base:        1.428571429; // 20/14
+
 @line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
 
-@headings-font-family:    @font-family-base;
-@headings-font-weight:    500;
-@headings-line-height:    1.1;
+@headings-font-family:    @font-family-base-extra-condensed;
+@headings-font-weight:    normal;
+@headings-line-height:    1;
 @headings-color:          inherit;
 
 
 // Iconography
 // -------------------------
 
-@icon-font-path:          "/fonts/";
+@icon-font-path:          "@{base_path}/fonts/";
 @icon-font-name:          "glyphicons-halflings-regular";
 
 
@@ -81,11 +95,14 @@
 @padding-large-vertical:         10px;
 @padding-large-horizontal:       16px;
 
-@padding-small-vertical:         5px;
+@padding-small-vertical:         6px;
 @padding-small-horizontal:       10px;
 
+@padding-extra-small-vertical:   3px;
+@padding-extra-small-horizontal: 5px;
+
 @line-height-large:              1.33;
-@line-height-small:              1.5;
+@line-height-small:              @line-height-base;
 
 @border-radius-base:             0;
 @border-radius-large:            0;
@@ -113,11 +130,12 @@
 
 // Buttons
 // -------------------------
-
+@btn-font-family:								 @font-family-base-extra-condensed;
 @btn-font-weight:                normal;
 
 @btn-default-color:              #333;
 @btn-default-bg:                 #fff;
+@btn-default-bg-hover:					 #fff;
 @btn-default-border:             #333;
 
 @btn-primary-color:              #fff;
@@ -140,6 +158,14 @@
 @btn-info-bg:                    @brand-info;
 @btn-info-border:                darken(@btn-info-bg, 5%);
 
+@btn-facebook-color:						 #fff;
+@btn-facebook-bg:								 #3b5998;
+@btn-facebook-border:						 darken(@btn-facebook-bg, 5%);
+
+@btn-twitter-color:						 	 #fff;
+@btn-twitter-bg:								 #00aced;
+@btn-twitter-border:						 darken(@btn-twitter-bg, 5%);
+
 @btn-link-disabled-color:        #333;
 
 
@@ -152,13 +178,15 @@
 @input-color:                    @gray;
 @input-border:                   #ccc;
 @input-border-radius:            @border-radius-base;
-@input-border-focus:             #66afe9;
+@input-border-focus:             #000; // 66afe9;
 
 @input-color-placeholder:        @gray-light;
 
-@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
+@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) - 2);
 @input-height-large:             (floor(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
 @input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
+
+@label-margin-bottom:						 1px;
 
 @legend-color:                   @gray-dark;
 @legend-border-color:            #e5e5e5;
@@ -375,21 +403,21 @@
 // Form states and alerts
 // -------------------------
 
-@state-success-text:             #468847;
-@state-success-bg:               #dff0d8;
-@state-success-border:           darken(spin(@state-success-bg, -10), 5%);
+@state-success-text:             #06753c;
+@state-success-bg:               #fff;
+@state-success-border:           @state-success-bg;
 
 @state-info-text:                #3a87ad;
-@state-info-bg:                  #d9edf7;
-@state-info-border:              darken(spin(@state-info-bg, -10), 7%);
+@state-info-bg:                  #fff;
+@state-info-border:              @state-info-bg;
 
 @state-warning-text:             #c09853;
-@state-warning-bg:               #fcf8e3;
-@state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
+@state-warning-bg:               #fff;
+@state-warning-border:           @state-warning-bg;
 
-@state-danger-text:              #b94a48;
-@state-danger-bg:                #f2dede;
-@state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
+@state-danger-text:              #cc0000;
+@state-danger-bg:                #fff;
+@state-danger-border:            @state-danger-bg;
 
 
 // Tooltips
@@ -451,7 +479,7 @@
 
 // Alerts
 // -------------------------
-@alert-padding:               15px;
+@alert-padding:               0px;
 @alert-border-radius:         @border-radius-base;
 @alert-link-font-weight:      bold;
 
@@ -563,10 +591,11 @@
 
 // Breadcrumbs
 // -------------------------
-@breadcrumb-bg:               #f5f5f5;
-@breadcrumb-color:            #ccc;
-@breadcrumb-active-color:     @gray-light;
-@breadcrumb-separator:        "/";
+@breadcrumb-bg:               #fff;
+@breadcrumb-color:            @gray-light;
+@breadcrumb-active-color:     @gray-darker;
+@breadcrumb-separator:        ">";
+@breadcrumb-line-height:			@headings-line-height;
 
 
 // Carousel
@@ -604,7 +633,7 @@
 
 // Type
 // ------------------------
-@text-muted:                  @gray-light;
+@text-muted:                  @gray;
 @abbr-border-color:           @gray-light;
 @headings-small-color:        @gray-light;
 @blockquote-small-color:      @gray-light;

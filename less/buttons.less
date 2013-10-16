@@ -9,18 +9,20 @@
 // Core styles
 .btn {
   display: inline-block;
-  padding: @padding-base-vertical @padding-base-horizontal;
-  margin-bottom: 0; // For input.btn
-  font-size: @font-size-base;
-  font-weight: @btn-font-weight;
-  line-height: @line-height-base;
-  text-align: center;
+/*  padding: @padding-base-vertical @padding-base-horizontal;
+*/  margin-bottom: 0; // For input.btn
+  font-family: @btn-font-family;
+/*  font-size: @font-size-large;
+*/  font-weight: @btn-font-weight;
+/*  line-height: @line-height-base;
+*/  text-align: center;
   vertical-align: middle;
   cursor: pointer;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid transparent;
-  border-radius: @border-radius-base;
-  white-space: nowrap;
+/*  border-radius: @border-radius-base;
+*/  white-space: nowrap;
+  text-transform: uppercase;
   .user-select(none);
 
   &:focus {
@@ -30,7 +32,7 @@
   &:hover,
   &:focus {
     color: @btn-default-color;
-    text-decoration: none;
+    text-decoration: underline;
   }
 
   &:active,
@@ -55,8 +57,11 @@
 // Alternate buttons
 // --------------------------------------------------
 
+//
+// TOBI Button Variants... added additional functionality in Mixins to support passing customized hover bg
+// 
 .btn-default {
-  .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
+  .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border; @btn-default-bg-hover);
 }
 .btn-primary {
   .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
@@ -78,6 +83,35 @@
   .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
 }
 
+// TOBI Social Media buttons
+// --------------------------------------------------
+// Facebook
+.btn-facebook {
+  .button-variant(@btn-facebook-color; @btn-facebook-bg; @btn-facebook-border);
+	&:focus,
+	&:hover {
+		text-decoration: none;
+	}
+	.fb-logo {
+		text-transform: none;
+		&:before {
+			content: 'f';
+			padding: 0 10px 0 0;
+		}
+		&:after {
+	    content: '|';
+			padding: 0 10px 0 0;
+	  }
+	}
+}
+// Twitter
+.btn-twitter {
+  .button-variant(@btn-twitter-color; @btn-twitter-bg; @btn-twitter-border);
+	&:focus,
+	&:hover {
+		text-decoration: none;
+	}
+}
 
 // Link buttons
 // -------------------------
@@ -119,22 +153,23 @@
 }
 
 
-// Button Sizes
+// TOBI Button Sizes
 // --------------------------------------------------
-
+.btn {
+	.button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-large; @line-height-base; @border-radius-base); 
+}
 .btn-lg {
   // line-height: ensure even-numbered height of button next to large input
-  .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
+  .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-xl; @line-height-large; @border-radius-large);
 }
-.btn-sm,
+.btn-sm {
+  // line-height: ensure proper height of button next to small input
+  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-base; @line-height-small; @border-radius-small);
+}
 .btn-xs {
   // line-height: ensure proper height of button next to small input
-  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+  .button-size(@padding-extra-small-vertical; @padding-extra-small-horizontal; @font-size-base; @line-height-small; @border-radius-small);
 }
-.btn-xs {
-  padding: 1px 5px;
-}
-
 
 // Block button
 // --------------------------------------------------

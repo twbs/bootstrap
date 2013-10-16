@@ -27,7 +27,9 @@ legend {
 
 label {
   display: inline-block;
-  margin-bottom: 5px;
+  margin-bottom: @label-margin-bottom;
+  padding-right: 4px;
+	font-size: @font-size-small;
   font-weight: bold;
 }
 
@@ -129,7 +131,7 @@ output {
   height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   padding: @padding-base-vertical @padding-base-horizontal;
   font-size: @font-size-base;
-  line-height: @line-height-base;
+  line-height: @line-height-computed;
   color: @input-color;
   vertical-align: middle;
   background-color: @input-bg;
@@ -166,7 +168,7 @@ output {
 // horizontal forms, use the predefined grid classes.
 
 .form-group {
-  margin-bottom: 15px;
+  margin: 0 10px 15px 0;
 }
 
 
@@ -251,7 +253,7 @@ input[type="checkbox"],
   .form-control-validation(@state-warning-text; @state-warning-text; @state-warning-bg);
 }
 // Error
-.has-error {
+.has-error, .fieldWithErrors {
   .form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
 }
 // Success
@@ -278,6 +280,7 @@ input[type="checkbox"],
 
 .help-block {
   display: block; // account for any element using help-block
+  font-size: @font-size-small;
   margin-top: 5px;
   margin-bottom: 10px;
   color: lighten(@text-color, 25%); // lighten the text some for contrast

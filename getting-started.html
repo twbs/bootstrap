@@ -6,55 +6,6 @@ lead: "An overview of Bootstrap, how to download and use, basic templates and ex
 base_url: "../"
 ---
 
-
-  <!-- Getting started
-  ================================================== -->
-  <div class="bs-docs-section">
-    <div class="page-header">
-      <h1 id="download">Download Bootstrap</h1>
-    </div>
-    <p class="lead">Bootstrap has a few easy ways to quickly get started, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
-
-    <h3 id="download-compiled">Compiled CSS, JS, and fonts</h3>
-    <p>The fastest way to get Bootstrap is to download the precompiled and minified versions of our CSS, JavaScript, and fonts. No documentation or original source code files are included.</p>
-    <p><a class="btn btn-lg btn-primary" href="{{ site.download_dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);" role="button">Download precompiled Bootstrap</a></p>
-
-    <h3 id="download-additional">Additional downloads</h3>
-    <div class="bs-docs-dl-options">
-      <h4>
-        <a href="{{ site.download_source }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download source code</a>
-      </h4>
-      <p>Get the latest Bootstrap LESS and JavaScript source code by downloading it directly from GitHub.</p>
-      <h4>
-        <a href="{{ site.repo }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'GitHub project']);">Clone or fork via GitHub</a>
-      </h4>
-      <p>Visit us on GitHub to clone or fork the Bootstrap project.</p>
-      <h4>
-        Install with <a href="http://bower.io">Bower</a>
-      </h4>
-      <p>Install and manage Bootstrap's styles, JavaScript, and documentation using <a href="http://bower.io">Bower</a>.</p>
-      {% highlight bash %}$ bower install bootstrap{% endhighlight %}
-    </div>
-
-    <h3 id="download-cdn">Bootstrap CDN</h3>
-    <p>The folks over at <a href="http://www.maxcdn.com/">MaxCDN</a> graciously provide CDN support for Bootstrap's CSS and JavaScript. Just use these <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links.</p>
-{% highlight html %}
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="{{ site.cdn_css }}">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="{{ site.cdn_theme_css }}">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="{{ site.cdn_js }}"></script>
-{% endhighlight %}
-
-    <div class="bs-callout bs-callout-warning" id="callout-less-compilation">
-      <h4>Compiling Bootstrap's LESS files</h4>
-      <p>If you work with Bootstrap's uncompiled source code, you need to compile the LESS files to produce usable CSS files. For compiling LESS files into CSS, we only officially support <a href="http://twitter.github.io/recess/">Recess</a>, which is Twitter's CSS hinter based on <a href="http://lesscss.org">less.js</a>.</p>
-    </div>
-  </div>
-
   <!-- File structure
   ================================================== -->
   <div class="bs-docs-section">
@@ -69,13 +20,13 @@ Copy any changes made here over to the README too. -->
 {% highlight bash %}
 bootstrap/
 ├── css/
-│   ├── bootstrap.css
-│   ├── bootstrap.min.css
-│   ├── bootstrap-theme.css
-│   └── bootstrap-theme.min.css
+│   ├── bootstrap-tobi.css
+│   ├── bootstrap-tobi.min.css
+│   ├── bootstrap-tobi-theme.css
+│   └── bootstrap-tobi-theme.min.css
 ├── js/
-│   ├── bootstrap.js
-│   └── bootstrap.min.js
+│   ├── bootstrap-tobi.js
+│   └── bootstrap-tobi.min.js
 └── fonts/
     ├── glyphicons-halflings-regular.eot
     ├── glyphicons-halflings-regular.svg
@@ -83,11 +34,7 @@ bootstrap/
     └── glyphicons-halflings-regular.woff
 {% endhighlight %}
 
-    <p>This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). Fonts from Glyphicons are included, as is the optional Bootstrap theme.</p>
-    <div class="bs-callout bs-callout-danger">
-      <h4>jQuery required</h4>
-      <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included, as shown in the <a href="#template">starter template</a>. <a href="{{ site.repo }}/blob/v{{ site.current_version }}/bower.json">Consult our <code>bower.json</code></a> to see which versions of jQuery are supported.</p>
-    </div>
+    <p>This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap-tobi.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap-tobi.min.*</code>). Fonts from Glyphicons are included, as is the optional Bootstrap theme.</p>
   </div>
 
 
@@ -107,7 +54,7 @@ bootstrap/
     <title>Bootstrap 101 Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-tobi.min.css" rel="stylesheet" media="screen">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -121,7 +68,7 @@ bootstrap/
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-tobi.min.js"></script>
   </body>
 </html>
 {% endhighlight %}
@@ -749,7 +696,7 @@ bootstrap/
     <h3>IE Compatibility modes</h3>
     <p>Bootstrap is not supported in the old Internet Explorer compatibility modes. To be sure you're using the latest rendering mode for IE, consider including the appropriate <code>&lt;meta&gt;</code> tag in your pages:</p>
 {% highlight html %}
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
 {% endhighlight %}
     <p>This tag is included in all docs pages and examples to ensure the best rendering possible in each supported version of Internet Explorer.</p>
     <p>See <a href="http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge">this StackOverflow question</a> for more information.</p>

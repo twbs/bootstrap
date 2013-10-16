@@ -98,14 +98,23 @@ module.exports = function(grunt) {
         },
         src: ['less/theme.less'],
         dest: 'dist/css/<%= pkg.name %>-theme.min.css'
+      },
+      tobi_bootstrap_master: {
+        src: ['less/bootstrap-master.less'],
+        dest: 'dist/css/<%= pkg.name %>-master.css'
       }
     },
 
     copy: {
       fonts: {
         expand: true,
-        src: ["fonts/*"],
+        src: ["/fonts/*"],
         dest: 'dist/'
+      },
+      tobi_master: {
+        expand: false,
+        src: ["dist/css/bootstrap-tobi-master.css"],
+        dest: '../trunk/app/assets/stylesheets/plugin/bootstrap-3.0.0-tobi.css'
       }
     },
 
@@ -174,14 +183,10 @@ module.exports = function(grunt) {
 
   // Test task.
   var testSubtasks = ['dist-css', 'jshint', 'qunit', 'validate-html'];
-  // Only run BrowserStack tests under Travis
-  if (process.env.TRAVIS) {
-    // Only run BrowserStack tests if this is a mainline commit in twbs/bootstrap, or you have your own BrowserStack key
-    if ((process.env.TRAVIS_REPO_SLUG === 'twbs/bootstrap' && process.env.TRAVIS_PULL_REQUEST === 'false') || process.env.TWBS_HAVE_OWN_BROWSERSTACK_KEY) {
-      testSubtasks.push('browserstack_runner');
-    }
-  }
   grunt.registerTask('test', testSubtasks);
+
+	// Tobi Task - Builds and then copies latest CSS / JS etc to local trunk
+  grunt.registerTask('tobi', ['dist', 'copy:tobi_master']);
 
   // JS distribution task.
   grunt.registerTask('dist-js', ['concat', 'uglify']);
@@ -190,31 +195,11 @@ module.exports = function(grunt) {
   grunt.registerTask('dist-css', ['recess']);
 
   // Fonts distribution task.
-  grunt.registerTask('dist-fonts', ['copy']);
+  grunt.registerTask('dist-fonts', ['copy:fonts']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean', 'dist-css', 'dist-fonts', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['test', 'dist', 'build-customizer']);
-
-  // task for building customizer
-  grunt.registerTask('build-customizer', 'Add scripts/less files to customizer.', function () {
-    var fs = require('fs')
-
-    function getFiles(type) {
-      var files = {}
-      fs.readdirSync(type)
-        .filter(function (path) {
-          return type == 'fonts' ? true : new RegExp('\\.' + type + '$').test(path)
-        })
-        .forEach(function (path) {
-          return files[path] = fs.readFileSync(type + '/' + path, 'utf8')
-        })
-      return 'var __' + type + ' = ' + JSON.stringify(files) + '\n'
-    }
-
-    var files = getFiles('js') + getFiles('less') + getFiles('fonts')
-    fs.writeFileSync('docs-assets/js/raw-files.js', files)
-  });
+  grunt.registerTask('default', ['test', 'dist']);
 };

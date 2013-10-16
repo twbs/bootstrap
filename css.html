@@ -68,515 +68,201 @@ base_url: "../"
   ================================================== -->
   <div class="bs-docs-section">
     <div class="page-header">
-      <h1 id="grid">Grid system</h1>
+      <h1 id="grid">Tobi's Grid System</h1>
     </div>
-    <p class="lead">Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. It includes <a href="#grid-example-basic">predefined classes</a> for easy layout options, as well as powerful <a href="#grid-less">mixins for generating more semantic layouts</a>.</p>
+    <p class="lead">We have two grid systems, fixed and dynamic.</p>
 
-    <h3 id="grid-media-queries">Media queries</h3>
-    <p>We use the following media queries in our LESS files to create the key breakpoints in our grid system.</p>
-{% highlight css %}
-/* Extra small devices (phones, less than 768px) */
-/* No media query since this is the default in Bootstrap */
+		<h3>Dynamic Grid</h3>
+		<p>The Dynamic Grid is triggered by including the tag 'grid-dynamic' in the wrapping div.  We are rendering the dynamic grid here because it displays properly within the Bootstrap Docs, but the main TOBI.com site currently uses the static grid based on a fixed width of 1180px.</p>
 
-/* Small devices (tablets, 768px and up) */
-@media (min-width: @screen-sm-min) { ... }
-
-/* Medium devices (desktops, 992px and up) */
-@media (min-width: @screen-md-min) { ... }
-
-/* Large devices (large desktops, 1200px and up) */
-@media (min-width: @screen-lg-min) { ... }
-{% endhighlight %}
-    <p>We occasionally expand on these media queries to include a <code>max-width</code> to limit CSS to a narrower set of devices.</p>
-{% highlight css %}
-@media (max-width: @screen-xs-max) { ... }
-@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { ... }
-@media (min-width: @screen-md-min) and (max-width: @screen-md-max) { ... }
-@media (min-width: @screen-lg-min) { ... }
-{% endhighlight %}
-
-    <h3 id="grid-options">Grid options</h3>
-    <p>See how aspects of the Bootstrap grid system work across multiple devices with a handy table.</p>
-    <div class="table-responsive">
-      <table class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th></th>
-            <th>
-              Extra small devices
-              <small>Phones (&lt;768px)</small>
-            </th>
-            <th>
-              Small devices
-              <small>Tablets (&ge;768px)</small>
-            </th>
-            <th>
-              Medium devices
-              <small>Desktops (&ge;992px)</small>
-            </th>
-            <th>
-              Large devices
-              <small>Desktops (&ge;1200px)</small>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>Grid behavior</th>
-            <td>Horizontal at all times</td>
-            <td colspan="3">Collapsed to start, horizontal above breakpoints</td>
-          </tr>
-          <tr>
-            <th>Max container width</th>
-            <td>None (auto)</td>
-            <td>750px</td>
-            <td>970px</td>
-            <td>1170px</td>
-          </tr>
-          <tr>
-            <th>Class prefix</th>
-            <td><code>.col-xs-</code></td>
-            <td><code>.col-sm-</code></td>
-            <td><code>.col-md-</code></td>
-            <td><code>.col-lg-</code></td>
-          </tr>
-          <tr>
-            <th># of columns</th>
-            <td colspan="4">12</td>
-          </tr>
-          <tr>
-            <th>Max column width</th>
-            <td class="text-muted">Auto</td>
-            <td>60px</td>
-            <td>78px</td>
-            <td>95px</td>
-          </tr>
-          <tr>
-            <th>Gutter width</th>
-            <td colspan="4">30px (15px on each side of a column)</td>
-          </tr>
-          <tr>
-            <th>Nestable</th>
-            <td colspan="4">Yes</td>
-          </tr>
-          <tr>
-            <th>Offsets</th>
-            <td colspan="1" class="text-muted">N/A</td>
-            <td colspan="3">Yes</td>
-          </tr>
-          <tr>
-            <th>Column ordering</th>
-            <td class="text-muted">N/A</td>
-            <td colspan="3">Yes</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p>Grid classes apply to devices with screen widths greater than or equal to the breakpoint sizes, and override grid classes targeted at smaller devices. Therefore, applying any <code>.col-md-</code> class to an element will not only affect its styling on medium devices but also on large devices if a <code>.col-lg-</code> class is not present.</p>
-
-    <h3 id="grid-example-basic">Example: Stacked-to-horizontal</h3>
-    <p>Using a single set of <code>.col-md-*</code> grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices.</p>
-    <div class="bs-docs-grid">
-      <div class="row show-grid">
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-      </div>
-      <div class="row show-grid">
-        <div class="col-md-8">.col-md-8</div>
-        <div class="col-md-4">.col-md-4</div>
-      </div>
-      <div class="row show-grid">
-        <div class="col-md-4">.col-md-4</div>
-        <div class="col-md-4">.col-md-4</div>
-        <div class="col-md-4">.col-md-4</div>
-      </div>
-      <div class="row show-grid">
-        <div class="col-md-6">.col-md-6</div>
-        <div class="col-md-6">.col-md-6</div>
-      </div>
-    </div>
+		<h4 id="grid-three-column">Three Column</h4>
+		<div class="bs-docs-grid">
+			<div class="grid-dynamic grid show-grid">
+		    <div class="grid-1-3">.grid-1-3</div>
+		    <div class="grid-1-3">.grid-1-3</div>
+		    <div class="grid-1-3">.grid-1-3</div>
+			</div>
+			<div class="grid-dynamic grid show-grid">
+		    <div class="grid-2-3">.grid-2-3</div>
+		    <div class="grid-1-3">.grid-1-3</div>
+			</div>
+			<div class="grid-dynamic grid show-grid">
+		    <div class="grid-1-3">.grid-1-3</div>
+		    <div class="grid-2-3">.grid-2-3</div>
+			</div>
+		</div>
 {% highlight html %}
-<div class="row">
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
+<div class="grid">
+  <div class="grid-1-3">.grid-1-3</div>
+  <div class="grid-1-3">.grid-1-3</div>
+  <div class="grid-1-3">.grid-1-3</div>
 </div>
-<div class="row">
-  <div class="col-md-8">.col-md-8</div>
-  <div class="col-md-4">.col-md-4</div>
+
+<div class="grid">
+  <div class="grid-2-3">.grid-2-3</div>
+  <div class="grid-1-3">.grid-1-3</div>
 </div>
-<div class="row">
-  <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4">.col-md-4</div>
-</div>
-<div class="row">
-  <div class="col-md-6">.col-md-6</div>
-  <div class="col-md-6">.col-md-6</div>
+
+<div class="grid">
+  <div class="grid-1-3">.grid-1-3</div>
+  <div class="grid-2-3">.grid-2-3</div>
 </div>
 {% endhighlight %}
 
-    <h3 id="grid-example-mixed">Example: Mobile and desktop</h3>
-    <p>Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid classes by adding <code>.col-xs-*</code> <code>.col-md-*</code> to your columns. See the example below for a better idea of how it all works.</p>
-    <div class="bs-docs-grid">
-      <div class="row show-grid">
-        <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
-        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-      </div>
-      <div class="row show-grid">
-        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-      </div>
-      <div class="row show-grid">
-        <div class="col-xs-6">.col-xs-6</div>
-        <div class="col-xs-6">.col-xs-6</div>
-      </div>
-    </div>
+		<h4 id="grid-five-column">Five Column</h4>
+		<div class="bs-docs-grid">
+			<div class="grid-dynamic grid show-grid">
+			  <div class="grid-1-5">.grid-1-5</div>
+			  <div class="grid-1-5">.grid-1-5</div>
+			  <div class="grid-1-5">.grid-1-5</div>
+			  <div class="grid-1-5">.grid-1-5</div>
+			  <div class="grid-1-5">.grid-1-5</div>
+			</div>
+			<div class="grid-dynamic grid show-grid">
+			  <div class="grid-2-5">.grid-2-5</div>
+			  <div class="grid-1-5">.grid-1-5</div>
+			  <div class="grid-2-5">.grid-2-5</div>
+			</div>
+			<div class="grid-dynamic grid show-grid">
+		    <div class="grid-2-5">.grid-2-5</div>
+		    <div class="grid-3-5">.grid-3-5</div>
+			</div>
+			<div class="grid-dynamic grid show-grid">
+		    <div class="grid-1-5">.grid-1-5</div>
+		    <div class="grid-4-5">.grid-4-5</div>
+			</div>
+		</div>
+
 {% highlight html %}
-<!-- Stack the columns on mobile by making one full-width and the other half-width -->
-<div class="row">
-  <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+<div class="grid">
+  <div class="grid-1-5">.grid-1-5</div>
+  <div class="grid-1-5">.grid-1-5</div>
+  <div class="grid-1-5">.grid-1-5</div>
+  <div class="grid-1-5">.grid-1-5</div>
+  <div class="grid-1-5">.grid-1-5</div>
 </div>
 
-<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-<div class="row">
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+<div class="grid">
+  <div class="grid-2-5">.grid-2-5</div>
+  <div class="grid-1-5">.grid-1-5</div>
+  <div class="grid-2-5">.grid-2-5</div>
 </div>
 
-<!-- Columns are always 50% wide, on mobile and desktop -->
-<div class="row">
-  <div class="col-xs-6">.col-xs-6</div>
-  <div class="col-xs-6">.col-xs-6</div>
+<div class="grid">
+  <div class="grid-2-5">.grid-2-5</div>
+  <div class="grid-3-5">.grid-3-5</div>
+</div>
+
+<div class="grid">
+  <div class="grid-1-5">.grid-1-5</div>
+  <div class="grid-4-5">.grid-4-5</div>
 </div>
 {% endhighlight %}
 
-    <h3 id="grid-example-mixed-complete">Example: Mobile, tablet, desktops</h3>
-    <p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>.col-sm-*</code> classes.</p>
-    <div class="bs-docs-grid">
-      <div class="row show-grid">
-        <div class="col-xs-12 col-sm-6 col-md-8">.col-xs-12 .col-sm-6 .col-md-8</div>
-        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-      </div>
-      <div class="row show-grid">
-        <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
-        <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
-        <!-- Optional: clear the XS cols if their content doesn't match in height -->
-        <div class="clearfix visible-xs"></div>
-        <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
-      </div>
-    </div>
+		<h4 id="grid-two-column">Two Column</h4>
+		<div class="bs-docs-grid">
+			<div class="grid-dynamic grid show-grid">
+			  <div class="grid-1-2">.grid-1-2</div>
+			  <div class="grid-1-2">.grid-1-2</div>
+			</div>
+		</div>
+
 {% highlight html %}
-<div class="row">
-  <div class="col-xs-12 col-sm-6 col-md-8">.col-xs-12 .col-sm-6 .col-md-8</div>
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-</div>
-<div class="row">
-  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
-  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
-  <!-- Optional: clear the XS cols if their content doesn't match in height -->
-  <div class="clearfix visible-xs"></div>
-  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+<div class="grid">
+  <div class="grid-1-2">.grid-1-2</div>
+  <div class="grid-1-2">.grid-1-2</div>
 </div>
 {% endhighlight %}
 
-    <h3 id="grid-responsive-resets">Responsive column resets</h3>
-    <p>With the four tiers of grids available you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a <code>.clearfix</code> and our <a href="../css#responsive-utilities">responsive utility classes</a>.</p>
+		<h4 id="grid-six-column">Six Column</h4>
+		<p>This is used on the Checkout Review page only right now in production</p>
+		<div class="bs-docs-grid">
+			<div class="grid-dynamic grid show-grid">
+		    <div class="grid-1-6">.grid-1-6</div>
+		    <div class="grid-1-6">.grid-1-6</div>
+		    <div class="grid-1-6">.grid-1-6</div>
+		    <div class="grid-1-6">.grid-1-6</div>
+			  <div class="grid-1-6">.grid-1-6</div>
+			  <div class="grid-1-6">.grid-1-6</div>
+			</div>
+		</div>
+
 {% highlight html %}
-<div class="row">
-  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
-  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
-
-  <!-- Add the extra clearfix for only the required viewport -->
-  <div class="clearfix visible-xs"></div>
-
-  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
-  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
-</div>
-{% endhighlight %}
-    <p>In addition to column clearing at responsive breakpoints, you may need to <strong>reset offsets, pushes, or pulls</strong>. Those resets are available for medium and large grid tiers only, since they start only at the (second) small grid tier. See this in action in <a href="../examples/grid/">the grid example</a>.</p>
-{% highlight html %}
-<div class="row">
-  <div class="col-sm-5 col-md-6">.col-sm-5 .col-md-6</div>
-  <div class="col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0">.col-sm-5 .col-sm-offset-2 .col-md-6 .col-md-offset-0</div>
-</div>
-
-<div class="row">
-  <div class="col-sm-6 col-md-5 col-lg-6">.col-sm-6 .col-md-5 .col-lg-6</div>
-  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0">.col-sm-6 .col-md-5 .col-md-offset-2 .col-lg-6 .col-lg-offset-0</div>
+<div class="grid">
+  <div class="grid-1-6">.grid-1-6</div>
+  <div class="grid-1-6">.grid-1-6</div>
+  <div class="grid-1-6">.grid-1-6</div>
+  <div class="grid-1-6">.grid-1-6</div>
+  <div class="grid-1-6">.grid-1-6</div>
+  <div class="grid-1-6">.grid-1-6</div>
 </div>
 {% endhighlight %}
 
+		<h3 id="grid-nested">Dynamic Nested Grids</h3>
+		<p>When using dynamic columns, it's possible nest them easily.</p>
+		<div class="grid-dynamic grid show-grid">
+		  <div class="grid-1-3">
+				.grid-1-3 with nested columns
+				<br />
+				<div class="grid">
+		      <div class="grid-1-2">.grid-1-2</div>
+		      <div class="grid-1-2">.grid-1-2</div>
+				</div>
+			</div>
+		  <div class="grid-1-3">
+				.grid-1-3 with nested columns
+				<br />
+				<div class="grid">
+		      <div class="grid-1-2">.grid-1-2</div>
+		      <div class="grid-1-2">.grid-1-2</div>
+				</div>
+			</div>
+			<div class="grid-1-3">.grid-1-3</div>
+		</div>
+		<div class="grid-dynamic grid show-grid">
+			<div class="grid-1-2">
+				.grid-1-2 with nested grids<br />
+				<div class="grid">
+					<div class="grid-2-3">.grid-2-3</div>
+					<div class="grid-1-3">.grid-1-3</div>
+				</div>
+			</div>
+			<div class="grid-1-2">.grid-1-2</div>
+		</div>
 
-    <h3 id="grid-offsetting">Offsetting columns</h3>
-    <p>Move columns to the right using <code>.col-md-offset-*</code> classes. These classes increase the left margin of a column by <code>*</code> columns. For example, <code>.col-md-offset-4</code> moves <code>.col-md-4</code> over four columns.</p>
-    <div class="bs-docs-grid">
-      <div class="row show-grid">
-        <div class="col-md-4">.col-md-4</div>
-        <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
-      </div>
-      <div class="row show-grid">
-        <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
-        <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
-      </div>
-      <div class="row show-grid">
-        <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
-      </div>
-    </div>
 {% highlight html %}
-<div class="row">
-  <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+<div class="grid">
+	<div class="grid-1-3">
+	.grid-1-3 with nested columns
+	<br />
+	<div class="grid">
+    <div class="grid-1-2">.grid-1-2</div>
+    <div class="grid-1-2">.grid-1-2</div>
+	</div>
+	</div>
+	<div class="grid-1-3">
+	.grid-1-3 with nested columns
+	<br />
+	<div class="grid">
+    <div class="grid-1-2">.grid-1-2</div>
+    <div class="grid-1-2">.grid-1-2</div>
+	</div>
+	</div>
+	<div class="grid-1-3">.grid-1-3</div>
 </div>
-<div class="row">
-  <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
-  <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
-</div>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
-</div>
-{% endhighlight %}
-
-
-    <h3 id="grid-nesting">Nesting columns</h3>
-    <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.col-md-*</code> columns within an existing <code>.col-md-*</code> column. Nested rows should include a set of columns that add up to 12.</p>
-    <div class="row show-grid">
-      <div class="col-md-9">
-        Level 1: .col-md-9
-        <div class="row show-grid">
-          <div class="col-md-6">
-            Level 2: .col-md-6
-          </div>
-          <div class="col-md-6">
-            Level 2: .col-md-6
-          </div>
-        </div>
-      </div>
-    </div>
-{% highlight html %}
-<div class="row">
-  <div class="col-md-9">
-    Level 1: .col-md-9
-    <div class="row">
-      <div class="col-md-6">
-        Level 2: .col-md-6
-      </div>
-      <div class="col-md-6">
-        Level 2: .col-md-6
-      </div>
-    </div>
+<div class="grid">
+  <div class="grid-1-2">
+    .grid-1-2 with nested grids<br />
+	  <div class="grid">
+		  <div class="grid-2-3">.grid-2-3</div>
+		  <div class="grid-1-3">.grid-1-3</div>
+	  </div>
   </div>
+	<div class="grid-1-2">.grid-1-2</div>
 </div>
 {% endhighlight %}
 
-    <h3 id="grid-column-ordering">Column ordering</h3>
-    <p>Easily change the order of our built-in grid columns with <code>.col-md-push-*</code> and <code>.col-md-pull-*</code> modifier classes.</p>
-    <div class="row show-grid">
-      <div class="col-md-9 col-md-push-3">.col-md-9 .col-md-push-3</div>
-      <div class="col-md-3 col-md-pull-9">.col-md-3 .col-md-pull-9</div>
-    </div>
-
-{% highlight html %}
-<div class="row">
-  <div class="col-md-9 col-md-push-3">.col-md-9 .col-md-push-3</div>
-  <div class="col-md-3 col-md-pull-9">.col-md-3 .col-md-pull-9</div>
 </div>
-{% endhighlight %}
-
-    <h3 id="grid-less">LESS mixins and variables</h3>
-    <p>In addition to <a href="#grid-example-basic">prebuilt grid classes</a> for fast layouts, Bootstrap includes LESS variables and mixins for quickly generating your own simple, semantic layouts.</p>
-
-    <h4>Variables</h4>
-    <p>Variables determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.</p>
-{% highlight css %}
-@grid-columns:              12;
-@grid-gutter-width:         30px;
-@grid-float-breakpoint:     768px;
-{% endhighlight %}
-
-    <h4>Mixins</h4>
-    <p>Mixins are used in conjunction with the grid variables to generate semantic CSS for individual grid columns.</p>
-{% highlight css %}
-// Creates a wrapper for a series of columns
-.make-row(@gutter: @grid-gutter-width) {
-  // Then clear the floated columns
-  .clearfix();
-
-  @media (min-width: @screen-small) {
-    margin-left:  (@gutter / -2);
-    margin-right: (@gutter / -2);
-  }
-
-  // Negative margin nested rows out to align the content of columns
-  .row {
-    margin-left:  (@gutter / -2);
-    margin-right: (@gutter / -2);
-  }
-}
-
-// Generate the extra small columns
-.make-xs-column(@columns; @gutter: @grid-gutter-width) {
-  position: relative;
-  // Prevent columns from collapsing when empty
-  min-height: 1px;
-  // Inner gutter via padding
-  padding-left:  (@gutter / 2);
-  padding-right: (@gutter / 2);
-
-  // Calculate width based on number of columns available
-  @media (min-width: @grid-float-breakpoint) {
-    float: left;
-    width: percentage((@columns / @grid-columns));
-  }
-}
-
-// Generate the small columns
-.make-sm-column(@columns; @gutter: @grid-gutter-width) {
-  position: relative;
-  // Prevent columns from collapsing when empty
-  min-height: 1px;
-  // Inner gutter via padding
-  padding-left:  (@gutter / 2);
-  padding-right: (@gutter / 2);
-
-  // Calculate width based on number of columns available
-  @media (min-width: @screen-small) {
-    float: left;
-    width: percentage((@columns / @grid-columns));
-  }
-}
-
-// Generate the small column offsets
-.make-sm-column-offset(@columns) {
-  @media (min-width: @screen-small) {
-    margin-left: percentage((@columns / @grid-columns));
-  }
-}
-.make-sm-column-push(@columns) {
-  @media (min-width: @screen-small) {
-    left: percentage((@columns / @grid-columns));
-  }
-}
-.make-sm-column-pull(@columns) {
-  @media (min-width: @screen-small) {
-    right: percentage((@columns / @grid-columns));
-  }
-}
-
-// Generate the medium columns
-.make-md-column(@columns; @gutter: @grid-gutter-width) {
-  position: relative;
-  // Prevent columns from collapsing when empty
-  min-height: 1px;
-  // Inner gutter via padding
-  padding-left:  (@gutter / 2);
-  padding-right: (@gutter / 2);
-
-  // Calculate width based on number of columns available
-  @media (min-width: @screen-medium) {
-    float: left;
-    width: percentage((@columns / @grid-columns));
-  }
-}
-
-// Generate the medium column offsets
-.make-md-column-offset(@columns) {
-  @media (min-width: @screen-medium) {
-    margin-left: percentage((@columns / @grid-columns));
-  }
-}
-.make-md-column-push(@columns) {
-  @media (min-width: @screen-medium) {
-    left: percentage((@columns / @grid-columns));
-  }
-}
-.make-md-column-pull(@columns) {
-  @media (min-width: @screen-medium) {
-    right: percentage((@columns / @grid-columns));
-  }
-}
-
-// Generate the large columns
-.make-lg-column(@columns; @gutter: @grid-gutter-width) {
-  position: relative;
-  // Prevent columns from collapsing when empty
-  min-height: 1px;
-  // Inner gutter via padding
-  padding-left:  (@gutter / 2);
-  padding-right: (@gutter / 2);
-
-  // Calculate width based on number of columns available
-  @media (min-width: @screen-large) {
-    float: left;
-    width: percentage((@columns / @grid-columns));
-  }
-}
-
-// Generate the large column offsets
-.make-lg-column-offset(@columns) {
-  @media (min-width: @screen-large) {
-    margin-left: percentage((@columns / @grid-columns));
-  }
-}
-.make-lg-column-push(@columns) {
-  @media (min-width: @screen-large) {
-    left: percentage((@columns / @grid-columns));
-  }
-}
-.make-lg-column-pull(@columns) {
-  @media (min-width: @screen-large) {
-    right: percentage((@columns / @grid-columns));
-  }
-}
-{% endhighlight %}
-
-    <h4>Example usage</h4>
-    <p>You can modify the variables to your own custom values, or just use the mixins with their default values. Here's an example of using the default settings to create a two-column layout with a gap between.</p>
-{% highlight css %}
-.wrapper {
-  .make-row();
-}
-.content-main {
-  .make-lg-column(8);
-}
-.content-secondary {
-  .make-lg-column(3);
-  .make-lg-column-offset(1);
-}
-{% endhighlight %}
-{% highlight html %}
-<div class="wrapper">
-  <div class="content-main">...</div>
-  <div class="content-secondary">...</div>
-</div>
-{% endhighlight %}
-
-  </div>
-
-
-
 
   <!-- Typography
   ================================================== -->
@@ -586,8 +272,8 @@ base_url: "../"
     </div>
 
     <!-- Headings -->
-    <h2 id="type-headings">Headings</h2>
-    <p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available.</p>
+    <h2 id="type-headings">TOBI Headings</h2>
+    <p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available.  We also have one special class, <strong>.header</strong>, that applies the font-family and text-transform: uppercase styles but does not affect font-size.</p>
     <div class="bs-example bs-example-type">
       <table class="table">
         <tbody>
@@ -605,16 +291,49 @@ base_url: "../"
           </tr>
           <tr>
             <td><h4>h4. Bootstrap heading</h4></td>
-            <td class="info">Semibold 18px</td>
+            <td class="info">Semibold 21px</td>
           </tr>
           <tr>
             <td><h5>h5. Bootstrap heading</h5></td>
-            <td class="info">Semibold 14px</td>
+            <td class="info">Semibold 18px</td>
           </tr>
           <tr>
             <td><h6>h6. Bootstrap heading</h6></td>
-            <td class="info">Semibold 12px</td>
+            <td class="info">Semibold 14px</td>
           </tr>
+          <tr>
+            <td><div class="header">.header class</div></td>
+            <td class="info">TOBI header class</td>
+          </tr>
+          <tr>
+            <td><h1 class="no-transform">h1. with .no-transform class</h1></td>
+            <td class="info">override class prevents uppercase</td>
+          </tr>
+          <tr>
+            <td><h2 class="no-transform">h2. no-transform</h2></td>
+            <td class="info">no uppercase</td>
+          </tr>
+          <tr>
+            <td><h3 class="no-transform">h3. no-transform</h3></td>
+            <td class="info">no uppercase</td>
+          </tr>
+          <tr>
+            <td><h4 class="no-transform">h4. no-transform</h4></td>
+            <td class="info">no uppercase</td>
+          </tr>
+          <tr>
+            <td><h5 class="no-transform">h5. no-transform</h5></td>
+            <td class="info">no uppercase</td>
+          </tr>
+          <tr>
+            <td><h6 class="no-transform">h6. no-transform</h6></td>
+            <td class="info">no uppercase</td>
+          </tr>
+          <tr>
+            <td><div class="header no-transform">.header .no-transform</div></td>
+            <td class="info">no uppercase</td>
+          </tr>          
+          
         </tbody>
       </table>
     </div>
@@ -625,6 +344,14 @@ base_url: "../"
 <h4>h4. Bootstrap heading</h4>
 <h5>h5. Bootstrap heading</h5>
 <h6>h6. Bootstrap heading</h6>
+<div class="header">.header class</div>
+<h1 class="no-transform">h1. no-transform</h1>
+<h2 class="no-transform">h2. no-transform</h2>
+<h3 class="no-transform">h3. no-transform</h3>
+<h4 class="no-transform">h4. no-transform</h4>
+<h5 class="no-transform">h5. no-transform</h5>
+<h6 class="no-transform">h6. no-transform</h6>
+<div class="header no-transform">.header .no-transform</div>
 {% endhighlight %}
 
     <p>Also included with headings is an autoscaling <code>&lt;small&gt;</code> element. Use it for smaller, gray secondary text in any heading.</p>
@@ -661,10 +388,9 @@ base_url: "../"
 <h6>h6. Bootstrap heading <small>Secondary text</small></h6>
 {% endhighlight %}
 
-
     <!-- Body copy -->
     <h2 id="type-body-copy">Body copy</h2>
-    <p>Bootstrap's global default <code>font-size</code> is <strong>14px</strong>, with a <code>line-height</code> of <strong>1.428</strong>. This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition, <code>&lt;p&gt;</code> (paragraphs) receive a bottom margin of half their computed line-height (10px by default).</p>
+    <p>Bootstrap's global default <code>font-size</code> is <strong>14px</strong>, with a <code>line-height</code> of <strong>1.428</strong>. But... TOBI uses 13px font size by default on the site.  This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition, <code>&lt;p&gt;</code> (paragraphs) receive a bottom margin of half their computed line-height (10px by default).</p>
     <div class="bs-example">
       <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
       <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
@@ -687,7 +413,6 @@ base_url: "../"
     <!-- Using LESS -->
     <h3>Built with Less</h3>
     <p>The typographic scale is based on two LESS variables in <strong>variables.less</strong>: <code>@font-size-base</code> and <code>@line-height-base</code>. The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.</p>
-
 
     <!-- Emphasis -->
     <h2 id="type-emphasis">Emphasis</h2>
@@ -748,6 +473,8 @@ base_url: "../"
       <p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
       <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
       <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <p class="text-strike">TOBI Special .strike Class - used for old prices</p>
+
     </div>
 {% highlight html %}
 <p class="text-muted">...</p>
@@ -756,6 +483,7 @@ base_url: "../"
 <p class="text-info">...</p>
 <p class="text-warning">...</p>
 <p class="text-danger">...</p>
+<p class="text-strike">TOBI special .strike class - used for old prices</p>
 {% endhighlight %}
     <div class="bs-callout bs-callout-info">
       <h4>Dealing with specificity</h4>
@@ -2068,6 +1796,37 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <button type="button" class="btn btn-link">Link</button>
 {% endhighlight %}
 
+    <h2 id="buttons-social">Social Media Options</h2>
+    <p>We have classes for the social media buttons we use too</p>
+        <div class="bs-example">
+          <!-- Facebook button -->
+          <button type="button" class="btn btn-lg btn-facebook"><span class='fb-logo'></span>Connect To Facebook</button>
+
+          <!-- Twitter button -->
+          <button type="button" class="btn btn-lg btn-twitter">Twitter</button>
+
+          <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
+            <button type="button" class="btn btn-lg btn-facebook btn-block"><span class='fb-logo'></span>Connect To Facebook</button>
+            <!-- Twitter button -->
+            <button type="button" class="btn btn-lg btn-twitter btn-block">Twitter</button>
+          </div>
+        </div>
+{% highlight html %}
+<!-- Facebook button -->
+<button type="button" class="btn btn-lg btn-facebook"><span class='fb-logo'></span>Connect To Facebook</button>
+
+<!-- Twitter button -->
+<button type="button" class="btn btn-lg btn-twitter">Twitter</button>
+
+<!-- Block Button Versions -->
+<div class="well" style="max-width: 400px; margin: 0 auto 10px;">
+  <!-- Facebook button -->
+  <button type="button" class="btn btn-lg btn-facebook btn-block"><span class='fb-logo'></span>Connect To Facebook</button>
+  
+  <!-- Twitter button -->
+  <button type="button" class="btn btn-lg btn-twitter btn-block">Twitter</button>
+</div>
+{% endhighlight %}
     <h2 id="buttons-sizes">Sizes</h2>
     <p>Fancy larger or smaller buttons? Add <code>.btn-lg</code>, <code>.btn-sm</code>, or <code>.btn-xs</code> for additional sizes.</p>
     <div class="bs-example">
@@ -2204,6 +1963,23 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <p>As a best practice, <strong>we highly recommend using the <code>&lt;button&gt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
       <p>Among other things, there's <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697451">a Firefox bug</a> that prevents us from setting the <code>line-height</code> of <code>&lt;input&gt;</code>-based buttons, causing them to not exactly match the height of other buttons on Firefox.</p>
     </div>
+    
+        <!-- Links -->
+        <h2 id="buttons-links">Links</h2>
+        <p>As seen in the button classes, by default TOBI does not show underlines for any links.  This can be overridden though with the <strong>.show-link</strong> helper class</p>
+
+        <div class="bs-example">
+          <div>This is a <a href="#"><strong>link</strong></a> which only shows inside paragraph tags or with the special .show-link class.</div>
+          <br />
+          <span class="show-link">This is a <a href="#"><strong>.show-link link</strong></a>.</span>
+          <br /><br />
+          <p>This is a <a href="#"><strong>link</strong></a> inside a paragraph tag which shows by default.</p>
+        </div>
+    {% highlight html %}
+    <div>This is a <a href="#">link</a>.</div>
+    <span class="show-link">This is a <a href="#">.show-link link</a>.</span>
+    <p>This is a <a href="#">link</a> inside a paragraph tag which shows by default.</p>
+    {% endhighlight %}
 
   </div>
 
@@ -2247,6 +2023,16 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <h1 id="helper-classes">Helper classes</h1>
     </div>
 
+    <h3 id="helper-classes-divider">Divider</h3>
+    <p>TOBI's <strong>.divider</strong> class puts a TOBI thin divider line on the bottom border of whatever you apply it to.</p>
+    <div class="bs-example">
+      <div class="divider">
+        TOBI's <strong>.divider</strong> class puts a TOBI thin divider line on the bottom border of whatever you apply it to. TOBI's <strong>.divider</strong> class puts a TOBI thin divider line on the bottom border of whatever you apply it to. TOBI's <strong>.divider</strong> class puts a TOBI thin divider line on the bottom border of whatever you apply it to. TOBI's <strong>.divider</strong> class puts a TOBI thin divider line on the bottom border of whatever you apply it to. TOBI's <strong>.divider</strong> class puts a TOBI thin divider line on the bottom border of whatever you apply it to.
+      </div>
+    </div>
+{% highlight html %}
+<div class="divider">. . .</div>
+{% endhighlight %}
 
     <h3 id="helper-classes-close">Close icon</h3>
     <p>Use the generic close icon for dismissing content like modals and alerts.</p>

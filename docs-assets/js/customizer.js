@@ -185,14 +185,14 @@ window.onload = function () { // wait for load in a dumb way because B-0
       var parser = new less.Parser({
           paths: ['variables.less', 'mixins.less']
         , optimization: 0
-        , filename: 'bootstrap.css'
+        , filename: 'bootstrap-tobi.css'
       }).parse(css, function (err, tree) {
         if (err) {
           return showError('<strong>Ruh roh!</strong> Could not parse less files.', err)
         }
         result = {
-          'bootstrap.css'     : cw + tree.toCSS(),
-          'bootstrap.min.css' : cw + tree.toCSS({ compress: true })
+          'bootstrap-tobi.css'     : cw + tree.toCSS(),
+          'bootstrap-tobi.min.css' : cw + tree.toCSS({ compress: true })
         }
       })
     } catch (err) {
@@ -212,8 +212,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
       .join('\n')
 
     return {
-      'bootstrap.js': js,
-      'bootstrap.min.js': cw + uglify(js)
+      'bootstrap-tobi.js': js,
+      'bootstrap-tobi.min.js': cw + uglify(js)
     }
   }
 
@@ -268,7 +268,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
     generateZip(generateCSS(), generateJavascript(), generateFonts(), function (blob) {
       $compileBtn.removeAttr('disabled')
-      saveAs(blob, "bootstrap.zip")
+      saveAs(blob, "bootstrap-tobi.zip")
       createGist(getCustomizerData())
     })
   })
@@ -278,7 +278,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     showCallout("Looks like you're using safari, which sadly doesn't have the best support\
                  for HTML5 blobs. Because of this your file will be downloaded with the name <code>\"untitled\"</code>.\
                  However, if you check your downloads folder, just rename this <code>\"untitled\"</code> file\
-                 to <code>\"bootstrap.zip\"</code> and you should be good to go!")
+                 to <code>\"bootstrap-tobi.zip\"</code> and you should be good to go!")
   } else if (!window.URL && !window.webkitURL) {
     $('.bs-docs-section, .bs-sidebar').css('display', 'none')
 

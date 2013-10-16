@@ -9,24 +9,35 @@
 p {
   margin: 0 0 (@line-height-computed / 2);
 }
+p, .show-link {
+	> a {
+		text-decoration: underline;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
 .lead {
   margin-bottom: @line-height-computed;
-  font-size: (@font-size-base * 1.15);
+  font-size: @font-size-lead;
   font-weight: 200;
-  line-height: 1.4;
+  line-height: 1.33;
 
-  @media (min-width: @screen-sm-min) {
+// TOBI  - commented out so we can better control and use .lead (order confirmation)
+/*  @media (min-width: @screen-sm-min) {
     font-size: (@font-size-base * 1.5);
-  }
+  }*/
 }
 
 
 // Emphasis & misc
 // -------------------------
 
-// Ex: 14px base font * 85% = about 12px
+// Ex: 14px base font * 90% = about 12px
 small,
-.small  { font-size: 85%; }
+.small  {
+	font-size: 90%; 
+}
 
 // Undo browser default styling
 cite    { font-style: normal; }
@@ -65,6 +76,10 @@ cite    { font-style: normal; }
     color: darken(@state-info-text, 10%);
   }
 }
+.text-strike {
+	color: @text-muted;
+	text-decoration: line-through;
+}
 
 // Alignment
 .text-left           { text-align: left; }
@@ -76,23 +91,30 @@ cite    { font-style: normal; }
 // -------------------------
 
 h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+.h1, .h2, .h3, .h4, .h5, .h6,
+.header, .sub-header {
   font-family: @headings-font-family;
   font-weight: @headings-font-weight;
   line-height: @headings-line-height;
+  text-transform: uppercase;
   color: @headings-color;
 
   small {
     font-weight: normal;
     line-height: 1;
     color: @headings-small-color;
+		text-transform: none;
   }
+}
+
+.no-transform {
+	text-transform: none;	
 }
 
 h1,
 h2,
 h3 {
-  margin-top: @line-height-computed;
+  margin-top: 0;
   margin-bottom: (@line-height-computed / 2);
 
   small {
@@ -102,12 +124,18 @@ h3 {
 h4,
 h5,
 h6 {
-  margin-top: (@line-height-computed / 2);
+  margin-top: 0;
   margin-bottom: (@line-height-computed / 2);
 
   small {
-    font-size: 75%;
+    font-size: 65%;
   }
+}
+
+h6 {
+	small {
+		font-size: 85%;
+	}
 }
 
 h1, .h1 { font-size: @font-size-h1; }
@@ -122,9 +150,13 @@ h6, .h6 { font-size: @font-size-h6; }
 // -------------------------
 
 .page-header {
-  padding-bottom: ((@line-height-computed / 2) - 1);
-  margin: (@line-height-computed * 2) 0 @line-height-computed;
-  border-bottom: 1px solid @page-header-border-color;
+  // padding-bottom: ((@line-height-computed / 2) - 1);
+  // margin: (@line-height-computed * 2) 0 @line-height-computed;
+	padding: 0 0 @font-size-base 0;
+	margin: 0 0 @line-height-computed 0;
+}
+.page-header, .divider {
+  border-bottom: 1px solid @page-header-border-color;	
 }
 
 
