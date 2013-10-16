@@ -33,6 +33,7 @@ We only accept issues that are bug reports or feature requests. Bugs must be iso
 - Double quotes only, never single quotes
 - Always use proper indentation
 - Use tags and elements appropriate for an HTML5 doctype (e.g., self-closing tags)
+- Use CDNs and HTTPS for third-party JS when possible. We don't use protocol-relative URLs in this case because they break when viewing the page locally via `file://`.
 
 ### CSS
 
