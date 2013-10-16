@@ -7355,3 +7355,7 @@ h6.strong,
   src: url('../fonts/Vegur-Light.eot');
   src: url('../fonts/Vegur-Light.eot?#iefix') format('embedded-opentype'), url('../fonts/Vegur-Light.woff') format('woff'), url('../fonts/Vegur-Light.ttf') format('truetype'), url('../fonts/Vegur-Light.svg#Vegur-Light') format('svg');
 }
+
+.glyphicon {
+  line-height: 0;
+}

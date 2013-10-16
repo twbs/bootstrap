@@ -277,3 +277,8 @@ h1.strong,h2.strong,h3.strong,h4.strong,h5.strong,h6.strong,
        url('@{icon-font-path}@{display-font-name}.ttf') format('truetype'),
        url('@{icon-font-path}@{display-font-name}.svg#Vegur-Light') format('svg');
 }
+
+// fix bootstrap glyphicon lineheight... otherwise does bad things when using glyphs within buttons and so on
+.glyphicon {
+  line-height: 0;
+}
