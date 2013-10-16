@@ -114,7 +114,7 @@ module.exports = function(grunt) {
       tobi_master: {
         expand: false,
         src: ["dist/css/bootstrap-tobi-master.css"],
-        dest: '~/code/trunk/app/assets/stylesheets/plugin/bootstrap-3.0.0-tobi.css'
+        dest: '../trunk/app/assets/stylesheets/plugin/bootstrap-3.0.0-tobi.css'
       }
     },
 
