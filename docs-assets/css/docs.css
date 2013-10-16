@@ -1047,9 +1047,13 @@ h1[id] {
   border: 1px solid #ddd;
 }
 .bs-glyphicons .glyphicon {
-  display: block;
-  margin: 5px auto 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
   font-size: 24px;
+}
+.bs-glyphicons .glyphicon-class {
+  display: block;
+  text-align: center;
 }
 .bs-glyphicons li:hover {
   background-color: rgba(86,61,124,.1);
