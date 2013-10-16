@@ -3,9 +3,6 @@
 module.exports = function(grunt) {
   "use strict";
 
-  // These plugins provide necessary tasks.
-  require('load-grunt-tasks')(grunt);
-  
   var btoa = require('btoa')
   // Project configuration.
   grunt.initConfig({
@@ -158,6 +155,9 @@ module.exports = function(grunt) {
     }
   });
  
+  // These plugins provide necessary tasks.
+  require('load-grunt-tasks')(grunt, 'browserstack-runner'); 
+  
   // Docs HTML validation task
   grunt.registerTask('validate-html', ['jekyll', 'validation']);
 
