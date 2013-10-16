@@ -75,6 +75,20 @@ base_url: "../"
 		<h3>Dynamic Grid</h3>
 		<p>The Dynamic Grid is triggered by including the tag 'grid-dynamic' in the wrapping div.  We are rendering the dynamic grid here because it displays properly within the Bootstrap Docs, but the main TOBI.com site currently uses the static grid based on a fixed width of 1180px.</p>
 
+		<h4 id="grid-one-column">One Column</h4>
+		<p>Yes it seems odd... but to support dynamic button sizes for the product list page, we need a full size grid element.</p>
+		<div class="bs-docs-grid">
+			<div class="grid-dynamic grid show-grid">
+			  <div class="grid-1-1">.grid-1-1</div>
+			</div>
+		</div>
+
+{% highlight html %}
+<div class="grid">
+  <div class="grid-1-1">.grid-1-1</div>
+</div>
+{% endhighlight %}
+
 		<h4 id="grid-two-column">Two Column</h4>
 		<div class="bs-docs-grid">
 			<div class="grid-dynamic grid show-grid">

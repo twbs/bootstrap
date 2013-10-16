@@ -1648,9 +1648,8 @@ Included is a dynamic version of the above grid
   margin-right: 0;
 }
 
-.grid-1-6 {
-  width: 170px;
-  margin-right: 20px;
+.grid-1-1 {
+  width: 1180px;
 }
 
 .grid-1-2 {
@@ -1661,12 +1660,12 @@ Included is a dynamic version of the above grid
   width: 360px;
 }
 
-.grid-1-4 {
-  width: 257.5px;
-}
-
 .grid-2-3 {
   width: 770px;
+}
+
+.grid-1-4 {
+  width: 257.5px;
 }
 
 .grid-1-5 {
@@ -1683,6 +1682,11 @@ Included is a dynamic version of the above grid
 
 .grid-4-5 {
   width: 934px;
+}
+
+.grid-1-6 {
+  width: 170px;
+  margin-right: 20px;
 }
 
 .grid-dynamic .grid {
@@ -1704,9 +1708,8 @@ Included is a dynamic version of the above grid
   margin-right: 0;
 }
 
-.grid-dynamic .grid-1-6 {
-  width: 15.254%;
-  margin-right: 1.695%;
+.grid-dynamic .grid-1-1 {
+  width: 100%;
 }
 
 .grid-dynamic .grid-1-2 {
@@ -1717,12 +1720,12 @@ Included is a dynamic version of the above grid
   width: 30.508%;
 }
 
-.grid-dynamic .grid-1-4 {
-  width: 21.822%;
-}
-
 .grid-dynamic .grid-2-3 {
   width: 65.254%;
+}
+
+.grid-dynamic .grid-1-4 {
+  width: 21.822%;
 }
 
 .grid-dynamic .grid-1-5 {
@@ -1739,6 +1742,11 @@ Included is a dynamic version of the above grid
 
 .grid-dynamic .grid-4-5 {
   width: 79.153%;
+}
+
+.grid-dynamic .grid-1-6 {
+  width: 15.254%;
+  margin-right: 1.695%;
 }
 
 table {
