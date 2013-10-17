@@ -2001,7 +2001,7 @@ legend {
 label {
   display: inline-block;
   padding-right: 4px;
-  margin-bottom: 1px;
+  margin-bottom: 0;
   font-size: 13px;
   font-weight: bold;
 }
@@ -2052,7 +2052,7 @@ output {
   padding-top: 7px;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #999999;
+  color: #333333;
   vertical-align: middle;
 }
 
@@ -2079,7 +2079,7 @@ output {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 20px;
-  color: #999999;
+  color: #333333;
   vertical-align: middle;
   background-color: #ffffff;
   background-image: none;
@@ -2110,7 +2110,16 @@ textarea.form-control {
 }
 
 .form-group {
-  margin: 0 10px 15px 0;
+  margin: 0 0 20px 0;
+}
+
+.form-group.is-last {
+  margin-bottom: 0;
+}
+
+.control-label {
+  margin-bottom: 0;
+  color: #ffffff;
 }
 
 .radio,
@@ -2209,15 +2218,17 @@ textarea.input-lg {
   height: auto;
 }
 
-.has-warning {
+.has-warning .help-block {
   color: #c09853;
 }
 
-.has-warning label,
-.has-warning .help-block,
-.has-warning .control-label,
-.has-warning .fieldWithErrors {
+.has-warning .help-block a {
   color: #c09853;
+  text-decoration: underline;
+}
+
+.has-warning .help-block a:hover {
+  color: #0f0b05;
 }
 
 .has-warning .form-control {
@@ -2238,20 +2249,20 @@ textarea.input-lg {
   border-color: #c09853;
 }
 
-.has-error,
-.fieldWithErrors {
+.has-error .help-block,
+.fieldWithErrors .help-block {
   color: #cc0000;
 }
 
-.has-error label,
-.fieldWithErrors label,
-.has-error .help-block,
-.fieldWithErrors .help-block,
-.has-error .control-label,
-.fieldWithErrors .control-label,
-.has-error .fieldWithErrors,
-.fieldWithErrors .fieldWithErrors {
+.has-error .help-block a,
+.fieldWithErrors .help-block a {
   color: #cc0000;
+  text-decoration: underline;
+}
+
+.has-error .help-block a:hover,
+.fieldWithErrors .help-block a:hover {
+  color: #000000;
 }
 
 .has-error .form-control,
@@ -2275,15 +2286,17 @@ textarea.input-lg {
   border-color: #cc0000;
 }
 
-.has-success {
+.has-success .help-block {
   color: #06753c;
 }
 
-.has-success label,
-.has-success .help-block,
-.has-success .control-label,
-.has-success .fieldWithErrors {
+.has-success .help-block a {
   color: #06753c;
+  text-decoration: underline;
+}
+
+.has-success .help-block a:hover {
+  color: #000000;
 }
 
 .has-success .form-control {
@@ -2311,10 +2324,9 @@ textarea.input-lg {
 
 .help-block {
   display: block;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  font-size: 13px;
-  color: #737373;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #999999;
 }
 
 @media (min-width: 768px) {
@@ -4215,7 +4227,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   font-size: 14px;
   font-weight: normal;
   line-height: 1;
-  color: #999999;
+  color: #333333;
   text-align: center;
   background-color: #e6e6e6;
   border: 1px solid #cccccc;
@@ -5583,7 +5595,8 @@ a.thumbnail:focus {
 
 .alert {
   padding: 0;
-  margin-bottom: 20px;
+  margin: 20px 0 5px;
+  overflow: auto;
   font-family: "ProximaNova-ExtraCondensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 30px;
   text-transform: uppercase;
@@ -6272,23 +6285,32 @@ button.close {
 
 .modal-dialog {
   z-index: 1050;
-  width: auto;
-  padding: 10px;
+  width: 462px;
+  min-height: 200px;
+  padding: 50px;
+  margin-top: 190px;
   margin-right: auto;
   margin-left: auto;
-}
-
-.modal-content {
-  position: relative;
   background-color: #ffffff;
-  border: 1px solid #999999;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0;
+  border: 1px solid #cccccc;
+  border: 1px solid rgba(0, 0, 0, 0.8);
   outline: none;
-  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
 }
+
+/*
+.modal-content {
+  position: relative;
+  background-color: @modal-content-bg;
+  border: 1px solid @modal-content-fallback-border-color; //old browsers fallback (ie8 etc)
+  border: 1px solid @modal-content-border-color;
+  border-radius: @border-radius-large;
+  .box-shadow(0 3px 9px rgba(0,0,0,.5));
+  background-clip: padding-box;
+  // Remove focus outline from opened modal
+  outline: none;
+}
+*/
 
 .modal-backdrop {
   position: fixed;
@@ -6297,7 +6319,7 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1030;
-  background-color: #000000;
+  background-color: #ffffff;
 }
 
 .modal-backdrop.fade {
@@ -6311,8 +6333,8 @@ button.close {
 }
 
 .modal-header {
-  min-height: 16.428571429px;
-  padding: 15px;
+  min-height: 1.428571429px;
+  padding: 0;
   border-bottom: 1px solid #e5e5e5;
 }
 
@@ -6327,14 +6349,19 @@ button.close {
 
 .modal-body {
   position: relative;
-  padding: 20px;
+  padding: 0;
+  color: #2e2d2e;
+}
+
+.modal-body h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: .90em;
+  color: #2e2d2e;
 }
 
 .modal-footer {
-  padding: 19px 20px 20px;
-  margin-top: 15px;
-  text-align: right;
-  border-top: 1px solid #e5e5e5;
+  color: #000;
 }
 
 .modal-footer:before,
@@ -6355,6 +6382,16 @@ button.close {
 
 .modal-footer:after {
   clear: both;
+}
+
+.modal-footer a {
+  color: #000;
+  border-bottom: 1px solid #cccccc;
+}
+
+.modal-footer a:hover {
+  text-decoration: none;
+  border-bottom-color: #000000;
 }
 
 .modal-footer .btn + .btn {
@@ -6370,17 +6407,26 @@ button.close {
   margin-left: 0;
 }
 
-@media screen and (min-width: 768px) {
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
+
+/*
+@media screen and (min-width: @screen-sm-min) {
+
   .modal-dialog {
     width: 600px;
     padding-top: 30px;
     padding-bottom: 30px;
   }
   .modal-content {
-    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    .box-shadow(0 5px 15px rgba(0,0,0,.5));
   }
+
 }
+*/
 
 .tooltip {
   position: absolute;
