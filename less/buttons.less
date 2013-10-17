@@ -9,19 +9,19 @@
 // Core styles
 .btn {
   display: inline-block;
-/*  padding: @padding-base-vertical @padding-base-horizontal;
-*/  margin-bottom: 0; // For input.btn
+	//padding: @padding-base-vertical @padding-base-horizontal; 
+	margin-bottom: 0; // For input.btn
   font-family: @btn-font-family;
-/*  font-size: @font-size-large;
-*/  font-weight: @btn-font-weight;
-/*  line-height: @line-height-base;
-*/  text-align: center;
+	// font-size: @font-size-large;
+	font-weight: @btn-font-weight;
+	// line-height: @line-height-base;
+	text-align: center;
   vertical-align: middle;
   cursor: pointer;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid transparent;
-/*  border-radius: @border-radius-base;
-*/  white-space: nowrap;
+	// border-radius: @border-radius-base;
+	white-space: nowrap;
   text-transform: uppercase;
   .user-select(none);
 
@@ -39,7 +39,9 @@
   &.active {
     outline: 0;
     background-image: none;
-    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+		// TOBI - box shadow removed for redesign
+    // .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+    .box-shadow(none);
   }
 
   &.disabled,
