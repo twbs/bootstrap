@@ -1,6 +1,13 @@
 // NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
 // IT'S ALL JUST JUNK FOR OUR DOCS!
 // ++++++++++++++++++++++++++++++++++++++++++
+/*!
+ * Copyright 2013 Twitter, Inc.
+ * This work is licensed under the Creative Commons Attribution 3.0 Unported License.
+ * You should have received a copy of this license along with this work.
+ * If not, visit http://creativecommons.org/licenses/by/3.0/ .
+ */
+
 
 !function ($) {
 
