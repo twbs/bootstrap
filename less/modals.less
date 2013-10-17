@@ -34,36 +34,28 @@
 
 // Shell div to position the modal with bottom padding
 .modal-dialog {
-  width: @modal-dialog-width;
-  min-height: @modal-dialog-min-height;
-  margin-top: @modal-dialog-margin-top;
+  width: auto;
+  padding: 10px 0;
   margin-left: auto;
   margin-right: auto;
-  padding: @modal-dialog-padding;
   z-index: (@zindex-modal-background + 10);
-  // moving the styles for the modal to the dialog.
-  border: 1px solid @modal-content-fallback-border-color; //old browsers fallback (ie8 etc)
-  border: 1px solid @modal-content-border-color;
-  background-color: @modal-content-bg;
-  background-clip: padding-box;
-  // Remove focus outline from opened modal
   outline: none;
 }
 
 // Actual modal (we're not using this.)
-/*
 .modal-content {
   position: relative;
+  width: @modal-dialog-width;
+  min-height: @modal-dialog-min-height;
+  margin-top: @modal-dialog-margin-top;
+  padding: @modal-dialog-padding;
   background-color: @modal-content-bg;
   border: 1px solid @modal-content-fallback-border-color; //old browsers fallback (ie8 etc)
   border: 1px solid @modal-content-border-color;
   border-radius: @border-radius-large;
-  .box-shadow(0 3px 9px rgba(0,0,0,.5));
   background-clip: padding-box;
-  // Remove focus outline from opened modal
-  outline: none;
+  outline: none; // Remove focus outline from opened modal
 }
-*/
 
 // Modal background
 .modal-backdrop {
