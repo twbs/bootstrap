@@ -3086,7 +3086,7 @@ button.close {
   margin-left: auto;
   background-color: #ffffff;
   border: 1px solid #cccccc;
-  border: 1px solid rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   outline: none;
   background-clip: padding-box;
 }
