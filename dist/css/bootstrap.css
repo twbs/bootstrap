@@ -5511,6 +5511,36 @@ a.thumbnail.active {
   margin-right: 5px;
 }
 
+.list-group > .list-group-item.success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.list-group > .list-group-item.success:hover {
+  background-color: #d0e9c6;
+  border-color: #c9e2b3;
+}
+
+.list-group > .list-group-item.danger {
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.list-group > .list-group-item.danger:hover {
+  background-color: #ebcccc;
+  border-color: #e4b9c0;
+}
+
+.list-group > .list-group-item.warning {
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+
+.list-group > .list-group-item.warning:hover {
+  background-color: #faf2cc;
+  border-color: #f7e1b5;
+}
+
 a.list-group-item {
   color: #555555;
 }
