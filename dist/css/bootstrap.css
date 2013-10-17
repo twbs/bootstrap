@@ -4397,7 +4397,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
   position: fixed;
   right: 0;
   left: 0;
-  border-width: 0 0 1px;
 }
 
 @media (min-width: 768px) {
@@ -4410,11 +4409,13 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-fixed-top {
   top: 0;
   z-index: 1030;
+  border-width: 0 0 1px;
 }
 
 .navbar-fixed-bottom {
   bottom: 0;
   margin-bottom: 0;
+  border-width: 1px 0 0;
 }
 
 .navbar-brand {
