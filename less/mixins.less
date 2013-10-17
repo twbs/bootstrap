@@ -451,13 +451,13 @@
 // List Groups
 // -------------------------
 .list-group-item-variant(@state; @background; @border) {
-  .list-group > .list-group-item.@{state} {
+  .list-group-item.@{state} {
     background-color: @background;
     border-color: @border;
   }
 
   // Hover states
-  .list-group > .list-group-item.@{state}:hover {
+  .list-group-item.@{state}:hover {
     background-color: darken(@background, 5%);
     border-color: darken(@border, 5%);
   }
