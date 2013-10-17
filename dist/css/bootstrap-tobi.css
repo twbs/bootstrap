@@ -2119,7 +2119,7 @@ textarea.form-control {
 
 .control-label {
   margin-bottom: 0;
-  color: #ffffff;
+  color: #999999;
 }
 
 .radio,
@@ -5407,7 +5407,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   font-size: 75%;
   font-weight: bold;
   line-height: 1;
-  color: #ffffff;
+  color: #999999;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
@@ -5416,7 +5416,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .label[href]:hover,
 .label[href]:focus {
-  color: #ffffff;
+  color: #666666;
   text-decoration: none;
   cursor: pointer;
 }
@@ -6297,7 +6297,7 @@ button.close {
   width: 462px;
   min-height: 200px;
   padding: 50px;
-  margin-top: 190px;
+  margin: 180px auto 0 auto;
   background-color: #ffffff;
   border: 1px solid #cccccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -6428,8 +6428,8 @@ button.close {
   display: block;
   font-size: 13px;
   line-height: 1.4;
-  opacity: 0.4;
-  filter: alpha(opacity=40);
+  opacity: 0.5;
+  filter: alpha(opacity=50);
   visibility: visible;
 }
 
