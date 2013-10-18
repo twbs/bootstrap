@@ -6021,6 +6021,12 @@ button.close {
     padding-top: 30px;
     padding-bottom: 30px;
   }
+  .modal-dialog.modal-lg {
+    width: 900px;
+  }
+  .modal-dialog.modal-sm {
+    width: 400px;
+  }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
