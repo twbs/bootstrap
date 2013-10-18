@@ -6,31 +6,41 @@
 //
 // Match the button text color to the arrow/caret for indicating dropdown-ness.
 
-.caret {
-  .btn-default & {
-    border-top-color: @btn-default-color;
-  }
-  .btn-primary &,
-  .btn-success &,
-  .btn-warning &,
-  .btn-danger &,
-  .btn-info & {
-    border-top-color: #fff;
-  }
+.btn-default .caret {
+  border-top-color: @btn-default-color;
 }
-.dropup {
-  & .btn-default .caret {
-    border-bottom-color: @btn-default-color;
-  }
-  .btn-primary,
-  .btn-success,
-  .btn-warning,
-  .btn-danger,
-  .btn-info {
-   .caret {
-      border-bottom-color: #fff;
-    }
-  }
+.btn-primary .caret {
+  border-top-color: @btn-primary-color;
+}
+.btn-success .caret {
+  border-top-color: @btn-success-color;
+}
+.btn-warning .caret {
+  border-top-color: @btn-warning-color;
+}
+.btn-danger .caret {
+  border-top-color: @btn-danger-color;
+}
+.btn-info .caret {
+  border-top-color: @btn-info-color;
+}
+.dropup .btn-default .caret {
+  border-top-color: @btn-default-color;
+}
+.dropup .btn-primary .caret {
+  border-bottom-color: @btn-primary-color;
+}
+.dropup .btn-success .caret {
+  border-bottom-color: @btn-success-color;
+}
+.dropup .btn-warning .caret {
+  border-bottom-color: @btn-warning-color;
+}
+.dropup .btn-danger .caret {
+  border-bottom-color: @btn-danger-color;
+}
+.dropup .btn-info .caret {
+  border-bottom-color: @btn-info-color;
 }
 
 // Make the div behave like a button
