@@ -148,8 +148,17 @@
 
 // The clickable button for toggling the menu
 // Remove the gradient and set the same inset shadow as the :active state
-.btn-group.open .dropdown-toggle {
-  .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+.btn-group.open {
+  & .btn-default,
+  & .btn-primary,
+  & .btn-warning,
+  & .btn-danger,
+  & .btn-success,
+  & .btn-info {
+    &.dropdown-toggle {
+      .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+    }
+  }
 }
 
 

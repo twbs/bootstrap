@@ -730,7 +730,7 @@ address {
 }
 
 code,
-kdb,
+kbd,
 pre,
 samp {
   font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
@@ -3712,7 +3712,12 @@ input[type="button"].btn-block {
   padding-left: 12px;
 }
 
-.btn-group.open .dropdown-toggle {
+.btn-group.open .btn-default.dropdown-toggle,
+.btn-group.open .btn-primary.dropdown-toggle,
+.btn-group.open .btn-warning.dropdown-toggle,
+.btn-group.open .btn-danger.dropdown-toggle,
+.btn-group.open .btn-success.dropdown-toggle,
+.btn-group.open .btn-info.dropdown-toggle {
   -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
           box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
