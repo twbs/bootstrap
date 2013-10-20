@@ -7,5 +7,8 @@
   ],
   "dependencies": {
     "jquery": ">= 1.9.0"
+  },
+  "devDependencies": {
+    "normalize-css": ">= 2.1.3"
   }
 }

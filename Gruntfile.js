@@ -79,14 +79,14 @@ module.exports = function(grunt) {
         banner: '<%= banner %>'
       },
       bootstrap: {
-        src: ['less/bootstrap.less'],
+        src: ['bower_components/normalize-css/normalize.css', 'less/bootstrap.less'],
         dest: 'dist/css/<%= pkg.name %>.css'
       },
       min: {
         options: {
           compress: true
         },
-        src: ['less/bootstrap.less'],
+        src: ['bower_components/normalize-css/normalize.css', 'less/bootstrap.less'],
         dest: 'dist/css/<%= pkg.name %>.min.css'
       },
       theme: {
