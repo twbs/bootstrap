@@ -2938,11 +2938,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .alert {
   padding: 0;
-  margin: 0 0 14px 0;
+  margin: 0;
   overflow: auto;
   font-family: "ProximaNova-ExtraCondensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 30px;
-  line-height: 1;
+  line-height: 0.9em;
   text-transform: uppercase;
   border: 1px solid transparent;
   border-radius: 0;
