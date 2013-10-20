@@ -457,14 +457,14 @@
 // TOBI Button Variant mixins - allows passing of customized hover background... or not
 //
 .button-variant(@color; @background; @border) {
-	.button-variant-function(@color; @background; @border; darken(@background, 8%))
+	.button-variant-function(@color; @background; @border; @color; darken(@background, 8%); darken(@background, 8%))
 }
 
-.button-variant(@color; @background; @border; @background-hover) {
-	.button-variant-function(@color; @background; @border; @background-hover)
+.button-variant(@color; @background; @border; @color-hover; @background-hover; @border-hover) {
+	.button-variant-function(@color; @background; @border; @color-hover; @background-hover; @border-hover)
 }
 
-.button-variant-function(@color; @background; @border; @background-hover) {
+.button-variant-function(@color; @background; @border; @color-hover; @background-hover; @border-hover) {
   color: @color;
   background-color: @background;
   border-color: @border;
@@ -474,9 +474,9 @@
   &:active,
   &.active,
   .open .dropdown-toggle& {
-    color: @color;
+    color: @color-hover;
     background-color: @background-hover;
-    border-color: darken(@border, 12%);
+    border-color: @border-hover;
   }
   &:active,
   &.active,
