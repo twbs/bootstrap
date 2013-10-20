@@ -169,6 +169,15 @@ output {
   margin-bottom: 15px;
 }
 
+// Range
+// Hack for Chrome 30.x 
+// https://github.com/twbs/bootstrap/issues/11177
+input[type="range"] {
+  .box-shadow(none);
+  padding-left: 0;
+  padding-right: 0;
+}
+
 
 // Checkboxes and radios
 //
