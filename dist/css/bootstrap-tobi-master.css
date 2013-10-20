@@ -701,7 +701,7 @@ h6 small,
 .sub-header small {
   font-weight: normal;
   line-height: 1;
-  color: #cccccc;
+  color: #666666;
   text-transform: none;
 }
 
@@ -886,7 +886,7 @@ blockquote p:last-child {
 blockquote small {
   display: block;
   line-height: 1.428571429;
-  color: #cccccc;
+  color: #666666;
 }
 
 blockquote small:before {
@@ -2938,10 +2938,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .alert {
   padding: 0;
-  margin: 20px 0 5px;
+  margin: 0 0 14px 0;
   overflow: auto;
   font-family: "ProximaNova-ExtraCondensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 30px;
+  line-height: 1;
   text-transform: uppercase;
   border: 1px solid transparent;
   border-radius: 0;
@@ -2966,7 +2967,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .alert-dismissable {
-  padding-right: 20px;
+  padding-right: 20;
 }
 
 .alert-dismissable .close {
