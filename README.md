@@ -13,7 +13,7 @@ To get started, check out [http://getbootstrap.com](http://getbootstrap.com)!
 Three quick start options are available:
 
 * [Download the latest release](https://github.com/jlong/sass-twitter-bootstrap/zipball/master).
-* Clone the repo: `git clone git://github.com/jlong/sass-twitter-bootstrap.git`.
+* Clone the repo: `git clone git://github.com/jlong/sass-bootstrap.git`.
 * Install with [Bower](http://bower.io): `bower install --save sass-bootstrap`.
 
 
@@ -221,17 +221,17 @@ And [others](https://github.com/jlong/sass-twitter-bootstrap/contributors)
 If you already use Composer, the php dependency manager, installing
 sass-twitter-bootstrap is as simple as typing :
 ```shell
-composer.phar require jlong/sass-twitter-bootstrap:x.y.z
+composer.phar require jlong/sass-bootstrap:x.y.z
 ```
 This will install version x.y.z from packagist.org
 
 You'll probably want to make sure you get minor updates, like this:
 ```shell
-composer.phar require jlong/sass-twitter-bootstrap:~x.y.z
+composer.phar require jlong/sass-bootstrap:~x.y.z
 ```
 or like this:
 ```shell
-composer.phar require jlong/sass-twitter-bootstrap:x.y.*
+composer.phar require jlong/sass-bootstrap:x.y.*
 ```
 
 
