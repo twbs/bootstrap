@@ -3716,6 +3716,11 @@ input[type="button"].btn-block {
           box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 
+.btn-group.open .dropdown-toggle.btn-link {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .btn .caret {
   margin-left: 0;
 }
