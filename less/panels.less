@@ -56,13 +56,16 @@
 // watch it go full width.
 
 .panel {
-  > .table {
+  > .table,
+  > .table-responsive {
     margin-bottom: 0;
   }
-  > .panel-body + .table {
+  > .panel-body + .table,
+  > .panel-body + .table-responsive {
     border-top: 1px solid @table-border-color;
   }
-  > .table-bordered {
+  > .table-bordered,
+  > .table-responsive > .table-bordered {
     border: 0;
     > thead,
     > tbody,

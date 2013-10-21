@@ -37,7 +37,7 @@ base_url: "../"
     </div>
 
     <h3 id="download-cdn">Bootstrap CDN</h3>
-    <p>The folks over at <a href="https://www.netdna.com/">NetDNA</a> graciously provide CDN support for Bootstrap's CSS and JavaScript. Just use these <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links.</p>
+    <p>The folks over at <a href="http://www.maxcdn.com/">MaxCDN</a> graciously provide CDN support for Bootstrap's CSS and JavaScript. Just use these <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links.</p>
 {% highlight html %}
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="{{ site.cdn_css }}">
@@ -55,15 +55,18 @@ base_url: "../"
     </div>
   </div>
 
+
   <!-- File structure
   ================================================== -->
   <div class="bs-docs-section">
     <div class="page-header">
       <h1 id="whats-included">What's included</h1>
     </div>
-    <p class="lead">Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations.</p>
+    <p class="lead">Within the download you'll find the following directories and files, logically grouping common resources and providing both compiled and minified variations.</p>
     <p>Once downloaded, unzip the compressed folder to see the structure of (the compiled) Bootstrap. You'll see something like this:</p>
 
+<!-- NOTE: This info is intentionally duplicated in the README.
+Copy any changes made here over to the README too. -->
 {% highlight bash %}
 bootstrap/
 ├── css/
@@ -82,9 +85,9 @@ bootstrap/
 {% endhighlight %}
 
     <p>This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). Fonts from Glyphicons are included, as is the optional Bootstrap theme.</p>
-    <div class="bs-callout bs-callout-danger">
+    <div class="bs-callout bs-callout-danger" id="jquery-required">
       <h4>jQuery required</h4>
-      <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included, as shown in the <a href="#template">starter template</a>.</p>
+      <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included, as shown in the <a href="#template">starter template</a>. <a href="{{ site.repo }}/blob/v{{ site.current_version }}/bower.json">Consult our <code>bower.json</code></a> to see which versions of jQuery are supported.</p>
     </div>
   </div>
 
@@ -107,17 +110,18 @@ bootstrap/
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="../../assets/js/html5shiv.js"></script>
-      <script src="../../assets/js/respond.min.js"></script>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
   </head>
   <body>
     <h1>Hello, world!</h1>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
   </body>
@@ -398,6 +402,10 @@ bootstrap/
             <td><code>.input-lg</code></td>
           </tr>
           <tr>
+            <td><code>.control-group</code></td>
+            <td><code>.form-group</code></td>
+          </tr>
+          <tr>
             <td><code>.checkbox.inline</code> <code>.radio.inline</code></td>
             <td><code>.checkbox-inline</code> <code>.radio-inline</code></td>
           </tr>
@@ -410,7 +418,7 @@ bootstrap/
             <td><code>.input-group-addon</code></td>
           </tr>
           <tr>
-            <td><code>.thumbnail</code></td>
+            <td><code>.img-polaroid</code></td>
             <td><code>.img-thumbnail</code></td>
           </tr>
           <tr>
@@ -441,10 +449,33 @@ bootstrap/
             <td><code>.bar-*</code></td>
             <td><code>.progress-bar-*</code></td>
           </tr>
+          <tr>
+            <td><code>.accordion</code></td>
+            <td><code>.panel-group</code></td>
+          </tr>
+          <tr>
+            <td><code>.accordion-group</code></td>
+            <td><code>.panel .panel-default</code></td>
+          </tr>
+          <tr>
+            <td><code>.accordion-heading</code></td>
+            <td><code>.panel-heading</code></td>
+          </tr>
+          <tr>
+            <td><code>.accordion-body</code></td>
+            <td><code>.panel-collapse</code></td>
+          </tr>
+          <tr>
+            <td><code>.accordion-inner</code></td>
+            <td><code>.panel-body</code></td>
+          </tr>
+          <tr>
+            <td><code>.alert-error</code></td>
+            <td><code>.alert-danger</code></td>
+          </tr>
         </tbody>
       </table>
     </div><!-- /.table-responsive -->
-
 
     <h2 id="migration-new">What's new</h2>
     <p>We've added new elements and changed some existing ones. Here are the new or updated styles.</p>
@@ -595,6 +626,16 @@ bootstrap/
             <td><code>.row</code> (no more fixed grid)</td>
           </tr>
           <tr>
+            <td>Controls wrapper</td>
+            <td><code>.controls</code></td>
+            <td class="text-muted">N/A</td>
+          </tr>
+          <tr>
+            <td>Controls row</td>
+            <td><code>.controls-row</code></td>
+            <td><code>.row</code> or <code>.form-group</code></td>
+          </tr>
+          <tr>
             <td>Navbar inner</td>
             <td><code>.navbar-inner</code></td>
             <td class="text-muted">N/A</td>
@@ -617,7 +658,7 @@ bootstrap/
           <tr>
             <td>Nav lists</td>
             <td><code>.nav-list</code> <code>.nav-header</code></td>
-            <td>No direct equivalent, but <a href="../components/#list-group">List groups</a> and <a href="../javascript/#collapse"><code>.panel-group</code>s</a> are similar.</td>
+            <td>No direct equivalent, but <a href="../components/#list-group">list groups</a> and <a href="../javascript/#collapse"><code>.panel-group</code>s</a> are similar.</td>
           </tr>
         </tbody>
       </table>
@@ -627,7 +668,8 @@ bootstrap/
     <h2 id="migration-notes">Additional notes</h2>
     <p>Other changes in v3.0 are not immediately apparent. Base classes, key styles, and behaviors have been adjusted for flexibility and our <em>mobile first</em> approach. Here's a partial list:</p>
     <ul>
-      <li>Text-based form controls are now 100% wide. Wrap inputs inside <code>&lt;div class="col-*"&gt;&lt;/div&gt;</code> to control input widths.</li>
+      <li>By default, text-based form controls now receive only minimal styling.  For focus colors and rounded corners, apply the <code>.form-control</code> class on the element to style.</li>
+      <li>Text-based form controls with the <code>.form-control</code> class applied are now 100% wide by default. Wrap inputs inside <code>&lt;div class="col-*"&gt;&lt;/div&gt;</code> to control input widths.</li>
       <li><code>.badge</code> no longer has contextual (-success,-primary,etc..) classes.</li>
       <li><code>.btn</code> must also use <code>.btn-default</code> to get the "default" button.</li>
       <li><code>.container</code> and <code>.row</code> are now fluid (percentage-based).</li>
@@ -635,6 +677,7 @@ bootstrap/
       <li>The icons, now <code>.glyphicon</code>, are now font based. Icons also require a base and icon class (e.g. <code>.glyphicon .glyphicon-asterisk</code>).</li>
       <li>Typeahead has been dropped, in favor of using <a href="http://twitter.github.io/typeahead.js/">Twitter Typeahead</a>.</li>
       <li>Modal markup has changed significantly. The <code>.modal-header</code>, <code>.modal-body</code>, and <code>.modal-footer</code> sections are now wrapped in <code>.modal-content</code> and <code>.modal-dialog</code> for better mobile styling and behavior.</li>
+      <li>The HTML loaded by the <code>remote</code> modal option is now injected into the <code>.modal</code> instead of into the <code>.modal-body</code>. This allows you to also easily vary the header and footer of the modal, not just the modal body.</li>
       <li>JavaScript events are namespaced. For example, to handle the modal "show" event, use <code>'show.bs.modal'</code>. For tabs "shown" use <code>'shown.bs.tab'</code>, etc..</li>
     </ul>
     <p>For more information on upgrading to v3.0, and code snippets from the community, see <a href="http://bootply.com/">Bootply</a>.</p>
@@ -658,10 +701,18 @@ bootstrap/
       <li>Internet Explorer</li>
       <li>Opera (Mac, Windows)</li>
     </ul>
-    <p>Unofficially, Bootstrap should look and behave well enough in Chromium for Linux, Firefox for Linux, and Internet Explorer 7, though they are not officially supported.</p>
+    <p>Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 7, though they are not officially supported.</p>
 
     <h3>Internet Explorer 8 and 9</h3>
-    <p>Internet Explorer 8 and 9 are also supported, however, please be aware that some CSS3 properties and HTML5 elements are not fully supported by these browsers. In addition, <strong>Internet Explorer 8 requires the use of <a href="https://github.com/scottjehl/Respond">respond.js</a> to enable media query support.</strong></p>
+    <p>Internet Explorer 8 and 9 are also supported, however, please be aware that some CSS3 properties and HTML5 elements are not fully supported by these browsers. In addition, <strong>Internet Explorer 8 requires the use of <a href="https://github.com/scottjehl/Respond">Respond.js</a> to enable media query support.</strong></p>
+    <div class="bs-callout bs-callout-warning" id="respond-js-x-domain">
+      <h4>Respond.js and cross-domain CSS</h4>
+      <p>Using Respond.js with CSS hosted on a different (sub)domain (for example, on a CDN) requires some additional setup. <a href="https://github.com/scottjehl/Respond/blob/master/README.md#cdnx-domain-setup">See the Respond.js docs</a> for details.</p>
+    </div>
+    <div class="bs-callout bs-callout-warning" id="respond-file-proto">
+      <h4>Respond.js and <code>file://</code></h4>
+      <p>Due to browser security rules, Respond.js doesn't work with pages viewed via the <code>file://</code> protocol (like when opening a local HTML file). To test responsive features in IE8, view your pages over HTTP(S). <a href="https://github.com/scottjehl/Respond/blob/master/README.md#support--caveats">See the Respond.js docs</a> for details.</p>
+    </div>
     <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
@@ -706,15 +757,20 @@ bootstrap/
     <h3>Internet Explorer 8 and box-sizing</h3>
     <p>IE8 does not fully support <code>box-sizing: border-box;</code> when combined with <code>min-width</code>, <code>max-width</code>, <code>min-height</code>, or <code>max-height</code>. For that reason, as of v3.0.1, we no longer use <code>max-width</code> on <code>.container</code>s.</p>
 
-    <h3>IE Compatibility modes</h3>
+    <h3 id="ie-compat-modes">IE Compatibility modes</h3>
     <p>Bootstrap is not supported in the old Internet Explorer compatibility modes. To be sure you're using the latest rendering mode for IE, consider including the appropriate <code>&lt;meta&gt;</code> tag in your pages:</p>
 {% highlight html %}
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 {% endhighlight %}
+    <p>This tag is included in all docs pages and examples to ensure the best rendering possible in each supported version of Internet Explorer.</p>
     <p>See <a href="http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge">this StackOverflow question</a> for more information.</p>
 
-    <h3>Windows Phone 8 and Internet Explorer 10</h3>
-    <p>Internet Explorer 10 doesn't differentiate device width from viewport width, and thus doesn't properly apply the media queries in Bootstrap's CSS. To address this, you can optionally include the following CSS and JavaScript to work around this problem until Microsoft issues a fix.</p>
+    <h3 id="ie-10-width">Internet Explorer 10 in Windows 8 and Windows Phone 8</h3>
+    <p>Internet Explorer 10 doesn't differentiate <strong>device width</strong> from <strong>viewport width</strong>, and thus doesn't properly apply the media queries in Bootstrap's CSS. Normally you'd just add a quick snippet of CSS to fix this:</p>
+{% highlight css %}
+@-ms-viewport       { width: device-width; }
+{% endhighlight %}
+    <p>However, this doesn't work as it causes Windows Phone 8 devices to show a mostly desktop view instead of narrow "phone" view. To address this, you'll need to <strong>include the following CSS and JavaScript to work around the bug until Microsoft issues a fix</strong>.</p>
 {% highlight css %}
 @-webkit-viewport   { width: device-width; }
 @-moz-viewport      { width: device-width; }
@@ -735,22 +791,23 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
 }
 {% endhighlight %}
     <p>For more information and usage guidelines, read <a href="http://timkadlec.com/2013/01/windows-phone-8-and-device-width/">Windows Phone 8 and Device-Width</a>.</p>
+    <p>As a heads up, we include this in the Bootstrap docs as an example.</p>
 
-    <h3>Safari percent rounding</h3>
-    <p>In the latest Safari for Mac, its rendering engine has a little trouble with the long decimal places of our <code>.col-*-1</code> grid classes, meaning if you have 12 individual columns you'll notice they come up short compared to other rows of columns. We can't do much here (<a href="https://github.com/twbs/bootstrap/issues/9282">see #9282</a>) but you do have some options:</p>
+    <h3 id="safari-percentages">Safari percent rounding</h3>
+    <p>As of Safari v6.1 for OS X and Safari for iOS v7.0.1, Safari's rendering engine has some trouble with the number of decimal places used in our <code>.col-*-1</code> grid classes. So if you have 12 individual grid columns, you'll notice that they come up short compared to other rows of columns. We can't do much here (<a href="https://github.com/twbs/bootstrap/issues/9282">see #9282</a>) but you do have some options:</p>
     <ul>
       <li>Add <code>.pull-right</code> to your last grid column to get the hard-right alignment</li>
       <li>Tweak your percentages manually to get the perfect rounding for Safari (more difficult than the first option)</li>
     </ul>
     <p>We'll keep an eye on this though and update our code if we have an easy solution.</p>
 
-    <h3>Modals and mobile devices</h3>
+    <h3 id="mobile-modals">Modals and mobile devices</h3>
     <h4>Overflow and scrolling</h4>
     <p>Support for <code>overflow: hidden</code> on the <code>&lt;body&gt;</code> element is quite limited in iOS and Android. To that end, when you scroll past the top or bottom of a modal in either of those devices' browsers, the <code>&lt;body&gt;</code> content will begin to scroll.</p>
     <h4>Virtual keyboards</h4>
-    <p>Also, note that if you're using inputs in your modal – iOS has a rendering bug that doesn't update the position of fixed elements when the virtual keyboard is triggered. A few work arounds for this include transforming your elements to <code>position: absolute</code> or invoking a timer on focus to try to correct the positioning manually. This is not handled by Bootstrap, so it is up to you to decide which solution is best for your application.</p>
+    <p>Also, note that if you're using inputs in your modal – iOS has a rendering bug that doesn't update the position of fixed elements when the virtual keyboard is triggered. A few workarounds for this include transforming your elements to <code>position: absolute</code> or invoking a timer on focus to try to correct the positioning manually. This is not handled by Bootstrap, so it is up to you to decide which solution is best for your application.</p>
 
-    <h3>Browser zooming</h3>
+    <h3 id="browser-zoom">Browser zooming</h3>
     <p>Page zooming inevitably presents rendering artifacts in some components, both in Bootstrap and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.</p>
   </div>
 
@@ -818,13 +875,13 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     <div class="page-header">
       <h1 id="accessibility">Accessibility</h1>
     </div>
-    <p class="lead">Bootstrap follows common web standards, and with minimal extra effort, can be used to create sites that are accessibile to those using <abbr title="Assistive Technology" class="initialism">AT</abbr>.</p>
+    <p class="lead">Bootstrap follows common web standards, and with minimal extra effort, can be used to create sites that are accessible to those using <abbr title="Assistive Technology" class="initialism">AT</abbr>.</p>
 
     <h3>Skip navigation</h3>
-    <p>If your navigation contains many links and comes before the main content in the DOM, add a <code>Skip to content</code> link immediately after your opening <code>&lt;body&gt;</code> tag. <a href="http://a11yproject.com/posts/skip-nav-links/">(read why)</a></p>
+    <p>If your navigation contains many links and comes before the main content in the DOM, add a <code>Skip to main content</code> link immediately after your opening <code>&lt;body&gt;</code> tag. <a href="http://a11yproject.com/posts/skip-nav-links/">(read why)</a></p>
 {% highlight html %}
 <body>
-  <a href="#content" class="sr-only">Skip to content</a>
+  <a href="#content" class="sr-only">Skip to main content</a>
   <div class="container" id="content">
     The main page content.
   </div>
@@ -949,7 +1006,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     <p><strong>In summary, here's the basic workflow:</strong></p>
     <ul>
       <li>For each element you want to customize, find its code in the compiled Bootstrap CSS.</li>
-      <li>Copy the component's selector and styles and paste them in your custom stylesheet. For instance, to customize the navbar background, just copy the <code>.navbar</code> style specificaton.</li>
+      <li>Copy the component's selector and styles and paste them in your custom stylesheet. For instance, to customize the navbar background, just copy the <code>.navbar</code> style specification.</li>
       <li>In your custom stylesheet, edit the CSS you just copied from the Bootstrap source. No need for prepending additional classes, or appending <code>!important</code> here.  Keep it simple.</li>
       <li>Rinse and repeat until you're happy with your customizations.</li>
     </ul>

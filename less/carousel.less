@@ -160,6 +160,17 @@
     border: 1px solid @carousel-indicator-border-color;
     border-radius: 10px;
     cursor: pointer;
+
+    // IE8-9 hack for event handling
+    //
+    // Internet Explorer 8-9 does not support clicks on elements without a set
+    // `background-color`. We cannot use `filter` since that's not viewed as a
+    // background color by the browser. Thus, a hack is needed.
+    //
+    // For IE8, we set solid black as it doesn't support `rgba()`. For IE9, we
+    // set alpha transparency for the best results possible.
+    background-color: #000 \9; // IE8
+    background-color: rgba(0,0,0,0); // IE9
   }
   .active {
     margin: 0;
@@ -190,12 +201,12 @@
 
 
 // Scale up controls for tablets and up
-@media screen and (min-width: @screen-sm) {
+@media screen and (min-width: @screen-sm-min) {
 
   // Scale up the controls a smidge
   .carousel-control {
     .glyphicons-chevron-left,
-    .glyphicons-chevron-right
+    .glyphicons-chevron-right,
     .icon-prev,
     .icon-next {
       width: 30px;

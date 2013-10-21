@@ -48,6 +48,11 @@
     &:focus {
       background-color: @nav-link-hover-bg;
       border-color: @link-color;
+
+      .caret {
+        border-top-color: @link-hover-color;
+        border-bottom-color: @link-hover-color;
+      }
     }
   }
 
@@ -120,7 +125,7 @@
 
     // Links rendered as pills
     > a {
-      border-radius: 5px;
+      border-radius: @nav-pills-border-radius;
     }
     + li {
       margin-left: 2px;
@@ -133,6 +138,11 @@
       &:focus {
         color: @nav-pills-active-link-hover-color;
         background-color: @nav-pills-active-link-hover-bg;
+
+        .caret {
+          border-top-color: @nav-pills-active-link-hover-color;
+          border-bottom-color: @nav-pills-active-link-hover-color;
+        }
       }
     }
   }
@@ -180,6 +190,8 @@
 }
 
 // Move borders to anchors instead of bottom of list
+//
+// Mixin for adding on top the shared `.nav-justified` styles for our tabs
 .nav-tabs-justified {
   border-bottom: 0;
 
@@ -212,23 +224,15 @@
 // Tabbable tabs
 // -------------------------
 
-// Clear any floats
-.tabbable {
-  .clearfix();
-}
-
-// Show/hide tabbable areas
-.tab-content > .tab-pane,
-.pill-content > .pill-pane {
-  display: none;
-}
-.tab-content,
-.pill-content {
+// Hide tabbable panes to start, show them when `.active`
+.tab-content {
+  > .tab-pane {
+    display: none;
+  }
   > .active {
     display: block;
   }
 }
-
 
 
 // Dropdowns
