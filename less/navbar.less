@@ -19,6 +19,7 @@
   .clearfix();
 
   @media (min-width: @grid-float-breakpoint) {
+    z-index: auto;
     border-radius: @navbar-border-radius;
   }
 }
@@ -128,6 +129,7 @@
   position: fixed;
   right: 0;
   left: 0;
+  z-index: @zindex-navbar-fixed;
 
   // Undo the rounded corners
   @media (min-width: @grid-float-breakpoint) {
@@ -135,7 +137,6 @@
   }
 }
 .navbar-fixed-top {
-  z-index: @zindex-navbar-fixed;
   top: 0;
   border-width: 0 0 1px;
 }
@@ -153,6 +154,7 @@
   padding: @navbar-padding-vertical @navbar-padding-horizontal;
   font-size: @font-size-large;
   line-height: @line-height-computed;
+
   &:hover,
   &:focus {
     text-decoration: none;
