@@ -3549,24 +3549,48 @@ input[type="button"].btn-block {
   border-top-color: #333333;
 }
 
-.btn-primary .caret,
-.btn-success .caret,
-.btn-warning .caret,
-.btn-danger .caret,
+.btn-primary .caret {
+  border-top-color: #ffffff;
+}
+
+.btn-success .caret {
+  border-top-color: #ffffff;
+}
+
+.btn-warning .caret {
+  border-top-color: #ffffff;
+}
+
+.btn-danger .caret {
+  border-top-color: #ffffff;
+}
+
 .btn-info .caret {
-  border-top-color: #fff;
+  border-top-color: #ffffff;
 }
 
 .dropup .btn-default .caret {
-  border-bottom-color: #333333;
+  border-top-color: #333333;
 }
 
-.dropup .btn-primary .caret,
-.dropup .btn-success .caret,
-.dropup .btn-warning .caret,
-.dropup .btn-danger .caret,
+.dropup .btn-primary .caret {
+  border-bottom-color: #ffffff;
+}
+
+.dropup .btn-success .caret {
+  border-bottom-color: #ffffff;
+}
+
+.dropup .btn-warning .caret {
+  border-bottom-color: #ffffff;
+}
+
+.dropup .btn-danger .caret {
+  border-bottom-color: #ffffff;
+}
+
 .dropup .btn-info .caret {
-  border-bottom-color: #fff;
+  border-bottom-color: #ffffff;
 }
 
 .btn-group,
