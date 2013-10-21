@@ -389,10 +389,12 @@
 // -------------------------
 .panel-variant(@border; @heading-text-color; @heading-bg-color; @heading-border;) {
   border-color: @border;
+
   & > .panel-heading {
     color: @heading-text-color;
     background-color: @heading-bg-color;
     border-color: @heading-border;
+
     + .panel-collapse .panel-body {
       border-top-color: @border;
     }
@@ -410,6 +412,7 @@
   background-color: @background;
   border-color: @border;
   color: @text-color;
+
   hr {
     border-top-color: darken(@border, 5%);
   }
