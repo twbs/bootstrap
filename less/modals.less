@@ -38,7 +38,14 @@
   margin-right: auto;
   width: auto;
   padding: 10px;
-  z-index: (@zindex-modal-background + 10);
+  z-index: (@zindex-modal-background + 10); 
+
+  &.modal-lg {
+    width: @modal-lg;
+  } 
+  &.modal-sm {
+    width: @modal-sm;
+  }
 }
 
 // Actual modal
@@ -123,14 +130,6 @@
     width: 600px;
     padding-top: 30px;
     padding-bottom: 30px;
-    // Define large size for the modal
-    &.modal-lg{
-      width: @modal-lg;
-    }
-    // Define small size for the modal
-    &.modal-sm{
-      width: @modal-sm;
-    }
   }
   .modal-content {
     .box-shadow(0 5px 15px rgba(0,0,0,.5));
