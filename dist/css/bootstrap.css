@@ -5933,6 +5933,7 @@ button.close {
 }
 
 .modal-dialog {
+  position: relative;
   z-index: 1050;
   width: auto;
   padding: 10px;
