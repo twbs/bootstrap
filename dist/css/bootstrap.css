@@ -4266,7 +4266,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar {
   position: relative;
-  z-index: 1000;
   min-height: 50px;
   margin-bottom: 20px;
   border: 1px solid transparent;
@@ -4399,6 +4398,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-static-top {
+  z-index: 1000;
   border-width: 0 0 1px;
 }
 
@@ -4413,6 +4413,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   position: fixed;
   right: 0;
   left: 0;
+  z-index: 1030;
 }
 
 @media (min-width: 768px) {
@@ -4424,7 +4425,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-fixed-top {
   top: 0;
-  z-index: 1030;
   border-width: 0 0 1px;
 }
 
