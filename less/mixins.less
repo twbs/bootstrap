@@ -483,6 +483,20 @@
           border-color: @border;
     }
   }
+
+  .caret(@color);
+}
+
+// Carets
+// -------------------------
+.caret(@color) {
+  & .caret {
+    border-top-color: @color;
+  }
+
+  .dropup & .caret {
+    border-bottom-color: @color;
+  }
 }
 
 // Button sizes
