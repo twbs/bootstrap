@@ -10,7 +10,6 @@
 
 .navbar {
   position: relative;
-  z-index: @zindex-navbar;
   min-height: @navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
   margin-bottom: @navbar-margin-bottom;
   border: 1px solid transparent;
@@ -19,7 +18,6 @@
   .clearfix();
 
   @media (min-width: @grid-float-breakpoint) {
-    z-index: auto;
     border-radius: @navbar-border-radius;
   }
 }
@@ -117,7 +115,9 @@
 
 // Static top (unfixed, but 100% wide) navbar
 .navbar-static-top {
+  z-index: @zindex-navbar;
   border-width: 0 0 1px;
+
   @media (min-width: @grid-float-breakpoint) {
     border-radius: 0;
   }
