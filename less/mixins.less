@@ -147,6 +147,13 @@
           transition: transform @transition;
 }
 
+// Multiple Transformations
+.transform(@rotate-degrees, @scale-ratio, @translate-x, @translate-y, @skew-x, @skew-y) {
+  -webkit-transform: rotate(@rotate-degrees) scale(@scale-ratio) translateX(@translate-x) translateY(@translate-y) skewX(@skew-x) skewY(@skew-y);
+      -ms-transform: rotate(@rotate-degrees) scale(@scale-ratio) translateX(@translate-x) translateY(@translate-y) skewX(@skew-x) skewY(@skew-y); // IE9+
+          transform: rotate(@rotate-degrees) scale(@scale-ratio) translateX(@translate-x) translateY(@translate-y) skewX(@skew-x) skewY(@skew-y);
+}
+
 // Transformations
 .rotate(@degrees) {
   -webkit-transform: rotate(@degrees);
