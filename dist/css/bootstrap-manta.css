@@ -6826,63 +6826,67 @@ td.visible-print {
   font-variant: normal;
 }
 
-.icon-recommend:before {
+.icon-automotive:before {
   content: "\e600";
 }
 
-.icon-linkedin-square:before {
+.icon-bars:before {
   content: "\e601";
 }
 
-.icon-box-unchecked:before {
+.icon-beauty:before {
   content: "\e602";
 }
 
-.icon-box-checked:before {
+.icon-camera:before {
   content: "\e603";
 }
 
-.icon-phone-alt:before {
+.icon-delete:before {
   content: "\e604";
 }
 
-.icon-help:before {
+.icon-company:before {
   content: "\e605";
 }
 
-.icon-messages-square:before {
+.icon-contractors:before {
   content: "\e606";
 }
 
-.icon-comment:before {
+.icon-daycare:before {
+  content: "\e607";
+}
+
+.icon-dentists:before {
   content: "\e608";
 }
 
-.icon-twitter:before {
+.icon-doctors:before {
   content: "\e609";
 }
 
-.icon-twitter-square:before {
+.icon-fitness:before {
   content: "\e60a";
 }
 
-.icon-theaters:before {
+.icon-legal:before {
   content: "\e60b";
 }
 
-.icon-settings:before {
+.icon-location:before {
   content: "\e60c";
 }
 
-.icon-search:before {
+.icon-lodging:before {
   content: "\e60d";
 }
 
-.icon-search-results:before {
+.icon-marketing:before {
   content: "\e60e";
 }
 
-.icon-restaurants:before {
+.icon-messages:before {
   content: "\e60f";
 }
 
@@ -6890,211 +6894,207 @@ td.visible-print {
   content: "\e610";
 }
 
-.icon-products:before {
+.icon-notifications:before {
   content: "\e611";
 }
 
-.icon-print:before {
+.icon-notifications-alt:before {
   content: "\e612";
 }
 
-.icon-phone:before {
+.icon-edit:before {
   content: "\e613";
 }
 
-.icon-person:before {
+.icon-settings:before {
   content: "\e614";
 }
 
-.icon-notifications:before {
+.icon-restaurants:before {
   content: "\e615";
 }
 
-.icon-notifications-alt:before {
+.icon-browse:before {
   content: "\e616";
 }
 
-.icon-messages:before {
+.icon-arrow-down:before {
   content: "\e617";
 }
 
-.icon-manta:before {
+.icon-arrow-left:before {
   content: "\e618";
 }
 
-.icon-lodging:before {
-  content: "\e61a";
-}
-
-.icon-location:before {
-  content: "\e61b";
-}
-
-.icon-linkedin:before {
-  content: "\e61c";
-}
-
-.icon-legal:before {
-  content: "\e61d";
-}
-
-.icon-insurance:before {
-  content: "\e61e";
-}
-
-.icon-id:before {
-  content: "\e61f";
-}
-
-.icon-home:before {
-  content: "\e620";
-}
-
-.icon-google-plus:before {
-  content: "\e621";
-}
-
-.icon-google-plus-square:before {
-  content: "\e622";
-}
-
-.icon-globe:before {
-  content: "\e623";
-}
-
-.icon-facebook:before {
-  content: "\e624";
-}
-
-.icon-facebook-square:before {
-  content: "\e625";
-}
-
-.icon-edit:before {
-  content: "\e626";
-}
-
-.icon-doctors:before {
-  content: "\e627";
-}
-
-.icon-dentists:before {
-  content: "\e628";
-}
-
-.icon-delete:before {
-  content: "\e629";
-}
-
-.icon-daycare:before {
-  content: "\e62a";
-}
-
-.icon-contractors:before {
-  content: "\e62b";
-}
-
-.icon-company:before {
-  content: "\e62c";
-}
-
-.icon-clock:before {
-  content: "\e62d";
-}
-
-.icon-camera:before {
-  content: "\e62e";
-}
-
-.icon-call:before {
-  content: "\e62f";
-}
-
-.icon-beauty:before {
-  content: "\e630";
-}
-
-.icon-bars:before {
-  content: "\e631";
-}
-
-.icon-automotive:before {
-  content: "\e632";
-}
-
-.icon-arrowExt-up:before {
-  content: "\e633";
-}
-
-.icon-arrowExt-right:before {
-  content: "\e634";
-}
-
-.icon-arrowExt-left:before {
-  content: "\e635";
-}
-
-.icon-arrowExt-down:before {
-  content: "\e636";
-}
-
 .icon-arrow-up:before {
-  content: "\e637";
+  content: "\e619";
 }
 
 .icon-arrow-right:before {
-  content: "\e638";
+  content: "\e61a";
 }
 
-.icon-arrow-left:before {
-  content: "\e639";
+.icon-arrowExt-right:before {
+  content: "\e61b";
 }
 
-.icon-arrow-down:before {
-  content: "\e63a";
+.icon-arrowExt-left:before {
+  content: "\e61c";
 }
 
-.icon-add:before {
-  content: "\e63b";
+.icon-manta:before {
+  content: "\e61d";
+}
+
+.icon-google-plus:before {
+  content: "\e61e";
+}
+
+.icon-linkedin:before {
+  content: "\e61f";
+}
+
+.icon-twitter:before {
+  content: "\e620";
+}
+
+.icon-arrowExt-up:before {
+  content: "\e621";
+}
+
+.icon-arrowExt-down:before {
+  content: "\e622";
+}
+
+.icon-print:before {
+  content: "\e623";
+}
+
+.icon-clock:before {
+  content: "\e624";
 }
 
 .icon-star:before {
-  content: "\e63c";
+  content: "\e625";
 }
 
-.icon-shopping:before {
-  content: "\e63d";
-}
-
-.icon-marketing:before {
-  content: "\e63e";
+.icon-search-results:before {
+  content: "\e626";
 }
 
 .icon-map:before {
-  content: "\e63f";
+  content: "\e627";
+}
+
+.icon-products:before {
+  content: "\e628";
+}
+
+.icon-call:before {
+  content: "\e629";
+}
+
+.icon-bulb:before {
+  content: "\e62a";
+}
+
+.icon-globe:before {
+  content: "\e62b";
+}
+
+.icon-id:before {
+  content: "\e62c";
+}
+
+.icon-google-plus-square:before {
+  content: "\e62d";
+}
+
+.icon-linkedin-square:before {
+  content: "\e62e";
+}
+
+.icon-twitter-square:before {
+  content: "\e62f";
+}
+
+.icon-comment:before {
+  content: "\e630";
+}
+
+.icon-bulb-play:before {
+  content: "\e631";
+}
+
+.icon-messages-square:before {
+  content: "\e632";
+}
+
+.icon-box-unchecked:before {
+  content: "\e633";
+}
+
+.icon-phone-alt:before {
+  content: "\e634";
+}
+
+.icon-help:before {
+  content: "\e635";
+}
+
+.icon-recommend:before {
+  content: "\e636";
 }
 
 .icon-galleries:before {
+  content: "\e637";
+}
+
+.icon-home:before {
+  content: "\e638";
+}
+
+.icon-insurance:before {
+  content: "\e639";
+}
+
+.icon-search:before {
+  content: "\e63a";
+}
+
+.icon-shopping:before {
+  content: "\e63b";
+}
+
+.icon-theaters:before {
+  content: "\e63c";
+}
+
+.icon-facebook:before {
+  content: "\e63d";
+}
+
+.icon-facebook-square:before {
+  content: "\e63e";
+}
+
+.icon-box-checked:before {
+  content: "\e63f";
+}
+
+.icon-person:before {
   content: "\e640";
 }
 
-.icon-fitness:before {
+.icon-add:before {
   content: "\e641";
 }
 
-.icon-browse:before {
+.icon-current-location:before {
   content: "\e643";
 }
 
 .icon-bulb-manta:before {
-  content: "\e607";
-}
-
-.icon-bulb-play:before {
-  content: "\e619";
-}
-
-.icon-bulb:before {
   content: "\e642";
 }
 
