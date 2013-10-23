@@ -1980,15 +1980,19 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
             <li><i class="icon icon-clock"></i> icon-clock</li>
             <li><i class="icon icon-truck"></i> icon-truck</li>
           </ul>
-          
+
           <hr class="bs-docs-separator">
+
 
           <h2>How to use</h2>
           <p>All icons require an <code>&lt;i&gt;</code> tag with a unique class, prefixed with <code>icon-</code>. To use, place the following code just about anywhere:</p>
 <pre class="prettyprint linenums">
 &lt;i class="icon-search"&gt;&lt;/i&gt;
 </pre>
-        
+          <p>There are also styles available for inverted (white) icons, made ready with one extra class. We will specifically enforce this class on hover and active states for nav and dropdown links.</p>
+<pre class="prettyprint linenums">
+&lt;i class="icon-search icon-white"&gt;&lt;/i&gt;
+</pre>
           <p>
             <span class="label label-info">Heads up!</span>
             When using beside strings of text, as in buttons or nav links, be sure to leave a space after the <code>&lt;i&gt;</code> tag for proper spacing.
@@ -2069,7 +2073,7 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
           <div class="bs-docs-example">
             <div class="well" style="padding: 8px 0; margin-bottom: 0;">
               <ul class="nav nav-list">
-                <li><a href="#"><i class="icon-globe"></i> Home</a></li>
+                <li class="active"><a href="#"><i class="icon-globe"></i> Home</a></li>
                 <li><a href="#"><i class="icon-book"></i> Library</a></li>
                 <li><a href="#"><i class="icon-pencil"></i> Applications</a></li>
                 <li><a href="#"><i class="i"></i> Misc</a></li>
@@ -2078,7 +2082,7 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
           </div>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-list"&gt;
-  &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-globe"&gt;&lt;/i&gt; Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;&lt;i class="icon-global"&gt;&lt;/i&gt; Home&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-book"&gt;&lt;/i&gt; Library&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-pencil"&gt;&lt;/i&gt; Applications&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#"&gt;&lt;i class="i"&gt;&lt;/i&gt; Misc&lt;/a&gt;&lt;/li&gt;
@@ -2125,6 +2129,7 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
       <div class="container">
         <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
         <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
         <ul class="footer-links">
           <li><a href="http://blog.getbootstrap.com">Blog</a></li>
           <li class="muted">&middot;</li>

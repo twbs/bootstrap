@@ -352,13 +352,13 @@
       self.globalClose()
 
       if ( self.tip().hasClass( 'in' ) ) {
-        $( 'body' ).off( 'click.global_close' )
+        $( 'body' ).off( 'click.global_close.in' )
         self.hide() 
       } else {
         self.show()
         // close on global request, exclude clicks inside tooltip
         this.options.global_close &&
-        $( 'body' ).on( 'click.global_close', function( ev ) {
+        $( 'body' ).on( 'click.global_close.in', function( ev ) {
           if ( !self.tip().has( ev.target ).length ) { self.toggle(); }
         } )
       } 
@@ -366,8 +366,8 @@
   
   , globalClose: function() {
     var open = $( '.global_close.in' )
-    open.off( 'click.global_close' )
     open.hide()
+    $( 'body' ).off( 'click.global_close.in' )
   }
 
   , destroy: function () {

@@ -2273,14 +2273,12 @@ table th[class*="span"],
   background-color: #c4e3f3;
 }
 
-@charset "UTF-8";
-
 @font-face {
   font-family: 'fontello-icon-fonts';
   font-style: normal;
   font-weight: normal;
-  src: url('../font/fontello-icon-fonts.eot?7023614');
-  src: url('../font/fontello-icon-fonts.eot?7023614#iefix') format('embedded-opentype'), url('../font/fontello-icon-fonts.woff?7023614') format('woff'), url('../font/fontello-icon-fonts.ttf?7023614') format('truetype'), url('../font/fontello-icon-fonts.svg?7023614#fontello-icon-fonts') format('svg');
+  src: url('../font/fontello-icon-fonts.eot?959777');
+  src: url('../font/fontello-icon-fonts.eot?959777#iefix') format('embedded-opentype'), url('../font/fontello-icon-fonts.woff?959777') format('woff'), url('../font/fontello-icon-fonts.ttf?959777') format('truetype'), url('../font/fontello-icon-fonts.svg?959777#fontello-icon-fonts') format('svg');
 }
 
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
@@ -2291,7 +2289,7 @@ table th[class*="span"],
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello-icon-fonts';
-    src: url('../font/fontello-icon-fonts.svg?7023614#fontello-icon-fonts') format('svg');
+    src: url('../font/fontello-icon-fonts.svg?959777#fontello-icon-fonts') format('svg');
   }
 }
 */
@@ -2313,11 +2311,23 @@ table th[class*="span"],
   font-variant: normal;
 }
 
+.icon-hash:before {
+  content: '\e806';
+}
+
+/* '' */
+
 .icon-plus:before {
   content: '\2b';
 }
 
 /* '+' */
+
+.icon-minus:before {
+  content: '\e81a';
+}
+
+/* '' */
 
 .icon-arrow-left:before {
   content: '\2190';
@@ -2355,11 +2365,29 @@ table th[class*="span"],
 
 /* '▶' */
 
+.icon-right-dir:before {
+  content: '\25b8';
+}
+
+/* '▸' */
+
 .icon-down-dir:before {
   content: '\25be';
 }
 
 /* '▾' */
+
+.icon-left-dir:before {
+  content: '\25c2';
+}
+
+/* '◂' */
+
+.icon-check:before {
+  content: '\e811';
+}
+
+/* '' */
 
 .icon-th-list:before {
   content: '\2630';
@@ -2402,6 +2430,12 @@ table th[class*="span"],
 }
 
 /* '⛯' */
+
+.icon-scissors:before {
+  content: '\e80b';
+}
+
+/* '' */
 
 .icon-edit:before {
   content: '\270d';
@@ -2529,6 +2563,30 @@ table th[class*="span"],
 
 /* '' */
 
+.icon-tag:before {
+  content: '\e804';
+}
+
+/* '' */
+
+.icon-tags:before {
+  content: '\e805';
+}
+
+/* '' */
+
+.icon-comment:before {
+  content: '\e80f';
+}
+
+/* '' */
+
+.icon-chat:before {
+  content: '\e810';
+}
+
+/* '' */
+
 .icon-trash:before {
   content: '\e729';
 }
@@ -2541,11 +2599,41 @@ table th[class*="span"],
 
 /* '' */
 
+.icon-basket:before {
+  content: '\e80a';
+}
+
+/* '' */
+
+.icon-login:before {
+  content: '\e817';
+}
+
+/* '' */
+
+.icon-logout:before {
+  content: '\e818';
+}
+
+/* '' */
+
+.icon-database:before {
+  content: '\e812';
+}
+
+/* '' */
+
 .icon-download:before {
   content: '\e758';
 }
 
 /* '' */
+
+.icon-up-circled2:before {
+  content: '\e819';
+}
+
+/* '' */
 
 .icon-chevron-down:before {
   content: '\e75c';
@@ -2583,17 +2671,23 @@ table th[class*="span"],
 
 /* '' */
 
+.icon-indent-right:before {
+  content: '\e807';
+}
+
+/* '' */
+
+.icon-off:before {
+  content: '\e809';
+}
+
+/* '' */
+
 .icon-road:before {
   content: '\e78f';
 }
 
 /* '' */
-
-.icon-flow-cascade:before {
-  content: '\e790';
-}
-
-/* '' */
 
 .icon-list-alt:before {
   content: '\e801';
@@ -2601,11 +2695,23 @@ table th[class*="span"],
 
 /* '' */
 
+.icon-flow-cascade:before {
+  content: '\e790';
+}
+
+/* '' */
+
 .icon-flow-branch:before {
   content: '\e791';
 }
 
 /* '' */
+
+.icon-steering-wheel:before {
+  content: '\e813';
+}
+
+/* '' */
 
 .icon-hdd:before {
   content: '\f0a0';
@@ -2631,17 +2737,47 @@ table th[class*="span"],
 
 /* '' */
 
+.icon-docs:before {
+  content: '\e80e';
+}
+
+/* '' */
+
 .icon-table:before {
   content: '\f0ce';
 }
 
 /* '' */
 
+.icon-magic:before {
+  content: '\e81d';
+}
+
+/* '' */
+
+.icon-gauge:before {
+  content: '\e81b';
+}
+
+/* '' */
+
 .icon-sitemap:before {
   content: '\f0e8';
 }
 
 /* '' */
+
+.icon-paste:before {
+  content: '\e80c';
+}
+
+/* '' */
+
+.icon-download-cloud:before {
+  content: '\e816';
+}
+
+/* '' */
 
 .icon-upload-cloud:before {
   content: '\f0ee';
@@ -2654,6 +2790,24 @@ table th[class*="span"],
 }
 
 /* '' */
+
+.icon-eraser:before {
+  content: '\e808';
+}
+
+/* '' */
+
+.icon-calendar-empty:before {
+  content: '\e803';
+}
+
+/* '' */
+
+.icon-ticket:before {
+  content: '\e815';
+}
+
+/* '' */
 
 .icon-picture:before {
   content: '\f304';
@@ -2691,6 +2845,12 @@ table th[class*="span"],
 
 /* '' */
 
+.icon-doc:before {
+  content: '\e80d';
+}
+
+/* '' */
+
 .icon-calendar:before {
   content: '\f4c5';
 }
@@ -2710,10 +2870,10 @@ table th[class*="span"],
 /* '' */
 
 .icon-upload:before {
-  content: '📤';
+  content: '\f4e4';
 }
 
-/* '\1f4e4' */
+/* '' */
 
 .icon-download-alt:before {
   content: '\f4e5';
@@ -2733,6 +2893,18 @@ table th[class*="span"],
 
 /* '' */
 
+.icon-key:before {
+  content: '\e81e';
+}
+
+/* '' */
+
+.icon-lock-1:before {
+  content: '\e814';
+}
+
+/* '' */
+
 .icon-lock-open:before {
   content: '\f513';
 }
@@ -2751,17 +2923,23 @@ table th[class*="span"],
 
 /* '' */
 
+.icon-time:before {
+  content: '\e802';
+}
+
+/* '' */
+
 .icon-clock:before {
   content: '\f554';
 }
 
 /* '' */
 
-.icon-time:before {
-  content: '\e802';
+.icon-truck:before {
+  content: '\e81c';
 }
 
-/* '' */
+/* '' */
 .dropup,
 .dropdown {
   position: relative;
@@ -3122,7 +3300,7 @@ button.close {
 
 .btn:active,
 .btn.active {
-  background-color: #cfcfcf \9;
+  background-color: #cfcfcf;
 }
 
 .btn:first-child {
@@ -3264,7 +3442,7 @@ input[type="button"].btn-block {
 
 .btn-primary:active,
 .btn-primary.active {
-  background-color: #005f8f \9;
+  background-color: #005f8f;
 }
 
 .btn-warning {
@@ -3297,7 +3475,7 @@ input[type="button"].btn-block {
 
 .btn-warning:active,
 .btn-warning.active {
-  background-color: #bc7005 \9;
+  background-color: #bc7005;
 }
 
 .btn-danger {
@@ -3330,7 +3508,7 @@ input[type="button"].btn-block {
 
 .btn-danger:active,
 .btn-danger.active {
-  background-color: #8c2823 \9;
+  background-color: #8c2823;
 }
 
 .btn-success {
@@ -3363,7 +3541,7 @@ input[type="button"].btn-block {
 
 .btn-success:active,
 .btn-success.active {
-  background-color: #3d7a3d \9;
+  background-color: #3d7a3d;
 }
 
 .btn-info {
@@ -3396,7 +3574,7 @@ input[type="button"].btn-block {
 
 .btn-info:active,
 .btn-info.active {
-  background-color: #226e83 \9;
+  background-color: #226e83;
 }
 
 .btn-inverse {
@@ -3429,7 +3607,7 @@ input[type="button"].btn-block {
 
 .btn-inverse:active,
 .btn-inverse.active {
-  background-color: #030303 \9;
+  background-color: #030303;
 }
 
 button.btn,
@@ -4555,7 +4733,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .btn-navbar:active,
 .navbar .btn-navbar.active {
-  background-color: #c3c3c3 \9;
+  background-color: #c3c3c3;
 }
 
 .navbar .btn-navbar .icon-bar {
@@ -4820,7 +4998,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar-inverse .btn-navbar:active,
 .navbar-inverse .btn-navbar.active {
-  background-color: #000000 \9;
+  background-color: #000000;
 }
 
 .breadcrumb {
