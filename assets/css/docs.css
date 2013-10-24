@@ -953,7 +953,7 @@ h1[id] {
   text-align: center;
   border: 1px solid #ddd;
 }
-.bs-glyphicons .glyphicon {
+.bs-glyphicons .glyphicon, .bs-glyphicons .icomanta {
   display: block;
   margin: 5px auto 10px;
   font-size: 24px;
