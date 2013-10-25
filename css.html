@@ -84,6 +84,10 @@ base_url: "../"
     </ul>
     <p>Look to the examples for applying these principles to your code.</p>
 
+    <div class="bs-callout bs-callout-warning">
+      <h4>360px default minimum viewport width</h4>
+      <p>Due to grid column gutters, Bootstrap's default grid system requires a minimum viewport width of 360px. Below this width, extra-small grid columns (which are intended to never wrap) may wrap; <a href="https://github.com/twbs/bootstrap/issues/10513">see this issue</a> for details. In particular, it's worth noting that there exist some Android devices with screens smaller than 360px in one or both dimensions.</p>
+    </div>
     <div class="bs-callout bs-callout-info">
       <h4>Grids and full-width layouts</h4>
       <p>Folks looking to create fully fluid layouts (meaning your site stretches the entire width of the viewport) must wrap their grid content in a containing element with <code>padding: 0 15px;</code> to offset the <code>margin: 0 -15px;</code> used on <code>.row</code>s.</p>
