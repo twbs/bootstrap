@@ -29,7 +29,7 @@ $(function () {
 
       test("should add data attribute for referencing original title", function () {
         var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>').tooltip()
-        equals(tooltip.attr('data-original-title'), 'Another tooltip', 'original title preserved in data attribute')
+        equal(tooltip.attr('data-original-title'), 'Another tooltip', 'original title preserved in data attribute')
       })
 
       test("should place tooltips relative to placement option", function () {
