@@ -284,13 +284,12 @@
 // Color stops are not available in IE9 and below.
 @mixin gradient-vertical($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
   background-image: -webkit-gradient(linear, left $start-percent, left $end-percent, from($start-color), to($end-color)); // Safari 4+, Chrome 2+
-  background-image: -webkit-linear-gradient(top, $start-color, $start-percent, $end-color, $end-percent); // Safari 5.1+, Chrome 10+
+  background-image: -webkit-linear-gradient(top, $start-color $start-percent, $end-color $end-percent); // Safari 5.1+, Chrome 10+
   background-image:  -moz-linear-gradient(top, $start-color $start-percent, $end-color $end-percent); // FF 3.6+
   background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent); // Standard, IE10
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9 and down
 }
-
 @mixin gradient-directional($start-color: #555, $end-color: #333, $deg: 45deg) {
   background-repeat: repeat-x;
   background-image: -webkit-linear-gradient($deg, $start-color, $end-color); // Safari 5.1+, Chrome 10+
@@ -306,7 +305,6 @@
   background-repeat: no-repeat;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9 and down, gets no color-stop at all for proper fallback
 }
-
 @mixin gradient-vertical-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from($start-color), color-stop($color-stop, $mid-color), to($end-color));
   background-image: -webkit-linear-gradient($start-color, $mid-color $color-stop, $end-color);
@@ -387,12 +385,17 @@
 // -------------------------
 @mixin panel-variant($border, $heading-text-color, $heading-bg-color, $heading-border) {
   border-color: $border;
+
   & > .panel-heading {
     color: $heading-text-color;
     background-color: $heading-bg-color;
     border-color: $heading-border;
+
     + .panel-collapse .panel-body {
       border-top-color: $border;
+    }
+    & > .dropdown .caret {
+      border-color: $heading-text-color transparent;
     }
   }
   & > .panel-footer {
@@ -408,6 +411,7 @@
   background-color: $background;
   border-color: $border;
   color: $text-color;
+
   hr {
     border-top-color: darken($border, 5%);
   }
@@ -769,7 +773,11 @@
 @mixin form-control-validation($text-color: #555, $border-color: #ccc, $background-color: #f5f5f5) {
   // Color the label and help text
   .help-block,
-  .control-label {
+  .control-label,
+  .radio,
+  .checkbox,
+  .radio-inline,
+  .checkbox-inline  {
     color: $text-color;
   }
   // Set the border and box shadow on specific inputs to match
