@@ -148,40 +148,34 @@
 }
 
 // Transformations
+.transform(@transform...) {
+  -webkit-transform: @transform;
+     -moz-transform: @transform;
+      -ms-transform: @transform;
+       -o-transform: @transform;
+          transform: @transform;
+}
 .rotate(@degrees) {
-  -webkit-transform: rotate(@degrees);
-      -ms-transform: rotate(@degrees); // IE9+
-          transform: rotate(@degrees);
+  .transform(rotate(@degrees));
 }
 .scale(@ratio) {
-  -webkit-transform: scale(@ratio);
-      -ms-transform: scale(@ratio); // IE9+
-          transform: scale(@ratio);
+  .transform(scale(@ratio));
 }
 .translate(@x; @y) {
-  -webkit-transform: translate(@x, @y);
-      -ms-transform: translate(@x, @y); // IE9+
-          transform: translate(@x, @y);
+  .transform(translate(@x, @y));
 }
 .skew(@x; @y) {
-  -webkit-transform: skew(@x, @y);
-      -ms-transform: skewX(@x) skewY(@y); // See https://github.com/twbs/bootstrap/issues/4885; IE9+
-          transform: skew(@x, @y);
+  .transform(skew(@x, @y));
+  -ms-transform: skewX(@x) skewY(@y); // See https://github.com/twbs/bootstrap/issues/4885; IE9+
 }
 .translate3d(@x; @y; @z) {
-  -webkit-transform: translate3d(@x, @y, @z);
-          transform: translate3d(@x, @y, @z);
+  .transform(translate3d(@x, @y, @z));
 }
-
 .rotateX(@degrees) {
-  -webkit-transform: rotateX(@degrees);
-      -ms-transform: rotateX(@degrees); // IE9+
-          transform: rotateX(@degrees);
+ .transform(rotateX(@degrees));
 }
 .rotateY(@degrees) {
-  -webkit-transform: rotateY(@degrees);
-      -ms-transform: rotateY(@degrees); // IE9+
-          transform: rotateY(@degrees);
+ .transform(rotateY(@degrees));
 }
 .perspective(@perspective) {
   -webkit-perspective: @perspective;
