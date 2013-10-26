@@ -193,12 +193,17 @@
      -moz-perspective-origin: @perspective;
           perspective-origin: @perspective;
 }
-.transform-origin(@origin){
+.transform-origin(@origin) {
   -webkit-transform-origin: @origin;
      -moz-transform-origin: @origin;
           transform-origin: @origin;
 }
 
+// Animations
+.animation(@animation) {
+  -webkit-animation: @animation;
+          animation: @animation;
+}
 
 // Backface visibility
 // Prevent browsers from flickering when using CSS 3D transforms.
