@@ -610,6 +610,10 @@ ol ol {
   padding-left: 5px;
 }
 
+.list-inline > li:first-child {
+  padding-left: 0;
+}
+
 dl {
   margin-bottom: 20px;
 }
