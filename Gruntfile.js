@@ -15,7 +15,7 @@ module.exports = function(grunt) {
               ' * Licensed under <%= _.pluck(pkg.licenses, "url").join(", ") %>\n' +
               ' *\n' +
               ' * Designed and built with all the love in the world by @mdo and @fat.\n' +
-              ' */\n',
+              ' */\n\n',
     jqueryCheck: 'if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery") }\n\n',
 
     // Task configuration.
