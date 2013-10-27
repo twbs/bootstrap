@@ -27,11 +27,11 @@
   }
 }
 
-// Webkit-style focus
+// WebKit-style focus
 @mixin tab-focus() {
   // Default
   outline: thin dotted #333;
-  // Webkit
+  // WebKit
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -192,17 +192,22 @@
      -moz-perspective-origin: $perspective;
           perspective-origin: $perspective;
 }
-@mixin transform-origin($origin){
+
+@mixin transform-origin($origin) {
   -webkit-transform-origin: $origin;
      -moz-transform-origin: $origin;
           transform-origin: $origin;
 }
 
+// Animations
+@mixin animation($animation) {
+  -webkit-animation: $animation;
+          animation: $animation;
+}
 
 // Backface visibility
 // Prevent browsers from flickering when using CSS 3D transforms.
 // Default value is `visible`, but can be changed to `hidden`
-// See git pull https://github.com/dannykeane/bootstrap.git backface-visibility for examples
 @mixin backface-visibility($visibility){
   -webkit-backface-visibility: $visibility;
      -moz-backface-visibility: $visibility;

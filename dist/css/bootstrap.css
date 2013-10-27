@@ -576,6 +576,9 @@ ol ol {
   padding-left: 5px;
   padding-right: 5px;
 }
+.list-inline > li:first-child {
+  padding-left: 0;
+}
 
 dl {
   margin-bottom: 20px;
@@ -4893,9 +4896,6 @@ a.thumbnail.active {
 
 .progress.active .progress-bar {
   -webkit-animation: progress-bar-stripes 2s linear infinite;
-  -moz-animation: progress-bar-stripes 2s linear infinite;
-  -ms-animation: progress-bar-stripes 2s linear infinite;
-  -o-animation: progress-bar-stripes 2s linear infinite;
   animation: progress-bar-stripes 2s linear infinite;
 }
 
