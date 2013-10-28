@@ -268,6 +268,10 @@ table {
     page-break-after: avoid;
   }
 
+  select {
+    background: #fff !important;
+  }
+
   .navbar {
     display: none;
   }
