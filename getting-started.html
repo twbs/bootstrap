@@ -713,6 +713,10 @@ bootstrap/
       <h4>Respond.js and <code>file://</code></h4>
       <p>Due to browser security rules, Respond.js doesn't work with pages viewed via the <code>file://</code> protocol (like when opening a local HTML file). To test responsive features in IE8, view your pages over HTTP(S). <a href="https://github.com/scottjehl/Respond/blob/master/README.md#support--caveats">See the Respond.js docs</a> for details.</p>
     </div>
+    <div class="bs-callout bs-callout-warning" id="respond-import">
+      <h4>Respond.js and <code>@import</code></h4>
+      <p>Respond.js doesn't work with CSS that's referenced via <code>@import</code>. In particular, some Drupal configurations are known to use <code>@import</code>. <a href="https://github.com/scottjehl/Respond/blob/master/README.md#support--caveats">See the Respond.js docs</a> for details.</p>
+    </div>
     <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
