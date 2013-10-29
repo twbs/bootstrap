@@ -748,11 +748,11 @@ bootstrap/
 
     <h3>Internet Explorer 8 and Respond.js</h3>
     <p>Beware of the following caveats when using Respond.js in your development and production environments for Internet Explorer 8.</p>
-    <h4>Respond.js and cross-domain CSS</h4>
+    <h4 id="respond-js-x-domain">Respond.js and cross-domain CSS</h4>
     <p>Using Respond.js with CSS hosted on a different (sub)domain (for example, on a CDN) requires some additional setup. <a href="https://github.com/scottjehl/Respond/blob/master/README.md#cdnx-domain-setup">See the Respond.js docs</a> for details.</p>
-    <h4>Respond.js and <code>file://</code></h4>
+    <h4 id="respond-file-proto">Respond.js and <code>file://</code></h4>
     <p>Due to browser security rules, Respond.js doesn't work with pages viewed via the <code>file://</code> protocol (like when opening a local HTML file). To test responsive features in IE8, view your pages over HTTP(S). <a href="https://github.com/scottjehl/Respond/blob/master/README.md#support--caveats">See the Respond.js docs</a> for details.</p>
-    <h4>Respond.js and <code>@import</code></h4>
+    <h4 id="respond-import">Respond.js and <code>@import</code></h4>
     <p>Respond.js doesn't work with CSS that's referenced via <code>@import</code>. In particular, some Drupal configurations are known to use <code>@import</code>. <a href="https://github.com/scottjehl/Respond/blob/master/README.md#support--caveats">See the Respond.js docs</a> for details.</p>
 
     <h3>Internet Explorer 8 and box-sizing</h3>
