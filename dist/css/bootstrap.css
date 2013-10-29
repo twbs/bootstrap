@@ -265,6 +265,9 @@ table {
   h3 {
     page-break-after: avoid;
   }
+  select {
+    background: #fff !important;
+  }
   .navbar {
     display: none;
   }
@@ -5145,6 +5148,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   line-height: 1;
   color: #ffffff;
   text-align: center;
+  text-shadow: none;
   white-space: nowrap;
   vertical-align: baseline;
   background-color: #999999;
@@ -5175,6 +5179,42 @@ a.list-group-item.active > .badge,
 
 .nav-pills > li > a > .badge {
   margin-left: 3px;
+}
+
+.btn-primary .badge,
+.btn-warning .badge,
+.btn-danger .badge,
+.btn-success .badge,
+.btn-info .badge {
+  background-color: #ffffff;
+}
+
+.btn-primary .badge {
+  color: #428bca;
+}
+
+.btn-warning .badge {
+  color: #f0ad4e;
+}
+
+.btn-danger .badge {
+  color: #d9534f;
+}
+
+.btn-success .badge {
+  color: #5cb85c;
+}
+
+.btn-info .badge {
+  color: #5bc0de;
+}
+
+.btn-sm .badge,
+.btn-xs .badge {
+  padding: 2px 5px;
+  font-size: 10px;
+  line-height: 0.9;
+  border-radius: 7px;
 }
 
 .jumbotron {

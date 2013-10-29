@@ -17,6 +17,7 @@
   text-align: center;
   background-color: @badge-bg;
   border-radius: @badge-border-radius;
+  text-shadow: none;
 
   // Empty badges collapse automatically (not available in IE8)
   &:empty {
@@ -48,4 +49,34 @@ a.list-group-item.active > .badge,
 }
 .nav-pills > li > a > .badge {
   margin-left: 3px;
+}
+
+// Account for badges in buttons
+.btn-primary .badge,
+.btn-warning .badge,
+.btn-danger .badge,
+.btn-success .badge,
+.btn-info .badge {
+  background-color: @badge-active-bg;
+}
+.btn-primary .badge {
+  color: @btn-primary-bg;
+}
+.btn-warning .badge {
+  color: @btn-warning-bg;
+}
+.btn-danger .badge {
+  color: @btn-danger-bg;
+}
+.btn-success .badge {
+  color: @btn-success-bg;
+}
+.btn-info .badge {
+  color: @btn-info-bg;
+}
+.btn-sm .badge, .btn-xs .badge {
+  padding: 2px 5px;
+  font-size: 10px;
+  line-height: 0.9;
+  border-radius: 7px;
 }
