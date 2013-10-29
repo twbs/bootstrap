@@ -34,24 +34,27 @@
 
 // Shell div to position the modal with bottom padding
 .modal-dialog {
+  width: auto;
+  padding: 10px 0;
   margin-left: auto;
   margin-right: auto;
-  width: auto;
-  padding: 10px;
   z-index: (@zindex-modal-background + 10);
+  outline: none;
 }
 
-// Actual modal
+// Actual modal (we're not using this.)
 .modal-content {
   position: relative;
+  width: @modal-dialog-width;
+  min-height: @modal-dialog-min-height;
+  margin: @modal-dialog-margin-top auto 0 auto;
+  padding: @modal-dialog-padding;
   background-color: @modal-content-bg;
   border: 1px solid @modal-content-fallback-border-color; //old browsers fallback (ie8 etc)
   border: 1px solid @modal-content-border-color;
   border-radius: @border-radius-large;
-  .box-shadow(0 3px 9px rgba(0,0,0,.5));
   background-clip: padding-box;
-  // Remove focus outline from opened modal
-  outline: none;
+  outline: none; // Remove focus outline from opened modal
 }
 
 // Modal background
@@ -91,16 +94,30 @@
 .modal-body {
   position: relative;
   padding: @modal-inner-padding;
+  color: @modal-text-color;
+
+  h3 {
+    color: @modal-text-color;
+    margin-bottom: 10px;
+    margin-top: 0;
+    line-height: .90em;
+  }
 }
 
 // Footer (for actions)
 .modal-footer {
-  margin-top: 15px;
-  padding: (@modal-inner-padding - 1) @modal-inner-padding @modal-inner-padding;
-  text-align: right; // right align buttons
-  border-top: 1px solid @modal-footer-border-color;
+  color: #000;
   .clearfix(); // clear it in case folks use .pull-* classes on buttons
 
+  // links in the footer.
+  a {
+    color: #000;
+    border-bottom: 1px solid @link-border-color;
+  }
+  a:hover {
+    text-decoration: none;
+    border-bottom-color: @link-hover-color;
+  }
   // Properly space out buttons
   .btn + .btn {
     margin-left: 5px;
@@ -116,7 +133,14 @@
   }
 }
 
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
+
 // Scale up the modal
+/*
 @media screen and (min-width: @screen-sm-min) {
 
   .modal-dialog {
@@ -129,3 +153,4 @@
   }
 
 }
+*/

@@ -8,12 +8,15 @@
 
 .alert {
   padding: @alert-padding;
-  margin-bottom: @line-height-computed;
+  margin: @alert-margin;
+	// TOBI - custom line-height below
+	line-height: @alert-line-height;
   border: 1px solid transparent;
   border-radius: @alert-border-radius;
   font-family: @font-family-base-extra-condensed;
   font-size: @font-size-h2;
 	text-transform: uppercase;
+  overflow: auto;
 
   // Headings for larger alerts
   h4 {

@@ -29,7 +29,7 @@ label {
   display: inline-block;
   margin-bottom: @label-margin-bottom;
   padding-right: 4px;
-	font-size: @font-size-small;
+  font-size: @font-size-small;
   font-weight: bold;
 }
 
@@ -168,9 +168,20 @@ output {
 // horizontal forms, use the predefined grid classes.
 
 .form-group {
-  margin: 0 10px 15px 0;
+  margin: 0 0 20px 0;
+}
+.form-group.is-last {
+  margin-bottom: 0;
 }
 
+// Form Control Label
+//
+// Setup the label style across the board.
+
+.control-label {
+  color: @label-color;
+  margin-bottom: @label-margin-bottom;
+}
 
 // Checkboxes and radios
 //
@@ -280,10 +291,9 @@ input[type="checkbox"],
 
 .help-block {
   display: block; // account for any element using help-block
-  font-size: @font-size-small;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  color: lighten(@text-color, 25%); // lighten the text some for contrast
+  margin-top: 0;
+  margin-bottom: @help-block-margin-bottom;
+  color: @help-block-color; // lighten the text some for contrast
 }
 
 

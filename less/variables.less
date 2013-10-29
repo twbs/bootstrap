@@ -29,44 +29,46 @@
 
 @body-bg:               #fff;
 @text-color:            @gray-darker;
+@bright-text-color:     #fff;
 
 // Links
 // -------------------------
 
-@link-color:            @brand-primary;
-@link-hover-color:      #000;
+@link-color:                @brand-primary;
+@link-hover-color:          #000;
+@link-border-color:         @gray-light;
 
 // Typography
 // -------------------------
 
 // TOBI fonts - ProximaNova Family
-@font-family-sans-serif:  								"ProximaNova-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-sans-serif-condensed: 				"ProximaNova-Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-sans-serif-extra-condensed: 	"ProximaNova-ExtraCondensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-serif:       								Georgia, "Times New Roman", Times, serif;
-@font-family-monospace:   								Monaco, Menlo, Consolas, "Courier New", monospace;
-@font-family-base:        								@font-family-sans-serif;
-@font-family-base-condensed:							@font-family-sans-serif-condensed;
-@font-family-base-extra-condensed: 				@font-family-sans-serif-extra-condensed;
+@font-family-sans-serif:                 "ProximaNova-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-sans-serif-condensed:       "ProximaNova-Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-sans-serif-extra-condensed: "ProximaNova-ExtraCondensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif:                      Georgia, "Times New Roman", Times, serif;
+@font-family-monospace:                  Monaco, Menlo, Consolas, "Courier New", monospace;
+@font-family-base:                       @font-family-sans-serif;
+@font-family-base-condensed:             @font-family-sans-serif-condensed;
+@font-family-base-extra-condensed:       @font-family-sans-serif-extra-condensed;
 
 
 // Tobi Customized Font Sizes
 @font-size-base:          14px; // 14px
 
-@font-size-large:         ceil(@font-size-base * 1.285); 	// ~18px
-@font-size-xl:						ceil(@font-size-base * 1.5); 		// ~21px
+@font-size-large:         ceil(@font-size-base * 1.285);    // ~18px
+@font-size-xl:            ceil(@font-size-base * 1.5);      // ~21px
 
-@font-size-small:   			ceil(@font-size-base * 0.925); 	// ~13px
-@font-size-xs:   					ceil(@font-size-base * 0.852); 	// ~12px
+@font-size-small:         ceil(@font-size-base * 0.925);    // ~13px
+@font-size-xs:            ceil(@font-size-base * 0.852);    // ~12px
 
-@font-size-h1:            floor(@font-size-base * 2.58); 	// ~36px
-@font-size-h2:            floor(@font-size-base * 2.18); 	// ~30px
-@font-size-h3:            ceil(@font-size-base * 1.71); 	// ~24px
-@font-size-h4:            @font-size-xl;						 			// ~21px
-@font-size-h5:            @font-size-large; 							// ~18px
-@font-size-h6:            @font-size-base;					 			// ~14px
+@font-size-h1:            floor(@font-size-base * 2.58);    // ~36px
+@font-size-h2:            floor(@font-size-base * 2.18);    // ~30px
+@font-size-h3:            ceil(@font-size-base * 1.71);     // ~24px
+@font-size-h4:            @font-size-xl;                    // ~21px
+@font-size-h5:            @font-size-large;                 // ~18px
+@font-size-h6:            @font-size-base;                  // ~14px
 
-@font-size-lead:					@font-size-large;
+@font-size-lead:          @font-size-large;
 
 @line-height-base:        1.428571429; // 20/14
 
@@ -108,7 +110,7 @@
 @border-radius-large:            0;
 @border-radius-small:            0;
 
-@component-active-color:         #fff;
+@component-active-color:         @bright-text-color;
 @component-active-bg:            @brand-primary;
 
 @caret-width-base:               4px;
@@ -117,66 +119,71 @@
 // Tables
 // -------------------------
 
-@table-cell-padding:                 8px;
-@table-condensed-cell-padding:       5px;
+@table-cell-padding:             8px;
+@table-condensed-cell-padding:   5px;
 
-@table-bg:                           transparent; // overall background-color
-@table-bg-accent:                    #f9f9f9; // for striping
-@table-bg-hover:                     #f5f5f5;
-@table-bg-active:                    @table-bg-hover;
+@table-bg:                       transparent; // overall background-color
+@table-bg-accent:                #f9f9f9; // for striping
+@table-bg-hover:                 #f5f5f5;
+@table-bg-active:                @table-bg-hover;
 
-@table-border-color:                 #ddd; // table and cell border
+@table-border-color:             #ddd; // table and cell border
 
 
 // Buttons
 // -------------------------
-@btn-font-family:								 @font-family-base-extra-condensed;
+@btn-font-family:                @font-family-base-extra-condensed;
 @btn-font-weight:                normal;
 
-@btn-default-color:              #333;
-@btn-default-bg:                 #fff;
-@btn-default-bg-hover:					 #fff;
-@btn-default-border:             #333;
+@btn-default-color:              @brand-primary;
+@btn-default-bg:                 @body-bg;
+@btn-default-border:             @brand-primary;
+@btn-default-color-hover:        #000;
+@btn-default-bg-hover:           @body-bg;
+@btn-default-border-hover:       #000;
 
-@btn-primary-color:              #fff;
+@btn-primary-color:              @bright-text-color;
 @btn-primary-bg:                 @brand-primary;
-@btn-primary-border:             #333;
+@btn-primary-border:             @brand-primary;
+@btn-primary-color-hover:        @bright-text-color;
+@btn-primary-bg-hover:           #000;
+@btn-primary-border-hover:       #000;
 
-@btn-success-color:              #fff;
+@btn-success-color:              @bright-text-color;
 @btn-success-bg:                 @brand-success;
 @btn-success-border:             darken(@btn-success-bg, 5%);
 
-@btn-warning-color:              #fff;
+@btn-warning-color:              @bright-text-color;
 @btn-warning-bg:                 @brand-warning;
 @btn-warning-border:             darken(@btn-warning-bg, 5%);
 
-@btn-danger-color:               #fff;
+@btn-danger-color:               @bright-text-color;
 @btn-danger-bg:                  @brand-danger;
 @btn-danger-border:              darken(@btn-danger-bg, 5%);
 
-@btn-info-color:                 #fff;
+@btn-info-color:                 @bright-text-color;
 @btn-info-bg:                    @brand-info;
 @btn-info-border:                darken(@btn-info-bg, 5%);
 
-@btn-facebook-color:						 #fff;
-@btn-facebook-bg:								 #3b5998;
-@btn-facebook-border:						 darken(@btn-facebook-bg, 5%);
+@btn-facebook-color:             @bright-text-color;
+@btn-facebook-bg:                #3b5998;
+@btn-facebook-border:            darken(@btn-facebook-bg, 5%);
 
-@btn-twitter-color:						 	 #fff;
-@btn-twitter-bg:								 #00aced;
-@btn-twitter-border:						 darken(@btn-twitter-bg, 5%);
+@btn-twitter-color:              @bright-text-color;
+@btn-twitter-bg:                 #00aced;
+@btn-twitter-border:             darken(@btn-twitter-bg, 5%);
 
-@btn-link-disabled-color:        #333;
+@btn-link-disabled-color:        @brand-primary;
 
 
 // Forms
 // -------------------------
 
-@input-bg:                       #fff;
+@input-bg:                       @body-bg;
 @input-bg-disabled:              @gray-lighter;
 
-@input-color:                    @gray;
-@input-border:                   #ccc;
+@input-color:                    @gray-darker;
+@input-border:                   @gray-light;
 @input-border-radius:            @border-radius-base;
 @input-border-focus:             #000; // 66afe9;
 
@@ -186,7 +193,11 @@
 @input-height-large:             (floor(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
 @input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
 
-@label-margin-bottom:						 1px;
+@label-color:                    @gray;
+@label-margin-bottom:            0px;
+
+@help-block-color:               @gray;
+@help-block-margin-bottom:       0px;
 
 @legend-color:                   @gray-dark;
 @legend-border-color:            #e5e5e5;
@@ -198,7 +209,7 @@
 // Dropdowns
 // -------------------------
 
-@dropdown-bg:                    #fff;
+@dropdown-bg:                    @body-bg;
 @dropdown-border:                rgba(0,0,0,.15);
 @dropdown-fallback-border:       #ccc;
 @dropdown-divider-bg:            #e5e5e5;
@@ -282,34 +293,34 @@
 // -------------------------
 
 // Basics of a navbar
-@navbar-height:                    50px;
-@navbar-margin-bottom:             @line-height-computed;
-@navbar-border-radius:             @border-radius-base;
-@navbar-padding-horizontal:        floor(@grid-gutter-width / 2);
-@navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
+@navbar-height:                      50px;
+@navbar-margin-bottom:               @line-height-computed;
+@navbar-border-radius:               @border-radius-base;
+@navbar-padding-horizontal:          floor(@grid-gutter-width / 2);
+@navbar-padding-vertical:            ((@navbar-height - @line-height-computed) / 2);
 
-@navbar-default-color:             #777;
-@navbar-default-bg:                #f8f8f8;
-@navbar-default-border:            darken(@navbar-default-bg, 6.5%);
+@navbar-default-color:               #777;
+@navbar-default-bg:                  #f8f8f8;
+@navbar-default-border:              darken(@navbar-default-bg, 6.5%);
 
 // Navbar links
-@navbar-default-link-color:                #777;
-@navbar-default-link-hover-color:          #333;
-@navbar-default-link-hover-bg:             transparent;
-@navbar-default-link-active-color:         #555;
-@navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
-@navbar-default-link-disabled-color:       #ccc;
-@navbar-default-link-disabled-bg:          transparent;
+@navbar-default-link-color:          #777;
+@navbar-default-link-hover-color:    #333;
+@navbar-default-link-hover-bg:       transparent;
+@navbar-default-link-active-color:   #555;
+@navbar-default-link-active-bg:      darken(@navbar-default-bg, 6.5%);
+@navbar-default-link-disabled-color: #ccc;
+@navbar-default-link-disabled-bg:    transparent;
 
 // Navbar brand label
-@navbar-default-brand-color:               @navbar-default-link-color;
-@navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%);
-@navbar-default-brand-hover-bg:            transparent;
+@navbar-default-brand-color:         @navbar-default-link-color;
+@navbar-default-brand-hover-color:   darken(@navbar-default-brand-color, 10%);
+@navbar-default-brand-hover-bg:      transparent;
 
 // Navbar toggle
-@navbar-default-toggle-hover-bg:           #ddd;
-@navbar-default-toggle-icon-bar-bg:        #ccc;
-@navbar-default-toggle-border-color:       #ddd;
+@navbar-default-toggle-hover-bg:     #ddd;
+@navbar-default-toggle-icon-bar-bg:  #ccc;
+@navbar-default-toggle-border-color: #ddd;
 
 
 // Inverted navbar
@@ -321,7 +332,7 @@
 
 // Inverted navbar links
 @navbar-inverse-link-color:                 @gray-light;
-@navbar-inverse-link-hover-color:           #fff;
+@navbar-inverse-link-hover-color:           @bright-text-color;
 @navbar-inverse-link-hover-bg:              transparent;
 @navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
 @navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%);
@@ -348,8 +359,8 @@
 @nav-disabled-link-color:                   @gray-light;
 @nav-disabled-link-hover-color:             @gray-light;
 
-@nav-open-link-hover-color:                 #fff;
-@nav-open-caret-border-color:               #fff;
+@nav-open-link-hover-color:                 @bright-text-color;
+@nav-open-caret-border-color:               @bright-text-color;
 
 // Tabs
 @nav-tabs-border-color:                     #ddd;
@@ -372,13 +383,13 @@
 // Pagination
 // -------------------------
 
-@pagination-bg:                        #fff;
+@pagination-bg:                        @body-bg;
 @pagination-border:                    #ddd;
 
 @pagination-hover-bg:                  @gray-lighter;
 
 @pagination-active-bg:                 @brand-primary;
-@pagination-active-color:              #fff;
+@pagination-active-color:              @bright-text-color;
 
 @pagination-disabled-color:            @gray-light;
 
@@ -404,26 +415,26 @@
 // -------------------------
 
 @state-success-text:             #06753c;
-@state-success-bg:               #fff;
+@state-success-bg:               @body-bg;
 @state-success-border:           @state-success-bg;
 
 @state-info-text:                #3a87ad;
-@state-info-bg:                  #fff;
+@state-info-bg:                  @body-bg;
 @state-info-border:              @state-info-bg;
 
 @state-warning-text:             #c09853;
-@state-warning-bg:               #fff;
+@state-warning-bg:               @body-bg;
 @state-warning-border:           @state-warning-bg;
 
 @state-danger-text:              #cc0000;
-@state-danger-bg:                #fff;
+@state-danger-bg:                @body-bg;
 @state-danger-border:            @state-danger-bg;
 
 
 // Tooltips
 // -------------------------
 @tooltip-max-width:           200px;
-@tooltip-color:               #333; 
+@tooltip-color:               #333;
 @tooltip-bg:                  #fff;
 
 @tooltip-arrow-width:         5px;
@@ -457,31 +468,39 @@
 @label-warning-bg:            @brand-warning;
 @label-danger-bg:             @brand-danger;
 
-@label-color:                 #fff;
-@label-link-hover-color:      #fff;
+@label-color:                 @gray;
+@label-link-hover-color:      @gray-dark;
 
 
 // Modals
 // -------------------------
-@modal-inner-padding:         20px;
+@modal-dialog-width:          462px;
+@modal-dialog-min-height:     200px;
+@modal-dialog-margin-top:     180px;
 
-@modal-title-padding:         15px;
+@modal-dialog-padding:        50px;
+@modal-inner-padding:         0px;
+@modal-title-padding:         0px;
 @modal-title-line-height:     @line-height-base;
 
-@modal-content-bg:                             #fff;
-@modal-content-border-color:                   rgba(0,0,0,.2);
-@modal-content-fallback-border-color:          #999;
+@modal-content-bg:                      @body-bg;
+@modal-content-border-color:            rgba(0,0,0,.2);
+@modal-content-fallback-border-color:   #ccc;
+@modal-text-color:                      #2e2d2e;
 
 @modal-backdrop-bg:           #fff;
+@modal-backdrop-bg:           @body-bg;
 @modal-header-border-color:   #e5e5e5;
 @modal-footer-border-color:   @modal-header-border-color;
 
 
 // Alerts
 // -------------------------
-@alert-padding:               0px;
+@alert-padding:               0;
+@alert-margin:                0;
 @alert-border-radius:         @border-radius-base;
 @alert-link-font-weight:      bold;
+@alert-line-height:           0.9em;
 
 @alert-success-bg:            @state-success-bg;
 @alert-success-text:          @state-success-text;
@@ -595,7 +614,7 @@
 @breadcrumb-color:            @gray-light;
 @breadcrumb-active-color:     @gray-darker;
 @breadcrumb-separator:        ">";
-@breadcrumb-line-height:			@headings-line-height;
+@breadcrumb-line-height:      @headings-line-height;
 
 
 // Carousel
@@ -635,8 +654,8 @@
 // ------------------------
 @text-muted:                  @gray;
 @abbr-border-color:           @gray-light;
-@headings-small-color:        @gray-light;
-@blockquote-small-color:      @gray-light;
+@headings-small-color:        @gray-dark;
+@blockquote-small-color:      @gray-dark;
 @blockquote-border-color:     @gray-lighter;
 @page-header-border-color:    @gray-lighter;
 
