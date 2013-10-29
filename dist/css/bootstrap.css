@@ -4131,6 +4131,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
   text-align: center;
 }
 
+.nav-tabs.nav-justified > .dropdown .dropdown-menu {
+  top: auto;
+  left: auto;
+}
+
 @media (min-width: 768px) {
   .nav-tabs.nav-justified > li {
     display: table-cell;
@@ -4210,6 +4215,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav-justified > li > a {
   margin-bottom: 5px;
   text-align: center;
+}
+
+.nav-justified > .dropdown .dropdown-menu {
+  top: auto;
+  left: auto;
 }
 
 @media (min-width: 768px) {
