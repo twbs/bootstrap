@@ -705,14 +705,6 @@ bootstrap/
 
     <h3>Internet Explorer 8 and 9</h3>
     <p>Internet Explorer 8 and 9 are also supported, however, please be aware that some CSS3 properties and HTML5 elements are not fully supported by these browsers. In addition, <strong>Internet Explorer 8 requires the use of <a href="https://github.com/scottjehl/Respond">Respond.js</a> to enable media query support.</strong></p>
-    <div class="bs-callout bs-callout-warning" id="respond-js-x-domain">
-      <h4>Respond.js and cross-domain CSS</h4>
-      <p>Using Respond.js with CSS hosted on a different (sub)domain (for example, on a CDN) requires some additional setup. <a href="https://github.com/scottjehl/Respond/blob/master/README.md#cdnx-domain-setup">See the Respond.js docs</a> for details.</p>
-    </div>
-    <div class="bs-callout bs-callout-warning" id="respond-file-proto">
-      <h4>Respond.js and <code>file://</code></h4>
-      <p>Due to browser security rules, Respond.js doesn't work with pages viewed via the <code>file://</code> protocol (like when opening a local HTML file). To test responsive features in IE8, view your pages over HTTP(S). <a href="https://github.com/scottjehl/Respond/blob/master/README.md#support--caveats">See the Respond.js docs</a> for details.</p>
-    </div>
     <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
@@ -753,6 +745,15 @@ bootstrap/
     </div>
 
     <p>Visit <a href="http://caniuse.com/">Can I use...</a> for details on browser support of CSS3 and HTML5 features.</p>
+
+    <h3>Internet Explorer 8 and Respond.js</h3>
+    <p>Beware of the following caveats when using Respond.js in your development and production environments for Internet Explorer 8.</p>
+    <h4>Respond.js and cross-domain CSS</h4>
+    <p>Using Respond.js with CSS hosted on a different (sub)domain (for example, on a CDN) requires some additional setup. <a href="https://github.com/scottjehl/Respond/blob/master/README.md#cdnx-domain-setup">See the Respond.js docs</a> for details.</p>
+    <h4>Respond.js and <code>file://</code></h4>
+    <p>Due to browser security rules, Respond.js doesn't work with pages viewed via the <code>file://</code> protocol (like when opening a local HTML file). To test responsive features in IE8, view your pages over HTTP(S). <a href="https://github.com/scottjehl/Respond/blob/master/README.md#support--caveats">See the Respond.js docs</a> for details.</p>
+    <h4>Respond.js and <code>@import</code></h4>
+    <p>Respond.js doesn't work with CSS that's referenced via <code>@import</code>. In particular, some Drupal configurations are known to use <code>@import</code>. <a href="https://github.com/scottjehl/Respond/blob/master/README.md#support--caveats">See the Respond.js docs</a> for details.</p>
 
     <h3>Internet Explorer 8 and box-sizing</h3>
     <p>IE8 does not fully support <code>box-sizing: border-box;</code> when combined with <code>min-width</code>, <code>max-width</code>, <code>min-height</code>, or <code>max-height</code>. For that reason, as of v3.0.1, we no longer use <code>max-width</code> on <code>.container</code>s.</p>
