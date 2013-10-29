@@ -52,27 +52,31 @@ a.list-group-item.active > .badge,
 }
 
 // Account for badges in buttons
-.btn-primary .badge,
-.btn-warning .badge,
-.btn-danger .badge,
-.btn-success .badge,
-.btn-info .badge {
-  background-color: @badge-active-bg;
+.badge {
+  .btn-primary &,
+  .btn-warning &,
+  .btn-danger &,
+  .btn-success &,
+  .btn-info & {
+    background-color: @badge-active-bg;
+  }
 }
-.btn-primary .badge {
-  color: @btn-primary-bg;
-}
-.btn-warning .badge {
-  color: @btn-warning-bg;
-}
-.btn-danger .badge {
-  color: @btn-danger-bg;
-}
-.btn-success .badge {
-  color: @btn-success-bg;
-}
-.btn-info .badge {
-  color: @btn-info-bg;
+.badge {
+  .btn-primary & {
+    color: @btn-primary-bg;
+  }
+  .btn-warning & {
+    color: @btn-warning-bg;
+  }
+  .btn-danger & {
+    color: @btn-danger-bg;
+  }
+  .btn-success & {
+    color: @btn-success-bg;
+  }
+  .btn-info & {
+    color: @btn-info-bg;
+  }
 }
 .btn-sm .badge, .btn-xs .badge {
   padding: 2px 5px;
