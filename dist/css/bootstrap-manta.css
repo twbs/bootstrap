@@ -7240,12 +7240,29 @@ h6.strong,
 
 .well {
   color: #898989;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .well,
 .well-lg,
 .well-sm {
   border-radius: 0;
+}
+
+.panel-default {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.table thead > tr:first-child > th,
+.table tbody > tr:first-child > th,
+.table tfoot > tr:first-child > th,
+.table thead > tr:first-child > td,
+.table tbody > tr:first-child > td,
+.table tfoot > tr:first-child > td {
+  border-top: none;
 }
 
 .breadcrumb {
@@ -7265,6 +7282,10 @@ h6.strong,
 
 .navbar-default.navbar.navbar-fixed-top {
   margin-top: 54px;
+}
+
+.navbar-nav {
+  margin: 0;
 }
 
 .navbar-default .navbar-nav {

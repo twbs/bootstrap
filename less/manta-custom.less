@@ -4,6 +4,8 @@
 //------------------ variables -----------------------
 
 @well-color:                        @neutralMiddark;
+@well-border:                       none;
+@well-shadow:                       none;
 @subnavbar-height:                  25px;
 @subnavbar-padding-horizontal:      @navbar-padding-horizontal;
 @subnavbar-padding-vertical:        ((@subnavbar-height - @line-height-computed) / 2);
@@ -125,9 +127,28 @@ h1.strong,h2.strong,h3.strong,h4.strong,h5.strong,h6.strong,
 
 .well {
   color: @well-color;
+  border: @well-border;
+  .box-shadow(@well-shadow);
 }
 .well, .well-lg, .well-sm {
   border-radius: @well-border-radius;
+}
+
+.panel-default {
+  .box-shadow(none);
+}
+
+.table {
+  thead,
+  tbody,
+  tfoot {
+    > tr:first-child {
+      > th,
+      > td {
+        border-top: none;
+      }
+    }
+  }
 }
 
 .breadcrumb {
@@ -150,9 +171,11 @@ h1.strong,h2.strong,h3.strong,h4.strong,h5.strong,h6.strong,
     margin-top: @navbar-height;
   }
 }
+
 .navbar-nav {
   margin: 0;
 }
+
 .navbar-default {
  .navbar-nav {
   margin: 0;
