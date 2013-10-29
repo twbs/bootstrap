@@ -15,7 +15,7 @@ module.exports = function(grunt) {
               ' * Licensed under <%= _.pluck(pkg.licenses, "url").join(", ") %>\n' +
               ' *\n' +
               ' * Designed and built with all the love in the world by @mdo and @fat.\n' +
-              ' */\n',
+              ' */\n\n',
     jqueryCheck: 'if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery") }\n\n',
 
     // Task configuration.
@@ -132,7 +132,11 @@ module.exports = function(grunt) {
 
     validation: {
       options: {
-        reset: true
+        reset: true,
+        relaxerror: [
+            "Bad value X-UA-Compatible for attribute http-equiv on element meta.",
+            "Element img is missing required attribute src."
+        ]
       },
       files: {
         src: ["_gh_pages/**/*.html"]
