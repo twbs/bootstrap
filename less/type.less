@@ -165,7 +165,8 @@ ol {
     padding-right: 5px;
 
     &:first-child {
-      padding-left: 0;
+      html:not([dir="rtl"]) & { padding-left: 0; }
+      html[dir="rtl"] & { padding-right: 0; }
     }
   }
 }

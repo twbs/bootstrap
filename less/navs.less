@@ -188,7 +188,8 @@
 
   > .dropdown .dropdown-menu {
     top: auto;
-    left: auto;
+    html:not([dir="rtl"]) & { left: auto; }
+    html[dir="rtl"] & { right: auto; }
   }
 
   @media (min-width: @screen-sm-min) {
