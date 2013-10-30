@@ -7411,6 +7411,22 @@ h6.strong,
   }
 }
 
+.icon-manta:before {
+  color: #FBB919;
+}
+
+.icon-twitter:before {
+  color: #4099FF;
+}
+
+.icon-facebook:before {
+  color: #3B5998;
+}
+
+.icon-google-plus:before {
+  color: #c63d2d;
+}
+
 @font-face {
   font-family: 'icomanta';
   font-style: normal;
