@@ -1,11 +1,13 @@
 //
-// Code (inline and blocK)
+// Code (inline and block)
 // --------------------------------------------------
 
 
 // Inline and block code styles
 code,
-pre {
+kbd,
+pre,
+samp {
   font-family: @font-family-monospace;
 }
 
@@ -33,11 +35,6 @@ pre {
   border: 1px solid @pre-border-color;
   border-radius: @border-radius-base;
 
-  // Make prettyprint styles more spaced out for readability
-  &.prettyprint {
-    margin-bottom: @line-height-computed;
-  }
-
   // Account for some code outputs that place code tags in pre tags
   code {
     padding: 0;
@@ -45,7 +42,7 @@ pre {
     color: inherit;
     white-space: pre-wrap;
     background-color: transparent;
-    border: 0;
+    border-radius: 0;
   }
 }
 

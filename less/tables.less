@@ -18,9 +18,9 @@ th {
   width: 100%;
   margin-bottom: @line-height-computed;
   // Cells
-  thead,
-  tbody,
-  tfoot {
+  > thead,
+  > tbody,
+  > tfoot {
     > tr {
       > th,
       > td {
@@ -32,22 +32,23 @@ th {
     }
   }
   // Bottom align for column headings
-  thead > tr > th {
+  > thead > tr > th {
     vertical-align: bottom;
     border-bottom: 2px solid @table-border-color;
   }
   // Remove top border from thead by default
-  caption + thead,
-  colgroup + thead,
-  thead:first-child {
-    tr:first-child {
-      th, td {
+  > caption + thead,
+  > colgroup + thead,
+  > thead:first-child {
+    > tr:first-child {
+      > th,
+      > td {
         border-top: 0;
       }
     }
   }
   // Account for multiple tbody instances
-  tbody + tbody {
+  > tbody + tbody {
     border-top: 2px solid @table-border-color;
   }
 
@@ -61,9 +62,9 @@ th {
 // Condensed table w/ half padding
 
 .table-condensed {
-  thead,
-  tbody,
-  tfoot {
+  > thead,
+  > tbody,
+  > tfoot {
     > tr {
       > th,
       > td {
@@ -90,12 +91,10 @@ th {
       }
     }
   }
-  > thead {
-    > tr {
-      > th,
-      > td {
-        border-bottom-width: 2px;
-      }
+  > thead > tr {
+    > th,
+    > td {
+      border-bottom-width: 2px;
     }
   }
 }
@@ -105,14 +104,10 @@ th {
 //
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 
-.table-striped {
-  > tbody {
-    > tr:nth-child(odd) {
-      > td,
-      > th {
-        background-color: @table-bg-accent;
-      }
-    }
+.table-striped > tbody > tr:nth-child(odd) {
+  > td,
+  > th {
+    background-color: @table-bg-accent;
   }
 }
 
@@ -121,14 +116,10 @@ th {
 //
 // Placed here since it has to come after the potential zebra striping
 
-.table-hover {
-  > tbody {
-    > tr:hover {
-      > td,
-      > th {
-        background-color: @table-bg-hover;
-      }
-    }
+.table-hover > tbody > tr:hover {
+  > td,
+  > th {
+    background-color: @table-bg-hover;
   }
 }
 
@@ -176,22 +167,23 @@ table {
 
 // Responsive tables
 //
-// Wrap your tables in `.table-scrollable` and we'll make them mobile friendly
+// Wrap your tables in `.table-responsive` and we'll make them mobile friendly
 // by enabling horizontal scrolling. Only applies <768px. Everything above that
 // will display normally.
 
-@media (max-width: @screen-sm) {
+@media (max-width: @screen-xs-max) {
   .table-responsive {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: (@line-height-computed * 0.75);
     overflow-y: hidden;
     overflow-x: scroll;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
     border: 1px solid @table-border-color;
+    -webkit-overflow-scrolling: touch;
 
-    // Tighten up spacing and give a background color
+    // Tighten up spacing
     > .table {
       margin-bottom: 0;
-      background-color: #fff;
 
       // Ensure the content doesn't wrap
       > thead,
@@ -224,6 +216,13 @@ table {
             border-right: 0;
           }
         }
+      }
+
+      // Only nuke the last row's bottom-border in `tbody` and `tfoot` since
+      // chances are there will be only one `tr` in a `thead` and that would
+      // remove the border altogether.
+      > tbody,
+      > tfoot {
         > tr:last-child {
           > th,
           > td {
@@ -231,6 +230,7 @@ table {
           }
         }
       }
+
     }
   }
 }

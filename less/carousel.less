@@ -75,7 +75,7 @@
   color: @carousel-control-color;
   text-align: center;
   text-shadow: @carousel-text-shadow;
-  // We can't have this transition here because webkit cancels the carousel
+  // We can't have this transition here because WebKit cancels the carousel
   // animation if you trip this while in the middle of another animation.
 
   // Set gradients for backgrounds
@@ -103,9 +103,16 @@
   .glyphicon-chevron-right {
     position: absolute;
     top: 50%;
-    left: 50%;
     z-index: 5;
     display: inline-block;
+  }
+  .icon-prev,
+  .glyphicon-chevron-left {
+    left: 50%;
+  }
+  .icon-next,
+  .glyphicon-chevron-right {
+    right: 50%;
   }
   .icon-prev,
   .icon-next {
@@ -153,6 +160,17 @@
     border: 1px solid @carousel-indicator-border-color;
     border-radius: 10px;
     cursor: pointer;
+
+    // IE8-9 hack for event handling
+    //
+    // Internet Explorer 8-9 does not support clicks on elements without a set
+    // `background-color`. We cannot use `filter` since that's not viewed as a
+    // background color by the browser. Thus, a hack is needed.
+    //
+    // For IE8, we set solid black as it doesn't support `rgba()`. For IE9, we
+    // set alpha transparency for the best results possible.
+    background-color: #000 \9; // IE8
+    background-color: rgba(0,0,0,0); // IE9
   }
   .active {
     margin: 0;
@@ -183,16 +201,20 @@
 
 
 // Scale up controls for tablets and up
-@media screen and (min-width: @screen-tablet) {
+@media screen and (min-width: @screen-sm-min) {
 
   // Scale up the controls a smidge
-  .carousel-control .icon-prev,
-  .carousel-control .icon-next {
-    width: 30px;
-    height: 30px;
-    margin-top: -15px;
-    margin-left: -15px;
-    font-size: 30px;
+  .carousel-control {
+    .glyphicons-chevron-left,
+    .glyphicons-chevron-right,
+    .icon-prev,
+    .icon-next {
+      width: 30px;
+      height: 30px;
+      margin-top: -15px;
+      margin-left: -15px;
+      font-size: 30px;
+    }
   }
 
   // Show and left align the captions

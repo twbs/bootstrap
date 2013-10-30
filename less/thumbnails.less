@@ -7,24 +7,24 @@
 .thumbnail {
   .img-thumbnail();
   display: block; // Override the inline-block from `.img-thumbnail`
+  margin-bottom: @line-height-computed;
 
   > img {
     .img-responsive();
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
 
 // Add a hover state for linked versions only
 a.thumbnail:hover,
-a.thumbnail:focus {
+a.thumbnail:focus,
+a.thumbnail.active {
   border-color: @link-color;
 }
 
-// Images and captions
-.thumbnail > img {
-  margin-left: auto;
-  margin-right: auto;
-}
+// Image captions
 .thumbnail .caption {
   padding: @thumbnail-caption-padding;
   color: @thumbnail-caption-color;

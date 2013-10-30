@@ -16,7 +16,6 @@
   // Firefox fix for https://github.com/twbs/bootstrap/issues/9538. Once fixed,
   // we can just straight up remove this.
   border-bottom: 0 dotted;
-  content: "";
 }
 
 // The dropdown wrapper (div)
@@ -167,7 +166,7 @@
     // Firefox fix for https://github.com/twbs/bootstrap/issues/9538. Once this
     // gets fixed, restore `border-top: 0;`.
     border-top: 0 dotted;
-    border-bottom: 4px solid @dropdown-caret-color;
+    border-bottom: @caret-width-base solid @dropdown-caret-color;
     content: "";
   }
   // Different positioning for bottom up menu

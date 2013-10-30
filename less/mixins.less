@@ -27,11 +27,11 @@
   }
 }
 
-// Webkit-style focus
+// WebKit-style focus
 .tab-focus() {
   // Default
   outline: thin dotted #333;
-  // Webkit
+  // WebKit
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -69,8 +69,24 @@
 }
 
 // CSS image replacement
+//
+// Heads up! v3 launched with with only `.hide-text()`, but per our pattern for
+// mixins being reused as classes with the same name, this doesn't hold up. As
+// of v3.0.1 we have added `.text-hide()` and deprecated `.hide-text()`. Note
+// that we cannot chain the mixins together in Less, so they are repeated.
+//
 // Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
+
+// Deprecated as of v3.0.1 (will be removed in v4)
 .hide-text() {
+  font: ~"0/0" a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+// New mixin to use as of v3.0.1
+.text-hide() {
   font: ~"0/0" a;
   color: transparent;
   text-shadow: none;
@@ -111,6 +127,10 @@
 .transition(@transition) {
   -webkit-transition: @transition;
           transition: @transition;
+}
+.transition-property(@transition-property) {
+  -webkit-transition-property: @transition-property;
+          transition-property: @transition-property;
 }
 .transition-delay(@transition-delay) {
   -webkit-transition-delay: @transition-delay;
@@ -153,10 +173,41 @@
           transform: translate3d(@x, @y, @z);
 }
 
+.rotateX(@degrees) {
+  -webkit-transform: rotateX(@degrees);
+      -ms-transform: rotateX(@degrees); // IE9+
+          transform: rotateX(@degrees);
+}
+.rotateY(@degrees) {
+  -webkit-transform: rotateY(@degrees);
+      -ms-transform: rotateY(@degrees); // IE9+
+          transform: rotateY(@degrees);
+}
+.perspective(@perspective) {
+  -webkit-perspective: @perspective;
+     -moz-perspective: @perspective;
+          perspective: @perspective;
+}
+.perspective-origin(@perspective) {
+  -webkit-perspective-origin: @perspective;
+     -moz-perspective-origin: @perspective;
+          perspective-origin: @perspective;
+}
+.transform-origin(@origin) {
+  -webkit-transform-origin: @origin;
+     -moz-transform-origin: @origin;
+          transform-origin: @origin;
+}
+
+// Animations
+.animation(@animation) {
+  -webkit-animation: @animation;
+          animation: @animation;
+}
+
 // Backface visibility
 // Prevent browsers from flickering when using CSS 3D transforms.
 // Default value is `visible`, but can be changed to `hidden`
-// See git pull https://github.com/dannykeane/bootstrap.git backface-visibility for examples
 .backface-visibility(@visibility){
   -webkit-backface-visibility: @visibility;
      -moz-backface-visibility: @visibility;
@@ -240,7 +291,7 @@
   // Color stops are not available in IE9 and below.
   .vertical(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
     background-image: -webkit-gradient(linear, left @start-percent, left @end-percent, from(@start-color), to(@end-color)); // Safari 4+, Chrome 2+
-    background-image: -webkit-linear-gradient(top, @start-color, @start-percent, @end-color, @end-percent); // Safari 5.1+, Chrome 10+
+    background-image: -webkit-linear-gradient(top, @start-color @start-percent, @end-color @end-percent); // Safari 5.1+, Chrome 10+
     background-image:  -moz-linear-gradient(top, @start-color @start-percent, @end-color @end-percent); // FF 3.6+
     background-image: linear-gradient(to bottom, @start-color @start-percent, @end-color @end-percent); // Standard, IE10
     background-repeat: repeat-x;
@@ -276,11 +327,11 @@
     background-image: radial-gradient(circle, @inner-color, @outer-color);
     background-repeat: no-repeat;
   }
-  .striped(@color: #555; @angle: 45deg) {
-    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
-    background-image: -webkit-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-    background-image: -moz-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-    background-image: linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  .striped(@color: rgba(255,255,255,.15); @angle: 45deg) {
+    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, @color), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, @color), color-stop(.75, @color), color-stop(.75, transparent), to(transparent));
+    background-image: -webkit-linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
+    background-image: linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
   }
 }
 
@@ -342,12 +393,17 @@
 // -------------------------
 .panel-variant(@border; @heading-text-color; @heading-bg-color; @heading-border;) {
   border-color: @border;
+
   & > .panel-heading {
     color: @heading-text-color;
     background-color: @heading-bg-color;
     border-color: @heading-border;
+
     + .panel-collapse .panel-body {
       border-top-color: @border;
+    }
+    & > .dropdown .caret {
+      border-color: @heading-text-color transparent;
     }
   }
   & > .panel-footer {
@@ -363,6 +419,7 @@
   background-color: @background;
   border-color: @border;
   color: @text-color;
+
   hr {
     border-top-color: darken(@border, 5%);
   }
@@ -384,7 +441,6 @@
     &.@{state} > td,
     &.@{state} > th {
       background-color: @background;
-      border-color: @border;
     }
   }
 
@@ -393,9 +449,9 @@
   .table-hover > tbody > tr {
     > td.@{state}:hover,
     > th.@{state}:hover,
-    &.@{state}:hover > td {
+    &.@{state}:hover > td,
+    &.@{state}:hover > th {
       background-color: darken(@background, 5%);
-      border-color: darken(@border, 5%);
     }
   }
 }
@@ -432,7 +488,7 @@
     &:active,
     &.active {
       background-color: @background;
-          border-color: @border
+          border-color: @border;
     }
   }
 }
@@ -496,7 +552,7 @@
 .progress-bar-variant(@color) {
   background-color: @color;
   .progress-striped & {
-    #gradient > .striped(@color);
+    #gradient > .striped();
   }
 }
 
@@ -511,11 +567,12 @@
 }
 
 .responsive-invisibility() {
-  display: none !important;
-  tr& { display: none !important; }
+    &,
+  tr&,
   th&,
   td& { display: none !important; }
 }
+
 
 // Grid System
 // -----------
@@ -558,7 +615,7 @@
   padding-right: (@gutter / 2);
 
   // Calculate width based on number of columns available
-  @media (min-width: @screen-sm) {
+  @media (min-width: @screen-sm-min) {
     float: left;
     width: percentage((@columns / @grid-columns));
   }
@@ -566,17 +623,17 @@
 
 // Generate the small column offsets
 .make-sm-column-offset(@columns) {
-  @media (min-width: @screen-sm) {
+  @media (min-width: @screen-sm-min) {
     margin-left: percentage((@columns / @grid-columns));
   }
 }
 .make-sm-column-push(@columns) {
-  @media (min-width: @screen-sm) {
+  @media (min-width: @screen-sm-min) {
     left: percentage((@columns / @grid-columns));
   }
 }
 .make-sm-column-pull(@columns) {
-  @media (min-width: @screen-sm) {
+  @media (min-width: @screen-sm-min) {
     right: percentage((@columns / @grid-columns));
   }
 }
@@ -591,15 +648,15 @@
   padding-right: (@gutter / 2);
 
   // Calculate width based on number of columns available
-  @media (min-width: @screen-md) {
+  @media (min-width: @screen-md-min) {
     float: left;
     width: percentage((@columns / @grid-columns));
   }
 }
 
-// Generate the large column offsets
+// Generate the medium column offsets
 .make-md-column-offset(@columns) {
-  @media (min-width: @screen-md) {
+  @media (min-width: @screen-md-min) {
     margin-left: percentage((@columns / @grid-columns));
   }
 }
@@ -609,7 +666,7 @@
   }
 }
 .make-md-column-pull(@columns) {
-  @media (min-width: @screen-md) {
+  @media (min-width: @screen-md-min) {
     right: percentage((@columns / @grid-columns));
   }
 }
@@ -624,7 +681,7 @@
   padding-right: (@gutter / 2);
 
   // Calculate width based on number of columns available
-  @media (min-width: @screen-lg) {
+  @media (min-width: @screen-lg-min) {
     float: left;
     width: percentage((@columns / @grid-columns));
   }
@@ -632,19 +689,93 @@
 
 // Generate the large column offsets
 .make-lg-column-offset(@columns) {
-  @media (min-width: @screen-lg) {
+  @media (min-width: @screen-lg-min) {
     margin-left: percentage((@columns / @grid-columns));
   }
 }
 .make-lg-column-push(@columns) {
-  @media (min-width: @screen-lg) {
+  @media (min-width: @screen-lg-min) {
     left: percentage((@columns / @grid-columns));
   }
 }
 .make-lg-column-pull(@columns) {
-  @media (min-width: @screen-lg) {
+  @media (min-width: @screen-lg-min) {
     right: percentage((@columns / @grid-columns));
   }
+}
+
+
+// Framework grid generation
+//
+// Used only by Bootstrap to generate the correct number of grid classes given
+// any value of `@grid-columns`.
+
+.make-grid-columns() {
+  // Common styles for all sizes of grid columns, widths 1-12
+  .col(@index) when (@index = 1) { // initial
+    @item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
+    .col(@index + 1, @item);
+  }
+  .col(@index, @list) when (@index =< @grid-columns) { // general; "=<" isn't a typo
+    @item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
+    .col(@index + 1, ~"@{list}, @{item}");
+  }
+  .col(@index, @list) when (@index > @grid-columns) { // terminal
+    @{list} {
+      position: relative;
+      // Prevent columns from collapsing when empty
+      min-height: 1px;
+      // Inner gutter via padding
+      padding-left:  (@grid-gutter-width / 2);
+      padding-right: (@grid-gutter-width / 2);
+    }
+  }
+  .col(1); // kickstart it
+}
+
+.make-grid-columns-float(@class) {
+  .col(@index) when (@index = 1) { // initial
+    @item: ~".col-@{class}-@{index}";
+    .col(@index + 1, @item);
+  }
+  .col(@index, @list) when (@index < @grid-columns) { // general
+    @item: ~".col-@{class}-@{index}";
+    .col(@index + 1, ~"@{list}, @{item}");
+  }
+  .col(@index, @list) when (@index = @grid-columns) { // terminal
+    @{list} {
+      float: left;
+    }
+  }
+  .col(1); // kickstart it
+}
+
+.calc-grid(@index, @class, @type) when (@type = width) {
+  .col-@{class}-@{index} {
+    width: percentage((@index / @grid-columns));
+  }
+}
+.calc-grid(@index, @class, @type) when (@type = push) {
+  .col-@{class}-push-@{index} {
+    left: percentage((@index / @grid-columns));
+  }
+}
+.calc-grid(@index, @class, @type) when (@type = pull) {
+  .col-@{class}-pull-@{index} {
+    right: percentage((@index / @grid-columns));
+  }
+}
+.calc-grid(@index, @class, @type) when (@type = offset) {
+  .col-@{class}-offset-@{index} {
+    margin-left: percentage((@index / @grid-columns));
+  }
+}
+
+// Basic looping in LESS
+.make-grid(@index, @class, @type) when (@index > 0) {
+  .calc-grid(@index, @class, @type);
+  // next iteration
+  .make-grid(@index - 1, @class, @type);
 }
 
 
@@ -656,7 +787,11 @@
 .form-control-validation(@text-color: #555; @border-color: #ccc; @background-color: #f5f5f5) {
   // Color the label and help text
   .help-block,
-  .control-label {
+  .control-label,
+  .radio,
+  .checkbox,
+  .radio-inline,
+  .checkbox-inline  {
     color: @text-color;
   }
   // Set the border and box shadow on specific inputs to match

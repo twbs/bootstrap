@@ -3,10 +3,9 @@
   <head>
     <!-- Meta, title, CSS, favicons, etc. -->
     {% include header.html %}
-    <!-- Place anything custom after this. -->
   </head>
   <body class="bs-docs-home">
-    <a class="sr-only" href="#content">Skip navigation</a>
+    <a class="sr-only" href="#content">Skip to main content</a>
 
     <!-- Docs master nav -->
     {% include nav-main.html %}
@@ -21,7 +20,7 @@
 
       <ul class="bs-masthead-links">
         <li class="current-version">
-          Currently v3.0.0
+          Currently v{{ site.current_version }}
         </li>
         <li>
           <a href="{{ page.base_url }}2.3.2/">Bootstrap 2.3.2 docs</a>
@@ -34,6 +33,9 @@
         </li>
         <li>
           <a href="{{ site.expo }}" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'Expo']);">Expo</a>
+        </li>
+        <li>
+          <a href="{{ site.blog }}" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'Blog']);">Blog</a>
         </li>
       </ul>
     </footer>

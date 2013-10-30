@@ -1,3 +1,11 @@
+/*!
+ * Copyright 2013 Twitter, Inc.
+ *
+ * Licensed under the Creative Commons Attribution 3.0 Unported License. For
+ * details, see http://creativecommons.org/licenses/by/3.0/.
+ */
+
+
 window.onload = function () { // wait for load in a dumb way because B-0
   var cw = '/*!\n * Bootstrap v3.0.0\n *\n * Copyright 2013 Twitter, Inc\n * Licensed under the Apache License v2.0\n * http://www.apache.org/licenses/LICENSE-2.0\n *\n * Designed and built with all the love in the world @twitter by @mdo and @fat.\n */\n\n'
 
@@ -31,13 +39,13 @@ window.onload = function () { // wait for load in a dumb way because B-0
     return match && decodeURIComponent(match[1].replace(/\+/g, " "));
   }
 
-  function createGist(configData) {
+  function createGist(configJson) {
     var data = {
       "description": "Bootstrap Customizer Config",
       "public": true,
       "files": {
         "config.json": {
-          "content": JSON.stringify(configData, null, 2)
+          "content": configJson
         }
       }
     }
@@ -107,7 +115,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     })
   }
 
-  function generateZip(css, js, fonts, complete) {
+  function generateZip(css, js, fonts, config, complete) {
     if (!css && !js) return showError('<strong>Ruh roh!</strong> No Bootstrap files selected.', new Error('no Bootstrap'))
 
     var zip = new JSZip()
@@ -129,8 +137,12 @@ window.onload = function () { // wait for load in a dumb way because B-0
     if (fonts) {
       var fontsFolder = zip.folder('fonts')
       for (var fileName in fonts) {
-        fontsFolder.file(fileName, fonts[fileName])
+        fontsFolder.file(fileName, fonts[fileName], {base64: true})
       }
+    }
+
+    if (config) {
+      zip.file('config.json', config)
     }
 
     var content = zip.generate({type:"blob"})
@@ -155,10 +167,32 @@ window.onload = function () { // wait for load in a dumb way because B-0
     }
   }
 
-  function generateCSS() {
-    var $checked = $('#less-section input:checked')
+  // Returns an Array of @import'd filenames from 'bootstrap.less' in the order
+  // in which they appear in the file.
+  function bootstrapLessFilenames() {
+    var IMPORT_REGEX = /^@import \"(.*?)\";$/
+    var bootstrapLessLines = __less['bootstrap.less'].split('\n')
 
-    if (!$checked.length) return false
+    for (var i = 0, imports = []; i < bootstrapLessLines.length; i++) {
+      var match = IMPORT_REGEX.exec(bootstrapLessLines[i])
+      if (match) imports.push(match[1])
+    }
+
+    return imports
+  }
+
+  function generateCSS() {
+    var oneChecked = false
+    var lessFileIncludes = {}
+    $('#less-section input').each(function() {
+      var $this = $(this)
+      var checked = $this.is(':checked')
+      lessFileIncludes[$this.val()] = checked
+
+      oneChecked = oneChecked || checked
+    })
+
+    if (!oneChecked) return false
 
     var result = {}
     var vars = {}
@@ -169,15 +203,19 @@ window.onload = function () { // wait for load in a dumb way because B-0
           $(this).val() && (vars[ $(this).prev().text() ] = $(this).val())
         })
 
-    css += __less['variables.less']
-    if (vars) css += generateCustomCSS(vars)
-    css += __less['mixins.less']
-    css += __less['normalize.less']
-    css += __less['scaffolding.less']
-    css += $checked
-      .map(function () { return __less[this.value] })
-      .toArray()
-      .join('\n')
+    $.each(bootstrapLessFilenames(), function(index, filename) {
+      var fileInclude = lessFileIncludes[filename]
+
+      // Files not explicitly unchecked are compiled into the final stylesheet.
+      // Core stylesheets like 'normalize.less' are not included in the form
+      // since disabling them would wreck everything, and so their 'fileInclude'
+      // will be 'undefined'.
+      if (fileInclude || (fileInclude == null)) css += __less[filename]
+
+      // Custom variables are added after Bootstrap variables so the custom
+      // ones take precedence.
+      if (('variables.less' === filename) && vars) css += generateCustomCSS(vars)
+    })
 
     css = css.replace(/@import[^\n]*/gi, '') //strip any imports
 
@@ -262,14 +300,17 @@ window.onload = function () { // wait for load in a dumb way because B-0
   var $downloadBtn = $('#btn-download')
 
   $compileBtn.on('click', function (e) {
+    var configData = getCustomizerData()
+    var configJson = JSON.stringify(configData, null, 2)
+
     e.preventDefault()
 
     $compileBtn.attr('disabled', 'disabled')
 
-    generateZip(generateCSS(), generateJavascript(), generateFonts(), function (blob) {
+    generateZip(generateCSS(), generateJavascript(), generateFonts(), configJson, function (blob) {
       $compileBtn.removeAttr('disabled')
       saveAs(blob, "bootstrap.zip")
-      createGist(getCustomizerData())
+      createGist(configJson)
     })
   })
 

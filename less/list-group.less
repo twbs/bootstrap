@@ -39,21 +39,21 @@
   > .badge + .badge {
     margin-right: 5px;
   }
+}
 
-  // Linked list items
-  a& {
-    color: @list-group-link-color;
+// Linked list items
+a.list-group-item {
+  color: @list-group-link-color;
 
-    .list-group-item-heading {
-      color: @list-group-link-heading-color;
-    }
+  .list-group-item-heading {
+    color: @list-group-link-heading-color;
+  }
 
-    // Hover state
-    &:hover,
-    &:focus {
-      text-decoration: none;
-      background-color: @list-group-hover-bg;
-    }
+  // Hover state
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    background-color: @list-group-hover-bg;
   }
 
   // Active class on item itself, not parent
