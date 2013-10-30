@@ -54,6 +54,32 @@ input[type="file"] {
   display: block;
 }
 
+// TOBI - Remove default browser styling of select elements
+select {
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+}
+
+// TOBI - Add relative position to container
+.select-container {
+  position: relative;
+}
+
+// TOBI - Allows arrow to be rendererd
+.select-container:after {
+  border-color: transparent;
+  border-style: solid;
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border-width: 5px;
+  border-top-color: #ccc;
+}
+
 // Make multiple select elements height not fixed
 select[multiple],
 select[size] {
