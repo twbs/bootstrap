@@ -7102,8 +7102,12 @@ td.visible-print {
   background-color: #006ba5 !important;
 }
 
-.content {
+.content-wrapper {
   margin-top: 79px;
+}
+
+.content {
+  padding-top: 15px;
   background-color: #ffffff;
 }
 
@@ -7266,6 +7270,7 @@ h6.strong,
 }
 
 .breadcrumb {
+  margin: 0;
   font-size: 10px;
   border-radius: 0;
 }
