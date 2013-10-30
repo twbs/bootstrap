@@ -1,7 +1,7 @@
 {
     "name": "bootstrap"
   , "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development."
-  , "version": "3.0.0"
+  , "version": "3.0.1"
   , "keywords": ["bootstrap", "css"]
   , "homepage": "http://getbootstrap.com"
   , "author": "Twitter, Inc."

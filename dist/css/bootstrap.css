@@ -4731,17 +4731,14 @@ a.list-group-item.active > .badge,
   display: block;
   max-width: 100%;
   height: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail.active {
   border-color: #428bca;
-}
-
-.thumbnail > img {
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .thumbnail .caption {
