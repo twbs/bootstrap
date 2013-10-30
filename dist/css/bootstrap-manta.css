@@ -7260,6 +7260,17 @@ h6.strong,
           box-shadow: none;
 }
 
+/*a lighter border color is nicer for tables inside wells*/
+
+.well .table thead > tr > th,
+.well .table tbody > tr > th,
+.well .table tfoot > tr > th,
+.well .table thead > tr > td,
+.well .table tbody > tr > td,
+.well .table tfoot > tr > td {
+  border-top-color: #ffffff;
+}
+
 .table thead > tr:first-child > th,
 .table tbody > tr:first-child > th,
 .table tfoot > tr:first-child > th,
