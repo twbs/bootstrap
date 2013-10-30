@@ -1336,18 +1336,6 @@ input[type="file"] {
   display: block;
 }
 
-select {
-  text-indent: 0.01px;
-  text-overflow: "";
-  cursor: pointer;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-}
-
-select::-ms-expand {
-  display: none;
-}
-
 .select-container {
   position: relative;
 }
@@ -1447,6 +1435,18 @@ fieldset[disabled] .form-control {
 
 textarea.form-control {
   height: auto;
+}
+
+select.form-control {
+  text-indent: 0.01px;
+  text-overflow: "";
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+}
+
+select.form-control::-ms-expand {
+  display: none;
 }
 
 .form-group {
