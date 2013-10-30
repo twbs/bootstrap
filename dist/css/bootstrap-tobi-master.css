@@ -1337,9 +1337,15 @@ input[type="file"] {
 }
 
 select {
+  text-indent: 0.01px;
+  text-overflow: "";
   cursor: pointer;
   -webkit-appearance: none;
      -moz-appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
 }
 
 .select-container {

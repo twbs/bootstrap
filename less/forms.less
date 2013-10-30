@@ -59,6 +59,15 @@ select {
   cursor: pointer;
   -webkit-appearance: none;
      -moz-appearance: none;
+
+  /* remove arrow in mozilla */
+  text-indent: 0.01px;
+  text-overflow: "";
+}
+
+// TOBI - Hide arrow in IE10
+select::-ms-expand {
+    display: none;
 }
 
 // TOBI - Add relative position to container
