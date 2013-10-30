@@ -11,9 +11,9 @@ exclude:          [".editorconfig", ".gitignore", ".ruby-version", "bower.json",
 port:             9001
 
 # Custom vars
-repo:             https://github.com/twbs/bootstrap
-download:         https://github.com/twbs/bootstrap/archive/v3.0.0.zip
-download_dist:    https://github.com/twbs/bootstrap/releases/download/v3.0.0/bootstrap-3.0.0-dist.zip
+repo:             https://github.com/mantacode/bootstrap
+download:         https://github.com/mantacode/bootstrap/archive/v3.0.0.zip
+download_dist:    https://github.com/mantacode/bootstrap/releases/download/v3.0.0/bootstrap-3.0.0-dist.zip
 
 blog:             http://blog.getbootstrap.com
 expo:             http://expo.getbootstrap.com
