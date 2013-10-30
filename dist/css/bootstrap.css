@@ -5241,17 +5241,14 @@ a.list-group-item.active > .badge,
   display: block;
   height: auto;
   max-width: 100%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail.active {
   border-color: #428bca;
-}
-
-.thumbnail > img {
-  margin-right: auto;
-  margin-left: auto;
 }
 
 .thumbnail .caption {
