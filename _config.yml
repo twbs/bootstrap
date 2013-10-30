@@ -11,15 +11,15 @@ exclude:          [".editorconfig", ".gitignore", "bower.json", "composer.json",
 port:             9001
 
 # Custom vars
-current_version:  3.0.0
+current_version:  3.0.1
 repo:             https://github.com/twbs/bootstrap
 
-download_source:  https://github.com/twbs/bootstrap/archive/v3.0.0.zip
-download_dist:    https://github.com/twbs/bootstrap/releases/download/v3.0.0/bootstrap-3.0.0-dist.zip
+download_source:  https://github.com/twbs/bootstrap/archive/v3.0.1.zip
+download_dist:    https://github.com/twbs/bootstrap/releases/download/v3.0.1/bootstrap-3.0.1-dist.zip
 
 blog:             http://blog.getbootstrap.com
 expo:             http://expo.getbootstrap.com
 
-cdn_css:          //netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css
-cdn_theme_css:    //netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css
-cdn_js:           //netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js
+cdn_css:          //netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css
+cdn_theme_css:    //netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap-theme.min.css
+cdn_js:           //netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js
