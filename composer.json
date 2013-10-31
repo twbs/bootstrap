@@ -1,9 +1,13 @@
 {
-    "name": "twbs/bootstrap"
-  , "description": "Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development."
+    "name": "jasny/bootstrap"
+  , "description": "An extended version of Twitter Bootstrap"
   , "keywords": ["bootstrap", "css"]
-  , "homepage": "http://getbootstrap.com"
+  , "homepage": "http://jasny.github.io/bootstrap"
   , "authors": [
+      {
+        "name": "Arnold Daniels",
+        "email": "arnold@jasny.net"
+      },
       {
         "name": "Mark Otto",
         "email": "markdotto@gmail.com"
@@ -14,7 +18,8 @@
       }
     ]
   , "support": {
-      "issues": "https://github.com/twbs/bootstrap/issues"
+      "issues": "https://github.com/jasny/bootstrap/issues"
     }
   , "license": "Apache-2.0"
+  , "replace": { "twitter/bootstrap" : "3.0.0" }
 }
