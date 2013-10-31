@@ -12,18 +12,6 @@
 @well-border-radius:                0;
 @breadcrumb-border-radius:          0;
 
-//------------------ mixins --------------------------
-
-.navbar-search-expander(@screen, @width) {
-  @media (min-width: @screen) {
-    .transition(all 100ms ease-in);
-    &:focus {
-      width: @width+10;
-      margin-left: -100px;
-    }
-  }
-}
-
 
 //------------------  color junk ---------------------
 
@@ -57,11 +45,14 @@
 .footer .container{
   padding: 0;
 }
-.footer .navbar-nav > li > a{
+.footer .nav.navbar-nav > li > a {
   padding:0 10px;
   margin-top:17px;
   margin-bottom:17px;
   border-right: 1px solid #fff;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 .footer .navbar-nav > li:last-child > a{
   border-right:none;
@@ -81,11 +72,6 @@
 
 .fs-small {
   font-size: @font-size-small;
-}
-
-.navbar-search {
-  .navbar-search-expander(@screen-sm, 244px);
-  .navbar-search-expander(@screen-md, 326px);
 }
 
 //
@@ -174,6 +160,13 @@ h1.strong,h2.strong,h3.strong,h4.strong,h5.strong,h6.strong,
       content: ">\00a0"; // Unicode space added since inline-block means non-collapsing white-space
     }
   }
+}
+
+.dropdown-menu > li > a {
+  padding: 5px 20px;
+}
+ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
+    display: block;    
 }
 
 //------------------ sub navbar overrides ------------
@@ -331,7 +324,15 @@ h1.strong,h2.strong,h3.strong,h4.strong,h5.strong,h6.strong,
        url('@{icon-font-path}@{display-font-name}.svg#Vegur-Light') format('svg');
 }
 
+
 // fix bootstrap glyphicon line-height in buttons... otherwise it makes the button taller than it should be
 .btn .glyphicon {
   line-height: 0;
+}
+.btn .icomanta {
+  vertical-align: inherit;
+}
+.btn-lg {
+  // line-height: ensure even-numbered height of button next to large input
+  .button-size(@padding-base-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
 }

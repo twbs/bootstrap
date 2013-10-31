@@ -36,7 +36,7 @@
 @naturalDarker   : #137513;
 
 @errorLight      : #fad0d0;
-@errorDark       : #ff0000;
+@errorDark       : #C7272B;
 
 
 // Global values
@@ -81,7 +81,7 @@
 @font-family-base:        @font-family-sans-serif;
 
 @font-size-base:          14px;
-@font-size-large:         ceil(@font-size-base * 1.25); // ~18px
+@font-size-large:         ceil(@font-size-base * 1.1); // ~16px
 @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 
 @line-height-base:        1.2;
@@ -114,7 +114,7 @@
 @padding-small-vertical:         5px;
 @padding-small-horizontal:       10px;
 
-@line-height-large:              1.33;
+@line-height-large:              1.2;
 @line-height-small:              1.5;
 
 @border-radius-base:             5px;
@@ -145,8 +145,8 @@
 
 @btn-font-weight:                normal;
 
-@btn-default-color:              @neutralWhite; //#333;
-@btn-default-bg:                 @coolDark; //@neutralWhite;
+@btn-default-color:              @text-color;
+@btn-default-bg:                 @neutralLightest;
 @btn-default-border:             darken(@btn-default-bg, 5%); //@neutralLight;
 
 @btn-primary-color:              @neutralWhite; //@neutralWhite;
@@ -157,9 +157,9 @@
 @btn-success-bg:                 @brand-success;
 @btn-success-border:             darken(@btn-success-bg, 5%);
 
-@btn-warning-color:              @neutralWhite; //@neutralWhite;
-@btn-warning-bg:                 @brand-warning;
-@btn-warning-border:             darken(@btn-warning-bg, 5%);
+@btn-warning-color:              @link-color;
+@btn-warning-bg:                 @neutralWhite;
+@btn-warning-border:             darken(@btn-warning-bg, 25%);
 
 @btn-danger-color:               @neutralWhite; //@neutralWhite;
 @btn-danger-bg:                  @brand-danger;
@@ -285,7 +285,7 @@
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 
 // Navbar links
-@navbar-default-link-color:                @coolLight; //#777;
+@navbar-default-link-color:                @neutralWhite; //#777;
 @navbar-default-link-hover-color:          @neutralWhite; //#333;
 @navbar-default-link-hover-bg:             transparent;
 @navbar-default-link-active-color:         @neutralWhite; //#555;
@@ -341,7 +341,7 @@
 // Navs
 // -------------------------
 
-@nav-link-padding:                          10px 10px;
+@nav-link-padding:                          10px 15px;
 @nav-link-hover-bg:                         @gray-lighter;
 
 @nav-disabled-link-color:                   @gray-light;

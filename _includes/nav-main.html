@@ -23,7 +23,7 @@
                 <div class="collapse navbar-collapse navbar-mobile-collapse">
                     <div class="nav navbar-nav hidden-xs">
                         <div class="dropdown navbar-btn">
-                            <button type="button" class="dropdown-toggle btn btn-default" data-toggle="dropdown"><span class="icomanta icon-browse text-info"></span> Browse</button>
+                            <button type="button" class="dropdown-toggle btn btn-primary" data-toggle="dropdown"><span class="icomanta icon-browse"></span> Browse</button>
                             <ul class="dropdown-menu">
                                 <li{% if page.slug == "getting-started" %} class="active"{% endif %}>
                                 <a href="{{ page.base_url }}getting-started">Getting started</a>
@@ -51,8 +51,8 @@
                     </div>
                     <div class="nav navbar-nav navbar-right pull-right hidden-xs">
                         <div class="btn-toolbar">
-                            <button type="button" class="btn btn-default navbar-btn">Sign Up</button>
-                            <button type="button" class="btn btn-default navbar-btn">Sign In</button>
+                            <button type="button" class="btn btn-primary navbar-btn">Sign Up</button>
+                            <button type="button" class="btn btn-primary navbar-btn">Sign In</button>
                         </div>
                     </div>
                     <div class="visible-xs">
@@ -75,6 +75,52 @@
                 <li>
                     <a href="/" class="navbar-link">Home</a>
                 </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle navbar-link" data-toggle="dropdown">Dropdown</a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="#"><span class="glyphicon glyphicon-user"></span> Link with an icon</a>
+                    </li>
+                    <li>
+                      <a href="#">Link with no icon</a>
+                    </li>
+                    <li>
+                      <a href="#">Link with no icon</a>
+                    </li>
+                    <li>
+                      <a href="#">Link with no icon</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                      <a href="#">Link below divider</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle navbar-link" data-toggle="dropdown">Dropdown 2</a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="#"><span class="glyphicon glyphicon-user"></span> Link with an icon</a>
+                    </li>
+                    <li>
+                      <a href="#">Link with no icon</a>
+                    </li>
+                    <li class="dropdown-header">
+                      A nice header
+                    </li>
+                    <li>
+                      <a href="#">Link with no icon</a>
+                    </li>
+                    <li>
+                      <a href="#" class="fs-small">Small link text</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                      <a href="#">Link below divider</a>
+                    </li>
+                  </ul>
+                </li>
+
             </ul>
         </div>
         <div class="nav navbar-right hidden-xs">
