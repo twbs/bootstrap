@@ -750,7 +750,7 @@
   .col(1); // kickstart it
 }
 
-.calc-grid(@index, @class, @type) when (@type = width) {
+.calc-grid(@index, @class, @type) when (@type = width) and (@index > 0) {
   .col-@{class}-@{index} {
     width: percentage((@index / @grid-columns));
   }
