@@ -28,6 +28,8 @@ nbproject
 *.sublime-project
 *.sublime-workspace
 .idea
+*.sass-cache
+*.ruby-version
 
 # Komodo
 *.komodoproject
