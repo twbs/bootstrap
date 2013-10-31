@@ -48,7 +48,7 @@
 
     this.calculateScrollbarWidth()
 
-    this.openClasses = this.checkForScrollBar() ? 'modal-open scrollbar' : 'modal-open'
+    this.openClasses = this.hasScrollbar() ? 'modal-open scrollbar' : 'modal-open'
 
     this.$element.trigger(e)
 
@@ -195,18 +195,18 @@
     }
   }
 
-  Modal.prototype.checkForScrollBar = function () {
+  Modal.prototype.hasScrollbar = function () {
     return $(document.body).outerHeight() > $(window).height()
   }
 
   Modal.prototype.calculateScrollbarWidth = function () {
-      if ($("#scrollbar-width").length > 0)
+      if ($("#bs-scrollbar-width").length > 0)
         return
       var a = $('<div class="modal-measure-scrollbar"/>').prependTo($("body")), 
           b = $('<div class="inner"/>').appendTo(a), 
           c = a.width() - b.width()
       a.remove()
-      $("head").append('<style id="scrollbar-width">.modal-open.scrollbar { margin-right: ' + c + 'px }</style>')
+      $("head").append('<style id="bs-scrollbar-width">.modal-open.scrollbar { margin-right: ' + c + 'px }</style>')
   }
 
   // MODAL PLUGIN DEFINITION
