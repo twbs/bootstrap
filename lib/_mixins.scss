@@ -717,73 +717,69 @@
 // Used only by Bootstrap to generate the correct number of grid classes given
 // any value of `$grid-columns`.
 
+// [converter] Grid converted to use SASS cycles (LESS uses recursive nested mixin defs not supported by SASS)
 @mixin make-grid-columns() {
-  // Common styles for all sizes of grid columns, widths 1-12
-  @mixin col($index) when ($index = 1) { // initial
-    $item: #{.col-xs-$index, .col-sm-$index, .col-md-$index, .col-lg-$index};
-    @extend .col($index + 1, $item);
+  $list: '';
+  @for $i from 1 to $grid-columns {
+    $list: ".col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}, #{$list}";
   }
-  @mixin col($index, $list) when ($index =< $grid-columns) { // general; "=<" isn't a typo
-    $item: #{.col-xs-$index, .col-sm-$index, .col-md-$index, .col-lg-$index};
-    @extend .col($index + 1, #{$list, $item});
+  $i: $grid-columns;
+  $list: "#{$list}, .col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}";
+  #{$list} {
+    position: relative;
+    // Prevent columns from collapsing when empty
+    min-height: 1px;
+    // Inner gutter via padding
+    padding-left:  ($grid-gutter-width / 2);
+    padding-right: ($grid-gutter-width / 2);
   }
-  @mixin col($index, $list) when ($index > $grid-columns) { // terminal
-    $list {
-      position: relative;
-      // Prevent columns from collapsing when empty
-      min-height: 1px;
-      // Inner gutter via padding
-      padding-left:  ($grid-gutter-width / 2);
-      padding-right: ($grid-gutter-width / 2);
-    }
-  }
-  @extend .col(1); // kickstart it
 }
 
+
+// [converter] Grid converted to use SASS cycles (LESS uses recursive nested mixin defs not supported by SASS)
 @mixin make-grid-columns-float($class) {
-  @mixin col($index) when ($index = 1) { // initial
-    $item: #{.col-$class-$index};
-    @extend .col($index + 1, $item);
+  $list: '';
+  @for $i from 1 to $grid-columns {
+    $list: ".col-#{$class}-#{$i}, #{$list}";
   }
-  @mixin col($index, $list) when ($index < $grid-columns) { // general
-    $item: #{.col-$class-$index};
-    @extend .col($index + 1, #{$list, $item});
+  $i: $grid-columns;
+  $list: "#{$list}, .col-#{$class}-#{$i}";
+  #{$list} {
+    float: left;
   }
-  @mixin col($index, $list) when ($index = $grid-columns) { // terminal
-    $list {
-      float: left;
+}
+
+
+@mixin calc-grid($index, $class, $type) {
+  @if $type == width {
+    .col-#{$class}-#{$index} {
+      width: percentage(($index / $grid-columns));
     }
   }
-  @extend .col(1); // kickstart it
-}
-
-@mixin calc-grid($index, $class, $type) when ($type = width) {
-  .col-$class-$index {
-    width: percentage(($index / $grid-columns));
+  @if $type == push {
+    .col-#{$class}-push-#{$index} {
+      left: percentage(($index / $grid-columns));
+    }
   }
-}
-@mixin calc-grid($index, $class, $type) when ($type = push) {
-  .col-$class-push-$index {
-    left: percentage(($index / $grid-columns));
+  @if $type == pull {
+    .col-#{$class}-pull-#{$index} {
+      right: percentage(($index / $grid-columns));
+    }
   }
-}
-@mixin calc-grid($index, $class, $type) when ($type = pull) {
-  .col-$class-pull-$index {
-    right: percentage(($index / $grid-columns));
-  }
-}
-@mixin calc-grid($index, $class, $type) when ($type = offset) {
-  .col-$class-offset-$index {
-    margin-left: percentage(($index / $grid-columns));
+  @if $type == offset {
+    .col-#{$class}-offset-#{$index} {
+      margin-left: percentage(($index / $grid-columns));
+    }
   }
 }
 
-// Basic looping in LESS
-@mixin make-grid($index, $class, $type) when ($index > 0) {
-  @extend .calc-grid($index, $class, $type);
-  // next iteration
-  @extend .make-grid($index - 1, $class, $type);
+// [converter] This is defined recursively in LESS, but SASS supports real loops
+@mixin make-grid($columns, $class, $type) {
+  @for $i from 1 through $columns {
+    @include calc-grid($i, $class, $type);
+  }
 }
+
 
 
 // Form validation states

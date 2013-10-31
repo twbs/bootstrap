@@ -25,10 +25,10 @@
 // it's full-width.
 
 @include make-grid-columns-float(xs);
-@extend .make-grid($grid-columns, xs, width);
-@extend .make-grid($grid-columns, xs, pull);
-@extend .make-grid($grid-columns, xs, push);
-@extend .make-grid($grid-columns, xs, offset);
+@include make-grid($grid-columns, xs, width);
+@include make-grid($grid-columns, xs, pull);
+@include make-grid($grid-columns, xs, push);
+@include make-grid($grid-columns, xs, offset);
 
 
 // Small grid
@@ -45,10 +45,10 @@
   }
 
   @include make-grid-columns-float(sm);
-  @extend .make-grid($grid-columns, sm, width);
-  @extend .make-grid($grid-columns, sm, pull);
-  @extend .make-grid($grid-columns, sm, push);
-  @extend .make-grid($grid-columns, sm, offset);
+  @include make-grid($grid-columns, sm, width);
+  @include make-grid($grid-columns, sm, pull);
+  @include make-grid($grid-columns, sm, push);
+  @include make-grid($grid-columns, sm, offset);
 }
 
 
@@ -65,10 +65,10 @@
   }
 
   @include make-grid-columns-float(md);
-  @extend .make-grid($grid-columns, md, width);
-  @extend .make-grid($grid-columns, md, pull);
-  @extend .make-grid($grid-columns, md, push);
-  @extend .make-grid($grid-columns, md, offset);
+  @include make-grid($grid-columns, md, width);
+  @include make-grid($grid-columns, md, pull);
+  @include make-grid($grid-columns, md, push);
+  @include make-grid($grid-columns, md, offset);
 }
 
 
@@ -85,9 +85,9 @@
   }
 
   @include make-grid-columns-float(lg);
-  @extend .make-grid($grid-columns, lg, width);
-  @extend .make-grid($grid-columns, lg, pull);
-  @extend .make-grid($grid-columns, lg, push);
-  @extend .make-grid($grid-columns, lg, offset);
+  @include make-grid($grid-columns, lg, width);
+  @include make-grid($grid-columns, lg, pull);
+  @include make-grid($grid-columns, lg, push);
+  @include make-grid($grid-columns, lg, offset);
 }
 
