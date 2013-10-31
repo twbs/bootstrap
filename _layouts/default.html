@@ -4,7 +4,11 @@
     <!-- Meta, title, CSS, favicons, etc. -->
     {% include header.html %}
   </head>
-  <body>
+  <body class="{% if page.slug == "customize" %}bs-twbs-show{% endif %}">
+    <script type="text/javascript">
+      if (localStorage && localStorage.hide_twbs === 'no') document.body.setAttribute('class', 'bs-twbs-show')
+    </script>
+    
     <a class="sr-only" href="#content">Skip to main content</a>
 
     <!-- Docs master nav -->
@@ -44,6 +48,21 @@
           </div>
         </div>
         <div class="col-md-9" role="main">
+          {% if page.slug != "customize" %}
+            <div class="bs-callout bs-callout-info bs-twbs-toggle">
+              Are you already familiar with Twitter Bootstrap?
+
+              <div class="btn-group pull-right" data-toggle="buttons">
+                <label class="btn btn-default">
+                  <input type="radio" name="show-twbs" value="yes"> Yes
+                </label>
+                <label class="btn btn-default">
+                  <input type="radio" name="show-twbs" value="no"> No
+                </label>
+              </div>
+            </div>
+          {% endif %}
+
           {{ content }}
         </div>
       </div>
@@ -56,14 +75,14 @@
       <div class="container">
         {% include social-buttons.html %}
 
-        <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Jasny Bootstrap is a fork of <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. This fork is developed and maintained by <a href="http://twitter.com/ArnoldDaniels" target="_blank">Arnold Daniels</a>.</p>
         <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
         <ul class="footer-links">
           <li>Currently v{{ site.current_version }}</li>
           <li class="muted">&middot;</li>
-          <li><a href="{{ page.base_url }}2.3.2/">Bootstrap 2.3.2 docs</a></li>
+          <li><a href="{{ page.base_url }}2.3.1/">Bootstrap 2.3.1 docs</a></li>
           <li class="muted">&middot;</li>
-          <li><a href="{{ site.blog }}">Blog</a></li>
+          <li><a href="http://www.jasny.net">Jasny.net</a></li>
           <li class="muted">&middot;</li>
           <li><a href="{{ site.repo }}/issues?state=open">Issues</a></li>
           <li class="muted">&middot;</li>

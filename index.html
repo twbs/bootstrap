@@ -1,16 +1,17 @@
 ---
 layout: home
-title: Bootstrap
+title: Jasny Bootstrap
 base_url: "./"
 ---
 
 <main class="bs-masthead" id="content" role="main">
   <div class="container">
-    <h1>Bootstrap</h1>
-    <p class="lead">Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
+    <h1>{{ page.title }}</h1>
+    <p class="lead">The sleek and powerfull front-end framework you know and love, plus everything it's missing.</p>
     <p>
       <a href="{{ site.download_dist }}" class="btn btn-outline-inverse btn-lg" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Download', 'Download {{ site.current_version }}']);">Download Bootstrap</a>
-      <a href="{{ site.download_source }}" class="btn btn-outline-inverse btn-lg" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Download', 'Download {{ site.current_version source }}']);">Download source</a>
+      <a href="{{ site.download_extend }}" class="btn btn-outline-inverse btn-lg" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Download', 'Extend {{ site.current_version }}']);">Extend Bootstrap</a>
+      or <a href="{{ site.download_source }}" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Download', 'Download {{ site.current_version }} source']);">Download source</a>
     </p>
   </div>
 </main>

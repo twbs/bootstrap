@@ -9,14 +9,16 @@ base_url: "../"
 
   <!-- Global Bootstrap settings
   ================================================== -->
-  <div class="bs-docs-section">
+  <div class="bs-docs-section bs-jasny">
     <div class="page-header">
       <h1 id="overview">Overview</h1>
     </div>
-    <p class="lead">Get the lowdown on the key pieces of Bootstrap's infrastructure, including our approach to better, faster, stronger web development.</p>
+    
+    <div class="bs-twbs">
+      <p class="lead">Get the lowdown on the key pieces of Bootstrap's infrastructure, including our approach to better, faster, stronger web development.</p>
 
-    <h3 id="overview-doctype">HTML5 doctype</h3>
-    <p>Bootstrap makes use of certain HTML elements and CSS properties that require the use of the HTML5 doctype. Include it at the beginning of all your projects.</p>
+      <h3 id="overview-doctype">HTML5 doctype</h3>
+      <p>Bootstrap makes use of certain HTML elements and CSS properties that require the use of the HTML5 doctype. Include it at the beginning of all your projects.</p>
 {% highlight html %}
 <!DOCTYPE html>
 <html lang="en">
@@ -24,9 +26,9 @@ base_url: "../"
 </html>
 {% endhighlight %}
 
-    <h3 id="overview-mobile">Mobile first</h3>
-    <p>With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework. With Bootstrap 3, we've rewritten the project to be mobile friendly from the start. Instead of adding on optional mobile styles, they're baked right into the core. In fact, <strong>Bootstrap is mobile first</strong>. Mobile first styles can be found throughout the entire library instead of in separate files.</p>
-    <p>To ensure proper rendering and touch zooming, <strong>add the viewport meta tag</strong> to your <code>&lt;head&gt;</code>.</p>
+      <h3 id="overview-mobile">Mobile first</h3>
+      <p>With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework. With Bootstrap 3, we've rewritten the project to be mobile friendly from the start. Instead of adding on optional mobile styles, they're baked right into the core. In fact, <strong>Bootstrap is mobile first</strong>. Mobile first styles can be found throughout the entire library instead of in separate files.</p>
+      <p>To ensure proper rendering and touch zooming, <strong>add the viewport meta tag</strong> to your <code>&lt;head&gt;</code>.</p>
 {% highlight html %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% endhighlight %}
@@ -35,31 +37,35 @@ base_url: "../"
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 {% endhighlight %}
 
-    <h3 id="overview-responsive-images">Responsive images</h3>
-    <p>Images in Bootstrap 3 can be made responsive-friendly via the addition of the <code>.img-responsive</code> class. This applies <code>max-width: 100%;</code> and <code>height: auto;</code> to the image so that it scales nicely to the parent element.</p>
+      <h3 id="overview-responsive-images">Responsive images</h3>
+      <p>Images in Bootstrap 3 can be made responsive-friendly via the addition of the <code>.img-responsive</code> class. This applies <code>max-width: 100%;</code> and <code>height: auto;</code> to the image so that it scales nicely to the parent element.</p>
 {% highlight html %}
 <img src="..." class="img-responsive" alt="Responsive image">
 {% endhighlight %}
 
-    <h3 id="overview-type-links">Typography and links</h3>
-    <p>Bootstrap sets basic global display, typography, and link styles. Specifically, we:</p>
-    <ul>
-      <li>Set <code>background-color: #fff;</code> on the <code>body</code></li>
-      <li>Use the <code>@font-family-base</code>, <code>@font-size-base</code>, and <code>@line-height-base</code> attributes as our typographic base</li>
-      <li>Set the global link color via <code>@link-color</code> and apply link underlines only on <code>:hover</code></li>
-    </ul>
-    <p>These styles can be found within <code>scaffolding.less</code>.</p>
+      <h3 id="overview-type-links">Typography and links</h3>
+      <p>Bootstrap sets basic global display, typography, and link styles. Specifically, we:</p>
+      <ul>
+        <li>Set <code>background-color: #fff;</code> on the <code>body</code></li>
+        <li>Use the <code>@font-family-base</code>, <code>@font-size-base</code>, and <code>@line-height-base</code> attributes as our typographic base</li>
+        <li>Set the global link color via <code>@link-color</code> and apply link underlines only on <code>:hover</code></li>
+      </ul>
+      <p>These styles can be found within <code>scaffolding.less</code>.</p>
 
-    <h3 id="overview-normalize">Normalize</h3>
-    <p>For improved cross-browser rendering, we use <a href="http://necolas.github.io/normalize.css/" target="_blank">Normalize</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a>.</p>
-
+      <h3 id="overview-normalize">Normalize</h3>
+      <p>For improved cross-browser rendering, we use <a href="http://necolas.github.io/normalize.css/" target="_blank">Normalize</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a>.</p>
+    </div>
+    
     <h3 id="overview-container">Containers</h3>
-    <p>Easily center a page's contents by wrapping its contents in a <code>.container</code>. Containers set <code>max-width</code> at various media query breakpoints to match our grid system.</p>
+    <div class="bs-twbs">
+      <p>Easily center a page's contents by wrapping its contents in a <code>.container</code>. Containers set <code>max-width</code> at various media query breakpoints to match our grid system.</p>
 {% highlight html %}
 <div class="container">
   ...
 </div>
 {% endhighlight %}
+    </div>
+    <p>Added <code>.container-smooth</code> a container to use the same <code>max-width</code> for all viewport sizes. This means that the container size won't jump at media query breakpoints.</p>
   </div>
 
 
@@ -2063,22 +2069,23 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
   <!-- Buttons
   ================================================== -->
-  <div class="bs-docs-section">
+  <div class="bs-docs-section bs-jasny">
     <div class="page-header">
       <h1 id="buttons">Buttons</h1>
     </div>
 
-    <h2 id="buttons-options">Options</h2>
-    <p>Use any of the available button classes to quickly create a styled button.</p>
-    <div class="bs-example">
-      <button type="button" class="btn btn-default">Default</button>
-      <button type="button" class="btn btn-primary">Primary</button>
-      <button type="button" class="btn btn-success">Success</button>
-      <button type="button" class="btn btn-info">Info</button>
-      <button type="button" class="btn btn-warning">Warning</button>
-      <button type="button" class="btn btn-danger">Danger</button>
-      <button type="button" class="btn btn-link">Link</button>
-    </div>
+    <div class="bs-twbs">
+      <h2 id="buttons-options">Options</h2>
+      <p>Use any of the available button classes to quickly create a styled button.</p>
+      <div class="bs-example">
+        <button type="button" class="btn btn-default">Default</button>
+        <button type="button" class="btn btn-primary">Primary</button>
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-info">Info</button>
+        <button type="button" class="btn btn-warning">Warning</button>
+        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="btn btn-link">Link</button>
+      </div>
 {% highlight html %}
 <!-- Standard button -->
 <button type="button" class="btn btn-default">Default</button>
@@ -2101,27 +2108,54 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
 <button type="button" class="btn btn-link">Link</button>
 {% endhighlight %}
-
-    <h2 id="buttons-sizes">Sizes</h2>
-    <p>Fancy larger or smaller buttons? Add <code>.btn-lg</code>, <code>.btn-sm</code>, or <code>.btn-xs</code> for additional sizes.</p>
-    <div class="bs-example">
-      <p>
-        <button type="button" class="btn btn-primary btn-lg">Large button</button>
-        <button type="button" class="btn btn-default btn-lg">Large button</button>
-      </p>
-      <p>
-        <button type="button" class="btn btn-primary">Default button</button>
-        <button type="button" class="btn btn-default">Default button</button>
-      </p>
-      <p>
-        <button type="button" class="btn btn-primary btn-sm">Small button</button>
-        <button type="button" class="btn btn-default btn-sm">Small button</button>
-      </p>
-      <p>
-        <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
-        <button type="button" class="btn btn-default btn-xs">Extra small button</button>
-      </p>
     </div>
+
+    <div>
+      <h2 id="buttons-labels">Labels</h2>
+      <p>Give a button some extra style by adding a label. Add <code>.btn-labeled</code> to any button with a label.</p>
+      <div class="bs-example">
+        <button type="button" class="btn btn-labeled btn-default"><span class="btn-label"><i class="glyphicon glyphicon-arrow-left"></i></span>Left</button>
+        <button type="button" class="btn btn-labeled btn-default">Right<span class="btn-label btn-label-right"><i class="glyphicon glyphicon-arrow-right"></i></span></button>
+        <button type="button" class="btn btn-labeled btn-success"><span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>Success</button>
+        <button type="button" class="btn btn-labeled btn-danger"><span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span>Danger</button>
+      </div>
+{% highlight html %}
+<!-- Standard button with label -->
+<button type="button" class="btn btn-labeled btn-default"><span class="btn-label"><i class="glyphicon glyphicon-arrow-left"></i></span>Left</button>
+
+<!-- Standard button with label on the right side -->
+<button type="button" class="btn btn-labeled btn-default">Right<span class="btn-label btn-label-right"><i class="glyphicon glyphicon-arrow-right"></i></span></button>
+
+<!-- Success button with label -->
+<button type="button" class="btn btn-labeled btn-success"><span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>Success</button>
+
+<!-- Danger button with label -->
+<button type="button" class="btn btn-labeled btn-danger"><span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span>Danger</button>
+{% endhighlight %}
+    </div>
+
+    
+    <div class="bs-twbs">
+      <h2 id="buttons-sizes">Sizes</h2>
+      <p>Fancy larger or smaller buttons? Add <code>.btn-lg</code>, <code>.btn-sm</code>, or <code>.btn-xs</code> for additional sizes.</p>
+      <div class="bs-example">
+        <p>
+          <button type="button" class="btn btn-primary btn-lg">Large button</button>
+          <button type="button" class="btn btn-default btn-lg">Large button</button>
+        </p>
+        <p>
+          <button type="button" class="btn btn-primary">Default button</button>
+          <button type="button" class="btn btn-default">Default button</button>
+        </p>
+        <p>
+          <button type="button" class="btn btn-primary btn-sm">Small button</button>
+          <button type="button" class="btn btn-default btn-sm">Small button</button>
+        </p>
+        <p>
+          <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
+          <button type="button" class="btn btn-default btn-xs">Extra small button</button>
+        </p>
+      </div>
 {% highlight html %}
 <p>
   <button type="button" class="btn btn-primary btn-lg">Large button</button>
@@ -2141,80 +2175,83 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </p>
 {% endhighlight %}
 
-    <p>Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding <code>.btn-block</code>.</p>
-    <div class="bs-example">
-      <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
-        <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
-        <button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
+      <p>Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding <code>.btn-block</code>.</p>
+      <div class="bs-example">
+        <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
+          <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+          <button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
+        </div>
       </div>
-    </div>
 {% highlight html %}
 <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
 <button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
 {% endhighlight %}
+    </div>
 
+    
+    <div class="bs-twbs">
+      <h2 id="buttons-active">Active state</h2>
+      <p>Buttons will appear pressed (with a darker background, darker border, and inset shadow) when active. For <code>&lt;button&gt;</code> elements, this is done via <code>:active</code>. For <code>&lt;a&gt;</code> elements, it's done with <code>.active</code>. However, you may use <code>.active</code> <code>&lt;button&gt;</code>s should you need to replicate the active state progammatically.</p>
 
-    <h2 id="buttons-active">Active state</h2>
-    <p>Buttons will appear pressed (with a darker background, darker border, and inset shadow) when active. For <code>&lt;button&gt;</code> elements, this is done via <code>:active</code>. For <code>&lt;a&gt;</code> elements, it's done with <code>.active</code>. However, you may use <code>.active</code> <code>&lt;button&gt;</code>s should you need to replicate the active state progammatically.</p>
-
-    <h3>Button element</h3>
-    <p>No need to add <code>:active</code> as it's a pseudo-class, but if you need to force the same appearance, go ahead and add <code>.active</code>.</p>
-    <p class="bs-example">
-      <button type="button" class="btn btn-primary btn-lg active">Primary button</button>
-      <button type="button" class="btn btn-default btn-lg active">Button</button>
-    </p>
+      <h3>Button element</h3>
+      <p>No need to add <code>:active</code> as it's a pseudo-class, but if you need to force the same appearance, go ahead and add <code>.active</code>.</p>
+      <p class="bs-example">
+        <button type="button" class="btn btn-primary btn-lg active">Primary button</button>
+        <button type="button" class="btn btn-default btn-lg active">Button</button>
+      </p>
 {% highlight html %}
 <button type="button" class="btn btn-primary btn-lg active">Primary button</button>
 <button type="button" class="btn btn-default btn-lg active">Button</button>
 {% endhighlight %}
 
-    <h3>Anchor element</h3>
-    <p>Add the <code>.active</code> class to <code>&lt;a&gt;</code> buttons.</p>
-    <p class="bs-example">
-      <a href="#" class="btn btn-primary btn-lg active" role="button">Primary link</a>
-      <a href="#" class="btn btn-default btn-lg active" role="button">Link</a>
-    </p>
+      <h3>Anchor element</h3>
+      <p>Add the <code>.active</code> class to <code>&lt;a&gt;</code> buttons.</p>
+      <p class="bs-example">
+        <a href="#" class="btn btn-primary btn-lg active" role="button">Primary link</a>
+        <a href="#" class="btn btn-default btn-lg active" role="button">Link</a>
+      </p>
 {% highlight html %}
 <a href="#" class="btn btn-primary btn-lg active" role="button">Primary link</a>
 <a href="#" class="btn btn-default btn-lg active" role="button">Link</a>
 {% endhighlight %}
 
 
-    <h2 id="buttons-disabled">Disabled state</h2>
-    <p>Make buttons look unclickable by fading them back 50%.</p>
+      <h2 id="buttons-disabled">Disabled state</h2>
+      <p>Make buttons look unclickable by fading them back 50%.</p>
 
-    <h3>Button element</h3>
-    <p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
-    <p class="bs-example">
-      <button type="button" class="btn btn-primary btn-lg" disabled="disabled">Primary button</button>
-      <button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
-    </p>
+      <h3>Button element</h3>
+      <p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
+      <p class="bs-example">
+        <button type="button" class="btn btn-primary btn-lg" disabled="disabled">Primary button</button>
+        <button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
+      </p>
 {% highlight html %}
 <button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary button</button>
 <button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
 {% endhighlight %}
 
-    <div class="bs-callout bs-callout-danger">
-      <h4>Cross-browser compatibility</h4>
-      <p>If you add the <code>disabled</code> attribute to a <code>&lt;button&gt;</code>, Internet Explorer 9 and below will render text gray with a nasty text-shadow that we cannot fix.</p>
-    </div>
+      <div class="bs-callout bs-callout-danger">
+        <h4>Cross-browser compatibility</h4>
+        <p>If you add the <code>disabled</code> attribute to a <code>&lt;button&gt;</code>, Internet Explorer 9 and below will render text gray with a nasty text-shadow that we cannot fix.</p>
+      </div>
 
-    <h3>Anchor element</h3>
-    <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
-    <p class="bs-example">
-      <a href="#" class="btn btn-primary btn-lg disabled" role="button">Primary link</a>
-      <a href="#" class="btn btn-default btn-lg disabled" role="button">Link</a>
-    </p>
+      <h3>Anchor element</h3>
+      <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
+      <p class="bs-example">
+        <a href="#" class="btn btn-primary btn-lg disabled" role="button">Primary link</a>
+        <a href="#" class="btn btn-default btn-lg disabled" role="button">Link</a>
+      </p>
 {% highlight html %}
 <a href="#" class="btn btn-primary btn-lg disabled" role="button">Primary link</a>
 <a href="#" class="btn btn-default btn-lg disabled" role="button">Link</a>
 {% endhighlight %}
-    <p>
-      We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
-    </p>
-    <div class="bs-callout bs-callout-warning">
-      <h4>Link functionality not impacted</h4>
-      <p>This class will only change the <code>&lt;a&gt;</code>'s appearance, not its functionality. Use custom JavaScript to disable links here.</p>
+      <p>
+        We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
+      </p>
+      <div class="bs-callout bs-callout-warning">
+        <h4>Link functionality not impacted</h4>
+        <p>This class will only change the <code>&lt;a&gt;</code>'s appearance, not its functionality. Use custom JavaScript to disable links here.</p>
+      </div>
     </div>
     <div class="bs-callout bs-callout-warning">
       <h4>Context-specific usage</h4>
@@ -2222,14 +2259,15 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 
 
-    <h2 id="buttons-tags">Button tags</h2>
-    <p>Use the button classes on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
-    <form class="bs-example">
-      <a class="btn btn-default" href="#" role="button">Link</a>
-      <button class="btn btn-default" type="submit">Button</button>
-      <input class="btn btn-default" type="button" value="Input">
-      <input class="btn btn-default" type="submit" value="Submit">
-    </form>
+    <div class="bs-twbs">
+      <h2 id="buttons-tags">Button tags</h2>
+      <p>Use the button classes on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
+      <form class="bs-example">
+        <a class="btn btn-default" href="#" role="button">Link</a>
+        <button class="btn btn-default" type="submit">Button</button>
+        <input class="btn btn-default" type="button" value="Input">
+        <input class="btn btn-default" type="submit" value="Submit">
+      </form>
 {% highlight html %}
 <a class="btn btn-default" href="#" role="button">Link</a>
 <button class="btn btn-default" type="submit">Button</button>
@@ -2237,10 +2275,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <input class="btn btn-default" type="submit" value="Submit">
 {% endhighlight %}
 
-    <div class="bs-callout bs-callout-warning">
-      <h4>Cross-browser rendering</h4>
-      <p>As a best practice, <strong>we highly recommend using the <code>&lt;button&gt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
-      <p>Among other things, there's <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697451">a Firefox bug</a> that prevents us from setting the <code>line-height</code> of <code>&lt;input&gt;</code>-based buttons, causing them to not exactly match the height of other buttons on Firefox.</p>
+      <div class="bs-callout bs-callout-warning">
+        <h4>Cross-browser rendering</h4>
+        <p>As a best practice, <strong>we highly recommend using the <code>&lt;button&gt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
+        <p>Among other things, there's <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697451">a Firefox bug</a> that prevents us from setting the <code>line-height</code> of <code>&lt;input&gt;</code>-based buttons, causing them to not exactly match the height of other buttons on Firefox.</p>
+      </div>
     </div>
 
   </div>

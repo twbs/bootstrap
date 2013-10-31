@@ -45,7 +45,17 @@ bootstrap/
 
 We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). Fonts from Glyphicons are included, as is the optional Bootstrap theme.
 
+Alternatively you can extend Twitter Bootstrap by downloading <code>jasny-bootstrap.*</code> files from the extension package, in conjunction with the original Twitter Bootstrap files or a custom build of Bootstrap. The structure of (the compiled) Jasny Bootstrap extension package is:
 
+```
+extend/
+├── css/
+│   ├── jasny-bootstrap.css
+│   ├── jasny-bootstrap.min.css
+└── js/
+    ├── jasny-bootstrap.js
+    └── jasny-bootstrap.min.js
+```
 
 ## Bugs and feature requests
 

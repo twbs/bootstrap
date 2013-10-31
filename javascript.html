@@ -1981,3 +1981,475 @@ $('#myCarousel').on('slide.bs.carousel', function () {
     </div><!-- /.table-responsive -->
 
   </div>
+
+  
+  <!-- Off canvas
+  ================================================== -->
+  <div class="bs-docs-section bs-jasny">
+    <div class="page-header">
+      <h1 id="offcanvas">Off canvas <small>offcanvas.js</small></h1>
+    </div>
+
+    <h2 id="offcanvas-examples">Example</h2>
+    <p>The offcanvas plugin allows you to hide an element from sight and than show it by moving either that or any other element. It's intented to be used for off canvas navigation, like push menus.</p>
+    <div class="bs-example bs-navmenu-offcanvas-example">
+      <div id="myNavmenuCanvas">
+        <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+          <a class="navmenu-brand" href="#">Brand</a>
+          <ul class="nav navmenu-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+        </nav>
+        <div class="navbar navbar-default navbar-fixed-top">
+          <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="#myNavmenuCanvas" data-placement="left">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in aliquet nisl. Praesent sed leo congue, fringilla eros eu, tempus metus. Nam mollis odio ipsum, non vehicula ipsum accumsan sodales. Morbi varius vitae elit euismod cursus. Donec a dapibus justo, in facilisis nisi. Suspendisse ut turpis dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dui risus, tincidunt at odio ut, ultrices dignissim ipsum. Cras ultrices erat nec leo luctus varius. Nulla sollicitudin tincidunt nulla, ut porta mauris volutpat vitae. Suspendisse ornare dolor sit amet massa venenatis pulvinar.</p>
+      </div>
+    </div><!-- /example -->
+{% highlight html %}
+<nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+  <a class="navmenu-brand" href="#">Brand</a>
+  <ul class="nav navmenu-nav">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+  </ul>
+</nav>
+<div class="navbar navbar-default navbar-fixed-top">
+  <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+</div>
+{% endhighlight %}
+
+    <div class="bs-callout bs-callout-info">
+      <h4>Examples</h4>
+      <p>For better understanding, have a look at the <a href="../examples/navmenu/">off canvas slide in menu</a>, <a href="../examples/navmenu-push/">off canvas push menu</a> and <a href="../examples/navmenu-reveal/">off canvas reveal menu</a> exapmles.</p>
+    </div>
+
+    <hr class="bs-docs-separator">
+
+    <h2 id="offcanvas-usage">Usage</h2>
+    <p>Add <code>.offcanvas</code> to hide an element. Alternatively add <code>.offcanvas-*</code> to hide an element up to a specific viewport width. Adding the <code>.offcanvas</code> class is not required. You may also hide an element by any other means.</p>
+    <p>The effect works best for elements positioned to the top, bottom, left or right of the window, either with absolute or fixed positioning.</p>
+    <p>When shown, the plugin adds <code>.canvas-slid</code> to the element that has slid.</p>
+    
+    <h3>Via data attributes</h3>
+    <p>Add <code>data-toggle="offcanvas"</code> and a <code>data-target</code> to control, assigning it to show and hide the target element. The <code>data-target</code> attribute accepts a CSS selector to apply the collapse to.</p>
+    <p>Optionally add a <code>data-canvas</code> attribute to slide a canvas instead of only the target element. For a push menu set <code>data-canvas="body"</code>.
+
+    <h3>Via JavaScript</h3>
+    <p>Call the input mask via javascript:</p>
+{% highlight js %}
+$('.navmenu').offcanvas()
+{% endhighlight %}
+
+    <h3>Options</h3>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th style="width: 100px;">Name</th>
+          <th style="width: 50px;">type</th>
+          <th style="width: 100px;">default</th>
+          <th>description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>canvas</td>
+          <td>string</td>
+          <td>false</td>
+          <td>If set, the canvas will be moved on show and hide instead of the target element. This creates alternative effects.</td>
+        </tr>
+        <tr>
+          <td>toggle</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>Toggles the off canvas element on invocation</td>
+        </tr>
+        <tr>
+          <td>placement</td>
+          <td>string</td>
+          <td>'auto'</td>
+          <td>Where to position the element at the start of the animation. For example, if placement is "left", the element will slide from left to right. The default option "auto" guesses the placement based on position and dimension.</td>
+        </tr>
+        <tr>
+          <td>autohide</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>Hide the off canvas element if clicked anywhere other that the element.</td>
+        </tr>
+        <tr>
+          <td>recalc</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>Calculate if off canvas should be disabled for this viewport width on window resize. If your elements always gets hidden on window resize, try setting this to false.</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div class="bs-callout bs-callout-danger">
+      <h4>Graceful degradation</h4>
+      <p>For browsers that don't support transform (mainly IE8), the <code>target</code> option is ignored. In that case, the plugin will always slide the target element. In that case <code>.canvas-slid</code> will be added to the target element instead.</p>
+    </div>
+    
+
+    <h3>Methods</h3>
+    <h4>.offcanvas(options)</h4>
+    <p>Initializes the off canvas element with an optional options.</p>
+    <h4>.offcanvas('toggle')</h4>
+    <p>Toggles an off canvas element to shown or hidden.</p>
+    <h4>.offcanvas('show')</h4>
+    <p>Shows an off canvas element.</p>
+    <h4>.offcanvas('hide')</h4>
+    <p>Hides an off canvas element.</p>
+  </div>
+
+
+  <!-- Row link
+  ================================================== -->
+  <div class="bs-docs-section bs-jasny">
+    <div class="page-header">
+      <h1 id="rowlink">Row link <small>rowlink.js</small></h1>
+    </div>
+
+    <h2 id="rowlink-examples">Example</h2>
+    <p>This plugin turns a table row into a clickable link.</p>
+    <div class="bs-example">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr><th>Name</th><th>Description</th><th>Actions</th></tr>
+        </thead>
+        <tbody data-link="row" class="rowlink">
+          <tr><td><a href="#inputmask">Input mask</a></td><td>Input masks can be used to force the user to enter data conform a specific format.</td><td class="rowlink-skip"><a href="#">Action</a></td></tr>
+          <tr><td><a href="http://www.jasny.net/" target="_blank">jasny.net</a></td><td>Shared knowledge of Arnold Daniels aka Jasny.</td><td class="rowlink-skip"><a href="#">Action</a></td></tr>
+          <tr><td><a href="#rowlinkModal" data-toggle="modal">Launch modal</a></td><td>Toggle a modal via JavaScript by clicking this row.</td><td class="rowlink-skip"><a href="#">Action</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="rowlinkModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Rowlink Modal</h4>
+          </div>
+          <div class="modal-body">
+            <p>This modal proves that JavaScript events are triggered correctly by rowlink.</p>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+{% highlight html %}
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr><th>Name</th><th>Description</th><th>Actions</th></tr>
+  </thead>
+  <tbody data-link="row" class="rowlink">
+    <tr><td><a href="#inputmask">Input mask</a></td><td>Input masks can be used to force the user to enter data conform a specific format.</td><td class="rowlink-skip"><a href="#">Action</a></td></tr>
+    <tr><td><a href="http://www.jasny.net/" target="_blank">jasny.net</a></td><td>Shared knowledge of Arnold Daniels aka Jasny.</td><td class="rowlink-skip"><a href="#">Action</a></td></tr>
+    <tr><td><a href="#rowlinkModal" data-toggle="modal">Launch modal</a></td><td>Toggle a modal via JavaScript by clicking this row.</td><td class="rowlink-skip"><a href="#">Action</a></td></tr>
+  </tbody>
+</table>
+{% endhighlight %}
+
+    <hr class="bs-docs-separator">
+
+    <h2 id="rowlink-usage">Usage</h2>
+
+    <h3>Via data attributes</h3>
+    <p>Add class <code>.rowlink</code> and attribute <code>data-link="row"</code> to a <code>&lt;table&gt;</code> or <code>&lt;tbody&gt;</code> element. For other options append the name to <code>data-</code>, as in <code>data-target="a.mainlink"</code> A cell can be excluded by adding the <code>.rowlink-skip</code> class to the <code>&lt;td&gt;</code>.</p>
+
+    <h3>Via JavaScript</h3>
+    <p>Call the input mask via javascript:</p>
+{% highlight js %}
+$('tbody.rowlink').rowlink()
+{% endhighlight %}
+
+    <h3>Options</h3>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th style="width: 100px;">Name</th>
+          <th style="width: 50px;">type</th>
+          <th style="width: 100px;">default</th>
+          <th>description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>target</td>
+          <td>string</td>
+          <td>'a'</td>
+          <td>A jquery selector string, to select the link element within each row.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Methods</h3>
+    <h4>.rowlink(options)</h4>
+    <p>Makes the rows of a table or tbody clickable.</p>
+  </div>
+
+
+  <!-- Input mask
+  ================================================== -->
+  <div class="bs-docs-section bs-jasny">
+    <div class="page-header">
+      <h1 id="inputmask">Input mask <small>inputmask.js</small></h1>
+    </div>
+
+    <h2 id="inputmask-examples">Example</h2>
+    <p>Input masks can be used to force the user to enter data conform a specific format. Unlike validation, the user can't enter any other key than the ones specified by the mask.</p>
+    
+    <div class="bs-example">
+      <input type="text" class="form-control" data-mask="999-99-999-9999-9" placeholder="ISBN">
+    </div>
+{% highlight html %}
+<input type="text" class="form-control" data-mask="999-99-999-9999-9" placeholder="ISBN">
+{% endhighlight %}
+
+    <hr class="bs-docs-separator">
+
+    <h2 id="inputmask-usage">Usage</h2>
+
+    <h3>Via data attributes</h3>
+    <p>Add data attributes to register an element with inputmask functionality as shown in the example above.</p>
+
+    <h3>Via JavaScript</h3>
+    <p>Call the input mask via javascript:</p>
+{% highlight js %}
+$('.inputmask').inputmask({
+  mask: '999-99-999-9999-9'
+})
+{% endhighlight %}
+
+    <h3>Options</h3>
+    <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-mask="999-99-999-9999-9"</code>.</p>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th style="width: 100px;">Name</th>
+            <th style="width: 50px;">type</th>
+            <th style="width: 100px;">default</th>
+            <th>description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>mask</td>
+            <td>string</td>
+            <td>''</td>
+            <td>A string of formatting and literal characters, defining the input mask (see below).</td>
+          </tr>
+          <tr>
+            <td>placeholder</td>
+            <td>string</td>
+            <td>'_'</td>
+            <td>The character that is displayed where something needs to be typed.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Format</h3>
+    <p>Each typed character needs to match exactly one character in the <code>mask</code> option.</p>
+    
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr><th>Character</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>9</td><td>Number</td></tr>
+          <tr><td>a</td><td>Letter</td></tr>
+          <tr><td>?</td><td>Alphanumeric</td></tr>
+          <tr><td>*</td><td>Any character</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Methods</h3>
+    
+    <h4>.inputmask(options)</h4>
+    <p>Initializes an input element with an input mask.</p>
+  </div>
+
+  
+  
+  <!-- File input
+  ================================================== -->
+  <div class="bs-docs-section bs-jasny">
+    <div class="page-header">
+      <h1 id="fileinput">File input <small>fileinput.js</small></h1>
+    </div>
+
+    <h2 id="fileinput-examples">Examples</h2>
+    <p>The file input plugin allows you to create a visually appealing file or image input widgets.</p>
+
+    <h3>File input widgets</h3>
+    <div class="bs-example">
+      <div class="fileinput fileinput-new" data-provides="fileinput">
+        <div class="input-group">
+          <div class="form-control uneditable-input span3" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+          <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Select file</span><span class="fileinput-exists">Change</span><input type="file"></span>
+          <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+        </div>
+      </div>
+    </div>
+{% highlight html %}
+<div class="fileinput fileinput-new" data-provides="fileinput">
+  <div class="input-group">
+    <div class="form-control uneditable-input span3" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+    <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Select file</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+  </div>
+</div>
+{% endhighlight %}
+
+    <div class="bs-example">
+      <div class="fileinput fileinput-new" data-provides="fileinput">
+        <span class="btn btn-default btn-file"><span class="fileinput-new">Select file</span><span class="fileinput-exists">Change</span><input type="file"></span>
+        <span class="fileinput-filename"></span>
+        <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
+      </div>
+    </div>
+{% highlight html %}
+<div class="fileinput fileinput-new" data-provides="fileinput">
+  <span class="btn btn-default btn-file"><span class="fileinput-new">Select file</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+  <span class="fileinput-filename"></span>
+  <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
+</div>
+{% endhighlight %}
+
+    <h3>Image upload widgets</h3>
+    <p>When uploading an image, it's possible to show a thumbnail instead of the filename.</p>
+    <div class="bs-example">
+      <div class="fileinput fileinput-new" data-provides="fileinput">
+        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+        <div>
+          <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file"></span>
+          <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+        </div>
+      </div>
+    </div>
+{% highlight html %}
+<div class="fileinput fileinput-new" data-provides="fileinput">
+  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+  <div>
+    <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+  </div>
+</div>
+{% endhighlight %}
+
+    <div class="bs-example">
+      <div class="fileinput fileinput-new" data-provides="fileinput">
+        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+          <img data-src="holder.js/100%x100%" alt="Generic placeholder thumbnail" src="data:image/png;base64,">
+        </div>
+        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+        <div>
+          <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file"></span>
+          <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+        </div>
+      </div>
+    </div>
+{% highlight html %}
+<div class="fileinput fileinput-new" data-provides="fileinput">
+  <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+    <img data-src="holder.js/100%x100%" alt="...">
+  </div>
+  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+  <div>
+    <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+  </div>
+</div>
+{% endhighlight %}
+
+    <div class="bs-callout bs-callout-warning">
+      <p>Image preview only works in IE10+, FF3.6+, Safari6.0+, Chrome6.0+ and Opera11.1+. In older browsers the filename is shown instead.</p>
+    </div>
+
+    <hr class="bs-docs-separator">
+
+
+    <h2 id="fileinput-usage">Usage</h2>
+    <p>Add <code>.fileinput</code> to the container. Elements inside the container with <code>.fileinput-new</code> and <code>.fileinput-exists</code> are shown or hidden based on the current state. A preview of the selected file is placed in <code>.fileinput-preview</code>. The text of <code>.fileinput-filename</code> gets set to the name of the selected file.</p>
+    <p>The file input widget should be placed in a regular <code>&lt;form&gt;</code> replacing a standard <code>&lt;input type="file"&gt;</code>. The server side code should handle the file upload as normal.</p>
+    
+    <h3>Via data attributes</h3>
+    <p>Add <code>data-provides="fileinput"</code> to the <code>.fileinput</code> element. Implement a button to clear the file with <code>data-dismiss="fileinput"</code>. Add <code>data-trigger="fileinput"</code> to any element within the <code>.fileinput</code> widget to trigger the file dialog.</p>
+
+    <h3>Via JavaScript</h3>
+    <pre class="prettyprint linenums">$('.fileinput').fileinput()</pre>
+
+    <h3>Layout</h3>
+    <p>Using the given elements, you can layout the upload widget the way you want, either with a fixed <code>width</code> and <code>height</code> or with <code>max-width</code> and <code>max-height</code>.</p>
+
+    <h3>Options</h3>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th style="width: 100px;">Name</th>
+            <th style="width: 50px;">type</th>
+            <th>description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>name</td>
+            <td>string</td>
+            <td>Use this option instead of setting the <code>name</code> attribute on the <code>&lt;input&gt;</code> element to prevent it from being part of the post data when not changed.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <h3>Methods</h3>
+    <h4>.fileinput(options)</h4>
+    <p>Initializes a file upload widget.</p>
+    <h4>.fileinput('clear')</h4>
+    <p>Clear the selected file.</p>
+    <h4>.fileinput('reset')</h4>
+    <p>Reset the form element to the original value.</p>
+    
+    <h3>Events</h3>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th style="width: 150px;">Event Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>change.bs.fileinput</td>
+            <td>This event is fired after a file is selected.</td>
+          </tr>
+          <tr>
+            <td>clear.bs.fileinput</td>
+            <td>This event is fired when the file input is cleared.</td>
+          </tr>
+          <tr>
+            <td>reset.bs.fileinput</td>
+            <td>This event is fired when the file input is reset.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div><!-- ./bs-table-responsive -->
+  </div>
+  

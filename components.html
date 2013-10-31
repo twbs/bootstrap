@@ -1525,7 +1525,7 @@ base_url: "../"
 
 
     <h2 id="input-groups-basic">Basic example</h2>
-    <form class="bs-example bs-example-form" role="form">
+    <form action="#" class="bs-example bs-example-form" role="form">
       <div class="input-group">
         <span class="input-group-addon">@</span>
         <input type="text" class="form-control" placeholder="Username">
@@ -1931,6 +1931,76 @@ base_url: "../"
 </ul>
 {% endhighlight %}
 
+    <h2 id="nav-alignment">Alignment options</h2>
+    <p>Tabs can be placed on any side of the content using <code>.nav-tabs-bottom</code> <code>.nav-tabs-left</code> or <code>.nav-tabs-right</code>. Use the <a href="../css/#grid">grid system</a> to place the tabs on the left or the right.</p>
+
+    <h3>Tabs on the bottom</h3>
+    <div class="bs-example">
+      <ul class="nav nav-tabs nav-tabs-bottom">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Messages</a></li>
+      </ul>
+    </div>
+{% highlight html %}
+<ul class="nav nav-tabs nav-tabs-bottom">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">Profile</a></li>
+  <li><a href="#">Messages</a></li>
+</ul>
+{% endhighlight %}
+
+    <h3>Tabs on the left</h3>
+    <div class="bs-example">
+      <div class="row">
+        <ul class="nav nav-tabs nav-tabs-left col-sm-2">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Messages</a></li>
+        </ul>
+        <div class="tab-content col-sm-10">
+          <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        </div>
+      </div>
+    </div>
+{% highlight html %}
+<div class="row">
+  <ul class="nav nav-tabs nav-tabs-left col-sm-2">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Messages</a></li>
+  </ul>
+  <div class="tab-content col-sm-10">
+    <p>...</p>
+  </div>
+</div>
+{% endhighlight %}
+
+    <h3>Tabs on the right</h3>
+    <div class="bs-example">
+      <div class="row">
+        <ul class="nav nav-tabs nav-tabs-right col-sm-2 col-sm-push-10">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Messages</a></li>
+        </ul>
+        <div class="tab-content col-sm-10 col-sm-pull-2">
+          <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        </div>
+      </div>
+    </div>
+{% highlight html %}
+<div class="row">
+  <ul class="nav nav-tabs nav-tabs-right col-sm-2 col-sm-push-10">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Messages</a></li>
+  </ul>
+  <div class="tab-content col-sm-10 col-sm-pull-2">
+    <p>...</p>
+  </div>
+</div>
+{% endhighlight %}
 
     <h2 id="nav-dropdowns">Using dropdowns</h2>
     <p>Add dropdown menus with a little extra HTML and the <a href="../javascript/#dropdowns">dropdowns JavaScript plugin</a>.</p>
@@ -2369,9 +2439,81 @@ body { padding-bottom: 70px; }
       </nav>
     </div><!-- /example -->
 {% highlight html %}
-<nav class="navbar navbar-default navbar-static-top" role="navigation">
+<div class="navbar navbar-default navbar-static-top" role="navigation">
   ...
-</nav>
+</div>
+{% endhighlight %}
+
+
+    <h2 id="navbar-responsive">Responsive navbar</h2>
+    <p>To implement a collapsing responsive navbar, wrap your navbar content in a containing div, <code>.nav-collapse.collapse</code>, and add the navbar toggle button, <code>.navbar-toggle</code>.</p>
+    <div class="bs-example">
+      <div class="navbar">
+        <div class="container">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Title</a>
+          <div class="nav-collapse collapse navbar-responsive-collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Dropdown header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="navbar-form pull-left">
+              <input type="text" class="form-control col-lg-8" placeholder="Search">
+            </form>
+            <ul class="nav navbar-nav pull-right">
+              <li><a href="#">Link</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!-- /.nav-collapse -->
+        </div><!-- /.container -->
+      </div><!-- /.navbar -->
+    </div><!-- /example -->
+{% highlight html %}
+<div class="navbar">
+  <div class="container">
+
+    <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+
+    <!-- Be sure to leave the brand out there if you want it shown -->
+    <a class="navbar-brand" href="#">Title</a>
+
+    <!-- Place everything within .nav-collapse to hide it until above 768px -->
+    <div class="nav-collapse collapse navbar-responsive-collapse">
+      ...
+    </div><!-- /.nav-collapse -->
+  </div><!-- /.container -->
+</div><!-- /.navbar -->
 {% endhighlight %}
 
 
@@ -2402,6 +2544,162 @@ body { padding-bottom: 70px; }
     </div><!-- /example -->
 {% highlight html %}
 <nav class="navbar navbar-inverse" role="navigation">
+  ...
+</nav>
+{% endhighlight %}
+
+  </div>
+
+
+
+  <!-- Navmenu
+  ================================================== -->
+  <div class="bs-docs-section bs-jasny">
+    <div class="page-header">
+      <h1 id="navmenu">Navmenu</h1>
+    </div>
+
+    <h2 id="navmenu-default">Default navmenu</h2>
+    <p>Navmenu is a vertical navigation component. By default it shares it look and feel with the navmenu component.</p>
+
+    <div class="bs-callout bs-callout-info">
+      <h4>Custom width</h4>
+      <p>The navmenu is 300px wide by default. You can change this by customizing the <code>@navmenu-width</code> variable or by setting the width of <code>.navmenu</code> in your CSS.</p>
+    </div>
+
+    <div class="bs-example">
+      <nav class="navmenu navmenu-default" role="navigation">
+        <a class="navmenu-brand" href="#">Brand</a>
+
+        <ul class="nav navmenu-nav">
+          <li class="active"><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+            <ul class="dropdown-menu navmenu-nav" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+{% highlight html %}
+<nav class="navmenu navmenu-default" role="navigation">
+  <a class="navmenu-brand" href="#">Brand</a>
+
+  <ul class="nav navmenu-nav">
+    <li class="active"><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+      <ul class="dropdown-menu navmenu-nav" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li><a href="#">Separated link</a></li>
+        <li><a href="#">One more separated link</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+{% endhighlight %}
+
+    <div class="bs-callout bs-callout-warning">
+      <h4>Make navmenus accessible</h4>
+      <p>Be sure to add a <code>role="navigation"</code> to every navmenu to help with accessibility.</p>
+    </div>
+
+
+    <h2 id="navmenu-fixed">Fixed to left or right</h2>
+    <p>Add either <code>.navmenu-fixed-left</code> or <code>.navmenu-fixed-right</code>.</p>
+    <div class="bs-example bs-navmenu-fixed-example">
+      <nav class="navmenu navmenu-default navmenu-fixed-left" role="navigation">
+        <a class="navmenu-brand" href="#">Brand</a>
+        <ul class="nav navmenu-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+        </ul>
+      </nav>
+    </div><!-- /example -->
+{% highlight html %}
+<nav class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm" role="navigation">
+  ...
+</nav>
+{% endhighlight %}
+
+    <div class="bs-callout bs-callout-danger">
+      <h4>Body padding required</h4>
+      <p>The fixed navmenu will overlay your other content, unless you add <code>padding</code> to the left or right of the <code>&lt;body&gt;</code>. Try out your own values or use our snippet below. Tip: By default, the navmenu is 300px wide.</p>
+{% highlight css %}
+@media (min-width: 992px) {
+  body {
+    padding-left: 300px;
+  }
+}
+{% endhighlight %}
+      <p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
+    </div>
+
+
+    <h2 id="navmenu-offcanvas">Off canvas</h2>
+    <p>With the <a href="../javascript/#offcanvas">offcanvas plugin</a>, you can hide the navmenu off canvas. This is especially useful for screens with a small viewport.</p>
+    <div class="bs-example bs-navmenu-offcanvas-example">
+      <div id="myNavmenuCanvas">
+        <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+          <a class="navmenu-brand" href="#">Brand</a>
+          <ul class="nav navmenu-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+        </nav>
+        <div class="navbar navbar-default navbar-fixed-top">
+          <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="#myNavmenuCanvas" data-placement="left">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in aliquet nisl. Praesent sed leo congue, fringilla eros eu, tempus metus. Nam mollis odio ipsum, non vehicula ipsum accumsan sodales. Morbi varius vitae elit euismod cursus. Donec a dapibus justo, in facilisis nisi. Suspendisse ut turpis dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dui risus, tincidunt at odio ut, ultrices dignissim ipsum. Cras ultrices erat nec leo luctus varius. Nulla sollicitudin tincidunt nulla, ut porta mauris volutpat vitae. Suspendisse ornare dolor sit amet massa venenatis pulvinar.</p>
+      </div>
+    </div><!-- /example -->
+{% highlight html %}
+<nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+...
+</nav>
+<div class="navbar navbar-default navbar-fixed-top">
+  <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+</div>
+{% endhighlight %}
+
+    <div class="bs-callout bs-callout-info">
+      <h4>Examples</h4>
+      <p>There is a full example for an <a href="../examples/navmenu-push/">off canvas push menu</a> as well as examples for an off canvas navmenu with an <a href="../examples/navmenu/">slide in</a> and <a href="../examples/navmenu-reveal/">reveal</a> effect.</p>
+    </div>
+    
+    <h2 id="navmenu-inverted">Inverted navmenu</h2>
+    <p>Modify the look of the navmenu by adding <code>.navmenu-inverse</code>.</p>
+    <div class="bs-example">
+      <nav class="navmenu navmenu-inverse" role="navigation">
+        <a class="navmenu-brand" href="#">Brand</a>
+        <ul class="nav navmenu-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+        </ul>
+      </nav>
+    </div><!-- /example -->
+{% highlight html %}
+<nav class="navmenu navmenu-inverse" role="navigation">
   ...
 </nav>
 {% endhighlight %}
@@ -2866,34 +3164,35 @@ body { padding-bottom: 70px; }
 
   <!-- Alerts
   ================================================== -->
-  <div class="bs-docs-section">
+  <div class="bs-docs-section bs-jasny">
     <div class="page-header">
       <h1 id="alerts">Alerts</h1>
     </div>
-    <p class="lead">Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages. For inline dismissal, use the <a href="../javascript/#alerts">alerts jQuery plugin</a>.</p>
+    <div class="bs-twbs">
+      <p class="lead">Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages. For inline dismissal, use the <a href="../javascript/#alerts">alerts jQuery plugin</a>.</p>
 
-    <h2 id="alerts-examples">Examples</h2>
-    <p>Wrap any text and an optional dismiss button in <code>.alert</code> and one of the four contextual classes (e.g., <code>.alert-success</code>) for basic alert messages.</p>
+      <h2 id="alerts-examples">Examples</h2>
+      <p>Wrap any text and an optional dismiss button in <code>.alert</code> and one of the four contextual classes (e.g., <code>.alert-success</code>) for basic alert messages.</p>
 
-    <div class="bs-callout bs-callout-info">
-      <h4>No default class</h4>
-      <p>Alerts don't have default classes, only base and modifier classes. A default gray alert doesn't make too much sense, so you're required to specify a type via contextual class. Choose from success, info, warning, or danger.</p>
-    </div>
+      <div class="bs-callout bs-callout-info">
+        <h4>No default class</h4>
+        <p>Alerts don't have default classes, only base and modifier classes. A default gray alert doesn't make too much sense, so you're required to specify a type via contextual class. Choose from success, info, warning, or danger.</p>
+      </div>
 
-    <div class="bs-example">
-      <div class="alert alert-success">
-        <strong>Well done!</strong> You successfully read this important alert message.
+      <div class="bs-example">
+        <div class="alert alert-success">
+          <strong>Well done!</strong> You successfully read this important alert message.
+        </div>
+        <div class="alert alert-info">
+          <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+        </div>
+        <div class="alert alert-warning">
+          <strong>Warning!</strong> Best check yo self, you're not looking too good.
+        </div>
+        <div class="alert alert-danger">
+          <strong>Oh snap!</strong> Change a few things up and try submitting again.
+        </div>
       </div>
-      <div class="alert alert-info">
-        <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
-      </div>
-      <div class="alert alert-warning">
-        <strong>Warning!</strong> Best check yo self, you're not looking too good.
-      </div>
-      <div class="alert alert-danger">
-        <strong>Oh snap!</strong> Change a few things up and try submitting again.
-      </div>
-    </div>
 {% highlight html %}
 <div class="alert alert-success">...</div>
 <div class="alert alert-info">...</div>
@@ -2901,12 +3200,12 @@ body { padding-bottom: 70px; }
 <div class="alert alert-danger">...</div>
 {% endhighlight %}
 
-    <h2 id="alerts-dismissable">Dismissable alerts</h2>
-    <p>Build on any alert by adding an optional <code>.alert-dismissable</code> and close button.</p>
-    <div class="bs-example">
-      <div class="alert alert-warning alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Warning!</strong> Best check yo self, you're not looking too good.
+      <h2 id="alerts-dismissable">Dismissable alerts</h2>
+      <p>Build on any alert by adding an optional <code>.alert-dismissable</code> and close button.</p>
+      <div class="bs-example">
+        <div class="alert alert-warning alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <strong>Warning!</strong> Best check yo self, you're not looking too good.
       </div>
     </div>
 {% highlight html %}
@@ -2916,27 +3215,27 @@ body { padding-bottom: 70px; }
 </div>
 {% endhighlight %}
 
-    <div class="bs-callout bs-callout-warning">
-      <h4>Ensure proper behavior across all devices</h4>
-      <p>Be sure to use the <code>&lt;button&gt;</code> element with the <code>data-dismiss="alert"</code> data attribute.</p>
-    </div>
+      <div class="bs-callout bs-callout-warning">
+        <h4>Ensure proper behavior across all devices</h4>
+        <p>Be sure to use the <code>&lt;button&gt;</code> element with the <code>data-dismiss="alert"</code> data attribute.</p>
+      </div>
 
-    <h2 id="alerts-links">Links in alerts</h2>
-    <p>Use the <code>.alert-link</code> utility class to quickly provide matching colored links within any alert.</p>
-    <div class="bs-example">
-      <div class="alert alert-success">
-        <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
+      <h2 id="alerts-links">Links in alerts</h2>
+      <p>Use the <code>.alert-link</code> utility class to quickly provide matching colored links within any alert.</p>
+      <div class="bs-example">
+        <div class="alert alert-success">
+          <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
+        </div>
+        <div class="alert alert-info">
+          <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
+        </div>
+        <div class="alert alert-warning">
+          <strong>Warning!</strong> Best check yo self, you're <a href="#" class="alert-link">not looking too good</a>.
+        </div>
+        <div class="alert alert-danger">
+          <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+        </div>
       </div>
-      <div class="alert alert-info">
-        <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
-      </div>
-      <div class="alert alert-warning">
-        <strong>Warning!</strong> Best check yo self, you're <a href="#" class="alert-link">not looking too good</a>.
-      </div>
-      <div class="alert alert-danger">
-        <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
-      </div>
-    </div>
 {% highlight html %}
 <div class="alert alert-success">
   <a href="#" class="alert-link">...</a>
@@ -2951,6 +3250,21 @@ body { padding-bottom: 70px; }
   <a href="#" class="alert-link">...</a>
 </div>
 {% endhighlight %}
+    </div>
+
+    <h2 id="alerts-fixed">Fixed to top / bottom</h2>
+    <p>Add <code>.alert-fixed-top</code> top stick the alert on top of your page. Use <code>.alert-fixed-bottom</code> for the bottom.</p>
+    <div class="bs-example">
+      <div class="alert alert-success alert-fixed-top">
+        <strong>Well done!</strong> You successfully read this important alert message.
+      </div>
+    </div>
+{% highlight html %}
+<div class="alert alert-success alert-fixed-top">
+  <strong>Success!</strong> Your action has been completed succefully.
+</div>
+{% endhighlight %}
+
   </div>
 
 

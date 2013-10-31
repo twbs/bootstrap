@@ -96,6 +96,12 @@ base_url: "../"
         </div>
         <div class="checkbox">
           <label>
+            <input type="checkbox" checked value="navmenu.less" data-dependencies="utilities.less,navs.less">
+            Navmenu
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
             <input type="checkbox" checked value="breadcrumbs.less">
             Breadcrumbs
           </label>
@@ -212,6 +218,30 @@ base_url: "../"
             Carousel
           </label>
         </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="offcanvas.less">
+            Off canvas
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="rowlink.less">
+            Row link
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="inputmask.less">
+            Input mask
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="fileinput.less">
+            File input
+          </label>
+        </div>
 
         <h3>Utilities</h3>
         <div class="checkbox">
@@ -295,6 +325,24 @@ base_url: "../"
             Togglable tabs
           </label>
         </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="rowlink.js">
+            Row link
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="inputmask.js">
+            Input mask
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="fileinput.js">
+            File input
+          </label>
+        </div>
       </div>
       <div class="col-lg-6">
         <h4>Magic</h4>
@@ -314,6 +362,12 @@ base_url: "../"
           <label>
             <input type="checkbox" checked value="scrollspy.js">
             Scrollspy
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="offcanvas.js">
+            Off canvas
           </label>
         </div>
         <div class="checkbox">
@@ -857,6 +911,89 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="#fff" data-var="@navbar-inverse-toggle-icon-bar-bg">
         <label>@navbar-inverse-toggle-border-color</label>
         <input type="text" class="form-control" placeholder="#333" data-var="@navbar-inverse-toggle-border-color">
+      </div>
+    </div>
+
+
+    <h2 id="variables-navmenu">Navmenu</h2>
+    <div class="row">
+      <div class="col-lg-6">
+        <h3>Default navmenu</h3>
+        <h4>Basics</h4>
+        <label>@navmenu-width</label>
+        <input type="text" class="form-control" placeholder="300px" data-var="@navmenu-width">
+        <label>@navmenu-default-color</label>
+        <input type="text" class="form-control" placeholder="#777" data-var="@navmenu-default-color">
+        <label>@navmenu-default-bg</label>
+        <input type="text" class="form-control" placeholder="#eee" data-var="@navmenu-default-bg">
+        <label>@navmenu-border-radius</label>
+        <input type="text" class="form-control" placeholder="@border-radius-base" data-var="@navmenu-border-radius">
+        <h4>Links</h4>
+        <label>@navmenu-default-link-color</label>
+        <input type="text" class="form-control" placeholder="#777" data-var="@navmenu-default-link-color">
+        <label>@navmenu-default-link-hover-color</label>
+        <input type="text" class="form-control" placeholder="#333" data-var="@navmenu-default-link-hover-color">
+        <label>@navmenu-default-link-hover-bg</label>
+        <input type="text" class="form-control" placeholder="transparent" data-var="@navmenu-default-link-hover-bg">
+        <label>@navmenu-default-link-active-color</label>
+        <input type="text" class="form-control" placeholder="#555" data-var="@navmenu-default-link-active-color">
+        <label>@navmenu-default-link-active-bg</label>
+        <input type="text" class="form-control" placeholder="darken(@navmenu-bg, 10%)" data-var="@navmenu-default-link-active-bg">
+        <label>@navmenu-default-link-disabled-color</label>
+        <input type="text" class="form-control" placeholder="#ccc" data-var="@navmenu-default-link-disabled-color">
+        <label>@navmenu-default-link-disabled-bg</label>
+        <input type="text" class="form-control" placeholder="transparent" data-var="@navmenu-default-link-disabled-bg">
+        <h4>Brand</h4>
+        <label>@navmenu-default-brand-color</label>
+        <input type="text" class="form-control" placeholder="@navmenu-link-color" data-var="@navmenu-default-brand-color">
+        <label>@navmenu-default-brand-hover-color</label>
+        <input type="text" class="form-control" placeholder="darken(@navmenu-link-color, 10%)" data-var="@navmenu-default-brand-hover-color">
+        <label>@navmenu-default-brand-hover-bg</label>
+        <input type="text" class="form-control" placeholder="transparent" data-var="@navmenu-default-brand-hover-bg">
+        <h4>Toggle</h4>
+        <label>@navmenu-default-toggle-hover-bg</label>
+        <input type="text" class="form-control" placeholder="#ddd" data-var="@navmenu-default-toggle-hover-bg">
+        <label>@navmenu-default-toggle-icon-bar-bg</label>
+        <input type="text" class="form-control" placeholder="#ccc" data-var="@navmenu-default-toggle-icon-bar-bg">
+        <label>@navmenu-default-toggle-border-color</label>
+        <input type="text" class="form-control" placeholder="#ddd" data-var="@navmenu-default-toggle-border-color">
+      </div>
+      <div class="col-lg-6">
+        <h3>Inverted navmenu</h3>
+        <h4>Basics</h4>
+        <label>@navmenu-inverse-color</label>
+        <input type="text" class="form-control" placeholder="@gray-light" data-var="@navmenu-inverse-color">
+        <label>@navmenu-inverse-bg</label>
+        <input type="text" class="form-control" placeholder="#222" data-var="@navmenu-inverse-bg">
+        <h4>Links</h4>
+        <label>@navmenu-inverse-link-color</label>
+        <input type="text" class="form-control" placeholder="@gray-light" data-var="@navmenu-inverse-link-color">
+        <label>@navmenu-inverse-link-hover-color</label>
+        <input type="text" class="form-control" placeholder="#fff" data-var="@navmenu-inverse-link-hover-color">
+        <label>@navmenu-inverse-link-hover-bg</label>
+        <input type="text" class="form-control" placeholder="transparent" data-var="@navmenu-inverse-link-hover-bg">
+        <label>@navmenu-inverse-link-active-color</label>
+        <input type="text" class="form-control" placeholder="@navmenu-inverse-link-hover-color" data-var="@navmenu-inverse-link-active-color">
+        <label>@navmenu-inverse-link-active-bg</label>
+        <input type="text" class="form-control" placeholder="darken(@navmenu-inverse-bg, 10%)" data-var="@navmenu-inverse-link-active-bg">
+        <label>@navmenu-inverse-link-disabled-color</label>
+        <input type="text" class="form-control" placeholder="#444" data-var="@navmenu-inverse-link-disabled-color">
+        <label>@navmenu-inverse-link-disabled-bg</label>
+        <input type="text" class="form-control" placeholder="transparent" data-var="@navmenu-inverse-link-disabled-bg">
+        <h4>Brand</h4>
+        <label>@navmenu-inverse-brand-color</label>
+        <input type="text" class="form-control" placeholder="@navmenu-inverse-link-color" data-var="@navmenu-inverse-brand-color">
+        <label>@navmenu-inverse-brand-hover-color</label>
+        <input type="text" class="form-control" placeholder="#fff" data-var="@navmenu-inverse-brand-hover-color">
+        <label>@navmenu-inverse-brand-hover-bg</label>
+        <input type="text" class="form-control" placeholder="transparent" data-var="@navmenu-inverse-brand-hover-bg">
+        <h4>Toggle</h4>
+        <label>@navmenu-inverse-toggle-hover-bg</label>
+        <input type="text" class="form-control" placeholder="#333" data-var="@navmenu-inverse-toggle-hover-bg">
+        <label>@navmenu-inverse-toggle-icon-bar-bg</label>
+        <input type="text" class="form-control" placeholder="#fff" data-var="@navmenu-inverse-toggle-icon-bar-bg">
+        <label>@navmenu-inverse-toggle-border-color</label>
+        <input type="text" class="form-control" placeholder="#333" data-var="@navmenu-inverse-toggle-border-color">
       </div>
     </div>
 
