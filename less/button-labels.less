@@ -1,0 +1,37 @@
+// Labels for buttons
+// --------------------------------------------------
+
+// Mixin
+.button-label-size(@padding-vertical; @padding-horizontal; @border-radius) {
+  padding: @padding-vertical @padding-horizontal;
+  left: (-1 * @padding-horizontal);
+  border-radius: (@border-radius - 1px) 0 0 (@border-radius - 1px);
+
+  &.btn-label-right {
+    left: auto;
+    right: (-1 * @padding-horizontal);
+    border-radius: 0 (@border-radius - 1px) (@border-radius - 1px) 0;
+  }
+}
+
+.btn-labeled {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.btn-label {
+  position: relative;
+  background: rgba(0, 0, 0, 0.15);
+  display: inline-block;
+  .button-label-size(@padding-base-vertical; @padding-base-horizontal; @border-radius-base);
+}
+
+.btn-lg .btn-label {
+  .button-label-size(@padding-large-vertical; @padding-large-horizontal; @border-radius-large);
+}
+.btn-sm .btn-label {
+  .button-label-size(@padding-small-vertical; @padding-small-horizontal; @border-radius-small);
+}
+.btn-xs .btn-label {
+  .button-label-size(1px; 5px; @border-radius-small);
+}
