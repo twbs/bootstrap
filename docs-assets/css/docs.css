@@ -998,6 +998,7 @@ h1[id] {
   margin-bottom: 10px;
 }
 .responsive-utilities-test span {
+  display: block;
   padding: 15px 10px;
   font-size: 14px;
   font-weight: bold;
