@@ -557,7 +557,7 @@
 @mixin progress-bar-variant($color) {
   background-color: $color;
   .progress-striped & {
-    @extend .gradient-striped;
+    @include gradient-striped();
   }
 }
 
@@ -574,8 +574,7 @@
 
 // [converter] $parent hack
 @mixin responsive-invisibility($parent) {
-  #{$parent} {  }
-  &,
+    #{$parent},
   tr#{$parent},
   th#{$parent},
   td#{$parent} { display: none !important; }
