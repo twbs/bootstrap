@@ -1405,7 +1405,13 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
     <h2 id="tables-responsive">Responsive tables</h2>
-    <p>Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code> to make them scroll horizontally up to small devices (under 768px). When viewing on anything larger than 768px wide, you will not see any difference in these tables.</p>
+    <p>Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code> to make them scroll horizontally up to small devices. When viewing on a larger device, you will not see any difference in these tables.</p>
+
+    <div class="bs-callout bs-callout-info">
+      <h4>Customize the collapsing point</h4>
+      <p>Depending on the content in your tables, you might need to change the point at which your tables switches between the normal and responsive mode. Customize the <code>@grid-float-breakpoint</code> variable or add your own media query.</p>
+    </div>
+
     <div class="bs-example">
       <div class="table-responsive">
         <table class="table">
