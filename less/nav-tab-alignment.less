@@ -1,0 +1,97 @@
+// Alignment options
+// -------------------------
+
+// bottom
+.nav-tabs-bottom {
+  border-bottom: 0;
+  border-top: 1px solid @nav-tabs-border-color;
+
+  > li {
+    margin-bottom: 0;
+    margin-top: -1px;
+
+    > a {
+      border-radius: 0 0 @border-radius-base @border-radius-base;
+    }
+
+    > a:hover,
+    > a:focus,
+    &.active > a,
+    &.active > a:hover,
+    &.active > a:focus {
+      border: 1px solid @nav-tabs-active-link-hover-border-color;
+      border-top-color: transparent;
+    }
+  }
+}
+
+// left
+.nav-tabs-left {
+  border-bottom: 0;
+  border-right: 1px solid @nav-tabs-border-color;
+
+  > li {
+    margin-bottom: 0;
+    margin-right: -1px;
+    float: none;
+
+    > a {
+      border-radius: @border-radius-base 0 0 @border-radius-base;
+      margin-right: 0;
+      margin-bottom: 2px;
+    }
+
+    > a:hover,
+    > a:focus,
+    &.active > a,
+    &.active > a:hover,
+    &.active > a:focus {
+      border: 1px solid @nav-tabs-active-link-hover-border-color;
+      border-right-color: transparent;
+    }
+  }
+
+  .row > & {
+    padding-right: 0;
+    padding-left: (@grid-gutter-width / 2);
+    margin-right: -1px;
+    position: relative;
+    z-index: 1;
+
+    & + .tab-content {
+      border-left: 1px solid @nav-tabs-active-link-hover-border-color;
+    }
+  }
+}
+
+// right
+.nav-tabs-right {
+  border-bottom: 0;
+  border-left: 1px solid @nav-tabs-border-color;
+
+  > li {
+    margin-bottom: 0;
+    margin-left: -1px;
+    float: none;
+
+    > a {
+      border-radius: 0 @border-radius-base @border-radius-base 0;
+      margin-left: 0;
+      margin-bottom: 2px;
+    }
+
+    > a:hover,
+    > a:focus,
+    &.active > a,
+    &.active > a:hover,
+    &.active > a:focus {
+      border: 1px solid @nav-tabs-active-link-hover-border-color;
+      border-left-color: transparent;
+    }
+  }
+
+  .row > & {
+    padding-left: 0;
+    padding-right: (@grid-gutter-width / 2);
+  }
+}
