@@ -3,7 +3,7 @@ GEM
   specs:
     rake (10.1.0)
     rb-fsevent (0.9.3)
-    sass (3.2.10)
+    sass (3.2.12)
 
 PLATFORMS
   ruby
