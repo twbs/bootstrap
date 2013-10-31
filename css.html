@@ -1516,16 +1516,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h3>Selects</h3>
-    <p>Use the default option, or add <code>multiple</code> to show multiple options at once.</p>
+    <p>Simply add a container with <code>.select-container</code> around the select element to style it properly. You can also add <code>multiple</code> to show multiple options at once.</p>
     <div class="bs-example">
       <form role="form">
-        <select class="form-control">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
+        <div class="select-container">
+          <select class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
         <br>
         <select multiple class="form-control">
           <option>1</option>
@@ -1537,13 +1539,15 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </form>
     </div><!-- /.bs-example -->
 {% highlight html %}
-<select class="form-control">
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-  <option>4</option>
-  <option>5</option>
-</select>
+<div class="select-container">
+  <select class="form-control">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+</div>
 
 <select multiple class="form-control">
   <option>1</option>

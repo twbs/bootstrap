@@ -54,6 +54,25 @@ input[type="file"] {
   display: block;
 }
 
+// TOBI - Add relative position to container
+.select-container {
+  position: relative;
+}
+
+// TOBI - Allows arrow to be rendererd
+.select-container:after {
+  border-color: transparent;
+  border-style: solid;
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border-width: 5px;
+  border-top-color: #ccc;
+}
+
 // Make multiple select elements height not fixed
 select[multiple],
 select[size] {
@@ -158,6 +177,22 @@ output {
   // Reset height for `textarea`s
   textarea& {
     height: auto;
+  }
+
+  // TOBI - Remove default browser styling of select elements
+  select& {
+    cursor: pointer;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+
+    /* remove arrow in mozilla */
+    text-indent: 0.01px;
+    text-overflow: "";
+  }
+
+  // TOBI - Hide arrow in IE10
+  select&::-ms-expand {
+      display: none;
   }
 }
 
