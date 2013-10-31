@@ -14,7 +14,7 @@ module.exports = function(grunt) {
               ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
               ' * Licensed under <%= _.pluck(pkg.licenses, "url").join(", ") %>\n' +
               ' *\n' +
-              ' * Designed and built with all the love in the world by @mdo and @fat.\n' +
+              ' * To get started, check out http://getbootstrap.com.\n' +
               ' */\n\n',
     jqueryCheck: 'if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery") }\n\n',
 
