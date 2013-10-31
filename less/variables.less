@@ -203,6 +203,8 @@
 @zindex-popover:           1010;
 @zindex-tooltip:           1030;
 @zindex-navbar-fixed:      1030;
+@zindex-navmenu-fixed:     1030;
+@zindex-alert-fixed:       1035;
 @zindex-modal-background:  1040;
 @zindex-modal:             1050;
 
@@ -309,6 +311,60 @@
 @navbar-inverse-toggle-hover-bg:            #333;
 @navbar-inverse-toggle-icon-bar-bg:         #fff;
 @navbar-inverse-toggle-border-color:        #333;
+
+
+// Navmenu
+// -------------------------
+
+// Basics of a navmenu
+@navmenu-width:                     300px;
+@navmenu-margin-vertical:           0.5 * @line-height-computed;
+@navmenu-default-color:             #777;
+@navmenu-default-bg:                #f8f8f8;
+@navmenu-default-border:            darken(@navmenu-default-bg, 6.5%);
+
+// Navmenu links
+@navmenu-default-link-color:                #777;
+@navmenu-default-link-hover-color:          #333;
+@navmenu-default-link-hover-bg:             transparent;
+@navmenu-default-link-active-color:         #555;
+@navmenu-default-link-active-bg:            darken(@navmenu-default-bg, 6.5%);
+@navmenu-default-link-disabled-color:       #ccc;
+@navmenu-default-link-disabled-bg:          transparent;
+
+// Navmenu brand label
+@navmenu-default-brand-color:               @navmenu-default-link-color;
+@navmenu-default-brand-hover-color:         darken(@navmenu-default-link-color, 10%);
+@navmenu-default-brand-hover-bg:            transparent;
+
+
+// Inverted navmenu
+//
+// Reset inverted navmenu basics
+@navmenu-inverse-color:                      @gray-light;
+@navmenu-inverse-bg:                         #222;
+@navmenu-inverse-border:                     darken(@navmenu-inverse-bg, 10%);
+
+// Inverted navmenu links
+@navmenu-inverse-link-color:                 @gray-light;
+@navmenu-inverse-link-hover-color:           #fff;
+@navmenu-inverse-link-hover-bg:              transparent;
+@navmenu-inverse-link-active-color:          @navmenu-inverse-link-hover-color;
+@navmenu-inverse-link-active-bg:             darken(@navmenu-inverse-bg, 10%);
+@navmenu-inverse-link-disabled-color:        #444;
+@navmenu-inverse-link-disabled-bg:           transparent;
+
+// Inverted navmenu brand label
+@navmenu-inverse-brand-color:                @navmenu-inverse-link-color;
+@navmenu-inverse-brand-hover-color:          #fff;
+@navmenu-inverse-brand-hover-bg:             transparent;
+
+// Inverted navmenu search
+// Normal navmenu needs no special styles or vars
+@navmenu-inverse-search-bg:                  lighten(@navmenu-inverse-bg, 25%);
+@navmenu-inverse-search-bg-focus:            #fff;
+@navmenu-inverse-search-border:              @navmenu-inverse-bg;
+@navmenu-inverse-search-placeholder-color:   #ccc;
 
 
 // Navs
@@ -470,6 +526,8 @@
 @alert-danger-bg:             @state-danger-bg;
 @alert-danger-text:           @state-danger-text;
 @alert-danger-border:         @state-danger-border;
+
+@alert-fixed-width:           @screen-md;
 
 
 // Progress bars

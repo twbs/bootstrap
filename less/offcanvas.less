@@ -1,0 +1,49 @@
+//
+// Off canvas navigation
+// --------------------------------------------------
+
+.offcanvas {
+  display: none;
+  &.in {
+    display: block;
+  }
+}
+
+@media (max-width: @screen-xs-max) {
+  .offcanvas-xs {
+    .offcanvas;
+  }
+}
+@media (max-width: @screen-sm-max) {
+  .offcanvas-sm {
+    .offcanvas;
+  }
+}
+@media (max-width: @screen-md-max) {
+  .offcanvas-md {
+    .offcanvas;
+  }
+}
+.offcanvas-lg {
+  .offcanvas;
+}
+
+.canvas-sliding {
+  -webkit-transition: -webkit-transform 0.35s;
+          transition: transform 0.35s, -ms-transform 0.35s;
+}
+
+.offcanvas-clone {
+  height: 0px !important;
+  width: 0px !important;
+  overflow: hidden !important;
+  border: none !important;
+  margin: 0px !important;
+  padding: 0px !important;
+  position: absolute !important;
+  top: auto !important;
+  left: auto !important;
+  bottom: 0px !important;
+  right: 0px !important;
+  opacity: 0 !important;
+}

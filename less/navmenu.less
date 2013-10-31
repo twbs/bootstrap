@@ -1,0 +1,232 @@
+//
+// Navmenu
+// --------------------------------------------------
+
+
+// Wrapper and base class
+//
+// Provide a static navmenu from which we expand to create the fixed navmenu
+// variations.
+
+.navmenu {
+  width: @navmenu-width;
+  height: 100%;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: @border-radius-base;
+}
+
+.navmenu-fixed-left,
+.navmenu-fixed-right {
+  position: fixed;
+  z-index: @zindex-navmenu-fixed;
+  top: 0;
+  border-radius: 0;
+}
+.navmenu-fixed-left {
+  left: 0;
+  border-width: 0 1px 0 0;
+}
+.navmenu-fixed-right {
+  right: 0;
+  border-width: 0 0 0 1px;
+}
+
+.navmenu-nav {
+  margin-bottom: @navmenu-margin-vertical;
+
+  &.dropdown-menu {
+    position: static;
+    margin: 0;
+    padding-top: 0;
+    float: none;
+    border: none;
+    .box-shadow(none);
+    border-radius: 0;
+  }
+}
+
+// Brand/project name
+
+.navmenu-brand {
+  display: block;
+  font-size: @font-size-large;
+  line-height: @line-height-computed;
+  padding: @nav-link-padding;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+  margin: @navmenu-margin-vertical 0;
+}
+
+// Alternate navmenus
+// --------------------------------------------------
+
+// Default navmenu
+.navmenu-default {
+  background-color: @navmenu-default-bg;
+  border-color: @navmenu-default-border;
+
+  .navmenu-brand {
+    color: @navmenu-default-brand-color;
+    &:hover,
+    &:focus {
+      color: @navmenu-default-brand-hover-color;
+      background-color: @navmenu-default-brand-hover-bg;
+    }
+  }
+
+  .navmenu-text {
+    color: @navmenu-default-color;
+  }
+
+  .navmenu-nav {
+    // Caret should match text color on hover
+    > .dropdown > a:hover .caret,
+    > .dropdown > a:focus .caret {
+      border-top-color: @navmenu-default-link-hover-color;
+      border-bottom-color: @navmenu-default-link-hover-color;
+    }
+
+    // Remove background color from open dropdown
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: @navmenu-default-link-active-bg;
+        color: @navmenu-default-link-active-color;
+        .caret {
+          border-top-color: @navmenu-default-link-active-color;
+          border-bottom-color: @navmenu-default-link-active-color;
+        }
+      }
+    }
+    > .dropdown > a .caret {
+      border-top-color: @navmenu-default-link-color;
+      border-bottom-color: @navmenu-default-link-color;
+    }
+    &.dropdown-menu {
+      background-color: @navmenu-default-link-active-bg;
+      & > .divider {
+        background-color: @navmenu-default-bg;
+      }
+      > .active > a {
+        &,
+        &:hover,
+        &:focus {
+          background-color: darken(@navmenu-default-link-active-bg, 6.5%);
+        }
+      }
+    }
+
+    > li > a {
+      color: @navmenu-default-link-color;
+      &:hover,
+      &:focus {
+        color: @navmenu-default-link-hover-color;
+        background-color: @navmenu-default-link-hover-bg;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navmenu-default-link-active-color;
+        background-color: @navmenu-default-link-active-bg;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navmenu-default-link-disabled-color;
+        background-color: @navmenu-default-link-disabled-bg;
+      }
+    }
+  }
+}
+
+// Inverse navmenu
+.navmenu-inverse {
+  background-color: @navmenu-inverse-bg;
+  border-color: @navmenu-inverse-border;
+
+  .navmenu-brand {
+    color: @navmenu-inverse-brand-color;
+    &:hover,
+    &:focus {
+      color: @navmenu-inverse-brand-hover-color;
+      background-color: @navmenu-inverse-brand-hover-bg;
+    }
+  }
+
+  .navmenu-text {
+    color: @navmenu-inverse-color;
+  }
+
+  .navmenu-nav {
+    // Caret should match text color on hover
+    > .dropdown > a:hover .caret,
+    > .dropdown > a:focus .caret {
+      border-top-color: @navmenu-inverse-link-hover-color;
+      border-bottom-color: @navmenu-inverse-link-hover-color;
+    }
+
+    // Remove background color from open dropdown
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: @navmenu-inverse-link-active-bg;
+        color: @navmenu-inverse-link-active-color;
+        .caret {
+          border-top-color: @navmenu-inverse-link-active-color;
+          border-bottom-color: @navmenu-inverse-link-active-color;
+        }
+      }
+    }
+    > .dropdown > a .caret {
+      border-top-color: @navmenu-inverse-link-color;
+      border-bottom-color: @navmenu-inverse-link-color;
+    }
+    &.dropdown-menu {
+      background-color: @navmenu-inverse-link-active-bg;
+      & > .divider {
+        background-color: @navmenu-inverse-bg;
+      }
+      > .active > a {
+        &,
+        &:hover,
+        &:focus {
+          background-color: darken(@navmenu-inverse-link-active-bg, 6.5%);
+        }
+      }
+    }
+
+    > li > a {
+      color: @navmenu-inverse-link-color;
+      &:hover,
+      &:focus {
+        color: @navmenu-inverse-link-hover-color;
+        background-color: @navmenu-inverse-link-hover-bg;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navmenu-inverse-link-active-color;
+        background-color: @navmenu-inverse-link-active-bg;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navmenu-inverse-link-disabled-color;
+        background-color: @navmenu-inverse-link-disabled-bg;
+      }
+    }
+  }
+}
