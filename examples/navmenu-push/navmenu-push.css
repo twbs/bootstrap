@@ -1,0 +1,34 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  padding: 50px 0 0 0;
+}
+
+.navbar-toggle {
+  float: left;
+  margin-left: 15px;
+}
+
+.navmenu.canvas-sliding,
+.navmenu.canvas-slid {
+  z-index: 2000;
+}
+
+@media (min-width: 0px) {
+  .navbar-toggle {
+    display: block;
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    padding: 0;
+  }
+  .navbar {
+    width: 0; /* Don't show the menu */
+    height: 0;
+    overflow: visible; /* Do show the contents (the button) */
+  }
+}
