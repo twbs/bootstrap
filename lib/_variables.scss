@@ -48,17 +48,26 @@ $font-size-base:          14px !default;
 $font-size-large:         ceil($font-size-base * 1.25) !default; // ~18px
 $font-size-small:         ceil($font-size-base * 0.85) !default; // ~12px
 
+$font-size-h1:            floor($font-size-base * 2.6) !default; // ~36px
+$font-size-h2:            floor($font-size-base * 2.15) !default; // ~30px
+$font-size-h3:            ceil($font-size-base * 1.7) !default; // ~24px
+$font-size-h4:            ceil($font-size-base * 1.25) !default; // ~18px
+$font-size-h5:            $font-size-base !default;
+$font-size-h6:            ceil($font-size-base * 0.85) !default; // ~12px
+
 $line-height-base:        1.428571429 !default; // 20/14
 $line-height-computed:    floor($font-size-base * $line-height-base) !default; // ~20px
 
 $headings-font-family:    $font-family-base !default;
 $headings-font-weight:    500 !default;
 $headings-line-height:    1.1 !default;
+$headings-color:          inherit !default;
+
 
 // Iconography
 // -------------------------
 
-$icon-font-path:          "../fonts/" !default;
+$icon-font-path: "bootstrap/" !default;
 $icon-font-name:          "glyphicons-halflings-regular" !default;
 
 
@@ -82,6 +91,7 @@ $border-radius-base:             4px !default;
 $border-radius-large:            6px !default;
 $border-radius-small:            3px !default;
 
+$component-active-color:         #fff !default;
 $component-active-bg:            $brand-primary !default;
 
 $caret-width-base:               4px !default;
@@ -165,12 +175,12 @@ $dropdown-border:                rgba(0,0,0,.15) !default;
 $dropdown-fallback-border:       #ccc !default;
 $dropdown-divider-bg:            #e5e5e5 !default;
 
-$dropdown-link-active-color:     #fff !default;
-$dropdown-link-active-bg:        $component-active-bg !default;
-
 $dropdown-link-color:            $gray-dark !default;
-$dropdown-link-hover-color:      #fff !default;
-$dropdown-link-hover-bg:         $dropdown-link-active-bg !default;
+$dropdown-link-hover-color:      darken($gray-dark, 5%) !default;
+$dropdown-link-hover-bg:         #f5f5f5 !default;
+
+$dropdown-link-active-color:     $component-active-color !default;
+$dropdown-link-active-bg:        $component-active-bg !default;
 
 $dropdown-link-disabled-color:   $gray-light !default;
 
@@ -200,25 +210,33 @@ $zindex-modal:             1050 !default;
 // --------------------------------------------------
 
 // Extra small screen / phone
+// Note: Deprecated $screen-xs and $screen-phone as of v3.0.1
 $screen-xs:                  480px !default;
-$screen-phone:               $screen-xs !default;
+$screen-xs-min:              $screen-xs !default;
+$screen-phone:               $screen-xs-min !default;
 
 // Small screen / tablet
+// Note: Deprecated $screen-sm and $screen-tablet as of v3.0.1
 $screen-sm:                  768px !default;
-$screen-tablet:              $screen-sm !default;
+$screen-sm-min:              $screen-sm !default;
+$screen-tablet:              $screen-sm-min !default;
 
 // Medium screen / desktop
+// Note: Deprecated $screen-md and $screen-desktop as of v3.0.1
 $screen-md:                  992px !default;
-$screen-desktop:             $screen-md !default;
+$screen-md-min:              $screen-md !default;
+$screen-desktop:             $screen-md-min !default;
 
 // Large screen / wide desktop
+// Note: Deprecated $screen-lg and $screen-lg-desktop as of v3.0.1
 $screen-lg:                  1200px !default;
-$screen-lg-desktop:          $screen-lg !default;
+$screen-lg-min:              $screen-lg !default;
+$screen-lg-desktop:          $screen-lg-min !default;
 
 // So media queries don't overlap when required, provide a maximum
-$screen-xs-max:              ($screen-sm - 1) !default;
-$screen-sm-max:              ($screen-md - 1) !default;
-$screen-md-max:              ($screen-lg - 1) !default;
+$screen-xs-max:              ($screen-sm-min - 1) !default;
+$screen-sm-max:              ($screen-md-min - 1) !default;
+$screen-md-max:              ($screen-lg-min - 1) !default;
 
 
 // Grid system
@@ -229,7 +247,7 @@ $grid-columns:              12 !default;
 // Padding, to be divided by two and applied to the left and right of all columns
 $grid-gutter-width:         30px !default;
 // Point at which the navbar stops collapsing
-$grid-float-breakpoint:     $screen-tablet !default;
+$grid-float-breakpoint:     $screen-sm-min !default;
 
 
 // Navbar
@@ -238,12 +256,13 @@ $grid-float-breakpoint:     $screen-tablet !default;
 // Basics of a navbar
 $navbar-height:                    50px !default;
 $navbar-margin-bottom:             $line-height-computed !default;
-$navbar-default-color:             #777 !default;
-$navbar-default-bg:                #f8f8f8 !default;
-$navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
 $navbar-border-radius:             $border-radius-base !default;
 $navbar-padding-horizontal:        floor($grid-gutter-width / 2) !default;
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2) !default;
+
+$navbar-default-color:             #777 !default;
+$navbar-default-bg:                #f8f8f8 !default;
+$navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
 
 // Navbar links
 $navbar-default-link-color:                #777 !default;
@@ -256,7 +275,7 @@ $navbar-default-link-disabled-bg:          transparent !default;
 
 // Navbar brand label
 $navbar-default-brand-color:               $navbar-default-link-color !default;
-$navbar-default-brand-hover-color:         darken($navbar-default-link-color, 10%) !default;
+$navbar-default-brand-hover-color:         darken($navbar-default-brand-color, 10%) !default;
 $navbar-default-brand-hover-bg:            transparent !default;
 
 // Navbar toggle
@@ -285,13 +304,6 @@ $navbar-inverse-link-disabled-bg:           transparent !default;
 $navbar-inverse-brand-color:                $navbar-inverse-link-color !default;
 $navbar-inverse-brand-hover-color:          #fff !default;
 $navbar-inverse-brand-hover-bg:             transparent !default;
-
-// Inverted navbar search
-// Normal navbar needs no special styles or vars
-$navbar-inverse-search-bg:                  lighten($navbar-inverse-bg, 25%) !default;
-$navbar-inverse-search-bg-focus:            #fff !default;
-$navbar-inverse-search-border:              $navbar-inverse-bg !default;
-$navbar-inverse-search-placeholder-color:   #ccc !default;
 
 // Inverted navbar toggle
 $navbar-inverse-toggle-hover-bg:            #333 !default;
@@ -324,8 +336,9 @@ $nav-tabs-justified-link-border-color:            #ddd !default;
 $nav-tabs-justified-active-link-border-color:     $body-bg !default;
 
 // Pills
+$nav-pills-border-radius:                   $border-radius-base !default;
 $nav-pills-active-link-hover-bg:            $component-active-bg !default;
-$nav-pills-active-link-hover-color:         #fff !default;
+$nav-pills-active-link-hover-color:         $component-active-color !default;
 
 
 // Pagination
@@ -355,20 +368,12 @@ $pager-disabled-color:                 $gray-light !default;
 $jumbotron-padding:              30px !default;
 $jumbotron-color:                inherit !default;
 $jumbotron-bg:                   $gray-lighter !default;
-
 $jumbotron-heading-color:        inherit !default;
+$jumbotron-font-size:            ceil($font-size-base * 1.5) !default;
 
 
 // Form states and alerts
 // -------------------------
-
-$state-warning-text:             #c09853 !default;
-$state-warning-bg:               #fcf8e3 !default;
-$state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 3%) !default;
-
-$state-danger-text:              #b94a48 !default;
-$state-danger-bg:                #f2dede !default;
-$state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 3%) !default;
 
 $state-success-text:             #468847 !default;
 $state-success-bg:               #dff0d8 !default;
@@ -377,6 +382,14 @@ $state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%) 
 $state-info-text:                #3a87ad !default;
 $state-info-bg:                  #d9edf7 !default;
 $state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%) !default;
+
+$state-warning-text:             #c09853 !default;
+$state-warning-bg:               #fcf8e3 !default;
+$state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%) !default;
+
+$state-danger-text:              #b94a48 !default;
+$state-danger-bg:                #f2dede !default;
+$state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%) !default;
 
 
 // Tooltips
@@ -478,7 +491,7 @@ $list-group-border:           #ddd !default;
 $list-group-border-radius:    $border-radius-base !default;
 
 $list-group-hover-bg:         #f5f5f5 !default;
-$list-group-active-color:     #fff !default;
+$list-group-active-color:     $component-active-color !default;
 $list-group-active-bg:        $component-active-bg !default;
 $list-group-active-border:    $list-group-active-bg !default;
 
@@ -553,6 +566,7 @@ $badge-border-radius:         10px !default;
 $breadcrumb-bg:               #f5f5f5 !default;
 $breadcrumb-color:            #ccc !default;
 $breadcrumb-active-color:     $gray-light !default;
+$breadcrumb-separator:        "/" !default;
 
 
 // Carousel
@@ -573,8 +587,8 @@ $carousel-caption-color:                      #fff !default;
 
 // Close
 // ------------------------
-$close-color:                 #000 !default;
 $close-font-weight:           bold !default;
+$close-color:                 #000 !default;
 $close-text-shadow:           0 1px 0 #fff !default;
 
 
@@ -611,10 +625,13 @@ $component-offset-horizontal: 180px !default;
 // --------------------------------------------------
 
 // Small screen / tablet
-$container-tablet:            ((720px + $grid-gutter-width)) !default;
+$container-tablet:             ((720px + $grid-gutter-width)) !default;
+$container-sm:                 $container-tablet !default;
 
 // Medium screen / desktop
-$container-desktop:           ((940px + $grid-gutter-width)) !default;
+$container-desktop:            ((940px + $grid-gutter-width)) !default;
+$container-md:                 $container-desktop !default;
 
 // Large screen / wide desktop
-$container-lg-desktop:        ((1140px + $grid-gutter-width)) !default;
+$container-large-desktop:      ((1140px + $grid-gutter-width)) !default;
+$container-lg:                 $container-large-desktop !default;
