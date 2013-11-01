@@ -165,8 +165,13 @@ h1.strong,h2.strong,h3.strong,h4.strong,h5.strong,h6.strong,
 .dropdown-menu > li > a {
   padding: 5px 20px;
 }
+/* indent small menu items, because we just them as "sub elements" */
+ul.dropdown-menu > li > a.fs-small {
+  margin-left: 10px;
+}
+/* dropdowns that show on hover */
 ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
-    display: block;    
+  display: block;    
 }
 
 //------------------ sub navbar overrides ------------
@@ -332,7 +337,4 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
 .btn .icomanta {
   vertical-align: inherit;
 }
-.btn-lg {
-  // line-height: ensure even-numbered height of button next to large input
-  .button-size(@padding-base-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
-}
+

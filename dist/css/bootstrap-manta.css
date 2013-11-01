@@ -3497,7 +3497,6 @@ input[type="button"].btn-block {
 
 .btn-group-lg > .btn {
   padding: 10px 15px;
-  padding: 5px 15px;
   font-size: 16px;
   line-height: 1.2;
   border-radius: 8px;
@@ -7277,6 +7276,14 @@ h6.strong,
   padding: 5px 20px;
 }
 
+/* indent small menu items, because we just them as "sub elements" */
+
+ul.dropdown-menu > li > a.fs-small {
+  margin-left: 10px;
+}
+
+/* dropdowns that show on hover */
+
 ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   display: block;
 }
@@ -7449,11 +7456,4 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
 
 .btn .icomanta {
   vertical-align: inherit;
-}
-
-.btn-lg {
-  padding: 5px 15px;
-  font-size: 16px;
-  line-height: 1.2;
-  border-radius: 8px;
 }
