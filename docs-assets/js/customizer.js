@@ -56,7 +56,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
       data: JSON.stringify(data)
     })
     .success(function(result) {
-      history.replaceState(false, document.title, window.location.origin + window.location.pathname + '?id=' + result.id)
+      var origin = window.location.protocol + "//" + window.location.host
+      history.replaceState(false, document.title, origin + window.location.pathname + '?id=' + result.id)
     })
     .error(function(err) {
       showError('<strong>Ruh roh!</strong> Could not save gist file, configuration not saved.', err)
