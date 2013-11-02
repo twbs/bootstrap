@@ -3807,13 +3807,13 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav > li > a {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: 10px 10px;
 }
 
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #dddddd;
+  background-color: transparent;
 }
 
 .nav > li.disabled > a {
@@ -3831,7 +3831,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
-  background-color: #dddddd;
+  background-color: transparent;
   border-color: #006ba5;
 }
 
@@ -4421,7 +4421,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-  background-color: #dddddd;
+  background-color: transparent;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
