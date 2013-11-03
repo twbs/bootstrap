@@ -10,11 +10,11 @@
 // Import the fonts
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: font-url('#{$icon-font-path}#{$icon-font-name}.eot');
-  src: font-url('#{$icon-font-path}#{$icon-font-name}.eot?#iefix') format('embedded-opentype'),
-       font-url('#{$icon-font-path}#{$icon-font-name}.woff') format('woff'),
-       font-url('#{$icon-font-path}#{$icon-font-name}.ttf') format('truetype'),
-       font-url('#{$icon-font-path}#{$icon-font-name}.svg#glyphicons_halflingsregular') format('svg');
+  src: url('#{$icon-font-path}#{$icon-font-name}.eot');
+  src: url('#{$icon-font-path}#{$icon-font-name}.eot?#iefix') format('embedded-opentype'),
+       url('#{$icon-font-path}#{$icon-font-name}.woff') format('woff'),
+       url('#{$icon-font-path}#{$icon-font-name}.ttf') format('truetype'),
+       url('#{$icon-font-path}#{$icon-font-name}.svg#glyphicons_halflingsregular') format('svg');
 }
 
 // Catchall baseclass
