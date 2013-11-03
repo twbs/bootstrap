@@ -45,6 +45,7 @@
   , delay: 0
   , html: false
   , container: false
+  , viewport: 50
   }
 
   Tooltip.prototype.init = function (type, element, options) {
@@ -164,11 +165,13 @@
       var pos          = this.getPosition()
       var actualWidth  = $tip[0].offsetWidth
       var actualHeight = $tip[0].offsetHeight
+      var calculatedOffset
 
       if (autoPlace) {
         var $parent = this.$element.parent()
 
         var orgPlacement = placement
+
         var docScroll    = document.documentElement.scrollTop || document.body.scrollTop
         var parentWidth  = this.options.container == 'body' ? window.innerWidth  : $parent.outerWidth()
         var parentHeight = this.options.container == 'body' ? window.innerHeight : $parent.outerHeight()
@@ -183,9 +186,11 @@
         $tip
           .removeClass(orgPlacement)
           .addClass(placement)
-      }
 
-      var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
+        calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight, autoPlace, docScroll, parentWidth, parentHeight, parentLeft)
+      } else {
+        calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
+      }
 
       this.applyPlacement(calculatedOffset, placement)
       this.$element.trigger('shown.bs.' + this.type)
@@ -300,11 +305,30 @@
     }, this.$element.offset())
   }
 
-  Tooltip.prototype.getCalculatedOffset = function (placement, pos, actualWidth, actualHeight) {
-    return placement == 'bottom' ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2  } :
+  Tooltip.prototype.getCalculatedOffset = function (placement, pos, actualWidth, actualHeight, autoPlace, docScroll, parentWidth, parentHeight, parentLeft) {
+    var viewport
+    pos = placement == 'bottom' ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2  } :
            placement == 'top'    ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2  } :
            placement == 'left'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
         /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width   }
+
+    /* viewport: http://pic.yupoo.com/island205/DhHbDRtH/hR2Hm.png */
+    if (autoPlace && this.container == 'body') {
+      viewport = this.options.viewport
+      if (placement == 'right' || placement == 'left') {
+        if (pos.top  + actualHeight - docScroll + viewport > parentHeight) { // bottom overflow
+          pos.top = parentHeight + docScroll - actualHeight - viewport
+        } else if (pos.top - docScroll  - viewport < 0) { // top overflow
+        }
+      } else {
+        if (pos.left + actualWidth + viewport > parentWidth) { // right overflow
+          pos.left = parentWidth - actualWidth - viewport
+        } else if (pos.left - viewport < parentLeft) { // left overflow
+          pos.left = parentLeft + viewport
+        }
+      }
+    }
+    return pos;
   }
 
   Tooltip.prototype.getTitle = function () {
