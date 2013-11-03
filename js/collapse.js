@@ -29,6 +29,7 @@
     this.transitioning = null
 
     if (this.options.parent) this.$parent = $(this.options.parent)
+    if (this.options.class) this.custom_class = this.options.class.replace(/\s/, '-')
     if (this.options.toggle) this.toggle()
   }
 
@@ -67,6 +68,7 @@
     this.transitioning = 1
 
     var complete = function () {
+      if (this.custom_class) this.$element.parentsUntil(this.$parent, '.panel').addClass(this.custom_class)
       this.$element
         .removeClass('collapsing')
         .addClass('in')
@@ -106,6 +108,7 @@
     this.transitioning = 1
 
     var complete = function () {
+      if (this.custom_class) this.$element.parentsUntil(this.$parent, '.panel').removeClass(this.custom_class)
       this.transitioning = 0
       this.$element
         .trigger('hidden.bs.collapse')
@@ -164,7 +167,6 @@
         || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
     var $target = $(target)
     var data    = $target.data('bs.collapse')
-    var custom_class  = $this.attr('data-class')
     var option  = data ? 'toggle' : $this.data()
     var parent  = $this.attr('data-parent')
     var $parent = parent && $(parent)
@@ -172,7 +174,6 @@
     if (!data || !data.transitioning) {
       if ($parent) $parent.find('[data-toggle=collapse][data-parent="' + parent + '"]').not($this).addClass('collapsed')
       $this[$target.hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
-      if(custom_class) $this.parentsUntil('.panel', '.panel-heading')[$target.hasClass('in') ? 'removeClass' : 'addClass'](custom_class)
     }
 
     $target.collapse(option)
