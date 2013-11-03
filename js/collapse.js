@@ -164,6 +164,7 @@
         || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
     var $target = $(target)
     var data    = $target.data('bs.collapse')
+    var custom_class  = $this.attr('data-class')
     var option  = data ? 'toggle' : $this.data()
     var parent  = $this.attr('data-parent')
     var $parent = parent && $(parent)
@@ -171,6 +172,7 @@
     if (!data || !data.transitioning) {
       if ($parent) $parent.find('[data-toggle=collapse][data-parent="' + parent + '"]').not($this).addClass('collapsed')
       $this[$target.hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
+      if(custom_class) $this.parentsUntil('.panel', '.panel-heading')[$target.hasClass('in') ? 'removeClass' : 'addClass'](custom_class)
     }
 
     $target.collapse(option)
