@@ -4,23 +4,13 @@
 //------------------ variables -----------------------
 
 @well-color:                        @neutralMiddark;
+@well-border:                       none;
+@well-shadow:                       none;
 @subnavbar-height:                  25px;
 @subnavbar-padding-horizontal:      @navbar-padding-horizontal;
 @subnavbar-padding-vertical:        ((@subnavbar-height - @line-height-computed) / 2);
 @well-border-radius:                0;
 @breadcrumb-border-radius:          0;
-
-//------------------ mixins --------------------------
-
-.navbar-search-expander(@screen, @width) {
-  @media (min-width: @screen) {
-    .transition(all 100ms ease-in);
-    &:focus {
-      width: @width+10;
-      margin-left: -100px;
-    }
-  }
-}
 
 
 //------------------  color junk ---------------------
@@ -32,10 +22,12 @@
 //------------------  END color junk ---------------------
 
 //------------------  generic  -----------------------
-
+.content-wrapper {
+  margin-top: 79px;
+}
 .content {
   background-color: @neutralWhite;
-  margin-top: @navbar-height + @subnavbar-height;
+  padding-top: (@grid-gutter-width / 2);
 }
 .cool-lightest {
   color:@coolLightest;
@@ -50,14 +42,15 @@
   background-color: @neutralWhite;
   font-size: @font-size-small;
 }
-.footer .container{
-  padding: 0;
-}
-.footer .navbar-nav > li > a{
+
+.footer .nav.navbar-nav > li > a {
   padding:0 10px;
   margin-top:17px;
   margin-bottom:17px;
   border-right: 1px solid #fff;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 .footer .navbar-nav > li:last-child > a{
   border-right:none;
@@ -77,11 +70,6 @@
 
 .fs-small {
   font-size: @font-size-small;
-}
-
-.navbar-search {
-  .navbar-search-expander(@screen-sm, 244px);
-  .navbar-search-expander(@screen-md, 326px);
 }
 
 //
@@ -125,12 +113,44 @@ h1.strong,h2.strong,h3.strong,h4.strong,h5.strong,h6.strong,
 
 .well {
   color: @well-color;
+  border: @well-border;
+  .box-shadow(@well-shadow);
 }
 .well, .well-lg, .well-sm {
   border-radius: @well-border-radius;
 }
 
+.panel-default {
+  .box-shadow(none);
+}
+/*a lighter border color is nicer for tables inside wells*/
+.well .table {
+  thead,
+  tbody,
+  tfoot {
+    > tr {
+      > th,
+      > td {
+        border-top-color: @neutralWhite;
+      }
+    }
+  }
+}
+.table {
+  thead,
+  tbody,
+  tfoot {
+    > tr:first-child {
+      > th,
+      > td {
+        border-top: none;
+      }
+    }
+  }
+}
+
 .breadcrumb {
+  margin: 0;
   border-radius: @breadcrumb-border-radius;
   font-size: 10px;
   > li {
@@ -138,6 +158,18 @@ h1.strong,h2.strong,h3.strong,h4.strong,h5.strong,h6.strong,
       content: ">\00a0"; // Unicode space added since inline-block means non-collapsing white-space
     }
   }
+}
+
+.dropdown-menu > li > a {
+  padding: 5px 20px;
+}
+/* indent small menu items, because we just them as "sub elements" */
+ul.dropdown-menu > li > a.fs-small {
+  margin-left: 10px;
+}
+/* dropdowns that show on hover */
+ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
+  display: block;    
 }
 
 //------------------ sub navbar overrides ------------
@@ -149,6 +181,10 @@ h1.strong,h2.strong,h3.strong,h4.strong,h5.strong,h6.strong,
   &.navbar-fixed-top {
     margin-top: @navbar-height;
   }
+}
+
+.navbar-nav {
+  margin: 0;
 }
 
 .navbar-default {
@@ -258,6 +294,19 @@ h1.strong,h2.strong,h3.strong,h4.strong,h5.strong,h6.strong,
 
 //------------------ fonts ---------------------------
 
+.icon-manta:before{
+  color:#FBB919;
+}
+.icon-twitter:before{
+  color:#4099FF;
+}
+.icon-facebook:before{
+  color:#3B5998;
+}
+.icon-google-plus:before{
+  color:#c63d2d;
+}
+
 @font-face {
   font-family: 'icomanta';
   src: url('@{icon-font-path}@{mantaicon-font-name}.eot');
@@ -278,7 +327,12 @@ h1.strong,h2.strong,h3.strong,h4.strong,h5.strong,h6.strong,
        url('@{icon-font-path}@{display-font-name}.svg#Vegur-Light') format('svg');
 }
 
+
 // fix bootstrap glyphicon line-height in buttons... otherwise it makes the button taller than it should be
 .btn .glyphicon {
   line-height: 0;
 }
+.btn .icomanta {
+  vertical-align: inherit;
+}
+
