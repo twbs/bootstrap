@@ -2852,9 +2852,13 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .breadcrumb > li + li:before {
-  padding: 0 15px;
+  padding: 0 15px 0 20px;
+  font-family: FontAwesome;
+  -webkit-font-smoothing: antialiased;
+  font-weight: normal;
   color: #cccccc;
-  content: ">\00a0";
+  content: "\f105";
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .breadcrumb > .active {
