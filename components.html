@@ -22,17 +22,17 @@ base_url: "../"
             </ul>
      </p>
 
-     <p>As with the bootstrap glyphicons, use of the icomanta font will require the use of a specific icon class per glyph, in addition to the general .icomanta class which defines specifies the use of the icomanta font for the element. Additional questions? Just ask Sully.</p>
      <ul class="bs-glyphicons">
       <li><span class="icomanta icon-add"></span>.icomanta .icon-add</li>
+      <li><span class="icomanta icon-arrow-connector"></span>.icomanta .icon-arrow-connector</li>
       <li><span class="icomanta icon-arrow-down"></span>.icomanta .icon-arrow-down</li>
       <li><span class="icomanta icon-arrow-left"></span>.icomanta .icon-arrow-left</li>
       <li><span class="icomanta icon-arrow-right"></span>.icomanta .icon-arrow-right</li>
       <li><span class="icomanta icon-arrow-up"></span>.icomanta .icon-arrow-up</li>
+      <li><span class="icomanta icon-arrowExt-down"></span>.icomanta .icon-arrowExt-down</li>
       <li><span class="icomanta icon-arrowExt-left"></span>.icomanta .icon-arrowExt-left</li>
       <li><span class="icomanta icon-arrowExt-right"></span>.icomanta .icon-arrowExt-right</li>
       <li><span class="icomanta icon-arrowExt-up"></span>.icomanta .icon-arrowExt-up</li>
-      <li><span class="icomanta icon-arrowExt-down"></span>.icomanta .icon-arrowExt-down</li>
       <li><span class="icomanta icon-automotive"></span>.icomanta .icon-automotive</li>
       <li><span class="icomanta icon-badge"></span>.icomanta .icon-badge</li>
       <li><span class="icomanta icon-bars"></span>.icomanta .icon-bars</li>
@@ -52,9 +52,9 @@ base_url: "../"
       <li><span class="icomanta icon-current-location"></span>.icomanta .icon-current-location</li>
       <li><span class="icomanta icon-delete"></span>.icomanta .icon-delete</li>
       <li><span class="icomanta icon-daycare"></span>.icomanta .icon-daycare</li>
-      <li><span class="icomanta icon-delete"></span>.icomanta .icon-delete</li>
       <li><span class="icomanta icon-dentists"></span>.icomanta .icon-dentists</li>
       <li><span class="icomanta icon-doctors"></span>.icomanta .icon-doctors</li>
+      <li><span class="icomanta icon-double-bubble"></span>.icomanta .icon-double-bubble</li>
       <li><span class="icomanta icon-edit"></span>.icomanta .icon-edit</li>
       <li><span class="icomanta icon-facebook"></span>.icomanta .icon-facebook</li>
       <li><span class="icomanta icon-facebook-square"></span>.icomanta .icon-facebook-square</li>
@@ -79,18 +79,56 @@ base_url: "../"
       <li><span class="icomanta icon-messages-square"></span>.icomanta .icon-messages-square</li>
       <li><span class="icomanta icon-notifications"></span>.icomanta .icon-notifications</li>
       <li><span class="icomanta icon-notifications-alt"></span>.icomanta .icon-notifications-alt</li>
+      <li><span class="icomanta icon-person"></span>.icomanta .icon-person</li>
       <li><span class="icomanta icon-phone-alt"></span>.icomanta .icon-phone-alt</li>
       <li><span class="icomanta icon-print"></span>.icomanta .icon-print</li>
       <li><span class="icomanta icon-products"></span>.icomanta .icon-products</li>
       <li><span class="icomanta icon-realestate"></span>.icomanta .icon-realestate</li>
+      <li><span class="icomanta icon-recommend"></span>.icomanta .icon-recommend</li>
       <li><span class="icomanta icon-restaurants"></span>.icomanta .icon-restaurants</li>
       <li><span class="icomanta icon-search"></span>.icomanta .icon-search</li>
+      <li><span class="icomanta icon-search-results"></span>.icomanta .icon-search-results</li>
+      <li><span class="icomanta icon-settings"></span>.icomanta .icon-settings</li>
       <li><span class="icomanta icon-shopping"></span>.icomanta .icon-shopping</li>
       <li><span class="icomanta icon-star"></span>.icomanta .icon-star</li>
+      <li><span class="icomanta icon-tag"></span>.icomanta .icon-tag</li>
       <li><span class="icomanta icon-theaters"></span>.icomanta .icon-theaters</li>
       <li><span class="icomanta icon-twitter"></span>.icomanta .icon-twitter</li>
       <li><span class="icomanta icon-twitter-square"></span>.icomanta .icon-twitter-square</li>
     </ul>  
+
+    <h2 id="glyphicons-how-to-use">How to use</h2>
+    <p>As with the bootstrap glyphicons, use of the icomanta font will require the use of a base class and individual icon class. To use, place the following code just about anywhere. Be sure to leave a space between the icon and text for proper padding.</p>
+    {% highlight html %}
+      <span class="icomanta icon-search"></span>
+    {% endhighlight %}
+
+
+    <h2 id="glyphicons-examples">Examples</h2>
+    <p>Use them in buttons, button groups for a toolbar, navigation, or prepended form inputs.</p>
+    <div class="bs-example">
+      <div class="btn-toolbar">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default"><span class="icomanta icon-arrow-down"></span></button>
+          <button type="button" class="btn btn-default"><span class="icomanta icon-arrow-left"></span></button>
+          <button type="button" class="btn btn-default"><span class="icomanta icon-arrow-right"></span></button>
+          <button type="button" class="btn btn-default"><span class="icomanta icon-arrow-up"></span></button>
+        </div>
+      </div>
+      <div class="btn-toolbar">
+        <button type="button" class="btn btn-default btn-lg"><span class="icomanta icon-call"></span> Call</button>
+        <button type="button" class="btn btn-default"><span class="icomanta icon-call"></span> Call</button>
+        <button type="button" class="btn btn-default btn-sm"><span class="icomanta icon-call"></span> Call</button>
+        <button type="button" class="btn btn-default btn-xs"><span class="icomanta icon-call"></span> Call</button>
+      </div>
+    </div>
+{% highlight html %}
+<button type="button" class="btn btn-default btn-lg">
+  <span class="icomanta icon-call"></span> Call
+</button>
+{% endhighlight %}
+
+  
 
     <h2 id="glyphicons-glyphs">Available glyphs</h2>
     <p>Includes 180 glyphs in font format from the Glyphicon Halflings set. <a href="http://glyphicons.com/">Glyphicons</a> Halflings are normally not available for free, but their creator has made them available for Bootstrap free of cost. As a thank you, we only ask that you to include a link back to <a href="http://glyphicons.com/">Glyphicons</a> whenever possible.</p>
