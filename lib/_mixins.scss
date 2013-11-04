@@ -724,7 +724,7 @@
     $list: ".col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}, #{$list}";
   }
   $i: $grid-columns;
-  $list: "#{$list}, .col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}";
+  $list: "#{$list} .col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}";
   #{$list} {
     position: relative;
     // Prevent columns from collapsing when empty
@@ -743,7 +743,7 @@
     $list: ".col-#{$class}-#{$i}, #{$list}";
   }
   $i: $grid-columns;
-  $list: "#{$list}, .col-#{$class}-#{$i}";
+  $list: "#{$list} .col-#{$class}-#{$i}";
   #{$list} {
     float: left;
   }
