@@ -90,12 +90,14 @@
     $items.eq(index).focus()
   }
 
-  function clearMenus() {
+  function clearMenus(ev) {
+    var evProps
+    if (ev && ev.originalEvent) evProps = { originalEvent: ev.originalEvent }
     $(backdrop).remove()
     $(toggle).each(function (e) {
       var $parent = getParent($(this))
       if (!$parent.hasClass('open')) return
-      $parent.trigger(e = $.Event('hide.bs.dropdown'))
+      $parent.trigger(e = $.Event('hide.bs.dropdown', evProps))
       if (e.isDefaultPrevented()) return
       $parent.removeClass('open').trigger('hidden.bs.dropdown')
     })
