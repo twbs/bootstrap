@@ -1,0 +1,42 @@
+.custom-class1 .panel-heading {
+	background-color: red !important;
+	-webkit-transition: all .1s ease-in;
+    -moz-transition: all .1s ease-in;
+    -o-transition: all .1s ease-in;
+    -ms-transition: all .1s ease-in;
+    transition: all .1s ease-in;
+}
+.custom-class1 .panel-collapse {
+	background-color: green !important;
+	-webkit-transition: all .1s ease-in;
+    -moz-transition: all .1s ease-in;
+    -o-transition: all .1s ease-in;
+    -ms-transition: all .1s ease-in;
+    transition: all .1s ease-in;
+}
+
+.custom-class2 .panel-heading {
+	background-color: blue !important;
+}
+.custom-class2 .panel-collapse {
+	background-color: green !important;
+}
+
+.custom-class3 .panel-heading {
+	background-color: purple !important;
+}
+.custom-class3 .panel-collapse {
+	background-color: green !important;
+}
+
+.custom-class4 .panel-heading {
+	background-color: yellow !important;
+}
+.custom-class4 .panel-collapse {
+	background-color: green !important;
+}
+
+/*@media (max-width: 768px) {
+  .navbar-collapse.in{background-color: #bada55;}
+}*/
+.navbar-collapse.in{background-color: #bada55;}

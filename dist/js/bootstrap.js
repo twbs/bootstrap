@@ -562,7 +562,10 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
     this.transitioning = 1
 
     var complete = function () {
-      if (this.custom_class) this.$element.parentsUntil(this.$parent, '.panel').addClass(this.custom_class)
+      if (this.custom_class)
+        this.$element.parentsUntil(this.$parent, '.panel')
+          .addClass(this.custom_class)
+          .addClass('active')
       this.$element
         .removeClass('collapsing')
         .addClass('in')
@@ -602,7 +605,10 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
     this.transitioning = 1
 
     var complete = function () {
-      if (this.custom_class) this.$element.parentsUntil(this.$parent, '.panel').removeClass(this.custom_class)
+      if (this.custom_class)
+        this.$element.parentsUntil(this.$parent, '.panel')
+          .removeClass(this.custom_class)
+          .removeClass('active')
       this.transitioning = 0
       this.$element
         .trigger('hidden.bs.collapse')
