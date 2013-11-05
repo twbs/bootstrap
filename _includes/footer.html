@@ -4,7 +4,6 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="{{ page.base_url }}dist/js/bootstrap.js"></script>
 
-<script src="http://platform.twitter.com/widgets.js"></script>
 <script src="{{ page.base_url }}docs-assets/js/holder.js"></script>
 
 <script src="{{ page.base_url }}docs-assets/js/application.js"></script>
@@ -17,6 +16,19 @@
 <script src="{{ page.base_url }}docs-assets/js/raw-files.js"></script>
 <script src="{{ page.base_url }}docs-assets/js/customizer.js"></script>
 {% endif %}
+
+{% comment %}
+  Inject Twitter widgets asynchronously. Snippet snipped from Twitter's
+  JS interface site: https://dev.twitter.com/docs/tfw-javascript
+{% endcomment %}
+<script>
+  window.twttr = (function (d,s,id) {
+    var t, js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+    js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+    return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+  }(document, "script", "twitter-wjs"));
+</script>
 
 <!-- Analytics
 ================================================== -->
