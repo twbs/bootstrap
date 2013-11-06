@@ -126,6 +126,60 @@ $(function () {
         target3.click()
       })
 
+      test("should add custom class to target .panel when collapse shown", function () {
+        $.support.transition = false
+        stop()
+
+        var accordion = $('<div id="accordion"><div class="accordion-group"></div></div>')
+          .appendTo($('#qunit-fixture'))
+
+        var panel = $('<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"></h4></div></div>')
+          .appendTo(accordion.find('.accordion-group'))
+
+        var target = $('<a data-toggle="collapse" href="#collapseOne" class="collapsed" data-parent="#accordion" data-class="panel-success"></a>')
+          .appendTo(accordion.find('.panel-title'))
+
+        var collapsible = $('<div class="panel-collapse collapse" id="collapseOne"><div class="panel-body"></div></div>')
+          .appendTo(accordion.find('.panel'))
+          .on('shown.bs.collapse', function () {
+            ok(!target.hasClass('collapsed'))
+            ok(panel.hasClass('panel-success'))
+            ok(panel.hasClass('active'))
+            start()
+          })
+
+        target.click()
+      })
+
+      test("should remove custom class to target .panel when collapse shown", function () {
+        $.support.transition = false
+        stop()
+
+        var accordion = $('<div id="accordion"><div class="accordion-group"></div></div>')
+          .appendTo($('#qunit-fixture'))
+
+        var panel = $('<div class="panel panel-default panel-success active"><div class="panel-heading"><h4 class="panel-title"></h4></div></div>')
+          .appendTo(accordion.find('.accordion-group'))
+
+        var target = $('<a data-toggle="collapse" href="#collapseOne" data-parent="#accordion" data-class="panel-success"></a>')
+          .appendTo(accordion.find('.panel-title'))
+
+        var collapsible = $('<div class="panel-collapse in" id="collapseOne"><div class="panel-body"></div></div>')
+          .appendTo(accordion.find('.panel-default'))
+          .on('hide.bs.collapse', function () {
+            ok(panel.hasClass('panel-success'))
+            ok(panel.hasClass('active'))
+          })
+          .on('hidden.bs.collapse', function () {
+            ok(target.hasClass('collapsed'))
+            ok(!panel.hasClass('panel-success'))
+            ok(!panel.hasClass('active'))
+            start()
+          })
+
+        target.click()
+      })
+
       test("should allow dots in data-parent", function () {
         $.support.transition = false
         stop()

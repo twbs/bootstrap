@@ -1590,6 +1590,8 @@ $('.btn-group').button()
     <p>Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a CSS selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
     <p>To add accordion-like group management to a collapsible control, add the data attribute <code>data-parent="#selector"</code>. Refer to the demo to see this in action.</p>
 
+    <p>To support custom styling of a <b>panel</b> when it is "collapsed in", the ability of adding user-defined class is given. For enabling this functionality you can add the data attribute <code>data-class="user-defined-class"</code> on the button/link toggle. Keep in mind that because this is a user-defined-class you need to add a CSS rule in your own CSS file.</p>
+
     <h3>Via JavaScript</h3>
     <p>Enable manually with:</p>
 {% highlight js %}
@@ -1620,6 +1622,12 @@ $(".collapse").collapse()
            <td>boolean</td>
            <td>true</td>
            <td>Toggles the collapsible element on invocation</td>
+         </tr>
+         <tr>
+           <td>class</td>
+           <td>string</td>
+           <td>&nbsp;</td>
+           <td>If this attribute is set then this data-attribute value will be added as class to the <b>panel</b>, when the collapse content is opened.</td>
          </tr>
         </tbody>
       </table>
