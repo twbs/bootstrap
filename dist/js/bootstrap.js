@@ -710,8 +710,10 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
     var $parent  = getParent($this)
     var isActive = $parent.hasClass('open')
+    var evProps
+    if (e) evProps = { sourceEvent: e }
 
-    clearMenus()
+    clearMenus(e)
 
     if (!isActive) {
       if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
@@ -719,13 +721,13 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
         $('<div class="dropdown-backdrop"/>').insertAfter($(this)).on('click', clearMenus)
       }
 
-      $parent.trigger(e = $.Event('show.bs.dropdown'))
+      $parent.trigger(e = $.Event('show.bs.dropdown', evProps))
 
       if (e.isDefaultPrevented()) return
 
       $parent
         .toggleClass('open')
-        .trigger('shown.bs.dropdown')
+        .trigger('shown.bs.dropdown', evProps)
 
       $this.focus()
     }
@@ -766,14 +768,14 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
   function clearMenus(ev) {
     var evProps
-    if (ev && ev.originalEvent) evProps = { originalEvent: ev.originalEvent }
+    if (ev) evProps = { sourceEvent: ev }
     $(backdrop).remove()
     $(toggle).each(function (e) {
       var $parent = getParent($(this))
       if (!$parent.hasClass('open')) return
       $parent.trigger(e = $.Event('hide.bs.dropdown', evProps))
       if (e.isDefaultPrevented()) return
-      $parent.removeClass('open').trigger('hidden.bs.dropdown')
+      $parent.removeClass('open').trigger('hidden.bs.dropdown', evProps)
     })
   }
 
