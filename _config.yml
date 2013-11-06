@@ -15,7 +15,7 @@ current_version:  3.0.2
 repo:             https://github.com/twbs/bootstrap
 
 download_source:  https://github.com/twbs/bootstrap/archive/v3.0.2.zip
-download_dist:    https://github.com/twbs/bootstrap/releases/download/v3.0.1/bootstrap-3.0.2-dist.zip
+download_dist:    https://github.com/twbs/bootstrap/releases/download/v3.0.2/bootstrap-3.0.2-dist.zip
 
 blog:             http://blog.getbootstrap.com
 expo:             http://expo.getbootstrap.com
