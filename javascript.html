@@ -525,11 +525,11 @@ $('.dropdown-toggle').dropdown()
 
 {% highlight js %}
 $('#myDropdown').on('hide.bs.dropdown', function (ev) {
-  // If not triggered programmatically, all those events will have a `sourceEvent`
+  // If not triggered programmatically, all those events will have a `originalEvent`
   // additional key containing the event at the source of the trigger.
   //
   // Example:
-  if (ev.sourceEvent && $(ev.sourceEvent.target).is('[contenteditable]')) {
+  if (ev.originalEvent && $(ev.originalEvent.target).is('[contenteditable]')) {
     ev.preventDefault()
   }
 })

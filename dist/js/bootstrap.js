@@ -711,7 +711,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
     var $parent  = getParent($this)
     var isActive = $parent.hasClass('open')
     var evProps
-    if (e) evProps = { sourceEvent: e }
+    if (e) evProps = { originalEvent: e }
 
     clearMenus(e)
 
@@ -768,7 +768,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
   function clearMenus(ev) {
     var evProps
-    if (ev) evProps = { sourceEvent: ev }
+    if (ev) evProps = { originalEvent: ev }
     $(backdrop).remove()
     $(toggle).each(function (e) {
       var $parent = getParent($(this))
