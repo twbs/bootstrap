@@ -4477,6 +4477,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
   border-radius: 4px;
 }
 
+.navbar-toggle:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
 .navbar-toggle .icon-bar {
   display: block;
   width: 22px;

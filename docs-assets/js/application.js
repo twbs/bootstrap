@@ -85,9 +85,14 @@
       container: ".bs-docs-navbar .nav"
     })
 
+    // $('.bs-masthead').popover({
+    //   selector: ".btn-lg",
+    //   trigger: "hover",
+    //   placement: "top"
+    // })
+
     // popover demo
-    $("[data-toggle=popover]")
-      .popover()
+    $("[data-toggle=popover]").popover()
 
     // button state demo
     $('#fat-btn')
