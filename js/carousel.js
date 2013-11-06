@@ -117,7 +117,10 @@
 
     var e = $.Event('slide.bs.carousel', { relatedTarget: $next[0], direction: direction })
 
-    if ($next.hasClass('active')) return
+    if ($next.hasClass('active')) {
+      this.sliding = false
+      return
+    }
 
     if (this.$indicators.length) {
       this.$indicators.find('.active').removeClass('active')
