@@ -522,9 +522,16 @@ $('.dropdown-toggle').dropdown()
         </tbody>
       </table>
     </div><!-- ./bs-table-responsive -->
+
 {% highlight js %}
-$('#myDropdown').on('show.bs.dropdown', function () {
-  // do something…
+$('#myDropdown').on('hide.bs.dropdown', function (ev) {
+  // If not triggered programmatically, all those events will have a `sourceEvent`
+  // additional key containing the event at the source of the trigger.
+  //
+  // Example:
+  if (ev.sourceEvent && $(ev.sourceEvent.target).is('[contenteditable]')) {
+    ev.preventDefault()
+  }
 })
 {% endhighlight %}
   </div>
