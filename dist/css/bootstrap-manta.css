@@ -7337,7 +7337,8 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   height: 25px;
   margin: 14px 5px 0 0;
   overflow: hidden;
-  background: url(http://m4.manta-r1.com/manta/images/manta-logo-sp.png) -50px 0 no-repeat;
+  background: url(/img/manta-logo-sp-2x.png) -50px 0 no-repeat;
+  background-size: 150px 25px;
 }
 
 .navbar-header.col-lg-1 {
