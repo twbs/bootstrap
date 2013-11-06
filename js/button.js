@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: button.js v3.0.1
+ * Bootstrap: button.js v3.0.2
  * http://getbootstrap.com/javascript/#buttons
  * ========================================================================
  * Copyright 2013 Twitter, Inc.
