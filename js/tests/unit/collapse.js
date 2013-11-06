@@ -57,6 +57,17 @@ $(function () {
           .collapse('show')
       })
 
+      test("should restore collapse class after opening collapse", function () {
+        $.support.transition = false
+        stop()
+        $('<div class="collapse"/>')
+          .on('shown.bs.collapse', function () {
+            ok($(this).hasClass('collapse'))
+            start()
+          })
+          .collapse('show')
+      })
+
       test("should add active class to target when collapse shown", function () {
         $.support.transition = false
         stop()
