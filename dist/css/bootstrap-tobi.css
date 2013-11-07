@@ -2462,10 +2462,10 @@ textarea.input-lg {
 .btn.disabled,
 .btn[disabled],
 fieldset[disabled] .btn {
+  color: #333333;
   pointer-events: none;
   cursor: not-allowed;
-  opacity: 0.65;
-  filter: alpha(opacity=65);
+  background-color: #cccccc;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
