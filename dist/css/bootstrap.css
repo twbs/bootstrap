@@ -684,12 +684,15 @@ blockquote p:last-child {
   margin-bottom: 0;
 }
 
+blockquote cite,
 blockquote small {
   display: block;
+  font-size: 85%;
   line-height: 1.428571429;
   color: #999999;
 }
 
+blockquote cite:before,
 blockquote small:before {
   content: '\2014 \00A0';
 }
