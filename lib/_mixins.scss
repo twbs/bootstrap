@@ -751,7 +751,7 @@
 
 
 @mixin calc-grid($index, $class, $type) {
-  @if $type == width {
+  @if $type == width and $index > 0 {
     .col-#{$class}-#{$index} {
       width: percentage(($index / $grid-columns));
     }

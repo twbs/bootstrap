@@ -14,18 +14,17 @@
     margin-left: auto;
     margin-right: auto;
   }
-}
 
+  // Image captions
+  .caption {
+    padding: $thumbnail-caption-padding;
+    color: $thumbnail-caption-color;
+  }
+}
 
 // Add a hover state for linked versions only
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail.active {
   border-color: $link-color;
-}
-
-// Image captions
-.thumbnail .caption {
-  padding: $thumbnail-caption-padding;
-  color: $thumbnail-caption-color;
 }

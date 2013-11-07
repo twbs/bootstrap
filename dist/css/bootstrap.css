@@ -1839,19 +1839,6 @@ output {
   vertical-align: middle;
 }
 
-.form-control:-moz-placeholder {
-  color: #999999;
-}
-.form-control::-moz-placeholder {
-  color: #999999;
-}
-.form-control:-ms-input-placeholder {
-  color: #999999;
-}
-.form-control::-webkit-input-placeholder {
-  color: #999999;
-}
-
 .form-control {
   display: block;
   width: 100%;
@@ -1875,6 +1862,18 @@ output {
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+.form-control:-moz-placeholder {
+  color: #999999;
+}
+.form-control::-moz-placeholder {
+  color: #999999;
+}
+.form-control:-ms-input-placeholder {
+  color: #999999;
+}
+.form-control::-webkit-input-placeholder {
+  color: #999999;
 }
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
   cursor: not-allowed;
@@ -4634,16 +4633,15 @@ a.list-group-item.active > .badge,
   margin-left: auto;
   margin-right: auto;
 }
+.thumbnail .caption {
+  padding: 9px;
+  color: #333333;
+}
 
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail.active {
   border-color: #428bca;
-}
-
-.thumbnail .caption {
-  padding: 9px;
-  color: #333333;
 }
 
 .alert {
