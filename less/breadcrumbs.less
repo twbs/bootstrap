@@ -27,9 +27,13 @@
 		}
     display: inline-block;
     &+li:before {
-      content: "@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
-      padding: 0 15px;
+      content: "@{breadcrumb-separator}";
+      padding: 0 15px 0 20px;
       color: @breadcrumb-color;
+      font-family: @breadcrumb-separator-font;
+      font-weight: normal;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
   }
   > .active {
