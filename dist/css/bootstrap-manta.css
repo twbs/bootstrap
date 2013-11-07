@@ -7466,3 +7466,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
 .btn .icomanta {
   vertical-align: inherit;
 }
+
+.icomanta {
+  display: inline-block;
+}
