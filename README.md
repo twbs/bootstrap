@@ -44,7 +44,7 @@ Sass runs as a local GEM on your system. You can run `sass --watch lib/bootstrap
 
 Three quick start options are available:
 
-* [Download the latest release](https://github.com/twbs/bootstrap/releases/tag/v3.0.1).
+* [Download the latest release](https://github.com/twbs/bootstrap/archive/v3.0.2.zip).
 * Clone the repo: `git clone https://github.com/twbs/bootstrap.git`.
 * Install with [Bower](http://bower.io): `bower install bootstrap`.
 
