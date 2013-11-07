@@ -1,7 +1,7 @@
 {
     "name": "bootstrap"
   , "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development."
-  , "version": "3.0.1"
+  , "version": "3.0.2"
   , "keywords": ["bootstrap", "css"]
   , "homepage": "http://getbootstrap.com"
   , "author": "Twitter, Inc."
@@ -34,5 +34,7 @@
     , "grunt-html-validation": "~0.1.6"
     , "grunt-jekyll": "~0.4.0"
     , "grunt-recess": "~0.4.0"
+    , "grunt-sed": "~0.1.1"
+    , "regexp-quote": "~0.0.0"
   }
 }
