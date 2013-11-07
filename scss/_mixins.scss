@@ -748,6 +748,7 @@
   @if $type != width {
     $specifier: "-#{$type}"
   }
+
   .col-#{$class}#{$specifier}-#{$index} {
     @if $type == width {
       width: percentage(($index / $grid-columns));
@@ -762,8 +763,14 @@
 }
 
 @mixin make-grid($columns, $class, $type) {
-  @for $i from 1 through $columns {
-    @include calc-grid($i, $class, $type);
+  @if $type == width {
+    @for $i from 1 through $columns {
+      @include calc-grid($i, $class, $type);
+    }
+  } @else {
+    @for $i from 0 through $columns {
+      @include calc-grid($i, $class, $type);
+    }
   }
 }
 
