@@ -39,7 +39,14 @@
   margin-right: auto;
   width: auto;
   padding: 10px;
-  z-index: (@zindex-modal-background + 10);
+  z-index: (@zindex-modal-background + 10); 
+
+  &.modal-lg {
+    width: @modal-lg;
+  } 
+  &.modal-sm {
+    width: @modal-sm;
+  }
 }
 
 // Actual modal
