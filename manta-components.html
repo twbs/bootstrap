@@ -6,8 +6,51 @@ lead: "This is where custom Manta components should go. For the most part we sho
 base_url: "../"
 ---
 
+
   <div class="bs-docs-section">
     <div class="page-header">
-      <h1 id="example-component">Example Manta Component</h1>
-    </div>
+      <h1 id="example-component">Inline Delete Confirmation</h1>
+      <p>This element is simply a re-purposed carousel used as means of prompting the user to confirm deletion of an object.</p>
+	  <div class="bs-example">
+		  <div id="myCarousel" class="carousel slide" data-interval='false'>
+		  <!-- Carousel items -->
+		 
+			<form role="form">
+			  <div class="form-group">
+			    <label for="exampleInputEmail1">Name</label>
+			    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your name">
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputPassword1">Email Address</label>
+			    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter an email">
+			  </div>
+			  <div class="carousel-inner">
+			    <div class="active item alert">
+			    	<button class="btn btn-primary">Save Changes</button>
+			    	<button class="btn btn-link">Cancel</button>
+			    	<a href="#myCarousel" id="delete" class="btn btn-link" data-slide="next">Delete</a>
+			    </div>
+			    <div class="item alert alert-block alert-danger">Delete this contact?
+					<button class="btn btn-danger" value="delete" name="delete">Delete</button>
+					<a href="#myCarousel" class="btn btn-default" value="cancel" data-slide="prev" name="cancel">Cancel</a>
+				</div>
+			  </div>
+			</form>
+		  </div>
+	  </div>
+	  <p>The biggest changes here entail ditching the nav dots and the left/right navigation controls and binding the next/previous slide commands to  the Delete and Cancel buttons within the carousel. 
+{% highlight html %}
+<div class="carousel-inner">
+  <div class="active item alert">
+    <button class="btn btn-primary">Save Changes</button>
+    <button class="btn btn-link">Cancel</button>
+    <a href="#myCarousel" id="delete" class="btn btn-link" data-slide="next">Delete</a>
+  </div>
+  <div class="item alert alert-block alert-danger">Delete this contact?
+    <button class="btn btn-danger" value="delete" name="delete">Delete</button>
+    <a href="#myCarousel" class="btn btn-default" value="cancel" data-slide="prev" name="cancel">Cancel</a>
+  </div>
+</div>
+{% endhighlight %}
+	</div>
   </div>
