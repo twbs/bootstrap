@@ -77,17 +77,19 @@
       return $this.click()
     }
 
-    var $items = $('[role=menu] li:not(.divider):visible a', $parent)
+    var $items = $('[role=menu] li:not(.divider):visible', $parent)
+    var $anchors = $('a', $items)
 
     if (!$items.length) return
 
-    var index = $items.index($items.filter(':focus'))
+    var index = $anchors.index($anchors.filter(':focus'))
 
-    if (e.keyCode == 38 && index > 0)                 index--                        // up
-    if (e.keyCode == 40 && index < $items.length - 1) index++                        // down
+    if (!~index)                                      index=$items.index($items.filter('.active'))  // active item
     if (!~index)                                      index=0
+    if (e.keyCode == 38 && index > 0)                 index--                                       // up
+    if (e.keyCode == 40 && index < $items.length - 1) index++                                       // down
 
-    $items.eq(index).focus()
+    $anchors.eq(index).focus()
   }
 
   function clearMenus() {
