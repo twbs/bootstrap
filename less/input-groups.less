@@ -114,6 +114,10 @@
   position: relative;
   white-space: nowrap;
 
+  > .btn:not(:first-of-type):not(:last-of-type) {
+    border-radius: 0;
+  }
+
   // Negative margin to only have a 1px border between the two
   &:first-child > .btn {
     margin-right: -1px;
