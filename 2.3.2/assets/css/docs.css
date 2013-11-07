@@ -564,6 +564,11 @@ h2 + .row {
   background-color: #fff;
 }
 
+/* Alert with link to latest version of the docs */
+.bs-alert-old-docs {
+  margin: 30px 0 0;
+}
+
 
 
 /* Bootstrap code examples
