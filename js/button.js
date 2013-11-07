@@ -58,7 +58,9 @@
     if ($parent.length) {
       var $input = this.$element.find('input')
         .prop('checked', !this.$element.hasClass('active'))
-        .trigger('change')
+
+      $input.triggerHandler("click")
+      if (!this.$element.hasClass('active')) $input.trigger('change')
       if ($input.prop('type') === 'radio') $parent.find('.active').removeClass('active')
     }
 
