@@ -7449,8 +7449,8 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   font-family: 'icomanta';
   font-style: normal;
   font-weight: normal;
-  src: url('../fonts/icomanta.eot');
-  src: url('../fonts/icomanta.eot?#iefix') format('embedded-opentype'), url('../fonts/icomanta.woff') format('woff'), url('../fonts/icomanta.ttf') format('truetype'), url('../fonts/icomanta.svg#icomanta') format('svg');
+  src: url('../fonts/icomanta.eot?v=2');
+  src: url('../fonts/icomanta.eot?v=2#iefix') format('embedded-opentype'), url('../fonts/icomanta.woff?v=2') format('woff'), url('../fonts/icomanta.ttf?v=2') format('truetype'), url('../fonts/icomanta.svg?v=2#icomanta') format('svg');
 }
 
 @font-face {

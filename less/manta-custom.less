@@ -308,13 +308,15 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   color:#c63d2d;
 }
 
+@mantaicon-version: 2;
+
 @font-face {
   font-family: 'icomanta';
-  src: url('@{icon-font-path}@{mantaicon-font-name}.eot');
-  src: url('@{icon-font-path}@{mantaicon-font-name}.eot?#iefix') format('embedded-opentype'),
-  url('@{icon-font-path}@{mantaicon-font-name}.woff') format('woff'),
-  url('@{icon-font-path}@{mantaicon-font-name}.ttf') format('truetype'),
-  url('@{icon-font-path}@{mantaicon-font-name}.svg#icomanta') format('svg');
+  src: url('@{icon-font-path}@{mantaicon-font-name}.eot?v=@{mantaicon-version}');
+  src: url('@{icon-font-path}@{mantaicon-font-name}.eot?v=@{mantaicon-version}#iefix') format('embedded-opentype'),
+  url('@{icon-font-path}@{mantaicon-font-name}.woff?v=@{mantaicon-version}') format('woff'),
+  url('@{icon-font-path}@{mantaicon-font-name}.ttf?v=@{mantaicon-version}') format('truetype'),
+  url('@{icon-font-path}@{mantaicon-font-name}.svg?v=@{mantaicon-version}#icomanta') format('svg');
   font-weight: normal;
   font-style: normal;
 }
