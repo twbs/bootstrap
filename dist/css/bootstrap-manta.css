@@ -7461,7 +7461,6 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
 
 .btn .icomanta,
 .btn .glyphicon {
-  line-height: 0;
   vertical-align: inherit;
 }
 
