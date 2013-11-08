@@ -775,7 +775,7 @@
 
 // [converter] This is defined recursively in LESS, but SASS supports real loops
 @mixin make-grid($columns, $class, $type) {
-  @for $i from 1 through $columns {
+  @for $i from 0 through $columns {
     @include calc-grid($i, $class, $type);
   }
 }
