@@ -1336,23 +1336,6 @@ input[type="file"] {
   display: block;
 }
 
-.select-container {
-  position: relative;
-}
-
-.select-container:after {
-  position: absolute;
-  top: 12px;
-  right: 10px;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-top-color: #ccc;
-  border-style: solid;
-  border-width: 5px;
-  content: "";
-}
-
 select[multiple],
 select[size] {
   height: auto;
@@ -1441,6 +1424,7 @@ select.form-control {
   text-indent: 0.01px;
   text-overflow: "";
   cursor: pointer;
+  background: url('/images/triangle_expanded.gif') no-repeat top 7px right 10px;
   -webkit-appearance: none;
      -moz-appearance: none;
 }
