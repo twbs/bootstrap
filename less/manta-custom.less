@@ -331,12 +331,11 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
 }
 
 
-// fix bootstrap glyphicon line-height in buttons... otherwise it makes the button taller than it should be
-.btn .glyphicon {
-  line-height: 0;
-}
-.btn .icomanta {
+.btn .icomanta, .btn .glyphicon {
+  // make the icons vertically aligned correctly in 
   vertical-align: inherit;
+  // fix bootstrap glyphicon line-height in buttons... otherwise it makes the button taller than it should be
+  line-height: 0;
 }
 .icomanta {
   display: inline-block;

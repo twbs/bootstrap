@@ -7459,11 +7459,9 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   src: url('../fonts/Vegur-Light.eot?#iefix') format('embedded-opentype'), url('../fonts/Vegur-Light.woff') format('woff'), url('../fonts/Vegur-Light.ttf') format('truetype'), url('../fonts/Vegur-Light.svg#Vegur-Light') format('svg');
 }
 
+.btn .icomanta,
 .btn .glyphicon {
   line-height: 0;
-}
-
-.btn .icomanta {
   vertical-align: inherit;
 }
 
