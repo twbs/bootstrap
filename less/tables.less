@@ -104,10 +104,12 @@ th {
 //
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 
-.table-striped > tbody > tr:nth-child(odd) {
-  > td,
-  > th {
-    background-color: @table-bg-accent;
+.table-striped {
+  > tbody > tr:nth-child(odd) {
+    > td,
+    > th {
+      background-color: @table-bg-accent;
+    }
   }
 }
 
@@ -116,10 +118,12 @@ th {
 //
 // Placed here since it has to come after the potential zebra striping
 
-.table-hover > tbody > tr:hover {
-  > td,
-  > th {
-    background-color: @table-bg-hover;
+.table-hover {
+  > tbody > tr:hover {
+    > td,
+    > th {
+      background-color: @table-bg-hover;
+    }
   }
 }
 
@@ -148,14 +152,18 @@ table {
 // Exact selectors below required to override `.table-striped` and prevent
 // inheritance to nested tables.
 
-.table > thead > tr,
-.table > tbody > tr,
-.table > tfoot > tr {
-  > td.active,
-  > th.active,
-  &.active > td,
-  &.active > th  {
-    background-color: @table-bg-active;
+.table {
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > td.active,
+      > th.active,
+      &.active > td,
+      &.active > th  {
+        background-color: @table-bg-active;
+      }
+    }
   }
 }
 
