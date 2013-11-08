@@ -7467,3 +7467,15 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
 .icomanta {
   display: inline-block;
 }
+
+.input-group > .input-group-btn > .btn {
+  height: 28px;
+}
+
+.input-group-lg > .input-group-btn > .btn {
+  height: 41px;
+}
+
+.input-group-sm > .input-group-btn > .btn {
+  height: 30px;
+}

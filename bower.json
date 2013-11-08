@@ -1,6 +1,6 @@
 {
   "name": "bootstrap",
-  "version": "3.0.19",
+  "version": "3.0.20",
   "main": [
     "./dist/js/bootstrap.js",
     "./dist/css/bootstrap-manta.css"
@@ -9,6 +9,6 @@
     "**/.*"
   ],
   "dependencies": {
-    "jquery": "~2.0.3"
+    "jquery": "1.10.2"
   }
 }

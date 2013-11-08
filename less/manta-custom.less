@@ -339,3 +339,15 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   display: inline-block;
 }
 
+// force buttons to be the same exact height as the input
+// boxes no matter what kind of font (or glyph) is in the button
+.input-group > .input-group-btn > .btn {
+  height: @input-height-base;
+}
+.input-group-lg > .input-group-btn > .btn {
+  height: @input-height-large;
+}
+.input-group-sm > .input-group-btn > .btn {
+  height: @input-height-small;
+}
+
