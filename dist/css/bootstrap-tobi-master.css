@@ -1863,6 +1863,12 @@ fieldset[disabled] .btn-primary.active {
   border-color: #333333;
 }
 
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary {
+  color: #fff;
+}
+
 .btn-warning {
   color: #ffffff;
   background-color: #f0ad4e;
@@ -2070,7 +2076,7 @@ fieldset[disabled] .btn-facebook.active {
 
 .btn-facebook:focus,
 .btn-facebook:hover {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .btn-facebook .fb-logo {
@@ -2130,7 +2136,7 @@ fieldset[disabled] .btn-twitter.active {
 
 .btn-twitter:focus,
 .btn-twitter:hover {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .btn-link {

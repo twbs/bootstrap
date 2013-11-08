@@ -68,6 +68,11 @@
 }
 .btn-primary {
   .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border; @btn-primary-color-hover; @btn-primary-bg-hover; @btn-primary-border-hover);
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    color: #fff;
+  }
 }
 // Warning appears as orange
 .btn-warning {
@@ -93,7 +98,7 @@
   .button-variant(@btn-facebook-color; @btn-facebook-bg; @btn-facebook-border);
 	&:focus,
 	&:hover {
-		text-decoration: none;
+		text-decoration: underline;
 	}
 	.fb-logo {
 		text-transform: none;
@@ -112,7 +117,7 @@
   .button-variant(@btn-twitter-color; @btn-twitter-bg; @btn-twitter-border);
 	&:focus,
 	&:hover {
-		text-decoration: none;
+		text-decoration: underline;
 	}
 }
 
