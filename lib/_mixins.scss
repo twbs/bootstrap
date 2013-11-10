@@ -720,11 +720,11 @@
 // [converter] Grid converted to use SASS cycles (LESS uses recursive nested mixin defs not supported by SASS)
 @mixin make-grid-columns() {
   $list: '';
-  @for $i from 1 to $grid-columns {
+  $i: 1;
+  $list: ".col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}";
+  @for $i from 2 through $grid-columns {
     $list: ".col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}, #{$list}";
   }
-  $i: $grid-columns;
-  $list: "#{$list} .col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}";
   #{$list} {
     position: relative;
     // Prevent columns from collapsing when empty
@@ -739,11 +739,11 @@
 // [converter] Grid converted to use SASS cycles (LESS uses recursive nested mixin defs not supported by SASS)
 @mixin make-grid-columns-float($class) {
   $list: '';
-  @for $i from 1 to $grid-columns {
+  $i: 1;
+  $list: ".col-#{$class}-#{$i}";
+  @for $i from 2 through $grid-columns {
     $list: ".col-#{$class}-#{$i}, #{$list}";
   }
-  $i: $grid-columns;
-  $list: "#{$list} .col-#{$class}-#{$i}";
   #{$list} {
     float: left;
   }
@@ -751,22 +751,22 @@
 
 
 @mixin calc-grid($index, $class, $type) {
-  @if $type == width and $index > 0 {
+  @if ($type == width) and ($index > 0) {
     .col-#{$class}-#{$index} {
       width: percentage(($index / $grid-columns));
     }
   }
-  @if $type == push {
+  @if ($type == push) {
     .col-#{$class}-push-#{$index} {
       left: percentage(($index / $grid-columns));
     }
   }
-  @if $type == pull {
+  @if ($type == pull) {
     .col-#{$class}-pull-#{$index} {
       right: percentage(($index / $grid-columns));
     }
   }
-  @if $type == offset {
+  @if ($type == offset) {
     .col-#{$class}-offset-#{$index} {
       margin-left: percentage(($index / $grid-columns));
     }
