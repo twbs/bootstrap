@@ -53,6 +53,11 @@
   background-clip: padding-box;
   // Remove focus outline from opened modal
   outline: none;
+
+  // Make dropdown visible over a modal
+  .dropdown-menu {
+    z-index: @zindex-modal-dropdown;
+  }
 }
 
 // Modal background
