@@ -3,6 +3,7 @@
 module.exports = function(grunt) {
   "use strict";
 
+  RegExp.quote = require('regexp-quote')
   var btoa = require('btoa')
   // Project configuration.
   grunt.initConfig({
@@ -15,7 +16,7 @@ module.exports = function(grunt) {
               ' * Licensed under <%= _.pluck(pkg.licenses, "url").join(", ") %>\n' +
               ' *\n' +
               ' * Designed and built with all the love in the world by @mdo and @fat.\n' +
-              ' */\n',
+              ' */\n\n',
     jqueryCheck: 'if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery") }\n\n',
 
     // Task configuration.
@@ -132,7 +133,11 @@ module.exports = function(grunt) {
 
     validation: {
       options: {
-        reset: true
+        reset: true,
+        relaxerror: [
+            "Bad value X-UA-Compatible for attribute http-equiv on element meta.",
+            "Element img is missing required attribute src."
+        ]
       },
       files: {
         src: ["_gh_pages/**/*.html"]
@@ -152,6 +157,17 @@ module.exports = function(grunt) {
         files: 'less/*.less',
         tasks: ['recess']
       }
+    },
+
+    sed: {
+      versionNumber: {
+        pattern: (function () {
+          var old = grunt.option('oldver')
+          return old ? RegExp.quote(old) : old
+        })(),
+        replacement: grunt.option('newver'),
+        recursive: true
+      }
     }
   });
 
@@ -169,6 +185,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-html-validation');
   grunt.loadNpmTasks('grunt-jekyll');
   grunt.loadNpmTasks('grunt-recess');
+  grunt.loadNpmTasks('grunt-sed');
 
   // Docs HTML validation task
   grunt.registerTask('validate-html', ['jekyll', 'validation']);
@@ -198,6 +215,11 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', ['test', 'dist', 'build-customizer']);
+
+  // Version numbering task.
+  // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
+  // This can be overzealous, so its changes should always be manually reviewed!
+  grunt.registerTask('change-version-number', ['sed']);
 
   // task for building customizer
   grunt.registerTask('build-customizer', 'Add scripts/less files to customizer.', function () {

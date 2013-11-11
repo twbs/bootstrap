@@ -417,11 +417,11 @@ base_url: "../"
       <div class="col-lg-6">
         <h4>Heading font sizes</h4>
         <label>@font-size-h1</label>
-        <input type="text" class="form-control" placeholder="floor(@font-size-base * 2.60)" data-var="@font-size-h1">
+        <input type="text" class="form-control" placeholder="floor(@font-size-base * 2.6)" data-var="@font-size-h1">
         <label>@font-size-h2</label>
         <input type="text" class="form-control" placeholder="floor(@font-size-base * 2.15)" data-var="@font-size-h2">
         <label>@font-size-h3</label>
-        <input type="text" class="form-control" placeholder="ceil(@font-size-base * 1.70)" data-var="@font-size-h3">
+        <input type="text" class="form-control" placeholder="ceil(@font-size-base * 1.7)" data-var="@font-size-h3">
         <label>@font-size-h4</label>
         <input type="text" class="form-control" placeholder="ceil(@font-size-base * 1.25)" data-var="@font-size-h4">
         <label>@font-size-h5</label>
@@ -509,14 +509,11 @@ base_url: "../"
     </div>
 
     <div class="row">
-<!--
-  Temporarily removed until mixins are restored in v3.1
       <div class="col-xs-6 col-sm-4">
         <label>@grid-columns</label>
         <input type="text" class="form-control" placeholder="12" data-var="@grid-columns">
         <p class="help-block">Number of columns in the grid.</p>
       </div>
- -->
       <div class="col-xs-6 col-sm-4">
         <label>@grid-gutter-width</label>
         <input type="text" class="form-control" placeholder="30px" data-var="@grid-gutter-width">
@@ -1219,19 +1216,17 @@ base_url: "../"
 
     <h2 id="variables-jumbotron">Jumbotron</h2>
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-md-6">
         <label>@jumbotron-padding</label>
         <input type="text" class="form-control" placeholder="30px" data-var="@jumbotron-padding">
-      </div>
-      <div class="col-lg-3">
         <label>@jumbotron-bg</label>
         <input type="text" class="form-control" placeholder="@gray-lighter" data-var="@jumbotron-bg">
+        <label>@jumbotron-font-size</label>
+        <input type="text" class="form-control" placeholder="ceil(@font-size-base * 1.5)" data-var="@jumbotron-font-size">
       </div>
-      <div class="col-lg-3">
+      <div class="col-md-6">
         <label>@jumbotron-color</label>
         <input type="text" class="form-control" placeholder="inherit" data-var="@jumbotron-color">
-      </div>
-      <div class="col-lg-3">
         <label>@jumbotron-heading-color</label>
         <input type="text" class="form-control" placeholder="inherit" data-var="@jumbotron-heading-color">
       </div>
