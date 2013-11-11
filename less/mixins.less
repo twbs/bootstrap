@@ -750,7 +750,7 @@
   .col(1); // kickstart it
 }
 
-.calc-grid(@index, @class, @type) when (@type = width) {
+.calc-grid(@index, @class, @type) when (@type = width) and (@index > 0) {
   .col-@{class}-@{index} {
     width: percentage((@index / @grid-columns));
   }
@@ -772,7 +772,7 @@
 }
 
 // Basic looping in LESS
-.make-grid(@index, @class, @type) when (@index > 0) {
+.make-grid(@index, @class, @type) when (@index >= 0) {
   .calc-grid(@index, @class, @type);
   // next iteration
   .make-grid(@index - 1, @class, @type);
