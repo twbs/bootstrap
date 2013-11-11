@@ -7357,7 +7357,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   width: 12%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .navbar-inverse .navbar-brand {
     width: 50px;
     padding: 0;
