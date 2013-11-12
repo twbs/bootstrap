@@ -158,6 +158,7 @@
         .detach()
         .css({ top: 0, left: 0, display: 'block' })
         .addClass(placement)
+        .addClass(this.getClass())
 
       this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
 
@@ -316,6 +317,10 @@
       || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
 
     return title
+  }
+
+  Tooltip.prototype.getClass = function () {
+    return this.$element.attr('data-class') || ''
   }
 
   Tooltip.prototype.tip = function () {

@@ -117,6 +117,16 @@ $(function () {
         $('#qunit-fixture').empty()
       })
 
+      test("should append the data-class to the popover for one-off themes", function () {
+        var popover = $('<a href="#" data-class="one two"></a>')
+          .appendTo('#qunit-fixture')
+          .popover({ content: "Test" })
+          .popover('show')
+        ok($('.popover').hasClass('one'), 'one class is present')
+        ok($('.popover').hasClass('two'), 'two class is present')
+        $('#qunit-fixture').empty()
+      })
+
       test("should destroy popover", function () {
         var popover = $('<div/>').popover({trigger: 'hover'}).on('click.foo', function(){})
         ok(popover.data('bs.popover'), 'popover has data')
