@@ -18,19 +18,19 @@
  * limitations under the License.
  * ======================================================================== */
 
-
 +function ($) { "use strict";
 
   // TOOLTIP PUBLIC CLASS DEFINITION
   // ===============================
 
   var Tooltip = function (element, options) {
-    this.type       =
-    this.options    =
-    this.enabled    =
-    this.timeout    =
-    this.hoverState =
-    this.$element   = null
+    this.type           =
+    this.options        =
+    this.enabled        =
+    this.timeout        =
+    this.hoverActivated =
+    this.hoverState     =
+    this.$element       = null
 
     this.init('tooltip', element, options)
   }
@@ -61,8 +61,10 @@
       if (trigger == 'click') {
         this.$element.on('click.' + this.type, this.options.selector, $.proxy(this.toggle, this))
       } else if (trigger != 'manual') {
-        var eventIn  = trigger == 'hover' ? 'mouseenter' : 'focus'
-        var eventOut = trigger == 'hover' ? 'mouseleave' : 'blur'
+        this.hoverActivated = true
+
+        var eventIn         = trigger == 'hover' ? 'mouseenter' : 'focus'
+        var eventOut        = trigger == 'hover' ? 'mouseleave' : 'blur'
 
         this.$element.on(eventIn  + '.' + this.type, this.options.selector, $.proxy(this.enter, this))
         this.$element.on(eventOut + '.' + this.type, this.options.selector, $.proxy(this.leave, this))
@@ -113,7 +115,7 @@
     if (!self.options.delay || !self.options.delay.show) return self.show()
 
     self.timeout = setTimeout(function () {
-      if (self.hoverState == 'in') self.show()
+      if (!self.hoverActivated || self.hoverState == 'in') self.show()
     }, self.options.delay.show)
   }
 
@@ -128,7 +130,7 @@
     if (!self.options.delay || !self.options.delay.hide) return self.hide()
 
     self.timeout = setTimeout(function () {
-      if (self.hoverState == 'out') self.hide()
+      if (!self.hoverActivated || self.hoverState == 'out') self.hide()
     }, self.options.delay.hide)
   }
 
@@ -261,7 +263,7 @@
     var e    = $.Event('hide.bs.' + this.type)
 
     function complete() {
-      if (that.hoverState != 'in') $tip.detach()
+      if (!self.hoverActivated || that.hoverState != 'in') $tip.detach()
     }
 
     this.$element.trigger(e)
