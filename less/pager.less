@@ -4,38 +4,52 @@
 
 
 .pager {
-  margin: @baseLineHeight 0;
+  padding-left: 0;
+  margin: @line-height-computed 0;
   list-style: none;
   text-align: center;
   .clearfix();
-}
-.pager li {
-  display: inline;
-}
-.pager li > a,
-.pager li > span {
-  display: inline-block;
-  padding: 5px 14px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  .border-radius(15px);
-}
-.pager li > a:hover {
-  text-decoration: none;
-  background-color: #f5f5f5;
-}
-.pager .next > a,
-.pager .next > span {
-  float: right;
-}
-.pager .previous > a,
-.pager .previous > span {
-  float: left;
-}
-.pager .disabled > a,
-.pager .disabled > a:hover,
-.pager .disabled > span {
-  color: @grayLight;
-  background-color: #fff;
-  cursor: default;
+  li {
+    display: inline;
+    > a,
+    > span {
+      display: inline-block;
+      padding: 5px 14px;
+      background-color: @pagination-bg;
+      border: 1px solid @pagination-border;
+      border-radius: @pager-border-radius;
+    }
+
+    > a:hover,
+    > a:focus {
+      text-decoration: none;
+      background-color: @pagination-hover-bg;
+    }
+  }
+
+  .next {
+    > a,
+    > span {
+      float: right;
+    }
+  }
+
+  .previous {
+    > a,
+    > span {
+      float: left;
+    }
+  }
+
+  .disabled {
+    > a,
+    > a:hover,
+    > a:focus,
+    > span {
+      color: @pager-disabled-color;
+      background-color: @pagination-bg;
+      cursor: not-allowed;
+    }
+  }
+
 }

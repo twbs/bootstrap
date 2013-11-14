@@ -5,20 +5,19 @@
 
 .breadcrumb {
   padding: 8px 15px;
-  margin: 0 0 @baseLineHeight;
+  margin-bottom: @line-height-computed;
   list-style: none;
-  background-color: #f5f5f5;
-  .border-radius(@baseBorderRadius);
+  background-color: @breadcrumb-bg;
+  border-radius: @border-radius-base;
   > li {
     display: inline-block;
-    .ie7-inline-block();
-    text-shadow: 0 1px 0 @white;
-    > .divider {
+    + li:before {
+      content: "@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
       padding: 0 5px;
-      color: #ccc;
+      color: @breadcrumb-color;
     }
   }
   > .active {
-    color: @grayLight;
+    color: @breadcrumb-active-color;
   }
 }

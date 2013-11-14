@@ -1,0 +1,11 @@
+{
+  "name": "bootstrap",
+  "version": "3.0.2",
+  "main": ["./dist/js/bootstrap.js", "./dist/css/bootstrap.css", "./dist/fonts/*"],
+  "ignore": [
+      "**/.*"
+  ],
+  "dependencies": {
+    "jquery": ">= 1.9.0"
+  }
+}
