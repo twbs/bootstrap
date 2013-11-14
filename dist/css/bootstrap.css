@@ -6027,6 +6027,10 @@ button.close {
   background-clip: padding-box;
 }
 
+.modal-content .dropdown-menu {
+  z-index: 1060;
+}
+
 .modal-backdrop {
   position: fixed;
   top: 0;
