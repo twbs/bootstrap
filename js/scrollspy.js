@@ -113,7 +113,7 @@
         .addClass('active')
     }
 
-    active.trigger('activate')
+    active.trigger('activate.bs.scrollspy')
   }
 
 
