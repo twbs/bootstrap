@@ -45,6 +45,7 @@
   , delay: 0
   , html: false
   , container: false
+  , theme: ''
   }
 
   Tooltip.prototype.init = function (type, element, options) {
@@ -158,6 +159,7 @@
         .detach()
         .css({ top: 0, left: 0, display: 'block' })
         .addClass(placement)
+        .addClass(this.getTheme())
 
       this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
 
@@ -316,6 +318,17 @@
       || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
 
     return title
+  }
+
+  Tooltip.prototype.getTheme = function () {
+    var theme
+    var $e = this.$element
+    var o = this.options
+
+    theme = $.attr('data-theme')
+      || (typeof o.theme == 'function' ? o.theme.call($e[0]) : o.theme)
+
+    return theme
   }
 
   Tooltip.prototype.tip = function () {

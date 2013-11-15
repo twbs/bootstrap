@@ -66,6 +66,33 @@ $(function () {
         ok(!$(".tooltip").length, 'tooltip removed')
       })
 
+      test("should append the data-theme to the tooltip for one-off themes", function () {
+        var tooltip = $('<a href="#" rel="tooltip" data-theme="one two" title="One off tooltip" style="display: inline-block; position: absolute; top: 0; left: 0;"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({})
+          .tooltip('show')
+        ok($('.tooltip').hasClass('one'), 'one class is present')
+        ok($('.tooltip').hasClass('two'), 'two class is present')
+      })
+
+      test("pull theme from the options", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="One off tooltip" style="display: inline-block; position: absolute; top: 0; left: 0;"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({ theme: "one two" })
+          .tooltip('show')
+        ok($('.tooltip').hasClass('one'), 'one class is present')
+        ok($('.tooltip').hasClass('two'), 'two class is present')
+      })
+
+      test("pull theme as a function from the options", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="One off tooltip" style="display: inline-block; position: absolute; top: 0; left: 0;"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({ theme: function (el) { return "one two" } })
+          .tooltip('show')
+        ok($('.tooltip').hasClass('one'), 'one class is present')
+        ok($('.tooltip').hasClass('two'), 'two class is present')
+      })
+
       test("should fire show event", function () {
         stop()
         var tooltip = $('<div title="tooltip title"></div>')
