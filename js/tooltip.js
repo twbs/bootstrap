@@ -352,6 +352,7 @@
   }
 
   Tooltip.prototype.destroy = function () {
+    clearTimeout(this.timeout);
     this.hide().$element.off('.' + this.type).removeData('bs.' + this.type)
   }
 
