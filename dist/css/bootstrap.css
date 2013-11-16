@@ -832,6 +832,11 @@ pre code {
   clear: both;
 }
 
+body > .row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
 .col-xs-1,
 .col-sm-1,
 .col-md-1,
