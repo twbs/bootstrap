@@ -135,8 +135,8 @@ module.exports = function(grunt) {
       options: {
         reset: true,
         relaxerror: [
-            "Bad value X-UA-Compatible for attribute http-equiv on element meta.",
-            "Element img is missing required attribute src."
+          "Bad value X-UA-Compatible for attribute http-equiv on element meta.",
+          "Element img is missing required attribute src."
         ]
       },
       files: {
