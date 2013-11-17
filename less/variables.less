@@ -211,26 +211,26 @@
 
 // Extra small screen / phone
 // Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
-@screen-xs:                  480px;
-@screen-xs-min:              @screen-xs;
+@screen-xs-min:              480px;
+@screen-xs:                  @screen-xs-min;
 @screen-phone:               @screen-xs-min;
 
 // Small screen / tablet
 // Note: Deprecated @screen-sm and @screen-tablet as of v3.0.1
-@screen-sm:                  768px;
-@screen-sm-min:              @screen-sm;
+@screen-sm-min:              768px;
+@screen-sm:                  @screen-sm-min;
 @screen-tablet:              @screen-sm-min;
 
 // Medium screen / desktop
 // Note: Deprecated @screen-md and @screen-desktop as of v3.0.1
-@screen-md:                  992px;
-@screen-md-min:              @screen-md;
+@screen-md-min:              992px;
+@screen-md:                  @screen-md-min;
 @screen-desktop:             @screen-md-min;
 
 // Large screen / wide desktop
 // Note: Deprecated @screen-lg and @screen-lg-desktop as of v3.0.1
-@screen-lg:                  1200px;
-@screen-lg-min:              @screen-lg;
+@screen-lg-min:              1200px;
+@screen-lg:                  @screen-lg-min;
 @screen-lg-desktop:          @screen-lg-min;
 
 // So media queries don't overlap when required, provide a maximum
@@ -625,13 +625,13 @@
 // --------------------------------------------------
 
 // Small screen / tablet
-@container-tablet:             ((720px + @grid-gutter-width));
-@container-sm:                 @container-tablet;
+@container-sm:                 ((720px + @grid-gutter-width));
+@container-tablet:             @container-sm;
 
 // Medium screen / desktop
-@container-desktop:            ((940px + @grid-gutter-width));
-@container-md:                 @container-desktop;
+@container-md:                 ((940px + @grid-gutter-width));
+@container-desktop:            @container-md;
 
 // Large screen / wide desktop
-@container-large-desktop:      ((1140px + @grid-gutter-width));
-@container-lg:                 @container-large-desktop;
+@container-lg:                 ((1140px + @grid-gutter-width));
+@container-large-desktop:      @container-lg;
