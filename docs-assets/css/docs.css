@@ -290,7 +290,7 @@ body {
 
 @media (min-width: 768px) {
   .bs-masthead .lead {
-    /*font-size: 20px;*/
+    font-size: 24px;
   }
 }
 
