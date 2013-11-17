@@ -13,9 +13,6 @@
   border-top:   @caret-width-base solid @dropdown-caret-color;
   border-right: @caret-width-base solid transparent;
   border-left:  @caret-width-base solid transparent;
-  // Firefox fix for https://github.com/twbs/bootstrap/issues/9538. Once fixed,
-  // we can just straight up remove this.
-  border-bottom: 0 dotted;
 }
 
 // The dropdown wrapper (div)
@@ -163,9 +160,7 @@
 .navbar-fixed-bottom .dropdown {
   // Reverse the caret
   .caret {
-    // Firefox fix for https://github.com/twbs/bootstrap/issues/9538. Once this
-    // gets fixed, restore `border-top: 0;`.
-    border-top: 0 dotted;
+    border-top: 0;
     border-bottom: @caret-width-base solid @dropdown-caret-color;
     content: "";
   }
