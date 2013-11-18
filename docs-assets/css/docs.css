@@ -528,7 +528,7 @@ span.hidden-sm {
   .bs-docs-home .aboutme {
     float: left;
     width: 330px !important;
-    margin: 0 0 30px !important;
+    margin: 0 !important;
   }
   .bs-docs-home .bs-social,
   .bs-docs-home .bs-masthead-links {
