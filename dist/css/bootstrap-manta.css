@@ -7369,8 +7369,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
     width: 25%;
   }
   .navbar-collapse {
-    border-top: 0;
-    box-shadow: none;
+    padding: 10px 1px;
   }
 }
 
