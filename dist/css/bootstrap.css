@@ -39,6 +39,10 @@ template {
   display: none;
 }
 
+html, body {
+  height: 100%;
+}
+
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -778,6 +782,11 @@ pre code {
 .pre-scrollable {
   max-height: 340px;
   overflow-y: scroll;
+}
+
+.contant {
+  min-height: 100%;
+  position: relative;
 }
 
 .container {
@@ -4483,6 +4492,14 @@ textarea.input-group-sm > .input-group-btn > .btn {
   bottom: 0;
   margin-bottom: 0;
   border-width: 1px 0 0;
+}
+
+.navbar-static-bottom {
+  height:60px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 .navbar-brand {
