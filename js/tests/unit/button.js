@@ -18,9 +18,9 @@ $(function () {
 
       test("should return set state to loading", function () {
         var btn = $('<button class="btn" data-loading-text="fat">mdo</button>')
-        equals(btn.html(), 'mdo', 'btn text equals mdo')
+        equal(btn.html(), 'mdo', 'btn text equals mdo')
         btn.button('loading')
-        equals(btn.html(), 'fat', 'btn text equals fat')
+        equal(btn.html(), 'fat', 'btn text equals fat')
         stop()
         setTimeout(function () {
           ok(btn.attr('disabled'), 'btn is disabled')
@@ -31,9 +31,9 @@ $(function () {
 
       test("should return reset state", function () {
         var btn = $('<button class="btn" data-loading-text="fat">mdo</button>')
-        equals(btn.html(), 'mdo', 'btn text equals mdo')
+        equal(btn.html(), 'mdo', 'btn text equals mdo')
         btn.button('loading')
-        equals(btn.html(), 'fat', 'btn text equals fat')
+        equal(btn.html(), 'fat', 'btn text equals fat')
         stop()
         setTimeout(function () {
           ok(btn.attr('disabled'), 'btn is disabled')
@@ -41,7 +41,7 @@ $(function () {
           start()
           stop()
           btn.button('reset')
-          equals(btn.html(), 'mdo', 'btn text equals mdo')
+          equal(btn.html(), 'mdo', 'btn text equals mdo')
           setTimeout(function () {
             ok(!btn.attr('disabled'), 'btn is not disabled')
             ok(!btn.hasClass('disabled'), 'btn does not have disabled class')
@@ -107,6 +107,12 @@ $(function () {
         ok(!btn2.hasClass('active'), 'btn2 does not have active class')
         ok(!btn2.find('input').prop('checked'), 'btn2 is not checked')
         btn2.find('input').click()
+        ok(!btn1.hasClass('active'), 'btn1 does not have active class')
+        ok(!btn1.find('input').prop('checked'), 'btn1 is checked')
+        ok(btn2.hasClass('active'), 'btn2 has active class')
+        ok(btn2.find('input').prop('checked'), 'btn2 is checked')
+
+        btn2.find('input').click() /* clicking an already checked radio should not un-check it */
         ok(!btn1.hasClass('active'), 'btn1 does not have active class')
         ok(!btn1.find('input').prop('checked'), 'btn1 is checked')
         ok(btn2.hasClass('active'), 'btn2 has active class')

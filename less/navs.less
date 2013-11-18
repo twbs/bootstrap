@@ -178,6 +178,11 @@
     }
   }
 
+  > .dropdown .dropdown-menu {
+    top: auto;
+    left: auto;
+  }
+
   @media (min-width: @screen-sm-min) {
     > li {
       display: table-cell;
@@ -190,6 +195,8 @@
 }
 
 // Move borders to anchors instead of bottom of list
+//
+// Mixin for adding on top the shared `.nav-justified` styles for our tabs
 .nav-tabs-justified {
   border-bottom: 0;
 
@@ -222,23 +229,15 @@
 // Tabbable tabs
 // -------------------------
 
-// Clear any floats
-.tabbable {
-  .clearfix();
-}
-
-// Show/hide tabbable areas
-.tab-content > .tab-pane,
-.pill-content > .pill-pane {
-  display: none;
-}
-.tab-content,
-.pill-content {
+// Hide tabbable panes to start, show them when `.active`
+.tab-content {
+  > .tab-pane {
+    display: none;
+  }
   > .active {
     display: block;
   }
 }
-
 
 
 // Dropdowns

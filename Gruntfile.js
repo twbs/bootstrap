@@ -3,19 +3,21 @@
 module.exports = function(grunt) {
   "use strict";
 
+  RegExp.quote = require('regexp-quote')
+  var btoa = require('btoa')
   // Project configuration.
   grunt.initConfig({
 
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*!\n' +
-              '* Bootstrap v<%= pkg.version %> by @fat and @mdo\n' +
-              '* Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-              '* Licensed under <%= _.pluck(pkg.licenses, "url").join(", ") %>\n' +
-              '*\n' +
-              '* Designed and built with all the love in the world by @mdo and @fat.\n' +
-              '*/\n',
-    jqueryCheck: 'if (!jQuery) { throw new Error(\"Bootstrap requires jQuery\") }\n\n',
+              ' * Bootstrap v<%= pkg.version %> by @fat and @mdo\n' +
+              ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
+              ' * Licensed under <%= _.pluck(pkg.licenses, "url").join(", ") %>\n' +
+              ' *\n' +
+              ' * Designed and built with all the love in the world by @mdo and @fat.\n' +
+              ' */\n\n',
+    jqueryCheck: 'if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery") }\n\n',
 
     // Task configuration.
     clean: {
@@ -131,7 +133,11 @@ module.exports = function(grunt) {
 
     validation: {
       options: {
-        reset: true
+        reset: true,
+        relaxerror: [
+          "Bad value X-UA-Compatible for attribute http-equiv on element meta.",
+          "Element img is missing required attribute src."
+        ]
       },
       files: {
         src: ["_gh_pages/**/*.html"]
@@ -151,11 +157,23 @@ module.exports = function(grunt) {
         files: 'less/*.less',
         tasks: ['recess']
       }
+    },
+
+    sed: {
+      versionNumber: {
+        pattern: (function () {
+          var old = grunt.option('oldver')
+          return old ? RegExp.quote(old) : old
+        })(),
+        replacement: grunt.option('newver'),
+        recursive: true
+      }
     }
   });
 
 
   // These plugins provide necessary tasks.
+  grunt.loadNpmTasks('browserstack-runner');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-connect');
@@ -167,7 +185,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-html-validation');
   grunt.loadNpmTasks('grunt-jekyll');
   grunt.loadNpmTasks('grunt-recess');
-  grunt.loadNpmTasks('browserstack-runner');
+  grunt.loadNpmTasks('grunt-sed');
 
   // Docs HTML validation task
   grunt.registerTask('validate-html', ['jekyll', 'validation']);
@@ -198,6 +216,11 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['test', 'dist', 'build-customizer']);
 
+  // Version numbering task.
+  // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
+  // This can be overzealous, so its changes should always be manually reviewed!
+  grunt.registerTask('change-version-number', ['sed']);
+
   // task for building customizer
   grunt.registerTask('build-customizer', 'Add scripts/less files to customizer.', function () {
     var fs = require('fs')
@@ -209,13 +232,13 @@ module.exports = function(grunt) {
           return type == 'fonts' ? true : new RegExp('\\.' + type + '$').test(path)
         })
         .forEach(function (path) {
-          return files[path] = fs.readFileSync(type + '/' + path, 'utf8')
+          var fullPath = type + '/' + path
+          return files[path] = (type == 'fonts' ? btoa(fs.readFileSync(fullPath)) : fs.readFileSync(fullPath, 'utf8'))
         })
       return 'var __' + type + ' = ' + JSON.stringify(files) + '\n'
     }
 
-    var customize = fs.readFileSync('customize.html', 'utf-8')
     var files = getFiles('js') + getFiles('less') + getFiles('fonts')
-    fs.writeFileSync('assets/js/raw-files.js', files)
+    fs.writeFileSync('docs-assets/js/raw-files.js', files)
   });
 };

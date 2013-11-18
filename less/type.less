@@ -11,7 +11,7 @@ p {
 }
 .lead {
   margin-bottom: @line-height-computed;
-  font-size: (@font-size-base * 1.15);
+  font-size: floor(@font-size-base * 1.15);
   font-weight: 200;
   line-height: 1.4;
 
@@ -82,7 +82,8 @@ h1, h2, h3, h4, h5, h6,
   line-height: @headings-line-height;
   color: @headings-color;
 
-  small {
+  small,
+  .small {
     font-weight: normal;
     line-height: 1;
     color: @headings-small-color;
@@ -95,7 +96,8 @@ h3 {
   margin-top: @line-height-computed;
   margin-bottom: (@line-height-computed / 2);
 
-  small {
+  small,
+  .small {
     font-size: 65%;
   }
 }
@@ -105,7 +107,8 @@ h6 {
   margin-top: (@line-height-computed / 2);
   margin-bottom: (@line-height-computed / 2);
 
-  small {
+  small,
+  .small {
     font-size: 75%;
   }
 }
@@ -138,7 +141,7 @@ ol {
   margin-top: 0;
   margin-bottom: (@line-height-computed / 2);
   ul,
-  ol{
+  ol {
     margin-bottom: 0;
   }
 }
@@ -150,13 +153,19 @@ ol {
   padding-left: 0;
   list-style: none;
 }
+
 // Inline turns list items into inline-block
 .list-inline {
   .list-unstyled();
+
   > li {
     display: inline-block;
     padding-left: 5px;
     padding-right: 5px;
+
+    &:first-child {
+      padding-left: 0;
+    }
   }
 }
 
@@ -201,7 +210,7 @@ dd {
 
 // Abbreviations and acronyms
 abbr[title],
-// Added data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
+// Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
 abbr[data-original-title] {
   cursor: help;
   border-bottom: 1px dotted @abbr-border-color;
@@ -229,7 +238,7 @@ blockquote {
     line-height: @line-height-base;
     color: @blockquote-small-color;
     &:before {
-      content: '\2014 \00A0';// EM DASH, NBSP
+      content: '\2014 \00A0'; // EM DASH, NBSP
     }
   }
 
@@ -240,15 +249,17 @@ blockquote {
     border-right: 5px solid @blockquote-border-color;
     border-left: 0;
     p,
-    small {
+    small,
+    .small {
       text-align: right;
     }
-    small {
+    small,
+    .small {
       &:before {
         content: '';
       }
       &:after {
-        content: '\00A0 \2014';// NBSP, EM DASH
+        content: '\00A0 \2014'; // NBSP, EM DASH
       }
     }
   }

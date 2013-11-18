@@ -6,22 +6,10 @@
 // Bar animations
 // -------------------------
 
-// Webkit
+// WebKit
 @-webkit-keyframes progress-bar-stripes {
   from  { background-position: 40px 0; }
   to    { background-position: 0 0; }
-}
-
-// Firefox
-@-moz-keyframes progress-bar-stripes {
-  from  { background-position: 40px 0; }
-  to    { background-position: 0 0; }
-}
-
-// Opera
-@-o-keyframes progress-bar-stripes {
-  from  { background-position: 0 0; }
-  to    { background-position: 40px 0; }
 }
 
 // Spec and IE10+
@@ -67,11 +55,7 @@
 
 // Call animation for the active one
 .progress.active .progress-bar {
-  -webkit-animation: progress-bar-stripes 2s linear infinite;
-     -moz-animation: progress-bar-stripes 2s linear infinite;
-      -ms-animation: progress-bar-stripes 2s linear infinite;
-       -o-animation: progress-bar-stripes 2s linear infinite;
-          animation: progress-bar-stripes 2s linear infinite;
+  .animation(progress-bar-stripes 2s linear infinite);
 }
 
 
