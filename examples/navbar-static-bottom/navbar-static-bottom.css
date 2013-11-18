@@ -1,0 +1,16 @@
+html, body {
+  height: 100%;
+}
+
+.contant {
+  min-height: 100%;
+  position: relative;
+}
+
+.navbar-static-bottom {
+  height:60px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
