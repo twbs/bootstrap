@@ -565,6 +565,17 @@
   tr& { display: table-row !important; }
   th&,
   td& { display: table-cell !important; }
+
+  //Ensure common "inline-block" elements are shown as such
+  audio&,
+  canvas&,
+  video&,
+  .badge&,
+  .btn&,
+  .btn-group&,
+  .btn-group-vertical&,
+  .pagination&,
+  ul.list-inline>li&  { display: inline-block !important; }
 }
 
 .responsive-invisibility() {
