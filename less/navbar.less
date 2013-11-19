@@ -354,11 +354,11 @@
 // Add a class to make any element properly align itself vertically within the navbars.
 
 .navbar-text {
-  html:not([dir="rtl"]) & { float: left; }
-  html[dir="rtl"] & { float: right; }
   .navbar-vertical-align(@line-height-computed);
 
   @media (min-width: @grid-float-breakpoint) {
+    html:not([dir="rtl"]) & { float: left; }
+    html[dir="rtl"] & { float: right; }
     margin-left: @navbar-padding-horizontal;
     margin-right: @navbar-padding-horizontal;
   }
