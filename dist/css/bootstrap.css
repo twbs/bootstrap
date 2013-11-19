@@ -1953,6 +1953,7 @@ output {
 
 .form-control::-moz-placeholder {
   color: #999999;
+  opacity: 1;
 }
 
 .form-control:-ms-input-placeholder {
@@ -3865,10 +3866,15 @@ input[type="button"].btn-block {
   table-layout: fixed;
 }
 
-.btn-group-justified .btn {
+.btn-group-justified > .btn,
+.btn-group-justified > .btn-group {
   display: table-cell;
   float: none;
   width: 1%;
+}
+
+.btn-group-justified > .btn-group .btn {
+  width: 100%;
 }
 
 [data-toggle="buttons"] > .btn > input[type="radio"],
