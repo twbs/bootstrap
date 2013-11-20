@@ -328,11 +328,11 @@ $('#myModal').modal({
         <tbody>
          <tr>
            <td>show.bs.modal</td>
-           <td>This event fires immediately when the <code>show</code> instance method is called.</td>
+           <td>This event fires immediately when the <code>show</code> instance method is called. If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
          </tr>
          <tr>
            <td>shown.bs.modal</td>
-           <td>This event is fired when the modal has been made visible to the user (will wait for CSS transitions to complete).</td>
+           <td>This event is fired when the modal has been made visible to the user (will wait for CSS transitions to complete). If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
          </tr>
          <tr>
            <td>hide.bs.modal</td>
@@ -346,8 +346,8 @@ $('#myModal').modal({
       </table>
     </div><!-- /.table-responsive -->
 {% highlight js %}
-$('#myModal').on('hidden.bs.modal', function () {
-  // do something…
+$('#myModal').on('hidden.bs.modal', function (e) {
+  // do something...
 })
 {% endhighlight %}
   </div>
