@@ -56,11 +56,19 @@ a {
 }
 
 
-// Images
-
-img {
+// Remove the gap between embedded content and the bottom of its container
+audio,
+canvas,
+embed,
+iframe,
+img,
+object,
+svg,
+video {
   vertical-align: middle;
 }
+
+// Images
 
 // Responsive images (ensure images don't scale beyond their parents)
 .img-responsive {
