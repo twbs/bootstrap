@@ -304,15 +304,15 @@ $('#myModal').modal({
 {% endhighlight %}
 
     <h4>.modal('toggle')</h4>
-    <p>Manually toggles a modal.</p>
+    <p>Manually toggles a modal. <strong>Returns to the caller before the modal has actually been shown or hidden</strong> (i.e. before the <code>shown.bs.modal</code> or <code>hidden.bs.modal</code> event occurs).</p>
     {% highlight js %}$('#myModal').modal('toggle'){% endhighlight %}
 
     <h4>.modal('show')</h4>
-    <p>Manually opens a modal.</p>
+    <p>Manually opens a modal. <strong>Returns to the caller before the modal has actually been shown</strong> (i.e. before the <code>shown.bs.modal</code> event occurs).</p>
     {% highlight js %}$('#myModal').modal('show'){% endhighlight %}
 
     <h4>.modal('hide')</h4>
-    <p>Manually hides a modal.</p>
+    <p>Manually hides a modal. <strong>Returns to the caller before the modal has actually been hidden</strong> (i.e. before the <code>hidden.bs.modal</code> event occurs).</p>
     {% highlight js %}$('#myModal').modal('hide'){% endhighlight %}
 
     <h3>Events</h3>
