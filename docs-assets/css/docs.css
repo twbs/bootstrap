@@ -126,6 +126,7 @@ body {
 .footer-links {
   margin: 10px 0;
   padding-left: 0;
+  color: #999;
 }
 .footer-links li {
   display: inline;
@@ -205,31 +206,19 @@ body {
   position: relative;
   padding: 30px 15px;
   text-align: center;
-  /*text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
 }
-/*
-.bs-masthead:after {
-  display: block;
-  width: 144px;
-  height: 1px;
-  content: "";
-  margin: 40px auto;
-  background-color: #e5e5e5;
-}
-*/
 .bs-masthead h1 {
   display: none;
-  /*font-size: 50px;*/
   line-height: 1;
   color: #563d7c;
 }
 .bs-masthead .lead {
   font-size: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 .bs-masthead .btn-outline {
   width: 100%;
-  /*margin: 5px;*/
+  margin: 10px 5px;
   padding: 14px 24px;
   font-size: 20px;
 }
@@ -248,6 +237,7 @@ body {
   line-height: 140px;
   border: 1px solid #563d7c;
   border-radius: 15%;
+  cursor: default;
 }
 
 /* Links to project-level content like the repo, Expo, etc */
@@ -280,11 +270,6 @@ body {
 @media (min-width: 480px) {
   .bs-masthead .btn-outline {
     width: auto;
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-  .bs-masthead .btn-outline + .btn-outline {
-    margin-top: 0;
   }
 }
 
@@ -295,25 +280,13 @@ body {
 }
 
 @media (min-width: 992px) {
-  .bs-masthead {
-    /*padding-top:    120px;*/
-    /*padding-bottom: 120px;*/
-  }
-/*
-  .bs-masthead h1 {
-    font-size: 100px;
-  }
-*/
   .bs-masthead .lead {
     margin-left: 12.5%;
     margin-right: 12.5%;
     font-size: 30px;
   }
   .bs-masthead .btn-outline {
-    /*width: auto;*/
-    /*margin: 0 5px;*/
     padding: 18px 24px;
-    /*font-size: 20px;*/
   }
   .bs-masthead-links {
     padding: 0;
@@ -331,7 +304,7 @@ body {
 /* Page headers */
 .bs-header {
   padding: 30px 15px 40px; /* side padding builds on .container 15px, so 30px */
-  font-size: 16px;
+  font-size: 20px;
   text-align: center;
   background-color: #f9f9f9;
   border-bottom: 1px solid #eee;
@@ -349,7 +322,7 @@ body {
 
 @media (min-width: 768px) {
   .bs-header {
-    font-size: 21px;
+    /*font-size: 21px;*/
     text-align: left;
   }
   .bs-header h1 {
@@ -375,7 +348,7 @@ body {
 
 .carbonad {
   width: auto !important;
-  margin: 50px -30px -40px !important;
+  margin: 20px -30px -41px !important;
   padding: 20px !important;
   overflow: hidden; /* clearfix */
   height: auto !important;
@@ -383,8 +356,8 @@ body {
   line-height: 16px !important;
   text-align: left;
   background: #fff !important;
-  border: 1px solid #e5e5e5 !important;
-  border-radius: 4px;
+  border: solid #e5e5e5 !important;
+  border-width: 1px 0 !important;
 }
 .carbonad-img {
   margin: 0 !important;
@@ -413,9 +386,29 @@ body {
   display: none; /* hide what I assume are tracking images */
 }
 
+/* Homepage variation */
+.bs-docs-home .carbonad {
+  margin: 0 -15px 40px !important;
+}
+
+@media (min-width: 480px) {
+  .carbonad {
+    width: 330px !important;
+    margin: 20px auto 0 !important;
+    border-radius: 4px;
+    border-width: 1px !important;
+  }
+  .bs-docs-home .carbonad {
+    margin: 0 auto 40px !important;
+  }
+}
+
 @media (min-width: 768px) {
   .carbonad {
     margin: 0 !important;
+  }
+  .bs-docs-home .carbonad {
+    margin: 0 auto 40px !important;
   }
 }
 
@@ -427,22 +420,11 @@ body {
     padding: 15px !important;
     width: 330px !important;
   }
-}
-
-/* Homepage variations */
-.bs-docs-home .carbonad {
-  border-width: 1px 0 !important;
-  border-radius: 0;
-  margin: 0 -15px 40px !important;
-}
-@media (min-width: 480px) {
   .bs-docs-home .carbonad {
-    width: 330px !important;
-    margin: 0 auto 40px !important;
-    border-radius: 4px;
-    border-width: 1px !important;
+    position: static;
   }
 }
+
 @media (min-width: 768px) {
   .bs-docs-home .bs-social {
     margin-bottom: 10px;
@@ -453,16 +435,6 @@ body {
   .bs-docs-home .bs-social,
   .bs-docs-home .bs-masthead-links {
     text-align: center;
-  }
-}
-@media (min-width: 992px) {
-  .bs-docs-home .carbonad {
-    position: static;
-  }
-}
-@media (min-width: 1170px) {
-  .bs-docs-home .carbonad {
-    margin-top: -25px !important;
   }
 }
 
