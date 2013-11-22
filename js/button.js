@@ -53,7 +53,7 @@
   }
 
   Button.prototype.toggle = function () {
-    var $parent = this.$element.closest('[data-toggle="buttons"]')
+    var $parent = this.$element.closest('[data-toggle="button"]')
     var changed = true
 
     if ($parent.length) {
