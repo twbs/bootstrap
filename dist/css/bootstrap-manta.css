@@ -7481,14 +7481,8 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
 
 .ellipsis {
   display: inline-block;
-  max-width: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-@media (min-width: 385px) and (max-width: 752px) {
-  .ellipsis {
-    max-width: 300px;
-  }
+  vertical-align: middle;
 }
