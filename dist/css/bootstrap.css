@@ -1920,6 +1920,7 @@ output {
 }
 .form-control::-moz-placeholder {
   color: #999999;
+  opacity: 1;
 }
 .form-control:-ms-input-placeholder {
   color: #999999;
@@ -4298,12 +4299,12 @@ input[type="button"].btn-block {
 }
 
 .navbar-text {
-  float: left;
   margin-top: 15px;
   margin-bottom: 15px;
 }
 @media (min-width: 768px) {
   .navbar-text {
+    float: left;
     margin-left: 15px;
     margin-right: 15px;
   }
