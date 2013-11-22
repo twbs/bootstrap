@@ -7,50 +7,66 @@ base_url: "../"
 ---
 
 
-  <div class="bs-docs-section">
-    <div class="page-header">
-      <h1 id="example-component">Inline Delete Confirmation</h1>
-      <p>This element is simply a re-purposed carousel used as means of prompting the user to confirm deletion of an object.</p>
-	  <div class="bs-example">
-		  <div id="myCarousel" class="carousel slide" data-interval='false'>
-		  <!-- Carousel items -->
-		 
-			<form role="form">
-			  <div class="form-group">
-			    <label for="exampleInputEmail1">Name</label>
-			    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your name">
-			  </div>
-			  <div class="form-group">
-			    <label for="exampleInputPassword1">Email Address</label>
-			    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter an email">
-			  </div>
-			  <div class="carousel-inner">
-			    <div class="active item alert">
-			    	<button class="btn btn-primary">Save Changes</button>
-			    	<button class="btn btn-link">Cancel</button>
-			    	<a href="#myCarousel" id="delete" class="btn btn-link" data-slide="next">Delete</a>
-			    </div>
-			    <div class="item alert alert-block alert-danger">Delete this contact?
-					<button class="btn btn-danger" value="delete" name="delete">Delete</button>
-					<a href="#myCarousel" class="btn btn-default" value="cancel" data-slide="prev" name="cancel">Cancel</a>
-				</div>
-			  </div>
-			</form>
-		  </div>
-	  </div>
-	  <p>The biggest changes here entail ditching the nav dots and the left/right navigation controls and binding the next/previous slide commands to  the Delete and Cancel buttons within the carousel. 
-{% highlight html %}
-<div class="carousel-inner">
-  <div class="active item alert">
-    <button class="btn btn-primary">Save Changes</button>
-    <button class="btn btn-link">Cancel</button>
-    <a href="#myCarousel" id="delete" class="btn btn-link" data-slide="next">Delete</a>
+<div class="bs-docs-section">
+  <div class="page-header">
+    <h1 id="components">Components</h1>
   </div>
-  <div class="item alert alert-block alert-danger">Delete this contact?
-    <button class="btn btn-danger" value="delete" name="delete">Delete</button>
-    <a href="#myCarousel" class="btn btn-default" value="cancel" data-slide="prev" name="cancel">Cancel</a>
+  <h3 id="inline-delete">Inline Delete Confirmation</h1>
+  <p>This element is simply a re-purposed carousel used as means of prompting the user to confirm deletion of an object.</p>
+  <div class="bs-example">
+    <div id="myCarousel" class="carousel slide" data-interval='false'>
+    <!-- Carousel items -->
+  
+    <form role="form">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Name</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your name">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Email Address</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter an email">
+      </div>
+      <div class="carousel-inner">
+        <div class="active item alert">
+          <button class="btn btn-primary">Save Changes</button>
+          <button class="btn btn-link">Cancel</button>
+          <a href="#myCarousel" id="delete" class="btn btn-link" data-slide="next">Delete</a>
+        </div>
+        <div class="item alert alert-block alert-danger">Delete this contact?
+        <button class="btn btn-danger" value="delete" name="delete">Delete</button>
+        <a href="#myCarousel" class="btn btn-default" value="cancel" data-slide="prev" name="cancel">Cancel</a>
+      </div>
+      </div>
+    </form>
+    </div>
   </div>
+  <p>The biggest changes here entail ditching the nav dots and the left/right navigation controls and binding the next/previous slide commands to  the Delete and Cancel buttons within the carousel. 
+  {% highlight html %}
+  <div class="carousel-inner">
+    <div class="active item alert">
+      <button class="btn btn-primary">Save Changes</button>
+      <button class="btn btn-link">Cancel</button>
+      <a href="#myCarousel" id="delete" class="btn btn-link" data-slide="next">Delete</a>
+    </div>
+    <div class="item alert alert-block alert-danger">Delete this contact?
+      <button class="btn btn-danger" value="delete" name="delete">Delete</button>
+      <a href="#myCarousel" class="btn btn-default" value="cancel" data-slide="prev" name="cancel">Cancel</a>
+    </div>
+  </div>
+  {% endhighlight %}
 </div>
-{% endhighlight %}
-	</div>
+
+<div class="bs-docs-section">
+  <div class="page-header">
+    <h1 id="helpers">Helpers</h1>
   </div>
+  <h3 id="ellipsis-overflow">.ellipsis</h1>
+  <p>Add text-overflow ellipsis to any element you need to truncate.</p>
+  <div class="bs-example">
+    <span class='ellipsis' style='max-width: 300px'>This text will be truncated at 300px. Lorem ibsum</span>
+  </div>
+  <p>Just add the ellipsis class to an element. Make sure you set the max-width to tell it when to start truncating.</p>
+  {% highlight html %}
+    <span class='ellipsis' style='max-width: 300px'>This text will be truncated at 300px. Lorem ibsum</span>
+  {% endhighlight %}
+</div>

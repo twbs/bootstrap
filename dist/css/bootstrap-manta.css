@@ -7478,3 +7478,11 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
 .input-group-sm > .input-group-btn > .btn {
   height: 30px;
 }
+
+.ellipsis {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
