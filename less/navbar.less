@@ -155,6 +155,24 @@
   border-width: 1px 0 0;
 }
 
+//Make all navigation bars .navbar-fixed-top/.navbar-fixed-bottom like a .navbar-static-top/.navbar-static-bottom
+@media (max-heigh: 320px) and
+(orientation: landscape) {
+  .navbar-fixed-top {
+    z-index: 1000;
+    border-width: 0 0 1px;
+  }
+  
+  /*For using this class add new .contant block to your html*/
+  .navbar-fixed-bottom {
+    height:60px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+}
+
 // Brand/project name
 
 .navbar-brand {

@@ -402,6 +402,23 @@ p {
   line-height: 1.4;
 }
 
+@media (max-heigh: 320px) and
+(orientation: landscape) {
+  .navbar-fixed-top {
+    z-index: 1000;
+    border-width: 0 0 1px;
+  }
+  
+  /*For using this class add new .contant block to your html*/
+  .navbar-fixed-bottom {
+    height:60px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+}
+
 @media (min-width: 768px) {
   .lead {
     font-size: 21px;
