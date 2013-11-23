@@ -40,3 +40,6 @@ validation-report.json
 # Folders to ignore
 node_modules
 bower_components
+
+# Ruby Gems dependencies should be specified in Gemfile
+Gemfile.lock
