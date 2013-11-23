@@ -2,7 +2,7 @@
   "username": "--secure--",
   "key": "--secure--",
   "test_path": "js/tests/index.html",
-  "browsers":  [
+  "browsers": [
     {
       "browser": "firefox",
       "browser_version": "latest",

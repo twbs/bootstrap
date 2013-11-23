@@ -340,10 +340,10 @@
 // Add a class to make any element properly align itself vertically within the navbars.
 
 .navbar-text {
-  float: left;
   .navbar-vertical-align(@line-height-computed);
 
   @media (min-width: @grid-float-breakpoint) {
+    float: left;
     margin-left: @navbar-padding-horizontal;
     margin-right: @navbar-padding-horizontal;
   }
