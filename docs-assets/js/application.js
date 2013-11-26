@@ -100,4 +100,4 @@
       })
 })
 
-}(window.jQuery)
+}(jQuery)
