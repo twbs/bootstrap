@@ -37,4 +37,15 @@
     , "grunt-sed": "~0.1.1"
     , "regexp-quote": "~0.0.0"
   }
+  , "jspm": {
+      "main": "js/bootstrap"
+    , "directories": { "lib": "dist" }
+    , "shim": {
+        "js/bootstrap": {
+            "imports": "jquery"
+          , "exports": "$"
+        }
+    }
+    , "buildConfig": { "uglify": true }
+  }
 }
