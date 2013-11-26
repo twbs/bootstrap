@@ -338,7 +338,14 @@ a:focus {
   outline-offset: -2px;
 }
 
-img {
+audio,
+canvas,
+embed,
+iframe,
+img,
+object,
+svg,
+video {
   vertical-align: middle;
 }
 
@@ -1953,6 +1960,7 @@ output {
 
 .form-control::-moz-placeholder {
   color: #999999;
+  opacity: 1;
 }
 
 .form-control:-ms-input-placeholder {
