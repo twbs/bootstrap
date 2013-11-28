@@ -4801,6 +4801,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
   .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {
     border-color: #080808;
   }
+  .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
+    background-color: #080808;
+  }
   .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
     color: #999999;
   }
