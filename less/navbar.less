@@ -414,15 +414,8 @@
     border-color: @navbar-default-border;
   }
 
-  // Dropdown menu items and carets
+  // Dropdown menu items
   .navbar-nav {
-    // Caret should match text color on hover
-    > .dropdown > a:hover .caret,
-    > .dropdown > a:focus .caret {
-      border-top-color: @navbar-default-link-hover-color;
-      border-bottom-color: @navbar-default-link-hover-color;
-    }
-
     // Remove background color from open dropdown
     > .open > a {
       &,
@@ -430,17 +423,8 @@
       &:focus {
         background-color: @navbar-default-link-active-bg;
         color: @navbar-default-link-active-color;
-        .caret {
-          border-top-color: @navbar-default-link-active-color;
-          border-bottom-color: @navbar-default-link-active-color;
-        }
       }
     }
-    > .dropdown > a .caret {
-      border-top-color: @navbar-default-link-color;
-      border-bottom-color: @navbar-default-link-color;
-    }
-
 
     @media (max-width: @screen-xs-max) {
       // Dropdowns get custom display when collapsed
@@ -559,24 +543,6 @@
       &:focus {
         background-color: @navbar-inverse-link-active-bg;
         color: @navbar-inverse-link-active-color;
-      }
-    }
-    > .dropdown > a:hover .caret {
-      border-top-color: @navbar-inverse-link-hover-color;
-      border-bottom-color: @navbar-inverse-link-hover-color;
-    }
-    > .dropdown > a .caret {
-      border-top-color: @navbar-inverse-link-color;
-      border-bottom-color: @navbar-inverse-link-color;
-    }
-    > .open > a {
-      &,
-      &:hover,
-      &:focus {
-        .caret {
-          border-top-color: @navbar-inverse-link-active-color;
-          border-bottom-color: @navbar-inverse-link-active-color;
-        }
       }
     }
 
