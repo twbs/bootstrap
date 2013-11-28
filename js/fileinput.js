@@ -75,7 +75,8 @@
       var element = this.$element
 
       reader.onload = function(re) {
-        var $img = $('<img>').attr('src', re.target.result)
+        var $img = $('<img>') // .attr('src', re.target.result)
+        $img[0].src = re.target.result
         e.target.files[0].result = re.target.result
         
         element.find('.fileinput-filename').text(file.name)
