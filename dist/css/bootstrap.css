@@ -5585,6 +5585,11 @@ a.list-group-item.active:focus .list-group-item-text {
   border-top: 1px solid #dddddd;
 }
 
+.panel > .table > tbody:first-child th,
+.panel > .table > tbody:first-child td {
+  border-top: 0;
+}
+
 .panel > .table-bordered,
 .panel > .table-responsive > .table-bordered {
   border: 0;
