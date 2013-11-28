@@ -822,6 +822,10 @@ base_url: "../"
 
     <h2 id="glyphicons-how-to-use">How to use</h2>
     <p>For performance reasons, all icons require a base class and individual icon class. To use, place the following code just about anywhere. Be sure to leave a space between the icon and text for proper padding.</p>
+    <div class="bs-callout bs-callout-danger">
+      <h4>Don't mix with other components</h4>
+      <p>Icon classes cannot be combined with other elements. They are designed to be standalone elements.</p>
+    </div>
 {% highlight html %}
 <span class="glyphicon glyphicon-search"></span>
 {% endhighlight %}
@@ -1882,8 +1886,8 @@ base_url: "../"
     <h2 id="nav-justified">Justified</h2>
     <p>Easily make tabs or pills equal widths of their parent at screens wider than 768px with <code>.nav-justified</code>. On smaller screens, the nav links are stacked.</p>
     <div class="bs-callout bs-callout-warning">
-      <h4>WebKit and responsive justified navs</h4>
-      <p>Chrome and Safari both exhibit a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing. This bug is also shown in the <a href="../examples/justified-nav/">justified nav example</a>.</p>
+      <h4>Safari and responsive justified navs</h4>
+      <p>Safari exhibits a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing. This bug is also shown in the <a href="../examples/justified-nav/">justified nav example</a>.</p>
     </div>
     <div class="bs-example">
       <ul class="nav nav-tabs nav-justified">
@@ -3160,7 +3164,7 @@ body { padding-bottom: 70px; }
               <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
             </a>
             <div class="media-body">
-              <h4 class="media-heading">Media heading</h4>
+              <h4 class="media-heading">Nested media heading</h4>
               Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
             </div>
           </div>
