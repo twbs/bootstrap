@@ -736,11 +736,11 @@
     @item: ~".col-@{class}-@{index}";
     .col(@index + 1, @item);
   }
-  .col(@index, @list) when (@index < @grid-columns) { // general
+  .col(@index, @list) when (@index =< @grid-columns) { // general
     @item: ~".col-@{class}-@{index}";
     .col(@index + 1, ~"@{list}, @{item}");
   }
-  .col(@index, @list) when (@index = @grid-columns) { // terminal
+  .col(@index, @list) when (@index > @grid-columns) { // terminal
     @{list} {
       float: left;
     }
