@@ -30,8 +30,8 @@
 // WebKit-style focus
 .tab-focus() {
   // Default
-  outline: thin dotted #333;
-  // WebKit
+  outline: thin dotted;
+  //Webkit
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -55,7 +55,8 @@
 // Placeholder text
 .placeholder(@color: @input-color-placeholder) {
   &:-moz-placeholder            { color: @color; } // Firefox 4-18
-  &::-moz-placeholder           { color: @color; } // Firefox 19+
+  &::-moz-placeholder           { color: @color;   // Firefox 19+
+                                  opacity: 1; } // See https://github.com/twbs/bootstrap/pull/11526
   &:-ms-input-placeholder       { color: @color; } // Internet Explorer 10+
   &::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
 }
@@ -391,7 +392,7 @@
 
 // Panels
 // -------------------------
-.panel-variant(@border; @heading-text-color; @heading-bg-color; @heading-border;) {
+.panel-variant(@border; @heading-text-color; @heading-bg-color; @heading-border) {
   border-color: @border;
 
   & > .panel-heading {
@@ -401,9 +402,6 @@
 
     + .panel-collapse .panel-body {
       border-top-color: @border;
-    }
-    & > .dropdown .caret {
-      border-color: @heading-text-color transparent;
     }
   }
   & > .panel-footer {

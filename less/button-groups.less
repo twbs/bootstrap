@@ -2,37 +2,6 @@
 // Button groups
 // --------------------------------------------------
 
-// Button carets
-//
-// Match the button text color to the arrow/caret for indicating dropdown-ness.
-
-.caret {
-  .btn-default & {
-    border-top-color: @btn-default-color;
-  }
-  .btn-primary &,
-  .btn-success &,
-  .btn-warning &,
-  .btn-danger &,
-  .btn-info & {
-    border-top-color: #fff;
-  }
-}
-.dropup {
-  .btn-default .caret {
-    border-bottom-color: @btn-default-color;
-  }
-  .btn-primary,
-  .btn-success,
-  .btn-warning,
-  .btn-danger,
-  .btn-info {
-   .caret {
-      border-bottom-color: #fff;
-    }
-  }
-}
-
 // Make the div behave like a button
 .btn-group,
 .btn-group-vertical {
@@ -178,7 +147,8 @@
 
 .btn-group-vertical {
   > .btn,
-  > .btn-group {
+  > .btn-group,
+  > .btn-group > .btn {
     display: block;
     float: none;
     width: 100%;
