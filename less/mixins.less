@@ -279,7 +279,7 @@
   // Color stops are not available in IE9 and below.
   .horizontal(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
     background-image: -webkit-gradient(linear, @start-percent top, @end-percent top, from(@start-color), to(@end-color)); // Safari 4+, Chrome 2+
-    background-image: -webkit-linear-gradient(left, color-stop(@start-color @start-percent), color-stop(@end-color @end-percent)); // Safari 5.1+, Chrome 10+
+    background-image: -webkit-linear-gradient(left, color-stop(@start-percent, @start-color), color-stop(@end-percent, @end-color)); // Safari 5.1+, Chrome 10+
     background-image: -moz-linear-gradient(left, @start-color @start-percent, @end-color @end-percent); // FF 3.6+
     background-image:  linear-gradient(to right, @start-color @start-percent, @end-color @end-percent); // Standard, IE10
     background-repeat: repeat-x;
