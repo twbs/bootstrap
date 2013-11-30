@@ -529,6 +529,7 @@ $('#myDropdown').on('show.bs.dropdown', function () {
 {% endhighlight %}
   </div>
 
+
   <!-- ScrollSpy
   ================================================== -->
   <div class="bs-docs-section">
@@ -588,7 +589,13 @@ $('#myDropdown').on('show.bs.dropdown', function () {
     <h3>Via data attributes</h3>
     <p>To easily add scrollspy behavior to your topbar navigation, add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the <code>&lt;body&gt;</code>). Then add the <code>data-target</code> attribute with the ID or class of the parent element of any Bootstrap <code>.nav</code> component.</p>
 {% highlight html %}
-<body data-spy="scroll" data-target="#navbar-example">
+<body data-spy="scroll" data-target=".navbar-example">
+  ...
+  <div class="navbar-example">
+    <ul class="nav nav-tabs">
+      ...
+    </ul>
+  </div>
   ...
 </body>
 {% endhighlight %}
@@ -596,7 +603,7 @@ $('#myDropdown').on('show.bs.dropdown', function () {
     <h3>Via JavaScript</h3>
     <p>Call the scrollspy via JavaScript:</p>
 {% highlight js %}
-$('body').scrollspy({ target: '#navbar-example' })
+$('body').scrollspy({ target: '.navbar-example' })
 {% endhighlight %}
 
     <div class="bs-callout bs-callout-danger">
@@ -1408,7 +1415,7 @@ $('#my-alert').bind('closed.bs.alert', function () {
     <h2 id="buttons-usage">Usage</h2>
     <p>Enable buttons via JavaScript:</p>
 {% highlight js %}
-$('.btn-group').button()
+$('.btn').button()
 {% endhighlight %}
 
     <h3>Markup</h3>
@@ -1926,21 +1933,26 @@ $('#myCarousel').on('slide.bs.carousel', function () {
     <hr class="bs-docs-separator">
 
     <h2 id="affix-usage">Usage</h2>
+    <p>Use the affix plugin via data attributes or manually with your own JavaScript. <strong>In both situations, you must provide CSS for the positioning of your content.</strong></p>
+
+    <h3>Positioning via CSS</h3>
+    <p>The affix plugin toggles between three classes, each representing a particular state: <code>.affix</code>, <code>.affix-top</code>, and <code>.affix-bottom</code>. You must provide the styles for these classes yourself (independent of this plugin) to handle the actual positions.</p>
+    <p>Here's how the affix plugin works:</p>
+    <ol>
+      <li>To start, the plugin adds <code>.affix-top</code> to indicate the element is in it's top-most position. At this point no CSS positioning is required.</li>
+      <li>Scrolling past the element you want affixed should trigger the actual affixing. This is where <code>.affix</code> replaces <code>.affix-top</code> and sets <code>position: fixed;</code> (provided by Bootstrap's code CSS).</li>
+      <li>If a bottom offset is defined, scrolling past that should replace <code>.affix</code> with <code>.affix-bottom</code>. Since offsets are optional, setting one requires you to set the appropriate CSS. In this case, add <code>position: absolute;</code> when necessary. The plugin uses the data attribute or JavaScript option to determine where to position the elemtn from there.</li>
+    </ol>
+    <p>Follow the above steps to set your CSS for either of the usage options below.</p>
 
     <h3>Via data attributes</h3>
-    <p>To easily add affix behavior to any element, just add <code>data-spy="affix"</code> to the element you want to spy on. Then use offsets to define when to toggle the pinning of an element on and off.</p>
+    <p>To easily add affix behavior to any element, just add <code>data-spy="affix"</code> to the element you want to spy on. Use offsets to define when to toggle the pinning of an element.</p>
 
 {% highlight html %}
-<div data-spy="affix" data-offset-top="200">...</div>
+<div data-spy="affix" data-offset-top="60" data-offset-bottom="200">
+  ...
+</div>
 {% endhighlight %}
-
-    <div class="bs-callout bs-callout-warning">
-      <h4>Requires independent styling ;)</h4>
-      <p>
-        Affix toggles between three states/classes: <code>.affix</code>, <code>.affix-top</code>, and <code>.affix-bottom</code>. You must provide the styles for these classes yourself (independent of this plugin).
-        The <code>.affix-top</code> class should be in the regular flow of the document. The <code>.affix</code> class should be <code>position: fixed</code>. And <code>.affix-bottom</code> should be <code>position: absolute</code>. Note: <code>.affix-bottom</code> is special in that the plugin will place the element with JS relative to the <code>offset: { bottom: number }</code> option you've provided.
-      </p>
-    </div>
 
     <h3>Via JavaScript</h3>
     <p>Call the affix plugin via JavaScript:</p>

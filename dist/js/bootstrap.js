@@ -1,9 +1,7 @@
 /*!
- * Bootstrap v3.0.2 by @fat and @mdo
+ * Bootstrap v3.0.2 (http://getbootstrap.com)
  * Copyright 2013 Twitter, Inc.
  * Licensed under http://www.apache.org/licenses/LICENSE-2.0
- *
- * Designed and built with all the love in the world by @mdo and @fat.
  */
 
 if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery") }
@@ -803,9 +801,9 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
   $.fn.dropdown = function (option) {
     return this.each(function () {
       var $this = $(this)
-      var data  = $this.data('dropdown')
+      var data  = $this.data('bs.dropdown')
 
-      if (!data) $this.data('dropdown', (data = new Dropdown(this)))
+      if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)))
       if (typeof option == 'string') data[option].call($this)
     })
   }
