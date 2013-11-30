@@ -5,6 +5,16 @@
 // Set the container width, and override it for fixed navbars in media queries
 .container {
   .container-fixed();
+
+  @media (min-width: @screen-sm) {
+    width: @container-sm;
+  }
+  @media (min-width: @screen-md) {
+    width: @container-md;
+  }
+  @media (min-width: @screen-lg-min) {
+    width: @container-lg;
+  }
 }
 
 // mobile first defaults
@@ -18,8 +28,8 @@
 
 // Extra small grid
 //
-// Grid classes for extra small devices like smartphones. No offset, push, or
-// pull classes are present here due to the size of the target.
+// Columns, offsets, pushes, and pulls for extra small devices like
+// smartphones.
 //
 // Note that `.col-xs-12` doesn't get floated on purpose--there's no need since
 // it's full-width.
@@ -40,10 +50,6 @@
 // it's full-width.
 
 @media (min-width: @screen-sm-min) {
-  .container {
-    width: @container-sm;
-  }
-
   .make-grid-columns-float(sm);
   .make-grid(@grid-columns, sm, width);
   .make-grid(@grid-columns, sm, pull);
@@ -60,10 +66,6 @@
 // it's full-width.
 
 @media (min-width: @screen-md-min) {
-  .container {
-    width: @container-md;
-  }
-
   .make-grid-columns-float(md);
   .make-grid(@grid-columns, md, width);
   .make-grid(@grid-columns, md, pull);
@@ -80,10 +82,6 @@
 // it's full-width.
 
 @media (min-width: @screen-lg-min) {
-  .container {
-    width: @container-lg;
-  }
-
   .make-grid-columns-float(lg);
   .make-grid(@grid-columns, lg, width);
   .make-grid(@grid-columns, lg, pull);

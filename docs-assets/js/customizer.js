@@ -7,7 +7,7 @@
 
 
 window.onload = function () { // wait for load in a dumb way because B-0
-  var cw = '/*!\n * Bootstrap v3.0.0\n *\n * Copyright 2013 Twitter, Inc\n * Licensed under the Apache License v2.0\n * http://www.apache.org/licenses/LICENSE-2.0\n *\n * Designed and built with all the love in the world @twitter by @mdo and @fat.\n */\n\n'
+  var cw = '/*!\n * Bootstrap v3.0.2\n *\n * Copyright 2013 Twitter, Inc\n * Licensed under the Apache License v2.0\n * http://www.apache.org/licenses/LICENSE-2.0\n *\n * Designed and built with all the love in the world @twitter by @mdo and @fat.\n */\n\n'
 
   function showError(msg, err) {
     $('<div id="bsCustomizerAlert" class="bs-customizer-alert">\
@@ -56,7 +56,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
       data: JSON.stringify(data)
     })
     .success(function(result) {
-      history.replaceState(false, document.title, window.location.origin + window.location.pathname + '?id=' + result.id)
+      var origin = window.location.protocol + "//" + window.location.host
+      history.replaceState(false, document.title, origin + window.location.pathname + '?id=' + result.id)
     })
     .error(function(err) {
       showError('<strong>Ruh roh!</strong> Could not save gist file, configuration not saved.', err)
@@ -230,7 +231,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
         }
         result = {
           'bootstrap.css'     : cw + tree.toCSS(),
-          'bootstrap.min.css' : cw + tree.toCSS({ compress: true })
+          'bootstrap.min.css' : cw + tree.toCSS({ compress: true }).replace(/\n/g, '')
         }
       })
     } catch (err) {

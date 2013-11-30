@@ -57,12 +57,16 @@
 
 .panel {
   > .table,
-  > .table-responsive {
+  > .table-responsive > .table {
     margin-bottom: 0;
   }
   > .panel-body + .table,
   > .panel-body + .table-responsive {
     border-top: 1px solid @table-border-color;
+  }
+  > .table > tbody:first-child th,
+  > .table > tbody:first-child td {
+    border-top: 0;
   }
   > .table-bordered,
   > .table-responsive > .table-bordered {
@@ -96,7 +100,7 @@
   border-bottom: 1px solid transparent;
   .border-top-radius(@panel-border-radius - 1);
 
-  & > .dropdown .dropdown-toggle {
+  > .dropdown .dropdown-toggle {
     color: inherit;
   }
 }

@@ -320,7 +320,7 @@ base_url: "../"
 {% endhighlight %}
 
     <h3 id="grid-responsive-resets">Responsive column resets</h3>
-    <p>With the four tiers of grids available you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a <code>.clearfix</code> and our <a href="../css#responsive-utilities">responsive utility classes</a>.</p>
+    <p>With the four tiers of grids available you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a <code>.clearfix</code> and our <a href="#responsive-utilities">responsive utility classes</a>.</p>
 <div class="bs-docs-grid">
   <div class="row show-grid">
     <div class="col-xs-6 col-sm-3">
@@ -871,7 +871,7 @@ base_url: "../"
     <p>Style and content changes for simple variations on a standard <code>&lt;blockquote&gt;</code>.</p>
 
     <h4>Naming a source</h4>
-    <p>Add <code>&lt;small&gt;</code> tag for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
+    <p>Add <code>&lt;small&gt;</code> tag or <code>.small</code> class for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
     <div class="bs-example">
       <blockquote>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -1617,7 +1617,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h2 id="forms-horizontal">Horizontal form</h2>
     <p>Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout by adding <code>.form-horizontal</code> to the form. Doing so changes <code>.form-group</code>s to behave as grid rows, so no need for <code>.row</code>.</p>
     <div class="bs-example">
-      <form class="form-horizontal">
+      <form class="form-horizontal" role="form">
         <div class="form-group">
           <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
           <div class="col-sm-10">
@@ -2272,7 +2272,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <div class="bs-callout bs-callout-warning">
       <h4>Responsive images</h4>
-      <p>Looking for how to make images more responsive? <a href="../css#overview-responsive-images">Check out the responsive images section</a> up top.</p>
+      <p>Looking for how to make images more responsive? <a href="#overview-responsive-images">Check out the responsive images section</a> up top.</p>
     </div>
 
   </div>
@@ -2384,7 +2384,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
     <h3 id="helper-classes-show-hide">Showing and hiding content</h3>
-    <p>Force an element to be shown or hidden (<strong>including for screen readers</strong>) with the use of <code>.show</code> and <code>.hidden</code> classes. These classes use <code>!important</code> to avoid specificity conflicts, just like the <a href="../css/#helper-classes-floats">quick floats</a>. They are only available for block level toggling. They can also be used as mixins.</p>
+    <p>Force an element to be shown or hidden (<strong>including for screen readers</strong>) with the use of <code>.show</code> and <code>.hidden</code> classes. These classes use <code>!important</code> to avoid specificity conflicts, just like the <a href="#helper-classes-floats">quick floats</a>. They are only available for block level toggling. They can also be used as mixins.</p>
     <p><code>.hide</code> is available, but it does not always affect screen readers and is <strong>deprecated</strong> as of v3.0.1. Use <code>.hidden</code> or <code>.sr-only</code> instead.</p>
     <p>Furthermore, <code>.invisible</code> can be used to toggle only the visibility of an element, meaning its <code>display</code> is not modified and the element can still affect the flow of the document.</p>
 {% highlight html %}
