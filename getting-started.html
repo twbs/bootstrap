@@ -406,6 +406,10 @@ bootstrap/
             <td><code>.form-group</code></td>
           </tr>
           <tr>
+            <td><code>.control-group.warning .control-group.error .control-group.success</code></td>
+            <td><code>.form-group.has-*</code></td>
+          </tr>
+          <tr>
             <td><code>.checkbox.inline</code> <code>.radio.inline</code></td>
             <td><code>.checkbox-inline</code> <code>.radio-inline</code></td>
           </tr>
@@ -612,6 +616,11 @@ bootstrap/
             <td class="text-muted">N/A</td>
           </tr>
           <tr>
+            <td>Form group with info</td>
+            <td><code>.control-group.info</code></td>
+            <td class="text-muted">N/A</td>
+          </tr>
+          <tr>
             <td>Fluid container</td>
             <td><code>.container-fluid</code></td>
             <td><code>.container</code> (no more fixed grid)</td>
@@ -674,7 +683,7 @@ bootstrap/
       <li>Typeahead has been dropped, in favor of using <a href="http://twitter.github.io/typeahead.js/">Twitter Typeahead</a>.</li>
       <li>Modal markup has changed significantly. The <code>.modal-header</code>, <code>.modal-body</code>, and <code>.modal-footer</code> sections are now wrapped in <code>.modal-content</code> and <code>.modal-dialog</code> for better mobile styling and behavior.</li>
       <li>The HTML loaded by the <code>remote</code> modal option is now injected into the <code>.modal</code> instead of into the <code>.modal-body</code>. This allows you to also easily vary the header and footer of the modal, not just the modal body.</li>
-      <li>JavaScript events are namespaced. For example, to handle the modal "show" event, use <code>'show.bs.modal'</code>. For tabs "shown" use <code>'shown.bs.tab'</code>, etc..</li>
+      <li>JavaScript events are namespaced. For example, to handle the modal "show" event, use <code>'show.bs.modal'</code>. For tabs "shown" use <code>'shown.bs.tab'</code>, etc.</li>
     </ul>
     <p>For more information on upgrading to v3.0, and code snippets from the community, see <a href="http://bootply.com/">Bootply</a>.</p>
   </div>
