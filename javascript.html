@@ -529,6 +529,7 @@ $('#myDropdown').on('show.bs.dropdown', function () {
 {% endhighlight %}
   </div>
 
+
   <!-- ScrollSpy
   ================================================== -->
   <div class="bs-docs-section">
@@ -588,7 +589,13 @@ $('#myDropdown').on('show.bs.dropdown', function () {
     <h3>Via data attributes</h3>
     <p>To easily add scrollspy behavior to your topbar navigation, add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the <code>&lt;body&gt;</code>). Then add the <code>data-target</code> attribute with the ID or class of the parent element of any Bootstrap <code>.nav</code> component.</p>
 {% highlight html %}
-<body data-spy="scroll" data-target="#navbar-example">
+<body data-spy="scroll" data-target=".navbar-example">
+  ...
+  <div class="navbar-example">
+    <ul class="nav nav-tabs">
+      ...
+    </ul>
+  </div>
   ...
 </body>
 {% endhighlight %}
@@ -596,7 +603,7 @@ $('#myDropdown').on('show.bs.dropdown', function () {
     <h3>Via JavaScript</h3>
     <p>Call the scrollspy via JavaScript:</p>
 {% highlight js %}
-$('body').scrollspy({ target: '#navbar-example' })
+$('body').scrollspy({ target: '.navbar-example' })
 {% endhighlight %}
 
     <div class="bs-callout bs-callout-danger">
