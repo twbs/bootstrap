@@ -17,17 +17,19 @@
     text-decoration: underline;
   }
 
-  a[href]:after {
+  a[href].print-href:after {
     content: " (" attr(href) ")";
   }
 
-  abbr[title]:after {
+  abbr[title].print-abbr:after {
     content: " (" attr(title) ")";
   }
 
   // Don't show links for images, or javascript/internal links
   a[href^="javascript:"]:after,
-  a[href^="#"]:after {
+  a[href^="#"]:after,
+  a.no-print-href:after,
+  abbr.no-print-abbr:after {
     content: "";
   }
 
