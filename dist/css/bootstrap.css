@@ -2070,7 +2070,7 @@ textarea.input-sm {
 }
 
 .input-lg {
-  height: 45px;
+  height: 46px;
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.33;
@@ -2078,8 +2078,8 @@ textarea.input-sm {
 }
 
 select.input-lg {
-  height: 45px;
-  line-height: 45px;
+  height: 46px;
+  line-height: 46px;
 }
 
 textarea.input-lg {
@@ -3884,7 +3884,7 @@ input[type="button"].btn-block {
 .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
-  height: 45px;
+  height: 46px;
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.33;
@@ -3894,8 +3894,8 @@ input[type="button"].btn-block {
 select.input-group-lg > .form-control,
 select.input-group-lg > .input-group-addon,
 select.input-group-lg > .input-group-btn > .btn {
-  height: 45px;
-  line-height: 45px;
+  height: 46px;
+  line-height: 46px;
 }
 
 textarea.input-group-lg > .form-control,
@@ -4475,6 +4475,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   margin-right: 15px;
   margin-bottom: 8px;
   background-color: transparent;
+  background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
 }
@@ -5176,6 +5177,10 @@ a.list-group-item.active > .badge,
 
 .container .jumbotron {
   border-radius: 6px;
+}
+
+.jumbotron .container {
+  max-width: 100%;
 }
 
 @media screen and (min-width: 768px) {
@@ -5904,7 +5909,7 @@ button.close {
   position: relative;
   z-index: 1050;
   width: auto;
-  padding: 10px;
+  margin: 10px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -6004,8 +6009,8 @@ button.close {
 @media screen and (min-width: 768px) {
   .modal-dialog {
     width: 600px;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
