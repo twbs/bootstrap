@@ -37,6 +37,7 @@ $(function () {
         $('#affixTarget').on('unaffixed.bs.affix', function(e){
           ok(true, 'unaffixed event triggered')
         })
+        expect(2)
 
         $('html,body').animate({
           scrollTop: $(window).scrollTop() + 5000
@@ -45,11 +46,13 @@ $(function () {
         $('html,body').animate({
           scrollTop: $(window).scrollTop() - 5000
         },10)
-        expect(2)
-        setTimeout(function(){
+
+        
+        setTimeout(function(){  
+          start()
           $('#affixTarget').remove()
           $('#affixAfter').remove()
-          start()
         },70)
+        
       })
 })
