@@ -71,6 +71,7 @@
     this.unpin   = affix == 'bottom' ? position.top - scrollTop : null
 
     this.$element.removeClass(Affix.RESET).addClass('affix' + (affix ? '-' + affix : ''))
+    this.$element.trigger($.Event((affix ? 'affixed' : 'unaffixed') + '.bs.affix'))
 
     if (affix == 'bottom') {
       this.$element.offset({ top: document.body.offsetHeight - offsetBottom - this.$element.height() })
