@@ -1719,6 +1719,7 @@ th {
 }
 
 table col[class*="col-"] {
+  position: static;
   display: table-column;
   float: none;
 }

@@ -133,6 +133,7 @@ th {
 // Reset default table behavior
 
 table col[class*="col-"] {
+  position: static; // Prevent border hiding in Firefox and IE9/10 (see https://github.com/twbs/bootstrap/issues/11623)
   float: none;
   display: table-column;
 }
