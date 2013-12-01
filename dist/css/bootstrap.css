@@ -669,7 +669,7 @@ abbr[data-original-title] {
   border-bottom: 1px dotted #999999;
 }
 
-abbr.initialism {
+.initialism {
   font-size: 90%;
   text-transform: uppercase;
 }
