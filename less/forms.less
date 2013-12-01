@@ -350,6 +350,12 @@ input[type="checkbox"],
     margin-bottom: 0;
     padding-top: (@padding-base-vertical + 1); // Default padding plus a border
   }
+  // Account for padding we're adding to ensure the alignment and of help text
+  // and other content below items
+  .radio,
+  .checkbox {
+    min-height: @line-height-computed + (@padding-base-vertical + 1);
+  }
 
   // Make form groups behave like rows
   .form-group {
