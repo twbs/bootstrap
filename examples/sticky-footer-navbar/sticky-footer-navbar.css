@@ -38,6 +38,7 @@ body {
 #footer > .container {
   padding-left: 15px;
   padding-right: 15px;
+  background-color: #f5f5f5;
 }
 
 code {
