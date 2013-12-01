@@ -5091,6 +5091,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
   display: none;
 }
 
+.btn .label {
+  position: relative;
+  top: -1px;
+}
+
 .label-default {
   background-color: #999999;
 }
@@ -5164,16 +5169,16 @@ textarea.input-group-sm > .input-group-btn > .btn {
   display: none;
 }
 
+.btn .badge {
+  position: relative;
+  top: -1px;
+}
+
 a.badge:hover,
 a.badge:focus {
   color: #ffffff;
   text-decoration: none;
   cursor: pointer;
-}
-
-.btn .badge {
-  position: relative;
-  top: -1px;
 }
 
 a.list-group-item.active > .badge,
