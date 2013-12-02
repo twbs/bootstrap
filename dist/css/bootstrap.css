@@ -1981,6 +1981,13 @@ textarea.form-control {
   height: auto;
 }
 
+fieldset[disabled] > legend:first-of-type input[type="radio"],
+fieldset[disabled] > legend:first-of-type input[type="checkbox"],
+fieldset[disabled] > legend:first-of-type .form-control {
+  cursor: default;
+  background-color: #ffffff;
+}
+
 .form-group {
   margin-bottom: 15px;
 }
