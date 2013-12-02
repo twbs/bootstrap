@@ -5,6 +5,16 @@
 // Set the container width, and override it for fixed navbars in media queries
 .container {
   .container-fixed();
+
+  @media (min-width: @screen-sm) {
+    width: @container-sm;
+  }
+  @media (min-width: @screen-md) {
+    width: @container-md;
+  }
+  @media (min-width: @screen-lg-min) {
+    width: @container-lg;
+  }
 }
 
 // mobile first defaults
@@ -18,11 +28,8 @@
 
 // Extra small grid
 //
-// Grid classes for extra small devices like smartphones. No offset, push, or
-// pull classes are present here due to the size of the target.
-//
-// Note that `.col-xs-12` doesn't get floated on purpose--there's no need since
-// it's full-width.
+// Columns, offsets, pushes, and pulls for extra small devices like
+// smartphones.
 
 .make-grid-columns-float(xs);
 .make-grid(@grid-columns, xs, width);
@@ -35,15 +42,8 @@
 //
 // Columns, offsets, pushes, and pulls for the small device range, from phones
 // to tablets.
-//
-// Note that `.col-sm-12` doesn't get floated on purpose--there's no need since
-// it's full-width.
 
 @media (min-width: @screen-sm-min) {
-  .container {
-    width: @container-sm;
-  }
-
   .make-grid-columns-float(sm);
   .make-grid(@grid-columns, sm, width);
   .make-grid(@grid-columns, sm, pull);
@@ -55,15 +55,8 @@
 // Medium grid
 //
 // Columns, offsets, pushes, and pulls for the desktop device range.
-//
-// Note that `.col-md-12` doesn't get floated on purpose--there's no need since
-// it's full-width.
 
 @media (min-width: @screen-md-min) {
-  .container {
-    width: @container-md;
-  }
-
   .make-grid-columns-float(md);
   .make-grid(@grid-columns, md, width);
   .make-grid(@grid-columns, md, pull);
@@ -75,15 +68,8 @@
 // Large grid
 //
 // Columns, offsets, pushes, and pulls for the large desktop device range.
-//
-// Note that `.col-lg-12` doesn't get floated on purpose--there's no need since
-// it's full-width.
 
 @media (min-width: @screen-lg-min) {
-  .container {
-    width: @container-lg;
-  }
-
   .make-grid-columns-float(lg);
   .make-grid(@grid-columns, lg, width);
   .make-grid(@grid-columns, lg, pull);

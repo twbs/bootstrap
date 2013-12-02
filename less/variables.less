@@ -41,7 +41,7 @@
 
 @font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
-@font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
+@font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 
 @font-size-base:          14px;
@@ -157,7 +157,7 @@
 @input-color-placeholder:        @gray-light;
 
 @input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
-@input-height-large:             (floor(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
+@input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
 @input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
 
 @legend-color:                   @gray-dark;
@@ -185,8 +185,6 @@
 @dropdown-link-disabled-color:   @gray-light;
 
 @dropdown-header-color:          @gray-light;
-
-@dropdown-caret-color:           #000;
 
 
 // COMPONENT VARIABLES
@@ -321,7 +319,6 @@
 @nav-disabled-link-hover-color:             @gray-light;
 
 @nav-open-link-hover-color:                 #fff;
-@nav-open-caret-border-color:               #fff;
 
 // Tabs
 @nav-tabs-border-color:                     #ddd;
@@ -375,19 +372,19 @@
 // Form states and alerts
 // -------------------------
 
-@state-success-text:             #468847;
+@state-success-text:             #3c763d;
 @state-success-bg:               #dff0d8;
 @state-success-border:           darken(spin(@state-success-bg, -10), 5%);
 
-@state-info-text:                #3a87ad;
+@state-info-text:                #31708f;
 @state-info-bg:                  #d9edf7;
 @state-info-border:              darken(spin(@state-info-bg, -10), 7%);
 
-@state-warning-text:             #c09853;
+@state-warning-text:             #8a6d3b;
 @state-warning-bg:               #fcf8e3;
 @state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
 
-@state-danger-text:              #b94a48;
+@state-danger-text:              #a94442;
 @state-danger-bg:                #f2dede;
 @state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
 

@@ -871,7 +871,7 @@ base_url: "../"
     <p>Style and content changes for simple variations on a standard <code>&lt;blockquote&gt;</code>.</p>
 
     <h4>Naming a source</h4>
-    <p>Add <code>&lt;small&gt;</code> tag for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
+    <p>Add <code>&lt;small&gt;</code> tag or <code>.small</code> class for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
     <div class="bs-example">
       <blockquote>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -1567,7 +1567,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
     <h2 id="forms-inline">Inline form</h2>
-    <p>Add <code>.form-inline</code> for left-aligned and inline-block controls for a compact layout.</p>
+    <p>Add <code>.form-inline</code> to your <code>&lt;form&gt;</code> for left-aligned and inline-block controls. <strong>This only applies to forms within viewports that are at least 768px wide.</strong></p>
     <div class="bs-callout bs-callout-danger">
       <h4>Requires custom widths</h4>
       <p>Inputs, selects, and textareas are 100% wide by default in Bootstrap. To use the inline form, you'll have to set a width on the form controls used within.</p>
@@ -1617,7 +1617,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h2 id="forms-horizontal">Horizontal form</h2>
     <p>Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout by adding <code>.form-horizontal</code> to the form. Doing so changes <code>.form-group</code>s to behave as grid rows, so no need for <code>.row</code>.</p>
     <div class="bs-example">
-      <form class="form-horizontal">
+      <form class="form-horizontal" role="form">
         <div class="form-group">
           <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
           <div class="col-sm-10">

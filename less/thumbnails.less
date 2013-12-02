@@ -5,9 +5,14 @@
 
 // Mixin and adjust the regular image class
 .thumbnail {
-  .img-thumbnail();
-  display: block; // Override the inline-block from `.img-thumbnail`
+  display: block;
+  padding: @thumbnail-padding;
   margin-bottom: @line-height-computed;
+  line-height: @line-height-base;
+  background-color: @thumbnail-bg;
+  border: 1px solid @thumbnail-border;
+  border-radius: @thumbnail-border-radius;
+  .transition(all .2s ease-in-out);
 
   > img {
     .img-responsive();

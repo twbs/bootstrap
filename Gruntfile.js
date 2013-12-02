@@ -11,11 +11,9 @@ module.exports = function(grunt) {
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*!\n' +
-              ' * Bootstrap v<%= pkg.version %> by @fat and @mdo\n' +
+              ' * Bootstrap v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
               ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
               ' * Licensed under <%= _.pluck(pkg.licenses, "url").join(", ") %>\n' +
-              ' *\n' +
-              ' * Designed and built with all the love in the world by @mdo and @fat.\n' +
               ' */\n\n',
     jqueryCheck: 'if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery") }\n\n',
 
@@ -135,8 +133,8 @@ module.exports = function(grunt) {
       options: {
         reset: true,
         relaxerror: [
-            "Bad value X-UA-Compatible for attribute http-equiv on element meta.",
-            "Element img is missing required attribute src."
+          "Bad value X-UA-Compatible for attribute http-equiv on element meta.",
+          "Element img is missing required attribute src."
         ]
       },
       files: {
