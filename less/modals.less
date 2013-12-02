@@ -23,7 +23,8 @@
   bottom: 0;
   left: 0;
   z-index: @zindex-modal-background;
-
+  -webkit-overflow-scrolling: touch;
+  
   // When fading in the modal, animate it to slide down
   &.fade .modal-dialog {
     .translate(0, -25%);
