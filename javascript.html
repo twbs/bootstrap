@@ -43,14 +43,14 @@ $(document).off('.alert.data-api')
     <h3 id="js-programmatic-api">Programmatic API</h3>
     <p>We also believe you should be able to use all Bootstrap plugins purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.</p>
 {% highlight js %}
-$(".btn.danger").button("toggle").addClass("fat")
+$('.btn.danger').button('toggle').addClass('fat')
 {% endhighlight %}
 
     <p>All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a plugin with default behavior):</p>
 {% highlight js %}
-$("#myModal").modal()                      // initialized with defaults
-$("#myModal").modal({ keyboard: false })   // initialized with no keyboard
-$("#myModal").modal('show')                // initializes and invokes show immediately</p>
+$('#myModal').modal()                      // initialized with defaults
+$('#myModal').modal({ keyboard: false })   // initialized with no keyboard
+$('#myModal').modal('show')                // initializes and invokes show immediately</p>
 {% endhighlight %}
 
     <p>Each plugin also exposes its raw constructor on a <code>Constructor</code> property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.</p>
@@ -1600,7 +1600,7 @@ $('.btn').button()
     <h3>Via JavaScript</h3>
     <p>Enable manually with:</p>
 {% highlight js %}
-$(".collapse").collapse()
+$('.collapse').collapse()
 {% endhighlight %}
 
     <h3>Options</h3>
