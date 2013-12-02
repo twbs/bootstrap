@@ -5,16 +5,17 @@ module.exports = function(grunt) {
 
   RegExp.quote = require('regexp-quote')
   var btoa = require('btoa')
+  var lineBreak = process.platform == 'win32' ? '\r\n' : '\n'
   // Project configuration.
   grunt.initConfig({
 
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
-    banner: '/*!\n' +
-              ' * Bootstrap v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
-              ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-              ' * Licensed under <%= _.pluck(pkg.licenses, "url").join(", ") %>\n' +
-              ' */\n\n',
+    banner: '/*!' + lineBreak +
+              ' * Bootstrap v<%= pkg.version %> (<%= pkg.homepage %>)' + lineBreak +
+              ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>' + lineBreak +
+              ' * Licensed under <%= _.pluck(pkg.licenses, "url").join(", ") %>' + lineBreak +
+              ' */' + lineBreak + lineBreak,
     jqueryCheck: 'if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery") }\n\n',
 
     // Task configuration.
