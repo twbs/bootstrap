@@ -1062,6 +1062,7 @@ h1[id] {
 .bs-glyphicons .glyphicon-class {
   display: block;
   text-align: center;
+  word-wrap: break-word;
 }
 .bs-glyphicons li:hover {
   background-color: rgba(86,61,124,.1);
