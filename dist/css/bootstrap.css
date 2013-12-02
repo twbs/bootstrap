@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v3.0.2 (http://getbootstrap.com)
+ * Bootstrap v3.0.3 (http://getbootstrap.com)
  * Copyright 2013 Twitter, Inc.
  * Licensed under http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -4426,14 +4426,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
   .navbar-collapse.in {
     overflow-y: auto;
   }
-  .navbar-collapse .navbar-nav.navbar-left:first-child {
-    margin-left: -15px;
-  }
-  .navbar-collapse .navbar-nav.navbar-right:last-child {
-    margin-right: -15px;
-  }
-  .navbar-collapse .navbar-text:last-child {
-    margin-right: 0;
+  .navbar-fixed-top .navbar-collapse,
+  .navbar-static-top .navbar-collapse,
+  .navbar-fixed-bottom .navbar-collapse {
+    padding-right: 0;
+    padding-left: 0;
   }
 }
 
@@ -4581,6 +4578,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
     padding-top: 15px;
     padding-bottom: 15px;
   }
+  .navbar-nav.navbar-right:last-child {
+    margin-right: -15px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -4647,6 +4647,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
     -webkit-box-shadow: none;
             box-shadow: none;
   }
+  .navbar-form.navbar-right:last-child {
+    margin-right: -15px;
+  }
 }
 
 .navbar-nav > li > .dropdown-menu {
@@ -4671,6 +4674,16 @@ textarea.input-group-sm > .input-group-btn > .btn {
   margin-bottom: 8px;
 }
 
+.navbar-btn.btn-sm {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.navbar-btn.btn-xs {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
 .navbar-text {
   margin-top: 15px;
   margin-bottom: 15px;
@@ -4681,6 +4694,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
     float: left;
     margin-right: 15px;
     margin-left: 15px;
+  }
+  .navbar-text.navbar-right:last-child {
+    margin-right: 0;
   }
 }
 
