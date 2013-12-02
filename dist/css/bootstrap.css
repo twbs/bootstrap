@@ -4671,6 +4671,16 @@ textarea.input-group-sm > .input-group-btn > .btn {
   margin-bottom: 8px;
 }
 
+.navbar-btn.btn-sm {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.navbar-btn.btn-xs {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
 .navbar-text {
   margin-top: 15px;
   margin-bottom: 15px;
