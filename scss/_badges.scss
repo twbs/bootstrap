@@ -22,6 +22,12 @@
   &:empty {
     display: none;
   }
+
+  // Quick fix for badges in buttons
+  .btn & {
+    position: relative;
+    top: -1px;
+  }
 }
 
 // Hover state, but only for links
@@ -32,12 +38,6 @@ a.badge {
     text-decoration: none;
     cursor: pointer;
   }
-}
-
-// Quick fix for labels/badges in buttons
-.btn .badge {
-  position: relative;
-  top: -1px;
 }
 
 // Account for counters in navs

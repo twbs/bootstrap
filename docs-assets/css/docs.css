@@ -586,14 +586,14 @@ h1[id] {
   border-color: #faebcc;
 }
 .bs-callout-warning h4 {
-  color: #c09853;
+  color: #8a6d3b;
 }
 .bs-callout-info {
   background-color: #f4f8fa;
   border-color: #bce8f1;
 }
 .bs-callout-info h4 {
-  color: #3a87ad;
+  color: #34789a;
 }
 
 
@@ -1062,6 +1062,7 @@ h1[id] {
 .bs-glyphicons .glyphicon-class {
   display: block;
   text-align: center;
+  word-wrap: break-word; /* Help out IE10+ with class names */
 }
 .bs-glyphicons li:hover {
   background-color: rgba(86,61,124,.1);
