@@ -1153,11 +1153,11 @@ base_url: "../"
 {% endhighlight %}
 
     <h3 id="btn-groups-justified">Justified link variation</h3>
-    <p>Make a group of buttons stretch at the same size to span the entire width of its parent.</p>
+    <p>Make a group of buttons stretch at the same size to span the entire width of its parent. Also works with button dropdowns within the button group.</p>
 
     <div class="bs-callout bs-callout-warning">
       <h4>Element-specific usage</h4>
-      <p>This only works with <code>&lt;a&gt;</code> elements as the <code>&lt;button&gt;</code> doesn't pick up these styles.</p>
+      <p>This only works with <code>&lt;a&gt;</code> elements as the <code>&lt;button&gt;</code> doesn't pick up the styles we use to justify content (some <code>display: table-cell;</code>-fu).</p>
     </div>
 
     <div class="bs-example">
@@ -1165,6 +1165,23 @@ base_url: "../"
         <a class="btn btn-default" role="button">Left</a>
         <a class="btn btn-default" role="button">Middle</a>
         <a class="btn btn-default" role="button">Right</a>
+      </div>
+      <br>
+      <div class="btn-group btn-group-justified">
+        <a class="btn btn-default" role="button">Left</a>
+        <a class="btn btn-default" role="button">Middle</a>
+        <div class="btn-group">
+          <a type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            Right dropdown <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div>
       </div>
     </div>
 {% highlight html %}
