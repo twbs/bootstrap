@@ -113,12 +113,16 @@
         .emulateTransitionEnd(300) :
       this.hideModal()
   }
+  
+  Modal.prototype.allowFocus: function() {
+    return false
+  }
 
   Modal.prototype.enforceFocus = function () {
     $(document)
       .off('focusin.bs.modal') // guard against infinite focus loop
       .on('focusin.bs.modal', $.proxy(function (e) {
-        if (this.$element[0] !== e.target && !this.$element.has(e.target).length) {
+        if (this.$element[0] !== e.target && !this.$element.has(e.target).length  && !that.allowFocus(e)) {
           this.$element.focus()
         }
       }, this))
