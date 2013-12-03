@@ -4944,6 +4944,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   padding: 6px 12px;
   margin-left: -1px;
   line-height: 1.428571429;
+  color: #428bca;
   text-decoration: none;
   background-color: #ffffff;
   border: 1px solid #dddddd;
@@ -4966,7 +4967,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
+  color: #2a6496;
   background-color: #eeeeee;
+  border-color: #dddddd;
 }
 
 .pagination > .active > a,
@@ -5065,6 +5068,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pager li > span {
   display: inline-block;
   padding: 5px 14px;
+  color: #428bca;
   background-color: #ffffff;
   border: 1px solid #dddddd;
   border-radius: 15px;
@@ -5072,8 +5076,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .pager li > a:hover,
 .pager li > a:focus {
+  color: #2a6496;
   text-decoration: none;
   background-color: #eeeeee;
+  border-color: #dddddd;
 }
 
 .pager .next > a,
@@ -5093,6 +5099,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   color: #999999;
   cursor: not-allowed;
   background-color: #ffffff;
+  border-color: #dddddd;
 }
 
 .label {
@@ -5274,7 +5281,8 @@ a.list-group-item.active > .badge,
           transition: all 0.2s ease-in-out;
 }
 
-.thumbnail > img {
+.thumbnail > img,
+.thumbnail a > img {
   display: block;
   height: auto;
   max-width: 100%;

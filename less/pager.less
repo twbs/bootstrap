@@ -15,15 +15,18 @@
     > span {
       display: inline-block;
       padding: 5px 14px;
-      background-color: @pagination-bg;
-      border: 1px solid @pagination-border;
+      color: @pagination-default-color;
+      background-color: @pagination-default-bg;
+      border: 1px solid @pagination-default-border-color;
       border-radius: @pager-border-radius;
     }
 
     > a:hover,
     > a:focus {
       text-decoration: none;
+      color: @pagination-hover-color;
       background-color: @pagination-hover-bg;
+      border-color: @pagination-hover-border-color;
     }
   }
 
@@ -46,8 +49,9 @@
     > a:hover,
     > a:focus,
     > span {
-      color: @pager-disabled-color;
-      background-color: @pagination-bg;
+      color: @pagination-disabled-color;
+      background-color: @pagination-disabled-bg;
+      border-color: @pagination-disabled-border-color;
       cursor: not-allowed;
     }
   }
