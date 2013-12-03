@@ -341,23 +341,34 @@
 // Pagination
 // -------------------------
 
-@pagination-bg:                        #fff;
-@pagination-border:                    #ddd;
+@pagination-default-color:              @link-color;
+@pagination-default-bg:                 #fff;
+@pagination-default-border-color:       #ddd;
 
-@pagination-hover-bg:                  @gray-lighter;
+@pagination-hover-color:                @link-hover-color;
+@pagination-hover-bg:                   @gray-lighter;
+@pagination-hover-border-color:         #ddd;
 
-@pagination-active-bg:                 @brand-primary;
-@pagination-active-color:              #fff;
+@pagination-active-color:               #fff;
+@pagination-active-bg:                  @brand-primary;
+@pagination-active-border-color:        @brand-primary;
 
-@pagination-disabled-color:            @gray-light;
+@pagination-disabled-color:             @gray-light;
+@pagination-disabled-bg:                #fff;
+@pagination-disabled-border-color:      #ddd;
 
+// deprecated, not naming scheme conform
+@pagination-bg:                        @pagination-default-bg;
+// deprecated, not naming scheme conform
+@pagination-border:                    @pagination-default-border-color;
 
 // Pager
 // -------------------------
 
 @pager-border-radius:                  15px;
-@pager-disabled-color:                 @gray-light;
 
+// deprecated, Pager use instead colors of Pagination
+@pager-disabled-color:                 @pagination-disabled-color;
 
 // Jumbotron
 // -------------------------
