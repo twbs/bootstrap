@@ -3,6 +3,10 @@
 module.exports = function(grunt) {
   "use strict";
 
+  // overwrite platform specific setting get always unix like line feed char
+  // http://gruntjs.com/api/grunt.util#grunt.util.linefeed
+  grunt.util.linefeed = '\n';
+
   RegExp.quote = require('regexp-quote')
   var btoa = require('btoa')
   // Project configuration.
