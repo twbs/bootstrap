@@ -4930,7 +4930,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
   display: inline-block;
   padding-left: 0;
   margin: 20px 0;
-  border-radius: 4px;
 }
 
 .pagination > li {
@@ -4941,7 +4940,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pagination > li > span {
   position: relative;
   float: left;
-  padding: 6px 12px;
   margin-left: -1px;
   line-height: 1.428571429;
   color: #428bca;
@@ -4953,14 +4951,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pagination > li:first-child > a,
 .pagination > li:first-child > span {
   margin-left: 0;
-  border-bottom-left-radius: 4px;
-  border-top-left-radius: 4px;
-}
-
-.pagination > li:last-child > a,
-.pagination > li:last-child > span {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
 }
 
 .pagination > li > a:hover,
@@ -4978,23 +4968,40 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pagination > .active > span:hover,
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
-  z-index: 2;
   color: #ffffff;
   cursor: default;
   background-color: #428bca;
   border-color: #428bca;
 }
 
-.pagination > .disabled > span,
-.pagination > .disabled > span:hover,
-.pagination > .disabled > span:focus,
 .pagination > .disabled > a,
+.pagination > .disabled > span,
 .pagination > .disabled > a:hover,
-.pagination > .disabled > a:focus {
+.pagination > .disabled > span:hover,
+.pagination > .disabled > a:focus,
+.pagination > .disabled > span:focus {
   color: #999999;
   cursor: not-allowed;
   background-color: #ffffff;
   border-color: #dddddd;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 .pagination-lg > li > a,
@@ -5074,8 +5081,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
   border-radius: 15px;
 }
 
-.pager li > a:hover,
-.pager li > a:focus {
+.pager li a:hover,
+.pager li span:hover,
+.pager li a:focus,
+.pager li span:focus {
   color: #2a6496;
   text-decoration: none;
   background-color: #eeeeee;
@@ -5092,10 +5101,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
   float: left;
 }
 
-.pager .disabled > a,
-.pager .disabled > a:hover,
-.pager .disabled > a:focus,
-.pager .disabled > span {
+.pager .disabled a,
+.pager .disabled span,
+.pager .disabled a:hover,
+.pager .disabled span:hover,
+.pager .disabled a:focus,
+.pager .disabled span:focus {
   color: #999999;
   cursor: not-allowed;
   background-color: #ffffff;
