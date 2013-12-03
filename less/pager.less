@@ -21,12 +21,15 @@
       border-radius: @pager-border-radius;
     }
 
-    > a:hover,
-    > a:focus {
-      text-decoration: none;
-      color: @pagination-hover-color;
-      background-color: @pagination-hover-bg;
-      border-color: @pagination-hover-border-color;
+    a,
+    span {
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        color: @pagination-hover-color;
+        background-color: @pagination-hover-bg;
+        border-color: @pagination-hover-border-color;
+      }
     }
   }
 
@@ -45,14 +48,16 @@
   }
 
   .disabled {
-    > a,
-    > a:hover,
-    > a:focus,
-    > span {
-      color: @pagination-disabled-color;
-      background-color: @pagination-disabled-bg;
-      border-color: @pagination-disabled-border-color;
-      cursor: not-allowed;
+    a,
+    span {
+      &,
+      &:hover,
+      &:focus {
+        color: @pagination-disabled-color;
+        background-color: @pagination-disabled-bg;
+        border-color: @pagination-disabled-border-color;
+        cursor: not-allowed;
+      }
     }
   }
 
