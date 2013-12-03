@@ -5081,10 +5081,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
   border-radius: 15px;
 }
 
-.pager li a:hover,
-.pager li span:hover,
-.pager li a:focus,
-.pager li span:focus {
+.pager li > a:hover,
+.pager li > span:hover,
+.pager li > a:focus,
+.pager li > span:focus {
   color: #2a6496;
   text-decoration: none;
   background-color: #eeeeee;
@@ -5101,12 +5101,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
   float: left;
 }
 
-.pager .disabled a,
-.pager .disabled span,
-.pager .disabled a:hover,
-.pager .disabled span:hover,
-.pager .disabled a:focus,
-.pager .disabled span:focus {
+.pager .disabled > a,
+.pager .disabled > span,
+.pager .disabled > a:hover,
+.pager .disabled > span:hover,
+.pager .disabled > a:focus,
+.pager .disabled > span:focus {
   color: #999999;
   cursor: not-allowed;
   background-color: #ffffff;
