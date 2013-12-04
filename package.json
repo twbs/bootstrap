@@ -20,8 +20,7 @@
     }
   ]
   , "devDependencies": {
-      "browserstack-runner": "~0.0.12"
-    , "btoa": "~1.1.1"
+      "btoa": "~1.1.1"
     , "grunt": "~0.4.1"
     , "grunt-contrib-clean": "~0.5.0"
     , "grunt-contrib-concat": "~0.3.0"
@@ -34,6 +33,7 @@
     , "grunt-html-validation": "~0.1.6"
     , "grunt-jekyll": "~0.4.0"
     , "grunt-recess": "~0.5.0"
+    , "grunt-saucelabs": "~4.1.2"
     , "grunt-sed": "~0.1.1"
     , "regexp-quote": "~0.0.0"
   }
