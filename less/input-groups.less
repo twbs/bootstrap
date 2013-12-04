@@ -10,7 +10,7 @@
   border-collapse: separate; // prevent input groups from inheriting border styles from table cells when placed within a table
 
   // Undo padding and float of grid classes
-  &.col {
+  &[class*="col-"] {
     float: none;
     padding-left: 0;
     padding-right: 0;
@@ -61,6 +61,7 @@
   font-size: @font-size-base;
   font-weight: normal;
   line-height: 1;
+  color: @input-color;
   text-align: center;
   background-color: @input-group-addon-bg;
   border: 1px solid @input-group-addon-border-color;
@@ -112,6 +113,14 @@
 .input-group-btn {
   position: relative;
   white-space: nowrap;
+
+  // Negative margin to only have a 1px border between the two
+  &:first-child > .btn {
+    margin-right: -1px;
+  }
+  &:last-child > .btn {
+    margin-left: -1px;
+  }
 }
 .input-group-btn > .btn {
   position: relative;

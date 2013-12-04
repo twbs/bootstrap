@@ -3,10 +3,9 @@
   <head>
     <!-- Meta, title, CSS, favicons, etc. -->
     {% include header.html %}
-    <!-- Place anything custom after this. -->
   </head>
   <body>
-    <a class="sr-only" href="#content">Skip navigation</a>
+    <a class="sr-only" href="#content">Skip to main content</a>
 
     <!-- Docs master nav -->
     {% include nav-main.html %}
@@ -38,6 +37,8 @@
                 {% include nav-javascript.html %}
               {% elsif page.slug == "customize" %}
                 {% include nav-customize.html %}
+              {% elsif page.slug == "about" %}
+                {% include nav-about.html %}
               {% endif %}
             </ul>
           </div>

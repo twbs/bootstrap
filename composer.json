@@ -17,4 +17,9 @@
       "issues": "https://github.com/twbs/bootstrap/issues"
     }
   , "license": "Apache-2.0"
+  , "extra": {
+      "branch-alias": {
+        "dev-master": "3.0.x-dev"
+      }
+  }
 }

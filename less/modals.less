@@ -10,14 +10,6 @@
 // Kill the scroll on the body
 .modal-open {
   overflow: hidden;
-
-
-  // Account for hiding of scrollbar
-  body&,
-  .navbar-fixed-top,
-  .navbar-fixed-bottom {
-    margin-right: 15px
-  }
 }
 
 // Container that the modal scrolls within
@@ -42,10 +34,9 @@
 
 // Shell div to position the modal with bottom padding
 .modal-dialog {
-  margin-left: auto;
-  margin-right: auto;
+  position: relative;
   width: auto;
-  padding: 10px;
+  margin: 10px;
   z-index: (@zindex-modal-background + 10);
 }
 
@@ -125,14 +116,11 @@
 }
 
 // Scale up the modal
-@media screen and (min-width: @screen-sm) {
+@media screen and (min-width: @screen-sm-min) {
 
   .modal-dialog {
-    left: 50%;
-    right: auto;
     width: 600px;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    margin: 30px auto;
   }
   .modal-content {
     .box-shadow(0 5px 15px rgba(0,0,0,.5));

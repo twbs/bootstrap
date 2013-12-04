@@ -51,12 +51,17 @@
     }
   }
 
-  // Dividers (basically an hr) within the dropdown
+  // Nav dividers (deprecated with v3.0.1)
+  //
+  // This should have been removed in v3 with the dropping of `.nav-list`, but
+  // we missed it. We don't currently support this anywhere, but in the interest
+  // of maintaining backward compatibility in case you use it, it's deprecated.
   .nav-divider {
     .nav-divider();
   }
 
   // Prevent IE8 from misplacing imgs
+  //
   // See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
   > li > a > img {
     max-width: none;
@@ -115,7 +120,7 @@
 
     // Links rendered as pills
     > a {
-      border-radius: 5px;
+      border-radius: @nav-pills-border-radius;
     }
     + li {
       margin-left: 2px;
@@ -163,6 +168,11 @@
     }
   }
 
+  > .dropdown .dropdown-menu {
+    top: auto;
+    left: auto;
+  }
+
   @media (min-width: @screen-sm-min) {
     > li {
       display: table-cell;
@@ -175,6 +185,8 @@
 }
 
 // Move borders to anchors instead of bottom of list
+//
+// Mixin for adding on top the shared `.nav-justified` styles for our tabs
 .nav-tabs-justified {
   border-bottom: 0;
 
@@ -207,37 +219,19 @@
 // Tabbable tabs
 // -------------------------
 
-// Clear any floats
-.tabbable {
-  .clearfix();
-}
-
-// Show/hide tabbable areas
-.tab-content > .tab-pane,
-.pill-content > .pill-pane {
-  display: none;
-}
-.tab-content,
-.pill-content {
+// Hide tabbable panes to start, show them when `.active`
+.tab-content {
+  > .tab-pane {
+    display: none;
+  }
   > .active {
     display: block;
   }
 }
 
 
-
 // Dropdowns
 // -------------------------
-
-// Make dropdown carets use link color in navs
-.nav .caret {
-  border-top-color: @link-color;
-  border-bottom-color: @link-color;
-}
-.nav a:hover .caret {
-  border-top-color: @link-hover-color;
-  border-bottom-color: @link-hover-color;
-}
 
 // Specific dropdowns
 .nav-tabs .dropdown-menu {
