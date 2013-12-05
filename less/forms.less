@@ -298,10 +298,15 @@ input[type="checkbox"],
   // Kick in the inline
   @media (min-width: @screen-sm) {
     // Inline-block all the things for "inline"
-    .form-group  {
+    .form-group {
       display: inline-block;
       margin-bottom: 0;
       vertical-align: middle;
+
+      // Override `width: 100%;` because it would stacks label and element
+      > .form-control {
+        with: auto;
+      }
     }
 
     // In navbar-form, allow folks to *not* use `.form-group`
