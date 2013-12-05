@@ -301,9 +301,9 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9 and down, gets no color-stop at all for proper fallback
 }
 @mixin gradient-vertical-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {
-    background-image: -webkit-linear-gradient($start-color, $mid-color $color-stop, $end-color);
-    background-image: linear-gradient($start-color, $mid-color $color-stop, $end-color);
-    background-repeat: no-repeat;
+  background-image: -webkit-linear-gradient($start-color, $mid-color $color-stop, $end-color);
+  background-image: linear-gradient($start-color, $mid-color $color-stop, $end-color);
+  background-repeat: no-repeat;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9 and down, gets no color-stop at all for proper fallback
 }
 @mixin gradient-radial($inner-color: #555, $outer-color: #333) {
