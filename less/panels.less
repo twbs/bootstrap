@@ -57,12 +57,16 @@
 
 .panel {
   > .table,
-  > .table-responsive {
+  > .table-responsive > .table {
     margin-bottom: 0;
   }
   > .panel-body + .table,
   > .panel-body + .table-responsive {
     border-top: 1px solid @table-border-color;
+  }
+  > .table > tbody:first-child th,
+  > .table > tbody:first-child td {
+    border-top: 0;
   }
   > .table-bordered,
   > .table-responsive > .table-bordered {
@@ -87,6 +91,10 @@
       }
     }
   }
+  > .table-responsive {
+    border: 0;
+    margin-bottom: 0;
+  }
 }
 
 
@@ -106,6 +114,8 @@
   margin-top: 0;
   margin-bottom: 0;
   font-size: ceil((@font-size-base * 1.125));
+  color: inherit;
+
   > a {
     color: inherit;
   }

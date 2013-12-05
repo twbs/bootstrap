@@ -309,6 +309,11 @@ input[type="checkbox"],
       display: inline-block;
     }
 
+    // Override `width: 100%;` when not within a `.form-group`
+    select.form-control {
+      width: auto;
+    }
+
     // Remove default margin on radios/checkboxes that were used for stacking, and
     // then undo the floating of radios and checkboxes to match (which also avoids
     // a bug in WebKit: https://github.com/twbs/bootstrap/issues/1969).
@@ -344,6 +349,12 @@ input[type="checkbox"],
     margin-top: 0;
     margin-bottom: 0;
     padding-top: (@padding-base-vertical + 1); // Default padding plus a border
+  }
+  // Account for padding we're adding to ensure the alignment and of help text
+  // and other content below items
+  .radio,
+  .checkbox {
+    min-height: @line-height-computed + (@padding-base-vertical + 1);
   }
 
   // Make form groups behave like rows
