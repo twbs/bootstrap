@@ -169,12 +169,105 @@ module.exports = function(grunt) {
         replacement: grunt.option('newver'),
         recursive: true
       }
+    },
+
+    'saucelabs-qunit': {
+      all: {
+        options: {
+          build: process.env.TRAVIS_JOB_ID,
+          concurrency: 3,
+          urls: ['http://127.0.0.1:3000/js/tests/index.html'],
+          browsers: [
+            // See https://saucelabs.com/docs/platforms/webdriver
+            {
+              browserName: 'safari',
+              version: '6',
+              platform: 'OS X 10.8'
+            },
+            {
+              browserName: 'chrome',
+              version: '28',
+              platform: 'OS X 10.6'
+            },
+            /* FIXME: currently fails 1 tooltip test
+            {
+              browserName: 'firefox',
+              version: '25',
+              platform: 'OS X 10.6'
+            },*/
+            // Mac Opera not currently supported by Sauce Labs
+            /* FIXME: currently fails 1 tooltip test
+            {
+              browserName: 'internet explorer',
+              version: '11',
+              platform: 'Windows 8.1'
+            },*/
+            /*
+            {
+              browserName: 'internet explorer',
+              version: '10',
+              platform: 'Windows 8'
+            },
+            {
+              browserName: 'internet explorer',
+              version: '9',
+              platform: 'Windows 7'
+            },
+            {
+              browserName: 'internet explorer',
+              version: '8',
+              platform: 'Windows 7'
+            },
+            {// unofficial
+              browserName: 'internet explorer',
+              version: '7',
+              platform: 'Windows XP'
+            },
+            */
+            {
+              browserName: 'chrome',
+              version: '31',
+              platform: 'Windows 8.1'
+            },
+            {
+              browserName: 'firefox',
+              version: '25',
+              platform: 'Windows 8.1'
+            },
+            // Win Opera 15+ not currently supported by Sauce Labs
+            {
+              browserName: 'iphone',
+              version: '6.1',
+              platform: 'OS X 10.8'
+            },
+            // iOS Chrome not currently supported by Sauce Labs
+            // Linux (unofficial)
+            {
+              browserName: 'chrome',
+              version: '30',
+              platform: 'Linux'
+            },
+            {
+              browserName: 'firefox',
+              version: '25',
+              platform: 'Linux'
+            }
+            // Android Chrome not currently supported by Sauce Labs
+            /* Android Browser (super-unofficial)
+            {
+              browserName: 'android',
+              version: '4.0',
+              platform: 'Linux'
+            }
+            */
+          ],
+        }
+      }
     }
   });
 
 
   // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('browserstack-runner');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-connect');
@@ -186,6 +279,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-html-validation');
   grunt.loadNpmTasks('grunt-jekyll');
   grunt.loadNpmTasks('grunt-recess');
+  grunt.loadNpmTasks('grunt-saucelabs');
   grunt.loadNpmTasks('grunt-sed');
 
   // Docs HTML validation task
@@ -193,12 +287,10 @@ module.exports = function(grunt) {
 
   // Test task.
   var testSubtasks = ['dist-css', 'jshint', 'qunit', 'validate-html'];
-  // Only run BrowserStack tests under Travis
-  if (process.env.TRAVIS) {
-    // Only run BrowserStack tests if this is a mainline commit in twbs/bootstrap, or you have your own BrowserStack key
-    if ((process.env.TRAVIS_REPO_SLUG === 'twbs/bootstrap' && process.env.TRAVIS_PULL_REQUEST === 'false') || process.env.TWBS_HAVE_OWN_BROWSERSTACK_KEY) {
-      testSubtasks.push('browserstack_runner');
-    }
+  // Only run Sauce Labs tests if there's a Sauce access key
+  if (typeof process.env.SAUCE_ACCESS_KEY !== 'undefined') {
+    testSubtasks.push('connect');
+    testSubtasks.push('saucelabs-qunit');
   }
   grunt.registerTask('test', testSubtasks);
 

@@ -6,7 +6,6 @@
 // Base styles
 // --------------------------------------------------
 
-// Core styles
 .btn {
   display: inline-block;
   margin-bottom: 0; // For input.btn
@@ -122,13 +121,12 @@
   // line-height: ensure even-numbered height of button next to large input
   .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
 }
-.btn-sm,
-.btn-xs {
+.btn-sm {
   // line-height: ensure proper height of button next to small input
   .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
 }
 .btn-xs {
-  padding: 1px 5px;
+  .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @border-radius-small);
 }
 
 
