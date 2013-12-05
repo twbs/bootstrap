@@ -6,7 +6,6 @@
 // Base styles
 // --------------------------------------------------
 
-// Core styles
 .btn {
   display: inline-block;
   margin-bottom: 0; // For input.btn
@@ -45,7 +44,6 @@
     @include opacity(.65);
     @include box-shadow(none);
   }
-
 }
 
 
@@ -121,7 +119,7 @@
   @include button-size($padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, $border-radius-small);
 }
 @mixin btn-xs {
-  padding: 1px 5px;
+  @include button-size($padding-xs-vertical, $padding-xs-horizontal, $font-size-small, $line-height-small, $border-radius-small);
 }
 
 .btn-lg {@include btn-lg}

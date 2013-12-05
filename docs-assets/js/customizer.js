@@ -231,7 +231,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
         }
         result = {
           'bootstrap.css'     : cw + tree.toCSS(),
-          'bootstrap.min.css' : cw + tree.toCSS({ compress: true }).replace(/\n/g, '')
+          'bootstrap.min.css' : cw + tree.toCSS({ compress: true }).replace(/\n/g, '') // FIXME: remove newline hack once less.js upgraded to v1.4
         }
       })
     } catch (err) {

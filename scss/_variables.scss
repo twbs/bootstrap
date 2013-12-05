@@ -83,6 +83,9 @@ $padding-large-horizontal:       16px !default;
 $padding-small-vertical:         5px !default;
 $padding-small-horizontal:       10px !default;
 
+$padding-xs-vertical:            1px !default;
+$padding-xs-horizontal:          5px !default;
+
 $line-height-large:              1.33 !default;
 $line-height-small:              1.5 !default;
 
@@ -243,8 +246,13 @@ $screen-md-max:              ($screen-lg-min - 1) !default;
 $grid-columns:              12 !default;
 // Padding, to be divided by two and applied to the left and right of all columns
 $grid-gutter-width:         30px !default;
-// Point at which the navbar stops collapsing
+
+// Navbar collapse
+
+// Point at which the navbar becomes uncollapsed
 $grid-float-breakpoint:     $screen-sm-min !default;
+// Point at which the navbar begins collapsing
+$grid-float-breakpoint-max: ($grid-float-breakpoint - 1) !default;
 
 
 // Navbar

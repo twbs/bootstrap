@@ -2534,6 +2534,9 @@ fieldset[disabled] .btn-info.active {
 
 .btn-xs {
   padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
 }
 
 .btn-block {
@@ -3621,6 +3624,9 @@ input[type="button"].btn-block {
 
 .btn-group-xs > .btn {
   padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
 }
 
 .btn-group-sm > .btn {
@@ -4642,6 +4648,7 @@ input[type="button"].btn-block {
 .label:empty {
   display: none;
 }
+
 .btn .label {
   position: relative;
   top: -1px;
@@ -4706,6 +4713,7 @@ input[type="button"].btn-block {
 .badge:empty {
   display: none;
 }
+
 .btn .badge {
   position: relative;
   top: -1px;
@@ -4920,9 +4928,7 @@ a.thumbnail.active {
 }
 
 .progress-striped .progress-bar {
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-size: 40px 40px;
 }
@@ -4936,9 +4942,7 @@ a.thumbnail.active {
   background-color: #5cb85c;
 }
 .progress-striped .progress-bar-success {
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 
@@ -4946,9 +4950,7 @@ a.thumbnail.active {
   background-color: #5bc0de;
 }
 .progress-striped .progress-bar-info {
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 
@@ -4956,9 +4958,7 @@ a.thumbnail.active {
   background-color: #f0ad4e;
 }
 .progress-striped .progress-bar-warning {
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 
@@ -4966,9 +4966,7 @@ a.thumbnail.active {
   background-color: #d9534f;
 }
 .progress-striped .progress-bar-danger {
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 
@@ -5174,6 +5172,10 @@ a.list-group-item:hover, a.list-group-item:focus {
 .panel > .table-responsive > .table-bordered > tfoot > tr:last-child > th,
 .panel > .table-responsive > .table-bordered > tfoot > tr:last-child > td {
   border-bottom: 0;
+}
+.panel > .table-responsive {
+  border: 0;
+  margin-bottom: 0;
 }
 
 .panel-heading {
@@ -5782,9 +5784,7 @@ button.close {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 .carousel-control.left {
-  background-image: -webkit-gradient(linear, 0% top, 100% top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.0001)));
   background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.5) 0%), color-stop(rgba(0, 0, 0, 0.0001) 100%));
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
@@ -5792,9 +5792,7 @@ button.close {
 .carousel-control.right {
   left: auto;
   right: 0;
-  background-image: -webkit-gradient(linear, 0% top, 100% top, from(rgba(0, 0, 0, 0.0001)), to(rgba(0, 0, 0, 0.5)));
   background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.0001) 0%), color-stop(rgba(0, 0, 0, 0.5) 100%));
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
@@ -5993,6 +5991,10 @@ td.visible-lg {
   display: block !important;
 }
 
+table.hidden-xs {
+  display: table;
+}
+
 tr.hidden-xs {
   display: table-row !important;
 }
@@ -6004,6 +6006,10 @@ td.hidden-xs {
 
 .hidden-sm {
   display: block !important;
+}
+
+table.hidden-sm {
+  display: table;
 }
 
 tr.hidden-sm {
@@ -6019,6 +6025,10 @@ td.hidden-sm {
   display: block !important;
 }
 
+table.hidden-md {
+  display: table;
+}
+
 tr.hidden-md {
   display: table-row !important;
 }
@@ -6030,6 +6040,10 @@ td.hidden-md {
 
 .hidden-lg {
   display: block !important;
+}
+
+table.hidden-lg {
+  display: table;
 }
 
 tr.hidden-lg {
@@ -6046,6 +6060,10 @@ td.hidden-lg {
     display: block !important;
   }
 
+  table.visible-xs {
+    display: table;
+  }
+
   tr.visible-xs {
     display: table-row !important;
   }
@@ -6057,6 +6075,10 @@ td.hidden-lg {
 
   .visible-sm.visible-xs {
     display: block !important;
+  }
+
+  table.visible-sm.visible-xs {
+    display: table;
   }
 
   tr.visible-sm.visible-xs {
@@ -6072,6 +6094,10 @@ td.hidden-lg {
     display: block !important;
   }
 
+  table.visible-md.visible-xs {
+    display: table;
+  }
+
   tr.visible-md.visible-xs {
     display: table-row !important;
   }
@@ -6083,6 +6109,10 @@ td.hidden-lg {
 
   .visible-lg.visible-xs {
     display: block !important;
+  }
+
+  table.visible-lg.visible-xs {
+    display: table;
   }
 
   tr.visible-lg.visible-xs {
@@ -6127,6 +6157,10 @@ td.hidden-lg {
     display: block !important;
   }
 
+  table.visible-xs.visible-sm {
+    display: table;
+  }
+
   tr.visible-xs.visible-sm {
     display: table-row !important;
   }
@@ -6138,6 +6172,10 @@ td.hidden-lg {
 
   .visible-sm {
     display: block !important;
+  }
+
+  table.visible-sm {
+    display: table;
   }
 
   tr.visible-sm {
@@ -6153,6 +6191,10 @@ td.hidden-lg {
     display: block !important;
   }
 
+  table.visible-md.visible-sm {
+    display: table;
+  }
+
   tr.visible-md.visible-sm {
     display: table-row !important;
   }
@@ -6164,6 +6206,10 @@ td.hidden-lg {
 
   .visible-lg.visible-sm {
     display: block !important;
+  }
+
+  table.visible-lg.visible-sm {
+    display: table;
   }
 
   tr.visible-lg.visible-sm {
@@ -6208,6 +6254,10 @@ td.hidden-lg {
     display: block !important;
   }
 
+  table.visible-xs.visible-md {
+    display: table;
+  }
+
   tr.visible-xs.visible-md {
     display: table-row !important;
   }
@@ -6219,6 +6269,10 @@ td.hidden-lg {
 
   .visible-sm.visible-md {
     display: block !important;
+  }
+
+  table.visible-sm.visible-md {
+    display: table;
   }
 
   tr.visible-sm.visible-md {
@@ -6234,6 +6288,10 @@ td.hidden-lg {
     display: block !important;
   }
 
+  table.visible-md {
+    display: table;
+  }
+
   tr.visible-md {
     display: table-row !important;
   }
@@ -6245,6 +6303,10 @@ td.hidden-lg {
 
   .visible-lg.visible-md {
     display: block !important;
+  }
+
+  table.visible-lg.visible-md {
+    display: table;
   }
 
   tr.visible-lg.visible-md {
@@ -6289,6 +6351,10 @@ td.hidden-lg {
     display: block !important;
   }
 
+  table.visible-xs.visible-lg {
+    display: table;
+  }
+
   tr.visible-xs.visible-lg {
     display: table-row !important;
   }
@@ -6300,6 +6366,10 @@ td.hidden-lg {
 
   .visible-sm.visible-lg {
     display: block !important;
+  }
+
+  table.visible-sm.visible-lg {
+    display: table;
   }
 
   tr.visible-sm.visible-lg {
@@ -6315,6 +6385,10 @@ td.hidden-lg {
     display: block !important;
   }
 
+  table.visible-md.visible-lg {
+    display: table;
+  }
+
   tr.visible-md.visible-lg {
     display: table-row !important;
   }
@@ -6326,6 +6400,10 @@ td.hidden-lg {
 
   .visible-lg {
     display: block !important;
+  }
+
+  table.visible-lg {
+    display: table;
   }
 
   tr.visible-lg {
@@ -6375,6 +6453,10 @@ td.visible-print {
 @media print {
   .visible-print {
     display: block !important;
+  }
+
+  table.visible-print {
+    display: table;
   }
 
   tr.visible-print {
