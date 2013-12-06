@@ -76,9 +76,9 @@ $(function () {
           + '</ul>'
 
         $(dropHTML).find('ul>li:first a').tab('show').end()
-          .find('ul>li:last a').on('show', function(event){
+          .find('ul>li:last a').on('show', function (event){
             equal(event.relatedTarget.hash, "#1-1")
-          }).on('shown', function(event){
+          }).on('shown', function (event){
             equal(event.relatedTarget.hash, "#1-1")
           }).tab('show')
       })
