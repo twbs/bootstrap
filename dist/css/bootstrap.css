@@ -5248,6 +5248,10 @@ a.list-group-item.active > .badge,
   max-width: 100%;
 }
 
+.jumbotron .input-group {
+  line-height: 1.428571429;
+}
+
 @media screen and (min-width: 768px) {
   .jumbotron {
     padding-top: 48px;
