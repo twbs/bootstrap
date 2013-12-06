@@ -258,7 +258,7 @@ $(function () {
       })
 
       test("should destroy tooltip", function () {
-        var tooltip = $('<div/>').tooltip().on('click.foo', function (){})
+        var tooltip = $('<div/>').tooltip().on('click.foo', function () {})
         ok(tooltip.data('bs.tooltip'), 'tooltip has data')
         ok($._data(tooltip[0], 'events').mouseover && $._data(tooltip[0], 'events').mouseout, 'tooltip has hover event')
         ok($._data(tooltip[0], 'events').click[0].namespace == 'foo', 'tooltip has extra click.foo event')
@@ -297,7 +297,7 @@ $(function () {
         tooltip.tooltip('hide')
       })
 
-      test("should place tooltip inside window", function (){
+      test("should place tooltip inside window", function () {
         var container = $("<div />").appendTo("body")
             .css({position: "absolute", width: 200, height: 200, bottom: 0, left: 0})
           , tooltip = $("<a href='#' title='Very very very very very very very very long tooltip'>Hover me</a>")
@@ -308,7 +308,7 @@ $(function () {
 
         stop()
 
-        setTimeout(function (){
+        setTimeout(function () {
           ok($(".tooltip").offset().left >= 0)
 
           start()
@@ -316,7 +316,7 @@ $(function () {
         }, 100)
       })
 
-      test("should place tooltip on top of element", function (){
+      test("should place tooltip on top of element", function () {
         var container = $("<div />").appendTo("body")
               .css({position: "absolute", bottom: 0, left: 0, textAlign: "right", width: 300, height: 300})
             , p = $("<p style='margin-top:200px' />").appendTo(container)
@@ -328,7 +328,7 @@ $(function () {
 
         stop()
 
-        setTimeout(function (){
+        setTimeout(function () {
           var tooltip = container.find(".tooltip")
 
           start()
@@ -337,7 +337,7 @@ $(function () {
         }, 100)
       })
 
-      test("should add position class before positioning so that position-specific styles are taken into account", function (){
+      test("should add position class before positioning so that position-specific styles are taken into account", function () {
         $("head").append('<style> .tooltip.right { white-space: nowrap; } .tooltip.right .tooltip-inner { max-width: none; } </style>')
 
         var container = $("<div />").appendTo("body")
