@@ -1731,75 +1731,91 @@ table th[class*="col-"] {
   float: none;
 }
 
-.table > thead > tr > .active,
-.table > tbody > tr > .active,
-.table > tfoot > tr > .active,
-.table > thead > .active > td,
-.table > tbody > .active > td,
-.table > tfoot > .active > td,
-.table > thead > .active > th,
-.table > tbody > .active > th,
-.table > tfoot > .active > th {
+.table > thead > tr > td.active,
+.table > tbody > tr > td.active,
+.table > tfoot > tr > td.active,
+.table > thead > tr > th.active,
+.table > tbody > tr > th.active,
+.table > tfoot > tr > th.active,
+.table > thead > tr.active > td,
+.table > tbody > tr.active > td,
+.table > tfoot > tr.active > td,
+.table > thead > tr.active > th,
+.table > tbody > tr.active > th,
+.table > tfoot > tr.active > th {
   background-color: #f5f5f5;
 }
 
-.table-hover > tbody > tr > .active:hover,
-.table-hover > tbody > .active:hover > td,
-.table-hover > tbody > .active:hover > th {
+.table-hover > tbody > tr > td.active:hover,
+.table-hover > tbody > tr > th.active:hover,
+.table-hover > tbody > tr.active:hover > td,
+.table-hover > tbody > tr.active:hover > th {
   background-color: #e8e8e8;
 }
 
-.table > thead > tr > .success,
-.table > tbody > tr > .success,
-.table > tfoot > tr > .success,
-.table > thead > .success > td,
-.table > tbody > .success > td,
-.table > tfoot > .success > td,
-.table > thead > .success > th,
-.table > tbody > .success > th,
-.table > tfoot > .success > th {
+.table > thead > tr > td.success,
+.table > tbody > tr > td.success,
+.table > tfoot > tr > td.success,
+.table > thead > tr > th.success,
+.table > tbody > tr > th.success,
+.table > tfoot > tr > th.success,
+.table > thead > tr.success > td,
+.table > tbody > tr.success > td,
+.table > tfoot > tr.success > td,
+.table > thead > tr.success > th,
+.table > tbody > tr.success > th,
+.table > tfoot > tr.success > th {
   background-color: #dff0d8;
 }
 
-.table-hover > tbody > tr > .success:hover,
-.table-hover > tbody > .success:hover > td,
-.table-hover > tbody > .success:hover > th {
+.table-hover > tbody > tr > td.success:hover,
+.table-hover > tbody > tr > th.success:hover,
+.table-hover > tbody > tr.success:hover > td,
+.table-hover > tbody > tr.success:hover > th {
   background-color: #d0e9c6;
 }
 
-.table > thead > tr > .danger,
-.table > tbody > tr > .danger,
-.table > tfoot > tr > .danger,
-.table > thead > .danger > td,
-.table > tbody > .danger > td,
-.table > tfoot > .danger > td,
-.table > thead > .danger > th,
-.table > tbody > .danger > th,
-.table > tfoot > .danger > th {
+.table > thead > tr > td.danger,
+.table > tbody > tr > td.danger,
+.table > tfoot > tr > td.danger,
+.table > thead > tr > th.danger,
+.table > tbody > tr > th.danger,
+.table > tfoot > tr > th.danger,
+.table > thead > tr.danger > td,
+.table > tbody > tr.danger > td,
+.table > tfoot > tr.danger > td,
+.table > thead > tr.danger > th,
+.table > tbody > tr.danger > th,
+.table > tfoot > tr.danger > th {
   background-color: #f2dede;
 }
 
-.table-hover > tbody > tr > .danger:hover,
-.table-hover > tbody > .danger:hover > td,
-.table-hover > tbody > .danger:hover > th {
+.table-hover > tbody > tr > td.danger:hover,
+.table-hover > tbody > tr > th.danger:hover,
+.table-hover > tbody > tr.danger:hover > td,
+.table-hover > tbody > tr.danger:hover > th {
   background-color: #ebcccc;
 }
 
-.table > thead > tr > .warning,
-.table > tbody > tr > .warning,
-.table > tfoot > tr > .warning,
-.table > thead > .warning > td,
-.table > tbody > .warning > td,
-.table > tfoot > .warning > td,
-.table > thead > .warning > th,
-.table > tbody > .warning > th,
-.table > tfoot > .warning > th {
+.table > thead > tr > td.warning,
+.table > tbody > tr > td.warning,
+.table > tfoot > tr > td.warning,
+.table > thead > tr > th.warning,
+.table > tbody > tr > th.warning,
+.table > tfoot > tr > th.warning,
+.table > thead > tr.warning > td,
+.table > tbody > tr.warning > td,
+.table > tfoot > tr.warning > td,
+.table > thead > tr.warning > th,
+.table > tbody > tr.warning > th,
+.table > tfoot > tr.warning > th {
   background-color: #fcf8e3;
 }
 
-.table-hover > tbody > tr > .warning:hover,
-.table-hover > tbody > .warning:hover > td,
-.table-hover > tbody > .warning:hover > th {
+.table-hover > tbody > tr > td.warning:hover,
+.table-hover > tbody > tr > th.warning:hover,
+.table-hover > tbody > tr.warning:hover > td,
+.table-hover > tbody > tr.warning:hover > th {
   background-color: #faf2cc;
 }
 
