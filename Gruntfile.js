@@ -1,6 +1,6 @@
 /* jshint node: true */
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
   "use strict";
 
   // Force use of Unix newlines
@@ -31,6 +31,21 @@ module.exports = function(grunt) {
       },
       gruntfile: {
         src: 'Gruntfile.js'
+      },
+      src: {
+        src: ['js/*.js']
+      },
+      test: {
+        src: ['js/tests/unit/*.js']
+      }
+    },
+
+    jscs: {
+      options: {
+        config: 'js/.jscs.json',
+      },
+      gruntfile: {
+        src: ['Gruntfile.js']
       },
       src: {
         src: ['js/*.js']
@@ -288,6 +303,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-html-validation');
   grunt.loadNpmTasks('grunt-jekyll');
+  grunt.loadNpmTasks('grunt-jscs-checker');
   grunt.loadNpmTasks('grunt-recess');
   grunt.loadNpmTasks('grunt-saucelabs');
   grunt.loadNpmTasks('grunt-sed');
@@ -296,7 +312,7 @@ module.exports = function(grunt) {
   grunt.registerTask('validate-html', ['jekyll', 'validation']);
 
   // Test task.
-  var testSubtasks = ['dist-css', 'jshint', 'qunit', 'validate-html'];
+  var testSubtasks = ['dist-css', 'jshint', 'jscs', 'qunit', 'validate-html'];
   // Only run Sauce Labs tests if there's a Sauce access key
   if (typeof process.env.SAUCE_ACCESS_KEY !== 'undefined') {
     testSubtasks.push('connect');
