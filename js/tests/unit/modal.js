@@ -74,7 +74,7 @@ $(function () {
           ok($('#modal-test').length, 'modal inserted into dom')
           $(this).modal("hide")
         })
-        .on("hidden.bs.modal", function() {
+        .on("hidden.bs.modal", function () {
           ok(!$('#modal-test').is(":visible"), 'modal hidden')
           $('#modal-test').remove()
           start()
@@ -92,7 +92,7 @@ $(function () {
           ok($('#modal-test').length, 'modal inserted into dom')
           div.modal("toggle")
         })
-        .on("hidden.bs.modal", function() {
+        .on("hidden.bs.modal", function () {
           ok(!$('#modal-test').is(":visible"), 'modal hidden')
           div.remove()
           start()
@@ -110,7 +110,7 @@ $(function () {
           ok($('#modal-test').length, 'modal inserted into dom')
           div.find('.close').click()
         })
-        .on("hidden.bs.modal", function() {
+        .on("hidden.bs.modal", function () {
           ok(!$('#modal-test').is(":visible"), 'modal hidden')
           div.remove()
           start()
@@ -127,7 +127,7 @@ $(function () {
           ok($('#modal-test').is(":visible"), 'modal visible')
           div.modal("hide")
         })
-        .on("hidden.bs.modal", function() {
+        .on("hidden.bs.modal", function () {
           ok(!$('#modal-test').is(":visible"), 'modal hidden')
           div.remove()
           start()
@@ -146,7 +146,7 @@ $(function () {
           ok($('#modal-test').is(":visible"), 'modal visible')
           $('#modal-test').click()
         })
-        .bind("hidden.bs.modal", function() {
+        .bind("hidden.bs.modal", function () {
           ok(!$('#modal-test').is(":visible"), 'modal hidden')
           div.remove()
           start()
@@ -164,7 +164,7 @@ $(function () {
           triggered = 0
           $('#modal-test').click()
         })
-        .one("hidden.bs.modal", function() {
+        .one("hidden.bs.modal", function () {
           div.modal("show")
         })
         .bind("hide.bs.modal", function () {
@@ -184,7 +184,7 @@ $(function () {
           $('#close').click()
           ok(!$('#modal-test').is(":visible"), 'modal hidden')
         })
-        .one("hidden.bs.modal", function() {
+        .one("hidden.bs.modal", function () {
           div.one('hidden.bs.modal', function () {
             start()
           }).modal("show")
