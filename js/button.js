@@ -58,6 +58,10 @@
 
     if ($parent.length) {
       var $input = this.$element.find('input')
+      if ($input.is(':disabled')) {
+        // Disabled elements should not be allowed to continue
+        changed = false
+      }
       if ($input.prop('type') === 'radio') {
         // see if clicking on current one
         if ($input.prop('checked') && this.$element.hasClass('active'))
