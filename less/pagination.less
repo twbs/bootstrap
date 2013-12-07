@@ -5,7 +5,6 @@
   display: inline-block;
   padding-left: 0;
   margin: @line-height-computed 0;
-  border-radius: @border-radius-base;
 
   > li {
     display: inline; // Remove list-style and block-level defaults
@@ -13,24 +12,17 @@
     > span {
       position: relative;
       float: left; // Collapse white-space
-      padding: @padding-base-vertical @padding-base-horizontal;
       line-height: @line-height-base;
       text-decoration: none;
-      background-color: @pagination-bg;
-      border: 1px solid @pagination-border;
+      color: @pagination-default-color;
+      background-color: @pagination-default-bg;
+      border: 1px solid @pagination-default-border-color;
       margin-left: -1px;
     }
     &:first-child {
       > a,
       > span {
         margin-left: 0;
-        .border-left-radius(@border-radius-base);
-      }
-    }
-    &:last-child {
-      > a,
-      > span {
-        .border-right-radius(@border-radius-base);
       }
     }
   }
@@ -39,7 +31,9 @@
   > li > span {
     &:hover,
     &:focus {
+      color: @pagination-hover-color;
       background-color: @pagination-hover-bg;
+      border-color: @pagination-hover-border-color;
     }
   }
 
@@ -56,16 +50,14 @@
     }
   }
 
-  > .disabled {
-    > span,
-    > span:hover,
-    > span:focus,
-    > a,
-    > a:hover,
-    > a:focus {
+  > .disabled > a,
+  > .disabled > span {
+    &,
+    &:hover,
+    &:focus {
       color: @pagination-disabled-color;
-      background-color: @pagination-bg;
-      border-color: @pagination-border;
+      background-color: @pagination-disabled-bg;
+      border-color: @pagination-disabled-border-color;
       cursor: not-allowed;
     }
   }
@@ -73,6 +65,11 @@
 
 // Sizing
 // --------------------------------------------------
+
+// Base
+.pagination {
+  .pagination-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @border-radius-base);
+}
 
 // Large
 .pagination-lg {
