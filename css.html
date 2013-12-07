@@ -1047,7 +1047,7 @@ base_url: "../"
       <h1 id="code">Code</h1>
     </div>
 
-    <h2>Inline</h2>
+    <h2 id="code-inline">Inline</h2>
     <p>Wrap inline snippets of code with <code>&lt;code&gt;</code>.</p>
 <div class="bs-example">
   For example, <code>&lt;section&gt;</code> should be wrapped as inline.
@@ -1056,7 +1056,16 @@ base_url: "../"
 For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
-    <h2>Basic block</h2>
+    <h2 id="code-user-input">User input</h2>
+    <p>Use the <code>&lt;kbd&gt;</code> to indicate input that is typically entered via keyboard.</p>
+<div class="bs-example">
+  To switch directories, type <kbd>cd</kbd> followed the name of the directory.
+</div>
+{% highlight html %}
+  To switch directories, type <kbd>cd</kbd> followed the name of the directory.
+{% endhighlight %}
+
+    <h2 id="code-block">Basic block</h2>
     <p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to escape any angle brackets in the code for proper rendering.</p>
 <div class="bs-example">
   <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>

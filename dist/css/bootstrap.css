@@ -753,6 +753,15 @@ code {
   border-radius: 4px;
 }
 
+kbd {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #ffffff;
+  background-color: #333333;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
 pre {
   display: block;
   padding: 9.5px;
