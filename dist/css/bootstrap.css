@@ -1803,6 +1803,24 @@ table th[class*="col-"] {
   background-color: #ebcccc;
 }
 
+.table > thead > tr > .info,
+.table > tbody > tr > .info,
+.table > tfoot > tr > .info,
+.table > thead > .info > td,
+.table > tbody > .info > td,
+.table > tfoot > .info > td,
+.table > thead > .info > th,
+.table > tbody > .info > th,
+.table > tfoot > .info > th {
+  background-color: #d9edf7;
+}
+
+.table-hover > tbody > tr > .info:hover,
+.table-hover > tbody > .info:hover > td,
+.table-hover > tbody > .info:hover > th {
+  background-color: #c4e3f3;
+}
+
 @media (max-width: 767px) {
   .table-responsive {
     width: 100%;
