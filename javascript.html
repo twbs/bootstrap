@@ -1123,7 +1123,7 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
             <td>animation</td>
             <td>boolean</td>
             <td>true</td>
-            <td>apply a CSS fade transition to the tooltip</td>
+            <td>apply a CSS fade transition to the popover</td>
           </tr>
           <tr>
             <td>html</td>
@@ -1141,7 +1141,7 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
             <td>selector</td>
             <td>string</td>
             <td>false</td>
-            <td>if a selector is provided, tooltip objects will be delegated to the specified targets. in practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="http://jsfiddle.net/fScua/">an informative example</a>.</td>
+            <td>if a selector is provided, tooltip objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="http://jsfiddle.net/fScua/">an informative example</a>.</td>
           </tr>
           <tr>
             <td>trigger</td>
@@ -1941,7 +1941,7 @@ $('#myCarousel').on('slide.bs.carousel', function () {
     <ol>
       <li>To start, the plugin adds <code>.affix-top</code> to indicate the element is in it's top-most position. At this point no CSS positioning is required.</li>
       <li>Scrolling past the element you want affixed should trigger the actual affixing. This is where <code>.affix</code> replaces <code>.affix-top</code> and sets <code>position: fixed;</code> (provided by Bootstrap's code CSS).</li>
-      <li>If a bottom offset is defined, scrolling past that should replace <code>.affix</code> with <code>.affix-bottom</code>. Since offsets are optional, setting one requires you to set the appropriate CSS. In this case, add <code>position: absolute;</code> when necessary. The plugin uses the data attribute or JavaScript option to determine where to position the elemtn from there.</li>
+      <li>If a bottom offset is defined, scrolling past that should replace <code>.affix</code> with <code>.affix-bottom</code>. Since offsets are optional, setting one requires you to set the appropriate CSS. In this case, add <code>position: absolute;</code> when necessary. The plugin uses the data attribute or JavaScript option to determine where to position the element from there.</li>
     </ol>
     <p>Follow the above steps to set your CSS for either of the usage options below.</p>
 
