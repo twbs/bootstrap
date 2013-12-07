@@ -62,7 +62,7 @@
         // Disabled elements should not be allowed to continue
         changed = false
       }
-      if ($input.prop('type') === 'radio') {
+      else if ($input.prop('type') === 'radio') {
         // see if clicking on current one
         if ($input.prop('checked') && this.$element.hasClass('active'))
           changed = false
