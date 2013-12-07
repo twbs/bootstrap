@@ -3328,23 +3328,39 @@ body { padding-bottom: 70px; }
 {% endhighlight %}
 
     <h3 id="list-group-contextual-classes">Contextual classes</h3>
-    <p>Use contextual classes to color list items.</p>
+    <p>Use contextual classes to style list items, default or linked. Also includes <code>.active</code> state.</p>
     <div class="bs-example">
-      <div class="list-group">
-        <a href="#" class="list-group-item">Cras justo odio</a>
-        <a href="#" class="list-group-item success">Dapibus ac facilisis in</a>
-        <a href="#" class="list-group-item">Morbi leo risus</a>
-        <a href="#" class="list-group-item warning">Porta ac consectetur ac</a>
-        <a href="#" class="list-group-item danger">Vestibulum at eros</a>
+      <div class="row">
+        <div class="col-sm-6">
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
+            <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
+            <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
+            <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
+          </ul>
+        </div>
+        <div class="col-sm-6">
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-success">Dapibus ac facilisis in</a>
+            <a href="#" class="list-group-item list-group-item-warning">Porta ac consectetur ac</a>
+            <a href="#" class="list-group-item list-group-item-danger">Vestibulum at eros</a>
+            <a href="#" class="list-group-item list-group-item-info">Cras sit amet nibh libero</a>
+          </div>
+        </div>
       </div>
     </div>
 {% highlight html %}
+<ul class="list-group">
+  <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
+  <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
+  <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
+  <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
+</ul>
 <div class="list-group">
-  <a href="#" class="list-group-item">Cras justo odio</a>
-  <a href="#" class="list-group-item success">Dapibus ac facilisis in</a>
-  <a href="#" class="list-group-item">Morbi leo risus</a>
-  <a href="#" class="list-group-item warning">Porta ac consectetur ac</a>
-  <a href="#" class="list-group-item danger">Vestibulum at eros</a>
+  <a href="#" class="list-group-item list-group-item-success">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item list-group-item-warning">Porta ac consectetur ac</a>
+  <a href="#" class="list-group-item list-group-item-danger">Vestibulum at eros</a>
+  <a href="#" class="list-group-item list-group-item-info">Cras sit amet nibh libero</a>
 </div>
 {% endhighlight %}
 

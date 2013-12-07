@@ -450,16 +450,28 @@
 
 // List Groups
 // -------------------------
-.list-group-item-variant(@state; @background; @border) {
-  .list-group-item.@{state} {
+.list-group-item-variant(@state; @background; @color) {
+  .list-group-item-@{state} {
+    color: @color;
     background-color: @background;
-    border-color: @border;
   }
+  a.list-group-item-@{state} {
+    color: @color;
 
-  // Hover states
-  .list-group-item.@{state}:hover {
-    background-color: darken(@background, 5%);
-    border-color: darken(@border, 5%);
+    .list-group-item-heading { color: inherit; }
+
+    &:hover,
+    &:focus {
+      color: @color;
+      background-color: darken(@background, 5%);
+    }
+    &.active,
+    &.active:hover,
+    &.active:focus {
+      color: #fff;
+      background-color: @color;
+      border-color: @color;
+    }
   }
 }
 
