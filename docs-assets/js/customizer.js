@@ -5,6 +5,7 @@
  * details, see http://creativecommons.org/licenses/by/3.0/.
  */
 
+/* jshint multistr:true */
 
 window.onload = function () { // wait for load in a dumb way because B-0
   var cw = '/*!\n * Bootstrap v3.0.3\n *\n * Copyright 2013 Twitter, Inc\n * Licensed under the Apache License v2.0\n * http://www.apache.org/licenses/LICENSE-2.0\n *\n * Designed and built with all the love in the world @twitter by @mdo and @fat.\n */\n\n'
@@ -35,7 +36,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
   function getQueryParam(key) {
     key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
-    var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
+    var match = location.search.match(new RegExp("[?&]" + key + "=([^&]+)(&|$)"));
     return match && decodeURIComponent(match[1].replace(/\+/g, " "));
   }
 
@@ -55,11 +56,11 @@ window.onload = function () { // wait for load in a dumb way because B-0
       dataType: 'json',
       data: JSON.stringify(data)
     })
-    .success(function(result) {
+    .success(function (result) {
       var origin = window.location.protocol + "//" + window.location.host
       history.replaceState(false, document.title, origin + window.location.pathname + '?id=' + result.id)
     })
-    .error(function(err) {
+    .error(function (err) {
       showError('<strong>Ruh roh!</strong> Could not save gist file, configuration not saved.', err)
     })
   }
@@ -69,7 +70,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
     $('#less-variables-section input')
         .each(function () {
-          $(this).val() && (vars[ $(this).prev().text() ] = $(this).val())
+          $(this).val() && (vars[$(this).prev().text()] = $(this).val())
         })
 
     var data = {
@@ -93,7 +94,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
       type: 'GET',
       dataType: 'json'
     })
-    .success(function(result) {
+    .success(function (result) {
       var data = JSON.parse(result.files['config.json'].content)
       if (data.js) {
         $('#plugin-section input').each(function () {
@@ -111,7 +112,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
         }
       }
     })
-    .error(function(err) {
+    .error(function (err) {
       showError('Error fetching bootstrap config file', err)
     })
   }
@@ -130,23 +131,23 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
     if (js) {
       var jsFolder = zip.folder('js')
-      for (var fileName in js) {
-        jsFolder.file(fileName, js[fileName])
+      for (var jsFileName in js) {
+        jsFolder.file(jsFileName, js[jsFileName])
       }
     }
 
     if (fonts) {
       var fontsFolder = zip.folder('fonts')
-      for (var fileName in fonts) {
-        fontsFolder.file(fileName, fonts[fileName], {base64: true})
+      for (var fontsFileName in fonts) {
+        fontsFolder.file(fontsFileName, fonts[fontsFileName], {base64: true})
       }
     }
 
     if (config) {
-      zip.file('config.json', config)
+      zip.file("config.json", config)
     }
 
-    var content = zip.generate({type:"blob"})
+    var content = zip.generate({ type: "blob" })
 
     complete(content)
   }
@@ -201,7 +202,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
     $('#less-variables-section input')
         .each(function () {
-          $(this).val() && (vars[ $(this).prev().text() ] = $(this).val())
+          $(this).val() && (vars[$(this).prev().text()] = $(this).val())
         })
 
     $.each(bootstrapLessFilenames(), function(index, filename) {
@@ -325,7 +326,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     $('.bs-docs-section, .bs-sidebar').css('display', 'none')
 
     showCallout("Looks like your current browser doesn't support the Bootstrap Customizer. Please take a second\
-                to <a href=\"https://www.google.com/intl/en/chrome/browser/\"> upgrade to a more modern browser</a>.", true)
+                 to <a href=\"https://www.google.com/intl/en/chrome/browser/\"> upgrade to a more modern browser</a>.", true)
   }
 
   parseUrl()
