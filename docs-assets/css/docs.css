@@ -1029,11 +1029,12 @@ h1[id] {
  */
 
 .bs-glyphicons {
-  padding-left: 0;
-  padding-bottom: 1px;
-  margin-bottom: 20px;
-  list-style: none;
+  margin: 0 -19px 20px -16px;
   overflow: hidden;
+}
+.bs-glyphicons-list {
+  padding-left: 0;
+  list-style: none;
 }
 .bs-glyphicons li {
   float: left;
@@ -1041,7 +1042,7 @@ h1[id] {
   height: 115px;
   padding: 10px;
   margin: 0 -1px -1px 0;
-  font-size: 12px;
+  font-size: 10px;
   line-height: 1.4;
   text-align: center;
   border: 1px solid #ddd;
@@ -1061,8 +1062,13 @@ h1[id] {
 }
 
 @media (min-width: 768px) {
+  .bs-glyphicons {
+    margin-left: 0;
+    margin-right: 0;
+  }
   .bs-glyphicons li {
     width: 12.5%;
+    font-size: 12px;
   }
 }
 
