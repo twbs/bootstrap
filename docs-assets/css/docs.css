@@ -921,7 +921,6 @@ h1[id] {
  */
 
 .highlight {
-  display: none; /* hidden by default, until >480px */
   padding: 9px 14px;
   margin-bottom: 14px;
   background-color: #f7f7f9;
@@ -947,13 +946,6 @@ h1[id] {
   margin-right: 10px;
   text-align: right;
   color: #bebec5;
-}
-
-/* Show code snippets when we have the space */
-@media (min-width: 481px) {
-  .highlight {
-    display: block;
-  }
 }
 
 
