@@ -76,7 +76,7 @@ base_url: "../"
     <h3 id="grid-intro">Introduction</h3>
     <p>Grid systems are used for creating page layouts through a series of rows and columns that house your content. Here's how the Bootstrap grid system works:</p>
     <ul>
-      <li>Rows must be placed within a <code>.container</code> for proper alignment and padding.</li>
+      <li>Rows must be placed within a <code>.container</code> (fixed-width) or <code>.container-fluid</code> (full-width) for proper alignment and padding.</li>
       <li>Use rows to create horizontal groups of columns.</li>
       <li>Content should be placed within columns, and only columns may be immediate children of rows.</li>
       <li>Predefined grid classes like <code>.row</code> and <code>.col-xs-4</code> are available for quickly making grid layouts. LESS mixins can also be used for more semantic layouts.</li>
@@ -248,6 +248,16 @@ base_url: "../"
 <div class="row">
   <div class="col-md-6">.col-md-6</div>
   <div class="col-md-6">.col-md-6</div>
+</div>
+{% endhighlight %}
+
+    <h3 id="grid-example-fluid">Example: Fluid container</h3>
+    <p>Turn any fixed-width grid layout into a full-width layout by changing your outermost <code>.container</code> to <code>.container-fluid</code>.</p>
+{% highlight html %}
+<div class="container-fluid">
+  <div class="row">
+    ...
+  </div>
 </div>
 {% endhighlight %}
 
@@ -1047,7 +1057,7 @@ base_url: "../"
       <h1 id="code">Code</h1>
     </div>
 
-    <h2>Inline</h2>
+    <h2 id="code-inline">Inline</h2>
     <p>Wrap inline snippets of code with <code>&lt;code&gt;</code>.</p>
 <div class="bs-example">
   For example, <code>&lt;section&gt;</code> should be wrapped as inline.
@@ -1056,7 +1066,16 @@ base_url: "../"
 For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
-    <h2>Basic block</h2>
+    <h2 id="code-user-input">User input</h2>
+    <p>Use the <code>&lt;kbd&gt;</code> to indicate input that is typically entered via keyboard.</p>
+<div class="bs-example">
+  To switch directories, type <kbd>cd</kbd> followed the name of the directory.
+</div>
+{% highlight html %}
+  To switch directories, type <kbd>cd</kbd> followed the name of the directory.
+{% endhighlight %}
+
+    <h2 id="code-block">Basic block</h2>
     <p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to escape any angle brackets in the code for proper rendering.</p>
 <div class="bs-example">
   <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
@@ -1327,6 +1346,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             </td>
             <td>Indicates a dangerous or potentially negative action</td>
           </tr>
+          <tr>
+            <td>
+              <code>.info</code>
+            </td>
+            <td>Indicates a neutral informative change or action</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -1383,6 +1408,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             <td>Column content</td>
             <td>Column content</td>
           </tr>
+          <tr>
+            <td>8</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+          </tr>
+          <tr class="info">
+            <td>9</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+          </tr>
         </tbody>
       </table>
     </div><!-- /example -->
@@ -1392,6 +1429,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <tr class="success">...</tr>
 <tr class="warning">...</tr>
 <tr class="danger">...</tr>
+<tr class="info">...</tr>
 
 <!-- On cells (`td` or `th`) -->
 <tr>
@@ -1399,6 +1437,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <td class="success">...</td>
   <td class="warning">...</td>
   <td class="danger">...</td>
+  <td class="info">...</td>
 </tr>
 {% endhighlight %}
 

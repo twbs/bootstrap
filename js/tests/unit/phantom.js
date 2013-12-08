@@ -22,7 +22,7 @@
   }
 
   // These methods connect QUnit to PhantomJS.
-  QUnit.log = function(obj) {
+  QUnit.log = function (obj) {
     // What is this I don’t even
     if (obj.message === '[object Object], undefined:undefined') { return }
     // Parse some stuff before sending it.
@@ -32,15 +32,15 @@
     sendMessage('qunit.log', obj.result, actual, expected, obj.message, obj.source)
   }
 
-  QUnit.testStart = function(obj) {
+  QUnit.testStart = function (obj) {
     sendMessage('qunit.testStart', obj.name)
   }
 
-  QUnit.testDone = function(obj) {
+  QUnit.testDone = function (obj) {
     sendMessage('qunit.testDone', obj.name, obj.failed, obj.passed, obj.total)
   }
 
-  QUnit.moduleStart = function(obj) {
+  QUnit.moduleStart = function (obj) {
     sendMessage('qunit.moduleStart', obj.name)
   }
 

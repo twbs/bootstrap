@@ -93,14 +93,17 @@
 //
 // When a container is present, change the behavior of the header and collapse.
 
-.container > .navbar-header,
-.container > .navbar-collapse {
-  margin-right: -@navbar-padding-horizontal;
-  margin-left:  -@navbar-padding-horizontal;
+.container,
+.container-fluid {
+  > .navbar-header,
+  > .navbar-collapse {
+    margin-right: -@navbar-padding-horizontal;
+    margin-left:  -@navbar-padding-horizontal;
 
-  @media (min-width: @grid-float-breakpoint) {
-    margin-right: 0;
-    margin-left:  0;
+    @media (min-width: @grid-float-breakpoint) {
+      margin-right: 0;
+      margin-left:  0;
+    }
   }
 }
 
@@ -159,7 +162,8 @@
   }
 
   @media (min-width: @grid-float-breakpoint) {
-    .navbar > .container & {
+    .navbar > .container &,
+    .navbar > .container-fluid & {
       margin-left: -@navbar-padding-horizontal;
     }
   }
