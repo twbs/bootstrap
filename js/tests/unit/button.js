@@ -1,22 +1,22 @@
 $(function () {
 
-    module("button")
+    module('button')
 
-      test("should provide no conflict", function () {
+      test('should provide no conflict', function () {
         var button = $.fn.button.noConflict()
         ok(!$.fn.button, 'button was set back to undefined (org value)')
         $.fn.button = button
       })
 
-      test("should be defined on jquery object", function () {
+      test('should be defined on jquery object', function () {
         ok($(document.body).button, 'button method is defined')
       })
 
-      test("should return element", function () {
+      test('should return element', function () {
         ok($(document.body).button()[0] == document.body, 'document.body returned')
       })
 
-      test("should return set state to loading", function () {
+      test('should return set state to loading', function () {
         var btn = $('<button class="btn" data-loading-text="fat">mdo</button>')
         equal(btn.html(), 'mdo', 'btn text equals mdo')
         btn.button('loading')
@@ -29,7 +29,7 @@ $(function () {
         }, 0)
       })
 
-      test("should return reset state", function () {
+      test('should return reset state', function () {
         var btn = $('<button class="btn" data-loading-text="fat">mdo</button>')
         equal(btn.html(), 'mdo', 'btn text equals mdo')
         btn.button('loading')
@@ -51,14 +51,14 @@ $(function () {
 
       })
 
-      test("should toggle active", function () {
+      test('should toggle active', function () {
         var btn = $('<button class="btn">mdo</button>')
         ok(!btn.hasClass('active'), 'btn does not have active class')
         btn.button('toggle')
         ok(btn.hasClass('active'), 'btn has class active')
       })
 
-      test("should toggle active when btn children are clicked", function () {
+      test('should toggle active when btn children are clicked', function () {
         var btn = $('<button class="btn" data-toggle="button">mdo</button>')
           , inner = $('<i></i>')
         btn
@@ -69,7 +69,7 @@ $(function () {
         ok(btn.hasClass('active'), 'btn has class active')
       })
 
-      test("should toggle active when btn children are clicked within btn-group", function () {
+      test('should toggle active when btn children are clicked within btn-group', function () {
         var btngroup = $('<div class="btn-group" data-toggle="buttons"></div>')
           , btn = $('<button class="btn">fat</button>')
           , inner = $('<i></i>')
@@ -81,7 +81,7 @@ $(function () {
         ok(btn.hasClass('active'), 'btn has class active')
       })
 
-      test("should check for closest matching toggle", function () {
+      test('should check for closest matching toggle', function () {
         var group = '<div class="btn-group" data-toggle="buttons">' +
           '<label class="btn btn-primary active">' +
             '<input type="radio" name="options" id="option1" checked="true"> Option 1' +

@@ -18,7 +18,7 @@
  * ======================================================================== */
 
 
-+function ($) { "use strict";
++function ($) { 'use strict';
 
   // BUTTON PUBLIC CLASS DEFINITION
   // ==============================

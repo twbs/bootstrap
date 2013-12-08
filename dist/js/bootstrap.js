@@ -26,7 +26,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * ======================================================================== */
 
 
-+function ($) { "use strict";
++function ($) { 'use strict';
 
   // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
   // ============================================================
@@ -83,7 +83,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * ======================================================================== */
 
 
-+function ($) { "use strict";
++function ($) { 'use strict';
 
   // ALERT CLASS DEFINITION
   // ======================
@@ -182,7 +182,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * ======================================================================== */
 
 
-+function ($) { "use strict";
++function ($) { 'use strict';
 
   // BUTTON PUBLIC CLASS DEFINITION
   // ==============================
@@ -298,7 +298,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * ======================================================================== */
 
 
-+function ($) { "use strict";
++function ($) { 'use strict';
 
   // CAROUSEL CLASS DEFINITION
   // =========================
@@ -516,7 +516,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * ======================================================================== */
 
 
-+function ($) { "use strict";
++function ($) { 'use strict';
 
   // COLLAPSE PUBLIC CLASS DEFINITION
   // ================================
@@ -696,7 +696,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * ======================================================================== */
 
 
-+function ($) { "use strict";
++function ($) { 'use strict';
 
   // DROPDOWN CLASS DEFINITION
   // =========================
@@ -851,7 +851,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * ======================================================================== */
 
 
-+function ($) { "use strict";
++function ($) { 'use strict';
 
   // MODAL CLASS DEFINITION
   // ======================
@@ -1099,7 +1099,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * ======================================================================== */
 
 
-+function ($) { "use strict";
++function ($) { 'use strict';
 
   // TOOLTIP PUBLIC CLASS DEFINITION
   // ===============================
@@ -1324,7 +1324,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
   }
 
   Tooltip.prototype.replaceArrow = function (delta, dimension, position) {
-    this.arrow().css(position, delta ? (50 * (1 - delta / dimension) + "%") : '')
+    this.arrow().css(position, delta ? (50 * (1 - delta / dimension) + '%') : '')
   }
 
   Tooltip.prototype.setContent = function () {
@@ -1485,7 +1485,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * ======================================================================== */
 
 
-+function ($) { "use strict";
++function ($) { 'use strict';
 
   // POPOVER PUBLIC CLASS DEFINITION
   // ===============================
@@ -1603,7 +1603,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * ======================================================================== */
 
 
-+function ($) { "use strict";
++function ($) { 'use strict';
 
   // SCROLLSPY CLASS DEFINITION
   // ==========================
@@ -1762,7 +1762,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * ======================================================================== */
 
 
-+function ($) { "use strict";
++function ($) { 'use strict';
 
   // TAB CLASS DEFINITION
   // ====================
@@ -1898,7 +1898,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * ======================================================================== */
 
 
-+function ($) { "use strict";
++function ($) { 'use strict';
 
   // AFFIX CLASS DEFINITION
   // ======================
