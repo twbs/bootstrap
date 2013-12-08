@@ -763,7 +763,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
     if (e.keyCode == 38 && index > 0)                 index--                        // up
     if (e.keyCode == 40 && index < $items.length - 1) index++                        // down
-    if (!~index)                                      index=0
+    if (!~index)                                      index = 0
 
     $items.eq(index).focus()
   }
@@ -1013,7 +1013,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
     } else if (!this.isShown && this.$backdrop) {
       this.$backdrop.removeClass('in')
 
-      $.support.transition && this.$element.hasClass('fade')?
+      $.support.transition && this.$element.hasClass('fade') ?
         this.$backdrop
           .one($.support.transition.end, callback)
           .emulateTransitionEnd(150) :
@@ -1213,7 +1213,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
   }
 
   Tooltip.prototype.show = function () {
-    var e = $.Event('show.bs.'+ this.type)
+    var e = $.Event('show.bs.' + this.type)
 
     if (this.hasContent() && this.enabled) {
       this.$element.trigger(e)
