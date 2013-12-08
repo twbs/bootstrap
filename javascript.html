@@ -30,7 +30,7 @@ base_url: "../"
     <h3 id="js-data-attrs">Data attributes</h3>
     <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first-class API and should be your first consideration when using a plugin.</p>
 
-    <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the document namespaced with <code>data-api</code>. This looks like this:
+    <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the document namespaced with <code>data-api</code>. This looks like this:</p>
 {% highlight js %}
 $(document).off('.data-api')
 {% endhighlight %}
@@ -50,7 +50,7 @@ $('.btn.danger').button('toggle').addClass('fat')
 {% highlight js %}
 $('#myModal').modal()                      // initialized with defaults
 $('#myModal').modal({ keyboard: false })   // initialized with no keyboard
-$('#myModal').modal('show')                // initializes and invokes show immediately</p>
+$('#myModal').modal('show')                // initializes and invokes show immediately
 {% endhighlight %}
 
     <p>Each plugin also exposes its raw constructor on a <code>Constructor</code> property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.</p>
@@ -415,7 +415,7 @@ $('#myModal').on('hidden.bs.modal', function (e) {
       </nav> <!-- /navbar-example -->
     </div> <!-- /example -->
 
-    <h3>Within tabs</h3>
+    <h3>Within pills</h3>
     <div class="bs-example">
       <ul class="nav nav-pills">
         <li class="active"><a href="#">Regular link</a></li>
@@ -449,7 +449,7 @@ $('#myModal').on('hidden.bs.modal', function (e) {
             <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
           </ul>
         </li>
-      </ul> <!-- /tabs -->
+      </ul> <!-- /pills -->
     </div> <!-- /example -->
 
 
