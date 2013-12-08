@@ -2177,6 +2177,7 @@ textarea.input-lg {
   }
   .form-inline .form-control {
     display: inline-block;
+    vertical-align: middle;
   }
   .form-inline select.form-control {
     width: auto;
@@ -2187,6 +2188,7 @@ textarea.input-lg {
     padding-left: 0;
     margin-top: 0;
     margin-bottom: 0;
+    vertical-align: middle;
   }
   .form-inline .radio input[type="radio"],
   .form-inline .checkbox input[type="checkbox"] {
@@ -4609,6 +4611,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   }
   .navbar-form .form-control {
     display: inline-block;
+    vertical-align: middle;
   }
   .navbar-form select.form-control {
     width: auto;
@@ -4619,6 +4622,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
     padding-left: 0;
     margin-top: 0;
     margin-bottom: 0;
+    vertical-align: middle;
   }
   .navbar-form .radio input[type="radio"],
   .navbar-form .checkbox input[type="checkbox"] {
