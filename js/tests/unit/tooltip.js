@@ -290,7 +290,7 @@ $(function () {
       test("should place tooltips inside the body", function () {
         var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
           .appendTo('#qunit-fixture')
-          .tooltip({container:'body'})
+          .tooltip({container: 'body'})
           .tooltip('show')
         ok($("body > .tooltip").length, 'inside the body')
         ok(!$("#qunit-fixture > .tooltip").length, 'not found in parent')
@@ -301,7 +301,7 @@ $(function () {
         var container = $("<div />").appendTo("body")
             .css({position: "absolute", width: 200, height: 200, bottom: 0, left: 0})
           , tooltip = $("<a href='#' title='Very very very very very very very very long tooltip'>Hover me</a>")
-          .css({position: "absolute", top:0, left: 0})
+          .css({position: "absolute", top: 0, left: 0})
           .appendTo(container)
           .tooltip({placement: "top", animate: false})
           .tooltip("show")
@@ -347,7 +347,7 @@ $(function () {
               .tooltip('show')
           , tooltip = container.find(".tooltip")
 
-        ok( Math.round(target.offset().top + target[0].offsetHeight/2 - tooltip[0].offsetHeight/2) === Math.round(tooltip.offset().top) )
+        ok( Math.round(target.offset().top + (target[0].offsetHeight / 2) - (tooltip[0].offsetHeight / 2)) === Math.round(tooltip.offset().top) )
         target.tooltip('hide')
       })
 

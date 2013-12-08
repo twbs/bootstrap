@@ -150,10 +150,10 @@
       -ms-transform: rotate(@degrees); // IE9+
           transform: rotate(@degrees);
 }
-.scale(@ratio) {
-  -webkit-transform: scale(@ratio);
-      -ms-transform: scale(@ratio); // IE9+
-          transform: scale(@ratio);
+.scale(@ratio; @ratio-y...) {
+  -webkit-transform: scale(@ratio, @ratio-y);
+      -ms-transform: scale(@ratio, @ratio-y); // IE9+
+          transform: scale(@ratio, @ratio-y);
 }
 .translate(@x; @y) {
   -webkit-transform: translate(@x, @y);
@@ -414,25 +414,52 @@
 .table-row-variant(@state; @background) {
   // Exact selectors below required to override `.table-striped` and prevent
   // inheritance to nested tables.
-  .table {
-    > thead,
-    > tbody,
-    > tfoot {
-      > tr > .@{state},
-      > .@{state} > td,
-      > .@{state} > th {
-        background-color: @background;
-      }
+  .table > thead > tr,
+  .table > tbody > tr,
+  .table > tfoot > tr {
+    > td.@{state},
+    > th.@{state},
+    &.@{state} > td,
+    &.@{state} > th {
+      background-color: @background;
     }
   }
 
   // Hover states for `.table-hover`
   // Note: this is not available for cells or rows within `thead` or `tfoot`.
-  .table-hover > tbody {
-    > tr > .@{state}:hover,
-    > .@{state}:hover > td,
-    > .@{state}:hover > th {
+  .table-hover > tbody > tr {
+    > td.@{state}:hover,
+    > th.@{state}:hover,
+    &.@{state}:hover > td,
+    &.@{state}:hover > th {
       background-color: darken(@background, 5%);
+    }
+  }
+}
+
+// List Groups
+// -------------------------
+.list-group-item-variant(@state; @background; @color) {
+  .list-group-item-@{state} {
+    color: @color;
+    background-color: @background;
+  }
+  a.list-group-item-@{state} {
+    color: @color;
+
+    .list-group-item-heading { color: inherit; }
+
+    &:hover,
+    &:focus {
+      color: @color;
+      background-color: darken(@background, 5%);
+    }
+    &.active,
+    &.active:hover,
+    &.active:focus {
+      color: #fff;
+      background-color: @color;
+      border-color: @color;
     }
   }
 }
@@ -475,7 +502,7 @@
 
   .badge {
     color: @background;
-    background-color: #fff;
+    background-color: @color;
   }
 }
 
