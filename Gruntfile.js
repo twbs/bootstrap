@@ -58,6 +58,13 @@ module.exports = function (grunt) {
       }
     },
 
+    csslint: {
+      options: {
+        csslintrc: '.csslintrc'
+      },
+      src: ['dist/css/bootstrap.css', 'dist/css/bootstrap-theme.css']
+    },
+
     concat: {
       options: {
         banner: '<%= banner %><%= jqueryCheck %>',
@@ -300,6 +307,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-csslint');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-uglify');
