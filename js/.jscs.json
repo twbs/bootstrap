@@ -3,7 +3,7 @@
   "requireLeftStickedOperators": [","],
   "disallowLeftStickedOperators": ["?", "+", "-", "/", "*", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<="],
   "disallowRightStickedOperators": ["?", "/", "*", ":", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<="],
-  "disallowSpaceAfterPrefixUnaryOperators": ["++", "--", "+", "-", "~", "!"],
+  "disallowSpaceAfterPrefixUnaryOperators": ["++", "--", "+", "-", "~"],
   "disallowSpaceBeforePostfixUnaryOperators": ["++", "--"],
   "requireLineFeedAtFileEnd": true,
   "requireRightStickedOperators": ["!"],
