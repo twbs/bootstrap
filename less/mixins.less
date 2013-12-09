@@ -443,23 +443,24 @@
   .list-group-item-@{state} {
     color: @color;
     background-color: @background;
-  }
-  a.list-group-item-@{state} {
-    color: @color;
 
-    .list-group-item-heading { color: inherit; }
-
-    &:hover,
-    &:focus {
+    a& {
       color: @color;
-      background-color: darken(@background, 5%);
-    }
-    &.active,
-    &.active:hover,
-    &.active:focus {
-      color: #fff;
-      background-color: @color;
-      border-color: @color;
+
+      .list-group-item-heading { color: inherit; }
+
+      &:hover,
+      &:focus {
+        color: @color;
+        background-color: darken(@background, 5%);
+      }
+      &.active,
+      &.active:hover,
+      &.active:focus {
+        color: #fff;
+        background-color: @color;
+        border-color: @color;
+      }
     }
   }
 }
