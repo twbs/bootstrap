@@ -123,22 +123,7 @@ module.exports = function (grunt) {
 
     csscomb: {
       options: {
-        // sortOrder: '/.csscomb.json',
-          "always-semicolon": true,
-          "block-indent": true,
-          "colon-space": true,
-          "color-case": "lower",
-          "color-shorthand": true,
-          "combinator-space": true,
-          "element-case": "lower",
-          "eof-newline": true,
-          "leading-zero": false,
-          "remove-empty-rulesets": true,
-          "rule-indent": true,
-          "stick-brace": "\n",
-          "strip-spaces": true,
-          "unitless-zero": true,
-          "vendor-prefix-align": true
+        sortOrder: '/.csscomb.json',
       },
       files: {
         'dist/css/<%= pkg.name %>.sorted.css': ['dist/css/<%= pkg.name %>.css'],
