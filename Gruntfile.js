@@ -112,7 +112,8 @@ module.exports = function (grunt) {
       },
       minify: {
         options: {
-          compress: true
+          compress: true,
+          report: 'min'
         },
         files: {
           'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css',
@@ -124,13 +125,13 @@ module.exports = function (grunt) {
     csscomb: {
       sort: {
         options: {
-          sortOrder: '.csscomb.json',
+          sortOrder: '.csscomb.json'
         },
         files: {
-          'dist/css/<%= pkg.name %>.sorted.css': ['dist/css/<%= pkg.name %>.css'],
-          'dist/css/<%= pkg.name %>.min.sorted.css': ['dist/css/<%= pkg.name %>.min.css'],
-          'dist/css/<%= pkg.name %>-theme.sorted.css': ['dist/css/<%= pkg.name %>-theme.css'],
-          'dist/css/<%= pkg.name %>-theme.min.sorted.css': ['dist/css/<%= pkg.name %>-theme.min.css']
+          'dist/css/<%= pkg.name %>.css': ['dist/css/<%= pkg.name %>.css'],
+          'dist/css/<%= pkg.name %>.min.css': ['dist/css/<%= pkg.name %>.min.css'],
+          'dist/css/<%= pkg.name %>-theme.css': ['dist/css/<%= pkg.name %>-theme.css'],
+          'dist/css/<%= pkg.name %>-theme.min.css': ['dist/css/<%= pkg.name %>-theme.min.css']
         }
       }
     },
