@@ -82,6 +82,21 @@ module.exports = function (grunt) {
       }
     },
 
+    cssmin: {
+      compress: {
+        options: {
+          banner: '<%= banner %>',
+          keepSpecialComments: 0,
+          report: 'min',
+          selectorsMergeMode: 'ie8'
+        },
+        files: {
+          'dist/css/<%= pkg.name %>.min.css': '<%= recess.bootstrap.dest %>',
+          'dist/css/<%= pkg.name %>-theme.min.css': '<%= recess.theme.dest %>'
+        }
+      }
+    },
+
     uglify: {
       options: {
         banner: '<%= banner %>',
@@ -112,23 +127,9 @@ module.exports = function (grunt) {
         src: ['less/bootstrap.less'],
         dest: 'dist/css/<%= pkg.name %>.css'
       },
-      min: {
-        options: {
-          compress: true
-        },
-        src: ['less/bootstrap.less'],
-        dest: 'dist/css/<%= pkg.name %>.min.css'
-      },
       theme: {
         src: ['less/theme.less'],
         dest: 'dist/css/<%= pkg.name %>-theme.css'
-      },
-      theme_min: {
-        options: {
-          compress: true
-        },
-        src: ['less/theme.less'],
-        dest: 'dist/css/<%= pkg.name %>-theme.min.css'
       }
     },
 
@@ -300,6 +301,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -327,7 +329,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-js', ['concat', 'uglify']);
 
   // CSS distribution task.
-  grunt.registerTask('dist-css', ['recess']);
+  grunt.registerTask('dist-css', ['recess', 'cssmin']);
 
   // Fonts distribution task.
   grunt.registerTask('dist-fonts', ['copy']);
