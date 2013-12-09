@@ -28,7 +28,6 @@
     , "grunt-contrib-connect": "~0.5.0"
     , "grunt-contrib-copy": "~0.4.1"
     , "grunt-contrib-csslint": "~0.2.0"
-    , "grunt-contrib-cssmin": "~0.7.0"
     , "grunt-contrib-jshint": "~0.7.0"
     , "grunt-contrib-less": "~0.8.0"
     , "grunt-contrib-qunit": "~0.3.0"
