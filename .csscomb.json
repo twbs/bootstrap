@@ -11,6 +11,8 @@
     "leading-zero": false,
     "remove-empty-rulesets": true,
     "rule-indent": 2,
+    "stick-brace": true,
+    "strip-spaces": true,
     "unitless-zero": true,
     "vendor-prefix-align": true,
 
