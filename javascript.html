@@ -1334,14 +1334,23 @@ $('#my-alert').bind('closed.bs.alert', function () {
     <h4>Stateful</h4>
     <p>Add <code>data-loading-text="Loading..."</code> to use a loading state on a button.</p>
     <div class="bs-example" style="padding-bottom: 24px;">
-      <button type="button" id="fat-btn" data-loading-text="Loading..." class="btn btn-primary">
+      <button type="button" id="loading-example-btn" data-loading-text="Loading..." class="btn btn-primary">
         Loading state
       </button>
     </div><!-- /example -->
 {% highlight html %}
-<button type="button" data-loading-text="Loading..." class="btn btn-primary">
+<button type="button" id="loading-example-btn" data-loading-text="Loading..." class="btn btn-primary">
   Loading state
 </button>
+<script>
+  $('#loading-example-btn').click(function () {
+    var btn = $(this);
+    btn.button('loading');
+    $.ajax(...).always(function () {
+      btn.button('reset');
+    });
+  });
+</script>
 {% endhighlight %}
 
     <h4>Single toggle</h4>
@@ -1440,7 +1449,16 @@ $('.btn').button()
     <p>Sets button state to loading - disables button and swaps text to loading text. Loading text should be defined on the button element using the data attribute <code>data-loading-text</code>.
     </p>
 {% highlight html %}
-<button type="button" class="btn btn-primary" data-loading-text="loading stuff...">...</button>
+<button id="loading-example-btn" type="button" class="btn btn-primary" data-loading-text="loading stuff...">...</button>
+<script>
+  $('#loading-example-btn').click(function () {
+    var btn = $(this);
+    btn.button('loading');
+    $.ajax(...).always(function () {
+      btn.button('reset');
+    });
+  });
+</script>
 {% endhighlight %}
 
     <div class="bs-callout bs-callout-danger">
