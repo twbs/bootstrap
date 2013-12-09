@@ -75,21 +75,16 @@
     }
 
     &.in {
-      overflow-y: auto;
+      overflow-y: visible;
     }
 
-    // Account for first and last children spacing
-    .navbar-nav.navbar-left:first-child {
-      html:not([dir="rtl"]) & { margin-left: -@navbar-padding-horizontal; }
-      html[dir="rtl"] & { margin-right: -@navbar-padding-horizontal; }
-    }
-    .navbar-nav.navbar-right:last-child {
-      html:not([dir="rtl"]) & { margin-right: -@navbar-padding-horizontal; }
-      html[dir="rtl"] & { margin-left: -@navbar-padding-horizontal; }
-    }
-    .navbar-text:last-child {
-      html:not([dir="rtl"]) & { margin-right: 0; }
-      html[dir="rtl"] & { margin-left: 0; }
+    // Undo the collapse side padding for navbars with containers to ensure
+    // alignment of right-aligned contents.
+    .navbar-fixed-top &,
+    .navbar-static-top &,
+    .navbar-fixed-bottom & {
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 }
@@ -99,14 +94,17 @@
 //
 // When a container is present, change the behavior of the header and collapse.
 
-.container > .navbar-header,
-.container > .navbar-collapse {
-  margin-right: -@navbar-padding-horizontal;
-  margin-left:  -@navbar-padding-horizontal;
+.container,
+.container-fluid {
+  > .navbar-header,
+  > .navbar-collapse {
+    margin-right: -@navbar-padding-horizontal;
+    margin-left:  -@navbar-padding-horizontal;
 
-  @media (min-width: @grid-float-breakpoint) {
-    margin-right: 0;
-    margin-left:  0;
+    @media (min-width: @grid-float-breakpoint) {
+      margin-right: 0;
+      margin-left:  0;
+    }
   }
 }
 
@@ -166,7 +164,8 @@
   }
 
   @media (min-width: @grid-float-breakpoint) {
-    .navbar > .container & {
+    .navbar > .container &,
+    .navbar > .container-fluid & {
       html:not([dir="rtl"]) & { margin-left: -@navbar-padding-horizontal; }
       html[dir="rtl"] & { margin-right: -@navbar-padding-horizontal; }
     }
@@ -192,6 +191,7 @@
   padding: 9px 10px;
   .navbar-vertical-align(34px);
   background-color: transparent;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid transparent;
   border-radius: @border-radius-base;
 
@@ -226,7 +226,7 @@
     line-height: @line-height-computed;
   }
 
-  @media (max-width: @screen-xs-max) {
+  @media (max-width: @grid-float-breakpoint-max) {
     // Dropdowns get custom display when collapsed
     .open .dropdown-menu {
       position: static;
@@ -238,7 +238,8 @@
       box-shadow: none;
       > li > a,
       .dropdown-header {
-        padding: 5px 15px 5px 25px;
+        html:not([dir="rtl"]) & { padding: 5px 15px 5px 25px; }
+        html[dir="rtl"] & { padding: 5px 25px 5px 15px; }
       }
       > li > a {
         line-height: @line-height-computed;
@@ -260,12 +261,16 @@
       html:not([dir="rtl"]) & { float: left; }
       html[dir="rtl"] & { float: right; }
       > a {
-        padding-top: ((@navbar-height - @line-height-computed) / 2);
-        padding-bottom: ((@navbar-height - @line-height-computed) / 2);
+        padding-top:    @navbar-padding-vertical;
+        padding-bottom: @navbar-padding-vertical;
       }
     }
-  }
 
+    &.navbar-right:last-child {
+      html:not([dir="rtl"]) & { margin-right: -@navbar-padding-horizontal; }
+      html[dir="rtl"] & { margin-left: -@navbar-padding-horizontal; }
+    }
+  }
 }
 
 
@@ -299,7 +304,7 @@
   .form-inline();
 
   .form-group {
-    @media (max-width: @screen-xs-max) {
+    @media (max-width: @grid-float-breakpoint-max) {
       margin-bottom: 5px;
     }
   }
@@ -316,6 +321,12 @@
     padding-top: 0;
     padding-bottom: 0;
     .box-shadow(none);
+
+    // Outdent the form if last child to line up with content down the page
+    &.navbar-right:last-child {
+      html:not([dir="rtl"]) & { margin-right: -@navbar-padding-horizontal; }
+      html[dir="rtl"] & { margin-left: -@navbar-padding-horizontal; }
+    }
   }
 }
 
@@ -346,6 +357,13 @@
 
 .navbar-btn {
   .navbar-vertical-align(@input-height-base);
+
+  &.btn-sm {
+    .navbar-vertical-align(@input-height-small);
+  }
+  &.btn-xs {
+    .navbar-vertical-align(22);
+  }
 }
 
 
@@ -361,6 +379,12 @@
     html[dir="rtl"] & { float: right; }
     margin-left: @navbar-padding-horizontal;
     margin-right: @navbar-padding-horizontal;
+
+    // Outdent the form if last child to line up with content down the page
+    &.navbar-right:last-child {
+      html:not([dir="rtl"]) & { margin-right: -@navbar-padding-horizontal; }
+      html[dir="rtl"] & { margin-left: -@navbar-padding-horizontal; }
+    }
   }
 }
 
@@ -429,15 +453,8 @@
     border-color: @navbar-default-border;
   }
 
-  // Dropdown menu items and carets
+  // Dropdown menu items
   .navbar-nav {
-    // Caret should match text color on hover
-    > .dropdown > a:hover .caret,
-    > .dropdown > a:focus .caret {
-      border-top-color: @navbar-default-link-hover-color;
-      border-bottom-color: @navbar-default-link-hover-color;
-    }
-
     // Remove background color from open dropdown
     > .open > a {
       &,
@@ -445,19 +462,10 @@
       &:focus {
         background-color: @navbar-default-link-active-bg;
         color: @navbar-default-link-active-color;
-        .caret {
-          border-top-color: @navbar-default-link-active-color;
-          border-bottom-color: @navbar-default-link-active-color;
-        }
       }
     }
-    > .dropdown > a .caret {
-      border-top-color: @navbar-default-link-color;
-      border-bottom-color: @navbar-default-link-color;
-    }
 
-
-    @media (max-width: @screen-xs-max) {
+    @media (max-width: @grid-float-breakpoint-max) {
       // Dropdowns get custom display when collapsed
       .open .dropdown-menu {
         > li > a {
@@ -576,30 +584,15 @@
         color: @navbar-inverse-link-active-color;
       }
     }
-    > .dropdown > a:hover .caret {
-      border-top-color: @navbar-inverse-link-hover-color;
-      border-bottom-color: @navbar-inverse-link-hover-color;
-    }
-    > .dropdown > a .caret {
-      border-top-color: @navbar-inverse-link-color;
-      border-bottom-color: @navbar-inverse-link-color;
-    }
-    > .open > a {
-      &,
-      &:hover,
-      &:focus {
-        .caret {
-          border-top-color: @navbar-inverse-link-active-color;
-          border-bottom-color: @navbar-inverse-link-active-color;
-        }
-      }
-    }
 
-    @media (max-width: @screen-xs-max) {
+    @media (max-width: @grid-float-breakpoint-max) {
       // Dropdowns get custom display
       .open .dropdown-menu {
         > .dropdown-header {
           border-color: @navbar-inverse-border;
+        }
+        .divider {
+          background-color: @navbar-inverse-border;
         }
         > li > a {
           color: @navbar-inverse-link-color;

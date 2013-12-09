@@ -17,7 +17,7 @@ We only accept issues that are bug reports or feature requests. Bugs must be iso
 
 ## Pull requests
 
-- CSS changes must be done in `.less` files first, never just the compiled `.css` files
+- CSS changes must be done in `.less` files first, never just in the compiled `.css` files
 - If modifying the `.less` files, always recompile and commit the compiled files `bootstrap.css` and `bootstrap.min.css`
 - Try not to pollute your pull request with unintended changes--keep them simple and small
 - Try to share which browsers your code has been tested in before submitting a pull request
@@ -58,7 +58,7 @@ We only accept issues that are bug reports or feature requests. Bugs must be iso
 
 With v3.1, we're moving from the Apache 2 to the MIT license for the Bootstrap code (not the docs). We're in the process of collecting permissions from all Bootstrap contributors with code still part of the project to make this happen. For details, please see [#2054](https://github.com/twbs/bootstrap/issues/2054).
 
-By contributing your code, you agree to dual-license your contribution under the [Apache 2](https://github.com/twbs/bootstrap/blob/master/LICENSE) and [MIT](https://github.com/twbs/bootstrap/blob/master/MIT) licenses.
+By contributing your code, you agree to dual-license your contribution under the [Apache 2](https://github.com/twbs/bootstrap/blob/master/LICENSE) and [MIT](https://github.com/twbs/bootstrap/blob/master/LICENSE-MIT) licenses.
 
 
 

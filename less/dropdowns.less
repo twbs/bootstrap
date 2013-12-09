@@ -11,7 +11,7 @@
   html:not([dir="rtl"]) & { margin-left: 2px; }
   html[dir="rtl"] & { margin-right: 2px; }
   vertical-align: middle;
-  border-top:   @caret-width-base solid @dropdown-caret-color;
+  border-top:   @caret-width-base solid;
   border-right: @caret-width-base solid transparent;
   border-left:  @caret-width-base solid transparent;
 }
@@ -164,7 +164,7 @@
   // Reverse the caret
   .caret {
     border-top: 0;
-    border-bottom: @caret-width-base solid @dropdown-caret-color;
+    border-bottom: @caret-width-base solid;
     content: "";
   }
   // Different positioning for bottom up menu

@@ -56,7 +56,7 @@ base_url: "../"
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="buttons.less">
+            <input type="checkbox" checked value="buttons.less" data-dependents="button-groups.less">
             Buttons
           </label>
         </div>
@@ -436,7 +436,7 @@ base_url: "../"
     <div class="row">
       <div class="col-lg-6">
         <label>@headings-font-family</label>
-        <input type="text" class="form-control" placeholder="@font-family-base" data-var="@headings-font-family">
+        <input type="text" class="form-control" placeholder="inherit" data-var="@headings-font-family">
         <label>@headings-font-weight</label>
         <input type="text" class="form-control" placeholder="500" data-var="@headings-font-weight">
       </div>
@@ -1056,7 +1056,7 @@ base_url: "../"
         <p class="help-block">Hovered dropdown menu entry text color</p>
         <label>@dropdown-link-hover-bg</label>
         <input type="text" class="form-control" placeholder="#f5f5f5" data-var="@dropdown-link-hover-bg">
-        <p class="help-block">Hovered dropdown menu entry text color</p>
+        <p class="help-block">Hovered dropdown menu entry background color</p>
 
         <label>@dropdown-link-active-color</label>
         <input type="text" class="form-control" placeholder="@component-active-color" data-var="@dropdown-link-active-color">
