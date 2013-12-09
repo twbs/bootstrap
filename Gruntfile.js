@@ -58,6 +58,13 @@ module.exports = function (grunt) {
       }
     },
 
+    csslint: {
+      options: {
+        csslintrc: '.csslintrc'
+      },
+      src: ['dist/css/bootstrap.css', 'dist/css/bootstrap-theme.css']
+    },
+
     concat: {
       options: {
         banner: '<%= banner %><%= jqueryCheck %>',
@@ -103,32 +110,51 @@ module.exports = function (grunt) {
       }
     },
 
-    recess: {
-      options: {
-        compile: true,
-        banner: '<%= banner %>'
+    less: {
+      compile: {
+        files: {
+          'dist/css/<%= pkg.name %>.css': 'less/bootstrap.less',
+          'dist/css/<%= pkg.name %>-theme.css': 'less/theme.less'
+        }
       },
-      bootstrap: {
-        src: ['less/bootstrap.less'],
-        dest: 'dist/css/<%= pkg.name %>.css'
-      },
-      min: {
+      minify: {
         options: {
-          compress: true
+          cleancss: true,
+          report: 'min'
         },
-        src: ['less/bootstrap.less'],
-        dest: 'dist/css/<%= pkg.name %>.min.css'
-      },
-      theme: {
-        src: ['less/theme.less'],
-        dest: 'dist/css/<%= pkg.name %>-theme.css'
-      },
-      theme_min: {
+        files: {
+          'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css',
+          'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css'
+        }
+      }
+    },
+
+    usebanner: {
+      dist: {
         options: {
-          compress: true
+          position: 'top',
+          banner: '<%= banner %>'
         },
-        src: ['less/theme.less'],
-        dest: 'dist/css/<%= pkg.name %>-theme.min.css'
+        files: {
+          src: [
+            'dist/css/<%= pkg.name %>.css',
+            'dist/css/<%= pkg.name %>.min.css',
+            'dist/css/<%= pkg.name %>-theme.css',
+            'dist/css/<%= pkg.name %>-theme.min.css',
+          ]
+        }
+      }
+    },
+
+    csscomb: {
+      sort: {
+        options: {
+          sortOrder: '.csscomb.json'
+        },
+        files: {
+          'dist/css/<%= pkg.name %>.css': ['dist/css/<%= pkg.name %>.css'],
+          'dist/css/<%= pkg.name %>-theme.css': ['dist/css/<%= pkg.name %>-theme.css'],
+        }
       }
     },
 
@@ -182,9 +208,9 @@ module.exports = function (grunt) {
         files: '<%= jshint.test.src %>',
         tasks: ['jshint:test', 'qunit']
       },
-      recess: {
+      less: {
         files: 'less/*.less',
-        tasks: ['recess']
+        tasks: ['less']
       }
     },
 
@@ -296,18 +322,21 @@ module.exports = function (grunt) {
 
 
   // These plugins provide necessary tasks.
+  grunt.loadNpmTasks('grunt-banner');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-csslint');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-csscomb');
   grunt.loadNpmTasks('grunt-html-validation');
   grunt.loadNpmTasks('grunt-jekyll');
   grunt.loadNpmTasks('grunt-jscs-checker');
-  grunt.loadNpmTasks('grunt-recess');
   grunt.loadNpmTasks('grunt-saucelabs');
   grunt.loadNpmTasks('grunt-sed');
 
@@ -327,7 +356,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-js', ['concat', 'uglify']);
 
   // CSS distribution task.
-  grunt.registerTask('dist-css', ['recess']);
+  grunt.registerTask('dist-css', ['less', 'csscomb', 'usebanner']);
 
   // Fonts distribution task.
   grunt.registerTask('dist-fonts', ['copy']);

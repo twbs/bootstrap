@@ -15,7 +15,7 @@
   border: 1px solid transparent;
 
   // Prevent floats from breaking the navbar
-  .clearfix();
+  &:extend(.clearfix all);
 
   @media (min-width: @grid-float-breakpoint) {
     border-radius: @navbar-border-radius;
@@ -29,7 +29,7 @@
 // styling of responsive aspects.
 
 .navbar-header {
-  .clearfix();
+  &:extend(.clearfix all);
 
   @media (min-width: @grid-float-breakpoint) {
     float: left;
@@ -54,7 +54,7 @@
   padding-left:  @navbar-padding-horizontal;
   border-top: 1px solid transparent;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
-  .clearfix();
+  &:extend(.clearfix all);
   -webkit-overflow-scrolling: touch;
 
   &.in {
