@@ -1433,14 +1433,14 @@ $('.btn').button()
       <p>You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.</p>
     </div>
 {% highlight html %}
-<button type="button" class="btn" data-toggle="button">...</button>
+<button type="button" class="btn btn-primary" data-toggle="button">...</button>
 {% endhighlight %}
 
     <h4>$().button('loading')</h4>
     <p>Sets button state to loading - disables button and swaps text to loading text. Loading text should be defined on the button element using the data attribute <code>data-loading-text</code>.
     </p>
 {% highlight html %}
-<button type="button" class="btn" data-loading-text="loading stuff...">...</button>
+<button type="button" class="btn btn-primary" data-loading-text="loading stuff...">...</button>
 {% endhighlight %}
 
     <div class="bs-callout bs-callout-danger">
@@ -1454,7 +1454,7 @@ $('.btn').button()
     <h4>$().button(string)</h4>
     <p>Resets button state - swaps text to any data defined text state.</p>
 {% highlight html %}
-<button type="button" class="btn" data-complete-text="finished!" >...</button>
+<button type="button" class="btn btn-primary" data-complete-text="finished!" >...</button>
 <script>
   $('.btn').button('complete')
 </script>
