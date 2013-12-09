@@ -122,14 +122,16 @@ module.exports = function (grunt) {
     },
 
     csscomb: {
-      options: {
-        sortOrder: '/.csscomb.json',
-      },
-      files: {
-        'dist/css/<%= pkg.name %>.sorted.css': ['dist/css/<%= pkg.name %>.css'],
-        'dist/css/<%= pkg.name %>.min.sorted.css': ['dist/css/<%= pkg.name %>.min.css'],
-        'dist/css/<%= pkg.name %>-theme.sorted.css': ['dist/css/<%= pkg.name %>-theme.css'],
-        'dist/css/<%= pkg.name %>-theme.min.sorted.css': ['dist/css/<%= pkg.name %>-theme.min.css']
+      sort: {
+        options: {
+          sortOrder: '.csscomb.json',
+        },
+        files: {
+          'dist/css/<%= pkg.name %>.sorted.css': ['dist/css/<%= pkg.name %>.css'],
+          'dist/css/<%= pkg.name %>.min.sorted.css': ['dist/css/<%= pkg.name %>.min.css'],
+          'dist/css/<%= pkg.name %>-theme.sorted.css': ['dist/css/<%= pkg.name %>-theme.css'],
+          'dist/css/<%= pkg.name %>-theme.min.sorted.css': ['dist/css/<%= pkg.name %>-theme.min.css']
+        }
       }
     },
 
@@ -328,7 +330,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-html-validation');
   grunt.loadNpmTasks('grunt-jekyll');
   grunt.loadNpmTasks('grunt-jscs-checker');
-  // grunt.loadNpmTasks('grunt-recess');
   grunt.loadNpmTasks('grunt-saucelabs');
   grunt.loadNpmTasks('grunt-sed');
 
