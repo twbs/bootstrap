@@ -597,14 +597,14 @@
   margin-left: auto;
   padding-left:  (@grid-gutter-width / 2);
   padding-right: (@grid-gutter-width / 2);
-  .clearfix();
+  &:extend(.clearfix all);
 }
 
 // Creates a wrapper for a series of columns
 .make-row(@gutter: @grid-gutter-width) {
   margin-left:  (@gutter / -2);
   margin-right: (@gutter / -2);
-  .clearfix();
+  &:extend(.clearfix all);
 }
 
 // Generate the extra small columns
