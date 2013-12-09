@@ -194,16 +194,21 @@
   }
 }
 
+
 // Print utilities
+//
+// Media queries are placed on the inside to be mixin-friendly.
+
 .visible-print {
   .responsive-invisibility();
-}
 
-@media print {
-  .visible-print {
+  @media print {
     .responsive-visibility();
   }
-  .hidden-print {
+}
+
+.hidden-print {
+  @media print {
     .responsive-invisibility();
   }
 }

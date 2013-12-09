@@ -90,7 +90,7 @@
       .popover()
 
     // button state demo
-    $('#fat-btn')
+    $('#loading-example-btn')
       .click(function () {
         var btn = $(this)
         btn.button('loading')
