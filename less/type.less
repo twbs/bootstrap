@@ -202,7 +202,7 @@ dd {
     }
     dd {
       margin-left: @component-offset-horizontal;
-      .clearfix(); // Clear the floated `dt` if an empty `dd` is present
+      &:extend(.clearfix all); // Clear the floated `dt` if an empty `dd` is present
     }
   }
 }
