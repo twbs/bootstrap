@@ -125,9 +125,20 @@ module.exports = function (grunt) {
           'docs/assets/js/jszip.js',
           'docs/assets/js/uglify.js',
           'docs/assets/js/filesaver.js',
+          'docs/assets/js/raw-files.js',
           'docs/assets/js/customizer.js'
         ],
         dest: 'docs/assets/js/customize.min.js'
+      },
+      docsJs: {
+        options: {
+          report: 'min'
+        },
+        src: [
+          'docs/assets/js/holder.js',
+          'docs/assets/js/application.js'
+        ],
+        dest: 'docs/assets/js/docs.min.js'
       }
     },
 
