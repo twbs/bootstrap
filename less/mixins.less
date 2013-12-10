@@ -729,11 +729,11 @@
   // Common styles for all sizes of grid columns, widths 1-12
   .col(@index) when (@index = 1) { // initial
     @item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
-    .col(@index + 1, @item);
+    .col((@index + 1), @item);
   }
   .col(@index, @list) when (@index =< @grid-columns) { // general; "=<" isn't a typo
     @item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
-    .col(@index + 1, ~"@{list}, @{item}");
+    .col((@index + 1), ~"@{list}, @{item}");
   }
   .col(@index, @list) when (@index > @grid-columns) { // terminal
     @{list} {
@@ -751,11 +751,11 @@
 .make-grid-columns-float(@class) {
   .col(@index) when (@index = 1) { // initial
     @item: ~".col-@{class}-@{index}";
-    .col(@index + 1, @item);
+    .col((@index + 1), @item);
   }
   .col(@index, @list) when (@index =< @grid-columns) { // general
     @item: ~".col-@{class}-@{index}";
-    .col(@index + 1, ~"@{list}, @{item}");
+    .col((@index + 1), ~"@{list}, @{item}");
   }
   .col(@index, @list) when (@index > @grid-columns) { // terminal
     @{list} {
@@ -790,7 +790,7 @@
 .make-grid(@index, @class, @type) when (@index >= 0) {
   .calc-grid(@index, @class, @type);
   // next iteration
-  .make-grid(@index - 1, @class, @type);
+  .make-grid((@index - 1), @class, @type);
 }
 
 
