@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: collapse.js v3.0.2
+ * Bootstrap: collapse.js v3.0.3
  * http://getbootstrap.com/javascript/#collapse
  * ========================================================================
  * Copyright 2013 Twitter, Inc.
@@ -18,7 +18,7 @@
  * ======================================================================== */
 
 
-+function ($) { "use strict";
++function ($) { 'use strict';
 
   // COLLAPSE PUBLIC CLASS DEFINITION
   // ================================

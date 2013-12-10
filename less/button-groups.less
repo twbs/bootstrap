@@ -37,7 +37,7 @@
 
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
-  .clearfix();
+  &:extend(.clearfix all);
 
   .btn-group {
     float: left;
@@ -157,7 +157,7 @@
 
   // Clear floats so dropdown menus can be properly placed
   > .btn-group {
-    .clearfix();
+    &:extend(.clearfix all);
     > .btn {
       float: none;
     }
@@ -208,10 +208,14 @@
   width: 100%;
   table-layout: fixed;
   border-collapse: separate;
-  .btn {
+  > .btn,
+  > .btn-group {
     float: none;
     display: table-cell;
     width: 1%;
+  }
+  > .btn-group .btn {
+    width: 100%;
   }
 }
 
