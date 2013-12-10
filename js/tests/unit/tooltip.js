@@ -270,6 +270,22 @@ $(function () {
         ok(!$._data(tooltip[0], 'events').mouseover && !$._data(tooltip[0], 'events').mouseout, 'tooltip does not have any events')
       })
 
+      test('should detach tip on hide after enter', function() {
+          var div = $('<div><a href="#" rel="tooltip" title="Another tooltip"></a></div>')
+          var tooltip = div.find('[rel=tooltip]').tooltip()
+
+          var plugin = tooltip.data('bs.tooltip')
+          plugin.enter(plugin)
+          ok(div.find('.tooltip').length == 1, 'tip is attached on enter')
+
+          tooltip.tooltip('hide')
+          stop()
+          setTimeout(function () {
+              ok(div.find('.tooltip').length === 0, 'tip is detached on hide')
+              start()
+          }, 151)
+      })
+
       test('should show tooltip with delegate selector on click', function () {
         var div = $('<div><a href="#" rel="tooltip" title="Another tooltip"></a></div>')
         var tooltip = div.appendTo('#qunit-fixture')
