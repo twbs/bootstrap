@@ -3301,6 +3301,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .input-group-btn {
   position: relative;
+  font-size: 0;
   white-space: nowrap;
 }
 .input-group-btn:first-child > .btn {
@@ -3313,7 +3314,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   position: relative;
 }
 .input-group-btn > .btn + .btn {
-  margin-left: -4px;
+  margin-left: -1px;
 }
 .input-group-btn > .btn:hover,
 .input-group-btn > .btn:active {
