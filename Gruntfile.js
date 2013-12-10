@@ -112,6 +112,9 @@ module.exports = function (grunt) {
 
     less: {
       compile: {
+        options: {
+          strictMath: true
+        },
         files: {
           'dist/css/<%= pkg.name %>.css': 'less/bootstrap.less',
           'dist/css/<%= pkg.name %>-theme.css': 'less/theme.less'
