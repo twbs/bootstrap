@@ -6,7 +6,9 @@ module.exports = function (grunt) {
   // Force use of Unix newlines
   grunt.util.linefeed = '\n';
 
-  RegExp.quote = require('regexp-quote')
+  RegExp.quote = function (string) {
+    return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&')
+  }
   var btoa = require('btoa')
   // Project configuration.
   grunt.initConfig({
