@@ -325,23 +325,7 @@ module.exports = function (grunt) {
 
 
   // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-banner');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-csslint');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-csscomb');
-  grunt.loadNpmTasks('grunt-html-validation');
-  grunt.loadNpmTasks('grunt-jekyll');
-  grunt.loadNpmTasks('grunt-jscs-checker');
-  grunt.loadNpmTasks('grunt-saucelabs');
-  grunt.loadNpmTasks('grunt-sed');
+    require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
 
   // Docs HTML validation task
   grunt.registerTask('validate-html', ['jekyll', 'validation']);
