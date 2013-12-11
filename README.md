@@ -59,7 +59,7 @@ Bootstrap's documentation, included in this repo in the root directory, is built
 1. If necessary, [install Jekyll](http://jekyllrb.com/docs/installation) (requires v1.x).
   - **Windows users:** read [this unofficial guide](https://github.com/juthilo/run-jekyll-on-windows/) to get Jekyll up and running without problems.
 2. From the root `/bootstrap` directory, run `jekyll serve` in the command line.
-  - **Windows users:** Run `chcp 65001` first to change the command prompt's character encoding ([code page](http://en.wikipedia.org/wiki/Windows_code_page)) to UTF-8 so Jekyll runs without errors. Alternatively, you can do `SET LANG=en_EN.UTF-8`. In addition, ensure you have Python installed and added in your `PATH` or the build will fail due to our Pygments dependency.
+  - **Windows users:** For Ruby 2.0.0 run `chcp 65001` first to change the command prompt's character encoding ([code page](http://en.wikipedia.org/wiki/Windows_code_page)) to UTF-8 so Jekyll runs without errors. For Ruby 1.9.3 you can alternatively do `SET LANG=en_EN.UTF-8`. In addition, ensure you have Python installed and added in your `PATH` or the build will fail due to our Pygments dependency.
 3. Open <http://localhost:9001> in your browser, and voilà.
 
 Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com/docs/home/).
