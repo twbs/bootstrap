@@ -12,7 +12,7 @@
   html:not([dir="rtl"]) & { padding-left: 0; }
   html[dir="rtl"] & { padding-right: 0; }
   list-style: none;
-  .clearfix();
+  &:extend(.clearfix all);
 
   > li {
     position: relative;

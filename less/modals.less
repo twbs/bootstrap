@@ -99,7 +99,7 @@
   html:not([dir="rtl"]) & { text-align: right; } // right align buttons
   html[dir="rtl"] & { text-align: left; } // left align buttons
   border-top: 1px solid @modal-footer-border-color;
-  .clearfix(); // clear it in case folks use .pull-* classes on buttons
+  &:extend(.clearfix all); // clear it in case folks use .pull-* classes on buttons
 
   // Properly space out buttons
   .btn + .btn {

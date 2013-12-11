@@ -61,7 +61,7 @@ p {
 
 .lead {
   margin-bottom: @line-height-computed;
-  font-size: floor(@font-size-base * 1.15);
+  font-size: floor((@font-size-base * 1.15));
   font-weight: 200;
   line-height: 1.4;
 
@@ -214,7 +214,7 @@ dd {
     dd {
       html:not([dir="rtl"]) & { margin-left: @component-offset-horizontal; }
       html[dir="rtl"] & { margin-right: @component-offset-horizontal; }
-      .clearfix(); // Clear the floated `dt` if an empty `dd` is present
+      &:extend(.clearfix all); // Clear the floated `dt` if an empty `dd` is present
     }
   }
 }
