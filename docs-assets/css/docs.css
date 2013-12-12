@@ -624,14 +624,14 @@ h1[id] {
   border-color: #faebcc;
 }
 .bs-callout-warning h4 {
-  color: #c09853;
+  color: #8a6d3b;
 }
 .bs-callout-info {
   background-color: #f4f8fa;
   border-color: #bce8f1;
 }
 .bs-callout-info h4 {
-  color: #3a87ad;
+  color: #34789a;
 }
 
 
@@ -959,7 +959,6 @@ h1[id] {
  */
 
 .highlight {
-  display: none; /* hidden by default, until >480px */
   padding: 9px 14px;
   margin-bottom: 14px;
   background-color: #f7f7f9;
@@ -985,13 +984,6 @@ h1[id] {
   margin-right: 10px;
   text-align: right;
   color: #bebec5;
-}
-
-/* Show code snippets when we have the space */
-@media (min-width: 481px) {
-  .highlight {
-    display: block;
-  }
 }
 
 
@@ -1075,20 +1067,19 @@ h1[id] {
  */
 
 .bs-glyphicons {
-  padding-left: 0;
-  padding-bottom: 1px;
-  margin-bottom: 20px;
-  margin-left: -1px;
-  margin-right: -1px;
-  list-style: none;
+  margin: 0 -19px 20px -16px;
   overflow: hidden;
+}
+.bs-glyphicons-list {
+  padding-left: 0;
+  list-style: none;
 }
 .bs-glyphicons li {
   float: left;
   width: 25%;
   height: 115px;
   padding: 10px;
-  font-size: 12px;
+  font-size: 10px;
   line-height: 1.4;
   text-align: center;
   border: 1px solid #fff;
@@ -1102,6 +1093,7 @@ h1[id] {
 .bs-glyphicons .glyphicon-class {
   display: block;
   text-align: center;
+  word-wrap: break-word; /* Help out IE10+ with class names */
 }
 .bs-glyphicons li:hover {
   color: #fff;
@@ -1109,8 +1101,13 @@ h1[id] {
 }
 
 @media (min-width: 768px) {
+  .bs-glyphicons {
+    margin-left: 0;
+    margin-right: 0;
+  }
   .bs-glyphicons li {
     width: 12.5%;
+    font-size: 12px;
   }
 }
 

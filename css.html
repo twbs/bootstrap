@@ -54,7 +54,8 @@ base_url: "../"
     <p>For improved cross-browser rendering, we use <a href="http://necolas.github.io/normalize.css/" target="_blank">Normalize</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a>.</p>
 
     <h3 id="overview-container">Containers</h3>
-    <p>Easily center a page's contents by wrapping its contents in a <code>.container</code>. Containers set <code>max-width</code> at various media query breakpoints to match our grid system.</p>
+    <p>Easily center a page's contents by wrapping its contents in a <code>.container</code>. Containers set <code>width</code> at various media query breakpoints to match our grid system.</p>
+    <p>Note that, due to <code>padding</code> and fixed widths, containers are not nestable by default.</p>
 {% highlight html %}
 <div class="container">
   ...
@@ -75,7 +76,7 @@ base_url: "../"
     <h3 id="grid-intro">Introduction</h3>
     <p>Grid systems are used for creating page layouts through a series of rows and columns that house your content. Here's how the Bootstrap grid system works:</p>
     <ul>
-      <li>Rows must be placed within a <code>.container</code> for proper alignment and padding.</li>
+      <li>Rows must be placed within a <code>.container</code> (fixed-width) or <code>.container-fluid</code> (full-width) for proper alignment and padding.</li>
       <li>Use rows to create horizontal groups of columns.</li>
       <li>Content should be placed within columns, and only columns may be immediate children of rows.</li>
       <li>Predefined grid classes like <code>.row</code> and <code>.col-xs-4</code> are available for quickly making grid layouts. LESS mixins can also be used for more semantic layouts.</li>
@@ -144,7 +145,7 @@ base_url: "../"
             <td colspan="3">Collapsed to start, horizontal above breakpoints</td>
           </tr>
           <tr>
-            <th>Max container width</th>
+            <th>Container width</th>
             <td>None (auto)</td>
             <td>750px</td>
             <td>970px</td>
@@ -178,13 +179,11 @@ base_url: "../"
           </tr>
           <tr>
             <th>Offsets</th>
-            <td colspan="1" class="text-muted">N/A</td>
-            <td colspan="3">Yes</td>
+            <td colspan="4">Yes</td>
           </tr>
           <tr>
             <th>Column ordering</th>
-            <td class="text-muted">N/A</td>
-            <td colspan="3">Yes</td>
+            <td colspan="4">Yes</td>
           </tr>
         </tbody>
       </table>
@@ -249,6 +248,16 @@ base_url: "../"
 <div class="row">
   <div class="col-md-6">.col-md-6</div>
   <div class="col-md-6">.col-md-6</div>
+</div>
+{% endhighlight %}
+
+    <h3 id="grid-example-fluid">Example: Fluid container</h3>
+    <p>Turn any fixed-width grid layout into a full-width layout by changing your outermost <code>.container</code> to <code>.container-fluid</code>.</p>
+{% highlight html %}
+<div class="container-fluid">
+  <div class="row">
+    ...
+  </div>
 </div>
 {% endhighlight %}
 
@@ -871,7 +880,7 @@ base_url: "../"
     <p>Style and content changes for simple variations on a standard <code>&lt;blockquote&gt;</code>.</p>
 
     <h4>Naming a source</h4>
-    <p>Add <code>&lt;small&gt;</code> tag for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
+    <p>Add <code>&lt;small&gt;</code> tag or <code>.small</code> class for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
     <div class="bs-example">
       <blockquote>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -1048,7 +1057,7 @@ base_url: "../"
       <h1 id="code">Code</h1>
     </div>
 
-    <h2>Inline</h2>
+    <h2 id="code-inline">Inline</h2>
     <p>Wrap inline snippets of code with <code>&lt;code&gt;</code>.</p>
 <div class="bs-example">
   For example, <code>&lt;section&gt;</code> should be wrapped as inline.
@@ -1057,7 +1066,16 @@ base_url: "../"
 For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
-    <h2>Basic block</h2>
+    <h2 id="code-user-input">User input</h2>
+    <p>Use the <code>&lt;kbd&gt;</code> to indicate input that is typically entered via keyboard.</p>
+<div class="bs-example">
+  To switch directories, type <kbd>cd</kbd> followed the name of the directory.
+</div>
+{% highlight html %}
+  To switch directories, type <kbd>cd</kbd> followed the name of the directory.
+{% endhighlight %}
+
+    <h2 id="code-block">Basic block</h2>
     <p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to escape any angle brackets in the code for proper rendering.</p>
 <div class="bs-example">
   <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
@@ -1328,6 +1346,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             </td>
             <td>Indicates a dangerous or potentially negative action</td>
           </tr>
+          <tr>
+            <td>
+              <code>.info</code>
+            </td>
+            <td>Indicates a neutral informative change or action</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -1384,6 +1408,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             <td>Column content</td>
             <td>Column content</td>
           </tr>
+          <tr>
+            <td>8</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+          </tr>
+          <tr class="info">
+            <td>9</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+          </tr>
         </tbody>
       </table>
     </div><!-- /example -->
@@ -1393,6 +1429,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <tr class="success">...</tr>
 <tr class="warning">...</tr>
 <tr class="danger">...</tr>
+<tr class="info">...</tr>
 
 <!-- On cells (`td` or `th`) -->
 <tr>
@@ -1400,6 +1437,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <td class="success">...</td>
   <td class="warning">...</td>
   <td class="danger">...</td>
+  <td class="info">...</td>
 </tr>
 {% endhighlight %}
 
@@ -1567,7 +1605,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
     <h2 id="forms-inline">Inline form</h2>
-    <p>Add <code>.form-inline</code> for left-aligned and inline-block controls for a compact layout.</p>
+    <p>Add <code>.form-inline</code> to your <code>&lt;form&gt;</code> for left-aligned and inline-block controls. <strong>This only applies to forms within viewports that are at least 768px wide.</strong></p>
     <div class="bs-callout bs-callout-danger">
       <h4>Requires custom widths</h4>
       <p>Inputs, selects, and textareas are 100% wide by default in Bootstrap. To use the inline form, you'll have to set a width on the form controls used within.</p>

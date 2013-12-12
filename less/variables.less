@@ -45,20 +45,20 @@
 @font-family-base:        @font-family-sans-serif;
 
 @font-size-base:          14px;
-@font-size-large:         ceil(@font-size-base * 1.25); // ~18px
-@font-size-small:         ceil(@font-size-base * 0.85); // ~12px
+@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
+@font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
 
-@font-size-h1:            floor(@font-size-base * 2.6); // ~36px
-@font-size-h2:            floor(@font-size-base * 2.15); // ~30px
-@font-size-h3:            ceil(@font-size-base * 1.7); // ~24px
-@font-size-h4:            ceil(@font-size-base * 1.25); // ~18px
+@font-size-h1:            floor((@font-size-base * 2.6)); // ~36px
+@font-size-h2:            floor((@font-size-base * 2.15)); // ~30px
+@font-size-h3:            ceil((@font-size-base * 1.7)); // ~24px
+@font-size-h4:            ceil((@font-size-base * 1.25)); // ~18px
 @font-size-h5:            @font-size-base;
-@font-size-h6:            ceil(@font-size-base * 0.85); // ~12px
+@font-size-h6:            ceil((@font-size-base * 0.85)); // ~12px
 
 @line-height-base:        1.428571429; // 20/14
-@line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
+@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
 
-@headings-font-family:    @font-family-base;
+@headings-font-family:    inherit;
 @headings-font-weight:    500;
 @headings-line-height:    1.1;
 @headings-color:          inherit;
@@ -83,6 +83,9 @@
 
 @padding-small-vertical:         5px;
 @padding-small-horizontal:       10px;
+
+@padding-xs-vertical:            1px;
+@padding-xs-horizontal:          5px;
 
 @line-height-large:              1.33;
 @line-height-small:              1.5;
@@ -157,7 +160,7 @@
 @input-color-placeholder:        @gray-light;
 
 @input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
-@input-height-large:             (floor(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
+@input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
 @input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
 
 @legend-color:                   @gray-dark;
@@ -185,8 +188,6 @@
 @dropdown-link-disabled-color:   @gray-light;
 
 @dropdown-header-color:          @gray-light;
-
-@dropdown-caret-color:           #000;
 
 
 // COMPONENT VARIABLES
@@ -246,8 +247,13 @@
 @grid-columns:              12;
 // Padding, to be divided by two and applied to the left and right of all columns
 @grid-gutter-width:         30px;
-// Point at which the navbar stops collapsing
+
+// Navbar collapse
+
+// Point at which the navbar becomes uncollapsed
 @grid-float-breakpoint:     @screen-sm-min;
+// Point at which the navbar begins collapsing
+@grid-float-breakpoint-max: (@grid-float-breakpoint - 1);
 
 
 // Navbar
@@ -257,7 +263,7 @@
 @navbar-height:                    50px;
 @navbar-margin-bottom:             @line-height-computed;
 @navbar-border-radius:             @border-radius-base;
-@navbar-padding-horizontal:        floor(@grid-gutter-width / 2);
+@navbar-padding-horizontal:        floor((@grid-gutter-width / 2));
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 
 @navbar-default-color:             #777;
@@ -280,7 +286,7 @@
 
 // Navbar toggle
 @navbar-default-toggle-hover-bg:           #ddd;
-@navbar-default-toggle-icon-bar-bg:        #ccc;
+@navbar-default-toggle-icon-bar-bg:        #888;
 @navbar-default-toggle-border-color:       #ddd;
 
 
@@ -321,7 +327,6 @@
 @nav-disabled-link-hover-color:             @gray-light;
 
 @nav-open-link-hover-color:                 #fff;
-@nav-open-caret-border-color:               #fff;
 
 // Tabs
 @nav-tabs-border-color:                     #ddd;
@@ -369,25 +374,25 @@
 @jumbotron-color:                inherit;
 @jumbotron-bg:                   @gray-lighter;
 @jumbotron-heading-color:        inherit;
-@jumbotron-font-size:            ceil(@font-size-base * 1.5);
+@jumbotron-font-size:            ceil((@font-size-base * 1.5));
 
 
 // Form states and alerts
 // -------------------------
 
-@state-success-text:             #468847;
+@state-success-text:             #3c763d;
 @state-success-bg:               #dff0d8;
 @state-success-border:           darken(spin(@state-success-bg, -10), 5%);
 
-@state-info-text:                #3a87ad;
+@state-info-text:                #31708f;
 @state-info-bg:                  #d9edf7;
 @state-info-border:              darken(spin(@state-info-bg, -10), 7%);
 
-@state-warning-text:             #c09853;
+@state-warning-text:             #8a6d3b;
 @state-warning-bg:               #fcf8e3;
 @state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
 
-@state-danger-text:              #b94a48;
+@state-danger-text:              #a94442;
 @state-danger-bg:                #f2dede;
 @state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
 
@@ -563,10 +568,12 @@
 
 // Breadcrumbs
 // -------------------------
-@breadcrumb-bg:               #f5f5f5;
-@breadcrumb-color:            #ccc;
-@breadcrumb-active-color:     @gray-light;
-@breadcrumb-separator:        "/";
+@breadcrumb-padding-vertical:   8px;
+@breadcrumb-padding-horizontal: 15px;
+@breadcrumb-bg:                 #f5f5f5;
+@breadcrumb-color:              #ccc;
+@breadcrumb-active-color:       @gray-light;
+@breadcrumb-separator:          "/";
 
 
 // Carousel
@@ -596,6 +603,9 @@
 // ------------------------
 @code-color:                  #c7254e;
 @code-bg:                     #f9f2f4;
+
+@kbd-color:                   #fff;
+@kbd-bg:                      #333;
 
 @pre-bg:                      #f5f5f5;
 @pre-color:                   @gray-dark;

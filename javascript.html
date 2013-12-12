@@ -30,7 +30,7 @@ base_url: "../"
     <h3 id="js-data-attrs">Data attributes</h3>
     <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first-class API and should be your first consideration when using a plugin.</p>
 
-    <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the document namespaced with <code>data-api</code>. This looks like this:
+    <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the document namespaced with <code>data-api</code>. This looks like this:</p>
 {% highlight js %}
 $(document).off('.data-api')
 {% endhighlight %}
@@ -43,14 +43,14 @@ $(document).off('.alert.data-api')
     <h3 id="js-programmatic-api">Programmatic API</h3>
     <p>We also believe you should be able to use all Bootstrap plugins purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.</p>
 {% highlight js %}
-$(".btn.danger").button("toggle").addClass("fat")
+$('.btn.danger').button('toggle').addClass('fat')
 {% endhighlight %}
 
     <p>All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a plugin with default behavior):</p>
 {% highlight js %}
-$("#myModal").modal()                      // initialized with defaults
-$("#myModal").modal({ keyboard: false })   // initialized with no keyboard
-$("#myModal").modal('show')                // initializes and invokes show immediately</p>
+$('#myModal').modal()                      // initialized with defaults
+$('#myModal').modal({ keyboard: false })   // initialized with no keyboard
+$('#myModal').modal('show')                // initializes and invokes show immediately
 {% endhighlight %}
 
     <p>Each plugin also exposes its raw constructor on a <code>Constructor</code> property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.</p>
@@ -415,7 +415,7 @@ $('#myModal').on('hidden.bs.modal', function (e) {
       </nav> <!-- /navbar-example -->
     </div> <!-- /example -->
 
-    <h3>Within tabs</h3>
+    <h3>Within pills</h3>
     <div class="bs-example">
       <ul class="nav nav-pills">
         <li class="active"><a href="#">Regular link</a></li>
@@ -449,7 +449,7 @@ $('#myModal').on('hidden.bs.modal', function (e) {
             <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
           </ul>
         </li>
-      </ul> <!-- /tabs -->
+      </ul> <!-- /pills -->
     </div> <!-- /example -->
 
 
@@ -529,6 +529,7 @@ $('#myDropdown').on('show.bs.dropdown', function () {
 {% endhighlight %}
   </div>
 
+
   <!-- ScrollSpy
   ================================================== -->
   <div class="bs-docs-section">
@@ -588,7 +589,13 @@ $('#myDropdown').on('show.bs.dropdown', function () {
     <h3>Via data attributes</h3>
     <p>To easily add scrollspy behavior to your topbar navigation, add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the <code>&lt;body&gt;</code>). Then add the <code>data-target</code> attribute with the ID or class of the parent element of any Bootstrap <code>.nav</code> component.</p>
 {% highlight html %}
-<body data-spy="scroll" data-target="#navbar-example">
+<body data-spy="scroll" data-target=".navbar-example">
+  ...
+  <div class="navbar-example">
+    <ul class="nav nav-tabs">
+      ...
+    </ul>
+  </div>
   ...
 </body>
 {% endhighlight %}
@@ -596,7 +603,7 @@ $('#myDropdown').on('show.bs.dropdown', function () {
     <h3>Via JavaScript</h3>
     <p>Call the scrollspy via JavaScript:</p>
 {% highlight js %}
-$('body').scrollspy({ target: '#navbar-example' })
+$('body').scrollspy({ target: '.navbar-example' })
 {% endhighlight %}
 
     <div class="bs-callout bs-callout-danger">
@@ -1116,7 +1123,7 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
             <td>animation</td>
             <td>boolean</td>
             <td>true</td>
-            <td>apply a CSS fade transition to the tooltip</td>
+            <td>apply a CSS fade transition to the popover</td>
           </tr>
           <tr>
             <td>html</td>
@@ -1134,7 +1141,7 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
             <td>selector</td>
             <td>string</td>
             <td>false</td>
-            <td>if a selector is provided, tooltip objects will be delegated to the specified targets. in practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="http://jsfiddle.net/fScua/">an informative example</a>.</td>
+            <td>if a selector is provided, tooltip objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="http://jsfiddle.net/fScua/">an informative example</a>.</td>
           </tr>
           <tr>
             <td>trigger</td>
@@ -1327,14 +1334,23 @@ $('#my-alert').bind('closed.bs.alert', function () {
     <h4>Stateful</h4>
     <p>Add <code>data-loading-text="Loading..."</code> to use a loading state on a button.</p>
     <div class="bs-example" style="padding-bottom: 24px;">
-      <button type="button" id="fat-btn" data-loading-text="Loading..." class="btn btn-primary">
+      <button type="button" id="loading-example-btn" data-loading-text="Loading..." class="btn btn-primary">
         Loading state
       </button>
     </div><!-- /example -->
 {% highlight html %}
-<button type="button" data-loading-text="Loading..." class="btn btn-primary">
+<button type="button" id="loading-example-btn" data-loading-text="Loading..." class="btn btn-primary">
   Loading state
 </button>
+<script>
+  $('#loading-example-btn').click(function () {
+    var btn = $(this);
+    btn.button('loading');
+    $.ajax(...).always(function () {
+      btn.button('reset');
+    });
+  });
+</script>
 {% endhighlight %}
 
     <h4>Single toggle</h4>
@@ -1408,7 +1424,7 @@ $('#my-alert').bind('closed.bs.alert', function () {
     <h2 id="buttons-usage">Usage</h2>
     <p>Enable buttons via JavaScript:</p>
 {% highlight js %}
-$('.btn-group').button()
+$('.btn').button()
 {% endhighlight %}
 
     <h3>Markup</h3>
@@ -1426,14 +1442,23 @@ $('.btn-group').button()
       <p>You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.</p>
     </div>
 {% highlight html %}
-<button type="button" class="btn" data-toggle="button">...</button>
+<button type="button" class="btn btn-primary" data-toggle="button">...</button>
 {% endhighlight %}
 
     <h4>$().button('loading')</h4>
     <p>Sets button state to loading - disables button and swaps text to loading text. Loading text should be defined on the button element using the data attribute <code>data-loading-text</code>.
     </p>
 {% highlight html %}
-<button type="button" class="btn" data-loading-text="loading stuff...">...</button>
+<button id="loading-example-btn" type="button" class="btn btn-primary" data-loading-text="loading stuff...">...</button>
+<script>
+  $('#loading-example-btn').click(function () {
+    var btn = $(this);
+    btn.button('loading');
+    $.ajax(...).always(function () {
+      btn.button('reset');
+    });
+  });
+</script>
 {% endhighlight %}
 
     <div class="bs-callout bs-callout-danger">
@@ -1447,7 +1472,7 @@ $('.btn-group').button()
     <h4>$().button(string)</h4>
     <p>Resets button state - swaps text to any data defined text state.</p>
 {% highlight html %}
-<button type="button" class="btn" data-complete-text="finished!" >...</button>
+<button type="button" class="btn btn-primary" data-complete-text="finished!" >...</button>
 <script>
   $('.btn').button('complete')
 </script>
@@ -1593,7 +1618,7 @@ $('.btn-group').button()
     <h3>Via JavaScript</h3>
     <p>Enable manually with:</p>
 {% highlight js %}
-$(".collapse").collapse()
+$('.collapse').collapse()
 {% endhighlight %}
 
     <h3>Options</h3>
@@ -1926,21 +1951,26 @@ $('#myCarousel').on('slide.bs.carousel', function () {
     <hr class="bs-docs-separator">
 
     <h2 id="affix-usage">Usage</h2>
+    <p>Use the affix plugin via data attributes or manually with your own JavaScript. <strong>In both situations, you must provide CSS for the positioning of your content.</strong></p>
+
+    <h3>Positioning via CSS</h3>
+    <p>The affix plugin toggles between three classes, each representing a particular state: <code>.affix</code>, <code>.affix-top</code>, and <code>.affix-bottom</code>. You must provide the styles for these classes yourself (independent of this plugin) to handle the actual positions.</p>
+    <p>Here's how the affix plugin works:</p>
+    <ol>
+      <li>To start, the plugin adds <code>.affix-top</code> to indicate the element is in it's top-most position. At this point no CSS positioning is required.</li>
+      <li>Scrolling past the element you want affixed should trigger the actual affixing. This is where <code>.affix</code> replaces <code>.affix-top</code> and sets <code>position: fixed;</code> (provided by Bootstrap's code CSS).</li>
+      <li>If a bottom offset is defined, scrolling past that should replace <code>.affix</code> with <code>.affix-bottom</code>. Since offsets are optional, setting one requires you to set the appropriate CSS. In this case, add <code>position: absolute;</code> when necessary. The plugin uses the data attribute or JavaScript option to determine where to position the element from there.</li>
+    </ol>
+    <p>Follow the above steps to set your CSS for either of the usage options below.</p>
 
     <h3>Via data attributes</h3>
-    <p>To easily add affix behavior to any element, just add <code>data-spy="affix"</code> to the element you want to spy on. Then use offsets to define when to toggle the pinning of an element on and off.</p>
+    <p>To easily add affix behavior to any element, just add <code>data-spy="affix"</code> to the element you want to spy on. Use offsets to define when to toggle the pinning of an element.</p>
 
 {% highlight html %}
-<div data-spy="affix" data-offset-top="200">...</div>
+<div data-spy="affix" data-offset-top="60" data-offset-bottom="200">
+  ...
+</div>
 {% endhighlight %}
-
-    <div class="bs-callout bs-callout-warning">
-      <h4>Requires independent styling ;)</h4>
-      <p>
-        Affix toggles between three states/classes: <code>.affix</code>, <code>.affix-top</code>, and <code>.affix-bottom</code>. You must provide the styles for these classes yourself (independent of this plugin).
-        The <code>.affix-top</code> class should be in the regular flow of the document. The <code>.affix</code> class should be <code>position: fixed</code>. And <code>.affix-bottom</code> should be <code>position: absolute</code>. Note: <code>.affix-bottom</code> is special in that the plugin will place the element with JS relative to the <code>offset: { bottom: number }</code> option you've provided.
-      </p>
-    </div>
 
     <h3>Via JavaScript</h3>
     <p>Call the affix plugin via JavaScript:</p>
