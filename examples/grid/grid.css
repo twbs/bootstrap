@@ -26,9 +26,3 @@ hr {
   margin-top: 40px;
   margin-bottom: 40px;
 }
-
-.col-xs-flex:hover,
-.col-xs-flex:focus,
-.col-xs-flex:active {
-  background-color: #ff0000;
-}
