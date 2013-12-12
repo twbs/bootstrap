@@ -1,0 +1,55 @@
+.reply-box{
+  width:100%;
+  border:1px solid #ccc;
+  border-radius:3px;
+  &>ul{
+    margin:0;
+    padding:0;
+    list-style: none;
+    width:100%;
+    overflow:auto;
+    border-bottom:1px solid #ccc;
+    border-radius:3px 3px 0 0;
+    font-family:@font-family-base;
+    background-color:#fff;
+    &>li{
+      float:left;
+      padding:10px;
+      cursor:pointer;
+      font-size:11px;
+      border-right:1px solid #eee;
+      color:#999;
+
+      &:hover{
+        background-color:#eee;
+        color:#666;
+      }
+    }
+  }
+  &>textarea{
+    width:99.99%;
+    min-height:150px;
+    padding:10px;
+    font-size:@font-size-small;
+    font-family:@font-family-base;
+    border:0;
+    outline:0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    max-width:99.99%;
+    min-width:99.99%;
+    @media (min-width: @grid-float-breakpoint) {
+      font-size:@font-size-base;
+    }
+  }
+}
+
+.reply-box-footer{
+  overflow:auto;
+  margin-top:10px;
+  font-family:@font-family-base;
+  font-size:@font-size-small;
+  input[type=submit]{
+    float:right;
+  }
+}

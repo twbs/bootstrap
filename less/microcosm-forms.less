@@ -1,0 +1,485 @@
+.form-container-inner{
+  border:1px solid #ccc;
+  border-width:1px 0;
+  padding-bottom:20px;
+  &>label{
+    margin-bottom:10px;
+  }
+  @media (min-width: @screen-md-min) {
+    border-radius:3px 3px 0 0;
+    border-width:1px;
+    padding:20px 15px 40px;
+
+    .reply-box textarea{
+      min-height:250px;
+    }
+  }
+}
+
+
+.form-datepicker{
+  label{
+    display:block;
+    margin-bottom:0;
+
+    button{
+      display:block;
+      width:100%;
+    }
+    @media (min-width: @grid-float-breakpoint){
+
+      button{
+        display:inline-block;
+        width:auto;
+      }
+    }
+  }
+  select{
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #CCC;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 700;
+    width:33.33%;
+    background-color:#fff;
+    &:first-child{
+      margin-bottom:20px;
+    }
+  }
+  @media (min-width: @grid-float-breakpoint){
+
+    label{
+      display:inline-block;
+    }
+    select{
+      width:auto;
+      &:first-child{
+        margin-bottom:0;
+      }
+    }
+  }
+}
+// event form
+
+.form-create-event{
+  .event-location-textarea{
+    min-width:99.99%;
+    max-width:99.99%;
+    margin-bottom:10px;
+    min-height:80px;
+  }
+  #map-canvas{
+    width:100%;
+    height:250px;
+  }
+
+  #event-start-calendar,
+  #event-end-calendar{
+    padding: 10px;
+    border: dashed;
+    border-radius: 5px;
+    border-color: #EEE;
+    cursor:pointer;
+  }
+  .event-start-calendar-label{
+    color: #FFA500;
+    font-weight: 700;
+    font-size: @font-size-small;
+  }
+  // override event date styles
+  .item-event-date{
+    font-weight:700;
+    font-size:18px;
+  }
+  .item-event-date-digit{
+      float: left;
+      font-size: 48px;
+      margin-right: 10px;
+      margin-top:-12px;
+  }
+  .item-event-date-day{
+    margin-right:10px;
+    display:block;
+    margin-right:0;
+    line-height: 22px;
+    min-width:220px;
+    strong{
+      display:block;
+    }
+  }
+  .item-event-date-time{
+    font-size:@font-size-base;
+    font-weight:700;
+    color:lighten(@brand-primary,0.5);
+    display:block;
+    clear:both;
+  }
+
+}
+
+.form-footer{
+  background-color:#fbfbfb;
+  border:1px solid #ccc;
+  border-width:0 1px 1px;
+  border-radius:0 0 3px 3px;
+  .form-footer-buttons{
+    input{
+      display:block;
+      width:100%;
+      margin:0 auto 10px;
+      &:last-child{
+        margin-bottom:0;
+      }
+    }
+  }
+  @media (min-width: @screen-md-min){
+    .form-footer-buttons{
+      float:right;
+      margin-right:15px;
+      input{
+        float:right;
+        margin:0 0 0 10px;
+        width:auto;
+      }
+    }
+  }
+}
+
+
+ul.list-toggles{
+  padding:0;
+  margin:0;
+  list-style: none;
+  li{
+    font-size:@font-size-small;
+    padding-bottom:10px;
+    overflow:auto;
+    &:last-child{
+      padding-bottom:0;
+    }
+    .list-toggles-marker{
+      display:none;
+      width:5px;
+      height:5px;
+      background-color:#ccc;
+      border-radius:3px;
+      vertical-align: middle;
+      margin-right:15px;
+    }
+    .list-toggles-text{
+      width:60%;
+      display:block;
+      float:left;
+    }
+
+    button{
+      &.btn{
+        padding:0;
+      }
+      label{
+        margin:0;
+        cursor:pointer;
+        padding:10px 15px;
+      }
+      input[type=checkbox],
+      input[type=radio]{
+        display:none;
+      }
+    }
+    @media (min-width: @screen-md-min){
+      .list-toggles-marker{
+        display:inline-block;
+      }
+      .list-toggles-text{
+        width:auto;
+        display:inline;
+        float:none;
+      }
+      button{
+        label{
+          padding:0 10px;
+        }
+      }
+
+    }
+  }
+}
+
+
+.form-widget-empty-state{
+  margin:0 15px;
+  font-size:@font-size-small;
+  border:2px dashed #eee;
+  padding:10px;
+  border-radius:3px;
+  color:#999;
+  cursor:pointer;
+  &:hover{
+    border-color:#ccc;
+  }
+}
+
+.form-widget-list{
+  width:100%;
+  padding:0 15px;
+  ul{
+    padding:0;
+    margin:0;
+    list-style:none;
+  }
+  lh{
+    font-size:@font-size-small;
+    color:#999;
+    padding-bottom:10px;
+    display:block;
+  }
+  li{
+    font-size:@font-size-small;
+    padding:5px 0;
+    &.divider{
+      padding-top:20px;
+    }
+    &:hover{
+      background-color:@brand-highlight;
+    }
+  }
+  span.list-bullet{
+    margin-right:15px;
+    margin-bottom: 10px;
+    float: left;
+  }
+  span.remove{
+    cursor:pointer;
+    float:right;
+    margin-right:10px;
+  }
+  .form-list-form-toggle{
+    display: inline-block;
+    font-size: @font-size-small;
+    text-decoration: underline;
+    padding:10px 0;
+    margin:10px 0 0;
+    cursor: pointer;
+  }
+  @media (min-width: @screen-md-min){
+    width:60%;
+    span.list-bullet{
+      display:inline-block;
+    }
+    span.remove{
+      margin-right:0;
+    }
+  }
+
+}
+
+
+.form-widget-inlineform{
+  background-color: @brand-highlight;
+  padding:15px;
+  display:none;
+  border: 1px solid darken(@brand-highlight,15);
+  border-width: 1px 0;
+  margin-top:10px;
+  span{
+    font-size:@font-size-small;
+    display:none;
+    margin:0 5px;
+  }
+  label{
+    display:block;
+  }
+
+  button{
+    &.btn{
+      width:100%;
+    }
+
+    label{
+      padding:0 10px;
+      margin:0;
+      cursor:pointer;
+      input[type=checkbox],
+      input[type=radio]{
+        display:none;
+      }
+    }
+  }
+  .btn-group{
+    display:block;
+    overflow:auto;
+    margin-bottom:10px;
+    button{
+      &.btn{
+        padding:0;
+        width:50%;
+      }
+      label{
+        padding:7px;
+      }
+    }
+  }
+  select{
+    -webkit-appearance: none;
+    &.first{
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      border-bottom:0;
+    }
+    &.last{
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      margin-bottom:10px;
+    }
+  }
+  input[type=text]{
+    margin-bottom:10px;
+  }
+
+
+  @media (min-width: @screen-md-min){
+    padding:10px 15px;
+    span{
+      display:block;
+      float:left;
+      padding-top: 5px;
+    }
+    .btn-group{
+      display:block;
+      float:left;
+      vertical-align: middle;
+      margin-bottom:0;
+      button{
+        &.btn{
+          width:auto;
+        }
+        label{
+          padding:5px 8px 4px;
+
+        }
+      }
+    }
+    input[type=text]{
+      display: inline;
+      width: 120px;
+      margin: 0 0 0 5px;
+      height: 30px;
+    }
+    select{
+      display: block;
+      float:left;
+      width: 150px;
+      padding: 5px 10px;
+      height: auto;
+      &.first, &.last{
+        border-radius:3px;
+        border-bottom:1px solid #999;
+        margin:0;
+      }
+    }
+
+    button.submit{
+      display:inline;
+      width:45px;
+      float:right;
+    }
+
+  }
+}
+
+
+.form-file-upload{
+  overflow:auto;
+  label{
+    width:100px;
+    height:100px;
+    border:2px dashed #ccc;
+    border-radius:3px;
+    float:left;
+    line-height:100px;
+    text-align: center;
+    color:#999;
+    cursor:pointer;
+    margin-right:10px;
+    &.active{
+      background-size:cover;
+      background-repeat: no-repeat;
+      span{
+        display:none;
+      }
+    }
+  }
+  input{
+    display:none;
+  }
+  .form-file-upload-text{
+    font-size:@font-size-small;
+    color:#999;
+
+    h3{
+      font-size:@font-size-small;
+      margin:0 0 10px;
+      color:#333;
+    }
+  }
+}
+
+
+.form-table-checkbox{
+  table{
+    width:100%;
+  }
+  tr.highlight{
+    background-color: @brand-highlight;
+    td:first-child{
+      padding-left:10px;
+    }
+  }
+  th,td{
+    font-size:@font-size-small;
+    padding:5px 0;
+    &:nth-child(2){
+      text-align: center;
+      min-width:50px;
+      label{
+        padding:10px;
+        margin-bottom:0;
+      }
+    }
+    &:nth-child(3){
+      text-align: center;
+      min-width:50px;
+      label{
+        padding:10px;
+        margin-bottom:0;
+      }
+    }
+    span{
+      display:none;
+      width:5px;
+      height:5px;
+      border-radius:3px;
+      background-color:#ccc;
+      float:left;
+      margin-right:20px;
+      vertical-align: middle;
+      margin-top:5px;
+    }
+    p{
+      float:left;
+      display:inline-block;
+    }
+  }
+  th{
+    padding-bottom:15px;
+  }
+  @media (min-width: @screen-md-min){
+    th,td{
+      span{
+        display:inline-block;
+      }
+    }
+
+  }
+}

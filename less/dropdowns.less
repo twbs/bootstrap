@@ -10,9 +10,13 @@
   height: 0;
   margin-left: 2px;
   vertical-align: middle;
-  border-top:   @caret-width-base solid;
+  border-top:   @caret-width-base solid @dropdown-caret-color;
   border-right: @caret-width-base solid transparent;
   border-left:  @caret-width-base solid transparent;
+  // Firefox fix for https://github.com/twbs/bootstrap/issues/9538. Once fixed,
+  // we can just straight up remove this.
+  border-bottom: 0 dotted;
+  content: "";
 }
 
 // The dropdown wrapper (div)
@@ -142,7 +146,7 @@
   right: 0;
   bottom: 0;
   top: 0;
-  z-index: (@zindex-dropdown - 10);
+  z-index: @zindex-dropdown - 10;
 }
 
 // Right aligned dropdowns
@@ -160,8 +164,10 @@
 .navbar-fixed-bottom .dropdown {
   // Reverse the caret
   .caret {
-    border-top: 0;
-    border-bottom: @caret-width-base solid;
+    // Firefox fix for https://github.com/twbs/bootstrap/issues/9538. Once this
+    // gets fixed, restore `border-top: 0;`.
+    border-top: 0 dotted;
+    border-bottom: 4px solid @dropdown-caret-color;
     content: "";
   }
   // Different positioning for bottom up menu

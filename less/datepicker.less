@@ -1,0 +1,139 @@
+/*!
+ * Datepicker for Bootstrap
+ *
+ * Copyright 2012 Stefan Petre
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ */
+.border-radius (@radius) {
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.datepicker {
+	top: 0;
+	left: 0;
+	padding: 4px;
+	margin-top: 1px;
+	.border-radius(4px);
+	&:before {
+		content: '';
+		display: inline-block;
+		border-left:   7px solid transparent;
+		border-right:  7px solid transparent;
+		border-bottom: 7px solid #ccc;
+		border-bottom-color: rgba(0,0,0,.2);
+		position: absolute;
+		top: -7px;
+		left: 6px;
+	}
+	&:after {
+		content: '';
+		display: inline-block;
+		border-left:   6px solid transparent;
+		border-right:  6px solid transparent;
+		border-bottom: 6px solid #fff;
+		position: absolute;
+		top: -6px;
+		left: 7px;
+	}
+	>div {
+		display: none;
+	}
+	table{
+		width: 100%;
+		margin: 0;
+	}
+	td,
+	th{
+		text-align: center;
+		width: 20px;
+		height: 20px;
+		.border-radius(4px);
+	}
+	td {
+		&.day:hover {
+			background: @gray-lighter;
+			cursor: pointer;
+		}
+		&.day.disabled {
+			color: @gray-lighter;
+		}
+		&.old,
+		&.new {
+			color: @gray-light;
+		}
+		&.active,
+		&.active:hover {
+			#gradient > .vertical(@start-color: @btn-primary-bg; @end-color: spin(@btn-primary-bg, 20));
+
+			color: #fff;
+			text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+		}
+		span {
+			display: block;
+			width: 47px;
+			height: 54px;
+			line-height: 54px;
+			float: left;
+			margin: 2px;
+			cursor: pointer;
+			.border-radius(4px);
+			&:hover {
+				background: @gray-lighter;
+			}
+			&.active {
+				#gradient > .vertical(@start-color: @btn-primary-bg; @end-color: spin(@btn-primary-bg, 20));
+
+				color: #fff;
+				text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+			}
+			&.old {
+				color: @gray-light;
+			}
+		}
+	}
+
+	th {
+		&.switch {
+			width: 145px;
+		}
+		&.next,
+		&.prev {
+			font-size: @font-size-base * 1.5;
+		}
+	}
+
+	thead tr:first-child th {
+		cursor: pointer;
+		&:hover{
+			background: @gray-lighter;
+		}
+	}
+	/*.dow {
+		border-top: 1px solid #ddd !important;
+	}*/
+
+	&.dropdown-menu{
+		margin-top:20px;
+		width:90%;
+		@media (min-width: @grid-float-breakpoint){
+
+			width:300px;
+		}
+	}
+
+}
+.input-append,
+.input-prepend {
+	&.date {
+		.add-on i {
+			display: block;
+			cursor: pointer;
+			width: 16px;
+			height: 16px;
+		}
+	}
+}

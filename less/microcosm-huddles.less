@@ -1,0 +1,19 @@
+.huddle-meta{
+  .list-people{
+    float:left;
+  }
+  .btn-group-responsive-toggle{
+    float:right;
+  }
+  .btn-group-responsive{
+    display:none;
+    clear:both;
+    padding-top:10px;
+    @media (min-width: @grid-float-breakpoint){
+      clear:none;
+      float:right;
+      display:block !important;
+      padding-top:0;
+    }
+  }
+}

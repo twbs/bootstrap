@@ -4,8 +4,10 @@
 .pagination {
   display: inline-block;
   padding-left: 0;
-  margin: @line-height-computed 0;
+  margin-bottom:0;
+  // margin: @line-height-computed 0;
   border-radius: @border-radius-base;
+
 
   > li {
     display: inline; // Remove list-style and block-level defaults
@@ -19,6 +21,8 @@
       background-color: @pagination-bg;
       border: 1px solid @pagination-border;
       margin-left: -1px;
+      color:#838383;
+      font-weight:700;
     }
     &:first-child {
       > a,
@@ -68,6 +72,10 @@
       border-color: @pagination-border;
       cursor: not-allowed;
     }
+  }
+
+  @media (min-width: @grid-float-breakpoint){
+
   }
 }
 

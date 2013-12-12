@@ -6,34 +6,41 @@
 // Base styles
 // --------------------------------------------------
 
+// Core styles
 .btn {
   display: inline-block;
+  padding: @padding-base-vertical @padding-base-horizontal;
   margin-bottom: 0; // For input.btn
+  font-size: @font-size-small;
+  font-family: @font-family-base;
   font-weight: @btn-font-weight;
+  line-height: @line-height-base;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid transparent;
+  border-radius: 3px;
   white-space: nowrap;
-  .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base);
   .user-select(none);
+  outline:none;
 
   &:focus {
     .tab-focus();
   }
 
   &:hover,
-  &:focus {
+  &:focus{
     color: @btn-default-color;
     text-decoration: none;
   }
 
   &:active,
   &.active {
-    outline: 0;
-    background-image: none;
-    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+    outline: none;
+    // background-image: none;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3) inset;
+    color: darken(@btn-default-color,25%)
   }
 
   &.disabled,
@@ -44,6 +51,7 @@
     .opacity(.65);
     .box-shadow(none);
   }
+
 }
 
 
@@ -52,13 +60,27 @@
 
 .btn-default {
   .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
+  &:active{
+    color:darken(@btn-default-color,25%);
+  }
 }
 .btn-primary {
-  .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
-}
-// Success appears as green
-.btn-success {
-  .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
+  // .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+  background-image: -moz-linear-gradient( 90deg, rgb(243,243,243) 0%, rgb(255,255,255) 100%);
+  background-image: -webkit-linear-gradient( 90deg, rgb(243,243,243) 0%, rgb(255,255,255) 100%);
+  background-image: -ms-linear-gradient( 90deg, rgb(243,243,243) 0%, rgb(255,255,255) 100%);
+  border:1px solid @btn-default-border;
+  color:#333;
+  &:hover{
+    background-image: -moz-linear-gradient( 90deg, rgb(250,250,250) 0%, rgb(255,255,255) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(250,250,250) 0%, rgb(255,255,255) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(250,250,250) 0%, rgb(255,255,255) 100%);
+  }
+  &:active{
+    background-image: -moz-linear-gradient( 90deg, rgb(248,248,248) 0%, rgb(236,236,236) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(248,248,248) 0%, rgb(236,236,236) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(248,248,248) 0%, rgb(236,236,236) 100%);
+  }
 }
 // Warning appears as orange
 .btn-warning {
@@ -67,6 +89,30 @@
 // Danger and error appear as red
 .btn-danger {
   .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
+}
+// Success appears as green
+.btn-success {
+  // .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
+  background-color: @btn-success-bg;
+  background-image: -moz-linear-gradient( 90deg, rgb(216,235,159) 0%, rgb(241,255,199) 100%);
+  background-image: -webkit-linear-gradient( 90deg, rgb(216,235,159) 0%, rgb(241,255,199) 100%);
+  background-image: -ms-linear-gradient( 90deg, rgb(216,235,159) 0%, rgb(241,255,199) 100%);
+  border: 1px solid @btn-success-border;
+  color: @btn-success-color;
+
+  &:hover,
+  &:focus{
+    color:lighten(@btn-success-color,10%);
+    background-image: -moz-linear-gradient( 90deg, rgb(216,235,159) 0%, rgb(241,255,199) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(216,235,159) 0%, rgb(241,255,199) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(216,235,159) 0%, rgb(241,255,199) 100%);
+  }
+  &:active{
+    color:darken(@btn-success-color,10%);
+    background-image: -moz-linear-gradient( 90deg, rgb(216,235,159) 0%, rgb(241,255,199) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(216,235,159) 0%, rgb(241,255,199) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(216,235,159) 0%, rgb(241,255,199) 100%);
+  }
 }
 // Info appears as blue-green
 .btn-info {
@@ -119,14 +165,15 @@
 
 .btn-lg {
   // line-height: ensure even-numbered height of button next to large input
-  .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
+  .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-base; @line-height-large; 3px);
 }
-.btn-sm {
+.btn-sm,
+.btn-xs {
   // line-height: ensure proper height of button next to small input
-  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; 3px);
 }
 .btn-xs {
-  .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+  padding: 1px 5px;
 }
 
 

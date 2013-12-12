@@ -10,6 +10,14 @@
 // Kill the scroll on the body
 .modal-open {
   overflow: hidden;
+
+
+  // Account for hiding of scrollbar
+  body&,
+  .navbar-fixed-top,
+  .navbar-fixed-bottom {
+    margin-right: 15px
+  }
 }
 
 // Container that the modal scrolls within
@@ -34,9 +42,10 @@
 
 // Shell div to position the modal with bottom padding
 .modal-dialog {
-  position: relative;
+  margin-left: auto;
+  margin-right: auto;
   width: auto;
-  margin: 10px;
+  padding: 10px;
   z-index: (@zindex-modal-background + 10);
 }
 
@@ -98,7 +107,7 @@
   padding: (@modal-inner-padding - 1) @modal-inner-padding @modal-inner-padding;
   text-align: right; // right align buttons
   border-top: 1px solid @modal-footer-border-color;
-  &:extend(.clearfix all); // clear it in case folks use .pull-* classes on buttons
+  .clearfix(); // clear it in case folks use .pull-* classes on buttons
 
   // Properly space out buttons
   .btn + .btn {
@@ -120,7 +129,8 @@
 
   .modal-dialog {
     width: 600px;
-    margin: 30px auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
   .modal-content {
     .box-shadow(0 5px 15px rgba(0,0,0,.5));

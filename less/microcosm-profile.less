@@ -1,0 +1,131 @@
+.profile-header{
+  margin-top:20px;
+  overflow: auto;
+  padding:15px;
+  border:1px solid #ccc;
+  border-width:0 0 1px;
+  @media (min-width: @screen-md-min){
+    border-width:1px;
+    border-bottom:1px solid #eee;
+    border-radius:3px 3px 0 0;
+    &+.profile-section{
+      margin-top:20px;
+    }
+  }
+
+}
+
+.profile-header-avatar{
+  width:  @avatar-size-large;
+  height: @avatar-size-large;
+  margin: 0 auto 10px;
+  display: block;
+  @media (min-width: 641px){
+    display:inline-block;
+    margin-bottom:0;
+    margin-right:10px;
+    vertical-align: bottom;
+  }
+}
+.profile-header-text{
+  font-size:@font-size-small;
+  text-align: center;
+  margin-bottom:10px;
+  color:#999;
+  h1{
+    margin:0;
+    color:#333;
+  }
+  @media (min-width: 641px){
+    margin-bottom:0;
+    display:inline-block;
+    text-align: left;
+  }
+}
+.content .content-body .profile-header-text h1{
+  margin:0 0 5px;
+}
+.profile-header-stats{
+  width:250px;
+  margin:0 auto 10px;
+  li{
+    text-align: center;
+    padding:0;
+    width:33.33%;
+    span{
+      display:block;
+      font-size:@font-size-base;
+    }
+  }
+  @media (min-width: 641px){
+    display:block;
+    width:auto;
+    margin:0;
+    float: right;
+    margin-top: 21px;
+    li{
+      text-align: right;
+      width:auto;
+      padding-left:20px;
+    }
+  }
+}
+
+.profile-description{
+  padding:10px 15px;
+  border:1px solid #ccc;
+  border-width:0 0 1px;
+  margin-bottom:0;
+  @media (min-width: @screen-md-min){
+    padding:20px 10px 10px;
+    border-width:0 1px 1px;
+    border-radius:0 0 3px 3px;
+    margin-bottom:20px;
+  }
+}
+
+.profile-section{
+
+  &>h2{
+    font-size:@font-size-small;
+    padding: 10px 15px;
+    color:#666;
+    border:1px solid #ccc;
+    border-bottom:0;
+    border-width:0;
+    background-color:#fbfbfb;
+    margin:0;
+  }
+  @media (min-width:@screen-md-min){
+    margin-bottom:20px;
+    &>.list-items > .list-collection > .list-collection-row:first-child{
+      border-radius:0;
+    }
+    h2{
+      border-radius:3px 3px 0 0;
+      border-width:1px;
+    }
+  }
+
+}
+
+
+.recent-comment-title{
+  font-size:@font-size-small;
+  color:#999;
+  strong{
+    color:#333;
+    font-size:@font-size-medium;
+    font-family:@font-family-display;
+  }
+}
+.recent-comment-body{
+  font-family:@font-family-serif;
+  font-size:@font-size-medium;
+  margin:20px 0;
+}
+.recent-comment-footer{
+  font-size:@font-size-small;
+  color:#999;
+}
+
