@@ -223,8 +223,8 @@
     }
 
     if (/bottom|top/.test(placement)) {
-      var delta = 0
-      var windowWidth =  window.innerWidth
+      var delta       = 0
+      var windowWidth = window.innerWidth
 
       if (offset.left < 0) {
         delta       = offset.left * -2
@@ -232,7 +232,7 @@
       } 
 
       if (offset.left + actualWidth > windowWidth) {
-        delta   = (offset.left + actualWidth - windowWidth) * -2
+        delta       = (offset.left + actualWidth - windowWidth) * -2
         offset.left = windowWidth - actualWidth
       }
 
