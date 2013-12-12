@@ -79,6 +79,29 @@ body {
   border-color: #fff;
 }
 
+/* Bootstrap "B" icon */
+.bs-booticon {
+  display: block;
+  font-weight: 500;
+  color: #fff;
+  background-color: #563d7c;
+  border-radius: 15%;
+  cursor: default;
+  text-align: center;
+}
+.bs-booticon-sm {
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  line-height: 28px;
+}
+.bs-booticon-lg {
+  width: 144px;
+  height: 144px;
+  font-size: 108px;
+  line-height: 140px;
+}
+
 
 /*
  * Main navigation
@@ -88,7 +111,8 @@ body {
 
 .bs-docs-nav {
   background-color: #fff;
-  border-color: #eee;
+  border-color: #e5e5e5;
+  box-shadow: 0 0 5px rgba(0,0,0,.05);
 }
 .bs-docs-nav .navbar-brand,
 .bs-docs-nav .navbar-nav > li > a {
@@ -197,7 +221,6 @@ body {
  */
 
 .bs-docs-home {
-  padding-top: 120px;
   background-color: #f9f9f9;
 }
 
@@ -206,15 +229,20 @@ body {
   position: relative;
   padding: 30px 15px;
   text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.bs-masthead .bs-booticon {
+  margin: 0 auto 30px;
 }
 .bs-masthead h1 {
-  display: none;
+  font-size: 60px;
+  font-weight: 300;
   line-height: 1;
-  color: #563d7c;
 }
 .bs-masthead .lead {
-  font-size: 20px;
   margin-bottom: 30px;
+  font-size: 20px;
+  color: #555;
 }
 .bs-masthead .btn-outline {
   width: 100%;
@@ -226,47 +254,6 @@ body {
   margin-top: 10px;
 }
 
-.bs-booticon {
-  display: block;
-  margin: -40px auto 30px;
-  width: 144px;
-  height: 144px;
-  font-size: 108px;
-  font-weight: 500;
-  color: #563d7c;
-  line-height: 140px;
-  border: 1px solid #563d7c;
-  border-radius: 15%;
-  cursor: default;
-}
-
-/* Links to project-level content like the repo, Expo, etc */
-.bs-masthead-links {
-  margin-top: 20px;
-  margin-bottom: 40px;
-  padding-left: 0;
-  list-style: none;
-  text-align: center;
-}
-.bs-masthead-links li {
-  display: inline-block;
-  color: #777;
-  padding: 0 10px;
-}
-
-.bs-masthead .popover {
-  max-width: 260px;
-  margin-top: -15px;
-  border-radius: 9px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.25);
-}
-.bs-masthead .popover-content {
-  padding: 15px;
-  font-size: 16px;
-  font-weight: 300;
-  text-align: center;
-}
-
 @media (min-width: 480px) {
   .bs-masthead .btn-outline {
     width: auto;
@@ -274,6 +261,10 @@ body {
 }
 
 @media (min-width: 768px) {
+  .bs-masthead {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
   .bs-masthead .lead {
     font-size: 24px;
   }
@@ -287,10 +278,6 @@ body {
   }
   .bs-masthead .btn-outline {
     padding: 18px 24px;
-  }
-  .bs-masthead-links {
-    padding: 0;
-    text-align: left;
   }
 }
 
@@ -399,7 +386,7 @@ body {
     border-width: 1px !important;
   }
   .bs-docs-home .carbonad {
-    margin: 0 auto 40px !important;
+    margin: 0 auto !important;
   }
 }
 
@@ -408,7 +395,7 @@ body {
     margin: 0 !important;
   }
   .bs-docs-home .carbonad {
-    margin: 0 auto 40px !important;
+    margin: 0 auto !important;
   }
 }
 
@@ -425,17 +412,56 @@ body {
   }
 }
 
-@media (min-width: 768px) {
-  .bs-docs-home .bs-social {
-    margin-bottom: 10px;
-  }
-  .bs-docs-home .bs-masthead-links {
-    margin-top: 10px;
-  }
-  .bs-docs-home .bs-social,
-  .bs-docs-home .bs-masthead-links {
-    text-align: center;
-  }
+
+/*
+ * Homepage featurettes
+ *
+ * Reasons to use Bootstrap, entries from the Expo, and more.
+ */
+
+.bs-featurette {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #555;
+  text-align: center;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+.bs-featurette + .bs-footer {
+  margin-top: 0;
+  border-top: 0;
+}
+
+.bs-featurette-title {
+  font-size: 40px;
+  font-weight: normal;
+  color: #333;
+  margin-bottom: 5px;
+}
+.bs-featurette .lead {
+  margin-left:  auto;
+  margin-right: auto;
+  max-width: 80%;
+}
+
+.bs-featurette h3,
+.bs-featurette h4 {
+  color: #333;
+  font-weight: normal;
+}
+.bs-featurette h3 {
+  margin-bottom: 5px;
+}
+/*.bs-featurette h4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+*/
+.half-rule {
+  max-width: 100px;
+  margin: 40px auto;
 }
 
 
@@ -450,49 +476,68 @@ body {
 .bs-sidebar.affix {
   position: static;
 }
+@media (min-width: 768px) {
+  .bs-sidebar {
+    padding-left: 10px;
+  }
+}
 
 /* First level of nav */
 .bs-sidenav {
   margin-top: 30px;
   margin-bottom: 30px;
-  padding-top:    10px;
-  padding-bottom: 10px;
-  text-shadow: 0 1px 0 #fff;
-  background-color: #f7f5fa;
-  border-radius: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-left: 1px solid #eee;
 }
 
 /* All levels of nav */
 .bs-sidebar .nav > li > a {
   display: block;
-  color: #716b7a;
+  font-weight: 500;
+  color: #999;
   padding: 5px 20px;
+  margin-left: -1px;
 }
 .bs-sidebar .nav > li > a:hover,
 .bs-sidebar .nav > li > a:focus {
+  padding-left: 19px;
+  color: #563d7c;
   text-decoration: none;
-  background-color: #e5e3e9;
-  border-right: 1px solid #dbd8e0;
+  background-color: transparent;
+  border-left: 1px solid #563d7c;
 }
 .bs-sidebar .nav > .active > a,
 .bs-sidebar .nav > .active:hover > a,
 .bs-sidebar .nav > .active:focus > a {
+  padding-left: 18px;
   font-weight: bold;
   color: #563d7c;
   background-color: transparent;
-  border-right: 1px solid #563d7c;
+  border-left: 2px solid #563d7c;
 }
 
 /* Nav: second level (shown on .active) */
 .bs-sidebar .nav .nav {
   display: none; /* Hide by default, but at >768px, show it */
-  margin-bottom: 8px;
+  padding-bottom: 10px;
 }
 .bs-sidebar .nav .nav > li > a {
   padding-top:    3px;
   padding-bottom: 3px;
   padding-left: 30px;
   font-size: 90%;
+  font-weight: normal;
+}
+.bs-sidebar .nav .nav > li > a:hover,
+.bs-sidebar .nav .nav > li > a:focus {
+  padding-left: 29px;
+}
+.bs-sidebar .nav .nav > .active > a,
+.bs-sidebar .nav .nav > .active:hover > a,
+.bs-sidebar .nav .nav > .active:focus > a {
+  font-weight: 500;
+  padding-left: 28px;
 }
 
 /* Show and affix the side nav when space allows it */
