@@ -198,12 +198,10 @@
       this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
         .appendTo(document.body)
 
-      this.$element.on('click.dismiss.modal', $.proxy(function (e) {
+      this.$element.on('click.dismiss.modal', function(e) {
         if (e.target !== e.currentTarget) return
-        this.options.backdrop == 'static'
-          ? this.$element[0].focus.call(this.$element[0])
-          : this.hide.call(this)
-      }, this))
+        if (that.options.backdrop !== 'static') that.hide()
+      })
 
       if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
 
