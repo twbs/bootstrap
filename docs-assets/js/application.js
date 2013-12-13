@@ -86,7 +86,7 @@
     })
 
     // popover demo
-    $("[data-toggle=popover]").popover()
+    $('[data-toggle=popover]').popover()
 
     // button state demo
     $('#loading-example-btn')
