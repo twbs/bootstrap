@@ -143,9 +143,9 @@
   Modal.prototype.escape = function () {
     var that = this
     if (this.isShown && this.options.keyboard) {
-      this.$element.on('keyup.dismiss.bs.modal', $.proxy(function (e) {
-        e.which == 27 && this.hide()
-      }, this))
+      this.$element.on('keyup.dismiss.bs.modal', function (e) {
+        e.which == 27 && that.hide()
+      })
     } else if (!this.isShown) {
       this.$element.off('keyup.dismiss.bs.modal')
     }
