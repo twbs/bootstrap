@@ -147,17 +147,17 @@
 // Transformations
 .rotate(@degrees) {
   -webkit-transform: rotate(@degrees);
-      -ms-transform: rotate(@degrees); // IE9+
+      -ms-transform: rotate(@degrees); // IE9 only
           transform: rotate(@degrees);
 }
 .scale(@ratio; @ratio-y...) {
   -webkit-transform: scale(@ratio, @ratio-y);
-      -ms-transform: scale(@ratio, @ratio-y); // IE9+
+      -ms-transform: scale(@ratio, @ratio-y); // IE9 only
           transform: scale(@ratio, @ratio-y);
 }
 .translate(@x; @y) {
   -webkit-transform: translate(@x, @y);
-      -ms-transform: translate(@x, @y); // IE9+
+      -ms-transform: translate(@x, @y); // IE9 only
           transform: translate(@x, @y);
 }
 .skew(@x; @y) {
@@ -172,12 +172,12 @@
 
 .rotateX(@degrees) {
   -webkit-transform: rotateX(@degrees);
-      -ms-transform: rotateX(@degrees); // IE9+
+      -ms-transform: rotateX(@degrees); // IE9 only
           transform: rotateX(@degrees);
 }
 .rotateY(@degrees) {
   -webkit-transform: rotateY(@degrees);
-      -ms-transform: rotateY(@degrees); // IE9+
+      -ms-transform: rotateY(@degrees); // IE9 only
           transform: rotateY(@degrees);
 }
 .perspective(@perspective) {
@@ -193,7 +193,7 @@
 .transform-origin(@origin) {
   -webkit-transform-origin: @origin;
      -moz-transform-origin: @origin;
-      -ms-transform-origin: @origin;
+      -ms-transform-origin: @origin; // IE9 only
           transform-origin: @origin;
 }
 
