@@ -130,16 +130,18 @@
   }
 
   Modal.prototype.enforceFocus = function () {
+    var that = this
     $(document)
       .off('focusin.bs.modal') // guard against infinite focus loop
-      .on('focusin.bs.modal', $.proxy(function (e) {
-        if (this.$element[0] !== e.target && !this.$element.has(e.target).length) {
-          this.$element.focus()
+      .on('focusin.bs.modal', function (e) {
+        if (that.$element[0] !== e.target && !$.contains(that.$element[0], e.target)) {
+          that.$element.focus()
         }
-      }, this))
+      })
   }
 
   Modal.prototype.escape = function () {
+    var that = this
     if (this.isShown && this.options.keyboard) {
       this.$element.on('keyup.dismiss.bs.modal', $.proxy(function (e) {
         e.which == 27 && this.hide()
