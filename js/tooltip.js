@@ -217,7 +217,7 @@
     var actualWidth  = $tip[0].offsetWidth
     var actualHeight = $tip[0].offsetHeight
 
-    if (placement == 'top' && actualHeight != height)
+    if (placement == 'top' && actualHeight != height) {
       replace = true
       offset.top = offset.top + height - actualHeight
     }
