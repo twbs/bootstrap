@@ -238,13 +238,13 @@ module.exports = function (grunt) {
             // See https://saucelabs.com/docs/platforms/webdriver
             {
               browserName: 'safari',
-              version: '6',
-              platform: 'OS X 10.8'
+              version: '7',
+              platform: 'OS X 10.9'
             },
             {
               browserName: 'chrome',
-              version: '28',
-              platform: 'OS X 10.6'
+              version: '31',
+              platform: 'OS X 10.9'
             },
             /* FIXME: currently fails 1 tooltip test
             {
