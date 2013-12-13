@@ -861,6 +861,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
     this.$element  = $(element)
     this.$backdrop =
     this.isShown   = null
+    this.modalParent = null
 
     if (this.options.remote) this.$element.load(this.options.remote)
   }
@@ -894,6 +895,20 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
       if (!that.$element.parent().length) {
         that.$element.appendTo(document.body) // don't move modals dom position
+      }
+
+      if (that.findModalParent()) {
+        // put parentModal behind the backdrop
+        that.modalParent.$element.css('z-index', 0)
+
+        that.modalParent.$element.off('keyup.dismiss.bs.modal')
+        $(document).off('focusin.bs.modal')
+
+        that.modalParent.$element.on('hidden.bs.modal.submodal', function(e) {
+          if (e.target === that.modalParent.$element[0]) {
+            that.modalParent = null
+          }
+        })
       }
 
       that.$element.show()
@@ -948,20 +963,22 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
   }
 
   Modal.prototype.enforceFocus = function () {
+    var that = this
     $(document)
       .off('focusin.bs.modal') // guard against infinite focus loop
-      .on('focusin.bs.modal', $.proxy(function (e) {
-        if (this.$element[0] !== e.target && !this.$element.has(e.target).length) {
-          this.$element.focus()
+      .on('focusin.bs.modal', function (e) {
+        if (that.$element[0] !== e.target && !$.contains(that.$element[0], e.target)) {
+          that.$element.focus()
         }
-      }, this))
+      })
   }
 
   Modal.prototype.escape = function () {
+    var that = this
     if (this.isShown && this.options.keyboard) {
-      this.$element.on('keyup.dismiss.bs.modal', $.proxy(function (e) {
-        e.which == 27 && this.hide()
-      }, this))
+      this.$element.on('keyup.dismiss.bs.modal', function (e) {
+        e.which == 27 && that.hide()
+      })
     } else if (!this.isShown) {
       this.$element.off('keyup.dismiss.bs.modal')
     }
@@ -971,7 +988,15 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
     var that = this
     this.$element.hide()
     this.backdrop(function () {
-      that.removeBackdrop()
+      if (that.modalParent) {
+        that.modalParent.$element.css('z-index', '')
+        that.modalParent.$element.off('hidden.bs.modal.submodal')
+        that.modalParent.escape()
+        that.modalParent.enforceFocus()
+        that.modalParent.$element.focus()
+        that.modalParent = null
+      }
+
       that.$element.trigger('hidden.bs.modal')
     })
   }
@@ -979,24 +1004,37 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
   Modal.prototype.removeBackdrop = function () {
     this.$backdrop && this.$backdrop.remove()
     this.$backdrop = null
+    $(document.body).removeClass('modal-open')
   }
 
   Modal.prototype.backdrop = function (callback) {
     var that    = this
     var animate = this.$element.hasClass('fade') ? 'fade' : ''
+    var count   = 0;
 
     if (this.isShown && this.options.backdrop) {
+      var $inBackdrops = $('.modal-backdrop.in');
+      if ($inBackdrops.length) {
+        //skip adding new backdrop, reuse the existing
+        this.$backdrop = $inBackdrops.first()
+        count = this.$backdrop.data('bs.modal.refcount') || 0
+        this.$backdrop.data('bs.modal.refcount', ++count)
+
+        callback && callback()
+        return
+      }
+
       var doAnimate = $.support.transition && animate
+
+      $(document.body).addClass('modal-open')
 
       this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
         .appendTo(document.body)
 
-      this.$element.on('click.dismiss.modal', $.proxy(function (e) {
+      this.$element.on('click.dismiss.modal', function(e) {
         if (e.target !== e.currentTarget) return
-        this.options.backdrop == 'static'
-          ? this.$element[0].focus.call(this.$element[0])
-          : this.hide.call(this)
-      }, this))
+        if (that.options.backdrop !== 'static') that.hide()
+      })
 
       if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
 
@@ -1011,17 +1049,52 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
         callback()
 
     } else if (!this.isShown && this.$backdrop) {
+      count = this.$backdrop.data('bs.modal.refcount')
+      if (count) {
+        this.$backdrop.data('bs.modal.refcount', --count)
+        callback && callback()
+        return
+      }
+
       this.$backdrop.removeClass('in')
 
-      $.support.transition && this.$element.hasClass('fade') ?
+      if ($.support.transition && this.$element.hasClass('fade')) {
         this.$backdrop
-          .one($.support.transition.end, callback)
-          .emulateTransitionEnd(150) :
-        callback()
+          .one($.support.transition.end, function() {
+            that.removeBackdrop()
+            callback && callback()
+          })
+          .emulateTransitionEnd(150)
+      } else {
+        this.removeBackdrop()
+        callback && callback()
+      }
 
     } else if (callback) {
       callback()
     }
+  }
+
+  /**
+   * Try to find the modal dialog, that was shown before this one.
+   * updates the this.modalParent property.
+   *
+   * @return {boolean}
+   *         false: if it has no parent
+   *         true:  parent was found
+   */
+  Modal.prototype.findModalParent = function() {
+    var that = this
+    $('.modal.in').each(function() {
+      var $elem = $(this)
+      var data = $elem.data('bs.modal')
+      if (data && data.isShown) {
+        if (!that.modalParent || $elem.css('z-index') > that.modalParent.$element.css('z-index')) {
+          that.modalParent = data
+        }
+      }
+    })
+    return this.modalParent ? true : false
   }
 
 
@@ -1071,10 +1144,6 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
         $this.is(':visible') && $this.focus()
       })
   })
-
-  $(document)
-    .on('show.bs.modal',  '.modal', function () { $(document.body).addClass('modal-open') })
-    .on('hidden.bs.modal', '.modal', function () { $(document.body).removeClass('modal-open') })
 
 }(jQuery);
 
