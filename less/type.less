@@ -61,7 +61,7 @@ p {
 
 .lead {
   margin-bottom: @line-height-computed;
-  font-size: floor(@font-size-base * 1.15);
+  font-size: floor((@font-size-base * 1.15));
   font-weight: 200;
   line-height: 1.4;
 
@@ -120,6 +120,7 @@ cite    { font-style: normal; }
 .text-left           { text-align: left; }
 .text-right          { text-align: right; }
 .text-center         { text-align: center; }
+.text-justify        { text-align: justify; }
 
 
 // Page header
@@ -201,7 +202,7 @@ dd {
     }
     dd {
       margin-left: @component-offset-horizontal;
-      .clearfix(); // Clear the floated `dt` if an empty `dd` is present
+      &:extend(.clearfix all); // Clear the floated `dt` if an empty `dd` is present
     }
   }
 }
