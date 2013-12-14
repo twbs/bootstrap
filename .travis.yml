@@ -2,13 +2,13 @@ language: node_js
 node_js:
   - 0.10
 before_install:
-  - sudo pip install --use-mirrors -r ./test-infra/requirements.txt
+  - time sudo pip install --use-mirrors -r ./test-infra/requirements.txt
 install:
-  - gem install jekyll
-  - npm install -g grunt-cli
-  - ./test-infra/node_modules_cache.py download || npm install
+  - time gem install jekyll
+  - time npm install -g grunt-cli
+  - time ./test-infra/node_modules_cache.py download || time npm install
 after_script:
-  - ./test-infra/node_modules_cache.py upload
+  - time ./test-infra/node_modules_cache.py upload
 env:
   global:
   - SAUCE_USERNAME: bootstrap
