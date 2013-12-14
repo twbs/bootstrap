@@ -3618,6 +3618,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-brand:focus {
   text-decoration: none;
 }
+.navbar-brand > .glyphicon {
+  float: left;
+  margin-top: -2px;
+  margin-right: 5px;
+}
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {
