@@ -2,37 +2,6 @@
 // Button groups
 // --------------------------------------------------
 
-// Button carets
-//
-// Match the button text color to the arrow/caret for indicating dropdown-ness.
-
-.caret {
-  .btn-default & {
-    border-top-color: @btn-default-color;
-  }
-  .btn-primary &,
-  .btn-success &,
-  .btn-warning &,
-  .btn-danger &,
-  .btn-info & {
-    border-top-color: #fff;
-  }
-}
-.dropup {
-  & .btn-default .caret {
-    border-bottom-color: @btn-default-color;
-  }
-  .btn-primary,
-  .btn-success,
-  .btn-warning,
-  .btn-danger,
-  .btn-info {
-   .caret {
-      border-bottom-color: #fff;
-    }
-  }
-}
-
 // Make the div behave like a button
 .btn-group,
 .btn-group-vertical {
@@ -68,7 +37,7 @@
 
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
-  .clearfix();
+  &:extend(.clearfix all);
 
   .btn-group {
     float: left;
@@ -150,6 +119,11 @@
 // Remove the gradient and set the same inset shadow as the :active state
 .btn-group.open .dropdown-toggle {
   .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+
+  // Show no shadow for `.btn-link` since it has no other button styles.
+  &.btn-link {
+    .box-shadow(none);
+  }
 }
 
 
@@ -173,7 +147,8 @@
 
 .btn-group-vertical {
   > .btn,
-  > .btn-group {
+  > .btn-group,
+  > .btn-group > .btn {
     display: block;
     float: none;
     width: 100%;
@@ -182,7 +157,7 @@
 
   // Clear floats so dropdown menus can be properly placed
   > .btn-group {
-    .clearfix();
+    &:extend(.clearfix all);
     > .btn {
       float: none;
     }
@@ -233,10 +208,14 @@
   width: 100%;
   table-layout: fixed;
   border-collapse: separate;
-  .btn {
+  > .btn,
+  > .btn-group {
     float: none;
     display: table-cell;
     width: 1%;
+  }
+  > .btn-group .btn {
+    width: 100%;
   }
 }
 

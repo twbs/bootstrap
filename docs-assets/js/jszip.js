@@ -16,7 +16,9 @@ Usage:
    base64zip = zip.generate();
 
 **/
-"use strict";
+// We use strict, but it should not be placed outside of a function because
+// the environment is shared inside the browser.
+// "use strict";
 
 /**
  * Representation a of zip file in js
@@ -58,8 +60,62 @@ JSZip.defaults = {
    compression: null
 };
 
+/*
+ * List features that require a modern browser, and if the current browser support them.
+ */
+JSZip.support = {
+   // contains true if JSZip can read/generate ArrayBuffer, false otherwise.
+   arraybuffer : (function(){
+      return typeof ArrayBuffer !== "undefined" && typeof Uint8Array !== "undefined";
+   })(),
+   // contains true if JSZip can read/generate nodejs Buffer, false otherwise.
+   nodebuffer : (function(){
+      return typeof Buffer !== "undefined";
+   })(),
+   // contains true if JSZip can read/generate Uint8Array, false otherwise.
+   uint8array : (function(){
+      return typeof Uint8Array !== "undefined";
+   })(),
+   // contains true if JSZip can read/generate Blob, false otherwise.
+   blob : (function(){
+      // the spec started with BlobBuilder then replaced it with a construtor for Blob.
+      // Result : we have browsers that :
+      // * know the BlobBuilder (but with prefix)
+      // * know the Blob constructor
+      // * know about Blob but not about how to build them
+      // About the "=== 0" test : if given the wrong type, it may be converted to a string.
+      // Instead of an empty content, we will get "[object Uint8Array]" for example.
+      if (typeof ArrayBuffer === "undefined") {
+         return false;
+      }
+      var buffer = new ArrayBuffer(0);
+      try {
+         return new Blob([buffer], { type: "application/zip" }).size === 0;
+      }
+      catch(e) {}
+
+      try {
+         var BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder || window.MSBlobBuilder;
+         var builder = new BlobBuilder();
+         builder.append(buffer);
+         return builder.getBlob('application/zip').size === 0;
+      }
+      catch(e) {}
+
+      return false;
+   })()
+};
 
 JSZip.prototype = (function () {
+   var textEncoder, textDecoder;
+   if (
+      JSZip.support.uint8array &&
+      typeof TextEncoder === "function" &&
+      typeof TextDecoder === "function"
+   ) {
+      textEncoder = new TextEncoder("utf-8");
+      textDecoder = new TextDecoder("utf-8");
+   }
 
    /**
     * Returns the raw data of a ZipObject, decompress the content if necessary.
@@ -97,8 +153,8 @@ JSZip.prototype = (function () {
          if (!file.options.binary) {
             // unicode text !
             // unicode string => binary string is a painful process, check if we can avoid it.
-            if (JSZip.support.uint8array && typeof TextEncoder === "function") {
-               return TextEncoder("utf-8").encode(result);
+            if (textEncoder) {
+               return textEncoder.encode(result);
             }
             if (JSZip.support.nodebuffer) {
                return new Buffer(result, "utf-8");
@@ -107,7 +163,7 @@ JSZip.prototype = (function () {
          return file.asBinary();
       }
       return result;
-   }
+   };
 
    /**
     * Transform this._data into a string.
@@ -233,9 +289,11 @@ JSZip.prototype = (function () {
     */
    var prepareFileAttrs = function (o) {
       o = o || {};
+      /*jshint -W041 */
       if (o.base64 === true && o.binary == null) {
          o.binary = true;
       }
+      /*jshint +W041 */
       o = extend(o, JSZip.defaults);
       o.date = o.date || new Date();
       if (o.compression !== null) o.compression = o.compression.toUpperCase();
@@ -287,7 +345,9 @@ JSZip.prototype = (function () {
          }
       }
 
-      return this.files[name] = new ZipObject(name, data, o);
+      var object = new ZipObject(name, data, o);
+      this.files[name] = object;
+      return object;
    };
 
 
@@ -345,7 +405,7 @@ JSZip.prototype = (function () {
          } else if (file._data.compressionMethod === compression.magic) {
             result.compressedContent = file._data.getCompressedContent();
          } else {
-            content = file._data.getContent()
+            content = file._data.getContent();
             // need to decompress / recompress
             result.compressedContent = compression.compress(JSZip.utils.transformTo(compression.compressInputType, content));
          }
@@ -557,7 +617,7 @@ JSZip.prototype = (function () {
        */
       file : function(name, data, o) {
          if (arguments.length === 1) {
-            if (name instanceof RegExp) {
+            if (JSZip.utils.isRegExp(name)) {
                var regexp = name;
                return this.filter(function(relativePath, file) {
                   return !file.options.dir && regexp.test(relativePath);
@@ -584,7 +644,7 @@ JSZip.prototype = (function () {
             return this;
          }
 
-         if (arg instanceof RegExp) {
+         if (JSZip.utils.isRegExp(arg)) {
             return this.filter(function(relativePath, file) {
                return file.options.dir && arg.test(relativePath);
             });
@@ -702,8 +762,9 @@ JSZip.prototype = (function () {
             case "nodebuffer" :
                writer = new Uint8ArrayWriter(localDirLength + centralDirLength + dirEnd.length);
                break;
-            case "base64" :
-            default : // case "string" :
+            // case "base64" :
+            // case "string" :
+            default :
                writer = new StringWriter(localDirLength + centralDirLength + dirEnd.length);
                break;
          }
@@ -854,8 +915,8 @@ JSZip.prototype = (function () {
          // TextEncoder + Uint8Array to binary string is faster than checking every bytes on long strings.
          // http://jsperf.com/utf8encode-vs-textencoder
          // On short strings (file names for example), the TextEncoder API is (currently) slower.
-         if (JSZip.support.uint8array && typeof TextEncoder === "function") {
-            var u8 = TextEncoder("utf-8").encode(string);
+         if (textEncoder) {
+            var u8 = textEncoder.encode(string);
             return JSZip.utils.transformTo("string", u8);
          }
          if (JSZip.support.nodebuffer) {
@@ -898,8 +959,8 @@ JSZip.prototype = (function () {
 
          // check if we can use the TextDecoder API
          // see http://encoding.spec.whatwg.org/#api
-         if (JSZip.support.uint8array && typeof TextDecoder === "function") {
-            return TextDecoder("utf-8").decode(
+         if (textDecoder) {
+            return textDecoder.decode(
                JSZip.utils.transformTo("uint8array", input)
             );
          }
@@ -960,52 +1021,6 @@ JSZip.compressions = {
    }
 };
 
-/*
- * List features that require a modern browser, and if the current browser support them.
- */
-JSZip.support = {
-   // contains true if JSZip can read/generate ArrayBuffer, false otherwise.
-   arraybuffer : (function(){
-      return typeof ArrayBuffer !== "undefined" && typeof Uint8Array !== "undefined";
-   })(),
-   // contains true if JSZip can read/generate nodejs Buffer, false otherwise.
-   nodebuffer : (function(){
-      return typeof Buffer !== "undefined";
-   })(),
-   // contains true if JSZip can read/generate Uint8Array, false otherwise.
-   uint8array : (function(){
-      return typeof Uint8Array !== "undefined";
-   })(),
-   // contains true if JSZip can read/generate Blob, false otherwise.
-   blob : (function(){
-      // the spec started with BlobBuilder then replaced it with a construtor for Blob.
-      // Result : we have browsers that :
-      // * know the BlobBuilder (but with prefix)
-      // * know the Blob constructor
-      // * know about Blob but not about how to build them
-      // About the "=== 0" test : if given the wrong type, it may be converted to a string.
-      // Instead of an empty content, we will get "[object Uint8Array]" for example.
-      if (typeof ArrayBuffer === "undefined") {
-         return false;
-      }
-      var buffer = new ArrayBuffer(0);
-      try {
-         return new Blob([buffer], { type: "application/zip" }).size === 0;
-      }
-      catch(e) {}
-
-      try {
-         var builder = new (window.BlobBuilder || window.WebKitBlobBuilder ||
-                            window.MozBlobBuilder || window.MSBlobBuilder)();
-         builder.append(buffer);
-         return builder.getBlob('application/zip').size === 0;
-      }
-      catch(e) {}
-
-      return false;
-   })()
-};
-
 (function () {
    JSZip.utils = {
       /**
@@ -1058,8 +1073,8 @@ JSZip.support = {
 
          try {
             // deprecated, browser only, old way
-            var builder = new (window.BlobBuilder || window.WebKitBlobBuilder ||
-                               window.MozBlobBuilder || window.MSBlobBuilder)();
+            var BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder || window.MSBlobBuilder;
+            var builder = new BlobBuilder();
             builder.append(buffer);
             return builder.getBlob('application/zip');
          }
@@ -1087,7 +1102,7 @@ JSZip.support = {
     */
    function identity(input) {
       return input;
-   };
+   }
 
    /**
     * Fill in an array with a string.
@@ -1100,7 +1115,7 @@ JSZip.support = {
          array[i] = str.charCodeAt(i) & 0xFF;
       }
       return array;
-   };
+   }
 
    /**
     * Transform an array-like object to a string.
@@ -1120,12 +1135,36 @@ JSZip.support = {
       var chunk = 65536;
       var result = [], len = array.length, type = JSZip.utils.getTypeOf(array), k = 0;
 
+      var canUseApply = true;
+      try {
+         switch(type) {
+            case "uint8array":
+               String.fromCharCode.apply(null, new Uint8Array(0));
+               break;
+            case "nodebuffer":
+               String.fromCharCode.apply(null, new Buffer(0));
+               break;
+         }
+      } catch(e) {
+         canUseApply = false;
+      }
+
+      // no apply : slow and painful algorithm
+      // default browser on android 4.*
+      if (!canUseApply) {
+         var resultStr = "";
+         for(var i = 0; i < array.length;i++) {
+            resultStr += String.fromCharCode(array[i]);
+         }
+         return resultStr;
+      }
+
       while (k < len && chunk > 1) {
          try {
             if (type === "array" || type === "nodebuffer") {
-               result.push(String.fromCharCode.apply(null, array.slice(k, Math.max(k + chunk, len))));
+               result.push(String.fromCharCode.apply(null, array.slice(k, Math.min(k + chunk, len))));
             } else {
-               result.push(String.fromCharCode.apply(null, array.subarray(k, k + chunk)));
+               result.push(String.fromCharCode.apply(null, array.subarray(k, Math.min(k + chunk, len))));
             }
             k += chunk;
          } catch (e) {
@@ -1133,7 +1172,7 @@ JSZip.support = {
          }
       }
       return result.join("");
-   };
+   }
 
    /**
     * Copy the data from an array-like to an other array-like.
@@ -1146,7 +1185,7 @@ JSZip.support = {
          arrayTo[i] = arrayFrom[i];
       }
       return arrayTo;
-   };
+   }
 
    // a matrix containing functions to transform everything into everything.
    var transform = {};
@@ -1263,7 +1302,7 @@ JSZip.support = {
       if (typeof input === "string") {
          return "string";
       }
-      if (input instanceof Array) {
+      if (Object.prototype.toString.call(input) === "[object Array]") {
          return "array";
       }
       if (JSZip.support.nodebuffer && Buffer.isBuffer(input)) {
@@ -1275,6 +1314,16 @@ JSZip.support = {
       if (JSZip.support.arraybuffer && input instanceof ArrayBuffer) {
          return "arraybuffer";
       }
+   };
+
+   /**
+    * Cross-window, cross-Node-context regular expression detection
+    * @param  {Object}  object Anything
+    * @return {Boolean}        true if the object is a regular expression,
+    * false otherwise
+    */
+   JSZip.utils.isRegExp = function (object) {
+      return Object.prototype.toString.call(object) === "[object RegExp]";
    };
 
    /**

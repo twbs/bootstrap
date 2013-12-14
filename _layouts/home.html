@@ -14,6 +14,8 @@
     {{ content }}
 
     <footer class="container" role="contentinfo">
+      {% include ads.html %}
+
       {% include social-buttons.html %}
 
       <ul class="bs-masthead-links">
@@ -28,9 +30,6 @@
         </li>
         <li>
           <a href="{{ page.base_url }}getting-started/#examples" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'Examples']);">Examples</a>
-        </li>
-        <li>
-          <a href="{{ page.base_url }}components/#glyphicons" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'Glyphicons']);">Glyphicons</a>
         </li>
         <li>
           <a href="{{ site.expo }}" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'Expo']);">Expo</a>

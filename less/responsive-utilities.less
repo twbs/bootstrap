@@ -22,16 +22,6 @@
 }
 
 
-// Hide from screenreaders and browsers
-//
-// Credit: HTML5 Boilerplate
-
-.hidden {
-  display: none !important;
-  visibility: hidden !important;
-}
-
-
 // Visibility utilities
 
 .visible-xs {
@@ -204,16 +194,21 @@
   }
 }
 
+
 // Print utilities
+//
+// Media queries are placed on the inside to be mixin-friendly.
+
 .visible-print {
   .responsive-invisibility();
-}
 
-@media print {
-  .visible-print {
+  @media print {
     .responsive-visibility();
   }
-  .hidden-print {
+}
+
+.hidden-print {
+  @media print {
     .responsive-invisibility();
   }
 }

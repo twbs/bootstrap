@@ -1,8 +1,9 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
+<meta name="description" content="Bootstrap, a sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.">
+<meta name="keywords" content="HTML, CSS, JS, JavaScript, framework, bootstrap, front-end, frontend, web development">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 
 <title>
   {% if page.title == "Bootstrap" %}
@@ -13,16 +14,17 @@
 </title>
 
 <!-- Bootstrap core CSS -->
-<link href="{{ page.base_url }}dist/css/bootstrap.css" rel="stylesheet">
+<link href="{{ page.base_url }}dist/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Documentation extras -->
 <link href="{{ page.base_url }}docs-assets/css/docs.css" rel="stylesheet">
 <link href="{{ page.base_url }}docs-assets/css/pygments-manni.css" rel="stylesheet">
+<!--[if lt IE 9]><script src="{{ page.base_url }}docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
-  <script src="{{ page.base_url }}docs-assets/js/html5shiv.js"></script>
-  <script src="{{ page.base_url }}docs-assets/js/respond.min.js"></script>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 <![endif]-->
 
 <!-- Favicons -->

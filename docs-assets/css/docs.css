@@ -1,3 +1,11 @@
+/*!
+ * Copyright 2013 Twitter, Inc.
+ *
+ * Licensed under the Creative Commons Attribution 3.0 Unported License. For
+ * details, see http://creativecommons.org/licenses/by/3.0/.
+ */
+
+
 /*
  * Bootstrap Documentation
  * Special styles for presenting Bootstrap's documentation and code examples.
@@ -180,7 +188,7 @@ body {
   overflow: hidden;
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .bs-social {
     text-align: left;
   }
@@ -244,7 +252,7 @@ body {
   color: #fff;
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .bs-masthead {
     text-align: left;
     padding-top:    140px;
@@ -295,7 +303,7 @@ body {
   position: relative;
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .bs-header {
     font-size: 21px;
     text-align: left;
@@ -306,7 +314,7 @@ body {
   }
 }
 
-@media screen and (min-width: 992px) {
+@media (min-width: 992px) {
   .bs-header h1,
   .bs-header p {
     margin-right: 380px;
@@ -361,7 +369,7 @@ body {
   display: none; /* hide what I assume are tracking images */
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .carbonad {
     margin: 0 !important;
     border-radius: 4px;
@@ -369,13 +377,52 @@ body {
   }
 }
 
-@media screen and (min-width: 992px) {
+@media (min-width: 992px) {
   .carbonad {
     position: absolute;
     top: 20px;
-    right: 0;
+    right: 15px; /* 15px instead of 0 since box-sizing */
     padding: 15px !important;
     width: 330px !important;
+  }
+}
+
+/* Homepage variations */
+.bs-docs-home .carbonad {
+  margin: 0 -15px 40px !important;
+}
+@media (min-width: 480px) {
+  .bs-docs-home .carbonad {
+    width: 330px !important;
+    margin: 0 auto 40px !important;
+    border-radius: 4px;
+  }
+}
+@media (min-width: 768px) {
+  .bs-docs-home .carbonad {
+    float: left;
+    width: 330px !important;
+    margin: 0 0 30px !important;
+  }
+  .bs-docs-home .bs-social,
+  .bs-docs-home .bs-masthead-links {
+    margin-left: 350px;
+  }
+  .bs-docs-home .bs-social {
+    margin-bottom: 10px;
+  }
+  .bs-docs-home .bs-masthead-links {
+    margin-top: 10px;
+  }
+}
+@media (min-width: 992px) {
+  .bs-docs-home .carbonad {
+    position: static;
+  }
+}
+@media (min-width: 1170px) {
+  .bs-docs-home .carbonad {
+    margin-top: -25px !important;
   }
 }
 
@@ -456,7 +503,7 @@ body {
 }
 
 /* Show and affix the side nav when space allows it */
-@media screen and (min-width: 992px) {
+@media (min-width: 992px) {
   .bs-sidebar .nav > .active > ul {
     display: block;
   }
@@ -478,7 +525,7 @@ body {
     margin-bottom: 0;
   }
 }
-@media screen and (min-width: 1200px) {
+@media (min-width: 1200px) {
   /* Widen the fixed sidebar again */
   .bs-sidebar.affix-bottom,
   .bs-sidebar.affix {
@@ -515,32 +562,95 @@ h1[id] {
 /* Common styles for all types */
 .bs-callout {
   margin: 20px 0;
-  padding: 15px 30px 15px 15px;
-  border-left: 5px solid #eee;
+  padding: 20px;
+  border-left: 3px solid #eee;
 }
 .bs-callout h4 {
   margin-top: 0;
+  margin-bottom: 5px;
 }
 .bs-callout p:last-child {
   margin-bottom: 0;
 }
-.bs-callout code,
-.bs-callout .highlight {
-  background-color: #fff;
-}
 
 /* Variations */
 .bs-callout-danger {
-  background-color: #fcf2f2;
-  border-color: #dFb5b4;
+  background-color: #fdf7f7;
+  border-color: #eed3d7;
+}
+.bs-callout-danger h4 {
+  color: #b94a48;
 }
 .bs-callout-warning {
-  background-color: #fefbed;
-  border-color: #f1e7bc;
+  background-color: #faf8f0;
+  border-color: #faebcc;
+}
+.bs-callout-warning h4 {
+  color: #8a6d3b;
 }
 .bs-callout-info {
-  background-color: #f0f7fd;
-  border-color: #d0e3f0;
+  background-color: #f4f8fa;
+  border-color: #bce8f1;
+}
+.bs-callout-info h4 {
+  color: #34789a;
+}
+
+
+/*
+ * Color swatches
+ *
+ * Color swatches and associated values for our grayscale and brand colors.
+ */
+
+.color-swatches {
+  margin: 0 -5px;
+  overflow: hidden; /* clearfix */
+}
+.color-swatch {
+  float: left;
+  width:  100px;
+  height: 100px;
+  margin: 0 5px;
+  border-radius: 3px;
+}
+.color-swatches .gray-darker   { background-color: #222; }
+.color-swatches .gray-dark     { background-color: #333; }
+.color-swatches .gray          { background-color: #555; }
+.color-swatches .gray-light    { background-color: #999; }
+.color-swatches .gray-lighter  { background-color: #eee; }
+.color-swatches .brand-primary { background-color: #428bca; }
+.color-swatches .brand-success { background-color: #5cb85c; }
+.color-swatches .brand-warning { background-color: #f0ad4e; }
+.color-swatches .brand-danger  { background-color: #d9534f; }
+.color-swatches .brand-info    { background-color: #5bc0de; }
+
+
+/*
+ * Team members
+ *
+ * Avatars, names, and usernames for core team.
+ */
+
+.bs-team .team-member {
+  color: #555;
+  line-height: 32px;
+}
+.bs-team .team-member:hover {
+  color: #333;
+  text-decoration: none;
+}
+.bs-team .github-btn {
+  float: right;
+  margin-top: 6px;
+  width: 120px;
+  height: 20px;
+}
+.bs-team img {
+  float: left;
+  width: 32px;
+  margin-right: 10px;
+  border-radius: 4px;
 }
 
 
@@ -602,7 +712,7 @@ h1[id] {
 }
 
 /* Make the examples and snippets not full-width */
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .bs-example {
     margin-left: 0;
     margin-right: 0;
@@ -840,7 +950,6 @@ h1[id] {
  */
 
 .highlight {
-  display: none; /* hidden by default, until >480px */
   padding: 9px 14px;
   margin-bottom: 14px;
   background-color: #f7f7f9;
@@ -866,13 +975,6 @@ h1[id] {
   margin-right: 10px;
   text-align: right;
   color: #bebec5;
-}
-
-/* Show code snippets when we have the space */
-@media screen and (min-width: 481px) {
-  .highlight {
-    display: block;
-  }
 }
 
 
@@ -928,10 +1030,10 @@ h1[id] {
 .visible-on .col-xs-6 .hidden-sm,
 .visible-on .col-xs-6 .hidden-md,
 .visible-on .col-xs-6 .hidden-lg,
-.hidden-on .col-xs-6 .visible-xs,
-.hidden-on .col-xs-6 .visible-sm,
-.hidden-on .col-xs-6 .visible-md,
-.hidden-on .col-xs-6 .visible-lg {
+.hidden-on .col-xs-6 .hidden-xs,
+.hidden-on .col-xs-6 .hidden-sm,
+.hidden-on .col-xs-6 .hidden-md,
+.hidden-on .col-xs-6 .hidden-lg {
   color: #999;
   border: 1px solid #ddd;
 }
@@ -939,10 +1041,10 @@ h1[id] {
 .visible-on .col-xs-6 .visible-sm,
 .visible-on .col-xs-6 .visible-md,
 .visible-on .col-xs-6 .visible-lg,
-.hidden-on .col-xs-6 .hidden-xs,
-.hidden-on .col-xs-6 .hidden-sm,
-.hidden-on .col-xs-6 .hidden-md,
-.hidden-on .col-xs-6 .hidden-lg {
+.hidden-on .col-xs-6 .visible-xs,
+.hidden-on .col-xs-6 .visible-sm,
+.hidden-on .col-xs-6 .visible-md,
+.hidden-on .col-xs-6 .visible-lg {
   color: #468847;
   background-color: #dff0d8;
   border: 1px solid #d6e9c6;
@@ -956,11 +1058,12 @@ h1[id] {
  */
 
 .bs-glyphicons {
-  padding-left: 0;
-  padding-bottom: 1px;
-  margin-bottom: 20px;
-  list-style: none;
+  margin: 0 -19px 20px -16px;
   overflow: hidden;
+}
+.bs-glyphicons-list {
+  padding-left: 0;
+  list-style: none;
 }
 .bs-glyphicons li {
   float: left;
@@ -968,23 +1071,33 @@ h1[id] {
   height: 115px;
   padding: 10px;
   margin: 0 -1px -1px 0;
-  font-size: 12px;
+  font-size: 10px;
   line-height: 1.4;
   text-align: center;
   border: 1px solid #ddd;
 }
 .bs-glyphicons .glyphicon {
-  display: block;
-  margin: 5px auto 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
   font-size: 24px;
+}
+.bs-glyphicons .glyphicon-class {
+  display: block;
+  text-align: center;
+  word-wrap: break-word; /* Help out IE10+ with class names */
 }
 .bs-glyphicons li:hover {
   background-color: rgba(86,61,124,.1);
 }
 
 @media (min-width: 768px) {
+  .bs-glyphicons {
+    margin-left: 0;
+    margin-right: 0;
+  }
   .bs-glyphicons li {
     width: 12.5%;
+    font-size: 12px;
   }
 }
 
@@ -1080,6 +1193,11 @@ h1[id] {
  *
  * Odds and ends for optimum docs display.
  */
+
+ /* About page */
+ .bs-about {
+  font-size: 16px;
+ }
 
 /* Examples gallery: space out content better */
 .bs-examples h4 {

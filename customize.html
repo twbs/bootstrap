@@ -56,7 +56,7 @@ base_url: "../"
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked value="buttons.less">
+            <input type="checkbox" checked value="buttons.less" data-dependents="button-groups.less">
             Buttons
           </label>
         </div>
@@ -399,7 +399,7 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="Georgia, 'Times New Roman', Times, serif" data-var="@font-family-serif">
         <p class="help-block">Default serif fonts.</p>
         <label>@font-family-monospace</label>
-        <input type="text" class="form-control" placeholder="Monaco, Menlo, Consolas, 'Courier New', monospace" data-var="@font-family-monospace">
+        <input type="text" class="form-control" placeholder="Menlo, Monaco, Consolas, 'Courier New', monospace" data-var="@font-family-monospace">
         <p class="help-block">Default monospace fonts for <code>&lt;code&gt;</code> and <code>&lt;pre&gt;</code>.</p>
 
         <h4>Base type styes</h4>
@@ -417,11 +417,11 @@ base_url: "../"
       <div class="col-lg-6">
         <h4>Heading font sizes</h4>
         <label>@font-size-h1</label>
-        <input type="text" class="form-control" placeholder="floor(@font-size-base * 2.60)" data-var="@font-size-h1">
+        <input type="text" class="form-control" placeholder="floor(@font-size-base * 2.6)" data-var="@font-size-h1">
         <label>@font-size-h2</label>
         <input type="text" class="form-control" placeholder="floor(@font-size-base * 2.15)" data-var="@font-size-h2">
         <label>@font-size-h3</label>
-        <input type="text" class="form-control" placeholder="ceil(@font-size-base * 1.70)" data-var="@font-size-h3">
+        <input type="text" class="form-control" placeholder="ceil(@font-size-base * 1.7)" data-var="@font-size-h3">
         <label>@font-size-h4</label>
         <input type="text" class="form-control" placeholder="ceil(@font-size-base * 1.25)" data-var="@font-size-h4">
         <label>@font-size-h5</label>
@@ -436,7 +436,7 @@ base_url: "../"
     <div class="row">
       <div class="col-lg-6">
         <label>@headings-font-family</label>
-        <input type="text" class="form-control" placeholder="@font-family-base" data-var="@headings-font-family">
+        <input type="text" class="form-control" placeholder="inherit" data-var="@headings-font-family">
         <label>@headings-font-weight</label>
         <input type="text" class="form-control" placeholder="500" data-var="@headings-font-weight">
       </div>
@@ -509,14 +509,11 @@ base_url: "../"
     </div>
 
     <div class="row">
-<!--
-  Temporarily removed until mixins are restored in v3.1
       <div class="col-xs-6 col-sm-4">
         <label>@grid-columns</label>
         <input type="text" class="form-control" placeholder="12" data-var="@grid-columns">
         <p class="help-block">Number of columns in the grid.</p>
       </div>
- -->
       <div class="col-xs-6 col-sm-4">
         <label>@grid-gutter-width</label>
         <input type="text" class="form-control" placeholder="30px" data-var="@grid-gutter-width">
@@ -632,9 +629,6 @@ base_url: "../"
         <input type="text" class="form-control" placeholder="@brand-info" data-var="@btn-info-bg">
         <label>@btn-info-border</label>
         <input type="text" class="form-control" placeholder="darken(@btn-info-bg, 5%)" data-var="@btn-info-border">
-        <h4>Button hover</h4>
-        <label>@btn-hover-color</label>
-        <input type="text" class="form-control" placeholder="@btn-default-color" data-var="@btn-hover-color">
       </div>
       <div class="col-md-6">
         <h4>Success</h4>
@@ -1062,7 +1056,7 @@ base_url: "../"
         <p class="help-block">Hovered dropdown menu entry text color</p>
         <label>@dropdown-link-hover-bg</label>
         <input type="text" class="form-control" placeholder="#f5f5f5" data-var="@dropdown-link-hover-bg">
-        <p class="help-block">Hovered dropdown menu entry text color</p>
+        <p class="help-block">Hovered dropdown menu entry background color</p>
 
         <label>@dropdown-link-active-color</label>
         <input type="text" class="form-control" placeholder="@component-active-color" data-var="@dropdown-link-active-color">
@@ -1222,19 +1216,17 @@ base_url: "../"
 
     <h2 id="variables-jumbotron">Jumbotron</h2>
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-md-6">
         <label>@jumbotron-padding</label>
         <input type="text" class="form-control" placeholder="30px" data-var="@jumbotron-padding">
-      </div>
-      <div class="col-lg-3">
         <label>@jumbotron-bg</label>
         <input type="text" class="form-control" placeholder="@gray-lighter" data-var="@jumbotron-bg">
+        <label>@jumbotron-font-size</label>
+        <input type="text" class="form-control" placeholder="ceil(@font-size-base * 1.5)" data-var="@jumbotron-font-size">
       </div>
-      <div class="col-lg-3">
+      <div class="col-md-6">
         <label>@jumbotron-color</label>
         <input type="text" class="form-control" placeholder="inherit" data-var="@jumbotron-color">
-      </div>
-      <div class="col-lg-3">
         <label>@jumbotron-heading-color</label>
         <input type="text" class="form-control" placeholder="inherit" data-var="@jumbotron-heading-color">
       </div>
