@@ -1,5 +1,5 @@
 {
-    "requireSpaceAfterKeywords": ["if", "else", "for", "while", "do", "switch", "return"],
+    "requireSpaceAfterKeywords": ["if", "else", "for", "while", "do", "switch", "return", "try", "catch"],
     "requireSpacesInFunctionExpression": { "beforeOpeningCurlyBrace": true },
     "disallowLeftStickedOperators": ["?", "+", "-", "/", "*", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<="],
     "requireRightStickedOperators": ["!"],

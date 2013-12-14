@@ -161,6 +161,13 @@
     text-decoration: none;
   }
 
+  // Prevent Glyphicons from increasing height of navbar
+  > .glyphicon {
+    float: left;
+    margin-top: -2px;
+    margin-right: 5px;
+  }
+
   @media (min-width: @grid-float-breakpoint) {
     .navbar > .container &,
     .navbar > .container-fluid & {
@@ -327,13 +334,6 @@
 // Menu position and menu caret support for dropups via extra dropup class
 .navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {
   .border-bottom-radius(0);
-}
-
-// Right aligned menus need alt position
-.navbar-nav.pull-right > li > .dropdown-menu,
-.navbar-nav > li > .dropdown-menu.pull-right {
-  left: auto;
-  right: 0;
 }
 
 
