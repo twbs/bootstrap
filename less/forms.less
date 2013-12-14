@@ -169,6 +169,13 @@ fieldset[disabled] > legend:first-of-type {
     cursor: default;
     background-color: @input-bg;
   }
+  // Buttons are somewhat reset, but they don't properly restyle to hover,
+  // focus, and active styles because holy crap that'd be a lot of CSS.
+  .btn {
+    cursor: default;
+    pointer-events: auto;
+    .opacity(1);
+  }
 }
 
 
