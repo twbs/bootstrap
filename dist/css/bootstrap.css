@@ -4906,6 +4906,7 @@ button.close {
   display: none;
   overflow: auto;
   overflow-y: scroll;
+  outline: 0;
 }
 .modal.fade .modal-dialog {
   -webkit-transition: -webkit-transform .3s ease-out;
