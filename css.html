@@ -615,6 +615,29 @@ base_url: "../"
 </div>
 {% endhighlight %}
 
+    <h3 id="grid-same-height-columns">Same height columns</h3>
+    <p>Give your grid columns the same heights using responsive classes on the row, such as <code>.row-md-flex</code>.</p>
+
+    <p>Note that this is not supported in Internet Explorer prior to version 10.  In any unsupported browser, the <code>row-*-flex</code> classes will have no effect.</p>
+
+    <p>Add the <code>.row-md-flex</code> class to a row.  All of the columns will stretch vertically to occupy the same height as the tallest column.</p>
+
+    <div class="row show-grid row-md-flex">
+      <div class="col-md-4">.row-md-flex > .col-md-4</div>
+      <div class="col-md-4">.row-md-flex > .col-md-4<br/>taller<br/>column</div>
+      <div class="col-md-4">.row-md-flex > .col-md-4</div>
+    </div>
+
+{% highlight html %}
+<div class="row row-md-flex">
+  <div class="col-md-4">.row-md-flex > .col-md-4</div>
+  <div class="col-md-4">.row-md-flex > .col-md-4<br/>taller<br/>column</div>
+  <div class="col-md-4">.row-md-flex > .col-md-4</div>
+</div>
+{% endhighlight %}
+
+    <p>If you specify more than 12 columns in one row, the <code>.row-*-flex</code> classes will force them to shrink into a single row, and the columns will not wrap.</p>
+
   </div>
 
 
