@@ -902,9 +902,13 @@ base_url: "../"
 {% endhighlight %}
 
     <h3 id="dropdowns-alignment">Alignment options</h3>
-    <p>Add <code>.pull-right</code> to a <code>.dropdown-menu</code> to right align the dropdown menu.</p>
+    <p>Add <code>.dropdown-menu-right</code> to a <code>.dropdown-menu</code> to right align the dropdown menu.</p>
+    <div class="bs-callout bs-callout-warning">
+      <h4>Deprecated <code>.pull-right</code> alignment</h4>
+      <p>As of v3.1, we've deprecated <code>.pull-right</code> on dropdown menus. To right-align a menu, use <code>.dropdown-menu-right</code>. Right-aligned nav components in the navbar use a mixin version of this class to automatically align the menu. To override it, use <code>.dropdown-menu-left</code>.</p>
+    </div>
 {% highlight html %}
-<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
   ...
 </ul>
 {% endhighlight %}
