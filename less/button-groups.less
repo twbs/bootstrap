@@ -37,18 +37,17 @@
 
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
+  margin-left: -5px; // Offset the first child's margin
   &:extend(.clearfix all);
 
-  .btn-group {
+  .btn-group,
+  .input-group {
     float: left;
   }
-  // Space out series of button groups
   > .btn,
-  > .btn-group {
-    + .btn,
-    + .btn-group {
-      margin-left: 5px;
-    }
+  > .btn-group,
+  > .input-group {
+    margin-left: 5px;
   }
 }
 
@@ -188,13 +187,13 @@
 .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
   border-radius: 0;
 }
-.btn-group-vertical > .btn-group:first-child {
+.btn-group-vertical > .btn-group:first-child:not(:last-child) {
   > .btn:last-child,
   > .dropdown-toggle {
     .border-bottom-radius(0);
   }
 }
-.btn-group-vertical > .btn-group:last-child > .btn:first-child {
+.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {
   .border-top-radius(0);
 }
 

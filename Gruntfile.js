@@ -6,7 +6,9 @@ module.exports = function (grunt) {
   // Force use of Unix newlines
   grunt.util.linefeed = '\n';
 
-  RegExp.quote = require('regexp-quote')
+  RegExp.quote = function (string) {
+    return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&')
+  }
   var btoa = require('btoa')
   // Project configuration.
   grunt.initConfig({
@@ -238,13 +240,13 @@ module.exports = function (grunt) {
             // See https://saucelabs.com/docs/platforms/webdriver
             {
               browserName: 'safari',
-              version: '6',
-              platform: 'OS X 10.8'
+              version: '7',
+              platform: 'OS X 10.9'
             },
             {
               browserName: 'chrome',
-              version: '28',
-              platform: 'OS X 10.6'
+              version: '31',
+              platform: 'OS X 10.9'
             },
             /* FIXME: currently fails 1 tooltip test
             {
@@ -325,31 +327,25 @@ module.exports = function (grunt) {
 
 
   // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-banner');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-csslint');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-csscomb');
-  grunt.loadNpmTasks('grunt-html-validation');
-  grunt.loadNpmTasks('grunt-jekyll');
-  grunt.loadNpmTasks('grunt-jscs-checker');
-  grunt.loadNpmTasks('grunt-saucelabs');
-  grunt.loadNpmTasks('grunt-sed');
+  require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
 
   // Docs HTML validation task
   grunt.registerTask('validate-html', ['jekyll', 'validation']);
 
   // Test task.
-  var testSubtasks = ['dist-css', 'jshint', 'jscs', 'qunit', 'validate-html'];
+  var testSubtasks = [];
+  // Skip core tests if running a different subset of the test suite
+  if (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'core') {
+    testSubtasks = testSubtasks.concat(['dist-css', 'jshint', 'jscs', 'qunit']);
+  }
+  // Skip HTML validation if running a different subset of the test suite
+  if (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'validate-html') {
+    testSubtasks.push('validate-html');
+  }
   // Only run Sauce Labs tests if there's a Sauce access key
-  if (typeof process.env.SAUCE_ACCESS_KEY !== 'undefined') {
+  if (typeof process.env.SAUCE_ACCESS_KEY !== 'undefined'
+      // Skip Sauce if running a different subset of the test suite
+      && (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'sauce-js-unit')) {
     testSubtasks.push('connect');
     testSubtasks.push('saucelabs-qunit');
   }

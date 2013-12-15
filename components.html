@@ -902,9 +902,13 @@ base_url: "../"
 {% endhighlight %}
 
     <h3 id="dropdowns-alignment">Alignment options</h3>
-    <p>Add <code>.pull-right</code> to a <code>.dropdown-menu</code> to right align the dropdown menu.</p>
+    <p>Add <code>.dropdown-menu-right</code> to a <code>.dropdown-menu</code> to right align the dropdown menu.</p>
+    <div class="bs-callout bs-callout-warning">
+      <h4>Deprecated <code>.pull-right</code> alignment</h4>
+      <p>As of v3.1, we've deprecated <code>.pull-right</code> on dropdown menus. To right-align a menu, use <code>.dropdown-menu-right</code>. Right-aligned nav components in the navbar use a mixin version of this class to automatically align the menu. To override it, use <code>.dropdown-menu-left</code>.</p>
+    </div>
 {% highlight html %}
-<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
   ...
 </ul>
 {% endhighlight %}
@@ -1099,7 +1103,7 @@ base_url: "../"
 {% endhighlight %}
 
     <h3 id="btn-groups-vertical">Vertical variation</h3>
-    <p>Make a set of buttons appear vertically stacked rather than horizontally.</p>
+    <p>Make a set of buttons appear vertically stacked rather than horizontally. <strong class="text-danger">Split button dropdowns are not supported here.</strong></p>
     <div class="bs-example">
       <div class="btn-group-vertical">
         <button type="button" class="btn btn-default">Button</button>
@@ -1548,6 +1552,7 @@ base_url: "../"
 
 
     <h2 id="input-groups-basic">Basic example</h2>
+    <p>Place one add-on or button on either side of an input. You may also place one on both sides of an input. <strong class="text-danger">We do not support mutiple add-ons on a single side.</strong></p>
     <form class="bs-example bs-example-form" role="form">
       <div class="input-group">
         <span class="input-group-addon">@</span>
@@ -2200,6 +2205,11 @@ base_url: "../"
 </form>
 {% endhighlight %}
 
+    <div class="bs-callout bs-callout-warning">
+      <h4>Mobile device caveats</h4>
+      <p>There are some caveats regarding using form controls within fixed elements on mobile devices. <a href="{{ page.base_url }}getting-started#support-fixed-position-keyboards">See our browser support docs</a> for details.</p>
+    </div>
+
     <div class="bs-callout bs-callout-danger">
       <h4>Always add labels</h4>
       <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline navbar forms, you can hide the labels using the <code>.sr-only</code> class.</p>
@@ -2285,33 +2295,36 @@ base_url: "../"
 
 
     <h2 id="navbar-fixed-top">Fixed to top</h2>
-    <p>Add <code>.navbar-fixed-top</code>.</p>
+    <p>Add <code>.navbar-fixed-top</code> and include a <code>.container</code> or <code>.container-fluid</code> to center and pad navbar content.</p>
     <div class="bs-example bs-navbar-top-example">
       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Brand</a>
-        </div>
+        <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+          </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div>
       </nav>
     </div><!-- /example -->
 {% highlight html %}
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-  ...
+  <div class="container">
+    ...
+  </div>
 </nav>
 {% endhighlight %}
 
@@ -2326,33 +2339,36 @@ body { padding-top: 70px; }
 
 
     <h2 id="navbar-fixed-bottom">Fixed to bottom</h2>
-    <p>Add <code>.navbar-fixed-bottom</code> instead.</p>
+    <p>Add <code>.navbar-fixed-bottom</code> and include a <code>.container</code> or <code>.container-fluid</code> to center and pad navbar content.</p>
     <div class="bs-example bs-navbar-bottom-example">
       <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-7">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Brand</a>
-        </div>
+        <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-7">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+          </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-7">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-7">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div>
       </nav>
     </div><!-- /example -->
 {% highlight html %}
 <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-  ...
+  <div class="container">
+    ...
+  </div>
 </nav>
 {% endhighlight %}
 
@@ -2367,33 +2383,38 @@ body { padding-bottom: 70px; }
 
 
     <h2 id="navbar-static-top">Static top</h2>
-    <p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.navbar-fixed-*</code> classes, you do not need to change any padding on the <code>body</code>.</p>
+    <p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code> and include a <code>.container</code> or <code>.container-fluid</code> to center and pad navbar content.</p>
+    <p>Unlike the <code>.navbar-fixed-*</code> classes, you do not need to change any padding on the <code>body</code>.</p>
     <div class="bs-example bs-navbar-top-example">
       <nav class="navbar navbar-default navbar-static-top" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-8">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Brand</a>
-        </div>
+        <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-8">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+          </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-8">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-8">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div>
       </nav>
     </div><!-- /example -->
 {% highlight html %}
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
-  ...
+  <div class="container">
+    ...
+  </div>
 </nav>
 {% endhighlight %}
 
