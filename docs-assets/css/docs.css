@@ -779,6 +779,11 @@ h1[id] {
   margin: 0;
 }
 
+/* Contextual background colors */
+.bs-example-bg-classes p {
+  padding: 15px;
+}
+
 /* Images */
 .bs-example > .img-circle,
 .bs-example > .img-rounded,

@@ -782,29 +782,6 @@ base_url: "../"
 <p class="text-right">Right aligned text.</p>
 {% endhighlight %}
 
-    <h3>Emphasis classes</h3>
-    <p>Convey meaning through color with a handful of emphasis utility classes. These may also be applied to links and will darken on hover just like our default link styles.</p>
-    <div class="bs-example">
-      <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
-      <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-      <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-      <p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-      <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
-      <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
-    </div>
-{% highlight html %}
-<p class="text-muted">...</p>
-<p class="text-primary">...</p>
-<p class="text-success">...</p>
-<p class="text-info">...</p>
-<p class="text-warning">...</p>
-<p class="text-danger">...</p>
-{% endhighlight %}
-    <div class="bs-callout bs-callout-info">
-      <h4>Dealing with specificity</h4>
-      <p>Sometimes emphasis classes cannot be applied due to the specificity of another selector. In most cases, a sufficient workaround is to wrap your text in a <code>&lt;span&gt;</code> with the class.</p>
-    </div>
-
 
     <!-- Abbreviations -->
     <h2 id="type-abbreviations">Abbreviations</h2>
@@ -2322,6 +2299,47 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="page-header">
       <h1 id="helper-classes">Helper classes</h1>
     </div>
+
+    <h3 id="helper-classes-colors">Contextual colors</h3>
+    <p>Convey meaning through color with a handful of emphasis utility classes. These may also be applied to links and will darken on hover just like our default link styles.</p>
+    <div class="bs-example">
+      <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+      <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+      <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+      <p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+      <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+      <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+    </div>
+{% highlight html %}
+<p class="text-muted">...</p>
+<p class="text-primary">...</p>
+<p class="text-success">...</p>
+<p class="text-info">...</p>
+<p class="text-warning">...</p>
+<p class="text-danger">...</p>
+{% endhighlight %}
+    <div class="bs-callout bs-callout-info">
+      <h4>Dealing with specificity</h4>
+      <p>Sometimes emphasis classes cannot be applied due to the specificity of another selector. In most cases, a sufficient workaround is to wrap your text in a <code>&lt;span&gt;</code> with the class.</p>
+    </div>
+
+    <h3 id="helper-classes-backgrounds">Contextual backgrounds</h3>
+    <p>Similar to the contextual text color classes, easily set the background of an element to any contextual class. Anchor components will darken on hover, just like the text classes.</p>
+    <div class="bs-example bs-example-bg-classes">
+      <p class="bg-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+      <p class="bg-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+      <p class="bg-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+      <p class="bg-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+      <p class="bg-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+    </div>
+{% highlight html %}
+<p class="bg-muted">...</p>
+<p class="bg-primary">...</p>
+<p class="bg-success">...</p>
+<p class="bg-info">...</p>
+<p class="bg-warning">...</p>
+<p class="bg-danger">...</p>
+{% endhighlight %}
 
 
     <h3 id="helper-classes-close">Close icon</h3>

@@ -450,6 +450,18 @@ small,
 cite {
   font-style: normal;
 }
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+.text-justify {
+  text-align: justify;
+}
 .text-muted {
   color: #999;
 }
@@ -483,17 +495,36 @@ cite {
 .text-info:hover {
   color: #245269;
 }
-.text-left {
-  text-align: left;
+.bg-primary {
+  color: #fff;
+  background-color: #428bca;
 }
-.text-right {
-  text-align: right;
+a.bg-primary:hover {
+  background-color: #3071a9;
 }
-.text-center {
-  text-align: center;
+.bg-warning {
+  background-color: #fcf8e3;
 }
-.text-justify {
-  text-align: justify;
+a.bg-warning:hover {
+  background-color: #f7ecb5;
+}
+.bg-danger {
+  background-color: #f2dede;
+}
+a.bg-danger:hover {
+  background-color: #e4b9b9;
+}
+.bg-success {
+  background-color: #dff0d8;
+}
+a.bg-success:hover {
+  background-color: #c1e2b3;
+}
+.bg-info {
+  background-color: #d9edf7;
+}
+a.bg-info:hover {
+  background-color: #afd9ee;
 }
 .page-header {
   padding-bottom: 9px;
