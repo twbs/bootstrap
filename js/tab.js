@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: tab.js v3.0.0
+ * Bootstrap: tab.js v3.0.3
  * http://getbootstrap.com/javascript/#tabs
  * ========================================================================
  * Copyright 2013 Twitter, Inc.
@@ -18,7 +18,7 @@
  * ======================================================================== */
 
 
-+function ($) { "use strict";
++function ($) { 'use strict';
 
   // TAB CLASS DEFINITION
   // ====================
@@ -132,4 +132,4 @@
     $(this).tab('show')
   })
 
-}(window.jQuery);
+}(jQuery);

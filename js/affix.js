@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: affix.js v3.0.0
+ * Bootstrap: affix.js v3.0.3
  * http://getbootstrap.com/javascript/#affix
  * ========================================================================
  * Copyright 2013 Twitter, Inc.
@@ -18,7 +18,7 @@
  * ======================================================================== */
 
 
-+function ($) { "use strict";
++function ($) { 'use strict';
 
   // AFFIX CLASS DEFINITION
   // ======================
@@ -123,4 +123,4 @@
     })
   })
 
-}(window.jQuery);
+}(jQuery);

@@ -54,7 +54,8 @@ base_url: "../"
     <p>For improved cross-browser rendering, we use <a href="http://necolas.github.io/normalize.css/" target="_blank">Normalize</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a>.</p>
 
     <h3 id="overview-container">Containers</h3>
-    <p>Easily center a page's contents by wrapping its contents in a <code>.container</code>. Containers set <code>max-width</code> at various media query breakpoints to match our grid system.</p>
+    <p>Easily center a page's contents by wrapping its contents in a <code>.container</code>. Containers set <code>width</code> at various media query breakpoints to match our grid system.</p>
+    <p>Note that, due to <code>padding</code> and fixed widths, containers are not nestable by default.</p>
 {% highlight html %}
 <div class="container">
   ...
@@ -75,7 +76,7 @@ base_url: "../"
     <h3 id="grid-intro">Introduction</h3>
     <p>Grid systems are used for creating page layouts through a series of rows and columns that house your content. Here's how the Bootstrap grid system works:</p>
     <ul>
-      <li>Rows must be placed within a <code>.container</code> for proper alignment and padding.</li>
+      <li>Rows must be placed within a <code>.container</code> (fixed-width) or <code>.container-fluid</code> (full-width) for proper alignment and padding.</li>
       <li>Use rows to create horizontal groups of columns.</li>
       <li>Content should be placed within columns, and only columns may be immediate children of rows.</li>
       <li>Predefined grid classes like <code>.row</code> and <code>.col-xs-4</code> are available for quickly making grid layouts. LESS mixins can also be used for more semantic layouts.</li>
@@ -144,7 +145,7 @@ base_url: "../"
             <td colspan="3">Collapsed to start, horizontal above breakpoints</td>
           </tr>
           <tr>
-            <th>Max container width</th>
+            <th>Container width</th>
             <td>None (auto)</td>
             <td>750px</td>
             <td>970px</td>
@@ -178,13 +179,11 @@ base_url: "../"
           </tr>
           <tr>
             <th>Offsets</th>
-            <td colspan="1" class="text-muted">N/A</td>
-            <td colspan="3">Yes</td>
+            <td colspan="4">Yes</td>
           </tr>
           <tr>
             <th>Column ordering</th>
-            <td class="text-muted">N/A</td>
-            <td colspan="3">Yes</td>
+            <td colspan="4">Yes</td>
           </tr>
         </tbody>
       </table>
@@ -249,6 +248,16 @@ base_url: "../"
 <div class="row">
   <div class="col-md-6">.col-md-6</div>
   <div class="col-md-6">.col-md-6</div>
+</div>
+{% endhighlight %}
+
+    <h3 id="grid-example-fluid">Example: Fluid container</h3>
+    <p>Turn any fixed-width grid layout into a full-width layout by changing your outermost <code>.container</code> to <code>.container-fluid</code>.</p>
+{% highlight html %}
+<div class="container-fluid">
+  <div class="row">
+    ...
+  </div>
 </div>
 {% endhighlight %}
 
@@ -320,7 +329,7 @@ base_url: "../"
 {% endhighlight %}
 
     <h3 id="grid-responsive-resets">Responsive column resets</h3>
-    <p>With the four tiers of grids available you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a <code>.clearfix</code> and our <a href="../css#responsive-utilities">responsive utility classes</a>.</p>
+    <p>With the four tiers of grids available you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a <code>.clearfix</code> and our <a href="#responsive-utilities">responsive utility classes</a>.</p>
 <div class="bs-docs-grid">
   <div class="row show-grid">
     <div class="col-xs-6 col-sm-3">
@@ -871,7 +880,7 @@ base_url: "../"
     <p>Style and content changes for simple variations on a standard <code>&lt;blockquote&gt;</code>.</p>
 
     <h4>Naming a source</h4>
-    <p>Add <code>&lt;small&gt;</code> tag for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
+    <p>Add <code>&lt;small&gt;</code> tag or <code>.small</code> class for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
     <div class="bs-example">
       <blockquote>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -1048,7 +1057,7 @@ base_url: "../"
       <h1 id="code">Code</h1>
     </div>
 
-    <h2>Inline</h2>
+    <h2 id="code-inline">Inline</h2>
     <p>Wrap inline snippets of code with <code>&lt;code&gt;</code>.</p>
 <div class="bs-example">
   For example, <code>&lt;section&gt;</code> should be wrapped as inline.
@@ -1057,7 +1066,16 @@ base_url: "../"
 For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
-    <h2>Basic block</h2>
+    <h2 id="code-user-input">User input</h2>
+    <p>Use the <code>&lt;kbd&gt;</code> to indicate input that is typically entered via keyboard.</p>
+<div class="bs-example">
+  To switch directories, type <kbd>cd</kbd> followed the name of the directory.
+</div>
+{% highlight html %}
+  To switch directories, type <kbd>cd</kbd> followed the name of the directory.
+{% endhighlight %}
+
+    <h2 id="code-block">Basic block</h2>
     <p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to escape any angle brackets in the code for proper rendering.</p>
 <div class="bs-example">
   <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
@@ -1328,6 +1346,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             </td>
             <td>Indicates a dangerous or potentially negative action</td>
           </tr>
+          <tr>
+            <td>
+              <code>.info</code>
+            </td>
+            <td>Indicates a neutral informative change or action</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -1384,6 +1408,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             <td>Column content</td>
             <td>Column content</td>
           </tr>
+          <tr>
+            <td>8</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+          </tr>
+          <tr class="info">
+            <td>9</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+          </tr>
         </tbody>
       </table>
     </div><!-- /example -->
@@ -1393,6 +1429,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <tr class="success">...</tr>
 <tr class="warning">...</tr>
 <tr class="danger">...</tr>
+<tr class="info">...</tr>
 
 <!-- On cells (`td` or `th`) -->
 <tr>
@@ -1400,6 +1437,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <td class="success">...</td>
   <td class="warning">...</td>
   <td class="danger">...</td>
+  <td class="info">...</td>
 </tr>
 {% endhighlight %}
 
@@ -1567,7 +1605,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
     <h2 id="forms-inline">Inline form</h2>
-    <p>Add <code>.form-inline</code> for left-aligned and inline-block controls for a compact layout.</p>
+    <p>Add <code>.form-inline</code> to your <code>&lt;form&gt;</code> for left-aligned and inline-block controls. <strong>This only applies to forms within viewports that are at least 768px wide.</strong></p>
     <div class="bs-callout bs-callout-danger">
       <h4>Requires custom widths</h4>
       <p>Inputs, selects, and textareas are 100% wide by default in Bootstrap. To use the inline form, you'll have to set a width on the form controls used within.</p>
@@ -1617,7 +1655,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h2 id="forms-horizontal">Horizontal form</h2>
     <p>Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout by adding <code>.form-horizontal</code> to the form. Doing so changes <code>.form-group</code>s to behave as grid rows, so no need for <code>.row</code>.</p>
     <div class="bs-example">
-      <form class="form-horizontal">
+      <form class="form-horizontal" role="form">
         <div class="form-group">
           <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
           <div class="col-sm-10">
@@ -2272,7 +2310,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <div class="bs-callout bs-callout-warning">
       <h4>Responsive images</h4>
-      <p>Looking for how to make images more responsive? <a href="../css#overview-responsive-images">Check out the responsive images section</a> up top.</p>
+      <p>Looking for how to make images more responsive? <a href="#overview-responsive-images">Check out the responsive images section</a> up top.</p>
     </div>
 
   </div>
@@ -2384,7 +2422,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
     <h3 id="helper-classes-show-hide">Showing and hiding content</h3>
-    <p>Force an element to be shown or hidden (<strong>including for screen readers</strong>) with the use of <code>.show</code> and <code>.hidden</code> classes. These classes use <code>!important</code> to avoid specificity conflicts, just like the <a href="../css/#helper-classes-floats">quick floats</a>. They are only available for block level toggling. They can also be used as mixins.</p>
+    <p>Force an element to be shown or hidden (<strong>including for screen readers</strong>) with the use of <code>.show</code> and <code>.hidden</code> classes. These classes use <code>!important</code> to avoid specificity conflicts, just like the <a href="#helper-classes-floats">quick floats</a>. They are only available for block level toggling. They can also be used as mixins.</p>
     <p><code>.hide</code> is available, but it does not always affect screen readers and is <strong>deprecated</strong> as of v3.0.1. Use <code>.hidden</code> or <code>.sr-only</code> instead.</p>
     <p>Furthermore, <code>.invisible</code> can be used to toggle only the visibility of an element, meaning its <code>display</code> is not modified and the element can still affect the flow of the document.</p>
 {% highlight html %}
@@ -2671,4 +2709,464 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div>
     </div>
 
+  </div>
+
+
+
+  <!-- Using Less
+  ================================================== -->
+  <div class="bs-docs-section" id="less">
+    <div class="page-header">
+      <h1>Using LESS</h1>
+    </div>
+    <p class="lead">Bootstrap's CSS is built on LESS, a preprocessor with additional functionality like variables, mixins, and functions for compiling CSS. Thosing looking to use the source LESS files instead of our compiled CSS files can make use of the numerous variables and mixins we use throughout the framework.</p>
+
+    <p>Grid variables and mixins are covered <a href="{{ page.base_url }}css/#grid-less">within the Grid system section</a>.</p>
+
+
+    <h2 id="less-variables">Variables</h2>
+    <p>Variables are used throughout the entire project as a way to centralize and share commonly used values like colors, spacing, or font stacks. For a complete breakdown, please see <a href="{{ page.base_url }}customize/#less-variables-section">the Customizer</a>.</p>
+
+    <h3 id="less-variables-colors">Colors</h3>
+    <p>Easily make use of two color schemes: grayscale and semantic. Grayscale colors provide quick access to commonly used shades of black while semantic include various colors assigned to meaningful contextual values.</p>
+    <div class="bs-example">
+      <div class="color-swatches">
+        <div class="color-swatch gray-darker"></div>
+        <div class="color-swatch gray-dark"></div>
+        <div class="color-swatch gray"></div>
+        <div class="color-swatch gray-light"></div>
+        <div class="color-swatch gray-lighter"></div>
+      </div>
+    </div>
+{% highlight css %}
+@gray-darker:  lighten(#000, 13.5%); // #222
+@gray-dark:    lighten(#000, 20%);   // #333
+@gray:         lighten(#000, 33.5%); // #555
+@gray-light:   lighten(#000, 60%);   // #999
+@gray-lighter: lighten(#000, 93.5%); // #eee
+{% endhighlight %}
+
+    <div class="bs-example">
+      <div class="color-swatches">
+        <div class="color-swatch brand-primary"></div>
+        <div class="color-swatch brand-success"></div>
+        <div class="color-swatch brand-warning"></div>
+        <div class="color-swatch brand-danger"></div>
+        <div class="color-swatch brand-info"></div>
+      </div>
+    </div>
+{% highlight css %}
+@brand-primary: #428bca;
+@brand-success: #5cb85c;
+@brand-warning: #f0ad4e;
+@brand-danger:  #d9534f;
+@brand-info:    #5bc0de;
+{% endhighlight %}
+
+    <p>Use any of these color variables as they are or reassign them to more meaningful variables for your project.</p>
+{% highlight css %}
+// Use as-is
+.masthead {
+  background-color: @brand-primary;
+}
+
+// Reassigned variables in LESS
+@alert-message-background: @brand-info;
+.alert {
+  background-color: @alert-message-background;
+}
+{% endhighlight %}
+
+    <h3 id="less-variables-scaffolding">Scaffolding</h3>
+    <p>A handful of variables for quickly customizing key elements of your site's skeleton.</p>
+{% highlight css %}
+// Scaffolding
+@body-background: #fff;
+@text-color:      @black-50;
+{% endhighlight %}
+
+    <h3 id="less-variables-links">Links</h3>
+    <p>Easily style your links with the right color with only one value.</p>
+{% highlight css %}
+// Variables
+@link-color:       @brand-primary;
+@link-color-hover: darken(@link-color, 15%);
+
+// Usage
+a {
+  color: @link-color;
+  text-decoration: none;
+
+  &:hover {
+    color: @link-color-hover;
+    text-decoration: underline;
+  }
+}
+{% endhighlight %}
+    <p>Note that the <code>@link-color-hover</code> uses a function, another awesome tool from LESS, to automagically create the right hover color. You can use <code>darken</code>, <code>lighten</code>, <code>saturate</code>, and <code>desaturate</code>.</p>
+
+    <h3 id="less-variables-typography">Typography</h3>
+    <p>Easily set your type face, text size, leading, and more with a few quick variables. Bootstrap makes use of these as well to provide easy typographic mixins as well.</p>
+{% highlight css %}
+@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+@font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-base:        @font-family-sans-serif;
+
+@font-size-base:          14px;
+@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
+@font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
+
+@font-size-h1:            floor((@font-size-base * 2.6)); // ~36px
+@font-size-h2:            floor((@font-size-base * 2.15)); // ~30px
+@font-size-h3:            ceil((@font-size-base * 1.7)); // ~24px
+@font-size-h4:            ceil((@font-size-base * 1.25)); // ~18px
+@font-size-h5:            @font-size-base;
+@font-size-h6:            ceil((@font-size-base * 0.85)); // ~12px
+
+@line-height-base:        1.428571429; // 20/14
+@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
+
+@headings-font-family:    inherit;
+@headings-font-weight:    500;
+@headings-line-height:    1.1;
+@headings-color:          inherit;
+{% endhighlight %}
+
+    <h3 id="less-variables-icons">Icons</h3>
+    <p>Two quick variables for customizing the location and filename of your icons.</p>
+{% highlight css %}
+@icon-font-path:          "../fonts/";
+@icon-font-name:          "glyphicons-halflings-regular";
+{% endhighlight %}}
+
+    <h3 id="less-variables-components">Components</h3>
+    <p>Components throughout Bootstrap make use of some default variables for setting common values. Here are the most commonly used.</p>
+{% highlight css %}
+@padding-base-vertical:          6px;
+@padding-base-horizontal:        12px;
+
+@padding-large-vertical:         10px;
+@padding-large-horizontal:       16px;
+
+@padding-small-vertical:         5px;
+@padding-small-horizontal:       10px;
+
+@padding-xs-vertical:            1px;
+@padding-xs-horizontal:          5px;
+
+@line-height-large:              1.33;
+@line-height-small:              1.5;
+
+@border-radius-base:             4px;
+@border-radius-large:            6px;
+@border-radius-small:            3px;
+
+@component-active-color:         #fff;
+@component-active-bg:            @brand-primary;
+
+@caret-width-base:               4px;
+@caret-width-large:              5px;
+{% endhighlight %}}
+
+
+    <h2 id="less-mixins-vendor">Vendor mixins</h2>
+    <p>Vendor mixins are mixins to help support multiple browsers by including all relevant vendor prefixs in your compiled CSS.</p>
+
+
+    <h3 id="mixins-box-sizing">Box-sizing</h3>
+    <p>Reset your components' box model with a single mixin. For context, see this <a href="https://developer.mozilla.org/en-US/docs/CSS/box-sizing" target="_blank">helpful article from Mozilla</a>.</p>
+{% highlight css %}
+.box-sizing(@box-model) {
+  -webkit-box-sizing: @box-model; // Safari <= 5
+     -moz-box-sizing: @box-model; // Firefox <= 19
+          box-sizing: @box-model;
+}
+{% endhighlight %}
+
+    <h3 id="mixins-rounded-corners">Rounded corners</h3>
+    <p>Today all modern browsers support the non-prefixed <code>border-radius</code> property. As such, there is no <code>.border-radius()</code> mixin, but Preboot does include shortcuts for quickly rounding two corners on a particular side of an object.</p>
+{% highlight css %}
+.border-top-radius(@radius) {
+  border-top-right-radius: @radius;
+   border-top-left-radius: @radius;
+}
+.border-right-radius(@radius) {
+  border-bottom-right-radius: @radius;
+     border-top-right-radius: @radius;
+}
+.border-bottom-radius(@radius) {
+  border-bottom-right-radius: @radius;
+   border-bottom-left-radius: @radius;
+}
+.border-left-radius(@radius) {
+  border-bottom-left-radius: @radius;
+     border-top-left-radius: @radius;
+}
+{% endhighlight %}
+
+    <h3 id="mixins-box-shadow">Box (Drop) shadows</h3>
+    <p>If your target audience is using the latest and greatest browsers and devices, be sure to just use the <code>box-shadow</code> property on it's own. If you need support for older Android (pre-v4) and iOS devices (pre-iOS 5), use of the mixin to pick up the required <code>-webkit</code> prefix.</p>
+    <p>Be sure to use <code>rgba()</code> colors in your box shadows so they blend as seamlessly as possible with backgrounds.</p>
+{% highlight css %}
+.box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
+  -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
+          box-shadow: @shadow;
+}
+{% endhighlight %}
+
+    <h3 id="mixins-transitions">Transitions</h3>
+    <p>Three mixins for flexibility. Set all transition information with one, or specify a separate delay and duration as needed.</p>
+{% highlight css %}
+.transition(@transition) {
+  -webkit-transition: @transition;
+          transition: @transition;
+}
+.transition-property(@transition-property) {
+  -webkit-transition-property: @transition-property;
+          transition-property: @transition-property;
+}
+.transition-delay(@transition-delay) {
+  -webkit-transition-delay: @transition-delay;
+          transition-delay: @transition-delay;
+}
+.transition-duration(@transition-duration) {
+  -webkit-transition-duration: @transition-duration;
+          transition-duration: @transition-duration;
+}
+.transition-transform(@transition) {
+  -webkit-transition: -webkit-transform @transition;
+     -moz-transition: -moz-transform @transition;
+       -o-transition: -o-transform @transition;
+          transition: transform @transition;
+}
+{% endhighlight %}
+
+    <h3 id="mixins-transformations">Transformations</h3>
+    <p>Rorate, scale, translate (move), or skew any object.</p>
+{% highlight css %}
+.rotate(@degrees) {
+  -webkit-transform: rotate(@degrees);
+      -ms-transform: rotate(@degrees); // IE9 only
+          transform: rotate(@degrees);
+}
+.scale(@ratio; @ratio-y...) {
+  -webkit-transform: scale(@ratio, @ratio-y);
+      -ms-transform: scale(@ratio, @ratio-y); // IE9 only
+          transform: scale(@ratio, @ratio-y);
+}
+.translate(@x; @y) {
+  -webkit-transform: translate(@x, @y);
+      -ms-transform: translate(@x, @y); // IE9 only
+          transform: translate(@x, @y);
+}
+.skew(@x; @y) {
+  -webkit-transform: skew(@x, @y);
+      -ms-transform: skewX(@x) skewY(@y); // See https://github.com/twbs/bootstrap/issues/4885; IE9+
+          transform: skew(@x, @y);
+}
+.translate3d(@x; @y; @z) {
+  -webkit-transform: translate3d(@x, @y, @z);
+          transform: translate3d(@x, @y, @z);
+}
+
+.rotateX(@degrees) {
+  -webkit-transform: rotateX(@degrees);
+      -ms-transform: rotateX(@degrees); // IE9 only
+          transform: rotateX(@degrees);
+}
+.rotateY(@degrees) {
+  -webkit-transform: rotateY(@degrees);
+      -ms-transform: rotateY(@degrees); // IE9 only
+          transform: rotateY(@degrees);
+}
+.perspective(@perspective) {
+  -webkit-perspective: @perspective;
+     -moz-perspective: @perspective;
+          perspective: @perspective;
+}
+.perspective-origin(@perspective) {
+  -webkit-perspective-origin: @perspective;
+     -moz-perspective-origin: @perspective;
+          perspective-origin: @perspective;
+}
+.transform-origin(@origin) {
+  -webkit-transform-origin: @origin;
+     -moz-transform-origin: @origin;
+      -ms-transform-origin: @origin; // IE9 only
+          transform-origin: @origin;
+}
+{% endhighlight %}
+
+    <h3 id="mixins-opacity">Opacity</h3>
+    <p>Set the opacity for all browsers and provide a <code>filter</code> fallback for IE8.</p>
+{% highlight css %}
+.opacity(@opacity) {
+  opacity: @opacity;
+  // IE8 filter
+  @opacity-ie: (@opacity * 100);
+  filter: ~"alpha(opacity=@{opacity-ie})";
+}
+{% endhighlight %}
+
+    <h3 id="mixins-placeholder">Placeholder text</h3>
+    <p>Provide context for form controls within each field.</p>
+{% highlight css %}
+.placeholder(@color: @input-color-placeholder) {
+  &:-moz-placeholder            { color: @color; } // Firefox 4-18
+  &::-moz-placeholder           { color: @color; } // Firefox 19+
+  &:-ms-input-placeholder       { color: @color; } // Internet Explorer 10+
+  &::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
+}
+{% endhighlight %}
+
+    <h3 id="mixins-columns">Columns</h3>
+    <p>Generate columns via CSS within a single element.</p>
+{% highlight css %}
+.content-columns(@width; @count; @gap) {
+  -webkit-column-width: @width;
+     -moz-column-width: @width;
+          column-width: @width;
+  -webkit-column-count: @count;
+     -moz-column-count: @count;
+          column-count: @count;
+  -webkit-column-gap: @gap;
+     -moz-column-gap: @gap;
+          column-gap: @gap;
+}
+{% endhighlight %}
+
+    <h3 id="mixins-gradients">Gradients</h3>
+    <p>Easily turn any two colors into a background gradient. Get more advanced and set a direction, use three colors, or use a radial gradient. With a single mixin you get all the prefixed syntaxes you'll need.</p>
+{% highlight css %}
+#gradient > .vertical(#333; #000);
+#gradient > .horizontal(#333; #000);
+#gradient > .radial(#333; #000);
+{% endhighlight %}
+    <p>You can also specify the angle of a standard two-color, linear gradient:</p>
+{% highlight css %}
+#gradient > .directional(#333; #000; 45deg);
+{% endhighlight %}
+    <p>If you need a barber-stripe style gradient, that's easy, too. Just specify a single color and we'll overlay a translucent white stripe.</p>
+{% highlight css %}
+#gradient > .striped(#333; #000; 45deg);
+{% endhighlight %}
+    <p>Up the ante and use three colors instead. Set the first color, the second color, the second color's color stop (a decimal value like 0.25), and the third color with these mixins:</p>
+{% highlight css %}
+#gradient > .vertical-three-colors(#777; #333; .25; #000);
+#gradient > .horizontal-three-colors(#777; #333; .25; #000);
+{% endhighlight %}
+    <p><strong>Heads up!</strong> Should you ever need to remove a gradient, be sure to remove any IE-specific <code>filter</code> you may have added. You can do that by using <code>.reset-filter()</code> mixin alignside <code>background-image: none;</code>.</p>
+
+
+    <h2 id="less-mixins-utility">Utility mixins</h2>
+    <p>Utility mixins are mixins that combine otherwise unrelated CSS properties to achieve a specific goal or task.</p>
+
+    <h3 id="mixins-clearfix">Clearfix</h3>
+    <p>Forget adding <code>class="clearfix"</code> to any element and instead add the <code>.clearfix()</code> mixin where appropriate. Uses the <a href="http://nicolasgallagher.com/micro-clearfix-hack/" target="_blank">micro clearfix</a> from <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallager</a>.</p>
+{% highlight css %}
+// Mixin
+.clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Usage
+.container {
+  .clearfix();
+}
+{% endhighlight %}
+
+    <h3 id="mixins-centering">Horizontal centering</h3>
+    <p>Quickly center any element within its parent. <strong>Requires <code>width</code> or <code>max-width</code> to be set.</strong></p>
+{% highlight css %}
+// Mixin
+.center-block() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Usage
+.container {
+  width: 940px;
+  .center-block();
+}
+{% endhighlight %}
+
+    <h3 id="mixins-sizing">Sizing helpers</h3>
+    <p>Specify the dimensions of an object more easily.</p>
+{% highlight css %}
+// Mixins
+.size(@width; @height) {
+  width: @width;
+  height: @height;
+}
+.square(@size) {
+  .size(@size; @size);
+}
+
+// Usage
+.image { .size(400px; 300px); }
+.avatar { .square(48px); }
+{% endhighlight %}
+
+    <h3 id="mixins-resizable">Resizable textareas</h3>
+    <p>Easily configure the resize options for any textarea, or any other element. Defaults to normal browser behavior (<code>both</code>).</p>
+{% highlight css %}
+.resizable(@direction: both) {
+  // Options: horizontal, vertical, both
+  resize: @direction;
+  // Safari fix
+  overflow: auto;
+}
+{% endhighlight %}
+
+    <h3 id="mixins-truncating">Truncating text</h3>
+    <p>Easily truncate text with an ellipsis with a single mixin. <strong>Requires element to be <code>block</code> or <code>inline-block</code> level.</strong></p>
+{% highlight css %}
+// Mixin
+.text-truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Usage
+.branch-name {
+  display: inline-block;
+  max-width: 200px;
+  .text-truncate();
+}
+{% endhighlight %}
+
+    <h3 id="mixins-retina-images">Retina images</h3>
+    <p>Specify two image paths and the @1x image dimensions, and Preboot will provide an @2x media query. <strong>If you have many images to serve, consider writing your retina image CSS manually in a single media query.</strong></p>
+{% highlight css %}
+.img-retina(@file-1x; @file-2x; @width-1x; @height-1x) {
+  background-image: url("@{file-1x}");
+
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+    background-image: url("@{file-2x}");
+    background-size: @width-1x @height-1x;
+  }
+}
+
+// Usage
+.jumbotron {
+  .retina-image("/img/bg-1x.png", "/img/bg-2x.png", 100px, 100px);
+}
+{% endhighlight %}
   </div>
