@@ -2874,7 +2874,7 @@ a {
     <p>Vendor mixins are mixins to help support multiple browsers by including all relevant vendor prefixs in your compiled CSS.</p>
 
 
-    <h3 id="mixins-box-sizing">Box-sizing</h3>
+    <h3 id="less-mixins-box-sizing">Box-sizing</h3>
     <p>Reset your components' box model with a single mixin. For context, see this <a href="https://developer.mozilla.org/en-US/docs/CSS/box-sizing" target="_blank">helpful article from Mozilla</a>.</p>
 {% highlight css %}
 .box-sizing(@box-model) {
@@ -2884,7 +2884,7 @@ a {
 }
 {% endhighlight %}
 
-    <h3 id="mixins-rounded-corners">Rounded corners</h3>
+    <h3 id="less-mixins-rounded-corners">Rounded corners</h3>
     <p>Today all modern browsers support the non-prefixed <code>border-radius</code> property. As such, there is no <code>.border-radius()</code> mixin, but Preboot does include shortcuts for quickly rounding two corners on a particular side of an object.</p>
 {% highlight css %}
 .border-top-radius(@radius) {
@@ -2905,7 +2905,7 @@ a {
 }
 {% endhighlight %}
 
-    <h3 id="mixins-box-shadow">Box (Drop) shadows</h3>
+    <h3 id="less-mixins-box-shadow">Box (Drop) shadows</h3>
     <p>If your target audience is using the latest and greatest browsers and devices, be sure to just use the <code>box-shadow</code> property on it's own. If you need support for older Android (pre-v4) and iOS devices (pre-iOS 5), use of the mixin to pick up the required <code>-webkit</code> prefix.</p>
     <p>Be sure to use <code>rgba()</code> colors in your box shadows so they blend as seamlessly as possible with backgrounds.</p>
 {% highlight css %}
@@ -2915,7 +2915,7 @@ a {
 }
 {% endhighlight %}
 
-    <h3 id="mixins-transitions">Transitions</h3>
+    <h3 id="less-mixins-transitions">Transitions</h3>
     <p>Three mixins for flexibility. Set all transition information with one, or specify a separate delay and duration as needed.</p>
 {% highlight css %}
 .transition(@transition) {
@@ -2942,7 +2942,7 @@ a {
 }
 {% endhighlight %}
 
-    <h3 id="mixins-transformations">Transformations</h3>
+    <h3 id="less-mixins-transformations">Transformations</h3>
     <p>Rorate, scale, translate (move), or skew any object.</p>
 {% highlight css %}
 .rotate(@degrees) {
@@ -2998,7 +2998,7 @@ a {
 }
 {% endhighlight %}
 
-    <h3 id="mixins-animations">Animations</h3>
+    <h3 id="less-mixins-animations">Animations</h3>
     <p>A single mixin for using all CSS3's animation properties in one declarations and other mixins for individual properties.</p>
 {% highlight css %}
 .animation(@animation) {
@@ -3031,7 +3031,7 @@ a {
 }
 {% endhighlight %}
 
-    <h3 id="mixins-opacity">Opacity</h3>
+    <h3 id="less-mixins-opacity">Opacity</h3>
     <p>Set the opacity for all browsers and provide a <code>filter</code> fallback for IE8.</p>
 {% highlight css %}
 .opacity(@opacity) {
@@ -3042,7 +3042,7 @@ a {
 }
 {% endhighlight %}
 
-    <h3 id="mixins-placeholder">Placeholder text</h3>
+    <h3 id="less-mixins-placeholder">Placeholder text</h3>
     <p>Provide context for form controls within each field.</p>
 {% highlight css %}
 .placeholder(@color: @input-color-placeholder) {
@@ -3053,7 +3053,7 @@ a {
 }
 {% endhighlight %}
 
-    <h3 id="mixins-columns">Columns</h3>
+    <h3 id="less-mixins-columns">Columns</h3>
     <p>Generate columns via CSS within a single element.</p>
 {% highlight css %}
 .content-columns(@width; @count; @gap) {
@@ -3069,7 +3069,7 @@ a {
 }
 {% endhighlight %}
 
-    <h3 id="mixins-gradients">Gradients</h3>
+    <h3 id="less-mixins-gradients">Gradients</h3>
     <p>Easily turn any two colors into a background gradient. Get more advanced and set a direction, use three colors, or use a radial gradient. With a single mixin you get all the prefixed syntaxes you'll need.</p>
 {% highlight css %}
 #gradient > .vertical(#333; #000);
@@ -3095,7 +3095,7 @@ a {
     <h2 id="less-mixins-utility">Utility mixins</h2>
     <p>Utility mixins are mixins that combine otherwise unrelated CSS properties to achieve a specific goal or task.</p>
 
-    <h3 id="mixins-clearfix">Clearfix</h3>
+    <h3 id="less-mixins-clearfix">Clearfix</h3>
     <p>Forget adding <code>class="clearfix"</code> to any element and instead add the <code>.clearfix()</code> mixin where appropriate. Uses the <a href="http://nicolasgallagher.com/micro-clearfix-hack/" target="_blank">micro clearfix</a> from <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallager</a>.</p>
 {% highlight css %}
 // Mixin
@@ -3116,7 +3116,7 @@ a {
 }
 {% endhighlight %}
 
-    <h3 id="mixins-centering">Horizontal centering</h3>
+    <h3 id="less-mixins-centering">Horizontal centering</h3>
     <p>Quickly center any element within its parent. <strong>Requires <code>width</code> or <code>max-width</code> to be set.</strong></p>
 {% highlight css %}
 // Mixin
@@ -3133,7 +3133,7 @@ a {
 }
 {% endhighlight %}
 
-    <h3 id="mixins-sizing">Sizing helpers</h3>
+    <h3 id="less-mixins-sizing">Sizing helpers</h3>
     <p>Specify the dimensions of an object more easily.</p>
 {% highlight css %}
 // Mixins
@@ -3150,7 +3150,7 @@ a {
 .avatar { .square(48px); }
 {% endhighlight %}
 
-    <h3 id="mixins-resizable">Resizable textareas</h3>
+    <h3 id="less-mixins-resizable">Resizable textareas</h3>
     <p>Easily configure the resize options for any textarea, or any other element. Defaults to normal browser behavior (<code>both</code>).</p>
 {% highlight css %}
 .resizable(@direction: both) {
@@ -3161,7 +3161,7 @@ a {
 }
 {% endhighlight %}
 
-    <h3 id="mixins-truncating">Truncating text</h3>
+    <h3 id="less-mixins-truncating">Truncating text</h3>
     <p>Easily truncate text with an ellipsis with a single mixin. <strong>Requires element to be <code>block</code> or <code>inline-block</code> level.</strong></p>
 {% highlight css %}
 // Mixin
@@ -3179,7 +3179,7 @@ a {
 }
 {% endhighlight %}
 
-    <h3 id="mixins-retina-images">Retina images</h3>
+    <h3 id="less-mixins-retina-images">Retina images</h3>
     <p>Specify two image paths and the @1x image dimensions, and Preboot will provide an @2x media query. <strong>If you have many images to serve, consider writing your retina image CSS manually in a single media query.</strong></p>
 {% highlight css %}
 .img-retina(@file-1x; @file-2x; @width-1x; @height-1x) {
