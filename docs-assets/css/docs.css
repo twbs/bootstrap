@@ -759,7 +759,7 @@ h1[id] {
 }
 
 /* Typography */
-.bs-example-type .table .info {
+.bs-example-type .table .type-info {
   color: #999;
   vertical-align: middle;
 }
@@ -777,6 +777,11 @@ h1[id] {
 .bs-example-type h5,
 .bs-example-type h6 {
   margin: 0;
+}
+
+/* Contextual background colors */
+.bs-example-bg-classes p {
+  padding: 15px;
 }
 
 /* Images */
