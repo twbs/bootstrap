@@ -3208,6 +3208,7 @@ input[type="button"].btn-block {
   padding-left: 0;
 }
 .input-group .form-control {
+  float: left;
   width: 100%;
   margin-bottom: 0;
 }
@@ -3327,8 +3328,14 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .input-group-btn > .btn {
   position: relative;
 }
+.input-group-btn > .btn:not(:first-of-type):not(:last-of-type) {
+  border-radius: 0;
+}
 .input-group-btn > .btn + .btn {
   margin-left: -4px;
+}
+.input-group-btn > .btn + .btn:last-of-type {
+  margin-left: -5px;
 }
 .input-group-btn > .btn:hover,
 .input-group-btn > .btn:active {
