@@ -2998,6 +2998,39 @@ a {
 }
 {% endhighlight %}
 
+    <h3 id="mixins-animations">Animations</h3>
+    <p>A single mixin for using all CSS3's animation properties in one declarations and other mixins for individual properties.</p>
+{% highlight css %}
+.animation(@animation) {
+  -webkit-animation: @animation;
+          animation: @animation;
+}
+.animation-name(@name) {
+  -webkit-animation-name: @name;
+          animation-name: @name;
+}
+.animation-duration(@duration) {
+  -webkit-animation-duration: @duration;
+          animation-duration: @duration;
+}
+.animation-timing-function(@timing-function) {
+  -webkit-animation-timing-function: @timing-function;
+          animation-timing-function: @timing-function;
+}
+.animation-delay(@delay) {
+  -webkit-animation-delay: @delay;
+          animation-delay: @delay;
+}
+.animation-iteration-count(@iteration-count) {
+  -webkit-animation-iteration-count: @iteration-count;
+          animation-iteration-count: @iteration-count;
+}
+.animation-direction(@direction) {
+  -webkit-animation-direction: @direction;
+          animation-direction: @direction;
+}
+{% endhighlight %}
+
     <h3 id="mixins-opacity">Opacity</h3>
     <p>Set the opacity for all browsers and provide a <code>filter</code> fallback for IE8.</p>
 {% highlight css %}
