@@ -117,7 +117,25 @@
 // -------------------------
 .input-group-btn {
   position: relative;
+  // Jankily prevent input button groups from wrapping with `white-space` and
+  // `font-size` in combination with `inline-block` on buttons.
+  font-size: 0;
   white-space: nowrap;
+
+  // Negative margin for spacing, position for bringing hovered/focused/actived
+  // element above the siblings.
+  > .btn {
+    position: relative;
+    + .btn {
+      margin-left: -1px;
+    }
+    // Bring the "active" button to the front
+    &:hover,
+    &:focus,
+    &:active {
+      z-index: 2;
+    }
+  }
 
   // Negative margin to only have a 1px border between the two
   &:first-child > .btn {
@@ -125,27 +143,5 @@
   }
   &:last-child > .btn {
     margin-left: -1px;
-  }
-
-  > .btn {
-    position: relative;
-
-    &:not(:first-of-type):not(:last-of-type) {
-      border-radius: 0;
-    }
-
-    // Jankily prevent input button groups from wrapping
-    + .btn {
-      margin-left: -4px;
-    }
-    + .btn:last-of-type {
-      margin-left: -5px;
-    }
-
-    // Bring the "active" button to the front
-    &:hover,
-    &:active {
-      z-index: 2;
-    }
   }
 }
