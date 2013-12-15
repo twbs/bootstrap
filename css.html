@@ -857,17 +857,17 @@ base_url: "../"
     <p>Style and content changes for simple variations on a standard <code>&lt;blockquote&gt;</code>.</p>
 
     <h4>Naming a source</h4>
-    <p>Add <code>&lt;small&gt;</code> tag or <code>.small</code> class for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
+    <p>Add a <code>&lt;footer&gt;</code> for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
     <div class="bs-example">
       <blockquote>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+        <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
       </blockquote>
     </div>
 {% highlight html %}
 <blockquote>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+  <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote>
 {% endhighlight %}
 
@@ -876,7 +876,7 @@ base_url: "../"
     <div class="bs-example" style="overflow: hidden;">
       <blockquote class="pull-right">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+        <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
       </blockquote>
     </div>
 {% highlight html %}
