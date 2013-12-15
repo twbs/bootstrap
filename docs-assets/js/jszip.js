@@ -16,7 +16,9 @@ Usage:
    base64zip = zip.generate();
 
 **/
-"use strict";
+// We use strict, but it should not be placed outside of a function because
+// the environment is shared inside the browser.
+// "use strict";
 
 /**
  * Representation a of zip file in js
@@ -93,8 +95,8 @@ JSZip.support = {
       catch(e) {}
 
       try {
-         var builder = new (window.BlobBuilder || window.WebKitBlobBuilder ||
-                            window.MozBlobBuilder || window.MSBlobBuilder)();
+         var BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder || window.MSBlobBuilder;
+         var builder = new BlobBuilder();
          builder.append(buffer);
          return builder.getBlob('application/zip').size === 0;
       }
@@ -161,7 +163,7 @@ JSZip.prototype = (function () {
          return file.asBinary();
       }
       return result;
-   }
+   };
 
    /**
     * Transform this._data into a string.
@@ -287,9 +289,11 @@ JSZip.prototype = (function () {
     */
    var prepareFileAttrs = function (o) {
       o = o || {};
+      /*jshint -W041 */
       if (o.base64 === true && o.binary == null) {
          o.binary = true;
       }
+      /*jshint +W041 */
       o = extend(o, JSZip.defaults);
       o.date = o.date || new Date();
       if (o.compression !== null) o.compression = o.compression.toUpperCase();
@@ -341,7 +345,9 @@ JSZip.prototype = (function () {
          }
       }
 
-      return this.files[name] = new ZipObject(name, data, o);
+      var object = new ZipObject(name, data, o);
+      this.files[name] = object;
+      return object;
    };
 
 
@@ -399,7 +405,7 @@ JSZip.prototype = (function () {
          } else if (file._data.compressionMethod === compression.magic) {
             result.compressedContent = file._data.getCompressedContent();
          } else {
-            content = file._data.getContent()
+            content = file._data.getContent();
             // need to decompress / recompress
             result.compressedContent = compression.compress(JSZip.utils.transformTo(compression.compressInputType, content));
          }
@@ -756,8 +762,9 @@ JSZip.prototype = (function () {
             case "nodebuffer" :
                writer = new Uint8ArrayWriter(localDirLength + centralDirLength + dirEnd.length);
                break;
-            case "base64" :
-            default : // case "string" :
+            // case "base64" :
+            // case "string" :
+            default :
                writer = new StringWriter(localDirLength + centralDirLength + dirEnd.length);
                break;
          }
@@ -1066,8 +1073,8 @@ JSZip.compressions = {
 
          try {
             // deprecated, browser only, old way
-            var builder = new (window.BlobBuilder || window.WebKitBlobBuilder ||
-                               window.MozBlobBuilder || window.MSBlobBuilder)();
+            var BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder || window.MSBlobBuilder;
+            var builder = new BlobBuilder();
             builder.append(buffer);
             return builder.getBlob('application/zip');
          }
@@ -1095,7 +1102,7 @@ JSZip.compressions = {
     */
    function identity(input) {
       return input;
-   };
+   }
 
    /**
     * Fill in an array with a string.
@@ -1108,7 +1115,7 @@ JSZip.compressions = {
          array[i] = str.charCodeAt(i) & 0xFF;
       }
       return array;
-   };
+   }
 
    /**
     * Transform an array-like object to a string.
@@ -1165,7 +1172,7 @@ JSZip.compressions = {
          }
       }
       return result.join("");
-   };
+   }
 
    /**
     * Copy the data from an array-like to an other array-like.
@@ -1178,7 +1185,7 @@ JSZip.compressions = {
          arrayTo[i] = arrayFrom[i];
       }
       return arrayTo;
-   };
+   }
 
    // a matrix containing functions to transform everything into everything.
    var transform = {};

@@ -1,7 +1,7 @@
 {
     "name": "bootstrap"
   , "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development."
-  , "version": "3.0.0"
+  , "version": "3.0.3"
   , "keywords": ["bootstrap", "css"]
   , "homepage": "http://getbootstrap.com"
   , "author": "Twitter, Inc."
@@ -20,19 +20,37 @@
     }
   ]
   , "devDependencies": {
-      "browserstack-runner": "~0.0.12"
-    , "btoa": "~1.1.1"
+      "btoa": "~1.1.1"
     , "grunt": "~0.4.1"
+    , "grunt-banner": "~0.2.0"
     , "grunt-contrib-clean": "~0.5.0"
     , "grunt-contrib-concat": "~0.3.0"
     , "grunt-contrib-connect": "~0.5.0"
     , "grunt-contrib-copy": "~0.4.1"
-    , "grunt-contrib-jshint": "~0.6.4"
+    , "grunt-contrib-csslint": "~0.2.0"
+    , "grunt-contrib-jshint": "~0.7.0"
+    , "grunt-contrib-less": "~0.8.0"
     , "grunt-contrib-qunit": "~0.3.0"
     , "grunt-contrib-uglify": "~0.2.4"
     , "grunt-contrib-watch": "~0.5.3"
-    , "grunt-html-validation": "~0.1.5"
+    , "grunt-csscomb": "~1.1.0"
+    , "grunt-html-validation": "~0.1.6"
     , "grunt-jekyll": "~0.4.0"
-    , "grunt-recess": "~0.4.0"
+    , "grunt-jscs-checker": "~0.2.5"
+    , "grunt-saucelabs": "~4.1.2"
+    , "grunt-sed": "~0.1.1"
+    , "regexp-quote": "~0.0.0"
+    , "load-grunt-tasks": "~0.2.0"
+  }
+  , "jspm": {
+      "main": "js/bootstrap"
+    , "directories": { "lib": "dist" }
+    , "shim": {
+        "js/bootstrap": {
+            "imports": "jquery"
+          , "exports": "$"
+        }
+    }
+    , "buildConfig": { "uglify": true }
   }
 }

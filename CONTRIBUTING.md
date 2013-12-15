@@ -17,7 +17,7 @@ We only accept issues that are bug reports or feature requests. Bugs must be iso
 
 ## Pull requests
 
-- CSS changes must be done in `.less` files first, never just the compiled `.css` files
+- CSS changes must be done in `.less` files first, never just in the compiled `.css` files
 - If modifying the `.less` files, always recompile and commit the compiled files `bootstrap.css` and `bootstrap.min.css`
 - Try not to pollute your pull request with unintended changes--keep them simple and small
 - Try to share which browsers your code has been tested in before submitting a pull request
@@ -33,12 +33,13 @@ We only accept issues that are bug reports or feature requests. Bugs must be iso
 - Double quotes only, never single quotes
 - Always use proper indentation
 - Use tags and elements appropriate for an HTML5 doctype (e.g., self-closing tags)
+- Use CDNs and HTTPS for third-party JS when possible. We don't use protocol-relative URLs in this case because they break when viewing the page locally via `file://`.
 
 ### CSS
 
 - Adhere to the [RECESS CSS property order](http://markdotto.com/2011/11/29/css-property-order/)
 - Multiple-line approach (one property and value per line)
-- Always a space after a property's colon (.e.g, `display: block;` and not `display:block;`)
+- Always a space after a property's colon (e.g., `display: block;` and not `display:block;`)
 - End all lines with a semi-colon
 - For multiple, comma-separated selectors, place each selector on its own line
 - Attribute selectors, like `input[type="text"]` should always wrap the attribute's value in double quotes, for consistency and safety (see this [blog post on unquoted attribute values](http://mathiasbynens.be/notes/unquoted-attribute-values) that can lead to XSS attacks).
@@ -55,4 +56,24 @@ We only accept issues that are bug reports or feature requests. Bugs must be iso
 
 ## License
 
-By contributing your code, you agree to license your contribution under the terms of the APLv2: https://github.com/twbs/bootstrap/blob/master/LICENSE
+With v3.1, we're moving from the Apache 2 to the MIT license for the Bootstrap code (not the docs). We're in the process of collecting permissions from all Bootstrap contributors with code still part of the project to make this happen. For details, please see [#2054](https://github.com/twbs/bootstrap/issues/2054).
+
+By contributing your code, you agree to dual-license your contribution under the [Apache 2](https://github.com/twbs/bootstrap/blob/master/LICENSE) and [MIT](https://github.com/twbs/bootstrap/blob/master/LICENSE-MIT) licenses.
+
+
+
+## Release checklist
+
+1. Close ship list issue for the release.
+2. Close the milestone for the release.
+3. Open new release issue that includes this checklist.
+4. Ping folks to coordinate release (mainly @jdorfman for BootstrapCDN).
+5. Update version numbers using `grunt change-version-number --oldver=A.B.C --newver=X.Y.Z`. Review the changes and stage them manually.
+6. Run `grunt` one last time.
+7. Push to `master` branch.
+8. Merge `master` into `gh-pages`.
+9. Generate `bootstrap-X.Y.Z-dist.zip` file for release.
+10. Create release on GitHub with `/dist/` folder and release notes.
+11. Push `gh-pages`.
+12. Publish blog post.
+13. Tweet tweet.
