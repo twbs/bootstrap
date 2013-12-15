@@ -14,8 +14,8 @@
 
 // Panel contents
 .panel-body {
-  padding: 15px;
-  .clearfix();
+  padding: @panel-body-padding;
+  &:extend(.clearfix all);
 }
 
 
@@ -91,6 +91,10 @@
       }
     }
   }
+  > .table-responsive {
+    border: 0;
+    margin-bottom: 0;
+  }
 }
 
 
@@ -98,7 +102,7 @@
 .panel-heading {
   padding: 10px 15px;
   border-bottom: 1px solid transparent;
-  .border-top-radius(@panel-border-radius - 1);
+  .border-top-radius((@panel-border-radius - 1));
 
   > .dropdown .dropdown-toggle {
     color: inherit;
@@ -122,7 +126,7 @@
   padding: 10px 15px;
   background-color: @panel-footer-bg;
   border-top: 1px solid @panel-inner-border;
-  .border-bottom-radius(@panel-border-radius - 1);
+  .border-bottom-radius((@panel-border-radius - 1));
 }
 
 

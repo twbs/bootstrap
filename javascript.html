@@ -30,7 +30,7 @@ base_url: "../"
     <h3 id="js-data-attrs">Data attributes</h3>
     <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first-class API and should be your first consideration when using a plugin.</p>
 
-    <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the document namespaced with <code>data-api</code>. This looks like this:
+    <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the document namespaced with <code>data-api</code>. This looks like this:</p>
 {% highlight js %}
 $(document).off('.data-api')
 {% endhighlight %}
@@ -50,7 +50,7 @@ $('.btn.danger').button('toggle').addClass('fat')
 {% highlight js %}
 $('#myModal').modal()                      // initialized with defaults
 $('#myModal').modal({ keyboard: false })   // initialized with no keyboard
-$('#myModal').modal('show')                // initializes and invokes show immediately</p>
+$('#myModal').modal('show')                // initializes and invokes show immediately
 {% endhighlight %}
 
     <p>Each plugin also exposes its raw constructor on a <code>Constructor</code> property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.</p>
@@ -74,7 +74,7 @@ $('#myModal').on('show.bs.modal', function (e) {
 
     <div class="bs-callout bs-callout-warning" id="callout-third-party-libs">
       <h4>Third-party libraries</h4>
-      <p><strong>Bootstrap does not officially support third-party JavaScript libraries</strong> like Prototype or jQuery UI. Despite <code>.noConflict</code> and namespaced events, there may be compatibility problems that you need to fix on your own. Ask on the <a href="http://groups.google.com/group/twitter-bootstrap">mailing list</a> if you need help.</p>
+      <p><strong>Bootstrap does not officially support third-party JavaScript libraries</strong> like Prototype or jQuery UI. Despite <code>.noConflict</code> and namespaced events, there may be compatibility problems that you need to fix on your own.</p>
     </div>
   </div>
 
@@ -110,7 +110,7 @@ $('#myModal').on('show.bs.modal', function (e) {
     </div>
     <div class="bs-callout bs-callout-warning">
       <h4>Mobile device caveats</h4>
-      <p>There are some caveats regarding using modals on mobile devices. <a href="{{ page.base_url }}getting-started#mobile-modals">See our browser support docs</a> for details.</p>
+      <p>There are some caveats regarding using modals on mobile devices. <a href="{{ page.base_url }}getting-started#fixed-position-keyboards">See our browser support docs</a> for details.</p>
     </div>
 
     <h3>Static example</h3>
@@ -223,9 +223,9 @@ $('#myModal').on('show.bs.modal', function (e) {
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    </div>
+  </div>
+</div>
 {% endhighlight %}
 
 
@@ -234,6 +234,67 @@ $('#myModal').on('show.bs.modal', function (e) {
       <p>Be sure to add <code>role="dialog"</code> to <code>.modal</code>, <code>aria-labelledby="myModalLabel"</code> attribute to reference the modal title, and <code>aria-hidden="true"</code> to tell assistive technologies to skip the modal's DOM elements.</p>
       <p>Additionally, you may give a description of your modal dialog with <code>aria-describedby</code> on <code>.modal</code>.</p>
     </div>
+
+    <h2 id="modals-sizes">Optional sizes</h2>
+    <p>Modals have two optional sizes, available via modifier classes to be placed on a <code>.modal-dialog</code>.</p>
+    <div class="bs-example">
+      <button class="btn btn-primary" data-toggle="modal" data-target=".bs-modal-lg">Large modal</button>
+      <button class="btn btn-primary" data-toggle="modal" data-target=".bs-modal-sm">Small modal</button>
+    </div>
+{% highlight html %}
+<!-- Large modal -->
+<button class="btn btn-primary" data-toggle="modal" data-target=".bs-modal-lg">Large modal</button>
+
+<div class="modal fade bs-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
+
+<!-- Small modal -->
+<button class="btn btn-primary" data-toggle="modal" data-target=".bs-modal-sm">Small modal</button>
+
+<div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
+{% endhighlight %}
+
+    <!--  Modal content for the above example -->
+    <div class="modal fade bs-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Large modal</h4>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Small modal</h4>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 
     <h2 id="modals-usage">Usage</h2>
     <p>The modal plugin toggles your hidden content on demand, via data attributes or JavaScript. It also adds <code>.model-open</code> to the <code>&lt;body&gt;</code> to override default scrolling behavior and generates a <code>.modal-backdrop</code> to provide a click area for dismissing shown modals when clicking outside the modal.</p>
@@ -415,7 +476,7 @@ $('#myModal').on('hidden.bs.modal', function (e) {
       </nav> <!-- /navbar-example -->
     </div> <!-- /example -->
 
-    <h3>Within tabs</h3>
+    <h3>Within pills</h3>
     <div class="bs-example">
       <ul class="nav nav-pills">
         <li class="active"><a href="#">Regular link</a></li>
@@ -449,7 +510,7 @@ $('#myModal').on('hidden.bs.modal', function (e) {
             <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
           </ul>
         </li>
-      </ul> <!-- /tabs -->
+      </ul> <!-- /pills -->
     </div> <!-- /example -->
 
 
@@ -843,6 +904,15 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</button>
       </div>
     </div><!-- /example -->
+{% highlight html %}
+<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button>
+
+<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</button>
+
+<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
+
+<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</button>
+{% endhighlight %}
 
     <div class="bs-callout bs-callout-danger">
       <h4>Opt-in functionality</h4>
@@ -865,9 +935,17 @@ $('#example').tooltip(options)
 {% endhighlight %}
 
     <h3>Markup</h3>
-    <p>The generated markup of a tooltip is rather simple, though it does require a position (by default, set to <code>top</code> by the plugin).</p>
+    <p>The required markup for a tooltip is only a <code>data</code> attribute and <code>title</code> on the HTML element you wish to have a tooltip. The generated markup of a tooltip is rather simple, though it does require a position (by default, set to <code>top</code> by the plugin).</p>
+    <div class="bs-callout bs-callout-warning">
+      <h4>Multiple-line links</h4>
+      <p>Sometimes you want to add a tooltip to a hyperlink that wraps multiple lines. The default behavior of the tooltip plugin is to center it horizontally and vertically. Add <code>white-space: nowrap;</code> to your anchors to avoid this.</p>
+    </div>
 {% highlight html linenos %}
-<div class="tooltip">
+<!-- HTML to write -->
+<a href="#" data-toggle="tooltip" title="first tooltip">Hover over me</a>
+
+<!-- Generated markup by the plugin -->
+<div class="tooltip top">
   <div class="tooltip-inner">
     Tooltip!
   </div>
@@ -949,11 +1027,6 @@ $('#example').tooltip(options)
       <h4>Data attributes for individual tooltips</h4>
       <p>Options for individual tooltips can alternatively be specified through the use of data attributes, as explained above.</p>
     </div>
-
-    <h3>Markup</h3>
-{% highlight html %}
-<a href="#" data-toggle="tooltip" title="first tooltip">Hover over me</a>
-{% endhighlight %}
 
     <h3>Methods</h3>
 
@@ -1100,6 +1173,29 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
         </button>
       </div>
     </div><!-- /example -->
+{% highlight html %}
+<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on left
+</button>
+
+<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on top
+</button>
+
+<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on bottom
+</button>
+
+<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on right
+</button>
+{% endhighlight %}
+
+    <div class="bs-callout bs-callout-warning">
+      <h4>Multiple-line links</h4>
+      <p>Sometimes you want to add a tooltip to a hyperlink that wraps multiple lines. The default behavior of the tooltip plugin is to center it horizontally and vertically. Add <code>white-space: nowrap;</code> to your anchors to avoid this.</p>
+    </div>
 
 
     <h2 id="popovers-usage">Usage</h2>
@@ -1123,7 +1219,7 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
             <td>animation</td>
             <td>boolean</td>
             <td>true</td>
-            <td>apply a CSS fade transition to the tooltip</td>
+            <td>apply a CSS fade transition to the popover</td>
           </tr>
           <tr>
             <td>html</td>
@@ -1141,7 +1237,7 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
             <td>selector</td>
             <td>string</td>
             <td>false</td>
-            <td>if a selector is provided, tooltip objects will be delegated to the specified targets. in practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="http://jsfiddle.net/fScua/">an informative example</a>.</td>
+            <td>if a selector is provided, tooltip objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="http://jsfiddle.net/fScua/">an informative example</a>.</td>
           </tr>
           <tr>
             <td>trigger</td>
@@ -1334,14 +1430,23 @@ $('#my-alert').bind('closed.bs.alert', function () {
     <h4>Stateful</h4>
     <p>Add <code>data-loading-text="Loading..."</code> to use a loading state on a button.</p>
     <div class="bs-example" style="padding-bottom: 24px;">
-      <button type="button" id="fat-btn" data-loading-text="Loading..." class="btn btn-primary">
+      <button type="button" id="loading-example-btn" data-loading-text="Loading..." class="btn btn-primary">
         Loading state
       </button>
     </div><!-- /example -->
 {% highlight html %}
-<button type="button" data-loading-text="Loading..." class="btn btn-primary">
+<button type="button" id="loading-example-btn" data-loading-text="Loading..." class="btn btn-primary">
   Loading state
 </button>
+<script>
+  $('#loading-example-btn').click(function () {
+    var btn = $(this);
+    btn.button('loading');
+    $.ajax(...).always(function () {
+      btn.button('reset');
+    });
+  });
+</script>
 {% endhighlight %}
 
     <h4>Single toggle</h4>
@@ -1433,14 +1538,23 @@ $('.btn').button()
       <p>You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.</p>
     </div>
 {% highlight html %}
-<button type="button" class="btn" data-toggle="button">...</button>
+<button type="button" class="btn btn-primary" data-toggle="button">...</button>
 {% endhighlight %}
 
     <h4>$().button('loading')</h4>
     <p>Sets button state to loading - disables button and swaps text to loading text. Loading text should be defined on the button element using the data attribute <code>data-loading-text</code>.
     </p>
 {% highlight html %}
-<button type="button" class="btn" data-loading-text="loading stuff...">...</button>
+<button id="loading-example-btn" type="button" class="btn btn-primary" data-loading-text="loading stuff...">...</button>
+<script>
+  $('#loading-example-btn').click(function () {
+    var btn = $(this);
+    btn.button('loading');
+    $.ajax(...).always(function () {
+      btn.button('reset');
+    });
+  });
+</script>
 {% endhighlight %}
 
     <div class="bs-callout bs-callout-danger">
@@ -1454,7 +1568,7 @@ $('.btn').button()
     <h4>$().button(string)</h4>
     <p>Resets button state - swaps text to any data defined text state.</p>
 {% highlight html %}
-<button type="button" class="btn" data-complete-text="finished!" >...</button>
+<button type="button" class="btn btn-primary" data-complete-text="finished!" >...</button>
 <script>
   $('.btn').button('complete')
 </script>
@@ -1941,7 +2055,7 @@ $('#myCarousel').on('slide.bs.carousel', function () {
     <ol>
       <li>To start, the plugin adds <code>.affix-top</code> to indicate the element is in it's top-most position. At this point no CSS positioning is required.</li>
       <li>Scrolling past the element you want affixed should trigger the actual affixing. This is where <code>.affix</code> replaces <code>.affix-top</code> and sets <code>position: fixed;</code> (provided by Bootstrap's code CSS).</li>
-      <li>If a bottom offset is defined, scrolling past that should replace <code>.affix</code> with <code>.affix-bottom</code>. Since offsets are optional, setting one requires you to set the appropriate CSS. In this case, add <code>position: absolute;</code> when necessary. The plugin uses the data attribute or JavaScript option to determine where to position the elemtn from there.</li>
+      <li>If a bottom offset is defined, scrolling past that should replace <code>.affix</code> with <code>.affix-bottom</code>. Since offsets are optional, setting one requires you to set the appropriate CSS. In this case, add <code>position: absolute;</code> when necessary. The plugin uses the data attribute or JavaScript option to determine where to position the element from there.</li>
     </ol>
     <p>Follow the above steps to set your CSS for either of the usage options below.</p>
 

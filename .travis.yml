@@ -1,11 +1,24 @@
 language: node_js
 node_js:
   - 0.10
-before_script:
-  - gem install jekyll
-  - npm install -g grunt-cli
+before_install:
+  - time sudo pip install --use-mirrors -r ./test-infra/requirements.txt
+install:
+  - if [ "$TWBS_TEST" = validate-html ]; then time gem install jekyll; fi
+  - time npm install -g grunt-cli
+  - time ./test-infra/node_modules_cache.py download || time npm install
+after_script:
+  - if [ "$TWBS_TEST" = core ]; then time ./test-infra/node_modules_cache.py upload; fi
 env:
   global:
-  - secure: Besg41eyU+2mfxrywQ4ydOShMdc34ImaO0S0ENP+aCOBuyNBIgP59wy5tBMmyai2/8eInYeVps4Td96mWInMMxzTe3Bar7eTLG5tWVKRSr/wc4NBPZ/ppoPAmCEsz9Y+VptRH9/FO8n7hsL9EFZ+xBKbG+C0SccGoyBDpA5j7/w=
-  - secure: Ptiv7phCImFP3ALIz+sMQzrZg8k7C1gLZbFBhWxjnQr3g06wIfX3Ls5y9OHvxid+lOZZjISui3wzBVgpVHqwHUYf96+r0mo6/mJ+F4ffUmShZANVaIMD/JRTnXhUQJbvntGLvxn1EYWPdNM+2IHJrMipnjHxU9tkgAnlel4Zdew=
-  - TWBS_HAVE_OWN_BROWSERSTACK_KEY: ""
+    - SAUCE_USERNAME: bootstrap
+    - secure: "pJkBwnuae9dKU5tEcCqccfS1QQw7/meEcfz63fM7ba7QJNjoA6BaXj08L5Z3Vb5vBmVPwBawxo5Hp0jC0r/Z/O0hGnAmz/Cz09L+cy7dSAZ9x4hvZePSja/UAusaB5ogMoO8l2b773MzgQeSmrLbExr9BWLeqEfjC2hFgdgHLaQ="
+    - secure: "gqjqISbxBJK6byFbsmr1AyP1qoWH+rap06A2gI7v72+Tn2PU2nYkIMUkCvhZw6K889jv+LhQ/ybcBxDOXHpNCExCnSgB4dcnmYp+9oeNZb37jSP0rQ+Ib4OTLjzc3/FawE/fUq5kukZTC7porzc/k0qJNLAZRx3YLALmK1GIdUY="
+    - secure: "Gghh/e3Gsbj1+4RR9Lh2aR/xJl35HWiHqlPIeSUqE9D7uDCVTAwNce/dGL3Ew7uJPfJ6Pgr70wD3zgu3stw0Zmzayax0hiDtGwcQCxVIER08wqGANK9C2Q7PYJkNTNtiTo6ehKWbdV4Z+/U+TEYyQfpQTDbAFYk/vVpsdjp0Lmc="
+    - secure: "RTbRdx4G/2OTLfrZtP1VbRljxEmd6A1F3GqXboeQTldsnAlwpsES65es5CE3ub/rmixLApOY9ot7OPmNixFgC2Y8xOsV7lNCC62QVpmqQEDyGFFQKb3yO6/dmwQxdsCqGfzf9Np6Wh5V22QFvr50ZLKLd7Uhd9oXMDIk/z1MJ3o="
+  matrix:
+    - TWBS_TEST=core
+    - TWBS_TEST=validate-html
+    - TWBS_TEST=sauce-js-unit
+matrix:
+  fast_finish: true
