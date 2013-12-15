@@ -4919,6 +4919,7 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1050;
+  -webkit-overflow-scrolling: touch;
   display: none;
   overflow: auto;
   overflow-y: scroll;
