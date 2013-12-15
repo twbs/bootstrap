@@ -602,8 +602,6 @@ blockquote {
 }
 blockquote p {
   font-size: 17.5px;
-  font-weight: 300;
-  line-height: 1.25;
 }
 blockquote p:last-child {
   margin-bottom: 0;
@@ -2267,27 +2265,6 @@ input[type="submit"].btn-block,
 input[type="reset"].btn-block,
 input[type="button"].btn-block {
   width: 100%;
-}
-.fade {
-  opacity: 0;
-  -webkit-transition: opacity .15s linear;
-          transition: opacity .15s linear;
-}
-.fade.in {
-  opacity: 1;
-}
-.collapse {
-  display: none;
-}
-.collapse.in {
-  display: block;
-}
-.collapsing {
-  position: relative;
-  height: 0;
-  overflow: hidden;
-  -webkit-transition: height .35s ease;
-          transition: height .35s ease;
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
@@ -5439,6 +5416,27 @@ button.close {
   .carousel-indicators {
     bottom: 20px;
   }
+}
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity .15s linear;
+          transition: opacity .15s linear;
+}
+.fade.in {
+  opacity: 1;
+}
+.collapse {
+  display: none;
+}
+.collapse.in {
+  display: block;
+}
+.collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: height .35s ease;
+          transition: height .35s ease;
 }
 .clearfix:before,
 .clearfix:after,

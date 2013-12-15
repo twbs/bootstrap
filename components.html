@@ -1552,6 +1552,7 @@ base_url: "../"
 
 
     <h2 id="input-groups-basic">Basic example</h2>
+    <p>Place one add-on or button on either side of an input. You may also place one on both sides of an input. <strong class="text-danger">We do not support mutiple add-ons on a single side.</strong></p>
     <form class="bs-example bs-example-form" role="form">
       <div class="input-group">
         <span class="input-group-addon">@</span>
@@ -2203,6 +2204,11 @@ base_url: "../"
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
 {% endhighlight %}
+
+    <div class="bs-callout bs-callout-warning">
+      <h4>Mobile device caveats</h4>
+      <p>There are some caveats regarding using form controls within fixed elements on mobile devices. <a href="{{ page.base_url }}getting-started#support-fixed-position-keyboards">See our browser support docs</a> for details.</p>
+    </div>
 
     <div class="bs-callout bs-callout-danger">
       <h4>Always add labels</h4>
