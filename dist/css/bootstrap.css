@@ -3208,6 +3208,7 @@ input[type="button"].btn-block {
   padding-left: 0;
 }
 .input-group .form-control {
+  float: left;
   width: 100%;
   margin-bottom: 0;
 }
