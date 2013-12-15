@@ -1871,6 +1871,9 @@ textarea.input-lg {
   .form-inline select.form-control {
     width: auto;
   }
+  .form-inline > select.form-control {
+    width: auto;
+  }
   .form-inline .radio,
   .form-inline .checkbox {
     display: inline-block;
@@ -3784,6 +3787,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
     vertical-align: middle;
   }
   .navbar-form select.form-control {
+    width: auto;
+  }
+  .navbar-form > select.form-control {
     width: auto;
   }
   .navbar-form .radio,
