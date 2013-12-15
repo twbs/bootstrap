@@ -133,6 +133,7 @@ th {
 // Reset default table behavior
 
 table col[class*="col-"] {
+  position: static; // Prevent border hiding in Firefox and IE9/10 (see https://github.com/twbs/bootstrap/issues/11623)
   float: none;
   display: table-column;
 }
@@ -152,25 +153,12 @@ table {
 // Exact selectors below required to override `.table-striped` and prevent
 // inheritance to nested tables.
 
-.table {
-  > thead,
-  > tbody,
-  > tfoot {
-    > tr {
-      > td.active,
-      > th.active,
-      &.active > td,
-      &.active > th  {
-        background-color: @table-bg-active;
-      }
-    }
-  }
-}
-
 // Generate the contextual variants
-.table-row-variant(success; @state-success-bg; @state-success-border);
-.table-row-variant(danger; @state-danger-bg; @state-danger-border);
-.table-row-variant(warning; @state-warning-bg; @state-warning-border);
+.table-row-variant(active; @table-bg-active);
+.table-row-variant(success; @state-success-bg);
+.table-row-variant(warning; @state-warning-bg);
+.table-row-variant(danger; @state-danger-bg);
+.table-row-variant(info; @state-info-bg);
 
 
 // Responsive tables
