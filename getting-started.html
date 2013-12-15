@@ -753,11 +753,11 @@ bootstrap/
   ================================================== -->
   <div class="bs-docs-section">
     <div class="page-header">
-      <h1 id="browsers">Browser support</h1>
+      <h1 id="support">Browser and device support</h1>
     </div>
     <p class="lead">Bootstrap is built to work best in the latest desktop and mobile browsers, meaning older browsers might display differently styled, though fully functional, renderings of certain components.</p>
 
-    <h3>Supported browsers</h3>
+    <h3 id="support-browsers">Supported browsers</h3>
     <p>Specifically, we support the latest versions of the following:</p>
     <ul>
       <li>Chrome (Mac, Windows, iOS, and Android)</li>
@@ -768,7 +768,7 @@ bootstrap/
     </ul>
     <p>Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 7, though they are not officially supported.</p>
 
-    <h3>Internet Explorer 8 and 9</h3>
+    <h3 id="support-ie8-ie9">Internet Explorer 8 and 9</h3>
     <p>Internet Explorer 8 and 9 are also supported, however, please be aware that some CSS3 properties and HTML5 elements are not fully supported by these browsers. In addition, <strong>Internet Explorer 8 requires the use of <a href="https://github.com/scottjehl/Respond">Respond.js</a> to enable media query support.</strong></p>
     <div class="table-responsive">
       <table class="table table-bordered table-striped">
@@ -811,7 +811,7 @@ bootstrap/
 
     <p>Visit <a href="http://caniuse.com/">Can I use...</a> for details on browser support of CSS3 and HTML5 features.</p>
 
-    <h3>Internet Explorer 8 and Respond.js</h3>
+    <h3 id="support-ie8-respondjs">Internet Explorer 8 and Respond.js</h3>
     <p>Beware of the following caveats when using Respond.js in your development and production environments for Internet Explorer 8.</p>
     <h4 id="respond-js-x-domain">Respond.js and cross-domain CSS</h4>
     <p>Using Respond.js with CSS hosted on a different (sub)domain (for example, on a CDN) requires some additional setup. <a href="https://github.com/scottjehl/Respond/blob/master/README.md#cdnx-domain-setup">See the Respond.js docs</a> for details.</p>
@@ -820,10 +820,10 @@ bootstrap/
     <h4 id="respond-import">Respond.js and <code>@import</code></h4>
     <p>Respond.js doesn't work with CSS that's referenced via <code>@import</code>. In particular, some Drupal configurations are known to use <code>@import</code>. <a href="https://github.com/scottjehl/Respond/blob/master/README.md#support--caveats">See the Respond.js docs</a> for details.</p>
 
-    <h3>Internet Explorer 8 and box-sizing</h3>
+    <h3 id="support-ie8-box-sizing">Internet Explorer 8 and box-sizing</h3>
     <p>IE8 does not fully support <code>box-sizing: border-box;</code> when combined with <code>min-width</code>, <code>max-width</code>, <code>min-height</code>, or <code>max-height</code>. For that reason, as of v3.0.1, we no longer use <code>max-width</code> on <code>.container</code>s.</p>
 
-    <h3 id="ie-compat-modes">IE Compatibility modes</h3>
+    <h3 id="support-ie-compatibility-modes">IE Compatibility modes</h3>
     <p>Bootstrap is not supported in the old Internet Explorer compatibility modes. To be sure you're using the latest rendering mode for IE, consider including the appropriate <code>&lt;meta&gt;</code> tag in your pages:</p>
 {% highlight html %}
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -832,7 +832,7 @@ bootstrap/
     <p>This tag is included in all Bootstrap's documentation and examples to ensure the best rendering possible in each supported version of Internet Explorer.</p>
     <p>See <a href="http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge">this StackOverflow question</a> for more information.</p>
 
-    <h3 id="ie-10-width">Internet Explorer 10 in Windows 8 and Windows Phone 8</h3>
+    <h3 id="support-ie10-width">Internet Explorer 10 in Windows 8 and Windows Phone 8</h3>
     <p>Internet Explorer 10 doesn't differentiate <strong>device width</strong> from <strong>viewport width</strong>, and thus doesn't properly apply the media queries in Bootstrap's CSS. Normally you'd just add a quick snippet of CSS to fix this:</p>
 {% highlight css %}
 @-ms-viewport       { width: device-width; }
@@ -860,7 +860,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     <p>For more information and usage guidelines, read <a href="http://timkadlec.com/2013/01/windows-phone-8-and-device-width/">Windows Phone 8 and Device-Width</a>.</p>
     <p>As a heads up, we include this in the Bootstrap docs as an example.</p>
 
-    <h3 id="safari-percentages">Safari percent rounding</h3>
+    <h3 id="support-safari-percentages">Safari percent rounding</h3>
     <p>As of Safari v6.1 for OS X and Safari for iOS v7.0.1, Safari's rendering engine has some trouble with the number of decimal places used in our <code>.col-*-1</code> grid classes. So if you have 12 individual grid columns, you'll notice that they come up short compared to other rows of columns. We can't do much here (<a href="https://github.com/twbs/bootstrap/issues/9282">see #9282</a>) but you do have some options:</p>
     <ul>
       <li>Add <code>.pull-right</code> to your last grid column to get the hard-right alignment</li>
@@ -868,14 +868,30 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     </ul>
     <p>We'll keep an eye on this though and update our code if we have an easy solution.</p>
 
-    <h3 id="mobile-modals">Modals, navbars, and mobile devices</h3>
+    <h3 id="support-fixed-position-keyboards">Modals, navbars, and virtual keyboards</h3>
     <h4>Overflow and scrolling</h4>
     <p>Support for <code>overflow: hidden</code> on the <code>&lt;body&gt;</code> element is quite limited in iOS and Android. To that end, when you scroll past the top or bottom of a modal in either of those devices' browsers, the <code>&lt;body&gt;</code> content will begin to scroll.</p>
     <h4>Virtual keyboards</h4>
     <p>Also, note that if you're using inputs in your modal or navbar, iOS has a rendering bug that doesn't update the position of fixed elements when the virtual keyboard is triggered. A few workarounds for this include transforming your elements to <code>position: absolute</code> or invoking a timer on focus to try to correct the positioning manually. This is not handled by Bootstrap, so it is up to you to decide which solution is best for your application.</p>
 
-    <h3 id="browser-zoom">Browser zooming</h3>
+    <h3 id="support-browser-zoom">Browser zooming</h3>
     <p>Page zooming inevitably presents rendering artifacts in some components, both in Bootstrap and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.</p>
+
+    <h3 id="support-android-stock-browser">Android stock browser</h3>
+    <p>Out of the box, Android 4.1 (and even some newer releases apparently) ship with the Browser app as the default web browser of choice (as opposed to Chrome). Unfortunately, the Browser app has lots of bugs and inconsistencies with CSS in general.</p>
+    <h4>Select menus</h4>
+    <p>On <code>&lt;select&gt;</code> elements, the Android stock browser will not display the side controls if there is a <code>border-radius</code> and/or <code>border</code> applied. Use the snippet of code below to remove the offending CSS and render the <code>&lt;select&gt;</code> as an unstyled element on the Android stock broswer. The useragent sniffing avoids interfernece with Chrome, Safari, and Mozilla browsers.</p>
+{% highlight html %}
+<script>
+var nua = navigator.userAgent;
+var is_android = ((nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1) && !(nua.indexOf('Chrome') > -1));
+if(is_android) {
+  $('select.form-control').removeClass('form-control').css('width', '100%');
+}
+</script>
+{% endhighlight %}
+    <p>Want to see an example? <a href="http://jsbin.com/OyaqoDO/2">Check out this JS Bin demo.</a></p>
+
   </div>
 
 
