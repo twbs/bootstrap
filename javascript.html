@@ -223,9 +223,9 @@ $('#myModal').on('show.bs.modal', function (e) {
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    </div>
+  </div>
+</div>
 {% endhighlight %}
 
 
@@ -234,6 +234,67 @@ $('#myModal').on('show.bs.modal', function (e) {
       <p>Be sure to add <code>role="dialog"</code> to <code>.modal</code>, <code>aria-labelledby="myModalLabel"</code> attribute to reference the modal title, and <code>aria-hidden="true"</code> to tell assistive technologies to skip the modal's DOM elements.</p>
       <p>Additionally, you may give a description of your modal dialog with <code>aria-describedby</code> on <code>.modal</code>.</p>
     </div>
+
+    <h2 id="modals-sizes">Optional sizes</h2>
+    <p>Modals have two optional sizes, available via modifier classes to be placed on a <code>.modal-dialog</code>.</p>
+    <div class="bs-example">
+      <button class="btn btn-primary" data-toggle="modal" data-target=".bs-modal-lg">Large modal</button>
+      <button class="btn btn-primary" data-toggle="modal" data-target=".bs-modal-sm">Small modal</button>
+    </div>
+{% highlight html %}
+<!-- Large modal -->
+<button class="btn btn-primary" data-toggle="modal" data-target=".bs-modal-lg">Large modal</button>
+
+<div class="modal fade bs-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
+
+<!-- Small modal -->
+<button class="btn btn-primary" data-toggle="modal" data-target=".bs-modal-sm">Small modal</button>
+
+<div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
+{% endhighlight %}
+
+    <!--  Modal content for the above example -->
+    <div class="modal fade bs-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Large modal</h4>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Small modal</h4>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 
     <h2 id="modals-usage">Usage</h2>
     <p>The modal plugin toggles your hidden content on demand, via data attributes or JavaScript. It also adds <code>.model-open</code> to the <code>&lt;body&gt;</code> to override default scrolling behavior and generates a <code>.modal-backdrop</code> to provide a click area for dismissing shown modals when clicking outside the modal.</p>
