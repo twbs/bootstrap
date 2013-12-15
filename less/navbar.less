@@ -15,7 +15,7 @@
   border: 1px solid transparent;
 
   // Prevent floats from breaking the navbar
-  .clearfix();
+  &:extend(.clearfix all);
 
   @media (min-width: @grid-float-breakpoint) {
     border-radius: @navbar-border-radius;
@@ -29,7 +29,7 @@
 // styling of responsive aspects.
 
 .navbar-header {
-  .clearfix();
+  &:extend(.clearfix all);
 
   @media (min-width: @grid-float-breakpoint) {
     float: left;
@@ -54,7 +54,7 @@
   padding-left:  @navbar-padding-horizontal;
   border-top: 1px solid transparent;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
-  .clearfix();
+  &:extend(.clearfix all);
   -webkit-overflow-scrolling: touch;
 
   &.in {
@@ -159,6 +159,13 @@
   &:hover,
   &:focus {
     text-decoration: none;
+  }
+
+  // Prevent Glyphicons from increasing height of navbar
+  > .glyphicon {
+    float: left;
+    margin-top: -2px;
+    margin-right: 5px;
   }
 
   @media (min-width: @grid-float-breakpoint) {
@@ -327,13 +334,6 @@
 // Menu position and menu caret support for dropups via extra dropup class
 .navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {
   .border-bottom-radius(0);
-}
-
-// Right aligned menus need alt position
-.navbar-nav.pull-right > li > .dropdown-menu,
-.navbar-nav > li > .dropdown-menu.pull-right {
-  left: auto;
-  right: 0;
 }
 
 

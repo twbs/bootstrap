@@ -17,6 +17,11 @@
   }
 
   .form-control {
+    // IE9 fubars the placeholder attribute in text inputs and the arrows on
+    // select elements in input groups. To fix it, we float the input. Details:
+    // https://github.com/twbs/bootstrap/issues/11561#issuecomment-28936855
+    float: left;
+
     width: 100%;
     margin-bottom: 0;
   }
@@ -121,16 +126,26 @@
   &:last-child > .btn {
     margin-left: -1px;
   }
-}
-.input-group-btn > .btn {
-  position: relative;
-  // Jankily prevent input button groups from wrapping
-  + .btn {
-    margin-left: -4px;
-  }
-  // Bring the "active" button to the front
-  &:hover,
-  &:active {
-    z-index: 2;
+
+  > .btn {
+    position: relative;
+
+    &:not(:first-of-type):not(:last-of-type) {
+      border-radius: 0;
+    }
+
+    // Jankily prevent input button groups from wrapping
+    + .btn {
+      margin-left: -4px;
+    }
+    + .btn:last-of-type {
+      margin-left: -5px;
+    }
+
+    // Bring the "active" button to the front
+    &:hover,
+    &:active {
+      z-index: 2;
+    }
   }
 }

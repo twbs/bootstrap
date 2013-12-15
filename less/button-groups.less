@@ -37,18 +37,17 @@
 
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
-  .clearfix();
+  margin-left: -5px; // Offset the first child's margin
+  &:extend(.clearfix all);
 
-  .btn-group {
+  .btn-group,
+  .input-group {
     float: left;
   }
-  // Space out series of button groups
   > .btn,
-  > .btn-group {
-    + .btn,
-    + .btn-group {
-      margin-left: 5px;
-    }
+  > .btn-group,
+  > .input-group {
+    margin-left: 5px;
   }
 }
 
@@ -157,7 +156,7 @@
 
   // Clear floats so dropdown menus can be properly placed
   > .btn-group {
-    .clearfix();
+    &:extend(.clearfix all);
     > .btn {
       float: none;
     }

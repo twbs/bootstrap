@@ -18,7 +18,7 @@
  * ======================================================================== */
 
 
-+function ($) { "use strict";
++function ($) { 'use strict';
 
   // MODAL CLASS DEFINITION
   // ======================
@@ -149,7 +149,6 @@
   }
 
   Modal.prototype.backdrop = function (callback) {
-    var that    = this
     var animate = this.$element.hasClass('fade') ? 'fade' : ''
 
     if (this.isShown && this.options.backdrop) {

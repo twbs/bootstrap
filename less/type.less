@@ -61,7 +61,7 @@ p {
 
 .lead {
   margin-bottom: @line-height-computed;
-  font-size: floor(@font-size-base * 1.15);
+  font-size: floor((@font-size-base * 1.15));
   font-weight: 200;
   line-height: 1.4;
 
@@ -81,7 +81,13 @@ small,
 // Undo browser default styling
 cite    { font-style: normal; }
 
-// Contextual emphasis
+// Alignment
+.text-left           { text-align: left; }
+.text-right          { text-align: right; }
+.text-center         { text-align: center; }
+.text-justify        { text-align: justify; }
+
+// Contextual colors
 .text-muted {
   color: @text-muted;
 }
@@ -116,11 +122,42 @@ cite    { font-style: normal; }
   }
 }
 
-// Alignment
-.text-left           { text-align: left; }
-.text-right          { text-align: right; }
-.text-center         { text-align: center; }
-.text-justify        { text-align: justify; }
+// Contextual backgrounds
+// For now we'll leave these alongside the text classes until v4 when we can
+// safely shift things around (per SemVer rules).
+.bg-primary {
+  // Given the contrast here, this is the only class to have it's color inverted
+  // automatically.
+  color: #fff;
+  background-color: @brand-primary;
+  a&:hover {
+    background-color: darken(@brand-primary, 10%);
+  }
+}
+.bg-warning {
+  background-color: @state-warning-bg;
+  a&:hover {
+    background-color: darken(@state-warning-bg, 10%);
+  }
+}
+.bg-danger {
+  background-color: @state-danger-bg;
+  a&:hover {
+    background-color: darken(@state-danger-bg, 10%);
+  }
+}
+.bg-success {
+  background-color: @state-success-bg;
+  a&:hover {
+    background-color: darken(@state-success-bg, 10%);
+  }
+}
+.bg-info {
+  background-color: @state-info-bg;
+  a&:hover {
+    background-color: darken(@state-info-bg, 10%);
+  }
+}
 
 
 // Page header
@@ -202,7 +239,7 @@ dd {
     }
     dd {
       margin-left: @component-offset-horizontal;
-      .clearfix(); // Clear the floated `dt` if an empty `dd` is present
+      &:extend(.clearfix all); // Clear the floated `dt` if an empty `dd` is present
     }
   }
 }
@@ -229,8 +266,6 @@ blockquote {
   border-left: 5px solid @blockquote-border-color;
   p {
     font-size: (@font-size-base * 1.25);
-    font-weight: 300;
-    line-height: 1.25;
   }
   p:last-child {
     margin-bottom: 0;
