@@ -67,7 +67,7 @@
   background-color: @modal-backdrop-bg;
   // Fade for backdrop
   &.fade { .opacity(0); }
-  &.in { .opacity(.5); }
+  &.in { .opacity(@modal-backdrop-opacity); }
 }
 
 // Modal header
@@ -119,8 +119,9 @@
 }
 
 // Scale up the modal
-@media screen and (min-width: @screen-sm-min) {
+@media (min-width: @screen-sm-min) {
 
+  // Automatically set modal's width for larger viewports
   .modal-dialog {
     width: 600px;
     margin: 30px auto;
@@ -128,5 +129,9 @@
   .modal-content {
     .box-shadow(0 5px 15px rgba(0,0,0,.5));
   }
+
+  // Modal sizes
+  .modal-sm { width: @modal-sm; }
+  .modal-lg { width: @modal-lg; }
 
 }
