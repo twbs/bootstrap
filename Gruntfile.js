@@ -193,6 +193,8 @@ module.exports = function (grunt) {
 
     validation: {
       options: {
+        charset: 'utf-8',
+        doctype: 'HTML5',
         reset: true,
         relaxerror: [
           'Bad value X-UA-Compatible for attribute http-equiv on element meta.',
