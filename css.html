@@ -1877,10 +1877,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
-    <h2 id="forms-control-states">Form states</h2>
-    <p>Provide feedback to users or visitors with basic feedback states on form controls and labels.</p>
-
-    <h3 id="forms-input-focus">Input focus</h3>
+    <h2 id="forms-control-focus">Input focus</h2>
     <p>We remove the default <code>outline</code> styles on some form controls and apply a <code>box-shadow</code> in its place for <code>:focus</code>.</p>
     <div class="bs-example">
       <form role="form">
@@ -1891,7 +1888,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <input class="form-control" id="focusedInput" type="text" value="This is focused...">
 {% endhighlight %}
 
-    <h3 id="forms-disabled-inputs">Disabled inputs</h3>
+
+    <h2 id="forms-control-disabled">Disabled inputs</h2>
     <p>Add the <code>disabled</code> attribute on an input to prevent user input and trigger a slightly different look.</p>
     <div class="bs-example">
       <form role="form">
@@ -1960,7 +1958,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </form>
 {% endhighlight %}
 
-    <h3 id="forms-validation">Validation states</h3>
+
+    <h2 id="forms-control-validation">Validation states</h2>
     <p>Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element. Any <code>.control-label</code>, <code>.form-control</code>, and <code>.help-block</code> within that element will receive the validation styles.</p>
 
     <div class="bs-example">
@@ -1993,6 +1992,89 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <input type="text" class="form-control" id="inputError">
 </div>
 {% endhighlight %}
+
+    <h3>With optional icons</h3>
+    <p>You can also add optional feedback icons with the addition of an extra class and the right icon.</p>
+    <div class="bs-example">
+      <form role="form">
+        <div class="form-group has-success has-feedback">
+          <label class="control-label" for="inputSuccess">Input with success</label>
+          <input type="text" class="form-control" id="inputSuccess">
+          <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+        </div>
+        <div class="form-group has-warning has-feedback">
+          <label class="control-label" for="inputWarning">Input with warning</label>
+          <input type="text" class="form-control" id="inputWarning">
+          <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+        </div>
+        <div class="form-group has-error has-feedback">
+          <label class="control-label" for="inputError">Input with error</label>
+          <input type="text" class="form-control" id="inputError">
+          <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+        </div>
+      </form>
+    </div>
+{% highlight html %}
+<div class="form-group has-success has-feedback">
+  <label class="control-label" for="inputSuccess">Input with success</label>
+  <input type="text" class="form-control" id="inputSuccess">
+  <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+</div>
+<div class="form-group has-warning has-feedback">
+  <label class="control-label" for="inputWarning">Input with warning</label>
+  <input type="text" class="form-control" id="inputWarning">
+  <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+</div>
+<div class="form-group has-error has-feedback">
+  <label class="control-label" for="inputError">Input with error</label>
+  <input type="text" class="form-control" id="inputError">
+  <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+</div>
+{% endhighlight %}
+
+    <p>Optional icons also work on horizontal and inline forms.</p>
+    <div class="bs-example">
+      <form class="form-horizontal" role="form">
+        <div class="form-group has-success has-feedback">
+          <label class="control-label col-sm-3" for="inputSuccess">Input with success</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="inputSuccess">
+            <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+          </div>
+        </div>
+      </form>
+    </div>
+{% highlight html %}
+<form class="form-horizontal" role="form">
+  <div class="form-group has-success has-feedback">
+    <label class="control-label col-sm-3" for="inputSuccess">Input with success</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="inputSuccess">
+      <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+    </div>
+  </div>
+</form>
+{% endhighlight %}
+
+    <div class="bs-example">
+      <form class="form-inline" role="form">
+        <div class="form-group has-success has-feedback">
+          <label class="control-label" for="inputSuccess">Input with success</label>
+          <input type="text" class="form-control" id="inputSuccess">
+          <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+        </div>
+      </form>
+    </div>
+{% highlight html %}
+<form class="form-inline" role="form">
+  <div class="form-group has-success has-feedback">
+    <label class="control-label" for="inputSuccess">Input with success</label>
+    <input type="text" class="form-control" id="inputSuccess">
+    <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+  </div>
+</form>
+{% endhighlight %}
+
 
 
     <h2 id="forms-control-sizes">Control sizing</h2>
