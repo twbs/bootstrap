@@ -155,6 +155,14 @@ output {
   }
 }
 
+// Special styles for iOS date input
+//
+// In Mobile Safari, date inputs require a pixel line-height that matches the
+// given height of the input.
+input[type="date"] {
+  line-height: @input-height-base;
+}
+
 
 // Form groups
 //
@@ -226,7 +234,12 @@ input[type="checkbox"],
   }
 }
 
+
 // Form control sizing
+//
+// Build on `.form-control` with modifier classes to decrease or increase the
+// height and font-size of form controls.
+
 .input-sm {
   .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
 }
@@ -240,15 +253,35 @@ input[type="checkbox"],
 //
 // Apply contextual and semantic states to individual form controls.
 
-// Warning
+.has-feedback {
+  // Enable absolute positioning
+  position: relative;
+
+  // Ensure icons don't overlap text
+  .form-control {
+    padding-right: (@input-height-base * 1.25);
+  }
+
+  // Feedback icon (requires .glyphicon classes)
+  .form-control-feedback {
+    position: absolute;
+    top: (@line-height-computed + 5); // Height of the `label` and its margin
+    right: 0;
+    display: block;
+    width: @input-height-base;
+    height: @input-height-base;
+    line-height: @input-height-base;
+    text-align: center;
+  }
+}
+
+// Feedback states
 .has-warning {
   .form-control-validation(@state-warning-text; @state-warning-text; @state-warning-bg);
 }
-// Error
 .has-error {
   .form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
 }
-// Success
 .has-success {
   .form-control-validation(@state-success-text; @state-success-text; @state-success-bg);
 }
@@ -294,7 +327,7 @@ input[type="checkbox"],
   // Kick in the inline
   @media (min-width: @screen-sm) {
     // Inline-block all the things for "inline"
-    .form-group  {
+    .form-group {
       display: inline-block;
       margin-bottom: 0;
       vertical-align: middle;
@@ -303,12 +336,13 @@ input[type="checkbox"],
     // In navbar-form, allow folks to *not* use `.form-group`
     .form-control {
       display: inline-block;
+      width: auto; // Prevent labels from stacking above inputs in `.form-group`
       vertical-align: middle;
     }
 
-    // Override `width: 100%;` when not within a `.form-group`
-    select.form-control {
-      width: auto;
+    .control-label {
+      margin-bottom: 0;
+      vertical-align: middle;
     }
 
     // Remove default margin on radios/checkboxes that were used for stacking, and
@@ -326,6 +360,14 @@ input[type="checkbox"],
     .checkbox input[type="checkbox"] {
       float: none;
       margin-left: 0;
+    }
+
+    // Validation states
+    //
+    // Reposition the icon because it's now within a grid column and columns have
+    // `position: relative;` on them. Also accounts for the grid gutter padding.
+    .has-feedback .form-control-feedback {
+      top: 0;
     }
   }
 }
@@ -369,5 +411,14 @@ input[type="checkbox"],
     .control-label {
       text-align: right;
     }
+  }
+
+  // Validation states
+  //
+  // Reposition the icon because it's now within a grid column and columns have
+  // `position: relative;` on them. Also accounts for the grid gutter padding.
+  .has-feedback .form-control-feedback {
+    top: 0;
+    right: (@grid-gutter-width / 2);
   }
 }

@@ -673,6 +673,35 @@ h1[id] {
 
 
 /*
+ * Color swatches
+ *
+ * Color swatches and associated values for our grayscale and brand colors.
+ */
+
+.color-swatches {
+  margin: 0 -5px;
+  overflow: hidden; /* clearfix */
+}
+.color-swatch {
+  float: left;
+  width:  100px;
+  height: 100px;
+  margin: 0 5px;
+  border-radius: 3px;
+}
+.color-swatches .gray-darker   { background-color: #222; }
+.color-swatches .gray-dark     { background-color: #333; }
+.color-swatches .gray          { background-color: #555; }
+.color-swatches .gray-light    { background-color: #999; }
+.color-swatches .gray-lighter  { background-color: #eee; }
+.color-swatches .brand-primary { background-color: #428bca; }
+.color-swatches .brand-success { background-color: #5cb85c; }
+.color-swatches .brand-warning { background-color: #f0ad4e; }
+.color-swatches .brand-danger  { background-color: #d9534f; }
+.color-swatches .brand-info    { background-color: #5bc0de; }
+
+
+/*
  * Team members
  *
  * Avatars, names, and usernames for core team.
@@ -805,7 +834,7 @@ h1[id] {
 }
 
 /* Typography */
-.bs-example-type .table .info {
+.bs-example-type .table .type-info {
   color: #999;
   vertical-align: middle;
 }
@@ -823,6 +852,11 @@ h1[id] {
 .bs-example-type h5,
 .bs-example-type h6 {
   margin: 0;
+}
+
+/* Contextual background colors */
+.bs-example-bg-classes p {
+  padding: 15px;
 }
 
 /* Images */
@@ -1065,6 +1099,7 @@ h1[id] {
   margin-bottom: 10px;
 }
 .responsive-utilities-test span {
+  display: block;
   padding: 15px 10px;
   font-size: 14px;
   font-weight: bold;
