@@ -1783,6 +1783,22 @@ select.input-lg {
 textarea.input-lg {
   height: auto;
 }
+.has-feedback {
+  position: relative;
+}
+.has-feedback .form-control {
+  padding-right: 42.5px;
+}
+.has-feedback .form-control-feedback {
+  position: absolute;
+  top: 25px;
+  right: 0;
+  display: block;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+}
 .has-warning .help-block,
 .has-warning .control-label,
 .has-warning .radio,
@@ -1805,6 +1821,9 @@ textarea.input-lg {
   color: #8a6d3b;
   background-color: #fcf8e3;
   border-color: #8a6d3b;
+}
+.has-warning .form-control-feedback {
+  color: #8a6d3b;
 }
 .has-error .help-block,
 .has-error .control-label,
@@ -1829,6 +1848,9 @@ textarea.input-lg {
   background-color: #f2dede;
   border-color: #a94442;
 }
+.has-error .form-control-feedback {
+  color: #a94442;
+}
 .has-success .help-block,
 .has-success .control-label,
 .has-success .radio,
@@ -1852,6 +1874,9 @@ textarea.input-lg {
   background-color: #dff0d8;
   border-color: #3c763d;
 }
+.has-success .form-control-feedback {
+  color: #3c763d;
+}
 .form-control-static {
   margin-bottom: 0;
 }
@@ -1869,13 +1894,12 @@ textarea.input-lg {
   }
   .form-inline .form-control {
     display: inline-block;
+    width: auto;
     vertical-align: middle;
   }
-  .form-inline select.form-control {
-    width: auto;
-  }
-  .form-inline > select.form-control {
-    width: auto;
+  .form-inline .control-label {
+    margin-bottom: 0;
+    vertical-align: middle;
   }
   .form-inline .radio,
   .form-inline .checkbox {
@@ -1889,6 +1913,9 @@ textarea.input-lg {
   .form-inline .checkbox input[type="checkbox"] {
     float: none;
     margin-left: 0;
+  }
+  .form-inline .has-feedback .form-control-feedback {
+    top: 0;
   }
 }
 .form-horizontal .control-label,
@@ -1915,6 +1942,10 @@ textarea.input-lg {
   .form-horizontal .control-label {
     text-align: right;
   }
+}
+.form-horizontal .has-feedback .form-control-feedback {
+  top: 0;
+  right: 15px;
 }
 .btn {
   display: inline-block;
@@ -2310,9 +2341,6 @@ input[type="button"].btn-block {
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-.glyphicon:empty {
-  width: 1em;
 }
 .glyphicon-asterisk:before {
   content: "\2a";
@@ -3783,13 +3811,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
   }
   .navbar-form .form-control {
     display: inline-block;
+    width: auto;
     vertical-align: middle;
   }
-  .navbar-form select.form-control {
-    width: auto;
-  }
-  .navbar-form > select.form-control {
-    width: auto;
+  .navbar-form .control-label {
+    margin-bottom: 0;
+    vertical-align: middle;
   }
   .navbar-form .radio,
   .navbar-form .checkbox {
@@ -3803,6 +3830,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
   .navbar-form .checkbox input[type="checkbox"] {
     float: none;
     margin-left: 0;
+  }
+  .navbar-form .has-feedback .form-control-feedback {
+    top: 0;
   }
 }
 @media (max-width: 767px) {
