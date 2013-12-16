@@ -95,6 +95,17 @@
     border: 0;
     margin-bottom: 0;
   }
+  > .table-striped > tbody > tr:last-child,
+  > .table-responsive > .table-striped > tbody > tr:last-child {
+    td:first-child,
+    th:first-child {
+      border-bottom-left-radius: (@panel-border-radius - 1);
+    }
+    td:last-child,
+    th:last-child {
+      border-bottom-left-radius: (@panel-border-radius - 1);
+    }
+  }
 }
 
 
