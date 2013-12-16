@@ -245,7 +245,7 @@ $('#myModal').on('show.bs.modal', function (e) {
 <!-- Large modal -->
 <button class="btn btn-primary" data-toggle="modal" data-target=".bs-modal-lg">Large modal</button>
 
-<div class="modal fade bs-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade bs-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       ...
@@ -256,7 +256,7 @@ $('#myModal').on('show.bs.modal', function (e) {
 <!-- Small modal -->
 <button class="btn btn-primary" data-toggle="modal" data-target=".bs-modal-sm">Small modal</button>
 
-<div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       ...
@@ -266,13 +266,13 @@ $('#myModal').on('show.bs.modal', function (e) {
 {% endhighlight %}
 
     <!--  Modal content for the above example -->
-    <div class="modal fade bs-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade bs-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Large modal</h4>
+            <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4>
           </div>
           <div class="modal-body">
             ...
@@ -280,13 +280,13 @@ $('#myModal').on('show.bs.modal', function (e) {
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    <div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
 
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Small modal</h4>
+            <h4 class="modal-title" id="mySmallModalLabel">Small modal</h4>
           </div>
           <div class="modal-body">
             ...
