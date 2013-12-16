@@ -2,15 +2,19 @@ language: node_js
 node_js:
   - 0.10
 before_install:
-  - time sudo pip install --use-mirrors -r ./test-infra/requirements.txt
+  - time sudo pip install --use-mirrors -r test-infra/requirements.txt
+  - rvm use 1.9.3 --fuzzy
+  - if [ "$TWBS_TEST" = validate-html ]; then echo "ruby=$(basename $(rvm gemdir)) jekyll=$JEKYLL_VERSION" > pseudo_Gemfile.lock; fi
 install:
-  - if [ "$TWBS_TEST" = validate-html ]; then time gem install jekyll; fi
   - time npm install -g grunt-cli
-  - time ./test-infra/node_modules_cache.py download package.json ./node_modules || time npm install
+  - time ./test-infra/s3_cache.py download 'node.js packages' package.json ./node_modules || time npm install
+  - if [ "$TWBS_TEST" = validate-html ]; then time ./test-infra/s3_cache.py download rubygems pseudo_Gemfile.lock $(rvm gemdir) || gem install -N jekyll -v $JEKYLL_VERSION; fi
 after_script:
-  - if [ "$TWBS_TEST" = core ]; then time ./test-infra/node_modules_cache.py upload package.json ./node_modules; fi
+  - if [ "$TWBS_TEST" = core ]; then time ./test-infra/s3_cache.py upload 'node.js packages' package.json ./node_modules; fi
+  - if [ "$TWBS_TEST" = validate-html ]; then time ./test-infra/s3_cache.py upload rubygems pseudo_Gemfile.lock $(rvm gemdir); fi
 env:
   global:
+    - JEKYLL_VERSION: 1.4.1
     - SAUCE_USERNAME: bootstrap
     - secure: "pJkBwnuae9dKU5tEcCqccfS1QQw7/meEcfz63fM7ba7QJNjoA6BaXj08L5Z3Vb5vBmVPwBawxo5Hp0jC0r/Z/O0hGnAmz/Cz09L+cy7dSAZ9x4hvZePSja/UAusaB5ogMoO8l2b773MzgQeSmrLbExr9BWLeqEfjC2hFgdgHLaQ="
     - secure: "gqjqISbxBJK6byFbsmr1AyP1qoWH+rap06A2gI7v72+Tn2PU2nYkIMUkCvhZw6K889jv+LhQ/ybcBxDOXHpNCExCnSgB4dcnmYp+9oeNZb37jSP0rQ+Ib4OTLjzc3/FawE/fUq5kukZTC7porzc/k0qJNLAZRx3YLALmK1GIdUY="
