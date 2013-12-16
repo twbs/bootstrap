@@ -6,9 +6,9 @@ before_install:
 install:
   - if [ "$TWBS_TEST" = validate-html ]; then time gem install jekyll; fi
   - time npm install -g grunt-cli
-  - time ./test-infra/node_modules_cache.py download || time npm install
+  - time ./test-infra/node_modules_cache.py download package.json ./node_modules || time npm install
 after_script:
-  - if [ "$TWBS_TEST" = core ]; then time ./test-infra/node_modules_cache.py upload; fi
+  - if [ "$TWBS_TEST" = core ]; then time ./test-infra/node_modules_cache.py upload package.json ./node_modules; fi
 env:
   global:
     - SAUCE_USERNAME: bootstrap
