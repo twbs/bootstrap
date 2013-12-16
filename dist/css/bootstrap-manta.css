@@ -7176,9 +7176,11 @@ p {
 h1,
 h2,
 h3,
+h4,
 .h1,
 .h2,
-.h3 {
+.h3,
+.h4 {
   font-family: 'vegurlight', arial, helvetica, clean, sans-serif;
 }
 
@@ -7485,4 +7487,77 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   text-overflow: ellipsis;
   white-space: nowrap;
   vertical-align: middle;
+}
+
+.cover-photo {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.flipcard {
+  position: relative;
+  z-index: 1;
+  -webkit-transition: all 0.25s ease-in-out;
+          transition: all 0.25s ease-in-out;
+  -webkit-perspective: 600px;
+     -moz-perspective: 600px;
+          perspective: 600px;
+}
+
+.flipcard .front,
+.flipcard .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  float: none;
+  width: inherit;
+  height: inherit;
+  -webkit-transition: all 0.25s ease-in-out;
+          transition: all 0.25s ease-in-out;
+  -webkit-backface-visibility: hidden;
+     -moz-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+     -moz-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.flipcard .front {
+  z-index: 9;
+}
+
+.flipcard .back {
+  z-index: 8;
+  -webkit-transform: rotate3d(0, 1, 0, -180deg);
+     -moz-transform: rotate3d(0, 1, 0, -180deg);
+          transform: rotate3d(0, 1, 0, -180deg);
+}
+
+.flipcard.flip .front,
+.flipcard.flipcard-flip-hover:hover .front {
+  z-index: 9;
+  -webkit-transform: rotate3d(0, 1, 0, 180deg);
+     -moz-transform: rotate3d(0, 1, 0, 180deg);
+          transform: rotate3d(0, 1, 0, 180deg);
+}
+
+.flipcard.flip .back,
+.flipcard.flipcard-flip-hover:hover .back {
+  z-index: 10;
+  -webkit-transform: rotate3d(0, 1, 0, 0deg);
+     -moz-transform: rotate3d(0, 1, 0, 0deg);
+          transform: rotate3d(0, 1, 0, 0deg);
+}
+
+.flipcard.flipcard-scale.flipcard-scale-hover:hover {
+  z-index: 10;
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.flipcard.flipcard-scale.flipcard-scale-hover:hover .front {
+  -webkit-box-shadow: outset 0 0 5px 0 rgba(0, 0, 0, 0.5);
+          box-shadow: outset 0 0 5px 0 rgba(0, 0, 0, 0.5);
 }

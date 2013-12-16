@@ -80,8 +80,8 @@ p {
   margin: 0 0 floor(@line-height-computed * 0.75);
 }
 
-h1, h2, h3,
-.h1, .h2, .h3 {
+h1, h2, h3, h4,
+.h1, .h2, .h3, .h4 {
   font-family: @font-family-serif;
 }
 
@@ -358,4 +358,87 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+// ---- mixins ---- //
+.perspective(@distance) {
+  -webkit-perspective: @distance;
+  -moz-perspective: @distance;
+  perspective: @distance;
+}
+.preserve3d() {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.rotate3d(@x,@y,@z,@angle) {
+  -webkit-transform: rotate3d(@x,@y,@z,@angle);
+  -moz-transform: rotate3d(@x,@y,@z,@angle);
+  transform: rotate3d(@x,@y,@z,@angle);
+}
+
+// ---- cover photos ---- //
+.cover-photo {
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+// ---- Flip Cards ---- //
+
+//zoom
+.flipcard {
+  @transition: all .25s ease-in-out;
+  .transition(@transition);
+
+  .front, .back {
+    .backface-visibility(hidden);
+    .preserve3d();
+    .transition(@transition);
+    float: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+  }  
+  .front {
+    z-index: 9;
+  }
+  .back {
+    z-index: 8;
+    .rotate3d(0,1,0,-180deg);
+  }
+  z-index: 1;
+  position: relative;
+  .perspective(600px);
+  
+  //do the flip (on hover or per class)
+  &.flip, &.flipcard-flip-hover:hover {
+    .front {
+      z-index: 9;
+      .rotate3d(0,1,0,180deg);
+    }
+    .back {
+      z-index: 10;
+      .rotate3d(0,1,0,0deg);
+    }
+  }
+
+  &.flipcard-scale {
+    &.flipcard-scale-hover {
+      &:hover {
+        z-index: 10;
+        .scale(1.1);
+
+        .front {
+          @shadow: outset 0 0 5px 0 rgba(0, 0, 0, 0.5);
+          .box-shadow(@shadow);
+        }
+      }
+    }
+  }
+}
+//.flipcard .front
+
+
 
