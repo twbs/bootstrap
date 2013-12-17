@@ -106,7 +106,7 @@
 
     if (!selector) {
       selector = $this.attr('href')
-      selector = selector && /#/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+      selector = /#/.test(selector) && selector
     }
 
     var $parent = selector && $(selector)
