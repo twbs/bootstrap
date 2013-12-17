@@ -3,8 +3,8 @@
 
   {
     browserName: "safari",
-    version: "7",
-    platform: "OS X 10.9"
+    version: "6",
+    platform: "OS X 10.8"
   },
   {
     browserName: "chrome",
