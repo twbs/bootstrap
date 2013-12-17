@@ -223,17 +223,23 @@
     }
 
     if (/bottom|top/.test(placement)) {
-      var delta = 0
+      var delta       = 0
+      var windowWidth = window.innerWidth
 
       if (offset.left < 0) {
         delta       = offset.left * -2
         offset.left = 0
+      } 
 
-        $tip.offset(offset)
-
-        actualWidth  = $tip[0].offsetWidth
-        actualHeight = $tip[0].offsetHeight
+      if (offset.left + actualWidth > windowWidth) {
+        delta       = (offset.left + actualWidth - windowWidth) * -2
+        offset.left = windowWidth - actualWidth
       }
+
+      $tip.offset(offset)
+
+      actualWidth  = $tip[0].offsetWidth
+      actualHeight = $tip[0].offsetHeight
 
       this.replaceArrow(delta - width + actualWidth, actualWidth, 'left')
     } else {
