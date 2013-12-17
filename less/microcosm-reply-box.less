@@ -26,7 +26,7 @@
       }
     }
   }
-  &>textarea{
+  textarea{
     width:99.99%;
     min-height:150px;
     padding:10px;
@@ -42,14 +42,47 @@
       font-size:@font-size-base;
     }
   }
+
+  @media (min-width: @grid-float-breakpoint) {
+    &>ul{
+      &>li{
+        padding:5px 10px;
+      }
+    }
+  }
 }
 
 .reply-box-footer{
   overflow:auto;
-  margin-top:10px;
   font-family:@font-family-base;
   font-size:@font-size-small;
+  padding: 5px;
+  background-color: #EEE;
+  border-top: 1px solid #CCC;
   input[type=submit]{
-    float:right;
+    width: 100%;
+    padding: 10px 0;
+  }
+  @media (min-width: @grid-float-breakpoint){
+    input[type=submit]{
+      float:right;
+      width:auto;
+      padding:5px 10px;
+    }
+  }
+}
+.formatting-help-handle{
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  margin-top: 5px;
+  background-color: #DDD;
+  border-radius: 3px;
+  @media (min-width: @grid-float-breakpoint){
+    display: inline-block;
+    width: auto;
+    margin: 0;
+    padding: 5px 10px;
   }
 }

@@ -4,6 +4,48 @@
     margin-bottom:20px;
   }
 }
+.navbar-header-wrapper{
+
+  background-color:@header-bg;
+
+  &.horizontal-tiling-bg{
+    background-image: url('../background.png');
+    background-repeat: repeat-x;
+    background-size: contain;
+    background-size: 100% 60px;
+  }
+  &.tiling-bg{
+    background-image: url('../background.png');
+    background-repeat: repeat;
+  }
+
+
+  @media (min-width:@screen-sm-min){
+    height:120px;
+    padding:20px 0;
+    &.horizontal-tiling-bg{
+      background-size:100% 100%;
+    }
+  }
+}
+
+.navbar-brand{
+  padding: 14px 0;
+  img{
+    width:auto;
+    height: 27px;
+  }
+  @media (min-width:@screen-sm-min){
+    padding:10px;
+    img{
+      height:45px;
+    }
+  }
+  @media (min-width:@screen-md-min){
+    padding:10px 0;
+  }
+}
+
 
 
 .navbar-profile{
@@ -11,8 +53,6 @@
   clear:left;
   padding-top:10px;
   padding-bottom:10px;
-  border-top:1px solid #ccc;
-  border-bottom:1px solid #ccc;
   &.in{
     display:block;
   }
@@ -45,10 +85,10 @@
     clear:none;
     float:right;
     display:block;
-    box-shadow:0 1px 2px rgba(0,0,0,0.5);
     padding:0;
     min-width:200px;
     margin-right:15px;
+    margin-top:12px;
     a{
       display:block;
       padding:5px;
@@ -78,34 +118,38 @@
   }
 }
 
-
-
 .navbar-search{
   display:none;
   &.in{
     display:block;
   }
-  @media (min-width: @grid-float-breakpoint) {
-    display:block;
-  }
-
   input[type=text]{
     border-radius:40px;
   }
   .input-group-addon{
     border-radius:20px 0 0 20px;
     background-color:#fff;
+    -webkit-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.075);
+  }
+  @media (min-width: @grid-float-breakpoint) {
+    display:block;
+    margin-top:8px;
+    .input-group-addon{
+      border-color:#999;
+      cursor:text;
+    }
+    .form-control{
+      border-color:#999;
+      font-size:@font-size-medium;
+    }
   }
 }
 
-.navbar-header-wrapper{
-  @media (min-width: @grid-float-breakpoint) {
-    padding:20px 0;
-  }
-}
 .navbar-nav-wrapper{
   border:1px solid #ccc;
   border-width:1px 0;
+
 }
 .navbar-nav a{
   font-family: @font-family-display;

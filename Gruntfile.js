@@ -167,6 +167,23 @@ module.exports = function (grunt) {
         expand: true,
         src: ['fonts/*'],
         dest: 'dist/'
+      },
+      // assumes ../microweb exists
+      css : {
+        expand  : true,
+        cwd     : 'dist/css/',
+        src     : '**',
+        dest    : '../microweb/microcosm/static/themes/1/css/',
+        flatten : true,
+        filter  : 'isFile',
+      },
+      js : {
+        expand  : true,
+        cwd     : 'dist/js/',
+        src     : '**',
+        dest    : '../microweb/microcosm/static/js/',
+        flatten : true,
+        filter  : 'isFile',
       }
     },
 
@@ -214,7 +231,11 @@ module.exports = function (grunt) {
       },
       less: {
         files: 'less/*.less',
-        tasks: ['less']
+        tasks: ['less','copy:css']
+      },
+      js : {
+        files : 'js/*.js',
+        tasks : ['concat', 'uglify', 'copy:js']
       }
     },
 
@@ -341,10 +362,10 @@ module.exports = function (grunt) {
   grunt.registerTask('test', testSubtasks);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat', 'uglify']);
+  grunt.registerTask('dist-js', ['concat', 'uglify', 'copy:js']);
 
   // CSS distribution task.
-  grunt.registerTask('dist-css', ['less', 'csscomb', 'usebanner']);
+  grunt.registerTask('dist-css', ['less', 'csscomb', 'copy:css']);
 
   // Fonts distribution task.
   grunt.registerTask('dist-fonts', ['copy']);

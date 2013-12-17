@@ -51,6 +51,10 @@
     }
   }
 }
+.comment-item-author-name{
+  font-size:@font-size-base;
+}
+
 .comment-item-permalink{
   float:right;
   color:#666;
@@ -91,7 +95,6 @@
   @media (min-width: @grid-float-breakpoint){
     margin-bottom:20px;
     font-size:@font-size-comments;
-    line-height:1.6;
     text-rendering: optimizeLegibility;
   }
 }
@@ -99,14 +102,16 @@
   font-size:@font-size-small;
   color:#666;
 }
-
+.generated-comment-box{
+  padding-top:10px;
+}
 .reply-container{
   .comment-item{
     background-color:#fbfbfb;
     border-top:0;
     border-radius:0 0 3px 3px;
   }
-  .reply-box > textarea{
+  .reply-box > form > textarea{
     min-height:100px;
   }
 }

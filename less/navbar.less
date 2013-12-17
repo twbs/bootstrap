@@ -65,6 +65,8 @@
     //width: auto;
     border-top: 0;
     box-shadow: none;
+    padding-left:0;
+    padding-right:0;
 
     &.collapse {
       display: block !important;
@@ -215,7 +217,7 @@
 // the nav the full height of the horizontal nav (above 768px).
 
 .navbar-nav {
-  margin: (@navbar-padding-vertical / 2) -@navbar-padding-horizontal;
+  margin: 0 -@navbar-padding-horizontal;
 
   > li > a {
     padding-top:    10px;
@@ -255,10 +257,10 @@
 
     > li {
       float: left;
-      > a {
-        padding-top: ((@navbar-height - @line-height-computed) / 2);
-        padding-bottom: ((@navbar-height - @line-height-computed) / 2);
-      }
+      // > a {
+      //   padding-top: ((@navbar-height - @line-height-computed) / 2);
+      //   padding-bottom: ((@navbar-height - @line-height-computed) / 2);
+      // }
     }
   }
 
@@ -360,7 +362,7 @@
 // Default navbar
 .navbar-default {
   background-color: @navbar-default-bg;
-  border-color: @navbar-default-border;
+  border-color:     @navbar-default-border;
 
   .navbar-brand {
     color: @navbar-default-brand-color;
