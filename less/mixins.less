@@ -815,20 +815,20 @@
 }
 .calc-grid(@index, @class, @type) when (@type = push) {
   .col-@{class}-push-@{index} {
-    html:not([dir="rtl"]) { left: percentage((@columns / @grid-columns)); }
-    html[dir="rtl"] { right: percentage((@columns / @grid-columns)); }
+    html:not([dir="rtl"]) { left: percentage((@index / @grid-columns)); }
+    html[dir="rtl"] { right: percentage((@index / @grid-columns)); }
   }
 }
 .calc-grid(@index, @class, @type) when (@type = pull) {
   .col-@{class}-pull-@{index} {
-    html:not([dir="rtl"]) { right: percentage((@columns / @grid-columns)); }
-    html[dir="rtl"] { left: percentage((@columns / @grid-columns)); }
+    html:not([dir="rtl"]) { right: percentage((@index / @grid-columns)); }
+    html[dir="rtl"] { left: percentage((@index / @grid-columns)); }
   }
 }
 .calc-grid(@index, @class, @type) when (@type = offset) {
   .col-@{class}-offset-@{index} {
-    html:not([dir="rtl"]) { margin-left: percentage((@columns / @grid-columns)); }
-    html[dir="rtl"] { margin-right: percentage((@columns / @grid-columns)); }
+    html:not([dir="rtl"]) { margin-left: percentage((@index / @grid-columns)); }
+    html[dir="rtl"] { margin-right: percentage((@index / @grid-columns)); }
   }
 }
 
