@@ -165,9 +165,15 @@
 
   // Prevent Glyphicons from increasing height of navbar
   > .glyphicon {
-    float: left;
+    html:not([dir="rtl"]) {
+      float: left;
+      margin-right: 5px;
+    }
+    html[dir="rtl"] {
+      float: right;
+      margin-left: 5px;
+    }
     margin-top: -2px;
-    margin-right: 5px;
   }
 
   @media (min-width: @grid-float-breakpoint) {

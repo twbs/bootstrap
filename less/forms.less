@@ -264,14 +264,16 @@ input[type="checkbox"],
 
   // Ensure icons don't overlap text
   .form-control {
-    padding-right: (@input-height-base * 1.25);
+    html:not([dir="rtl"]) { padding-right: (@input-height-base * 1.25); }
+    html[dir="rtl"] { padding-left: (@input-height-base * 1.25); }
   }
 
   // Feedback icon (requires .glyphicon classes)
   .form-control-feedback {
     position: absolute;
     top: (@line-height-computed + 5); // Height of the `label` and its margin
-    right: 0;
+    html:not([dir="rtl"]) { right: 0; }
+    html[dir="rtl"] { left: 0; }
     display: block;
     width: @input-height-base;
     height: @input-height-base;
@@ -427,6 +429,7 @@ input[type="checkbox"],
   // `position: relative;` on them. Also accounts for the grid gutter padding.
   .has-feedback .form-control-feedback {
     top: 0;
-    right: (@grid-gutter-width / 2);
+    html:not([dir="rtl"]) { right: (@grid-gutter-width / 2); }
+    html[dir="rtl"] { left: (@grid-gutter-width / 2); }
   }
 }
