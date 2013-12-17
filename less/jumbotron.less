@@ -6,19 +6,17 @@
 .jumbotron {
   padding: @jumbotron-padding;
   margin-bottom: @jumbotron-padding;
-  font-size: @jumbotron-font-size;
-  font-weight: 200;
-  line-height: (@line-height-base * 1.5);
   color: @jumbotron-color;
   background-color: @jumbotron-bg;
 
   h1,
   .h1 {
-    line-height: 1;
     color: @jumbotron-heading-color;
   }
   p {
-    line-height: 1.4;
+    margin-bottom: (@jumbotron-padding / 2);
+    font-size: @jumbotron-font-size;
+    font-weight: 200;
   }
 
   .container & {
