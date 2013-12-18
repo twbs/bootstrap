@@ -1289,6 +1289,9 @@ h1[id] {
 }
 
 /* Examples gallery: space out content better */
+.bs-examples .thumbnail {
+  margin-bottom: 10px;
+}
 .bs-examples h4 {
   margin-bottom: 5px;
 }
