@@ -47,5 +47,6 @@ a.list-group-item.active > .badge,
   background-color: @badge-active-bg;
 }
 .nav-pills > li > a > .badge {
-  margin-left: 3px;
+  html:not([dir="rtl"]) & { margin-left: 3px; }
+  html[dir="rtl"] & { margin-right: 3px; }
 }

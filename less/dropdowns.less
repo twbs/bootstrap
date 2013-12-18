@@ -8,7 +8,8 @@
   display: inline-block;
   width: 0;
   height: 0;
-  margin-left: 2px;
+  html:not([dir="rtl"]) & { margin-left: 2px; }
+  html[dir="rtl"] & { margin-right: 2px; }
   vertical-align: middle;
   border-top:   @caret-width-base solid;
   border-right: @caret-width-base solid transparent;
@@ -29,10 +30,16 @@
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 0;
+  html:not([dir="rtl"]) & {
+    left: 0;
+    float: left;
+  }
+  html[dir="rtl"] & {
+    right: 0;
+    float: right;
+  }
   z-index: @zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
-  float: left;
   min-width: 160px;
   padding: 5px 0;
   margin: 2px 0 0; // override default ul
@@ -51,6 +58,10 @@
   &.pull-right {
     right: 0;
     left: auto;
+  }
+  &.pull-left {
+    left: 0;
+    right: auto;
   }
 
   // Dividers (basically an hr) within the dropdown
@@ -172,6 +183,12 @@
   left: auto;
 }
 
+// Left aligned dropdowns
+.pull-left > .dropdown-menu {
+  left: 0;
+  right: auto;
+}
+
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 //
 // Just add .dropup after the standard .dropdown class and you're set, bro.
@@ -207,6 +224,16 @@
     // Will remove come v4 in all likelihood.
     .dropdown-menu-left {
       .dropdown-menu-left();
+    }
+  }
+  .navbar-left {
+    .dropdown-menu {
+      .dropdown-menu-left();
+    }
+    // Necessary for overrides of the default right aligned menu.
+    // Will remove come v4 in all likelihood.
+    .dropdown-menu-right {
+      .dropdown-menu-right();
     }
   }
 }

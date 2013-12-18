@@ -38,13 +38,15 @@
 // Expand the right padding and account for the close button's positioning.
 
 .alert-dismissable {
- padding-right: (@alert-padding + 20);
+  html:not([dir="rtl"]) & { padding-right: (@alert-padding + 20); }
+  html[dir="rtl"] & { padding-left: (@alert-padding + 20); }
 
   // Adjust close link position
   .close {
     position: relative;
     top: -2px;
-    right: -21px;
+    html:not([dir="rtl"]) & { right: -21px; }
+    html[dir="rtl"] & { left: -21px; }
     color: inherit;
   }
 }

@@ -77,11 +77,13 @@
       > tr {
         > th:first-child,
         > td:first-child {
-          border-left: 0;
+          html:not([dir="rtl"]) & { border-left: 0; }
+          html[dir="rtl"] & { border-right: 0; }
         }
         > th:last-child,
         > td:last-child {
-          border-right: 0;
+          html:not([dir="rtl"]) & { border-right: 0; }
+          html[dir="rtl"] & { border-left: 0; }
         }
 
         &:last-child > th,
@@ -100,11 +102,13 @@
     > tbody > tr:last-child {
       td:first-child,
       th:first-child {
-        border-bottom-left-radius: (@panel-border-radius - 1);
+        html:not([dir="rtl"]) & { border-bottom-left-radius: (@panel-border-radius - 1); }
+        html[dir="rtl"] & { border-bottom-right-radius: (@panel-border-radius - 1); }
       }
       td:last-child,
       th:last-child {
-        border-bottom-left-radius: (@panel-border-radius - 1);
+        html:not([dir="rtl"]) & { border-bottom-left-radius: (@panel-border-radius - 1); }
+        html[dir="rtl"] & { border-bottom-right-radius: (@panel-border-radius - 1); }
       }
     }
   }

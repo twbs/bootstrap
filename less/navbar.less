@@ -32,7 +32,8 @@
   &:extend(.clearfix all);
 
   @media (min-width: @grid-float-breakpoint) {
-    float: left;
+    html:not([dir="rtl"]) & { float: left; }
+    html[dir="rtl"] & { float: right; }
   }
 }
 
@@ -151,7 +152,8 @@
 // Brand/project name
 
 .navbar-brand {
-  float: left;
+  html:not([dir="rtl"]) & { float: left; }
+  html[dir="rtl"] & { float: right; }
   padding: @navbar-padding-vertical @navbar-padding-horizontal;
   font-size: @font-size-large;
   line-height: @line-height-computed;
@@ -163,15 +165,22 @@
 
   // Prevent Glyphicons from increasing height of navbar
   > .glyphicon {
-    float: left;
+    html:not([dir="rtl"]) & {
+      float: left;
+      margin-right: 5px;
+    }
+    html[dir="rtl"] & {
+      float: right;
+      margin-left: 5px;
+    }
     margin-top: -2px;
-    margin-right: 5px;
   }
 
   @media (min-width: @grid-float-breakpoint) {
     .navbar > .container &,
     .navbar > .container-fluid & {
-      margin-left: -@navbar-padding-horizontal;
+      html:not([dir="rtl"]) & { margin-left: -@navbar-padding-horizontal; }
+      html[dir="rtl"] & { margin-right: -@navbar-padding-horizontal; }
     }
   }
 }
@@ -184,8 +193,14 @@
 
 .navbar-toggle {
   position: relative;
-  float: right;
-  margin-right: @navbar-padding-horizontal;
+  html:not([dir="rtl"]) & {
+    float: right;
+    margin-right: @navbar-padding-horizontal;
+  }
+  html[dir="rtl"] & {
+    float: left;
+    margin-left: @navbar-padding-horizontal;
+  }
   padding: 9px 10px;
   .navbar-vertical-align(34px);
   background-color: transparent;
@@ -236,7 +251,8 @@
       box-shadow: none;
       > li > a,
       .dropdown-header {
-        padding: 5px 15px 5px 25px;
+        html:not([dir="rtl"]) & { padding: 5px 15px 5px 25px; }
+        html[dir="rtl"] & { padding: 5px 25px 5px 15px; }
       }
       > li > a {
         line-height: @line-height-computed;
@@ -250,11 +266,13 @@
 
   // Uncollapse the nav
   @media (min-width: @grid-float-breakpoint) {
-    float: left;
+    html:not([dir="rtl"]) & { float: left; }
+    html[dir="rtl"] & { float: right; }
     margin: 0;
 
     > li {
-      float: left;
+      html:not([dir="rtl"]) & { float: left; }
+      html[dir="rtl"] & { float: right; }
       > a {
         padding-top:    @navbar-padding-vertical;
         padding-bottom: @navbar-padding-vertical;
@@ -262,7 +280,8 @@
     }
 
     &.navbar-right:last-child {
-      margin-right: -@navbar-padding-horizontal;
+      html:not([dir="rtl"]) & { margin-right: -@navbar-padding-horizontal; }
+      html[dir="rtl"] & { margin-left: -@navbar-padding-horizontal; }
     }
   }
 }
@@ -318,7 +337,8 @@
 
     // Outdent the form if last child to line up with content down the page
     &.navbar-right:last-child {
-      margin-right: -@navbar-padding-horizontal;
+      html:not([dir="rtl"]) & { margin-right: -@navbar-padding-horizontal; }
+      html[dir="rtl"] & { margin-left: -@navbar-padding-horizontal; }
     }
   }
 }
@@ -361,13 +381,15 @@
   .navbar-vertical-align(@line-height-computed);
 
   @media (min-width: @grid-float-breakpoint) {
-    float: left;
+    html:not([dir="rtl"]) & { float: left; }
+    html[dir="rtl"] & { float: right; }
     margin-left: @navbar-padding-horizontal;
     margin-right: @navbar-padding-horizontal;
 
     // Outdent the form if last child to line up with content down the page
     &.navbar-right:last-child {
-      margin-right: 0;
+      html:not([dir="rtl"]) & { margin-right: -@navbar-padding-horizontal; }
+      html[dir="rtl"] & { margin-left: -@navbar-padding-horizontal; }
     }
   }
 }

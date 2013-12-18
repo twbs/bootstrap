@@ -184,7 +184,8 @@ input[type="date"] {
   min-height: @line-height-computed; // clear the floating input if there is no label text
   margin-top: 10px;
   margin-bottom: 10px;
-  padding-left: 20px;
+  html:not([dir="rtl"]) & { padding-left: 20px; }
+  html[dir="rtl"] & { padding-right: 20px; }
   label {
     display: inline;
     font-weight: normal;
@@ -195,8 +196,8 @@ input[type="date"] {
 .radio-inline input[type="radio"],
 .checkbox input[type="checkbox"],
 .checkbox-inline input[type="checkbox"] {
-  float: left;
-  margin-left: -20px;
+  html:not([dir="rtl"]) & { float: left; margin-left: -20px; }
+  html[dir="rtl"] & { float: right; margin-right: -20px; }
 }
 .radio + .radio,
 .checkbox + .checkbox {
@@ -207,7 +208,8 @@ input[type="date"] {
 .radio-inline,
 .checkbox-inline {
   display: inline-block;
-  padding-left: 20px;
+  html:not([dir="rtl"]) & { padding-left: 20px; }
+  html[dir="rtl"] & { padding-right: 20px; }
   margin-bottom: 0;
   vertical-align: middle;
   font-weight: normal;
@@ -216,7 +218,10 @@ input[type="date"] {
 .radio-inline + .radio-inline,
 .checkbox-inline + .checkbox-inline {
   margin-top: 0;
-  margin-left: 10px; // space out consecutive inline controls
+
+  // space out consecutive inline controls
+  html:not([dir="rtl"]) & { margin-left: 10px; }
+  html[dir="rtl"] & { margin-right: 10px; }
 }
 
 // Apply same disabled cursor tweak as for inputs
@@ -259,14 +264,16 @@ input[type="checkbox"],
 
   // Ensure icons don't overlap text
   .form-control {
-    padding-right: (@input-height-base * 1.25);
+    html:not([dir="rtl"]) & { padding-right: (@input-height-base * 1.25); }
+    html[dir="rtl"] & { padding-left: (@input-height-base * 1.25); }
   }
 
   // Feedback icon (requires .glyphicon classes)
   .form-control-feedback {
     position: absolute;
     top: (@line-height-computed + 5); // Height of the `label` and its margin
-    right: 0;
+    html:not([dir="rtl"]) & { right: 0; }
+    html[dir="rtl"] & { left: 0; }
     display: block;
     width: @input-height-base;
     height: @input-height-base;
@@ -353,13 +360,15 @@ input[type="checkbox"],
       display: inline-block;
       margin-top: 0;
       margin-bottom: 0;
-      padding-left: 0;
+      html:not([dir="rtl"]) & { padding-left: 0; }
+      html[dir="rtl"] & { padding-right: 0; }
       vertical-align: middle;
     }
     .radio input[type="radio"],
     .checkbox input[type="checkbox"] {
       float: none;
-      margin-left: 0;
+      html:not([dir="rtl"]) & { margin-left: 0; }
+      html[dir="rtl"] & { margin-right: 0; }
     }
 
     // Validation states
@@ -409,7 +418,8 @@ input[type="checkbox"],
   // Only right align form labels here when the columns stop stacking
   @media (min-width: @screen-sm-min) {
     .control-label {
-      text-align: right;
+      html:not([dir="rtl"]) & { text-align: right; }
+      html[dir="rtl"] & { text-align: left; }
     }
   }
 
@@ -419,6 +429,7 @@ input[type="checkbox"],
   // `position: relative;` on them. Also accounts for the grid gutter padding.
   .has-feedback .form-control-feedback {
     top: 0;
-    right: (@grid-gutter-width / 2);
+    html:not([dir="rtl"]) & { right: (@grid-gutter-width / 2); }
+    html[dir="rtl"] & { left: (@grid-gutter-width / 2); }
   }
 }

@@ -38,10 +38,12 @@
 
 .media {
   > .pull-left {
-    margin-right: 10px;
+    html:not([dir="rtl"]) & { margin-right: 10px; }
+    html[dir="rtl"] & { margin-left: 10px; }
   }
   > .pull-right {
-    margin-left: 10px;
+    html:not([dir="rtl"]) & { margin-left: 10px; }
+    html[dir="rtl"] & { margin-right: 10px; }
   }
 }
 
@@ -51,6 +53,7 @@
 
 // Undo default ul/ol styles
 .media-list {
-  padding-left: 0;
+  html:not([dir="rtl"]) & { padding-left: 0; }
+  html[dir="rtl"] & { padding-right: 0; }
   list-style: none;
 }
