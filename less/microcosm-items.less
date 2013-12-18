@@ -1,9 +1,12 @@
 .item-header{
   padding: 15px;
-  border: 1px solid #CCC;
-  border-bottom: 0;
-  border-radius: 3px 3px 0 0;
   margin-top: 20px;
+  border: 1px solid #CCC;
+  border-width:1px 0 0;
+  @media (min-width: @screen-md-min){
+    border-radius: 3px 3px 0 0;
+    border-width:1px 1px 0;
+  }
 }
 .item-meta{
   font-size:@font-size-small;
@@ -14,6 +17,10 @@
 // events
 .item-event{
   border:1px solid #ccc;
+  border-width:1px 0;
+  @media (min-width: @screen-md-min){
+    border-width:1px;
+  }
 }
 .item-event ul{
   overflow:auto;
@@ -26,7 +33,6 @@
 }
 .item-event-inner > li{
   overflow: auto;
-  // padding:5px 10px;
   padding:20px;
   border-bottom:1px solid #eee;
   @media (min-width: @grid-float-breakpoint){
@@ -221,8 +227,25 @@
 }
 
 // overrides for event page 2 / event single thread
-
+.item-event-expand-handle{
+  display:block;
+  font-size:@font-size-base;
+  font-weight:700;
+  padding:10px;
+  background-color:#eee;
+  color:#999;
+  text-align: center;
+  @media (min-width: @screen-sm-min){
+    display:none;
+  }
+}
 .item-event-compact {
+  height:0;
+  background-color: #FAFAFA;
+  border-bottom:0;
+  &.item-event-expanded{
+    height:auto;
+  }
   &> li{
     clear:none;
   }
@@ -233,21 +256,22 @@
 
     .item-event-icon{
       padding-left:0;
+      padding-right:12px;
     }
 
     .item-event-date{
-      font-size:16px;
+      font-size:@font-size-medium;
     }
     .item-event-date-digit{
       font-size:40px;
+      margin-top:-9px;
     }
     .item-event-date-day{
-      line-height:18px;
       min-width:180px;
     }
 
     .item-event-location{
-      font-size:14px;
+      font-size:@font-size-medium;
       max-width:240px;
     }
     .item-event-attending-container{
@@ -266,30 +290,40 @@
       }
     }
   }
-
+  &>li.item-event-date-container{
+    padding-top:10px;
+  }
   @media (min-width: @screen-sm-min){
+    height:auto;
     &> li{
+      display:block;
       float:left;
       min-height:85px;
     }
+
     .item-event-attending-container{
-      width:100%;
       min-height:0;
     }
     .item-event-attending-people{
-      margin:0 0 0 20px;
+      margin:5px 0 0;
       float:left;
       clear:none;
     }
   }
   @media (min-width: @screen-lg-min){
+    &>li{
+      padding-top:20px;
+      padding-bottom:20px;
+    }
+    &>li.item-event-date-container{
+      padding-top:20px;
+    }
     .item-event-attending-container{
       width:36%;
     }
     .item-event-attending-people{
-      margin-left:38px;
+      margin:10px 0 0;
       clear:both;
-      margin-top:10px;
     }
   }
 

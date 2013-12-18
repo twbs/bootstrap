@@ -1,11 +1,47 @@
 .list-search{
+
+  .row-title{
+    color:@brand-primary;
+    text-decoration: underline;
+  }
   .row-meta{
     margin-top:0;
-  }
-  .row-meta-excerpt{
-    margin-top:10px;
-    p{
-      margin-bottom:0;
+    a{
+      color:@brand-success;
     }
+  }
+
+}
+
+.list-search-empty{
+  h2{
+    font-size:@font-size-large;
+  }
+  h3{
+    font-size:@font-size-base;
+  }
+  ul{
+    padding:10px 20px;
+  }
+  li{
+    padding:0 0 10px;
+  }
+
+}
+
+.search-mobile{
+  @media (min-width:@screen-sm-min){
+    display:none;
+  }
+}
+.search-mobile-inner{
+  overflow: auto;
+  form{
+    float:left;
+    width:80%;
+  }
+  button{
+    float:right;
+    padding: 6px 10px 7px;
   }
 }

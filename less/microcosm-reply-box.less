@@ -16,7 +16,7 @@
       float:left;
       padding:10px;
       cursor:pointer;
-      font-size:11px;
+      font-size:12px;
       border-right:1px solid #eee;
       color:#999;
 
@@ -59,9 +59,10 @@
   padding: 5px;
   background-color: #EEE;
   border-top: 1px solid #CCC;
-  input[type=submit]{
+  input[type=submit],input[type=reset]{
     width: 100%;
     padding: 10px 0;
+    margin-bottom:5px;
   }
   @media (min-width: @grid-float-breakpoint){
     input[type=submit]{
@@ -69,8 +70,56 @@
       width:auto;
       padding:5px 10px;
     }
+    input[type=reset]{
+      width:auto;
+      padding:5px 10px;
+    }
   }
 }
+.reply-box-attachments{
+  padding: 5px 10px;
+  border: 1px dashed #CCC;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  color:#999;
+  span{
+    font-weight:700;
+  }
+  label{
+    color:@brand-primary;
+    text-decoration:underline;
+    margin:0;
+    cursor:pointer;
+  }
+  input[type=file]{
+    display:none;
+  }
+}
+.reply-box-attachments-gallery{
+  ul{
+    padding:0;
+    margin:0;
+    list-style:none;
+    overflow:auto;
+  }
+  li{
+    float: left;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    background-color: #FFF;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    overflow: visible;
+    border-radius: 3px;
+  }
+  img{
+    width:auto;
+    height:100%;
+  }
+}
+
 .formatting-help-handle{
   display: block;
   width: 100%;
