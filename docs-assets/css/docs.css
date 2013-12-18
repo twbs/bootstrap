@@ -112,7 +112,7 @@ body {
 .bs-docs-nav {
   background-color: #fff;
   border-color: #e5e5e5;
-  box-shadow: 0 0 5px rgba(0,0,0,.05);
+  box-shadow: 0 0 10px rgba(0,0,0,.05);
 }
 .bs-docs-nav .navbar-brand,
 .bs-docs-nav .navbar-nav > li > a {
@@ -515,7 +515,7 @@ body {
 }
 @media (min-width: 768px) {
   .bs-sidebar {
-    padding-left: 10px;
+    padding-left: 20px;
   }
 }
 
@@ -531,9 +531,10 @@ body {
 /* All levels of nav */
 .bs-sidebar .nav > li > a {
   display: block;
+  font-size: 13px;
   font-weight: 500;
   color: #999;
-  padding: 5px 20px;
+  padding: 4px 20px;
   margin-left: -1px;
 }
 .bs-sidebar .nav > li > a:hover,
@@ -560,10 +561,10 @@ body {
   padding-bottom: 10px;
 }
 .bs-sidebar .nav .nav > li > a {
-  padding-top:    3px;
-  padding-bottom: 3px;
+  padding-top:    2px;
+  padding-bottom: 2px;
   padding-left: 30px;
-  font-size: 90%;
+  font-size: 12px;
   font-weight: normal;
 }
 .bs-sidebar .nav .nav > li > a:hover,
