@@ -141,14 +141,14 @@ body {
 
 .bs-footer {
   padding-top: 40px;
-  padding-bottom: 30px;
+  padding-bottom: 40px;
   margin-top: 100px;
   color: #777;
   text-align: center;
   border-top: 1px solid #e5e5e5;
 }
 .footer-links {
-  margin: 10px 0;
+  margin-top: 20px;
   padding-left: 0;
   color: #999;
 }
@@ -161,9 +161,6 @@ body {
 }
 
 @media (min-width: 768px) {
-  .bs-footer {
-    text-align: left;
-  }
   .bs-footer p {
     margin-bottom: 0;
   }
@@ -177,7 +174,6 @@ body {
  */
 
 .bs-social {
-  margin-top: 20px;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -202,15 +198,6 @@ body {
 .github-btn {
   border: 0;
   overflow: hidden;
-}
-
-@media (min-width: 768px) {
-  .bs-social {
-    text-align: left;
-  }
-  .bs-social-buttons li:first-child {
-    padding-left: 0;
-  }
 }
 
 
@@ -525,7 +512,6 @@ body {
   margin-bottom: 30px;
   padding-top: 5px;
   padding-bottom: 5px;
-  border-left: 1px solid #eee;
 }
 
 /* All levels of nav */
@@ -535,7 +521,6 @@ body {
   font-weight: 500;
   color: #999;
   padding: 4px 20px;
-  margin-left: -1px;
 }
 .bs-sidebar .nav > li > a:hover,
 .bs-sidebar .nav > li > a:focus {
