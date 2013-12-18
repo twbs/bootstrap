@@ -636,8 +636,8 @@
 // Generate the extra small columns
 .make-xs-column(@columns; @gutter: @grid-gutter-width) {
   position: relative;
-  html:not([dir="rtl"]) { float: left; }
-  html[dir="rtl"] { float: right; }
+  html:not([dir="rtl"]) & { float: left; }
+  html[dir="rtl"] & { float: right; }
   width: percentage((@columns / @grid-columns));
   min-height: 1px;
   padding-left:  (@gutter / 2);
@@ -645,20 +645,20 @@
 }
 .make-xs-column-offset(@columns) {
   @media (min-width: @screen-xs-min) {
-    html:not([dir="rtl"]) { margin-left: percentage((@columns / @grid-columns)); }
-    html[dir="rtl"] { margin-right: percentage((@columns / @grid-columns)); }
+    html:not([dir="rtl"]) & { margin-left: percentage((@columns / @grid-columns)); }
+    html[dir="rtl"] & { margin-right: percentage((@columns / @grid-columns)); }
   }
 }
 .make-xs-column-push(@columns) {
   @media (min-width: @screen-xs-min) {
-    html:not([dir="rtl"]) { left: percentage((@columns / @grid-columns)); }
-    html[dir="rtl"] { right: percentage((@columns / @grid-columns)); }
+    html:not([dir="rtl"]) & { left: percentage((@columns / @grid-columns)); }
+    html[dir="rtl"] & { right: percentage((@columns / @grid-columns)); }
   }
 }
 .make-xs-column-pull(@columns) {
   @media (min-width: @screen-xs-min) {
-    html:not([dir="rtl"]) { right: percentage((@columns / @grid-columns)); }
-    html[dir="rtl"] { left: percentage((@columns / @grid-columns)); }
+    html:not([dir="rtl"]) & { right: percentage((@columns / @grid-columns)); }
+    html[dir="rtl"] & { left: percentage((@columns / @grid-columns)); }
   }
 }
 
@@ -671,27 +671,27 @@
   padding-right: (@gutter / 2);
 
   @media (min-width: @screen-sm-min) {
-    html:not([dir="rtl"]) { float: left; }
-    html[dir="rtl"] { float: right; }
+    html:not([dir="rtl"]) & { float: left; }
+    html[dir="rtl"] & { float: right; }
     width: percentage((@columns / @grid-columns));
   }
 }
 .make-sm-column-offset(@columns) {
   @media (min-width: @screen-sm-min) {
-    html:not([dir="rtl"]) { margin-left: percentage((@columns / @grid-columns)); }
-    html[dir="rtl"] { margin-right: percentage((@columns / @grid-columns)); }
+    html:not([dir="rtl"]) & { margin-left: percentage((@columns / @grid-columns)); }
+    html[dir="rtl"] & { margin-right: percentage((@columns / @grid-columns)); }
   }
 }
 .make-sm-column-push(@columns) {
   @media (min-width: @screen-sm-min) {
-    html:not([dir="rtl"]) { left: percentage((@columns / @grid-columns)); }
-    html[dir="rtl"] { right: percentage((@columns / @grid-columns)); }
+    html:not([dir="rtl"]) & { left: percentage((@columns / @grid-columns)); }
+    html[dir="rtl"] & { right: percentage((@columns / @grid-columns)); }
   }
 }
 .make-sm-column-pull(@columns) {
   @media (min-width: @screen-sm-min) {
-    html:not([dir="rtl"]) { right: percentage((@columns / @grid-columns)); }
-    html[dir="rtl"] { left: percentage((@columns / @grid-columns)); }
+    html:not([dir="rtl"]) & { right: percentage((@columns / @grid-columns)); }
+    html[dir="rtl"] & { left: percentage((@columns / @grid-columns)); }
   }
 }
 
@@ -704,27 +704,27 @@
   padding-right: (@gutter / 2);
 
   @media (min-width: @screen-md-min) {
-    html:not([dir="rtl"]) { float: left; }
-    html[dir="rtl"] { float: right; }
+    html:not([dir="rtl"]) & { float: left; }
+    html[dir="rtl"] & { float: right; }
     width: percentage((@columns / @grid-columns));
   }
 }
 .make-md-column-offset(@columns) {
   @media (min-width: @screen-md-min) {
-    html:not([dir="rtl"]) { margin-left: percentage((@columns / @grid-columns)); }
-    html[dir="rtl"] { margin-right: percentage((@columns / @grid-columns)); }
+    html:not([dir="rtl"]) & { margin-left: percentage((@columns / @grid-columns)); }
+    html[dir="rtl"] & { margin-right: percentage((@columns / @grid-columns)); }
   }
 }
 .make-md-column-push(@columns) {
   @media (min-width: @screen-md) {
-    html:not([dir="rtl"]) { left: percentage((@columns / @grid-columns)); }
-    html[dir="rtl"] { right: percentage((@columns / @grid-columns)); }
+    html:not([dir="rtl"]) & { left: percentage((@columns / @grid-columns)); }
+    html[dir="rtl"] & { right: percentage((@columns / @grid-columns)); }
   }
 }
 .make-md-column-pull(@columns) {
   @media (min-width: @screen-md-min) {
-    html:not([dir="rtl"]) { right: percentage((@columns / @grid-columns)); }
-    html[dir="rtl"] { left: percentage((@columns / @grid-columns)); }
+    html:not([dir="rtl"]) & { right: percentage((@columns / @grid-columns)); }
+    html[dir="rtl"] & { left: percentage((@columns / @grid-columns)); }
   }
 }
 
@@ -737,27 +737,27 @@
   padding-right: (@gutter / 2);
 
   @media (min-width: @screen-lg-min) {
-    html:not([dir="rtl"]) { float: left; }
-    html[dir="rtl"] { float: right; }
+    html:not([dir="rtl"]) & { float: left; }
+    html[dir="rtl"] & { float: right; }
     width: percentage((@columns / @grid-columns));
   }
 }
 .make-lg-column-offset(@columns) {
   @media (min-width: @screen-lg-min) {
-    html:not([dir="rtl"]) { margin-left: percentage((@columns / @grid-columns)); }
-    html[dir="rtl"] { margin-right: percentage((@columns / @grid-columns)); }
+    html:not([dir="rtl"]) & { margin-left: percentage((@columns / @grid-columns)); }
+    html[dir="rtl"] & { margin-right: percentage((@columns / @grid-columns)); }
   }
 }
 .make-lg-column-push(@columns) {
   @media (min-width: @screen-lg-min) {
-    html:not([dir="rtl"]) { left: percentage((@columns / @grid-columns)); }
-    html[dir="rtl"] { right: percentage((@columns / @grid-columns)); }
+    html:not([dir="rtl"]) & { left: percentage((@columns / @grid-columns)); }
+    html[dir="rtl"] & { right: percentage((@columns / @grid-columns)); }
   }
 }
 .make-lg-column-pull(@columns) {
   @media (min-width: @screen-lg-min) {
-    html:not([dir="rtl"]) { right: percentage((@columns / @grid-columns)); }
-    html[dir="rtl"] { left: percentage((@columns / @grid-columns)); }
+    html:not([dir="rtl"]) & { right: percentage((@columns / @grid-columns)); }
+    html[dir="rtl"] & { left: percentage((@columns / @grid-columns)); }
   }
 }
 
@@ -801,8 +801,8 @@
   }
   .col(@index, @list) when (@index > @grid-columns) { // terminal
     @{list} {
-      html:not([dir="rtl"]) { float: left; }
-      html[dir="rtl"] { float: right; }
+      html:not([dir="rtl"]) & { float: left; }
+      html[dir="rtl"] & { float: right; }
     }
   }
   .col(1); // kickstart it
@@ -815,20 +815,20 @@
 }
 .calc-grid(@index, @class, @type) when (@type = push) {
   .col-@{class}-push-@{index} {
-    html:not([dir="rtl"]) { left: percentage((@index / @grid-columns)); }
-    html[dir="rtl"] { right: percentage((@index / @grid-columns)); }
+    html:not([dir="rtl"]) & { left: percentage((@index / @grid-columns)); }
+    html[dir="rtl"] & { right: percentage((@index / @grid-columns)); }
   }
 }
 .calc-grid(@index, @class, @type) when (@type = pull) {
   .col-@{class}-pull-@{index} {
-    html:not([dir="rtl"]) { right: percentage((@index / @grid-columns)); }
-    html[dir="rtl"] { left: percentage((@index / @grid-columns)); }
+    html:not([dir="rtl"]) & { right: percentage((@index / @grid-columns)); }
+    html[dir="rtl"] & { left: percentage((@index / @grid-columns)); }
   }
 }
 .calc-grid(@index, @class, @type) when (@type = offset) {
   .col-@{class}-offset-@{index} {
-    html:not([dir="rtl"]) { margin-left: percentage((@index / @grid-columns)); }
-    html[dir="rtl"] { margin-right: percentage((@index / @grid-columns)); }
+    html:not([dir="rtl"]) & { margin-left: percentage((@index / @grid-columns)); }
+    html[dir="rtl"] & { margin-right: percentage((@index / @grid-columns)); }
   }
 }
 
