@@ -40,7 +40,7 @@ body {
 .site-wrapper {
   display: table;
   width: 100%;
-  height: 100%; /* For at leat Firefox */
+  height: 100%; /* For at least Firefox */
   min-height: 100%;
 }
 .site-wrapper-inner {
