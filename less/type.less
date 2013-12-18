@@ -318,6 +318,28 @@ blockquote {
       }
     }
   }
+
+  // Float left with text-align: left
+  &.pull-left {
+    padding-left: 15px;
+    padding-right: 0;
+    border-left: 5px solid @blockquote-border-color;
+    border-right: 0;
+    p,
+    small,
+    .small {
+      text-align: left;
+    }
+    small,
+    .small {
+      &:before {
+        content: '';
+      }
+      &:after {
+        content: '\00A0 \2014'; // NBSP, EM DASH
+      }
+    }
+  }
 }
 
 // Quotes

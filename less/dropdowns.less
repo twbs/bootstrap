@@ -55,6 +55,10 @@
     right: 0;
     left: auto;
   }
+  &.pull-left {
+    left: 0;
+    right: auto;
+  }
 
   // Dividers (basically an hr) within the dropdown
   .divider {
@@ -175,6 +179,12 @@
   left: auto;
 }
 
+// Left aligned dropdowns
+.pull-left > .dropdown-menu {
+  left: 0;
+  right: auto;
+}
+
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 //
 // Just add .dropup after the standard .dropdown class and you're set, bro.
@@ -210,6 +220,16 @@
     // Will remove come v4 in all likelihood.
     .dropdown-menu-left {
       .dropdown-menu-left();
+    }
+  }
+  .navbar-left {
+    .dropdown-menu {
+      .dropdown-menu-left();
+    }
+    // Necessary for overrides of the default right aligned menu.
+    // Will remove come v4 in all likelihood.
+    .dropdown-menu-right {
+      .dropdown-menu-right();
     }
   }
 }
