@@ -18,32 +18,32 @@
   white-space: nowrap;
   .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base);
   .user-select(none);
+}
 
-  &:focus {
-    .tab-focus();
-  }
+.btn:focus {
+  .tab-focus();
+}
 
-  &:hover,
-  &:focus {
-    color: @btn-default-color;
-    text-decoration: none;
-  }
+.btn:hover,
+.btn:focus {
+  color: @btn-default-color;
+  text-decoration: none;
+}
 
-  &:active,
-  &.active {
-    outline: 0;
-    background-image: none;
-    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
-  }
+.btn:active,
+.btn.active {
+  outline: 0;
+  background-image: none;
+  .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+}
 
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    cursor: not-allowed;
-    pointer-events: none; // Future-proof disabling of clicks
-    .opacity(.65);
-    .box-shadow(none);
-  }
+.btn.disabled,
+.btn[disabled],
+fieldset[disabled] .btn {
+  cursor: not-allowed;
+  pointer-events: none; // Future-proof disabling of clicks
+  .opacity(.65);
+  .box-shadow(none);
 }
 
 
