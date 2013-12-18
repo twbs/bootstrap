@@ -4073,16 +4073,20 @@ textarea.input-group-sm > .input-group-btn > .btn {
 html:not([dir="rtl"]) .input-group .form-control:first-child,
 html:not([dir="rtl"]) .input-group-addon:first-child,
 html:not([dir="rtl"]) .input-group-btn:first-child > .btn,
+html:not([dir="rtl"]) .input-group-btn:first-child > .btn-group > .btn,
 html:not([dir="rtl"]) .input-group-btn:first-child > .dropdown-toggle,
-html:not([dir="rtl"]) .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
+html:not([dir="rtl"]) .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
+html:not([dir="rtl"]) .input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 html[dir="rtl"] .input-group .form-control:first-child,
 html[dir="rtl"] .input-group-addon:first-child,
 html[dir="rtl"] .input-group-btn:first-child > .btn,
+html[dir="rtl"] .input-group-btn:first-child > .btn-group > .btn,
 html[dir="rtl"] .input-group-btn:first-child > .dropdown-toggle,
-html[dir="rtl"] .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
+html[dir="rtl"] .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
+html[dir="rtl"] .input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -4095,16 +4099,20 @@ html[dir="rtl"] .input-group-addon:first-child {
 html:not([dir="rtl"]) .input-group .form-control:last-child,
 html:not([dir="rtl"]) .input-group-addon:last-child,
 html:not([dir="rtl"]) .input-group-btn:last-child > .btn,
+html:not([dir="rtl"]) .input-group-btn:last-child > .btn-group > .btn,
 html:not([dir="rtl"]) .input-group-btn:last-child > .dropdown-toggle,
-html:not([dir="rtl"]) .input-group-btn:first-child > .btn:not(:first-child) {
+html:not([dir="rtl"]) .input-group-btn:first-child > .btn:not(:first-child),
+html:not([dir="rtl"]) .input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 html[dir="rtl"] .input-group .form-control:last-child,
 html[dir="rtl"] .input-group-addon:last-child,
 html[dir="rtl"] .input-group-btn:last-child > .btn,
+html[dir="rtl"] .input-group-btn:last-child > .btn-group > .btn,
 html[dir="rtl"] .input-group-btn:last-child > .dropdown-toggle,
-html[dir="rtl"] .input-group-btn:first-child > .btn:not(:first-child) {
+html[dir="rtl"] .input-group-btn:first-child > .btn:not(:first-child),
+html[dir="rtl"] .input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -4133,16 +4141,20 @@ html[dir="rtl"] .input-group-btn > .btn + .btn {
 .input-group-btn > .btn:active {
   z-index: 2;
 }
-html:not([dir="rtl"]) .input-group-btn:first-child > .btn {
+html:not([dir="rtl"]) .input-group-btn:first-child > .btn,
+html:not([dir="rtl"]) .input-group-btn:first-child > .btn-group {
   margin-right: -1px;
 }
-html[dir="rtl"] .input-group-btn:first-child > .btn {
+html[dir="rtl"] .input-group-btn:first-child > .btn,
+html[dir="rtl"] .input-group-btn:first-child > .btn-group {
   margin-left: -1px;
 }
-html:not([dir="rtl"]) .input-group-btn:last-child > .btn {
+html:not([dir="rtl"]) .input-group-btn:last-child > .btn,
+html:not([dir="rtl"]) .input-group-btn:last-child > .btn-group {
   margin-left: -1px;
 }
-html[dir="rtl"] .input-group-btn:last-child > .btn {
+html[dir="rtl"] .input-group-btn:last-child > .btn,
+html[dir="rtl"] .input-group-btn:last-child > .btn-group {
   margin-right: -1px;
 }
 .nav {
