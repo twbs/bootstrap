@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: carousel.js v3.0.3
+ * Bootstrap: carousel.js v3.1.0
  * http://getbootstrap.com/javascript/#carousel
  * ========================================================================
  * Copyright 2013 Twitter, Inc.
@@ -39,9 +39,9 @@
   }
 
   Carousel.DEFAULTS = {
-    interval: 5000
-  , pause: 'hover'
-  , wrap: true
+    interval: 5000,
+    pause: 'hover',
+    wrap: true
   }
 
   Carousel.prototype.cycle =  function (e) {
@@ -141,7 +141,7 @@
           that.sliding = false
           setTimeout(function () { that.$element.trigger('slid.bs.carousel') }, 0)
         })
-        .emulateTransitionEnd(600)
+        .emulateTransitionEnd($active.css('transition-duration').slice(0, -1) * 1000)
     } else {
       this.$element.trigger(e)
       if (e.isDefaultPrevented()) return

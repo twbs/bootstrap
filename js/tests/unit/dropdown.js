@@ -28,8 +28,8 @@ $(function () {
           + '<li><a href="#">Another link</a></li>'
           + '</ul>'
           + '</li>'
-          + '</ul>'
-          , dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
+          + '</ul>',
+            dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
 
         ok(!dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
       })
@@ -45,8 +45,8 @@ $(function () {
           + '<li><a href="#">Another link</a></li>'
           + '</ul>'
           + '</li>'
-          + '</ul>'
-          , dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
+          + '</ul>',
+            dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
 
         ok(!dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
       })
@@ -62,8 +62,8 @@ $(function () {
           + '<li><a href="#">Another link</a></li>'
           + '</ul>'
           + '</li>'
-          + '</ul>'
-          , dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
+          + '</ul>',
+            dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
 
         ok(dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
       })
@@ -79,8 +79,8 @@ $(function () {
           + '<li><a href="#">Another link</a></li>'
           + '</ul>'
           + '</li>'
-          + '</ul>'
-          , dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
+          + '</ul>',
+            dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
 
         ok(dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
       })
@@ -97,12 +97,12 @@ $(function () {
           + '<li><a href="#">Another link</a></li>'
           + '</ul>'
           + '</li>'
-          + '</ul>'
-          , dropdown = $(dropdownHTML)
-            .appendTo('#qunit-fixture')
-            .find('[data-toggle="dropdown"]')
-            .dropdown()
-            .click()
+          + '</ul>',
+            dropdown = $(dropdownHTML)
+              .appendTo('#qunit-fixture')
+              .find('[data-toggle="dropdown"]')
+              .dropdown()
+              .click()
 
         ok(dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
         $('body').click()
@@ -127,10 +127,10 @@ $(function () {
             + '    <ul class="dropdown-menu">'
             + '        <li><a href="#">Action 1</a></li>'
             + '    </ul>'
-            + '</div>'
-          , dropdowns = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-toggle="dropdown"]')
-          , first = dropdowns.first()
-          , last = dropdowns.last()
+            + '</div>',
+              dropdowns = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-toggle="dropdown"]'),
+              first = dropdowns.first(),
+              last = dropdowns.last()
 
         ok(dropdowns.length == 2, 'Should be two dropdowns')
 
@@ -160,11 +160,11 @@ $(function () {
           + '<li><a href="#">Another link</a></li>'
           + '</ul>'
           + '</li>'
-          + '</ul>'
-          , dropdown = $(dropdownHTML)
-            .appendTo('#qunit-fixture')
-            .find('[data-toggle="dropdown"]')
-            .dropdown()
+          + '</ul>',
+            dropdown = $(dropdownHTML)
+              .appendTo('#qunit-fixture')
+              .find('[data-toggle="dropdown"]')
+              .dropdown()
 
         stop()
 
@@ -194,11 +194,11 @@ $(function () {
           + '<li><a href="#">Another link</a></li>'
           + '</ul>'
           + '</li>'
-          + '</ul>'
-          , dropdown = $(dropdownHTML)
-            .appendTo('#qunit-fixture')
-            .find('[data-toggle="dropdown"]')
-            .dropdown()
+          + '</ul>',
+            dropdown = $(dropdownHTML)
+              .appendTo('#qunit-fixture')
+              .find('[data-toggle="dropdown"]')
+              .dropdown()
 
         stop()
 

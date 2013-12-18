@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: tab.js v3.0.3
+ * Bootstrap: tab.js v3.1.0
  * http://getbootstrap.com/javascript/#tabs
  * ========================================================================
  * Copyright 2013 Twitter, Inc.
@@ -53,8 +53,8 @@
     this.activate($this.parent('li'), $ul)
     this.activate($target, $target.parent(), function () {
       $this.trigger({
-        type: 'shown.bs.tab'
-      , relatedTarget: previous
+        type: 'shown.bs.tab',
+        relatedTarget: previous
       })
     })
   }
