@@ -5,27 +5,29 @@
 
 .close {
   float: right;
-  font-size: 20px;
-  font-weight: bold;
-  line-height: @baseLineHeight;
-  color: @black;
-  text-shadow: 0 1px 0 rgba(255,255,255,1);
-  .opacity(20);
-  &:hover {
-    color: @black;
+  font-size: (@font-size-base * 1.5);
+  font-weight: @close-font-weight;
+  line-height: 1;
+  color: @close-color;
+  text-shadow: @close-text-shadow;
+  .opacity(.2);
+
+  &:hover,
+  &:focus {
+    color: @close-color;
     text-decoration: none;
     cursor: pointer;
-    .opacity(40);
+    .opacity(.5);
   }
-}
 
-// Additional properties for button version
-// iOS requires the button element instead of an anchor tag.
-// If you want the anchor version, it requires `href="#"`.
-button.close {
-  padding: 0;
-  cursor: pointer;
-  background: transparent;
-  border: 0;
-  -webkit-appearance: none;
+  // Additional properties for button version
+  // iOS requires the button element instead of an anchor tag.
+  // If you want the anchor version, it requires `href="#"`.
+  button& {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+  }
 }
