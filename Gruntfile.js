@@ -6,7 +6,9 @@ module.exports = function (grunt) {
   // Force use of Unix newlines
   grunt.util.linefeed = '\n';
 
-  RegExp.quote = require('regexp-quote')
+  RegExp.quote = function (string) {
+    return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&')
+  }
   var btoa = require('btoa')
   // Project configuration.
   grunt.initConfig({
@@ -113,6 +115,7 @@ module.exports = function (grunt) {
     less: {
       compileCore: {
         options: {
+          strictMath: true,
           sourceMap: true,
           outputSourceFiles: true,
           sourceMapURL: '<%= pkg.name %>.css.map',
@@ -124,6 +127,7 @@ module.exports = function (grunt) {
       },
       compileTheme: {
         options: {
+          strictMath: true,
           sourceMap: true,
           outputSourceFiles: true,
           sourceMapURL: '<%= pkg.name %>-theme.css.map',
@@ -204,6 +208,9 @@ module.exports = function (grunt) {
 
     validation: {
       options: {
+        charset: 'utf-8',
+        doctype: 'HTML5',
+        failHard: true,
         reset: true,
         relaxerror: [
           'Bad value X-UA-Compatible for attribute http-equiv on element meta.',
@@ -247,90 +254,7 @@ module.exports = function (grunt) {
           build: process.env.TRAVIS_JOB_ID,
           concurrency: 3,
           urls: ['http://127.0.0.1:3000/js/tests/index.html'],
-          browsers: [
-            // See https://saucelabs.com/docs/platforms/webdriver
-            {
-              browserName: 'safari',
-              version: '6',
-              platform: 'OS X 10.8'
-            },
-            {
-              browserName: 'chrome',
-              version: '28',
-              platform: 'OS X 10.6'
-            },
-            /* FIXME: currently fails 1 tooltip test
-            {
-              browserName: 'firefox',
-              version: '25',
-              platform: 'OS X 10.6'
-            },*/
-            // Mac Opera not currently supported by Sauce Labs
-            /* FIXME: currently fails 1 tooltip test
-            {
-              browserName: 'internet explorer',
-              version: '11',
-              platform: 'Windows 8.1'
-            },*/
-            /*
-            {
-              browserName: 'internet explorer',
-              version: '10',
-              platform: 'Windows 8'
-            },
-            {
-              browserName: 'internet explorer',
-              version: '9',
-              platform: 'Windows 7'
-            },
-            {
-              browserName: 'internet explorer',
-              version: '8',
-              platform: 'Windows 7'
-            },
-            {// unofficial
-              browserName: 'internet explorer',
-              version: '7',
-              platform: 'Windows XP'
-            },
-            */
-            {
-              browserName: 'chrome',
-              version: '31',
-              platform: 'Windows 8.1'
-            },
-            {
-              browserName: 'firefox',
-              version: '25',
-              platform: 'Windows 8.1'
-            },
-            // Win Opera 15+ not currently supported by Sauce Labs
-            {
-              browserName: 'iphone',
-              version: '6.1',
-              platform: 'OS X 10.8'
-            },
-            // iOS Chrome not currently supported by Sauce Labs
-            // Linux (unofficial)
-            {
-              browserName: 'chrome',
-              version: '30',
-              platform: 'Linux'
-            },
-            {
-              browserName: 'firefox',
-              version: '25',
-              platform: 'Linux'
-            }
-            // Android Chrome not currently supported by Sauce Labs
-            /* Android Browser (super-unofficial)
-            {
-              browserName: 'android',
-              version: '4.0',
-              platform: 'Linux'
-            }
-            */
-          ],
+          browsers: grunt.file.readYAML('sauce_browsers.yml')
         }
       }
     }
@@ -338,31 +262,25 @@ module.exports = function (grunt) {
 
 
   // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-banner');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-csslint');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-csscomb');
-  grunt.loadNpmTasks('grunt-html-validation');
-  grunt.loadNpmTasks('grunt-jekyll');
-  grunt.loadNpmTasks('grunt-jscs-checker');
-  grunt.loadNpmTasks('grunt-saucelabs');
-  grunt.loadNpmTasks('grunt-sed');
+  require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
 
   // Docs HTML validation task
   grunt.registerTask('validate-html', ['jekyll', 'validation']);
 
   // Test task.
-  var testSubtasks = ['dist-css', 'jshint', 'jscs', 'qunit', 'validate-html'];
+  var testSubtasks = [];
+  // Skip core tests if running a different subset of the test suite
+  if (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'core') {
+    testSubtasks = testSubtasks.concat(['dist-css', 'jshint', 'jscs', 'qunit']);
+  }
+  // Skip HTML validation if running a different subset of the test suite
+  if (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'validate-html') {
+    testSubtasks.push('validate-html');
+  }
   // Only run Sauce Labs tests if there's a Sauce access key
-  if (typeof process.env.SAUCE_ACCESS_KEY !== 'undefined') {
+  if (typeof process.env.SAUCE_ACCESS_KEY !== 'undefined'
+      // Skip Sauce if running a different subset of the test suite
+      && (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'sauce-js-unit')) {
     testSubtasks.push('connect');
     testSubtasks.push('saucelabs-qunit');
   }
