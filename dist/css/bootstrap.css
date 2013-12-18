@@ -4094,7 +4094,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   border-radius: 4px;
 }
 .breadcrumb > li {
-  display: inline;
+  display: inline-block;
 }
 .breadcrumb > li + li:before {
   padding: 0 5px;
