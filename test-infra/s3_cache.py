@@ -58,22 +58,22 @@ def _extract_tarball(directory):
 def download(directory):
     _delete_file_quietly(NEED_TO_UPLOAD_MARKER)
     try:
-        print("Downloading {} tarball from S3...".format(basename(directory)))
+        print("Downloading {} tarball from S3...".format(friendly_name))
         key.get_contents_to_filename(_tarball_filename_for(directory))
     except S3ResponseError as err:
         open(NEED_TO_UPLOAD_MARKER, 'a').close()
         print(err)
-        raise SystemExit("Cached {} download failed!".format(basename(directory)))
+        raise SystemExit("Cached {} download failed!".format(friendly_name))
     print("Downloaded {}.".format(_tarball_size(directory)))
     _extract_tarball(directory)
-    print("{} successfully installed from cache.".format(directory))
+    print("{} successfully installed from cache.".format(friendly_name))
 
 
 def upload(directory):
     _create_tarball(directory)
-    print("Uploading {} tarball to S3... ({})".format(basename(directory), _tarball_size(directory)))
+    print("Uploading {} tarball to S3... ({})".format(friendly_name, _tarball_size(directory)))
     key.set_contents_from_filename(_tarball_filename_for(directory))
-    print("{} cache successfully updated.".format(directory))
+    print("{} cache successfully updated.".format(friendly_name))
     _delete_file_quietly(NEED_TO_UPLOAD_MARKER)
 
 
@@ -82,9 +82,9 @@ if __name__ == '__main__':
     #   AWS_ACCESS_KEY_ID - AWS Access Key ID
     #   AWS_SECRET_ACCESS_KEY - AWS Secret Access Key
     argv.pop(0)
-    if len(argv) != 3:
-        raise SystemExit("USAGE: node_modules_cache.py <download | upload> <dependencies file> <directory>")
-    mode, dependencies_file, directory = argv
+    if len(argv) != 4:
+        raise SystemExit("USAGE: node_modules_cache.py <download | upload> <friendly name> <dependencies file> <directory>")
+    mode, friendly_name, dependencies_file, directory = argv
 
     conn = S3Connection()
     bucket = conn.lookup(BUCKET_NAME)
