@@ -30,12 +30,16 @@
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  html:not([dir="rtl"]) & { left: 0; }
-  html[dir="rtl"] & { right: 0; }
+  html:not([dir="rtl"]) & {
+    left: 0;
+    float: left;
+  }
+  html[dir="rtl"] & {
+    right: 0;
+    float: right;
+  }
   z-index: @zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
-  html:not([dir="rtl"]) & { float: left; }
-  html[dir="rtl"] & { float: right; }
   min-width: 160px;
   padding: 5px 0;
   margin: 2px 0 0; // override default ul
