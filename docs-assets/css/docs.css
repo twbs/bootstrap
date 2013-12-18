@@ -633,28 +633,32 @@ h1[id] {
 .bs-callout p:last-child {
   margin-bottom: 0;
 }
+.bs-callout code {
+  background-color: #fff;
+  border-radius: 3px;
+}
 
 /* Variations */
 .bs-callout-danger {
   background-color: #fdf7f7;
-  border-color: #eed3d7;
+  border-color: #d9534f;
 }
 .bs-callout-danger h4 {
-  color: #b94a48;
+  color: #d9534f;
 }
 .bs-callout-warning {
-  background-color: #faf8f0;
-  border-color: #faebcc;
+  background-color: #fcf8f2;
+  border-color: #f0ad4e;
 }
 .bs-callout-warning h4 {
-  color: #8a6d3b;
+  color: #f0ad4e;
 }
 .bs-callout-info {
   background-color: #f4f8fa;
-  border-color: #bce8f1;
+  border-color: #5bc0de;
 }
 .bs-callout-info h4 {
-  color: #34789a;
+  color: #5bc0de;
 }
 
 
