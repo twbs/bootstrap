@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: modal.js v3.0.3
+ * Bootstrap: modal.js v3.1.0
  * http://getbootstrap.com/javascript/#modals
  * ========================================================================
  * Copyright 2013 Twitter, Inc.

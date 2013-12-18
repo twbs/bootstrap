@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: dropdown.js v3.0.3
+ * Bootstrap: dropdown.js v3.1.0
  * http://getbootstrap.com/javascript/#dropdowns
  * ========================================================================
  * Copyright 2013 Twitter, Inc.
