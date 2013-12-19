@@ -17,7 +17,7 @@
     this.$element  = $(element)
     this.$backdrop =
     this.isShown   = null
-
+    this.openClasses = 'modal-open scrollbar'
     if (this.options.remote) this.$element.load(this.options.remote)
   }
 
@@ -33,7 +33,11 @@
 
   Modal.prototype.show = function (_relatedTarget) {
     var that = this
-    var e    = $.Event('show.bs.modal', { relatedTarget: _relatedTarget })
+    var e    = $.Event('show.bs.modal', { relatedTarget: _relatedTarget, openClasses: that.openClasses })
+
+    this.calculateScrollbarWidth()
+
+    this.openClasses = this.hasScrollbar() ? 'modal-open scrollbar' : 'modal-open'
 
     this.$element.trigger(e)
 
@@ -64,7 +68,7 @@
 
       that.enforceFocus()
 
-      var e = $.Event('shown.bs.modal', { relatedTarget: _relatedTarget })
+      var e = $.Event('shown.bs.modal', { relatedTarget: _relatedTarget, openClasses: that.openClasses })
 
       transition ?
         that.$element.find('.modal-dialog') // wait for modal to slide in
@@ -128,7 +132,7 @@
     this.$element.hide()
     this.backdrop(function () {
       that.removeBackdrop()
-      that.$element.trigger('hidden.bs.modal')
+      that.$element.trigger('hidden.bs.modal', [that.openClasses])
     })
   }
 
@@ -179,6 +183,19 @@
     }
   }
 
+  Modal.prototype.hasScrollbar = function () {
+    return $(document.body).outerHeight() > $(window).height()
+  }
+
+  Modal.prototype.calculateScrollbarWidth = function () {
+      if ($("#bs-scrollbar-width").length > 0)
+        return
+      var a = $('<div class="modal-measure-scrollbar"/>').prependTo($("body")), 
+          b = $('<div class="inner"/>').appendTo(a), 
+          c = a.width() - b.width()
+      a.remove()
+      $("head").append('<style id="bs-scrollbar-width">.modal-open.scrollbar { margin-right: ' + c + 'px }</style>')
+  }
 
   // MODAL PLUGIN DEFINITION
   // =======================
@@ -228,7 +245,7 @@
   })
 
   $(document)
-    .on('show.bs.modal',  '.modal', function () { $(document.body).addClass('modal-open') })
-    .on('hidden.bs.modal', '.modal', function () { $(document.body).removeClass('modal-open') })
+    .on('show.bs.modal',  '.modal', function (event) { $(document.body).addClass(event.openClasses) })
+    .on('hidden.bs.modal', '.modal', function (event, openClasses) { $(document.body).removeClass(openClasses) })
 
 }(jQuery);
