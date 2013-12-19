@@ -3,12 +3,14 @@
 
   {
     browserName: "safari",
-    version: "6",
     platform: "OS X 10.8"
   },
+  # { # Safari 7 (which requires Mavericks) is not currently supported by Sauce Labs
+  #   browserName: "safari",
+  #   platform: "OS X 10.9"
+  # },
   {
     browserName: "chrome",
-    version: "31",
     platform: "OS X 10.9"
   },
 
@@ -50,12 +52,10 @@
 
   {
     browserName: "chrome",
-    version: "31",
     platform: "Windows 8.1"
   },
   {
     browserName: "firefox",
-    version: "25",
     platform: "Windows 8.1"
   },
 
@@ -63,7 +63,6 @@
 
   {
     browserName: "iphone",
-    version: "6.1",
     platform: "OS X 10.8"
   },
 
@@ -72,12 +71,10 @@
   # Linux (unofficial):
   {
     browserName: "chrome",
-    version: "30",
     platform: "Linux"
   },
   {
     browserName: "firefox",
-    version: "25",
     platform: "Linux"
   }
 
