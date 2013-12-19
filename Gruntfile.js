@@ -299,12 +299,39 @@ module.exports = function (grunt) {
   grunt.registerTask('dist', ['clean', 'dist-css', 'dist-fonts', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['test', 'dist', 'build-customizer']);
+  grunt.registerTask('default', ['test', 'dist', 'build-glyphicons-data', 'build-customizer']);
 
   // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
   // This can be overzealous, so its changes should always be manually reviewed!
   grunt.registerTask('change-version-number', ['sed']);
+
+  grunt.registerTask('build-glyphicons-data', function () {
+    var fs = require('fs')
+
+    // Pass encoding, utf8, so `readFileSync` will return a string instead of a
+    // buffer
+    var glyphiconsFile = fs.readFileSync('less/glyphicons.less', 'utf8')
+    var glpyhiconsLines = glyphiconsFile.split('\n')
+
+    // Use any line that starts with ".glyphicon-" and capture the class name
+    var iconClassName = /^\.(glyphicon-[^\s]+)/
+    var glyphiconsData = '# Generated on ' + (new Date()) + '\n' +
+                         '# **Don\'t edit this directly!**\n' +
+                         '# Look at the \'build-glyphicons-data\' task in Gruntfile.js\n\n';
+    for (var i = 0, len = glpyhiconsLines.length; i < len; i++) {
+      var match = glpyhiconsLines[i].match(iconClassName)
+
+      if (match != null) {
+        glyphiconsData += '- ' + match[1] + '\n'
+      }
+    }
+
+    // Create the `_data` directory if it doesn't already exist
+    if (!fs.existsSync('_data')) fs.mkdirSync('_data')
+
+    fs.writeFileSync('_data/glyphicons.yml', glyphiconsData)
+  });
 
   // task for building customizer
   grunt.registerTask('build-customizer', 'Add scripts/less files to customizer.', function () {
