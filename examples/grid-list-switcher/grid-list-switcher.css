@@ -1,0 +1,55 @@
+body {
+  padding-top: 50px;
+}
+
+.switch-view-btn-group {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.switch-view {
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+.item {
+	padding-bottom: 10px;
+}
+
+.item-heading {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.item-text {
+  margin-bottom: 0;
+  line-height: 1.3;
+}
+
+.list-view-item {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+
+.list-view-item:last-child {
+  margin-bottom: 0;
+}
+.item.list-view-item {
+	float: none;
+	width: 100%;
+}
+
+.item.list-view-item:before,
+.item.list-view-item:after {
+  display: table;
+  content: " ";
+}
+
+.item.list-view-item:after {
+	clear:both;
+}
+
+.item.list-view-item img {
+  float:left;
+  margin-right: 10px;
+}
