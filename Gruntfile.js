@@ -137,6 +137,18 @@ module.exports = function (grunt) {
           'dist/css/<%= pkg.name %>-theme.css': 'less/theme.less'
         }
       },
+      compileRtl: {
+        options: {
+          strictMath: true,
+          sourceMap: true,
+          outputSourceFiles: true,
+          sourceMapURL: '<%= pkg.name %>-rtl.css.map',
+          sourceMapFilename: 'dist/css/<%= pkg.name %>-rtl.css.map'
+        },
+        files: {
+          'dist/css/<%= pkg.name %>-rtl.css': 'less/rtl.less'
+        }
+      },
       minify: {
         options: {
           cleancss: true,
@@ -144,7 +156,8 @@ module.exports = function (grunt) {
         },
         files: {
           'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css',
-          'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css'
+          'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css',
+          'dist/css/<%= pkg.name %>-rtl.min.css': 'dist/css/<%= pkg.name %>-rtl.css'
         }
       }
     },
@@ -161,6 +174,8 @@ module.exports = function (grunt) {
             'dist/css/<%= pkg.name %>.min.css',
             'dist/css/<%= pkg.name %>-theme.css',
             'dist/css/<%= pkg.name %>-theme.min.css',
+            'dist/css/<%= pkg.name %>-rtl.css',
+            'dist/css/<%= pkg.name %>-rtl.min.css'
           ]
         }
       }
@@ -174,6 +189,7 @@ module.exports = function (grunt) {
         files: {
           'dist/css/<%= pkg.name %>.css': ['dist/css/<%= pkg.name %>.css'],
           'dist/css/<%= pkg.name %>-theme.css': ['dist/css/<%= pkg.name %>-theme.css'],
+          'dist/css/<%= pkg.name %>-rtl.css': ['dist/css/<%= pkg.name %>-rtl.css']
         }
       }
     },
