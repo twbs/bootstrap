@@ -1,7 +1,7 @@
 {
   "name": "bootstrap",
   "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development.",
-  "version": "3.0.3",
+  "version": "3.1.0",
   "keywords": ["bootstrap", "css"],
   "homepage": "http://getbootstrap.com",
   "author": "Twitter, Inc.",
@@ -15,8 +15,8 @@
   },
   "licenses": [
     {
-      "type": "Apache-2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+      "type": "MIT",
+      "url": "https://github.com/twbs/bootstrap/blob/master/LICENSE"
     }
   ],
   "devDependencies": {
