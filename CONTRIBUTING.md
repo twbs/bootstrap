@@ -2,30 +2,152 @@
 
 Looking to contribute something to Bootstrap? **Here's how you can help.**
 
+Please take a moment to review this document in order to make the contribution
+process easy and effective for everyone involved.
+
+Following these guidelines helps to communicate that you respect the time of
+the developers managing and developing this open source project. In return,
+they should reciprocate that respect in addressing your issue or assessing
+patches and features.
 
 
-## Reporting issues
+## Using the issue tracker
 
-We only accept issues that are bug reports or feature requests. Bugs must be isolated and reproducible problems that we can fix within the Bootstrap core. Please read the following guidelines before opening any issue.
+The [issue tracker](https://github.com/twbs/bootstrap/issues) is
+the preferred channel for [bug reports](#bug-reports), [features requests](#feature-requests)
+and [submitting pull requests](#pull-requests), but please respect the following
+restrictions:
 
-1. **Search for existing issues.** We get a lot of duplicate issues, and you'd help us out a lot by first checking if someone else has reported the same issue. Moreover, the issue may have already been resolved with a fix available.
-2. **Create an isolated and reproducible test case.** Be sure the problem exists in Bootstrap's code with a [reduced test case](http://css-tricks.com/reduced-test-cases/) that should be included in each bug report.
-3. **Include a live example.** Make use of jsFiddle or jsBin to share your isolated test cases.
-4. **Share as much information as possible.** Include operating system and version, browser and version, version of Bootstrap, customized or vanilla build, etc. where appropriate. Also include steps to reproduce the bug.
+* Please **do not** use the issue tracker for personal support requests (use
+  [Stack Overflow](http://stackoverflow.com/) or IRC).
 
+* Please **do not** derail or troll issues. Keep the discussion on topic and
+  respect the opinions of others.
+
+* Please **do not** open issues or pull requests regarding the code in
+  [`Normalize`](https://github.com/necolas/normalize.css) (open them in
+  their respective repositories).
+
+
+## Bug reports
+
+A bug is a _demonstrable problem_ that is caused by the code in the repository.
+Good bug reports are extremely helpful, so thanks!
+
+Guidelines for bug reports:
+
+1. **Use the GitHub issue search** &mdash; check if the issue has already been
+   reported.
+
+2. **Check if the issue has been fixed** &mdash; try to reproduce it using the
+   latest `master` or development branch in the repository.
+
+3. **Isolate the problem** &mdash; ideally create a [reduced test
+   case](http://css-tricks.com/6263-reduced-test-cases/) and a live example.
+
+A good bug report shouldn't leave others needing to chase you up for more
+information. Please try to be as detailed as possible in your report. What is
+your environment? What steps will reproduce the issue? What browser(s) and OS
+experience the problem? What would you expect to be the outcome? All these
+details will help people to fix any potential bugs.
+
+Example:
+
+> Short and descriptive example bug report title
+>
+> A summary of the issue and the browser/OS environment in which it occurs. If
+> suitable, include the steps required to reproduce the bug.
+>
+> 1. This is the first step
+> 2. This is the second step
+> 3. Further steps, etc.
+>
+> `<url>` - a link to the reduced test case
+>
+> Any other information you want to share that is relevant to the issue being
+> reported. This might include the lines of code that you have identified as
+> causing the bug, and potential solutions (and your opinions on their
+> merits).
+
+
+## Feature requests
+
+Feature requests are welcome. But take a moment to find out whether your idea
+fits with the scope and aims of the project. It's up to *you* to make a strong
+case to convince the project's developers of the merits of this feature. Please
+provide as much detail and context as possible.
 
 
 ## Pull requests
 
-- CSS changes must be done in `.less` files first, never just in the compiled `.css` files
-- If modifying the `.less` files, always recompile and commit the compiled files `bootstrap.css` and `bootstrap.min.css`
-- Try not to pollute your pull request with unintended changes--keep them simple and small
-- Try to share which browsers your code has been tested in before submitting a pull request
-- Pull requests should always be against the `master` branch, never against `gh-pages`.
+Good pull requests—patches, improvements, new features—are a fantastic
+help. They should remain focused in scope and avoid containing unrelated
+commits.
+
+**Please ask first** before embarking on any significant pull request (e.g.
+implementing features, refactoring code, porting to a different language),
+otherwise you risk spending a lot of time working on something that the
+project's developers might not want to merge into the project.
+
+Please adhere to the [coding conventions](#code-conventions) used throughout a
+project (indentation, accurate comments, etc.) and any other requirements
+(such as test coverage).
+
+Adhering to the following this process is the best way to get your work
+included in the project:
+
+1. [Fork](http://help.github.com/fork-a-repo/) the project, clone your fork,
+   and configure the remotes:
+
+   ```bash
+   # Clone your fork of the repo into the current directory
+   git clone https://github.com/<your-username>/bootstrap.git
+   # Navigate to the newly cloned directory
+   cd html5-boilerplate
+   # Assign the original repo to a remote called "upstream"
+   git remote add upstream https://github.com/twbs/bootstrap.git
+   ```
+
+2. If you cloned a while ago, get the latest changes from upstream:
+
+   ```bash
+   git checkout master
+   git pull upstream master
+   ```
+
+3. Create a new topic branch (off the main project development branch) to
+   contain your feature, change, or fix:
+
+   ```bash
+   git checkout -b <topic-branch-name>
+   ```
+
+4. Commit your changes in logical chunks. Please adhere to these [git commit
+   message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+   or your code is unlikely be merged into the main project. Use Git's
+   [interactive rebase](https://help.github.com/articles/interactive-rebase)
+   feature to tidy up your commits before making them public.
+
+5. Locally merge (or rebase) the upstream development branch into your topic branch:
+
+   ```bash
+   git pull [--rebase] upstream master
+   ```
+
+6. Push your topic branch up to your fork:
+
+   ```bash
+   git push origin <topic-branch-name>
+   ```
+
+7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
+    with a clear title and description against the `master` branch.
+
+**IMPORTANT**: By submitting a patch, you agree to allow the project owners to
+license your work under the the terms of the [MIT License](LICENSE.md).
 
 
-
-## Coding standards
+## Code guidelines
 
 ### HTML
 
@@ -37,6 +159,7 @@ We only accept issues that are bug reports or feature requests. Bugs must be iso
 
 ### CSS
 
+- CSS changes must be done in `.less` files first, never just in the compiled `.css` files
 - Adhere to the [CSS property order](http://markdotto.com/2011/11/29/css-property-order/)
 - Multiple-line approach (one property and value per line)
 - Always a space after a property's colon (e.g., `display: block;` and not `display:block;`)
@@ -56,25 +179,9 @@ We only accept issues that are bug reports or feature requests. Bugs must be iso
 - "Attractive"
 
 
-
 ## License
 
-Prior to v3.1.0, Bootstrap was released under the Apache License v2.0. As of v3.1.0, Bootstrap is now licensed under the [MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE). By contributing your code, you agree to license your contribution under the [MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE).
+By contributing your code, you agree to license your contribution under the [MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE).
 
+Prior to v3.1.0, Bootstrap was released under the Apache License v2.0.
 
-
-## Release checklist
-
-1. Close ship list issue for the release.
-2. Close the milestone for the release.
-3. Open new release issue that includes this checklist.
-4. Ping folks to coordinate release (mainly @jdorfman for BootstrapCDN).
-5. Update version numbers using `grunt change-version-number --oldver=A.B.C --newver=X.Y.Z`. Review the changes and stage them manually.
-6. Run `grunt` one last time.
-7. Push to `master` branch.
-8. Merge `master` into `gh-pages`.
-9. Generate `bootstrap-X.Y.Z-dist.zip` file for release.
-10. Create release on GitHub with `/dist/` folder and release notes.
-11. Push `gh-pages`.
-12. Publish blog post.
-13. Tweet tweet.
