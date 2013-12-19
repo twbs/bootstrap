@@ -327,4 +327,6 @@ module.exports = function (grunt) {
     var files = getFiles('js') + getFiles('less') + getFiles('fonts')
     fs.writeFileSync('docs-assets/js/raw-files.js', files)
   });
+
+  grunt.registerTask('loopfirst_watch', ['dist', 'watch']);
 };
