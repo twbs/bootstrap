@@ -81,6 +81,9 @@
   img{
     margin-right:5px;
   }
+  button{
+    width:100%;
+  }
   @media (min-width: @grid-float-breakpoint){
     clear:none;
     float:right;
@@ -113,10 +116,17 @@
       float:right;
     }
   }
+  @media (min-width: @screen-sm-min){
+    button{
+      width:auto;
+      float:right;
+    }
+  }
   @media (min-width: @screen-md-min){
     margin-right:0;
   }
 }
+
 
 .navbar-search{
   display:none;
