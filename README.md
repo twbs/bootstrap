@@ -11,9 +11,9 @@ To get started, check out <http://getbootstrap.com>!
 
 Three quick start options are available:
 
-* [Download the latest release](https://github.com/twbs/bootstrap/archive/v3.0.3.zip).
-* Clone the repo: `git clone https://github.com/twbs/bootstrap.git`.
-* Install with [Bower](http://bower.io): `bower install bootstrap`.
+- [Download the latest release](https://github.com/twbs/bootstrap/archive/v3.1.0.zip).
+- Clone the repo: `git clone https://github.com/twbs/bootstrap.git`.
+- Install with [Bower](http://bower.io): `bower install bootstrap`.
 
 Read the [Getting Started page](http://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
 
@@ -115,23 +115,22 @@ More over, if your pull request contains JavaScript patches or features, you mus
 
 Editor preferences are available in the [editor config](.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
 
-With v3.1, we're moving from the Apache 2 to the MIT license for the Bootstrap code (not the docs). Please see the [contributing guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md) for more information.
 
 
 ## Community
 
 Keep track of development and community news.
 
-* Follow [@twbootstrap on Twitter](http://twitter.com/twbootstrap).
-* Read and subscribe to [The Official Bootstrap Blog](http://blog.getbootstrap.com).
-* Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##twitter-bootstrap` channel.
+- Follow [@twbootstrap on Twitter](http://twitter.com/twbootstrap).
+- Read and subscribe to [The Official Bootstrap Blog](http://blog.getbootstrap.com).
+- Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##twitter-bootstrap` channel.
 
 
 
 
 ## Versioning
 
-For transparency and insight into our release cycle, and for striving to maintain backward compatibility, Bootstrap will be maintained under the Semantic Versioning guidelines as much as possible.
+For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under the Semantic Versioning guidelines. Sometimes we screw up, but we'll adhere to these rules whenever possible.
 
 Releases will be numbered with the following format:
 
@@ -139,9 +138,9 @@ Releases will be numbered with the following format:
 
 And constructed with the following guidelines:
 
-* Breaking backward compatibility bumps the major (and resets the minor and patch)
-* New additions without breaking backward compatibility bumps the minor (and resets the patch)
-* Bug fixes and misc changes bumps the patch
+- Breaking backward compatibility **bumps the major** while resetting minor and patch
+- New additions without breaking backward compatibility **bumps the minor** while resetting the patch
+- Bug fixes and misc changes **bumps only the patch**
 
 For more information on SemVer, please visit <http://semver.org/>.
 
@@ -151,16 +150,16 @@ For more information on SemVer, please visit <http://semver.org/>.
 
 **Mark Otto**
 
-+ <http://twitter.com/mdo>
-+ <http://github.com/mdo>
+- <http://twitter.com/mdo>
+- <http://github.com/mdo>
 
 **Jacob Thornton**
 
-+ <http://twitter.com/fat>
-+ <http://github.com/fat>
+- <http://twitter.com/fat>
+- <http://github.com/fat>
 
 
 
 ## Copyright and license
 
-Copyright 2013 Twitter, Inc under [the Apache 2.0 license](LICENSE).
+Copyright 2013 Twitter, Inc under [the MIT license](LICENSE).

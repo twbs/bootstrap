@@ -59,8 +59,8 @@ $(function () {
       })
 
       test('should toggle active when btn children are clicked', function () {
-        var btn = $('<button class="btn" data-toggle="button">mdo</button>')
-          , inner = $('<i></i>')
+        var btn = $('<button class="btn" data-toggle="button">mdo</button>'),
+            inner = $('<i></i>')
         btn
           .append(inner)
           .appendTo($('#qunit-fixture'))
@@ -70,9 +70,9 @@ $(function () {
       })
 
       test('should toggle active when btn children are clicked within btn-group', function () {
-        var btngroup = $('<div class="btn-group" data-toggle="buttons"></div>')
-          , btn = $('<button class="btn">fat</button>')
-          , inner = $('<i></i>')
+        var btngroup = $('<div class="btn-group" data-toggle="buttons"></div>'),
+            btn = $('<button class="btn">fat</button>'),
+            inner = $('<i></i>')
         btngroup
           .append(btn.append(inner))
           .appendTo($('#qunit-fixture'))

@@ -299,8 +299,8 @@ $(function () {
 
       test('should place tooltip inside window', function () {
         var container = $('<div />').appendTo('body')
-            .css({position: 'absolute', width: 200, height: 200, bottom: 0, left: 0})
-          , tooltip = $('<a href="#" title="Very very very very very very very very long tooltip">Hover me</a>')
+            .css({position: 'absolute', width: 200, height: 200, bottom: 0, left: 0}),
+            tooltip = $('<a href="#" title="Very very very very very very very very long tooltip">Hover me</a>')
           .css({position: 'absolute', top: 0, left: 0})
           .appendTo(container)
           .tooltip({placement: 'top', animate: false})
@@ -318,13 +318,13 @@ $(function () {
 
       test('should place tooltip on top of element', function () {
         var container = $('<div />').appendTo('body')
-              .css({position: 'absolute', bottom: 0, left: 0, textAlign: 'right', width: 300, height: 300})
-            , p = $('<p style="margin-top:200px" />').appendTo(container)
-            , tooltiped = $('<a href="#" title="very very very very very very very long tooltip">Hover me</a>')
-              .css({marginTop: 200})
-              .appendTo(p)
-              .tooltip({placement: 'top', animate: false})
-              .tooltip('show')
+              .css({position: 'absolute', bottom: 0, left: 0, textAlign: 'right', width: 300, height: 300}),
+              p = $('<p style="margin-top:200px" />').appendTo(container),
+              tooltiped = $('<a href="#" title="very very very very very very very long tooltip">Hover me</a>')
+                .css({marginTop: 200})
+                .appendTo(p)
+                .tooltip({placement: 'top', animate: false})
+                .tooltip('show')
 
         stop()
 
@@ -340,12 +340,12 @@ $(function () {
       test('should add position class before positioning so that position-specific styles are taken into account', function () {
         $('head').append('<style> .tooltip.right { white-space: nowrap; } .tooltip.right .tooltip-inner { max-width: none; } </style>')
 
-        var container = $('<div />').appendTo('body')
-          , target = $('<a href="#" rel="tooltip" title="very very very very very very very very long tooltip in one line"></a>')
+        var container = $('<div />').appendTo('body'),
+            target = $('<a href="#" rel="tooltip" title="very very very very very very very very long tooltip in one line"></a>')
               .appendTo(container)
               .tooltip({placement: 'right'})
-              .tooltip('show')
-          , tooltip = container.find('.tooltip')
+              .tooltip('show'),
+            tooltip = container.find('.tooltip')
 
         ok( Math.round(target.offset().top + (target[0].offsetHeight / 2) - (tooltip[0].offsetHeight / 2)) === Math.round(tooltip.offset().top) )
         target.tooltip('hide')
@@ -389,13 +389,13 @@ $(function () {
       test('tooltips should be placed dynamically, with the dynamic placement option', function () {
         $.support.transition = false
         var ttContainer = $('<div id="dynamic-tt-test"/>').css({
-          'height' : 400
-          , 'overflow' : 'hidden'
-          , 'position' : 'absolute'
-          , 'top' : 0
-          , 'left' : 0
-          , 'width' : 600})
-          .appendTo('body')
+            'height' : 400,
+            'overflow' : 'hidden',
+            'position' : 'absolute',
+            'top' : 0,
+            'left' : 0,
+            'width' : 600})
+            .appendTo('body')
 
         var topTooltip = $('<div style="display: inline-block; position: absolute; left: 0; top: 0;" rel="tooltip" title="Top tooltip">Top Dynamic Tooltip</div>')
           .appendTo('#dynamic-tt-test')
