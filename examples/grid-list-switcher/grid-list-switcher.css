@@ -46,7 +46,7 @@ body {
 }
 
 .item.list-view-item:after {
-	clear:both;
+	clear: both;
 }
 
 .item.list-view-item img {
