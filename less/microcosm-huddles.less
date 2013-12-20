@@ -9,6 +9,23 @@
     display:none;
     clear:both;
     padding-top:10px;
+    form{
+      float:left;
+      .btn{
+        border-radius:0;
+        border-right-width:0;
+      }
+      &:last-child .btn{
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-right-width:1px;
+      }
+      &:first-child .btn{
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+      }
+
+    }
     @media (min-width: @grid-float-breakpoint){
       clear:none;
       float:right;

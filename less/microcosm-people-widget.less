@@ -1,0 +1,52 @@
+.people-widget-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 100%;
+    display: block;
+    li {
+        display: block;
+        width: 100%;
+        padding: 5px;
+        font-size: 12px;
+        cursor: pointer;
+        border-bottom:1px solid #eee;
+        &.invited {
+            background-color: #fafafa;
+            a{
+                color:#999;
+            }
+        }
+        img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+    }
+    input[type="submit"] {
+        display: block;
+        padding: 5px;
+        width: 100%;
+        font-size: 12px;
+        font-weight: 700;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        margin: 5px 0;
+    }
+}
+.people-widget-popover{
+    min-width: 200px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+    background-color: #FFF;
+    input[type=text]{
+        width:100%;
+        width: 100%;
+        outline: none;
+        box-shadow: none;
+        border: 0;
+        padding: 5px;
+        border-bottom: 1px solid #EEE;
+        background-color: #FEFEFE;
+        font-size:@font-size-small;
+    }
+}
