@@ -4127,6 +4127,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   padding: 6px 12px;
   margin-left: -1px;
   line-height: 1.428571429;
+  color: #428bca;
   text-decoration: none;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -4146,7 +4147,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
+  color: #2a6496;
   background-color: #eee;
+  border-color: #ddd;
 }
 .pagination > .active > a,
 .pagination > .active > span,
