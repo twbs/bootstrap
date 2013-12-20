@@ -1,11 +1,15 @@
 .item-header{
   padding: 15px;
-  margin-top: 20px;
-  border: 1px solid #CCC;
   border-width:1px 0 0;
   @media (min-width: @screen-md-min){
+    margin-top: 20px;
+    margin-bottom: 20px;
     border-radius: 3px 3px 0 0;
     border-width:1px 1px 0;
+    padding:0;
+    h1{
+      font-size:@font-size-medium * 1.5;
+    }
   }
 }
 .item-meta{
@@ -20,6 +24,8 @@
   border-width:1px 0;
   @media (min-width: @screen-md-min){
     border-width:1px;
+    margin-bottom:20px;
+    border-radius:3px;
   }
 }
 .item-event ul{
@@ -178,6 +184,9 @@
   text-align: center;
   border-top:1px solid #ccc;
   border-bottom:0;
+  background-color:#fbfbfb;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
   h3{
     display:none;
   }

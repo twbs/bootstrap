@@ -10,21 +10,24 @@
   border-width:1px 0;
   background-color:#fff;
   padding:10px;
+
+  &:first-child{
+    border-top:0;
+  }
   &+ .comment-item{
     border-top:0;
   }
-  &:last-child{
-    border-bottom-color:#ccc;
-  }
 
-  @media (min-width: @grid-float-breakpoint) {
+  @media (min-width: @screen-sm-min) {
     padding:20px;
     position:relative;
-    border-width:1px;
+  }
+  @media (min-width: @screen-md-min) {
+    padding:20px;
   }
 }
 .comment-item-inner{
-  @media (min-width: @grid-float-breakpoint) {
+  @media (min-width: @screen-sm-min) {
     margin-left:84px;
   }
 }
@@ -38,21 +41,28 @@
     width:20px;
     height:20px;
     margin-right:5px;
+    border-radius:3px;
   }
 
-  @media (min-width: @grid-float-breakpoint) {
+  @media (min-width: @screen-sm-min) {
     padding-bottom:10px;
     img{
       position: absolute;
-      left:20px;
+      left:15px;
       width:64px;
       height:64px;
       margin-right:0;
     }
   }
+  @media (min-width: @screen-md-min) {
+    img{
+      left:10px;
+    }
+  }
 }
 .comment-item-author-name{
   font-size:@font-size-base;
+  color:#333;
 }
 
 .comment-item-permalink{
@@ -70,13 +80,22 @@
   font-size:@font-size-base;
   font-family:@font-family-serif;
   text-rendering: optimizeLegibility;
-  quote{
-    background-color: #EEE;
-    display: block;
-    padding: 20px;
-    color:#666;
-    padding-left: 40px;
-    border-radius: 5px;
+  line-height:@font-size-base * 1.5;
+  blockquote{
+    margin:0;
+    border:0;
+    padding:0;
+    border:0;
+    p{
+      background-color: #FBFBFB;
+      display: block;
+      padding: 15px;
+      color: #666;
+      font-size: @font-size-medium;
+      line-height: @font-size-medium * 1.5;
+      margin-bottom: 20px;
+      border-left: 2px solid #CCC;
+    }
   }
 
   img{
@@ -92,10 +111,11 @@
     margin-bottom: 10px;
   }
 
-  @media (min-width: @grid-float-breakpoint){
+  @media (min-width: @screen-sm-min){
     margin-bottom:20px;
-    font-size:@font-size-comments;
+    font-size:@font-size-medium;
     text-rendering: optimizeLegibility;
+    line-height:@font-size-medium * 1.5;
   }
 }
 .comment-item-footer{
@@ -107,11 +127,9 @@
 }
 .reply-container{
   .comment-item{
-    background-color:#fbfbfb;
     border-top:0;
-    border-radius:0 0 3px 3px;
   }
   .reply-box > form > textarea{
-    min-height:200px;
+    min-height:150px;
   }
 }

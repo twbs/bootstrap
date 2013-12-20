@@ -5,10 +5,11 @@
   padding-left:0;
   padding-right:0;
   @media (min-width: @screen-md-min){
-    border-radius:5px;
+    border-radius:3px;
     margin-bottom:20px;
     padding-left:15px;
     padding-right:15px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
   }
 }
 
@@ -19,6 +20,7 @@
   @media (min-width: @screen-md-min) {
     padding-bottom:15px;
     border-radius:5px 0 0 5px;
+    border-right:1px solid #eee;
   }
 }
 
@@ -28,7 +30,7 @@
   position:relative;
   h1{
     font-size:@font-size-medium;
-    margin: 20px 0 10px;
+    margin: 20px 0;
   }
 }
 .content-meta{
@@ -96,7 +98,7 @@ a.muted{
   &.bordered{
     border-bottom:1px solid #ccc;
     .list-collection-row{
-      border:1px solid #eee;
+      border:1px solid #ccc;
       border-width:1px 0 0;
       &:first-child{
         border-top-color:#ccc;
@@ -105,17 +107,13 @@ a.muted{
     @media (min-width: @screen-md-min) {
       .list-collection-row{
         border-width:1px 1px 0;
-        border-left-color: #ccc;
-        border-right-color: #ccc;
+        border-top-color:#eee;
       }
     }
   }
   &.padded{
     .list-collection-row{
       padding:10px 15px;
-      @media (min-width: @screen-md-min) {
-        padding:15px;
-      }
     }
   }
   @media (min-width: @screen-md-min) {
@@ -185,12 +183,16 @@ a.muted{
 }
 .row-meta{
   font-size:@font-size-small;
-  margin-top:10px;
+  margin-top:5px;
   color:#999;
   width: 100%;
   img{
     width:@avatar-size-small;
     height:@avatar-size-small;
+    border-radius:3px;
+  }
+  @media (min-width: @screen-md-min){
+    margin-top:5px;
   }
 }
 
@@ -217,7 +219,8 @@ a.muted{
 }
 .row-stats{
   font-size:@font-size-small;
-  margin-top:10px;
+  margin-top:5px;
+
   @media (min-width: @grid-float-breakpoint){
     margin-top:0;
   }
@@ -230,7 +233,7 @@ a.muted{
   color:#999;
   font-size:@font-size-small;
   @media (min-width: @grid-float-breakpoint){
-    margin-top:10px;
+    margin-top:5px;
     display:block;
   }
 }
@@ -416,6 +419,7 @@ input[type=checkbox].row-admin-checkbox{
   }
 }
 .list-stats-sm{
+  line-height:20px;
   li{
     span{
       font-size: @font-size-small;
@@ -424,10 +428,52 @@ input[type=checkbox].row-admin-checkbox{
   }
 }
 
+.pills-event {
+  display: inline-block;
+  overflow: auto;
+  margin-top: 5px;
+
+  border: 1px solid #89ADDB;
+  border-radius: 5px;
+  color: #3175AA;
+  span {
+    padding: 0 5px;
+    border-radius: 5px;
+    display:inline-block;
+    float:left;
+    &:last-child {
+      max-width: 100%;
+      display: block;
+      float: none;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      border-left: 1px solid #89ADDB;
+      background-color: #DDE9FF;
+      border-radius: 0 5px 5px 0;
+    }
+  }
+  @media (min-width:@screen-sm-min){
+    margin-bottom:0;
+    vertical-align: middle;
+    display: inline-block;
+    margin-left:5px;
+    margin-top:0;
+    span{
+      &:last-child{
+        max-width: 130px;
+      }
+    }
+  }
+}
+
+
+
 /*
 * off-canvas metabar
-* note: do not add 'width' rule because it'll break the responsive grid;
-* add widths as inline-styles
+* note: do not add 'width' as a rule here because it'll break the responsive grid;
+* instead add 'width' rule as inline in the element
 */
 .metabar{
   position: absolute;
