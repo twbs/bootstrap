@@ -104,20 +104,22 @@
   }
 
   Modal.prototype.enforceFocus = function () {
+    var that = this
     $(document)
       .off('focusin.bs.modal') // guard against infinite focus loop
-      .on('focusin.bs.modal', $.proxy(function (e) {
-        if (this.$element[0] !== e.target && !this.$element.has(e.target).length) {
-          this.$element.focus()
+      .on('focusin.bs.modal', function (e) {
+        if (that.$element[0] !== e.target && !that.$element.has(e.target).length) {
+          that.$element.focus()
         }
-      }, this))
+      })
   }
 
   Modal.prototype.escape = function () {
+    var that = this
     if (this.isShown && this.options.keyboard) {
-      this.$element.on('keyup.dismiss.bs.modal', $.proxy(function (e) {
-        e.which == 27 && this.hide()
-      }, this))
+      this.$element.on('keyup.dismiss.bs.modal', function (e) {
+        e.which == 27 && that.hide()
+      })
     } else if (!this.isShown) {
       this.$element.off('keyup.dismiss.bs.modal')
     }
@@ -138,6 +140,7 @@
   }
 
   Modal.prototype.backdrop = function (callback) {
+    var that = this
     var animate = this.$element.hasClass('fade') ? 'fade' : ''
 
     if (this.isShown && this.options.backdrop) {
@@ -146,12 +149,12 @@
       this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
         .appendTo(document.body)
 
-      this.$element.on('click.dismiss.modal', $.proxy(function (e) {
+      this.$element.on('click.dismiss.modal', function (e) {
         if (e.target !== e.currentTarget) return
-        this.options.backdrop == 'static'
-          ? this.$element[0].focus.call(this.$element[0])
-          : this.hide.call(this)
-      }, this))
+        that.options.backdrop == 'static'
+          ? that.$element[0].focus.call(that.$element[0])
+          : that.hide.call(that)
+      })
 
       if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
 
