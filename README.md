@@ -5,7 +5,7 @@ Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and
 
 To get started, check out <http://getbootstrap.com>!
 
-**Table of Contents**
+## Table of contents
 
  - [Quick start](#quick-start)
  - [Bugs and feature requests](#bugs-and-feature-requests)
@@ -54,7 +54,7 @@ We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified
 
 ## Bugs and feature requests
 
-Have a bug or a feature request? Please first read the [Issue Guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues.  If your problem or idea is not addressed yet, [please open a new issue](https://github.com/twbs/bootstrap/issues).
+Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues.  If your problem or idea is not addressed yet, [please open a new issue](https://github.com/twbs/bootstrap/issues/new).
 
 
 ## Documentation
@@ -131,7 +131,7 @@ Keep track of development and community news.
 - Follow [@twbootstrap on Twitter](http://twitter.com/twbootstrap).
 - Read and subscribe to [The Official Bootstrap Blog](http://blog.getbootstrap.com).
 - Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##twitter-bootstrap` channel.
-- Impelementation help may be found at Stack Overflow (tagged [`twitter-bootstrap`](http://stackoverflow.com/questions/tagged/twitter-bootstrap) may be helpful,  
+- Impelementation help may be found at Stack Overflow (tagged [`twitter-bootstrap`](http://stackoverflow.com/questions/tagged/twitter-bootstrap)).
 
 
 
