@@ -8,15 +8,27 @@
 
 // Grays
 // -------------------------
-
+@black: #000;
 @gray-darker:            lighten(#000, 13.5%); // #222
 @gray-dark:              lighten(#000, 20%);   // #333
 @gray:                   lighten(#000, 33.5%); // #555
 @gray-light:             lighten(#000, 60%);   // #999
 @gray-lighter:           lighten(#000, 93.5%); // #eee
+@white: 				#fff;
+
 
 // Brand colors
 // -------------------------
+@blue:                  #049cdb;
+@blueDark:              #0064cd;
+@green:                 #46a546;
+@red:                   #9d261d;
+@yellow:                #ffc40d;
+@orange:                #f89406;
+@pink:                  #c3325f;
+@purple:                #7a43b6;
+@inthincGreen:			#8FC954;
+//@inthincGreen:			#C4D65E;
 
 @brand-primary:         #428bca;
 @brand-success:         #5cb85c;
@@ -26,8 +38,7 @@
 
 // Scaffolding
 // -------------------------
-
-@body-bg:               #fff;
+@body-bg:               @black;
 @text-color:            @gray-dark;
 
 // Links
@@ -144,6 +155,11 @@
 @btn-info-border:                darken(@btn-info-bg, 5%);
 
 @btn-link-disabled-color:        @gray-light;
+
+@btn-inthinc-color:				#fff;
+@btn-inthinc-bg:				@inthincGreen;
+@btn-inthinc-border:			darken(@inthincGreen, 5%);
+@btn-inthinc-bg-highlight:		darken(@inthincGreen, 15%);
 
 
 // Forms
@@ -336,7 +352,7 @@
 
 @nav-tabs-link-hover-border-color:          @gray-lighter;
 
-@nav-tabs-active-link-hover-bg:             @body-bg;
+@nav-tabs-active-link-hover-bg:             @white;
 @nav-tabs-active-link-hover-color:          @gray;
 @nav-tabs-active-link-hover-border-color:   #ddd;
 
@@ -386,6 +402,8 @@
 
 // Jumbotron
 // -------------------------
+//@wellBackground:                  #f5f5f5;
+@wellBackground:                  @white;
 
 @jumbotron-padding:              30px;
 @jumbotron-color:                inherit;
@@ -408,6 +426,43 @@
 @state-warning-text:             #8a6d3b;
 @state-warning-bg:               #fcf8e3;
 @state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
+
+// Navbar
+// -------------------------
+@navbarCollapseWidth: 979px;
+@navbarCollapseDesktopWidth: @navbarCollapseWidth + 1;
+
+@navbarHeight: 40px;
+@navbarBackgroundHighlight: #ffffff;
+@navbarBackground: darken(@navbarBackgroundHighlight, 5%);
+@navbarBorder: darken(@navbarBackground, 12%);
+
+@navbarText:                      #777;
+@navbarLinkColor:                 #777;
+@navbarLinkColorHover:            @gray-dark;
+@navbarLinkColorActive:           @gray;
+@navbarLinkBackgroundHover:       transparent;
+@navbarLinkBackgroundActive:      darken(@navbarBackground, 5%);
+@navbarPillColorHover:			  @white;
+@navbarPillColorActive:			  @white;
+@navbarPillBackgroundHover:		  #777;
+@navbarPillBackgroundActive:	  #777;
+
+// Inverted navbar
+//@navbarInverseBackground:                #111111;
+//@navbarInverseBackgroundHighlight:       #222222;
+//@navbarInverseBorder:                    #252525;
+@navbarInverseBackgroundHighlight:       @gray-dark;
+@navbarInverseBackground:       		 darken(@navbarInverseBackgroundHighlight, 5%);
+@navbarInverseBorder:                    darken(@navbarInverseBackgroundHighlight, 12%);
+
+@navbarInverseText:                      @gray-light;
+@navbarInverseLinkColor:                 @gray-light;
+@navbarInverseLinkColorHover:            @white;
+@navbarInverseLinkColorActive:           @navbarInverseLinkColorHover;
+//@navbarInverseLinkBackgroundHover:       transparent;
+@navbarInverseLinkBackgroundHover:       @gray-light;
+@navbarInverseLinkBackgroundActive:      @inthincGreen;
 
 @state-danger-text:              #a94442;
 @state-danger-bg:                #f2dede;

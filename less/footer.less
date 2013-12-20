@@ -1,0 +1,35 @@
+//
+// Footer
+// --------------------------------------------------
+
+.footer {
+  	list-style: none;
+	height:@line-height-base;
+	opacity:1;
+	color: @gray-light;
+	font-size: 11px;  
+	position: relative;
+  	left: 0;
+  	display: block;
+  	float: left;
+  	margin: 0 10px 0 0;
+	overflow: visible !important;	
+	a {
+		color: @gray-light;
+    	text-decoration: none;
+		&:hover {
+    		color: @gray-lighter;
+  		}
+  	}
+}
+
+.footer.pull-right {
+  float: right; // redeclare due to specificity
+  margin-right: 0; // remove margin on float right nav
+}
+.footer > li {
+  float: left;
+}
+.footer > li > .divider {
+	padding: 0 5px;
+}
