@@ -232,12 +232,8 @@ body {
 }
 .bs-masthead .btn-outline {
   width: 100%;
-  margin: 10px 5px;
   padding: 14px 24px;
   font-size: 20px;
-}
-.bs-masthead .btn-outline + .btn-outline {
-  margin-top: 10px;
 }
 
 @media (min-width: 480px) {
