@@ -9,7 +9,6 @@
   "eqnull"   : true,
   "expr"     : true,
   "laxbreak" : true,
-  "laxcomma" : true,
   "quotmark" : "single",
   "validthis": true
 }

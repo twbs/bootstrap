@@ -227,9 +227,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
     try {
       var parser = new less.Parser({
-          paths: ['variables.less', 'mixins.less']
-        , optimization: 0
-        , filename: 'bootstrap.css'
+          paths: ['variables.less', 'mixins.less'],
+          optimization: 0,
+          filename: 'bootstrap.css'
       }).parse(css, function (err, tree) {
         if (err) {
           return showError('<strong>Ruh roh!</strong> Could not parse less files.', err)

@@ -59,8 +59,8 @@
             var navOuterHeight = $('.bs-docs-nav').height()
 
             return (this.top = offsetTop - navOuterHeight - sideBarMargin)
-          }
-        , bottom: function () {
+          },
+          bottom: function () {
             return (this.bottom = $('.bs-footer').outerHeight(true))
           }
         }
