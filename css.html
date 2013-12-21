@@ -3312,7 +3312,7 @@ a {
     <div class="page-header">
       <h1>Using Sass</h1>
     </div>
-    <p class="lead">While Bootstrap is built on Less, it also has an <a href="https://github.com/twbs/bootstrap-sass/">official Sass port</a>. We maintain it in a separate GitHub repository and handle updates with a conversion script.</p>
+    <p class="lead">While Bootstrap is built on Less, it also has an <a href="{{ site.sass_repo }}">official Sass port</a>. We maintain it in a separate GitHub repository and handle updates with a conversion script.</p>
 
     <h2 id="sass-installation">Installation</h2>
     <p>Use the appropriate guide for your environment of choice.</p>
@@ -3360,9 +3360,9 @@ bundle exec compass create my-new-project -r bootstrap-sass --using bootstrap
     <p>This will create a new Compass project with the following files in it:</p>
 
     <ul>
-      <li><a href="https://github.com/twbs/bootstrap-sass/blob/master/templates/project/_variables.scss.erb">_variables.scss</a> &mdash; all of bootstrap variables (override them here).
+      <li><a href="{{ site.sass_repo }}/blob/master/templates/project/_variables.scss.erb">_variables.scss</a> &mdash; all of bootstrap variables (override them here).
     </li>
-      <li><a href="https://github.com/twbs/bootstrap-sass/blob/master/templates/project/styles.scss">styles.scss</a> &mdash; main project SCSS file, import `variables` and `bootstrap`.</li>
+      <li><a href="{{ site.sass_repo }}/blob/master/templates/project/styles.scss">styles.scss</a> &mdash; main project SCSS file, import `variables` and `bootstrap`.</li>
     </ul>
 
 
@@ -3410,7 +3410,7 @@ Bootstrap.javascripts_path
 
     <h3 id="sass-usage-sass">Sass</h3>
 
-    <p>Import Bootstrap into a Sass file (for example, <code>application.css.scss</code>) to get all of Bootstrap's styles, mixins and variables! We recommend against using <code>//= require</code> directives, since none of your other stylesheets will be <a href="https://github.com/twbs/bootstrap-sass/issues/79#issuecomment-4428595">able to access</a> the Bootstrap mixins or variables.</p>
+    <p>Import Bootstrap into a Sass file (for example, <code>application.css.scss</code>) to get all of Bootstrap's styles, mixins and variables! We recommend against using <code>//= require</code> directives, since none of your other stylesheets will be <a href="{{ site.sass_repo }}/issues/79#issuecomment-4428595">able to access</a> the Bootstrap mixins or variables.</p>
 
 {% highlight sass %}
 @import "bootstrap";
