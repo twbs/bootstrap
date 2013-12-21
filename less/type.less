@@ -263,12 +263,15 @@ abbr[data-original-title] {
 blockquote {
   padding: (@line-height-computed / 2) @line-height-computed;
   margin: 0 0 @line-height-computed;
+  font-size: (@font-size-base * 1.25);
   border-left: 5px solid @blockquote-border-color;
-  p {
-    font-size: (@font-size-base * 1.25);
-  }
-  p:last-child {
-    margin-bottom: 0;
+
+  p,
+  ul,
+  ol {
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   // Deprecating small and .small for v3.1
@@ -277,32 +280,34 @@ blockquote {
   small,
   .small {
     display: block;
+    font-size: 80%; // back to default font-size
     line-height: @line-height-base;
     color: @blockquote-small-color;
+
     &:before {
-      content: '\2014 \00A0'; // EM DASH, NBSP
+      content: '\2014 \00A0'; // em dash, nbsp
     }
   }
+}
 
-  // Float right with text-align: right
-  &.pull-right {
-    padding-right: 15px;
-    padding-left: 0;
-    border-right: 5px solid @blockquote-border-color;
-    border-left: 0;
-    p,
-    small,
-    .small {
-      text-align: right;
-    }
-    small,
-    .small {
-      &:before {
-        content: '';
-      }
-      &:after {
-        content: '\00A0 \2014'; // NBSP, EM DASH
-      }
+// Opposite alignment of blockquote
+//
+// Heads up: `blockquote.pull-right` has been deprecated as of v3.1.
+.blockquote-reverse,
+blockquote.pull-right {
+  padding-right: 15px;
+  padding-left: 0;
+  border-right: 5px solid @blockquote-border-color;
+  border-left: 0;
+  text-align: right;
+
+  // Account for citation
+  footer,
+  small,
+  .small {
+    &:before { content: ''; }
+    &:after {
+      content: '\00A0 \2014'; // nbsp, em dash
     }
   }
 }

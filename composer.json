@@ -1,25 +1,25 @@
 {
-    "name": "twbs/bootstrap"
-  , "description": "Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development."
-  , "keywords": ["bootstrap", "css"]
-  , "homepage": "http://getbootstrap.com"
-  , "authors": [
-      {
-        "name": "Mark Otto",
-        "email": "markdotto@gmail.com"
-      },
-      {
-        "name": "Jacob Thornton",
-        "email": "jacobthornton@gmail.com"
-      }
-    ]
-  , "support": {
-      "issues": "https://github.com/twbs/bootstrap/issues"
+  "name": "twbs/bootstrap",
+  "description": "Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.",
+  "keywords": ["bootstrap", "css"],
+  "homepage": "http://getbootstrap.com",
+  "authors": [
+    {
+      "name": "Mark Otto",
+      "email": "markdotto@gmail.com"
+    },
+    {
+      "name": "Jacob Thornton",
+      "email": "jacobthornton@gmail.com"
     }
-  , "license": "MIT"
-  , "extra": {
-      "branch-alias": {
-        "dev-master": "3.0.x-dev"
-      }
+  ],
+  "support": {
+    "issues": "https://github.com/twbs/bootstrap/issues"
+  },
+  "license": "MIT",
+  "extra": {
+    "branch-alias": {
+      "dev-master": "3.0.x-dev"
+    }
   }
 }

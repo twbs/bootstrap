@@ -872,15 +872,15 @@ base_url: "../"
 {% endhighlight %}
 
     <h4>Alternate displays</h4>
-    <p>Use <code>.pull-right</code> for a floated, right-aligned blockquote.</p>
+    <p>Add <code>.blockquote-reverse</code> for blockquote with right-aligned content.</p>
     <div class="bs-example" style="overflow: hidden;">
-      <blockquote class="pull-right">
+      <blockquote class="blockquote-reverse">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
         <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
       </blockquote>
     </div>
 {% highlight html %}
-<blockquote class="pull-right">
+<blockquote class="blockquote-reverse">
   ...
 </blockquote>
 {% endhighlight %}
@@ -1775,7 +1775,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h4>Inline checkboxes</h4>
-    <p>Use <code>.checkbox-inline</code> or <code>.radio-inline</code> class to a series of checkboxes or radios for controls appear on the same line.</p>
+    <p>Use the <code>.checkbox-inline</code> or <code>.radio-inline</code> classes on a series of checkboxes or radios for controls that appear on the same line.</p>
     <div class="bs-example">
       <form role="form">
         <label class="checkbox-inline">
@@ -2819,7 +2819,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="page-header">
       <h1>Using LESS</h1>
     </div>
-    <p class="lead">Bootstrap's CSS is built on LESS, a preprocessor with additional functionality like variables, mixins, and functions for compiling CSS. Thosing looking to use the source LESS files instead of our compiled CSS files can make use of the numerous variables and mixins we use throughout the framework.</p>
+    <p class="lead">Bootstrap's CSS is built on LESS, a preprocessor with additional functionality like variables, mixins, and functions for compiling CSS. Those looking to use the source LESS files instead of our compiled CSS files can make use of the numerous variables and mixins we use throughout the framework.</p>
 
     <p>Grid variables and mixins are covered <a href="{{ page.base_url }}css/#grid-less">within the Grid system section</a>.</p>
 
@@ -2910,7 +2910,7 @@ a {
     <p>Note that the <code>@link-color-hover</code> uses a function, another awesome tool from LESS, to automagically create the right hover color. You can use <code>darken</code>, <code>lighten</code>, <code>saturate</code>, and <code>desaturate</code>.</p>
 
     <h3 id="less-variables-typography">Typography</h3>
-    <p>Easily set your type face, text size, leading, and more with a few quick variables. Bootstrap makes use of these as well to provide easy typographic mixins as well.</p>
+    <p>Easily set your type face, text size, leading, and more with a few quick variables. Bootstrap makes use of these as well to provide easy typographic mixins.</p>
 {% highlight css %}
 @font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
@@ -2942,7 +2942,7 @@ a {
 {% highlight css %}
 @icon-font-path:          "../fonts/";
 @icon-font-name:          "glyphicons-halflings-regular";
-{% endhighlight %}}
+{% endhighlight %}
 
     <h3 id="less-variables-components">Components</h3>
     <p>Components throughout Bootstrap make use of some default variables for setting common values. Here are the most commonly used.</p>
@@ -2971,7 +2971,7 @@ a {
 
 @caret-width-base:               4px;
 @caret-width-large:              5px;
-{% endhighlight %}}
+{% endhighlight %}
 
 
     <h2 id="less-mixins-vendor">Vendor mixins</h2>
