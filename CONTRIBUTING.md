@@ -18,8 +18,8 @@ the preferred channel for [bug reports](#bug-reports), [features requests](#feat
 and [submitting pull requests](#pull-requests), but please respect the following
 restrictions:
 
-* Please **do not** use the issue tracker for personal support requests (use
-  [Stack Overflow](http://stackoverflow.com/) or IRC).
+* Please **do not** use the issue tracker for personal support requests.  Stack
+  Overflow ([`twitter-boostrap`](http://stackoverflow.com/questions/tagged/twitter-bootstrap) tag) or [IRC](https://github.com/twbs/bootstrap/blob/master/README.md#community) are better places to get help.
 
 * Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.
@@ -44,12 +44,15 @@ Guidelines for bug reports:
 
 3. **Isolate the problem** &mdash; ideally create a [reduced test
    case](http://css-tricks.com/6263-reduced-test-cases/) and a live example.
+   [This JS Bin](http://jsbin.com/EBAwOkOK/1) is a helpful template.
+
 
 A good bug report shouldn't leave others needing to chase you up for more
 information. Please try to be as detailed as possible in your report. What is
 your environment? What steps will reproduce the issue? What browser(s) and OS
-experience the problem? What would you expect to be the outcome? All these
-details will help people to fix any potential bugs.
+experience the problem? Do other browsers show the bug differently? What
+would you expect to be the outcome? All these details will help people to fix
+any potential bugs.
 
 Example:
 
