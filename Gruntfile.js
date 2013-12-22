@@ -182,8 +182,14 @@ module.exports = function (grunt) {
       fonts: {
         expand: true,
         src: ['fonts/*'],
-        dest: 'dist/'
-      }
+        dest: '../_dummy_frontend/css'
+      },
+      loopfirst: {
+        expand: true,
+        cwd: 'dist/',
+        src: ['**/*'],
+        dest: '../_dummy_frontend/'
+      },
     },
 
     qunit: {
@@ -225,7 +231,7 @@ module.exports = function (grunt) {
     watch: {
       src: {
         files: '<%= jshint.src.src %>',
-        tasks: ['jshint:src', 'qunit']
+        tasks: ['jshint:src', 'qunit', 'copy:loopfirst']
       },
       test: {
         files: '<%= jshint.test.src %>',
@@ -233,7 +239,7 @@ module.exports = function (grunt) {
       },
       less: {
         files: 'less/*.less',
-        tasks: ['less']
+        tasks: ['less', 'copy:loopfirst']
       }
     },
 
@@ -294,7 +300,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-css', ['less', 'csscomb', 'usebanner']);
 
   // Fonts distribution task.
-  grunt.registerTask('dist-fonts', ['copy']);
+  grunt.registerTask('dist-fonts', ['copy:fonts']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean', 'dist-css', 'dist-fonts', 'dist-js']);
@@ -328,5 +334,6 @@ module.exports = function (grunt) {
     fs.writeFileSync('docs-assets/js/raw-files.js', files)
   });
 
-  grunt.registerTask('loopfirst_watch', ['dist', 'watch']);
+  grunt.registerTask('loopfirst_watch', ['dist', 'watch', 'copy']);
+  // grunt.registerTask('loopfirst_copy', ['dist', 'copy:loopfirst'])
 };
