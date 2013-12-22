@@ -28,7 +28,7 @@
 // -------------------------
 
 @body-bg:               #fff;
-@text-color:            @gray-dark;
+@text-color:            #808080;
 
 // Links
 // -------------------------
@@ -39,28 +39,28 @@
 // Typography
 // -------------------------
 
-@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-sans-serif:  "Open Sans", "lucida grande", "Segoe UI", arial, verdana, "lucida sans unicode", tahoma, sans-serif;
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 
-@font-size-base:          14px;
-@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
-@font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
+@font-size-base:          16px;
+@font-size-large:         ceil((@font-size-base * 1.25)); 	// ~20px
+@font-size-small:         ceil((@font-size-base * 0.85)); 	// ~13px
 
-@font-size-h1:            floor((@font-size-base * 2.6)); // ~36px
-@font-size-h2:            floor((@font-size-base * 2.15)); // ~30px
-@font-size-h3:            ceil((@font-size-base * 1.7)); // ~24px
-@font-size-h4:            ceil((@font-size-base * 1.25)); // ~18px
+@font-size-h1:            floor((@font-size-base * 2.6)); 	// ~41px
+@font-size-h2:            floor((@font-size-base * 2)); 	// ~32px
+@font-size-h3:            ceil((@font-size-base * 1.7)); 	// ~27px
+@font-size-h4:            ceil((@font-size-base * 1.25)); 	// ~20px
 @font-size-h5:            @font-size-base;
-@font-size-h6:            ceil((@font-size-base * 0.85)); // ~12px
+@font-size-h6:            ceil((@font-size-base * 0.85)); 	// ~13px
 
-@line-height-base:        1.428571429; // 20/14
-@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
+@line-height-base:        1.5; // used to be 20/14 = 1.428571429
+@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~24px
 
 @headings-font-family:    inherit;
-@headings-font-weight:    500;
-@headings-line-height:    1.1;
+@headings-font-weight:    300;
+@headings-line-height:    1.5;
 @headings-color:          inherit;
 
 
@@ -249,7 +249,7 @@
 // Number of columns in the grid system
 @grid-columns:              12;
 // Padding, to be divided by two and applied to the left and right of all columns
-@grid-gutter-width:         30px;
+@grid-gutter-width:         40px;
 
 // Navbar collapse
 
