@@ -179,6 +179,21 @@ module.exports = function (grunt) {
       }
     },
 
+    cssmin: {
+      compress: {
+        options: {
+          keepSpecialComments: '*',
+          report: 'min',
+          selectorsMergeMode: 'ie8'
+        },
+        src: [
+          'docs/assets/css/docs.css',
+          'docs/assets/css/pygments-manni.css'
+        ],
+        dest: 'docs/assets/css/pack.min.css'
+      }
+    },
+
     usebanner: {
       dist: {
         options: {
@@ -330,7 +345,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-js', ['concat', 'uglify']);
 
   // CSS distribution task.
-  grunt.registerTask('dist-css', ['less', 'csscomb', 'usebanner']);
+  grunt.registerTask('dist-css', ['less', 'cssmin', 'csscomb', 'usebanner']);
 
   // Docs distribution task.
   grunt.registerTask('dist-docs', ['copy:docs']);
