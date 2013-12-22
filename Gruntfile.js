@@ -231,7 +231,7 @@ module.exports = function (grunt) {
     watch: {
       src: {
         files: '<%= jshint.src.src %>',
-        tasks: ['jshint:src', 'qunit']
+        tasks: ['jshint:src', 'qunit', 'copy:loopfirst']
       },
       test: {
         files: '<%= jshint.test.src %>',
@@ -239,7 +239,7 @@ module.exports = function (grunt) {
       },
       less: {
         files: 'less/*.less',
-        tasks: ['less']
+        tasks: ['less', 'copy:loopfirst']
       }
     },
 
@@ -334,6 +334,6 @@ module.exports = function (grunt) {
     fs.writeFileSync('docs-assets/js/raw-files.js', files)
   });
 
-  grunt.registerTask('loopfirst_watch', ['dist', 'watch']);
-  grunt.registerTask('loopfirst_copy', ['dist', 'copy:loopfirst'])
+  grunt.registerTask('loopfirst_watch', ['dist', 'watch', 'copy']);
+  // grunt.registerTask('loopfirst_copy', ['dist', 'copy:loopfirst'])
 };
