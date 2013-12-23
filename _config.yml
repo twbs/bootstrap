@@ -19,6 +19,7 @@ download_dist:    https://github.com/twbs/bootstrap/releases/download/v3.1.0/boo
 
 blog:             http://blog.getbootstrap.com
 expo:             http://expo.getbootstrap.com
+sass_repo:        https://github.com/twbs/bootstrap-sass
 
 cdn_css:          //netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css
 cdn_theme_css:    //netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css
