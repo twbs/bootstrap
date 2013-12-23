@@ -79,7 +79,7 @@ base_url: "../"
       <li>Rows must be placed within a <code>.container</code> (fixed-width) or <code>.container-fluid</code> (full-width) for proper alignment and padding.</li>
       <li>Use rows to create horizontal groups of columns.</li>
       <li>Content should be placed within columns, and only columns may be immediate children of rows.</li>
-      <li>Predefined grid classes like <code>.row</code> and <code>.col-xs-4</code> are available for quickly making grid layouts. LESS mixins can also be used for more semantic layouts.</li>
+      <li>Predefined grid classes like <code>.row</code> and <code>.col-xs-4</code> are available for quickly making grid layouts. Less mixins can also be used for more semantic layouts.</li>
       <li>Columns create gutters (gaps between column content) via <code>padding</code>. That padding is offset in rows for the first and last column via negative margin on <code>.row</code>s.</li>
       <li>Grid columns are created by specifying the number of twelve available columns you wish to span. For example, three equal columns would use three <code>.col-xs-4</code>.</li>
     </ul>
@@ -91,7 +91,7 @@ base_url: "../"
     </div>
 
     <h3 id="grid-media-queries">Media queries</h3>
-    <p>We use the following media queries in our LESS files to create the key breakpoints in our grid system.</p>
+    <p>We use the following media queries in our Less files to create the key breakpoints in our grid system.</p>
 {% highlight css %}
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
@@ -447,8 +447,8 @@ base_url: "../"
 </div>
 {% endhighlight %}
 
-    <h3 id="grid-less">LESS mixins and variables</h3>
-    <p>In addition to <a href="#grid-example-basic">prebuilt grid classes</a> for fast layouts, Bootstrap includes LESS variables and mixins for quickly generating your own simple, semantic layouts.</p>
+    <h3 id="grid-less">Less mixins and variables</h3>
+    <p>In addition to <a href="#grid-example-basic">prebuilt grid classes</a> for fast layouts, Bootstrap includes Less variables and mixins for quickly generating your own simple, semantic layouts.</p>
 
     <h4>Variables</h4>
     <p>Variables determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.</p>
@@ -726,9 +726,9 @@ base_url: "../"
 <p class="lead">...</p>
 {% endhighlight %}
 
-    <!-- Using LESS -->
+    <!-- Using Less -->
     <h3>Built with Less</h3>
-    <p>The typographic scale is based on two LESS variables in <strong>variables.less</strong>: <code>@font-size-base</code> and <code>@line-height-base</code>. The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.</p>
+    <p>The typographic scale is based on two Less variables in <strong>variables.less</strong>: <code>@font-size-base</code> and <code>@line-height-base</code>. The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.</p>
 
 
     <!-- Emphasis -->
@@ -2817,9 +2817,9 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   ================================================== -->
   <div class="bs-docs-section" id="less">
     <div class="page-header">
-      <h1>Using LESS</h1>
+      <h1>Using Less</h1>
     </div>
-    <p class="lead">Bootstrap's CSS is built on LESS, a preprocessor with additional functionality like variables, mixins, and functions for compiling CSS. Those looking to use the source LESS files instead of our compiled CSS files can make use of the numerous variables and mixins we use throughout the framework.</p>
+    <p class="lead">Bootstrap's CSS is built on Less, a preprocessor with additional functionality like variables, mixins, and functions for compiling CSS. Those looking to use the source Less files instead of our compiled CSS files can make use of the numerous variables and mixins we use throughout the framework.</p>
 
     <p>Grid variables and mixins are covered <a href="{{ page.base_url }}css/#grid-less">within the Grid system section</a>.</p>
 
@@ -2870,7 +2870,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   background-color: @brand-primary;
 }
 
-// Reassigned variables in LESS
+// Reassigned variables in Less
 @alert-message-background: @brand-info;
 .alert {
   background-color: @alert-message-background;
@@ -2903,7 +2903,7 @@ a {
   }
 }
 {% endhighlight %}
-    <p>Note that the <code>@link-color-hover</code> uses a function, another awesome tool from LESS, to automagically create the right hover color. You can use <code>darken</code>, <code>lighten</code>, <code>saturate</code>, and <code>desaturate</code>.</p>
+    <p>Note that the <code>@link-color-hover</code> uses a function, another awesome tool from Less, to automagically create the right hover color. You can use <code>darken</code>, <code>lighten</code>, <code>saturate</code>, and <code>desaturate</code>.</p>
 
     <h3 id="less-variables-typography">Typography</h3>
     <p>Easily set your type face, text size, leading, and more with a few quick variables. Bootstrap makes use of these as well to provide easy typographic mixins.</p>
@@ -3302,4 +3302,208 @@ a {
   .retina-image("/img/bg-1x.png", "/img/bg-2x.png", 100px, 100px);
 }
 {% endhighlight %}
+  </div>
+
+
+
+  <!-- Using Sass
+  ================================================== -->
+  <div class="bs-docs-section" id="sass">
+    <div class="page-header">
+      <h1>Using Sass</h1>
+    </div>
+    <p class="lead">While Bootstrap is built on Less, it also has an <a href="{{ site.sass_repo }}">official Sass port</a>. We maintain it in a separate GitHub repository and handle updates with a conversion script.</p>
+
+    <h2 id="sass-contents">What's included</h2>
+    <p>Since the Sass port has a separate repo and serves a slightly different audience, the contents of the project differ greatly from the main Bootstrap project. This ensures the Sass port is as compatible with as many Sass-based systems as possible.</p>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Path</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><code>lib/</code></th>
+            <td>Ruby gem code (Sass configuration, Rails and Compass integrations)</td>
+          </tr>
+          <tr>
+            <th><code>tasks/</code></th>
+            <td>Converter scripts (turning upstream Less to Sass)</td>
+          </tr>
+          <tr>
+            <th><code>test/</code></th>
+            <td>Compilation tests</td>
+          </tr>
+          <tr>
+            <th><code>templates/</code></th>
+            <td>Compass package manifest</td>
+          </tr>
+          <tr>
+            <th><code>vendor/assets/</code></th>
+            <td>Sass, JavaScript, and font files</td>
+          </tr>
+          <tr>
+            <th><code>Rakefile</code></th>
+            <td>Internal tasks, such as rake and convert</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Visit the <a href="{{ site.sass_repo }}">Sass port's GitHub repository</a> to see this files in action.</p>
+
+
+    <h2 id="sass-installation">Installation</h2>
+    <p>Use the appropriate guide for your environment of choice.</p>
+
+    <h3 id="sass-installation-rails">Rails</h3>
+
+    <p><code>bootstrap-sass</code> is easy to drop into Rails with the asset pipeline.</p>
+
+    <p>In your Gemfile you need to add the <code>bootstrap-sass</code> gem, and ensure that the <code>sass-rails</code> gem is present&mdash;it is added to new Rails applications by default.</p>
+
+{% highlight ruby %}
+gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2
+gem 'bootstrap-sass', '~> 3.0.3.0'
+{% endhighlight %}
+
+    <p><code>bundle install</code> and restart your server to make the files available through the pipeline.</p>
+
+
+    <h3 id="sass-installation-compass">Compass <small>without Rails</small></h3>
+
+    <p>Install the gem:</p>
+
+{% highlight bash %}
+gem install bootstrap-sass
+{% endhighlight %}
+
+    <p>If you have an existing Compass project:</p>
+
+{% highlight ruby %}
+# config.rb:
+require 'bootstrap-sass'
+{% endhighlight %}
+
+{% highlight bash %}
+bundle exec compass install bootstrap
+{% endhighlight %}
+
+    <p>If you are creating a new Compass project, you can generate it with <code>bootstrap-sass</code> support:</p>
+
+{% highlight bash %}
+bundle exec compass create my-new-project -r bootstrap-sass --using bootstrap
+{% endhighlight %}
+
+    <p>This will create a new Compass project with the following files in it:</p>
+
+    <ul>
+      <li><a href="{{ site.sass_repo }}/blob/master/templates/project/_variables.scss.erb">_variables.scss</a> &mdash; all of bootstrap variables (override them here).
+    </li>
+      <li><a href="{{ site.sass_repo }}/blob/master/templates/project/styles.scss">styles.scss</a> &mdash; main project SCSS file, import `variables` and `bootstrap`.</li>
+    </ul>
+
+
+    <h3 id="sass-installation-sass-only">Sass-only <small>without Compass or Rails</small></h3>
+
+    <p>Require the gem, and load paths and Sass helpers will be configured automatically:</p>
+
+{% highlight ruby %}
+require 'bootstrap-sass'
+{% endhighlight %}
+
+    <p>Using bootstrap-sass as a Bower package is still being tested. You can install it with:</p>
+
+{% highlight bash %}
+bower install 'git://github.com/twbs/bootstrap-sass.git#v3.0.3.0'
+{% endhighlight %}
+
+    <h4>JS and fonts</h4>
+
+    <p>If you are using Rails or Sprockets, see Usage. If none of Rails/Sprockets/Compass were detected the fonts will be referenced as:</p>
+
+{% highlight sass %}
+"#{$icon-font-path}/#{$icon-font-name}.eot"
+{% endhighlight %}
+
+    <p><code>$icon-font-path</code> defaults to <code>bootstrap/</code>. When not using an asset pipeline, you have to copy fonts and javascripts from the gem.</p>
+
+{% highlight bash %}
+mkdir public/fonts
+cp -r $(bundle show bootstrap-sass)/vendor/assets/fonts/ public/fonts/
+mkdir public/javascripts
+cp -r $(bundle show bootstrap-sass)/vendor/assets/javascripts/ public/javascripts/
+{% endhighlight %}
+
+    <p>In ruby you can get the assets' location in the filesystem like this:</p>
+
+{% highlight ruby %}
+Bootstrap.stylesheets_path
+Bootstrap.fonts_path
+Bootstrap.javascripts_path
+{% endhighlight %}
+
+
+    <h2 id="sass-usage">Usage</h2>
+
+    <h3 id="sass-usage-sass">Sass</h3>
+
+    <p>Import Bootstrap into a Sass file (for example, <code>application.css.scss</code>) to get all of Bootstrap's styles, mixins and variables! We recommend against using <code>//= require</code> directives, since none of your other stylesheets will be <a href="{{ site.sass_repo }}/issues/79#issuecomment-4428595">able to access</a> the Bootstrap mixins or variables.</p>
+
+{% highlight sass %}
+@import "bootstrap";
+{% endhighlight %}
+
+    <p>You can also include optional Bootstrap theme:</p>
+
+{% highlight sass %}
+@import "bootstrap/theme";
+{% endhighlight %}
+
+    <p>The full list of Bootstrap variables can be found <a href="{{ page.url }}customize/#less-variables">in the Customizer</a>. You can override these by simply redefining the variable before the <code>@import</code> directive, e.g.:</p>
+
+{% highlight sass %}
+$navbar-default-bg: #312312;
+$light-orange: #ff8c00;
+$navbar-default-color: $light-orange;
+
+@import "bootstrap";
+{% endhighlight %}
+
+    <p>You can also import components explicitly. To start with a full list of modules copy this file from the gem:</p>
+
+{% highlight bash %}
+cp $(bundle show bootstrap-sass)/vendor/assets/stylesheets/bootstrap/bootstrap.scss \
+   app/assets/stylesheets/bootstrap-custom.scss
+{% endhighlight %}
+
+    <p>In your <code>application.sass</code>, replace <code>@import 'bootstrap'</code> with:</p>
+
+{% highlight sass %}
+@import 'bootstrap-custom';
+{% endhighlight %}
+
+    <p>Comment out any modules you don't need from <code>bootstrap-custom</code>.</p>
+
+    <h3 id="sass-usage-js">JavaScript</h3>
+
+    <p>We have a helper that includes all Bootstrap javascripts. If you use Rails (or Sprockets separately), put this in your Javascript manifest (usually in <code>application.js</code>) to load the files in the [correct order](/vendor/assets/javascripts/bootstrap.js):</p>
+
+{% highlight js %}
+// Loads all Bootstrap javascripts
+//= require bootstrap
+{% endhighlight %}
+
+    <p>You can also load individual modules, provided you also require any dependencies. You can check dependencies in the [Bootstrap JS documentation][jsdocs].</p>
+
+{% highlight js %}
+//= require bootstrap/scrollspy
+//= require bootstrap/modal
+//= require bootstrap/dropdown
+{% endhighlight %}
+
+
   </div>
