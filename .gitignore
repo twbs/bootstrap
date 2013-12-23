@@ -1,3 +1,5 @@
+# Loopfirst custom ignores
+
 # Ignore compiled files
 dist/
 
