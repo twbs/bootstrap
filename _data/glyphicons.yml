@@ -1,6 +1,5 @@
-# Generated on Sun Dec 22 2013 21:00:46 GMT-0800 (PST)
-# **Don't edit this directly!**
-# Look at the 'build-glyphicons-data' task in Gruntfile.js
+# This file is generated via Grunt task. **Do not edit directly.** 
+# See the 'build-glyphicons-data' task in Gruntfile.js.
 
 - glyphicon-asterisk
 - glyphicon-plus
