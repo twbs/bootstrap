@@ -2,10 +2,15 @@
   "name": "bootstrap",
   "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development.",
   "version": "3.1.0",
-  "keywords": ["bootstrap", "css"],
+  "keywords": [
+    "bootstrap",
+    "css"
+  ],
   "homepage": "http://getbootstrap.com",
   "author": "Twitter, Inc.",
-  "scripts": { "test": "grunt test" },
+  "scripts": {
+    "test": "grunt test"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/twbs/bootstrap.git"
@@ -43,13 +48,18 @@
   },
   "jspm": {
     "main": "js/bootstrap",
-    "directories": { "lib": "dist" },
+    "directories": {
+      "example": "examples",
+      "lib": "dist"
+    },
     "shim": {
       "js/bootstrap": {
         "imports": "jquery",
         "exports": "$"
       }
     },
-    "buildConfig": { "uglify": true }
+    "buildConfig": {
+      "uglify": true
+    }
   }
 }
