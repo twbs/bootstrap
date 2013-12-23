@@ -18,8 +18,8 @@ module.exports = function (grunt) {
     banner: '/*!\n' +
               ' * Bootstrap v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
               ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-              ' * Licensed under MIT (<%= _.pluck(pkg.licenses, "url").join(", ") %>)\n' +
-              ' */\n\n',
+              ' * Licensed under <%= _.pluck(pkg.licenses, "type") %> (<%= _.pluck(pkg.licenses, "url") %>)\n' +
+              ' */\n',
     jqueryCheck: 'if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery") }\n\n',
 
     // Task configuration.
@@ -69,7 +69,7 @@ module.exports = function (grunt) {
 
     concat: {
       options: {
-        banner: '<%= banner %><%= jqueryCheck %>',
+        banner: '<%= banner %>\n<%= jqueryCheck %>',
         stripBanners: false
       },
       bootstrap: {
@@ -93,7 +93,7 @@ module.exports = function (grunt) {
 
     uglify: {
       options: {
-        banner: '<%= banner %>',
+        banner: '<%= banner %>\n',
         report: 'min'
       },
       bootstrap: {
