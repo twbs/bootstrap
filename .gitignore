@@ -1,3 +1,6 @@
+# Loopfirst custom ignores
+docs-assets/
+
 # Ignore compiled files
 dist/
 
