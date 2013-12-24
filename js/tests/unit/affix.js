@@ -22,4 +22,26 @@ $(function () {
         ok(!$affix.hasClass('affix'), 'affix class was not added')
       })
 
+      test('should trigger affixed event after affix', function () {
+        var template = $('<div id="affixTarget"><ul><li>Please affix</li><li>And unaffix</li></ul></div><div id="affixAfter" style="height: 20000px; display:block;"></div>')
+        template.appendTo('body')
+        var affixer = $('#affixTarget').affix( {
+          offset: $('#affixTarget ul').position()
+        })
+        
+        $('#affixTarget').on('affixed.bs.affix', function (e) {
+            ok(true, 'affixed event triggered')
+            start()  
+        }).on('unaffixed.bs.affix', function (e) {
+          ok(true,'unaffixed event triggered')
+        })
+
+        stop()
+        setTimeout(function () {  
+          window.scrollTo(0,document.body.scrollHeight)
+          setTimeout(function () {
+            window.scroll(0,0)
+          },0)
+        },0)
+      })
 })
