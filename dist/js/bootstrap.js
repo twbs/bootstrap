@@ -785,7 +785,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
     this.$backdrop =
     this.isShown   = null
 
-    if (this.options.remote) this.$element.load(this.options.remote)
+    if (this.options.remote) this.$element.find('.modal-content').load(this.options.remote)
   }
 
   Modal.DEFAULTS = {
@@ -1179,6 +1179,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
       var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
 
       this.applyPlacement(calculatedOffset, placement)
+      this.hoverState = null
       this.$element.trigger('shown.bs.' + this.type)
     }
   }
@@ -1267,6 +1268,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
         .emulateTransitionEnd(150) :
       complete()
 
+    this.hoverState = null
     this.$element.trigger('hidden.bs.' + this.type)
 
     return this
@@ -1532,7 +1534,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
       .map(function () {
         var $el   = $(this)
         var href  = $el.data('target') || $el.attr('href')
-        var $href = /^#\w/.test(href) && $(href)
+        var $href = /^#./.test(href) && $(href)
 
         return ($href
           && $href.length

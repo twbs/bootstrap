@@ -3476,8 +3476,10 @@ $navbar-default-color: $light-orange;
     <p>You can also import components explicitly. To start with a full list of modules copy this file from the gem:</p>
 
 {% highlight bash %}
-cp $(bundle show bootstrap-sass)/vendor/assets/stylesheets/bootstrap/bootstrap.scss \
-   app/assets/stylesheets/bootstrap-custom.scss
+# copy and prepend "bootstrap/" to the @import paths:
+sed 's/@import "/@import "bootstrap\//' \
+$(bundle show bootstrap-sass)/vendor/assets/stylesheets/bootstrap/bootstrap.scss > \
+app/assets/stylesheets/bootstrap-custom.scss
 {% endhighlight %}
 
     <p>In your <code>application.sass</code>, replace <code>@import 'bootstrap'</code> with:</p>
@@ -3486,7 +3488,7 @@ cp $(bundle show bootstrap-sass)/vendor/assets/stylesheets/bootstrap/bootstrap.s
 @import 'bootstrap-custom';
 {% endhighlight %}
 
-    <p>Comment out any modules you don't need from <code>bootstrap-custom</code>.</p>
+    <p>Comment out any components you do not want from <code>bootstrap-custom</code>.</p>
 
     <h3 id="sass-usage-js">JavaScript</h3>
 
