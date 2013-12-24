@@ -4771,6 +4771,26 @@ a.list-group-item-info.active:focus {
 .panel > .table-responsive > .table {
   margin-bottom: 0;
 }
+.panel > .table > tbody:last-child > tr:last-child td:first-child,
+.panel > .table-responsive > .table > tbody:last-child > tr:last-child td:first-child,
+.panel > .table > tfoot:last-child > tr:last-child td:first-child,
+.panel > .table-responsive > .table > tfoot:last-child > tr:last-child td:first-child,
+.panel > .table > tbody:last-child > tr:last-child th:first-child,
+.panel > .table-responsive > .table > tbody:last-child > tr:last-child th:first-child,
+.panel > .table > tfoot:last-child > tr:last-child th:first-child,
+.panel > .table-responsive > .table > tfoot:last-child > tr:last-child th:first-child {
+  border-bottom-left-radius: 3px;
+}
+.panel > .table > tbody:last-child > tr:last-child td:last-child,
+.panel > .table-responsive > .table > tbody:last-child > tr:last-child td:last-child,
+.panel > .table > tfoot:last-child > tr:last-child td:last-child,
+.panel > .table-responsive > .table > tfoot:last-child > tr:last-child td:last-child,
+.panel > .table > tbody:last-child > tr:last-child th:last-child,
+.panel > .table-responsive > .table > tbody:last-child > tr:last-child th:last-child,
+.panel > .table > tfoot:last-child > tr:last-child th:last-child,
+.panel > .table-responsive > .table > tfoot:last-child > tr:last-child th:last-child {
+  border-bottom-right-radius: 3px;
+}
 .panel > .panel-body + .table,
 .panel > .panel-body + .table-responsive {
   border-top: 1px solid #ddd;
@@ -4828,18 +4848,6 @@ a.list-group-item-info.active:focus {
 .panel > .table-responsive {
   margin-bottom: 0;
   border: 0;
-}
-.panel > .table-striped > tbody > tr:last-child td:first-child,
-.panel > .table-responsive > .table-striped > tbody > tr:last-child td:first-child,
-.panel > .table-striped > tbody > tr:last-child th:first-child,
-.panel > .table-responsive > .table-striped > tbody > tr:last-child th:first-child {
-  border-bottom-left-radius: 3px;
-}
-.panel > .table-striped > tbody > tr:last-child td:last-child,
-.panel > .table-responsive > .table-striped > tbody > tr:last-child td:last-child,
-.panel > .table-striped > tbody > tr:last-child th:last-child,
-.panel > .table-responsive > .table-striped > tbody > tr:last-child th:last-child {
-  border-bottom-right-radius: 3px;
 }
 .panel-heading {
   padding: 10px 15px;
