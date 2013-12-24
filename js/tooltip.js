@@ -199,9 +199,18 @@
     offset.top  = offset.top  + marginTop
     offset.left = offset.left + marginLeft
 
-    $tip
-      .offset(offset)
-      .addClass('in')
+    // $.fn.offset doesn't round pixel values
+    // so we use setOffset directly with our own function B-0
+    jQuery.offset.setOffset($tip[0], $.extend({
+      using: function (props) {
+        $tip.css({
+          top: Math.round(props.top),
+          left: Math.round(props.left)
+        })
+      }
+    }, offset), 0)
+
+    $tip.addClass('in')
 
     // check to see if placing tip in new offset caused the tip to resize itself
     var actualWidth  = $tip[0].offsetWidth
