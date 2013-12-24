@@ -177,6 +177,7 @@
       var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
 
       this.applyPlacement(calculatedOffset, placement)
+      this.hoverState = null
       this.$element.trigger('shown.bs.' + this.type)
     }
   }
@@ -265,6 +266,7 @@
         .emulateTransitionEnd(150) :
       complete()
 
+    this.hoverState = null
     this.$element.trigger('hidden.bs.' + this.type)
 
     return this
