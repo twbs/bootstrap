@@ -35,6 +35,8 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
         return { end: transEndEventNames[name] }
       }
     }
+
+    return false // explicit for ie8 (  ._.)
   }
 
   // http://blog.alexmaccaw.com/css-transitions
@@ -347,13 +349,15 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
       $next = this.$element.find('.item')[fallback]()
     }
 
+    if ($next.hasClass('active')) return
+
+    var e = $.Event('slide.bs.carousel', { relatedTarget: $next[0], direction: direction })
+    this.$element.trigger(e)
+    if (e.isDefaultPrevented()) return
+
     this.sliding = true
 
     isCycling && this.pause()
-
-    var e = $.Event('slide.bs.carousel', { relatedTarget: $next[0], direction: direction })
-
-    if ($next.hasClass('active')) return
 
     if (this.$indicators.length) {
       this.$indicators.find('.active').removeClass('active')
@@ -364,8 +368,6 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
     }
 
     if ($.support.transition && this.$element.hasClass('slide')) {
-      this.$element.trigger(e)
-      if (e.isDefaultPrevented()) return
       $next.addClass(type)
       $next[0].offsetWidth // force reflow
       $active.addClass(direction)
@@ -379,8 +381,6 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
         })
         .emulateTransitionEnd($active.css('transition-duration').slice(0, -1) * 1000)
     } else {
-      this.$element.trigger(e)
-      if (e.isDefaultPrevented()) return
       $active.removeClass('active')
       $next.addClass('active')
       this.sliding = false
