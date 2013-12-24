@@ -27,6 +27,7 @@
         return { end: transEndEventNames[name] }
       }
     }
+    return false
   }
 
   // http://blog.alexmaccaw.com/css-transitions
