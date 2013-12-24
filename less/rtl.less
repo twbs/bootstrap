@@ -1,0 +1,222 @@
+// Setup
+//
+// Load core variables and mixins, just like the core and theme files.
+
+@import "variables.less";
+@import "mixins.less";
+
+
+// Scaffolding
+//
+// Reset the most global styles to go RTL.
+
+body {
+  direction: rtl;
+}
+
+.pull-right { float: left !important; }
+.pull-left  { float: right !important; }
+
+
+// Horizontal description lists
+//
+// Defaults to being stacked without any of the below styles applied, until the
+// grid breakpoint is reached (default of ~768px).
+
+@media (min-width: @grid-float-breakpoint) {
+  .dl-horizontal {
+    dt {
+      float: right; // override
+      text-align: left; // override
+    }
+    dd {
+      margin-left: 0; // override
+      margin-right: @component-offset-horizontal;
+    }
+  }
+}
+
+
+// Blockquotes
+//
+// Flip the styles and provide the alternate approach for the variation.
+
+blockquote {
+  border-right: 5px solid @blockquote-border-color;
+  border-left: 0; // override
+
+  // Float left with text-align: left
+  &.pull-right {
+    // overrides
+    float: left;
+    border-right: 0;
+    border-left: 5px solid @blockquote-border-color;
+
+    p,
+    small,
+    .small {
+      text-align: left;
+    }
+  }
+}
+
+
+// Grid system
+//
+// Generate classes for reverse floats and alignments.
+
+// Mixins first
+.make-grid-columns-rtl(@class) {
+  .col(@index) when (@index = 1) { // initial
+    @item: ~".col-@{class}-@{index}";
+    .col((@index + 1), @item);
+  }
+  .col(@index, @list) when (@index =< @grid-columns) { // general
+    @item: ~".col-@{class}-@{index}";
+    .col((@index + 1), ~"@{list}, @{item}");
+  }
+  .col(@index, @list) when (@index > @grid-columns) { // terminal
+    @{list} {
+      float: right;
+    }
+  }
+  .col(1); // kickstart it
+}
+.calc-grid(@index, @class, @type) when (@type = push) {
+  .col-@{class}-push-@{index} {
+    right: percentage((@index / @grid-columns));
+    left: 0;
+  }
+}
+.calc-grid(@index, @class, @type) when (@type = pull) {
+  .col-@{class}-pull-@{index} {
+    right: 0;
+    left: percentage((@index / @grid-columns));
+  }
+}
+.calc-grid(@index, @class, @type) when (@type = offset) {
+  .col-@{class}-offset-@{index} {
+    margin-left: 0;
+    margin-right: percentage((@index / @grid-columns));
+  }
+}
+
+// Generate extra small grid
+.make-grid-columns-rtl(xs);
+.make-grid(@grid-columns, xs, pull);
+.make-grid(@grid-columns, xs, push);
+.make-grid(@grid-columns, xs, offset);
+
+// Generate small grid
+@media (min-width: @screen-sm-min) {
+  .make-grid-columns-float(sm);
+  .make-grid(@grid-columns, sm, pull);
+  .make-grid(@grid-columns, sm, push);
+  .make-grid(@grid-columns, sm, offset);
+}
+
+// Generate medium grid
+@media (min-width: @screen-md-min) {
+  .make-grid-columns-float(md);
+  .make-grid(@grid-columns, md, width);
+  .make-grid(@grid-columns, md, pull);
+  .make-grid(@grid-columns, md, push);
+  .make-grid(@grid-columns, md, offset);
+}
+
+// Generate large grid
+@media (min-width: @screen-lg-min) {
+  .make-grid-columns-float(lg);
+  .make-grid(@grid-columns, lg, pull);
+  .make-grid(@grid-columns, lg, push);
+  .make-grid(@grid-columns, lg, offset);
+}
+
+
+// Navbars
+//
+// Invert floats and margins.
+
+.navbar-header {
+  @media (min-width: @grid-float-breakpoint) {
+    float: right; // override
+  }
+}
+
+.navbar-brand {
+  float: right; // override
+
+  // Prevent Glyphicons from increasing height of navbar
+  > .glyphicon {
+    float: right; // override
+    margin-right: 0; // override
+    margin-left: 5px;
+  }
+
+  @media (min-width: @grid-float-breakpoint) {
+    .navbar > .container &,
+    .navbar > .container-fluid & {
+      margin-right: -@navbar-padding-horizontal;
+      margin-left: 0; // override
+    }
+  }
+}
+
+.navbar-toggle {
+  float: left; // override
+  margin-right: 0; // override
+  margin-left: @navbar-padding-horizontal;
+}
+
+.navbar-nav {
+  @media (max-width: @grid-float-breakpoint-max) {
+    .open .dropdown-menu {
+      > li > a,
+      .dropdown-header {
+        padding: 5px 25px 5px 15px; // override, flip R/L
+      }
+    }
+  }
+
+  // Uncollapse the nav
+  @media (min-width: @grid-float-breakpoint) {
+    float: right; // override
+
+    > li {
+      float: right; // override
+    }
+
+    &.navbar-right:last-child {
+      margin-right: 0; // override
+      margin-left: -@navbar-padding-horizontal;
+    }
+  }
+}
+
+@media (min-width: @grid-float-breakpoint) {
+  .navbar-right { float: left !important; }
+  .navbar-left  { float: right !important; }
+}
+
+.navbar-form {
+  @media (min-width: @grid-float-breakpoint) {
+    // Outdent the form if last child to line up with content down the page
+    &.navbar-right:last-child {
+      margin-right: 0; // override
+      margin-left: -@navbar-padding-horizontal;
+    }
+  }
+}
+
+.navbar-text {
+
+  @media (min-width: @grid-float-breakpoint) {
+    float: right; // override
+
+    // Outdent the form if last child to line up with content down the page
+    &.navbar-right:last-child {
+      margin-right: 0; // override
+      margin-left: -@navbar-padding-horizontal;
+    }
+  }
+}
