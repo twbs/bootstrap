@@ -1179,6 +1179,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
       var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
 
       this.applyPlacement(calculatedOffset, placement)
+      this.hoverState = null
       this.$element.trigger('shown.bs.' + this.type)
     }
   }
@@ -1267,6 +1268,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
         .emulateTransitionEnd(150) :
       complete()
 
+    this.hoverState = null
     this.$element.trigger('hidden.bs.' + this.type)
 
     return this
