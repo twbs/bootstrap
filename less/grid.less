@@ -17,7 +17,7 @@
     width: @container-md;
   }
   @media (min-width: @screen-lg-min) {
-    width: @container-lg;
+    width: auto;
   }
 }
 
@@ -54,10 +54,10 @@
 // smartphones.
 
 .make-grid-columns-float(xs);
-.make-grid(@grid-columns, xs, width);
-.make-grid(@grid-columns, xs, pull);
-.make-grid(@grid-columns, xs, push);
-.make-grid(@grid-columns, xs, offset);
+// .make-grid(@grid-columns, xs, width, @screen-xs);
+.make-grid(@grid-columns, xs, pull, @screen-xs);
+.make-grid(@grid-columns, xs, push, @screen-xs);
+.make-grid(@grid-columns, xs, offset, @screen-xs);
 
 
 // Small grid
@@ -67,10 +67,10 @@
 
 @media (min-width: @screen-sm-min) {
   .make-grid-columns-float(sm);
-  .make-grid(@grid-columns, sm, width);
-  .make-grid(@grid-columns, sm, pull);
-  .make-grid(@grid-columns, sm, push);
-  .make-grid(@grid-columns, sm, offset);
+  .make-grid(@grid-columns, sm, width, @screen-sm);
+  .make-grid(@grid-columns, sm, pull, @screen-sm);
+  .make-grid(@grid-columns, sm, push, @screen-sm);
+  .make-grid(@grid-columns, sm, offset, @screen-sm);
 }
 
 
@@ -80,10 +80,10 @@
 
 @media (min-width: @screen-md-min) {
   .make-grid-columns-float(md);
-  .make-grid(@grid-columns, md, width);
-  .make-grid(@grid-columns, md, pull);
-  .make-grid(@grid-columns, md, push);
-  .make-grid(@grid-columns, md, offset);
+  .make-grid(@grid-columns, md, width, @screen-md);
+  .make-grid(@grid-columns, md, pull, @screen-md);
+  .make-grid(@grid-columns, md, push, @screen-md);
+  .make-grid(@grid-columns, md, offset, @screen-md);
 }
 
 
@@ -93,8 +93,8 @@
 
 @media (min-width: @screen-lg-min) {
   .make-grid-columns-float(lg);
-  .make-grid(@grid-columns, lg, width);
-  .make-grid(@grid-columns, lg, pull);
-  .make-grid(@grid-columns, lg, push);
-  .make-grid(@grid-columns, lg, offset);
+  .make-grid(@grid-columns, lg, width, @screen-lg);
+  .make-grid(@grid-columns, lg, pull, @screen-lg);
+  .make-grid(@grid-columns, lg, push, @screen-lg);
+  .make-grid(@grid-columns, lg, offset, @screen-lg);
 }

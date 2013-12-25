@@ -617,10 +617,20 @@
 // Grid System
 // -----------
 
-// Centered container element
+// Pixel Grid
+.pixel,
+.pixel > div[class*="col"] {
+  -webkit-transition: all 0.15s ease;
+  -moz-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
+  transition: all 0.15s ease;
+}
+
+
+// Not centered container element
 .container-fixed() {
-  margin-right: auto;
-  margin-left: auto;
+  margin-right: 0;
+  margin-left: 0;
   padding-left:  (@grid-gutter-width / 2);
   padding-right: (@grid-gutter-width / 2);
   &:extend(.clearfix all);
@@ -791,32 +801,36 @@
   .col(1); // kickstart it
 }
 
-.calc-grid(@index, @class, @type) when (@type = width) and (@index > 0) {
+.calc-grid(@index, @class, @type, @size) when (@type = width) and (@index > 0) {
   .col-@{class}-@{index} {
     width: percentage((@index / @grid-columns));
   }
+
+  .pixel > .col-@{class}-@{index} {
+    width: (@index / @grid-columns) * @size;
+  }
 }
-.calc-grid(@index, @class, @type) when (@type = push) {
+.calc-grid(@index, @class, @type, @size) when (@type = push) {
   .col-@{class}-push-@{index} {
     left: percentage((@index / @grid-columns));
   }
 }
-.calc-grid(@index, @class, @type) when (@type = pull) {
+.calc-grid(@index, @class, @type, @size) when (@type = pull) {
   .col-@{class}-pull-@{index} {
     right: percentage((@index / @grid-columns));
   }
 }
-.calc-grid(@index, @class, @type) when (@type = offset) {
+.calc-grid(@index, @class, @type, @size) when (@type = offset) {
   .col-@{class}-offset-@{index} {
     margin-left: percentage((@index / @grid-columns));
   }
 }
 
 // Basic looping in LESS
-.make-grid(@index, @class, @type) when (@index >= 0) {
-  .calc-grid(@index, @class, @type);
+.make-grid(@index, @class, @type, @size) when (@index >= 0) {
+  .calc-grid(@index, @class, @type, @size);
   // next iteration
-  .make-grid((@index - 1), @class, @type);
+  .make-grid((@index - 1), @class, @type, @size);
 }
 
 
