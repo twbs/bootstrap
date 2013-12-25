@@ -83,7 +83,7 @@
       .trigger($.Event(affixType.replace('affix', 'affixed')))
 
     if (affix == 'bottom') {
-      this.$element.offset({ top: document.body.offsetHeight - offsetBottom - this.$element.height() })
+      this.$element.offset({ top: scrollHeight - offsetBottom - this.$element.height() })
     }
   }
 
