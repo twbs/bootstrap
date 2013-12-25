@@ -79,8 +79,8 @@ def upload(directory):
 
 if __name__ == '__main__':
     # Uses environment variables:
-    #   AWS_ACCESS_KEY_ID - AWS Access Key ID
-    #   AWS_SECRET_ACCESS_KEY - AWS Secret Access Key
+    #   AWS_ACCESS_KEY_ID -- AWS Access Key ID
+    #   AWS_SECRET_ACCESS_KEY -- AWS Secret Access Key
     argv.pop(0)
     if len(argv) != 4:
         raise SystemExit("USAGE: node_modules_cache.py <download | upload> <friendly name> <dependencies file> <directory>")
