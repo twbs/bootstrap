@@ -260,7 +260,7 @@
     var e    = $.Event('hide.bs.' + this.type)
 
     function complete() {
-      if (that.hoverState != 'in') $tip.detach()
+      $tip.detach()
     }
 
     this.$element.trigger(e)
