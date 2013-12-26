@@ -64,7 +64,11 @@ module.exports = function (grunt) {
       options: {
         csslintrc: '.csslintrc'
       },
-      src: ['dist/css/bootstrap.css', 'dist/css/bootstrap-theme.css']
+      src: [
+        'dist/css/bootstrap.css',
+        'dist/css/bootstrap-theme.css',
+        'docs-assets/css/docs.css'
+      ]
     },
 
     concat: {
