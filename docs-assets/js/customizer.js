@@ -9,7 +9,7 @@
 
 window.onload = function () { // wait for load in a dumb way because B-0
   var cw = '/*!\n' +
-           ' * Bootstrap v3.1.0 (http://getbootstrap.com)\n' +
+           ' * Bootstrap v3.0.3 (http://getbootstrap.com)\n' +
            ' * Copyright 2013 Twitter, Inc.\n' +
            ' * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n' +
            ' */\n\n';

@@ -26,16 +26,16 @@ exclude:
 - "test-infra"
 
 # Custom vars
-current_version:  3.1.0
+current_version:  3.0.3
 repo:             https://github.com/twbs/bootstrap
 
-download_source:  https://github.com/twbs/bootstrap/archive/v3.1.0.zip
-download_dist:    https://github.com/twbs/bootstrap/releases/download/v3.1.0/bootstrap-3.1.0-dist.zip
+download_source:  https://github.com/twbs/bootstrap/archive/v3.0.3.zip
+download_dist:    https://github.com/twbs/bootstrap/releases/download/v3.0.3/bootstrap-3.0.3-dist.zip
 
 blog:             http://blog.getbootstrap.com
 expo:             http://expo.getbootstrap.com
 sass_repo:        https://github.com/twbs/bootstrap-sass
 
-cdn_css:          //netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css
-cdn_theme_css:    //netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css
-cdn_js:           //netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js
+cdn_css:          //netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css
+cdn_theme_css:    //netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css
+cdn_js:           //netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js
