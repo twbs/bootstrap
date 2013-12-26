@@ -1130,6 +1130,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
       this.$element.trigger(e)
 
       if (e.isDefaultPrevented()) return
+      var that = this;
 
       var $tip = this.tip()
 
@@ -1180,7 +1181,16 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
       this.applyPlacement(calculatedOffset, placement)
       this.hoverState = null
-      this.$element.trigger('shown.bs.' + this.type)
+
+      var complete = function() {
+        that.$element.trigger('shown.bs.' + that.type)
+      }
+
+      $.support.transition && this.$tip.hasClass('fade') ?
+        $tip
+          .one($.support.transition.end, complete)
+          .emulateTransitionEnd(150) :
+        complete()
     }
   }
 
@@ -1263,6 +1273,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
     function complete() {
       if (that.hoverState != 'in') $tip.detach()
+      that.$element.trigger('hidden.bs.' + that.type)
     }
 
     this.$element.trigger(e)
@@ -1278,7 +1289,6 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
       complete()
 
     this.hoverState = null
-    this.$element.trigger('hidden.bs.' + this.type)
 
     return this
   }
@@ -1852,7 +1862,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
       .trigger($.Event(affixType.replace('affix', 'affixed')))
 
     if (affix == 'bottom') {
-      this.$element.offset({ top: document.body.offsetHeight - offsetBottom - this.$element.height() })
+      this.$element.offset({ top: scrollHeight - offsetBottom - this.$element.height() })
     }
   }
 
