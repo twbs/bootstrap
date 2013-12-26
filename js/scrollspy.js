@@ -85,7 +85,7 @@
     this.activeTarget = target
 
     $(this.selector)
-      .parents('.active')
+      .parents('li.active')
       .removeClass('active')
 
     var selector = this.selector +
