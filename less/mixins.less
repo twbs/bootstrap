@@ -631,8 +631,15 @@
 .container-fixed() {
   margin-right: 0;
   margin-left: 0;
+  @media (min-width: @screen-md-min) {
   padding-left:  (@grid-gutter-width / 2);
   padding-right: (@grid-gutter-width / 2);
+  }
+  @media (min-width: @screen-xs-min) {
+  padding-left:  (@grid-gutter-width-xs / 2);
+  padding-right: (@grid-gutter-width-xs / 2);
+  }
+
   &:extend(.clearfix all);
 }
 

@@ -7,6 +7,28 @@
 //
 // Set the container width, and override it for fixed navbars in media queries.
 
+#wrapper:after {
+  @media (min-width: @screen-xs-min) {
+    content: "xs";
+  }
+  @media (min-width: @screen-sm-min) {
+    content: "sm";
+  }
+  @media (min-width: @screen-md-min) {
+    content: "md";
+    width: @container-md;
+  }
+  @media (min-width: @screen-lg-min) {
+    content: "lg";
+  }
+
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  font-size: 16px;
+  z-index: 2000;
+}
+
 .container {
   .container-fixed();
 
