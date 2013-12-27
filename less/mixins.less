@@ -706,7 +706,7 @@
   }
 }
 .make-md-column-push(@columns) {
-  @media (min-width: @screen-md) {
+  @media (min-width: @screen-md-min) {
     left: percentage((@columns / @grid-columns));
   }
 }
