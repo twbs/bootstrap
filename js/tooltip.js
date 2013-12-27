@@ -376,9 +376,9 @@
     return this.each(function () {
       var $this   = $(this)
       var data    = $this.data('bs.tooltip')
-      if (!data && option === 'destroy') return
       var options = typeof option == 'object' && option
 
+      if (!data && option == 'destroy') return
       if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
       if (typeof option == 'string') data[option]()
     })
