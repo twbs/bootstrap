@@ -29,7 +29,7 @@ module.exports = function (grunt) {
               ' * Licensed under the Creative Commons Attribution 3.0 Unported License. For\n' +
               ' * details, see http://creativecommons.org/licenses/by/3.0/.\n' +
               ' */\n',
-    jqueryCheck: 'if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery") }\n\n',
+    jqueryCheck: 'if (typeof jQuery === \'undefined\') { throw new Error(\'Bootstrap requires jQuery\') }\n\n',
 
     // Task configuration.
     clean: {
