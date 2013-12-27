@@ -183,6 +183,7 @@ module.exports = function (grunt) {
       compress: {
         options: {
           keepSpecialComments: '*',
+          noAdvanced: true, // turn advanced optimizations off until it's fixed in clean-css
           report: 'min',
           selectorsMergeMode: 'ie8'
         },
