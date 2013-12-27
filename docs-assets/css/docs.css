@@ -102,6 +102,10 @@ body {
   font-size: 108px;
   line-height: 140px;
 }
+.bs-booticon-inverse {
+  color: #563d7c;
+  background-color: #fff;
+}
 
 
 /*
@@ -676,6 +680,8 @@ h1[id] {
   margin: 0 5px;
   border-radius: 3px;
 }
+
+/* Framework colors */
 .color-swatches .gray-darker   { background-color: #222; }
 .color-swatches .gray-dark     { background-color: #333; }
 .color-swatches .gray          { background-color: #555; }
@@ -686,6 +692,12 @@ h1[id] {
 .color-swatches .brand-warning { background-color: #f0ad4e; }
 .color-swatches .brand-danger  { background-color: #d9534f; }
 .color-swatches .brand-info    { background-color: #5bc0de; }
+
+/* Docs colors */
+.color-swatches .bs-purple          { background-color: #563d7c; }
+.color-swatches .bs-purple-light    { background-color: #c7bfd3; }
+.color-swatches .bs-purple-lighter  { background-color: #e5e1ea; }
+.color-swatches .bs-gray            { background-color: #f9f9f9; }
 
 
 /*
@@ -1258,36 +1270,78 @@ h1[id] {
 
 
 /*
+ * Brand guidelines
+ *
+ * Extra styles for displaying wordmarks, logos, etc.
+ */
+
+/* Logo series wrapper */
+.bs-brand-logos {
+  display: table;
+  width: 100%;
+  margin-bottom: 15px;
+  overflow: hidden;
+  color: #563d7c;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+/* Individual items */
+.bs-brand-item {
+  display: table-cell;
+  width: 1%;
+  padding: 60px 0;
+  text-align: center;
+}
+.bs-brand-item + .bs-brand-item {
+  border-left: 1px solid #fff;
+}
+.bs-brand-logos .inverse {
+  color: #fff;
+  background-color: #563d7c;
+}
+
+/* Heading content within */
+.bs-brand-item h1,
+.bs-brand-item h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.bs-brand-item h1 {
+  font-size: 60px;
+}
+.bs-brand-item .bs-booticon {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Make the icons stand out on what is/isn't okay */
+.bs-brand-item .glyphicon {
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  line-height: 30px;
+  color: #fff;
+  border-radius: 50%;
+}
+.bs-brand-item .glyphicon-ok { background-color: #5cb85c; }
+.bs-brand-item .glyphicon-remove { background-color: #d9534f; }
+
+
+@media (min-width: 768px) {
+/*  .bs-brand-logos .default,
+  .bs-brand-logos .inverse {
+    float: left;
+    width: 50%;
+  }
+*/}
+
+
+/*
  * Miscellaneous
  *
  * Odds and ends for optimum docs display.
  */
-
- /* About page */
- .bs-about {
-  font-size: 16px;
- }
-
-.bs-brand {
-  padding-top: 15px;
-  overflow: hidden; /* clearfix */
-  border-radius: 4px;
-}
-.bs-brand:after {
-  display: none;
-}
-.bs-brand h1 {
-  margin: 40px 0;
-  font-size: 70px;
-  text-align: center;
-  color: #563d7c;
-}
-@media (min-width: 768px) {
-  .bs-brand h1 {
-    float: left;
-    width: 50%;
-  }
-}
 
 /* Examples gallery: space out content better */
 .bs-examples .thumbnail {
@@ -1307,10 +1361,4 @@ h1[id] {
   outline: thin dotted \9; /* IE6-9 */
   -moz-box-shadow: 0 0 8px rgba(82,168,236,.6);
        box-shadow: 0 0 8px rgba(82,168,236,.6);
-}
-
-/* Better spacing on download options in getting started */
-.bs-docs-dl-options h4 {
-  margin-top: 15px;
-  margin-bottom: 5px;
 }
