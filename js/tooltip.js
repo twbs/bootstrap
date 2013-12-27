@@ -362,6 +362,7 @@
   }
 
   Tooltip.prototype.destroy = function () {
+    clearTimeout(this.timeout)
     this.hide().$element.off('.' + this.type).removeData('bs.' + this.type)
   }
 
@@ -377,6 +378,7 @@
       var data    = $this.data('bs.tooltip')
       var options = typeof option == 'object' && option
 
+      if (!data && option == 'destroy') return
       if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
       if (typeof option == 'string') data[option]()
     })

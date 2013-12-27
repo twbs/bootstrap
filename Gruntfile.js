@@ -96,15 +96,24 @@ module.exports = function (grunt) {
     },
 
     uglify: {
-      options: {
-        banner: '<%= banner %>\n',
-        report: 'min'
-      },
       bootstrap: {
+        options: {
+          banner: '<%= banner %>\n',
+          report: 'min'
+        },
         src: ['<%= concat.bootstrap.dest %>'],
         dest: 'dist/js/<%= pkg.name %>.min.js'
       },
       customize: {
+        options: {
+          banner: '/*!\n' +
+          ' * Bootstrap Docs (<%= pkg.homepage %>)\n' +
+          ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
+          ' * Licensed under the Creative Commons Attribution 3.0 Unported License. For\n' +
+          ' * details, see http://creativecommons.org/licenses/by/3.0/.\n' +
+          ' */\n',
+          report: 'min'
+        },
         src: [
           'docs-assets/js/less.js',
           'docs-assets/js/jszip.js',
