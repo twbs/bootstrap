@@ -1364,6 +1364,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
   }
 
   Tooltip.prototype.destroy = function () {
+    clearTimeout(this.timeout)
     this.hide().$element.off('.' + this.type).removeData('bs.' + this.type)
   }
 
@@ -1379,6 +1380,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
       var data    = $this.data('bs.tooltip')
       var options = typeof option == 'object' && option
 
+      if (!data && option == 'destroy') return
       if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
       if (typeof option == 'string') data[option]()
     })
@@ -1486,6 +1488,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
       var data    = $this.data('bs.popover')
       var options = typeof option == 'object' && option
 
+      if (!data && option == 'destroy') return
       if (!data) $this.data('bs.popover', (data = new Popover(this, options)))
       if (typeof option == 'string') data[option]()
     })
