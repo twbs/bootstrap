@@ -23,6 +23,12 @@ module.exports = function (grunt) {
               ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
               ' * Licensed under <%= _.pluck(pkg.licenses, "type") %> (<%= _.pluck(pkg.licenses, "url") %>)\n' +
               ' */\n',
+    bannerDocs: '/*!\n' +
+              ' * Bootstrap Docs (<%= pkg.homepage %>)\n' +
+              ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
+              ' * Licensed under the Creative Commons Attribution 3.0 Unported License. For\n' +
+              ' * details, see http://creativecommons.org/licenses/by/3.0/.\n' +
+              ' */\n',
     jqueryCheck: 'if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery") }\n\n',
 
     // Task configuration.
@@ -112,12 +118,7 @@ module.exports = function (grunt) {
       },
       customize: {
         options: {
-          banner: '/*!\n' +
-          ' * Bootstrap Docs (<%= pkg.homepage %>)\n' +
-          ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-          ' * Licensed under the Creative Commons Attribution 3.0 Unported License. For\n' +
-          ' * details, see http://creativecommons.org/licenses/by/3.0/.\n' +
-          ' */\n',
+          banner: '<%= bannerDocs %>\n',
           report: 'min'
         },
         src: [
@@ -132,6 +133,7 @@ module.exports = function (grunt) {
       },
       docsJs: {
         options: {
+          banner: '<%= bannerDocs %>\n',
           report: 'min'
         },
         src: [
@@ -182,6 +184,7 @@ module.exports = function (grunt) {
     cssmin: {
       compress: {
         options: {
+          banner: '<%= bannerDocs %>\n',
           keepSpecialComments: '*',
           noAdvanced: true, // turn advanced optimizations off until it's fixed in clean-css
           report: 'min',
