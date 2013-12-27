@@ -108,8 +108,12 @@ base_url: "../"
 </div>
 {% endhighlight %}
 
-    <h3 id="dropdowns-alignment">Alignment options</h3>
-    <p>Add <code>.dropdown-menu-right</code> to a <code>.dropdown-menu</code> to right align the dropdown menu.</p>
+    <h3 id="dropdowns-alignment">Alignment</h3>
+    <p>By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent. Add <code>.dropdown-menu-right</code> to a <code>.dropdown-menu</code> to right align the dropdown menu.</p>
+    <div class="bs-callout bs-callout-warning">
+      <h4>May require additional positioning</h4>
+      <p>Dropdowns are automatically positioned via CSS within the normal flow of the document. This means dropdowns may be cropped by parents with certain <code>overflow</code> properties or appear out of bounds of the viewport. Address these issues on your own as they arise.</p>
+    </div>
     <div class="bs-callout bs-callout-warning">
       <h4>Deprecated <code>.pull-right</code> alignment</h4>
       <p>As of v3.1, we've deprecated <code>.pull-right</code> on dropdown menus. To right-align a menu, use <code>.dropdown-menu-right</code>. Right-aligned nav components in the navbar use a mixin version of this class to automatically align the menu. To override it, use <code>.dropdown-menu-left</code>.</p>
@@ -367,6 +371,11 @@ base_url: "../"
 
     <h3 id="btn-groups-justified">Justified link variation</h3>
     <p>Make a group of buttons stretch at the same size to span the entire width of its parent. Also works with button dropdowns within the button group.</p>
+
+    <div class="bs-callout bs-callout-warning">
+      <h4>Handling borders</h4>
+      <p>Due to the specific HTML and CSS used to justify buttons (namely <code>display: table-cell</code>), the borders between them are doubled. In regular button groups, <code>margin-left: -1px</code> is used to stack the borders instead of removing them. However, <code>margin</code> doesn't work with <code>display: table-cell</code>. As a result, depending on your customizations to Bootstrap, you may wish to remove or re-color the borders.</p>
+    </div>
 
     <div class="bs-callout bs-callout-warning">
       <h4>Element-specific usage</h4>
@@ -2143,7 +2152,7 @@ body { padding-bottom: 70px; }
         <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
       </div>
       <div class="alert alert-warning">
-        <strong>Warning!</strong> Best check yo self, you're not looking too good.
+        <strong>Warning!</strong> Better check yourself, you're not looking too good.
       </div>
       <div class="alert alert-danger">
         <strong>Oh snap!</strong> Change a few things up and try submitting again.
@@ -2161,13 +2170,13 @@ body { padding-bottom: 70px; }
     <div class="bs-example">
       <div class="alert alert-warning alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Warning!</strong> Best check yo self, you're not looking too good.
+        <strong>Warning!</strong> Better check yourself, you're not looking too good.
       </div>
     </div>
 {% highlight html %}
 <div class="alert alert-warning alert-dismissable">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  <strong>Warning!</strong> Best check yo self, you're not looking too good.
+  <strong>Warning!</strong> Better check yourself, you're not looking too good.
 </div>
 {% endhighlight %}
 
@@ -2186,7 +2195,7 @@ body { padding-bottom: 70px; }
         <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
       </div>
       <div class="alert alert-warning">
-        <strong>Warning!</strong> Best check yo self, you're <a href="#" class="alert-link">not looking too good</a>.
+        <strong>Warning!</strong> Better check yourself, you're <a href="#" class="alert-link">not looking too good</a>.
       </div>
       <div class="alert alert-danger">
         <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.

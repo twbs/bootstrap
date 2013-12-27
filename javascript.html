@@ -403,6 +403,10 @@ $('#myModal').modal({
            <td>hidden.bs.modal</td>
            <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).</td>
          </tr>
+         <tr>
+           <td>loaded.bs.modal</td>
+           <td>This event is fired when the modal has loaded content using the remote option.</td>
+         </tr>
         </tbody>
       </table>
     </div><!-- /.table-responsive -->
@@ -515,7 +519,7 @@ $('#myModal').on('hidden.bs.modal', function (e) {
 
 
     <h2 id="dropdowns-usage">Usage</h2>
-    <p>Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the <code>.open</code> class on the parent list item. When opened, the plugin also adds <code>.dropdown-backdrop</code> as a click area for closing dropdown menus when clicking outside the menu.</p>
+    <p>Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the <code>.open</code> class on the parent list item. When opened, the plugin also adds <code>.dropdown-backdrop</code> as a click area for closing dropdown menus when clicking outside the menu. Note: The <code>data-toggle=dropdown</code> attribute is relied on for closing dropdown menus at an application level, so it's a good idea to always use it.</p>
 
     <h3>Via data attributes</h3>
     <p>Add <code>data-toggle="dropdown"</code> to a link or button to toggle a dropdown.</p>
@@ -1734,7 +1738,7 @@ $('.collapse').collapse()
            <td>parent</td>
            <td>selector</td>
            <td>false</td>
-           <td>If selector then all collapsible elements under the specified parent will be closed when this collapsible item is shown. (similar to traditional accordion behavior - this dependent on the <code>accordion-group</code> class)</td>
+           <td>If selector then all collapsible elements under the specified parent will be closed when this collapsible item is shown. (similar to traditional accordion behavior - this dependent on the <code>panel</code> class)</td>
          </tr>
          <tr>
            <td>toggle</td>
@@ -2102,6 +2106,46 @@ $('#myCarousel').on('slide.bs.carousel', function () {
            <td>10</td>
            <td>Pixels to offset from screen when calculating position of scroll. If a single number is provided, the offset will be applied in both top and bottom directions. To provide a unique, bottom and top offset just provide an object <code>offset: { top: 10 }</code> or <code>offset: { top: 10, bottom: 5 }</code>. Use a function when you need to dynamically calculate an offset.</td>
          </tr>
+        </tbody>
+      </table>
+    </div><!-- /.table-responsive -->
+
+
+    <h3>Events</h3>
+    <p>Bootstrap's affix class exposes a few events for hooking into affix functionality.</p>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th style="width: 150px;">Event Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>affix.bs.affix</td>
+            <td>This event fires immediately before the element has been affixed.</td>
+          </tr>
+          <tr>
+            <td>affixed.bs.affix</td>
+            <td>This event is fired after the element has been affixed.</td>
+          </tr>
+          <tr>
+            <td>affix-top.bs.affix</td>
+            <td>This event fires immediately before the element has been affixed-top.</td>
+          </tr>
+          <tr>
+            <td>affixed-top.bs.affix</td>
+            <td>This event is fired after the element has been affixed-top.</td>
+          </tr>
+         <tr>
+          <td>affix-bottom.bs.affix</td>
+            <td>This event fires immediately before the element has been affixed-bottom.</td>
+          </tr>
+          <tr>
+            <td>affixed-bottom.bs.affix</td>
+            <td>This event is fired after the element has been affixed-bottom.</td>
+          </tr>
         </tbody>
       </table>
     </div><!-- /.table-responsive -->

@@ -59,6 +59,20 @@
   > .table,
   > .table-responsive > .table {
     margin-bottom: 0;
+    
+    > tbody:last-child,
+    > tfoot:last-child {
+      > tr:last-child {
+        td:first-child,
+        th:first-child {
+          border-bottom-left-radius: (@panel-border-radius - 1);
+        }
+        td:last-child,
+        th:last-child {
+          border-bottom-right-radius: (@panel-border-radius - 1);
+        }
+      }
+    }
   }
   > .panel-body + .table,
   > .panel-body + .table-responsive {
@@ -94,19 +108,6 @@
   > .table-responsive {
     border: 0;
     margin-bottom: 0;
-  }
-  > .table-striped,
-  > .table-responsive > .table-striped {
-    > tbody > tr:last-child {
-      td:first-child,
-      th:first-child {
-        border-bottom-left-radius: (@panel-border-radius - 1);
-      }
-      td:last-child,
-      th:last-child {
-        border-bottom-left-radius: (@panel-border-radius - 1);
-      }
-    }
   }
 }
 
