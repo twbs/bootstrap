@@ -1319,7 +1319,7 @@ h1[id] {
 .bs-brand-item .glyphicon {
   width: 30px;
   height: 30px;
-  margin-top: 10px;
+  margin: 10px auto -10px;
   line-height: 30px;
   color: #fff;
   border-radius: 50%;
