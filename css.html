@@ -2576,8 +2576,22 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   .text-hide();
 }
 {% endhighlight %}
-  </div>
 
+    <h3 id="helper-classes-flex-embed">Flexible media embeds</h3>
+    <p>Flexible media embeds lets browsers automatically scale objects in your webpages such as videos, slideshows. Wrap your element with a class <code>.flex-embed</code> to create an intrinsic ratio that will properly scale on any device.</p>
+    <p>The use of an explicit descendant class <code>.flex-embed-item</code> makes this utility more flexible. However flex embed support automatically <code>&lt;iframe&gt;</code>, <code>&lt;embed&gt;</code> and <code>&lt;object&gt;</code> elements to account for times when you cannot modify the attributes for 3rd party widget code.</p>
+{% highlight html %}
+<div class="flex-embed">
+  <iframe class="flex-embed-item" src="…"></iframe>
+</div>
+{% endhighlight %}
+    <p>By default flex embed target for 4:3 aspect ratio object, use the modifier class <code>.flex-embed-widescreen</code> for 16:9 aspect ratio.</p>
+{% highlight html %}
+<div class="flex-embed flex-embed-widescreen">
+  ...
+</div>
+{% endhighlight %}
+  </div>
 
 
   <!-- Responsive utilities

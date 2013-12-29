@@ -5615,6 +5615,28 @@ button.close {
 .affix {
   position: fixed;
 }
+.flex-embed {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  padding-bottom: 75%;
+  overflow: hidden;
+}
+.flex-embed .flex-embed-item,
+.flex-embed iframe,
+.flex-embed embed,
+.flex-embed object {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.flex-embed.flex-embed-widescreen {
+  padding-bottom: 56.25%;
+}
 @-ms-viewport {
   width: device-width;
 }
