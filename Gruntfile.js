@@ -197,11 +197,22 @@ module.exports = function (grunt) {
         src: ['fonts/*'],
         dest: 'dist/'
       },
-      docs: {
+      dist_css: {
         expand: true,
-        cwd: './dist/',
-        src: ['**'],
-        dest: './docs/dist/'
+        cwd: './dist/css',
+        src: ['*.min.css', '*.css.map'],
+        dest: 'docs/dist/css'
+      },
+      dist_js: {
+        expand: true,
+        cwd: './dist/js',
+        src: ['*.min.js'],
+        dest: 'docs/dist/js'
+      },
+      dist_fonts: {
+        expand: true,
+        src: ['fonts/*'],
+        dest: 'docs/dist/'
       }
     },
 
