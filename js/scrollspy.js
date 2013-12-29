@@ -51,6 +51,7 @@
 
         return ($href
           && $href.length
+          && $href.is(':visible')
           && [[ $href[offsetMethod]().top + (!$.isWindow(self.$scrollElement.get(0)) && self.$scrollElement.scrollTop()), href ]]) || null
       })
       .sort(function (a, b) { return a[0] - b[0] })
