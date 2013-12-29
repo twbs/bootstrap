@@ -38,11 +38,11 @@
 
       if (e.isDefaultPrevented()) return
 
+      $this.focus()
+
       $parent
         .toggleClass('open')
         .trigger('shown.bs.dropdown')
-
-      $this.focus()
     }
 
     return false
