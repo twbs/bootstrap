@@ -41,7 +41,7 @@ module.exports = function (grunt) {
         src: ['js/tests/unit/*.js']
       },
       assets: {
-        src: ['docs-assets/js/application.js', 'docs-assets/js/customizer.js']
+        src: ['docs/assets/js/application.js', 'docs/assets/js/customizer.js']
       }
     },
 
@@ -67,7 +67,7 @@ module.exports = function (grunt) {
       src: [
         'dist/css/bootstrap.css',
         'dist/css/bootstrap-theme.css',
-        'docs-assets/css/docs.css'
+        'docs/assets/css/docs.css'
       ]
     },
 
@@ -115,13 +115,13 @@ module.exports = function (grunt) {
           report: 'min'
         },
         src: [
-          'docs-assets/js/less.js',
-          'docs-assets/js/jszip.js',
-          'docs-assets/js/uglify.js',
-          'docs-assets/js/filesaver.js',
-          'docs-assets/js/customizer.js'
+          'docs/assets/js/less.js',
+          'docs/assets/js/jszip.js',
+          'docs/assets/js/uglify.js',
+          'docs/assets/js/filesaver.js',
+          'docs/assets/js/customizer.js'
         ],
-        dest: 'docs-assets/js/customize.js'
+        dest: 'docs/assets/js/customize.js'
       }
     },
 
@@ -196,6 +196,12 @@ module.exports = function (grunt) {
         expand: true,
         src: ['fonts/*'],
         dest: 'dist/'
+      },
+      docs: {
+        expand: true,
+        cwd: './dist/',
+        src: ['**'],
+        dest: './docs/dist/'
       }
     },
 
@@ -306,10 +312,10 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-css', ['less', 'csscomb', 'usebanner']);
 
   // Fonts distribution task.
-  grunt.registerTask('dist-fonts', ['copy']);
+  grunt.registerTask('dist-docs', ['copy']);
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean', 'dist-css', 'dist-fonts', 'dist-js']);
+  grunt.registerTask('dist', ['clean', 'dist-css', 'dist-docs', 'dist-js']);
 
   // Default task.
   grunt.registerTask('default', ['test', 'dist', 'build-glyphicons-data', 'build-customizer']);
@@ -340,9 +346,9 @@ module.exports = function (grunt) {
     }
 
     // Create the `_data` directory if it doesn't already exist
-    if (!fs.existsSync('_data')) fs.mkdirSync('_data')
+    if (!fs.existsSync('docs/_data')) fs.mkdirSync('docs/_data')
 
-    fs.writeFileSync('_data/glyphicons.yml', glyphiconsData)
+    fs.writeFileSync('docs/_data/glyphicons.yml', glyphiconsData)
   });
 
   // task for building customizer
@@ -363,6 +369,6 @@ module.exports = function (grunt) {
     }
 
     var files = getFiles('js') + getFiles('less') + getFiles('fonts')
-    fs.writeFileSync('docs-assets/js/raw-files.js', files)
+    fs.writeFileSync('docs/assets/js/raw-files.js', files)
   });
 };
