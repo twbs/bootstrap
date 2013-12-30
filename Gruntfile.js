@@ -110,7 +110,7 @@ module.exports = function (grunt) {
     uglify: {
       bootstrap: {
         options: {
-          banner: '<%= banner %>\n',
+          banner: '<%= banner %>',
           report: 'min'
         },
         src: ['<%= concat.bootstrap.dest %>'],
@@ -118,7 +118,7 @@ module.exports = function (grunt) {
       },
       customize: {
         options: {
-          banner: '<%= bannerDocs %>\n',
+          banner: '<%= bannerDocs %>',
           report: 'min'
         },
         src: [
@@ -133,7 +133,7 @@ module.exports = function (grunt) {
       },
       docsJs: {
         options: {
-          banner: '<%= bannerDocs %>\n',
+          banner: '<%= bannerDocs %>',
           report: 'min'
         },
         src: [
@@ -184,7 +184,7 @@ module.exports = function (grunt) {
     cssmin: {
       compress: {
         options: {
-          banner: '<%= bannerDocs %>\n',
+          banner: '<%= bannerDocs %>',
           keepSpecialComments: '*',
           noAdvanced: true, // turn advanced optimizations off until it's fixed in clean-css
           report: 'min',
