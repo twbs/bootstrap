@@ -787,9 +787,13 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
     this.$backdrop =
     this.isShown   = null
 
-    if (this.options.remote) this.$element.find('.modal-content').load(this.options.remote, $.proxy(function () {
-      this.$element.trigger('loaded.bs.modal')
-    }, this))
+    if (this.options.remote) {
+      this.$element
+        .find('.modal-content')
+        .load(this.options.remote, $.proxy(function () {
+          this.$element.trigger('loaded.bs.modal')
+        }, this))
+    }
   }
 
   Modal.DEFAULTS = {
@@ -823,7 +827,9 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
         that.$element.appendTo(document.body) // don't move modals dom position
       }
 
-      that.$element.show()
+      that.$element
+        .show()
+        .scrollTop(0)
 
       if (transition) {
         that.$element[0].offsetWidth // force reflow
