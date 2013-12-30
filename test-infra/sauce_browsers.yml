@@ -16,7 +16,6 @@
 
   # { # FIXME: currently fails 1 tooltip test
   #   browserName: "firefox",
-  #   version: "25",
   #   platform: "OS X 10.6"
   # },
 
