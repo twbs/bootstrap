@@ -2577,18 +2577,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 }
 {% endhighlight %}
 
-    <h3 id="helper-classes-flex-embed">Flexible media embeds</h3>
-    <p>Flexible media embeds lets browsers automatically scale objects in your webpages such as videos, slideshows. Wrap your element with a class <code>.flex-embed</code> to create an intrinsic ratio that will properly scale on any device.</p>
-    <p>The use of an explicit descendant class <code>.flex-embed-item</code> makes this utility more flexible. However flex embed support automatically <code>&lt;iframe&gt;</code>, <code>&lt;embed&gt;</code> and <code>&lt;object&gt;</code> elements to account for times when you cannot modify the attributes for 3rd party widget code.</p>
+    <h3 id="helper-classes-embeds-responsive">Embeds responsive</h3>
+    <p>Allows browsers to determine videos or slideshow dimensions based on the width of their containing block to create an intrinsic ratio that will properly scale on any device.</p>
+    <p>Rules are directly apply to <code>&lt;iframe&gt;</code>, <code>&lt;embed&gt;</code> and <code>&lt;object&gt;</code> elements, optionally use of an explicit descendant class <code>.embed-responsive-item</code> when you want to match the styling for other attributes.</p>
 {% highlight html %}
-<div class="flex-embed">
+<!-- 16:9 aspect ratio -->
+<div class="embed-responsive embed-responsive-16by9">
   <iframe class="flex-embed-item" src="…"></iframe>
 </div>
-{% endhighlight %}
-    <p>By default flex embed target for 4:3 aspect ratio object, use the modifier class <code>.flex-embed-widescreen</code> for 16:9 aspect ratio.</p>
-{% highlight html %}
-<div class="flex-embed flex-embed-widescreen">
-  ...
+
+<!-- 4:3 aspect ratio -->
+<div class="embed-responsive embed-responsive-4by3">
+  <iframe class="flex-embed-item" src="…"></iframe>
 </div>
 {% endhighlight %}
   </div>

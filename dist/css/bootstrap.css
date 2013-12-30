@@ -5615,18 +5615,17 @@ button.close {
 .affix {
   position: fixed;
 }
-.flex-embed {
+.embed-responsive {
   position: relative;
   display: block;
   height: 0;
   padding: 0;
-  padding-bottom: 75%;
   overflow: hidden;
 }
-.flex-embed .flex-embed-item,
-.flex-embed iframe,
-.flex-embed embed,
-.flex-embed object {
+.embed-responsive .embed-responsive-item,
+.embed-responsive iframe,
+.embed-responsive embed,
+.embed-responsive object {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -5634,8 +5633,11 @@ button.close {
   width: 100%;
   height: 100%;
 }
-.flex-embed.flex-embed-widescreen {
+.embed-responsive.embed-responsive-16by9 {
   padding-bottom: 56.25%;
+}
+.embed-responsive.embed-responsive-4by3 {
+  padding-bottom: 75%;
 }
 @-ms-viewport {
   width: device-width;
