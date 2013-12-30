@@ -16,7 +16,7 @@
 
   # { # FIXME: currently fails 1 tooltip test
   #   browserName: "firefox",
-  #   platform: "OS X 10.6"
+  #   platform: "OS X 10.9"
   # },
 
   # Mac Opera not currently supported by Sauce Labs
