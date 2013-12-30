@@ -1572,6 +1572,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
         return ($href
           && $href.length
+          && $href.is(':visible')
           && [[ $href[offsetMethod]().top + (!$.isWindow(self.$scrollElement.get(0)) && self.$scrollElement.scrollTop()), href ]]) || null
       })
       .sort(function (a, b) { return a[0] - b[0] })
@@ -1592,6 +1593,11 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
     if (scrollTop >= maxScroll) {
       return activeTarget != (i = targets.last()[0]) && this.activate(i)
+    }
+
+    if (activeTarget && scrollTop <= offsets[0]) {
+      debugger
+      return activeTarget != (i = targets.first()[0]) && this.activate(i)
     }
 
     for (i = offsets.length; i--;) {
