@@ -270,7 +270,7 @@ module.exports = function (grunt) {
           build: process.env.TRAVIS_JOB_ID,
           concurrency: 3,
           urls: ['http://127.0.0.1:3000/js/tests/index.html'],
-          browsers: grunt.file.readYAML('sauce_browsers.yml')
+          browsers: grunt.file.readYAML('test-infra/sauce_browsers.yml')
         }
       }
     }
