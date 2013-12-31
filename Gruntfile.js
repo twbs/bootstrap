@@ -200,19 +200,19 @@ module.exports = function (grunt) {
         src: ['fonts/*'],
         dest: 'dist/'
       },
-      dist_css: {
+      docsDistCss: {
         expand: true,
         cwd: './dist/css',
         src: ['*.min.css', '*.css.map'],
         dest: 'docs/dist/css'
       },
-      dist_js: {
+      docsDistJs: {
         expand: true,
         cwd: './dist/js',
         src: ['*.min.js'],
         dest: 'docs/dist/js'
       },
-      dist_fonts: {
+      docsDistFonts: {
         expand: true,
         src: ['fonts/*'],
         dest: 'docs/dist/'
@@ -326,10 +326,10 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-css', ['less', 'csscomb', 'usebanner']);
 
   // Fonts distribution task.
-  grunt.registerTask('dist-docs', ['copy']);
+  grunt.registerTask('dist-docs', ['copy:docsDistCss'], ['copy:docsDistJs'], ['copy:docsDistFonts']);
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean', 'dist-css', 'dist-docs', 'dist-js']);
+  grunt.registerTask('dist', ['clean', 'dist-css', 'copy:fonts', 'dist-js']);
 
   // Default task.
   grunt.registerTask('default', ['test', 'dist', 'build-glyphicons-data', 'build-customizer']);
