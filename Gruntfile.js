@@ -65,7 +65,7 @@ module.exports = function (grunt) {
 
     csslint: {
       options: {
-        csslintrc: '.csslintrc'
+        csslintrc: 'less/.csslintrc'
       },
       src: [
         'dist/css/bootstrap.css',
@@ -185,7 +185,7 @@ module.exports = function (grunt) {
     csscomb: {
       sort: {
         options: {
-          sortOrder: '.csscomb.json'
+          config: 'less/.csscomb.json'
         },
         files: {
           'dist/css/<%= pkg.name %>.css': ['dist/css/<%= pkg.name %>.css'],
