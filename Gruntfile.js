@@ -9,7 +9,10 @@ module.exports = function (grunt) {
   RegExp.quote = function (string) {
     return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&')
   }
+
+  var fs = require('fs')
   var btoa = require('btoa')
+
   // Project configuration.
   grunt.initConfig({
 
@@ -284,7 +287,7 @@ module.exports = function (grunt) {
           build: process.env.TRAVIS_JOB_ID,
           concurrency: 3,
           urls: ['http://127.0.0.1:3000/js/tests/index.html'],
-          browsers: grunt.file.readYAML('sauce_browsers.yml')
+          browsers: grunt.file.readYAML('test-infra/sauce_browsers.yml')
         }
       }
     }
@@ -337,8 +340,6 @@ module.exports = function (grunt) {
   grunt.registerTask('change-version-number', ['sed']);
 
   grunt.registerTask('build-glyphicons-data', function () {
-    var fs = require('fs')
-
     // Pass encoding, utf8, so `readFileSync` will return a string instead of a
     // buffer
     var glyphiconsFile = fs.readFileSync('less/glyphicons.less', 'utf8')
@@ -364,8 +365,6 @@ module.exports = function (grunt) {
 
   // task for building customizer
   grunt.registerTask('build-customizer', 'Add scripts/less files to customizer.', function () {
-    var fs = require('fs')
-
     function getFiles(type) {
       var files = {}
       fs.readdirSync(type)

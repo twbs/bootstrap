@@ -351,7 +351,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
       $next = this.$element.find('.item')[fallback]()
     }
 
-    if ($next.hasClass('active')) return
+    if ($next.hasClass('active')) return this.sliding = false
 
     var e = $.Event('slide.bs.carousel', { relatedTarget: $next[0], direction: direction })
     this.$element.trigger(e)
@@ -659,13 +659,14 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
         $('<div class="dropdown-backdrop"/>').insertAfter($(this)).on('click', clearMenus)
       }
 
-      $parent.trigger(e = $.Event('show.bs.dropdown'))
+      var relatedTarget = { relatedTarget: this }
+      $parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
 
       if (e.isDefaultPrevented()) return
 
       $parent
         .toggleClass('open')
-        .trigger('shown.bs.dropdown')
+        .trigger('shown.bs.dropdown', relatedTarget)
 
       $this.focus()
     }
@@ -691,7 +692,8 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
       return $this.click()
     }
 
-    var $items = $('[role=menu] li:not(.divider):visible a', $parent)
+    var desc = ' li:not(.divider):visible a'
+    var $items = $parent.find('[role=menu]' + desc + ', [role=listbox]' + desc)
 
     if (!$items.length) return
 
@@ -704,14 +706,15 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
     $items.eq(index).focus()
   }
 
-  function clearMenus() {
+  function clearMenus(e) {
     $(backdrop).remove()
-    $(toggle).each(function (e) {
+    $(toggle).each(function () {
       var $parent = getParent($(this))
+      var relatedTarget = { relatedTarget: this }
       if (!$parent.hasClass('open')) return
-      $parent.trigger(e = $.Event('hide.bs.dropdown'))
+      $parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
       if (e.isDefaultPrevented()) return
-      $parent.removeClass('open').trigger('hidden.bs.dropdown')
+      $parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
     })
   }
 
@@ -763,7 +766,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
     .on('click.bs.dropdown.data-api', clearMenus)
     .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
     .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
-    .on('keydown.bs.dropdown.data-api', toggle + ', [role=menu]', Dropdown.prototype.keydown)
+    .on('keydown.bs.dropdown.data-api', toggle + ', [role=menu], [role=listbox]', Dropdown.prototype.keydown)
 
 }(jQuery);
 
@@ -787,9 +790,13 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
     this.$backdrop =
     this.isShown   = null
 
-    if (this.options.remote) this.$element.find('.modal-content').load(this.options.remote, $.proxy(function () {
-      this.$element.trigger('loaded.bs.modal')
-    }, this))
+    if (this.options.remote) {
+      this.$element
+        .find('.modal-content')
+        .load(this.options.remote, $.proxy(function () {
+          this.$element.trigger('loaded.bs.modal')
+        }, this))
+    }
   }
 
   Modal.DEFAULTS = {
@@ -823,7 +830,9 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
         that.$element.appendTo(document.body) // don't move modals dom position
       }
 
-      that.$element.show()
+      that.$element
+        .show()
+        .scrollTop(0)
 
       if (transition) {
         that.$element[0].offsetWidth // force reflow
@@ -1566,6 +1575,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
         return ($href
           && $href.length
+          && $href.is(':visible')
           && [[ $href[offsetMethod]().top + (!$.isWindow(self.$scrollElement.get(0)) && self.$scrollElement.scrollTop()), href ]]) || null
       })
       .sort(function (a, b) { return a[0] - b[0] })
@@ -1586,6 +1596,10 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
     if (scrollTop >= maxScroll) {
       return activeTarget != (i = targets.last()[0]) && this.activate(i)
+    }
+
+    if (activeTarget && scrollTop <= offsets[0]) {
+      return activeTarget != (i = targets[0]) && this.activate(i)
     }
 
     for (i = offsets.length; i--;) {
