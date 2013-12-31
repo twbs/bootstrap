@@ -318,7 +318,7 @@ module.exports = function (grunt) {
   // CSS distribution task.
   grunt.registerTask('dist-css', ['less', 'csscomb', 'usebanner']);
 
-  // Fonts distribution task.
+  // Docs distribution task.
   grunt.registerTask('dist-docs', ['copy:docs']);
 
   // Full distribution task.
