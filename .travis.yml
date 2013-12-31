@@ -26,3 +26,5 @@ env:
     - TWBS_TEST=sauce-js-unit
 matrix:
   fast_finish: true
+  allow_failures:
+    - TWBS_TEST=sauce-js-unit
