@@ -3,7 +3,6 @@ layout: default
 title: Getting started
 slug: getting-started
 lead: "An overview of Bootstrap, how to download and use, basic templates and examples, and more."
-base_url: "../"
 ---
 
 
@@ -19,17 +18,17 @@ base_url: "../"
       <div class="col-sm-4">
         <h3 id="download-bootstrap">Bootstrap</h3>
         <p>Compiled and minified CSS, JavaScript, and fonts. No docs or original source files are included.</p>
-        <a href="{{ site.download_dist }}" class="btn btn-lg btn-outline" role="button" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a>
+        <a href="{{ site.download.dist }}" class="btn btn-lg btn-outline" role="button" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a>
       </div>
       <div class="col-sm-4">
         <h3 id="download-source">Source code</h3>
         <p>Source Less, JavaScript, and font files, along with our docs. <strong>Requires a Less compiler and <a href="{{ site.repo }}#compiling-css-and-javascript">some setup.</a></strong></p>
-        <a href="{{ site.download_source }}" class="btn btn-lg btn-outline" role="button" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download source</a>
+        <a href="{{ site.download.source }}" class="btn btn-lg btn-outline" role="button" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download source</a>
       </div>
       <div class="col-sm-4">
         <h3 id="download-sass">Sass</h3>
         <p><a href="{{ site.sass }}">Bootstrap ported from Less to Sass</a> for easy inclusion in Rails, Compass, or Sass-only projects.</p>
-        <a href="{{ site.download_sass }}" class="btn btn-lg btn-outline" role="button" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download Sass']);">Download Sass</a>
+        <a href="{{ site.download.sass }}" class="btn btn-lg btn-outline" role="button" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download Sass']);">Download Sass</a>
       </div>
     </div>
 
@@ -37,13 +36,13 @@ base_url: "../"
     <p>The folks over at <a href="http://www.maxcdn.com/">MaxCDN</a> graciously provide CDN support for Bootstrap's CSS and JavaScript. Just use these <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links.</p>
 {% highlight html %}
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="{{ site.cdn_css }}">
+<link rel="stylesheet" href="{{ site.cdn.css }}">
 
 <!-- Optional theme -->
-<link rel="stylesheet" href="{{ site.cdn_theme_css }}">
+<link rel="stylesheet" href="{{ site.cdn.css_theme }}">
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="{{ site.cdn_js }}"></script>
+<script src="{{ site.cdn.js }}"></script>
 {% endhighlight %}
 
     <h3 id="download-bower">Install with Bower</h3>
@@ -99,12 +98,12 @@ bootstrap/
 │   ├── css/
 │   ├── js/
 │   └── fonts/
-├── docs-assets/
+├── docs/assets/
 ├── examples/
 └── *.html
 {% endhighlight %}
   </div>
-  <p>The <code>less/</code>, <code>js/</code>, and <code>fonts/</code> are the source code for our CSS, JS, and icon fonts (respectively). The <code>dist/</code> folder includes everything listed in the precompiled download section above. <code>docs-assets/</code>, <code>examples/</code>, and all <code>*.html</code> files are for our documentation. Beyond that, any other included file provides support for packages, license information, and development.</p>
+  <p>The <code>less/</code>, <code>js/</code>, and <code>fonts/</code> are the source code for our CSS, JS, and icon fonts (respectively). The <code>dist/</code> folder includes everything listed in the precompiled download section above. <code>docs/assets/</code>, <code>examples/</code>, and all <code>*.html</code> files are for our documentation. Beyond that, any other included file provides support for packages, license information, and development.</p>
 
 
   <!-- Template
@@ -878,6 +877,8 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     <p>Support for <code>overflow: hidden</code> on the <code>&lt;body&gt;</code> element is quite limited in iOS and Android. To that end, when you scroll past the top or bottom of a modal in either of those devices' browsers, the <code>&lt;body&gt;</code> content will begin to scroll.</p>
     <h4>Virtual keyboards</h4>
     <p>Also, note that if you're using inputs in your modal or navbar, iOS has a rendering bug that doesn't update the position of fixed elements when the virtual keyboard is triggered. A few workarounds for this include transforming your elements to <code>position: absolute</code> or invoking a timer on focus to try to correct the positioning manually. This is not handled by Bootstrap, so it is up to you to decide which solution is best for your application.</p>
+    <h4>Navbar Dropdowns</h4>
+    <p>The <code>.dropdown-backdrop</code> element isn't used on iOS in the nav because of the complexity of z-indexing. Thus, to close dropdowns in navbars, you must directly click the dropdown element (or any other element which will fire a click event in iOS).</p>
 
     <h3 id="support-browser-zoom">Browser zooming</h3>
     <p>Page zooming inevitably presents rendering artifacts in some components, both in Bootstrap and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.</p>

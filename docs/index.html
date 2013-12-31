@@ -1,7 +1,6 @@
 ---
 layout: home
 title: Bootstrap
-base_url: "./"
 ---
 
 <main class="bs-masthead" id="content" role="main">
@@ -9,7 +8,9 @@ base_url: "./"
     <span class="bs-booticon bs-booticon-lg">B</span>
     <h1>Bootstrap</h1>
     <p class="lead">The most popular front-end framework for designing and building on the web.</p>
-    <p class="lead"><a href="{{ page.base_url }}getting-started#download" class="btn btn-outline btn-lg" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Download', 'Download {{ site.current_version }}']);">Download Bootstrap</a></p>
+    <p class="lead">
+      <a href="getting-started#download" class="btn btn-outline btn-lg" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Download', 'Download {{ site.current_version }}']);">Download Bootstrap</a>
+    </p>
     {% include ads.html %}
   </div>
 </main>

@@ -3,7 +3,6 @@ layout: default
 title: JavaScript
 slug: js
 lead: "Bring Bootstrap's components to life with over a dozen custom jQuery plugins. Easily include them all, or one by one."
-base_url: "../"
 ---
 
 
@@ -110,7 +109,7 @@ $('#myModal').on('show.bs.modal', function (e) {
     </div>
     <div class="bs-callout bs-callout-warning">
       <h4>Mobile device caveats</h4>
-      <p>There are some caveats regarding using modals on mobile devices. <a href="{{ page.base_url }}getting-started#fixed-position-keyboards">See our browser support docs</a> for details.</p>
+      <p>There are some caveats regarding using modals on mobile devices. <a href="{{ site.baseurl }}getting-started#fixed-position-keyboards">See our browser support docs</a> for details.</p>
     </div>
 
     <h3>Static example</h3>
@@ -570,19 +569,19 @@ $('.dropdown-toggle').dropdown()
         <tbody>
           <tr>
             <td>show.bs.dropdown</td>
-            <td>This event fires immediately when the show instance method is called.</td>
+            <td>This event fires immediately when the show instance method is called. The toggling anchor element is available as the <code>relatedTarget</code> property of the event.</td>
           </tr>
           <tr>
             <td>shown.bs.dropdown</td>
-            <td>This event is fired when the dropdown has been made visible to the user (will wait for CSS transitions, to complete).</td>
+            <td>This event is fired when the dropdown has been made visible to the user (will wait for CSS transitions, to complete).  The toggling anchor element is available as the <code>relatedTarget</code> property of the event.</td>
           </tr>
           <tr>
             <td>hide.bs.dropdown</td>
-            <td>This event is fired immediately when the hide instance method has been called.</td>
+            <td>This event is fired immediately when the hide instance method has been called. The toggling anchor element is available as the <code>relatedTarget</code> property of the event.</td>
           </tr>
           <tr>
             <td>hidden.bs.dropdown</td>
-            <td>This event is fired when the dropdown has finished being hidden from the user (will wait for CSS transitions, to complete).</td>
+            <td>This event is fired when the dropdown has finished being hidden from the user (will wait for CSS transitions, to complete). The toggling anchor element is available as the <code>relatedTarget</code> property of the event.</td>
           </tr>
         </tbody>
       </table>
@@ -796,7 +795,7 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
 {% endhighlight %}
 
     <h3>Markup</h3>
-    <p>You can activate a tab or pill navigation without writing any JavaScript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element. Adding the <code>nav</code> and <code>nav-tabs</code> classes to the tab <code>ul</code> will apply the Bootstrap <a href="{{ page.base_url }}components#nav-tabs">tab styling</a>, while adding the <code>nav</code> and <code>nav-pills</code> classes will apply <a href="{{ page.base_url }}components#nav-pills">pill styling</a>.</p>
+    <p>You can activate a tab or pill navigation without writing any JavaScript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element. Adding the <code>nav</code> and <code>nav-tabs</code> classes to the tab <code>ul</code> will apply the Bootstrap <a href="{{ site.baseurl }}components#nav-tabs">tab styling</a>, while adding the <code>nav</code> and <code>nav-pills</code> classes will apply <a href="{{ site.baseurl }}components#nav-pills">pill styling</a>.</p>
 {% highlight html %}
 <!-- Nav tabs -->
 <ul class="nav nav-tabs">
