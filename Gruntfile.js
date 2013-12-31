@@ -200,22 +200,15 @@ module.exports = function (grunt) {
         src: ['fonts/*'],
         dest: 'dist/'
       },
-      docsDistCss: {
+      docs: {
         expand: true,
-        cwd: './dist/css',
-        src: ['*.min.css', '*.css.map'],
-        dest: 'docs/dist/css'
-      },
-      docsDistJs: {
-        expand: true,
-        cwd: './dist/js',
-        src: ['*.min.js'],
-        dest: 'docs/dist/js'
-      },
-      docsDistFonts: {
-        expand: true,
-        src: ['fonts/*'],
-        dest: 'docs/dist/'
+        cwd: './dist',
+        src: [
+          '{css,js}/*.min.*',
+          '{css}*.map',
+          'fonts/*'
+        ],
+        dest: 'docs/dist'
       }
     },
 
@@ -326,7 +319,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-css', ['less', 'csscomb', 'usebanner']);
 
   // Fonts distribution task.
-  grunt.registerTask('dist-docs', ['copy:docsDistCss'], ['copy:docsDistJs'], ['copy:docsDistFonts']);
+  grunt.registerTask('dist-docs', ['copy:docs']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean', 'dist-css', 'copy:fonts', 'dist-js']);
