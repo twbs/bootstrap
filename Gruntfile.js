@@ -267,7 +267,7 @@ module.exports = function (grunt) {
     'saucelabs-qunit': {
       all: {
         options: {
-          build: process.env.TRAVIS_JOB_ID,
+          testname: 'Travis Build ' + process.env.TRAVIS_BUILD_NUMBER,
           concurrency: 3,
           urls: ['http://127.0.0.1:3000/js/tests/index.html'],
           browsers: grunt.file.readYAML('test-infra/sauce_browsers.yml')
