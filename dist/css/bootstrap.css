@@ -3759,6 +3759,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
   border: 1px solid transparent;
   border-radius: 4px;
 }
+.navbar-toggle:focus {
+  outline: none;
+}
 .navbar-toggle .icon-bar {
   display: block;
   width: 22px;
