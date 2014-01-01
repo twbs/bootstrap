@@ -194,6 +194,23 @@
     e.preventDefault()
   })
 
+  $(document).on("keydown", function (e) {
+    var type = e.which == 37 ? "prev" : null
+    type = e.which == 39 ? "next" : type
+    type = e.which == 38 ? "first" : type
+    type = e.which == 40 ? "last" : type
+    type && $('[data-ride="carousel"]').each(function () {
+      var $carousel = $(this)
+      $carousel.carousel($carousel.data())
+      if (type == "next" || type == "prev")
+        $carousel.data('bs.carousel').slide(type)
+      else if (type == "first")
+        $carousel.data('bs.carousel').to(0)
+      else if (type == "last")
+        $carousel.data("bs.carousel").to($carousel.data("bs.carousel").$items.length-1)
+    }) && e.preventDefault()
+  })
+
   $(window).on('load', function () {
     $('[data-ride="carousel"]').each(function () {
       var $carousel = $(this)
