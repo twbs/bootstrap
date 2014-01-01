@@ -27,13 +27,14 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="dist/js/bootstrap.min.js"></script>
-<script src="assets/js/holder.js"></script>
-<script src="assets/js/application.js"></script>
+<script src="{{ site.baseurl }}dist/js/bootstrap.min.js"></script>
+
+<script src="{{ site.baseurl }}assets/js/holder.js"></script>
+<script src="{{ site.baseurl }}assets/js/application.js"></script>
 
 {% if page.slug == "customize" %}
-<script src="assets/js/raw-files.js"></script>
-<script src="assets/js/customize.js"></script>
+<script src="{{ site.baseurl }}assets/js/raw-files.js"></script>
+<script src="{{ site.baseurl }}assets/js/customize.js"></script>
 {% endif %}
 
 {% comment %}

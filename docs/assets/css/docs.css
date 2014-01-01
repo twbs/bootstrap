@@ -133,8 +133,13 @@ body {
 .bs-docs-nav .navbar-toggle .icon-bar {
   background-color: #563d7c;
 }
-.bs-docs-nav .navbar-toggle:hover {
+.bs-docs-nav .navbar-header .navbar-toggle {
+  border-color: #fff;
+}
+.bs-docs-nav .navbar-header .navbar-toggle:hover,
+.bs-docs-nav .navbar-header .navbar-toggle:focus {
   background-color: #f9f9f9;
+  border-color: #f9f9f9;
 }
 
 

@@ -193,6 +193,12 @@
   border: 1px solid transparent;
   border-radius: @border-radius-base;
 
+  // We remove the `outline` here, but later compensate by attaching `:hover`
+  // styles to `:focus`.
+  &:focus {
+    outline: none;
+  }
+
   // Bars
   .icon-bar {
     display: block;
