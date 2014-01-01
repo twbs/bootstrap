@@ -110,10 +110,11 @@ body {
   color: #fff;
   background-color: #463265;
 }
-.bs-docs-nav .navbar-toggle {
+.bs-docs-nav .navbar-header .navbar-toggle {
   border-color: #563d7c;
 }
-.bs-docs-nav .navbar-toggle:hover {
+.bs-docs-nav .navbar-header .navbar-toggle:hover,
+.bs-docs-nav .navbar-header .navbar-toggle:focus {
   background-color: #463265;
   border-color: #463265;
 }

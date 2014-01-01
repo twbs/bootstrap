@@ -3,7 +3,6 @@ layout: default
 title: Getting started
 slug: getting-started
 lead: "An overview of Bootstrap, how to download and use, basic templates and examples, and more."
-base_url: "../"
 ---
 
 
@@ -17,12 +16,12 @@ base_url: "../"
 
     <h3 id="download-compiled">Compiled CSS, JS, and fonts</h3>
     <p>The fastest way to get Bootstrap is to download the precompiled and minified versions of our CSS, JavaScript, and fonts. No documentation or original source code files are included.</p>
-    <p><a class="btn btn-lg btn-primary" href="{{ site.download_dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);" role="button">Download Bootstrap</a></p>
+    <p><a class="btn btn-lg btn-primary" href="{{ site.download.dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);" role="button">Download Bootstrap</a></p>
 
     <h3 id="download-additional">Additional downloads</h3>
     <div class="bs-docs-dl-options">
       <h4>
-        <a href="{{ site.download_source }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download source code</a>
+        <a href="{{ site.download.source }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download source code</a>
       </h4>
       <p>Get the latest Bootstrap LESS and JavaScript source code by downloading it directly from GitHub.</p>
       <h4>
@@ -40,13 +39,13 @@ base_url: "../"
     <p>The folks over at <a href="http://www.maxcdn.com/">MaxCDN</a> graciously provide CDN support for Bootstrap's CSS and JavaScript. Just use these <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links.</p>
 {% highlight html %}
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="{{ site.cdn_css }}">
+<link rel="stylesheet" href="{{ site.cdn.css }}">
 
 <!-- Optional theme -->
-<link rel="stylesheet" href="{{ site.cdn_theme_css }}">
+<link rel="stylesheet" href="{{ site.cdn.css_theme }}">
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="{{ site.cdn_js }}"></script>
+<script src="{{ site.cdn.js }}"></script>
 {% endhighlight %}
 
     <div class="bs-callout bs-callout-warning" id="callout-less-compilation">
@@ -103,12 +102,12 @@ bootstrap/
 │   ├── css/
 │   ├── js/
 │   └── fonts/
-├── docs-assets/
+├── docs/assets/
 ├── examples/
 └── *.html
 {% endhighlight %}
   </div>
-  <p>The <code>less/</code>, <code>js/</code>, and <code>fonts/</code> are the source code for our CSS, JS, and icon fonts (respectively). The <code>dist/</code> folder includes everything listed in the precompiled download section above. <code>docs-assets/</code>, <code>examples/</code>, and all <code>*.html</code> files are for our documentation. Beyond that, any other included file provides support for packages, license information, and development.</p>
+  <p>The <code>less/</code>, <code>js/</code>, and <code>fonts/</code> are the source code for our CSS, JS, and icon fonts (respectively). The <code>dist/</code> folder includes everything listed in the precompiled download section above. <code>docs/assets/</code>, <code>examples/</code>, and all <code>*.html</code> files are for our documentation. Beyond that, any other included file provides support for packages, license information, and development.</p>
 
 
   <!-- Template
