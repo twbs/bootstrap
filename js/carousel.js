@@ -206,8 +206,10 @@
         $carousel.data('bs.carousel').slide(type)
       else if (type == 'first')
         $carousel.data('bs.carousel').to(0)
-      else if (type == 'last')
-        $carousel.data('bs.carousel').to($carousel.data('bs.carousel').$items.length-1)
+      else if (type == 'last') {
+        var nItems = $carousel.data('bs.carousel').$items.length
+        $carousel.data('bs.carousel').to(nItems - 1)
+      }
     }) && e.preventDefault()
   })
 
