@@ -204,7 +204,8 @@
     // only accept arrow left, right, top and down.
     // default event behavior is prevented for these four keys.
     // other keyboard input is not affected
-    type && $('[data-ride="carousel"]').each(function () {
+    var $focused = $(document.activeElement)
+    type && $focused.data('ride') == 'carousel' && $focused.each(function () {
       var $carousel = $(this)
       if (type == 'next' || type == 'prev')
         $carousel.carousel(type)
