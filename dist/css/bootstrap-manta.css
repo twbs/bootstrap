@@ -7495,6 +7495,53 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   background-size: cover;
 }
 
+.photocard {
+  position: relative;
+  overflow: hidden;
+}
+
+.photocard .photo-title-peek {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 2px 5px;
+  margin-bottom: 0;
+  overflow: hidden;
+  color: #ffffff;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: rgba(0, 0, 0, 0.8);
+  -webkit-transition: all 0.2s;
+          transition: all 0.2s;
+  -webkit-transition-delay: 0.15s;
+          transition-delay: 0.15s;
+}
+
+.photocard .photo-details {
+  position: absolute;
+  bottom: -100%;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.8);
+  -webkit-transition: all 0.2s;
+          transition: all 0.2s;
+  -webkit-transition-delay: 0.25s;
+          transition-delay: 0.25s;
+}
+
+.photocard.hover .photo-details,
+.photocard.photocard-hover:hover .photo-details {
+  bottom: 0;
+}
+
+.photocard.hover .photo-title-peek,
+.photocard.photocard-hover:hover .photo-title-peek {
+  bottom: -100%;
+}
+
 .flipcard {
   position: relative;
   z-index: 1;

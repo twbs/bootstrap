@@ -365,6 +365,15 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   -moz-perspective: @distance;
   perspective: @distance;
 }
+.transform-origin(@x,@y,@z) {
+  -webkit-transform-origin: @x @y @z;
+  -ms-transform-origin: @x @y @z;
+  -moz-transform-origin: @x @y @z;
+  transform-origin: @x @y @z;
+} 
+.transform-origin(@x,@y) {
+  .transform-origin(@x,@y,0);
+}
 .preserve3d() {
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
@@ -383,9 +392,55 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   background-repeat: no-repeat;
 }
 
-// ---- Flip Cards ---- //
+// ---- Flip Cards and Photo Cards ---- //
+
+.photocard {
+  @transition: all .20s;
+  @hover-delay: .15s;
+  @card-bg-color: rgba(0,0,0,0.80);
+  @card-text-color: @neutralWhite;
+
+  position: relative;
+  overflow: hidden;
+
+  .photo-title-peek {
+    .text-overflow();
+    .text-center();
+    .transition(@transition);
+    .transition-delay(@hover-delay);
+    padding: 2px @padding-base-vertical;
+    bottom: 0;
+    margin-bottom: 0;
+    color: @card-text-color;
+    background-color: @card-bg-color;
+    width: 100%;
+    position: absolute;
+  }
+
+  .photo-details {
+    background-color: @card-bg-color;
+    .size(100%, 100%);
+    bottom: -100%;
+    color: @card-text-color;
+    position: absolute;
+    padding: @padding-base-horizontal;
+    .transition(@transition);
+    .transition-delay(@hover-delay+0.1s); //wait for title to slide down
+  }
+
+  &.hover, &.photocard-hover:hover {
+    .photo-details {
+      bottom: 0;
+    }
+    .photo-title-peek {
+      bottom: -100%;
+    }
+  }
+}
+
 
 //zoom
+
 .flipcard {
   @transition: all .25s ease-in-out;
   .transition(@transition);
@@ -439,6 +494,5 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   }
 }
 //.flipcard .front
-
 
 
