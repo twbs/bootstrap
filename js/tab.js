@@ -47,7 +47,7 @@
       })
     })
     
-    if($this.is('[follow-url]'))
+    if ($this.is('[follow-url]'))
       history.pushState(null, document.title, selector)
   }
 
