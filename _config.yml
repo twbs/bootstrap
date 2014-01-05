@@ -16,6 +16,7 @@ url:              http://localhost:9001
 # Custom vars
 current_version:  3.0.3
 repo:             https://github.com/twbs/bootstrap
+sass_repo:        https://github.com/twbs/bootstrap-sass
 
 download:
   source:         https://github.com/twbs/bootstrap/archive/v3.0.3.zip
@@ -23,7 +24,6 @@ download:
 
 blog:             http://blog.getbootstrap.com
 expo:             http://expo.getbootstrap.com
-sass_repo:        https://github.com/twbs/bootstrap-sass
 
 cdn:
   css:            //netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css
