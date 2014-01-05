@@ -46,6 +46,9 @@
         relatedTarget: previous
       })
     })
+    
+    if($this.is('[follow-url]'))
+      history.pushState(null, document.title, selector)
   }
 
   Tab.prototype.activate = function (element, container, callback) {
