@@ -749,7 +749,7 @@ lead: "Over a dozen reusable components built to provide iconography, dropdowns,
     <div class="page-header">
       <h1 id="input-groups">Input groups</h1>
     </div>
-    <p class="lead">Extend form controls by adding text or buttons before, after, or on both sides of any text-based input. Use <code>.input-group</code> with an <code>.input-group-addon</code> to prepend or append elements to a <code>.form-control</code>.</p>
+    <p class="lead">Extend form controls by adding text or buttons before, after, or on both sides of any text-based input. Use <code>.input-group</code> with an <code>.input-group-addon</code> to prepend or append elements to a single <code>.form-control</code>.</p>
 
     <div class="bs-callout bs-callout-danger">
       <h4>Cross-browser compatibility</h4>
@@ -766,7 +766,9 @@ lead: "Over a dozen reusable components built to provide iconography, dropdowns,
 
 
     <h2 id="input-groups-basic">Basic example</h2>
-    <p>Place one add-on or button on either side of an input. You may also place one on both sides of an input. <strong class="text-danger">We do not support multiple add-ons on a single side.</strong></p>
+    <p>Place one add-on or button on either side of an input. You may also place one on both sides of an input.</p>
+    <p><strong class="text-danger">We do not support multiple add-ons on a single side.</strong></p>
+    <p><strong class="text-danger">We do not support multiple form-controls in a single input group.</strong></p>
     <form class="bs-example bs-example-form" role="form">
       <div class="input-group">
         <span class="input-group-addon">@</span>
