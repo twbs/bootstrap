@@ -207,6 +207,7 @@
     var $focused = $(document.activeElement)
     type && $focused.data('ride') == 'carousel' && $focused.each(function () {
       var $carousel = $(this)
+      $carousel.carousel('pause')
       if (type == 'next' || type == 'prev')
         $carousel.carousel(type)
       else if (type == 'first')
@@ -215,6 +216,7 @@
         var nItems = $carousel.data('bs.carousel').$items.length
         $carousel.carousel(nItems - 1)
       }
+      $carousel.carousel('cycle')
     }) && e.preventDefault()
   })
 
