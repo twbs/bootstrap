@@ -25,7 +25,8 @@
 // any kind of custom content between the two.
 
 .panel {
-  > .list-group {
+  > .list-group,
+  > .panel-collapse > .list-group {
     margin-bottom: 0;
 
     .list-group-item {
@@ -42,12 +43,6 @@
     }
   }
 }
-// Collapse space between when there's no additional content.
-.panel-heading + .list-group {
-  .list-group-item:first-child {
-    border-top-width: 0;
-  }
-}
 
 
 // Tables in panels
@@ -57,7 +52,9 @@
 
 .panel {
   > .table,
-  > .table-responsive {
+  > .table-responsive,
+  > .panel-collapse > .table,
+  > .panel-collapse > .table-responsive {
     margin-bottom: 0;
   }
   > .panel-body + .table,
