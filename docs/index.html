@@ -56,26 +56,13 @@ title: Bootstrap
     <hr class="half-rule">
 
     <div class="row bs-featured-sites">
+    {% for showcase in site.data.showcase %}
       <div class="col-sm-3">
-        <a href="http://expo.getbootstrap.com/" class="bs-featurette-img">
-          <img src="http://expo.getbootstrap.com/screenshots/coinbase.jpg" alt="" class="img-responsive">
+        <a href="{{ showcase.expo_url }}" target="_blank" title="{{ showcase.name }}">
+          <img src="{{ showcase.img }}" alt="{{ showcase.name }}" class="img-responsive">
         </a>
       </div>
-      <div class="col-sm-3">
-        <a href="http://expo.getbootstrap.com/" class="bs-featurette-img">
-          <img src="http://expo.getbootstrap.com/screenshots/localcrime.jpg" alt="" class="img-responsive">
-        </a>
-      </div>
-      <div class="col-sm-3">
-        <a href="http://expo.getbootstrap.com/" class="bs-featurette-img">
-          <img src="http://expo.getbootstrap.com/screenshots/fortrabbit.jpg" alt="" class="img-responsive">
-        </a>
-      </div>
-      <div class="col-sm-3">
-        <a href="http://expo.getbootstrap.com/" class="bs-featurette-img">
-          <img src="http://expo.getbootstrap.com/screenshots/sentry.jpg" alt="" class="img-responsive">
-        </a>
-      </div>
+    {% endfor %}
     </div>
 
     <hr class="half-rule">
