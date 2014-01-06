@@ -60,6 +60,9 @@ module.exports = function (grunt) {
       },
       test: {
         src: ['js/tests/unit/*.js']
+      },
+      assets: {
+        src: ['docs/assets/js/application.js', 'docs/assets/js/customizer.js']
       }
     },
 
