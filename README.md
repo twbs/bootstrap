@@ -18,7 +18,7 @@ Three quick start options are available:
 
 * [Download the latest release](https://github.com/jasny/bootstrap/releases/tag/v3.0.0-p7).
 * Clone the repo: `git clone git://github.com/jasny/bootstrap.git`.
-* Install with [Bower](http://bower.io): `bower install jasny/bootstrap`.
+* Install with [Bower](http://bower.io): `bower install bootstrap=jasny/bootstrap`. To install Jasny Bootstrap next to Twitter Bootstrap use `bower install jasny-bootstrap=jasny/bootstrap`.
 
 Read the [Getting Started page](http://jasny.github.io/bootstrap/getting-started/) for information on the framework contents, templates and examples, and more.
 
