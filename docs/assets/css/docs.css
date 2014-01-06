@@ -1,3 +1,4 @@
+/*csslint ids: false, overqualified-elements: false*/
 /*!
  * Copyright 2013 Twitter, Inc.
  *
@@ -1095,6 +1096,7 @@ h1[id] {
   word-wrap: break-word; /* Help out IE10+ with class names */
 }
 .bs-glyphicons li:hover {
+  background-color: rgb(86,61,124);
   background-color: rgba(86,61,124,.1);
 }
 
@@ -1217,6 +1219,7 @@ h1[id] {
 
 /* Pseudo :focus state for showing how it looks in the docs */
 #focusedInput {
+  border-color: rgb(204,204,204); /* Restate unfocused value to make CSSLint happy that there's a pre-CSS3 fallback*/
   border-color: rgba(82,168,236,.8);
   outline: 0;
   outline: thin dotted \9; /* IE6-9 */
