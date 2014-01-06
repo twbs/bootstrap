@@ -21,12 +21,8 @@
 
 // events
 .item-event{
-  border:1px solid #ccc;
-  border-width:1px 0;
   @media (min-width: @screen-md-min){
-    border-width:1px;
     margin-bottom:20px;
-    border-radius:3px;
   }
 }
 .item-event ul{
@@ -40,11 +36,11 @@
 }
 .item-event-inner > li{
   overflow: auto;
-  padding:20px;
+  padding:10px;
   border-bottom:1px solid #eee;
   @media (min-width: @grid-float-breakpoint){
     border-bottom:0;
-    padding:10px;
+    padding:10px 0;
     float:left;
     clear:left;
   }
@@ -66,7 +62,6 @@
 
 .item-event-inner > li.item-event-date-container{
   @media (min-width: @screen-md-min){
-    padding-top:20px;
   }
 }
 .item-event-date{
@@ -107,6 +102,9 @@
 .item-event-location{
   font-weight:700;
   max-width: 225px;
+  &:first-letter{
+    text-transform: uppercase;
+  }
   @media (min-width: @grid-float-breakpoint){
     font-size:18px;
     max-width:270px;
@@ -118,9 +116,10 @@
   padding:0;
   @media (min-width: @grid-float-breakpoint){
     float:right;
-    border-left:1px solid #ccc;
+    border:1px solid #ccc;
     padding:10px;
     width:auto;
+    margin-right:10px;
   }
 }
 .item-event-map{
@@ -158,7 +157,7 @@
     margin: 0 10px 10px 35px;
     border:1px solid #ccc;
     padding:10px;
-    margin-left:48px;
+    margin-left:58px;
     span{
       line-height:14px;
     }
@@ -176,7 +175,7 @@
   .progress{
     width:180px;
   }
-  padding-bottom:10px;
+  padding-top:7px;
 }
 
 
@@ -217,8 +216,8 @@
   }
   @media (min-width: @grid-float-breakpoint){
     text-align: left;
-    padding:20px 10px 20px 58px;
-
+    padding:20px 10px;
+    margin-top:20px;
     h3{
       display:block;
       margin: 0;
