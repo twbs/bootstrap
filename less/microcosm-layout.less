@@ -147,6 +147,9 @@ a.muted{
   @media (min-width: @screen-md-min) {
     display:block;
     float:left;
+    .sprite{
+      margin-left:-5px;
+    }
     &+.list-collection-row-offset{
       float:left;
       max-width:89%;
@@ -192,7 +195,7 @@ a.muted{
     border-radius:3px;
   }
   @media (min-width: @screen-md-min){
-    margin-top:5px;
+    margin-top:10px;
   }
 }
 
@@ -233,7 +236,7 @@ a.muted{
   color:#999;
   font-size:@font-size-small;
   @media (min-width: @grid-float-breakpoint){
-    margin-top:5px;
+    margin-top:10px;
     display:block;
   }
 }
@@ -431,8 +434,7 @@ input[type=checkbox].row-admin-checkbox{
 .pills-event {
   display: inline-block;
   overflow: auto;
-  margin-top: 5px;
-
+  vertical-align: middle;
   border: 1px solid #89ADDB;
   border-radius: 5px;
   color: #3175AA;
@@ -478,13 +480,12 @@ input[type=checkbox].row-admin-checkbox{
 .metabar{
   position: absolute;
   top: 0;
-  left: 100%;
+  right:-350px;
   background-color: #eee;
   min-height: 480px;
-  min-width:  230px;
   font-size:@font-size-small;
   height:100%;
-  width:100%;
+  width:350px;
 
   -webkit-transition: all 500ms cubic-bezier(0.860, 0.000, 0.070, 1.000);
   -moz-transition: all 500ms cubic-bezier(0.860, 0.000, 0.070, 1.000);
@@ -496,14 +497,11 @@ input[type=checkbox].row-admin-checkbox{
   -o-transition-timing-function: cubic-bezier(0.860, 0.000, 0.070, 1.000);
   transition-timing-function: cubic-bezier(0.860, 0.000, 0.070, 1.000);
 
-  @media (min-width: @screen-sm-min) {
-    left: 101%;
-  }
   @media (min-width: @screen-md-min) {
     width:25%;
     position:inherit;
     height:auto;
-    left:auto;
+    right:auto;
     background-color: transparent;
     -webkit-transition: none;
     -moz-transition: none;
@@ -591,6 +589,9 @@ input[type=checkbox].row-admin-checkbox{
       border-bottom-left-radius: 3px;
       border-bottom-right-radius: 3px;
       border-bottom-width:1px;
+    }
+    .sprite{
+      margin: 0 5px 0 10px;
     }
   }
 }

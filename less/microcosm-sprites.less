@@ -1,0 +1,133 @@
+
+@sprite-image-width: 150px;
+@sprite-image-height:100px;
+
+@sprite-base-width:   28px;
+@sprite-base-height:  28px;
+@sprite-small-width:  16px;
+@sprite-small-height: 16px;
+
+@sprite-ratio:           1;
+@sprite-ratio-sm:        1;
+
+
+@sprite-scaled-width:  @sprite-base-width*@sprite-ratio;
+@sprite-scaled-height: @sprite-base-height*@sprite-ratio;
+
+
+@sprite-row-2:    @sprite-base-height * -1;
+@sprite-row-3:    @sprite-base-height * -2;
+@sprite-row-4:    @sprite-row-3 + (@sprite-small-height*-1);
+
+
+
+.sprite{
+  background:       url('/static/img/icons.png') no-repeat 0 0 transparent;
+  background-size:  @sprite-image-width*@sprite-ratio @sprite-image-height*@sprite-ratio;
+  width:            @sprite-scaled-width;
+  height:           @sprite-scaled-height;
+  display:          inline-block;
+  vertical-align:   middle;
+}
+.sprite-size-small{
+  width:            @sprite-small-width;
+  height:           @sprite-small-height;
+}
+.sprite-speech-bubble{
+  background-position: 0 0;
+}
+.sprite-speech-bubble-small{
+  .sprite-size-small;
+  background-position: 0 @sprite-row-4;
+}
+
+.sprite-calendar{
+  background-position: (@sprite-scaled-width * -1) 0;
+}
+
+.sprite-calendar-small{
+  .sprite-size-small;
+  background-position: (@sprite-small-width * -1) @sprite-row-4;
+}
+
+.sprite-map-marker{
+  background-position: (@sprite-scaled-width * -2) 0;
+}
+.sprite-pushpin{
+  background-position: (@sprite-scaled-width * -3) 0;
+}
+.sprite-lock{
+  background-position: (@sprite-scaled-width * -4) 0;
+}
+.sprite-attending{
+  background-position: (@sprite-scaled-width * 0) @sprite-row-2;
+}
+
+.sprite-envelope{
+  background-position: (@sprite-scaled-width * -1) @sprite-row-2;
+}
+.sprite-envelope-small{
+  .sprite-size-small;
+  background-position: (@sprite-small-width * -2) @sprite-row-4;
+}
+
+.sprite-search-small{
+  .sprite-size-small;
+  background-position: (@sprite-small-width * -3) @sprite-row-4;
+}
+
+.sprite-ok-small{
+  .sprite-size-small;
+  background-position: (@sprite-small-width * -4) @sprite-row-4;
+}
+
+////////////////////////
+//  Pagination icons  //
+////////////////////////
+
+.sprite-arrow-reply{
+  .sprite-size-small;
+  background-position: (@sprite-small-width * 0) @sprite-row-3;
+}
+.sprite-arrow-forward{
+  .sprite-size-small;
+  background-position: (@sprite-small-width * -1) @sprite-row-3;
+}
+.sprite-arrow-left{
+  .sprite-size-small;
+  background-position: (@sprite-small-width * -2) @sprite-row-3;
+}
+.sprite-arrow-right{
+  .sprite-size-small;
+  background-position: (@sprite-small-width * -3) @sprite-row-3;
+}
+.sprite-arrow-jump-left{
+  .sprite-size-small;
+  background-position: (@sprite-small-width * -4) @sprite-row-3;
+}
+.sprite-arrow-jump-right{
+  .sprite-size-small;
+  background-position: (@sprite-small-width * -5) @sprite-row-3;
+}
+
+
+/////////////////////
+//  editing icons  //
+/////////////////////
+
+.sprite-format-link{
+  .sprite-size-small;
+  background-position:(@sprite-small-width * -6) @sprite-row-3;
+}
+.sprite-format-list{
+  .sprite-size-small;
+  background-position:(@sprite-small-width * -7) @sprite-row-3;
+}
+.sprite-format-img{
+  .sprite-size-small;
+  background-position:(@sprite-small-width * -8) @sprite-row-3;
+}
+.sprite-help-small{
+  .sprite-size-small;
+  background-position:(@sprite-small-width * -6) @sprite-row-4;
+}
