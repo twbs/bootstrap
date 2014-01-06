@@ -111,7 +111,7 @@ bootstrap/
     <div class="page-header">
       <h1 id="template">Basic template</h1>
     </div>
-    <p class="lead">Start with this basic HTML template, or modify <a href="../getting-started#examples">these examples</a>. We hope you'll customize our templates and examples, adapting them to suit your needs.</p>
+    <p class="lead">Start with this basic HTML template, or modify <a href="#examples">these examples</a>. We hope you'll customize our templates and examples, adapting them to suit your needs.</p>
 
     <p>Copy the HTML below to begin working with a minimal Bootstrap document.</p>
 {% highlight html %}
@@ -294,7 +294,7 @@ bootstrap/
           <img src="../examples/screenshots/non-responsive.jpg" alt="">
         </a>
         <h4>Non-responsive Bootstrap</h4>
-        <p>Easily disable the responsiveness of Bootstrap <a href="../getting-started/#disable-responsive">per our docs</a>.</p>
+        <p>Easily disable the responsiveness of Bootstrap <a href="#disable-responsive">per our docs</a>.</p>
       </div>
       <div class="col-xs-6 col-md-4">
         <a class="thumbnail" href="../examples/offcanvas/">
@@ -857,7 +857,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
       "@-ms-viewport{width:auto!important}"
     )
   )
-  document.getElementsByTagName("head")[0].appendChild(msViewportStyle)
+  document.querySelector("head").appendChild(msViewportStyle)
 }
 {% endhighlight %}
     <p>For more information and usage guidelines, read <a href="http://timkadlec.com/2013/01/windows-phone-8-and-device-width/">Windows Phone 8 and Device-Width</a>.</p>
@@ -1007,12 +1007,12 @@ if (isAndroid) {
       <li>Freely download and use Bootstrap, in whole or in part, for personal, private, company internal, or commercial purposes</li>
       <li>Use Bootstrap in packages or distributions that you create</li>
       <li>Modify the source code</li>
-      <li>Grant a sublicense to modify and distribute Bootstrap to third parties not included in the lincense</li>
+      <li>Grant a sublicense to modify and distribute Bootstrap to third parties not included in the license</li>
     </ul>
 
     <h4>It forbids you to:</h4>
     <ul>
-      <li>Hold the authors and license owners liable for damanges as Bootstrap is provided without warranty</li>
+      <li>Hold the authors and license owners liable for damages as Bootstrap is provided without warranty</li>
       <li>Hold the creators or copyright holders of Bootstrap liable</li>
       <li>Redistribute any piece of Bootstrap without proper attribution</li>
       <li>Use any marks owned by Twitter in any way that might state or imply that Twitter endorses your distribution</li>
