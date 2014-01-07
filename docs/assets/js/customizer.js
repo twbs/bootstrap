@@ -1,5 +1,5 @@
 /*!
- * Copyright 2013 Twitter, Inc.
+ * Copyright 2011-2014 Twitter, Inc.
  *
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
  * details, see http://creativecommons.org/licenses/by/3.0/.
@@ -10,7 +10,7 @@
 window.onload = function () { // wait for load in a dumb way because B-0
   var cw = '/*!\n' +
            ' * Bootstrap v3.0.3 (http://getbootstrap.com)\n' +
-           ' * Copyright 2013 Twitter, Inc.\n' +
+           ' * Copyright 2011-2014 Twitter, Inc.\n' +
            ' * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n' +
            ' */\n\n';
 

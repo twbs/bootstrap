@@ -20,7 +20,7 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*!\n' +
               ' * Bootstrap v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
-              ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
+              ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
               ' * Licensed under <%= _.pluck(pkg.licenses, "type") %> (<%= _.pluck(pkg.licenses, "url") %>)\n' +
               ' */\n',
     jqueryCheck: 'if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery") }\n\n',
@@ -114,7 +114,7 @@ module.exports = function (grunt) {
         options: {
           banner: '/*!\n' +
           ' * Bootstrap Docs (<%= pkg.homepage %>)\n' +
-          ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
+          ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
           ' * Licensed under the Creative Commons Attribution 3.0 Unported License. For\n' +
           ' * details, see http://creativecommons.org/licenses/by/3.0/.\n' +
           ' */\n',
