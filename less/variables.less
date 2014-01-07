@@ -58,8 +58,8 @@
 @font-size-base:          19px;
 @font-size-large:         ceil((@font-size-base * 1.26315789474)); // ~24px
 @font-size-medium:        ceil((@font-size-base * 1)); // ~19px
-@font-size-small:         ceil((@font-size-base * 0.73684210526)); // ~14px
-@font-size-comments:      @font-size-medium;
+@font-size-small:         ceil((@font-size-base * 0.79797979797)); // ~16px
+@font-size-xsmall:        ceil((@font-size-base * 0.69)); // ~14px
 
 @font-size-h1:            floor((@font-size-base * 2)); // ~38px
 @font-size-h2:            floor((@font-size-base * 1.57894737)); // ~30px
@@ -73,7 +73,7 @@
 
 @headings-font-family:    @font-family-display;
 @headings-font-weight:    700;
-@headings-line-height:    1;
+@headings-line-height:    @line-height-computed;
 @headings-color:          inherit;
 
 

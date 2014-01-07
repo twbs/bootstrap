@@ -1,32 +1,37 @@
 .pagination{
   display:none;
-  ul{
-    padding:0;
-    margin:0;
-    list-style:none;
-    float:left;
-    border-top:0;
-  }
+  padding:0;
+  margin:0;
+  list-style:none;
+  float:left;
+  border-top:0;
   li{
     float:left;
     width:auto;
+    border:1px solid #ccc;
     border-width:1px 0 1px 1px;
     &:first-child{
-    border-top-left-radius:3px;
-    border-bottom-left-radius:3px;
+      border-top-left-radius:3px;
+      border-bottom-left-radius:3px;
     }
     &:last-child{
-      border-right:1px solid #eee;
+      border-right-width:1px;
       border-top-right-radius:3px;
       border-bottom-right-radius:3px;
+    }
+    &.active{
+      background-color:#eee;
+    }
+    &:hover{
+      background-color:#fbfbfb;
     }
   }
 
   a{
     display:block;
-    padding:5px 9px;
+    padding:2px 8px;
     font-weight:700;
-    font-size:@font-size-small;
+    font-size:@font-size-xsmall;
     &:hover{
       text-decoration: none;
     }
@@ -41,10 +46,14 @@
 .pagination-alt {
   display:none;
 
+
+  form{
+    display:inline;
+  }
   @media (min-width: @grid-float-breakpoint) {
     display:inline;
-  margin-right:10px;
-  color:#999;
+    margin-right:10px;
+    color:#999;
     input.form-control[type=text]{
       display: inline;
       width: 36px;

@@ -12,6 +12,10 @@
   background-color: @breadcrumb-bg;
   border-radius: @border-radius-base;
   float:left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
   > li {
     display: inline-block;
     &+li:before {

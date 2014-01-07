@@ -161,7 +161,6 @@ a.muted{
 
 .row-title{
   font-size:@font-size-base;
-  line-height:20px;
   margin:0;
   padding:0;
   color:#333;
@@ -187,16 +186,12 @@ a.muted{
 }
 .row-meta{
   font-size:@font-size-small;
-  margin-top:5px;
   color:#999;
   width: 100%;
   img{
     width:@avatar-size-small;
     height:@avatar-size-small;
     border-radius:3px;
-  }
-  @media (min-width: @screen-md-min){
-    margin-top:10px;
   }
 }
 
@@ -225,6 +220,9 @@ a.muted{
 
   @media (min-width: @grid-float-breakpoint){
     margin-top:0;
+    .list-stats li{
+      line-height:@line-height-computed;
+    }
   }
 }
 .row-context{
@@ -235,7 +233,6 @@ a.muted{
   color:#999;
   font-size:@font-size-small;
   @media (min-width: @grid-float-breakpoint){
-    margin-top:10px;
     display:block;
   }
 }
@@ -437,6 +434,7 @@ input[type=checkbox].row-admin-checkbox{
   border: 1px solid #89ADDB;
   border-radius: 5px;
   color: #3175AA;
+  font-size:@font-size-xsmall;
   span {
     padding: 0 5px;
     border-radius: 5px;
@@ -514,8 +512,8 @@ input[type=checkbox].row-admin-checkbox{
   padding:10px 0;
   color:#666;
   h3{
-    font-size:@font-size-base;
-    margin:0 0 15px;
+    font-size:@font-size-small;
+    margin:0;
     &>span{
       display:block;
       font-size:@font-size-small;
@@ -528,7 +526,7 @@ input[type=checkbox].row-admin-checkbox{
     font-size: @font-size-small;
     font-weight:700;
     color:rgba(51, 51, 51,0.4);
-    margin:0 0 15px;
+    margin:0;
   }
   .btn-block{
     padding:10px 0;
@@ -625,19 +623,23 @@ input[type=checkbox].row-admin-checkbox{
 .metabar-footer{
   margin-top:30px;
   color:#999;
-  p.bold{
-    font-weight:700;
-  }
-  p.links{
-    a{
-      display:inline-block;
-      padding:0 5px;
-      &:first-child{
-        padding-left:0;
-      }
-      color:#999;
-      &:hover{
-        color:#666;
+  font-size:@font-size-xsmall;
+  p{
+    margin:0;
+    &.bold{
+      font-weight:700;
+    }
+    &.links{
+      a{
+        display:inline-block;
+        padding:0 5px;
+        &:first-child{
+          padding-left:0;
+        }
+        color:#999;
+        &:hover{
+          color:#666;
+        }
       }
     }
   }
