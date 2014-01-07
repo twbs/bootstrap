@@ -61,13 +61,13 @@
   }
 }
 .comment-item-author-name{
-  font-size:@font-size-base;
+  font-size:@font-size-small;
   color:#333;
 }
 
 .comment-item-permalink{
   float:right;
-  color:#666;
+  color:#ccc;
 }
 .comment-item-header-admin{
   float:right;
@@ -131,5 +131,22 @@
   }
   .reply-box > form > textarea{
     min-height:150px;
+  }
+}
+
+.list-comments-highlighted{
+  border: 1px solid #EEE;
+  @media (min-width:@screen-sm-min){
+    margin-bottom: 9px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    .comment-item-author img{
+      left:20px;
+    }
+  }
+}
+
+.list-comments-dull{
+  .comment-item{
+    background-color:#fbfbfb;
   }
 }
