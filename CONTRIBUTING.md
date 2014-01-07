@@ -92,7 +92,7 @@ implementing features, refactoring code, porting to a different language),
 otherwise you risk spending a lot of time working on something that the
 project's developers might not want to merge into the project.
 
-Please adhere to the [coding conventions](#code-conventions) used throughout a
+Please adhere to the [coding guidelines](#code-guidelines) used throughout a
 project (indentation, accurate comments, etc.) and any other requirements
 (such as test coverage).
 
