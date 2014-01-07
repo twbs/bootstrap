@@ -112,7 +112,7 @@
       this.hideModal()
   }
   
-  Modal.prototype.allowFocus = function(e) {
+  Modal.prototype.allowFocus = function (e) {
       return false
   }
 
