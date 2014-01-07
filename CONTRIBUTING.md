@@ -92,11 +92,11 @@ implementing features, refactoring code, porting to a different language),
 otherwise you risk spending a lot of time working on something that the
 project's developers might not want to merge into the project.
 
-Please adhere to the [coding guidelines](#code-guidelines) used throughout a
+Please adhere to the [coding guidelines](#code-guidelines) used throughout the
 project (indentation, accurate comments, etc.) and any other requirements
 (such as test coverage).
 
-Adhering to the following this process is the best way to get your work
+Adhering to the following process is the best way to get your work
 included in the project:
 
 1. [Fork](http://help.github.com/fork-a-repo/) the project, clone your fork,
