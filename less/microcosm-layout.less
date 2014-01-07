@@ -30,7 +30,10 @@
   position:relative;
   h1{
     font-size:@font-size-medium;
-    margin: 20px 0;
+    margin:0;
+  }
+  p{
+    font-size:@font-size-xsmall;
   }
 }
 .content-meta{
@@ -44,6 +47,7 @@
   }
 }
 .content-body{
+  margin-top:15px;
   h1{
     font-size:@font-size-large;
     margin: 0 0 10px;
@@ -542,10 +546,9 @@ input[type=checkbox].row-admin-checkbox{
     margin-bottom:0;
   }
   .list-group-item{
-    padding:10px 0;
     background-color:transparent;
     border:0;
-    padding:5px 0;
+    padding:0;
     overflow:auto;
     span.label{
       background-color:rgba(0,0,0,0.2);
@@ -607,8 +610,13 @@ input[type=checkbox].row-admin-checkbox{
 }
 
 .metabar-module-body{
+  .list-group{
+    margin-bottom:15px;
+  }
   .checkbox{
     margin:0;
+    padding-top:0;
+    padding-bottom:0;
     input[type=checkbox]:checked + label{
       font-weight:700;
     }
