@@ -1466,3 +1466,36 @@ h1[id] {
   -webkit-box-shadow: 0 0 8px rgba(82,168,236,.6);
           box-shadow: 0 0 8px rgba(82,168,236,.6);
 }
+
+/*
+ * ZeroClipboard styles
+ */
+
+.zero-clipboard {
+  position: relative;
+}
+
+.btn-clipboard {
+  position: absolute;
+  right: 0;
+  z-index: 10;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-color: #e1e1e8;
+  border-bottom: 1px solid transparent;
+  border-left: 1px solid transparent;
+  border-radius: 0 4px 0 0;
+}
+
+
+.btn-clipboard-hover {
+  background-color: #e1e1e8;
+}
+
+@media (max-width: 768px) {
+  .btn-clipboard.with-example {
+    top: 10px;
+    border: 1px solid #e1e1e8;
+    border-radius: 0;
+  }
+}

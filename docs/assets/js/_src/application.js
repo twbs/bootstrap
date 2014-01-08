@@ -15,6 +15,19 @@
 
   $(function () {
 
+    // Insert copy to clipboard button before .highlight or .bs-example
+    $('.highlight').each(function() {
+      var highlight = $(this)
+      var previous = highlight.prev()
+      var btnHtml = '<div class="zero-clipboard"><span class="glyphicon glyphicon-list-alt btn-clipboard"></span></div>'
+
+      if (previous.hasClass('bs-example')) {
+        previous.before(btnHtml.replace(/btn-clipboard/, 'btn-clipboard with-example'))
+      } else {
+        highlight.before(btnHtml)
+      }
+    })
+
     var $window = $(window)
     var $body   = $(document.body)
 
@@ -102,6 +115,40 @@
           btn.button('reset')
         }, 3000)
       })
+
+    // Handlers for ZeroClipboard
+    zeroClipboard.on('load', function(client) {
+      htmlBridge
+        .data('placement', 'left')
+        .attr('title', 'copy to clipboard')
+        .tooltip()
+    })
+
+    // Copy to clipboard
+    zeroClipboard.on('dataRequested', function(client) {
+      var highlight = $(this).parent().nextAll('.highlight').first()
+
+      client.setText(highlight.text())
+    })
+
+    // Notify copy success and reset tooltip title
+    zeroClipboard.on('complete', function(client) {
+      htmlBridge
+        .attr('title', 'copied!')
+        .tooltip('fixTitle')
+        .tooltip('show')
+        .attr('title', 'copy to clipboard')
+        .tooltip('fixTitle')
+    })
+
+    // Notify copy failure
+    zeroClipboard.on('noflash wrongflash', function(client) {
+      htmlBridge
+        .attr('title', 'flash not supported!')
+        .tooltip('fixTitle')
+        .tooltip('show')
+    })
+
   })
 
 }(jQuery)
