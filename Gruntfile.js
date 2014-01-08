@@ -208,7 +208,7 @@ module.exports = function (grunt) {
         cwd: './dist',
         src: [
           '{css,js}/*.min.*',
-          '{css}/*.map',
+          'css/*.map',
           'fonts/*'
         ],
         dest: 'docs/dist'
