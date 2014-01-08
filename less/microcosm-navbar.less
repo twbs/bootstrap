@@ -80,6 +80,7 @@
   }
   .navbar-profile-row-5{
     text-align: center;
+    padding:7px 0;
   }
   .navbar-profile-avatar{
     display: block;
@@ -99,7 +100,16 @@
     display: block;
     border-left: 1px solid #EEE;
   }
-  @media (min-width: @grid-float-breakpoint){
+  @media (min-width: @screen-sm-min){
+    float:right;
+    margin-top:37px;
+    border-left:1px solid #eee;
+  }
+  @media (min-width: @screen-md-min){
+
+    border-left:0;
+    margin-top:0;
+
     clear:none;
     float:right;
     display:block;
@@ -185,4 +195,24 @@
 .navbar-nav a{
   font-family: @font-family-display;
   font-size:@font-size-small;
+}
+
+
+.metabar-toggle{
+  outline: 0;
+  float: right;
+  display: block;
+  height: 45px;
+  width: 45px;
+  border: 0;
+  background-color: #FFF;
+  margin-top: 6px;
+  margin-right: -8px;
+  @media (min-width: @screen-sm-min) {
+    margin-top:10px;
+    margin-right:0;
+  }
+  @media (min-width: @screen-md-min) {
+    display: none;
+  }
 }

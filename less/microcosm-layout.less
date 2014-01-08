@@ -460,10 +460,12 @@ input[type=checkbox].row-admin-checkbox{
   display: inline-block;
   overflow: auto;
   vertical-align: middle;
-  border: 1px solid #89ADDB;
-  border-radius: 5px;
   color: #3175AA;
-  font-size:@font-size-xsmall;
+  font-size: @font-size-xsmall;
+  width: 100%;
+  box-shadow: 0 0 1px;
+  border-radius: 0;
+  margin: 10px 0;
   span {
     padding: 0 5px;
     border-radius: 5px;
@@ -477,10 +479,12 @@ input[type=checkbox].row-admin-checkbox{
       text-overflow: ellipsis;
       white-space: nowrap;
 
-      border-left: 1px solid #89ADDB;
-      background-color: #DDE9FF;
+      border-left: 1px solid #eee;
       border-radius: 0 5px 5px 0;
     }
+  }
+  @media (min-width:@grid-float-breakpoint){
+    width:auto;
   }
   @media (min-width:@screen-sm-min){
     margin-bottom:0;
@@ -488,9 +492,13 @@ input[type=checkbox].row-admin-checkbox{
     display: inline-block;
     margin-left:5px;
     margin-top:0;
+    box-shadow: none;
+    border: 1px solid;
     span{
       &:last-child{
         max-width: 130px;
+        background-color: #DDE9FF;
+        border-left: 1px solid #89ADDB;
       }
     }
   }
