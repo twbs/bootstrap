@@ -16,7 +16,7 @@
     "CNAME",
     "composer.json",
     "CONTRIBUTING.md",
-    "docs-assets",
+    "docs/assets",
     "examples",
     "js/tests"
   ],
