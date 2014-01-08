@@ -24,6 +24,7 @@ Mini-language:
 
 var CUSTOMIZABLE_HEADING = /^[/]{2}={2}(.*)$/;
 var UNCUSTOMIZABLE_HEADING = /^[/]{2}-{2}(.*)$/;
+var SUBSECTION_HEADING = /^[/]{2}={3}(.*)$/;
 var SECTION_DOCSTRING = /^[/]{2}#{2}(.*)$/;
 var VAR_ASSIGNMENT = /^(@[a-zA-Z0-9_-]+):[ ]*([^ ;][^;]+);[ ]*$/;
 var VAR_DOCSTRING = /^[/]{2}[*]{2}(.*)$/;
@@ -33,11 +34,22 @@ function Section(heading, customizable) {
   this.id = this.heading.replace(/\s+/g, '-').toLowerCase();
   this.customizable = customizable;
   this.docstring = null;
-  this.variables = [];
-  this.addVar = function (variable) {
-    this.variables.push(variable);
-  };
+  this.subsections = [];
 }
+
+Section.prototype.addSubSection = function (subsection) {
+  this.subsections.push(subsection);
+}
+
+function SubSection(heading) {
+  this.heading = heading.trim();
+  this.id = this.heading.replace(/\s+/g, '-').toLowerCase();
+  this.variables = [];
+}
+
+SubSection.prototype.addVar = function (variable) {
+  this.variables.push(variable);
+};
 
 function VarDocstring(markdownString) {
   this.html = markdown2html(markdownString);
@@ -78,6 +90,10 @@ Tokenizer.prototype._shift = function () {
   }
   var line = this._lines.shift();
   var match = null;
+  match = SUBSECTION_HEADING.exec(line);
+  if (match !== null) {
+    return new SubSection(match[1]);
+  }
   match = CUSTOMIZABLE_HEADING.exec(line);
   if (match !== null) {
     return new Section(match[1], true);
@@ -146,17 +162,50 @@ Parser.prototype.parseSection = function () {
   else {
     this._tokenizer.unshift(docstring);
   }
-  this.parseVars(section);
+  this.parseSubSections(section);
+
   return section;
 };
 
-Parser.prototype.parseVars = function (section) {
+Parser.prototype.parseSubSections = function (section) {
+  while (true) {
+    var subsection = this.parseSubSection();
+    if (subsection === null) {
+      if (section.subsections.length === 0) {
+        // Presume an implicit initial subsection
+        subsection = new SubSection('');
+        this.parseVars(subsection);
+      }
+      else {
+        break;
+      }
+    }
+    section.addSubSection(subsection);
+  }
+
+  if (section.subsections.length === 1 && !(section.subsections[0].heading) && section.subsections[0].variables.length === 0) {
+    // Ignore lone empty implicit subsection
+    section.subsections = [];
+  }
+};
+
+Parser.prototype.parseSubSection = function () {
+  var subsection = this._tokenizer.shift();
+  if (subsection instanceof SubSection) {
+    this.parseVars(subsection);
+    return subsection;
+  }
+  this._tokenizer.unshift(subsection);
+  return null;
+};
+
+Parser.prototype.parseVars = function (subsection) {
   while (true) {
     var variable = this.parseVar();
     if (variable === null) {
       return;
     }
-    section.addVar(variable);
+    subsection.addVar(variable);
   }
 };
 
