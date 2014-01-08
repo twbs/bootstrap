@@ -118,8 +118,12 @@ a.muted{
   }
   &.padded{
     .list-collection-row{
-      padding:15px 0;
+      padding:15px;
+      @media (min-width: @screen-md-min) {
+        padding:15px 0;
+      }
     }
+
   }
   @media (min-width: @screen-md-min) {
     border-radius:3px;
