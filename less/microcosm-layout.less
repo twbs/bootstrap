@@ -101,24 +101,23 @@ a.muted{
   list-style:none;
 
   &.bordered{
-    border-bottom:1px solid #ccc;
     .list-collection-row{
       border:1px solid #ccc;
       border-width:1px 0 0;
       &:first-child{
-        border-top-color:#ccc;
+        border-top:0;
       }
     }
     @media (min-width: @screen-md-min) {
       .list-collection-row{
-        border-width:1px 1px 0;
+        border-width:1px 0 0;
         border-top-color:#eee;
       }
     }
   }
   &.padded{
     .list-collection-row{
-      padding:10px 15px;
+      padding:15px 0;
     }
   }
   @media (min-width: @screen-md-min) {
@@ -147,14 +146,11 @@ a.muted{
 }
 .list-collection-row-icon{
   display:none;
-  width:40px;
+  width:50px;
   min-height:1px;
   @media (min-width: @screen-md-min) {
     display:block;
     float:left;
-    .sprite{
-      margin-left:-5px;
-    }
     &+.list-collection-row-offset{
       float:left;
       max-width:89%;
