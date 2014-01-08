@@ -127,7 +127,7 @@ module.exports = function (grunt) {
           'docs/assets/js/filesaver.js',
           'docs/assets/js/customizer.js'
         ],
-        dest: 'docs/assets/js/customize.js'
+        dest: 'docs/assets/js/customize.min.js'
       }
     },
 
