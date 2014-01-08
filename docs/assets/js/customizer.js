@@ -173,18 +173,53 @@ window.onload = function () { // wait for load in a dumb way because B-0
     }
   }
 
-  // Returns an Array of @import'd filenames from 'bootstrap.less' in the order
+  // Returns an Array of @import'd filenames in the order
   // in which they appear in the file.
-  function bootstrapLessFilenames() {
+  function includedLessFilenames(lessFilename) {
     var IMPORT_REGEX = /^@import \"(.*?)\";$/
-    var bootstrapLessLines = __less['bootstrap.less'].split('\n')
+    var lessLines = __less[lessFilename].split('\n')
 
-    for (var i = 0, imports = []; i < bootstrapLessLines.length; i++) {
-      var match = IMPORT_REGEX.exec(bootstrapLessLines[i])
+    for (var i = 0, imports = []; i < lessLines.length; i++) {
+      var match = IMPORT_REGEX.exec(lessLines[i])
       if (match) imports.push(match[1])
     }
 
     return imports
+  }
+
+  function generateLESS(lessFilename, lessFileIncludes, vars) {
+    var lessSource = __less[lessFilename]
+
+    $.each(includedLessFilenames(lessFilename), function(index, filename) {
+      var fileInclude = lessFileIncludes[filename]
+
+      // Files not explicitly unchecked are compiled into the final stylesheet.
+      // Core stylesheets like 'normalize.less' are not included in the form
+      // since disabling them would wreck everything, and so their 'fileInclude'
+      // will be 'undefined'.
+      if (fileInclude || (fileInclude == null))    lessSource += __less[filename]
+
+      // Custom variables are added after Bootstrap variables so the custom
+      // ones take precedence.
+      if (('variables.less' === filename) && vars) lessSource += generateCustomCSS(vars)
+    })
+
+    lessSource = lessSource.replace(/@import[^\n]*/gi, '') //strip any imports
+    return lessSource
+  }
+
+  function compileLESS(lessSource, baseFilename, intoResult) {
+    var parser = new less.Parser({
+        paths: ['variables.less', 'mixins.less'],
+        optimization: 0,
+        filename: baseFilename + '.css'
+    }).parse(lessSource, function (err, tree) {
+      if (err) {
+        return showError('<strong>Ruh roh!</strong> Could not parse less files.', err)
+      }
+      intoResult[baseFilename + '.css']     = cw + tree.toCSS()
+      intoResult[baseFilename + '.min.css'] = cw + tree.toCSS({ compress: true })
+    })
   }
 
   function generateCSS() {
@@ -202,43 +237,16 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
     var result = {}
     var vars = {}
-    var css = ''
 
     $('#less-variables-section input')
         .each(function () {
           $(this).val() && (vars[$(this).prev().text()] = $(this).val())
         })
 
-    $.each(bootstrapLessFilenames(), function(index, filename) {
-      var fileInclude = lessFileIncludes[filename]
-
-      // Files not explicitly unchecked are compiled into the final stylesheet.
-      // Core stylesheets like 'normalize.less' are not included in the form
-      // since disabling them would wreck everything, and so their 'fileInclude'
-      // will be 'undefined'.
-      if (fileInclude || (fileInclude == null)) css += __less[filename]
-
-      // Custom variables are added after Bootstrap variables so the custom
-      // ones take precedence.
-      if (('variables.less' === filename) && vars) css += generateCustomCSS(vars)
-    })
-
-    css = css.replace(/@import[^\n]*/gi, '') //strip any imports
+    var bsLessSource = generateLESS('bootstrap.less', lessFileIncludes, vars)
 
     try {
-      var parser = new less.Parser({
-          paths: ['variables.less', 'mixins.less'],
-          optimization: 0,
-          filename: 'bootstrap.css'
-      }).parse(css, function (err, tree) {
-        if (err) {
-          return showError('<strong>Ruh roh!</strong> Could not parse less files.', err)
-        }
-        result = {
-          'bootstrap.css'     : cw + tree.toCSS(),
-          'bootstrap.min.css' : cw + tree.toCSS({ compress: true })
-        }
-      })
+      compileLESS(bsLessSource, 'bootstrap', result)
     } catch (err) {
       return showError('<strong>Ruh roh!</strong> Could not parse less files.', err)
     }
