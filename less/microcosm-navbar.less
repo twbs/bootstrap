@@ -22,7 +22,7 @@
 
   @media (min-width:@screen-sm-min){
     height:120px;
-    padding:20px 0;
+    padding:20px 0 0;
     &.horizontal-tiling-bg{
       background-size:100% 100%;
     }
@@ -49,41 +49,55 @@
 
 
 .navbar-profile{
-  display:none;
-  clear:left;
-  padding-top:10px;
-  padding-bottom:10px;
-  &.in,
-  &.collapsing{
-    display:block;
-  }
+  clear: left;
+  font-size: @font-size-xsmall;
+  line-height: 0;
+  background-color: #FFF;
+
   img{
     width : @avatar-size-medium;
     height: @avatar-size-medium;
-  }
-  a{
-    background-color:#fff;
-    &:last-child{
-      position:relative;
-      float:right;
-      .glyphicon{
-        font-size:28px;
-      }
-      strong{
-        display:none;
-      }
-      .badge{
-        position:absolute;
-        top: 8px;
-        right: 22px;
-      }
-    }
   }
   img{
     margin-right:5px;
   }
   button{
     width:100%;
+    font-size:@font-size-xsmall;
+  }
+  .navbar-profile-row-1{
+    width:100%;
+    font-size:@font-size-small;
+    overflow: auto;
+  }
+  .navbar-profile-row-2{
+    width:100%;
+    display:none;
+  }
+  .navbar-profile-row-4{
+    display:none;
+    padding: 15px 10px 10px;
+  }
+  .navbar-profile-row-5{
+    text-align: center;
+  }
+  .navbar-profile-avatar{
+    display: block;
+    float: left;
+    padding: 8px 0;
+  }
+  .navbar-profile-row-1-huddles{
+    float: right;
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+  }
+  .navbar-profile-logout{
+    padding: 16px;
+    padding-right:0;
+    float: right;
+    display: block;
+    border-left: 1px solid #EEE;
   }
   @media (min-width: @grid-float-breakpoint){
     clear:none;
@@ -93,34 +107,40 @@
     min-width:200px;
     margin-right:15px;
     margin-top:12px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
     a{
-      display:block;
+      display:inline-block;
       padding:5px;
-      &:last-child{
-        float:none;
-        background-color:#fbfbfb;
-        border-top: 1px solid #EEE;
-        .glyphicon{
-          font-size:@font-size-small;
-        }
-        strong{
-          display:inline;
-        }
-        .badge{
-          position:relative;
-          top:0;
-          right:0;
-        }
-      }
     }
     .badge{
-      float:right;
+      float: right;
+      font-size: 12px;
+      text-transform: uppercase;
+      border-radius: 3px;
     }
-  }
-  @media (min-width: @screen-sm-min){
-    button{
-      width:auto;
-      float:right;
+
+    .navbar-profile-avatar{
+      padding-left:8px;
+    }
+    .navbar-profile-row-1-huddles{
+      display:none;
+    }
+    .navbar-profile-logout{
+      border-left: 0;
+      padding-right:12px;
+    }
+
+
+    .navbar-profile-row-2{
+      display:block;
+      padding-top:3px;
+      background-color:#fbfbfb;
+    }
+    .navbar-profile-row-4{
+      display:block;
+    }
+    .navbar-profile-row-5{
+      padding: 5px;
     }
   }
   @media (min-width: @screen-md-min){
