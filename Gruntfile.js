@@ -11,7 +11,7 @@ module.exports = function (grunt) {
   }
 
   var fs = require('fs')
-  var btoa = require('btoa')
+  var generateRawFilesJs = require('./docs/grunt/bs-raw-files-generator.js')
 
   // Project configuration.
   grunt.initConfig({
@@ -360,21 +360,5 @@ module.exports = function (grunt) {
   });
 
   // task for building customizer
-  grunt.registerTask('build-customizer', 'Add scripts/less files to customizer.', function () {
-    function getFiles(type) {
-      var files = {}
-      fs.readdirSync(type)
-        .filter(function (path) {
-          return type == 'fonts' ? true : new RegExp('\\.' + type + '$').test(path)
-        })
-        .forEach(function (path) {
-          var fullPath = type + '/' + path
-          return files[path] = (type == 'fonts' ? btoa(fs.readFileSync(fullPath)) : fs.readFileSync(fullPath, 'utf8'))
-        })
-      return 'var __' + type + ' = ' + JSON.stringify(files) + '\n'
-    }
-
-    var files = getFiles('js') + getFiles('less') + getFiles('fonts')
-    fs.writeFileSync('docs/assets/js/raw-files.js', files)
-  });
+  grunt.registerTask('build-customizer', 'Add scripts/less files to customizer.', generateRawFilesJs);
 };
