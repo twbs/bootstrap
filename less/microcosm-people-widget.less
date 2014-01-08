@@ -1,3 +1,13 @@
+.people-widget,
+.people-widget-popover{
+  position:relative;
+  .sprite-nib-up{
+    position:absolute;
+    top: -8px;
+    left: 8px;
+  }
+}
+
 .people-widget-list {
     padding: 0;
     margin: 0;
@@ -8,7 +18,7 @@
         display: block;
         width: 100%;
         padding: 5px;
-        font-size: 12px;
+        font-size: @font-size-xsmall;
         cursor: pointer;
         border-bottom:1px solid #eee;
         &.invited {
@@ -21,6 +31,9 @@
             width: 20px;
             height: 20px;
             margin-right: 5px;
+        }
+        &.active{
+            background-color:@brand-highlight;
         }
     }
     input[type="submit"] {
