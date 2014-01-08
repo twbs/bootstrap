@@ -243,10 +243,12 @@ window.onload = function () { // wait for load in a dumb way because B-0
           $(this).val() && (vars[$(this).prev().text()] = $(this).val())
         })
 
-    var bsLessSource = generateLESS('bootstrap.less', lessFileIncludes, vars)
+    var bsLessSource    = generateLESS('bootstrap.less', lessFileIncludes, vars)
+    var themeLessSource = generateLESS('theme.less',     lessFileIncludes, vars)
 
     try {
       compileLESS(bsLessSource, 'bootstrap', result)
+      compileLESS(themeLessSource, 'bootstrap-theme', result)
     } catch (err) {
       return showError('<strong>Ruh roh!</strong> Could not parse less files.', err)
     }
