@@ -93,6 +93,24 @@ a.muted{
   height: @avatar-size-small;
   display:inline-block;
 }
+
+blockquote{
+  margin:0 0 15px;
+  border:0;
+  padding:0;
+  border:0;
+  background: url('/static/img/quote-marks.png') no-repeat 10px 10px #FBFBFB;
+  padding-left: 24px;
+  border-left: 2px solid #CCC;
+  p{
+    display: block;
+    padding: 15px;
+    color: #666;
+    font-size: @font-size-medium;
+    line-height: @line-height-computed;
+    margin-bottom: 20px;
+  }
+}
 // list layout styles for collection of items
 
 
@@ -212,6 +230,12 @@ a.muted{
     border-radius: 5px;
     width:85%;
     color:#999;
+    float:left;
+    blockquote p{
+      font-size:@font-size-small;
+      color: #999;
+      line-height:@line-height-computed * 0.8;
+    }
   }
   @media (min-width: @grid-float-breakpoint){
     .row-meta-excerpt-text{
