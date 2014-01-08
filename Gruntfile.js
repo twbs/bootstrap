@@ -11,7 +11,8 @@ module.exports = function (grunt) {
   }
 
   var fs = require('fs')
-  var btoa = require('btoa')
+  var generateGlyphiconsData = require('./docs/grunt/bs-glyphicons-data-generator.js')
+  var generateRawFilesJs = require('./docs/grunt/bs-raw-files-generator.js')
 
   // Project configuration.
   grunt.initConfig({
@@ -335,46 +336,8 @@ module.exports = function (grunt) {
   // This can be overzealous, so its changes should always be manually reviewed!
   grunt.registerTask('change-version-number', ['sed']);
 
-  grunt.registerTask('build-glyphicons-data', function () {
-    // Pass encoding, utf8, so `readFileSync` will return a string instead of a
-    // buffer
-    var glyphiconsFile = fs.readFileSync('less/glyphicons.less', 'utf8')
-    var glpyhiconsLines = glyphiconsFile.split('\n')
-
-    // Use any line that starts with ".glyphicon-" and capture the class name
-    var iconClassName = /^\.(glyphicon-[^\s]+)/
-    var glyphiconsData = '# This file is generated via Grunt task. **Do not edit directly.** \n' +
-                         '# See the \'build-glyphicons-data\' task in Gruntfile.js.\n\n';
-    for (var i = 0, len = glpyhiconsLines.length; i < len; i++) {
-      var match = glpyhiconsLines[i].match(iconClassName)
-
-      if (match != null) {
-        glyphiconsData += '- ' + match[1] + '\n'
-      }
-    }
-
-    // Create the `_data` directory if it doesn't already exist
-    if (!fs.existsSync('docs/_data')) fs.mkdirSync('docs/_data')
-
-    fs.writeFileSync('docs/_data/glyphicons.yml', glyphiconsData)
-  });
+  grunt.registerTask('build-glyphicons-data', generateGlyphiconsData);
 
   // task for building customizer
-  grunt.registerTask('build-customizer', 'Add scripts/less files to customizer.', function () {
-    function getFiles(type) {
-      var files = {}
-      fs.readdirSync(type)
-        .filter(function (path) {
-          return type == 'fonts' ? true : new RegExp('\\.' + type + '$').test(path)
-        })
-        .forEach(function (path) {
-          var fullPath = type + '/' + path
-          return files[path] = (type == 'fonts' ? btoa(fs.readFileSync(fullPath)) : fs.readFileSync(fullPath, 'utf8'))
-        })
-      return 'var __' + type + ' = ' + JSON.stringify(files) + '\n'
-    }
-
-    var files = getFiles('js') + getFiles('less') + getFiles('fonts')
-    fs.writeFileSync('docs/assets/js/raw-files.js', files)
-  });
+  grunt.registerTask('build-customizer', 'Add scripts/less files to customizer.', generateRawFilesJs);
 };
