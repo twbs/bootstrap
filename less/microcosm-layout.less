@@ -48,7 +48,6 @@
   }
 }
 .content-body{
-  margin-top:15px;
   h1{
     font-size:@font-size-large;
     margin: 0 0 10px;
@@ -56,6 +55,9 @@
   &>h3{
     font-size:@font-size-small;
     color:#666;
+  }
+  @media (min-width: @screen-md-min) {
+    margin-top:15px;
   }
 }
 .content-footer{
@@ -119,9 +121,12 @@ blockquote{
   margin:0;
   list-style:none;
 
+  border-top:1px solid #eee;
+  border-bottom:1px solid #eee;
+
   &.bordered{
     .list-collection-row{
-      border:1px solid #ccc;
+      border:1px solid #eee;
       border-width:1px 0 0;
       &:first-child{
         border-top:0;
@@ -136,15 +141,15 @@ blockquote{
   }
   &.padded{
     .list-collection-row{
-      padding:15px;
+      padding:5px 15px;
+      @media (min-width: @screen-sm-min) {
+        padding:15px;
+      }
       @media (min-width: @screen-md-min) {
         padding:15px 0;
       }
     }
 
-  }
-  @media (min-width: @screen-md-min) {
-    border-radius:3px;
   }
 }
 .list-collection-row{
@@ -176,7 +181,7 @@ blockquote{
     float:left;
     &+.list-collection-row-offset{
       float:left;
-      max-width:89%;
+      max-width:87%;
       width:100%;
     }
   }
@@ -256,13 +261,14 @@ blockquote{
 }
 .row-context{
   display:none;
-  clear:right;
   float:right;
   margin-top:0;
   color:#999;
   font-size:@font-size-small;
+  clear:right;
   @media (min-width: @grid-float-breakpoint){
     display:block;
+    clear:none;
   }
 }
 .row-update{
@@ -291,13 +297,6 @@ blockquote{
   @media (min-width: @screen-md-min){
     float:right;
   }
-}
-
-
-
-input[type=checkbox].row-admin-checkbox{
-  margin-left:10px;
-  float:right;
 }
 
 .btn-group-responsive-toggle{
@@ -419,18 +418,7 @@ input[type=checkbox].row-admin-checkbox{
     text-align: right;
     color:#666;
     span{
-
       font-weight:700;
-      color:#333;
-      font-size:@font-size-small;
-      &.label{
-        font-weight:400;
-        border-radius:5px;
-        color:#fff;
-        padding:1px 5px;
-        margin-right:5px;
-        font-size:10px;
-      }
     }
   }
   @media (min-width: @grid-float-breakpoint){
@@ -439,10 +427,6 @@ input[type=checkbox].row-admin-checkbox{
     li{
       padding-left:10px;
       padding-right:0;
-      span{
-        display:block;
-        font-size:@font-size-base;
-      }
     }
   }
 }
@@ -462,7 +446,7 @@ input[type=checkbox].row-admin-checkbox{
   vertical-align: middle;
   color: #3175AA;
   font-size: @font-size-xsmall;
-  width: 100%;
+  max-width: 100%;
   box-shadow: 0 0 1px;
   border-radius: 0;
   margin: 10px 0;
@@ -513,6 +497,7 @@ input[type=checkbox].row-admin-checkbox{
 */
 .metabar{
   position: absolute;
+  z-index:1000; // fix for google maps which has z-index of 999
   top: 0;
   right:-350px;
   background-color: #eee;

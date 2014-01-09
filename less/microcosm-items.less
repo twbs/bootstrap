@@ -1,9 +1,8 @@
 .item-header{
-  padding: 15px;
+  padding: 15px 10px;
   border-width:1px 0 0;
   @media (min-width: @screen-md-min){
     margin-top: 20px;
-    margin-bottom: 20px;
     border-radius: 3px 3px 0 0;
     border-width:1px 1px 0;
     padding:0 0 20px;
@@ -23,6 +22,7 @@
 .item-event{
   @media (min-width: @screen-md-min){
     margin-bottom:20px;
+    margin-top:20px;
   }
 }
 .item-event ul{
@@ -35,7 +35,6 @@
   position:relative;
 }
 .item-event-inner > li{
-  overflow: auto;
   padding:10px;
   border-bottom:1px solid #eee;
   @media (min-width: @grid-float-breakpoint){
@@ -57,7 +56,9 @@
   }
 }
 .item-event-icon-offset{
-  float:left;
+  @media (min-width: @screen-sm-min){
+    float:left;
+  }
 }
 
 .item-event-inner > li.item-event-date-container{
@@ -101,7 +102,6 @@
 }
 .item-event-location{
   font-weight:700;
-  max-width: 225px;
   &:first-letter{
     text-transform: uppercase;
   }
@@ -141,25 +141,25 @@
 
 .item-event-attending-people{
   border-radius:3px;
-  overflow:auto;
   margin-bottom:10px;
+  float:left;
+  overflow: auto;
   .list-people{
     float:left;
     margin-top:2px;
   }
   span{
+    display:none;
     font-size:@font-size-small;
     float:left;
-    display:block;
-    max-width:120px;
+    max-width:118px;
   }
   @media (min-width: @grid-float-breakpoint){
-    margin: 0 10px 10px 35px;
-    border:1px solid #ccc;
-    padding:10px;
-    margin-left:58px;
+    margin: 0 10px 10px 0;
+    float:none;
     span{
       line-height:14px;
+      display:block;
     }
   }
 }
@@ -172,10 +172,20 @@
 }
 
 .item-event-attending{
+  float:left;
+  margin-top:4px;
   .progress{
-    width:180px;
+    width:60px;
+    margin-left:10px;
   }
-  padding-top:7px;
+  @media (min-width: @screen-sm-min){
+    float:none;
+    margin-top:0;
+    .progress{
+      width:180px;
+      margin-left:0;
+    }
+  }
 }
 
 
