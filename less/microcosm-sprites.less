@@ -18,6 +18,7 @@
 @sprite-row-2:    @sprite-base-height * -1;
 @sprite-row-3:    @sprite-base-height * -2;
 @sprite-row-4:    @sprite-row-3 + (@sprite-small-height*-1);
+@sprite-row-5:    @sprite-row-4 + (@sprite-small-height*-1);
 
 
 
@@ -92,6 +93,11 @@
 
 .sprite-menu-2{
   background-position: (@sprite-scaled-width * -4) 0;
+}
+
+.sprite-branch-arrow-right{
+  .sprite-size-small;
+  background-position: 0 @sprite-row-5;
 }
 
 ////////////////////////

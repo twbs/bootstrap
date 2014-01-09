@@ -536,6 +536,7 @@ blockquote{
   h3{
     font-size:@font-size-small;
     margin:0;
+    line-height:@line-height-computed * 0.8;
     &>span{
       display:block;
       font-size:@font-size-small;
@@ -589,7 +590,7 @@ blockquote{
 
 .metabar-module-title{
   p{
-    font-size:@font-size-small;
+    font-size:@font-size-xsmall;
   }
 }
 .metabar-module-primary-buttons{
@@ -615,8 +616,8 @@ blockquote{
   }
 }
 .metabar-module-author{
-  margin-top:10px;
-  font-size:@font-size-small;
+  font-size:@font-size-xsmall;
+  color:#999;
   a{
     font-weight:700;
   }
@@ -672,30 +673,70 @@ blockquote{
 }
 
 
-.subscribe{
-  margin-bottom:10px;
-  button{
-    .glyphicon{
+.btn-switch{
+  height:24px;
+  .btn-switch-state{
+    font-size:@font-size-small;
+  }
+  &.off{
+    .btn-switch-state.loading,
+    .btn-switch-state.on{
+      display:none;
+    }
+    .btn-switch-state.off{
+      display:block;
+    }
+  }
+  &.loading{
+    .btn-switch-state.loading{
+      display:block;
+    }
+    .btn-switch-state.on,
+    .btn-switch-state.off{
+      display: none;
+    }
+  }
+  &.on{
+    .btn-switch-state.on{
+      display:block;
+    }
+    .btn-switch-state.loading,
+    .btn-switch-state.off{
       display:none;
     }
   }
-  &.active{
-    button{
-      .glyphicon{
-        display:inline;
-        color:rgba(0,0,0,0.3);
-      }
-    }
+
+  a.btn-switch-off{
+    text-decoration: underline;
+    font-size:@font-size-xsmall;
+  }
+  a.btn-switch-on{
+    background-color: #FFF;
+    padding: 5px 10px;
+    border: 1px solid #CCC;
+    font-size: @font-size-xsmall;
   }
 }
+
+.subscribe{
+  margin-bottom:10px;
+}
+
 .subscribe-meta{
-  padding:10px 0 0;
+  height:0;
+  overflow: hidden;
+  -webkit-transition:all 0.2s ease-in;
+  &.active{
+    height:24px;
+  }
   label{
     margin:0;
     font-weight:400;
+    font-size:@font-size-xsmall;
   }
 }
 
 .font-family-serif{
   font-family:@font-family-serif;
 }
+
