@@ -1,6 +1,6 @@
 /* jshint node: true */
 
-var btoa = require('btoa')
+var btoa = require('btoa') // jshint ignore:line
 var fs = require('fs')
 
 function getFiles(type) {
