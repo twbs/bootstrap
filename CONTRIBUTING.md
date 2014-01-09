@@ -154,20 +154,20 @@ license your work under the terms of the [MIT License](LICENSE.md).
 
 ### HTML
 
-- Two spaces for indentation, never tabs
-- Double quotes only, never single quotes
-- Always use proper indentation
-- Use tags and elements appropriate for an HTML5 doctype (e.g., self-closing tags)
+- Two spaces for indentation, never tabs.
+- Double quotes only, never single quotes.
+- Always use proper indentation.
+- Use tags and elements appropriate for an HTML5 doctype (e.g., self-closing tags).
 - Use CDNs and HTTPS for third-party JS when possible. We don't use protocol-relative URLs in this case because they break when viewing the page locally via `file://`.
 
 ### CSS
 
-- CSS changes must be done in `.less` files first, never just in the compiled `.css` files
-- Adhere to the [CSS property order](http://markdotto.com/2011/11/29/css-property-order/)
-- Multiple-line approach (one property and value per line)
-- Always a space after a property's colon (e.g., `display: block;` and not `display:block;`)
-- End all lines with a semi-colon
-- For multiple, comma-separated selectors, place each selector on its own line
+- CSS changes must be done in `.less` files first, never just in the compiled `.css` files.
+- Adhere to the [CSS property order](http://markdotto.com/2011/11/29/css-property-order/).
+- Multiple-line approach (one property and value per line).
+- Always a space after a property's colon (e.g., `display: block;` and not `display:block;`).
+- End all lines with a semi-colon.
+- For multiple, comma-separated selectors, place each selector on its own line.
 - Attribute selectors, like `input[type="text"]` should always wrap the attribute's value in double quotes, for consistency and safety (see this [blog post on unquoted attribute values](http://mathiasbynens.be/notes/unquoted-attribute-values) that can lead to XSS attacks).
 - Attribute selectors should only be used where absolutely necessary (e.g., form controls) and should be avoided on custom components for performance and explicitness.
 - Series of classes for a component should include a base class (e.g., `.component`) and use the base class as a prefix for modifier and sub-components (e.g., `.component-lg`).
