@@ -42,7 +42,7 @@
 
 body {
   position: relative; /* For scrollyspy */
-  padding-top: 50px; /* Account for fixed navbar */
+  /*padding-top: 50px;  Account for fixed navbar */
 }
 
 /* Keep code small in tables on account of limited space */
@@ -67,7 +67,7 @@ body {
 
 /* Inverted outline button (white on dark) */
 .btn-outline-inverse {
-  color: #563d7c;
+  color: #fff;
   background-color: transparent;
   border-color: #cdbfe3;
 }
@@ -106,6 +106,10 @@ body {
   color: #563d7c;
   background-color: #fff;
 }
+.bs-booticon-outline {
+  background-color: transparent;
+  border: 1px solid #fff;
+}
 
 
 /*
@@ -115,9 +119,16 @@ body {
  */
 
 .bs-docs-nav {
+  margin-bottom: 0;
   background-color: #fff;
-  border-color: #e5e5e5;
-  box-shadow: 0 0 10px rgba(0,0,0,.05);
+  border-bottom-color: rgba(0,0,0,.1);
+  /*box-shadow: 0 0 10px rgba(0,0,0,.05);*/
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding-box;
+          background-clip: padding-box;
+}
+.bs-home-nav .bs-nav-b {
+  display: none;
 }
 .bs-docs-nav .navbar-brand,
 .bs-docs-nav .navbar-nav > li > a {
@@ -217,16 +228,24 @@ body {
  * Tweaks to the custom homepage and the masthead (main jumbotron).
  */
 
-.bs-docs-home {
-  background-color: #f9f9f9;
-}
-
  /* Masthead (headings and download button) */
 .bs-masthead {
   position: relative;
   padding: 30px 15px;
+  color: #cdbfe3;
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+  background-color: #563d7c;
+  background: #563d7c;
+  background: -moz-linear-gradient(top,  #563d7c 0%, #654b8d 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#563d7c), color-stop(100%,#654b8d));
+  background: -webkit-linear-gradient(top,  #563d7c 0%,#654b8d 100%);
+  background: -o-linear-gradient(top,  #563d7c 0%,#654b8d 100%);
+  background: -ms-linear-gradient(top,  #563d7c 0%,#654b8d 100%);
+  background: linear-gradient(to bottom,  #563d7c 0%,#654b8d 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#563d7c', endColorstr='#654b8d',GradientType=0 );
+
+  /*654B8D*/
+  /*border-bottom: 1px solid #e5e5e5;*/
 }
 .bs-masthead .bs-booticon {
   margin: 0 auto 30px;
@@ -234,20 +253,21 @@ body {
 .bs-masthead h1 {
   font-weight: 300;
   line-height: 1;
+  color: #fff;
 }
 .bs-masthead .lead {
-  margin-bottom: 30px;
+  margin: 0 auto 30px;
   font-size: 20px;
-  color: #555;
+  color: #fff;
 }
-.bs-masthead .btn-outline {
+.bs-masthead .btn {
   width: 100%;
-  padding: 14px 24px;
+  padding: 15px 30px;
   font-size: 20px;
 }
 
 @media (min-width: 480px) {
-  .bs-masthead .btn-outline {
+  .bs-masthead .btn {
     width: auto;
   }
 }
@@ -267,10 +287,8 @@ body {
 
 @media (min-width: 992px) {
   .bs-masthead .lead {
+    width: 80%;
     font-size: 30px;
-  }
-  .bs-masthead .btn-outline {
-    padding: 18px 24px;
   }
 }
 
@@ -514,8 +532,8 @@ body {
 
 /* First level of nav */
 .bs-sidenav {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding-top: 5px;
   padding-bottom: 5px;
 }
@@ -581,7 +599,7 @@ body {
   }
   .bs-sidebar.affix {
     position: fixed; /* Undo the static from mobile first approach */
-    top: 80px;
+    top: 20px;
   }
   .bs-sidebar.affix-bottom {
     position: absolute; /* Undo the static from mobile first approach */
