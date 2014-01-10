@@ -471,18 +471,22 @@ blockquote{
     width:auto;
   }
   @media (min-width:@screen-sm-min){
+    border-radius:3px;
     margin-bottom:0;
     vertical-align: middle;
     display: inline-block;
     margin-left:5px;
     margin-top:0;
     box-shadow: none;
-    border: 1px solid;
+    border: 1px solid #89ADDB;
     span{
       &:last-child{
         max-width: 130px;
         background-color: #DDE9FF;
         border-left: 1px solid #89ADDB;
+        &:first-letter{
+          text-transform: uppercase;
+        }
       }
     }
   }
@@ -504,7 +508,7 @@ blockquote{
   min-height: 480px;
   font-size:@font-size-small;
   height:100%;
-  width:350px;
+  width:340px;
 
   -webkit-transition: all 500ms cubic-bezier(0.860, 0.000, 0.070, 1.000);
   -moz-transition: all 500ms cubic-bezier(0.860, 0.000, 0.070, 1.000);
@@ -527,6 +531,10 @@ blockquote{
     -o-transition: none;
     transition: none;
     padding-top:10px;
+
+    -webkit-transform : translateX(0) !important;
+       -moz-transform : translateX(0) !important;
+            transform : translateX(0) !important;
   }
 }
 
