@@ -11,13 +11,11 @@
   ],
   "ignore": [
     "**/.*",
-    "*.html",
-    "_*",
+    "_config.yml",
     "CNAME",
     "composer.json",
     "CONTRIBUTING.md",
-    "docs-assets",
-    "examples",
+    "docs",
     "js/tests"
   ],
   "dependencies": {

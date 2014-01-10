@@ -1,5 +1,6 @@
+/*csslint ids: false, overqualified-elements: false*/
 /*!
- * Copyright 2013 Twitter, Inc.
+ * Copyright 2011-2014 Twitter, Inc.
  *
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
  * details, see http://creativecommons.org/licenses/by/3.0/.
@@ -1255,6 +1256,13 @@ h1[id] {
   font-weight: normal;
 }
 
+.bs-customizer-input {
+  float: left;
+  width: 33.333333%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 /* Downloads */
 .bs-customize-download .btn-outline {
   padding: 20px;
@@ -1379,6 +1387,7 @@ h1[id] {
 
 /* Pseudo :focus state for showing how it looks in the docs */
 #focusedInput {
+  border-color: rgb(204,204,204); /* Restate unfocused value to make CSSLint happy that there's a pre-CSS3 fallback*/
   border-color: rgba(82,168,236,.8);
   outline: 0;
   outline: thin dotted \9; /* IE6-9 */
