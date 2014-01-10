@@ -4865,13 +4865,13 @@ a.list-group-item-danger.active:focus {
 .panel-heading > .dropdown .dropdown-toggle {
   color: inherit;
 }
+.panel-heading > a {
+  color: inherit;
+}
 .panel-title {
   margin-top: 0;
   margin-bottom: 0;
   font-size: 16px;
-  color: inherit;
-}
-.panel-title > a {
   color: inherit;
 }
 .panel-footer {
