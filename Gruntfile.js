@@ -26,7 +26,13 @@ module.exports = function (grunt) {
               ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
               ' * Licensed under <%= _.pluck(pkg.licenses, "type") %> (<%= _.pluck(pkg.licenses, "url") %>)\n' +
               ' */\n',
-    jqueryCheck: 'if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery") }\n\n',
+    bannerDocs: '/*!\n' +
+              ' * Bootstrap Docs (<%= pkg.homepage %>)\n' +
+              ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
+              ' * Licensed under the Creative Commons Attribution 3.0 Unported License. For\n' +
+              ' * details, see http://creativecommons.org/licenses/by/3.0/.\n' +
+              ' */\n',
+    jqueryCheck: 'if (typeof jQuery === \'undefined\') { throw new Error(\'Bootstrap requires jQuery\') }\n\n',
 
     // Task configuration.
     clean: {
@@ -113,7 +119,7 @@ module.exports = function (grunt) {
     uglify: {
       bootstrap: {
         options: {
-          banner: '<%= banner %>\n',
+          banner: '<%= banner %>',
           report: 'min'
         },
         src: ['<%= concat.bootstrap.dest %>'],
@@ -121,12 +127,7 @@ module.exports = function (grunt) {
       },
       customize: {
         options: {
-          banner: '/*!\n' +
-          ' * Bootstrap Docs (<%= pkg.homepage %>)\n' +
-          ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-          ' * Licensed under the Creative Commons Attribution 3.0 Unported License. For\n' +
-          ' * details, see http://creativecommons.org/licenses/by/3.0/.\n' +
-          ' */\n',
+          banner: '<%= bannerDocs %>',
           report: 'min'
         },
         src: [
@@ -134,9 +135,21 @@ module.exports = function (grunt) {
           'docs/assets/js/jszip.js',
           'docs/assets/js/uglify.js',
           'docs/assets/js/filesaver.js',
+          'docs/assets/js/raw-files.js',
           'docs/assets/js/customizer.js'
         ],
         dest: 'docs/assets/js/customize.min.js'
+      },
+      docsJs: {
+        options: {
+          banner: '<%= bannerDocs %>',
+          report: 'min'
+        },
+        src: [
+          'docs/assets/js/holder.js',
+          'docs/assets/js/application.js'
+        ],
+        dest: 'docs/assets/js/docs.min.js'
       }
     },
 
@@ -174,6 +187,23 @@ module.exports = function (grunt) {
           'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css',
           'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css'
         }
+      }
+    },
+
+    cssmin: {
+      compress: {
+        options: {
+          banner: '<%= bannerDocs %>',
+          keepSpecialComments: '*',
+          noAdvanced: true, // turn advanced optimizations off until it's fixed in clean-css
+          report: 'min',
+          selectorsMergeMode: 'ie8'
+        },
+        src: [
+          'docs/assets/css/docs.css',
+          'docs/assets/css/pygments-manni.css'
+        ],
+        dest: 'docs/assets/css/pack.min.css'
       }
     },
 
@@ -345,7 +375,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-js', ['concat', 'uglify']);
 
   // CSS distribution task.
-  grunt.registerTask('dist-css', ['less', 'csscomb', 'usebanner']);
+  grunt.registerTask('dist-css', ['less', 'cssmin', 'csscomb', 'usebanner']);
 
   // Docs distribution task.
   grunt.registerTask('dist-docs', ['copy:docs']);
