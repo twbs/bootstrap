@@ -290,6 +290,7 @@ body {
 
 /* Page headers */
 .bs-header {
+  margin-bottom: 40px;
   padding: 30px 15px 40px; /* side padding builds on .container 15px, so 30px */
   font-size: 20px;
   text-align: center;
@@ -534,8 +535,6 @@ body {
 .bs-sidenav {
   margin-top: 20px;
   margin-bottom: 20px;
-  padding-top: 5px;
-  padding-bottom: 5px;
 }
 
 /* All levels of nav */
@@ -630,8 +629,8 @@ body {
   margin-bottom: 60px;
 }
 
-/* Janky fix for preventing navbar from overlapping */
 h1[id] {
+  margin-top: 0;
   padding-top: 20px;
 }
 
