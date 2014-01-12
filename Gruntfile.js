@@ -134,6 +134,7 @@ module.exports = function (grunt) {
           'docs/assets/js/less.min.js',
           'docs/assets/js/jszip.js',
           'docs/assets/js/uglify.js',
+          'docs/assets/js/blob.js',
           'docs/assets/js/filesaver.js',
           'docs/assets/js/raw-files.js',
           'docs/assets/js/customizer.js'
