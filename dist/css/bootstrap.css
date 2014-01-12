@@ -4881,6 +4881,9 @@ a.list-group-item-danger.active:focus {
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
 }
+.panel-group {
+  margin-bottom: 20px;
+}
 .panel-group .panel {
   margin-bottom: 0;
   overflow: hidden;

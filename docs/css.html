@@ -1882,12 +1882,13 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>We remove the default <code>outline</code> styles on some form controls and apply a <code>box-shadow</code> in its place for <code>:focus</code>.</p>
     <div class="bs-example">
       <form role="form">
-        <input class="form-control" id="focusedInput" type="text" value="This is focused...">
+        <input class="form-control" id="focusedInput" type="text" value="Demonstrative focus state">
       </form>
     </div>
-{% highlight html %}
-<input class="form-control" id="focusedInput" type="text" value="This is focused...">
-{% endhighlight %}
+<div class="bs-callout bs-callout-info">
+  <h4>Demo <code>:focus</code> state</h4>
+  <p>The above example input uses custom styles in our documentation to demonstrate the <code>:focus</code> state on a <code>.form-control</code>.</p>
+</div>
 
 
     <h2 id="forms-control-disabled">Disabled inputs</h2>
@@ -2082,7 +2083,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Set heights using classes like <code>.input-lg</code>, and set widths using grid column classes like <code>.col-lg-*</code>.</p>
 
     <h3>Height sizing</h3>
-    <p>Create larger or smaller form controls that match button sizes.</p>
+    <p>Create taller or shorter form controls that match button sizes.</p>
     <div class="bs-example bs-example-control-sizing">
       <form role="form">
         <div class="controls">
