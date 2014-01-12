@@ -109,7 +109,7 @@ body {
 }
 .bs-booticon-outline {
   background-color: transparent;
-  border: 1px solid #fff;
+  border: 1px solid #cdbfe3;
 }
 
 
@@ -122,11 +122,7 @@ body {
 .bs-docs-nav {
   margin-bottom: 0;
   background-color: #fff;
-  border-bottom-color: rgba(0,0,0,.1);
-  /*box-shadow: 0 0 10px rgba(0,0,0,.05);*/
-  -webkit-background-clip: padding-box;
-     -moz-background-clip: padding-box;
-          background-clip: padding-box;
+  border-bottom: 0;
 }
 .bs-home-nav .bs-nav-b {
   display: none;
@@ -235,18 +231,12 @@ body {
   padding: 30px 15px;
   color: #cdbfe3;
   text-align: center;
-  background-color: #563d7c;
-  background: #563d7c;
-  background: -moz-linear-gradient(top,  #563d7c 0%, #654b8d 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#563d7c), color-stop(100%,#654b8d));
-  background: -webkit-linear-gradient(top,  #563d7c 0%,#654b8d 100%);
-  background: -o-linear-gradient(top,  #563d7c 0%,#654b8d 100%);
-  background: -ms-linear-gradient(top,  #563d7c 0%,#654b8d 100%);
-  background: linear-gradient(to bottom,  #563d7c 0%,#654b8d 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#563d7c', endColorstr='#654b8d',GradientType=0 );
-
-  /*654B8D*/
-  /*border-bottom: 1px solid #e5e5e5;*/
+  text-shadow: 0 1px 0 rgba(0,0,0,.1);
+  background-color: #6f5499;
+  background-image: -webkit-linear-gradient(top, #563d7c 0%, #6f5499 100%);
+  background-image: linear-gradient(to bottom, #563d7c 0%, #6f5499 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#563d7c', endColorstr='#6F5499', GradientType=0);
 }
 .bs-masthead .bs-booticon {
   margin: 0 auto 30px;
@@ -306,6 +296,7 @@ body {
   font-size: 20px;
   text-align: center;
   background-color: #f9f9f9;
+  border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
 }
 .bs-header h1 {
@@ -386,8 +377,18 @@ body {
 
 /* Homepage variation */
 .bs-docs-home .carbonad {
+  background-color: transparent !important;
   margin: 0 -30px -31px !important;
+  border-color: #866ab3 !important;
 }
+.bs-docs-home .carbonad-tag {
+  color: inherit !important;
+}
+.bs-docs-home .carbonad-text a,
+.bs-docs-home .carbonad-tag a {
+  color: #fff !important;
+}
+
 
 @media (min-width: 480px) {
   .carbonad {
