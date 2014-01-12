@@ -626,14 +626,13 @@ body {
  */
 
 /* Space things out */
-.bs-docs-section + .bs-docs-section {
-  padding-top: 40px;
+.bs-docs-section {
+  margin-bottom: 60px;
 }
 
 /* Janky fix for preventing navbar from overlapping */
 h1[id] {
-  padding-top: 80px;
-  margin-top: -45px;
+  padding-top: 20px;
 }
 
 
