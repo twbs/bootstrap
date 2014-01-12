@@ -1,4 +1,4 @@
-/*csslint ids: false, overqualified-elements: false*/
+/*csslint ids: false, overqualified-elements: false, fallback-colors: false*/
 /*!
  * Copyright 2011-2014 Twitter, Inc.
  *
@@ -33,7 +33,6 @@
  * Miscellaneous
  */
 
-/*csslint ids: false, fallback-colors: false*/
 
 /*
  * Scaffolding
@@ -43,7 +42,6 @@
 
 body {
   position: relative; /* For scrollyspy */
-  /*padding-top: 50px;  Account for fixed navbar */
 }
 
 /* Keep code small in tables on account of limited space */
@@ -700,10 +698,17 @@ h1[id] {
 }
 .color-swatch {
   float: left;
-  width:  100px;
-  height: 100px;
+  width:  60px;
+  height: 60px;
   margin: 0 5px;
   border-radius: 3px;
+}
+
+@media (min-width: 768px) {
+  .color-swatch {
+    width:  100px;
+    height: 100px;
+  }
 }
 
 /* Framework colors */
@@ -1320,13 +1325,11 @@ h1[id] {
 
 /* Individual items */
 .bs-brand-item {
-  display: table-cell;
-  width: 1%;
   padding: 60px 0;
   text-align: center;
 }
 .bs-brand-item + .bs-brand-item {
-  border-left: 1px solid #fff;
+  border-top: 1px solid #fff;
 }
 .bs-brand-logos .inverse {
   color: #fff;
@@ -1338,9 +1341,6 @@ h1[id] {
 .bs-brand-item h3 {
   margin-top: 0;
   margin-bottom: 0;
-}
-.bs-brand-item h1 {
-  font-size: 60px;
 }
 .bs-brand-item .bs-booticon {
   margin-left: auto;
@@ -1359,14 +1359,19 @@ h1[id] {
 .bs-brand-item .glyphicon-ok { background-color: #5cb85c; }
 .bs-brand-item .glyphicon-remove { background-color: #d9534f; }
 
-
 @media (min-width: 768px) {
-/*  .bs-brand-logos .default,
-  .bs-brand-logos .inverse {
-    float: left;
-    width: 50%;
+  .bs-brand-item {
+    display: table-cell;
+    width: 1%;
   }
-*/}
+  .bs-brand-item + .bs-brand-item {
+    border-top: 0;
+    border-left: 1px solid #fff;
+  }
+  .bs-brand-item h1 {
+    font-size: 60px;
+  }
+}
 
 
 /*
