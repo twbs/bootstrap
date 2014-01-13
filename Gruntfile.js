@@ -128,6 +128,7 @@ module.exports = function (grunt) {
       customize: {
         options: {
           banner: '<%= bannerDocs %>',
+          preserveComments: 'some',
           report: 'min'
         },
         src: [
@@ -144,6 +145,7 @@ module.exports = function (grunt) {
       docsJs: {
         options: {
           banner: '<%= bannerDocs %>',
+          preserveComments: 'some',
           report: 'min'
         },
         src: [
