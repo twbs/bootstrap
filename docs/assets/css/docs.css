@@ -223,10 +223,9 @@ body {
  * Tweaks to the custom homepage and the masthead (main jumbotron).
  */
 
- /* Masthead (headings and download button) */
-.bs-masthead {
-  position: relative;
-  padding: 30px 15px;
+/* Share masthead with page headers */
+.bs-masthead,
+.bs-header {
   color: #cdbfe3;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0,0,0,.1);
@@ -235,6 +234,12 @@ body {
   background-image: linear-gradient(to bottom, #563d7c 0%, #6f5499 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#563d7c', endColorstr='#6F5499', GradientType=0);
+}
+
+ /* Masthead (headings and download button) */
+.bs-masthead {
+  position: relative;
+  padding: 30px 15px;
 }
 .bs-masthead .bs-booticon {
   margin: 0 auto 30px;
@@ -293,17 +298,13 @@ body {
   margin-bottom: 40px;
   padding: 30px 15px 40px; /* side padding builds on .container 15px, so 30px */
   font-size: 20px;
-  text-align: center;
-  background-color: #f9f9f9;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
 }
 .bs-header h1 {
-  color: #563d7c;
+  color: #fff;
 }
 .bs-header p {
   font-weight: 300;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 .bs-header .container {
   position: relative;
@@ -311,6 +312,7 @@ body {
 
 @media (min-width: 768px) {
   .bs-header {
+    font-size: 24px;
     text-align: left;
   }
   .bs-header h1 {
@@ -343,8 +345,8 @@ body {
   font-size: 13px !important;
   line-height: 16px !important;
   text-align: left;
-  background: #fff !important;
-  border: solid #e5e5e5 !important;
+  background: transparent !important;
+  border: solid #866ab3 !important;
   border-width: 1px 0 !important;
 }
 .carbonad-img {
@@ -363,12 +365,12 @@ body {
   padding-top: 0 !important;
 }
 .carbonad-tag {
-  color: #999 !important;
+  color: inherit !important;
   text-align: left !important;
 }
 .carbonad-text a,
 .carbonad-tag a {
-  color: #563d7c !important;
+  color: #fff !important;
 }
 .carbonad #azcarbon > img {
   display: none; /* hide what I assume are tracking images */
@@ -376,23 +378,13 @@ body {
 
 /* Homepage variation */
 .bs-docs-home .carbonad {
-  background-color: transparent !important;
   margin: 0 -30px -31px !important;
-  border-color: #866ab3 !important;
 }
-.bs-docs-home .carbonad-tag {
-  color: inherit !important;
-}
-.bs-docs-home .carbonad-text a,
-.bs-docs-home .carbonad-tag a {
-  color: #fff !important;
-}
-
 
 @media (min-width: 480px) {
   .carbonad {
     width: 330px !important;
-    margin: 20px auto 0 !important;
+    margin: 20px auto !important;
     border-radius: 4px;
     border-width: 1px !important;
   }
