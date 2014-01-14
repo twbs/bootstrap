@@ -1,4 +1,4 @@
-/*
+/*!
 
 Holder - 2.3 - client side image placeholders
 (c) 2012-2014 Ivan Malopinsky / http://imsky.co

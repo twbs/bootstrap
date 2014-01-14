@@ -127,7 +127,7 @@ module.exports = function (grunt) {
       },
       customize: {
         options: {
-          banner: '<%= bannerDocs %>',
+          preserveComments: 'some',
           report: 'min'
         },
         src: [
@@ -143,7 +143,7 @@ module.exports = function (grunt) {
       },
       docsJs: {
         options: {
-          banner: '<%= bannerDocs %>',
+          preserveComments: 'some',
           report: 'min'
         },
         src: [
@@ -194,7 +194,6 @@ module.exports = function (grunt) {
     cssmin: {
       compress: {
         options: {
-          banner: '<%= bannerDocs %>',
           keepSpecialComments: '*',
           noAdvanced: true, // turn advanced optimizations off until it's fixed in clean-css
           report: 'min',

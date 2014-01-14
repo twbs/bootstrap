@@ -1,9 +1,9 @@
 /**
- * QUnit - A JavaScript Unit Testing Framework
+ * QUnit 1.0.0 - A JavaScript Unit Testing Framework
  *
  * http://docs.jquery.com/QUnit
  *
- * Copyright (c) 2012 John Resig, Jörn Zaefferer
+ * Copyright (c) 2011 John Resig, Jörn Zaefferer
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * or GPL (GPL-LICENSE.txt) licenses.
  */
@@ -48,7 +48,7 @@ Test.prototype = {
 	setup: function() {
 		if (this.module != config.previousModule) {
 			if ( config.previousModule ) {
-				QUnit.moduleDone( {
+				runLoggingCallbacks('moduleDone', QUnit, {
 					name: config.previousModule,
 					failed: config.moduleStats.bad,
 					passed: config.moduleStats.all - config.moduleStats.bad,
@@ -57,7 +57,7 @@ Test.prototype = {
 			}
 			config.previousModule = this.module;
 			config.moduleStats = { all: 0, bad: 0 };
-			QUnit.moduleStart( {
+			runLoggingCallbacks( 'moduleStart', QUnit, {
 				name: this.module
 			} );
 		}
@@ -71,9 +71,10 @@ Test.prototype = {
 			extend(this.testEnvironment, this.testEnvironmentArg);
 		}
 
-		QUnit.testStart( {
-			name: this.testName
-		} );
+		runLoggingCallbacks( 'testStart', QUnit, {
+			name: this.testName,
+			module: this.module
+		});
 
 		// allow utility functions to access the current test environment
 		// TODO why??
@@ -210,8 +211,9 @@ Test.prototype = {
 			fail("reset() failed, following Test " + this.testName + ", exception and reset fn follows", e, QUnit.reset);
 		}
 
-		QUnit.testDone( {
+		runLoggingCallbacks( 'testDone', QUnit, {
 			name: this.testName,
+			module: this.module,
 			failed: bad,
 			passed: this.assertions.length - bad,
 			total: this.assertions.length
@@ -310,8 +312,8 @@ var QUnit = {
 			result: a,
 			message: msg
 		};
-		msg = escapeHtml(msg);
-		QUnit.log(details);
+		msg = escapeInnerText(msg);
+		runLoggingCallbacks( 'log', QUnit, details );
 		config.current.assertions.push({
 			result: a,
 			message: msg
@@ -387,8 +389,8 @@ var QUnit = {
 		QUnit.ok(ok, message);
 	},
 
-	start: function() {
-		config.semaphore--;
+	start: function(count) {
+		config.semaphore -= count || 1;
 		if (config.semaphore > 0) {
 			// don't start until equal number of stop-calls
 			return;
@@ -416,19 +418,29 @@ var QUnit = {
 		}
 	},
 
-	stop: function(timeout) {
-		config.semaphore++;
+	stop: function(count) {
+		config.semaphore += count || 1;
 		config.blocking = true;
 
-		if ( timeout && defined.setTimeout ) {
+		if ( config.testTimeout && defined.setTimeout ) {
 			clearTimeout(config.timeout);
 			config.timeout = window.setTimeout(function() {
 				QUnit.ok( false, "Test timed out" );
+				config.semaphore = 1;
 				QUnit.start();
-			}, timeout);
+			}, config.testTimeout);
 		}
 	}
 };
+
+//We want access to the constructor's prototype
+(function() {
+	function F(){};
+	F.prototype = QUnit;
+	QUnit = new F();
+	//Make F QUnit's constructor so that we can add to the prototype later
+	QUnit.constructor = F;
+})();
 
 // Backwards compatibility, deprecated
 QUnit.equals = QUnit.equal;
@@ -453,7 +465,16 @@ var config = {
 	// by default, modify document.title when suite is done
 	altertitle: true,
 
-	urlConfig: ['noglobals', 'notrycatch']
+	urlConfig: ['noglobals', 'notrycatch'],
+
+	//logging callback queues
+	begin: [],
+	done: [],
+	log: [],
+	testStart: [],
+	testDone: [],
+	moduleStart: [],
+	moduleDone: []
 };
 
 // Load paramaters
@@ -618,10 +639,10 @@ extend(QUnit, {
 			expected: expected
 		};
 
-		message = escapeHtml(message) || (result ? "okay" : "failed");
+		message = escapeInnerText(message) || (result ? "okay" : "failed");
 		message = '<span class="test-message">' + message + "</span>";
-		expected = escapeHtml(QUnit.jsDump.parse(expected));
-		actual = escapeHtml(QUnit.jsDump.parse(actual));
+		expected = escapeInnerText(QUnit.jsDump.parse(expected));
+		actual = escapeInnerText(QUnit.jsDump.parse(actual));
 		var output = message + '<table><tr class="test-expected"><th>Expected: </th><td><pre>' + expected + '</pre></td></tr>';
 		if (actual != expected) {
 			output += '<tr class="test-actual"><th>Result: </th><td><pre>' + actual + '</pre></td></tr>';
@@ -631,12 +652,12 @@ extend(QUnit, {
 			var source = sourceFromStacktrace();
 			if (source) {
 				details.source = source;
-				output += '<tr class="test-source"><th>Source: </th><td><pre>' + escapeHtml(source) + '</pre></td></tr>';
+				output += '<tr class="test-source"><th>Source: </th><td><pre>' + escapeInnerText(source) + '</pre></td></tr>';
 			}
 		}
 		output += "</table>";
 
-		QUnit.log(details);
+		runLoggingCallbacks( 'log', QUnit, details );
 
 		config.current.assertions.push({
 			result: !!result,
@@ -657,23 +678,28 @@ extend(QUnit, {
 
 	extend: extend,
 	id: id,
-	addEvent: addEvent,
+	addEvent: addEvent
+});
 
+//QUnit.constructor is set to the empty F() above so that we can add to it's prototype later
+//Doing this allows us to tell if the following methods have been overwritten on the actual
+//QUnit object, which is a deprecated way of using the callbacks.
+extend(QUnit.constructor.prototype, {
 	// Logging callbacks; all receive a single argument with the listed properties
 	// run test/logs.html for any related changes
-	begin: function() {},
+	begin: registerLoggingCallback('begin'),
 	// done: { failed, passed, total, runtime }
-	done: function() {},
+	done: registerLoggingCallback('done'),
 	// log: { result, actual, expected, message }
-	log: function() {},
+	log: registerLoggingCallback('log'),
 	// testStart: { name }
-	testStart: function() {},
+	testStart: registerLoggingCallback('testStart'),
 	// testDone: { name, failed, passed, total }
-	testDone: function() {},
+	testDone: registerLoggingCallback('testDone'),
 	// moduleStart: { name }
-	moduleStart: function() {},
+	moduleStart: registerLoggingCallback('moduleStart'),
 	// moduleDone: { name, failed, passed, total }
-	moduleDone: function() {}
+	moduleDone: registerLoggingCallback('moduleDone')
 });
 
 if ( typeof document === "undefined" || document.readyState === "complete" ) {
@@ -681,7 +707,7 @@ if ( typeof document === "undefined" || document.readyState === "complete" ) {
 }
 
 QUnit.load = function() {
-	QUnit.begin({});
+	runLoggingCallbacks( 'begin', QUnit, {} );
 
 	// Initialize the config, saving the execution queue
 	var oldconfig = extend({}, config);
@@ -761,7 +787,7 @@ function done() {
 
 	// Log the last module results
 	if ( config.currentModule ) {
-		QUnit.moduleDone( {
+		runLoggingCallbacks( 'moduleDone', QUnit, {
 			name: config.currentModule,
 			failed: config.moduleStats.bad,
 			passed: config.moduleStats.all - config.moduleStats.bad,
@@ -803,7 +829,7 @@ function done() {
 		].join(" ");
 	}
 
-	QUnit.done( {
+	runLoggingCallbacks( 'done', QUnit, {
 		failed: config.stats.bad,
 		passed: passed,
 		total: config.stats.all,
@@ -855,16 +881,14 @@ function sourceFromStacktrace() {
 	}
 }
 
-function escapeHtml(s) {
+function escapeInnerText(s) {
 	if (!s) {
 		return "";
 	}
 	s = s + "";
-	return s.replace(/[\&"<>\\]/g, function(s) {
+	return s.replace(/[\&<>]/g, function(s) {
 		switch(s) {
 			case "&": return "&amp;";
-			case "\\": return "\\\\";
-			case '"': return '\"';
 			case "<": return "&lt;";
 			case ">": return "&gt;";
 			default: return s;
@@ -974,9 +998,27 @@ function id(name) {
 		document.getElementById( name );
 }
 
+function registerLoggingCallback(key){
+	return function(callback){
+		config[key].push( callback );
+	};
+}
+
+// Supports deprecated method of completely overwriting logging callbacks
+function runLoggingCallbacks(key, scope, args) {
+	//debugger;
+	var callbacks;
+	if ( QUnit.hasOwnProperty(key) ) {
+		QUnit[key].call(scope, args);
+	} else {
+		callbacks = config[key];
+		for( var i = 0; i < callbacks.length; i++ ) {
+			callbacks[i].call( scope, args );
+		}
+	}
+}
+
 // Test for equality any JavaScript type.
-// Discussions and reference: http://philrathe.com/articles/equiv
-// Test suites: http://philrathe.com/tests/equiv
 // Author: Philippe Rathé <prathe@gmail.com>
 QUnit.equiv = function () {
 
