@@ -187,11 +187,16 @@ ul.list-toggles{
         margin:0;
         cursor:pointer;
         padding:10px 15px;
+        &.active{
+          background-color:@brand-primary;
+          color:#fff;
+        }
       }
       input[type=checkbox],
       input[type=radio]{
         display:none;
       }
+
     }
     @media (min-width: @screen-md-min){
       .list-toggles-marker{

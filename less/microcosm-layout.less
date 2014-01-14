@@ -191,9 +191,11 @@ blockquote{
   font-size:@font-size-base;
   margin:0;
   padding:0;
-  color:#333;
   h3{
     display:inline;
+  }
+  a{
+    color:#333;
   }
   &:hover{
     color:@brand-primary;
@@ -348,6 +350,18 @@ blockquote{
   li{
     float:left;
     padding:0 5px 0 0;
+    &:last-child{
+      padding-right:0
+    }
+  }
+  .list-people-button{
+    background-color: #EEE;
+    padding: 6px 8px;
+    font-size: 14px;
+    font-weight: 700;
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    color: #999;
   }
 }
 .list-people-sm{
@@ -455,14 +469,13 @@ blockquote{
     border-radius: 5px;
     display:inline-block;
     float:left;
-    &:last-child {
+    &.pills-event-where {
       max-width: 100%;
       display: block;
       float: none;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-
       border-left: 1px solid #eee;
       border-radius: 0 5px 5px 0;
     }
@@ -480,7 +493,7 @@ blockquote{
     box-shadow: none;
     border: 1px solid #89ADDB;
     span{
-      &:last-child{
+      &.pills-event-where{
         max-width: 130px;
         background-color: #DDE9FF;
         border-left: 1px solid #89ADDB;
@@ -682,7 +695,6 @@ blockquote{
 
 
 .btn-switch{
-  height:24px;
   .btn-switch-state{
     font-size:@font-size-small;
   }

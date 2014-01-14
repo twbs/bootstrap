@@ -45,6 +45,9 @@
 .sprite-calendar{
   background-position: (@sprite-scaled-width * -1) 0;
 }
+.sprite-calendar-2{
+  background-position: (@sprite-scaled-width * -4) @sprite-row-2;
+}
 
 .sprite-calendar-small{
   .sprite-size-small;
@@ -158,10 +161,10 @@
 .sprite-nib-up{
   width:16px;
   height:8px;
-  background-position:@sprite-small-width * -7  (@sprite-row-4);
+  background-position:(@sprite-small-width * -7)  @sprite-row-4;
 }
 .sprite-nib-down{
   width:16px;
   height:8px;
-  background-position:( @sprite-small-width * -7) @sprite-row-4;
+  background-position:(@sprite-small-width * -7) @sprite-row-4 - 8px;
 }
