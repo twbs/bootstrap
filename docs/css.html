@@ -2577,6 +2577,21 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   .text-hide();
 }
 {% endhighlight %}
+
+    <h3 id="helper-classes-embeds-responsive">Embeds responsive</h3>
+    <p>Allows browsers to determine videos or slideshow dimensions based on the width of their containing block to create an intrinsic ratio that will properly scale on any device.</p>
+    <p>Rules are directly apply to <code>&lt;iframe&gt;</code>, <code>&lt;embed&gt;</code> and <code>&lt;object&gt;</code> elements, optionally use of an explicit descendant class <code>.embed-responsive-item</code> when you want to match the styling for other attributes.</p>
+{% highlight html %}
+<!-- 16:9 aspect ratio -->
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="…"></iframe>
+</div>
+
+<!-- 4:3 aspect ratio -->
+<div class="embed-responsive embed-responsive-4by3">
+  <iframe class="embed-responsive-item" src="…"></iframe>
+</div>
+{% endhighlight %}
   </div>
 
 
