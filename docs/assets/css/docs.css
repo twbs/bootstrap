@@ -296,13 +296,14 @@ body {
 /* Page headers */
 .bs-header {
   margin-bottom: 40px;
-  padding: 30px 15px 40px; /* side padding builds on .container 15px, so 30px */
   font-size: 20px;
 }
 .bs-header h1 {
+  margin-top: 0;
   color: #fff;
 }
 .bs-header p {
+  margin-bottom: 0;
   font-weight: 300;
   line-height: 1.4;
 }
@@ -312,6 +313,8 @@ body {
 
 @media (min-width: 768px) {
   .bs-header {
+    padding-top: 60px;
+    padding-bottom: 60px;
     font-size: 24px;
     text-align: left;
   }
@@ -402,7 +405,7 @@ body {
 @media (min-width: 992px) {
   .carbonad {
     position: absolute;
-    top: 20px;
+    top: 0;
     right: 15px; /* 15px instead of 0 since box-sizing */
     padding: 15px !important;
     width: 330px !important;
