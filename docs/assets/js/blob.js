@@ -1,4 +1,5 @@
-/* Blob.js
+/*!
+ * Blob.js
  * A Blob implementation.
  * 2013-12-27
  * 
