@@ -1998,7 +1998,9 @@ textarea.input-lg {
   border: 1px solid transparent;
   border-radius: 4px;
 }
-.btn:focus {
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
