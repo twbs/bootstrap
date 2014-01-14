@@ -196,7 +196,6 @@ module.exports = function (grunt) {
     cssmin: {
       compress: {
         options: {
-          banner: '<%= bannerDocs %>',
           keepSpecialComments: '*',
           noAdvanced: true, // turn advanced optimizations off until it's fixed in clean-css
           report: 'min',
