@@ -236,8 +236,9 @@ blockquote{
     margin-bottom: 0;
     border-radius: 5px;
     width:85%;
-    color:#999;
+    color:#666;
     float:left;
+    font-family: @font-family-serif;
     blockquote p{
       font-size:@font-size-small;
       color: #999;
@@ -249,6 +250,36 @@ blockquote{
       width:90%;
     }
   }
+}
+.row-meta-progress {
+  display: inline-block;
+  overflow: auto;
+  width: 150px;
+  vertical-align: middle;
+  margin: 0 0 0 10px;
+  font-size: @font-size-xsmall;
+  .progress{
+    width:78%;
+  }
+}
+.inline-subscribe{
+  display:inline-block;
+  font-size:@font-size-small;
+  .btn-switch a.btn-switch-off{
+    font-size: @font-size-small;
+    color:#ccc;
+    text-decoration: none;
+    &:hover{
+      color:#999;
+      text-decoration: underline;
+    }
+  }
+  .btn-switch a.btn-switch-on{
+    background: rgba(0, 0, 0, 0);
+    border: 0;
+    padding: 0;
+  }
+
 }
 .row-stats{
   font-size:@font-size-small;
