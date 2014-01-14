@@ -1,6 +1,6 @@
 
-@sprite-image-width: 150px;
-@sprite-image-height:104px;
+@sprite-image-width: 168px;
+@sprite-image-height:132px;
 
 @sprite-base-width:   28px;
 @sprite-base-height:  28px;
@@ -17,8 +17,9 @@
 
 @sprite-row-2:    @sprite-base-height * -1;
 @sprite-row-3:    @sprite-base-height * -2;
-@sprite-row-4:    @sprite-row-3 + (@sprite-small-height*-1);
+@sprite-row-4:    @sprite-base-height * -3;
 @sprite-row-5:    @sprite-row-4 + (@sprite-small-height*-1);
+@sprite-row-6:    @sprite-row-5 + (@sprite-small-height*-1);
 
 
 
@@ -39,7 +40,7 @@
 }
 .sprite-speech-bubble-small{
   .sprite-size-small;
-  background-position: 0 @sprite-row-4;
+  background-position: 0 @sprite-row-5;
 }
 
 .sprite-calendar{
@@ -51,7 +52,7 @@
 
 .sprite-calendar-small{
   .sprite-size-small;
-  background-position: (@sprite-small-width * -1) @sprite-row-4;
+  background-position: (@sprite-small-width * -1) @sprite-row-5;
 }
 
 .sprite-map-marker{
@@ -66,13 +67,16 @@
 .sprite-attending{
   background-position: (@sprite-scaled-width * 0) @sprite-row-2;
 }
+.sprite-user{
+  background-position: (@sprite-scaled-width * 0) @sprite-row-3;
+}
 
 .sprite-envelope{
   background-position: (@sprite-scaled-width * -1) @sprite-row-2;
 }
 .sprite-envelope-small{
   .sprite-size-small;
-  background-position: (@sprite-small-width * -2) @sprite-row-4;
+  background-position: (@sprite-small-width * -2) @sprite-row-5;
 }
 
 .sprite-quote{
@@ -81,26 +85,34 @@
 
 .sprite-search-small{
   .sprite-size-small;
-  background-position: (@sprite-small-width * -3) @sprite-row-4;
+  background-position: (@sprite-small-width * -3) @sprite-row-5;
 }
 
 .sprite-ok-small{
   .sprite-size-small;
-  background-position: (@sprite-small-width * -4) @sprite-row-4;
+  background-position: (@sprite-small-width * -4) @sprite-row-5;
 }
 
 .sprite-logout{
   .sprite-size-small;
-  background-position:  (@sprite-small-width * -8) @sprite-row-4;
+  background-position:  (@sprite-small-width * -8) @sprite-row-5;
 }
 
 .sprite-menu-2{
   background-position: (@sprite-scaled-width * -4) 0;
 }
 
+.sprite-speech-bubble-single{
+  background-position: (@sprite-scaled-width * -5) 0;
+}
+
+.sprite-microcosm{
+  background-position: (@sprite-scaled-width * -5) @sprite-row-2;
+}
+
 .sprite-branch-arrow-right{
   .sprite-size-small;
-  background-position: 0 @sprite-row-5;
+  background-position: 0 @sprite-row-6;
 }
 
 ////////////////////////
@@ -109,27 +121,27 @@
 
 .sprite-arrow-reply{
   .sprite-size-small;
-  background-position: (@sprite-small-width * 0) @sprite-row-3;
+  background-position: (@sprite-small-width * 0) @sprite-row-4;
 }
 .sprite-arrow-forward{
   .sprite-size-small;
-  background-position: (@sprite-small-width * -1) @sprite-row-3;
+  background-position: (@sprite-small-width * -1) @sprite-row-4;
 }
 .sprite-arrow-left{
   .sprite-size-small;
-  background-position: (@sprite-small-width * -2) @sprite-row-3;
+  background-position: (@sprite-small-width * -2) @sprite-row-4;
 }
 .sprite-arrow-right{
   .sprite-size-small;
-  background-position: (@sprite-small-width * -3) @sprite-row-3;
+  background-position: (@sprite-small-width * -3) @sprite-row-4;
 }
 .sprite-arrow-jump-left{
   .sprite-size-small;
-  background-position: (@sprite-small-width * -4) @sprite-row-3;
+  background-position: (@sprite-small-width * -4) @sprite-row-4;
 }
 .sprite-arrow-jump-right{
   .sprite-size-small;
-  background-position: (@sprite-small-width * -5) @sprite-row-3;
+  background-position: (@sprite-small-width * -5) @sprite-row-4;
 }
 
 
@@ -139,19 +151,19 @@
 
 .sprite-format-link{
   .sprite-size-small;
-  background-position:(@sprite-small-width * -6) @sprite-row-3;
+  background-position:(@sprite-small-width * -6) @sprite-row-4;
 }
 .sprite-format-list{
   .sprite-size-small;
-  background-position:(@sprite-small-width * -7) @sprite-row-3;
+  background-position:(@sprite-small-width * -7) @sprite-row-4;
 }
 .sprite-format-img{
   .sprite-size-small;
-  background-position:(@sprite-small-width * -8) @sprite-row-3;
+  background-position:(@sprite-small-width * -8) @sprite-row-4;
 }
 .sprite-help-small{
   .sprite-size-small;
-  background-position:(@sprite-small-width * -6) @sprite-row-4;
+  background-position:(@sprite-small-width * -6) @sprite-row-5;
 }
 
 ////////////////////////////////////////////
@@ -161,10 +173,10 @@
 .sprite-nib-up{
   width:16px;
   height:8px;
-  background-position:(@sprite-small-width * -7)  @sprite-row-4;
+  background-position:(@sprite-small-width * -7)  @sprite-row-5;
 }
 .sprite-nib-down{
   width:16px;
   height:8px;
-  background-position:(@sprite-small-width * -7) @sprite-row-4 - 8px;
+  background-position:(@sprite-small-width * -7) @sprite-row-5 - 8px;
 }
