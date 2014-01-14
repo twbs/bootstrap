@@ -64,7 +64,10 @@
   font-size:@font-size-small;
   color:#333;
 }
-
+.comment-item-in-reply-to{
+  font-size:@font-size-xsmall;
+  color:#999;
+}
 .comment-item-permalink{
   float:right;
   color:#ccc;
@@ -107,8 +110,14 @@
   }
 }
 .comment-item-footer{
-  font-size:@font-size-small;
+  font-size:@font-size-xsmall;
   color:#666;
+  &>a{
+    color:#ccc;
+    &:hover{
+      color:@brand-primary;
+    }
+  }
 }
 .generated-comment-box{
   padding-top:10px;
