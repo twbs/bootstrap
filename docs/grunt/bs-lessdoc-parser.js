@@ -41,7 +41,7 @@ function Section(heading, customizable) {
 
 Section.prototype.addSubSection = function (subsection) {
   this.subsections.push(subsection);
-}
+};
 
 function SubSection(heading) {
   this.heading = heading.trim();

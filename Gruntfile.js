@@ -133,7 +133,7 @@ module.exports = function (grunt) {
         src: [
           'docs/assets/js/less.min.js',
           'docs/assets/js/jszip.js',
-          'docs/assets/js/uglify.js',
+          'docs/assets/js/uglify.min.js',
           'docs/assets/js/blob.js',
           'docs/assets/js/filesaver.js',
           'docs/assets/js/raw-files.js',
@@ -396,5 +396,8 @@ module.exports = function (grunt) {
   // task for building customizer
   grunt.registerTask('build-customizer', ['build-customizer-vars-form', 'build-raw-files']);
   grunt.registerTask('build-customizer-vars-form', ['jade']);
-  grunt.registerTask('build-raw-files', 'Add scripts/less files to customizer.', generateRawFilesJs);
+  grunt.registerTask('build-raw-files', 'Add scripts/less files to customizer.', function () {
+    var banner = grunt.template.process('<%= banner %>');
+    generateRawFilesJs(banner);
+  });
 };
