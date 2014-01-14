@@ -829,6 +829,17 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
 </div>
 {% endhighlight %}
 
+    <h3>Update Address</h3>
+    <p>To make tab changes update the url in the address bar, add <code>follow-url</code> as an attribute to each <code>data-toggle</code> element.</p>
+{% highlight html %}
+<ul class="nav nav-tabs">
+  <li><a href="#home" data-toggle="tab" follow-url>Home</a></li>
+  <li><a href="#profile" data-toggle="tab" follow-url>Profile</a></li>
+  <li><a href="#messages" data-toggle="tab" follow-url>Messages</a></li>
+  <li><a href="#settings" data-toggle="tab" follow-url>Settings</a></li>
+</ul>
+{% endhighlight %}
+
     <h3>Methods</h3>
     <h4>$().tab</h4>
     <p>
