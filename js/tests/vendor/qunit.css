@@ -1,5 +1,5 @@
 /**
- * QUnit - A JavaScript Unit Testing Framework
+ * QUnit 1.0.0 - A JavaScript Unit Testing Framework
  *
  * http://docs.jquery.com/QUnit
  *
@@ -223,10 +223,4 @@
 	position: absolute;
 	top: -10000px;
 	left: -10000px;
-}
-
-/** Runoff */
-
-#qunit-fixture {
-  display:none;
 }
