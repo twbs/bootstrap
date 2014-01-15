@@ -73,6 +73,15 @@
   .navbar-profile-row-2{
     width:100%;
     display:none;
+    a{
+      &:hover{
+        text-decoration: none;
+        strong{
+          text-decoration: underline;
+        }
+      }
+
+    }
   }
   .navbar-profile-row-4{
     display:none;
@@ -92,6 +101,11 @@
     display: block;
     padding: 10px 15px;
     text-decoration: none;
+    .label{
+      display:inline-block;
+      padding:0 5px;
+      font-size:@font-size-small;
+    }
   }
   .navbar-profile-logout{
     padding: 16px;
@@ -99,6 +113,18 @@
     float: right;
     display: block;
     border-left: 1px solid #EEE;
+  }
+  .navbar-profile-edit{
+    float: left;
+    font-size: 14px;
+    margin-left: 10px;
+    height: 49px;
+    line-height: 47px;
+    color:#ccc;
+    &:hover{
+      color:#666;
+      text-decoration: underline;
+    }
   }
   @media (min-width: @screen-sm-min){
     float:right;
@@ -122,15 +148,23 @@
       display:inline-block;
       padding:5px;
     }
-    .badge{
-      float: right;
-      font-size: 12px;
-      text-transform: uppercase;
-      border-radius: 3px;
-    }
 
+    .navbar-profile-edit{
+      padding: 0;
+      clear: left;
+      float:none;
+      display: inline-block;
+      margin-left: 53px;
+      line-height: 0;
+      height: auto;
+    }
     .navbar-profile-avatar{
-      padding-left:8px;
+      display:inline;
+      float:none;
+      padding:0;
+      img{
+        margin:9px 9px 0;
+      }
     }
     .navbar-profile-row-1-huddles{
       display:none;
@@ -140,7 +174,9 @@
       padding-right:12px;
     }
 
-
+    .navbar-profile-row-1{
+      height:60px;
+    }
     .navbar-profile-row-2{
       display:block;
       padding-top:3px;
@@ -155,6 +191,7 @@
   }
   @media (min-width: @screen-md-min){
     margin-right:0;
+    margin-top: 0;
   }
 }
 
