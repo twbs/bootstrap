@@ -31,7 +31,7 @@ lead: "Over a dozen reusable components built to provide iconography, dropdowns,
     <p>For performance reasons, all icons require a base class and individual icon class. To use, place the following code just about anywhere. Be sure to leave a space between the icon and text for proper padding.</p>
     <div class="bs-callout bs-callout-danger">
       <h4>Don't mix with other components</h4>
-      <p>Icon classes cannot be combined with other elements. They are designed to be standalone elements.</p>
+      <p>Icon classes cannot be directly combined with other components. They should not be used along with other classes on the same element. Instead, add a nested <code>&lt;span&gt;</code> and apply the icon classes to the <code>&lt;span&gt;</code>.</p>
     </div>
 {% highlight html %}
 <span class="glyphicon glyphicon-search"></span>
@@ -761,7 +761,7 @@ lead: "Over a dozen reusable components built to provide iconography, dropdowns,
     </div>
     <div class="bs-callout bs-callout-info">
       <h4>Don't mix with other components</h4>
-      <p>Do not mix form group or grid column classes directly with input groups.</p>
+      <p>Do not mix form groups or grid column classes directly with input groups. Instead, nest the input group inside of the form group or grid-related element.</p>
     </div>
 
 
