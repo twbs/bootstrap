@@ -70,6 +70,9 @@
 .sprite-user{
   background-position: (@sprite-scaled-width * 0) @sprite-row-3;
 }
+.sprite-user-group{
+  background-position: (@sprite-scaled-width * -1) @sprite-row-3;
+}
 
 .sprite-envelope{
   background-position: (@sprite-scaled-width * -1) @sprite-row-2;
@@ -77,6 +80,14 @@
 .sprite-envelope-small{
   .sprite-size-small;
   background-position: (@sprite-small-width * -2) @sprite-row-5;
+}
+.label-warning{
+  .sprite-envelope{
+    background-position:(@sprite-scaled-width * -2) @sprite-row-3;
+  }
+  .sprite-envelope-small{
+    background-position: (@sprite-small-width * -1) @sprite-row-6;
+  }
 }
 
 .sprite-quote{
