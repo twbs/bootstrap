@@ -26,9 +26,13 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- Note: this page contains WAI-ARIA @role= attributes which are not
+         necessary for Bootstrap JS, but are very helpful for people
+         utilizing screen readers. -->
   </head>
 
-  <body>
+  <body role="document">
 
     <!-- Fixed navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -64,7 +68,7 @@
       </div>
     </div>
 
-    <div class="container theme-showcase">
+    <div class="container theme-showcase" role="main">
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
