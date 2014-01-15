@@ -20,9 +20,12 @@ env:
     - secure: "gqjqISbxBJK6byFbsmr1AyP1qoWH+rap06A2gI7v72+Tn2PU2nYkIMUkCvhZw6K889jv+LhQ/ybcBxDOXHpNCExCnSgB4dcnmYp+9oeNZb37jSP0rQ+Ib4OTLjzc3/FawE/fUq5kukZTC7porzc/k0qJNLAZRx3YLALmK1GIdUY="
     - secure: "Gghh/e3Gsbj1+4RR9Lh2aR/xJl35HWiHqlPIeSUqE9D7uDCVTAwNce/dGL3Ew7uJPfJ6Pgr70wD3zgu3stw0Zmzayax0hiDtGwcQCxVIER08wqGANK9C2Q7PYJkNTNtiTo6ehKWbdV4Z+/U+TEYyQfpQTDbAFYk/vVpsdjp0Lmc="
     - secure: "RTbRdx4G/2OTLfrZtP1VbRljxEmd6A1F3GqXboeQTldsnAlwpsES65es5CE3ub/rmixLApOY9ot7OPmNixFgC2Y8xOsV7lNCC62QVpmqQEDyGFFQKb3yO6/dmwQxdsCqGfzf9Np6Wh5V22QFvr50ZLKLd7Uhd9oXMDIk/z1MJ3o="
+    - secure: "Besg41eyU+2mfxrywQ4ydOShMdc34ImaO0S0ENP+aCOBuyNBIgP59wy5tBMmyai2/8eInYeVps4Td96mWInMMxzTe3Bar7eTLG5tWVKRSr/wc4NBPZ/ppoPAmCEsz9Y+VptRH9/FO8n7hsL9EFZ+xBKbG+C0SccGoyBDpA5j7/w="
+    - secure: "Ptiv7phCImFP3ALIz+sMQzrZg8k7C1gLZbFBhWxjnQr3g06wIfX3Ls5y9OHvxid+lOZZjISui3wzBVgpVHqwHUYf96+r0mo6/mJ+F4ffUmShZANVaIMD/JRTnXhUQJbvntGLvxn1EYWPdNM+2IHJrMipnjHxU9tkgAnlel4Zdew="
   matrix:
     - TWBS_TEST=core
     - TWBS_TEST=validate-html
     - TWBS_TEST=sauce-js-unit
+    - TWBS_TEST=browserstack-js-unit
 matrix:
   fast_finish: true

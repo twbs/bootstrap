@@ -348,6 +348,7 @@ module.exports = function (grunt) {
 
   // These plugins provide necessary tasks.
   require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
+  grunt.loadNpmTasks('browserstack-runner');
 
   // Docs HTML validation task
   grunt.registerTask('validate-html', ['jekyll', 'validation']);
@@ -368,6 +369,12 @@ module.exports = function (grunt) {
       && (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'sauce-js-unit')) {
     testSubtasks.push('connect');
     testSubtasks.push('saucelabs-qunit');
+  }
+  // Only run BrowserStack tests if there's a BrowserStack access key
+  if (typeof process.env.BROWSERSTACK_KEY !== 'undefined'
+      // Skip BrowserStack if running a different subset of the test suite
+      && (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'browserstack-js-unit')) {
+    testSubtasks.push('browserstack_runner');
   }
   grunt.registerTask('test', testSubtasks);
 
