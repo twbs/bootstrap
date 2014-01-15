@@ -12,6 +12,7 @@ host:             0.0.0.0
 port:             9001
 baseurl:          /
 url:              http://localhost:9001
+encoding:         UTF-8
 
 # Custom vars
 current_version:  3.0.3
