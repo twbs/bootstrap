@@ -226,6 +226,8 @@ body {
 /* Share masthead with page headers */
 .bs-masthead,
 .bs-header {
+  position: relative;
+  padding: 30px 15px;
   color: #cdbfe3;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0,0,0,.1);
@@ -237,10 +239,6 @@ body {
 }
 
  /* Masthead (headings and download button) */
-.bs-masthead {
-  position: relative;
-  padding: 30px 15px;
-}
 .bs-masthead .bs-booticon {
   margin: 0 auto 30px;
 }
@@ -341,7 +339,7 @@ body {
 
 .carbonad {
   width: auto !important;
-  margin: 20px -30px -41px !important;
+  margin: 30px -30px -31px !important;
   padding: 20px !important;
   overflow: hidden; /* clearfix */
   height: auto !important;
@@ -377,11 +375,6 @@ body {
 }
 .carbonad #azcarbon > img {
   display: none; /* hide what I assume are tracking images */
-}
-
-/* Homepage variation */
-.bs-docs-home .carbonad {
-  margin: 0 -30px -31px !important;
 }
 
 @media (min-width: 480px) {
