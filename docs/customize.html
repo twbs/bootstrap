@@ -8,10 +8,9 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
 <!-- Customizer form -->
 <form class="bs-customizer" role="form">
   <div class="bs-docs-section" id="less-section">
-    <div class="page-header">
-      <button class="btn btn-default toggle" type="button">Toggle all</button>
-      <h1 id="less">LESS files</h1>
-    </div>
+    <button class="btn btn-default toggle" type="button">Toggle all</button>
+    <h1 id="less" class="page-header">LESS files</h1>
+
     <p class="lead">Choose which LESS files to compile into your custom build of Bootstrap. Not sure which files to use? Read through the <a href="../css/">CSS</a> and <a href="../components/">Components</a> pages in the docs.</p>
 
     <div class="row">
@@ -238,10 +237,9 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
 
 
   <div class="bs-docs-section" id="plugin-section">
-    <div class="page-header">
-      <button class="btn btn-default toggle" type="button">Toggle all</button>
-      <h1 id="plugins">jQuery plugins</h1>
-    </div>
+    <button class="btn btn-default toggle" type="button">Toggle all</button>
+    <h1 id="plugins" class="page-header">jQuery plugins</h1>
+
     <p class="lead">Choose which jQuery plugins should be included in your custom JavaScript files. Unsure what to include? Read the <a href="../javascript/">JavaScript</a> page in the docs.</p>
     <div class="row">
       <div class="col-lg-6">
@@ -338,18 +336,18 @@ lead: Customize Bootstrap's components, LESS variables, and jQuery plugins to ge
 
 
   <div class="bs-docs-section" id="less-variables-section">
-    <div class="page-header">
-      <button class="btn btn-default toggle" type="button">Reset to defaults</button>
-      <h1 id="less-variables">LESS variables</h1>
-    </div>
+    <button class="btn btn-default toggle" type="button">Reset to defaults</button>
+    <h1 id="less-variables" class="page-header">LESS variables</h1>
+
     <p class="lead">Customize LESS variables to define colors, sizes and more inside your custom CSS stylesheets.</p>
     {% include customizer-variables.html %}
   </div>
 
+
+
   <div class="bs-docs-section">
-    <div class="page-header">
-      <h1 id="download">Download</h1>
-    </div>
+    <h1 id="download" class="page-header">Download</h1>
+
     <p class="lead">Hooray! Your custom version of Bootstrap is now ready to be compiled. Just click the button below to finish the process.</p>
     <div class="bs-customize-download">
       <button type="submit" id="btn-compile" class="btn btn-block btn-lg btn-outline" onclick="_gaq.push(['_trackEvent', 'Customize', 'Download', 'Customize and Download']);">Compile and Download</button>
