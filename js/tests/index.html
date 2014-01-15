@@ -4,12 +4,17 @@
   <title>Bootstrap Plugin Test Suite</title>
 
   <!-- jquery -->
-  <!--<script src="http://code.jquery.com/jquery-1.7.min.js"></script>-->
   <script src="vendor/jquery.js"></script>
 
   <!-- qunit -->
   <link rel="stylesheet" href="vendor/qunit.css" media="screen">
   <script src="vendor/qunit.js"></script>
+  <script>
+    // See https://github.com/axemclion/grunt-saucelabs#test-result-details-with-qunit
+    QUnit.done(function(results) {
+      window.global_test_results = results
+    })
+  </script>
 
   <!--  plugin sources -->
   <script src="../../js/transition.js"></script>
