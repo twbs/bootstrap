@@ -337,7 +337,7 @@ module.exports = function (grunt) {
       all: {
         options: {
           build: process.env.TRAVIS_JOB_ID,
-          concurrency: 3,
+          concurrency: 10,
           urls: ['http://127.0.0.1:3000/js/tests/index.html'],
           browsers: grunt.file.readYAML('test-infra/sauce_browsers.yml')
         }
