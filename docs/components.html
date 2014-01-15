@@ -29,7 +29,7 @@ lead: "Over a dozen reusable components built to provide iconography, dropdowns,
   <p>For performance reasons, all icons require a base class and individual icon class. To use, place the following code just about anywhere. Be sure to leave a space between the icon and text for proper padding.</p>
   <div class="bs-callout bs-callout-danger">
     <h4>Don't mix with other components</h4>
-    <p>Icon classes cannot be combined with other elements. They are designed to be standalone elements.</p>
+    <p>Icon classes cannot be directly combined with other components. They should not be used along with other classes on the same element. Instead, add a nested <code>&lt;span&gt;</code> and apply the icon classes to the <code>&lt;span&gt;</code>.</p>
   </div>
 {% highlight html %}
 <span class="glyphicon glyphicon-search"></span>
@@ -181,7 +181,7 @@ lead: "Over a dozen reusable components built to provide iconography, dropdowns,
 
   <p class="lead">Group a series of buttons together on a single line with the button group. Add on optional JavaScript radio and checkbox style behavior with <a href="../javascript/#buttons">our buttons plugin</a>.</p>
 
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-warning">
     <h4>Tooltips &amp; popovers in button groups require special setting</h4>
     <p>When using tooltips or popovers on elements within a <code>.btn-group</code>, you'll have to specify the option <code>container: 'body'</code> to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).</p>
   </div>
@@ -795,6 +795,14 @@ lead: "Over a dozen reusable components built to provide iconography, dropdowns,
 </div>
 {% endhighlight %}
 
+  <div class="bs-callout bs-callout-warning">
+    <h4>Tooltips &amp; popovers in input groups require special setting</h4>
+    <p>When using tooltips or popovers on elements within an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).</p>
+  </div>
+  <div class="bs-callout bs-callout-warning">
+    <h4>Don't mix with other components</h4>
+    <p>Do not mix form groups or grid column classes directly with input groups. Instead, nest the input group inside of the form group or grid-related element.</p>
+  </div>
 
   <h2 id="input-groups-sizing">Sizing</h2>
   <p>Add the relative form sizing classes to the <code>.input-group</code> itself and contents within will automatically resize—no need for repeating the form control size classes on each element.</p>
@@ -1417,7 +1425,7 @@ lead: "Over a dozen reusable components built to provide iconography, dropdowns,
     <p>There are some caveats regarding using form controls within fixed elements on mobile devices. <a href="../getting-started/#support-fixed-position-keyboards">See our browser support docs</a> for details.</p>
   </div>
 
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-warning">
     <h4>Always add labels</h4>
     <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline navbar forms, you can hide the labels using the <code>.sr-only</code> class.</p>
   </div>
