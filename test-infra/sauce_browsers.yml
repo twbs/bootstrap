@@ -21,11 +21,11 @@
 
   # Mac Opera not currently supported by Sauce Labs
 
-  # { # FIXME: currently fails 1 tooltip test
-  #   browserName: "internet explorer",
-  #   version: "11",
-  #   platform: "Windows 8.1"
-  # },
+  {
+    browserName: "internet explorer",
+    version: "11",
+    platform: "Windows 8.1"
+  },
 
   # {
   #   browserName: "internet explorer",
