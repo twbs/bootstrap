@@ -51,7 +51,6 @@
 .navbar-profile{
   clear: left;
   font-size: @font-size-xsmall;
-  line-height: 0;
   background-color: #FFF;
 
   img{
@@ -91,15 +90,37 @@
     text-align: center;
     padding:7px 0;
   }
+
+  .navbar-profile-row-1-left{
+    padding-top:16px;
+    padding-bottom:10px;
+  }
   .navbar-profile-avatar{
-    display: block;
-    float: left;
-    padding: 8px 0;
+    display: inline;
+    text-decoration: none;
+  }
+  .navbar-profile-name{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 40%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .navbar-profile-edit{
+    color:#ccc;
+    &:hover{
+      color:#666;
+      text-decoration: underline;
+    }
+    .navbar-profile-edit-text{
+      display:none;
+    }
   }
   .navbar-profile-row-1-huddles{
     float: right;
     display: block;
-    padding: 10px 15px;
+    padding: 0 10px 0 0;
     text-decoration: none;
     .label{
       display:inline-block;
@@ -114,22 +135,23 @@
     display: block;
     border-left: 1px solid #EEE;
   }
-  .navbar-profile-edit{
-    float: left;
-    font-size: 14px;
-    margin-left: 10px;
-    height: 49px;
-    line-height: 47px;
-    color:#ccc;
-    &:hover{
-      color:#666;
-      text-decoration: underline;
-    }
-  }
+
   @media (min-width: @screen-sm-min){
     float:right;
     margin-top:37px;
     border-left:1px solid #eee;
+    width: 200px;
+
+    .navbar-profile-row-1-left{
+      padding-top:9px;
+      padding-bottom:8px;
+    }
+    .navbar-profile-name{
+      display:none;
+    }
+    .navbar-profile-logout{
+      padding:9px 0 15px 16px;
+    }
   }
   @media (min-width: @screen-md-min){
 
@@ -142,29 +164,34 @@
     padding:0;
     min-width:200px;
     margin-right:15px;
-    margin-top:12px;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
-    a{
-      display:inline-block;
-      padding:5px;
+
+
+    .navbar-profile-row-1-left{
+      padding:0;
     }
 
     .navbar-profile-edit{
-      padding: 0;
-      clear: left;
-      float:none;
+      font-size: 14px;
+      display: inline;
+      width: 111px;
+      span.sprite{
+        display:none;
+      }
+      .navbar-profile-edit-text{
+        display:inline;
+      }
+    }
+    .navbar-profile-name{
       display: inline-block;
-      margin-left: 53px;
-      line-height: 0;
-      height: auto;
+      width: 48%;
+      margin-top: 5px;
     }
     .navbar-profile-avatar{
-      display:inline;
-      float:none;
-      padding:0;
-      img{
-        margin:9px 9px 0;
-      }
+      display: inline-block;
+      padding: 0;
+      margin: 9px 5px 0 9px;
+      float: left;
     }
     .navbar-profile-row-1-huddles{
       display:none;
@@ -175,12 +202,13 @@
     }
 
     .navbar-profile-row-1{
-      height:60px;
+      min-height:60px;
     }
     .navbar-profile-row-2{
       display:block;
       padding-top:3px;
       background-color:#fbfbfb;
+      padding:4px;
     }
     .navbar-profile-row-4{
       display:block;
@@ -189,9 +217,16 @@
       padding: 5px;
     }
   }
-  @media (min-width: @screen-md-min){
+  @media (min-width: @screen-lg-min){
     margin-right:0;
     margin-top: 0;
+    width:240px;
+    .navbar-profile-name{
+      max-width: 60%;
+      display: block;
+      margin: 0;
+      padding-top: 5px;
+    }
   }
 }
 
