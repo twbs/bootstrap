@@ -332,7 +332,7 @@ $(function () {
           var tooltip = container.find('.tooltip')
 
           start()
-          ok(tooltip.offset().top + tooltip.outerHeight() <= tooltiped.offset().top)
+          ok(Math.round(tooltip.offset().top + tooltip.outerHeight()) <= Math.round(tooltiped.offset().top)
           container.remove()
         }, 100)
       })
@@ -347,7 +347,11 @@ $(function () {
               .tooltip('show'),
             tooltip = container.find('.tooltip')
 
-        ok( Math.round(target.offset().top + (target[0].offsetHeight / 2) - (tooltip[0].offsetHeight / 2)) === Math.round(tooltip.offset().top) )
+        // this is some dumb hack shit because sub pixels in firefox
+        var top = Math.round(target.offset().top + (target[0].offsetHeight / 2) - (tooltip[0].offsetHeight / 2))
+        var top2 = Math.round(tooltip.offset().top)
+        var topDiff =  top - top2
+        ok(topDiff <= 1 && topDiff >= -1)
         target.tooltip('hide')
       })
 
