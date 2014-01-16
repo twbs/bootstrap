@@ -746,13 +746,13 @@ lead: "Over a dozen reusable components built to provide iconography, dropdowns,
     <h4>Cross-browser compatibility</h4>
     <p>Avoid using <code>&lt;select&gt;</code> elements here as they cannot be fully styled in WebKit browsers.</p>
   </div>
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-warning">
     <h4>Tooltips &amp; popovers in input groups require special setting</h4>
     <p>When using tooltips or popovers on elements within an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).</p>
   </div>
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-warning">
     <h4>Don't mix with other components</h4>
-    <p>Do not mix form group or grid column classes directly with input groups.</p>
+    <p>Do not mix form groups or grid column classes directly with input groups. Instead, nest the input group inside of the form group or grid-related element.</p>
   </div>
 
 
