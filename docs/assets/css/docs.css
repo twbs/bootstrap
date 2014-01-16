@@ -1209,7 +1209,7 @@ h1[id] {
 
 .bs-customizer .toggle {
   float: right;
-  margin-top: 85px; /* On account of ghetto navbar fix */
+  margin-top: 25px;
 }
 
 /* Headings and form contrls */
