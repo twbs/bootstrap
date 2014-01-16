@@ -387,8 +387,6 @@ $(function () {
       })
 
       test('tooltips should be placed dynamically, with the dynamic placement option', function () {
-        $(document.body).scrollTop(0) // force to top of page
-
         $.support.transition = false
         var ttContainer = $('<div id="dynamic-tt-test"/>').css({
             'height' : 400,
@@ -415,14 +413,6 @@ $(function () {
 
         ok($('.tooltip').is('.left'),  'right positioned tooltip is dynamically positioned left')
         rightTooltip.tooltip('hide')
-
-        var bottomTooltip = $('<div style="display: inline-block; position: absolute; bottom: 0;" rel="tooltip" title="Bottom tooltip">Bottom Dynamic Tooltip</div>')
-          .appendTo('#dynamic-tt-test')
-          .tooltip({placement: 'auto bottom'})
-          .tooltip('show')
-
-        ok($('.tooltip').is('.top'),  'bottom positioned tooltip is dynamically positioned top')
-        bottomTooltip.tooltip('hide')
 
         var leftTooltip = $('<div style="display: inline-block; position: absolute; left: 0;" rel="tooltip" title="Left tooltip">Left Dynamic Tooltip</div>')
           .appendTo('#dynamic-tt-test')
