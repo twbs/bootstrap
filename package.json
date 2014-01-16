@@ -25,7 +25,7 @@
     }
   ],
   "devDependencies": {
-    "browserstack-runner": "~0.0.13",
+    "browserstack-runner": "~0.0.14",
     "btoa": "~1.1.1",
     "grunt": "~0.4.2",
     "grunt-banner": "~0.2.0",
