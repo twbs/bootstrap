@@ -129,34 +129,19 @@ cite    { font-style: normal; }
   // Given the contrast here, this is the only class to have its color inverted
   // automatically.
   color: #fff;
-  background-color: @brand-primary;
-  a&:hover {
-    background-color: darken(@brand-primary, 10%);
-  }
+  .bg-variant(@brand-primary);
 }
 .bg-success {
-  background-color: @state-success-bg;
-  a&:hover {
-    background-color: darken(@state-success-bg, 10%);
-  }
+  .bg-variant(@state-success-bg);
 }
 .bg-info {
-  background-color: @state-info-bg;
-  a&:hover {
-    background-color: darken(@state-info-bg, 10%);
-  }
+  .bg-variant(@state-info-bg);
 }
 .bg-warning {
-  background-color: @state-warning-bg;
-  a&:hover {
-    background-color: darken(@state-warning-bg, 10%);
-  }
+  .bg-variant(@state-warning-bg);
 }
 .bg-danger {
-  background-color: @state-danger-bg;
-  a&:hover {
-    background-color: darken(@state-danger-bg, 10%);
-  }
+  .bg-variant(@state-danger-bg);
 }
 
 
