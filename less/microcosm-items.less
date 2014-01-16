@@ -211,7 +211,17 @@
     width:100%;
   }
   .list-stats{
+    cursor: pointer;
     display:none;
+    background-color: #FFF;
+    padding: 5px 10px;
+    border: 1px solid #EEE;
+    li:last-child{
+      padding-right:0;
+    }
+    &:hover{
+      box-shadow:0 0 5px @brand-primary;
+    }
   }
 
   @media (min-width: 420px){

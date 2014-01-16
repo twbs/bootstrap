@@ -1,20 +1,28 @@
-  #modal-signin {
-    .modal-header{
-      padding:0;
-      height: 60px;
-      text-align: center;
-      border-radius:5px 5px 0 0;
-      #logo{
-        width:auto;
-        height:45px;
-        margin:5px auto;
-      }
-      .close{
-        position: absolute;
-        right: 10px;
-        top: 5px;
-      }
-    }
+
+.modal-header{
+  padding:0;
+  height: 60px;
+  text-align: center;
+  border-radius:5px 5px 0 0;
+  #logo{
+    width:auto;
+    height:45px;
+    margin:5px auto;
+  }
+  .close{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+  }
+}
+.modal-footer{
+  color: #999;
+  margin:0;
+  padding:15px 10px;
+  font-size:14px;
+  text-align: center;
+}
+#modal-signin{
   .modal-body{
     text-align: center;
     padding:40px 0;
@@ -31,11 +39,56 @@
       margin:40px 0 0;
     }
   }
-  .modal-footer{
+}
+
+#modal-event-attendees{
+  .modal-event-icon{
+    float: left;
+    margin: 0 15px 35px 0;
+  }
+  .modal-event-title{
+    font-weight:700;
+  }
+  .modal-event-meta{
+    font-size: @font-size-xsmall;
     color: #999;
-    margin:0;
-    padding:15px 10px;
-    font-size:14px;
-    text-align: center;
+    border-bottom:1px solid #eee;
+    padding-bottom:10px;
+  }
+
+  .modal-event-list{
+    width:75%;
+    margin:15px auto;
+    .modal-event-list-title{
+      font-weight: 700;
+      font-size: 16px;
+      border-bottom: 3px solid #EEE;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+    ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    li{
+      img{
+        width:@avatar-size-small;
+        height:@avatar-size-small;
+      }
+      a{
+        font-size:@font-size-xsmall;
+      }
+      span{
+        font-size:@font-size-xsmall;
+        float: right;
+        color:#999;
+        em{
+          color:#ccc;
+          font-style: normal;
+          padding-right:15px;
+        }
+      }
+    }
   }
 }
