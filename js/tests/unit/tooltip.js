@@ -332,7 +332,7 @@ $(function () {
           var tooltip = container.find('.tooltip')
 
           start()
-          ok(Math.round(tooltip.offset().top + tooltip.outerHeight()) <= Math.round(tooltiped.offset().top)
+          ok(Math.round(tooltip.offset().top + tooltip.outerHeight()) <= Math.round(tooltiped.offset().top))
           container.remove()
         }, 100)
       })
