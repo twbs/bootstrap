@@ -2,6 +2,7 @@
   "username": "--secure--",
   "key": "--secure--",
   "test_path": "js/tests/index.html",
+  "debug": true,
   "browsers": [
     {
       "browser": "firefox",
