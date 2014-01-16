@@ -21,14 +21,17 @@
 
 
   @media (min-width:@screen-sm-min){
-    height:120px;
-    padding:20px 0 0;
     &.horizontal-tiling-bg{
       background-size:100% 100%;
     }
   }
 }
-
+.navbar-header{
+  @media (min-width:@screen-sm-min){
+    height: 120px;
+    padding-top: 20px;
+  }
+}
 .navbar-brand{
   padding: 14px 0;
   img{
@@ -137,10 +140,11 @@
   }
 
   @media (min-width: @screen-sm-min){
-    float:right;
-    margin-top:37px;
-    border-left:1px solid #eee;
+    border-left: 1px solid #EEE;
     width: 200px;
+    position: absolute;
+    right: 0;
+    top: 122px;
 
     .navbar-profile-row-1-left{
       padding-top:9px;
@@ -166,6 +170,8 @@
     margin-right:15px;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
 
+    position: relative;
+    top: 0;
 
     .navbar-profile-row-1-left{
       padding:0;
