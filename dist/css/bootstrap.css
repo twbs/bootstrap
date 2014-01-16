@@ -4782,24 +4782,24 @@ a.list-group-item-danger.active:focus {
 .panel > .table-responsive > .table {
   margin-bottom: 0;
 }
-.panel > .table > tbody:last-child > tr:last-child td:first-child,
-.panel > .table-responsive > .table > tbody:last-child > tr:last-child td:first-child,
-.panel > .table > tfoot:last-child > tr:last-child td:first-child,
-.panel > .table-responsive > .table > tfoot:last-child > tr:last-child td:first-child,
-.panel > .table > tbody:last-child > tr:last-child th:first-child,
-.panel > .table-responsive > .table > tbody:last-child > tr:last-child th:first-child,
-.panel > .table > tfoot:last-child > tr:last-child th:first-child,
-.panel > .table-responsive > .table > tfoot:last-child > tr:last-child th:first-child {
+.panel > .table:nth-last-child(1) > tbody:last-child > tr:last-child td:first-child,
+.panel > .table-responsive:nth-last-child(1) > .table > tbody:last-child > tr:last-child td:first-child,
+.panel > .table:nth-last-child(1) > tfoot:last-child > tr:last-child td:first-child,
+.panel > .table-responsive:nth-last-child(1) > .table > tfoot:last-child > tr:last-child td:first-child,
+.panel > .table:nth-last-child(1) > tbody:last-child > tr:last-child th:first-child,
+.panel > .table-responsive:nth-last-child(1) > .table > tbody:last-child > tr:last-child th:first-child,
+.panel > .table:nth-last-child(1) > tfoot:last-child > tr:last-child th:first-child,
+.panel > .table-responsive:nth-last-child(1) > .table > tfoot:last-child > tr:last-child th:first-child {
   border-bottom-left-radius: 3px;
 }
-.panel > .table > tbody:last-child > tr:last-child td:last-child,
-.panel > .table-responsive > .table > tbody:last-child > tr:last-child td:last-child,
-.panel > .table > tfoot:last-child > tr:last-child td:last-child,
-.panel > .table-responsive > .table > tfoot:last-child > tr:last-child td:last-child,
-.panel > .table > tbody:last-child > tr:last-child th:last-child,
-.panel > .table-responsive > .table > tbody:last-child > tr:last-child th:last-child,
-.panel > .table > tfoot:last-child > tr:last-child th:last-child,
-.panel > .table-responsive > .table > tfoot:last-child > tr:last-child th:last-child {
+.panel > .table:nth-last-child(1) > tbody:last-child > tr:last-child td:last-child,
+.panel > .table-responsive:nth-last-child(1) > .table > tbody:last-child > tr:last-child td:last-child,
+.panel > .table:nth-last-child(1) > tfoot:last-child > tr:last-child td:last-child,
+.panel > .table-responsive:nth-last-child(1) > .table > tfoot:last-child > tr:last-child td:last-child,
+.panel > .table:nth-last-child(1) > tbody:last-child > tr:last-child th:last-child,
+.panel > .table-responsive:nth-last-child(1) > .table > tbody:last-child > tr:last-child th:last-child,
+.panel > .table:nth-last-child(1) > tfoot:last-child > tr:last-child th:last-child,
+.panel > .table-responsive:nth-last-child(1) > .table > tfoot:last-child > tr:last-child th:last-child {
   border-bottom-right-radius: 3px;
 }
 .panel > .panel-body + .table,
