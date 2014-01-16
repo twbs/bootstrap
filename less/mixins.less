@@ -577,6 +577,15 @@
   }
 }
 
+// Typography
+// -------------------------
+.text-emphasis-variant(@color) {
+  color: @color;
+  &:hover {
+    color: darken(@color, 10%);
+  }
+}
+
 // Navbar vertical align
 // -------------------------
 // Vertically center elements in the navbar.
