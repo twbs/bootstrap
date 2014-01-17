@@ -3,12 +3,8 @@
 
   {
     browserName: "safari",
-    platform: "OS X 10.8"
+    platform: "OS X 10.9"
   },
-  # { # Safari 7 (which requires Mavericks) is not currently supported by Sauce Labs
-  #   browserName: "safari",
-  #   platform: "OS X 10.9"
-  # },
   {
     browserName: "chrome",
     platform: "OS X 10.9"
