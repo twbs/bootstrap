@@ -5,10 +5,11 @@
     browserName: "safari",
     platform: "OS X 10.9"
   },
-  {
-    browserName: "chrome",
-    platform: "OS X 10.9"
-  },
+  # FIXME: keeps timing out frequently for unknown reasons
+  # {
+  #   browserName: "chrome",
+  #   platform: "OS X 10.9"
+  # },
 
   {
     browserName: "firefox",
