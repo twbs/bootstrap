@@ -1,0 +1,25 @@
+# Dependencies
+markdown:         rdiscount
+pygments:         true
+
+# Permalinks
+permalink:        pretty
+
+# Server
+destination:      ./_gh_pages
+exclude:          [".editorconfig", ".gitignore", "bower.json", "composer.json", "CONTRIBUTING.md", "CNAME", "LICENSE", "Gruntfile.js", "package.json", "node_modules", "README.md", "less"]
+port:             9001
+
+# Custom vars
+current_version:  3.0.3
+repo:             https://github.com/twbs/bootstrap
+
+download_source:  https://github.com/twbs/bootstrap/archive/v3.0.3.zip
+download_dist:    https://github.com/twbs/bootstrap/releases/download/v3.0.3/bootstrap-3.0.3-dist.zip
+
+blog:             http://blog.getbootstrap.com
+expo:             http://expo.getbootstrap.com
+
+cdn_css:          //netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css
+cdn_theme_css:    //netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css
+cdn_js:           //netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js
