@@ -11,13 +11,7 @@
   "scripts": {
     "test": "grunt test"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/twbs/bootstrap.git"
-  },
-  "bugs": {
-    "url": "https://github.com/twbs/bootstrap/issues"
-  },
+  "repository": "twbs/bootstrap",
   "licenses": [
     {
       "type": "MIT",
@@ -25,30 +19,30 @@
     }
   ],
   "devDependencies": {
-    "browserstack-runner": "~0.0.14",
-    "btoa": "~1.1.1",
-    "grunt": "~0.4.2",
-    "grunt-banner": "~0.2.0",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-connect": "~0.6.0",
-    "grunt-contrib-copy": "~0.5.0",
-    "grunt-contrib-csslint": "~0.2.0",
-    "grunt-contrib-cssmin": "~0.7.0",
-    "grunt-contrib-jade": "~0.9.1",
-    "grunt-contrib-jshint": "~0.8.0",
-    "grunt-contrib-less": "~0.9.0",
-    "grunt-contrib-qunit": "~0.3.0",
-    "grunt-contrib-uglify": "~0.2.7",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-csscomb": "~2.0.1",
-    "grunt-html-validation": "~0.1.13",
-    "grunt-jekyll": "~0.4.1",
-    "grunt-jscs-checker": "~0.3.0",
-    "grunt-saucelabs": "~4.1.2",
-    "grunt-sed": "~0.1.1",
-    "load-grunt-tasks": "~0.2.1",
-    "markdown": "~0.5.0"
+    "browserstack-runner": "0.0.x",
+    "btoa": "1.1.x",
+    "grunt": "0.4.x",
+    "grunt-banner": "0.2.x",
+    "grunt-contrib-clean": "0.5.x",
+    "grunt-contrib-concat": "0.3.x",
+    "grunt-contrib-connect": "0.6.x",
+    "grunt-contrib-copy": "0.5.x",
+    "grunt-contrib-csslint": "0.2.x",
+    "grunt-contrib-cssmin": "0.7.x",
+    "grunt-contrib-jade": "0.9.x",
+    "grunt-contrib-jshint": "0.8.x",
+    "grunt-contrib-less": "0.9.x",
+    "grunt-contrib-qunit": "0.3.x",
+    "grunt-contrib-uglify": "0.2.x",
+    "grunt-contrib-watch": "0.5.x",
+    "grunt-csscomb": "2.0.x",
+    "grunt-html-validation": "0.1.x",
+    "grunt-jekyll": "0.4.x",
+    "grunt-jscs-checker": "0.3.x",
+    "grunt-saucelabs": "4.1.x",
+    "grunt-sed": "0.1.x",
+    "load-grunt-tasks": "0.2.x",
+    "markdown": "0.5.x"
   },
   "jspm": {
     "main": "js/bootstrap",
