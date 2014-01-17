@@ -34,7 +34,9 @@
     title: '',
     delay: 0,
     html: false,
-    container: false
+    container: false,
+    viewport: 'body',
+    viewportPadding: 0
   }
 
   Tooltip.prototype.init = function (type, element, options) {
@@ -42,6 +44,7 @@
     this.type     = type
     this.$element = $(element)
     this.options  = this.getOptions(options)
+    this.$viewport = $(this.options.viewport)
 
     var triggers = this.options.trigger.split(' ')
 
@@ -157,18 +160,14 @@
       var actualHeight = $tip[0].offsetHeight
 
       if (autoPlace) {
-        var $parent = this.$element.parent()
-
         var orgPlacement = placement
-        var docScroll    = document.documentElement.scrollTop || document.body.scrollTop
-        var parentWidth  = this.options.container == 'body' ? window.innerWidth  : $parent.outerWidth()
-        var parentHeight = this.options.container == 'body' ? window.innerHeight : $parent.outerHeight()
-        var parentLeft   = this.options.container == 'body' ? 0 : $parent.offset().left
+        var $parent = this.$element.parent()
+        var parentDim = this.getElementDimensions($parent)
 
-        placement = placement == 'bottom' && pos.top   + pos.height  + actualHeight - docScroll > parentHeight  ? 'top'    :
-                    placement == 'top'    && pos.top   - docScroll   - actualHeight < 0                         ? 'bottom' :
-                    placement == 'right'  && pos.right + actualWidth > parentWidth                              ? 'left'   :
-                    placement == 'left'   && pos.left  - actualWidth < parentLeft                               ? 'right'  :
+        placement = placement == 'bottom' && pos.top   + pos.height  + actualHeight - parentDim.scroll > parentDim.height  ? 'top' :
+                    placement == 'top'    && pos.top   - parentDim.scroll - actualHeight < 0 ? 'bottom' :
+                    placement == 'right'  && pos.right + actualWidth > parentDim.width ? 'left' :
+                    placement == 'left'   && pos.left  - actualWidth < parentDim.left ? 'right' :
                     placement
 
         $tip
@@ -228,29 +227,22 @@
     var actualHeight = $tip[0].offsetHeight
 
     if (placement == 'top' && actualHeight != height) {
-      replace = true
       offset.top = offset.top + height - actualHeight
     }
 
-    if (/bottom|top/.test(placement)) {
-      var delta = 0
+    var delta = this.getViewportAdjustedDelta(placement, offset, actualWidth, actualHeight)
 
-      if (offset.left < 0) {
-        delta       = offset.left * -2
-        offset.left = 0
+    if (delta.left)
+      offset.left = offset.left + delta.left
+    else
+      offset.top  = offset.top + delta.top
 
-        $tip.offset(offset)
+    var arrowDelta          = delta.left * 2 - (delta.left ? width + actualWidth : height + actualHeight)
+    var arrowPosition       = delta.left ? 'left'        : 'top'
+    var arrowOffsetPosition = delta.left ? 'offsetWidth' : 'offsetHeight'
 
-        actualWidth  = $tip[0].offsetWidth
-        actualHeight = $tip[0].offsetHeight
-      }
-
-      this.replaceArrow(delta - width + actualWidth, actualWidth, 'left')
-    } else {
-      this.replaceArrow(actualHeight - height, actualHeight, 'top')
-    }
-
-    if (replace) $tip.offset(offset)
+    $tip.offset(offset)
+    this.replaceArrow(arrowDelta, $tip[0][arrowOffsetPosition], arrowPosition)
   }
 
   Tooltip.prototype.replaceArrow = function (delta, dimension, position) {
@@ -316,6 +308,39 @@
            placement == 'top'    ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2  } :
            placement == 'left'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
         /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width   }
+
+  }
+
+  Tooltip.prototype.getViewportAdjustedDelta = function (placement, pos, actualWidth, actualHeight) {
+    var delta = {}
+    var viewportPadding = this.options.viewportPadding
+    var viewportDimensions = this.getElementDimensions(this.$viewport)
+
+    if (/right|left/.test(placement)) {
+      if (pos.top + actualHeight - viewportDimensions.scroll + viewportPadding > viewportDimensions.height) { // bottom overflow
+        delta.top = viewportDimensions.height + viewportDimensions.scroll - actualHeight - viewportPadding - pos.top
+      } else if (pos.top - viewportDimensions.scroll - viewportPadding < 0) { // top overflow
+        delta.top = viewportDimensions.scroll + viewportPadding - pos.top
+      }
+    } else {
+      if (pos.left + actualWidth + viewportPadding > viewportDimensions.width) { // right overflow
+        delta.left = viewportDimensions.width - actualWidth - viewportPadding - pos.left
+      } else if (pos.left - viewportPadding < viewportDimensions.left) { // left overflow
+        delta.left = viewportDimensions.left + viewportPadding - pos.left
+      }
+    }
+
+    return delta
+  }
+
+  Tooltip.prototype.getElementDimensions = function ($element) {
+    var isBody = $element[0].tagName == 'BODY'
+    return {
+      scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop(),
+      width:  isBody ? window.innerWidth  : $element.outerWidth(),
+      height: isBody ? window.innerHeight : $element.outerHeight(),
+      left:   isBody ? 0 : $element.offset().left
+    }
   }
 
   Tooltip.prototype.getTitle = function () {
