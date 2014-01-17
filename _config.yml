@@ -14,6 +14,8 @@ baseurl:          /
 url:              http://localhost:9001
 encoding:         UTF-8
 
+exclude:          ["vendor"]
+
 # Custom vars
 current_version:  3.0.3
 repo:             https://github.com/twbs/bootstrap

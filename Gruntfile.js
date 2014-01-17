@@ -131,11 +131,11 @@ module.exports = function (grunt) {
           report: 'min'
         },
         src: [
-          'docs/assets/js/less.min.js',
-          'docs/assets/js/jszip.js',
-          'docs/assets/js/uglify.min.js',
-          'docs/assets/js/blob.js',
-          'docs/assets/js/filesaver.js',
+          'docs/assets/js/vendor/less.min.js',
+          'docs/assets/js/vendor/jszip.js',
+          'docs/assets/js/vendor/uglify.min.js',
+          'docs/assets/js/vendor/blob.js',
+          'docs/assets/js/vendor/filesaver.js',
           'docs/assets/js/raw-files.js',
           'docs/assets/js/customizer.js'
         ],
@@ -147,7 +147,7 @@ module.exports = function (grunt) {
           report: 'min'
         },
         src: [
-          'docs/assets/js/holder.js',
+          'docs/assets/js/vendor/holder.js',
           'docs/assets/js/application.js'
         ],
         dest: 'docs/assets/js/docs.min.js'
