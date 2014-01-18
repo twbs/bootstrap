@@ -577,11 +577,20 @@
   }
 }
 
+// Contextual backgrounds
+// -------------------------
+.bg-variant(@color) {
+  background-color: @color;
+  a&:hover {
+    background-color: darken(@color, 10%);
+  }
+}
+
 // Typography
 // -------------------------
 .text-emphasis-variant(@color) {
   color: @color;
-  &:hover {
+  a&:hover {
     color: darken(@color, 10%);
   }
 }
