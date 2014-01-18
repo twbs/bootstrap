@@ -92,34 +92,19 @@ cite    { font-style: normal; }
   color: @text-muted;
 }
 .text-primary {
-  color: @brand-primary;
-  &:hover {
-    color: darken(@brand-primary, 10%);
-  }
+  .text-emphasis-variant(@brand-primary);
 }
 .text-success {
-  color: @state-success-text;
-  &:hover {
-    color: darken(@state-success-text, 10%);
-  }
+  .text-emphasis-variant(@state-success-text);
 }
 .text-info {
-  color: @state-info-text;
-  &:hover {
-    color: darken(@state-info-text, 10%);
-  }
+  .text-emphasis-variant(@state-info-text);
 }
 .text-warning {
-  color: @state-warning-text;
-  &:hover {
-    color: darken(@state-warning-text, 10%);
-  }
+  .text-emphasis-variant(@state-warning-text);
 }
 .text-danger {
-  color: @state-danger-text;
-  &:hover {
-    color: darken(@state-danger-text, 10%);
-  }
+  .text-emphasis-variant(@state-danger-text);
 }
 
 // Contextual backgrounds
