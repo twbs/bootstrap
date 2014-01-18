@@ -87,7 +87,7 @@ bootstrap/
   <p>This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). Fonts from Glyphicons are included, as is the optional Bootstrap theme.</p>
 
   <h2 id="whats-included-source">Bootstrap source code</h2>
-  <p>The Bootstrap source code download includes the precompiled CSS, JavaScript, and font assets, along with source LESS, JavaScript, and documentation. More specifically, it includes the following and more:</p>
+  <p>The Bootstrap source code download includes the precompiled CSS, JavaScript, and font assets, along with source Less, JavaScript, and documentation. More specifically, it includes the following and more:</p>
 {% highlight bash %}
 bootstrap/
 ├── less/
@@ -350,418 +350,10 @@ bootstrap/
 
 
 
-<!-- Migration
-================================================== -->
-<div class="bs-docs-section">
-  <h1 id="migration" class="page-header">Migrating from 2.x to 3.0</h1>
-  <p class="lead">Bootstrap 3 is not backwards compatible with v2.x. Use this section as a general guide to upgrading from v2.x to v3.0. For a broader overview, see <a href="http://blog.getbootstrap.com/2013/08/19/bootstrap-3-released/">what's new</a> in the v3.0 release announcement.</p>
-
-  <h2 id="migration-classes">Major class changes</h2>
-  <p>This table shows the style changes between v2.x and v3.0.</p>
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>Bootstrap 2.x</th>
-          <th>Bootstrap 3.0</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>.row-fluid</code></td>
-          <td><code>.row</code></td>
-        </tr>
-        <tr>
-          <td><code>.span*</code></td>
-          <td><code>.col-md-*</code></td>
-        </tr>
-        <tr>
-          <td><code>.offset*</code></td>
-          <td><code>.col-md-offset-*</code></td>
-        </tr>
-        <tr>
-          <td><code>.brand</code></td>
-          <td><code>.navbar-brand</code></td>
-        </tr>
-        <tr>
-          <td><code>.nav-collapse</code></td>
-          <td><code>.navbar-collapse</code></td>
-        </tr>
-        <tr>
-          <td><code>.nav-toggle</code></td>
-          <td><code>.navbar-toggle</code></td>
-        </tr>
-        <tr>
-          <td><code>.btn-navbar</code></td>
-          <td><code>.navbar-btn</code></td>
-        </tr>
-        <tr>
-          <td><code>.hero-unit</code></td>
-          <td><code>.jumbotron</code></td>
-        </tr>
-        <tr>
-          <td><code>.icon-*</code></td>
-          <td><code>.glyphicon .glyphicon-*</code></td>
-        </tr>
-        <tr>
-          <td><code>.btn</code></td>
-          <td><code>.btn .btn-default</code></td>
-        </tr>
-        <tr>
-          <td><code>.btn-mini</code></td>
-          <td><code>.btn-xs</code></td>
-        </tr>
-        <tr>
-          <td><code>.btn-small</code></td>
-          <td><code>.btn-sm</code></td>
-        </tr>
-        <tr>
-          <td><code>.btn-large</code></td>
-          <td><code>.btn-lg</code></td>
-        </tr>
-        <tr>
-          <td><code>.alert-error</code></td>
-          <td><code>.alert-danger</code></td>
-        </tr>
-        <tr>
-          <td><code>.visible-phone</code></td>
-          <td><code>.visible-xs</code></td>
-        </tr>
-        <tr>
-          <td><code>.visible-tablet</code></td>
-          <td><code>.visible-sm</code></td>
-        </tr>
-        <tr>
-          <td><code>.visible-desktop</code></td>
-          <td>Split into <code>.visible-md .visible-lg</code></td>
-        </tr>
-        <tr>
-          <td><code>.hidden-phone</code></td>
-          <td><code>.hidden-xs</code></td>
-        </tr>
-        <tr>
-          <td><code>.hidden-tablet</code></td>
-          <td><code>.hidden-sm</code></td>
-        </tr>
-        <tr>
-          <td><code>.hidden-desktop</code></td>
-          <td>Split into <code>.hidden-md .hidden-lg</code></td>
-        </tr>
-        <tr>
-          <td><code>.input-small</code></td>
-          <td><code>.input-sm</code></td>
-        </tr>
-        <tr>
-          <td><code>.input-large</code></td>
-          <td><code>.input-lg</code></td>
-        </tr>
-        <tr>
-          <td><code>.input-block-level</code></td>
-          <td><code>.form-control</code></td>
-        </tr>
-        <tr>
-          <td><code>.control-group</code></td>
-          <td><code>.form-group</code></td>
-        </tr>
-        <tr>
-          <td><code>.control-group.warning .control-group.error .control-group.success</code></td>
-          <td><code>.form-group.has-*</code></td>
-        </tr>
-        <tr>
-          <td><code>.checkbox.inline</code> <code>.radio.inline</code></td>
-          <td><code>.checkbox-inline</code> <code>.radio-inline</code></td>
-        </tr>
-        <tr>
-          <td><code>.input-prepend</code> <code>.input-append</code></td>
-          <td><code>.input-group</code></td>
-        </tr>
-        <tr>
-          <td><code>.add-on</code></td>
-          <td><code>.input-group-addon</code></td>
-        </tr>
-        <tr>
-          <td><code>.img-polaroid</code></td>
-          <td><code>.img-thumbnail</code></td>
-        </tr>
-        <tr>
-          <td><code>ul.unstyled</code></td>
-          <td><code>.list-unstyled</code></td>
-        </tr>
-        <tr>
-          <td><code>ul.inline</code></td>
-          <td><code>.list-inline</code></td>
-        </tr>
-        <tr>
-          <td><code>.muted</code></td>
-          <td><code>.text-muted</code></td>
-        </tr>
-        <tr>
-          <td><code>.label</code></td>
-          <td><code>.label .label-default</code></td>
-        </tr>
-        <tr>
-          <td><code>.label-important</code></td>
-          <td><code>.label-danger</code></td>
-        </tr>
-        <tr>
-          <td><code>.text-error</code></td>
-          <td><code>.text-danger</code></td>
-        </tr>
-        <tr>
-          <td><code>.table .error</code></td>
-          <td><code>.table .danger</code></td>
-        </tr>
-        <tr>
-          <td><code>.bar</code></td>
-          <td><code>.progress-bar</code></td>
-        </tr>
-        <tr>
-          <td><code>.bar-*</code></td>
-          <td><code>.progress-bar-*</code></td>
-        </tr>
-        <tr>
-          <td><code>.accordion</code></td>
-          <td><code>.panel-group</code></td>
-        </tr>
-        <tr>
-          <td><code>.accordion-group</code></td>
-          <td><code>.panel .panel-default</code></td>
-        </tr>
-        <tr>
-          <td><code>.accordion-heading</code></td>
-          <td><code>.panel-heading</code></td>
-        </tr>
-        <tr>
-          <td><code>.accordion-body</code></td>
-          <td><code>.panel-collapse</code></td>
-        </tr>
-        <tr>
-          <td><code>.accordion-inner</code></td>
-          <td><code>.panel-body</code></td>
-        </tr>
-      </tbody>
-    </table>
-  </div><!-- /.table-responsive -->
-
-  <h2 id="migration-new">What's new</h2>
-  <p>We've added new elements and changed some existing ones. Here are the new or updated styles.</p>
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>Element</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Panels</td>
-          <td><code>.panel .panel-default</code> <code>.panel-body</code> <code>.panel-title</code> <code>.panel-heading</code> <code>.panel-footer</code> <code>.panel-collapse</code></td>
-        </tr>
-        <tr>
-          <td>List groups</td>
-          <td><code>.list-group</code> <code>.list-group-item</code> <code>.list-group-item-text</code> <code>.list-group-item-heading</code></td>
-        </tr>
-        <tr>
-          <td>Glyphicons</td>
-          <td><code>.glyphicon</code></td>
-        </tr>
-        <tr>
-          <td>Jumbotron</td>
-          <td><code>.jumbotron</code></td>
-        </tr>
-        <tr>
-          <td>Extra small grid (&lt;768px)</td>
-          <td><code>.col-xs-*</code></td>
-        </tr>
-        <tr>
-          <td>Small grid (&ge;768px)</td>
-          <td><code>.col-sm-*</code></td>
-        </tr>
-        <tr>
-          <td>Medium grid (&ge;992px)</td>
-          <td><code>.col-md-*</code></td>
-        </tr>
-        <tr>
-          <td>Large grid (&ge;1200px)</td>
-          <td><code>.col-lg-*</code></td>
-        </tr>
-        <tr>
-          <td>Responsive utility classes (&ge;1200px)</td>
-          <td><code>.visible-lg</code> <code>.hidden-lg</code></td>
-        </tr>
-        <tr>
-          <td>Offsets</td>
-          <td><code>.col-sm-offset-*</code> <code>.col-md-offset-*</code> <code>.col-lg-offset-*</code></td>
-        </tr>
-        <tr>
-          <td>Push</td>
-          <td><code>.col-sm-push-*</code> <code>.col-md-push-*</code> <code>.col-lg-push-*</code></td>
-        </tr>
-        <tr>
-          <td>Pull</td>
-          <td><code>.col-sm-pull-*</code> <code>.col-md-pull-*</code> <code>.col-lg-pull-*</code></td>
-        </tr>
-        <tr>
-          <td>Input groups</td>
-          <td><code>.input-group</code> <code>.input-group-addon</code> <code>.input-group-btn</code></td>
-        </tr>
-        <tr>
-          <td>Form controls</td>
-          <td><code>.form-control</code> <code>.form-group</code></td>
-        </tr>
-        <tr>
-          <td>Button group sizes</td>
-          <td><code>.btn-group-xs</code> <code>.btn-group-sm</code> <code>.btn-group-lg</code></td>
-        </tr>
-        <tr>
-          <td>Navbar text</td>
-          <td><code>.navbar-text</code></td>
-        </tr>
-        <tr>
-          <td>Navbar header</td>
-          <td><code>.navbar-header</code></td>
-        </tr>
-        <tr>
-          <td>Justified tabs / pills</td>
-          <td><code>.nav-justified</code></td>
-        </tr>
-        <tr>
-          <td>Responsive images</td>
-          <td><code>.img-responsive</code></td>
-        </tr>
-        <tr>
-          <td>Contextual table rows</td>
-          <td><code>.success</code> <code>.danger</code> <code>.warning</code> <code>.active</code></td>
-        </tr>
-        <tr>
-          <td>Contextual panels</td>
-          <td><code>.panel-success</code> <code>.panel-danger</code> <code>.panel-warning</code> <code>.panel-info</code></td>
-        </tr>
-        <tr>
-          <td>Modal</td>
-          <td><code>.modal-dialog</code> <code>.modal-content</code></td>
-        </tr>
-        <tr>
-          <td>Thumbnail image</td>
-          <td><code>.img-thumbnail</code></td>
-        </tr>
-        <tr>
-          <td>Well sizes</td>
-          <td><code>.well-sm</code> <code>.well-lg</code></td>
-        </tr>
-        <tr>
-          <td>Alert links</td>
-          <td><code>.alert-link</code></td>
-        </tr>
-      </tbody>
-    </table>
-  </div><!-- /.table-responsive -->
-
-
-  <h2 id="migration-dropped">What's removed</h2>
-  <p>The following elements have been dropped or changed in v3.0.</p>
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>Element</th>
-          <th>Removed from 2.x</th>
-          <th>3.0 Equivalent</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Form actions</td>
-          <td><code>.form-actions</code></td>
-          <td class="text-muted">N/A</td>
-        </tr>
-        <tr>
-          <td>Search form</td>
-          <td><code>.form-search</code></td>
-          <td class="text-muted">N/A</td>
-        </tr>
-        <tr>
-          <td>Form group with info</td>
-          <td><code>.control-group.info</code></td>
-          <td class="text-muted">N/A</td>
-        </tr>
-        <tr>
-          <td>Block level from input</td>
-          <td><code>.input-block-level</code></td>
-          <td>No direct equivalent, but <a href="../css/#forms-controls">forms controls</a> are similar.</td>
-        </tr>
-        <tr>
-          <td>Fluid row</td>
-          <td><code>.row-fluid</code></td>
-          <td><code>.row</code> (no more fixed grid)</td>
-        </tr>
-        <tr>
-          <td>Controls wrapper</td>
-          <td><code>.controls</code></td>
-          <td class="text-muted">N/A</td>
-        </tr>
-        <tr>
-          <td>Controls row</td>
-          <td><code>.controls-row</code></td>
-          <td><code>.row</code> or <code>.form-group</code></td>
-        </tr>
-        <tr>
-          <td>Navbar inner</td>
-          <td><code>.navbar-inner</code></td>
-          <td class="text-muted">N/A</td>
-        </tr>
-        <tr>
-          <td>Navbar vertical dividers</td>
-          <td><code>.navbar .divider-vertical</code></td>
-          <td class="text-muted">N/A</td>
-        </tr>
-        <tr>
-          <td>Dropdown submenu</td>
-          <td><code>.dropdown-submenu</code></td>
-          <td class="text-muted">N/A</td>
-        </tr>
-        <tr>
-          <td>Tab alignments</td>
-          <td><code>.tabs-left</code> <code>.tabs-right</code> <code>.tabs-below</code></td>
-          <td class="text-muted">N/A</td>
-        </tr>
-        <tr>
-          <td>Pill-based tabbable area</td>
-          <td><code>.pill-content</code></td>
-          <td><code>.tab-content</code></td>
-        </tr>
-        <tr>
-          <td>Pill-based tabbable area pane</td>
-          <td><code>.pill-pane</code></td>
-          <td><code>.tab-pane</code></td>
-        </tr>
-        <tr>
-          <td>Nav lists</td>
-          <td><code>.nav-list</code> <code>.nav-header</code></td>
-          <td>No direct equivalent, but <a href="../components/#list-group">list groups</a> and <a href="../javascript/#collapse"><code>.panel-group</code>s</a> are similar.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div><!-- /.table-responsive -->
-
-
-  <h2 id="migration-notes">Additional notes</h2>
-  <p>Other changes in v3.0 are not immediately apparent. Base classes, key styles, and behaviors have been adjusted for flexibility and our <em>mobile first</em> approach. Here's a partial list:</p>
-  <ul>
-    <li>By default, text-based form controls now receive only minimal styling.  For focus colors and rounded corners, apply the <code>.form-control</code> class on the element to style.</li>
-    <li>Text-based form controls with the <code>.form-control</code> class applied are now 100% wide by default. Wrap inputs inside <code>&lt;div class="col-*"&gt;&lt;/div&gt;</code> to control input widths.</li>
-    <li><code>.badge</code> no longer has contextual (-success,-primary,etc..) classes.</li>
-    <li><code>.btn</code> must also use <code>.btn-default</code> to get the "default" button.</li>
-    <li><code>.row</code> is now fluid.</li>
-    <li>Images are no longer responsive by default. Use <code>.img-responsive</code> for fluid <code>&lt;img&gt;</code> size.</li>
-    <li>The icons, now <code>.glyphicon</code>, are now font based. Icons also require a base and icon class (e.g. <code>.glyphicon .glyphicon-asterisk</code>).</li>
-    <li>Typeahead has been dropped, in favor of using <a href="http://twitter.github.io/typeahead.js/">Twitter Typeahead</a>.</li>
-    <li>Modal markup has changed significantly. The <code>.modal-header</code>, <code>.modal-body</code>, and <code>.modal-footer</code> sections are now wrapped in <code>.modal-content</code> and <code>.modal-dialog</code> for better mobile styling and behavior.</li>
-    <li>The HTML loaded by the <code>remote</code> modal option is now injected into the <code>.modal</code> instead of into the <code>.modal-body</code>. This allows you to also easily vary the header and footer of the modal, not just the modal body.</li>
-    <li>JavaScript events are namespaced. For example, to handle the modal "show" event, use <code>'show.bs.modal'</code>. For tabs "shown" use <code>'shown.bs.tab'</code>, etc.</li>
-  </ul>
-  <p>For more information on upgrading to v3.0, and code snippets from the community, see <a href="http://bootply.com/">Bootply</a>.</p>
+<!-- Cross link to new migration page -->
+<div class="bs-callout bs-callout-info" id="migration">
+  <h4>Migrating from v2.x to v3.x</h4>
+  <p>Looking to migrate from an older version of Bootstrap to v3.x? Check out <a href="../migration">our migration guide</a>.</p>
 </div>
 
 
@@ -773,14 +365,53 @@ bootstrap/
   <p class="lead">Bootstrap is built to work best in the latest desktop and mobile browsers, meaning older browsers might display differently styled, though fully functional, renderings of certain components.</p>
 
   <h3 id="support-browsers">Supported browsers</h3>
-  <p>Specifically, we support the latest versions of the following:</p>
-  <ul>
-    <li>Chrome (Mac, Windows, iOS, and Android)</li>
-    <li>Safari (Mac and iOS only, as the Windows version is being abandoned)</li>
-    <li>Firefox (Mac, Windows)</li>
-    <li>Internet Explorer</li>
-    <li>Opera (Mac, Windows)</li>
-  </ul>
+  <p>Specifically, we support the <strong>latest versions</strong> of the following browsers and platforms:</p>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <td></td>
+          <th>Chrome</th>
+          <th>Firefox</th>
+          <th>Internet Explorer</th>
+          <th>Opera</th>
+          <th>Safari</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Android</th>
+          <td class="text-success"><span class="glyphicon glyphicon-ok"></span> <span class="sr-only">Supported</span></td>
+          <td class="text-danger"><span class="glyphicon glyphicon-remove"></span> <span class="sr-only">Not Supported</span></td>
+          <td class="text-muted" rowspan="3" style="vertical-align: middle;">N/A</td>
+          <td class="text-danger"><span class="glyphicon glyphicon-remove"></span> <span class="sr-only">Not Supported</span></td>
+          <td class="text-muted">N/A</td>
+        </tr>
+        <tr>
+          <th>iOS</th>
+          <td class="text-success"><span class="glyphicon glyphicon-ok"></span> <span class="sr-only">Supported</span></td>
+          <td class="text-muted">N/A</td>
+          <td class="text-danger"><span class="glyphicon glyphicon-remove"></span> <span class="sr-only">Not Supported</span></td>
+          <td class="text-success"><span class="glyphicon glyphicon-ok"></span> <span class="sr-only">Supported</span></td>
+        </tr>
+        <tr>
+          <th>Mac OS X</th>
+          <td class="text-success"><span class="glyphicon glyphicon-ok"></span> <span class="sr-only">Supported</span></td>
+          <td class="text-success"><span class="glyphicon glyphicon-ok"></span> <span class="sr-only">Supported</span></td>
+          <td class="text-success"><span class="glyphicon glyphicon-ok"></span> <span class="sr-only">Supported</span></td>
+          <td class="text-success"><span class="glyphicon glyphicon-ok"></span> <span class="sr-only">Supported</span></td>
+        </tr>
+        <tr>
+          <th>Windows</th>
+          <td class="text-success"><span class="glyphicon glyphicon-ok"></span> <span class="sr-only">Supported</span></td>
+          <td class="text-success"><span class="glyphicon glyphicon-ok"></span> <span class="sr-only">Supported</span></td>
+          <td class="text-success"><span class="glyphicon glyphicon-ok"></span> <span class="sr-only">Supported</span></td>
+          <td class="text-success"><span class="glyphicon glyphicon-ok"></span> <span class="sr-only">Supported</span></td>
+          <td class="text-danger"><span class="glyphicon glyphicon-remove"></span> <span class="sr-only">Not Supported</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <p>Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 7, though they are not officially supported.</p>
 
   <h3 id="support-ie8-ie9">Internet Explorer 8 and 9</h3>
@@ -926,7 +557,7 @@ if (isAndroid) {
  *
  * Reset individual elements or override regions to avoid conflicts due to
  * global box model settings of Bootstrap. Two options, individual overrides and
- * region resets, are available as plain CSS and uncompiled LESS formats.
+ * region resets, are available as plain CSS and uncompiled Less formats.
  */
 
 /* Option 1A: Override a single element's box model via CSS */
@@ -936,7 +567,7 @@ if (isAndroid) {
           box-sizing: content-box;
 }
 
-/* Option 1B: Override a single element's box model by using a Bootstrap LESS mixin */
+/* Option 1B: Override a single element's box model by using a Bootstrap Less mixin */
 .element {
   .box-sizing(content-box);
 }
@@ -951,7 +582,7 @@ if (isAndroid) {
           box-sizing: content-box;
 }
 
-/* Option 2B: Reset an entire region with a custom LESS mixin */
+/* Option 2B: Reset an entire region with a custom Less mixin */
 .reset-box-sizing {
   &,
   *,
@@ -1041,7 +672,7 @@ if (isAndroid) {
   <h1 id="customizing" class="page-header">Customizing Bootstrap</h1>
   <p class="lead">Bootstrap is best maintained when you treat it as a separate and independently-versioned dependency in your development environment. Doing this makes upgrading Bootstrap easier in the future.</p>
 
-  <p>Once you've downloaded and included Bootstrap's styles and scripts, you can customize its components. Just create a new stylesheet (LESS, if you like, or just plain CSS) to house your customizations.</p>
+  <p>Once you've downloaded and included Bootstrap's styles and scripts, you can customize its components. Just create a new stylesheet (Less, if you like, or just plain CSS) to house your customizations.</p>
 
   <div class="bs-callout bs-callout-info">
     <h4>Compiled or minified?</h4>
@@ -1103,7 +734,7 @@ if (isAndroid) {
 
   <div class="bs-callout bs-callout-info">
     <h4>Alternate customization methods</h4>
-    <p>While not recommended for folks new to Bootstrap, you may use one of two alternate methods for customization. The first is modifying the source <code>.less</code> files (making upgrades super difficult), and the second is mapping source LESS code to <a href="http://ruby.bvision.com/blog/please-stop-embedding-bootstrap-classes-in-your-html">your own classes via mixins</a>. For the time being, neither of those options are documented here.</p>
+    <p>While not recommended for folks new to Bootstrap, you may use one of two alternate methods for customization. The first is modifying the source <code>.less</code> files (making upgrades super difficult), and the second is mapping source Less code to <a href="http://ruby.bvision.com/blog/please-stop-embedding-bootstrap-classes-in-your-html">your own classes via mixins</a>. For the time being, neither of those options are documented here.</p>
   </div>
 
   <h3>Removing potential bloat</h3>

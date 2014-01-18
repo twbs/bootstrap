@@ -58,7 +58,7 @@
 
 //** Unit-less `line-height` for use in components like buttons.
 @line-height-base:        1.428571429; // 20/14
-//** Computed "line-height" (`font-size` &times; `line-height`) for use with `margin`, `padding`, etc.
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
 @line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
 
 //** By default, this inherits from the `<body>`.
@@ -548,7 +548,7 @@
 @modal-content-bg:                             #fff;
 //** Modal content border color
 @modal-content-border-color:                   rgba(0,0,0,.2);
-//** Modal content border color <strong>for IE8</strong>
+//** Modal content border color **for IE8**
 @modal-content-fallback-border-color:          #999;
 
 //** Modal backdrop background color

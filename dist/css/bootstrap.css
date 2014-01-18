@@ -251,7 +251,11 @@ table {
     border: 1px solid #ddd !important;
   }
 }
-*,
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
 *:before,
 *:after {
   -webkit-box-sizing: border-box;
@@ -5060,9 +5064,9 @@ button.close {
      -moz-transition:    -moz-transform .3s ease-out;
        -o-transition:      -o-transform .3s ease-out;
           transition:         transform .3s ease-out;
- -webkit-transform: translate(0, -25%);
-     -ms-transform: translate(0, -25%);
-         transform: translate(0, -25%);
+  -webkit-transform: translate(0, -25%);
+      -ms-transform: translate(0, -25%);
+          transform: translate(0, -25%);
 }
 .modal.in .modal-dialog {
   -webkit-transform: translate(0, 0);

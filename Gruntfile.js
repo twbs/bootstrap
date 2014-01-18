@@ -7,14 +7,14 @@ module.exports = function (grunt) {
   grunt.util.linefeed = '\n';
 
   RegExp.quote = function (string) {
-    return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&')
-  }
+    return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&');
+  };
 
-  var BsLessdocParser = require('./docs/grunt/bs-lessdoc-parser.js')
-  var fs = require('fs')
-  var generateGlyphiconsData = require('./docs/grunt/bs-glyphicons-data-generator.js')
-  var generateRawFilesJs = require('./docs/grunt/bs-raw-files-generator.js')
-  var path = require('path')
+  var BsLessdocParser = require('./docs/grunt/bs-lessdoc-parser.js');
+  var fs = require('fs');
+  var generateGlyphiconsData = require('./docs/grunt/bs-glyphicons-data-generator.js');
+  var generateRawFilesJs = require('./docs/grunt/bs-raw-files-generator.js');
+  var path = require('path');
 
   // Project configuration.
   grunt.initConfig({
@@ -131,11 +131,11 @@ module.exports = function (grunt) {
           report: 'min'
         },
         src: [
-          'docs/assets/js/less.min.js',
-          'docs/assets/js/jszip.js',
-          'docs/assets/js/uglify.min.js',
-          'docs/assets/js/blob.js',
-          'docs/assets/js/filesaver.js',
+          'docs/assets/js/vendor/less.min.js',
+          'docs/assets/js/vendor/jszip.js',
+          'docs/assets/js/vendor/uglify.min.js',
+          'docs/assets/js/vendor/blob.js',
+          'docs/assets/js/vendor/filesaver.js',
           'docs/assets/js/raw-files.js',
           'docs/assets/js/customizer.js'
         ],
@@ -147,7 +147,7 @@ module.exports = function (grunt) {
           report: 'min'
         },
         src: [
-          'docs/assets/js/holder.js',
+          'docs/assets/js/vendor/holder.js',
           'docs/assets/js/application.js'
         ],
         dest: 'docs/assets/js/docs.min.js'
@@ -325,8 +325,8 @@ module.exports = function (grunt) {
     sed: {
       versionNumber: {
         pattern: (function () {
-          var old = grunt.option('oldver')
-          return old ? RegExp.quote(old) : old
+          var old = grunt.option('oldver');
+          return old ? RegExp.quote(old) : old;
         })(),
         replacement: grunt.option('newver'),
         recursive: true
@@ -364,16 +364,16 @@ module.exports = function (grunt) {
     testSubtasks.push('validate-html');
   }
   // Only run Sauce Labs tests if there's a Sauce access key
-  if (typeof process.env.SAUCE_ACCESS_KEY !== 'undefined'
+  if (typeof process.env.SAUCE_ACCESS_KEY !== 'undefined' &&
       // Skip Sauce if running a different subset of the test suite
-      && (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'sauce-js-unit')) {
+      (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'sauce-js-unit')) {
     testSubtasks.push('connect');
     testSubtasks.push('saucelabs-qunit');
   }
   // Only run BrowserStack tests if there's a BrowserStack access key
-  if (typeof process.env.BROWSERSTACK_KEY !== 'undefined'
+  if (typeof process.env.BROWSERSTACK_KEY !== 'undefined' &&
       // Skip BrowserStack if running a different subset of the test suite
-      && (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'browserstack-js-unit')) {
+      (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'browserstack-js-unit')) {
     testSubtasks.push('browserstack_runner');
   }
   grunt.registerTask('test', testSubtasks);
