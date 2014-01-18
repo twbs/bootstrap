@@ -528,7 +528,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
   <h3 id="support-android-stock-browser">Android stock browser</h3>
   <p>Out of the box, Android 4.1 (and even some newer releases apparently) ship with the Browser app as the default web browser of choice (as opposed to Chrome). Unfortunately, the Browser app has lots of bugs and inconsistencies with CSS in general.</p>
   <h4>Select menus</h4>
-  <p>On <code>&lt;select&gt;</code> elements, the Android stock browser will not display the side controls if there is a <code>border-radius</code> and/or <code>border</code> applied. Use the snippet of code below to remove the offending CSS and render the <code>&lt;select&gt;</code> as an unstyled element on the Android stock broswer. The useragent sniffing avoids interference with Chrome, Safari, and Mozilla browsers.</p>
+  <p>On <code>&lt;select&gt;</code> elements, the Android stock browser will not display the side controls if there is a <code>border-radius</code> and/or <code>border</code> applied. Use the snippet of code below to remove the offending CSS and render the <code>&lt;select&gt;</code> as an unstyled element on the Android stock browser. The user agent sniffing avoids interference with Chrome, Safari, and Mozilla browsers.</p>
 {% highlight html %}
 <script>
 var nua = navigator.userAgent;
@@ -603,7 +603,7 @@ if (isAndroid) {
 ================================================== -->
 <div class="bs-docs-section">
   <h1 id="accessibility" class="page-header">Accessibility</h1>
-  <p class="lead">Bootstrap follows common web standards, and with minimal extra effort, can be used to create sites that are accessible to those using <abbr title="Assistive Technology" class="initialism">AT</abbr>.</p>
+  <p class="lead">Bootstrap follows common web standards and&mdash;with minimal extra effort&mdash;can be used to create sites that are accessible to those using <abbr title="Assistive Technology" class="initialism">AT</abbr>.</p>
 
   <h3>Skip navigation</h3>
   <p>If your navigation contains many links and comes before the main content in the DOM, add a <code>Skip to main content</code> link immediately after your opening <code>&lt;body&gt;</code> tag. <a href="http://a11yproject.com/posts/skip-nav-links/">(read why)</a></p>
