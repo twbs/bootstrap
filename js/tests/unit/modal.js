@@ -157,15 +157,14 @@ $(function () {
     test('should trigger hide event once when clicking outside of modal-content', function () {
       stop()
       $.support.transition = false
-      var div = $('<div id="modal-test"><div class="contents"></div></div>')
+
       var triggered
+      var div = $('<div id="modal-test"><div class="contents"></div></div>')
+
       div
         .bind('shown.bs.modal', function () {
           triggered = 0
           $('#modal-test').click()
-        })
-        .one('hidden.bs.modal', function () {
-          div.modal('show')
         })
         .bind('hide.bs.modal', function () {
           triggered += 1
