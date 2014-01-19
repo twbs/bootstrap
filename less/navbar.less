@@ -48,7 +48,6 @@
 // content for the user's viewport.
 
 .navbar-collapse {
-  max-height: 340px;
   overflow-x: visible;
   padding-right: @navbar-padding-horizontal;
   padding-left:  @navbar-padding-horizontal;
@@ -58,7 +57,7 @@
   -webkit-overflow-scrolling: touch;
 
   &.in {
-    overflow-y: auto;
+    overflow-y: visible;
   }
 
   @media (min-width: @grid-float-breakpoint) {
