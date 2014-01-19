@@ -10,11 +10,11 @@ module.exports = function (grunt) {
     return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&');
   };
 
-  var BsLessdocParser = require('./docs/grunt/bs-lessdoc-parser.js');
   var fs = require('fs');
-  var generateGlyphiconsData = require('./docs/grunt/bs-glyphicons-data-generator.js');
-  var generateRawFilesJs = require('./docs/grunt/bs-raw-files-generator.js');
   var path = require('path');
+  var generateGlyphiconsData = require('./docs/grunt/bs-glyphicons-data-generator.js');
+  var BsLessdocParser = require('./docs/grunt/bs-lessdoc-parser.js');
+  var generateRawFilesJs = require('./docs/grunt/bs-raw-files-generator.js');
 
   // Project configuration.
   grunt.initConfig({
@@ -36,7 +36,7 @@ module.exports = function (grunt) {
 
     // Task configuration.
     clean: {
-      dist: ['dist']
+      dist: 'dist'
     },
 
     jshint: {
@@ -47,16 +47,16 @@ module.exports = function (grunt) {
         src: 'Gruntfile.js'
       },
       src: {
-        src: ['js/*.js']
+        src: 'js/*.js'
       },
       test: {
-        src: ['js/tests/unit/*.js']
+        src: 'js/tests/unit/*.js'
       },
       assets: {
         src: ['docs/assets/js/application.js', 'docs/assets/js/customizer.js']
       },
       docsGrunt: {
-        src: ['docs/grunt/*.js']
+        src: 'docs/grunt/*.js'
       }
     },
 
@@ -65,19 +65,19 @@ module.exports = function (grunt) {
         config: 'js/.jscs.json',
       },
       gruntfile: {
-        src: ['Gruntfile.js']
+        src: 'Gruntfile.js'
       },
       src: {
-        src: ['js/*.js']
+        src: 'js/*.js'
       },
       test: {
-        src: ['js/tests/unit/*.js']
+        src: 'js/tests/unit/*.js'
       },
       assets: {
         src: ['docs/assets/js/application.js', 'docs/assets/js/customizer.js']
       },
       docsGrunt: {
-        src: ['docs/grunt/*.js']
+        src: 'docs/grunt/*.js'
       }
     },
 
@@ -122,7 +122,7 @@ module.exports = function (grunt) {
           banner: '<%= banner %>',
           report: 'min'
         },
-        src: ['<%= concat.bootstrap.dest %>'],
+        src: '<%= concat.bootstrap.dest %>',
         dest: 'dist/js/<%= pkg.name %>.min.js'
       },
       customize: {
@@ -195,7 +195,7 @@ module.exports = function (grunt) {
       compress: {
         options: {
           keepSpecialComments: '*',
-          noAdvanced: true, // turn advanced optimizations off until it's fixed in clean-css
+          noAdvanced: true, // turn advanced optimizations off until the issue is fixed in clean-css
           report: 'min',
           selectorsMergeMode: 'ie8'
         },
@@ -230,8 +230,8 @@ module.exports = function (grunt) {
           config: 'less/.csscomb.json'
         },
         files: {
-          'dist/css/<%= pkg.name %>.css': ['dist/css/<%= pkg.name %>.css'],
-          'dist/css/<%= pkg.name %>-theme.css': ['dist/css/<%= pkg.name %>-theme.css']
+          'dist/css/<%= pkg.name %>.css': 'dist/css/<%= pkg.name %>.css',
+          'dist/css/<%= pkg.name %>-theme.css': 'dist/css/<%= pkg.name %>-theme.css'
         }
       }
     },
@@ -239,7 +239,7 @@ module.exports = function (grunt) {
     copy: {
       fonts: {
         expand: true,
-        src: ['fonts/*'],
+        src: 'fonts/*',
         dest: 'dist/'
       },
       docs: {
@@ -258,7 +258,7 @@ module.exports = function (grunt) {
       options: {
         inject: 'js/tests/unit/phantom.js'
       },
-      files: ['js/tests/*.html']
+      files: 'js/tests/*.html'
     },
 
     connect: {
@@ -303,7 +303,7 @@ module.exports = function (grunt) {
         ]
       },
       files: {
-        src: ['_gh_pages/**/*.html']
+        src: '_gh_pages/**/*.html'
       }
     },
 
@@ -318,7 +318,7 @@ module.exports = function (grunt) {
       },
       less: {
         files: 'less/*.less',
-        tasks: ['less']
+        tasks: 'less'
       }
     },
 
@@ -385,7 +385,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-css', ['less', 'cssmin', 'csscomb', 'usebanner']);
 
   // Docs distribution task.
-  grunt.registerTask('dist-docs', ['copy:docs']);
+  grunt.registerTask('dist-docs', 'copy:docs');
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean', 'dist-css', 'copy:fonts', 'dist-docs', 'dist-js']);
@@ -396,13 +396,13 @@ module.exports = function (grunt) {
   // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
   // This can be overzealous, so its changes should always be manually reviewed!
-  grunt.registerTask('change-version-number', ['sed']);
+  grunt.registerTask('change-version-number', 'sed');
 
   grunt.registerTask('build-glyphicons-data', generateGlyphiconsData);
 
   // task for building customizer
   grunt.registerTask('build-customizer', ['build-customizer-vars-form', 'build-raw-files']);
-  grunt.registerTask('build-customizer-vars-form', ['jade']);
+  grunt.registerTask('build-customizer-vars-form', 'jade');
   grunt.registerTask('build-raw-files', 'Add scripts/less files to customizer.', function () {
     var banner = grunt.template.process('<%= banner %>');
     generateRawFilesJs(banner);
