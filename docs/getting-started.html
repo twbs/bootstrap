@@ -494,13 +494,13 @@ bootstrap/
 
 {% highlight js %}
 if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-  var msViewportStyle = document.createElement("style")
+  var msViewportStyle = document.createElement('style')
   msViewportStyle.appendChild(
     document.createTextNode(
-      "@-ms-viewport{width:auto!important}"
+      '@-ms-viewport{width:auto!important}'
     )
   )
-  document.querySelector("head").appendChild(msViewportStyle)
+  document.querySelector('head').appendChild(msViewportStyle)
 }
 {% endhighlight %}
   <p>For more information and usage guidelines, read <a href="http://timkadlec.com/2013/01/windows-phone-8-and-device-width/">Windows Phone 8 and Device-Width</a>.</p>
