@@ -12,11 +12,13 @@
   "ignore": [
     "**/.*",
     "_config.yml",
+    "browserstack.json",
     "CNAME",
     "composer.json",
     "CONTRIBUTING.md",
     "docs",
-    "js/tests"
+    "js/tests",
+    "test"
   ],
   "dependencies": {
     "jquery": ">= 1.9.0"
