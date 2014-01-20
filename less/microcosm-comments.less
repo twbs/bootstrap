@@ -112,15 +112,11 @@
 .comment-item-footer{
   font-size:@font-size-xsmall;
   color:#666;
-  &>a{
-    color:#ccc;
-    &:hover{
-      color:@brand-primary;
-    }
-  }
+  overflow: auto;
 }
 .generated-comment-box{
   padding-top:10px;
+  clear:both;
 }
 .reply-container{
   .comment-item{
@@ -179,4 +175,24 @@
       height:@avatar-size-small;
     }
   }
+}
+
+.comment-item-footer-btn {
+  border: 0;
+  background-color: rgba(0, 0, 0, 0);
+  color: #999;
+  padding: 0 10px;
+  float: left;
+  border-right: 1px solid #EEE;
+  outline:none;
+  &:hover{
+    color:@brand-primary;
+    text-decoration: underline;
+  }
+}
+.comment-item-footer-btn-last{
+  border-right:0;
+}
+.comment-item-footer-btn-first{
+  padding-left:0;
 }
