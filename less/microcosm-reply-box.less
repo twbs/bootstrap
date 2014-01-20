@@ -2,6 +2,7 @@
   width:100%;
   border:1px solid #ccc;
   border-radius:3px;
+  position: relative;
   &>ul{
     margin:0;
     padding:0;
@@ -141,4 +142,28 @@
   text-align: center;
   height: 100px;
   line-height: 100px;
+}
+
+
+.wmd-preview-wrapper{
+  position: absolute;
+  width: 100%;
+  top: 34px;
+  left: 0;
+  padding: 0 15px;
+  box-sizing:border-box;
+  display:none;
+  background-color:#eee;
+  border-top:1px solid #ccc;
+  border-bottom:1px solid #ccc;
+  overflow: auto;
+  .wmd-preview-title{
+    font-size:@font-size-xsmall;
+    font-family:@font-family-sans-serif;
+    margin:10px 0 0;
+    color:#ccc;
+    strong{
+      color:#999;
+    }
+  }
 }
