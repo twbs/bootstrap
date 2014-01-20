@@ -21,6 +21,7 @@ module.exports = function (grunt) {
   var generateGlyphiconsData = require('./docs/grunt/bs-glyphicons-data-generator.js');
   var BsLessdocParser = require('./docs/grunt/bs-lessdoc-parser.js');
   var generateRawFilesJs = require('./docs/grunt/bs-raw-files-generator.js');
+  var updateShrinkwrap = require('./test-infra/shrinkwrap.js');
 
   // Project configuration.
   grunt.initConfig({
@@ -49,8 +50,8 @@ module.exports = function (grunt) {
       options: {
         jshintrc: 'js/.jshintrc'
       },
-      gruntfile: {
-        src: 'Gruntfile.js'
+      grunt: {
+        src: ['Gruntfile.js', 'docs/grunt/*.js', 'test-infra/shrinkwrap.js']
       },
       src: {
         src: 'js/*.js'
@@ -60,9 +61,6 @@ module.exports = function (grunt) {
       },
       assets: {
         src: ['docs/assets/js/application.js', 'docs/assets/js/customizer.js']
-      },
-      docsGrunt: {
-        src: 'docs/grunt/*.js'
       }
     },
 
@@ -70,8 +68,8 @@ module.exports = function (grunt) {
       options: {
         config: 'js/.jscs.json',
       },
-      gruntfile: {
-        src: 'Gruntfile.js'
+      grunt: {
+        src: ['Gruntfile.js', 'docs/grunt/*.js', 'test-infra/shrinkwrap.js']
       },
       src: {
         src: 'js/*.js'
@@ -81,9 +79,6 @@ module.exports = function (grunt) {
       },
       assets: {
         src: ['docs/assets/js/application.js', 'docs/assets/js/customizer.js']
-      },
-      docsGrunt: {
-        src: 'docs/grunt/*.js'
       }
     },
 
@@ -349,6 +344,15 @@ module.exports = function (grunt) {
           browsers: grunt.file.readYAML('test-infra/sauce_browsers.yml')
         }
       }
+    },
+
+    exec: {
+      npmUpdate: {
+        command: 'npm update'
+      },
+      npmShrinkWrap: {
+        command: 'npm shrinkwrap --dev'
+      }
     }
   });
 
@@ -398,7 +402,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist', ['clean', 'dist-css', 'copy:fonts', 'dist-docs', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['test', 'dist', 'build-glyphicons-data', 'build-customizer']);
+  grunt.registerTask('default', ['test', 'dist', 'build-glyphicons-data', 'build-customizer', 'update-shrinkwrap']);
 
   // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
@@ -414,4 +418,8 @@ module.exports = function (grunt) {
     var banner = grunt.template.process('<%= banner %>');
     generateRawFilesJs(banner);
   });
+
+  // Task for updating the npm packages used by the Travis build.
+  grunt.registerTask('update-shrinkwrap', ['exec:npmUpdate', 'exec:npmShrinkWrap', '_update-shrinkwrap']);
+  grunt.registerTask('_update-shrinkwrap', function () { updateShrinkwrap.call(this, grunt); });
 };
