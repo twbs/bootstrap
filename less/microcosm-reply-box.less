@@ -114,6 +114,24 @@
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
     overflow: visible;
     border-radius: 3px;
+    position: relative;
+    span.remove{
+      width: 30px;
+      height: 30px;
+      background-color: #333;
+      display: block;
+      color: #FFF;
+      border-radius: 40px;
+      position: absolute;
+      top: 0;
+      right: -10px;
+      border: 3px solid #FFF;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+      cursor:pointer;
+      &:hover{
+        background-color:#F74040;
+      }
+    }
   }
   img{
     width:auto;
