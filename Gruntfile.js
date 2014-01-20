@@ -136,7 +136,7 @@ module.exports = function (grunt) {
           'docs/assets/js/vendor/uglify.min.js',
           'docs/assets/js/vendor/blob.js',
           'docs/assets/js/vendor/filesaver.js',
-          'docs/assets/js/raw-files.js',
+          'docs/assets/js/raw-files.min.js',
           'docs/assets/js/customizer.js'
         ],
         dest: 'docs/assets/js/customize.min.js'
