@@ -21,5 +21,5 @@ module.exports = function generateRawFilesJs(banner) {
     banner = ''
   }
   var files = banner + getFiles('js') + getFiles('less') + getFiles('fonts')
-  fs.writeFileSync('docs/assets/js/raw-files.js', files)
+  fs.writeFileSync('docs/assets/js/raw-files.min.js', files)
 }
