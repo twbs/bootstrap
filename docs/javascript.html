@@ -102,6 +102,10 @@ $('#myModal').on('show.bs.modal', function (e) {
     <h4>Overlapping modals not supported</h4>
     <p>Be sure not to open a modal while another is still visible. Showing more than one modal at a time requires custom code.</p>
   </div>
+  <div class="bs-callout bs-callout-warning" id="callout-modal-markup-placement">
+    <h4>Modal markup placement</h4>
+    <p>Always try to place a modal's HTML code in a top-level position in your document to avoid other components affecting the modal's appearance and/or functionality.</p>
+  </div>
   <div class="bs-callout bs-callout-warning">
     <h4>Mobile device caveats</h4>
     <p>There are some caveats regarding using modals on mobile devices. <a href="../getting-started/#support-fixed-position-keyboards">See our browser support docs</a> for details.</p>
@@ -1366,7 +1370,7 @@ $('#myPopover').on('hidden.bs.popover', function () {
 
   <h3>Markup</h3>
   <p>Just add <code>data-dismiss="alert"</code> to your close button to automatically give an alert close functionality.</p>
-  {% highlight html %}<a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>{% endhighlight %}
+  {% highlight html %}<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>{% endhighlight %}
 
   <h3>Methods</h3>
 
