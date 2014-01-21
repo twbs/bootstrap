@@ -6,7 +6,7 @@ This is the Sass version of Bootstrap. A port of Bootstrap from Less to Sass. Th
 
 To get started, check out <http://getbootstrap.com>!
 
-
+ATTENTION: This project has reached it's end of life. There is a new [official port of Bootstrap to Sass](https://github.com/twbs/bootstrap-sass). Please use this in all future projects.
 
 ## SASS: Quick start
 
