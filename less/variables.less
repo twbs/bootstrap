@@ -32,7 +32,7 @@
 //** Global textual link color.
 @link-color:            @brand-primary;
 //** Link hover color set via `darken()` function.
-@link-hover-color:      darken(@link-color, 15%);
+@link-hover-color:      darken(@link-color, 15%); // #172801
 
 
 //== Typography
@@ -143,23 +143,23 @@
 
 @btn-primary-color:              #fff;
 @btn-primary-bg:                 @brand-primary;
-@btn-primary-border:             darken(@btn-primary-bg, 5%);
+@btn-primary-border:             darken(@btn-primary-bg, 5%); // #357ebd
 
 @btn-success-color:              #fff;
 @btn-success-bg:                 @brand-success;
-@btn-success-border:             darken(@btn-success-bg, 5%);
+@btn-success-border:             darken(@btn-success-bg, 5%); // #4cae4c
 
 @btn-info-color:                 #fff;
 @btn-info-bg:                    @brand-info;
-@btn-info-border:                darken(@btn-info-bg, 5%);
+@btn-info-border:                darken(@btn-info-bg, 5%); // #eea236
 
 @btn-warning-color:              #fff;
 @btn-warning-bg:                 @brand-warning;
-@btn-warning-border:             darken(@btn-warning-bg, 5%);
+@btn-warning-border:             darken(@btn-warning-bg, 5%); // #d43f3a
 
 @btn-danger-color:               #fff;
 @btn-danger-bg:                  @brand-danger;
-@btn-danger-border:              darken(@btn-danger-bg, 5%);
+@btn-danger-border:              darken(@btn-danger-bg, 5%); // #46b8da
 
 @btn-link-disabled-color:        @gray-light;
 
@@ -217,7 +217,7 @@
 //** Dropdown link text color.
 @dropdown-link-color:            @gray-dark;
 //** Hover color for dropdown links.
-@dropdown-link-hover-color:      darken(@gray-dark, 5%);
+@dropdown-link-hover-color:      darken(@gray-dark, 5%); // #262626
 //** Hover background for dropdown links.
 @dropdown-link-hover-bg:         #f5f5f5;
 
@@ -314,20 +314,20 @@
 
 @navbar-default-color:             #777;
 @navbar-default-bg:                #f8f8f8;
-@navbar-default-border:            darken(@navbar-default-bg, 6.5%);
+@navbar-default-border:            darken(@navbar-default-bg, 6.5%); // #e7e7e7
 
 // Navbar links
 @navbar-default-link-color:                #777;
 @navbar-default-link-hover-color:          #333;
 @navbar-default-link-hover-bg:             transparent;
 @navbar-default-link-active-color:         #555;
-@navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
+@navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%); // #e7e7e7
 @navbar-default-link-disabled-color:       #ccc;
 @navbar-default-link-disabled-bg:          transparent;
 
 // Navbar brand label
 @navbar-default-brand-color:               @navbar-default-link-color;
-@navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%);
+@navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%); // #777
 @navbar-default-brand-hover-bg:            transparent;
 
 // Navbar toggle
@@ -340,14 +340,14 @@
 // Reset inverted navbar basics
 @navbar-inverse-color:                      @gray-light;
 @navbar-inverse-bg:                         #222;
-@navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
+@navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%); // #080808
 
 // Inverted navbar links
 @navbar-inverse-link-color:                 @gray-light;
 @navbar-inverse-link-hover-color:           #fff;
 @navbar-inverse-link-hover-bg:              transparent;
 @navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
-@navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%);
+@navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%); // #080808
 @navbar-inverse-link-disabled-color:        #444;
 @navbar-inverse-link-disabled-bg:           transparent;
 
@@ -447,19 +447,19 @@
 
 @state-success-text:             #3c763d;
 @state-success-bg:               #dff0d8;
-@state-success-border:           darken(spin(@state-success-bg, -10), 5%);
+@state-success-border:           darken(spin(@state-success-bg, -10), 5%); // #d6e9c6
 
 @state-info-text:                #31708f;
 @state-info-bg:                  #d9edf7;
-@state-info-border:              darken(spin(@state-info-bg, -10), 7%);
+@state-info-border:              darken(spin(@state-info-bg, -10), 7%); // #bce8f1
 
 @state-warning-text:             #8a6d3b;
 @state-warning-bg:               #fcf8e3;
-@state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
+@state-warning-border:           darken(spin(@state-warning-bg, -10), 5%); // #faebcc
 
 @state-danger-text:              #a94442;
 @state-danger-bg:                #f2dede;
-@state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
+@state-danger-border:            darken(spin(@state-danger-bg, -10), 5%); // #ebccd1
 
 
 //== Tooltips
@@ -494,7 +494,7 @@
 @popover-fallback-border-color:       #ccc;
 
 //** Popover title background color
-@popover-title-bg:                    darken(@popover-bg, 3%);
+@popover-title-bg:                    darken(@popover-bg, 3%); // #f7f7f7
 
 //** Popover arrow width
 @popover-arrow-width:                 10px;
@@ -502,7 +502,7 @@
 @popover-arrow-color:                 #fff;
 
 //** Popover outer arrow width
-@popover-arrow-outer-width:           (@popover-arrow-width + 1);
+@popover-arrow-outer-width:           (@popover-arrow-width + 1); // 11px
 //** Popover outer arrow color
 @popover-arrow-outer-color:           rgba(0,0,0,.25);
 //** Popover outer arrow fallback color
@@ -630,7 +630,7 @@
 @list-group-active-bg:          @component-active-bg;
 //** Border color of active list elements
 @list-group-active-border:      @list-group-active-bg;
-@list-group-active-text-color:  lighten(@list-group-active-bg, 40%);
+@list-group-active-text-color:  lighten(@list-group-active-bg, 40%); // #e1edf7
 
 @list-group-link-color:         #555;
 @list-group-link-heading-color: #333;
@@ -697,7 +697,7 @@
 //##
 
 @well-bg:                     #f5f5f5;
-@well-border:                 darken(@well-bg, 7%);
+@well-border:                 darken(@well-bg, 7%); // #e3e3e3
 
 
 //== Badges
@@ -811,16 +811,16 @@
 //## Define the maximum width of `.container` for different screen sizes.
 
 // Small screen / tablet
-@container-tablet:             ((720px + @grid-gutter-width));
+@container-tablet:             ((720px + @grid-gutter-width)); // 750px
 //** For `@screen-sm-min` and up.
 @container-sm:                 @container-tablet;
 
 // Medium screen / desktop
-@container-desktop:            ((940px + @grid-gutter-width));
+@container-desktop:            ((940px + @grid-gutter-width)); // 970px
 //** For `@screen-md-min` and up.
 @container-md:                 @container-desktop;
 
 // Large screen / wide desktop
-@container-large-desktop:      ((1140px + @grid-gutter-width));
+@container-large-desktop:      ((1140px + @grid-gutter-width)); // 1170px
 //** For `@screen-lg-min` and up.
 @container-lg:                 @container-large-desktop;
