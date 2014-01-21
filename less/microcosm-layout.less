@@ -471,7 +471,7 @@ blockquote{
   .list-people-sm{
     width: 100%;
     li {
-      width: 15%;
+      min-width: 15%;
       font-size: @font-size-xsmall;
       margin-bottom: 10px;
       img {
@@ -482,6 +482,17 @@ blockquote{
         padding: 5px;
         border-radius: 3px;
         display: block;
+      }
+      span.remove{
+        float: right;
+        font-size: 16px;
+        font-weight: 700;
+        vertical-align: middle;
+        display: inline-block;
+        cursor: pointer;
+        width: 15px;
+        text-align: center;
+        margin-left: 5px;
       }
     }
   }
