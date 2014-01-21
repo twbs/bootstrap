@@ -1,4 +1,10 @@
 /* jshint node: true */
+/*!
+ * Bootstrap Grunt task for generating raw-files.min.js for the Customizer
+ * http://getbootstrap.com
+ * Copyright 2014 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
 
 var btoa = require('btoa') // jshint ignore:line
 var fs = require('fs')
