@@ -279,6 +279,9 @@ blockquote{
     iframe{
       max-width:100% !important;
     }
+    .prettyprint{
+      font-size:@font-size-small * 0.8;
+    }
   }
   @media (min-width: @grid-float-breakpoint){
     .row-meta-excerpt-text{
@@ -634,7 +637,7 @@ blockquote{
   color:#666;
   h3{
     font-size:@font-size-small;
-    margin:0;
+    margin:0 0 @line-height-computed/2;
     line-height:@line-height-computed * 0.8;
     &>span{
       display:block;
