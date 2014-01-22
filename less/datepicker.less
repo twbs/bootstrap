@@ -47,12 +47,16 @@
 		width: 100%;
 		margin: 0;
 	}
+	thead{
+		border-bottom: 3px solid #EEE;
+	}
 	td,
 	th{
 		text-align: center;
 		width: 20px;
 		height: 20px;
 		.border-radius(4px);
+		font-size:@font-size-small;
 	}
 	td {
 		&.day:hover {
@@ -103,7 +107,7 @@
 		}
 		&.next,
 		&.prev {
-			font-size: @font-size-base * 1.5;
+			font-size: @font-size-base;
 		}
 	}
 
