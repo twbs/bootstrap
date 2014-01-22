@@ -385,7 +385,7 @@ body {
     border-radius: 4px;
     border-width: 1px !important;
   }
-  .bs-docs-home .carbonad {
+  .bs-masthead .carbonad {
     margin: 50px auto 0 !important;
   }
 }
@@ -406,7 +406,7 @@ body {
     padding: 15px !important;
     width: 330px !important;
   }
-  .bs-docs-home .carbonad {
+  .bs-masthead .carbonad {
     position: static;
   }
 }
