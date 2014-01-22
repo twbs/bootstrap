@@ -48,10 +48,6 @@
   }
 }
 .content-body{
-  h1{
-    font-size:@font-size-large;
-    margin: 0 0 10px;
-  }
   &>h3{
     font-size:@font-size-small;
     color:#666;
@@ -102,20 +98,22 @@ a.muted{
 }
 
 blockquote{
-  margin:0 0 15px;
-  border:0;
-  padding:0;
+  margin:0 0 @line-height-computed/2;
   border:0;
   background: url('/static/img/quote-marks.png') no-repeat 10px 10px #FBFBFB;
-  padding-left: 24px;
+  padding: @line-height-computed/2 0 @line-height-computed/2 40px;
   border-left: 2px solid #CCC;
+  overflow: auto;
+  &>blockquote{
+    border-left:0;
+  }
   p{
-    display: block;
-    padding: 15px;
-    color: #666;
+    color: @gray;
     font-size: @font-size-medium;
     line-height: @line-height-computed;
-    margin-bottom: 20px;
+  }
+  h1,h2,h3,h4,h5,h6,li{
+    color: @gray;
   }
 }
 // list layout styles for collection of items
