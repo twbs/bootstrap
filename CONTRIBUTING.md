@@ -19,7 +19,7 @@ and [submitting pull requests](#pull-requests), but please respect the following
 restrictions:
 
 * Please **do not** use the issue tracker for personal support requests.  Stack
-  Overflow ([`twitter-boostrap`](http://stackoverflow.com/questions/tagged/twitter-bootstrap) tag) or [IRC](https://github.com/twbs/bootstrap/blob/master/README.md#community) are better places to get help.
+  Overflow ([`twitter-bootstrap-3`](http://stackoverflow.com/questions/tagged/twitter-bootstrap-3) tag) or [IRC](https://github.com/twbs/bootstrap/blob/master/README.md#community) are better places to get help.
 
 * Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.
