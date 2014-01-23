@@ -39,6 +39,12 @@
       "os": "ios",
       "os_version": "7.0",
       "device": "iPhone 5S"
+    },
+    {
+      "browser": "ie",
+      "browser_version": "11.0",
+      "os": "Windows",
+      "os_version": "8.1"
     }
   ]
 }
