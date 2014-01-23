@@ -9,7 +9,8 @@
   border-right-color:#ccc;
   border-width:1px 0;
   background-color:#fff;
-  padding:10px;
+  padding-top:@line-height-computed/2;
+  padding-bottom:@line-height-computed/2;
 
   &:first-child{
     border-top:0;
@@ -67,6 +68,7 @@
 .comment-item-in-reply-to{
   font-size:@font-size-xsmall;
   color:#999;
+  display:inline-block;
 }
 .comment-item-permalink{
   float:right;
@@ -121,6 +123,9 @@
   }
   h1,h2,h3,h4,h5,h6{
     margin-top:@line-height-computed/2;
+  }
+  h1{
+    line-height: @font-size-h1 * 1.1;
   }
 
   @media (min-width: @screen-sm-min){
