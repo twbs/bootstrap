@@ -26,14 +26,17 @@
 
 .content-header{
   font-size:@font-size-small;
-  padding:@line-height-computed/2 0;
   position:relative;
+  padding:5px 0;
   h1{
     font-size:@font-size-medium;
     margin:0;
   }
   p{
     font-size:@font-size-xsmall;
+  }
+  @media (min-width: @screen-sm-min){
+    padding:@line-height-computed/2 0;
   }
 }
 .content-meta{
@@ -214,18 +217,7 @@ blockquote{
     display:inline;
   }
 }
-.row-title-profile{
-  margin-top:5px;
-  strong{
-    float: left;
-    line-height: 20px;
-    margin-left: 10px;
-    &:hover{
-      color:@brand-primary;
-      text-decoration: underline;
-    }
-  }
-}
+
 .row-title-highlight{
   b{
     background-color: @brand-highlight;
@@ -735,14 +727,8 @@ blockquote{
     margin:0;
     padding-top:0;
     padding-bottom:0;
-    input[type=checkbox]:checked + label{
-      font-weight:700;
-    }
     label{
-      &:hover,
-      &:active{
-        font-weight:700;
-      }
+      display:block;
     }
   }
 }
