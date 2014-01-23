@@ -26,7 +26,7 @@
 
 .content-header{
   font-size:@font-size-small;
-  padding:15px 0 0;
+  padding:@line-height-computed/2 0;
   position:relative;
   h1{
     font-size:@font-size-medium;
@@ -52,9 +52,6 @@
     font-size:@font-size-small;
     color:#666;
   }
-  @media (min-width: @screen-md-min) {
-    margin-top:15px;
-  }
   .alert{
     font-size: 18px;
     margin: 0 0 15px;
@@ -67,8 +64,8 @@
 }
 
 .padded{
-  padding-left:15px;
-  padding-right:15px;
+  padding-left:10px;
+  padding-right:10px;
   @media (min-width: @screen-md-min) {
     padding-left:0;
     padding-right:0;
@@ -597,12 +594,12 @@ blockquote{
   position: absolute;
   z-index:1000; // fix for google maps which has z-index of 999
   top: 0;
-  right:-350px;
+  right:-320px;
+  width:320px;
   background-color: #eee;
   min-height: 480px;
   font-size:@font-size-small;
   height:100%;
-  width:340px;
 
   -webkit-transition: all 500ms cubic-bezier(0.860, 0.000, 0.070, 1.000);
   -moz-transition: all 500ms cubic-bezier(0.860, 0.000, 0.070, 1.000);
