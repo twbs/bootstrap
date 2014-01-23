@@ -528,6 +528,14 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
   <h3 id="support-browser-zooming">Browser zooming</h3>
   <p>Page zooming inevitably presents rendering artifacts in some components, both in Bootstrap and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.</p>
 
+  <h3 id="support-printing">Printer viewports</h3>
+  <p>Even in some modern browsers, printing can be quirky. In particular, as of Chrome v32 and regardless of margin settings, Chrome uses a viewport width significantly narrower than the physical paper size when resolving media queries while printing a webpage. This can result in Bootstrap's extra-small grid being unexpectedly activated when printing. <a href="https://github.com/twbs/bootstrap/issues/12078">See #12078 for some details.</a> Suggested workarounds:</p>
+  <ul>
+    <li>Embrace the extra-small grid and make sure your page looks acceptable under it.</li>
+    <li>Customize the values of the <code>@screen-*</code> Less variables so that your printer paper is considered larger than extra-small.</li>
+    <li>Add custom media queries to change the grid size breakpoints for print media only.</li>
+  </ul>
+
   <h3 id="support-android-stock-browser">Android stock browser</h3>
   <p>Out of the box, Android 4.1 (and even some newer releases apparently) ship with the Browser app as the default web browser of choice (as opposed to Chrome). Unfortunately, the Browser app has lots of bugs and inconsistencies with CSS in general.</p>
   <h4>Select menus</h4>
