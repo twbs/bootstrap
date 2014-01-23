@@ -1728,6 +1728,7 @@ output {
 fieldset[disabled] .form-control {
   cursor: not-allowed;
   background-color: #eee;
+  opacity: 1;
 }
 textarea.form-control {
   height: auto;
@@ -2029,6 +2030,7 @@ fieldset[disabled] .btn {
   -webkit-box-shadow: none;
           box-shadow: none;
   opacity: .65;
+  opacity: 1;
 }
 .btn-default {
   color: #333;
