@@ -33,7 +33,6 @@
   font-size: @font-size-xsmall;
   color: #999;
   border-bottom:1px solid #eee;
-  padding-bottom:20px;
 }
 .modal-list{
     margin:15px auto;
@@ -98,10 +97,12 @@
 }
 
 #modal-event-attendees{
-
-  .modal-list{
-    width:75%;
+  @media (min-width:@screen-sm-min){
+    .modal-list{
+      width:75%;
+    }
   }
+
 }
 #modal-huddle{
   .modal-huddle-form{
