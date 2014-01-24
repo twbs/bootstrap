@@ -732,8 +732,10 @@ blockquote{
     }
   }
 }
-.metabar-footer{
-  margin-top:30px;
+
+.footer{
+  margin-top:@line-height-computed;
+  margin-bottom:@line-height-computed;
   color:#999;
   font-size:@font-size-xsmall;
   p{
@@ -754,6 +756,9 @@ blockquote{
         }
       }
     }
+  }
+  @media (min-width:@screen-sm-min){
+    margin-top:0;
   }
 }
 
