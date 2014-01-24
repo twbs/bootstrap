@@ -29,14 +29,20 @@
   position:relative;
   padding:5px 0;
   h1{
-    font-size:@font-size-medium;
-    margin:0;
+    font-size:@font-size-small;
+    color:#999;
+    margin:0 0 @line-height-computed/2;
   }
   p{
     font-size:@font-size-xsmall;
   }
   @media (min-width: @screen-sm-min){
     padding:@line-height-computed/2 0;
+    h1{
+      font-size:@font-size-medium;
+      color:@text-color;
+      margin:0;
+    }
   }
 }
 .content-meta{
