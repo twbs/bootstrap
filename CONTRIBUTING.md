@@ -173,6 +173,7 @@ license your work under the terms of the [MIT License](LICENSE.md).
 - Attribute selectors should only be used where absolutely necessary (e.g., form controls) and should be avoided on custom components for performance and explicitness.
 - Series of classes for a component should include a base class (e.g., `.component`) and use the base class as a prefix for modifier and sub-components (e.g., `.component-lg`).
 - Avoid inheritance and over nesting—use single, explicit classes whenever possible.
+- When feasible, default color palettes should comply with [WCAG color contrast guidelines](http://www.w3.org/TR/WCAG20/#visual-audio-contrast).
 
 ### JS
 
