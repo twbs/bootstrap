@@ -1,36 +1,39 @@
 .huddle-meta{
   .list-people{
     float:left;
-  }
-  .btn-group-responsive-toggle{
-    float:right;
-  }
-  .btn-group-responsive{
-    display:none;
-    clear:both;
-    padding-top:10px;
-    form{
-      float:left;
-      .btn{
-        border-radius:0;
-        border-right-width:0;
-      }
-      &:last-child .btn{
-        border-top-right-radius: 3px;
-        border-bottom-right-radius: 3px;
-        border-right-width:1px;
-      }
-      &:first-child .btn{
-        border-top-left-radius: 3px;
-        border-bottom-left-radius: 3px;
-      }
-
+    img{
+      border-radius:3px;
     }
-    @media (min-width: @grid-float-breakpoint){
-      clear:none;
+  }
+  .huddle-actions{
+    width:100%;
+    padding-top: 10px;
+    clear: left;
+    .btn {
+      float: left;
+      display: inline-block;
+      border-radius: 0;
+      border-right:0;
+      width:50%;
+    }
+
+    .btn:last-child{
+      border-top-right-radius:3px;
+      border-bottom-right-radius:3px;
+      border-right:1px solid #999;
+    }
+    .btn:first-child{
+      border-top-left-radius:3px;
+      border-bottom-left-radius:3px;
+    }
+    @media (min-width: @screen-sm-min){
       float:right;
-      display:block !important;
       padding-top:0;
+      clear:none;
+      width:auto;
+      .btn{
+        width:auto;
+      }
     }
   }
 }
