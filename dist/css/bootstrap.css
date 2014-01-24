@@ -4837,8 +4837,8 @@ a.list-group-item-danger.active:focus {
 .panel > .panel-body + .table-responsive {
   border-top: 1px solid #ddd;
 }
-.panel > .table > tbody:first-child th,
-.panel > .table > tbody:first-child td {
+.panel > .table > tbody:first-child > tr:first-child th,
+.panel > .table > tbody:first-child > tr:first-child td {
   border-top: 0;
 }
 .panel > .table-bordered,
