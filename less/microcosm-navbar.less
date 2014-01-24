@@ -56,11 +56,11 @@
   font-size: @font-size-xsmall;
   background-color: #FFF;
   overflow: auto;
+  display:none;
   img{
     width : @avatar-size-medium;
     height: @avatar-size-medium;
-  }
-  img{
+    border-radius:3px;
     margin-right:5px;
   }
   button{
@@ -149,6 +149,7 @@
   }
 
   @media (min-width: @screen-sm-min){
+    display:block;
     border-left: 1px solid #EEE;
     width: 200px;
     position: absolute;
@@ -287,32 +288,80 @@
   border-width:1px 0;
 
 }
-.navbar-nav{
-  &>li{
-    border-bottom:1px solid #ccc;
-  }
-  a{
-    font-family: @font-family-display;
-    font-size:@font-size-small;
-  }
-  .navbar-nav-search{
-    input,
-    .input-group-addon{
-      border:0;
-      -webkit-box-shadow:none;
-      box-shadow:none;
-      border-radius:0
+.navbar-collapse{
+  max-height:100%;
+  .navbar-profile{
+    display:block;
+    margin-bottom:@line-height-computed/2;
+    .navbar-profile-row-1-left{
+      padding:0;
+    }
+    .navbar-profile-row-1-huddles{
+      line-height:@line-height-computed;
+      padding:0;
     }
   }
   @media (min-width:@screen-sm-min){
-    &>li{
-      border-bottom:0;
-    }
-    .navbar-nav-search{
+    .navbar-profile{
       display:none;
     }
   }
 }
+.navbar-nav{
+  margin-left:0;
+  margin-right:0;
+  margin-bottom:@line-height-computed/2;
+
+  &>li{
+    border-bottom:1px solid #eee;
+  }
+  li{
+    a{
+      font-family: @font-family-display;
+      font-size:@font-size-small;
+      padding-top:10px;
+      padding-bottom:10px;
+      padding-left:0;
+      .label{
+        float: right;
+        line-height: @line-height-computed;
+        padding: 0 @line-height-computed/2;
+      }
+    }
+    &.lh{
+      font-weight:700;
+      font-size:@font-size-xsmall;
+      padding:0 0 @line-height-computed/4;
+      color:#ccc;
+    }
+    &:last-child{
+      border-bottom:0;
+    }
+  }
+  &.navbar-nav-search{
+    border-bottom:0;
+    padding:5px 0 0;
+  }
+  @media (min-width:@screen-sm-min){
+    margin-bottom:0;
+    &>li{
+      border-bottom:0;
+      &.lh{
+        display:none;
+      }
+      a{
+        padding-left:@line-height-computed/2;
+      }
+    }
+    &.navbar-nav-search,
+    &.navbar-nav-unregistered,
+    &.navbar-nav-registered{
+      display:none;
+    }
+  }
+}
+
+
 
 
 .navbar-toggle-btn{
@@ -327,6 +376,10 @@
 .menu-toggle{
   float:left;
   margin-left:-8px;
+  .sprite-drawer{
+    margin-left: -1px;
+    margin-top: -7px;
+  }
   @media (min-width: @screen-sm-min) {
     display:none;
   }
