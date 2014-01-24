@@ -11,6 +11,10 @@ fieldset {
   padding: 0;
   margin: 0;
   border: 0;
+  // Chrome and Firefox set a `min-width: -webkit-min-content;` on fieldsets,
+  // so we reset that to ensure it behaves more like a standard block element.
+  // See https://github.com/twbs/bootstrap/issues/12359.
+  min-width: 0;
 }
 
 legend {
