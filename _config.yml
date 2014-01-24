@@ -14,8 +14,7 @@ port:             9001
 current_version:  3.0.3
 repo:             https://github.com/twbs/bootstrap
 
-#download_source:  https://github.com/twbs/bootstrap/archive/v3.0.3.zip
-download_source:  http://getbootstrap.com/bootstrap-3.0.3.zip
+download_source:  https://github.com/twbs/bootstrap/archive/v3.0.3.zip
 download_dist:    https://github.com/twbs/bootstrap/releases/download/v3.0.3/bootstrap-3.0.3-dist.zip
 
 blog:             http://blog.getbootstrap.com
