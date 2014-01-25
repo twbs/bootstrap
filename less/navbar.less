@@ -53,7 +53,7 @@
   padding-right: @navbar-padding-horizontal;
   padding-left:  @navbar-padding-horizontal;
   border-top: 1px solid transparent;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+  .box-shadow(inset 0 1px 0 rgba(255,255,255,.1));
   &:extend(.clearfix all);
   -webkit-overflow-scrolling: touch;
 
@@ -64,7 +64,7 @@
   @media (min-width: @grid-float-breakpoint) {
     width: auto;
     border-top: 0;
-    box-shadow: none;
+    .box-shadow(none);
 
     &.collapse {
       display: block !important;
@@ -239,7 +239,7 @@
       margin-top: 0;
       background-color: transparent;
       border: 0;
-      box-shadow: none;
+      .box-shadow(none);
       > li > a,
       .dropdown-header {
         padding: 5px 15px 5px 25px;
