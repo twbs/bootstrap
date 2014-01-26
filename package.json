@@ -47,7 +47,7 @@
     "grunt-jscs-checker": "~0.3.0",
     "grunt-saucelabs": "~4.1.2",
     "grunt-sed": "~0.1.1",
-    "load-grunt-tasks": "~0.2.1",
+    "load-grunt-tasks": "~0.3.0",
     "markdown": "~0.5.0"
   },
   "jspm": {
