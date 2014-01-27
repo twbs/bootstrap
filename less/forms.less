@@ -79,17 +79,6 @@ input[type="checkbox"]:focus {
   .tab-focus();
 }
 
-// Fix for Chrome number input
-//
-// Setting certain font-sizes causes the `I` bar to appear on hover of the
-// decrement button. See https://github.com/twbs/bootstrap/issues/8350.
-input[type="number"] {
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    height: auto;
-  }
-}
-
 // Adjust output element
 output {
   display: block;
