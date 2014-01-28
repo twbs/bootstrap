@@ -3739,15 +3739,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
   padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
+  height: 20px;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
   text-decoration: none;
-}
-.navbar-brand > .glyphicon {
-  float: left;
-  margin-top: -2px;
-  margin-right: 5px;
 }
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,
