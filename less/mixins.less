@@ -796,7 +796,7 @@
   .col(1); // kickstart it
 }
 
-.make-grid-columns-float(@class) {
+.float-grid-columns(@class) {
   .col(@index) when (@index = 1) { // initial
     @item: ~".col-@{class}-@{index}";
     .col((@index + 1), @item);
@@ -813,34 +813,42 @@
   .col(1); // kickstart it
 }
 
-.calc-grid(@index, @class, @type) when (@type = width) and (@index > 0) {
+.calc-grid-column(@index, @class, @type) when (@type = width) and (@index > 0) {
   .col-@{class}-@{index} {
     width: percentage((@index / @grid-columns));
   }
 }
-.calc-grid(@index, @class, @type) when (@type = push) {
+.calc-grid-column(@index, @class, @type) when (@type = push) {
   .col-@{class}-push-@{index} {
     left: percentage((@index / @grid-columns));
   }
 }
-.calc-grid(@index, @class, @type) when (@type = pull) {
+.calc-grid-column(@index, @class, @type) when (@type = pull) {
   .col-@{class}-pull-@{index} {
     right: percentage((@index / @grid-columns));
   }
 }
-.calc-grid(@index, @class, @type) when (@type = offset) {
+.calc-grid-column(@index, @class, @type) when (@type = offset) {
   .col-@{class}-offset-@{index} {
     margin-left: percentage((@index / @grid-columns));
   }
 }
 
 // Basic looping in LESS
-.make-grid(@index, @class, @type) when (@index >= 0) {
-  .calc-grid(@index, @class, @type);
+.loop-grid-columns(@index, @class, @type) when (@index >= 0) {
+  .calc-grid-column(@index, @class, @type);
   // next iteration
-  .make-grid((@index - 1), @class, @type);
+  .loop-grid-columns((@index - 1), @class, @type);
 }
 
+// Create grid for specific class
+.make-grid(@class) {
+  .float-grid-columns(@class);
+  .loop-grid-columns(@grid-columns, @class, width);
+  .loop-grid-columns(@grid-columns, @class, pull);
+  .loop-grid-columns(@grid-columns, @class, push);
+  .loop-grid-columns(@grid-columns, @class, offset);
+}
 
 // Form validation states
 //
