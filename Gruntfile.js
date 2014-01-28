@@ -1,4 +1,3 @@
-/* jshint node: true */
 /*!
  * Bootstrap's Gruntfile
  * http://getbootstrap.com
