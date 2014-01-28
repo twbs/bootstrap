@@ -72,29 +72,11 @@ select[size] {
   height: auto;
 }
 
-// Fix optgroup Firefox bug per https://github.com/twbs/bootstrap/issues/7611
-select optgroup {
-  font-size: inherit;
-  font-style: inherit;
-  font-family: inherit;
-}
-
 // Focus for file, radio, and checkbox
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
   .tab-focus();
-}
-
-// Fix for Chrome number input
-//
-// Setting certain font-sizes causes the `I` bar to appear on hover of the
-// decrement button. See https://github.com/twbs/bootstrap/issues/8350.
-input[type="number"] {
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    height: auto;
-  }
 }
 
 // Adjust output element
