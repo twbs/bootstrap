@@ -1,25 +1,10 @@
 .navbar{
   margin-bottom:0;
   @media (min-width: @screen-md-min) {
-    margin-bottom:20px;
+    margin-bottom:10px;
   }
 }
 .navbar-header-wrapper{
-
-  background-color:@header-bg;
-
-  &.horizontal-tiling-bg{
-    background-image: url('../background.png');
-    background-repeat: repeat-x;
-    background-size: contain;
-    background-size: 100% 60px;
-  }
-  &.tiling-bg{
-    background-image: url('../background.png');
-    background-repeat: repeat;
-  }
-
-
   @media (min-width:@screen-sm-min){
     &.horizontal-tiling-bg{
       background-size:100% 100%;
@@ -283,10 +268,16 @@
   }
 }
 
-.navbar-nav-wrapper{
-  border:1px solid #ccc;
-  border-width:1px 0;
+.navbar-nav-wrapper {
+  
+  @media (min-width: @screen-md-min){
+    border-radius:3px;
+    padding-left:15px;
+    padding-right:15px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+  }
 
+  background-color: #FFF;
 }
 .navbar-collapse{
   max-height:100%;
