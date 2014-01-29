@@ -436,6 +436,19 @@
   .alert-link {
     color: darken(@text-color, 10%);
   }
+
+  &.alert-arrow {
+    position: relative;
+
+    &:before {
+      position: absolute;
+      top: -@alert-arrow-width;
+      border-bottom: @alert-arrow-width solid @border;
+      border-left: @alert-arrow-width solid transparent;
+      border-right: @alert-arrow-width solid transparent;
+      content: "";
+    }
+  }
 }
 
 // Tables
