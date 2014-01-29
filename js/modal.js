@@ -62,6 +62,9 @@
       that.$element
         .show()
         .scrollTop(0)
+        
+      // jck: to allow additional positioning and/or animation which can't be done until element is visible
+      that.$element.trigger($.Event('showing.bs.modal'),{relatedTarget:_relatedTarget})
 
       if (transition) {
         that.$element[0].offsetWidth // force reflow
