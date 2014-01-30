@@ -1923,6 +1923,9 @@ $('#myCollapsible').on('hidden.bs.collapse', function () {
 
   <h2 id="carousel-usage">Usage</h2>
 
+  <h3>Multiple carousels</h3>
+  <p>Carousels require the use of an <code>id</code> on the outermost container, <code>.carousel</code>, for carousel controls to function properly. When adding multiple carousels, or when changing a carousel's <code>id</code>, be sure to update the relevant controls.</p>
+
   <h3>Via data attributes</h3>
   <p>Use data attributes to easily control the position of the carousel. <code>data-slide</code> accepts the keywords <code>prev</code> or <code>next</code>, which alters the slide position relative to its current position. Alternatively, use <code>data-slide-to</code> to pass a raw slide index to the carousel <code>data-slide-to="2"</code>, which shifts the slide position to a particular index beginning with <code>0</code>.</p>
   <p>The <code>data-ride="carousel"</code> attribute is used to mark a carousel as animating starting at page load.</p>
@@ -2031,7 +2034,7 @@ $('#myCarousel').on('slide.bs.carousel', function () {
   <h1 id="affix" class="page-header">Affix <small>affix.js</small></h1>
 
   <h2 id="affix-examples">Example</h2>
-  <p>The subnavigation on the left is a live demo of the affix plugin.</p>
+  <p>The subnavigation on the right is a live demo of the affix plugin.</p>
 
   <hr class="bs-docs-separator">
 
