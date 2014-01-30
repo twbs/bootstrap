@@ -360,8 +360,8 @@ module.exports = function (grunt) {
           });
           return url2dir;
         },
-        browsers: grunt.file.readYAML('./test-infra/sauce_browsers.yml'),
-        timeout: (15 * 60 * 1000)
+        browsers: grunt.file.readYAML('./test-infra/sauce_browsers.yml').filter(function (browser) { return browser.browserName !== "internet explorer"; }),
+        timeout: (30 * 60 * 1000)
       }
     }
   });
