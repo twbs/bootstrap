@@ -10,7 +10,7 @@
   margin-bottom: 0;
   padding-left: 0; // Override default ul/ol
   list-style: none;
-  .clearfix();
+  &:extend(.clearfix all);
 
   > li {
     position: relative;
@@ -91,7 +91,7 @@
       }
     }
 
-    // Active state, and it's :hover to override normal :hover
+    // Active state, and its :hover to override normal :hover
     &.active > a {
       &,
       &:hover,

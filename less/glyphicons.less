@@ -14,7 +14,7 @@
   src: ~"url('@{icon-font-path}@{icon-font-name}.eot?#iefix') format('embedded-opentype')",
        ~"url('@{icon-font-path}@{icon-font-name}.woff') format('woff')",
        ~"url('@{icon-font-path}@{icon-font-name}.ttf') format('truetype')",
-       ~"url('@{icon-font-path}@{icon-font-name}.svg#glyphicons-halflingsregular') format('svg')";
+       ~"url('@{icon-font-path}@{icon-font-name}.svg#@{icon-font-svg-id}') format('svg')";
 }
 
 // Catchall baseclass
@@ -28,10 +28,6 @@
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  &:empty {
-    width: 1em;
-  }
 }
 
 // Individual icons

@@ -1,41 +1,41 @@
 $(function () {
 
-    module("alert")
+    module('alert')
 
-      test("should provide no conflict", function () {
+      test('should provide no conflict', function () {
         var alert = $.fn.alert.noConflict()
         ok(!$.fn.alert, 'alert was set back to undefined (org value)')
         $.fn.alert = alert
       })
 
-      test("should be defined on jquery object", function () {
+      test('should be defined on jquery object', function () {
         ok($(document.body).alert, 'alert method is defined')
       })
 
-      test("should return element", function () {
+      test('should return element', function () {
         ok($(document.body).alert()[0] == document.body, 'document.body returned')
       })
 
-      test("should fade element out on clicking .close", function () {
-        var alertHTML = '<div class="alert-message warning fade in">'
-          + '<a class="close" href="#" data-dismiss="alert">×</a>'
-          + '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>'
-          + '</div>'
-          , alert = $(alertHTML).alert()
+      test('should fade element out on clicking .close', function () {
+        var alertHTML = '<div class="alert-message warning fade in">' +
+            '<a class="close" href="#" data-dismiss="alert">×</a>' +
+            '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>' +
+            '</div>',
+          alert = $(alertHTML).alert()
 
         alert.find('.close').click()
 
         ok(!alert.hasClass('in'), 'remove .in class on .close click')
       })
 
-      test("should remove element when clicking .close", function () {
+      test('should remove element when clicking .close', function () {
         $.support.transition = false
 
-        var alertHTML = '<div class="alert-message warning fade in">'
-          + '<a class="close" href="#" data-dismiss="alert">×</a>'
-          + '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>'
-          + '</div>'
-          , alert = $(alertHTML).appendTo('#qunit-fixture').alert()
+        var alertHTML = '<div class="alert-message warning fade in">' +
+            '<a class="close" href="#" data-dismiss="alert">×</a>' +
+            '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>' +
+            '</div>',
+          alert = $(alertHTML).appendTo('#qunit-fixture').alert()
 
         ok($('#qunit-fixture').find('.alert-message').length, 'element added to dom')
 
@@ -44,7 +44,7 @@ $(function () {
         ok(!$('#qunit-fixture').find('.alert-message').length, 'element removed from dom')
       })
 
-      test("should not fire closed when close is prevented", function () {
+      test('should not fire closed when close is prevented', function () {
         $.support.transition = false
         stop();
         $('<div class="alert"/>')
