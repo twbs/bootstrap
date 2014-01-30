@@ -12,6 +12,7 @@
     "test": "grunt test"
   },
   "style": "./dist/css/bootstrap.css",
+  "less": "./less/bootstrap.less",
   "repository": {
     "type": "git",
     "url": "https://github.com/twbs/bootstrap.git"
