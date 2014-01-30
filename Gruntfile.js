@@ -197,7 +197,7 @@ module.exports = function (grunt) {
           'docs/assets/css/docs.css',
           'docs/assets/css/pygments-manni.css'
         ],
-        dest: 'docs/assets/css/pack.min.css'
+        dest: 'docs/assets/css/docs.min.css'
       }
     },
 
@@ -212,7 +212,7 @@ module.exports = function (grunt) {
             'dist/css/<%= pkg.name %>.css',
             'dist/css/<%= pkg.name %>.min.css',
             'dist/css/<%= pkg.name %>-theme.css',
-            'dist/css/<%= pkg.name %>-theme.min.css',
+            'dist/css/<%= pkg.name %>-theme.min.css'
           ]
         }
       }
