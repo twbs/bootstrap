@@ -133,6 +133,11 @@
 
   // Modal sizes
   .modal-sm { width: @modal-sm; }
-  .modal-lg { width: @modal-lg; }
+  .modal-lg { width: 100%; }
 
+}
+
+@media (min-width: @screen-md-min) {
+  // Modal sizes
+  .modal-lg { width: @modal-lg; }
 }
