@@ -112,18 +112,19 @@ module.exports = function (grunt) {
     },
 
     uglify: {
+      options: {
+        report: 'min'
+      },
       bootstrap: {
         options: {
-          banner: '<%= banner %>',
-          report: 'min'
+          banner: '<%= banner %>'
         },
         src: '<%= concat.bootstrap.dest %>',
         dest: 'dist/js/<%= pkg.name %>.min.js'
       },
       customize: {
         options: {
-          preserveComments: 'some',
-          report: 'min'
+          preserveComments: 'some'
         },
         src: [
           'docs/assets/js/vendor/less.min.js',
@@ -138,8 +139,7 @@ module.exports = function (grunt) {
       },
       docsJs: {
         options: {
-          preserveComments: 'some',
-          report: 'min'
+          preserveComments: 'some'
         },
         src: [
           'docs/assets/js/vendor/holder.js',
