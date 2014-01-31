@@ -30,8 +30,8 @@ body {
   .sidebar {
     position: fixed;
     top: 0;
-    left: 0;
     bottom: 0;
+    left: 0;
     z-index: 1000;
     display: block;
     padding: 70px 20px 20px;
@@ -42,13 +42,13 @@ body {
 
 /* Sidebar navigation */
 .nav-sidebar {
-  margin-left: -20px;
   margin-right: -21px; /* 20px padding + 1px border */
   margin-bottom: 20px;
+  margin-left: -20px;
 }
 .nav-sidebar > li > a {
-  padding-left: 20px;
   padding-right: 20px;
+  padding-left: 20px;
 }
 .nav-sidebar > .active > a {
   color: #fff;
@@ -65,8 +65,8 @@ body {
 }
 @media (min-width: 768px) {
   .main {
-    padding-left: 40px;
     padding-right: 40px;
+    padding-left: 40px;
   }
 }
 .main .page-header {
