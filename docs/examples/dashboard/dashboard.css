@@ -91,3 +91,7 @@ body {
 .placeholder img {
   border-radius: 50%;
 }
+
+.img-responsive {
+  display: inline-block;
+}
