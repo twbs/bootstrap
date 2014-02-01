@@ -36,7 +36,8 @@ module.exports = function (grunt) {
 
     // Task configuration.
     clean: {
-      dist: 'dist'
+      dist: 'dist',
+      perf: './tmp'
     },
 
     jshint: {
@@ -346,6 +347,52 @@ module.exports = function (grunt) {
       npmShrinkWrap: {
         command: 'npm shrinkwrap --dev'
       }
+    },
+    gen_component_html: {
+      visual_test: {
+        options: {
+          repeat: 1
+        }
+      },
+      perf: {
+        options: {
+          repeat: 100,
+          dest: './tmp'
+        }
+      }
+    },
+    perf: {
+      options: {
+        httpserver: 'http://localhost:3000/',
+        suite: 'Bootstrap - Performance Analysis',
+        SAUCE_USERNAME: process.env.SAUCE_USERNAME,
+        SAUCE_ACCESS_KEY: process.env.SAUCE_ACCESS_KEY,
+        selenium: {
+          hostname: 'ondemand.saucelabs.com',
+          port: 80
+        },
+        browsers: [{
+          browserName: 'chrome',
+          platform: 'Windows 8.1',
+          version: 31,
+          'tunnel-identifier': 'tunnel'
+        }, {
+          browserName: 'chrome',
+          platform: 'OS X 10.6',
+          version: 28,
+          'tunnel-identifier': 'tunnel'
+        }],
+        couchdb: {
+          server: 'http://localhost:5984',
+          database: 'bootstrap-performance',
+          updateSite: !process.env.CI
+        },
+        time: process.env.TRAVIS_JOB_NUMBER,
+        run: process.env.TRAVIS_COMMIT
+      },
+      all: {
+        src: ['./tmp/*.html']
+      }
     }
   });
 
@@ -353,6 +400,7 @@ module.exports = function (grunt) {
   // These plugins provide necessary tasks.
   require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
   grunt.loadNpmTasks('browserstack-runner');
+  grunt.loadTasks('./test-infra');
 
   // Docs HTML validation task
   grunt.registerTask('validate-html', ['jekyll', 'validation']);
