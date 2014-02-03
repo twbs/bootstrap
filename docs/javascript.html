@@ -548,6 +548,10 @@ $('#myModal').on('hidden.bs.modal', function (e) {
 {% highlight js %}
 $('.dropdown-toggle').dropdown()
 {% endhighlight %}
+  <div class="bs-callout bs-callout-info">
+    <h4><code>data-toggle="dropdown"</code> still required</h4>
+    <p>Regardless of whether you call your dropdown via JavaScript or instead use the data-api, <code>data-toggle="dropdown"</code> is always required to be present on the dropdown's trigger element.</p>
+  </div>
 
   <h3>Options</h3>
   <p><em>None</em></p>
