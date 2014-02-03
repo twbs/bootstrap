@@ -343,7 +343,7 @@
   //    example: 0 50 75 80 100
   //
   // Returns a background gradiant with an unlimited amount of colors and stops
-  .horiztonal-nth-colors(@colors, @percentages) {
+  .horizontal-nth-colors(@colors, @percentages) {
     @n: length(@colors);
     .color(@index) when (@index = 1) {
       @item: extract(@colors,@index) percentage((extract(@percentages,@index)/100));
@@ -393,7 +393,6 @@
     .color(1);
   }
 }
-
 
 // Reset filters for IE
 //
