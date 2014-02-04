@@ -183,6 +183,10 @@ license your work under the terms of the [MIT License](LICENSE.md).
 - strict mode
 - "Attractive"
 
+### Checking coding style
+
+Run `grunt test` before committing to ensure your changes follow our coding standards.
+
 
 ## License
 
