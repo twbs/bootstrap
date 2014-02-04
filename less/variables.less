@@ -260,6 +260,9 @@
 // Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
 @screen-xs:                  480px;
 @screen-xs-min:              @screen-xs;
+
+// Horizontal Small screen / phone horizontal
+@screen-hs-min:              @screen-xs;
 @screen-phone:               @screen-xs-min;
 
 // Small screen / tablet
@@ -281,7 +284,8 @@
 @screen-lg-desktop:          @screen-lg-min;
 
 // So media queries don't overlap when required, provide a maximum
-@screen-xs-max:              (@screen-sm-min - 1);
+@screen-xs-max:              (@screen-hs-min - 1);
+@screen-hs-max:              (@screen-sm-min - 1);
 @screen-sm-max:              (@screen-md-min - 1);
 @screen-md-max:              (@screen-lg-min - 1);
 
@@ -810,6 +814,10 @@
 //== Container sizes
 //
 //## Define the maximum width of `.container` for different screen sizes.
+
+// Horizontal Small screen / phone horizontal
+//** For `@screen-sm-min` and up.
+@container-hs:                 ((434px + @grid-gutter-width));
 
 // Small screen / tablet
 @container-tablet:             ((720px + @grid-gutter-width));
