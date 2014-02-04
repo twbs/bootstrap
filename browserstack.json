@@ -17,12 +17,6 @@
       "os_version": "Mavericks"
     },
     {
-      "browser": "chrome",
-      "browser_version": "latest",
-      "os": "OS X",
-      "os_version": "Mavericks"
-    },
-    {
       "browser": "firefox",
       "browser_version": "latest",
       "os": "Windows",
