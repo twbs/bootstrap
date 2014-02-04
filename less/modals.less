@@ -41,7 +41,16 @@
 .modal-dialog {
   position: relative;
   width: auto;
+  max-width: @modal-md;
   margin: 10px;
+}
+
+// Modal sizes
+.modal-sm {
+  max-width: @modal-sm;
+}
+.modal-lg {
+  max-width: @modal-lg;
 }
 
 // Actual modal
@@ -124,15 +133,32 @@
 
   // Automatically set modal's width for larger viewports
   .modal-dialog {
-    width: @modal-md;
     margin: 30px auto;
   }
   .modal-content {
     .box-shadow(0 5px 15px rgba(0,0,0,.5));
   }
-
-  // Modal sizes
-  .modal-sm { width: @modal-sm; }
-  .modal-lg { width: @modal-lg; }
-
+}
+// Modal sizes
+@media (min-width: (@modal-sm + 10 * 2)) {
+  .modal-sm { 
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (min-width: (@modal-md + 10 * 2)) {
+  .modal-dialog { 
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .modal-lg {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+@media (min-width: (@modal-lg + 10 * 2)) {
+  .modal-lg { 
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
