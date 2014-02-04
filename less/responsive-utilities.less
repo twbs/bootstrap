@@ -30,6 +30,13 @@
     .responsive-visibility();
   }
 }
+.visible-hs {
+  .responsive-invisibility();
+
+  @media (min-width: @screen-hs-min) and (max-width: @screen-hs-max) {
+    .responsive-visibility();
+  }
+}
 .visible-sm {
   .responsive-invisibility();
 
@@ -54,6 +61,11 @@
 
 .hidden-xs {
   @media (max-width: @screen-xs-max) {
+    .responsive-invisibility();
+  }
+}
+.hidden-hs {
+  @media (min-width: @screen-hs-min) and (max-width: @screen-hs-max) {
     .responsive-invisibility();
   }
 }

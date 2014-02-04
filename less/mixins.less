@@ -680,6 +680,33 @@
   }
 }
 
+.make-hs-column(@columns; @gutter: @grid-gutter-width) {
+  position: relative;
+  min-height: 1px;
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
+
+  @media (min-width: @screen-hs-min) {
+    float: left;
+    width: percentage((@columns / @grid-columns));
+  }
+}
+
+.make-hs-column-offset(@columns) {
+  @media (min-width: @screen-hs-min) {
+    margin-left: percentage((@columns / @grid-columns));
+  }
+}
+.make-hs-column-push(@columns) {
+  @media (min-width: @screen-hs-min) {
+    left: percentage((@columns / @grid-columns));
+  }
+}
+.make-hs-column-pull(@columns) {
+  @media (min-width: @screen-hs-min) {
+    right: percentage((@columns / @grid-columns));
+  }
+}
 
 // Generate the small columns
 .make-sm-column(@columns; @gutter: @grid-gutter-width) {
@@ -776,11 +803,11 @@
 .make-grid-columns() {
   // Common styles for all sizes of grid columns, widths 1-12
   .col(@index) when (@index = 1) { // initial
-    @item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
+    @item: ~".col-xs-@{index}, .col-hs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
     .col((@index + 1), @item);
   }
   .col(@index, @list) when (@index =< @grid-columns) { // general; "=<" isn't a typo
-    @item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
+    @item: ~".col-xs-@{index}, .col-hs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
     .col((@index + 1), ~"@{list}, @{item}");
   }
   .col(@index, @list) when (@index > @grid-columns) { // terminal
