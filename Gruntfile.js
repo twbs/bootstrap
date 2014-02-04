@@ -32,11 +32,11 @@ module.exports = function (grunt) {
             ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
             ' * Licensed under <%= _.pluck(pkg.licenses, "type") %> (<%= _.pluck(pkg.licenses, "url") %>)\n' +
             ' */\n',
-    jqueryCheck: 'if (typeof jQuery === \'undefined\') { throw new Error(\'Bootstrap requires jQuery\') }\n\n',
+    jqueryCheck: 'if (typeof jQuery === \'undefined\') { throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery\') }\n\n',
 
     // Task configuration.
     clean: {
-      dist: 'dist'
+      dist: ['dist', 'docs/dist']
     },
 
     jshint: {
@@ -82,7 +82,8 @@ module.exports = function (grunt) {
       src: [
         'dist/css/bootstrap.css',
         'dist/css/bootstrap-theme.css',
-        'docs/assets/css/docs.css'
+        'docs/assets/css/docs.css',
+        'docs/examples/**/*.css'
       ]
     },
 
@@ -111,18 +112,19 @@ module.exports = function (grunt) {
     },
 
     uglify: {
+      options: {
+        report: 'min'
+      },
       bootstrap: {
         options: {
-          banner: '<%= banner %>',
-          report: 'min'
+          banner: '<%= banner %>'
         },
         src: '<%= concat.bootstrap.dest %>',
         dest: 'dist/js/<%= pkg.name %>.min.js'
       },
       customize: {
         options: {
-          preserveComments: 'some',
-          report: 'min'
+          preserveComments: 'some'
         },
         src: [
           'docs/assets/js/vendor/less.min.js',
@@ -137,8 +139,7 @@ module.exports = function (grunt) {
       },
       docsJs: {
         options: {
-          preserveComments: 'some',
-          report: 'min'
+          preserveComments: 'some'
         },
         src: [
           'docs/assets/js/vendor/holder.js',
@@ -197,7 +198,7 @@ module.exports = function (grunt) {
           'docs/assets/css/docs.css',
           'docs/assets/css/pygments-manni.css'
         ],
-        dest: 'docs/assets/css/pack.min.css'
+        dest: 'docs/assets/css/docs.min.css'
       }
     },
 
@@ -212,21 +213,27 @@ module.exports = function (grunt) {
             'dist/css/<%= pkg.name %>.css',
             'dist/css/<%= pkg.name %>.min.css',
             'dist/css/<%= pkg.name %>-theme.css',
-            'dist/css/<%= pkg.name %>-theme.min.css',
+            'dist/css/<%= pkg.name %>-theme.min.css'
           ]
         }
       }
     },
 
     csscomb: {
-      sort: {
-        options: {
-          config: 'less/.csscomb.json'
-        },
+      options: {
+        config: 'less/.csscomb.json'
+      },
+      dist: {
         files: {
           'dist/css/<%= pkg.name %>.css': 'dist/css/<%= pkg.name %>.css',
           'dist/css/<%= pkg.name %>-theme.css': 'dist/css/<%= pkg.name %>-theme.css'
         }
+      },
+      examples: {
+          expand: true,
+          cwd: 'docs/examples/',
+          src: ['**/*.css'],
+          dest: 'docs/examples/'
       }
     },
 
@@ -392,7 +399,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-docs', 'copy:docs');
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean', 'dist-css', 'copy:fonts', 'dist-docs', 'dist-js']);
+  grunt.registerTask('dist', ['clean', 'dist-css', 'copy:fonts', 'dist-js', 'dist-docs']);
 
   // Default task.
   grunt.registerTask('default', ['test', 'dist', 'build-glyphicons-data', 'build-customizer', 'update-shrinkwrap']);

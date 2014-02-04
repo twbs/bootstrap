@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v3.0.3 (http://getbootstrap.com)
+ * Bootstrap v3.1.0 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
@@ -300,6 +300,9 @@ a:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
+}
+figure {
+  margin: 0;
 }
 img {
   vertical-align: middle;
@@ -1799,7 +1802,8 @@ select.input-sm {
   height: 30px;
   line-height: 30px;
 }
-textarea.input-sm {
+textarea.input-sm,
+select[multiple].input-sm {
   height: auto;
 }
 .input-lg {
@@ -1813,7 +1817,8 @@ select.input-lg {
   height: 46px;
   line-height: 46px;
 }
-textarea.input-lg {
+textarea.input-lg,
+select[multiple].input-lg {
   height: auto;
 }
 .has-feedback {
@@ -2026,7 +2031,6 @@ fieldset[disabled] .btn {
   -webkit-box-shadow: none;
           box-shadow: none;
   opacity: .65;
-  opacity: 1;
 }
 .btn-default {
   color: #333;
@@ -3330,7 +3334,10 @@ select.input-group-lg > .input-group-btn > .btn {
 }
 textarea.input-group-lg > .form-control,
 textarea.input-group-lg > .input-group-addon,
-textarea.input-group-lg > .input-group-btn > .btn {
+textarea.input-group-lg > .input-group-btn > .btn,
+select[multiple].input-group-lg > .form-control,
+select[multiple].input-group-lg > .input-group-addon,
+select[multiple].input-group-lg > .input-group-btn > .btn {
   height: auto;
 }
 .input-group-sm > .form-control,
@@ -3350,7 +3357,10 @@ select.input-group-sm > .input-group-btn > .btn {
 }
 textarea.input-group-sm > .form-control,
 textarea.input-group-sm > .input-group-addon,
-textarea.input-group-sm > .input-group-btn > .btn {
+textarea.input-group-sm > .input-group-btn > .btn,
+select[multiple].input-group-sm > .form-control,
+select[multiple].input-group-sm > .input-group-addon,
+select[multiple].input-group-sm > .input-group-btn > .btn {
   height: auto;
 }
 .input-group-addon,
@@ -3735,6 +3745,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
   float: left;
+  height: 50px;
   padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
@@ -3742,11 +3753,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-brand:hover,
 .navbar-brand:focus {
   text-decoration: none;
-}
-.navbar-brand > .glyphicon {
-  float: left;
-  margin-top: -2px;
-  margin-right: 5px;
 }
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,
@@ -5191,6 +5197,8 @@ button.close {
   .modal-sm {
     width: 300px;
   }
+}
+@media (min-width: 992px) {
   .modal-lg {
     width: 900px;
   }
@@ -5336,8 +5344,8 @@ button.close {
 .popover-content {
   padding: 9px 14px;
 }
-.popover .arrow,
-.popover .arrow:after {
+.popover > .arrow,
+.popover > .arrow:after {
   position: absolute;
   display: block;
   width: 0;
@@ -5345,14 +5353,14 @@ button.close {
   border-color: transparent;
   border-style: solid;
 }
-.popover .arrow {
+.popover > .arrow {
   border-width: 11px;
 }
-.popover .arrow:after {
+.popover > .arrow:after {
   content: "";
   border-width: 10px;
 }
-.popover.top .arrow {
+.popover.top > .arrow {
   bottom: -11px;
   left: 50%;
   margin-left: -11px;
@@ -5360,14 +5368,14 @@ button.close {
   border-top-color: rgba(0, 0, 0, .25);
   border-bottom-width: 0;
 }
-.popover.top .arrow:after {
+.popover.top > .arrow:after {
   bottom: 1px;
   margin-left: -10px;
   content: " ";
   border-top-color: #fff;
   border-bottom-width: 0;
 }
-.popover.right .arrow {
+.popover.right > .arrow {
   top: 50%;
   left: -11px;
   margin-top: -11px;
@@ -5375,14 +5383,14 @@ button.close {
   border-right-color: rgba(0, 0, 0, .25);
   border-left-width: 0;
 }
-.popover.right .arrow:after {
+.popover.right > .arrow:after {
   bottom: -10px;
   left: 1px;
   content: " ";
   border-right-color: #fff;
   border-left-width: 0;
 }
-.popover.bottom .arrow {
+.popover.bottom > .arrow {
   top: -11px;
   left: 50%;
   margin-left: -11px;
@@ -5390,14 +5398,14 @@ button.close {
   border-bottom-color: #999;
   border-bottom-color: rgba(0, 0, 0, .25);
 }
-.popover.bottom .arrow:after {
+.popover.bottom > .arrow:after {
   top: 1px;
   margin-left: -10px;
   content: " ";
   border-top-width: 0;
   border-bottom-color: #fff;
 }
-.popover.left .arrow {
+.popover.left > .arrow {
   top: 50%;
   right: -11px;
   margin-top: -11px;
@@ -5405,7 +5413,7 @@ button.close {
   border-left-color: #999;
   border-left-color: rgba(0, 0, 0, .25);
 }
-.popover.left .arrow:after {
+.popover.left > .arrow:after {
   right: 1px;
   bottom: -10px;
   content: " ";
