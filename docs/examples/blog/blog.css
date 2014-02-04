@@ -41,9 +41,6 @@ h6, .h6 {
 }
 
 /* Nav links */
-.blog-nav {
-
-}
 .blog-nav-item {
   position: relative;
   display: inline-block;
@@ -65,7 +62,6 @@ h6, .h6 {
   position: absolute;
   bottom: 0;
   left: 50%;
-  display: block;
   content: " ";
   width: 0;
   height: 0;
