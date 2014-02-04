@@ -220,14 +220,20 @@ module.exports = function (grunt) {
     },
 
     csscomb: {
-      sort: {
-        options: {
-          config: 'less/.csscomb.json'
-        },
+      options: {
+        config: 'less/.csscomb.json'
+      },
+      dist: {
         files: {
           'dist/css/<%= pkg.name %>.css': 'dist/css/<%= pkg.name %>.css',
           'dist/css/<%= pkg.name %>-theme.css': 'dist/css/<%= pkg.name %>-theme.css'
         }
+      },
+      examples: {
+          expand: true,
+          cwd: 'docs/examples/',
+          src: ['**/*.css'],
+          dest: 'docs/examples/'
       }
     },
 

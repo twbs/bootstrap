@@ -9,12 +9,12 @@ body {
 
 /* Wrapper for page content to push down footer */
 #wrap {
-  min-height: 100%;
   height: auto;
-  /* Negative indent footer by its height */
-  margin: 0 auto -60px;
+  min-height: 100%;
   /* Pad bottom by footer height */
   padding: 0 0 60px;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
 }
 
 /* Set the fixed height of the footer here */
@@ -36,8 +36,8 @@ body {
 }
 
 #footer > .container {
-  padding-left: 15px;
   padding-right: 15px;
+  padding-left: 15px;
 }
 
 code {

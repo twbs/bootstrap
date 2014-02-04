@@ -3,10 +3,10 @@ body {
 }
 
 .footer {
-  border-top: 1px solid #eee;
-  margin-top: 40px;
   padding-top: 40px;
   padding-bottom: 40px;
+  margin-top: 40px;
+  border-top: 1px solid #eee;
 }
 
 /* Main marketing message and sign up button */
@@ -15,33 +15,33 @@ body {
   background-color: transparent;
 }
 .jumbotron .btn {
-  font-size: 21px;
   padding: 14px 24px;
+  font-size: 21px;
 }
 
 /* Customize the nav-justified links to be fill the entire space of the .navbar */
 
 .nav-justified {
   background-color: #eee;
-  border-radius: 5px;
   border: 1px solid #ccc;
+  border-radius: 5px;
 }
 .nav-justified > li > a {
-  margin-bottom: 0;
   padding-top: 15px;
   padding-bottom: 15px;
-  color: #777;
+  margin-bottom: 0;
   font-weight: bold;
+  color: #777;
   text-align: center;
-  border-bottom: 1px solid #d5d5d5;
   background-color: #e5e5e5; /* Old browsers */
-  background-repeat: repeat-x; /* Repeat the gradient */
-  background-image: -moz-linear-gradient(top, #f5f5f5 0%, #e5e5e5 100%); /* FF3.6+ */
+  background-image:    -moz-linear-gradient(top, #f5f5f5 0%, #e5e5e5 100%); /* FF3.6+ */
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f5f5), color-stop(100%,#e5e5e5)); /* Chrome,Safari4+ */
   background-image: -webkit-linear-gradient(top, #f5f5f5 0%,#e5e5e5 100%); /* Chrome 10+,Safari 5.1+ */
-  background-image: -o-linear-gradient(top, #f5f5f5 0%,#e5e5e5 100%); /* Opera 11.10+ */
-  background-image: linear-gradient(top, #f5f5f5 0%,#e5e5e5 100%); /* W3C */
+  background-image:      -o-linear-gradient(top, #f5f5f5 0%,#e5e5e5 100%); /* Opera 11.10+ */
+  background-image:         linear-gradient(top, #f5f5f5 0%,#e5e5e5 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+  background-repeat: repeat-x; /* Repeat the gradient */
+  border-bottom: 1px solid #d5d5d5;
 }
 .nav-justified > .active > a,
 .nav-justified > .active > a:hover,
@@ -63,16 +63,16 @@ body {
     max-height: 52px;
   }
   .nav-justified > li > a {
-    border-left: 1px solid #fff;
     border-right: 1px solid #d5d5d5;
+    border-left: 1px solid #fff;
   }
   .nav-justified > li:first-child > a {
     border-left: 0;
     border-radius: 5px 0 0 5px;
   }
   .nav-justified > li:last-child > a {
-    border-radius: 0 5px 5px 0;
     border-right: 0;
+    border-radius: 0 5px 5px 0;
   }
 }
 
@@ -82,7 +82,7 @@ body {
   .masthead,
   .marketing,
   .footer {
-    padding-left: 0;
     padding-right: 0;
+    padding-left: 0;
   }
 }
