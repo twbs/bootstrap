@@ -560,8 +560,8 @@ body {
   padding-bottom: 10px;
 }
 .bs-sidebar .nav .nav > li > a {
-  padding-top:    2px;
-  padding-bottom: 2px;
+  padding-top:    1px;
+  padding-bottom: 1px;
   padding-left: 30px;
   font-size: 12px;
   font-weight: normal;
@@ -575,6 +575,27 @@ body {
 .bs-sidebar .nav .nav > .active:focus > a {
   font-weight: 500;
   padding-left: 28px;
+}
+
+/* Back to top (hidden on mobile) */
+.back-to-top {
+  display: none;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #999;
+}
+.back-to-top:hover {
+  text-decoration: none;
+  color: #563d7c;
+}
+
+@media (min-width: 768px) {
+  .back-to-top {
+    display: block;
+  }
 }
 
 /* Show and affix the side nav when space allows it */
