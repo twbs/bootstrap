@@ -17,10 +17,10 @@ module.exports = function (grunt) {
 
   var fs = require('fs');
   var path = require('path');
-  var generateGlyphiconsData = require('./docs/grunt/bs-glyphicons-data-generator.js');
-  var BsLessdocParser = require('./docs/grunt/bs-lessdoc-parser.js');
-  var generateRawFilesJs = require('./docs/grunt/bs-raw-files-generator.js');
-  var updateShrinkwrap = require('./test-infra/shrinkwrap.js');
+  var generateGlyphiconsData = require('./grunt/bs-glyphicons-data-generator.js');
+  var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
+  var generateRawFilesJs = require('./grunt/bs-raw-files-generator.js');
+  var updateShrinkwrap = require('./grunt/shrinkwrap.js');
 
   // Project configuration.
   grunt.initConfig({
@@ -82,7 +82,8 @@ module.exports = function (grunt) {
       src: [
         'dist/css/bootstrap.css',
         'dist/css/bootstrap-theme.css',
-        'docs/assets/css/docs.css'
+        'docs/assets/css/docs.css',
+        'docs/examples/**/*.css'
       ]
     },
 
@@ -111,18 +112,19 @@ module.exports = function (grunt) {
     },
 
     uglify: {
+      options: {
+        report: 'min'
+      },
       bootstrap: {
         options: {
-          banner: '<%= banner %>',
-          report: 'min'
+          banner: '<%= banner %>'
         },
         src: '<%= concat.bootstrap.dest %>',
         dest: 'dist/js/<%= pkg.name %>.min.js'
       },
       customize: {
         options: {
-          preserveComments: 'some',
-          report: 'min'
+          preserveComments: 'some'
         },
         src: [
           'docs/assets/js/vendor/less.min.js',
@@ -137,8 +139,7 @@ module.exports = function (grunt) {
       },
       docsJs: {
         options: {
-          preserveComments: 'some',
-          report: 'min'
+          preserveComments: 'some'
         },
         src: [
           'docs/assets/js/vendor/holder.js',
@@ -219,14 +220,20 @@ module.exports = function (grunt) {
     },
 
     csscomb: {
-      sort: {
-        options: {
-          config: 'less/.csscomb.json'
-        },
+      options: {
+        config: 'less/.csscomb.json'
+      },
+      dist: {
         files: {
           'dist/css/<%= pkg.name %>.css': 'dist/css/<%= pkg.name %>.css',
           'dist/css/<%= pkg.name %>-theme.css': 'dist/css/<%= pkg.name %>-theme.css'
         }
+      },
+      examples: {
+          expand: true,
+          cwd: 'docs/examples/',
+          src: ['**/*.css'],
+          dest: 'docs/examples/'
       }
     },
 
@@ -392,7 +399,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-docs', 'copy:docs');
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean', 'dist-css', 'copy:fonts', 'dist-docs', 'dist-js']);
+  grunt.registerTask('dist', ['clean', 'dist-css', 'copy:fonts', 'dist-js', 'dist-docs']);
 
   // Default task.
   grunt.registerTask('default', ['test', 'dist', 'build-glyphicons-data', 'build-customizer', 'update-shrinkwrap']);

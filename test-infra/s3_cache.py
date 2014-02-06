@@ -87,7 +87,7 @@ if __name__ == '__main__':
     mode, friendly_name, dependencies_file, directory = argv
 
     conn = S3Connection()
-    bucket = conn.lookup(BUCKET_NAME)
+    bucket = conn.lookup(BUCKET_NAME, validate=False)
     if bucket is None:
         raise SystemExit("Could not access bucket!")
 
