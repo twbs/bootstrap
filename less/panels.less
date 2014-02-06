@@ -72,6 +72,8 @@
   // Add border top radius for first one
   > .table:first-child,
   > .table-responsive:first-child > .table:first-child {
+    .border-top-radius((@panel-border-radius - 1));
+	
     > thead:first-child,
     > tbody:first-child {
       > tr:first-child {
@@ -89,6 +91,8 @@
   // Add border bottom radius for last one
   > .table:last-child,
   > .table-responsive:last-child > .table:last-child {
+    .border-bottom-radius((@panel-border-radius - 1));
+    
     > tbody:last-child,
     > tfoot:last-child {
       > tr:last-child {
