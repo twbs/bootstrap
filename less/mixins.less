@@ -338,9 +338,12 @@
   // Horizontal gradient, from left to right
   //
   // @colors - A space separated string that will be treated as an Array
-  //    example: #ffffff #fffffa #ff0011 #000000 #affd29
   // @percentages - A space separated string that will be treated as the stop points
-  //    example: 0 50 75 80 100
+  //
+  // Usage:
+  //  #gradient > .horizontal-nth-colors(#ffffff,#fffffa,#ff0011,#000000,#affd29; 0,50,75,80,100;);
+  //  -or-
+  //  #gradient > .horizontal-nth-colors(#ffffff #fffffa #ff0011 #000000 #affd29, 0 50 75 80 100);
   //
   // Returns a background gradiant with an unlimited amount of colors and stops
   .horizontal-nth-colors(@colors, @percentages) {
@@ -367,9 +370,12 @@
   // Vertical gradient, from top to bottom
   //
   // @colors - A space separated string that will be treated as an Array
-  //    example: #ffffff #fffffa #ff0011 #000000 #affd29
   // @percentages - A space separated string that will be treated as the stop points
-  //    example: 0 50 75 80 100
+  //
+  // Usage:
+  //  #gradient > .vertical-nth-colors(#1E5799,#1A4884,#2672BF,#7db9e8; 0,30,60,100;);
+  //  -or-
+  //  #gradient > .vertical-nth-colors(#1E5799 #1A4884 #2672BF #7db9e8, 0 30 60 100);
   //
   // Returns a background gradiant with an unlimited amount of colors and stops
   .vertical-nth-colors(@colors, @percentages) {
