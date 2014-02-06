@@ -20,12 +20,10 @@
   "bugs": {
     "url": "https://github.com/twbs/bootstrap/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/twbs/bootstrap/blob/master/LICENSE"
-    }
-  ],
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/twbs/bootstrap/blob/master/LICENSE"
+  },
   "devDependencies": {
     "browserstack-runner": "~0.1.0",
     "btoa": "~1.1.1",
