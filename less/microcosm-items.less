@@ -29,9 +29,9 @@
 
 // events
 .item-event{
-  @media (min-width: @screen-md-min){
-    margin-bottom:20px;
+  @media (min-width: @screen-sm-min){
     margin-top:20px;
+    margin-bottom:20px;
   }
 }
 .item-event ul{
@@ -70,18 +70,6 @@
   }
 }
 
-.item-event-inner > li.item-event-date-container{
-  @media (min-width: @screen-md-min){
-    .sprite-calendar{
-      display:none;
-    }
-  }
-  @media (min-width: @screen-lg-min){
-    .sprite-calendar{
-      display:inline-block;
-    }
-  }
-}
 .item-event-date{
   font-weight:700;
   font-size:@font-size-small;
@@ -218,13 +206,18 @@
   padding:10px;
   text-align: center;
   border-top:1px solid #ccc;
-  border-bottom:0;
+  border-bottom:1px solid #ccc;
   background-color:#fbfbfb;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
   overflow: auto;
   h3{
-    display:none;
+    font-size:@font-size-small;
+    margin:0;
+    padding:0;
+  }
+  p{
+   font-size:@font-size-xsmall;
   }
   input[type="submit"]{
     width:100%;
