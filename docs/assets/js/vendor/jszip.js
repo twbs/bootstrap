@@ -1,5 +1,15 @@
-(function(e){if("function"==typeof bootstrap)bootstrap("jszip",e);else if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else if("undefined"!=typeof ses){if(!ses.ok())return;ses.makeJSZip=e}else"undefined"!=typeof window?window.JSZip=e():global.JSZip=e()})(function(){var define,ses,bootstrap,module,exports;
-return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+/*!
+
+JSZip - A Javascript class for generating and reading zip files
+<http://stuartk.com/jszip>
+
+(c) 2009-2012 Stuart Knightley <stuart [at] stuartk.com>
+Dual licenced under the MIT license or GPLv3. See https://raw.github.com/Stuk/jszip/master/LICENSE.markdown.
+
+JSZip uses the library zlib.js released under the following license :
+zlib.js 2012 - imaya [ https://github.com/imaya/zlib.js ] The MIT License
+*/
+!function(e){"object"==typeof exports?module.exports=e():"function"==typeof define&&define.amd?define(e):"undefined"!=typeof window?window.JSZip=e():"undefined"!=typeof global?global.JSZip=e():"undefined"!=typeof self&&(self.JSZip=e())}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 // private property
 var _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
@@ -225,7 +235,7 @@ DataReader.prototype = {
 };
 module.exports = DataReader;
 
-},{"./utils":15}],5:[function(require,module,exports){
+},{"./utils":14}],5:[function(require,module,exports){
 'use strict';
 exports.base64 = false;
 exports.binary = false;
@@ -252,16 +262,9 @@ exports.uncompress =  function(input) {
     return inflate.decompress();
 };
 
-},{"zlibjs/bin/rawdeflate.min":20,"zlibjs/bin/rawinflate.min":21}],7:[function(require,module,exports){
+},{"zlibjs/bin/rawdeflate.min":19,"zlibjs/bin/rawinflate.min":20}],7:[function(require,module,exports){
 'use strict';
 /**
-
-JSZip - A Javascript class for generating and reading zip files
-<http://stuartk.com/jszip>
-
-(c) 2009-2012 Stuart Knightley <stuart [at] stuartk.com>
-Dual licenced under the MIT license or GPLv3. See https://raw.github.com/Stuk/jszip/master/LICENSE.markdown.
-
 Usage:
    zip = new JSZip();
    zip.file("hello.txt", "Hello, World!").file("tempfile", "nothing");
@@ -306,12 +309,13 @@ function JSZip(data, options) {
 JSZip.prototype = require('./object');
 JSZip.prototype.load = require('./load');
 JSZip.support = require('./support');
+JSZip.defaults = require('./defaults');
 JSZip.utils = require('./utils');
 JSZip.base64 = require('./base64');
 JSZip.compressions = require('./compressions');
 module.exports = JSZip;
 
-},{"./base64":1,"./compressions":3,"./load":8,"./object":10,"./support":13,"./utils":15}],8:[function(require,module,exports){
+},{"./base64":1,"./compressions":3,"./defaults":5,"./load":8,"./object":9,"./support":12,"./utils":14}],8:[function(require,module,exports){
 'use strict';
 var base64 = require('./base64');
 var ZipEntries = require('./zipEntries');
@@ -337,29 +341,7 @@ module.exports = function(data, options) {
     return this;
 };
 
-},{"./base64":1,"./zipEntries":16}],9:[function(require,module,exports){
-'use strict';
-var Uint8ArrayReader = require('./uint8ArrayReader');
-
-function NodeBufferReader(data) {
-    this.data = data;
-    this.length = this.data.length;
-    this.index = 0;
-}
-NodeBufferReader.prototype = new Uint8ArrayReader();
-
-/**
- * @see DataReader.readData
- */
-NodeBufferReader.prototype.readData = function(size) {
-    this.checkOffset(size);
-    var result = this.data.slice(this.index, this.index + size);
-    this.index += size;
-    return result;
-};
-module.exports = NodeBufferReader;
-
-},{"./uint8ArrayReader":14}],10:[function(require,module,exports){
+},{"./base64":1,"./zipEntries":15}],9:[function(require,module,exports){
 'use strict';
 var support = require('./support');
 var utils = require('./utils');
@@ -714,7 +696,9 @@ var generateZipParts = function(name, file, compressedObject, offset) {
         useUTF8 = utfEncodedFileName !== file.name,
         o = file.options,
         dosTime,
-        dosDate;
+        dosDate,
+        extraFields = "",
+        unicodePathExtraField = "";
 
     // date
     // @see http://www.delorie.com/djgpp/doc/rbinter/it/52/13.html
@@ -733,6 +717,32 @@ var generateZipParts = function(name, file, compressedObject, offset) {
     dosDate = dosDate << 5;
     dosDate = dosDate | o.date.getDate();
 
+    if (useUTF8) {
+        // set the unicode path extra field. unzip needs at least one extra
+        // field to correctly handle unicode path, so using the path is as good
+        // as any other information. This could improve the situation with
+        // other archive managers too.
+        // This field is usually used without the utf8 flag, with a non
+        // unicode path in the header (winrar, winzip). This helps (a bit)
+        // with the messy Windows' default compressed folders feature but
+        // breaks on p7zip which doesn't seek the unicode path extra field.
+        // So for now, UTF-8 everywhere !
+        unicodePathExtraField =
+            // Version
+            decToHex(1, 1) +
+            // NameCRC32
+            decToHex(this.crc32(utfEncodedFileName), 4) +
+            // UnicodeName
+            utfEncodedFileName;
+
+        extraFields +=
+            // Info-ZIP Unicode Path Extra Field
+            "\x75\x70" +
+            // size
+            decToHex(unicodePathExtraField.length, 2) +
+            // content
+            unicodePathExtraField;
+    }
 
     var header = "";
 
@@ -756,10 +766,10 @@ var generateZipParts = function(name, file, compressedObject, offset) {
     // file name length
     header += decToHex(utfEncodedFileName.length, 2);
     // extra field length
-    header += "\x00\x00";
+    header += decToHex(extraFields.length, 2);
 
 
-    var fileRecord = signature.LOCAL_FILE_HEADER + header + utfEncodedFileName;
+    var fileRecord = signature.LOCAL_FILE_HEADER + header + utfEncodedFileName + extraFields;
 
     var dirRecord = signature.CENTRAL_FILE_HEADER +
     // version made by (00: DOS)
@@ -777,7 +787,9 @@ var generateZipParts = function(name, file, compressedObject, offset) {
     // relative offset of local header
     decToHex(offset, 4) +
     // file name
-    utfEncodedFileName;
+    utfEncodedFileName +
+    // extra field
+    extraFields;
 
 
     return {
@@ -1270,7 +1282,7 @@ var out = {
 };
 module.exports = out;
 
-},{"./base64":1,"./compressedObject":2,"./compressions":3,"./defaults":5,"./nodeBuffer":18,"./signature":11,"./support":13,"./utils":15}],11:[function(require,module,exports){
+},{"./base64":1,"./compressedObject":2,"./compressions":3,"./defaults":5,"./nodeBuffer":17,"./signature":10,"./support":12,"./utils":14}],10:[function(require,module,exports){
 'use strict';
 exports.LOCAL_FILE_HEADER = "PK\x03\x04";
 exports.CENTRAL_FILE_HEADER = "PK\x01\x02";
@@ -1279,7 +1291,7 @@ exports.ZIP64_CENTRAL_DIRECTORY_LOCATOR = "PK\x06\x07";
 exports.ZIP64_CENTRAL_DIRECTORY_END = "PK\x06\x06";
 exports.DATA_DESCRIPTOR = "PK\x07\x08";
 
-},{}],12:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 var DataReader = require('./dataReader');
 var utils = require('./utils');
@@ -1317,7 +1329,7 @@ StringReader.prototype.readData = function(size) {
 };
 module.exports = StringReader;
 
-},{"./dataReader":4,"./utils":15}],13:[function(require,module,exports){
+},{"./dataReader":4,"./utils":14}],12:[function(require,module,exports){
 var process=require("__browserify_process");'use strict';
 exports.base64 = true;
 exports.array = true;
@@ -1351,7 +1363,7 @@ else {
     }
 }
 
-},{"__browserify_process":19}],14:[function(require,module,exports){
+},{"__browserify_process":18}],13:[function(require,module,exports){
 'use strict';
 var DataReader = require('./dataReader');
 
@@ -1396,7 +1408,7 @@ Uint8ArrayReader.prototype.readData = function(size) {
 };
 module.exports = Uint8ArrayReader;
 
-},{"./dataReader":4}],15:[function(require,module,exports){
+},{"./dataReader":4}],14:[function(require,module,exports){
 'use strict';
 var support = require('./support');
 var compressions = require('./compressions');
@@ -1749,7 +1761,7 @@ exports.isRegExp = function (object) {
 };
 
 
-},{"./compressions":3,"./nodeBuffer":18,"./support":13}],16:[function(require,module,exports){
+},{"./compressions":3,"./nodeBuffer":17,"./support":12}],15:[function(require,module,exports){
 'use strict';
 var StringReader = require('./stringReader');
 var NodeBufferReader = require('./nodeBufferReader');
@@ -1947,7 +1959,7 @@ ZipEntries.prototype = {
 // }}} end of ZipEntries
 module.exports = ZipEntries;
 
-},{"./nodeBufferReader":9,"./signature":11,"./stringReader":12,"./support":13,"./uint8ArrayReader":14,"./utils":15,"./zipEntry":17}],17:[function(require,module,exports){
+},{"./nodeBufferReader":17,"./signature":10,"./stringReader":11,"./support":12,"./uint8ArrayReader":13,"./utils":14,"./zipEntry":16}],16:[function(require,module,exports){
 'use strict';
 var StringReader = require('./stringReader');
 var utils = require('./utils');
@@ -2166,14 +2178,43 @@ ZipEntry.prototype = {
         if (this.useUTF8()) {
             this.fileName = jszipProto.utf8decode(this.fileName);
             this.fileComment = jszipProto.utf8decode(this.fileComment);
+        } else {
+            var upath = this.findExtraFieldUnicodePath();
+            if (upath !== null) {
+                this.fileName = upath;
+            }
         }
+    },
+
+    /**
+     * Find the unicode path declared in the extra field, if any.
+     * @return {String} the unicode path, null otherwise.
+     */
+    findExtraFieldUnicodePath: function() {
+        var upathField = this.extraFields[0x7075];
+        if (upathField) {
+            var extraReader = new StringReader(upathField.value);
+
+            // wrong version
+            if (extraReader.readInt(1) !== 1) {
+                return null;
+            }
+
+            // the crc of the filename changed, this field is out of date.
+            if (jszipProto.crc32(this.fileName) !== extraReader.readInt(4)) {
+                return null;
+            }
+
+            return jszipProto.utf8decode(extraReader.readString(upathField.length - 5));
+        }
+        return null;
     }
 };
 module.exports = ZipEntry;
 
-},{"./compressedObject":2,"./object":10,"./stringReader":12,"./utils":15}],18:[function(require,module,exports){
+},{"./compressedObject":2,"./object":9,"./stringReader":11,"./utils":14}],17:[function(require,module,exports){
 
-},{}],19:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -2192,7 +2233,8 @@ process.nextTick = (function () {
     if (canPost) {
         var queue = [];
         window.addEventListener('message', function (ev) {
-            if (ev.source === window && ev.data === 'process-tick') {
+            var source = ev.source;
+            if ((source === window || source === null) && ev.data === 'process-tick') {
                 ev.stopPropagation();
                 if (queue.length > 0) {
                     var fn = queue.shift();
@@ -2227,7 +2269,7 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}],20:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 /** @license zlib.js 2012 - imaya [ https://github.com/imaya/zlib.js ] The MIT License */(function() {'use strict';var n=void 0,u=!0,aa=this;function ba(e,d){var c=e.split("."),f=aa;!(c[0]in f)&&f.execScript&&f.execScript("var "+c[0]);for(var a;c.length&&(a=c.shift());)!c.length&&d!==n?f[a]=d:f=f[a]?f[a]:f[a]={}};var C="undefined"!==typeof Uint8Array&&"undefined"!==typeof Uint16Array&&"undefined"!==typeof Uint32Array;function K(e,d){this.index="number"===typeof d?d:0;this.d=0;this.buffer=e instanceof(C?Uint8Array:Array)?e:new (C?Uint8Array:Array)(32768);if(2*this.buffer.length<=this.index)throw Error("invalid index");this.buffer.length<=this.index&&ca(this)}function ca(e){var d=e.buffer,c,f=d.length,a=new (C?Uint8Array:Array)(f<<1);if(C)a.set(d);else for(c=0;c<f;++c)a[c]=d[c];return e.buffer=a}
 K.prototype.a=function(e,d,c){var f=this.buffer,a=this.index,b=this.d,k=f[a],m;c&&1<d&&(e=8<d?(L[e&255]<<24|L[e>>>8&255]<<16|L[e>>>16&255]<<8|L[e>>>24&255])>>32-d:L[e]>>8-d);if(8>d+b)k=k<<d|e,b+=d;else for(m=0;m<d;++m)k=k<<1|e>>d-m-1&1,8===++b&&(b=0,f[a++]=L[k],k=0,a===f.length&&(f=ca(this)));f[a]=k;this.buffer=f;this.d=b;this.index=a};K.prototype.finish=function(){var e=this.buffer,d=this.index,c;0<this.d&&(e[d]<<=8-this.d,e[d]=L[e[d]],d++);C?c=e.subarray(0,d):(e.length=d,c=e);return c};
 var ga=new (C?Uint8Array:Array)(256),M;for(M=0;256>M;++M){for(var R=M,S=R,ha=7,R=R>>>1;R;R>>>=1)S<<=1,S|=R&1,--ha;ga[M]=(S<<ha&255)>>>0}var L=ga;function ja(e){this.buffer=new (C?Uint16Array:Array)(2*e);this.length=0}ja.prototype.getParent=function(e){return 2*((e-2)/4|0)};ja.prototype.push=function(e,d){var c,f,a=this.buffer,b;c=this.length;a[this.length++]=d;for(a[this.length++]=e;0<c;)if(f=this.getParent(c),a[c]>a[f])b=a[c],a[c]=a[f],a[f]=b,b=a[c+1],a[c+1]=a[f+1],a[f+1]=b,c=f;else break;return this.length};
@@ -2250,9 +2292,9 @@ function Ha(e,d,c){var f,a,b=0,k,m,g,p,v=e.length;m=0;p=c.length;a:for(;m<p;m++)
 function oa(e,d){var c=e.length,f=new ja(572),a=new (C?Uint8Array:Array)(c),b,k,m,g,p;if(!C)for(g=0;g<c;g++)a[g]=0;for(g=0;g<c;++g)0<e[g]&&f.push(g,e[g]);b=Array(f.length/2);k=new (C?Uint32Array:Array)(f.length/2);if(1===b.length)return a[f.pop().index]=1,a;g=0;for(p=f.length/2;g<p;++g)b[g]=f.pop(),k[g]=b[g].value;m=Ja(k,k.length,d);g=0;for(p=b.length;g<p;++g)a[b[g].index]=m[g];return a}
 function Ja(e,d,c){function f(a){var b=g[a][p[a]];b===d?(f(a+1),f(a+1)):--k[b];++p[a]}var a=new (C?Uint16Array:Array)(c),b=new (C?Uint8Array:Array)(c),k=new (C?Uint8Array:Array)(d),m=Array(c),g=Array(c),p=Array(c),v=(1<<c)-d,x=1<<c-1,l,h,q,t,w;a[c-1]=d;for(h=0;h<c;++h)v<x?b[h]=0:(b[h]=1,v-=x),v<<=1,a[c-2-h]=(a[c-1-h]/2|0)+d;a[0]=b[0];m[0]=Array(a[0]);g[0]=Array(a[0]);for(h=1;h<c;++h)a[h]>2*a[h-1]+b[h]&&(a[h]=2*a[h-1]+b[h]),m[h]=Array(a[h]),g[h]=Array(a[h]);for(l=0;l<d;++l)k[l]=c;for(q=0;q<a[c-1];++q)m[c-
 1][q]=e[q],g[c-1][q]=q;for(l=0;l<c;++l)p[l]=0;1===b[c-1]&&(--k[0],++p[c-1]);for(h=c-2;0<=h;--h){t=l=0;w=p[h+1];for(q=0;q<a[h];q++)t=m[h+1][w]+m[h+1][w+1],t>e[l]?(m[h][q]=t,g[h][q]=d,w+=2):(m[h][q]=e[l],g[h][q]=l,++l);p[h]=0;1===b[h]&&f(h)}return k}
-function pa(e){var d=new (C?Uint16Array:Array)(e.length),c=[],f=[],a=0,b,k,m,g;b=0;for(k=e.length;b<k;b++)c[e[b]]=(c[e[b]]|0)+1;b=1;for(k=16;b<=k;b++)f[b]=a,a+=c[b]|0,a<<=1;b=0;for(k=e.length;b<k;b++){a=f[e[b]];f[e[b]]+=1;m=d[b]=0;for(g=e[b];m<g;m++)d[b]=d[b]<<1|a&1,a>>>=1}return d};ba("Zlib.RawDeflate",ka);ba("Zlib.RawDeflate.prototype.compress",ka.prototype.h);var Ka={NONE:0,FIXED:1,DYNAMIC:ma},V,La,$,Ma;if(Object.keys)V=Object.keys(Ka);else for(La in V=[],$=0,Ka)V[$++]=La;$=0;for(Ma=V.length;$<Ma;++$)La=V[$],ba("Zlib.RawDeflate.CompressionType."+La,Ka[La]);}).call(this); //@ sourceMappingURL=rawdeflate.min.js.map
+function pa(e){var d=new (C?Uint16Array:Array)(e.length),c=[],f=[],a=0,b,k,m,g;b=0;for(k=e.length;b<k;b++)c[e[b]]=(c[e[b]]|0)+1;b=1;for(k=16;b<=k;b++)f[b]=a,a+=c[b]|0,a<<=1;b=0;for(k=e.length;b<k;b++){a=f[e[b]];f[e[b]]+=1;m=d[b]=0;for(g=e[b];m<g;m++)d[b]=d[b]<<1|a&1,a>>>=1}return d};ba("Zlib.RawDeflate",ka);ba("Zlib.RawDeflate.prototype.compress",ka.prototype.h);var Ka={NONE:0,FIXED:1,DYNAMIC:ma},V,La,$,Ma;if(Object.keys)V=Object.keys(Ka);else for(La in V=[],$=0,Ka)V[$++]=La;$=0;for(Ma=V.length;$<Ma;++$)La=V[$],ba("Zlib.RawDeflate.CompressionType."+La,Ka[La]);}).call(this);
 
-},{}],21:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 /** @license zlib.js 2012 - imaya [ https://github.com/imaya/zlib.js ] The MIT License */(function() {'use strict';var l=void 0,p=this;function q(c,d){var a=c.split("."),b=p;!(a[0]in b)&&b.execScript&&b.execScript("var "+a[0]);for(var e;a.length&&(e=a.shift());)!a.length&&d!==l?b[e]=d:b=b[e]?b[e]:b[e]={}};var r="undefined"!==typeof Uint8Array&&"undefined"!==typeof Uint16Array&&"undefined"!==typeof Uint32Array;function u(c){var d=c.length,a=0,b=Number.POSITIVE_INFINITY,e,f,g,h,k,m,s,n,t;for(n=0;n<d;++n)c[n]>a&&(a=c[n]),c[n]<b&&(b=c[n]);e=1<<a;f=new (r?Uint32Array:Array)(e);g=1;h=0;for(k=2;g<=a;){for(n=0;n<d;++n)if(c[n]===g){m=0;s=h;for(t=0;t<g;++t)m=m<<1|s&1,s>>=1;for(t=m;t<e;t+=k)f[t]=g<<16|n;++h}++g;h<<=1;k<<=1}return[f,a,b]};function v(c,d){this.g=[];this.h=32768;this.c=this.f=this.d=this.k=0;this.input=r?new Uint8Array(c):c;this.l=!1;this.i=w;this.p=!1;if(d||!(d={}))d.index&&(this.d=d.index),d.bufferSize&&(this.h=d.bufferSize),d.bufferType&&(this.i=d.bufferType),d.resize&&(this.p=d.resize);switch(this.i){case x:this.a=32768;this.b=new (r?Uint8Array:Array)(32768+this.h+258);break;case w:this.a=0;this.b=new (r?Uint8Array:Array)(this.h);this.e=this.u;this.m=this.r;this.j=this.s;break;default:throw Error("invalid inflate mode");
 }}var x=0,w=1;
 v.prototype.t=function(){for(;!this.l;){var c=y(this,3);c&1&&(this.l=!0);c>>>=1;switch(c){case 0:var d=this.input,a=this.d,b=this.b,e=this.a,f=l,g=l,h=l,k=b.length,m=l;this.c=this.f=0;f=d[a++];if(f===l)throw Error("invalid uncompressed block header: LEN (first byte)");g=f;f=d[a++];if(f===l)throw Error("invalid uncompressed block header: LEN (second byte)");g|=f<<8;f=d[a++];if(f===l)throw Error("invalid uncompressed block header: NLEN (first byte)");h=f;f=d[a++];if(f===l)throw Error("invalid uncompressed block header: NLEN (second byte)");h|=
@@ -2267,7 +2309,7 @@ v.prototype.s=function(c,d){var a=this.b,b=this.a;this.n=c;for(var e=a.length,f,
 v.prototype.e=function(){var c=new (r?Uint8Array:Array)(this.a-32768),d=this.a-32768,a,b,e=this.b;if(r)c.set(e.subarray(32768,c.length));else{a=0;for(b=c.length;a<b;++a)c[a]=e[a+32768]}this.g.push(c);this.k+=c.length;if(r)e.set(e.subarray(d,d+32768));else for(a=0;32768>a;++a)e[a]=e[d+a];this.a=32768;return e};
 v.prototype.u=function(c){var d,a=this.input.length/this.d+1|0,b,e,f,g=this.input,h=this.b;c&&("number"===typeof c.o&&(a=c.o),"number"===typeof c.q&&(a+=c.q));2>a?(b=(g.length-this.d)/this.n[2],f=258*(b/2)|0,e=f<h.length?h.length+f:h.length<<1):e=h.length*a;r?(d=new Uint8Array(e),d.set(h)):d=h;return this.b=d};
 v.prototype.m=function(){var c=0,d=this.b,a=this.g,b,e=new (r?Uint8Array:Array)(this.k+(this.a-32768)),f,g,h,k;if(0===a.length)return r?this.b.subarray(32768,this.a):this.b.slice(32768,this.a);f=0;for(g=a.length;f<g;++f){b=a[f];h=0;for(k=b.length;h<k;++h)e[c++]=b[h]}f=32768;for(g=this.a;f<g;++f)e[c++]=d[f];this.g=[];return this.buffer=e};
-v.prototype.r=function(){var c,d=this.a;r?this.p?(c=new Uint8Array(d),c.set(this.b.subarray(0,d))):c=this.b.subarray(0,d):(this.b.length>d&&(this.b.length=d),c=this.b);return this.buffer=c};q("Zlib.RawInflate",v);q("Zlib.RawInflate.prototype.decompress",v.prototype.t);var T={ADAPTIVE:w,BLOCK:x},U,V,W,X;if(Object.keys)U=Object.keys(T);else for(V in U=[],W=0,T)U[W++]=V;W=0;for(X=U.length;W<X;++W)V=U[W],q("Zlib.RawInflate.BufferType."+V,T[V]);}).call(this); //@ sourceMappingURL=rawinflate.min.js.map
+v.prototype.r=function(){var c,d=this.a;r?this.p?(c=new Uint8Array(d),c.set(this.b.subarray(0,d))):c=this.b.subarray(0,d):(this.b.length>d&&(this.b.length=d),c=this.b);return this.buffer=c};q("Zlib.RawInflate",v);q("Zlib.RawInflate.prototype.decompress",v.prototype.t);var T={ADAPTIVE:w,BLOCK:x},U,V,W,X;if(Object.keys)U=Object.keys(T);else for(V in U=[],W=0,T)U[W++]=V;W=0;for(X=U.length;W<X;++W)V=U[W],q("Zlib.RawInflate.BufferType."+V,T[V]);}).call(this);
 
 },{}]},{},[7])
 (7)
