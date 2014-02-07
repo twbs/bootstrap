@@ -32,6 +32,14 @@ $(function () {
         equal(tooltip.attr('data-original-title'), 'Another tooltip', 'original title preserved in data attribute')
       })
 
+    test('should store tooltip trigger in tooltip instance data object', function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Tooltip Trigger backreference"></a>')
+            .appendTo('#qunit-fixture')
+            .tooltip('show')
+        ok(!!$('.tooltip').data('bs.tooltip'), 'tooltip trigger stored in instance data')
+        $('#qunit-fixture').empty()
+    })
+
       test('should place tooltips relative to placement option', function () {
         $.support.transition = false
         var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
@@ -285,6 +293,15 @@ $(function () {
           .tooltip({trigger: 'manual'})
           .tooltip('toggle')
         ok($('.tooltip').is('.fade.in'), 'tooltip should be toggled in')
+      })
+      test('should hide shown tooltip when toggle is called on tooltip', function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="tooltip on toggle"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({trigger: 'manual'})
+          .tooltip('toggle')
+        $('.tooltip', '#qunit-fixture').tooltip('toggle')
+        ok($('.tooltip').not('.fade.in'), 'tooltip should be toggled out')
+        $('#qunit-fixture').empty();
       })
 
       test('should place tooltips inside the body', function () {
