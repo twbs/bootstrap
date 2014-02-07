@@ -2263,6 +2263,23 @@ body { padding-bottom: 70px; }
 </div>
 {% endhighlight %}
 
+  <h3 id="progress-label">With label</h3>
+  <p>Remove the <code>.sr-only</code> class from within the progress bar to show a visible percentage. For low percentages, consider adding a <code>min-width</code> to ensure the label's text is fully visible.</p>
+  <div class="bs-example">
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+        60%
+      </div>
+    </div>
+  </div>
+{% highlight html %}
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+    60% Complete
+  </div>
+</div>
+{% endhighlight %}
+
   <h3 id="progress-alternatives">Contextual alternatives</h3>
   <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
   <div class="bs-example">
