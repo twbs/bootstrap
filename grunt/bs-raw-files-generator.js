@@ -1,4 +1,3 @@
-/* jshint node: true */
 /* global btoa: true */
 
 /*!
