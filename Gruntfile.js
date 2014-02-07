@@ -9,18 +9,18 @@ module.exports = function (grunt) {
   'use strict';
 
   // Force use of Unix newlines
-  grunt.util.linefeed = '\n';
+  grunt.util.linefeed = '\n'
 
   RegExp.quote = function (string) {
-    return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&');
-  };
+    return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&')
+  }
 
-  var fs = require('fs');
-  var path = require('path');
-  var generateGlyphiconsData = require('./grunt/bs-glyphicons-data-generator.js');
-  var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
-  var generateRawFilesJs = require('./grunt/bs-raw-files-generator.js');
-  var updateShrinkwrap = require('./grunt/shrinkwrap.js');
+  var fs = require('fs')
+  var path = require('path')
+  var generateGlyphiconsData = require('./grunt/bs-glyphicons-data-generator.js')
+  var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js')
+  var generateRawFilesJs = require('./grunt/bs-raw-files-generator.js')
+  var updateShrinkwrap = require('./grunt/shrinkwrap.js')
 
   // Project configuration.
   grunt.initConfig({
@@ -230,10 +230,10 @@ module.exports = function (grunt) {
         }
       },
       examples: {
-          expand: true,
-          cwd: 'docs/examples/',
-          src: ['**/*.css'],
-          dest: 'docs/examples/'
+        expand: true,
+        cwd: 'docs/examples/',
+        src: ['**/*.css'],
+        dest: 'docs/examples/'
       }
     },
 
@@ -280,10 +280,10 @@ module.exports = function (grunt) {
         options: {
           pretty: true,
           data: function () {
-            var filePath = path.join(__dirname, 'less/variables.less');
-            var fileContent = fs.readFileSync(filePath, {encoding: 'utf8'});
-            var parser = new BsLessdocParser(fileContent);
-            return {sections: parser.parseFile()};
+            var filePath = path.join(__dirname, 'less/variables.less')
+            var fileContent = fs.readFileSync(filePath, {encoding: 'utf8'})
+            var parser = new BsLessdocParser(fileContent)
+            return {sections: parser.parseFile()}
           }
         },
         files: {
@@ -327,8 +327,8 @@ module.exports = function (grunt) {
     sed: {
       versionNumber: {
         pattern: (function () {
-          var old = grunt.option('oldver');
-          return old ? RegExp.quote(old) : old;
+          var old = grunt.option('oldver')
+          return old ? RegExp.quote(old) : old
         })(),
         replacement: grunt.option('newver'),
         recursive: true
@@ -354,72 +354,72 @@ module.exports = function (grunt) {
         command: 'npm shrinkwrap --dev'
       }
     }
-  });
+  })
 
 
   // These plugins provide necessary tasks.
-  require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
-  grunt.loadNpmTasks('browserstack-runner');
+  require('load-grunt-tasks')(grunt, {scope: 'devDependencies'})
+  grunt.loadNpmTasks('browserstack-runner')
 
   // Docs HTML validation task
-  grunt.registerTask('validate-html', ['jekyll', 'validation']);
+  grunt.registerTask('validate-html', ['jekyll', 'validation'])
 
   // Test task.
-  var testSubtasks = [];
+  var testSubtasks = []
   // Skip core tests if running a different subset of the test suite
   if (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'core') {
-    testSubtasks = testSubtasks.concat(['dist-css', 'csslint', 'jshint', 'jscs', 'qunit', 'build-customizer-html']);
+    testSubtasks = testSubtasks.concat(['dist-css', 'csslint', 'jshint', 'jscs', 'qunit', 'build-customizer-html'])
   }
   // Skip HTML validation if running a different subset of the test suite
   if (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'validate-html') {
-    testSubtasks.push('validate-html');
+    testSubtasks.push('validate-html')
   }
   // Only run Sauce Labs tests if there's a Sauce access key
   if (typeof process.env.SAUCE_ACCESS_KEY !== 'undefined' &&
       // Skip Sauce if running a different subset of the test suite
       (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'sauce-js-unit')) {
-    testSubtasks.push('connect');
-    testSubtasks.push('saucelabs-qunit');
+    testSubtasks.push('connect')
+    testSubtasks.push('saucelabs-qunit')
   }
   // Only run BrowserStack tests if there's a BrowserStack access key
   if (typeof process.env.BROWSERSTACK_KEY !== 'undefined' &&
       // Skip BrowserStack if running a different subset of the test suite
       (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'browserstack-js-unit')) {
-    testSubtasks.push('browserstack_runner');
+    testSubtasks.push('browserstack_runner')
   }
-  grunt.registerTask('test', testSubtasks);
+  grunt.registerTask('test', testSubtasks)
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat', 'uglify']);
+  grunt.registerTask('dist-js', ['concat', 'uglify'])
 
   // CSS distribution task.
-  grunt.registerTask('dist-css', ['less', 'cssmin', 'csscomb', 'usebanner']);
+  grunt.registerTask('dist-css', ['less', 'cssmin', 'csscomb', 'usebanner'])
 
   // Docs distribution task.
-  grunt.registerTask('dist-docs', 'copy:docs');
+  grunt.registerTask('dist-docs', 'copy:docs')
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean', 'dist-css', 'copy:fonts', 'dist-js', 'dist-docs']);
+  grunt.registerTask('dist', ['clean', 'dist-css', 'copy:fonts', 'dist-js', 'dist-docs'])
 
   // Default task.
-  grunt.registerTask('default', ['test', 'dist', 'build-glyphicons-data', 'build-customizer', 'update-shrinkwrap']);
+  grunt.registerTask('default', ['test', 'dist', 'build-glyphicons-data', 'build-customizer', 'update-shrinkwrap'])
 
   // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
   // This can be overzealous, so its changes should always be manually reviewed!
-  grunt.registerTask('change-version-number', 'sed');
+  grunt.registerTask('change-version-number', 'sed')
 
-  grunt.registerTask('build-glyphicons-data', generateGlyphiconsData);
+  grunt.registerTask('build-glyphicons-data', generateGlyphiconsData)
 
   // task for building customizer
-  grunt.registerTask('build-customizer', ['build-customizer-html', 'build-raw-files']);
-  grunt.registerTask('build-customizer-html', 'jade');
+  grunt.registerTask('build-customizer', ['build-customizer-html', 'build-raw-files'])
+  grunt.registerTask('build-customizer-html', 'jade')
   grunt.registerTask('build-raw-files', 'Add scripts/less files to customizer.', function () {
-    var banner = grunt.template.process('<%= banner %>');
-    generateRawFilesJs(banner);
-  });
+    var banner = grunt.template.process('<%= banner %>')
+    generateRawFilesJs(banner)
+  })
 
   // Task for updating the npm packages used by the Travis build.
-  grunt.registerTask('update-shrinkwrap', ['exec:npmUpdate', 'exec:npmShrinkWrap', '_update-shrinkwrap']);
-  grunt.registerTask('_update-shrinkwrap', function () { updateShrinkwrap.call(this, grunt); });
-};
+  grunt.registerTask('update-shrinkwrap', ['exec:npmUpdate', 'exec:npmShrinkWrap', '_update-shrinkwrap'])
+  grunt.registerTask('_update-shrinkwrap', function () { updateShrinkwrap.call(this, grunt) })
+}
