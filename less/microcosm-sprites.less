@@ -31,6 +31,12 @@
   display:          inline-block;
   vertical-align:   middle;
 }
+/* Retina-specific stuff here */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .sprite{
+    background-image: url('/static/img/icons@2x.png');
+  }
+}
 .sprite-size-small{
   width:            @sprite-small-width;
   height:           @sprite-small-height;
