@@ -6,7 +6,7 @@
  * details, see http://creativecommons.org/licenses/by/3.0/.
  */
 
-/* jshint multistr:true */
+/* jshint multistr: true */
 
 window.onload = function () { // wait for load in a dumb way because B-0
   var cw = '/*!\n' +
