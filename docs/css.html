@@ -3240,7 +3240,7 @@ a {
   <p>Easily truncate text with an ellipsis with a single mixin. <strong>Requires element to be <code>block</code> or <code>inline-block</code> level.</strong></p>
 {% highlight scss %}
 // Mixin
-.text-truncate() {
+.text-overflow() {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -3250,7 +3250,7 @@ a {
 .branch-name {
   display: inline-block;
   max-width: 200px;
-  .text-truncate();
+  .text-overflow();
 }
 {% endhighlight %}
 
