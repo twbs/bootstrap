@@ -7,13 +7,13 @@
     line-height: @line-height-computed;
   }
   @media (min-width: @screen-sm-min){
-    margin-bottom:@line-height-computed/2;
     h1{
       font-size:@font-size-h1 * 0.8;
       line-height: @line-height-computed * 1.2;
     }
   }
   @media (min-width: @screen-md-min){
+    margin-bottom:@line-height-computed/2;
     padding:0 0 20px;
   }
 }
@@ -72,6 +72,14 @@
 
 .item-event-inner > li.item-event-date-container{
   @media (min-width: @screen-md-min){
+    .sprite-calendar{
+      display:none;
+    }
+  }
+  @media (min-width: @screen-lg-min){
+    .sprite-calendar{
+      display:inline-block;
+    }
   }
 }
 .item-event-date{
@@ -295,7 +303,7 @@
       width: 32%;
       border-right: 1px solid #EEE;
       padding-left: 10px;
-      padding-top:10px;
+      padding-top:0;
       padding-bottom:0;
       margin-top:15px;
       min-height:65px;
