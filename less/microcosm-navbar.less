@@ -146,7 +146,7 @@
     width: 200px;
     position: absolute;
     right: 0;
-    top: 122px;
+    top: 114px;
     margin-bottom: -8px;
 
     .navbar-profile-row-1-left{
@@ -278,15 +278,20 @@
 }
 
 .navbar-nav-wrapper {
-
+  background-color: #FFF;
+  border-bottom:1px solid #ccc;
+  @media (min-width: @screen-sm-min){
+    border-top:1px solid #eee;
+    border-bottom:1px solid #eee;
+  }
   @media (min-width: @screen-md-min){
+    border-top:0;
+    border-bottom:0;
     border-radius:3px;
     padding-left:15px;
     padding-right:15px;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
   }
-
-  background-color: #FFF;
 }
 .navbar-collapse{
   max-height:100%;
