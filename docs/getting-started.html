@@ -543,10 +543,10 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
   <p>On <code>&lt;select&gt;</code> elements, the Android stock browser will not display the side controls if there is a <code>border-radius</code> and/or <code>border</code> applied. Use the snippet of code below to remove the offending CSS and render the <code>&lt;select&gt;</code> as an unstyled element on the Android stock browser. The user agent sniffing avoids interference with Chrome, Safari, and Mozilla browsers.</p>
 {% highlight html %}
 <script>
-var nua = navigator.userAgent;
-var isAndroid = (nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1 && nua.indexOf('Chrome') === -1);
+var nua = navigator.userAgent
+var isAndroid = (nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1 && nua.indexOf('Chrome') === -1)
 if (isAndroid) {
-  $('select.form-control').removeClass('form-control').css('width', '100%');
+  $('select.form-control').removeClass('form-control').css('width', '100%')
 }
 </script>
 {% endhighlight %}

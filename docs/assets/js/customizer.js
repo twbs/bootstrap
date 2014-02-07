@@ -13,7 +13,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
            ' * Bootstrap v3.1.0 (http://getbootstrap.com)\n' +
            ' * Copyright 2011-2014 Twitter, Inc.\n' +
            ' * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n' +
-           ' */\n\n';
+           ' */\n\n'
 
   function showError(msg, err) {
     $('<div id="bsCustomizerAlert" class="bs-customizer-alert">\
@@ -40,9 +40,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
   }
 
   function getQueryParam(key) {
-    key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, '\\$&'); // escape RegEx meta chars
-    var match = location.search.match(new RegExp('[?&]' + key + '=([^&]+)(&|$)'));
-    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+    key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, '\\$&') // escape RegEx meta chars
+    var match = location.search.match(new RegExp('[?&]' + key + '=([^&]+)(&|$)'))
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '))
   }
 
   function createGist(configJson) {
