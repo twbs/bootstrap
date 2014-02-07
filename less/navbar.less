@@ -292,7 +292,7 @@
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   @shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1);
-  .box-shadow(@shadow);
+  box-shadow: @shadow;
 
   // Mixin behavior for optimum display
   .form-inline();
@@ -314,7 +314,7 @@
     margin-right: 0;
     padding-top: 0;
     padding-bottom: 0;
-    .box-shadow(none);
+    box-shadow: none;
 
     // Outdent the form if last child to line up with content down the page
     &.navbar-right:last-child {
