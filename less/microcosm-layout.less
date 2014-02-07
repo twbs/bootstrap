@@ -6,7 +6,6 @@
   padding-right:0;
   @media (min-width: @screen-md-min){
     border-radius:3px;
-    margin-bottom:20px;
     padding-left:15px;
     padding-right:15px;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
@@ -733,10 +732,11 @@ blockquote{
 }
 
 .footer{
-  margin-top:@line-height-computed;
-  margin-bottom:@line-height-computed;
   color:#999;
   font-size:@font-size-xsmall;
+  background-color:#fff;
+  padding-top:@line-height-computed/2;
+  padding-bottom:@line-height-computed/2;
   p{
     margin:0;
     &.bold{
@@ -761,6 +761,19 @@ blockquote{
   }
   @media (min-width:@screen-sm-min){
     margin-top:0;
+  }
+  @media (min-width:@screen-md-min){
+    margin-top:@line-height-computed;
+    margin-bottom:@line-height-computed/2;
+    padding-top:0;
+    padding-bottom:0;
+    background-color:transparent;
+    .container{
+      background-color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+      padding: 10px 0;
+      border-radius: 3px;
+    }
   }
 }
 
