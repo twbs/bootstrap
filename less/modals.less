@@ -2,14 +2,19 @@
 // Modals
 // --------------------------------------------------
 
-// .modal-open      - body class for killing the scroll
 // .modal           - container to scroll within
 // .modal-dialog    - positioning shell for the actual modal
 // .modal-content   - actual modal w/ bg and corners and shit
 
-// Kill the scroll on the body
-.modal-open {
+// prevent shifting body content and double scrollbars while showing modal
+html {
+  -ms-overflow-style: scrollbar;
+  height: 100%;
   overflow: hidden;
+}
+body {
+  height: 100%;
+  overflow: auto;
 }
 
 // Container that the modal scrolls within
