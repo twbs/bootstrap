@@ -1733,6 +1733,9 @@ fieldset[disabled] .form-control {
 textarea.form-control {
   height: auto;
 }
+input[type="search"] {
+  -webkit-appearance: none;
+}
 input[type="date"] {
   line-height: 34px;
 }
