@@ -278,7 +278,7 @@
 }
 
 .navbar-nav-wrapper {
-  
+
   @media (min-width: @screen-md-min){
     border-radius:3px;
     padding-left:15px;
@@ -362,6 +362,13 @@
     &.navbar-nav-unregistered,
     &.navbar-nav-registered{
       display:none;
+    }
+  }
+  @media (min-width:@screen-md-min){
+    &>li.first{
+      &>a{
+        border-radius:3px 0 0 3px;
+      }
     }
   }
 }
