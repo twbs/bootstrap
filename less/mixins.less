@@ -346,7 +346,7 @@
   //  #gradient > .horizontal-nth-colors(#ffffff #fffffa #ff0011 #000000 #affd29, 0 50 75 80 100);
   //
   // Returns a background gradiant with an unlimited amount of colors and stops
-  .horizontal-nth-colors(@colors, @percentages) {
+  .horizontal-nth-colors(@colors; @percentages) {
     @n: length(@colors);
     .color(@index) when (@index = 1) {
       @item: extract(@colors,@index) percentage((extract(@percentages,@index)/100));
@@ -378,7 +378,7 @@
   //  #gradient > .vertical-nth-colors(#1E5799 #1A4884 #2672BF #7db9e8, 0 30 60 100);
   //
   // Returns a background gradiant with an unlimited amount of colors and stops
-  .vertical-nth-colors(@colors, @percentages) {
+  .vertical-nth-colors(@colors; @percentages) {
     @n: length(@colors);
     .color(@index) when (@index = 1) {
       @item: extract(@colors,@index) percentage((extract(@percentages,@index)/100));
