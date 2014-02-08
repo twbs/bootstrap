@@ -137,6 +137,10 @@
     this.$element.hide()
     this.backdrop(function () {
       that.removeBackdrop()
+      if (that.options.cache === false) {
+        that.$element.removeData('bs.modal')
+        that.$element.empty()
+      }
       that.$element.trigger('hidden.bs.modal')
     })
   }
