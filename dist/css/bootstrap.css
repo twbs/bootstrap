@@ -1939,6 +1939,9 @@ select[multiple].input-lg {
     width: auto;
     vertical-align: middle;
   }
+  .form-inline .input-group > .form-control {
+    width: 100%;
+  }
   .form-inline .control-label {
     margin-bottom: 0;
     vertical-align: middle;
@@ -3853,6 +3856,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     display: inline-block;
     width: auto;
     vertical-align: middle;
+  }
+  .navbar-form .input-group > .form-control {
+    width: 100%;
   }
   .navbar-form .control-label {
     margin-bottom: 0;

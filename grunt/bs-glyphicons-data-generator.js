@@ -1,4 +1,3 @@
-/* jshint node: true */
 /*!
  * Bootstrap Grunt task for Glyphicons data generation
  * http://getbootstrap.com
