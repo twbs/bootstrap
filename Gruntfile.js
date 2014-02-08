@@ -290,8 +290,8 @@ module.exports = function (grunt) {
           }
         },
         files: {
-          'docs/_includes/customizer-variables.html': 'docs/customizer-variables.jade',
-          'docs/_includes/nav-customize.html': 'docs/customizer-nav.jade'
+          'docs/_includes/customizer-variables.html': 'docs/jade/customizer-variables.jade',
+          'docs/_includes/nav-customize.html': 'docs/jade/customizer-nav.jade'
         }
       }
     },
