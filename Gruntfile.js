@@ -44,6 +44,9 @@ module.exports = function (grunt) {
         jshintrc: 'js/.jshintrc'
       },
       grunt: {
+        options: {
+          node: true
+        },
         src: ['Gruntfile.js', 'grunt/*.js']
       },
       src: {
@@ -259,7 +262,7 @@ module.exports = function (grunt) {
       options: {
         inject: 'js/tests/unit/phantom.js'
       },
-      files: 'js/tests/*.html'
+      files: 'js/tests/index.html'
     },
 
     connect: {
@@ -287,8 +290,8 @@ module.exports = function (grunt) {
           }
         },
         files: {
-          'docs/_includes/customizer-variables.html': 'docs/customizer-variables.jade',
-          'docs/_includes/nav-customize.html': 'docs/customizer-nav.jade'
+          'docs/_includes/customizer-variables.html': 'docs/jade/customizer-variables.jade',
+          'docs/_includes/nav-customize.html': 'docs/jade/customizer-nav.jade'
         }
       }
     },
