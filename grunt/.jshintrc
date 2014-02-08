@@ -1,0 +1,6 @@
+{
+  "boss"    : true,
+  "eqnull"  : true,
+  "node"    : true,
+  "quotmark": "single"
+}
