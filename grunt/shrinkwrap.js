@@ -8,7 +8,7 @@
 This Grunt task updates the npm-shrinkwrap.canonical.json file that's used as the key for Bootstrap's npm packages cache.
 This task should be run and the updated file should be committed whenever Bootstrap's dependencies change.
 */
-
+'use strict';
 var canonicallyJsonStringify = require('canonical-json');
 var NON_CANONICAL_FILE = 'npm-shrinkwrap.json';
 var DEST_FILE = 'test-infra/npm-shrinkwrap.canonical.json';

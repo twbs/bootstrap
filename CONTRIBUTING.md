@@ -178,7 +178,7 @@ license your work under the terms of the [MIT License](LICENSE.md).
 
 ### JS
 
-- No semicolons
+- No semicolons (in client-side JS)
 - 2 spaces (no tabs)
 - strict mode
 - "Attractive"
