@@ -5572,8 +5572,8 @@ button.close {
   text-shadow: none;
 }
 @media screen and (min-width: 768px) {
-  .carousel-control .glyphicons-chevron-left,
-  .carousel-control .glyphicons-chevron-right,
+  .carousel-control .glyphicon-chevron-left,
+  .carousel-control .glyphicon-chevron-right,
   .carousel-control .icon-prev,
   .carousel-control .icon-next {
     width: 30px;
