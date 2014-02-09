@@ -19,7 +19,7 @@ and [submitting pull requests](#pull-requests), but please respect the following
 restrictions:
 
 * Please **do not** use the issue tracker for personal support requests.  Stack
-  Overflow ([`twitter-boostrap`](http://stackoverflow.com/questions/tagged/twitter-bootstrap) tag) or [IRC](https://github.com/twbs/bootstrap/blob/master/README.md#community) are better places to get help.
+  Overflow ([`twitter-bootstrap-3`](http://stackoverflow.com/questions/tagged/twitter-bootstrap-3) tag) or [IRC](https://github.com/twbs/bootstrap/blob/master/README.md#community) are better places to get help.
 
 * Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.
@@ -159,6 +159,7 @@ license your work under the terms of the [MIT License](LICENSE.md).
 - Always use proper indentation.
 - Use tags and elements appropriate for an HTML5 doctype (e.g., self-closing tags).
 - Use CDNs and HTTPS for third-party JS when possible. We don't use protocol-relative URLs in this case because they break when viewing the page locally via `file://`.
+- Use [WAI-ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) attributes in documentation examples to promote accessibility.
 
 ### CSS
 
@@ -172,14 +173,19 @@ license your work under the terms of the [MIT License](LICENSE.md).
 - Attribute selectors should only be used where absolutely necessary (e.g., form controls) and should be avoided on custom components for performance and explicitness.
 - Series of classes for a component should include a base class (e.g., `.component`) and use the base class as a prefix for modifier and sub-components (e.g., `.component-lg`).
 - Avoid inheritance and over nesting—use single, explicit classes whenever possible.
+- When feasible, default color palettes should comply with [WCAG color contrast guidelines](http://www.w3.org/TR/WCAG20/#visual-audio-contrast).
+- Except in rare cases, don't remove default `:focus` styles (via e.g. `outline: none;`) without providing alternative styles. See [this A11Y Project post](http://a11yproject.com/posts/never-remove-css-outlines/) for more details.
 
 ### JS
 
 - No semicolons
-- Comma first
 - 2 spaces (no tabs)
 - strict mode
 - "Attractive"
+
+### Checking coding style
+
+Run `grunt test` before committing to ensure your changes follow our coding standards.
 
 
 ## License

@@ -91,6 +91,8 @@
       "text-shadow",
       "text-transform",
       "text-wrap",
+      "-webkit-text-size-adjust",
+      "-ms-text-size-adjust",
       "letter-spacing",
       "-ms-word-break",
       "word-break",

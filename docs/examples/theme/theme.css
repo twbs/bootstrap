@@ -4,8 +4,8 @@ body {
 }
 
 .theme-dropdown .dropdown-menu {
-  display: block;
   position: static;
+  display: block;
   margin-bottom: 20px;
 }
 

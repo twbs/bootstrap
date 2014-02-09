@@ -3,8 +3,8 @@
 // ++++++++++++++++++++++++++++++++++++++++++
 
 /*!
+ * JavaScript for Bootstrap's docs (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
- *
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
  * details, see http://creativecommons.org/licenses/by/3.0/.
  */
@@ -18,14 +18,13 @@
     //
     // See Getting Started docs for more information
     if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-      var msViewportStyle = document.createElement('style');
+      var msViewportStyle = document.createElement('style')
       msViewportStyle.appendChild(
         document.createTextNode(
           '@-ms-viewport{width:auto!important}'
         )
-      );
-      document.querySelector('head').
-        appendChild(msViewportStyle);
+      )
+      document.querySelector('head').appendChild(msViewportStyle)
     }
 
 
@@ -36,7 +35,7 @@
 
     $body.scrollspy({
       target: '.bs-sidebar',
-      offset: navHeight
+      // offset: navHeight
     })
 
     $window.on('load', function () {
@@ -86,8 +85,7 @@
     })
 
     // popover demo
-    $('[data-toggle=popover]')
-      .popover()
+    $('[data-toggle=popover]').popover()
 
     // button state demo
     $('#loading-example-btn')

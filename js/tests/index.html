@@ -4,15 +4,20 @@
   <title>Bootstrap Plugin Test Suite</title>
 
   <!-- jquery -->
-  <!--<script src="http://code.jquery.com/jquery-1.7.min.js"></script>-->
   <script src="vendor/jquery.js"></script>
 
   <!-- qunit -->
   <link rel="stylesheet" href="vendor/qunit.css" media="screen">
   <script src="vendor/qunit.js"></script>
+  <script>
+    // See https://github.com/axemclion/grunt-saucelabs#test-result-details-with-qunit
+    QUnit.done(function(results) {
+      window.global_test_results = results
+    })
+  </script>
 
   <!--  plugin sources -->
-  <script src="../../js/transition.js"></script>
+  <script>$.support.transition = false</script>
   <script src="../../js/alert.js"></script>
   <script src="../../js/button.js"></script>
   <script src="../../js/carousel.js"></script>
@@ -42,10 +47,7 @@
 </head>
 <body>
   <div>
-    <h1 id="qunit-header">Bootstrap Plugin Test Suite</h1>
-    <h2 id="qunit-banner"></h2>
-    <h2 id="qunit-userAgent"></h2>
-    <ol id="qunit-tests"></ol>
+    <div id="qunit"></div>
     <div id="qunit-fixture"></div>
   </div>
 </body>

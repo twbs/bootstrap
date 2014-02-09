@@ -54,8 +54,7 @@
 
 // Placeholder text
 .placeholder(@color: @input-color-placeholder) {
-  &:-moz-placeholder            { color: @color; } // Firefox 4-18
-  &::-moz-placeholder           { color: @color;   // Firefox 19+
+  &::-moz-placeholder           { color: @color;   // Firefox
                                   opacity: 1; } // See https://github.com/twbs/bootstrap/pull/11526
   &:-ms-input-placeholder       { color: @color; } // Internet Explorer 10+
   &::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
@@ -115,6 +114,10 @@
 }
 
 // Drop shadows
+//
+// Note: Deprecated `.box-shadow()` as of v3.1.0 since all of Bootstrap's
+//   supported browsers that have box shadow capabilities now support the
+//   standard `box-shadow` property.
 .box-shadow(@shadow) {
   -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
           box-shadow: @shadow;
@@ -249,7 +252,6 @@
   -webkit-user-select: @select;
      -moz-user-select: @select;
       -ms-user-select: @select; // IE10+
-       -o-user-select: @select;
           user-select: @select;
 }
 
@@ -577,6 +579,24 @@
   }
 }
 
+// Contextual backgrounds
+// -------------------------
+.bg-variant(@color) {
+  background-color: @color;
+  a&:hover {
+    background-color: darken(@color, 10%);
+  }
+}
+
+// Typography
+// -------------------------
+.text-emphasis-variant(@color) {
+  color: @color;
+  a&:hover {
+    color: darken(@color, 10%);
+  }
+}
+
 // Navbar vertical align
 // -------------------------
 // Vertically center elements in the navbar.
@@ -607,10 +627,7 @@
 }
 
 .responsive-invisibility() {
-    &,
-  tr&,
-  th&,
-  td& { display: none !important; }
+  display: none !important;
 }
 
 
@@ -897,7 +914,8 @@
     line-height: @input-height;
   }
 
-  textarea& {
+  textarea&,
+  select[multiple]& {
     height: auto;
   }
 }

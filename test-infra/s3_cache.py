@@ -83,11 +83,11 @@ if __name__ == '__main__':
     #   AWS_SECRET_ACCESS_KEY -- AWS Secret Access Key
     argv.pop(0)
     if len(argv) != 4:
-        raise SystemExit("USAGE: node_modules_cache.py <download | upload> <friendly name> <dependencies file> <directory>")
+        raise SystemExit("USAGE: s3_cache.py <download | upload> <friendly name> <dependencies file> <directory>")
     mode, friendly_name, dependencies_file, directory = argv
 
     conn = S3Connection()
-    bucket = conn.lookup(BUCKET_NAME)
+    bucket = conn.lookup(BUCKET_NAME, validate=False)
     if bucket is None:
         raise SystemExit("Could not access bucket!")
 

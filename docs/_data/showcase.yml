@@ -1,0 +1,19 @@
+- name: Coinbase
+  url: https://coinbase.com/
+  expo_url: http://expo.getbootstrap.com/2013/08/06/coinbase/
+  img: http://expo.getbootstrap.com/screenshots/coinbase.jpg
+
+- name: Localcrime
+  url: http://www.localcrimeapp.com/
+  expo_url: http://expo.getbootstrap.com/2013/08/08/localcrime/
+  img: http://expo.getbootstrap.com/screenshots/localcrime.jpg
+
+- name: Sentry
+  url: https://www.getsentry.com/
+  expo_url: http://expo.getbootstrap.com/2013/05/09/sentry/
+  img: http://expo.getbootstrap.com/screenshots/sentry.jpg
+
+- name: Fortrabbit
+  url: http://fortrabbit.com/
+  expo_url: http://expo.getbootstrap.com/2013/08/05/fortrabbit/
+  img: http://expo.getbootstrap.com/screenshots/fortrabbit.jpg
