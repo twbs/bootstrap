@@ -81,7 +81,7 @@ body {
 }
 
 /* Bootstrap "B" icon */
-.bs-booticon {
+.bs-docs-booticon {
   display: block;
   font-weight: 500;
   color: #fff;
@@ -90,23 +90,23 @@ body {
   cursor: default;
   text-align: center;
 }
-.bs-booticon-sm {
+.bs-docs-booticon-sm {
   width: 30px;
   height: 30px;
   font-size: 20px;
   line-height: 28px;
 }
-.bs-booticon-lg {
+.bs-docs-booticon-lg {
   width: 144px;
   height: 144px;
   font-size: 108px;
   line-height: 140px;
 }
-.bs-booticon-inverse {
+.bs-docs-booticon-inverse {
   color: #563d7c;
   background-color: #fff;
 }
-.bs-booticon-outline {
+.bs-docs-booticon-outline {
   background-color: transparent;
   border: 1px solid #cdbfe3;
 }
@@ -156,7 +156,7 @@ body {
  * Separated section of content at the bottom of all pages, save the homepage.
  */
 
-.bs-footer {
+.bs-docs-footer {
   padding-top: 40px;
   padding-bottom: 40px;
   margin-top: 100px;
@@ -164,21 +164,21 @@ body {
   text-align: center;
   border-top: 1px solid #e5e5e5;
 }
-.footer-links {
+.bs-docs-footer-links {
   margin-top: 20px;
   padding-left: 0;
   color: #999;
 }
-.footer-links li {
+.bs-docs-footer-links li {
   display: inline;
   padding: 0 2px;
 }
-.footer-links li:first-child {
+.bs-docs-footer-links li:first-child {
   padding-left: 0;
 }
 
 @media (min-width: 768px) {
-  .bs-footer p {
+  .bs-docs-footer p {
     margin-bottom: 0;
   }
 }
@@ -190,25 +190,25 @@ body {
  * Twitter and GitHub social action buttons (for homepage and footer).
  */
 
-.bs-social {
+.bs-docs-social {
   margin-bottom: 20px;
   text-align: center;
 }
-.bs-social-buttons {
+.bs-docs-social-buttons {
   display: inline-block;
   margin-bottom: 0;
   padding-left: 0;
   list-style: none;
 }
-.bs-social-buttons li {
+.bs-docs-social-buttons li {
   display: inline-block;
   line-height: 1;
   padding: 5px 8px;
 }
-.bs-social-buttons .twitter-follow-button {
+.bs-docs-social-buttons .twitter-follow-button {
   width: 225px !important;
 }
-.bs-social-buttons .twitter-share-button {
+.bs-docs-social-buttons .twitter-share-button {
   width: 98px !important;
 }
 /* Style the GitHub buttons via CSS instead of inline attributes */
@@ -225,8 +225,8 @@ body {
  */
 
 /* Share masthead with page headers */
-.bs-masthead,
-.bs-header {
+.bs-docs-masthead,
+.bs-docs-header {
   position: relative;
   padding: 30px 15px;
   color: #cdbfe3;
@@ -240,46 +240,46 @@ body {
 }
 
  /* Masthead (headings and download button) */
-.bs-masthead .bs-booticon {
+.bs-docs-masthead .bs-docs-booticon {
   margin: 0 auto 30px;
 }
-.bs-masthead h1 {
+.bs-docs-masthead h1 {
   font-weight: 300;
   line-height: 1;
   color: #fff;
 }
-.bs-masthead .lead {
+.bs-docs-masthead .lead {
   margin: 0 auto 30px;
   font-size: 20px;
   color: #fff;
 }
-.bs-masthead .btn {
+.bs-docs-masthead .btn {
   width: 100%;
   padding: 15px 30px;
   font-size: 20px;
 }
 
 @media (min-width: 480px) {
-  .bs-masthead .btn {
+  .bs-docs-masthead .btn {
     width: auto;
   }
 }
 
 @media (min-width: 768px) {
-  .bs-masthead {
+  .bs-docs-masthead {
     padding-top: 80px;
     padding-bottom: 80px;
   }
-  .bs-masthead h1 {
+  .bs-docs-masthead h1 {
     font-size: 60px;
   }
-  .bs-masthead .lead {
+  .bs-docs-masthead .lead {
     font-size: 24px;
   }
 }
 
 @media (min-width: 992px) {
-  .bs-masthead .lead {
+  .bs-docs-masthead .lead {
     width: 80%;
     font-size: 30px;
   }
@@ -293,39 +293,39 @@ body {
  */
 
 /* Page headers */
-.bs-header {
+.bs-docs-header {
   margin-bottom: 40px;
   font-size: 20px;
 }
-.bs-header h1 {
+.bs-docs-header h1 {
   margin-top: 0;
   color: #fff;
 }
-.bs-header p {
+.bs-docs-header p {
   margin-bottom: 0;
   font-weight: 300;
   line-height: 1.4;
 }
-.bs-header .container {
+.bs-docs-header .container {
   position: relative;
 }
 
 @media (min-width: 768px) {
-  .bs-header {
+  .bs-docs-header {
     padding-top: 60px;
     padding-bottom: 60px;
     font-size: 24px;
     text-align: left;
   }
-  .bs-header h1 {
+  .bs-docs-header h1 {
     font-size: 60px;
     line-height: 1;
   }
 }
 
 @media (min-width: 992px) {
-  .bs-header h1,
-  .bs-header p {
+  .bs-docs-header h1,
+  .bs-docs-header p {
     margin-right: 380px;
   }
 }
@@ -385,7 +385,7 @@ body {
     border-radius: 4px;
     border-width: 1px !important;
   }
-  .bs-masthead .carbonad {
+  .bs-docs-masthead .carbonad {
     margin: 50px auto 0 !important;
   }
 }
@@ -406,7 +406,7 @@ body {
     padding: 15px !important;
     width: 330px !important;
   }
-  .bs-masthead .carbonad {
+  .bs-docs-masthead .carbonad {
     position: static;
   }
 }
@@ -418,7 +418,7 @@ body {
  * Reasons to use Bootstrap, entries from the Expo, and more.
  */
 
-.bs-featurette {
+.bs-docs-featurette {
   padding-top:    40px;
   padding-bottom: 40px;
   font-size: 16px;
@@ -428,12 +428,12 @@ body {
   background-color: #fff;
   border-bottom: 1px solid #e5e5e5;
 }
-.bs-featurette + .bs-footer {
+.bs-docs-featurette + .bs-docs-footer {
   margin-top: 0;
   border-top: 0;
 }
 
-.bs-featurette-title {
+.bs-docs-featurette-title {
   font-size: 30px;
   font-weight: normal;
   color: #333;
@@ -443,63 +443,63 @@ body {
   width: 100px;
   margin: 40px auto;
 }
-.bs-featurette h3 {
+.bs-docs-featurette h3 {
   font-weight: normal;
   color: #333;
   margin-bottom: 5px;
 }
-.bs-featurette-img {
+.bs-docs-featurette-img {
   display: block;
   margin-bottom: 20px;
   color: #333;
 }
-.bs-featurette-img:hover {
+.bs-docs-featurette-img:hover {
   text-decoration: none;
   color: #428bca;
 }
-.bs-featurette-img img {
+.bs-docs-featurette-img img {
   display: block;
   margin-bottom: 15px;
 }
 
 /* Featured sites */
-.bs-featured-sites {
+.bs-docs-featured-sites {
   margin-left: -1px;
   margin-right: -1px;
 }
-.bs-featured-sites .col-sm-3 {
+.bs-docs-featured-sites .col-sm-3 {
   padding-left: 1px;
   padding-right: 1px;
 }
 
 @media (min-width: 480px) {
-  .bs-featurette .img-responsive {
+  .bs-docs-featurette .img-responsive {
     margin-top: 30px;
   }
 }
 @media (min-width: 768px) {
-  .bs-featurette {
+  .bs-docs-featurette {
     padding-top:    100px;
     padding-bottom: 100px;
   }
-  .bs-featurette-title {
+  .bs-docs-featurette-title {
     font-size: 40px;
   }
-  .bs-featurette .lead {
+  .bs-docs-featurette .lead {
     margin-left:  auto;
     margin-right: auto;
     max-width: 80%;
   }
-  .bs-featured-sites .col-sm-3:first-child img {
+  .bs-docs-featured-sites .col-sm-3:first-child img {
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
   }
-  .bs-featured-sites .col-sm-3:last-child img {
+  .bs-docs-featured-sites .col-sm-3:last-child img {
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
   }
 
-  .bs-featurette .img-responsive {
+  .bs-docs-featurette .img-responsive {
     margin-top: 0;
   }
 }
@@ -513,40 +513,40 @@ body {
  */
 
 /* By default it's not affixed in mobile views, so undo that */
-.bs-sidebar.affix {
+.bs-docs-sidebar.affix {
   position: static;
 }
 @media (min-width: 768px) {
-  .bs-sidebar {
+  .bs-docs-sidebar {
     padding-left: 20px;
   }
 }
 
 /* First level of nav */
-.bs-sidenav {
+.bs-docs-sidenav {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
 /* All levels of nav */
-.bs-sidebar .nav > li > a {
+.bs-docs-sidebar .nav > li > a {
   display: block;
   font-size: 13px;
   font-weight: 500;
   color: #999;
   padding: 4px 20px;
 }
-.bs-sidebar .nav > li > a:hover,
-.bs-sidebar .nav > li > a:focus {
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
   padding-left: 19px;
   color: #563d7c;
   text-decoration: none;
   background-color: transparent;
   border-left: 1px solid #563d7c;
 }
-.bs-sidebar .nav > .active > a,
-.bs-sidebar .nav > .active:hover > a,
-.bs-sidebar .nav > .active:focus > a {
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
   padding-left: 18px;
   font-weight: bold;
   color: #563d7c;
@@ -555,24 +555,24 @@ body {
 }
 
 /* Nav: second level (shown on .active) */
-.bs-sidebar .nav .nav {
+.bs-docs-sidebar .nav .nav {
   display: none; /* Hide by default, but at >768px, show it */
   padding-bottom: 10px;
 }
-.bs-sidebar .nav .nav > li > a {
+.bs-docs-sidebar .nav .nav > li > a {
   padding-top:    1px;
   padding-bottom: 1px;
   padding-left: 30px;
   font-size: 12px;
   font-weight: normal;
 }
-.bs-sidebar .nav .nav > li > a:hover,
-.bs-sidebar .nav .nav > li > a:focus {
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
   padding-left: 29px;
 }
-.bs-sidebar .nav .nav > .active > a,
-.bs-sidebar .nav .nav > .active:hover > a,
-.bs-sidebar .nav .nav > .active:focus > a {
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
   font-weight: 500;
   padding-left: 28px;
 }
@@ -600,31 +600,31 @@ body {
 
 /* Show and affix the side nav when space allows it */
 @media (min-width: 992px) {
-  .bs-sidebar .nav > .active > ul {
+  .bs-docs-sidebar .nav > .active > ul {
     display: block;
   }
   /* Widen the fixed sidebar */
-  .bs-sidebar.affix,
-  .bs-sidebar.affix-bottom {
+  .bs-docs-sidebar.affix,
+  .bs-docs-sidebar.affix-bottom {
     width: 213px;
   }
-  .bs-sidebar.affix {
+  .bs-docs-sidebar.affix {
     position: fixed; /* Undo the static from mobile first approach */
     top: 20px;
   }
-  .bs-sidebar.affix-bottom {
+  .bs-docs-sidebar.affix-bottom {
     position: absolute; /* Undo the static from mobile first approach */
   }
-  .bs-sidebar.affix-bottom .bs-sidenav,
-  .bs-sidebar.affix .bs-sidenav {
+  .bs-docs-sidebar.affix-bottom .bs-docs-sidenav,
+  .bs-docs-sidebar.affix .bs-docs-sidenav {
     margin-top: 0;
     margin-bottom: 0;
   }
 }
 @media (min-width: 1200px) {
   /* Widen the fixed sidebar again */
-  .bs-sidebar.affix-bottom,
-  .bs-sidebar.affix {
+  .bs-docs-sidebar.affix-bottom,
+  .bs-docs-sidebar.affix {
     width: 263px;
   }
 }
@@ -1355,7 +1355,7 @@ h1[id] {
   margin-top: 0;
   margin-bottom: 0;
 }
-.bs-brand-item .bs-booticon {
+.bs-brand-item .bs-docs-booticon {
   margin-left: auto;
   margin-right: auto;
 }
