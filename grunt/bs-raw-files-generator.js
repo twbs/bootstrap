@@ -1,4 +1,5 @@
-/* jshint node: true */
+/* global btoa: true */
+
 /*!
  * Bootstrap Grunt task for generating raw-files.min.js for the Customizer
  * http://getbootstrap.com
@@ -6,7 +7,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-var btoa = require('btoa') // jshint ignore:line
+var btoa = require('btoa')
 var fs = require('fs')
 
 function getFiles(type) {

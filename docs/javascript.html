@@ -15,8 +15,13 @@ lead: "Bring Bootstrap's components to life with over a dozen custom jQuery plug
   <p>Plugins can be included individually (using Bootstrap's individual <code>*.js</code> files), or all at once (using <code>bootstrap.js</code> or the minified <code>bootstrap.min.js</code>).</p>
 
   <div class="bs-callout bs-callout-danger">
-    <h4>Do not attempt to include both.</h4>
-    <p>Both <code>bootstrap.js</code> and <code>bootstrap.min.js</code> contain all plugins in a single file.</p>
+    <h4>Using the compiled JavaScript</h4>
+    <p>Both <code>bootstrap.js</code> and <code>bootstrap.min.js</code> contain all plugins in a single file. Include only one.</p>
+  </div>
+
+  <div class="bs-callout bs-callout-danger">
+    <h4>Component data attributes</h4>
+    <p>Don't mix data attributes from separate plugins on the same component. For example, a button cannot have a tooltip and toggle a modal. To accomplish this, use a wrapping element.</p>
   </div>
 
   <div class="bs-callout bs-callout-danger">
@@ -561,6 +566,7 @@ $('.dropdown-toggle').dropdown()
   <p>Toggles the dropdown menu of a given navbar or tabbed navigation.</p>
 
   <h3>Events</h3>
+  <p>All dropdown events are fired at the <code>.dropdown-menu</code>'s parent element.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
       <thead>
@@ -1438,10 +1444,10 @@ $('#my-alert').bind('closed.bs.alert', function () {
 </button>
 <script>
   $('#loading-example-btn').click(function () {
-    var btn = $(this);
-    btn.button('loading');
+    var btn = $(this)
+    btn.button('loading')
     $.ajax(...).always(function () {
-      btn.button('reset');
+      btn.button('reset')
     });
   });
 </script>
@@ -1546,10 +1552,10 @@ $('.btn').button()
 <button id="loading-example-btn" type="button" class="btn btn-primary" data-loading-text="loading stuff...">...</button>
 <script>
   $('#loading-example-btn').click(function () {
-    var btn = $(this);
-    btn.button('loading');
+    var btn = $(this)
+    btn.button('loading')
     $.ajax(...).always(function () {
-      btn.button('reset');
+      btn.button('reset')
     });
   });
 </script>

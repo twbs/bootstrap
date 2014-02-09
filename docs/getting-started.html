@@ -369,7 +369,7 @@ bootstrap/
   <p class="lead">Bootstrap is built to work best in the latest desktop and mobile browsers, meaning older browsers might display differently styled, though fully functional, renderings of certain components.</p>
 
   <h3 id="support-browsers">Supported browsers</h3>
-  <p>Specifically, we support the <strong>latest versions</strong> of the following browsers and platforms:</p>
+  <p>Specifically, we support the <strong>latest versions</strong> of the following browsers and platforms. On Windows, <strong>we support Internet Explorer 8-11</strong>. More specific support information is provided below.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
       <thead>
@@ -543,10 +543,10 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
   <p>On <code>&lt;select&gt;</code> elements, the Android stock browser will not display the side controls if there is a <code>border-radius</code> and/or <code>border</code> applied. Use the snippet of code below to remove the offending CSS and render the <code>&lt;select&gt;</code> as an unstyled element on the Android stock browser. The user agent sniffing avoids interference with Chrome, Safari, and Mozilla browsers.</p>
 {% highlight html %}
 <script>
-var nua = navigator.userAgent;
-var isAndroid = (nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1 && nua.indexOf('Chrome') === -1);
+var nua = navigator.userAgent
+var isAndroid = (nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1 && nua.indexOf('Chrome') === -1)
 if (isAndroid) {
-  $('select.form-control').removeClass('form-control').css('width', '100%');
+  $('select.form-control').removeClass('form-control').css('width', '100%')
 }
 </script>
 {% endhighlight %}
@@ -769,6 +769,7 @@ if (isAndroid) {
     <li><a href="http://www.oneskyapp.com/docs/bootstrap/ru">Bootstrap по-русски (Russian)</a></li>
     <li><a href="http://www.oneskyapp.com/docs/bootstrap/es">Bootstrap en Español (Spanish)</a></li>
     <li><a href="http://twbs.site-konstruktor.com.ua">Bootstrap ua Українською (Ukrainian)</a></li>
+    <li><a href="http://bootstrapk.com/BS3/">Bootstrap 한국어 (Korean)</a></li>
   </ul>
   <p>Have another language to add, or perhaps a different or better translation? Let us know by <a href="https://github.com/twbs/bootstrap/issues/new">opening an issue</a>.</p>
 </div>
