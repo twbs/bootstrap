@@ -261,7 +261,8 @@
       }
     }
 
-    &.navbar-right:last-child {
+    .navbar > .container &.navbar-right:last-child,
+    .navbar > .container-fluid &.navbar-right:last-child {
       margin-right: -@navbar-padding-horizontal;
     }
   }
