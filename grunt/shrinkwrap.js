@@ -1,3 +1,9 @@
+/*!
+ * Bootstrap Grunt task for generating npm-shrinkwrap.canonical.json
+ * http://getbootstrap.com
+ * Copyright 2014 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
 /*
 This Grunt task updates the npm-shrinkwrap.canonical.json file that's used as the key for Bootstrap's npm packages cache.
 This task should be run and the updated file should be committed whenever Bootstrap's dependencies change.
