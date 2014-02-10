@@ -233,10 +233,10 @@ module.exports = function (grunt) {
         }
       },
       examples: {
-          expand: true,
-          cwd: 'docs/examples/',
-          src: ['**/*.css'],
-          dest: 'docs/examples/'
+        expand: true,
+        cwd: 'docs/examples/',
+        src: ['**/*.css'],
+        dest: 'docs/examples/'
       }
     },
 
