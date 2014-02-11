@@ -171,7 +171,16 @@ blockquote{
     }
   }
   &.row-pinned{
-    background-color:@brand-highlight;
+    background-color: #FEF9DE;
+    @media (min-width: @screen-sm-min) {
+      padding: 6px 12px !important;
+    }
+    @media (min-width: @screen-md-min) {
+      padding: 6px 0px !important;
+    }
+  }
+  &.row-deleted{
+    background-color: #FEE9DE;
   }
 }
 .list-collection-row-icon{
