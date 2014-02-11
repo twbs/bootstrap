@@ -38,6 +38,10 @@ def bootstrap_form_wizard(form, submit_value):
 def form_verb(obj):
     return "Update" if obj else "Add"
 
+@register.filter
+def alt_form_verb(obj):
+    return "Edit" if obj else "Create"
+
 
 @register.simple_tag
 def label(text, taskstate=None):
