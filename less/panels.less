@@ -18,6 +18,37 @@
   &:extend(.clearfix all);
 }
 
+// Optional heading
+.panel-heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  .border-top-radius((@panel-border-radius - 1));
+
+  > .dropdown .dropdown-toggle {
+    color: inherit;
+  }
+}
+
+// Within heading, strip any `h*` tag of its default margins for spacing.
+.panel-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: ceil((@font-size-base * 1.125));
+  color: inherit;
+
+  > a {
+    color: inherit;
+  }
+}
+
+// Optional footer (stays gray in every modifier class)
+.panel-footer {
+  padding: 10px 15px;
+  background-color: @panel-footer-bg;
+  border-top: 1px solid @panel-inner-border;
+  .border-bottom-radius((@panel-border-radius - 1));
+}
+
 
 // List groups in panels
 //
@@ -27,25 +58,23 @@
 .panel {
   > .list-group {
     margin-bottom: 0;
+
     .list-group-item {
       border-width: 1px 0;
       border-radius: 0;
-      &:first-child {
-        border-top: 0;
-      }
-      &:last-child {
-        border-bottom: 0;
-      }
     }
+
     // Add border top radius for first one
     &:first-child {
       .list-group-item:first-child {
+        border-top: 0;
         .border-top-radius((@panel-border-radius - 1));
       }
     }
     // Add border bottom radius for last one
     &:last-child {
       .list-group-item:last-child {
+        border-bottom: 0;
         .border-bottom-radius((@panel-border-radius - 1));
       }
     }
@@ -72,6 +101,8 @@
   // Add border top radius for first one
   > .table:first-child,
   > .table-responsive:first-child > .table:first-child {
+    .border-top-radius((@panel-border-radius - 1));
+
     > thead:first-child,
     > tbody:first-child {
       > tr:first-child {
@@ -89,6 +120,8 @@
   // Add border bottom radius for last one
   > .table:last-child,
   > .table-responsive:last-child > .table:last-child {
+    .border-bottom-radius((@panel-border-radius - 1));
+
     > tbody:last-child,
     > tfoot:last-child {
       > tr:last-child {
@@ -126,12 +159,22 @@
         > td:last-child {
           border-right: 0;
         }
-        &:first-child > th,
-        &:first-child > td {
-          border-top: 0;
+      }
+    }
+    > thead,
+    > tbody {
+      > tr:first-child {
+        > td,
+        > th {
+          border-bottom: 0;
         }
-        &:last-child > th,
-        &:last-child > td {
+      }
+    }
+    > tbody,
+    > tfoot {
+      > tr:last-child {
+        > td,
+        > th {
           border-bottom: 0;
         }
       }
@@ -141,38 +184,6 @@
     border: 0;
     margin-bottom: 0;
   }
-}
-
-
-// Optional heading
-.panel-heading {
-  padding: 10px 15px;
-  border-bottom: 1px solid transparent;
-  .border-top-radius((@panel-border-radius - 1));
-
-  > .dropdown .dropdown-toggle {
-    color: inherit;
-  }
-}
-
-// Within heading, strip any `h*` tag of its default margins for spacing.
-.panel-title {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: ceil((@font-size-base * 1.125));
-  color: inherit;
-
-  > a {
-    color: inherit;
-  }
-}
-
-// Optional footer (stays gray in every modifier class)
-.panel-footer {
-  padding: 10px 15px;
-  background-color: @panel-footer-bg;
-  border-top: 1px solid @panel-inner-border;
-  .border-bottom-radius((@panel-border-radius - 1));
 }
 
 

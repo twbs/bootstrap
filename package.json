@@ -1,7 +1,7 @@
 {
   "name": "bootstrap",
   "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development.",
-  "version": "3.0.3",
+  "version": "3.1.0",
   "keywords": [
     "bootstrap",
     "css"
@@ -11,6 +11,8 @@
   "scripts": {
     "test": "grunt test"
   },
+  "style": "./dist/css/bootstrap.css",
+  "less": "./less/bootstrap.less",
   "repository": {
     "type": "git",
     "url": "https://github.com/twbs/bootstrap.git"
@@ -18,14 +20,12 @@
   "bugs": {
     "url": "https://github.com/twbs/bootstrap/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/twbs/bootstrap/blob/master/LICENSE"
-    }
-  ],
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/twbs/bootstrap/blob/master/LICENSE"
+  },
   "devDependencies": {
-    "browserstack-runner": "~0.0.15",
+    "browserstack-runner": "~0.1.0",
     "btoa": "~1.1.1",
     "canonical-json": "~0.0.3",
     "grunt": "~0.4.2",
@@ -47,7 +47,7 @@
     "grunt-html-validation": "~0.1.13",
     "grunt-jekyll": "~0.4.1",
     "grunt-jscs-checker": "~0.3.0",
-    "grunt-saucelabs": "~4.1.2",
+    "grunt-saucelabs": "~5.0.0",
     "grunt-sed": "~0.1.1",
     "load-grunt-tasks": "~0.3.0",
     "markdown": "~0.5.0"

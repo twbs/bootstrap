@@ -19,8 +19,12 @@
   .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base);
   .user-select(none);
 
-  &:focus {
-    .tab-focus();
+  &,
+  &:active,
+  &.active {
+    &:focus {
+      .tab-focus();
+    }
   }
 
   &:hover,
@@ -43,7 +47,6 @@
     pointer-events: none; // Future-proof disabling of clicks
     .opacity(.65);
     .box-shadow(none);
-    opacity: 1; // iOS fix for unreadable disabled content
   }
 }
 

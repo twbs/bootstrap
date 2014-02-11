@@ -821,15 +821,6 @@ lead: "Over a dozen reusable components built to provide iconography, dropdowns,
 </div>
 {% endhighlight %}
 
-  <div class="bs-callout bs-callout-warning">
-    <h4>Tooltips &amp; popovers in input groups require special setting</h4>
-    <p>When using tooltips or popovers on elements within an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).</p>
-  </div>
-  <div class="bs-callout bs-callout-warning">
-    <h4>Don't mix with other components</h4>
-    <p>Do not mix form groups or grid column classes directly with input groups. Instead, nest the input group inside of the form group or grid-related element.</p>
-  </div>
-
   <h2 id="input-groups-sizing">Sizing</h2>
   <p>Add the relative form sizing classes to the <code>.input-group</code> itself and contents within will automatically resize—no need for repeating the form control size classes on each element.</p>
   <form class="bs-example bs-example-form" role="form">
@@ -1149,7 +1140,7 @@ lead: "Over a dozen reusable components built to provide iconography, dropdowns,
   <p>Easily make tabs or pills equal widths of their parent at screens wider than 768px with <code>.nav-justified</code>. On smaller screens, the nav links are stacked.</p>
   <div class="bs-callout bs-callout-warning">
     <h4>Safari and responsive justified navs</h4>
-    <p>Safari exhibits a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing. This bug is also shown in the <a href="../examples/justified-nav/">justified nav example</a>.</p>
+    <p>As of v7.0.1, Safari exhibits a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing. This bug is also shown in the <a href="../examples/justified-nav/">justified nav example</a>.</p>
   </div>
   <div class="bs-example">
     <ul class="nav nav-tabs nav-justified">
@@ -1583,7 +1574,7 @@ lead: "Over a dozen reusable components built to provide iconography, dropdowns,
   <div class="bs-callout bs-callout-danger">
     <h4>Body padding required</h4>
     <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the top of the <code>&lt;body&gt;</code>. Try out your own values or use our snippet below. Tip: By default, the navbar is 50px high.</p>
-{% highlight css %}
+{% highlight scss %}
 body { padding-top: 70px; }
 {% endhighlight %}
     <p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
@@ -1627,7 +1618,7 @@ body { padding-top: 70px; }
   <div class="bs-callout bs-callout-danger">
     <h4>Body padding required</h4>
     <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the bottom of the <code>&lt;body&gt;</code>. Try out your own values or use our snippet below. Tip: By default, the navbar is 50px high.</p>
-{% highlight css %}
+{% highlight scss %}
 body { padding-bottom: 70px; }
 {% endhighlight %}
     <p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
@@ -2272,6 +2263,23 @@ body { padding-bottom: 70px; }
 </div>
 {% endhighlight %}
 
+  <h3 id="progress-label">With label</h3>
+  <p>Remove the <code>.sr-only</code> class from within the progress bar to show a visible percentage. For low percentages, consider adding a <code>min-width</code> to ensure the label's text is fully visible.</p>
+  <div class="bs-example">
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+        60%
+      </div>
+    </div>
+  </div>
+{% highlight html %}
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+    60%
+  </div>
+</div>
+{% endhighlight %}
+
   <h3 id="progress-alternatives">Contextual alternatives</h3>
   <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
   <div class="bs-example">
@@ -2367,7 +2375,7 @@ body { padding-bottom: 70px; }
 {% endhighlight %}
 
   <h3 id="progress-animated">Animated</h3>
-  <p>Add <code>.active</code> to <code>.progress-striped</code> to animate the stripes right to left. Not available in all versions of IE.</p>
+  <p>Add <code>.active</code> to <code>.progress-striped</code> to animate the stripes right to left. Not available in IE9 and below.</p>
   <div class="bs-example">
     <div class="progress progress-striped active">
       <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%"><span class="sr-only">45% Complete</span></div>

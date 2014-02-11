@@ -5,11 +5,11 @@
     browserName: "safari",
     platform: "OS X 10.9"
   },
-  {
-    browserName: "chrome",
-    platform: "OS X 10.9",
-    version: "31"
-  },
+  # {
+  #   browserName: "googlechrome",
+  #   platform: "OS X 10.9",
+  #   version: "31"
+  # },
   {
     browserName: "firefox",
     platform: "OS X 10.9"
@@ -45,7 +45,7 @@
   # },
 
   {
-    browserName: "chrome",
+    browserName: "googlechrome",
     platform: "Windows 8.1"
   },
   {
@@ -65,7 +65,7 @@
 
   # Linux (unofficial)
   {
-    browserName: "chrome",
+    browserName: "googlechrome",
     platform: "Linux"
   },
   {

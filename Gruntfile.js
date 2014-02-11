@@ -1,4 +1,3 @@
-/* jshint node: true */
 /*!
  * Bootstrap's Gruntfile
  * http://getbootstrap.com
@@ -18,10 +17,10 @@ module.exports = function (grunt) {
 
   var fs = require('fs');
   var path = require('path');
-  var generateGlyphiconsData = require('./docs/grunt/bs-glyphicons-data-generator.js');
-  var BsLessdocParser = require('./docs/grunt/bs-lessdoc-parser.js');
-  var generateRawFilesJs = require('./docs/grunt/bs-raw-files-generator.js');
-  var updateShrinkwrap = require('./test-infra/shrinkwrap.js');
+  var generateGlyphiconsData = require('./grunt/bs-glyphicons-data-generator.js');
+  var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
+  var generateRawFilesJs = require('./grunt/bs-raw-files-generator.js');
+  var updateShrinkwrap = require('./grunt/shrinkwrap.js');
 
   // Project configuration.
   grunt.initConfig({
@@ -29,21 +28,15 @@ module.exports = function (grunt) {
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*!\n' +
-              ' * Bootstrap v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
-              ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-              ' * Licensed under <%= _.pluck(pkg.licenses, "type") %> (<%= _.pluck(pkg.licenses, "url") %>)\n' +
-              ' */\n',
-    bannerDocs: '/*!\n' +
-              ' * Bootstrap Docs (<%= pkg.homepage %>)\n' +
-              ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-              ' * Licensed under the Creative Commons Attribution 3.0 Unported License. For\n' +
-              ' * details, see http://creativecommons.org/licenses/by/3.0/.\n' +
-              ' */\n',
-    jqueryCheck: 'if (typeof jQuery === \'undefined\') { throw new Error(\'Bootstrap requires jQuery\') }\n\n',
+            ' * Bootstrap v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
+            ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
+            ' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n' +
+            ' */\n',
+    jqueryCheck: 'if (typeof jQuery === \'undefined\') { throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery\') }\n\n',
 
     // Task configuration.
     clean: {
-      dist: 'dist'
+      dist: ['dist', 'docs/dist']
     },
 
     jshint: {
@@ -51,7 +44,10 @@ module.exports = function (grunt) {
         jshintrc: 'js/.jshintrc'
       },
       grunt: {
-        src: ['Gruntfile.js', 'docs/grunt/*.js', 'test-infra/shrinkwrap.js']
+        options: {
+          jshintrc: 'grunt/.jshintrc'
+        },
+        src: ['Gruntfile.js', 'grunt/*.js']
       },
       src: {
         src: 'js/*.js'
@@ -69,7 +65,7 @@ module.exports = function (grunt) {
         config: 'js/.jscs.json',
       },
       grunt: {
-        src: ['Gruntfile.js', 'docs/grunt/*.js', 'test-infra/shrinkwrap.js']
+        src: ['Gruntfile.js', 'grunt/*.js']
       },
       src: {
         src: 'js/*.js'
@@ -89,7 +85,8 @@ module.exports = function (grunt) {
       src: [
         'dist/css/bootstrap.css',
         'dist/css/bootstrap-theme.css',
-        'docs/assets/css/docs.css'
+        'docs/assets/css/docs.css',
+        'docs/examples/**/*.css'
       ]
     },
 
@@ -118,18 +115,19 @@ module.exports = function (grunt) {
     },
 
     uglify: {
+      options: {
+        report: 'min'
+      },
       bootstrap: {
         options: {
-          banner: '<%= banner %>',
-          report: 'min'
+          banner: '<%= banner %>'
         },
         src: '<%= concat.bootstrap.dest %>',
         dest: 'dist/js/<%= pkg.name %>.min.js'
       },
       customize: {
         options: {
-          preserveComments: 'some',
-          report: 'min'
+          preserveComments: 'some'
         },
         src: [
           'docs/assets/js/vendor/less.min.js',
@@ -144,8 +142,7 @@ module.exports = function (grunt) {
       },
       docsJs: {
         options: {
-          preserveComments: 'some',
-          report: 'min'
+          preserveComments: 'some'
         },
         src: [
           'docs/assets/js/vendor/holder.js',
@@ -204,7 +201,7 @@ module.exports = function (grunt) {
           'docs/assets/css/docs.css',
           'docs/assets/css/pygments-manni.css'
         ],
-        dest: 'docs/assets/css/pack.min.css'
+        dest: 'docs/assets/css/docs.min.css'
       }
     },
 
@@ -219,21 +216,27 @@ module.exports = function (grunt) {
             'dist/css/<%= pkg.name %>.css',
             'dist/css/<%= pkg.name %>.min.css',
             'dist/css/<%= pkg.name %>-theme.css',
-            'dist/css/<%= pkg.name %>-theme.min.css',
+            'dist/css/<%= pkg.name %>-theme.min.css'
           ]
         }
       }
     },
 
     csscomb: {
-      sort: {
-        options: {
-          config: 'less/.csscomb.json'
-        },
+      options: {
+        config: 'less/.csscomb.json'
+      },
+      dist: {
         files: {
           'dist/css/<%= pkg.name %>.css': 'dist/css/<%= pkg.name %>.css',
           'dist/css/<%= pkg.name %>-theme.css': 'dist/css/<%= pkg.name %>-theme.css'
         }
+      },
+      examples: {
+        expand: true,
+        cwd: 'docs/examples/',
+        src: ['**/*.css'],
+        dest: 'docs/examples/'
       }
     },
 
@@ -259,7 +262,7 @@ module.exports = function (grunt) {
       options: {
         inject: 'js/tests/unit/phantom.js'
       },
-      files: 'js/tests/*.html'
+      files: 'js/tests/index.html'
     },
 
     connect: {
@@ -287,8 +290,8 @@ module.exports = function (grunt) {
           }
         },
         files: {
-          'docs/_includes/customizer-variables.html': 'docs/customizer-variables.jade',
-          'docs/_includes/nav-customize.html': 'docs/customizer-nav.jade'
+          'docs/_includes/customizer-variables.html': 'docs/jade/customizer-variables.jade',
+          'docs/_includes/nav-customize.html': 'docs/jade/customizer-nav.jade'
         }
       }
     },
@@ -399,7 +402,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-docs', 'copy:docs');
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean', 'dist-css', 'copy:fonts', 'dist-docs', 'dist-js']);
+  grunt.registerTask('dist', ['clean', 'dist-css', 'copy:fonts', 'dist-js', 'dist-docs']);
 
   // Default task.
   grunt.registerTask('default', ['test', 'dist', 'build-glyphicons-data', 'build-customizer', 'update-shrinkwrap']);

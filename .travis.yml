@@ -26,6 +26,6 @@ env:
     - TWBS_TEST=core
     - TWBS_TEST=validate-html
     - TWBS_TEST=sauce-js-unit
-    - TWBS_TEST=browserstack-js-unit
+#    - TWBS_TEST=browserstack-js-unit
 matrix:
   fast_finish: true

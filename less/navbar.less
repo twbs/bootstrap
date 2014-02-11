@@ -155,17 +155,11 @@
   padding: @navbar-padding-vertical @navbar-padding-horizontal;
   font-size: @font-size-large;
   line-height: @line-height-computed;
+  height: @navbar-height;
 
   &:hover,
   &:focus {
     text-decoration: none;
-  }
-
-  // Prevent Glyphicons from increasing height of navbar
-  > .glyphicon {
-    float: left;
-    margin-top: -2px;
-    margin-right: 5px;
   }
 
   @media (min-width: @grid-float-breakpoint) {

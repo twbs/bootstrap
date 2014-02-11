@@ -30,6 +30,7 @@ lead: "An overview of Bootstrap, how to download and use, basic templates and ex
       <a href="{{ site.download.sass }}" class="btn btn-lg btn-outline" role="button" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download Sass']);">Download Sass</a>
     </div>
   </div>
+  <p class="muted">Currently v{{ site.current_version }}.</p>
 
   <h3 id="download-cdn">Bootstrap CDN</h3>
   <p>The folks over at <a href="http://www.maxcdn.com/">MaxCDN</a> graciously provide CDN support for Bootstrap's CSS and JavaScript. Just use these <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links.</p>
@@ -136,7 +137,7 @@ bootstrap/
     <h1>Hello, world!</h1>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
   </body>
@@ -319,6 +320,7 @@ bootstrap/
   <ul>
     <li>Read and subscribe to <a href="http://blog.getbootstrap.com/">The Official Bootstrap Blog</a>.</li>
     <li>Chat with fellow Bootstrappers using IRC in the <code>irc.freenode.net</code> server, in the <a href="irc://irc.freenode.net/#twitter-bootstrap">##twitter-bootstrap channel</a>.</li>
+    <li>For help using Bootstrap, ask on <a href="http://stackoverflow.com/questions/tagged/twitter-bootstrap-3">StackOverflow using the tag <code>twitter-bootstrap-3</code></a>.</li>
     <li>Find inspiring examples of people building with Bootstrap at the <a href="http://expo.getbootstrap.com">Bootstrap Expo</a>.</li>
   </ul>
   <p>You can also follow <a href="https://twitter.com/twbootstrap">@twbootstrap on Twitter</a> for the latest gossip and awesome music videos.</p>
@@ -368,7 +370,7 @@ bootstrap/
   <p class="lead">Bootstrap is built to work best in the latest desktop and mobile browsers, meaning older browsers might display differently styled, though fully functional, renderings of certain components.</p>
 
   <h3 id="support-browsers">Supported browsers</h3>
-  <p>Specifically, we support the <strong>latest versions</strong> of the following browsers and platforms:</p>
+  <p>Specifically, we support the <strong>latest versions</strong> of the following browsers and platforms. On Windows, <strong>we support Internet Explorer 8-11</strong>. More specific support information is provided below.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
       <thead>
@@ -483,11 +485,11 @@ bootstrap/
 
   <h3 id="support-ie10-width">Internet Explorer 10 in Windows 8 and Windows Phone 8</h3>
   <p>Internet Explorer 10 doesn't differentiate <strong>device width</strong> from <strong>viewport width</strong>, and thus doesn't properly apply the media queries in Bootstrap's CSS. Normally you'd just add a quick snippet of CSS to fix this:</p>
-{% highlight css %}
+{% highlight scss %}
 @-ms-viewport       { width: device-width; }
 {% endhighlight %}
   <p>However, this doesn't work for devices running Windows Phone 8 versions older than <a href="http://blogs.windows.com/windows_phone/b/wpdev/archive/2013/10/14/introducing-windows-phone-preview-for-developers.aspx">Update 3 (a.k.a. GDR3)</a>, as it causes such devices to show a mostly desktop view instead of narrow "phone" view. To address this, you'll need to <strong>include the following CSS and JavaScript to work around the bug</strong>.</p>
-{% highlight css %}
+{% highlight scss %}
 @-webkit-viewport   { width: device-width; }
 @-moz-viewport      { width: device-width; }
 @-ms-viewport       { width: device-width; }
@@ -542,10 +544,10 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
   <p>On <code>&lt;select&gt;</code> elements, the Android stock browser will not display the side controls if there is a <code>border-radius</code> and/or <code>border</code> applied. Use the snippet of code below to remove the offending CSS and render the <code>&lt;select&gt;</code> as an unstyled element on the Android stock browser. The user agent sniffing avoids interference with Chrome, Safari, and Mozilla browsers.</p>
 {% highlight html %}
 <script>
-var nua = navigator.userAgent;
-var isAndroid = (nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1 && nua.indexOf('Chrome') === -1);
+var nua = navigator.userAgent
+var isAndroid = (nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1 && nua.indexOf('Chrome') === -1)
 if (isAndroid) {
-  $('select.form-control').removeClass('form-control').css('width', '100%');
+  $('select.form-control').removeClass('form-control').css('width', '100%')
 }
 </script>
 {% endhighlight %}
@@ -563,7 +565,7 @@ if (isAndroid) {
   <h3 id="third-box-sizing">Box-sizing</h3>
   <p>Some third party software, including Google Maps and Google Custom Search Engine, conflict with Bootstrap due to <code>* { box-sizing: border-box; }</code>, a rule which makes it so <code>padding</code> does not affect the final computed width of an element. Learn more about <a href="http://css-tricks.com/box-sizing/">box model and sizing at CSS Tricks</a>.</p>
   <p>Depending on the context, you may override as-needed (Option 1) or reset the box-sizing for entire regions (Option 2).</p>
-{% highlight css %}
+{% highlight scss %}
 /* Box-sizing resets
  *
  * Reset individual elements or override regions to avoid conflicts due to
@@ -704,7 +706,7 @@ if (isAndroid) {
 
   <p>To implement this, in the custom stylesheet, add the following CSS:</p>
 
-{% highlight css %}
+{% highlight scss %}
 /* Custom button
 -------------------------------------------------- */
 
@@ -765,6 +767,7 @@ if (isAndroid) {
     <li><a href="http://v3.bootcss.com/">Bootstrap 中文文档 (Chinese)</a></li>
     <li><a href="http://www.oneskyapp.com/docs/bootstrap/fr">Bootstrap en Français (French)</a></li>
     <li><a href="http://holdirbootstrap.de/">Bootstrap auf Deutsch (German)</a></li>
+    <li><a href="http://bootstrapk.com/BS3/">Bootstrap 한국어 (Korean)</a></li>
     <li><a href="http://www.oneskyapp.com/docs/bootstrap/ru">Bootstrap по-русски (Russian)</a></li>
     <li><a href="http://www.oneskyapp.com/docs/bootstrap/es">Bootstrap en Español (Spanish)</a></li>
     <li><a href="http://twbs.site-konstruktor.com.ua">Bootstrap ua Українською (Ukrainian)</a></li>
