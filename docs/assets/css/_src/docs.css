@@ -1133,13 +1133,9 @@ h1[id] {
   font-size: inherit;
   color: #333; /* Effectively the base text color */
 }
-.highlight pre .lineno {
+.highlight pre code:first-child {
   display: inline-block;
-  width: 22px;
-  padding-right: 5px;
-  margin-right: 10px;
-  color: #bebec5;
-  text-align: right;
+  padding-right: 45px;
 }
 
 
@@ -1467,35 +1463,37 @@ h1[id] {
           box-shadow: 0 0 8px rgba(82,168,236,.6);
 }
 
+
 /*
  * ZeroClipboard styles
  */
 
 .zero-clipboard {
   position: relative;
+  display: none;
 }
-
 .btn-clipboard {
   position: absolute;
+  top: 0;
   right: 0;
   z-index: 10;
-  padding: 5px 10px;
+  display: block;
+  padding: 5px 8px;
+  font-size: 12px;
+  color: #777;
   cursor: pointer;
-  border-color: #e1e1e8;
-  border-bottom: 1px solid transparent;
-  border-left: 1px solid transparent;
-  border-radius: 0 4px 0 0;
+  background-color: #fff;
+  border: 1px solid #e1e1e8;
+  border-radius: 0 4px 0 4px;
 }
-
-
 .btn-clipboard-hover {
-  background-color: #e1e1e8;
+  color: #fff;
+  background-color: #563d7c;
+  border-color: #563d7c;
 }
 
-@media (max-width: 768px) {
-  .btn-clipboard.with-example {
-    top: 10px;
-    border: 1px solid #e1e1e8;
-    border-radius: 0;
+@media (min-width: 768px) {
+  .zero-clipboard {
+    display: block;
   }
 }
