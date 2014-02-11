@@ -25,7 +25,6 @@
     "url": "https://github.com/twbs/bootstrap/blob/master/LICENSE"
   },
   "devDependencies": {
-    "browserstack-runner": "~0.1.0",
     "btoa": "~1.1.1",
     "canonical-json": "~0.0.3",
     "grunt": "~0.4.2",
