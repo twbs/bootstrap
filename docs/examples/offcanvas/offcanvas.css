@@ -25,6 +25,14 @@ footer {
             transition: all .25s ease-out;
   }
 
+  .row-offcanvas-right {
+    right: 0;
+  }
+
+  .row-offcanvas-left {
+    left: 0;
+  }
+
   .row-offcanvas-right
   .sidebar-offcanvas {
     right: -50%; /* 6 columns */
