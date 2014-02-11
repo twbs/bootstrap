@@ -1068,12 +1068,12 @@
   </div>
   <div class="bs-customizer-input">
     <label for="input-@popover-arrow-outer-color">@popover-arrow-outer-color</label>
-    <input id="input-@popover-arrow-outer-color" type="text" value="rgba(0,0,0,.25)" data-var="@popover-arrow-outer-color" class="form-control"/>
+    <input id="input-@popover-arrow-outer-color" type="text" value="fadein(@popover-border-color, 5%)" data-var="@popover-arrow-outer-color" class="form-control"/>
     <p class="help-block">Popover outer arrow color</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@popover-arrow-outer-fallback-color">@popover-arrow-outer-fallback-color</label>
-    <input id="input-@popover-arrow-outer-fallback-color" type="text" value="#999" data-var="@popover-arrow-outer-fallback-color" class="form-control"/>
+    <input id="input-@popover-arrow-outer-fallback-color" type="text" value="darken(@popover-fallback-border-color, 20%)" data-var="@popover-arrow-outer-fallback-color" class="form-control"/>
     <p class="help-block">Popover outer arrow fallback color</p>
   </div>
 </div>
