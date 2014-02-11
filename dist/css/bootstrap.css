@@ -3359,9 +3359,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .input-group .form-control {
   display: table-cell;
 }
-.input-group-addon:not(:first-child):not(:last-child),
-.input-group-btn:not(:first-child):not(:last-child),
-.input-group .form-control:not(:first-child):not(:last-child) {
+.input-group-addon:not(:first-of-type):not(:last-of-type),
+.input-group-btn:not(:first-of-type):not(:last-of-type),
+.input-group .form-control:not(:first-of-type):not(:last-of-type) {
   border-radius: 0;
 }
 .input-group-addon,
@@ -3395,30 +3395,30 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .input-group-addon input[type="checkbox"] {
   margin-top: 0;
 }
-.input-group .form-control:first-child,
-.input-group-addon:first-child,
-.input-group-btn:first-child > .btn,
-.input-group-btn:first-child > .btn-group > .btn,
-.input-group-btn:first-child > .dropdown-toggle,
-.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
-.input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
+.input-group .form-control:first-of-type,
+.input-group-addon:first-of-type,
+.input-group-btn:first-of-type > .btn,
+.input-group-btn:first-of-type > .btn-group > .btn,
+.input-group-btn:first-of-type > .dropdown-toggle,
+.input-group-btn:last-of-type > .btn:not(:last-of-type):not(.dropdown-toggle),
+.input-group-btn:last-of-type > .btn-group:not(:last-of-type) > .btn {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.input-group-addon:first-child {
+.input-group-addon:first-of-type {
   border-right: 0;
 }
-.input-group .form-control:last-child,
-.input-group-addon:last-child,
-.input-group-btn:last-child > .btn,
-.input-group-btn:last-child > .btn-group > .btn,
-.input-group-btn:last-child > .dropdown-toggle,
-.input-group-btn:first-child > .btn:not(:first-child),
-.input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
+.input-group .form-control:last-of-type,
+.input-group-addon:last-of-type,
+.input-group-btn:last-of-type > .btn,
+.input-group-btn:last-of-type > .btn-group > .btn,
+.input-group-btn:last-of-type > .dropdown-toggle,
+.input-group-btn:first-of-type > .btn:not(:first-of-type),
+.input-group-btn:first-of-type > .btn-group:not(:first-of-type) > .btn {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
-.input-group-addon:last-child {
+.input-group-addon:last-of-type {
   border-left: 0;
 }
 .input-group-btn {
@@ -3437,12 +3437,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .input-group-btn > .btn:active {
   z-index: 2;
 }
-.input-group-btn:first-child > .btn,
-.input-group-btn:first-child > .btn-group {
+.input-group-btn:first-of-type > .btn,
+.input-group-btn:first-of-type > .btn-group {
   margin-right: -1px;
 }
-.input-group-btn:last-child > .btn,
-.input-group-btn:last-child > .btn-group {
+.input-group-btn:last-of-type > .btn,
+.input-group-btn:last-of-type > .btn-group {
   margin-left: -1px;
 }
 .nav {
