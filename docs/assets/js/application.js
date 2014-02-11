@@ -85,7 +85,12 @@
     })
 
     // popover demo
-    $('[data-toggle=popover]').popover()
+    $('.bs-docs-popover').popover()
+
+    // Popover dismiss on next click
+    $('.bs-docs-popover-dismiss').popover({
+      trigger: 'focus'
+    })
 
     // button state demo
     $('#loading-example-btn')
