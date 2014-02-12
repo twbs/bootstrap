@@ -131,7 +131,7 @@ module.exports = function (grunt) {
         },
         src: [
           'docs/assets/js/vendor/less.min.js',
-          'docs/assets/js/vendor/jszip.js',
+          'docs/assets/js/vendor/jszip.min.js',
           'docs/assets/js/vendor/uglify.min.js',
           'docs/assets/js/vendor/blob.js',
           'docs/assets/js/vendor/filesaver.js',
