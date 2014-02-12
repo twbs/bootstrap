@@ -2073,11 +2073,11 @@ $('#myCarousel').on('slide.bs.carousel', function () {
   <h3>Via JavaScript</h3>
   <p>Call the affix plugin via JavaScript:</p>
 {% highlight js %}
-  $('#myAffix').affix({
+  $('#my-affix').affix({
     offset: {
       top: 100
     , bottom: function () {
-        return (this.bottom = $('.bs-footer').outerHeight(true))
+        return (this.bottom = $('.footer').outerHeight(true))
       }
     }
   })
