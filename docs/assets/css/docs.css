@@ -42,7 +42,7 @@
  */
 
 body {
-  position: relative; /* For scrollyspy */
+  position: relative; /* For scrollspy */
 }
 
 /* Keep code small in tables on account of limited space */
