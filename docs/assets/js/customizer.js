@@ -338,7 +338,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
                  However, if you check your downloads folder, just rename this <code>"untitled"</code> file\
                  to <code>"bootstrap.zip"</code> and you should be good to go!')
   } else if (!window.URL && !window.webkitURL) {
-    $('.bs-docs-section, .bs-sidebar').css('display', 'none')
+    $('.bs-docs-section, .bs-docs-sidebar').css('display', 'none')
 
     showCallout('Looks like your current browser doesn\'t support the Bootstrap Customizer. Please take a second\
                  to <a href="https://www.google.com/intl/en/chrome/browser/"> upgrade to a more modern browser</a>.', true)
