@@ -87,8 +87,15 @@
   font-family:@font-family-serif;
   text-rendering: optimizeLegibility;
   line-height:@line-height-computed;
-  word-break: break-all;
-  word-break: break-word; // non-standard
+
+  -ms-word-break: break-all;
+  -ms-word-wrap: break-all;
+  -webkit-word-break: break-word;
+  -webkit-word-wrap: break-word;
+  word-break: break-word;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
   hyphens: auto;
 
   img{
