@@ -42,7 +42,7 @@
     "grunt-contrib-uglify": "~0.3.0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-csscomb": "~2.0.1",
-    "grunt-exec": "0.4.3",
+    "grunt-exec": "~0.4.5",
     "grunt-html-validation": "~0.1.13",
     "grunt-jekyll": "~0.4.1",
     "grunt-jscs-checker": "~0.3.0",
