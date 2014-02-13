@@ -6,8 +6,6 @@
  * details, see http://creativecommons.org/licenses/by/3.0/.
  */
 
-/* jshint multistr: true */
-
 window.onload = function () { // wait for load in a dumb way because B-0
   var cw = '/*!\n' +
            ' * Bootstrap v3.1.0 (http://getbootstrap.com)\n' +
@@ -16,21 +14,21 @@ window.onload = function () { // wait for load in a dumb way because B-0
            ' */\n\n'
 
   function showError(msg, err) {
-    $('<div id="bsCustomizerAlert" class="bs-customizer-alert">\
-        <div class="container">\
-          <a href="#bsCustomizerAlert" data-dismiss="alert" class="close pull-right">&times;</a>\
-          <p class="bs-customizer-alert-text"><span class="glyphicon glyphicon-warning-sign"></span>' + msg + '</p>' +
-          (err.extract ? '<pre class="bs-customizer-alert-extract">' + err.extract.join('\n') + '</pre>' : '') + '\
-        </div>\
-      </div>').appendTo('body').alert()
+    $('<div id="bsCustomizerAlert" class="bs-customizer-alert">' +
+        '<div class="container">' +
+          '<a href="#bsCustomizerAlert" data-dismiss="alert" class="close pull-right">&times;</a>' +
+          '<p class="bs-customizer-alert-text"><span class="glyphicon glyphicon-warning-sign"></span>' + msg + '</p>' +
+          (err.extract ? '<pre class="bs-customizer-alert-extract">' + err.extract.join('\n') + '</pre>' : '') +
+        '</div>' +
+      '</div>').appendTo('body').alert()
     throw err
   }
 
   function showCallout(msg, showUpTop) {
-    var callout = $('<div class="bs-callout bs-callout-danger">\
-       <h4>Attention!</h4>\
-      <p>' + msg + '</p>\
-    </div>')
+    var callout = $('<div class="bs-callout bs-callout-danger">' +
+       '<h4>Attention!</h4>' +
+      '<p>' + msg + '</p>' +
+    '</div>')
 
     if (showUpTop) {
       callout.appendTo('.bs-docs-container')
@@ -333,15 +331,15 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
   // browser support alerts
   if (!window.URL && navigator.userAgent.toLowerCase().indexOf('safari') != -1) {
-    showCallout('Looks like you\'re using safari, which sadly doesn\'t have the best support\
-                 for HTML5 blobs. Because of this your file will be downloaded with the name <code>"untitled"</code>.\
-                 However, if you check your downloads folder, just rename this <code>"untitled"</code> file\
-                 to <code>"bootstrap.zip"</code> and you should be good to go!')
+    showCallout('Looks like you\'re using safari, which sadly doesn\'t have the best support' +
+                 'for HTML5 blobs. Because of this your file will be downloaded with the name <code>"untitled"</code>.' +
+                 'However, if you check your downloads folder, just rename this <code>"untitled"</code> file' +
+                 'to <code>"bootstrap.zip"</code> and you should be good to go!')
   } else if (!window.URL && !window.webkitURL) {
     $('.bs-docs-section, .bs-docs-sidebar').css('display', 'none')
 
-    showCallout('Looks like your current browser doesn\'t support the Bootstrap Customizer. Please take a second\
-                 to <a href="https://www.google.com/intl/en/chrome/browser/"> upgrade to a more modern browser</a>.', true)
+    showCallout('Looks like your current browser doesn\'t support the Bootstrap Customizer. Please take a second' +
+                 'to <a href="https://www.google.com/intl/en/chrome/browser/">upgrade to a more modern browser</a>.', true)
   }
 
   parseUrl()
