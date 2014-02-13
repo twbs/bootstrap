@@ -1,4 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Bootstrap, a sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.">
+<meta name="keywords" content="HTML, CSS, JS, JavaScript, framework, bootstrap, front-end, frontend, web development">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 
+<title>
+  
+    Customize and download &middot; Bootstrap
+  
+</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Documentation extras -->
+<link href="../assets/css/docs.min.css" rel="stylesheet">
+<!--[if lt IE 9]><script src="../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<!-- Favicons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+                               <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-146052-10']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <a class="sr-only" href="#content">Skip to main content</a>
+
+    <!-- Docs master nav -->
+    <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="../" class="navbar-brand">Bootstrap</a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="../getting-started">Getting started</a>
+        </li>
+        <li>
+          <a href="../css">CSS</a>
+        </li>
+        <li>
+          <a href="../components">Components</a>
+        </li>
+        <li>
+          <a href="../javascript">JavaScript</a>
+        </li>
+        <li class="active">
+          <a href="../customize">Customize</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://expo.getbootstrap.com" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Expo']);">Expo</a></li>
+        <li><a href="http://blog.getbootstrap.com" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Blog']);">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <!-- Docs page layout -->
+    <div class="bs-docs-header" id="content">
+      <div class="container">
+        <h1>Customize and download</h1>
+        <p>Customize Bootstrap's components, Less variables, and jQuery plugins to get your very own version.</p>
+        <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script>var z = document.createElement("script"); z.async = true; z.src = "http://engine.carbonads.com/z/32341/azcarbon_2_1_0_HORIZ"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script></div></div>
+
+      </div>
+    </div>
+
+    <div class="container bs-docs-container">
+
+      <div class="row">
+        <div class="col-md-9" role="main">
+          <!-- Customizer form -->
+<form class="bs-customizer" role="form">
+  <div class="bs-docs-section" id="less-section">
+    <button class="btn btn-default toggle" type="button">Toggle all</button>
+    <h1 id="less" class="page-header">Less files</h1>
+
+    <p class="lead">Choose which Less files to compile into your custom build of Bootstrap. Not sure which files to use? Read through the <a href="../css/">CSS</a> and <a href="../components/">Components</a> pages in the docs.</p>
+
+    <div class="row">
+      <div class="col-xs-6 col-sm-4">
+        <h3>Common CSS</h3>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="print.less">
+            Print media styles
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="type.less">
+            Typography
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="code.less">
+            Code
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="grid.less">
+            Grid system
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="tables.less">
+            Tables
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="forms.less" data-dependents="navbar.less,input-groups.less">
+            Forms
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="buttons.less" data-dependents="button-groups.less">
+            Buttons
+          </label>
+        </div>
+      </div><!-- .col-xs-6 .col-sm-4 -->
+
+      <div class="col-xs-6 col-sm-4">
+        <h3>Components</h3>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="glyphicons.less">
+            Glyphicons
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="button-groups.less" data-dependencies="buttons.less">
+            Button groups
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="input-groups.less" data-dependencies="forms.less">
+            Input groups
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="navs.less" data-dependents="navbar.less">
+            Navs
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="navbar.less" data-dependencies="forms.less,utilities.less,navs.less">
+            Navbar
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="breadcrumbs.less">
+            Breadcrumbs
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="pagination.less">
+            Pagination
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="pager.less">
+            Pager
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="labels.less">
+            Labels
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="badges.less">
+            Badges
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="jumbotron.less">
+            Jumbotron
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="thumbnails.less">
+            Thumbnails
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="alerts.less">
+            Alerts
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="progress-bars.less">
+            Progress bars
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="media.less">
+            Media items
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="list-group.less">
+            List groups
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="panels.less">
+            Panels
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="wells.less">
+            Wells
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="close.less">
+            Close icon
+          </label>
+        </div>
+      </div><!-- .col-xs-6 .col-sm-4 -->
+
+      <div class="col-xs-6 col-sm-4">
+        <h3>JavaScript components</h3>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="component-animations.less">
+            Component animations (for JS)
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="dropdowns.less">
+            Dropdowns
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="tooltip.less">
+            Tooltips
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="popovers.less">
+            Popovers
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="modals.less">
+            Modals
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="carousel.less">
+            Carousel
+          </label>
+        </div>
+
+        <h3>Utilities</h3>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="utilities.less" data-dependents="navbar.less">
+            Basic utilities
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="responsive-utilities.less">
+            Responsive utilities
+          </label>
+        </div>
+      </div><!-- .col-xs-6 .col-sm-4 -->
+    </div><!-- /.row -->
+  </div>
+
+
+
+  <div class="bs-docs-section" id="plugin-section">
+    <button class="btn btn-default toggle" type="button">Toggle all</button>
+    <h1 id="plugins" class="page-header">jQuery plugins</h1>
+
+    <p class="lead">Choose which jQuery plugins should be included in your custom JavaScript files. Unsure what to include? Read the <a href="../javascript/">JavaScript</a> page in the docs.</p>
+    <div class="row">
+      <div class="col-lg-6">
+        <h4>Linked to components</h4>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="alert.js">
+            Alert dismissal
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="button.js">
+            Advanced buttons
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="carousel.js">
+            Carousel functionality
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="dropdown.js">
+            Dropdowns
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="modal.js">
+            Modals
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="tooltip.js">
+            Tooltips
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="popover.js" data-dependencies="tooltip.js">
+            Popovers <small>(requires Tooltips)</small>
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="tab.js">
+            Togglable tabs
+          </label>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <h4>Magic</h4>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="affix.js">
+            Affix
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="collapse.js">
+            Collapse
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="scrollspy.js">
+            Scrollspy
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked value="transition.js">
+            Transitions <small>(required for any kind of animation)</small>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="bs-callout bs-callout-info">
+      <h4>Produces two files</h4>
+      <p>All checked plugins will be compiled into a readable <code>bootstrap.js</code> and a minified <code>bootstrap.min.js</code>. We recommend you use the minified version in production.</p>
+    </div>
+
+    <div class="bs-callout bs-callout-danger">
+      <h4>jQuery required</h4>
+      <p>All plugins require the latest version of <a href="http://jquery.com/" target="_blank">jQuery</a> to be included.</p>
+    </div>
+  </div>
+
+
+
+  <div class="bs-docs-section" id="less-variables-section">
+    <button class="btn btn-default toggle" type="button">Reset to defaults</button>
+    <h1 id="less-variables" class="page-header">Less variables</h1>
+
+    <p class="lead">Customize Less variables to define colors, sizes and more inside your custom CSS stylesheets.</p>
+    
 <!-- NOTE: DO NOT EDIT THE FOLLOWING SECTION DIRECTLY! It is autogenerated via the `build-customizer-html` Grunt task using the customizer-variables.jade template.-->
 <h2 id="colors">Colors</h2>
 <p>Gray and brand colors for use across Bootstrap.</p>
@@ -572,6 +1009,37 @@
     <p class="help-block">Point at which the navbar begins collapsing.</p>
   </div>
 </div>
+<h2 id="container-sizes">Container sizes</h2>
+<p>Define the maximum width of <code>.container</code> for different screen sizes.</p>
+<div class="row">
+  <div class="bs-customizer-input">
+    <label for="input-@container-tablet">@container-tablet</label>
+    <input id="input-@container-tablet" type="text" value="((720px + @grid-gutter-width))" data-var="@container-tablet" class="form-control"/>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@container-sm">@container-sm</label>
+    <input id="input-@container-sm" type="text" value="@container-tablet" data-var="@container-sm" class="form-control"/>
+    <p class="help-block">For <code>@screen-sm-min</code> and up.</p>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@container-desktop">@container-desktop</label>
+    <input id="input-@container-desktop" type="text" value="((940px + @grid-gutter-width))" data-var="@container-desktop" class="form-control"/>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@container-md">@container-md</label>
+    <input id="input-@container-md" type="text" value="@container-desktop" data-var="@container-md" class="form-control"/>
+    <p class="help-block">For <code>@screen-md-min</code> and up.</p>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@container-large-desktop">@container-large-desktop</label>
+    <input id="input-@container-large-desktop" type="text" value="((1140px + @grid-gutter-width))" data-var="@container-large-desktop" class="form-control"/>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@container-lg">@container-lg</label>
+    <input id="input-@container-lg" type="text" value="@container-large-desktop" data-var="@container-lg" class="form-control"/>
+    <p class="help-block">For <code>@screen-lg-min</code> and up.</p>
+  </div>
+</div>
 <h2 id="navbar">Navbar</h2>
 <p></p>
 <div class="row">
@@ -1037,12 +1505,12 @@
   </div>
   <div class="bs-customizer-input">
     <label for="input-@popover-arrow-outer-color">@popover-arrow-outer-color</label>
-    <input id="input-@popover-arrow-outer-color" type="text" value="rgba(0,0,0,.25)" data-var="@popover-arrow-outer-color" class="form-control"/>
+    <input id="input-@popover-arrow-outer-color" type="text" value="fadein(@popover-border-color, 5%)" data-var="@popover-arrow-outer-color" class="form-control"/>
     <p class="help-block">Popover outer arrow color</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@popover-arrow-outer-fallback-color">@popover-arrow-outer-fallback-color</label>
-    <input id="input-@popover-arrow-outer-fallback-color" type="text" value="#999" data-var="@popover-arrow-outer-fallback-color" class="form-control"/>
+    <input id="input-@popover-arrow-outer-fallback-color" type="text" value="darken(@popover-fallback-border-color, 20%)" data-var="@popover-arrow-outer-fallback-color" class="form-control"/>
     <p class="help-block">Popover outer arrow fallback color</p>
   </div>
 </div>
@@ -1632,6 +2100,11 @@
     <p class="help-block">Blockquote small color</p>
   </div>
   <div class="bs-customizer-input">
+    <label for="input-@blockquote-font-size">@blockquote-font-size</label>
+    <input id="input-@blockquote-font-size" type="text" value="(@font-size-base * 1.25)" data-var="@blockquote-font-size" class="form-control"/>
+    <p class="help-block">Blockquote font size</p>
+  </div>
+  <div class="bs-customizer-input">
     <label for="input-@blockquote-border-color">@blockquote-border-color</label>
     <input id="input-@blockquote-border-color" type="text" value="@gray-lighter" data-var="@blockquote-border-color" class="form-control"/>
     <p class="help-block">Blockquote border color</p>
@@ -1656,35 +2129,164 @@
     <p class="help-block">Horizontal offset for forms and lists.</p>
   </div>
 </div>
-<h2 id="container-sizes">Container sizes</h2>
-<p>Define the maximum width of <code>.container</code> for different screen sizes.</p>
-<div class="row">
-  <div class="bs-customizer-input">
-    <label for="input-@container-tablet">@container-tablet</label>
-    <input id="input-@container-tablet" type="text" value="((720px + @grid-gutter-width))" data-var="@container-tablet" class="form-control"/>
-  </div>
-  <div class="bs-customizer-input">
-    <label for="input-@container-sm">@container-sm</label>
-    <input id="input-@container-sm" type="text" value="@container-tablet" data-var="@container-sm" class="form-control"/>
-    <p class="help-block">For <code>@screen-sm-min</code> and up.</p>
-  </div>
-  <div class="bs-customizer-input">
-    <label for="input-@container-desktop">@container-desktop</label>
-    <input id="input-@container-desktop" type="text" value="((940px + @grid-gutter-width))" data-var="@container-desktop" class="form-control"/>
-  </div>
-  <div class="bs-customizer-input">
-    <label for="input-@container-md">@container-md</label>
-    <input id="input-@container-md" type="text" value="@container-desktop" data-var="@container-md" class="form-control"/>
-    <p class="help-block">For <code>@screen-md-min</code> and up.</p>
-  </div>
-  <div class="bs-customizer-input">
-    <label for="input-@container-large-desktop">@container-large-desktop</label>
-    <input id="input-@container-large-desktop" type="text" value="((1140px + @grid-gutter-width))" data-var="@container-large-desktop" class="form-control"/>
-  </div>
-  <div class="bs-customizer-input">
-    <label for="input-@container-lg">@container-lg</label>
-    <input id="input-@container-lg" type="text" value="@container-large-desktop" data-var="@container-lg" class="form-control"/>
-    <p class="help-block">For <code>@screen-lg-min</code> and up.</p>
-  </div>
-</div>
 <!-- NOTE: DO NOT EDIT THE PRECEDING SECTION DIRECTLY! It is autogenerated via the `build-customizer-html` Grunt task using the customizer-variables.jade template.-->
+  </div>
+
+
+
+  <div class="bs-docs-section">
+    <h1 id="download" class="page-header">Download</h1>
+
+    <p class="lead">Hooray! Your custom version of Bootstrap is now ready to be compiled. Just click the button below to finish the process.</p>
+    <div class="bs-customize-download">
+      <button type="submit" id="btn-compile" class="btn btn-block btn-lg btn-outline" onclick="_gaq.push(['_trackEvent', 'Customize', 'Download', 'Customize and Download']);">Compile and Download</button>
+    </div>
+  </div><!-- /download -->
+</form>
+
+        </div>
+        <div class="col-md-3">
+          <div class="bs-docs-sidebar hidden-print" role="complementary">
+            <ul class="nav bs-docs-sidenav">
+              
+                
+<!-- NOTE: DO NOT EDIT THE FOLLOWING SECTION DIRECTLY! It is autogenerated via the `build-customizer-html` Grunt task using the customizer-nav.jade template.-->
+<li><a href="#less">Less components</a></li>
+<li><a href="#plugins">jQuery plugins</a></li>
+<li><a href="#less-variables">Less variables</a>
+  <ul class="nav">
+    <li><a href="#colors">Colors</a></li>
+    <li><a href="#scaffolding">Scaffolding</a></li>
+    <li><a href="#typography">Typography</a></li>
+    <li><a href="#components">Components</a></li>
+    <li><a href="#tables">Tables</a></li>
+    <li><a href="#buttons">Buttons</a></li>
+    <li><a href="#forms">Forms</a></li>
+    <li><a href="#dropdowns">Dropdowns</a></li>
+    <li><a href="#media-queries-breakpoints">Media queries breakpoints</a></li>
+    <li><a href="#grid-system">Grid system</a></li>
+    <li><a href="#container-sizes">Container sizes</a></li>
+    <li><a href="#navbar">Navbar</a></li>
+    <li><a href="#navs">Navs</a></li>
+    <li><a href="#tabs">Tabs</a></li>
+    <li><a href="#pills">Pills</a></li>
+    <li><a href="#pagination">Pagination</a></li>
+    <li><a href="#pager">Pager</a></li>
+    <li><a href="#jumbotron">Jumbotron</a></li>
+    <li><a href="#form-states-and-alerts">Form states and alerts</a></li>
+    <li><a href="#tooltips">Tooltips</a></li>
+    <li><a href="#popovers">Popovers</a></li>
+    <li><a href="#labels">Labels</a></li>
+    <li><a href="#modals">Modals</a></li>
+    <li><a href="#alerts">Alerts</a></li>
+    <li><a href="#progress-bars">Progress bars</a></li>
+    <li><a href="#list-group">List group</a></li>
+    <li><a href="#panels">Panels</a></li>
+    <li><a href="#thumbnails">Thumbnails</a></li>
+    <li><a href="#wells">Wells</a></li>
+    <li><a href="#badges">Badges</a></li>
+    <li><a href="#breadcrumbs">Breadcrumbs</a></li>
+    <li><a href="#carousel">Carousel</a></li>
+    <li><a href="#close">Close</a></li>
+    <li><a href="#code">Code</a></li>
+    <li><a href="#type">Type</a></li>
+    <li><a href="#miscellaneous">Miscellaneous</a></li>
+  </ul>
+</li>
+<li><a href="#download">Download</a></li>
+<!-- NOTE: DO NOT EDIT THE PRECEDING SECTION DIRECTLY! It is autogenerated via the `build-customizer-html` Grunt task using the customizer-nav.jade template.-->
+              
+            </ul>
+            <a class="back-to-top" href="#top">
+              Back to top
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer
+================================================== -->
+<footer class="bs-docs-footer" role="contentinfo">
+  <div class="container">
+    <div class="bs-docs-social">
+  <ul class="bs-docs-social-buttons">
+    <li>
+      <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twbs&amp;repo=bootstrap&amp;type=watch&amp;count=true" width="100" height="20" title="Star on GitHub"></iframe>
+    </li>
+    <li>
+      <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twbs&amp;repo=bootstrap&amp;type=fork&amp;count=true" width="102" height="20" title="Fork on GitHub"></iframe>
+    </li>
+    <li class="follow-btn">
+      <a href="https://twitter.com/twbootstrap" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @twbootstrap</a>
+    </li>
+    <li class="tweet-btn">
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://getbootstrap.com/" data-count="horizontal" data-via="twbootstrap" data-related="mdo:Creator of Bootstrap">Tweet</a>
+    </li>
+  </ul>
+</div>
+
+
+    <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+    <p>Maintained by the <a href="https://github.com/twbs?tab=members">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
+    <p>Code licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+    <ul class="bs-docs-footer-links muted">
+      <li>Currently v3.1.1</li>
+      <li>&middot;</li>
+      <li><a href="https://github.com/twbs/bootstrap">GitHub</a></li>
+      <li>&middot;</li>
+      <li><a href="../getting-started/#examples">Examples</a></li>
+      <li>&middot;</li>
+      <li><a href="../2.3.2/">v2.3.2 docs</a></li>
+      <li>&middot;</li>
+      <li><a href="../about/">About</a></li>
+      <li>&middot;</li>
+      <li><a href="http://expo.getbootstrap.com">Expo</a></li>
+      <li>&middot;</li>
+      <li><a href="http://blog.getbootstrap.com">Blog</a></li>
+      <li>&middot;</li>
+      <li><a href="https://github.com/twbs/bootstrap/issues?state=open">Issues</a></li>
+      <li>&middot;</li>
+      <li><a href="https://github.com/twbs/bootstrap/releases">Releases</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="../dist/js/bootstrap.min.js"></script>
+<script src="../assets/js/docs.min.js"></script>
+
+<script src="../assets/js/customize.min.js"></script>
+
+
+
+<script>
+  window.twttr = (function (d,s,id) {
+    var t, js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return; js=d.createElement(s); js.id=id; js.async=1;
+    js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+    return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+  }(document, "script", "twitter-wjs"));
+</script>
+
+<!-- Analytics
+================================================== -->
+<script>
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4f0dc9fef5a1f55508000013');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+  </body>
+</html>

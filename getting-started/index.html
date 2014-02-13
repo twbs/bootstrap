@@ -1,12 +1,106 @@
----
-layout: default
-title: Getting started
-slug: getting-started
-lead: "An overview of Bootstrap, how to download and use, basic templates and examples, and more."
----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Bootstrap, a sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.">
+<meta name="keywords" content="HTML, CSS, JS, JavaScript, framework, bootstrap, front-end, frontend, web development">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+
+<title>
+  
+    Getting started &middot; Bootstrap
+  
+</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Documentation extras -->
+<link href="../assets/css/docs.min.css" rel="stylesheet">
+<!--[if lt IE 9]><script src="../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<!-- Favicons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+                               <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-146052-10']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <a class="sr-only" href="#content">Skip to main content</a>
+
+    <!-- Docs master nav -->
+    <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="../" class="navbar-brand">Bootstrap</a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a href="../getting-started">Getting started</a>
+        </li>
+        <li>
+          <a href="../css">CSS</a>
+        </li>
+        <li>
+          <a href="../components">Components</a>
+        </li>
+        <li>
+          <a href="../javascript">JavaScript</a>
+        </li>
+        <li>
+          <a href="../customize">Customize</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://expo.getbootstrap.com" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Expo']);">Expo</a></li>
+        <li><a href="http://blog.getbootstrap.com" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Blog']);">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
 
-<!-- Getting started
+    <!-- Docs page layout -->
+    <div class="bs-docs-header" id="content">
+      <div class="container">
+        <h1>Getting started</h1>
+        <p>An overview of Bootstrap, how to download and use, basic templates and examples, and more.</p>
+        <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script>var z = document.createElement("script"); z.async = true; z.src = "http://engine.carbonads.com/z/32341/azcarbon_2_1_0_HORIZ"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script></div></div>
+
+      </div>
+    </div>
+
+    <div class="container bs-docs-container">
+
+      <div class="row">
+        <div class="col-md-9" role="main">
+          <!-- Getting started
 ================================================== -->
 <div class="bs-docs-section">
   <h1 id="download" class="page-header">Download</h1>
@@ -17,36 +111,37 @@ lead: "An overview of Bootstrap, how to download and use, basic templates and ex
     <div class="col-sm-4">
       <h3 id="download-bootstrap">Bootstrap</h3>
       <p>Compiled and minified CSS, JavaScript, and fonts. No docs or original source files are included.</p>
-      <a href="{{ site.download.dist }}" class="btn btn-lg btn-outline" role="button" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a>
+      <a href="https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist.zip" class="btn btn-lg btn-outline" role="button" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a>
     </div>
     <div class="col-sm-4">
       <h3 id="download-source">Source code</h3>
-      <p>Source Less, JavaScript, and font files, along with our docs. <strong>Requires a Less compiler and <a href="{{ site.repo }}#compiling-css-and-javascript">some setup.</a></strong></p>
-      <a href="{{ site.download.source }}" class="btn btn-lg btn-outline" role="button" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download source</a>
+      <p>Source Less, JavaScript, and font files, along with our docs. <strong>Requires a Less compiler and <a href="https://github.com/twbs/bootstrap#compiling-css-and-javascript">some setup.</a></strong></p>
+      <a href="https://github.com/twbs/bootstrap/archive/v3.1.1.zip" class="btn btn-lg btn-outline" role="button" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download source</a>
     </div>
     <div class="col-sm-4">
       <h3 id="download-sass">Sass</h3>
-      <p><a href="{{ site.sass_repo }}">Bootstrap ported from Less to Sass</a> for easy inclusion in Rails, Compass, or Sass-only projects.</p>
-      <a href="{{ site.download.sass }}" class="btn btn-lg btn-outline" role="button" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download Sass']);">Download Sass</a>
+      <p><a href="https://github.com/twbs/bootstrap-sass">Bootstrap ported from Less to Sass</a> for easy inclusion in Rails, Compass, or Sass-only projects.</p>
+      <a href="https://github.com/twbs/bootstrap-sass/archive/v3.1.1.tar.gz" class="btn btn-lg btn-outline" role="button" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download Sass']);">Download Sass</a>
     </div>
   </div>
+  <p class="muted">Currently v3.1.1.</p>
 
   <h3 id="download-cdn">Bootstrap CDN</h3>
   <p>The folks over at <a href="http://www.maxcdn.com/">MaxCDN</a> graciously provide CDN support for Bootstrap's CSS and JavaScript. Just use these <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links.</p>
-{% highlight html %}
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="{{ site.cdn.css }}">
+<div class="highlight"><pre><code class="html"><span class="c">&lt;!-- Latest compiled and minified CSS --&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css&quot;</span><span class="nt">&gt;</span>
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="{{ site.cdn.css_theme }}">
+<span class="c">&lt;!-- Optional theme --&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css&quot;</span><span class="nt">&gt;</span>
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="{{ site.cdn.js }}"></script>
-{% endhighlight %}
+<span class="c">&lt;!-- Latest compiled and minified JavaScript --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div>
 
   <h3 id="download-bower">Install with Bower</h3>
   <p>Install and manage Bootstrap's Less, CSS, JavaScript, and fonts using <a href="http://bower.io">Bower</a>.</p>
-  {% highlight bash %}$ bower install bootstrap{% endhighlight %}
+  <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>bower install bootstrap
+</code></pre></div>
 </div>
 
 
@@ -60,15 +155,14 @@ lead: "An overview of Bootstrap, how to download and use, basic templates and ex
 
   <div class="bs-callout bs-callout-warning" id="jquery-required">
     <h4>jQuery required</h4>
-    <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included, as shown in the <a href="#template">starter template</a>. <a href="{{ site.repo }}/blob/v{{ site.current_version }}/bower.json">Consult our <code>bower.json</code></a> to see which versions of jQuery are supported.</p>
+    <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included, as shown in the <a href="#template">starter template</a>. <a href="https://github.com/twbs/bootstrap/blob/v3.1.1/bower.json">Consult our <code>bower.json</code></a> to see which versions of jQuery are supported.</p>
   </div>
 
   <h2 id="whats-included-precompiled">Precompiled Bootstrap</h2>
   <p>Once downloaded, unzip the compressed folder to see the structure of (the compiled) Bootstrap. You'll see something like this:</p>
 <!-- NOTE: This info is intentionally duplicated in the README.
 Copy any changes made here over to the README too. -->
-{% highlight bash %}
-bootstrap/
+<div class="highlight"><pre><code class="bash">bootstrap/
 ├── css/
 │   ├── bootstrap.css
 │   ├── bootstrap.min.css
@@ -82,14 +176,13 @@ bootstrap/
     ├── glyphicons-halflings-regular.svg
     ├── glyphicons-halflings-regular.ttf
     └── glyphicons-halflings-regular.woff
-{% endhighlight %}
+</code></pre></div>
 
   <p>This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). Fonts from Glyphicons are included, as is the optional Bootstrap theme.</p>
 
   <h2 id="whats-included-source">Bootstrap source code</h2>
   <p>The Bootstrap source code download includes the precompiled CSS, JavaScript, and font assets, along with source Less, JavaScript, and documentation. More specifically, it includes the following and more:</p>
-{% highlight bash %}
-bootstrap/
+<div class="highlight"><pre><code class="bash">bootstrap/
 ├── less/
 ├── js/
 ├── fonts/
@@ -99,7 +192,7 @@ bootstrap/
 │   └── fonts/
 └── docs/
     └── examples/
-{% endhighlight %}
+</code></pre></div>
   <p>The <code>less/</code>, <code>js/</code>, and <code>fonts/</code> are the source code for our CSS, JS, and icon fonts (respectively). The <code>dist/</code> folder includes everything listed in the precompiled download section above. The <code>docs/</code> folder includes the source code for our documentation, and <code>examples/</code> of Bootstrap usage. Beyond that, any other included file provides support for packages, license information, and development.</p>
 </div>
 
@@ -113,35 +206,34 @@ bootstrap/
   <p class="lead">Start with this basic HTML template, or modify <a href="#examples">these examples</a>. We hope you'll customize our templates and examples, adapting them to suit your needs.</p>
 
   <p>Copy the HTML below to begin working with a minimal Bootstrap document.</p>
-{% highlight html %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+<div class="highlight"><pre><code class="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content=</span><span class="s">&quot;IE=edge&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;width=device-width, initial-scale=1&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Bootstrap 101 Template<span class="nt">&lt;/title&gt;</span>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <span class="c">&lt;!-- Bootstrap --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;css/bootstrap.min.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span><span class="nt">&gt;</span>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
+    <span class="c">&lt;!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --&gt;</span>
+    <span class="c">&lt;!-- WARNING: Respond.js doesn&#39;t work if you view the page via file:// --&gt;</span>
+    <span class="c">&lt;!--[if lt IE 9]&gt;</span>
+<span class="c">      &lt;script src=&quot;https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js&quot;&gt;&lt;/script&gt;</span>
+<span class="c">      &lt;script src=&quot;https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js&quot;&gt;&lt;/script&gt;</span>
+<span class="c">    &lt;![endif]--&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>Hello, world!<span class="nt">&lt;/h1&gt;</span>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
-</html>
-{% endhighlight %}
+    <span class="c">&lt;!-- jQuery (necessary for Bootstrap&#39;s JavaScript plugins) --&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="c">&lt;!-- Include all compiled plugins (below), or include individual files as needed --&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/bootstrap.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div>
 </div>
 
 
@@ -319,6 +411,7 @@ bootstrap/
   <ul>
     <li>Read and subscribe to <a href="http://blog.getbootstrap.com/">The Official Bootstrap Blog</a>.</li>
     <li>Chat with fellow Bootstrappers using IRC in the <code>irc.freenode.net</code> server, in the <a href="irc://irc.freenode.net/#twitter-bootstrap">##twitter-bootstrap channel</a>.</li>
+    <li>For help using Bootstrap, ask on <a href="http://stackoverflow.com/questions/tagged/twitter-bootstrap-3">StackOverflow using the tag <code>twitter-bootstrap-3</code></a>.</li>
     <li>Find inspiring examples of people building with Bootstrap at the <a href="http://expo.getbootstrap.com">Bootstrap Expo</a>.</li>
   </ul>
   <p>You can also follow <a href="https://twitter.com/twbootstrap">@twbootstrap on Twitter</a> for the latest gossip and awesome music videos.</p>
@@ -368,7 +461,7 @@ bootstrap/
   <p class="lead">Bootstrap is built to work best in the latest desktop and mobile browsers, meaning older browsers might display differently styled, though fully functional, renderings of certain components.</p>
 
   <h3 id="support-browsers">Supported browsers</h3>
-  <p>Specifically, we support the <strong>latest versions</strong> of the following browsers and platforms:</p>
+  <p>Specifically, we support the <strong>latest versions</strong> of the following browsers and platforms. On Windows, <strong>we support Internet Explorer 8-11</strong>. More specific support information is provided below.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
       <thead>
@@ -474,38 +567,34 @@ bootstrap/
 
   <h3 id="support-ie-compatibility-modes">IE Compatibility modes</h3>
   <p>Bootstrap is not supported in the old Internet Explorer compatibility modes. To be sure you're using the latest rendering mode for IE, consider including the appropriate <code>&lt;meta&gt;</code> tag in your pages:</p>
-{% highlight html %}
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-{% endhighlight %}
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content=</span><span class="s">&quot;IE=edge&quot;</span><span class="nt">&gt;</span>
+</code></pre></div>
   <p>Confirm the document mode by opening the debugging tools: press <kbd>F12</kbd> and check the "Document Mode".</p>
   <p>This tag is included in all Bootstrap's documentation and examples to ensure the best rendering possible in each supported version of Internet Explorer.</p>
   <p>See <a href="http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge">this StackOverflow question</a> for more information.</p>
 
   <h3 id="support-ie10-width">Internet Explorer 10 in Windows 8 and Windows Phone 8</h3>
   <p>Internet Explorer 10 doesn't differentiate <strong>device width</strong> from <strong>viewport width</strong>, and thus doesn't properly apply the media queries in Bootstrap's CSS. Normally you'd just add a quick snippet of CSS to fix this:</p>
-{% highlight css %}
-@-ms-viewport       { width: device-width; }
-{% endhighlight %}
+<div class="highlight"><pre><code class="scss"><span class="k">@-ms-viewport</span>       <span class="p">{</span> <span class="na">width</span><span class="o">:</span> <span class="n">device-width</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div>
   <p>However, this doesn't work for devices running Windows Phone 8 versions older than <a href="http://blogs.windows.com/windows_phone/b/wpdev/archive/2013/10/14/introducing-windows-phone-preview-for-developers.aspx">Update 3 (a.k.a. GDR3)</a>, as it causes such devices to show a mostly desktop view instead of narrow "phone" view. To address this, you'll need to <strong>include the following CSS and JavaScript to work around the bug</strong>.</p>
-{% highlight css %}
-@-webkit-viewport   { width: device-width; }
-@-moz-viewport      { width: device-width; }
-@-ms-viewport       { width: device-width; }
-@-o-viewport        { width: device-width; }
-@viewport           { width: device-width; }
-{% endhighlight %}
+<div class="highlight"><pre><code class="scss"><span class="k">@-webkit-viewport</span>   <span class="p">{</span> <span class="na">width</span><span class="o">:</span> <span class="n">device-width</span><span class="p">;</span> <span class="p">}</span>
+<span class="k">@-moz-viewport</span>      <span class="p">{</span> <span class="na">width</span><span class="o">:</span> <span class="n">device-width</span><span class="p">;</span> <span class="p">}</span>
+<span class="k">@-ms-viewport</span>       <span class="p">{</span> <span class="na">width</span><span class="o">:</span> <span class="n">device-width</span><span class="p">;</span> <span class="p">}</span>
+<span class="k">@-o-viewport</span>        <span class="p">{</span> <span class="na">width</span><span class="o">:</span> <span class="n">device-width</span><span class="p">;</span> <span class="p">}</span>
+<span class="k">@viewport</span>           <span class="p">{</span> <span class="na">width</span><span class="o">:</span> <span class="n">device-width</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div>
 
-{% highlight js %}
-if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-  var msViewportStyle = document.createElement('style')
-  msViewportStyle.appendChild(
-    document.createTextNode(
-      '@-ms-viewport{width:auto!important}'
-    )
-  )
-  document.querySelector('head').appendChild(msViewportStyle)
-}
-{% endhighlight %}
+<div class="highlight"><pre><code class="js"><span class="k">if</span> <span class="p">(</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/IEMobile\/10\.0/</span><span class="p">))</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">msViewportStyle</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;style&#39;</span><span class="p">)</span>
+  <span class="nx">msViewportStyle</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span>
+      <span class="s1">&#39;@-ms-viewport{width:auto!important}&#39;</span>
+    <span class="p">)</span>
+  <span class="p">)</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">msViewportStyle</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
   <p>For more information and usage guidelines, read <a href="http://timkadlec.com/2013/01/windows-phone-8-and-device-width/">Windows Phone 8 and Device-Width</a>.</p>
   <p>As a heads up, we include this in the Bootstrap docs as an example.</p>
 
@@ -540,15 +629,14 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
   <p>Out of the box, Android 4.1 (and even some newer releases apparently) ship with the Browser app as the default web browser of choice (as opposed to Chrome). Unfortunately, the Browser app has lots of bugs and inconsistencies with CSS in general.</p>
   <h4>Select menus</h4>
   <p>On <code>&lt;select&gt;</code> elements, the Android stock browser will not display the side controls if there is a <code>border-radius</code> and/or <code>border</code> applied. Use the snippet of code below to remove the offending CSS and render the <code>&lt;select&gt;</code> as an unstyled element on the Android stock browser. The user agent sniffing avoids interference with Chrome, Safari, and Mozilla browsers.</p>
-{% highlight html %}
-<script>
-var nua = navigator.userAgent;
-var isAndroid = (nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1 && nua.indexOf('Chrome') === -1);
-if (isAndroid) {
-  $('select.form-control').removeClass('form-control').css('width', '100%');
-}
-</script>
-{% endhighlight %}
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;script&gt;</span>
+<span class="kd">var</span> <span class="nx">nua</span> <span class="o">=</span> <span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span>
+<span class="kd">var</span> <span class="nx">isAndroid</span> <span class="o">=</span> <span class="p">(</span><span class="nx">nua</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;Mozilla/5.0&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">nua</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;Android &#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">nua</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;AppleWebKit&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">nua</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;Chrome&#39;</span><span class="p">)</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">isAndroid</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;select.form-control&#39;</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;form-control&#39;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;100%&#39;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div>
   <p>Want to see an example? <a href="http://jsbin.com/OyaqoDO/2">Check out this JS Bin demo.</a></p>
 </div>
 
@@ -563,49 +651,48 @@ if (isAndroid) {
   <h3 id="third-box-sizing">Box-sizing</h3>
   <p>Some third party software, including Google Maps and Google Custom Search Engine, conflict with Bootstrap due to <code>* { box-sizing: border-box; }</code>, a rule which makes it so <code>padding</code> does not affect the final computed width of an element. Learn more about <a href="http://css-tricks.com/box-sizing/">box model and sizing at CSS Tricks</a>.</p>
   <p>Depending on the context, you may override as-needed (Option 1) or reset the box-sizing for entire regions (Option 2).</p>
-{% highlight css %}
-/* Box-sizing resets
- *
- * Reset individual elements or override regions to avoid conflicts due to
- * global box model settings of Bootstrap. Two options, individual overrides and
- * region resets, are available as plain CSS and uncompiled Less formats.
- */
+<div class="highlight"><pre><code class="scss"><span class="cm">/* Box-sizing resets</span>
+<span class="cm"> *</span>
+<span class="cm"> * Reset individual elements or override regions to avoid conflicts due to</span>
+<span class="cm"> * global box model settings of Bootstrap. Two options, individual overrides and</span>
+<span class="cm"> * region resets, are available as plain CSS and uncompiled Less formats.</span>
+<span class="cm"> */</span>
 
-/* Option 1A: Override a single element's box model via CSS */
-.element {
-  -webkit-box-sizing: content-box;
-     -moz-box-sizing: content-box;
-          box-sizing: content-box;
-}
+<span class="cm">/* Option 1A: Override a single element&#39;s box model via CSS */</span>
+<span class="nc">.element</span> <span class="p">{</span>
+  <span class="na">-webkit-box-sizing</span><span class="o">:</span> <span class="no">content</span><span class="o">-</span><span class="n">box</span><span class="p">;</span>
+     <span class="na">-moz-box-sizing</span><span class="o">:</span> <span class="no">content</span><span class="o">-</span><span class="n">box</span><span class="p">;</span>
+          <span class="na">box-sizing</span><span class="o">:</span> <span class="no">content</span><span class="o">-</span><span class="n">box</span><span class="p">;</span>
+<span class="p">}</span>
 
-/* Option 1B: Override a single element's box model by using a Bootstrap Less mixin */
-.element {
-  .box-sizing(content-box);
-}
+<span class="cm">/* Option 1B: Override a single element&#39;s box model by using a Bootstrap Less mixin */</span>
+<span class="nc">.element</span> <span class="p">{</span>
+  <span class="nc">.box-sizing</span><span class="o">(</span><span class="nt">content-box</span><span class="o">);</span>
+<span class="p">}</span>
 
-/* Option 2A: Reset an entire region via CSS */
-.reset-box-sizing,
-.reset-box-sizing *,
-.reset-box-sizing *:before,
-.reset-box-sizing *:after {
-  -webkit-box-sizing: content-box;
-     -moz-box-sizing: content-box;
-          box-sizing: content-box;
-}
+<span class="cm">/* Option 2A: Reset an entire region via CSS */</span>
+<span class="nc">.reset-box-sizing</span><span class="o">,</span>
+<span class="nc">.reset-box-sizing</span> <span class="o">*,</span>
+<span class="nc">.reset-box-sizing</span> <span class="o">*</span><span class="nd">:before</span><span class="o">,</span>
+<span class="nc">.reset-box-sizing</span> <span class="o">*</span><span class="nd">:after</span> <span class="p">{</span>
+  <span class="na">-webkit-box-sizing</span><span class="o">:</span> <span class="no">content</span><span class="o">-</span><span class="n">box</span><span class="p">;</span>
+     <span class="na">-moz-box-sizing</span><span class="o">:</span> <span class="no">content</span><span class="o">-</span><span class="n">box</span><span class="p">;</span>
+          <span class="na">box-sizing</span><span class="o">:</span> <span class="no">content</span><span class="o">-</span><span class="n">box</span><span class="p">;</span>
+<span class="p">}</span>
 
-/* Option 2B: Reset an entire region with a custom Less mixin */
-.reset-box-sizing {
-  &,
-  *,
-  *:before,
-  *:after {
-    .box-sizing(content-box);
-  }
-}
-.element {
-  .reset-box-sizing();
-}
-{% endhighlight %}
+<span class="cm">/* Option 2B: Reset an entire region with a custom Less mixin */</span>
+<span class="nc">.reset-box-sizing</span> <span class="p">{</span>
+  <span class="k">&amp;</span><span class="o">,</span>
+  <span class="o">*,</span>
+  <span class="o">*</span><span class="nd">:before</span><span class="o">,</span>
+  <span class="o">*</span><span class="nd">:after</span> <span class="p">{</span>
+    <span class="nc">.box-sizing</span><span class="o">(</span><span class="nt">content-box</span><span class="o">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nc">.element</span> <span class="p">{</span>
+  <span class="nc">.reset-box-sizing</span><span class="o">();</span>
+<span class="p">}</span>
+</code></pre></div>
 </div>
 
 
@@ -618,14 +705,13 @@ if (isAndroid) {
 
   <h3>Skip navigation</h3>
   <p>If your navigation contains many links and comes before the main content in the DOM, add a <code>Skip to main content</code> link immediately after your opening <code>&lt;body&gt;</code> tag. <a href="http://a11yproject.com/posts/skip-nav-links/">(read why)</a></p>
-{% highlight html %}
-<body>
-  <a href="#content" class="sr-only">Skip to main content</a>
-  <div class="container" id="content">
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#content&quot;</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>Skip to main content<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span> <span class="na">id=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
     The main page content.
-  </div>
-</body>
-{% endhighlight %}
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</code></pre></div>
 
   <h3>Nested headings</h3>
   <p>When nesting headings (<code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code>), your primary document header should be an <code>&lt;h1&gt;</code>. Subsequent headings should make logical use of <code>&lt;h2&gt;</code> - <code>&lt;h6&gt;</code> such that screen readers can construct a table of contents for your pages.</p>
@@ -645,7 +731,7 @@ if (isAndroid) {
 ================================================== -->
 <div class="bs-docs-section">
   <h1 id="license-faqs" class="page-header">License FAQs</h1>
-  <p class="lead">Bootstrap is released under the MIT license and is copyright {{ site.time | date: "%Y" }} Twitter. Boiled down to smaller chunks, it can be described with the following conditions.</p>
+  <p class="lead">Bootstrap is released under the MIT license and is copyright 2014 Twitter. Boiled down to smaller chunks, it can be described with the following conditions.</p>
 
   <h4>It requires you to:</h4>
   <ul>
@@ -675,7 +761,7 @@ if (isAndroid) {
     <li>Submit changes that you make to Bootstrap back to the Bootstrap project (though such feedback is encouraged)</li>
   </ul>
 
-  <p>The full Bootstrap license is located <a href="{{ site.repo }}/blob/master/LICENSE">in the project repository</a> for more information.</p>
+  <p>The full Bootstrap license is located <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">in the project repository</a> for more information.</p>
 </div><!-- /.bs-docs-section -->
 
 
@@ -697,41 +783,39 @@ if (isAndroid) {
   <p>We define <em>light customizations</em> as superficial changes, for example, color and font changes to existing Bootstrap components. A light customization example is the <a href="http://translate.twitter.com">Twitter Translation Center</a> (coded by <a href="https://twitter.com/mdo">@mdo</a>). Let's look at how to implement the custom button we wrote for this site, <code>.btn-ttc</code>.</p>
   <p>The stock Bootstrap buttons require just one class, <code>.btn</code>, to start.  Here we extend the <code>.btn</code> style with a new modifier class, <code>.btn-ttc</code>, that we will create. This gives us a distinct custom look with minimal effort.</p>
   <p>Our customized button will be coded like this:</p>
-{% highlight html %}
-<button type="button" class="btn btn-ttc">Save changes</button>
-{% endhighlight %}
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-ttc&quot;</span><span class="nt">&gt;</span>Save changes<span class="nt">&lt;/button&gt;</span>
+</code></pre></div>
   <p>Note how <code>.btn-ttc</code> is added to the standard <code>.btn</code> class.</p>
 
   <p>To implement this, in the custom stylesheet, add the following CSS:</p>
 
-{% highlight css %}
-/* Custom button
--------------------------------------------------- */
+<div class="highlight"><pre><code class="scss"><span class="cm">/* Custom button</span>
+<span class="cm">-------------------------------------------------- */</span>
 
-/* Override base .btn styles */
-/* Apply text and background changes to three key states: default, hover, and active (click). */
-.btn-ttc,
-.btn-ttc:hover,
-.btn-ttc:active {
-  color: white;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #007da7;
-}
+<span class="cm">/* Override base .btn styles */</span>
+<span class="cm">/* Apply text and background changes to three key states: default, hover, and active (click). */</span>
+<span class="nc">.btn-ttc</span><span class="o">,</span>
+<span class="nc">.btn-ttc</span><span class="nd">:hover</span><span class="o">,</span>
+<span class="nc">.btn-ttc</span><span class="nd">:active</span> <span class="p">{</span>
+  <span class="na">color</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+  <span class="na">text-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">-1</span><span class="kt">px</span> <span class="mi">0</span> <span class="nf">rgba</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="mf">.25</span><span class="p">);</span>
+  <span class="na">background-color</span><span class="o">:</span> <span class="mh">#007da7</span><span class="p">;</span>
+<span class="p">}</span>
 
-/* Apply the custom-colored gradients */
-/* Note: you'll need to include all the appropriate gradients for various browsers and standards. */
-.btn-ttc {
-  background-repeat: repeat-x;
-  background-image: linear-gradient(top, #009ED2 0%, #007DA7 100%);
-  ...
-}
+<span class="cm">/* Apply the custom-colored gradients */</span>
+<span class="cm">/* Note: you&#39;ll need to include all the appropriate gradients for various browsers and standards. */</span>
+<span class="nc">.btn-ttc</span> <span class="p">{</span>
+  <span class="na">background-repeat</span><span class="o">:</span> <span class="no">repeat-x</span><span class="p">;</span>
+  <span class="na">background-image</span><span class="o">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="no">top</span><span class="o">,</span> <span class="mh">#009ED2</span> <span class="mi">0</span><span class="kt">%</span><span class="o">,</span> <span class="mh">#007DA7</span> <span class="mi">100</span><span class="kt">%</span><span class="p">);</span>
+  <span class="nc">...</span>
+<span class="p">}</span>
 
-/* Set the hover state */
-/* An easy hover state is just to move the gradient up a small amount. Add other embellishments as you see fit. */
-.btn-ttc:hover {
-  background-position: 0 -15px;
-}
-{% endhighlight %}
+<span class="cm">/* Set the hover state */</span>
+<span class="cm">/* An easy hover state is just to move the gradient up a small amount. Add other embellishments as you see fit. */</span>
+<span class="nc">.btn-ttc</span><span class="nd">:hover</span> <span class="p">{</span>
+  <span class="na">background-position</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">-15</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
   <p>In short: Look to the style source and duplicate the selectors you need for your modifications.</p>
   <p><strong>In summary, here's the basic workflow:</strong></p>
@@ -765,9 +849,172 @@ if (isAndroid) {
     <li><a href="http://v3.bootcss.com/">Bootstrap 中文文档 (Chinese)</a></li>
     <li><a href="http://www.oneskyapp.com/docs/bootstrap/fr">Bootstrap en Français (French)</a></li>
     <li><a href="http://holdirbootstrap.de/">Bootstrap auf Deutsch (German)</a></li>
+    <li><a href="http://bootstrapk.com/BS3/">Bootstrap 한국어 (Korean)</a></li>
     <li><a href="http://www.oneskyapp.com/docs/bootstrap/ru">Bootstrap по-русски (Russian)</a></li>
     <li><a href="http://www.oneskyapp.com/docs/bootstrap/es">Bootstrap en Español (Spanish)</a></li>
     <li><a href="http://twbs.site-konstruktor.com.ua">Bootstrap ua Українською (Ukrainian)</a></li>
   </ul>
   <p>Have another language to add, or perhaps a different or better translation? Let us know by <a href="https://github.com/twbs/bootstrap/issues/new">opening an issue</a>.</p>
 </div>
+
+        </div>
+        <div class="col-md-3">
+          <div class="bs-docs-sidebar hidden-print" role="complementary">
+            <ul class="nav bs-docs-sidenav">
+              
+                <li>
+  <a href="#download">Download</a>
+</li>
+<li>
+  <a href="#whats-included">What's included</a>
+  <ul class="nav">
+    <li><a href="#whats-included-precompiled">Precompiled</a></li>
+    <li><a href="#whats-included-source">Source code</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#template">Basic template</a>
+</li>
+<li>
+  <a href="#examples">Examples</a>
+  <ul class="nav">
+    <li><a href="#examples-framework">Using the framework</a></li>
+    <li><a href="#examples-navbars">Navbars in action</a></li>
+    <li><a href="#examples-custom">Custom components</a></li>
+    <li><a href="#examples-experiments">Experiments</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#community">Community</a>
+</li>
+<li>
+  <a href="#disable-responsive">Disabling responsiveness</a>
+</li>
+<li>
+  <a href="#migration">Migrating from 2.x to 3.0</a>
+</li>
+<li>
+  <a href="#support">Browser and device support</a>
+  <ul class="nav">
+    <li><a href="#support-browsers">Supported browsers</a></li>
+    <li><a href="#support-ie8-ie9">Internet Explorer 8-9</a></li>
+    <li><a href="#support-ie8-respondjs">IE8 and Respond.js</a></li>
+    <li><a href="#support-ie8-box-sizing">IE8 and box-sizing</a></li>
+    <li><a href="#support-ie-compatibility-modes">IE Compatibility modes</a></li>
+    <li><a href="#support-ie10-width">IE10 and Windows (Phone) 8</a></li>
+    <li><a href="#support-safari-percentages">Safari percent rounding</a></li>
+    <li><a href="#support-fixed-position-keyboards">Modals, navbars, and virtual keyboards</a></li>
+    <li><a href="#support-browser-zooming">Browser zooming</a></li>
+    <li><a href="#support-printing">Printer viewports</a></li>
+    <li><a href="#support-android-stock-browser">Android stock browser</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#third-parties">Third party support</a>
+</li>
+<li>
+  <a href="#accessibility">Accessibility</a>
+</li>
+<li>
+  <a href="#license-faqs">License FAQs</a>
+</li>
+<li>
+  <a href="#customizing">Customizing Bootstrap</a>
+</li>
+<li>
+  <a href="#translations">Translations</a>
+</li>
+
+              
+            </ul>
+            <a class="back-to-top" href="#top">
+              Back to top
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer
+================================================== -->
+<footer class="bs-docs-footer" role="contentinfo">
+  <div class="container">
+    <div class="bs-docs-social">
+  <ul class="bs-docs-social-buttons">
+    <li>
+      <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twbs&amp;repo=bootstrap&amp;type=watch&amp;count=true" width="100" height="20" title="Star on GitHub"></iframe>
+    </li>
+    <li>
+      <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twbs&amp;repo=bootstrap&amp;type=fork&amp;count=true" width="102" height="20" title="Fork on GitHub"></iframe>
+    </li>
+    <li class="follow-btn">
+      <a href="https://twitter.com/twbootstrap" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @twbootstrap</a>
+    </li>
+    <li class="tweet-btn">
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://getbootstrap.com/" data-count="horizontal" data-via="twbootstrap" data-related="mdo:Creator of Bootstrap">Tweet</a>
+    </li>
+  </ul>
+</div>
+
+
+    <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+    <p>Maintained by the <a href="https://github.com/twbs?tab=members">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
+    <p>Code licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+    <ul class="bs-docs-footer-links muted">
+      <li>Currently v3.1.1</li>
+      <li>&middot;</li>
+      <li><a href="https://github.com/twbs/bootstrap">GitHub</a></li>
+      <li>&middot;</li>
+      <li><a href="../getting-started/#examples">Examples</a></li>
+      <li>&middot;</li>
+      <li><a href="../2.3.2/">v2.3.2 docs</a></li>
+      <li>&middot;</li>
+      <li><a href="../about/">About</a></li>
+      <li>&middot;</li>
+      <li><a href="http://expo.getbootstrap.com">Expo</a></li>
+      <li>&middot;</li>
+      <li><a href="http://blog.getbootstrap.com">Blog</a></li>
+      <li>&middot;</li>
+      <li><a href="https://github.com/twbs/bootstrap/issues?state=open">Issues</a></li>
+      <li>&middot;</li>
+      <li><a href="https://github.com/twbs/bootstrap/releases">Releases</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="../dist/js/bootstrap.min.js"></script>
+<script src="../assets/js/docs.min.js"></script>
+
+
+
+<script>
+  window.twttr = (function (d,s,id) {
+    var t, js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return; js=d.createElement(s); js.id=id; js.async=1;
+    js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+    return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+  }(document, "script", "twitter-wjs"));
+</script>
+
+<!-- Analytics
+================================================== -->
+<script>
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4f0dc9fef5a1f55508000013');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+  </body>
+</html>
