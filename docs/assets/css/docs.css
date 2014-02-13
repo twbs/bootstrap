@@ -1165,14 +1165,14 @@ h1[id] {
   color: #999;
   border: 1px solid #ddd;
 }
-.visible-on .col-xs-6 .visible-xs,
-.visible-on .col-xs-6 .visible-sm,
-.visible-on .col-xs-6 .visible-md,
-.visible-on .col-xs-6 .visible-lg,
-.hidden-on .col-xs-6 .visible-xs,
-.hidden-on .col-xs-6 .visible-sm,
-.hidden-on .col-xs-6 .visible-md,
-.hidden-on .col-xs-6 .visible-lg {
+.visible-on .col-xs-6 .visible-xs-block,
+.visible-on .col-xs-6 .visible-sm-block,
+.visible-on .col-xs-6 .visible-md-block,
+.visible-on .col-xs-6 .visible-lg-block,
+.hidden-on .col-xs-6 .visible-xs-block,
+.hidden-on .col-xs-6 .visible-sm-block,
+.hidden-on .col-xs-6 .visible-md-block,
+.hidden-on .col-xs-6 .visible-lg-block {
   color: #468847;
   background-color: #dff0d8;
   border: 1px solid #d6e9c6;
