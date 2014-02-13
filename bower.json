@@ -1,6 +1,6 @@
 {
   "name": "bootstrap",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "main": [
     "./dist/css/bootstrap.css",
     "./dist/js/bootstrap.js",
