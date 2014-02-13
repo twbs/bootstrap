@@ -1,0 +1,36 @@
+<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="../" class="navbar-brand">Bootstrap</a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <li{% if page.slug == "getting-started" %} class="active"{% endif %}>
+          <a href="../getting-started">Getting started</a>
+        </li>
+        <li{% if page.slug == "css" %} class="active"{% endif %}>
+          <a href="../css">CSS</a>
+        </li>
+        <li{% if page.slug == "components" %} class="active"{% endif %}>
+          <a href="../components">Components</a>
+        </li>
+        <li{% if page.slug == "js" %} class="active"{% endif %}>
+          <a href="../javascript">JavaScript</a>
+        </li>
+        <li{% if page.slug == "customize" %} class="active"{% endif %}>
+          <a href="../customize">Customize</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{ site.expo }}" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Expo']);">Expo</a></li>
+        <li><a href="{{ site.blog }}" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Blog']);">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
