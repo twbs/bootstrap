@@ -428,5 +428,17 @@ $(function () {
 
     ttContainer.remove()
   })
+  
+  test('should not call element methods on show or hide', function () {
+    var tooltip = $('<div title="tooltip title"></div>').get(0)
+
+    tooltip.hide = function() { ok(false, 'element.hide method was called') }
+    tooltip.show = function() { ok(false, 'element.show method was called') }
+
+    $(tooltip)
+      .tooltip('show')
+      .tooltip('hide')
+    expect(0)
+  })
 
 })

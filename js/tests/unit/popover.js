@@ -130,4 +130,18 @@ $(function () {
     ok(!$._data(popover[0], 'events').mouseover && !$._data(popover[0], 'events').mouseout, 'popover does not have any events')
   })
 
+  test('should not call element methods on show or hide', function () {
+    var popover = $('<a href="#" title="mdo" data-content="http://twitter.com/mdo">@mdo</a>').get(0)
+
+    popover.hide = function() { ok(false, 'element.hide method was called') }
+    popover.show = function() { ok(false, 'element.show method was called') }
+
+    $.support.transition = false
+    $(popover)
+      .appendTo('#qunit-fixture')
+      .popover('show')
+      .popover('hide')
+    expect(0)
+  })
+
 })

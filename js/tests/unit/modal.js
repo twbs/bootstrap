@@ -192,4 +192,25 @@ $(function () {
 
     div.remove()
   })
+
+  test('should not call element methods on show or hide', function () {
+    var el = $('<div id="modal-test"></div>').get(0)
+
+    el.hide = function() { ok(false, 'element.hide method was called') }
+    el.show = function() { ok(false, 'element.show method was called') }
+
+    stop()
+    $.support.transition = false
+
+    $(el)
+      .on('shown.bs.modal', function () {
+        $(this).modal('hide')
+      })
+      .on('hidden.bs.modal', function () {
+        start()
+      })
+      .modal('show')
+    expect(0)
+  })
+
 })

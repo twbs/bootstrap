@@ -160,5 +160,16 @@ $(function () {
 
     target3.click()
   })
+  
+  test('should not call element methods on show or hide', function () {
+    var el = $('<div class="collapse"></div>').get(0)
+
+    el.hide = function() { ok(false, 'element.hide method was called') }
+    el.show = function() { ok(false, 'element.show method was called') }
+    el = $(el)
+    el.collapse('hide')
+    el.collapse('show')
+    expect(0)
+  })
 
 })
