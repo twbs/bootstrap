@@ -7114,11 +7114,7 @@ td.visible-print {
   background-color: #006ba5 !important;
 }
 
-.content-wrapper {
-  margin-top: 79px;
-}
-
-.content {
+.container.content {
   padding-top: 15px;
   background-color: #ffffff;
 }
@@ -7298,31 +7294,36 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   display: block;
 }
 
-.navbar-default.navbar {
+.navbar-nav {
+  margin: 0;
+}
+
+.navbar-collapse {
+  border-top: 0;
+  box-shadow: none;
+}
+
+.navbar.subnav {
   z-index: 990;
   min-height: 25px;
   font-size: 12px;
 }
 
-.navbar-default.navbar.navbar-fixed-top {
+.navbar.subnav.navbar-fixed-top {
   margin-top: 54px;
 }
 
-.navbar-nav {
+.navbar.subnav .navbar-nav {
   margin: 0;
 }
 
-.navbar-default .navbar-nav {
-  margin: 0;
-}
-
-.navbar-default .navbar-nav > li > a {
+.navbar.subnav .navbar-nav > li > a {
   padding-top: 5px;
   padding-bottom: 5px;
 }
 
 @media (min-width: 768px) {
-  .navbar-default .navbar-nav > li > a {
+  .navbar.subnav .navbar-nav > li > a {
     padding-top: 3.5px;
     padding-bottom: 3.5px;
   }
@@ -7346,33 +7347,8 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   }
 }
 
-.navbar-inverse .navbar-brand {
-  width: 100px;
-  height: 25px;
-  margin: 14px 5px 0 0;
-  overflow: hidden;
-  background: url(/assets/img/manta-logo-sp-2x.png) -50px 0 no-repeat;
-  background-size: 150px 25px;
-}
-
 .navbar-header.col-lg-1 {
   width: 12%;
-}
-
-@media (max-width: 767px) {
-  .navbar-inverse .navbar-brand {
-    width: 50px;
-    padding: 0;
-    margin: 14px 5px 0 5px;
-    overflow: hidden;
-    background-position: 0 0px;
-  }
-  .navbar-header.col-xs-3 {
-    width: 25%;
-  }
-  .navbar-collapse {
-    padding: 10px 1px;
-  }
 }
 
 .navbar-form {

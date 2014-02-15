@@ -1,6 +1,6 @@
 /**
-* bootstrap.js v3.0.28 by @fat and @mdo
-* Copyright 2013 Twitter Inc.
+* bootstrap.js v3.0.29 by @fat and @mdo
+* Copyright 2014 Twitter Inc.
 * http://www.apache.org/licenses/LICENSE-2.0
 */
 if (!jQuery) { throw new Error("Bootstrap requires jQuery") }

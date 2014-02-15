@@ -22,10 +22,7 @@
 //------------------  END color junk ---------------------
 
 //------------------  generic  -----------------------
-.content-wrapper {
-  margin-top: 79px;
-}
-.content {
+.container.content {
   background-color: @neutralWhite;
   padding-top: (@grid-gutter-width / 2);
 }
@@ -172,39 +169,40 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   display: block;
 }
 
+.navbar-nav {
+  margin: 0;
+}
+.navbar-collapse {
+  box-shadow: none;
+  border-top: 0;
+}
+
 //------------------ sub navbar overrides ------------
 
-.navbar-default.navbar {
+.navbar.subnav {
   z-index: @zindex-navbar - 10;
   min-height: @subnavbar-height;
   font-size: @font-size-small;
   &.navbar-fixed-top {
     margin-top: @navbar-height;
   }
-}
-
-.navbar-nav {
-  margin: 0;
-}
-
-.navbar-default {
- .navbar-nav {
-  margin: 0;
-  //margin: (@subnavbar-padding-vertical / 2) -@subnavbar-padding-horizontal;
-
-  > li > a {
-    padding-top:    5px;
-    padding-bottom: 5px;
-  }
-  // Uncollapse the nav
-  @media (min-width: @grid-float-breakpoint) {
+  .navbar-nav {
+    margin: 0;
+    //margin: (@subnavbar-padding-vertical / 2) -@subnavbar-padding-horizontal;
 
     > li > a {
-      padding-top: ((@subnavbar-height - @line-height-computed) / 2);
-      padding-bottom: ((@subnavbar-height - @line-height-computed) / 2);
+      padding-top:    5px;
+      padding-bottom: 5px;
+    }
+    // Uncollapse the nav
+    @media (min-width: @grid-float-breakpoint) {
+
+      > li > a {
+        padding-top: ((@subnavbar-height - @line-height-computed) / 2);
+        padding-bottom: ((@subnavbar-height - @line-height-computed) / 2);
+      }
     }
   }
- }
 }
 //override negative left margin
 .navbar-brand {
@@ -224,33 +222,8 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   }
 }
 
-//set brand logo for sm, md, lg
-.navbar-inverse .navbar-brand{
-  background: url(/assets/img/manta-logo-sp-2x.png) -50px 0 no-repeat;
-  background-size: 150px 25px;
-  height: @subnavbar-height;
-  width: 100px;
-  margin: 14px 5px 0 0;
-  overflow: hidden;
-}
 .navbar-header.col-lg-1{
   width:12%;
-}
-// set brand for xs
-@media (max-width:@grid-float-breakpoint-max){
-  .navbar-inverse .navbar-brand{
-    background-position: 0px 0px;
-    width: 50px;
-    margin: 14px 5px 0 5px;
-    overflow: hidden;
-    padding: 0;
-  }
-  .navbar-header.col-xs-3{
-    width:25%;
-  }
-  .navbar-collapse{
-    padding: @padding-large-vertical 1px;
-  }
 }
 // Navbar form
 //
