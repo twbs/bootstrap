@@ -44,7 +44,7 @@
         .toggleClass('open')
         .trigger('shown.bs.dropdown', relatedTarget)
 
-      $this.focus()
+      $this.trigger('focus')
     }
 
     return false
@@ -64,8 +64,8 @@
     var isActive = $parent.hasClass('open')
 
     if (!isActive || (isActive && e.keyCode == 27)) {
-      if (e.which == 27) $parent.find(toggle).focus()
-      return $this.click()
+      if (e.which == 27) $parent.find(toggle).trigger('focus')
+      return $this.trigger('click')
     }
 
     var desc = ' li:not(.divider):visible a'
@@ -79,7 +79,7 @@
     if (e.keyCode == 40 && index < $items.length - 1) index++                        // down
     if (!~index)                                      index = 0
 
-    $items.eq(index).focus()
+    $items.eq(index).trigger('focus')
   }
 
   function clearMenus(e) {
