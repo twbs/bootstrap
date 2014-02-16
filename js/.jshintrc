@@ -4,7 +4,6 @@
   "browser"  : true,
   "debug"    : true,
   "devel"    : true,
-  "eqeqeq"   : false,
   "eqnull"   : true,
   "expr"     : true,
   "indent"   : 2,
