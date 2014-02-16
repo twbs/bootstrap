@@ -7,6 +7,7 @@
   "eqeqeq"   : false,
   "eqnull"   : true,
   "expr"     : true,
+  "indent"   : 2,
   "laxbreak" : true,
   "quotmark" : "single",
   "validthis": true
