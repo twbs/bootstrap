@@ -1,6 +1,6 @@
 /*!
 
-Holder - 2.3 - client side image placeholders
+Holder - 2.3.1 - client side image placeholders
 (c) 2012-2014 Ivan Malopinsky / http://imsky.co
 
 Provided under the MIT License.
@@ -9,7 +9,6 @@ Commercial use requires attribution.
 */
 var Holder = Holder || {};
 (function (app, win) {
-
 var system_config = {
 	use_svg: false,
 	use_canvas: false,
@@ -151,11 +150,15 @@ function text_size(width, height, template) {
 }
 
 var svg_el = (function(){
+	//Prevent IE <9 from initializing SVG renderer
+	if(!window.XMLSerializer) return;
 	var serializer = new XMLSerializer();
 	var svg_ns = "http://www.w3.org/2000/svg"
 	var svg = document.createElementNS(svg_ns, "svg");
-	svg.setAttribute("xmlns", "http://www.w3.org/2000/svg")
-	svg.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
+	//IE throws an exception if this is set and Chrome requires it to be set
+	if(svg.webkitMatchesSelector){
+		svg.setAttribute("xmlns", "http://www.w3.org/2000/svg")
+	}
 	var bg_el = document.createElementNS(svg_ns, "rect")
 	var text_el = document.createElementNS(svg_ns, "text")
 	var textnode_el = document.createTextNode(null)
@@ -163,7 +166,7 @@ var svg_el = (function(){
 	text_el.appendChild(textnode_el)
 	svg.appendChild(bg_el)
 	svg.appendChild(text_el)
-		
+
 	return function(props){
 		svg.setAttribute("width",props.width);
 		svg.setAttribute("height", props.height);

@@ -8,8 +8,8 @@ body {
 .header,
 .marketing,
 .footer {
-  padding-left: 15px;
   padding-right: 15px;
+  padding-left: 15px;
 }
 
 /* Custom page header */
@@ -18,10 +18,10 @@ body {
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
+  padding-bottom: 19px;
   margin-top: 0;
   margin-bottom: 0;
   line-height: 40px;
-  padding-bottom: 19px;
 }
 
 /* Custom page footer */
@@ -47,8 +47,8 @@ body {
   border-bottom: 1px solid #e5e5e5;
 }
 .jumbotron .btn {
-  font-size: 21px;
   padding: 14px 24px;
+  font-size: 21px;
 }
 
 /* Supporting marketing content */
@@ -65,8 +65,8 @@ body {
   .header,
   .marketing,
   .footer {
-    padding-left: 0;
     padding-right: 0;
+    padding-left: 0;
   }
   /* Space out the masthead */
   .header {

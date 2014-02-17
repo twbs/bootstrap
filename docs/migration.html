@@ -106,14 +106,6 @@ lead: "Guidance on how to upgrade from Bootstrap v2.x to v3.x with emphasis on m
           <td>Split into <code>.hidden-md .hidden-lg</code></td>
         </tr>
         <tr>
-          <td><code>.input-small</code></td>
-          <td><code>.input-sm</code></td>
-        </tr>
-        <tr>
-          <td><code>.input-large</code></td>
-          <td><code>.input-lg</code></td>
-        </tr>
-        <tr>
           <td><code>.input-block-level</code></td>
           <td><code>.form-control</code></td>
         </tr>
@@ -261,6 +253,10 @@ lead: "Guidance on how to upgrade from Bootstrap v2.x to v3.x with emphasis on m
           <td><code>.col-sm-pull-*</code> <code>.col-md-pull-*</code> <code>.col-lg-pull-*</code></td>
         </tr>
         <tr>
+          <td>Input height sizes</td>
+          <td><code>.input-sm</code> <code>.input-lg</code></td>
+        </tr>
+        <tr>
           <td>Input groups</td>
           <td><code>.input-group</code> <code>.input-group-addon</code> <code>.input-group-btn</code></td>
         </tr>
@@ -345,9 +341,19 @@ lead: "Guidance on how to upgrade from Bootstrap v2.x to v3.x with emphasis on m
           <td class="text-muted">N/A</td>
         </tr>
         <tr>
-          <td>Block level from input</td>
+          <td>Fixed-width input sizes</td>
+          <td><code>.input-mini</code> <code>.input-small</code> <code>.input-medium</code> <code>.input-large</code> <code>.input-xlarge</code> <code>.input-xxlarge</code></td>
+          <td>Use <a href="../css/#forms-controls"><code>.form-control</code></a> and <a href="../css/#grid">the grid system</a> instead.</td>
+        </tr>
+        <tr>
+          <td>Block level form input</td>
           <td><code>.input-block-level</code></td>
           <td>No direct equivalent, but <a href="../css/#forms-controls">forms controls</a> are similar.</td>
+        </tr>
+        <tr>
+          <td>Inverse buttons</td>
+          <td><code>.btn-inverse</code></td>
+          <td class="text-muted">N/A</td>
         </tr>
         <tr>
           <td>Fluid row</td>
@@ -399,6 +405,11 @@ lead: "Guidance on how to upgrade from Bootstrap v2.x to v3.x with emphasis on m
           <td><code>.nav-list</code> <code>.nav-header</code></td>
           <td>No direct equivalent, but <a href="../components/#list-group">list groups</a> and <a href="../javascript/#collapse"><code>.panel-group</code>s</a> are similar.</td>
         </tr>
+        <tr>
+          <td>Inline help for form controls</td>
+          <td><code>.help-inline</code></td>
+          <td>No exact equivalent, but <code>.help-block</code> is similar.</td>
+        </tr>
       </tbody>
     </table>
   </div><!-- /.table-responsive -->
@@ -415,8 +426,8 @@ lead: "Guidance on how to upgrade from Bootstrap v2.x to v3.x with emphasis on m
     <li>Images are no longer responsive by default. Use <code>.img-responsive</code> for fluid <code>&lt;img&gt;</code> size.</li>
     <li>The icons, now <code>.glyphicon</code>, are now font based. Icons also require a base and icon class (e.g. <code>.glyphicon .glyphicon-asterisk</code>).</li>
     <li>Typeahead has been dropped, in favor of using <a href="http://twitter.github.io/typeahead.js/">Twitter Typeahead</a>.</li>
-    <li>Modal markup has changed significantly. The <code>.modal-header</code>, <code>.modal-body</code>, and <code>.modal-footer</code> sections are now wrapped in <code>.modal-content</code> and <code>.modal-dialog</code> for better mobile styling and behavior.</li>
-    <li>The HTML loaded by the <code>remote</code> modal option is now injected into the <code>.modal</code> instead of into the <code>.modal-body</code>. This allows you to also easily vary the header and footer of the modal, not just the modal body.</li>
+    <li>Modal markup has changed significantly. The <code>.modal-header</code>, <code>.modal-body</code>, and <code>.modal-footer</code> sections are now wrapped in <code>.modal-content</code> and <code>.modal-dialog</code> for better mobile styling and behavior. Also, you should no longer apply <code>.hide</code> to <code>.modal</code> in your markup.</li>
+    <li>As of v3.1.0, the HTML loaded by the <code>remote</code> modal option is now injected into the <code>.modal-content</code> (from v3.0.0 to v3.0.3, into the <code>.modal</code>) instead of into the <code>.modal-body</code>. This allows you to also easily vary the header and footer of the modal, not just the modal body.</li>
     <li>JavaScript events are namespaced. For example, to handle the modal "show" event, use <code>'show.bs.modal'</code>. For tabs "shown" use <code>'shown.bs.tab'</code>, etc.</li>
   </ul>
   <p>For more information on upgrading to v3.0, and code snippets from the community, see <a href="http://bootply.com/">Bootply</a>.</p>

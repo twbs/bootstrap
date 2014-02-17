@@ -5,12 +5,11 @@
     browserName: "safari",
     platform: "OS X 10.9"
   },
-  # FIXME: keeps timing out frequently for unknown reasons
   # {
-  #   browserName: "chrome",
-  #   platform: "OS X 10.9"
+  #   browserName: "googlechrome",
+  #   platform: "OS X 10.9",
+  #   version: "31"
   # },
-
   {
     browserName: "firefox",
     platform: "OS X 10.9"
@@ -46,7 +45,7 @@
   # },
 
   {
-    browserName: "chrome",
+    browserName: "googlechrome",
     platform: "Windows 8.1"
   },
   {
@@ -58,21 +57,21 @@
 
   {
     browserName: "iphone",
-    platform: "OS X 10.8"
+    platform: "OS X 10.9",
+    version: "7"
   },
 
   # iOS Chrome not currently supported by Sauce Labs
 
-  # Linux (unofficial):
-  # FIXME: currently fails 1 tooltip test
-  # {
-  #   browserName: "chrome",
-  #   platform: "Linux"
-  # },
-  # {
-  #   browserName: "firefox",
-  #   platform: "Linux"
-  # }
+  # Linux (unofficial)
+  {
+    browserName: "googlechrome",
+    platform: "Linux"
+  },
+  {
+    browserName: "firefox",
+    platform: "Linux"
+  }
 
   # Android Chrome not currently supported by Sauce Labs
 
