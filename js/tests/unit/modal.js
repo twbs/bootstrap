@@ -25,7 +25,6 @@ $(function () {
 
   test('should insert into dom when show method is called', function () {
     stop()
-    $.support.transition = false
     $('<div id="modal-test"></div>')
       .on('shown.bs.modal', function () {
         ok($('#modal-test').length, 'modal inserted into dom')
@@ -37,7 +36,6 @@ $(function () {
 
   test('should fire show event', function () {
     stop()
-    $.support.transition = false
     $('<div id="modal-test"></div>')
       .on('show.bs.modal', function () {
         ok(true, 'show was called')
@@ -51,7 +49,6 @@ $(function () {
 
   test('should not fire shown when default prevented', function () {
     stop()
-    $.support.transition = false
     $('<div id="modal-test"></div>')
       .on('show.bs.modal', function (e) {
         e.preventDefault()
@@ -66,7 +63,6 @@ $(function () {
 
   test('should hide modal when hide is called', function () {
     stop()
-    $.support.transition = false
 
     $('<div id="modal-test"></div>')
       .on('shown.bs.modal', function () {
@@ -84,7 +80,6 @@ $(function () {
 
   test('should toggle when toggle is called', function () {
     stop()
-    $.support.transition = false
     var div = $('<div id="modal-test"></div>')
     div
       .on('shown.bs.modal', function () {
@@ -102,7 +97,6 @@ $(function () {
 
   test('should remove from dom when click [data-dismiss=modal]', function () {
     stop()
-    $.support.transition = false
     var div = $('<div id="modal-test"><span class="close" data-dismiss="modal"></span></div>')
     div
       .on('shown.bs.modal', function () {
@@ -120,7 +114,6 @@ $(function () {
 
   test('should allow modal close with "backdrop:false"', function () {
     stop()
-    $.support.transition = false
     var div = $('<div>', { id: 'modal-test', 'data-backdrop': false })
     div
       .on('shown.bs.modal', function () {
@@ -137,7 +130,6 @@ $(function () {
 
   test('should close modal when clicking outside of modal-content', function () {
     stop()
-    $.support.transition = false
     var div = $('<div id="modal-test"><div class="contents"></div></div>')
     div
       .bind('shown.bs.modal', function () {
@@ -156,7 +148,6 @@ $(function () {
 
   test('should trigger hide event once when clicking outside of modal-content', function () {
     stop()
-    $.support.transition = false
 
     var triggered
     var div = $('<div id="modal-test"><div class="contents"></div></div>')
@@ -176,7 +167,6 @@ $(function () {
 
   test('should close reopened modal with [data-dismiss=modal] click', function () {
     stop()
-    $.support.transition = false
     var div = $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"></div></div></div>')
     div
       .bind('shown.bs.modal', function () {

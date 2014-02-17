@@ -48,7 +48,6 @@ $(function () {
 
 
   test('should not fire closed when close is prevented', function () {
-    $.support.transition = false
     stop();
     $('<div class="tab"/>')
       .on('show.bs.tab', function (e) {

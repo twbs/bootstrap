@@ -19,7 +19,6 @@ $(function () {
   })
 
   test('should render popover element', function () {
-    $.support.transition = false
     var popover = $('<a href="#" title="mdo" data-content="http://twitter.com/mdo">@mdo</a>')
       .appendTo('#qunit-fixture')
       .popover('show')
@@ -30,7 +29,6 @@ $(function () {
   })
 
   test('should store popover instance in popover data object', function () {
-    $.support.transition = false
     var popover = $('<a href="#" title="mdo" data-content="http://twitter.com/mdo">@mdo</a>')
       .popover()
 
@@ -38,7 +36,6 @@ $(function () {
   })
 
   test('should get title and content from options', function () {
-    $.support.transition = false
     var popover = $('<a href="#">@fat</a>')
       .appendTo('#qunit-fixture')
       .popover({
@@ -62,7 +59,6 @@ $(function () {
   })
 
   test('should get title and content from attributes', function () {
-    $.support.transition = false
     var popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
       .appendTo('#qunit-fixture')
       .popover()
@@ -79,7 +75,6 @@ $(function () {
 
 
   test('should get title and content from attributes #2', function () {
-    $.support.transition = false
     var popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
       .appendTo('#qunit-fixture')
       .popover({
@@ -98,7 +93,6 @@ $(function () {
   })
 
   test('should respect custom classes', function () {
-    $.support.transition = false
     var popover = $('<a href="#">@fat</a>')
       .appendTo('#qunit-fixture')
       .popover({
