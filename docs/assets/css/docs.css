@@ -1201,7 +1201,7 @@ h1[id] {
   border: 1px solid #fff;
   background-color: #f9f9f9;
 }
-.bs-glyphicons .glyphicon {
+.bs-glyphicons .glyphicon, .bs-glyphicons .icomanta {
   margin-top: 5px;
   margin-bottom: 10px;
   font-size: 24px;

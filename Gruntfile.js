@@ -18,6 +18,7 @@ module.exports = function (grunt) {
   var fs = require('fs');
   var path = require('path');
   var generateGlyphiconsData = require('./grunt/bs-glyphicons-data-generator.js');
+  var generateIcomantaData = require('./grunt/icomanta-data-generator.js');
   var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
   var generateRawFilesJs = require('./grunt/bs-raw-files-generator.js');
   var updateShrinkwrap = require('./grunt/shrinkwrap.js');
@@ -415,7 +416,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist', ['clean', 'dist-css', 'copy:fonts', 'dist-js', 'dist-docs']);
 
   // Default task.
-  grunt.registerTask('default', ['test', 'dist', 'build-glyphicons-data', 'build-customizer', 'update-shrinkwrap']);
+  grunt.registerTask('default', ['test', 'dist', 'build-glyphicons-data', 'build-icomanta-data', 'build-customizer', 'update-shrinkwrap']);
 
   // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
@@ -423,6 +424,7 @@ module.exports = function (grunt) {
   grunt.registerTask('change-version-number', 'sed');
 
   grunt.registerTask('build-glyphicons-data', generateGlyphiconsData);
+  grunt.registerTask('build-icomanta-data', generateIcomantaData);
 
   // task for building customizer
   grunt.registerTask('build-customizer', ['build-customizer-html', 'build-raw-files']);
