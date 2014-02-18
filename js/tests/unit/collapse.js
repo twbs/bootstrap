@@ -29,7 +29,6 @@ $(function () {
   })
 
   test('should not fire shown when show is prevented', function () {
-    $.support.transition = false
     stop()
     $('<div class="collapse"/>')
       .on('show.bs.collapse', function (e) {
@@ -44,7 +43,6 @@ $(function () {
   })
 
   test('should reset style to auto after finishing opening collapse', function () {
-    $.support.transition = false
     stop()
     $('<div class="collapse" style="height: 0px"/>')
       .on('show.bs.collapse', function () {
@@ -58,7 +56,6 @@ $(function () {
   })
 
   test('should add active class to target when collapse shown', function () {
-    $.support.transition = false
     stop()
 
     var target = $('<a data-toggle="collapse" href="#test1"></a>')
@@ -75,7 +72,6 @@ $(function () {
   })
 
   test('should remove active class to target when collapse hidden', function () {
-    $.support.transition = false
     stop()
 
     var target = $('<a data-toggle="collapse" href="#test1"></a>')
@@ -92,7 +88,6 @@ $(function () {
   })
 
   test('should remove active class from inactive accordion targets', function () {
-    $.support.transition = false
     stop()
 
     var accordion = $('<div id="accordion"><div class="accordion-group"></div><div class="accordion-group"></div><div class="accordion-group"></div></div>')
@@ -127,7 +122,6 @@ $(function () {
   })
 
   test('should allow dots in data-parent', function () {
-    $.support.transition = false
     stop()
 
     var accordion = $('<div class="accordion"><div class="accordion-group"></div><div class="accordion-group"></div><div class="accordion-group"></div></div>')

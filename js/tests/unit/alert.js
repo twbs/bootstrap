@@ -29,8 +29,6 @@ $(function () {
   })
 
   test('should remove element when clicking .close', function () {
-    $.support.transition = false
-
     var alertHTML = '<div class="alert-message warning fade in">' +
         '<a class="close" href="#" data-dismiss="alert">×</a>' +
         '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>' +
@@ -45,7 +43,6 @@ $(function () {
   })
 
   test('should not fire closed when close is prevented', function () {
-    $.support.transition = false
     stop();
     $('<div class="alert"/>')
       .on('close.bs.alert', function (e) {

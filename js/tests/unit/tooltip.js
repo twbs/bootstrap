@@ -33,7 +33,6 @@ $(function () {
   })
 
   test('should place tooltips relative to placement option', function () {
-    $.support.transition = false
     var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
       .appendTo('#qunit-fixture')
       .tooltip({placement: 'bottom'})
@@ -44,7 +43,6 @@ $(function () {
   })
 
   test('should allow html entities', function () {
-    $.support.transition = false
     var tooltip = $('<a href="#" rel="tooltip" title="<b>@fat</b>"></a>')
       .appendTo('#qunit-fixture')
       .tooltip({html: true})
@@ -390,7 +388,6 @@ $(function () {
   })
 
   test('tooltips should be placed dynamically, with the dynamic placement option', function () {
-    $.support.transition = false
     var ttContainer = $('<div id="dynamic-tt-test"/>').css({
         'height' : 400,
         'overflow' : 'hidden',
