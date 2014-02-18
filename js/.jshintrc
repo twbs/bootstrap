@@ -1,14 +1,14 @@
 {
-  "validthis": true,
-  "laxcomma" : true,
-  "laxbreak" : true,
+  "asi"      : true,
+  "boss"     : true,
   "browser"  : true,
-  "eqeqeq"   : false,
-  "eqnull"   : true,
   "debug"    : true,
   "devel"    : true,
-  "curly"    : false,
-  "boss"     : true,
+  "eqeqeq"   : false,
+  "eqnull"   : true,
   "expr"     : true,
-  "asi"      : true
+  "indent"   : 2,
+  "laxbreak" : true,
+  "quotmark" : "single",
+  "validthis": true
 }

@@ -3,19 +3,69 @@
 // --------------------------------------------------
 
 
+// Headings
+// -------------------------
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: @headings-font-family;
+  font-weight: @headings-font-weight;
+  line-height: @headings-line-height;
+  color: @headings-color;
+
+  small,
+  .small {
+    font-weight: normal;
+    line-height: 1;
+    color: @headings-small-color;
+  }
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  margin-top: @line-height-computed;
+  margin-bottom: (@line-height-computed / 2);
+
+  small,
+  .small {
+    font-size: 65%;
+  }
+}
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: (@line-height-computed / 2);
+  margin-bottom: (@line-height-computed / 2);
+
+  small,
+  .small {
+    font-size: 75%;
+  }
+}
+
+h1, .h1 { font-size: @font-size-h1; }
+h2, .h2 { font-size: @font-size-h2; }
+h3, .h3 { font-size: @font-size-h3; }
+h4, .h4 { font-size: @font-size-h4; }
+h5, .h5 { font-size: @font-size-h5; }
+h6, .h6 { font-size: @font-size-h6; }
+
+
 // Body text
 // -------------------------
 
 p {
   margin: 0 0 (@line-height-computed / 2);
 }
+
 .lead {
   margin-bottom: @line-height-computed;
-  font-size: (@font-size-base * 1.15);
+  font-size: floor((@font-size-base * 1.15));
   font-weight: 200;
   line-height: 1.4;
 
-  @media (min-width: 768px) {
+  @media (min-width: @screen-sm-min) {
     font-size: (@font-size-base * 1.5);
   }
 }
@@ -25,64 +75,59 @@ p {
 // -------------------------
 
 // Ex: 14px base font * 85% = about 12px
-small   { font-size: 85%; }
+small,
+.small  { font-size: 85%; }
 
 // Undo browser default styling
 cite    { font-style: normal; }
-
-// Contextual emphasis
-.text-muted          { color: @text-muted; }
-.text-primary        { color: @brand-primary; }
-.text-warning        { color: @state-warning-text; }
-.text-danger         { color: @state-danger-text; }
-.text-success        { color: @state-success-text; }
-.text-info           { color: @state-info-text; }
 
 // Alignment
 .text-left           { text-align: left; }
 .text-right          { text-align: right; }
 .text-center         { text-align: center; }
+.text-justify        { text-align: justify; }
 
-
-// Headings
-// -------------------------
-
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: @headings-font-family;
-  font-weight: @headings-font-weight;
-  line-height: @headings-line-height;
-  small {
-    font-weight: normal;
-    line-height: 1;
-    color: @headings-small-color;
-  }
+// Contextual colors
+.text-muted {
+  color: @text-muted;
+}
+.text-primary {
+  .text-emphasis-variant(@brand-primary);
+}
+.text-success {
+  .text-emphasis-variant(@state-success-text);
+}
+.text-info {
+  .text-emphasis-variant(@state-info-text);
+}
+.text-warning {
+  .text-emphasis-variant(@state-warning-text);
+}
+.text-danger {
+  .text-emphasis-variant(@state-danger-text);
 }
 
-h1,
-h2,
-h3 {
-  margin-top: @line-height-computed;
-  margin-bottom: (@line-height-computed / 2);
+// Contextual backgrounds
+// For now we'll leave these alongside the text classes until v4 when we can
+// safely shift things around (per SemVer rules).
+.bg-primary {
+  // Given the contrast here, this is the only class to have its color inverted
+  // automatically.
+  color: #fff;
+  .bg-variant(@brand-primary);
 }
-h4,
-h5,
-h6 {
-  margin-top: (@line-height-computed / 2);
-  margin-bottom: (@line-height-computed / 2);
+.bg-success {
+  .bg-variant(@state-success-bg);
 }
-
-h1, .h1 { font-size: floor(@font-size-base * 2.60); } // ~36px
-h2, .h2 { font-size: floor(@font-size-base * 2.15); } // ~30px
-h3, .h3 { font-size: ceil(@font-size-base * 1.70); } // ~24px
-h4, .h4 { font-size: ceil(@font-size-base * 1.25); } // ~18px
-h5, .h5 { font-size:  @font-size-base; }
-h6, .h6 { font-size: ceil(@font-size-base * 0.85); } // ~12px
-
-h1 small, .h1 small { font-size: ceil(@font-size-base * 1.70); } // ~24px
-h2 small, .h2 small { font-size: ceil(@font-size-base * 1.25); } // ~18px
-h3 small, .h3 small,
-h4 small, .h4 small { font-size: @font-size-base; }
+.bg-info {
+  .bg-variant(@state-info-bg);
+}
+.bg-warning {
+  .bg-variant(@state-warning-bg);
+}
+.bg-danger {
+  .bg-variant(@state-danger-bg);
+}
 
 
 // Page header
@@ -95,7 +140,6 @@ h4 small, .h4 small { font-size: @font-size-base; }
 }
 
 
-
 // Lists
 // --------------------------------------------------
 
@@ -105,7 +149,7 @@ ol {
   margin-top: 0;
   margin-bottom: (@line-height-computed / 2);
   ul,
-  ol{
+  ol {
     margin-bottom: 0;
   }
 }
@@ -117,9 +161,12 @@ ol {
   padding-left: 0;
   list-style: none;
 }
+
 // Inline turns list items into inline-block
 .list-inline {
   .list-unstyled();
+  margin-left: -5px;
+
   > li {
     display: inline-block;
     padding-left: 5px;
@@ -129,6 +176,7 @@ ol {
 
 // Description Lists
 dl {
+  margin-top: 0; // Remove browser default
   margin-bottom: @line-height-computed;
 }
 dt,
@@ -158,7 +206,7 @@ dd {
     }
     dd {
       margin-left: @component-offset-horizontal;
-      .clearfix(); // Clear the floated `dt` if an empty `dd` is present
+      &:extend(.clearfix all); // Clear the floated `dt` if an empty `dd` is present
     }
   }
 }
@@ -168,12 +216,12 @@ dd {
 
 // Abbreviations and acronyms
 abbr[title],
-// Added data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
+// Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
 abbr[data-original-title] {
   cursor: help;
   border-bottom: 1px dotted @abbr-border-color;
 }
-abbr.initialism {
+.initialism {
   font-size: 90%;
   text-transform: uppercase;
 }
@@ -182,48 +230,56 @@ abbr.initialism {
 blockquote {
   padding: (@line-height-computed / 2) @line-height-computed;
   margin: 0 0 @line-height-computed;
+  font-size: @blockquote-font-size;
   border-left: 5px solid @blockquote-border-color;
-  p {
-    font-size: (@font-size-base * 1.25);
-    font-weight: 300;
-    line-height: 1.25;
-  }
-  p:last-child {
-    margin-bottom: 0;
-  }
-  small {
-    display: block;
-    line-height: @line-height-base;
-    color: @blockquote-small-color;
-    &:before {
-      content: '\2014 \00A0';// EM DASH, NBSP
+
+  p,
+  ul,
+  ol {
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 
-  // Float right with text-align: right
-  &.pull-right {
-    padding-right: 15px;
-    padding-left: 0;
-    border-right: 5px solid @blockquote-border-color;
-    border-left: 0;
-    p,
-    small {
-      text-align: right;
+  // Note: Deprecated small and .small as of v3.1.0
+  // Context: https://github.com/twbs/bootstrap/issues/11660
+  footer,
+  small,
+  .small {
+    display: block;
+    font-size: 80%; // back to default font-size
+    line-height: @line-height-base;
+    color: @blockquote-small-color;
+
+    &:before {
+      content: '\2014 \00A0'; // em dash, nbsp
     }
-    small {
-      &:before {
-        content: '';
-      }
-      &:after {
-        content: '\00A0 \2014';// NBSP, EM DASH
-      }
+  }
+}
+
+// Opposite alignment of blockquote
+//
+// Heads up: `blockquote.pull-right` has been deprecated as of v3.1.0.
+.blockquote-reverse,
+blockquote.pull-right {
+  padding-right: 15px;
+  padding-left: 0;
+  border-right: 5px solid @blockquote-border-color;
+  border-left: 0;
+  text-align: right;
+
+  // Account for citation
+  footer,
+  small,
+  .small {
+    &:before { content: ''; }
+    &:after {
+      content: '\00A0 \2014'; // nbsp, em dash
     }
   }
 }
 
 // Quotes
-q:before,
-q:after,
 blockquote:before,
 blockquote:after {
   content: "";
@@ -231,7 +287,6 @@ blockquote:after {
 
 // Addresses
 address {
-  display: block;
   margin-bottom: @line-height-computed;
   font-style: normal;
   line-height: @line-height-base;

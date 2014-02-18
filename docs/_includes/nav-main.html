@@ -1,0 +1,43 @@
+<header class="navbar navbar-default navbar-static-top" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-main-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../">Manta Bootstrap</a>
+        </div>
+        <div class="navbar-collapse navbar-main-collapse collapse" style="height: 1px;">
+          <ul class="nav navbar-nav">
+            <li{% if page.slug == "getting-started" %} class="active"{% endif %}>
+              <a href="../getting-started">Getting started</a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Library<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="../css">CSS</a>
+                </li>
+                <li>
+                  <a href="../components">Bootstrap Components</a>
+                </li>
+                <li>
+                  <a href="../manta-components">Manta Components</a>
+                </li>
+                <li>
+                  <a href="../javascript">JavaScript</a>
+                </li>
+                <li>
+                  <a href="../demo-company">Demo Company Page</a>
+                </li>
+              </ul>
+            </li>
+            <li{% if page.slug == "customize" %} class="active"{% endif %}>
+              <a href="../customize">Customize</a>
+            </li>
+          </ul>
+        </div>
+    </div>
+</header>
