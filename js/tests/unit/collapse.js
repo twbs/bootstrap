@@ -33,12 +33,12 @@ $(function () {
     stop()
     $('<div class="collapse"/>')
       .on('show.bs.collapse', function (e) {
-        e.preventDefault();
-        ok(true);
-        start();
+        e.preventDefault()
+        ok(true)
+        start()
       })
       .on('shown.bs.collapse', function () {
-        ok(false);
+        ok(false)
       })
       .collapse('show')
   })

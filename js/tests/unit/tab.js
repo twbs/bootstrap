@@ -49,15 +49,15 @@ $(function () {
 
   test('should not fire closed when close is prevented', function () {
     $.support.transition = false
-    stop();
+    stop()
     $('<div class="tab"/>')
       .on('show.bs.tab', function (e) {
-        e.preventDefault();
-        ok(true);
-        start();
+        e.preventDefault()
+        ok(true)
+        start()
       })
       .on('shown.bs.tab', function () {
-        ok(false);
+        ok(false)
       })
       .tab('show')
   })

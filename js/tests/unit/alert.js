@@ -46,15 +46,15 @@ $(function () {
 
   test('should not fire closed when close is prevented', function () {
     $.support.transition = false
-    stop();
+    stop()
     $('<div class="alert"/>')
       .on('close.bs.alert', function (e) {
-        e.preventDefault();
-        ok(true);
-        start();
+        e.preventDefault()
+        ok(true)
+        start()
       })
       .on('closed.bs.alert', function () {
-        ok(false);
+        ok(false)
       })
       .alert('close')
   })
