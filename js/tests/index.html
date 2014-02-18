@@ -3,20 +3,20 @@
 <head>
   <title>Bootstrap Plugin Test Suite</title>
 
-  <!-- jquery -->
+  <!-- jQuery -->
   <script src="vendor/jquery.js"></script>
 
-  <!-- qunit -->
+  <!-- QUnit -->
   <link rel="stylesheet" href="vendor/qunit.css" media="screen">
   <script src="vendor/qunit.js"></script>
   <script>
     // See https://github.com/axemclion/grunt-saucelabs#test-result-details-with-qunit
-    QUnit.done(function(results) {
+    QUnit.done(function (results) {
       window.global_test_results = results
     })
   </script>
 
-  <!--  plugin sources -->
+  <!-- Plugin sources -->
   <script>$.support.transition = false</script>
   <script src="../../js/alert.js"></script>
   <script src="../../js/button.js"></script>
@@ -30,8 +30,7 @@
   <script src="../../js/popover.js"></script>
   <script src="../../js/affix.js"></script>
 
-  <!-- unit tests -->
-  <script src="unit/transition.js"></script>
+  <!-- Unit tests -->
   <script src="unit/alert.js"></script>
   <script src="unit/button.js"></script>
   <script src="unit/carousel.js"></script>
