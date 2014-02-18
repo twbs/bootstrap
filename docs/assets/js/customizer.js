@@ -331,11 +331,11 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
   // browser support alerts
   if (!window.URL && navigator.userAgent.toLowerCase().indexOf('safari') != -1) {
-    showCallout('Looks like you\'re using safari, which sadly doesn\'t have the best support' +
+    showCallout('Looks like you\'re using Safari, which sadly doesn\'t have the best support' +
                  'for HTML5 blobs. Because of this your file will be downloaded with the name <code>"untitled"</code>.' +
                  'However, if you check your downloads folder, just rename this <code>"untitled"</code> file' +
                  'to <code>"bootstrap.zip"</code> and you should be good to go!')
-  } else if (!window.URL && !window.webkitURL) {
+  } else if ((!window.URL && !window.webkitURL) || !new Blob()) {
     $('.bs-docs-section, .bs-docs-sidebar').css('display', 'none')
 
     showCallout('Looks like your current browser doesn\'t support the Bootstrap Customizer. Please take a second' +
