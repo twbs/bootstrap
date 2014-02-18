@@ -14,6 +14,7 @@
 @grayLight:         lighten(@black, 75%);
 @grayLighter:       lighten(@black, 90%);
 @white:             #fff;
+@gray-light:        lighten(#000, 60%);   // #999
 
 // Accent Colors
 @blue:              #049CDB;
@@ -25,9 +26,35 @@
 @pink:              #c3325f;
 @purple:            #7a43b6;
 
+@brand-primary:         #428bca;
+@link-color:            @brand-primary;
+
 // Baseline grid
 @basefont:          13px;
 @baseline:          18px;
+
+@font-size-base:          14px;
+@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
+@font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
+
+//== Badges
+//
+//##
+
+@badge-color:                 #fff;
+//** Linked badge text color on hover
+@badge-link-hover-color:      #fff;
+@badge-bg:                    @gray-light;
+
+//** Badge text color in active nav link
+@badge-active-color:          @link-color;
+//** Badge background color in active nav link
+@badge-active-bg:             #fff;
+
+@badge-font-weight:           bold;
+@badge-line-height:           1;
+@badge-border-radius:         10px;
+
 
 // Griditude
 // Modify the grid styles in mixins.less
