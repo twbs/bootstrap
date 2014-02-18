@@ -1,5 +1,4 @@
 {
-  "asi": false,
   "camelcase": true,
   "curly": true,
   "eqeqeq": true,
@@ -7,10 +6,10 @@
   "indent": 2,
   "newcap": true,
   "noarg": true,
+  "node": true,
   "nonbsp": true,
   "quotmark": "single",
-  "undef": true,
   "strict": true,
   "trailing": true,
-  "node" : true
+  "undef": true
 }
