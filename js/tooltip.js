@@ -34,7 +34,8 @@
     title: '',
     delay: 0,
     html: false,
-    container: false
+    container: false,
+    classNames: ''
   }
 
   Tooltip.prototype.init = function (type, element, options) {
@@ -330,7 +331,7 @@
   }
 
   Tooltip.prototype.tip = function () {
-    return this.$tip = this.$tip || $(this.options.template)
+    return this.$tip = this.$tip || $(this.options.template).addClass(this.options.classNames)
   }
 
   Tooltip.prototype.arrow = function () {
