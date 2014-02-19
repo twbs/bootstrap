@@ -1,9 +1,9 @@
 {
-  "name": "bootstrap",
-  "version": "3.1.1-m2",
+  "name": "manta-bootstrap",
+  "version": "3.1.1",
   "main": [
     "./dist/css/bootstrap.css",
-    "./dist/css/bootstrap-manta.css"
+    "./dist/css/bootstrap-manta.css",
     "./dist/js/bootstrap.js",
     "./dist/fonts/glyphicons-halflings-regular.eot",
     "./dist/fonts/glyphicons-halflings-regular.svg",
