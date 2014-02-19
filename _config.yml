@@ -6,18 +6,32 @@ pygments:         false
 permalink:        pretty
 
 # Server
+source:           ./docs
 destination:      ./_gh_pages
-exclude:          [".editorconfig", ".gitignore", ".ruby-version", "bower.json", "composer.json", "CONTRIBUTING.md", "CNAME", "LICENSE", "Gruntfile.js", "package.json", "node_modules", "README.md", "less"]
+host:             0.0.0.0
 port:             9001
+baseurl:          /
+url:              http://localhost:9001
+encoding:         UTF-8
+
+exclude:
+  - "jade"
+  - "vendor"
 
 # Custom vars
+current_version:  3.1.1
 repo:             https://github.com/mantacode/bootstrap
-download:         https://github.com/mantacode/bootstrap/archive/v3.0.0.zip
-download_dist:    https://github.com/mantacode/bootstrap/releases/download/v3.0.0/bootstrap-3.0.0-dist.zip
+sass_repo:        https://github.com/mantacode/bootstrap-sass
+
+download:
+  source:         https://github.com/mantacode/bootstrap/archive/v3.1.1.zip
+  dist:           https://github.com/mantacode/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist.zip
+  sass:           https://github.com/mantacode/bootstrap-sass/archive/v3.1.1.tar.gz
 
 blog:             http://blog.getbootstrap.com
 expo:             http://expo.getbootstrap.com
 
-cdn_css:          //netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css
-cdn_theme_css:    //netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css
-cdn_js:           //netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js
+cdn:
+  css:            //netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css
+  css_theme:      //netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css
+  js:             //netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js

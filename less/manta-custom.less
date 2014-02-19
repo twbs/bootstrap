@@ -74,7 +74,7 @@
 // -------------------------------------------------
 
 p {
-  margin: 0 0 floor(@line-height-computed * 0.75);
+  margin: 0 0 floor((@line-height-computed * 0.75));
 }
 
 h1, h2, h3, h4,
@@ -150,13 +150,7 @@ h1.strong,h2.strong,h3.strong,h4.strong,h5.strong,h6.strong,
   margin: 0;
   border-radius: @breadcrumb-border-radius;
   font-size: 10px;
-  > li {
-    &+li:before {
-      content: ">\00a0"; // Unicode space added since inline-block means non-collapsing white-space
-    }
-  }
 }
-
 .dropdown-menu > li > a {
   padding: 5px 20px;
 }
