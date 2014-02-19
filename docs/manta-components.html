@@ -11,7 +11,7 @@ base_url: "../"
   <div class="page-header">
     <h1 id="components">Components</h1>
   </div>
-  <h3 id="inline-delete">Inline Delete Confirmation</h1>
+  <h3 id="inline-delete">Inline Delete Confirmation</h3>
   <p>This element is simply a re-purposed carousel used as means of prompting the user to confirm deletion of an object.</p>
   <div class="bs-example">
     <div id="myCarousel" class="carousel slide" data-interval='false'>
@@ -30,11 +30,11 @@ base_url: "../"
         <div class="active item alert">
           <button class="btn btn-primary">Save Changes</button>
           <button class="btn btn-link">Cancel</button>
-          <a href="#myCarousel" id="delete" class="btn btn-link" data-slide="next">Delete</a>
+          <a href="#myCarousel" class="btn btn-link" data-slide="next">Delete</a>
         </div>
         <div class="item alert alert-block alert-danger">Delete this contact?
         <button class="btn btn-danger" value="delete" name="delete">Delete</button>
-        <a href="#myCarousel" class="btn btn-default" value="cancel" data-slide="prev" name="cancel">Cancel</a>
+        <a href="#myCarousel" class="btn btn-default" data-slide="prev">Cancel</a>
       </div>
       </div>
     </form>
@@ -46,11 +46,11 @@ base_url: "../"
     <div class="active item alert">
       <button class="btn btn-primary">Save Changes</button>
       <button class="btn btn-link">Cancel</button>
-      <a href="#myCarousel" id="delete" class="btn btn-link" data-slide="next">Delete</a>
+      <a href="#myCarousel" class="btn btn-link" data-slide="next">Delete</a>
     </div>
     <div class="item alert alert-block alert-danger">Delete this contact?
       <button class="btn btn-danger" value="delete" name="delete">Delete</button>
-      <a href="#myCarousel" class="btn btn-default" value="cancel" data-slide="prev" name="cancel">Cancel</a>
+      <a href="#myCarousel" class="btn btn-default" data-slide="prev">Cancel</a>
     </div>
   </div>
   {% endhighlight %}
@@ -60,7 +60,7 @@ base_url: "../"
   <div class="page-header">
     <h1 id="helpers">Helpers</h1>
   </div>
-  <h3 id="ellipsis-overflow">.ellipsis</h1>
+  <h3 id="ellipsis-overflow">.ellipsis</h3>
   <p>Add text-overflow ellipsis to any element you need to truncate.</p>
   <div class="bs-example">
     <span class='ellipsis' style='max-width: 300px'>This text will be truncated at 300px. Lorem ibsum</span>

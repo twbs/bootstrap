@@ -6139,18 +6139,11 @@ h6.strong,
 .table tfoot > tr:first-child > td {
   border-top: none;
 }
-/*
 .breadcrumb {
   margin: 0;
-  border-radius: @breadcrumb-border-radius;
+  border-radius: 0;
   font-size: 10px;
-  > li {
-    &+li:before {
-      content: ">\00a0"; // Unicode space added since inline-block means non-collapsing white-space
-    }
-  }
 }
-*/
 .dropdown-menu > li > a {
   padding: 5px 20px;
 }
