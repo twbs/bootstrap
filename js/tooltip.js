@@ -126,7 +126,7 @@
     var e = $.Event('show.bs.' + this.type)
 
     if (this.hasContent() && this.enabled) {
-      this.$element.trigger(e)
+      this.$element.triggerHandler(e)
 
       if (e.isDefaultPrevented()) return
       var that = this;
@@ -275,7 +275,7 @@
       that.$element.trigger('hidden.bs.' + that.type)
     }
 
-    this.$element.trigger(e)
+    this.$element.triggerHandler(e)
 
     if (e.isDefaultPrevented()) return
 

@@ -215,4 +215,30 @@ $(function () {
     $(document.body).click()
   })
 
+  test('should not call element methods on show or hide', function () {
+    var dropdownHTML = '<ul class="tabs">' +
+        '<li class="dropdown">' +
+        '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<ul class="dropdown-menu">' +
+        '<li><a href="#">Secondary link</a></li>' +
+        '<li><a href="#">Something else here</a></li>' +
+        '<li class="divider"></li>' +
+        '<li><a href="#">Another link</a></li>' +
+        '</ul>' +
+        '</li>' +
+        '</ul>',
+        dropdown = $(dropdownHTML)
+          .appendTo('#qunit-fixture')
+          .find('[data-toggle="dropdown"]')
+          .dropdown(),
+        el = dropdown.parent('.dropdown').get(0)
+
+    el.hide = function() { ok(false, 'element.hide method was called') }
+    el.show = function() { ok(false, 'element.show method was called') }
+
+    dropdown.click()
+    $(document.body).click()
+    expect(0)
+  })
+
 })
