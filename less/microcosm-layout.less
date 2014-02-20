@@ -555,6 +555,13 @@ blockquote{
       white-space: nowrap;
       border-left: 1px solid #eee;
       border-radius: 0 5px 5px 0;
+
+      span {
+        max-width: 100%;
+        float: right;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
   }
   @media (min-width:@grid-float-breakpoint){
