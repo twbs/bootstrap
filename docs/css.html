@@ -46,10 +46,16 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
   <p>For improved cross-browser rendering, we use <a href="http://necolas.github.io/normalize.css/" target="_blank">Normalize.css</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a>.</p>
 
   <h3 id="overview-container">Containers</h3>
-  <p>Easily center a page's contents by wrapping its contents in a <code>.container</code>. Containers set <code>width</code> at various media query breakpoints to match our grid system.</p>
-  <p>Note that, due to <code>padding</code> and fixed widths, containers are not nestable by default.</p>
+  <p>Bootstrap requires a containing element to wrap site contents and house our grid system. You may choose one of two containers to use in your projects. Note that, due to <code>padding</code> and more, neither container is nestable.</p>
+  <p>Use <code>.container</code> for a responsive fixed width container.</p>
 {% highlight html %}
 <div class="container">
+  ...
+</div>
+{% endhighlight %}
+  <p>Use <code>.container-fluid</code> for a full width container, spanning the entire width of your viewport.</p>
+{% highlight html %}
+<div class="container-fluid">
   ...
 </div>
 {% endhighlight %}
