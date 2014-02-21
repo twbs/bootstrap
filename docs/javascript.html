@@ -298,6 +298,13 @@ $('#myModal').on('show.bs.modal', function (e) {
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 
+  <h2 id="modals-remove-animation">Remove animation</h2>
+  <p>For modals that simply appear rather than fade in to view, remove the <code>.fade</code> class from your modal markup.</p>
+{% highlight html %}
+<div class="modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+  ...
+</div>
+{% endhighlight %}
 
   <h2 id="modals-usage">Usage</h2>
   <p>The modal plugin toggles your hidden content on demand, via data attributes or JavaScript. It also adds <code>.modal-open</code> to the <code>&lt;body&gt;</code> to override default scrolling behavior and generates a <code>.modal-backdrop</code> to provide a click area for dismissing shown modals when clicking outside the modal.</p>
