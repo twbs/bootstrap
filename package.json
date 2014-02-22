@@ -31,7 +31,7 @@
     "grunt-banner": "~0.2.0",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-connect": "~0.6.0",
+    "grunt-contrib-connect": "~0.7.0",
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-csslint": "~0.2.0",
     "grunt-contrib-cssmin": "~0.8.0",
