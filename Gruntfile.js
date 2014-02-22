@@ -202,6 +202,33 @@ module.exports = function (grunt) {
       }
     },
 
+    autoprefixer: {
+      options: {
+        browsers: ['last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12']
+      },
+      core: {
+        options: {
+          map: true
+        },
+        src: 'dist/css/<%= pkg.name %>.css'
+      },
+      theme: {
+        options: {
+          map: true
+        },
+        src: 'dist/css/<%= pkg.name %>-theme.css'
+      },
+      docs: {
+        src: 'docs/assets/css/docs.css'
+      },
+      examples: {
+        expand: true,
+        cwd: 'docs/examples/',
+        src: ['**/*.css'],
+        dest: 'docs/examples/'
+      }
+    },
+
     css_flip: {
       rtl: {
         files: {
@@ -420,7 +447,7 @@ module.exports = function (grunt) {
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
-  grunt.registerTask('dist-css', ['less-compile', 'css_flip', 'less:minify', 'cssmin', 'csscomb', 'usebanner']);
+  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer', 'css_flip', 'less:minify', 'cssmin', 'csscomb', 'usebanner']);
 
   // Docs distribution task.
   grunt.registerTask('dist-docs', 'copy:docs');

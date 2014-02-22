@@ -37,7 +37,8 @@ h6, .h6 {
 
 .blog-masthead {
   background-color: #428bca;
-  box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+  -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+          box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
 }
 
 /* Nav links */
