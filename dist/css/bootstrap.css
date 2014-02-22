@@ -4020,6 +4020,19 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-link:hover {
   color: #333;
 }
+.navbar-default .btn-link {
+  color: #777;
+}
+.navbar-default .btn-link:hover,
+.navbar-default .btn-link:focus {
+  color: #333;
+}
+.navbar-default .btn-link[disabled]:hover,
+fieldset[disabled] .navbar-default .btn-link:hover,
+.navbar-default .btn-link[disabled]:focus,
+fieldset[disabled] .navbar-default .btn-link:focus {
+  color: #ccc;
+}
 .navbar-inverse {
   background-color: #222;
   border-color: #080808;
@@ -4108,6 +4121,19 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-inverse .navbar-link:hover {
   color: #fff;
+}
+.navbar-inverse .btn-link {
+  color: #999;
+}
+.navbar-inverse .btn-link:hover,
+.navbar-inverse .btn-link:focus {
+  color: #fff;
+}
+.navbar-inverse .btn-link[disabled]:hover,
+fieldset[disabled] .navbar-inverse .btn-link:hover,
+.navbar-inverse .btn-link[disabled]:focus,
+fieldset[disabled] .navbar-inverse .btn-link:focus {
+  color: #444;
 }
 .breadcrumb {
   padding: 8px 15px;
