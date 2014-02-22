@@ -378,8 +378,9 @@
 // Default navbar
 .navbar-default {
   background-color: @navbar-default-bg;
+  .background-image(linear-gradient(to bottom, @navbar-default-bg 0%,@navbar-default-bg-sec 100%));
   border-color: @navbar-default-border;
-
+  text-shadow: 0px 1px 1px #000;
   .navbar-brand {
     color: @navbar-default-brand-color;
     &:hover,
