@@ -1980,6 +1980,7 @@ select[multiple].input-lg {
 }
 .form-horizontal .form-control-static {
   padding-top: 7px;
+  padding-bottom: 7px;
 }
 @media (min-width: 768px) {
   .form-horizontal .control-label {
