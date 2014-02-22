@@ -534,6 +534,41 @@
   }
 }
 
+.btn-link-variant(@color; @hover-color; @disabled-color ) {
+  color: @color;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+
+  &,
+  &:active,
+  &[disabled],
+  fieldset[disabled] & {
+    background-color: transparent;
+    .box-shadow(none);
+  }
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: transparent;
+  }
+  &:hover,
+  &:focus {
+    color: @hover-color;
+    text-decoration: underline;
+    background-color: transparent;
+  }
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus {
+      color: @disabled-color;
+      text-decoration: none;
+    }
+  }
+}
+
 // Button sizes
 // -------------------------
 .button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
