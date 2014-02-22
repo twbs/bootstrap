@@ -86,6 +86,7 @@ module.exports = function (grunt) {
       src: [
         'dist/css/bootstrap.css',
         'dist/css/bootstrap-theme.css',
+        'dist/css/bootstrap-manta.css',
         'docs/assets/css/docs.css',
         'docs/examples/**/*.css'
       ]
@@ -230,7 +231,9 @@ module.exports = function (grunt) {
             'dist/css/<%= pkg.name %>.css',
             'dist/css/<%= pkg.name %>.min.css',
             'dist/css/<%= pkg.name %>-theme.css',
-            'dist/css/<%= pkg.name %>-theme.min.css'
+            'dist/css/<%= pkg.name %>-theme.min.css',
+            'dist/css/<%= pkg.name %>-manta.css',
+            'dist/css/<%= pkg.name %>-manta.min.css'
           ]
         }
       }
@@ -243,7 +246,8 @@ module.exports = function (grunt) {
       dist: {
         files: {
           'dist/css/<%= pkg.name %>.css': 'dist/css/<%= pkg.name %>.css',
-          'dist/css/<%= pkg.name %>-theme.css': 'dist/css/<%= pkg.name %>-theme.css'
+          'dist/css/<%= pkg.name %>-theme.css': 'dist/css/<%= pkg.name %>-theme.css',
+          'dist/css/<%= pkg.name %>-manta.css': 'dist/css/<%= pkg.name %>-manta.css'
         }
       },
       examples: {
