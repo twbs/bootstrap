@@ -14,7 +14,7 @@
   // ===============================
 
   var Popover = function (element, options) {
-    this.init('popover', element, options)
+    this.init(element, options)
   }
 
   if (!$.fn.tooltip) throw new Error('Popover requires tooltip.js')
@@ -31,6 +31,8 @@
   // ================================
 
   Popover.prototype = $.extend({}, $.fn.tooltip.Constructor.prototype)
+
+  Popover.prototype.type = 'popover'
 
   Popover.prototype.constructor = Popover
 

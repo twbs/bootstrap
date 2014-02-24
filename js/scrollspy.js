@@ -13,7 +13,15 @@
   // SCROLLSPY CLASS DEFINITION
   // ==========================
 
-  function ScrollSpy(element, options) {
+  var ScrollSpy = function (element, options) {
+    this.init(element, options)
+  }
+
+  ScrollSpy.DEFAULTS = {
+    offset: 10
+  }
+
+  ScrollSpy.prototype.init = function (element, options) {
     var href
     var process  = $.proxy(this.process, this)
 
@@ -30,10 +38,6 @@
 
     this.refresh()
     this.process()
-  }
-
-  ScrollSpy.DEFAULTS = {
-    offset: 10
   }
 
   ScrollSpy.prototype.refresh = function () {

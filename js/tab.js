@@ -13,7 +13,11 @@
   // TAB CLASS DEFINITION
   // ====================
 
-  var Tab = function (element) {
+  var Tab = function (element, options) {
+    this.init(element, options)
+  }
+
+  Tab.prototype.init = function (element) {
     this.element = $(element)
   }
 

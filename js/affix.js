@@ -14,6 +14,16 @@
   // ======================
 
   var Affix = function (element, options) {
+    this.init(element, options)
+  }
+
+  Affix.RESET = 'affix affix-top affix-bottom'
+
+  Affix.DEFAULTS = {
+    offset: 0
+  }
+
+  Affix.prototype.init = function (element, options) {
     this.options = $.extend({}, Affix.DEFAULTS, options)
     this.$window = $(window)
       .on('scroll.bs.affix.data-api', $.proxy(this.checkPosition, this))
@@ -25,12 +35,6 @@
     this.pinnedOffset = null
 
     this.checkPosition()
-  }
-
-  Affix.RESET = 'affix affix-top affix-bottom'
-
-  Affix.DEFAULTS = {
-    offset: 0
   }
 
   Affix.prototype.getPinnedOffset = function () {

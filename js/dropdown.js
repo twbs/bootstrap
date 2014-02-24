@@ -15,7 +15,11 @@
 
   var backdrop = '.dropdown-backdrop'
   var toggle   = '[data-toggle=dropdown]'
-  var Dropdown = function (element) {
+  var Dropdown = function (element, options) {
+    this.init(element, options)
+  }
+
+  Dropdown.prototype.init = function (element) {
     $(element).on('click.bs.dropdown', this.toggle)
   }
 
