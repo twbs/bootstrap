@@ -27,6 +27,7 @@
   "devDependencies": {
     "btoa": "~1.1.1",
     "canonical-json": "~0.0.3",
+    "css-flip": "~0.3.0",
     "grunt": "~0.4.2",
     "grunt-banner": "~0.2.0",
     "grunt-contrib-clean": "~0.5.0",
