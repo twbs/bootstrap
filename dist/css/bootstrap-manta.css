@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v3.1.1 (http://mantacode.github.io/bootstrap/)
+ * Bootstrap v3.1.1-m2 (http://mantacode.github.io/bootstrap/)
  * Copyright 2011-2014 Manta Media, Inc.
  * Licensed under MIT (https://github.com/mantacode/bootstrap/blob/master/LICENSE)
  */
@@ -4428,7 +4428,7 @@ a.thumbnail.active {
   padding: 15px;
   margin-bottom: 18px;
   border: 1px solid transparent;
-  border-radius: 5px;
+  border-radius: 0;
 }
 .alert h4 {
   margin-top: 0;
@@ -5007,18 +5007,18 @@ a.list-group-item-danger.active:focus {
   border-bottom-color: #b5dde5;
 }
 .panel-warning {
-  border-color: #ffe2b6;
+  border-color: #f99a00;
 }
 .panel-warning > .panel-heading {
-  color: #f99a00;
-  background-color: #fff2c5;
-  border-color: #ffe2b6;
+  color: #fff;
+  background-color: #f99a00;
+  border-color: #f99a00;
 }
 .panel-warning > .panel-heading + .panel-collapse .panel-body {
-  border-top-color: #ffe2b6;
+  border-top-color: #f99a00;
 }
 .panel-warning > .panel-footer + .panel-collapse .panel-body {
-  border-bottom-color: #ffe2b6;
+  border-bottom-color: #f99a00;
 }
 .panel-danger {
   border-color: #f9c2cb;
@@ -5158,10 +5158,10 @@ button.close {
 }
 .modal-body {
   position: relative;
-  padding: 20px;
+  padding: 15px;
 }
 .modal-footer {
-  padding: 19px 20px 20px;
+  padding: 14px 15px 15px;
   margin-top: 15px;
   text-align: right;
   border-top: 1px solid #ddd;

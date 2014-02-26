@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v3.1.1 (http://mantacode.github.io/bootstrap/)
+ * Bootstrap v3.1.1-m2 (http://mantacode.github.io/bootstrap/)
  * Copyright 2011-2014 Manta Media, Inc.
  * Licensed under MIT (https://github.com/mantacode/bootstrap/blob/master/LICENSE)
  */
@@ -324,9 +324,9 @@
   background-repeat: repeat-x;
 }
 .panel-warning > .panel-heading {
-  background-image: -webkit-linear-gradient(top, #fff2c5 0%, #ffecab 100%);
-  background-image:         linear-gradient(to bottom, #fff2c5 0%, #ffecab 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffff2c5', endColorstr='#ffffecab', GradientType=0);
+  background-image: -webkit-linear-gradient(top, #f99a00 0%, #e08a00 100%);
+  background-image:         linear-gradient(to bottom, #f99a00 0%, #e08a00 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff99a00', endColorstr='#ffe08a00', GradientType=0);
   background-repeat: repeat-x;
 }
 .panel-danger > .panel-heading {
