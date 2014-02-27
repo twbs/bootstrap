@@ -827,14 +827,24 @@
     width: percentage((@index / @grid-columns));
   }
 }
-.calc-grid-column(@index, @class, @type) when (@type = push) {
+.calc-grid-column(@index, @class, @type) when (@type = push) and (@index > 0) {
   .col-@{class}-push-@{index} {
     left: percentage((@index / @grid-columns));
   }
 }
-.calc-grid-column(@index, @class, @type) when (@type = pull) {
+.calc-grid-column(@index, @class, @type) when (@type = push) and (@index = 0) {
+  .col-@{class}-push-0 {
+    left: auto;
+  }
+}
+.calc-grid-column(@index, @class, @type) when (@type = pull) and (@index > 0) {
   .col-@{class}-pull-@{index} {
     right: percentage((@index / @grid-columns));
+  }
+}
+.calc-grid-column(@index, @class, @type) when (@type = pull) and (@index = 0) {
+  .col-@{class}-pull-0 {
+    right: auto;
   }
 }
 .calc-grid-column(@index, @class, @type) when (@type = offset) {
