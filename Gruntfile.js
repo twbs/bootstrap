@@ -89,9 +89,13 @@ module.exports = function (grunt) {
       examples: [
         'docs/examples/**/*.css'
       ],
-      docs: [
-        'docs/assets/css/docs.css'
-      ]
+      docs: {
+        options: {
+          'ids': false,
+          'overqualified-elements': false
+        },
+        src: ['docs/assets/css/docs.css']
+      }
     },
 
     concat: {
