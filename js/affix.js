@@ -55,8 +55,6 @@
     var offsetTop    = offset.top
     var offsetBottom = offset.bottom
 
-    if (this.affixed == 'top') position.top += scrollTop
-
     if (typeof offset != 'object')         offsetBottom = offsetTop = offset
     if (typeof offsetTop == 'function')    offsetTop    = offset.top(this.$element)
     if (typeof offsetBottom == 'function') offsetBottom = offset.bottom(this.$element)
@@ -84,7 +82,7 @@
       .trigger($.Event(affixType.replace('affix', 'affixed')))
 
     if (affix == 'bottom') {
-      this.$element.offset({ top: scrollHeight - offsetBottom - this.$element.height() })
+      this.$element.offset({ top: position.top })
     }
   }
 
