@@ -7,6 +7,5 @@
   "node"     : true,
   "nonbsp"   : true,
   "strict"   : true,
-  "trailing" : true,
   "undef"    : true
 }
