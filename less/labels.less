@@ -34,6 +34,17 @@
     position: relative;
     top: -1px;
   }
+
+  &.pull-left {
+    margin-right: @label-pull-margin;
+  }
+  &.pull-right {
+    margin-left: @label-pull-margin;
+  }
+  > small,
+  > .small {
+    color: #fff - @label-color; // invert label color
+  }
 }
 
 // Colors
