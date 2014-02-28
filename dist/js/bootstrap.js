@@ -810,7 +810,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
   Modal.DEFAULTS = {
     backdrop: true,
     keyboard: true,
-    show: true
+    show: true,
+    scrollpad: false
   }
 
   Modal.prototype.toggle = function (_relatedTarget) {
@@ -821,7 +822,17 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     var that = this
     var e    = $.Event('show.bs.modal', { relatedTarget: _relatedTarget })
 
-    this.$element.trigger(e)
+    var scrollbarWidth = 0
+
+    if (this.options.scrollpad === true) {
+      var scrollDiv = $('<div>').css({ 'overflow': 'scroll' })
+
+      $('body').append(scrollDiv)
+      scrollbarWidth = scrollDiv[0].offsetWidth - scrollDiv[0].clientWidth
+      scrollDiv.remove()
+    }
+
+    this.$element.trigger(e, [ scrollbarWidth ]);
 
     if (this.isShown || e.isDefaultPrevented()) return
 
@@ -1016,8 +1027,10 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
   })
 
   $(document)
-    .on('show.bs.modal', '.modal', function () { $(document.body).addClass('modal-open') })
-    .on('hidden.bs.modal', '.modal', function () { $(document.body).removeClass('modal-open') })
+    .on('show.bs.modal', '.modal', function (e, scrollbarWidth) {
+      $(document.body).css({ 'padding-right': scrollbarWidth }).addClass('modal-open')
+    })
+    .on('hidden.bs.modal', '.modal', function () { $(document.body).removeClass('modal-open').css({ 'padding-right': '' }) })
 
 }(jQuery);
 
