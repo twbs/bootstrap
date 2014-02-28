@@ -65,6 +65,9 @@ module.exports = function (grunt) {
         config: 'js/.jscsrc'
       },
       grunt: {
+        options: {
+          'requireParenthesesAroundIIFE': true
+        },
         src: ['Gruntfile.js', 'grunt/*.js']
       },
       src: {
