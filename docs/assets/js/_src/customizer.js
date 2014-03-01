@@ -231,7 +231,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
       paths: ['variables.less', 'mixins.less'],
       optimization: 0,
       filename: baseFilename + '.css'
-    }).parse(lessSource, function (err, tree) {
+    })
+
+    parser.parse(lessSource, function (err, tree) {
       if (err) {
         return showError('<strong>Ruh roh!</strong> Could not parse less files.', err)
       }
@@ -331,7 +333,6 @@ window.onload = function () { // wait for load in a dumb way because B-0
   })
 
   var $compileBtn = $('#btn-compile')
-  var $downloadBtn = $('#btn-download')
 
   $compileBtn.on('click', function (e) {
     var configData = getCustomizerData()

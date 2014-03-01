@@ -6,5 +6,6 @@
   "node"  : true,
   "nonbsp": true,
   "strict": true,
-  "undef" : true
+  "undef" : true,
+  "unused": true
 }

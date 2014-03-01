@@ -28,14 +28,14 @@ $(function () {
     var template = $('<div id="affixTarget"><ul><li>Please affix</li><li>And unaffix</li></ul></div><div id="affixAfter" style="height: 20000px; display:block;"></div>')
     template.appendTo('body')
 
-    var affixer = $('#affixTarget').affix({
+    $('#affixTarget').affix({
       offset: $('#affixTarget ul').position()
     })
 
     $('#affixTarget')
-      .on('affix.bs.affix', function (e) {
+      .on('affix.bs.affix', function () {
         ok(true, 'affix event triggered')
-      }).on('affixed.bs.affix', function (e) {
+      }).on('affixed.bs.affix', function () {
         ok(true,'affixed event triggered')
         $('#affixTarget').remove()
         $('#affixAfter').remove()
