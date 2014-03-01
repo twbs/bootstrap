@@ -28,6 +28,7 @@ nbproject
 *.sublime-project
 *.sublime-workspace
 .idea
+.buildpath
 
 # Komodo
 *.komodoproject
