@@ -258,9 +258,15 @@
 
 // Extra small screen / phone
 // Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
+// Note: xs does not really have a min-width, or the min-width would be 0.
+// The variable of 480px is bogus in this context.
 @screen-xs:                  480px;
 @screen-xs-min:              @screen-xs;
 @screen-phone:               @screen-xs-min;
+
+// Subdivision of the xs range into xs-A and xs-B.
+@screen-xs-A-min:            0px;
+@screen-xs-B-min:            480px;
 
 // Small screen / tablet
 // Note: Deprecated @screen-sm and @screen-tablet as of v3.0.1
@@ -284,6 +290,10 @@
 @screen-xs-max:              (@screen-sm-min - 1);
 @screen-sm-max:              (@screen-md-min - 1);
 @screen-md-max:              (@screen-lg-min - 1);
+
+// Maximum width for subdivisions
+@screen-xs-A-max:            (@screen-xs-B-min - 1);
+@screen-xs-B-max:            @screen-xs-max;
 
 
 //== Grid system
