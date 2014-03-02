@@ -84,10 +84,18 @@ module.exports = function (grunt) {
       },
       src: [
         'dist/css/bootstrap.css',
-        'dist/css/bootstrap-theme.css',
-        'docs/assets/css/docs.css',
+        'dist/css/bootstrap-theme.css'
+      ],
+      examples: [
         'docs/examples/**/*.css'
-      ]
+      ],
+      docs: {
+        options: {
+          'ids': false,
+          'overqualified-elements': false
+        },
+        src: ['docs/assets/css/docs.css']
+      }
     },
 
     concat: {

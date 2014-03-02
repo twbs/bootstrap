@@ -8,7 +8,7 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
-#footer {
+.footer {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -29,7 +29,7 @@ body > .container {
   margin: 20px 0;
 }
 
-#footer > .container {
+.footer > .container {
   padding-right: 15px;
   padding-left: 15px;
 }
