@@ -161,3 +161,6 @@ h6, .h6 {
   background-color: #f9f9f9;
   border-top: 1px solid #e5e5e5;
 }
+.blog-footer p:last-child {
+  margin-bottom: 0;
+}
