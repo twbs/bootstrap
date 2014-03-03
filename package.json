@@ -3,7 +3,13 @@
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
   "version": "3.1.1",
   "keywords": [
-    "css"
+    "css",
+    "less",
+    "mobile-first",
+    "responsive",
+    "front-end",
+    "framework",
+    "web"
   ],
   "homepage": "http://getbootstrap.com",
   "author": "Twitter, Inc.",

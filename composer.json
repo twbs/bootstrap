@@ -2,7 +2,14 @@
   "name": "twbs/bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
   "keywords": [
-    "css"
+    "css",
+    "js",
+    "less",
+    "mobile-first",
+    "responsive",
+    "front-end",
+    "framework",
+    "web"
   ],
   "homepage": "http://getbootstrap.com",
   "authors": [
