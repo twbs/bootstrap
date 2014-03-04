@@ -1878,7 +1878,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
   <h2 id="forms-control-disabled">Disabled inputs</h2>
-  <p>Add the <code>disabled</code> attribute on an input to prevent user input and trigger a slightly different look.</p>
+  <p>Add the <code>disabled</code> boolean attribute on an input to prevent user input and trigger a slightly different look.</p>
   <div class="bs-example">
     <form role="form">
       <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here…" disabled>
@@ -1944,6 +1944,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <button type="submit" class="btn btn-primary">Submit</button>
   </fieldset>
 </form>
+{% endhighlight %}
+
+
+  <h2 id="forms-control-readonly">Readonly inputs</h2>
+  <p>Add the <code>readonly</code> boolean attribute on an input to prevent user input and style the input as disabled.</p>
+  <div class="bs-example">
+    <form role="form">
+      <input class="form-control" type="text" placeholder="Readonly input here…" readonly>
+    </form>
+  </div><!-- /.bs-example -->
+{% highlight html %}
+<input class="form-control" type="text" placeholder="Readonly input here…" readonly>
 {% endhighlight %}
 
 
