@@ -243,6 +243,10 @@
   -webkit-animation-direction: @direction;
           animation-direction: @direction;
 }
+.animation-fill-mode(@fill-mode) {
+  -webkit-animation-fill-mode: @fill-mode;
+          animation-fill-mode: @fill-mode;
+}
 
 // Backface visibility
 // Prevent browsers from flickering when using CSS 3D transforms.
@@ -372,7 +376,8 @@
 
 // Retina images
 //
-// Short retina mixin for setting background-image and -size
+// Short retina mixin for setting background-image and -size. Note that the
+// spelling of `min--moz-device-pixel-ratio` is intentional.
 
 .img-retina(@file-1x; @file-2x; @width-1x; @height-1x) {
   background-image: url("@{file-1x}");

@@ -1,6 +1,16 @@
 {
   "name": "bootstrap",
   "version": "3.1.1",
+  "keywords": [
+    "css",
+    "js",
+    "less",
+    "mobile-first",
+    "responsive",
+    "front-end",
+    "framework",
+    "web"
+  ],
   "main": [
     "./dist/css/bootstrap.css",
     "./dist/js/bootstrap.js",
