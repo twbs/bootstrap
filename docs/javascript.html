@@ -241,10 +241,22 @@ $('#myModal').on('show.bs.modal', function (e) {
   <h2 id="modals-sizes">Optional sizes</h2>
   <p>Modals have two optional sizes, available via modifier classes to be placed on a <code>.modal-dialog</code>.</p>
   <div class="bs-example">
+    <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-xl">Extra Large modal</button>
     <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
     <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
   </div>
 {% highlight html %}
+<!-- Extra Large modal -->
+<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-xl">Extra Large modal</button>
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
+
 <!-- Large modal -->
 <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
 
@@ -269,6 +281,20 @@ $('#myModal').on('show.bs.modal', function (e) {
 {% endhighlight %}
 
   <!--  Modal content for the above example -->
+  <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myExtraLargeModalLabel">Extra Large modal</h4>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
   <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
