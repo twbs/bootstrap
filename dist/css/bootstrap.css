@@ -4411,6 +4411,9 @@ a.list-group-item.active > .badge,
   font-size: 21px;
   font-weight: 200;
 }
+.jumbotron > hr {
+  border-top-color: #d5d5d5;
+}
 .container .jumbotron {
   border-radius: 6px;
 }
