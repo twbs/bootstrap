@@ -679,19 +679,13 @@
   padding-right: (@gutter / 2);
 }
 .make-xs-column-offset(@columns) {
-  @media (min-width: @screen-xs-min) {
-    margin-left: percentage((@columns / @grid-columns));
-  }
+  margin-left: percentage((@columns / @grid-columns));
 }
 .make-xs-column-push(@columns) {
-  @media (min-width: @screen-xs-min) {
-    left: percentage((@columns / @grid-columns));
-  }
+  left: percentage((@columns / @grid-columns));
 }
 .make-xs-column-pull(@columns) {
-  @media (min-width: @screen-xs-min) {
-    right: percentage((@columns / @grid-columns));
-  }
+  right: percentage((@columns / @grid-columns));
 }
 
 
