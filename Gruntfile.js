@@ -192,7 +192,16 @@ module.exports = function (grunt) {
         },
         files: {
           'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css',
+          'dist/css/<%= pkg.name %>-rtl.min.css': 'dist/css/<%= pkg.name %>-rtl.css',
           'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css'
+        }
+      }
+    },
+
+    cssFlip: {
+      rtl: {
+        files: {
+          'dist/css/<%= pkg.name %>-rtl.css': 'dist/css/<%= pkg.name %>.css'
         }
       }
     },
@@ -222,7 +231,9 @@ module.exports = function (grunt) {
         files: {
           src: [
             'dist/css/<%= pkg.name %>.css',
+            'dist/css/<%= pkg.name %>-rtl.css',
             'dist/css/<%= pkg.name %>.min.css',
+            'dist/css/<%= pkg.name %>-rtl.min.css',
             'dist/css/<%= pkg.name %>-theme.css',
             'dist/css/<%= pkg.name %>-theme.min.css'
           ]
@@ -237,6 +248,7 @@ module.exports = function (grunt) {
       dist: {
         files: {
           'dist/css/<%= pkg.name %>.css': 'dist/css/<%= pkg.name %>.css',
+          'dist/css/<%= pkg.name %>-rtl.css': 'dist/css/<%= pkg.name %>-rtl.css',
           'dist/css/<%= pkg.name %>-theme.css': 'dist/css/<%= pkg.name %>-theme.css'
         }
       },
@@ -375,6 +387,7 @@ module.exports = function (grunt) {
 
   // These plugins provide necessary tasks.
   require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
+  grunt.loadTasks('./grunt/tasks/');
 
   // Docs HTML validation task
   grunt.registerTask('validate-html', ['jekyll', 'validation']);
@@ -402,7 +415,8 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-js', ['concat', 'uglify']);
 
   // CSS distribution task.
-  grunt.registerTask('dist-css', ['less', 'csscomb', 'cssmin', 'usebanner']);
+  grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
+  grunt.registerTask('dist-css', ['less-compile', 'cssFlip', 'less:minify', 'cssmin', 'csscomb', 'usebanner']);
 
   // Docs distribution task.
   grunt.registerTask('dist-docs', 'copy:docs');
