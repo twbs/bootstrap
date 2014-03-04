@@ -3345,3 +3345,28 @@ a {
     <a class="btn btn-lg btn-outline" href="{{ site.sass_repo }}">Bootstrap for Sass</a>
   </p>
 </div>
+
+
+
+<!-- RTL
+================================================== -->
+<div class="bs-docs-section">
+  <h1 id="rtl" class="page-header">RTL</h1>
+  <p class="lead">As of Bootstrap 3.2, a right-to-left version of Bootstrap ships as part of the repository. It's powered by Twitter's <a href="https://github.com/twitter/css-flip">CSS Flip project</a> and is generated via our Gruntfile.</p>
+
+  <h2 id="rtl-how-to">How to use</h2>
+  <p>Bootstrap is by default a left-to-right project. For right-to-left projects, you'll need to set your language and replace the default Bootstrap CSS with an RTL version. First, set your language and text direction:</p>
+{% highlight html %}
+<!-- Example: Arabic language with direction set to RTL -->
+<html lang="ar" dir="rtl">
+{% endhighlight %}
+  <p>Then, include the right-to-left CSS file in place of the default Bootstrap CSS:</p>
+{% highlight html %}
+<!-- Bootstrap RTL -->
+<link rel="stylesheet" href="bootstrap-rtl.css">
+{% endhighlight %}
+  <p>Alternatively, you may use the minified RTL file, <code>bootstrap-rtl.min.css</code>.</p>
+
+  <h2 id="rtl-css-flip">CSS Flip</h2>
+  <p><a href="https://github.com/twitter/css-flip">CSS Flip</a> is a project for converting left-to-right CSS files into right-to-left CSS files. We use it in our Gruntfile to automate the generation of Bootstrap's RTL CSS files.</p>
+</div>
