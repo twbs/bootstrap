@@ -193,8 +193,7 @@ module.exports = function (grunt) {
         files: {
           'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css',
           'dist/css/<%= pkg.name %>.rtl.min.css': 'dist/css/<%= pkg.name %>.rtl.css',
-          'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css',
-          'dist/css/<%= pkg.name %>-theme.rtl.min.css': 'dist/css/<%= pkg.name %>-theme.rtl.css'
+          'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css'
         }
       }
     },
@@ -202,8 +201,7 @@ module.exports = function (grunt) {
     cssFlip: {
       rtl: {
         files: {
-          'dist/css/<%= pkg.name %>.rtl.css': 'dist/css/<%= pkg.name %>.css',
-          'dist/css/<%= pkg.name %>-theme.rtl.css': 'dist/css/<%= pkg.name %>-theme.css'
+          'dist/css/<%= pkg.name %>.rtl.css': 'dist/css/<%= pkg.name %>.css'
         }
       }
     },
