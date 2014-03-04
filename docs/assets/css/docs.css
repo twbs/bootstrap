@@ -422,7 +422,7 @@ body {
  */
 
 .bs-docs-featurette {
-  padding-top:    40px;
+  padding-top: 40px;
   padding-bottom: 40px;
   font-size: 16px;
   line-height: 1.5;
@@ -482,7 +482,7 @@ body {
 }
 @media (min-width: 768px) {
   .bs-docs-featurette {
-    padding-top:    100px;
+    padding-top: 100px;
     padding-bottom: 100px;
   }
   .bs-docs-featurette-title {
@@ -491,7 +491,7 @@ body {
   .bs-docs-featurette .lead {
     max-width: 80%;
     margin-right: auto;
-    margin-left:  auto;
+    margin-left: auto;
   }
   .bs-docs-featured-sites .col-sm-3:first-child img {
     border-top-left-radius: 4px;
@@ -563,7 +563,7 @@ body {
   padding-bottom: 10px;
 }
 .bs-docs-sidebar .nav .nav > li > a {
-  padding-top:    1px;
+  padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 30px;
   font-size: 12px;
@@ -714,7 +714,7 @@ h1[id] {
 }
 .color-swatch {
   float: left;
-  width:  60px;
+  width: 60px;
   height: 60px;
   margin: 0 5px;
   border-radius: 3px;
@@ -722,25 +722,25 @@ h1[id] {
 
 @media (min-width: 768px) {
   .color-swatch {
-    width:  100px;
+    width: 100px;
     height: 100px;
   }
 }
 
 /* Framework colors */
-.color-swatches .gray-darker   {
+.color-swatches .gray-darker {
   background-color: #222;
 }
-.color-swatches .gray-dark     {
+.color-swatches .gray-dark {
   background-color: #333;
 }
-.color-swatches .gray          {
+.color-swatches .gray {
   background-color: #555;
 }
-.color-swatches .gray-light    {
+.color-swatches .gray-light {
   background-color: #999;
 }
-.color-swatches .gray-lighter  {
+.color-swatches .gray-lighter {
   background-color: #eee;
 }
 .color-swatches .brand-primary {
@@ -752,24 +752,24 @@ h1[id] {
 .color-swatches .brand-warning {
   background-color: #f0ad4e;
 }
-.color-swatches .brand-danger  {
+.color-swatches .brand-danger {
   background-color: #d9534f;
 }
-.color-swatches .brand-info    {
+.color-swatches .brand-info {
   background-color: #5bc0de;
 }
 
 /* Docs colors */
-.color-swatches .bs-purple          {
+.color-swatches .bs-purple {
   background-color: #563d7c;
 }
-.color-swatches .bs-purple-light    {
+.color-swatches .bs-purple-light {
   background-color: #c7bfd3;
 }
-.color-swatches .bs-purple-lighter  {
+.color-swatches .bs-purple-lighter {
   background-color: #e5e1ea;
 }
-.color-swatches .bs-gray            {
+.color-swatches .bs-gray {
   background-color: #f9f9f9;
 }
 
@@ -842,7 +842,7 @@ h1[id] {
 /* Echo out a label for the example */
 .bs-example:after {
   position: absolute;
-  top:  15px;
+  top: 15px;
   left: 15px;
   font-size: 12px;
   font-weight: bold;
@@ -1380,7 +1380,7 @@ h1[id] {
   background-color: #563d7c;
 }
 .bs-brand-item .svg {
-  width:  144px;
+  width: 144px;
   height: 144px;
 }
 
