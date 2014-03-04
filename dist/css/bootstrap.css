@@ -1464,7 +1464,7 @@ pre code {
   right: 8.33333333%;
 }
 .col-xs-pull-0 {
-  right: 0;
+  right: auto;
 }
 .col-xs-push-12 {
   left: 100%;
@@ -1503,7 +1503,7 @@ pre code {
   left: 8.33333333%;
 }
 .col-xs-push-0 {
-  left: 0;
+  left: auto;
 }
 .col-xs-offset-12 {
   margin-left: 100%;
@@ -1621,7 +1621,7 @@ pre code {
     right: 8.33333333%;
   }
   .col-sm-pull-0 {
-    right: 0;
+    right: auto;
   }
   .col-sm-push-12 {
     left: 100%;
@@ -1660,7 +1660,7 @@ pre code {
     left: 8.33333333%;
   }
   .col-sm-push-0 {
-    left: 0;
+    left: auto;
   }
   .col-sm-offset-12 {
     margin-left: 100%;
@@ -1779,7 +1779,7 @@ pre code {
     right: 8.33333333%;
   }
   .col-md-pull-0 {
-    right: 0;
+    right: auto;
   }
   .col-md-push-12 {
     left: 100%;
@@ -1818,7 +1818,7 @@ pre code {
     left: 8.33333333%;
   }
   .col-md-push-0 {
-    left: 0;
+    left: auto;
   }
   .col-md-offset-12 {
     margin-left: 100%;
@@ -1937,7 +1937,7 @@ pre code {
     right: 8.33333333%;
   }
   .col-lg-pull-0 {
-    right: 0;
+    right: auto;
   }
   .col-lg-push-12 {
     left: 100%;
@@ -1976,7 +1976,7 @@ pre code {
     left: 8.33333333%;
   }
   .col-lg-push-0 {
-    left: 0;
+    left: auto;
   }
   .col-lg-offset-12 {
     margin-left: 100%;

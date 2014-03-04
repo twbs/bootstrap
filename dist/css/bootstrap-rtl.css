@@ -1902,7 +1902,7 @@ pre code {
 }
 
 .col-xs-pull-0 {
-  left: 0;
+  left: auto;
 }
 
 .col-xs-push-12 {
@@ -1954,7 +1954,7 @@ pre code {
 }
 
 .col-xs-push-0 {
-  right: 0;
+  right: auto;
 }
 
 .col-xs-offset-12 {
@@ -2122,7 +2122,7 @@ pre code {
   }
 
   .col-sm-pull-0 {
-    left: 0;
+    left: auto;
   }
 
   .col-sm-push-12 {
@@ -2174,7 +2174,7 @@ pre code {
   }
 
   .col-sm-push-0 {
-    right: 0;
+    right: auto;
   }
 
   .col-sm-offset-12 {
@@ -2343,7 +2343,7 @@ pre code {
   }
 
   .col-md-pull-0 {
-    left: 0;
+    left: auto;
   }
 
   .col-md-push-12 {
@@ -2395,7 +2395,7 @@ pre code {
   }
 
   .col-md-push-0 {
-    right: 0;
+    right: auto;
   }
 
   .col-md-offset-12 {
@@ -2564,7 +2564,7 @@ pre code {
   }
 
   .col-lg-pull-0 {
-    left: 0;
+    left: auto;
   }
 
   .col-lg-push-12 {
@@ -2616,7 +2616,7 @@ pre code {
   }
 
   .col-lg-push-0 {
-    right: 0;
+    right: auto;
   }
 
   .col-lg-offset-12 {
