@@ -9,10 +9,10 @@
 
 (function (factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['jquery', './transition.js'], factory)
+    define(['jquery', './transition'], factory)
   } else if (typeof exports === 'object') {
     var jQuery = require('jquery')
-    require('./transition.js')
+    require('./transition')
     factory(jQuery)
   } else {
     factory(this.jQuery)
