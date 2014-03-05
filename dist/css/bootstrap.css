@@ -4590,6 +4590,17 @@ a.thumbnail.active {
   -webkit-animation: progress-bar-stripes 2s linear infinite;
           animation: progress-bar-stripes 2s linear infinite;
 }
+.progress-bar[aria-valuenow="1"],
+.progress-bar[aria-valuenow="2"] {
+  min-width: 30px;
+}
+.progress-bar[aria-valuenow="0"] {
+  min-width: 30px;
+  color: #999;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+}
 .progress-bar-success {
   background-color: #5cb85c;
 }
