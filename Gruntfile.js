@@ -65,16 +65,19 @@ module.exports = function (grunt) {
         config: 'js/.jscsrc'
       },
       grunt: {
-        src: ['Gruntfile.js', 'grunt/*.js']
+        options: {
+          'requireParenthesesAroundIIFE': true
+        },
+        src: '<%= jshint.grunt.src %>'
       },
       src: {
-        src: 'js/*.js'
+        src: '<%= jshint.src.src %>'
       },
       test: {
-        src: 'js/tests/unit/*.js'
+        src: '<%= jshint.test.src %>'
       },
       assets: {
-        src: ['docs/assets/js/application.js', 'docs/assets/js/customizer.js']
+        src: '<%= jshint.assets.src %>'
       }
     },
 

@@ -72,9 +72,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
     var vars = {}
 
     $('#less-variables-section input')
-        .each(function () {
-          $(this).val() && (vars[$(this).prev().text()] = $(this).val())
-        })
+      .each(function () {
+        $(this).val() && (vars[$(this).prev().text()] = $(this).val())
+      })
 
     var data = {
       vars: vars,
@@ -238,9 +238,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
     var vars = {}
 
     $('#less-variables-section input')
-        .each(function () {
-          $(this).val() && (vars[$(this).prev().text()] = $(this).val())
-        })
+      .each(function () {
+        $(this).val() && (vars[$(this).prev().text()] = $(this).val())
+      })
 
     var bsLessSource    = generateLESS('bootstrap.less', lessFileIncludes, vars)
     var themeLessSource = generateLESS('theme.less',     lessFileIncludes, vars)
