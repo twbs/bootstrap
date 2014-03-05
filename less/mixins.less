@@ -140,6 +140,10 @@
   -webkit-transition-duration: @transition-duration;
           transition-duration: @transition-duration;
 }
+.transition-timing-function(@timing-function) {
+  -webkit-animation-timing-function: @timing-function;
+          animation-timing-function: @timing-function;
+}
 .transition-transform(@transition) {
   -webkit-transition: -webkit-transform @transition;
      -moz-transition: -moz-transform @transition;
