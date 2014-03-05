@@ -14,13 +14,17 @@
   // ==============================
 
   var Button = function (element, options) {
-    this.$element  = $(element)
-    this.options   = $.extend({}, Button.DEFAULTS, options)
-    this.isLoading = false
+    this.init(element, options)
   }
 
   Button.DEFAULTS = {
     loadingText: 'loading...'
+  }
+
+  Button.prototype.init = function (element, options) {
+    this.$element  = $(element)
+    this.options   = $.extend({}, Button.DEFAULTS, options)
+    this.isLoading = false
   }
 
   Button.prototype.setState = function (state) {

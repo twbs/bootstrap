@@ -15,14 +15,7 @@
   // ===============================
 
   var Tooltip = function (element, options) {
-    this.type       =
-    this.options    =
-    this.enabled    =
-    this.timeout    =
-    this.hoverState =
-    this.$element   = null
-
-    this.init('tooltip', element, options)
+    this.init(element, options)
   }
 
   Tooltip.DEFAULTS = {
@@ -37,9 +30,12 @@
     container: false
   }
 
-  Tooltip.prototype.init = function (type, element, options) {
+  Tooltip.prototype.type = 'tooltip'
+
+  Tooltip.prototype.init = function (element, options) {
+    this.timeout    =
+    this.hoverState = null
     this.enabled  = true
-    this.type     = type
     this.$element = $(element)
     this.options  = this.getOptions(options)
 

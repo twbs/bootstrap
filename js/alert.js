@@ -14,7 +14,11 @@
   // ======================
 
   var dismiss = '[data-dismiss="alert"]'
-  var Alert   = function (el) {
+  var Alert = function (element, options) {
+    this.init(element, options)
+  }
+
+  Alert.prototype.init = function (el) {
     $(el).on('click', dismiss, this.close)
   }
 

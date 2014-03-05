@@ -14,6 +14,16 @@
   // ======================
 
   var Modal = function (element, options) {
+    this.init(element, options)
+  }
+
+  Modal.DEFAULTS = {
+    backdrop: true,
+    keyboard: true,
+    show: true
+  }
+
+  Modal.prototype.init = function (element, options) {
     this.options   = options
     this.$element  = $(element)
     this.$backdrop =
@@ -26,12 +36,6 @@
           this.$element.trigger('loaded.bs.modal')
         }, this))
     }
-  }
-
-  Modal.DEFAULTS = {
-    backdrop: true,
-    keyboard: true,
-    show: true
   }
 
   Modal.prototype.toggle = function (_relatedTarget) {
