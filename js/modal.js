@@ -32,7 +32,7 @@
     backdrop: true,
     keyboard: true,
     show: true,
-    scrollpad: false
+    scrollpad: true
   }
 
   Modal.prototype.toggle = function (_relatedTarget) {
@@ -46,11 +46,37 @@
     var scrollbarWidth = 0
 
     if (this.options.scrollpad === true) {
-      var scrollDiv = $('<div>').css({ 'overflow': 'scroll' })
+      var rootElem = document.documentElement || document.body
+      var hasScrollbar
 
-      $('body').append(scrollDiv)
-      scrollbarWidth = scrollDiv[0].offsetWidth - scrollDiv[0].clientWidth
-      scrollDiv.remove()
+      if (typeof window.innerWidth === 'number') {
+        hasScrollbar = window.innerWidth > rootElem.clientWidth
+      }
+
+      if (typeof hasScrollbar === 'undefined') {
+        var overflowStyle = document.body.currentStyle.overflow || 
+          window.getComputedStyle(document.body, '').overflow
+
+        var overflowYStyle = document.body.currentStyle.overflowY ||
+          window.getComputedStyle(document.body, '').overflowY
+
+        hasScrollbar = rootElem.clientHeight < rootElem.scrollHeight &&
+          (/visible|auto/.test(overflowStyle) || /visible|auto/.test(overflowYStyle))
+      }
+
+      if (hasScrollbar) {
+        var scrollDiv = $('<div></div>').css({ 
+          'position': 'absolute',
+          'width': '100px',
+          'height': '100px',
+          'left': '-99999px',
+          'overflow': 'scroll'
+        })
+
+        $('body').append(scrollDiv)
+        scrollbarWidth = scrollDiv[0].offsetWidth - scrollDiv[0].clientWidth
+        scrollDiv.remove()
+      }
     }
 
     this.$element.trigger(e, [ scrollbarWidth ]);
@@ -249,7 +275,7 @@
 
   $(document)
     .on('show.bs.modal', '.modal', function (e, scrollbarWidth) {
-      $(document.body).css({ 'padding-right': scrollbarWidth }).addClass('modal-open')
+      $(document.body).css({ 'padding-right': scrollbarWidth + 'px' }).addClass('modal-open')
     })
     .on('hidden.bs.modal', '.modal', function () { $(document.body).removeClass('modal-open').css({ 'padding-right': '' }) })
 
