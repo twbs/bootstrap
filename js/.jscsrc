@@ -8,7 +8,6 @@
   "disallowSpaceAfterPrefixUnaryOperators": ["++", "--", "+", "-", "~"],
   "disallowSpaceBeforePostfixUnaryOperators": ["++", "--"],
   "disallowTrailingWhitespace": true,
-  "requireCamelCaseOrUpperCaseIdentifiers": true,
   "requireLeftStickedOperators": [","],
   "requireLineFeedAtFileEnd": true,
   "requireRightStickedOperators": ["!"],
