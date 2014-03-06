@@ -839,8 +839,9 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
         var overflowYStyle = document.body.currentStyle.overflowY ||
           window.getComputedStyle(document.body, '').overflowY
 
-        hasScrollbar = rootElem.clientHeight < rootElem.scrollHeight &&
-          (/visible|auto/.test(overflowStyle) || /visible|auto/.test(overflowYStyle))
+        hasScrollbar = (rootElem.clientHeight < rootElem.scrollHeight &&
+          (/visible|auto/.test(overflowStyle) || /visible|auto/.test(overflowYStyle))) ||
+          (overflowStyle === 'scroll' || overflowYStyle === 'scroll')
       }
 
       if (hasScrollbar) {
