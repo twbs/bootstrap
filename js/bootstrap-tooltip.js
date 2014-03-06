@@ -289,12 +289,16 @@
       return this.getTitle()
     }
 
-  , getPosition: function () {
+  , getPosition: function() {
       var el = this.$element[0]
-      return $.extend({}, (typeof el.getBoundingClientRect == 'function') ? el.getBoundingClientRect() : {
-        width: el.offsetWidth
-      , height: el.offsetHeight
-      }, this.$element.offset())
+      var pos;
+      try {
+        if ( ( typeof el.getBoundingClientRect == 'function' ) ) {
+          pos = el.getBoundingClientRect()
+        }
+      }
+      catch ( e ) { }
+      return $.extend( {}, pos || { width: el.offsetWidth, height: el.offsetHeight }, this.$element.offset() )
     }
 
   , getTitle: function () {
