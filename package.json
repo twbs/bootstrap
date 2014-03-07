@@ -56,7 +56,8 @@
     "grunt-saucelabs": "~5.0.1",
     "grunt-sed": "~0.1.1",
     "load-grunt-tasks": "~0.4.0",
-    "markdown": "~0.5.0"
+    "markdown": "~0.5.0",
+    "time-grunt": "~0.2.10"
   },
   "engines": {
     "node": "~0.10.1"
