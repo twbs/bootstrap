@@ -2879,7 +2879,7 @@ table th[class*="col-"] {
   background-color: #ebcccc;
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .table-responsive {
     width: 100%;
     margin-bottom: 15px;
@@ -5846,6 +5846,25 @@ a.list-group-item:hover,
 a.list-group-item:focus {
   text-decoration: none;
   background-color: #f5f5f5;
+}
+
+.list-group-item.disabled,
+.list-group-item.disabled:hover,
+.list-group-item.disabled:focus {
+  color: #999;
+  background-color: #eee;
+}
+
+.list-group-item.disabled .list-group-item-heading,
+.list-group-item.disabled:hover .list-group-item-heading,
+.list-group-item.disabled:focus .list-group-item-heading {
+  color: inherit;
+}
+
+.list-group-item.disabled .list-group-item-text,
+.list-group-item.disabled:hover .list-group-item-text,
+.list-group-item.disabled:focus .list-group-item-text {
+  color: #999;
 }
 
 .list-group-item.active,
