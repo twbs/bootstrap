@@ -31,7 +31,8 @@
   Modal.DEFAULTS = {
     backdrop: true,
     keyboard: true,
-    show: true
+    show: true,
+    scrollpad: true
   }
 
   Modal.prototype.toggle = function (_relatedTarget) {
@@ -42,7 +43,40 @@
     var that = this
     var e    = $.Event('show.bs.modal', { relatedTarget: _relatedTarget })
 
-    this.$element.trigger(e)
+    var scrollbarWidth = 0
+
+    if (this.options.scrollpad === true) {
+      var rootElem = document.documentElement || document.body
+      var hasScrollbar
+
+      if (typeof window.innerWidth === 'number') {
+        hasScrollbar = window.innerWidth > rootElem.clientWidth
+      }
+
+      if (typeof hasScrollbar === 'undefined') {
+        var bodyStyle = document.body.currentStyle || window.getComputedStyle(document.body, '')
+
+        hasScrollbar = (rootElem.clientHeight < rootElem.scrollHeight &&
+          (/visible|auto/.test(bodyStyle.overflow) || /visible|auto/.test(bodyStyle.overflowY))) ||
+          (bodyStyle.overflow === 'scroll' || bodyStyle.overflowY === 'scroll')
+      }
+
+      if (hasScrollbar) {
+        var scrollDiv = $('<div></div>').css({ 
+          'position': 'absolute',
+          'width': '100px',
+          'height': '100px',
+          'left': '-99999px',
+          'overflow': 'scroll'
+        })
+
+        $('body').append(scrollDiv)
+        scrollbarWidth = scrollDiv[0].offsetWidth - scrollDiv[0].clientWidth
+        scrollDiv.remove()
+      }
+    }
+
+    this.$element.trigger(e, [ scrollbarWidth ]);
 
     if (this.isShown || e.isDefaultPrevented()) return
 
@@ -237,7 +271,9 @@
   })
 
   $(document)
-    .on('show.bs.modal', '.modal', function () { $(document.body).addClass('modal-open') })
-    .on('hidden.bs.modal', '.modal', function () { $(document.body).removeClass('modal-open') })
+    .on('show.bs.modal', '.modal', function (e, scrollbarWidth) {
+      $(document.body).css({ 'padding-right': scrollbarWidth + 'px' }).addClass('modal-open')
+    })
+    .on('hidden.bs.modal', '.modal', function () { $(document.body).removeClass('modal-open').css({ 'padding-right': '' }) })
 
 }(jQuery);
