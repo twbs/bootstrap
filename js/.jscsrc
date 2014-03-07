@@ -1,21 +1,24 @@
 {
-  "disallowEmptyBlocks": true,
-  "disallowKeywords": ["with"],
-  "disallowLeftStickedOperators": ["?", "+", "-", "/", "*", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<="],
+  "disallowLeftStickedOperators": ["?"],
   "disallowMixedSpacesAndTabs": true,
   "disallowMultipleLineStrings": true,
-  "disallowRightStickedOperators": ["?", "/", "*", ":", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<="],
-  "disallowSpaceAfterPrefixUnaryOperators": ["++", "--", "+", "-", "~"],
+  "disallowRightStickedOperators": ["?", ":"],
+  "disallowSpaceAfterPrefixUnaryOperators": ["++", "--", "+", "-", "~", "!"],
   "disallowSpaceBeforePostfixUnaryOperators": ["++", "--"],
   "disallowTrailingWhitespace": true,
   "requireCamelCaseOrUpperCaseIdentifiers": true,
-  "requireLeftStickedOperators": [","],
+  "requireCommaBeforeLineBreak": true,
   "requireLineFeedAtFileEnd": true,
-  "requireRightStickedOperators": ["!"],
   "requireSpaceAfterBinaryOperators": ["+", "-", "/", "*", "=", "==", "===", "!=", "!=="],
   "requireSpaceAfterKeywords": ["if", "else", "for", "while", "do", "switch", "return", "try", "catch"],
   "requireSpaceBeforeBinaryOperators": ["+", "-", "/", "*", "=", "==", "===", "!=", "!=="],
-  "requireSpacesInFunctionExpression": { "beforeOpeningCurlyBrace": true },
+  "requireSpacesInAnonymousFunctionExpression": {
+    "beforeOpeningRoundBrace": true,
+    "beforeOpeningCurlyBrace": true
+  },
+  "requireSpacesInNamedFunctionExpression": {
+    "beforeOpeningCurlyBrace": true
+  },
   "validateIndentation": 2,
   "validateLineBreaks": "LF",
   "validateQuoteMarks": "'"
