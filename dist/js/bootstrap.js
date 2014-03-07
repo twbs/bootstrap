@@ -833,15 +833,11 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
       }
 
       if (typeof hasScrollbar === 'undefined') {
-        var overflowStyle = document.body.currentStyle.overflow || 
-          window.getComputedStyle(document.body, '').overflow
-
-        var overflowYStyle = document.body.currentStyle.overflowY ||
-          window.getComputedStyle(document.body, '').overflowY
+        var bodyStyle = document.body.currentStyle || window.getComputedStyle(document.body, '')
 
         hasScrollbar = (rootElem.clientHeight < rootElem.scrollHeight &&
-          (/visible|auto/.test(overflowStyle) || /visible|auto/.test(overflowYStyle))) ||
-          (overflowStyle === 'scroll' || overflowYStyle === 'scroll')
+          (/visible|auto/.test(bodyStyle.overflow) || /visible|auto/.test(bodyStyle.overflowY))) ||
+          (bodyStyle.overflow === 'scroll' || bodyStyle.overflowY === 'scroll')
       }
 
       if (hasScrollbar) {
