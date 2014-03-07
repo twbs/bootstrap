@@ -1101,6 +1101,8 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
 {% endhighlight %}
 </div>
 
+
+
 <!-- Popovers
 ================================================== -->
 <div class="bs-docs-section">
@@ -1167,8 +1169,11 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
 
   <h3>Live demo</h3>
   <div class="bs-example" style="padding-bottom: 24px;">
-    <a href="#" class="btn btn-lg btn-danger" data-toggle="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" role="button">Click to toggle popover</a>
+    <button type="button" class="btn btn-lg btn-danger bs-docs-popover" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
   </div>
+{% highlight html %}
+<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+{% endhighlight %}
 
   <h4>Four directions</h4>
   <div class="bs-example tooltip-demo">
@@ -1204,6 +1209,20 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
 <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
   Popover on right
 </button>
+{% endhighlight %}
+
+  <h4>Dismiss on next click</h4>
+  <p>Use the <code>focus</code> trigger to dismiss popovers on their next click.</p>
+  <div class="bs-example" style="padding-bottom: 24px;">
+    <button type="button" class="btn btn-lg btn-danger bs-docs-popover-dismiss" data-toggle="popover" title="Dimissmisable popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissable popover</button>
+  </div>
+{% highlight html %}
+<button type="button" class="btn btn-lg btn-danger popover-dismiss" data-toggle="popover" title="Dimissmisable popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissable popover</button>
+{% endhighlight %}
+{% highlight js %}
+$('.popover-dismiss').popover({
+  trigger: 'focus'
+})
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-warning">
