@@ -124,22 +124,39 @@
 }
 
 // Transitions
+//
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .transition(@transition) {
   -webkit-transition: @transition;
+       -o-transition: @transition;
           transition: @transition;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .transition-property(@transition-property) {
   -webkit-transition-property: @transition-property;
           transition-property: @transition-property;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .transition-delay(@transition-delay) {
   -webkit-transition-delay: @transition-delay;
           transition-delay: @transition-delay;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .transition-duration(@transition-duration) {
   -webkit-transition-duration: @transition-duration;
           transition-duration: @transition-duration;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
+.transition-timing-function(@timing-function) {
+  -webkit-transition-timing-function: @timing-function;
+          transition-timing-function: @timing-function;
+}
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .transition-transform(@transition) {
   -webkit-transition: -webkit-transform @transition;
      -moz-transition: -moz-transform @transition;
@@ -148,51 +165,100 @@
 }
 
 // Transformations
-.rotate(@degrees) {
-  -webkit-transform: rotate(@degrees);
-      -ms-transform: rotate(@degrees); // IE9 only
-          transform: rotate(@degrees);
+//
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
+.scale(@ratio) {
+  -webkit-transform: scale(@ratio);
+      -ms-transform: scale(@ratio); // IE9 only
+       -o-transform: scale(@ratio);
+          transform: scale(@ratio);
 }
-.scale(@ratio; @ratio-y...) {
-  -webkit-transform: scale(@ratio, @ratio-y);
-      -ms-transform: scale(@ratio, @ratio-y); // IE9 only
-          transform: scale(@ratio, @ratio-y);
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
+.scale(@ratioX; @ratioY) {
+  -webkit-transform: scale(@ratioX, @ratioY);
+      -ms-transform: scale(@ratioX, @ratioY); // IE9 only
+       -o-transform: scale(@ratioX, @ratioY);
+          transform: scale(@ratioX, @ratioY);
 }
-.translate(@x; @y) {
-  -webkit-transform: translate(@x, @y);
-      -ms-transform: translate(@x, @y); // IE9 only
-          transform: translate(@x, @y);
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
+.scaleX(@ratio) {
+  -webkit-transform: scaleX(@ratio);
+      -ms-transform: scaleX(@ratio); // IE9 only
+       -o-transform: scaleX(@ratio);
+          transform: scaleX(@ratio);
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
+.scaleY(@ratio) {
+  -webkit-transform: scaleY(@ratio);
+      -ms-transform: scaleY(@ratio); // IE9 only
+       -o-transform: scaleY(@ratio);
+          transform: scaleY(@ratio);
+}
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .skew(@x; @y) {
   -webkit-transform: skew(@x, @y);
       -ms-transform: skewX(@x) skewY(@y); // See https://github.com/twbs/bootstrap/issues/4885; IE9+
+       -o-transform: skew(@x, @y);
           transform: skew(@x, @y);
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
+.translate(@x; @y) {
+  -webkit-transform: translate(@x, @y);
+      -ms-transform: translate(@x, @y); // IE9 only
+       -o-transform: translate(@x, @y);
+          transform: translate(@x, @y);
+}
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .translate3d(@x; @y; @z) {
   -webkit-transform: translate3d(@x, @y, @z);
           transform: translate3d(@x, @y, @z);
 }
 
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
+.rotate(@degrees) {
+  -webkit-transform: rotate(@degrees);
+      -ms-transform: rotate(@degrees); // IE9 only
+       -o-transform: rotate(@degrees);
+          transform: rotate(@degrees);
+}
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .rotateX(@degrees) {
   -webkit-transform: rotateX(@degrees);
       -ms-transform: rotateX(@degrees); // IE9 only
+       -o-transform: rotateX(@degrees);
           transform: rotateX(@degrees);
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .rotateY(@degrees) {
   -webkit-transform: rotateY(@degrees);
       -ms-transform: rotateY(@degrees); // IE9 only
+       -o-transform: rotateY(@degrees);
           transform: rotateY(@degrees);
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .perspective(@perspective) {
   -webkit-perspective: @perspective;
      -moz-perspective: @perspective;
           perspective: @perspective;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .perspective-origin(@perspective) {
   -webkit-perspective-origin: @perspective;
      -moz-perspective-origin: @perspective;
           perspective-origin: @perspective;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .transform-origin(@origin) {
   -webkit-transform-origin: @origin;
      -moz-transform-origin: @origin;
@@ -201,38 +267,58 @@
 }
 
 // Animations
+//
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .animation(@animation) {
   -webkit-animation: @animation;
+       -o-animation: @animation;
           animation: @animation;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .animation-name(@name) {
   -webkit-animation-name: @name;
           animation-name: @name;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .animation-duration(@duration) {
   -webkit-animation-duration: @duration;
           animation-duration: @duration;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .animation-timing-function(@timing-function) {
   -webkit-animation-timing-function: @timing-function;
           animation-timing-function: @timing-function;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .animation-delay(@delay) {
   -webkit-animation-delay: @delay;
           animation-delay: @delay;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .animation-iteration-count(@iteration-count) {
   -webkit-animation-iteration-count: @iteration-count;
           animation-iteration-count: @iteration-count;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .animation-direction(@direction) {
   -webkit-animation-direction: @direction;
           animation-direction: @direction;
+}
+.animation-fill-mode(@fill-mode) {
+  -webkit-animation-fill-mode: @fill-mode;
+          animation-fill-mode: @fill-mode;
 }
 
 // Backface visibility
 // Prevent browsers from flickering when using CSS 3D transforms.
 // Default value is `visible`, but can be changed to `hidden`
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .backface-visibility(@visibility){
   -webkit-backface-visibility: @visibility;
      -moz-backface-visibility: @visibility;
@@ -240,6 +326,7 @@
 }
 
 // Box sizing
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .box-sizing(@boxmodel) {
   -webkit-box-sizing: @boxmodel;
      -moz-box-sizing: @boxmodel;
@@ -248,6 +335,7 @@
 
 // User select
 // For selecting text on the page
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .user-select(@select) {
   -webkit-user-select: @select;
      -moz-user-select: @select;
@@ -302,7 +390,8 @@
   // Color stops are not available in IE9 and below.
   .horizontal(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
     background-image: -webkit-linear-gradient(left, color-stop(@start-color @start-percent), color-stop(@end-color @end-percent)); // Safari 5.1-6, Chrome 10+
-    background-image:  linear-gradient(to right, @start-color @start-percent, @end-color @end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+    background-image: -o-linear-gradient(left, @start-color @start-percent, @end-color @end-percent); // Opera 12
+    background-image: linear-gradient(to right, @start-color @start-percent, @end-color @end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
     background-repeat: repeat-x;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@start-color),argb(@end-color))); // IE9 and down
   }
@@ -313,6 +402,7 @@
   // Color stops are not available in IE9 and below.
   .vertical(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
     background-image: -webkit-linear-gradient(top, @start-color @start-percent, @end-color @end-percent);  // Safari 5.1-6, Chrome 10+
+    background-image: -o-linear-gradient(top, @start-color @start-percent, @end-color @end-percent);  // Opera 12
     background-image: linear-gradient(to bottom, @start-color @start-percent, @end-color @end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
     background-repeat: repeat-x;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down
@@ -321,16 +411,19 @@
   .directional(@start-color: #555; @end-color: #333; @deg: 45deg) {
     background-repeat: repeat-x;
     background-image: -webkit-linear-gradient(@deg, @start-color, @end-color); // Safari 5.1-6, Chrome 10+
+    background-image: -o-linear-gradient(@deg, @start-color, @end-color); // Opera 12
     background-image: linear-gradient(@deg, @start-color, @end-color); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
   }
   .horizontal-three-colors(@start-color: #00b3ee; @mid-color: #7a43b6; @color-stop: 50%; @end-color: #c3325f) {
     background-image: -webkit-linear-gradient(left, @start-color, @mid-color @color-stop, @end-color);
+    background-image: -o-linear-gradient(left, @start-color, @mid-color @color-stop, @end-color);
     background-image: linear-gradient(to right, @start-color, @mid-color @color-stop, @end-color);
     background-repeat: no-repeat;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@start-color),argb(@end-color))); // IE9 and down, gets no color-stop at all for proper fallback
   }
   .vertical-three-colors(@start-color: #00b3ee; @mid-color: #7a43b6; @color-stop: 50%; @end-color: #c3325f) {
     background-image: -webkit-linear-gradient(@start-color, @mid-color @color-stop, @end-color);
+    background-image: -o-linear-gradient(@start-color, @mid-color @color-stop, @end-color);
     background-image: linear-gradient(@start-color, @mid-color @color-stop, @end-color);
     background-repeat: no-repeat;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down, gets no color-stop at all for proper fallback
@@ -342,6 +435,7 @@
   }
   .striped(@color: rgba(255,255,255,.15); @angle: 45deg) {
     background-image: -webkit-linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
     background-image: linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
   }
 }
@@ -358,7 +452,8 @@
 
 // Retina images
 //
-// Short retina mixin for setting background-image and -size
+// Short retina mixin for setting background-image and -size. Note that the
+// spelling of `min--moz-device-pixel-ratio` is intentional.
 
 .img-retina(@file-1x; @file-2x; @width-1x; @height-1x) {
   background-image: url("@{file-1x}");
@@ -410,12 +505,12 @@
     background-color: @heading-bg-color;
     border-color: @heading-border;
 
-    + .panel-collapse .panel-body {
+    + .panel-collapse > .panel-body {
       border-top-color: @border;
     }
   }
   & > .panel-footer {
-    + .panel-collapse .panel-body {
+    + .panel-collapse > .panel-body {
       border-bottom-color: @border;
     }
   }
@@ -507,7 +602,7 @@
   &.active,
   .open .dropdown-toggle& {
     color: @color;
-    background-color: darken(@background, 8%);
+    background-color: darken(@background, 10%);
         border-color: darken(@border, 12%);
   }
   &:active,
@@ -660,19 +755,13 @@
   padding-right: (@gutter / 2);
 }
 .make-xs-column-offset(@columns) {
-  @media (min-width: @screen-xs-min) {
-    margin-left: percentage((@columns / @grid-columns));
-  }
+  margin-left: percentage((@columns / @grid-columns));
 }
 .make-xs-column-push(@columns) {
-  @media (min-width: @screen-xs-min) {
-    left: percentage((@columns / @grid-columns));
-  }
+  left: percentage((@columns / @grid-columns));
 }
 .make-xs-column-pull(@columns) {
-  @media (min-width: @screen-xs-min) {
-    right: percentage((@columns / @grid-columns));
-  }
+  right: percentage((@columns / @grid-columns));
 }
 
 
@@ -791,7 +880,7 @@
   .col(1); // kickstart it
 }
 
-.make-grid-columns-float(@class) {
+.float-grid-columns(@class) {
   .col(@index) when (@index = 1) { // initial
     @item: ~".col-@{class}-@{index}";
     .col((@index + 1), @item);
@@ -808,34 +897,52 @@
   .col(1); // kickstart it
 }
 
-.calc-grid(@index, @class, @type) when (@type = width) and (@index > 0) {
+.calc-grid-column(@index, @class, @type) when (@type = width) and (@index > 0) {
   .col-@{class}-@{index} {
     width: percentage((@index / @grid-columns));
   }
 }
-.calc-grid(@index, @class, @type) when (@type = push) {
+.calc-grid-column(@index, @class, @type) when (@type = push) and (@index > 0) {
   .col-@{class}-push-@{index} {
     left: percentage((@index / @grid-columns));
   }
 }
-.calc-grid(@index, @class, @type) when (@type = pull) {
+.calc-grid-column(@index, @class, @type) when (@type = push) and (@index = 0) {
+  .col-@{class}-push-0 {
+    left: auto;
+  }
+}
+.calc-grid-column(@index, @class, @type) when (@type = pull) and (@index > 0) {
   .col-@{class}-pull-@{index} {
     right: percentage((@index / @grid-columns));
   }
 }
-.calc-grid(@index, @class, @type) when (@type = offset) {
+.calc-grid-column(@index, @class, @type) when (@type = pull) and (@index = 0) {
+  .col-@{class}-pull-0 {
+    right: auto;
+  }
+}
+.calc-grid-column(@index, @class, @type) when (@type = offset) {
   .col-@{class}-offset-@{index} {
     margin-left: percentage((@index / @grid-columns));
   }
 }
 
 // Basic looping in LESS
-.make-grid(@index, @class, @type) when (@index >= 0) {
-  .calc-grid(@index, @class, @type);
+.loop-grid-columns(@index, @class, @type) when (@index >= 0) {
+  .calc-grid-column(@index, @class, @type);
   // next iteration
-  .make-grid((@index - 1), @class, @type);
+  .loop-grid-columns((@index - 1), @class, @type);
 }
 
+// Create grid for specific class
+.make-grid(@class) {
+  .float-grid-columns(@class);
+  .loop-grid-columns(@grid-columns, @class, width);
+  .loop-grid-columns(@grid-columns, @class, pull);
+  .loop-grid-columns(@grid-columns, @class, push);
+  .loop-grid-columns(@grid-columns, @class, offset);
+}
 
 // Form validation states
 //

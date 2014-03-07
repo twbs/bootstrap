@@ -51,7 +51,7 @@ input[type="search"] {
 input[type="radio"],
 input[type="checkbox"] {
   margin: 4px 0 0;
-  margin-top: 1px \9; /* IE8-9 */
+  margin-top: 1px \9; // IE8-9
   line-height: normal;
 }
 
@@ -271,18 +271,27 @@ input[type="checkbox"],
   .form-control {
     padding-right: (@input-height-base * 1.25);
   }
-
-  // Feedback icon (requires .glyphicon classes)
-  .form-control-feedback {
-    position: absolute;
-    top: (@line-height-computed + 5); // Height of the `label` and its margin
-    right: 0;
-    display: block;
-    width: @input-height-base;
-    height: @input-height-base;
-    line-height: @input-height-base;
-    text-align: center;
-  }
+}
+// Feedback icon (requires .glyphicon classes)
+.form-control-feedback {
+  position: absolute;
+  top: (@line-height-computed + 5); // Height of the `label` and its margin
+  right: 0;
+  display: block;
+  width: @input-height-base;
+  height: @input-height-base;
+  line-height: @input-height-base;
+  text-align: center;
+}
+.input-lg + .form-control-feedback {
+  width: @input-height-large;
+  height: @input-height-large;
+  line-height: @input-height-large;
+}
+.input-sm + .form-control-feedback {
+  width: @input-height-small;
+  height: @input-height-small;
+  line-height: @input-height-small;
 }
 
 // Feedback states
@@ -418,6 +427,7 @@ input[type="checkbox"],
 
   .form-control-static {
     padding-top: (@padding-base-vertical + 1);
+    padding-bottom: (@padding-base-vertical + 1);
   }
 
   // Only right align form labels here when the columns stop stacking

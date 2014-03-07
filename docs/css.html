@@ -46,10 +46,16 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
   <p>For improved cross-browser rendering, we use <a href="http://necolas.github.io/normalize.css/" target="_blank">Normalize.css</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a>.</p>
 
   <h3 id="overview-container">Containers</h3>
-  <p>Easily center a page's contents by wrapping its contents in a <code>.container</code>. Containers set <code>width</code> at various media query breakpoints to match our grid system.</p>
-  <p>Note that, due to <code>padding</code> and fixed widths, containers are not nestable by default.</p>
+  <p>Bootstrap requires a containing element to wrap site contents and house our grid system. You may choose one of two containers to use in your projects. Note that, due to <code>padding</code> and more, neither container is nestable.</p>
+  <p>Use <code>.container</code> for a responsive fixed width container.</p>
 {% highlight html %}
 <div class="container">
+  ...
+</div>
+{% endhighlight %}
+  <p>Use <code>.container-fluid</code> for a full width container, spanning the entire width of your viewport.</p>
+{% highlight html %}
+<div class="container-fluid">
   ...
 </div>
 {% endhighlight %}
@@ -73,6 +79,7 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
     <li>Predefined grid classes like <code>.row</code> and <code>.col-xs-4</code> are available for quickly making grid layouts. Less mixins can also be used for more semantic layouts.</li>
     <li>Columns create gutters (gaps between column content) via <code>padding</code>. That padding is offset in rows for the first and last column via negative margin on <code>.row</code>s.</li>
     <li>Grid columns are created by specifying the number of twelve available columns you wish to span. For example, three equal columns would use three <code>.col-xs-4</code>.</li>
+    <li>Grid classes apply to devices with screen widths greater than or equal to the breakpoint sizes, and override grid classes targeted at smaller devices. Therefore, applying any <code>.col-md-</code> class to an element will not only affect its styling on medium devices but also on large devices if a <code>.col-lg-</code> class is not present.</li>
   </ul>
   <p>Look to the examples for applying these principles to your code.</p>
 
@@ -151,9 +158,9 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
         <tr>
           <th>Column width</th>
           <td class="text-muted">Auto</td>
-          <td>60px</td>
-          <td>78px</td>
-          <td>95px</td>
+          <td>~62px</td>
+          <td>~81px</td>
+          <td>~97px</td>
         </tr>
         <tr>
           <th>Gutter width</th>
@@ -174,7 +181,6 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
       </tbody>
     </table>
   </div>
-  <p>Grid classes apply to devices with screen widths greater than or equal to the breakpoint sizes, and override grid classes targeted at smaller devices. Therefore, applying any <code>.col-md-</code> class to an element will not only affect its styling on medium devices but also on large devices if a <code>.col-lg-</code> class is not present.</p>
 
   <h3 id="grid-example-basic">Example: Stacked-to-horizontal</h3>
   <p>Using a single set of <code>.col-md-*</code> grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices. Place grid columns in any <code>.row</code>.</p>
@@ -712,9 +718,54 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
   <h3>Built with Less</h3>
   <p>The typographic scale is based on two Less variables in <strong>variables.less</strong>: <code>@font-size-base</code> and <code>@line-height-base</code>. The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.</p>
 
+  <!-- Inline text elements -->
+  <h2 id="type-inline-text">Inline text elements</h2>
+  <h3>Marked text</h3>
+  <p>For indicating blocks of text that have been deleted use the <code>&lt;mark&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p>You can use the mark tag to <mark>highlight</mark> text.</p>
+  </div>
+{% highlight html %}
+<mark>This line of text is meant to be treated as deleted text.</mark>
+{% endhighlight %}
 
-  <!-- Emphasis -->
-  <h2 id="type-emphasis">Emphasis</h2>
+
+  <h3>Deleted text</h3>
+  <p>For indicating blocks of text that have been deleted use the <code>&lt;del&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p><del>This line of text is meant to be treated as deleted text.</del></p>
+  </div>
+{% highlight html %}
+<del>This line of text is meant to be treated as deleted text.</del>
+{% endhighlight %}
+
+  <h3>Strikethrough text</h3>
+  <p>For indicating blocks of text that are no longer relevant use the <code>&lt;s&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p><s>This line of text is meant to be treated as no longer accurate.</s></p>
+  </div>
+{% highlight html %}
+<s>This line of text is meant to be treated as no longer accurate.</s>
+{% endhighlight %}
+
+  <h3>Inserted text</h3>
+  <p>For indicating additions to the document use the <code>&lt;ins&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
+  </div>
+{% highlight html %}
+<ins>This line of text is meant to be treated as an addition to the document.</ins>
+{% endhighlight %}
+
+  <h3>Underlined text</h3>
+  <p>To underline text use the <code>&lt;u&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p><u>This line of text is will render as underlined</u></p>
+  </div>
+{% highlight html %}
+<u>This line of text is will render as underlined</u>
+{% endhighlight %}
+
   <p>Make use of HTML's default emphasis tags with lightweight styles.</p>
 
   <h3>Small text</h3>
@@ -751,7 +802,7 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
     <p>Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
   </div>
 
-  <h3>Alignment classes</h3>
+  <h2 id="type-alignment">Alignment classes</h2>
   <p>Easily realign text to components with text alignment classes.</p>
   <div class="bs-example">
     <p class="text-left">Left aligned text.</p>
@@ -1045,7 +1096,26 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
   <p>You may optionally add the <code>.pre-scrollable</code> class, which will set a max-height of 350px and provide a y-axis scrollbar.</p>
+  <h2 id="code-variables">Variables</h2>
+  <p>For indicating variables use the <code>&lt;var&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p><var>y</var> = <var>m</var><var>x</var> + <var>b</var></p>
+
+  </div>
+{% highlight html %}
+<var>y</var> = <var>m</var><var>x</var> + <var>b</var>
+{% endhighlight %}
+
+  <h2 id="code-sample-output">Sample output</h2>
+  <p>For indicating blocks sample output from a program use the <code>&lt;samp&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p><samp>This text is meant to be treated as sample output from a computer program.</samp></p>
+  </div>
+{% highlight html %}
+<samp>This text is meant to be treated as sample output from a computer program.</samp>
+{% endhighlight %}
 </div>
+
 
 
 
@@ -1872,7 +1942,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
   <h2 id="forms-control-disabled">Disabled inputs</h2>
-  <p>Add the <code>disabled</code> attribute on an input to prevent user input and trigger a slightly different look.</p>
+  <p>Add the <code>disabled</code> boolean attribute on an input to prevent user input and trigger a slightly different look.</p>
   <div class="bs-example">
     <form role="form">
       <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here…" disabled>
@@ -1886,8 +1956,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <p>Add the <code>disabled</code> attribute to a <code>&lt;fieldset&gt;</code> to disable all the controls within the <code>&lt;fieldset&gt;</code> at once.</p>
 
   <div class="bs-callout bs-callout-warning">
-    <h4>Link functionality of <code>&lt;a&gt;</code> not impacted</h4>
-    <p>This class will only change the appearance of <code>&lt;a class="btn btn-default"&gt;</code> buttons, not their functionality. Use custom JavaScript to disable links here.</p>
+    <h4>Caveat about link functionality of <code>&lt;a&gt;</code></h4>
+    <p>Our styles use <code>pointer-events: none</code> to try to disable the link functionality of <code>&lt;a class="btn btn-*"&gt;</code> buttons in this case, but that CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11. So to be safe, use custom JavaScript to disable such links.</p>
   </div>
 
   <div class="bs-callout bs-callout-danger">
@@ -1941,6 +2011,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
+  <h2 id="forms-control-readonly">Readonly inputs</h2>
+  <p>Add the <code>readonly</code> boolean attribute on an input to prevent user input and style the input as disabled.</p>
+  <div class="bs-example">
+    <form role="form">
+      <input class="form-control" type="text" placeholder="Readonly input here…" readonly>
+    </form>
+  </div><!-- /.bs-example -->
+{% highlight html %}
+<input class="form-control" type="text" placeholder="Readonly input here…" readonly>
+{% endhighlight %}
+
+
   <h2 id="forms-control-validation">Validation states</h2>
   <p>Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element. Any <code>.control-label</code>, <code>.form-control</code>, and <code>.help-block</code> within that element will receive the validation styles.</p>
 
@@ -1976,10 +2058,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
   <h3>With optional icons</h3>
-  <p>You can also add optional feedback icons with the addition of an extra class and the right icon.</p>
+  <p>You can also add optional feedback icons with the addition of <code>.has-feedback</code> and the right icon.</p>
   <div class="bs-callout bs-callout-warning">
-    <h4>Icons and input groups</h4>
-    <p>When using the feedback icons, be aware that manual positioning may be required for <a href="../components#input-groups">input groups</a> with an add-on on the right. Adjust the <code>right: 0;</code> to an appropriate pixel value depending on the width of your addon.</p>
+    <h4>Icons, labels, and input groups</h4>
+    <p>Manual positioning of feedback icons is required for <a href="../components#input-groups">input groups</a> with an add-on on the right and inputs without a label. For input groups, adjust the <code>right</code> value to an appropriate pixel value depending on the width of your addon. For labels, adjust the <code>top</code>value.</p>
   </div>
   <div class="bs-example">
     <form role="form">
@@ -2292,8 +2374,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
   </p>
   <div class="bs-callout bs-callout-warning">
-    <h4>Link functionality not impacted</h4>
-    <p>This class will only change the <code>&lt;a&gt;</code>'s appearance, not its functionality. Use custom JavaScript to disable links here.</p>
+    <h4>Link functionality caveat</h4>
+    <p>This class uses <code>pointer-events: none</code> to try to disable the link functionality of <code>&lt;a&gt;</code>s, but that CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11. So to be safe, use custom JavaScript to disable such links.</p>
   </div>
   <div class="bs-callout bs-callout-warning">
     <h4>Context-specific usage</h4>
@@ -2954,6 +3036,7 @@ a {
 
   <h3 id="less-mixins-box-sizing">Box-sizing</h3>
   <p>Reset your components' box model with a single mixin. For context, see this <a href="https://developer.mozilla.org/en-US/docs/CSS/box-sizing" target="_blank">helpful article from Mozilla</a>.</p>
+  <p>The mixin is <strong>deprecated</strong> as of v3.2.0, with the introduction of autoprefixer. To preserve backwards-compatibility, Bootstrap will continue to use the mixin internally until Bootstrap v4.</p>
 {% highlight scss %}
 .box-sizing(@box-model) {
   -webkit-box-sizing: @box-model; // Safari <= 5
@@ -2996,6 +3079,7 @@ a {
 
   <h3 id="less-mixins-transitions">Transitions</h3>
   <p>Three mixins for flexibility. Set all transition information with one, or specify a separate delay and duration as needed.</p>
+  <p>The mixins are <strong>deprecated</strong> as of v3.2.0, with the introduction of autoprefixer. To preserve backwards-compatibility, Bootstrap will continue to use the mixins internally until Bootstrap v4.</p>
 {% highlight scss %}
 .transition(@transition) {
   -webkit-transition: @transition;
@@ -3023,6 +3107,7 @@ a {
 
   <h3 id="less-mixins-transformations">Transformations</h3>
   <p>Rotate, scale, translate (move), or skew any object.</p>
+  <p>The mixins are <strong>deprecated</strong> as of v3.2.0, with the introduction of autoprefixer. To preserve backwards-compatibility, Bootstrap will continue to use the mixins internally until Bootstrap v4.</p>
 {% highlight scss %}
 .rotate(@degrees) {
   -webkit-transform: rotate(@degrees);
@@ -3079,6 +3164,7 @@ a {
 
   <h3 id="less-mixins-animations">Animations</h3>
   <p>A single mixin for using all of CSS3's animation properties in one declaration and other mixins for individual properties.</p>
+  <p>The mixins are <strong>deprecated</strong> as of v3.2.0, with the introduction of autoprefixer. To preserve backwards-compatibility, Bootstrap will continue to use the mixins internally until Bootstrap v4.</p>
 {% highlight scss %}
 .animation(@animation) {
   -webkit-animation: @animation;
@@ -3125,8 +3211,7 @@ a {
   <p>Provide context for form controls within each field.</p>
 {% highlight scss %}
 .placeholder(@color: @input-color-placeholder) {
-  &:-moz-placeholder            { color: @color; } // Firefox 4-18
-  &::-moz-placeholder           { color: @color; } // Firefox 19+
+  &::-moz-placeholder           { color: @color; } // Firefox
   &:-ms-input-placeholder       { color: @color; } // Internet Explorer 10+
   &::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
 }
@@ -3161,7 +3246,7 @@ a {
 {% endhighlight %}
   <p>If you need a barber-stripe style gradient, that's easy, too. Just specify a single color and we'll overlay a translucent white stripe.</p>
 {% highlight scss %}
-#gradient > .striped(#333; #000; 45deg);
+#gradient > .striped(#333; 45deg);
 {% endhighlight %}
   <p>Up the ante and use three colors instead. Set the first color, the second color, the second color's color stop (a decimal value like 0.25), and the third color with these mixins:</p>
 {% highlight scss %}
@@ -3338,4 +3423,29 @@ a {
   <p>
     <a class="btn btn-lg btn-outline" href="{{ site.sass_repo }}">Bootstrap for Sass</a>
   </p>
+</div>
+
+
+
+<!-- RTL
+================================================== -->
+<div class="bs-docs-section">
+  <h1 id="rtl" class="page-header">RTL</h1>
+  <p class="lead">As of Bootstrap 3.2, a right-to-left version of Bootstrap ships as part of the repository. It's powered by Twitter's <a href="https://github.com/twitter/css-flip">CSS Flip project</a> and is generated via our Gruntfile.</p>
+
+  <h2 id="rtl-how-to">How to use</h2>
+  <p>Bootstrap is by default a left-to-right project. For right-to-left projects, you'll need to set your language and replace the default Bootstrap CSS with an RTL version. First, set your language and text direction:</p>
+{% highlight html %}
+<!-- Example: Arabic language with direction set to RTL -->
+<html lang="ar" dir="rtl">
+{% endhighlight %}
+  <p>Then, include the right-to-left CSS file in place of the default Bootstrap CSS:</p>
+{% highlight html %}
+<!-- Bootstrap RTL -->
+<link rel="stylesheet" href="bootstrap-rtl.css">
+{% endhighlight %}
+  <p>Alternatively, you may use the minified RTL file, <code>bootstrap-rtl.min.css</code>.</p>
+
+  <h2 id="rtl-css-flip">CSS Flip</h2>
+  <p><a href="https://github.com/twitter/css-flip">CSS Flip</a> is a project for converting left-to-right CSS files into right-to-left CSS files. We use it in our Gruntfile to automate the generation of Bootstrap's RTL CSS files.</p>
 </div>

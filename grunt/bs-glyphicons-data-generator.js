@@ -15,7 +15,7 @@ module.exports = function generateGlyphiconsData() {
 
   // Use any line that starts with ".glyphicon-" and capture the class name
   var iconClassName = /^\.(glyphicon-[^\s]+)/;
-  var glyphiconsData = '# This file is generated via Grunt task. **Do not edit directly.** \n' +
+  var glyphiconsData = '# This file is generated via Grunt task. **Do not edit directly.**\n' +
                        '# See the \'build-glyphicons-data\' task in Gruntfile.js.\n\n';
   for (var i = 0, len = glpyhiconsLines.length; i < len; i++) {
     var match = glpyhiconsLines[i].match(iconClassName);

@@ -1126,7 +1126,7 @@
 <div class="row">
   <div class="bs-customizer-input">
     <label for="input-@modal-inner-padding">@modal-inner-padding</label>
-    <input id="input-@modal-inner-padding" type="text" value="20px" data-var="@modal-inner-padding" class="form-control"/>
+    <input id="input-@modal-inner-padding" type="text" value="15px" data-var="@modal-inner-padding" class="form-control"/>
     <p class="help-block">Padding applied to the modal body</p>
   </div>
   <div class="bs-customizer-input">
@@ -1311,17 +1311,17 @@
   <div class="bs-customizer-input">
     <label for="input-@list-group-hover-bg">@list-group-hover-bg</label>
     <input id="input-@list-group-hover-bg" type="text" value="#f5f5f5" data-var="@list-group-hover-bg" class="form-control"/>
-    <p class="help-block">Background color of single list elements on hover</p>
+    <p class="help-block">Background color of single list items on hover</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@list-group-active-color">@list-group-active-color</label>
     <input id="input-@list-group-active-color" type="text" value="@component-active-color" data-var="@list-group-active-color" class="form-control"/>
-    <p class="help-block">Text color of active list elements</p>
+    <p class="help-block">Text color of active list items</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@list-group-active-bg">@list-group-active-bg</label>
     <input id="input-@list-group-active-bg" type="text" value="@component-active-bg" data-var="@list-group-active-bg" class="form-control"/>
-    <p class="help-block">Background color of active list elements</p>
+    <p class="help-block">Background color of active list items</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@list-group-active-border">@list-group-active-border</label>
@@ -1331,10 +1331,30 @@
   <div class="bs-customizer-input">
     <label for="input-@list-group-active-text-color">@list-group-active-text-color</label>
     <input id="input-@list-group-active-text-color" type="text" value="lighten(@list-group-active-bg, 40%)" data-var="@list-group-active-text-color" class="form-control"/>
+    <p class="help-block">Text color for content within active list items</p>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@list-group-disabled-color">@list-group-disabled-color</label>
+    <input id="input-@list-group-disabled-color" type="text" value="@gray-light" data-var="@list-group-disabled-color" class="form-control"/>
+    <p class="help-block">Text color of disabled list items</p>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@list-group-disabled-bg">@list-group-disabled-bg</label>
+    <input id="input-@list-group-disabled-bg" type="text" value="@gray-lighter" data-var="@list-group-disabled-bg" class="form-control"/>
+    <p class="help-block">Background color of disabled list items</p>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@list-group-disabled-text-color">@list-group-disabled-text-color</label>
+    <input id="input-@list-group-disabled-text-color" type="text" value="@list-group-disabled-color" data-var="@list-group-disabled-text-color" class="form-control"/>
+    <p class="help-block">Text color for content within disabled list items</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@list-group-link-color">@list-group-link-color</label>
     <input id="input-@list-group-link-color" type="text" value="#555" data-var="@list-group-link-color" class="form-control"/>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@list-group-link-hover-color">@list-group-link-hover-color</label>
+    <input id="input-@list-group-link-hover-color" type="text" value="@list-group-link-color" data-var="@list-group-link-hover-color" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@list-group-link-heading-color">@list-group-link-heading-color</label>
@@ -1351,6 +1371,14 @@
   <div class="bs-customizer-input">
     <label for="input-@panel-body-padding">@panel-body-padding</label>
     <input id="input-@panel-body-padding" type="text" value="15px" data-var="@panel-body-padding" class="form-control"/>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@panel-heading-padding">@panel-heading-padding</label>
+    <input id="input-@panel-heading-padding" type="text" value="10px 15px" data-var="@panel-heading-padding" class="form-control"/>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@panel-footer-padding">@panel-footer-padding</label>
+    <input id="input-@panel-footer-padding" type="text" value="@panel-heading-padding" data-var="@panel-footer-padding" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@panel-border-radius">@panel-border-radius</label>
