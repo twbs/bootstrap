@@ -391,6 +391,7 @@ module.exports = function (grunt) {
 
   // These plugins provide necessary tasks.
   require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
+  require('time-grunt')(grunt);
 
   // Docs HTML validation task
   grunt.registerTask('validate-html', ['jekyll', 'validation']);
