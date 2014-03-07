@@ -33,12 +33,6 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 {% endhighlight %}
 
-  <h3 id="overview-responsive-images">Responsive images</h3>
-  <p>Images in Bootstrap 3 can be made responsive-friendly via the addition of the <code>.img-responsive</code> class. This applies <code>max-width: 100%;</code> and <code>height: auto;</code> to the image so that it scales nicely to the parent element.</p>
-{% highlight html %}
-<img src="..." class="img-responsive" alt="Responsive image">
-{% endhighlight %}
-
   <h3 id="overview-type-links">Typography and links</h3>
   <p>Bootstrap sets basic global display, typography, and link styles. Specifically, we:</p>
   <ul>
@@ -52,10 +46,16 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
   <p>For improved cross-browser rendering, we use <a href="http://necolas.github.io/normalize.css/" target="_blank">Normalize.css</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a>.</p>
 
   <h3 id="overview-container">Containers</h3>
-  <p>Easily center a page's contents by wrapping its contents in a <code>.container</code>. Containers set <code>width</code> at various media query breakpoints to match our grid system.</p>
-  <p>Note that, due to <code>padding</code> and fixed widths, containers are not nestable by default.</p>
+  <p>Bootstrap requires a containing element to wrap site contents and house our grid system. You may choose one of two containers to use in your projects. Note that, due to <code>padding</code> and more, neither container is nestable.</p>
+  <p>Use <code>.container</code> for a responsive fixed width container.</p>
 {% highlight html %}
 <div class="container">
+  ...
+</div>
+{% endhighlight %}
+  <p>Use <code>.container-fluid</code> for a full width container, spanning the entire width of your viewport.</p>
+{% highlight html %}
+<div class="container-fluid">
   ...
 </div>
 {% endhighlight %}
@@ -79,17 +79,13 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
     <li>Predefined grid classes like <code>.row</code> and <code>.col-xs-4</code> are available for quickly making grid layouts. Less mixins can also be used for more semantic layouts.</li>
     <li>Columns create gutters (gaps between column content) via <code>padding</code>. That padding is offset in rows for the first and last column via negative margin on <code>.row</code>s.</li>
     <li>Grid columns are created by specifying the number of twelve available columns you wish to span. For example, three equal columns would use three <code>.col-xs-4</code>.</li>
+    <li>Grid classes apply to devices with screen widths greater than or equal to the breakpoint sizes, and override grid classes targeted at smaller devices. Therefore, applying any <code>.col-md-</code> class to an element will not only affect its styling on medium devices but also on large devices if a <code>.col-lg-</code> class is not present.</li>
   </ul>
   <p>Look to the examples for applying these principles to your code.</p>
 
-  <div class="bs-callout bs-callout-info">
-    <h4>Grids and full-width layouts</h4>
-    <p>Folks looking to create fully fluid layouts (meaning your site stretches the entire width of the viewport) must wrap their grid content in a containing element with <code>padding: 0 15px;</code> to offset the <code>margin: 0 -15px;</code> used on <code>.row</code>s.</p>
-  </div>
-
   <h3 id="grid-media-queries">Media queries</h3>
   <p>We use the following media queries in our Less files to create the key breakpoints in our grid system.</p>
-{% highlight css %}
+{% highlight scss %}
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
 
@@ -103,7 +99,7 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
 @media (min-width: @screen-lg-min) { ... }
 {% endhighlight %}
   <p>We occasionally expand on these media queries to include a <code>max-width</code> to limit CSS to a narrower set of devices.</p>
-{% highlight css %}
+{% highlight scss %}
 @media (max-width: @screen-xs-max) { ... }
 @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { ... }
 @media (min-width: @screen-md-min) and (max-width: @screen-md-max) { ... }
@@ -162,9 +158,9 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
         <tr>
           <th>Column width</th>
           <td class="text-muted">Auto</td>
-          <td>60px</td>
-          <td>78px</td>
-          <td>95px</td>
+          <td>~62px</td>
+          <td>~81px</td>
+          <td>~97px</td>
         </tr>
         <tr>
           <th>Gutter width</th>
@@ -185,7 +181,6 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
       </tbody>
     </table>
   </div>
-  <p>Grid classes apply to devices with screen widths greater than or equal to the breakpoint sizes, and override grid classes targeted at smaller devices. Therefore, applying any <code>.col-md-</code> class to an element will not only affect its styling on medium devices but also on large devices if a <code>.col-lg-</code> class is not present.</p>
 
   <h3 id="grid-example-basic">Example: Stacked-to-horizontal</h3>
   <p>Using a single set of <code>.col-md-*</code> grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices. Place grid columns in any <code>.row</code>.</p>
@@ -449,7 +444,7 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
 
   <h4>Variables</h4>
   <p>Variables determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.</p>
-{% highlight css %}
+{% highlight scss %}
 @grid-columns:              12;
 @grid-gutter-width:         30px;
 @grid-float-breakpoint:     768px;
@@ -457,7 +452,7 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
 
   <h4>Mixins</h4>
   <p>Mixins are used in conjunction with the grid variables to generate semantic CSS for individual grid columns.</p>
-{% highlight css %}
+{% highlight scss %}
 // Creates a wrapper for a series of columns
 .make-row(@gutter: @grid-gutter-width) {
   // Then clear the floated columns
@@ -593,7 +588,7 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
 
   <h4>Example usage</h4>
   <p>You can modify the variables to your own custom values, or just use the mixins with their default values. Here's an example of using the default settings to create a two-column layout with a gap between.</p>
-{% highlight css %}
+{% highlight scss %}
 .wrapper {
   .make-row();
 }
@@ -1883,7 +1878,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
   <h2 id="forms-control-disabled">Disabled inputs</h2>
-  <p>Add the <code>disabled</code> attribute on an input to prevent user input and trigger a slightly different look.</p>
+  <p>Add the <code>disabled</code> boolean attribute on an input to prevent user input and trigger a slightly different look.</p>
   <div class="bs-example">
     <form role="form">
       <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here…" disabled>
@@ -1897,8 +1892,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <p>Add the <code>disabled</code> attribute to a <code>&lt;fieldset&gt;</code> to disable all the controls within the <code>&lt;fieldset&gt;</code> at once.</p>
 
   <div class="bs-callout bs-callout-warning">
-    <h4>Link functionality of <code>&lt;a&gt;</code> not impacted</h4>
-    <p>This class will only change the appearance of <code>&lt;a class="btn btn-default"&gt;</code> buttons, not their functionality. Use custom JavaScript to disable links here.</p>
+    <h4>Caveat about link functionality of <code>&lt;a&gt;</code></h4>
+    <p>Our styles use <code>pointer-events: none</code> to try to disable the link functionality of <code>&lt;a class="btn btn-*"&gt;</code> buttons in this case, but that CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11. So to be safe, use custom JavaScript to disable such links.</p>
   </div>
 
   <div class="bs-callout bs-callout-danger">
@@ -1952,6 +1947,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
+  <h2 id="forms-control-readonly">Readonly inputs</h2>
+  <p>Add the <code>readonly</code> boolean attribute on an input to prevent user input and style the input as disabled.</p>
+  <div class="bs-example">
+    <form role="form">
+      <input class="form-control" type="text" placeholder="Readonly input here…" readonly>
+    </form>
+  </div><!-- /.bs-example -->
+{% highlight html %}
+<input class="form-control" type="text" placeholder="Readonly input here…" readonly>
+{% endhighlight %}
+
+
   <h2 id="forms-control-validation">Validation states</h2>
   <p>Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element. Any <code>.control-label</code>, <code>.form-control</code>, and <code>.help-block</code> within that element will receive the validation styles.</p>
 
@@ -1987,7 +1994,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
   <h3>With optional icons</h3>
-  <p>You can also add optional feedback icons with the addition of an extra class and the right icon.</p>
+  <p>You can also add optional feedback icons with the addition of <code>.has-feedback</code> and the right icon.</p>
+  <div class="bs-callout bs-callout-warning">
+    <h4>Icons, labels, and input groups</h4>
+    <p>Manual positioning of feedback icons is required for <a href="../components#input-groups">input groups</a> with an add-on on the right and inputs without a label. For input groups, adjust the <code>right</code> value to an appropriate pixel value depending on the width of your addon. For labels, adjust the <code>top</code>value.</p>
+  </div>
   <div class="bs-example">
     <form role="form">
       <div class="form-group has-success has-feedback">
@@ -2299,8 +2310,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
   </p>
   <div class="bs-callout bs-callout-warning">
-    <h4>Link functionality not impacted</h4>
-    <p>This class will only change the <code>&lt;a&gt;</code>'s appearance, not its functionality. Use custom JavaScript to disable links here.</p>
+    <h4>Link functionality caveat</h4>
+    <p>This class uses <code>pointer-events: none</code> to try to disable the link functionality of <code>&lt;a&gt;</code>s, but that CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11. So to be safe, use custom JavaScript to disable such links.</p>
   </div>
   <div class="bs-callout bs-callout-warning">
     <h4>Context-specific usage</h4>
@@ -2337,6 +2348,13 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <div class="bs-docs-section">
   <h1 id="images" class="page-header">Images</h1>
 
+  <h2 id="images-responsive">Responsive images</h2>
+  <p>Images in Bootstrap 3 can be made responsive-friendly via the addition of the <code>.img-responsive</code> class. This applies <code>max-width: 100%;</code> and <code>height: auto;</code> to the image so that it scales nicely to the parent element.</p>
+{% highlight html %}
+<img src="..." class="img-responsive" alt="Responsive image">
+{% endhighlight %}
+
+  <h2 id="images-shapes">Image shapes</h2>
   <p>Add classes to an <code>&lt;img&gt;</code> element to easily style images in any project.</p>
   <div class="bs-callout bs-callout-danger">
     <h4>Cross-browser compatibility</h4>
@@ -2352,11 +2370,6 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <img src="..." alt="..." class="img-circle">
 <img src="..." alt="..." class="img-thumbnail">
 {% endhighlight %}
-
-  <div class="bs-callout bs-callout-info">
-    <h4>Responsive images</h4>
-    <p>Looking for how to make images more responsive? <a href="#overview-responsive-images">Check out the responsive images section</a> up top.</p>
-  </div>
 </div>
 
 
@@ -2433,7 +2446,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <div class="pull-left">...</div>
 <div class="pull-right">...</div>
 {% endhighlight %}
-{% highlight css %}
+{% highlight scss %}
 // Classes
 .pull-left {
   float: left !important;
@@ -2462,7 +2475,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% highlight html %}
 <div class="center-block">...</div>
 {% endhighlight %}
-{% highlight css %}
+{% highlight scss %}
 // Classes
 .center-block {
   display: block;
@@ -2483,7 +2496,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <!-- Usage as a class -->
 <div class="clearfix">...</div>
 {% endhighlight %}
-{% highlight css %}
+{% highlight scss %}
 // Mixin itself
 .clearfix() {
   &:before,
@@ -2511,7 +2524,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <div class="show">...</div>
 <div class="hidden">...</div>
 {% endhighlight %}
-{% highlight css %}
+{% highlight scss %}
 // Classes
 .show {
   display: block !important;
@@ -2539,7 +2552,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% highlight html %}
 <a class="sr-only" href="#content">Skip to main content</a>
 {% endhighlight %}
-{% highlight css %}
+{% highlight scss %}
 // Usage as a Mixin
 .skip-navigation {
   .sr-only();
@@ -2552,7 +2565,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% highlight html %}
 <h1 class="text-hide">Custom heading</h1>
 {% endhighlight %}
-  {% highlight css %}
+  {% highlight scss %}
 // Usage as a Mixin
 .heading {
   .text-hide();
@@ -2821,7 +2834,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <div class="color-swatch gray-lighter"></div>
     </div>
   </div>
-{% highlight css %}
+{% highlight scss %}
 @gray-darker:  lighten(#000, 13.5%); // #222
 @gray-dark:    lighten(#000, 20%);   // #333
 @gray:         lighten(#000, 33.5%); // #555
@@ -2838,7 +2851,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <div class="color-swatch brand-danger"></div>
     </div>
   </div>
-{% highlight css %}
+{% highlight scss %}
 @brand-primary: #428bca;
 @brand-success: #5cb85c;
 @brand-info:    #5bc0de;
@@ -2847,7 +2860,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
   <p>Use any of these color variables as they are or reassign them to more meaningful variables for your project.</p>
-{% highlight css %}
+{% highlight scss %}
 // Use as-is
 .masthead {
   background-color: @brand-primary;
@@ -2862,7 +2875,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
   <h3 id="less-variables-scaffolding">Scaffolding</h3>
   <p>A handful of variables for quickly customizing key elements of your site's skeleton.</p>
-{% highlight css %}
+{% highlight scss %}
 // Scaffolding
 @body-bg:    #fff;
 @text-color: @black-50;
@@ -2870,7 +2883,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
   <h3 id="less-variables-links">Links</h3>
   <p>Easily style your links with the right color with only one value.</p>
-{% highlight css %}
+{% highlight scss %}
 // Variables
 @link-color:       @brand-primary;
 @link-color-hover: darken(@link-color, 15%);
@@ -2890,7 +2903,7 @@ a {
 
   <h3 id="less-variables-typography">Typography</h3>
   <p>Easily set your type face, text size, leading, and more with a few quick variables. Bootstrap makes use of these as well to provide easy typographic mixins.</p>
-{% highlight css %}
+{% highlight scss %}
 @font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -2918,14 +2931,14 @@ a {
 
   <h3 id="less-variables-icons">Icons</h3>
   <p>Two quick variables for customizing the location and filename of your icons.</p>
-{% highlight css %}
+{% highlight scss %}
 @icon-font-path:          "../fonts/";
 @icon-font-name:          "glyphicons-halflings-regular";
 {% endhighlight %}
 
   <h3 id="less-variables-components">Components</h3>
   <p>Components throughout Bootstrap make use of some default variables for setting common values. Here are the most commonly used.</p>
-{% highlight css %}
+{% highlight scss %}
 @padding-base-vertical:          6px;
 @padding-base-horizontal:        12px;
 
@@ -2959,7 +2972,7 @@ a {
 
   <h3 id="less-mixins-box-sizing">Box-sizing</h3>
   <p>Reset your components' box model with a single mixin. For context, see this <a href="https://developer.mozilla.org/en-US/docs/CSS/box-sizing" target="_blank">helpful article from Mozilla</a>.</p>
-{% highlight css %}
+{% highlight scss %}
 .box-sizing(@box-model) {
   -webkit-box-sizing: @box-model; // Safari <= 5
      -moz-box-sizing: @box-model; // Firefox <= 19
@@ -2969,7 +2982,7 @@ a {
 
   <h3 id="less-mixins-rounded-corners">Rounded corners</h3>
   <p>Today all modern browsers support the non-prefixed <code>border-radius</code> property. As such, there is no <code>.border-radius()</code> mixin, but Bootstrap does include shortcuts for quickly rounding two corners on a particular side of an object.</p>
-{% highlight css %}
+{% highlight scss %}
 .border-top-radius(@radius) {
   border-top-right-radius: @radius;
    border-top-left-radius: @radius;
@@ -2992,7 +3005,7 @@ a {
   <p>If your target audience is using the latest and greatest browsers and devices, be sure to just use the <code>box-shadow</code> property on its own. If you need support for older Android (pre-v4) and iOS devices (pre-iOS 5), use the <strong>deprecated</strong> mixin to pick up the required <code>-webkit</code> prefix.</p>
   <p>The mixin is <strong>deprecated</strong> as of v3.1.0, since Bootstrap doesn't officially support the outdated platforms that don't support the standard property. To preserve backwards-compatibility, Bootstrap will continue to use the mixin internally until Bootstrap v4.</p>
   <p>Be sure to use <code>rgba()</code> colors in your box shadows so they blend as seamlessly as possible with backgrounds.</p>
-{% highlight css %}
+{% highlight scss %}
 .box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
   -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
           box-shadow: @shadow;
@@ -3001,7 +3014,7 @@ a {
 
   <h3 id="less-mixins-transitions">Transitions</h3>
   <p>Three mixins for flexibility. Set all transition information with one, or specify a separate delay and duration as needed.</p>
-{% highlight css %}
+{% highlight scss %}
 .transition(@transition) {
   -webkit-transition: @transition;
           transition: @transition;
@@ -3028,7 +3041,7 @@ a {
 
   <h3 id="less-mixins-transformations">Transformations</h3>
   <p>Rotate, scale, translate (move), or skew any object.</p>
-{% highlight css %}
+{% highlight scss %}
 .rotate(@degrees) {
   -webkit-transform: rotate(@degrees);
       -ms-transform: rotate(@degrees); // IE9 only
@@ -3084,7 +3097,7 @@ a {
 
   <h3 id="less-mixins-animations">Animations</h3>
   <p>A single mixin for using all of CSS3's animation properties in one declaration and other mixins for individual properties.</p>
-{% highlight css %}
+{% highlight scss %}
 .animation(@animation) {
   -webkit-animation: @animation;
           animation: @animation;
@@ -3117,7 +3130,7 @@ a {
 
   <h3 id="less-mixins-opacity">Opacity</h3>
   <p>Set the opacity for all browsers and provide a <code>filter</code> fallback for IE8.</p>
-{% highlight css %}
+{% highlight scss %}
 .opacity(@opacity) {
   opacity: @opacity;
   // IE8 filter
@@ -3128,7 +3141,7 @@ a {
 
   <h3 id="less-mixins-placeholder">Placeholder text</h3>
   <p>Provide context for form controls within each field.</p>
-{% highlight css %}
+{% highlight scss %}
 .placeholder(@color: @input-color-placeholder) {
   &:-moz-placeholder            { color: @color; } // Firefox 4-18
   &::-moz-placeholder           { color: @color; } // Firefox 19+
@@ -3139,7 +3152,7 @@ a {
 
   <h3 id="less-mixins-columns">Columns</h3>
   <p>Generate columns via CSS within a single element.</p>
-{% highlight css %}
+{% highlight scss %}
 .content-columns(@width; @count; @gap) {
   -webkit-column-width: @width;
      -moz-column-width: @width;
@@ -3155,21 +3168,21 @@ a {
 
   <h3 id="less-mixins-gradients">Gradients</h3>
   <p>Easily turn any two colors into a background gradient. Get more advanced and set a direction, use three colors, or use a radial gradient. With a single mixin you get all the prefixed syntaxes you'll need.</p>
-{% highlight css %}
+{% highlight scss %}
 #gradient > .vertical(#333; #000);
 #gradient > .horizontal(#333; #000);
 #gradient > .radial(#333; #000);
 {% endhighlight %}
   <p>You can also specify the angle of a standard two-color, linear gradient:</p>
-{% highlight css %}
+{% highlight scss %}
 #gradient > .directional(#333; #000; 45deg);
 {% endhighlight %}
   <p>If you need a barber-stripe style gradient, that's easy, too. Just specify a single color and we'll overlay a translucent white stripe.</p>
-{% highlight css %}
-#gradient > .striped(#333; #000; 45deg);
+{% highlight scss %}
+#gradient > .striped(#333; 45deg);
 {% endhighlight %}
   <p>Up the ante and use three colors instead. Set the first color, the second color, the second color's color stop (a decimal value like 0.25), and the third color with these mixins:</p>
-{% highlight css %}
+{% highlight scss %}
 #gradient > .vertical-three-colors(#777; #333; .25; #000);
 #gradient > .horizontal-three-colors(#777; #333; .25; #000);
 {% endhighlight %}
@@ -3181,7 +3194,7 @@ a {
 
   <h3 id="less-mixins-clearfix">Clearfix</h3>
   <p>Forget adding <code>class="clearfix"</code> to any element and instead add the <code>.clearfix()</code> mixin where appropriate. Uses the <a href="http://nicolasgallagher.com/micro-clearfix-hack/" target="_blank">micro clearfix</a> from <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallager</a>.</p>
-{% highlight css %}
+{% highlight scss %}
 // Mixin
 .clearfix() {
   &:before,
@@ -3202,7 +3215,7 @@ a {
 
   <h3 id="less-mixins-centering">Horizontal centering</h3>
   <p>Quickly center any element within its parent. <strong>Requires <code>width</code> or <code>max-width</code> to be set.</strong></p>
-{% highlight css %}
+{% highlight scss %}
 // Mixin
 .center-block() {
   display: block;
@@ -3219,7 +3232,7 @@ a {
 
   <h3 id="less-mixins-sizing">Sizing helpers</h3>
   <p>Specify the dimensions of an object more easily.</p>
-{% highlight css %}
+{% highlight scss %}
 // Mixins
 .size(@width; @height) {
   width: @width;
@@ -3236,7 +3249,7 @@ a {
 
   <h3 id="less-mixins-resizable">Resizable textareas</h3>
   <p>Easily configure the resize options for any textarea, or any other element. Defaults to normal browser behavior (<code>both</code>).</p>
-{% highlight css %}
+{% highlight scss %}
 .resizable(@direction: both) {
   // Options: horizontal, vertical, both
   resize: @direction;
@@ -3247,9 +3260,9 @@ a {
 
   <h3 id="less-mixins-truncating">Truncating text</h3>
   <p>Easily truncate text with an ellipsis with a single mixin. <strong>Requires element to be <code>block</code> or <code>inline-block</code> level.</strong></p>
-{% highlight css %}
+{% highlight scss %}
 // Mixin
-.text-truncate() {
+.text-overflow() {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -3259,13 +3272,13 @@ a {
 .branch-name {
   display: inline-block;
   max-width: 200px;
-  .text-truncate();
+  .text-overflow();
 }
 {% endhighlight %}
 
   <h3 id="less-mixins-retina-images">Retina images</h3>
   <p>Specify two image paths and the @1x image dimensions, and Bootstrap will provide an @2x media query. <strong>If you have many images to serve, consider writing your retina image CSS manually in a single media query.</strong></p>
-{% highlight css %}
+{% highlight scss %}
 .img-retina(@file-1x; @file-2x; @width-1x; @height-1x) {
   background-image: url("@{file-1x}");
 
@@ -3343,4 +3356,29 @@ a {
   <p>
     <a class="btn btn-lg btn-outline" href="{{ site.sass_repo }}">Bootstrap for Sass</a>
   </p>
+</div>
+
+
+
+<!-- RTL
+================================================== -->
+<div class="bs-docs-section">
+  <h1 id="rtl" class="page-header">RTL</h1>
+  <p class="lead">As of Bootstrap 3.2, a right-to-left version of Bootstrap ships as part of the repository. It's powered by Twitter's <a href="https://github.com/twitter/css-flip">CSS Flip project</a> and is generated via our Gruntfile.</p>
+
+  <h2 id="rtl-how-to">How to use</h2>
+  <p>Bootstrap is by default a left-to-right project. For right-to-left projects, you'll need to set your language and replace the default Bootstrap CSS with an RTL version. First, set your language and text direction:</p>
+{% highlight html %}
+<!-- Example: Arabic language with direction set to RTL -->
+<html lang="ar" dir="rtl">
+{% endhighlight %}
+  <p>Then, include the right-to-left CSS file in place of the default Bootstrap CSS:</p>
+{% highlight html %}
+<!-- Bootstrap RTL -->
+<link rel="stylesheet" href="bootstrap-rtl.css">
+{% endhighlight %}
+  <p>Alternatively, you may use the minified RTL file, <code>bootstrap-rtl.min.css</code>.</p>
+
+  <h2 id="rtl-css-flip">CSS Flip</h2>
+  <p><a href="https://github.com/twitter/css-flip">CSS Flip</a> is a project for converting left-to-right CSS files into right-to-left CSS files. We use it in our Gruntfile to automate the generation of Bootstrap's RTL CSS files.</p>
 </div>

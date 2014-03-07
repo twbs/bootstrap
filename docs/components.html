@@ -1140,7 +1140,7 @@ lead: "Over a dozen reusable components built to provide iconography, dropdowns,
   <p>Easily make tabs or pills equal widths of their parent at screens wider than 768px with <code>.nav-justified</code>. On smaller screens, the nav links are stacked.</p>
   <div class="bs-callout bs-callout-warning">
     <h4>Safari and responsive justified navs</h4>
-    <p>Safari exhibits a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing. This bug is also shown in the <a href="../examples/justified-nav/">justified nav example</a>.</p>
+    <p>As of v7.0.1, Safari exhibits a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing. This bug is also shown in the <a href="../examples/justified-nav/">justified nav example</a>.</p>
   </div>
   <div class="bs-example">
     <ul class="nav nav-tabs nav-justified">
@@ -1574,7 +1574,7 @@ lead: "Over a dozen reusable components built to provide iconography, dropdowns,
   <div class="bs-callout bs-callout-danger">
     <h4>Body padding required</h4>
     <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the top of the <code>&lt;body&gt;</code>. Try out your own values or use our snippet below. Tip: By default, the navbar is 50px high.</p>
-{% highlight css %}
+{% highlight scss %}
 body { padding-top: 70px; }
 {% endhighlight %}
     <p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
@@ -1618,7 +1618,7 @@ body { padding-top: 70px; }
   <div class="bs-callout bs-callout-danger">
     <h4>Body padding required</h4>
     <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the bottom of the <code>&lt;body&gt;</code>. Try out your own values or use our snippet below. Tip: By default, the navbar is 50px high.</p>
-{% highlight css %}
+{% highlight scss %}
 body { padding-bottom: 70px; }
 {% endhighlight %}
     <p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
@@ -2262,6 +2262,51 @@ body { padding-bottom: 70px; }
   </div>
 </div>
 {% endhighlight %}
+
+  <h3 id="progress-label">With label</h3>
+  <p>Remove the <code>.sr-only</code> class from within the progress bar to show a visible percentage. For low percentages, consider adding a <code>min-width</code> to ensure the label's text is fully visible.</p>
+  <div class="bs-example">
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+        60%
+      </div>
+    </div>
+  </div>
+{% highlight html %}
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+    60%
+  </div>
+</div>
+{% endhighlight %}
+
+  <h3 id="progress-low-percentages">Low percentages</h3>
+  <p>Progress bars representing low single digit percentages, as well as 0%, include a <code>min-width: 20px;</code> for legibility.</p>
+  <div class="bs-example">
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        0%
+      </div>
+    </div>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
+        2%
+      </div>
+    </div>
+  </div>
+{% highlight html %}
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+    0%
+  </div>
+</div>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
+    2%
+  </div>
+</div>
+{% endhighlight %}
+
 
   <h3 id="progress-alternatives">Contextual alternatives</h3>
   <p>Progress bars use some of the same button and alert classes for consistent styles.</p>

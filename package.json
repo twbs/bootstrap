@@ -1,16 +1,23 @@
 {
   "name": "bootstrap",
-  "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development.",
-  "version": "3.1.0",
+  "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+  "version": "3.1.1",
   "keywords": [
-    "bootstrap",
-    "css"
+    "css",
+    "less",
+    "mobile-first",
+    "responsive",
+    "front-end",
+    "framework",
+    "web"
   ],
   "homepage": "http://getbootstrap.com",
   "author": "Twitter, Inc.",
   "scripts": {
     "test": "grunt test"
   },
+  "style": "./dist/css/bootstrap.css",
+  "less": "./less/bootstrap.less",
   "repository": {
     "type": "git",
     "url": "https://github.com/twbs/bootstrap.git"
@@ -18,39 +25,39 @@
   "bugs": {
     "url": "https://github.com/twbs/bootstrap/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/twbs/bootstrap/blob/master/LICENSE"
-    }
-  ],
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/twbs/bootstrap/blob/master/LICENSE"
+  },
   "devDependencies": {
-    "browserstack-runner": "~0.1.0",
     "btoa": "~1.1.1",
-    "canonical-json": "~0.0.3",
+    "canonical-json": "~0.0.4",
+    "css-flip": "~0.3.0",
     "grunt": "~0.4.2",
-    "grunt-banner": "~0.2.0",
+    "grunt-banner": "~0.2.1",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-connect": "~0.6.0",
+    "grunt-contrib-connect": "~0.7.1",
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-csslint": "~0.2.0",
-    "grunt-contrib-cssmin": "~0.7.0",
-    "grunt-contrib-jade": "~0.9.1",
+    "grunt-contrib-cssmin": "~0.9.0",
+    "grunt-contrib-jade": "~0.11.0",
     "grunt-contrib-jshint": "~0.8.0",
-    "grunt-contrib-less": "~0.9.0",
+    "grunt-contrib-less": "~0.10.0",
     "grunt-contrib-qunit": "~0.4.0",
-    "grunt-contrib-uglify": "~0.3.0",
+    "grunt-contrib-uglify": "~0.4.0",
     "grunt-contrib-watch": "~0.5.3",
+    "grunt-css-flip": "^0.1.0",
     "grunt-csscomb": "~2.0.1",
-    "grunt-exec": "0.4.3",
+    "grunt-exec": "~0.4.5",
     "grunt-html-validation": "~0.1.13",
     "grunt-jekyll": "~0.4.1",
-    "grunt-jscs-checker": "~0.3.0",
-    "grunt-saucelabs": "~5.0.0",
+    "grunt-jscs-checker": "~0.4.0",
+    "grunt-saucelabs": "~5.0.1",
     "grunt-sed": "~0.1.1",
-    "load-grunt-tasks": "~0.3.0",
-    "markdown": "~0.5.0"
+    "load-grunt-tasks": "~0.4.0",
+    "markdown": "~0.5.0",
+    "css-flip": "~0.3.0"
   },
   "jspm": {
     "main": "js/bootstrap",

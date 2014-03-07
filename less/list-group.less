@@ -64,7 +64,9 @@ a.list-group-item {
     text-decoration: none;
     background-color: @list-group-hover-bg;
   }
-  
+}
+
+.list-group-item {
   // Disabled state
   &.disabled,
   &.disabled:hover,
@@ -72,7 +74,7 @@ a.list-group-item {
     background-color: @list-group-disabled-bg;
     color: @list-group-disabled-color;
     border-color: @list-group-disabled-border;
-    
+
     // Force color to inherit for custom content
     .list-group-item-heading {
       color: inherit;
