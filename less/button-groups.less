@@ -220,9 +220,17 @@
 
 
 // Checkbox and radio options
+//
+// In order to support the browser's form validation feedback, powered by the
+// `required` attribute, we have to "hide" the inputs via `opacity`. We cannot
+// use `display: none;` or `visibility: hidden;` as that also hides the popover.
+// This way, we ensure a DOM element is visible to position the popover from.
+//
+// See https://github.com/twbs/bootstrap/pull/12794 for more.
+
 [data-toggle="buttons"] > .btn > input[type="radio"],
 [data-toggle="buttons"] > .btn > input[type="checkbox"] {
-  opacity: 0;
   position: absolute;
   z-index: -1;
+  opacity: 0;
 }
