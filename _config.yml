@@ -6,8 +6,8 @@ pygments:         true
 permalink:        pretty
 
 # Server
-source:           ./docs
-destination:      ./_gh_pages
+source:           docs
+destination:      _gh_pages
 host:             0.0.0.0
 port:             9001
 baseurl:          /
