@@ -56,7 +56,7 @@ module.exports = function (grunt) {
         src: 'js/tests/unit/*.js'
       },
       assets: {
-        src: ['docs/assets/js/application.js', 'docs/assets/js/customizer.js']
+        src: 'docs/assets/js/src/*.js'
       }
     },
 
@@ -98,7 +98,7 @@ module.exports = function (grunt) {
           'ids': false,
           'overqualified-elements': false
         },
-        src: ['docs/assets/css/docs.css']
+        src: 'docs/assets/css/src/docs.css'
       }
     },
 
@@ -148,7 +148,7 @@ module.exports = function (grunt) {
           'docs/assets/js/vendor/blob.js',
           'docs/assets/js/vendor/filesaver.js',
           'docs/assets/js/raw-files.min.js',
-          'docs/assets/js/customizer.js'
+          'docs/assets/js/src/customizer.js'
         ],
         dest: 'docs/assets/js/customize.min.js'
       },
@@ -158,7 +158,7 @@ module.exports = function (grunt) {
         },
         src: [
           'docs/assets/js/vendor/holder.js',
-          'docs/assets/js/application.js'
+          'docs/assets/js/src/application.js'
         ],
         dest: 'docs/assets/js/docs.min.js'
       }
@@ -246,8 +246,8 @@ module.exports = function (grunt) {
           compatibility: 'ie8'
         },
         src: [
-          'docs/assets/css/docs.css',
-          'docs/assets/css/pygments-manni.css'
+          'docs/assets/css/src/docs.css',
+          'docs/assets/css/src/pygments-manni.css'
         ],
         dest: 'docs/assets/css/docs.min.css'
       }
@@ -286,12 +286,12 @@ module.exports = function (grunt) {
       examples: {
         expand: true,
         cwd: 'docs/examples/',
-        src: ['**/*.css'],
+        src: '**/*.css',
         dest: 'docs/examples/'
       },
       docs: {
         files: {
-          'docs/assets/css/docs.css': 'docs/assets/css/docs.css'
+          'docs/assets/css/src/docs.css': 'docs/assets/css/src/docs.css'
         }
       }
     },
