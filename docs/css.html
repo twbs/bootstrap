@@ -718,9 +718,54 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
   <h3>Built with Less</h3>
   <p>The typographic scale is based on two Less variables in <strong>variables.less</strong>: <code>@font-size-base</code> and <code>@line-height-base</code>. The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.</p>
 
+  <!-- Inline text elements -->
+  <h2 id="type-inline-text">Inline text elements</h2>
+  <h3>Marked text</h3>
+  <p>For indicating blocks of text that have been deleted use the <code>&lt;mark&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p>You can use the mark tag to <mark>highlight</mark> text.</p>
+  </div>
+{% highlight html %}
+<mark>This line of text is meant to be treated as deleted text.</mark>
+{% endhighlight %}
 
-  <!-- Emphasis -->
-  <h2 id="type-emphasis">Emphasis</h2>
+
+  <h3>Deleted text</h3>
+  <p>For indicating blocks of text that have been deleted use the <code>&lt;del&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p><del>This line of text is meant to be treated as deleted text.</del></p>
+  </div>
+{% highlight html %}
+<del>This line of text is meant to be treated as deleted text.</del>
+{% endhighlight %}
+
+  <h3>Strikethrough text</h3>
+  <p>For indicating blocks of text that are no longer relevant use the <code>&lt;s&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p><s>This line of text is meant to be treated as no longer accurate.</s></p>
+  </div>
+{% highlight html %}
+<s>This line of text is meant to be treated as no longer accurate.</s>
+{% endhighlight %}
+
+  <h3>Inserted text</h3>
+  <p>For indicating additions to the document use the <code>&lt;ins&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
+  </div>
+{% highlight html %}
+<ins>This line of text is meant to be treated as an addition to the document.</ins>
+{% endhighlight %}
+
+  <h3>Underlined text</h3>
+  <p>To underline text use the <code>&lt;u&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p><u>This line of text is will render as underlined</u></p>
+  </div>
+{% highlight html %}
+<u>This line of text is will render as underlined</u>
+{% endhighlight %}
+
   <p>Make use of HTML's default emphasis tags with lightweight styles.</p>
 
   <h3>Small text</h3>
@@ -757,7 +802,7 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
     <p>Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
   </div>
 
-  <h3>Alignment classes</h3>
+  <h2 id="type-alignment">Alignment classes</h2>
   <p>Easily realign text to components with text alignment classes.</p>
   <div class="bs-example">
     <p class="text-left">Left aligned text.</p>
@@ -1051,7 +1096,26 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
   <p>You may optionally add the <code>.pre-scrollable</code> class, which will set a max-height of 350px and provide a y-axis scrollbar.</p>
+  <h2 id="code-variables">Variables</h2>
+  <p>For indicating variables use the <code>&lt;var&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p><var>y</var> = <var>m</var><var>x</var> + <var>b</var></p>
+
+  </div>
+{% highlight html %}
+<var>y</var> = <var>m</var><var>x</var> + <var>b</var>
+{% endhighlight %}
+
+  <h2 id="code-sample-output">Sample output</h2>
+  <p>For indicating blocks sample output from a program use the <code>&lt;samp&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p><samp>This text is meant to be treated as sample output from a computer program.</samp></p>
+  </div>
+{% highlight html %}
+<samp>This text is meant to be treated as sample output from a computer program.</samp>
+{% endhighlight %}
 </div>
+
 
 
 
