@@ -3078,7 +3078,7 @@ a {
 {% endhighlight %}
 
   <h3 id="less-mixins-transitions">Transitions</h3>
-  <p>Three mixins for flexibility. Set all transition information with one, or specify a separate delay and duration as needed.</p>
+  <p>Multiple mixins for flexibility. Set all transition information with one, or specify a separate delay and duration as needed.</p>
   <p>The mixins are <strong>deprecated</strong> as of v3.2.0, with the introduction of autoprefixer. To preserve backwards-compatibility, Bootstrap will continue to use the mixins internally until Bootstrap v4.</p>
 {% highlight scss %}
 .transition(@transition) {
@@ -3096,6 +3096,10 @@ a {
 .transition-duration(@transition-duration) {
   -webkit-transition-duration: @transition-duration;
           transition-duration: @transition-duration;
+}
+.transition-timing-function(@timing-function) {
+  -webkit-transition-timing-function: @timing-function;
+          transition-timing-function: @timing-function;
 }
 .transition-transform(@transition) {
   -webkit-transition: -webkit-transform @transition;
