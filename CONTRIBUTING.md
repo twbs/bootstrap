@@ -183,6 +183,7 @@ license your work under the terms of the [MIT License](LICENSE.md).
 - 2 spaces (no tabs)
 - strict mode
 - "Attractive"
+- Use `===` and `!==` over `==` and `!=`
 
 ### Checking coding style
 
