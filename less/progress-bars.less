@@ -6,13 +6,6 @@
 // Bar animations
 // -------------------------
 
-// WebKit
-@-webkit-keyframes progress-bar-stripes {
-  from  { background-position: 40px 0; }
-  to    { background-position: 0 0; }
-}
-
-// Spec and IE10+
 @keyframes progress-bar-stripes {
   from  { background-position: 40px 0; }
   to    { background-position: 0 0; }
@@ -56,6 +49,22 @@
 // Call animation for the active one
 .progress.active .progress-bar {
   .animation(progress-bar-stripes 2s linear infinite);
+}
+
+// Account for lower percentages
+.progress-bar {
+  &[aria-valuenow="1"],
+  &[aria-valuenow="2"] {
+    min-width: 30px;
+  }
+
+  &[aria-valuenow="0"] {
+    color: @gray-light;
+    min-width: 30px;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+  }
 }
 
 

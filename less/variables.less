@@ -257,7 +257,7 @@
 //## Define the breakpoints at which your layout will change, adapting to different screen sizes.
 
 // Extra small screen / phone
-// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
+// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1, and @screen-xs-min as of v3.2.0
 @screen-xs:                  480px;
 @screen-xs-min:              @screen-xs;
 @screen-phone:               @screen-xs-min;
@@ -525,9 +525,9 @@
 //** Popover outer arrow width
 @popover-arrow-outer-width:           (@popover-arrow-width + 1);
 //** Popover outer arrow color
-@popover-arrow-outer-color:           rgba(0,0,0,.25);
+@popover-arrow-outer-color:           fadein(@popover-border-color, 5%);
 //** Popover outer arrow fallback color
-@popover-arrow-outer-fallback-color:  #999;
+@popover-arrow-outer-fallback-color:  darken(@popover-fallback-border-color, 20%);
 
 
 //== Labels
@@ -558,7 +558,7 @@
 //##
 
 //** Padding applied to the modal body
-@modal-inner-padding:         20px;
+@modal-inner-padding:         15px;
 
 //** Padding applied to the modal title
 @modal-title-padding:         15px;
@@ -643,17 +643,26 @@
 //** List group border radius
 @list-group-border-radius:      @border-radius-base;
 
-//** Background color of single list elements on hover
+//** Background color of single list items on hover
 @list-group-hover-bg:           #f5f5f5;
-//** Text color of active list elements
+//** Text color of active list items
 @list-group-active-color:       @component-active-color;
-//** Background color of active list elements
+//** Background color of active list items
 @list-group-active-bg:          @component-active-bg;
 //** Border color of active list elements
 @list-group-active-border:      @list-group-active-bg;
+//** Text color for content within active list items
 @list-group-active-text-color:  lighten(@list-group-active-bg, 40%);
 
+//** Text color of disabled list items
+@list-group-disabled-color:      @gray-light;
+//** Background color of disabled list items
+@list-group-disabled-bg:         @gray-lighter;
+//** Text color for content within disabled list items
+@list-group-disabled-text-color: @list-group-disabled-color;
+
 @list-group-link-color:         #555;
+@list-group-link-hover-color:   @list-group-link-color;
 @list-group-link-heading-color: #333;
 
 
@@ -663,6 +672,8 @@
 
 @panel-bg:                    #fff;
 @panel-body-padding:          15px;
+@panel-heading-padding:       10px 15px;
+@panel-footer-padding:        @panel-heading-padding;
 @panel-border-radius:         @border-radius-base;
 
 //** Border color for elements within panels
@@ -810,6 +821,8 @@
 @headings-small-color:        @gray-light;
 //** Blockquote small color
 @blockquote-small-color:      @gray-light;
+//** Blockquote font size
+@blockquote-font-size:        (@font-size-base * 1.25);
 //** Blockquote border color
 @blockquote-border-color:     @gray-lighter;
 //** Page header border color
