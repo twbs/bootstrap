@@ -4699,7 +4699,6 @@ a.list-group-item:focus {
 .list-group-item.disabled:focus {
   color: #999;
   background-color: #eee;
-  border-color: #eee;
 }
 .list-group-item.disabled .list-group-item-heading,
 .list-group-item.disabled:hover .list-group-item-heading,
@@ -4709,7 +4708,7 @@ a.list-group-item:focus {
 .list-group-item.disabled .list-group-item-text,
 .list-group-item.disabled:hover .list-group-item-text,
 .list-group-item.disabled:focus .list-group-item-text {
-  color: #fff;
+  color: #999;
 }
 .list-group-item.active,
 .list-group-item.active:hover,

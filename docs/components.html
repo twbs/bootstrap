@@ -2650,6 +2650,31 @@ body { padding-bottom: 70px; }
 </div>
 {% endhighlight %}
 
+  <h3 id="list-group-disabled">Disabled items</h3>
+  <p>Add <code>.disabled</code> to a <code>.list-group-item</code> to gray it out to appear disabled.</p>
+  <div class="bs-example">
+    <div class="list-group">
+      <a href="#" class="list-group-item disabled">
+        Cras justo odio
+      </a>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+    </div>
+  </div>
+{% highlight html %}
+<div class="list-group">
+  <a href="#" class="list-group-item disabled">
+    Cras justo odio
+  </a>
+  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item">Morbi leo risus</a>
+  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+  <a href="#" class="list-group-item">Vestibulum at eros</a>
+</div>
+{% endhighlight %}
+
   <h3 id="list-group-contextual-classes">Contextual classes</h3>
   <p>Use contextual classes to style list items, default or linked. Also includes <code>.active</code> state.</p>
   <div class="bs-example">
