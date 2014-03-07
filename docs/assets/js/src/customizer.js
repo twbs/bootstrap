@@ -196,11 +196,11 @@ window.onload = function () { // wait for load in a dumb way because B-0
       // Core stylesheets like 'normalize.less' are not included in the form
       // since disabling them would wreck everything, and so their 'fileInclude'
       // will be 'undefined'.
-      if (fileInclude || (fileInclude == null))    lessSource += __less[filename]
+      if (fileInclude || (fileInclude === null))    lessSource += __less[filename]
 
       // Custom variables are added after Bootstrap variables so the custom
       // ones take precedence.
-      if (('variables.less' === filename) && vars) lessSource += generateCustomCSS(vars)
+      if (('variables.less' === filename) && vars)  lessSource += generateCustomCSS(vars)
     })
 
     lessSource = lessSource.replace(/@import[^\n]*/gi, '') //strip any imports
