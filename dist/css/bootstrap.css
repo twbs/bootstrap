@@ -4693,6 +4693,7 @@ a.list-group-item .list-group-item-heading {
 }
 a.list-group-item:hover,
 a.list-group-item:focus {
+  color: #555;
   text-decoration: none;
   background-color: #f5f5f5;
 }
