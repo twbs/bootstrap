@@ -1,4 +1,4 @@
-/** @license uglifyweb Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+/*! @license uglifyweb Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
  * The parts that are unique to this repo (not much, just some wrapper code) are
  * released under the new BSD and MIT licenses.
  *

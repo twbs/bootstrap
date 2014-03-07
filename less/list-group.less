@@ -64,6 +64,24 @@ a.list-group-item {
     text-decoration: none;
     background-color: @list-group-hover-bg;
   }
+}
+
+.list-group-item {
+  // Disabled state
+  &.disabled,
+  &.disabled:hover,
+  &.disabled:focus {
+    background-color: @list-group-disabled-bg;
+    color: @list-group-disabled-color;
+
+    // Force color to inherit for custom content
+    .list-group-item-heading {
+      color: inherit;
+    }
+    .list-group-item-text {
+      color: @list-group-disabled-text-color;
+    }
+  }
 
   // Active class on item itself, not parent
   &.active,

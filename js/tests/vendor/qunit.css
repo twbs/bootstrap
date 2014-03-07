@@ -1,11 +1,12 @@
-/**
- * QUnit 1.0.0 - A JavaScript Unit Testing Framework
+/*!
+ * QUnit 1.13.0
+ * http://qunitjs.com/
  *
- * http://docs.jquery.com/QUnit
+ * Copyright 2013 jQuery Foundation and other contributors
+ * Released under the MIT license
+ * http://jquery.org/license
  *
- * Copyright (c) 2011 John Resig, Jörn Zaefferer
- * Dual licensed under the MIT (MIT-LICENSE.txt)
- * or GPL (GPL-LICENSE.txt) licenses.
+ * Date: 2014-01-04T17:09Z
  */
 
 /** Font Family and Sizes */
@@ -20,7 +21,7 @@
 
 /** Resets */
 
-#qunit-tests, #qunit-tests ol, #qunit-header, #qunit-banner, #qunit-userAgent, #qunit-testresult {
+#qunit-tests, #qunit-header, #qunit-banner, #qunit-userAgent, #qunit-testresult, #qunit-modulefilter {
 	margin: 0;
 	padding: 0;
 }
@@ -38,10 +39,10 @@
 	line-height: 1em;
 	font-weight: normal;
 
-	border-radius: 15px 15px 0 0;
-	-moz-border-radius: 15px 15px 0 0;
-	-webkit-border-top-right-radius: 15px;
-	-webkit-border-top-left-radius: 15px;
+	border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	-webkit-border-top-right-radius: 5px;
+	-webkit-border-top-left-radius: 5px;
 }
 
 #qunit-header a {
@@ -54,6 +55,11 @@
 	color: #fff;
 }
 
+#qunit-testrunner-toolbar label {
+	display: inline-block;
+	padding: 0 .5em 0 .1em;
+}
+
 #qunit-banner {
 	height: 5px;
 }
@@ -62,6 +68,7 @@
 	padding: 0.5em 0 0.5em 2em;
 	color: #5E740B;
 	background-color: #eee;
+	overflow: hidden;
 }
 
 #qunit-userAgent {
@@ -71,6 +78,9 @@
 	text-shadow: rgba(0, 0, 0, 0.5) 2px 2px 1px;
 }
 
+#qunit-modulefilter-container {
+	float: right;
+}
 
 /** Tests: Pass/Fail */
 
@@ -102,19 +112,24 @@
 	color: #000;
 }
 
-#qunit-tests ol {
+#qunit-tests li .runtime {
+	float: right;
+	font-size: smaller;
+}
+
+.qunit-assert-list {
 	margin-top: 0.5em;
 	padding: 0.5em;
 
 	background-color: #fff;
 
-	border-radius: 15px;
-	-moz-border-radius: 15px;
-	-webkit-border-radius: 15px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
 
-	box-shadow: inset 0px 2px 13px #999;
-	-moz-box-shadow: inset 0px 2px 13px #999;
-	-webkit-box-shadow: inset 0px 2px 13px #999;
+.qunit-collapsed {
+	display: none;
 }
 
 #qunit-tests table {
@@ -157,8 +172,7 @@
 #qunit-tests b.failed                       { color: #710909; }
 
 #qunit-tests li li {
-	margin: 0.5em;
-	padding: 0.4em 0.5em 0.4em 0.5em;
+	padding: 5px;
 	background-color: #fff;
 	border-bottom: none;
 	list-style-position: inside;
@@ -167,9 +181,9 @@
 /*** Passing Styles */
 
 #qunit-tests li li.pass {
-	color: #5E740B;
+	color: #3c510c;
 	background-color: #fff;
-	border-left: 26px solid #C6E746;
+	border-left: 10px solid #C6E746;
 }
 
 #qunit-tests .pass                          { color: #528CE0; background-color: #D2E0E6; }
@@ -185,15 +199,15 @@
 #qunit-tests li li.fail {
 	color: #710909;
 	background-color: #fff;
-	border-left: 26px solid #EE5757;
+	border-left: 10px solid #EE5757;
 	white-space: pre;
 }
 
 #qunit-tests > li:last-child {
-	border-radius: 0 0 15px 15px;
-	-moz-border-radius: 0 0 15px 15px;
-	-webkit-border-bottom-right-radius: 15px;
-	-webkit-border-bottom-left-radius: 15px;
+	border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
 }
 
 #qunit-tests .fail                          { color: #000000; background-color: #EE5757; }
@@ -216,6 +230,9 @@
 
 	border-bottom: 1px solid white;
 }
+#qunit-testresult .module-name {
+	font-weight: bold;
+}
 
 /** Fixture */
 
@@ -223,4 +240,6 @@
 	position: absolute;
 	top: -10000px;
 	left: -10000px;
+	width: 1000px;
+	height: 1000px;
 }

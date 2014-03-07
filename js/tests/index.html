@@ -3,16 +3,45 @@
 <head>
   <title>Bootstrap Plugin Test Suite</title>
 
-  <!-- jquery -->
-  <!--<script src="http://code.jquery.com/jquery-1.7.min.js"></script>-->
+  <!-- jQuery -->
   <script src="vendor/jquery.js"></script>
 
-  <!-- qunit -->
+  <!-- QUnit -->
   <link rel="stylesheet" href="vendor/qunit.css" media="screen">
   <script src="vendor/qunit.js"></script>
+  <script>
+    // See https://github.com/axemclion/grunt-saucelabs#test-result-details-with-qunit
+    var log = []
+    QUnit.done = function (test_results) {
+      var tests = log.map(function (details) {
+        return {
+          name: details.name,
+          result: details.result,
+          expected: details.expected,
+          actual: details.actual,
+          source: details.source
+        }
+      })
+      test_results.tests = tests
 
-  <!--  plugin sources -->
-  <script src="../../js/transition.js"></script>
+      // Delaying results a bit because in real-world scenario you won't get them immediately
+      setTimeout(function () {
+        window.global_test_results = test_results
+      }, 2000)
+    }
+
+    QUnit.testStart(function (testDetails) {
+      QUnit.log = function (details) {
+        if (!details.result) {
+          details.name = testDetails.name
+          log.push(details)
+        }
+      }
+    })
+  </script>
+
+  <!-- Plugin sources -->
+  <script>$.support.transition = false</script>
   <script src="../../js/alert.js"></script>
   <script src="../../js/button.js"></script>
   <script src="../../js/carousel.js"></script>
@@ -25,8 +54,7 @@
   <script src="../../js/popover.js"></script>
   <script src="../../js/affix.js"></script>
 
-  <!-- unit tests -->
-  <script src="unit/transition.js"></script>
+  <!-- Unit tests -->
   <script src="unit/alert.js"></script>
   <script src="unit/button.js"></script>
   <script src="unit/carousel.js"></script>
@@ -42,10 +70,7 @@
 </head>
 <body>
   <div>
-    <h1 id="qunit-header">Bootstrap Plugin Test Suite</h1>
-    <h2 id="qunit-banner"></h2>
-    <h2 id="qunit-userAgent"></h2>
-    <ol id="qunit-tests"></ol>
+    <div id="qunit"></div>
     <div id="qunit-fixture"></div>
   </div>
 </body>

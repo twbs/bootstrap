@@ -92,34 +92,19 @@ cite    { font-style: normal; }
   color: @text-muted;
 }
 .text-primary {
-  color: @brand-primary;
-  &:hover {
-    color: darken(@brand-primary, 10%);
-  }
+  .text-emphasis-variant(@brand-primary);
 }
 .text-success {
-  color: @state-success-text;
-  &:hover {
-    color: darken(@state-success-text, 10%);
-  }
+  .text-emphasis-variant(@state-success-text);
 }
 .text-info {
-  color: @state-info-text;
-  &:hover {
-    color: darken(@state-info-text, 10%);
-  }
+  .text-emphasis-variant(@state-info-text);
 }
 .text-warning {
-  color: @state-warning-text;
-  &:hover {
-    color: darken(@state-warning-text, 10%);
-  }
+  .text-emphasis-variant(@state-warning-text);
 }
 .text-danger {
-  color: @state-danger-text;
-  &:hover {
-    color: darken(@state-danger-text, 10%);
-  }
+  .text-emphasis-variant(@state-danger-text);
 }
 
 // Contextual backgrounds
@@ -129,34 +114,19 @@ cite    { font-style: normal; }
   // Given the contrast here, this is the only class to have its color inverted
   // automatically.
   color: #fff;
-  background-color: @brand-primary;
-  a&:hover {
-    background-color: darken(@brand-primary, 10%);
-  }
+  .bg-variant(@brand-primary);
 }
 .bg-success {
-  background-color: @state-success-bg;
-  a&:hover {
-    background-color: darken(@state-success-bg, 10%);
-  }
+  .bg-variant(@state-success-bg);
 }
 .bg-info {
-  background-color: @state-info-bg;
-  a&:hover {
-    background-color: darken(@state-info-bg, 10%);
-  }
+  .bg-variant(@state-info-bg);
 }
 .bg-warning {
-  background-color: @state-warning-bg;
-  a&:hover {
-    background-color: darken(@state-warning-bg, 10%);
-  }
+  .bg-variant(@state-warning-bg);
 }
 .bg-danger {
-  background-color: @state-danger-bg;
-  a&:hover {
-    background-color: darken(@state-danger-bg, 10%);
-  }
+  .bg-variant(@state-danger-bg);
 }
 
 
@@ -171,7 +141,7 @@ cite    { font-style: normal; }
 
 
 // Lists
-// --------------------------------------------------
+// -------------------------
 
 // Unordered and Ordered lists
 ul,
@@ -195,15 +165,12 @@ ol {
 // Inline turns list items into inline-block
 .list-inline {
   .list-unstyled();
+  margin-left: -5px;
 
   > li {
     display: inline-block;
     padding-left: 5px;
     padding-right: 5px;
-
-    &:first-child {
-      padding-left: 0;
-    }
   }
 }
 
@@ -228,8 +195,12 @@ dd {
 // Defaults to being stacked without any of the below styles applied, until the
 // grid breakpoint is reached (default of ~768px).
 
-@media (min-width: @grid-float-breakpoint) {
-  .dl-horizontal {
+.dl-horizontal {
+  dd {
+    &:extend(.clearfix all); // Clear the floated `dt` if an empty `dd` is present
+  }
+
+  @media (min-width: @grid-float-breakpoint) {
     dt {
       float: left;
       width: (@component-offset-horizontal - 20);
@@ -239,13 +210,13 @@ dd {
     }
     dd {
       margin-left: @component-offset-horizontal;
-      &:extend(.clearfix all); // Clear the floated `dt` if an empty `dd` is present
     }
   }
 }
 
-// MISC
-// ----
+
+// Misc
+// -------------------------
 
 // Abbreviations and acronyms
 abbr[title],
@@ -263,7 +234,7 @@ abbr[data-original-title] {
 blockquote {
   padding: (@line-height-computed / 2) @line-height-computed;
   margin: 0 0 @line-height-computed;
-  font-size: (@font-size-base * 1.25);
+  font-size: @blockquote-font-size;
   border-left: 5px solid @blockquote-border-color;
 
   p,
@@ -274,7 +245,7 @@ blockquote {
     }
   }
 
-  // Deprecating small and .small for v3.1
+  // Note: Deprecated small and .small as of v3.1.0
   // Context: https://github.com/twbs/bootstrap/issues/11660
   footer,
   small,
@@ -292,7 +263,7 @@ blockquote {
 
 // Opposite alignment of blockquote
 //
-// Heads up: `blockquote.pull-right` has been deprecated as of v3.1.
+// Heads up: `blockquote.pull-right` has been deprecated as of v3.1.0.
 .blockquote-reverse,
 blockquote.pull-right {
   padding-right: 15px;

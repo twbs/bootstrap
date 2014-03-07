@@ -23,30 +23,29 @@
 
 
 // Visibility utilities
-.visible-xs {
+.visible-xs,
+.visible-sm,
+.visible-md,
+.visible-lg {
   .responsive-invisibility();
+}
 
+.visible-xs {
   @media (max-width: @screen-xs-max) {
     .responsive-visibility();
   }
 }
 .visible-sm {
-  .responsive-invisibility();
-
   @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
     .responsive-visibility();
   }
 }
 .visible-md {
-  .responsive-invisibility();
-
   @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
     .responsive-visibility();
   }
 }
 .visible-lg {
-  .responsive-invisibility();
-
   @media (min-width: @screen-lg-min) {
     .responsive-visibility();
   }

@@ -1,35 +1,34 @@
 /*!
+ * Bootstrap Customizer (http://getbootstrap.com/customize/)
  * Copyright 2011-2014 Twitter, Inc.
  *
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
  * details, see http://creativecommons.org/licenses/by/3.0/.
  */
 
-/* jshint multistr:true */
-
 window.onload = function () { // wait for load in a dumb way because B-0
   var cw = '/*!\n' +
-           ' * Bootstrap v3.0.3 (http://getbootstrap.com)\n' +
+           ' * Bootstrap v3.1.1 (http://getbootstrap.com)\n' +
            ' * Copyright 2011-2014 Twitter, Inc.\n' +
            ' * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n' +
-           ' */\n\n';
+           ' */\n\n'
 
   function showError(msg, err) {
-    $('<div id="bsCustomizerAlert" class="bs-customizer-alert">\
-        <div class="container">\
-          <a href="#bsCustomizerAlert" data-dismiss="alert" class="close pull-right">&times;</a>\
-          <p class="bs-customizer-alert-text"><span class="glyphicon glyphicon-warning-sign"></span>' + msg + '</p>' +
-          (err.extract ? '<pre class="bs-customizer-alert-extract">' + err.extract.join('\n') + '</pre>' : '') + '\
-        </div>\
-      </div>').appendTo('body').alert()
+    $('<div id="bsCustomizerAlert" class="bs-customizer-alert">' +
+        '<div class="container">' +
+          '<a href="#bsCustomizerAlert" data-dismiss="alert" class="close pull-right">&times;</a>' +
+          '<p class="bs-customizer-alert-text"><span class="glyphicon glyphicon-warning-sign"></span>' + msg + '</p>' +
+          (err.extract ? '<pre class="bs-customizer-alert-extract">' + err.extract.join('\n') + '</pre>' : '') +
+        '</div>' +
+      '</div>').appendTo('body').alert()
     throw err
   }
 
   function showCallout(msg, showUpTop) {
-    var callout = $('<div class="bs-callout bs-callout-danger">\
-       <h4>Attention!</h4>\
-      <p>' + msg + '</p>\
-    </div>')
+    var callout = $('<div class="bs-callout bs-callout-danger">' +
+       '<h4>Attention!</h4>' +
+      '<p>' + msg + '</p>' +
+    '</div>')
 
     if (showUpTop) {
       callout.appendTo('.bs-docs-container')
@@ -39,9 +38,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
   }
 
   function getQueryParam(key) {
-    key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, '\\$&'); // escape RegEx meta chars
-    var match = location.search.match(new RegExp('[?&]' + key + '=([^&]+)(&|$)'));
-    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+    key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, '\\$&') // escape RegEx meta chars
+    var match = location.search.match(new RegExp('[?&]' + key + '=([^&]+)(&|$)'))
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '))
   }
 
   function createGist(configJson) {
@@ -73,9 +72,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
     var vars = {}
 
     $('#less-variables-section input')
-        .each(function () {
-          $(this).val() && (vars[$(this).prev().text()] = $(this).val())
-        })
+      .each(function () {
+        $(this).val() && (vars[$(this).prev().text()] = $(this).val())
+      })
 
     var data = {
       vars: vars,
@@ -210,9 +209,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
   function compileLESS(lessSource, baseFilename, intoResult) {
     var parser = new less.Parser({
-        paths: ['variables.less', 'mixins.less'],
-        optimization: 0,
-        filename: baseFilename + '.css'
+      paths: ['variables.less', 'mixins.less'],
+      optimization: 0,
+      filename: baseFilename + '.css'
     }).parse(lessSource, function (err, tree) {
       if (err) {
         return showError('<strong>Ruh roh!</strong> Could not parse less files.', err)
@@ -239,9 +238,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
     var vars = {}
 
     $('#less-variables-section input')
-        .each(function () {
-          $(this).val() && (vars[$(this).prev().text()] = $(this).val())
-        })
+      .each(function () {
+        $(this).val() && (vars[$(this).prev().text()] = $(this).val())
+      })
 
     var bsLessSource    = generateLESS('bootstrap.less', lessFileIncludes, vars)
     var themeLessSource = generateLESS('theme.less',     lessFileIncludes, vars)
@@ -332,15 +331,15 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
   // browser support alerts
   if (!window.URL && navigator.userAgent.toLowerCase().indexOf('safari') != -1) {
-    showCallout('Looks like you\'re using safari, which sadly doesn\'t have the best support\
-                 for HTML5 blobs. Because of this your file will be downloaded with the name <code>"untitled"</code>.\
-                 However, if you check your downloads folder, just rename this <code>"untitled"</code> file\
-                 to <code>"bootstrap.zip"</code> and you should be good to go!')
+    showCallout('Looks like you\'re using safari, which sadly doesn\'t have the best support' +
+                 'for HTML5 blobs. Because of this your file will be downloaded with the name <code>"untitled"</code>.' +
+                 'However, if you check your downloads folder, just rename this <code>"untitled"</code> file' +
+                 'to <code>"bootstrap.zip"</code> and you should be good to go!')
   } else if (!window.URL && !window.webkitURL) {
-    $('.bs-docs-section, .bs-sidebar').css('display', 'none')
+    $('.bs-docs-section, .bs-docs-sidebar').css('display', 'none')
 
-    showCallout('Looks like your current browser doesn\'t support the Bootstrap Customizer. Please take a second\
-                 to <a href="https://www.google.com/intl/en/chrome/browser/"> upgrade to a more modern browser</a>.', true)
+    showCallout('Looks like your current browser doesn\'t support the Bootstrap Customizer. Please take a second' +
+                 'to <a href="https://www.google.com/intl/en/chrome/browser/">upgrade to a more modern browser</a>.', true)
   }
 
   parseUrl()

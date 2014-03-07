@@ -58,7 +58,7 @@
 
 //** Unit-less `line-height` for use in components like buttons.
 @line-height-base:        1.428571429; // 20/14
-//** Computed "line-height" (`font-size` &times; `line-height`) for use with `margin`, `padding`, etc.
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
 @line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
 
 //** By default, this inherits from the `<body>`.
@@ -74,7 +74,7 @@
 
 @icon-font-path:          "../fonts/";
 @icon-font-name:          "glyphicons-halflings-regular";
-@icon-font-svg-id:				"glyphicons_halflingsregular";
+@icon-font-svg-id:        "glyphicons_halflingsregular";
 
 //== Components
 //
@@ -232,7 +232,7 @@
 //** Text color for headers within dropdown menus.
 @dropdown-header-color:          @gray-light;
 
-// Note: Deprecated @dropdown-caret-color as of v3.1
+// Note: Deprecated @dropdown-caret-color as of v3.1.0
 @dropdown-caret-color:           #000;
 
 
@@ -257,7 +257,7 @@
 //## Define the breakpoints at which your layout will change, adapting to different screen sizes.
 
 // Extra small screen / phone
-// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
+// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1, and @screen-xs-min as of v3.2.0
 @screen-xs:                  480px;
 @screen-xs-min:              @screen-xs;
 @screen-phone:               @screen-xs-min;
@@ -301,6 +301,26 @@
 @grid-float-breakpoint-max: (@grid-float-breakpoint - 1);
 
 
+//== Container sizes
+//
+//## Define the maximum width of `.container` for different screen sizes.
+
+// Small screen / tablet
+@container-tablet:             ((720px + @grid-gutter-width));
+//** For `@screen-sm-min` and up.
+@container-sm:                 @container-tablet;
+
+// Medium screen / desktop
+@container-desktop:            ((940px + @grid-gutter-width));
+//** For `@screen-md-min` and up.
+@container-md:                 @container-desktop;
+
+// Large screen / wide desktop
+@container-large-desktop:      ((1140px + @grid-gutter-width));
+//** For `@screen-lg-min` and up.
+@container-lg:                 @container-large-desktop;
+
+
 //== Navbar
 //
 //##
@@ -311,6 +331,7 @@
 @navbar-border-radius:             @border-radius-base;
 @navbar-padding-horizontal:        floor((@grid-gutter-width / 2));
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
+@navbar-collapse-max-height:       340px;
 
 @navbar-default-color:             #777;
 @navbar-default-bg:                #f8f8f8;
@@ -504,9 +525,9 @@
 //** Popover outer arrow width
 @popover-arrow-outer-width:           (@popover-arrow-width + 1);
 //** Popover outer arrow color
-@popover-arrow-outer-color:           rgba(0,0,0,.25);
+@popover-arrow-outer-color:           fadein(@popover-border-color, 5%);
 //** Popover outer arrow fallback color
-@popover-arrow-outer-fallback-color:  #999;
+@popover-arrow-outer-fallback-color:  darken(@popover-fallback-border-color, 20%);
 
 
 //== Labels
@@ -537,7 +558,7 @@
 //##
 
 //** Padding applied to the modal body
-@modal-inner-padding:         20px;
+@modal-inner-padding:         15px;
 
 //** Padding applied to the modal title
 @modal-title-padding:         15px;
@@ -548,7 +569,7 @@
 @modal-content-bg:                             #fff;
 //** Modal content border color
 @modal-content-border-color:                   rgba(0,0,0,.2);
-//** Modal content border color <strong>for IE8</strong>
+//** Modal content border color **for IE8**
 @modal-content-fallback-border-color:          #999;
 
 //** Modal backdrop background color
@@ -561,6 +582,7 @@
 @modal-footer-border-color:   @modal-header-border-color;
 
 @modal-lg:                    900px;
+@modal-md:                    600px;
 @modal-sm:                    300px;
 
 
@@ -621,15 +643,23 @@
 //** List group border radius
 @list-group-border-radius:      @border-radius-base;
 
-//** Background color of single list elements on hover
+//** Background color of single list items on hover
 @list-group-hover-bg:           #f5f5f5;
-//** Text color of active list elements
+//** Text color of active list items
 @list-group-active-color:       @component-active-color;
-//** Background color of active list elements
+//** Background color of active list items
 @list-group-active-bg:          @component-active-bg;
 //** Border color of active list elements
 @list-group-active-border:      @list-group-active-bg;
+//** Text color for content within active list items
 @list-group-active-text-color:  lighten(@list-group-active-bg, 40%);
+
+//** Text color of disabled list items
+@list-group-disabled-color:      @gray-light;
+//** Background color of disabled list items
+@list-group-disabled-bg:         @gray-lighter;
+//** Text color for content within disabled list items
+@list-group-disabled-text-color: @list-group-disabled-color;
 
 @list-group-link-color:         #555;
 @list-group-link-heading-color: #333;
@@ -641,6 +671,8 @@
 
 @panel-bg:                    #fff;
 @panel-body-padding:          15px;
+@panel-heading-padding:       10px 15px;
+@panel-footer-padding:        @panel-heading-padding;
 @panel-border-radius:         @border-radius-base;
 
 //** Border color for elements within panels
@@ -788,6 +820,8 @@
 @headings-small-color:        @gray-light;
 //** Blockquote small color
 @blockquote-small-color:      @gray-light;
+//** Blockquote font size
+@blockquote-font-size:        (@font-size-base * 1.25);
 //** Blockquote border color
 @blockquote-border-color:     @gray-lighter;
 //** Page header border color
@@ -803,23 +837,3 @@
 
 //** Horizontal offset for forms and lists.
 @component-offset-horizontal: 180px;
-
-
-//== Container sizes
-//
-//## Define the maximum width of `.container` for different screen sizes.
-
-// Small screen / tablet
-@container-tablet:             ((720px + @grid-gutter-width));
-//** For `@screen-sm-min` and up.
-@container-sm:                 @container-tablet;
-
-// Medium screen / desktop
-@container-desktop:            ((940px + @grid-gutter-width));
-//** For `@screen-md-min` and up.
-@container-md:                 @container-desktop;
-
-// Large screen / wide desktop
-@container-large-desktop:      ((1140px + @grid-gutter-width));
-//** For `@screen-lg-min` and up.
-@container-lg:                 @container-large-desktop;

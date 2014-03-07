@@ -18,103 +18,9 @@
   &:extend(.clearfix all);
 }
 
-
-// List groups in panels
-//
-// By default, space out list group content from panel headings to account for
-// any kind of custom content between the two.
-
-.panel {
-  > .list-group {
-    margin-bottom: 0;
-
-    .list-group-item {
-      border-width: 1px 0;
-
-      // Remove border radius for top one
-      &:first-child {
-        .border-top-radius(0);
-      }
-      // But keep it for the last one
-      &:last-child {
-        border-bottom: 0;
-      }
-    }
-  }
-}
-// Collapse space between when there's no additional content.
-.panel-heading + .list-group {
-  .list-group-item:first-child {
-    border-top-width: 0;
-  }
-}
-
-
-// Tables in panels
-//
-// Place a non-bordered `.table` within a panel (not within a `.panel-body`) and
-// watch it go full width.
-
-.panel {
-  > .table,
-  > .table-responsive > .table {
-    margin-bottom: 0;
-
-    > tbody:last-child,
-    > tfoot:last-child {
-      > tr:last-child {
-        td:first-child,
-        th:first-child {
-          border-bottom-left-radius: (@panel-border-radius - 1);
-        }
-        td:last-child,
-        th:last-child {
-          border-bottom-right-radius: (@panel-border-radius - 1);
-        }
-      }
-    }
-  }
-  > .panel-body + .table,
-  > .panel-body + .table-responsive {
-    border-top: 1px solid @table-border-color;
-  }
-  > .table > tbody:first-child th,
-  > .table > tbody:first-child td {
-    border-top: 0;
-  }
-  > .table-bordered,
-  > .table-responsive > .table-bordered {
-    border: 0;
-    > thead,
-    > tbody,
-    > tfoot {
-      > tr {
-        > th:first-child,
-        > td:first-child {
-          border-left: 0;
-        }
-        > th:last-child,
-        > td:last-child {
-          border-right: 0;
-        }
-
-        &:last-child > th,
-        &:last-child > td {
-          border-bottom: 0;
-        }
-      }
-    }
-  }
-  > .table-responsive {
-    border: 0;
-    margin-bottom: 0;
-  }
-}
-
-
 // Optional heading
 .panel-heading {
-  padding: 10px 15px;
+  padding: @panel-heading-padding;
   border-bottom: 1px solid transparent;
   .border-top-radius((@panel-border-radius - 1));
 
@@ -137,10 +43,147 @@
 
 // Optional footer (stays gray in every modifier class)
 .panel-footer {
-  padding: 10px 15px;
+  padding: @panel-footer-padding;
   background-color: @panel-footer-bg;
   border-top: 1px solid @panel-inner-border;
   .border-bottom-radius((@panel-border-radius - 1));
+}
+
+
+// List groups in panels
+//
+// By default, space out list group content from panel headings to account for
+// any kind of custom content between the two.
+
+.panel {
+  > .list-group {
+    margin-bottom: 0;
+
+    .list-group-item {
+      border-width: 1px 0;
+      border-radius: 0;
+    }
+
+    // Add border top radius for first one
+    &:first-child {
+      .list-group-item:first-child {
+        border-top: 0;
+        .border-top-radius((@panel-border-radius - 1));
+      }
+    }
+    // Add border bottom radius for last one
+    &:last-child {
+      .list-group-item:last-child {
+        border-bottom: 0;
+        .border-bottom-radius((@panel-border-radius - 1));
+      }
+    }
+  }
+}
+// Collapse space between when there's no additional content.
+.panel-heading + .list-group {
+  .list-group-item:first-child {
+    border-top-width: 0;
+  }
+}
+
+
+// Tables in panels
+//
+// Place a non-bordered `.table` within a panel (not within a `.panel-body`) and
+// watch it go full width.
+
+.panel {
+  > .table,
+  > .table-responsive > .table {
+    margin-bottom: 0;
+  }
+  // Add border top radius for first one
+  > .table:first-child,
+  > .table-responsive:first-child > .table:first-child {
+    .border-top-radius((@panel-border-radius - 1));
+
+    > thead:first-child,
+    > tbody:first-child {
+      > tr:first-child {
+        td:first-child,
+        th:first-child {
+          border-top-left-radius: (@panel-border-radius - 1);
+        }
+        td:last-child,
+        th:last-child {
+          border-top-right-radius: (@panel-border-radius - 1);
+        }
+      }
+    }
+  }
+  // Add border bottom radius for last one
+  > .table:last-child,
+  > .table-responsive:last-child > .table:last-child {
+    .border-bottom-radius((@panel-border-radius - 1));
+
+    > tbody:last-child,
+    > tfoot:last-child {
+      > tr:last-child {
+        td:first-child,
+        th:first-child {
+          border-bottom-left-radius: (@panel-border-radius - 1);
+        }
+        td:last-child,
+        th:last-child {
+          border-bottom-right-radius: (@panel-border-radius - 1);
+        }
+      }
+    }
+  }
+  > .panel-body + .table,
+  > .panel-body + .table-responsive {
+    border-top: 1px solid @table-border-color;
+  }
+  > .table > tbody:first-child > tr:first-child th,
+  > .table > tbody:first-child > tr:first-child td {
+    border-top: 0;
+  }
+  > .table-bordered,
+  > .table-responsive > .table-bordered {
+    border: 0;
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr {
+        > th:first-child,
+        > td:first-child {
+          border-left: 0;
+        }
+        > th:last-child,
+        > td:last-child {
+          border-right: 0;
+        }
+      }
+    }
+    > thead,
+    > tbody {
+      > tr:first-child {
+        > td,
+        > th {
+          border-bottom: 0;
+        }
+      }
+    }
+    > tbody,
+    > tfoot {
+      > tr:last-child {
+        > td,
+        > th {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+  > .table-responsive {
+    border: 0;
+    margin-bottom: 0;
+  }
 }
 
 
@@ -156,7 +199,6 @@
   .panel {
     margin-bottom: 0;
     border-radius: @panel-border-radius;
-    overflow: hidden; // crop contents when collapsed
     + .panel {
       margin-top: 5px;
     }

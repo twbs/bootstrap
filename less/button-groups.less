@@ -96,9 +96,9 @@
 //
 // Remix the default button sizing classes into new ones for easier manipulation.
 
-.btn-group-xs > .btn { .btn-xs(); }
-.btn-group-sm > .btn { .btn-sm(); }
-.btn-group-lg > .btn { .btn-lg(); }
+.btn-group-xs > .btn { &:extend(.btn-xs); }
+.btn-group-sm > .btn { &:extend(.btn-sm); }
+.btn-group-lg > .btn { &:extend(.btn-lg); }
 
 
 // Split button dropdowns

@@ -48,8 +48,8 @@ body {
   vertical-align: top;
 }
 .cover-container {
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
 
 /* Padding for spacing */
@@ -73,8 +73,8 @@ body {
   margin-left: 20px;
 }
 .masthead-nav > li > a {
-  padding-left: 0;
   padding-right: 0;
+  padding-left: 0;
   font-size: 16px;
   font-weight: bold;
   color: #fff; /* IE8 proofing */
@@ -84,6 +84,7 @@ body {
 .masthead-nav > li > a:hover,
 .masthead-nav > li > a:focus {
   background-color: transparent;
+  border-bottom-color: #a9a9a9;
   border-bottom-color: rgba(255,255,255,.25);
 }
 .masthead-nav > .active > a,

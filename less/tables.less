@@ -168,8 +168,8 @@ table {
 // by enabling horizontal scrolling. Only applies <768px. Everything above that
 // will display normally.
 
-@media (max-width: @screen-xs-max) {
-  .table-responsive {
+.table-responsive {
+  @media screen and (max-width: @screen-xs-max) {
     width: 100%;
     margin-bottom: (@line-height-computed * 0.75);
     overflow-y: hidden;

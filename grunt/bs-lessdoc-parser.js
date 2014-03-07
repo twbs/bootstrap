@@ -1,4 +1,10 @@
-/* jshint node: true */
+/*!
+ * Bootstrap Grunt task for parsing Less docstrings
+ * http://getbootstrap.com
+ * Copyright 2014 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+'use strict';
 
 var markdown = require('markdown').markdown;
 
@@ -41,7 +47,7 @@ function Section(heading, customizable) {
 
 Section.prototype.addSubSection = function (subsection) {
   this.subsections.push(subsection);
-}
+};
 
 function SubSection(heading) {
   this.heading = heading.trim();
