@@ -271,7 +271,9 @@
     var e    = $.Event('hide.bs.' + this.type)
 
     function complete() {
-      if (that.hoverState != 'in') $tip.detach()
+      if (that.hoverState != 'in' || that.options.trigger == 'manual') { 
+        $tip.detach()
+      }
       that.$element.trigger('hidden.bs.' + that.type)
     }
 
