@@ -19,7 +19,7 @@ module.exports = function (grunt) {
   var path = require('path');
   var generateGlyphiconsData = require('./grunt/bs-glyphicons-data-generator.js');
   var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
-  var generateRawFilesJs = require('./grunt/bs-raw-files-generator.js');
+  var generateRawFiles = require('./grunt/bs-raw-files-generator.js');
   var updateShrinkwrap = require('./grunt/shrinkwrap.js');
 
   // Project configuration.
@@ -470,7 +470,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build-customizer-html', 'jade');
   grunt.registerTask('build-raw-files', 'Add scripts/less files to customizer.', function () {
     var banner = grunt.template.process('<%= banner %>');
-    generateRawFilesJs(banner);
+    generateRawFiles(banner);
   });
 
   // Task for updating the npm packages used by the Travis build.
