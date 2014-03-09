@@ -6582,6 +6582,14 @@ button.close {
   margin-right: 0;
 }
 
+.modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: scroll;
+}
+
 @media (min-width: 768px) {
   .modal-dialog {
     width: 600px;
