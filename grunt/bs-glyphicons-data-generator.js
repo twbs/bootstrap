@@ -6,6 +6,7 @@
  */
 'use strict';
 var fs = require('fs');
+var grunt = require('grunt');
 
 module.exports = function generateGlyphiconsData() {
   // Pass encoding, utf8, so `readFileSync` will return a string instead of a
@@ -17,6 +18,7 @@ module.exports = function generateGlyphiconsData() {
   var iconClassName = /^\.(glyphicon-[^\s]+)/;
   var glyphiconsData = '# This file is generated via Grunt task. **Do not edit directly.**\n' +
                        '# See the \'build-glyphicons-data\' task in Gruntfile.js.\n\n';
+  var glyphiconsYml = 'docs/_data/glyphicons.yml';
   for (var i = 0, len = glyphiconsLines.length; i < len; i++) {
     var match = glyphiconsLines[i].match(iconClassName);
 
@@ -30,5 +32,11 @@ module.exports = function generateGlyphiconsData() {
     fs.mkdirSync('docs/_data');
   }
 
-  fs.writeFileSync('docs/_data/glyphicons.yml', glyphiconsData);
+  try {
+    fs.writeFileSync(glyphiconsYml, glyphiconsData);
+  }
+  catch (err) {
+    grunt.fail.warn(err);
+  }
+  grunt.log.writeln('File ' + glyphiconsYml.cyan + ' created.');
 };
