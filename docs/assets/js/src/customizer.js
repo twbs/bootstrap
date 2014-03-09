@@ -45,11 +45,11 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
   function createGist(configJson) {
     var data = {
-      'description': 'Bootstrap Customizer Config',
+      description: 'Bootstrap Customizer Config',
       'public': true,
-      'files': {
+      files: {
         'config.json': {
-          'content': configJson
+          content: configJson
         }
       }
     }
