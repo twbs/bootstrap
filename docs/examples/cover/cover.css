@@ -33,7 +33,8 @@ body {
   color: #fff;
   text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
-  box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+  -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -84,6 +85,7 @@ body {
 .masthead-nav > li > a:hover,
 .masthead-nav > li > a:focus {
   background-color: transparent;
+  border-bottom-color: #a9a9a9;
   border-bottom-color: rgba(255,255,255,.25);
 }
 .masthead-nav > .active > a,

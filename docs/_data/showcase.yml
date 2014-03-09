@@ -1,19 +1,19 @@
-- name: Coinbase
-  url: https://coinbase.com/
-  expo_url: http://expo.getbootstrap.com/2013/08/06/coinbase/
-  img: http://expo.getbootstrap.com/screenshots/coinbase.jpg
+- name: Little
+  url: http://littleco.com
+  expo_url: http://expo.getbootstrap.com/2014/02/12/little/
+  img: http://expo.getbootstrap.com/screenshots/little.jpg
 
-- name: Localcrime
-  url: http://www.localcrimeapp.com/
-  expo_url: http://expo.getbootstrap.com/2013/08/08/localcrime/
-  img: http://expo.getbootstrap.com/screenshots/localcrime.jpg
+- name: Engine Yard
+  url: http://engineyard.com
+  expo_url: http://expo.getbootstrap.com/2014/02/10/engine-yard/
+  img: http://expo.getbootstrap.com/screenshots/engine-yard.jpg
+
+- name: Webflow
+  url: http://webflow.com
+  expo_url: http://expo.getbootstrap.com/2014/02/04/webflow/
+  img: http://expo.getbootstrap.com/screenshots/webflow.jpg
 
 - name: Sentry
-  url: https://www.getsentry.com/
+  url: https://getsentry.com
   expo_url: http://expo.getbootstrap.com/2013/05/09/sentry/
   img: http://expo.getbootstrap.com/screenshots/sentry.jpg
-
-- name: Fortrabbit
-  url: http://fortrabbit.com/
-  expo_url: http://expo.getbootstrap.com/2013/08/05/fortrabbit/
-  img: http://expo.getbootstrap.com/screenshots/fortrabbit.jpg

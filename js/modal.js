@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: modal.js v3.1.0
+ * Bootstrap: modal.js v3.1.1
  * http://getbootstrap.com/javascript/#modals
  * ========================================================================
  * Copyright 2011-2014 Twitter, Inc.
@@ -78,10 +78,10 @@
       transition ?
         that.$element.find('.modal-dialog') // wait for modal to slide in
           .one($.support.transition.end, function () {
-            that.$element.focus().trigger(e)
+            that.$element.trigger('focus').trigger(e)
           })
           .emulateTransitionEnd(300) :
-        that.$element.focus().trigger(e)
+        that.$element.trigger('focus').trigger(e)
     })
   }
 
@@ -117,7 +117,7 @@
       .off('focusin.bs.modal') // guard against infinite focus loop
       .on('focusin.bs.modal', $.proxy(function (e) {
         if (this.$element[0] !== e.target && !this.$element.has(e.target).length) {
-          this.$element.focus()
+          this.$element.trigger('focus')
         }
       }, this))
   }
@@ -232,7 +232,7 @@
     $target
       .modal(option, this)
       .one('hide', function () {
-        $this.is(':visible') && $this.focus()
+        $this.is(':visible') && $this.trigger('focus')
       })
   })
 

@@ -11,7 +11,7 @@
     {% include nav-main.html %}
 
     <!-- Docs page layout -->
-    <div class="bs-header" id="content">
+    <div class="bs-docs-header" id="content">
       <div class="container">
         <h1>{{ page.title }}</h1>
         <p>{{ page.lead }}</p>
@@ -26,8 +26,8 @@
           {{ content }}
         </div>
         <div class="col-md-3">
-          <div class="bs-sidebar hidden-print" role="complementary">
-            <ul class="nav bs-sidenav">
+          <div class="bs-docs-sidebar hidden-print" role="complementary">
+            <ul class="nav bs-docs-sidenav">
               {% if page.slug == "getting-started" %}
                 {% include nav-getting-started.html %}
               {% elsif page.slug == "css" %}

@@ -151,6 +151,25 @@
     <input id="input-@headings-color" type="text" value="inherit" data-var="@headings-color" class="form-control"/>
   </div>
 </div>
+<h2 id="iconography">Iconography</h2>
+<p>Specify custom location and filename of the included Glyphicons icon font. Useful for those including Bootstrap via Bower.</p>
+<div class="row">
+  <div class="bs-customizer-input">
+    <label for="input-@icon-font-path">@icon-font-path</label>
+    <input id="input-@icon-font-path" type="text" value="&quot;../fonts/&quot;" data-var="@icon-font-path" class="form-control"/>
+    <p class="help-block">Load fonts from this directory.</p>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@icon-font-name">@icon-font-name</label>
+    <input id="input-@icon-font-name" type="text" value="&quot;glyphicons-halflings-regular&quot;" data-var="@icon-font-name" class="form-control"/>
+    <p class="help-block">File name for all font files.</p>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@icon-font-svg-id">@icon-font-svg-id</label>
+    <input id="input-@icon-font-svg-id" type="text" value="&quot;glyphicons_halflingsregular&quot;" data-var="@icon-font-svg-id" class="form-control"/>
+    <p class="help-block">Element ID within SVG icon file.</p>
+  </div>
+</div>
 <h2 id="components">Components</h2>
 <p>Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).</p>
 <div class="row">
@@ -570,6 +589,37 @@
     <label for="input-@grid-float-breakpoint-max">@grid-float-breakpoint-max</label>
     <input id="input-@grid-float-breakpoint-max" type="text" value="(@grid-float-breakpoint - 1)" data-var="@grid-float-breakpoint-max" class="form-control"/>
     <p class="help-block">Point at which the navbar begins collapsing.</p>
+  </div>
+</div>
+<h2 id="container-sizes">Container sizes</h2>
+<p>Define the maximum width of <code>.container</code> for different screen sizes.</p>
+<div class="row">
+  <div class="bs-customizer-input">
+    <label for="input-@container-tablet">@container-tablet</label>
+    <input id="input-@container-tablet" type="text" value="((720px + @grid-gutter-width))" data-var="@container-tablet" class="form-control"/>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@container-sm">@container-sm</label>
+    <input id="input-@container-sm" type="text" value="@container-tablet" data-var="@container-sm" class="form-control"/>
+    <p class="help-block">For <code>@screen-sm-min</code> and up.</p>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@container-desktop">@container-desktop</label>
+    <input id="input-@container-desktop" type="text" value="((940px + @grid-gutter-width))" data-var="@container-desktop" class="form-control"/>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@container-md">@container-md</label>
+    <input id="input-@container-md" type="text" value="@container-desktop" data-var="@container-md" class="form-control"/>
+    <p class="help-block">For <code>@screen-md-min</code> and up.</p>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@container-large-desktop">@container-large-desktop</label>
+    <input id="input-@container-large-desktop" type="text" value="((1140px + @grid-gutter-width))" data-var="@container-large-desktop" class="form-control"/>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@container-lg">@container-lg</label>
+    <input id="input-@container-lg" type="text" value="@container-large-desktop" data-var="@container-lg" class="form-control"/>
+    <p class="help-block">For <code>@screen-lg-min</code> and up.</p>
   </div>
 </div>
 <h2 id="navbar">Navbar</h2>
@@ -1037,12 +1087,12 @@
   </div>
   <div class="bs-customizer-input">
     <label for="input-@popover-arrow-outer-color">@popover-arrow-outer-color</label>
-    <input id="input-@popover-arrow-outer-color" type="text" value="rgba(0,0,0,.25)" data-var="@popover-arrow-outer-color" class="form-control"/>
+    <input id="input-@popover-arrow-outer-color" type="text" value="fadein(@popover-border-color, 5%)" data-var="@popover-arrow-outer-color" class="form-control"/>
     <p class="help-block">Popover outer arrow color</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@popover-arrow-outer-fallback-color">@popover-arrow-outer-fallback-color</label>
-    <input id="input-@popover-arrow-outer-fallback-color" type="text" value="#999" data-var="@popover-arrow-outer-fallback-color" class="form-control"/>
+    <input id="input-@popover-arrow-outer-fallback-color" type="text" value="darken(@popover-fallback-border-color, 20%)" data-var="@popover-arrow-outer-fallback-color" class="form-control"/>
     <p class="help-block">Popover outer arrow fallback color</p>
   </div>
 </div>
@@ -1095,7 +1145,7 @@
 <div class="row">
   <div class="bs-customizer-input">
     <label for="input-@modal-inner-padding">@modal-inner-padding</label>
-    <input id="input-@modal-inner-padding" type="text" value="20px" data-var="@modal-inner-padding" class="form-control"/>
+    <input id="input-@modal-inner-padding" type="text" value="15px" data-var="@modal-inner-padding" class="form-control"/>
     <p class="help-block">Padding applied to the modal body</p>
   </div>
   <div class="bs-customizer-input">
@@ -1280,17 +1330,17 @@
   <div class="bs-customizer-input">
     <label for="input-@list-group-hover-bg">@list-group-hover-bg</label>
     <input id="input-@list-group-hover-bg" type="text" value="#f5f5f5" data-var="@list-group-hover-bg" class="form-control"/>
-    <p class="help-block">Background color of single list elements on hover</p>
+    <p class="help-block">Background color of single list items on hover</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@list-group-active-color">@list-group-active-color</label>
     <input id="input-@list-group-active-color" type="text" value="@component-active-color" data-var="@list-group-active-color" class="form-control"/>
-    <p class="help-block">Text color of active list elements</p>
+    <p class="help-block">Text color of active list items</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@list-group-active-bg">@list-group-active-bg</label>
     <input id="input-@list-group-active-bg" type="text" value="@component-active-bg" data-var="@list-group-active-bg" class="form-control"/>
-    <p class="help-block">Background color of active list elements</p>
+    <p class="help-block">Background color of active list items</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@list-group-active-border">@list-group-active-border</label>
@@ -1300,10 +1350,30 @@
   <div class="bs-customizer-input">
     <label for="input-@list-group-active-text-color">@list-group-active-text-color</label>
     <input id="input-@list-group-active-text-color" type="text" value="lighten(@list-group-active-bg, 40%)" data-var="@list-group-active-text-color" class="form-control"/>
+    <p class="help-block">Text color for content within active list items</p>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@list-group-disabled-color">@list-group-disabled-color</label>
+    <input id="input-@list-group-disabled-color" type="text" value="@gray-light" data-var="@list-group-disabled-color" class="form-control"/>
+    <p class="help-block">Text color of disabled list items</p>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@list-group-disabled-bg">@list-group-disabled-bg</label>
+    <input id="input-@list-group-disabled-bg" type="text" value="@gray-lighter" data-var="@list-group-disabled-bg" class="form-control"/>
+    <p class="help-block">Background color of disabled list items</p>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@list-group-disabled-text-color">@list-group-disabled-text-color</label>
+    <input id="input-@list-group-disabled-text-color" type="text" value="@list-group-disabled-color" data-var="@list-group-disabled-text-color" class="form-control"/>
+    <p class="help-block">Text color for content within disabled list items</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@list-group-link-color">@list-group-link-color</label>
     <input id="input-@list-group-link-color" type="text" value="#555" data-var="@list-group-link-color" class="form-control"/>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@list-group-link-hover-color">@list-group-link-hover-color</label>
+    <input id="input-@list-group-link-hover-color" type="text" value="@list-group-link-color" data-var="@list-group-link-hover-color" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@list-group-link-heading-color">@list-group-link-heading-color</label>
@@ -1320,6 +1390,14 @@
   <div class="bs-customizer-input">
     <label for="input-@panel-body-padding">@panel-body-padding</label>
     <input id="input-@panel-body-padding" type="text" value="15px" data-var="@panel-body-padding" class="form-control"/>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@panel-heading-padding">@panel-heading-padding</label>
+    <input id="input-@panel-heading-padding" type="text" value="10px 15px" data-var="@panel-heading-padding" class="form-control"/>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@panel-footer-padding">@panel-footer-padding</label>
+    <input id="input-@panel-footer-padding" type="text" value="@panel-heading-padding" data-var="@panel-footer-padding" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@panel-border-radius">@panel-border-radius</label>
@@ -1632,6 +1710,11 @@
     <p class="help-block">Blockquote small color</p>
   </div>
   <div class="bs-customizer-input">
+    <label for="input-@blockquote-font-size">@blockquote-font-size</label>
+    <input id="input-@blockquote-font-size" type="text" value="(@font-size-base * 1.25)" data-var="@blockquote-font-size" class="form-control"/>
+    <p class="help-block">Blockquote font size</p>
+  </div>
+  <div class="bs-customizer-input">
     <label for="input-@blockquote-border-color">@blockquote-border-color</label>
     <input id="input-@blockquote-border-color" type="text" value="@gray-lighter" data-var="@blockquote-border-color" class="form-control"/>
     <p class="help-block">Blockquote border color</p>
@@ -1654,37 +1737,6 @@
     <label for="input-@component-offset-horizontal">@component-offset-horizontal</label>
     <input id="input-@component-offset-horizontal" type="text" value="180px" data-var="@component-offset-horizontal" class="form-control"/>
     <p class="help-block">Horizontal offset for forms and lists.</p>
-  </div>
-</div>
-<h2 id="container-sizes">Container sizes</h2>
-<p>Define the maximum width of <code>.container</code> for different screen sizes.</p>
-<div class="row">
-  <div class="bs-customizer-input">
-    <label for="input-@container-tablet">@container-tablet</label>
-    <input id="input-@container-tablet" type="text" value="((720px + @grid-gutter-width))" data-var="@container-tablet" class="form-control"/>
-  </div>
-  <div class="bs-customizer-input">
-    <label for="input-@container-sm">@container-sm</label>
-    <input id="input-@container-sm" type="text" value="@container-tablet" data-var="@container-sm" class="form-control"/>
-    <p class="help-block">For <code>@screen-sm-min</code> and up.</p>
-  </div>
-  <div class="bs-customizer-input">
-    <label for="input-@container-desktop">@container-desktop</label>
-    <input id="input-@container-desktop" type="text" value="((940px + @grid-gutter-width))" data-var="@container-desktop" class="form-control"/>
-  </div>
-  <div class="bs-customizer-input">
-    <label for="input-@container-md">@container-md</label>
-    <input id="input-@container-md" type="text" value="@container-desktop" data-var="@container-md" class="form-control"/>
-    <p class="help-block">For <code>@screen-md-min</code> and up.</p>
-  </div>
-  <div class="bs-customizer-input">
-    <label for="input-@container-large-desktop">@container-large-desktop</label>
-    <input id="input-@container-large-desktop" type="text" value="((1140px + @grid-gutter-width))" data-var="@container-large-desktop" class="form-control"/>
-  </div>
-  <div class="bs-customizer-input">
-    <label for="input-@container-lg">@container-lg</label>
-    <input id="input-@container-lg" type="text" value="@container-large-desktop" data-var="@container-lg" class="form-control"/>
-    <p class="help-block">For <code>@screen-lg-min</code> and up.</p>
   </div>
 </div>
 <!-- NOTE: DO NOT EDIT THE PRECEDING SECTION DIRECTLY! It is autogenerated via the `build-customizer-html` Grunt task using the customizer-variables.jade template.-->

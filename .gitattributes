@@ -5,4 +5,5 @@
 *.json  text eol=lf
 *.less  text eol=lf
 *.md    text eol=lf
+*.svg   text eol=lf
 *.yml   text eol=lf

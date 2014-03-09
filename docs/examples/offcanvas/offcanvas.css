@@ -21,8 +21,16 @@ footer {
   .row-offcanvas {
     position: relative;
     -webkit-transition: all .25s ease-out;
-       -moz-transition: all .25s ease-out;
+         -o-transition: all .25s ease-out;
             transition: all .25s ease-out;
+  }
+
+  .row-offcanvas-right {
+    right: 0;
+  }
+
+  .row-offcanvas-left {
+    left: 0;
   }
 
   .row-offcanvas-right

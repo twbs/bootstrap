@@ -37,7 +37,8 @@ h6, .h6 {
 
 .blog-masthead {
   background-color: #428bca;
-  box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+  -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+          box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
 }
 
 /* Nav links */
@@ -67,9 +68,9 @@ h6, .h6 {
   margin-left: -5px;
   vertical-align: middle;
   content: " ";
-  border-right:  5px solid transparent;
+  border-right: 5px solid transparent;
   border-bottom: 5px solid;
-  border-left:   5px solid transparent;
+  border-left: 5px solid transparent;
 }
 
 
@@ -160,4 +161,7 @@ h6, .h6 {
   text-align: center;
   background-color: #f9f9f9;
   border-top: 1px solid #e5e5e5;
+}
+.blog-footer p:last-child {
+  margin-bottom: 0;
 }

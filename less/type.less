@@ -81,6 +81,12 @@ small,
 // Undo browser default styling
 cite    { font-style: normal; }
 
+mark,
+.mark {
+  background-color: @state-warning-bg;
+  padding: .2em;
+}
+
 // Alignment
 .text-left           { text-align: left; }
 .text-right          { text-align: right; }
@@ -141,7 +147,7 @@ cite    { font-style: normal; }
 
 
 // Lists
-// --------------------------------------------------
+// -------------------------
 
 // Unordered and Ordered lists
 ul,
@@ -165,15 +171,12 @@ ol {
 // Inline turns list items into inline-block
 .list-inline {
   .list-unstyled();
+  margin-left: -5px;
 
   > li {
     display: inline-block;
     padding-left: 5px;
     padding-right: 5px;
-
-    &:first-child {
-      padding-left: 0;
-    }
   }
 }
 
@@ -198,8 +201,12 @@ dd {
 // Defaults to being stacked without any of the below styles applied, until the
 // grid breakpoint is reached (default of ~768px).
 
-@media (min-width: @grid-float-breakpoint) {
-  .dl-horizontal {
+.dl-horizontal {
+  dd {
+    &:extend(.clearfix all); // Clear the floated `dt` if an empty `dd` is present
+  }
+
+  @media (min-width: @grid-float-breakpoint) {
     dt {
       float: left;
       width: (@component-offset-horizontal - 20);
@@ -209,13 +216,13 @@ dd {
     }
     dd {
       margin-left: @component-offset-horizontal;
-      &:extend(.clearfix all); // Clear the floated `dt` if an empty `dd` is present
     }
   }
 }
 
-// MISC
-// ----
+
+// Misc
+// -------------------------
 
 // Abbreviations and acronyms
 abbr[title],
@@ -233,7 +240,7 @@ abbr[data-original-title] {
 blockquote {
   padding: (@line-height-computed / 2) @line-height-computed;
   margin: 0 0 @line-height-computed;
-  font-size: (@font-size-base * 1.25);
+  font-size: @blockquote-font-size;
   border-left: 5px solid @blockquote-border-color;
 
   p,

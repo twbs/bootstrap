@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: affix.js v3.1.0
+ * Bootstrap: affix.js v3.1.1
  * http://getbootstrap.com/javascript/#affix
  * ========================================================================
  * Copyright 2011-2014 Twitter, Inc.
@@ -66,7 +66,7 @@
                 offsetTop    != null && (scrollTop <= offsetTop) ? 'top' : false
 
     if (this.affixed === affix) return
-    if (this.unpin) this.$element.css('top', '')
+    if (this.unpin != null) this.$element.css('top', '')
 
     var affixType = 'affix' + (affix ? '-' + affix : '')
     var e         = $.Event(affixType + '.bs.affix')

@@ -30,6 +30,7 @@ lead: "An overview of Bootstrap, how to download and use, basic templates and ex
       <a href="{{ site.download.sass }}" class="btn btn-lg btn-outline" role="button" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download Sass']);">Download Sass</a>
     </div>
   </div>
+  <p class="muted">Currently v{{ site.current_version }}.</p>
 
   <h3 id="download-cdn">Bootstrap CDN</h3>
   <p>The folks over at <a href="http://www.maxcdn.com/">MaxCDN</a> graciously provide CDN support for Bootstrap's CSS and JavaScript. Just use these <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links.</p>
@@ -369,7 +370,7 @@ bootstrap/
   <p class="lead">Bootstrap is built to work best in the latest desktop and mobile browsers, meaning older browsers might display differently styled, though fully functional, renderings of certain components.</p>
 
   <h3 id="support-browsers">Supported browsers</h3>
-  <p>Specifically, we support the <strong>latest versions</strong> of the following browsers and platforms:</p>
+  <p>Specifically, we support the <strong>latest versions</strong> of the following browsers and platforms. On Windows, <strong>we support Internet Explorer 8-11</strong>. More specific support information is provided below.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
       <thead>
@@ -417,6 +418,7 @@ bootstrap/
     </table>
   </div>
   <p>Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 7, though they are not officially supported.</p>
+  <p>For a list of some of the browser bugs that Bootstrap has to grapple with, see our <a href="../browser-bugs/">Wall of browser bugs</a>.</p>
 
   <h3 id="support-ie8-ie9">Internet Explorer 8 and 9</h3>
   <p>Internet Explorer 8 and 9 are also supported, however, please be aware that some CSS3 properties and HTML5 elements are not fully supported by these browsers. In addition, <strong>Internet Explorer 8 requires the use of <a href="https://github.com/scottjehl/Respond">Respond.js</a> to enable media query support.</strong></p>
@@ -449,8 +451,6 @@ bootstrap/
           <th scope="row"><code>transition</code></th>
           <td colspan="2" class="text-danger"><span class="glyphicon glyphicon-remove"></span> Not supported</td>
         </tr>
-      </tbody>
-      <tbody>
         <tr>
           <th scope="row"><code>placeholder</code></th>
           <td colspan="2" class="text-danger"><span class="glyphicon glyphicon-remove"></span> Not supported</td>
@@ -511,7 +511,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
   <p>As a heads up, we include this in the Bootstrap docs as an example.</p>
 
   <h3 id="support-safari-percentages">Safari percent rounding</h3>
-  <p>As of Safari v6.1 for OS X and Safari for iOS v7.0.1, Safari's rendering engine has some trouble with the number of decimal places used in our <code>.col-*-1</code> grid classes. So if you have 12 individual grid columns, you'll notice that they come up short compared to other rows of columns. We can't do much here (<a href="https://github.com/twbs/bootstrap/issues/9282">see #9282</a>) but you do have some options:</p>
+  <p>As of Safari v7.0.1 for OS X and Safari for iOS v7.0.1, Safari's rendering engine has some trouble with the number of decimal places used in our <code>.col-*-1</code> grid classes. So if you have 12 individual grid columns, you'll notice that they come up short compared to other rows of columns. We can't do much here (<a href="https://github.com/twbs/bootstrap/issues/9282">see #9282</a>) but you do have some options:</p>
   <ul>
     <li>Add <code>.pull-right</code> to your last grid column to get the hard-right alignment</li>
     <li>Tweak your percentages manually to get the perfect rounding for Safari (more difficult than the first option)</li>
@@ -543,10 +543,10 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
   <p>On <code>&lt;select&gt;</code> elements, the Android stock browser will not display the side controls if there is a <code>border-radius</code> and/or <code>border</code> applied. Use the snippet of code below to remove the offending CSS and render the <code>&lt;select&gt;</code> as an unstyled element on the Android stock browser. The user agent sniffing avoids interference with Chrome, Safari, and Mozilla browsers.</p>
 {% highlight html %}
 <script>
-var nua = navigator.userAgent;
-var isAndroid = (nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1 && nua.indexOf('Chrome') === -1);
+var nua = navigator.userAgent
+var isAndroid = (nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1 && nua.indexOf('Chrome') === -1)
 if (isAndroid) {
-  $('select.form-control').removeClass('form-control').css('width', '100%');
+  $('select.form-control').removeClass('form-control').css('width', '100%')
 }
 </script>
 {% endhighlight %}
@@ -766,9 +766,11 @@ if (isAndroid) {
     <li><a href="http://v3.bootcss.com/">Bootstrap 中文文档 (Chinese)</a></li>
     <li><a href="http://www.oneskyapp.com/docs/bootstrap/fr">Bootstrap en Français (French)</a></li>
     <li><a href="http://holdirbootstrap.de/">Bootstrap auf Deutsch (German)</a></li>
+    <li><a href="http://bootstrapk.com/BS3/">Bootstrap 한국어 (Korean)</a></li>
     <li><a href="http://www.oneskyapp.com/docs/bootstrap/ru">Bootstrap по-русски (Russian)</a></li>
     <li><a href="http://www.oneskyapp.com/docs/bootstrap/es">Bootstrap en Español (Spanish)</a></li>
     <li><a href="http://twbs.site-konstruktor.com.ua">Bootstrap ua Українською (Ukrainian)</a></li>
   </ul>
-  <p>Have another language to add, or perhaps a different or better translation? Let us know by <a href="https://github.com/twbs/bootstrap/issues/new">opening an issue</a>.</p>
+  <p><strong class="text-danger">We don't help organize or host translations, we just link to them.</strong></p>
+  <p>Finished a new or better translation? Open a pull request to add it to our list.</p>
 </div>

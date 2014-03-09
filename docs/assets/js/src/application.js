@@ -34,7 +34,7 @@
     var navHeight = $('.navbar').outerHeight(true) + 10
 
     $body.scrollspy({
-      target: '.bs-sidebar',
+      target: '.bs-docs-sidebar',
       // offset: navHeight
     })
 
@@ -48,7 +48,7 @@
 
     // back to top
     setTimeout(function () {
-      var $sideBar = $('.bs-sidebar')
+      var $sideBar = $('.bs-docs-sidebar')
 
       $sideBar.affix({
         offset: {
@@ -60,7 +60,7 @@
             return (this.top = offsetTop - navOuterHeight - sideBarMargin)
           },
           bottom: function () {
-            return (this.bottom = $('.bs-footer').outerHeight(true))
+            return (this.bottom = $('.bs-docs-footer').outerHeight(true))
           }
         }
       })
@@ -85,7 +85,12 @@
     })
 
     // popover demo
-    $('[data-toggle=popover]').popover()
+    $('.bs-docs-popover').popover()
+
+    // Popover dismiss on next click
+    $('.bs-docs-popover-dismiss').popover({
+      trigger: 'focus'
+    })
 
     // button state demo
     $('#loading-example-btn')

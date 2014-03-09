@@ -15,8 +15,13 @@ lead: "Bring Bootstrap's components to life with over a dozen custom jQuery plug
   <p>Plugins can be included individually (using Bootstrap's individual <code>*.js</code> files), or all at once (using <code>bootstrap.js</code> or the minified <code>bootstrap.min.js</code>).</p>
 
   <div class="bs-callout bs-callout-danger">
-    <h4>Do not attempt to include both.</h4>
-    <p>Both <code>bootstrap.js</code> and <code>bootstrap.min.js</code> contain all plugins in a single file.</p>
+    <h4>Using the compiled JavaScript</h4>
+    <p>Both <code>bootstrap.js</code> and <code>bootstrap.min.js</code> contain all plugins in a single file. Include only one.</p>
+  </div>
+
+  <div class="bs-callout bs-callout-danger">
+    <h4>Component data attributes</h4>
+    <p>Don't use data attributes from multiple plugins on the same element. For example, a button cannot both have a tooltip and toggle a modal. To accomplish this, use a wrapping element.</p>
   </div>
 
   <div class="bs-callout bs-callout-danger">
@@ -60,7 +65,7 @@ $.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the Boot
 {% endhighlight %}
 
   <h3 id="js-events">Events</h3>
-  <p>Bootstrap provides custom events for most plugins' unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.</p>
+  <p>Bootstrap provides custom events for most plugins' unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is triggered on the completion of an action.</p>
   <p>As of 3.0.0, all Bootstrap events are namespaced.</p>
   <p>All infinitive events provide <code>preventDefault</code> functionality. This provides the ability to stop the execution of an action before it starts.</p>
 {% highlight js %}
@@ -236,14 +241,14 @@ $('#myModal').on('show.bs.modal', function (e) {
   <h2 id="modals-sizes">Optional sizes</h2>
   <p>Modals have two optional sizes, available via modifier classes to be placed on a <code>.modal-dialog</code>.</p>
   <div class="bs-example">
-    <button class="btn btn-primary" data-toggle="modal" data-target=".bs-modal-lg">Large modal</button>
-    <button class="btn btn-primary" data-toggle="modal" data-target=".bs-modal-sm">Small modal</button>
+    <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+    <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
   </div>
 {% highlight html %}
 <!-- Large modal -->
-<button class="btn btn-primary" data-toggle="modal" data-target=".bs-modal-lg">Large modal</button>
+<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
 
-<div class="modal fade bs-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       ...
@@ -252,9 +257,9 @@ $('#myModal').on('show.bs.modal', function (e) {
 </div>
 
 <!-- Small modal -->
-<button class="btn btn-primary" data-toggle="modal" data-target=".bs-modal-sm">Small modal</button>
+<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
 
-<div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       ...
@@ -264,7 +269,7 @@ $('#myModal').on('show.bs.modal', function (e) {
 {% endhighlight %}
 
   <!--  Modal content for the above example -->
-  <div class="modal fade bs-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
 
@@ -278,7 +283,7 @@ $('#myModal').on('show.bs.modal', function (e) {
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
-  <div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
 
@@ -293,6 +298,13 @@ $('#myModal').on('show.bs.modal', function (e) {
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 
+  <h2 id="modals-remove-animation">Remove animation</h2>
+  <p>For modals that simply appear rather than fade in to view, remove the <code>.fade</code> class from your modal markup.</p>
+{% highlight html %}
+<div class="modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+  ...
+</div>
+{% endhighlight %}
 
   <h2 id="modals-usage">Usage</h2>
   <p>The modal plugin toggles your hidden content on demand, via data attributes or JavaScript. It also adds <code>.modal-open</code> to the <code>&lt;body&gt;</code> to override default scrolling behavior and generates a <code>.modal-backdrop</code> to provide a click area for dismissing shown modals when clicking outside the modal.</p>
@@ -430,7 +442,7 @@ $('#myModal').on('hidden.bs.modal', function (e) {
     <nav id="navbar-example" class="navbar navbar-default navbar-static" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-js-navbar-collapse">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -438,7 +450,7 @@ $('#myModal').on('hidden.bs.modal', function (e) {
           </button>
           <a class="navbar-brand" href="#">Project Name</a>
         </div>
-        <div class="collapse navbar-collapse bs-js-navbar-collapse">
+        <div class="collapse navbar-collapse bs-example-js-navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
               <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -561,6 +573,7 @@ $('.dropdown-toggle').dropdown()
   <p>Toggles the dropdown menu of a given navbar or tabbed navigation.</p>
 
   <h3>Events</h3>
+  <p>All dropdown events are fired at the <code>.dropdown-menu</code>'s parent element.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
       <thead>
@@ -608,7 +621,7 @@ $('#myDropdown').on('show.bs.dropdown', function () {
     <nav id="navbar-example2" class="navbar navbar-default navbar-static" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-js-navbar-scrollspy">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-scrollspy">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -616,7 +629,7 @@ $('#myDropdown').on('show.bs.dropdown', function () {
           </button>
           <a class="navbar-brand" href="#">Project Name</a>
         </div>
-        <div class="collapse navbar-collapse bs-js-navbar-scrollspy">
+        <div class="collapse navbar-collapse bs-example-js-navbar-scrollspy">
           <ul class="nav navbar-nav">
             <li><a href="#fat">@fat</a></li>
             <li><a href="#mdo">@mdo</a></li>
@@ -1088,6 +1101,8 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
 {% endhighlight %}
 </div>
 
+
+
 <!-- Popovers
 ================================================== -->
 <div class="bs-docs-section">
@@ -1154,8 +1169,11 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
 
   <h3>Live demo</h3>
   <div class="bs-example" style="padding-bottom: 24px;">
-    <a href="#" class="btn btn-lg btn-danger" data-toggle="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" role="button">Click to toggle popover</a>
+    <button type="button" class="btn btn-lg btn-danger bs-docs-popover" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
   </div>
+{% highlight html %}
+<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+{% endhighlight %}
 
   <h4>Four directions</h4>
   <div class="bs-example tooltip-demo">
@@ -1191,6 +1209,20 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
 <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
   Popover on right
 </button>
+{% endhighlight %}
+
+  <h4>Dismiss on next click</h4>
+  <p>Use the <code>focus</code> trigger to dismiss popovers on their next click.</p>
+  <div class="bs-example" style="padding-bottom: 24px;">
+    <button type="button" class="btn btn-lg btn-danger bs-docs-popover-dismiss" data-toggle="popover" title="Dimissmisable popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissable popover</button>
+  </div>
+{% highlight html %}
+<button type="button" class="btn btn-lg btn-danger popover-dismiss" data-toggle="popover" title="Dimissmisable popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissable popover</button>
+{% endhighlight %}
+{% highlight js %}
+$('.popover-dismiss').popover({
+  trigger: 'focus'
+})
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-warning">
@@ -1438,10 +1470,10 @@ $('#my-alert').bind('closed.bs.alert', function () {
 </button>
 <script>
   $('#loading-example-btn').click(function () {
-    var btn = $(this);
-    btn.button('loading');
+    var btn = $(this)
+    btn.button('loading')
     $.ajax(...).always(function () {
-      btn.button('reset');
+      btn.button('reset')
     });
   });
 </script>
@@ -1546,10 +1578,10 @@ $('.btn').button()
 <button id="loading-example-btn" type="button" class="btn btn-primary" data-loading-text="loading stuff...">...</button>
 <script>
   $('#loading-example-btn').click(function () {
-    var btn = $(this);
-    btn.button('loading');
+    var btn = $(this)
+    btn.button('loading')
     $.ajax(...).always(function () {
-      btn.button('reset');
+      btn.button('reset')
     });
   });
 </script>
@@ -2067,11 +2099,11 @@ $('#myCarousel').on('slide.bs.carousel', function () {
   <h3>Via JavaScript</h3>
   <p>Call the affix plugin via JavaScript:</p>
 {% highlight js %}
-  $('#myAffix').affix({
+  $('#my-affix').affix({
     offset: {
       top: 100
     , bottom: function () {
-        return (this.bottom = $('.bs-footer').outerHeight(true))
+        return (this.bottom = $('.footer').outerHeight(true))
       }
     }
   })
