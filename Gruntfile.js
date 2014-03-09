@@ -82,26 +82,6 @@ module.exports = function (grunt) {
       }
     },
 
-    csslint: {
-      options: {
-        csslintrc: 'less/.csslintrc'
-      },
-      src: [
-        'dist/css/bootstrap.css',
-        'dist/css/bootstrap-theme.css'
-      ],
-      examples: [
-        'docs/examples/**/*.css'
-      ],
-      docs: {
-        options: {
-          'ids': false,
-          'overqualified-elements': false
-        },
-        src: 'docs/assets/css/src/docs.css'
-      }
-    },
-
     concat: {
       options: {
         banner: '<%= banner %>\n<%= jqueryCheck %>',
@@ -162,6 +142,13 @@ module.exports = function (grunt) {
         ],
         dest: 'docs/assets/js/docs.min.js'
       }
+    },
+
+    qunit: {
+      options: {
+        inject: 'js/tests/unit/phantom.js'
+      },
+      files: 'js/tests/index.html'
     },
 
     less: {
@@ -234,6 +221,26 @@ module.exports = function (grunt) {
         files: {
           'dist/css/<%= pkg.name %>-rtl.css': 'dist/css/<%= pkg.name %>.css'
         }
+      }
+    },
+
+    csslint: {
+      options: {
+        csslintrc: 'less/.csslintrc'
+      },
+      src: [
+        'dist/css/bootstrap.css',
+        'dist/css/bootstrap-theme.css'
+      ],
+      examples: [
+        'docs/examples/**/*.css'
+      ],
+      docs: {
+        options: {
+          'ids': false,
+          'overqualified-elements': false
+        },
+        src: 'docs/assets/css/src/docs.css'
       }
     },
 
@@ -312,13 +319,6 @@ module.exports = function (grunt) {
         ],
         dest: 'docs/dist'
       }
-    },
-
-    qunit: {
-      options: {
-        inject: 'js/tests/unit/phantom.js'
-      },
-      files: 'js/tests/index.html'
     },
 
     connect: {
