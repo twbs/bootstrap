@@ -189,7 +189,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
   function generateLESS(lessFilename, lessFileIncludes, vars) {
     var lessSource = __less[lessFilename]
 
-    $.each(includedLessFilenames(lessFilename), function(index, filename) {
+    $.each(includedLessFilenames(lessFilename), function (index, filename) {
       var fileInclude = lessFileIncludes[filename]
 
       // Files not explicitly unchecked are compiled into the final stylesheet.
@@ -224,7 +224,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
   function generateCSS() {
     var oneChecked = false
     var lessFileIncludes = {}
-    $('#less-section input').each(function() {
+    $('#less-section input').each(function () {
       var $this = $(this)
       var checked = $this.is(':checked')
       lessFileIncludes[$this.val()] = checked
