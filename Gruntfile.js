@@ -66,8 +66,8 @@ module.exports = function (grunt) {
       },
       grunt: {
         options: {
-          'requireCamelCaseOrUpperCaseIdentifiers': null,
-          'requireParenthesesAroundIIFE': true
+          requireCamelCaseOrUpperCaseIdentifiers: null,
+          requireParenthesesAroundIIFE: true
         },
         src: '<%= jshint.grunt.src %>'
       },
@@ -95,7 +95,7 @@ module.exports = function (grunt) {
       ],
       docs: {
         options: {
-          'ids': false,
+          ids: false,
           'overqualified-elements': false
         },
         src: 'docs/assets/css/src/docs.css'
