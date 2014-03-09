@@ -2611,15 +2611,16 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
-  <h3 id="helper-classes-screen-readers">Screen reader content</h3>
-  <p>Hide an element to all devices <strong>except screen readers</strong> with <code>.sr-only</code>. Necessary for following <a href="../getting-started/#accessibility">accessibility best practices</a>. Can also be used as a mixin.</p>
+  <h3 id="helper-classes-screen-readers">Screen reader and keyboard navigation content</h3>
+  <p>Hide an element to all devices <strong>except screen readers</strong> with <code>.sr-only</code>. Combine <code>.sr-only</code> with <code>.sr-only-focusable</code> to show the element again when it's focused (e.g. by a keyboard-only user). Necessary for following <a href="../getting-started/#accessibility">accessibility best practices</a>. Can also be used as mixins.</p>
 {% highlight html %}
-<a class="sr-only" href="#content">Skip to main content</a>
+<a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 {% endhighlight %}
 {% highlight scss %}
 // Usage as a Mixin
 .skip-navigation {
   .sr-only();
+  .sr-only-focusable();
 }
 {% endhighlight %}
 
