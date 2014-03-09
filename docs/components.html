@@ -370,6 +370,11 @@ lead: "Over a dozen reusable components built to provide iconography, dropdowns,
     <h4>Handling borders</h4>
     <p>Due to the specific HTML and CSS used to justify buttons (namely <code>display: table-cell</code>), the borders between them are doubled. In regular button groups, <code>margin-left: -1px</code> is used to stack the borders instead of removing them. However, <code>margin</code> doesn't work with <code>display: table-cell</code>. As a result, depending on your customizations to Bootstrap, you may wish to remove or re-color the borders.</p>
   </div>
+  <div class="bs-callout bs-callout-warning">
+    <h4>IE8 and borders</h4>
+    <p>Internet Explorer 8 doesn't render borders in on buttons in a justified button group, whether it's on <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements. To get around that, wrap each button in another <code>.btn-group</code>.</p>
+    <p>See <a href="https://github.com/twbs/bootstrap/issues/12476">#12476</a> for more information.</p>
+  </div>
 
   <h4>With <code>&lt;a&gt;</code> elements</h4>
   <p>Just wrap a series of <code>.btn</code>s in <code>.btn-group.btn-group-justified</code>.</p>
