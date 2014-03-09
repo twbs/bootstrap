@@ -306,9 +306,10 @@ module.exports = function (grunt) {
         expand: true,
         cwd: './dist',
         src: [
-          '{css,js}/*.min.*',
+          'css/*.min.*',
           'css/*.map',
-          'fonts/*'
+          'fonts/*',
+          'js/*'
         ],
         dest: 'docs/dist'
       }

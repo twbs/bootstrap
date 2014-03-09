@@ -19,7 +19,6 @@
     this.$element  = $(element)
     this.$backdrop =
     this.isShown   = null
-    this.bodyPad   = 0
 
     if (this.options.remote) {
       this.$element
@@ -49,6 +48,8 @@
     if (this.isShown || e.isDefaultPrevented()) return
 
     this.isShown = true
+
+    this.$body.addClass('modal-open')
 
     this.setScrollbar()
     this.escape()
@@ -98,6 +99,8 @@
     if (!this.isShown || e.isDefaultPrevented()) return
 
     this.isShown = false
+
+    this.$body.removeClass('modal-open')
 
     this.resetScrollbar()
     this.escape()
@@ -195,12 +198,12 @@
   Modal.prototype.setScrollbar =  function () {
     if (document.body.clientHeight <= window.innerHeight) return
     var scrollbarWidth = this.measureScrollbar()
-    this.bodyPad = this.$body.css('padding-right') || 0
-    if (scrollbarWidth) this.$body.css('padding-right', this.bodyPad + scrollbarWidth)
+    var bodyPad        = parseInt(this.$body.css('padding-right') || 0)
+    if (scrollbarWidth) this.$body.css('padding-right', bodyPad + scrollbarWidth)
   }
 
   Modal.prototype.resetScrollbar = function () {
-    this.$body.css('padding-right', this.bodyPad)
+    this.$body.css('padding-right', '')
   }
 
   Modal.prototype.measureScrollbar = function () { // thx walsh
@@ -259,9 +262,5 @@
         $this.is(':visible') && $this.trigger('focus')
       })
   })
-
-  $(document)
-    .on('show.bs.modal', '.modal', function () { $(document.body).addClass('modal-open') })
-    .on('hidden.bs.modal', '.modal', function () { $(document.body).removeClass('modal-open') })
 
 }(jQuery);
