@@ -2,10 +2,11 @@
 // Modals
 // --------------------------------------------------
 
-// .modal-open      - body class for killing the scroll
-// .modal           - container to scroll within
-// .modal-dialog    - positioning shell for the actual modal
-// .modal-content   - actual modal w/ bg and corners and shit
+// .modal-open              - body class for killing the scroll
+// .modal                   - container to scroll within
+// .modal-dialog            - positioning shell for the actual modal
+// .modal-content           - actual modal w/ bg and corners and shit
+// .modal-scrollbar-measure - class for throwaway measuring el
 
 // Kill the scroll on the body
 .modal-open {
@@ -116,6 +117,15 @@
   .btn-block + .btn-block {
     margin-left: 0;
   }
+}
+
+// measure scrollbar width for padding body during modal show/hide
+.modal-scrollbar-measure {
+  width: 1px;
+  height: 1px;
+  overflow: scroll;
+  position: absolute;
+  top: -9999px;
 }
 
 // Scale up the modal
