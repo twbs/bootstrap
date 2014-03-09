@@ -443,11 +443,11 @@ module.exports = function (grunt) {
   grunt.registerTask('test', testSubtasks);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat', 'uglify']);
+  grunt.registerTask('dist-js', ['newer:concat', 'newer:uglify']);
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
-  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer', 'css_flip', 'csscomb', 'less:minify', 'cssmin', 'usebanner']);
+  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer', 'newer:css_flip', 'newer:csscomb', 'less:minify', 'cssmin', 'usebanner']);
 
   // Docs distribution task.
   grunt.registerTask('dist-docs', 'copy:docs');
