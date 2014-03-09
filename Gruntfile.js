@@ -19,7 +19,7 @@ module.exports = function (grunt) {
   var path = require('path');
   var generateGlyphiconsData = require('./grunt/bs-glyphicons-data-generator.js');
   var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
-  var generateRawFilesJs = require('./grunt/bs-raw-files-generator.js');
+  var generateRawFiles = require('./grunt/bs-raw-files-generator.js');
   var updateShrinkwrap = require('./grunt/shrinkwrap.js');
 
   // Project configuration.
@@ -66,8 +66,8 @@ module.exports = function (grunt) {
       },
       grunt: {
         options: {
-          'requireCamelCaseOrUpperCaseIdentifiers': null,
-          'requireParenthesesAroundIIFE': true
+          requireCamelCaseOrUpperCaseIdentifiers: null,
+          requireParenthesesAroundIIFE: true
         },
         src: '<%= jshint.grunt.src %>'
       },
@@ -79,26 +79,6 @@ module.exports = function (grunt) {
       },
       assets: {
         src: '<%= jshint.assets.src %>'
-      }
-    },
-
-    csslint: {
-      options: {
-        csslintrc: 'less/.csslintrc'
-      },
-      src: [
-        'dist/css/bootstrap.css',
-        'dist/css/bootstrap-theme.css'
-      ],
-      examples: [
-        'docs/examples/**/*.css'
-      ],
-      docs: {
-        options: {
-          'ids': false,
-          'overqualified-elements': false
-        },
-        src: 'docs/assets/css/src/docs.css'
       }
     },
 
@@ -162,6 +142,13 @@ module.exports = function (grunt) {
         ],
         dest: 'docs/assets/js/docs.min.js'
       }
+    },
+
+    qunit: {
+      options: {
+        inject: 'js/tests/unit/phantom.js'
+      },
+      files: 'js/tests/index.html'
     },
 
     less: {
@@ -234,6 +221,26 @@ module.exports = function (grunt) {
         files: {
           'dist/css/<%= pkg.name %>-rtl.css': 'dist/css/<%= pkg.name %>.css'
         }
+      }
+    },
+
+    csslint: {
+      options: {
+        csslintrc: 'less/.csslintrc'
+      },
+      src: [
+        'dist/css/bootstrap.css',
+        'dist/css/bootstrap-theme.css'
+      ],
+      examples: [
+        'docs/examples/**/*.css'
+      ],
+      docs: {
+        options: {
+          ids: false,
+          'overqualified-elements': false
+        },
+        src: 'docs/assets/css/src/docs.css'
       }
     },
 
@@ -312,13 +319,6 @@ module.exports = function (grunt) {
         ],
         dest: 'docs/dist'
       }
-    },
-
-    qunit: {
-      options: {
-        inject: 'js/tests/unit/phantom.js'
-      },
-      files: 'js/tests/index.html'
     },
 
     connect: {
@@ -470,7 +470,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build-customizer-html', 'jade');
   grunt.registerTask('build-raw-files', 'Add scripts/less files to customizer.', function () {
     var banner = grunt.template.process('<%= banner %>');
-    generateRawFilesJs(banner);
+    generateRawFiles(banner);
   });
 
   // Task for updating the npm packages used by the Travis build.

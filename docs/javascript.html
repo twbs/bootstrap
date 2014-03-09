@@ -231,11 +231,15 @@ $('#myModal').on('show.bs.modal', function (e) {
 </div>
 {% endhighlight %}
 
-
   <div class="bs-callout bs-callout-warning">
     <h4>Make modals accessible</h4>
     <p>Be sure to add <code>role="dialog"</code> to <code>.modal</code>, <code>aria-labelledby="myModalLabel"</code> attribute to reference the modal title, and <code>aria-hidden="true"</code> to tell assistive technologies to skip the modal's DOM elements.</p>
     <p>Additionally, you may give a description of your modal dialog with <code>aria-describedby</code> on <code>.modal</code>.</p>
+  </div>
+
+  <div class="bs-callout bs-callout-info">
+    <h4>Embedding YouTube videos</h4>
+    <p>Embedding YouTube videos in modals requires additional JavaScript not in Bootstrap to automatically stop playback and more. <a href="http://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal">See this helpful Stack Overflow post</a> for more information.</p>
   </div>
 
   <h2 id="modals-sizes">Optional sizes</h2>

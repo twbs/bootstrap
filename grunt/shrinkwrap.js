@@ -17,7 +17,7 @@ var DEST_FILE = 'test-infra/npm-shrinkwrap.canonical.json';
 function cleanup(shrinkwrap) {
   // Remove `resolved` property to avoid irrelevant changes
   // See https://github.com/npm/npm/issues/3581
-  if ((typeof shrinkwrap) === 'string') {
+  if (typeof shrinkwrap === 'string') {
     return shrinkwrap;
   }
   delete shrinkwrap.resolved;
