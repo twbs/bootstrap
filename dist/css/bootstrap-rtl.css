@@ -3080,6 +3080,15 @@ input[type="search"] {
 
 input[type="date"] {
   line-height: 34px;
+  line-height: 1.42857143 \0;
+}
+
+input[type="date"].input-sm {
+  line-height: 30px;
+}
+
+input[type="date"].input-lg {
+  line-height: 46px;
 }
 
 .form-group {

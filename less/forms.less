@@ -167,10 +167,20 @@ input[type="search"] {
 // Special styles for iOS date input
 //
 // In Mobile Safari, date inputs require a pixel line-height that matches the
-// given height of the input.
+// given height of the input. Since this fucks up everything else, we have to
+// appropriately reset it for Internet Explorer and the size variations.
 
 input[type="date"] {
   line-height: @input-height-base;
+  // IE8+ misaligns the text within date inputs, so we reset
+  line-height: @line-height-base ~"\0";
+
+  &.input-sm {
+    line-height: @input-height-small;
+  }
+  &.input-lg {
+    line-height: @input-height-large;
+  }
 }
 
 
