@@ -169,6 +169,7 @@ license your work under the terms of the [MIT License](LICENSE.md).
 - Always a space after a property's colon (e.g., `display: block;` and not `display:block;`).
 - End all lines with a semi-colon.
 - For multiple, comma-separated selectors, place each selector on its own line.
+- Don't add vendor prefixed properties to their unprefixed counterparts (e.g., only `box-sizing` and not also include `-webkit-box-sizing`), as this is done automagically at build time.
 - Attribute selectors, like `input[type="text"]` should always wrap the attribute's value in double quotes, for consistency and safety (see this [blog post on unquoted attribute values](http://mathiasbynens.be/notes/unquoted-attribute-values) that can lead to XSS attacks).
 - Attribute selectors should only be used where absolutely necessary (e.g., form controls) and should be avoided on custom components for performance and explicitness.
 - Series of classes for a component should include a base class (e.g., `.component`) and use the base class as a prefix for modifier and sub-components (e.g., `.component-lg`).

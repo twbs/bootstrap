@@ -1,10 +1,12 @@
-/* global btoa: true */
 /*!
  * Bootstrap Grunt task for generating raw-files.min.js for the Customizer
  * http://getbootstrap.com
  * Copyright 2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+/* global btoa: true */
+
 'use strict';
 var fs = require('fs');
 var btoa = require('btoa');

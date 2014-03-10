@@ -20,7 +20,7 @@
 
 // Optional heading
 .panel-heading {
-  padding: 10px 15px;
+  padding: @panel-heading-padding;
   border-bottom: 1px solid transparent;
   .border-top-radius((@panel-border-radius - 1));
 
@@ -43,7 +43,7 @@
 
 // Optional footer (stays gray in every modifier class)
 .panel-footer {
-  padding: 10px 15px;
+  padding: @panel-footer-padding;
   background-color: @panel-footer-bg;
   border-top: 1px solid @panel-inner-border;
   .border-bottom-radius((@panel-border-radius - 1));
@@ -199,7 +199,6 @@
   .panel {
     margin-bottom: 0;
     border-radius: @panel-border-radius;
-    overflow: hidden; // crop contents when collapsed
     + .panel {
       margin-top: 5px;
     }

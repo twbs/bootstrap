@@ -3,8 +3,78 @@
 // --------------------------------------------------
 
 
+// Table of Contents
+//
 // Utilities
-// -------------------------
+// - Clearfix
+// - WebKit-style focus
+// - Center-align a block level element
+// - Sizing shortcuts
+// - Placeholder text
+// - Text overflow
+// - Requires inline-block or block for proper styling
+// - CSS image replacement
+//
+// CSS3 properties
+// - Single side border-radius
+// - Drop shadows
+// - Transitions
+// - Transformations
+// - Animations
+// - Backface visibility
+// - Prevent browsers from flickering when using CSS 3D transforms.
+// - Box sizing
+// - User select
+// - For selecting text on the page
+// - Resize anything
+// - CSS3 Content Columns
+// - Optional hyphenation
+// - Opacity
+//
+// Gradients
+// - Reset filters for IE
+// - Retina images
+// - Responsive image
+//
+// Component mixins
+// - Horizontal dividers
+// - Dividers (basically an hr) within dropdowns and nav lists
+// - Panels
+// - Alerts
+// - Tables
+// - List Groups
+// - Button variants
+// - Button sizes
+// - Pagination
+// - Labels
+// - Contextual backgrounds
+// - Typography
+// - Navbar vertical align
+// - Vertically center elements in the navbar
+// - Progress bars
+//
+// Responsive utilities
+//
+// Forms
+// - Form control focus state
+// - Form control sizing
+//
+// Grid system
+// - Centered container element
+// - Generate the extra small columns
+// - Generate the small columns
+// - Generate the medium columns
+// - Generate the large columns
+//
+// Framework grid generation
+// - Loop to generate grid all grid classes
+// - Form validation states
+// - Form control focus state
+
+
+
+// Utilities
+// --------------------------------------------------
 
 // Clearfix
 // Source: http://nicolasgallagher.com/micro-clearfix-hack/
@@ -72,8 +142,7 @@
 //
 // Heads up! v3 launched with with only `.hide-text()`, but per our pattern for
 // mixins being reused as classes with the same name, this doesn't hold up. As
-// of v3.0.1 we have added `.text-hide()` and deprecated `.hide-text()`. Note
-// that we cannot chain the mixins together in Less, so they are repeated.
+// of v3.0.1 we have added `.text-hide()` and deprecated `.hide-text()`.
 //
 // Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
 
@@ -92,7 +161,7 @@
 
 
 
-// CSS3 PROPERTIES
+// CSS3 properties
 // --------------------------------------------------
 
 // Single side border-radius
@@ -124,22 +193,39 @@
 }
 
 // Transitions
+//
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .transition(@transition) {
   -webkit-transition: @transition;
+       -o-transition: @transition;
           transition: @transition;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .transition-property(@transition-property) {
   -webkit-transition-property: @transition-property;
           transition-property: @transition-property;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .transition-delay(@transition-delay) {
   -webkit-transition-delay: @transition-delay;
           transition-delay: @transition-delay;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .transition-duration(@transition-duration) {
   -webkit-transition-duration: @transition-duration;
           transition-duration: @transition-duration;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
+.transition-timing-function(@timing-function) {
+  -webkit-transition-timing-function: @timing-function;
+          transition-timing-function: @timing-function;
+}
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .transition-transform(@transition) {
   -webkit-transition: -webkit-transform @transition;
      -moz-transition: -moz-transform @transition;
@@ -148,65 +234,100 @@
 }
 
 // Transformations
+//
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .scale(@ratio) {
   -webkit-transform: scale(@ratio);
       -ms-transform: scale(@ratio); // IE9 only
+       -o-transform: scale(@ratio);
           transform: scale(@ratio);
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .scale(@ratioX; @ratioY) {
   -webkit-transform: scale(@ratioX, @ratioY);
       -ms-transform: scale(@ratioX, @ratioY); // IE9 only
+       -o-transform: scale(@ratioX, @ratioY);
           transform: scale(@ratioX, @ratioY);
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .scaleX(@ratio) {
   -webkit-transform: scaleX(@ratio);
       -ms-transform: scaleX(@ratio); // IE9 only
+       -o-transform: scaleX(@ratio);
           transform: scaleX(@ratio);
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .scaleY(@ratio) {
   -webkit-transform: scaleY(@ratio);
       -ms-transform: scaleY(@ratio); // IE9 only
+       -o-transform: scaleY(@ratio);
           transform: scaleY(@ratio);
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .skew(@x; @y) {
   -webkit-transform: skew(@x, @y);
       -ms-transform: skewX(@x) skewY(@y); // See https://github.com/twbs/bootstrap/issues/4885; IE9+
+       -o-transform: skew(@x, @y);
           transform: skew(@x, @y);
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .translate(@x; @y) {
   -webkit-transform: translate(@x, @y);
       -ms-transform: translate(@x, @y); // IE9 only
+       -o-transform: translate(@x, @y);
           transform: translate(@x, @y);
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .translate3d(@x; @y; @z) {
   -webkit-transform: translate3d(@x, @y, @z);
           transform: translate3d(@x, @y, @z);
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .rotate(@degrees) {
   -webkit-transform: rotate(@degrees);
       -ms-transform: rotate(@degrees); // IE9 only
+       -o-transform: rotate(@degrees);
           transform: rotate(@degrees);
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .rotateX(@degrees) {
   -webkit-transform: rotateX(@degrees);
       -ms-transform: rotateX(@degrees); // IE9 only
+       -o-transform: rotateX(@degrees);
           transform: rotateX(@degrees);
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .rotateY(@degrees) {
   -webkit-transform: rotateY(@degrees);
       -ms-transform: rotateY(@degrees); // IE9 only
+       -o-transform: rotateY(@degrees);
           transform: rotateY(@degrees);
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .perspective(@perspective) {
   -webkit-perspective: @perspective;
      -moz-perspective: @perspective;
           perspective: @perspective;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .perspective-origin(@perspective) {
   -webkit-perspective-origin: @perspective;
      -moz-perspective-origin: @perspective;
           perspective-origin: @perspective;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .transform-origin(@origin) {
   -webkit-transform-origin: @origin;
      -moz-transform-origin: @origin;
@@ -215,38 +336,58 @@
 }
 
 // Animations
+//
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .animation(@animation) {
   -webkit-animation: @animation;
+       -o-animation: @animation;
           animation: @animation;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .animation-name(@name) {
   -webkit-animation-name: @name;
           animation-name: @name;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .animation-duration(@duration) {
   -webkit-animation-duration: @duration;
           animation-duration: @duration;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .animation-timing-function(@timing-function) {
   -webkit-animation-timing-function: @timing-function;
           animation-timing-function: @timing-function;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .animation-delay(@delay) {
   -webkit-animation-delay: @delay;
           animation-delay: @delay;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .animation-iteration-count(@iteration-count) {
   -webkit-animation-iteration-count: @iteration-count;
           animation-iteration-count: @iteration-count;
 }
+
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .animation-direction(@direction) {
   -webkit-animation-direction: @direction;
           animation-direction: @direction;
+}
+.animation-fill-mode(@fill-mode) {
+  -webkit-animation-fill-mode: @fill-mode;
+          animation-fill-mode: @fill-mode;
 }
 
 // Backface visibility
 // Prevent browsers from flickering when using CSS 3D transforms.
 // Default value is `visible`, but can be changed to `hidden`
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .backface-visibility(@visibility){
   -webkit-backface-visibility: @visibility;
      -moz-backface-visibility: @visibility;
@@ -254,6 +395,7 @@
 }
 
 // Box sizing
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .box-sizing(@boxmodel) {
   -webkit-box-sizing: @boxmodel;
      -moz-box-sizing: @boxmodel;
@@ -262,6 +404,7 @@
 
 // User select
 // For selecting text on the page
+// Deprecated as of v3.2.0 due to the introduction of autoprefixer (will be removed in v4)
 .user-select(@select) {
   -webkit-user-select: @select;
      -moz-user-select: @select;
@@ -305,7 +448,7 @@
 
 
 
-// GRADIENTS
+// Gradients
 // --------------------------------------------------
 
 #gradient {
@@ -316,7 +459,8 @@
   // Color stops are not available in IE9 and below.
   .horizontal(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
     background-image: -webkit-linear-gradient(left, color-stop(@start-color @start-percent), color-stop(@end-color @end-percent)); // Safari 5.1-6, Chrome 10+
-    background-image:  linear-gradient(to right, @start-color @start-percent, @end-color @end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+    background-image: -o-linear-gradient(left, @start-color @start-percent, @end-color @end-percent); // Opera 12
+    background-image: linear-gradient(to right, @start-color @start-percent, @end-color @end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
     background-repeat: repeat-x;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@start-color),argb(@end-color))); // IE9 and down
   }
@@ -327,6 +471,7 @@
   // Color stops are not available in IE9 and below.
   .vertical(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
     background-image: -webkit-linear-gradient(top, @start-color @start-percent, @end-color @end-percent);  // Safari 5.1-6, Chrome 10+
+    background-image: -o-linear-gradient(top, @start-color @start-percent, @end-color @end-percent);  // Opera 12
     background-image: linear-gradient(to bottom, @start-color @start-percent, @end-color @end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
     background-repeat: repeat-x;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down
@@ -335,16 +480,19 @@
   .directional(@start-color: #555; @end-color: #333; @deg: 45deg) {
     background-repeat: repeat-x;
     background-image: -webkit-linear-gradient(@deg, @start-color, @end-color); // Safari 5.1-6, Chrome 10+
+    background-image: -o-linear-gradient(@deg, @start-color, @end-color); // Opera 12
     background-image: linear-gradient(@deg, @start-color, @end-color); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
   }
   .horizontal-three-colors(@start-color: #00b3ee; @mid-color: #7a43b6; @color-stop: 50%; @end-color: #c3325f) {
     background-image: -webkit-linear-gradient(left, @start-color, @mid-color @color-stop, @end-color);
+    background-image: -o-linear-gradient(left, @start-color, @mid-color @color-stop, @end-color);
     background-image: linear-gradient(to right, @start-color, @mid-color @color-stop, @end-color);
     background-repeat: no-repeat;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@start-color),argb(@end-color))); // IE9 and down, gets no color-stop at all for proper fallback
   }
   .vertical-three-colors(@start-color: #00b3ee; @mid-color: #7a43b6; @color-stop: 50%; @end-color: #c3325f) {
     background-image: -webkit-linear-gradient(@start-color, @mid-color @color-stop, @end-color);
+    background-image: -o-linear-gradient(@start-color, @mid-color @color-stop, @end-color);
     background-image: linear-gradient(@start-color, @mid-color @color-stop, @end-color);
     background-repeat: no-repeat;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down, gets no color-stop at all for proper fallback
@@ -356,6 +504,7 @@
   }
   .striped(@color: rgba(255,255,255,.15); @angle: 45deg) {
     background-image: -webkit-linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
     background-image: linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
   }
 }
@@ -371,9 +520,10 @@
 
 
 // Retina images
-//
-// Short retina mixin for setting background-image and -size
+// --------------------------------------------------
 
+// Short retina mixin for setting background-image and -size. Note that the
+// spelling of `min--moz-device-pixel-ratio` is intentional.
 .img-retina(@file-1x; @file-2x; @width-1x; @height-1x) {
   background-image: url("@{file-1x}");
 
@@ -390,10 +540,11 @@
 }
 
 
-// Responsive image
-//
-// Keep images from scaling beyond the width of their parents.
 
+// Responsive image
+// --------------------------------------------------
+
+// Keep images from scaling beyond the width of their parents.
 .img-responsive(@display: block) {
   display: @display;
   max-width: 100%; // Part 1: Set a maximum relative to the parent
@@ -401,11 +552,12 @@
 }
 
 
-// COMPONENT MIXINS
+
+// Component mixins
 // --------------------------------------------------
 
 // Horizontal dividers
-// -------------------------
+//
 // Dividers (basically an hr) within dropdowns and nav lists
 .nav-divider(@color: #e5e5e5) {
   height: 1px;
@@ -415,7 +567,6 @@
 }
 
 // Panels
-// -------------------------
 .panel-variant(@border; @heading-text-color; @heading-bg-color; @heading-border) {
   border-color: @border;
 
@@ -424,19 +575,18 @@
     background-color: @heading-bg-color;
     border-color: @heading-border;
 
-    + .panel-collapse .panel-body {
+    + .panel-collapse > .panel-body {
       border-top-color: @border;
     }
   }
   & > .panel-footer {
-    + .panel-collapse .panel-body {
+    + .panel-collapse > .panel-body {
       border-bottom-color: @border;
     }
   }
 }
 
 // Alerts
-// -------------------------
 .alert-variant(@background; @border; @text-color) {
   background-color: @background;
   border-color: @border;
@@ -451,7 +601,6 @@
 }
 
 // Tables
-// -------------------------
 .table-row-variant(@state; @background) {
   // Exact selectors below required to override `.table-striped` and prevent
   // inheritance to nested tables.
@@ -479,7 +628,6 @@
 }
 
 // List Groups
-// -------------------------
 .list-group-item-variant(@state; @background; @color) {
   .list-group-item-@{state} {
     color: @color;
@@ -507,7 +655,7 @@
 }
 
 // Button variants
-// -------------------------
+//
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
 .button-variant(@color; @background; @border) {
@@ -521,7 +669,7 @@
   &.active,
   .open .dropdown-toggle& {
     color: @color;
-    background-color: darken(@background, 8%);
+    background-color: darken(@background, 10%);
         border-color: darken(@border, 12%);
   }
   &:active,
@@ -549,7 +697,6 @@
 }
 
 // Button sizes
-// -------------------------
 .button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
   padding: @padding-vertical @padding-horizontal;
   font-size: @font-size;
@@ -558,7 +705,6 @@
 }
 
 // Pagination
-// -------------------------
 .pagination-size(@padding-vertical; @padding-horizontal; @font-size; @border-radius) {
   > li {
     > a,
@@ -582,7 +728,6 @@
 }
 
 // Labels
-// -------------------------
 .label-variant(@color) {
   background-color: @color;
   &[href] {
@@ -594,7 +739,6 @@
 }
 
 // Contextual backgrounds
-// -------------------------
 .bg-variant(@color) {
   background-color: @color;
   a&:hover {
@@ -603,7 +747,6 @@
 }
 
 // Typography
-// -------------------------
 .text-emphasis-variant(@color) {
   color: @color;
   a&:hover {
@@ -612,7 +755,7 @@
 }
 
 // Navbar vertical align
-// -------------------------
+//
 // Vertically center elements in the navbar.
 // Example: an element has a height of 30px, so write out `.navbar-vertical-align(30px);` to calculate the appropriate top margin.
 .navbar-vertical-align(@element-height) {
@@ -621,7 +764,6 @@
 }
 
 // Progress bars
-// -------------------------
 .progress-bar-variant(@color) {
   background-color: @color;
   .progress-striped & {
@@ -630,7 +772,7 @@
 }
 
 // Responsive utilities
-// -------------------------
+//
 // More easily include all the states for responsive-utilities.less.
 // Note: Deprecated .responsive-visibility() as of v3.2.0
 .responsive-visibility() {
@@ -647,8 +789,97 @@
 }
 
 
-// Grid System
-// -----------
+
+// Form validation states
+//
+// Used in forms.less to generate the form validation CSS for warnings, errors,
+// and successes.
+
+.form-control-validation(@text-color: #555; @border-color: #ccc; @background-color: #f5f5f5) {
+  // Color the label and help text
+  .help-block,
+  .control-label,
+  .radio,
+  .checkbox,
+  .radio-inline,
+  .checkbox-inline  {
+    color: @text-color;
+  }
+  // Set the border and box shadow on specific inputs to match
+  .form-control {
+    border-color: @border-color;
+    .box-shadow(inset 0 1px 1px rgba(0,0,0,.075)); // Redeclare so transitions work
+    &:focus {
+      border-color: darken(@border-color, 10%);
+      @shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten(@border-color, 20%);
+      .box-shadow(@shadow);
+    }
+  }
+  // Set validation states also for addons
+  .input-group-addon {
+    color: @text-color;
+    border-color: @border-color;
+    background-color: @background-color;
+  }
+  // Optional feedback icon
+  .form-control-feedback {
+    color: @text-color;
+  }
+}
+
+
+
+// Forms
+// --------------------------------------------------
+
+// Form control focus state
+//
+// Generate a customized focus state and for any input with the specified color,
+// which defaults to the `@input-focus-border` variable.
+//
+// We highly encourage you to not customize the default value, but instead use
+// this to tweak colors on an as-needed basis. This aesthetic change is based on
+// WebKit's default styles, but applicable to a wider range of browsers. Its
+// usability and accessibility should be taken into account with any change.
+//
+// Example usage: change the default blue border and shadow to white for better
+// contrast against a dark gray background.
+.form-control-focus(@color: @input-border-focus) {
+  @color-rgba: rgba(red(@color), green(@color), blue(@color), .6);
+  &:focus {
+    border-color: @color;
+    outline: 0;
+    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @{color-rgba}");
+  }
+}
+
+// Form control sizing
+//
+// Relative text size, padding, and border-radii changes for form controls. For
+// horizontal sizing, wrap controls in the predefined grid classes. `<select>`
+// element gets special love because it's special, and that's a fact!
+.input-size(@input-height; @padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
+  height: @input-height;
+  padding: @padding-vertical @padding-horizontal;
+  font-size: @font-size;
+  line-height: @line-height;
+  border-radius: @border-radius;
+
+  select& {
+    height: @input-height;
+    line-height: @input-height;
+  }
+
+  textarea&,
+  select[multiple]& {
+    height: auto;
+  }
+}
+
+
+
+// Grid system
+// --------------------------------------------------
 
 // Centered container element
 .container-fixed() {
@@ -676,21 +907,14 @@
   padding-right: (@gutter / 2);
 }
 .make-xs-column-offset(@columns) {
-  @media (min-width: @screen-xs-min) {
-    margin-left: percentage((@columns / @grid-columns));
-  }
+  margin-left: percentage((@columns / @grid-columns));
 }
 .make-xs-column-push(@columns) {
-  @media (min-width: @screen-xs-min) {
-    left: percentage((@columns / @grid-columns));
-  }
+  left: percentage((@columns / @grid-columns));
 }
 .make-xs-column-pull(@columns) {
-  @media (min-width: @screen-xs-min) {
-    right: percentage((@columns / @grid-columns));
-  }
+  right: percentage((@columns / @grid-columns));
 }
-
 
 // Generate the small columns
 .make-sm-column(@columns; @gutter: @grid-gutter-width) {
@@ -720,7 +944,6 @@
   }
 }
 
-
 // Generate the medium columns
 .make-md-column(@columns; @gutter: @grid-gutter-width) {
   position: relative;
@@ -748,7 +971,6 @@
     right: percentage((@columns / @grid-columns));
   }
 }
-
 
 // Generate the large columns
 .make-lg-column(@columns; @gutter: @grid-gutter-width) {
@@ -779,11 +1001,12 @@
 }
 
 
+
 // Framework grid generation
-//
+// --------------------------------------------------
+
 // Used only by Bootstrap to generate the correct number of grid classes given
 // any value of `@grid-columns`.
-
 .make-grid-columns() {
   // Common styles for all sizes of grid columns, widths 1-12
   .col(@index) when (@index = 1) { // initial
@@ -829,14 +1052,24 @@
     width: percentage((@index / @grid-columns));
   }
 }
-.calc-grid-column(@index, @class, @type) when (@type = push) {
+.calc-grid-column(@index, @class, @type) when (@type = push) and (@index > 0) {
   .col-@{class}-push-@{index} {
     left: percentage((@index / @grid-columns));
   }
 }
-.calc-grid-column(@index, @class, @type) when (@type = pull) {
+.calc-grid-column(@index, @class, @type) when (@type = push) and (@index = 0) {
+  .col-@{class}-push-0 {
+    left: auto;
+  }
+}
+.calc-grid-column(@index, @class, @type) when (@type = pull) and (@index > 0) {
   .col-@{class}-pull-@{index} {
     right: percentage((@index / @grid-columns));
+  }
+}
+.calc-grid-column(@index, @class, @type) when (@type = pull) and (@index = 0) {
+  .col-@{class}-pull-0 {
+    right: auto;
   }
 }
 .calc-grid-column(@index, @class, @type) when (@type = offset) {
@@ -859,87 +1092,4 @@
   .loop-grid-columns(@grid-columns, @class, pull);
   .loop-grid-columns(@grid-columns, @class, push);
   .loop-grid-columns(@grid-columns, @class, offset);
-}
-
-// Form validation states
-//
-// Used in forms.less to generate the form validation CSS for warnings, errors,
-// and successes.
-
-.form-control-validation(@text-color: #555; @border-color: #ccc; @background-color: #f5f5f5) {
-  // Color the label and help text
-  .help-block,
-  .control-label,
-  .radio,
-  .checkbox,
-  .radio-inline,
-  .checkbox-inline  {
-    color: @text-color;
-  }
-  // Set the border and box shadow on specific inputs to match
-  .form-control {
-    border-color: @border-color;
-    .box-shadow(inset 0 1px 1px rgba(0,0,0,.075)); // Redeclare so transitions work
-    &:focus {
-      border-color: darken(@border-color, 10%);
-      @shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten(@border-color, 20%);
-      .box-shadow(@shadow);
-    }
-  }
-  // Set validation states also for addons
-  .input-group-addon {
-    color: @text-color;
-    border-color: @border-color;
-    background-color: @background-color;
-  }
-  // Optional feedback icon
-  .form-control-feedback {
-    color: @text-color;
-  }
-}
-
-// Form control focus state
-//
-// Generate a customized focus state and for any input with the specified color,
-// which defaults to the `@input-focus-border` variable.
-//
-// We highly encourage you to not customize the default value, but instead use
-// this to tweak colors on an as-needed basis. This aesthetic change is based on
-// WebKit's default styles, but applicable to a wider range of browsers. Its
-// usability and accessibility should be taken into account with any change.
-//
-// Example usage: change the default blue border and shadow to white for better
-// contrast against a dark gray background.
-
-.form-control-focus(@color: @input-border-focus) {
-  @color-rgba: rgba(red(@color), green(@color), blue(@color), .6);
-  &:focus {
-    border-color: @color;
-    outline: 0;
-    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @{color-rgba}");
-  }
-}
-
-// Form control sizing
-//
-// Relative text size, padding, and border-radii changes for form controls. For
-// horizontal sizing, wrap controls in the predefined grid classes. `<select>`
-// element gets special love because it's special, and that's a fact!
-
-.input-size(@input-height; @padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
-  height: @input-height;
-  padding: @padding-vertical @padding-horizontal;
-  font-size: @font-size;
-  line-height: @line-height;
-  border-radius: @border-radius;
-
-  select& {
-    height: @input-height;
-    line-height: @input-height;
-  }
-
-  textarea&,
-  select[multiple]& {
-    height: auto;
-  }
 }

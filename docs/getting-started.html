@@ -418,6 +418,7 @@ bootstrap/
     </table>
   </div>
   <p>Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 7, though they are not officially supported.</p>
+  <p>For a list of some of the browser bugs that Bootstrap has to grapple with, see our <a href="../browser-bugs/">Wall of browser bugs</a>.</p>
 
   <h3 id="support-ie8-ie9">Internet Explorer 8 and 9</h3>
   <p>Internet Explorer 8 and 9 are also supported, however, please be aware that some CSS3 properties and HTML5 elements are not fully supported by these browsers. In addition, <strong>Internet Explorer 8 requires the use of <a href="https://github.com/scottjehl/Respond">Respond.js</a> to enable media query support.</strong></p>
@@ -450,8 +451,6 @@ bootstrap/
           <th scope="row"><code>transition</code></th>
           <td colspan="2" class="text-danger"><span class="glyphicon glyphicon-remove"></span> Not supported</td>
         </tr>
-      </tbody>
-      <tbody>
         <tr>
           <th scope="row"><code>placeholder</code></th>
           <td colspan="2" class="text-danger"><span class="glyphicon glyphicon-remove"></span> Not supported</td>
@@ -622,7 +621,7 @@ if (isAndroid) {
   <p>If your navigation contains many links and comes before the main content in the DOM, add a <code>Skip to main content</code> link immediately after your opening <code>&lt;body&gt;</code> tag. <a href="http://a11yproject.com/posts/skip-nav-links/">(read why)</a></p>
 {% highlight html %}
 <body>
-  <a href="#content" class="sr-only">Skip to main content</a>
+  <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
   <div class="container" id="content">
     The main page content.
   </div>

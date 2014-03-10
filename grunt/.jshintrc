@@ -1,15 +1,10 @@
 {
-  "camelcase": true,
-  "curly": true,
+  "curly" : true,
   "eqeqeq": true,
-  "immed": true,
-  "indent": 2,
   "newcap": true,
-  "noarg": true,
-  "node": true,
+  "noarg" : true,
+  "node"  : true,
   "nonbsp": true,
-  "quotmark": "single",
   "strict": true,
-  "trailing": true,
-  "undef": true
+  "undef" : true
 }

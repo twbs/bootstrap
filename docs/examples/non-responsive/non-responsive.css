@@ -11,6 +11,11 @@ body {
   padding-bottom: 30px;
 }
 
+/* Don't let the lead text change font-size. */
+.lead {
+  font-size: 16px;
+}
+
 /* Finesse the page header spacing */
 .page-header {
   margin-bottom: 30px;

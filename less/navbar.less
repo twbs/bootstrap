@@ -48,7 +48,6 @@
 // content for the user's viewport.
 
 .navbar-collapse {
-  max-height: @navbar-collapse-max-height;
   overflow-x: visible;
   padding-right: @navbar-padding-horizontal;
   padding-left:  @navbar-padding-horizontal;
@@ -84,6 +83,17 @@
     .navbar-fixed-bottom & {
       padding-left: 0;
       padding-right: 0;
+    }
+  }
+}
+
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  .navbar-collapse {
+    max-height: @navbar-collapse-max-height;
+
+    @media (max-width: @screen-phone) and (orientation: landscape) {
+      max-height: 200px;
     }
   }
 }
@@ -492,6 +502,20 @@
     }
   }
 
+  .btn-link {
+    color: @navbar-default-link-color;
+    &:hover,
+    &:focus {
+      color: @navbar-default-link-hover-color;
+    }
+    &[disabled],
+    fieldset[disabled] & {
+      &:hover,
+      &:focus {
+        color: @navbar-default-link-disabled-color;
+      }
+    }
+  }
 }
 
 // Inverse navbar
@@ -613,4 +637,18 @@
     }
   }
 
+  .btn-link {
+    color: @navbar-inverse-link-color;
+    &:hover,
+    &:focus {
+      color: @navbar-inverse-link-hover-color;
+    }
+    &[disabled],
+    fieldset[disabled] & {
+      &:hover,
+      &:focus {
+        color: @navbar-inverse-link-disabled-color;
+      }
+    }
+  }
 }

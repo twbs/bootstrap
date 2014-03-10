@@ -370,6 +370,11 @@ lead: "Over a dozen reusable components built to provide iconography, dropdowns,
     <h4>Handling borders</h4>
     <p>Due to the specific HTML and CSS used to justify buttons (namely <code>display: table-cell</code>), the borders between them are doubled. In regular button groups, <code>margin-left: -1px</code> is used to stack the borders instead of removing them. However, <code>margin</code> doesn't work with <code>display: table-cell</code>. As a result, depending on your customizations to Bootstrap, you may wish to remove or re-color the borders.</p>
   </div>
+  <div class="bs-callout bs-callout-warning">
+    <h4>IE8 and borders</h4>
+    <p>Internet Explorer 8 doesn't render borders in on buttons in a justified button group, whether it's on <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements. To get around that, wrap each button in another <code>.btn-group</code>.</p>
+    <p>See <a href="https://github.com/twbs/bootstrap/issues/12476">#12476</a> for more information.</p>
+  </div>
 
   <h4>With <code>&lt;a&gt;</code> elements</h4>
   <p>Just wrap a series of <code>.btn</code>s in <code>.btn-group.btn-group-justified</code>.</p>
@@ -1535,6 +1540,11 @@ lead: "Over a dozen reusable components built to provide iconography, dropdowns,
   <h2 id="navbar-component-alignment">Component alignment</h2>
   <p>Align nav links, forms, buttons, or text, using the <code>.navbar-left</code> or <code>.navbar-right</code> utility classes. Both classes will add a CSS float in the specified direction. For example, to align nav links, put them in a separate <code>&lt;ul&gt;</code> with the respective utility class applied.</p>
   <p>These classes are mixin-ed versions of <code>.pull-left</code> and <code>.pull-right</code>, but they're scoped to media queries for easier handling of navbar components across device sizes.</p>
+  <div class="bs-callout bs-callout-warning">
+    <h4>Right aligning multiple components</h4>
+    <p>Navbars currently have a limitation with multiple <code>.navbar-right</code> classes. To properly space content, we use negative margin on the last <code>.navbar-right</code> element. When there are multiple elements using that class, these margins don't work as intended.</p>
+    <p>We'll revisit this when we can rewrite that component in v4.</p>
+  </div>
 
 
   <h2 id="navbar-fixed-top">Fixed to top</h2>
@@ -2280,6 +2290,34 @@ body { padding-bottom: 70px; }
 </div>
 {% endhighlight %}
 
+  <h3 id="progress-low-percentages">Low percentages</h3>
+  <p>Progress bars representing low single digit percentages, as well as 0%, include a <code>min-width: 20px;</code> for legibility.</p>
+  <div class="bs-example">
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        0%
+      </div>
+    </div>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
+        2%
+      </div>
+    </div>
+  </div>
+{% highlight html %}
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+    0%
+  </div>
+</div>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
+    2%
+  </div>
+</div>
+{% endhighlight %}
+
+
   <h3 id="progress-alternatives">Contextual alternatives</h3>
   <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
   <div class="bs-example">
@@ -2613,6 +2651,31 @@ body { padding-bottom: 70px; }
 {% highlight html %}
 <div class="list-group">
   <a href="#" class="list-group-item active">
+    Cras justo odio
+  </a>
+  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item">Morbi leo risus</a>
+  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+  <a href="#" class="list-group-item">Vestibulum at eros</a>
+</div>
+{% endhighlight %}
+
+  <h3 id="list-group-disabled">Disabled items</h3>
+  <p>Add <code>.disabled</code> to a <code>.list-group-item</code> to gray it out to appear disabled.</p>
+  <div class="bs-example">
+    <div class="list-group">
+      <a href="#" class="list-group-item disabled">
+        Cras justo odio
+      </a>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+    </div>
+  </div>
+{% highlight html %}
+<div class="list-group">
+  <a href="#" class="list-group-item disabled">
     Cras justo odio
   </a>
   <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
@@ -2966,6 +3029,34 @@ body { padding-bottom: 70px; }
     <li class="list-group-item">Porta ac consectetur ac</li>
     <li class="list-group-item">Vestibulum at eros</li>
   </ul>
+</div>
+{% endhighlight %}
+</div>
+
+
+
+<!-- Responsive embeds
+================================================== -->
+<div class="bs-docs-section">
+  <h1 id="responsive-embed" class="page-header">Responsive embed</h1>
+
+  <p>Allow browsers to determine video or slideshow dimensions based on the width of their containing block by creating an intrinsic ratio that will properly scale on any device.</p>
+  <p>Rules are directly apply to <code>&lt;iframe&gt;</code>, <code>&lt;embed&gt;</code> and <code>&lt;object&gt;</code> elements, optionally use of an explicit descendant class <code>.embed-responsive-item</code> when you want to match the styling for other attributes.</p>
+  <p><strong>Pro-Tip!</strong> You don't need to include <code>frameborder="0"</code> in your <code>&lt;iframe&gt;</code>s as we override that for you.</p>
+  <div class="bs-example">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" src="//www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+    </div>
+  </div>
+{% highlight html %}
+<!-- 16:9 aspect ratio -->
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="…"></iframe>
+</div>
+
+<!-- 4:3 aspect ratio -->
+<div class="embed-responsive embed-responsive-4by3">
+  <iframe class="embed-responsive-item" src="…"></iframe>
 </div>
 {% endhighlight %}
 </div>

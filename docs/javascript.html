@@ -65,7 +65,7 @@ $.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the Boot
 {% endhighlight %}
 
   <h3 id="js-events">Events</h3>
-  <p>Bootstrap provides custom events for most plugins' unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.</p>
+  <p>Bootstrap provides custom events for most plugins' unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is triggered on the completion of an action.</p>
   <p>As of 3.0.0, all Bootstrap events are namespaced.</p>
   <p>All infinitive events provide <code>preventDefault</code> functionality. This provides the ability to stop the execution of an action before it starts.</p>
 {% highlight js %}
@@ -231,11 +231,15 @@ $('#myModal').on('show.bs.modal', function (e) {
 </div>
 {% endhighlight %}
 
-
   <div class="bs-callout bs-callout-warning">
     <h4>Make modals accessible</h4>
     <p>Be sure to add <code>role="dialog"</code> to <code>.modal</code>, <code>aria-labelledby="myModalLabel"</code> attribute to reference the modal title, and <code>aria-hidden="true"</code> to tell assistive technologies to skip the modal's DOM elements.</p>
     <p>Additionally, you may give a description of your modal dialog with <code>aria-describedby</code> on <code>.modal</code>.</p>
+  </div>
+
+  <div class="bs-callout bs-callout-info">
+    <h4>Embedding YouTube videos</h4>
+    <p>Embedding YouTube videos in modals requires additional JavaScript not in Bootstrap to automatically stop playback and more. <a href="http://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal">See this helpful Stack Overflow post</a> for more information.</p>
   </div>
 
   <h2 id="modals-sizes">Optional sizes</h2>
@@ -665,8 +669,16 @@ $('#myDropdown').on('show.bs.dropdown', function () {
 
   <h2 id="scrollspy-usage">Usage</h2>
 
+  <h3>Requires relative positioning</h3>
+  <p>No matter the implementation method, scrollspy requires the use of <code>position: absolute;</code> on the element you're spying on. In most cases this is the <code>&lt;body&gt;</code>.</p>
+
   <h3>Via data attributes</h3>
   <p>To easily add scrollspy behavior to your topbar navigation, add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the <code>&lt;body&gt;</code>). Then add the <code>data-target</code> attribute with the ID or class of the parent element of any Bootstrap <code>.nav</code> component.</p>
+{% highlight css %}
+body {
+  position: relative;
+}
+{% endhighlight %}
 {% highlight html %}
 <body data-spy="scroll" data-target=".navbar-example">
   ...
@@ -680,7 +692,7 @@ $('#myDropdown').on('show.bs.dropdown', function () {
 {% endhighlight %}
 
   <h3>Via JavaScript</h3>
-  <p>Call the scrollspy via JavaScript:</p>
+  <p>After adding <code>position: relative;</code> in your CSS, call the scrollspy via JavaScript:</p>
 {% highlight js %}
 $('body').scrollspy({ target: '.navbar-example' })
 {% endhighlight %}
@@ -1101,6 +1113,8 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
 {% endhighlight %}
 </div>
 
+
+
 <!-- Popovers
 ================================================== -->
 <div class="bs-docs-section">
@@ -1167,8 +1181,11 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
 
   <h3>Live demo</h3>
   <div class="bs-example" style="padding-bottom: 24px;">
-    <a href="#" class="btn btn-lg btn-danger" data-toggle="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" role="button">Click to toggle popover</a>
+    <button type="button" class="btn btn-lg btn-danger bs-docs-popover" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
   </div>
+{% highlight html %}
+<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+{% endhighlight %}
 
   <h4>Four directions</h4>
   <div class="bs-example tooltip-demo">
@@ -1204,6 +1221,20 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
 <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
   Popover on right
 </button>
+{% endhighlight %}
+
+  <h4>Dismiss on next click</h4>
+  <p>Use the <code>focus</code> trigger to dismiss popovers on their next click.</p>
+  <div class="bs-example" style="padding-bottom: 24px;">
+    <button type="button" class="btn btn-lg btn-danger bs-docs-popover-dismiss" data-toggle="popover" title="Dimissmisable popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissable popover</button>
+  </div>
+{% highlight html %}
+<button type="button" class="btn btn-lg btn-danger popover-dismiss" data-toggle="popover" title="Dimissmisable popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissable popover</button>
+{% endhighlight %}
+{% highlight js %}
+$('.popover-dismiss').popover({
+  trigger: 'focus'
+})
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-warning">

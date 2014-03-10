@@ -51,7 +51,7 @@ input[type="search"] {
 input[type="radio"],
 input[type="checkbox"] {
   margin: 4px 0 0;
-  margin-top: 1px \9; /* IE8-9 */
+  margin-top: 1px \9; // IE8-9
   line-height: normal;
 }
 
@@ -167,10 +167,20 @@ input[type="search"] {
 // Special styles for iOS date input
 //
 // In Mobile Safari, date inputs require a pixel line-height that matches the
-// given height of the input.
+// given height of the input. Since this fucks up everything else, we have to
+// appropriately reset it for Internet Explorer and the size variations.
 
 input[type="date"] {
   line-height: @input-height-base;
+  // IE8+ misaligns the text within date inputs, so we reset
+  line-height: @line-height-base ~"\0";
+
+  &.input-sm {
+    line-height: @input-height-small;
+  }
+  &.input-lg {
+    line-height: @input-height-large;
+  }
 }
 
 
@@ -271,18 +281,27 @@ input[type="checkbox"],
   .form-control {
     padding-right: (@input-height-base * 1.25);
   }
-
-  // Feedback icon (requires .glyphicon classes)
-  .form-control-feedback {
-    position: absolute;
-    top: (@line-height-computed + 5); // Height of the `label` and its margin
-    right: 0;
-    display: block;
-    width: @input-height-base;
-    height: @input-height-base;
-    line-height: @input-height-base;
-    text-align: center;
-  }
+}
+// Feedback icon (requires .glyphicon classes)
+.form-control-feedback {
+  position: absolute;
+  top: (@line-height-computed + 5); // Height of the `label` and its margin
+  right: 0;
+  display: block;
+  width: @input-height-base;
+  height: @input-height-base;
+  line-height: @input-height-base;
+  text-align: center;
+}
+.input-lg + .form-control-feedback {
+  width: @input-height-large;
+  height: @input-height-large;
+  line-height: @input-height-large;
+}
+.input-sm + .form-control-feedback {
+  width: @input-height-small;
+  height: @input-height-small;
+  line-height: @input-height-small;
 }
 
 // Feedback states
@@ -349,6 +368,18 @@ input[type="checkbox"],
       width: auto; // Prevent labels from stacking above inputs in `.form-group`
       vertical-align: middle;
     }
+
+    .input-group {
+      display: inline-table;
+      vertical-align: middle;
+
+      .input-group-addon,
+      .input-group-btn,
+      .form-control {
+        width: auto;
+      }
+    }
+
     // Input groups need that 100% width though
     .input-group > .form-control {
       width: 100%;
@@ -394,8 +425,9 @@ input[type="checkbox"],
 
 .form-horizontal {
 
-  // Consistent vertical alignment of labels, radios, and checkboxes
-  .control-label,
+  // Consistent vertical alignment of radios and checkboxes
+  //
+  // Labels also get some reset styles, but that is scoped to a media query below.
   .radio,
   .checkbox,
   .radio-inline,
@@ -418,12 +450,16 @@ input[type="checkbox"],
 
   .form-control-static {
     padding-top: (@padding-base-vertical + 1);
+    padding-bottom: (@padding-base-vertical + 1);
   }
 
-  // Only right align form labels here when the columns stop stacking
+  // Reset spacing and right align labels, but scope to media queries so that
+  // labels on narrow viewports stack the same as a default form example.
   @media (min-width: @screen-sm-min) {
     .control-label {
       text-align: right;
+      margin-bottom: 0;
+      padding-top: (@padding-base-vertical + 1); // Default padding plus a border
     }
   }
 
