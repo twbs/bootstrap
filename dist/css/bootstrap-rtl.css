@@ -3099,14 +3099,14 @@ input[type="date"].input-lg {
 .checkbox {
   display: block;
   min-height: 20px;
-  padding-right: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 .radio label,
 .checkbox label {
-  display: inline;
+  padding-right: 20px;
+  margin-bottom: 0;
   font-weight: normal;
   cursor: pointer;
 }
