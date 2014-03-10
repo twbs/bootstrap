@@ -2,9 +2,9 @@
 // - Responsive image
 // - Retina image
 
-// Responsive image
-// --------------------------------------------------
 
+// Responsive image
+//
 // Keep images from scaling beyond the width of their parents.
 .img-responsive(@display: block) {
   display: @display;
@@ -12,9 +12,9 @@
   height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
 }
 
-// Retina image
-// --------------------------------------------------
 
+// Retina image
+//
 // Short retina mixin for setting background-image and -size. Note that the
 // spelling of `min--moz-device-pixel-ratio` is intentional.
 .img-retina(@file-1x; @file-2x; @width-1x; @height-1x) {
@@ -31,4 +31,3 @@
     background-size: @width-1x @height-1x;
   }
 }
-
