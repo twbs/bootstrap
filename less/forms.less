@@ -413,8 +413,9 @@ input[type="checkbox"],
 
 .form-horizontal {
 
-  // Consistent vertical alignment of labels, radios, and checkboxes
-  .control-label,
+  // Consistent vertical alignment of radios and checkboxes
+  //
+  // Labels also get some reset styles, but that is scope to a media query below.
   .radio,
   .checkbox,
   .radio-inline,
@@ -440,10 +441,13 @@ input[type="checkbox"],
     padding-bottom: (@padding-base-vertical + 1);
   }
 
-  // Only right align form labels here when the columns stop stacking
+  // Reset spacing and right align labels, but scope to media queries so that
+  // labels on narrow viewports stack the same as a default form example.
   @media (min-width: @screen-sm-min) {
     .control-label {
       text-align: right;
+      margin-bottom: 0;
+      padding-top: (@padding-base-vertical + 1); // Default padding plus a border
     }
   }
 
