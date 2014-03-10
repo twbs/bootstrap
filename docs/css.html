@@ -302,7 +302,7 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
       <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
       <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
       <!-- Optional: clear the XS cols if their content doesn't match in height -->
-      <div class="clearfix visible-xs"></div>
+      <div class="clearfix visible-xs-block"></div>
       <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
     </div>
   </div>
@@ -315,7 +315,7 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
   <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
   <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
   <!-- Optional: clear the XS cols if their content doesn't match in height -->
-  <div class="clearfix visible-xs"></div>
+  <div class="clearfix visible-xs-block"></div>
   <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
 </div>
 {% endhighlight %}
@@ -332,7 +332,7 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
       <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
 
       <!-- Add the extra clearfix for only the required viewport -->
-      <div class="clearfix visible-xs"></div>
+      <div class="clearfix visible-xs-block"></div>
 
       <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
       <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
@@ -344,7 +344,7 @@ lead: "Global CSS settings, fundamental HTML elements styled and enhanced with e
   <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
 
   <!-- Add the extra clearfix for only the required viewport -->
-  <div class="clearfix visible-xs"></div>
+  <div class="clearfix visible-xs-block"></div>
 
   <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
   <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
@@ -2652,7 +2652,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <h1 id="responsive-utilities" class="page-header">Responsive utilities</h1>
 
   <p class="lead">For faster mobile-friendly development, use these utility classes for showing and hiding content by device via media query. Also included are utility classes for toggling content when printed.</p>
-  <p>Try to use these on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation. <strong>Responsive utilities are currently only available for block and table toggling.</strong> Use with inline and table elements is currently not supported.</p>
+  <p>Try to use these on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation.</p>
 
 
   <h2 id="responsive-utilities-classes">Available classes</h2>
@@ -2682,28 +2682,28 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </thead>
       <tbody>
         <tr>
-          <th><code>.visible-xs</code></th>
+          <th><code>.visible-xs-*</code></th>
           <td class="is-visible">Visible</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
         </tr>
         <tr>
-          <th><code>.visible-sm</code></th>
+          <th><code>.visible-sm-*</code></th>
           <td class="is-hidden">Hidden</td>
           <td class="is-visible">Visible</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
         </tr>
         <tr>
-          <th><code>.visible-md</code></th>
+          <th><code>.visible-md-*</code></th>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-visible">Visible</td>
           <td class="is-hidden">Hidden</td>
         </tr>
         <tr>
-          <th><code>.visible-lg</code></th>
+          <th><code>.visible-lg-*</code></th>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
@@ -2743,6 +2743,33 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </table>
   </div>
 
+  <p>As of v3.2, the <code>.visible-*-*</code> classes for each breakpoint come in three variations, one for each CSS <code>display</code> property value listed below.</p>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Group of classes</th>
+          <th>CSS <code>display</code></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>.visible-*-block</code></td>
+          <td><code>display: block;</code></td>
+        </tr>
+        <tr>
+          <td><code>.visible-*-inline</code></td>
+          <td><code>display: inline;</code></td>
+        </tr>
+        <tr>
+          <td><code>.visible-*-inline-block</code></td>
+          <td><code>display: inline-block;</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>So, for extra small (<code>xs</code>) screens for example, the available <code>.visible-*-*</code> classes are: <code>.visible-xs-block</code>, <code>.visible-xs-inline</code>, and <code>.visible-xs-inline-block</code>.</p>
+  <p>The classes <code>.visible-xs</code>, <code>.visible-sm</code>, <code>.visible-md</code>, and <code>.visible-lg</code> also exist, but are <strong>deprecated as of v3.2</strong>. They are approximately equivalent to <code>.visible-*-block</code>, except with additional special cases for toggling <code>&lt;table&gt;</code>-related elements.</p>
 
   <h2 id="responsive-utilities-print">Print classes</h2>
   <p>Similar to the regular responsive classes, use these for toggling content for print.</p>
@@ -2750,14 +2777,18 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <table class="table table-bordered table-striped responsive-utilities">
       <thead>
         <tr>
-          <th>Class</th>
+          <th>Classes</th>
           <th>Browser</th>
           <th>Print</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th><code>.visible-print</code></th>
+          <th>
+            <code>.visible-print-block</code><br>
+            <code>.visible-print-inline</code><br>
+            <code>.visible-print-inline-block</code>
+          </th>
           <td class="is-hidden">Hidden</td>
           <td class="is-visible">Visible</td>
         </tr>
@@ -2769,6 +2800,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </tbody>
     </table>
   </div>
+  <p>The class <code>.visible-print</code> also exists but is <strong>deprecated</strong> as of v3.1.0. It is approximately equivalent to <code>.visible-print-block</code>, except with additional special cases for <code>&lt;table&gt;</code>-related elements.</p>
 
 
   <h2 id="responsive-utilities-tests">Test cases</h2>
@@ -2779,48 +2811,48 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <div class="row responsive-utilities-test visible-on">
     <div class="col-xs-6 col-sm-3">
       <span class="hidden-xs">Extra small</span>
-      <span class="visible-xs">&#10004; Visible on x-small</span>
+      <span class="visible-xs-block">&#10004; Visible on x-small</span>
     </div>
     <div class="col-xs-6 col-sm-3">
       <span class="hidden-sm">Small</span>
-      <span class="visible-sm">&#10004; Visible on small</span>
+      <span class="visible-sm-block">&#10004; Visible on small</span>
     </div>
-    <div class="clearfix visible-xs"></div>
+    <div class="clearfix visible-xs-block"></div>
     <div class="col-xs-6 col-sm-3">
       <span class="hidden-md">Medium</span>
-      <span class="visible-md">&#10004; Visible on medium</span>
+      <span class="visible-md-block">&#10004; Visible on medium</span>
     </div>
     <div class="col-xs-6 col-sm-3">
       <span class="hidden-lg">Large</span>
-      <span class="visible-lg">&#10004; Visible on large</span>
+      <span class="visible-lg-block">&#10004; Visible on large</span>
     </div>
   </div>
   <div class="row responsive-utilities-test visible-on">
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-xs hidden-sm">Extra small and small</span>
-      <span class="visible-xs visible-sm">&#10004; Visible on x-small and small</span>
+      <span class="visible-xs-block visible-sm-block">&#10004; Visible on x-small and small</span>
     </div>
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-md hidden-lg">Medium and large</span>
-      <span class="visible-md visible-lg">&#10004; Visible on medium and large</span>
+      <span class="visible-md-block visible-lg-block">&#10004; Visible on medium and large</span>
     </div>
-    <div class="clearfix visible-xs"></div>
+    <div class="clearfix visible-xs-block"></div>
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-xs hidden-md">Extra small and medium</span>
-      <span class="visible-xs visible-md">&#10004; Visible on x-small and medium</span>
+      <span class="visible-xs-block visible-md-block">&#10004; Visible on x-small and medium</span>
     </div>
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-sm hidden-lg">Small and large</span>
-      <span class="visible-sm visible-lg">&#10004; Visible on small and large</span>
+      <span class="visible-sm-block visible-lg-block">&#10004; Visible on small and large</span>
     </div>
-    <div class="clearfix visible-xs"></div>
+    <div class="clearfix visible-xs-block"></div>
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-xs hidden-lg">Extra small and large</span>
-      <span class="visible-xs visible-lg">&#10004; Visible on x-small and large</span>
+      <span class="visible-xs-block visible-lg-block">&#10004; Visible on x-small and large</span>
     </div>
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-sm hidden-md">Small and medium</span>
-      <span class="visible-sm visible-md">&#10004; Visible on small and medium</span>
+      <span class="visible-sm-block visible-md-block">&#10004; Visible on small and medium</span>
     </div>
   </div>
 
@@ -2829,48 +2861,48 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <div class="row responsive-utilities-test hidden-on">
     <div class="col-xs-6 col-sm-3">
       <span class="hidden-xs">Extra small</span>
-      <span class="visible-xs">&#10004; Hidden on x-small</span>
+      <span class="visible-xs-block">&#10004; Hidden on x-small</span>
     </div>
     <div class="col-xs-6 col-sm-3">
       <span class="hidden-sm">Small</span>
-      <span class="visible-sm">&#10004; Hidden on small</span>
+      <span class="visible-sm-block">&#10004; Hidden on small</span>
     </div>
-    <div class="clearfix visible-xs"></div>
+    <div class="clearfix visible-xs-block"></div>
     <div class="col-xs-6 col-sm-3">
       <span class="hidden-md">Medium</span>
-      <span class="visible-md">&#10004; Hidden on medium</span>
+      <span class="visible-md-block">&#10004; Hidden on medium</span>
     </div>
     <div class="col-xs-6 col-sm-3">
       <span class="hidden-lg">Large</span>
-      <span class="visible-lg">&#10004; Hidden on large</span>
+      <span class="visible-lg-block">&#10004; Hidden on large</span>
     </div>
   </div>
   <div class="row responsive-utilities-test hidden-on">
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-xs hidden-sm">Extra small and small</span>
-      <span class="visible-xs visible-sm">&#10004; Hidden on x-small and small</span>
+      <span class="visible-xs-block visible-sm-block">&#10004; Hidden on x-small and small</span>
     </div>
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-md hidden-lg">Medium and large</span>
-      <span class="visible-md visible-lg">&#10004; Hidden on medium and large</span>
+      <span class="visible-md-block visible-lg-block">&#10004; Hidden on medium and large</span>
     </div>
-    <div class="clearfix visible-xs"></div>
+    <div class="clearfix visible-xs-block"></div>
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-xs hidden-md">Extra small and medium</span>
-      <span class="visible-xs visible-md">&#10004; Hidden on x-small and medium</span>
+      <span class="visible-xs-block visible-md-block">&#10004; Hidden on x-small and medium</span>
     </div>
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-sm hidden-lg">Small and large</span>
-      <span class="visible-sm visible-lg">&#10004; Hidden on small and large</span>
+      <span class="visible-sm-block visible-lg-block">&#10004; Hidden on small and large</span>
     </div>
-    <div class="clearfix visible-xs"></div>
+    <div class="clearfix visible-xs-block"></div>
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-xs hidden-lg">Extra small and large</span>
-      <span class="visible-xs visible-lg">&#10004; Hidden on x-small and large</span>
+      <span class="visible-xs-block visible-lg-block">&#10004; Hidden on x-small and large</span>
     </div>
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-sm hidden-md">Small and medium</span>
-      <span class="visible-sm visible-md">&#10004; Hidden on small and medium</span>
+      <span class="visible-sm-block visible-md-block">&#10004; Hidden on small and medium</span>
     </div>
   </div>
 </div>
