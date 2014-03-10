@@ -92,7 +92,7 @@
   .navbar-collapse {
     max-height: @navbar-collapse-max-height;
 
-    @media (max-width: @screen-phone) and (orientation: landscape) {
+    @media (max-width: @screen-xs-min) and (orientation: landscape) {
       max-height: 200px;
     }
   }
@@ -200,7 +200,7 @@
   // We remove the `outline` here, but later compensate by attaching `:hover`
   // styles to `:focus`.
   &:focus {
-    outline: none;
+    outline: 0;
   }
 
   // Bars
