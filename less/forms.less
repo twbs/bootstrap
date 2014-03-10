@@ -368,6 +368,18 @@ input[type="checkbox"],
       width: auto; // Prevent labels from stacking above inputs in `.form-group`
       vertical-align: middle;
     }
+
+    .input-group {
+      display: inline-table;
+      vertical-align: middle;
+
+      .input-group-addon,
+      .input-group-btn,
+      .form-control {
+        width: auto;
+      }
+    }
+
     // Input groups need that 100% width though
     .input-group > .form-control {
       width: 100%;
