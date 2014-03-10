@@ -13,7 +13,7 @@
   } else if (typeof exports === 'object') {
     factory(require('jquery'))
   } else {
-    factory(jQuery)
+    factory(this.jQuery)
   }
 }(function ($) {
   'use strict';
