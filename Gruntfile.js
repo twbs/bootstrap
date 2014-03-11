@@ -19,7 +19,7 @@ module.exports = function (grunt) {
   var path = require('path');
   var generateGlyphiconsData = require('./grunt/bs-glyphicons-data-generator.js');
   var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
-  var generateRawFilesJs = require('./grunt/bs-raw-files-generator.js');
+  var generateRawFiles = require('./grunt/bs-raw-files-generator.js');
   var updateShrinkwrap = require('./grunt/shrinkwrap.js');
 
   // Project configuration.
@@ -56,7 +56,7 @@ module.exports = function (grunt) {
         src: 'js/tests/unit/*.js'
       },
       assets: {
-        src: ['docs/assets/js/application.js', 'docs/assets/js/customizer.js']
+        src: 'docs/assets/js/src/*.js'
       }
     },
 
@@ -66,8 +66,8 @@ module.exports = function (grunt) {
       },
       grunt: {
         options: {
-          'requireCamelCaseOrUpperCaseIdentifiers': null,
-          'requireParenthesesAroundIIFE': true
+          requireCamelCaseOrUpperCaseIdentifiers: null,
+          requireParenthesesAroundIIFE: true
         },
         src: '<%= jshint.grunt.src %>'
       },
@@ -79,26 +79,6 @@ module.exports = function (grunt) {
       },
       assets: {
         src: '<%= jshint.assets.src %>'
-      }
-    },
-
-    csslint: {
-      options: {
-        csslintrc: 'less/.csslintrc'
-      },
-      src: [
-        'dist/css/bootstrap.css',
-        'dist/css/bootstrap-theme.css'
-      ],
-      examples: [
-        'docs/examples/**/*.css'
-      ],
-      docs: {
-        options: {
-          'ids': false,
-          'overqualified-elements': false
-        },
-        src: ['docs/assets/css/docs.css']
       }
     },
 
@@ -148,7 +128,7 @@ module.exports = function (grunt) {
           'docs/assets/js/vendor/blob.js',
           'docs/assets/js/vendor/filesaver.js',
           'docs/assets/js/raw-files.min.js',
-          'docs/assets/js/customizer.js'
+          'docs/assets/js/src/customizer.js'
         ],
         dest: 'docs/assets/js/customize.min.js'
       },
@@ -158,10 +138,17 @@ module.exports = function (grunt) {
         },
         src: [
           'docs/assets/js/vendor/holder.js',
-          'docs/assets/js/application.js'
+          'docs/assets/js/src/application.js'
         ],
         dest: 'docs/assets/js/docs.min.js'
       }
+    },
+
+    qunit: {
+      options: {
+        inject: 'js/tests/unit/phantom.js'
+      },
+      files: 'js/tests/index.html'
     },
 
     less: {
@@ -237,6 +224,26 @@ module.exports = function (grunt) {
       }
     },
 
+    csslint: {
+      options: {
+        csslintrc: 'less/.csslintrc'
+      },
+      src: [
+        'dist/css/bootstrap.css',
+        'dist/css/bootstrap-theme.css'
+      ],
+      examples: [
+        'docs/examples/**/*.css'
+      ],
+      docs: {
+        options: {
+          ids: false,
+          'overqualified-elements': false
+        },
+        src: 'docs/assets/css/src/docs.css'
+      }
+    },
+
     cssmin: {
       compress: {
         options: {
@@ -246,8 +253,8 @@ module.exports = function (grunt) {
           compatibility: 'ie8'
         },
         src: [
-          'docs/assets/css/docs.css',
-          'docs/assets/css/pygments-manni.css'
+          'docs/assets/css/src/docs.css',
+          'docs/assets/css/src/pygments-manni.css'
         ],
         dest: 'docs/assets/css/docs.min.css'
       }
@@ -286,12 +293,12 @@ module.exports = function (grunt) {
       examples: {
         expand: true,
         cwd: 'docs/examples/',
-        src: ['**/*.css'],
+        src: '**/*.css',
         dest: 'docs/examples/'
       },
       docs: {
         files: {
-          'docs/assets/css/docs.css': 'docs/assets/css/docs.css'
+          'docs/assets/css/src/docs.css': 'docs/assets/css/src/docs.css'
         }
       }
     },
@@ -312,13 +319,6 @@ module.exports = function (grunt) {
         ],
         dest: 'docs/dist'
       }
-    },
-
-    qunit: {
-      options: {
-        inject: 'js/tests/unit/phantom.js'
-      },
-      files: 'js/tests/index.html'
     },
 
     connect: {
@@ -447,7 +447,7 @@ module.exports = function (grunt) {
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
-  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer', 'css_flip', 'less:minify', 'cssmin', 'csscomb', 'usebanner']);
+  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer', 'css_flip', 'csscomb', 'less:minify', 'cssmin', 'usebanner']);
 
   // Docs distribution task.
   grunt.registerTask('dist-docs', 'copy:docs');
@@ -470,7 +470,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build-customizer-html', 'jade');
   grunt.registerTask('build-raw-files', 'Add scripts/less files to customizer.', function () {
     var banner = grunt.template.process('<%= banner %>');
-    generateRawFilesJs(banner);
+    generateRawFiles(banner);
   });
 
   // Task for updating the npm packages used by the Travis build.

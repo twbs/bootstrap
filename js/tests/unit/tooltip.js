@@ -391,12 +391,12 @@ $(function () {
   test('tooltips should be placed dynamically, with the dynamic placement option', function () {
     $.support.transition = false
     var ttContainer = $('<div id="dynamic-tt-test"/>').css({
-      'height' : 400,
-      'overflow' : 'hidden',
-      'position' : 'absolute',
-      'top' : 0,
-      'left' : 0,
-      'width' : 600
+      height : 400,
+      overflow : 'hidden',
+      position : 'absolute',
+      top : 0,
+      left : 0,
+      width : 600
     })
     .appendTo('body')
 
