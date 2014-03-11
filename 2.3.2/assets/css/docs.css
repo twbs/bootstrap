@@ -900,6 +900,13 @@ form.bs-docs-example {
   text-align: left !important;
 }
 
+/* Ads on homepage */
+.masthead .carbonad {
+  position: static;
+  margin: 30px auto 0 !important;
+  text-align: left !important;
+}
+
 
 /* Responsive
 -------------------------------------------------- */
