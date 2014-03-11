@@ -31,7 +31,7 @@
     max-width: 100%;
   }
 
-  .screen-sm({
+  @media screen and (min-width: @screen-sm-min) {
     padding-top:    (@jumbotron-padding * 1.6);
     padding-bottom: (@jumbotron-padding * 1.6);
 
@@ -44,5 +44,5 @@
     .h1 {
       font-size: (@font-size-base * 4.5);
     }
-  });
+  }
 }
