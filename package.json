@@ -32,7 +32,6 @@
   "devDependencies": {
     "btoa": "~1.1.1",
     "canonical-json": "~0.0.4",
-    "css-flip": "~0.3.0",
     "grunt": "~0.4.3",
     "grunt-autoprefixer": "~0.7.2",
     "grunt-banner": "~0.2.1",
