@@ -2170,36 +2170,36 @@ body { padding-bottom: 70px; }
   </div>
 
   <div class="bs-example">
-    <div class="alert alert-success">
+    <div class="alert alert-success" role="alert">
       <strong>Well done!</strong> You successfully read this important alert message.
     </div>
-    <div class="alert alert-info">
+    <div class="alert alert-info" role="alert">
       <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
     </div>
-    <div class="alert alert-warning">
+    <div class="alert alert-warning" role="alert">
       <strong>Warning!</strong> Better check yourself, you're not looking too good.
     </div>
-    <div class="alert alert-danger">
+    <div class="alert alert-danger" role="alert">
       <strong>Oh snap!</strong> Change a few things up and try submitting again.
     </div>
   </div>
 {% highlight html %}
-<div class="alert alert-success">...</div>
-<div class="alert alert-info">...</div>
-<div class="alert alert-warning">...</div>
-<div class="alert alert-danger">...</div>
+<div class="alert alert-success" role="alert">...</div>
+<div class="alert alert-info" role="alert">...</div>
+<div class="alert alert-warning" role="alert">...</div>
+<div class="alert alert-danger" role="alert">...</div>
 {% endhighlight %}
 
   <h2 id="alerts-dismissable">Dismissable alerts</h2>
   <p>Build on any alert by adding an optional <code>.alert-dismissable</code> and close button.</p>
   <div class="bs-example">
-    <div class="alert alert-warning alert-dismissable">
+    <div class="alert alert-warning alert-dismissable" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <strong>Warning!</strong> Better check yourself, you're not looking too good.
     </div>
   </div>
 {% highlight html %}
-<div class="alert alert-warning alert-dismissable">
+<div class="alert alert-warning alert-dismissable" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
   <strong>Warning!</strong> Better check yourself, you're not looking too good.
 </div>
@@ -2213,30 +2213,30 @@ body { padding-bottom: 70px; }
   <h2 id="alerts-links">Links in alerts</h2>
   <p>Use the <code>.alert-link</code> utility class to quickly provide matching colored links within any alert.</p>
   <div class="bs-example">
-    <div class="alert alert-success">
+    <div class="alert alert-success" role="alert">
       <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
     </div>
-    <div class="alert alert-info">
+    <div class="alert alert-info" role="alert">
       <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
     </div>
-    <div class="alert alert-warning">
+    <div class="alert alert-warning" role="alert">
       <strong>Warning!</strong> Better check yourself, you're <a href="#" class="alert-link">not looking too good</a>.
     </div>
-    <div class="alert alert-danger">
+    <div class="alert alert-danger" role="alert">
       <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
     </div>
   </div>
 {% highlight html %}
-<div class="alert alert-success">
+<div class="alert alert-success" role="alert">
   <a href="#" class="alert-link">...</a>
 </div>
-<div class="alert alert-info">
+<div class="alert alert-info" role="alert">
   <a href="#" class="alert-link">...</a>
 </div>
-<div class="alert alert-warning">
+<div class="alert alert-warning" role="alert">
   <a href="#" class="alert-link">...</a>
 </div>
-<div class="alert alert-danger">
+<div class="alert alert-danger" role="alert">
   <a href="#" class="alert-link">...</a>
 </div>
 {% endhighlight %}
