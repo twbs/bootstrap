@@ -154,7 +154,7 @@
   }
 }
 .comment-item-footer{
-  font-size:@font-size-xsmall;
+  font-size:@font-size-small;
   color:#666;
   overflow: auto;
 }
@@ -226,17 +226,17 @@
   background-color: rgba(0, 0, 0, 0);
   color: #999;
   padding: 0 10px;
-  float: left;
-  border-right: 1px solid #EEE;
+  float: right;
   outline:none;
   &:hover{
     color:@brand-primary;
     text-decoration: underline;
   }
-}
-.comment-item-footer-btn-last{
-  border-right:0;
+  &.comment-reply-button{
+    color: @brand-primary;
+    margin-right: @padding-large-horizontal *2;
+  }
 }
 .comment-item-footer-btn-first{
-  padding-left:0;
+  padding-right:0;
 }
