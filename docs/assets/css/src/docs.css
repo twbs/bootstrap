@@ -55,7 +55,7 @@ body {
   background-color: transparent;
   border-color: #563d7c;
 }
-.btn-outline:hover,
+.bs-no-touch .btn-outline:hover,
 .btn-outline:focus,
 .btn-outline:active {
   color: #fff;
@@ -69,7 +69,7 @@ body {
   background-color: transparent;
   border-color: #cdbfe3;
 }
-.btn-outline-inverse:hover,
+.bs-no-touch .btn-outline-inverse:hover,
 .btn-outline-inverse:focus,
 .btn-outline-inverse:active {
   color: #563d7c;
@@ -129,9 +129,9 @@ body {
   font-weight: 500;
   color: #563d7c;
 }
-.bs-docs-nav .navbar-nav > li > a:hover,
+.bs-no-touch .bs-docs-nav .navbar-nav > li > a:hover,
 .bs-docs-nav .navbar-nav > .active > a,
-.bs-docs-nav .navbar-nav > .active > a:hover {
+.bs-no-touch .bs-docs-nav .navbar-nav > .active > a:hover {
   color: #463265;
   background-color: #f9f9f9;
 }
@@ -141,7 +141,7 @@ body {
 .bs-docs-nav .navbar-header .navbar-toggle {
   border-color: #fff;
 }
-.bs-docs-nav .navbar-header .navbar-toggle:hover,
+.bs-no-touch .bs-docs-nav .navbar-header .navbar-toggle:hover,
 .bs-docs-nav .navbar-header .navbar-toggle:focus {
   background-color: #f9f9f9;
   border-color: #f9f9f9;
@@ -458,7 +458,7 @@ body {
   margin-bottom: 20px;
   color: #333;
 }
-.bs-docs-featurette-img:hover {
+.bs-no-touch .bs-docs-featurette-img:hover {
   color: #428bca;
   text-decoration: none;
 }
@@ -541,7 +541,7 @@ body {
   font-weight: 500;
   color: #999;
 }
-.bs-docs-sidebar .nav > li > a:hover,
+.bs-no-touch .bs-docs-sidebar .nav > li > a:hover,
 .bs-docs-sidebar .nav > li > a:focus {
   padding-left: 19px;
   color: #563d7c;
@@ -550,7 +550,7 @@ body {
   border-left: 1px solid #563d7c;
 }
 .bs-docs-sidebar .nav > .active > a,
-.bs-docs-sidebar .nav > .active:hover > a,
+.bs-no-touch .bs-docs-sidebar .nav > .active:hover > a,
 .bs-docs-sidebar .nav > .active:focus > a {
   padding-left: 18px;
   font-weight: bold;
@@ -571,12 +571,12 @@ body {
   font-size: 12px;
   font-weight: normal;
 }
-.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-no-touch .bs-docs-sidebar .nav .nav > li > a:hover,
 .bs-docs-sidebar .nav .nav > li > a:focus {
   padding-left: 29px;
 }
 .bs-docs-sidebar .nav .nav > .active > a,
-.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-no-touch .bs-docs-sidebar .nav .nav > .active:hover > a,
 .bs-docs-sidebar .nav .nav > .active:focus > a {
   padding-left: 28px;
   font-weight: 500;
@@ -592,7 +592,7 @@ body {
   font-weight: 500;
   color: #999;
 }
-.back-to-top:hover {
+.bs-no-touch .back-to-top:hover {
   color: #563d7c;
   text-decoration: none;
 }
@@ -786,7 +786,7 @@ h1[id] {
   line-height: 32px;
   color: #555;
 }
-.bs-team .team-member:hover {
+.bs-no-touch .bs-team .team-member:hover {
   color: #333;
   text-decoration: none;
 }
@@ -1244,7 +1244,7 @@ h1[id] {
   text-align: center;
   word-wrap: break-word; /* Help out IE10+ with class names */
 }
-.bs-glyphicons li:hover {
+.bs-no-touch .bs-glyphicons li:hover {
   color: #fff;
   background-color: #563d7c;
 }
