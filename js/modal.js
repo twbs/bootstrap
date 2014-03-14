@@ -272,8 +272,18 @@
 
   $(document)
     .on('show.bs.modal', '.modal', function (e, scrollbarWidth) {
-      $(document.body).css({ 'padding-right': scrollbarWidth + 'px' }).addClass('modal-open')
+      $(document.body)
+        .css({ 'padding-right': scrollbarWidth + 'px' })
+        .addClass('modal-open')
+        .children('.navbar-fixed-top, .navbar-fixed-bottom')
+        .css({ 'right': scrollbarWidth + 'px' })
     })
-    .on('hidden.bs.modal', '.modal', function () { $(document.body).removeClass('modal-open').css({ 'padding-right': '' }) })
+    .on('hidden.bs.modal', '.modal', function () {
+      $(document.body)
+        .removeClass('modal-open')
+        .css({ 'padding-right': '' })
+        .children('.navbar-fixed-top, .navbar-fixed-bottom')
+        .css({ 'right': '' })
+    })
 
 }(jQuery);
