@@ -33,41 +33,40 @@ $(function () {
     ok($topbar.find('.active', true))
   })
 
-      test("should only switch active class on current target", function () {
-        var
-          sectionHTML = '<div id="root" class="active">'
-          + '<div class="topbar">'
-          + '<div class="topbar-inner">'
-          + '<div class="container" id="ss-target">'
-          + '<ul class="nav">'
-          + '<li><a href="#masthead">Overview</a></li>'
-          + '<li><a href="#detail">Detail</a></li>'
-          + '</ul>'
-          + '</div>'
-          + '</div>'
-          + '</div>'
-          + '<div id="scrollspy-example" style="height: 100px; overflow: auto;">'
-          + '<div style="height: 200px;">'
-          + '<h4 id="masthead">Overview</h4>'
-          + '<p style="height: 200px">'
-          + 'Ad leggings keytar, brunch id art party dolor labore.'
-          + '</p>'
-          + '</div>'
-          + '<div style="height: 200px;">'
-          + '<h4 id="detail">Detail</h4>'
-          + '<p style="height: 200px">'
-          + 'Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard.'
-          + '</p>'
-          + '</div>'
-          + '</div>'
-          + '</div>'
-          , $section = $(sectionHTML).appendTo("#qunit-fixture")        
-          , $scrollSpy = $section
-            .show()
-            .find("#scrollspy-example")
-            .scrollspy({target: "#ss-target"})
+  test('should only switch active class on current target', function () {
+    var sectionHTML = '<div id="root" class="active">' +
+        '<div class="topbar">' +
+        '<div class="topbar-inner">' +
+        '<div class="container" id="ss-target">' +
+        '<ul class="nav">' +
+        '<li><a href="#masthead">Overview</a></li>' +
+        '<li><a href="#detail">Detail</a></li>' +
+        '</ul>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '<div id="scrollspy-example" style="height: 100px; overflow: auto;">' +
+        '<div style="height: 200px;">' +
+        '<h4 id="masthead">Overview</h4>' +
+        '<p style="height: 200px">' +
+        'Ad leggings keytar, brunch id art party dolor labore.' +
+        '</p>' +
+        '</div>' +
+        '<div style="height: 200px;">' +
+        '<h4 id="detail">Detail</h4>' +
+        '<p style="height: 200px">' +
+        'Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard.' +
+        '</p>' +
+        '</div>' +
+        '</div>' +
+        '</div>',
+        $section = $(sectionHTML).appendTo('#qunit-fixture'),
+        $scrollSpy = $section
+        .show()
+        .find('#scrollspy-example')
+        .scrollspy({target: '#ss-target'})
 
-        $scrollSpy.scrollTop(350);
-        ok($section.hasClass("active"), "Active class still on root node")
-      })
+    $scrollSpy.scrollTop(350);
+    ok($section.hasClass('active'), 'Active class still on root node')
+  })
 })
