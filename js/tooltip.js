@@ -34,7 +34,8 @@
     title: '',
     delay: 0,
     html: false,
-    container: false
+    container: false,
+    hideOthers: false
   }
 
   Tooltip.prototype.init = function (type, element, options) {
@@ -133,7 +134,23 @@
 
       var $tip = this.tip()
 
+      // hideOthers option: if necessary, before starting, hide all other tooltip/popovers
+      if (this.options.hideOthers) {
+        $('.'+this.type+'-open').each(function () {
+          if (that.$element[0] !== $(this)) {
+            var data = $(this).data('bs.'+that.type)
+            if (data != undefined) data.hide()
+          }
+        })
+      }
+
       this.setContent()
+
+      // add tooltip/popover-open class to identify buttons with open tooltip/popover (to use with hideOthers option)
+	  $(this.$element).addClass(this.type+'-open')
+	  $(this.$element).on('hidden.bs.'+this.type, function () {
+        $(this).removeClass(that.type+'-open')
+	  })
 
       if (this.options.animation) $tip.addClass('fade')
 
