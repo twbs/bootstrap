@@ -95,6 +95,7 @@
   }
 
   function getParent($this) {
+    if($this.attr('data-parent')) return $($this.attr('data-parent'));
     var selector = $this.attr('data-target')
 
     if (!selector) {
