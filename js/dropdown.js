@@ -7,7 +7,15 @@
  * ======================================================================== */
 
 
-+function ($) {
+(function (factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['jquery'], factory)
+  } else if (typeof exports === 'object') {
+    factory(require('jquery'))
+  } else {
+    factory(this.jQuery)
+  }
+}(function ($) {
   'use strict';
 
   // DROPDOWN CLASS DEFINITION
@@ -144,4 +152,4 @@
     .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
     .on('keydown.bs.dropdown.data-api', toggle + ', [role="menu"], [role="listbox"]', Dropdown.prototype.keydown)
 
-}(jQuery);
+}));

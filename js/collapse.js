@@ -7,7 +7,17 @@
  * ======================================================================== */
 
 
-+function ($) {
+(function (factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['jquery', './transition'], factory)
+  } else if (typeof exports === 'object') {
+    var jQuery = require('jquery')
+    require('./transition')
+    factory(jQuery)
+  } else {
+    factory(this.jQuery)
+  }
+}(function ($) {
   'use strict';
 
   // COLLAPSE PUBLIC CLASS DEFINITION
@@ -169,4 +179,4 @@
     $target.collapse(option)
   })
 
-}(jQuery);
+}));
