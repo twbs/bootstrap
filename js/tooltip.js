@@ -69,7 +69,7 @@
     var $tip = this.tip()
     if (this.options.autoHide) {
       $(document).click(function (e) {
-        if ($tip.has(e.target).length == 0 && that.$element[0] !== e.target) {
+        if ($tip.has(e.target).length === 0 && that.$element[0] !== e.target) {
           that.hide()
         }
       })
