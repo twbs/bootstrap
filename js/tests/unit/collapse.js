@@ -1,4 +1,5 @@
 $(function () {
+  'use strict';
 
   module('collapse plugin')
 
@@ -7,11 +8,11 @@ $(function () {
   })
 
   module('collapse', {
-    setup: function() {
+    setup: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapCollapse = $.fn.collapse.noConflict()
     },
-    teardown: function() {
+    teardown: function () {
       $.fn.collapse = $.fn.bootstrapCollapse
       delete $.fn.bootstrapCollapse
     }

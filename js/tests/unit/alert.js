@@ -1,4 +1,5 @@
 $(function () {
+  'use strict';
 
   module('alert plugin')
 
@@ -7,11 +8,11 @@ $(function () {
   })
 
   module('alert', {
-    setup: function() {
+    setup: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapAlert = $.fn.alert.noConflict()
     },
-    teardown: function() {
+    teardown: function () {
       $.fn.alert = $.fn.bootstrapAlert
       delete $.fn.bootstrapAlert
     }
@@ -29,8 +30,8 @@ $(function () {
     var alertHTML = '<div class="alert-message warning fade in">' +
         '<a class="close" href="#" data-dismiss="alert">×</a>' +
         '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>' +
-        '</div>',
-      alert = $(alertHTML).bootstrapAlert()
+        '</div>'
+    var alert = $(alertHTML).bootstrapAlert()
 
     alert.find('.close').click()
 
@@ -43,8 +44,8 @@ $(function () {
     var alertHTML = '<div class="alert-message warning fade in">' +
         '<a class="close" href="#" data-dismiss="alert">×</a>' +
         '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>' +
-        '</div>',
-      alert = $(alertHTML).appendTo('#qunit-fixture').bootstrapAlert()
+        '</div>'
+    var alert = $(alertHTML).appendTo('#qunit-fixture').bootstrapAlert()
 
     ok($('#qunit-fixture').find('.alert-message').length, 'element added to dom')
 

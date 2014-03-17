@@ -1,4 +1,5 @@
 $(function () {
+  'use strict';
 
   module('affix plugin')
 
@@ -7,11 +8,11 @@ $(function () {
   })
 
   module('affix', {
-    setup: function() {
+    setup: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapAffix = $.fn.affix.noConflict()
     },
-    teardown: function() {
+    teardown: function () {
       $.fn.affix = $.fn.bootstrapAffix
       delete $.fn.bootstrapAffix
     }
@@ -45,7 +46,7 @@ $(function () {
       .on('affix.bs.affix', function () {
         ok(true, 'affix event triggered')
       }).on('affixed.bs.affix', function () {
-        ok(true,'affixed event triggered')
+        ok(true, 'affixed event triggered')
         $('#affixTarget').remove()
         $('#affixAfter').remove()
         start()
@@ -53,7 +54,7 @@ $(function () {
 
     setTimeout(function () {
       window.scrollTo(0, document.body.scrollHeight)
-      setTimeout(function () { window.scroll(0,0) }, 0)
-    },0)
+      setTimeout(function () { window.scroll(0, 0) }, 0)
+    }, 0)
   })
 })

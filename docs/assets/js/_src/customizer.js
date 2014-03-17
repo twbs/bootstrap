@@ -6,7 +6,10 @@
  * details, see http://creativecommons.org/licenses/by/3.0/.
  */
 
+/* global JSZip, less, saveAs, UglifyJS, __js, __less, __fonts */
+
 window.onload = function () { // wait for load in a dumb way because B-0
+  'use strict';
   var cw = '/*!\n' +
            ' * Bootstrap v3.1.1 (http://getbootstrap.com)\n' +
            ' * Copyright 2011-2014 Twitter, Inc.\n' +
@@ -159,7 +162,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     if (fonts) {
       var fontsFolder = zip.folder('fonts')
       for (var fontsFileName in fonts) {
-        fontsFolder.file(fontsFileName, fonts[fontsFileName], {base64: true})
+        fontsFolder.file(fontsFileName, fonts[fontsFileName], { base64: true })
       }
     }
 
@@ -217,7 +220,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     var lessSource = __less[lessFilename]
 
     var lessFilenames = includedLessFilenames(lessFilename)
-    $.each(lessFilenames, function(index, filename) {
+    $.each(lessFilenames, function (index, filename) {
       var fileInclude = lessFileIncludes[filename]
 
       // Files not explicitly unchecked are compiled into the final stylesheet.
@@ -254,7 +257,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
   function generateCSS(preamble) {
     var oneChecked = false
     var lessFileIncludes = {}
-    $('#less-section input').each(function() {
+    $('#less-section input').each(function () {
       var $this = $(this)
       var checked = $this.is(':checked')
       lessFileIncludes[$this.val()] = checked
@@ -405,7 +408,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     var url = window.webkitURL || window.URL // Safari 6 uses "webkitURL".
     var svg = new Blob(
       ['<svg xmlns=\'http://www.w3.org/2000/svg\'></svg>'],
-      {type: 'image/svg+xml;charset=utf-8'}
+      { type: 'image/svg+xml;charset=utf-8' }
     )
     var objectUrl = url.createObjectURL(svg);
     if (/^blob:/.exec(objectUrl) === null) {
