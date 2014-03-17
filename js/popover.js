@@ -44,9 +44,15 @@
     var content = this.getContent()
 
     $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
-    $tip.find('.popover-content')[ // we use append for html objects to maintain js events
-      this.options.html ? (typeof content == 'string' ? 'html' : 'append') : 'text'
-    ](content)
+    if (this.options.html && typeof content != 'string') {
+        // we use append for html objects to maintain js events
+        // empty is mandatory or else we could endup with duplicates
+        $tip.find('.popover-content').empty().append(content)
+    } else {
+        $tip.find('.popover-content')[
+      this.options.html ? 'html' : 'text'
+        ](content)
+    }
 
     $tip.removeClass('fade top bottom left right in')
 
