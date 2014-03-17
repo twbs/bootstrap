@@ -90,6 +90,7 @@ module.exports = function (grunt) {
       bootstrap: {
         src: [
           'js/transition.js',
+          'js/touch-detection.js',
           'js/alert.js',
           'js/button.js',
           'js/carousel.js',
