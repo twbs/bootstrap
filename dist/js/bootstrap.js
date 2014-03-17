@@ -795,11 +795,12 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
   // ======================
 
   var Modal = function (element, options) {
-    this.options   = options
-    this.$body     = $(document.body)
-    this.$element  = $(element)
-    this.$backdrop =
-    this.isShown   = null
+    this.options        = options
+    this.$body          = $(document.body)
+    this.$element       = $(element)
+    this.$backdrop      =
+    this.isShown        = null
+    this.scrollbarWidth = 0
 
     if (this.options.remote) {
       this.$element
@@ -830,6 +831,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 
     this.isShown = true
 
+    this.checkScrollbar()
     this.$body.addClass('modal-open')
 
     this.setScrollbar()
@@ -976,11 +978,14 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     }
   }
 
+  Modal.prototype.checkScrollbar = function () {
+    if (document.body.clientWidth >= window.innerWidth) return
+    this.scrollbarWidth = this.scrollbarWidth || this.measureScrollbar()
+  }
+
   Modal.prototype.setScrollbar =  function () {
-    if (document.body.clientHeight <= window.innerHeight) return
-    var scrollbarWidth = this.measureScrollbar()
-    var bodyPad        = parseInt(this.$body.css('padding-right') || 0)
-    if (scrollbarWidth) this.$body.css('padding-right', bodyPad + scrollbarWidth)
+    var bodyPad = parseInt(this.$body.css('padding-right') || 0)
+    if (this.scrollbarWidth) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
   }
 
   Modal.prototype.resetScrollbar = function () {
