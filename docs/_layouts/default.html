@@ -4,28 +4,26 @@
     <!-- Meta, title, CSS, favicons, etc. -->
     {% include header.html %}
   </head>
-  <body>
+  <body class="bs-docs">
     <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-    <!-- Docs master nav -->
-    {% include nav/main.html %}
+    {% include nav/docs.html %}
 
-    <!-- Docs page layout -->
     <div class="bs-docs-header" id="content">
-      <div class="container">
+      <div class="bs-docs-container">
         <h1>{{ page.title }}</h1>
         <p>{{ page.lead }}</p>
         {% include ads.html %}
       </div>
     </div>
 
-    <div class="container bs-docs-container">
+    <div class="bs-docs-container">
 
-      <div class="row">
-        <div class="col-md-9" role="main">
+      <!-- <div class="row"> -->
+        <!-- <div class="col-md-9" role="main"> -->
           {{ content }}
-        </div>
-        <div class="col-md-3">
+        <!-- </div> -->
+<!--         <div class="col-md-3">
           <div class="bs-docs-sidebar hidden-print" role="complementary">
             <ul class="nav bs-docs-sidenav">
               {% if page.slug == "getting-started" %}
@@ -49,7 +47,8 @@
             </a>
           </div>
         </div>
-      </div>
+ -->
+      <!-- </div> -->
 
     </div>
 

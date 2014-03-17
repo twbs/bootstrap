@@ -116,9 +116,10 @@ body {
  * Turn the `.navbar` at the top of the docs purple.
  */
 
+
 .bs-docs-nav {
   margin-bottom: 0;
-  background-color: #fff;
+  background-color: #563d7c;
   border-bottom: 0;
 }
 .bs-home-nav .bs-nav-b {
@@ -127,24 +128,27 @@ body {
 .bs-docs-nav .navbar-brand,
 .bs-docs-nav .navbar-nav > li > a {
   font-weight: 500;
-  color: #563d7c;
+  color: #cdbfe3;
+}
+.bs-docs-nav .navbar-brand {
+  color: #fff;
 }
 .bs-docs-nav .navbar-nav > li > a:hover,
 .bs-docs-nav .navbar-nav > .active > a,
 .bs-docs-nav .navbar-nav > .active > a:hover {
-  color: #463265;
-  background-color: #f9f9f9;
-}
-.bs-docs-nav .navbar-toggle .icon-bar {
+  color: #fff;
   background-color: #563d7c;
 }
+.bs-docs-nav .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
 .bs-docs-nav .navbar-header .navbar-toggle {
-  border-color: #fff;
+  border-color: #322f38;
 }
 .bs-docs-nav .navbar-header .navbar-toggle:hover,
 .bs-docs-nav .navbar-header .navbar-toggle:focus {
-  background-color: #f9f9f9;
-  border-color: #f9f9f9;
+  background-color: #29262f;
+  border-color: #29262f;
 }
 
 
@@ -155,8 +159,6 @@ body {
  */
 
 .bs-docs-footer {
-  padding-top: 40px;
-  padding-bottom: 40px;
   margin-top: 100px;
   color: #777;
   text-align: center;
@@ -178,6 +180,9 @@ body {
 @media (min-width: 768px) {
   .bs-docs-footer p {
     margin-bottom: 0;
+  }
+  .bs-docs .bs-docs-footer {
+    text-align: left;
   }
 }
 
@@ -215,6 +220,13 @@ body {
   border: 0;
 }
 
+@media (min-width: 768px) {
+  .bs-docs .bs-docs-social {
+    margin-left: -8px;
+    text-align: left;
+  }
+}
+
 
 /*
  * Homepage
@@ -222,9 +234,8 @@ body {
  * Tweaks to the custom homepage and the masthead (main jumbotron).
  */
 
-/* Share masthead with page headers */
-.bs-docs-masthead,
-.bs-docs-header {
+/* Masthead (headings and download button) */
+.bs-docs-masthead {
   position: relative;
   padding: 30px 15px;
   color: #cdbfe3;
@@ -235,11 +246,9 @@ body {
   background-image: -webkit-linear-gradient(top, #563d7c 0%, #6f5499 100%);
   background-image:      -o-linear-gradient(top, #563d7c 0%, #6f5499 100%);
   background-image:         linear-gradient(to bottom, #563d7c 0%, #6f5499 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#563d7c', endColorstr='#6F5499', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#563d7c', endColorstr='#6f5499', GradientType=0);
   background-repeat: repeat-x;
 }
-
- /* Masthead (headings and download button) */
 .bs-docs-masthead .bs-docs-booticon {
   margin: 0 auto 30px;
 }
@@ -299,17 +308,24 @@ body {
 
 /* Page headers */
 .bs-docs-header {
+  padding: 30px 0;
   margin-bottom: 40px;
   font-size: 20px;
+  background-color: #fafafa;
+  border-bottom: 1px solid #eee;
+}
+.bs-docs-header .bs-docs-container {
+  max-width: none;
 }
 .bs-docs-header h1 {
   margin-top: 0;
-  color: #fff;
+  color: #563d7c;
 }
 .bs-docs-header p {
   margin-bottom: 0;
   font-weight: 300;
   line-height: 1.4;
+  color: #777;
 }
 .bs-docs-header .container {
   position: relative;
@@ -317,8 +333,6 @@ body {
 
 @media (min-width: 768px) {
   .bs-docs-header {
-    padding-top: 60px;
-    padding-bottom: 60px;
     font-size: 24px;
     text-align: left;
   }
@@ -382,6 +396,10 @@ body {
 .carbonad #azcarbon > img {
   display: none; /* hide what I assume are tracking images */
 }
+.bs-docs-header .carbonad {
+  color: #cdbfe3;
+  background-color: #866ab3 !important;
+}
 
 @media (min-width: 480px) {
   .carbonad {
@@ -405,8 +423,8 @@ body {
 @media (min-width: 992px) {
   .carbonad {
     position: absolute;
-    top: 0;
-    right: 15px; /* 15px instead of 0 since box-sizing */
+    top: 30px;
+    right: 60px; /* 15px instead of 0 since box-sizing */
     width: 330px !important;
     padding: 15px !important;
     margin: 0 !important;
@@ -517,121 +535,123 @@ body {
  * sections of docs content.
  */
 
-/* By default it's not affixed in mobile views, so undo that */
-.bs-docs-sidebar.affix {
-  position: static;
+.bs-docs {
+  padding-left: 240px;
+}
+.bs-docs-container {
+  position: relative;
+  max-width: 940px;
+  padding: 15px;
 }
 @media (min-width: 768px) {
-  .bs-docs-sidebar {
-    padding-left: 20px;
+  .bs-docs-container {
+    padding: 30px;
+  }
+}
+@media (min-width: 992px) {
+  .bs-docs-container {
+    padding: 30px 60px;
   }
 }
 
-/* First level of nav */
-.bs-docs-sidenav {
-  margin-top: 20px;
-  margin-bottom: 20px;
+.bs-docs-sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 240px;
+  padding-bottom: 30px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #322f38;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#29262f), to(#322f38));
+  background-image: -webkit-linear-gradient(top, #29262f 0%, #322f38 100%);
+  background-image:      -o-linear-gradient(top, #29262f 0%, #322f38 100%);
+  background-image:         linear-gradient(to bottom, #29262f 0%, #322f38 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#29262f', endColorstr='#322f38', GradientType=0);
+  background-repeat: repeat-x;
 }
 
-/* All levels of nav */
-.bs-docs-sidebar .nav > li > a {
+.bs-docs-sidebar-brand {
+  display: block;
+  padding: 20px;
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  color: #fff;
+  background-color: #6f4f9f;
+  border-bottom: 3px solid #563d7c;
+}
+.bs-docs-sidebar-brand:hover,
+.bs-docs-sidebar-brand:focus {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+.bs-docs-sidenav {
+  display: none;
+}
+
+.bs-docs-toc-link {
   display: block;
   padding: 4px 20px;
-  font-size: 13px;
-  font-weight: 500;
-  color: #999;
+  font-size: 16px;
+  color: #706e74;
 }
-.bs-docs-sidebar .nav > li > a:hover,
-.bs-docs-sidebar .nav > li > a:focus {
-  padding-left: 19px;
-  color: #563d7c;
+.bs-docs-toc-link:hover,
+.bs-docs-toc-link:focus {
+  color: #fff;
+  text-decoration: none;
+}
+.active > .bs-docs-toc-link {
+  font-weight: 500;
+  color: #fff;
+}
+.active > .bs-docs-sidenav {
+  display: block;
+}
+
+.bs-docs-toc-item.active {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+
+/* All levels of nav */
+.bs-docs-toc .nav > li > a {
+  display: block;
+  padding: 4px 20px;
+  font-size: 14px;
+  color: #99979c;
+}
+.bs-docs-toc .nav > li > a:hover,
+.bs-docs-toc .nav > li > a:focus {
+  color: #fff;
   text-decoration: none;
   background-color: transparent;
-  border-left: 1px solid #563d7c;
 }
-.bs-docs-sidebar .nav > .active > a,
-.bs-docs-sidebar .nav > .active:hover > a,
-.bs-docs-sidebar .nav > .active:focus > a {
-  padding-left: 18px;
-  font-weight: bold;
-  color: #563d7c;
+.bs-docs-toc .nav > .active > a,
+.bs-docs-toc .nav > .active:hover > a,
+.bs-docs-toc .nav > .active:focus > a {
+  font-weight: 500;
+  color: #fff;
   background-color: transparent;
-  border-left: 2px solid #563d7c;
 }
 
 /* Nav: second level (shown on .active) */
-.bs-docs-sidebar .nav .nav {
-  display: none; /* Hide by default, but at >768px, show it */
-  padding-bottom: 10px;
-}
-.bs-docs-sidebar .nav .nav > li > a {
-  padding-top: 1px;
-  padding-bottom: 1px;
-  padding-left: 30px;
-  font-size: 12px;
-  font-weight: normal;
-}
-.bs-docs-sidebar .nav .nav > li > a:hover,
-.bs-docs-sidebar .nav .nav > li > a:focus {
-  padding-left: 29px;
-}
-.bs-docs-sidebar .nav .nav > .active > a,
-.bs-docs-sidebar .nav .nav > .active:hover > a,
-.bs-docs-sidebar .nav .nav > .active:focus > a {
-  padding-left: 28px;
-  font-weight: 500;
-}
-
-/* Back to top (hidden on mobile) */
-.back-to-top {
+.bs-docs-toc .nav .nav {
   display: none;
-  padding: 4px 10px;
-  margin-top: 10px;
-  margin-left: 10px;
-  font-size: 12px;
-  font-weight: 500;
-  color: #999;
 }
-.back-to-top:hover {
-  color: #563d7c;
-  text-decoration: none;
+.bs-docs-toc .nav > .active > .nav {
+  display: block;
 }
-
-@media (min-width: 768px) {
-  .back-to-top {
-    display: block;
-  }
-}
-
-/* Show and affix the side nav when space allows it */
-@media (min-width: 992px) {
-  .bs-docs-sidebar .nav > .active > ul {
-    display: block;
-  }
-  /* Widen the fixed sidebar */
-  .bs-docs-sidebar.affix,
-  .bs-docs-sidebar.affix-bottom {
-    width: 213px;
-  }
-  .bs-docs-sidebar.affix {
-    position: fixed; /* Undo the static from mobile first approach */
-    top: 20px;
-  }
-  .bs-docs-sidebar.affix-bottom {
-    position: absolute; /* Undo the static from mobile first approach */
-  }
-  .bs-docs-sidebar.affix-bottom .bs-docs-sidenav,
-  .bs-docs-sidebar.affix .bs-docs-sidenav {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-@media (min-width: 1200px) {
-  /* Widen the fixed sidebar again */
-  .bs-docs-sidebar.affix-bottom,
-  .bs-docs-sidebar.affix {
-    width: 263px;
-  }
+.bs-docs-toc .nav .nav > li > a {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 30px;
+  font-size: 13px;
 }
 
 
