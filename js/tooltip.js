@@ -235,9 +235,20 @@
     if (/bottom|top/.test(placement)) {
       var delta = 0
 
+      // check to see if the popover's left half is cut off
       if (offset.left < 0) {
         delta       = offset.left * -2
         offset.left = 0
+
+        $tip.offset(offset)
+
+        actualWidth  = $tip[0].offsetWidth
+        actualHeight = $tip[0].offsetHeight
+      }
+      // check to see if the popover's right half is cut off
+      else if (offset.left > $(window).width()-actualWidth) {
+        delta       = ($(window).width()-actualWidth-offset.left)*2
+        offset.left = $(window).width()-actualWidth
 
         $tip.offset(offset)
 
@@ -254,7 +265,14 @@
   }
 
   Tooltip.prototype.replaceArrow = function (delta, dimension, position) {
-    this.arrow().css(position, delta ? (50 * (1 - delta / dimension) + '%') : '')
+    // avoid placing arrow at 0%
+    if (delta > dimension) this.arrow().css(position, "5%")
+    // avoid placing arrow at 100%
+    else if (delta < (dimension/2)*-1) this.arrow().css(position, "95%")
+    // if we shifted the tip to the right...
+    else if (delta > 0) this.arrow().css(position, delta ? (50 * (1 - delta / dimension) + "%") : '')
+    // if we shifted the tip to the left...
+    else if (delta < 0) this.arrow().css(position, delta ? (100 - (50 * (1 - Math.abs(delta / dimension))) + "%") : '')
   }
 
   Tooltip.prototype.setContent = function () {
