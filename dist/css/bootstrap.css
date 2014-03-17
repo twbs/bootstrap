@@ -2371,14 +2371,17 @@ textarea.form-control {
 input[type="search"] {
   -webkit-appearance: none;
 }
-input[type="date"] {
+input[type="date"],
+input[type="datetime-local"] {
   line-height: 34px;
   line-height: 1.42857143 \0;
 }
-input[type="date"].input-sm {
+input[type="date"].input-sm,
+input[type="datetime-local"].input-sm {
   line-height: 30px;
 }
-input[type="date"].input-lg {
+input[type="date"].input-lg,
+input[type="datetime-local"].input-lg {
   line-height: 46px;
 }
 .form-group {
