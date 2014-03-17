@@ -9,6 +9,7 @@
  * details, see http://creativecommons.org/licenses/by/3.0/.
  */
 
+/* global ZeroClipboard */
 
 !function ($) {
   'use strict';
@@ -108,7 +109,7 @@
     })
 
     // Insert copy to clipboard button before .highlight or .bs-example
-    $('.highlight').each(function() {
+    $('.highlight').each(function () {
       var highlight = $(this)
       var previous = highlight.prev()
       var btnHtml = '<div class="zero-clipboard"><span class="btn-clipboard">Copy</span></div>'
@@ -123,7 +124,7 @@
     var htmlBridge = $('#global-zeroclipboard-html-bridge')
 
     // Handlers for ZeroClipboard
-    zeroClipboard.on('load', function(client) {
+    zeroClipboard.on('load', function () {
       htmlBridge
         .data('placement', 'top')
         .attr('title', 'Copy to clipboard')
@@ -131,13 +132,13 @@
     })
 
     // Copy to clipboard
-    zeroClipboard.on('dataRequested', function(client) {
+    zeroClipboard.on('dataRequested', function (client) {
       var highlight = $(this).parent().nextAll('.highlight').first()
       client.setText(highlight.text())
     })
 
     // Notify copy success and reset tooltip title
-    zeroClipboard.on('complete', function(client) {
+    zeroClipboard.on('complete', function () {
       htmlBridge
         .attr('title', 'Copied!')
         .tooltip('fixTitle')
@@ -147,7 +148,7 @@
     })
 
     // Notify copy failure
-    zeroClipboard.on('noflash wrongflash', function(client) {
+    zeroClipboard.on('noflash wrongflash', function () {
       htmlBridge
         .attr('title', 'Flash required')
         .tooltip('fixTitle')
