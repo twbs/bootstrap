@@ -53,6 +53,9 @@ module.exports = function (grunt) {
         src: 'js/*.js'
       },
       test: {
+        options: {
+          jshintrc: 'js/tests/unit/.jshintrc'
+        },
         src: 'js/tests/unit/*.js'
       },
       assets: {
@@ -65,10 +68,6 @@ module.exports = function (grunt) {
         config: 'js/.jscsrc'
       },
       grunt: {
-        options: {
-          requireCamelCaseOrUpperCaseIdentifiers: null,
-          requireParenthesesAroundIIFE: true
-        },
         src: '<%= jshint.grunt.src %>'
       },
       src: {
