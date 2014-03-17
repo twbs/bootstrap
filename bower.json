@@ -26,7 +26,8 @@
     "composer.json",
     "CONTRIBUTING.md",
     "docs",
-    "js/tests"
+    "js/tests",
+    "test-infra"
   ],
   "dependencies": {
     "jquery": ">= 1.9.0"
