@@ -396,9 +396,16 @@ body {
 .carbonad #azcarbon > img {
   display: none; /* hide what I assume are tracking images */
 }
+
+/* In the lighter page headers */
 .bs-docs-header .carbonad {
-  color: #cdbfe3;
-  background-color: #866ab3 !important;
+  color: #777;
+  background-color: #fff !important;
+  border-color: #eee !important;
+}
+.bs-docs-header .carbonad-text a,
+.bs-docs-header .carbonad-tag a {
+  color: #563d7c !important;
 }
 
 @media (min-width: 480px) {
@@ -535,9 +542,6 @@ body {
  * sections of docs content.
  */
 
-.bs-docs {
-  padding-left: 240px;
-}
 .bs-docs-container {
   position: relative;
   max-width: 940px;
@@ -555,27 +559,60 @@ body {
 }
 
 .bs-docs-sidebar {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 240px;
-  padding-bottom: 30px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  margin-bottom: 0;
   background-color: #322f38;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#29262f), to(#322f38));
-  background-image: -webkit-linear-gradient(top, #29262f 0%, #322f38 100%);
-  background-image:      -o-linear-gradient(top, #29262f 0%, #322f38 100%);
-  background-image:         linear-gradient(to bottom, #29262f 0%, #322f38 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#29262f', endColorstr='#322f38', GradientType=0);
-  background-repeat: repeat-x;
 }
 
-.bs-docs-sidebar-brand {
+.bs-docs-sidebar .navbar-toggle {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  z-index: 5;
+}
+.bs-docs-sidebar .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+
+.bs-docs-sidebar .navbar-header {
+  float: none;
+  margin-right: -15px;
+}
+
+.bs-docs-sidebar .navbar-collapse {
+  padding: 0;
+  border: 0;
+}
+
+@media (min-width: 992px) {
+  .bs-docs {
+    padding-left: 240px;
+  }
+  .bs-docs-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 240px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#29262f), to(#322f38));
+    background-image: -webkit-linear-gradient(top, #29262f 0%, #322f38 100%);
+    background-image:      -o-linear-gradient(top, #29262f 0%, #322f38 100%);
+    background-image:         linear-gradient(to bottom, #29262f 0%, #322f38 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#29262f', endColorstr='#322f38', GradientType=0);
+    background-repeat: repeat-x;
+  }
+  .bs-docs-sidebar .navbar-brand {
+    margin-bottom: 15px;
+  }
+}
+
+
+.bs-docs-sidebar .navbar-brand {
   display: block;
+  float: none;
+  height: auto;
   padding: 20px;
-  margin-bottom: 15px;
   font-size: 20px;
   font-weight: 500;
   line-height: 1;
@@ -589,7 +626,6 @@ body {
   text-decoration: none;
 }
 
-
 .bs-docs-sidenav {
   display: none;
 }
@@ -602,12 +638,12 @@ body {
 }
 .bs-docs-toc-link:hover,
 .bs-docs-toc-link:focus {
-  color: #fff;
+  color: #ffe484;
   text-decoration: none;
 }
 .active > .bs-docs-toc-link {
   font-weight: 500;
-  color: #fff;
+  color: #ffe484;
 }
 .active > .bs-docs-sidenav {
   display: block;
@@ -617,37 +653,39 @@ body {
   margin-top: 15px;
   margin-bottom: 15px;
 }
-
+.bs-docs-toc-item:last-child {
+  margin-bottom: 30px;
+}
 
 /* All levels of nav */
-.bs-docs-toc .nav > li > a {
+.bs-docs-sidebar .nav > li > a {
   display: block;
   padding: 4px 20px;
   font-size: 14px;
   color: #99979c;
 }
-.bs-docs-toc .nav > li > a:hover,
-.bs-docs-toc .nav > li > a:focus {
-  color: #fff;
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+  color: #ffe484;
   text-decoration: none;
   background-color: transparent;
 }
-.bs-docs-toc .nav > .active > a,
-.bs-docs-toc .nav > .active:hover > a,
-.bs-docs-toc .nav > .active:focus > a {
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
   font-weight: 500;
-  color: #fff;
+  color: #ffe484;
   background-color: transparent;
 }
 
 /* Nav: second level (shown on .active) */
-.bs-docs-toc .nav .nav {
+.bs-docs-sidebar .nav .nav {
   display: none;
 }
-.bs-docs-toc .nav > .active > .nav {
+.bs-docs-sidebar .nav > .active > .nav {
   display: block;
 }
-.bs-docs-toc .nav .nav > li > a {
+.bs-docs-sidebar .nav .nav > li > a {
   padding-top: 2px;
   padding-bottom: 2px;
   padding-left: 30px;

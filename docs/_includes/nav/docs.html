@@ -1,6 +1,76 @@
-<div id="top"></div>
+<header class="navbar navbar-static-top bs-docs-sidebar" id="top" role="banner">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-sidenav-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="../" class="navbar-brand">Bootstrap</a>
+    </div>
+    <nav class="collapse navbar-collapse bs-sidenav-collapse" role="navigation">
+      <div class="bs-docs-toc-item{% if page.slug == "getting-started" %} active{% endif %}">
+        <a class="bs-docs-toc-link" href="../getting-started">Getting started</a>
+        {% if page.slug == "getting-started" %}
+        <ul class="nav bs-docs-sidenav">
+          {% include nav/getting-started.html %}
+        </ul>
+        {% endif %}
+      </div>
+      <div class="bs-docs-toc-item{% if page.slug == "css" %} active{% endif %}">
+        <a class="bs-docs-toc-link" href="../css">CSS</a>
+        {% if page.slug == "css" %}
+        <ul class="nav bs-docs-sidenav">
+          {% include nav/css.html %}
+        </ul>
+        {% endif %}
+      </div>
+      <div class="bs-docs-toc-item{% if page.slug == "components" %} active{% endif %}">
+        <a class="bs-docs-toc-link" href="../components">Components</a>
+        {% if page.slug == "components" %}
+        <ul class="nav bs-docs-sidenav">
+          {% include nav/components.html %}
+        </ul>
+        {% endif %}
+      </div>
+      <div class="bs-docs-toc-item{% if page.slug == "js" %} active{% endif %}">
+        <a class="bs-docs-toc-link" href="../javascript">JavaScript</a>
+        {% if page.slug == "js" %}
+        <ul class="nav bs-docs-sidenav">
+          {% include nav/javascript.html %}
+        </ul>
+        {% endif %}
+      </div>
+      <div class="bs-docs-toc-item{% if page.slug == "customize" %} active{% endif %}">
+        <a class="bs-docs-toc-link" href="../customize">Customize</a>
+        {% if page.slug == "customize" %}
+        <ul class="nav bs-docs-sidenav">
+          {% include nav/customize.html %}
+        </ul>
+        {% endif %}
+      </div>
+      <div class="bs-docs-toc-item{% if page.slug == "js" %} active{% endif %}">
+        <a class="bs-docs-toc-link" href="../about">About</a>
+        {% if page.slug == "js" %}
+        <ul class="nav bs-docs-sidenav">
+          {% include nav/about.html %}
+        </ul>
+        {% endif %}
+      </div>
+      <div class="bs-docs-toc-item{% if page.slug == "migration" %} active{% endif %}">
+        <a class="bs-docs-toc-link" href="../migration">Migrating to v3.x</a>
+        {% if page.slug == "migration" %}
+        <ul class="nav bs-docs-sidenav">
+          {% include nav/migration.html %}
+        </ul>
+        {% endif %}
+      </div>
+    </nav>
+  </div>
+</header>
 
-<div class="bs-docs-sidebar">
+<div class="bs-docs-sidebar" style="display: none;">
   <a href="../" class="bs-docs-sidebar-brand">Bootstrap</a>
 
   <div class="bs-docs-toc">
