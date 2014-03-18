@@ -989,7 +989,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     var bodyPad = parseInt(this.$body.css('padding-right') || 0)
     if (this.scrollbarWidth) {
       this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
-      this.$fixedNavs.css('right', '+=' + this.scrollbarWidth)
+      this.$fixedNavs.css('right', this.scrollbarWidth)
     }
   }
 
