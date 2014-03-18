@@ -351,6 +351,10 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   -moz-transform: rotate3d(@x,@y,@z,@angle);
   transform: rotate3d(@x,@y,@z,@angle);
 }
+.transparent-bg(@r,@g,@b,@a) {
+  background-color: rgb(@r,@g,@b); // IE8
+  background-color: rgba(@r,@g,@b,@a);
+}
 
 // ---- cover photos ---- //
 .cover-photo {
@@ -364,7 +368,6 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
 .photocard {
   @transition: all .20s;
   @hover-delay: .15s;
-  @card-bg-color: rgba(0,0,0,0.80);
   @card-text-color: @neutralWhite;
 
   position: relative;
@@ -375,17 +378,17 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
     .text-center();
     .transition(@transition);
     .transition-delay(@hover-delay);
+    .transparent-bg(0,0,0,0.80);
     padding: 2px @padding-base-vertical;
     bottom: 0;
     margin-bottom: 0;
     color: @card-text-color;
-    background-color: @card-bg-color;
     width: 100%;
     position: absolute;
   }
 
   .photo-details {
-    background-color: @card-bg-color;
+    .transparent-bg(0,0,0,0.80);
     .size(100%, 100%);
     bottom: -100%;
     color: @card-text-color;
