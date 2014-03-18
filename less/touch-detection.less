@@ -1,0 +1,23 @@
+//
+// Detection of touch devices
+// --------------------------------------------------
+/*! Credit: Modernizr v3.0.0-alpha.0 | MIT */
+
+
+// Based on https://github.com/Modernizr/Modernizr/blob/master/feature-detects/touchevents.js
+
+.bs-touch-test {
+  // Move the test div offscreen
+  position: absolute;
+  left: -99px;
+}
+
+@media  (touch-enabled),
+   (-moz-touch-enabled),
+    (-ms-touch-enabled),
+     (-o-touch-enabled),
+(-webkit-touch-enabled) {
+  .bs-touch-test {
+    top: -99px;  // We test for the presence of this via JS
+  }
+}

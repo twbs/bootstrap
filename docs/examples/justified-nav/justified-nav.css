@@ -43,7 +43,7 @@ body {
   border-bottom: 1px solid #d5d5d5;
 }
 .nav-justified > .active > a,
-.nav-justified > .active > a:hover,
+.bs-no-touch .nav-justified > .active > a:hover,
 .nav-justified > .active > a:focus {
   background-color: #ddd;
   background-image: none;

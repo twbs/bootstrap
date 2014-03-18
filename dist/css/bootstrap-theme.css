@@ -45,7 +45,7 @@
   border-color: #dbdbdb;
   border-color: #ccc;
 }
-.btn-default:hover,
+.bs-no-touch .btn-default:hover,
 .btn-default:focus {
   background-color: #e0e0e0;
   background-position: 0 -15px;
@@ -65,7 +65,7 @@
   background-repeat: repeat-x;
   border-color: #2b669a;
 }
-.btn-primary:hover,
+.bs-no-touch .btn-primary:hover,
 .btn-primary:focus {
   background-color: #2d6ca2;
   background-position: 0 -15px;
@@ -85,7 +85,7 @@
   background-repeat: repeat-x;
   border-color: #3e8f3e;
 }
-.btn-success:hover,
+.bs-no-touch .btn-success:hover,
 .btn-success:focus {
   background-color: #419641;
   background-position: 0 -15px;
@@ -105,7 +105,7 @@
   background-repeat: repeat-x;
   border-color: #28a4c9;
 }
-.btn-info:hover,
+.bs-no-touch .btn-info:hover,
 .btn-info:focus {
   background-color: #2aabd2;
   background-position: 0 -15px;
@@ -125,7 +125,7 @@
   background-repeat: repeat-x;
   border-color: #e38d13;
 }
-.btn-warning:hover,
+.bs-no-touch .btn-warning:hover,
 .btn-warning:focus {
   background-color: #eb9316;
   background-position: 0 -15px;
@@ -145,7 +145,7 @@
   background-repeat: repeat-x;
   border-color: #b92c28;
 }
-.btn-danger:hover,
+.bs-no-touch .btn-danger:hover,
 .btn-danger:focus {
   background-color: #c12e2a;
   background-position: 0 -15px;
@@ -160,7 +160,7 @@
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
           box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
 }
-.dropdown-menu > li > a:hover,
+.bs-no-touch .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
   background-color: #e8e8e8;
   background-image: -webkit-linear-gradient(top, #f5f5f5 0%, #e8e8e8 100%);
@@ -171,7 +171,7 @@
   background-repeat: repeat-x;
 }
 .dropdown-menu > .active > a,
-.dropdown-menu > .active > a:hover,
+.bs-no-touch .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
   background-color: #357ebd;
   background-image: -webkit-linear-gradient(top, #428bca 0%, #357ebd 100%);
@@ -330,7 +330,7 @@
           box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
 }
 .list-group-item.active,
-.list-group-item.active:hover,
+.bs-no-touch .list-group-item.active:hover,
 .list-group-item.active:focus {
   text-shadow: 0 -1px 0 #3071a9;
   background-image: -webkit-linear-gradient(top, #428bca 0%, #3278b3 100%);
