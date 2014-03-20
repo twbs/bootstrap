@@ -147,10 +147,10 @@
       this.setContent()
 
       // add tooltip/popover-open class to identify buttons with open tooltip/popover (to use with hideOthers option)
-	  $(this.$element).addClass(this.type+'-open')
-	  $(this.$element).on('hidden.bs.'+this.type, function () {
+      $(this.$element).addClass(this.type+'-open')
+      $(this.$element).on('hidden.bs.'+this.type, function () {
         $(this).removeClass(that.type+'-open')
-	  })
+      })
 
       if (this.options.animation) $tip.addClass('fade')
 
