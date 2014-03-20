@@ -115,10 +115,11 @@ output {
   display: block;
   width: 100%;
   height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
-  padding: @padding-base-vertical @padding-base-horizontal;
+  padding: @padding-base-vertical 0;
   font-size: @font-size-base;
   line-height: @line-height-base;
   color: @input-color;
+  text-align: @padding-base-horizontal;
   background-color: @input-bg;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid @input-border;
