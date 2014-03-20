@@ -139,7 +139,7 @@
         $('.'+this.type+'-open').each(function () {
           if (that.$element[0] !== $(this)) {
             var data = $(this).data('bs.'+that.type)
-            if (data != undefined) data.hide()
+            if (data !== undefined) data.hide()
           }
         })
       }
