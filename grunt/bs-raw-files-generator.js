@@ -10,7 +10,6 @@
 'use strict';
 var fs = require('fs');
 var btoa = require('btoa');
-var grunt = require('grunt');
 
 function getFiles(type) {
   var files = {};
@@ -25,7 +24,7 @@ function getFiles(type) {
   return 'var __' + type + ' = ' + JSON.stringify(files) + '\n';
 }
 
-module.exports = function generateRawFilesJs(banner) {
+module.exports = function generateRawFilesJs(grunt, banner) {
   if (!banner) {
     banner = '';
   }

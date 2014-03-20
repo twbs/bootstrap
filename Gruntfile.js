@@ -337,7 +337,7 @@ module.exports = function (grunt) {
         },
         files: {
           'docs/_includes/customizer-variables.html': 'docs/jade/customizer-variables.jade',
-          'docs/_includes/nav-customize.html': 'docs/jade/customizer-nav.jade'
+          'docs/_includes/nav/customize.html': 'docs/jade/customizer-nav.jade'
         }
       }
     },
@@ -390,7 +390,7 @@ module.exports = function (grunt) {
           build: process.env.TRAVIS_JOB_ID,
           concurrency: 10,
           urls: ['http://127.0.0.1:3000/js/tests/index.html'],
-          browsers: grunt.file.readYAML('test-infra/sauce_browsers.yml')
+          browsers: grunt.file.readYAML('grunt/sauce_browsers.yml')
         }
       }
     },
@@ -453,14 +453,14 @@ module.exports = function (grunt) {
   // This can be overzealous, so its changes should always be manually reviewed!
   grunt.registerTask('change-version-number', 'sed');
 
-  grunt.registerTask('build-glyphicons-data', generateGlyphiconsData);
+  grunt.registerTask('build-glyphicons-data', function () { generateGlyphiconsData.call(this, grunt); });
 
   // task for building customizer
   grunt.registerTask('build-customizer', ['build-customizer-html', 'build-raw-files']);
   grunt.registerTask('build-customizer-html', 'jade');
   grunt.registerTask('build-raw-files', 'Add scripts/less files to customizer.', function () {
     var banner = grunt.template.process('<%= banner %>');
-    generateRawFiles(banner);
+    generateRawFiles(grunt, banner);
   });
 
   // Task for updating the npm packages used by the Travis build.
