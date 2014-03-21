@@ -69,7 +69,6 @@
     var offsets      = this.offsets
     var targets      = this.targets
     var activeTarget = this.activeTarget
-    var i
 
     if (scrollTop >= maxScroll) {
       return activeTarget != (i = targets.last()[0]) && this.activate(i)
@@ -79,7 +78,7 @@
       return activeTarget != (i = targets[0]) && this.activate(i)
     }
 
-    for (i = offsets.length; i--;) {
+    for (var i = offsets.length; i--;) {
       activeTarget != targets[i]
         && scrollTop >= offsets[i]
         && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
