@@ -3027,10 +3027,11 @@ output {
   display: block;
   width: 100%;
   height: 34px;
-  padding: 6px 12px;
+  padding: 6px 0;
   font-size: 14px;
   line-height: 1.42857143;
   color: #555;
+  text-align: 12px;
   background-color: #fff;
   background-image: none;
   border: 1px solid #ccc;
