@@ -34,7 +34,8 @@
     title: '',
     delay: 0,
     html: false,
-    container: false
+    container: false,
+    autoHide: false
   }
 
   Tooltip.prototype.init = function (type, element, options) {
@@ -62,6 +63,17 @@
     this.options.selector ?
       (this._options = $.extend({}, this.options, { trigger: 'manual', selector: '' })) :
       this.fixTitle()
+
+    // autoHide option: hide clicked tooltip or popover when clicking outside the same
+    var that = this
+    var $tip = this.tip()
+    if (this.options.autoHide) {
+      $(document).click(function (e) {
+        if ($tip.has(e.target).length === 0 && that.$element[0] !== e.target) {
+          that.hide()
+        }
+      })
+    }
   }
 
   Tooltip.prototype.getDefaults = function () {
