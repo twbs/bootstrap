@@ -61,6 +61,35 @@ $(function () {
     $('#qunit-fixture').empty()
   })
 
+  test('should not duplicate HTML object', function () {
+    $.support.transition = false
+
+    $div = $('<div>').html('loves writing tests （╯°□°）╯︵ ┻━┻')
+
+    var popover = $('<a href="#">@fat</a>')
+      .appendTo('#qunit-fixture')
+      .popover({
+        content: function () {
+          return $div
+        }
+      })
+
+    popover.popover('show')
+    ok($('.popover').length, 'popover was inserted')
+    equal($('.popover .popover-content').html(), $div, 'content correctly inserted')
+
+    popover.popover('hide')
+    ok(!$('.popover').length, 'popover was removed')
+
+    popover.popover('show')
+    ok($('.popover').length, 'popover was inserted')
+    equal($('.popover .popover-content').html(), $div, 'content correctly inserted')
+
+    popover.popover('hide')
+    ok(!$('.popover').length, 'popover was removed')
+    $('#qunit-fixture').empty()
+  })
+
   test('should get title and content from attributes', function () {
     $.support.transition = false
     var popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
