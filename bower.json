@@ -12,6 +12,7 @@
     "framework",
     "web"
   ],
+  "homepage": "http://getbootstrap.com",
   "main": [
     "dist/css/bootstrap.css",
     "dist/js/bootstrap.js",
