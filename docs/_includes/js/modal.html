@@ -265,6 +265,17 @@
 {% endhighlight %}
          </td>
        </tr>
+       <tr>
+         <td>cache</td>
+         <td>boolean</td>
+         <td>true</td>
+         <td>
+             <p>Remotely loaded modal content is cached by default, you can set cache to false to hit the url each time if your remote is dynamic.</p>
+{% highlight html %}
+<a data-toggle="modal" href="remote.php" data-target="#modal" data-cache="false">Click me</a>
+{% endhighlight %}
+         </td>
+       </tr>
       </tbody>
     </table>
   </div><!-- /.table-responsive -->
