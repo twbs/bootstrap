@@ -14,11 +14,13 @@
   // ======================
 
   var Modal = function (element, options) {
-    this.options   = options
-    this.$body     = $(document.body)
-    this.$element  = $(element)
-    this.$backdrop =
-    this.isShown   = null
+    this.options        = options
+    this.$body          = $(document.body)
+    this.$fixedNavs    = this.$body.children('.navbar-fixed-top, .navbar-fixed-bottom')
+    this.$element       = $(element)
+    this.$backdrop      =
+    this.isShown        = null
+    this.scrollbarWidth = 0
 
     if (this.options.remote) {
       this.$element
@@ -49,9 +51,11 @@
 
     this.isShown = true
 
+    this.checkScrollbar()
     this.$body.addClass('modal-open')
 
     this.setScrollbar()
+
     this.escape()
 
     this.$element.on('click.dismiss.bs.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
@@ -195,15 +199,22 @@
     }
   }
 
+  Modal.prototype.checkScrollbar = function () {
+    if (document.body.clientWidth >= window.innerWidth) return
+    this.scrollbarWidth = this.scrollbarWidth || this.measureScrollbar()
+  }
+
   Modal.prototype.setScrollbar =  function () {
-    if (document.body.clientHeight <= window.innerHeight) return
-    var scrollbarWidth = this.measureScrollbar()
-    var bodyPad        = parseInt(this.$body.css('padding-right') || 0)
-    if (scrollbarWidth) this.$body.css('padding-right', bodyPad + scrollbarWidth)
+    var bodyPad = parseInt(this.$body.css('padding-right') || 0)
+    if (this.scrollbarWidth) {
+      this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
+      this.$fixedNavs.css('right', this.scrollbarWidth)
+    }
   }
 
   Modal.prototype.resetScrollbar = function () {
     this.$body.css('padding-right', '')
+    this.$fixedNavs.css('right', '')
   }
 
   Modal.prototype.measureScrollbar = function () { // thx walsh
