@@ -68,14 +68,33 @@ $(function () {
     stop()
     $.support.transition = false
 
-    $('<div id="modal-test"></div>')
+    $('<div id="modal-test"><p>content</p></div>')
       .on('shown.bs.modal', function () {
         ok($('#modal-test').is(':visible'), 'modal visible')
         ok($('#modal-test').length, 'modal inserted into dom')
+        ok($('#modal-test').data('bs.modal'), 'modal is created')
+        ok($('#modal-test').children().length, 'modal is not empty')
         $(this).modal('hide')
       })
       .on('hidden.bs.modal', function () {
         ok(!$('#modal-test').is(':visible'), 'modal hidden')
+        $('#modal-test').remove()
+        start()
+      })
+      .modal('show')
+  })
+
+  test('should clear modal when hide is called and cache is false', function () {
+    stop()
+    $.support.transition = false
+
+    $('<div id="modal-test" data-cache="false"><p>content</p></div>')
+      .on('shown.bs.modal', function () {
+        $(this).modal('hide')
+      })
+      .on('hidden.bs.modal', function () {
+        ok(!$('#modal-test').data('bs.modal'), 'modal is removed')
+        ok(!$('#modal-test').children().length, 'modal is empty')
         $('#modal-test').remove()
         start()
       })
