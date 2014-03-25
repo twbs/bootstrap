@@ -14,7 +14,7 @@ after_script:
   - if [ "$TWBS_TEST" = validate-html ]; then time ./test-infra/s3_cache.py upload rubygems pseudo_Gemfile.lock $(rvm gemdir); fi
 env:
   global:
-    - JEKYLL_VERSION: 1.4.2
+    - JEKYLL_VERSION: 1.5.0
     - SAUCE_USERNAME: bootstrap
     - secure: "pJkBwnuae9dKU5tEcCqccfS1QQw7/meEcfz63fM7ba7QJNjoA6BaXj08L5Z3Vb5vBmVPwBawxo5Hp0jC0r/Z/O0hGnAmz/Cz09L+cy7dSAZ9x4hvZePSja/UAusaB5ogMoO8l2b773MzgQeSmrLbExr9BWLeqEfjC2hFgdgHLaQ="
     - secure: "gqjqISbxBJK6byFbsmr1AyP1qoWH+rap06A2gI7v72+Tn2PU2nYkIMUkCvhZw6K889jv+LhQ/ybcBxDOXHpNCExCnSgB4dcnmYp+9oeNZb37jSP0rQ+Ib4OTLjzc3/FawE/fUq5kukZTC7porzc/k0qJNLAZRx3YLALmK1GIdUY="
