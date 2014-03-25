@@ -2809,6 +2809,7 @@ table th[class*="col-"] {
 .table-hover > tbody > tr > td.active:hover,
 .table-hover > tbody > tr > th.active:hover,
 .table-hover > tbody > tr.active:hover > td,
+.table-hover > tbody > tr:hover > .active,
 .table-hover > tbody > tr.active:hover > th {
   background-color: #e8e8e8;
 }
@@ -2831,6 +2832,7 @@ table th[class*="col-"] {
 .table-hover > tbody > tr > td.success:hover,
 .table-hover > tbody > tr > th.success:hover,
 .table-hover > tbody > tr.success:hover > td,
+.table-hover > tbody > tr:hover > .success,
 .table-hover > tbody > tr.success:hover > th {
   background-color: #d0e9c6;
 }
@@ -2853,6 +2855,7 @@ table th[class*="col-"] {
 .table-hover > tbody > tr > td.info:hover,
 .table-hover > tbody > tr > th.info:hover,
 .table-hover > tbody > tr.info:hover > td,
+.table-hover > tbody > tr:hover > .info,
 .table-hover > tbody > tr.info:hover > th {
   background-color: #c4e3f3;
 }
@@ -2875,6 +2878,7 @@ table th[class*="col-"] {
 .table-hover > tbody > tr > td.warning:hover,
 .table-hover > tbody > tr > th.warning:hover,
 .table-hover > tbody > tr.warning:hover > td,
+.table-hover > tbody > tr:hover > .warning,
 .table-hover > tbody > tr.warning:hover > th {
   background-color: #faf2cc;
 }
@@ -2897,6 +2901,7 @@ table th[class*="col-"] {
 .table-hover > tbody > tr > td.danger:hover,
 .table-hover > tbody > tr > th.danger:hover,
 .table-hover > tbody > tr.danger:hover > td,
+.table-hover > tbody > tr:hover > .danger,
 .table-hover > tbody > tr.danger:hover > th {
   background-color: #ebcccc;
 }
