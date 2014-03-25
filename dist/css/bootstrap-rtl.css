@@ -3218,6 +3218,7 @@ select[multiple].input-lg {
   position: absolute;
   top: 25px;
   left: 0;
+  z-index: 2;
   display: block;
   width: 34px;
   height: 34px;
