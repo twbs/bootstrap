@@ -32,7 +32,8 @@
   Modal.DEFAULTS = {
     backdrop: true,
     keyboard: true,
-    show: true
+    show: true,
+    cache: true
   }
 
   Modal.prototype.toggle = function (_relatedTarget) {
