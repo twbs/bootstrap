@@ -254,7 +254,7 @@
 </div>
 {% endhighlight %}
 
-  <h4>Inline checkboxes</h4>
+  <h4>Inline checkboxes and radios</h4>
   <p>Use the <code>.checkbox-inline</code> or <code>.radio-inline</code> classes on a series of checkboxes or radios for controls that appear on the same line.</p>
   <div class="bs-example">
     <form role="form">
@@ -268,6 +268,18 @@
         <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
       </label>
     </form>
+    <br>
+    <form role="form">
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+      </label>
+    </form>
   </div><!-- /.bs-example -->
 {% highlight html %}
 <label class="checkbox-inline">
@@ -278,6 +290,16 @@
 </label>
 <label class="checkbox-inline">
   <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+</label>
+
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
 </label>
 {% endhighlight %}
 
