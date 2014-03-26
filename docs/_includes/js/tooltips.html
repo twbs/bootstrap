@@ -74,9 +74,9 @@ $('#example').tooltip(options)
       <thead>
        <tr>
          <th style="width: 100px;">Name</th>
-         <th style="width: 100px;">type</th>
-         <th style="width: 50px;">default</th>
-         <th>description</th>
+         <th style="width: 100px;">Type</th>
+         <th style="width: 50px;">Default</th>
+         <th>Description</th>
        </tr>
       </thead>
       <tbody>
@@ -84,7 +84,7 @@ $('#example').tooltip(options)
          <td>animation</td>
          <td>boolean</td>
          <td>true</td>
-         <td>apply a CSS fade transition to the tooltip</td>
+         <td>Apply a CSS fade transition to the tooltip</td>
        </tr>
        <tr>
          <td>html</td>
@@ -96,7 +96,7 @@ $('#example').tooltip(options)
          <td>placement</td>
          <td>string | function</td>
          <td>'top'</td>
-         <td>how to position the tooltip - top | bottom | left | right | auto. <br> When "auto" is specified, it will dynamically reorient the tooltip. For example, if placement is "auto left", the tooltip will display to the left when possible, otherwise it will display right.</td>
+         <td>How to position the tooltip - top | bottom | left | right | auto. <br> When "auto" is specified, it will dynamically reorient the tooltip. For example, if placement is "auto left", the tooltip will display to the left when possible, otherwise it will display right.</td>
        </tr>
        <tr>
          <td>selector</td>
@@ -105,23 +105,34 @@ $('#example').tooltip(options)
          <td>If a selector is provided, tooltip objects will be delegated to the specified targets.</td>
        </tr>
        <tr>
+         <td>template</td>
+         <td>string</td>
+         <td><code>'&lt;div class="tooltip" role="tooltip"&gt;&lt;div class="tooltip-arrow"&gt;&lt;/div&gt;&lt;div class="tooltip-inner"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
+         <td>
+          <p>Base HTML to use when creating the tooltip.</p>
+          <p>The tooltip's <code>title</code> will be injected into the <code>.tooltip-inner</code>.</p>
+          <p><code>.tooltip-arrow</code> will become the tooltip's arrow.</p>
+          <p>The outermost wrapper element should have the <code>.tooltip</code> class.</p>
+        </td>
+       </tr>
+       <tr>
          <td>title</td>
          <td>string | function</td>
          <td>''</td>
-         <td>default title value if <code>title</code> attribute isn't present</td>
+         <td>Default title value if <code>title</code> attribute isn't present</td>
        </tr>
        <tr>
          <td>trigger</td>
          <td>string</td>
          <td>'hover focus'</td>
-         <td>how tooltip is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space.</td>
+         <td>How tooltip is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space.</td>
        </tr>
        <tr>
          <td>delay</td>
          <td>number | object</td>
          <td>0</td>
          <td>
-          <p>delay showing and hiding the tooltip (ms) - does not apply to manual trigger type</p>
+          <p>Delay showing and hiding the tooltip (ms) - does not apply to manual trigger type</p>
           <p>If a number is supplied, delay is applied to both hide/show</p>
           <p>Object structure is: <code>delay: { show: 500, hide: 100 }</code></p>
          </td>
