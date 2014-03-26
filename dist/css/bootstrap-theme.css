@@ -48,7 +48,6 @@
 .btn-default:hover,
 .btn-default:focus {
   background-color: #e0e0e0;
-  background-position: 0 -15px;
 }
 .btn-default:active,
 .btn-default.active {
@@ -68,7 +67,6 @@
 .btn-primary:hover,
 .btn-primary:focus {
   background-color: #2d6ca2;
-  background-position: 0 -15px;
 }
 .btn-primary:active,
 .btn-primary.active {
@@ -88,7 +86,6 @@
 .btn-success:hover,
 .btn-success:focus {
   background-color: #419641;
-  background-position: 0 -15px;
 }
 .btn-success:active,
 .btn-success.active {
@@ -108,7 +105,6 @@
 .btn-info:hover,
 .btn-info:focus {
   background-color: #2aabd2;
-  background-position: 0 -15px;
 }
 .btn-info:active,
 .btn-info.active {
@@ -128,7 +124,6 @@
 .btn-warning:hover,
 .btn-warning:focus {
   background-color: #eb9316;
-  background-position: 0 -15px;
 }
 .btn-warning:active,
 .btn-warning.active {
@@ -148,7 +143,6 @@
 .btn-danger:hover,
 .btn-danger:focus {
   background-color: #c12e2a;
-  background-position: 0 -15px;
 }
 .btn-danger:active,
 .btn-danger.active {
