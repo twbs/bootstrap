@@ -197,28 +197,24 @@
 
   $(document).on('keydown', '[data-ride="carousel"]', function (e) {
     // get the direction based on keyboard input
-    var type = e.which == 37 ? 'prev' : null
-    type = e.which == 39 ? 'next' : type
-    type = e.which == 38 ? 'first' : type
-    type = e.which == 40 ? 'last' : type
+    var type = e.which == 37 ? 'prev'  :
+           e.which == 38 ? 'first' :
+           e.which == 39 ? 'next'  :
+           e.which == 40 ? 'last'  : false
+
+    if (!type) return // exits if not a type we care about
 
     // only accept arrow left, right, top and down.
     // default event behavior is prevented for these four keys.
     // other keyboard input is not affected
-    var $focused = $(document.activeElement)
-    type && $focused.data('ride') == 'carousel' && $focused.each(function () {
-      var $carousel = $(this)
-      $carousel.carousel('pause')
-      if (type == 'next' || type == 'prev')
-        $carousel.carousel(type)
-      else if (type == 'first')
-        $carousel.carousel(0)
-      else if (type == 'last') {
-        var nItems = $carousel.data('bs.carousel').$items.length
-        $carousel.carousel(nItems - 1)
-      }
-      $carousel.carousel('cycle')
-    }) && e.preventDefault()
+    var $carousel = $(document.activeElement)
+
+    $carousel
+      .carousel('pause')
+      .carousel(/next|prev/.test(type) ? type : type == 'first' ? 0 : nItems - 1)
+      .carousel('cycle')
+
+    e.preventDefault()
   })
 
   $(window).on('load', function () {
