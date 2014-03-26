@@ -1,12 +1,12 @@
 /*!
- * QUnit 1.13.0
+ * QUnit 1.14.0
  * http://qunitjs.com/
  *
  * Copyright 2013 jQuery Foundation and other contributors
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2014-01-04T17:09Z
+ * Date: 2014-01-31T16:40Z
  */
 
 (function( window ) {
@@ -22,6 +22,7 @@ var QUnit,
 	// Keep a local reference to Date (GH-283)
 	Date = window.Date,
 	setTimeout = window.setTimeout,
+	clearTimeout = window.clearTimeout,
 	defined = {
 		document: typeof window.document !== "undefined",
 		setTimeout: typeof window.setTimeout !== "undefined",
@@ -238,6 +239,9 @@ config = {
 	// by default, modify document.title when suite is done
 	altertitle: true,
 
+	// by default, scroll to top of the page when suite is done
+	scrolltop: true,
+
 	// when enabled, all tests must call expect()
 	requireExpects: false,
 
@@ -271,20 +275,24 @@ config = {
 
 // Initialize more QUnit.config and QUnit.urlParams
 (function() {
-	var i,
+	var i, current,
 		location = window.location || { search: "", protocol: "file:" },
 		params = location.search.slice( 1 ).split( "&" ),
 		length = params.length,
-		urlParams = {},
-		current;
+		urlParams = {};
 
 	if ( params[ 0 ] ) {
 		for ( i = 0; i < length; i++ ) {
 			current = params[ i ].split( "=" );
 			current[ 0 ] = decodeURIComponent( current[ 0 ] );
+
 			// allow just a key to turn on a flag, e.g., test.html?noglobals
 			current[ 1 ] = current[ 1 ] ? decodeURIComponent( current[ 1 ] ) : true;
-			urlParams[ current[ 0 ] ] = current[ 1 ];
+			if ( urlParams[ current[ 0 ] ] ) {
+				urlParams[ current[ 0 ] ] = [].concat( urlParams[ current[ 0 ] ], current[ 1 ] );
+			} else {
+				urlParams[ current[ 0 ] ] = current[ 1 ];
+			}
 		}
 	}
 
@@ -296,7 +304,16 @@ config = {
 	// Exact match of the module name
 	config.module = urlParams.module;
 
-	config.testNumber = parseInt( urlParams.testNumber, 10 ) || null;
+	config.testNumber = [];
+	if ( urlParams.testNumber ) {
+
+		// Ensure that urlParams.testNumber is an array
+		urlParams.testNumber = [].concat( urlParams.testNumber );
+		for ( i = 0; i < urlParams.testNumber.length; i++ ) {
+			current = urlParams.testNumber[ i ];
+			config.testNumber.push( parseInt( current, 10 ) );
+		}
+	}
 
 	// Figure out if we're running the tests from a server or not
 	QUnit.isLocal = location.protocol === "file:";
@@ -558,8 +575,8 @@ QUnit.load = function() {
 	runLoggingCallbacks( "begin", QUnit, {} );
 
 	// Initialize the config, saving the execution queue
-	var banner, filter, i, label, len, main, ol, toolbar, userAgent, val,
-		urlConfigCheckboxesContainer, urlConfigCheckboxes, moduleFilter,
+	var banner, filter, i, j, label, len, main, ol, toolbar, val, selection,
+		urlConfigContainer, moduleFilter, userAgent,
 		numModules = 0,
 		moduleNames = [],
 		moduleFilterHtml = "",
@@ -578,17 +595,55 @@ QUnit.load = function() {
 		if ( typeof val === "string" ) {
 			val = {
 				id: val,
-				label: val,
-				tooltip: "[no tooltip available]"
+				label: val
 			};
 		}
 		config[ val.id ] = QUnit.urlParams[ val.id ];
-		urlConfigHtml += "<input id='qunit-urlconfig-" + escapeText( val.id ) +
-			"' name='" + escapeText( val.id ) +
-			"' type='checkbox'" + ( config[ val.id ] ? " checked='checked'" : "" ) +
-			" title='" + escapeText( val.tooltip ) +
-			"'><label for='qunit-urlconfig-" + escapeText( val.id ) +
-			"' title='" + escapeText( val.tooltip ) + "'>" + val.label + "</label>";
+		if ( !val.value || typeof val.value === "string" ) {
+			urlConfigHtml += "<input id='qunit-urlconfig-" + escapeText( val.id ) +
+				"' name='" + escapeText( val.id ) +
+				"' type='checkbox'" +
+				( val.value ? " value='" + escapeText( val.value ) + "'" : "" ) +
+				( config[ val.id ] ? " checked='checked'" : "" ) +
+				" title='" + escapeText( val.tooltip ) +
+				"'><label for='qunit-urlconfig-" + escapeText( val.id ) +
+				"' title='" + escapeText( val.tooltip ) + "'>" + val.label + "</label>";
+		} else {
+			urlConfigHtml += "<label for='qunit-urlconfig-" + escapeText( val.id ) +
+				"' title='" + escapeText( val.tooltip ) +
+				"'>" + val.label +
+				": </label><select id='qunit-urlconfig-" + escapeText( val.id ) +
+				"' name='" + escapeText( val.id ) +
+				"' title='" + escapeText( val.tooltip ) +
+				"'><option></option>";
+			selection = false;
+			if ( QUnit.is( "array", val.value ) ) {
+				for ( j = 0; j < val.value.length; j++ ) {
+					urlConfigHtml += "<option value='" + escapeText( val.value[j] ) + "'" +
+						( config[ val.id ] === val.value[j] ?
+							(selection = true) && " selected='selected'" :
+							"" ) +
+						">" + escapeText( val.value[j] ) + "</option>";
+				}
+			} else {
+				for ( j in val.value ) {
+					if ( hasOwn.call( val.value, j ) ) {
+						urlConfigHtml += "<option value='" + escapeText( j ) + "'" +
+							( config[ val.id ] === j ?
+								(selection = true) && " selected='selected'" :
+								"" ) +
+							">" + escapeText( val.value[j] ) + "</option>";
+					}
+				}
+			}
+			if ( config[ val.id ] && !selection ) {
+				urlConfigHtml += "<option value='" + escapeText( config[ val.id ] ) +
+					"' selected='selected' disabled='disabled'>" +
+					escapeText( config[ val.id ] ) +
+					"</option>";
+			}
+			urlConfigHtml += "</select>";
+		}
 	}
 	for ( i in config.modules ) {
 		if ( config.modules.hasOwnProperty( i ) ) {
@@ -665,20 +720,27 @@ QUnit.load = function() {
 		label.innerHTML = "Hide passed tests";
 		toolbar.appendChild( label );
 
-		urlConfigCheckboxesContainer = document.createElement("span");
-		urlConfigCheckboxesContainer.innerHTML = urlConfigHtml;
-		urlConfigCheckboxes = urlConfigCheckboxesContainer.getElementsByTagName("input");
+		urlConfigContainer = document.createElement("span");
+		urlConfigContainer.innerHTML = urlConfigHtml;
 		// For oldIE support:
 		// * Add handlers to the individual elements instead of the container
-		// * Use "click" instead of "change"
+		// * Use "click" instead of "change" for checkboxes
 		// * Fallback from event.target to event.srcElement
-		addEvents( urlConfigCheckboxes, "click", function( event ) {
+		addEvents( urlConfigContainer.getElementsByTagName("input"), "click", function( event ) {
 			var params = {},
 				target = event.target || event.srcElement;
-			params[ target.name ] = target.checked ? true : undefined;
+			params[ target.name ] = target.checked ?
+				target.defaultValue || true :
+				undefined;
 			window.location = QUnit.url( params );
 		});
-		toolbar.appendChild( urlConfigCheckboxesContainer );
+		addEvents( urlConfigContainer.getElementsByTagName("select"), "change", function( event ) {
+			var params = {},
+				target = event.target || event.srcElement;
+			params[ target.name ] = target.options[ target.selectedIndex ].value || undefined;
+			window.location = QUnit.url( params );
+		});
+		toolbar.appendChild( urlConfigContainer );
 
 		if (numModules > 1) {
 			moduleFilter = document.createElement( "span" );
@@ -807,7 +869,7 @@ function done() {
 	}
 
 	// scroll back to top to show results
-	if ( window.scrollTo ) {
+	if ( config.scrolltop && window.scrollTo ) {
 		window.scrollTo(0, 0);
 	}
 
@@ -824,7 +886,7 @@ function validTest( test ) {
 	var include,
 		filter = config.filter && config.filter.toLowerCase(),
 		module = config.module && config.module.toLowerCase(),
-		fullName = (test.module + ": " + test.testName).toLowerCase();
+		fullName = ( test.module + ": " + test.testName ).toLowerCase();
 
 	// Internally-generated tests are always valid
 	if ( test.callback && test.callback.validTest === validTest ) {
@@ -832,8 +894,10 @@ function validTest( test ) {
 		return true;
 	}
 
-	if ( config.testNumber ) {
-		return test.testNumber === config.testNumber;
+	if ( config.testNumber.length > 0 ) {
+		if ( inArray( test.testNumber, config.testNumber ) < 0 ) {
+			return false;
+		}
 	}
 
 	if ( module && ( !test.module || test.module.toLowerCase() !== module ) ) {
@@ -1375,7 +1439,7 @@ Test.prototype = {
 			total: this.assertions.length,
 			runtime: this.runtime,
 			// DEPRECATED: this property will be removed in 2.0.0, use runtime instead
-			duration: this.runtime,
+			duration: this.runtime
 		});
 
 		QUnit.reset();
@@ -1543,7 +1607,7 @@ assert = QUnit.assert = {
 			ok = false;
 
 		// 'expected' is optional
-		if ( typeof expected === "string" ) {
+		if ( !message && typeof expected === "string" ) {
 			message = expected;
 			expected = null;
 		}
@@ -1557,16 +1621,30 @@ assert = QUnit.assert = {
 		config.current.ignoreGlobalErrors = false;
 
 		if ( actual ) {
+
 			// we don't want to validate thrown error
 			if ( !expected ) {
 				ok = true;
 				expectedOutput = null;
+
+			// expected is an Error object
+			} else if ( expected instanceof Error ) {
+				ok = actual instanceof Error &&
+					 actual.name === expected.name &&
+					 actual.message === expected.message;
+
 			// expected is a regexp
 			} else if ( QUnit.objectType( expected ) === "regexp" ) {
 				ok = expected.test( errorString( actual ) );
+
+			// expected is a string
+			} else if ( QUnit.objectType( expected ) === "string" ) {
+				ok = expected === errorString( actual );
+
 			// expected is a constructor
 			} else if ( actual instanceof expected ) {
 				ok = true;
+
 			// expected is a validation function which returns true is validation passed
 			} else if ( expected.call( {}, actual ) === true ) {
 				expectedOutput = null;

@@ -327,20 +327,42 @@ window.onload = function () { // wait for load in a dumb way because B-0
       saveAs(blob, 'bootstrap.zip')
       createGist(configJson)
     })
-  })
+  });
 
-  // browser support alerts
-  if (!window.URL && navigator.userAgent.toLowerCase().indexOf('safari') != -1) {
-    showCallout('Looks like you\'re using safari, which sadly doesn\'t have the best support' +
-                 'for HTML5 blobs. Because of this your file will be downloaded with the name <code>"untitled"</code>.' +
-                 'However, if you check your downloads folder, just rename this <code>"untitled"</code> file' +
-                 'to <code>"bootstrap.zip"</code> and you should be good to go!')
-  } else if (!window.URL && !window.webkitURL) {
-    $('.bs-docs-section, .bs-docs-sidebar').css('display', 'none')
-
-    showCallout('Looks like your current browser doesn\'t support the Bootstrap Customizer. Please take a second' +
-                 'to <a href="https://www.google.com/intl/en/chrome/browser/">upgrade to a more modern browser</a>.', true)
-  }
+  // browser support alert
+  (function () {
+    function failback() {
+      $('.bs-docs-section, .bs-docs-sidebar').css('display', 'none')
+      showCallout('Looks like your current browser doesn\'t support the Bootstrap Customizer. Please take a second ' +
+                    'to <a href="http://browsehappy.com/">upgrade to a more modern browser</a> (other than Safari).', true)
+    }
+    /**
+     * Based on:
+     *   Blob Feature Check v1.1.0
+     *   https://github.com/ssorallen/blob-feature-check/
+     *   License: Public domain (http://unlicense.org)
+     */
+    var url = window.webkitURL || window.URL // Safari 6 uses "webkitURL".
+    var svg = new Blob(
+      ['<svg xmlns=\'http://www.w3.org/2000/svg\'></svg>'],
+      {type: 'image/svg+xml;charset=utf-8'}
+    )
+    var objectUrl = url.createObjectURL(svg);
+    if (/^blob:/.exec(objectUrl) === null) {
+      // `URL.createObjectURL` created a URL that started with something other
+      // than "blob:", which means it has been polyfilled and is not supported by
+      // this browser.
+      failback()
+    }
+    else {
+      $('<img>')
+        .on('load', function () {
+          $compileBtn.prop('disabled', false)
+        })
+        .on('error', failback)
+        .attr('src', objectUrl)
+    }
+  })();
 
   parseUrl()
 }

@@ -107,4 +107,32 @@ $(function () {
     ok($('#myCarousel').data('bs.carousel').options.interval === false, 'data attribute has higher priority than default options')
     $('#myCarousel').remove()
   })
+
+  test('should skip over non-items', function () {
+    $.support.transition = false
+
+    var $template = $(
+        '<div id="myCarousel" class="carousel" data-interval="1814">'
+      + '<div class="carousel-inner">'
+      + '<div class="item active">'
+      + '<img alt="">'
+      + '</div>'
+      + '<script type="text/x-metamorph" id="thingy"></script>'
+      + '<div class="item">'
+      + '<img alt="">'
+      + '</div>'
+      + '<div class="item">'
+      + '</div>'
+      + '</div>'
+      + '</div>'
+    )
+
+    $template.carousel()
+
+    equal($template.find('.item')[0], $template.find('.active')[0], 'the first carousel item should be active')
+
+    $template.carousel(1)
+
+    equal($template.find('.item')[1], $template.find('.active')[0], 'the second carousel item should be active')
+  })
 })
