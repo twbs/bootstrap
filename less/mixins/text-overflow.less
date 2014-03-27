@@ -5,4 +5,15 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  
+  /* 
+   Workaround for IE9: see https://github.com/FortAwesome/Font-Awesome/issues/1079
+
+  IE seems to use the font of the first character in the string for the
+  ellipsis symbol. If that character is an icon from a symbol font,
+  ellipsis is garbled
+  */
+    &:before {
+        content: '';
+    }
 }
