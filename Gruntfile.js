@@ -107,9 +107,6 @@ module.exports = function (grunt) {
     },
 
     uglify: {
-      options: {
-        report: 'min'
-      },
       bootstrap: {
         options: {
           banner: '<%= banner %>'
@@ -178,8 +175,7 @@ module.exports = function (grunt) {
       },
       minify: {
         options: {
-          cleancss: true,
-          report: 'min'
+          cleancss: true
         },
         files: {
           'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css',
@@ -246,10 +242,9 @@ module.exports = function (grunt) {
 
     cssmin: {
       options: {
+        compatibility: 'ie8',
         keepSpecialComments: '*',
-        noAdvanced: true, // turn advanced optimizations off until the issue is fixed in clean-css
-        report: 'min',
-        compatibility: 'ie8'
+        noAdvanced: true // turn advanced optimizations off until the issue is fixed in clean-css
       },
       docs: {
         src: [
