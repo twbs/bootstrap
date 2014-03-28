@@ -1,0 +1,28 @@
+body {
+  height: 1200px;
+}
+.tooltip {
+  min-width: 250px;
+  max-width: 500px;
+}
+.tooltip .tooltip-inner {
+  min-height: 200px;
+  min-width: 250px;
+  max-width: 500px;
+}
+.placeholder {
+  height: 900px;
+}
+.container-viewport {
+  position: absolute;
+  left: 200px;
+  top: 600px;
+  width: 600px;
+  height: 400px;
+  background: #c00;
+}
+.btn-bottom {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
