@@ -41,6 +41,7 @@
 
     this.offsets = $([])
     this.targets = $([])
+    this.scrollHeight = this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
 
     var self     = this
     var $targets = this.$body
@@ -70,6 +71,10 @@
     var targets      = this.targets
     var activeTarget = this.activeTarget
     var i
+
+    if (this.scrollHeight != scrollHeight) {
+      this.refresh()
+    }
 
     if (scrollTop >= maxScroll) {
       return activeTarget != (i = targets.last()[0]) && this.activate(i)
