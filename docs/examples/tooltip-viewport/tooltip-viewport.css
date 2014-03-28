@@ -6,23 +6,23 @@ body {
   max-width: 500px;
 }
 .tooltip .tooltip-inner {
-  min-height: 200px;
   min-width: 250px;
   max-width: 500px;
+  min-height: 200px;
 }
 .placeholder {
   height: 900px;
 }
 .container-viewport {
   position: absolute;
-  left: 200px;
   top: 600px;
+  left: 200px;
   width: 600px;
   height: 400px;
   background: #c00;
 }
 .btn-bottom {
   position: absolute;
-  left: 0;
   bottom: 0;
+  left: 0;
 }
