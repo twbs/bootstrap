@@ -304,11 +304,12 @@ window.onload = function () { // wait for load in a dumb way because B-0
       .toArray()
       .join('\n')
 
+    preamble = cw + preamble
     js = jqueryCheck + js
 
     return {
       'bootstrap.js': preamble + js,
-      'bootstrap.min.js': preamble + cw + uglify(js)
+      'bootstrap.min.js': preamble + uglify(js)
     }
   }
 
