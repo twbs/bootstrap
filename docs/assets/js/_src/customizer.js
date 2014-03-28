@@ -295,12 +295,16 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
   function generateJS(preamble) {
     var $checked = $('#plugin-section input:checked')
+    var jqueryCheck = 'if (typeof jQuery === "undefined") { throw new Error("Bootstrap\'s JavaScript requires jQuery") }\n\n'
+
     if (!$checked.length) return false
 
     var js = $checked
       .map(function () { return __js[this.value] })
       .toArray()
       .join('\n')
+
+    js = jqueryCheck + js
 
     return {
       'bootstrap.js': preamble + js,
