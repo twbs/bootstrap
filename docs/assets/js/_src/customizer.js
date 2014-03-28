@@ -181,10 +181,20 @@ window.onload = function () { // wait for load in a dumb way because B-0
     var IMPORT_REGEX = /^@import \"(.*?)\";$/
     var lessLines = __less[lessFilename].split('\n')
 
-    for (var i = 0, imports = []; i < lessLines.length; i++) {
-      var match = IMPORT_REGEX.exec(lessLines[i])
-      if (match) imports.push(match[1])
-    }
+    var imports = []
+    $.each(lessLines, function (index, lessLine) {
+      var match = IMPORT_REGEX.exec(lessLine)
+      if (match) {
+        var importee = match[1]
+        var transitiveImports = includedLessFilenames(importee)
+        $.each(transitiveImports, function (index, transitiveImportee) {
+          if ($.inArray(transitiveImportee, imports) === -1) {
+            imports.push(transitiveImportee)
+          }
+        })
+        imports.push(importee)
+      }
+    })
 
     return imports
   }
@@ -192,7 +202,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
   function generateLESS(lessFilename, lessFileIncludes, vars) {
     var lessSource = __less[lessFilename]
 
-    $.each(includedLessFilenames(lessFilename), function(index, filename) {
+    var lessFilenames = includedLessFilenames(lessFilename)
+    $.each(lessFilenames, function(index, filename) {
       var fileInclude = lessFileIncludes[filename]
 
       // Files not explicitly unchecked are compiled into the final stylesheet.
