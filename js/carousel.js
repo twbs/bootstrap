@@ -211,7 +211,7 @@
 
     $carousel
       .carousel('pause')
-      .carousel(/next|prev/.test(type) ? type : type == 'first' ? 0 : nItems - 1)
+      .carousel(/next|prev/.test(type) ? type : type == 'first' ? 0 : $(this).find('.item').length - 1)
       .carousel('cycle')
 
     e.preventDefault()
