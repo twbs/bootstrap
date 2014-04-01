@@ -21,6 +21,10 @@
     <h4>Don't mix with other components</h4>
     <p>Icon classes cannot be directly combined with other components. They should not be used along with other classes on the same element. Instead, add a nested <code>&lt;span&gt;</code> and apply the icon classes to the <code>&lt;span&gt;</code>.</p>
   </div>
+  <div class="bs-callout bs-callout-danger">
+    <h4>Only for use on empty elements</h4>
+    <p>Icon classes should only be used on elements that contain no text content and have no child elements.</p>
+  </div>
 {% highlight html %}
 <span class="glyphicon glyphicon-search"></span>
 {% endhighlight %}
