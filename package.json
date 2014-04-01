@@ -37,7 +37,7 @@
     "grunt-autoprefixer": "~0.7.2",
     "grunt-banner": "~0.2.2",
     "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-concat": "~0.4.0",
     "grunt-contrib-connect": "~0.7.1",
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-csslint": "~0.2.0",
