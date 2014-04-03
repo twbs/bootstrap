@@ -28,7 +28,7 @@ def timer():
     yield
     end = datetime.utcnow()
     elapsed = end - start
-    print("\tDone. Took", int(elapsed.total_seconds()), "seconds.")
+    print("\tDone. Took", int(elapsed.total_seconds()), "second(s).")
 
 
 def _sha256_of_file(filename):
