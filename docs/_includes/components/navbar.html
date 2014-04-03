@@ -17,6 +17,10 @@
     <h4>Requires JavaScript</h4>
     <p>If JavaScript is disabled and the viewport is narrow enough that the navbar collapses, it will be impossible to expand the navbar and view the content within the <code>.navbar-collapse</code>.</p>
   </div>
+  <div class="bs-callout bs-callout-info">
+    <h4>Changing the collapsed mobile navbar breakpoint</h4>
+    <p>The navbar collapses into its vertical mobile view when the viewport is narrower than <code>@grid-float-breakpoint</code>, and expands into its horizontal non-mobile view when the viewport is at least <code>@grid-float-breakpoint</code> in width. Adjust this variable in the Less source to control when the navbar collapses/expands. The default value is <code>768px</code> (the smallest "small" or "tablet" screen).</p>
+  </div>
 
   <div class="bs-example">
     <nav class="navbar navbar-default" role="navigation">
