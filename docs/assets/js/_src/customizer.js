@@ -66,7 +66,12 @@ window.onload = function () { // wait for load in a dumb way because B-0
       callback(result.html_url, newUrl)
     })
     .error(function (err) {
-      showError('<strong>Ruh roh!</strong> Could not save gist file, configuration not saved.', err)
+      try {
+        showError('<strong>Ruh roh!</strong> Could not save gist file, configuration not saved.', err)
+      }
+      catch (sameErr) {
+        // deliberately ignore the error
+      }
       callback('<none>', '<none>')
     })
   }
