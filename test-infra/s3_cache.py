@@ -6,6 +6,8 @@ from os import environ, stat, remove as _delete_file
 from os.path import isfile, dirname, basename, abspath
 from hashlib import sha256
 from subprocess import check_call as run
+from contextlib import contextmanager
+from datetime import datetime
 
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
@@ -18,6 +20,15 @@ try:
     BUCKET_NAME = environ['TWBS_S3_BUCKET']
 except KeyError:
     raise SystemExit("TWBS_S3_BUCKET environment variable not set!")
+
+
+@contextmanager
+def timer():
+    start = datetime.utcnow()
+    yield
+    end = datetime.utcnow()
+    elapsed = end - start
+    print("\tDone. Took", int(elapsed.total_seconds()), "seconds.")
 
 
 def _sha256_of_file(filename):
@@ -47,19 +58,22 @@ def _tarball_filename_for(directory):
 
 def _create_tarball(directory):
     print("Creating tarball of {}...".format(directory))
-    run(['tar', '-czf', _tarball_filename_for(directory), '-C', dirname(directory), basename(directory)])
+    with timer():
+        run(['tar', '-czf', _tarball_filename_for(directory), '-C', dirname(directory), basename(directory)])
 
 
 def _extract_tarball(directory):
     print("Extracting tarball of {}...".format(directory))
-    run(['tar', '-xzf', _tarball_filename_for(directory), '-C', dirname(directory)])
+    with timer():
+        run(['tar', '-xzf', _tarball_filename_for(directory), '-C', dirname(directory)])
 
 
 def download(directory):
     _delete_file_quietly(NEED_TO_UPLOAD_MARKER)
     try:
         print("Downloading {} tarball from S3...".format(friendly_name))
-        key.get_contents_to_filename(_tarball_filename_for(directory))
+        with timer():
+            key.get_contents_to_filename(_tarball_filename_for(directory))
     except S3ResponseError as err:
         open(NEED_TO_UPLOAD_MARKER, 'a').close()
         print(err)
@@ -72,7 +86,8 @@ def download(directory):
 def upload(directory):
     _create_tarball(directory)
     print("Uploading {} tarball to S3... ({})".format(friendly_name, _tarball_size(directory)))
-    key.set_contents_from_filename(_tarball_filename_for(directory))
+    with timer():
+        key.set_contents_from_filename(_tarball_filename_for(directory))
     print("{} cache successfully updated.".format(friendly_name))
     _delete_file_quietly(NEED_TO_UPLOAD_MARKER)
 
