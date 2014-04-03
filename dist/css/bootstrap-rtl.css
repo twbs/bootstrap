@@ -6684,7 +6684,7 @@ button.close {
 
 .tooltip {
   position: absolute;
-  z-index: 1030;
+  z-index: 1070;
   display: block;
   font-size: 12px;
   line-height: 1.4;
@@ -6800,7 +6800,7 @@ button.close {
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 1010;
+  z-index: 1060;
   display: none;
   max-width: 276px;
   padding: 1px;
