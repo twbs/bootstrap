@@ -140,13 +140,13 @@ $(function () {
     $.support.transition = false
     var div = $('<div id="modal-test"><div class="contents"></div></div>')
     div
-      .bind('shown.bs.modal', function () {
+      .on('shown.bs.modal', function () {
         ok($('#modal-test').length, 'modal insterted into dom')
         $('.contents').click()
         ok($('#modal-test').is(':visible'), 'modal visible')
         $('#modal-test').click()
       })
-      .bind('hidden.bs.modal', function () {
+      .on('hidden.bs.modal', function () {
         ok(!$('#modal-test').is(':visible'), 'modal hidden')
         div.remove()
         start()
@@ -162,11 +162,11 @@ $(function () {
     var div = $('<div id="modal-test"><div class="contents"></div></div>')
 
     div
-      .bind('shown.bs.modal', function () {
+      .on('shown.bs.modal', function () {
         triggered = 0
         $('#modal-test').click()
       })
-      .bind('hide.bs.modal', function () {
+      .on('hide.bs.modal', function () {
         triggered += 1
         ok(triggered === 1, 'modal hide triggered once')
         start()
@@ -179,7 +179,7 @@ $(function () {
     $.support.transition = false
     var div = $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"></div></div></div>')
     div
-      .bind('shown.bs.modal', function () {
+      .on('shown.bs.modal', function () {
         $('#close').click()
         ok(!$('#modal-test').is(':visible'), 'modal hidden')
       })

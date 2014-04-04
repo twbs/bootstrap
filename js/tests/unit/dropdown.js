@@ -169,10 +169,10 @@ $(function () {
 
     dropdown
       .parent('.dropdown')
-      .bind('show.bs.dropdown', function () {
+      .on('show.bs.dropdown', function () {
         ok(true, 'show was called')
       })
-      .bind('hide.bs.dropdown', function () {
+      .on('hide.bs.dropdown', function () {
         ok(true, 'hide was called')
         start()
       })
@@ -203,10 +203,10 @@ $(function () {
 
     dropdown
       .parent('.dropdown')
-      .bind('shown.bs.dropdown', function () {
+      .on('shown.bs.dropdown', function () {
         ok(true, 'show was called')
       })
-      .bind('hidden.bs.dropdown', function () {
+      .on('hidden.bs.dropdown', function () {
         ok(true, 'hide was called')
         start()
       })
