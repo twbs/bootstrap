@@ -9,7 +9,7 @@ title: Bootstrap
     <!-- <h1>Bootstrap</h1> -->
     <p class="lead">The most popular front-end framework for developing responsive, mobile first projects on the web.</p>
     <p class="lead">
-      <a href="getting-started#download" class="btn btn-outline-inverse btn-lg" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Download', 'Download {{ site.current_version }}']);">Download Bootstrap</a>
+      <a href="getting-started#download" class="btn btn-outline-inverse btn-lg" onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download {{ site.current_version }}');">Download Bootstrap</a>
     </p>
     <p class="version">Currently v{{ site.current_version }}</p>
     {% include ads.html %}

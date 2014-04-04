@@ -356,7 +356,7 @@ lead: Customize Bootstrap's components, Less variables, and jQuery plugins to ge
 
     <p class="lead">Hooray! Your custom version of Bootstrap is now ready to be compiled. Just click the button below to finish the process.</p>
     <div class="bs-customize-download">
-      <button type="submit" id="btn-compile" disabled class="btn btn-block btn-lg btn-outline" onclick="_gaq.push(['_trackEvent', 'Customize', 'Download', 'Customize and Download']);">Compile and Download</button>
+      <button type="submit" id="btn-compile" disabled class="btn btn-block btn-lg btn-outline" onclick="ga('send', 'event', 'Customize', 'Download', 'Customize and Download');">Compile and Download</button>
     </div>
   </div><!-- /download -->
 </form>
