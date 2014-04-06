@@ -131,7 +131,7 @@
           that.sliding = false
           setTimeout(function () { that.$element.trigger('slid.bs.carousel') }, 0) // yes, "slid". not a typo. past tense of "to slide".
         })
-        .emulateTransitionEnd($active.css('transition-duration').slice(0, -1) * 1000)
+        .emulateTransitionEnd($active.css('transition-duration'))
     } else {
       $active.removeClass('active')
       $next.addClass('active')
