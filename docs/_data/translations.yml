@@ -13,6 +13,11 @@
   description: Bootstrap auf Deutsch
   url: http://holdirbootstrap.de/
 
+- name: Italian
+  code: it
+  description: Bootstrap in Italiano
+  url: http://www.hackerstribe.com/guide/IT-bootstrap-3.1.1/
+
 - name: Korean
   code: ko
   description: Bootstrap 한국어
