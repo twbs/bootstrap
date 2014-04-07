@@ -36,7 +36,7 @@ module.exports = function (grunt) {
 
     // Task configuration.
     clean: {
-      dist: ['dist', 'docs/dist']
+      dist: ['dist', 'docs/dist', 'docs/assets/js/docs.min.js', 'docs/assets/js/raw-files.min.js', 'docs/assets/js/customize.min.js']
     },
 
     jshint: {
