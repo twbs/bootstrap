@@ -5717,17 +5717,18 @@ button.close {
 .carousel-control .icon-prev,
 .carousel-control .glyphicon-chevron-left {
   left: 50%;
+  margin-left: -10px;
 }
 .carousel-control .icon-next,
 .carousel-control .glyphicon-chevron-right {
   right: 50%;
+  margin-right: -10px;
 }
 .carousel-control .icon-prev,
 .carousel-control .icon-next {
   width: 20px;
   height: 20px;
   margin-top: -10px;
-  margin-left: -10px;
   font-family: serif;
 }
 .carousel-control .icon-prev:before {
@@ -5788,8 +5789,15 @@ button.close {
     width: 30px;
     height: 30px;
     margin-top: -15px;
-    margin-left: -15px;
     font-size: 30px;
+  }
+  .carousel-control .glyphicon-chevron-left,
+  .carousel-control .icon-prev {
+    margin-left: -15px;
+  }
+  .carousel-control .glyphicon-chevron-right,
+  .carousel-control .icon-next {
+    margin-right: -15px;
   }
   .carousel-caption {
     right: 20%;

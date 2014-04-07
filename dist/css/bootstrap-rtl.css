@@ -7053,11 +7053,13 @@ button.close {
 .carousel-control .icon-prev,
 .carousel-control .glyphicon-chevron-left {
   right: 50%;
+  margin-right: -10px;
 }
 
 .carousel-control .icon-next,
 .carousel-control .glyphicon-chevron-right {
   left: 50%;
+  margin-left: -10px;
 }
 
 .carousel-control .icon-prev,
@@ -7065,7 +7067,6 @@ button.close {
   width: 20px;
   height: 20px;
   margin-top: -10px;
-  margin-right: -10px;
   font-family: serif;
 }
 
@@ -7134,8 +7135,17 @@ button.close {
     width: 30px;
     height: 30px;
     margin-top: -15px;
-    margin-right: -15px;
     font-size: 30px;
+  }
+
+  .carousel-control .glyphicon-chevron-left,
+  .carousel-control .icon-prev {
+    margin-right: -15px;
+  }
+
+  .carousel-control .glyphicon-chevron-right,
+  .carousel-control .icon-next {
+    margin-left: -15px;
   }
 
   .carousel-caption {
