@@ -15,7 +15,7 @@
   border-radius: .25em;
 
   // Add hover effects, but only for links
-  &[href] {
+  a& {
     &:hover,
     &:focus {
       color: @label-link-hover-color;
@@ -27,6 +27,12 @@
   // Empty labels collapse automatically (not available in IE8)
   &:empty {
     display: none;
+  }
+
+  // Quick fix for labels in buttons
+  .btn & {
+    position: relative;
+    top: -1px;
   }
 }
 

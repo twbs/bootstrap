@@ -1,24 +1,14 @@
 /* ========================================================================
- * Bootstrap: collapse.js v3.0.2
+ * Bootstrap: collapse.js v3.1.1
  * http://getbootstrap.com/javascript/#collapse
  * ========================================================================
- * Copyright 2013 Twitter, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2011-2014 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
 
-+function ($) { "use strict";
++function ($) {
+  'use strict';
 
   // COLLAPSE PUBLIC CLASS DEFINITION
   // ================================
@@ -61,16 +51,15 @@
 
     this.$element
       .removeClass('collapse')
-      .addClass('collapsing')
-      [dimension](0)
+      .addClass('collapsing')[dimension](0)
 
     this.transitioning = 1
 
-    var complete = function () {
+    var complete = function (e) {
+      if (e && e.target != this.$element[0]) return
       this.$element
         .removeClass('collapsing')
-        .addClass('in')
-        [dimension]('auto')
+        .addClass('collapse in')[dimension]('auto')
       this.transitioning = 0
       this.$element.trigger('shown.bs.collapse')
     }
@@ -81,8 +70,7 @@
 
     this.$element
       .one($.support.transition.end, $.proxy(complete, this))
-      .emulateTransitionEnd(350)
-      [dimension](this.$element[0][scrollSize])
+      .emulateTransitionEnd(350)[dimension](this.$element[0][scrollSize])
   }
 
   Collapse.prototype.hide = function () {
@@ -94,9 +82,7 @@
 
     var dimension = this.dimension()
 
-    this.$element
-      [dimension](this.$element[dimension]())
-      [0].offsetHeight
+    this.$element[dimension](this.$element[dimension]())[0].offsetHeight
 
     this.$element
       .addClass('collapsing')
@@ -105,7 +91,8 @@
 
     this.transitioning = 1
 
-    var complete = function () {
+    var complete = function (e) {
+      if (e && e.target != this.$element[0]) return
       this.transitioning = 0
       this.$element
         .trigger('hidden.bs.collapse')
@@ -137,6 +124,7 @@
       var data    = $this.data('bs.collapse')
       var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option)
 
+      if (!data && options.toggle && option == 'show') option = !option
       if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
       if (typeof option == 'string') data[option]()
     })
@@ -157,7 +145,7 @@
   // COLLAPSE DATA-API
   // =================
 
-  $(document).on('click.bs.collapse.data-api', '[data-toggle=collapse]', function (e) {
+  $(document).on('click.bs.collapse.data-api', '[data-toggle="collapse"]', function (e) {
     var $this   = $(this), href
     var target  = $this.attr('data-target')
         || e.preventDefault()
@@ -169,7 +157,7 @@
     var $parent = parent && $(parent)
 
     if (!data || !data.transitioning) {
-      if ($parent) $parent.find('[data-toggle=collapse][data-parent="' + parent + '"]').not($this).addClass('collapsed')
+      if ($parent) $parent.find('[data-toggle="collapse"][data-parent="' + parent + '"]').not($this).addClass('collapsed')
       $this[$target.hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
     }
 

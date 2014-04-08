@@ -23,10 +23,10 @@
   white-space: normal;
 
   // Offset the popover to account for the popover arrow
-  &.top     { margin-top: -10px; }
-  &.right   { margin-left: 10px; }
-  &.bottom  { margin-top: 10px; }
-  &.left    { margin-left: -10px; }
+  &.top     { margin-top: -@popover-arrow-width; }
+  &.right   { margin-left: @popover-arrow-width; }
+  &.bottom  { margin-top: @popover-arrow-width; }
+  &.left    { margin-left: -@popover-arrow-width; }
 }
 
 .popover-title {
@@ -37,7 +37,7 @@
   line-height: 18px;
   background-color: @popover-title-bg;
   border-bottom: 1px solid darken(@popover-title-bg, 5%);
-  border-radius: 5px 5px 0 0;
+  border-radius: (@border-radius-large - 1) (@border-radius-large - 1) 0 0;
 }
 
 .popover-content {
@@ -48,7 +48,7 @@
 //
 // .arrow is outer, .arrow:after is inner
 
-.popover .arrow {
+.popover > .arrow {
   &,
   &:after {
     position: absolute;
@@ -59,16 +59,16 @@
     border-style: solid;
   }
 }
-.popover .arrow {
+.popover > .arrow {
   border-width: @popover-arrow-outer-width;
 }
-.popover .arrow:after {
+.popover > .arrow:after {
   border-width: @popover-arrow-width;
   content: "";
 }
 
 .popover {
-  &.top .arrow {
+  &.top > .arrow {
     left: 50%;
     margin-left: -@popover-arrow-outer-width;
     border-bottom-width: 0;
@@ -83,7 +83,7 @@
       border-top-color: @popover-arrow-color;
     }
   }
-  &.right .arrow {
+  &.right > .arrow {
     top: 50%;
     left: -@popover-arrow-outer-width;
     margin-top: -@popover-arrow-outer-width;
@@ -98,7 +98,7 @@
       border-right-color: @popover-arrow-color;
     }
   }
-  &.bottom .arrow {
+  &.bottom > .arrow {
     left: 50%;
     margin-left: -@popover-arrow-outer-width;
     border-top-width: 0;
@@ -114,7 +114,7 @@
     }
   }
 
-  &.left .arrow {
+  &.left > .arrow {
     top: 50%;
     right: -@popover-arrow-outer-width;
     margin-top: -@popover-arrow-outer-width;

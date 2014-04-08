@@ -21,7 +21,7 @@
     // Account for jankitude on images
     > img,
     > a > img {
-      .img-responsive();
+      &:extend(.img-responsive);
       line-height: 1;
     }
   }
@@ -91,6 +91,7 @@
   // Hover/focus state
   &:hover,
   &:focus {
+    outline: 0;
     color: @carousel-control-color;
     text-decoration: none;
     .opacity(.9);
@@ -109,19 +110,21 @@
   .icon-prev,
   .glyphicon-chevron-left {
     left: 50%;
+    margin-left: -10px;
   }
   .icon-next,
   .glyphicon-chevron-right {
     right: 50%;
+    margin-right: -10px;
   }
   .icon-prev,
   .icon-next {
     width:  20px;
     height: 20px;
     margin-top: -10px;
-    margin-left: -10px;
     font-family: serif;
   }
+
 
   .icon-prev {
     &:before {
@@ -205,15 +208,22 @@
 
   // Scale up the controls a smidge
   .carousel-control {
-    .glyphicons-chevron-left,
-    .glyphicons-chevron-right,
+    .glyphicon-chevron-left,
+    .glyphicon-chevron-right,
     .icon-prev,
     .icon-next {
       width: 30px;
       height: 30px;
       margin-top: -15px;
-      margin-left: -15px;
       font-size: 30px;
+    }
+    .glyphicon-chevron-left,
+    .icon-prev {
+      margin-left: -15px;
+    }
+    .glyphicon-chevron-right,
+    .icon-next {
+      margin-right: -15px;
     }
   }
 
