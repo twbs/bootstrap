@@ -78,6 +78,9 @@ module.exports = function (grunt) {
         src: '<%= jshint.test.src %>'
       },
       assets: {
+        options: {
+          requireCamelCaseOrUpperCaseIdentifiers: null
+        },
         src: '<%= jshint.assets.src %>'
       }
     },

@@ -43,7 +43,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     return match && decodeURIComponent(match[1].replace(/\+/g, ' '))
   }
 
-  function createGist(configJson) {
+  function createGist(configJson, callback) {
     var data = {
       description: 'Bootstrap Customizer Config',
       'public': true,
@@ -61,10 +61,18 @@ window.onload = function () { // wait for load in a dumb way because B-0
     })
     .success(function (result) {
       var origin = window.location.protocol + '//' + window.location.host
-      history.replaceState(false, document.title, origin + window.location.pathname + '?id=' + result.id)
+      var newUrl = origin + window.location.pathname + '?id=' + result.id
+      history.replaceState(false, document.title, newUrl)
+      callback(result.html_url, newUrl)
     })
     .error(function (err) {
-      showError('<strong>Ruh roh!</strong> Could not save gist file, configuration not saved.', err)
+      try {
+        showError('<strong>Ruh roh!</strong> Could not save gist file, configuration not saved.', err)
+      }
+      catch (sameErr) {
+        // deliberately ignore the error
+      }
+      callback('<none>', '<none>')
     })
   }
 
@@ -155,7 +163,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     complete(content)
   }
 
-  function generateCustomCSS(vars) {
+  function generateCustomLess(vars) {
     var result = ''
 
     for (var key in vars) {
@@ -178,10 +186,20 @@ window.onload = function () { // wait for load in a dumb way because B-0
     var IMPORT_REGEX = /^@import \"(.*?)\";$/
     var lessLines = __less[lessFilename].split('\n')
 
-    for (var i = 0, imports = []; i < lessLines.length; i++) {
-      var match = IMPORT_REGEX.exec(lessLines[i])
-      if (match) imports.push(match[1])
-    }
+    var imports = []
+    $.each(lessLines, function (index, lessLine) {
+      var match = IMPORT_REGEX.exec(lessLine)
+      if (match) {
+        var importee = match[1]
+        var transitiveImports = includedLessFilenames(importee)
+        $.each(transitiveImports, function (index, transitiveImportee) {
+          if ($.inArray(transitiveImportee, imports) === -1) {
+            imports.push(transitiveImportee)
+          }
+        })
+        imports.push(importee)
+      }
+    })
 
     return imports
   }
@@ -189,7 +207,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
   function generateLESS(lessFilename, lessFileIncludes, vars) {
     var lessSource = __less[lessFilename]
 
-    $.each(includedLessFilenames(lessFilename), function(index, filename) {
+    var lessFilenames = includedLessFilenames(lessFilename)
+    $.each(lessFilenames, function(index, filename) {
       var fileInclude = lessFileIncludes[filename]
 
       // Files not explicitly unchecked are compiled into the final stylesheet.
@@ -200,7 +219,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
       // Custom variables are added after Bootstrap variables so the custom
       // ones take precedence.
-      if (('variables.less' === filename) && vars) lessSource += generateCustomCSS(vars)
+      if (('variables.less' === filename) && vars) lessSource += generateCustomLess(vars)
     })
 
     lessSource = lessSource.replace(/@import[^\n]*/gi, '') //strip any imports
@@ -221,7 +240,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     })
   }
 
-  function generateCSS() {
+  function generateCSS(preamble) {
     var oneChecked = false
     var lessFileIncludes = {}
     $('#less-section input').each(function() {
@@ -242,8 +261,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
         $(this).val() && (vars[$(this).prev().text()] = $(this).val())
       })
 
-    var bsLessSource    = generateLESS('bootstrap.less', lessFileIncludes, vars)
-    var themeLessSource = generateLESS('theme.less',     lessFileIncludes, vars)
+    var bsLessSource    = preamble + generateLESS('bootstrap.less', lessFileIncludes, vars)
+    var themeLessSource = preamble + generateLESS('theme.less',     lessFileIncludes, vars)
 
     try {
       compileLESS(bsLessSource, 'bootstrap', result)
@@ -255,7 +274,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     return result
   }
 
-  function generateJavascript() {
+  function generateJavascript(preamble) {
     var $checked = $('#plugin-section input:checked')
     if (!$checked.length) return false
 
@@ -265,8 +284,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
       .join('\n')
 
     return {
-      'bootstrap.js': js,
-      'bootstrap.min.js': cw + uglify(js)
+      'bootstrap.js': preamble + js,
+      'bootstrap.min.js': preamble + cw + uglify(js)
     }
   }
 
@@ -322,10 +341,19 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
     $compileBtn.attr('disabled', 'disabled')
 
-    generateZip(generateCSS(), generateJavascript(), generateFonts(), configJson, function (blob) {
-      $compileBtn.removeAttr('disabled')
-      saveAs(blob, 'bootstrap.zip')
-      createGist(configJson)
+    createGist(configJson, function (gistUrl, customizerUrl) {
+      configData.customizerUrl = customizerUrl
+      configJson = JSON.stringify(configData, null, 2)
+
+      var preamble = '/*!\n' +
+        ' * Generated using the Bootstrap Customizer (' + customizerUrl + ')\n' +
+        ' * Config saved to config.json and ' + gistUrl + '\n' +
+        ' */\n'
+
+      generateZip(generateCSS(preamble), generateJavascript(preamble), generateFonts(), configJson, function (blob) {
+        $compileBtn.removeAttr('disabled')
+        saveAs(blob, 'bootstrap.zip')
+      })
     })
   });
 
