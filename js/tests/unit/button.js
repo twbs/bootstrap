@@ -98,7 +98,6 @@ $(function () {
 
     var btn1 = $(group.children()[0])
     var btn2 = $(group.children()[1])
-    var btn3 = $(group.children()[2])
 
     group.appendTo($('#qunit-fixture'))
 

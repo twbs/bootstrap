@@ -8,5 +8,6 @@
   "eqnull"   : true,
   "expr"     : true,
   "laxbreak" : true,
+  "unused"   : true,
   "validthis": true
 }

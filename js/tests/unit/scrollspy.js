@@ -18,7 +18,6 @@ $(function () {
 
   test('should switch active class on scroll', function () {
     var sectionHTML = '<div id="masthead"></div>',
-        $section = $(sectionHTML).append('#qunit-fixture'),
         topbarHTML = '<div class="topbar">' +
         '<div class="topbar-inner">' +
         '<div class="container">' +
@@ -30,6 +29,7 @@ $(function () {
         '</div>',
         $topbar = $(topbarHTML).scrollspy()
 
+    $(sectionHTML).append('#qunit-fixture')
     ok($topbar.find('.active', true))
   })
 
