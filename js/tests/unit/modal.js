@@ -81,7 +81,22 @@ $(function () {
       })
       .modal('show')
   })
-
+  test('should clear innerHTML when hide method is called and cache is false', function () {
+    stop()
+    $.support.transition = false
+    $('<div id="modal-test" data-cache="false"></div>')
+    .on('shown.bs.modal', function () {
+      ok($('#modal-test').is(':visible'), 'modal visible')
+      ok($('#modal-test').length, 'modal inserted into dom')
+      $(this).modal('hide')
+    })
+    .on('hidden.bs.modal', function () {
+      ok($('#modal-test').html().length === 0, 'modal content clear')
+      $(this).remove()
+      start()
+    })
+    .modal('show')
+  })
   test('should toggle when toggle is called', function () {
     stop()
     $.support.transition = false
