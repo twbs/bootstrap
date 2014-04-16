@@ -59,7 +59,7 @@
       if (e && e.target != this.$element[0]) return
       this.$element
         .removeClass('collapsing')
-        .addClass('collapse in')[dimension]('auto')
+        .addClass('collapse in')[dimension]('')
       this.transitioning = 0
       this.$element.trigger('shown.bs.collapse')
     }

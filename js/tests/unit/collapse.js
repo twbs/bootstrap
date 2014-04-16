@@ -19,7 +19,7 @@ $(function () {
   test('should show a collapsed element', function () {
     var el = $('<div class="collapse"></div>').collapse('show')
     ok(el.hasClass('in'), 'has class in')
-    ok(/height/.test(el.attr('style')), 'has height set')
+    ok(!/height/.test(el.attr('style')), 'has height reset')
   })
 
   test('should hide a collapsed element', function () {
@@ -51,7 +51,7 @@ $(function () {
         ok(this.style.height == '0px')
       })
       .on('shown.bs.collapse', function () {
-        ok(this.style.height == 'auto')
+        ok(this.style.height === '')
         start()
       })
       .collapse('show')
