@@ -25,6 +25,11 @@
     <h4>Only for use on empty elements</h4>
     <p>Icon classes should only be used on elements that contain no text content and have no child elements.</p>
   </div>
+  <div class="bs-callout bs-callout-info">
+    <h4>Changing the icon font location</h4>
+    <p>By default, Bootstrap assumes that the icon font files will be located in the <code>../fonts/</code> directory relative to your deployed CSS. For example, if your CSS file is at <code>http://example.com/foobar/css/bootstrap.css</code>, then your font files should be at <code>http://example.com/foobar/fonts/glyphicons-halflings-regular.woff</code>, etc.</p>
+    <p>If you are placing the icon font files elsewhere or changing their filenames, you will need to adjust the <code>@icon-font-path</code> and/or <code>@icon-font-name</code> Less variables accordingly.</p>
+  </div>
 {% highlight html %}
 <span class="glyphicon glyphicon-search"></span>
 {% endhighlight %}
