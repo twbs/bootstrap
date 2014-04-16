@@ -15,9 +15,10 @@
 
   var Affix = function (element, options) {
     this.options = $.extend({}, Affix.DEFAULTS, options)
-    this.$window = this.options.target ? $(this.options.target) : $(window)
 
-    this.$window.on('scroll.bs.affix.data-api', $.proxy(this.checkPosition, this))
+    this.$target = $(this.options.target)
+
+    this.$target.on('scroll.bs.affix.data-api', $.proxy(this.checkPosition, this))
                 .on('click.bs.affix.data-api',  $.proxy(this.checkPositionWithEventLoop, this))
 
     this.$element     = $(element)
@@ -32,12 +33,13 @@
 
   Affix.DEFAULTS = {
     offset: 0
+    , target: window
   }
 
   Affix.prototype.getPinnedOffset = function () {
     if (this.pinnedOffset) return this.pinnedOffset
     this.$element.removeClass(Affix.RESET).addClass('affix')
-    var scrollTop = this.$window.scrollTop()
+    var scrollTop = this.$target.scrollTop()
     var position  = this.$element.offset()
     return (this.pinnedOffset = position.top - scrollTop)
   }
@@ -50,7 +52,7 @@
     if (!this.$element.is(':visible')) return
 
     var scrollHeight = $(document).height()
-    var scrollTop    = this.$window.scrollTop()
+    var scrollTop    = this.$target.scrollTop()
     var position     = this.$element.offset()
     var offset       = this.options.offset
     var offsetTop    = offset.top
