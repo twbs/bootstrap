@@ -32,8 +32,8 @@
   Affix.RESET = 'affix affix-top affix-bottom'
 
   Affix.DEFAULTS = {
-    offset: 0
-    , target: window
+    offset: 0,
+    target: window
   }
 
   Affix.prototype.getPinnedOffset = function () {
