@@ -33,7 +33,8 @@
   Modal.DEFAULTS = {
     backdrop: true,
     keyboard: true,
-    show: true
+    show: true,
+    cache: true
   }
 
   Modal.prototype.toggle = function (_relatedTarget) {
@@ -146,6 +147,11 @@
     this.$element.hide()
     this.backdrop(function () {
       that.removeBackdrop()
+      if (!that.options.cache) {
+        that.$element
+          .removeData('bs.modal')
+          .empty()
+      }
       that.$element.trigger('hidden.bs.modal')
     })
   }
