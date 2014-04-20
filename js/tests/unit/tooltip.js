@@ -273,7 +273,7 @@ $(function () {
   test('should show tooltip with delegate selector on click', function () {
     var div = $('<div><a href="#" rel="tooltip" title="Another tooltip"></a></div>')
     div.appendTo('#qunit-fixture')
-                     .tooltip({ selector: 'a[rel=tooltip]', trigger: 'click' })
+                     .tooltip({ selector: 'a[rel="tooltip"]', trigger: 'click' })
     div.find('a').trigger('click')
     ok($('.tooltip').is('.fade.in'), 'tooltip is faded in')
   })

@@ -100,7 +100,7 @@ $(function () {
       .modal('toggle')
   })
 
-  test('should remove from dom when click [data-dismiss=modal]', function () {
+  test('should remove from dom when click [data-dismiss="modal"]', function () {
     stop()
     $.support.transition = false
     var div = $('<div id="modal-test"><span class="close" data-dismiss="modal"></span></div>')
@@ -174,7 +174,7 @@ $(function () {
       .modal('show')
   })
 
-  test('should close reopened modal with [data-dismiss=modal] click', function () {
+  test('should close reopened modal with [data-dismiss="modal"] click', function () {
     stop()
     $.support.transition = false
     var div = $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"></div></div></div>')
