@@ -276,8 +276,27 @@ window.onload = function () { // wait for load in a dumb way because B-0
     return result
   }
 
-  function generateJavascript(preamble) {
+  function uglify(js) {
+    var ast = UglifyJS.parse(js)
+    ast.figure_out_scope()
+
+    var compressor = UglifyJS.Compressor()
+    var compressedAst = ast.transform(compressor)
+
+    compressedAst.figure_out_scope()
+    compressedAst.compute_char_frequency()
+    compressedAst.mangle_names()
+
+    var stream = UglifyJS.OutputStream()
+    compressedAst.print(stream)
+
+    return stream.toString()
+  }
+
+  function generateJS(preamble) {
     var $checked = $('#plugin-section input:checked')
+    var jqueryCheck = 'if (typeof jQuery === "undefined") { throw new Error("Bootstrap\'s JavaScript requires jQuery") }\n\n'
+
     if (!$checked.length) return false
 
     var js = $checked
@@ -285,9 +304,12 @@ window.onload = function () { // wait for load in a dumb way because B-0
       .toArray()
       .join('\n')
 
+    preamble = cw + preamble
+    js = jqueryCheck + js
+
     return {
       'bootstrap.js': preamble + js,
-      'bootstrap.min.js': preamble + cw + uglify(js)
+      'bootstrap.min.js': preamble + uglify(js)
     }
   }
 
@@ -351,7 +373,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
         ' * Config saved to config.json and ' + gistUrl + '\n' +
         ' */\n'
 
-      generateZip(generateCSS(preamble), generateJavascript(preamble), generateFonts(), configJson, function (blob) {
+      generateZip(generateCSS(preamble), generateJS(preamble), generateFonts(), configJson, function (blob) {
         $compileBtn.removeAttr('disabled')
         saveAs(blob, 'bootstrap.zip')
       })
