@@ -195,3 +195,23 @@ By contributing your code, you agree to license your contribution under the [MIT
 
 Prior to v3.1.0, Bootstrap was released under the Apache License v2.0.
 
+
+## Release checklist
+
+To release a new version of Bootstrap, follow these steps:
+
+1. Close ship list issue for the release.
+2. Punt remaining issues to next milestone and close the milestone for the release.
+3. Open new release issue that includes this checklist.
+4. Set date and time for release
+5. Ping folks to coordinate release (mainly @jdorfman for BootstrapCDN).
+6. Update version numbers using `grunt change-version-number --oldver=A.B.C --newver=X.Y.Z`. Review the changes and stage them manually.
+7. Manually update `dev-master` version setting in `composer.json`.
+8. Run `grunt` one last time.
+9. `git push origin master`
+10. `git co gh-pages` and `git merge master`
+11. Generate `bootstrap-X.Y.Z-dist.zip` file for release.
+12. Create release on GitHub with `/dist/` folder and release notes.
+13. `git push origin gh-pages`
+14. Publish blog post.
+15. Tweet tweet.
