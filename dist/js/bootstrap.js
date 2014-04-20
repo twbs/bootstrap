@@ -243,7 +243,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
   // BUTTON DATA-API
   // ===============
 
-  $(document).on('click.bs.button.data-api', '[data-toggle^=button]', function (e) {
+  $(document).on('click.bs.button.data-api', '[data-toggle^="button"]', function (e) {
     var $btn = $(e.target)
     if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
     $btn.button('toggle')
@@ -523,7 +523,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
       }
       this.$element
         .removeClass('collapsing')
-        .addClass('collapse in')[dimension]('auto')
+        .addClass('collapse in')[dimension]('')
       this.transitioning = 0
       this.$element.trigger('shown.bs.collapse')
     }
@@ -719,6 +719,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
   }
 
   function clearMenus(e) {
+    if (e && e.which === 3) return
     $(backdrop).remove()
     $(toggle).each(function () {
       var $parent = getParent($(this))
@@ -929,7 +930,6 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     var that = this
     this.$element.hide()
     this.backdrop(function () {
-      that.removeBackdrop()
       that.$element.trigger('hidden.bs.modal')
     })
   }
@@ -940,6 +940,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
   }
 
   Modal.prototype.backdrop = function (callback) {
+    var that = this
     var animate = this.$element.hasClass('fade') ? 'fade' : ''
 
     if (this.isShown && this.options.backdrop) {
@@ -970,11 +971,15 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     } else if (!this.isShown && this.$backdrop) {
       this.$backdrop.removeClass('in')
 
+      var callbackRemove = function() {
+        that.removeBackdrop()
+        callback && callback()
+      }
       $.support.transition && this.$element.hasClass('fade') ?
         this.$backdrop
-          .one($.support.transition.end, callback)
+          .one($.support.transition.end, callbackRemove)
           .emulateTransitionEnd(150) :
-        callback()
+        callbackRemove()
 
     } else if (callback) {
       callback()
