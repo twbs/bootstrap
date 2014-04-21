@@ -4,11 +4,11 @@ $(function () {
 
   test('should provide no conflict', function () {
     var carousel = $.fn.carousel.noConflict()
-    ok(!$.fn.carousel, 'carousel was set back to undefined (org value)')
+    ok(!$.fn.carousel, 'carousel was set back to undefined (orig value)')
     $.fn.carousel = carousel
   })
 
-  test('should be defined on jquery object', function () {
+  test('should be defined on jQuery object', function () {
     ok($(document.body).carousel, 'carousel method is defined')
   })
 
@@ -98,7 +98,7 @@ $(function () {
     $('[data-slide]').first().click()
     $('#myCarousel').attr('data-interval', 1860)
     $('[data-slide]').first().click()
-    ok($('#myCarousel').data('bs.carousel').options.interval == 1814, 'attributes should be read only on intitialization')
+    ok($('#myCarousel').data('bs.carousel').options.interval == 1814, 'attributes should be read only on initialization')
     $('#myCarousel').remove()
 
     template.attr('data-interval', false)
