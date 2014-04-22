@@ -90,9 +90,7 @@
   // TAB PLUGIN DEFINITION
   // =====================
 
-  var old = $.fn.tab
-
-  $.fn.tab = function ( option ) {
+  function Plugin( option ) {
     return this.each(function () {
       var $this = $(this)
       var data  = $this.data('bs.tab')
@@ -102,6 +100,9 @@
     })
   }
 
+  var old = $.fn.tab
+
+  $.fn.tab             = Plugin
   $.fn.tab.Constructor = Tab
 
 
@@ -119,7 +120,7 @@
 
   $(document).on('click.bs.tab.data-api', '[data-toggle="tab"], [data-toggle="pill"]', function (e) {
     e.preventDefault()
-    $(this).tab('show')
+    Plugin.call($(this), 'show')
   })
 
 }(jQuery);
