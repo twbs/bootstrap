@@ -24,6 +24,25 @@
       &:extend(.img-responsive);
       line-height: 1;
     }
+
+    // WebKit CSS3 transforms for supported devices
+    @media all and (-webkit-transform-3d) {
+      .transition-transform(~'0.6s ease-in-out');
+      .backface-visibility(~'hidden');
+      .perspective(1000);
+      &.next, &.active.right {
+        .translate3d(100%, 0, 0);
+        left: 0;
+      }
+      &.prev, &.active.left {
+        .translate3d(-100%, 0, 0);
+        left: 0;
+      }
+      &.next.left, &.prev.right, &.active {
+        .translate3d(0, 0, 0);
+        left: 0;
+      }
+    }
   }
 
   > .active,
@@ -228,28 +247,5 @@
   // Move up the indicators
   .carousel-indicators {
     bottom: 20px;
-  }
-}
-
-// WebKit CSS3 transforms for supported devices
-@media all and (-webkit-transform-3d) {
-  .carousel {
-    .item {
-      .transition-transform(~'0.6s ease-in-out');
-      .backface-visibility(~'hidden');
-      .perspective(1000);
-      &.next, &.active.right {
-        .translate3d(100%, 0, 0);
-        left: 0;
-      }
-      &.prev, &.active.left {
-        .translate3d(-100%, 0, 0);
-        left: 0;
-      }
-      &.next.left, &.prev.right, &.active {
-        .translate3d(0, 0, 0);
-        left: 0;
-      }
-    }
   }
 }
