@@ -5895,6 +5895,10 @@ button.close {
 }
 .affix {
   position: fixed;
+  -webkit-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+       -o-transform: translateZ(0);
+          transform: translateZ(0);
 }
 @-ms-viewport {
   width: device-width;
