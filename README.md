@@ -153,7 +153,7 @@ For more information on SemVer, please visit <http://semver.org/>.
 
 
 
-## Authors
+## Creators
 
 **Mark Otto**
 
