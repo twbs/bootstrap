@@ -240,3 +240,22 @@
   // Remove the top rounded corners here since there is a hard edge above the menu
   .border-top-radius(0);
 }
+
+
+
+// Responsive nav-tabs
+// -------------------------
+// Nav tabs do not respond well to overflow on mobile devices
+// Converts nav-tabs to nav-stacked on mobile
+// Replace usages of class="nav-tabs" with class="nav-stacked-to-tabs"
+
+.nav-stacked-to-tabs {
+	@media (max-width: @screen-xs-max) {
+		.nav-stacked;
+	}
+}
+.nav-stacked-to-tabs {
+	@media (min-width: @screen-sm-min) {
+		.nav-tabs;
+	}
+}
