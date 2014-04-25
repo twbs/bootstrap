@@ -1019,12 +1019,6 @@ h1[id] {
   .bs-navbar-bottom-example .navbar-fixed-bottom {
     position: absolute;
   }
-  .bs-navbar-top-example {
-    border-radius: 0 0 4px 4px;
-  }
-  .bs-navbar-bottom-example {
-    border-radius: 4px 4px 0 0;
-  }
 }
 
 /* Pagination */
