@@ -16,6 +16,10 @@
     <h4>Popovers in button groups and input groups require special setting</h4>
     <p>When using popovers on elements within a <code>.btn-group</code> or an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> (documented below) to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the popover is triggered).</p>
   </div>
+  <div class="bs-callout bs-callout-warning">
+    <h4>Don't try to show popovers on hidden elements</h4>
+    <p>Invoking <code>$(...).popover('show')</code> when the target element is <code>display: none;</code> will cause the popover to be incorrectly positioned.</p>
+  </div>
   <div class="bs-callout bs-callout-info">
     <h4>Popovers on disabled elements require wrapper elements</h4>
     <p>To add a popover to a <code>disabled</code> or <code>.disabled</code> element, put the element inside of a <code>&lt;div&gt;</code> and apply the popover to that <code>&lt;div&gt;</code> instead.</p>
