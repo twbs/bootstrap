@@ -156,12 +156,12 @@
 
   li {
     display: inline-block;
-    width:  10px;
-    height: 10px;
-    margin: 1px;
+    width:  @carousel-indicator-width;
+    height: @carousel-indicator-height;
+    margin: @carousel-indicator-margin;
     text-indent: -999px;
     border: 1px solid @carousel-indicator-border-color;
-    border-radius: 10px;
+    border-radius: @carousel-indicator-border-radius;
     cursor: pointer;
 
     // IE8-9 hack for event handling
@@ -177,8 +177,8 @@
   }
   .active {
     margin: 0;
-    width:  12px;
-    height: 12px;
+    width:  @carousel-indicator-active-width;
+    height: @carousel-indicator-active-height;
     background-color: @carousel-indicator-active-bg;
   }
 }
