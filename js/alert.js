@@ -32,7 +32,10 @@
     if (e) e.preventDefault()
 
     if (!$parent.length) {
-      $parent = $this.hasClass('alert') ? $this : $this.parent()
+      $parent = $this.hasClass('alert') ? $this : $this.parents('.alert')
+      if (!$parent.length) {
+        $parent = $this.parent()
+      }
     }
 
     $parent.trigger(e = $.Event('close.bs.alert'))
