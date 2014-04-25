@@ -116,7 +116,10 @@
 
     $.support.transition && this.$element.hasClass('fade') ?
       this.$element
-        .one($.support.transition.end, $.proxy(this.hideModal, this))
+        .one($.support.transition.end, $.proxy(function (e) {
+          if (!$(e.target).is(this.$element)) return
+          this.hideModal()
+        }, this))
         .emulateTransitionEnd(300) :
       this.hideModal()
   }
