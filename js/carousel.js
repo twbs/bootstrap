@@ -104,9 +104,9 @@
     if ($next.hasClass('active')) return this.sliding = false
 
     var relatedTarget = $next[0]
-    var e = $.Event('slide.bs.carousel', { relatedTarget: relatedTarget, direction: direction })
-    this.$element.trigger(e)
-    if (e.isDefaultPrevented()) return
+    var slideEvent = $.Event('slide.bs.carousel', { relatedTarget: relatedTarget, direction: direction })
+    this.$element.trigger(slideEvent)
+    if (slideEvent.isDefaultPrevented()) return
 
     this.sliding = true
 
