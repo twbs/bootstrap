@@ -53,6 +53,22 @@
       $('.bs-top').affix()
     }, 100)
 
+    // theme toggler
+    ;(function () {
+      var stylesheetLink = $('#bs-theme-stylesheet')
+      var themeBtn = $('#bs-theme-btn')
+      themeBtn.click(function () {
+        if (stylesheetLink.attr('href')) {
+          stylesheetLink.attr('href', '')
+          themeBtn.text('Activate Theme')
+        }
+        else {
+          stylesheetLink.attr('href', stylesheetLink.attr('data-href'))
+          themeBtn.text('Deactivate Theme')
+        }
+      })
+    })();
+
     // tooltip demo
     $('.tooltip-demo').tooltip({
       selector: '[data-toggle="tooltip"]',
