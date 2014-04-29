@@ -5,28 +5,32 @@
 
 // Mixin and adjust the regular image class
 .thumbnail {
-  .img-thumbnail();
-  display: block; // Override the inline-block from `.img-thumbnail`
+  display: block;
+  padding: @thumbnail-padding;
   margin-bottom: @line-height-computed;
+  line-height: @line-height-base;
+  background-color: @thumbnail-bg;
+  border: 1px solid @thumbnail-border;
+  border-radius: @thumbnail-border-radius;
+  .transition(all .2s ease-in-out);
 
-  > img {
-    .img-responsive();
+  > img,
+  a > img {
+    &:extend(.img-responsive);
+    margin-left: auto;
+    margin-right: auto;
   }
-}
 
+  // Add a hover state for linked versions only
+  a&:hover,
+  a&:focus,
+  a&.active {
+    border-color: @link-color;
+  }
 
-// Add a hover state for linked versions only
-a.thumbnail:hover,
-a.thumbnail:focus {
-  border-color: @link-color;
-}
-
-// Images and captions
-.thumbnail > img {
-  margin-left: auto;
-  margin-right: auto;
-}
-.thumbnail .caption {
-  padding: @thumbnail-caption-padding;
-  color: @thumbnail-caption-color;
+  // Image captions
+  .caption {
+    padding: @thumbnail-caption-padding;
+    color: @thumbnail-caption-color;
+  }
 }

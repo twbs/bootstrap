@@ -1,25 +1,15 @@
 /* ========================================================================
- * Bootstrap: tooltip.js v3.0.0
- * http://twbs.github.com/bootstrap/javascript.html#tooltip
+ * Bootstrap: tooltip.js v3.1.1
+ * http://getbootstrap.com/javascript/#tooltip
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ========================================================================
- * Copyright 2012 Twitter, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2011-2014 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
 
-+function ($) { "use strict";
++function ($) {
+  'use strict';
 
   // TOOLTIP PUBLIC CLASS DEFINITION
   // ===============================
@@ -36,22 +26,27 @@
   }
 
   Tooltip.DEFAULTS = {
-    animation: true
-  , placement: 'top'
-  , selector: false
-  , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
-  , trigger: 'hover focus'
-  , title: ''
-  , delay: 0
-  , html: false
-  , container: false
+    animation: true,
+    placement: 'top',
+    selector: false,
+    template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
+    trigger: 'hover focus',
+    title: '',
+    delay: 0,
+    html: false,
+    container: false,
+    viewport: {
+      selector: 'body',
+      padding: 0
+    }
   }
 
   Tooltip.prototype.init = function (type, element, options) {
-    this.enabled  = true
-    this.type     = type
-    this.$element = $(element)
-    this.options  = this.getOptions(options)
+    this.enabled   = true
+    this.type      = type
+    this.$element  = $(element)
+    this.options   = this.getOptions(options)
+    this.$viewport = this.options.viewport && $(this.options.viewport.selector || this.options.viewport)
 
     var triggers = this.options.trigger.split(' ')
 
@@ -61,8 +56,8 @@
       if (trigger == 'click') {
         this.$element.on('click.' + this.type, this.options.selector, $.proxy(this.toggle, this))
       } else if (trigger != 'manual') {
-        var eventIn  = trigger == 'hover' ? 'mouseenter' : 'focus'
-        var eventOut = trigger == 'hover' ? 'mouseleave' : 'blur'
+        var eventIn  = trigger == 'hover' ? 'mouseenter' : 'focusin'
+        var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout'
 
         this.$element.on(eventIn  + '.' + this.type, this.options.selector, $.proxy(this.enter, this))
         this.$element.on(eventOut + '.' + this.type, this.options.selector, $.proxy(this.leave, this))
@@ -83,8 +78,8 @@
 
     if (options.delay && typeof options.delay == 'number') {
       options.delay = {
-        show: options.delay
-      , hide: options.delay
+        show: options.delay,
+        hide: options.delay
       }
     }
 
@@ -133,12 +128,13 @@
   }
 
   Tooltip.prototype.show = function () {
-    var e = $.Event('show.bs.'+ this.type)
+    var e = $.Event('show.bs.' + this.type)
 
     if (this.hasContent() && this.enabled) {
       this.$element.trigger(e)
 
       if (e.isDefaultPrevented()) return
+      var that = this;
 
       var $tip = this.tip()
 
@@ -166,18 +162,14 @@
       var actualHeight = $tip[0].offsetHeight
 
       if (autoPlace) {
-        var $parent = this.$element.parent()
-
         var orgPlacement = placement
-        var docScroll    = document.documentElement.scrollTop || document.body.scrollTop
-        var parentWidth  = this.options.container == 'body' ? window.innerWidth  : $parent.outerWidth()
-        var parentHeight = this.options.container == 'body' ? window.innerHeight : $parent.outerHeight()
-        var parentLeft   = this.options.container == 'body' ? 0 : $parent.offset().left
+        var $parent      = this.$element.parent()
+        var parentDim    = this.getPosition($parent)
 
-        placement = placement == 'bottom' && pos.top   + pos.height  + actualHeight - docScroll > parentHeight  ? 'top'    :
-                    placement == 'top'    && pos.top   - docScroll   - actualHeight < 0                         ? 'bottom' :
-                    placement == 'right'  && pos.right + actualWidth > parentWidth                              ? 'left'   :
-                    placement == 'left'   && pos.left  - actualWidth < parentLeft                               ? 'right'  :
+        placement = placement == 'bottom' && pos.top   + pos.height       + actualHeight - parentDim.scroll > parentDim.height ? 'top'    :
+                    placement == 'top'    && pos.top   - parentDim.scroll - actualHeight < 0                                   ? 'bottom' :
+                    placement == 'right'  && pos.right + actualWidth      > parentDim.width                                    ? 'left'   :
+                    placement == 'left'   && pos.left  - actualWidth      < parentDim.left                                     ? 'right'  :
                     placement
 
         $tip
@@ -188,12 +180,21 @@
       var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
 
       this.applyPlacement(calculatedOffset, placement)
-      this.$element.trigger('shown.bs.' + this.type)
+      this.hoverState = null
+
+      var complete = function() {
+        that.$element.trigger('shown.bs.' + that.type)
+      }
+
+      $.support.transition && this.$tip.hasClass('fade') ?
+        $tip
+          .one($.support.transition.end, complete)
+          .emulateTransitionEnd(150) :
+        complete()
     }
   }
 
-  Tooltip.prototype.applyPlacement = function(offset, placement) {
-    var replace
+  Tooltip.prototype.applyPlacement = function (offset, placement) {
     var $tip   = this.tip()
     var width  = $tip[0].offsetWidth
     var height = $tip[0].offsetHeight
@@ -209,42 +210,42 @@
     offset.top  = offset.top  + marginTop
     offset.left = offset.left + marginLeft
 
-    $tip
-      .offset(offset)
-      .addClass('in')
+    // $.fn.offset doesn't round pixel values
+    // so we use setOffset directly with our own function B-0
+    $.offset.setOffset($tip[0], $.extend({
+      using: function (props) {
+        $tip.css({
+          top: Math.round(props.top),
+          left: Math.round(props.left)
+        })
+      }
+    }, offset), 0)
+
+    $tip.addClass('in')
 
     // check to see if placing tip in new offset caused the tip to resize itself
     var actualWidth  = $tip[0].offsetWidth
     var actualHeight = $tip[0].offsetHeight
 
     if (placement == 'top' && actualHeight != height) {
-      replace = true
       offset.top = offset.top + height - actualHeight
     }
 
-    if (/bottom|top/.test(placement)) {
-      var delta = 0
+    var delta = this.getViewportAdjustedDelta(placement, offset, actualWidth, actualHeight)
 
-      if (offset.left < 0) {
-        delta       = offset.left * -2
-        offset.left = 0
+    if (delta.left) offset.left += delta.left
+    else offset.top += delta.top
 
-        $tip.offset(offset)
+    var arrowDelta          = delta.left ? delta.left * 2 - width + actualWidth : delta.top * 2 - height + actualHeight
+    var arrowPosition       = delta.left ? 'left'        : 'top'
+    var arrowOffsetPosition = delta.left ? 'offsetWidth' : 'offsetHeight'
 
-        actualWidth  = $tip[0].offsetWidth
-        actualHeight = $tip[0].offsetHeight
-      }
-
-      this.replaceArrow(delta - width + actualWidth, actualWidth, 'left')
-    } else {
-      this.replaceArrow(actualHeight - height, actualHeight, 'top')
-    }
-
-    if (replace) $tip.offset(offset)
+    $tip.offset(offset)
+    this.replaceArrow(arrowDelta, $tip[0][arrowOffsetPosition], arrowPosition)
   }
 
-  Tooltip.prototype.replaceArrow = function(delta, dimension, position) {
-    this.arrow().css(position, delta ? (50 * (1 - delta / dimension) + "%") : '')
+  Tooltip.prototype.replaceArrow = function (delta, dimension, position) {
+    this.arrow().css(position, delta ? (50 * (1 - delta / dimension) + '%') : '')
   }
 
   Tooltip.prototype.setContent = function () {
@@ -262,6 +263,7 @@
 
     function complete() {
       if (that.hoverState != 'in') $tip.detach()
+      that.$element.trigger('hidden.bs.' + that.type)
     }
 
     this.$element.trigger(e)
@@ -276,7 +278,7 @@
         .emulateTransitionEnd(150) :
       complete()
 
-    this.$element.trigger('hidden.bs.' + this.type)
+    this.hoverState = null
 
     return this
   }
@@ -292,12 +294,15 @@
     return this.getTitle()
   }
 
-  Tooltip.prototype.getPosition = function () {
-    var el = this.$element[0]
-    return $.extend({}, (typeof el.getBoundingClientRect == 'function') ? el.getBoundingClientRect() : {
-      width: el.offsetWidth
-    , height: el.offsetHeight
-    }, this.$element.offset())
+  Tooltip.prototype.getPosition = function ($element) {
+    $element   = $element || this.$element
+    var el     = $element[0]
+    var isBody = el.tagName == 'BODY'
+    return $.extend({}, (typeof el.getBoundingClientRect == 'function') ? el.getBoundingClientRect() : null, {
+      scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop(),
+      width:  isBody ? $(window).width()  : $element.outerWidth(),
+      height: isBody ? $(window).height() : $element.outerHeight()
+    }, isBody ? {top: 0, left: 0} : $element.offset())
   }
 
   Tooltip.prototype.getCalculatedOffset = function (placement, pos, actualWidth, actualHeight) {
@@ -305,6 +310,35 @@
            placement == 'top'    ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2  } :
            placement == 'left'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
         /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width   }
+
+  }
+
+  Tooltip.prototype.getViewportAdjustedDelta = function (placement, pos, actualWidth, actualHeight) {
+    var delta = { top: 0, left: 0 }
+    if (!this.$viewport) return delta
+
+    var viewportPadding = this.options.viewport && this.options.viewport.padding || 0
+    var viewportDimensions = this.getPosition(this.$viewport)
+
+    if (/right|left/.test(placement)) {
+      var topEdgeOffset    = pos.top - viewportPadding - viewportDimensions.scroll
+      var bottomEdgeOffset = pos.top + viewportPadding - viewportDimensions.scroll + actualHeight
+      if (topEdgeOffset < viewportDimensions.top) { // top overflow
+        delta.top = viewportDimensions.top - topEdgeOffset
+      } else if (bottomEdgeOffset > viewportDimensions.top + viewportDimensions.height) { // bottom overflow
+        delta.top = viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset
+      }
+    } else {
+      var leftEdgeOffset  = pos.left - viewportPadding
+      var rightEdgeOffset = pos.left + viewportPadding + actualWidth
+      if (leftEdgeOffset < viewportDimensions.left) { // left overflow
+        delta.left = viewportDimensions.left - leftEdgeOffset
+      } else if (rightEdgeOffset > viewportDimensions.width) { // right overflow
+        delta.left = viewportDimensions.left + viewportDimensions.width - rightEdgeOffset
+      }
+    }
+
+    return delta
   }
 
   Tooltip.prototype.getTitle = function () {
@@ -352,6 +386,7 @@
   }
 
   Tooltip.prototype.destroy = function () {
+    clearTimeout(this.timeout)
     this.hide().$element.off('.' + this.type).removeData('bs.' + this.type)
   }
 
@@ -367,6 +402,7 @@
       var data    = $this.data('bs.tooltip')
       var options = typeof option == 'object' && option
 
+      if (!data && option == 'destroy') return
       if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
       if (typeof option == 'string') data[option]()
     })
@@ -383,4 +419,4 @@
     return this
   }
 
-}(window.jQuery);
+}(jQuery);
