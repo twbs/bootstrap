@@ -58,13 +58,14 @@
       var stylesheetLink = $('#bs-theme-stylesheet')
       var themeBtn = $('#bs-theme-btn')
       themeBtn.click(function () {
-        if (stylesheetLink.attr('href')) {
-          stylesheetLink.attr('href', '')
-          themeBtn.text('Activate Theme')
-        }
-        else {
+        var href = stylesheetLink.attr('href');
+        if (!href || href.indexOf('data') === 0) {
           stylesheetLink.attr('href', stylesheetLink.attr('data-href'))
           themeBtn.text('Deactivate Theme')
+        }
+        else {
+          stylesheetLink.attr('href', '')
+          themeBtn.text('Activate Theme')
         }
       })
     })();
