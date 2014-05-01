@@ -1,25 +1,34 @@
 $(function () {
 
-  module('button')
-
-  test('should provide no conflict', function () {
-    var button = $.fn.button.noConflict()
-    ok(!$.fn.button, 'button was set back to undefined (org value)')
-    $.fn.button = button
-  })
+  module('button plugin')
 
   test('should be defined on jquery object', function () {
     ok($(document.body).button, 'button method is defined')
   })
 
+  module('button', {
+    setup: function() {
+      // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
+      $.fn.bootstrapButton = $.fn.button.noConflict()
+    },
+    teardown: function() {
+      $.fn.button = $.fn.bootstrapButton
+      delete $.fn.bootstrapButton
+    }
+  })
+
+  test('should provide no conflict', function () {
+    ok(!$.fn.button, 'button was set back to undefined (org value)')
+  })
+
   test('should return element', function () {
-    ok($(document.body).button()[0] == document.body, 'document.body returned')
+    ok($(document.body).bootstrapButton()[0] == document.body, 'document.body returned')
   })
 
   test('should return set state to loading', function () {
     var btn = $('<button class="btn" data-loading-text="fat">mdo</button>')
     equal(btn.html(), 'mdo', 'btn text equals mdo')
-    btn.button('loading')
+    btn.bootstrapButton('loading')
     equal(btn.html(), 'fat', 'btn text equals fat')
     stop()
     setTimeout(function () {
@@ -32,7 +41,7 @@ $(function () {
   test('should return reset state', function () {
     var btn = $('<button class="btn" data-loading-text="fat">mdo</button>')
     equal(btn.html(), 'mdo', 'btn text equals mdo')
-    btn.button('loading')
+    btn.bootstrapButton('loading')
     equal(btn.html(), 'fat', 'btn text equals fat')
     stop()
     setTimeout(function () {
@@ -40,7 +49,7 @@ $(function () {
       ok(btn.hasClass('disabled'), 'btn has disabled class')
       start()
       stop()
-      btn.button('reset')
+      btn.bootstrapButton('reset')
       equal(btn.html(), 'mdo', 'btn text equals mdo')
       setTimeout(function () {
         ok(!btn.attr('disabled'), 'btn is not disabled')
@@ -54,7 +63,7 @@ $(function () {
   test('should toggle active', function () {
     var btn = $('<button class="btn">mdo</button>')
     ok(!btn.hasClass('active'), 'btn does not have active class')
-    btn.button('toggle')
+    btn.bootstrapButton('toggle')
     ok(btn.hasClass('active'), 'btn has class active')
   })
 

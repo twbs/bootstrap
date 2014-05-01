@@ -1,19 +1,28 @@
 $(function () {
 
-  module('carousel')
-
-  test('should provide no conflict', function () {
-    var carousel = $.fn.carousel.noConflict()
-    ok(!$.fn.carousel, 'carousel was set back to undefined (orig value)')
-    $.fn.carousel = carousel
-  })
+  module('carousel plugin')
 
   test('should be defined on jQuery object', function () {
     ok($(document.body).carousel, 'carousel method is defined')
   })
 
+  module('carousel', {
+    setup: function() {
+      // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
+      $.fn.bootstrapCarousel = $.fn.carousel.noConflict()
+    },
+    teardown: function() {
+      $.fn.carousel = $.fn.bootstrapCarousel
+      delete $.fn.bootstrapCarousel
+    }
+  })
+
+  test('should provide no conflict', function () {
+    ok(!$.fn.carousel, 'carousel was set back to undefined (orig value)')
+  })
+
   test('should return element', function () {
-    ok($(document.body).carousel()[0] == document.body, 'document.body returned')
+    ok($(document.body).bootstrapCarousel()[0] == document.body, 'document.body returned')
   })
 
   test('should not fire slide when slide is prevented', function () {
@@ -28,7 +37,7 @@ $(function () {
       .on('slid.bs.carousel', function () {
         ok(false)
       })
-      .carousel('next')
+      .bootstrapCarousel('next')
   })
 
   test('should reset when slide is prevented', function () {
@@ -41,7 +50,7 @@ $(function () {
       setTimeout(function () {
         ok($carousel.find('.item:eq(0)').is('.active'))
         ok($carousel.find('.carousel-indicators li:eq(0)').is('.active'))
-        $carousel.carousel('next')
+        $carousel.bootstrapCarousel('next')
       }, 1)
     })
     $carousel.one('slid.bs.carousel', function () {
@@ -51,7 +60,7 @@ $(function () {
         start()
       }, 1)
     })
-    $carousel.carousel('next')
+    $carousel.bootstrapCarousel('next')
   })
 
   test('should fire slide event with direction', function () {
@@ -63,7 +72,7 @@ $(function () {
       ok(e.direction)
       ok(e.direction === 'right' || e.direction === 'left')
       start()
-    }).carousel('next')
+    }).bootstrapCarousel('next')
   })
 
   test('should fire slid event with direction', function () {
@@ -89,7 +98,7 @@ $(function () {
         ok($(e.relatedTarget).hasClass('item'))
         start()
       })
-      .carousel('next')
+      .bootstrapCarousel('next')
   })
 
   test('should fire slid event with relatedTarget', function () {
@@ -129,7 +138,7 @@ $(function () {
 
     template.attr('data-interval', false)
     template.appendTo('body')
-    $('#myCarousel').carousel(1)
+    $('#myCarousel').bootstrapCarousel(1)
     ok($('#myCarousel').data('bs.carousel').options.interval === false, 'data attribute has higher priority than default options')
     $('#myCarousel').remove()
   })
@@ -153,11 +162,11 @@ $(function () {
       + '</div>'
     )
 
-    $template.carousel()
+    $template.bootstrapCarousel()
 
     equal($template.find('.item')[0], $template.find('.active')[0], 'the first carousel item should be active')
 
-    $template.carousel(1)
+    $template.bootstrapCarousel(1)
 
     equal($template.find('.item')[1], $template.find('.active')[0], 'the second carousel item should be active')
   })

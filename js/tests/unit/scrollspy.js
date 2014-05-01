@@ -1,19 +1,28 @@
 $(function () {
 
-  module('scrollspy')
-
-  test('should provide no conflict', function () {
-    var scrollspy = $.fn.scrollspy.noConflict()
-    ok(!$.fn.scrollspy, 'scrollspy was set back to undefined (org value)')
-    $.fn.scrollspy = scrollspy
-  })
+  module('scrollspy plugin')
 
   test('should be defined on jquery object', function () {
     ok($(document.body).scrollspy, 'scrollspy method is defined')
   })
 
+  module('scrollspy', {
+    setup: function() {
+      // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
+      $.fn.bootstrapScrollspy = $.fn.scrollspy.noConflict()
+    },
+    teardown: function() {
+      $.fn.scrollspy = $.fn.bootstrapScrollspy
+      delete $.fn.bootstrapScrollspy
+    }
+  })
+
+  test('should provide no conflict', function () {
+    ok(!$.fn.scrollspy, 'scrollspy was set back to undefined (org value)')
+  })
+
   test('should return element', function () {
-    ok($(document.body).scrollspy()[0] == document.body, 'document.body returned')
+    ok($(document.body).bootstrapScrollspy()[0] == document.body, 'document.body returned')
   })
 
   test('should switch active class on scroll', function () {
@@ -27,7 +36,7 @@ $(function () {
         '</div>' +
         '</div>' +
         '</div>',
-        $topbar = $(topbarHTML).scrollspy()
+        $topbar = $(topbarHTML).bootstrapScrollspy()
 
     $(sectionHTML).append('#qunit-fixture')
     ok($topbar.find('.active', true))
@@ -64,7 +73,7 @@ $(function () {
         $scrollSpy = $section
         .show()
         .find('#scrollspy-example')
-        .scrollspy({target: '#ss-target'})
+        .bootstrapScrollspy({target: '#ss-target'})
 
     $scrollSpy.scrollTop(350);
     ok($section.hasClass('active'), 'Active class still on root node')

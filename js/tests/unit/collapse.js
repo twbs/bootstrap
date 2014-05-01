@@ -1,29 +1,38 @@
 $(function () {
 
-  module('collapse')
-
-  test('should provide no conflict', function () {
-    var collapse = $.fn.collapse.noConflict()
-    ok(!$.fn.collapse, 'collapse was set back to undefined (org value)')
-    $.fn.collapse = collapse
-  })
+  module('collapse plugin')
 
   test('should be defined on jquery object', function () {
     ok($(document.body).collapse, 'collapse method is defined')
   })
 
+  module('collapse', {
+    setup: function() {
+      // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
+      $.fn.bootstrapCollapse = $.fn.collapse.noConflict()
+    },
+    teardown: function() {
+      $.fn.collapse = $.fn.bootstrapCollapse
+      delete $.fn.bootstrapCollapse
+    }
+  })
+
+  test('should provide no conflict', function () {
+    ok(!$.fn.collapse, 'collapse was set back to undefined (org value)')
+  })
+
   test('should return element', function () {
-    ok($(document.body).collapse()[0] == document.body, 'document.body returned')
+    ok($(document.body).bootstrapCollapse()[0] == document.body, 'document.body returned')
   })
 
   test('should show a collapsed element', function () {
-    var el = $('<div class="collapse"></div>').collapse('show')
+    var el = $('<div class="collapse"></div>').bootstrapCollapse('show')
     ok(el.hasClass('in'), 'has class in')
     ok(!/height/.test(el.attr('style')), 'has height reset')
   })
 
   test('should hide a collapsed element', function () {
-    var el = $('<div class="collapse"></div>').collapse('hide')
+    var el = $('<div class="collapse"></div>').bootstrapCollapse('hide')
     ok(!el.hasClass('in'), 'does not have class in')
     ok(/height/.test(el.attr('style')), 'has height set')
   })
@@ -40,7 +49,7 @@ $(function () {
       .on('shown.bs.collapse', function () {
         ok(false)
       })
-      .collapse('show')
+      .bootstrapCollapse('show')
   })
 
   test('should reset style to auto after finishing opening collapse', function () {
@@ -54,7 +63,7 @@ $(function () {
         ok(this.style.height === '')
         start()
       })
-      .collapse('show')
+      .bootstrapCollapse('show')
   })
 
   test('should add active class to target when collapse shown', function () {
