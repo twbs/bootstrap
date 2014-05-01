@@ -84,7 +84,7 @@ $(function () {
       ok(e.direction)
       ok(e.direction === 'right' || e.direction === 'left')
       start()
-    }).carousel('next')
+    }).bootstrapCarousel('next')
   })
 
   test('should fire slide event with relatedTarget', function () {
@@ -112,7 +112,7 @@ $(function () {
         ok($(e.relatedTarget).hasClass('item'))
         start()
       })
-      .carousel('next')
+      .bootstrapCarousel('next')
   })
 
   test('should set interval from data attribute', 4, function () {
