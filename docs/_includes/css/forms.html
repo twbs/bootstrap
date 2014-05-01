@@ -511,7 +511,7 @@
   <p>You can also add optional feedback icons with the addition of <code>.has-feedback</code> and the right icon.</p>
   <div class="bs-callout bs-callout-warning">
     <h4>Icons, labels, and input groups</h4>
-    <p>Manual positioning of feedback icons is required for inputs without a label and for <a href="../components#input-groups">input groups</a> with an add-on on the right. For inputs without labels, adjust the <code>top</code>value. For input groups, adjust the <code>right</code> value to an appropriate pixel value depending on the width of your addon.</p>
+    <p>Manual positioning of feedback icons is required for inputs without a label and for <a href="../components#input-groups">input groups</a> with an add-on on the right. You are strongly encouraged to provide labels for all inputs for accessibility reasons. If you wish to prevent labels from being displayed, hide them with the <code>sr-only</code> class. If you must do without labels, adjust the <code>top</code> value of the feedback icon. For input groups, adjust the <code>right</code> value to an appropriate pixel value depending on the width of your addon.</p>
   </div>
   <div class="bs-example">
     <form role="form">
@@ -550,7 +550,7 @@
 </div>
 {% endhighlight %}
 
-  <p>Optional icons also work on horizontal and inline forms.</p>
+  <h4>Optional icons in horizontal and inline forms</h4>
   <div class="bs-example">
     <form class="form-horizontal" role="form">
       <div class="form-group has-success has-feedback">
@@ -591,6 +591,22 @@
     <span class="glyphicon glyphicon-ok form-control-feedback"></span>
   </div>
 </form>
+{% endhighlight %}
+
+  <h4>Optional icons with hidden <code>.sr-only</code> labels</h4>
+  <div class="bs-example">
+    <div class="form-group has-success has-feedback">
+      <label class="control-label sr-only" for="inputSuccess5">Hidden label</label>
+      <input type="text" class="form-control" id="inputSuccess5">
+      <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+    </div>
+  </div>
+{% highlight html %}
+<div class="form-group has-success has-feedback">
+  <label class="control-label sr-only" for="inputSuccess5">Hidden label</label>
+  <input type="text" class="form-control" id="inputSuccess5">
+  <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+</div>
 {% endhighlight %}
 
 

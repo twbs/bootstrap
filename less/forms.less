@@ -322,6 +322,12 @@ input[type="checkbox"],
 }
 
 
+// Reposition feedback icon if label is hidden with "screenreader only" state
+.has-feedback label.sr-only ~ .form-control-feedback {
+  top: 0;
+}
+
+
 // Static form control text
 //
 // Apply class to a `p` element to make any string of text align with labels in
