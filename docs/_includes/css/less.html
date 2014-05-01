@@ -378,10 +378,10 @@ a {
 {% highlight scss %}
 #gradient > .striped(#333; 45deg);
 {% endhighlight %}
-  <p>Up the ante and use three colors instead. Set the first color, the second color, the second color's color stop (a decimal value like 0.25), and the third color with these mixins:</p>
+  <p>Up the ante and use three colors instead. Set the first color, the second color, the second color's color stop (a percentage value like 25%), and the third color with these mixins:</p>
 {% highlight scss %}
-#gradient > .vertical-three-colors(#777; #333; .25; #000);
-#gradient > .horizontal-three-colors(#777; #333; .25; #000);
+#gradient > .vertical-three-colors(#777; #333; 25%; #000);
+#gradient > .horizontal-three-colors(#777; #333; 25%; #000);
 {% endhighlight %}
   <p><strong>Heads up!</strong> Should you ever need to remove a gradient, be sure to remove any IE-specific <code>filter</code> you may have added. You can do that by using the <code>.reset-filter()</code> mixin alongside <code>background-image: none;</code>.</p>
 
