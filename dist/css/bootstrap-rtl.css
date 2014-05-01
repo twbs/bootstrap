@@ -3331,6 +3331,10 @@ select[multiple].input-lg {
   color: #a94442;
 }
 
+.has-feedback label.sr-only ~ .form-control-feedback {
+  top: 0;
+}
+
 .form-control-static {
   margin-bottom: 0;
 }
