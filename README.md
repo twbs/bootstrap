@@ -36,6 +36,8 @@ bootstrap/
 ├── css/
 │   ├── bootstrap.css
 │   ├── bootstrap.min.css
+│   ├── bootstrap-rtl.css
+│   ├── bootstrap-rtl.min.css
 │   ├── bootstrap-theme.css
 │   └── bootstrap-theme.min.css
 ├── js/
