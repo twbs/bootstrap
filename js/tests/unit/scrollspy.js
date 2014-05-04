@@ -25,23 +25,6 @@ $(function () {
     ok($(document.body).bootstrapScrollspy()[0] == document.body, 'document.body returned')
   })
 
-  test('should switch active class on scroll', function () {
-    var sectionHTML = '<div id="masthead"></div>',
-        topbarHTML = '<div class="topbar">' +
-        '<div class="topbar-inner">' +
-        '<div class="container">' +
-        '<h3><a href="#">Bootstrap</a></h3>' +
-        '<li><a href="#masthead">Overview</a></li>' +
-        '</ul>' +
-        '</div>' +
-        '</div>' +
-        '</div>',
-        $topbar = $(topbarHTML).bootstrapScrollspy()
-
-    $(sectionHTML).append('#qunit-fixture')
-    ok($topbar.find('.active', true))
-  })
-
   test('should only switch active class on current target', function () {
     var sectionHTML = '<div id="root" class="active">' +
         '<div class="topbar">' +
