@@ -6565,10 +6565,10 @@ button.close {
   -webkit-transition: -webkit-transform .3s ease-out;
        -o-transition:      -o-transform .3s ease-out;
           transition:         transform .3s ease-out;
-  -webkit-transform: translate(0, -25%);
-      -ms-transform: translate(0, -25%);
-       -o-transform: translate(0, -25%);
-          transform: translate(0, -25%);
+ -webkit-transform: translate(0, -25%);
+     -ms-transform: translate(0, -25%);
+      -o-transform: translate(0, -25%);
+         transform: translate(0, -25%);
 }
 
 .modal.in .modal-dialog {
