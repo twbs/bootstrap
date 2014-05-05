@@ -57,7 +57,27 @@ $(function () {
         start()
       }, 0)
     }, 0)
+  })
 
+  test('should work with an empty string as reset state', function () {
+    var btn = $('<button class="btn" data-loading-text="fat"></button>')
+    equal(btn.html(), '', 'btn text equals ""')
+    btn.bootstrapButton('loading')
+    equal(btn.html(), 'fat', 'btn text equals fat')
+    stop()
+    setTimeout(function () {
+      ok(btn.attr('disabled'), 'btn is disabled')
+      ok(btn.hasClass('disabled'), 'btn has disabled class')
+      start()
+      stop()
+      btn.bootstrapButton('reset')
+      equal(btn.html(), '', 'btn text equals ""')
+      setTimeout(function () {
+        ok(!btn.attr('disabled'), 'btn is not disabled')
+        ok(!btn.hasClass('disabled'), 'btn does not have disabled class')
+        start()
+      }, 0)
+    }, 0)
   })
 
   test('should toggle active', function () {
