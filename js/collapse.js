@@ -19,7 +19,7 @@
     this.transitioning = null
 
     if (this.options.parent) this.$parent = $(this.options.parent)
-    if (this.options.toggle) this.toggle()
+    if (this.options.toggle && ! this.options.hiding) this.toggle()
   }
 
   Collapse.DEFAULTS = {
@@ -133,6 +133,7 @@
       var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option)
 
       if (!data && options.toggle && option == 'show') option = !option
+      if (!data && option == 'hide') options.hiding = true
       if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
       if (typeof option == 'string') data[option]()
     })
