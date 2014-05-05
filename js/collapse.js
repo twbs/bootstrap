@@ -19,7 +19,7 @@
     this.transitioning = null
 
     if (this.options.parent) this.$parent = $(this.options.parent)
-    if (this.options.toggle && ! this.options.hiding) this.toggle()
+    if (this.options.toggle && !this.options.hiding) this.toggle()
   }
 
   Collapse.DEFAULTS = {
