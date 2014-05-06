@@ -42,7 +42,8 @@
     $parent.removeClass('in')
 
     function removeElement() {
-      $parent.trigger('closed.bs.alert').remove()
+      // detach from parent, fire event then clean up data
+      $parent.detach().trigger('closed.bs.alert').remove()
     }
 
     $.support.transition && $parent.hasClass('fade') ?
