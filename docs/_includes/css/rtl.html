@@ -8,12 +8,17 @@
 <!-- Example: Arabic language with direction set to RTL -->
 <html lang="ar" dir="rtl">
 {% endhighlight %}
-  <p>Then, include the right-to-left CSS file in place of the default Bootstrap CSS:</p>
+  <p>Then, include the right-to-left CSS file <strong>instead of</strong> the default Bootstrap CSS:</p>
 {% highlight html %}
 <!-- Bootstrap RTL -->
 <link rel="stylesheet" href="bootstrap-rtl.css">
 {% endhighlight %}
   <p>Alternatively, you may use the minified RTL file, <code>bootstrap-rtl.min.css</code>.</p>
+
+  <div class="bs-callout bs-callout-danger">
+    <h4>Do not use in combination with <code>bootstrap.css</code></h4>
+    <p><code>bootstrap-rtl.css</code> must not be used together with <code>bootstrap.css</code>. Use either one or the other, but not both. <code>bootstrap-rtl.css</code> includes all of Bootstrap's styles, including those not affected by writing direction.</p>
+  </div>
 
   <h2 id="rtl-css-flip">CSS Flip</h2>
   <p><a href="https://github.com/twitter/css-flip">CSS Flip</a> is a project for converting left-to-right CSS files into right-to-left CSS files. We use it in our Gruntfile to automate the generation of Bootstrap's RTL CSS files.</p>
