@@ -4,7 +4,7 @@
   <h2 id="tabs-examples">Example tabs</h2>
   <p>Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus.</p>
   <div class="bs-example bs-example-tabs">
-    <ul id="myTab" class="nav nav-tabs">
+    <ul id="myTab" class="nav nav-tabs" role="tablist">
       <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
       <li><a href="#profile" data-toggle="tab">Profile</a></li>
       <li class="dropdown">
@@ -60,7 +60,7 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
   <p>You can activate a tab or pill navigation without writing any JavaScript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element. Adding the <code>nav</code> and <code>nav-tabs</code> classes to the tab <code>ul</code> will apply the Bootstrap <a href="../components/#nav-tabs">tab styling</a>, while adding the <code>nav</code> and <code>nav-pills</code> classes will apply <a href="../components/#nav-pills">pill styling</a>.</p>
 {% highlight html %}
 <!-- Nav tabs -->
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs" role="tablist">
   <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
   <li><a href="#profile" data-toggle="tab">Profile</a></li>
   <li><a href="#messages" data-toggle="tab">Messages</a></li>
@@ -93,7 +93,7 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
     Activates a tab element and content container. Tab should have either a <code>data-target</code> or an <code>href</code> targeting a container node in the DOM.
   </p>
 {% highlight html %}
-<ul class="nav nav-tabs" id="myTab">
+<ul class="nav nav-tabs" role="tablist" id="myTab">
   <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
   <li><a href="#profile" data-toggle="tab">Profile</a></li>
   <li><a href="#messages" data-toggle="tab">Messages</a></li>
