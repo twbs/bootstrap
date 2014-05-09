@@ -5888,6 +5888,14 @@ button.close {
   background-color: transparent;
   border: 0;
 }
+.no-gutter {
+  margin-right: 0;
+  margin-left: 0;
+}
+.no-gutter > [class*=col-] {
+  padding-right: 0;
+  padding-left: 0;
+}
 .hidden {
   display: none !important;
   visibility: hidden !important;
