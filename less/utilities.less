@@ -38,6 +38,19 @@
 }
 
 
+// Grid modifying
+// -------------------------
+
+.no-gutter
+{
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  > [class*=col-] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
 // Hide from screenreaders and browsers
 //
 // Credit: HTML5 Boilerplate
