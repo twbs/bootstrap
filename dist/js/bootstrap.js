@@ -1233,7 +1233,11 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 
       var $tip = this.tip()
 
+      var tipId = this.getUID(this.type)
+
       this.setContent()
+      $tip.attr('id', tipId)
+      this.$element.attr('aria-describedby', tipId)
 
       if (this.options.animation) $tip.addClass('fade')
 
@@ -1356,6 +1360,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     var $tip = this.tip()
     var e    = $.Event('hide.bs.' + this.type)
 
+    this.$element.removeAttr('aria-describedby')
+
     function complete() {
       if (that.hoverState != 'in') $tip.detach()
       that.$element.trigger('hidden.bs.' + that.type)
@@ -1445,6 +1451,12 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
       || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
 
     return title
+  }
+
+  Tooltip.prototype.getUID = function (prefix) {
+    do prefix += ~~(Math.random() * 1000000)
+    while (document.getElementById(prefix))
+    return prefix
   }
 
   Tooltip.prototype.tip = function () {

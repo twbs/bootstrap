@@ -41,6 +41,36 @@ $(function () {
     equal(tooltip.attr('data-original-title'), 'Another tooltip', 'original title preserved in data attribute')
   })
 
+  test('should add set set aria describedby to the element called on show', function() {
+    var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>').bootstrapTooltip()
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip('show')
+    ok(tooltip.attr('aria-describedby'), 'has the right attributes')
+    var id = $('.tooltip').attr('id')
+
+    ok($('#' + id).length == 1, 'has a unique id')
+    ok($('.tooltip').attr('aria-describedby') === tooltip.attr('id'), 'they match!')
+    ok(tooltip.attr('aria-describedby') !== undefined, 'has the right attributes')
+  })
+
+  test('should remove the aria-describedby attributes on hide', function() {
+    var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>').bootstrapTooltip()
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip('show')
+    ok(tooltip.attr('aria-describedby'), 'has the right attributes')
+    tooltip.bootstrapTooltip('hide')
+    ok(!tooltip.attr('aria-describedby'), 'removed the attributes on hide')
+  })
+
+  test('should assign a unique id tooltip element', function () {
+    $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip('show'),
+    id = $('.tooltip').attr('id')
+
+    ok( $('#' + id).length == 1 && id.indexOf('tooltip') === 0, 'generated prefixed and unique tooltip id')
+  })
+
   test('should place tooltips relative to placement option', function () {
     $.support.transition = false
     var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
