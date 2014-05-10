@@ -38,6 +38,18 @@
 }
 
 
+// Remove gutter between columns in row
+
+.no-gutter
+{
+  margin-left: 0;
+  margin-right: 0;
+  > [class*=col-] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 // Hide from screenreaders and browsers
 //
 // Credit: HTML5 Boilerplate
