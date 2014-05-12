@@ -7013,7 +7013,7 @@ button.close {
   opacity: .5;
 }
 
-.carousel-control.left {
+.carousel-control.right {
   background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, .5) 0%), color-stop(rgba(0, 0, 0, .0001) 100%));
   background-image:      -o-linear-gradient(left, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
   background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, .0001)));
@@ -7023,7 +7023,7 @@ button.close {
   background-repeat: repeat-x;
 }
 
-.carousel-control.right {
+.carousel-control.left {
   right: auto;
   left: 0;
   background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, .0001) 0%), color-stop(rgba(0, 0, 0, .5) 100%));
