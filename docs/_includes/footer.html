@@ -38,6 +38,9 @@
 {% if page.slug == "customize" %}
 <script src="../assets/js/customize.min.js"></script>
 {% endif %}
+{% if page.slug == "getting-started" or page.slug == "css" or page.slug == "components" or page.slug == "js" %}
+<script src="../assets/js/translation-notice.js"></script>
+{% endif %}
 
 {% comment %}
   Inject Twitter widgets asynchronously. Snippet snipped from Twitter's
