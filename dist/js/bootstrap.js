@@ -75,6 +75,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     $(el).on('click', dismiss, this.close)
   }
 
+  Alert.VERSION = '3.1.1'
+
   Alert.prototype.close = function (e) {
     var $this    = $(this)
     var selector = $this.attr('data-target')
@@ -166,6 +168,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     this.options   = $.extend({}, Button.DEFAULTS, options)
     this.isLoading = false
   }
+
+  Button.VERSION  = '3.1.1'
 
   Button.DEFAULTS = {
     loadingText: 'loading...'
@@ -284,6 +288,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
       .on('mouseenter', $.proxy(this.pause, this))
       .on('mouseleave', $.proxy(this.cycle, this))
   }
+
+  Carousel.VERSION  = '3.1.1'
 
   Carousel.DEFAULTS = {
     interval: 5000,
@@ -488,6 +494,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     if (this.options.toggle) this.toggle()
   }
 
+  Collapse.VERSION  = '3.1.1'
+
   Collapse.DEFAULTS = {
     toggle: true
   }
@@ -664,6 +672,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     $(element).on('click.bs.dropdown', this.toggle)
   }
 
+  Dropdown.VERSION = '3.1.1'
+
   Dropdown.prototype.toggle = function (e) {
     var $this = $(this)
 
@@ -824,6 +834,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
         }, this))
     }
   }
+
+  Modal.VERSION  = '3.1.1'
 
   Modal.DEFAULTS = {
     backdrop: true,
@@ -1095,6 +1107,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 
     this.init('tooltip', element, options)
   }
+
+  Tooltip.VERSION  = '3.1.1'
 
   Tooltip.DEFAULTS = {
     animation: true,
@@ -1532,6 +1546,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 
   if (!$.fn.tooltip) throw new Error('Popover requires tooltip.js')
 
+  Popover.VERSION  = '3.1.1'
+
   Popover.DEFAULTS = $.extend({}, $.fn.tooltip.Constructor.DEFAULTS, {
     placement: 'right',
     trigger: 'click',
@@ -1656,6 +1672,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     this.refresh()
     this.process()
   }
+
+  ScrollSpy.VERSION  = '3.1.1'
 
   ScrollSpy.DEFAULTS = {
     offset: 10
@@ -1799,6 +1817,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     this.element = $(element)
   }
 
+  Tab.VERSION = '3.1.1'
+
   Tab.prototype.show = function () {
     var $this    = this.element
     var $ul      = $this.closest('ul:not(.dropdown-menu)')
@@ -1936,7 +1956,9 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     this.checkPosition()
   }
 
-  Affix.RESET = 'affix affix-top affix-bottom'
+  Affix.VERSION  = '3.1.1'
+
+  Affix.RESET    = 'affix affix-top affix-bottom'
 
   Affix.DEFAULTS = {
     offset: 0
