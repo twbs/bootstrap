@@ -50,6 +50,7 @@
       .map(function () {
         var $el   = $(this)
         var href  = $el.data('target') || $el.attr('href')
+        if (href[0] != '#') href = '#' + href.split('#')[1];
         var $href = /^#./.test(href) && $(href)
 
         return ($href
@@ -98,7 +99,7 @@
 
     var selector = this.selector +
         '[data-target="' + target + '"],' +
-        this.selector + '[href="' + target + '"]'
+        this.selector + '[href$="' + target + '"]'
 
     var active = $(selector)
       .parents('li')
