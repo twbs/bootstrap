@@ -20,7 +20,7 @@ module.exports = function (grunt) {
   var generateGlyphiconsData = require('./grunt/bs-glyphicons-data-generator.js');
   var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
   var generateRawFiles = require('./grunt/bs-raw-files-generator.js');
-  // var updateShrinkwrap = require('./grunt/shrinkwrap.js');
+  var updateShrinkwrap = require('./grunt/shrinkwrap.js');
 
   // Project configuration.
   grunt.initConfig({
@@ -182,6 +182,7 @@ module.exports = function (grunt) {
         },
         files: {
           'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css',
+          'dist/css/<%= pkg.name %>-rtl.min.css': 'dist/css/<%= pkg.name %>-rtl.css',
           'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css'
         }
       }
@@ -237,8 +238,7 @@ module.exports = function (grunt) {
     cssmin: {
       options: {
         compatibility: 'ie8',
-        keepSpecialComments: '*',
-        noAdvanced: true
+        keepSpecialComments: '*'
       },
       docs: {
         src: [
@@ -388,9 +388,9 @@ module.exports = function (grunt) {
       npmUpdate: {
         command: 'npm update'
       },
-    //   npmShrinkWrap: {
-    //     command: 'npm shrinkwrap --dev'
-    //   }
+      npmShrinkWrap: {
+        command: 'npm shrinkwrap --dev'
+      }
     }
   });
 
@@ -435,7 +435,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist', ['clean', 'dist-css', 'copy:fonts', 'dist-js', 'dist-docs']);
 
   // Default task.
-  grunt.registerTask('default', ['test', 'dist', 'build-glyphicons-data', 'build-customizer']);
+  grunt.registerTask('default', ['test', 'dist', 'build-glyphicons-data', 'build-customizer', 'update-shrinkwrap']);
 
   // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
@@ -453,6 +453,6 @@ module.exports = function (grunt) {
   });
 
   // Task for updating the npm packages used by the Travis build.
-  // grunt.registerTask('update-shrinkwrap', ['exec:npmUpdate', 'exec:npmShrinkWrap', '_update-shrinkwrap']);
-  // grunt.registerTask('_update-shrinkwrap', function () { updateShrinkwrap.call(this, grunt); });
+  grunt.registerTask('update-shrinkwrap', ['exec:npmUpdate', 'exec:npmShrinkWrap', '_update-shrinkwrap']);
+  grunt.registerTask('_update-shrinkwrap', function () { updateShrinkwrap.call(this, grunt); });
 };
