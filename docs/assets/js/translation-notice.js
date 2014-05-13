@@ -18,14 +18,14 @@ layout: nil
     {% for language in site.data.translations %}
     {{ language.code }}: {
       name: '{{ language.name }}',
-      description: '{{ language.description }}',
       url: '{{ language.url }}'
     }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   }
 
-  if(!alreadyDismissed && language && language.substring(0, 2) in translations) {
+  if (!alreadyDismissed && language && language.substring(0, 2) in translations) {
     var translation = translations[language]
+    translation.name = $('<div/>').text(translation.name).html()
     var template = '<div class="alert alert-info js-translation-notice">' +
       '<h4>' + translation.name + ' translation of this documentation available</h4>' +
       '<p>We want to let you know that you can read this documentation in ' + translation.name + '!</p>' +
