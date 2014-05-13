@@ -17,6 +17,8 @@
     this.element = $(element)
   }
 
+  Tab.VERSION = '3.1.1'
+
   Tab.prototype.show = function () {
     var $this    = this.element
     var $ul      = $this.closest('ul:not(.dropdown-menu)')
