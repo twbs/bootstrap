@@ -1,6 +1,6 @@
 # Dependencies
 markdown:         rdiscount
-highlighter:      pygments
+pygments:         true
 
 # Permalinks
 permalink:        pretty
