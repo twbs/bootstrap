@@ -182,7 +182,6 @@ module.exports = function (grunt) {
         },
         files: {
           'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css',
-          'dist/css/<%= pkg.name %>-rtl.min.css': 'dist/css/<%= pkg.name %>-rtl.css',
           'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css'
         }
       }
@@ -212,14 +211,6 @@ module.exports = function (grunt) {
         cwd: 'docs/examples/',
         src: ['**/*.css'],
         dest: 'docs/examples/'
-      }
-    },
-
-    cssflip: {
-      rtl: {
-        files: {
-          'dist/css/<%= pkg.name %>-rtl.css': 'dist/css/<%= pkg.name %>.css'
-        }
       }
     },
 
@@ -435,7 +426,7 @@ module.exports = function (grunt) {
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
-  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer', 'cssflip', 'usebanner', 'csscomb', 'less:minify', 'cssmin']);
+  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer', 'usebanner', 'csscomb', 'less:minify', 'cssmin']);
 
   // Docs distribution task.
   grunt.registerTask('dist-docs', 'copy:docs');

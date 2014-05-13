@@ -3369,6 +3369,7 @@ tbody.collapse.in {
 [data-toggle="buttons"] > .btn > input[type="checkbox"] {
   position: absolute;
   z-index: -1;
+  filter: alpha(opacity=0);
   opacity: 0;
 }
 .input-group {
