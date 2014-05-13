@@ -182,7 +182,6 @@ module.exports = function (grunt) {
         },
         files: {
           'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css',
-          'dist/css/<%= pkg.name %>-rtl.min.css': 'dist/css/<%= pkg.name %>-rtl.css',
           'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css'
         }
       }
