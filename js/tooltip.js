@@ -25,6 +25,8 @@
     this.init('tooltip', element, options)
   }
 
+  Tooltip.VERSION  = '3.1.1'
+
   Tooltip.DEFAULTS = {
     animation: true,
     placement: 'top',
