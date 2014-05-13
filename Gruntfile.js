@@ -238,7 +238,7 @@ module.exports = function (grunt) {
       options: {
         compatibility: 'ie8',
         keepSpecialComments: '*',
-        noAdvanced: true // turn advanced optimizations off until the issue is fixed in clean-css
+        noAdvanced: true
       },
       docs: {
         src: [
