@@ -19,6 +19,8 @@
     $(element).on('click.bs.dropdown', this.toggle)
   }
 
+  Dropdown.VERSION = '3.1.1'
+
   Dropdown.prototype.toggle = function (e) {
     var $this = $(this)
 

@@ -22,6 +22,8 @@
     if (this.options.toggle) this.toggle()
   }
 
+  Collapse.VERSION  = '3.1.1'
+
   Collapse.DEFAULTS = {
     toggle: true
   }

@@ -28,6 +28,8 @@
       .on('mouseleave', $.proxy(this.cycle, this))
   }
 
+  Carousel.VERSION  = '3.1.1'
+
   Carousel.DEFAULTS = {
     interval: 5000,
     pause: 'hover',

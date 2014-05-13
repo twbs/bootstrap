@@ -19,6 +19,8 @@
     this.isLoading = false
   }
 
+  Button.VERSION  = '3.1.1'
+
   Button.DEFAULTS = {
     loadingText: 'loading...'
   }
