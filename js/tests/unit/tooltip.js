@@ -295,6 +295,17 @@ $(function () {
     ok($('.tooltip').is('.fade.in'), 'tooltip should be toggled in')
   })
 
+  test('should hide shown tooltip when toggle is called on tooltip', function () {
+    var tooltip = $('<a href="#" rel="tooltip" title="tooltip on toggle">@ResentedHook</a>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({trigger: 'manual'})
+      .bootstrapTooltip('toggle')
+    $('.tooltip', '#qunit-fixture').bootstrapTooltip('toggle')
+    ok($('.tooltip').not('.fade.in'), 'tooltip should be toggled out')
+    tooltip.bootstrapTooltip('hide')
+    $('#qunit-fixture').empty()
+  })
+
   test('should place tooltips inside the body', function () {
     var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
       .appendTo('#qunit-fixture')
