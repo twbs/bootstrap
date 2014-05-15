@@ -152,45 +152,11 @@ $('.popover-dismiss').popover({
           <td>Apply a CSS fade transition to the popover</td>
         </tr>
         <tr>
-          <td>html</td>
-          <td>boolean</td>
+          <td>container</td>
+          <td>string | false</td>
           <td>false</td>
-          <td>Insert HTML into the popover. If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</td>
-        </tr>
-        <tr>
-          <td>placement</td>
-          <td>string | function</td>
-          <td>'right'</td>
-          <td>How to position the popover - top | bottom | left | right | auto.<br> When "auto" is specified, it will dynamically reorient the popover. For example, if placement is "auto left", the popover will display to the left when possible, otherwise it will display right.</td>
-        </tr>
-        <tr>
-          <td>selector</td>
-          <td>string</td>
-          <td>false</td>
-          <td>If a selector is provided, popover objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="http://jsfiddle.net/fScua/">an informative example</a>.</td>
-        </tr>
-        <tr>
-          <td>trigger</td>
-          <td>string</td>
-          <td>'click'</td>
-          <td>How popover is triggered - click | hover | focus | manual</td>
-        </tr>
-        <tr>
-          <td>title</td>
-          <td>string | function</td>
-          <td>''</td>
-          <td>Default title value if <code>title</code> attribute isn't present</td>
-        </tr>
-        <tr>
-          <td>template</td>
-          <td>string</td>
-          <td><code>'&lt;div class="popover"&gt;&lt;div class="arrow"&gt;&lt;/div&gt;&lt;h3 class="popover-title"&gt;&lt;/h3&gt;&lt;div class="popover-content"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
           <td>
-           <p>Base HTML to use when creating the popover.</p>
-           <p>The popover's <code>title</code> will be injected into the <code>.popover-title</code>.</p>
-           <p>The popover's <code>content</code> will be injected into the <code>.popover-content</code>.</p>
-           <p><code>.arrow</code> will become the popover's arrow.</p>
-           <p>The outermost wrapper element should have the <code>.popover</code> class.</p>
+           <p>Appends the popover to a specific element. Example: <code>container: 'body'</code>. This option is particularly useful in that it allows you to position the popover in the flow of the document near the triggering element - which will prevent the popover from floating away from the triggering element during a window resize.</p>
           </td>
         </tr>
         <tr>
@@ -213,12 +179,46 @@ $('.popover-dismiss').popover({
           </td>
         </tr>
         <tr>
-          <td>container</td>
-          <td>string | false</td>
+          <td>html</td>
+          <td>boolean</td>
           <td>false</td>
+          <td>Insert HTML into the popover. If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</td>
+        </tr>
+        <tr>
+          <td>placement</td>
+          <td>string | function</td>
+          <td>'right'</td>
+          <td>How to position the popover - top | bottom | left | right | auto.<br> When "auto" is specified, it will dynamically reorient the popover. For example, if placement is "auto left", the popover will display to the left when possible, otherwise it will display right.</td>
+        </tr>
+        <tr>
+          <td>selector</td>
+          <td>string</td>
+          <td>false</td>
+          <td>If a selector is provided, popover objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="http://jsfiddle.net/fScua/">an informative example</a>.</td>
+        </tr>
+        <tr>
+          <td>template</td>
+          <td>string</td>
+          <td><code>'&lt;div class="popover"&gt;&lt;div class="arrow"&gt;&lt;/div&gt;&lt;h3 class="popover-title"&gt;&lt;/h3&gt;&lt;div class="popover-content"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
           <td>
-           <p>Appends the popover to a specific element. Example: <code>container: 'body'</code>. This option is particularly useful in that it allows you to position the popover in the flow of the document near the triggering element - which will prevent the popover from floating away from the triggering element during a window resize.</p>
+           <p>Base HTML to use when creating the popover.</p>
+           <p>The popover's <code>title</code> will be injected into the <code>.popover-title</code>.</p>
+           <p>The popover's <code>content</code> will be injected into the <code>.popover-content</code>.</p>
+           <p><code>.arrow</code> will become the popover's arrow.</p>
+           <p>The outermost wrapper element should have the <code>.popover</code> class.</p>
           </td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>string | function</td>
+          <td>''</td>
+          <td>Default title value if <code>title</code> attribute isn't present</td>
+        </tr>
+        <tr>
+          <td>trigger</td>
+          <td>string</td>
+          <td>'click'</td>
+          <td>How popover is triggered - click | hover | focus | manual</td>
         </tr>
       </tbody>
     </table>

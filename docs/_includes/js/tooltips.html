@@ -91,6 +91,24 @@ $('#example').tooltip(options)
          <td>Apply a CSS fade transition to the tooltip</td>
        </tr>
        <tr>
+         <td>container</td>
+         <td>string | false</td>
+         <td>false</td>
+         <td>
+          <p>Appends the tooltip to a specific element. Example: <code>container: 'body'</code></p>
+         </td>
+       </tr>
+       <tr>
+         <td>delay</td>
+         <td>number | object</td>
+         <td>0</td>
+         <td>
+          <p>Delay showing and hiding the tooltip (ms) - does not apply to manual trigger type</p>
+          <p>If a number is supplied, delay is applied to both hide/show</p>
+          <p>Object structure is: <code>delay: { show: 500, hide: 100 }</code></p>
+         </td>
+       </tr>
+       <tr>
          <td>html</td>
          <td>boolean</td>
          <td>false</td>
@@ -130,24 +148,6 @@ $('#example').tooltip(options)
          <td>string</td>
          <td>'hover focus'</td>
          <td>How tooltip is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space.</td>
-       </tr>
-       <tr>
-         <td>delay</td>
-         <td>number | object</td>
-         <td>0</td>
-         <td>
-          <p>Delay showing and hiding the tooltip (ms) - does not apply to manual trigger type</p>
-          <p>If a number is supplied, delay is applied to both hide/show</p>
-          <p>Object structure is: <code>delay: { show: 500, hide: 100 }</code></p>
-         </td>
-       </tr>
-       <tr>
-         <td>container</td>
-         <td>string | false</td>
-         <td>false</td>
-         <td>
-          <p>Appends the tooltip to a specific element. Example: <code>container: 'body'</code></p>
-         </td>
        </tr>
        <tr>
          <td>viewport</td>
