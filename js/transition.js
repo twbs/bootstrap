@@ -31,30 +31,27 @@
     return false // explicit for ie8 (  ._.)
   }
 
-  function determineTotalTransitionTime($el)
-  {
-    var max = 0, i, total,
-        duration = $el.css('transition-duration'),
-        delay = $el.css('transition-delay')
+  function determineTotalTransitionTime($el) {
+    var max = 0
+    var duration = $el.css('transition-duration')
+    var delay = $el.css('transition-delay')
 
     // for browsers that don't support transitions
-    if (duration === undefined) { return 0 }
-
-    duration = $.map(duration.split(', '), function(value) { return value.slice(0, -1); })
-    delay = $.map(delay.split(', '), function(value) { return value.slice(0, -1); })
+    if (duration === undefined) return 0
 
     // determine which transition takes the longest
-    for (i = 0; i < duration.length; i++) {
-      total = duration[i] + delay[i]
-      max = max > total ? total : max
+    for (var i = 0; i < duration.length; i++) {
+      var total = parseFloat(duration[i]) + parseFloat(delay[i])
+      max = max < total ? total : max
     }
 
     return max * 1000
   }
 
   // http://blog.alexmaccaw.com/css-transitions
-  $.fn.emulateTransitionEnd = function () {
-    var $this = this, called = false, duration = determineTotalTransitionTime($this)
+  $.fn.emulateTransitionEnd = function (duration) {
+    var $this = this, called = false,
+        duration = duration || determineTotalTransitionTime($this)
     $this.one($.support.transition.end, function () { called = true })
     var callback = function () { if (!called) $this.trigger($.support.transition.end) }
     setTimeout(callback, duration)
