@@ -82,7 +82,7 @@
     transition ?
       $active
         .one($.support.transition.end, next)
-        .emulateTransitionEnd(150) :
+        .emulateTransitionEnd() :
       next()
 
     $active.removeClass('in')

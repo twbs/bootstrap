@@ -78,7 +78,7 @@
 
     this.$element
       .on($.support.transition.end + '.bs.collapse', $.proxy(complete, this))
-      .emulateTransitionEnd(350)[dimension](this.$element[0][scrollSize])
+      .emulateTransitionEnd()[dimension](this.$element[0][scrollSize])
   }
 
   Collapse.prototype.hide = function () {
@@ -117,7 +117,7 @@
     this.$element
       [dimension](0)
       .one($.support.transition.end, $.proxy(complete, this))
-      .emulateTransitionEnd(350)
+      .emulateTransitionEnd()
   }
 
   Collapse.prototype.toggle = function () {
