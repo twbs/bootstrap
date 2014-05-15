@@ -53,7 +53,7 @@
     var $this = this
     var called = false
     duration = duration || determineTotalTransitionTime($this)
-    
+
     $this.one($.support.transition.end, function () { called = true })
     var callback = function () { if (!called) $this.trigger($.support.transition.end) }
     setTimeout(callback, duration)
