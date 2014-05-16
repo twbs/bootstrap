@@ -201,4 +201,27 @@ $(function () {
 
     div.remove()
   })
+
+  test('should return focus to element trigger with [data-toggle="modal"]', function () {
+    stop()
+    $.support.transition = false
+
+    var div = $('<div id="modal-test" class="modal"></div>')
+    var button = $('<button type="button" id="button" data-target="#modal-test" data-toggle="modal">Show</button>')
+
+    div.appendTo('#qunit-fixture')
+    button.appendTo('#qunit-fixture')
+
+    div
+      .one('shown.bs.modal', function () {
+        div.bootstrapModal('hide')
+      })
+      .one('hidden.bs.modal', function () {
+        start()
+        ok(document.activeElement == button[0], 'returned focus to button')
+      })
+    button.click()
+
+  })
+
 })
