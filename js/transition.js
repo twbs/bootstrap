@@ -39,6 +39,9 @@
     // for browsers that don't support transitions
     if (duration === undefined) return 0
 
+    duration = duration.split(', ')
+    delay = delay.split(', ')
+
     // determine which transition takes the longest
     for (var i = 0; i < duration.length; i++) {
       var total = parseFloat(duration[i]) + parseFloat(delay[i])
