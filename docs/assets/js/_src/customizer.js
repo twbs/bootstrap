@@ -25,7 +25,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
   }
 
   function showSuccess(msg) {
-    $('<div class="bs-alert bs-alert-success">' +
+    $('<div class="bs-callout bs-callout-info">' +
       '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + msg +
     '</div>').insertAfter('.bs-customize-download')
   }
