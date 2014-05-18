@@ -12,10 +12,10 @@ before_install:
 install:
   - time npm install -g grunt-cli
   - ./test-infra/s3_cache.py download npm-modules
-  - if [ "$TWBS_TEST" = validate-html ]; then ./test-infra/s3_cache.py download rubygems; fi
+  - if [ "$TWBS_TEST" = validate-html ] && [ $TWBS_DO_VALIDATOR -ne 0 ]; then ./test-infra/s3_cache.py download rubygems; fi
 after_script:
   - if [ "$TWBS_TEST" = core ]; then ./test-infra/s3_cache.py upload npm-modules; fi
-  - if [ "$TWBS_TEST" = validate-html ]; then ./test-infra/s3_cache.py upload rubygems; fi
+  - if [ "$TWBS_TEST" = validate-html ] && [ $TWBS_DO_VALIDATOR -ne 0 ]; then ./test-infra/s3_cache.py upload rubygems; fi
 env:
   global:
     - JEKYLL_VERSION: 1.5.0
