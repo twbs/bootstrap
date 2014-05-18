@@ -401,20 +401,24 @@ module.exports = function (grunt) {
   // Docs HTML validation task
   grunt.registerTask('validate-html', ['jekyll', 'validation']);
 
+  var runSubset = function (subset) {
+    return !process.env.TWBS_TEST || process.env.TWBS_TEST === subset;
+  };
+
   // Test task.
   var testSubtasks = [];
   // Skip core tests if running a different subset of the test suite
-  if (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'core') {
+  if (runSubset('core')) {
     testSubtasks = testSubtasks.concat(['dist-css', 'csslint', 'jshint', 'jscs', 'qunit', 'build-customizer-html']);
   }
   // Skip HTML validation if running a different subset of the test suite
-  if (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'validate-html') {
+  if (runSubset('validate-html')) {
     testSubtasks.push('validate-html');
   }
   // Only run Sauce Labs tests if there's a Sauce access key
   if (typeof process.env.SAUCE_ACCESS_KEY !== 'undefined' &&
       // Skip Sauce if running a different subset of the test suite
-      (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'sauce-js-unit')) {
+      runSubset('sauce-js-unit')) {
     testSubtasks.push('connect');
     testSubtasks.push('saucelabs-qunit');
   }
