@@ -32,3 +32,4 @@ matrix:
   fast_finish: true
 notifications:
   slack: heybb:iz4wwosL0N0EdaX1gvgkU0NH
+
