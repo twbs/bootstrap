@@ -6,6 +6,9 @@ before_install:
   - rvm use 1.9.3 --fuzzy
   - export GEMDIR=$(rvm gemdir)
   - if [ "$TWBS_TEST" = validate-html ]; then echo "ruby=$(basename $GEMDIR) jekyll=$JEKYLL_VERSION" > pseudo_Gemfile.lock; fi
+  - "export TRAVIS_COMMIT_MSG=\"$(git log --format=%B --no-merges -n 1)\""
+  - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip validator\]'; export TWBS_DO_VALIDATOR=$?; true
+  - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip sauce\]'; export TWBS_DO_SAUCE=$?; true
 install:
   - time npm install -g grunt-cli
   - ./test-infra/s3_cache.py download npm-modules
