@@ -142,6 +142,9 @@
   left: 0;
   z-index: @zindex-navbar-fixed;
 
+  // Applying translate3d to prevent browser repaint on scrolling.
+  .translate3d(0, 0, 0);
+
   // Undo the rounded corners
   @media (min-width: @grid-float-breakpoint) {
     border-radius: 0;

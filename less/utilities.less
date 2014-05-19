@@ -53,4 +53,7 @@
 
 .affix {
   position: fixed;
+
+  // Applying translate3d to prevent browser repaint on scrolling.
+  .translate3d(0, 0, 0);
 }
