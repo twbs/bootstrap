@@ -271,6 +271,8 @@
     Plugin.call($target, option, this)
     $target.one('hide.bs.modal', function () {
       $this.is(':visible') && $this.trigger('focus')
+    }).on('hidden.bs.modal', function() {
+      $this.trigger('focus')
     })
   })
 

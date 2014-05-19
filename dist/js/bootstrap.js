@@ -1076,6 +1076,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     Plugin.call($target, option, this)
     $target.one('hide', function () {
       $this.is(':visible') && $this.trigger('focus')
+    }).on('hidden.bs.modal', function() {
+      $this.trigger('focus')
     })
   })
 
