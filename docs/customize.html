@@ -5,6 +5,23 @@ slug: customize
 lead: Customize Bootstrap's components, Less variables, and jQuery plugins to get your very own version.
 ---
 
+<!-- less.js isn't IE8-compatible and throws an exception during initialization, so our Blob compatibility check and error messaging code never get called in that case.
+  So we use a conditional comment instead to inform folks about the lack of IE8 support.
+  The alert covers up the entire customizer UI.
+-->
+<!--[if lt IE 9]>
+  <style>
+    .bs-customizer,
+    .bs-docs-sidebar {
+      display: none;
+    }
+  </style>
+  <div class="alert alert-danger bs-customizer-alert-ie">
+    <strong>The Bootstrap Customizer does not support IE9 and below.</strong><br>
+    Please take a second to <a href="http://browsehappy.com/">upgrade to a more modern browser</a>.
+  </div>
+<![endif]-->
+
 <!-- Customizer form -->
 <form class="bs-customizer" role="form">
   <div class="bs-docs-section" id="less-section">
