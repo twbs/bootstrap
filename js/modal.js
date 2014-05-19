@@ -269,7 +269,7 @@
     if ($this.is('a')) e.preventDefault()
 
     Plugin.call($target, option, this)
-    $target.one('hide', function () {
+    $target.one('hide.bs.modal', function () {
       $this.is(':visible') && $this.trigger('focus')
     })
   })
