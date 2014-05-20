@@ -359,9 +359,9 @@
     var o  = this.options
 
     if (typeof o.title == 'function') {
-        return o.title.call($e[0])
+      return o.title.call($e[0])
     } else if (o.title) {
-        return o.title
+      return o.title
     }
 
     return title = $e.attr('data-original-title') || ''
