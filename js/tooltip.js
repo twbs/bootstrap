@@ -84,6 +84,11 @@
         hide: options.delay
       }
     }
+    
+    if (options.animation && typeof options.animation == 'string') {
+      options._animation = options.animation
+      options.animation  = false
+    }
 
     return options
   }
@@ -196,6 +201,7 @@
 
       var complete = function() {
         that.$element.trigger('shown.bs.' + that.type)
+        if (that.options._animation) that.$tip.addClass(that.options._animation)
       }
 
       $.support.transition && this.$tip.hasClass('fade') ?
@@ -276,6 +282,7 @@
     function complete() {
       if (that.hoverState != 'in') $tip.detach()
       that.$element.trigger('hidden.bs.' + that.type)
+      if (that.options._animation) that.$tip.removeClass(that.options._animation)
     }
 
     this.$element.trigger(e)
