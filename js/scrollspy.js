@@ -32,6 +32,8 @@
     this.process()
   }
 
+  ScrollSpy.VERSION  = '3.1.1'
+
   ScrollSpy.DEFAULTS = {
     offset: 10
   }

@@ -2,5 +2,5 @@
 
 .resizable(@direction) {
   resize: @direction; // Options: horizontal, vertical, both
-  overflow: auto; // Safari fix
+  overflow: auto; // Per CSS3 UI, `resize` only applies when `overflow` isn't `visible`
 }

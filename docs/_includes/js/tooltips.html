@@ -91,6 +91,24 @@ $('#example').tooltip(options)
          <td>Apply a CSS fade transition to the tooltip</td>
        </tr>
        <tr>
+         <td>container</td>
+         <td>string | false</td>
+         <td>false</td>
+         <td>
+          <p>Appends the tooltip to a specific element. Example: <code>container: 'body'</code>. This option is particularly useful in that it allows you to position the tooltip in the flow of the document near the triggering element - which will prevent the tooltip from floating away from the triggering element during a window resize.</p>
+         </td>
+       </tr>
+       <tr>
+         <td>delay</td>
+         <td>number | object</td>
+         <td>0</td>
+         <td>
+          <p>Delay showing and hiding the tooltip (ms) - does not apply to manual trigger type</p>
+          <p>If a number is supplied, delay is applied to both hide/show</p>
+          <p>Object structure is: <code>delay: { show: 500, hide: 100 }</code></p>
+         </td>
+       </tr>
+       <tr>
          <td>html</td>
          <td>boolean</td>
          <td>false</td>
@@ -106,7 +124,7 @@ $('#example').tooltip(options)
          <td>selector</td>
          <td>string</td>
          <td>false</td>
-         <td>If a selector is provided, tooltip objects will be delegated to the specified targets.</td>
+         <td>If a selector is provided, tooltip objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have tooltips added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="http://jsfiddle.net/fScua/">an informative example</a>.</td>
        </tr>
        <tr>
          <td>template</td>
@@ -130,24 +148,6 @@ $('#example').tooltip(options)
          <td>string</td>
          <td>'hover focus'</td>
          <td>How tooltip is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space.</td>
-       </tr>
-       <tr>
-         <td>delay</td>
-         <td>number | object</td>
-         <td>0</td>
-         <td>
-          <p>Delay showing and hiding the tooltip (ms) - does not apply to manual trigger type</p>
-          <p>If a number is supplied, delay is applied to both hide/show</p>
-          <p>Object structure is: <code>delay: { show: 500, hide: 100 }</code></p>
-         </td>
-       </tr>
-       <tr>
-         <td>container</td>
-         <td>string | false</td>
-         <td>false</td>
-         <td>
-          <p>Appends the tooltip to a specific element. Example: <code>container: 'body'</code></p>
-         </td>
        </tr>
        <tr>
          <td>viewport</td>

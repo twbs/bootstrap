@@ -30,5 +30,4 @@ expo:             http://expo.getbootstrap.com
 cdn:
   css:            //netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css
   css_theme:      //netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css
-  css_rtl:        //netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-rtl.min.css
   js:             //netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js
