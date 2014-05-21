@@ -32,6 +32,8 @@
     this.process()
   }
 
+  ScrollSpy.VERSION  = '3.1.1'
+
   ScrollSpy.DEFAULTS = {
     offset: 10
   }
@@ -46,6 +48,7 @@
 
     this.$body
       .find(this.selector)
+      .filter(':visible')
       .map(function () {
         var $el   = $(this)
         var href  = $el.data('target') || $el.attr('href')

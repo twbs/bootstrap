@@ -6,14 +6,14 @@
   <h2 id="nav-tabs">Tabs</h2>
   <p>Note the <code>.nav-tabs</code> class requires the <code>.nav</code> base class.</p>
   <div class="bs-example">
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs" role="tablist">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">Profile</a></li>
       <li><a href="#">Messages</a></li>
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs" role="tablist">
   <li class="active"><a href="#">Home</a></li>
   <li><a href="#">Profile</a></li>
   <li><a href="#">Messages</a></li>
@@ -62,7 +62,7 @@
     <p>As of v7.0.1, Safari exhibits a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing. This bug is also shown in the <a href="../examples/justified-nav/">justified nav example</a>.</p>
   </div>
   <div class="bs-example">
-    <ul class="nav nav-tabs nav-justified">
+    <ul class="nav nav-tabs nav-justified" role="tablist">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">Profile</a></li>
       <li><a href="#">Messages</a></li>
@@ -75,7 +75,7 @@
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav nav-tabs nav-justified">
+<ul class="nav nav-tabs nav-justified" role="tablist">
   ...
 </ul>
 <ul class="nav nav-pills nav-justified">
@@ -113,7 +113,7 @@
 
   <h3>Tabs with dropdowns</h3>
   <div class="bs-example">
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs" role="tablist">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">Help</a></li>
       <li class="dropdown">
@@ -131,7 +131,7 @@
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs" role="tablist">
   ...
   <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">

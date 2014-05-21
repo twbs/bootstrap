@@ -175,16 +175,6 @@ module.exports = function (grunt) {
         files: {
           'dist/css/<%= pkg.name %>-theme.css': 'less/theme.less'
         }
-      },
-      minify: {
-        options: {
-          cleancss: true
-        },
-        files: {
-          'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css',
-          'dist/css/<%= pkg.name %>-rtl.min.css': 'dist/css/<%= pkg.name %>-rtl.css',
-          'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css'
-        }
       }
     },
 
@@ -215,14 +205,6 @@ module.exports = function (grunt) {
       }
     },
 
-    cssflip: {
-      rtl: {
-        files: {
-          'dist/css/<%= pkg.name %>-rtl.css': 'dist/css/<%= pkg.name %>.css'
-        }
-      }
-    },
-
     csslint: {
       options: {
         csslintrc: 'less/.csslintrc'
@@ -246,8 +228,13 @@ module.exports = function (grunt) {
     cssmin: {
       options: {
         compatibility: 'ie8',
-        keepSpecialComments: '*',
-        noAdvanced: true // turn advanced optimizations off until the issue is fixed in clean-css
+        keepSpecialComments: '*'
+      },
+      core: {
+        files: {
+          'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css',
+          'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css',
+        }
       },
       docs: {
         src: [
@@ -411,20 +398,31 @@ module.exports = function (grunt) {
   // Docs HTML validation task
   grunt.registerTask('validate-html', ['jekyll', 'validation']);
 
+  var runSubset = function (subset) {
+    return !process.env.TWBS_TEST || process.env.TWBS_TEST === subset;
+  };
+  var isUndefOrNonZero = function (val) {
+    return val === undefined || val !== '0';
+  };
+
   // Test task.
   var testSubtasks = [];
   // Skip core tests if running a different subset of the test suite
-  if (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'core') {
+  if (runSubset('core')) {
     testSubtasks = testSubtasks.concat(['dist-css', 'csslint', 'jshint', 'jscs', 'qunit', 'build-customizer-html']);
   }
   // Skip HTML validation if running a different subset of the test suite
-  if (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'validate-html') {
+  if (runSubset('validate-html') &&
+      // Skip HTML5 validator on Travis when [skip validator] is in the commit message
+      isUndefOrNonZero(process.env.TWBS_DO_VALIDATOR)) {
     testSubtasks.push('validate-html');
   }
   // Only run Sauce Labs tests if there's a Sauce access key
   if (typeof process.env.SAUCE_ACCESS_KEY !== 'undefined' &&
       // Skip Sauce if running a different subset of the test suite
-      (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'sauce-js-unit')) {
+      runSubset('sauce-js-unit') &&
+      // Skip Sauce on Travis when [skip sauce] is in the commit message
+      isUndefOrNonZero(process.env.TWBS_DO_SAUCE)) {
     testSubtasks.push('connect');
     testSubtasks.push('saucelabs-qunit');
   }
@@ -435,7 +433,7 @@ module.exports = function (grunt) {
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
-  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer', 'cssflip', 'usebanner', 'csscomb', 'less:minify', 'cssmin']);
+  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer', 'usebanner', 'csscomb', 'cssmin']);
 
   // Docs distribution task.
   grunt.registerTask('dist-docs', 'copy:docs');
@@ -444,7 +442,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist', ['clean', 'dist-css', 'copy:fonts', 'dist-js', 'dist-docs']);
 
   // Default task.
-  grunt.registerTask('default', ['test', 'dist', 'build-glyphicons-data', 'build-customizer', 'update-shrinkwrap']);
+  grunt.registerTask('default', ['test', 'dist', 'build-glyphicons-data', 'build-customizer']);
 
   // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z

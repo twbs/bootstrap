@@ -19,6 +19,8 @@
 
   if (!$.fn.tooltip) throw new Error('Popover requires tooltip.js')
 
+  Popover.VERSION  = '3.1.1'
+
   Popover.DEFAULTS = $.extend({}, $.fn.tooltip.Constructor.DEFAULTS, {
     placement: 'right',
     trigger: 'click',

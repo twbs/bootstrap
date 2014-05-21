@@ -19,7 +19,7 @@ $(function () {
   })
 
   test('should provide no conflict', function () {
-    ok(!$.fn.modal, 'modal was set back to undefined (org value)')
+    ok(!$.fn.modal, 'modal was set back to undefined (orig value)')
   })
 
   test('should return element', function () {

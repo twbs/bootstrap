@@ -17,6 +17,8 @@
     this.element = $(element)
   }
 
+  Tab.VERSION = '3.1.1'
+
   Tab.prototype.show = function () {
     var $this    = this.element
     var $ul      = $this.closest('ul:not(.dropdown-menu)')
@@ -40,7 +42,7 @@
 
     var $target = $(selector)
 
-    this.activate($this.parent('li'), $ul)
+    this.activate($this.closest('li'), $ul)
     this.activate($target, $target.parent(), function () {
       $this.trigger({
         type: 'shown.bs.tab',
