@@ -2404,8 +2404,7 @@ input[type="month"].input-lg {
   display: block;
   min-height: 20px;
   margin-top: 10px;
-  margin-bottom: 10px;  padding-left: 0px
-}
+  margin-bottom: 10px;}
 .radio label,
 .checkbox label {
   padding-left: 5px;
