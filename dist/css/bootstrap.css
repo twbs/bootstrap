@@ -2404,10 +2404,11 @@ input[type="month"].input-lg {
   display: block;
   min-height: 20px;
   margin-top: 10px;
-  margin-bottom: 10px;}
+  margin-bottom: 10px;
+}
 .radio label,
 .checkbox label {
-  padding-left: 5px;
+  padding-left: 20px;
   margin-bottom: 0;
   font-weight: normal;
   cursor: pointer;
