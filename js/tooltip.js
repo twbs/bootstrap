@@ -28,7 +28,7 @@
   Tooltip.VERSION  = '3.1.1'
 
   Tooltip.DEFAULTS = {
-    animation: true,
+    animation: 'fade',
     placement: 'top',
     selector: false,
     template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
@@ -83,11 +83,6 @@
         show: options.delay,
         hide: options.delay
       }
-    }
-    
-    if (options.animation && typeof options.animation == 'string') {
-      options._animation = options.animation
-      options.animation  = false
     }
 
     return options
@@ -157,8 +152,6 @@
 
       this.setContent()
 
-      if (this.options.animation) $tip.addClass('fade')
-
       var placement = typeof this.options.placement == 'function' ?
         this.options.placement.call(this, $tip[0], this.$element[0]) :
         this.options.placement
@@ -201,7 +194,7 @@
 
       var complete = function() {
         that.$element.trigger('shown.bs.' + that.type)
-        if (that.options._animation) that.$tip.addClass(that.options._animation)
+        if (that.options.animation) $tip.addClass(that.options.animation)
       }
 
       $.support.transition && this.$tip.hasClass('fade') ?
@@ -282,7 +275,7 @@
     function complete() {
       if (that.hoverState != 'in') $tip.detach()
       that.$element.trigger('hidden.bs.' + that.type)
-      if (that.options._animation) that.$tip.removeClass(that.options._animation)
+      if (that.options.animation) $tip.removeClass(that.options.animation)
     }
 
     this.$element.trigger(e)
