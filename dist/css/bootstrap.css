@@ -2629,10 +2629,13 @@ select[multiple].input-lg {
   .form-inline .radio,
   .form-inline .checkbox {
     display: inline-block;
-    padding-left: 0;
     margin-top: 0;
     margin-bottom: 0;
     vertical-align: middle;
+  }
+  .form-inline .radio label,
+  .form-inline .checkbox label {
+    padding-left: 0;
   }
   .form-inline .radio input[type="radio"],
   .form-inline .checkbox input[type="checkbox"] {
@@ -3971,10 +3974,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-form .radio,
   .navbar-form .checkbox {
     display: inline-block;
-    padding-left: 0;
     margin-top: 0;
     margin-bottom: 0;
     vertical-align: middle;
+  }
+  .navbar-form .radio label,
+  .navbar-form .checkbox label {
+    padding-left: 0;
   }
   .navbar-form .radio input[type="radio"],
   .navbar-form .checkbox input[type="checkbox"] {
