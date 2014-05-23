@@ -47,15 +47,14 @@
             <a class="back-to-top" href="#top">
               Back to top
             </a>
+            {% if page.slug == "css" or page.slug == "components" or page.slug == "js" %}
+            <a href="#" class="bs-docs-theme-toggle">
+              Preview theme
+            </a>
+            {% endif %}
           </div>
         </div>
       </div>
-      {% if page.slug == "css" or page.slug == "components" or page.slug == "js" %}
-        <div>
-          <button id="bs-theme-btn" type="button" class="btn btn-default">Activate Theme</button>
-        </div>
-      {% endif %}
-
     </div>
 
     {% include footer.html %}

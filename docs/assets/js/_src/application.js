@@ -56,16 +56,16 @@
     // theme toggler
     ;(function () {
       var stylesheetLink = $('#bs-theme-stylesheet')
-      var themeBtn = $('#bs-theme-btn')
+      var themeBtn = $('.bs-docs-theme-toggle')
       themeBtn.click(function () {
         var href = stylesheetLink.attr('href');
         if (!href || href.indexOf('data') === 0) {
           stylesheetLink.attr('href', stylesheetLink.attr('data-href'))
-          themeBtn.text('Deactivate Theme')
+          themeBtn.text('Disable theme preview')
         }
         else {
           stylesheetLink.attr('href', '')
-          themeBtn.text('Activate Theme')
+          themeBtn.text('Preview theme')
         }
       })
     })();
