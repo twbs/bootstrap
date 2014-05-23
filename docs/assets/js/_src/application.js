@@ -53,6 +53,23 @@
       $('.bs-top').affix()
     }, 100)
 
+    // theme toggler
+    ;(function () {
+      var stylesheetLink = $('#bs-theme-stylesheet')
+      var themeBtn = $('.bs-docs-theme-toggle')
+      themeBtn.click(function () {
+        var href = stylesheetLink.attr('href');
+        if (!href || href.indexOf('data') === 0) {
+          stylesheetLink.attr('href', stylesheetLink.attr('data-href'))
+          themeBtn.text('Disable theme preview')
+        }
+        else {
+          stylesheetLink.attr('href', '')
+          themeBtn.text('Preview theme')
+        }
+      })
+    })();
+
     // tooltip demo
     $('.tooltip-demo').tooltip({
       selector: '[data-toggle="tooltip"]',
