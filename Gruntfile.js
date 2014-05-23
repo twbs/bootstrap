@@ -36,7 +36,8 @@ module.exports = function (grunt) {
 
     // Task configuration.
     clean: {
-      dist: ['dist', 'docs/dist']
+      dist: ['dist', 'docs/dist'],
+      perf: ['docs/tmp']
     },
 
     jshint: {
@@ -394,6 +395,7 @@ module.exports = function (grunt) {
   // These plugins provide necessary tasks.
   require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
   require('time-grunt')(grunt);
+  require('./grunt/perf.js')(grunt);
 
   // Docs HTML validation task
   grunt.registerTask('validate-html', ['jekyll', 'validation']);
@@ -426,6 +428,11 @@ module.exports = function (grunt) {
     testSubtasks.push('connect');
     testSubtasks.push('saucelabs-qunit');
   }
+  // Perf env
+  if (typeof process.env.SAUCE_ACCESS_KEY !== 'undefined' && process.env.TWBS_TEST === 'perf'){
+    testSubtasks.push('perf');
+  }
+
   grunt.registerTask('test', testSubtasks);
 
   // JS distribution task.
