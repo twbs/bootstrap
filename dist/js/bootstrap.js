@@ -1253,6 +1253,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
         .detach()
         .css({ top: 0, left: 0, display: 'block' })
         .addClass(placement)
+        .data('bs.' + this.type, this)
 
       this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
 
@@ -1722,7 +1723,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
   ScrollSpy.prototype.process = function () {
     var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
     var scrollHeight = this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
-    var maxScroll    = scrollHeight - this.$scrollElement.height()
+    var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
     var offsets      = this.offsets
     var targets      = this.targets
     var activeTarget = this.activeTarget
