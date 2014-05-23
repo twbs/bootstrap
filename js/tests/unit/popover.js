@@ -46,6 +46,16 @@ $(function () {
     ok(!!popover.data('bs.popover'), 'popover instance exists')
   })
 
+  test('should store popover trigger in popover instance data object', function () {
+    $.support.transition = false
+    var popover = $('<a href="#" title="ResentedHook">@ResentedHook</a>')
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover()
+    popover.bootstrapPopover('show')
+    ok(!!$('.popover').data('bs.popover'), 'popover trigger stored in instance data')
+    $('#qunit-fixture').empty()
+  })
+
   test('should get title and content from options', function () {
     $.support.transition = false
     var popover = $('<a href="#">@fat</a>')
