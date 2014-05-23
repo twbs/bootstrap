@@ -352,12 +352,10 @@
 
   <div class="bs-callout bs-callout-warning">
     <h4>Firefox and fieldsets</h4>
-    <p>Firefox has some awkward fieldset styling involving <code>width</code> that interferes with the responsive table. This cannot be overriden without a Firefox-specific hack:</p>
+    <p>Firefox has some awkward fieldset styling involving <code>width</code> that interferes with the responsive table. This cannot be overriden without a Firefox-specific hack that we <strong>don't</strong> provide in Bootstrap:</p>
 {% highlight css %}
 @-moz-document url-prefix() {
-  fieldset {
-    display: table-cell;
-  }
+  fieldset { display: table-cell; }
 }
 {% endhighlight %}
     <p>For more information, read <a href="http://stackoverflow.com/questions/17408815/fieldset-resizes-wrong-appears-to-have-unremovable-min-width-min-content/17863685#17863685">this Stack Overflow answer</a>.</p>
