@@ -165,9 +165,11 @@ input[type="search"] {
 }
 
 
-// Special styles for iOS date input
+// Special styles for iOS temporal inputs
 //
-// In Mobile Safari, date inputs require a pixel line-height that matches the
+// In Mobile Safari, setting `display: block` on temporal inputs causes the
+// text within the input to become vertically misaligned.
+// As a workaround, we set a pixel line-height that matches the
 // given height of the input. Since this fucks up everything else, we have to
 // appropriately reset it for Internet Explorer and the size variations.
 
@@ -410,8 +412,11 @@ input[type="checkbox"],
       display: inline-block;
       margin-top: 0;
       margin-bottom: 0;
-      padding-left: 0;
       vertical-align: middle;
+
+      label {
+        padding-left: 0;
+      }
     }
     .radio input[type="radio"],
     .checkbox input[type="checkbox"] {
