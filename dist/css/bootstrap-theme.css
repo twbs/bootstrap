@@ -332,6 +332,7 @@
 .list-group-item.active,
 .list-group-item.active:hover,
 .list-group-item.active:focus {
+  color: #FFFFFF;
   text-shadow: 0 -1px 0 #3071a9;
   background-image: -webkit-linear-gradient(top, #428bca 0%, #3278b3 100%);
   background-image:      -o-linear-gradient(top, #428bca 0%, #3278b3 100%);
