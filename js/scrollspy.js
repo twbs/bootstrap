@@ -14,16 +14,13 @@
   // ==========================
 
   function ScrollSpy(element, options) {
-    var href
     var process  = $.proxy(this.process, this)
 
     this.$element       = $(element).is('body') ? $(window) : $(element)
     this.$body          = $('body')
     this.$scrollElement = this.$element.on('scroll.bs.scrollspy', process)
     this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
-    this.selector       = (this.options.target
-      || ((href = $(element).attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
-      || '') + ' .nav li > a'
+    this.selector       = (this.options.target || '') + ' .nav li > a'
     this.offsets        = []
     this.targets        = []
     this.activeTarget   = null
