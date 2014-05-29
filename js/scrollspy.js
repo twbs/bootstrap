@@ -24,8 +24,8 @@
     this.selector       = (this.options.target
       || ((href = $(element).attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
       || '') + ' .nav li > a'
-    this.offsets        = $([])
-    this.targets        = $([])
+    this.offsets        = []
+    this.targets        = []
     this.activeTarget   = null
 
     this.refresh()
@@ -41,8 +41,9 @@
   ScrollSpy.prototype.refresh = function () {
     var offsetMethod = this.$element[0] == window ? 'offset' : 'position'
 
-    this.offsets = $([])
-    this.targets = $([])
+    this.offsets = []
+    this.targets = []
+
     var self     = this
 
     this.$body
@@ -75,7 +76,7 @@
     var i
 
     if (scrollTop >= maxScroll) {
-      return activeTarget != (i = targets.last()[0]) && this.activate(i)
+      return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
     }
 
     if (activeTarget && scrollTop <= offsets[0]) {
