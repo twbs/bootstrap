@@ -54,7 +54,9 @@ $(function () {
 
     setTimeout(function () {
       window.scrollTo(0, document.body.scrollHeight)
-      setTimeout(function () { window.scroll(0, 0) }, 0)
+      setTimeout(function () {
+        window.scroll(0, 0)
+      }, 0)
     }, 0)
   })
 })

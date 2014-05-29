@@ -312,8 +312,9 @@ $(function () {
 
   test('should show tooltip with delegate selector on click', function () {
     var div = $('<div><a href="#" rel="tooltip" title="Another tooltip"></a></div>')
-    div.appendTo('#qunit-fixture')
-                     .bootstrapTooltip({ selector: 'a[rel="tooltip"]', trigger: 'click' })
+    div.appendTo('#qunit-fixture').bootstrapTooltip({
+      selector: 'a[rel="tooltip"]', trigger: 'click'
+    })
     div.find('a').trigger('click')
     ok($('.tooltip').is('.fade.in'), 'tooltip is faded in')
   })
@@ -443,12 +444,12 @@ $(function () {
   test('tooltips should be placed dynamically, with the dynamic placement option', function () {
     $.support.transition = false
     var ttContainer = $('<div id="dynamic-tt-test"/>').css({
-      height : 400,
-      overflow : 'hidden',
-      position : 'absolute',
-      top : 0,
-      left : 0,
-      width : 600
+      height: 400,
+      overflow: 'hidden',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: 600
     })
     .appendTo('body')
 

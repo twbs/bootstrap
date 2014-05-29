@@ -167,7 +167,9 @@ $(function () {
   })
 
   test('should destroy popover', function () {
-    var popover = $('<div/>').bootstrapPopover({ trigger: 'hover' }).on('click.foo', function () {})
+    var popover = $('<div/>').bootstrapPopover({
+      trigger: 'hover'
+    }).on('click.foo', function () {})
     ok(popover.data('bs.popover'), 'popover has data')
     ok($._data(popover[0], 'events').mouseover && $._data(popover[0], 'events').mouseout, 'popover has hover event')
     ok($._data(popover[0], 'events').click[0].namespace == 'foo', 'popover has extra click.foo event')
