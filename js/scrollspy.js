@@ -36,7 +36,13 @@
   }
 
   ScrollSpy.prototype.refresh = function () {
-    var offsetMethod = this.$scrollElement[0] == window ? 'offset' : 'position'
+    var offsetMethod = 'offset'
+    var offsetBase   = 0
+
+    if (!$.isWindow(this.$scrollElement[0])) {
+      offsetMethod = 'position'
+      offsetBase   = this.$scrollElement.scrollTop()
+    }
 
     this.offsets = []
     this.targets = []
@@ -54,7 +60,7 @@
         return ($href
           && $href.length
           && $href.is(':visible')
-          && [[$href[offsetMethod]().top + (!$.isWindow(self.$scrollElement.get(0)) && self.$scrollElement.scrollTop()), href]]) || null
+          && [[$href[offsetMethod]().top + offsetBase, href]]) || null
       })
       .sort(function (a, b) { return a[0] - b[0] })
       .each(function () {
