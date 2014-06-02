@@ -197,7 +197,7 @@
         if (that.options.animation) $tip.addClass(that.options.animation)
       }
 
-      $.support.transition && this.$tip.hasClass('fade') ?
+      $.support.transition && this.$tip.hasClass(this.options.animation) ?
         $tip
           .one($.support.transition.end, complete)
           .emulateTransitionEnd(150) :
@@ -264,7 +264,9 @@
     var title = this.getTitle()
 
     $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title)
-    $tip.removeClass('fade in top bottom left right')
+    $tip
+      .removeClass(this.options.animation)
+      .removeClass('in top bottom left right')
   }
 
   Tooltip.prototype.hide = function () {
@@ -284,7 +286,7 @@
 
     $tip.removeClass('in')
 
-    $.support.transition && this.$tip.hasClass('fade') ?
+    $.support.transition && this.$tip.hasClass(this.options.animation) ?
       $tip
         .one($.support.transition.end, complete)
         .emulateTransitionEnd(150) :
