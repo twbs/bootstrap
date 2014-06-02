@@ -14,7 +14,7 @@ To get started, check out <http://getbootstrap.com>!
  - [Contributing](#contributing)
  - [Community](#community)
  - [Versioning](#versioning)
- - [Authors](#authors)
+ - [Creators](#creators)
  - [Copyright and license](#copyright-and-license)
 
 ## Quick start
