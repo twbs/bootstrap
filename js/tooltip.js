@@ -264,6 +264,7 @@
   Tooltip.prototype.replaceArrow = function (delta, dimension, rightLeft) {
     this.arrow()
       .css(rightLeft ? 'left' : 'top', 50 * (1 - delta / dimension) + '%')
+      .css(rightLeft ? 'top' : 'left', '')
   }
 
   Tooltip.prototype.setContent = function () {
