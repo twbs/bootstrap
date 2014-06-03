@@ -836,4 +836,35 @@ $(function () {
     equal(currentUid, $('#tt-content').text())
   })
 
+  test('should position arrow correctly when tooltip is moved to not appear offscreen', function () {
+    stop()
+
+    var styles = '<style>'
+        + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
+        + '.tooltip { position: absolute; }'
+        + '.tooltip-arrow { position: absolute; width: 0; height: 0; }'
+        + '.tooltip .tooltip-inner { max-width: 200px; padding: 3px 8px; }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    $('<a href="#" title="tooltip title" style="position: absolute; bottom: 0; right: 0;">Foobar</a>')
+      .appendTo('body')
+      .on('shown.bs.tooltip', function () {
+        var arrowStyles = $(this).data('bs.tooltip').$tip.find('.tooltip-arrow').attr('style')
+        ok(/left/i.test(arrowStyles) && !/top/i.test(arrowStyles), 'arrow positioned correctly')
+        $(this).bootstrapTooltip('hide')
+      })
+      .on('hidden.bs.tooltip', function () {
+        $styles.remove()
+        $(this).remove()
+        start()
+      })
+      .bootstrapTooltip({
+        container: 'body',
+        placement: 'top',
+        trigger: 'manual'
+      })
+      .bootstrapTooltip('show')
+  })
+
 })
