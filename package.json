@@ -45,7 +45,7 @@
     "grunt-contrib-jade": "~0.11.0",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-less": "~0.11.0",
-    "grunt-contrib-qunit": "~0.4.0",
+    "grunt-contrib-qunit": "~0.5.1",
     "grunt-contrib-uglify": "~0.4.0",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-csscomb": "~2.0.1",
