@@ -4993,6 +4993,9 @@ a.list-group-item-danger.active:focus {
 .panel-heading + .list-group .list-group-item:first-child {
   border-top-width: 0;
 }
+.list-group + .panel-footer {
+  border-top-width: 0;
+}
 .panel > .table,
 .panel > .table-responsive > .table {
   margin-bottom: 0;
