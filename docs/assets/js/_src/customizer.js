@@ -24,6 +24,12 @@ window.onload = function () { // wait for load in a dumb way because B-0
     throw err
   }
 
+  function showSuccess(msg) {
+    $('<div class="bs-callout bs-callout-info">' +
+      '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + msg +
+    '</div>').insertAfter('.bs-customize-download')
+  }
+
   function showCallout(msg, showUpTop) {
     var callout = $('<div class="bs-callout bs-callout-danger">' +
        '<h4>Attention!</h4>' +
@@ -60,10 +66,13 @@ window.onload = function () { // wait for load in a dumb way because B-0
       data: JSON.stringify(data)
     })
     .success(function (result) {
+      var gistUrl = result.html_url;
       var origin = window.location.protocol + '//' + window.location.host
-      var newUrl = origin + window.location.pathname + '?id=' + result.id
-      history.replaceState(false, document.title, newUrl)
-      callback(result.html_url, newUrl)
+      var customizerUrl = origin + window.location.pathname + '?id=' + result.id
+      showSuccess('<strong>Success!</strong> Your configuration has been saved to <a href="' + gistUrl + '">' + gistUrl + '</a> ' +
+        'and can be revisited here at <a href="' + customizerUrl + '">' + customizerUrl + '</a> for further customization.')
+      history.replaceState(false, document.title, customizerUrl)
+      callback(gistUrl, customizerUrl)
     })
     .error(function (err) {
       try {
