@@ -11,9 +11,9 @@
 @gray-dark:              lighten(#000, 20%);   // #333
 @gray:                   lighten(#000, 33.5%); // #555
 @gray-light:             lighten(#000, 60%);   // #999
-@gray-lighter:           lighten(#000, 93.5%); // #eee
+@gray-lighter:           lighten(#000, 90%);   // #e5e5e5
 
-@brand-primary:         #428bca;
+@brand-primary:         #005581;
 @brand-success:         #5cb85c;
 @brand-info:            #5bc0de;
 @brand-warning:         #f0ad4e;
@@ -25,21 +25,21 @@
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               #fff;
+@body-bg:               #f6f6f6;
 //** Global text color on `<body>`.
 @text-color:            @gray-dark;
 
 //** Global textual link color.
-@link-color:            @brand-primary;
+@link-color:            #ff7e47;
 //** Link hover color set via `darken()` function.
-@link-hover-color:      darken(@link-color, 15%);
+@link-hover-color:      darken(@link-color, 5%);
 
 
 //== Typography
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-sans-serif:  "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -47,7 +47,7 @@
 
 @font-size-base:          14px;
 @font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
-@font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
+@font-size-small:         ceil((@font-size-base * 0.75)); // ~12px
 
 @font-size-h1:            floor((@font-size-base * 2.6)); // ~36px
 @font-size-h2:            floor((@font-size-base * 2.15)); // ~30px
@@ -84,13 +84,13 @@
 //
 //## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
 
-@padding-base-vertical:     6px;
+@padding-base-vertical:     4px;
 @padding-base-horizontal:   12px;
 
 @padding-large-vertical:    10px;
 @padding-large-horizontal:  16px;
 
-@padding-small-vertical:    5px;
+@padding-small-vertical:    4px;
 @padding-small-horizontal:  10px;
 
 @padding-xs-vertical:       1px;
@@ -124,7 +124,7 @@
 @table-condensed-cell-padding:  5px;
 
 //** Default background color used for all tables.
-@table-bg:                      transparent;
+@table-bg:                      #fff;
 //** Background color used for `.table-striped`.
 @table-bg-accent:               #f9f9f9;
 //** Background color used for `.table-hover`.
@@ -132,38 +132,38 @@
 @table-bg-active:               @table-bg-hover;
 
 //** Border color for table and cell borders.
-@table-border-color:            #ddd;
+@table-border-color:            #bfbfbf;
 
 
 //== Buttons
 //
 //## For each of Bootstrap's buttons, define text, background and border color.
 
-@btn-font-weight:                normal;
+@btn-font-weight:                bold;
 
-@btn-default-color:              #333;
+@btn-default-color:              #005581;
 @btn-default-bg:                 #fff;
 @btn-default-border:             #ccc;
 
 @btn-primary-color:              #fff;
-@btn-primary-bg:                 @brand-primary;
-@btn-primary-border:             darken(@btn-primary-bg, 5%);
+@btn-primary-bg:                 #ff7e47;
+@btn-primary-border:             #ff7e47;
 
 @btn-success-color:              #fff;
 @btn-success-bg:                 @brand-success;
-@btn-success-border:             darken(@btn-success-bg, 5%);
+@btn-success-border:             @brand-success;
 
 @btn-info-color:                 #fff;
 @btn-info-bg:                    @brand-info;
-@btn-info-border:                darken(@btn-info-bg, 5%);
+@btn-info-border:                @brand-info;
 
 @btn-warning-color:              #fff;
 @btn-warning-bg:                 @brand-warning;
-@btn-warning-border:             darken(@btn-warning-bg, 5%);
+@btn-warning-border:             @brand-warning;
 
 @btn-danger-color:               #fff;
 @btn-danger-bg:                  @brand-danger;
-@btn-danger-border:              darken(@btn-danger-bg, 5%);
+@btn-danger-border:              @brand-danger;
 
 @btn-link-disabled-color:        @gray-light;
 
@@ -180,11 +180,11 @@
 //** Text color for `<input>`s
 @input-color:                    @gray;
 //** `<input>` border color
-@input-border:                   #ccc;
+@input-border:                   #bfbfbf;
 //** `<input>` border radius
 @input-border-radius:            @border-radius-base;
 //** Border color for inputs on focus
-@input-border-focus:             #66afe9;
+@input-border-focus:             #7ed0e8;
 
 //** Placeholder text color
 @input-color-placeholder:        @gray-light;
@@ -194,9 +194,9 @@
 //** Large `.form-control` height
 @input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
 //** Small `.form-control` height
-@input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
+@input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 1);
 
-@legend-color:                   @gray-dark;
+@legend-color:                   @brand-primary;
 @legend-border-color:            #e5e5e5;
 
 //** Background color for textual input addons
@@ -219,11 +219,11 @@
 @dropdown-divider-bg:            #e5e5e5;
 
 //** Dropdown link text color.
-@dropdown-link-color:            @gray-dark;
+@dropdown-link-color:            @brand-primary;
 //** Hover color for dropdown links.
-@dropdown-link-hover-color:      darken(@gray-dark, 5%);
+@dropdown-link-hover-color:      darken(@brand-primary, 5%);
 //** Hover background for dropdown links.
-@dropdown-link-hover-bg:         #f5f5f5;
+@dropdown-link-hover-bg:         #d7f5fc;
 
 //** Active dropdown menu item text color.
 @dropdown-link-active-color:     @component-active-color;
@@ -475,19 +475,19 @@
 //
 //## Define colors for form feedback states and, by default, alerts.
 
-@state-success-text:             #3c763d;
+@state-success-text:             darken(@brand-success, 15%);
 @state-success-bg:               #dff0d8;
 @state-success-border:           darken(spin(@state-success-bg, -10), 5%);
 
-@state-info-text:                #31708f;
+@state-info-text:                darken(@brand-info, 15%);
 @state-info-bg:                  #d9edf7;
 @state-info-border:              darken(spin(@state-info-bg, -10), 7%);
 
-@state-warning-text:             #8a6d3b;
+@state-warning-text:             darken(@brand-warning, 15%);
 @state-warning-bg:               #fcf8e3;
 @state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
 
-@state-danger-text:              #a94442;
+@state-danger-text:              darken(@brand-danger, 15%);
 @state-danger-bg:                #f2dede;
 @state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
 
@@ -686,12 +686,12 @@
 @panel-border-radius:         @border-radius-base;
 
 //** Border color for elements within panels
-@panel-inner-border:          #ddd;
-@panel-footer-bg:             #f5f5f5;
+@panel-inner-border:          #e6e6e6;
+@panel-footer-bg:             #e6e6e6;
 
 @panel-default-text:          @gray-dark;
-@panel-default-border:        #ddd;
-@panel-default-heading-bg:    #f5f5f5;
+@panel-default-border:        #e6e6e6;
+@panel-default-heading-bg:    #e6e6e6;
 
 @panel-primary-text:          #fff;
 @panel-primary-border:        @brand-primary;
@@ -719,25 +719,25 @@
 //##
 
 //** Padding around the thumbnail image
-@thumbnail-padding:           4px;
+@thumbnail-padding:           5px;
 //** Thumbnail background color
-@thumbnail-bg:                @body-bg;
+@thumbnail-bg:                #fff;
 //** Thumbnail border color
-@thumbnail-border:            #ddd;
+@thumbnail-border:            #d9d9d9;
 //** Thumbnail border radius
 @thumbnail-border-radius:     @border-radius-base;
 
 //** Custom text color for thumbnail captions
 @thumbnail-caption-color:     @text-color;
 //** Padding around the thumbnail caption
-@thumbnail-caption-padding:   9px;
+@thumbnail-caption-padding:   5px;
 
 
 //== Wells
 //
 //##
 
-@well-bg:                     #f5f5f5;
+@well-bg:                     #ebebeb;
 @well-border:                 darken(@well-bg, 7%);
 
 
@@ -767,9 +767,9 @@
 @breadcrumb-padding-vertical:   8px;
 @breadcrumb-padding-horizontal: 15px;
 //** Breadcrumb background color
-@breadcrumb-bg:                 #f5f5f5;
+@breadcrumb-bg:                 #e6e6e6;
 //** Breadcrumb text color
-@breadcrumb-color:              #ccc;
+@breadcrumb-color:              #999;
 //** Text color of current page in the breadcrumb
 @breadcrumb-active-color:       @gray-light;
 //** Textual separator for between breadcrumb elements

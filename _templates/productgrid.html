@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Product Grid</title>
+
+    <!-- Bootstrap -->
+    <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <style type="text/css">
+		.input-inline {
+			display: inline-block;
+		}
+		.selectwidthauto {
+			width:auto !important;
+		}
+		.padding-sm {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+		.margin-sm {
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+		.input-xxs {
+			width: 55px; 
+		}
+	</style>
+    
+</head>
+<body>    
+	<div class="container">
+		<ol class="breadcrumb">
+			<li><a href="#">Home</a></li>
+			<li>Inventory</li>
+			<li class="active">Products</li>
+		</ol>
+		<div class="page-header">
+			<h3>Products</h3>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="alert alert-success">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<strong>Well done!</strong> You successfully read this important alert message.
+				</div>
+			</div>
+		</div>
+		<div class="row buffer-bottom-sm">
+			<div class="col-md-6">
+				<div class="btn-toolbar" role="toolbar">
+					<button class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
+					<button class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Add Product</button>
+					<div class="btn-group">
+						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						<span class="glyphicon glyphicon-cog"></span> Settings <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">All Product Settings</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Customize Columns</a></li>
+							<li><a href="#">Export Results</a></li>
+							<li><a href="#">Bookmark Results</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Bulk Updates</a></li>
+							<li><a href="#">Enable Quick Edit</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 text-right">
+				<div id="slider" style="width:100px; display: inline-block;" class="margin-sm">
+				</div>
+				<div class="btn-group" data-toggle="buttons">
+					<label class="btn btn-default btn-icon btn-toggle">
+					<input type="radio" name="options" id="option1"><span class="glyphicon glyphicon-th-list"></span>
+					</label>
+					<label class="btn btn-default btn-icon btn-toggle active">
+					<input type="radio" name="options" id="option1"><span class="glyphicon glyphicon-th-large"></span>
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="row">
+							<form class="form-inline">
+								<div class="col-md-6">
+									 Filter:
+									<select class="selectwidthauto form-control">
+										<option>All Products</option>
+										<option>Low Inventory</option>
+										<option>Queued for PO</option>
+									</select>
+								</div>
+								<div class="col-md-6 text-right">
+									<span style="margin-right: 10px;">Page <input type="text" class="form-control" value="1" style="width:35px;"> of 33</span>
+									<div class="btn-group">
+										<button type="button" class="btn btn-default btn-icon"><span class="glyphicon glyphicon-chevron-left"></span></button>
+										<button type="button" class="btn btn-default btn-icon"><span class="glyphicon glyphicon-chevron-right"></span></button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-2">
+								<a href="#" class="thumbnail thumbnail-grid thumbnail-grid-med">
+								<img src="http://placehold.it/300x300" class="img-responsive">
+								<div class="caption text-center">
+									 <span class="thumbnail-title">Google Nexus 5</span><small class="clearfix">$399.00</small>
+								</div>
+								</a>
+							</div>
+							<div class="col-md-2">
+								<a href="#" class="thumbnail thumbnail-grid thumbnail-grid-md thumbnail-grid-parent">
+								<div class="children">
+									<img src="http://placehold.it/300x300" class="img-responsive">
+								</div>
+								<div class="caption text-center">
+									 <span class="thumbnail-title">Super Cool Running Shoes</span><small class="clearfix">$399.00</small>
+								</div>
+								</a>
+							</div>
+							<div class="col-md-2">
+								<a href="#" class="thumbnail thumbnail-grid thumbnail-grid-md thumbnail-grid-hidden">
+								<img src="http://placehold.it/300x300" class="img-responsive">
+								<div class="caption text-center">
+									 <span class="thumbnail-title">Ultra Light Windbreaker</span><small class="clearfix">$399.00</small>
+								</div>
+								</a>
+							</div>
+							<div class="col-md-2">
+								<a href="#" class="thumbnail thumbnail-grid thumbnail-grid-md">
+								<img src="http://placehold.it/300x300" class="img-responsive">
+								<div class="caption text-center">
+									 <span class="thumbnail-title">High Altitude Down Winter Coat</span><small class="clearfix">$399.00</small>
+								</div>
+								</a>
+							</div>
+							<div class="col-md-2">
+								<a href="#" class="thumbnail thumbnail-grid thumbnail-grid-md">
+								<img src="http://placehold.it/300x300" class="img-responsive">
+								<div class="caption text-center">
+									 <span class="thumbnail-title">High Altitude Down Winter Coat</span><small class="clearfix">$399.00</small>
+								</div>
+								</a>
+							</div>
+							<div class="col-md-2">
+								<a href="#" class="thumbnail thumbnail-grid thumbnail-grid-md">
+								<img src="http://placehold.it/300x300" class="img-responsive">
+								<div class="caption text-center">
+									 <span class="thumbnail-title">High Altitude Down Winter Coat</span><small class="clearfix">$399.00</small>
+								</div>
+								</a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3">
+								<a href="#" class="thumbnail thumbnail-grid thumbnail-grid-lg">
+								<img src="http://placehold.it/300x300" class="img-responsive">
+								<div class="caption text-center">
+									 Google Nexus 5 <small class="clearfix">$399.00</small>
+								</div>
+								</a>
+							</div>
+							<div class="col-md-3">
+								<a href="#" class="thumbnail thumbnail-grid thumbnail-grid-lg">
+								<img src="http://placehold.it/300x300" class="img-responsive">
+								<div class="caption text-center">
+									 Super Cool Running Shoes <small class="clearfix">$399.00</small>
+								</div>
+								</a>
+							</div>
+							<div class="col-md-3">
+								<a href="#" class="thumbnail thumbnail-grid thumbnail-grid-lg">
+								<img src="http://placehold.it/300x300" class="img-responsive">
+								<div class="caption text-center">
+									 Ultra Light Windbreaker <small class="clearfix">$399.00</small>
+								</div>
+								</a>
+							</div>
+							<div class="col-md-3">
+								<a href="#" class="thumbnail thumbnail-grid thumbnail-grid-lg">
+								<img src="http://placehold.it/300x300" class="img-responsive">
+								<div class="caption text-center">
+									 High Altitude Down Winter Coat <small class="clearfix">$399.00</small>
+								</div>
+								</a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3">
+								<a href="#" class="thumbnail thumbnail-grid thumbnail-grid-lg">
+								<img src="http://placehold.it/300x300" class="img-responsive">
+								<div class="caption text-center">
+									 Google Nexus 5 <small class="clearfix">$399.00</small>
+								</div>
+								</a>
+							</div>
+							<div class="col-md-3">
+								<a href="#" class="thumbnail thumbnail-grid thumbnail-grid-lg">
+								<img src="http://placehold.it/300x300" class="img-responsive">
+								<div class="caption text-center">
+									 Super Cool Running Shoes <small class="clearfix">$399.00</small>
+								</div>
+								</a>
+							</div>
+							<div class="col-md-3">
+								<a href="#" class="thumbnail thumbnail-grid thumbnail-grid-lg">
+								<img src="http://placehold.it/300x300" class="img-responsive">
+								<div class="caption text-center">
+									 Ultra Light Windbreaker <small class="clearfix">$399.00</small>
+								</div>
+								</a>
+							</div>
+							<div class="col-md-3">
+								<a href="#" class="thumbnail thumbnail-grid thumbnail-grid-lg">
+								<img src="http://placehold.it/300x300" class="img-responsive">
+								<div class="caption text-center">
+									 High Altitude Down Winter Coat <small class="clearfix">$399.00</small>
+								</div>
+								</a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3">
+								<a href="#" class="thumbnail thumbnail-grid thumbnail-grid-lg">
+								<img src="http://placehold.it/300x300" class="img-responsive">
+								<div class="caption text-center">
+									 Google Nexus 5 <small class="clearfix">$399.00</small>
+								</div>
+								</a>
+							</div>
+							<div class="col-md-3">
+								<a href="#" class="thumbnail thumbnail-grid thumbnail-grid-lg">
+								<img src="http://placehold.it/300x300" class="img-responsive">
+								<div class="caption text-center">
+									 Super Cool Running Shoes <small class="clearfix">$399.00</small>
+								</div>
+								</a>
+							</div>
+							<div class="col-md-3">
+								<a href="#" class="thumbnail thumbnail-grid thumbnail-grid-lg">
+								<img src="http://placehold.it/300x300" class="img-responsive">
+								<div class="caption text-center">
+									 Ultra Light Windbreaker <small class="clearfix">$399.00</small>
+								</div>
+								</a>
+							</div>
+							<div class="col-md-3">
+								<a href="#" class="thumbnail thumbnail-grid thumbnail-grid-lg">
+								<img src="http://placehold.it/300x300" class="img-responsive">
+								<div class="caption text-center">
+									 High Altitude Down Winter Coat <small class="clearfix">$399.00</small>
+								</div>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="panel-footer">
+						<div class="row">
+							<form class="form-inline">
+								<div class="col-md-12 text-right">
+									<span class="padding-sm">1-20 of 650 Products</span>
+									<span class="padding-sm">Page <input type="text" class="input-sm form-control" value="1" style="width:35px;"> of 33</span>
+									<div class="btn-group">
+										<button type="button" class="btn btn-default btn-icon btn-sm"><span class="glyphicon glyphicon-chevron-left"></span></button>
+										<button type="button" class="btn btn-default btn-icon btn-sm"><span class="glyphicon glyphicon-chevron-right"></span></button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>    
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../dist/js/bootstrap.min.js"></script>
+</body>
+</html>

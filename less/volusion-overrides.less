@@ -1,0 +1,248 @@
+//
+// Volusion Overrides
+// --------------------------------------------------
+
+.container {
+    margin: 0;
+    padding: 0;
+}
+
+.padding-sm {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.margin-sm {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.vp-top-bar .v13-icon-search {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.adminMenuItems div.SubMenuWrapper ul {
+    overflow: hidden;
+}
+
+.adminMenuItems div.SubMenuWrapper a {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+
+// Button Groups
+// --------------------------------------------------
+
+.btn-toolbar {
+  .btn-group,
+  .input-group {
+    float: none;
+  }
+}
+
+
+// Buttons
+// --------------------------------------------------
+
+.btn {
+  .box-shadow(0 1px 2px rgba(0,0,0,.1));
+
+  &,
+  &:active,
+  &.active {
+    &:focus {
+     outline: 0;
+    }
+  }
+  
+  &.btn-link {
+	.box-shadow(none);
+  }
+}
+
+.btn-toggle.active {
+	color: @btn-primary-color;
+	background-color: @btn-primary-bg;
+	border-color: @btn-primary-border;
+}
+
+
+
+
+// Forms
+// --------------------------------------------------
+
+legend {
+  margin-bottom: (@line-height-computed / 2);
+  font-size: (@font-size-base * 1.2857142857);
+  font-weight: bold;
+  border-bottom: none;
+}
+
+.form-control {
+  .box-shadow(~"0 1px 0 rgba(255,255,255,.6), inset 0 1px 4px rgba(0,0,0,.1)");
+}
+
+.input-inline {
+    display: inline-block;
+}
+
+.selectwidthauto {
+    width: auto !important;
+}
+
+.input-xxs {
+    width: 55px; 
+}
+
+
+// Glyphicons
+// --------------------------------------------------
+
+.btn .glyphicon {
+  margin-right: 8px; // spacing fix
+}
+
+.btn.btn-icon .glyphicon {
+  margin-right: 0; // spacing fix
+}
+
+
+// Panels
+// --------------------------------------------------
+
+.panel-heading {
+  padding: 10px 15px;
+}
+
+.panel-footer {
+  padding: 10px 15px;
+}
+
+
+// Navs
+// --------------------------------------------------
+
+// Pills in form
+.nav-pills-form {
+  margin-bottom: 5px;
+
+  > li {
+    float: left;
+
+    // Links rendered as pills
+    > a {
+      border-radius: @nav-pills-border-radius;
+      color: #999;
+      padding: 2px 10px;
+      font-weight: bold;
+    }
+    + li {
+      margin-left: 2px;
+    }
+
+    // Active state
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: #005581;
+        background-color: #ccf3fd;
+      }
+    }
+  }
+}
+
+
+// Scaffolding
+// --------------------------------------------------
+
+body {
+  .font-smoothing();
+}
+
+.buffer {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.buffer-sm {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.buffer-top {
+	margin-top: 20px;
+}
+.buffer-top-sm {
+	margin-top: 10px;
+}
+
+.buffer-bottom {
+	margin-bottom: 20px;
+}
+.buffer-bottom-sm {
+	margin-bottom: 10px;
+}
+
+
+// Scaffolding
+// --------------------------------------------------
+
+// Form version
+//
+// Add borders all around the table and between all the columns.
+
+.table-in-form {
+  border: 1px solid @table-border-color;
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+      }
+    }
+  }
+  > thead > tr {
+    > th,
+    > td {
+      border-bottom-width: 1px;
+      background-color: #ccf3fd;
+    }
+  }
+}
+
+
+// Thumbnails
+// --------------------------------------------------
+
+.thumbnail {
+    border: none;
+}
+
+
+// Type
+// --------------------------------------------------
+
+
+h1 {
+    font-size: 28px;
+}
+
+.page-header {
+  margin: 0;
+  border-bottom: none;
+  color: @brand-primary;
+}
+
+abbr[title],
+abbr[data-original-title] {
+  border-bottom: 1px dashed @abbr-border-color;
+}
+
+
+
