@@ -557,4 +557,31 @@ $(function () {
     $('head #test').remove()
     $('head #viewport-style').remove()
   })
+
+  test('should not error when trying to show an auto-placed tooltip that has been removed from the dom', function () {
+    var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>').appendTo('#qunit-fixture')
+
+    tooltip
+      .one('show.bs.tooltip', function () {
+        tooltip.remove()
+      })
+      .bootstrapTooltip({ placement: 'auto' })
+
+    var passed = true
+    try {
+      tooltip.bootstrapTooltip('show')
+    }
+    catch (err) {
+      passed = false
+      console.log(err)
+    }
+    ok(passed, '.tooltip(\'show\') should not throw an error in this case')
+
+    try {
+      tooltip.remove()
+    }
+    catch (err) {
+      // tooltip may have already been removed
+    }
+  })
 })
