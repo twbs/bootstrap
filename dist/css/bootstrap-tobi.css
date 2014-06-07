@@ -4419,18 +4419,22 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li > a {
   margin-right: 2px;
   line-height: 1.428571429;
+  color: #999999;
   border: 1px solid transparent;
   border-radius: 0 0 0 0;
 }
 
 .nav-tabs > li > a:hover {
+  color: #333333;
+  text-decoration: underline;
   border-color: #e6e6e6 #e6e6e6 #dddddd;
 }
 
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
-  color: #999999;
+  color: #333333;
+  text-decoration: underline;
   cursor: default;
   background-color: #ffffff;
   border: 1px solid #dddddd;

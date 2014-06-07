@@ -90,12 +90,16 @@
 
     // Actual tabs (as links)
     > a {
+      color: @gray;  // TOBI
       margin-right: 2px;
       line-height: @line-height-base;
       border: 1px solid transparent;
       border-radius: @border-radius-base @border-radius-base 0 0;
       &:hover {
         border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
+        // TOBI
+        text-decoration: underline;
+        color: @nav-tabs-active-link-hover-color;
       }
     }
 
@@ -109,6 +113,7 @@
         border: 1px solid @nav-tabs-active-link-hover-border-color;
         border-bottom-color: transparent;
         cursor: default;
+        text-decoration: underline;  // TOBI
       }
     }
   }
