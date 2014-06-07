@@ -11,6 +11,7 @@
 
 
 !function ($) {
+  'use strict';
 
   $(function () {
 
