@@ -118,9 +118,11 @@ $(function () {
 
   test('should fire shown event', function () {
     stop()
-    $('<div title="tooltip title"></div>')
+    var tooltip = $('<div title="tooltip title"></div>').appendTo('#qunit-fixture')
+    tooltip
       .on('shown.bs.tooltip', function () {
         ok(true, 'shown was called')
+        tooltip.remove()
         start()
       })
       .bootstrapTooltip('show')
@@ -142,12 +144,14 @@ $(function () {
 
   test('should fire hide event', function () {
     stop()
-    $('<div title="tooltip title"></div>')
+    var tooltip = $('<div title="tooltip title"></div>').appendTo('#qunit-fixture')
+    tooltip
       .on('shown.bs.tooltip', function () {
         $(this).bootstrapTooltip('hide')
       })
       .on('hide.bs.tooltip', function () {
         ok(true, 'hide was called')
+        tooltip.remove()
         start()
       })
       .bootstrapTooltip('show')
@@ -155,12 +159,14 @@ $(function () {
 
   test('should fire hidden event', function () {
     stop()
-    $('<div title="tooltip title"></div>')
+    var tooltip = $('<div title="tooltip title"></div>').appendTo('#qunit-fixture')
+    tooltip
       .on('shown.bs.tooltip', function () {
         $(this).bootstrapTooltip('hide')
       })
       .on('hidden.bs.tooltip', function () {
         ok(true, 'hidden was called')
+        tooltip.remove()
         start()
       })
       .bootstrapTooltip('show')
@@ -168,13 +174,15 @@ $(function () {
 
   test('should not fire hidden event when default prevented', function () {
     stop()
-    $('<div title="tooltip title"></div>')
+    var tooltip = $('<div title="tooltip title"></div>').appendTo('#qunit-fixture')
+    tooltip
       .on('shown.bs.tooltip', function () {
         $(this).bootstrapTooltip('hide')
       })
       .on('hide.bs.tooltip', function (e) {
         e.preventDefault()
         ok(true, 'hide was called')
+        tooltip.remove()
         start()
       })
       .on('hidden.bs.tooltip', function () {
@@ -556,5 +564,32 @@ $(function () {
     target.bootstrapTooltip('hide')
     $('head #test').remove()
     $('head #viewport-style').remove()
+  })
+
+  test('should not error when trying to show an auto-placed tooltip that has been removed from the dom', function () {
+    var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>').appendTo('#qunit-fixture')
+
+    tooltip
+      .one('show.bs.tooltip', function () {
+        tooltip.remove()
+      })
+      .bootstrapTooltip({ placement: 'auto' })
+
+    var passed = true
+    try {
+      tooltip.bootstrapTooltip('show')
+    }
+    catch (err) {
+      passed = false
+      console.log(err)
+    }
+    ok(passed, '.tooltip(\'show\') should not throw an error in this case')
+
+    try {
+      tooltip.remove()
+    }
+    catch (err) {
+      // tooltip may have already been removed
+    }
   })
 })
