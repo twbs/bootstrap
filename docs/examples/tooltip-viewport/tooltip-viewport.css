@@ -14,8 +14,8 @@ body {
 .container-viewport {
   position: absolute;
   top: 100px;
-  left: 250px;
   right: 250px;
+  left: 250px;
   height: 300px;
   background-color: #eee;
 }
