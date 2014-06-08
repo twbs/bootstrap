@@ -6,7 +6,6 @@
  * Licensed under the MIT license.
  */
 
-/*global QUnit:true, alert:true*/
 (function () {
   'use strict';
 

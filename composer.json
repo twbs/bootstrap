@@ -30,5 +30,8 @@
     "branch-alias": {
       "dev-master": "3.1.x-dev"
     }
+  },
+  "replace": {
+    "twitter/bootstrap": "self.version"
   }
 }

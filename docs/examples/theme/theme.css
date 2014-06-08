@@ -12,3 +12,7 @@ body {
 .theme-showcase > p > .btn {
   margin: 5px 0;
 }
+
+.theme-showcase .navbar .container {
+  width: auto;
+}
