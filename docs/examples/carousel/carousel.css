@@ -22,13 +22,16 @@ body {
 }
 
 /* Flip around the padding for proper display in narrow viewports */
-.navbar-wrapper .container {
+.navbar-wrapper > .container {
   padding-right: 0;
   padding-left: 0;
 }
 .navbar-wrapper .navbar {
   padding-right: 15px;
   padding-left: 15px;
+}
+.navbar-wrapper .navbar .container {
+  width: auto;
 }
 
 
@@ -62,12 +65,6 @@ body {
 
 /* MARKETING CONTENT
 -------------------------------------------------- */
-
-/* Pad the edges of the mobile views a bit */
-.marketing {
-  padding-right: 15px;
-  padding-left: 15px;
-}
 
 /* Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
@@ -103,12 +100,6 @@ body {
 -------------------------------------------------- */
 
 @media (min-width: 768px) {
-
-  /* Remove the edge padding needed for mobile */
-  .marketing {
-    padding-right: 0;
-    padding-left: 0;
-  }
 
   /* Navbar positioning foo */
   .navbar-wrapper {
