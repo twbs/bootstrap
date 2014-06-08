@@ -6,7 +6,10 @@
  * details, see http://creativecommons.org/licenses/by/3.0/.
  */
 
+/* global JSZip, less, saveAs, UglifyJS, __js, __less, __fonts */
+
 window.onload = function () { // wait for load in a dumb way because B-0
+  'use strict';
   var cw = '/*!\n' +
            ' * Bootstrap v3.1.1 (http://getbootstrap.com)\n' +
            ' * Copyright 2011-2014 Twitter, Inc.\n' +
@@ -22,6 +25,12 @@ window.onload = function () { // wait for load in a dumb way because B-0
         '</div>' +
       '</div>').appendTo('body').alert()
     throw err
+  }
+
+  function showSuccess(msg) {
+    $('<div class="bs-callout bs-callout-info">' +
+      '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + msg +
+    '</div>').insertAfter('.bs-customize-download')
   }
 
   function showCallout(msg, showUpTop) {
@@ -60,16 +69,18 @@ window.onload = function () { // wait for load in a dumb way because B-0
       data: JSON.stringify(data)
     })
     .success(function (result) {
+      var gistUrl = result.html_url;
       var origin = window.location.protocol + '//' + window.location.host
-      var newUrl = origin + window.location.pathname + '?id=' + result.id
-      history.replaceState(false, document.title, newUrl)
-      callback(result.html_url, newUrl)
+      var customizerUrl = origin + window.location.pathname + '?id=' + result.id
+      showSuccess('<strong>Success!</strong> Your configuration has been saved to <a href="' + gistUrl + '">' + gistUrl + '</a> ' +
+        'and can be revisited here at <a href="' + customizerUrl + '">' + customizerUrl + '</a> for further customization.')
+      history.replaceState(false, document.title, customizerUrl)
+      callback(gistUrl, customizerUrl)
     })
     .error(function (err) {
       try {
         showError('<strong>Ruh roh!</strong> Could not save gist file, configuration not saved.', err)
-      }
-      catch (sameErr) {
+      } catch (sameErr) {
         // deliberately ignore the error
       }
       callback('<none>', '<none>')
@@ -150,7 +161,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     if (fonts) {
       var fontsFolder = zip.folder('fonts')
       for (var fontsFileName in fonts) {
-        fontsFolder.file(fontsFileName, fonts[fontsFileName], {base64: true})
+        fontsFolder.file(fontsFileName, fonts[fontsFileName], { base64: true })
       }
     }
 
@@ -208,7 +219,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     var lessSource = __less[lessFilename]
 
     var lessFilenames = includedLessFilenames(lessFilename)
-    $.each(lessFilenames, function(index, filename) {
+    $.each(lessFilenames, function (index, filename) {
       var fileInclude = lessFileIncludes[filename]
 
       // Files not explicitly unchecked are compiled into the final stylesheet.
@@ -245,7 +256,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
   function generateCSS(preamble) {
     var oneChecked = false
     var lessFileIncludes = {}
-    $('#less-section input').each(function() {
+    $('#less-section input').each(function () {
       var $this = $(this)
       var checked = $this.is(':checked')
       lessFileIncludes[$this.val()] = checked
@@ -396,7 +407,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     var url = window.webkitURL || window.URL // Safari 6 uses "webkitURL".
     var svg = new Blob(
       ['<svg xmlns=\'http://www.w3.org/2000/svg\'></svg>'],
-      {type: 'image/svg+xml;charset=utf-8'}
+      { type: 'image/svg+xml;charset=utf-8' }
     )
     var objectUrl = url.createObjectURL(svg);
     if (/^blob:/.exec(objectUrl) === null) {
@@ -404,8 +415,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
       // than "blob:", which means it has been polyfilled and is not supported by
       // this browser.
       failback()
-    }
-    else {
+    } else {
       $('<img>')
         .on('load', function () {
           $compileBtn.prop('disabled', false)

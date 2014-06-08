@@ -53,6 +53,9 @@ module.exports = function (grunt) {
         src: 'js/*.js'
       },
       test: {
+        options: {
+          jshintrc: 'js/tests/unit/.jshintrc'
+        },
         src: 'js/tests/unit/*.js'
       },
       assets: {
@@ -65,10 +68,6 @@ module.exports = function (grunt) {
         config: 'js/.jscsrc'
       },
       grunt: {
-        options: {
-          requireCamelCaseOrUpperCaseIdentifiers: null,
-          requireParenthesesAroundIIFE: true
-        },
         src: '<%= jshint.grunt.src %>'
       },
       src: {
@@ -233,7 +232,7 @@ module.exports = function (grunt) {
       core: {
         files: {
           'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css',
-          'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css',
+          'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css'
         }
       },
       docs: {
@@ -315,9 +314,9 @@ module.exports = function (grunt) {
           pretty: true,
           data: function () {
             var filePath = path.join(__dirname, 'less/variables.less');
-            var fileContent = fs.readFileSync(filePath, {encoding: 'utf8'});
+            var fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
             var parser = new BsLessdocParser(fileContent);
-            return {sections: parser.parseFile()};
+            return { sections: parser.parseFile() };
           }
         },
         files: {
@@ -392,7 +391,7 @@ module.exports = function (grunt) {
 
 
   // These plugins provide necessary tasks.
-  require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
+  require('load-grunt-tasks')(grunt, { scope: 'devDependencies' });
   require('time-grunt')(grunt);
 
   // Docs HTML validation task

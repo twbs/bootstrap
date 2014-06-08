@@ -247,17 +247,33 @@ input[type="month"] {
 }
 
 // Apply same disabled cursor tweak as for inputs
+// Some special care is needed because <label>s don't inherit their parent's `cursor`.
 //
 // Note: Neither radios nor checkboxes can be readonly.
 input[type="radio"],
-input[type="checkbox"],
-.radio,
-.radio-inline,
-.checkbox,
-.checkbox-inline {
+input[type="checkbox"] {
   &[disabled],
+  &.disabled,
   fieldset[disabled] & {
     cursor: not-allowed;
+  }
+}
+// These classes are used directly on <label>s
+.radio-inline,
+.checkbox-inline {
+  &.disabled,
+  fieldset[disabled] & {
+    cursor: not-allowed;
+  }
+}
+// These classes are used on elements with <label> descendants
+.radio,
+.checkbox {
+  &.disabled,
+  fieldset[disabled] & {
+    label {
+      cursor: not-allowed;
+    }
   }
 }
 
