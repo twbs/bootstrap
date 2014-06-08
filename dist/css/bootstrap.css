@@ -5006,7 +5006,8 @@ a.list-group-item-danger.active:focus {
   border-top-width: 0;
 }
 .panel > .table,
-.panel > .table-responsive > .table {
+.panel > .table-responsive > .table,
+.panel > .panel-collapse > .table {
   margin-bottom: 0;
 }
 .panel > .table:first-child,
