@@ -239,7 +239,7 @@ body {
   background-repeat: repeat-x;
 }
 
- /* Masthead (headings and download button) */
+/* Masthead (headings and download button) */
 .bs-docs-masthead .bs-docs-booticon {
   margin: 0 auto 30px;
 }
@@ -272,8 +272,7 @@ body {
 
 @media (min-width: 768px) {
   .bs-docs-masthead {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding: 80px 0;
   }
   .bs-docs-masthead h1 {
     font-size: 60px;
