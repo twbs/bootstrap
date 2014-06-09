@@ -5,8 +5,8 @@
         "generate": "./uncached-npm-install.sh"
     },
     "rubygems": {
-        "key": "../pseudo_Gemfile.lock",
+        "key": "./Gemfile.lock",
         "cache": "$GEMDIR",
-        "generate": "gem install -N jekyll -v $JEKYLL_VERSION"
+        "generate": "bundle install --gemfile=../Gemfile"
     }
 }

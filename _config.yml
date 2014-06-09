@@ -1,6 +1,6 @@
 # Dependencies
-markdown:         rdiscount
-highlighter:      pygments
+markdown:         kramdown
+pygments:         true
 
 # Permalinks
 permalink:        pretty
@@ -13,6 +13,8 @@ port:             9001
 baseurl:          /
 url:              http://getbootstrap.com
 encoding:         UTF-8
+gems:             [jekyll-sitemap]
+
 
 # Custom vars
 current_version:  3.1.1
