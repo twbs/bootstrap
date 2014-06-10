@@ -9,28 +9,32 @@
  * details, see http://creativecommons.org/licenses/by/3.0/.
  */
 
+/* global ZeroClipboard */
 
 !function ($) {
   'use strict';
 
   $(function () {
 
+    // Scrollspy
     var $window = $(window)
     var $body   = $(document.body)
 
     $body.scrollspy({
       target: '.bs-docs-sidebar'
     })
-
     $window.on('load', function () {
       $body.scrollspy('refresh')
     })
 
+
+    // Kill links
     $('.bs-docs-container [href=#]').click(function (e) {
       e.preventDefault()
     })
 
-    // back to top
+
+    // Sidenav affixing
     setTimeout(function () {
       var $sideBar = $('.bs-docs-sidebar')
 
@@ -71,7 +75,7 @@
       })
     })();
 
-    // tooltip demo
+    // Tooltip and popover demos
     $('.tooltip-demo').tooltip({
       selector: '[data-toggle="tooltip"]',
       container: 'body'
@@ -85,23 +89,72 @@
       container: '.bs-docs-navbar .nav'
     })
 
-    // popover demo
+    // Default popover demo
     $('.bs-docs-popover').popover()
 
-    // Popover dismiss on next click
-    $('.bs-docs-popover-dismiss').popover({
-      trigger: 'focus'
+    // Button state demo
+    $('#loading-example-btn').click(function () {
+      var btn = $(this)
+      btn.button('loading')
+      setTimeout(function () {
+        btn.button('reset')
+      }, 3000)
     })
 
-    // button state demo
-    $('#loading-example-btn')
-      .click(function () {
-        var btn = $(this)
-        btn.button('loading')
-        setTimeout(function () {
-          btn.button('reset')
-        }, 3000)
-      })
+
+    // Config ZeroClipboard
+    ZeroClipboard.config({
+      moviePath: '/assets/flash/ZeroClipboard.swf',
+      hoverClass: 'btn-clipboard-hover'
+    })
+
+    // Insert copy to clipboard button before .highlight or .bs-example
+    $('.highlight').each(function () {
+      var highlight = $(this)
+      var previous = highlight.prev()
+      var btnHtml = '<div class="zero-clipboard"><span class="btn-clipboard">Copy</span></div>'
+
+      if (previous.hasClass('bs-example')) {
+        previous.before(btnHtml.replace(/btn-clipboard/, 'btn-clipboard with-example'))
+      } else {
+        highlight.before(btnHtml)
+      }
+    })
+    var zeroClipboard = new ZeroClipboard($('.btn-clipboard'))
+    var htmlBridge = $('#global-zeroclipboard-html-bridge')
+
+    // Handlers for ZeroClipboard
+    zeroClipboard.on('load', function () {
+      htmlBridge
+        .data('placement', 'top')
+        .attr('title', 'Copy to clipboard')
+        .tooltip()
+    })
+
+    // Copy to clipboard
+    zeroClipboard.on('dataRequested', function (client) {
+      var highlight = $(this).parent().nextAll('.highlight').first()
+      client.setText(highlight.text())
+    })
+
+    // Notify copy success and reset tooltip title
+    zeroClipboard.on('complete', function () {
+      htmlBridge
+        .attr('title', 'Copied!')
+        .tooltip('fixTitle')
+        .tooltip('show')
+        .attr('title', 'Copy to clipboard')
+        .tooltip('fixTitle')
+    })
+
+    // Notify copy failure
+    zeroClipboard.on('noflash wrongflash', function () {
+      htmlBridge
+        .attr('title', 'Flash required')
+        .tooltip('fixTitle')
+        .tooltip('show')
+    })
+
   })
 
 }(jQuery)
