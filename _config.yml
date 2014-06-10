@@ -1,5 +1,5 @@
 # Dependencies
-markdown:         rdiscount
+markdown:         kramdown
 highlighter:      pygments
 
 # Permalinks
