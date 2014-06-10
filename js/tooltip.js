@@ -202,10 +202,10 @@
         var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
 
         this.applyPlacement(calculatedOffset, placement)
-        this.hoverState = null
 
         var complete = function () {
           that.$element.trigger('shown.bs.' + that.type)
+          that.hoverState = null
         }
 
         $.support.transition && this.$tip.hasClass('fade') ?
