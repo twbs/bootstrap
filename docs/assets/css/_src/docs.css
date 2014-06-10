@@ -1060,10 +1060,14 @@ h1[id] {
 }
 
 /* Example dropdowns */
+.bs-example > .dropdown > .dropdown-toggle {
+  float: left;
+}
 .bs-example > .dropdown > .dropdown-menu {
   position: static;
   display: block;
   margin-bottom: 5px;
+  clear: left;
 }
 
 /* Example tabbable tabs */

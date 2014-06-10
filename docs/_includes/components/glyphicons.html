@@ -27,12 +27,13 @@
   </div>
   <div class="bs-callout bs-callout-info">
     <h4>Changing the icon font location</h4>
-    <p>By default, Bootstrap assumes that the icon font files will be located in the <code>../fonts/</code> directory relative to your deployed CSS. For example, if your CSS file is at <code>http://example.com/foobar/css/bootstrap.css</code>, then your font files should be at <code>http://example.com/foobar/fonts/glyphicons-halflings-regular.woff</code>, etc.</p>
-    <p>If you are placing the icon font files elsewhere or changing their filenames, you will need to adjust the <code>@icon-font-path</code> and/or <code>@icon-font-name</code> Less variables accordingly.</p>
-  </div>
-  <div class="bs-callout bs-callout-info">
-    <h4><code>@import</code>ing Bootstrap via Less may require adjusting the icon font location</h4>
-    <p>If you <code>@import</code> Bootstrap's Less source into your own Less file, you may need to adjust the <code>@icon-font-path</code> Less variable due to the way that the relative paths in our <code>url(...)</code>s work.</p>
+    <p>Bootstrap assumes icon font files will be located in the <code>../fonts/</code> directory. Moving or renaming those font files means updating the CSS in one of three ways:</p>
+    <ul>
+      <li>Change the <code>@icon-font-path</code> and/or <code>@icon-font-name</code> variables in the source Less files.</li>
+      <li>Utilize the <a href="http://lesscss.org/usage/#command-line-usage-relative-urls">relative URLs option</a> provided by the Less compiler.</li>
+      <li>Change the <code>url()</code> paths in the compiled CSS.</li>
+    </ul>
+    <p>Use whatever option best suites your specific development setup.</p>
   </div>
 {% highlight html %}
 <span class="glyphicon glyphicon-search"></span>
