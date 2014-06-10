@@ -143,7 +143,7 @@
         .attr('title', 'Copied!')
         .tooltip('fixTitle')
         .tooltip('show')
-        .attr('title', 'Copy')
+        .attr('title', 'Copy to clipboard')
         .tooltip('fixTitle')
     })
 
