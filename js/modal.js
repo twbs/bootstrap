@@ -89,7 +89,7 @@
 
       transition ?
         that.$element.find('.modal-dialog') // wait for modal to slide in
-          .one($.support.transition.end, function () {
+          .one('bsTransitionEnd', function () {
             that.$element.trigger('focus').trigger(e)
           })
           .emulateTransitionEnd(300) :
@@ -122,7 +122,7 @@
 
     $.support.transition && this.$element.hasClass('fade') ?
       this.$element
-        .one($.support.transition.end, $.proxy(this.hideModal, this))
+        .one('bsTransitionEnd', $.proxy(this.hideModal, this))
         .emulateTransitionEnd(300) :
       this.hideModal()
   }
@@ -185,7 +185,7 @@
 
       doAnimate ?
         this.$backdrop
-          .one($.support.transition.end, callback)
+          .one('bsTransitionEnd', callback)
           .emulateTransitionEnd(150) :
         callback()
 
@@ -198,7 +198,7 @@
       }
       $.support.transition && this.$element.hasClass('fade') ?
         this.$backdrop
-          .one($.support.transition.end, callbackRemove)
+          .one('bsTransitionEnd', callbackRemove)
           .emulateTransitionEnd(150) :
         callbackRemove()
 

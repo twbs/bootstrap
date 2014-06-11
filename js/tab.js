@@ -85,7 +85,7 @@
 
     transition ?
       $active
-        .one($.support.transition.end, next)
+        .one('bsTransitionEnd', next)
         .emulateTransitionEnd(150) :
       next()
 
