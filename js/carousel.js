@@ -7,7 +7,11 @@
  * ======================================================================== */
 
 
-+function ($) {
+(function (o_o) {
+  typeof define  === 'function' && define.amd ? define(['jquery'], o_o) :
+  typeof exports === 'object' ? o_o(require('jquery')) : o_o(this.jQuery)
+})(function ($) {
+
   'use strict';
 
   // CAROUSEL CLASS DEFINITION
@@ -209,4 +213,4 @@
     })
   })
 
-}(jQuery);
+});

@@ -7,7 +7,11 @@
  * ======================================================================== */
 
 
-+function ($) {
+(function (o_o) {
+  typeof define  === 'function' && define.amd ? define(['jquery'], o_o) :
+  typeof exports === 'object' ? o_o(require('jquery')) : o_o(this.jQuery)
+})(function ($) {
+
   'use strict';
 
   // DROPDOWN CLASS DEFINITION
@@ -148,4 +152,4 @@
     .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
     .on('keydown.bs.dropdown.data-api', toggle + ', [role="menu"], [role="listbox"]', Dropdown.prototype.keydown)
 
-}(jQuery);
+});

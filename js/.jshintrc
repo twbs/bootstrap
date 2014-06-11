@@ -9,7 +9,7 @@
   "latedef"  : true,
   "laxbreak" : true,
   "nonbsp"   : true,
-  "strict"   : true,
   "undef"    : true,
-  "unused"   : true
+  "unused"   : true,
+  "predef"   : [ "define", "require" ]
 }
