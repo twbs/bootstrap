@@ -24,22 +24,27 @@
     this.$backdrop      =
     this.isShown        = null
     this.scrollbarWidth = 0
+    this.remoteUrl      = this.options.remoteUrl || this.options.remote && this.options.remote.url || this.options.remote
+    this.disposeOnHide  = this.options.remoteCache === false || this.options.remote && this.options.remote.cache === false
 
-    if (this.options.remote) {
-      this.$element
-        .find('.modal-content')
-        .load(this.options.remote, $.proxy(function () {
-          this.$element.trigger('loaded.bs.modal')
-        }, this))
-    }
+    if (this.remoteUrl) this.load()
   }
 
   Modal.VERSION  = '3.1.1'
 
   Modal.DEFAULTS = {
+    remote: false,
     backdrop: true,
     keyboard: true,
     show: true
+  }
+
+  Modal.prototype.load = function () {
+    this.$element
+      .find('.modal-content')
+      .load(this.remoteUrl, $.proxy(function () {
+        this.$element.trigger('loaded.bs.modal')
+      }, this))
   }
 
   Modal.prototype.toggle = function (_relatedTarget) {
@@ -148,11 +153,11 @@
   }
 
   Modal.prototype.hideModal = function () {
-    var that = this
     this.$element.hide()
-    this.backdrop(function () {
-      that.$element.trigger('hidden.bs.modal')
-    })
+    this.backdrop($.proxy(function () {
+      if (this.disposeOnHide) this.$element.removeData('bs.modal').empty()
+      this.$element.trigger('hidden.bs.modal')
+    }, this))
   }
 
   Modal.prototype.removeBackdrop = function () {
