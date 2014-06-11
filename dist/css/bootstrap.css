@@ -5162,6 +5162,10 @@ a.list-group-item-danger.active:focus {
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #ddd;
 }
+.panel-default > .panel-heading .badge {
+  color: #f5f5f5;
+  background-color: #333;
+}
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #ddd;
 }
@@ -5175,6 +5179,10 @@ a.list-group-item-danger.active:focus {
 }
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #428bca;
+}
+.panel-primary > .panel-heading .badge {
+  color: #428bca;
+  background-color: #fff;
 }
 .panel-primary > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #428bca;
@@ -5190,6 +5198,10 @@ a.list-group-item-danger.active:focus {
 .panel-success > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #d6e9c6;
 }
+.panel-success > .panel-heading .badge {
+  color: #dff0d8;
+  background-color: #3c763d;
+}
 .panel-success > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #d6e9c6;
 }
@@ -5203,6 +5215,10 @@ a.list-group-item-danger.active:focus {
 }
 .panel-info > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #bce8f1;
+}
+.panel-info > .panel-heading .badge {
+  color: #d9edf7;
+  background-color: #31708f;
 }
 .panel-info > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #bce8f1;
@@ -5218,6 +5234,10 @@ a.list-group-item-danger.active:focus {
 .panel-warning > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #faebcc;
 }
+.panel-warning > .panel-heading .badge {
+  color: #fcf8e3;
+  background-color: #8a6d3b;
+}
 .panel-warning > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #faebcc;
 }
@@ -5231,6 +5251,10 @@ a.list-group-item-danger.active:focus {
 }
 .panel-danger > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #ebccd1;
+}
+.panel-danger > .panel-heading .badge {
+  color: #f2dede;
+  background-color: #a94442;
 }
 .panel-danger > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #ebccd1;
