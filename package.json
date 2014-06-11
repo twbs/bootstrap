@@ -34,7 +34,7 @@
     "canonical-json": "~0.0.4",
     "glob": "^4.0.0",
     "grunt": "~0.4.4",
-    "grunt-autoprefixer": "~0.7.2",
+    "grunt-autoprefixer": "~0.7.5",
     "grunt-banner": "~0.2.2",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-concat": "~0.4.0",
