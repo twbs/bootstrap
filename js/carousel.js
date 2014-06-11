@@ -206,6 +206,28 @@
     e.preventDefault()
   })
 
+  $(document).on('keydown', '[data-ride="carousel"]', function (e) {
+    // get the direction based on keyboard input
+    var type = e.which == 37 ? 'prev'  :
+           e.which == 38 ? 'first' :
+           e.which == 39 ? 'next'  :
+           e.which == 40 ? 'last'  : false
+
+    if (!type) return // exits if not a type we care about
+
+    // only accept arrow left, right, top and down.
+    // default event behavior is prevented for these four keys.
+    // other keyboard input is not affected
+    var $carousel = $(document.activeElement)
+
+    $carousel
+      .carousel('pause')
+      .carousel(/next|prev/.test(type) ? type : type == 'first' ? 0 : $(this).find('.item').length - 1)
+      .carousel('cycle')
+
+    e.preventDefault()
+  })
+
   $(window).on('load', function () {
     $('[data-ride="carousel"]').each(function () {
       var $carousel = $(this)
