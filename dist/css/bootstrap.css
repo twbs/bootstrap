@@ -1135,6 +1135,9 @@ mark,
 .text-justify {
   text-align: justify;
 }
+.text-nowrap {
+  white-space: nowrap;
+}
 .text-muted {
   color: #999;
 }
