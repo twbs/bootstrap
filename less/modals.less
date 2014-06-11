@@ -15,8 +15,7 @@
 // Container that the modal scrolls within
 .modal {
   display: none;
-  overflow: auto;
-  overflow-y: scroll;
+  overflow: hidden;
   position: fixed;
   top: 0;
   right: 0;
@@ -35,6 +34,10 @@
     .transition-transform(~"0.3s ease-out");
   }
   &.in .modal-dialog { .translate3d(0, 0, 0) }
+}
+.modal-open .modal {
+  overflow: auto;
+  overflow-y: scroll;
 }
 
 // Shell div to position the modal with bottom padding
