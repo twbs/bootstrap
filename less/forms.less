@@ -206,6 +206,7 @@ input[type="month"] {
 
 .radio,
 .checkbox {
+  position: relative;
   display: block;
   min-height: @line-height-computed; // clear the floating input if there is no label text
   margin-top: 10px;
@@ -222,9 +223,11 @@ input[type="month"] {
 .radio-inline input[type="radio"],
 .checkbox input[type="checkbox"],
 .checkbox-inline input[type="checkbox"] {
-  float: left;
+  position: absolute;
   margin-left: -20px;
+  margin-top: 4px \9;
 }
+
 .radio + .radio,
 .checkbox + .checkbox {
   margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
