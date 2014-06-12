@@ -66,6 +66,7 @@ $(function () {
       .on('show.bs.modal', function (e) {
         e.preventDefault()
         ok(true, 'show was called')
+        $('#modal-test').remove()
         start()
       })
       .on('shown.bs.modal', function () {
@@ -78,10 +79,12 @@ $(function () {
     stop()
     $.support.transition = false
 
-    $('<div id="modal-test"></div>')
+    $('<div id="modal-test"><p>content</p></div>')
       .on('shown.bs.modal', function () {
         ok($('#modal-test').is(':visible'), 'modal visible')
         ok($('#modal-test').length, 'modal inserted into dom')
+        ok($('#modal-test').data('bs.modal'), 'modal is created')
+        ok($('#modal-test').children().length, 'modal is not empty')
         $(this).bootstrapModal('hide')
       })
       .on('hidden.bs.modal', function () {
@@ -179,6 +182,7 @@ $(function () {
       .on('hide.bs.modal', function () {
         triggered += 1
         ok(triggered === 1, 'modal hide triggered once')
+        $('#modal-test').remove()
         start()
       })
       .bootstrapModal('show')
@@ -252,5 +256,44 @@ $(function () {
       })
       .appendTo('#qunit-fixture')
     toggleBtn.click()
+  })
+
+  test('should clear modal when hide is called and data-remote-cache is false', function () {
+    stop()
+    $.support.transition = false
+
+    $('<div id="modal-test" data-remote-cache="false"><p>content</p></div>')
+      .on('shown.bs.modal', function () {
+        $(this).bootstrapModal('hide')
+      })
+      .on('hidden.bs.modal', function () {
+        ok(!$('#modal-test').data('bs.modal'), 'modal is removed')
+        ok(!$('#modal-test').children().length, 'modal is empty')
+        $('#modal-test').remove()
+        start()
+      })
+      .bootstrapModal('show')
+  })
+
+  test('should clear modal when hide is called and remote: { cache: false } is false', function () {
+    stop()
+    $.support.transition = false
+
+    $('<div id="modal-test" data-remote-cache="false"><p>content</p></div>')
+      .on('shown.bs.modal', function () {
+        $(this).bootstrapModal('hide')
+      })
+      .on('hidden.bs.modal', function () {
+        ok(!$('#modal-test').data('bs.modal'), 'modal is removed')
+        ok(!$('#modal-test').children().length, 'modal is empty')
+        $('#modal-test').remove()
+        start()
+      })
+      .bootstrapModal({
+        remote: {
+          url: '',
+          cache: false
+        }
+      })
   })
 })
