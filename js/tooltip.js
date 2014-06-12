@@ -9,8 +9,8 @@
 
 
 (function (o_o) {
-  typeof define  === 'function' && define.amd ? define(['jquery'], o_o) :
-  typeof exports === 'object' ? o_o(require('jquery')) : o_o(jQuery)
+  typeof define  == 'function' && define.amd ? define(['jquery'], o_o) :
+  typeof exports == 'object' ? o_o(require('jquery')) : o_o(jQuery)
 })(function ($) {
 
   'use strict';
