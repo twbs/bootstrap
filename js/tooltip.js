@@ -32,7 +32,7 @@
   Tooltip.VERSION  = '3.1.1'
 
   Tooltip.DEFAULTS = {
-    animation: true,
+    animation: 'fade',
     placement: 'top',
     selector: false,
     template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
@@ -161,8 +161,6 @@
       $tip.attr('id', tipId)
       this.$element.attr('aria-describedby', tipId)
 
-      if (this.options.animation) $tip.addClass('fade')
-
       var placement = typeof this.options.placement == 'function' ?
         this.options.placement.call(this, $tip[0], this.$element[0]) :
         this.options.placement
@@ -206,9 +204,10 @@
 
       var complete = function () {
         that.$element.trigger('shown.bs.' + that.type)
+        if (that.options.animation) $tip.addClass(that.options.animation)
       }
 
-      $.support.transition && this.$tip.hasClass('fade') ?
+      $.support.transition && this.$tip.hasClass(this.options.animation) ?
         $tip
           .one('bsTransitionEnd', complete)
           .emulateTransitionEnd(150) :
@@ -275,7 +274,9 @@
     var title = this.getTitle()
 
     $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title)
-    $tip.removeClass('fade in top bottom left right')
+    $tip
+      .removeClass(this.options.animation)
+      .removeClass('in top bottom left right')
   }
 
   Tooltip.prototype.hide = function () {
@@ -288,6 +289,7 @@
     function complete() {
       if (that.hoverState != 'in') $tip.detach()
       that.$element.trigger('hidden.bs.' + that.type)
+      if (that.options.animation) $tip.removeClass(that.options.animation)
     }
 
     this.$element.trigger(e)
@@ -296,7 +298,7 @@
 
     $tip.removeClass('in')
 
-    $.support.transition && this.$tip.hasClass('fade') ?
+    $.support.transition && this.$tip.hasClass(this.options.animation) ?
       $tip
         .one('bsTransitionEnd', complete)
         .emulateTransitionEnd(150) :
