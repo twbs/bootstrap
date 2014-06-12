@@ -210,7 +210,7 @@
 
       $.support.transition && this.$tip.hasClass('fade') ?
         $tip
-          .one($.support.transition.end, complete)
+          .one('bsTransitionEnd', complete)
           .emulateTransitionEnd(150) :
         complete()
     }
@@ -298,7 +298,7 @@
 
     $.support.transition && this.$tip.hasClass('fade') ?
       $tip
-        .one($.support.transition.end, complete)
+        .one('bsTransitionEnd', complete)
         .emulateTransitionEnd(150) :
       complete()
 
