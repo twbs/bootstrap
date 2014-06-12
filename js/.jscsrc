@@ -14,6 +14,7 @@
   "disallowTrailingComma": true,
   "disallowSpacesInsideParentheses": true,
   "disallowTrailingWhitespace": true,
+  "requireCamelCaseOrUpperCaseIdentifiers": true,
   "requireCapitalizedConstructors": true,
   "requireCommaBeforeLineBreak": true,
   "requireDotNotation": true,
