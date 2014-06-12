@@ -8,9 +8,10 @@
  * ======================================================================== */
 
 
-(function (o_o) {
-  typeof define  == 'function' && define.amd ? define(['jquery'], o_o) :
-  typeof exports == 'object' ? o_o(require('jquery')) : o_o(jQuery)
+(function (factory) {
+  /* jshint strict: false */
+  typeof define  == 'function' && define.amd ? define(['jquery'], factory) :
+  typeof exports == 'object' ? factory(require('jquery')) : factory(jQuery)
 })(function ($) {
 
   'use strict';
