@@ -1,7 +1,7 @@
 // Dropdown variants
 
 .dropdown-variant(@color, @background) {
-	& > a {
+  & > a {
     &:hover,
     &:focus {
       color: @color;
@@ -9,10 +9,10 @@
       outline: 0;
       background-color: @background;
     }
-	}
+  }
 
-	&.active > a {
-	  &,
+  &.active > a {
+    &,
     &:hover,
     &:focus {
       color: @color;
@@ -20,14 +20,14 @@
       outline: 0;
       background-color: @background;
     }
-	}
+  }
 
-	&.disabled > a {
+  &.disabled > a {
     &,
     &:hover,
     &:focus {
       color: @dropdown-link-disabled-color;
       background-color: transparent;
     }
-	}
+  }
 }
