@@ -6061,6 +6061,8 @@ h4,
 .h3,
 .h4 {
   font-family: 'vegurlight', arial, helvetica, clean, sans-serif;
+  font-kerning: normal;
+  letter-spacing: -0.5px;
 }
 h1,
 h2,
