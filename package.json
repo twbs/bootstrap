@@ -18,6 +18,7 @@
   },
   "style": "dist/css/bootstrap.css",
   "less": "less/bootstrap.less",
+  "main": "./index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/twbs/bootstrap.git"
