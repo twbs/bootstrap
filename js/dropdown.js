@@ -53,7 +53,7 @@
           .trigger('shown.bs.dropdown', relatedTarget)
       }
 
-      return false
+      e.preventDefault(); // return false
     }
 
     Dropdown.prototype.keydown = function (e) {
