@@ -47,6 +47,7 @@
     ScrollSpy.prototype.refresh = function () {
       var offsetMethod = 'offset'
       var offsetBase   = 0
+      var escapedSeq   = /[!"#$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g
 
       if (!$.isWindow(this.$scrollElement[0])) {
         offsetMethod = 'position'
@@ -64,7 +65,7 @@
         .map(function () {
           var $el   = $(this)
           var href  = $el.data('target') || $el.attr('href')
-          var $href = /^#./.test(href) && $(href)
+          var $href = /^#./.test(href) && $('#' + href.slice(1).replace(escapedSeq, '\\$&'))
 
           return ($href
             && $href.length
