@@ -205,7 +205,7 @@
 
         var complete = function () {
           that.$element.trigger('shown.bs.' + that.type)
-          this.hoverState = null
+          that.hoverState = null
         }
 
         $.support.transition && this.$tip.hasClass('fade') ?
