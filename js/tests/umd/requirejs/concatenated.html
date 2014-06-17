@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AMD individual</title>
-    <link rel="stylesheet" type="text/css" href="../../../dist/css/bootstrap.min.css">
+    <title>RequireJS concatenated</title>
+    <link rel="stylesheet" type="text/css" href="../../../../dist/css/bootstrap.min.css">
   </head>
   <body>
 
@@ -24,18 +24,17 @@
 
     </div>
 
-    <script src="../vendor/require.min.js"></script>
+    <script src="../../vendor/require.min.js"></script>
     <script>
       require.config({
         paths: {
-          'jquery': '../vendor/jquery.min',
-          'transition': '../../transition',
-          'tooltip': '../../tooltip'
+          'jquery': '../../vendor/jquery.min',
+          'bootstrap': '../../../../dist/js/bootstrap.min'
         }
       })
     </script>
     <script>
-      require(['jquery', 'transition', 'tooltip'], function ($) {
+      require(['jquery', 'bootstrap'], function ($) {
         $('[data-toggle="tooltip"]').tooltip()
       })
     </script>
