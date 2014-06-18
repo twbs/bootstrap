@@ -19,16 +19,18 @@ $(function () {
   })
 
   test('should provide no conflict', function () {
-    ok(!$.fn.scrollspy, 'scrollspy was set back to undefined (org value)')
+    strictEqual($.fn.scrollspy, undefined, 'scrollspy was set back to undefined (org value)')
   })
 
-  test('should return element', function () {
-    ok($(document.body).bootstrapScrollspy()[0] == document.body, 'document.body returned')
+  test('should return jquery collection containing the element', function () {
+    var $el = $('<div/>')
+    var $scrollspy = $el.bootstrapScrollspy()
+    ok($scrollspy instanceof $, 'returns jquery collection')
+    strictEqual($scrollspy[0], $el[0], 'collection contains element')
   })
 
-  test('should switch active class on scroll', function () {
-    var sectionHTML = '<div id="masthead"></div>'
-    $(sectionHTML).append('#qunit-fixture')
+  // FIXME
+  test('should switch "active" class on scroll', function () {
     var topbarHTML = '<div class="topbar">' +
         '<div class="topbar-inner">' +
         '<div class="container">' +
@@ -40,12 +42,12 @@ $(function () {
         '</div>'
     var $topbar = $(topbarHTML).bootstrapScrollspy()
 
-    $(sectionHTML).append('#qunit-fixture')
     ok($topbar.find('.active', true))
   })
 
-  asyncTest('should only switch active class on current target', function () {
-    expect(1);
+  test('should only switch "active" class on current target', function () {
+    stop()
+
     var sectionHTML = '<div id="root" class="active">' +
         '<div class="topbar">' +
         '<div class="topbar-inner">' +
@@ -73,20 +75,23 @@ $(function () {
         '</div>' +
         '</div>'
     var $section = $(sectionHTML).appendTo('#qunit-fixture')
-    var $scrollSpy = $section
+
+    var $scrollspy = $section
         .show()
         .find('#scrollspy-example')
         .bootstrapScrollspy({ target: '#ss-target' })
 
-    $scrollSpy.on('scroll.bs.scrollspy', function () {
-      ok($section.hasClass('active'), 'Active class still on root node')
+    $scrollspy.on('scroll.bs.scrollspy', function () {
+      ok($section.hasClass('active'), '"active" class still on root node')
       start()
     })
-    $scrollSpy.scrollTop(350);
+
+    $scrollspy.scrollTop(350)
   })
 
-  asyncTest('middle navigation option correctly selected when large offset is used', function () {
-    expect(3);
+  test('middle navigation option correctly selected when large offset is used', function () {
+    stop()
+
     var sectionHTML = '<div id="header" style="height: 500px;"></div>' +
         '<nav id="navigation" class="navbar">' +
         '<ul class="nav navbar-nav">' +
@@ -101,17 +106,19 @@ $(function () {
         '<div id="three" style="height: 10px;"></div>' +
         '</div>'
     var $section = $(sectionHTML).appendTo('#qunit-fixture')
-    var $scrollSpy = $section
+    var $scrollspy = $section
         .show()
         .filter('#content')
-    $scrollSpy.bootstrapScrollspy({ target: '#navigation', offset: $scrollSpy.position().top })
 
-    $scrollSpy.on('scroll.bs.scrollspy', function () {
-      ok(!$section.find('#one-link').parent().hasClass('active'), 'Active class removed from first section')
-      ok($section.find('#two-link').parent().hasClass('active'), 'Active class on middle section')
-      ok(!$section.find('#three-link').parent().hasClass('active'), 'Active class not on last section')
+    $scrollspy.bootstrapScrollspy({ target: '#navigation', offset: $scrollspy.position().top })
+
+    $scrollspy.on('scroll.bs.scrollspy', function () {
+      ok(!$section.find('#one-link').parent().hasClass('active'), '"active" class removed from first section')
+      ok($section.find('#two-link').parent().hasClass('active'), '"active" class on middle section')
+      ok(!$section.find('#three-link').parent().hasClass('active'), '"active" class not on last section')
       start()
     })
-    $scrollSpy.scrollTop(550);
+
+    $scrollspy.scrollTop(550)
   })
 })
