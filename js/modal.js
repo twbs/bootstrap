@@ -75,25 +75,29 @@
           .show()
           .scrollTop(0)
 
-        if (transition) {
-          that.$element[0].offsetWidth // force reflow
+        var focusModal = function () {
+          that.$element
+            .addClass('in')
+            .attr('aria-hidden', false)
+
+          that.enforceFocus()
+
+          var e = $.Event('shown.bs.modal', { relatedTarget: _relatedTarget })
+
+          transition ?
+            that.$element.find('.modal-dialog') // wait for modal to slide in
+              .one('bsTransitionEnd', function () {
+                that.$element.trigger('focus').trigger(e)
+              })
+              .emulateTransitionEnd(300) :
+            that.$element.trigger('focus').trigger(e)
         }
 
-        that.$element
-          .addClass('in')
-          .attr('aria-hidden', false)
-
-        that.enforceFocus()
-
-        var e = $.Event('shown.bs.modal', { relatedTarget: _relatedTarget })
-
         transition ?
-          that.$element.find('.modal-dialog') // wait for modal to slide in
-            .one('bsTransitionEnd', function () {
-              that.$element.trigger('focus').trigger(e)
-            })
-            .emulateTransitionEnd(300) :
-          that.$element.trigger('focus').trigger(e)
+          // push the animation to the next frame
+          // to account for display change
+          setTimeout(focusModal, 18) :
+          focusModal()
       })
     }
 
@@ -177,17 +181,23 @@
             : this.hide.call(this)
         }, this))
 
-        if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
+        var showBackdrop = function () {
+          that.$backdrop.addClass('in')
 
-        this.$backdrop.addClass('in')
+          if (!callback) return
 
-        if (!callback) return
+          doAnimate ?
+            that.$backdrop
+              .one('bsTransitionEnd', callback)
+              .emulateTransitionEnd(150) :
+            callback()
+        }
 
+        // Push the animation to the next frame
+        // having just added the element
         doAnimate ?
-          this.$backdrop
-            .one('bsTransitionEnd', callback)
-            .emulateTransitionEnd(150) :
-          callback()
+          setTimeout(showBackdrop, 18) :
+          showBackdrop()
 
       } else if (!this.isShown && this.$backdrop) {
         this.$backdrop.removeClass('in')
