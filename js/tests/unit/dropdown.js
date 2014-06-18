@@ -19,46 +19,48 @@ $(function () {
   })
 
   test('should provide no conflict', function () {
-    ok(!$.fn.dropdown, 'dropdown was set back to undefined (org value)')
+    strictEqual($.fn.dropdown, undefined, 'dropdown was set back to undefined (org value)')
   })
 
-  test('should return element', function () {
-    var el = $('<div />')
-    ok(el.bootstrapDropdown()[0] === el[0], 'same element returned')
+  test('should return jquery collection containing the element', function () {
+    var $el = $('<div/>')
+    var $dropdown = $el.bootstrapDropdown()
+    ok($dropdown instanceof $, 'returns jquery collection')
+    strictEqual($dropdown[0], $el[0], 'collection contains element')
   })
 
-  test('should not open dropdown if target is disabled', function () {
+  test('should not open dropdown if target is disabled via attribute', function () {
     var dropdownHTML = '<ul class="tabs">' +
         '<li class="dropdown">' +
         '<button disabled href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>' +
         '<ul class="dropdown-menu">' +
         '<li><a href="#">Secondary link</a></li>' +
         '<li><a href="#">Something else here</a></li>' +
-        '<li class="divider"></li>' +
+        '<li class="divider"/>' +
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
         '</ul>'
-    var dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().click()
+    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().click()
 
-    ok(!dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
+    ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
   })
 
-  test('should not open dropdown if target is disabled', function () {
+  test('should not open dropdown if target is disabled via class', function () {
     var dropdownHTML = '<ul class="tabs">' +
         '<li class="dropdown">' +
         '<button href="#" class="btn dropdown-toggle disabled" data-toggle="dropdown">Dropdown</button>' +
         '<ul class="dropdown-menu">' +
         '<li><a href="#">Secondary link</a></li>' +
         '<li><a href="#">Something else here</a></li>' +
-        '<li class="divider"></li>' +
+        '<li class="divider"/>' +
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
         '</ul>'
-    var dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().click()
+    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().click()
 
-    ok(!dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
+    ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
   })
 
   test('should add class open to menu if clicked', function () {
@@ -68,14 +70,14 @@ $(function () {
         '<ul class="dropdown-menu">' +
         '<li><a href="#">Secondary link</a></li>' +
         '<li><a href="#">Something else here</a></li>' +
-        '<li class="divider"></li>' +
+        '<li class="divider"/>' +
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
         '</ul>'
-    var dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().click()
+    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().click()
 
-    ok(dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
+    ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
   })
 
   test('should test if element has a # before assuming it\'s a selector', function () {
@@ -85,77 +87,74 @@ $(function () {
         '<ul class="dropdown-menu">' +
         '<li><a href="#">Secondary link</a></li>' +
         '<li><a href="#">Something else here</a></li>' +
-        '<li class="divider"></li>' +
+        '<li class="divider"/>' +
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
         '</ul>'
-    var dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().click()
+    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().click()
 
-    ok(dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
+    ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
   })
 
 
-  test('should remove open class if body clicked', function () {
+  test('should remove "open" class if body is clicked', function () {
     var dropdownHTML = '<ul class="tabs">' +
         '<li class="dropdown">' +
         '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
         '<ul class="dropdown-menu">' +
         '<li><a href="#">Secondary link</a></li>' +
         '<li><a href="#">Something else here</a></li>' +
-        '<li class="divider"></li>' +
+        '<li class="divider"/>' +
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
         '</ul>'
-    var dropdown = $(dropdownHTML)
-          .appendTo('#qunit-fixture')
-          .find('[data-toggle="dropdown"]')
-          .bootstrapDropdown()
-          .click()
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+      .click()
 
-    ok(dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
-    $('body').click()
-    ok(!dropdown.parent('.dropdown').hasClass('open'), 'open class removed')
-    dropdown.remove()
+    ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
+    $(document.body).click()
+    ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class removed')
   })
 
-  test('should remove open class if body clicked, with multiple drop downs', function () {
+  test('should remove "open" class if body is clicked, with multiple dropdowns', function () {
     var dropdownHTML = '<ul class="nav">' +
-        '    <li><a href="#menu1">Menu 1</a></li>' +
-        '    <li class="dropdown" id="testmenu">' +
-        '      <a class="dropdown-toggle" data-toggle="dropdown" href="#testmenu">Test menu <b class="caret"></b></a>' +
-        '      <ul class="dropdown-menu" role="menu">' +
-        '        <li><a href="#sub1">Submenu 1</a></li>' +
-        '      </ul>' +
-        '    </li>' +
+        '<li><a href="#menu1">Menu 1</a></li>' +
+        '<li class="dropdown" id="testmenu">' +
+        '<a class="dropdown-toggle" data-toggle="dropdown" href="#testmenu">Test menu <span class="caret"/></a>' +
+        '<ul class="dropdown-menu" role="menu">' +
+        '<li><a href="#sub1">Submenu 1</a></li>' +
+        '</ul>' +
+        '</li>' +
         '</ul>' +
         '<div class="btn-group">' +
-        '    <button class="btn">Actions</button>' +
-        '    <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>' +
-        '    <ul class="dropdown-menu">' +
-        '        <li><a href="#">Action 1</a></li>' +
-        '    </ul>' +
+        '<button class="btn">Actions</button>' +
+        '<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"/></button>' +
+        '<ul class="dropdown-menu">' +
+        '<li><a href="#">Action 1</a></li>' +
+        '</ul>' +
         '</div>'
-    var dropdowns = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-toggle="dropdown"]')
-    var first = dropdowns.first()
-    var last = dropdowns.last()
+    var $dropdowns = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-toggle="dropdown"]')
+    var $first = $dropdowns.first()
+    var $last = $dropdowns.last()
 
-    ok(dropdowns.length == 2, 'Should be two dropdowns')
+    strictEqual($dropdowns.length, 2, 'two dropdowns')
 
-    first.click()
-    ok(first.parents('.open').length == 1, 'open class added on click')
-    ok($('#qunit-fixture .open').length == 1, 'only one object is open')
-    $('body').click()
-    ok($('#qunit-fixture .open').length === 0, 'open class removed')
+    $first.click()
+    strictEqual($first.parents('.open').length, 1, '"open" class added on click')
+    strictEqual($('#qunit-fixture .open').length, 1, 'only one dropdown is open')
+    $(document.body).click()
+    strictEqual($('#qunit-fixture .open').length, 0, '"open" class removed')
 
-    last.click()
-    ok(last.parent('.open').length == 1, 'open class added on click')
-    ok($('#qunit-fixture .open').length == 1, 'only one object is open')
-    $('body').click()
-    ok($('#qunit-fixture .open').length === 0, 'open class removed')
-
-    $('#qunit-fixture').html('')
+    $last.click()
+    strictEqual($last.parent('.open').length, 1, '"open" class added on click')
+    strictEqual($('#qunit-fixture .open').length, 1, 'only one dropdown is open')
+    $(document.body).click()
+    strictEqual($('#qunit-fixture .open').length, 0, '"open" class removed')
   })
 
   test('should fire show and hide event', function () {
@@ -165,63 +164,63 @@ $(function () {
         '<ul class="dropdown-menu">' +
         '<li><a href="#">Secondary link</a></li>' +
         '<li><a href="#">Something else here</a></li>' +
-        '<li class="divider"></li>' +
+        '<li class="divider"/>' +
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
         '</ul>'
-    var dropdown = $(dropdownHTML)
-          .appendTo('#qunit-fixture')
-          .find('[data-toggle="dropdown"]')
-          .bootstrapDropdown()
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
 
     stop()
 
-    dropdown
+    $dropdown
       .parent('.dropdown')
       .on('show.bs.dropdown', function () {
-        ok(true, 'show was called')
+        ok(true, 'show was fired')
       })
       .on('hide.bs.dropdown', function () {
-        ok(true, 'hide was called')
+        ok(true, 'hide was fired')
         start()
       })
 
-    dropdown.click()
+    $dropdown.click()
     $(document.body).click()
   })
 
 
-  test('should fire shown and hiden event', function () {
+  test('should fire shown and hidden event', function () {
     var dropdownHTML = '<ul class="tabs">' +
         '<li class="dropdown">' +
         '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
         '<ul class="dropdown-menu">' +
         '<li><a href="#">Secondary link</a></li>' +
         '<li><a href="#">Something else here</a></li>' +
-        '<li class="divider"></li>' +
+        '<li class="divider"/>' +
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
         '</ul>'
-    var dropdown = $(dropdownHTML)
-          .appendTo('#qunit-fixture')
-          .find('[data-toggle="dropdown"]')
-          .bootstrapDropdown()
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
 
     stop()
 
-    dropdown
+    $dropdown
       .parent('.dropdown')
       .on('shown.bs.dropdown', function () {
-        ok(true, 'show was called')
+        ok(true, 'shown was fired')
       })
       .on('hidden.bs.dropdown', function () {
-        ok(true, 'hide was called')
+        ok(true, 'hidden was fired')
         start()
       })
 
-    dropdown.click()
+    $dropdown.click()
     $(document.body).click()
   })
 
