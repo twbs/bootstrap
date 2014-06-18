@@ -38,6 +38,12 @@
           }
         }
       })
+
+      // Cleanup
+      QUnit.testDone(function () {
+        $('#qunit-fixture').empty()
+        $('#modal-test, .modal-backdrop').remove()
+      })
     </script>
 
     <!-- Plugin sources -->
@@ -69,7 +75,7 @@
 
   </head>
   <body>
-    <div>
+    <div id="qunit-container">
       <div id="qunit"></div>
       <div id="qunit-fixture"></div>
     </div>
