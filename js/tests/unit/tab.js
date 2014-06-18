@@ -19,11 +19,14 @@ $(function () {
   })
 
   test('should provide no conflict', function () {
-    ok(!$.fn.tab, 'tab was set back to undefined (org value)')
+    strictEqual($.fn.tab, undefined, 'tab was set back to undefined (org value)')
   })
 
-  test('should return element', function () {
-    ok($(document.body).bootstrapTab()[0] == document.body, 'document.body returned')
+  test('should return jquery collection containing the element', function () {
+    var $el = $('<div/>')
+    var $tab = $el.bootstrapTab()
+    ok($tab instanceof $, 'returns jquery collection')
+    strictEqual($tab[0], $el[0], 'collection contains element')
   })
 
   test('should activate element by tab id', function () {
@@ -32,7 +35,7 @@ $(function () {
         '<li><a href="#profile">Profile</a></li>' +
         '</ul>'
 
-    $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture')
+    $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture')
 
     $(tabsHTML).find('li:last a').bootstrapTab('show')
     equal($('#qunit-fixture').find('.active').attr('id'), 'profile')
@@ -47,7 +50,7 @@ $(function () {
         '<li><a href="#profile">Profile</a></li>' +
         '</ul>'
 
-    $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture')
+    $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture')
 
     $(pillsHTML).find('li:last a').bootstrapTab('show')
     equal($('#qunit-fixture').find('.active').attr('id'), 'profile')
@@ -56,23 +59,24 @@ $(function () {
     equal($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
-
-  test('should not fire closed when close is prevented', function () {
-    $.support.transition = false
+  test('should not fire shown when show is prevented', function () {
     stop()
+
     $('<div class="tab"/>')
       .on('show.bs.tab', function (e) {
         e.preventDefault()
-        ok(true)
+        ok(true, 'show event fired')
         start()
       })
       .on('shown.bs.tab', function () {
-        ok(false)
+        ok(false, 'shown event fired')
       })
       .bootstrapTab('show')
   })
 
   test('show and shown events should reference correct relatedTarget', function () {
+    stop()
+
     var dropHTML = '<ul class="drop">' +
         '<li class="dropdown"><a data-toggle="dropdown" href="#">1</a>' +
         '<ul class="dropdown-menu">' +
@@ -82,15 +86,19 @@ $(function () {
         '</li>' +
         '</ul>'
 
-    $(dropHTML).find('ul>li:first a').bootstrapTab('show').end()
-      .find('ul>li:last a')
-      .on('show.bs.tab', function (event) {
-        equal(event.relatedTarget.hash, '#1-1')
-      })
-      .on('show.bs.tab', function (event) {
-        equal(event.relatedTarget.hash, '#1-1')
-      })
-      .bootstrapTab('show')
+    $(dropHTML)
+      .find('ul > li:first a')
+        .bootstrapTab('show')
+      .end()
+      .find('ul > li:last a')
+        .on('show.bs.tab', function (e) {
+          equal(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
+          start()
+        })
+        .on('shown.bs.tab', function (e) {
+          equal(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
+        })
+        .bootstrapTab('show')
   })
 
 })
