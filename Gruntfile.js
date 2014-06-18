@@ -99,12 +99,12 @@ module.exports = function (grunt) {
                     '  (function (o_o) {\n' +
                     '    typeof define  == \'function\' && define.amd ? define([\'jquery\'], o_o) :\n' +
                     '    typeof exports == \'object\' ? o_o(require(\'jquery\')) : o_o(jQuery)\n' +
-                    '  })(function ($) {'
+                    '  })(function ($) {';
 
           var footer = '  })\n\n' +
-                       '}();\n'
+                       '}();\n';
 
-          return src.replace(umd, '').replace(footer, '}();\n')
+          return src.replace(umd, '').replace(footer, '}();\n');
         }
       },
       bootstrap: {
