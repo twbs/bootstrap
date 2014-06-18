@@ -34,10 +34,12 @@ module.exports = function (grunt) {
             ' */\n',
     // NOTE: This jqueryCheck code is duplicated in customizer.js; if making changes here, be sure to update the other copy too.
     jqueryCheck: 'if (typeof define == \'undefined\' && typeof exports == \'undefined\' && typeof jQuery == \'undefined\') { throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery\') }\n\n',
-    umdWrap: '(function (o_o) {\n' +
-             '  typeof define  == \'function\' && define.amd ? define([\'jquery\'], o_o) :\n' +
-             '  typeof exports == \'object\' ? o_o(require(\'jquery\')) : o_o(jQuery)\n' +
-             '})(function ($) {\n\n',
+    umdDef: [
+              '(function (o_o) {\n',
+              '  typeof define  == \'function\' && define.amd ? define([\'jquery\'], o_o) :\n',
+              '  typeof exports == \'object\' ? o_o(require(\'jquery\')) : o_o(jQuery)\n',
+              '})(function ($) {'
+            ],
 
     // Task configuration.
     clean: {
@@ -91,20 +93,14 @@ module.exports = function (grunt) {
 
     concat: {
       options: {
-        banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= umdWrap %>',
+        banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= umdDef.join("") %>\n\n',
         footer: '});\n',
         stripBanners: false,
         process: function (src) {
-          var umd = '\n\n' +
-                    '  (function (o_o) {\n' +
-                    '    typeof define  == \'function\' && define.amd ? define([\'jquery\'], o_o) :\n' +
-                    '    typeof exports == \'object\' ? o_o(require(\'jquery\')) : o_o(jQuery)\n' +
-                    '  })(function ($) {';
+          var umdHeader = '\n\n  ' + grunt.config.get('umdDef').join('  ');
+          var umdFooter = '  })\n\n}();\n';
 
-          var footer = '  })\n\n' +
-                       '}();\n';
-
-          return src.replace(umd, '').replace(footer, '}();\n');
+          return src.replace(umdHeader, '').replace(umdFooter, '}();\n');
         }
       },
       bootstrap: {
