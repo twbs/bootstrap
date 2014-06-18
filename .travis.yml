@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "0.10"
 before_install:
-  - travis_retry time sudo pip install -r test-infra/requirements.txt
+  - time travis_retry sudo pip install -r test-infra/requirements.txt
   - rvm use 1.9.3 --fuzzy
   - export GEMDIR=$(rvm gemdir)
   - if [ "$TWBS_TEST" = validate-html ]; then echo "ruby=$(basename $GEMDIR) jekyll=$JEKYLL_VERSION" > pseudo_Gemfile.lock; fi
