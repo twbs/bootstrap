@@ -154,7 +154,7 @@ $(function () {
         ok($('#modal-test').length, 'modal insterted into dom')
         $('.contents').click()
         ok($('#modal-test').is(':visible'), 'modal visible')
-        $('#modal-test').click()
+        $('#modal-test').mousedown()
       })
       .on('hidden.bs.modal', function () {
         ok(!$('#modal-test').is(':visible'), 'modal hidden')
@@ -174,7 +174,7 @@ $(function () {
     div
       .on('shown.bs.modal', function () {
         triggered = 0
-        $('#modal-test').click()
+        $('#modal-test').mousedown()
       })
       .on('hide.bs.modal', function () {
         triggered += 1
