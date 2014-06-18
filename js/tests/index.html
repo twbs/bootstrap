@@ -13,23 +13,22 @@
     <script>
       // See https://github.com/axemclion/grunt-saucelabs#test-result-details-with-qunit
       var log = []
-      QUnit.done = function (test_results) {
-        var tests = log.map(function (details) {
-          return {
+      QUnit.done(function (testResults) {
+        var tests = []
+        for (var i = 0, len = log.length; i < len; i++) {
+          var details = log[i]
+          tests.push({
             name: details.name,
             result: details.result,
             expected: details.expected,
             actual: details.actual,
             source: details.source
-          }
-        })
-        test_results.tests = tests
+          })
+        }
+        testResults.tests = tests
 
-        // Delaying results a bit because in real-world scenario you won't get them immediately
-        setTimeout(function () {
-          window.global_test_results = test_results
-        }, 2000)
-      }
+        window.global_test_results = testResults
+      })
 
       QUnit.testStart(function (testDetails) {
         QUnit.log = function (details) {
