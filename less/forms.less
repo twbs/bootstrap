@@ -507,4 +507,29 @@ input[type="checkbox"] {
     top: 0;
     right: (@grid-gutter-width / 2);
   }
+
+  // Form group sizes
+  //
+  // Quick utility class for applying `.input-lg` and `.input-sm` styles to the
+  // inputs and labels within a `.form-group`.
+  .form-group-lg {
+    @media (min-width: @screen-sm-min) {
+      .control-label {
+        padding-top: ((@padding-large-vertical * @line-height-large) + 1);
+      }
+    }
+    .form-control {
+      &:extend(.input-lg);
+    }
+  }
+  .form-group-sm {
+    @media (min-width: @screen-sm-min) {
+      .control-label {
+        padding-top: (@padding-small-vertical + 1);
+      }
+    }
+    .form-control {
+      &:extend(.input-sm);
+    }
+  }
 }
