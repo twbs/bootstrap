@@ -50,6 +50,7 @@ bootstrap/
     ├── glyphicons-halflings-regular.svg
     ├── glyphicons-halflings-regular.ttf
     └── glyphicons-halflings-regular.woff
+    └── glyphicons-halflings-regular.woff2
 ```
 
 We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). Fonts from Glyphicons are included, as is the optional Bootstrap theme.
