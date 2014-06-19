@@ -17,10 +17,10 @@ module.exports = function (grunt) {
 
   var fs = require('fs');
   var path = require('path');
+  var npmShrinkwrap = require('npm-shrinkwrap');
   var generateGlyphiconsData = require('./grunt/bs-glyphicons-data-generator.js');
   var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
   var generateRawFiles = require('./grunt/bs-raw-files-generator.js');
-  var updateShrinkwrap = require('./grunt/shrinkwrap.js');
 
   // Project configuration.
   grunt.initConfig({
@@ -387,9 +387,6 @@ module.exports = function (grunt) {
     exec: {
       npmUpdate: {
         command: 'npm update'
-      },
-      npmShrinkWrap: {
-        command: 'npm shrinkwrap --dev'
       }
     }
   });
@@ -463,7 +460,19 @@ module.exports = function (grunt) {
     generateRawFiles(grunt, banner);
   });
 
-  // Task for updating the npm packages used by the Travis build.
-  grunt.registerTask('update-shrinkwrap', ['exec:npmUpdate', 'exec:npmShrinkWrap', '_update-shrinkwrap']);
-  grunt.registerTask('_update-shrinkwrap', function () { updateShrinkwrap.call(this, grunt); });
+  // Task for updating the cached npm packages used by the Travis build (which are controlled by test-infra/npm-shrinkwrap.json).
+  // This task should be run and the updated file should be committed whenever Bootstrap's dependencies change.
+  grunt.registerTask('update-shrinkwrap', ['exec:npmUpdate', '_update-shrinkwrap']);
+  grunt.registerTask('_update-shrinkwrap', function () {
+    var done = this.async();
+    npmShrinkwrap({ dev: true, dirname: __dirname }, function (err) {
+      if (err) {
+        grunt.fail.warn(err)
+      }
+      var dest = 'test-infra/npm-shrinkwrap.json';
+      fs.renameSync('npm-shrinkwrap.json', dest);
+      grunt.log.writeln('File ' + dest.cyan + ' updated.');
+      done();
+    });
+  });
 };
