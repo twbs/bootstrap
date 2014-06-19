@@ -56,7 +56,7 @@
     "grunt-sed": "~0.1.1",
     "load-grunt-tasks": "~0.5.0",
     "markdown": "~0.5.0",
-    "npm-shrinkwrap": "~3.1.3",
+    "npm-shrinkwrap": "~3.1.4",
     "time-grunt": "~0.3.2"
   },
   "engines": {
