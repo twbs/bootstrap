@@ -3200,6 +3200,7 @@ tbody.collapse.in {
   font-size: 12px;
   line-height: 1.42857143;
   color: #777;
+  white-space: nowrap;
 }
 .dropdown-backdrop {
   position: fixed;
@@ -4866,7 +4867,13 @@ a.list-group-item:focus {
 }
 .list-group-item.active .list-group-item-heading,
 .list-group-item.active:hover .list-group-item-heading,
-.list-group-item.active:focus .list-group-item-heading {
+.list-group-item.active:focus .list-group-item-heading,
+.list-group-item.active .list-group-item-heading > small,
+.list-group-item.active:hover .list-group-item-heading > small,
+.list-group-item.active:focus .list-group-item-heading > small,
+.list-group-item.active .list-group-item-heading > .small,
+.list-group-item.active:hover .list-group-item-heading > .small,
+.list-group-item.active:focus .list-group-item-heading > .small {
   color: inherit;
 }
 .list-group-item.active .list-group-item-text,
