@@ -307,16 +307,27 @@ window.onload = function () { // wait for load in a dumb way because B-0
   function generateJS(preamble) {
     var $checked = $('#plugin-section input:checked')
     var jqueryCheck = 'if (typeof define == \'undefined\' && typeof exports == \'undefined\' && typeof jQuery == \'undefined\') { throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery\') }\n\n'
+    var umdDefinition = [
+      '(function (o_o) {\n',
+      '  typeof define  == \'function\' && define.amd ? define([\'jquery\'], o_o) :\n',
+      '  typeof exports == \'object\' ? o_o(require(\'jquery\')) : o_o(jQuery)\n',
+      '})(function ($) {'
+    ]
 
     if (!$checked.length) return false
 
     var js = $checked
-      .map(function () { return __js[this.value] })
+      .map(function () {
+        var umdHeader = '\n\n  ' + umdDefinition.join('  ')
+        var umdFooter = '  })\n\n}();\n'
+
+        return __js[this.value].replace(umdHeader, '').replace(umdFooter, '}();\n')
+      })
       .toArray()
       .join('\n')
 
     preamble = cw + preamble
-    js = jqueryCheck + js
+    js = jqueryCheck + umdDefinition.join('') + '\n\n' + js + '});\n'
 
     return {
       'bootstrap.js': preamble + js,
