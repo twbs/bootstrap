@@ -156,7 +156,7 @@
       var $this   = $(this)
       var target  = $this.attr('data-target')
           || e.preventDefault()
-          || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
+          || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') // strip for ie7
       var $target = $(target)
       var data    = $target.data('bs.collapse')
       var option  = data ? 'toggle' : $this.data()

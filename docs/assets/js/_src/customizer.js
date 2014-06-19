@@ -233,7 +233,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
       if (('variables.less' === filename) && vars) lessSource += generateCustomLess(vars)
     })
 
-    lessSource = lessSource.replace(/@import[^\n]*/gi, '') //strip any imports
+    lessSource = lessSource.replace(/@import[^\n]*/gi, '') // strip any imports
     return lessSource
   }
 
