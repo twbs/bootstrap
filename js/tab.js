@@ -30,7 +30,7 @@
 
       if (!selector) {
         selector = $this.attr('href')
-        selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+        selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
       }
 
       if ($this.parent('li').hasClass('active')) return

@@ -202,7 +202,7 @@
     $(document).on('click.bs.carousel.data-api', '[data-slide], [data-slide-to]', function (e) {
       var href
       var $this   = $(this)
-      var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
+      var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) // strip for ie7
       var options = $.extend({}, $target.data(), $this.data())
       var slideIndex = $this.attr('data-slide-to')
       if (slideIndex) options.interval = false
