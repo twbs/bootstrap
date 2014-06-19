@@ -1,20 +1,30 @@
 $(function () {
+  'use strict';
 
-  module('dropdowns')
-
-  test('should provide no conflict', function () {
-    var dropdown = $.fn.dropdown.noConflict()
-    ok(!$.fn.dropdown, 'dropdown was set back to undefined (org value)')
-    $.fn.dropdown = dropdown
-  })
+  module('dropdowns plugin')
 
   test('should be defined on jquery object', function () {
     ok($(document.body).dropdown, 'dropdown method is defined')
   })
 
+  module('dropdowns', {
+    setup: function () {
+      // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
+      $.fn.bootstrapDropdown = $.fn.dropdown.noConflict()
+    },
+    teardown: function () {
+      $.fn.dropdown = $.fn.bootstrapDropdown
+      delete $.fn.bootstrapDropdown
+    }
+  })
+
+  test('should provide no conflict', function () {
+    ok(!$.fn.dropdown, 'dropdown was set back to undefined (org value)')
+  })
+
   test('should return element', function () {
     var el = $('<div />')
-    ok(el.dropdown()[0] === el[0], 'same element returned')
+    ok(el.bootstrapDropdown()[0] === el[0], 'same element returned')
   })
 
   test('should not open dropdown if target is disabled', function () {
@@ -28,8 +38,8 @@ $(function () {
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
-        '</ul>',
-        dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
+        '</ul>'
+    var dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().click()
 
     ok(!dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
   })
@@ -45,8 +55,8 @@ $(function () {
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
-        '</ul>',
-        dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
+        '</ul>'
+    var dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().click()
 
     ok(!dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
   })
@@ -62,8 +72,8 @@ $(function () {
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
-        '</ul>',
-        dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
+        '</ul>'
+    var dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().click()
 
     ok(dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
   })
@@ -79,8 +89,8 @@ $(function () {
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
-        '</ul>',
-        dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
+        '</ul>'
+    var dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().click()
 
     ok(dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
   })
@@ -97,11 +107,11 @@ $(function () {
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
-        '</ul>',
-        dropdown = $(dropdownHTML)
+        '</ul>'
+    var dropdown = $(dropdownHTML)
           .appendTo('#qunit-fixture')
           .find('[data-toggle="dropdown"]')
-          .dropdown()
+          .bootstrapDropdown()
           .click()
 
     ok(dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
@@ -126,10 +136,10 @@ $(function () {
         '    <ul class="dropdown-menu">' +
         '        <li><a href="#">Action 1</a></li>' +
         '    </ul>' +
-        '</div>',
-        dropdowns = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-toggle="dropdown"]'),
-        first = dropdowns.first(),
-        last = dropdowns.last()
+        '</div>'
+    var dropdowns = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-toggle="dropdown"]')
+    var first = dropdowns.first()
+    var last = dropdowns.last()
 
     ok(dropdowns.length == 2, 'Should be two dropdowns')
 
@@ -159,20 +169,20 @@ $(function () {
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
-        '</ul>',
-        dropdown = $(dropdownHTML)
+        '</ul>'
+    var dropdown = $(dropdownHTML)
           .appendTo('#qunit-fixture')
           .find('[data-toggle="dropdown"]')
-          .dropdown()
+          .bootstrapDropdown()
 
     stop()
 
     dropdown
       .parent('.dropdown')
-      .bind('show.bs.dropdown', function () {
+      .on('show.bs.dropdown', function () {
         ok(true, 'show was called')
       })
-      .bind('hide.bs.dropdown', function () {
+      .on('hide.bs.dropdown', function () {
         ok(true, 'hide was called')
         start()
       })
@@ -193,20 +203,20 @@ $(function () {
         '<li><a href="#">Another link</a></li>' +
         '</ul>' +
         '</li>' +
-        '</ul>',
-        dropdown = $(dropdownHTML)
+        '</ul>'
+    var dropdown = $(dropdownHTML)
           .appendTo('#qunit-fixture')
           .find('[data-toggle="dropdown"]')
-          .dropdown()
+          .bootstrapDropdown()
 
     stop()
 
     dropdown
       .parent('.dropdown')
-      .bind('shown.bs.dropdown', function () {
+      .on('shown.bs.dropdown', function () {
         ok(true, 'show was called')
       })
-      .bind('hidden.bs.dropdown', function () {
+      .on('hidden.bs.dropdown', function () {
         ok(true, 'hide was called')
         start()
       })

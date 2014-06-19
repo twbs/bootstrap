@@ -1,29 +1,39 @@
 $(function () {
+  'use strict';
 
-  module('collapse')
-
-  test('should provide no conflict', function () {
-    var collapse = $.fn.collapse.noConflict()
-    ok(!$.fn.collapse, 'collapse was set back to undefined (org value)')
-    $.fn.collapse = collapse
-  })
+  module('collapse plugin')
 
   test('should be defined on jquery object', function () {
     ok($(document.body).collapse, 'collapse method is defined')
   })
 
+  module('collapse', {
+    setup: function () {
+      // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
+      $.fn.bootstrapCollapse = $.fn.collapse.noConflict()
+    },
+    teardown: function () {
+      $.fn.collapse = $.fn.bootstrapCollapse
+      delete $.fn.bootstrapCollapse
+    }
+  })
+
+  test('should provide no conflict', function () {
+    ok(!$.fn.collapse, 'collapse was set back to undefined (org value)')
+  })
+
   test('should return element', function () {
-    ok($(document.body).collapse()[0] == document.body, 'document.body returned')
+    ok($(document.body).bootstrapCollapse()[0] == document.body, 'document.body returned')
   })
 
   test('should show a collapsed element', function () {
-    var el = $('<div class="collapse"></div>').collapse('show')
+    var el = $('<div class="collapse"></div>').bootstrapCollapse('show')
     ok(el.hasClass('in'), 'has class in')
-    ok(/height/.test(el.attr('style')), 'has height set')
+    ok(!/height/.test(el.attr('style')), 'has height reset')
   })
 
   test('should hide a collapsed element', function () {
-    var el = $('<div class="collapse"></div>').collapse('hide')
+    var el = $('<div class="collapse"></div>').bootstrapCollapse('hide')
     ok(!el.hasClass('in'), 'does not have class in')
     ok(/height/.test(el.attr('style')), 'has height set')
   })
@@ -40,7 +50,7 @@ $(function () {
       .on('shown.bs.collapse', function () {
         ok(false)
       })
-      .collapse('show')
+      .bootstrapCollapse('show')
   })
 
   test('should reset style to auto after finishing opening collapse', function () {
@@ -51,10 +61,10 @@ $(function () {
         ok(this.style.height == '0px')
       })
       .on('shown.bs.collapse', function () {
-        ok(this.style.height == 'auto')
+        ok(this.style.height === '')
         start()
       })
-      .collapse('show')
+      .bootstrapCollapse('show')
   })
 
   test('should add active class to target when collapse shown', function () {
@@ -64,7 +74,7 @@ $(function () {
     var target = $('<a data-toggle="collapse" href="#test1"></a>')
       .appendTo($('#qunit-fixture'))
 
-    var collapsible = $('<div id="test1"></div>')
+    $('<div id="test1"></div>')
       .appendTo($('#qunit-fixture'))
       .on('show.bs.collapse', function () {
         ok(!target.hasClass('collapsed'))
@@ -81,7 +91,7 @@ $(function () {
     var target = $('<a data-toggle="collapse" href="#test1"></a>')
       .appendTo($('#qunit-fixture'))
 
-    var collapsible = $('<div id="test1" class="in"></div>')
+    $('<div id="test1" class="in"></div>')
       .appendTo($('#qunit-fixture'))
       .on('hide.bs.collapse', function () {
         ok(target.hasClass('collapsed'))
@@ -101,19 +111,19 @@ $(function () {
     var target1 = $('<a data-toggle="collapse" href="#body1" data-parent="#accordion"></a>')
       .appendTo(accordion.find('.accordion-group').eq(0))
 
-    var collapsible1 = $('<div id="body1" class="in"></div>')
+    $('<div id="body1" class="in"></div>')
       .appendTo(accordion.find('.accordion-group').eq(0))
 
     var target2 = $('<a class="collapsed" data-toggle="collapse" href="#body2" data-parent="#accordion"></a>')
       .appendTo(accordion.find('.accordion-group').eq(1))
 
-    var collapsible2 = $('<div id="body2"></div>')
+    $('<div id="body2"></div>')
       .appendTo(accordion.find('.accordion-group').eq(1))
 
     var target3 = $('<a class="collapsed" data-toggle="collapse" href="#body3" data-parent="#accordion"></a>')
       .appendTo(accordion.find('.accordion-group').eq(2))
 
-    var collapsible3 = $('<div id="body3"></div>')
+    $('<div id="body3"></div>')
       .appendTo(accordion.find('.accordion-group').eq(2))
       .on('show.bs.collapse', function () {
         ok(target1.hasClass('collapsed'))
@@ -136,19 +146,19 @@ $(function () {
     var target1 = $('<a data-toggle="collapse" href="#body1" data-parent=".accordion"></a>')
       .appendTo(accordion.find('.accordion-group').eq(0))
 
-    var collapsible1 = $('<div id="body1" class="in"></div>')
+    $('<div id="body1" class="in"></div>')
       .appendTo(accordion.find('.accordion-group').eq(0))
 
     var target2 = $('<a class="collapsed" data-toggle="collapse" href="#body2" data-parent=".accordion"></a>')
       .appendTo(accordion.find('.accordion-group').eq(1))
 
-    var collapsible2 = $('<div id="body2"></div>')
+    $('<div id="body2"></div>')
       .appendTo(accordion.find('.accordion-group').eq(1))
 
     var target3 = $('<a class="collapsed" data-toggle="collapse" href="#body3" data-parent=".accordion"></a>')
       .appendTo(accordion.find('.accordion-group').eq(2))
 
-    var collapsible3 = $('<div id="body3"></div>')
+    $('<div id="body3"></div>')
       .appendTo(accordion.find('.accordion-group').eq(2))
       .on('show.bs.collapse', function () {
         ok(target1.hasClass('collapsed'))

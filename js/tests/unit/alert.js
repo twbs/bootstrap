@@ -1,27 +1,37 @@
 $(function () {
+  'use strict';
 
-  module('alert')
-
-  test('should provide no conflict', function () {
-    var alert = $.fn.alert.noConflict()
-    ok(!$.fn.alert, 'alert was set back to undefined (org value)')
-    $.fn.alert = alert
-  })
+  module('alert plugin')
 
   test('should be defined on jquery object', function () {
     ok($(document.body).alert, 'alert method is defined')
   })
 
+  module('alert', {
+    setup: function () {
+      // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
+      $.fn.bootstrapAlert = $.fn.alert.noConflict()
+    },
+    teardown: function () {
+      $.fn.alert = $.fn.bootstrapAlert
+      delete $.fn.bootstrapAlert
+    }
+  })
+
+  test('should provide no conflict', function () {
+    ok(!$.fn.alert, 'alert was set back to undefined (org value)')
+  })
+
   test('should return element', function () {
-    ok($(document.body).alert()[0] == document.body, 'document.body returned')
+    ok($(document.body).bootstrapAlert()[0] == document.body, 'document.body returned')
   })
 
   test('should fade element out on clicking .close', function () {
     var alertHTML = '<div class="alert-message warning fade in">' +
         '<a class="close" href="#" data-dismiss="alert">×</a>' +
         '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>' +
-        '</div>',
-      alert = $(alertHTML).alert()
+        '</div>'
+    var alert = $(alertHTML).bootstrapAlert()
 
     alert.find('.close').click()
 
@@ -34,8 +44,8 @@ $(function () {
     var alertHTML = '<div class="alert-message warning fade in">' +
         '<a class="close" href="#" data-dismiss="alert">×</a>' +
         '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>' +
-        '</div>',
-      alert = $(alertHTML).appendTo('#qunit-fixture').alert()
+        '</div>'
+    var alert = $(alertHTML).appendTo('#qunit-fixture').bootstrapAlert()
 
     ok($('#qunit-fixture').find('.alert-message').length, 'element added to dom')
 
@@ -56,7 +66,7 @@ $(function () {
       .on('closed.bs.alert', function () {
         ok(false)
       })
-      .alert('close')
+      .bootstrapAlert('close')
   })
 
 })

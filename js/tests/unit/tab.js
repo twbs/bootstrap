@@ -1,19 +1,29 @@
 $(function () {
+  'use strict';
 
-  module('tabs')
-
-  test('should provide no conflict', function () {
-    var tab = $.fn.tab.noConflict()
-    ok(!$.fn.tab, 'tab was set back to undefined (org value)')
-    $.fn.tab = tab
-  })
+  module('tabs plugin')
 
   test('should be defined on jquery object', function () {
     ok($(document.body).tab, 'tabs method is defined')
   })
 
+  module('tabs', {
+    setup: function () {
+      // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
+      $.fn.bootstrapTab = $.fn.tab.noConflict()
+    },
+    teardown: function () {
+      $.fn.tab = $.fn.bootstrapTab
+      delete $.fn.bootstrapTab
+    }
+  })
+
+  test('should provide no conflict', function () {
+    ok(!$.fn.tab, 'tab was set back to undefined (org value)')
+  })
+
   test('should return element', function () {
-    ok($(document.body).tab()[0] == document.body, 'document.body returned')
+    ok($(document.body).bootstrapTab()[0] == document.body, 'document.body returned')
   })
 
   test('should activate element by tab id', function () {
@@ -24,10 +34,10 @@ $(function () {
 
     $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture')
 
-    $(tabsHTML).find('li:last a').tab('show')
+    $(tabsHTML).find('li:last a').bootstrapTab('show')
     equal($('#qunit-fixture').find('.active').attr('id'), 'profile')
 
-    $(tabsHTML).find('li:first a').tab('show')
+    $(tabsHTML).find('li:first a').bootstrapTab('show')
     equal($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
@@ -39,10 +49,10 @@ $(function () {
 
     $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture')
 
-    $(pillsHTML).find('li:last a').tab('show')
+    $(pillsHTML).find('li:last a').bootstrapTab('show')
     equal($('#qunit-fixture').find('.active').attr('id'), 'profile')
 
-    $(pillsHTML).find('li:first a').tab('show')
+    $(pillsHTML).find('li:first a').bootstrapTab('show')
     equal($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
@@ -59,7 +69,7 @@ $(function () {
       .on('shown.bs.tab', function () {
         ok(false)
       })
-      .tab('show')
+      .bootstrapTab('show')
   })
 
   test('show and shown events should reference correct relatedTarget', function () {
@@ -72,7 +82,7 @@ $(function () {
         '</li>' +
         '</ul>'
 
-    $(dropHTML).find('ul>li:first a').tab('show').end()
+    $(dropHTML).find('ul>li:first a').bootstrapTab('show').end()
       .find('ul>li:last a')
       .on('show.bs.tab', function (event) {
         equal(event.relatedTarget.hash, '#1-1')
@@ -80,7 +90,7 @@ $(function () {
       .on('show.bs.tab', function (event) {
         equal(event.relatedTarget.hash, '#1-1')
       })
-      .tab('show')
+      .bootstrapTab('show')
   })
 
 })

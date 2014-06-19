@@ -86,7 +86,9 @@
     border-top-width: 0;
   }
 }
-
+.list-group + .panel-footer {
+  border-top-width: 0;
+}
 
 // Tables in panels
 //
@@ -95,7 +97,8 @@
 
 .panel {
   > .table,
-  > .table-responsive > .table {
+  > .table-responsive > .table,
+  > .panel-collapse > .table {
     margin-bottom: 0;
   }
   // Add border top radius for first one
@@ -206,7 +209,7 @@
 
   .panel-heading {
     border-bottom: 0;
-    + .panel-collapse .panel-body {
+    + .panel-collapse > .panel-body {
       border-top: 1px solid @panel-inner-border;
     }
   }

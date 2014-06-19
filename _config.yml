@@ -1,6 +1,6 @@
 # Dependencies
-markdown:         rdiscount
-pygments:         true
+markdown:         kramdown
+highlighter:      pygments
 
 # Permalinks
 permalink:        pretty
@@ -13,11 +13,6 @@ port:             9001
 baseurl:          /
 url:              http://getbootstrap.com
 encoding:         UTF-8
-
-exclude:
-  - jade
-  - src
-  - vendor
 
 # Custom vars
 current_version:  3.1.1

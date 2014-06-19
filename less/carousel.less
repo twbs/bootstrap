@@ -28,7 +28,9 @@
 
   > .active,
   > .next,
-  > .prev { display: block; }
+  > .prev {
+    display: block;
+  }
 
   > .active {
     left: 0;
@@ -110,19 +112,21 @@
   .icon-prev,
   .glyphicon-chevron-left {
     left: 50%;
+    margin-left: -10px;
   }
   .icon-next,
   .glyphicon-chevron-right {
     right: 50%;
+    margin-right: -10px;
   }
   .icon-prev,
   .icon-next {
     width:  20px;
     height: 20px;
     margin-top: -10px;
-    margin-left: -10px;
     font-family: serif;
   }
+
 
   .icon-prev {
     &:before {
@@ -213,8 +217,15 @@
       width: 30px;
       height: 30px;
       margin-top: -15px;
-      margin-left: -15px;
       font-size: 30px;
+    }
+    .glyphicon-chevron-left,
+    .icon-prev {
+      margin-left: -15px;
+    }
+    .glyphicon-chevron-right,
+    .icon-next {
+      margin-right: -15px;
     }
   }
 
