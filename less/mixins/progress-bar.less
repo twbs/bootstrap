@@ -2,6 +2,8 @@
 
 .progress-bar-variant(@color) {
   background-color: @color;
+
+  // Depcreated parent class requirement as of v3.2
   .progress-striped & {
     #gradient > .striped();
   }

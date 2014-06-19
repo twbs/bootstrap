@@ -41,6 +41,10 @@
 }
 
 // Striped bars
+//
+// `.progress-striped .progress-bar` is deprecated as of v3.2 in favor of the
+// `.progress-bar-striped` class, which you just add to an existing
+// `.progress-bar`.
 .progress-striped .progress-bar,
 .progress-bar-striped {
   #gradient > .striped();
@@ -48,7 +52,11 @@
 }
 
 // Call animation for the active one
-.progress.active .progress-bar {
+//
+// `.progress.active .progress-bar` is deprecated as of v3.2 in favor of the
+// `.progress-bar.active` approach.
+.progress.active .progress-bar,
+.progress-bar.active {
   .animation(progress-bar-stripes 2s linear infinite);
 }
 
