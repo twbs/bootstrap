@@ -48,6 +48,12 @@
     background-color: darken(@btn-color, 12%);
     border-color: darken(@btn-color, 14%);
   }
+
+  &:disabled,
+  &[disabled] {
+    background-color: darken(@btn-color, 12%);
+    background-image: none;
+  }
 }
 
 // Common styles
