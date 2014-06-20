@@ -2621,6 +2621,8 @@ select[multiple].input-lg {
   top: 0;
 }
 .form-control-static {
+  padding-top: 7px;
+  padding-bottom: 7px;
   margin-bottom: 0;
 }
 .help-block {
@@ -2691,10 +2693,6 @@ select[multiple].input-lg {
 .form-horizontal .form-group {
   margin-right: -15px;
   margin-left: -15px;
-}
-.form-horizontal .form-control-static {
-  padding-top: 7px;
-  padding-bottom: 7px;
 }
 @media (min-width: 768px) {
   .form-horizontal .control-label {

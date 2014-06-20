@@ -355,7 +355,11 @@ input[type="checkbox"] {
 // a horizontal form layout.
 
 .form-control-static {
-  margin-bottom: 0; // Remove default margin from `p`
+  // Size it appropriately next to real form controls
+  padding-top: (@padding-base-vertical + 1);
+  padding-bottom: (@padding-base-vertical + 1);
+  // Remove default margin from `p`
+  margin-bottom: 0;
 }
 
 
@@ -482,11 +486,6 @@ input[type="checkbox"] {
   // Make form groups behave like rows
   .form-group {
     .make-row();
-  }
-
-  .form-control-static {
-    padding-top: (@padding-base-vertical + 1);
-    padding-bottom: (@padding-base-vertical + 1);
   }
 
   // Reset spacing and right align labels, but scope to media queries so that
