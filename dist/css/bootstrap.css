@@ -2480,6 +2480,16 @@ fieldset[disabled] .radio label,
 fieldset[disabled] .checkbox label {
   cursor: not-allowed;
 }
+.form-control-static {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  margin-bottom: 0;
+}
+.form-control-static.input-lg,
+.form-control-static.input-sm {
+  padding-right: 0;
+  padding-left: 0;
+}
 .input-sm,
 .form-horizontal .form-group-sm .form-control {
   height: 30px;
@@ -2619,11 +2629,6 @@ select[multiple].input-lg {
 }
 .has-feedback label.sr-only ~ .form-control-feedback {
   top: 0;
-}
-.form-control-static {
-  padding-top: 7px;
-  padding-bottom: 7px;
-  margin-bottom: 0;
 }
 .help-block {
   display: block;

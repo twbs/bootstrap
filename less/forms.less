@@ -281,6 +281,26 @@ input[type="checkbox"] {
 }
 
 
+// Static form control text
+//
+// Apply class to a `p` element to make any string of text align with labels in
+// a horizontal form layout.
+
+.form-control-static {
+  // Size it appropriately next to real form controls
+  padding-top: (@padding-base-vertical + 1);
+  padding-bottom: (@padding-base-vertical + 1);
+  // Remove default margin from `p`
+  margin-bottom: 0;
+
+  &.input-lg,
+  &.input-sm {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+
 // Form control sizing
 //
 // Build on `.form-control` with modifier classes to decrease or increase the
@@ -346,20 +366,6 @@ input[type="checkbox"] {
 // Reposition feedback icon if label is hidden with "screenreader only" state
 .has-feedback label.sr-only ~ .form-control-feedback {
   top: 0;
-}
-
-
-// Static form control text
-//
-// Apply class to a `p` element to make any string of text align with labels in
-// a horizontal form layout.
-
-.form-control-static {
-  // Size it appropriately next to real form controls
-  padding-top: (@padding-base-vertical + 1);
-  padding-bottom: (@padding-base-vertical + 1);
-  // Remove default margin from `p`
-  margin-bottom: 0;
 }
 
 
