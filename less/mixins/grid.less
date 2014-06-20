@@ -44,25 +44,25 @@
   padding-left:  (@gutter / 2);
   padding-right: (@gutter / 2);
 
-  @media (min-width: @screen-sm-min) {
+  .screen-sm({
     float: left;
     width: percentage((@columns / @grid-columns));
-  }
+  });
 }
 .make-sm-column-offset(@columns) {
-  @media (min-width: @screen-sm-min) {
+  .screen-sm({
     margin-left: percentage((@columns / @grid-columns));
-  }
+  });
 }
 .make-sm-column-push(@columns) {
-  @media (min-width: @screen-sm-min) {
+  .screen-sm({
     left: percentage((@columns / @grid-columns));
-  }
+  });
 }
 .make-sm-column-pull(@columns) {
-  @media (min-width: @screen-sm-min) {
+  .screen-sm({
     right: percentage((@columns / @grid-columns));
-  }
+  });
 }
 
 // Generate the medium columns
@@ -72,25 +72,25 @@
   padding-left:  (@gutter / 2);
   padding-right: (@gutter / 2);
 
-  @media (min-width: @screen-md-min) {
+  .screen-sm({
     float: left;
     width: percentage((@columns / @grid-columns));
-  }
+  });
 }
 .make-md-column-offset(@columns) {
-  @media (min-width: @screen-md-min) {
+  .screen-sm({
     margin-left: percentage((@columns / @grid-columns));
-  }
+  });
 }
 .make-md-column-push(@columns) {
-  @media (min-width: @screen-md-min) {
+  .screen-sm({
     left: percentage((@columns / @grid-columns));
-  }
+  });
 }
 .make-md-column-pull(@columns) {
-  @media (min-width: @screen-md-min) {
+  .screen-sm({
     right: percentage((@columns / @grid-columns));
-  }
+  });
 }
 
 // Generate the large columns
@@ -100,23 +100,23 @@
   padding-left:  (@gutter / 2);
   padding-right: (@gutter / 2);
 
-  @media (min-width: @screen-lg-min) {
+  .screen-lg({
     float: left;
     width: percentage((@columns / @grid-columns));
-  }
+  });
 }
 .make-lg-column-offset(@columns) {
-  @media (min-width: @screen-lg-min) {
+  .screen-lg({
     margin-left: percentage((@columns / @grid-columns));
-  }
+  });
 }
 .make-lg-column-push(@columns) {
-  @media (min-width: @screen-lg-min) {
+  .screen-lg({
     left: percentage((@columns / @grid-columns));
-  }
+  });
 }
 .make-lg-column-pull(@columns) {
-  @media (min-width: @screen-lg-min) {
+  .screen-lg({
     right: percentage((@columns / @grid-columns));
-  }
+  });
 }

@@ -173,7 +173,7 @@
     left: auto;
   }
 
-  @media (min-width: @screen-sm-min) {
+ .screen-sm({
     > li {
       display: table-cell;
       width: 1%;
@@ -181,7 +181,7 @@
         margin-bottom: 0;
       }
     }
-  }
+ });
 }
 
 // Move borders to anchors instead of bottom of list
@@ -202,7 +202,7 @@
     border: 1px solid @nav-tabs-justified-link-border-color;
   }
 
-  @media (min-width: @screen-sm-min) {
+  .screen-sm({
     > li > a {
       border-bottom: 1px solid @nav-tabs-justified-link-border-color;
       border-radius: @border-radius-base @border-radius-base 0 0;
@@ -212,7 +212,7 @@
     > .active > a:focus {
       border-bottom-color: @nav-tabs-justified-active-link-border-color;
     }
-  }
+  });
 }
 
 
