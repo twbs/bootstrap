@@ -306,7 +306,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
   function generateJS(preamble) {
     var $checked = $('#plugin-section input:checked')
-    var jqueryCheck = 'if (typeof define == \'undefined\' && typeof exports == \'undefined\' && typeof jQuery == \'undefined\') { throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery\') }\n\n'
+    var jqueryCheck = 'if (typeof jQuery === "undefined") { throw new Error("Bootstrap\'s JavaScript requires jQuery") }\n\n'
 
     if (!$checked.length) return false
 
