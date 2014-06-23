@@ -74,10 +74,10 @@ p {
 // Emphasis & misc
 // -------------------------
 
-// Ex: 14px base font * 85% = about 12px
+// Ex: (12px small font / 14px base font) * 100% = about 85%
 small,
 .small {
-  font-size: 85%;
+  font-size: floor((100% * @font-size-small / @font-size-base));
 }
 
 // Undo browser default styling
