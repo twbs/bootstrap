@@ -58,7 +58,7 @@ title: Bootstrap
     {% for showcase in site.data.showcase %}
       <div class="col-sm-3">
         <a href="{{ showcase.expo_url }}" target="_blank" title="{{ showcase.name }}">
-          <img src="{{ showcase.img }}" alt="{{ showcase.name }}" class="img-responsive">
+          <img src="http://expo.getbootstrap.com/screenshots/{{ showcase.img }}.jpg" alt="{{ showcase.name }}" class="img-responsive">
         </a>
       </div>
     {% endfor %}
