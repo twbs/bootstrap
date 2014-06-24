@@ -700,8 +700,8 @@
           }
         },
         "clean-css": {
-          "version": "2.2.2",
-          "resolved": "https://registry.npmjs.org/clean-css/-/clean-css-2.2.2.tgz",
+          "version": "2.2.3",
+          "resolved": "https://registry.npmjs.org/clean-css/-/clean-css-2.2.3.tgz",
           "dependencies": {
             "commander": {
               "version": "2.2.0",
@@ -3201,7 +3201,13 @@
             },
             "fstream": {
               "version": "0.1.28",
-              "resolved": "https://registry.npmjs.org/fstream/-/fstream-0.1.28.tgz"
+              "resolved": "https://registry.npmjs.org/fstream/-/fstream-0.1.28.tgz",
+              "dependencies": {
+                "mkdirp": {
+                  "version": "0.3.5",
+                  "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.3.5.tgz"
+                }
+              }
             },
             "fstream-npm": {
               "version": "0.1.7",
@@ -3448,6 +3454,20 @@
                 "semver": {
                   "version": "2.3.1",
                   "resolved": "https://registry.npmjs.org/semver/-/semver-2.3.1.tgz"
+                },
+                "tar": {
+                  "version": "0.1.20",
+                  "resolved": "https://registry.npmjs.org/tar/-/tar-0.1.20.tgz",
+                  "dependencies": {
+                    "block-stream": {
+                      "version": "0.0.7",
+                      "resolved": "https://registry.npmjs.org/block-stream/-/block-stream-0.0.7.tgz"
+                    },
+                    "inherits": {
+                      "version": "2.0.1",
+                      "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz"
+                    }
+                  }
                 }
               }
             },
@@ -3824,32 +3844,8 @@
               "resolved": "https://registry.npmjs.org/sorted-object/-/sorted-object-1.0.0.tgz"
             },
             "tar": {
-              "version": "0.1.19",
-              "resolved": "https://registry.npmjs.org/tar/-/tar-0.1.19.tgz",
-              "dependencies": {
-                "fstream": {
-                  "version": "0.1.28",
-                  "resolved": "https://registry.npmjs.org/fstream/-/fstream-0.1.28.tgz",
-                  "dependencies": {
-                    "graceful-fs": {
-                      "version": "3.0.2",
-                      "resolved": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-3.0.2.tgz"
-                    },
-                    "inherits": {
-                      "version": "2.0.1",
-                      "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz"
-                    },
-                    "mkdirp": {
-                      "version": "0.3.5",
-                      "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.3.5.tgz"
-                    },
-                    "rimraf": {
-                      "version": "2.2.8",
-                      "resolved": "https://registry.npmjs.org/rimraf/-/rimraf-2.2.8.tgz"
-                    }
-                  }
-                }
-              }
+              "version": "0.1.20",
+              "resolved": "https://registry.npmjs.org/tar/-/tar-0.1.20.tgz"
             },
             "text-table": {
               "version": "0.2.0",
