@@ -6115,6 +6115,38 @@ button.close {
     display: none !important;
   }
 }
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+
+  src: url('../fonts/lato-lig-webfont.eot');
+  src: url('../fonts/lato-lig-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/lato-lig-webfont.woff') format('woff'), url('../fonts/lato-lig-webfont.ttf') format('truetype'), url('../fonts/lato-lig-webfont.svg#latolight') format('svg');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: normal;
+
+  src: url('../fonts/lato-reg-webfont.eot');
+  src: url('../fonts/lato-reg-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/lato-reg-webfont.woff') format('woff'), url('../fonts/lato-reg-webfont.ttf') format('truetype'), url('../fonts/lato-reg-webfont.svg#latoregular') format('svg');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: normal;
+
+  src: url('../fonts/lato-regita-webfont.eot');
+  src: url('../fonts/lato-regita-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/lato-regita-webfont.woff') format('woff'), url('../fonts/lato-regita-webfont.ttf') format('truetype'), url('../fonts/lato-regita-webfont.svg#latoitalic') format('svg');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+
+  src: url('../fonts/lato-bol-webfont.eot');
+  src: url('../fonts/lato-bol-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/lato-bol-webfont.woff') format('woff'), url('../fonts/lato-bol-webfont.ttf') format('truetype'), url('../fonts/lato-bol-webfont.svg#latobold') format('svg');
+}
 .container {
   padding: 0;
   margin: 0;
