@@ -17,10 +17,10 @@ module.exports = function (grunt) {
 
   var fs = require('fs');
   var path = require('path');
+  var npmShrinkwrap = require('npm-shrinkwrap');
   var generateGlyphiconsData = require('./grunt/bs-glyphicons-data-generator.js');
   var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
   var generateRawFiles = require('./grunt/bs-raw-files-generator.js');
-  var updateShrinkwrap = require('./grunt/shrinkwrap.js');
 
   // Project configuration.
   grunt.initConfig({
@@ -32,6 +32,7 @@ module.exports = function (grunt) {
             ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
             ' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n' +
             ' */\n',
+    // NOTE: This jqueryCheck code is duplicated in customizer.js; if making changes here, be sure to update the other copy too.
     jqueryCheck: 'if (typeof jQuery === \'undefined\') { throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery\') }\n\n',
 
     // Task configuration.
@@ -109,17 +110,14 @@ module.exports = function (grunt) {
     },
 
     uglify: {
+      options: {
+        preserveComments: 'some'
+      },
       bootstrap: {
-        options: {
-          banner: '<%= banner %>'
-        },
         src: '<%= concat.bootstrap.dest %>',
         dest: 'dist/js/<%= pkg.name %>.min.js'
       },
       customize: {
-        options: {
-          preserveComments: 'some'
-        },
         src: [
           'docs/assets/js/_vendor/less.min.js',
           'docs/assets/js/_vendor/jszip.min.js',
@@ -132,9 +130,6 @@ module.exports = function (grunt) {
         dest: 'docs/assets/js/customize.min.js'
       },
       docsJs: {
-        options: {
-          preserveComments: 'some'
-        },
         src: [
           'docs/assets/js/_vendor/holder.js',
           'docs/assets/js/_vendor/ZeroClipboard.min.js',
@@ -180,7 +175,16 @@ module.exports = function (grunt) {
 
     autoprefixer: {
       options: {
-        browsers: ['last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12']
+        browsers: [
+          'Android 2.3',
+          'Android >= 4',
+          'Chrome >= 20',
+          'Firefox >= 24', // Firefox 24 is the latest ESR
+          'Explorer >= 8',
+          'iOS >= 6',
+          'Opera >= 12',
+          'Safari >= 6'
+        ]
       },
       core: {
         options: {
@@ -383,9 +387,6 @@ module.exports = function (grunt) {
     exec: {
       npmUpdate: {
         command: 'npm update'
-      },
-      npmShrinkWrap: {
-        command: 'npm shrinkwrap --dev'
       }
     }
   });
@@ -459,7 +460,19 @@ module.exports = function (grunt) {
     generateRawFiles(grunt, banner);
   });
 
-  // Task for updating the npm packages used by the Travis build.
-  grunt.registerTask('update-shrinkwrap', ['exec:npmUpdate', 'exec:npmShrinkWrap', '_update-shrinkwrap']);
-  grunt.registerTask('_update-shrinkwrap', function () { updateShrinkwrap.call(this, grunt); });
+  // Task for updating the cached npm packages used by the Travis build (which are controlled by test-infra/npm-shrinkwrap.json).
+  // This task should be run and the updated file should be committed whenever Bootstrap's dependencies change.
+  grunt.registerTask('update-shrinkwrap', ['exec:npmUpdate', '_update-shrinkwrap']);
+  grunt.registerTask('_update-shrinkwrap', function () {
+    var done = this.async();
+    npmShrinkwrap({ dev: true, dirname: __dirname }, function (err) {
+      if (err) {
+        grunt.fail.warn(err)
+      }
+      var dest = 'test-infra/npm-shrinkwrap.json';
+      fs.renameSync('npm-shrinkwrap.json', dest);
+      grunt.log.writeln('File ' + dest.cyan + ' updated.');
+      done();
+    });
+  });
 };

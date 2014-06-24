@@ -281,6 +281,26 @@ input[type="checkbox"] {
 }
 
 
+// Static form control text
+//
+// Apply class to a `p` element to make any string of text align with labels in
+// a horizontal form layout.
+
+.form-control-static {
+  // Size it appropriately next to real form controls
+  padding-top: (@padding-base-vertical + 1);
+  padding-bottom: (@padding-base-vertical + 1);
+  // Remove default margin from `p`
+  margin-bottom: 0;
+
+  &.input-lg,
+  &.input-sm {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+
 // Form control sizing
 //
 // Build on `.form-control` with modifier classes to decrease or increase the
@@ -346,16 +366,6 @@ input[type="checkbox"] {
 // Reposition feedback icon if label is hidden with "screenreader only" state
 .has-feedback label.sr-only ~ .form-control-feedback {
   top: 0;
-}
-
-
-// Static form control text
-//
-// Apply class to a `p` element to make any string of text align with labels in
-// a horizontal form layout.
-
-.form-control-static {
-  margin-bottom: 0; // Remove default margin from `p`
 }
 
 
@@ -484,11 +494,6 @@ input[type="checkbox"] {
     .make-row();
   }
 
-  .form-control-static {
-    padding-top: (@padding-base-vertical + 1);
-    padding-bottom: (@padding-base-vertical + 1);
-  }
-
   // Reset spacing and right align labels, but scope to media queries so that
   // labels on narrow viewports stack the same as a default form example.
   @media (min-width: @screen-sm-min) {
@@ -506,5 +511,30 @@ input[type="checkbox"] {
   .has-feedback .form-control-feedback {
     top: 0;
     right: (@grid-gutter-width / 2);
+  }
+
+  // Form group sizes
+  //
+  // Quick utility class for applying `.input-lg` and `.input-sm` styles to the
+  // inputs and labels within a `.form-group`.
+  .form-group-lg {
+    @media (min-width: @screen-sm-min) {
+      .control-label {
+        padding-top: ((@padding-large-vertical * @line-height-large) + 1);
+      }
+    }
+    .form-control {
+      &:extend(.input-lg);
+    }
+  }
+  .form-group-sm {
+    @media (min-width: @screen-sm-min) {
+      .control-label {
+        padding-top: (@padding-small-vertical + 1);
+      }
+    }
+    .form-control {
+      &:extend(.input-sm);
+    }
   }
 }

@@ -670,6 +670,42 @@
 <select class="form-control input-sm">...</select>
 {% endhighlight %}
 
+  <h3>Horizontal form group sizes</h3>
+  <p>Quickly size labels and form controls within <code>.form-horizontal</code> by adding <code>.form-group-lg</code> or <code>.form-group-sm</code>.</p>
+  <div class="bs-example">
+    <form class="form-horizontal" role="form">
+      <div class="form-group form-group-lg">
+        <label class="col-sm-2 control-label" for="formGroupInputLarge">Large label</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="text" id="formGroupInputLarge" placeholder="Large input">
+        </div>
+      </div>
+      <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">Small label</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="text" id="formGroupInputSmall" placeholder="Small input">
+        </div>
+      </div>
+    </form>
+  </div><!-- /.bs-example -->
+{% highlight html %}
+<form class="form-horizontal" role="form">
+  <div class="form-group form-group-lg">
+    <label class="col-sm-2 control-label" for="formGroupInputLarge">Large label</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" id="formGroupInputLarge" placeholder="Large input">
+    </div>
+  </div>
+  <div class="form-group form-group-sm">
+    <label class="col-sm-2 control-label" for="formGroupInputSmall">Small label</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" id="formGroupInputSmall" placeholder="Small input">
+    </div>
+  </div>
+</form>
+{% endhighlight %}
+
+
   <h3>Column sizing</h3>
   <p>Wrap inputs in grid columns, or any custom parent element, to easily enforce desired widths.</p>
   <div class="bs-example">

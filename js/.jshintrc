@@ -11,6 +11,5 @@
   "nonbsp"   : true,
   "strict"   : true,
   "undef"    : true,
-  "unused"   : true,
-  "predef"   : [ "define", "require" ]
+  "unused"   : true
 }
