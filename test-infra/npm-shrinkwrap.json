@@ -56,8 +56,8 @@
           "resolved": "https://registry.npmjs.org/dateformat/-/dateformat-1.0.2-1.2.3.tgz"
         },
         "eventemitter2": {
-          "version": "0.4.13",
-          "resolved": "https://registry.npmjs.org/eventemitter2/-/eventemitter2-0.4.13.tgz"
+          "version": "0.4.14",
+          "resolved": "https://registry.npmjs.org/eventemitter2/-/eventemitter2-0.4.14.tgz"
         },
         "exit": {
           "version": "0.1.2",
@@ -1186,8 +1186,8 @@
                       "resolved": "https://registry.npmjs.org/async/-/async-0.9.0.tgz"
                     },
                     "combined-stream": {
-                      "version": "0.0.4",
-                      "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-0.0.4.tgz",
+                      "version": "0.0.5",
+                      "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-0.0.5.tgz",
                       "dependencies": {
                         "delayed-stream": {
                           "version": "0.0.5",
@@ -1368,8 +1368,8 @@
           "resolved": "https://registry.npmjs.org/grunt-lib-phantomjs/-/grunt-lib-phantomjs-0.6.0.tgz",
           "dependencies": {
             "eventemitter2": {
-              "version": "0.4.13",
-              "resolved": "https://registry.npmjs.org/eventemitter2/-/eventemitter2-0.4.13.tgz"
+              "version": "0.4.14",
+              "resolved": "https://registry.npmjs.org/eventemitter2/-/eventemitter2-0.4.14.tgz"
             },
             "phantomjs": {
               "version": "1.9.7-10",
@@ -1458,8 +1458,8 @@
                           "resolved": "https://registry.npmjs.org/async/-/async-0.9.0.tgz"
                         },
                         "combined-stream": {
-                          "version": "0.0.4",
-                          "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-0.0.4.tgz",
+                          "version": "0.0.5",
+                          "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-0.0.5.tgz",
                           "dependencies": {
                             "delayed-stream": {
                               "version": "0.0.5",
@@ -1894,8 +1894,8 @@
                   "resolved": "https://registry.npmjs.org/async/-/async-0.9.0.tgz"
                 },
                 "combined-stream": {
-                  "version": "0.0.4",
-                  "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-0.0.4.tgz",
+                  "version": "0.0.5",
+                  "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-0.0.5.tgz",
                   "dependencies": {
                     "delayed-stream": {
                       "version": "0.0.5",
@@ -2378,8 +2378,8 @@
       }
     },
     "grunt-saucelabs": {
-      "version": "8.0.3",
-      "resolved": "https://registry.npmjs.org/grunt-saucelabs/-/grunt-saucelabs-8.0.3.tgz",
+      "version": "8.1.0",
+      "resolved": "https://registry.npmjs.org/grunt-saucelabs/-/grunt-saucelabs-8.1.0.tgz",
       "dependencies": {
         "colors": {
           "version": "0.6.2",
@@ -2414,8 +2414,8 @@
                   "resolved": "https://registry.npmjs.org/async/-/async-0.9.0.tgz"
                 },
                 "combined-stream": {
-                  "version": "0.0.4",
-                  "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-0.0.4.tgz",
+                  "version": "0.0.5",
+                  "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-0.0.5.tgz",
                   "dependencies": {
                     "delayed-stream": {
                       "version": "0.0.5",
@@ -2756,8 +2756,8 @@
                       "resolved": "https://registry.npmjs.org/async/-/async-0.2.10.tgz"
                     },
                     "combined-stream": {
-                      "version": "0.0.4",
-                      "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-0.0.4.tgz",
+                      "version": "0.0.5",
+                      "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-0.0.5.tgz",
                       "dependencies": {
                         "delayed-stream": {
                           "version": "0.0.5",
@@ -3200,14 +3200,8 @@
               "resolved": "https://registry.npmjs.org/editor/-/editor-0.1.0.tgz"
             },
             "fstream": {
-              "version": "0.1.27",
-              "resolved": "https://registry.npmjs.org/fstream/-/fstream-0.1.27.tgz",
-              "dependencies": {
-                "mkdirp": {
-                  "version": "0.3.5",
-                  "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.3.5.tgz"
-                }
-              }
+              "version": "0.1.28",
+              "resolved": "https://registry.npmjs.org/fstream/-/fstream-0.1.28.tgz"
             },
             "fstream-npm": {
               "version": "0.1.7",
@@ -3215,7 +3209,31 @@
               "dependencies": {
                 "fstream-ignore": {
                   "version": "0.0.8",
-                  "resolved": "https://registry.npmjs.org/fstream-ignore/-/fstream-ignore-0.0.8.tgz"
+                  "resolved": "https://registry.npmjs.org/fstream-ignore/-/fstream-ignore-0.0.8.tgz",
+                  "dependencies": {
+                    "fstream": {
+                      "version": "0.1.28",
+                      "resolved": "https://registry.npmjs.org/fstream/-/fstream-0.1.28.tgz",
+                      "dependencies": {
+                        "graceful-fs": {
+                          "version": "3.0.2",
+                          "resolved": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-3.0.2.tgz"
+                        },
+                        "inherits": {
+                          "version": "2.0.1",
+                          "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz"
+                        },
+                        "mkdirp": {
+                          "version": "0.3.5",
+                          "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.3.5.tgz"
+                        },
+                        "rimraf": {
+                          "version": "2.2.8",
+                          "resolved": "https://registry.npmjs.org/rimraf/-/rimraf-2.2.8.tgz"
+                        }
+                      }
+                    }
+                  }
                 }
               }
             },
@@ -3287,6 +3305,28 @@
               "version": "0.13.1",
               "resolved": "https://registry.npmjs.org/node-gyp/-/node-gyp-0.13.1.tgz",
               "dependencies": {
+                "fstream": {
+                  "version": "0.1.28",
+                  "resolved": "https://registry.npmjs.org/fstream/-/fstream-0.1.28.tgz",
+                  "dependencies": {
+                    "graceful-fs": {
+                      "version": "3.0.2",
+                      "resolved": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-3.0.2.tgz"
+                    },
+                    "inherits": {
+                      "version": "2.0.1",
+                      "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz"
+                    },
+                    "mkdirp": {
+                      "version": "0.3.5",
+                      "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.3.5.tgz"
+                    },
+                    "rimraf": {
+                      "version": "2.2.8",
+                      "resolved": "https://registry.npmjs.org/rimraf/-/rimraf-2.2.8.tgz"
+                    }
+                  }
+                },
                 "mkdirp": {
                   "version": "0.5.0",
                   "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.0.tgz",
@@ -3318,8 +3358,8 @@
                           "resolved": "https://registry.npmjs.org/async/-/async-0.9.0.tgz"
                         },
                         "combined-stream": {
-                          "version": "0.0.4",
-                          "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-0.0.4.tgz",
+                          "version": "0.0.5",
+                          "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-0.0.5.tgz",
                           "dependencies": {
                             "delayed-stream": {
                               "version": "0.0.5",
@@ -3458,8 +3498,8 @@
                           "resolved": "https://registry.npmjs.org/async/-/async-0.9.0.tgz"
                         },
                         "combined-stream": {
-                          "version": "0.0.4",
-                          "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-0.0.4.tgz",
+                          "version": "0.0.5",
+                          "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-0.0.5.tgz",
                           "dependencies": {
                             "delayed-stream": {
                               "version": "0.0.5",
@@ -3652,8 +3692,8 @@
                       "resolved": "https://registry.npmjs.org/async/-/async-0.9.0.tgz"
                     },
                     "combined-stream": {
-                      "version": "0.0.4",
-                      "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-0.0.4.tgz",
+                      "version": "0.0.5",
+                      "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-0.0.5.tgz",
                       "dependencies": {
                         "delayed-stream": {
                           "version": "0.0.5",
@@ -3785,7 +3825,31 @@
             },
             "tar": {
               "version": "0.1.19",
-              "resolved": "https://registry.npmjs.org/tar/-/tar-0.1.19.tgz"
+              "resolved": "https://registry.npmjs.org/tar/-/tar-0.1.19.tgz",
+              "dependencies": {
+                "fstream": {
+                  "version": "0.1.28",
+                  "resolved": "https://registry.npmjs.org/fstream/-/fstream-0.1.28.tgz",
+                  "dependencies": {
+                    "graceful-fs": {
+                      "version": "3.0.2",
+                      "resolved": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-3.0.2.tgz"
+                    },
+                    "inherits": {
+                      "version": "2.0.1",
+                      "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz"
+                    },
+                    "mkdirp": {
+                      "version": "0.3.5",
+                      "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.3.5.tgz"
+                    },
+                    "rimraf": {
+                      "version": "2.2.8",
+                      "resolved": "https://registry.npmjs.org/rimraf/-/rimraf-2.2.8.tgz"
+                    }
+                  }
+                }
+              }
             },
             "text-table": {
               "version": "0.2.0",
