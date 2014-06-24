@@ -8,18 +8,16 @@ body {
 .tooltip .tooltip-inner {
   min-width: 250px;
   max-width: 500px;
-  min-height: 200px;
-}
-.placeholder {
-  height: 900px;
+  min-height: 100px;
+  text-align: left;
 }
 .container-viewport {
   position: absolute;
-  top: 600px;
-  left: 200px;
-  width: 600px;
-  height: 400px;
-  background: #c00;
+  top: 100px;
+  right: 250px;
+  left: 250px;
+  height: 300px;
+  background-color: #eee;
 }
 .btn-bottom {
   position: absolute;

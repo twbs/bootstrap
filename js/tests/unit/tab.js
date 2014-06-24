@@ -1,4 +1,5 @@
 $(function () {
+  'use strict';
 
   module('tabs plugin')
 
@@ -7,11 +8,11 @@ $(function () {
   })
 
   module('tabs', {
-    setup: function() {
+    setup: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapTab = $.fn.tab.noConflict()
     },
-    teardown: function() {
+    teardown: function () {
       $.fn.tab = $.fn.bootstrapTab
       delete $.fn.bootstrapTab
     }

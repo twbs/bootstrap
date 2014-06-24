@@ -1,4 +1,5 @@
 $(function () {
+  'use strict';
 
   module('modal plugin')
 
@@ -8,11 +9,11 @@ $(function () {
   })
 
   module('modal', {
-    setup: function() {
+    setup: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapModal = $.fn.modal.noConflict()
     },
-    teardown: function() {
+    teardown: function () {
       $.fn.modal = $.fn.bootstrapModal
       delete $.fn.bootstrapModal
     }
@@ -200,5 +201,56 @@ $(function () {
       .bootstrapModal('show')
 
     div.remove()
+  })
+
+  test('should restore focus to toggling element when modal is hidden after having been opened via data-api', function () {
+    stop()
+    $.support.transition = false
+    var toggleBtn = $('<button data-toggle="modal" data-target="#modal-test">Launch modal</button>').appendTo('#qunit-fixture')
+    var div = $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"></div></div></div>')
+    div
+      .on('hidden.bs.modal', function () {
+        window.setTimeout(function () { // give the focus restoration callback a chance to run
+          equal(document.activeElement, toggleBtn[0], 'toggling element is once again focused')
+          div.remove()
+          toggleBtn.remove()
+          start()
+        }, 0)
+      })
+      .on('shown.bs.modal', function () {
+        $('#close').click()
+      })
+      .appendTo('#qunit-fixture')
+    toggleBtn.click()
+  })
+
+  test('should not restore focus to toggling element if the associated show event gets prevented', function () {
+    stop()
+    $.support.transition = false
+    var toggleBtn = $('<button data-toggle="modal" data-target="#modal-test">Launch modal</button>').appendTo('#qunit-fixture')
+    var otherBtn = $('<button id="other-btn">Golden boy</button>').appendTo('#qunit-fixture')
+    var div = $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"></div></div></div>')
+    div
+      .one('show.bs.modal', function (e) {
+        e.preventDefault()
+        otherBtn.focus()
+        window.setTimeout(function () { // give the focus event from the previous line a chance to run
+          div.bootstrapModal('show')
+        }, 0)
+      })
+      .on('hidden.bs.modal', function () {
+        window.setTimeout(function () { // give the focus restoration callback a chance to run (except it shouldn't run in this case)
+          equal(document.activeElement, otherBtn[0], 'show was prevented, so focus should not have been restored to toggling element')
+          div.remove()
+          toggleBtn.remove()
+          otherBtn.remove()
+          start()
+        }, 0)
+      })
+      .on('shown.bs.modal', function () {
+        $('#close').click()
+      })
+      .appendTo('#qunit-fixture')
+    toggleBtn.click()
   })
 })

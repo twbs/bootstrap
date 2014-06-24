@@ -1,4 +1,5 @@
 $(function () {
+  'use strict';
 
   module('scrollspy plugin')
 
@@ -7,11 +8,11 @@ $(function () {
   })
 
   module('scrollspy', {
-    setup: function() {
+    setup: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapScrollspy = $.fn.scrollspy.noConflict()
     },
-    teardown: function() {
+    teardown: function () {
       $.fn.scrollspy = $.fn.bootstrapScrollspy
       delete $.fn.bootstrapScrollspy
     }
@@ -26,8 +27,9 @@ $(function () {
   })
 
   test('should switch active class on scroll', function () {
-    var sectionHTML = '<div id="masthead"></div>',
-        topbarHTML = '<div class="topbar">' +
+    var sectionHTML = '<div id="masthead"></div>'
+    $(sectionHTML).append('#qunit-fixture')
+    var topbarHTML = '<div class="topbar">' +
         '<div class="topbar-inner">' +
         '<div class="container">' +
         '<h3><a href="#">Bootstrap</a></h3>' +
@@ -35,8 +37,8 @@ $(function () {
         '</ul>' +
         '</div>' +
         '</div>' +
-        '</div>',
-        $topbar = $(topbarHTML).bootstrapScrollspy()
+        '</div>'
+    var $topbar = $(topbarHTML).bootstrapScrollspy()
 
     $(sectionHTML).append('#qunit-fixture')
     ok($topbar.find('.active', true))
@@ -69,12 +71,12 @@ $(function () {
         '</p>' +
         '</div>' +
         '</div>' +
-        '</div>',
-        $section = $(sectionHTML).appendTo('#qunit-fixture'),
-        $scrollSpy = $section
+        '</div>'
+    var $section = $(sectionHTML).appendTo('#qunit-fixture')
+    var $scrollSpy = $section
         .show()
         .find('#scrollspy-example')
-        .bootstrapScrollspy({target: '#ss-target'})
+        .bootstrapScrollspy({ target: '#ss-target' })
 
     $scrollSpy.on('scroll.bs.scrollspy', function () {
       ok($section.hasClass('active'), 'Active class still on root node')
@@ -97,12 +99,12 @@ $(function () {
         '<div id="one" style="height: 500px;"></div>' +
         '<div id="two" style="height: 300px;"></div>' +
         '<div id="three" style="height: 10px;"></div>' +
-        '</div>',
-        $section = $(sectionHTML).appendTo('#qunit-fixture'),
-        $scrollSpy = $section
+        '</div>'
+    var $section = $(sectionHTML).appendTo('#qunit-fixture')
+    var $scrollSpy = $section
         .show()
         .filter('#content')
-    $scrollSpy.bootstrapScrollspy({target: '#navigation', offset: $scrollSpy.position().top})
+    $scrollSpy.bootstrapScrollspy({ target: '#navigation', offset: $scrollSpy.position().top })
 
     $scrollSpy.on('scroll.bs.scrollspy', function () {
       ok(!$section.find('#one-link').parent().hasClass('active'), 'Active class removed from first section')
