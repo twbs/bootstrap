@@ -3201,13 +3201,7 @@
             },
             "fstream": {
               "version": "0.1.28",
-              "resolved": "https://registry.npmjs.org/fstream/-/fstream-0.1.28.tgz",
-              "dependencies": {
-                "mkdirp": {
-                  "version": "0.3.5",
-                  "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.3.5.tgz"
-                }
-              }
+              "resolved": "https://registry.npmjs.org/fstream/-/fstream-0.1.28.tgz"
             },
             "fstream-npm": {
               "version": "0.1.7",
@@ -3462,6 +3456,24 @@
                     "block-stream": {
                       "version": "0.0.7",
                       "resolved": "https://registry.npmjs.org/block-stream/-/block-stream-0.0.7.tgz"
+                    },
+                    "fstream": {
+                      "version": "0.1.28",
+                      "resolved": "https://registry.npmjs.org/fstream/-/fstream-0.1.28.tgz",
+                      "dependencies": {
+                        "graceful-fs": {
+                          "version": "3.0.2",
+                          "resolved": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-3.0.2.tgz"
+                        },
+                        "mkdirp": {
+                          "version": "0.3.5",
+                          "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.3.5.tgz"
+                        },
+                        "rimraf": {
+                          "version": "2.2.8",
+                          "resolved": "https://registry.npmjs.org/rimraf/-/rimraf-2.2.8.tgz"
+                        }
+                      }
                     },
                     "inherits": {
                       "version": "2.0.1",
@@ -3845,7 +3857,13 @@
             },
             "tar": {
               "version": "0.1.20",
-              "resolved": "https://registry.npmjs.org/tar/-/tar-0.1.20.tgz"
+              "resolved": "https://registry.npmjs.org/tar/-/tar-0.1.20.tgz",
+              "dependencies": {
+                "fstream": {
+                  "version": "0.1.28",
+                  "resolved": "https://registry.npmjs.org/fstream/-/fstream-0.1.28.tgz"
+                }
+              }
             },
             "text-table": {
               "version": "0.2.0",
