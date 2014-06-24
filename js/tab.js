@@ -26,7 +26,7 @@
 
     if (!selector) {
       selector = $this.attr('href')
-      selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
+      selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
     }
 
     if ($this.parent('li').hasClass('active')) return
@@ -81,7 +81,7 @@
 
     transition ?
       $active
-        .one('bsTransitionEnd', next)
+        .one($.support.transition.end, next)
         .emulateTransitionEnd(150) :
       next()
 
@@ -92,7 +92,7 @@
   // TAB PLUGIN DEFINITION
   // =====================
 
-  function Plugin(option) {
+  function Plugin( option ) {
     return this.each(function () {
       var $this = $(this)
       var data  = $this.data('bs.tab')

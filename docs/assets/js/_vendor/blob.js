@@ -1,11 +1,11 @@
 /* Blob.js
  * A Blob implementation.
- * 2014-05-31
+ * 2013-12-27
  * 
  * By Eli Grey, http://eligrey.com
  * By Devin Samarin, https://github.com/eboyjr
  * License: X11/MIT
- *   See https://github.com/eligrey/Blob.js/blob/master/LICENSE.md
+ *   See LICENSE.md
  */
 
 /*global self, unescape */
@@ -14,21 +14,12 @@
 
 /*! @source http://purl.eligrey.com/github/Blob.js/blob/master/Blob.js */
 
-(function (view) {
+if (!(typeof Blob === "function" || typeof Blob === "object") || typeof URL === "undefined")
+if ((typeof Blob === "function" || typeof Blob === "object") && typeof webkitURL !== "undefined") self.URL = webkitURL;
+else var Blob = (function (view) {
 	"use strict";
 
-	view.URL = view.URL || view.webkitURL;
-
-	if (view.Blob && view.URL) {
-		try {
-			new Blob;
-			return;
-		} catch (e) {}
-	}
-
-	// Internally we use a BlobBuilder implementation to base Blob off of
-	// in order to support older browsers that only have BlobBuilder
-	var BlobBuilder = view.BlobBuilder || view.WebKitBlobBuilder || view.MozBlobBuilder || (function(view) {
+	var BlobBuilder = view.BlobBuilder || view.WebKitBlobBuilder || view.MozBlobBuilder || view.MSBlobBuilder || (function(view) {
 		var
 			  get_class = function(object) {
 				return Object.prototype.toString.call(object).match(/^\[object\s(.*)\]$/)[1];
@@ -159,14 +150,10 @@
 		FB_proto.toString = function() {
 			return "[object Blob]";
 		};
-		FB_proto.close = function() {
-			this.size = 0;
-			delete this.data;
-		};
 		return FakeBlobBuilder;
 	}(view));
 
-	view.Blob = function Blob(blobParts, options) {
+	return function Blob(blobParts, options) {
 		var type = options ? (options.type || "") : "";
 		var builder = new BlobBuilder();
 		if (blobParts) {
