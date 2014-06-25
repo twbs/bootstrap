@@ -33,7 +33,7 @@ module.exports = function (grunt) {
             ' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n' +
             ' */\n',
     // NOTE: This jqueryCheck code is duplicated in customizer.js; if making changes here, be sure to update the other copy too.
-    jqueryCheck: 'if (typeof define == \'undefined\' && typeof exports == \'undefined\' && typeof jQuery == \'undefined\') { throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery\') }\n\n',
+    jqueryCheck: 'if (typeof jQuery === \'undefined\') { throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery\') }\n\n',
 
     // Task configuration.
     clean: {
@@ -232,7 +232,8 @@ module.exports = function (grunt) {
     cssmin: {
       options: {
         compatibility: 'ie8',
-        keepSpecialComments: '*'
+        keepSpecialComments: '*',
+        noAdvanced: true
       },
       core: {
         files: {
@@ -378,6 +379,7 @@ module.exports = function (grunt) {
         options: {
           build: process.env.TRAVIS_JOB_ID,
           concurrency: 10,
+          maxRetries: 3,
           urls: ['http://127.0.0.1:3000/js/tests/index.html'],
           browsers: grunt.file.readYAML('grunt/sauce_browsers.yml')
         }
