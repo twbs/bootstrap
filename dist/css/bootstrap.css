@@ -95,7 +95,6 @@ figure {
 hr {
   height: 0;
   -webkit-box-sizing: content-box;
-     -moz-box-sizing: content-box;
           box-sizing: content-box;
 }
 pre {
@@ -146,7 +145,6 @@ input {
 input[type="checkbox"],
 input[type="radio"] {
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
           box-sizing: border-box;
   padding: 0;
 }
@@ -156,7 +154,6 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 input[type="search"] {
   -webkit-box-sizing: content-box;
-     -moz-box-sizing: content-box;
           box-sizing: content-box;
   -webkit-appearance: textfield;
 }
@@ -880,13 +877,11 @@ th {
 }
 * {
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
 *:before,
 *:after {
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
 html {
@@ -1113,7 +1108,7 @@ p {
 }
 small,
 .small {
-  font-size: 78%;
+  font-size: 85%;
 }
 cite {
   font-style: normal;
@@ -2038,10 +2033,7 @@ pre code {
   }
 }
 table {
-<<<<<<< HEAD
-=======
   max-width: 100%;
->>>>>>> FETCH_HEAD
   background-color: #fff;
 }
 th {
@@ -2299,7 +2291,6 @@ label {
 }
 input[type="search"] {
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
 input[type="radio"],
@@ -2455,28 +2446,7 @@ fieldset[disabled] .checkbox,
 fieldset[disabled] .checkbox-inline {
   cursor: not-allowed;
 }
-<<<<<<< HEAD
-.radio.disabled label,
-.checkbox.disabled label,
-fieldset[disabled] .radio label,
-fieldset[disabled] .checkbox label {
-  cursor: not-allowed;
-}
-.form-control-static {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin-bottom: 0;
-}
-.form-control-static.input-lg,
-.form-control-static.input-sm {
-  padding-right: 0;
-  padding-left: 0;
-}
-.input-sm,
-.form-horizontal .form-group-sm .form-control {
-=======
 .input-sm {
->>>>>>> FETCH_HEAD
   height: 25px;
   padding: 4px 10px;
   font-size: 11px;
@@ -2686,13 +2656,10 @@ select[multiple].input-lg {
   margin-right: -15px;
   margin-left: -15px;
 }
-<<<<<<< HEAD
-=======
 .form-horizontal .form-control-static {
   padding-top: 5px;
   padding-bottom: 5px;
 }
->>>>>>> FETCH_HEAD
 @media (min-width: 768px) {
   .form-horizontal .control-label {
     padding-top: 5px;
@@ -2704,19 +2671,6 @@ select[multiple].input-lg {
   top: 0;
   right: 15px;
 }
-<<<<<<< HEAD
-@media (min-width: 768px) {
-  .form-horizontal .form-group-lg .control-label {
-    padding-top: 14.3px;
-  }
-}
-@media (min-width: 768px) {
-  .form-horizontal .form-group-sm .control-label {
-    padding-top: 5px;
-  }
-}
-=======
->>>>>>> FETCH_HEAD
 .btn {
   display: inline-block;
   padding: 4px 12px;
@@ -3212,10 +3166,6 @@ tbody.collapse.in {
   font-size: 11px;
   line-height: 1.42857143;
   color: #999;
-<<<<<<< HEAD
-  white-space: nowrap;
-=======
->>>>>>> FETCH_HEAD
 }
 .dropdown-backdrop {
   position: fixed;
@@ -5168,11 +5118,7 @@ a.list-group-item-danger.active:focus {
 .panel-group .panel-heading {
   border-bottom: 0;
 }
-<<<<<<< HEAD
-.panel-group .panel-heading + .panel-collapse > .panel-body {
-=======
 .panel-group .panel-heading + .panel-collapse .panel-body {
->>>>>>> FETCH_HEAD
   border-top: 1px solid #e6e6e6;
 }
 .panel-group .panel-footer {
@@ -5192,13 +5138,6 @@ a.list-group-item-danger.active:focus {
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #e6e6e6;
 }
-<<<<<<< HEAD
-.panel-default > .panel-heading .badge {
-  color: #e6e6e6;
-  background-color: #333;
-}
-=======
->>>>>>> FETCH_HEAD
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #e6e6e6;
 }
@@ -5213,13 +5152,6 @@ a.list-group-item-danger.active:focus {
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #005581;
 }
-<<<<<<< HEAD
-.panel-primary > .panel-heading .badge {
-  color: #005581;
-  background-color: #fff;
-}
-=======
->>>>>>> FETCH_HEAD
 .panel-primary > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #005581;
 }
@@ -5234,13 +5166,6 @@ a.list-group-item-danger.active:focus {
 .panel-success > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #d6e9c6;
 }
-<<<<<<< HEAD
-.panel-success > .panel-heading .badge {
-  color: #dff0d8;
-  background-color: #3d8b3d;
-}
-=======
->>>>>>> FETCH_HEAD
 .panel-success > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #d6e9c6;
 }
@@ -5255,13 +5180,6 @@ a.list-group-item-danger.active:focus {
 .panel-info > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #bce8f1;
 }
-<<<<<<< HEAD
-.panel-info > .panel-heading .badge {
-  color: #d9edf7;
-  background-color: #28a1c5;
-}
-=======
->>>>>>> FETCH_HEAD
 .panel-info > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #bce8f1;
 }
@@ -5276,13 +5194,6 @@ a.list-group-item-danger.active:focus {
 .panel-warning > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #faebcc;
 }
-<<<<<<< HEAD
-.panel-warning > .panel-heading .badge {
-  color: #fcf8e3;
-  background-color: #df8a13;
-}
-=======
->>>>>>> FETCH_HEAD
 .panel-warning > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #faebcc;
 }
@@ -5297,13 +5208,6 @@ a.list-group-item-danger.active:focus {
 .panel-danger > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #ebccd1;
 }
-<<<<<<< HEAD
-.panel-danger > .panel-heading .badge {
-  color: #f2dede;
-  background-color: #b52b27;
-}
-=======
->>>>>>> FETCH_HEAD
 .panel-danger > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #ebccd1;
 }
@@ -6251,7 +6155,6 @@ button.close {
 }
 .vp-top-bar .v13-icon-search {
   -webkit-box-sizing: content-box;
-     -moz-box-sizing: content-box;
           box-sizing: content-box;
 }
 .adminMenuItems div.SubMenuWrapper ul {
@@ -6259,7 +6162,6 @@ button.close {
 }
 .adminMenuItems div.SubMenuWrapper a {
   -webkit-box-sizing: content-box;
-     -moz-box-sizing: content-box;
           box-sizing: content-box;
 }
 .btn-toolbar .btn-group,
