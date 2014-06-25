@@ -2676,7 +2676,7 @@ select[multiple].input-lg {
   }
   .form-inline .radio input[type="radio"],
   .form-inline .checkbox input[type="checkbox"] {
-    float: none;
+    position: relative;
     margin-left: 0;
   }
   .form-inline .has-feedback .form-control-feedback {
@@ -4029,7 +4029,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
   .navbar-form .radio input[type="radio"],
   .navbar-form .checkbox input[type="checkbox"] {
-    float: none;
+    position: relative;
     margin-left: 0;
   }
   .navbar-form .has-feedback .form-control-feedback {
