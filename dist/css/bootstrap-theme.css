@@ -82,7 +82,7 @@
 }
 .btn-primary:disabled,
 .btn-primary[disabled] {
-  background-color: #2d6ca2;
+  background-color: #ff530a;
   background-image: none;
 }
 .btn-success {
