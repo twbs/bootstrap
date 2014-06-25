@@ -85,7 +85,7 @@
 
       transition ?
         that.$element.find('.modal-dialog') // wait for modal to slide in
-          .one('bsTransitionEnd', function () {
+          .one($.support.transition.end, function () {
             that.$element.trigger('focus').trigger(e)
           })
           .emulateTransitionEnd(300) :
@@ -118,7 +118,7 @@
 
     $.support.transition && this.$element.hasClass('fade') ?
       this.$element
-        .one('bsTransitionEnd', $.proxy(this.hideModal, this))
+        .one($.support.transition.end, $.proxy(this.hideModal, this))
         .emulateTransitionEnd(300) :
       this.hideModal()
   }
@@ -181,20 +181,20 @@
 
       doAnimate ?
         this.$backdrop
-          .one('bsTransitionEnd', callback)
+          .one($.support.transition.end, callback)
           .emulateTransitionEnd(150) :
         callback()
 
     } else if (!this.isShown && this.$backdrop) {
       this.$backdrop.removeClass('in')
 
-      var callbackRemove = function () {
+      var callbackRemove = function() {
         that.removeBackdrop()
         callback && callback()
       }
       $.support.transition && this.$element.hasClass('fade') ?
         this.$backdrop
-          .one('bsTransitionEnd', callbackRemove)
+          .one($.support.transition.end, callbackRemove)
           .emulateTransitionEnd(150) :
         callbackRemove()
 
@@ -208,8 +208,8 @@
     this.scrollbarWidth = this.scrollbarWidth || this.measureScrollbar()
   }
 
-  Modal.prototype.setScrollbar = function () {
-    var bodyPad = parseInt((this.$body.css('padding-right') || 0), 10)
+  Modal.prototype.setScrollbar =  function () {
+    var bodyPad = parseInt(this.$body.css('padding-right') || 0)
     if (this.scrollbarWidth) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
   }
 
@@ -263,18 +263,15 @@
   $(document).on('click.bs.modal.data-api', '[data-toggle="modal"]', function (e) {
     var $this   = $(this)
     var href    = $this.attr('href')
-    var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) // strip for ie7
+    var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) //strip for ie7
     var option  = $target.data('bs.modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
 
     if ($this.is('a')) e.preventDefault()
 
-    $target.one('show.bs.modal', function (showEvent) {
-      if (showEvent.isDefaultPrevented()) return // only register focus restorer if modal will actually get shown
-      $target.one('hidden.bs.modal', function () {
-        $this.is(':visible') && $this.trigger('focus')
-      })
-    })
     Plugin.call($target, option, this)
+    $target.one('hide.bs.modal', function () {
+      $this.is(':visible') && $this.trigger('focus')
+    })
   })
 
 }(jQuery);

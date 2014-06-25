@@ -1,5 +1,4 @@
 $(function () {
-  'use strict';
 
   module('button plugin')
 
@@ -8,11 +7,11 @@ $(function () {
   })
 
   module('button', {
-    setup: function () {
+    setup: function() {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapButton = $.fn.button.noConflict()
     },
-    teardown: function () {
+    teardown: function() {
       $.fn.button = $.fn.bootstrapButton
       delete $.fn.bootstrapButton
     }
@@ -89,8 +88,8 @@ $(function () {
   })
 
   test('should toggle active when btn children are clicked', function () {
-    var btn = $('<button class="btn" data-toggle="button">mdo</button>')
-    var inner = $('<i></i>')
+    var btn = $('<button class="btn" data-toggle="button">mdo</button>'),
+        inner = $('<i></i>')
     btn
       .append(inner)
       .appendTo($('#qunit-fixture'))
@@ -100,9 +99,9 @@ $(function () {
   })
 
   test('should toggle active when btn children are clicked within btn-group', function () {
-    var btngroup = $('<div class="btn-group" data-toggle="buttons"></div>')
-    var btn = $('<button class="btn">fat</button>')
-    var inner = $('<i></i>')
+    var btngroup = $('<div class="btn-group" data-toggle="buttons"></div>'),
+        btn = $('<button class="btn">fat</button>'),
+        inner = $('<i></i>')
     btngroup
       .append(btn.append(inner))
       .appendTo($('#qunit-fixture'))

@@ -890,7 +890,7 @@ th {
           box-sizing: border-box;
 }
 html {
-  font-size: 10px;
+  font-size: 62.5%;
 
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -935,7 +935,6 @@ img {
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   display: block;
-  width: 100% \9;
   max-width: 100%;
   height: auto;
 }
@@ -944,7 +943,6 @@ img {
 }
 .img-thumbnail {
   display: inline-block;
-  width: 100% \9;
   max-width: 100%;
   height: auto;
   padding: 5px;
@@ -1136,18 +1134,6 @@ mark,
 }
 .text-justify {
   text-align: justify;
-}
-.text-nowrap {
-  white-space: nowrap;
-}
-.text-lowercase {
-  text-transform: lowercase;
-}
-.text-uppercase {
-  text-transform: uppercase;
-}
-.text-capitalize {
-  text-transform: capitalize;
 }
 .text-muted {
   color: #999;
@@ -1358,12 +1344,6 @@ kbd {
   border-radius: 3px;
   -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .25);
           box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .25);
-}
-kbd kbd {
-  padding: 0;
-  font-size: 100%;
-  -webkit-box-shadow: none;
-          box-shadow: none;
 }
 pre {
   display: block;
@@ -2058,6 +2038,10 @@ pre code {
   }
 }
 table {
+<<<<<<< HEAD
+=======
+  max-width: 100%;
+>>>>>>> FETCH_HEAD
   background-color: #fff;
 }
 th {
@@ -2065,7 +2049,6 @@ th {
 }
 .table {
   width: 100%;
-  max-width: 100%;
   margin-bottom: 20px;
 }
 .table > thead > tr > th,
@@ -2248,7 +2231,7 @@ table th[class*="col-"] {
   .table-responsive {
     width: 100%;
     margin-bottom: 15px;
-    overflow-x: auto;
+    overflow-x: scroll;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
@@ -2421,7 +2404,6 @@ input[type="month"].input-lg {
 }
 .radio,
 .checkbox {
-  position: relative;
   display: block;
   min-height: 20px;
   margin-top: 10px;
@@ -2438,8 +2420,7 @@ input[type="month"].input-lg {
 .radio-inline input[type="radio"],
 .checkbox input[type="checkbox"],
 .checkbox-inline input[type="checkbox"] {
-  position: absolute;
-  margin-top: 4px \9;
+  float: left;
   margin-left: -20px;
 }
 .radio + .radio,
@@ -2462,18 +2443,19 @@ input[type="month"].input-lg {
 }
 input[type="radio"][disabled],
 input[type="checkbox"][disabled],
-input[type="radio"].disabled,
-input[type="checkbox"].disabled,
+.radio[disabled],
+.radio-inline[disabled],
+.checkbox[disabled],
+.checkbox-inline[disabled],
 fieldset[disabled] input[type="radio"],
-fieldset[disabled] input[type="checkbox"] {
-  cursor: not-allowed;
-}
-.radio-inline.disabled,
-.checkbox-inline.disabled,
+fieldset[disabled] input[type="checkbox"],
+fieldset[disabled] .radio,
 fieldset[disabled] .radio-inline,
+fieldset[disabled] .checkbox,
 fieldset[disabled] .checkbox-inline {
   cursor: not-allowed;
 }
+<<<<<<< HEAD
 .radio.disabled label,
 .checkbox.disabled label,
 fieldset[disabled] .radio label,
@@ -2492,6 +2474,9 @@ fieldset[disabled] .checkbox label {
 }
 .input-sm,
 .form-horizontal .form-group-sm .form-control {
+=======
+.input-sm {
+>>>>>>> FETCH_HEAD
   height: 25px;
   padding: 4px 10px;
   font-size: 11px;
@@ -2506,8 +2491,7 @@ textarea.input-sm,
 select[multiple].input-sm {
   height: auto;
 }
-.input-lg,
-.form-horizontal .form-group-lg .form-control {
+.input-lg {
   height: 46px;
   padding: 10px 16px;
   font-size: 18px;
@@ -2630,6 +2614,9 @@ select[multiple].input-lg {
 .has-feedback label.sr-only ~ .form-control-feedback {
   top: 0;
 }
+.form-control-static {
+  margin-bottom: 0;
+}
 .help-block {
   display: block;
   margin-top: 5px;
@@ -2699,6 +2686,13 @@ select[multiple].input-lg {
   margin-right: -15px;
   margin-left: -15px;
 }
+<<<<<<< HEAD
+=======
+.form-horizontal .form-control-static {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+>>>>>>> FETCH_HEAD
 @media (min-width: 768px) {
   .form-horizontal .control-label {
     padding-top: 5px;
@@ -2710,6 +2704,7 @@ select[multiple].input-lg {
   top: 0;
   right: 15px;
 }
+<<<<<<< HEAD
 @media (min-width: 768px) {
   .form-horizontal .form-group-lg .control-label {
     padding-top: 14.3px;
@@ -2720,6 +2715,8 @@ select[multiple].input-lg {
     padding-top: 5px;
   }
 }
+=======
+>>>>>>> FETCH_HEAD
 .btn {
   display: inline-block;
   padding: 4px 12px;
@@ -3071,6 +3068,8 @@ fieldset[disabled] .btn-link:focus {
 .btn-block {
   display: block;
   width: 100%;
+  padding-right: 0;
+  padding-left: 0;
 }
 .btn-block + .btn-block {
   margin-top: 5px;
@@ -3213,7 +3212,10 @@ tbody.collapse.in {
   font-size: 11px;
   line-height: 1.42857143;
   color: #999;
+<<<<<<< HEAD
   white-space: nowrap;
+=======
+>>>>>>> FETCH_HEAD
 }
 .dropdown-backdrop {
   position: fixed;
@@ -3858,9 +3860,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   right: 0;
   left: 0;
   z-index: 1030;
-  -webkit-transform: translate3d(0, 0, 0);
-       -o-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
 }
 @media (min-width: 768px) {
   .navbar-fixed-top,
@@ -4628,12 +4627,10 @@ a.thumbnail.active {
 .alert > p + p {
   margin-top: 5px;
 }
-.alert-dismissable,
-.alert-dismissible {
+.alert-dismissable {
   padding-right: 35px;
 }
-.alert-dismissable .close,
-.alert-dismissible .close {
+.alert-dismissable .close {
   position: relative;
   top: -2px;
   right: -21px;
@@ -4731,16 +4728,14 @@ a.thumbnail.active {
        -o-transition: width .6s ease;
           transition: width .6s ease;
 }
-.progress-striped .progress-bar,
-.progress-bar-striped {
+.progress-striped .progress-bar {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
   background-image:      -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
   background-image:         linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
   -webkit-background-size: 40px 40px;
           background-size: 40px 40px;
 }
-.progress.active .progress-bar,
-.progress-bar.active {
+.progress.active .progress-bar {
   -webkit-animation: progress-bar-stripes 2s linear infinite;
        -o-animation: progress-bar-stripes 2s linear infinite;
           animation: progress-bar-stripes 2s linear infinite;
@@ -4882,13 +4877,7 @@ a.list-group-item:focus {
 }
 .list-group-item.active .list-group-item-heading,
 .list-group-item.active:hover .list-group-item-heading,
-.list-group-item.active:focus .list-group-item-heading,
-.list-group-item.active .list-group-item-heading > small,
-.list-group-item.active:hover .list-group-item-heading > small,
-.list-group-item.active:focus .list-group-item-heading > small,
-.list-group-item.active .list-group-item-heading > .small,
-.list-group-item.active:hover .list-group-item-heading > .small,
-.list-group-item.active:focus .list-group-item-heading > .small {
+.list-group-item.active:focus .list-group-item-heading {
   color: inherit;
 }
 .list-group-item.active .list-group-item-text,
@@ -5048,12 +5037,8 @@ a.list-group-item-danger.active:focus {
 .panel-heading + .list-group .list-group-item:first-child {
   border-top-width: 0;
 }
-.list-group + .panel-footer {
-  border-top-width: 0;
-}
 .panel > .table,
-.panel > .table-responsive > .table,
-.panel > .panel-collapse > .table {
+.panel > .table-responsive > .table {
   margin-bottom: 0;
 }
 .panel > .table:first-child,
@@ -5183,7 +5168,11 @@ a.list-group-item-danger.active:focus {
 .panel-group .panel-heading {
   border-bottom: 0;
 }
+<<<<<<< HEAD
 .panel-group .panel-heading + .panel-collapse > .panel-body {
+=======
+.panel-group .panel-heading + .panel-collapse .panel-body {
+>>>>>>> FETCH_HEAD
   border-top: 1px solid #e6e6e6;
 }
 .panel-group .panel-footer {
@@ -5203,10 +5192,13 @@ a.list-group-item-danger.active:focus {
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #e6e6e6;
 }
+<<<<<<< HEAD
 .panel-default > .panel-heading .badge {
   color: #e6e6e6;
   background-color: #333;
 }
+=======
+>>>>>>> FETCH_HEAD
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #e6e6e6;
 }
@@ -5221,10 +5213,13 @@ a.list-group-item-danger.active:focus {
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #005581;
 }
+<<<<<<< HEAD
 .panel-primary > .panel-heading .badge {
   color: #005581;
   background-color: #fff;
 }
+=======
+>>>>>>> FETCH_HEAD
 .panel-primary > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #005581;
 }
@@ -5239,10 +5234,13 @@ a.list-group-item-danger.active:focus {
 .panel-success > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #d6e9c6;
 }
+<<<<<<< HEAD
 .panel-success > .panel-heading .badge {
   color: #dff0d8;
   background-color: #3d8b3d;
 }
+=======
+>>>>>>> FETCH_HEAD
 .panel-success > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #d6e9c6;
 }
@@ -5257,10 +5255,13 @@ a.list-group-item-danger.active:focus {
 .panel-info > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #bce8f1;
 }
+<<<<<<< HEAD
 .panel-info > .panel-heading .badge {
   color: #d9edf7;
   background-color: #28a1c5;
 }
+=======
+>>>>>>> FETCH_HEAD
 .panel-info > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #bce8f1;
 }
@@ -5275,10 +5276,13 @@ a.list-group-item-danger.active:focus {
 .panel-warning > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #faebcc;
 }
+<<<<<<< HEAD
 .panel-warning > .panel-heading .badge {
   color: #fcf8e3;
   background-color: #df8a13;
 }
+=======
+>>>>>>> FETCH_HEAD
 .panel-warning > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #faebcc;
 }
@@ -5293,10 +5297,13 @@ a.list-group-item-danger.active:focus {
 .panel-danger > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #ebccd1;
 }
+<<<<<<< HEAD
 .panel-danger > .panel-heading .badge {
   color: #f2dede;
   background-color: #b52b27;
 }
+=======
+>>>>>>> FETCH_HEAD
 .panel-danger > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #ebccd1;
 }
@@ -5383,7 +5390,8 @@ button.close {
   left: 0;
   z-index: 1050;
   display: none;
-  overflow: hidden;
+  overflow: auto;
+  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   outline: 0;
 }
@@ -5391,18 +5399,16 @@ button.close {
   -webkit-transition: -webkit-transform .3s ease-out;
        -o-transition:      -o-transform .3s ease-out;
           transition:         transform .3s ease-out;
-  -webkit-transform: translate3d(0, -25%, 0);
-       -o-transform: translate3d(0, -25%, 0);
-          transform: translate3d(0, -25%, 0);
+  -webkit-transform: translate(0, -25%);
+      -ms-transform: translate(0, -25%);
+       -o-transform: translate(0, -25%);
+          transform: translate(0, -25%);
 }
 .modal.in .modal-dialog {
-  -webkit-transform: translate3d(0, 0, 0);
-       -o-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-}
-.modal-open .modal {
-  overflow-x: hidden;
-  overflow-y: auto;
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+       -o-transform: translate(0, 0);
+          transform: translate(0, 0);
 }
 .modal-dialog {
   position: relative;
@@ -5775,9 +5781,10 @@ button.close {
   opacity: .5;
 }
 .carousel-control.left {
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
+  background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, .5) 0%), color-stop(rgba(0, 0, 0, .0001) 100%));
   background-image:      -o-linear-gradient(left, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
   background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, .0001)));
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
   background-image:         linear-gradient(to right, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
   background-repeat: repeat-x;
@@ -5785,9 +5792,10 @@ button.close {
 .carousel-control.right {
   right: 0;
   left: auto;
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);
+  background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, .0001) 0%), color-stop(rgba(0, 0, 0, .5) 100%));
   background-image:      -o-linear-gradient(left, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);
   background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .0001)), to(rgba(0, 0, 0, .5)));
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);
   background-image:         linear-gradient(to right, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
   background-repeat: repeat-x;
@@ -5986,9 +5994,6 @@ button.close {
 }
 .affix {
   position: fixed;
-  -webkit-transform: translate3d(0, 0, 0);
-       -o-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
 }
 @-ms-viewport {
   width: device-width;

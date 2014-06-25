@@ -15,7 +15,8 @@
 // Container that the modal scrolls within
 .modal {
   display: none;
-  overflow: hidden;
+  overflow: auto;
+  overflow-y: scroll;
   position: fixed;
   top: 0;
   right: 0;
@@ -30,14 +31,10 @@
 
   // When fading in the modal, animate it to slide down
   &.fade .modal-dialog {
-    .translate3d(0, -25%, 0);
+    .translate(0, -25%);
     .transition-transform(~"0.3s ease-out");
   }
-  &.in .modal-dialog { .translate3d(0, 0, 0) }
-}
-.modal-open .modal {
-  overflow-x: hidden;
-  overflow-y: auto;
+  &.in .modal-dialog { .translate(0, 0)}
 }
 
 // Shell div to position the modal with bottom padding

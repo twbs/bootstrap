@@ -1,6 +1,11 @@
 {
-  "extends" : "../js/.jshintrc",
-  "browser" : false,
-  "es3"     : false,
-  "node"    : true
+  "curly" : true,
+  "eqeqeq": true,
+  "newcap": true,
+  "noarg" : true,
+  "node"  : true,
+  "nonbsp": true,
+  "strict": true,
+  "undef" : true,
+  "unused": true
 }

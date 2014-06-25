@@ -74,10 +74,10 @@ p {
 // Emphasis & misc
 // -------------------------
 
-// Ex: (12px small font / 14px base font) * 100% = about 85%
+// Ex: 14px base font * 85% = about 12px
 small,
 .small {
-  font-size: floor((100% * @font-size-small / @font-size-base));
+  font-size: 85%;
 }
 
 // Undo browser default styling
@@ -96,12 +96,6 @@ mark,
 .text-right          { text-align: right; }
 .text-center         { text-align: center; }
 .text-justify        { text-align: justify; }
-.text-nowrap         { white-space: nowrap; }
-
-// Transformation
-.text-lowercase      { text-transform: lowercase; }
-.text-uppercase      { text-transform: uppercase; }
-.text-capitalize     { text-transform: capitalize; }
 
 // Contextual colors
 .text-muted {
@@ -219,13 +213,13 @@ dd {
   @media (min-width: @grid-float-breakpoint) {
     dt {
       float: left;
-      width: (@dl-horizontal-offset - 20);
+      width: (@component-offset-horizontal - 20);
       clear: left;
       text-align: right;
       .text-overflow();
     }
     dd {
-      margin-left: @dl-horizontal-offset;
+      margin-left: @component-offset-horizontal;
     }
   }
 }
