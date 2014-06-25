@@ -75,14 +75,6 @@
   background-color: #ff530a;
   border-color: #ff4c00;
 }
-<<<<<<< HEAD
-.btn-primary:disabled,
-.btn-primary[disabled] {
-  background-color: #ff530a;
-  background-image: none;
-}
-=======
->>>>>>> FETCH_HEAD
 .btn-success {
   background-image: -webkit-linear-gradient(top, #5cb85c 0%, #419641 100%);
   background-image:      -o-linear-gradient(top, #5cb85c 0%, #419641 100%);
