@@ -11,7 +11,7 @@
 
 <title>
   
-    Bootstrap
+    Wall of browser bugs &middot; Bootstrap
   
 </title>
 
@@ -46,7 +46,7 @@
 </script>
 
   </head>
-  <body class="bs-docs-home">
+  <body>
     <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <!-- Docs master nav -->
@@ -88,94 +88,141 @@
 </header>
 
 
-    <!-- Page content of course! -->
-    <main class="bs-docs-masthead" id="content" role="main">
-  <div class="container">
-    <span class="bs-docs-booticon bs-docs-booticon-lg bs-docs-booticon-outline">B</span>
-    <p class="lead">Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.</p>
-    <p class="lead">
-      <a href="getting-started#download" class="btn btn-outline-inverse btn-lg" onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download 3.2.0');">Download Bootstrap</a>
-    </p>
-    <p class="version">Currently v3.2.0</p>
-    <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script>var z = document.createElement("script"); z.async = true; z.src = "http://engine.carbonads.com/z/32341/azcarbon_2_1_0_HORIZ"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script></div></div>
+    <!-- Docs page layout -->
+    <div class="bs-docs-header" id="content">
+      <div class="container">
+        <h1>Wall of browser bugs</h1>
+        <p>A list of the browser bugs that Bootstrap is currently grappling with.</p>
+        <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script>var z = document.createElement("script"); z.async = true; z.src = "http://engine.carbonads.com/z/32341/azcarbon_2_1_0_HORIZ"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script></div></div>
 
-  </div>
-</main>
-
-<div class="bs-docs-featurette">
-  <div class="container">
-    <h2 class="bs-docs-featurette-title">Designed for everyone, everywhere.</h2>
-    <p class="lead">Bootstrap makes front-end web development faster and easier. It's made for folks of all skill levels, devices of all shapes, and projects of all sizes.</p>
-
-    <hr class="half-rule">
-
-    <div class="row">
-      <div class="col-sm-4">
-        <img src="assets/img/sass-less.png" alt="Sass and Less support" class="img-responsive">
-        <h3>Preprocessors</h3>
-        <p>Bootstrap ships with vanilla CSS, but it's source code utilizes the two most popular CSS preprocessors, <a href="../css/#less">Less</a> and <a href="../css/#sass">Sass</a>. Quickly get started with precompiled CSS or build on the source.</p>
-      </div>
-      <div class="col-sm-4">
-        <img src="assets/img/devices.png" alt="Responsive across devices" class="img-responsive">
-        <h3>One framework, every device.</h3>
-        <p>Bootstrap easily and efficiently scales your websites and applications with a single code base, from phones to tablets to desktops with CSS media queries.</p>
-      </div>
-      <div class="col-sm-4">
-        <img src="assets/img/components.png" alt="Components" class="img-responsive">
-        <h3>Full of features</h3>
-        <p>With Bootstrap, you get extensive and beautiful documentation for common HTML elements, dozens of custom HTML and CSS components, and awesome jQuery plugins.</p>
       </div>
     </div>
 
-    <hr class="half-rule">
+    <div class="container bs-docs-container">
 
-    <p class="lead">Bootstrap is open source. It's hosted, developed, and maintained on GitHub.</p>
-    <a href="https://github.com/twbs/bootstrap" class="btn btn-outline btn-lg">View the GitHub project</a>
+      <div class="row">
+        <div class="col-md-9" role="main">
+          <div class="bs-docs-section">
+  <h1 id="browser-bugs" class="page-header">Browser bugs</h1>
+
+  <p class="lead">Bootstrap currently works around several outstanding browser bugs in major browsers to deliver the best cross-browser experience possible. Some bugs, like those listed below, cannot be solved by us.</p>
+  <p>We publicly list browser bugs that are impacting us here, in the hopes of expediting the process of fixing them. For information on Bootstrap's browser compatibility, <a href="../getting-started/#support">see our browser compatibility docs</a>.</p>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Browser(s)</th>
+          <th>Summary of bug</th>
+          <th>Upstream bug(s)</th>
+          <th>Bootstrap issue(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Firefox</td>
+          <td><code>.table-bordered</code> with an empty <code>&lt;tbody&gt;</code> is missing borders</td>
+          <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1023761">Mozilla bug #1023761</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/13453">#13453</a></td>
+        </tr>
+        <tr>
+          <td>Firefox</td>
+          <td>Unusual default form control styles on Android</td>
+          <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=900871">Closed Mozilla bug #900871</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=763671">Open Mozilla bug #763671</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/8702">#8702</a></td>
+        </tr>
+        <tr>
+          <td>Firefox</td>
+          <td><code>max-width: 100%;</code> doesn't work inside tables</td>
+          <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=975632">Mozilla bug #975632</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/10690">#10690</a></td>
+        </tr>
+        <tr>
+          <td>Firefox <strong>&lt;31</strong></td>
+          <td><code>position: relative;</code> doesn't work inside tables</td>
+          <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=63895">Mozilla bug #63895</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/12467">#12467</a></td>
+        </tr>
+        <tr>
+          <td>Chrome</td>
+          <td>Weird button behavior with some number <code>&lt;input&gt;</code>s</td>
+          <td><a href="https://code.google.com/p/chromium/issues/detail?id=337668">Chromium issue #337668</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/8350">#8350</a>, <a href="https://github.com/necolas/normalize.css/issues/283">Normalize #283</a></td>
+        </tr>
+        <tr>
+          <td>Chrome</td>
+          <td>Navbar rendering problem on Windows after several clicks</td>
+          <td><a href="https://code.google.com/p/chromium/issues/detail?id=272750">Chromium issue #272750</a>, <a href="https://bugs.webkit.org/show_bug.cgi?id=119793">WebKit bug #119793</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/9226">#9226</a></td>
+        </tr>
+        <tr>
+          <td>Chrome</td>
+          <td><code>display: table;</code> within <code>display: block;</code> forces sibling content to new line</td>
+          <td><a href="https://code.google.com/p/chromium/issues/detail?id=309483">Chromium issue #309483</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/9950">#9950</a></td>
+        </tr>
+        <tr>
+          <td>Chrome</td>
+          <td>Unwanted vertical lines when printing styled <code>&lt;select&gt;</code> on OS X</td>
+          <td><a href="https://code.google.com/p/chromium/issues/detail?id=282918">Chromium issue #282918</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/11245">#11245</a></td>
+        </tr>
+        <tr>
+          <td>Chrome</td>
+          <td>inline-block element collapses white-space on Windows</td>
+          <td><a href="https://code.google.com/p/chromium/issues/detail?id=329574">Chromium issue #329574</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/11885">#11885</a></td>
+        </tr>
+        <tr>
+          <td>Chrome</td>
+          <td>Incorrect viewport size used for media queries when printing</td>
+          <td><a href="https://code.google.com/p/chromium/issues/detail?id=273306">Chromium issue #273306</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/12078">#12078</a></td>
+        </tr>
+        <tr>
+          <td>Chrome &amp; Safari</td>
+          <td>OS X scrollbar clipped in <code>select[multiple]</code> with padding</td>
+          <td><a href="https://code.google.com/p/chromium/issues/detail?id=342208">Chromium issue #342208</a>, <a href="https://bugs.webkit.org/show_bug.cgi?id=128489">WebKit bug #128489</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/12536">#12536</a></td>
+        </tr>
+        <tr>
+          <td>Chrome</td>
+          <td><code>display: table-cell; width: 100%;</code> doesn't work correctly on date <code>&lt;input&gt;</code></td>
+          <td><a href="https://code.google.com/p/chromium/issues/detail?id=346051">Chromium issue #346051</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/12548">#12548</a></td>
+        </tr>
+        <tr>
+          <td>Safari</td>
+          <td>Insufficient CSS percentage precision</td>
+          <td>(No public bug tracker)</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/9282">#9282</a></td>
+        </tr>
+        <tr>
+          <td>Safari</td>
+          <td>Justified nav rendering bug</td>
+          <td>(No public bug tracker)</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/9774">#9774</a></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+
 </div>
 
-<div class="bs-docs-featurette">
-  <div class="container">
-    <h2 class="bs-docs-featurette-title">Built with Bootstrap.</h2>
-    <p class="lead">Millions of amazing sites across the web are being built with Bootstrap. Get started on your own with our growing <a href="../getting-started/#examples">collection of examples</a> or by exploring some of our favorites.</p>
-
-    <hr class="half-rule">
-
-    <div class="row bs-docs-featured-sites">
-    
-      <div class="col-sm-3">
-        <a href="http://expo.getbootstrap.com/2014/02/24/redantler/" target="_blank" title="Red Antler">
-          <img src="http://expo.getbootstrap.com/screenshots/redantler.jpg" alt="Red Antler" class="img-responsive">
-        </a>
+        </div>
+        <div class="col-md-3">
+          <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
+            <ul class="nav bs-docs-sidenav">
+              
+            </ul>
+            <a class="back-to-top" href="#top">
+              Back to top
+            </a>
+            
+          </div>
+        </div>
       </div>
-    
-      <div class="col-sm-3">
-        <a href="http://expo.getbootstrap.com/2014/03/13/riot-design/" target="_blank" title="Riot Design">
-          <img src="http://expo.getbootstrap.com/screenshots/riot.jpg" alt="Riot Design" class="img-responsive">
-        </a>
-      </div>
-    
-      <div class="col-sm-3">
-        <a href="http://expo.getbootstrap.com/2014/02/12/newsweek/" target="_blank" title="Newsweek">
-          <img src="http://expo.getbootstrap.com/screenshots/newsweek.jpg" alt="Newsweek" class="img-responsive">
-        </a>
-      </div>
-    
-      <div class="col-sm-3">
-        <a href="http://expo.getbootstrap.com/2014/02/26/robinhood/" target="_blank" title="Robinhood">
-          <img src="http://expo.getbootstrap.com/screenshots/robinhood.jpg" alt="Robinhood" class="img-responsive">
-        </a>
-      </div>
-    
     </div>
-
-    <hr class="half-rule">
-
-    <p class="lead">We showcase dozens of inspiring projects built with Bootstrap on the Bootstrap Expo.</p>
-    <a href="http://expo.getbootstrap.com" class="btn btn-outline btn-lg">Explore the Expo</a>
-  </div>
-</div>
-
 
     <!-- Footer
 ================================================== -->

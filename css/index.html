@@ -18,34 +18,39 @@
 <!-- Bootstrap core CSS -->
 <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
 
+  <!-- Optional Bootstrap Theme -->
+  <link href="data:text/css;charset=utf-8," data-href="../dist/css/bootstrap-theme.min.css" rel="stylesheet" id="bs-theme-stylesheet">
+
+
 <!-- Documentation extras -->
 <link href="../assets/css/docs.min.css" rel="stylesheet">
 <!--[if lt IE 9]><script src="../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="../assets/js/ie-emulation-modes-warning.js"></script>
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
 <!-- Favicons -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-                               <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
+<link rel="icon" href="/favicon.ico">
 
 <script>
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-146052-10']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-146052-10', 'getbootstrap.com');
+  ga('send', 'pageview');
 </script>
 
   </head>
   <body>
-    <a class="sr-only" href="#content">Skip to main content</a>
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <!-- Docs master nav -->
     <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
@@ -78,8 +83,8 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://expo.getbootstrap.com" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Expo']);">Expo</a></li>
-        <li><a href="http://blog.getbootstrap.com" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Blog']);">Blog</a></li>
+        <li><a href="http://expo.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a></li>
+        <li><a href="http://blog.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a></li>
       </ul>
     </nav>
   </div>
@@ -100,9 +105,7 @@
 
       <div class="row">
         <div class="col-md-9" role="main">
-          <!-- Global Bootstrap settings
-================================================== -->
-<div class="bs-docs-section">
+          <div class="bs-docs-section">
   <h1 id="overview" class="page-header">Overview</h1>
 
   <p class="lead">Get the lowdown on the key pieces of Bootstrap's infrastructure, including our approach to better, faster, stronger web development.</p>
@@ -112,17 +115,14 @@
 <div class="highlight"><pre><code class="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
   ...
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/html&gt;</span></code></pre></div>
 
   <h3 id="overview-mobile">Mobile first</h3>
   <p>With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework. With Bootstrap 3, we've rewritten the project to be mobile friendly from the start. Instead of adding on optional mobile styles, they're baked right into the core. In fact, <strong>Bootstrap is mobile first</strong>. Mobile first styles can be found throughout the entire library instead of in separate files.</p>
   <p>To ensure proper rendering and touch zooming, <strong>add the viewport meta tag</strong> to your <code>&lt;head&gt;</code>.</p>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;width=device-width, initial-scale=1&quot;</span><span class="nt">&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;width=device-width, initial-scale=1&quot;</span><span class="nt">&gt;</span></code></pre></div>
   <p>You can disable zooming capabilities on mobile devices by adding <code>user-scalable=no</code> to the viewport meta tag. This disables zooming, meaning users are only able to scroll, and results in your site feeling a bit more like a native application. Overall, we don't recommend this on every site, so use caution!</p>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;</span><span class="nt">&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;</span><span class="nt">&gt;</span></code></pre></div>
 
   <h3 id="overview-type-links">Typography and links</h3>
   <p>Bootstrap sets basic global display, typography, and link styles. Specifically, we:</p>
@@ -137,18 +137,17 @@
   <p>For improved cross-browser rendering, we use <a href="http://necolas.github.io/normalize.css/" target="_blank">Normalize.css</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a>.</p>
 
   <h3 id="overview-container">Containers</h3>
-  <p>Easily center a page's contents by wrapping its contents in a <code>.container</code>. Containers set <code>width</code> at various media query breakpoints to match our grid system.</p>
-  <p>Note that, due to <code>padding</code> and fixed widths, containers are not nestable by default.</p>
+  <p>Bootstrap requires a containing element to wrap site contents and house our grid system. You may choose one of two containers to use in your projects. Note that, due to <code>padding</code> and more, neither container is nestable.</p>
+  <p>Use <code>.container</code> for a responsive fixed width container.</p>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
   ...
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+  <p>Use <code>.container-fluid</code> for a full width container, spanning the entire width of your viewport.</p>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container-fluid&quot;</span><span class="nt">&gt;</span>
+  ...
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Grid system
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="grid" class="page-header">Grid system</h1>
 
@@ -162,7 +161,10 @@
     <li>Content should be placed within columns, and only columns may be immediate children of rows.</li>
     <li>Predefined grid classes like <code>.row</code> and <code>.col-xs-4</code> are available for quickly making grid layouts. Less mixins can also be used for more semantic layouts.</li>
     <li>Columns create gutters (gaps between column content) via <code>padding</code>. That padding is offset in rows for the first and last column via negative margin on <code>.row</code>s.</li>
+    <li>The negative margin is why the examples below are outdented. It's so that content within grid columns is lined up with non-grid content.</li>
     <li>Grid columns are created by specifying the number of twelve available columns you wish to span. For example, three equal columns would use three <code>.col-xs-4</code>.</li>
+    <li>If more than 12 columns are placed within a single row, each group of extra columns will, as one unit, wrap onto a new line.</li>
+    <li>Grid classes apply to devices with screen widths greater than or equal to the breakpoint sizes, and override grid classes targeted at smaller devices. Therefore, applying any <code>.col-md-</code> class to an element will not only affect its styling on medium devices but also on large devices if a <code>.col-lg-</code> class is not present.</li>
   </ul>
   <p>Look to the examples for applying these principles to your code.</p>
 
@@ -178,14 +180,12 @@
 <span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="nd">:</span> <span class="o">@</span><span class="nt">screen-md-min</span><span class="o">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
 
 <span class="cm">/* Large devices (large desktops, 1200px and up) */</span>
-<span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="nd">:</span> <span class="o">@</span><span class="nt">screen-lg-min</span><span class="o">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
-</code></pre></div>
+<span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="nd">:</span> <span class="o">@</span><span class="nt">screen-lg-min</span><span class="o">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span></code></pre></div>
   <p>We occasionally expand on these media queries to include a <code>max-width</code> to limit CSS to a narrower set of devices.</p>
 <div class="highlight"><pre><code class="scss"><span class="k">@media</span> <span class="o">(</span><span class="nt">max-width</span><span class="nd">:</span> <span class="o">@</span><span class="nt">screen-xs-max</span><span class="o">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
 <span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="nd">:</span> <span class="o">@</span><span class="nt">screen-sm-min</span><span class="o">)</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="nd">:</span> <span class="o">@</span><span class="nt">screen-sm-max</span><span class="o">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
 <span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="nd">:</span> <span class="o">@</span><span class="nt">screen-md-min</span><span class="o">)</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="nd">:</span> <span class="o">@</span><span class="nt">screen-md-max</span><span class="o">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
-<span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="nd">:</span> <span class="o">@</span><span class="nt">screen-lg-min</span><span class="o">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
-</code></pre></div>
+<span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="nd">:</span> <span class="o">@</span><span class="nt">screen-lg-min</span><span class="o">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span></code></pre></div>
 
   <h3 id="grid-options">Grid options</h3>
   <p>See how aspects of the Bootstrap grid system work across multiple devices with a handy table.</p>
@@ -214,55 +214,54 @@
       </thead>
       <tbody>
         <tr>
-          <th>Grid behavior</th>
+          <th class="text-nowrap">Grid behavior</th>
           <td>Horizontal at all times</td>
           <td colspan="3">Collapsed to start, horizontal above breakpoints</td>
         </tr>
         <tr>
-          <th>Container width</th>
+          <th class="text-nowrap">Container width</th>
           <td>None (auto)</td>
           <td>750px</td>
           <td>970px</td>
           <td>1170px</td>
         </tr>
         <tr>
-          <th>Class prefix</th>
+          <th class="text-nowrap">Class prefix</th>
           <td><code>.col-xs-</code></td>
           <td><code>.col-sm-</code></td>
           <td><code>.col-md-</code></td>
           <td><code>.col-lg-</code></td>
         </tr>
         <tr>
-          <th># of columns</th>
+          <th class="text-nowrap"># of columns</th>
           <td colspan="4">12</td>
         </tr>
         <tr>
-          <th>Column width</th>
+          <th class="text-nowrap">Column width</th>
           <td class="text-muted">Auto</td>
-          <td>60px</td>
-          <td>78px</td>
-          <td>95px</td>
+          <td>~62px</td>
+          <td>~81px</td>
+          <td>~97px</td>
         </tr>
         <tr>
-          <th>Gutter width</th>
+          <th class="text-nowrap">Gutter width</th>
           <td colspan="4">30px (15px on each side of a column)</td>
         </tr>
         <tr>
-          <th>Nestable</th>
+          <th class="text-nowrap">Nestable</th>
           <td colspan="4">Yes</td>
         </tr>
         <tr>
-          <th>Offsets</th>
+          <th class="text-nowrap">Offsets</th>
           <td colspan="4">Yes</td>
         </tr>
         <tr>
-          <th>Column ordering</th>
+          <th class="text-nowrap">Column ordering</th>
           <td colspan="4">Yes</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <p>Grid classes apply to devices with screen widths greater than or equal to the breakpoint sizes, and override grid classes targeted at smaller devices. Therefore, applying any <code>.col-md-</code> class to an element will not only affect its styling on medium devices but also on large devices if a <code>.col-lg-</code> class is not present.</p>
 
   <h3 id="grid-example-basic">Example: Stacked-to-horizontal</h3>
   <p>Using a single set of <code>.col-md-*</code> grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices. Place grid columns in any <code>.row</code>.</p>
@@ -321,8 +320,7 @@
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-6&quot;</span><span class="nt">&gt;</span>.col-md-6<span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-6&quot;</span><span class="nt">&gt;</span>.col-md-6<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="grid-example-fluid">Example: Fluid container</h3>
   <p>Turn any fixed-width grid layout into a full-width layout by changing your outermost <code>.container</code> to <code>.container-fluid</code>.</p>
@@ -330,8 +328,7 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
     ...
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="grid-example-mixed">Example: Mobile and desktop</h3>
   <p>Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid classes by adding <code>.col-xs-*</code> <code>.col-md-*</code> to your columns. See the example below for a better idea of how it all works.</p>
@@ -367,8 +364,7 @@
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-6&quot;</span><span class="nt">&gt;</span>.col-xs-6<span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-6&quot;</span><span class="nt">&gt;</span>.col-xs-6<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="grid-example-mixed-complete">Example: Mobile, tablet, desktops</h3>
   <p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>.col-sm-*</code> classes.</p>
@@ -381,7 +377,7 @@
       <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
       <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
       <!-- Optional: clear the XS cols if their content doesn't match in height -->
-      <div class="clearfix visible-xs"></div>
+      <div class="clearfix visible-xs-block"></div>
       <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
     </div>
   </div>
@@ -393,10 +389,24 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-6 col-sm-4&quot;</span><span class="nt">&gt;</span>.col-xs-6 .col-sm-4<span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-6 col-sm-4&quot;</span><span class="nt">&gt;</span>.col-xs-6 .col-sm-4<span class="nt">&lt;/div&gt;</span>
   <span class="c">&lt;!-- Optional: clear the XS cols if their content doesn&#39;t match in height --&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;clearfix visible-xs&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;clearfix visible-xs-block&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-6 col-sm-4&quot;</span><span class="nt">&gt;</span>.col-xs-6 .col-sm-4<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+  <h3 id="grid-example-wrapping">Example: Column wrapping</h3>
+  <p>If more than 12 columns are placed within a single row, each group of extra columns will, as one unit, wrap onto a new line.</p>
+  <div class="bs-docs-grid">
+    <div class="row show-grid">
+      <div class="col-xs-9">.col-xs-9</div>
+      <div class="col-xs-4">.col-xs-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
+      <div class="col-xs-6">.col-xs-6<br>Subsequent columns continue along the new line.</div>
+    </div>
+  </div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-9&quot;</span><span class="nt">&gt;</span>.col-xs-9<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-4&quot;</span><span class="nt">&gt;</span>.col-xs-4<span class="nt">&lt;br&gt;</span>Since 9 + 4 = 13 <span class="ni">&amp;gt;</span> 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-6&quot;</span><span class="nt">&gt;</span>.col-xs-6<span class="nt">&lt;br&gt;</span>Subsequent columns continue along the new line.<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="grid-responsive-resets">Responsive column resets</h3>
   <p>With the four tiers of grids available you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a <code>.clearfix</code> and our <a href="#responsive-utilities">responsive utility classes</a>.</p>
@@ -410,7 +420,7 @@
       <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
 
       <!-- Add the extra clearfix for only the required viewport -->
-      <div class="clearfix visible-xs"></div>
+      <div class="clearfix visible-xs-block"></div>
 
       <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
       <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
@@ -421,12 +431,11 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-6 col-sm-3&quot;</span><span class="nt">&gt;</span>.col-xs-6 .col-sm-3<span class="nt">&lt;/div&gt;</span>
 
   <span class="c">&lt;!-- Add the extra clearfix for only the required viewport --&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;clearfix visible-xs&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;clearfix visible-xs-block&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
 
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-6 col-sm-3&quot;</span><span class="nt">&gt;</span>.col-xs-6 .col-sm-3<span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-6 col-sm-3&quot;</span><span class="nt">&gt;</span>.col-xs-6 .col-sm-3<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
   <p>In addition to column clearing at responsive breakpoints, you may need to <strong>reset offsets, pushes, or pulls</strong>. See this in action in <a href="../examples/grid/">the grid example</a>.</p>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-5 col-md-6&quot;</span><span class="nt">&gt;</span>.col-sm-5 .col-md-6<span class="nt">&lt;/div&gt;</span>
@@ -436,8 +445,7 @@
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-6 col-md-5 col-lg-6&quot;</span><span class="nt">&gt;</span>.col-sm-6 .col-md-5 .col-lg-6<span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0&quot;</span><span class="nt">&gt;</span>.col-sm-6 .col-md-5 .col-md-offset-2 .col-lg-6 .col-lg-offset-0<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
 
   <h3 id="grid-offsetting">Offsetting columns</h3>
@@ -465,39 +473,37 @@
 <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-6 col-md-offset-3&quot;</span><span class="nt">&gt;</span>.col-md-6 .col-md-offset-3<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
 
   <h3 id="grid-nesting">Nesting columns</h3>
-  <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.col-md-*</code> columns within an existing <code>.col-md-*</code> column. Nested rows should include a set of columns that add up to 12 or less.</p>
+  <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.col-sm-*</code> columns within an existing <code>.col-sm-*</code> column. Nested rows should include a set of columns that add up to 12 or less (it is not required that you use all 12 available columns).</p>
   <div class="row show-grid">
-    <div class="col-md-9">
-      Level 1: .col-md-9
+    <div class="col-sm-9">
+      Level 1: .col-sm-9
       <div class="row show-grid">
-        <div class="col-md-6">
-          Level 2: .col-md-6
+        <div class="col-xs-8 col-sm-6">
+          Level 2: .col-xs-8 .col-sm-6
         </div>
-        <div class="col-md-6">
-          Level 2: .col-md-6
+        <div class="col-xs-4 col-sm-6">
+          Level 2: .col-xs-4 .col-sm-6
         </div>
       </div>
     </div>
   </div>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-9&quot;</span><span class="nt">&gt;</span>
-    Level 1: .col-md-9
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-9&quot;</span><span class="nt">&gt;</span>
+    Level 1: .col-sm-9
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-6&quot;</span><span class="nt">&gt;</span>
-        Level 2: .col-md-6
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-8 col-sm-6&quot;</span><span class="nt">&gt;</span>
+        Level 2: .col-xs-8 .col-sm-6
       <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-6&quot;</span><span class="nt">&gt;</span>
-        Level 2: .col-md-6
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-4 col-sm-6&quot;</span><span class="nt">&gt;</span>
+        Level 2: .col-xs-4 .col-sm-6
       <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="grid-column-ordering">Column ordering</h3>
   <p>Easily change the order of our built-in grid columns with <code>.col-md-push-*</code> and <code>.col-md-pull-*</code> modifier classes.</p>
@@ -509,8 +515,7 @@
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-9 col-md-push-3&quot;</span><span class="nt">&gt;</span>.col-md-9 .col-md-push-3<span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-3 col-md-pull-9&quot;</span><span class="nt">&gt;</span>.col-md-3 .col-md-pull-9<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="grid-less">Less mixins and variables</h3>
   <p>In addition to <a href="#grid-example-basic">prebuilt grid classes</a> for fast layouts, Bootstrap includes Less variables and mixins for quickly generating your own simple, semantic layouts.</p>
@@ -519,8 +524,7 @@
   <p>Variables determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.</p>
 <div class="highlight"><pre><code class="scss"><span class="k">@grid-columns</span><span class="nd">:</span>              <span class="nt">12</span><span class="o">;</span>
 <span class="o">@</span><span class="nt">grid-gutter-width</span><span class="nd">:</span>         <span class="nt">30px</span><span class="o">;</span>
-<span class="o">@</span><span class="nt">grid-float-breakpoint</span><span class="nd">:</span>     <span class="nt">768px</span><span class="o">;</span>
-</code></pre></div>
+<span class="o">@</span><span class="nt">grid-float-breakpoint</span><span class="nd">:</span>     <span class="nt">768px</span><span class="o">;</span></code></pre></div>
 
   <h4>Mixins</h4>
   <p>Mixins are used in conjunction with the grid variables to generate semantic CSS for individual grid columns.</p>
@@ -654,8 +658,7 @@
   <span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="nd">:</span> <span class="o">@</span><span class="nt">screen-lg-min</span><span class="o">)</span> <span class="p">{</span>
     <span class="na">right</span><span class="o">:</span> <span class="nf">percentage</span><span class="p">((</span><span class="o">@</span><span class="n">columns</span> <span class="o">/</span> <span class="o">@</span><span class="n">grid-columns</span><span class="p">));</span>
   <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
   <h4>Example usage</h4>
   <p>You can modify the variables to your own custom values, or just use the mixins with their default values. Here's an example of using the default settings to create a two-column layout with a gap between.</p>
@@ -668,19 +671,13 @@
 <span class="nc">.content-secondary</span> <span class="p">{</span>
   <span class="nc">.make-lg-column</span><span class="o">(</span><span class="nt">3</span><span class="o">);</span>
   <span class="nc">.make-lg-column-offset</span><span class="o">(</span><span class="nt">1</span><span class="o">);</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;wrapper&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content-main&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content-secondary&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Typography
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="type" class="page-header">Typography</h1>
 
@@ -722,8 +719,7 @@
 <span class="nt">&lt;h3&gt;</span>h3. Bootstrap heading<span class="nt">&lt;/h3&gt;</span>
 <span class="nt">&lt;h4&gt;</span>h4. Bootstrap heading<span class="nt">&lt;/h4&gt;</span>
 <span class="nt">&lt;h5&gt;</span>h5. Bootstrap heading<span class="nt">&lt;/h5&gt;</span>
-<span class="nt">&lt;h6&gt;</span>h6. Bootstrap heading<span class="nt">&lt;/h6&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;h6&gt;</span>h6. Bootstrap heading<span class="nt">&lt;/h6&gt;</span></code></pre></div>
 
   <p>Create lighter, secondary text in any heading with a generic <code>&lt;small&gt;</code> tag or the <code>.small</code> class.</p>
   <div class="bs-example bs-example-type">
@@ -755,8 +751,7 @@
 <span class="nt">&lt;h3&gt;</span>h3. Bootstrap heading <span class="nt">&lt;small&gt;</span>Secondary text<span class="nt">&lt;/small&gt;&lt;/h3&gt;</span>
 <span class="nt">&lt;h4&gt;</span>h4. Bootstrap heading <span class="nt">&lt;small&gt;</span>Secondary text<span class="nt">&lt;/small&gt;&lt;/h4&gt;</span>
 <span class="nt">&lt;h5&gt;</span>h5. Bootstrap heading <span class="nt">&lt;small&gt;</span>Secondary text<span class="nt">&lt;/small&gt;&lt;/h5&gt;</span>
-<span class="nt">&lt;h6&gt;</span>h6. Bootstrap heading <span class="nt">&lt;small&gt;</span>Secondary text<span class="nt">&lt;/small&gt;&lt;/h6&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;h6&gt;</span>h6. Bootstrap heading <span class="nt">&lt;small&gt;</span>Secondary text<span class="nt">&lt;/small&gt;&lt;/h6&gt;</span></code></pre></div>
 
 
   <!-- Body copy -->
@@ -767,8 +762,7 @@
     <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
     <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;p&gt;</span>...<span class="nt">&lt;/p&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;p&gt;</span>...<span class="nt">&lt;/p&gt;</span></code></pre></div>
 
   <!-- Body copy .lead -->
   <h3>Lead body copy</h3>
@@ -776,16 +770,50 @@
   <div class="bs-example">
     <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;lead&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;lead&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span></code></pre></div>
 
   <!-- Using Less -->
   <h3>Built with Less</h3>
   <p>The typographic scale is based on two Less variables in <strong>variables.less</strong>: <code>@font-size-base</code> and <code>@line-height-base</code>. The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.</p>
 
+  <!-- Inline text elements -->
+  <h2 id="type-inline-text">Inline text elements</h2>
+  <h3>Marked text</h3>
+  <p>For highlighting a run of text due to its relevance in another context, use the <code>&lt;mark&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p>You can use the mark tag to <mark>highlight</mark> text.</p>
+  </div>
+<div class="highlight"><pre><code class="html">You can use the mark tag to <span class="nt">&lt;mark&gt;</span>highlight<span class="nt">&lt;/mark&gt;</span> text.</code></pre></div>
 
-  <!-- Emphasis -->
-  <h2 id="type-emphasis">Emphasis</h2>
+
+  <h3>Deleted text</h3>
+  <p>For indicating blocks of text that have been deleted use the <code>&lt;del&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p><del>This line of text is meant to be treated as deleted text.</del></p>
+  </div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;del&gt;</span>This line of text is meant to be treated as deleted text.<span class="nt">&lt;/del&gt;</span></code></pre></div>
+
+  <h3>Strikethrough text</h3>
+  <p>For indicating blocks of text that are no longer relevant use the <code>&lt;s&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p><s>This line of text is meant to be treated as no longer accurate.</s></p>
+  </div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;s&gt;</span>This line of text is meant to be treated as no longer accurate.<span class="nt">&lt;/s&gt;</span></code></pre></div>
+
+  <h3>Inserted text</h3>
+  <p>For indicating additions to the document use the <code>&lt;ins&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
+  </div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;ins&gt;</span>This line of text is meant to be treated as an addition to the document.<span class="nt">&lt;/ins&gt;</span></code></pre></div>
+
+  <h3>Underlined text</h3>
+  <p>To underline text use the <code>&lt;u&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p><u>This line of text will render as underlined</u></p>
+  </div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;u&gt;</span>This line of text will render as underlined<span class="nt">&lt;/u&gt;</span></code></pre></div>
+
   <p>Make use of HTML's default emphasis tags with lightweight styles.</p>
 
   <h3>Small text</h3>
@@ -794,8 +822,7 @@
   <div class="bs-example">
     <p><small>This line of text is meant to be treated as fine print.</small></p>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;small&gt;</span>This line of text is meant to be treated as fine print.<span class="nt">&lt;/small&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;small&gt;</span>This line of text is meant to be treated as fine print.<span class="nt">&lt;/small&gt;</span></code></pre></div>
 
 
   <h3>Bold</h3>
@@ -803,36 +830,45 @@
   <div class="bs-example">
     <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;strong&gt;</span>rendered as bold text<span class="nt">&lt;/strong&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;strong&gt;</span>rendered as bold text<span class="nt">&lt;/strong&gt;</span></code></pre></div>
 
   <h3>Italics</h3>
   <p>For emphasizing a snippet of text with italics.</p>
   <div class="bs-example">
     <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;em&gt;</span>rendered as italicized text<span class="nt">&lt;/em&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;em&gt;</span>rendered as italicized text<span class="nt">&lt;/em&gt;</span></code></pre></div>
 
   <div class="bs-callout bs-callout-info">
     <h4>Alternate elements</h4>
     <p>Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
   </div>
 
-  <h3>Alignment classes</h3>
+  <h2 id="type-alignment">Alignment classes</h2>
   <p>Easily realign text to components with text alignment classes.</p>
   <div class="bs-example">
     <p class="text-left">Left aligned text.</p>
     <p class="text-center">Center aligned text.</p>
     <p class="text-right">Right aligned text.</p>
     <p class="text-justify">Justified text.</p>
+    <p class="text-nowrap">No wrap text.</p>
   </div>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;text-left&quot;</span><span class="nt">&gt;</span>Left aligned text.<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;text-center&quot;</span><span class="nt">&gt;</span>Center aligned text.<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;text-right&quot;</span><span class="nt">&gt;</span>Right aligned text.<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;text-justify&quot;</span><span class="nt">&gt;</span>Justified text.<span class="nt">&lt;/p&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;text-nowrap&quot;</span><span class="nt">&gt;</span>No wrap text.<span class="nt">&lt;/p&gt;</span></code></pre></div>
 
+  <h2 id="type-transformation">Transformation classes</h2>
+  <p>Transform text in components with text capitalization classes.</p>
+  <div class="bs-example">
+    <p class="text-lowercase">Lowercased text.</p>
+    <p class="text-uppercase">Uppercased text.</p>
+    <p class="text-capitalize">Capitalized text.</p>
+  </div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;text-lowercase&quot;</span><span class="nt">&gt;</span>Lowercased text.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;text-uppercase&quot;</span><span class="nt">&gt;</span>Uppercased text.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;text-capitalize&quot;</span><span class="nt">&gt;</span>Capitalized text.<span class="nt">&lt;/p&gt;</span></code></pre></div>
 
   <!-- Abbreviations -->
   <h2 id="type-abbreviations">Abbreviations</h2>
@@ -843,16 +879,14 @@
   <div class="bs-example">
     <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;abbr</span> <span class="na">title=</span><span class="s">&quot;attribute&quot;</span><span class="nt">&gt;</span>attr<span class="nt">&lt;/abbr&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;abbr</span> <span class="na">title=</span><span class="s">&quot;attribute&quot;</span><span class="nt">&gt;</span>attr<span class="nt">&lt;/abbr&gt;</span></code></pre></div>
 
   <h3>Initialism</h3>
   <p>Add <code>.initialism</code> to an abbreviation for a slightly smaller font-size.</p>
   <div class="bs-example">
     <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.</p>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;abbr</span> <span class="na">title=</span><span class="s">&quot;HyperText Markup Language&quot;</span> <span class="na">class=</span><span class="s">&quot;initialism&quot;</span><span class="nt">&gt;</span>HTML<span class="nt">&lt;/abbr&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;abbr</span> <span class="na">title=</span><span class="s">&quot;HyperText Markup Language&quot;</span> <span class="na">class=</span><span class="s">&quot;initialism&quot;</span><span class="nt">&gt;</span>HTML<span class="nt">&lt;/abbr&gt;</span></code></pre></div>
 
 
   <!-- Addresses -->
@@ -880,8 +914,7 @@
 <span class="nt">&lt;address&gt;</span>
   <span class="nt">&lt;strong&gt;</span>Full Name<span class="nt">&lt;/strong&gt;&lt;br&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;mailto:#&quot;</span><span class="nt">&gt;</span>first.last@example.com<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/address&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/address&gt;</span></code></pre></div>
 
 
   <!-- Blockquotes -->
@@ -897,8 +930,7 @@
   </div>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;blockquote&gt;</span>
   <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;/blockquote&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/blockquote&gt;</span></code></pre></div>
 
   <h3>Blockquote options</h3>
   <p>Style and content changes for simple variations on a standard <code>&lt;blockquote&gt;</code>.</p>
@@ -914,8 +946,7 @@
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;blockquote&gt;</span>
   <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<span class="nt">&lt;/p&gt;</span>
   <span class="nt">&lt;footer&gt;</span>Someone famous in <span class="nt">&lt;cite</span> <span class="na">title=</span><span class="s">&quot;Source Title&quot;</span><span class="nt">&gt;</span>Source Title<span class="nt">&lt;/cite&gt;&lt;/footer&gt;</span>
-<span class="nt">&lt;/blockquote&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/blockquote&gt;</span></code></pre></div>
 
   <h4>Alternate displays</h4>
   <p>Add <code>.blockquote-reverse</code> for a blockquote with right-aligned content.</p>
@@ -927,8 +958,7 @@
   </div>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">&quot;blockquote-reverse&quot;</span><span class="nt">&gt;</span>
   ...
-<span class="nt">&lt;/blockquote&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/blockquote&gt;</span></code></pre></div>
 
 
   <!-- Lists -->
@@ -957,8 +987,7 @@
   </div>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;ul&gt;</span>
   <span class="nt">&lt;li&gt;</span>...<span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 
   <h3>Ordered</h3>
   <p>A list of items in which the order <em>does</em> explicitly matter.</p>
@@ -976,8 +1005,7 @@
   </div>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;ol&gt;</span>
   <span class="nt">&lt;li&gt;</span>...<span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ol&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ol&gt;</span></code></pre></div>
 
   <h3>Unstyled</h3>
   <p>Remove the default <code>list-style</code> and left margin on list items (immediate children only). <strong>This only applies to immediate children list items</strong>, meaning you will need to add the class for any nested lists as well.</p>
@@ -1002,8 +1030,7 @@
   </div>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;list-unstyled&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;li&gt;</span>...<span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 
   <h3>Inline</h3>
   <p>Place all list items on a single line with <code>display: inline-block;</code> and some light padding.</p>
@@ -1016,8 +1043,7 @@
   </div>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;list-inline&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;li&gt;</span>...<span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 
   <h3>Description</h3>
   <p>A list of terms with their associated descriptions.</p>
@@ -1035,8 +1061,7 @@
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;dl&gt;</span>
   <span class="nt">&lt;dt&gt;</span>...<span class="nt">&lt;/dt&gt;</span>
   <span class="nt">&lt;dd&gt;</span>...<span class="nt">&lt;/dd&gt;</span>
-<span class="nt">&lt;/dl&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/dl&gt;</span></code></pre></div>
 
   <h4>Horizontal description</h4>
   <p>Make terms and descriptions in <code>&lt;dl&gt;</code> line up side-by-side. Starts off stacked like default <code>&lt;dl&gt;</code>s, but when the navbar expands, so do these.</p>
@@ -1056,8 +1081,7 @@
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;dl</span> <span class="na">class=</span><span class="s">&quot;dl-horizontal&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;dt&gt;</span>...<span class="nt">&lt;/dt&gt;</span>
   <span class="nt">&lt;dd&gt;</span>...<span class="nt">&lt;/dd&gt;</span>
-<span class="nt">&lt;/dl&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/dl&gt;</span></code></pre></div>
 
   <div class="bs-callout bs-callout-info">
     <h4>Auto-truncating</h4>
@@ -1065,10 +1089,6 @@
   </div>
 </div>
 
-
-
-<!-- Code
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="code" class="page-header">Code</h1>
 
@@ -1077,32 +1097,40 @@
 <div class="bs-example">
   For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
-<div class="highlight"><pre><code class="html">For example, <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>section<span class="ni">&amp;gt;</span><span class="nt">&lt;/code&gt;</span> should be wrapped as inline.
-</code></pre></div>
+<div class="highlight"><pre><code class="html">For example, <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>section<span class="ni">&amp;gt;</span><span class="nt">&lt;/code&gt;</span> should be wrapped as inline.</code></pre></div>
 
   <h2 id="code-user-input">User input</h2>
   <p>Use the <code>&lt;kbd&gt;</code> to indicate input that is typically entered via keyboard.</p>
 <div class="bs-example">
-  To switch directories, type <kbd>cd</kbd> followed by the name of the directory.
+  To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>
+  To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
 </div>
-<div class="highlight"><pre><code class="html">  To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt">&lt;/kbd&gt;</span> followed by the name of the directory.
-</code></pre></div>
+<div class="highlight"><pre><code class="html">To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt">&lt;/kbd&gt;</span> followed by the name of the directory.</code></pre></div>
 
   <h2 id="code-block">Basic block</h2>
   <p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to escape any angle brackets in the code for proper rendering.</p>
 <div class="bs-example">
   <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
 </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;pre&gt;</span><span class="ni">&amp;lt;</span>p<span class="ni">&amp;gt;</span>Sample text here...<span class="ni">&amp;lt;</span>/p<span class="ni">&amp;gt;</span><span class="nt">&lt;/pre&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;pre&gt;</span><span class="ni">&amp;lt;</span>p<span class="ni">&amp;gt;</span>Sample text here...<span class="ni">&amp;lt;</span>/p<span class="ni">&amp;gt;</span><span class="nt">&lt;/pre&gt;</span></code></pre></div>
 
   <p>You may optionally add the <code>.pre-scrollable</code> class, which will set a max-height of 350px and provide a y-axis scrollbar.</p>
+  <h2 id="code-variables">Variables</h2>
+  <p>For indicating variables use the <code>&lt;var&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p><var>y</var> = <var>m</var><var>x</var> + <var>b</var></p>
+
+  </div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;var&gt;</span>y<span class="nt">&lt;/var&gt;</span> = <span class="nt">&lt;var&gt;</span>m<span class="nt">&lt;/var&gt;&lt;var&gt;</span>x<span class="nt">&lt;/var&gt;</span> + <span class="nt">&lt;var&gt;</span>b<span class="nt">&lt;/var&gt;</span></code></pre></div>
+
+  <h2 id="code-sample-output">Sample output</h2>
+  <p>For indicating blocks sample output from a program use the <code>&lt;samp&gt;</code> tag.</p>
+  <div class="bs-example">
+    <p><samp>This text is meant to be treated as sample output from a computer program.</samp></p>
+  </div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;samp&gt;</span>This text is meant to be treated as sample output from a computer program.<span class="nt">&lt;/samp&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Tables
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="tables" class="page-header">Tables</h1>
 
@@ -1142,8 +1170,7 @@
   </div><!-- /example -->
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table&quot;</span><span class="nt">&gt;</span>
   ...
-<span class="nt">&lt;/table&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/table&gt;</span></code></pre></div>
 
 
   <h2 id="tables-striped">Striped rows</h2>
@@ -1186,8 +1213,7 @@
   </div><!-- /example -->
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table table-striped&quot;</span><span class="nt">&gt;</span>
   ...
-<span class="nt">&lt;/table&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/table&gt;</span></code></pre></div>
 
 
   <h2 id="tables-bordered">Bordered table</h2>
@@ -1230,8 +1256,7 @@
   </div><!-- /example -->
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table table-bordered&quot;</span><span class="nt">&gt;</span>
   ...
-<span class="nt">&lt;/table&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/table&gt;</span></code></pre></div>
 
 
   <h2 id="tables-hover-rows">Hover rows</h2>
@@ -1269,8 +1294,7 @@
   </div><!-- /example -->
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table table-hover&quot;</span><span class="nt">&gt;</span>
   ...
-<span class="nt">&lt;/table&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/table&gt;</span></code></pre></div>
 
 
   <h2 id="tables-condensed">Condensed table</h2>
@@ -1308,8 +1332,7 @@
   </div><!-- /example -->
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table table-condensed&quot;</span><span class="nt">&gt;</span>
   ...
-<span class="nt">&lt;/table&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/table&gt;</span></code></pre></div>
 
 
   <h2 id="tables-contextual-classes">Contextual classes</h2>
@@ -1442,12 +1465,21 @@
   <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;warning&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
   <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;danger&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
   <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;info&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
-<span class="nt">&lt;/tr&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/tr&gt;</span></code></pre></div>
 
 
   <h2 id="tables-responsive">Responsive tables</h2>
-  <p>Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code> to make them scroll horizontally up to small devices (under 768px). When viewing on anything larger than 768px wide, you will not see any difference in these tables.</p>
+  <p>Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code> to make them scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, you will not see any difference in these tables.</p>
+
+  <div class="bs-callout bs-callout-warning">
+    <h4>Firefox and fieldsets</h4>
+    <p>Firefox has some awkward fieldset styling involving <code>width</code> that interferes with the responsive table. This cannot be overriden without a Firefox-specific hack that we <strong>don't</strong> provide in Bootstrap:</p>
+<div class="highlight"><pre><code class="css"><span class="k">@-moz-document</span> <span class="nt">url-prefix</span><span class="o">()</span> <span class="p">{</span>
+  <span class="nt">fieldset</span> <span class="p">{</span> <span class="k">display</span><span class="o">:</span> <span class="k">table-cell</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+    <p>For more information, read <a href="http://stackoverflow.com/questions/17408815/fieldset-resizes-wrong-appears-to-have-unremovable-min-width-min-content/17863685#17863685">this Stack Overflow answer</a>.</p>
+  </div>
+
   <div class="bs-example">
     <div class="table-responsive">
       <table class="table">
@@ -1543,14 +1575,9 @@
   <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table&quot;</span><span class="nt">&gt;</span>
     ...
   <span class="nt">&lt;/table&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Forms
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="forms" class="page-header">Forms</h1>
 
@@ -1599,8 +1626,7 @@
     <span class="nt">&lt;/label&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/form&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
     <div class="bs-callout bs-callout-warning">
       <h4>Don't mix form groups with input groups</h4>
       <p>Do not mix form groups directly with <a href="/components/#input-groups">input groups</a>. Instead, nest the input group inside of the form group.</p>
@@ -1622,6 +1648,12 @@
       <div class="form-group">
         <label class="sr-only" for="exampleInputEmail2">Email address</label>
         <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">@</div>
+          <input class="form-control" type="email" placeholder="Enter email">
+        </div>
       </div>
       <div class="form-group">
         <label class="sr-only" for="exampleInputPassword2">Password</label>
@@ -1650,8 +1682,7 @@
     <span class="nt">&lt;/label&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>Sign in<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/form&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
 
 
   <h2 id="forms-horizontal">Horizontal form</h2>
@@ -1713,8 +1744,7 @@
       <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>Sign in<span class="nt">&lt;/button&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/form&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
 
 
   <h2 id="forms-controls">Supported controls</h2>
@@ -1731,8 +1761,7 @@
       <input type="text" class="form-control" placeholder="Text input">
     </form>
   </div><!-- /.bs-example -->
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Text input&quot;</span><span class="nt">&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Text input&quot;</span><span class="nt">&gt;</span></code></pre></div>
   <div class="bs-callout bs-callout-info">
     <h4>Input groups</h4>
     <p>To add integrated text or buttons before and/or after any text-based <code>&lt;input&gt;</code>, <a href="../components/#input-groups">check out the input group component</a>.</p>
@@ -1745,11 +1774,11 @@
       <textarea class="form-control" rows="3"></textarea>
     </form>
   </div><!-- /.bs-example -->
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;textarea</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">rows=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;&lt;/textarea&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;textarea</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">rows=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;&lt;/textarea&gt;</span></code></pre></div>
 
   <h3>Checkboxes and radios</h3>
-  <p>Checkboxes are for selecting one or several options in a list while radios are for selecting one option from many.</p>
+  <p>Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.</p>
+  <p>A checkbox or radio with the <code>disabled</code> attribute will be styled appropriately. To have the <code>&lt;label&gt;</code> for the checkbox or radio also display a "not-allowed" cursor when the user hovers over the label, add the <code>.disabled</code> class to your <code>.radio</code>, <code>.radio-inline</code>, <code>.checkbox</code>, <code>.checkbox-inline</code>, or <code>&lt;fieldset&gt;</code>.</p>
   <h4>Default (stacked)</h4>
   <div class="bs-example">
     <form role="form">
@@ -1757,6 +1786,12 @@
         <label>
           <input type="checkbox" value="">
           Option one is this and that&mdash;be sure to include why it's great
+        </label>
+      </div>
+      <div class="checkbox disabled">
+        <label>
+          <input type="checkbox" value="" disabled>
+          Option two is disabled
         </label>
       </div>
       <br>
@@ -1772,12 +1807,24 @@
           Option two can be something else and selecting it will deselect option one
         </label>
       </div>
+      <div class="radio disabled">
+        <label>
+          <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+          Option three is disabled
+        </label>
+      </div>
     </form>
   </div><!-- /.bs-example -->
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;checkbox&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;label&gt;</span>
     <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">value=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
     Option one is this and that<span class="ni">&amp;mdash;</span>be sure to include why it&#39;s great
+  <span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;checkbox disabled&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">value=</span><span class="s">&quot;&quot;</span> <span class="na">disabled</span><span class="nt">&gt;</span>
+    Option two is disabled
   <span class="nt">&lt;/label&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 
@@ -1793,9 +1840,14 @@
     Option two can be something else and selecting it will deselect option one
   <span class="nt">&lt;/label&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;radio disabled&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;optionsRadios&quot;</span> <span class="na">id=</span><span class="s">&quot;optionsRadios3&quot;</span> <span class="na">value=</span><span class="s">&quot;option3&quot;</span> <span class="na">disabled</span><span class="nt">&gt;</span>
+    Option three is disabled
+  <span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-  <h4>Inline checkboxes</h4>
+  <h4>Inline checkboxes and radios</h4>
   <p>Use the <code>.checkbox-inline</code> or <code>.radio-inline</code> classes on a series of checkboxes or radios for controls that appear on the same line.</p>
   <div class="bs-example">
     <form role="form">
@@ -1809,6 +1861,18 @@
         <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
       </label>
     </form>
+    <br>
+    <form role="form">
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+      </label>
+    </form>
   </div><!-- /.bs-example -->
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;checkbox-inline&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">id=</span><span class="s">&quot;inlineCheckbox1&quot;</span> <span class="na">value=</span><span class="s">&quot;option1&quot;</span><span class="nt">&gt;</span> 1
@@ -1819,7 +1883,16 @@
 <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;checkbox-inline&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">id=</span><span class="s">&quot;inlineCheckbox3&quot;</span> <span class="na">value=</span><span class="s">&quot;option3&quot;</span><span class="nt">&gt;</span> 3
 <span class="nt">&lt;/label&gt;</span>
-</code></pre></div>
+
+<span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;radio-inline&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;inlineRadioOptions&quot;</span> <span class="na">id=</span><span class="s">&quot;inlineRadio1&quot;</span> <span class="na">value=</span><span class="s">&quot;option1&quot;</span><span class="nt">&gt;</span> 1
+<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;radio-inline&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;inlineRadioOptions&quot;</span> <span class="na">id=</span><span class="s">&quot;inlineRadio2&quot;</span> <span class="na">value=</span><span class="s">&quot;option2&quot;</span><span class="nt">&gt;</span> 2
+<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;radio-inline&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;inlineRadioOptions&quot;</span> <span class="na">id=</span><span class="s">&quot;inlineRadio3&quot;</span> <span class="na">value=</span><span class="s">&quot;option3&quot;</span><span class="nt">&gt;</span> 3
+<span class="nt">&lt;/label&gt;</span></code></pre></div>
 
   <h3>Selects</h3>
   <p>Use the default option, or add <code>multiple</code> to show multiple options at once.</p>
@@ -1856,8 +1929,7 @@
   <span class="nt">&lt;option&gt;</span>3<span class="nt">&lt;/option&gt;</span>
   <span class="nt">&lt;option&gt;</span>4<span class="nt">&lt;/option&gt;</span>
   <span class="nt">&lt;option&gt;</span>5<span class="nt">&lt;/option&gt;</span>
-<span class="nt">&lt;/select&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/select&gt;</span></code></pre></div>
 
 
   <h2 id="forms-controls-static">Static control</h2>
@@ -1891,8 +1963,7 @@
       <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">id=</span><span class="s">&quot;inputPassword&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Password&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/form&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
 
   <h2 id="forms-control-focus">Input focus</h2>
   <p>We remove the default <code>outline</code> styles on some form controls and apply a <code>box-shadow</code> in its place for <code>:focus</code>.</p>
@@ -1908,21 +1979,20 @@
 
 
   <h2 id="forms-control-disabled">Disabled inputs</h2>
-  <p>Add the <code>disabled</code> attribute on an input to prevent user input and trigger a slightly different look.</p>
+  <p>Add the <code>disabled</code> boolean attribute on an input to prevent user input and trigger a slightly different look.</p>
   <div class="bs-example">
     <form role="form">
       <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here…" disabled>
     </form>
   </div><!-- /.bs-example -->
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">id=</span><span class="s">&quot;disabledInput&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Disabled input here...&quot;</span> <span class="na">disabled</span><span class="nt">&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">id=</span><span class="s">&quot;disabledInput&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Disabled input here...&quot;</span> <span class="na">disabled</span><span class="nt">&gt;</span></code></pre></div>
 
   <h3 id="forms-disabled-fieldsets">Disabled fieldsets</h3>
   <p>Add the <code>disabled</code> attribute to a <code>&lt;fieldset&gt;</code> to disable all the controls within the <code>&lt;fieldset&gt;</code> at once.</p>
 
   <div class="bs-callout bs-callout-warning">
-    <h4>Link functionality of <code>&lt;a&gt;</code> not impacted</h4>
-    <p>This class will only change the appearance of <code>&lt;a class="btn btn-default"&gt;</code> buttons, not their functionality. Use custom JavaScript to disable links here.</p>
+    <h4>Caveat about link functionality of <code>&lt;a&gt;</code></h4>
+    <p>Our styles use <code>pointer-events: none</code> to try to disable the link functionality of <code>&lt;a class="btn btn-*"&gt;</code> buttons in this case, but that CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11. So to be safe, use custom JavaScript to disable such links.</p>
   </div>
 
   <div class="bs-callout bs-callout-danger">
@@ -1971,8 +2041,17 @@
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary&quot;</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
   <span class="nt">&lt;/fieldset&gt;</span>
-<span class="nt">&lt;/form&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
+
+
+  <h2 id="forms-control-readonly">Readonly inputs</h2>
+  <p>Add the <code>readonly</code> boolean attribute on an input to prevent user input and style the input as disabled.</p>
+  <div class="bs-example">
+    <form role="form">
+      <input class="form-control" type="text" placeholder="Readonly input here…" readonly>
+    </form>
+  </div><!-- /.bs-example -->
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Readonly input here…&quot;</span> <span class="na">readonly</span><span class="nt">&gt;</span></code></pre></div>
 
 
   <h2 id="forms-control-validation">Validation states</h2>
@@ -2005,14 +2084,13 @@
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group has-error&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;control-label&quot;</span> <span class="na">for=</span><span class="s">&quot;inputError1&quot;</span><span class="nt">&gt;</span>Input with error<span class="nt">&lt;/label&gt;</span>
   <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">id=</span><span class="s">&quot;inputError1&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3>With optional icons</h3>
-  <p>You can also add optional feedback icons with the addition of an extra class and the right icon.</p>
+  <p>You can also add optional feedback icons with the addition of <code>.has-feedback</code> and the right icon.</p>
   <div class="bs-callout bs-callout-warning">
     <h4>Icons, labels, and input groups</h4>
-    <p>Manual positioning of feedback icons is required for inputs without a label and for <a href="../components#input-groups">input groups</a> with an add-on on the right. For inputs without labels, adjust the <code>top</code>value. For input groups, adjust the <code>right</code> value to an appropriate pixel value depending on the width of your addon.</p>
+    <p>Manual positioning of feedback icons is required for inputs without a label and for <a href="../components#input-groups">input groups</a> with an add-on on the right. You are strongly encouraged to provide labels for all inputs for accessibility reasons. If you wish to prevent labels from being displayed, hide them with the <code>sr-only</code> class. If you must do without labels, adjust the <code>top</code> value of the feedback icon. For input groups, adjust the <code>right</code> value to an appropriate pixel value depending on the width of your addon.</p>
   </div>
   <div class="bs-example">
     <form role="form">
@@ -2047,10 +2125,9 @@
   <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;control-label&quot;</span> <span class="na">for=</span><span class="s">&quot;inputError2&quot;</span><span class="nt">&gt;</span>Input with error<span class="nt">&lt;/label&gt;</span>
   <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">id=</span><span class="s">&quot;inputError2&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;glyphicon glyphicon-remove form-control-feedback&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-  <p>Optional icons also work on horizontal and inline forms.</p>
+  <h4>Optional icons in horizontal and inline forms</h4>
   <div class="bs-example">
     <form class="form-horizontal" role="form">
       <div class="form-group has-success has-feedback">
@@ -2070,8 +2147,7 @@
       <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;glyphicon glyphicon-ok form-control-feedback&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/form&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
 
   <div class="bs-example">
     <form class="form-inline" role="form">
@@ -2088,8 +2164,22 @@
     <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">id=</span><span class="s">&quot;inputSuccess4&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;glyphicon glyphicon-ok form-control-feedback&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/form&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
+
+  <h4>Optional icons with hidden <code>.sr-only</code> labels</h4>
+  <p>For form controls with no visible label, add the <code>.sr-only</code> class on the label. Bootstrap will automatically adjust the position of the icon once it's been added.</p>
+  <div class="bs-example">
+    <div class="form-group has-success has-feedback">
+      <label class="control-label sr-only" for="inputSuccess5">Hidden label</label>
+      <input type="text" class="form-control" id="inputSuccess5">
+      <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+    </div>
+  </div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group has-success has-feedback&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;control-label sr-only&quot;</span> <span class="na">for=</span><span class="s">&quot;inputSuccess5&quot;</span><span class="nt">&gt;</span>Hidden label<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">id=</span><span class="s">&quot;inputSuccess5&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;glyphicon glyphicon-ok form-control-feedback&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
 
   <h2 id="forms-control-sizes">Control sizing</h2>
@@ -2122,8 +2212,41 @@
 
 <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">&quot;form-control input-lg&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/select&gt;</span>
 <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/select&gt;</span>
-<span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">&quot;form-control input-sm&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/select&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">&quot;form-control input-sm&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/select&gt;</span></code></pre></div>
+
+  <h3>Horizontal form group sizes</h3>
+  <p>Quickly size labels and form controls within <code>.form-horizontal</code> by adding <code>.form-group-lg</code> or <code>.form-group-sm</code>.</p>
+  <div class="bs-example">
+    <form class="form-horizontal" role="form">
+      <div class="form-group form-group-lg">
+        <label class="col-sm-2 control-label" for="formGroupInputLarge">Large label</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="text" id="formGroupInputLarge" placeholder="Large input">
+        </div>
+      </div>
+      <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">Small label</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="text" id="formGroupInputSmall" placeholder="Small input">
+        </div>
+      </div>
+    </form>
+  </div><!-- /.bs-example -->
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span> <span class="na">role=</span><span class="s">&quot;form&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group form-group-lg&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-2 control-label&quot;</span> <span class="na">for=</span><span class="s">&quot;formGroupInputLarge&quot;</span><span class="nt">&gt;</span>Large label<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-10&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;formGroupInputLarge&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Large input&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group form-group-sm&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-2 control-label&quot;</span> <span class="na">for=</span><span class="s">&quot;formGroupInputSmall&quot;</span><span class="nt">&gt;</span>Small label<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-10&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;formGroupInputSmall&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Small input&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
+
 
   <h3>Column sizing</h3>
   <p>Wrap inputs in grid columns, or any custom parent element, to easily enforce desired widths.</p>
@@ -2152,8 +2275,7 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-4&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;.col-xs-4&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h2 id="forms-help-text">Help text</h2>
   <p>Block level help text for form controls.</p>
@@ -2163,14 +2285,9 @@
       <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
     </form>
   </div><!-- /.bs-example -->
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;help-block&quot;</span><span class="nt">&gt;</span>A block of help text that breaks onto a new line and may extend beyond one line.<span class="nt">&lt;/span&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;help-block&quot;</span><span class="nt">&gt;</span>A block of help text that breaks onto a new line and may extend beyond one line.<span class="nt">&lt;/span&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Buttons
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="buttons" class="page-header">Buttons</h1>
 
@@ -2204,8 +2321,7 @@
 <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-danger&quot;</span><span class="nt">&gt;</span>Danger<span class="nt">&lt;/button&gt;</span>
 
 <span class="c">&lt;!-- Deemphasize a button by making it look like a link while maintaining button behavior --&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-link&quot;</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/button&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-link&quot;</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/button&gt;</span></code></pre></div>
 
   <h2 id="buttons-sizes">Sizes</h2>
   <p>Fancy larger or smaller buttons? Add <code>.btn-lg</code>, <code>.btn-sm</code>, or <code>.btn-xs</code> for additional sizes.</p>
@@ -2242,8 +2358,7 @@
 <span class="nt">&lt;p&gt;</span>
   <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary btn-xs&quot;</span><span class="nt">&gt;</span>Extra small button<span class="nt">&lt;/button&gt;</span>
   <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default btn-xs&quot;</span><span class="nt">&gt;</span>Extra small button<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/p&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/p&gt;</span></code></pre></div>
 
   <p>Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding <code>.btn-block</code>.</p>
   <div class="bs-example">
@@ -2253,12 +2368,11 @@
     </div>
   </div>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary btn-lg btn-block&quot;</span><span class="nt">&gt;</span>Block level button<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default btn-lg btn-block&quot;</span><span class="nt">&gt;</span>Block level button<span class="nt">&lt;/button&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default btn-lg btn-block&quot;</span><span class="nt">&gt;</span>Block level button<span class="nt">&lt;/button&gt;</span></code></pre></div>
 
 
   <h2 id="buttons-active">Active state</h2>
-  <p>Buttons will appear pressed (with a darker background, darker border, and inset shadow) when active. For <code>&lt;button&gt;</code> elements, this is done via <code>:active</code>. For <code>&lt;a&gt;</code> elements, it's done with <code>.active</code>. However, you may use <code>.active</code> on <code>&lt;button&gt;</code>s should you need to replicate the active state progammatically.</p>
+  <p>Buttons will appear pressed (with a darker background, darker border, and inset shadow) when active. For <code>&lt;button&gt;</code> elements, this is done via <code>:active</code>. For <code>&lt;a&gt;</code> elements, it's done with <code>.active</code>. However, you may use <code>.active</code> on <code>&lt;button&gt;</code>s should you need to replicate the active state programmatically.</p>
 
   <h3>Button element</h3>
   <p>No need to add <code>:active</code> as it's a pseudo-class, but if you need to force the same appearance, go ahead and add <code>.active</code>.</p>
@@ -2267,8 +2381,7 @@
     <button type="button" class="btn btn-default btn-lg active">Button</button>
   </p>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary btn-lg active&quot;</span><span class="nt">&gt;</span>Primary button<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default btn-lg active&quot;</span><span class="nt">&gt;</span>Button<span class="nt">&lt;/button&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default btn-lg active&quot;</span><span class="nt">&gt;</span>Button<span class="nt">&lt;/button&gt;</span></code></pre></div>
 
   <h3>Anchor element</h3>
   <p>Add the <code>.active</code> class to <code>&lt;a&gt;</code> buttons.</p>
@@ -2277,8 +2390,7 @@
     <a href="#" class="btn btn-default btn-lg active" role="button">Link</a>
   </p>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary btn-lg active&quot;</span> <span class="na">role=</span><span class="s">&quot;button&quot;</span><span class="nt">&gt;</span>Primary link<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default btn-lg active&quot;</span> <span class="na">role=</span><span class="s">&quot;button&quot;</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default btn-lg active&quot;</span> <span class="na">role=</span><span class="s">&quot;button&quot;</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span></code></pre></div>
 
 
   <h2 id="buttons-disabled">Disabled state</h2>
@@ -2291,8 +2403,7 @@
     <button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
   </p>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-lg btn-primary&quot;</span> <span class="na">disabled=</span><span class="s">&quot;disabled&quot;</span><span class="nt">&gt;</span>Primary button<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default btn-lg&quot;</span> <span class="na">disabled=</span><span class="s">&quot;disabled&quot;</span><span class="nt">&gt;</span>Button<span class="nt">&lt;/button&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default btn-lg&quot;</span> <span class="na">disabled=</span><span class="s">&quot;disabled&quot;</span><span class="nt">&gt;</span>Button<span class="nt">&lt;/button&gt;</span></code></pre></div>
 
   <div class="bs-callout bs-callout-danger">
     <h4>Cross-browser compatibility</h4>
@@ -2306,14 +2417,13 @@
     <a href="#" class="btn btn-default btn-lg disabled" role="button">Link</a>
   </p>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary btn-lg disabled&quot;</span> <span class="na">role=</span><span class="s">&quot;button&quot;</span><span class="nt">&gt;</span>Primary link<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default btn-lg disabled&quot;</span> <span class="na">role=</span><span class="s">&quot;button&quot;</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default btn-lg disabled&quot;</span> <span class="na">role=</span><span class="s">&quot;button&quot;</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span></code></pre></div>
   <p>
     We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
   </p>
   <div class="bs-callout bs-callout-warning">
-    <h4>Link functionality not impacted</h4>
-    <p>This class will only change the <code>&lt;a&gt;</code>'s appearance, not its functionality. Use custom JavaScript to disable links here.</p>
+    <h4>Link functionality caveat</h4>
+    <p>This class uses <code>pointer-events: none</code> to try to disable the link functionality of <code>&lt;a&gt;</code>s, but that CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11. So to be safe, use custom JavaScript to disable such links.</p>
   </div>
   <div class="bs-callout bs-callout-warning">
     <h4>Context-specific usage</h4>
@@ -2332,27 +2442,21 @@
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">role=</span><span class="s">&quot;button&quot;</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span><span class="nt">&gt;</span>Button<span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;Input&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Submit&quot;</span><span class="nt">&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Submit&quot;</span><span class="nt">&gt;</span></code></pre></div>
 
   <div class="bs-callout bs-callout-warning">
     <h4>Cross-browser rendering</h4>
     <p>As a best practice, <strong>we highly recommend using the <code>&lt;button&gt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
-    <p>Among other things, there's <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697451">a Firefox bug</a> that prevents us from setting the <code>line-height</code> of <code>&lt;input&gt;</code>-based buttons, causing them to not exactly match the height of other buttons on Firefox.</p>
+    <p>Among other things, there's <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697451">a bug in Firefox &lt;30</a> that prevents us from setting the <code>line-height</code> of <code>&lt;input&gt;</code>-based buttons, causing them to not exactly match the height of other buttons on Firefox.</p>
   </div>
 </div>
 
-
-
-<!-- Images
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="images" class="page-header">Images</h1>
 
   <h2 id="images-responsive">Responsive images</h2>
   <p>Images in Bootstrap 3 can be made responsive-friendly via the addition of the <code>.img-responsive</code> class. This applies <code>max-width: 100%;</code> and <code>height: auto;</code> to the image so that it scales nicely to the parent element.</p>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;...&quot;</span> <span class="na">class=</span><span class="s">&quot;img-responsive&quot;</span> <span class="na">alt=</span><span class="s">&quot;Responsive image&quot;</span><span class="nt">&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;...&quot;</span> <span class="na">class=</span><span class="s">&quot;img-responsive&quot;</span> <span class="na">alt=</span><span class="s">&quot;Responsive image&quot;</span><span class="nt">&gt;</span></code></pre></div>
 
   <h2 id="images-shapes">Image shapes</h2>
   <p>Add classes to an <code>&lt;img&gt;</code> element to easily style images in any project.</p>
@@ -2367,14 +2471,9 @@
   </div>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;...&quot;</span> <span class="na">alt=</span><span class="s">&quot;...&quot;</span> <span class="na">class=</span><span class="s">&quot;img-rounded&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;...&quot;</span> <span class="na">alt=</span><span class="s">&quot;...&quot;</span> <span class="na">class=</span><span class="s">&quot;img-circle&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;...&quot;</span> <span class="na">alt=</span><span class="s">&quot;...&quot;</span> <span class="na">class=</span><span class="s">&quot;img-thumbnail&quot;</span><span class="nt">&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;...&quot;</span> <span class="na">alt=</span><span class="s">&quot;...&quot;</span> <span class="na">class=</span><span class="s">&quot;img-thumbnail&quot;</span><span class="nt">&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Helpers
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="helper-classes" class="page-header">Helper classes</h1>
 
@@ -2393,8 +2492,7 @@
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;text-success&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;text-info&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;text-warning&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;text-danger&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;text-danger&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span></code></pre></div>
   <div class="bs-callout bs-callout-info">
     <h4>Dealing with specificity</h4>
     <p>Sometimes emphasis classes cannot be applied due to the specificity of another selector. In most cases, a sufficient workaround is to wrap your text in a <code>&lt;span&gt;</code> with the class.</p>
@@ -2413,17 +2511,18 @@
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;bg-success&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;bg-info&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;bg-warning&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;bg-danger&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
-</code></pre></div>
-
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;bg-danger&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span></code></pre></div>
+  <div class="bs-callout bs-callout-info">
+    <h4>Dealing with specificity</h4>
+    <p>Sometimes contextual background classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a <code>&lt;div&gt;</code> with the class.</p>
+  </div>
 
   <h3 id="helper-classes-close">Close icon</h3>
   <p>Use the generic close icon for dismissing content like modals and alerts.</p>
   <div class="bs-example">
-    <p><button type="button" class="close" aria-hidden="true">&times;</button></p>
+    <p><button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></p>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;close&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/button&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;close&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>Close<span class="nt">&lt;/span&gt;&lt;/button&gt;</span></code></pre></div>
 
 
   <h3 id="helper-classes-carets">Carets</h3>
@@ -2431,15 +2530,13 @@
   <div class="bs-example">
     <span class="caret"></span>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;</span></code></pre></div>
 
 
   <h3 id="helper-classes-floats">Quick floats</h3>
   <p>Float an element to the left or right with a class. <code>!important</code> is included to avoid specificity issues. Classes can also be used as mixins.</p>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;pull-left&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;pull-right&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;pull-right&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span></code></pre></div>
 <div class="highlight"><pre><code class="scss"><span class="c1">// Classes</span>
 <span class="nc">.pull-left</span> <span class="p">{</span>
   <span class="na">float</span><span class="o">:</span> <span class="no">left</span> <span class="nv">!important</span><span class="p">;</span>
@@ -2454,8 +2551,7 @@
 <span class="p">}</span>
 <span class="nc">.another-element</span> <span class="p">{</span>
   <span class="nc">.pull-right</span><span class="o">();</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
   <div class="bs-callout bs-callout-warning">
     <h4>Not for use in navbars</h4>
@@ -2465,8 +2561,7 @@
 
   <h3 id="helper-classes-center">Center content blocks</h3>
   <p>Set an element to <code>display: block</code> and center via <code>margin</code>. Available as a mixin and class.</p>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;center-block&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;center-block&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span></code></pre></div>
 <div class="highlight"><pre><code class="scss"><span class="c1">// Classes</span>
 <span class="nc">.center-block</span> <span class="p">{</span>
   <span class="na">display</span><span class="o">:</span> <span class="no">block</span><span class="p">;</span>
@@ -2477,15 +2572,13 @@
 <span class="c1">// Usage as mixins</span>
 <span class="nc">.element</span> <span class="p">{</span>
   <span class="nc">.center-block</span><span class="o">();</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
 
   <h3 id="helper-classes-clearfix">Clearfix</h3>
-  <p>Clear the <code>float</code> on any element with the <code>.clearfix</code> class. Utilizes <a href="http://nicolasgallagher.com/micro-clearfix-hack/">the micro clearfix</a> as popularized by Nicolas Gallagher. Can also be used as a mixin.</p>
+  <p>Easily clear <code>float</code>s by adding <code>.clearfix</code> <strong>to the parent element</strong>. Utilizes <a href="http://nicolasgallagher.com/micro-clearfix-hack/">the micro clearfix</a> as popularized by Nicolas Gallagher. Can also be used as a mixin.</p>
 <div class="highlight"><pre><code class="html"><span class="c">&lt;!-- Usage as a class --&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;clearfix&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;clearfix&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span></code></pre></div>
 <div class="highlight"><pre><code class="scss"><span class="c1">// Mixin itself</span>
 <span class="nc">.clearfix</span><span class="o">()</span> <span class="p">{</span>
   <span class="k">&amp;</span><span class="nd">:before</span><span class="o">,</span>
@@ -2501,8 +2594,7 @@
 <span class="c1">// Usage as a Mixin</span>
 <span class="nc">.element</span> <span class="p">{</span>
   <span class="nc">.clearfix</span><span class="o">();</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
 
   <h3 id="helper-classes-show-hide">Showing and hiding content</h3>
@@ -2510,8 +2602,7 @@
   <p><code>.hide</code> is available, but it does not always affect screen readers and is <strong>deprecated</strong> as of v3.0.1. Use <code>.hidden</code> or <code>.sr-only</code> instead.</p>
   <p>Furthermore, <code>.invisible</code> can be used to toggle only the visibility of an element, meaning its <code>display</code> is not modified and the element can still affect the flow of the document.</p>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;show&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;hidden&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;hidden&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span></code></pre></div>
 <div class="highlight"><pre><code class="scss"><span class="c1">// Classes</span>
 <span class="nc">.show</span> <span class="p">{</span>
   <span class="na">display</span><span class="o">:</span> <span class="no">block</span> <span class="nv">!important</span><span class="p">;</span>
@@ -2530,41 +2621,33 @@
 <span class="p">}</span>
 <span class="nc">.another-element</span> <span class="p">{</span>
   <span class="nc">.hidden</span><span class="o">();</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
 
-  <h3 id="helper-classes-screen-readers">Screen reader content</h3>
-  <p>Hide an element to all devices <strong>except screen readers</strong> with <code>.sr-only</code>. Necessary for following <a href="../getting-started/#accessibility">accessibility best practices</a>. Can also be used as a mixin.</p>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span> <span class="na">href=</span><span class="s">&quot;#content&quot;</span><span class="nt">&gt;</span>Skip to main content<span class="nt">&lt;/a&gt;</span>
-</code></pre></div>
+  <h3 id="helper-classes-screen-readers">Screen reader and keyboard navigation content</h3>
+  <p>Hide an element to all devices <strong>except screen readers</strong> with <code>.sr-only</code>. Combine <code>.sr-only</code> with <code>.sr-only-focusable</code> to show the element again when it's focused (e.g. by a keyboard-only user). Necessary for following <a href="../getting-started/#accessibility">accessibility best practices</a>. Can also be used as mixins.</p>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;sr-only sr-only-focusable&quot;</span> <span class="na">href=</span><span class="s">&quot;#content&quot;</span><span class="nt">&gt;</span>Skip to main content<span class="nt">&lt;/a&gt;</span></code></pre></div>
 <div class="highlight"><pre><code class="scss"><span class="c1">// Usage as a Mixin</span>
 <span class="nc">.skip-navigation</span> <span class="p">{</span>
   <span class="nc">.sr-only</span><span class="o">();</span>
-<span class="p">}</span>
-</code></pre></div>
+  <span class="nc">.sr-only-focusable</span><span class="o">();</span>
+<span class="p">}</span></code></pre></div>
 
 
   <h3 id="helper-classes-image-replacement">Image replacement</h3>
   <p>Utilize the <code>.text-hide</code> class or mixin to help replace an element's text content with a background image.</p>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">&quot;text-hide&quot;</span><span class="nt">&gt;</span>Custom heading<span class="nt">&lt;/h1&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">&quot;text-hide&quot;</span><span class="nt">&gt;</span>Custom heading<span class="nt">&lt;/h1&gt;</span></code></pre></div>
   <div class="highlight"><pre><code class="scss"><span class="c1">// Usage as a Mixin</span>
 <span class="nc">.heading</span> <span class="p">{</span>
   <span class="nc">.text-hide</span><span class="o">();</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 </div>
 
-
-
-<!-- Responsive utilities
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="responsive-utilities" class="page-header">Responsive utilities</h1>
 
   <p class="lead">For faster mobile-friendly development, use these utility classes for showing and hiding content by device via media query. Also included are utility classes for toggling content when printed.</p>
-  <p>Try to use these on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation. <strong>Responsive utilities are currently only available for block and table toggling.</strong> Use with inline and table elements is currently not supported.</p>
+  <p>Try to use these on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation.</p>
 
 
   <h2 id="responsive-utilities-classes">Available classes</h2>
@@ -2594,28 +2677,28 @@
       </thead>
       <tbody>
         <tr>
-          <th><code>.visible-xs</code></th>
+          <th><code>.visible-xs-*</code></th>
           <td class="is-visible">Visible</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
         </tr>
         <tr>
-          <th><code>.visible-sm</code></th>
+          <th><code>.visible-sm-*</code></th>
           <td class="is-hidden">Hidden</td>
           <td class="is-visible">Visible</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
         </tr>
         <tr>
-          <th><code>.visible-md</code></th>
+          <th><code>.visible-md-*</code></th>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-visible">Visible</td>
           <td class="is-hidden">Hidden</td>
         </tr>
         <tr>
-          <th><code>.visible-lg</code></th>
+          <th><code>.visible-lg-*</code></th>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
@@ -2655,6 +2738,33 @@
     </table>
   </div>
 
+  <p>As of v3.2.0, the <code>.visible-*-*</code> classes for each breakpoint come in three variations, one for each CSS <code>display</code> property value listed below.</p>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Group of classes</th>
+          <th>CSS <code>display</code></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>.visible-*-block</code></td>
+          <td><code>display: block;</code></td>
+        </tr>
+        <tr>
+          <td><code>.visible-*-inline</code></td>
+          <td><code>display: inline;</code></td>
+        </tr>
+        <tr>
+          <td><code>.visible-*-inline-block</code></td>
+          <td><code>display: inline-block;</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>So, for extra small (<code>xs</code>) screens for example, the available <code>.visible-*-*</code> classes are: <code>.visible-xs-block</code>, <code>.visible-xs-inline</code>, and <code>.visible-xs-inline-block</code>.</p>
+  <p>The classes <code>.visible-xs</code>, <code>.visible-sm</code>, <code>.visible-md</code>, and <code>.visible-lg</code> also exist, but are <strong>deprecated as of v3.2.0</strong>. They are approximately equivalent to <code>.visible-*-block</code>, except with additional special cases for toggling <code>&lt;table&gt;</code>-related elements.</p>
 
   <h2 id="responsive-utilities-print">Print classes</h2>
   <p>Similar to the regular responsive classes, use these for toggling content for print.</p>
@@ -2662,14 +2772,18 @@
     <table class="table table-bordered table-striped responsive-utilities">
       <thead>
         <tr>
-          <th>Class</th>
+          <th>Classes</th>
           <th>Browser</th>
           <th>Print</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th><code>.visible-print</code></th>
+          <th>
+            <code>.visible-print-block</code><br>
+            <code>.visible-print-inline</code><br>
+            <code>.visible-print-inline-block</code>
+          </th>
           <td class="is-hidden">Hidden</td>
           <td class="is-visible">Visible</td>
         </tr>
@@ -2681,6 +2795,7 @@
       </tbody>
     </table>
   </div>
+  <p>The class <code>.visible-print</code> also exists but is <strong>deprecated</strong> as of v3.2.0. It is approximately equivalent to <code>.visible-print-block</code>, except with additional special cases for <code>&lt;table&gt;</code>-related elements.</p>
 
 
   <h2 id="responsive-utilities-tests">Test cases</h2>
@@ -2691,48 +2806,48 @@
   <div class="row responsive-utilities-test visible-on">
     <div class="col-xs-6 col-sm-3">
       <span class="hidden-xs">Extra small</span>
-      <span class="visible-xs">&#10004; Visible on x-small</span>
+      <span class="visible-xs-block">&#10004; Visible on x-small</span>
     </div>
     <div class="col-xs-6 col-sm-3">
       <span class="hidden-sm">Small</span>
-      <span class="visible-sm">&#10004; Visible on small</span>
+      <span class="visible-sm-block">&#10004; Visible on small</span>
     </div>
-    <div class="clearfix visible-xs"></div>
+    <div class="clearfix visible-xs-block"></div>
     <div class="col-xs-6 col-sm-3">
       <span class="hidden-md">Medium</span>
-      <span class="visible-md">&#10004; Visible on medium</span>
+      <span class="visible-md-block">&#10004; Visible on medium</span>
     </div>
     <div class="col-xs-6 col-sm-3">
       <span class="hidden-lg">Large</span>
-      <span class="visible-lg">&#10004; Visible on large</span>
+      <span class="visible-lg-block">&#10004; Visible on large</span>
     </div>
   </div>
   <div class="row responsive-utilities-test visible-on">
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-xs hidden-sm">Extra small and small</span>
-      <span class="visible-xs visible-sm">&#10004; Visible on x-small and small</span>
+      <span class="visible-xs-block visible-sm-block">&#10004; Visible on x-small and small</span>
     </div>
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-md hidden-lg">Medium and large</span>
-      <span class="visible-md visible-lg">&#10004; Visible on medium and large</span>
+      <span class="visible-md-block visible-lg-block">&#10004; Visible on medium and large</span>
     </div>
-    <div class="clearfix visible-xs"></div>
+    <div class="clearfix visible-xs-block"></div>
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-xs hidden-md">Extra small and medium</span>
-      <span class="visible-xs visible-md">&#10004; Visible on x-small and medium</span>
+      <span class="visible-xs-block visible-md-block">&#10004; Visible on x-small and medium</span>
     </div>
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-sm hidden-lg">Small and large</span>
-      <span class="visible-sm visible-lg">&#10004; Visible on small and large</span>
+      <span class="visible-sm-block visible-lg-block">&#10004; Visible on small and large</span>
     </div>
-    <div class="clearfix visible-xs"></div>
+    <div class="clearfix visible-xs-block"></div>
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-xs hidden-lg">Extra small and large</span>
-      <span class="visible-xs visible-lg">&#10004; Visible on x-small and large</span>
+      <span class="visible-xs-block visible-lg-block">&#10004; Visible on x-small and large</span>
     </div>
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-sm hidden-md">Small and medium</span>
-      <span class="visible-sm visible-md">&#10004; Visible on small and medium</span>
+      <span class="visible-sm-block visible-md-block">&#10004; Visible on small and medium</span>
     </div>
   </div>
 
@@ -2741,56 +2856,52 @@
   <div class="row responsive-utilities-test hidden-on">
     <div class="col-xs-6 col-sm-3">
       <span class="hidden-xs">Extra small</span>
-      <span class="visible-xs">&#10004; Hidden on x-small</span>
+      <span class="visible-xs-block">&#10004; Hidden on x-small</span>
     </div>
     <div class="col-xs-6 col-sm-3">
       <span class="hidden-sm">Small</span>
-      <span class="visible-sm">&#10004; Hidden on small</span>
+      <span class="visible-sm-block">&#10004; Hidden on small</span>
     </div>
-    <div class="clearfix visible-xs"></div>
+    <div class="clearfix visible-xs-block"></div>
     <div class="col-xs-6 col-sm-3">
       <span class="hidden-md">Medium</span>
-      <span class="visible-md">&#10004; Hidden on medium</span>
+      <span class="visible-md-block">&#10004; Hidden on medium</span>
     </div>
     <div class="col-xs-6 col-sm-3">
       <span class="hidden-lg">Large</span>
-      <span class="visible-lg">&#10004; Hidden on large</span>
+      <span class="visible-lg-block">&#10004; Hidden on large</span>
     </div>
   </div>
   <div class="row responsive-utilities-test hidden-on">
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-xs hidden-sm">Extra small and small</span>
-      <span class="visible-xs visible-sm">&#10004; Hidden on x-small and small</span>
+      <span class="visible-xs-block visible-sm-block">&#10004; Hidden on x-small and small</span>
     </div>
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-md hidden-lg">Medium and large</span>
-      <span class="visible-md visible-lg">&#10004; Hidden on medium and large</span>
+      <span class="visible-md-block visible-lg-block">&#10004; Hidden on medium and large</span>
     </div>
-    <div class="clearfix visible-xs"></div>
+    <div class="clearfix visible-xs-block"></div>
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-xs hidden-md">Extra small and medium</span>
-      <span class="visible-xs visible-md">&#10004; Hidden on x-small and medium</span>
+      <span class="visible-xs-block visible-md-block">&#10004; Hidden on x-small and medium</span>
     </div>
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-sm hidden-lg">Small and large</span>
-      <span class="visible-sm visible-lg">&#10004; Hidden on small and large</span>
+      <span class="visible-sm-block visible-lg-block">&#10004; Hidden on small and large</span>
     </div>
-    <div class="clearfix visible-xs"></div>
+    <div class="clearfix visible-xs-block"></div>
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-xs hidden-lg">Extra small and large</span>
-      <span class="visible-xs visible-lg">&#10004; Hidden on x-small and large</span>
+      <span class="visible-xs-block visible-lg-block">&#10004; Hidden on x-small and large</span>
     </div>
     <div class="col-xs-6 col-sm-6">
       <span class="hidden-sm hidden-md">Small and medium</span>
-      <span class="visible-sm visible-md">&#10004; Hidden on small and medium</span>
+      <span class="visible-sm-block visible-md-block">&#10004; Hidden on small and medium</span>
     </div>
   </div>
 </div>
 
-
-
-<!-- Using Less
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="less" class="page-header">Using Less</h1>
 
@@ -2820,9 +2931,8 @@
 <div class="highlight"><pre><code class="scss"><span class="k">@gray-darker</span><span class="nd">:</span>  <span class="nt">lighten</span><span class="o">(</span><span class="nn">#000</span><span class="o">,</span> <span class="nt">13</span><span class="nc">.5</span><span class="err">%</span><span class="o">);</span> <span class="o">//</span> <span class="nn">#222</span>
 <span class="o">@</span><span class="nt">gray-dark</span><span class="nd">:</span>    <span class="nt">lighten</span><span class="o">(</span><span class="nn">#000</span><span class="o">,</span> <span class="nt">20</span><span class="err">%</span><span class="o">);</span>   <span class="o">//</span> <span class="nn">#333</span>
 <span class="o">@</span><span class="nt">gray</span><span class="nd">:</span>         <span class="nt">lighten</span><span class="o">(</span><span class="nn">#000</span><span class="o">,</span> <span class="nt">33</span><span class="nc">.5</span><span class="err">%</span><span class="o">);</span> <span class="o">//</span> <span class="nn">#555</span>
-<span class="o">@</span><span class="nt">gray-light</span><span class="nd">:</span>   <span class="nt">lighten</span><span class="o">(</span><span class="nn">#000</span><span class="o">,</span> <span class="nt">60</span><span class="err">%</span><span class="o">);</span>   <span class="o">//</span> <span class="nn">#999</span>
-<span class="o">@</span><span class="nt">gray-lighter</span><span class="nd">:</span> <span class="nt">lighten</span><span class="o">(</span><span class="nn">#000</span><span class="o">,</span> <span class="nt">93</span><span class="nc">.5</span><span class="err">%</span><span class="o">);</span> <span class="o">//</span> <span class="nn">#eee</span>
-</code></pre></div>
+<span class="o">@</span><span class="nt">gray-light</span><span class="nd">:</span>   <span class="nt">lighten</span><span class="o">(</span><span class="nn">#000</span><span class="o">,</span> <span class="nt">46</span><span class="nc">.7</span><span class="err">%</span><span class="o">);</span> <span class="o">//</span> <span class="nn">#777</span>
+<span class="o">@</span><span class="nt">gray-lighter</span><span class="nd">:</span> <span class="nt">lighten</span><span class="o">(</span><span class="nn">#000</span><span class="o">,</span> <span class="nt">93</span><span class="nc">.5</span><span class="err">%</span><span class="o">);</span> <span class="o">//</span> <span class="nn">#eee</span></code></pre></div>
 
   <div class="bs-example">
     <div class="color-swatches">
@@ -2837,8 +2947,7 @@
 <span class="o">@</span><span class="nt">brand-success</span><span class="nd">:</span> <span class="nn">#5cb85c</span><span class="o">;</span>
 <span class="o">@</span><span class="nt">brand-info</span><span class="nd">:</span>    <span class="nn">#5bc0de</span><span class="o">;</span>
 <span class="o">@</span><span class="nt">brand-warning</span><span class="nd">:</span> <span class="nn">#f0ad4e</span><span class="o">;</span>
-<span class="o">@</span><span class="nt">brand-danger</span><span class="nd">:</span>  <span class="nn">#d9534f</span><span class="o">;</span>
-</code></pre></div>
+<span class="o">@</span><span class="nt">brand-danger</span><span class="nd">:</span>  <span class="nn">#d9534f</span><span class="o">;</span></code></pre></div>
 
   <p>Use any of these color variables as they are or reassign them to more meaningful variables for your project.</p>
 <div class="highlight"><pre><code class="scss"><span class="c1">// Use as-is</span>
@@ -2850,21 +2959,19 @@
 <span class="k">@alert-message-background</span><span class="nd">:</span> <span class="o">@</span><span class="nt">brand-info</span><span class="o">;</span>
 <span class="nc">.alert</span> <span class="p">{</span>
   <span class="na">background-color</span><span class="o">:</span> <span class="o">@</span><span class="n">alert-message-background</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
   <h3 id="less-variables-scaffolding">Scaffolding</h3>
   <p>A handful of variables for quickly customizing key elements of your site's skeleton.</p>
 <div class="highlight"><pre><code class="scss"><span class="c1">// Scaffolding</span>
 <span class="k">@body-bg</span><span class="nd">:</span>    <span class="nn">#fff</span><span class="o">;</span>
-<span class="o">@</span><span class="nt">text-color</span><span class="nd">:</span> <span class="o">@</span><span class="nt">black-50</span><span class="o">;</span>
-</code></pre></div>
+<span class="o">@</span><span class="nt">text-color</span><span class="nd">:</span> <span class="o">@</span><span class="nt">black-50</span><span class="o">;</span></code></pre></div>
 
   <h3 id="less-variables-links">Links</h3>
   <p>Easily style your links with the right color with only one value.</p>
 <div class="highlight"><pre><code class="scss"><span class="c1">// Variables</span>
 <span class="k">@link-color</span><span class="nd">:</span>       <span class="o">@</span><span class="nt">brand-primary</span><span class="o">;</span>
-<span class="o">@</span><span class="nt">link-color-hover</span><span class="nd">:</span> <span class="nt">darken</span><span class="o">(@</span><span class="nt">link-color</span><span class="o">,</span> <span class="nt">15</span><span class="err">%</span><span class="o">);</span>
+<span class="o">@</span><span class="nt">link-hover-color</span><span class="nd">:</span> <span class="nt">darken</span><span class="o">(@</span><span class="nt">link-color</span><span class="o">,</span> <span class="nt">15</span><span class="err">%</span><span class="o">);</span>
 
 <span class="o">//</span> <span class="nt">Usage</span>
 <span class="nt">a</span> <span class="p">{</span>
@@ -2872,12 +2979,11 @@
   <span class="na">text-decoration</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
 
   <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span>
-    <span class="na">color</span><span class="o">:</span> <span class="o">@</span><span class="n">link-color-hover</span><span class="p">;</span>
+    <span class="na">color</span><span class="o">:</span> <span class="o">@</span><span class="n">link-hover-color</span><span class="p">;</span>
     <span class="na">text-decoration</span><span class="o">:</span> <span class="no">underline</span><span class="p">;</span>
   <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-  <p>Note that the <code>@link-color-hover</code> uses a function, another awesome tool from Less, to automagically create the right hover color. You can use <code>darken</code>, <code>lighten</code>, <code>saturate</code>, and <code>desaturate</code>.</p>
+<span class="p">}</span></code></pre></div>
+  <p>Note that the <code>@link-hover-color</code> uses a function, another awesome tool from Less, to automagically create the right hover color. You can use <code>darken</code>, <code>lighten</code>, <code>saturate</code>, and <code>desaturate</code>.</p>
 
   <h3 id="less-variables-typography">Typography</h3>
   <p>Easily set your type face, text size, leading, and more with a few quick variables. Bootstrap makes use of these as well to provide easy typographic mixins.</p>
@@ -2903,14 +3009,12 @@
 <span class="o">@</span><span class="nt">headings-font-family</span><span class="nd">:</span>    <span class="nt">inherit</span><span class="o">;</span>
 <span class="o">@</span><span class="nt">headings-font-weight</span><span class="nd">:</span>    <span class="nt">500</span><span class="o">;</span>
 <span class="o">@</span><span class="nt">headings-line-height</span><span class="nd">:</span>    <span class="nt">1</span><span class="nc">.1</span><span class="o">;</span>
-<span class="o">@</span><span class="nt">headings-color</span><span class="nd">:</span>          <span class="nt">inherit</span><span class="o">;</span>
-</code></pre></div>
+<span class="o">@</span><span class="nt">headings-color</span><span class="nd">:</span>          <span class="nt">inherit</span><span class="o">;</span></code></pre></div>
 
   <h3 id="less-variables-icons">Icons</h3>
   <p>Two quick variables for customizing the location and filename of your icons.</p>
 <div class="highlight"><pre><code class="scss"><span class="k">@icon-font-path</span><span class="nd">:</span>          <span class="s2">&quot;../fonts/&quot;</span><span class="o">;</span>
-<span class="o">@</span><span class="nt">icon-font-name</span><span class="nd">:</span>          <span class="s2">&quot;glyphicons-halflings-regular&quot;</span><span class="o">;</span>
-</code></pre></div>
+<span class="o">@</span><span class="nt">icon-font-name</span><span class="nd">:</span>          <span class="s2">&quot;glyphicons-halflings-regular&quot;</span><span class="o">;</span></code></pre></div>
 
   <h3 id="less-variables-components">Components</h3>
   <p>Components throughout Bootstrap make use of some default variables for setting common values. Here are the most commonly used.</p>
@@ -2937,8 +3041,7 @@
 <span class="o">@</span><span class="nt">component-active-bg</span><span class="nd">:</span>            <span class="o">@</span><span class="nt">brand-primary</span><span class="o">;</span>
 
 <span class="o">@</span><span class="nt">caret-width-base</span><span class="nd">:</span>               <span class="nt">4px</span><span class="o">;</span>
-<span class="o">@</span><span class="nt">caret-width-large</span><span class="nd">:</span>              <span class="nt">5px</span><span class="o">;</span>
-</code></pre></div>
+<span class="o">@</span><span class="nt">caret-width-large</span><span class="nd">:</span>              <span class="nt">5px</span><span class="o">;</span></code></pre></div>
 
 
   <h2 id="less-mixins-vendor">Vendor mixins</h2>
@@ -2947,12 +3050,12 @@
 
   <h3 id="less-mixins-box-sizing">Box-sizing</h3>
   <p>Reset your components' box model with a single mixin. For context, see this <a href="https://developer.mozilla.org/en-US/docs/CSS/box-sizing" target="_blank">helpful article from Mozilla</a>.</p>
+  <p>The mixin is <strong>deprecated</strong> as of v3.2.0, with the introduction of autoprefixer. To preserve backwards-compatibility, Bootstrap will continue to use the mixin internally until Bootstrap v4.</p>
 <div class="highlight"><pre><code class="scss"><span class="nc">.box-sizing</span><span class="o">(@</span><span class="nt">box-model</span><span class="o">)</span> <span class="p">{</span>
   <span class="na">-webkit-box-sizing</span><span class="o">:</span> <span class="o">@</span><span class="n">box-model</span><span class="p">;</span> <span class="c1">// Safari &lt;= 5</span>
      <span class="na">-moz-box-sizing</span><span class="o">:</span> <span class="o">@</span><span class="n">box-model</span><span class="p">;</span> <span class="c1">// Firefox &lt;= 19</span>
           <span class="na">box-sizing</span><span class="o">:</span> <span class="o">@</span><span class="n">box-model</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
   <h3 id="less-mixins-rounded-corners">Rounded corners</h3>
   <p>Today all modern browsers support the non-prefixed <code>border-radius</code> property. As such, there is no <code>.border-radius()</code> mixin, but Bootstrap does include shortcuts for quickly rounding two corners on a particular side of an object.</p>
@@ -2971,8 +3074,7 @@
 <span class="nc">.border-left-radius</span><span class="o">(@</span><span class="nt">radius</span><span class="o">)</span> <span class="p">{</span>
   <span class="na">border-bottom-left-radius</span><span class="o">:</span> <span class="o">@</span><span class="n">radius</span><span class="p">;</span>
      <span class="na">border-top-left-radius</span><span class="o">:</span> <span class="o">@</span><span class="n">radius</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
   <h3 id="less-mixins-box-shadow">Box (Drop) shadows</h3>
   <p>If your target audience is using the latest and greatest browsers and devices, be sure to just use the <code>box-shadow</code> property on its own. If you need support for older Android (pre-v4) and iOS devices (pre-iOS 5), use the <strong>deprecated</strong> mixin to pick up the required <code>-webkit</code> prefix.</p>
@@ -2981,11 +3083,11 @@
 <div class="highlight"><pre><code class="scss"><span class="na">.box-shadow(@shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">3</span><span class="kt">px</span> <span class="nf">rgba</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">,.</span><span class="mi">25</span><span class="p">))</span> <span class="p">{</span>
   <span class="na">-webkit-box-shadow</span><span class="o">:</span> <span class="o">@</span><span class="n">shadow</span><span class="p">;</span> <span class="c1">// iOS &lt;4.3 &amp; Android &lt;4.1</span>
           <span class="na">box-shadow</span><span class="o">:</span> <span class="o">@</span><span class="n">shadow</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
   <h3 id="less-mixins-transitions">Transitions</h3>
-  <p>Three mixins for flexibility. Set all transition information with one, or specify a separate delay and duration as needed.</p>
+  <p>Multiple mixins for flexibility. Set all transition information with one, or specify a separate delay and duration as needed.</p>
+  <p>The mixins are <strong>deprecated</strong> as of v3.2.0, with the introduction of autoprefixer. To preserve backwards-compatibility, Bootstrap will continue to use the mixins internally until Bootstrap v4.</p>
 <div class="highlight"><pre><code class="scss"><span class="nc">.transition</span><span class="o">(@</span><span class="nt">transition</span><span class="o">)</span> <span class="p">{</span>
   <span class="na">-webkit-transition</span><span class="o">:</span> <span class="o">@</span><span class="n">transition</span><span class="p">;</span>
           <span class="na">transition</span><span class="o">:</span> <span class="o">@</span><span class="n">transition</span><span class="p">;</span>
@@ -3002,16 +3104,20 @@
   <span class="na">-webkit-transition-duration</span><span class="o">:</span> <span class="o">@</span><span class="n">transition-duration</span><span class="p">;</span>
           <span class="na">transition-duration</span><span class="o">:</span> <span class="o">@</span><span class="n">transition-duration</span><span class="p">;</span>
 <span class="p">}</span>
+<span class="nc">.transition-timing-function</span><span class="o">(@</span><span class="nt">timing-function</span><span class="o">)</span> <span class="p">{</span>
+  <span class="na">-webkit-transition-timing-function</span><span class="o">:</span> <span class="o">@</span><span class="n">timing-function</span><span class="p">;</span>
+          <span class="na">transition-timing-function</span><span class="o">:</span> <span class="o">@</span><span class="n">timing-function</span><span class="p">;</span>
+<span class="p">}</span>
 <span class="nc">.transition-transform</span><span class="o">(@</span><span class="nt">transition</span><span class="o">)</span> <span class="p">{</span>
   <span class="na">-webkit-transition</span><span class="o">:</span> <span class="o">-</span><span class="n">webkit-transform</span> <span class="o">@</span><span class="n">transition</span><span class="p">;</span>
      <span class="na">-moz-transition</span><span class="o">:</span> <span class="o">-</span><span class="n">moz-transform</span> <span class="o">@</span><span class="n">transition</span><span class="p">;</span>
        <span class="na">-o-transition</span><span class="o">:</span> <span class="o">-</span><span class="n">o-transform</span> <span class="o">@</span><span class="n">transition</span><span class="p">;</span>
           <span class="na">transition</span><span class="o">:</span> <span class="n">transform</span> <span class="o">@</span><span class="n">transition</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
   <h3 id="less-mixins-transformations">Transformations</h3>
   <p>Rotate, scale, translate (move), or skew any object.</p>
+  <p>The mixins are <strong>deprecated</strong> as of v3.2.0, with the introduction of autoprefixer. To preserve backwards-compatibility, Bootstrap will continue to use the mixins internally until Bootstrap v4.</p>
 <div class="highlight"><pre><code class="scss"><span class="nc">.rotate</span><span class="o">(@</span><span class="nt">degrees</span><span class="o">)</span> <span class="p">{</span>
   <span class="na">-webkit-transform</span><span class="o">:</span> <span class="nf">rotate</span><span class="p">(</span><span class="o">@</span><span class="n">degrees</span><span class="p">);</span>
       <span class="na">-ms-transform</span><span class="o">:</span> <span class="nf">rotate</span><span class="p">(</span><span class="o">@</span><span class="n">degrees</span><span class="p">);</span> <span class="c1">// IE9 only</span>
@@ -3062,11 +3168,11 @@
      <span class="na">-moz-transform-origin</span><span class="o">:</span> <span class="o">@</span><span class="ow">or</span><span class="n">igin</span><span class="p">;</span>
       <span class="na">-ms-transform-origin</span><span class="o">:</span> <span class="o">@</span><span class="ow">or</span><span class="n">igin</span><span class="p">;</span> <span class="c1">// IE9 only</span>
           <span class="na">transform-origin</span><span class="o">:</span> <span class="o">@</span><span class="ow">or</span><span class="n">igin</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
   <h3 id="less-mixins-animations">Animations</h3>
   <p>A single mixin for using all of CSS3's animation properties in one declaration and other mixins for individual properties.</p>
+  <p>The mixins are <strong>deprecated</strong> as of v3.2.0, with the introduction of autoprefixer. To preserve backwards-compatibility, Bootstrap will continue to use the mixins internally until Bootstrap v4.</p>
 <div class="highlight"><pre><code class="scss"><span class="nc">.animation</span><span class="o">(@</span><span class="nt">animation</span><span class="o">)</span> <span class="p">{</span>
   <span class="na">-webkit-animation</span><span class="o">:</span> <span class="o">@</span><span class="n">animation</span><span class="p">;</span>
           <span class="na">animation</span><span class="o">:</span> <span class="o">@</span><span class="n">animation</span><span class="p">;</span>
@@ -3094,8 +3200,7 @@
 <span class="nc">.animation-direction</span><span class="o">(@</span><span class="nt">direction</span><span class="o">)</span> <span class="p">{</span>
   <span class="na">-webkit-animation-direction</span><span class="o">:</span> <span class="o">@</span><span class="no">direction</span><span class="p">;</span>
           <span class="na">animation-direction</span><span class="o">:</span> <span class="o">@</span><span class="no">direction</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
   <h3 id="less-mixins-opacity">Opacity</h3>
   <p>Set the opacity for all browsers and provide a <code>filter</code> fallback for IE8.</p>
@@ -3104,18 +3209,15 @@
   <span class="c1">// IE8 filter</span>
   <span class="k">@opacity-ie</span><span class="nd">:</span> <span class="o">(@</span><span class="nt">opacity</span> <span class="o">*</span> <span class="nt">100</span><span class="o">);</span>
   <span class="nt">filter</span><span class="nd">:</span> <span class="o">~</span><span class="s2">&quot;alpha(opacity=@{opacity-ie})&quot;</span><span class="o">;</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
   <h3 id="less-mixins-placeholder">Placeholder text</h3>
   <p>Provide context for form controls within each field.</p>
 <div class="highlight"><pre><code class="scss"><span class="na">.placeholder(@color</span><span class="o">:</span> <span class="o">@</span><span class="n">input-color-placeholder</span><span class="p">)</span> <span class="p">{</span>
-  <span class="na">&amp;</span><span class="o">:-</span><span class="n">moz-placeholder</span>            <span class="p">{</span> <span class="na">color</span><span class="o">:</span> <span class="o">@</span><span class="no">color</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// Firefox 4-18</span>
-  <span class="na">&amp;</span><span class="o">::-</span><span class="n">moz-placeholder</span>           <span class="p">{</span> <span class="na">color</span><span class="o">:</span> <span class="o">@</span><span class="no">color</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// Firefox 19+</span>
+  <span class="na">&amp;</span><span class="o">::-</span><span class="n">moz-placeholder</span>           <span class="p">{</span> <span class="na">color</span><span class="o">:</span> <span class="o">@</span><span class="no">color</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// Firefox</span>
   <span class="na">&amp;</span><span class="o">:-</span><span class="n">ms-input-placeholder</span>       <span class="p">{</span> <span class="na">color</span><span class="o">:</span> <span class="o">@</span><span class="no">color</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// Internet Explorer 10+</span>
   <span class="na">&amp;</span><span class="o">::-</span><span class="n">webkit-input-placeholder</span>  <span class="p">{</span> <span class="na">color</span><span class="o">:</span> <span class="o">@</span><span class="no">color</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// Safari and Chrome</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
   <h3 id="less-mixins-columns">Columns</h3>
   <p>Generate columns via CSS within a single element.</p>
@@ -3129,25 +3231,20 @@
   <span class="na">-webkit-column-gap</span><span class="o">:</span> <span class="o">@</span><span class="n">gap</span><span class="p">;</span>
      <span class="na">-moz-column-gap</span><span class="o">:</span> <span class="o">@</span><span class="n">gap</span><span class="p">;</span>
           <span class="na">column-gap</span><span class="o">:</span> <span class="o">@</span><span class="n">gap</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
   <h3 id="less-mixins-gradients">Gradients</h3>
   <p>Easily turn any two colors into a background gradient. Get more advanced and set a direction, use three colors, or use a radial gradient. With a single mixin you get all the prefixed syntaxes you'll need.</p>
 <div class="highlight"><pre><code class="scss"><span class="nn">#gradient</span> <span class="o">&gt;</span> <span class="nc">.vertical</span><span class="o">(</span><span class="nn">#333</span><span class="o">;</span> <span class="nn">#000</span><span class="o">);</span>
 <span class="nn">#gradient</span> <span class="o">&gt;</span> <span class="nc">.horizontal</span><span class="o">(</span><span class="nn">#333</span><span class="o">;</span> <span class="nn">#000</span><span class="o">);</span>
-<span class="nn">#gradient</span> <span class="o">&gt;</span> <span class="nc">.radial</span><span class="o">(</span><span class="nn">#333</span><span class="o">;</span> <span class="nn">#000</span><span class="o">);</span>
-</code></pre></div>
+<span class="nn">#gradient</span> <span class="o">&gt;</span> <span class="nc">.radial</span><span class="o">(</span><span class="nn">#333</span><span class="o">;</span> <span class="nn">#000</span><span class="o">);</span></code></pre></div>
   <p>You can also specify the angle of a standard two-color, linear gradient:</p>
-<div class="highlight"><pre><code class="scss"><span class="nn">#gradient</span> <span class="o">&gt;</span> <span class="nc">.directional</span><span class="o">(</span><span class="nn">#333</span><span class="o">;</span> <span class="nn">#000</span><span class="o">;</span> <span class="nt">45deg</span><span class="o">);</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="scss"><span class="nn">#gradient</span> <span class="o">&gt;</span> <span class="nc">.directional</span><span class="o">(</span><span class="nn">#333</span><span class="o">;</span> <span class="nn">#000</span><span class="o">;</span> <span class="nt">45deg</span><span class="o">);</span></code></pre></div>
   <p>If you need a barber-stripe style gradient, that's easy, too. Just specify a single color and we'll overlay a translucent white stripe.</p>
-<div class="highlight"><pre><code class="scss"><span class="nn">#gradient</span> <span class="o">&gt;</span> <span class="nc">.striped</span><span class="o">(</span><span class="nn">#333</span><span class="o">;</span> <span class="nn">#000</span><span class="o">;</span> <span class="nt">45deg</span><span class="o">);</span>
-</code></pre></div>
-  <p>Up the ante and use three colors instead. Set the first color, the second color, the second color's color stop (a decimal value like 0.25), and the third color with these mixins:</p>
-<div class="highlight"><pre><code class="scss"><span class="nn">#gradient</span> <span class="o">&gt;</span> <span class="nc">.vertical-three-colors</span><span class="o">(</span><span class="nn">#777</span><span class="o">;</span> <span class="nn">#333</span><span class="o">;</span> <span class="nc">.25</span><span class="o">;</span> <span class="nn">#000</span><span class="o">);</span>
-<span class="nn">#gradient</span> <span class="o">&gt;</span> <span class="nc">.horizontal-three-colors</span><span class="o">(</span><span class="nn">#777</span><span class="o">;</span> <span class="nn">#333</span><span class="o">;</span> <span class="nc">.25</span><span class="o">;</span> <span class="nn">#000</span><span class="o">);</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="scss"><span class="nn">#gradient</span> <span class="o">&gt;</span> <span class="nc">.striped</span><span class="o">(</span><span class="nn">#333</span><span class="o">;</span> <span class="nt">45deg</span><span class="o">);</span></code></pre></div>
+  <p>Up the ante and use three colors instead. Set the first color, the second color, the second color's color stop (a percentage value like 25%), and the third color with these mixins:</p>
+<div class="highlight"><pre><code class="scss"><span class="nn">#gradient</span> <span class="o">&gt;</span> <span class="nc">.vertical-three-colors</span><span class="o">(</span><span class="nn">#777</span><span class="o">;</span> <span class="nn">#333</span><span class="o">;</span> <span class="nt">25</span><span class="err">%</span><span class="o">;</span> <span class="nn">#000</span><span class="o">);</span>
+<span class="nn">#gradient</span> <span class="o">&gt;</span> <span class="nc">.horizontal-three-colors</span><span class="o">(</span><span class="nn">#777</span><span class="o">;</span> <span class="nn">#333</span><span class="o">;</span> <span class="nt">25</span><span class="err">%</span><span class="o">;</span> <span class="nn">#000</span><span class="o">);</span></code></pre></div>
   <p><strong>Heads up!</strong> Should you ever need to remove a gradient, be sure to remove any IE-specific <code>filter</code> you may have added. You can do that by using the <code>.reset-filter()</code> mixin alongside <code>background-image: none;</code>.</p>
 
 
@@ -3171,8 +3268,7 @@
 <span class="c1">// Usage</span>
 <span class="nc">.container</span> <span class="p">{</span>
   <span class="nc">.clearfix</span><span class="o">();</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
   <h3 id="less-mixins-centering">Horizontal centering</h3>
   <p>Quickly center any element within its parent. <strong>Requires <code>width</code> or <code>max-width</code> to be set.</strong></p>
@@ -3187,8 +3283,7 @@
 <span class="nc">.container</span> <span class="p">{</span>
   <span class="na">width</span><span class="o">:</span> <span class="mi">940</span><span class="kt">px</span><span class="p">;</span>
   <span class="nc">.center-block</span><span class="o">();</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
   <h3 id="less-mixins-sizing">Sizing helpers</h3>
   <p>Specify the dimensions of an object more easily.</p>
@@ -3203,8 +3298,7 @@
 
 <span class="c1">// Usage</span>
 <span class="nc">.image</span> <span class="p">{</span> <span class="nc">.size</span><span class="o">(</span><span class="nt">400px</span><span class="o">;</span> <span class="nt">300px</span><span class="o">);</span> <span class="p">}</span>
-<span class="nc">.avatar</span> <span class="p">{</span> <span class="nc">.square</span><span class="o">(</span><span class="nt">48px</span><span class="o">);</span> <span class="p">}</span>
-</code></pre></div>
+<span class="nc">.avatar</span> <span class="p">{</span> <span class="nc">.square</span><span class="o">(</span><span class="nt">48px</span><span class="o">);</span> <span class="p">}</span></code></pre></div>
 
   <h3 id="less-mixins-resizable">Resizable textareas</h3>
   <p>Easily configure the resize options for any textarea, or any other element. Defaults to normal browser behavior (<code>both</code>).</p>
@@ -3213,8 +3307,7 @@
   <span class="na">resize</span><span class="o">:</span> <span class="o">@</span><span class="no">direction</span><span class="p">;</span>
   <span class="c1">// Safari fix</span>
   <span class="na">overflow</span><span class="o">:</span> <span class="no">auto</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
   <h3 id="less-mixins-truncating">Truncating text</h3>
   <p>Easily truncate text with an ellipsis with a single mixin. <strong>Requires element to be <code>block</code> or <code>inline-block</code> level.</strong></p>
@@ -3230,8 +3323,7 @@
   <span class="na">display</span><span class="o">:</span> <span class="no">inline</span><span class="o">-</span><span class="no">block</span><span class="p">;</span>
   <span class="na">max-width</span><span class="o">:</span> <span class="mi">200</span><span class="kt">px</span><span class="p">;</span>
   <span class="nc">.text-overflow</span><span class="o">();</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
   <h3 id="less-mixins-retina-images">Retina images</h3>
   <p>Specify two image paths and the @1x image dimensions, and Bootstrap will provide an @2x media query. <strong>If you have many images to serve, consider writing your retina image CSS manually in a single media query.</strong></p>
@@ -3253,14 +3345,9 @@
 <span class="c1">// Usage</span>
 <span class="nc">.jumbotron</span> <span class="p">{</span>
   <span class="nc">.img-retina</span><span class="o">(</span><span class="s2">&quot;/img/bg-1x.png&quot;</span><span class="o">,</span> <span class="s2">&quot;/img/bg-2x.png&quot;</span><span class="o">,</span> <span class="nt">100px</span><span class="o">,</span> <span class="nt">100px</span><span class="o">);</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 </div>
 
-
-
-<!-- Using Sass
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="sass" class="page-header">Using Sass</h1>
   <p class="lead">While Bootstrap is built on Less, it also has an <a href="https://github.com/twbs/bootstrap-sass">official Sass port</a>. We maintain it in a separate GitHub repository and handle updates with a conversion script.</p>
@@ -3314,9 +3401,10 @@
   </p>
 </div>
 
+
         </div>
         <div class="col-md-3">
-          <div class="bs-docs-sidebar hidden-print" role="complementary">
+          <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
             <ul class="nav bs-docs-sidenav">
               
                 <li>
@@ -3339,6 +3427,7 @@
     <li><a href="#grid-example-fluid">Ex: Fluid container</a></li>
     <li><a href="#grid-example-mixed">Ex: Mobile and desktops</a></li>
     <li><a href="#grid-example-mixed-complete">Ex: Mobile, tablet, desktops</a></li>
+    <li><a href="#grid-example-wrapping">Ex: Column wrapping</a></li>
     <li><a href="#grid-responsive-resets">Responsive column resets</a></li>
     <li><a href="#grid-offsetting">Offsetting columns</a></li>
     <li><a href="#grid-nesting">Nesting columns</a></li>
@@ -3351,7 +3440,9 @@
   <ul class="nav">
     <li><a href="#type-headings">Headings</a></li>
     <li><a href="#type-body-copy">Body copy</a></li>
-    <li><a href="#type-emphasis">Emphasis</a></li>
+    <li><a href="#type-inline-text">Inline text elements</a></li>
+    <li><a href="#type-alignment">Alignment classes</a></li>
+    <li><a href="#type-transformation">Transformation classes</a></li>
     <li><a href="#type-abbreviations">Abbreviations</a></li>
     <li><a href="#type-addresses">Addresses</a></li>
     <li><a href="#type-blockquotes">Blockquotes</a></li>
@@ -3364,6 +3455,8 @@
     <li><a href="#code-inline">Inline code</a></li>
     <li><a href="#code-user-input">User input</a></li>
     <li><a href="#code-block">Blocks of code</a></li>
+    <li><a href="#code-variables">Variables</a></li>
+    <li><a href="#code-sample-output">Sample output</a></li>
   </ul>
 </li>
 <li>
@@ -3388,6 +3481,7 @@
     <li><a href="#forms-controls-static">Static control</a></li>
     <li><a href="#forms-control-focus">Focus state</a></li>
     <li><a href="#forms-control-disabled">Disabled state</a></li>
+    <li><a href="#forms-control-readonly">Readonly state</a></li>
     <li><a href="#forms-control-validation">Validation states</a></li>
     <li><a href="#forms-control-sizes">Control sizing</a></li>
     <li><a href="#forms-help-text">Help text</a></li>
@@ -3455,10 +3549,14 @@
             <a class="back-to-top" href="#top">
               Back to top
             </a>
+            
+            <a href="#" class="bs-docs-theme-toggle">
+              Preview theme
+            </a>
+            
           </div>
         </div>
       </div>
-
     </div>
 
     <!-- Footer
@@ -3487,7 +3585,7 @@
     <p>Maintained by the <a href="https://github.com/twbs?tab=members">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
     <p>Code licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="bs-docs-footer-links muted">
-      <li>Currently v3.1.1</li>
+      <li>Currently v3.2.0</li>
       <li>&middot;</li>
       <li><a href="https://github.com/twbs/bootstrap">GitHub</a></li>
       <li>&middot;</li>
@@ -3511,7 +3609,7 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="../dist/js/bootstrap.min.js"></script>
 <script src="../assets/js/docs.min.js"></script>
 

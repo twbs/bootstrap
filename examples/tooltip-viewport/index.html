@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-    <title>Cover Template for Bootstrap</title>
+    <title>Tooltip Viewport Example for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="cover.css" rel="stylesheet">
+    <link href="tooltip-viewport.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -32,48 +32,27 @@
 
   <body>
 
-    <div class="site-wrapper">
+    <button class="btn btn-default pull-right tooltip-bottom" title="This should be shifted to the left">Shift Left</button>
+    <button class="btn btn-default tooltip-bottom" title="This should be shifted to the right">Shift Right</button>
+    <button class="btn btn-default tooltip-right" title="This should be shifted down">Shift Down</button>
 
-      <div class="site-wrapper-inner">
+    <button class="btn btn-default tooltip-right btn-bottom" title="This should be shifted up">Shift Up</button>
 
-        <div class="cover-container">
+    <div class="container-viewport">
+      <button class="btn btn-default tooltip-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
+      <button class="btn btn-default tooltip-viewport-right" title="This should be shifted down">Shift Down</button>
 
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">Cover</h3>
-              <ul class="nav masthead-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </div>
-          </div>
+      <button class="btn btn-default pull-right tooltip-viewport-bottom" title="This should be shifted to the right">Shift Right</button>
 
-          <div class="inner cover">
-            <h1 class="cover-heading">Cover your page.</h1>
-            <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-            <p class="lead">
-              <a href="#" class="btn btn-lg btn-default">Learn more</a>
-            </p>
-          </div>
-
-          <div class="mastfoot">
-            <div class="inner">
-              <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
+      <button class="btn btn-default tooltip-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
     </div>
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
+    <script src="tooltip-viewport.js"></script>
   </body>
 </html>

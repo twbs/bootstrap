@@ -18,34 +18,39 @@
 <!-- Bootstrap core CSS -->
 <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
 
+  <!-- Optional Bootstrap Theme -->
+  <link href="data:text/css;charset=utf-8," data-href="../dist/css/bootstrap-theme.min.css" rel="stylesheet" id="bs-theme-stylesheet">
+
+
 <!-- Documentation extras -->
 <link href="../assets/css/docs.min.css" rel="stylesheet">
 <!--[if lt IE 9]><script src="../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="../assets/js/ie-emulation-modes-warning.js"></script>
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
 <!-- Favicons -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-                               <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
+<link rel="icon" href="/favicon.ico">
 
 <script>
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-146052-10']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-146052-10', 'getbootstrap.com');
+  ga('send', 'pageview');
 </script>
 
   </head>
   <body>
-    <a class="sr-only" href="#content">Skip to main content</a>
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <!-- Docs master nav -->
     <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
@@ -78,8 +83,8 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://expo.getbootstrap.com" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Expo']);">Expo</a></li>
-        <li><a href="http://blog.getbootstrap.com" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Blog']);">Blog</a></li>
+        <li><a href="http://expo.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a></li>
+        <li><a href="http://blog.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a></li>
       </ul>
     </nav>
   </div>
@@ -100,9 +105,7 @@
 
       <div class="row">
         <div class="col-md-9" role="main">
-          <!-- Glyphicons
-================================================== -->
-<div class="bs-docs-section">
+          <div class="bs-docs-section">
   <h1 id="glyphicons" class="page-header">Glyphicons</h1>
 
   <h2 id="glyphicons-glyphs">Available glyphs</h2>
@@ -1120,8 +1123,21 @@
     <h4>Don't mix with other components</h4>
     <p>Icon classes cannot be directly combined with other components. They should not be used along with other classes on the same element. Instead, add a nested <code>&lt;span&gt;</code> and apply the icon classes to the <code>&lt;span&gt;</code>.</p>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;glyphicon glyphicon-search&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-</code></pre></div>
+  <div class="bs-callout bs-callout-danger">
+    <h4>Only for use on empty elements</h4>
+    <p>Icon classes should only be used on elements that contain no text content and have no child elements.</p>
+  </div>
+  <div class="bs-callout bs-callout-info">
+    <h4>Changing the icon font location</h4>
+    <p>Bootstrap assumes icon font files will be located in the <code>../fonts/</code> directory, relative to the compiled CSS files. Moving or renaming those font files means updating the CSS in one of three ways:</p>
+    <ul>
+      <li>Change the <code>@icon-font-path</code> and/or <code>@icon-font-name</code> variables in the source Less files.</li>
+      <li>Utilize the <a href="http://lesscss.org/usage/#command-line-usage-relative-urls">relative URLs option</a> provided by the Less compiler.</li>
+      <li>Change the <code>url()</code> paths in the compiled CSS.</li>
+    </ul>
+    <p>Use whatever option best suits your specific development setup.</p>
+  </div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;glyphicon glyphicon-search&quot;</span><span class="nt">&gt;&lt;/span&gt;</span></code></pre></div>
 
 
   <h2 id="glyphicons-examples">Examples</h2>
@@ -1144,14 +1160,9 @@
   </div>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default btn-lg&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;glyphicon glyphicon-star&quot;</span><span class="nt">&gt;&lt;/span&gt;</span> Star
-<span class="nt">&lt;/button&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/button&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Dropdowns
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="dropdowns" class="page-header">Dropdowns</h1>
 
@@ -1161,7 +1172,7 @@
   <p>Wrap the dropdown's trigger and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Then add the menu's HTML.</p>
   <div class="bs-example">
     <div class="dropdown clearfix">
-      <button class="btn dropdown-toggle sr-only" type="button" id="dropdownMenu1" data-toggle="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
         Dropdown
         <span class="caret"></span>
       </button>
@@ -1175,7 +1186,7 @@
     </div>
   </div><!-- /example -->
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn dropdown-toggle sr-only&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">id=</span><span class="s">&quot;dropdownMenu1&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-default dropdown-toggle&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">id=</span><span class="s">&quot;dropdownMenu1&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
     Dropdown
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
   <span class="nt">&lt;/button&gt;</span>
@@ -1186,8 +1197,7 @@
     <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">class=</span><span class="s">&quot;divider&quot;</span><span class="nt">&gt;&lt;/li&gt;</span>
     <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">role=</span><span class="s">&quot;menuitem&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Separated link<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
   <span class="nt">&lt;/ul&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="dropdowns-alignment">Alignment</h3>
   <p>By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent. Add <code>.dropdown-menu-right</code> to a <code>.dropdown-menu</code> to right align the dropdown menu.</p>
@@ -1201,14 +1211,13 @@
   </div>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu dropdown-menu-right&quot;</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span> <span class="na">aria-labelledby=</span><span class="s">&quot;dLabel&quot;</span><span class="nt">&gt;</span>
   ...
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 
   <h3 id="dropdowns-headers">Headers</h3>
   <p>Add a header to label sections of actions in any dropdown menu.</p>
   <div class="bs-example">
     <div class="dropdown clearfix">
-      <button class="btn dropdown-toggle sr-only" type="button" id="dropdownMenu2" data-toggle="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
         Dropdown
         <span class="caret"></span>
       </button>
@@ -1229,14 +1238,13 @@
   <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">class=</span><span class="s">&quot;divider&quot;</span><span class="nt">&gt;&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown-header&quot;</span><span class="nt">&gt;</span>Dropdown header<span class="nt">&lt;/li&gt;</span>
   ...
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 
   <h3 id="dropdowns-disabled">Disabled menu items</h3>
   <p>Add <code>.disabled</code> to a <code>&lt;li&gt;</code> in the dropdown to disable the link.</p>
   <div class="bs-example">
     <div class="dropdown clearfix">
-      <button class="btn dropdown-toggle sr-only" type="button" id="dropdownMenu3" data-toggle="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown">
         Dropdown
         <span class="caret"></span>
       </button>
@@ -1251,14 +1259,9 @@
   <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">role=</span><span class="s">&quot;menuitem&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Regular link<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">class=</span><span class="s">&quot;disabled&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">role=</span><span class="s">&quot;menuitem&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Disabled link<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">role=</span><span class="s">&quot;menuitem&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Another link<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Button Groups
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="btn-groups" class="page-header">Button groups</h1>
 
@@ -1282,8 +1285,7 @@
   <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>Left<span class="nt">&lt;/button&gt;</span>
   <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>Middle<span class="nt">&lt;/button&gt;</span>
   <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>Right<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="btn-groups-toolbar">Button toolbar</h3>
   <p>Combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex components.</p>
@@ -1309,8 +1311,7 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;btn-group&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;btn-group&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;btn-group&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="btn-groups-sizing">Sizing</h3>
   <p>Instead of applying button sizing classes to every button in a group, just add <code>.btn-group-*</code> to the <code>.btn-group</code>.</p>
@@ -1347,8 +1348,7 @@
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;btn-group btn-group-lg&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;btn-group&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;btn-group btn-group-sm&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;btn-group btn-group-xs&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;btn-group btn-group-xs&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="btn-groups-nested">Nesting</h3>
   <p>Place a <code>.btn-group</code> within another <code>.btn-group</code> when you want dropdown menus mixed with a series of buttons.</p>
@@ -1378,13 +1378,12 @@
       Dropdown
       <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
     <span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span><span class="nt">&gt;</span>
       <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Dropdown link<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
       <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Dropdown link<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
     <span class="nt">&lt;/ul&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="btn-groups-vertical">Vertical variation</h3>
   <p>Make a set of buttons appear vertically stacked rather than horizontally. <strong class="text-danger">Split button dropdowns are not supported here.</strong></p>
@@ -1438,8 +1437,7 @@
   </div>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;btn-group-vertical&quot;</span><span class="nt">&gt;</span>
   ...
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="btn-groups-justified">Justified button groups</h3>
   <p>Make a group of buttons stretch at equal sizes to span the entire width of its parent. Also works with button dropdowns within the button group.</p>
@@ -1447,6 +1445,11 @@
   <div class="bs-callout bs-callout-warning">
     <h4>Handling borders</h4>
     <p>Due to the specific HTML and CSS used to justify buttons (namely <code>display: table-cell</code>), the borders between them are doubled. In regular button groups, <code>margin-left: -1px</code> is used to stack the borders instead of removing them. However, <code>margin</code> doesn't work with <code>display: table-cell</code>. As a result, depending on your customizations to Bootstrap, you may wish to remove or re-color the borders.</p>
+  </div>
+  <div class="bs-callout bs-callout-warning">
+    <h4>IE8 and borders</h4>
+    <p>Internet Explorer 8 doesn't render borders on buttons in a justified button group, whether it's on <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements. To get around that, wrap each button in another <code>.btn-group</code>.</p>
+    <p>See <a href="https://github.com/twbs/bootstrap/issues/12476">#12476</a> for more information.</p>
   </div>
 
   <h4>With <code>&lt;a&gt;</code> elements</h4>
@@ -1477,8 +1480,7 @@
   </div>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;btn-group btn-group-justified&quot;</span><span class="nt">&gt;</span>
   ...
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h4>With <code>&lt;button&gt;</code> elements</h4>
   <p>To use justified button groups with <code>&lt;button&gt;</code> elements, <strong class="text-danger">you must wrap each button in a button group</strong>. Most browsers don't properly apply our CSS for justification to <code>&lt;button&gt;</code> elements, but since we support button dropdowns, we can workaround that.</p>
@@ -1505,14 +1507,9 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;btn-group&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>Right<span class="nt">&lt;/button&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Split button dropdowns
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="btn-dropdowns" class="page-header">Button dropdowns</h1>
 
@@ -1599,8 +1596,7 @@
     <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;divider&quot;</span><span class="nt">&gt;&lt;/li&gt;</span>
     <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Separated link<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
   <span class="nt">&lt;/ul&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="btn-dropdowns-split">Split button dropdowns</h3>
   <p>Similarly, create split button dropdowns with the same markup changes, only with a separate button.</p>
@@ -1704,8 +1700,7 @@
     <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;divider&quot;</span><span class="nt">&gt;&lt;/li&gt;</span>
     <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Separated link<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
   <span class="nt">&lt;/ul&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="btn-dropdowns-sizing">Sizing</h3>
   <p>Button dropdowns work with buttons of all sizes.</p>
@@ -1758,7 +1753,7 @@
   <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-default btn-lg dropdown-toggle&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
     Large button <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
   <span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span><span class="nt">&gt;</span>
     ...
   <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
@@ -1768,7 +1763,7 @@
   <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-default btn-sm dropdown-toggle&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
     Small button <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
   <span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span><span class="nt">&gt;</span>
     ...
   <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
@@ -1778,11 +1773,10 @@
   <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-default btn-xs dropdown-toggle&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
     Extra small button <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
   <span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span><span class="nt">&gt;</span>
     ...
   <span class="nt">&lt;/ul&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="btn-dropdowns-dropup">Dropup variation</h3>
   <p>Trigger dropdown menus above elements by adding <code>.dropup</code> to the parent.</p>
@@ -1808,7 +1802,7 @@
           <span class="caret"></span>
           <span class="sr-only">Toggle Dropdown</span>
         </button>
-        <ul class="dropdown-menu pull-right" role="menu">
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
           <li><a href="#">Something else here</a></li>
@@ -1824,17 +1818,12 @@
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>Toggle Dropdown<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span><span class="nt">&gt;</span>
     <span class="c">&lt;!-- Dropdown menu links --&gt;</span>
   <span class="nt">&lt;/ul&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Input groups
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="input-groups" class="page-header">Input groups</h1>
 
@@ -1889,8 +1878,7 @@
   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;input-group-addon&quot;</span><span class="nt">&gt;</span>$<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;input-group-addon&quot;</span><span class="nt">&gt;</span>.00<span class="nt">&lt;/span&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h2 id="input-groups-sizing">Sizing</h2>
   <p>Add the relative form sizing classes to the <code>.input-group</code> itself and contents within will automatically resize—no need for repeating the form control size classes on each element.</p>
@@ -1923,8 +1911,7 @@
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;input-group input-group-sm&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;input-group-addon&quot;</span><span class="nt">&gt;</span>@<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Username&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
 
   <h2 id="input-groups-checkboxes-radios">Checkboxes and radio addons</h2>
@@ -1966,8 +1953,7 @@
       <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /input-group --&gt;</span>
   <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.col-lg-6 --&gt;</span>
-<span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.row --&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.row --&gt;</span></code></pre></div>
 
 
   <h2 id="input-groups-buttons">Button addons</h2>
@@ -2009,8 +1995,7 @@
       <span class="nt">&lt;/span&gt;</span>
     <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /input-group --&gt;</span>
   <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.col-lg-6 --&gt;</span>
-<span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.row --&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.row --&gt;</span></code></pre></div>
 
   <h2 id="input-groups-buttons-dropdowns">Buttons with dropdowns</h2>
   <p></p>
@@ -2036,7 +2021,7 @@
           <input type="text" class="form-control">
           <div class="input-group-btn">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-            <ul class="dropdown-menu pull-right" role="menu">
+            <ul class="dropdown-menu dropdown-menu-right" role="menu">
               <li><a href="#">Action</a></li>
               <li><a href="#">Another action</a></li>
               <li><a href="#">Something else here</a></li>
@@ -2053,7 +2038,7 @@
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;input-group&quot;</span><span class="nt">&gt;</span>
       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;input-group-btn&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default dropdown-toggle&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>Action <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
-        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span><span class="nt">&gt;</span>
           <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Action<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
           <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Another action<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
           <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Something else here<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
@@ -2069,7 +2054,7 @@
       <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span><span class="nt">&gt;</span>
       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;input-group-btn&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default dropdown-toggle&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>Action <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
-        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu pull-right&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu dropdown-menu-right&quot;</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span><span class="nt">&gt;</span>
           <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Action<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
           <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Another action<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
           <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Something else here<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
@@ -2079,8 +2064,7 @@
       <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /btn-group --&gt;</span>
     <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /input-group --&gt;</span>
   <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.col-lg-6 --&gt;</span>
-<span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.row --&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.row --&gt;</span></code></pre></div>
 
   <h2 id="input-groups-buttons-segmented">Segmented buttons</h2>
   <form class="bs-example bs-example-form" role="form">
@@ -2113,7 +2097,7 @@
               <span class="caret"></span>
               <span class="sr-only">Toggle Dropdown</span>
             </button>
-            <ul class="dropdown-menu pull-right" role="menu">
+            <ul class="dropdown-menu dropdown-menu-right" role="menu">
               <li><a href="#">Action</a></li>
               <li><a href="#">Another action</a></li>
               <li><a href="#">Something else here</a></li>
@@ -2137,14 +2121,9 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;input-group-btn&quot;</span><span class="nt">&gt;</span>
     <span class="c">&lt;!-- Button and dropdown menu --&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Navs
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="nav" class="page-header">Navs</h1>
 
@@ -2153,18 +2132,17 @@
   <h2 id="nav-tabs">Tabs</h2>
   <p>Note the <code>.nav-tabs</code> class requires the <code>.nav</code> base class.</p>
   <div class="bs-example">
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs" role="tablist">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">Profile</a></li>
       <li><a href="#">Messages</a></li>
     </ul>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav nav-tabs&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav nav-tabs&quot;</span> <span class="na">role=</span><span class="s">&quot;tablist&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;active&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
   <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
   <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Messages<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
   <div class="bs-callout bs-callout-info">
     <h4>Requires JavaScript tabs plugin</h4>
     <p>For tabs with tabbable areas, you must use the <a href="../javascript/#tabs">tabs JavaScript plugin</a>.</p>
@@ -2183,8 +2161,7 @@
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;active&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
   <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
   <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Messages<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
   <p>Pills are also vertically stackable. Just add <code>.nav-stacked</code>.</p>
   <div class="bs-example">
     <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
@@ -2195,8 +2172,7 @@
   </div>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav nav-pills nav-stacked&quot;</span><span class="nt">&gt;</span>
   ...
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 
 
   <h2 id="nav-justified">Justified</h2>
@@ -2206,7 +2182,7 @@
     <p>As of v7.0.1, Safari exhibits a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing. This bug is also shown in the <a href="../examples/justified-nav/">justified nav example</a>.</p>
   </div>
   <div class="bs-example">
-    <ul class="nav nav-tabs nav-justified">
+    <ul class="nav nav-tabs nav-justified" role="tablist">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">Profile</a></li>
       <li><a href="#">Messages</a></li>
@@ -2218,13 +2194,12 @@
       <li><a href="#">Messages</a></li>
     </ul>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav nav-tabs nav-justified&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav nav-tabs nav-justified&quot;</span> <span class="na">role=</span><span class="s">&quot;tablist&quot;</span><span class="nt">&gt;</span>
   ...
 <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav nav-pills nav-justified&quot;</span><span class="nt">&gt;</span>
   ...
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 
 
   <h2 id="nav-disabled-links">Disabled links</h2>
@@ -2246,8 +2221,7 @@
   ...
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;disabled&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Disabled link<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
   ...
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 
 
   <h2 id="nav-dropdowns">Using dropdowns</h2>
@@ -2255,7 +2229,7 @@
 
   <h3>Tabs with dropdowns</h3>
   <div class="bs-example">
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs" role="tablist">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">Help</a></li>
       <li class="dropdown">
@@ -2272,19 +2246,18 @@
       </li>
     </ul>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav nav-tabs&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav nav-tabs&quot;</span> <span class="na">role=</span><span class="s">&quot;tablist&quot;</span><span class="nt">&gt;</span>
   ...
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;dropdown-toggle&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
       Dropdown <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
     <span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span><span class="nt">&gt;</span>
       ...
     <span class="nt">&lt;/ul&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
   ...
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 
   <h3>Pills with dropdowns</h3>
   <div class="bs-example">
@@ -2311,19 +2284,14 @@
     <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;dropdown-toggle&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
       Dropdown <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
     <span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span><span class="nt">&gt;</span>
       ...
     <span class="nt">&lt;/ul&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
   ...
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Navbar
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="navbar" class="page-header">Navbar</h1>
 
@@ -2342,6 +2310,10 @@
   <div class="bs-callout bs-callout-danger">
     <h4>Requires JavaScript</h4>
     <p>If JavaScript is disabled and the viewport is narrow enough that the navbar collapses, it will be impossible to expand the navbar and view the content within the <code>.navbar-collapse</code>.</p>
+  </div>
+  <div class="bs-callout bs-callout-info">
+    <h4>Changing the collapsed mobile navbar breakpoint</h4>
+    <p>The navbar collapses into its vertical mobile view when the viewport is narrower than <code>@grid-float-breakpoint</code>, and expands into its horizontal non-mobile view when the viewport is at least <code>@grid-float-breakpoint</code> in width. Adjust this variable in the Less source to control when the navbar collapses/expands. The default value is <code>768px</code> (the smallest "small" or "tablet" screen).</p>
   </div>
 
   <div class="bs-example">
@@ -2364,7 +2336,7 @@
             <li class="active"><a href="#">Link</a></li>
             <li><a href="#">Link</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
@@ -2385,7 +2357,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Link</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
@@ -2418,8 +2390,8 @@
         <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;active&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
         <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
         <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown-toggle&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>Dropdown <span class="nt">&lt;b</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/b&gt;&lt;/a&gt;</span>
-          <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown-toggle&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>Dropdown <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;&lt;/a&gt;</span>
+          <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Action<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
             <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Another action<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
             <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Something else here<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
@@ -2439,8 +2411,8 @@
       <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav navbar-nav navbar-right&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
         <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown-toggle&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>Dropdown <span class="nt">&lt;b</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/b&gt;&lt;/a&gt;</span>
-          <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown-toggle&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>Dropdown <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;&lt;/a&gt;</span>
+          <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Action<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
             <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Another action<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
             <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Something else here<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
@@ -2451,8 +2423,7 @@
       <span class="nt">&lt;/ul&gt;</span>
     <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.navbar-collapse --&gt;</span>
   <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.container-fluid --&gt;</span>
-<span class="nt">&lt;/nav&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/nav&gt;</span></code></pre></div>
 
   <div class="bs-callout bs-callout-danger">
     <h4>Plugin dependency</h4>
@@ -2496,8 +2467,7 @@
     <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Search&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/form&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
 
   <div class="bs-callout bs-callout-warning">
     <h4>Mobile device caveats</h4>
@@ -2530,8 +2500,7 @@
       </div>
     </nav>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default navbar-btn&quot;</span><span class="nt">&gt;</span>Sign in<span class="nt">&lt;/button&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default navbar-btn&quot;</span><span class="nt">&gt;</span>Sign in<span class="nt">&lt;/button&gt;</span></code></pre></div>
 
   <div class="bs-callout bs-callout-warning">
     <h4>Context-specific usage</h4>
@@ -2558,8 +2527,7 @@
       </div>
     </nav>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;navbar-text&quot;</span><span class="nt">&gt;</span>Signed in as Mark Otto<span class="nt">&lt;/p&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;navbar-text&quot;</span><span class="nt">&gt;</span>Signed in as Mark Otto<span class="nt">&lt;/p&gt;</span></code></pre></div>
 
 
   <h2 id="navbar-links">Non-nav links</h2>
@@ -2582,13 +2550,17 @@
       </div>
     </nav>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;navbar-text navbar-right&quot;</span><span class="nt">&gt;</span>Signed in as <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;navbar-link&quot;</span><span class="nt">&gt;</span>Mark Otto<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;navbar-text navbar-right&quot;</span><span class="nt">&gt;</span>Signed in as <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;navbar-link&quot;</span><span class="nt">&gt;</span>Mark Otto<span class="nt">&lt;/a&gt;&lt;/p&gt;</span></code></pre></div>
 
 
   <h2 id="navbar-component-alignment">Component alignment</h2>
   <p>Align nav links, forms, buttons, or text, using the <code>.navbar-left</code> or <code>.navbar-right</code> utility classes. Both classes will add a CSS float in the specified direction. For example, to align nav links, put them in a separate <code>&lt;ul&gt;</code> with the respective utility class applied.</p>
   <p>These classes are mixin-ed versions of <code>.pull-left</code> and <code>.pull-right</code>, but they're scoped to media queries for easier handling of navbar components across device sizes.</p>
+  <div class="bs-callout bs-callout-warning">
+    <h4>Right aligning multiple components</h4>
+    <p>Navbars currently have a limitation with multiple <code>.navbar-right</code> classes. To properly space content, we use negative margin on the last <code>.navbar-right</code> element. When there are multiple elements using that class, these margins don't work as intended.</p>
+    <p>We'll revisit this when we can rewrite that component in v4.</p>
+  </div>
 
 
   <h2 id="navbar-fixed-top">Fixed to top</h2>
@@ -2621,14 +2593,12 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
     ...
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/nav&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/nav&gt;</span></code></pre></div>
 
   <div class="bs-callout bs-callout-danger">
     <h4>Body padding required</h4>
     <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the top of the <code>&lt;body&gt;</code>. Try out your own values or use our snippet below. Tip: By default, the navbar is 50px high.</p>
-<div class="highlight"><pre><code class="scss"><span class="nt">body</span> <span class="p">{</span> <span class="na">padding-top</span><span class="o">:</span> <span class="mi">70</span><span class="kt">px</span><span class="p">;</span> <span class="p">}</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="scss"><span class="nt">body</span> <span class="p">{</span> <span class="na">padding-top</span><span class="o">:</span> <span class="mi">70</span><span class="kt">px</span><span class="p">;</span> <span class="p">}</span></code></pre></div>
     <p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
   </div>
 
@@ -2663,14 +2633,12 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
     ...
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/nav&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/nav&gt;</span></code></pre></div>
 
   <div class="bs-callout bs-callout-danger">
     <h4>Body padding required</h4>
     <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the bottom of the <code>&lt;body&gt;</code>. Try out your own values or use our snippet below. Tip: By default, the navbar is 50px high.</p>
-<div class="highlight"><pre><code class="scss"><span class="nt">body</span> <span class="p">{</span> <span class="na">padding-bottom</span><span class="o">:</span> <span class="mi">70</span><span class="kt">px</span><span class="p">;</span> <span class="p">}</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="scss"><span class="nt">body</span> <span class="p">{</span> <span class="na">padding-bottom</span><span class="o">:</span> <span class="mi">70</span><span class="kt">px</span><span class="p">;</span> <span class="p">}</span></code></pre></div>
     <p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
   </div>
 
@@ -2707,8 +2675,7 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
     ...
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/nav&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/nav&gt;</span></code></pre></div>
 
 
   <h2 id="navbar-inverted">Inverted navbar</h2>
@@ -2740,14 +2707,9 @@
   </div><!-- /example -->
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">&quot;navbar navbar-inverse&quot;</span> <span class="na">role=</span><span class="s">&quot;navigation&quot;</span><span class="nt">&gt;</span>
   ...
-<span class="nt">&lt;/nav&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/nav&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Breadcrumbs
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="breadcrumbs" class="page-header">Breadcrumbs</h1>
 
@@ -2771,14 +2733,9 @@
   <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
   <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Library<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;active&quot;</span><span class="nt">&gt;</span>Data<span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ol&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ol&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Pagination
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="pagination" class="page-header">Pagination</h1>
 
@@ -2805,8 +2762,7 @@
   <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>4<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
   <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>5<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
   <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;raquo;</span><span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 
   <h3>Disabled and active states</h3>
   <p>Links are customizable for different circumstances. Use <code>.disabled</code> for unclickable links and <code>.active</code> to indicate the current page.</p>
@@ -2825,15 +2781,13 @@
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;disabled&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;laquo;</span><span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;active&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>1 <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span>
   ...
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
   <p>You can optionally swap out active or disabled anchors for <code>&lt;span&gt;</code> to remove click functionality while retaining intended styles.</p>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;pagination&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;disabled&quot;</span><span class="nt">&gt;&lt;span&gt;</span><span class="ni">&amp;laquo;</span><span class="nt">&lt;/span&gt;&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;active&quot;</span><span class="nt">&gt;&lt;span&gt;</span>1 <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;</span>
   ...
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 
 
   <h3>Sizing</h3>
@@ -2875,8 +2829,7 @@
   </div>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;pagination pagination-lg&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;pagination&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/ul&gt;</span>
-<span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;pagination pagination-sm&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;pagination pagination-sm&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 
 
   <h2 id="pagination-pager">Pager</h2>
@@ -2893,8 +2846,7 @@
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;pager&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Previous<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
   <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Next<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 
   <h3>Aligned links</h3>
   <p>Alternatively, you can align each link to the sides:</p>
@@ -2907,8 +2859,7 @@
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;pager&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;previous&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;larr;</span> Older<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;next&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Newer <span class="ni">&amp;rarr;</span><span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 
 
   <h3>Optional disabled state</h3>
@@ -2922,14 +2873,9 @@
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;pager&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;previous disabled&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;larr;</span> Older<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;next&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Newer <span class="ni">&amp;rarr;</span><span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Labels
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="labels" class="page-header">Labels</h1>
 
@@ -2942,8 +2888,7 @@
     <h5>Example heading <span class="label label-default">New</span></h5>
     <h6>Example heading <span class="label label-default">New</span></h6>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;h3&gt;</span>Example heading <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;label label-default&quot;</span><span class="nt">&gt;</span>New<span class="nt">&lt;/span&gt;&lt;/h3&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;h3&gt;</span>Example heading <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;label label-default&quot;</span><span class="nt">&gt;</span>New<span class="nt">&lt;/span&gt;&lt;/h3&gt;</span></code></pre></div>
 
   <h3>Available variations</h3>
   <p>Add any of the below mentioned modifier classes to change the appearance of a label.</p>
@@ -2960,14 +2905,14 @@
 <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;label label-success&quot;</span><span class="nt">&gt;</span>Success<span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;label label-info&quot;</span><span class="nt">&gt;</span>Info<span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;label label-warning&quot;</span><span class="nt">&gt;</span>Warning<span class="nt">&lt;/span&gt;</span>
-<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;label label-danger&quot;</span><span class="nt">&gt;</span>Danger<span class="nt">&lt;/span&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;label label-danger&quot;</span><span class="nt">&gt;</span>Danger<span class="nt">&lt;/span&gt;</span></code></pre></div>
+
+  <div class="bs-callout bs-callout-info">
+    <h4>Have tons of labels?</h4>
+    <p>Rendering problems can arise when you have dozens of inline labels within a narrow container, each containing its own <code>inline-block</code> element (like an icon). The way around this is setting <code>display: inline-block;</code>. For context and an example, <a href="https://github.com/twbs/bootstrap/issues/13219">see #13219</a>.</p>
+  </div>
 </div>
 
-
-
-<!-- Badges
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="badges" class="page-header">Badges</h1>
 
@@ -2976,8 +2921,7 @@
   <div class="bs-example">
     <a href="#">Inbox <span class="badge">42</span></a>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Inbox <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;badge&quot;</span><span class="nt">&gt;</span>42<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Inbox <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;badge&quot;</span><span class="nt">&gt;</span>42<span class="nt">&lt;/span&gt;&lt;/a&gt;</span></code></pre></div>
 
   <h4>Self collapsing</h4>
   <p>When there are no new or unread items, badges will simply collapse (via CSS's <code>:empty</code> selector) provided no content exists within.</p>
@@ -3024,14 +2968,9 @@
     <span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
   ...
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Jumbotron
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="jumbotron" class="page-header">Jumbotron</h1>
 
@@ -3047,21 +2986,15 @@
   <span class="nt">&lt;h1&gt;</span>Hello, world!<span class="nt">&lt;/h1&gt;</span>
   <span class="nt">&lt;p&gt;</span>...<span class="nt">&lt;/p&gt;</span>
   <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary btn-lg&quot;</span> <span class="na">role=</span><span class="s">&quot;button&quot;</span><span class="nt">&gt;</span>Learn more<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
   <p>To make the jumbotron full width, and without rounded corners, place it outside all <code>.container</code>s and instead add a <code>.container</code> within.</p>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;jumbotron&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
     ...
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Page header
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="page-header" class="page-header">Page header</h1>
 
@@ -3073,14 +3006,9 @@
   </div>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;page-header&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;h1&gt;</span>Example page header <span class="nt">&lt;small&gt;</span>Subtext for header<span class="nt">&lt;/small&gt;&lt;/h1&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Thumbnails
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="thumbnails" class="page-header">Thumbnails</h1>
 
@@ -3119,8 +3047,7 @@
     <span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
   ...
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="thumbnails-custom-content">Custom content</h3>
   <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.</p>
@@ -3128,7 +3055,7 @@
     <div class="row">
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <img data-src="holder.js/300x200" alt="Generic placeholder thumbnail">
+          <img data-src="holder.js/100%x200" alt="Generic placeholder thumbnail">
           <div class="caption">
             <h3>Thumbnail label</h3>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -3138,7 +3065,7 @@
       </div>
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <img data-src="holder.js/300x200" alt="Generic placeholder thumbnail">
+          <img data-src="holder.js/100%x200" alt="Generic placeholder thumbnail">
           <div class="caption">
             <h3>Thumbnail label</h3>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -3148,7 +3075,7 @@
       </div>
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <img data-src="holder.js/300x200" alt="Generic placeholder thumbnail">
+          <img data-src="holder.js/100%x200" alt="Generic placeholder thumbnail">
           <div class="caption">
             <h3>Thumbnail label</h3>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -3161,7 +3088,7 @@
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-6 col-md-4&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;thumbnail&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;img</span> <span class="na">data-src=</span><span class="s">&quot;holder.js/300x200&quot;</span> <span class="na">alt=</span><span class="s">&quot;...&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">data-src=</span><span class="s">&quot;holder.js/300x300&quot;</span> <span class="na">alt=</span><span class="s">&quot;...&quot;</span><span class="nt">&gt;</span>
       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;caption&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;h3&gt;</span>Thumbnail label<span class="nt">&lt;/h3&gt;</span>
         <span class="nt">&lt;p&gt;</span>...<span class="nt">&lt;/p&gt;</span>
@@ -3169,14 +3096,9 @@
       <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Alerts
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="alerts" class="page-header">Alerts</h1>
 
@@ -3191,38 +3113,36 @@
   </div>
 
   <div class="bs-example">
-    <div class="alert alert-success">
+    <div class="alert alert-success" role="alert">
       <strong>Well done!</strong> You successfully read this important alert message.
     </div>
-    <div class="alert alert-info">
+    <div class="alert alert-info" role="alert">
       <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
     </div>
-    <div class="alert alert-warning">
+    <div class="alert alert-warning" role="alert">
       <strong>Warning!</strong> Better check yourself, you're not looking too good.
     </div>
-    <div class="alert alert-danger">
+    <div class="alert alert-danger" role="alert">
       <strong>Oh snap!</strong> Change a few things up and try submitting again.
     </div>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-success&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-info&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-warning&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-danger&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-success&quot;</span> <span class="na">role=</span><span class="s">&quot;alert&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-info&quot;</span> <span class="na">role=</span><span class="s">&quot;alert&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-warning&quot;</span> <span class="na">role=</span><span class="s">&quot;alert&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-danger&quot;</span> <span class="na">role=</span><span class="s">&quot;alert&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-  <h2 id="alerts-dismissable">Dismissable alerts</h2>
-  <p>Build on any alert by adding an optional <code>.alert-dismissable</code> and close button.</p>
+  <h2 id="alerts-dismissible">Dismissible alerts</h2>
+  <p>Build on any alert by adding an optional <code>.alert-dismissible</code> and close button.</p>
   <div class="bs-example">
-    <div class="alert alert-warning alert-dismissable">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <strong>Warning!</strong> Better check yourself, you're not looking too good.
     </div>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-warning alert-dismissable&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;close&quot;</span> <span class="na">data-dismiss=</span><span class="s">&quot;alert&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/button&gt;</span>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-warning alert-dismissible&quot;</span> <span class="na">role=</span><span class="s">&quot;alert&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;close&quot;</span> <span class="na">data-dismiss=</span><span class="s">&quot;alert&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>Close<span class="nt">&lt;/span&gt;&lt;/button&gt;</span>
   <span class="nt">&lt;strong&gt;</span>Warning!<span class="nt">&lt;/strong&gt;</span> Better check yourself, you&#39;re not looking too good.
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <div class="bs-callout bs-callout-warning">
     <h4>Ensure proper behavior across all devices</h4>
@@ -3232,38 +3152,33 @@
   <h2 id="alerts-links">Links in alerts</h2>
   <p>Use the <code>.alert-link</code> utility class to quickly provide matching colored links within any alert.</p>
   <div class="bs-example">
-    <div class="alert alert-success">
+    <div class="alert alert-success" role="alert">
       <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
     </div>
-    <div class="alert alert-info">
+    <div class="alert alert-info" role="alert">
       <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
     </div>
-    <div class="alert alert-warning">
+    <div class="alert alert-warning" role="alert">
       <strong>Warning!</strong> Better check yourself, you're <a href="#" class="alert-link">not looking too good</a>.
     </div>
-    <div class="alert alert-danger">
+    <div class="alert alert-danger" role="alert">
       <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
     </div>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-success&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-success&quot;</span> <span class="na">role=</span><span class="s">&quot;alert&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;alert-link&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-info&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-info&quot;</span> <span class="na">role=</span><span class="s">&quot;alert&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;alert-link&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-warning&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-warning&quot;</span> <span class="na">role=</span><span class="s">&quot;alert&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;alert-link&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-danger&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-danger&quot;</span> <span class="na">role=</span><span class="s">&quot;alert&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;alert-link&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Progress bars
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="progress" class="page-header">Progress bars</h1>
 
@@ -3287,8 +3202,7 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress-bar&quot;</span> <span class="na">role=</span><span class="s">&quot;progressbar&quot;</span> <span class="na">aria-valuenow=</span><span class="s">&quot;60&quot;</span> <span class="na">aria-valuemin=</span><span class="s">&quot;0&quot;</span> <span class="na">aria-valuemax=</span><span class="s">&quot;100&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 60%;&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>60% Complete<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="progress-label">With label</h3>
   <p>Remove the <code>.sr-only</code> class from within the progress bar to show a visible percentage. For low percentages, consider adding a <code>min-width</code> to ensure the label's text is fully visible.</p>
@@ -3303,8 +3217,33 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress-bar&quot;</span> <span class="na">role=</span><span class="s">&quot;progressbar&quot;</span> <span class="na">aria-valuenow=</span><span class="s">&quot;60&quot;</span> <span class="na">aria-valuemin=</span><span class="s">&quot;0&quot;</span> <span class="na">aria-valuemax=</span><span class="s">&quot;100&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 60%;&quot;</span><span class="nt">&gt;</span>
     60%
   <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+  <h3 id="progress-low-percentages">Low percentages</h3>
+  <p>Progress bars representing low single digit percentages, as well as 0%, include a <code>min-width: 20px;</code> for legibility.</p>
+  <div class="bs-example">
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        0%
+      </div>
+    </div>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
+        2%
+      </div>
+    </div>
+  </div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress-bar&quot;</span> <span class="na">role=</span><span class="s">&quot;progressbar&quot;</span> <span class="na">aria-valuenow=</span><span class="s">&quot;0&quot;</span> <span class="na">aria-valuemin=</span><span class="s">&quot;0&quot;</span> <span class="na">aria-valuemax=</span><span class="s">&quot;100&quot;</span><span class="nt">&gt;</span>
+    0%
+  <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress-bar&quot;</span> <span class="na">role=</span><span class="s">&quot;progressbar&quot;</span> <span class="na">aria-valuenow=</span><span class="s">&quot;2&quot;</span> <span class="na">aria-valuemin=</span><span class="s">&quot;0&quot;</span> <span class="na">aria-valuemax=</span><span class="s">&quot;100&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 2%;&quot;</span><span class="nt">&gt;</span>
+    2%
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
 
   <h3 id="progress-alternatives">Contextual alternatives</h3>
   <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
@@ -3349,68 +3288,65 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress-bar progress-bar-danger&quot;</span> <span class="na">role=</span><span class="s">&quot;progressbar&quot;</span> <span class="na">aria-valuenow=</span><span class="s">&quot;80&quot;</span> <span class="na">aria-valuemin=</span><span class="s">&quot;0&quot;</span> <span class="na">aria-valuemax=</span><span class="s">&quot;100&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 80%&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>80% Complete<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="progress-striped">Striped</h3>
   <p>Uses a gradient to create a striped effect. Not available in IE8.</p>
   <div class="bs-example">
-    <div class="progress progress-striped" >
-      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+    <div class="progress">
+      <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
         <span class="sr-only">40% Complete (success)</span>
       </div>
     </div>
-    <div class="progress progress-striped">
-      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+    <div class="progress">
+      <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
         <span class="sr-only">20% Complete</span>
       </div>
     </div>
-    <div class="progress progress-striped">
-      <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+    <div class="progress">
+      <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
         <span class="sr-only">60% Complete (warning)</span>
       </div>
     </div>
-    <div class="progress progress-striped">
-      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+    <div class="progress">
+      <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
         <span class="sr-only">80% Complete (danger)</span>
       </div>
     </div>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress progress-striped&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress-bar progress-bar-success&quot;</span> <span class="na">role=</span><span class="s">&quot;progressbar&quot;</span> <span class="na">aria-valuenow=</span><span class="s">&quot;40&quot;</span> <span class="na">aria-valuemin=</span><span class="s">&quot;0&quot;</span> <span class="na">aria-valuemax=</span><span class="s">&quot;100&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 40%&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress-bar progress-bar-success progress-bar-striped&quot;</span> <span class="na">role=</span><span class="s">&quot;progressbar&quot;</span> <span class="na">aria-valuenow=</span><span class="s">&quot;40&quot;</span> <span class="na">aria-valuemin=</span><span class="s">&quot;0&quot;</span> <span class="na">aria-valuemax=</span><span class="s">&quot;100&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 40%&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>40% Complete (success)<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress progress-striped&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress-bar progress-bar-info&quot;</span> <span class="na">role=</span><span class="s">&quot;progressbar&quot;</span> <span class="na">aria-valuenow=</span><span class="s">&quot;20&quot;</span> <span class="na">aria-valuemin=</span><span class="s">&quot;0&quot;</span> <span class="na">aria-valuemax=</span><span class="s">&quot;100&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 20%&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress-bar progress-bar-info progress-bar-striped&quot;</span> <span class="na">role=</span><span class="s">&quot;progressbar&quot;</span> <span class="na">aria-valuenow=</span><span class="s">&quot;20&quot;</span> <span class="na">aria-valuemin=</span><span class="s">&quot;0&quot;</span> <span class="na">aria-valuemax=</span><span class="s">&quot;100&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 20%&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>20% Complete<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress progress-striped&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress-bar progress-bar-warning&quot;</span> <span class="na">role=</span><span class="s">&quot;progressbar&quot;</span> <span class="na">aria-valuenow=</span><span class="s">&quot;60&quot;</span> <span class="na">aria-valuemin=</span><span class="s">&quot;0&quot;</span> <span class="na">aria-valuemax=</span><span class="s">&quot;100&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 60%&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress-bar progress-bar-warning progress-bar-striped&quot;</span> <span class="na">role=</span><span class="s">&quot;progressbar&quot;</span> <span class="na">aria-valuenow=</span><span class="s">&quot;60&quot;</span> <span class="na">aria-valuemin=</span><span class="s">&quot;0&quot;</span> <span class="na">aria-valuemax=</span><span class="s">&quot;100&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 60%&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>60% Complete (warning)<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress progress-striped&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress-bar progress-bar-danger&quot;</span> <span class="na">role=</span><span class="s">&quot;progressbar&quot;</span> <span class="na">aria-valuenow=</span><span class="s">&quot;80&quot;</span> <span class="na">aria-valuemin=</span><span class="s">&quot;0&quot;</span> <span class="na">aria-valuemax=</span><span class="s">&quot;100&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 80%&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress-bar progress-bar-danger progress-bar-striped&quot;</span> <span class="na">role=</span><span class="s">&quot;progressbar&quot;</span> <span class="na">aria-valuenow=</span><span class="s">&quot;80&quot;</span> <span class="na">aria-valuemin=</span><span class="s">&quot;0&quot;</span> <span class="na">aria-valuemax=</span><span class="s">&quot;100&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 80%&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>80% Complete (danger)<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="progress-animated">Animated</h3>
-  <p>Add <code>.active</code> to <code>.progress-striped</code> to animate the stripes right to left. Not available in IE9 and below.</p>
+  <p>Add <code>.active</code> to <code>.progress-bar-striped</code> to animate the stripes right to left. Not available in IE9 and below.</p>
   <div class="bs-example">
-    <div class="progress progress-striped active">
-      <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%"><span class="sr-only">45% Complete</span></div>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%"><span class="sr-only">45% Complete</span></div>
     </div>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress progress-striped active&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress-bar&quot;</span>  <span class="na">role=</span><span class="s">&quot;progressbar&quot;</span> <span class="na">aria-valuenow=</span><span class="s">&quot;45&quot;</span> <span class="na">aria-valuemin=</span><span class="s">&quot;0&quot;</span> <span class="na">aria-valuemax=</span><span class="s">&quot;100&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 45%&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress-bar progress-bar-striped active&quot;</span>  <span class="na">role=</span><span class="s">&quot;progressbar&quot;</span> <span class="na">aria-valuenow=</span><span class="s">&quot;45&quot;</span> <span class="na">aria-valuemin=</span><span class="s">&quot;0&quot;</span> <span class="na">aria-valuemax=</span><span class="s">&quot;100&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 45%&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>45% Complete<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="progress-stacked">Stacked</h3>
   <p>Place multiple bars into the same <code>.progress</code> to stack them.</p>
@@ -3419,7 +3355,7 @@
       <div class="progress-bar progress-bar-success" style="width: 35%">
         <span class="sr-only">35% Complete (success)</span>
       </div>
-      <div class="progress-bar progress-bar-warning" style="width: 20%">
+      <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 20%">
         <span class="sr-only">20% Complete (warning)</span>
       </div>
       <div class="progress-bar progress-bar-danger" style="width: 10%">
@@ -3431,20 +3367,15 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress-bar progress-bar-success&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 35%&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>35% Complete (success)<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress-bar progress-bar-warning&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 20%&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress-bar progress-bar-warning progress-bar-striped&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 20%&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>20% Complete (warning)<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress-bar progress-bar-danger&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 10%&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>10% Complete (danger)<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Media object
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="media" class="page-header">Media object</h1>
 
@@ -3489,8 +3420,7 @@
     <span class="nt">&lt;h4</span> <span class="na">class=</span><span class="s">&quot;media-heading&quot;</span><span class="nt">&gt;</span>Media heading<span class="nt">&lt;/h4&gt;</span>
     ...
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="media-list">Media list</h3>
   <p>With a bit of extra markup, you can use media inside list (useful for comment threads or articles lists).</p>
@@ -3556,14 +3486,9 @@
       ...
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- List group
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="list-group" class="page-header">List group</h1>
 
@@ -3586,8 +3511,7 @@
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;list-group-item&quot;</span><span class="nt">&gt;</span>Morbi leo risus<span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;list-group-item&quot;</span><span class="nt">&gt;</span>Porta ac consectetur ac<span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;list-group-item&quot;</span><span class="nt">&gt;</span>Vestibulum at eros<span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 
   <h3 id="list-group-badges">Badges</h3>
   <p>Add the badges component to any list group item and it will automatically be positioned on the right.</p>
@@ -3612,8 +3536,7 @@
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;badge&quot;</span><span class="nt">&gt;</span>14<span class="nt">&lt;/span&gt;</span>
     Cras justo odio
   <span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
 
   <h3 id="list-group-linked">Linked items</h3>
   <p>Linkify list group items by using anchor tags instead of list items (that also means a parent <code>&lt;div&gt;</code> instead of an <code>&lt;ul&gt;</code>). No need for individual parents around each element.</p>
@@ -3636,8 +3559,30 @@
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;list-group-item&quot;</span><span class="nt">&gt;</span>Morbi leo risus<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;list-group-item&quot;</span><span class="nt">&gt;</span>Porta ac consectetur ac<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;list-group-item&quot;</span><span class="nt">&gt;</span>Vestibulum at eros<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+  <h3 id="list-group-disabled">Disabled items</h3>
+  <p>Add <code>.disabled</code> to a <code>.list-group-item</code> to gray it out to appear disabled.</p>
+  <div class="bs-example">
+    <div class="list-group">
+      <a href="#" class="list-group-item disabled">
+        Cras justo odio
+      </a>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+    </div>
+  </div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;list-group&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;list-group-item disabled&quot;</span><span class="nt">&gt;</span>
+    Cras justo odio
+  <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;list-group-item&quot;</span><span class="nt">&gt;</span>Dapibus ac facilisis in<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;list-group-item&quot;</span><span class="nt">&gt;</span>Morbi leo risus<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;list-group-item&quot;</span><span class="nt">&gt;</span>Porta ac consectetur ac<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;list-group-item&quot;</span><span class="nt">&gt;</span>Vestibulum at eros<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="list-group-contextual-classes">Contextual classes</h3>
   <p>Use contextual classes to style list items, default or linked. Also includes <code>.active</code> state.</p>
@@ -3672,8 +3617,7 @@
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;list-group-item list-group-item-info&quot;</span><span class="nt">&gt;</span>Cras sit amet nibh libero<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;list-group-item list-group-item-warning&quot;</span><span class="nt">&gt;</span>Porta ac consectetur ac<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;list-group-item list-group-item-danger&quot;</span><span class="nt">&gt;</span>Vestibulum at eros<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="list-group-custom-content">Custom content</h3>
   <p>Add nearly any HTML within, even for linked list groups like the one below.</p>
@@ -3698,14 +3642,9 @@
     <span class="nt">&lt;h4</span> <span class="na">class=</span><span class="s">&quot;list-group-item-heading&quot;</span><span class="nt">&gt;</span>List group item heading<span class="nt">&lt;/h4&gt;</span>
     <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;list-group-item-text&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
   <span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 </div>
 
-
-
-<!-- Panels
-================================================== -->
 <div class="bs-docs-section">
   <h1 id="panels" class="page-header">Panels</h1>
 
@@ -3724,11 +3663,11 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-body&quot;</span><span class="nt">&gt;</span>
     Basic panel example
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="panels-heading">Panel with heading</h3>
   <p>Easily add a heading container to your panel with <code>.panel-heading</code>. You may also include any <code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code> with a <code>.panel-title</code> class to add a pre-styled heading.</p>
+  <p>For proper link coloring, be sure to place links in headings within <code>.panel-title</code>.</p>
   <div class="bs-example">
     <div class="panel panel-default">
       <div class="panel-heading">Panel heading without title</div>
@@ -3759,8 +3698,7 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-body&quot;</span><span class="nt">&gt;</span>
     Panel content
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="panels-footer">Panel with footer</h3>
   <p>Wrap buttons or secondary text in <code>.panel-footer</code>. Note that panel footers <strong>do not</strong> inherit colors and borders when using contextual variations as they are not meant to be in the foreground.</p>
@@ -3777,8 +3715,7 @@
     Panel content
   <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-footer&quot;</span><span class="nt">&gt;</span>Panel footer<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="panels-alternatives">Contextual alternatives</h3>
   <p>Like other components, easily make a panel more meaningful to a particular context by adding any of the contextual state classes.</p>
@@ -3828,8 +3765,7 @@
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel panel-success&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel panel-info&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel panel-warning&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel panel-danger&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel panel-danger&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="panels-tables">With tables</h3>
   <p>Add any non-bordered <code>.table</code> within a panel for a seamless design. If there is a <code>.panel-body</code>, we add an extra border to the top of the table for separation.</p>
@@ -3885,8 +3821,7 @@
   <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table&quot;</span><span class="nt">&gt;</span>
     ...
   <span class="nt">&lt;/table&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <p>If there is no panel body, the component moves from panel header to table without interruption.</p>
   <div class="bs-example">
@@ -3935,8 +3870,7 @@
   <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table&quot;</span><span class="nt">&gt;</span>
     ...
   <span class="nt">&lt;/table&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
 
   <h3 id="panels-list-group">With list groups</h3>
@@ -3974,14 +3908,31 @@
     <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;list-group-item&quot;</span><span class="nt">&gt;</span>Porta ac consectetur ac<span class="nt">&lt;/li&gt;</span>
     <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;list-group-item&quot;</span><span class="nt">&gt;</span>Vestibulum at eros<span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;/ul&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 </div>
 
+<div class="bs-docs-section">
+  <h1 id="responsive-embed" class="page-header">Responsive embed</h1>
 
+  <p>Allow browsers to determine video or slideshow dimensions based on the width of their containing block by creating an intrinsic ratio that will properly scale on any device.</p>
+  <p>Rules are directly applied to <code>&lt;iframe&gt;</code>, <code>&lt;embed&gt;</code>, and <code>&lt;object&gt;</code> elements; optionally use an explicit descendant class <code>.embed-responsive-item</code> when you want to match the styling for other attributes.</p>
+  <p><strong>Pro-Tip!</strong> You don't need to include <code>frameborder="0"</code> in your <code>&lt;iframe&gt;</code>s as we override that for you.</p>
+  <div class="bs-example">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" src="//www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+    </div>
+  </div>
+<div class="highlight"><pre><code class="html"><span class="c">&lt;!-- 16:9 aspect ratio --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;embed-responsive embed-responsive-16by9&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;iframe</span> <span class="na">class=</span><span class="s">&quot;embed-responsive-item&quot;</span> <span class="na">src=</span><span class="s">&quot;…&quot;</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 
-<!-- Wells
-================================================== -->
+<span class="c">&lt;!-- 4:3 aspect ratio --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;embed-responsive embed-responsive-4by3&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;iframe</span> <span class="na">class=</span><span class="s">&quot;embed-responsive-item&quot;</span> <span class="na">src=</span><span class="s">&quot;…&quot;</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+</div>
+
 <div class="bs-docs-section">
   <h1 id="wells" class="page-header">Wells</h1>
 
@@ -3992,8 +3943,7 @@
       Look, I'm in a well!
     </div>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;well&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;well&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span></code></pre></div>
   <h3>Optional classes</h3>
   <p>Control padding and rounded corners with two optional modifier classes.</p>
   <div class="bs-example">
@@ -4001,21 +3951,20 @@
       Look, I'm in a large well!
     </div>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;well well-lg&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;well well-lg&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <div class="bs-example">
     <div class="well well-sm">
       Look, I'm in a small well!
     </div>
   </div>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;well well-sm&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;well well-sm&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span></code></pre></div>
 </div>
+
 
         </div>
         <div class="col-md-3">
-          <div class="bs-docs-sidebar hidden-print" role="complementary">
+          <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
             <ul class="nav bs-docs-sidenav">
               
                 <li>
@@ -4114,7 +4063,7 @@
   <a href="#alerts">Alerts</a>
   <ul class="nav">
     <li><a href="#alerts-examples">Examples</a></li>
-    <li><a href="#alerts-dismissable">Dismissable alerts</a></li>
+    <li><a href="#alerts-dismissible">Dismissible alerts</a></li>
     <li><a href="#alerts-links">Links in alerts</a></li>
   </ul>
 </li>
@@ -4123,6 +4072,7 @@
   <ul class="nav">
     <li><a href="#progress-basic">Basic example</a></li>
     <li><a href="#progress-label">With label</a></li>
+    <li><a href="#progress-low-percentages">Low percentages</a></li>
     <li><a href="#progress-alternatives">Contextual alternatives</a></li>
     <li><a href="#progress-striped">Striped</a></li>
     <li><a href="#progress-animated">Animated</a></li>
@@ -4142,6 +4092,7 @@
     <li><a href="#list-group-basic">Basic example</a></li>
     <li><a href="#list-group-badges">Badges</a></li>
     <li><a href="#list-group-linked">Linked items</a></li>
+    <li><a href="#list-group-disabled">Disabled items</a></li>
     <li><a href="#list-group-contextual-classes">Contextual classes</a></li>
     <li><a href="#list-group-custom-content">Custom content</a></li>
   </ul>
@@ -4156,6 +4107,7 @@
     <li><a href="#panels-list-group">With list groups</a>
   </ul>
 </li>
+<li><a href="#responsive-embed">Responsive embed</a></li>
 <li><a href="#wells">Wells</a></li>
 
               
@@ -4163,10 +4115,14 @@
             <a class="back-to-top" href="#top">
               Back to top
             </a>
+            
+            <a href="#" class="bs-docs-theme-toggle">
+              Preview theme
+            </a>
+            
           </div>
         </div>
       </div>
-
     </div>
 
     <!-- Footer
@@ -4195,7 +4151,7 @@
     <p>Maintained by the <a href="https://github.com/twbs?tab=members">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
     <p>Code licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="bs-docs-footer-links muted">
-      <li>Currently v3.1.1</li>
+      <li>Currently v3.2.0</li>
       <li>&middot;</li>
       <li><a href="https://github.com/twbs/bootstrap">GitHub</a></li>
       <li>&middot;</li>
@@ -4219,7 +4175,7 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="../dist/js/bootstrap.min.js"></script>
 <script src="../assets/js/docs.min.js"></script>
 
