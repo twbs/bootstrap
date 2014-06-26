@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: tab.js v3.1.1
+ * Bootstrap: tab.js v3.2.0
  * http://getbootstrap.com/javascript/#tabs
  * ========================================================================
  * Copyright 2011-2014 Twitter, Inc.
@@ -17,7 +17,7 @@
     this.element = $(element)
   }
 
-  Tab.VERSION = '3.1.1'
+  Tab.VERSION = '3.2.0'
 
   Tab.prototype.show = function () {
     var $this    = this.element

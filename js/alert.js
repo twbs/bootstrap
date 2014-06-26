@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: alert.js v3.1.1
+ * Bootstrap: alert.js v3.2.0
  * http://getbootstrap.com/javascript/#alerts
  * ========================================================================
  * Copyright 2011-2014 Twitter, Inc.
@@ -18,7 +18,7 @@
     $(el).on('click', dismiss, this.close)
   }
 
-  Alert.VERSION = '3.1.1'
+  Alert.VERSION = '3.2.0'
 
   Alert.prototype.close = function (e) {
     var $this    = $(this)

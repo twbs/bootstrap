@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: tooltip.js v3.1.1
+ * Bootstrap: tooltip.js v3.2.0
  * http://getbootstrap.com/javascript/#tooltip
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ========================================================================
@@ -25,7 +25,7 @@
     this.init('tooltip', element, options)
   }
 
-  Tooltip.VERSION  = '3.1.1'
+  Tooltip.VERSION  = '3.2.0'
 
   Tooltip.DEFAULTS = {
     animation: true,

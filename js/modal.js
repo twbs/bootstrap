@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: modal.js v3.1.1
+ * Bootstrap: modal.js v3.2.0
  * http://getbootstrap.com/javascript/#modals
  * ========================================================================
  * Copyright 2011-2014 Twitter, Inc.
@@ -30,7 +30,7 @@
     }
   }
 
-  Modal.VERSION  = '3.1.1'
+  Modal.VERSION  = '3.2.0'
 
   Modal.DEFAULTS = {
     backdrop: true,
