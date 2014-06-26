@@ -91,7 +91,7 @@
 
     // Default & dismissible popover demos
     $('.bs-docs-popover').popover()
-    $('.bs-docs-popover-dismiss').popover({trigger: 'focus'})
+    $('.bs-docs-popover-dismiss').popover({ trigger: 'focus' })
 
     // Button state demo
     $('#loading-example-btn').click(function () {
