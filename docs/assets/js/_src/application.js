@@ -81,6 +81,7 @@
       container: 'body'
     })
 
+    // Demos within modals
     $('.tooltip-test').tooltip()
     $('.popover-test').popover()
 
