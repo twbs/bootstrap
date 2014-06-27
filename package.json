@@ -33,7 +33,7 @@
     "btoa": "~1.1.2",
     "glob": "~4.0.2",
     "grunt": "~0.4.5",
-    "grunt-autoprefixer": "~0.7.6",
+    "grunt-autoprefixer": "~0.8.0",
     "grunt-banner": "~0.2.3",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-concat": "~0.4.0",
