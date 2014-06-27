@@ -27,12 +27,10 @@
       $body.scrollspy('refresh')
     })
 
-
     // Kill links
     $('.bs-docs-container [href=#]').click(function (e) {
       e.preventDefault()
     })
-
 
     // Sidenav affixing
     setTimeout(function () {
@@ -62,15 +60,25 @@
     ;(function () {
       var stylesheetLink = $('#bs-theme-stylesheet')
       var themeBtn = $('.bs-docs-theme-toggle')
+
+      var activateTheme = function () {
+        stylesheetLink.attr('href', stylesheetLink.attr('data-href'))
+        themeBtn.text('Disable theme preview')
+        localStorage.setItem('previewTheme', true)
+      }
+
+      if (localStorage.getItem('previewTheme')) {
+        activateTheme()
+      }
+
       themeBtn.click(function () {
-        var href = stylesheetLink.attr('href');
+        var href = stylesheetLink.attr('href')
         if (!href || href.indexOf('data') === 0) {
-          stylesheetLink.attr('href', stylesheetLink.attr('data-href'))
-          themeBtn.text('Disable theme preview')
-        }
-        else {
+          activateTheme()
+        } else {
           stylesheetLink.attr('href', '')
           themeBtn.text('Preview theme')
+          localStorage.removeItem('previewTheme')
         }
       })
     })();
