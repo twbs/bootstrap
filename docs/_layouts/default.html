@@ -22,9 +22,6 @@
     <div class="container bs-docs-container">
 
       <div class="row">
-        <div class="col-md-9" role="main">
-          {{ content }}
-        </div>
         <div class="col-md-3">
           <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
             <ul class="nav bs-docs-sidenav">
@@ -53,6 +50,9 @@
             </a>
             {% endif %}
           </div>
+        </div>
+        <div class="col-md-9" role="main">
+          {{ content }}
         </div>
       </div>
     </div>
