@@ -3859,7 +3859,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   left: 0;
   z-index: 1030;
   -webkit-transform: translate3d(0, 0, 0);
-       -o-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
 }
 @media (min-width: 768px) {
@@ -5393,12 +5392,10 @@ button.close {
        -o-transition:      -o-transform .3s ease-out;
           transition:         transform .3s ease-out;
   -webkit-transform: translate3d(0, -25%, 0);
-       -o-transform: translate3d(0, -25%, 0);
           transform: translate3d(0, -25%, 0);
 }
 .modal.in .modal-dialog {
   -webkit-transform: translate3d(0, 0, 0);
-       -o-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
 }
 .modal-open .modal {
@@ -5988,7 +5985,6 @@ button.close {
 .affix {
   position: fixed;
   -webkit-transform: translate3d(0, 0, 0);
-       -o-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
 }
 @-ms-viewport {
