@@ -99,6 +99,7 @@ Keep track of development and community news.
 - Read and subscribe to [The Official Bootstrap Blog](http://blog.getbootstrap.com).
 - Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##twitter-bootstrap` channel.
 - Implementation help may be found at Stack Overflow (tagged [`twitter-bootstrap-3`](http://stackoverflow.com/questions/tagged/twitter-bootstrap-3)).
+- [Forum](http://www.twitterbootstrap.net/)
 
 
 
