@@ -68,7 +68,12 @@
                 offsetTop    != null && (scrollTop <= offsetTop) ? 'top' : false
 
     if (this.affixed === affix) return
-    if (this.unpin != null) this.$element.css('top', '')
+    if (this.unpin != null) {
+      this.$element.css({
+        top: '',
+        position: ''
+      });
+    }
 
     var affixType = 'affix' + (affix ? '-' + affix : '')
     var e         = $.Event(affixType + '.bs.affix')
