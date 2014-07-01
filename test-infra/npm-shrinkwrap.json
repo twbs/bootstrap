@@ -226,12 +226,12 @@
       }
     },
     "grunt-autoprefixer": {
-      "version": "0.8.0",
-      "resolved": "https://registry.npmjs.org/grunt-autoprefixer/-/grunt-autoprefixer-0.8.0.tgz",
+      "version": "0.8.1",
+      "resolved": "https://registry.npmjs.org/grunt-autoprefixer/-/grunt-autoprefixer-0.8.1.tgz",
       "dependencies": {
         "autoprefixer": {
-          "version": "2.0.2",
-          "resolved": "https://registry.npmjs.org/autoprefixer/-/autoprefixer-2.0.2.tgz",
+          "version": "2.1.0",
+          "resolved": "https://registry.npmjs.org/autoprefixer/-/autoprefixer-2.1.0.tgz",
           "dependencies": {
             "caniuse-db": {
               "version": "1.0.20140628",
@@ -1442,8 +1442,8 @@
                   }
                 },
                 "progress": {
-                  "version": "1.1.6",
-                  "resolved": "https://registry.npmjs.org/progress/-/progress-1.1.6.tgz"
+                  "version": "1.1.7",
+                  "resolved": "https://registry.npmjs.org/progress/-/progress-1.1.7.tgz"
                 },
                 "request": {
                   "version": "2.36.0",
@@ -2154,16 +2154,16 @@
       }
     },
     "grunt-jscs-checker": {
-      "version": "0.6.0",
-      "resolved": "https://registry.npmjs.org/grunt-jscs-checker/-/grunt-jscs-checker-0.6.0.tgz",
+      "version": "0.6.1",
+      "resolved": "https://registry.npmjs.org/grunt-jscs-checker/-/grunt-jscs-checker-0.6.1.tgz",
       "dependencies": {
         "hooker": {
           "version": "0.2.3",
           "resolved": "https://registry.npmjs.org/hooker/-/hooker-0.2.3.tgz"
         },
         "jscs": {
-          "version": "1.5.6",
-          "resolved": "https://registry.npmjs.org/jscs/-/jscs-1.5.6.tgz",
+          "version": "1.5.7",
+          "resolved": "https://registry.npmjs.org/jscs/-/jscs-1.5.7.tgz",
           "dependencies": {
             "colors": {
               "version": "0.6.2",
