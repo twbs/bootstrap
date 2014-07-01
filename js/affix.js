@@ -71,7 +71,7 @@
     if (this.unpin != null) this.$element.css('top', '')
 
     var affixType = 'affix' + (affix ? '-' + affix : '')
-    var e         = $.Event(affixType + '.bs.affix')
+    var e         = $.Event()
 
     this.$element.trigger(e)
 
@@ -83,7 +83,7 @@
     this.$element
       .removeClass(Affix.RESET)
       .addClass(affixType)
-      .trigger($.Event(affixType.replace('affix', 'affixed') + '.bs.affix'))
+      .trigger(affixType.replace('affix', 'affixed') + '.bs.affix')
 
     if (affix == 'bottom') {
       this.$element.offset({
