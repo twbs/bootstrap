@@ -71,7 +71,7 @@
     if (this.unpin != null) this.$element.css('top', '')
 
     var affixType = 'affix' + (affix ? '-' + affix : '')
-    var e         = $.Event()
+    var e         = $.Event(affixType + '.bs.affix')
 
     this.$element.trigger(e)
 
