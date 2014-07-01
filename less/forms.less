@@ -331,7 +331,7 @@ input[type="checkbox"] {
 // Feedback icon (requires .glyphicon classes)
 .form-control-feedback {
   position: absolute;
-  top: (@line-height-computed + 5); // Height of the `label` and its margin
+  top: 0;
   right: 0;
   z-index: 2; // Ensure icon is above input groups
   display: block;
@@ -363,9 +363,14 @@ input[type="checkbox"] {
 }
 
 
-// Reposition feedback icon if label is hidden with "screenreader only" state
-.has-feedback label.sr-only ~ .form-control-feedback {
-  top: 0;
+// Reposition feedback icon if input has visible label above
+.has-feedback label {
+  & ~ .form-control-feedback {
+     top: (@line-height-computed + 5); // Height of the `label` and its margin
+  }
+  &.sr-only ~ .form-control-feedback {
+     top: 0;
+  }
 }
 
 
