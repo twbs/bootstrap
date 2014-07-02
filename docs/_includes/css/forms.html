@@ -581,6 +581,58 @@
 </div>
 {% endhighlight %}
 
+  <h3>Checkboxes and radio buttons</h3>
+  <div class=bs-example>
+    <form role="form">
+      <div class="has-error">
+        <div class="radio">
+          <label class="checkbox">
+            <input type="checkbox" id="checkboxError" value="option1">
+            Option one is this and that&mdash;be sure to include why it's great
+          </label>
+        </div>
+      </div>
+      <div class="has-success">
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="radiosSuccess1" value="option1" checked>
+            Option one is this and that&mdash;be sure to include why it's great
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="radiosSuccess2" value="option2">
+            Option two can be something else and selecting it will deselect option one
+          </label>
+        </div>
+      </div>
+    </form>
+  </div>
+{% highlight html %}
+<div class="has-error">
+  <div class="radio">
+    <label class="checkbox">
+      <input type="checkbox" id="checkboxError" value="option1">
+      Option one is this and that&mdash;be sure to include why it's great
+    </label>
+  </div>
+</div>
+<div class="has-success">
+  <div class="radio">
+    <label>
+      <input type="radio" name="optionsRadios" id="radiosSuccess1" value="option1" checked>
+      Option one is this and that&mdash;be sure to include why it's great
+    </label>
+  </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="optionsRadios" id="radiosSuccess2" value="option2">
+      Option two can be something else and selecting it will deselect option one
+    </label>
+  </div>
+</div>
+{% endhighlight %}
+
   <h4>Optional icons in horizontal and inline forms</h4>
   <div class="bs-example">
     <form class="form-horizontal" role="form">
