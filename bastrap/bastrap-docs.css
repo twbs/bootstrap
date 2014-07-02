@@ -1,0 +1,117 @@
+/* Docs CSS */
+
+body {
+  padding-top: 60px;
+  padding-bottom: 120px;
+  posiion: relative;
+}
+.page-header {
+  margin-bottom: 0;
+  padding-top: 40px;
+  padding-bottom: 0;
+  border: 0 none;
+}
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+.bs-example {
+  padding-top: 15px;
+}
+.bs-example:after {
+  display:none;
+}
+.carousel-inner > .item > img, .thumbnail > img {
+  width:100% !important;
+}
+.zero-clipboard {
+  display: none;
+}
+.docs-sidebar {
+  position: fixed;
+  margin-left: -15px;
+  top: 160px;
+  width: 205px;
+  cursor: pointer;
+}
+@media (max-width: 992px) {
+  .docs-sidebar {
+    position: relative;
+    margin: -60px 0 240px 0;
+    width: 100%;
+  }
+}
+.docs-sidebar li {
+  list-style: none;
+}
+.docs-sidebar > li > ul {
+  padding: 0;
+}
+.docs-sidebar > li > ul > li > .list-group-item {
+  padding: 5px 15px 5px 30px;
+  font-size: 12px;
+  border-radius: 0;
+  border-bottom: 0 none;
+  background-color: #fffbeb;
+  color: #604e00;
+  font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+.docs-sidebar > li > ul > li > .list-group-item:hover {
+  background-color: #fff8d6;
+}
+.docs-sidebar > li > ul > li.active > .list-group-item {
+  font-family: "OpenSansSemiBold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  background-color: #fff8d6;
+}
+.docs-sidebar > li .list-group-item:first-child {
+  border-radius: 0;
+}
+.docs-sidebar > li:first-child > .list-group-item {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.docs-sidebar > li:last-child > ul > li:last-child {
+  border-bottom: 1px solid #DDD;
+}
+.docs-sidebar .panel {
+  margin: 0;
+  border: 0 none;
+}
+.docs-soloitem {
+  border-bottom: 0 none;
+}
+/*
+:focus {
+  outline: 0 !important;
+}
+*/
+
+/* Docs callout */
+
+.bs-callout-danger {
+  border-color: #efbdaf;
+  background-color: #fcf2ef;
+}
+.bs-callout-danger h4 {
+  color: #bc362f;
+}
+.bs-callout-warning {
+  border-left-color: #3a94af;
+  background-color: #eff6f9;
+}
+.bs-callout-warning h4 {
+  color: #2d5e87;
+}
+.bs-callout-info {
+  border-left-color: #474747;
+  background-color: #f0f0f0;
+}
+.bs-callout-info h4 {
+  color: #1d1d1b;
+}
