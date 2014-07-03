@@ -362,9 +362,9 @@ input[type="checkbox"] {
   .form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
 }
 
-
 // Reposition feedback icon if input has visible label above
 .has-feedback label {
+
   & ~ .form-control-feedback {
      top: (@line-height-computed + 5); // Height of the `label` and its margin
   }
@@ -385,7 +385,6 @@ input[type="checkbox"] {
   margin-bottom: 10px;
   color: lighten(@text-color, 25%); // lighten the text some for contrast
 }
-
 
 
 // Inline forms
@@ -458,10 +457,7 @@ input[type="checkbox"] {
       margin-left: 0;
     }
 
-    // Validation states
-    //
-    // Reposition the icon because it's now within a grid column and columns have
-    // `position: relative;` on them. Also accounts for the grid gutter padding.
+    // Re-override the feedback icon.
     .has-feedback .form-control-feedback {
       top: 0;
     }
@@ -514,7 +510,6 @@ input[type="checkbox"] {
   // Reposition the icon because it's now within a grid column and columns have
   // `position: relative;` on them. Also accounts for the grid gutter padding.
   .has-feedback .form-control-feedback {
-    top: 0;
     right: (@grid-gutter-width / 2);
   }
 
