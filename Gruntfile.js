@@ -199,7 +199,7 @@ module.exports = function (grunt) {
         src: 'dist/css/<%= pkg.name %>-theme.css'
       },
       docs: {
-        src: 'docs/assets/css/_src/docs.css'
+        src: 'docs/assets/css/src/docs.css'
       },
       examples: {
         expand: true,
@@ -225,7 +225,7 @@ module.exports = function (grunt) {
           ids: false,
           'overqualified-elements': false
         },
-        src: 'docs/assets/css/_src/docs.css'
+        src: 'docs/assets/css/src/docs.css'
       }
     },
 
@@ -243,8 +243,8 @@ module.exports = function (grunt) {
       },
       docs: {
         src: [
-          'docs/assets/css/_src/docs.css',
-          'docs/assets/css/_src/pygments-manni.css'
+          'docs/assets/css/src/docs.css',
+          'docs/assets/css/src/pygments-manni.css'
         ],
         dest: 'docs/assets/css/docs.min.css'
       }
@@ -278,7 +278,7 @@ module.exports = function (grunt) {
       },
       docs: {
         files: {
-          'docs/assets/css/_src/docs.css': 'docs/assets/css/_src/docs.css'
+          'docs/assets/css/src/docs.css': 'docs/assets/css/src/docs.css'
         }
       }
     },
