@@ -60,7 +60,7 @@ module.exports = function (grunt) {
         src: 'js/tests/unit/*.js'
       },
       assets: {
-        src: ['docs/assets/js/_src/*.js', 'docs/assets/js/*.js', '!docs/assets/js/*.min.js']
+        src: ['docs/assets/js/src/*.js', 'docs/assets/js/*.js', '!docs/assets/js/*.min.js']
       }
     },
 
@@ -125,7 +125,7 @@ module.exports = function (grunt) {
           'docs/assets/js/_vendor/blob.js',
           'docs/assets/js/_vendor/filesaver.js',
           'docs/assets/js/raw-files.min.js',
-          'docs/assets/js/_src/customizer.js'
+          'docs/assets/js/src/customizer.js'
         ],
         dest: 'docs/assets/js/customize.min.js'
       },
@@ -133,7 +133,7 @@ module.exports = function (grunt) {
         src: [
           'docs/assets/js/_vendor/holder.js',
           'docs/assets/js/_vendor/ZeroClipboard.min.js',
-          'docs/assets/js/_src/application.js'
+          'docs/assets/js/src/application.js'
         ],
         dest: 'docs/assets/js/docs.min.js'
       }
