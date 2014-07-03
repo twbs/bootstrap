@@ -83,7 +83,7 @@
     this.$element
       .removeClass(Affix.RESET)
       .addClass(affixType)
-      .trigger($.Event(affixType.replace('affix', 'affixed')))
+      .trigger(affixType.replace('affix', 'affixed') + '.bs.affix')
 
     if (affix == 'bottom') {
       this.$element.offset({
