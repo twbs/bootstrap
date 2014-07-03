@@ -306,11 +306,13 @@ input[type="checkbox"] {
 // Build on `.form-control` with modifier classes to decrease or increase the
 // height and font-size of form controls.
 
-.input-sm {
+.input-sm,
+.form-group-sm .form-control {
   .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
 }
 
-.input-lg {
+.input-lg,
+.form-group-l .form-control {
   .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
 }
 
@@ -523,18 +525,12 @@ input[type="checkbox"] {
         padding-top: ((@padding-large-vertical * @line-height-large) + 1);
       }
     }
-    .form-control {
-      &:extend(.input-lg);
-    }
   }
   .form-group-sm {
     @media (min-width: @screen-sm-min) {
       .control-label {
         padding-top: (@padding-small-vertical + 1);
       }
-    }
-    .form-control {
-      &:extend(.input-sm);
     }
   }
 }

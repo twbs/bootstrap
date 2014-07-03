@@ -2491,35 +2491,41 @@ fieldset[disabled] .checkbox label {
   padding-left: 0;
 }
 .input-sm,
-.form-horizontal .form-group-sm .form-control {
+.form-group-sm .form-control {
   height: 30px;
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
 }
-select.input-sm {
+select.input-sm,
+select.form-group-sm .form-control {
   height: 30px;
   line-height: 30px;
 }
 textarea.input-sm,
-select[multiple].input-sm {
+textarea.form-group-sm .form-control,
+select[multiple].input-sm,
+select[multiple].form-group-sm .form-control {
   height: auto;
 }
 .input-lg,
-.form-horizontal .form-group-lg .form-control {
+.form-group-l .form-control {
   height: 46px;
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.33;
   border-radius: 6px;
 }
-select.input-lg {
+select.input-lg,
+select.form-group-l .form-control {
   height: 46px;
   line-height: 46px;
 }
 textarea.input-lg,
-select[multiple].input-lg {
+textarea.form-group-l .form-control,
+select[multiple].input-lg,
+select[multiple].form-group-l .form-control {
   height: auto;
 }
 .has-feedback {
