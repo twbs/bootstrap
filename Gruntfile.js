@@ -119,20 +119,21 @@ module.exports = function (grunt) {
       },
       customize: {
         src: [
-          'docs/assets/js/_vendor/less.min.js',
-          'docs/assets/js/_vendor/jszip.min.js',
-          'docs/assets/js/_vendor/uglify.min.js',
-          'docs/assets/js/_vendor/blob.js',
-          'docs/assets/js/_vendor/filesaver.js',
+          'docs/assets/js/vendor/less.min.js',
+          'docs/assets/js/vendor/jszip.min.js',
+          'docs/assets/js/vendor/uglify.min.js',
+          'docs/assets/js/vendor/blob.js',
+          'docs/assets/js/vendor/filesaver.js',
           'docs/assets/js/raw-files.min.js',
           'docs/assets/js/src/customizer.js'
         ],
         dest: 'docs/assets/js/customize.min.js'
       },
       docsJs: {
+        // NOTE: This src list is duplicated in footer.html; if making changes here, be sure to update the other copy too.
         src: [
-          'docs/assets/js/_vendor/holder.js',
-          'docs/assets/js/_vendor/ZeroClipboard.min.js',
+          'docs/assets/js/vendor/holder.js',
+          'docs/assets/js/vendor/ZeroClipboard.min.js',
           'docs/assets/js/src/application.js'
         ],
         dest: 'docs/assets/js/docs.min.js'
