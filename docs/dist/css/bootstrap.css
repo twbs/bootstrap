@@ -2510,7 +2510,7 @@ select[multiple].form-group-sm .form-control {
   height: auto;
 }
 .input-lg,
-.form-group-l .form-control {
+.form-group-lg .form-control {
   height: 46px;
   padding: 10px 16px;
   font-size: 18px;
@@ -2518,14 +2518,14 @@ select[multiple].form-group-sm .form-control {
   border-radius: 6px;
 }
 select.input-lg,
-select.form-group-l .form-control {
+select.form-group-lg .form-control {
   height: 46px;
   line-height: 46px;
 }
 textarea.input-lg,
-textarea.form-group-l .form-control,
+textarea.form-group-lg .form-control,
 select[multiple].input-lg,
-select[multiple].form-group-l .form-control {
+select[multiple].form-group-lg .form-control {
   height: auto;
 }
 .has-feedback {
