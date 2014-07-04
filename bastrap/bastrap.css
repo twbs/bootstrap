@@ -1017,7 +1017,10 @@ fieldset[disabled] .btn-danger:hover {
 }
 .list-group-item.active,
 .list-group-item.active:hover,
-.list-group-item.active:focus {
+.list-group-item.active:focus,
+a.list-group-item.active,
+a.list-group-item.active:hover,
+a.list-group-item.active:focus {
   background-image: -webkit-linear-gradient(top, #ffd300 0%, #ffbc00 100%);
   background-image:      -o-linear-gradient(top, #ffd300 0%, #ffbc00 100%);
   background-image: -webkit-gradient(linear, left top, left bottom, from(#ffd300), to(#ffbc00));
