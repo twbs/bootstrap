@@ -1,9 +1,14 @@
 /* Docs CSS */
 
 body {
-  padding-top: 60px;
+  /*padding-top: 60px;*/
   padding-bottom: 120px;
   posiion: relative;
+  background-color:#eee;
+}
+.anchor {
+  display:block;
+  height:60px;
 }
 .page-header {
   margin-bottom: 0;
@@ -60,6 +65,9 @@ body {
   color: #604e00;
   font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
   font-weight: normal;
+}
+.docs-sidebar > li > ul > li > .list-group-item {
+  /*inset*/
 }
 .docs-sidebar > li > ul > li > .list-group-item:hover {
   background-color: #fff8d6;
