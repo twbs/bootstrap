@@ -12,7 +12,7 @@ b, strong, thead > tr > th, a, .lead, .jumbotron p, .progress-bar, label {
   font-family: "GothamBold", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
-.btn, .h3, .h4, .h5, .h6, h3, h4, h5, h6, .navbar-brand {
+.h3, .h4, .h5, .h6, h3, h4, h5, h6, .btn, .input-xl, .navbar-brand {
   font-family: "GothamMedium", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
@@ -202,6 +202,13 @@ a.list-group-item-danger:hover,
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 6px #bc362f;
 }
 
+/* input */
+
+.input-xl {
+  height: 65px;
+  font-size: 24px;
+}
+
 /* btn */
 
 .btn-default,
@@ -237,7 +244,7 @@ a.list-group-item-danger:hover,
   background-image: none;
 }
 .btn-group-xl>.btn, .btn-xl {
-  padding: 16px 24px;
+  height:65px;
   font-size: 24px;
   line-height: 1.33;
   border-radius: 6px;
