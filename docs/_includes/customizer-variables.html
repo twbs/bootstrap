@@ -4,24 +4,28 @@
 <p>Gray and brand colors for use across Bootstrap.</p>
 <div class="row">
   <div class="bs-customizer-input">
+    <label for="input-@gray-base">@gray-base</label>
+    <input id="input-@gray-base" type="text" value="		  #000" data-var="@gray-base" class="form-control"/>
+  </div>
+  <div class="bs-customizer-input">
     <label for="input-@gray-darker">@gray-darker</label>
-    <input id="input-@gray-darker" type="text" value="lighten(#000, 13.5%)" data-var="@gray-darker" class="form-control"/>
+    <input id="input-@gray-darker" type="text" value="lighten(@gray-base, 13.5%)" data-var="@gray-darker" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@gray-dark">@gray-dark</label>
-    <input id="input-@gray-dark" type="text" value="lighten(#000, 20%)" data-var="@gray-dark" class="form-control"/>
+    <input id="input-@gray-dark" type="text" value="lighten(@gray-base, 20%)" data-var="@gray-dark" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@gray">@gray</label>
-    <input id="input-@gray" type="text" value="lighten(#000, 33.5%)" data-var="@gray" class="form-control"/>
+    <input id="input-@gray" type="text" value="lighten(@gray-base, 33.5%)" data-var="@gray" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@gray-light">@gray-light</label>
-    <input id="input-@gray-light" type="text" value="lighten(#000, 46.7%)" data-var="@gray-light" class="form-control"/>
+    <input id="input-@gray-light" type="text" value="lighten(@gray-base, 46.7%)" data-var="@gray-light" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@gray-lighter">@gray-lighter</label>
-    <input id="input-@gray-lighter" type="text" value="lighten(#000, 93.5%)" data-var="@gray-lighter" class="form-control"/>
+    <input id="input-@gray-lighter" type="text" value="lighten(@gray-base, 93.5%)" data-var="@gray-lighter" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@brand-primary">@brand-primary</label>
@@ -726,7 +730,7 @@
   </div>
   <div class="bs-customizer-input">
     <label for="input-@navbar-inverse-color">@navbar-inverse-color</label>
-    <input id="input-@navbar-inverse-color" type="text" value="@gray-light" data-var="@navbar-inverse-color" class="form-control"/>
+    <input id="input-@navbar-inverse-color" type="text" value="lighten(@gray-light, 12%)" data-var="@navbar-inverse-color" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@navbar-inverse-bg">@navbar-inverse-bg</label>
