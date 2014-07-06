@@ -55,7 +55,7 @@
     var $active    = container.find('> .active')
     var transition = callback
       && $.support.transition
-      && $active.hasClass('fade')
+      && (($active.length && $active.hasClass('fade')) || !!container.find('> .fade').length)
 
     function next() {
       $active
@@ -79,7 +79,7 @@
       callback && callback()
     }
 
-    transition ?
+    $active.length && transition ?
       $active
         .one('bsTransitionEnd', next)
         .emulateTransitionEnd(150) :
