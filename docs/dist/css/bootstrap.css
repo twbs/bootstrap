@@ -3984,7 +3984,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     padding-top: 15px;
     padding-bottom: 15px;
   }
-  .navbar-nav.navbar-right:last-child {
+  .navbar-nav.navbar-right:first-child {
     margin-right: -15px;
   }
 }
@@ -4070,7 +4070,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     -webkit-box-shadow: none;
             box-shadow: none;
   }
-  .navbar-form.navbar-right:last-child {
+  .navbar-form.navbar-right:first-child {
     margin-right: -15px;
   }
 }
@@ -4105,7 +4105,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     margin-right: 15px;
     margin-left: 15px;
   }
-  .navbar-text.navbar-right:last-child {
+  .navbar-text.navbar-right:first-child {
     margin-right: 0;
   }
 }
