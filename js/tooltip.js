@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: tooltip.js v3.1.1
+ * Bootstrap: tooltip.js v3.2.0
  * http://getbootstrap.com/javascript/#tooltip
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ========================================================================
@@ -25,7 +25,7 @@
     this.init('tooltip', element, options)
   }
 
-  Tooltip.VERSION  = '3.1.1'
+  Tooltip.VERSION  = '3.2.0'
 
   Tooltip.DEFAULTS = {
     animation: true,
@@ -198,15 +198,15 @@
       var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
 
       this.applyPlacement(calculatedOffset, placement)
-      this.hoverState = null
 
       var complete = function () {
         that.$element.trigger('shown.bs.' + that.type)
+        that.hoverState = null
       }
 
       $.support.transition && this.$tip.hasClass('fade') ?
         $tip
-          .one($.support.transition.end, complete)
+          .one('bsTransitionEnd', complete)
           .emulateTransitionEnd(150) :
         complete()
     }
@@ -294,7 +294,7 @@
 
     $.support.transition && this.$tip.hasClass('fade') ?
       $tip
-        .one($.support.transition.end, complete)
+        .one('bsTransitionEnd', complete)
         .emulateTransitionEnd(150) :
       complete()
 

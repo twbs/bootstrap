@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: scrollspy.js v3.1.1
+ * Bootstrap: scrollspy.js v3.2.0
  * http://getbootstrap.com/javascript/#scrollspy
  * ========================================================================
  * Copyright 2011-2014 Twitter, Inc.
@@ -23,16 +23,21 @@
     this.offsets        = []
     this.targets        = []
     this.activeTarget   = null
+    this.scrollHeight   = 0
 
     this.$scrollElement.on('scroll.bs.scrollspy', process)
     this.refresh()
     this.process()
   }
 
-  ScrollSpy.VERSION  = '3.1.1'
+  ScrollSpy.VERSION  = '3.2.0'
 
   ScrollSpy.DEFAULTS = {
     offset: 10
+  }
+
+  ScrollSpy.prototype.getScrollHeight = function () {
+    return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
   }
 
   ScrollSpy.prototype.refresh = function () {
@@ -46,12 +51,12 @@
 
     this.offsets = []
     this.targets = []
+    this.scrollHeight = this.getScrollHeight()
 
     var self     = this
 
     this.$body
       .find(this.selector)
-      .filter(':visible')
       .map(function () {
         var $el   = $(this)
         var href  = $el.data('target') || $el.attr('href')
@@ -71,12 +76,16 @@
 
   ScrollSpy.prototype.process = function () {
     var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
-    var scrollHeight = this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    var scrollHeight = this.getScrollHeight()
     var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
     var offsets      = this.offsets
     var targets      = this.targets
     var activeTarget = this.activeTarget
     var i
+
+    if (this.scrollHeight != scrollHeight) {
+      this.refresh()
+    }
 
     if (scrollTop >= maxScroll) {
       return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)

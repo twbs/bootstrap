@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: button.js v3.1.1
+ * Bootstrap: button.js v3.2.0
  * http://getbootstrap.com/javascript/#buttons
  * ========================================================================
  * Copyright 2011-2014 Twitter, Inc.
@@ -19,7 +19,7 @@
     this.isLoading = false
   }
 
-  Button.VERSION  = '3.1.1'
+  Button.VERSION  = '3.2.0'
 
   Button.DEFAULTS = {
     loadingText: 'loading...'

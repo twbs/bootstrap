@@ -239,7 +239,7 @@ body {
   background-repeat: repeat-x;
 }
 
- /* Masthead (headings and download button) */
+/* Masthead (headings and download button) */
 .bs-docs-masthead .bs-docs-booticon {
   margin: 0 auto 30px;
 }
@@ -272,8 +272,7 @@ body {
 
 @media (min-width: 768px) {
   .bs-docs-masthead {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding: 80px 0;
   }
   .bs-docs-masthead h1 {
     font-size: 60px;
@@ -467,16 +466,6 @@ body {
   margin-bottom: 15px;
 }
 
-/* Featured sites */
-.bs-docs-featured-sites {
-  margin-right: -1px;
-  margin-left: -1px;
-}
-.bs-docs-featured-sites .col-sm-3 {
-  padding-right: 1px;
-  padding-left: 1px;
-}
-
 @media (min-width: 480px) {
   .bs-docs-featurette .img-responsive {
     margin-top: 30px;
@@ -506,6 +495,36 @@ body {
 
   .bs-docs-featurette .img-responsive {
     margin-top: 0;
+  }
+}
+
+/* Featured sites */
+.bs-docs-featured-sites {
+  margin-right: -1px;
+  margin-left: -1px;
+}
+.bs-docs-featured-sites .col-sm-3 {
+  padding-right: 1px;
+  padding-left: 1px;
+}
+.bs-docs-featured-sites .img-responsive {
+  margin-bottom: 15px;
+}
+@media (min-width: 480px) {
+  .bs-docs-featured-sites .img-responsive {
+    margin-bottom: 0;
+  }
+}
+
+/* Example thumbnails */
+@media (max-width: 480px) {
+  .bs-examples {
+    margin-right: -10px;
+    margin-left: -10px;
+  }
+  .bs-examples > [class^="col-"] {
+    padding-right: 10px;
+    padding-left: 10px;
   }
 }
 
@@ -844,7 +863,6 @@ h1[id] {
   position: relative;
   padding: 45px 15px 15px;
   margin: 0 -15px 15px;
-  background-color: #fafafa;
   border-color: #e5e5e5 #eee #eee;
   border-style: solid;
   border-width: 1px 0;
@@ -858,7 +876,7 @@ h1[id] {
   left: 15px;
   font-size: 12px;
   font-weight: bold;
-  color: #bbb;
+  color: #959595;
   text-transform: uppercase;
   letter-spacing: 1px;
   content: "Example";
@@ -1061,10 +1079,14 @@ h1[id] {
 }
 
 /* Example dropdowns */
+.bs-example > .dropdown > .dropdown-toggle {
+  float: left;
+}
 .bs-example > .dropdown > .dropdown-menu {
   position: static;
   display: block;
   margin-bottom: 5px;
+  clear: left;
 }
 
 /* Example tabbable tabs */
@@ -1130,13 +1152,9 @@ h1[id] {
   font-size: inherit;
   color: #333; /* Effectively the base text color */
 }
-.highlight pre .lineno {
+.highlight pre code:first-child {
   display: inline-block;
-  width: 22px;
-  padding-right: 5px;
-  margin-right: 10px;
-  color: #bebec5;
-  text-align: right;
+  padding-right: 45px;
 }
 
 
@@ -1462,4 +1480,39 @@ h1[id] {
   outline: thin dotted \9; /* IE6-9 */
   -webkit-box-shadow: 0 0 8px rgba(82,168,236,.6);
           box-shadow: 0 0 8px rgba(82,168,236,.6);
+}
+
+
+/*
+ * ZeroClipboard styles
+ */
+
+.zero-clipboard {
+  position: relative;
+  display: none;
+}
+.btn-clipboard {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  display: block;
+  padding: 5px 8px;
+  font-size: 12px;
+  color: #777;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #e1e1e8;
+  border-radius: 0 4px 0 4px;
+}
+.btn-clipboard-hover {
+  color: #fff;
+  background-color: #563d7c;
+  border-color: #563d7c;
+}
+
+@media (min-width: 768px) {
+  .zero-clipboard {
+    display: block;
+  }
 }

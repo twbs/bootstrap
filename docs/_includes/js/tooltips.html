@@ -58,16 +58,16 @@ $('#example').tooltip(options)
     <h4>Multiple-line links</h4>
     <p>Sometimes you want to add a tooltip to a hyperlink that wraps multiple lines. The default behavior of the tooltip plugin is to center it horizontally and vertically. Add <code>white-space: nowrap;</code> to your anchors to avoid this.</p>
   </div>
-{% highlight html linenos %}
+{% highlight html %}
 <!-- HTML to write -->
 <a href="#" data-toggle="tooltip" title="Some tooltip text!">Hover over me</a>
 
 <!-- Generated markup by the plugin -->
-<div class="tooltip top">
+<div class="tooltip top" role="tooltip">
+  <div class="tooltip-arrow"></div>
   <div class="tooltip-inner">
     Some tooltip text!
   </div>
-  <div class="tooltip-arrow"></div>
 </div>
 {% endhighlight %}
 
@@ -105,7 +105,7 @@ $('#example').tooltip(options)
          <td>
           <p>Delay showing and hiding the tooltip (ms) - does not apply to manual trigger type</p>
           <p>If a number is supplied, delay is applied to both hide/show</p>
-          <p>Object structure is: <code>delay: { show: 500, hide: 100 }</code></p>
+          <p>Object structure is: <code>delay: { "show": 500, "hide": 100 }</code></p>
          </td>
        </tr>
        <tr>
@@ -154,7 +154,7 @@ $('#example').tooltip(options)
          <td>string | object</td>
          <td>{ selector: 'body', padding: 0 }</td>
          <td>
-          <p>Keeps the tooltip within the bounds of this element. Example: <code>viewport: '#viewport'</code> or <code>{ selector: '#viewport', padding: 0 }</code></p>
+          <p>Keeps the tooltip within the bounds of this element. Example: <code>viewport: '#viewport'</code> or <code>{ "selector": "#viewport", "padding": 0 }</code></p>
          </td>
        </tr>
       </tbody>
