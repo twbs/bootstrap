@@ -29,7 +29,7 @@ $(function () {
     strictEqual($scrollspy[0], $el[0], 'collection contains element')
   })
 
-  // FIXME
+  // Does not work properly ATM, #13500 will fix this
   test('should switch "active" class on scroll', function () {
     var topbarHTML = '<div class="topbar">' +
         '<div class="topbar-inner">' +
