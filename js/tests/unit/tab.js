@@ -30,10 +30,10 @@ $(function () {
   })
 
   test('should activate element by tab id', function () {
-    var tabsHTML = '<ul class="tabs">' +
-        '<li><a href="#home">Home</a></li>' +
-        '<li><a href="#profile">Profile</a></li>' +
-        '</ul>'
+    var tabsHTML = '<ul class="tabs">'
+        + '<li><a href="#home">Home</a></li>'
+        + '<li><a href="#profile">Profile</a></li>'
+        + '</ul>'
 
     $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture')
 
@@ -45,10 +45,10 @@ $(function () {
   })
 
   test('should activate element by tab id', function () {
-    var pillsHTML = '<ul class="pills">' +
-        '<li><a href="#home">Home</a></li>' +
-        '<li><a href="#profile">Profile</a></li>' +
-        '</ul>'
+    var pillsHTML = '<ul class="pills">'
+        + '<li><a href="#home">Home</a></li>'
+        + '<li><a href="#profile">Profile</a></li>'
+        + '</ul>'
 
     $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture')
 
@@ -77,14 +77,14 @@ $(function () {
   test('show and shown events should reference correct relatedTarget', function () {
     stop()
 
-    var dropHTML = '<ul class="drop">' +
-        '<li class="dropdown"><a data-toggle="dropdown" href="#">1</a>' +
-        '<ul class="dropdown-menu">' +
-        '<li><a href="#1-1" data-toggle="tab">1-1</a></li>' +
-        '<li><a href="#1-2" data-toggle="tab">1-2</a></li>' +
-        '</ul>' +
-        '</li>' +
-        '</ul>'
+    var dropHTML = '<ul class="drop">'
+        + '<li class="dropdown"><a data-toggle="dropdown" href="#">1</a>'
+        + '<ul class="dropdown-menu">'
+        + '<li><a href="#1-1" data-toggle="tab">1-1</a></li>'
+        + '<li><a href="#1-2" data-toggle="tab">1-2</a></li>'
+        + '</ul>'
+        + '</li>'
+        + '</ul>'
 
     $(dropHTML)
       .find('ul > li:first a')

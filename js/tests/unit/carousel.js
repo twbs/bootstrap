@@ -44,26 +44,26 @@ $(function () {
   })
 
   test('should reset when slide is prevented', function () {
-    var carouselHTML = '<div id="carousel-example-generic" class="carousel slide">' +
-        '<ol class="carousel-indicators">' +
-        '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>' +
-        '<li data-target="#carousel-example-generic" data-slide-to="1"/>' +
-        '<li data-target="#carousel-example-generic" data-slide-to="2"/>' +
-        '</ol>' +
-        '<div class="carousel-inner">' +
-        '<div class="item active">' +
-        '<div class="carousel-caption"/>' +
-        '</div>' +
-        '<div class="item">' +
-        '<div class="carousel-caption"/>' +
-        '</div>' +
-        '<div class="item">' +
-        '<div class="carousel-caption"/>' +
-        '</div>' +
-        '</div>' +
-        '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"/>' +
-        '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"/>' +
-        '</div>'
+    var carouselHTML = '<div id="carousel-example-generic" class="carousel slide">'
+        + '<ol class="carousel-indicators">'
+        + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="1"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="2"/>'
+        + '</ol>'
+        + '<div class="carousel-inner">'
+        + '<div class="item active">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="item">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="item">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"/>'
+        + '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"/>'
+        + '</div>'
     var $carousel = $(carouselHTML)
 
     stop()
@@ -89,39 +89,39 @@ $(function () {
   })
 
   test('should fire slide event with direction', function () {
-    var carouselHTML = '<div id="myCarousel" class="carousel slide">' +
-        '<div class="carousel-inner">' +
-        '<div class="item active">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>First Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Second Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Third Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>' +
-        '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>' +
-        '</div>'
+    var carouselHTML = '<div id="myCarousel" class="carousel slide">'
+        + '<div class="carousel-inner">'
+        + '<div class="item active">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>First Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Second Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Third Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>'
+        + '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>'
+        + '</div>'
     var $carousel = $(carouselHTML)
 
     stop()
@@ -143,39 +143,39 @@ $(function () {
   })
 
   test('should fire slid event with direction', function () {
-    var carouselHTML = '<div id="myCarousel" class="carousel slide">' +
-        '<div class="carousel-inner">' +
-        '<div class="item active">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>First Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Second Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Third Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>' +
-        '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>' +
-        '</div>'
+    var carouselHTML = '<div id="myCarousel" class="carousel slide">'
+        + '<div class="carousel-inner">'
+        + '<div class="item active">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>First Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Second Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Third Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>'
+        + '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>'
+        + '</div>'
     var $carousel = $(carouselHTML)
 
     stop()
@@ -197,39 +197,39 @@ $(function () {
   })
 
   test('should fire slide event with relatedTarget', function () {
-    var template = '<div id="myCarousel" class="carousel slide">' +
-        '<div class="carousel-inner">' +
-        '<div class="item active">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>First Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Second Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Third Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>' +
-        '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>' +
-        '</div>'
+    var template = '<div id="myCarousel" class="carousel slide">'
+        + '<div class="carousel-inner">'
+        + '<div class="item active">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>First Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Second Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Third Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>'
+        + '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>'
+        + '</div>'
 
     stop()
 
@@ -243,39 +243,39 @@ $(function () {
   })
 
   test('should fire slid event with relatedTarget', function () {
-    var template = '<div id="myCarousel" class="carousel slide">' +
-        '<div class="carousel-inner">' +
-        '<div class="item active">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>First Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Second Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Third Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>' +
-        '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>' +
-        '</div>'
+    var template = '<div id="myCarousel" class="carousel slide">'
+        + '<div class="carousel-inner">'
+        + '<div class="item active">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>First Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Second Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Third Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>'
+        + '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>'
+        + '</div>'
 
     stop()
 
@@ -289,39 +289,39 @@ $(function () {
   })
 
   test('should set interval from data attribute', function () {
-    var templateHTML = '<div id="myCarousel" class="carousel slide">' +
-        '<div class="carousel-inner">' +
-        '<div class="item active">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>First Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Second Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Third Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>' +
-        '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>' +
-        '</div>'
+    var templateHTML = '<div id="myCarousel" class="carousel slide">'
+        + '<div class="carousel-inner">'
+        + '<div class="item active">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>First Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Second Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Third Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>'
+        + '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>'
+        + '</div>'
     var $carousel = $(templateHTML)
     $carousel.attr('data-interval', 1814)
 
@@ -350,19 +350,19 @@ $(function () {
   })
 
   test('should skip over non-items', function () {
-    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="1814">' +
-        '<div class="carousel-inner">' +
-        '<div class="item active">' +
-        '<img alt="">' +
-        '</div>' +
-        '<script type="text/x-metamorph" id="thingy"/>' +
-        '<div class="item">' +
-        '<img alt="">' +
-        '</div>' +
-        '<div class="item">' +
-        '</div>' +
-        '</div>' +
-        '</div>'
+    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="1814">'
+        + '<div class="carousel-inner">'
+        + '<div class="item active">'
+        + '<img alt="">'
+        + '</div>'
+        + '<script type="text/x-metamorph" id="thingy"/>'
+        + '<div class="item">'
+        + '<img alt="">'
+        + '</div>'
+        + '<div class="item">'
+        + '</div>'
+        + '</div>'
+        + '</div>'
     var $template = $(templateHTML)
 
     $template.bootstrapCarousel()

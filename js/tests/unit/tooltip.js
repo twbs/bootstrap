@@ -431,11 +431,11 @@ $(function () {
   test('should place tooltip on top of element', function () {
     stop()
 
-    var containerHTML = '<div>' +
-        '<p style="margin-top: 200px">' +
-        '<a href="#" title="very very very very very very very long tooltip">Hover me</a>' +
-        '</p>' +
-        '</div>'
+    var containerHTML = '<div>'
+        + '<p style="margin-top: 200px">'
+        + '<a href="#" title="very very very very very very very long tooltip">Hover me</a>'
+        + '</p>'
+        + '</div>'
     var $container = $(containerHTML)
       .css({
         position: 'absolute',
@@ -466,10 +466,10 @@ $(function () {
   })
 
   test('should add position class before positioning so that position-specific styles are taken into account', function () {
-    var styles = '<style>' +
-        '.tooltip.right { white-space: nowrap; }' +
-        '.tooltip.right .tooltip-inner { max-width: none; }' +
-        '</style>'
+    var styles = '<style>'
+        + '.tooltip.right { white-space: nowrap; }'
+        + '.tooltip.right .tooltip-inner { max-width: none; }'
+        + '</style>'
     var $styles = $(styles).appendTo(document.head)
 
     var $container = $('<div/>').appendTo(document.body)
@@ -581,10 +581,10 @@ $(function () {
   })
 
   test('should adjust the tip\'s top position when up against the top of the viewport', function () {
-    var styles = '<style>' +
-        '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }' +
-        'a[rel="tooltip"] { position: fixed; }' +
-        '</style>'
+    var styles = '<style>'
+        + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
+        + 'a[rel="tooltip"] { position: fixed; }'
+        + '</style>'
     var $styles = $(styles).appendTo(document.head)
 
     var $container = $('<div/>').appendTo(document.body)
@@ -609,10 +609,10 @@ $(function () {
   })
 
   test('should adjust the tip\'s top position when up against the bottom of the viewport', function () {
-    var styles = '<style>' +
-        '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }' +
-        'a[rel="tooltip"] { position: fixed; }' +
-        '</style>'
+    var styles = '<style>'
+        + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
+        + 'a[rel="tooltip"] { position: fixed; }'
+        + '</style>'
     var $styles = $(styles).appendTo(document.head)
 
     var $container = $('<div/>').appendTo(document.body)
@@ -638,10 +638,10 @@ $(function () {
   })
 
   test('should adjust the tip\'s left position when up against the left of the viewport', function () {
-    var styles = '<style>' +
-        '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }' +
-        'a[rel="tooltip"] { position: fixed; }' +
-        '</style>'
+    var styles = '<style>'
+        + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
+        + 'a[rel="tooltip"] { position: fixed; }'
+        + '</style>'
     var $styles = $(styles).appendTo(document.head)
 
     var $container = $('<div/>').appendTo(document.body)
@@ -666,10 +666,10 @@ $(function () {
   })
 
   test('should adjust the tip\'s left position when up against the right of the viewport', function () {
-    var styles = '<style>' +
-        '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }' +
-        'a[rel="tooltip"] { position: fixed; }' +
-        '</style>'
+    var styles = '<style>'
+        + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
+        + 'a[rel="tooltip"] { position: fixed; }'
+        + '</style>'
     var $styles = $(styles).appendTo(document.head)
 
     var $container = $('<div/>').appendTo('body')
@@ -695,11 +695,11 @@ $(function () {
   })
 
   test('should adjust the tip when up against the right of an arbitrary viewport', function () {
-    var styles = '<style>' +
-        '.tooltip, .tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }' +
-        '.container-viewport { position: absolute; top: 50px; left: 60px; width: 300px; height: 300px; }' +
-        'a[rel="tooltip"] { position: fixed; }' +
-        '</style>'
+    var styles = '<style>'
+        + '.tooltip, .tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
+        + '.container-viewport { position: absolute; top: 50px; left: 60px; width: 300px; height: 300px; }'
+        + 'a[rel="tooltip"] { position: fixed; }'
+        + '</style>'
     var $styles = $(styles).appendTo(document.head)
 
     var $container = $('<div class="container-viewport"/>').appendTo(document.body)

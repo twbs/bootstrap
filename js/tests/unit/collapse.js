@@ -105,11 +105,11 @@ $(function () {
   test('should remove "collapsed" class from active accordion target', function () {
     stop()
 
-    var accordionHTML = '<div id="accordion">' +
-        '<div class="accordion-group"/>' +
-        '<div class="accordion-group"/>' +
-        '<div class="accordion-group"/>' +
-        '</div>'
+    var accordionHTML = '<div id="accordion">'
+        + '<div class="accordion-group"/>'
+        + '<div class="accordion-group"/>'
+        + '<div class="accordion-group"/>'
+        + '</div>'
     var $groups = $(accordionHTML).appendTo('#qunit-fixture').find('.accordion-group')
 
     var $target1 = $('<a data-toggle="collapse" href="#body1" data-parent="#accordion"/>').appendTo($groups.eq(0))
@@ -138,11 +138,11 @@ $(function () {
   test('should allow dots in data-parent', function () {
     stop()
 
-    var accordionHTML = '<div class="accordion">' +
-        '<div class="accordion-group"/>' +
-        '<div class="accordion-group"/>' +
-        '<div class="accordion-group"/>' +
-        '</div>'
+    var accordionHTML = '<div class="accordion">'
+        + '<div class="accordion-group"/>'
+        + '<div class="accordion-group"/>'
+        + '<div class="accordion-group"/>'
+        + '</div>'
     var $groups = $(accordionHTML).appendTo('#qunit-fixture').find('.accordion-group')
 
     var $target1 = $('<a data-toggle="collapse" href="#body1" data-parent=".accordion"/>').appendTo($groups.eq(0))

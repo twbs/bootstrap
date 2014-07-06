@@ -30,10 +30,10 @@ $(function () {
   })
 
   test('should fade element out on clicking .close', function () {
-    var alertHTML = '<div class="alert-message warning fade in">' +
-        '<a class="close" href="#" data-dismiss="alert">×</a>' +
-        '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>' +
-        '</div>'
+    var alertHTML = '<div class="alert-message warning fade in">'
+        + '<a class="close" href="#" data-dismiss="alert">×</a>'
+        + '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>'
+        + '</div>'
     var $alert = $(alertHTML).bootstrapAlert()
 
     $alert.find('.close').click()
@@ -42,10 +42,10 @@ $(function () {
   })
 
   test('should remove element when clicking .close', function () {
-    var alertHTML = '<div class="alert-message warning fade in">' +
-        '<a class="close" href="#" data-dismiss="alert">×</a>' +
-        '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>' +
-        '</div>'
+    var alertHTML = '<div class="alert-message warning fade in">'
+        + '<a class="close" href="#" data-dismiss="alert">×</a>'
+        + '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>'
+        + '</div>'
     var $alert = $(alertHTML).appendTo('#qunit-fixture').bootstrapAlert()
 
     notEqual($('#qunit-fixture').find('.alert-message').length, 0, 'element added to dom')
