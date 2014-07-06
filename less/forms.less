@@ -208,11 +208,11 @@ input[type="month"] {
 .checkbox {
   position: relative;
   display: block;
-  min-height: @line-height-computed; // clear the floating input if there is no label text
   margin-top: 10px;
   margin-bottom: 10px;
 
   label {
+    min-height: @line-height-computed; // Ensure the input doens't jump when no text
     padding-left: 20px;
     margin-bottom: 0;
     font-weight: normal;
