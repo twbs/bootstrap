@@ -132,7 +132,7 @@ $(function () {
     $(navbarHtml).appendTo('#qunit-fixture')
     var $content = $(contentHtml)
       .appendTo('#qunit-fixture')
-      .bootstrapScrollspy({offset: 0, target: '.navbar'})
+      .bootstrapScrollspy({ offset: 0, target: '.navbar' })
 
     var testElementIsActiveAfterScroll = function (element, target) {
       var deferred = $.Deferred()
