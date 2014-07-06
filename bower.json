@@ -23,7 +23,7 @@
     "dist/fonts/glyphicons-halflings-regular.woff"
   ],
   "ignore": [
-    ".*",
+    "/.*",
     "_config.yml",
     "CNAME",
     "composer.json",
