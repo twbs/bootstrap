@@ -65,7 +65,7 @@ $(function () {
 
       setTimeout(function () {
         window.scroll(0, 0)
-      }, 18) // for testing in a browser
+      }, 16) // for testing in a browser
     }, 0)
   })
 })
