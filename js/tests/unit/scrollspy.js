@@ -114,4 +114,41 @@ $(function () {
     })
     $scrollSpy.scrollTop(550);
   })
+
+  test('should add the active class to the correct element', function () {
+    var navbarHtml =
+      '<div class="navbar">' +
+      '<ul class="nav">' +
+      '<li id="li-1"><a href="#div-1">div 1</a></li>' +
+      '<li id="li-2"><a href="#div-2">div 2</a></li>' +
+      '</ul>' +
+      '</div>'
+    var contentHtml =
+      '<div class="content" style="overflow: auto; height: 50px">' +
+      '<div id="div-1" style="height: 100px; padding: 0; margin: 0">div 1</div>' +
+      '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>' +
+      '</div>'
+
+    $(navbarHtml).appendTo('#qunit-fixture')
+    var $content = $(contentHtml)
+      .appendTo('#qunit-fixture')
+      .bootstrapScrollspy({offset: 0, target: '.navbar'})
+
+    var testElementIsActiveAfterScroll = function (element, target) {
+      var deferred = $.Deferred()
+      var scrollHeight = $content.scrollTop() + $(target).position().top
+      stop()
+      $content.one('scroll', function () {
+        ok($(element).hasClass('active'), 'target:' + target + ', element' + element)
+        start()
+        deferred.resolve()
+      })
+      $content.scrollTop(scrollHeight)
+      return deferred.promise()
+    }
+
+    $.when(testElementIsActiveAfterScroll('#li-1', '#div-1'))
+      .then(function () { return testElementIsActiveAfterScroll('#li-2', '#div-2') })
+  })
+
 })
