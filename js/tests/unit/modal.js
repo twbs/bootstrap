@@ -164,6 +164,44 @@ $(function () {
       .bootstrapModal('show')
   })
 
+  test('should close modal when escape key is pressed via keydown', function () {
+    stop()
+
+    var div = $('<div id="modal-test"/>')
+    div
+      .on('shown.bs.modal', function () {
+        ok($('#modal-test').length, 'modal insterted into dom')
+        ok($('#modal-test').is(':visible'), 'modal visible')
+        div.trigger($.Event('keydown', { which: 27 }))
+
+        setTimeout(function () {
+          ok(!$('#modal-test').is(':visible'), 'modal hidden')
+          div.remove()
+          start()
+        }, 0)
+      })
+      .bootstrapModal('show')
+  })
+
+  test('should not close modal when escape key is pressed via keyup', function () {
+    stop()
+
+    var div = $('<div id="modal-test"/>')
+    div
+      .on('shown.bs.modal', function () {
+        ok($('#modal-test').length, 'modal insterted into dom')
+        ok($('#modal-test').is(':visible'), 'modal visible')
+        div.trigger($.Event('keyup', { which: 27 }))
+
+        setTimeout(function () {
+          ok($('#modal-test').is(':visible'), 'modal still visible')
+          div.remove()
+          start()
+        }, 0)
+      })
+      .bootstrapModal('show')
+  })
+
   test('should trigger hide event once when clicking outside of modal-content', function () {
     stop()
     $.support.transition = false

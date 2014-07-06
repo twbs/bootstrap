@@ -135,11 +135,11 @@
 
   Modal.prototype.escape = function () {
     if (this.isShown && this.options.keyboard) {
-      this.$element.on('keyup.dismiss.bs.modal', $.proxy(function (e) {
+      this.$element.on('keydown.dismiss.bs.modal', $.proxy(function (e) {
         e.which == 27 && this.hide()
       }, this))
     } else if (!this.isShown) {
-      this.$element.off('keyup.dismiss.bs.modal')
+      this.$element.off('keydown.dismiss.bs.modal')
     }
   }
 
