@@ -23,13 +23,15 @@
   &,
   &:active,
   &.active {
-    &:focus {
+    &:focus,
+    &.focus {
       .tab-focus();
     }
   }
 
   &:hover,
-  &:focus {
+  &:focus,
+  &.focus {
     color: @btn-default-color;
     text-decoration: none;
   }
