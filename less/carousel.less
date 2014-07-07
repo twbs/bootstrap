@@ -30,15 +30,20 @@
       .transition-transform(~'0.6s ease-in-out');
       .backface-visibility(~'hidden');
       .perspective(1000);
-      &.next, &.active.right {
+      
+      &.next,
+      &.active.right {
         .translate3d(100%, 0, 0);
         left: 0;
       }
-      &.prev, &.active.left {
+      &.prev,
+      &.active.left {
         .translate3d(-100%, 0, 0);
         left: 0;
       }
-      &.next.left, &.prev.right, &.active {
+      &.next.left,
+      &.prev.right,
+      &.active {
         .translate3d(0, 0, 0);
         left: 0;
       }
