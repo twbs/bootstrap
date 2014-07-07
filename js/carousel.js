@@ -30,6 +30,8 @@
 
   Carousel.VERSION  = '3.2.0'
 
+  Carousel.TRANSITION_DURATION = 600
+
   Carousel.DEFAULTS = {
     interval: 5000,
     pause: 'hover',
@@ -146,7 +148,7 @@
             that.$element.trigger(slidEvent)
           }, 0)
         })
-        .emulateTransitionEnd($active.css('transition-duration').slice(0, -1) * 1000)
+        .emulateTransitionEnd(Carousel.TRANSITION_DURATION)
     } else {
       $active.removeClass('active')
       $next.addClass('active')
