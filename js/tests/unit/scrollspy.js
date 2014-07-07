@@ -124,17 +124,17 @@ $(function () {
 
   test('should add the active class to the correct element', function () {
     var navbarHtml =
-      '<div class="navbar">' +
-      '<ul class="nav">' +
-      '<li id="li-1"><a href="#div-1">div 1</a></li>' +
-      '<li id="li-2"><a href="#div-2">div 2</a></li>' +
-      '</ul>' +
-      '</div>'
+        '<div class="navbar">'
+      + '<ul class="nav">'
+      + '<li id="li-1"><a href="#div-1">div 1</a></li>'
+      + '<li id="li-2"><a href="#div-2">div 2</a></li>'
+      + '</ul>'
+      + '</div>'
     var contentHtml =
-      '<div class="content" style="overflow: auto; height: 50px">' +
-      '<div id="div-1" style="height: 100px; padding: 0; margin: 0">div 1</div>' +
-      '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>' +
-      '</div>'
+        '<div class="content" style="overflow: auto; height: 50px">'
+      + '<div id="div-1" style="height: 100px; padding: 0; margin: 0">div 1</div>'
+      + '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>'
+      + '</div>'
 
     $(navbarHtml).appendTo('#qunit-fixture')
     var $content = $(contentHtml)
@@ -143,7 +143,7 @@ $(function () {
 
     var testElementIsActiveAfterScroll = function (element, target) {
       var deferred = $.Deferred()
-      var scrollHeight = $content.scrollTop() + $(target).position().top
+      var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
       stop()
       $content.one('scroll', function () {
         ok($(element).hasClass('active'), 'target:' + target + ', element' + element)
