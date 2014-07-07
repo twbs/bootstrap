@@ -109,6 +109,8 @@
       "list-style-type",
       "list-style-image",
       "pointer-events",
+      "-ms-touch-action",
+      "touch-action",
       "cursor",
       "visibility",
       "zoom",
