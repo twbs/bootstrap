@@ -22,20 +22,20 @@
   <p>Built-in styles are included for placing badges in active states in pill navigations.</p>
   <div class="bs-example">
     <ul class="nav nav-pills" role="tablist">
-      <li class="active"><a href="#">Home <span class="badge">42</span></a></li>
-      <li><a href="#">Profile</a></li>
-      <li><a href="#">Messages <span class="badge">3</span></a></li>
+      <li role="presentation" class="active"><a href="#">Home <span class="badge">42</span></a></li>
+      <li role="presentation"><a href="#">Profile</a></li>
+      <li role="presentation"><a href="#">Messages <span class="badge">3</span></a></li>
     </ul>
     <br>
     <ul class="nav nav-pills nav-stacked" role="tablist" style="max-width: 260px;">
-      <li class="active">
+      <li role="presentation" class="active">
         <a href="#">
           <span class="badge pull-right">42</span>
           Home
         </a>
       </li>
-      <li><a href="#">Profile</a></li>
-      <li>
+      <li role="presentation"><a href="#">Profile</a></li>
+      <li role="presentation">
         <a href="#">
           <span class="badge pull-right">3</span>
           Messages
@@ -49,7 +49,7 @@
   </div>
 {% highlight html %}
 <ul class="nav nav-pills nav-stacked" role="tablist">
-  <li class="active">
+  <li role="presentation" class="active">
     <a href="#">
       <span class="badge pull-right">42</span>
       Home
