@@ -9,27 +9,6 @@
 /*
  * Bootstrap Documentation
  * Special styles for presenting Bootstrap's documentation and code examples.
- *
- * Table of contents:
- *
- * Scaffolding
- * Main navigation
- * Footer
- * Social buttons
- * Homepage
- * Page headers
- * Old docs callout
- * Ads
- * Side navigation
- * Docs sections
- * Callouts
- * Grid styles
- * Examples
- * Code snippets (highlight)
- * Responsive tests
- * Glyphicons
- * Customizer
- * Miscellaneous
  */
 
 
@@ -484,6 +463,30 @@ body {
     margin-right: auto;
     margin-left: auto;
   }
+  .bs-docs-featurette .img-responsive {
+    margin-top: 0;
+  }
+}
+
+
+/*
+ * Featured sites
+ *
+ * Homepage thumbnails from the Expo.
+ */
+
+.bs-docs-featured-sites {
+  margin-right: -1px;
+  margin-left: -1px;
+}
+.bs-docs-featured-sites .col-xs-6 {
+  padding: 1px;
+}
+.bs-docs-featured-sites .img-responsive {
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
   .bs-docs-featured-sites .col-sm-3:first-child img {
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -492,31 +495,25 @@ body {
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
   }
-
-  .bs-docs-featurette .img-responsive {
-    margin-top: 0;
-  }
 }
 
-/* Featured sites */
-.bs-docs-featured-sites {
-  margin-right: -1px;
-  margin-left: -1px;
+
+/*
+ * Examples
+ *
+ * Linked docs examples.
+ */
+
+.bs-examples .thumbnail {
+  margin-bottom: 10px;
 }
-.bs-docs-featured-sites .col-sm-3 {
-  padding-right: 1px;
-  padding-left: 1px;
+.bs-examples h4 {
+  margin-bottom: 5px;
 }
-.bs-docs-featured-sites .img-responsive {
-  margin-bottom: 15px;
-}
-@media (min-width: 480px) {
-  .bs-docs-featured-sites .img-responsive {
-    margin-bottom: 0;
-  }
+.bs-examples p {
+  margin-bottom: 20px;
 }
 
-/* Example thumbnails */
 @media (max-width: 480px) {
   .bs-examples {
     margin-right: -10px;
@@ -1456,34 +1453,6 @@ h1[id] {
 
 
 /*
- * Miscellaneous
- *
- * Odds and ends for optimum docs display.
- */
-
-/* Examples gallery: space out content better */
-.bs-examples .thumbnail {
-  margin-bottom: 10px;
-}
-.bs-examples h4 {
-  margin-bottom: 5px;
-}
-.bs-examples p {
-  margin-bottom: 20px;
-}
-
-/* Pseudo :focus state for showing how it looks in the docs */
-#focusedInput {
-  border-color: rgb(204,204,204); /* Restate unfocused value to make CSSLint happy that there's a pre-CSS3 fallback*/
-  border-color: rgba(82,168,236,.8);
-  outline: 0;
-  outline: thin dotted \9; /* IE6-9 */
-  -webkit-box-shadow: 0 0 8px rgba(82,168,236,.6);
-          box-shadow: 0 0 8px rgba(82,168,236,.6);
-}
-
-
-/*
  * ZeroClipboard styles
  */
 
@@ -1515,4 +1484,21 @@ h1[id] {
   .zero-clipboard {
     display: block;
   }
+}
+
+
+/*
+ * Miscellaneous
+ *
+ * Odds and ends for optimum docs display.
+ */
+
+/* Pseudo :focus state for showing how it looks in the docs */
+#focusedInput {
+  border-color: rgb(204,204,204); /* Restate unfocused value to make CSSLint happy that there's a pre-CSS3 fallback*/
+  border-color: rgba(82,168,236,.8);
+  outline: 0;
+  outline: thin dotted \9; /* IE6-9 */
+  -webkit-box-shadow: 0 0 8px rgba(82,168,236,.6);
+          box-shadow: 0 0 8px rgba(82,168,236,.6);
 }
