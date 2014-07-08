@@ -5,7 +5,7 @@ before_install:
   - time travis_retry sudo pip install -r test-infra/requirements.txt
   - rvm use 1.9.3 --fuzzy
   - export GEMDIR=$(rvm gemdir)
-  - if [ "$TWBS_TEST" = validate-html ]; then echo "ruby=$(basename $GEMDIR) jekyll=$JEKYLL_VERSION" > pseudo_Gemfile.lock; fi
+  - if [ "$TWBS_TEST" = validate-html ]; then echo "ruby=$(basename $GEMDIR) jekyll=$JEKYLL_VERSION rouge=$ROUGE_VERSION" > pseudo_Gemfile.lock; fi
   - "export TRAVIS_COMMIT_MSG=\"$(git log --format=%B --no-merges -n 1)\""
   - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip validator\]'; export TWBS_DO_VALIDATOR=$?; true
   - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip sauce\]'; export TWBS_DO_SAUCE=$?; true
@@ -19,6 +19,7 @@ after_script:
 env:
   global:
     - JEKYLL_VERSION: 2.1.0
+    - ROUGE_VERSION: 1.4.0
     - SAUCE_USERNAME: bootstrap
     - secure: "pJkBwnuae9dKU5tEcCqccfS1QQw7/meEcfz63fM7ba7QJNjoA6BaXj08L5Z3Vb5vBmVPwBawxo5Hp0jC0r/Z/O0hGnAmz/Cz09L+cy7dSAZ9x4hvZePSja/UAusaB5ogMoO8l2b773MzgQeSmrLbExr9BWLeqEfjC2hFgdgHLaQ="
     - secure: "gqjqISbxBJK6byFbsmr1AyP1qoWH+rap06A2gI7v72+Tn2PU2nYkIMUkCvhZw6K889jv+LhQ/ybcBxDOXHpNCExCnSgB4dcnmYp+9oeNZb37jSP0rQ+Ib4OTLjzc3/FawE/fUq5kukZTC7porzc/k0qJNLAZRx3YLALmK1GIdUY="
