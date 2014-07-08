@@ -293,11 +293,11 @@ body {
 
 /* Page headers */
 .bs-docs-header {
-  padding: 30px 0;
-  margin-bottom: 40px;
-  font-size: 20px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
   background-color: #563d7c;
-  /*border-bottom: 1px solid #eee;*/
 }
 .bs-docs-header h1 {
   margin-top: 0;
@@ -325,6 +325,10 @@ body {
 }
 
 @media (min-width: 992px) {
+  .bs-docs-header {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
   .bs-docs-header h1,
   .bs-docs-header p {
     margin-right: 380px;
