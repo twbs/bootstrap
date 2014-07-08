@@ -2525,9 +2525,9 @@ tbody.collapse.in {
   margin-left: .25rem;
   vertical-align: middle;
   content: "";
-  border-top: .25rem solid;
-  border-right: .25rem solid transparent;
-  border-left: .25rem solid transparent;
+  border-top: .3em solid;
+  border-right: .3em solid transparent;
+  border-left: .3em solid transparent;
 }
 .dropdown-toggle:focus {
   outline: 0;
@@ -2634,7 +2634,7 @@ tbody.collapse.in {
 .navbar-fixed-bottom .dropdown .caret {
   content: "";
   border-top: 0;
-  border-bottom: .25rem solid;
+  border-bottom: .3em solid;
 }
 .dropup .dropdown-menu,
 .navbar-fixed-bottom .dropdown .dropdown-menu {
@@ -2749,11 +2749,11 @@ tbody.collapse.in {
   margin-left: 0;
 }
 .btn-lg .caret {
-  border-width: .25rem .25rem 0;
+  border-width: .3em .3em 0;
   border-bottom-width: 0;
 }
 .dropup .btn-lg .caret {
-  border-width: 0 .25rem .25rem;
+  border-width: 0 .3em .3em;
 }
 .btn-group-vertical > .btn,
 .btn-group-vertical > .btn-group,
@@ -3692,18 +3692,19 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   color: #444;
 }
 .breadcrumb {
-  padding: 8px 15px;
+  padding: .75rem 1rem;
   margin-bottom: 24px;
   list-style: none;
-  background-color: #f5f5f5;
+  background-color: #eceeef;
   border-radius: .2rem;
 }
 .breadcrumb > li {
   display: inline-block;
 }
 .breadcrumb > li + li:before {
-  padding: 0 5px;
-  color: #ccc;
+  padding-right: .5rem;
+  padding-left: .5rem;
+  color: #818a91;
   content: "/\00a0";
 }
 .breadcrumb > .active {

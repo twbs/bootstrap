@@ -14,9 +14,10 @@
     display: inline-block;
 
     + li:before {
-      content: "@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
-      padding: 0 5px;
-      color: @breadcrumb-color;
+      content: "@{breadcrumb-divider}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
+      padding-left: .5rem;
+      padding-right: .5rem;
+      color: @breadcrumb-divider-color;
     }
   }
 

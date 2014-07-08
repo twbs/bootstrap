@@ -12,6 +12,7 @@
 @gray:                       #55595c;
 @gray-light:                 #818a91;
 @gray-lighter:               #eceeef;
+@gray-lightest:              #f7f7f9;
 
 @brand-primary:              #027de7;
 @brand-success:              #5cb85c;
@@ -727,16 +728,17 @@
 //
 //##
 
-@breadcrumb-padding-vertical:   8px;
-@breadcrumb-padding-horizontal: 15px;
+@breadcrumb-padding-vertical:   .75rem;
+@breadcrumb-padding-horizontal: 1rem;
+
 //** Breadcrumb background color
-@breadcrumb-bg:                 #f5f5f5;
-//** Breadcrumb text color
-@breadcrumb-color:              #ccc;
+@breadcrumb-bg:                 @gray-lighter;
+//** Text color for the generated divider between breadcrumb items
+@breadcrumb-divider-color:      @gray-light;
 //** Text color of current page in the breadcrumb
 @breadcrumb-active-color:       @gray-light;
-//** Textual separator for between breadcrumb elements
-@breadcrumb-separator:          "/";
+//** Textual divider for between breadcrumb elements
+@breadcrumb-divider:            "/";
 
 
 //== Carousel
