@@ -23,7 +23,7 @@ $(function () {
   })
 
   test('should return jquery collection containing the element', function () {
-    var $el = $('<div/>')
+    var $el = $('<div></div>')
     var $tab = $el.bootstrapTab()
     ok($tab instanceof $, 'returns jquery collection')
     strictEqual($tab[0], $el[0], 'collection contains element')
@@ -35,7 +35,7 @@ $(function () {
         + '<li><a href="#profile">Profile</a></li>'
         + '</ul>'
 
-    $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture')
+    $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture')
 
     $(tabsHTML).find('li:last a').bootstrapTab('show')
     equal($('#qunit-fixture').find('.active').attr('id'), 'profile')
@@ -50,7 +50,7 @@ $(function () {
         + '<li><a href="#profile">Profile</a></li>'
         + '</ul>'
 
-    $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture')
+    $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture')
 
     $(pillsHTML).find('li:last a').bootstrapTab('show')
     equal($('#qunit-fixture').find('.active').attr('id'), 'profile')
@@ -62,7 +62,7 @@ $(function () {
   test('should not fire shown when show is prevented', function () {
     stop()
 
-    $('<div class="tab"/>')
+    $('<div class="tab"></div>')
       .on('show.bs.tab', function (e) {
         e.preventDefault()
         ok(true, 'show event fired')

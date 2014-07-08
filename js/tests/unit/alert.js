@@ -23,7 +23,7 @@ $(function () {
   })
 
   test('should return jquery collection containing the element', function () {
-    var $el = $('<div/>')
+    var $el = $('<div></div>')
     var $alert = $el.bootstrapAlert()
     ok($alert instanceof $, 'returns jquery collection')
     strictEqual($alert[0], $el[0], 'collection contains element')
@@ -57,7 +57,7 @@ $(function () {
 
   test('should not fire closed when close is prevented', function () {
     stop()
-    $('<div class="alert"/>')
+    $('<div class="alert"></div>')
       .on('close.bs.alert', function (e) {
         e.preventDefault()
         ok(true, 'close event fired')

@@ -23,7 +23,7 @@ $(function () {
   })
 
   test('should return jquery collection containing the element', function () {
-    var $el = $('<div/>')
+    var $el = $('<div></div>')
     var $carousel = $el.bootstrapCarousel()
     ok($carousel instanceof $, 'returns jquery collection')
     strictEqual($carousel[0], $el[0], 'collection contains element')
@@ -31,7 +31,7 @@ $(function () {
 
   test('should not fire slid when slide is prevented', function () {
     stop()
-    $('<div class="carousel"/>')
+    $('<div class="carousel"></div>')
       .on('slide.bs.carousel', function (e) {
         e.preventDefault()
         ok(true, 'slide event fired')
@@ -46,23 +46,23 @@ $(function () {
   test('should reset when slide is prevented', function () {
     var carouselHTML = '<div id="carousel-example-generic" class="carousel slide">'
         + '<ol class="carousel-indicators">'
-        + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>'
-        + '<li data-target="#carousel-example-generic" data-slide-to="1"/>'
-        + '<li data-target="#carousel-example-generic" data-slide-to="2"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="1"></li>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="2"></li>'
         + '</ol>'
         + '<div class="carousel-inner">'
         + '<div class="item active">'
-        + '<div class="carousel-caption"/>'
+        + '<div class="carousel-caption"></div>'
         + '</div>'
         + '<div class="item">'
-        + '<div class="carousel-caption"/>'
+        + '<div class="carousel-caption"></div>'
         + '</div>'
         + '<div class="item">'
-        + '<div class="carousel-caption"/>'
+        + '<div class="carousel-caption"></div>'
         + '</div>'
         + '</div>'
-        + '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"/>'
-        + '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"/>'
+        + '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"></a>'
+        + '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"></a>'
         + '</div>'
     var $carousel = $(carouselHTML)
 
@@ -355,7 +355,7 @@ $(function () {
         + '<div class="item active">'
         + '<img alt="">'
         + '</div>'
-        + '<script type="text/x-metamorph" id="thingy"/>'
+        + '<script type="text/x-metamorph" id="thingy"></script>'
         + '<div class="item">'
         + '<img alt="">'
         + '</div>'

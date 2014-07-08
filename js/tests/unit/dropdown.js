@@ -23,7 +23,7 @@ $(function () {
   })
 
   test('should return jquery collection containing the element', function () {
-    var $el = $('<div/>')
+    var $el = $('<div></div>')
     var $dropdown = $el.bootstrapDropdown()
     ok($dropdown instanceof $, 'returns jquery collection')
     strictEqual($dropdown[0], $el[0], 'collection contains element')
@@ -36,7 +36,7 @@ $(function () {
         + '<ul class="dropdown-menu">'
         + '<li><a href="#">Secondary link</a></li>'
         + '<li><a href="#">Something else here</a></li>'
-        + '<li class="divider"/>'
+        + '<li class="divider"></li>'
         + '<li><a href="#">Another link</a></li>'
         + '</ul>'
         + '</li>'
@@ -53,7 +53,7 @@ $(function () {
         + '<ul class="dropdown-menu">'
         + '<li><a href="#">Secondary link</a></li>'
         + '<li><a href="#">Something else here</a></li>'
-        + '<li class="divider"/>'
+        + '<li class="divider"></li>'
         + '<li><a href="#">Another link</a></li>'
         + '</ul>'
         + '</li>'
@@ -70,7 +70,7 @@ $(function () {
         + '<ul class="dropdown-menu">'
         + '<li><a href="#">Secondary link</a></li>'
         + '<li><a href="#">Something else here</a></li>'
-        + '<li class="divider"/>'
+        + '<li class="divider"></li>'
         + '<li><a href="#">Another link</a></li>'
         + '</ul>'
         + '</li>'
@@ -87,7 +87,7 @@ $(function () {
         + '<ul class="dropdown-menu">'
         + '<li><a href="#">Secondary link</a></li>'
         + '<li><a href="#">Something else here</a></li>'
-        + '<li class="divider"/>'
+        + '<li class="divider"></li>'
         + '<li><a href="#">Another link</a></li>'
         + '</ul>'
         + '</li>'
@@ -105,7 +105,7 @@ $(function () {
         + '<ul class="dropdown-menu">'
         + '<li><a href="#">Secondary link</a></li>'
         + '<li><a href="#">Something else here</a></li>'
-        + '<li class="divider"/>'
+        + '<li class="divider"></li>'
         + '<li><a href="#">Another link</a></li>'
         + '</ul>'
         + '</li>'
@@ -125,7 +125,7 @@ $(function () {
     var dropdownHTML = '<ul class="nav">'
         + '<li><a href="#menu1">Menu 1</a></li>'
         + '<li class="dropdown" id="testmenu">'
-        + '<a class="dropdown-toggle" data-toggle="dropdown" href="#testmenu">Test menu <span class="caret"/></a>'
+        + '<a class="dropdown-toggle" data-toggle="dropdown" href="#testmenu">Test menu <span class="caret"></span></a>'
         + '<ul class="dropdown-menu" role="menu">'
         + '<li><a href="#sub1">Submenu 1</a></li>'
         + '</ul>'
@@ -133,7 +133,7 @@ $(function () {
         + '</ul>'
         + '<div class="btn-group">'
         + '<button class="btn">Actions</button>'
-        + '<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"/></button>'
+        + '<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>'
         + '<ul class="dropdown-menu">'
         + '<li><a href="#">Action 1</a></li>'
         + '</ul>'
@@ -164,7 +164,7 @@ $(function () {
         + '<ul class="dropdown-menu">'
         + '<li><a href="#">Secondary link</a></li>'
         + '<li><a href="#">Something else here</a></li>'
-        + '<li class="divider"/>'
+        + '<li class="divider"></li>'
         + '<li><a href="#">Another link</a></li>'
         + '</ul>'
         + '</li>'
@@ -198,7 +198,7 @@ $(function () {
         + '<ul class="dropdown-menu">'
         + '<li><a href="#">Secondary link</a></li>'
         + '<li><a href="#">Something else here</a></li>'
-        + '<li class="divider"/>'
+        + '<li class="divider"></li>'
         + '<li><a href="#">Another link</a></li>'
         + '</ul>'
         + '</li>'

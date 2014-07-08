@@ -23,7 +23,7 @@ $(function () {
   })
 
   test('should return jquery collection containing the element', function () {
-    var $el = $('<div/>')
+    var $el = $('<div></div>')
     var $scrollspy = $el.bootstrapScrollspy()
     ok($scrollspy instanceof $, 'returns jquery collection')
     strictEqual($scrollspy[0], $el[0], 'collection contains element')
