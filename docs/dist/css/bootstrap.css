@@ -1713,7 +1713,7 @@ output {
 .form-control {
   display: block;
   width: 100%;
-  height: 27px;
+  height: 2.6rem;
   padding: .5rem 1rem;
   font-size: 1rem;
   line-height: 1.5;
@@ -1753,6 +1753,8 @@ fieldset[disabled] .form-control {
 }
 textarea.form-control {
   height: auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 input[type="search"] {
   -webkit-appearance: none;
@@ -1761,7 +1763,7 @@ input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
 input[type="month"] {
-  line-height: 27px;
+  line-height: 2.6rem;
   line-height: 1.5 \0;
 }
 input[type="date"].input-sm,
@@ -1892,7 +1894,7 @@ select[multiple].form-group-lg .form-control {
   position: relative;
 }
 .has-feedback .form-control {
-  padding-right: 33.75px;
+  padding-right: 3.25rem;
 }
 .form-control-feedback {
   position: absolute;
@@ -1900,9 +1902,9 @@ select[multiple].form-group-lg .form-control {
   right: 0;
   z-index: 2;
   display: block;
-  width: 27px;
-  height: 27px;
-  line-height: 27px;
+  width: 2.6rem;
+  height: 2.6rem;
+  line-height: 2.6rem;
   text-align: center;
 }
 .input-lg + .form-control-feedback {
@@ -3382,9 +3384,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-form {
   padding: 10px 15px;
-  margin-top: 11.5px;
+  margin-top: 23.7px;
   margin-right: -15px;
-  margin-bottom: 11.5px;
+  margin-bottom: 23.7px;
   margin-left: -15px;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
@@ -3465,8 +3467,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-bottom-left-radius: 0;
 }
 .navbar-btn {
-  margin-top: 11.5px;
-  margin-bottom: 11.5px;
+  margin-top: 23.7px;
+  margin-bottom: 23.7px;
 }
 .navbar-btn.btn-sm {
   margin-top: 23.2px;
