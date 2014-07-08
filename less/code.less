@@ -41,21 +41,16 @@ pre {
   display: block;
   padding: ((@line-height-computed - 1) / 2);
   margin: 0 0 (@line-height-computed / 2);
-  font-size: (@font-size-base - 1); // 14px to 13px
+  font-size: 90%;
   line-height: @line-height-base;
-  word-break: break-all;
-  word-wrap: break-word;
   color: @pre-color;
   background-color: @pre-bg;
-  border: 1px solid @pre-border-color;
-  border-radius: @border-radius-base;
 
   // Account for some code outputs that place code tags in pre tags
   code {
     padding: 0;
     font-size: inherit;
     color: inherit;
-    white-space: pre-wrap;
     background-color: transparent;
     border-radius: 0;
   }

@@ -290,21 +290,18 @@ body {
   padding: 30px 0;
   margin-bottom: 40px;
   font-size: 20px;
-  background-color: #fafafa;
-  border-bottom: 1px solid #eee;
-}
-.bs-docs-header .bs-docs-container {
-  max-width: none;
+  background-color: #563d7c;
+  /*border-bottom: 1px solid #eee;*/
 }
 .bs-docs-header h1 {
   margin-top: 0;
-  color: #563d7c;
+  color: #fff;
 }
 .bs-docs-header p {
   margin-bottom: 0;
   font-weight: 300;
   line-height: 1.4;
-  color: #777;
+  color: rgba(255,255,255,.65);
 }
 .bs-docs-header .container {
   position: relative;
@@ -561,17 +558,19 @@ body {
 
 .bs-docs-container {
   position: relative;
-  max-width: 940px;
-  padding: 15px;
+  max-width: 62rem;
+  padding: 1rem;
+  margin-right: auto;
+  margin-left: auto;
 }
 @media (min-width: 768px) {
   .bs-docs-container {
-    padding: 30px;
+    padding: 2rem;
   }
 }
 @media (min-width: 992px) {
   .bs-docs-container {
-    padding: 30px 60px;
+    padding: 2rem 4rem;
   }
 }
 
@@ -634,8 +633,9 @@ body {
   font-weight: 500;
   line-height: 1;
   color: #fff;
-  background-color: #6f4f9f;
-  border-bottom: 3px solid #563d7c;
+  /*color: #fff;*/
+  /*background-color: #6f4f9f;*/
+  /*border-bottom: 3px solid #563d7c;*/
 }
 .bs-docs-sidebar-brand:hover,
 .bs-docs-sidebar-brand:focus {
@@ -645,6 +645,10 @@ body {
 
 .bs-docs-sidenav {
   display: none;
+}
+.bs-docs-toc-item {
+  margin-right: -15px;
+  margin-left: -15px;
 }
 
 .bs-docs-toc-link {
@@ -669,6 +673,9 @@ body {
 .bs-docs-toc-item.active {
   margin-top: 15px;
   margin-bottom: 15px;
+}
+.bs-docs-toc-item:first-child {
+  margin-top: 0;
 }
 .bs-docs-toc-item:last-child {
   margin-bottom: 30px;
@@ -940,36 +947,48 @@ h1[id] {
 
 .bs-example {
   position: relative;
-  padding: 45px 15px 15px;
-  margin: 0 -15px 15px;
-  border-color: #e5e5e5 #eee #eee;
-  border-style: solid;
-  border-width: 1px 0;
-  -webkit-box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
-          box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+  margin-top: 1rem;
+  /*padding: 45px 15px 15px;*/
+  /*margin: 0 -15px 15px;*/
+  /*border-color: #e5e5e5 #eee #eee;*/
+  /*border-style: solid;*/
+  /*border-width: 1px 0;*/
+  /*-webkit-box-shadow: inset 0 3px 6px rgba(0,0,0,.05);*/
+          /*box-shadow: inset 0 3px 6px rgba(0,0,0,.05);*/
 }
 /* Echo out a label for the example */
-.bs-example:after {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  font-size: 12px;
+.bs-example:before {
+  /*position: absolute;*/
+  /*top: 15px;*/
+  /*left: 15px;*/
+  display: inline-block;
+  padding: .5rem .75rem;
+  margin-bottom: 1rem;
+  font-size: .8rem;
   font-weight: bold;
-  color: #959595;
+  color: #fff;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: .1rem;
   content: "Example";
+  background-color: #818a91;
+  border-radius: .2rem;
 }
 
 /* Tweak display of the code snippets when following an example */
-.bs-example + .highlight {
-  margin: -15px -15px 15px;
-  border-width: 0 0 1px;
-  border-radius: 0;
+.bs-example + .highlight:before {
+  /*margin: -15px -15px 15px;*/
+  /*border-width: 0 0 1px;*/
+  /*border-radius: 0;*/
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
 }
 
 /* Make the examples and snippets not full-width */
 @media (min-width: 768px) {
+/*
   .bs-example {
     margin-right: 0;
     margin-left: 0;
@@ -980,6 +999,8 @@ h1[id] {
     -webkit-box-shadow: none;
             box-shadow: none;
   }
+*/
+/*
   .bs-example + .highlight {
     margin-top: -16px;
     margin-right: 0;
@@ -988,6 +1009,7 @@ h1[id] {
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
   }
+*/
 }
 
 /* Undo width of container */
@@ -1211,29 +1233,21 @@ h1[id] {
  */
 
 .highlight {
-  padding: 9px 14px;
-  margin-bottom: 14px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   background-color: #f7f7f9;
-  border: 1px solid #e1e1e8;
-  border-radius: 4px;
 }
 .highlight pre {
   padding: 0;
   margin-top: 0;
   margin-bottom: 0;
-  word-break: normal;
-  word-wrap: nowrap;
-  white-space: nowrap;
   background-color: transparent;
   border: 0;
 }
 .highlight pre code {
   font-size: inherit;
   color: #333; /* Effectively the base text color */
-}
-.highlight pre code:first-child {
-  display: inline-block;
-  padding-right: 45px;
 }
 
 
@@ -1541,6 +1555,7 @@ h1[id] {
 .zero-clipboard {
   position: relative;
   display: none;
+  float: right;
 }
 .btn-clipboard {
   position: absolute;
@@ -1548,18 +1563,16 @@ h1[id] {
   right: 0;
   z-index: 10;
   display: block;
-  padding: 5px 8px;
-  font-size: 12px;
-  color: #777;
+  padding: .25rem .5rem;
+  font-size: 75%;
+  color: #818a91;
   cursor: pointer;
-  background-color: #fff;
-  border: 1px solid #e1e1e8;
-  border-radius: 0 4px 0 4px;
+  background-color: #eceeef;
+  border-radius: .2rem;
 }
 .btn-clipboard-hover {
   color: #fff;
-  background-color: #563d7c;
-  border-color: #563d7c;
+  background-color: #027de7;
 }
 
 @media (min-width: 768px) {
