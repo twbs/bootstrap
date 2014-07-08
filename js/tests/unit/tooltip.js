@@ -470,7 +470,7 @@ $(function () {
         + '.tooltip.right { white-space: nowrap; }'
         + '.tooltip.right .tooltip-inner { max-width: none; }'
         + '</style>'
-    var $styles = $(styles).appendTo(document.head)
+    var $styles = $(styles).appendTo('head')
 
     var $container = $('<div/>').appendTo(document.body)
     var $target = $('<a href="#" rel="tooltip" title="very very very very very very very very long tooltip in one line"/>')
@@ -585,7 +585,7 @@ $(function () {
         + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
         + 'a[rel="tooltip"] { position: fixed; }'
         + '</style>'
-    var $styles = $(styles).appendTo(document.head)
+    var $styles = $(styles).appendTo('head')
 
     var $container = $('<div/>').appendTo(document.body)
     var $target = $('<a href="#" rel="tooltip" title="tip" style="top: 0px; left: 0px;"/>')
@@ -613,7 +613,7 @@ $(function () {
         + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
         + 'a[rel="tooltip"] { position: fixed; }'
         + '</style>'
-    var $styles = $(styles).appendTo(document.head)
+    var $styles = $(styles).appendTo('head')
 
     var $container = $('<div/>').appendTo(document.body)
     var $target = $('<a href="#" rel="tooltip" title="tip" style="bottom: 0px; left: 0px;"/>')
@@ -642,7 +642,7 @@ $(function () {
         + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
         + 'a[rel="tooltip"] { position: fixed; }'
         + '</style>'
-    var $styles = $(styles).appendTo(document.head)
+    var $styles = $(styles).appendTo('head')
 
     var $container = $('<div/>').appendTo(document.body)
     var $target = $('<a href="#" rel="tooltip" title="tip" style="top: 0px; left: 0px;"/>')
@@ -670,7 +670,7 @@ $(function () {
         + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
         + 'a[rel="tooltip"] { position: fixed; }'
         + '</style>'
-    var $styles = $(styles).appendTo(document.head)
+    var $styles = $(styles).appendTo('head')
 
     var $container = $('<div/>').appendTo('body')
     var $target = $('<a href="#" rel="tooltip" title="tip" style="top: 0px; right: 0px;"/>')
@@ -700,7 +700,7 @@ $(function () {
         + '.container-viewport { position: absolute; top: 50px; left: 60px; width: 300px; height: 300px; }'
         + 'a[rel="tooltip"] { position: fixed; }'
         + '</style>'
-    var $styles = $(styles).appendTo(document.head)
+    var $styles = $(styles).appendTo('head')
 
     var $container = $('<div class="container-viewport"/>').appendTo(document.body)
     var $target = $('<a href="#" rel="tooltip" title="tip" style="top: 50px; left: 350px;"/>')
