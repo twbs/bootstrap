@@ -714,14 +714,9 @@ body {
   font-size: 12px;
   font-weight: normal;
 }
-.bs-docs-sidebar .nav .nav > li > a:hover,
-.bs-docs-sidebar .nav .nav > li > a:focus {
-  padding-left: 29px;
-}
 .bs-docs-sidebar .nav .nav > .active > a,
 .bs-docs-sidebar .nav .nav > .active:hover > a,
 .bs-docs-sidebar .nav .nav > .active:focus > a {
-  padding-left: 28px;
   font-weight: 500;
 }
 
