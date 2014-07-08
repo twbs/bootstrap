@@ -258,35 +258,21 @@
 
 //== Media queries breakpoints
 //
-//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+//## Define the minimum and maximum dimensions at which your layout will change, adapting to different screen sizes.
 
 // Extra small screen / phone
+@screen-xs-max:              (@screen-sm-min - 1);
 
 // Small screen / tablet
-//** Deprecated `@screen-sm` as of v3.0.1
-@screen-sm:                  768px;
-@screen-sm-min:              @screen-sm;
-//** Deprecated `@screen-tablet` as of v3.0.1
-@screen-tablet:              @screen-sm-min;
+@screen-sm-min:              768px;
+@screen-sm-max:              (@screen-md-min - 1);
 
 // Medium screen / desktop
-//** Deprecated `@screen-md` as of v3.0.1
-@screen-md:                  992px;
-@screen-md-min:              @screen-md;
-//** Deprecated `@screen-desktop` as of v3.0.1
-@screen-desktop:             @screen-md-min;
+@screen-md-min:              992px;
+@screen-md-max:              (@screen-lg-min - 1);
 
 // Large screen / wide desktop
-//** Deprecated `@screen-lg` as of v3.0.1
-@screen-lg:                  1200px;
-@screen-lg-min:              @screen-lg;
-//** Deprecated `@screen-lg-desktop` as of v3.0.1
-@screen-lg-desktop:          @screen-lg-min;
-
-// So media queries don't overlap when required, provide a maximum
-@screen-xs-max:              (@screen-sm-min - 1);
-@screen-sm-max:              (@screen-md-min - 1);
-@screen-md-max:              (@screen-lg-min - 1);
+@screen-lg-min:              1200px;
 
 
 //== Grid system
