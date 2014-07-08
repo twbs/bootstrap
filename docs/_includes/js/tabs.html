@@ -5,9 +5,9 @@
   <p>Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus.</p>
   <div class="bs-example bs-example-tabs">
     <ul id="myTab" class="nav nav-tabs" role="tablist">
-      <li class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
-      <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
-      <li class="dropdown">
+      <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
+      <li role="presentation"><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
+      <li role="presentation" class="dropdown">
         <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
           <li><a href="#dropdown1" tabindex="-1" role="tab" data-toggle="tab">@fat</a></li>
@@ -61,10 +61,10 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
 {% highlight html %}
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
-  <li class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
-  <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
-  <li><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
-  <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+  <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
+  <li role="presentation"><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
+  <li role="presentation"><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
+  <li role="presentation"><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
 </ul>
 
 <!-- Tab panes -->
@@ -94,10 +94,10 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
   </p>
 {% highlight html %}
 <ul class="nav nav-tabs" role="tablist" id="myTab">
-  <li class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
-  <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
-  <li><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
-  <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+  <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
+  <li role="presentation"><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
+  <li role="presentation"><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
+  <li role="presentation"><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
 </ul>
 
 <div class="tab-content">
