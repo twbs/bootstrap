@@ -308,8 +308,6 @@ img {
   vertical-align: middle;
 }
 .img-responsive,
-.thumbnail > img,
-.thumbnail a > img,
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   display: block;
@@ -3984,32 +3982,6 @@ a.list-group-item.active > .badge,
   .jumbotron .h1 {
     font-size: 4.5rem;
   }
-}
-.thumbnail {
-  display: block;
-  padding: 4px;
-  margin-bottom: 24px;
-  line-height: 1.5;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: .2rem;
-  -webkit-transition: all .2s ease-in-out;
-       -o-transition: all .2s ease-in-out;
-          transition: all .2s ease-in-out;
-}
-.thumbnail > img,
-.thumbnail a > img {
-  margin-right: auto;
-  margin-left: auto;
-}
-a.thumbnail:hover,
-a.thumbnail:focus,
-a.thumbnail.active {
-  border-color: #027de7;
-}
-.thumbnail .caption {
-  padding: 9px;
-  color: #373a3c;
 }
 .alert {
   padding: 15px;
