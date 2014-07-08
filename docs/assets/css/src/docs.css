@@ -73,6 +73,12 @@ body {
   font-size: 20px;
   line-height: 28px;
 }
+.bs-docs-booticon-md {
+  width: 40px;
+  height: 40px;
+  font-size: 28px;
+  line-height: 40px;
+}
 .bs-docs-booticon-lg {
   width: 144px;
   height: 144px;
@@ -644,8 +650,8 @@ body {
   display: none;
 }
 .bs-docs-toc-item {
-  margin-right: -15px;
-  margin-left: -15px;
+  margin-right: -.75rem;
+  margin-left: -.75rem;
 }
 
 .bs-docs-toc-link {

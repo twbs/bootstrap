@@ -3189,8 +3189,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-collapse {
-  padding-right: 0rem;
-  padding-left: 0rem;
+  padding-right: .75rem;
+  padding-left: .75rem;
   overflow-x: visible;
   -webkit-overflow-scrolling: touch;
   border-top: 1px solid transparent;
@@ -3237,8 +3237,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .container-fluid > .navbar-header,
 .container > .navbar-collapse,
 .container-fluid > .navbar-collapse {
-  margin-right: -0rem;
-  margin-left: -0rem;
+  margin-right: -.75rem;
+  margin-left: -.75rem;
 }
 @media (min-width: 48em) {
   .container > .navbar-header,
@@ -3285,7 +3285,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-brand {
   float: left;
   height: 50px;
-  padding: 13px 0rem;
+  padding: 13px .75rem;
   font-size: 1.25rem;
   line-height: 24px;
 }
@@ -3299,7 +3299,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 48em) {
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {
-    margin-left: -0rem;
+    margin-left: -.75rem;
   }
 }
 .navbar-toggle {
@@ -3307,7 +3307,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   float: right;
   padding: 9px 10px;
   margin-top: 8px;
-  margin-right: 0rem;
+  margin-right: .75rem;
   margin-bottom: 8px;
   background-color: transparent;
   background-image: none;
@@ -3332,7 +3332,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-nav {
-  margin: 6.5px -0rem;
+  margin: 6.5px -.75rem;
 }
 .navbar-nav > li > a {
   padding-top: 10px;
@@ -3376,11 +3376,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-form {
-  padding: 10px 0rem;
+  padding: 10px .75rem;
   margin-top: 23.65px;
-  margin-right: -0rem;
+  margin-right: -.75rem;
   margin-bottom: 23.65px;
-  margin-left: -0rem;
+  margin-left: -.75rem;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 0 rgba(255, 255, 255, .1);
@@ -3478,8 +3478,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 48em) {
   .navbar-text {
     float: left;
-    margin-right: 0rem;
-    margin-left: 0rem;
+    margin-right: .75rem;
+    margin-left: .75rem;
   }
 }
 @media (min-width: 48em) {
@@ -3488,7 +3488,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
   .navbar-right {
     float: right !important;
-    margin-right: -0rem;
+    margin-right: -.75rem;
   }
   .navbar-right ~ .navbar-right {
     margin-right: 0;
