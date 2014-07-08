@@ -2,27 +2,29 @@
 // Dropdown menus
 // --------------------------------------------------
 
-
-// Dropdown arrow/caret
-.caret {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  margin-left: 2px;
-  vertical-align: middle;
-  border-top:   @caret-width-base solid;
-  border-right: @caret-width-base solid transparent;
-  border-left:  @caret-width-base solid transparent;
-}
-
 // The dropdown wrapper (div)
 .dropdown {
   position: relative;
 }
 
-// Prevent the focus on the dropdown toggle when closing dropdowns
-.dropdown-toggle:focus {
-  outline: 0;
+.dropdown-toggle {
+  // Generate the caret automatically
+  &:after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    content: "";
+    margin-left: .25rem;
+    vertical-align: middle;
+    border-top:   @caret-width-base solid;
+    border-right: @caret-width-base solid transparent;
+    border-left:  @caret-width-base solid transparent;
+  }
+
+  // Prevent the focus on the dropdown toggle when closing dropdowns
+  &:focus {
+    outline: 0;
+  }
 }
 
 // The dropdown menu (ul)
