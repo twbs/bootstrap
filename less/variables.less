@@ -250,18 +250,18 @@
 //## Define the minimum and maximum dimensions at which your layout will change, adapting to different screen sizes.
 
 // Extra small screen / phone
-@screen-xs-max:              (@screen-sm-min - 1);
+@screen-xs-max:              (@screen-sm-min - .1);
 
 // Small screen / tablet
-@screen-sm-min:              768px;
-@screen-sm-max:              (@screen-md-min - 1);
+@screen-sm-min:              48em;
+@screen-sm-max:              (@screen-md-min - .1);
 
 // Medium screen / desktop
-@screen-md-min:              992px;
-@screen-md-max:              (@screen-lg-min - 1);
+@screen-md-min:              62em;
+@screen-md-max:              (@screen-lg-min - .1);
 
 // Large screen / wide desktop
-@screen-lg-min:              1200px;
+@screen-lg-min:              75em;
 
 
 //== Grid system
@@ -271,7 +271,7 @@
 //** Number of columns in the grid.
 @grid-columns:               12;
 //** Padding between columns. Gets divided in half for the left and right.
-@grid-gutter-width:          30px;
+@grid-gutter-width:          1.5rem;
 // Navbar collapse
 //** Point at which the navbar becomes uncollapsed.
 @grid-float-breakpoint:      @screen-sm-min;
@@ -284,13 +284,13 @@
 //## Define the maximum width of `.container` for different screen sizes.
 
 //** For `@screen-sm-min` and up.
-@container-sm:               720px;
+@container-sm:               45rem; // 720
 
 //** For `@screen-md-min` and up.
-@container-md:               940px;
+@container-md:               60rem; // 960
 
 //** For `@screen-lg-min` and up.
-@container-lg:               1140px;
+@container-lg:               72.25rem; // 1140
 
 
 //== Navbar
