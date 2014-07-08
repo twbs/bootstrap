@@ -50,6 +50,7 @@
 @font-size-base:          1rem;
 @font-size-large:         1.25rem;
 @font-size-small:         .85rem;
+@font-size-xs:            .75rem;
 
 @font-size-h1:            3rem;
 @font-size-h2:            2.5rem;
@@ -59,9 +60,9 @@
 @font-size-h6:            1rem;
 
 //** Unit-less `line-height` for use in components like buttons.
-@line-height-base:        1.5; // 20/14
+@line-height-base:        1.5;
 //** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
-@line-height-computed:    (@font-size-root * @line-height-base); // ~20px
+@line-height-computed:    (@font-size-root * @line-height-base);
 
 //** By default, this inherits from the `<body>`.
 @headings-font-family:    inherit;
@@ -86,17 +87,17 @@
 //
 //## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
 
-@padding-base-vertical:     6px;
-@padding-base-horizontal:   12px;
+@padding-base-vertical:     .5rem;
+@padding-base-horizontal:   1rem;
 
-@padding-large-vertical:    10px;
-@padding-large-horizontal:  16px;
+@padding-large-vertical:    .75rem;
+@padding-large-horizontal:  1.5rem;
 
-@padding-small-vertical:    5px;
-@padding-small-horizontal:  10px;
+@padding-small-vertical:    .3rem;
+@padding-small-horizontal:  .75rem;
 
-@padding-xs-vertical:       1px;
-@padding-xs-horizontal:     5px;
+@padding-xs-vertical:       .2rem;
+@padding-xs-horizontal:     .5rem;
 
 @line-height-large:         1.33;
 @line-height-small:         1.5;
