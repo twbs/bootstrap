@@ -49,17 +49,17 @@
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
 {% endhighlight %}
-    <div class="bs-callout bs-callout-warning">
-      <h4>Don't mix form groups with input groups</h4>
-      <p>Do not mix form groups directly with <a href="/components/#input-groups">input groups</a>. Instead, nest the input group inside of the form group.</p>
-    </div>
+  <div class="bs-callout bs-callout-warning">
+    <h4>Don't mix form groups with input groups</h4>
+    <p>Do not mix form groups directly with <a href="/components/#input-groups">input groups</a>. Instead, nest the input group inside of the form group.</p>
+  </div>
 
 
   <h2 id="forms-inline">Inline form</h2>
   <p>Add <code>.form-inline</code> to your <code>&lt;form&gt;</code> for left-aligned and inline-block controls. <strong>This only applies to forms within viewports that are at least 768px wide.</strong></p>
   <div class="bs-callout bs-callout-danger">
     <h4>Requires custom widths</h4>
-    <p>Inputs, selects, and textareas are 100% wide by default in Bootstrap. To use the inline form, you'll have to set a width on the form controls used within.</p>
+    <p>Inputs and selects have <code>width: 100%;</code> applied by default in Bootstrap. Within inline forms, we reset that to <code>width: auto;</code> so multiple controls can reside on the same line. Depending on your layout, additional custom widths may be required.</p>
   </div>
   <div class="bs-callout bs-callout-warning">
     <h4>Always add labels</h4>
@@ -94,6 +94,12 @@
   <div class="form-group">
     <label class="sr-only" for="exampleInputEmail2">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon">@</div>
+      <input class="form-control" type="email" placeholder="Enter email">
+    </div>
   </div>
   <div class="form-group">
     <label class="sr-only" for="exampleInputPassword2">Password</label>
@@ -207,7 +213,8 @@
 {% endhighlight %}
 
   <h3>Checkboxes and radios</h3>
-  <p>Checkboxes are for selecting one or several options in a list while radios are for selecting one option from many.</p>
+  <p>Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.</p>
+  <p>A checkbox or radio with the <code>disabled</code> attribute will be styled appropriately. To have the <code>&lt;label&gt;</code> for the checkbox or radio also display a "not-allowed" cursor when the user hovers over the label, add the <code>.disabled</code> class to your <code>.radio</code>, <code>.radio-inline</code>, <code>.checkbox</code>, <code>.checkbox-inline</code>, or <code>&lt;fieldset&gt;</code>.</p>
   <h4>Default (stacked)</h4>
   <div class="bs-example">
     <form role="form">
@@ -215,6 +222,12 @@
         <label>
           <input type="checkbox" value="">
           Option one is this and that&mdash;be sure to include why it's great
+        </label>
+      </div>
+      <div class="checkbox disabled">
+        <label>
+          <input type="checkbox" value="" disabled>
+          Option two is disabled
         </label>
       </div>
       <br>
@@ -230,6 +243,12 @@
           Option two can be something else and selecting it will deselect option one
         </label>
       </div>
+      <div class="radio disabled">
+        <label>
+          <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+          Option three is disabled
+        </label>
+      </div>
     </form>
   </div><!-- /.bs-example -->
 {% highlight html %}
@@ -237,6 +256,12 @@
   <label>
     <input type="checkbox" value="">
     Option one is this and that&mdash;be sure to include why it's great
+  </label>
+</div>
+<div class="checkbox disabled">
+  <label>
+    <input type="checkbox" value="" disabled>
+    Option two is disabled
   </label>
 </div>
 
@@ -252,9 +277,15 @@
     Option two can be something else and selecting it will deselect option one
   </label>
 </div>
+<div class="radio disabled">
+  <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+    Option three is disabled
+  </label>
+</div>
 {% endhighlight %}
 
-  <h4>Inline checkboxes</h4>
+  <h4>Inline checkboxes and radios</h4>
   <p>Use the <code>.checkbox-inline</code> or <code>.radio-inline</code> classes on a series of checkboxes or radios for controls that appear on the same line.</p>
   <div class="bs-example">
     <form role="form">
@@ -268,6 +299,18 @@
         <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
       </label>
     </form>
+    <br>
+    <form role="form">
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+      </label>
+    </form>
   </div><!-- /.bs-example -->
 {% highlight html %}
 <label class="checkbox-inline">
@@ -278,6 +321,16 @@
 </label>
 <label class="checkbox-inline">
   <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+</label>
+
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
 </label>
 {% endhighlight %}
 
@@ -468,6 +521,30 @@
         <label class="control-label" for="inputError1">Input with error</label>
         <input type="text" class="form-control" id="inputError1">
       </div>
+      <div class="has-success">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="checkboxSuccess" value="option1">
+            Checkbox with success
+          </label>
+        </div>
+      </div>
+      <div class="has-warning">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="checkboxWarning" value="option1">
+            Checkbox with warning
+          </label>
+        </div>
+      </div>
+      <div class="has-error">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="checkboxError" value="option1">
+            Checkbox with error
+          </label>
+        </div>
+      </div>
     </form>
   </div><!-- /.bs-example -->
 {% highlight html %}
@@ -483,13 +560,37 @@
   <label class="control-label" for="inputError1">Input with error</label>
   <input type="text" class="form-control" id="inputError1">
 </div>
+<div class="has-success">
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" id="checkboxSuccess" value="option1">
+      Checkbox with success
+    </label>
+  </div>
+</div>
+<div class="has-warning">
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" id="checkboxWarning" value="option1">
+      Checkbox with warning
+    </label>
+  </div>
+</div>
+<div class="has-error">
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" id="checkboxError" value="option1">
+      Checkbox with error
+    </label>
+  </div>
+</div>
 {% endhighlight %}
 
   <h3>With optional icons</h3>
   <p>You can also add optional feedback icons with the addition of <code>.has-feedback</code> and the right icon.</p>
   <div class="bs-callout bs-callout-warning">
     <h4>Icons, labels, and input groups</h4>
-    <p>Manual positioning of feedback icons is required for inputs without a label and for <a href="../components#input-groups">input groups</a> with an add-on on the right. For inputs without labels, adjust the <code>top</code>value. For input groups, adjust the <code>right</code> value to an appropriate pixel value depending on the width of your addon.</p>
+    <p>Manual positioning of feedback icons is required for inputs without a label and for <a href="../components#input-groups">input groups</a> with an add-on on the right. You are strongly encouraged to provide labels for all inputs for accessibility reasons. If you wish to prevent labels from being displayed, hide them with the <code>sr-only</code> class. If you must do without labels, adjust the <code>top</code> value of the feedback icon. For input groups, adjust the <code>right</code> value to an appropriate pixel value depending on the width of your addon.</p>
   </div>
   <div class="bs-example">
     <form role="form">
@@ -528,7 +629,7 @@
 </div>
 {% endhighlight %}
 
-  <p>Optional icons also work on horizontal and inline forms.</p>
+  <h4>Optional icons in horizontal and inline forms</h4>
   <div class="bs-example">
     <form class="form-horizontal" role="form">
       <div class="form-group has-success has-feedback">
@@ -571,6 +672,23 @@
 </form>
 {% endhighlight %}
 
+  <h4>Optional icons with hidden <code>.sr-only</code> labels</h4>
+  <p>For form controls with no visible label, add the <code>.sr-only</code> class on the label. Bootstrap will automatically adjust the position of the icon once it's been added.</p>
+  <div class="bs-example">
+    <div class="form-group has-success has-feedback">
+      <label class="control-label sr-only" for="inputSuccess5">Hidden label</label>
+      <input type="text" class="form-control" id="inputSuccess5">
+      <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+    </div>
+  </div>
+{% highlight html %}
+<div class="form-group has-success has-feedback">
+  <label class="control-label sr-only" for="inputSuccess5">Hidden label</label>
+  <input type="text" class="form-control" id="inputSuccess5">
+  <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+</div>
+{% endhighlight %}
+
 
   <h2 id="forms-control-sizes">Control sizing</h2>
   <p>Set heights using classes like <code>.input-lg</code>, and set widths using grid column classes like <code>.col-lg-*</code>.</p>
@@ -605,6 +723,42 @@
 <select class="form-control">...</select>
 <select class="form-control input-sm">...</select>
 {% endhighlight %}
+
+  <h3>Horizontal form group sizes</h3>
+  <p>Quickly size labels and form controls within <code>.form-horizontal</code> by adding <code>.form-group-lg</code> or <code>.form-group-sm</code>.</p>
+  <div class="bs-example">
+    <form class="form-horizontal" role="form">
+      <div class="form-group form-group-lg">
+        <label class="col-sm-2 control-label" for="formGroupInputLarge">Large label</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="text" id="formGroupInputLarge" placeholder="Large input">
+        </div>
+      </div>
+      <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">Small label</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="text" id="formGroupInputSmall" placeholder="Small input">
+        </div>
+      </div>
+    </form>
+  </div><!-- /.bs-example -->
+{% highlight html %}
+<form class="form-horizontal" role="form">
+  <div class="form-group form-group-lg">
+    <label class="col-sm-2 control-label" for="formGroupInputLarge">Large label</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" id="formGroupInputLarge" placeholder="Large input">
+    </div>
+  </div>
+  <div class="form-group form-group-sm">
+    <label class="col-sm-2 control-label" for="formGroupInputSmall">Small label</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" id="formGroupInputSmall" placeholder="Small input">
+    </div>
+  </div>
+</form>
+{% endhighlight %}
+
 
   <h3>Column sizing</h3>
   <p>Wrap inputs in grid columns, or any custom parent element, to easily enforce desired widths.</p>

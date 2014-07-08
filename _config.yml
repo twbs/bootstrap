@@ -1,6 +1,6 @@
 # Dependencies
-markdown:         rdiscount
-pygments:         true
+markdown:         kramdown
+highlighter:      rouge
 
 # Permalinks
 permalink:        pretty
@@ -14,25 +14,20 @@ baseurl:          /
 url:              http://getbootstrap.com
 encoding:         UTF-8
 
-exclude:
-  - jade
-  - src
-  - vendor
-
 # Custom vars
-current_version:  3.1.1
+current_version:  3.2.0
 repo:             https://github.com/twbs/bootstrap
 sass_repo:        https://github.com/twbs/bootstrap-sass
 
 download:
-  source:         https://github.com/twbs/bootstrap/archive/v3.1.1.zip
-  dist:           https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist.zip
-  sass:           https://github.com/twbs/bootstrap-sass/archive/v3.1.1.tar.gz
+  source:         https://github.com/twbs/bootstrap/archive/v3.2.0.zip
+  dist:           https://github.com/twbs/bootstrap/releases/download/v3.2.0/bootstrap-3.2.0-dist.zip
+  sass:           https://github.com/twbs/bootstrap-sass/archive/v3.2.0.tar.gz
 
 blog:             http://blog.getbootstrap.com
 expo:             http://expo.getbootstrap.com
 
 cdn:
-  css:            //netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css
-  css_theme:      //netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css
-  js:             //netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js
+  css:            //maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css
+  css_theme:      //maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css
+  js:             //maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js

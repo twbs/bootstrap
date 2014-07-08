@@ -25,9 +25,9 @@ lead: "A list of the browser bugs that Bootstrap is currently grappling with."
       <tbody>
         <tr>
           <td>Firefox</td>
-          <td>Allow use of line-height for <code>&lt;input&gt;</code></td>
-          <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697451">Mozilla bug #697451</a></td>
-          <td><a href="https://github.com/twbs/bootstrap/issues/2985">#2985</a></td>
+          <td><code>.table-bordered</code> with an empty <code>&lt;tbody&gt;</code> is missing borders</td>
+          <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1023761">Mozilla bug #1023761</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/13453">#13453</a></td>
         </tr>
         <tr>
           <td>Firefox</td>
@@ -42,14 +42,14 @@ lead: "A list of the browser bugs that Bootstrap is currently grappling with."
           <td><a href="https://github.com/twbs/bootstrap/issues/10690">#10690</a></td>
         </tr>
         <tr>
-          <td>Firefox <strong>&le;27</strong></td>
+          <td>Firefox <strong>&lt;31</strong></td>
           <td><code>position: relative;</code> doesn't work inside tables</td>
           <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=63895">Mozilla bug #63895</a></td>
           <td><a href="https://github.com/twbs/bootstrap/issues/12467">#12467</a></td>
         </tr>
         <tr>
           <td>Chrome</td>
-          <td>Weird button behavior with some number inputs</td>
+          <td>Weird button behavior with some number <code>&lt;input&gt;</code>s</td>
           <td><a href="https://code.google.com/p/chromium/issues/detail?id=337668">Chromium issue #337668</a></td>
           <td><a href="https://github.com/twbs/bootstrap/issues/8350">#8350</a>, <a href="https://github.com/necolas/normalize.css/issues/283">Normalize #283</a></td>
         </tr>
@@ -67,7 +67,7 @@ lead: "A list of the browser bugs that Bootstrap is currently grappling with."
         </tr>
         <tr>
           <td>Chrome</td>
-          <td>Unwanted vertical lines when printing styled <code>&lt;select&gt;s</code> on OS X</td>
+          <td>Unwanted vertical lines when printing styled <code>&lt;select&gt;</code> on OS X</td>
           <td><a href="https://code.google.com/p/chromium/issues/detail?id=282918">Chromium issue #282918</a></td>
           <td><a href="https://github.com/twbs/bootstrap/issues/11245">#11245</a></td>
         </tr>
@@ -91,9 +91,15 @@ lead: "A list of the browser bugs that Bootstrap is currently grappling with."
         </tr>
         <tr>
           <td>Chrome</td>
-          <td><code>display: table-cell; width: 100%;</code> doesn't work correctly on date input</td>
+          <td><code>display: table-cell; width: 100%;</code> doesn't work correctly on date <code>&lt;input&gt;</code></td>
           <td><a href="https://code.google.com/p/chromium/issues/detail?id=346051">Chromium issue #346051</a></td>
           <td><a href="https://github.com/twbs/bootstrap/issues/12548">#12548</a></td>
+        </tr>
+        <tr>
+          <td>Chrome</td>
+          <td><code>&lt;input type="password"&gt;</code> sporadically causes bad widths on floated elements</td>
+          <td><a href="https://code.google.com/p/chromium/issues/detail?id=377346">Chrome issue #377346</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/13892">#13892</a></td>
         </tr>
         <tr>
           <td>Safari</td>

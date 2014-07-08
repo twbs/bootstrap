@@ -74,7 +74,8 @@ a.list-group-item {
   &.disabled:focus {
     background-color: @list-group-disabled-bg;
     color: @list-group-disabled-color;
-
+    cursor: not-allowed;
+    
     // Force color to inherit for custom content
     .list-group-item-heading {
       color: inherit;
@@ -94,7 +95,9 @@ a.list-group-item {
     border-color: @list-group-active-border;
 
     // Force color to inherit for custom content
-    .list-group-item-heading {
+    .list-group-item-heading,
+    .list-group-item-heading > small,
+    .list-group-item-heading > .small {
       color: inherit;
     }
     .list-group-item-text {

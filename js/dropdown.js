@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: dropdown.js v3.1.1
+ * Bootstrap: dropdown.js v3.2.0
  * http://getbootstrap.com/javascript/#dropdowns
  * ========================================================================
  * Copyright 2011-2014 Twitter, Inc.
@@ -18,6 +18,8 @@
   var Dropdown = function (element) {
     $(element).on('click.bs.dropdown', this.toggle)
   }
+
+  Dropdown.VERSION = '3.2.0'
 
   Dropdown.prototype.toggle = function (e) {
     var $this = $(this)
@@ -40,11 +42,11 @@
 
       if (e.isDefaultPrevented()) return
 
+      $this.trigger('focus')
+
       $parent
         .toggleClass('open')
         .trigger('shown.bs.dropdown', relatedTarget)
-
-      $this.trigger('focus')
     }
 
     return false
@@ -83,6 +85,7 @@
   }
 
   function clearMenus(e) {
+    if (e && e.which === 3) return
     $(backdrop).remove()
     $(toggle).each(function () {
       var $parent = getParent($(this))
@@ -99,7 +102,7 @@
 
     if (!selector) {
       selector = $this.attr('href')
-      selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+      selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
     }
 
     var $parent = selector && $(selector)
@@ -111,9 +114,7 @@
   // DROPDOWN PLUGIN DEFINITION
   // ==========================
 
-  var old = $.fn.dropdown
-
-  $.fn.dropdown = function (option) {
+  function Plugin(option) {
     return this.each(function () {
       var $this = $(this)
       var data  = $this.data('bs.dropdown')
@@ -123,6 +124,9 @@
     })
   }
 
+  var old = $.fn.dropdown
+
+  $.fn.dropdown             = Plugin
   $.fn.dropdown.Constructor = Dropdown
 
 

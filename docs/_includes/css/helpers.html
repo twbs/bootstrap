@@ -40,15 +40,18 @@
 <p class="bg-warning">...</p>
 <p class="bg-danger">...</p>
 {% endhighlight %}
-
+  <div class="bs-callout bs-callout-info">
+    <h4>Dealing with specificity</h4>
+    <p>Sometimes contextual background classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a <code>&lt;div&gt;</code> with the class.</p>
+  </div>
 
   <h3 id="helper-classes-close">Close icon</h3>
   <p>Use the generic close icon for dismissing content like modals and alerts.</p>
   <div class="bs-example">
-    <p><button type="button" class="close" aria-hidden="true">&times;</button></p>
+    <p><button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></p>
   </div>
 {% highlight html %}
-<button type="button" class="close" aria-hidden="true">&times;</button>
+<button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 {% endhighlight %}
 
 
@@ -113,7 +116,7 @@
 
 
   <h3 id="helper-classes-clearfix">Clearfix</h3>
-  <p>Clear the <code>float</code> on any element with the <code>.clearfix</code> class. Utilizes <a href="http://nicolasgallagher.com/micro-clearfix-hack/">the micro clearfix</a> as popularized by Nicolas Gallagher. Can also be used as a mixin.</p>
+  <p>Easily clear <code>float</code>s by adding <code>.clearfix</code> <strong>to the parent element</strong>. Utilizes <a href="http://nicolasgallagher.com/micro-clearfix-hack/">the micro clearfix</a> as popularized by Nicolas Gallagher. Can also be used as a mixin.</p>
 {% highlight html %}
 <!-- Usage as a class -->
 <div class="clearfix">...</div>

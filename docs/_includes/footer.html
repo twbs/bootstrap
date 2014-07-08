@@ -30,9 +30,19 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+{% if site.github %}
 <script src="../dist/js/bootstrap.min.js"></script>
+{% else %}
+<script src="../dist/js/bootstrap.js"></script>
+{% endif %}
+{% if site.github %}
 <script src="../assets/js/docs.min.js"></script>
+{% else %}
+<script src="../assets/js/vendor/holder.js"></script>
+<script src="../assets/js/vendor/ZeroClipboard.min.js"></script>
+<script src="../assets/js/src/application.js"></script>
+{% endif %}
 {% if page.slug == "customize" %}
 <script src="../assets/js/customize.min.js"></script>
 {% endif %}

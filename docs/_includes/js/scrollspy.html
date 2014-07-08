@@ -7,7 +7,7 @@
     <nav id="navbar-example2" class="navbar navbar-default navbar-static" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-scrollspy">
+          <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-scrollspy">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -20,7 +20,7 @@
             <li><a href="#fat">@fat</a></li>
             <li><a href="#mdo">@mdo</a></li>
             <li class="dropdown">
-              <a href="#" id="navbarDrop1" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <a href="#" id="navbarDrop1" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="navbarDrop1">
                 <li><a href="#one" tabindex="-1">one</a></li>
                 <li><a href="#two" tabindex="-1">two</a></li>
@@ -65,7 +65,7 @@ body {
 <body data-spy="scroll" data-target=".navbar-example">
   ...
   <div class="navbar-example">
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs" role="tablist">
       ...
     </ul>
   </div>
@@ -82,6 +82,10 @@ $('body').scrollspy({ target: '.navbar-example' })
   <div class="bs-callout bs-callout-danger">
     <h4>Resolvable ID targets required</h4>
     <p>Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the DOM like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.</p>
+  </div>
+  <div class="bs-callout bs-callout-info">
+    <h4>Non-<code>:visible</code> target elements ignored</h4>
+    <p>Target elements that are not <a href="http://api.jquery.com/visible-selector/"><code>:visible</code> according to jQuery</a> will be ignored and their corresponding nav items will never be highlighted.</p>
   </div>
 
   <h3>Methods</h3>

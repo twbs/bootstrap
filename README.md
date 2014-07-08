@@ -1,4 +1,8 @@
-# [Bootstrap](http://getbootstrap.com) [![Bower version](https://badge.fury.io/bo/bootstrap.png)](http://badge.fury.io/bo/bootstrap) [![Build Status](https://secure.travis-ci.org/twbs/bootstrap.png)](http://travis-ci.org/twbs/bootstrap) [![devDependency Status](https://david-dm.org/twbs/bootstrap/dev-status.png?theme=shields.io)](https://david-dm.org/twbs/bootstrap#info=devDependencies)
+# [Bootstrap](http://getbootstrap.com)
+[![Bower version](https://badge.fury.io/bo/bootstrap.svg)](http://badge.fury.io/bo/bootstrap)
+[![NPM version](https://badge.fury.io/js/bootstrap.svg)](http://badge.fury.io/js/bootstrap)
+[![Build Status](https://secure.travis-ci.org/twbs/bootstrap.svg?branch=master)](http://travis-ci.org/twbs/bootstrap)
+[![devDependency Status](https://david-dm.org/twbs/bootstrap/dev-status.svg)](https://david-dm.org/twbs/bootstrap#info=devDependencies)
 [![Selenium Test Status](https://saucelabs.com/browser-matrix/bootstrap.svg)](https://saucelabs.com/u/bootstrap)
 
 Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created by [Mark Otto](http://twitter.com/mdo) and [Jacob Thornton](http://twitter.com/fat), and maintained by the [core team](https://github.com/twbs?tab=members) with the massive support and involvement of the community.
@@ -10,18 +14,17 @@ To get started, check out <http://getbootstrap.com>!
  - [Quick start](#quick-start)
  - [Bugs and feature requests](#bugs-and-feature-requests)
  - [Documentation](#documentation)
- - [Compiling CSS and JavaScript](#compiling-css-and-javascript)
  - [Contributing](#contributing)
  - [Community](#community)
  - [Versioning](#versioning)
- - [Authors](#authors)
+ - [Creators](#creators)
  - [Copyright and license](#copyright-and-license)
 
 ## Quick start
 
 Three quick start options are available:
 
-- [Download the latest release](https://github.com/twbs/bootstrap/archive/v3.1.1.zip).
+- [Download the latest release](https://github.com/twbs/bootstrap/archive/v3.2.0.zip).
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`.
 - Install with [Bower](http://bower.io): `bower install bootstrap`.
 
@@ -63,10 +66,10 @@ Bootstrap's documentation, included in this repo in the root directory, is built
 
 ### Running documentation locally
 
-1. If necessary, [install Jekyll](http://jekyllrb.com/docs/installation) (requires v1.x).
-  - **Windows users:** Read [this unofficial guide](https://github.com/juthilo/run-jekyll-on-windows/) to get Jekyll up and running without problems. We use Pygments for syntax highlighting, so make sure to read the sections on installing Python and Pygments.
+1. If necessary, [install Jekyll](http://jekyllrb.com/docs/installation) (requires v2.1.x).
+  - **Windows users:** Read [this unofficial guide](https://github.com/juthilo/run-jekyll-on-windows/) to get Jekyll up and running without problems.
+2. Install the Ruby-based syntax highlighter, [Rouge](https://github.com/jneen/rouge), with `gem install rouge`.
 2. From the root `/bootstrap` directory, run `jekyll serve` in the command line.
-  - **Windows users:** While we use Jekyll's `encoding` setting, you might still need to change the command prompt's character encoding ([code page](http://en.wikipedia.org/wiki/Windows_code_page)) to UTF-8 so Jekyll runs without errors. For Ruby 2.0.0, run `chcp 65001` first. For Ruby 1.9.3, you can alternatively do `SET LANG=en_EN.UTF-8`.
 3. Open <http://localhost:9001> in your browser, and voilà.
 
 Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com/docs/home/).
@@ -76,41 +79,6 @@ Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com
 Documentation for v2.3.2 has been made available for the time being at <http://getbootstrap.com/2.3.2/> while folks transition to Bootstrap 3.
 
 [Previous releases](https://github.com/twbs/bootstrap/releases) and their documentation are also available for download.
-
-
-
-## Compiling CSS and JavaScript
-
-Bootstrap uses [Grunt](http://gruntjs.com/) with convenient methods for working with the framework. It's how we compile our code, run tests, and more. To use it, install the required dependencies as directed and then run some Grunt commands.
-
-### Install Grunt
-
-From the command line:
-
-1. Install `grunt-cli` globally with `npm install -g grunt-cli`.
-2. Navigate to the root `/bootstrap` directory, then run `npm install`. npm will look at [package.json](https://github.com/twbs/bootstrap/blob/master/package.json) and automatically install the necessary local dependencies listed there.
-
-When completed, you'll be able to run the various Grunt commands provided from the command line.
-
-**Unfamiliar with `npm`? Don't have node installed?** That's a-okay. npm stands for [node packaged modules](http://npmjs.org/) and is a way to manage development dependencies through node.js. [Download and install node.js](http://nodejs.org/download/) before proceeding.
-
-### Available Grunt commands
-
-#### Build - `grunt`
-Run `grunt` to run tests locally and compile the CSS and JavaScript into `/dist`. **Uses [Less](http://lesscss.org/) and [UglifyJS](http://lisperator.net/uglifyjs/).**
-
-#### Only compile CSS and JavaScript - `grunt dist`
-`grunt dist` creates the `/dist` directory with compiled files. **Uses [Less](http://lesscss.org/) and [UglifyJS](http://lisperator.net/uglifyjs/).**
-
-#### Tests - `grunt test`
-Runs [JSHint](http://jshint.com) and [QUnit](http://qunitjs.com/) tests headlessly in [PhantomJS](http://phantomjs.org/) (used for CI).
-
-#### Watch - `grunt watch`
-This is a convenience method for watching just Less files and automatically building them whenever you save.
-
-### Troubleshooting dependencies
-
-Should you encounter problems with installing dependencies or running Grunt commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
 
 
 
@@ -135,26 +103,13 @@ Keep track of development and community news.
 
 
 
-
 ## Versioning
 
-For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under the Semantic Versioning guidelines. Sometimes we screw up, but we'll adhere to these rules whenever possible.
-
-Releases will be numbered with the following format:
-
-`<major>.<minor>.<patch>`
-
-And constructed with the following guidelines:
-
-- Breaking backward compatibility **bumps the major** while resetting minor and patch
-- New additions without breaking backward compatibility **bumps the minor** while resetting the patch
-- Bug fixes and misc changes **bumps only the patch**
-
-For more information on SemVer, please visit <http://semver.org/>.
+For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under [the Semantic Versioning guidelines](http://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
 
 
 
-## Authors
+## Creators
 
 **Mark Otto**
 

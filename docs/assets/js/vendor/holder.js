@@ -1,6 +1,6 @@
 /*!
 
-Holder - 2.3.1 - client side image placeholders
+Holder - 2.3.2 - client side image placeholders
 (c) 2012-2014 Ivan Malopinsky / http://imsky.co
 
 Provided under the MIT License.
@@ -269,7 +269,7 @@ function draw_svg(args){
 		font:font, 
 		template:template
 	})
-	return "data:image/svg+xml;base64,"+btoa(string);
+	return "data:image/svg+xml;base64,"+btoa(unescape(encodeURIComponent(string)));
 }
 
 function draw(args) {
@@ -500,6 +500,7 @@ app.add_image = function (src, el) {
 };
 
 app.run = function (o) {
+
 	instance_config = extend({}, system_config)
 	preempted = true;
 
@@ -507,12 +508,12 @@ app.run = function (o) {
 		images = [],
 		imageNodes = [],
 		bgnodes = [];
-		
+
 	if(options.use_canvas != null && options.use_canvas){
 		instance_config.use_canvas = true;
 		instance_config.use_svg = false;
 	}
-		
+			
 	if (typeof (options.images) == "string") {
 		imageNodes = selector(options.images);
 	} else if (window.NodeList && options.images instanceof window.NodeList) {
@@ -531,6 +532,7 @@ app.run = function (o) {
 		bgnodes = [options.bgnodes];
 	}
 	for (i = 0, l = imageNodes.length; i < l; i++) images.push(imageNodes[i]);
+	
 	var holdercss = document.getElementById("holderjs-style");
 	if (!holdercss) {
 		holdercss = document.createElement("style");
@@ -538,13 +540,17 @@ app.run = function (o) {
 		holdercss.type = "text/css";
 		document.getElementsByTagName("head")[0].appendChild(holdercss);
 	}
+	
 	if (!options.nocss) {
 		if (holdercss.styleSheet) {
 			holdercss.styleSheet.cssText += options.stylesheet;
 		} else {
-			holdercss.appendChild(document.createTextNode(options.stylesheet));
+			if(options.stylesheet.length){
+				holdercss.appendChild(document.createTextNode(options.stylesheet));
+			}
 		}
 	}
+	
 	var cssregex = new RegExp(options.domain + "\/(.*?)\"?\\)");
 	for (var l = bgnodes.length, i = 0; i < l; i++) {
 		var src = window.getComputedStyle(bgnodes[i], null)
@@ -598,6 +604,10 @@ contentLoaded(win, function () {
 		window.attachEvent("onresize", resizable_update)
 	}
 	preempted || app.run({});
+
+	if (typeof window.Turbolinks === "object") {
+		document.addEventListener("page:change", function() { app.run({}) })
+	}
 });
 if (typeof define === "function" && define.amd) {
 	define([], function () {

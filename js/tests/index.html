@@ -1,77 +1,83 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
-  <title>Bootstrap Plugin Test Suite</title>
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap Plugin Test Suite</title>
 
-  <!-- jQuery -->
-  <script src="vendor/jquery.js"></script>
+    <!-- jQuery -->
+    <script src="vendor/jquery.min.js"></script>
 
-  <!-- QUnit -->
-  <link rel="stylesheet" href="vendor/qunit.css" media="screen">
-  <script src="vendor/qunit.js"></script>
-  <script>
-    // See https://github.com/axemclion/grunt-saucelabs#test-result-details-with-qunit
-    var log = []
-    QUnit.done = function (test_results) {
-      var tests = log.map(function (details) {
-        return {
-          name: details.name,
-          result: details.result,
-          expected: details.expected,
-          actual: details.actual,
-          source: details.source
+    <!-- QUnit -->
+    <link rel="stylesheet" href="vendor/qunit.css" media="screen">
+    <script src="vendor/qunit.js"></script>
+    <script>
+      // See https://github.com/axemclion/grunt-saucelabs#test-result-details-with-qunit
+      var log = []
+      QUnit.done(function (testResults) {
+        var tests = []
+        for (var i = 0, len = log.length; i < len; i++) {
+          var details = log[i]
+          tests.push({
+            name: details.name,
+            result: details.result,
+            expected: details.expected,
+            actual: details.actual,
+            source: details.source
+          })
+        }
+        testResults.tests = tests
+
+        window.global_test_results = testResults
+      })
+
+      QUnit.testStart(function (testDetails) {
+        QUnit.log = function (details) {
+          if (!details.result) {
+            details.name = testDetails.name
+            log.push(details)
+          }
         }
       })
-      test_results.tests = tests
 
-      // Delaying results a bit because in real-world scenario you won't get them immediately
-      setTimeout(function () {
-        window.global_test_results = test_results
-      }, 2000)
-    }
+      // Cleanup
+      QUnit.testDone(function () {
+        $('#qunit-fixture').empty()
+        $('#modal-test, .modal-backdrop').remove()
+      })
+    </script>
 
-    QUnit.testStart(function (testDetails) {
-      QUnit.log = function (details) {
-        if (!details.result) {
-          details.name = testDetails.name
-          log.push(details)
-        }
-      }
-    })
-  </script>
+    <!-- Plugin sources -->
+    <script>$.support.transition = false</script>
+    <script src="../../js/alert.js"></script>
+    <script src="../../js/button.js"></script>
+    <script src="../../js/carousel.js"></script>
+    <script src="../../js/collapse.js"></script>
+    <script src="../../js/dropdown.js"></script>
+    <script src="../../js/modal.js"></script>
+    <script src="../../js/scrollspy.js"></script>
+    <script src="../../js/tab.js"></script>
+    <script src="../../js/tooltip.js"></script>
+    <script src="../../js/popover.js"></script>
+    <script src="../../js/affix.js"></script>
 
-  <!-- Plugin sources -->
-  <script>$.support.transition = false</script>
-  <script src="../../js/alert.js"></script>
-  <script src="../../js/button.js"></script>
-  <script src="../../js/carousel.js"></script>
-  <script src="../../js/collapse.js"></script>
-  <script src="../../js/dropdown.js"></script>
-  <script src="../../js/modal.js"></script>
-  <script src="../../js/scrollspy.js"></script>
-  <script src="../../js/tab.js"></script>
-  <script src="../../js/tooltip.js"></script>
-  <script src="../../js/popover.js"></script>
-  <script src="../../js/affix.js"></script>
+    <!-- Unit tests -->
+    <script src="unit/alert.js"></script>
+    <script src="unit/button.js"></script>
+    <script src="unit/carousel.js"></script>
+    <script src="unit/collapse.js"></script>
+    <script src="unit/dropdown.js"></script>
+    <script src="unit/modal.js"></script>
+    <script src="unit/scrollspy.js"></script>
+    <script src="unit/tab.js"></script>
+    <script src="unit/tooltip.js"></script>
+    <script src="unit/popover.js"></script>
+    <script src="unit/affix.js"></script>
 
-  <!-- Unit tests -->
-  <script src="unit/alert.js"></script>
-  <script src="unit/button.js"></script>
-  <script src="unit/carousel.js"></script>
-  <script src="unit/collapse.js"></script>
-  <script src="unit/dropdown.js"></script>
-  <script src="unit/modal.js"></script>
-  <script src="unit/scrollspy.js"></script>
-  <script src="unit/tab.js"></script>
-  <script src="unit/tooltip.js"></script>
-  <script src="unit/popover.js"></script>
-  <script src="unit/affix.js"></script>
-
-</head>
-<body>
-  <div>
-    <div id="qunit"></div>
-    <div id="qunit-fixture"></div>
-  </div>
-</body>
+  </head>
+  <body>
+    <div id="qunit-container">
+      <div id="qunit"></div>
+      <div id="qunit-fixture"></div>
+    </div>
+  </body>
 </html>

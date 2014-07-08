@@ -7,7 +7,7 @@
   <hr class="bs-docs-separator">
 
   <h2 id="affix-usage">Usage</h2>
-  <p>Use the affix plugin via data attributes or manually with your own JavaScript. <strong>In both situations, you must provide CSS for the positioning of your content.</strong></p>
+  <p>Use the affix plugin via data attributes or manually with your own JavaScript. <strong class="text-danger">In both situations, you must provide CSS for the positioning and width of your affixed content.</strong></p>
 
   <h3>Positioning via CSS</h3>
   <p>The affix plugin toggles between three classes, each representing a particular state: <code>.affix</code>, <code>.affix-top</code>, and <code>.affix-bottom</code>. You must provide the styles for these classes yourself (independent of this plugin) to handle the actual positions.</p>
@@ -62,6 +62,13 @@
          <td>10</td>
          <td>Pixels to offset from screen when calculating position of scroll. If a single number is provided, the offset will be applied in both top and bottom directions. To provide a unique, bottom and top offset just provide an object <code>offset: { top: 10 }</code> or <code>offset: { top: 10, bottom: 5 }</code>. Use a function when you need to dynamically calculate an offset.</td>
        </tr>
+       <tr>
+         <td>target</td>
+         <td>selector | node | jQuery element</td>
+         <td>the <code>window</code> object</td>
+         <td>Specifies the target element of the affix.</td>
+       </tr>
+
       </tbody>
     </table>
   </div><!-- /.table-responsive -->

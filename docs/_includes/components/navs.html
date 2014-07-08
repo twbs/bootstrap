@@ -6,14 +6,14 @@
   <h2 id="nav-tabs">Tabs</h2>
   <p>Note the <code>.nav-tabs</code> class requires the <code>.nav</code> base class.</p>
   <div class="bs-example">
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs" role="tablist">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">Profile</a></li>
       <li><a href="#">Messages</a></li>
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs" role="tablist">
   <li class="active"><a href="#">Home</a></li>
   <li><a href="#">Profile</a></li>
   <li><a href="#">Messages</a></li>
@@ -27,14 +27,14 @@
   <h2 id="nav-pills">Pills</h2>
   <p>Take that same HTML, but use <code>.nav-pills</code> instead:</p>
   <div class="bs-example">
-    <ul class="nav nav-pills">
+    <ul class="nav nav-pills" role="tablist">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">Profile</a></li>
       <li><a href="#">Messages</a></li>
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav nav-pills">
+<ul class="nav nav-pills" role="tablist">
   <li class="active"><a href="#">Home</a></li>
   <li><a href="#">Profile</a></li>
   <li><a href="#">Messages</a></li>
@@ -42,14 +42,14 @@
 {% endhighlight %}
   <p>Pills are also vertically stackable. Just add <code>.nav-stacked</code>.</p>
   <div class="bs-example">
-    <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+    <ul class="nav nav-pills nav-stacked" role="tablist" style="max-width: 300px;">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">Profile</a></li>
       <li><a href="#">Messages</a></li>
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav nav-pills nav-stacked">
+<ul class="nav nav-pills nav-stacked" role="tablist">
   ...
 </ul>
 {% endhighlight %}
@@ -62,23 +62,23 @@
     <p>As of v7.0.1, Safari exhibits a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing. This bug is also shown in the <a href="../examples/justified-nav/">justified nav example</a>.</p>
   </div>
   <div class="bs-example">
-    <ul class="nav nav-tabs nav-justified">
+    <ul class="nav nav-tabs nav-justified" role="tablist">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">Profile</a></li>
       <li><a href="#">Messages</a></li>
     </ul>
     <br>
-    <ul class="nav nav-pills nav-justified">
+    <ul class="nav nav-pills nav-justified" role="tablist">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">Profile</a></li>
       <li><a href="#">Messages</a></li>
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav nav-tabs nav-justified">
+<ul class="nav nav-tabs nav-justified" role="tablist">
   ...
 </ul>
-<ul class="nav nav-pills nav-justified">
+<ul class="nav nav-pills nav-justified" role="tablist">
   ...
 </ul>
 {% endhighlight %}
@@ -93,14 +93,14 @@
   </div>
 
   <div class="bs-example">
-    <ul class="nav nav-pills">
+    <ul class="nav nav-pills" role="tablist">
       <li><a href="#">Clickable link</a></li>
       <li><a href="#">Clickable link</a></li>
       <li class="disabled"><a href="#">Disabled link</a></li>
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav nav-pills">
+<ul class="nav nav-pills" role="tablist">
   ...
   <li class="disabled"><a href="#">Disabled link</a></li>
   ...
@@ -113,7 +113,7 @@
 
   <h3>Tabs with dropdowns</h3>
   <div class="bs-example">
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs" role="tablist">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">Help</a></li>
       <li class="dropdown">
@@ -131,13 +131,13 @@
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs" role="tablist">
   ...
   <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
       Dropdown <span class="caret"></span>
     </a>
-    <ul class="dropdown-menu">
+    <ul class="dropdown-menu" role="menu">
       ...
     </ul>
   </li>
@@ -147,7 +147,7 @@
 
   <h3>Pills with dropdowns</h3>
   <div class="bs-example">
-    <ul class="nav nav-pills">
+    <ul class="nav nav-pills" role="tablist">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">Help</a></li>
       <li class="dropdown">
@@ -165,13 +165,13 @@
     </ul>
   </div><!-- /example -->
 {% highlight html %}
-<ul class="nav nav-pills">
+<ul class="nav nav-pills" role="tablist">
   ...
   <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
       Dropdown <span class="caret"></span>
     </a>
-    <ul class="dropdown-menu">
+    <ul class="dropdown-menu" role="menu">
       ...
     </ul>
   </li>

@@ -1,6 +1,7 @@
 {
   "name": "bootstrap",
-  "version": "3.1.1",
+  "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+  "version": "3.2.0",
   "keywords": [
     "css",
     "js",
@@ -11,7 +12,9 @@
     "framework",
     "web"
   ],
+  "homepage": "http://getbootstrap.com",
   "main": [
+    "less/bootstrap.less",
     "dist/css/bootstrap.css",
     "dist/js/bootstrap.js",
     "dist/fonts/glyphicons-halflings-regular.eot",
@@ -20,7 +23,7 @@
     "dist/fonts/glyphicons-halflings-regular.woff"
   ],
   "ignore": [
-    ".*",
+    "/.*",
     "_config.yml",
     "CNAME",
     "composer.json",

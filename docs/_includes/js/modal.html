@@ -24,7 +24,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             <h4 class="modal-title">Modal title</h4>
           </div>
           <div class="modal-body">
@@ -43,7 +43,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h4 class="modal-title">Modal title</h4>
       </div>
       <div class="modal-body">
@@ -66,8 +66,8 @@
       <div class="modal-content">
 
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
         </div>
         <div class="modal-body">
           <h4>Text in a modal</h4>
@@ -117,7 +117,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
@@ -179,7 +179,7 @@
       <div class="modal-content">
 
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
           <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4>
         </div>
         <div class="modal-body">
@@ -193,7 +193,7 @@
       <div class="modal-content">
 
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
           <h4 class="modal-title" id="mySmallModalLabel">Small modal</h4>
         </div>
         <div class="modal-body">
@@ -259,7 +259,9 @@
          <td>remote</td>
          <td>path</td>
          <td>false</td>
-         <td><p>If a remote URL is provided, <strong>content will be loaded one time</strong> via jQuery's <code>load</code> method and injected into the <code>.modal-content</code> div. If you're using the data-api, you may alternatively use the <code>href</code> attribute to specify the remote source. An example of this is shown below:</p>
+         <td>
+          <p><span class="text-danger">This option is deprecated since v3.2.1 and will be removed in v4.</span> We recommend instead using client-side templating or a data binding framework, or calling <a href="http://api.jquery.com/load/">jQuery.load</a> yourself.</p>
+          <p>If a remote URL is provided, <strong>content will be loaded one time</strong> via jQuery's <code>load</code> method and injected into the <code>.modal-content</code> div. If you're using the data-api, you may alternatively use the <code>href</code> attribute to specify the remote source. An example of this is shown below:</p>
 {% highlight html %}
 <a data-toggle="modal" href="remote.html" data-target="#modal">Click me</a>
 {% endhighlight %}
@@ -320,7 +322,7 @@ $('#myModal').modal({
        </tr>
        <tr>
          <td>loaded.bs.modal</td>
-         <td>This event is fired when the modal has loaded content using the remote option.</td>
+         <td>This event is fired when the modal has loaded content using the <code>remote</code> option.</td>
        </tr>
       </tbody>
     </table>

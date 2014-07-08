@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: modal.js v3.1.1
+ * Bootstrap: modal.js v3.2.0
  * http://getbootstrap.com/javascript/#modals
  * ========================================================================
  * Copyright 2011-2014 Twitter, Inc.
@@ -14,11 +14,12 @@
   // ======================
 
   var Modal = function (element, options) {
-    this.options   = options
-    this.$body     = $(document.body)
-    this.$element  = $(element)
-    this.$backdrop =
-    this.isShown   = null
+    this.options        = options
+    this.$body          = $(document.body)
+    this.$element       = $(element)
+    this.$backdrop      =
+    this.isShown        = null
+    this.scrollbarWidth = 0
 
     if (this.options.remote) {
       this.$element
@@ -28,6 +29,8 @@
         }, this))
     }
   }
+
+  Modal.VERSION  = '3.2.0'
 
   Modal.DEFAULTS = {
     backdrop: true,
@@ -49,6 +52,7 @@
 
     this.isShown = true
 
+    this.checkScrollbar()
     this.$body.addClass('modal-open')
 
     this.setScrollbar()
@@ -81,7 +85,7 @@
 
       transition ?
         that.$element.find('.modal-dialog') // wait for modal to slide in
-          .one($.support.transition.end, function () {
+          .one('bsTransitionEnd', function () {
             that.$element.trigger('focus').trigger(e)
           })
           .emulateTransitionEnd(300) :
@@ -114,7 +118,7 @@
 
     $.support.transition && this.$element.hasClass('fade') ?
       this.$element
-        .one($.support.transition.end, $.proxy(this.hideModal, this))
+        .one('bsTransitionEnd', $.proxy(this.hideModal, this))
         .emulateTransitionEnd(300) :
       this.hideModal()
   }
@@ -131,11 +135,11 @@
 
   Modal.prototype.escape = function () {
     if (this.isShown && this.options.keyboard) {
-      this.$element.on('keyup.dismiss.bs.modal', $.proxy(function (e) {
+      this.$element.on('keydown.dismiss.bs.modal', $.proxy(function (e) {
         e.which == 27 && this.hide()
       }, this))
     } else if (!this.isShown) {
-      this.$element.off('keyup.dismiss.bs.modal')
+      this.$element.off('keydown.dismiss.bs.modal')
     }
   }
 
@@ -143,7 +147,6 @@
     var that = this
     this.$element.hide()
     this.backdrop(function () {
-      that.removeBackdrop()
       that.$element.trigger('hidden.bs.modal')
     })
   }
@@ -154,6 +157,7 @@
   }
 
   Modal.prototype.backdrop = function (callback) {
+    var that = this
     var animate = this.$element.hasClass('fade') ? 'fade' : ''
 
     if (this.isShown && this.options.backdrop) {
@@ -162,7 +166,7 @@
       this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
         .appendTo(this.$body)
 
-      this.$element.on('click.dismiss.bs.modal', $.proxy(function (e) {
+      this.$element.on('mousedown.dismiss.bs.modal', $.proxy(function (e) {
         if (e.target !== e.currentTarget) return
         this.options.backdrop == 'static'
           ? this.$element[0].focus.call(this.$element[0])
@@ -177,29 +181,36 @@
 
       doAnimate ?
         this.$backdrop
-          .one($.support.transition.end, callback)
+          .one('bsTransitionEnd', callback)
           .emulateTransitionEnd(150) :
         callback()
 
     } else if (!this.isShown && this.$backdrop) {
       this.$backdrop.removeClass('in')
 
+      var callbackRemove = function () {
+        that.removeBackdrop()
+        callback && callback()
+      }
       $.support.transition && this.$element.hasClass('fade') ?
         this.$backdrop
-          .one($.support.transition.end, callback)
+          .one('bsTransitionEnd', callbackRemove)
           .emulateTransitionEnd(150) :
-        callback()
+        callbackRemove()
 
     } else if (callback) {
       callback()
     }
   }
 
-  Modal.prototype.setScrollbar =  function () {
-    if (document.body.clientHeight <= window.innerHeight) return
-    var scrollbarWidth = this.measureScrollbar()
-    var bodyPad        = parseInt(this.$body.css('padding-right') || 0)
-    if (scrollbarWidth) this.$body.css('padding-right', bodyPad + scrollbarWidth)
+  Modal.prototype.checkScrollbar = function () {
+    if (document.body.clientWidth >= window.innerWidth) return
+    this.scrollbarWidth = this.scrollbarWidth || this.measureScrollbar()
+  }
+
+  Modal.prototype.setScrollbar = function () {
+    var bodyPad = parseInt((this.$body.css('padding-right') || 0), 10)
+    if (this.scrollbarWidth) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
   }
 
   Modal.prototype.resetScrollbar = function () {
@@ -219,9 +230,7 @@
   // MODAL PLUGIN DEFINITION
   // =======================
 
-  var old = $.fn.modal
-
-  $.fn.modal = function (option, _relatedTarget) {
+  function Plugin(option, _relatedTarget) {
     return this.each(function () {
       var $this   = $(this)
       var data    = $this.data('bs.modal')
@@ -233,6 +242,9 @@
     })
   }
 
+  var old = $.fn.modal
+
+  $.fn.modal             = Plugin
   $.fn.modal.Constructor = Modal
 
 
@@ -251,16 +263,18 @@
   $(document).on('click.bs.modal.data-api', '[data-toggle="modal"]', function (e) {
     var $this   = $(this)
     var href    = $this.attr('href')
-    var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) //strip for ie7
+    var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) // strip for ie7
     var option  = $target.data('bs.modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
 
     if ($this.is('a')) e.preventDefault()
 
-    $target
-      .modal(option, this)
-      .one('hide', function () {
+    $target.one('show.bs.modal', function (showEvent) {
+      if (showEvent.isDefaultPrevented()) return // only register focus restorer if modal will actually get shown
+      $target.one('hidden.bs.modal', function () {
         $this.is(':visible') && $this.trigger('focus')
       })
+    })
+    Plugin.call($target, option, this)
   })
 
 }(jQuery);

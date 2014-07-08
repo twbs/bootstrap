@@ -4,24 +4,28 @@
 <p>Gray and brand colors for use across Bootstrap.</p>
 <div class="row">
   <div class="bs-customizer-input">
+    <label for="input-@gray-base">@gray-base</label>
+    <input id="input-@gray-base" type="text" value="		  #000" data-var="@gray-base" class="form-control"/>
+  </div>
+  <div class="bs-customizer-input">
     <label for="input-@gray-darker">@gray-darker</label>
-    <input id="input-@gray-darker" type="text" value="lighten(#000, 13.5%)" data-var="@gray-darker" class="form-control"/>
+    <input id="input-@gray-darker" type="text" value="lighten(@gray-base, 13.5%)" data-var="@gray-darker" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@gray-dark">@gray-dark</label>
-    <input id="input-@gray-dark" type="text" value="lighten(#000, 20%)" data-var="@gray-dark" class="form-control"/>
+    <input id="input-@gray-dark" type="text" value="lighten(@gray-base, 20%)" data-var="@gray-dark" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@gray">@gray</label>
-    <input id="input-@gray" type="text" value="lighten(#000, 33.5%)" data-var="@gray" class="form-control"/>
+    <input id="input-@gray" type="text" value="lighten(@gray-base, 33.5%)" data-var="@gray" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@gray-light">@gray-light</label>
-    <input id="input-@gray-light" type="text" value="lighten(#000, 60%)" data-var="@gray-light" class="form-control"/>
+    <input id="input-@gray-light" type="text" value="lighten(@gray-base, 46.7%)" data-var="@gray-light" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@gray-lighter">@gray-lighter</label>
-    <input id="input-@gray-lighter" type="text" value="lighten(#000, 93.5%)" data-var="@gray-lighter" class="form-control"/>
+    <input id="input-@gray-lighter" type="text" value="lighten(@gray-base, 93.5%)" data-var="@gray-lighter" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@brand-primary">@brand-primary</label>
@@ -502,6 +506,7 @@
   <div class="bs-customizer-input">
     <label for="input-@dropdown-caret-color">@dropdown-caret-color</label>
     <input id="input-@dropdown-caret-color" type="text" value="#000" data-var="@dropdown-caret-color" class="form-control"/>
+    <p class="help-block">Deprecated <code>@dropdown-caret-color</code> as of v3.1.0</p>
   </div>
 </div>
 <h2 id="media-queries-breakpoints">Media queries breakpoints</h2>
@@ -510,18 +515,22 @@
   <div class="bs-customizer-input">
     <label for="input-@screen-xs">@screen-xs</label>
     <input id="input-@screen-xs" type="text" value="480px" data-var="@screen-xs" class="form-control"/>
+    <p class="help-block">Deprecated <code>@screen-xs</code> as of v3.0.1</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@screen-xs-min">@screen-xs-min</label>
     <input id="input-@screen-xs-min" type="text" value="@screen-xs" data-var="@screen-xs-min" class="form-control"/>
+    <p class="help-block">Deprecated <code>@screen-xs-min</code> as of v3.2.0</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@screen-phone">@screen-phone</label>
     <input id="input-@screen-phone" type="text" value="@screen-xs-min" data-var="@screen-phone" class="form-control"/>
+    <p class="help-block">Deprecated <code>@screen-phone</code> as of v3.0.1</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@screen-sm">@screen-sm</label>
     <input id="input-@screen-sm" type="text" value="768px" data-var="@screen-sm" class="form-control"/>
+    <p class="help-block">Deprecated <code>@screen-sm</code> as of v3.0.1</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@screen-sm-min">@screen-sm-min</label>
@@ -530,10 +539,12 @@
   <div class="bs-customizer-input">
     <label for="input-@screen-tablet">@screen-tablet</label>
     <input id="input-@screen-tablet" type="text" value="@screen-sm-min" data-var="@screen-tablet" class="form-control"/>
+    <p class="help-block">Deprecated <code>@screen-tablet</code> as of v3.0.1</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@screen-md">@screen-md</label>
     <input id="input-@screen-md" type="text" value="992px" data-var="@screen-md" class="form-control"/>
+    <p class="help-block">Deprecated <code>@screen-md</code> as of v3.0.1</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@screen-md-min">@screen-md-min</label>
@@ -542,10 +553,12 @@
   <div class="bs-customizer-input">
     <label for="input-@screen-desktop">@screen-desktop</label>
     <input id="input-@screen-desktop" type="text" value="@screen-md-min" data-var="@screen-desktop" class="form-control"/>
+    <p class="help-block">Deprecated <code>@screen-desktop</code> as of v3.0.1</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@screen-lg">@screen-lg</label>
     <input id="input-@screen-lg" type="text" value="1200px" data-var="@screen-lg" class="form-control"/>
+    <p class="help-block">Deprecated <code>@screen-lg</code> as of v3.0.1</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@screen-lg-min">@screen-lg-min</label>
@@ -554,6 +567,7 @@
   <div class="bs-customizer-input">
     <label for="input-@screen-lg-desktop">@screen-lg-desktop</label>
     <input id="input-@screen-lg-desktop" type="text" value="@screen-lg-min" data-var="@screen-lg-desktop" class="form-control"/>
+    <p class="help-block">Deprecated <code>@screen-lg-desktop</code> as of v3.0.1</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@screen-xs-max">@screen-xs-max</label>
@@ -716,7 +730,7 @@
   </div>
   <div class="bs-customizer-input">
     <label for="input-@navbar-inverse-color">@navbar-inverse-color</label>
-    <input id="input-@navbar-inverse-color" type="text" value="@gray-light" data-var="@navbar-inverse-color" class="form-control"/>
+    <input id="input-@navbar-inverse-color" type="text" value="lighten(@gray-light, 12%)" data-var="@navbar-inverse-color" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@navbar-inverse-bg">@navbar-inverse-bg</label>
@@ -1691,6 +1705,11 @@
 <p></p>
 <div class="row">
   <div class="bs-customizer-input">
+    <label for="input-@component-offset-horizontal">@component-offset-horizontal</label>
+    <input id="input-@component-offset-horizontal" type="text" value="180px" data-var="@component-offset-horizontal" class="form-control"/>
+    <p class="help-block">Horizontal offset for forms and lists.</p>
+  </div>
+  <div class="bs-customizer-input">
     <label for="input-@text-muted">@text-muted</label>
     <input id="input-@text-muted" type="text" value="@gray-light" data-var="@text-muted" class="form-control"/>
     <p class="help-block">Text muted color</p>
@@ -1725,19 +1744,15 @@
     <input id="input-@page-header-border-color" type="text" value="@gray-lighter" data-var="@page-header-border-color" class="form-control"/>
     <p class="help-block">Page header border color</p>
   </div>
-</div>
-<h2 id="miscellaneous">Miscellaneous</h2>
-<p></p>
-<div class="row">
+  <div class="bs-customizer-input">
+    <label for="input-@dl-horizontal-offset">@dl-horizontal-offset</label>
+    <input id="input-@dl-horizontal-offset" type="text" value="@component-offset-horizontal" data-var="@dl-horizontal-offset" class="form-control"/>
+    <p class="help-block">Width of horizontal description list titles</p>
+  </div>
   <div class="bs-customizer-input">
     <label for="input-@hr-border">@hr-border</label>
     <input id="input-@hr-border" type="text" value="@gray-lighter" data-var="@hr-border" class="form-control"/>
     <p class="help-block">Horizontal line color.</p>
-  </div>
-  <div class="bs-customizer-input">
-    <label for="input-@component-offset-horizontal">@component-offset-horizontal</label>
-    <input id="input-@component-offset-horizontal" type="text" value="180px" data-var="@component-offset-horizontal" class="form-control"/>
-    <p class="help-block">Horizontal offset for forms and lists.</p>
   </div>
 </div>
 <!-- NOTE: DO NOT EDIT THE PRECEDING SECTION DIRECTLY! It is autogenerated via the `build-customizer-html` Grunt task using the customizer-variables.jade template.-->

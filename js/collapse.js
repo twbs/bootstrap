@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: collapse.js v3.1.1
+ * Bootstrap: collapse.js v3.2.0
  * http://getbootstrap.com/javascript/#collapse
  * ========================================================================
  * Copyright 2011-2014 Twitter, Inc.
@@ -22,6 +22,8 @@
     if (this.options.toggle) this.toggle()
   }
 
+  Collapse.VERSION  = '3.2.0'
+
   Collapse.DEFAULTS = {
     toggle: true
   }
@@ -43,7 +45,7 @@
     if (actives && actives.length) {
       var hasData = actives.data('bs.collapse')
       if (hasData && hasData.transitioning) return
-      actives.collapse('hide')
+      Plugin.call(actives, 'hide')
       hasData || actives.data('bs.collapse', null)
     }
 
@@ -51,19 +53,17 @@
 
     this.$element
       .removeClass('collapse')
-      .addClass('collapsing')
-      [dimension](0)
+      .addClass('collapsing')[dimension](0)
 
     this.transitioning = 1
 
-    var complete = function (e) {
-      if (e && e.target != this.$element[0]) return
+    var complete = function () {
       this.$element
         .removeClass('collapsing')
-        .addClass('collapse in')
-        [dimension]('auto')
+        .addClass('collapse in')[dimension]('')
       this.transitioning = 0
-      this.$element.trigger('shown.bs.collapse')
+      this.$element
+        .trigger('shown.bs.collapse')
     }
 
     if (!$.support.transition) return complete.call(this)
@@ -71,9 +71,8 @@
     var scrollSize = $.camelCase(['scroll', dimension].join('-'))
 
     this.$element
-      .one($.support.transition.end, $.proxy(complete, this))
-      .emulateTransitionEnd(350)
-      [dimension](this.$element[0][scrollSize])
+      .one('bsTransitionEnd', $.proxy(complete, this))
+      .emulateTransitionEnd(350)[dimension](this.$element[0][scrollSize])
   }
 
   Collapse.prototype.hide = function () {
@@ -85,19 +84,15 @@
 
     var dimension = this.dimension()
 
-    this.$element
-      [dimension](this.$element[dimension]())
-      [0].offsetHeight
+    this.$element[dimension](this.$element[dimension]())[0].offsetHeight
 
     this.$element
       .addClass('collapsing')
-      .removeClass('collapse')
-      .removeClass('in')
+      .removeClass('collapse in')
 
     this.transitioning = 1
 
-    var complete = function (e) {
-      if (e && e.target != this.$element[0]) return
+    var complete = function () {
       this.transitioning = 0
       this.$element
         .trigger('hidden.bs.collapse')
@@ -109,7 +104,7 @@
 
     this.$element
       [dimension](0)
-      .one($.support.transition.end, $.proxy(complete, this))
+      .one('bsTransitionEnd', $.proxy(complete, this))
       .emulateTransitionEnd(350)
   }
 
@@ -121,9 +116,7 @@
   // COLLAPSE PLUGIN DEFINITION
   // ==========================
 
-  var old = $.fn.collapse
-
-  $.fn.collapse = function (option) {
+  function Plugin(option) {
     return this.each(function () {
       var $this   = $(this)
       var data    = $this.data('bs.collapse')
@@ -135,6 +128,9 @@
     })
   }
 
+  var old = $.fn.collapse
+
+  $.fn.collapse             = Plugin
   $.fn.collapse.Constructor = Collapse
 
 
@@ -151,10 +147,11 @@
   // =================
 
   $(document).on('click.bs.collapse.data-api', '[data-toggle="collapse"]', function (e) {
-    var $this   = $(this), href
+    var href
+    var $this   = $(this)
     var target  = $this.attr('data-target')
         || e.preventDefault()
-        || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
+        || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') // strip for ie7
     var $target = $(target)
     var data    = $target.data('bs.collapse')
     var option  = data ? 'toggle' : $this.data()
@@ -163,10 +160,10 @@
 
     if (!data || !data.transitioning) {
       if ($parent) $parent.find('[data-toggle="collapse"][data-parent="' + parent + '"]').not($this).addClass('collapsed')
-      $this[$target.hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
+      $this.toggleClass('collapsed', $target.hasClass('in'))
     }
 
-    $target.collapse(option)
+    Plugin.call($target, option)
   })
 
 }(jQuery);

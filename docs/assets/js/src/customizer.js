@@ -6,9 +6,12 @@
  * details, see http://creativecommons.org/licenses/by/3.0/.
  */
 
+/* global JSZip, less, saveAs, UglifyJS, __js, __less, __fonts */
+
 window.onload = function () { // wait for load in a dumb way because B-0
+  'use strict';
   var cw = '/*!\n' +
-           ' * Bootstrap v3.1.1 (http://getbootstrap.com)\n' +
+           ' * Bootstrap v3.2.0 (http://getbootstrap.com)\n' +
            ' * Copyright 2011-2014 Twitter, Inc.\n' +
            ' * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n' +
            ' */\n\n'
@@ -22,6 +25,12 @@ window.onload = function () { // wait for load in a dumb way because B-0
         '</div>' +
       '</div>').appendTo('body').alert()
     throw err
+  }
+
+  function showSuccess(msg) {
+    $('<div class="bs-callout bs-callout-info">' +
+      '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + msg +
+    '</div>').insertAfter('.bs-customize-download')
   }
 
   function showCallout(msg, showUpTop) {
@@ -43,7 +52,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     return match && decodeURIComponent(match[1].replace(/\+/g, ' '))
   }
 
-  function createGist(configJson) {
+  function createGist(configJson, callback) {
     var data = {
       description: 'Bootstrap Customizer Config',
       'public': true,
@@ -60,11 +69,21 @@ window.onload = function () { // wait for load in a dumb way because B-0
       data: JSON.stringify(data)
     })
     .success(function (result) {
+      var gistUrl = result.html_url;
       var origin = window.location.protocol + '//' + window.location.host
-      history.replaceState(false, document.title, origin + window.location.pathname + '?id=' + result.id)
+      var customizerUrl = origin + window.location.pathname + '?id=' + result.id
+      showSuccess('<strong>Success!</strong> Your configuration has been saved to <a href="' + gistUrl + '">' + gistUrl + '</a> ' +
+        'and can be revisited here at <a href="' + customizerUrl + '">' + customizerUrl + '</a> for further customization.')
+      history.replaceState(false, document.title, customizerUrl)
+      callback(gistUrl, customizerUrl)
     })
     .error(function (err) {
-      showError('<strong>Ruh roh!</strong> Could not save gist file, configuration not saved.', err)
+      try {
+        showError('<strong>Ruh roh!</strong> Could not save gist file, configuration not saved.', err)
+      } catch (sameErr) {
+        // deliberately ignore the error
+      }
+      callback('<none>', '<none>')
     })
   }
 
@@ -142,7 +161,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     if (fonts) {
       var fontsFolder = zip.folder('fonts')
       for (var fontsFileName in fonts) {
-        fontsFolder.file(fontsFileName, fonts[fontsFileName], {base64: true})
+        fontsFolder.file(fontsFileName, fonts[fontsFileName], { base64: true })
       }
     }
 
@@ -155,7 +174,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     complete(content)
   }
 
-  function generateCustomCSS(vars) {
+  function generateCustomLess(vars) {
     var result = ''
 
     for (var key in vars) {
@@ -178,10 +197,20 @@ window.onload = function () { // wait for load in a dumb way because B-0
     var IMPORT_REGEX = /^@import \"(.*?)\";$/
     var lessLines = __less[lessFilename].split('\n')
 
-    for (var i = 0, imports = []; i < lessLines.length; i++) {
-      var match = IMPORT_REGEX.exec(lessLines[i])
-      if (match) imports.push(match[1])
-    }
+    var imports = []
+    $.each(lessLines, function (index, lessLine) {
+      var match = IMPORT_REGEX.exec(lessLine)
+      if (match) {
+        var importee = match[1]
+        var transitiveImports = includedLessFilenames(importee)
+        $.each(transitiveImports, function (index, transitiveImportee) {
+          if ($.inArray(transitiveImportee, imports) === -1) {
+            imports.push(transitiveImportee)
+          }
+        })
+        imports.push(importee)
+      }
+    })
 
     return imports
   }
@@ -189,7 +218,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
   function generateLESS(lessFilename, lessFileIncludes, vars) {
     var lessSource = __less[lessFilename]
 
-    $.each(includedLessFilenames(lessFilename), function(index, filename) {
+    var lessFilenames = includedLessFilenames(lessFilename)
+    $.each(lessFilenames, function (index, filename) {
       var fileInclude = lessFileIncludes[filename]
 
       // Files not explicitly unchecked are compiled into the final stylesheet.
@@ -200,10 +230,10 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
       // Custom variables are added after Bootstrap variables so the custom
       // ones take precedence.
-      if (('variables.less' === filename) && vars) lessSource += generateCustomCSS(vars)
+      if (('variables.less' === filename) && vars) lessSource += generateCustomLess(vars)
     })
 
-    lessSource = lessSource.replace(/@import[^\n]*/gi, '') //strip any imports
+    lessSource = lessSource.replace(/@import[^\n]*/gi, '') // strip any imports
     return lessSource
   }
 
@@ -212,7 +242,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
       paths: ['variables.less', 'mixins.less'],
       optimization: 0,
       filename: baseFilename + '.css'
-    }).parse(lessSource, function (err, tree) {
+    })
+
+    parser.parse(lessSource, function (err, tree) {
       if (err) {
         return showError('<strong>Ruh roh!</strong> Could not parse less files.', err)
       }
@@ -221,10 +253,10 @@ window.onload = function () { // wait for load in a dumb way because B-0
     })
   }
 
-  function generateCSS() {
+  function generateCSS(preamble) {
     var oneChecked = false
     var lessFileIncludes = {}
-    $('#less-section input').each(function() {
+    $('#less-section input').each(function () {
       var $this = $(this)
       var checked = $this.is(':checked')
       lessFileIncludes[$this.val()] = checked
@@ -242,8 +274,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
         $(this).val() && (vars[$(this).prev().text()] = $(this).val())
       })
 
-    var bsLessSource    = generateLESS('bootstrap.less', lessFileIncludes, vars)
-    var themeLessSource = generateLESS('theme.less',     lessFileIncludes, vars)
+    var bsLessSource    = preamble + generateLESS('bootstrap.less', lessFileIncludes, vars)
+    var themeLessSource = preamble + generateLESS('theme.less',     lessFileIncludes, vars)
 
     try {
       compileLESS(bsLessSource, 'bootstrap', result)
@@ -255,8 +287,27 @@ window.onload = function () { // wait for load in a dumb way because B-0
     return result
   }
 
-  function generateJavascript() {
+  function uglify(js) {
+    var ast = UglifyJS.parse(js)
+    ast.figure_out_scope()
+
+    var compressor = UglifyJS.Compressor()
+    var compressedAst = ast.transform(compressor)
+
+    compressedAst.figure_out_scope()
+    compressedAst.compute_char_frequency()
+    compressedAst.mangle_names()
+
+    var stream = UglifyJS.OutputStream()
+    compressedAst.print(stream)
+
+    return stream.toString()
+  }
+
+  function generateJS(preamble) {
     var $checked = $('#plugin-section input:checked')
+    var jqueryCheck = 'if (typeof jQuery === "undefined") { throw new Error("Bootstrap\'s JavaScript requires jQuery") }\n\n'
+
     if (!$checked.length) return false
 
     var js = $checked
@@ -264,9 +315,12 @@ window.onload = function () { // wait for load in a dumb way because B-0
       .toArray()
       .join('\n')
 
+    preamble = cw + preamble
+    js = jqueryCheck + js
+
     return {
-      'bootstrap.js': js,
-      'bootstrap.min.js': cw + uglify(js)
+      'bootstrap.js': preamble + js,
+      'bootstrap.min.js': preamble + uglify(js)
     }
   }
 
@@ -312,7 +366,6 @@ window.onload = function () { // wait for load in a dumb way because B-0
   })
 
   var $compileBtn = $('#btn-compile')
-  var $downloadBtn = $('#btn-download')
 
   $compileBtn.on('click', function (e) {
     var configData = getCustomizerData()
@@ -322,25 +375,55 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
     $compileBtn.attr('disabled', 'disabled')
 
-    generateZip(generateCSS(), generateJavascript(), generateFonts(), configJson, function (blob) {
-      $compileBtn.removeAttr('disabled')
-      saveAs(blob, 'bootstrap.zip')
-      createGist(configJson)
+    createGist(configJson, function (gistUrl, customizerUrl) {
+      configData.customizerUrl = customizerUrl
+      configJson = JSON.stringify(configData, null, 2)
+
+      var preamble = '/*!\n' +
+        ' * Generated using the Bootstrap Customizer (' + customizerUrl + ')\n' +
+        ' * Config saved to config.json and ' + gistUrl + '\n' +
+        ' */\n'
+
+      generateZip(generateCSS(preamble), generateJS(preamble), generateFonts(), configJson, function (blob) {
+        $compileBtn.removeAttr('disabled')
+        saveAs(blob, 'bootstrap.zip')
+      })
     })
-  })
+  });
 
-  // browser support alerts
-  if (!window.URL && navigator.userAgent.toLowerCase().indexOf('safari') != -1) {
-    showCallout('Looks like you\'re using safari, which sadly doesn\'t have the best support' +
-                 'for HTML5 blobs. Because of this your file will be downloaded with the name <code>"untitled"</code>.' +
-                 'However, if you check your downloads folder, just rename this <code>"untitled"</code> file' +
-                 'to <code>"bootstrap.zip"</code> and you should be good to go!')
-  } else if (!window.URL && !window.webkitURL) {
-    $('.bs-docs-section, .bs-docs-sidebar').css('display', 'none')
-
-    showCallout('Looks like your current browser doesn\'t support the Bootstrap Customizer. Please take a second' +
-                 'to <a href="https://www.google.com/intl/en/chrome/browser/">upgrade to a more modern browser</a>.', true)
-  }
+  // browser support alert
+  (function () {
+    function failback() {
+      $('.bs-docs-section, .bs-docs-sidebar').css('display', 'none')
+      showCallout('Looks like your current browser doesn\'t support the Bootstrap Customizer. Please take a second ' +
+                    'to <a href="http://browsehappy.com/">upgrade to a more modern browser</a> (other than Safari).', true)
+    }
+    /**
+     * Based on:
+     *   Blob Feature Check v1.1.0
+     *   https://github.com/ssorallen/blob-feature-check/
+     *   License: Public domain (http://unlicense.org)
+     */
+    var url = window.webkitURL || window.URL // Safari 6 uses "webkitURL".
+    var svg = new Blob(
+      ['<svg xmlns=\'http://www.w3.org/2000/svg\'></svg>'],
+      { type: 'image/svg+xml;charset=utf-8' }
+    )
+    var objectUrl = url.createObjectURL(svg);
+    if (/^blob:/.exec(objectUrl) === null) {
+      // `URL.createObjectURL` created a URL that started with something other
+      // than "blob:", which means it has been polyfilled and is not supported by
+      // this browser.
+      failback()
+    } else {
+      $('<img>')
+        .on('load', function () {
+          $compileBtn.prop('disabled', false)
+        })
+        .on('error', failback)
+        .attr('src', objectUrl)
+    }
+  })();
 
   parseUrl()
 }

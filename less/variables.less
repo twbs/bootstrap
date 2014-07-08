@@ -7,11 +7,12 @@
 //
 //## Gray and brand colors for use across Bootstrap.
 
-@gray-darker:            lighten(#000, 13.5%); // #222
-@gray-dark:              lighten(#000, 20%);   // #333
-@gray:                   lighten(#000, 33.5%); // #555
-@gray-light:             lighten(#000, 60%);   // #999
-@gray-lighter:           lighten(#000, 93.5%); // #eee
+@gray-base:		  #000;
+@gray-darker:            lighten(@gray-base, 13.5%); // #222
+@gray-dark:              lighten(@gray-base, 20%);   // #333
+@gray:                   lighten(@gray-base, 33.5%); // #555
+@gray-light:             lighten(@gray-base, 46.7%); // #777
+@gray-lighter:           lighten(@gray-base, 93.5%); // #eee
 
 @brand-primary:         #428bca;
 @brand-success:         #5cb85c;
@@ -236,7 +237,7 @@
 //** Text color for headers within dropdown menus.
 @dropdown-header-color:          @gray-light;
 
-// Note: Deprecated @dropdown-caret-color as of v3.1.0
+//** Deprecated `@dropdown-caret-color` as of v3.1.0
 @dropdown-caret-color:           #000;
 
 
@@ -249,8 +250,8 @@
 
 @zindex-navbar:            1000;
 @zindex-dropdown:          1000;
-@zindex-popover:           1010;
-@zindex-tooltip:           1030;
+@zindex-popover:           1060;
+@zindex-tooltip:           1070;
 @zindex-navbar-fixed:      1030;
 @zindex-modal-background:  1040;
 @zindex-modal:             1050;
@@ -261,27 +262,32 @@
 //## Define the breakpoints at which your layout will change, adapting to different screen sizes.
 
 // Extra small screen / phone
-// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
+//** Deprecated `@screen-xs` as of v3.0.1
 @screen-xs:                  480px;
+//** Deprecated `@screen-xs-min` as of v3.2.0
 @screen-xs-min:              @screen-xs;
+//** Deprecated `@screen-phone` as of v3.0.1
 @screen-phone:               @screen-xs-min;
 
 // Small screen / tablet
-// Note: Deprecated @screen-sm and @screen-tablet as of v3.0.1
+//** Deprecated `@screen-sm` as of v3.0.1
 @screen-sm:                  768px;
 @screen-sm-min:              @screen-sm;
+//** Deprecated `@screen-tablet` as of v3.0.1
 @screen-tablet:              @screen-sm-min;
 
 // Medium screen / desktop
-// Note: Deprecated @screen-md and @screen-desktop as of v3.0.1
+//** Deprecated `@screen-md` as of v3.0.1
 @screen-md:                  992px;
 @screen-md-min:              @screen-md;
+//** Deprecated `@screen-desktop` as of v3.0.1
 @screen-desktop:             @screen-md-min;
 
 // Large screen / wide desktop
-// Note: Deprecated @screen-lg and @screen-lg-desktop as of v3.0.1
+//** Deprecated `@screen-lg` as of v3.0.1
 @screen-lg:                  1200px;
 @screen-lg-min:              @screen-lg;
+//** Deprecated `@screen-lg-desktop` as of v3.0.1
 @screen-lg-desktop:          @screen-lg-min;
 
 // So media queries don't overlap when required, provide a maximum
@@ -363,7 +369,7 @@
 
 // Inverted navbar
 // Reset inverted navbar basics
-@navbar-inverse-color:                      @gray-light;
+@navbar-inverse-color:                      lighten(@gray-light, 12%);
 @navbar-inverse-bg:                         #222;
 @navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
 
@@ -817,6 +823,8 @@
 //
 //##
 
+//** Horizontal offset for forms and lists.
+@component-offset-horizontal: 180px;
 //** Text muted color
 @text-muted:                  @gray-light;
 //** Abbreviations and acronyms border color
@@ -831,14 +839,9 @@
 @blockquote-border-color:     @gray-lighter;
 //** Page header border color
 @page-header-border-color:    @gray-lighter;
-
-
-//== Miscellaneous
-//
-//##
-
+//** Width of horizontal description list titles
+@dl-horizontal-offset:        @component-offset-horizontal;
 //** Horizontal line color.
 @hr-border:                   @gray-lighter;
 
-//** Horizontal offset for forms and lists.
-@component-offset-horizontal: 180px;
+

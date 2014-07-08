@@ -10,7 +10,11 @@
   .radio,
   .checkbox,
   .radio-inline,
-  .checkbox-inline  {
+  .checkbox-inline,
+  &.radio label,
+  &.checkbox label,
+  &.radio-inline label,
+  &.checkbox-inline label  {
     color: @text-color;
   }
   // Set the border and box shadow on specific inputs to match
@@ -39,7 +43,7 @@
 // Form control focus state
 //
 // Generate a customized focus state and for any input with the specified color,
-// which defaults to the `@input-focus-border` variable.
+// which defaults to the `@input-border-focus` variable.
 //
 // We highly encourage you to not customize the default value, but instead use
 // this to tweak colors on an as-needed basis. This aesthetic change is based on

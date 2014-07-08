@@ -37,10 +37,14 @@
 
   <h4>Checkbox</h4>
   <p>Add <code>data-toggle="buttons"</code> to a group of checkboxes for checkbox style toggling on btn-group.</p>
+  <div class="bs-callout bs-callout-warning">
+    <h4>Pre-checked options need <code>.active</code></h4>
+    <p>For pre-checked options, you must add the <code>.active</code> class to the input's <code>label</code> yourself.</p>
+  </div>
   <div class="bs-example" style="padding-bottom: 24px;">
     <div class="btn-group" data-toggle="buttons">
-      <label class="btn btn-primary">
-        <input type="checkbox"> Option 1
+      <label class="btn btn-primary active">
+        <input type="checkbox" checked> Option 1 (pre-checked)
       </label>
       <label class="btn btn-primary">
         <input type="checkbox"> Option 2
@@ -52,8 +56,8 @@
   </div><!-- /example -->
 {% highlight html %}
 <div class="btn-group" data-toggle="buttons">
-  <label class="btn btn-primary">
-    <input type="checkbox"> Option 1
+  <label class="btn btn-primary active">
+    <input type="checkbox" checked> Option 1 (pre-checked)
   </label>
   <label class="btn btn-primary">
     <input type="checkbox"> Option 2
@@ -66,10 +70,14 @@
 
   <h4>Radio</h4>
   <p>Add <code>data-toggle="buttons"</code> to a group of radio inputs for radio style toggling on btn-group.</p>
+  <div class="bs-callout bs-callout-warning">
+    <h4>Preselected options need <code>.active</code></h4>
+    <p>For preselected options, you must add the <code>.active</code> class to the input's <code>label</code> yourself.</p>
+  </div>
   <div class="bs-example" style="padding-bottom: 24px;">
     <div class="btn-group" data-toggle="buttons">
-      <label class="btn btn-primary">
-        <input type="radio" name="options" id="option1"> Option 1
+      <label class="btn btn-primary active">
+        <input type="radio" name="options" id="option1" checked> Option 1 (preselected)
       </label>
       <label class="btn btn-primary">
         <input type="radio" name="options" id="option2"> Option 2
@@ -81,8 +89,8 @@
   </div><!-- /example -->
 {% highlight html %}
 <div class="btn-group" data-toggle="buttons">
-  <label class="btn btn-primary">
-    <input type="radio" name="options" id="option1"> Option 1
+  <label class="btn btn-primary active">
+    <input type="radio" name="options" id="option1" checked> Option 1 (preselected)
   </label>
   <label class="btn btn-primary">
     <input type="radio" name="options" id="option2"> Option 2
@@ -136,7 +144,7 @@ $('.btn').button()
 
   <div class="bs-callout bs-callout-danger">
     <h4>Cross-browser compatibility</h4>
-    <p><a href="https://github.com/twbs/bootstrap/issues/793">Firefox persists the disabled state across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>.</p>
+    <p><a href="https://github.com/twbs/bootstrap/issues/793">Firefox persists form control states across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>.</p>
   </div>
 
   <h4>$().button('reset')</h4>

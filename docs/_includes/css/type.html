@@ -107,12 +107,12 @@
   <!-- Inline text elements -->
   <h2 id="type-inline-text">Inline text elements</h2>
   <h3>Marked text</h3>
-  <p>For indicating blocks of text that have been deleted use the <code>&lt;mark&gt;</code> tag.</p>
+  <p>For highlighting a run of text due to its relevance in another context, use the <code>&lt;mark&gt;</code> tag.</p>
   <div class="bs-example">
     <p>You can use the mark tag to <mark>highlight</mark> text.</p>
   </div>
 {% highlight html %}
-<mark>This line of text is meant to be treated as deleted text.</mark>
+You can use the mark tag to <mark>highlight</mark> text.
 {% endhighlight %}
 
 
@@ -146,10 +146,10 @@
   <h3>Underlined text</h3>
   <p>To underline text use the <code>&lt;u&gt;</code> tag.</p>
   <div class="bs-example">
-    <p><u>This line of text is will render as underlined</u></p>
+    <p><u>This line of text will render as underlined</u></p>
   </div>
 {% highlight html %}
-<u>This line of text is will render as underlined</u>
+<u>This line of text will render as underlined</u>
 {% endhighlight %}
 
   <p>Make use of HTML's default emphasis tags with lightweight styles.</p>
@@ -195,14 +195,28 @@
     <p class="text-center">Center aligned text.</p>
     <p class="text-right">Right aligned text.</p>
     <p class="text-justify">Justified text.</p>
+    <p class="text-nowrap">No wrap text.</p>
   </div>
 {% highlight html %}
 <p class="text-left">Left aligned text.</p>
 <p class="text-center">Center aligned text.</p>
 <p class="text-right">Right aligned text.</p>
 <p class="text-justify">Justified text.</p>
+<p class="text-nowrap">No wrap text.</p>
 {% endhighlight %}
 
+  <h2 id="type-transformation">Transformation classes</h2>
+  <p>Transform text in components with text capitalization classes.</p>
+  <div class="bs-example">
+    <p class="text-lowercase">Lowercased text.</p>
+    <p class="text-uppercase">Uppercased text.</p>
+    <p class="text-capitalize">Capitalized text.</p>
+  </div>
+{% highlight html %}
+<p class="text-lowercase">Lowercased text.</p>
+<p class="text-uppercase">Uppercased text.</p>
+<p class="text-capitalize">Capitalized text.</p>
+{% endhighlight %}
 
   <!-- Abbreviations -->
   <h2 id="type-abbreviations">Abbreviations</h2>
