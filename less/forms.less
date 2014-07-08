@@ -45,7 +45,7 @@ label {
 
 // Override content-box in Normalize (* isn't specific enough)
 input[type="search"] {
-  .box-sizing(border-box);
+  box-sizing: border-box;
 }
 
 // Position radios and checkboxes better
@@ -124,14 +124,16 @@ output {
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid @input-border;
   border-radius: @input-border-radius;
-  .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
-  .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 
   // Customize the `:focus` state to imitate native WebKit styles.
   .form-control-focus();
 
   // Placeholder
-  .placeholder();
+  &::placeholder {
+    color: @input-color-placeholder;
+  }
 
   // Disabled and read-only inputs
   //

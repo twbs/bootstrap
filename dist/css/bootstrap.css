@@ -260,11 +260,7 @@ th {
     border: 1px solid #ddd !important;
   }
 }
-* {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
+*,
 *:before,
 *:after {
   -webkit-box-sizing: border-box;
@@ -1731,17 +1727,19 @@ output {
 .form-control:focus {
   border-color: #66afe9;
   outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
-          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+.form-control::-webkit-input-placeholder {
+  color: #777;
 }
 .form-control::-moz-placeholder {
   color: #777;
-  opacity: 1;
 }
 .form-control:-ms-input-placeholder {
   color: #777;
 }
-.form-control::-webkit-input-placeholder {
+.form-control::placeholder {
   color: #777;
 }
 .form-control[disabled],
@@ -2151,7 +2149,6 @@ select[multiple].form-group-lg .form-control {
 fieldset[disabled] .btn {
   pointer-events: none;
   cursor: not-allowed;
-  filter: alpha(opacity=65);
   -webkit-box-shadow: none;
           box-shadow: none;
   opacity: .65;
@@ -4739,7 +4736,6 @@ a.list-group-item-danger.active:focus {
   line-height: 1;
   color: #000;
   text-shadow: 0 1px 0 #fff;
-  filter: alpha(opacity=20);
   opacity: .2;
 }
 .close:hover,
@@ -4747,7 +4743,6 @@ a.list-group-item-danger.active:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
-  filter: alpha(opacity=50);
   opacity: .5;
 }
 button.close {
@@ -4773,11 +4768,12 @@ button.close {
   outline: 0;
 }
 .modal.fade .modal-dialog {
-  -webkit-transition: -webkit-transform .3s ease-out;
-       -o-transition:      -o-transform .3s ease-out;
-          transition:         transform .3s ease-out;
   -webkit-transform: translate3d(0, -25%, 0);
+  -webkit-transform: transition .3s ease-out;
+      -ms-transform: transition .3s ease-out;
+       -o-transform: transition .3s ease-out;
           transform: translate3d(0, -25%, 0);
+          transform: transition .3s ease-out;
 }
 .modal.in .modal-dialog {
   -webkit-transform: translate3d(0, 0, 0);
@@ -4814,11 +4810,9 @@ button.close {
   background-color: #000;
 }
 .modal-backdrop.fade {
-  filter: alpha(opacity=0);
   opacity: 0;
 }
 .modal-backdrop.in {
-  filter: alpha(opacity=50);
   opacity: .5;
 }
 .modal-header {
@@ -4884,11 +4878,9 @@ button.close {
   font-size: .85rem;
   line-height: 1.4;
   visibility: visible;
-  filter: alpha(opacity=0);
   opacity: 0;
 }
 .tooltip.in {
-  filter: alpha(opacity=90);
   opacity: .9;
 }
 .tooltip.top {
