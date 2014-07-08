@@ -444,6 +444,9 @@ module.exports = function (grunt) {
   // Full distribution task.
   grunt.registerTask('dist', ['clean', 'dist-css', 'copy:fonts', 'dist-js', 'dist-docs']);
 
+  // Custom docs rebuild task.
+  grunt.registerTask('build', ['clean', 'less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'autoprefixer:docs', 'usebanner', 'csscomb:dist', 'cssmin:core', 'cssmin:docs', 'concat', 'uglify:bootstrap', 'dist-docs']);
+
   // Default task.
   grunt.registerTask('default', ['test', 'dist']);
 

@@ -734,6 +734,7 @@ pre {
   line-height: 1.5;
   color: #373a3c;
   background-color: #f7f7f9;
+  border-radius: .2rem;
 }
 pre code {
   padding: 0;

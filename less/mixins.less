@@ -1,6 +1,15 @@
 // Mixins
 // --------------------------------------------------
 
+.border-radius(@radius: .25em) when (@enable-rounded = true) {
+  border-radius: @radius;
+}
+
+.box-shadow(@shadow: 0 .1rem .2rem rgba(0,0,0,.1)) when (@enable-shadows = true) {
+  box-shadow: @shadow;
+}
+
+
 // Utilities
 @import "mixins/hide-text.less";
 @import "mixins/opacity.less";

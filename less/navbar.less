@@ -18,7 +18,7 @@
   &:extend(.clearfix all);
 
   @media (min-width: @grid-float-breakpoint) {
-    border-radius: @navbar-border-radius;
+    .border-radius(@navbar-border-radius);
   }
 }
 
@@ -200,7 +200,7 @@
   background-color: transparent;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid transparent;
-  border-radius: @border-radius-base;
+  .border-radius(@border-radius-base);
 
   // We remove the `outline` here, but later compensate by attaching `:hover`
   // styles to `:focus`.
@@ -213,7 +213,7 @@
     display: block;
     width: 22px;
     height: 2px;
-    border-radius: 1px;
+    .border-radius(1px);
   }
   .icon-bar + .icon-bar {
     margin-top: 4px;
