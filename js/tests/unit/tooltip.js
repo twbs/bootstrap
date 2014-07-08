@@ -92,7 +92,7 @@ $(function () {
   })
 
   test('should allow html entities', function () {
-    var $tooltip = $('<a href="#" rel="tooltip" title="<b>@fat</b>"/>')
+    var $tooltip = $('<a href="#" rel="tooltip" title="&lt;b&gt;@fat&lt;/b&gt;"/>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({ html: true })
 
@@ -513,7 +513,7 @@ $(function () {
       })
 
     $tooltip.bootstrapTooltip('show')
-    equal($('.tooltip').children('.tooltip-inner').text(), 'Simple tooltip', 'title is set from title attribute while prefered over title option')
+    equal($('.tooltip').children('.tooltip-inner').text(), 'Simple tooltip', 'title is set from title attribute while preferred over title option')
 
     $tooltip.bootstrapTooltip('hide')
     equal($('.tooltip').length, 0, 'tooltip removed from dom')
