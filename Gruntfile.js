@@ -284,11 +284,6 @@ module.exports = function (grunt) {
     },
 
     copy: {
-      fonts: {
-        expand: true,
-        src: 'fonts/*',
-        dest: 'dist/'
-      },
       docs: {
         expand: true,
         cwd: './dist',
@@ -442,7 +437,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-docs', 'copy:docs');
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean', 'dist-css', 'copy:fonts', 'dist-js', 'dist-docs']);
+  grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js', 'dist-docs']);
 
   // Custom docs rebuild task.
   grunt.registerTask('build', ['clean', 'less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'autoprefixer:docs', 'usebanner', 'csscomb:dist', 'cssmin:core', 'cssmin:docs', 'concat', 'uglify:bootstrap', 'dist-docs']);
