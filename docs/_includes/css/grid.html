@@ -397,9 +397,8 @@
   <h4>Variables</h4>
   <p>Variables determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.</p>
 {% highlight scss %}
-@grid-columns:              12;
-@grid-gutter-width:         30px;
-@grid-float-breakpoint:     768px;
+@grid-columns:      12;
+@grid-gutter-width: 1.5rem;
 {% endhighlight %}
 
   <h4>Mixins</h4>
@@ -407,155 +406,74 @@
 {% highlight scss %}
 // Creates a wrapper for a series of columns
 .make-row(@gutter: @grid-gutter-width) {
-  // Then clear the floated columns
-  .clearfix();
-
-  @media (min-width: @screen-sm-min) {
-    margin-left:  (@gutter / -2);
-    margin-right: (@gutter / -2);
-  }
-
-  // Negative margin nested rows out to align the content of columns
-  .row {
-    margin-left:  (@gutter / -2);
-    margin-right: (@gutter / -2);
-  }
+  margin-left:  (@gutter / -2);
+  margin-right: (@gutter / -2);
+  &:extend(.clearfix all);
 }
 
-// Generate the extra small columns
-.make-xs-column(@columns; @gutter: @grid-gutter-width) {
+// Make the element grid-ready (applying everything but the width)
+.make-col(@gutter: @grid-gutter-width) {
   position: relative;
-  // Prevent columns from collapsing when empty
+  float: left;
   min-height: 1px;
-  // Inner gutter via padding
   padding-left:  (@gutter / 2);
   padding-right: (@gutter / 2);
-
-  // Calculate width based on number of columns available
-  @media (min-width: @grid-float-breakpoint) {
-    float: left;
-    width: percentage((@columns / @grid-columns));
-  }
 }
 
-// Generate the small columns
-.make-sm-column(@columns; @gutter: @grid-gutter-width) {
-  position: relative;
-  // Prevent columns from collapsing when empty
-  min-height: 1px;
-  // Inner gutter via padding
-  padding-left:  (@gutter / 2);
-  padding-right: (@gutter / 2);
-
-  // Calculate width based on number of columns available
-  @media (min-width: @screen-sm-min) {
-    float: left;
-    width: percentage((@columns / @grid-columns));
-  }
+// Set a width (to be used in or out of media queries)
+.make-col-span(@columns) {
+  width: percentage((@columns / @grid-columns));
 }
 
-// Generate the small column offsets
-.make-sm-column-offset(@columns) {
-  @media (min-width: @screen-sm-min) {
-    margin-left: percentage((@columns / @grid-columns));
-  }
+// Get fancy by offsetting, or changing the sort order
+.make-col-offset(@columns) {
+  margin-left: percentage((@columns / @grid-columns));
 }
-.make-sm-column-push(@columns) {
-  @media (min-width: @screen-sm-min) {
-    left: percentage((@columns / @grid-columns));
-  }
+.make-col-push(@columns) {
+  left: percentage((@columns / @grid-columns));
 }
-.make-sm-column-pull(@columns) {
-  @media (min-width: @screen-sm-min) {
-    right: percentage((@columns / @grid-columns));
-  }
-}
-
-// Generate the medium columns
-.make-md-column(@columns; @gutter: @grid-gutter-width) {
-  position: relative;
-  // Prevent columns from collapsing when empty
-  min-height: 1px;
-  // Inner gutter via padding
-  padding-left:  (@gutter / 2);
-  padding-right: (@gutter / 2);
-
-  // Calculate width based on number of columns available
-  @media (min-width: @screen-md-min) {
-    float: left;
-    width: percentage((@columns / @grid-columns));
-  }
-}
-
-// Generate the medium column offsets
-.make-md-column-offset(@columns) {
-  @media (min-width: @screen-md-min) {
-    margin-left: percentage((@columns / @grid-columns));
-  }
-}
-.make-md-column-push(@columns) {
-  @media (min-width: @screen-md-min) {
-    left: percentage((@columns / @grid-columns));
-  }
-}
-.make-md-column-pull(@columns) {
-  @media (min-width: @screen-md-min) {
-    right: percentage((@columns / @grid-columns));
-  }
-}
-
-// Generate the large columns
-.make-lg-column(@columns; @gutter: @grid-gutter-width) {
-  position: relative;
-  // Prevent columns from collapsing when empty
-  min-height: 1px;
-  // Inner gutter via padding
-  padding-left:  (@gutter / 2);
-  padding-right: (@gutter / 2);
-
-  // Calculate width based on number of columns available
-  @media (min-width: @screen-lg-min) {
-    float: left;
-    width: percentage((@columns / @grid-columns));
-  }
-}
-
-// Generate the large column offsets
-.make-lg-column-offset(@columns) {
-  @media (min-width: @screen-lg-min) {
-    margin-left: percentage((@columns / @grid-columns));
-  }
-}
-.make-lg-column-push(@columns) {
-  @media (min-width: @screen-lg-min) {
-    left: percentage((@columns / @grid-columns));
-  }
-}
-.make-lg-column-pull(@columns) {
-  @media (min-width: @screen-lg-min) {
-    right: percentage((@columns / @grid-columns));
-  }
+.make-col-pull(@columns) {
+  right: percentage((@columns / @grid-columns));
 }
 {% endhighlight %}
 
   <h4>Example usage</h4>
   <p>You can modify the variables to your own custom values, or just use the mixins with their default values. Here's an example of using the default settings to create a two-column layout with a gap between.</p>
 {% highlight scss %}
-.wrapper {
+.container {
+  max-width: 60em;
+  .make-container();
+}
+.row {
   .make-row();
 }
 .content-main {
-  .make-lg-column(8);
+  .make-col();
+
+  @media (max-width: 32em) {
+    .make-col-span(6);
+  }
+  @media (min-width: 32.1em) {
+    .make-col-span(8);
+  }
 }
 .content-secondary {
-  .make-lg-column(3);
-  .make-lg-column-offset(1);
+  .make-col();
+
+  @media (max-width: 32em) {
+    .make-col-span(6);
+  }
+  @media (min-width: 32.1em) {
+    .make-col-span(4);
+  }
 }
 {% endhighlight %}
 {% highlight html %}
-<div class="wrapper">
-  <div class="content-main">...</div>
-  <div class="content-secondary">...</div>
+<div class="container">
+  <div class="row">
+    <div class="content-main">...</div>
+    <div class="content-secondary">...</div>
+  </div>
 </div>
 {% endhighlight %}
 </div>

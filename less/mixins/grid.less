@@ -2,7 +2,6 @@
 //
 // Generate semantic grid columns with these mixins.
 
-// Centered container element
 .make-container(@gutter: @grid-gutter-width) {
   margin-right: auto;
   margin-left: auto;
@@ -11,7 +10,6 @@
   &:extend(.clearfix all);
 }
 
-// Creates a wrapper for a series of columns
 .make-row(@gutter: @grid-gutter-width) {
   margin-left:  (@gutter / -2);
   margin-right: (@gutter / -2);
@@ -29,12 +27,15 @@
 .make-col-span(@columns) {
   width: percentage((@columns / @grid-columns));
 }
+
 .make-col-offset(@columns) {
   margin-left: percentage((@columns / @grid-columns));
 }
+
 .make-col-push(@columns) {
   left: percentage((@columns / @grid-columns));
 }
+
 .make-col-pull(@columns) {
   right: percentage((@columns / @grid-columns));
 }
