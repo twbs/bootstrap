@@ -23,7 +23,7 @@ $(function () {
   })
 
   test('should return jquery collection containing the element', function () {
-    var $el = $('<div id="modal-test"/>')
+    var $el = $('<div id="modal-test"></div>')
     var $modal = $el.bootstrapModal()
     ok($modal instanceof $, 'returns jquery collection')
     strictEqual($modal[0], $el[0], 'collection contains element')
@@ -36,7 +36,7 @@ $(function () {
   test('should insert into dom when show method is called', function () {
     stop()
 
-    $('<div id="modal-test"/>')
+    $('<div id="modal-test"></div>')
       .on('shown.bs.modal', function () {
         notEqual($('#modal-test').length, 0, 'modal inserted into dom')
         start()
@@ -47,7 +47,7 @@ $(function () {
   test('should fire show event', function () {
     stop()
 
-    $('<div id="modal-test"/>')
+    $('<div id="modal-test"></div>')
       .on('show.bs.modal', function () {
         ok(true, 'show event fired')
         start()
@@ -58,7 +58,7 @@ $(function () {
   test('should not fire shown when show was prevented', function () {
     stop()
 
-    $('<div id="modal-test"/>')
+    $('<div id="modal-test"></div>')
       .on('show.bs.modal', function (e) {
         e.preventDefault()
         ok(true, 'show event fired')
@@ -73,7 +73,7 @@ $(function () {
   test('should hide modal when hide is called', function () {
     stop()
 
-    $('<div id="modal-test"/>')
+    $('<div id="modal-test"></div>')
       .on('shown.bs.modal', function () {
         ok($('#modal-test').is(':visible'), 'modal visible')
         notEqual($('#modal-test').length, 0, 'modal inserted into dom')
@@ -89,7 +89,7 @@ $(function () {
   test('should toggle when toggle is called', function () {
     stop()
 
-    $('<div id="modal-test"/>')
+    $('<div id="modal-test"></div>')
       .on('shown.bs.modal', function () {
         ok($('#modal-test').is(':visible'), 'modal visible')
         notEqual($('#modal-test').length, 0, 'modal inserted into dom')
@@ -105,7 +105,7 @@ $(function () {
   test('should remove from dom when click [data-dismiss="modal"]', function () {
     stop()
 
-    $('<div id="modal-test"><span class="close" data-dismiss="modal"/></div>')
+    $('<div id="modal-test"><span class="close" data-dismiss="modal"></span></div>')
       .on('shown.bs.modal', function () {
         ok($('#modal-test').is(':visible'), 'modal visible')
         notEqual($('#modal-test').length, 0, 'modal inserted into dom')
@@ -121,7 +121,7 @@ $(function () {
   test('should allow modal close with "backdrop:false"', function () {
     stop()
 
-    $('<div id="modal-test" data-backdrop="false"/>')
+    $('<div id="modal-test" data-backdrop="false"></div>')
       .on('shown.bs.modal', function () {
         ok($('#modal-test').is(':visible'), 'modal visible')
         $(this).bootstrapModal('hide')
@@ -136,7 +136,7 @@ $(function () {
   test('should close modal when clicking outside of modal-content', function () {
     stop()
 
-    $('<div id="modal-test"><div class="contents"/></div>')
+    $('<div id="modal-test"><div class="contents"></div></div>')
       .on('shown.bs.modal', function () {
         notEqual($('#modal-test').length, 0, 'modal insterted into dom')
         $('.contents').click()
@@ -153,7 +153,7 @@ $(function () {
   test('should close modal when escape key is pressed via keydown', function () {
     stop()
 
-    var div = $('<div id="modal-test"/>')
+    var div = $('<div id="modal-test"></div>')
     div
       .on('shown.bs.modal', function () {
         ok($('#modal-test').length, 'modal insterted into dom')
@@ -172,7 +172,7 @@ $(function () {
   test('should not close modal when escape key is pressed via keyup', function () {
     stop()
 
-    var div = $('<div id="modal-test"/>')
+    var div = $('<div id="modal-test"></div>')
     div
       .on('shown.bs.modal', function () {
         ok($('#modal-test').length, 'modal insterted into dom')
@@ -193,7 +193,7 @@ $(function () {
 
     var triggered
 
-    $('<div id="modal-test"><div class="contents"/></div>')
+    $('<div id="modal-test"><div class="contents"></div></div>')
       .on('shown.bs.modal', function () {
         triggered = 0
         $('#modal-test').mousedown()
@@ -209,7 +209,7 @@ $(function () {
   test('should close reopened modal with [data-dismiss="modal"] click', function () {
     stop()
 
-    $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"/></div></div>')
+    $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"></div></div></div>')
       .on('shown.bs.modal', function () {
         $('#close').click()
         ok(!$('#modal-test').is(':visible'), 'modal hidden')
@@ -227,9 +227,9 @@ $(function () {
   test('should restore focus to toggling element when modal is hidden after having been opened via data-api', function () {
     stop()
 
-    var $toggleBtn = $('<button data-toggle="modal" data-target="#modal-test"/>').appendTo('#qunit-fixture')
+    var $toggleBtn = $('<button data-toggle="modal" data-target="#modal-test"></button>').appendTo('#qunit-fixture')
 
-    $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"/></div></div>')
+    $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"></div></div></div>')
       .on('hidden.bs.modal', function () {
         setTimeout(function () {
           ok($(document.activeElement).is($toggleBtn), 'toggling element is once again focused')
@@ -246,10 +246,10 @@ $(function () {
 
   test('should not restore focus to toggling element if the associated show event gets prevented', function () {
     stop()
-    var $toggleBtn = $('<button data-toggle="modal" data-target="#modal-test"/>').appendTo('#qunit-fixture')
-    var $otherBtn = $('<button id="other-btn"/>').appendTo('#qunit-fixture')
+    var $toggleBtn = $('<button data-toggle="modal" data-target="#modal-test"></button>').appendTo('#qunit-fixture')
+    var $otherBtn = $('<button id="other-btn"></button>').appendTo('#qunit-fixture')
 
-    $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"/></div>')
+    $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"></div></div>')
       .one('show.bs.modal', function (e) {
         e.preventDefault()
         $otherBtn.focus()

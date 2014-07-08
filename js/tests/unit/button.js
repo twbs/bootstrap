@@ -23,7 +23,7 @@ $(function () {
   })
 
   test('should return jquery collection containing the element', function () {
-    var $el = $('<div/>')
+    var $el = $('<div></div>')
     var $button = $el.bootstrapButton()
     ok($button instanceof $, 'returns jquery collection')
     strictEqual($button[0], $el[0], 'collection contains element')
@@ -64,7 +64,7 @@ $(function () {
   })
 
   test('should work with an empty string as reset state', function () {
-    var $btn = $('<button class="btn" data-loading-text="fat"/>')
+    var $btn = $('<button class="btn" data-loading-text="fat"></button>')
     equal($btn.html(), '', 'btn text equals ""')
     $btn.bootstrapButton('loading')
     equal($btn.html(), 'fat', 'btn text equals fat')
@@ -93,7 +93,7 @@ $(function () {
 
   test('should toggle active when btn children are clicked', function () {
     var $btn = $('<button class="btn" data-toggle="button">mdo</button>')
-    var $inner = $('<i/>')
+    var $inner = $('<i></i>')
     $btn
       .append($inner)
       .appendTo('#qunit-fixture')
@@ -103,9 +103,9 @@ $(function () {
   })
 
   test('should toggle active when btn children are clicked within btn-group', function () {
-    var $btngroup = $('<div class="btn-group" data-toggle="buttons"/>')
+    var $btngroup = $('<div class="btn-group" data-toggle="buttons"></div>')
     var $btn = $('<button class="btn">fat</button>')
-    var $inner = $('<i/>')
+    var $inner = $('<i></i>')
     $btngroup
       .append($btn.append($inner))
       .appendTo('#qunit-fixture')

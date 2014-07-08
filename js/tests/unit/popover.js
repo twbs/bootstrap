@@ -23,7 +23,7 @@ $(function () {
   })
 
   test('should return jquery collection containing the element', function () {
-    var $el = $('<div/>')
+    var $el = $('<div></div>')
     var $popover = $el.bootstrapPopover()
     ok($popover instanceof $, 'returns jquery collection')
     strictEqual($popover[0], $el[0], 'collection contains element')
@@ -78,7 +78,7 @@ $(function () {
   })
 
   test('should not duplicate HTML object', function () {
-    var $div = $('<div/>').html('loves writing tests （╯°□°）╯︵ ┻━┻')
+    var $div = $('<div></div>').html('loves writing tests （╯°□°）╯︵ ┻━┻')
 
     var $popover = $('<a href="#">@fat</a>')
       .appendTo('#qunit-fixture')
@@ -141,7 +141,7 @@ $(function () {
       .bootstrapPopover({
         title: 'Test',
         content: 'Test',
-        template: '<div class="popover foobar"><div class="arrow"></div><div class="inner"><h3 class="title"/><div class="content"><p/></div></div></div>'
+        template: '<div class="popover foobar"><div class="arrow"></div><div class="inner"><h3 class="title"></h3><div class="content"><p></p></div></div></div>'
       })
 
     $popover.bootstrapPopover('show')
@@ -154,7 +154,7 @@ $(function () {
   })
 
   test('should destroy popover', function () {
-    var $popover = $('<div/>')
+    var $popover = $('<div></div>')
       .bootstrapPopover({
         trigger: 'hover'
       })
