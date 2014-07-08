@@ -947,6 +947,7 @@ h1[id] {
 
 .bs-example {
   position: relative;
+  padding-top: 3rem;
   margin-top: 1rem;
   /*padding: 45px 15px 15px;*/
   /*margin: 0 -15px 15px;*/
@@ -958,12 +959,12 @@ h1[id] {
 }
 /* Echo out a label for the example */
 .bs-example:before {
-  /*position: absolute;*/
-  /*top: 15px;*/
+  position: absolute;
+  top: 0;
   /*left: 15px;*/
   display: inline-block;
   padding: .5rem .75rem;
-  margin-bottom: 1rem;
+  /*margin-bottom: 1rem;*/
   font-size: .8rem;
   font-weight: bold;
   color: #fff;

@@ -13,7 +13,7 @@ samp {
 
 // Inline code
 code {
-  padding: 2px 4px;
+  padding: .2rem .4rem;
   font-size: 90%;
   color: @code-color;
   background-color: @code-bg;
@@ -22,12 +22,12 @@ code {
 
 // User input typically entered via keyboard
 kbd {
-  padding: 2px 4px;
+  padding: .2rem .4rem;
   font-size: 90%;
   color: @kbd-color;
   background-color: @kbd-bg;
   border-radius: @border-radius-small;
-  box-shadow: inset 0 -1px 0 rgba(0,0,0,.25);
+  box-shadow: inset 0 -.1rem 0 rgba(0,0,0,.25);
 
   kbd {
     padding: 0;
@@ -39,8 +39,9 @@ kbd {
 // Blocks of code
 pre {
   display: block;
-  padding: ((@line-height-computed - 1) / 2);
-  margin: 0 0 (@line-height-computed / 2);
+  padding: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
   font-size: 90%;
   line-height: @line-height-base;
   color: @pre-color;
