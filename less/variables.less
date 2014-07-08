@@ -7,18 +7,18 @@
 //
 //## Gray and brand colors for use across Bootstrap.
 
-@gray-base:		  #000;
-@gray-darker:            lighten(@gray-base, 13.5%); // #222
-@gray-dark:              lighten(@gray-base, 20%);   // #333
-@gray:                   lighten(@gray-base, 33.5%); // #555
-@gray-light:             lighten(@gray-base, 46.7%); // #777
-@gray-lighter:           lighten(@gray-base, 93.5%); // #eee
+@gray-base:		               #000;
+@gray-dark:                  #373a3c;
+@gray-darker:                @gray-dark; // TODO: remove
+@gray:                       #55595c;
+@gray-light:                 #818a91;
+@gray-lighter:               #eceeef;
 
-@brand-primary:         #027de7;
-@brand-success:         #5cb85c;
-@brand-info:            #5bc0de;
-@brand-warning:         #f0ad4e;
-@brand-danger:          #d9534f;
+@brand-primary:              #027de7;
+@brand-success:              #5cb85c;
+@brand-info:                 #5bc0de;
+@brand-warning:              #f0ad4e;
+@brand-danger:               #d9534f;
 
 
 //== Scaffolding
@@ -26,61 +26,51 @@
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               #fff;
+@body-bg:                    #fff;
 //** Global text color on `<body>`.
-@text-color:            @gray-dark;
+@text-color:                 @gray-dark;
 
 //** Global textual link color.
-@link-color:            @brand-primary;
+@link-color:                 @brand-primary;
 //** Link hover color set via `darken()` function.
-@link-hover-color:      darken(@link-color, 15%);
+@link-hover-color:           darken(@link-color, 15%);
 
 
 //== Typography
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+@font-family-sans-serif:     "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif:          Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
-@font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
-@font-family-base:        @font-family-sans-serif;
+@font-family-monospace:      Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-base:           @font-family-sans-serif;
 
-@font-size-root:          16px;
-@font-size-base:          1rem;
-@font-size-large:         1.25rem;
-@font-size-small:         .85rem;
-@font-size-xs:            .75rem;
+//** Pixel value used to responsively scale all typography. Applied to the `<html>` element.
+@font-size-root:             16px;
+//** Sets the `<body>` and more to the root pixel value.
+@font-size-base:             1rem;
+@font-size-large:            1.25rem;
+@font-size-small:            .85rem;
+@font-size-xs:               .75rem;
 
-@font-size-h1:            3rem;
-@font-size-h2:            2.5rem;
-@font-size-h3:            2rem;
-@font-size-h4:            1.5rem;
-@font-size-h5:            1.25rem;
-@font-size-h6:            1rem;
+@font-size-h1:               3rem;
+@font-size-h2:               2.5rem;
+@font-size-h3:               2rem;
+@font-size-h4:               1.5rem;
+@font-size-h5:               1.25rem;
+@font-size-h6:               1rem;
 
 //** Unit-less `line-height` for use in components like buttons.
-@line-height-base:        1.5;
+@line-height-base:           1.5;
 //** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
-@line-height-computed:    (@font-size-root * @line-height-base);
+@line-height-computed:       (@font-size-root * @line-height-base);
 
 //** By default, this inherits from the `<body>`.
-@headings-font-family:    inherit;
-@headings-font-weight:    500;
-@headings-line-height:    1.1;
-@headings-color:          inherit;
-
-
-//== Iconography
-//
-//## Specify custom location and filename of the included Glyphicons icon font. Useful for those including Bootstrap via Bower.
-
-//** Load fonts from this directory.
-@icon-font-path:          "../fonts/";
-//** File name for all font files.
-@icon-font-name:          "glyphicons-halflings-regular";
-//** Element ID within SVG icon file.
-@icon-font-svg-id:        "glyphicons_halflingsregular";
+@headings-font-family:       inherit;
+@headings-font-weight:       500;
+@headings-line-height:       1.1;
+@headings-color:             inherit;
 
 
 //== Components
