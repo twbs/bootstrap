@@ -207,7 +207,7 @@ module.exports = function (grunt) {
         src: 'dist/css/<%= pkg.name %>-theme.css'
       },
       docs: {
-        src: 'docs/assets/css/docs.css'
+        src: 'docs/assets/css/docs.min.css'
       },
       examples: {
         expand: true,
