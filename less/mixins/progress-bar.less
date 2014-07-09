@@ -1,10 +1,15 @@
 // Progress bars
 
-.progress-bar-variant(@color) {
-  background-color: @color;
-
-  // Deprecated parent class requirement as of v3.2.0
-  .progress-striped & {
-    #gradient > .striped();
+.progress-variant(@color) {
+  &[value]::-webkit-progress-value {
+    background-color: @color;
+  }
+  &[value]::-moz-progress-bar {
+    background-color: @color;
+  }
+  @media screen and (~"min-width:0\0") {
+    .progress-bar {
+      background-color: @color;
+    }
   }
 }
