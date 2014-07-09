@@ -5,30 +5,31 @@
  * details, see http://creativecommons.org/licenses/by/3.0/.
  */
 
+// Import Bootstrap variables and mixins
+@import "../../../less/variables.less";
+@import "../../../less/mixins.less";
 
-/*
- * Bootstrap Documentation
- * Special styles for presenting Bootstrap's documentation and code examples.
- */
+// Import the syntax highlighting
+@import "syntax.less";
+
+// Local docs variables
+@bs-purple:       #563d7c;
+@bs-purple-light: #cdbfe3;
 
 
-/*
- * Scaffolding
- *
- * Update the basics of our documents to prep for docs content.
- */
+// Scaffolding
+//
+// Update the basics of our documents to prep for docs content.
 
 body {
-  position: relative; /* For scrollspy */
+  position: relative; // For scrollspy?
 }
 
-/* Keep code small in tables on account of limited space */
-.table code {
-  font-size: 13px;
-  font-weight: normal;
-}
 
-/* Outline button for use within the docs */
+//
+// Buttons
+//
+
 .btn-outline {
   color: #563d7c;
   background-color: transparent;
@@ -42,7 +43,6 @@ body {
   border-color: #563d7c;
 }
 
-/* Inverted outline button (white on dark) */
 .btn-outline-inverse {
   color: #fff;
   background-color: transparent;
@@ -57,50 +57,38 @@ body {
   border-color: #fff;
 }
 
-/* Bootstrap "B" icon */
+
+//
+// Bootstrap "B" icon
+//
+
 .bs-docs-booticon {
   display: block;
+  width: 144px;
+  height: 144px;
+  font-size: 108px;
   font-weight: 500;
+  line-height: 140px;
   color: #fff;
   text-align: center;
   cursor: default;
   background-color: #563d7c;
   border-radius: 15%;
-}
-.bs-docs-booticon-sm {
-  width: 30px;
-  height: 30px;
-  font-size: 20px;
-  line-height: 28px;
-}
-.bs-docs-booticon-md {
-  width: 40px;
-  height: 40px;
-  font-size: 28px;
-  line-height: 40px;
-}
-.bs-docs-booticon-lg {
-  width: 144px;
-  height: 144px;
-  font-size: 108px;
-  line-height: 140px;
-}
-.bs-docs-booticon-inverse {
-  color: #563d7c;
-  background-color: #fff;
-}
-.bs-docs-booticon-outline {
-  background-color: transparent;
-  border: 1px solid #cdbfe3;
+
+  &.inverse {
+    color: #563d7c;
+    background-color: #fff;
+  }
+  &.outline {
+    background-color: transparent;
+    border: 1px solid #cdbfe3;
+  }
 }
 
 
-/*
- * Main navigation
- *
- * Turn the `.navbar` at the top of the docs purple.
- */
-
+//
+// Main navigation
+//
 
 .bs-docs-nav {
   margin-bottom: 0;
@@ -137,11 +125,9 @@ body {
 }
 
 
-/*
- * Footer
- *
- * Separated section of content at the bottom of all pages, save the homepage.
- */
+//
+// Footer
+//
 
 .bs-docs-footer {
   margin-top: 100px;
@@ -172,11 +158,9 @@ body {
 }
 
 
-/*
- * Social buttons
- *
- * Twitter and GitHub social action buttons (for homepage and footer).
- */
+//
+// Social buttons
+//
 
 .bs-docs-social {
   margin-bottom: 20px;
@@ -199,7 +183,8 @@ body {
 .bs-docs-social-buttons .twitter-share-button {
   width: 98px !important;
 }
-/* Style the GitHub buttons via CSS instead of inline attributes */
+
+// Style the GitHub buttons via CSS instead of inline attributes
 .github-btn {
   overflow: hidden;
   border: 0;
@@ -213,13 +198,11 @@ body {
 }
 
 
-/*
- * Homepage
- *
- * Tweaks to the custom homepage and the masthead (main jumbotron).
- */
+//
+// Homepage
+//
 
-/* Masthead (headings and download button) */
+// Masthead (headings and download button)
 .bs-docs-masthead {
   position: relative;
   padding: 30px 15px;
@@ -227,12 +210,7 @@ body {
   text-align: center;
   text-shadow: 0 1px 0 rgba(0,0,0,.1);
   background-color: #6f5499;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#563d7c), to(#6f5499));
-  background-image: -webkit-linear-gradient(top, #563d7c 0%, #6f5499 100%);
-  background-image:      -o-linear-gradient(top, #563d7c 0%, #6f5499 100%);
-  background-image:         linear-gradient(to bottom, #563d7c 0%, #6f5499 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#563d7c', endColorstr='#6f5499', GradientType=0);
-  background-repeat: repeat-x;
+  #gradient > .vertical(@bs-purple, #6f5499);
 }
 
 .bs-docs-masthead .bs-docs-booticon {
@@ -285,13 +263,10 @@ body {
 }
 
 
-/*
- * Page headers
- *
- * Jumbotron-esque headers at the top of every page that's not the homepage.
- */
+//
+// Page headers
+//
 
-/* Page headers */
 .bs-docs-header {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -336,12 +311,9 @@ body {
 }
 
 
-/*
- * Carbon ads
- *
- * Single display ad that shows on all pages (except homepage) in page headers.
- * The hella `!important` is required for any pre-set property.
- */
+//
+// Carbon ads
+//
 
 .carbonad {
   width: auto !important;
@@ -351,6 +323,7 @@ body {
   overflow: hidden; /* clearfix */
   font-size: 13px !important;
   line-height: 16px !important;
+  color: @bs-purple-light !important;
   text-align: left;
   background: transparent !important;
   border: solid #866ab3 !important;
@@ -380,19 +353,19 @@ body {
   color: #fff !important;
 }
 .carbonad #azcarbon > img {
-  display: none; /* hide what I assume are tracking images */
+  display: none; // hide what I assume are tracking images
 }
 
-/* In the lighter page headers */
-.bs-docs-header .carbonad {
-  color: #777;
-  background-color: #fff !important;
-  border-color: #eee !important;
-}
-.bs-docs-header .carbonad-text a,
-.bs-docs-header .carbonad-tag a {
-  color: #563d7c !important;
-}
+// In the lighter page headers
+// .bs-docs-header .carbonad {
+//   color: #777;
+//   background-color: #fff !important;
+//   border-color: #eee !important;
+// }
+// .bs-docs-header .carbonad-text a,
+// .bs-docs-header .carbonad-tag a {
+//   color: #563d7c !important;
+// }
 
 @media (min-width: 480px) {
   .carbonad {
@@ -417,7 +390,7 @@ body {
   .carbonad {
     position: absolute;
     top: 30px;
-    right: 60px; /* 15px instead of 0 since box-sizing */
+    right: 60px; // 15px instead of 0 since box-sizing
     width: 330px !important;
     padding: 15px !important;
     margin: 0 !important;
@@ -428,11 +401,9 @@ body {
 }
 
 
-/*
- * Homepage featurettes
- *
- * Reasons to use Bootstrap, entries from the Expo, and more.
- */
+//
+// Homepage featurettes
+//
 
 .bs-docs-featurette {
   padding-top: 40px;
@@ -502,11 +473,9 @@ body {
 }
 
 
-/*
- * Featured sites
- *
- * Homepage thumbnails from the Expo.
- */
+//
+// Featured Expo sites
+//
 
 .bs-docs-featured-sites {
   margin-right: -1px;
@@ -531,11 +500,9 @@ body {
 }
 
 
-/*
- * Examples
- *
- * Linked docs examples.
- */
+//
+// Examples
+//
 
 .bs-examples .thumbnail {
   margin-bottom: 10px;
@@ -559,12 +526,9 @@ body {
 }
 
 
-/*
- * Side navigation
- *
- * Scrollspy and affixed enhanced navigation to highlight sections and secondary
- * sections of docs content.
- */
+//
+// Side navigation
+//
 
 .bs-docs-container {
   position: relative;
@@ -621,12 +585,7 @@ body {
     width: 240px;
     overflow-x: hidden;
     overflow-y: auto;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#29262f), to(#322f38));
-    background-image: -webkit-linear-gradient(top, #29262f 0%, #322f38 100%);
-    background-image:      -o-linear-gradient(top, #29262f 0%, #322f38 100%);
-    background-image:         linear-gradient(to bottom, #29262f 0%, #322f38 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#29262f', endColorstr='#322f38', GradientType=0);
-    background-repeat: repeat-x;
+    #gradient > .vertical(#29262f, #322f38);
   }
   .bs-docs-sidebar .navbar-brand {
     margin-bottom: 15px;
@@ -643,6 +602,7 @@ body {
   font-weight: 500;
   line-height: 1;
   color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,.1);
 }
 .bs-docs-sidebar-brand:hover,
 .bs-docs-sidebar-brand:focus {
@@ -688,7 +648,7 @@ body {
   margin-bottom: 30px;
 }
 
-/* All levels of nav */
+// All levels of nav
 .bs-docs-sidebar .nav > li > a {
   display: block;
   padding: 4px 20px;
@@ -709,9 +669,9 @@ body {
   background-color: transparent;
 }
 
-/* Nav: second level (shown on .active) */
+// Nav: second level (shown on .active)
 .bs-docs-sidebar .nav .nav {
-  display: none; /* Hide by default, but at >768px, show it */
+  display: none; // Hide by default, but at >768px, show it
   padding-bottom: 10px;
 }
 .bs-docs-sidebar .nav .nav > li > a {
@@ -727,16 +687,6 @@ body {
   font-weight: 500;
 }
 
-/* Back to top (hidden on mobile) */
-.back-to-top,
-.bs-docs-theme-toggle {
-  display: none;
-}
-.back-to-top:hover,
-.bs-docs-theme-toggle:hover {
-  color: #563d7c;
-  text-decoration: none;
-}
 .bs-docs-sidebar .nav > .active > .nav {
   display: block;
 }
@@ -748,13 +698,11 @@ body {
 }
 
 
-/*
- * Docs sections
- *
- * Content blocks for each component or feature.
- */
+//
+// Docs sections
+//
 
-/* Space things out */
+// Space things out
 .bs-docs-section {
   margin-bottom: 60px;
 }
@@ -768,14 +716,10 @@ h1[id] {
 }
 
 
-/*
- * Callouts
- *
- * Not quite alerts, but custom and helpful notes for folks reading the docs.
- * Requires a base and modifier class.
- */
+//
+// Callouts
+//
 
-/* Common styles for all types */
 .bs-callout {
   padding: 20px;
   margin: 20px 0;
@@ -794,12 +738,11 @@ h1[id] {
   border-radius: 3px;
 }
 
-/* Tighten up space between multiple callouts */
 .bs-callout + .bs-callout {
   margin-top: -5px;
 }
 
-/* Variations */
+// Variations
 .bs-callout-danger {
   border-left-color: #d9534f;
 }
@@ -820,15 +763,13 @@ h1[id] {
 }
 
 
-/*
- * Color swatches
- *
- * Color swatches and associated values for our grayscale and brand colors.
- */
+//
+// Color swatches
+//
 
 .color-swatches {
   margin: 0 -5px;
-  overflow: hidden; /* clearfix */
+  overflow: hidden; // clearfix
 }
 .color-swatch {
   float: left;
@@ -845,44 +786,44 @@ h1[id] {
   }
 }
 
-/* Framework colors */
+// Framework colors
 .color-swatches .gray-darker {
-  background-color: #222;
+  background-color: @gray-darker;
 }
 .color-swatches .gray-dark {
-  background-color: #333;
+  background-color: @gray-dark;
 }
 .color-swatches .gray {
-  background-color: #555;
+  background-color: @gray;
 }
 .color-swatches .gray-light {
-  background-color: #999;
+  background-color: @gray-light;
 }
 .color-swatches .gray-lighter {
-  background-color: #eee;
+  background-color: @gray-lighter;
 }
 .color-swatches .brand-primary {
-  background-color: #428bca;
+  background-color: @brand-primary;
 }
 .color-swatches .brand-success {
-  background-color: #5cb85c;
+  background-color: @brand-success;
 }
 .color-swatches .brand-warning {
-  background-color: #f0ad4e;
+  background-color: @brand-warning;
 }
 .color-swatches .brand-danger {
-  background-color: #d9534f;
+  background-color: @brand-danger;
 }
 .color-swatches .brand-info {
-  background-color: #5bc0de;
+  background-color: @brand-info;
 }
 
-/* Docs colors */
+// Docs colors
 .color-swatches .bs-purple {
-  background-color: #563d7c;
+  background-color: @bs-purple;
 }
 .color-swatches .bs-purple-light {
-  background-color: #c7bfd3;
+  background-color: @bs-purple-light;
 }
 .color-swatches .bs-purple-lighter {
   background-color: #e5e1ea;
@@ -892,11 +833,9 @@ h1[id] {
 }
 
 
-/*
- * Team members
- *
- * Avatars, names, and usernames for core team.
- */
+//
+// Team members
+//
 
 .bs-team .team-member {
   line-height: 32px;
@@ -920,12 +859,9 @@ h1[id] {
 }
 
 
-/*
- * Grid examples
- *
- * Highlight the grid columns within the docs so folks can see their padding,
- * alignment, sizing, etc.
- */
+//
+// Grid examples
+//
 
 .show-grid {
   margin-bottom: 15px;
@@ -940,12 +876,9 @@ h1[id] {
 }
 
 
-/*
- * Examples
- *
- * Isolated sections of example content for each component or feature. Usually
- * followed by a code snippet.
- */
+//
+// Docs examples
+//
 
 .bs-example {
   position: relative;
@@ -955,7 +888,7 @@ h1[id] {
   border: solid #f7f7f9;
   border-width: .2rem 0 0;
 }
-/* Echo out a label for the example */
+// Echo out a label for the example
 .bs-example:before {
   position: absolute;
   top: 0;
@@ -977,12 +910,12 @@ h1[id] {
   }
 }
 
-/* Undo width of container */
+// Undo width of container
 .bs-example .container {
   width: auto;
 }
 
-/* Tweak content of examples for optimum awesome */
+// Tweak content of examples for optimum awesome
 .bs-example > p:last-child,
 .bs-example > ul:last-child,
 .bs-example > ol:last-child,
@@ -1003,7 +936,7 @@ h1[id] {
   float: none;
 }
 
-/* Typography */
+// Typography
 .bs-example-type .table .type-info {
   color: #999;
   vertical-align: middle;
@@ -1024,24 +957,24 @@ h1[id] {
   margin: 0;
 }
 
-/* Contextual background colors */
+// Contextual background colors
 .bs-example-bg-classes p {
   padding: 15px;
 }
 
-/* Images */
+// Images
 .bs-example > .img-circle,
 .bs-example > .img-rounded,
 .bs-example > .img-thumbnail {
   margin: 5px;
 }
 
-/* Tables */
-.bs-example > .table-responsive > .table {
-  background-color: #fff;
-}
+// Tables
+// .bs-example > .table-responsive > .table {
+//   background-color: #fff;
+// }
 
-/* Buttons */
+// Buttons
 .bs-example > .btn,
 .bs-example > .btn-group {
   margin-top: 5px;
@@ -1051,7 +984,7 @@ h1[id] {
   margin-top: 10px;
 }
 
-/* Forms */
+// Forms
 .bs-example-control-sizing select,
 .bs-example-control-sizing input[type="text"] + input[type="text"] {
   margin-top: 10px;
@@ -1063,12 +996,12 @@ h1[id] {
   resize: vertical;
 }
 
-/* List groups */
+// List groups
 .bs-example > .list-group {
   max-width: 400px;
 }
 
-/* Navbars */
+// Navbars
 .bs-example .navbar:last-child {
   margin-bottom: 0;
 }
@@ -1076,7 +1009,7 @@ h1[id] {
 .bs-navbar-bottom-example {
   z-index: 1;
   padding: 0;
-  overflow: hidden; /* cut the drop shadows off */
+  overflow: hidden; // cut the drop shadows off
 }
 .bs-navbar-top-example .navbar-header,
 .bs-navbar-bottom-example .navbar-header {
@@ -1114,18 +1047,18 @@ h1[id] {
   }
 }
 
-/* Pagination */
+// Pagination
 .bs-example .pagination {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-/* Pager */
+// Pager
 .bs-example > .pager {
   margin-top: 0;
 }
 
-/* Example modals */
+// Example modals
 .bs-example-modal {
   background-color: #f5f5f5;
 }
@@ -1144,7 +1077,7 @@ h1[id] {
   margin-left: auto;
 }
 
-/* Example dropdowns */
+// Example dropdowns
 .bs-example > .dropdown > .dropdown-toggle {
   float: left;
 }
@@ -1155,12 +1088,12 @@ h1[id] {
   clear: left;
 }
 
-/* Example tabbable tabs */
+// Example tabbable tabs
 .bs-example-tabs .nav-tabs {
   margin-bottom: 15px;
 }
 
-/* Tooltips */
+// Tooltips
 .bs-example-tooltips {
   text-align: center;
 }
@@ -1169,7 +1102,7 @@ h1[id] {
   margin-bottom: 5px;
 }
 
-/* Popovers */
+// Popovers
 .bs-example-popover {
   padding-bottom: 24px;
   background-color: #f9f9f9;
@@ -1182,7 +1115,7 @@ h1[id] {
   margin: 20px;
 }
 
-/* Scrollspy demo on fixed height div */
+// Scrollspy demo on fixed height div
 .scrollspy-example {
   position: relative;
   height: 200px;
@@ -1191,11 +1124,9 @@ h1[id] {
 }
 
 
-/*
- * Code snippets
- *
- * Generated via Pygments and Jekyll, these are snippets of HTML, CSS, and JS.
- */
+//
+// Code snippets
+//
 
 .highlight {
   padding: 1.5rem;
@@ -1212,22 +1143,20 @@ h1[id] {
 }
 .highlight pre code {
   font-size: inherit;
-  color: #333; /* Effectively the base text color */
+  color: @gray-dark; // Effectively the base text color
 }
 
 
-/*
- * Responsive tests
- *
- * Generate a set of tests to show the responsive utilities in action.
- */
+//
+// Responsive tests
+//
 
-/* Responsive (scrollable) doc tables */
+// Responsive (scrollable) doc tables
 .table-responsive .highlight pre {
   white-space: normal;
 }
 
-/* Utility classes table  */
+// Utility classes table
 .bs-table th small,
 .responsive-utilities th small {
   display: block;
@@ -1249,7 +1178,7 @@ h1[id] {
   background-color: #f9f9f9 !important;
 }
 
-/* Responsive tests */
+// Responsive tests
 .responsive-utilities-test {
   margin-top: 5px;
 }
@@ -1290,72 +1219,16 @@ h1[id] {
 }
 
 
-/*
- * Glyphicons
- *
- * Special styles for displaying the icons and their classes in the docs.
- */
-
-.bs-glyphicons {
-  margin: 0 -10px 20px;
-  overflow: hidden;
-}
-.bs-glyphicons-list {
-  padding-left: 0;
-  list-style: none;
-}
-.bs-glyphicons li {
-  float: left;
-  width: 25%;
-  height: 115px;
-  padding: 10px;
-  font-size: 10px;
-  line-height: 1.4;
-  text-align: center;
-  background-color: #f9f9f9;
-  border: 1px solid #fff;
-}
-.bs-glyphicons .glyphicon {
-  margin-top: 5px;
-  margin-bottom: 10px;
-  font-size: 24px;
-}
-.bs-glyphicons .glyphicon-class {
-  display: block;
-  text-align: center;
-  word-wrap: break-word; /* Help out IE10+ with class names */
-}
-.bs-glyphicons li:hover {
-  color: #fff;
-  background-color: #563d7c;
-}
-
-@media (min-width: 768px) {
-  .bs-glyphicons {
-    margin-right: 0;
-    margin-left: 0;
-  }
-  .bs-glyphicons li {
-    width: 12.5%;
-    font-size: 12px;
-  }
-}
-
-
-/*
- * Customizer
- *
- * Since this is so form control heavy, we have quite a few styles to customize
- * the display of inputs, headings, and more. Also included are all the download
- * buttons and actions.
- */
+//
+// Customizer
+//
 
 .bs-customizer .toggle {
   float: right;
   margin-top: 25px;
 }
 
-/* Headings and form contrls */
+// Headings and form controls
 .bs-customizer label {
   margin-top: 10px;
   font-weight: 500;
@@ -1374,7 +1247,7 @@ h1[id] {
   margin-bottom: 0;
 }
 .bs-customizer .bs-callout h4 {
-  margin-top: 0; /* lame, but due to specificity we have to duplicate */
+  margin-top: 0; // lame, but due to specificity we have to duplicate
   margin-bottom: 5px;
 }
 .bs-customizer input[type="text"] {
@@ -1386,7 +1259,7 @@ h1[id] {
   font-size: 12px;
 }
 
-/* For the variables, use regular weight */
+// For the variables, use regular weight
 #less-section label {
   font-weight: normal;
 }
@@ -1398,12 +1271,12 @@ h1[id] {
   padding-left: 15px;
 }
 
-/* Downloads */
+// Downloads
 .bs-customize-download .btn-outline {
   padding: 20px;
 }
 
-/* Error handling */
+// Error handling
 .bs-customizer-alert {
   position: fixed;
   top: 0;
@@ -1437,13 +1310,11 @@ h1[id] {
 }
 
 
-/*
- * Brand guidelines
- *
- * Extra styles for displaying wordmarks, logos, etc.
- */
+//
+// Brand guidelines
+//
 
-/* Logo series wrapper */
+// Logo series wrapper
 .bs-brand-logos {
   display: table;
   width: 100%;
@@ -1454,7 +1325,7 @@ h1[id] {
   border-radius: 4px;
 }
 
-/* Individual items */
+// Individual items
 .bs-brand-item {
   padding: 60px 0;
   text-align: center;
@@ -1471,7 +1342,7 @@ h1[id] {
   height: 144px;
 }
 
-/* Heading content within */
+// Heading content within
 .bs-brand-item h1,
 .bs-brand-item h3 {
   margin-top: 0;
@@ -1482,21 +1353,21 @@ h1[id] {
   margin-left: auto;
 }
 
-/* Make the icons stand out on what is/isn't okay */
-.bs-brand-item .glyphicon {
-  width: 30px;
-  height: 30px;
-  margin: 10px auto -10px;
-  line-height: 30px;
-  color: #fff;
-  border-radius: 50%;
-}
-.bs-brand-item .glyphicon-ok {
-  background-color: #5cb85c;
-}
-.bs-brand-item .glyphicon-remove {
-  background-color: #d9534f;
-}
+// Make the icons stand out on what is/isn't okay
+// .bs-brand-item .glyphicon {
+//   width: 30px;
+//   height: 30px;
+//   margin: 10px auto -10px;
+//   line-height: 30px;
+//   color: #fff;
+//   border-radius: 50%;
+// }
+// .bs-brand-item .glyphicon-ok {
+//   background-color: #5cb85c;
+// }
+// .bs-brand-item .glyphicon-remove {
+//   background-color: #d9534f;
+// }
 
 @media (min-width: 768px) {
   .bs-brand-item {
@@ -1513,9 +1384,9 @@ h1[id] {
 }
 
 
-/*
- * ZeroClipboard styles
- */
+//
+// ZeroClipboard styles
+//
 
 .zero-clipboard {
   position: relative;
@@ -1547,18 +1418,14 @@ h1[id] {
 }
 
 
-/*
- * Miscellaneous
- *
- * Odds and ends for optimum docs display.
- */
+//
+// Miscellaneous
+//
 
-/* Pseudo :focus state for showing how it looks in the docs */
+// Pseudo :focus state for showing how it looks in the docs
 #focusedInput {
-  border-color: rgb(204,204,204); /* Restate unfocused value to make CSSLint happy that there's a pre-CSS3 fallback*/
-  border-color: rgba(82,168,236,.8);
+  border-color: @input-border-focus;
   outline: 0;
-  outline: thin dotted \9; /* IE6-9 */
-  -webkit-box-shadow: 0 0 8px rgba(82,168,236,.6);
-          box-shadow: 0 0 8px rgba(82,168,236,.6);
+  outline: thin dotted \9; // IE9
+  box-shadow: 0 0 8px @input-box-shadow-focus;
 }
