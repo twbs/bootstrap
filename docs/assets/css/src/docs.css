@@ -971,15 +971,6 @@ h1[id] {
   border-radius: .2rem;
 }
 
-/* Tweak display of the code snippets when following an example */
-.bs-example + .highlight:before {
-/*  position: absolute;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-*/}
-
 @media (min-width: 480px) {
   .bs-example {
     border-width: .2rem;
