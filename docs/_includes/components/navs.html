@@ -1,58 +1,93 @@
 <div class="bs-docs-section">
   <h1 id="nav" class="page-header">Navs</h1>
 
-  <p class="lead">Navs available in Bootstrap have shared markup, starting with the base <code>.nav</code> class, as well as shared states. Swap modifier classes to switch between each style.</p>
+  <p class="lead">Navigation available in Bootstrap share general markup and styles, from the base <code>.nav</code> class to the active and disabled states. Swap modifier classes to switch between each style.</p>
 
-  <h2 id="nav-basic">Basic nav</h2>
-  <p>Uses no modifier classes. No supported active state by default, given highly customizable nature of nav styles.</p>
+  <h2 id="nav-base">Base nav</h2>
+  <p>Roll your own navigation style by extending the base <code>.nav</code> component. All Bootstrap's nav components are built on top of this. Includes styles for the disabled state, but <strong>not the active state</strong>.</p>
   <div class="bs-example">
     <ul class="nav" role="tablist">
-      <li>
-        <a href="#">Active</a>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
       </li>
-      <li>
-        <a href="#">Link</a>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
       </li>
-      <li>
-        <a href="#">Another link</a>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Another link</a>
       </li>
-      <li class="disabled">
-        <a href="#">Disabled</a>
-      </li>
-    </ul>
-  </div>
-
-  <h2 id="nav-tabs">Tabs</h2>
-  <p>Note the <code>.nav-tabs</code> class requires the <code>.nav</code> base class.</p>
-  <div class="bs-example">
-    <ul class="nav-tab" role="tablist">
-      <li class="nav-tab-item active">
-        <a href="#" class="nav-tab-link">Active</a>
-      </li>
-      <li class="nav-tab-item">
-        <a href="#" class="nav-tab-link">Link</a>
-      </li>
-      <li class="nav-tab-item">
-        <a href="#" class="nav-tab-link">Another link</a>
-      </li>
-      <li class="nav-tab-item disabled">
-        <a href="#" class="nav-tab-link">Disabled</a>
+      <li class="nav-item disabled">
+        <a class="nav-link" href="#">Disabled</a>
       </li>
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav-tab" role="tablist">
-  <li class="nav-tab-item active">
-    <a href="#" class="nav-tab-link">Active</a>
+<ul class="nav" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
   </li>
-  <li class="nav-tab-item">
-    <a href="#" class="nav-tab-link">Link</a>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
   </li>
-  <li class="nav-tab-item">
-    <a href="#" class="nav-tab-link">Another link</a>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Another link</a>
   </li>
-  <li class="nav-tab-item disabled">
-    <a href="#" class="nav-tab-link">Disabled</a>
+  <li class="nav-item disabled">
+    <a class="nav-link" href="#">Disabled</a>
+  </li>
+</ul>
+{% endhighlight %}
+
+  <p>Classes are used so your markup can be super flexible.</p>
+  <div class="bs-example">
+    <nav class="nav" role="tablist">
+      <a class="nav-link active" href="#">Active</a>
+      <a class="nav-link" href="#">Link</a>
+      <a class="nav-link" href="#">Another link</a>
+      <a class="nav-link disabled" href="#">Disabled</a>
+    </nav>
+  </div>
+{% highlight html %}
+<nav class="nav" role="tablist">
+  <a class="nav-link active" href="#">Active</a>
+  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link" href="#">Another link</a>
+  <a class="nav-link disabled" href="#">Disabled</a>
+</nav>
+{% endhighlight %}
+
+
+  <h2 id="nav-tabs">Tabs</h2>
+  <p>Takes the basic nav from above and adds the <code>.nav-tabs</code> class to generate a tabbed interface.</p>
+  <div class="bs-example">
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item active">
+        <a href="#" class="nav-link">Active</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Link</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Another link</a>
+      </li>
+      <li class="nav-item disabled">
+        <a href="#" class="nav-link">Disabled</a>
+      </li>
+    </ul>
+  </div>
+{% highlight html %}
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item active">
+    <a href="#" class="nav-link">Active</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Link</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Another link</a>
+  </li>
+  <li class="nav-item disabled">
+    <a href="#" class="nav-link">Disabled</a>
   </li>
 </ul>
 {% endhighlight %}
@@ -64,78 +99,70 @@
   <h2 id="nav-pills">Pills</h2>
   <p>Take that same HTML, but use <code>.nav-pills</code> instead:</p>
   <div class="bs-example">
-    <ul class="nav-pill" role="tablist">
-      <li class="nav-pill-item active">
-        <a href="#" class="nav-pill-link">Active</a>
+    <ul class="nav nav-pills" role="tablist">
+      <li class="nav-item active">
+        <a href="#" class="nav-link">Active</a>
       </li>
-      <li class="nav-pill-item">
-        <a href="#" class="nav-pill-link">Link</a>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Link</a>
       </li>
-      <li class="nav-pill-item">
-        <a href="#" class="nav-pill-link">Another link</a>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Another link</a>
       </li>
-      <li class="nav-pill-item disabled">
-        <a href="#" class="nav-pill-link">Disabled</a>
+      <li class="nav-item disabled">
+        <a href="#" class="nav-link">Disabled</a>
       </li>
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav-pill" role="tablist">
-  <li class="nav-pill-item active">
-    <a href="#" class="nav-pill-link">Active</a>
+<ul class="nav nav-pills" role="tablist">
+  <li class="nav-item active">
+    <a href="#" class="nav-link">Active</a>
   </li>
-  <li class="nav-pill-item">
-    <a href="#" class="nav-pill-link">Link</a>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Link</a>
   </li>
-  <li class="nav-pill-item">
-    <a href="#" class="nav-pill-link">Another link</a>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Another link</a>
   </li>
-  <li class="nav-pill-item disabled">
-    <a href="#" class="nav-pill-link">Disabled</a>
+  <li class="nav-item disabled">
+    <a href="#" class="nav-link">Disabled</a>
   </li>
 </ul>
 {% endhighlight %}
 
-  <p>Pills are also vertically stackable. Just add <code>.nav-stacked</code>.</p>
+  <h2 id="nav-pills-stacked">Stacked pills</h2>
+  <p>Just add <code>.nav-stacked</code>.</p>
   <div class="bs-example">
-    <ul class="nav nav-pills nav-stacked" role="tablist" style="max-width: 300px;">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Profile</a></li>
-      <li><a href="#">Messages</a></li>
+    <ul class="nav nav-pills nav-stacked" role="tablist">
+      <li class="nav-item active">
+        <a href="#" class="nav-link">Active</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Link</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Another link</a>
+      </li>
+      <li class="nav-item disabled">
+        <a href="#" class="nav-link">Disabled</a>
+      </li>
     </ul>
   </div>
 {% highlight html %}
 <ul class="nav nav-pills nav-stacked" role="tablist">
-  ...
-</ul>
-{% endhighlight %}
-
-
-  <h2 id="nav-justified">Justified</h2>
-  <p>Easily make tabs or pills equal widths of their parent at screens wider than 768px with <code>.nav-justified</code>. On smaller screens, the nav links are stacked.</p>
-  <div class="bs-callout bs-callout-warning">
-    <h4>Safari and responsive justified navs</h4>
-    <p>As of v7.0.1, Safari exhibits a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing. This bug is also shown in the <a href="../examples/justified-nav/">justified nav example</a>.</p>
-  </div>
-  <div class="bs-example">
-    <ul class="nav nav-tabs nav-justified" role="tablist">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Profile</a></li>
-      <li><a href="#">Messages</a></li>
-    </ul>
-    <br>
-    <ul class="nav nav-pills nav-justified" role="tablist">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Profile</a></li>
-      <li><a href="#">Messages</a></li>
-    </ul>
-  </div>
-{% highlight html %}
-<ul class="nav nav-tabs nav-justified" role="tablist">
-  ...
-</ul>
-<ul class="nav nav-pills nav-justified" role="tablist">
-  ...
+  <li class="nav-item active">
+    <a href="#" class="nav-link">Active</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Link</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Another link</a>
+  </li>
+  <li class="nav-item disabled">
+    <a href="#" class="nav-link">Disabled</a>
+  </li>
 </ul>
 {% endhighlight %}
 

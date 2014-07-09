@@ -18,7 +18,7 @@
 
     // Scrollspy
     var $window = $(window)
-    var $body   = $(document.body)
+    var $body   = $('document.body')
 
     $body.scrollspy({
       target: '.active .bs-docs-sidenav'
