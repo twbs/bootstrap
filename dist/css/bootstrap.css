@@ -1431,7 +1431,7 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: 8px;
+  padding: .6rem;
   line-height: 1.5;
   vertical-align: top;
   border-top: 1px solid #ddd;
@@ -1460,7 +1460,7 @@ th {
 .table-condensed > thead > tr > td,
 .table-condensed > tbody > tr > td,
 .table-condensed > tfoot > tr > td {
-  padding: 5px;
+  padding: .3rem;
 }
 .table-bordered {
   border: 1px solid #ddd;
