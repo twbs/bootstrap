@@ -1,0 +1,60 @@
+// Pill nav
+//
+// Horizontal navigation with large (rounded) rectangle hit areas for links.
+
+.nav-pill {
+  .list-unstyled();
+  margin-bottom: @line-height-computed;
+  &:extend(.clearfix all);
+}
+
+.nav-pill-item {
+  position: relative;
+  display: block;
+  float: left;
+
+  & + & {
+    margin-left: .2rem;
+  }
+}
+
+.nav-pill-link {
+  position: relative;
+  display: block;
+  padding: @nav-link-padding;
+  .border-radius(@nav-pills-border-radius);
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    background-color: @nav-link-hover-bg;
+  }
+}
+
+// Open dropdown and active states
+.open,
+.active {
+  > .nav-pill-link {
+    &,
+    &:hover,
+    &:focus {
+      color: @nav-pills-active-link-hover-color;
+      background-color: @nav-pills-active-link-hover-bg;
+    }
+  }
+}
+
+// Disabled state sets text to gray and nukes hover/tab effects
+.disabled {
+  > .nav-pill-link {
+    color: @nav-disabled-link-color;
+
+    &,
+    &:hover,
+    &:focus {
+      color: @nav-disabled-link-hover-color;
+      background-color: transparent;
+      cursor: not-allowed;
+    }
+  }
+}

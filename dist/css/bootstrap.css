@@ -3171,6 +3171,95 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+.nav-tab {
+  padding-left: 0;
+  margin-bottom: 24px;
+  list-style: none;
+  border-bottom: 1px solid #ddd;
+}
+.nav-tab-item {
+  position: relative;
+  display: block;
+  float: left;
+  margin-bottom: -1px;
+}
+.nav-tab-link {
+  display: block;
+  padding: 10px 15px;
+  margin-right: .2rem;
+  line-height: 1.5;
+  border: 1px solid transparent;
+  border-radius: .2rem .2rem 0 0;
+}
+.nav-tab-link:hover,
+.nav-tab-link:focus {
+  text-decoration: none;
+  background-color: #eceeef;
+  border-color: #eceeef #eceeef #ddd;
+}
+.open > .nav-tab-link,
+.active > .nav-tab-link,
+.open > .nav-tab-link:hover,
+.active > .nav-tab-link:hover,
+.open > .nav-tab-link:focus,
+.active > .nav-tab-link:focus {
+  color: #55595c;
+  cursor: default;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+.disabled > .nav-tab-link,
+.disabled > .nav-tab-link:hover,
+.disabled > .nav-tab-link:focus {
+  color: #818a91;
+  cursor: not-allowed;
+  background-color: transparent;
+  border-color: transparent;
+}
+.nav-pill {
+  padding-left: 0;
+  margin-bottom: 24px;
+  list-style: none;
+}
+.nav-pill-item {
+  position: relative;
+  display: block;
+  float: left;
+}
+.nav-pill-item + .nav-pill-item {
+  margin-left: .2rem;
+}
+.nav-pill-link {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  border-radius: .2rem;
+}
+.nav-pill-link:hover,
+.nav-pill-link:focus {
+  text-decoration: none;
+  background-color: #eceeef;
+}
+.open > .nav-pill-link,
+.active > .nav-pill-link,
+.open > .nav-pill-link:hover,
+.active > .nav-pill-link:hover,
+.open > .nav-pill-link:focus,
+.active > .nav-pill-link:focus {
+  color: #fff;
+  background-color: #027de7;
+}
+.disabled > .nav-pill-link {
+  color: #818a91;
+}
+.disabled > .nav-pill-link,
+.disabled > .nav-pill-link:hover,
+.disabled > .nav-pill-link:focus {
+  color: #818a91;
+  cursor: not-allowed;
+  background-color: transparent;
+}
 .navbar {
   position: relative;
   min-height: 50px;
@@ -4947,6 +5036,10 @@ button.close {
 .btn-group-vertical > .btn-group:after,
 .nav:before,
 .nav:after,
+.nav-tab:before,
+.nav-tab:after,
+.nav-pill:before,
+.nav-pill:after,
 .navbar:before,
 .navbar:after,
 .navbar-header:before,
@@ -4969,6 +5062,8 @@ button.close {
 .btn-toolbar:after,
 .btn-group-vertical > .btn-group:after,
 .nav:after,
+.nav-tab:after,
+.nav-pill:after,
 .navbar:after,
 .navbar-header:after,
 .navbar-collapse:after,

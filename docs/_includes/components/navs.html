@@ -6,17 +6,35 @@
   <h2 id="nav-tabs">Tabs</h2>
   <p>Note the <code>.nav-tabs</code> class requires the <code>.nav</code> base class.</p>
   <div class="bs-example">
-    <ul class="nav nav-tabs" role="tablist">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Profile</a></li>
-      <li><a href="#">Messages</a></li>
+    <ul class="nav-tab" role="tablist">
+      <li class="nav-tab-item active">
+        <a href="#" class="nav-tab-link">Active</a>
+      </li>
+      <li class="nav-tab-item">
+        <a href="#" class="nav-tab-link">Link</a>
+      </li>
+      <li class="nav-tab-item">
+        <a href="#" class="nav-tab-link">Another link</a>
+      </li>
+      <li class="nav-tab-item disabled">
+        <a href="#" class="nav-tab-link">Disabled</a>
+      </li>
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav nav-tabs" role="tablist">
-  <li class="active"><a href="#">Home</a></li>
-  <li><a href="#">Profile</a></li>
-  <li><a href="#">Messages</a></li>
+<ul class="nav-tab" role="tablist">
+  <li class="nav-tab-item active">
+    <a href="#" class="nav-tab-link">Active</a>
+  </li>
+  <li class="nav-tab-item">
+    <a href="#" class="nav-tab-link">Link</a>
+  </li>
+  <li class="nav-tab-item">
+    <a href="#" class="nav-tab-link">Another link</a>
+  </li>
+  <li class="nav-tab-item disabled">
+    <a href="#" class="nav-tab-link">Disabled</a>
+  </li>
 </ul>
 {% endhighlight %}
   <div class="bs-callout bs-callout-info">
@@ -27,19 +45,38 @@
   <h2 id="nav-pills">Pills</h2>
   <p>Take that same HTML, but use <code>.nav-pills</code> instead:</p>
   <div class="bs-example">
-    <ul class="nav nav-pills" role="tablist">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Profile</a></li>
-      <li><a href="#">Messages</a></li>
+    <ul class="nav-pill" role="tablist">
+      <li class="nav-pill-item active">
+        <a href="#" class="nav-pill-link">Active</a>
+      </li>
+      <li class="nav-pill-item">
+        <a href="#" class="nav-pill-link">Link</a>
+      </li>
+      <li class="nav-pill-item">
+        <a href="#" class="nav-pill-link">Another link</a>
+      </li>
+      <li class="nav-pill-item disabled">
+        <a href="#" class="nav-pill-link">Disabled</a>
+      </li>
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav nav-pills" role="tablist">
-  <li class="active"><a href="#">Home</a></li>
-  <li><a href="#">Profile</a></li>
-  <li><a href="#">Messages</a></li>
+<ul class="nav-pill" role="tablist">
+  <li class="nav-pill-item active">
+    <a href="#" class="nav-pill-link">Active</a>
+  </li>
+  <li class="nav-pill-item">
+    <a href="#" class="nav-pill-link">Link</a>
+  </li>
+  <li class="nav-pill-item">
+    <a href="#" class="nav-pill-link">Another link</a>
+  </li>
+  <li class="nav-pill-item disabled">
+    <a href="#" class="nav-pill-link">Disabled</a>
+  </li>
 </ul>
 {% endhighlight %}
+
   <p>Pills are also vertically stackable. Just add <code>.nav-stacked</code>.</p>
   <div class="bs-example">
     <ul class="nav nav-pills nav-stacked" role="tablist" style="max-width: 300px;">
