@@ -170,6 +170,14 @@ module.exports = function (grunt) {
         files: {
           'dist/css/<%= pkg.name %>-theme.css': 'less/theme.less'
         }
+      },
+      compileDocs: {
+        options: {
+          strictMath: true
+        },
+        files: {
+          'docs/assets/css/docs.min.css': 'docs/assets/less/docs.less'
+        }
       }
     },
 
@@ -199,7 +207,7 @@ module.exports = function (grunt) {
         src: 'dist/css/<%= pkg.name %>-theme.css'
       },
       docs: {
-        src: 'docs/assets/css/src/docs.css'
+        src: 'docs/assets/css/docs.min.css'
       },
       examples: {
         expand: true,
@@ -225,7 +233,7 @@ module.exports = function (grunt) {
           ids: false,
           'overqualified-elements': false
         },
-        src: 'docs/assets/css/src/docs.css'
+        src: 'docs/assets/css/docs.css'
       }
     },
 
@@ -242,10 +250,7 @@ module.exports = function (grunt) {
         }
       },
       docs: {
-        src: [
-          'docs/assets/css/src/docs.css',
-          'docs/assets/css/src/pygments-manni.css'
-        ],
+        src: 'docs/assets/css/docs.min.css',
         dest: 'docs/assets/css/docs.min.css'
       }
     },
@@ -354,6 +359,10 @@ module.exports = function (grunt) {
       },
       less: {
         files: 'less/*.less',
+        tasks: 'less'
+      },
+      docs: {
+        files: 'docs/assets/less/*.less',
         tasks: 'less'
       }
     },

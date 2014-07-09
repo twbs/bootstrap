@@ -3,98 +3,165 @@
 // --------------------------------------------------
 
 
-// Bar animations
-// -------------------------
+//
+// Progress animations
+//
 
-// WebKit
 @-webkit-keyframes progress-bar-stripes {
-  from  { background-position: 40px 0; }
+  from  { background-position: @line-height-computed 0; }
   to    { background-position: 0 0; }
 }
 
-// Spec and IE10+
 @keyframes progress-bar-stripes {
-  from  { background-position: 40px 0; }
+  from  { background-position: @line-height-computed 0; }
   to    { background-position: 0 0; }
 }
 
 
+//
+// Basic progress bar
+//
 
-// Bar itself
-// -------------------------
-
-// Outer container
 .progress {
-  overflow: hidden;
+  display: block;
+  width: 100%;
   height: @line-height-computed;
   margin-bottom: @line-height-computed;
-  background-color: @progress-bg;
+}
+.progress[value] {
+  // Reset the default appearance
+  appearance: none;
+  // Remove Firefox and Opera border
+  border: 0;
+  // IE10 uses `color` to set the bar background-color
+  color: #0074d9;
+}
+.progress[value]::-webkit-progress-bar {
+  background-color: #eee;
   .border-radius(@border-radius-base);
-  box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+  .box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
+}
+.progress[value]::-webkit-progress-value::before {
+  content: attr(value);
+}
+.progress[value]::-webkit-progress-value {
+  background-color: #0074d9;
+  border-top-left-radius: @border-radius-base;
+  border-bottom-left-radius: @border-radius-base;
+}
+.progress[value="0"]::-webkit-progress-value {
+  color: @gray-light;
+  min-width: 2rem;
+  background-color: transparent;
+  background-image: none;
+}
+.progress[value="100"]::-webkit-progress-value {
+  border-top-right-radius: @border-radius-base;
+  border-bottom-right-radius: @border-radius-base;
 }
 
-// Bar of progress
-.progress-bar {
-  float: left;
-  width: 0%;
-  height: 100%;
-  font-size: @font-size-small;
-  line-height: @line-height-computed;
-  color: @progress-bar-color;
-  text-align: center;
-  background-color: @progress-bar-bg;
-  box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
-  transition: width .6s ease;
-}
-
-// Striped bars
-//
-// `.progress-striped .progress-bar` is deprecated as of v3.2.0 in favor of the
-// `.progress-bar-striped` class, which you just add to an existing
-// `.progress-bar`.
-.progress-striped .progress-bar,
-.progress-bar-striped {
-  #gradient > .striped();
-  background-size: 40px 40px;
-}
-
-// Call animation for the active one
-//
-// `.progress.active .progress-bar` is deprecated as of v3.2.0 in favor of the
-// `.progress-bar.active` approach.
-.progress.active .progress-bar,
-.progress-bar.active {
-  animation: progress-bar-stripes 2s linear infinite;
-}
-
-// Account for lower percentages
-.progress-bar {
-  &[aria-valuenow="0"] {
+// Firefox styles must be entirely separate or it busts Webkit styles.
+@-moz-document url-prefix() {
+  .progress[value] {
+    background-color: #eee;
+    .border-radius(@border-radius-base);
+    .box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
+  }
+  .progress[value]::-moz-progress-bar {
+    background-color: #0074d9;
+    border-top-left-radius: @border-radius-base;
+    border-bottom-left-radius: @border-radius-base;
+  }
+  .progress[value="0"]::-moz-progress-bar {
     color: @gray-light;
-    min-width: 30px;
+    min-width: 2rem;
     background-color: transparent;
     background-image: none;
-    box-shadow: none;
+  }
+  .progress[value="100"]::-moz-progress-bar {
+    border-top-right-radius: @border-radius-base;
+    border-bottom-right-radius: @border-radius-base;
+  }
+}
+
+// IE9 hacks to accompany custom markup. We don't need to scope this via media queries, but I feel better doing it anyway.
+@media screen and (~"min-width:0\0") {
+  .progress {
+    background-color: #eee;
+    .border-radius(@border-radius-base);
+    .box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
+  }
+  .progress-bar {
+    display: inline-block;
+    height: @line-height-computed;
+    text-indent: -999rem; // Simulate hiding of value as in native `<progress>`
+    background-color: #0074d9;
+    border-top-left-radius: @border-radius-base;
+    border-bottom-left-radius: @border-radius-base;
+  }
+  .progress[width^="0"] {
+    color: @gray-light;
+    min-width: 2rem;
+    background-color: transparent;
+    background-image: none;
+  }
+  .progress[width="100%"] {
+    border-top-right-radius: @border-radius-base;
+    border-bottom-right-radius: @border-radius-base;
   }
 }
 
 
+//
+// Striped
+//
 
+.progress-striped[value]::-webkit-progress-value {
+  #gradient > .striped();
+  background-size: @line-height-computed @line-height-computed;
+}
+.progress-striped[value]::-moz-progress-bar {
+  #gradient > .striped();
+  background-size: @line-height-computed @line-height-computed;
+}
+@media screen and (~"min-width:0\0") {
+  .progress-bar-striped {
+    #gradient > .striped();
+    background-size: @line-height-computed @line-height-computed;
+  }
+}
+
+
+//
+// Animated
+//
+
+.progress-animated[value]::-webkit-progress-value {
+  animation: progress-bar-stripes 2s linear infinite;
+}
+.progress-animated[value]::-moz-progress-bar {
+  animation: progress-bar-stripes 2s linear infinite;
+}
+@media screen and (~"min-width:0\0") {
+  .progress-animated .progress-bar-striped {
+    animation: progress-bar-stripes 2s linear infinite;
+  }
+}
+
+
+//
 // Variations
-// -------------------------
+//
 
-.progress-bar-success {
-  .progress-bar-variant(@progress-bar-success-bg);
+.progress-success {
+  .progress-variant(@progress-bar-success-bg);
 }
-
-.progress-bar-info {
-  .progress-bar-variant(@progress-bar-info-bg);
+.progress-info {
+  .progress-variant(@progress-bar-info-bg);
 }
-
-.progress-bar-warning {
-  .progress-bar-variant(@progress-bar-warning-bg);
+.progress-warning {
+  .progress-variant(@progress-bar-warning-bg);
 }
-
-.progress-bar-danger {
-  .progress-bar-variant(@progress-bar-danger-bg);
+.progress-danger {
+  .progress-variant(@progress-bar-danger-bg);
 }

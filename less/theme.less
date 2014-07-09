@@ -19,12 +19,13 @@
 .btn-warning,
 .btn-danger {
   text-shadow: 0 -1px 0 rgba(0,0,0,.2);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+  @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+  .box-shadow(@shadow);
 
   // Reset the shadow
   &:active,
   &.active {
-    box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
   }
 }
 
@@ -77,9 +78,8 @@
 // Images
 // --------------------------------------------------
 
-.thumbnail,
 .img-thumbnail {
-  box-shadow: 0 1px 2px rgba(0,0,0,.075);
+  .box-shadow(0 1px 2px rgba(0,0,0,.075));
 }
 
 
@@ -111,11 +111,12 @@
   #gradient > .vertical(@start-color: lighten(@navbar-default-bg, 10%); @end-color: @navbar-default-bg);
   .reset-filter(); // Remove gradient in IE<10 to fix bug where dropdowns don't get triggered
   .border-radius(@navbar-border-radius);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
+  @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
+  .box-shadow(@shadow);
 
   .navbar-nav > .active > a {
     #gradient > .vertical(@start-color: darken(@navbar-default-bg, 5%); @end-color: darken(@navbar-default-bg, 2%));
-    box-shadow: inset 0 3px 9px rgba(0,0,0,.075);
+    .box-shadow(inset 0 3px 9px rgba(0,0,0,.075));
   }
 }
 .navbar-brand,
@@ -130,7 +131,7 @@
 
   .navbar-nav > .active > a {
     #gradient > .vertical(@start-color: @navbar-inverse-bg; @end-color: lighten(@navbar-inverse-bg, 2.5%));
-    box-shadow: inset 0 3px 9px rgba(0,0,0,.25);
+    .box-shadow(inset 0 3px 9px rgba(0,0,0,.25));
   }
 
   .navbar-brand,
@@ -155,7 +156,8 @@
 // Common styles
 .alert {
   text-shadow: 0 1px 0 rgba(255,255,255,.2);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 1px 2px rgba(0,0,0,.05);
+  @shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 1px 2px rgba(0,0,0,.05);
+  .box-shadow(@shadow);
 }
 
 // Mixin for generating new styles
@@ -206,7 +208,7 @@
 
 .list-group {
   .border-radius(@border-radius-base);
-  box-shadow: 0 1px 2px rgba(0,0,0,.075);
+  .box-shadow(0 1px 2px rgba(0,0,0,.075));
 }
 .list-group-item.active,
 .list-group-item.active:hover,

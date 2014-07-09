@@ -187,6 +187,7 @@
 @input-border-radius:            @border-radius-base;
 //** Border color for inputs on focus
 @input-border-focus:             #66afe9;
+@input-box-shadow-focus:         rgba(102,175,233,.6);
 
 //** Placeholder text color
 @input-color-placeholder:        @gray-light;
@@ -215,8 +216,6 @@
 @dropdown-bg:                    #fff;
 //** Dropdown menu `border-color`.
 @dropdown-border:                rgba(0,0,0,.15);
-//** Dropdown menu `border-color` **for IE8**.
-@dropdown-fallback-border:       #ccc;
 //** Divider color for between dropdown items.
 @dropdown-divider-bg:            #e5e5e5;
 
@@ -370,7 +369,7 @@
 //##
 
 //=== Shared nav styles
-@nav-link-padding:                          10px 15px;
+@nav-link-padding:                          .5em 1em;
 @nav-link-hover-bg:                         @gray-lighter;
 
 @nav-disabled-link-color:                   @gray-light;
@@ -551,8 +550,6 @@
 @modal-content-bg:                             #fff;
 //** Modal content border color
 @modal-content-border-color:                   rgba(0,0,0,.2);
-//** Modal content border color **for IE8**
-@modal-content-fallback-border-color:          #999;
 
 //** Modal backdrop background color
 @modal-backdrop-bg:           #000;
@@ -678,7 +675,7 @@
 
 @badge-font-weight:           bold;
 @badge-line-height:           1;
-@badge-border-radius:         10px;
+@badge-border-radius:         2em;
 
 
 //== Breadcrumbs
