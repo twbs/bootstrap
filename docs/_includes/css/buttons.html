@@ -36,37 +36,37 @@
   <div class="bs-example">
     <p>
       <button type="button" class="btn btn-primary btn-lg">Large button</button>
-      <button type="button" class="btn btn-default btn-lg">Large button</button>
+      <button type="button" class="btn btn-secondary btn-lg">Large button</button>
     </p>
     <p>
       <button type="button" class="btn btn-primary">Default button</button>
-      <button type="button" class="btn btn-default">Default button</button>
+      <button type="button" class="btn btn-secondary">Default button</button>
     </p>
     <p>
       <button type="button" class="btn btn-primary btn-sm">Small button</button>
-      <button type="button" class="btn btn-default btn-sm">Small button</button>
+      <button type="button" class="btn btn-secondary btn-sm">Small button</button>
     </p>
     <p>
       <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
-      <button type="button" class="btn btn-default btn-xs">Extra small button</button>
+      <button type="button" class="btn btn-secondary btn-xs">Extra small button</button>
     </p>
   </div>
 {% highlight html %}
 <p>
   <button type="button" class="btn btn-primary btn-lg">Large button</button>
-  <button type="button" class="btn btn-default btn-lg">Large button</button>
+  <button type="button" class="btn btn-secondary btn-lg">Large button</button>
 </p>
 <p>
   <button type="button" class="btn btn-primary">Default button</button>
-  <button type="button" class="btn btn-default">Default button</button>
+  <button type="button" class="btn btn-secondary">Default button</button>
 </p>
 <p>
   <button type="button" class="btn btn-primary btn-sm">Small button</button>
-  <button type="button" class="btn btn-default btn-sm">Small button</button>
+  <button type="button" class="btn btn-secondary btn-sm">Small button</button>
 </p>
 <p>
   <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
-  <button type="button" class="btn btn-default btn-xs">Extra small button</button>
+  <button type="button" class="btn btn-secondary btn-xs">Extra small button</button>
 </p>
 {% endhighlight %}
 
@@ -74,12 +74,12 @@
   <div class="bs-example">
     <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
       <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
-      <button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
+      <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
     </div>
   </div>
 {% highlight html %}
 <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
-<button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
+<button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
 {% endhighlight %}
 
 
@@ -90,22 +90,22 @@
   <p>No need to add <code>:active</code> as it's a pseudo-class, but if you need to force the same appearance, go ahead and add <code>.active</code>.</p>
   <p class="bs-example">
     <button type="button" class="btn btn-primary btn-lg active">Primary button</button>
-    <button type="button" class="btn btn-default btn-lg active">Button</button>
+    <button type="button" class="btn btn-secondary btn-lg active">Button</button>
   </p>
 {% highlight html %}
 <button type="button" class="btn btn-primary btn-lg active">Primary button</button>
-<button type="button" class="btn btn-default btn-lg active">Button</button>
+<button type="button" class="btn btn-secondary btn-lg active">Button</button>
 {% endhighlight %}
 
   <h3>Anchor element</h3>
   <p>Add the <code>.active</code> class to <code>&lt;a&gt;</code> buttons.</p>
   <p class="bs-example">
     <a href="#" class="btn btn-primary btn-lg active" role="button">Primary link</a>
-    <a href="#" class="btn btn-default btn-lg active" role="button">Link</a>
+    <a href="#" class="btn btn-secondary btn-lg active" role="button">Link</a>
   </p>
 {% highlight html %}
 <a href="#" class="btn btn-primary btn-lg active" role="button">Primary link</a>
-<a href="#" class="btn btn-default btn-lg active" role="button">Link</a>
+<a href="#" class="btn btn-secondary btn-lg active" role="button">Link</a>
 {% endhighlight %}
 
 
@@ -116,11 +116,11 @@
   <p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
   <p class="bs-example">
     <button type="button" class="btn btn-primary btn-lg" disabled="disabled">Primary button</button>
-    <button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
+    <button type="button" class="btn btn-secondary btn-lg" disabled="disabled">Button</button>
   </p>
 {% highlight html %}
 <button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary button</button>
-<button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
+<button type="button" class="btn btn-secondary btn-lg" disabled="disabled">Button</button>
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-danger">
@@ -132,11 +132,11 @@
   <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
   <p class="bs-example">
     <a href="#" class="btn btn-primary btn-lg disabled" role="button">Primary link</a>
-    <a href="#" class="btn btn-default btn-lg disabled" role="button">Link</a>
+    <a href="#" class="btn btn-secondary btn-lg disabled" role="button">Link</a>
   </p>
 {% highlight html %}
 <a href="#" class="btn btn-primary btn-lg disabled" role="button">Primary link</a>
-<a href="#" class="btn btn-default btn-lg disabled" role="button">Link</a>
+<a href="#" class="btn btn-secondary btn-lg disabled" role="button">Link</a>
 {% endhighlight %}
   <p>
     We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
@@ -154,16 +154,16 @@
   <h2 id="buttons-tags">Button tags</h2>
   <p>Use the button classes on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
   <form class="bs-example">
-    <a class="btn btn-default" href="#" role="button">Link</a>
-    <button class="btn btn-default" type="submit">Button</button>
-    <input class="btn btn-default" type="button" value="Input">
-    <input class="btn btn-default" type="submit" value="Submit">
+    <a class="btn btn-secondary" href="#" role="button">Link</a>
+    <button class="btn btn-secondary" type="submit">Button</button>
+    <input class="btn btn-secondary" type="button" value="Input">
+    <input class="btn btn-secondary" type="submit" value="Submit">
   </form>
 {% highlight html %}
-<a class="btn btn-default" href="#" role="button">Link</a>
-<button class="btn btn-default" type="submit">Button</button>
-<input class="btn btn-default" type="button" value="Input">
-<input class="btn btn-default" type="submit" value="Submit">
+<a class="btn btn-secondary" href="#" role="button">Link</a>
+<button class="btn btn-secondary" type="submit">Button</button>
+<input class="btn btn-secondary" type="button" value="Input">
+<input class="btn btn-secondary" type="submit" value="Submit">
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-warning">
