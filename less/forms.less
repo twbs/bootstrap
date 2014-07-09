@@ -31,7 +31,6 @@ legend {
 
 label {
   display: inline-block;
-  max-width: 100%; // Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141)
   margin-bottom: 5px;
   font-weight: bold;
 }
@@ -52,7 +51,7 @@ input[type="search"] {
 input[type="radio"],
 input[type="checkbox"] {
   margin: 4px 0 0;
-  margin-top: 1px \9; // IE8-9
+  margin-top: 1px \9; // IE9
   line-height: normal;
 }
 
@@ -182,7 +181,7 @@ input[type="time"],
 input[type="datetime-local"],
 input[type="month"] {
   line-height: @input-height-base;
-  // IE8+ misaligns the text within date inputs, so we reset
+  // IE9+ misaligns the text within date inputs, so we reset
   line-height: @line-height-base ~"\0";
 
   &.input-sm {

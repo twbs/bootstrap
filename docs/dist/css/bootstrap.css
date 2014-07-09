@@ -1665,7 +1665,6 @@ legend {
 }
 label {
   display: inline-block;
-  max-width: 100%;
   margin-bottom: 5px;
   font-weight: bold;
 }
@@ -2548,7 +2547,6 @@ tbody.collapse.in {
   background-color: #fff;
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
-  border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, .15);
   border-radius: .2rem;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
@@ -2822,7 +2820,6 @@ tbody.collapse.in {
 [data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"] {
   position: absolute;
   z-index: -1;
-  filter: alpha(opacity=0);
   opacity: 0;
 }
 .input-group {
@@ -3019,9 +3016,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin: 11px 0;
   overflow: hidden;
   background-color: #e5e5e5;
-}
-.nav > li > a > img {
-  max-width: none;
 }
 .nav-tabs {
   border-bottom: 1px solid #ddd;
@@ -4455,7 +4449,6 @@ button.close {
   background-color: #fff;
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
-  border: 1px solid #999;
   border: 1px solid rgba(0, 0, 0, .2);
   border-radius: .3rem;
   outline: 0;
@@ -4693,7 +4686,6 @@ button.close {
   bottom: -11px;
   left: 50%;
   margin-left: -11px;
-  border-top-color: #999;
   border-top-color: rgba(0, 0, 0, .25);
   border-bottom-width: 0;
 }
@@ -4708,7 +4700,6 @@ button.close {
   top: 50%;
   left: -11px;
   margin-top: -11px;
-  border-right-color: #999;
   border-right-color: rgba(0, 0, 0, .25);
   border-left-width: 0;
 }
@@ -4724,7 +4715,6 @@ button.close {
   left: 50%;
   margin-left: -11px;
   border-top-width: 0;
-  border-bottom-color: #999;
   border-bottom-color: rgba(0, 0, 0, .25);
 }
 .popover.bottom > .arrow:after {
@@ -4739,7 +4729,6 @@ button.close {
   right: -11px;
   margin-top: -11px;
   border-right-width: 0;
-  border-left-color: #999;
   border-left-color: rgba(0, 0, 0, .25);
 }
 .popover.left > .arrow:after {
@@ -4808,7 +4797,6 @@ button.close {
   color: #fff;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
-  filter: alpha(opacity=50);
   opacity: .5;
 }
 .carousel-control.left {
@@ -4833,7 +4821,6 @@ button.close {
 .carousel-control:focus {
   color: #fff;
   text-decoration: none;
-  filter: alpha(opacity=90);
   outline: 0;
   opacity: .9;
 }
@@ -4880,7 +4867,6 @@ button.close {
   margin: 1px;
   text-indent: -999px;
   cursor: pointer;
-  background-color: #000 \9;
   background-color: rgba(0, 0, 0, 0);
   border: 1px solid #fff;
   border-radius: 10px;
