@@ -14,8 +14,8 @@
   width: 100%;
 
   > .item {
-    display: none;
-    position: relative;
+    top: -999999em;
+    position: absolute;
     .transition(.6s ease-in-out left);
 
     // Account for jankitude on images
@@ -30,10 +30,12 @@
   > .next,
   > .prev {
     display: block;
+    position: relative;
   }
 
   > .active {
     left: 0;
+    top: 0;
   }
 
   > .next,
