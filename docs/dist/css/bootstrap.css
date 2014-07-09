@@ -2988,7 +2988,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: .5em 1em;
+  line-height: 1.5;
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
@@ -3903,29 +3904,34 @@ a.label:focus {
   background-color: #c9302c;
 }
 .badge {
+  position: relative;
+  top: -.1em;
   display: inline-block;
-  min-width: 10px;
-  padding: 3px 7px;
-  font-size: .85rem;
+  padding-right: .6em;
+  padding-left: .6em;
+  font-size: .75em;
   font-weight: bold;
-  line-height: 1;
   color: #fff;
   text-align: center;
   white-space: nowrap;
-  vertical-align: baseline;
   background-color: #818a91;
-  border-radius: 10px;
+  border-radius: 2em;
+  /*  .btn & {
+    position: relative;
+    top: -1px;
+  }
+*/
 }
 .badge:empty {
   display: none;
 }
-.btn .badge {
-  position: relative;
-  top: -1px;
+.badge.pull-left,
+.badge.pull-right {
+  top: .2em;
 }
 .btn-xs .badge {
-  top: 0;
-  padding: 1px 5px;
+  /*top: 0;*/
+  /*padding: 1px 5px;*/
 }
 a.badge:hover,
 a.badge:focus {

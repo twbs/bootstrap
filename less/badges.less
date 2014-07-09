@@ -5,16 +5,16 @@
 
 // Base class
 .badge {
+  position: relative;
+  top: -.1em;
   display: inline-block;
-  min-width: 10px;
-  padding: 3px 7px;
-  font-size: @font-size-small;
+  padding-left: .6em;
+  padding-right: .6em;
+  font-size: .75em;
   font-weight: @badge-font-weight;
   color: @badge-color;
-  line-height: @badge-line-height;
-  vertical-align: baseline;
-  white-space: nowrap;
   text-align: center;
+  white-space: nowrap;
   background-color: @badge-bg;
   .border-radius(@badge-border-radius);
 
@@ -23,14 +23,20 @@
     display: none;
   }
 
+  &.pull-left,
+  &.pull-right {
+    top: .2em;
+  }
+
   // Quick fix for badges in buttons
-  .btn & {
+/*  .btn & {
     position: relative;
     top: -1px;
   }
+*/
   .btn-xs & {
-    top: 0;
-    padding: 1px 5px;
+    /*top: 0;*/
+    /*padding: 1px 5px;*/
   }
 
   // Hover state, but only for links

@@ -949,32 +949,41 @@ h1[id] {
 
 .bs-example {
   position: relative;
-  padding-top: 3rem;
+  padding: 1.5rem;
   margin-top: 1rem;
+  margin-bottom: -1rem;
+  border: solid #f7f7f9;
+  border-width: .2rem 0 0;
 }
 /* Echo out a label for the example */
 .bs-example:before {
   position: absolute;
   top: 0;
-  display: inline-block;
-  padding: .5rem .75rem;
-  font-size: .8rem;
+  display: none;
+  padding: .4rem .75rem;
+  font-size: .75rem;
   font-weight: bold;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: .1rem;
   content: "Example";
-  background-color: #818a91;
+  background-color: #eb4c82;
   border-radius: .2rem;
 }
 
 /* Tweak display of the code snippets when following an example */
 .bs-example + .highlight:before {
-  position: absolute;
+/*  position: absolute;
   width: 0;
   height: 0;
   border-color: transparent;
   border-style: solid;
+*/}
+
+@media (min-width: 480px) {
+  .bs-example {
+    border-width: .2rem;
+  }
 }
 
 /* Undo width of container */

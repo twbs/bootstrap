@@ -57,7 +57,7 @@
     // }, 100)
 
     // theme toggler
-    ;(function () {
+    (function () {
       var stylesheetLink = $('#bs-theme-stylesheet')
       var themeBtn = $('.bs-docs-theme-toggle')
 
@@ -81,7 +81,7 @@
           localStorage.removeItem('previewTheme')
         }
       })
-    })();
+    })
 
     // Tooltip and popover demos
     $('.tooltip-demo').tooltip({
