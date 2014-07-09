@@ -321,7 +321,7 @@ img {
   display: inline-block;
   max-width: 100%;
   height: auto;
-  padding: 4px;
+  padding: .25rem;
   line-height: 1.5;
   background-color: #fff;
   border: 1px solid #ddd;
