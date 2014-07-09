@@ -5202,12 +5202,6 @@ button.close {
 @-ms-viewport {
   width: device-width;
 }
-.visible-xs,
-.visible-sm,
-.visible-md,
-.visible-lg {
-  display: none !important;
-}
 .visible-xs-block,
 .visible-xs-inline,
 .visible-xs-inline-block,
@@ -5223,21 +5217,6 @@ button.close {
   display: none !important;
 }
 @media (max-width: 47.9em) {
-  .visible-xs {
-    display: block !important;
-  }
-  table.visible-xs {
-    display: table;
-  }
-  tr.visible-xs {
-    display: table-row !important;
-  }
-  th.visible-xs,
-  td.visible-xs {
-    display: table-cell !important;
-  }
-}
-@media (max-width: 47.9em) {
   .visible-xs-block {
     display: block !important;
   }
@@ -5250,21 +5229,6 @@ button.close {
 @media (max-width: 47.9em) {
   .visible-xs-inline-block {
     display: inline-block !important;
-  }
-}
-@media (min-width: 48em) and (max-width: 61.9em) {
-  .visible-sm {
-    display: block !important;
-  }
-  table.visible-sm {
-    display: table;
-  }
-  tr.visible-sm {
-    display: table-row !important;
-  }
-  th.visible-sm,
-  td.visible-sm {
-    display: table-cell !important;
   }
 }
 @media (min-width: 48em) and (max-width: 61.9em) {
@@ -5283,21 +5247,6 @@ button.close {
   }
 }
 @media (min-width: 62em) and (max-width: 74.9em) {
-  .visible-md {
-    display: block !important;
-  }
-  table.visible-md {
-    display: table;
-  }
-  tr.visible-md {
-    display: table-row !important;
-  }
-  th.visible-md,
-  td.visible-md {
-    display: table-cell !important;
-  }
-}
-@media (min-width: 62em) and (max-width: 74.9em) {
   .visible-md-block {
     display: block !important;
   }
@@ -5310,21 +5259,6 @@ button.close {
 @media (min-width: 62em) and (max-width: 74.9em) {
   .visible-md-inline-block {
     display: inline-block !important;
-  }
-}
-@media (min-width: 75em) {
-  .visible-lg {
-    display: block !important;
-  }
-  table.visible-lg {
-    display: table;
-  }
-  tr.visible-lg {
-    display: table-row !important;
-  }
-  th.visible-lg,
-  td.visible-lg {
-    display: table-cell !important;
   }
 }
 @media (min-width: 75em) {
@@ -5342,11 +5276,6 @@ button.close {
     display: inline-block !important;
   }
 }
-@media (max-width: 47.9em) {
-  .hidden-xs {
-    display: none !important;
-  }
-}
 @media (min-width: 48em) and (max-width: 61.9em) {
   .hidden-sm {
     display: none !important;
@@ -5360,24 +5289,6 @@ button.close {
 @media (min-width: 75em) {
   .hidden-lg {
     display: none !important;
-  }
-}
-.visible-print {
-  display: none !important;
-}
-@media print {
-  .visible-print {
-    display: block !important;
-  }
-  table.visible-print {
-    display: table;
-  }
-  tr.visible-print {
-    display: table-row !important;
-  }
-  th.visible-print,
-  td.visible-print {
-    display: table-cell !important;
   }
 }
 .visible-print-block {
