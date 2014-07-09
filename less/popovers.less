@@ -14,10 +14,9 @@
   text-align: left; // Reset given new insertion method
   background-color: @popover-bg;
   background-clip: padding-box;
-  border: 1px solid @popover-fallback-border-color;
   border: 1px solid @popover-border-color;
-  border-radius: @border-radius-large;
-  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  .border-radius(@border-radius-large);
+  .box-shadow(0 5px 10px rgba(0,0,0,.2));
 
   // Overrides for proper insertion
   white-space: normal;

@@ -20,10 +20,11 @@
   // Set the border and box shadow on specific inputs to match
   .form-control {
     border-color: @border-color;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075); // Redeclare so transitions work
+    .box-shadow(inset 0 1px 1px rgba(0,0,0,.075)); // Redeclare so transitions work
     &:focus {
       border-color: darken(@border-color, 10%);
-      box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten(@border-color, 20%);
+      @shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten(@border-color, 20%);
+      .box-shadow(@shadow);
     }
   }
   // Set validation states also for addons
@@ -51,12 +52,12 @@
 //
 // Example usage: change the default blue border and shadow to white for better
 // contrast against a dark gray background.
-.form-control-focus(@color: @input-border-focus) {
-  @color-rgba: rgba(red(@color), green(@color), blue(@color), .6);
+.form-control-focus() {
   &:focus {
-    border-color: @color;
+    border-color: @input-border-focus;
     outline: 0;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @color-rgba;
+    @shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @input-box-shadow-focus;
+    .box-shadow(@shadow);
   }
 }
 

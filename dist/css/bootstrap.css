@@ -3376,8 +3376,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-left: -.75rem;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 0 rgba(255, 255, 255, .1);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 0 rgba(255, 255, 255, .1);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1);
 }
 @media (min-width: 48em) {
   .navbar-form .form-group {
@@ -4635,7 +4635,6 @@ button.close {
   background-color: #fff;
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
-  border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, .2);
   border-radius: .3rem;
   -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);

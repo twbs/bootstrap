@@ -5,8 +5,8 @@
   border-radius: @radius;
 }
 
-.box-shadow(@shadow: 0 .1rem .2rem rgba(0,0,0,.1)) when (@enable-shadows = true) {
-  box-shadow: @shadow;
+.box-shadow(@shadow) when (@enable-shadows = true) {
+  box-shadow: @arguments;
 }
 
 

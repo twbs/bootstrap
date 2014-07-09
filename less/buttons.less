@@ -39,7 +39,7 @@
   &.active {
     outline: 0;
     background-image: none;
-    box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
   }
 
   &.disabled,
@@ -48,7 +48,7 @@
     cursor: not-allowed;
     pointer-events: none; // Future-proof disabling of clicks
     opacity: .65;
-    box-shadow: none;
+    .box-shadow(none);
   }
 }
 
@@ -90,7 +90,7 @@
   &[disabled],
   fieldset[disabled] & {
     background-color: transparent;
-    box-shadow: none;
+    .box-shadow(none);
   }
   &,
   &:hover,
