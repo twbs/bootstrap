@@ -2978,6 +2978,44 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav {
   padding-left: 0;
+  margin-bottom: 24px;
+  list-style: none;
+}
+.nav-item {
+  position: relative;
+  display: block;
+}
+.nav-link {
+  display: block;
+  padding: .5em 1em;
+  line-height: 1.5;
+}
+.nav-link:hover,
+.nav-link:focus {
+  text-decoration: none;
+  background-color: #eceeef;
+}
+.open > .nav-link,
+.active > .nav-link,
+.open > .nav-link:hover,
+.active > .nav-link:hover,
+.open > .nav-link:focus,
+.active > .nav-link:focus {
+  color: #fff;
+  background-color: #027de7;
+}
+.disabled > .nav-link {
+  color: #818a91;
+}
+.disabled > .nav-link,
+.disabled > .nav-link:hover,
+.disabled > .nav-link:focus {
+  color: #818a91;
+  cursor: not-allowed;
+  background-color: transparent;
+}
+.nav {
+  padding-left: 0;
   margin-bottom: 0;
   list-style: none;
 }
@@ -5113,6 +5151,8 @@ button.close {
 .btn-group-vertical > .btn-group:after,
 .nav:before,
 .nav:after,
+.nav:before,
+.nav:after,
 .nav-tab:before,
 .nav-tab:after,
 .nav-pill:before,
@@ -5138,6 +5178,7 @@ button.close {
 .form-horizontal .form-group:after,
 .btn-toolbar:after,
 .btn-group-vertical > .btn-group:after,
+.nav:after,
 .nav:after,
 .nav-tab:after,
 .nav-pill:after,

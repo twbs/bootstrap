@@ -3,6 +3,60 @@
 // --------------------------------------------------
 
 
+// - Mixins for horizontal and vertical nav
+// - Classes for tabs and pills
+
+
+.nav {
+  margin-bottom: @line-height-computed;
+  .list-unstyled();
+  &:extend(.clearfix all);
+}
+
+.nav-item {
+  position: relative;
+  display: block;
+}
+
+.nav-link {
+  display: block;
+  padding: @nav-link-padding;
+  line-height: @line-height-base;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    background-color: @nav-link-hover-bg;
+  }
+
+  // Open dropdown and active states
+  .open > &,
+  .active > & {
+    &,
+    &:hover,
+    &:focus {
+      color: @component-active-color;
+      background-color: @component-active-bg;
+    }
+  }
+
+  // Disabled state sets text to gray and nukes hover/tab effects
+  .disabled > & {
+    color: @nav-disabled-link-color;
+
+    &,
+    &:hover,
+    &:focus {
+      color: @nav-disabled-link-hover-color;
+      background-color: transparent;
+      cursor: not-allowed;
+    }
+  }
+}
+
+
+
+
 // Base class
 // --------------------------------------------------
 
