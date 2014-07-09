@@ -251,11 +251,7 @@ blockquote {
     }
   }
 
-  // Note: Deprecated small and .small as of v3.1.0
-  // Context: https://github.com/twbs/bootstrap/issues/11660
-  footer,
-  small,
-  .small {
+  footer {
     display: block;
     font-size: 80%; // back to default font-size
     line-height: @line-height-base;
@@ -268,10 +264,7 @@ blockquote {
 }
 
 // Opposite alignment of blockquote
-//
-// Heads up: `blockquote.pull-right` has been deprecated as of v3.1.0.
-.blockquote-reverse,
-blockquote.pull-right {
+.blockquote-reverse {
   padding-right: 15px;
   padding-left: 0;
   border-right: 5px solid @blockquote-border-color;
@@ -279,9 +272,7 @@ blockquote.pull-right {
   text-align: right;
 
   // Account for citation
-  footer,
-  small,
-  .small {
+  footer {
     &:before { content: ''; }
     &:after {
       content: '\00A0 \2014'; // nbsp, em dash

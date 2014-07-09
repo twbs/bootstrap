@@ -651,41 +651,26 @@ blockquote ul:last-child,
 blockquote ol:last-child {
   margin-bottom: 0;
 }
-blockquote footer,
-blockquote small,
-blockquote .small {
+blockquote footer {
   display: block;
   font-size: 80%;
   line-height: 1.5;
   color: #818a91;
 }
-blockquote footer:before,
-blockquote small:before,
-blockquote .small:before {
+blockquote footer:before {
   content: '\2014 \00A0';
 }
-.blockquote-reverse,
-blockquote.pull-right {
+.blockquote-reverse {
   padding-right: 15px;
   padding-left: 0;
   text-align: right;
   border-right: 5px solid #eceeef;
   border-left: 0;
 }
-.blockquote-reverse footer:before,
-blockquote.pull-right footer:before,
-.blockquote-reverse small:before,
-blockquote.pull-right small:before,
-.blockquote-reverse .small:before,
-blockquote.pull-right .small:before {
+.blockquote-reverse footer:before {
   content: '';
 }
-.blockquote-reverse footer:after,
-blockquote.pull-right footer:after,
-.blockquote-reverse small:after,
-blockquote.pull-right small:after,
-.blockquote-reverse .small:after,
-blockquote.pull-right .small:after {
+.blockquote-reverse footer:after {
   content: '\00A0 \2014';
 }
 blockquote:before,
@@ -3050,12 +3035,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: #eceeef;
   border-color: #027de7;
 }
-.nav .nav-divider {
-  height: 1px;
-  margin: 11px 0;
-  overflow: hidden;
-  background-color: #e5e5e5;
-}
 .nav-tabs {
   border-bottom: 1px solid #ddd;
 }
@@ -4132,11 +4111,9 @@ a.list-group-item.active > .badge,
 .alert > p + p {
   margin-top: 5px;
 }
-.alert-dismissable,
 .alert-dismissible {
   padding-right: 35px;
 }
-.alert-dismissable .close,
 .alert-dismissible .close {
   position: relative;
   top: -2px;
@@ -5199,9 +5176,6 @@ button.close {
 }
 .pull-left {
   float: left !important;
-}
-.hide {
-  display: none !important;
 }
 .show {
   display: block !important;
