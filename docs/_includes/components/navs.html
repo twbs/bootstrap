@@ -173,12 +173,11 @@
   <h3>Tabs with dropdowns</h3>
   <div class="bs-example">
     <ul class="nav nav-tabs" role="tablist">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Help</a></li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-          Dropdown
-        </a>
+      <li class="nav-item active">
+        <a href="#" class="nav-link">Active</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown</a>
         <ul class="dropdown-menu" role="menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
@@ -187,13 +186,19 @@
           <li><a href="#">Separated link</a></li>
         </ul>
       </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Another link</a>
+      </li>
+      <li class="nav-item disabled">
+        <a href="#" class="nav-link">Disabled</a>
+      </li>
     </ul>
   </div>
 {% highlight html %}
 <ul class="nav nav-tabs" role="tablist">
   ...
-  <li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+  <li class="nav-item">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
       Dropdown
     </a>
     <ul class="dropdown-menu" role="menu">
@@ -207,12 +212,11 @@
   <h3>Pills with dropdowns</h3>
   <div class="bs-example">
     <ul class="nav nav-pills" role="tablist">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Help</a></li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-          Dropdown
-        </a>
+      <li class="nav-item active">
+        <a href="#" class="nav-link">Active</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown</a>
         <ul class="dropdown-menu" role="menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
@@ -221,13 +225,19 @@
           <li><a href="#">Separated link</a></li>
         </ul>
       </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Another link</a>
+      </li>
+      <li class="nav-item disabled">
+        <a href="#" class="nav-link">Disabled</a>
+      </li>
     </ul>
-  </div><!-- /example -->
+  </div>
 {% highlight html %}
 <ul class="nav nav-pills" role="tablist">
   ...
-  <li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+  <li class="nav-item">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
       Dropdown
     </a>
     <ul class="dropdown-menu" role="menu">
