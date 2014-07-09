@@ -16,7 +16,6 @@
 .btn-default,
 .btn-primary,
 .btn-success,
-.btn-info,
 .btn-warning,
 .btn-danger {
   text-shadow: 0 -1px 0 rgba(0,0,0,.2);
@@ -65,12 +64,11 @@
 }
 
 // Apply the mixin to the buttons
-.btn-default { .btn-styles(@btn-default-bg); text-shadow: 0 1px 0 #fff; border-color: #ccc; }
-.btn-primary { .btn-styles(@btn-primary-bg); }
-.btn-success { .btn-styles(@btn-success-bg); }
-.btn-info    { .btn-styles(@btn-info-bg); }
-.btn-warning { .btn-styles(@btn-warning-bg); }
-.btn-danger  { .btn-styles(@btn-danger-bg); }
+.btn-primary   { .btn-styles(@btn-primary-bg); }
+.btn-secondary { .btn-styles(@btn-secondary-bg); text-shadow: 0 1px 0 #fff; border-color: #ccc; }
+.btn-success   { .btn-styles(@btn-success-bg); }
+.btn-warning   { .btn-styles(@btn-warning-bg); }
+.btn-danger    { .btn-styles(@btn-danger-bg); }
 
 
 
