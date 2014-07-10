@@ -710,9 +710,12 @@ body {
   margin-bottom: 0;
 }
 
-h1[id] {
-  padding-top: 20px;
-  margin-top: 0;
+.bs-docs-container > h1 {
+  padding-top: 2rem;
+  margin-top: 3rem;
+}
+.bs-docs-container > h2 {
+  margin-top: 2.5rem;
 }
 
 
@@ -888,21 +891,6 @@ h1[id] {
   border: solid #f7f7f9;
   border-width: .2rem 0 0;
 }
-// Echo out a label for the example
-.bs-example:before {
-  position: absolute;
-  top: 0;
-  display: none;
-  padding: .4rem .75rem;
-  font-size: .75rem;
-  font-weight: bold;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: .1rem;
-  content: "Example";
-  background-color: #eb4c82;
-  border-radius: .2rem;
-}
 
 @media (min-width: 480px) {
   .bs-example {
@@ -976,7 +964,6 @@ h1[id] {
 // }
 
 // Buttons
-.bs-example > .btn,
 .bs-example > .btn-group {
   margin-top: 5px;
   margin-bottom: 5px;
