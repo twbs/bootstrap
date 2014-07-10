@@ -46,32 +46,32 @@
   <p>Takes the basic nav from above and adds the <code>.nav-tabs</code> class to generate a tabbed interface.</p>
   <div class="bs-example">
     <ul class="nav nav-tabs" role="tablist">
-      <li class="nav-item active">
+      <li role="presentation" class="nav-item active">
         <a href="#" class="nav-link">Active</a>
       </li>
-      <li class="nav-item">
+      <li role="presentation" class="nav-item">
         <a href="#" class="nav-link">Link</a>
       </li>
-      <li class="nav-item">
+      <li role="presentation" class="nav-item">
         <a href="#" class="nav-link">Another link</a>
       </li>
-      <li class="nav-item disabled">
+      <li role="presentation" class="nav-item disabled">
         <a href="#" class="nav-link">Disabled</a>
       </li>
     </ul>
   </div>
 {% highlight html %}
 <ul class="nav nav-tabs" role="tablist">
-  <li class="nav-item active">
+  <li role="presentation" class="nav-item active">
     <a href="#" class="nav-link">Active</a>
   </li>
-  <li class="nav-item">
+  <li role="presentation" class="nav-item">
     <a href="#" class="nav-link">Link</a>
   </li>
-  <li class="nav-item">
+  <li role="presentation" class="nav-item">
     <a href="#" class="nav-link">Another link</a>
   </li>
-  <li class="nav-item disabled">
+  <li role="presentation" class="nav-item disabled">
     <a href="#" class="nav-link">Disabled</a>
   </li>
 </ul>
@@ -85,32 +85,32 @@
   <p>Take that same HTML, but use <code>.nav-pills</code> instead:</p>
   <div class="bs-example">
     <ul class="nav nav-pills" role="tablist">
-      <li class="nav-item active">
+      <li role="presentation" class="nav-item active">
         <a href="#" class="nav-link">Active</a>
       </li>
-      <li class="nav-item">
+      <li role="presentation" class="nav-item">
         <a href="#" class="nav-link">Link</a>
       </li>
-      <li class="nav-item">
+      <li role="presentation" class="nav-item">
         <a href="#" class="nav-link">Another link</a>
       </li>
-      <li class="nav-item disabled">
+      <li role="presentation" class="nav-item disabled">
         <a href="#" class="nav-link">Disabled</a>
       </li>
     </ul>
   </div>
 {% highlight html %}
 <ul class="nav nav-pills" role="tablist">
-  <li class="nav-item active">
+  <li role="presentation" class="nav-item active">
     <a href="#" class="nav-link">Active</a>
   </li>
-  <li class="nav-item">
+  <li role="presentation" class="nav-item">
     <a href="#" class="nav-link">Link</a>
   </li>
-  <li class="nav-item">
+  <li role="presentation" class="nav-item">
     <a href="#" class="nav-link">Another link</a>
   </li>
-  <li class="nav-item disabled">
+  <li role="presentation" class="nav-item disabled">
     <a href="#" class="nav-link">Disabled</a>
   </li>
 </ul>
@@ -120,32 +120,32 @@
   <p>Just add <code>.nav-stacked</code>.</p>
   <div class="bs-example">
     <ul class="nav nav-pills nav-stacked" role="tablist">
-      <li class="nav-item active">
+      <li role="presentation" class="nav-item active">
         <a href="#" class="nav-link">Active</a>
       </li>
-      <li class="nav-item">
+      <li role="presentation" class="nav-item">
         <a href="#" class="nav-link">Link</a>
       </li>
-      <li class="nav-item">
+      <li role="presentation" class="nav-item">
         <a href="#" class="nav-link">Another link</a>
       </li>
-      <li class="nav-item disabled">
+      <li role="presentation" class="nav-item disabled">
         <a href="#" class="nav-link">Disabled</a>
       </li>
     </ul>
   </div>
 {% highlight html %}
 <ul class="nav nav-pills nav-stacked" role="tablist">
-  <li class="nav-item active">
+  <li role="presentation" class="nav-item active">
     <a href="#" class="nav-link">Active</a>
   </li>
-  <li class="nav-item">
+  <li role="presentation" class="nav-item">
     <a href="#" class="nav-link">Link</a>
   </li>
-  <li class="nav-item">
+  <li role="presentation" class="nav-item">
     <a href="#" class="nav-link">Another link</a>
   </li>
-  <li class="nav-item disabled">
+  <li role="presentation" class="nav-item disabled">
     <a href="#" class="nav-link">Disabled</a>
   </li>
 </ul>
@@ -158,10 +158,10 @@
   <h3>Tabs with dropdowns</h3>
   <div class="bs-example">
     <ul class="nav nav-tabs" role="tablist">
-      <li class="nav-item active">
+      <li role="presentation" class="nav-item active">
         <a href="#" class="nav-link">Active</a>
       </li>
-      <li class="nav-item">
+      <li role="presentation" class="nav-item">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown</a>
         <ul class="dropdown-menu" role="menu">
           <li><a href="#">Action</a></li>
@@ -171,10 +171,10 @@
           <li><a href="#">Separated link</a></li>
         </ul>
       </li>
-      <li class="nav-item">
+      <li role="presentation" class="nav-item">
         <a href="#" class="nav-link">Another link</a>
       </li>
-      <li class="nav-item disabled">
+      <li role="presentation" class="nav-item disabled">
         <a href="#" class="nav-link">Disabled</a>
       </li>
     </ul>
@@ -182,7 +182,7 @@
 {% highlight html %}
 <ul class="nav nav-tabs" role="tablist">
   ...
-  <li class="nav-item">
+  <li role="presentation" class="nav-item">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
       Dropdown
     </a>
@@ -197,10 +197,10 @@
   <h3>Pills with dropdowns</h3>
   <div class="bs-example">
     <ul class="nav nav-pills" role="tablist">
-      <li class="nav-item active">
+      <li role="presentation" class="nav-item active">
         <a href="#" class="nav-link">Active</a>
       </li>
-      <li class="nav-item">
+      <li role="presentation" class="nav-item">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown</a>
         <ul class="dropdown-menu" role="menu">
           <li><a href="#">Action</a></li>
@@ -221,7 +221,7 @@
 {% highlight html %}
 <ul class="nav nav-pills" role="tablist">
   ...
-  <li class="nav-item">
+  <li role="presentation" class="nav-item">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
       Dropdown
     </a>

@@ -16,7 +16,7 @@ Images in Bootstrap 3 can be made responsive-friendly via the addition of the `.
 
 <div class="bs-callout bs-callout-warning">
   <h4>SVG images and IE 8-10</h4>
-  <p>In Internet Explorer IE 8-10, SVG images with <code>.img-responsive</code> are disproportionately sized. To fix this, add <code>width: 100% \9;</code> where necessary. Bootstrap doesn't apply this automatically as it causes complications to other image formats.</p>
+  <p>In Internet Explorer 8-10, SVG images with <code>.img-responsive</code> are disproportionately sized. To fix this, add <code>width: 100% \9;</code> where necessary. Bootstrap doesn't apply this automatically as it causes complications to other image formats.</p>
 </div>
 
 

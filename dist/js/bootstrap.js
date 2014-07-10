@@ -1436,7 +1436,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     var isBody = el.tagName == 'BODY'
     var isSvg  = window.SVGElement && el instanceof window.SVGElement
 
-    var elRect    = typeof el.getBoundingClientRect == 'function' ? el.getBoundingClientRect() : null
+    var elRect    = el.getBoundingClientRect ? el.getBoundingClientRect() : null
     var elOffset  = isBody ? { top: 0, left: 0 } : $element.offset()
     var scroll    = { scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop() }
     var outerDims = isSvg ? {} : {

@@ -33,14 +33,14 @@ $(function () {
     var $el = $('<div class="collapse"/>').bootstrapCollapse('show')
 
     ok($el.hasClass('in'), 'has class "in"')
-    ok(!/height/.test($el.attr('style')), 'has height reset')
+    ok(!/height/i.test($el.attr('style')), 'has height reset')
   })
 
   test('should hide a collapsed element', function () {
     var $el = $('<div class="collapse"/>').bootstrapCollapse('hide')
 
     ok(!$el.hasClass('in'), 'does not have class "in"')
-    ok(/height/.test($el.attr('style')), 'has height set')
+    ok(/height/i.test($el.attr('style')), 'has height set')
   })
 
   test('should not fire shown when show is prevented', function () {
