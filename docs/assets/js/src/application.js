@@ -18,7 +18,7 @@
 
     // Scrollspy
     var $window = $(window)
-    var $body   = $('document.body')
+    var $body   = $(document.body)
 
     $body.scrollspy({
       target: '.active .bs-docs-sidenav'
@@ -28,7 +28,7 @@
     })
 
     // Kill links
-    $('.bs-docs-container [href=#]').click(function (e) {
+    $('[href=#]').click(function (e) {
       e.preventDefault()
     })
 
