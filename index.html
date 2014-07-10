@@ -58,7 +58,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">BAstrap3</a>
+          <span class="navbar-brand" href="#">BAstrap3</span>
          </div>
         <div class="navbar-collapse collapse" id="header-main-nav">
           <ul class="nav navbar-nav">
@@ -76,18 +76,6 @@
 <div class="row-fluid">
 
 
-<!--
-        <div class="col-md-3" id="myScrollspy">
-            <ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">
-                <li class="active"><a href="#top">Section One</a></li>
-                <li><a href="#tipografia-cuerpo">Section Two</a></li>
-                <li><a href="#tipografia-enfasis">Section Three</a></li>
-            </ul>
-        </div>
--->
-
-
-
 
 
 
@@ -98,8 +86,11 @@
 
 
 <nav class="sidebar col-md-3" role="sidebar">
-    <ul class="panel nav sidenav affix-top" id="affix-nav" data-spy="affix" data-toggle="affix" data-offset-top="160">
-        <li><a href="#tipo-encabezado">Tipografía</a>
+    <ul class="panel panel-default nav sidenav affix-top" id="affix-nav" data-spy="affix" data-offset-top="150">
+        <div class="panel-heading" id="sidebar-brand">
+          <h1><a href="#tipo-encabezado">BAstrap3</a></h1>
+        </div>
+        <li class="sidebar-first"><a href="#tipo-encabezado">Tipografía</a>
         <ul class="nav">
           <li><a href="#tipo-encabezado">Encabezado</a></li>
           <li><a href="#tipo-cuerpo">Cuerpo</a></li>
@@ -172,108 +163,12 @@
           <li><a href="#comp-carrusel">Carrusel</a></li>
         </ul>
         </li>
-        <li><a href="#top">Subir</a></li>
+        <li><a href="#tipo-encabezado">Subir</a></li>
     </ul>
 </nav>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-
-  <ul class="list-group docs-sidebar" id="sidebar" style="display:none;">
-    <li class="panel">
-      <a href="#none" class="list-group-item active" data-toggle="collapse" data-parent="#sidebar" data-target="#demo1">Tipografía</a>
-      <ul id="demo1" class="collapse in">
-        <li><a href="#top" class="list-group-item">Encabezados</a></li>
-        <li><a href="#tipografia-cuerpo" class="list-group-item">Cuerpo</a></li>
-        <li><a href="#tipografia-emfasis" class="list-group-item">Émfasis</a></li>
-      </ul>
-    </li>
-    <li class="panel">
-      <a href="#none" class="list-group-item" data-toggle="collapse" data-parent="#sidebar" data-target="#demo2">Elementos de texto</a>
-      <ul id="demo2" class="collapse">
-        <li><a href="#" class="list-group-item">Abreviaciones</a></li>
-        <li><a href="#" class="list-group-item">Direcciones</a></li>
-        <li><a href="#" class="list-group-item">Citas</a></li>
-        <li><a href="#" class="list-group-item">Listas</a></li>
-        <li><a href="#" class="list-group-item">Deescripción</a></li>
-        <li><a href="#" class="list-group-item">Código</a></li>
-      </ul>
-    </li>
-    <li class="panel">
-      <a href="#tablas" class="list-group-item docs-soloitem" data-toggle="collapse" data-parent="#sidebar" data-target="#demo3">Tablas</a>
-      <a id="demo3" class="collapse"></a>
-    </li>
-    <li class="panel">
-      <a href="#none" class="list-group-item" data-toggle="collapse" data-parent="#sidebar" data-target="#demo4">Formularios</a>
-      <ul id="demo4" class="collapse">
-        <li><a href="#" class="list-group-item">Tamaños de campos</a></li>
-        <li><a href="#" class="list-group-item">Estados de validación</a></li>
-        <li><a href="#" class="list-group-item">Seleccionadores</a></li>
-        <li><a href="#" class="list-group-item">Grupos de campos</a></li>
-      </ul>
-    </li>
-    <li class="panel">
-      <a href="#none" class="list-group-item" data-toggle="collapse" data-parent="#sidebar" data-target="#demo5">Navegación</a>
-      <ul id="demo5" class="collapse">
-        <li><a href="#" class="list-group-item">Botones</a></li>
-        <li><a href="#" class="list-group-item">Botones con desplegables</a></li>
-        <li><a href="#" class="list-group-item">Grupos de botones</a></li>
-        <li><a href="#" class="list-group-item">Menús desplegables</a></li>
-        <li><a href="#" class="list-group-item">Navegación</a></li>
-        <li><a href="#" class="list-group-item">Barras de navegación</a></li>
-        <li><a href="#" class="list-group-item">Indicadores de página</a></li>
-        <li><a href="#" class="list-group-item">Paginación</a></li>
-        <li><a href="#" class="list-group-item">Pager</a></li>
-      </ul>
-    </li>
-    <li class="panel">
-      <a href="#none" class="list-group-item" data-toggle="collapse" data-parent="#sidebar" data-target="#demo6">Contenido</a>
-      <ul id="demo6" class="collapse">
-        <li><a href="#" class="list-group-item">Grupo de lista</a></li>
-        <li><a href="#" class="list-group-item">Paneles</a></li>
-        <li><a href="#" class="list-group-item">Imagenes</a></li>
-        <li><a href="#" class="list-group-item">Miniaturas</a></li>
-        <li><a href="#" class="list-group-item">Lista multimedia</a></li>
-        <li><a href="#" class="list-group-item">Pozos</a></li>
-      </ul>
-    </li>
-    <li class="panel">
-      <a href="#none" class="list-group-item" data-toggle="collapse" data-parent="#sidebar" data-target="#demo7">Elementos auxiliares</a>
-      <ul id="demo7" class="collapse">
-        <li><a href="#" class="list-group-item">Clases auxiliares</a></li>
-        <li><a href="#" class="list-group-item">Etiquetas</a></li>
-        <li><a href="#" class="list-group-item">Insignias</a></li>
-        <li><a href="#" class="list-group-item">Alertas</a></li>
-        <li><a href="#" class="list-group-item">Barras de progreso</a></li>
-      </ul>
-    </li>
-    <li class="panel">
-      <a href="#none" class="list-group-item" data-toggle="collapse" data-parent="#sidebar" data-target="#demo8">Componentes</a>
-      <ul id="demo8" class="collapse">
-        <li><a href="#" class="list-group-item">Jumbotron</a></li>
-        <li><a href="#" class="list-group-item">Ventanas emergentes</a></li>
-        <li><a href="#" class="list-group-item">Información emergente breve</a></li>
-        <li><a href="#" class="list-group-item">Información emergente</a></li>
-        <li><a href="#" class="list-group-item">Acordeón colapsable</a></li>
-        <li><a href="#" class="list-group-item">Carrusel</a></li>
-      </ul>
-    </li>
-  </ul>
-
--->
 
 
 
@@ -1896,6 +1791,7 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
     <div class="row">
       <div class="col-sm-6">
         <ul class="list-group">
+          <li class="list-group-item list-group-item-primary">Dapibus ac facilisis in</li>
           <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
           <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
           <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
@@ -1904,6 +1800,7 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
       </div>
       <div class="col-sm-6">
         <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-primary">Dapibus ac facilisis in</a>
           <a href="#" class="list-group-item list-group-item-success">Dapibus ac facilisis in</a>
           <a href="#" class="list-group-item list-group-item-info">Cras sit amet nibh libero</a>
           <a href="#" class="list-group-item list-group-item-warning">Porta ac consectetur ac</a>
@@ -1914,12 +1811,14 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
   </div>
   <div class="panel-footer">
 <pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-group"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-primary"</span><span class="nt">&gt;</span>Dapibus ac facilisis in<span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-success"</span><span class="nt">&gt;</span>Dapibus ac facilisis in<span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-info"</span><span class="nt">&gt;</span>Cras sit amet nibh libero<span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-warning"</span><span class="nt">&gt;</span>Porta ac consectetur ac<span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-danger"</span><span class="nt">&gt;</span>Vestibulum at eros<span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-group"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-primary"</span><span class="nt">&gt;</span>Dapibus ac facilisis in<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-success"</span><span class="nt">&gt;</span>Dapibus ac facilisis in<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-info"</span><span class="nt">&gt;</span>Cras sit amet nibh libero<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-warning"</span><span class="nt">&gt;</span>Porta ac consectetur ac<span class="nt">&lt;/a&gt;</span>
@@ -3168,8 +3067,28 @@ $(function() {
 </script>
 
 <script type="text/javascript">
-    $('a').tooltip();
+  var $logo = $('#sidebar-brand');
+  $(document).scroll(function() {
+      $logo.css({display: $(this).scrollTop()>150 ? "block":"none"});
+  });
 </script>
 
+<!--
+<script type="text/javascript">
+  $(".sidenav a").on('click', function(e) {
+     e.preventDefault();
+     var hash = this.hash;
+     $('html, body').animate({
+         scrollTop: $(this.hash).offset().top
+       }, 300, function(){
+         window.location.hash = hash;
+       });
+  });
+</script>
+-->
+
+<script type="text/javascript">
+    $('a').tooltip();
+</script>
 </body>
 </html>

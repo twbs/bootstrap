@@ -44,8 +44,8 @@ body {
   border:0 none;
 }
 .panel-docs .panel-heading {
-  border-top-right-radius: 6px;
-  border-top-left-radius: 6px;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
 }
 .panel-docs .panel-footer {
   border-bottom-right-radius: 6px;
@@ -99,13 +99,40 @@ padding: 15px;
 }
 
 
+.container-main {
+  padding-top:60px;
+}
+.anchor {
+  display:block;
+}
 
 
 
 
-  .navbar .container {
-    padding-left:30px;
-  }
+/*
+.panel-docs.panel-info > .panel-heading {
+  background-image: -webkit-linear-gradient(top, #333330 0%, #1d1d1b 100%);
+  background-image:      -o-linear-gradient(top, #333330 0%, #1d1d1b 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#333330), to(#1d1d1b));
+  background-image:         linear-gradient(to bottom, #333330 0%, #1d1d1b 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff333330', endColorstr='#ff1d1d1b', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  background-color: #1d1d1b;
+  border-color: #1d1d1b;
+}
+*/
+
+
+
+
+
+
+
+
+.navbar .container {
+  padding-left:30px;
+}
 
 
 
@@ -127,17 +154,47 @@ padding: 15px;
 
 
 
+#sidebar-brand {
+  border:0 none;
+  padding: 10px 15px 18px 15px;
+  display:none;
+}
+
+#sidebar-brand h1 {
+  margin:0;
+}
+
+#sidebar-brand a {
+  font-family: "GothamBold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 24px;
+  margin: 10px 15px;
+  color:#333;
+  text-decoration:none;
+}
+
+#sidebar-brand a:hover {
+  color:#666;
+}
+
+
+.sidebar-first {
+  margin-top:18px;
+}
 
 
 
 
-
+.navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover {
+  color: #999;
+  background-color: transparent;
+}
 
 
 
 ul.affix {
   position: fixed; 
-  top: 80px;
+  top: 40px;
 }
 ul.affix-top {
   position: static;
@@ -149,7 +206,7 @@ ul.affix-bottom {
 /* First level of nav */
 .sidenav {
   margin-bottom: 60px;
-  padding-top: 18px;
+  /*padding-top: 18px;*/
   padding-bottom: 18px;
   background-color: #fff;
   border-radius: 4px;
@@ -164,9 +221,9 @@ ul.affix-bottom {
   display: block;
   color: #999;
   padding: 5px 30px;
-  font-family: "GothamMedium", Helvetica, Arial, sans-serif;
+  font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
   font-weight: normal;
-  font-size:18px;
+  font-size:14px;
 }
 .sidebar .nav > li > a:hover,
 .sidebar .nav > li > a:focus {
@@ -176,6 +233,8 @@ ul.affix-bottom {
 .sidebar .nav > .active > a,
 .sidebar .nav > .active:hover > a,
 .sidebar .nav > .active:focus > a {
+  font-family: "OpenSansSemiBold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
   color: #333;
   background-color: transparent;
 }
