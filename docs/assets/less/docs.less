@@ -704,24 +704,20 @@ body {
 // Docs sections
 //
 
-// Space things out
-.bs-docs-section {
-  margin-bottom: 60px;
-}
-.bs-docs-section:last-child {
-  margin-bottom: 0;
-}
+.bs-docs-content {
+  > h1 {
+    padding-top: 2rem;
+    margin-top: 3rem;
 
-.bs-docs-container > h1 {
-  padding-top: 2rem;
-  margin-top: 3rem;
-}
-.bs-docs-container > h1 + p {
-  font-size: 1.25rem;
-  font-weight: 300;
-}
-.bs-docs-container > h2 {
-  margin-top: 2.5rem;
+     + p {
+      font-size: 1.25rem;
+      font-weight: 300;
+    }
+  }
+
+  > h2 {
+    margin-top: 2.5rem;
+  }
 }
 
 
@@ -780,65 +776,34 @@ body {
   margin: 0 -5px;
   overflow: hidden; // clearfix
 }
+
 .color-swatch {
   float: left;
   width: 60px;
   height: 60px;
   margin: 0 5px;
   border-radius: 3px;
-}
 
-@media (min-width: 768px) {
-  .color-swatch {
+  @media (min-width: 768px) {
     width: 100px;
     height: 100px;
   }
 }
 
-// Framework colors
-.color-swatches .gray-darker {
-  background-color: @gray-darker;
-}
-.color-swatches .gray-dark {
-  background-color: @gray-dark;
-}
-.color-swatches .gray {
-  background-color: @gray;
-}
-.color-swatches .gray-light {
-  background-color: @gray-light;
-}
-.color-swatches .gray-lighter {
-  background-color: @gray-lighter;
-}
-.color-swatches .brand-primary {
-  background-color: @brand-primary;
-}
-.color-swatches .brand-success {
-  background-color: @brand-success;
-}
-.color-swatches .brand-warning {
-  background-color: @brand-warning;
-}
-.color-swatches .brand-danger {
-  background-color: @brand-danger;
-}
-.color-swatches .brand-info {
-  background-color: @brand-info;
-}
-
 // Docs colors
-.color-swatches .bs-purple {
-  background-color: @bs-purple;
-}
-.color-swatches .bs-purple-light {
-  background-color: @bs-purple-light;
-}
-.color-swatches .bs-purple-lighter {
-  background-color: #e5e1ea;
-}
-.color-swatches .bs-gray {
-  background-color: #f9f9f9;
+.color-swatches {
+  .bs-purple {
+    background-color: @bs-purple;
+  }
+  .bs-purple-light {
+    background-color: @bs-purple-light;
+  }
+  .bs-purple-lighter {
+    background-color: #e5e1ea;
+  }
+  .bs-gray {
+    background-color: #f9f9f9;
+  }
 }
 
 
@@ -846,25 +811,27 @@ body {
 // Team members
 //
 
-.bs-team .team-member {
-  line-height: 32px;
-  color: #555;
-}
-.bs-team .team-member:hover {
-  color: #333;
-  text-decoration: none;
-}
-.bs-team .github-btn {
-  float: right;
-  width: 180px;
-  height: 20px;
-  margin-top: 6px;
-}
-.bs-team img {
-  float: left;
-  width: 32px;
-  margin-right: 10px;
-  border-radius: 4px;
+.bs-team {
+  .team-member {
+    line-height: 32px;
+    color: #555;
+  }
+  .team-member:hover {
+    color: #333;
+    text-decoration: none;
+  }
+  .github-btn {
+    float: right;
+    width: 180px;
+    height: 20px;
+    margin-top: 6px;
+  }
+  img {
+    float: left;
+    width: 32px;
+    margin-right: 10px;
+    border-radius: 4px;
+  }
 }
 
 
@@ -894,18 +861,17 @@ body {
   margin-bottom: -1rem;
   border: solid #f7f7f9;
   border-width: .2rem 0 0;
-}
 
-@media (min-width: 480px) {
-  .bs-example {
+  @media (min-width: 480px) {
     border-width: .2rem;
+  }
+
+  // Undo width of container
+  .container {
+    width: auto;
   }
 }
 
-// Undo width of container
-.bs-example .container {
-  width: auto;
-}
 
 // Tweak content of examples for optimum awesome
 .bs-example > *:last-child,
