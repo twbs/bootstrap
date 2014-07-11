@@ -651,7 +651,7 @@ a.thumbnail.active,
 .btn-warning,
 .btn-danger {
   box-shadow: 0 1px 1px rgba(0, 0, 0, .075),
-              inset 0 -1px 0 rgba(0, 0, 0, .1);
+              inset 0 -2px 0 rgba(0, 0, 0, .075);
 }
 .btn-default:active,
 .btn-primary:active,
@@ -665,7 +665,8 @@ a.thumbnail.active,
 .btn-info.active,
 .btn-warning.active,
 .btn-danger.active {
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, .125);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .075),
+              inset 0 2px 4px rgba(0, 0, 0, .125);
 }
 .btn:active,
 .btn.active {
