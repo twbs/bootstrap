@@ -1,6 +1,7 @@
-<a id="overview"></a>
-
-# Overview
+---
+layout: page
+title: Scaffolding
+---
 
 Get the lowdown on the key pieces of Bootstrap's infrastructure, including our approach to better, faster, stronger web development.
 

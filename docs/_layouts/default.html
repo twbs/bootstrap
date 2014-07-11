@@ -14,6 +14,11 @@
         {% if page.url contains "getting-started" %}
           <h1>Getting started</h1>
           <p class="lead">Learn how to quickly start a new project with Bootstrap with downloads, basic templates and examples, and more.</p>
+        {% elsif page.url contains "css" %}
+          <p class="lead">Global CSS settings, fundamental HTML elements styled and enhanced with extensible classes, and an advanced grid system.</p>
+        {% elsif page.url contains "examples" %}
+          <h1>Examples</h1>
+          <p class="lead">Examples.</p>
         {% endif %}
 
         {% include ads.html %}

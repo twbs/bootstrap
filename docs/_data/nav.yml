@@ -8,14 +8,13 @@
         - title: Bower
         - title: npm
     - title: Contents
+    - title: Examples
     - title: Compiling
     - title: Browser and device support
     - title: Third aprty support
     - title: Accessibility
     - title: License FAQs
     - title: Translations
-
-- title: Examples
 
 - title: Components
   pages:
