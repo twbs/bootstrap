@@ -7,64 +7,55 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="../" class="navbar-brand">
+      <a href="{{ site.baseurl }}" class="navbar-brand">
         Bootstrap
       </a>
     </div>
     <nav class="collapse navbar-collapse bs-sidenav-collapse" role="navigation">
-      <div class="bs-docs-toc-item{% if page.slug == "getting-started" %} active{% endif %}">
-        <a class="bs-docs-toc-link" href="../getting-started">Getting started</a>
-        {% if page.slug == "getting-started" %}
-        <ul class="nav bs-docs-sidenav">
-          {% include nav/getting-started.html %}
-        </ul>
-        {% endif %}
-      </div>
+      {% for group in site.data.nav %}
+        {% assign link = group.pages | first %}
+        {% assign slug = group.title | downcase | replace: ' ', '-' || page.title | downcase | replace: ' ', '-' %}
+        {% assign active = nil %}
 
-      <div class="bs-docs-toc-item{% if page.slug == "css" %} active{% endif %}">
-        <a class="bs-docs-toc-link" href="../css">CSS</a>
-        {% if page.slug == "css" %}
-        <ul class="nav bs-docs-sidenav">
-          {% include nav/css.html %}
-        </ul>
+        {% if page.url contains slug %}
+          {% assign active = 'active' %}
         {% endif %}
-      </div>
 
-      <div class="bs-docs-toc-item{% if page.slug == "components" %} active{% endif %}">
-        <a class="bs-docs-toc-link" href="../components">Components</a>
-        {% if page.slug == "components" %}
-        <ul class="nav bs-docs-sidenav">
-          {% include nav/components.html %}
-        </ul>
-        {% endif %}
-      </div>
+        <div class="bs-docs-toc-item {{ active }}">
+          <a class="bs-docs-toc-link" href="{{ site.baseurl }}{{ group.title | downcase | replace: ' ', '-' }}/{{ link.title | downcase | replace: ' ', '-' || page.title | downcase | replace: ' ', '-'  }}">
+            {{ group.title }}
+          </a>
 
-      <div class="bs-docs-toc-item{% if page.slug == "js" %} active{% endif %}">
-        <a class="bs-docs-toc-link" href="../javascript">JavaScript</a>
-        {% if page.slug == "js" %}
-        <ul class="nav bs-docs-sidenav">
-          {% include nav/javascript.html %}
-        </ul>
-        {% endif %}
-      </div>
+          <ul class="nav bs-docs-sidenav">
+            {% for doc in group.pages %}
+              {% assign slug = doc.title | downcase | replace: ' ', '-' %}
+              {% assign active = nil %}
 
-      <div class="bs-docs-toc-item{% if page.slug == "customize" %} active{% endif %}">
-        <a class="bs-docs-toc-link" href="../customize">Customize</a>
-        {% if page.slug == "customize" %}
-        <ul class="nav bs-docs-sidenav">
-          {% include nav/customize.html %}
-        </ul>
-        {% endif %}
-      </div>
+              {% if page.url contains slug %}
+                {% assign active = 'active' %}
+              {% endif %}
 
-      <div class="bs-docs-toc-item{% if page.slug == "about" %} active{% endif %}">
-        <a class="bs-docs-toc-link" href="../about">About</a>
-        {% if page.slug == "js" %}
-        <ul class="nav bs-docs-sidenav">
-          {% include nav/about.html %}
-        </ul>
-        {% endif %}
-      </div>
+              <li class="{{ active }}">
+                <a href="{{ site.baseurl }}{{ group.title | downcase | replace: ' ', '-' }}/{{ doc.title | downcase | replace: ' ', '-' }}">
+                  {{ doc.title }}
+                </a>
+
+                {% unless doc.sections == nil %}
+                  <ul class="nav">
+                    {% for section in doc.sections %}
+                      <li>
+                        <a href="{{ site.baseurl }}{{ group.title | downcase | replace: ' ', '-' }}/{{ doc.title | downcase | replace: ' ', '-' }}#{{ section.title | downcase | replace: ' ', '-' }}">
+                          {{ section.title }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endunless %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
     </nav>
   </div>
 </header>

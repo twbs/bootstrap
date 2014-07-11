@@ -16,21 +16,21 @@
 
   $(function () {
 
-    // Scrollspy
-    var $window = $(window)
-    var $body   = $(document.body)
+    // // Scrollspy
+    // var $window = $(window)
+    // var $body   = $(document.body)
 
-    $body.scrollspy({
-      target: '.active .bs-docs-sidenav'
-    })
-    $window.on('load', function () {
-      $body.scrollspy('refresh')
-    })
+    // $body.scrollspy({
+    //   target: '.active .bs-docs-sidenav'
+    // })
+    // $window.on('load', function () {
+    //   $body.scrollspy('refresh')
+    // })
 
     // Kill links
-    $('[href=#]').click(function (e) {
-      e.preventDefault()
-    })
+    // $('[href=#]').click(function (e) {
+    //   e.preventDefault()
+    // })
 
     // theme toggler
     (function () {

@@ -15,29 +15,29 @@
 
 <!-- Bootstrap core CSS -->
 {% if site.github %}
-<link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="{{ site.baseurl }}dist/css/bootstrap.min.css" rel="stylesheet">
 {% else %}
-<link href="../dist/css/bootstrap.css" rel="stylesheet">
+<link href="{{ site.baseurl }}dist/css/bootstrap.css" rel="stylesheet">
 {% endif %}
 {% if page.slug == "css" or page.slug == "components" or page.slug == "js" %}
   <!-- Optional Bootstrap Theme -->
   {% if site.github %}
-    <link href="data:text/css;charset=utf-8," data-href="../dist/css/bootstrap-theme.min.css" rel="stylesheet" id="bs-theme-stylesheet">
+    <link href="data:text/css;charset=utf-8," data-href="{{ site.baseurl }}dist/css/bootstrap-theme.min.css" rel="stylesheet" id="bs-theme-stylesheet">
   {% else %}
-    <link href="data:text/css;charset=utf-8," data-href="../dist/css/bootstrap-theme.css" rel="stylesheet" id="bs-theme-stylesheet">
+    <link href="data:text/css;charset=utf-8," data-href="{{ site.baseurl }}dist/css/bootstrap-theme.css" rel="stylesheet" id="bs-theme-stylesheet">
   {% endif %}
 {% endif %}
 
 <!-- Documentation extras -->
-<link href="../assets/css/docs.min.css" rel="stylesheet">
+<link href="{{ site.baseurl }}assets/css/docs.min.css" rel="stylesheet">
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
-<script src="../assets/js/ie-emulation-modes-warning.js"></script>
+<script src="{{ site.baseurl }}assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="{{ site.baseurl }}assets/js/ie-emulation-modes-warning.js"></script>
 
 <!-- Favicons -->
-<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
-<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="{{ site.baseurl }}apple-touch-icon-precomposed.png">
+<link rel="icon" href="{{ site.baseurl }}favicon.ico">
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

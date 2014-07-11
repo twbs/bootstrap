@@ -11,12 +11,24 @@
 
     <div class="bs-docs-header" id="content">
       <div class="bs-docs-container">
+        {% if page.url contains "getting-started" %}
+          <h1>Getting started</h1>
+          <p class="lead">Learn how to quickly start a new project with Bootstrap with downloads, basic templates and examples, and more.</p>
+        {% endif %}
+
+        {% include ads.html %}
+      </div>
+    </div>
+
+<!--
+    <div class="bs-docs-header" id="content">
+      <div class="bs-docs-container">
         <h1>{{ page.title }}</h1>
         <p>{{ page.lead }}</p>
         {% include ads.html %}
       </div>
     </div>
-
+ -->
     <div class="bs-docs-container bs-docs-content">
       {{ content }}
     </div>

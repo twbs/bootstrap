@@ -2,6 +2,9 @@
 markdown:         kramdown
 highlighter:      rouge
 
+kramdown:
+  auto_ids: true
+
 # Permalinks
 permalink:        pretty
 
