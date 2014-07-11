@@ -104,7 +104,7 @@
   <p>Add <code>data-toggle="dropdown"</code> to a link or button to toggle a dropdown.</p>
 {% highlight html %}
 <div class="dropdown">
-  <a data-toggle="dropdown" href="#">Dropdown trigger</a>
+  <a id="dLabel" role="button" data-toggle="dropdown" href="#">Dropdown trigger</a>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
     ...
   </ul>
@@ -116,7 +116,6 @@
   <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
     Dropdown
   </a>
-
 
   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
     ...
