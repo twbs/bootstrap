@@ -14,8 +14,11 @@
         {% if page.url contains "getting-started" %}
           <h1>Getting started</h1>
           <p class="lead">Learn how to quickly start a new project with Bootstrap with downloads, basic templates and examples, and more.</p>
-        {% elsif page.url contains "css" %}
-          <p class="lead">Global CSS settings, fundamental HTML elements styled and enhanced with extensible classes, and an advanced grid system.</p>
+        {% elsif page.url contains "components" %}
+          <h1>Components</h1>
+          <p class="lead">
+            Global styles for common HTML elements, as well as dozens of reusable components like dropdowns, input groups, navigation, alerts, and much more.
+          </p>
         {% elsif page.url contains "examples" %}
           <h1>Examples</h1>
           <p class="lead">Examples.</p>
@@ -25,15 +28,6 @@
       </div>
     </div>
 
-<!--
-    <div class="bs-docs-header" id="content">
-      <div class="bs-docs-container">
-        <h1>{{ page.title }}</h1>
-        <p>{{ page.lead }}</p>
-        {% include ads.html %}
-      </div>
-    </div>
- -->
     <div class="bs-docs-container bs-docs-content">
       {{ content }}
     </div>
