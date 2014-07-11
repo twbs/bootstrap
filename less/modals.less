@@ -79,6 +79,7 @@
 .modal-header {
   padding: @modal-title-padding;
   border-bottom: 1px solid @modal-header-border-color;
+  border-radius: @border-radius-large @border-radius-large 0px 0px;
   min-height: (@modal-title-padding + @modal-title-line-height);
 }
 // Close icon
@@ -104,6 +105,7 @@
   padding: @modal-inner-padding;
   text-align: right; // right align buttons
   border-top: 1px solid @modal-footer-border-color;
+  border-radius: 0px 0px @border-radius-large @border-radius-large;
   &:extend(.clearfix all); // clear it in case folks use .pull-* classes on buttons
 
   // Properly space out buttons
