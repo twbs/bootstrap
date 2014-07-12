@@ -19,6 +19,20 @@
 - title: Layout
   pages:
     - title: Grid
+      sections:
+        - title: Introduction
+        - title: Media queries
+        - title: Grid options
+        - title: Semantic mixins
+        - title: Ex Stacked to horizontal
+        - title: Ex Fluid container
+        - title: Ex Mobile and desktop
+        - title: Ex Mobile tablet desktops
+        - title: Ex Column wrapping
+        - title: Ex Responsive column resets
+        - title: Ex Offsetting columns
+        - title: Ex Nesting columns
+        - title: Ex Column ordering
     - title: Media
     - title: Responsive utilities
       sections:
