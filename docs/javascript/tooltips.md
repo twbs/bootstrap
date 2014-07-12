@@ -1,3 +1,8 @@
+---
+layout: page
+title: Tooltips
+---
+
 <div class="bs-docs-section">
   <h1 id="tooltips" class="page-header">Tooltips <small>tooltip.js</small></h1>
 

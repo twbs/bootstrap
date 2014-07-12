@@ -1,3 +1,8 @@
+---
+layout: page
+title: Dropdowns
+---
+
 <div class="bs-docs-section">
   <h1 id="dropdowns" class="page-header">Dropdowns <small>dropdown.js</small></h1>
 

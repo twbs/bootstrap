@@ -1,3 +1,8 @@
+---
+layout: page
+title: Modal
+---
+
 <div class="bs-docs-section">
   <h1 id="modals" class="page-header">Modals <small>modal.js</small></h1>
 

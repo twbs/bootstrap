@@ -1,3 +1,8 @@
+---
+layout: page
+title: Carousel
+---
+
 <div class="bs-docs-section">
   <h1 id="carousel" class="page-header">Carousel <small>carousel.js</small></h1>
 

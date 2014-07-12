@@ -1,3 +1,8 @@
+---
+layout: page
+title: Buttons
+---
+
 <div class="bs-docs-section">
   <h1 id="buttons" class="page-header">Buttons <small>button.js</small></h1>
 

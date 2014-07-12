@@ -1,3 +1,8 @@
+---
+layout: page
+title: Affix
+---
+
 <div class="bs-docs-section">
   <h1 id="affix" class="page-header">Affix <small>affix.js</small></h1>
 

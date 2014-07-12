@@ -1,3 +1,8 @@
+---
+layout: page
+title: Transitions
+---
+
 <div class="bs-docs-section">
   <h1 id="transitions" class="page-header">Transitions <small>transition.js</small></h1>
 

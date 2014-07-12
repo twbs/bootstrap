@@ -1,3 +1,8 @@
+---
+layout: page
+title: Srollspy
+---
+
 <div class="bs-docs-section">
   <h1 id="scrollspy" class="page-header">ScrollSpy <small>scrollspy.js</small></h1>
 

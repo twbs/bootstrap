@@ -1,3 +1,8 @@
+---
+layout: page
+title: Overview
+---
+
 <div class="bs-docs-section">
   <h1 id="js-overview" class="page-header">Overview</h1>
 

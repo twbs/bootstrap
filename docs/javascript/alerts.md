@@ -1,3 +1,8 @@
+---
+layout: page
+title: Alerts
+---
+
 <div class="bs-docs-section">
   <h1 id="alerts" class="page-header">Alert messages <small>alert.js</small></h1>
 

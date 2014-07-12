@@ -1,3 +1,8 @@
+---
+layout: page
+title: Popovers
+---
+
 <div class="bs-docs-section">
   <h1 id="popovers" class="page-header">Popovers <small>popover.js</small></h1>
 

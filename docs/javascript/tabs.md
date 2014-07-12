@@ -1,3 +1,8 @@
+---
+layout: page
+title: Tabs
+---
+
 <div class="bs-docs-section">
   <h1 id="tabs" class="page-header">Togglable tabs <small>tab.js</small></h1>
 

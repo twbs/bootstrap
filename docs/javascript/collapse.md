@@ -1,3 +1,8 @@
+---
+layout: page
+title: Collapse
+---
+
 <div class="bs-docs-section">
   <h1 id="collapse" class="page-header">Collapse <small>collapse.js</small></h1>
 
