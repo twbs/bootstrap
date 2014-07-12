@@ -26,7 +26,10 @@ body {
   margin: 10px 15px;
 }
 .panel-docs .panel-heading h2 span {
-  color:#777;
+  color: #aaa;
+  font-family: "GothamMedium", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size:18px;
 }
 .panel-docs .panel-body {
   padding: 30px;
@@ -109,22 +112,19 @@ padding: 15px;
 
 
 
-/*
-.panel-docs.panel-info > .panel-heading {
-  background-image: -webkit-linear-gradient(top, #333330 0%, #1d1d1b 100%);
-  background-image:      -o-linear-gradient(top, #333330 0%, #1d1d1b 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#333330), to(#1d1d1b));
-  background-image:         linear-gradient(to bottom, #333330 0%, #1d1d1b 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff333330', endColorstr='#ff1d1d1b', GradientType=0);
+
+.panel-docs > .panel-heading {
+  background-image: -webkit-linear-gradient(top, #999999 0%, #6d6d6d 100%);
+  background-image:      -o-linear-gradient(top, #999999 0%, #6d6d6d 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#6d6d6d));
+  background-image:         linear-gradient(to bottom, #999999 0%, #6d6d6d 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff999999', endColorstr='#ff6d6d6d', GradientType=0);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   background-repeat: repeat-x;
-  background-color: #1d1d1b;
-  border-color: #1d1d1b;
+  background-color: #6d6d6d;
+  border-color: #636363;
+  color:#fff;
 }
-*/
-
-
-
 
 
 
