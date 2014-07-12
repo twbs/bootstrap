@@ -20,14 +20,15 @@
   pages:
     - title: Grid
     - title: Media
-    - title: Utilities
+    - title: Responsive utilities
+      sections:
+        - title: Viewports
+        - title: Print
+        - title: Test cases
 
 - title: Components
   pages:
     - title: Scaffolding
-    # - title: Grid
-    #   sections:
-    #     - title: Overview
     - title: Typography
       sections:
         - title: Scale
@@ -55,15 +56,9 @@
     - title: Pagination
     - title: Alerts
     - title: Progress
-    - title: Media
     - title: List
     - title: Responsive embed
     - title: Helpers
-    - title: Responsive utilities
-      sections:
-        - title: Viewports
-        - title: Print
-        - title: Test cases
 
 - title: JavaScript
   pages:
