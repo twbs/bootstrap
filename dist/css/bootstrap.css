@@ -2368,14 +2368,14 @@ output {
           box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
 }
 .form-control::-moz-placeholder {
-  color: #777;
+  color: #999;
   opacity: 1;
 }
 .form-control:-ms-input-placeholder {
-  color: #777;
+  color: #999;
 }
 .form-control::-webkit-input-placeholder {
-  color: #777;
+  color: #999;
 }
 .form-control[disabled],
 .form-control[readonly],
