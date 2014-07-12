@@ -1,10 +1,16 @@
-<div class="bs-docs-section">
-  <h1 id="third-parties" class="page-header">Third party support</h1>
-  <p class="lead">While we don't officially support any third party plugins or add-ons, we do offer some useful advice to help avoid potential issues in your projects.</p>
+---
+layout: page
+title: Third party support
+---
 
-  <h3 id="third-box-sizing">Box-sizing</h3>
-  <p>Some third party software, including Google Maps and Google Custom Search Engine, conflict with Bootstrap due to <code>* { box-sizing: border-box; }</code>, a rule which makes it so <code>padding</code> does not affect the final computed width of an element. Learn more about <a href="http://css-tricks.com/box-sizing/">box model and sizing at CSS Tricks</a>.</p>
-  <p>Depending on the context, you may override as-needed (Option 1) or reset the box-sizing for entire regions (Option 2).</p>
+While we don't officially support any third party plugins or add-ons, we do offer some useful advice to help avoid potential issues in your projects.
+
+### Box-sizing
+
+Some third party software, including Google Maps and Google Custom Search Engine, conflict with Bootstrap due to `* { box-sizing: border-box; }`, a rule which makes it so `padding` does not affect the final computed width of an element. Learn more about [box model and sizing at CSS Tricks](http://css-tricks.com/box-sizing/).
+
+Depending on the context, you may override as-needed (Option 1) or reset the box-sizing for entire regions (Option 2).
+
 {% highlight scss %}
 /* Box-sizing resets
  *
@@ -48,4 +54,3 @@
   .reset-box-sizing();
 }
 {% endhighlight %}
-</div>
