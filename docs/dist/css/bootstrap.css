@@ -1404,6 +1404,12 @@ pre code {
 table {
   background-color: transparent;
 }
+caption {
+  padding-top: .6rem;
+  padding-bottom: .6rem;
+  color: #818a91;
+  text-align: left;
+}
 th {
   text-align: left;
 }
@@ -1716,16 +1722,16 @@ output {
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
 }
 .form-control::-webkit-input-placeholder {
-  color: #818a91;
+  color: #999;
 }
 .form-control::-moz-placeholder {
-  color: #818a91;
+  color: #999;
 }
 .form-control:-ms-input-placeholder {
-  color: #818a91;
+  color: #999;
 }
 .form-control::placeholder {
-  color: #818a91;
+  color: #999;
 }
 .form-control[disabled],
 .form-control[readonly],
@@ -1889,6 +1895,7 @@ select[multiple].form-group-lg .form-control {
   height: 2.7rem;
   line-height: 2.7rem;
   text-align: center;
+  pointer-events: none;
 }
 .input-lg + .form-control-feedback {
   width: 3.3625rem;
@@ -5028,8 +5035,6 @@ button.close {
 }
 .affix {
   position: fixed;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
 }
 @-ms-viewport {
   width: device-width;

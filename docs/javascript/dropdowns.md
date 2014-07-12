@@ -25,7 +25,9 @@ title: Dropdowns
         <div class="collapse navbar-collapse bs-example-js-navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+              <button id="drop1" type="button" class="dropdown-toggle" data-toggle="dropdown">
+                Dropdown
+              </button>
               <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
@@ -35,7 +37,9 @@ title: Dropdowns
               </ul>
             </li>
             <li class="dropdown">
-              <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown 2</a>
+              <button id="drop2" type="button" class="dropdown-toggle" data-toggle="dropdown">
+                Dropdown 2
+              </button>
               <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
@@ -47,7 +51,9 @@ title: Dropdowns
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li id="fat-menu" class="dropdown">
-              <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown 3</a>
+              <button id="drop3" type="button" class="dropdown-toggle" data-toggle="dropdown">
+                Dropdown 3
+              </button>
               <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
@@ -67,7 +73,9 @@ title: Dropdowns
     <ul class="nav nav-pills" role="tablist">
       <li role="presentation" class="active"><a href="#">Regular link</a></li>
       <li role="presentation" class="dropdown">
-        <a id="drop4" role="button" data-toggle="dropdown" href="#">Dropdown</a>
+        <button id="drop4" type="button" data-toggle="dropdown">
+          Dropdown
+        </button>
         <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
           <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
@@ -77,7 +85,9 @@ title: Dropdowns
         </ul>
       </li>
       <li role="presentation" class="dropdown">
-        <a id="drop5" role="button" data-toggle="dropdown" href="#">Dropdown 2</a>
+        <button id="drop5" type="button" data-toggle="dropdown">
+          Dropdown 2
+        </button>
         <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
           <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
@@ -87,7 +97,9 @@ title: Dropdowns
         </ul>
       </li>
       <li role="presentation" class="dropdown">
-        <a id="drop6" role="button" data-toggle="dropdown" href="#">Dropdown 3</a>
+        <button id="drop6" type="button" data-toggle="dropdown">
+          Dropdown 3
+        </button>
         <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop6">
           <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
@@ -109,7 +121,10 @@ title: Dropdowns
   <p>Add <code>data-toggle="dropdown"</code> to a link or button to toggle a dropdown.</p>
 {% highlight html %}
 <div class="dropdown">
-  <a id="dLabel" role="button" data-toggle="dropdown" href="#">Dropdown trigger</a>
+  <button id="dLabel" type="button" data-toggle="dropdown">
+    Dropdown trigger
+   <span class="caret"></span>
+  </button>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
     ...
   </ul>
@@ -118,9 +133,9 @@ title: Dropdowns
   <p>To keep URLs intact, use the <code>data-target</code> attribute instead of <code>href="#"</code>.</p>
 {% highlight html %}
 <div class="dropdown">
-  <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
+  <button id="dLabel" type="button" data-toggle="dropdown">Dropdown trigger</button>
     Dropdown
-  </a>
+  </button>
 
   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
     ...
