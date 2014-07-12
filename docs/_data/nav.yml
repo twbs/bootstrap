@@ -11,23 +11,41 @@
     - title: Examples
     - title: Compiling
     - title: Browser and device support
-    - title: Third aprty support
+    - title: Third party support
     - title: Accessibility
     - title: License FAQs
     - title: Translations
 
-- title: Components
+- title: Scaffolding
   pages:
-    - title: Scaffolding
-    - title: Grid
-      sections:
-        - title: Overview
+    - title: Normalize
+    - title: Base
     - title: Typography
       sections:
         - title: Scale
         - title: Body copy
         - title: Headings
     - title: Images
+    - title: Print
+
+- title: Layout
+  pages:
+    - title: Grid
+    - title: Media
+    - title: Utilities
+
+- title: Components
+  pages:
+    # - title: Scaffolding
+    # - title: Grid
+    #   sections:
+    #     - title: Overview
+    # - title: Typography
+    #   sections:
+    #     - title: Scale
+    #     - title: Body copy
+    #     - title: Headings
+    # - title: Images
     - title: Code
       sections:
         - title: Inline code
@@ -42,11 +60,12 @@
 #    - title: Button dropdowns
     - title: Input groups
 #    - title: Dropdowns
-    - title: Navigation
+    - title: Badges
+    - title: Navs
     - title: Navbar
     - title: Breadcrumb
     - title: Pagination
-    - title: Alert
+    - title: Alerts
     - title: Progress
     - title: Media
     - title: List
