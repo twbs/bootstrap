@@ -44,7 +44,7 @@ Guidelines for bug reports:
 
 3. **Isolate the problem** &mdash; ideally create a [reduced test
    case](http://css-tricks.com/6263-reduced-test-cases/) and a live example.
-   [This JS Bin](http://jsbin.com/EBAwOkOK/1) is a helpful template.
+   [This JS Bin](http://jsbin.com/lefey/1/edit?html,output) is a helpful template.
 
 
 A good bug report shouldn't leave others needing to chase you up for more
