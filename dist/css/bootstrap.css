@@ -2537,6 +2537,7 @@ select[multiple].form-group-lg .form-control {
   height: 34px;
   line-height: 34px;
   text-align: center;
+  pointer-events: none;
 }
 .input-lg + .form-control-feedback {
   width: 46px;
