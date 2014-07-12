@@ -326,6 +326,8 @@ img {
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: .2rem;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+          box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
   -webkit-transition: all .2s ease-in-out;
        -o-transition: all .2s ease-in-out;
           transition: all .2s ease-in-out;
@@ -2139,6 +2141,8 @@ fieldset[disabled] .btn {
   color: #fff;
   background-color: #027de7;
   border-color: #026fce;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -2154,6 +2158,8 @@ fieldset[disabled] .btn {
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
 }
 .btn-primary.disabled,
 .btn-primary[disabled],
@@ -2184,6 +2190,8 @@ fieldset[disabled] .btn-primary.active {
   color: #373a3c;
   background-color: #fff;
   border-color: #eceeef;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
 }
 .btn-secondary:hover,
 .btn-secondary:focus,
@@ -2199,6 +2207,8 @@ fieldset[disabled] .btn-primary.active {
 .btn-secondary.active,
 .open > .dropdown-toggle.btn-secondary {
   background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
 }
 .btn-secondary.disabled,
 .btn-secondary[disabled],
@@ -2229,6 +2239,8 @@ fieldset[disabled] .btn-secondary.active {
   color: #fff;
   background-color: #5bc0de;
   border-color: #46b8da;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
 }
 .btn-info:hover,
 .btn-info:focus,
@@ -2244,6 +2256,8 @@ fieldset[disabled] .btn-secondary.active {
 .btn-info.active,
 .open > .dropdown-toggle.btn-info {
   background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
 }
 .btn-info.disabled,
 .btn-info[disabled],
@@ -2274,6 +2288,8 @@ fieldset[disabled] .btn-info.active {
   color: #fff;
   background-color: #5cb85c;
   border-color: #4cae4c;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
 }
 .btn-success:hover,
 .btn-success:focus,
@@ -2289,6 +2305,8 @@ fieldset[disabled] .btn-info.active {
 .btn-success.active,
 .open > .dropdown-toggle.btn-success {
   background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
 }
 .btn-success.disabled,
 .btn-success[disabled],
@@ -2319,6 +2337,8 @@ fieldset[disabled] .btn-success.active {
   color: #fff;
   background-color: #f0ad4e;
   border-color: #eea236;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
 }
 .btn-warning:hover,
 .btn-warning:focus,
@@ -2334,6 +2354,8 @@ fieldset[disabled] .btn-success.active {
 .btn-warning.active,
 .open > .dropdown-toggle.btn-warning {
   background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
 }
 .btn-warning.disabled,
 .btn-warning[disabled],
@@ -2364,6 +2386,8 @@ fieldset[disabled] .btn-warning.active {
   color: #fff;
   background-color: #d9534f;
   border-color: #d43f3a;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
 }
 .btn-danger:hover,
 .btn-danger:focus,
@@ -2379,6 +2403,8 @@ fieldset[disabled] .btn-warning.active {
 .btn-danger.active,
 .open > .dropdown-toggle.btn-danger {
   background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
 }
 .btn-danger.disabled,
 .btn-danger[disabled],

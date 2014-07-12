@@ -159,18 +159,6 @@ module.exports = function (grunt) {
           'dist/css/<%= pkg.name %>.css': 'less/bootstrap.less'
         }
       },
-      compileTheme: {
-        options: {
-          strictMath: true,
-          sourceMap: true,
-          outputSourceFiles: true,
-          sourceMapURL: '<%= pkg.name %>-theme.css.map',
-          sourceMapFilename: 'dist/css/<%= pkg.name %>-theme.css.map'
-        },
-        files: {
-          'dist/css/<%= pkg.name %>-theme.css': 'less/theme.less'
-        }
-      },
       compileDocs: {
         options: {
           strictMath: true
@@ -200,12 +188,6 @@ module.exports = function (grunt) {
         },
         src: 'dist/css/<%= pkg.name %>.css'
       },
-      theme: {
-        options: {
-          map: true
-        },
-        src: 'dist/css/<%= pkg.name %>-theme.css'
-      },
       docs: {
         src: 'docs/assets/css/docs.min.css'
       },
@@ -222,8 +204,7 @@ module.exports = function (grunt) {
         csslintrc: 'less/.csslintrc'
       },
       src: [
-        'dist/css/bootstrap.css',
-        'dist/css/bootstrap-theme.css'
+        'dist/css/bootstrap.css'
       ],
       examples: [
         'docs/examples/**/*.css'
@@ -245,8 +226,7 @@ module.exports = function (grunt) {
       },
       core: {
         files: {
-          'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css',
-          'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css'
+          'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css'
         }
       },
       docs: {
@@ -439,7 +419,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-js', ['concat', 'uglify']);
 
   // CSS distribution task.
-  grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
+  grunt.registerTask('less-compile', ['less:compileCore']);
   grunt.registerTask('dist-css', ['less-compile', 'autoprefixer', 'usebanner', 'csscomb', 'cssmin']);
 
   // Docs distribution task.
@@ -449,7 +429,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js', 'dist-docs']);
 
   // Custom docs rebuild task.
-  grunt.registerTask('build', ['clean', 'less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'autoprefixer:docs', 'usebanner', 'csscomb:dist', 'cssmin:core', 'cssmin:docs', 'concat', 'uglify:bootstrap', 'dist-docs']);
+  grunt.registerTask('build', ['clean', 'less-compile', 'autoprefixer:core', 'autoprefixer:docs', 'usebanner', 'csscomb:dist', 'cssmin:core', 'cssmin:docs', 'concat', 'uglify:bootstrap', 'dist-docs']);
 
   // Default task.
   grunt.registerTask('default', ['test', 'dist']);
