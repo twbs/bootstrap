@@ -1,12 +1,9 @@
-<a id="grid"></a>
-
-# Grid system
+---
+layout: page
+title: Grid system
+---
 
 Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. It includes [predefined classes](#grid-example-basic) for easy layout options, as well as powerful [mixins for generating more semantic layouts](#grid-semantic).
-
-
-
-<a id="grid-intro"></a>
 
 ### Introduction
 
@@ -23,10 +20,6 @@ Grid systems are used for creating page layouts through a series of rows and col
 - Grid classes apply to devices with screen widths greater than or equal to the breakpoint sizes, and override grid classes targeted at smaller devices. Therefore, applying any `.col-md-` class to an element will not only affect its styling on medium devices but also on large devices if a `.col-lg-` class is not present.
 
 Look to the examples for applying these principles to your code.
-
-
-
-<a id="grid-media-queries"></a>
 
 ### Media queries
 
@@ -54,10 +47,6 @@ We occasionally expand on these media queries to include a <code>max-width</code
 @media (min-width: @screen-md-min) and (max-width: @screen-md-max) { ... }
 @media (min-width: @screen-lg-min) { ... }
 {% endhighlight %}
-
-
-
-<a id="grid-options"></a>
 
 ### Grid options
 
@@ -136,10 +125,6 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
     </tbody>
   </table>
 </div>
-
-
-
-<a id="grid-semantic"></a>
 
 ### Example: Semantic grid mixins
 
@@ -237,10 +222,6 @@ See it in action in <a href="http://jsbin.com/qiqet/3/edit">this rendered exampl
 </div>
 {% endhighlight %}
 
-
-
-<a id="grid-example-basic"></a>
-
 ### Example: Stacked-to-horizontal
 
 Using a single set of `.col-md-*` grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices. Place grid columns in any `.row`.
@@ -275,10 +256,6 @@ Using a single set of `.col-md-*` grid classes, you can create a basic grid syst
 </div>
 {% endexample %}
 
-
-
-<a id="grid-example-fluid"></a>
-
 ### Example: Fluid container
 
 Turn any fixed-width grid layout into a full-width layout by changing your outermost `.container` to `.container-fluid`.
@@ -290,10 +267,6 @@ Turn any fixed-width grid layout into a full-width layout by changing your outer
   </div>
 </div>
 {% endhighlight %}
-
-
-
-<a id="grid-example-mixed"></a>
 
 ### Example: Mobile and desktop
 
@@ -320,10 +293,6 @@ Don't want your columns to simply stack in smaller devices? Use the extra small 
 </div>
 {% endexample %}
 
-
-
-<a id="grid-example-complete"></a>
-
 ### Example: Mobile, tablet, desktops
 
 Build on the previous example by creating even more dynamic and powerful layouts with tablet `.col-sm-*` classes.
@@ -342,10 +311,6 @@ Build on the previous example by creating even more dynamic and powerful layouts
 </div>
 {% endexample %}
 
-
-
-<a id="grid-example-wrapping"></a>
-
 ### Example: Column wrapping
 
 If more than 12 columns are placed within a single row, each group of extra columns will, as one unit, wrap onto a new line.
@@ -357,10 +322,6 @@ If more than 12 columns are placed within a single row, each group of extra colu
   <div class="col-xs-6">.col-xs-6<br>Subsequent columns continue along the new line.</div>
 </div>
 {% endexample %}
-
-
-
-<a id="grid-responsive-resets"></a>
 
 ### Example: Responsive column resets
 
@@ -393,10 +354,6 @@ In addition to column clearing at responsive breakpoints, you may need to **rese
 </div>
 {% endexample %}
 
-
-
-<a id="grid-offsetting"></a>
-
 ### Example: Offsetting columns
 
 Move columns to the right using `.col-md-offset-*` classes. These classes increase the left margin of a column by `*` columns. For example, `.col-md-offset-4` moves `.col-md-4` over four columns.
@@ -414,10 +371,6 @@ Move columns to the right using `.col-md-offset-*` classes. These classes increa
   <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
 </div>
 {% endexample %}
-
-
-
-<a id="grid-nesting"></a>
 
 ### Example: Nesting columns
 
@@ -438,10 +391,6 @@ To nest your content with the default grid, add a new `.row` and set of `.col-sm
   </div>
 </div>
 {% endexample %}
-
-
-
-<a id="grid-column-ordering"></a>
 
 ### Example: Column ordering
 

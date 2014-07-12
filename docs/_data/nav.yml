@@ -16,18 +16,6 @@
     - title: License FAQs
     - title: Translations
 
-- title: Scaffolding
-  pages:
-    - title: Normalize
-    - title: Base
-    - title: Typography
-      sections:
-        - title: Scale
-        - title: Body copy
-        - title: Headings
-    - title: Images
-    - title: Print
-
 - title: Layout
   pages:
     - title: Grid
@@ -36,16 +24,16 @@
 
 - title: Components
   pages:
-    # - title: Scaffolding
+    - title: Scaffolding
     # - title: Grid
     #   sections:
     #     - title: Overview
-    # - title: Typography
-    #   sections:
-    #     - title: Scale
-    #     - title: Body copy
-    #     - title: Headings
-    # - title: Images
+    - title: Typography
+      sections:
+        - title: Scale
+        - title: Body copy
+        - title: Headings
+    - title: Images
     - title: Code
       sections:
         - title: Inline code
