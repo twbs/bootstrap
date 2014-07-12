@@ -10,10 +10,10 @@
     - title: Contents
     - title: Examples
     - title: Compiling
-    - title: Browser and device support
-    - title: Third party support
+    - title: Support
+    # - title: Third party support
     - title: Accessibility
-    - title: License FAQs
+    - title: License
     - title: Translations
 
 - title: Layout
