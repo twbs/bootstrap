@@ -1,22 +1,13 @@
-<div class="bs-docs-section">
-  <h1 id="disable-responsive" class="page-header">Disabling responsiveness</h1>
+---
+layout: page
+title: Disable responsiveness
+---
 
-  <p class="lead">Bootstrap automatically adapts your pages for various screen sizes.
-    Here's how to disable this feature so your page works like in <a href="../examples/non-responsive/">this non-responsive example</a>.</p>
+Bootstrap automatically adapts your pages for various screen sizes. Here's how to disable this feature so your page works like in [this non-responsive example](../examples/non-responsive/).
 
-  <h3>Steps to disable page responsiveness</h3>
-  <ol>
-    <li>Omit the viewport <code>&lt;meta&gt;</code> mentioned in <a href="../css/#overview-mobile">the CSS docs</a></li>
-    <li>Override the <code>width</code> on the <code>.container</code> for each grid tier with a single width, for example <code>width: 970px !important;</code> Be sure that this comes after the default Bootstrap CSS. You can optionally avoid the <code>!important</code> with media queries or some selector-fu.</li>
-    <li>If using navbars, remove all navbar collapsing and expanding behavior.</li>
-    <li>For grid layouts, use <code>.col-xs-*</code> classes in addition to, or in place of, the medium/large ones. Don't worry, the extra-small device grid scales to all resolutions.</li>
-  </ol>
-  <p>You'll still need Respond.js for IE8 (since our media queries are still there and need to be processed).
-    This disables the "mobile site" aspects of Bootstrap.</p>
+- Omit the viewport `<meta>`
+- Override the `width` on the `.container` for each grid tier with a single width, for example `width: 970px !important;` Be sure that this comes after the default Bootstrap CSS. You can optionally avoid the `!important` with media queries or some selector-fu.
+- If using navbars, remove all navbar collapsing and expanding behavior.
+- For grid layouts, use `.col-xs-*` classes in addition to, or in place of, the medium/large ones. Don't worry, the extra-small device grid scales to all resolutions.
 
-  <h3>Bootstrap template with responsiveness disabled</h3>
-  <p>We've applied these steps to an example. Read its source code to see the specific changes implemented.</p>
-  <p>
-    <a href="../examples/non-responsive/" class="btn btn-primary">View non-responsive example</a>
-  </p>
-</div>
+You'll still need Respond.js for IE8 (since our media queries are still there and need to be processed). This disables the "mobile site" aspects of Bootstrap.
