@@ -5,10 +5,6 @@ title: Scaffolding
 
 Get the lowdown on the key pieces of Bootstrap's infrastructure, including our approach to better, faster, stronger web development.
 
-
-
-<a id="overview-doctype"></a>
-
 ### HTML5 doctype
 
 Bootstrap makes use of certain HTML elements and CSS properties that require the use of the HTML5 doctype. Include it at the beginning of all your projects.
@@ -19,10 +15,6 @@ Bootstrap makes use of certain HTML elements and CSS properties that require the
   ...
 </html>
 {% endhighlight %}
-
-
-
-<a id="overview-mobile"></a>
 
 ### Mobile first
 
@@ -40,10 +32,6 @@ You can disable zooming capabilities on mobile devices by adding `user-scalable=
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 {% endhighlight %}
 
-
-
-<a id="overview-type-links"></a>
-
 ### Typography and links
 
 Bootstrap sets basic global display, typography, and link styles. Specifically, we:
@@ -54,17 +42,9 @@ Bootstrap sets basic global display, typography, and link styles. Specifically, 
 
 These styles can be found within `scaffolding.less`.
 
-
-
-<a id="overview-normalize"></a>
-
 ### Normalize
 
 For improved cross-browser rendering, we use [Normalize.css](http://necolas.github.io/normalize.css/) to correct small inconsistencies across browsers and devices.
-
-
-
-<a id="overview-containers"></a>
 
 ### Containers
 

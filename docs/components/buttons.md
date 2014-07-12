@@ -1,6 +1,7 @@
-<a id="buttons"></a>
-
-# Buttons
+---
+layout: page
+title: Buttons
+---
 
 Use any of the available button classes to quickly create a styled button.
 
@@ -23,10 +24,6 @@ Use any of the available button classes to quickly create a styled button.
 <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
 <button type="button" class="btn btn-link">Link</button>
 {% endexample %}
-
-
-
-<a id="buttons-sizes"></a>
 
 ## Sizes
 
@@ -54,10 +51,6 @@ Create block level buttons—those that span the full width of a parent—by add
 <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
 {% endexample %}
 
-
-
-<a id="buttons-active"></a>
-
 ## Active state
 
 Buttons will appear pressed (with a darker background, darker border, and inset shadow) when active. **There's no need to add a class to `<button>`s as they use a pseudo-class**. However, you can still force the same active appearance with `.active` should you need to replicate the state programmatically.
@@ -66,10 +59,6 @@ Buttons will appear pressed (with a darker background, darker border, and inset 
 <a href="#" class="btn btn-primary btn-lg active" role="button">Primary link</a>
 <a href="#" class="btn btn-secondary btn-lg active" role="button">Link</a>
 {% endexample %}
-
-
-
-<a id="buttons-disabled"></a>
 
 ## Disabled state
 
@@ -102,10 +91,6 @@ As `<a>` elements don't support the `disabled` attribute, you must add the `.dis
   <p>While button classes can be used on <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements, only <code>&lt;button&gt;</code> elements are supported within our nav and navbar components.</p>
 </div>
 
-
-
-<a id="buttons-tags"></a>
-
 ## Button tags
 
 Use the button classes on an `<a>`, `<button>`, or `<input>` element.
@@ -116,7 +101,6 @@ Use the button classes on an `<a>`, `<button>`, or `<input>` element.
 <input class="btn btn-secondary" type="button" value="Input">
 <input class="btn btn-secondary" type="submit" value="Submit">
 {% endexample %}
-
 
 <div class="bs-callout bs-callout-warning">
   <h4>Cross-browser rendering</h4>

@@ -1,12 +1,9 @@
-<a id="type"></a>
-
-# Typography
+---
+layout: page
+title: Typography
+---
 
 Bootstrap includes simple and easily customized typography across the project. In addition to the standard headings, body text, and lists, utility classes are also included.
-
-
-
-<a id="type-headings"></a>
 
 ## Headings
 
@@ -88,10 +85,6 @@ Create lighter, secondary text in any heading with a generic `<small>` tag or th
 <h6>h6. Bootstrap heading <small>Secondary text</small></h6>
 {% endhighlight %}
 
-
-
-<a id="type-body-copy"></a>
-
 ## Body copy
 
 Bootstrap's base text is sized with global `font-size: 16px;` and `line-height: 1.5;`. This is applied to the `<body>` and all paragraphs.
@@ -102,10 +95,6 @@ Bootstrap's base text is sized with global `font-size: 16px;` and `line-height: 
 <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
 {% endexample %}
 
-
-
-<a id="type-lead"></a>
-
 ## Lead
 
 Make a paragraph stand out by adding `.lead`.
@@ -115,10 +104,6 @@ Make a paragraph stand out by adding `.lead`.
   Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
 </p>
 {% endexample %}
-
-
-
-<a id="type-inline-text"></a>
 
 ## Inline text elements
 
@@ -141,10 +126,6 @@ Styling for all the common inline HTML5 elements.
   <p>Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
 </div>
 
-
-
-<a id="type-alignment"></a>
-
 ## Alignment classes
 
 Easily realign text to components with text alignment classes.
@@ -157,10 +138,6 @@ Easily realign text to components with text alignment classes.
 <p class="text-nowrap">No wrap text.</p>
 {% endexample %}
 
-
-
-<a id="type-transformation"></a>
-
 ## Transformation classes
 
 Transform text in components with text capitalization classes.
@@ -170,10 +147,6 @@ Transform text in components with text capitalization classes.
 <p class="text-uppercase">Uppercased text.</p>
 <p class="text-capitalize">Capitalized text.</p>
 {% endexample %}
-
-
-
-<a id="type-abbreviations"></a>
 
 ## Abbreviations
 
@@ -195,10 +168,6 @@ Add `.initialism` to an abbreviation for a slightly smaller font-size.
 <abbr title="HyperText Markup Language" class="initialism">HTML</abbr>
 {% endexample %}
 
-
-
-<a id="type-address"></a>
-
 ## Address
 
 Present contact information for the nearest ancestor or the entire body of work. Preserve formatting by ending all lines with `<br>`.
@@ -216,10 +185,6 @@ Present contact information for the nearest ancestor or the entire body of work.
   <a href="mailto:#">first.last@example.com</a>
 </address>
 {% endexample %}
-
-
-
-<a id="type-blockquotes"></a>
 
 ## Blockquotes
 
@@ -260,10 +225,6 @@ Add `.blockquote-reverse` for a blockquote with right-aligned content.
   <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote>
 {% endexample %}
-
-
-
-<a id="type-lists"></a>
 
 ## Lists
 
