@@ -79,13 +79,13 @@
     - title: Overview
     - title: Transititons
     - title: Modal
-    - title: Dropdown
+    - title: Dropdowns
     - title: Scrollspy
-    - title: Tab
-    - title: Tooltip
-    - title: Popover
-    - title: Alert
-    - title: Button
+    - title: Tabs
+    - title: Tooltips
+    - title: Popovers
+    - title: Alerts
+    - title: Buttons
     - title: Collapse
     - title: Carousel
     - title: Affix
