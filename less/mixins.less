@@ -9,6 +9,10 @@
   box-shadow: @arguments;
 }
 
+.transition(@transition) when (@enable-transitions = true) {
+  transition: @arguments;
+}
+
 .render-gradient(@start; @end) when (@enable-gradients = true) {
   #gradient > .vertical(@start-color: @start; @end-color: @end);
   background-color: @end;
