@@ -130,12 +130,13 @@ title: Dropdowns
   </ul>
 </div>
 {% endhighlight %}
-  <p>To keep URLs intact, use the <code>data-target</code> attribute instead of <code>href="#"</code>.</p>
+  <p>To keep URLs intact with link buttons, use the <code>data-target</code> attribute instead of <code>href="#"</code>.</p>
 {% highlight html %}
 <div class="dropdown">
-  <button id="dLabel" type="button" data-toggle="dropdown">Dropdown trigger</button>
-    Dropdown
-  </button>
+  <a id="dLabel" data-target="#" href="http://example.com" type="button" data-toggle="dropdown">
+    Dropdown trigger
+    <span class="caret"></span>
+  </a>
 
   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
     ...
