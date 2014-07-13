@@ -276,7 +276,7 @@ body {
   border-color: #29262f;
 }
 .bs-docs-footer {
-  margin-top: 100px;
+  margin-top: 6rem;
   color: #777;
   text-align: center;
   border-top: 1px solid #e5e5e5;
@@ -334,7 +334,7 @@ body {
 }
 .bs-docs-masthead {
   position: relative;
-  padding: 30px 15px;
+  padding: 2rem 1rem;
   color: #cdbfe3;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
@@ -346,7 +346,7 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff563d7c', endColorstr='#ff6f5499', GradientType=0);
 }
 .bs-docs-masthead .bs-docs-booticon {
-  margin: 0 auto 30px;
+  margin: 0 auto 2rem;
 }
 .bs-docs-masthead h1 {
   font-weight: 300;
@@ -354,19 +354,19 @@ body {
   color: #fff;
 }
 .bs-docs-masthead .lead {
-  margin: 0 auto 30px;
-  font-size: 20px;
+  margin: 0 auto 2rem;
+  font-size: 1.25rem;
   color: #fff;
 }
 .bs-docs-masthead .version {
-  margin-top: -15px;
-  margin-bottom: 30px;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
   color: #9783b9;
 }
 .bs-docs-masthead .btn {
   width: 100%;
-  padding: 15px 30px;
-  font-size: 20px;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
 }
 @media (min-width: 480px) {
   .bs-docs-masthead .btn {
@@ -375,19 +375,19 @@ body {
 }
 @media (min-width: 768px) {
   .bs-docs-masthead {
-    padding: 80px 0;
+    padding: 5rem 0;
   }
   .bs-docs-masthead h1 {
-    font-size: 60px;
+    font-size: 4rem;
   }
   .bs-docs-masthead .lead {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
 }
 @media (min-width: 992px) {
   .bs-docs-masthead .lead {
     width: 80%;
-    font-size: 30px;
+    font-size: 2rem;
   }
 }
 .bs-docs-header {
