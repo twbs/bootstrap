@@ -77,7 +77,7 @@
 - title: JavaScript
   pages:
     - title: Overview
-    - title: Transititons
+    - title: Transitions
     - title: Modal
     - title: Dropdowns
     - title: Scrollspy
@@ -90,9 +90,9 @@
     - title: Carousel
     - title: Affix
 
-- title: Learn & Extend
-  pages:
-    - title: Approach
+# - title: Learn & Extend
+#   pages:
+#     - title: Approach
 
 - title: About
   pages:
