@@ -1,10 +1,7 @@
-<a id="helpers"></a>
-
-# Helper classes
-
-
-
-<a id="helpers-colors"></a>
+---
+layout: page
+title: Helper classes
+---
 
 ### Contextual colors
 
@@ -24,10 +21,6 @@ Convey meaning through color with a handful of emphasis utility classes. These m
   <p>Sometimes emphasis classes cannot be applied due to the specificity of another selector. In most cases, a sufficient workaround is to wrap your text in a <code>&lt;span&gt;</code> with the class.</p>
 </div>
 
-
-
-<a id="helpers-bgs"></a>
-
 ### Contextual backgrounds
 
 Similar to the contextual text color classes, easily set the background of an element to any contextual class. Anchor components will darken on hover, just like the text classes.
@@ -45,10 +38,6 @@ Similar to the contextual text color classes, easily set the background of an el
   <p>Sometimes contextual background classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a <code>&lt;div&gt;</code> with the class.</p>
 </div>
 
-
-
-<a id="helpers-close"></a>
-
 ### Close icon
 
 Use a generic close icon for dismissing content like modals and alerts. **Be sure to include screen reader text when you can** as we've done with `.sr-only`.
@@ -59,10 +48,6 @@ Use a generic close icon for dismissing content like modals and alerts. **Be sur
   <span class="sr-only">Close</span>
 </button>
 {% endexample %}
-
-
-
-<a id="helpers-floats"></a>
 
 ### Quick floats
 
@@ -96,10 +81,6 @@ Float an element to the left or right with a class. `!important` is included to 
   <p>To align components in navbars with utility classes, use <code>.navbar-left</code> or <code>.navbar-right</code> instead. <a href="../components/#navbar-component-alignment">See the navbar docs</a> for details.</p>
 </div>
 
-
-
-<a id="helpers-center"></a>
-
 ### Center content blocks
 
 Set an element to `display: block;` and center via `margin`. Available as a mixin and class.
@@ -121,10 +102,6 @@ Set an element to `display: block;` and center via `margin`. Available as a mixi
   .center-block();
 }
 {% endhighlight %}
-
-
-
-<a id="helpers-clearfix"></a>
 
 Easily clear `float`s by adding `.clearfix` **to the parent element**. Utilizes [the micro clearfix](http://nicolasgallagher.com/micro-clearfix-hack/) as popularized by Nicolas Gallagher. Can also be used as a mixin.
 
@@ -150,10 +127,6 @@ Easily clear `float`s by adding `.clearfix` **to the parent element**. Utilizes 
   .clearfix();
 }
 {% endhighlight %}
-
-
-
-<a id="helpers-toggles"></a>
 
 ### Showing and hiding content
 
@@ -188,10 +161,6 @@ Furthermore, `.invisible` can be used to toggle only the visibility of an elemen
 }
 {% endhighlight %}
 
-
-
-<a id="helpers-screen-readers"></a>
-
 ### Screen readers and keyboard navigation
 
 Hide an element to all devices **except screen readers** with `.sr-only`. Combine `.sr-only` with `.sr-only-focusable` to show the element again when it's focused (e.g. by a keyboard-only user). Necessary for following [accessibility best practices](../getting-started/#accessibility). Can also be used as mixins.
@@ -207,10 +176,6 @@ Hide an element to all devices **except screen readers** with `.sr-only`. Combin
   .sr-only-focusable();
 }
 {% endhighlight %}
-
-
-
-<a id="helpers-image-replacement"></a>
 
 ### Image replacement
 
