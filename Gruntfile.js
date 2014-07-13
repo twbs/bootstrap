@@ -307,7 +307,7 @@ module.exports = function (grunt) {
         },
         files: {
           'docs/_includes/customizer-variables.html': 'docs/_jade/customizer-variables.jade',
-          'docs/_includes/nav/customize.html': 'docs/_jade/customizer-nav.jade'
+          'docs/_includes/customize-nav.html': 'docs/_jade/customizer-nav.jade'
         }
       }
     },
