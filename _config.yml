@@ -35,3 +35,9 @@ cdn:
   css_theme:      //maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css
   js:             //maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js
   jquery:         //code.jquery.com/jquery-2.1.1.min.js
+
+bug:
+  firefox:        https://bugzilla.mozilla.org/show_bug.cgi?id=
+  webkit:         https://bugs.webkit.org/show_bug.cgi?id=
+  chrome:         https://code.google.com/p/chromium/issues/detail?id=
+  github:         https://github.com/twbs/bootstrap/issues/
