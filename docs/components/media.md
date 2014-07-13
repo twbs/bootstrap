@@ -1,3 +1,8 @@
+---
+layout: page
+title: Media
+---
+
 <div class="bs-docs-section">
   <h1 id="media" class="page-header">Media object</h1>
 

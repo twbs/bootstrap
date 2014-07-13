@@ -1,3 +1,8 @@
+---
+layout: page
+title: Input group
+---
+
 <div class="bs-docs-section">
   <h1 id="input-groups" class="page-header">Input groups</h1>
 

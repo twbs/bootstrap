@@ -1,3 +1,8 @@
+---
+layout: page
+title: Button group
+---
+
 <div class="bs-docs-section">
   <h1 id="btn-groups" class="page-header">Button groups</h1>
 

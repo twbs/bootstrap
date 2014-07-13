@@ -1,3 +1,8 @@
+---
+layout: page
+title: Page header
+---
+
 <div class="bs-docs-section">
   <h1 id="page-header" class="page-header">Page header</h1>
 

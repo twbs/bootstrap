@@ -1,3 +1,8 @@
+---
+layout: page
+title: List group
+---
+
 <div class="bs-docs-section">
   <h1 id="list-group" class="page-header">List group</h1>
 

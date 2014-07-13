@@ -1,3 +1,8 @@
+---
+layout: page
+title: Pagination
+---
+
 <div class="bs-docs-section">
   <h1 id="pagination" class="page-header">Pagination</h1>
 

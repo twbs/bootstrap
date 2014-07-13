@@ -1,3 +1,8 @@
+---
+layout: page
+title: Navbar
+---
+
 <div class="bs-docs-section">
   <h1 id="navbar" class="page-header">Navbar</h1>
 

@@ -1,3 +1,8 @@
+---
+layout: page
+title: Responsive embed
+---
+
 <div class="bs-docs-section">
   <h1 id="responsive-embed" class="page-header">Responsive embed</h1>
 
