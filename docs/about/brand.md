@@ -32,13 +32,13 @@ Download the Bootstrap mark in one of three styles, each available as an SVG fil
 
 <div class="bs-brand-logos">
   <div class="bs-brand-item">
-    <img class="svg" src="../assets/brand/bootstrap-solid.svg" alt="Bootstrap">
+    <img class="svg" src="{{ site.baseurl }}assets/brand/bootstrap-solid.svg" alt="Bootstrap">
   </div>
   <div class="bs-brand-item inverse">
-    <img class="svg" src="../assets/brand/bootstrap-outline.svg" alt="Bootstrap">
+    <img class="svg" src="{{ site.baseurl }}assets/brand/bootstrap-outline.svg" alt="Bootstrap">
   </div>
   <div class="bs-brand-item inverse">
-    <img class="svg" src="../assets/brand/bootstrap-punchout.svg" alt="Bootstrap">
+    <img class="svg" src="{{ site.baseurl }}assets/brand/bootstrap-punchout.svg" alt="Bootstrap">
   </div>
 </div>
 
