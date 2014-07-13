@@ -59,10 +59,10 @@
     - title: Tables
     - title: Forms
     - title: Buttons
-    - title: Button groups
-#    - title: Button dropdowns
-    - title: Input groups
-#    - title: Dropdowns
+    - title: Button group
+    - title: Button dropdown
+    - title: Input group
+    - title: Dropdowns
     - title: Badges
     - title: Navs
     - title: Navbar
@@ -70,7 +70,7 @@
     - title: Pagination
     - title: Alerts
     - title: Progress
-    - title: List
+    - title: List group
     - title: Responsive embed
     - title: Helpers
 
