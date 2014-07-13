@@ -277,6 +277,7 @@ body {
 }
 .bs-docs-footer {
   margin-top: 6rem;
+  font-size: 85%;
   color: #777;
   text-align: center;
   border-top: 1px solid #e5e5e5;
@@ -412,7 +413,7 @@ body {
 }
 @media (min-width: 768px) {
   .bs-docs-header {
-    font-size: 24px;
+    font-size: 1.5rem;
     text-align: left;
   }
   .bs-docs-header h1 {
@@ -433,8 +434,8 @@ body {
 .carbonad {
   width: auto !important;
   height: auto !important;
-  padding: 20px !important;
-  margin: 30px -30px -31px !important;
+  padding: 1.25rem !important;
+  margin: 2rem -2rem -2rem !important;
   overflow: hidden;
   /* clearfix */
   font-size: 13px !important;
@@ -491,10 +492,10 @@ body {
 @media (min-width: 992px) {
   .carbonad {
     position: absolute;
-    top: 30px;
-    right: 60px;
+    top: 2rem;
+    right: 4rem;
     width: 330px !important;
-    padding: 15px !important;
+    padding: 1rem !important;
     margin: 0 !important;
   }
   .bs-docs-masthead .carbonad {
@@ -502,9 +503,9 @@ body {
   }
 }
 .bs-docs-featurette {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  font-size: 16px;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  font-size: 1rem;
   line-height: 1.5;
   color: #555;
   text-align: center;
@@ -516,45 +517,45 @@ body {
   border-top: 0;
 }
 .bs-docs-featurette-title {
-  margin-bottom: 5px;
-  font-size: 30px;
+  margin-bottom: .5rem;
+  font-size: 2rem;
   font-weight: normal;
   color: #333;
 }
 .half-rule {
-  width: 100px;
-  margin: 40px auto;
+  width: 6rem;
+  margin: 2.5rem auto;
 }
 .bs-docs-featurette h3 {
-  margin-bottom: 5px;
+  margin-bottom: .5rem;
   font-weight: normal;
   color: #333;
 }
 .bs-docs-featurette-img {
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   color: #333;
 }
 .bs-docs-featurette-img:hover {
-  color: #428bca;
+  color: #027de7;
   text-decoration: none;
 }
 .bs-docs-featurette-img img {
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
 }
 @media (min-width: 480px) {
   .bs-docs-featurette .img-responsive {
-    margin-top: 30px;
+    margin-top: 2rem;
   }
 }
 @media (min-width: 768px) {
   .bs-docs-featurette {
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
   .bs-docs-featurette-title {
-    font-size: 40px;
+    font-size: 2.5rem;
   }
   .bs-docs-featurette .lead {
     max-width: 80%;
