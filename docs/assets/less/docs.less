@@ -31,28 +31,28 @@ body {
 //
 
 .btn-outline {
-  color: #563d7c;
+  color: @bs-purple;
   background-color: transparent;
-  border-color: #563d7c;
+  border-color: @bs-purple;
 
   &:hover,
   &:focus,
   &:active {
     color: #fff;
-    background-color: #563d7c;
-    border-color: #563d7c;
+    background-color:@bs-purple;
+    border-color: @bs-purple;
   }
 }
 
 .btn-outline-inverse {
   color: #fff;
   background-color: transparent;
-  border-color: #cdbfe3;
+  border-color: @bs-purple-light;
 
   &:hover,
   &:focus,
   &:active {
-    color: #563d7c;
+    color: @bs-purple;
     text-shadow: none;
     background-color: #fff;
     border-color: #fff;
@@ -74,16 +74,16 @@ body {
   color: #fff;
   text-align: center;
   cursor: default;
-  background-color: #563d7c;
+  background-color: @bs-purple;
   border-radius: 15%;
 
   &.inverse {
-    color: #563d7c;
+    color: @bs-purple;
     background-color: #fff;
   }
   &.outline {
     background-color: transparent;
-    border: 1px solid #cdbfe3;
+    border: 1px solid @bs-purple-light;
   }
 }
 
