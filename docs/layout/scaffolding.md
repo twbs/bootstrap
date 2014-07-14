@@ -35,3 +35,14 @@ For improved cross-browser rendering, we use [Normalize.css](http://necolas.gith
 ### jQuery plugins
 
 All our JavaScript plugins are built on top of jQuery.
+
+### Important CSS resets
+
+Still need to do this section. Should port the third party section about box sizing and edit it for here, then add the rest of the list items.
+
+Will also require rearranging the scaffolding.less file.
+
+- Box sizing
+- Form elements and their fonts
+- Global link colors
+- Responsive images
