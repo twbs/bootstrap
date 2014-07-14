@@ -45,6 +45,8 @@
 @enable-gradients:          true;
 @enable-transitions:        true;
 
+@spacer: 1rem;
+@border-width: .05rem;
 
 //== Typography
 //
@@ -88,7 +90,7 @@
 //## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
 
 @padding-base-vertical:     .5rem;
-@padding-base-horizontal:   1rem;
+@padding-base-horizontal:   .75rem;
 
 @padding-large-vertical:    .75rem;
 @padding-large-horizontal:  1.5rem;
@@ -102,7 +104,7 @@
 @line-height-large:         1.33;
 @line-height-small:         1.5;
 
-@border-radius-base:        .2rem;
+@border-radius-base:        .25rem;
 @border-radius-large:       .3rem;
 @border-radius-small:       .2rem;
 
@@ -122,7 +124,7 @@
 //## Customizes the `.table` component with basic values, each used across all table variations.
 
 //** Padding for `<th>`s and `<td>`s.
-@table-cell-padding:            .6rem;
+@table-cell-padding:            .5rem;
 //** Padding for cells in `.table-condensed`.
 @table-condensed-cell-padding:  .3rem;
 
@@ -135,7 +137,7 @@
 @table-bg-active:               @table-bg-hover;
 
 //** Border color for table and cell borders.
-@table-border-color:            #ddd;
+@table-border-color:            @gray-lighter;
 
 
 //== Buttons
@@ -194,11 +196,11 @@
 @input-color-placeholder:        #999;
 
 //** Default `.form-control` height
-@input-height-base:              ((@font-size-base * @line-height-base) + (@padding-base-vertical * 2) + .2);
+@input-height-base:              ((@font-size-base * @line-height-base) + (@padding-base-vertical * 2) + (@border-width * 2));
 //** Large `.form-control` height
-@input-height-large:             ((@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + .2);
+@input-height-large:             ((@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + (@border-width * 2));
 //** Small `.form-control` height
-@input-height-small:             ((@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + .2);
+@input-height-small:             ((@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + (@border-width * 2));
 
 @legend-color:                   @gray-dark;
 @legend-border-color:            #e5e5e5;
@@ -342,7 +344,7 @@
 // Inverted navbar
 // Reset inverted navbar basics
 @navbar-inverse-color:                      lighten(@gray-light, 12%);
-@navbar-inverse-bg:                         #222;
+@navbar-inverse-bg:                         #373a3c;
 @navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
 
 // Inverted navbar links
@@ -370,7 +372,7 @@
 //##
 
 //=== Shared nav styles
-@nav-link-padding:                          .5em 1em;
+@nav-link-padding:                          .6em 1em;
 @nav-link-hover-bg:                         @gray-lighter;
 
 @nav-disabled-link-color:                   @gray-light;

@@ -10,9 +10,10 @@
 
 .navbar {
   position: relative;
-  min-height: @navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
+  padding: @spacer;
+  /*min-height: @navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)*/
   margin-bottom: @navbar-margin-bottom;
-  border: 1px solid transparent;
+  /*border: 1px solid transparent;*/
 
   // Prevent floats from breaking the navbar
   &:extend(.clearfix all);
@@ -163,13 +164,15 @@
 
 .navbar-brand {
   float: left;
-  padding: @navbar-padding-vertical @navbar-padding-horizontal;
+  padding: .55rem .75rem;
+  margin-right: @spacer;
+  margin-bottom: 0; // For headings
   font-size: @font-size-large;
   line-height: @line-height-computed;
-  height: @navbar-height;
+  /*height: @navbar-height;*/
 
-  &:hover,
-  &:focus {
+  > a:hover,
+  > a:focus {
     text-decoration: none;
   }
 
@@ -177,13 +180,33 @@
     display: block;
   }
 
+/*
   @media (min-width: @grid-float-breakpoint) {
     .navbar > .container &,
     .navbar > .container-fluid & {
       margin-left: -@navbar-padding-horizontal;
     }
   }
+*/
 }
+
+// New hotness
+.navbar-toggler {
+  float: left;
+  padding: .55rem .75rem;
+  margin-right: @spacer;
+  margin-bottom: 0; // For headings
+  font-size: @font-size-large;
+  line-height: @line-height-computed;
+  background: none;
+  border: 0;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
 
 
 // Navbar toggle
@@ -223,6 +246,7 @@
     display: none;
   }
 }
+
 
 
 // Navbar nav links
@@ -523,6 +547,29 @@
 .navbar-inverse {
   background-color: @navbar-inverse-bg;
   border-color: @navbar-inverse-border;
+
+  .navbar-brand > a,
+  .nav-pills > .nav-item > .nav-link {
+    color: @navbar-inverse-link-color;
+
+    &:hover,
+    &:focus {
+      color: @navbar-inverse-link-hover-color;
+    }
+  }
+  .nav-pills > .nav-item > .nav-link {
+    &:hover,
+    &:focus {
+      color: @navbar-inverse-link-active-color;
+      background-color: @navbar-inverse-link-active-bg;
+    }
+  }
+  .nav-pills > .active > .nav-link,
+  .nav-pills > .nav-link.active {
+    color: @navbar-inverse-link-active-color;
+    background-color: @navbar-inverse-link-active-bg;
+  }
+
 
   .navbar-brand {
     color: @navbar-inverse-brand-color;
