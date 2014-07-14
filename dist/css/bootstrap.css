@@ -579,6 +579,12 @@ a.bg-warning:hover {
 a.bg-danger:hover {
   background-color: #e4b9b9;
 }
+.bg-gray-dark {
+  background-color: #373a3c;
+}
+a.bg-gray-dark:hover {
+  background-color: #1f2021;
+}
 ul,
 ol {
   margin-top: 0;
@@ -5074,6 +5080,21 @@ button.close {
 }
 .pull-left {
   float: left !important;
+}
+.inverse {
+  color: #eceeef;
+  background-color: #373a3c;
+}
+.p-a {
+  padding: 1rem;
+}
+.p-h {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+.p-v {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .show {
   display: block !important;
