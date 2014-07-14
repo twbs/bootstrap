@@ -45,23 +45,3 @@ These styles can be found within `scaffolding.less`.
 ### Normalize
 
 For improved cross-browser rendering, we use [Normalize.css](http://necolas.github.io/normalize.css/) to correct small inconsistencies across browsers and devices.
-
-### Containers
-
-Bootstrap requires a containing element to wrap site contents and house our grid system. You may choose one of two containers to use in your projects. Note that, due to `padding` and more, neither container is nestable.
-
-Use `.container` for a responsive fixed width container.
-
-{% highlight html %}
-<div class="container">
-  ...
-</div>
-{% endhighlight %}
-
-Use `.container-fluid` for a full width container, spanning the entire width of your viewport.
-
-{% highlight html %}
-<div class="container-fluid">
-  ...
-</div>
-{% endhighlight %}
