@@ -5,6 +5,17 @@ title: Typography
 
 Bootstrap includes simple and easily customized typography across the project. In addition to the standard headings, body text, and lists, utility classes are also included.
 
+## Global settings
+
+Bootstrap sets basic global display, typography, and link styles. Specifically, we:
+
+- Set `background-color: #fff;` on the `<body>`
+- Use the `@font-family-base`, `@font-size-base`, and `@line-height-base` attributes as our typographic base
+- Set the global link color via `@link-color` and apply link underlines only on `:hover`
+
+These styles can be found within `scaffolding.less`.
+
+
 ## Headings
 
 All HTML headings, `<h1>` through `<h6>`, are available. `.h1` through `.h6` classes are also available, for when you want to match the font styling of a heading but still want your text to be displayed inline.
