@@ -53,6 +53,17 @@ Build on the basic template above with Bootstrap's many components. We encourage
 
 <div class="row bs-examples">
   <div class="col-xs-6 col-md-4">
+    <a href="{{ site.baseurl }}examples/navbar-top/">
+      <h4>New top navbar</h4>
+    </a>
+  </div>
+  <div class="col-xs-6 col-md-4">
+    <a href="{{ site.baseurl }}examples/navbar-top-fixed/">
+      <h4>New fixed top navbar</h4>
+    </a>
+  </div>
+
+  <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}examples/navbar/">
       <img class="img-thumbnail" src="{{ site.baseurl }}examples/screenshots/navbar.jpg" alt="">
     </a>
