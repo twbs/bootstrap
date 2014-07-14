@@ -143,7 +143,7 @@
 @btn-font-weight:                normal;
 
 @btn-default-color:              #333;
-@btn-default-bg:                 #fff;
+@btn-default-bg:                 @state-base-bg;
 @btn-default-border:             #ccc;
 
 @btn-primary-color:              #fff;
@@ -211,7 +211,7 @@
 //## Dropdown menu container and contents.
 
 //** Background for the dropdown menu.
-@dropdown-bg:                    #fff;
+@dropdown-bg:                    @state-base-bg;
 //** Dropdown menu `border-color`.
 @dropdown-border:                rgba(0,0,0,.15);
 //** Dropdown menu `border-color` **for IE8**.
@@ -476,6 +476,8 @@
 //
 //## Define colors for form feedback states and, by default, alerts.
 
+//## Defines the base background color for components
+@state-base-bg:					 #fff;
 @state-success-text:             #3c763d;
 @state-success-bg:               #dff0d8;
 @state-success-border:           darken(spin(@state-success-bg, -10), 5%);
@@ -516,7 +518,7 @@
 //##
 
 //** Popover body background color
-@popover-bg:                          #fff;
+@popover-bg:                          @state-base-bg;
 //** Popover maximum width
 @popover-max-width:                   276px;
 //** Popover border color
@@ -576,7 +578,7 @@
 @modal-title-line-height:     @line-height-base;
 
 //** Background color of modal content area
-@modal-content-bg:                             #fff;
+@modal-content-bg:                             @state-base-bg;
 //** Modal content border color
 @modal-content-border-color:                   rgba(0,0,0,.2);
 //** Modal content border color **for IE8**
@@ -647,7 +649,7 @@
 //##
 
 //** Background color on `.list-group-item`
-@list-group-bg:                 #fff;
+@list-group-bg:                 @state-base-bg;
 //** `.list-group-item` border color
 @list-group-border:             #ddd;
 //** List group border radius
@@ -680,7 +682,7 @@
 //
 //##
 
-@panel-bg:                    #fff;
+@panel-bg:                    @state-base-bg;
 @panel-body-padding:          15px;
 @panel-heading-padding:       10px 15px;
 @panel-footer-padding:        @panel-heading-padding;
