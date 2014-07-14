@@ -108,12 +108,13 @@ Proposal to replace the existing navbar with something simpler and more customiz
 </div>
 
 
-<div class="navbar navbar-default">
-  <div class="collapse" id="navbar-header">
+<div class="collapse" id="navbar-header">
+  <div class="inverse p-a">
     <h3>Collapsed content</h3>
     <p>Toggleable via the navbar brand.</p>
   </div>
-
+</div>
+<div class="navbar navbar-default">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-header">
     &#9776;
   </button>
