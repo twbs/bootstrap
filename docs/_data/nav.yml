@@ -18,6 +18,7 @@
 
 - title: Layout
   pages:
+    - title: Scaffolding
     - title: Containers
     - title: Grid
       sections:
