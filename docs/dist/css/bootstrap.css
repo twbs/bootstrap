@@ -1638,6 +1638,14 @@ table th[class*="col-"] {
     border-bottom: 0;
   }
 }
+.table > .thead-inverse > tr > th {
+  color: #fff;
+  background-color: #373a3c;
+}
+.table > .thead-default > tr > th {
+  color: #55595c;
+  background-color: #eceeef;
+}
 fieldset {
   min-width: 0;
   padding: 0;
