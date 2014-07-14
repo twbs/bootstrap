@@ -1404,8 +1404,8 @@ table {
   background-color: transparent;
 }
 caption {
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
   color: #818a91;
   text-align: left;
 }
@@ -1423,7 +1423,7 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: .5rem;
+  padding: .75rem;
   line-height: 1.5;
   vertical-align: top;
   border-top: 1px solid #eceeef;
@@ -1645,6 +1645,19 @@ table th[class*="col-"] {
 .table > .thead-default > tr > th {
   color: #55595c;
   background-color: #eceeef;
+}
+.table-inverse {
+  color: #eceeef;
+  background-color: #373a3c;
+}
+.table-inverse.table-bordered {
+  border: 0;
+}
+.table-inverse > thead > tr > th,
+.table-inverse > tbody > tr > th,
+.table-inverse > thead > tr > td,
+.table-inverse > tbody > tr > td {
+  border-color: #55595c;
 }
 fieldset {
   min-width: 0;

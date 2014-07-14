@@ -246,3 +246,21 @@ table {
   }
 }
 
+.table-inverse {
+  color: @gray-lighter;
+  background-color: @gray-dark;
+
+  &.table-bordered {
+    border: 0;
+  }
+
+  > thead,
+  > tbody {
+    > tr {
+      > th,
+      > td {
+        border-color: @gray;
+      }
+    }
+  }
+}
