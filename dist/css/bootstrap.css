@@ -3967,19 +3967,14 @@ a.list-group-item.active > .badge,
   margin-left: 3px;
 }
 .jumbotron {
-  padding: 30px;
-  margin-bottom: 30px;
+  padding: 2rem;
+  margin-bottom: 2rem;
   color: inherit;
   background-color: #eceeef;
 }
 .jumbotron h1,
 .jumbotron .h1 {
   color: inherit;
-}
-.jumbotron p {
-  margin-bottom: 15px;
-  font-size: 2rem;
-  font-weight: 200;
 }
 .jumbotron > hr {
   border-top-color: #d0d5d8;
@@ -3992,12 +3987,12 @@ a.list-group-item.active > .badge,
 }
 @media screen and (min-width: 48em) {
   .jumbotron {
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding-top: 3.2rem;
+    padding-bottom: 3.2rem;
   }
   .container .jumbotron {
-    padding-right: 60px;
-    padding-left: 60px;
+    padding-right: 4rem;
+    padding-left: 4rem;
   }
   .jumbotron h1,
   .jumbotron .h1 {
@@ -5095,6 +5090,13 @@ button.close {
 .p-v {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+.pos-f-t {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
 }
 .show {
   display: block !important;
