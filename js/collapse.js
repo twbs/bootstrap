@@ -54,6 +54,7 @@
     this.$element
       .removeClass('collapse')
       .addClass('collapsing')[dimension](0)
+      .attr('aria-expanded','true')
 
     this.transitioning = 1
 
@@ -89,6 +90,7 @@
     this.$element
       .addClass('collapsing')
       .removeClass('collapse in')
+      .attr('aria-expanded','false')
 
     this.transitioning = 1
 
