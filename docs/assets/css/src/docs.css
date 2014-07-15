@@ -1404,7 +1404,8 @@ h1[id] {
   font-weight: normal;
   color: #333;
 }
-/*.bs-dropzone*/ #import-manual-trigger {
+/*.bs-dropzone*/
+#import-manual-trigger {
   cursor: pointer;
 }
 .bs-dropzone p:last-child {
