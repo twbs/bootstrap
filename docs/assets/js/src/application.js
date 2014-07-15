@@ -97,9 +97,8 @@
     $('.tooltip-test').tooltip()
     $('.popover-test').popover()
 
-    // Default & dismissible popover demos
+    // Popover demos
     $('.bs-docs-popover').popover()
-    $('.bs-docs-popover-dismiss').popover({ trigger: 'focus' })
 
     // Button state demo
     $('#loading-example-btn').click(function () {

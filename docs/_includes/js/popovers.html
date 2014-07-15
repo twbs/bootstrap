@@ -24,6 +24,10 @@
     <h4>Popovers on disabled elements require wrapper elements</h4>
     <p>To add a popover to a <code>disabled</code> or <code>.disabled</code> element, put the element inside of a <code>&lt;div&gt;</code> and apply the popover to that <code>&lt;div&gt;</code> instead.</p>
   </div>
+  <div class="bs-callout bs-callout-info">
+    <h4>Multiple-line links</h4>
+    <p>Sometimes you want to add a popover to a hyperlink that wraps multiple lines. The default behavior of the popover plugin is to center it horizontally and vertically. Add <code>white-space: nowrap;</code> to your anchors to avoid this.</p>
+  </div>
 
   <h3>Static popover</h3>
   <p>Four options are available: top, right, bottom, and left aligned.</p>
@@ -110,22 +114,16 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
 
   <h4>Dismiss on next click</h4>
   <p>Use the <code>focus</code> trigger to dismiss popovers on the next click that the user makes.</p>
+  <div class="bs-callout bs-callout-danger">
+    <h4>Specific markup required for dismiss-on-next-click</h4>
+    <p>For proper cross-browser and cross-platform behavior, you must use the <code>&lt;a&gt;</code> tag, <i>not</i> the <code>&lt;button&gt;</code> tag, and you also must include a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#tabindex"><code>tabindex</code></a> attribute.</p>
+  </div>
   <div class="bs-example" style="padding-bottom: 24px;">
-    <button type="button" class="btn btn-lg btn-danger bs-docs-popover-dismiss" data-toggle="popover" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</button>
+    <a href="#" tabindex="0" class="btn btn-lg btn-danger bs-docs-popover" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
   </div>
 {% highlight html %}
-<button type="button" class="btn btn-lg btn-danger popover-dismiss" data-toggle="popover" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</button>
+<a href="#" tabindex="0" class="btn btn-lg btn-danger" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
 {% endhighlight %}
-{% highlight js %}
-$('.popover-dismiss').popover({
-  trigger: 'focus'
-})
-{% endhighlight %}
-
-  <div class="bs-callout bs-callout-warning">
-    <h4>Multiple-line links</h4>
-    <p>Sometimes you want to add a popover to a hyperlink that wraps multiple lines. The default behavior of the popover plugin is to center it horizontally and vertically. Add <code>white-space: nowrap;</code> to your anchors to avoid this.</p>
-  </div>
 
 
   <h2 id="popovers-usage">Usage</h2>
