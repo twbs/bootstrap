@@ -75,7 +75,7 @@ $(function () {
   test('should remove "collapsed" class from target when collapse is shown', function () {
     stop()
 
-    var $target = $('<a data-toggle="collapse" href="#test1"/>').appendTo('#qunit-fixture')
+    var $target = $('<a data-toggle="collapse" class="collapsed" href="#test1"/>').appendTo('#qunit-fixture')
 
     $('<div id="test1"/>')
       .appendTo('#qunit-fixture')
@@ -193,6 +193,69 @@ $(function () {
         ok($target1.hasClass('collapsed'), 'inactive target 1 does have class "collapsed"')
         ok($target2.hasClass('collapsed'), 'inactive target 2 does have class "collapsed"')
         ok(!$target3.hasClass('collapsed'), 'active target 3 does not have class "collapsed"')
+
+        start()
+      })
+
+    $target3.click()
+  })
+
+  test('should set aria-expanded="true" on target when collapse is shown', function () {
+    stop()
+
+    var $target = $('<a data-toggle="collapse" class="collapsed" href="#test1" aria-expanded="false"/>').appendTo('#qunit-fixture')
+
+    $('<div id="test1"/>')
+      .appendTo('#qunit-fixture')
+      .on('show.bs.collapse', function () {
+        equal($target.attr('aria-expanded'), 'true', 'aria-expanded on target is "true"')
+        start()
+      })
+
+    $target.click()
+  })
+
+  test('should set aria-expanded="false" on target when collapse is hidden', function () {
+    stop()
+
+    var $target = $('<a data-toggle="collapse" href="#test1" aria-expanded="true"/>').appendTo('#qunit-fixture')
+
+    $('<div id="test1" class="in"/>')
+      .appendTo('#qunit-fixture')
+      .on('hide.bs.collapse', function () {
+        equal($target.attr('aria-expanded'), 'false', 'aria-expanded on target is "false"')
+        start()
+      })
+
+    $target.click()
+  })
+
+  test('should change aria-expanded from active accordion target to "false" and set the newly active one to "true"', function () {
+    stop()
+
+    var accordionHTML = '<div id="accordion">'
+        + '<div class="accordion-group"/>'
+        + '<div class="accordion-group"/>'
+        + '<div class="accordion-group"/>'
+        + '</div>'
+    var $groups = $(accordionHTML).appendTo('#qunit-fixture').find('.accordion-group')
+
+    var $target1 = $('<a data-toggle="collapse" href="#body1" data-parent="#accordion"/>').appendTo($groups.eq(0))
+
+    $('<div id="body1" aria-expanded="true" class="in"/>').appendTo($groups.eq(0))
+
+    var $target2 = $('<a class="collapsed" data-toggle="collapse" href="#body2" data-parent="#accordion"/>').appendTo($groups.eq(1))
+
+    $('<div id="body2" aria-expanded="false"/>').appendTo($groups.eq(1))
+
+    var $target3 = $('<a class="collapsed" data-toggle="collapse" href="#body3" data-parent="#accordion"/>').appendTo($groups.eq(2))
+
+    $('<div id="body3" aria-expanded="false"/>')
+      .appendTo($groups.eq(2))
+      .on('show.bs.collapse', function () {
+        equal($target1.attr('aria-expanded'), 'false', 'inactive target 1 has aria-expanded="false"')
+        equal($target2.attr('aria-expanded'), 'false', 'inactive target 2 has aria-expanded="false"')
+        equal($target3.attr('aria-expanded'), 'true', 'active target 3 has aria-expanded="false"')
 
         start()
       })
