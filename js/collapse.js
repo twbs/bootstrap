@@ -54,7 +54,7 @@
     this.$element
       .removeClass('collapse')
       .addClass('collapsing')[dimension](0)
-      .attr('aria-expanded',true)
+      .attr('aria-expanded', true)
 
     this.transitioning = 1
 
@@ -90,7 +90,7 @@
     this.$element
       .addClass('collapsing')
       .removeClass('collapse in')
-      .attr('aria-expanded',false)
+      .attr('aria-expanded', false)
 
     this.transitioning = 1
 
@@ -161,11 +161,11 @@
     var $parent = parent && $(parent)
 
     if (!data || !data.transitioning) {
-      if ($parent) $parent.find('[data-toggle="collapse"][data-parent="' + parent + '"]').not($this).addClass('collapsed').attr('aria-expanded',false)
+      if ($parent) $parent.find('[data-toggle="collapse"][data-parent="' + parent + '"]').not($this).addClass('collapsed').attr('aria-expanded', false)
       if ($target.hasClass('in')) {
-        $this.addClass('collapsed').attr('aria-expanded',false)
+        $this.addClass('collapsed').attr('aria-expanded', false)
       } else {
-        $this.removeClass('collapsed').attr('aria-expanded',true)
+        $this.removeClass('collapsed').attr('aria-expanded', true)
       }
     }
 
