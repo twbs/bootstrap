@@ -35,7 +35,7 @@ body {
 .panel-docs .panel-body h3 {
   font-family: "GothamMedium", Helvetica, Arial, sans-serif;
   font-weight: normal;
-  margin-top:0;
+  margin-top:10px;
   position:relative;
   top:-10px;
 }
@@ -271,6 +271,26 @@ ul.affix-bottom {
 
 
 
+
+/* colores */
+
+.docs-colores {
+  padding-bottom:40px;
+  float:left;
+}
+.docs-colores span {
+  color: #fff;
+  text-align:center;
+  margin:0 20px 20px 20px;
+  width:110px;
+  height:110px;
+  border-radius:110px;
+  padding-top:45px;
+  display:block;
+  float:left;
+  font-family: "OpenSansSemiBold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
 
 
 
