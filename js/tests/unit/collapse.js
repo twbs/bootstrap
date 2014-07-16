@@ -110,7 +110,7 @@ $(function () {
     $('<div id="test1"/>')
       .appendTo('#qunit-fixture')
       .on('show.bs.collapse', function () {
-        equal($target.attr('aria-expanded'),'true','aria-expanded on target is "true"')
+        equal($target.attr('aria-expanded'), 'true', 'aria-expanded on target is "true"')
         start()
       })
 
@@ -125,7 +125,7 @@ $(function () {
     $('<div id="test1" class="in"/>')
       .appendTo('#qunit-fixture')
       .on('hide.bs.collapse', function () {
-        equal($target.attr('aria-expanded'),'false','aria-expanded on target is "false"')
+        equal($target.attr('aria-expanded'), 'false', 'aria-expanded on target is "false"')
         start()
       })
 
@@ -188,9 +188,9 @@ $(function () {
     $('<div id="body3" aria-expanded="false"/>')
       .appendTo($groups.eq(2))
       .on('show.bs.collapse', function () {
-        equal($target1.attr('aria-expanded'),'false','inactive target 1 has aria-expanded="false"')
-        equal($target2.attr('aria-expanded'),'false','inactive target 2 has aria-expanded="false"')
-        equal($target3.attr('aria-expanded'),'true','active target 3 has aria-expanded="false"')
+        equal($target1.attr('aria-expanded'), 'false', 'inactive target 1 has aria-expanded="false"')
+        equal($target2.attr('aria-expanded'), 'false', 'inactive target 2 has aria-expanded="false"')
+        equal($target3.attr('aria-expanded'), 'true', 'active target 3 has aria-expanded="false"')
 
         start()
       })
