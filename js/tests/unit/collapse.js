@@ -110,7 +110,7 @@ $(function () {
     $('<div id="test1"/>')
       .appendTo('#qunit-fixture')
       .on('show.bs.collapse', function () {
-        ok(!$target.attr('aria-expanded') == 'true')
+        ok($target.attr('aria-expanded') == 'true')
         start()
       })
 
