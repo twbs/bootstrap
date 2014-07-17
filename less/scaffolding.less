@@ -9,11 +9,11 @@
 // For recommendations on resolving such conflicts, see
 // http://getbootstrap.com/getting-started/#third-box-sizing
 * {
-  .box-sizing(border-box);
+  .box-sizing(inherit);
 }
 *:before,
 *:after {
-  .box-sizing(border-box);
+  .box-sizing(inherit);
 }
 
 
@@ -22,6 +22,7 @@
 html {
   font-size: 10px;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+  .box-sizing(border-box);
 }
 
 body {
