@@ -202,134 +202,6 @@ $(function () {
       .bootstrapTooltip('show')
   })
 
-  test('should not show tooltip if leave event occurs before delay expires', function () {
-    stop()
-
-    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
-      .appendTo('#qunit-fixture')
-      .bootstrapTooltip({ delay: 200 })
-
-    setTimeout(function () {
-      ok(!$('.tooltip').is('.fade.in'), '100ms: tooltip not faded in')
-      $tooltip.trigger('mouseout')
-    }, 100)
-
-    setTimeout(function () {
-      ok(!$('.tooltip').is('.fade.in'), '300ms: tooltip not faded in')
-      start()
-    }, 300)
-
-    $tooltip.trigger('mouseenter')
-  })
-
-  test('should not show tooltip if leave event occurs before delay expires, even if hide delay is 0', function () {
-    stop()
-
-    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
-      .appendTo('#qunit-fixture')
-      .bootstrapTooltip({ delay: { show: 200, hide: 0 }})
-
-    setTimeout(function () {
-      ok(!$('.tooltip').is('.fade.in'), '100ms: tooltip not faded in')
-      $tooltip.trigger('mouseout')
-    }, 100)
-
-    setTimeout(function () {
-      ok(!$('.tooltip').is('.fade.in'), '300ms: tooltip not faded in')
-      start()
-    }, 300)
-
-    $tooltip.trigger('mouseenter')
-  })
-
-  test('should wait 200 ms before hiding the tooltip', function () {
-    stop()
-
-    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
-      .appendTo('#qunit-fixture')
-      .bootstrapTooltip({ delay: { show: 0, hide: 200 }})
-
-    setTimeout(function () {
-      ok($('.tooltip').is('.fade.in'), '1ms: tooltip faded in')
-      $tooltip.trigger('mouseout')
-    }, 1)
-
-    setTimeout(function () {
-      ok($('.tooltip').is('.fade.in'), '100ms: tooltip still faded in')
-    }, 100)
-
-    setTimeout(function () {
-      ok(!$('.tooltip').is('.in'), '250ms: tooltip removed')
-      start()
-    }, 250)
-
-    $tooltip.trigger('mouseenter')
-  })
-
-  test('should not hide tooltip if leave event occurs and enter event occurs within the hide delay', function () {
-    stop()
-
-    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
-      .appendTo('#qunit-fixture')
-      .bootstrapTooltip({ delay: { show: 0, hide: 200 }})
-
-    setTimeout(function () {
-      ok($('.tooltip').is('.fade.in'), '1ms: tooltip faded in')
-      $tooltip.trigger('mouseout')
-    }, 1)
-
-    setTimeout(function () {
-      ok($('.tooltip').is('.fade.in'), '100ms: tooltip still faded in')
-      $tooltip.trigger('mouseenter')
-    }, 100)
-
-    setTimeout(function () {
-      ok($('.tooltip').is('.fade.in'), '250ms: tooltip still faded in')
-      start()
-    }, 250)
-
-    $tooltip.trigger('mouseenter')
-  })
-
-  test('should not show tooltip if leave event occurs before delay expires', function () {
-    stop()
-
-    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
-      .appendTo('#qunit-fixture')
-      .bootstrapTooltip({ delay: 100 })
-
-    setTimeout(function () {
-      ok(!$('.tooltip').is('.fade.in'), '50ms: tooltip not faded in')
-      $tooltip.trigger('mouseout')
-    }, 50)
-
-    setTimeout(function () {
-      ok(!$('.tooltip').is('.fade.in'), '100ms: tooltip not faded in')
-      start()
-    }, 100)
-
-    $tooltip.trigger('mouseenter')
-  })
-
-  test('should show tooltip if leave event hasn\'t occured before delay expires', function () {
-    stop()
-
-    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
-      .appendTo('#qunit-fixture')
-      .bootstrapTooltip({ delay: 150 })
-
-    setTimeout(function () {
-      ok(!$('.tooltip').is('.fade.in'), '100ms: tooltip is not faded in')
-    }, 100)
-
-    setTimeout(function () {
-      ok($('.tooltip').is('.fade.in'), '200ms: tooltip is faded in')
-      start()
-    }, 200)
-
-    $tooltip.trigger('mouseenter')
-  })
-
   test('should destroy tooltip', function () {
     var $tooltip = $('<div/>')
       .bootstrapTooltip()
@@ -395,76 +267,6 @@ $(function () {
     equal($('body > .tooltip').length, 0, 'tooltip was removed from dom')
   })
 
-  test('should place tooltip inside viewport', function () {
-    stop()
-
-    var $container = $('<div/>')
-      .css({
-        position: 'absolute',
-        width: 200,
-        height: 200,
-        bottom: 0,
-        left: 0
-      })
-      .appendTo(document.body)
-
-    $('<a href="#" title="Very very very very very very very very long tooltip">Hover me</a>')
-      .css({
-        position: 'absolute',
-        top: 0,
-        left: 0
-      })
-      .appendTo($container)
-      .bootstrapTooltip({
-        placement: 'top',
-        animate: false
-      })
-      .bootstrapTooltip('show')
-
-    setTimeout(function () {
-      ok($('.tooltip').offset().left >= 0)
-      $container.remove()
-      start()
-    }, 100)
-  })
-
-  test('should place tooltip on top of element', function () {
-    stop()
-
-    var containerHTML = '<div>'
-        + '<p style="margin-top: 200px">'
-        + '<a href="#" title="very very very very very very very long tooltip">Hover me</a>'
-        + '</p>'
-        + '</div>'
-    var $container = $(containerHTML)
-      .css({
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        textAlign: 'right',
-        width: 300,
-        height: 300
-      })
-      .appendTo(document.body)
-
-    var $trigger = $container
-      .find('a')
-      .css('margin-top', 200)
-      .bootstrapTooltip({
-        placement: 'top',
-        animate: false
-      })
-      .bootstrapTooltip('show')
-
-    var $tooltip = $container.find('.tooltip')
-
-    setTimeout(function () {
-      ok(Math.round($tooltip.offset().top + $tooltip.outerHeight()) <= Math.round($trigger.offset().top))
-      $container.remove()
-      start()
-    }, 100)
-  })
-
   test('should add position class before positioning so that position-specific styles are taken into account', function () {
     var styles = '<style>'
         + '.tooltip.right { white-space: nowrap; }'
@@ -472,7 +274,7 @@ $(function () {
         + '</style>'
     var $styles = $(styles).appendTo('head')
 
-    var $container = $('<div/>').appendTo(document.body)
+    var $container = $('<div/>').appendTo('#qunit-fixture')
     var $target = $('<a href="#" rel="tooltip" title="very very very very very very very very long tooltip in one line"/>')
       .appendTo($container)
       .bootstrapTooltip({
@@ -587,7 +389,7 @@ $(function () {
         + '</style>'
     var $styles = $(styles).appendTo('head')
 
-    var $container = $('<div/>').appendTo(document.body)
+    var $container = $('<div/>').appendTo('#qunit-fixture')
     var $target = $('<a href="#" rel="tooltip" title="tip" style="top: 0px; left: 0px;"/>')
       .appendTo($container)
       .bootstrapTooltip({
@@ -604,7 +406,6 @@ $(function () {
     $target.bootstrapTooltip('hide')
     equal($('.tooltip').length, 0, 'tooltip removed from dom')
 
-    $container.remove()
     $styles.remove()
   })
 
@@ -615,7 +416,7 @@ $(function () {
         + '</style>'
     var $styles = $(styles).appendTo('head')
 
-    var $container = $('<div/>').appendTo(document.body)
+    var $container = $('<div/>').appendTo('#qunit-fixture')
     var $target = $('<a href="#" rel="tooltip" title="tip" style="bottom: 0px; left: 0px;"/>')
       .appendTo($container)
       .bootstrapTooltip({
@@ -644,7 +445,7 @@ $(function () {
         + '</style>'
     var $styles = $(styles).appendTo('head')
 
-    var $container = $('<div/>').appendTo(document.body)
+    var $container = $('<div/>').appendTo('#qunit-fixture')
     var $target = $('<a href="#" rel="tooltip" title="tip" style="top: 0px; left: 0px;"/>')
       .appendTo($container)
       .bootstrapTooltip({
@@ -739,4 +540,203 @@ $(function () {
 
     ok(passed, '.tooltip(\'show\') should not throw an error if element no longer is in dom')
   })
+
+  test('should place tooltip on top of element', function () {
+    stop()
+
+    var containerHTML = '<div>'
+        + '<p style="margin-top: 200px">'
+        + '<a href="#" title="very very very very very very very long tooltip">Hover me</a>'
+        + '</p>'
+        + '</div>'
+
+    var $container = $(containerHTML)
+      .css({
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        textAlign: 'right',
+        width: 300,
+        height: 300
+      })
+      .appendTo('#qunit-fixture')
+
+    var $trigger = $container
+      .find('a')
+      .css('margin-top', 200)
+      .bootstrapTooltip({
+        placement: 'top',
+        animate: false
+      })
+      .bootstrapTooltip('show')
+
+    var $tooltip = $container.find('.tooltip')
+
+    setTimeout(function () {
+      ok(Math.round($tooltip.offset().top + $tooltip.outerHeight()) <= Math.round($trigger.offset().top))
+      start()
+    }, 0)
+  })
+
+  test('should place tooltip inside viewport', function () {
+    stop()
+
+    var $container = $('<div/>')
+      .css({
+        position: 'absolute',
+        width: 200,
+        height: 200,
+        bottom: 0,
+        left: 0
+      })
+      .appendTo('#qunit-fixture')
+
+    $('<a href="#" title="Very very very very very very very very long tooltip">Hover me</a>')
+      .css({
+        position: 'absolute',
+        top: 0,
+        left: 0
+      })
+      .appendTo($container)
+      .bootstrapTooltip({
+        placement: 'top'
+      })
+      .bootstrapTooltip('show')
+
+    setTimeout(function () {
+      ok($('.tooltip').offset().left >= 0)
+      start()
+    }, 0)
+  })
+
+  test('should show tooltip if leave event hasn\'t occured before delay expires', function () {
+    stop()
+
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({ delay: 15 })
+
+    setTimeout(function () {
+      ok(!$('.tooltip').is('.fade.in'), '10ms: tooltip is not faded in')
+    }, 10)
+
+    setTimeout(function () {
+      ok($('.tooltip').is('.fade.in'), '20ms: tooltip is faded in')
+      start()
+    }, 20)
+
+    $tooltip.trigger('mouseenter')
+  })
+
+  test('should not show tooltip if leave event occurs before delay expires', function () {
+    stop()
+
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({ delay: 15 })
+
+    setTimeout(function () {
+      ok(!$('.tooltip').is('.fade.in'), '10ms: tooltip not faded in')
+      $tooltip.trigger('mouseout')
+    }, 10)
+
+    setTimeout(function () {
+      ok(!$('.tooltip').is('.fade.in'), '20ms: tooltip not faded in')
+      start()
+    }, 20)
+
+    $tooltip.trigger('mouseenter')
+  })
+
+  test('should not hide tooltip if leave event occurs and enter event occurs within the hide delay', function () {
+    stop()
+
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({ delay: { show: 0, hide: 15 }})
+
+    setTimeout(function () {
+      ok($('.tooltip').is('.fade.in'), '1ms: tooltip faded in')
+      $tooltip.trigger('mouseout')
+
+      setTimeout(function () {
+        ok($('.tooltip').is('.fade.in'), '10ms: tooltip still faded in')
+        $tooltip.trigger('mouseenter')
+      }, 10)
+
+      setTimeout(function () {
+        ok($('.tooltip').is('.fade.in'), '20ms: tooltip still faded in')
+        start()
+      }, 20)
+    }, 0)
+
+    $tooltip.trigger('mouseenter')
+  })
+
+  test('should not show tooltip if leave event occurs before delay expires', function () {
+    stop()
+
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({ delay: 15 })
+
+    setTimeout(function () {
+      ok(!$('.tooltip').is('.fade.in'), '10ms: tooltip not faded in')
+      $tooltip.trigger('mouseout')
+    }, 10)
+
+    setTimeout(function () {
+      ok(!$('.tooltip').is('.fade.in'), '20ms: tooltip not faded in')
+      start()
+    }, 20)
+
+    $tooltip.trigger('mouseenter')
+  })
+
+  test('should not show tooltip if leave event occurs before delay expires, even if hide delay is 0', function () {
+    stop()
+
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({ delay: { show: 15, hide: 0 }})
+
+    setTimeout(function () {
+      ok(!$('.tooltip').is('.fade.in'), '10ms: tooltip not faded in')
+      $tooltip.trigger('mouseout')
+    }, 10)
+
+    setTimeout(function () {
+      ok(!$('.tooltip').is('.fade.in'), '25ms: tooltip not faded in')
+      start()
+    }, 25)
+
+    $tooltip.trigger('mouseenter')
+  })
+
+  test('should wait 20ms before hiding the tooltip', function () {
+    stop()
+
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({ delay: { show: 0, hide: 15 }})
+
+    setTimeout(function () {
+      ok($tooltip.data('bs.tooltip').$tip.is('.fade.in'), '1ms: tooltip faded in')
+
+      $tooltip.trigger('mouseout')
+
+      setTimeout(function () {
+        ok($tooltip.data('bs.tooltip').$tip.is('.fade.in'), '10ms: tooltip still faded in')
+      }, 10)
+
+      setTimeout(function () {
+        ok(!$tooltip.data('bs.tooltip').$tip.is('.in'), '20ms: tooltip removed')
+        start()
+      }, 20)
+
+    }, 0)
+
+    $tooltip.trigger('mouseenter')
+  })
+
 })
