@@ -3,27 +3,23 @@
 // --------------------------------------------------
 
 
-// Reset the box-sizing
-//
-// Heads up! This reset may cause conflicts with some third-party widgets.
-// For recommendations on resolving such conflicts, see
-// http://getbootstrap.com/getting-started/#third-box-sizing
-* {
-  .box-sizing(border-box);
-}
-*:before,
-*:after {
-  .box-sizing(border-box);
-}
-
-
-// Body reset
+// Reset the box-sizing using inherit
+// Plays nicely with third-party widgets
+// http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
 
 html {
+  .box-sizing(border-box);
   font-size: 10px;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
+*,
+*:before,
+*:after {
+  .box-sizing(inherit);
+}
+
+// Body reset
 body {
   font-family: @font-family-base;
   font-size: @font-size-base;
