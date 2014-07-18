@@ -117,7 +117,7 @@ a.list-group-item,
 .btn-default:focus,
 .btn-default:hover,
 .open > .dropdown-toggle.btn-default {
-  color:#777;
+  color:#999;
 }
 
 
@@ -144,12 +144,6 @@ a.list-group-item,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus,
 .navbar-primary,
-.pagination > .active > a,
-.pagination > .active > a:focus,
-.pagination > .active > a:hover,
-.pagination > .active > span,
-.pagination > .active > span:focus,
-.pagination > .active > span:hover,
 .progress-bar,
 .list-group-item.active,
 .list-group-item.active:hover,
@@ -157,7 +151,10 @@ a.list-group-item,
 a.list-group-item.active,
 a.list-group-item.active:hover,
 a.list-group-item.active:focus,
-.panel-primary > .panel-heading {
+.panel-primary > .panel-heading,
+.btn-gcba,
+.open > .dropdown-toggle.btn-gcba
+ {
   background-image: -webkit-linear-gradient(top, #ffd300 0%, #ffbc00 100%);
   background-image:      -o-linear-gradient(top, #ffd300 0%, #ffbc00 100%);
   background-image: -webkit-gradient(linear, left top, left bottom, from(#ffd300), to(#ffbc00));
@@ -170,7 +167,9 @@ a.list-group-item.active:focus,
   color:#604e00;
 }
 .btn-primary:hover,
-.btn-primary:focus {
+.btn-primary:focus,
+.btn-gcba:hover,
+.btn-gcba:focus {
   background-image: -webkit-linear-gradient(top, #ffde40 0%, #ffcd40 100%);
   background-image:      -o-linear-gradient(top, #ffde40 0%, #ffcd40 100%);
   background-image: -webkit-gradient(linear, left top, left bottom, from(#ffde40), to(#ffcd40));
@@ -179,10 +178,12 @@ a.list-group-item.active:focus,
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   background-color: #ffcd40;
   border-color: #e9c940;
-  color:#604e00;
+  color:#897215;
 }
 .btn-primary:active,
-.btn-primary.active {
+.btn-primary.active,
+.btn-gcba:active,
+.btn-gcba.active {
   background-color: #ffbc00;
   border-color: #e2b700;
   color:#604e00;
@@ -652,6 +653,10 @@ a.thumbnail.active,
               0px 0px 6px #bc4946;
 }
 
+.form-control {
+  transition: none;
+}
+
 /* input */
 
 .input-xl {
@@ -663,6 +668,7 @@ a.thumbnail.active,
 
 .btn-default,
 .btn-primary,
+.btn-gcba,
 .btn-success,
 .btn-info,
 .btn-warning,
@@ -672,12 +678,14 @@ a.thumbnail.active,
 }
 .btn-default:active,
 .btn-primary:active,
+.btn-gcba:active,
 .btn-success:active,
 .btn-info:active,
 .btn-warning:active,
 .btn-danger:active,
 .btn-default.active,
 .btn-primary.active,
+.btn-gcba.active,
 .btn-success.active,
 .btn-info.active,
 .btn-warning.active,
@@ -713,7 +721,22 @@ fieldset[disabled] .btn-primary,
 fieldset[disabled] .btn-primary.active,
 fieldset[disabled] .btn-primary:active,
 fieldset[disabled] .btn-primary:focus,
-fieldset[disabled] .btn-primary:hover {
+fieldset[disabled] .btn-primary:hover,
+.btn-gcba.disabled,
+.btn-gcba.disabled.active,
+.btn-gcba.disabled:active,
+.btn-gcba.disabled:focus,
+.btn-gcba.disabled:hover,
+.btn-gcba[disabled],
+.btn-gcba.active[disabled],
+.btn-gcba[disabled]:active,
+.btn-gcba[disabled]:focus,
+.btn-gcba[disabled]:hover,
+fieldset[disabled] .btn-gcba,
+fieldset[disabled] .btn-gcba.active,
+fieldset[disabled] .btn-gcba:active,
+fieldset[disabled] .btn-gcba:focus,
+fieldset[disabled] .btn-gcba:hover {
   background-color: #ffbc00;
   border-color: #e2b700;
 }
@@ -972,10 +995,12 @@ fieldset[disabled] .btn-danger:hover {
     background-color: #e2b700;
   }
 }
-.navbar-primary .form-control {
+.navbar-primary .form-control,
+.form-control-primary {
   border-color: #e2b700;
 }
-.navbar-primary .form-control:focus {
+.navbar-primary .form-control:focus,
+.form-control-primary:focus {
   border-color: #947700;
   outline: 0px none;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(148, 119, 0, 0.6);
@@ -1059,6 +1084,15 @@ fieldset[disabled] .btn-danger:hover {
 }
 .pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
     background-color: #f1f1f1;
+}
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover {
+  background:#aaa;
+  border-color:#aaa;
 }
 
 /* pager */

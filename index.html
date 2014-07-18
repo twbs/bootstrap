@@ -8,23 +8,19 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="bastrap/favicon.ico">
     <link rel="apple-touch-icon-precomposed" href="bastrap/favicon-mobile.png">
-
     <title>BAstrap3</title>
 
-    <!-- CSS -->
+    <!-- css -->
+
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="bastrap/docs.css" rel="stylesheet">
-    <link href="bastrap/pygments-manni.css" rel="stylesheet">
     <link href="bastrap/bastrap.css" rel="stylesheet">
     <link href="bastrap/bastrap-docs.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="bootstrap-master/docs/assets/js/ie-emulation-modes-warning.js"></script>
-
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="bootstrap-master/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -107,9 +103,9 @@
             <li><a href="#texto-codigo">Código</a></li>      
           </ul>
         </li>
-        <li><a href="#tabla-ejemplo">Tabla</a>
-          <ul class="nav">
-            <li><a href="#tabla-ejemplo">Ejemplos de tabla</a></li>
+        <li><a href="#tabla">Tabla</a>
+          <ul class="nav" style="display:none;">
+            <li><a href="#tabla">Tabla</a></li>
           </ul>
         </li>
         <li><a href="#form-ejemplo">Formulario</a>
@@ -163,9 +159,9 @@
             <li><a href="#comp-carrusel">Carrusel</a></li>
           </ul>
         </li>
-        <li><a href="#colores-tipos">Colores</a>
-          <ul class="nav">
-            <li><a href="#colores-tipos">Tipos de colores</a></li>
+        <li><a href="#colores">Colores</a>
+          <ul class="nav" style="display:none;">
+            <li><a href="#colores">Colores</a></li>
           </ul>
         </li>
         <li><a href="#tipo-encabezado">Subir</a></li>
@@ -447,7 +443,7 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
 
 <!-- Tables -->
 
-<a id="tabla-ejemplo" class="anchor"></a>
+<a id="tabla" class="anchor"></a>
 
 <div class="panel panel-docs">
   <div class="panel-heading">
@@ -1304,6 +1300,13 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
   <div class="panel-body btngroup-example">
   <h3>Tamaños</h3>
     <div class="btn-toolbar" role="toolbar">
+      <div class="btn-group btn-group-xl">
+        <button type="button" class="btn btn-default">Left</button>
+        <button type="button" class="btn btn-default">Middle</button>
+        <button type="button" class="btn btn-default">Right</button>
+      </div>
+    </div>  
+    <div class="btn-toolbar" role="toolbar">
       <div class="btn-group btn-group-lg">
         <button type="button" class="btn btn-default">Left</button>
         <button type="button" class="btn btn-default">Middle</button>
@@ -1333,7 +1336,8 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
     </div>
   </div>
   <div class="panel-footer">
-<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-group btn-group-lg"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-group btn-group-xl"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-group btn-group-lg"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-group"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-group btn-group-sm"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-group btn-group-xs"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
@@ -2101,22 +2105,22 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
     <div class="row">
       <div class="col-xs-6 col-md-3">
         <a href="#" class="thumbnail">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4=" style="height: 180px; width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4=" style="width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
         </a>
       </div>
       <div class="col-xs-6 col-md-3">
         <a href="#" class="thumbnail">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4=" style="height: 180px; width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4=" style="width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
         </a>
       </div>
       <div class="col-xs-6 col-md-3">
         <a href="#" class="thumbnail">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4=" style="height: 180px; width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4=" style="width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
         </a>
       </div>
       <div class="col-xs-6 col-md-3">
         <a href="#" class="thumbnail">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4=" style="height: 180px; width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4=" style="width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
         </a>
       </div>
     </div>
@@ -2137,7 +2141,7 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
     <div class="row">
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE1MCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE5cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MzAweDIwMDwvdGV4dD48L3N2Zz4=" style="width: 300px; height: 200px;" data-src="holder.js/300x200" alt="300x200">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE1MCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE5cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MzAweDIwMDwvdGV4dD48L3N2Zz4=" style="width: 300px;" data-src="holder.js/300x200" alt="300x200">
           <div class="caption">
             <h3>Thumbnail label</h3>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -2147,7 +2151,7 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
       </div>
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE1MCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE5cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MzAweDIwMDwvdGV4dD48L3N2Zz4=" style="width: 300px; height: 200px;" data-src="holder.js/300x200" alt="300x200">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE1MCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE5cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MzAweDIwMDwvdGV4dD48L3N2Zz4=" style="width: 300px;" data-src="holder.js/300x200" alt="300x200">
           <div class="caption">
             <h3>Thumbnail label</h3>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -2157,7 +2161,7 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
       </div>
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE1MCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE5cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MzAweDIwMDwvdGV4dD48L3N2Zz4=" style="width: 300px; height: 200px;" data-src="holder.js/300x200" alt="300x200">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE1MCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE5cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MzAweDIwMDwvdGV4dD48L3N2Zz4=" style="width: 300px;" data-src="holder.js/300x200" alt="300x200">
           <div class="caption">
             <h3>Thumbnail label</h3>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -2945,23 +2949,23 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
 
 <!-- Colores -->
 
-<a id="colores-tipos" class="anchor"></a>
+<a id="colores" class="anchor"></a>
 
-<div class="panel panel-docs panel-info">
+<div class="panel panel-docs">
   <div class="panel-heading">
     <h2>Colores</h2>
   </div>
   <div class="panel-body">
-
 <div class="docs-colores">
   <h3>Grises</h3>
   <span style="background-color: #1d1d1b;">#1d1d1b</span>
   <span style="background-color: #333;">#333</span>
   <span style="background-color: #777;">#777</span>
+  <span style="background-color: #aaa;">#aaa</span>
+  <span style="background-color: #ccc;">#ccc</span>
   <span style="background-color: #e5e5e5; color:#777;">#e5e5e5</span>
   <span style="background-color: #f5f5f5; color:#777;">#f5f5f5</span>
 </div>
-
 <div class="docs-colores">
   <h3>Colores claros</h3>
   <span style="background-color: #d65a38;">#d65a38</span>
@@ -2973,7 +2977,6 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
   <span style="background-color: #9c43a3;">#9c43a3</span>
   <span style="background-color: #c64b7d;">#c64b7d</span>
 </div>
-
 <div class="docs-colores">
   <h3>Colores oscuros</h3>
   <span style="background-color: #bc362f;">#bc362f</span>
@@ -2985,12 +2988,7 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
   <span style="background-color: #852fad;">#852fad</span>
   <span style="background-color: #b72378;">#b72378</span>
 </div>
-
-
-
-
   </div>
-
 </div>
 
 
@@ -3017,95 +3015,14 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<!--<script src="bootstrap-master/docs/assets/js/docs.min.js"></script>-->
+
+<!-- resize fixed sidebar width -->
+
 <script type="text/javascript">
 $(function() {
    var $affix = $(".sidenav"), 
@@ -3116,6 +3033,8 @@ $(function() {
 });
 </script>
 
+<!-- sidebar brand fix -->
+
 <script type="text/javascript">
   var $logo = $('#sidebar-brand');
   $(document).scroll(function() {
@@ -3123,22 +3042,12 @@ $(function() {
   });
 </script>
 
-<!--
-<script type="text/javascript">
-  $(".sidenav a").on('click', function(e) {
-     e.preventDefault();
-     var hash = this.hash;
-     $('html, body').animate({
-         scrollTop: $(this.hash).offset().top
-       }, 300, function(){
-         window.location.hash = hash;
-       });
-  });
-</script>
--->
+<!-- tooltip docs fix -->
 
 <script type="text/javascript">
     $('a').tooltip();
 </script>
+
+
 </body>
 </html>
