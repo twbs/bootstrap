@@ -28,6 +28,6 @@ blog:             http://blog.getbootstrap.com
 expo:             http://expo.getbootstrap.com
 
 cdn:
-  css:            //maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css
-  css_theme:      //maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css
-  js:             //maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js
+  css:            https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css
+  css_theme:      https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css
+  js:             https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js
