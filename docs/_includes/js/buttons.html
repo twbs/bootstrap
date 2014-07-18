@@ -1,5 +1,5 @@
 <div class="bs-docs-section">
-  <h1 id="buttons" class="page-header">Buttons <small>button.js</small></h1>
+  <h1 class="page-header" id="buttons">Buttons <small>button.js</small></h1>
 
   <h2 id="buttons-examples">Example uses</h2>
   <p>Do more with buttons. Control button states or create groups of buttons for more components like toolbars.</p>
@@ -7,12 +7,12 @@
   <h4>Stateful</h4>
   <p>Add <code>data-loading-text="Loading..."</code> to use a loading state on a button.</p>
   <div class="bs-example" style="padding-bottom: 24px;">
-    <button type="button" id="loading-example-btn" data-loading-text="Loading..." class="btn btn-primary">
+    <button class="btn btn-primary" id="loading-example-btn" data-loading-text="Loading..." type="button">
       Loading state
     </button>
   </div><!-- /example -->
 {% highlight html %}
-<button type="button" id="loading-example-btn" data-loading-text="Loading..." class="btn btn-primary">
+<button class="btn btn-primary" id="loading-example-btn" data-loading-text="Loading..." type="button">
   Loading state
 </button>
 <script>
@@ -29,10 +29,10 @@
   <h4>Single toggle</h4>
   <p>Add <code>data-toggle="button"</code> to activate toggling on a single button.</p>
   <div class="bs-example" style="padding-bottom: 24px;">
-    <button type="button" class="btn btn-primary" data-toggle="button">Single toggle</button>
+    <button class="btn btn-primary" data-toggle="button" type="button">Single toggle</button>
   </div><!-- /example -->
 {% highlight html %}
-<button type="button" class="btn btn-primary" data-toggle="button">Single toggle</button>
+<button class="btn btn-primary" data-toggle="button" type="button">Single toggle</button>
 {% endhighlight %}
 
   <h4>Checkbox</h4>
@@ -77,26 +77,26 @@
   <div class="bs-example" style="padding-bottom: 24px;">
     <div class="btn-group" data-toggle="buttons">
       <label class="btn btn-primary active">
-        <input type="radio" name="options" id="option1" checked> Option 1 (preselected)
+        <input id="option1" name="options" type="radio" checked> Option 1 (preselected)
       </label>
       <label class="btn btn-primary">
-        <input type="radio" name="options" id="option2"> Option 2
+        <input id="option2" name="options" type="radio"> Option 2
       </label>
       <label class="btn btn-primary">
-        <input type="radio" name="options" id="option3"> Option 3
+        <input id="option3" name="options" type="radio"> Option 3
       </label>
     </div>
   </div><!-- /example -->
 {% highlight html %}
 <div class="btn-group" data-toggle="buttons">
   <label class="btn btn-primary active">
-    <input type="radio" name="options" id="option1" checked> Option 1 (preselected)
+    <input id="option1" name="options" type="radio" checked> Option 1 (preselected)
   </label>
   <label class="btn btn-primary">
-    <input type="radio" name="options" id="option2"> Option 2
+    <input id="option2" name="options" type="radio"> Option 2
   </label>
   <label class="btn btn-primary">
-    <input type="radio" name="options" id="option3"> Option 3
+    <input id="option3" name="options" type="radio"> Option 3
   </label>
 </div>
 {% endhighlight %}
@@ -123,14 +123,14 @@ $('.btn').button()
     <p>You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.</p>
   </div>
 {% highlight html %}
-<button type="button" class="btn btn-primary" data-toggle="button">...</button>
+<button class="btn btn-primary" data-toggle="button" type="button">...</button>
 {% endhighlight %}
 
   <h4>$().button('loading')</h4>
   <p>Sets button state to loading - disables button and swaps text to loading text. Loading text should be defined on the button element using the data attribute <code>data-loading-text</code>.
   </p>
 {% highlight html %}
-<button id="loading-example-btn" type="button" class="btn btn-primary" data-loading-text="loading stuff...">...</button>
+<button class="btn btn-primary" id="loading-example-btn" data-loading-text="loading stuff..." type="button">...</button>
 <script>
   $('#loading-example-btn').click(function () {
     var btn = $(this)
@@ -153,7 +153,7 @@ $('.btn').button()
   <h4>$().button(string)</h4>
   <p>Resets button state - swaps text to any data defined text state.</p>
 {% highlight html %}
-<button type="button" class="btn btn-primary" data-complete-text="finished!" >...</button>
+<button class="btn btn-primary" data-complete-text="finished!" type="button">...</button>
 <script>
   $('.btn').button('complete')
 </script>

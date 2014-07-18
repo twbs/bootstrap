@@ -1,5 +1,5 @@
 <div class="bs-docs-section">
-  <h1 id="dropdowns" class="page-header">Dropdowns</h1>
+  <h1 class="page-header" id="dropdowns">Dropdowns</h1>
 
   <p class="lead">Toggleable, contextual menu for displaying lists of links. Made interactive with the <a href="../javascript/#dropdowns">dropdown JavaScript plugin</a>.</p>
 
@@ -7,31 +7,31 @@
   <p>Wrap the dropdown's trigger and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Then add the menu's HTML.</p>
   <div class="bs-example">
     <div class="dropdown clearfix">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+      <button class="btn btn-default dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" type="button">
         Dropdown
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+        <li role="presentation"><a href="#" role="menuitem" tabindex="-1">Action</a></li>
+        <li role="presentation"><a href="#" role="menuitem" tabindex="-1">Another action</a></li>
+        <li role="presentation"><a href="#" role="menuitem" tabindex="-1">Something else here</a></li>
         <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+        <li role="presentation"><a href="#" role="menuitem" tabindex="-1">Separated link</a></li>
       </ul>
     </div>
   </div><!-- /example -->
 {% highlight html %}
 <div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+  <button class="btn btn-default dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" type="button">
     Dropdown
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-    <li role="presentation" class="divider"></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+    <li role="presentation"><a href="#" role="menuitem" tabindex="-1">Action</a></li>
+    <li role="presentation"><a href="#" role="menuitem" tabindex="-1">Another action</a></li>
+    <li role="presentation"><a href="#" role="menuitem" tabindex="-1">Something else here</a></li>
+    <li class="divider" role="presentation"></li>
+    <li role="presentation"><a href="#" role="menuitem" tabindex="-1">Separated link</a></li>
   </ul>
 </div>
 {% endhighlight %}
@@ -56,27 +56,27 @@
   <p>Add a header to label sections of actions in any dropdown menu.</p>
   <div class="bs-example">
     <div class="dropdown clearfix">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
+      <button class="btn btn-default dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" type="button">
         Dropdown
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
-        <li role="presentation" class="dropdown-header">Dropdown header</li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-        <li role="presentation" class="divider"></li>
-        <li role="presentation" class="dropdown-header">Dropdown header</li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+        <li class="dropdown-header" role="presentation">Dropdown header</li>
+        <li role="presentation"><a href="#" role="menuitem" tabindex="-1">Action</a></li>
+        <li role="presentation"><a href="#" role="menuitem" tabindex="-1">Another action</a></li>
+        <li role="presentation"><a href="#" role="menuitem" tabindex="-1">Something else here</a></li>
+        <li class="divider" role="presentation"></li>
+        <li class="dropdown-header" role="presentation">Dropdown header</li>
+        <li role="presentation"><a href="#" role="menuitem" tabindex="-1">Separated link</a></li>
       </ul>
     </div>
   </div><!-- /example -->
 {% highlight html %}
 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
-  <li role="presentation" class="dropdown-header">Dropdown header</li>
+  <li class="dropdown-header" role="presentation">Dropdown header</li>
   ...
-  <li role="presentation" class="divider"></li>
-  <li role="presentation" class="dropdown-header">Dropdown header</li>
+  <li class="divider" role="presentation"></li>
+  <li class="dropdown-header" role="presentation">Dropdown header</li>
   ...
 </ul>
 {% endhighlight %}
@@ -85,22 +85,22 @@
   <p>Add <code>.disabled</code> to a <code>&lt;li&gt;</code> in the dropdown to disable the link.</p>
   <div class="bs-example">
     <div class="dropdown clearfix">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown">
+      <button class="btn btn-default dropdown-toggle" id="dropdownMenu3" data-toggle="dropdown" type="button">
         Dropdown
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
-        <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
+        <li role="presentation"><a href="#" role="menuitem" tabindex="-1">Regular link</a></li>
+        <li class="disabled" role="presentation"><a href="#" role="menuitem" tabindex="-1">Disabled link</a></li>
+        <li role="presentation"><a href="#" role="menuitem" tabindex="-1">Another link</a></li>
       </ul>
     </div>
   </div><!-- /example -->
 {% highlight html %}
 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
-  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
-  <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
-  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
+  <li role="presentation"><a href="#" role="menuitem" tabindex="-1">Regular link</a></li>
+  <li class="disabled" role="presentation"><a href="#" role="menuitem" tabindex="-1">Disabled link</a></li>
+  <li role="presentation"><a href="#" role="menuitem" tabindex="-1">Another link</a></li>
 </ul>
 {% endhighlight %}
 </div>

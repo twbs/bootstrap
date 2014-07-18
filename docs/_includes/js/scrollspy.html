@@ -1,13 +1,13 @@
 <div class="bs-docs-section">
-  <h1 id="scrollspy" class="page-header">ScrollSpy <small>scrollspy.js</small></h1>
+  <h1 class="page-header" id="scrollspy">ScrollSpy <small>scrollspy.js</small></h1>
 
   <h2 id="scrollspy-examples">Example in navbar</h2>
   <p>The ScrollSpy plugin is for automatically updating nav targets based on scroll position. Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.</p>
   <div class="bs-example">
-    <nav id="navbar-example2" class="navbar navbar-default navbar-static" role="navigation">
+    <nav class="navbar navbar-default navbar-static" id="navbar-example2" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-scrollspy">
+          <button class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-example-js-navbar-scrollspy" type="button">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -20,7 +20,7 @@
             <li><a href="#fat">@fat</a></li>
             <li><a href="#mdo">@mdo</a></li>
             <li class="dropdown">
-              <a href="#" id="navbarDrop1" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+              <a class="dropdown-toggle" id="navbarDrop1" data-toggle="dropdown" href="#">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="navbarDrop1">
                 <li><a href="#one" tabindex="-1">one</a></li>
                 <li><a href="#two" tabindex="-1">two</a></li>
@@ -32,7 +32,7 @@
         </div>
       </div>
     </nav>
-    <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="scrollspy-example">
+    <div class="scrollspy-example" data-spy="scroll" data-target="#navbar-example2" data-offset="0">
       <h4 id="fat">@fat</h4>
       <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
       <h4 id="mdo">@mdo</h4>

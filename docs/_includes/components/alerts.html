@@ -1,5 +1,5 @@
 <div class="bs-docs-section">
-  <h1 id="alerts" class="page-header">Alerts</h1>
+  <h1 class="page-header" id="alerts">Alerts</h1>
 
   <p class="lead">Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.</p>
 
@@ -40,13 +40,13 @@
   </div>
   <div class="bs-example">
     <div class="alert alert-warning alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <button class="close" data-dismiss="alert" type="button"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <strong>Warning!</strong> Better check yourself, you're not looking too good.
     </div>
   </div>
 {% highlight html %}
 <div class="alert alert-warning alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <button class="close" data-dismiss="alert" type="button"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
   <strong>Warning!</strong> Better check yourself, you're not looking too good.
 </div>
 {% endhighlight %}
@@ -60,30 +60,30 @@
   <p>Use the <code>.alert-link</code> utility class to quickly provide matching colored links within any alert.</p>
   <div class="bs-example">
     <div class="alert alert-success" role="alert">
-      <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
+      <strong>Well done!</strong> You successfully read <a class="alert-link" href="#">this important alert message</a>.
     </div>
     <div class="alert alert-info" role="alert">
-      <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
+      <strong>Heads up!</strong> This <a class="alert-link" href="#">alert needs your attention</a>, but it's not super important.
     </div>
     <div class="alert alert-warning" role="alert">
-      <strong>Warning!</strong> Better check yourself, you're <a href="#" class="alert-link">not looking too good</a>.
+      <strong>Warning!</strong> Better check yourself, you're <a class="alert-link" href="#">not looking too good</a>.
     </div>
     <div class="alert alert-danger" role="alert">
-      <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+      <strong>Oh snap!</strong> <a class="alert-link" href="#">Change a few things up</a> and try submitting again.
     </div>
   </div>
 {% highlight html %}
 <div class="alert alert-success" role="alert">
-  <a href="#" class="alert-link">...</a>
+  <a class="alert-link" href="#">...</a>
 </div>
 <div class="alert alert-info" role="alert">
-  <a href="#" class="alert-link">...</a>
+  <a class="alert-link" href="#">...</a>
 </div>
 <div class="alert alert-warning" role="alert">
-  <a href="#" class="alert-link">...</a>
+  <a class="alert-link" href="#">...</a>
 </div>
 <div class="alert alert-danger" role="alert">
-  <a href="#" class="alert-link">...</a>
+  <a class="alert-link" href="#">...</a>
 </div>
 {% endhighlight %}
 </div>
