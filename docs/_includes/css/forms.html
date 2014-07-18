@@ -1,5 +1,5 @@
 <div class="bs-docs-section">
-  <h1 id="forms" class="page-header">Forms</h1>
+  <h1 class="page-header" id="forms">Forms</h1>
 
   <h2 id="forms-example">Basic example</h2>
   <p>Individual form controls automatically receive some global styling. All textual <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> elements with <code>.form-control</code> are set to <code>width: 100%;</code> by default. Wrap labels and controls in <code>.form-group</code> for optimum spacing.</p>
@@ -7,15 +7,15 @@
     <form role="form">
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+        <input class="form-control" id="exampleInputEmail1" type="email" placeholder="Enter email">
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
       </div>
       <div class="form-group">
         <label for="exampleInputFile">File input</label>
-        <input type="file" id="exampleInputFile">
+        <input id="exampleInputFile" type="file">
         <p class="help-block">Example block-level help text here.</p>
       </div>
       <div class="checkbox">
@@ -23,22 +23,22 @@
           <input type="checkbox"> Check me out
         </label>
       </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+      <button class="btn btn-default" type="submit">Submit</button>
     </form>
   </div><!-- /example -->
 {% highlight html %}
 <form role="form">
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+    <input class="form-control" id="exampleInputEmail1" type="email" placeholder="Enter email">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
   </div>
   <div class="form-group">
     <label for="exampleInputFile">File input</label>
-    <input type="file" id="exampleInputFile">
+    <input id="exampleInputFile" type="file">
     <p class="help-block">Example block-level help text here.</p>
   </div>
   <div class="checkbox">
@@ -46,7 +46,7 @@
       <input type="checkbox"> Check me out
     </label>
   </div>
-  <button type="submit" class="btn btn-default">Submit</button>
+  <button class="btn btn-default" type="submit">Submit</button>
 </form>
 {% endhighlight %}
   <div class="bs-callout bs-callout-warning">
@@ -69,7 +69,7 @@
     <form class="form-inline" role="form">
       <div class="form-group">
         <label class="sr-only" for="exampleInputEmail2">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+        <input class="form-control" id="exampleInputEmail2" type="email" placeholder="Enter email">
       </div>
       <div class="form-group">
         <div class="input-group">
@@ -79,21 +79,21 @@
       </div>
       <div class="form-group">
         <label class="sr-only" for="exampleInputPassword2">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+        <input class="form-control" id="exampleInputPassword2" type="password" placeholder="Password">
       </div>
       <div class="checkbox">
         <label>
           <input type="checkbox"> Remember me
         </label>
       </div>
-      <button type="submit" class="btn btn-default">Sign in</button>
+      <button class="btn btn-default" type="submit">Sign in</button>
     </form>
   </div><!-- /example -->
 {% highlight html %}
 <form class="form-inline" role="form">
   <div class="form-group">
     <label class="sr-only" for="exampleInputEmail2">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+    <input class="form-control" id="exampleInputEmail2" type="email" placeholder="Enter email">
   </div>
   <div class="form-group">
     <div class="input-group">
@@ -103,14 +103,14 @@
   </div>
   <div class="form-group">
     <label class="sr-only" for="exampleInputPassword2">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+    <input class="form-control" id="exampleInputPassword2" type="password" placeholder="Password">
   </div>
   <div class="checkbox">
     <label>
       <input type="checkbox"> Remember me
     </label>
   </div>
-  <button type="submit" class="btn btn-default">Sign in</button>
+  <button class="btn btn-default" type="submit">Sign in</button>
 </form>
 {% endhighlight %}
 
@@ -120,15 +120,15 @@
   <div class="bs-example">
     <form class="form-horizontal" role="form">
       <div class="form-group">
-        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+        <label class="col-sm-2 control-label" for="inputEmail3">Email</label>
         <div class="col-sm-10">
-          <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+          <input class="form-control" id="inputEmail3" type="email" placeholder="Email">
         </div>
       </div>
       <div class="form-group">
-        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+        <label class="col-sm-2 control-label" for="inputPassword3">Password</label>
         <div class="col-sm-10">
-          <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+          <input class="form-control" id="inputPassword3" type="password" placeholder="Password">
         </div>
       </div>
       <div class="form-group">
@@ -142,7 +142,7 @@
       </div>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-default">Sign in</button>
+          <button class="btn btn-default" type="submit">Sign in</button>
         </div>
       </div>
     </form>
@@ -150,15 +150,15 @@
 {% highlight html %}
 <form class="form-horizontal" role="form">
   <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <label class="col-sm-2 control-label" for="inputEmail3">Email</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+      <input class="form-control" id="inputEmail3" type="email" placeholder="Email">
     </div>
   </div>
   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+    <label class="col-sm-2 control-label" for="inputPassword3">Password</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+      <input class="form-control" id="inputPassword3" type="password" placeholder="Password">
     </div>
   </div>
   <div class="form-group">
@@ -172,7 +172,7 @@
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Sign in</button>
+      <button class="btn btn-default" type="submit">Sign in</button>
     </div>
   </div>
 </form>
@@ -190,11 +190,11 @@
   </div>
   <div class="bs-example">
     <form role="form">
-      <input type="text" class="form-control" placeholder="Text input">
+      <input class="form-control" type="text" placeholder="Text input">
     </form>
   </div><!-- /.bs-example -->
 {% highlight html %}
-<input type="text" class="form-control" placeholder="Text input">
+<input class="form-control" type="text" placeholder="Text input">
 {% endhighlight %}
   <div class="bs-callout bs-callout-info">
     <h4>Input groups</h4>
@@ -233,19 +233,19 @@
       <br>
       <div class="radio">
         <label>
-          <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+          <input id="optionsRadios1" name="optionsRadios" type="radio" value="option1" checked>
           Option one is this and that&mdash;be sure to include why it's great
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+          <input id="optionsRadios2" name="optionsRadios" type="radio" value="option2">
           Option two can be something else and selecting it will deselect option one
         </label>
       </div>
       <div class="radio disabled">
         <label>
-          <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+          <input id="optionsRadios3" name="optionsRadios" type="radio" value="option3" disabled>
           Option three is disabled
         </label>
       </div>
@@ -267,19 +267,19 @@
 
 <div class="radio">
   <label>
-    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+    <input id="optionsRadios1" name="optionsRadios" type="radio" value="option1" checked>
     Option one is this and that&mdash;be sure to include why it's great
   </label>
 </div>
 <div class="radio">
   <label>
-    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+    <input id="optionsRadios2" name="optionsRadios" type="radio" value="option2">
     Option two can be something else and selecting it will deselect option one
   </label>
 </div>
 <div class="radio disabled">
   <label>
-    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+    <input id="optionsRadios3" name="optionsRadios" type="radio" value="option3" disabled>
     Option three is disabled
   </label>
 </div>
@@ -290,47 +290,47 @@
   <div class="bs-example">
     <form role="form">
       <label class="checkbox-inline">
-        <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+        <input id="inlineCheckbox1" type="checkbox" value="option1"> 1
       </label>
       <label class="checkbox-inline">
-        <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+        <input id="inlineCheckbox2" type="checkbox" value="option2"> 2
       </label>
       <label class="checkbox-inline">
-        <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+        <input id="inlineCheckbox3" type="checkbox" value="option3"> 3
       </label>
     </form>
     <br>
     <form role="form">
       <label class="radio-inline">
-        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+        <input id="inlineRadio1" name="inlineRadioOptions" type="radio" value="option1"> 1
       </label>
       <label class="radio-inline">
-        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+        <input id="inlineRadio2" name="inlineRadioOptions" type="radio" value="option2"> 2
       </label>
       <label class="radio-inline">
-        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+        <input id="inlineRadio3" name="inlineRadioOptions" type="radio" value="option3"> 3
       </label>
     </form>
   </div><!-- /.bs-example -->
 {% highlight html %}
 <label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+  <input id="inlineCheckbox1" type="checkbox" value="option1"> 1
 </label>
 <label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+  <input id="inlineCheckbox2" type="checkbox" value="option2"> 2
 </label>
 <label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+  <input id="inlineCheckbox3" type="checkbox" value="option3"> 3
 </label>
 
 <label class="radio-inline">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+  <input id="inlineRadio1" name="inlineRadioOptions" type="radio" value="option1"> 1
 </label>
 <label class="radio-inline">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+  <input id="inlineRadio2" name="inlineRadioOptions" type="radio" value="option2"> 2
 </label>
 <label class="radio-inline">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+  <input id="inlineRadio3" name="inlineRadioOptions" type="radio" value="option3"> 3
 </label>
 {% endhighlight %}
 
@@ -385,9 +385,9 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+        <label class="col-sm-2 control-label" for="inputPassword">Password</label>
         <div class="col-sm-10">
-          <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+          <input class="form-control" id="inputPassword" type="password" placeholder="Password">
         </div>
       </div>
     </form>
@@ -401,9 +401,9 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+    <label class="col-sm-2 control-label" for="inputPassword">Password</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+      <input class="form-control" id="inputPassword" type="password" placeholder="Password">
     </div>
   </div>
 </form>
@@ -451,11 +451,11 @@
       <fieldset disabled>
         <div class="form-group">
           <label for="disabledTextInput">Disabled input</label>
-          <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+          <input class="form-control" id="disabledTextInput" type="text" placeholder="Disabled input">
         </div>
         <div class="form-group">
           <label for="disabledSelect">Disabled select menu</label>
-          <select id="disabledSelect" class="form-control">
+          <select class="form-control" id="disabledSelect">
             <option>Disabled select</option>
           </select>
         </div>
@@ -464,7 +464,7 @@
             <input type="checkbox"> Can't check this
           </label>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button class="btn btn-primary" type="submit">Submit</button>
       </fieldset>
     </form>
   </div><!-- /.bs-example -->
@@ -473,11 +473,11 @@
   <fieldset disabled>
     <div class="form-group">
       <label for="disabledTextInput">Disabled input</label>
-      <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+      <input class="form-control" id="disabledTextInput" type="text" placeholder="Disabled input">
     </div>
     <div class="form-group">
       <label for="disabledSelect">Disabled select menu</label>
-      <select id="disabledSelect" class="form-control">
+      <select class="form-control" id="disabledSelect">
         <option>Disabled select</option>
       </select>
     </div>
@@ -486,7 +486,7 @@
         <input type="checkbox"> Can't check this
       </label>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button class="btn btn-primary" type="submit">Submit</button>
   </fieldset>
 </form>
 {% endhighlight %}
@@ -511,20 +511,20 @@
     <form role="form">
       <div class="form-group has-success">
         <label class="control-label" for="inputSuccess1">Input with success</label>
-        <input type="text" class="form-control" id="inputSuccess1">
+        <input class="form-control" id="inputSuccess1" type="text">
       </div>
       <div class="form-group has-warning">
         <label class="control-label" for="inputWarning1">Input with warning</label>
-        <input type="text" class="form-control" id="inputWarning1">
+        <input class="form-control" id="inputWarning1" type="text">
       </div>
       <div class="form-group has-error">
         <label class="control-label" for="inputError1">Input with error</label>
-        <input type="text" class="form-control" id="inputError1">
+        <input class="form-control" id="inputError1" type="text">
       </div>
       <div class="has-success">
         <div class="checkbox">
           <label>
-            <input type="checkbox" id="checkboxSuccess" value="option1">
+            <input id="checkboxSuccess" type="checkbox" value="option1">
             Checkbox with success
           </label>
         </div>
@@ -532,7 +532,7 @@
       <div class="has-warning">
         <div class="checkbox">
           <label>
-            <input type="checkbox" id="checkboxWarning" value="option1">
+            <input id="checkboxWarning" type="checkbox" value="option1">
             Checkbox with warning
           </label>
         </div>
@@ -540,7 +540,7 @@
       <div class="has-error">
         <div class="checkbox">
           <label>
-            <input type="checkbox" id="checkboxError" value="option1">
+            <input id="checkboxError" type="checkbox" value="option1">
             Checkbox with error
           </label>
         </div>
@@ -550,20 +550,20 @@
 {% highlight html %}
 <div class="form-group has-success">
   <label class="control-label" for="inputSuccess1">Input with success</label>
-  <input type="text" class="form-control" id="inputSuccess1">
+  <input class="form-control" id="inputSuccess1" type="text">
 </div>
 <div class="form-group has-warning">
   <label class="control-label" for="inputWarning1">Input with warning</label>
-  <input type="text" class="form-control" id="inputWarning1">
+  <input class="form-control" id="inputWarning1" type="text">
 </div>
 <div class="form-group has-error">
   <label class="control-label" for="inputError1">Input with error</label>
-  <input type="text" class="form-control" id="inputError1">
+  <input class="form-control" id="inputError1" type="text">
 </div>
 <div class="has-success">
   <div class="checkbox">
     <label>
-      <input type="checkbox" id="checkboxSuccess" value="option1">
+      <input id="checkboxSuccess" type="checkbox" value="option1">
       Checkbox with success
     </label>
   </div>
@@ -571,7 +571,7 @@
 <div class="has-warning">
   <div class="checkbox">
     <label>
-      <input type="checkbox" id="checkboxWarning" value="option1">
+      <input id="checkboxWarning" type="checkbox" value="option1">
       Checkbox with warning
     </label>
   </div>
@@ -579,7 +579,7 @@
 <div class="has-error">
   <div class="checkbox">
     <label>
-      <input type="checkbox" id="checkboxError" value="option1">
+      <input id="checkboxError" type="checkbox" value="option1">
       Checkbox with error
     </label>
   </div>
@@ -596,17 +596,17 @@
     <form role="form">
       <div class="form-group has-success has-feedback">
         <label class="control-label" for="inputSuccess2">Input with success</label>
-        <input type="text" class="form-control" id="inputSuccess2">
+        <input class="form-control" id="inputSuccess2" type="text">
         <span class="glyphicon glyphicon-ok form-control-feedback"></span>
       </div>
       <div class="form-group has-warning has-feedback">
         <label class="control-label" for="inputWarning2">Input with warning</label>
-        <input type="text" class="form-control" id="inputWarning2">
+        <input class="form-control" id="inputWarning2" type="text">
         <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
       </div>
       <div class="form-group has-error has-feedback">
         <label class="control-label" for="inputError2">Input with error</label>
-        <input type="text" class="form-control" id="inputError2">
+        <input class="form-control" id="inputError2" type="text">
         <span class="glyphicon glyphicon-remove form-control-feedback"></span>
       </div>
     </form>
@@ -614,17 +614,17 @@
 {% highlight html %}
 <div class="form-group has-success has-feedback">
   <label class="control-label" for="inputSuccess2">Input with success</label>
-  <input type="text" class="form-control" id="inputSuccess2">
+  <input class="form-control" id="inputSuccess2" type="text">
   <span class="glyphicon glyphicon-ok form-control-feedback"></span>
 </div>
 <div class="form-group has-warning has-feedback">
   <label class="control-label" for="inputWarning2">Input with warning</label>
-  <input type="text" class="form-control" id="inputWarning2">
+  <input class="form-control" id="inputWarning2" type="text">
   <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
 </div>
 <div class="form-group has-error has-feedback">
   <label class="control-label" for="inputError2">Input with error</label>
-  <input type="text" class="form-control" id="inputError2">
+  <input class="form-control" id="inputError2" type="text">
   <span class="glyphicon glyphicon-remove form-control-feedback"></span>
 </div>
 {% endhighlight %}
@@ -635,7 +635,7 @@
       <div class="form-group has-success has-feedback">
         <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="inputSuccess3">
+          <input class="form-control" id="inputSuccess3" type="text">
           <span class="glyphicon glyphicon-ok form-control-feedback"></span>
         </div>
       </div>
@@ -646,7 +646,7 @@
   <div class="form-group has-success has-feedback">
     <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" id="inputSuccess3">
+      <input class="form-control" id="inputSuccess3" type="text">
       <span class="glyphicon glyphicon-ok form-control-feedback"></span>
     </div>
   </div>
@@ -657,7 +657,7 @@
     <form class="form-inline" role="form">
       <div class="form-group has-success has-feedback">
         <label class="control-label" for="inputSuccess4">Input with success</label>
-        <input type="text" class="form-control" id="inputSuccess4">
+        <input class="form-control" id="inputSuccess4" type="text">
         <span class="glyphicon glyphicon-ok form-control-feedback"></span>
       </div>
     </form>
@@ -666,7 +666,7 @@
 <form class="form-inline" role="form">
   <div class="form-group has-success has-feedback">
     <label class="control-label" for="inputSuccess4">Input with success</label>
-    <input type="text" class="form-control" id="inputSuccess4">
+    <input class="form-control" id="inputSuccess4" type="text">
     <span class="glyphicon glyphicon-ok form-control-feedback"></span>
   </div>
 </form>
@@ -677,14 +677,14 @@
   <div class="bs-example">
     <div class="form-group has-success has-feedback">
       <label class="control-label sr-only" for="inputSuccess5">Hidden label</label>
-      <input type="text" class="form-control" id="inputSuccess5">
+      <input class="form-control" id="inputSuccess5" type="text">
       <span class="glyphicon glyphicon-ok form-control-feedback"></span>
     </div>
   </div>
 {% highlight html %}
 <div class="form-group has-success has-feedback">
   <label class="control-label sr-only" for="inputSuccess5">Hidden label</label>
-  <input type="text" class="form-control" id="inputSuccess5">
+  <input class="form-control" id="inputSuccess5" type="text">
   <span class="glyphicon glyphicon-ok form-control-feedback"></span>
 </div>
 {% endhighlight %}
@@ -699,7 +699,7 @@
     <form role="form">
       <div class="controls">
         <input class="form-control input-lg" type="text" placeholder=".input-lg">
-        <input type="text" class="form-control" placeholder="Default input">
+        <input class="form-control" type="text" placeholder="Default input">
         <input class="form-control input-sm" type="text" placeholder=".input-sm">
 
         <select class="form-control input-lg">
@@ -731,13 +731,13 @@
       <div class="form-group form-group-lg">
         <label class="col-sm-2 control-label" for="formGroupInputLarge">Large label</label>
         <div class="col-sm-10">
-          <input class="form-control" type="text" id="formGroupInputLarge" placeholder="Large input">
+          <input class="form-control" id="formGroupInputLarge" type="text" placeholder="Large input">
         </div>
       </div>
       <div class="form-group form-group-sm">
         <label class="col-sm-2 control-label" for="formGroupInputSmall">Small label</label>
         <div class="col-sm-10">
-          <input class="form-control" type="text" id="formGroupInputSmall" placeholder="Small input">
+          <input class="form-control" id="formGroupInputSmall" type="text" placeholder="Small input">
         </div>
       </div>
     </form>
@@ -747,13 +747,13 @@
   <div class="form-group form-group-lg">
     <label class="col-sm-2 control-label" for="formGroupInputLarge">Large label</label>
     <div class="col-sm-10">
-      <input class="form-control" type="text" id="formGroupInputLarge" placeholder="Large input">
+      <input class="form-control" id="formGroupInputLarge" type="text" placeholder="Large input">
     </div>
   </div>
   <div class="form-group form-group-sm">
     <label class="col-sm-2 control-label" for="formGroupInputSmall">Small label</label>
     <div class="col-sm-10">
-      <input class="form-control" type="text" id="formGroupInputSmall" placeholder="Small input">
+      <input class="form-control" id="formGroupInputSmall" type="text" placeholder="Small input">
     </div>
   </div>
 </form>
@@ -766,13 +766,13 @@
     <form role="form">
       <div class="row">
         <div class="col-xs-2">
-          <input type="text" class="form-control" placeholder=".col-xs-2">
+          <input class="form-control" placeholder=".col-xs-2" type="text">
         </div>
         <div class="col-xs-3">
-          <input type="text" class="form-control" placeholder=".col-xs-3">
+          <input class="form-control" placeholder=".col-xs-3" type="text">
         </div>
         <div class="col-xs-4">
-          <input type="text" class="form-control" placeholder=".col-xs-4">
+          <input class="form-control" placeholder=".col-xs-4" type="text">
         </div>
       </div>
     </form>
@@ -780,13 +780,13 @@
 {% highlight html %}
 <div class="row">
   <div class="col-xs-2">
-    <input type="text" class="form-control" placeholder=".col-xs-2">
+    <input class="form-control" placeholder=".col-xs-2" type="text">
   </div>
   <div class="col-xs-3">
-    <input type="text" class="form-control" placeholder=".col-xs-3">
+    <input class="form-control" placeholder=".col-xs-3" type="text">
   </div>
   <div class="col-xs-4">
-    <input type="text" class="form-control" placeholder=".col-xs-4">
+    <input class="form-control" placeholder=".col-xs-4" type="text">
   </div>
 </div>
 {% endhighlight %}
@@ -795,7 +795,7 @@
   <p>Block level help text for form controls.</p>
   <div class="bs-example">
     <form role="form">
-      <input type="text" class="form-control">
+      <input class="form-control" type="text">
       <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
     </form>
   </div><!-- /.bs-example -->

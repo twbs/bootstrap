@@ -1,15 +1,15 @@
 <div class="bs-docs-section">
-  <h1 id="dropdowns" class="page-header">Dropdowns <small>dropdown.js</small></h1>
+  <h1 class="page-header" id="dropdowns">Dropdowns <small>dropdown.js</small></h1>
 
   <h2 id="dropdowns-examples">Examples</h2>
   <p>Add dropdown menus to nearly anything with this simple plugin, including the navbar, tabs, and pills.</p>
 
   <h3>Within a navbar</h3>
   <div class="bs-example">
-    <nav id="navbar-example" class="navbar navbar-default navbar-static" role="navigation">
+    <nav class="navbar navbar-default navbar-static" id="navbar-example" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-collapse">
+          <button class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-example-js-navbar-collapse" type="button">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -20,44 +20,44 @@
         <div class="collapse navbar-collapse bs-example-js-navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <button id="drop1" type="button" class="dropdown-toggle" data-toggle="dropdown">
+              <button class="dropdown-toggle" id="drop1" data-toggle="dropdown" type="button">
                 Dropdown
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
-                <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
+                <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Action</a></li>
+                <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Another action</a></li>
+                <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Something else here</a></li>
+                <li class="divider" role="presentation"></li>
+                <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Separated link</a></li>
               </ul>
             </li>
             <li class="dropdown">
-              <button id="drop2" type="button" class="dropdown-toggle" data-toggle="dropdown">
+              <button class="dropdown-toggle" id="drop2" data-toggle="dropdown" type="button">
                 Dropdown 2
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
-                <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
+                <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Action</a></li>
+                <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Another action</a></li>
+                <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Something else here</a></li>
+                <li class="divider" role="presentation"></li>
+                <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Separated link</a></li>
               </ul>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li id="fat-menu" class="dropdown">
-              <button id="drop3" type="button" class="dropdown-toggle" data-toggle="dropdown">
+            <li class="dropdown" id="fat-menu">
+              <button class="dropdown-toggle" id="drop3" data-toggle="dropdown" type="button">
                 Dropdown 3
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
-                <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
+                <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Action</a></li>
+                <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Another action</a></li>
+                <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Something else here</a></li>
+                <li class="divider" role="presentation"></li>
+                <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Separated link</a></li>
               </ul>
             </li>
           </ul>
@@ -69,44 +69,44 @@
   <h3>Within pills</h3>
   <div class="bs-example">
     <ul class="nav nav-pills" role="tablist">
-      <li role="presentation" class="active"><a href="#">Regular link</a></li>
-      <li role="presentation" class="dropdown">
-        <button id="drop4" type="button" data-toggle="dropdown">
+      <li class="active" role="presentation"><a href="#">Regular link</a></li>
+      <li class="dropdown" role="presentation">
+        <button id="drop4" data-toggle="dropdown" type="button">
           Dropdown
           <span class="caret"></span>
         </button>
-        <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
+        <ul class="dropdown-menu" id="menu1" role="menu" aria-labelledby="drop4">
+          <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Action</a></li>
+          <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Another action</a></li>
+          <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Something else here</a></li>
+          <li class="divider" role="presentation"></li>
+          <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Separated link</a></li>
         </ul>
       </li>
-      <li role="presentation" class="dropdown">
-        <button id="drop5" type="button" data-toggle="dropdown">
+      <li class="dropdown" role="presentation">
+        <button id="drop5" data-toggle="dropdown" type="button">
           Dropdown 2
           <span class="caret"></span>
         </button>
-        <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
+        <ul class="dropdown-menu" id="menu2" role="menu" aria-labelledby="drop5">
+          <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Action</a></li>
+          <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Another action</a></li>
+          <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Something else here</a></li>
+          <li class="divider" role="presentation"></li>
+          <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Separated link</a></li>
         </ul>
       </li>
-      <li role="presentation" class="dropdown">
-        <button id="drop6" type="button" data-toggle="dropdown">
+      <li class="dropdown" role="presentation">
+        <button id="drop6" data-toggle="dropdown" type="button">
           Dropdown 3
           <span class="caret"></span>
         </button>
-        <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop6">
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
+        <ul class="dropdown-menu" id="menu3" role="menu" aria-labelledby="drop6">
+          <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Action</a></li>
+          <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Another action</a></li>
+          <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Something else here</a></li>
+          <li class="divider" role="presentation"></li>
+          <li role="presentation"><a href="http://twitter.com/fat" role="menuitem" tabindex="-1">Separated link</a></li>
         </ul>
       </li>
     </ul> <!-- /pills -->
@@ -122,7 +122,7 @@
   <p>Add <code>data-toggle="dropdown"</code> to a link or button to toggle a dropdown.</p>
 {% highlight html %}
 <div class="dropdown">
-  <button id="dLabel" type="button" data-toggle="dropdown">
+  <button id="dLabel" data-toggle="dropdown" type="button">
     Dropdown trigger
    <span class="caret"></span>
   </button>
@@ -134,7 +134,7 @@
   <p>To keep URLs intact with link buttons, use the <code>data-target</code> attribute instead of <code>href="#"</code>.</p>
 {% highlight html %}
 <div class="dropdown">
-  <a id="dLabel" data-target="#" href="http://example.com" type="button" data-toggle="dropdown">
+  <a id="dLabel" data-target="#" data-toggle="dropdown" type="button" href="http://example.com">
     Dropdown trigger
     <span class="caret"></span>
   </a>

@@ -1,12 +1,12 @@
 <div class="bs-docs-section">
-  <h1 id="carousel" class="page-header">Carousel <small>carousel.js</small></h1>
+  <h1 class="page-header" id="carousel">Carousel <small>carousel.js</small></h1>
 
   <h2 id="carousel-examples">Examples</h2>
   <p>The slideshow below shows a generic plugin and component for cycling through elements like a carousel.</p>
   <div class="bs-example">
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <div class="carousel slide" id="carousel-example-generic" data-ride="carousel">
       <ol class="carousel-indicators">
-        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li class="active" data-target="#carousel-example-generic" data-slide-to="0"></li>
         <li data-target="#carousel-example-generic" data-slide-to="1"></li>
         <li data-target="#carousel-example-generic" data-slide-to="2"></li>
       </ol>
@@ -21,21 +21,21 @@
           <img data-src="holder.js/900x500/auto/#555:#333/text:Third slide" alt="Third slide">
         </div>
       </div>
-      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+      <a class="left carousel-control" data-slide="prev" href="#carousel-example-generic" role="button">
         <span class="glyphicon glyphicon-chevron-left"></span>
         <span class="sr-only">Previous</span>
       </a>
-      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+      <a class="right carousel-control" data-slide="next" href="#carousel-example-generic" role="button">
         <span class="glyphicon glyphicon-chevron-right"></span>
         <span class="sr-only">Next</span>
       </a>
     </div>
   </div><!-- /example -->
 {% highlight html %}
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+<div class="carousel slide" id="carousel-example-generic" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li class="active" data-target="#carousel-example-generic" data-slide-to="0"></li>
     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
   </ol>
@@ -58,11 +58,11 @@
   </div>
 
   <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+  <a class="left carousel-control" data-slide="prev" href="#carousel-example-generic" role="button">
     <span class="glyphicon glyphicon-chevron-left"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+  <a class="right carousel-control" data-slide="next" href="#carousel-example-generic" role="button">
     <span class="glyphicon glyphicon-chevron-right"></span>
     <span class="sr-only">Next</span>
   </a>
@@ -77,9 +77,9 @@
   <h3>Optional captions</h3>
   <p>Add captions to your slides easily with the <code>.carousel-caption</code> element within any <code>.item</code>. Place just about any optional HTML within there and it will be automatically aligned and formatted.</p>
   <div class="bs-example">
-    <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
+    <div class="carousel slide" id="carousel-example-captions" data-ride="carousel">
       <ol class="carousel-indicators">
-        <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
+        <li class="active" data-target="#carousel-example-captions" data-slide-to="0"></li>
         <li data-target="#carousel-example-captions" data-slide-to="1"></li>
         <li data-target="#carousel-example-captions" data-slide-to="2"></li>
       </ol>
@@ -106,11 +106,11 @@
           </div>
         </div>
       </div>
-      <a class="left carousel-control" href="#carousel-example-captions" role="button" data-slide="prev">
+      <a class="left carousel-control" data-slide="prev" href="#carousel-example-captions" role="button">
         <span class="glyphicon glyphicon-chevron-left"></span>
         <span class="sr-only">Previous</span>
       </a>
-      <a class="right carousel-control" href="#carousel-example-captions" role="button" data-slide="next">
+      <a class="right carousel-control" data-slide="next" href="#carousel-example-captions" role="button">
         <span class="glyphicon glyphicon-chevron-right"></span>
         <span class="sr-only">Next</span>
       </a>

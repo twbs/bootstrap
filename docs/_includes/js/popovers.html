@@ -1,5 +1,5 @@
 <div class="bs-docs-section">
-  <h1 id="popovers" class="page-header">Popovers <small>popover.js</small></h1>
+  <h1 class="page-header" id="popovers">Popovers <small>popover.js</small></h1>
 
   <h2 id="popovers-examples">Examples</h2>
   <p>Add small overlays of content, like those on the iPad, to any element for housing secondary information.</p>
@@ -66,44 +66,44 @@
 
   <h3>Live demo</h3>
   <div class="bs-example" style="padding-bottom: 24px;">
-    <button type="button" class="btn btn-lg btn-danger bs-docs-popover" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+    <button class="btn btn-lg btn-danger bs-docs-popover" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?" type="button">Click to toggle popover</button>
   </div>
 {% highlight html %}
-<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+<button class="btn btn-lg btn-danger" data-toggle="popover" data-content="And here's some amazing content. It's very engaging. Right?" type="button" title="Popover title">Click to toggle popover</button>
 {% endhighlight %}
 
   <h4>Four directions</h4>
   <div class="bs-example popover-demo">
     <div class="bs-example-popovers">
-      <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      <button class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." type="button">
         Popover on left
       </button>
-      <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      <button class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." type="button">
         Popover on top
       </button>
-      <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      <button class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." type="button">
         Popover on bottom
       </button>
-      <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      <button class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." type="button">
         Popover on right
       </button>
     </div>
   </div><!-- /example -->
 {% highlight html %}
-<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+<button class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." type="button">
   Popover on left
 </button>
 
-<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+<button class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." type="button">
   Popover on top
 </button>
 
-<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
-sagittis lacus vel augue laoreet rutrum faucibus.">
+<button class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+sagittis lacus vel augue laoreet rutrum faucibus." type="button">
   Popover on bottom
 </button>
 
-<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+<button class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." type="button">
   Popover on right
 </button>
 {% endhighlight %}
@@ -111,10 +111,10 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
   <h4>Dismiss on next click</h4>
   <p>Use the <code>focus</code> trigger to dismiss popovers on the next click that the user makes.</p>
   <div class="bs-example" style="padding-bottom: 24px;">
-    <button type="button" class="btn btn-lg btn-danger bs-docs-popover-dismiss" data-toggle="popover" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</button>
+    <button class="btn btn-lg btn-danger bs-docs-popover-dismiss" data-toggle="popover" data-content="And here's some amazing content. It's very engaging. Right?" type="button" title="Dismissible popover">Dismissible popover</button>
   </div>
 {% highlight html %}
-<button type="button" class="btn btn-lg btn-danger popover-dismiss" data-toggle="popover" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</button>
+<button class="btn btn-lg btn-danger popover-dismiss" data-toggle="popover" data-content="And here's some amazing content. It's very engaging. Right?" type="button" title="Dismissible popover">Dismissible popover</button>
 {% endhighlight %}
 {% highlight js %}
 $('.popover-dismiss').popover({
