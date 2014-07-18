@@ -76,7 +76,6 @@ a.list-group-item,
 /* Gradient default */
 
 .btn-default,
-.navbar-default,
 .open > .dropdown-toggle.btn-default,
 .panel-default > .panel-heading {
   background-image: -webkit-linear-gradient(top, #f9f9f9 0%, #eaeaea 100%);
@@ -107,11 +106,6 @@ a.list-group-item,
               0px 0px 8px rgba(153, 153, 153, 0.6);
   */
 }
-.btn-default:active,
-.btn-default.active {
-  background-color: #eaeaea;
-  border-color: #ccc;
-}
 .btn-default.active,
 .btn-default:active,
 .btn-default:focus,
@@ -119,6 +113,13 @@ a.list-group-item,
 .open > .dropdown-toggle.btn-default {
   color:#999;
 }
+.btn-default:active,
+.btn-default.active {
+  background-color: #eaeaea;
+  border-color: #ccc;
+  color:#777;
+}
+
 
 
 
@@ -324,19 +325,9 @@ a.list-group-item.active:focus,
 
 
 
-/* Gradient inverse 2 */
 
-.navbar-inverse {
-  background-image: -webkit-linear-gradient(top, #333330 0%, #1d1d1b 100%);
-  background-image:      -o-linear-gradient(top, #333330 0%, #1d1d1b 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#333330), to(#1d1d1b));
-  background-image:         linear-gradient(to bottom, #333330 0%, #1d1d1b 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff333330', endColorstr='#ff1d1d1b', GradientType=0);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-  background-repeat: repeat-x;
-  background-color: #1d1d1b;
-  border-color: #1d1d1b;
-}
+
+
 
 
 
@@ -949,6 +940,14 @@ fieldset[disabled] .btn-danger:hover {
 }
 */
 
+@media (max-width: 767px) {
+  .navbar-nav .open .dropdown-menu {
+    background:#fff;
+    margin-left:15px;
+    margin-right:15px;
+  }
+}
+
 /* navbar-primary */
 
 
@@ -973,7 +972,8 @@ fieldset[disabled] .btn-danger:hover {
 .navbar-primary .nav .open>a,
 .navbar-primary .nav .open>a:focus,
 .navbar-primary .nav .open>a:hover  {
-  background-color: #ffd420;
+  background-color: #ffde40;
+  border-color: #e9c940;
   color: #3a2f00;
 }
 .navbar-primary .navbar-brand:hover {
@@ -985,8 +985,8 @@ fieldset[disabled] .btn-danger:hover {
 }
 .navbar-primary .navbar-toggle .icon-bar {
   background-color: #604e00;
-  box-shadow: 0 1px 0 rgba(255,255,255,.6);
 }
+/*
 @media (max-width: 767px) {
   .navbar-primary .dropdown-header {
     color: #947700;
@@ -995,9 +995,10 @@ fieldset[disabled] .btn-danger:hover {
     background-color: #e2b700;
   }
 }
+*/
 .navbar-primary .form-control,
 .form-control-primary {
-  border-color: #e2b700;
+  border-color: #c1a21f;
 }
 .navbar-primary .form-control:focus,
 .form-control-primary:focus {
@@ -1010,26 +1011,45 @@ fieldset[disabled] .btn-danger:hover {
 
 .navbar-default {
   text-shadow: none;
+  background-color: transparent;
+  border-color: #ccc;
 }
-.navbar-default .navbar-nav > .active > a, .navbar-default .nav>li>a:active {
-  background-color: #eaeaea;
-  color: #777;
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+.navbar-default .navbar-nav>li>a {
+color: #aaa;
 }
-.navbar-default .nav>li>a:focus, .navbar-default .nav>li>a:hover, .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus, .navbar-default .dropdown-menu > li > a:hover, .navbar-default .dropdown-menu > li > a:focus, .navbar-default .nav .open>a, .navbar-default .nav .open>a:focus, .navbar-default .nav .open>a:hover  {
-  background-color: #eaeaea;
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .nav>li>a:active {
+  background-color: #f5f5f5;
+  color: #1d1d1b;
+  /*box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);*/
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus,
+.navbar-default .dropdown-menu > li > a:hover,
+.navbar-default .dropdown-menu > li > a:focus  {
+  background-color: #f5f5f5;
   color: #777;
 }
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
-  color: #777;
-  background-color: #eaeaea;
+.navbar-default .nav>li>a:focus,
+.navbar-default .nav>li>a:hover,
+.navbar-default .nav .open>a,
+.navbar-default .nav .open>a:focus,
+.navbar-default .nav .open>a:hover {
+  background-color: #e5e5e5;
+  color:#777;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover {
+  color: #1d1d1b;
+  background-color: transparent;
 }
 .navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
   color: #777;
 }
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus, .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
-    background-color: #eaeaea;
+    background-color: #f5f5f5;
     color: #777;
   }
 }
@@ -1040,13 +1060,29 @@ fieldset[disabled] .btn-danger:hover {
 
 /* navbar-inverse */
 
+.navbar-inverse {
+  background-color: #1d1d1b;
+  border-color: #1d1d1b;
+}
+/*
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav a:active {
   background-color: #1d1d1b !important;
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
 }
-.navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .nav .open>a, .navbar-inverse .nav .open>a:focus, .navbar-inverse .nav .open>a:hover, .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
-  background-color: #353535;
-  color: #999;
+*/
+.navbar-inverse .navbar-nav > li > a:focus,
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .nav .open>a,
+.navbar-inverse .nav .open>a:focus,
+.navbar-inverse .nav .open>a:hover {
+  background-color: #474747;
+  color: #ccc;
+}
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>.active>a:focus,
+.navbar-inverse .navbar-nav>.active>a:hover {
+  background-color: transparent;
+  color: #fff;
 }
 .navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover {
   color: #999;
@@ -1061,6 +1097,12 @@ fieldset[disabled] .btn-danger:hover {
 .navbar-inverse .navbar-brand,
 .navbar-inverse .navbar-nav > li > a {
   text-shadow: none;
+}
+.navbar-inverse .navbar-nav .open .dropdown-menu .divider {
+background-color: #e5e5e5;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+border-color: transparent;
 }
 
 /* breadcrumbs */

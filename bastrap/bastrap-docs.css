@@ -173,6 +173,12 @@ padding: 15px;
     display:none;
   }
 }
+@media (max-width: 1199px) {
+  .navbar-form .form-control {
+    width: 100px;
+  }
+}
+
 
 /* sidebar nav */
 
@@ -233,7 +239,7 @@ ul.affix-bottom {
 
 .sidebar .nav > li > a {
   display: block;
-  color: #999;
+  color: #aaa;
   padding: 5px 30px;
   font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
   font-weight: normal;
