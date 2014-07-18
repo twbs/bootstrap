@@ -173,4 +173,48 @@ $(function () {
     ok(!$._data($popover[0], 'events').mouseover && !$._data($popover[0], 'events').mouseout, 'popover does not have any events')
   })
 
+  test('should render popover element using delegated selector', function () {
+    var $div = $('<div><a href="#" title="mdo" data-content="http://twitter.com/mdo">@mdo</a></div>')
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover({
+        selector: 'a',
+        trigger: 'click'
+      })
+
+    $div.find('a').click()
+    notEqual($('.popover').length, 0, 'popover was inserted')
+
+    $div.find('a').click()
+    equal($('.popover').length, 0, 'popover was removed')
+  })
+
+  test('should render popover elements using different delegated selectors on the same node', function () {
+    var popoverHTML = '<div>'
+        + '<a href="#" class="first" title="mdo" data-content="http://twitter.com/mdo">@mdo</a>'
+        + '<a href="#" class="second" title="mdo" data-content="http://twitter.com/mdo">@mdo</a>'
+        + '</div>'
+
+    var $div = $(popoverHTML)
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover({
+        selector: 'a.first',
+        trigger: 'click'
+      })
+      .bootstrapPopover({
+        selector: 'a.second',
+        trigger: 'click'
+      })
+
+    $div.find('a.first').click()
+    notEqual($('.popover').length, 0, 'first popover was inserted')
+
+    $div.find('a.first').click()
+    equal($('.popover').length, 0, 'first popover removed')
+
+    $div.find('a.second').click()
+    notEqual($('.popover').length, 0, 'second popover was inserted')
+
+    $div.find('a.second').click()
+    equal($('.popover').length, 0, 'second popover removed')
+  })
 })
