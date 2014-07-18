@@ -114,12 +114,12 @@ a.list-group-item,
   color:#999;
 }
 .btn-default:active,
-.btn-default.active {
+.btn-default.active,
+.open .dropdown-toggle.btn-default {
   background-color: #eaeaea;
   border-color: #ccc;
   color:#777;
 }
-
 
 
 
