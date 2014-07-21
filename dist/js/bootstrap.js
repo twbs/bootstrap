@@ -258,15 +258,6 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
   }
 
 
-  // FOCUS SHIM (FOR BUTTON GROUPS)
-  // ==============================
-
-  function getBtnTarget(target) {
-    var $target = $(target)
-    return $target.hasClass('btn') ? $target : $target.parent('.btn')
-  }
-
-
   // BUTTON DATA-API
   // ===============
 
@@ -277,11 +268,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
       Plugin.call($btn, 'toggle')
       e.preventDefault()
     })
-    .on('focus.bs.button.data-api', '[data-toggle^="button"]', function (e) {
-      getBtnTarget(e.target).addClass('focus')
-    })
-    .on('blur.bs.button.data-api', '[data-toggle^="button"]', function (e) {
-      getBtnTarget(e.target).removeClass('focus')
+    .on('focus.bs.button.data-api blur.bs.button.data-api', '[data-toggle^="button"]', function (e) {
+      $(e.target).closest('.btn').toggleClass('focus', e.type == 'focus')
     })
 
 }(jQuery);
