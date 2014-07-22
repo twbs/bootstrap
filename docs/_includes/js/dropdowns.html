@@ -20,7 +20,7 @@
         <div class="collapse navbar-collapse bs-example-js-navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <button id="drop1" type="button" class="dropdown-toggle" data-toggle="dropdown">
+              <button id="drop1" type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown
                 <span class="caret"></span>
               </button>
@@ -33,7 +33,7 @@
               </ul>
             </li>
             <li class="dropdown">
-              <button id="drop2" type="button" class="dropdown-toggle" data-toggle="dropdown">
+              <button id="drop2" type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown 2
                 <span class="caret"></span>
               </button>
@@ -48,7 +48,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li id="fat-menu" class="dropdown">
-              <button id="drop3" type="button" class="dropdown-toggle" data-toggle="dropdown">
+              <button id="drop3" type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown 3
                 <span class="caret"></span>
               </button>
@@ -71,7 +71,7 @@
     <ul class="nav nav-pills" role="tablist">
       <li role="presentation" class="active"><a href="#">Regular link</a></li>
       <li role="presentation" class="dropdown">
-        <button id="drop4" type="button" data-toggle="dropdown">
+        <button id="drop4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown
           <span class="caret"></span>
         </button>
@@ -84,7 +84,7 @@
         </ul>
       </li>
       <li role="presentation" class="dropdown">
-        <button id="drop5" type="button" data-toggle="dropdown">
+        <button id="drop5" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown 2
           <span class="caret"></span>
         </button>
@@ -97,7 +97,7 @@
         </ul>
       </li>
       <li role="presentation" class="dropdown">
-        <button id="drop6" type="button" data-toggle="dropdown">
+        <button id="drop6" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown 3
           <span class="caret"></span>
         </button>
@@ -122,7 +122,7 @@
   <p>Add <code>data-toggle="dropdown"</code> to a link or button to toggle a dropdown.</p>
 {% highlight html %}
 <div class="dropdown">
-  <button id="dLabel" type="button" data-toggle="dropdown">
+  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown trigger
    <span class="caret"></span>
   </button>
@@ -134,7 +134,7 @@
   <p>To keep URLs intact with link buttons, use the <code>data-target</code> attribute instead of <code>href="#"</code>.</p>
 {% highlight html %}
 <div class="dropdown">
-  <a id="dLabel" data-target="#" href="http://example.com" type="button" data-toggle="dropdown">
+  <a id="dLabel" data-target="#" href="http://example.com" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown trigger
     <span class="caret"></span>
   </a>
