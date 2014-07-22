@@ -38,32 +38,25 @@
   }
 
   Affix.prototype.getState = function (scrollHeight, height, offsetTop, offsetBottom) {
-    var scrollTop     = this.$target.scrollTop()
-    var position      = this.$element.offset()
-    var targetHeight  = this.$target.height()
+    var scrollTop    = this.$target.scrollTop()
+    var position     = this.$element.offset()
+    var targetHeight = this.$target.height()
 
-    if (offsetTop != null && this.affixed == 'top') return scrollTop >= offsetTop ? false : 'top'
+    if (offsetTop != null && this.affixed == 'top') return scrollTop < offsetTop ? 'top' : false
+
     if (this.affixed == 'bottom') {
-      // Can be affixed to the top, use the unpin value
-      if (offsetTop != null) {
-        return (scrollTop + this.unpin <= position.top) ? false : 'bottom'
-      // Can only ever be pinned or affixed to the bottom, ignore unpin value
-      } else {
-        return (scrollTop + targetHeight <= scrollHeight - offsetBottom) ? false : 'bottom'
-      }
-    } else {
-      var initializing   = this.affixed == null
-      var colliderTop    = initializing ? scrollTop : position.top
-      var colliderHeight = initializing ? targetHeight : height
-
-      if (offsetTop != null && colliderTop <= offsetTop) {
-        return 'top'
-      } else if (offsetBottom != null && (colliderTop + colliderHeight >= scrollHeight - offsetBottom)) {
-        return 'bottom'
-      } else {
-        return false
-      }
+      if (offsetTop != null) return (scrollTop + this.unpin <= position.top) ? false : 'bottom'
+      return (scrollTop + targetHeight <= scrollHeight - offsetBottom) ? false : 'bottom'
     }
+
+    var initializing   = this.affixed == null
+    var colliderTop    = initializing ? scrollTop : position.top
+    var colliderHeight = initializing ? targetHeight : height
+
+    if (offsetTop != null && colliderTop <= offsetTop) return 'top'
+    if (offsetBottom != null && (colliderTop + colliderHeight >= scrollHeight - offsetBottom)) return 'bottom'
+
+    return false
   }
 
   Affix.prototype.getPinnedOffset = function () {
@@ -81,11 +74,11 @@
   Affix.prototype.checkPosition = function () {
     if (!this.$element.is(':visible')) return
 
-    var scrollHeight = $('body').height()
     var height       = this.$element.height()
     var offset       = this.options.offset
     var offsetTop    = offset.top
     var offsetBottom = offset.bottom
+    var scrollHeight = $('body').height()
 
     if (typeof offset != 'object')         offsetBottom = offsetTop = offset
     if (typeof offsetTop == 'function')    offsetTop    = offset.top(this.$element)
