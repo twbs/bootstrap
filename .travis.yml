@@ -18,7 +18,7 @@ after_script:
   - if [ "$TWBS_TEST" = validate-html ] && [ $TWBS_DO_VALIDATOR -ne 0 ]; then ./test-infra/s3_cache.py upload rubygems; fi
 env:
   global:
-    - JEKYLL_VERSION: 2.1.0
+    - JEKYLL_VERSION: 2.1.1
     - ROUGE_VERSION: 1.5.1
     - SAUCE_USERNAME: bootstrap
     - secure: "pJkBwnuae9dKU5tEcCqccfS1QQw7/meEcfz63fM7ba7QJNjoA6BaXj08L5Z3Vb5vBmVPwBawxo5Hp0jC0r/Z/O0hGnAmz/Cz09L+cy7dSAZ9x4hvZePSja/UAusaB5ogMoO8l2b773MzgQeSmrLbExr9BWLeqEfjC2hFgdgHLaQ="
