@@ -356,12 +356,8 @@
   Tooltip.prototype.getViewportBounds = function ($viewport) {
     if ($viewport.is('body')) {
       // fixed and absolute elements should be tested against the window
-      switch (this.$element.css('position')) {
-        case 'absolute':
-        case 'fixed':
-        {
-          return this.getScreenSpaceBounds()
-        }
+      if ((/fixed|absolute/).test(this.$element.css('position'))) {
+        return this.getScreenSpaceBounds()
       }
     }
 
