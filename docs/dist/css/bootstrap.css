@@ -2671,6 +2671,9 @@ select[multiple].form-group-lg .form-control {
     width: auto;
     vertical-align: middle;
   }
+  .form-inline .form-control-static {
+    display: inline-block;
+  }
   .form-inline .input-group {
     display: inline-table;
     vertical-align: middle;
@@ -4044,6 +4047,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     display: inline-block;
     width: auto;
     vertical-align: middle;
+  }
+  .navbar-form .form-control-static {
+    display: inline-block;
   }
   .navbar-form .input-group {
     display: inline-table;
