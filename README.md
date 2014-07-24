@@ -16,7 +16,6 @@ To get started, check out <http://getbootstrap.com>!
  - [Documentation](#documentation)
  - [Contributing](#contributing)
  - [Community](#community)
- - [Versioning](#versioning)
  - [Creators](#creators)
  - [Copyright and license](#copyright-and-license)
 
@@ -100,12 +99,6 @@ Keep track of development and community news.
 - Read and subscribe to [The Official Bootstrap Blog](http://blog.getbootstrap.com).
 - Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##twitter-bootstrap` channel.
 - Implementation help may be found at Stack Overflow (tagged [`twitter-bootstrap-3`](http://stackoverflow.com/questions/tagged/twitter-bootstrap-3)).
-
-
-
-## Versioning
-
-For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under [the Semantic Versioning guidelines](http://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
 
 
 
