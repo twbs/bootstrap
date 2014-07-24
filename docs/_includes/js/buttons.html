@@ -41,6 +41,10 @@
     <h4>Pre-checked options need <code>.active</code></h4>
     <p>For pre-checked options, you must add the <code>.active</code> class to the input's <code>label</code> yourself.</p>
   </div>
+  <div class="bs-callout bs-callout-warning">
+    <h4>Visual checked state only updated on click</h4>
+    <p>If the checked state of a checkbox button is updated without firing a <code>click</code> event on the button (e.g. via <code>&lt;input type="reset"&gt;</code> or via setting the <code>checked</code> property of the input), you will need to toggle the <code>.active</code> class on the input's <code>label</code> yourself.</p>
+  </div>
   <div class="bs-example" style="padding-bottom: 24px;">
     <div class="btn-group" data-toggle="buttons">
       <label class="btn btn-primary active">
@@ -73,6 +77,10 @@
   <div class="bs-callout bs-callout-warning">
     <h4>Preselected options need <code>.active</code></h4>
     <p>For preselected options, you must add the <code>.active</code> class to the input's <code>label</code> yourself.</p>
+  </div>
+  <div class="bs-callout bs-callout-warning">
+    <h4>Visual checked state only updated on click</h4>
+    <p>If the checked state of a radio button is updated without firing a <code>click</code> event on the button (e.g. via <code>&lt;input type="reset"&gt;</code> or via setting the <code>checked</code> property of the input), you will need to toggle the <code>.active</code> class on the input's <code>label</code> yourself.</p>
   </div>
   <div class="bs-example" style="padding-bottom: 24px;">
     <div class="btn-group" data-toggle="buttons">
