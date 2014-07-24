@@ -404,7 +404,7 @@
 
     return delta
   }
-  
+
   Tooltip.prototype.getTitle = function () {
     var title
     var $e = this.$element
