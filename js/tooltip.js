@@ -325,8 +325,8 @@
     var elOffset  = isBody ? { top: 0, left: 0 } : $element.offset()
     var scroll    = { scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop() }
     var outerDims = isSvg ? {} : {
-      width:  isBody ? $(window).width()  : $element.outerWidth(),
-      height: isBody ? $(window).height() : $element.outerHeight()
+      width: $element.outerWidth(),
+      height: $element.outerHeight()
     }
 
     return $.extend({}, elRect, scroll, outerDims, elOffset)
@@ -340,16 +340,40 @@
 
   }
 
+  Tooltip.prototype.getViewportBounds = function ($viewport) {
+    if ($viewport.selector == 'body') {
+      var elementPositionAttribute = $(this.$element).css('position')
+
+      // fixed and absolute elements should be tested against the window
+      switch (elementPositionAttribute) {
+        case 'absolute':
+        case 'fixed':
+          return this.getScreenSpaceBounds();
+      }
+    }
+
+    return $.extend({}, $viewport.offset(), { width: $viewport.outerWidth(), height: $viewport.outerHeight() })
+  }
+
+  Tooltip.prototype.getScreenSpaceBounds = function () {
+    return $.extend({}, {
+      top: $('body').scrollTop(),
+      left: $('body').scrollLeft(),
+      width: $(window).width(),
+      height: $(window).height()
+    })
+  }
+
   Tooltip.prototype.getViewportAdjustedDelta = function (placement, pos, actualWidth, actualHeight) {
     var delta = { top: 0, left: 0 }
     if (!this.$viewport) return delta
 
     var viewportPadding = this.options.viewport && this.options.viewport.padding || 0
-    var viewportDimensions = this.getPosition(this.$viewport)
+    var viewportDimensions = this.getViewportBounds(this.$viewport)
 
     if (/right|left/.test(placement)) {
-      var topEdgeOffset    = pos.top - viewportPadding - viewportDimensions.scroll
-      var bottomEdgeOffset = pos.top + viewportPadding - viewportDimensions.scroll + actualHeight
+      var topEdgeOffset    = pos.top - viewportPadding
+      var bottomEdgeOffset = pos.top + viewportPadding + actualHeight
       if (topEdgeOffset < viewportDimensions.top) { // top overflow
         delta.top = viewportDimensions.top - topEdgeOffset
       } else if (bottomEdgeOffset > viewportDimensions.top + viewportDimensions.height) { // bottom overflow
@@ -367,7 +391,7 @@
 
     return delta
   }
-
+  
   Tooltip.prototype.getTitle = function () {
     var title
     var $e = this.$element
