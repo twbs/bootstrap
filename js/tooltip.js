@@ -365,16 +365,16 @@
       }
     }
 
-    return { top: $viewport.offset().top, left: $viewport.offset().left, width: $viewport.outerWidth(), height: $viewport.outerHeight() }
+    return $.extend({}, $viewport.offset(), { width: $viewport.outerWidth(), height: $viewport.outerHeight() })
   }
 
   Tooltip.prototype.getScreenSpaceBounds = function () {
-    return $.extend({}, {
+    return {
       top: $('body').scrollTop(),
       left: $('body').scrollLeft(),
       width: $(window).width(),
       height: $(window).height()
-    })
+    }
   }
 
   Tooltip.prototype.getViewportAdjustedDelta = function (placement, pos, actualWidth, actualHeight) {
