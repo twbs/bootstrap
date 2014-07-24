@@ -328,8 +328,32 @@ input[type="checkbox"] {
   position: relative;
 
   // Ensure icons don't overlap text
+  .form-control{
+    padding-right: @input-height-base;
+  }
+  .form-control.input-sm,
+  &.form-group-sm .form-control{
+    padding-right: @input-height-small;
+  }
+  .form-control.input-lg,
+  &.form-group-lg .form-control {
+    padding-right: @input-height-large; 
+  }
+}
+.has-feedback-left {  
+  // Left Icon Input Padding
   .form-control {
-    padding-right: (@input-height-base * 1.25);
+    //reset changes to right
+    padding-right: @padding-base-horizontal;
+    padding-left: @input-height-base;
+  }
+  .form-control.input-sm,
+  &.form-group-sm .form-control{
+    padding-left: @input-height-small;
+  }
+  .form-control.input-lg,
+  &.form-group-lg .form-control {
+    padding-left: @input-height-large; 
   }
 }
 // Feedback icon (requires .glyphicon classes)
@@ -341,19 +365,25 @@ input[type="checkbox"] {
   display: block;
   width: @input-height-base;
   height: @input-height-base;
-  line-height: @input-height-base;
+  line-height: @input-height-base !important;
   text-align: center;
   pointer-events: none;
 }
-.input-lg + .form-control-feedback {
+// Left Align Icon
+.has-feedback-left .form-control-feedback {
+    left: 0; 
+}
+.input-lg + .form-control-feedback,
+.form-horizontal .form-group-sm .form-control-feedback {
   width: @input-height-large;
   height: @input-height-large;
-  line-height: @input-height-large;
+  line-height: @input-height-large !important;
 }
-.input-sm + .form-control-feedback {
+.input-sm + .form-control-feedback,
+.form-horizontal .form-group-lg .form-control-feedback {
   width: @input-height-small;
   height: @input-height-small;
-  line-height: @input-height-small;
+  line-height: @input-height-small !important;
 }
 
 // Feedback states
@@ -373,7 +403,8 @@ input[type="checkbox"] {
   & ~ .form-control-feedback {
      top: (@line-height-computed + 5); // Height of the `label` and its margin
   }
-  &.sr-only ~ .form-control-feedback {
+  &.sr-only ~ .form-control-feedback,
+  &.sr-only ~ div .form-control-feedback {
      top: 0;
   }
 }
@@ -413,7 +444,14 @@ input[type="checkbox"] {
       margin-bottom: 0;
       vertical-align: middle;
     }
-
+    
+    // Allow left aligned icon in inline form
+    .inline-feedback {
+      // enable absolute positioning
+      position: relative;
+      display: inline-block;
+    }
+    
     // In navbar-form, allow folks to *not* use `.form-group`
     .form-control {
       display: inline-block;
@@ -517,7 +555,9 @@ input[type="checkbox"] {
   .has-feedback .form-control-feedback {
     right: (@grid-gutter-width / 2);
   }
-
+  .has-feedback-left .form-control-feedback {
+    left: (@grid-gutter-width / 2);
+  }
   // Form group sizes
   //
   // Quick utility class for applying `.input-lg` and `.input-sm` styles to the
