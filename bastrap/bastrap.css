@@ -12,13 +12,15 @@ a, b, strong, thead > tr > th, .jumbotron p, .progress-bar, label {
   font-family: "GothamBold", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
-.h4, .h5, .h6, h4, h5, h6, .btn, .input-xl, .navbar-brand{
+.h4, .h5, .h6, h4, h5, h6, .panel-title, .btn, .input-xl, .navbar-brand{
   font-family: "GothamMedium", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
-blockquote p {
-	font-family: "GothamLightItalic", Helvetica, Arial, sans-serif;
+blockquote p, .jumbotron p {
+	font-family: "GothamLight", Helvetica, Arial, sans-serif;
 	font-weight: normal;
+  font-size:21px;
+  margin-bottom:15px;
 }
 
 /* btn */
@@ -172,7 +174,6 @@ input[type=checkbox]:focus {
 }
 .btn-default,
 .open > .dropdown-toggle.btn-default,
-.panel-default > .panel-heading,
 .btn-default.active,
 .btn-default:active,
 .open > .dropdown-toggle.btn-default {
@@ -187,6 +188,20 @@ input[type=checkbox]:focus {
   border-color: #ccc;
   color:#777;
 }
+/*
+.btn-default.active,
+.btn-default:active {
+  background-image: -webkit-linear-gradient(top, #eaeaea 0%, #f9f9f9 100%);
+  background-image:      -o-linear-gradient(top, #eaeaea 0%, #f9f9f9 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#eaeaea), to(#f9f9f9));
+  background-image:         linear-gradient(to bottom, #eaeaea 0%, #f9f9f9 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeaeaea', endColorstr='#fff9f9f9', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  background-color: #f9f9f9;
+  color:#999;
+}
+*/
 
 /* btn gradient primary */
 
@@ -220,7 +235,6 @@ input[type=checkbox]:focus {
 a.list-group-item.active,
 a.list-group-item.active:hover,
 a.list-group-item.active:focus,
-.panel-primary > .panel-heading,
 .btn-gcba,
 .open > .dropdown-toggle.btn-gcba,
 .btn-primary:active,
@@ -288,7 +302,6 @@ fieldset[disabled] .btn-gcba:hover {
 .btn-success,
 .open > .dropdown-toggle.btn-success,
 .progress-bar-success,
-.panel-success > .panel-heading,
 .btn-success:active,
 .btn-success.active {
   background-image: -webkit-linear-gradient(top, #9bc12b 0%, #64a825 100%);
@@ -336,7 +349,6 @@ fieldset[disabled] .btn-success:hover {
 .btn-info,
 .open > .dropdown-toggle.btn-info,
 .progress-bar-info,
-.panel-info > .panel-heading,
 .btn-info:active,
 .btn-info.active {
   background-image: -webkit-linear-gradient(top, #3bb4b7 0%, #009999 100%);
@@ -384,7 +396,6 @@ fieldset[disabled] .btn-info:hover {
 .btn-warning,
 .open > .dropdown-toggle.btn-warning,
 .progress-bar-warning,
-.panel-warning > .panel-heading,
 .btn-warning:active,
 .btn-warning.active {
   background-image: -webkit-linear-gradient(top, #ff9100 0%, #e26100 100%);
@@ -432,7 +443,6 @@ fieldset[disabled] .btn-warning:hover {
 .btn-danger,
 .open > .dropdown-toggle.btn-danger,
 .progress-bar-danger,
-.panel-danger > .panel-heading,
 .btn-danger:active,
 .btn-danger.active {
   background-image: -webkit-linear-gradient(top, #d65a38 0%, #bc362f 100%);
@@ -480,7 +490,6 @@ fieldset[disabled] .btn-danger:hover {
 .btn-inverse,
 .open > .dropdown-toggle.btn-inverse,
 .progress-bar-inverse,
-.panel-inverse > .panel-heading,
 .btn-inverse:active,
 .btn-inverse.active {
   background-image: -webkit-linear-gradient(top, #474747 0%, #1d1d1b 100%);
@@ -528,7 +537,6 @@ fieldset[disabled] .btn-inverse:hover {
 .btn-gray,
 .open > .dropdown-toggle.btn-gray,
 .progress-bar-gray,
-.panel-gray > .panel-heading,
 .btn-gray:active,
 .btn-gray.active {
   background-image: -webkit-linear-gradient(top, #999999 0%, #6d6d6d 100%);
@@ -576,7 +584,6 @@ fieldset[disabled] .btn-gray:hover {
 .btn-blue,
 .open > .dropdown-toggle.btn-blue,
 .progress-bar-blue,
-.panel-blue > .panel-heading,
 .btn-blue:active,
 .btn-blue.active {
   background-image: -webkit-linear-gradient(top, #5570bf 0%, #1a4da0 100%);
@@ -624,7 +631,6 @@ fieldset[disabled] .btn-blue:hover {
 .btn-violet,
 .open > .dropdown-toggle.btn-violet,
 .progress-bar-violet,
-.panel-violet > .panel-heading,
 .btn-violet:active,
 .btn-violet.active {
   background-image: -webkit-linear-gradient(top, #9c43a3 0%, #852fad 100%);
@@ -672,7 +678,6 @@ fieldset[disabled] .btn-violet:hover {
 .btn-pink,
 .open > .dropdown-toggle.btn-pink,
 .progress-bar-pink,
-.panel-pink > .panel-heading,
 .btn-pink:active,
 .btn-pink.active {
   background-image: -webkit-linear-gradient(top, #c64b7d 0%, #b72378 100%);
@@ -705,19 +710,6 @@ fieldset[disabled] .btn-pink:hover {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Gradient progress background */
 
 .progress {
@@ -727,6 +719,83 @@ fieldset[disabled] .btn-pink:hover {
   background-image:         linear-gradient(to bottom, #ebebeb 0%, #f5f5f5 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffebebeb', endColorstr='#fff5f5f5', GradientType=0);
   background-repeat: repeat-x;
+}
+
+/* Colores de fondo */
+
+.bg-black-1 {
+  background-color: #1d1d1b;
+}
+.bg-black-2 {
+  background-color: #333;
+}
+.bg-gray-1 {
+  background-color: #777;
+}
+.bg-gray-2 {
+  background-color: #999;
+}
+.bg-gray-3 {
+  background-color: #aaa;
+}
+.bg-gray-4 {
+  background-color: #ccc;
+}
+.bg-white-1 {
+  background-color: #e5e5e5;
+}
+.bg-white-2 {
+  background-color: #f5f5f5;
+}
+
+.bg-danger-lt {
+  background-color: #d65a38;
+}
+.bg-warning-lt {
+  background-color: #ff9100;
+}
+.bg-primary-lt {
+  background-color: #ffd300;
+}
+.bg-success-lt {
+  background-color: #9bc12b;
+}
+.bg-info-lt {
+  background-color: #3bb4b7;
+}
+.bg-blue-lt {
+  background-color: #5570bf;
+}
+.bg-violet-lt {
+  background-color: #9c43a3;
+}
+.bg-pink-lt {
+  background-color: #c64b7d;
+}
+
+.bg-danger-dk {
+  background-color: #bc362f;
+}
+.bg-warning-dk {
+  background-color: #e26100;
+}
+.bg-primary-dk {
+  background-color: #ffbc00;
+}
+.bg-success-dk {
+  background-color: #64a825;
+}
+.bg-info-dk {
+  background-color: #009999;
+}
+.bg-blue-dk {
+  background-color: #1a4da0;
+}
+.bg-violet-dk {
+  background-color: #852fad;
+}
+.bg-pink-dk {
+  background-color: #b72378;
 }
 
 /* Background light */
@@ -781,22 +850,65 @@ fieldset[disabled] .btn-pink:hover {
   color: #7b231f;
 }
 
-/* Border colors */
+/* panel */
 
-.panel-primary {
-  border-color: #e9c940;
+.panel {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
 }
-.panel-success {
+.panel-default {
+  border-color: #ccc;
+}
+.panel-default > .panel-heading {
+  color:#777;
+}
+.panel-default > .panel-heading a:active,
+.panel-default > .panel-heading a:focus {
+  color: #333;
+}
+.panel-success > .panel-heading,
+.panel-info > .panel-heading,
+.panel-warning > .panel-heading,
+.panel-danger > .panel-heading {
+  color: #fff;
+}
+
+/* panel colors */
+
+.panel-primary,
+.panel-primary > .panel-heading {
+  border-color: #e9c940;
+  color:#604e00;
+}
+.panel-primary > .panel-heading {
+  background-color: #ffd300;
+}
+.panel-success,
+.panel-success > .panel-heading {
   border-color: #7baa45;
 }
-.panel-info {
+.panel-success > .panel-heading {
+  background-color: #9bc12b;
+}
+.panel-info,
+.panel-info > .panel-heading {
   border-color: #3c9f9c;
 }
-.panel-warning {
+.panel-info > .panel-heading {
+  background-color: #3bb4b7;
+}
+.panel-warning,
+.panel-warning > .panel-heading {
   border-color: #dd7731;
 }
-.panel-danger {
+.panel-warning > .panel-heading {
+  background-color: #ff9100;
+}
+.panel-danger,
+.panel-danger > .panel-heading {
   border-color: #bc4946;
+}
+.panel-danger > .panel-heading {
+  background-color: #d65a38;
 }
 
 /* fields form + helper colors */
@@ -854,10 +966,6 @@ fieldset[disabled] .btn-pink:hover {
 }
 
 /* transitions */
-
-.form-control {
-  transition: none;
-}
 
 .form-control,
 button,
@@ -1441,26 +1549,6 @@ a.list-group-item:hover {
 }
 */
 
-/* panel */
-
-.panel {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
-}
-.panel-default {
-  border-color: #ccc;
-}
-.panel-default > .panel-heading a:active,
-.panel-default > .panel-heading a:focus {
-  color: #333;
-}
-.panel-success > .panel-heading,
-.panel-info > .panel-heading,
-.panel-warning > .panel-heading,
-.panel-danger > .panel-heading {
-  color: #fff;
-}
-
-
 /* Font files */
 
 @font-face {
@@ -1514,6 +1602,17 @@ a.list-group-item:hover {
   font-style: normal;
 }
 @font-face {
+  font-family: "GothamLight";
+  src: url('fonts/gotham-light.eot');
+  src: url('fonts/gotham-light.eot?#iefix') format('embedded-opentype'),
+  url('fonts/gotham-light.svg#Gotham') format('svg'),
+  url('fonts/gotham-light.woff') format('woff'),
+  url('fonts/gotham-light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+/*
+@font-face {
   font-family: "GothamLightItalic";
   src: url('fonts/gotham-lightitalic.eot');
   src: url('fonts/gotham-lightitalic.eot?#iefix') format('embedded-opentype'),
@@ -1523,6 +1622,6 @@ a.list-group-item:hover {
   font-weight: normal;
   font-style: normal;
 }
-
+*/
 
 

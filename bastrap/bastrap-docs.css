@@ -66,13 +66,6 @@ padding: 15px;
   padding: 30px;
   border:0 none;
 }
-.panel-docs .panel-body h3 {
-  font-family: "GothamMedium", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  margin-top:10px;
-  position:relative;
-  top:-10px;
-}
 .panel-docs .panel-footer {
   padding: 20px 30px;
   border:0 none;
@@ -97,6 +90,10 @@ padding: 15px;
   margin-top: 20px !important;
   top:0 !important;
 }
+.panel-body > h3 {
+  position:relative;
+  top:-10px;
+}
 .panel-example .panel-body {
   padding: 15px;
 }
@@ -105,14 +102,13 @@ padding: 15px;
   background-color: #f5f5f5;
   border-top: 1px solid #ddd;
 }
-.panel-example h3
-/*.bs-example-popover h3*/ {
-  top:0 !important;
-}
 .panel-docs > .panel-heading {
   background-color: #777;
   border-color: #636363;
   color:#fff;
+}
+.panel-title {
+  margin:0;
 }
 
 /* main navbar fix */
@@ -183,7 +179,7 @@ padding: 15px;
   color:#666;
 }
 #sidebar-brand a span {
-  font-family: "GothamMedium", Helvetica, Arial, sans-serif;
+  font-family: "GothamBold", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-size: 24px;
   display:block;
@@ -308,7 +304,6 @@ margin-bottom: 8px;
 /* colores */
 
 .docs-colores {
-  padding-bottom:40px;
   float:left;
 }
 .docs-colores span {
