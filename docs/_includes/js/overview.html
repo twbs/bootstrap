@@ -48,10 +48,10 @@ $('#myModal').modal('show')                // initializes and invokes show immed
   <p>Each plugin also exposes its raw constructor on a <code>Constructor</code> property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel="popover"]').data('popover')</code>.</p>
 
   <h4>Default Settings</h4>
-  <p>You can override the default settings for a control by accessing them through the <code>Constructor.DEFAULTS</code> property.<p>
+  <p>You can override the default settings for a plugin by accessing them through the <code>Constructor.DEFAULTS</code> property.<p>
 
 {% highlight js %}
-$.fn.modal.Constructor.DEFAULTS.keyboard = false; // changes default modal keyboard option
+$.fn.modal.Constructor.DEFAULTS.keyboard = false // changes default modal keyboard option
 {% endhighlight %}
 
   <h3 id="js-noconflict">No conflict</h3>
