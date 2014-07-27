@@ -60,8 +60,8 @@
           <ul class="nav navbar-nav">
             <li class="disabled"><a href="#">Lineamientos</a></li>
             <li class="disabled"><a href="#">Estructura</a></li>
-            <li class="active"><a href="#">Estilos</a></li>
-            <li class="disabled"><a href="#">Componentes</a></li>
+            <li class="active"><a href="index.html">Estilos</a></li>
+            <li><a href="componentes.html">Componentes</a></li>
             <li><a href="old/index.html" target="blank">BAstrap 0.5</a></li>
           </ul>
         </div>
@@ -136,13 +136,13 @@
             <li><a href="#cont-pozo">Pozo</a></li>
           </ul>
         </li>
-        <li><a href="#aux-clase">Elementos auxiliares</a>
+        <li><a href="#aux-etiqueta">Elementos auxiliares</a>
           <ul class="nav">
-            <li><a href="#aux-clase">Clase auxiliar</a></li>
             <li><a href="#aux-etiqueta">Etiqueta</a></li>
             <li><a href="#aux-insignia">Insignia</a></li>
             <li><a href="#aux-alerta">Alerta</a></li>
             <li><a href="#aux-barra">Barra de progreso</a></li>
+            <li><a href="#aux-clase">Clase auxiliar</a></li>
           </ul>
         </li>
         <li><a href="#colores">Colores de fondo</a>
@@ -2434,50 +2434,6 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
   </div>
 </div>
 
-<!-- Helpers -->
-
-<a id="aux-clase" class="anchor"></a>
-
-<div class="panel panel-docs">
-  <div class="panel-heading">
-    <h2>Clase auxiliar <span>(Helper classes)</span></h2>
-  </div>
-  <div class="panel-body">
-  <h3>Colores contextuales</h3>
-    <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
-    <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-    <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-    <p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-    <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
-    <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
-  </div>
-  <div class="panel-footer">
-<pre><code class="html"><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-primary"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-success"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-info"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-warning"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-danger"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
-</code></pre>
-  </div>
-  <div class="panel-body helper-example">
-  <h3>Fondos contextuales</h3>
-    <p class="bg-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-    <p class="bg-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-    <p class="bg-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-    <p class="bg-warning">Etiam porta sem malesuada magna mollis euismod.</p>
-    <p class="bg-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
-  </div>
-  <div class="panel-footer">
-<pre><code class="html"><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"bg-primary"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"bg-success"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"bg-info"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"bg-warning"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"bg-danger"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
-</code></pre>
-  </div>
-</div>
-
 <!-- Labels -->
 
 <a id="aux-etiqueta" class="anchor"></a>
@@ -2719,6 +2675,50 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>10% Complete (danger)<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
+</code></pre>
+  </div>
+</div>
+
+<!-- Helpers -->
+
+<a id="aux-clase" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>Clase auxiliar <span>(Helper classes)</span></h2>
+  </div>
+  <div class="panel-body">
+  <h3>Colores contextuales</h3>
+    <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+    <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+    <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+    <p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+    <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+    <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+  </div>
+  <div class="panel-footer">
+<pre><code class="html"><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-primary"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-success"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-info"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-warning"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-danger"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
+</code></pre>
+  </div>
+  <div class="panel-body helper-example">
+  <h3>Fondos contextuales</h3>
+    <p class="bg-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+    <p class="bg-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+    <p class="bg-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+    <p class="bg-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+    <p class="bg-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+  </div>
+  <div class="panel-footer">
+<pre><code class="html"><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"bg-primary"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"bg-success"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"bg-info"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"bg-warning"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"bg-danger"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
 </code></pre>
   </div>
 </div>
