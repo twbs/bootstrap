@@ -1,12 +1,5 @@
 /* misc */
 
-body {
-  /*padding-top: 60px;*/
-  padding-bottom: 120px;
-  posiion: relative;
-  background-color:#e5e5e5;
-  position:relative;
-}
 .theme-dropdown .dropdown-menu {
   position: static;
   display: block;
@@ -14,9 +7,6 @@ body {
 }
 .theme-showcase > p > .btn {
   margin: 5px 0;
-}
-.container-main {
-  padding-top:60px;
 }
 .anchor {
   display:block;
@@ -118,6 +108,7 @@ padding: 15px;
   font-weight: normal;
   font-size:24px;
 }
+/*
 .navbar-docs .container {
   padding-left:30px;
 }
@@ -138,14 +129,7 @@ padding: 15px;
     padding-left:45px;
   }
 }
-.navbar-docs .navbar-nav>li>a {
-  padding-top: 17px;
-}
-@media (max-width: 560px) {
-  .sub-brand {
-    display:none;
-  }
-}
+*/
 @media (min-width: 560px) {
   .navbar-form .form-control {
     width: auto;
@@ -300,6 +284,11 @@ margin-bottom: 8px;
   }
 }
 
+/* jumbotron home */
+
+.jumbotron-home {
+  background-image:url(../docs/login-1.jpg);
+}
 
 /* colores */
 
