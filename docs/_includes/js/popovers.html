@@ -164,7 +164,7 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
           <td>''</td>
           <td>
             <p>Default content value if <code>data-content</code> attribute isn't present.</p>
-            <p>If a function is given, it will be called with 1 argument, which is the element that the popover is attached to.</p>
+            <p>If a function is given, it will be called with its <code>this</code> reference set to the element that the popover is attached to.</p>
           </td>
         </tr>
         <tr>
@@ -211,7 +211,10 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
           <td>title</td>
           <td>string | function</td>
           <td>''</td>
-          <td>Default title value if <code>title</code> attribute isn't present</td>
+          <td>
+            <p>Default title value if <code>title</code> attribute isn't present.</p>
+            <p>If a function is given, it will be called with its <code>this</code> reference set to the element that the popover is attached to.</p>
+          </td>
         </tr>
         <tr>
           <td>trigger</td>
