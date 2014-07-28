@@ -141,7 +141,7 @@ input[type=checkbox]:focus {
   outline-style: dotted;
   outline-width: 1px;
   outline-color: #ccc;
-  outline-offset: 2px;
+  outline-offset: 0;
 }
 
 /* btn-baid */
@@ -1355,30 +1355,30 @@ a.list-group-item-danger:hover,
 
 /* footer */
 
-footer {
+body > footer {
   margin-top:120px;
   padding:60px 0 120px 0;
   background:#1d1d1b;
 }
-footer > .navbar {
+body > footer > .navbar {
   border:0 none;
   box-shadow:none;
 }
-footer .sub-brand {
+body > footer .sub-brand {
   margin: 30px 0 0px 0px;
   color:#fff;
   text-align:right;
 }
 @media (max-width: 560px) {
-  footer .sub-brand {
+  body > footer .sub-brand {
     text-align:center;
     float:none;
   }
-  footer .col-md-6 {
+  body > footer .col-md-6 {
     text-align:center;
     padding:15px 0 0 0;
   }
-  footer .navbar-brand {
+  body > footer .navbar-brand {
     float:none;
   }
 }
@@ -1741,16 +1741,6 @@ a.list-group-item:hover {
   font-style: normal;
 }
 @font-face {
-  font-family: "OpenSansBold";
-  src: url('fonts/opensans-bold.eot');
-  src: url('fonts/opensans-bold.eot?#iefix') format('embedded-opentype'),
-  url('fonts/opensans-bold.svg#Open Sans') format('svg'),
-  url('fonts/opensans-bold.woff') format('woff'),
-  url('fonts/opensans-bold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
   font-family: "OpenSansSemibold";
   src: url('fonts/opensans-semibold.eot');
   src: url('fonts/opensans-semibold.eot?#iefix') format('embedded-opentype'),
@@ -1790,17 +1780,5 @@ a.list-group-item:hover {
   font-weight: normal;
   font-style: normal;
 }
-/*
-@font-face {
-  font-family: "GothamLightItalic";
-  src: url('fonts/gotham-lightitalic.eot');
-  src: url('fonts/gotham-lightitalic.eot?#iefix') format('embedded-opentype'),
-  url('fonts/gotham-lightitalic.svg#Gotham') format('svg'),
-  url('fonts/gotham-lightitalic.woff') format('woff'),
-  url('fonts/gotham-lightitalic.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-*/
 
 
