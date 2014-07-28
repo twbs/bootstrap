@@ -1,0 +1,402 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="bastrap/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="bastrap/favicon-mobile.png">
+    <title>BAstrap3 > Estructura</title>
+
+    <!-- css -->
+
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bastrap/bastrap.css" rel="stylesheet">
+    <link href="docs/bastrap-docs.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="bootstrap-master/docs/assets/js/ie-emulation-modes-warning.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="bootstrap-master/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body role="document" data-spy="scroll" data-target="#affix-nav" class="bg-white-1">
+
+  <a id="dec-html" class="anchor"></a>
+
+    <div class="navbar navbar-primary navbar-top navbar-lg navbar-docs" role="navigation">
+      <div class="container">
+        <div class="row-fluid">
+          <div class="col-md-6">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="index.html">
+                <img src="bastrap/bac-header.png" />
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h5 class="sub-brand">EN TODO ESTÁS VOS</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar navbar-inverse navbar-top navbar-docs" role="navigation">
+      <div class="container">
+        <div class="row-fluid">
+          <div class="col-md-12">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#header-main-nav">
+                <span class="sr-only">Cambiar navegación</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.html">BAstrap3</a>
+             </div>
+            <div class="navbar-collapse collapse" id="header-main-nav">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="estructura.html">Estructura</a></li>
+                <li><a href="estilos.html">Estilos</a></li>
+                <li><a href="componentes.html">Componentes</a></li>
+                <li class="disabled"><a href="#">Lineamientos</a></li>
+                <li><a href="old/index.html" target="blank">BAstrap 0.5</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="container container-main">
+
+<div class="row-fluid">
+
+
+
+
+
+
+<nav class="sidebar col-md-3" role="sidebar">
+    <ul class="panel panel-default nav sidenav affix-top" id="affix-nav" data-spy="affix" data-offset-top="150">
+        <div class="panel-heading" id="sidebar-brand">
+          <h1><a href="#dec-html"><span>BAstrap3</span>Estructura</a></h1>
+        </div>
+        <li class="sidebar-first"><a href="#dec-html">Declaraciones</a>
+          <ul class="nav">
+            <li><a href="#dec-html">HTML</a></li>
+            <li><a href="#dec-css">CSS</a></li>
+            <li><a href="#dec-js">JavaScript</a></li>
+          </ul>
+        </li>
+        <li><a href="#grilla-base">Grilla</a>
+          <ul class="nav">
+            <li><a href="#grilla-base">Base</a></li>
+            <li><a href="#grilla-columnas">Columnas</a></li>
+            <li><a href="#grilla-espacio">Espacio</a></li>
+            <li><a href="#grilla-orden">Órden</a></li>
+            <li><a href="#grilla-responsive">Opciones responsive</a></li>
+          </ul>
+        </li>
+        <li><a href="#tipo-encabezado">Subir</a></li>
+    </ul>
+</nav>
+
+
+
+
+
+
+<!-- 
+
+html
+css
+js
+
+base = container,row,col
+columnas = 12 columnas -  más de 12 columnas - nesting
+espacio = offset
+orden = push/pull
+responsive = md, xs, sm, lg
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="col-md-9" role="main">
+
+<!-- HTML -->
+
+<div class="panel panel-docs panel-first">
+  <div class="panel-heading">
+    <h2>HTML</h2>
+  </div>
+  <div class="panel-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+  <div class="panel-footer">
+<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"jumbotron"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>¡Hola, mundo!<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+  </div>
+</div>
+
+<!-- CSS -->
+
+<a id="dec-css" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>CSS</h2>
+  </div>
+  <div class="panel-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+  <div class="panel-footer">
+<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"jumbotron"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>¡Hola, mundo!<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+  </div>
+</div>
+
+<!-- JavaScript JS -->
+
+<a id="dec-js" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>JavaScript</h2>
+  </div>
+  <div class="panel-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+  <div class="panel-footer">
+<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"jumbotron"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>¡Hola, mundo!<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- Base -->
+
+<a id="grilla-base" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>Base</h2>
+  </div>
+  <div class="panel-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+  <div class="panel-footer">
+<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"jumbotron"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>¡Hola, mundo!<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+  </div>
+</div>
+
+<!-- Columnas -->
+
+<a id="grilla-columnas" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>Columnas</h2>
+  </div>
+  <div class="panel-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+  <div class="panel-footer">
+<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"jumbotron"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>¡Hola, mundo!<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+  </div>
+</div>
+
+<!-- Espacio -->
+
+<a id="grilla-espacio" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>Espacio</h2>
+  </div>
+  <div class="panel-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+  <div class="panel-footer">
+<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"jumbotron"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>¡Hola, mundo!<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+  </div>
+</div>
+
+<!-- Orden -->
+
+<a id="grilla-orden" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>Órden</h2>
+  </div>
+  <div class="panel-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+  <div class="panel-footer">
+<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"jumbotron"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>¡Hola, mundo!<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+  </div>
+</div>
+
+<!-- Opciones responsive -->
+
+<a id="grilla-responsive" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>Opciones responsive</h2>
+  </div>
+  <div class="panel-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+  <div class="panel-footer">
+<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"jumbotron"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>¡Hola, mundo!<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div> <!-- /container -->
+
+
+
+</div>
+</div>
+
+<footer>
+    <div class="navbar">
+      <div class="container">
+        <div class="row-fluid">
+          <div class="col-md-6">
+            <a class="navbar-brand" href="#">
+              <img src="bastrap/bac-footer.png" />
+            </a>
+          </div>
+          <div class="col-md-6">
+            <div class="sub-brand">
+              <p>Dirección de Gobierno Electrónico<br />
+              <span class="text-muted">Ministerio de Modernización</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+<!-- resize fixed sidebar width -->
+
+<script type="text/javascript">
+$(function() {
+   var $affix = $(".sidenav"), 
+       $parent = $affix.parent(), 
+       resize = function() { $affix.width($parent.width()); };
+   $(window).resize(resize); 
+   resize();
+});
+</script>
+
+<!-- scroll to top -->
+
+<script type="text/javascript">
+  var $logo = $('#sidebar-brand');
+  $(document).scroll(function() {
+      $logo.css({display: $(this).scrollTop()>150 ? "block":"none"});
+  });
+</script>
+
+<!-- tooltip docs fix -->
+
+<script type="text/javascript">
+    $('a').tooltip();
+</script>
+
+
+</body>
+</html>
