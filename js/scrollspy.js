@@ -87,6 +87,10 @@
       this.refresh()
     }
 
+    if (maxScroll == 10) {
+      this.process()
+    }
+    
     if (scrollTop >= maxScroll) {
       return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
     }
