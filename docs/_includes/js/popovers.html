@@ -155,7 +155,7 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
           <td>string | false</td>
           <td>false</td>
           <td>
-           <p>Appends the popover to a specific element. Example: <code>container: 'body'</code>. This option is particularly useful in that it allows you to position the popover in the flow of the document near the triggering element - which will prevent the popover from floating away from the triggering element during a window resize.</p>
+            <p>Appends the popover to a specific element. Example: <code>container: 'body'</code>. This option is particularly useful in that it allows you to position the popover in the flow of the document near the triggering element - which will prevent the popover from floating away from the triggering element during a window resize.</p>
           </td>
         </tr>
         <tr>
@@ -187,7 +187,10 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
           <td>placement</td>
           <td>string | function</td>
           <td>'right'</td>
-          <td>How to position the popover - top | bottom | left | right | auto.<br> When "auto" is specified, it will dynamically reorient the popover. For example, if placement is "auto left", the popover will display to the left when possible, otherwise it will display right.</td>
+          <td>
+            <p>How to position the popover - top | bottom | left | right | auto.<br>When "auto" is specified, it will dynamically reorient the popover. For example, if placement is "auto left", the popover will display to the left when possible, otherwise it will display right.</p>
+            <p>When a function is used to determine the placement, it is called with the popover DOM node as its first argument and the triggering element DOM node as its second. The <code>this</code> context is set to the popover instance.</p>
+          </td>
         </tr>
         <tr>
           <td>selector</td>
@@ -200,11 +203,11 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
           <td>string</td>
           <td><code>'&lt;div class="popover" role="tooltip"&gt;&lt;div class="arrow"&gt;&lt;/div&gt;&lt;h3 class="popover-title"&gt;&lt;/h3&gt;&lt;div class="popover-content"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
           <td>
-           <p>Base HTML to use when creating the popover.</p>
-           <p>The popover's <code>title</code> will be injected into the <code>.popover-title</code>.</p>
-           <p>The popover's <code>content</code> will be injected into the <code>.popover-content</code>.</p>
-           <p><code>.arrow</code> will become the popover's arrow.</p>
-           <p>The outermost wrapper element should have the <code>.popover</code> class.</p>
+            <p>Base HTML to use when creating the popover.</p>
+            <p>The popover's <code>title</code> will be injected into the <code>.popover-title</code>.</p>
+            <p>The popover's <code>content</code> will be injected into the <code>.popover-content</code>.</p>
+            <p><code>.arrow</code> will become the popover's arrow.</p>
+            <p>The outermost wrapper element should have the <code>.popover</code> class.</p>
           </td>
         </tr>
         <tr>
@@ -223,12 +226,12 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
           <td>How popover is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space.</td>
         </tr>
         <tr>
-         <td>viewport</td>
-         <td>string | object</td>
-         <td>{ selector: 'body', padding: 0 }</td>
-         <td>
-          <p>Keeps the popover within the bounds of this element. Example: <code>viewport: '#viewport'</code> or <code>{ "selector": "#viewport", "padding": 0 }</code></p>
-         </td>
+          <td>viewport</td>
+          <td>string | object</td>
+          <td>{ selector: 'body', padding: 0 }</td>
+          <td>
+            <p>Keeps the popover within the bounds of this element. Example: <code>viewport: '#viewport'</code> or <code>{ "selector": "#viewport", "padding": 0 }</code></p>
+          </td>
        </tr>
       </tbody>
     </table>
@@ -261,28 +264,28 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
       <thead>
-       <tr>
-         <th style="width: 150px;">Event Type</th>
-         <th>Description</th>
-       </tr>
+        <tr>
+          <th style="width: 150px;">Event Type</th>
+          <th>Description</th>
+        </tr>
       </thead>
       <tbody>
-       <tr>
-         <td>show.bs.popover</td>
-         <td>This event fires immediately when the <code>show</code> instance method is called.</td>
-       </tr>
-       <tr>
-         <td>shown.bs.popover</td>
-         <td>This event is fired when the popover has been made visible to the user (will wait for CSS transitions to complete).</td>
-       </tr>
-       <tr>
-         <td>hide.bs.popover</td>
-         <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
-       </tr>
-       <tr>
-         <td>hidden.bs.popover</td>
-         <td>This event is fired when the popover has finished being hidden from the user (will wait for CSS transitions to complete).</td>
-       </tr>
+        <tr>
+          <td>show.bs.popover</td>
+          <td>This event fires immediately when the <code>show</code> instance method is called.</td>
+        </tr>
+        <tr>
+          <td>shown.bs.popover</td>
+          <td>This event is fired when the popover has been made visible to the user (will wait for CSS transitions to complete).</td>
+        </tr>
+        <tr>
+          <td>hide.bs.popover</td>
+          <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
+        </tr>
+        <tr>
+          <td>hidden.bs.popover</td>
+          <td>This event is fired when the popover has finished being hidden from the user (will wait for CSS transitions to complete).</td>
+        </tr>
       </tbody>
     </table>
   </div><!-- /.table-responsive -->
