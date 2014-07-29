@@ -80,10 +80,12 @@ padding: 15px;
   margin-top: 20px !important;
   top:0 !important;
 }
+/*
 .panel-body > h3 {
   position:relative;
   top:-10px;
 }
+*/
 .panel-example .panel-body {
   padding: 15px;
 }
@@ -308,6 +310,37 @@ margin-bottom: 8px;
   font-family: "OpenSansSemiBold", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
+
+.container-docs .col-md-1,
+.container-docs .col-md-2,
+.container-docs .col-md-3,
+.container-docs .col-md-4,
+.container-docs .col-md-5,
+.container-docs .col-md-6,
+.container-docs .col-md-7,
+.container-docs .col-md-8,
+.container-docs .col-md-9,
+.container-docs .col-md-10,
+.container-docs .col-md-11,
+.container-docs .col-md-12,
+.container-docs .col-xs-6,
+.container-docs .col-sm-3,
+.container-docs .col-sm-6,
+.container-docs .col-sm-9 {
+  background:#e5e5e5;
+  border:solid 1px #fff;
+  padding-top:10px;
+  padding-bottom:10px;
+  margin-bottom:10px;
+  border-radius:4px;
+  color:#999;
+}
+
+
+
+
+
+
 
 /* Pigments code */
 

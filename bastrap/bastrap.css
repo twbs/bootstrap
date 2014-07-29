@@ -898,57 +898,101 @@ fieldset[disabled] .btn-pink:hover {
   background-color: #b72378;
 }
 
-/* Background light */
+/* background + alert + links */
 
+.alert {
+  border:0 none;
+}
+.alert a,
+.alert .alert-link {
+  font-weight: normal;
+}
 .alert-primary,
 .bg-primary {
   background-color: #ffd671;
+}
+.alert-primary,
+.alert-primary a,
+.alert-primary .alert-link,
+.bg-primary,
+.bg-primary a {
   color: #604e00;
 }
 .alert-success,
 .bg-success {
   background-color: #eff5dd;
+}
+.alert-success,
+.alert-success a,
+.alert-success .alert-link,
+.bg-success,
+.bg-success a {
   color: #426518;
 }
 .alert-info,
 .bg-info {
   background-color: #e6f5f6;
+}
+.alert-info,
+.alert-info a,
+.alert-info .alert-link,
+.bg-info,
+.bg-info a {
   color: #0f4c49;
 }
 .alert-warning,
 .bg-warning {
   background-color: #fff8d6;
+}
+.alert-warning,
+.alert-warning a,
+.alert-warning .alert-link,
+.bg-warning,
+.bg-warning a {
   color: #604e00;
 }
 .alert-danger,
 .bg-danger {
   background-color: #f9e5df;
+}
+.alert-danger,
+.alert-danger a,
+.alert-danger .alert-link,
+.bg-danger,
+.bg-danger a {
   color: #7b231f;
 }
 
-/* alert + backgrounds */
+/* text helper classes */
 
-.alert {
-  border:0 none;
+.text-primary,
+.text-primary a {
+  color:#e2b700;
 }
-.alert .alert-link {
-  font-weight: normal;
+.text-success,
+.text-success a {
+  color:#649b24;
 }
-.alert-primary .alert-link {
-  color: #604e00;
+.text-info,
+.text-info a {
+  color:#1a8e8b;
 }
-.alert-success .alert-link {
-  color: #426518;
+.text-warning,
+.text-warning a {
+  color:#cc621b;
 }
-.alert-info .alert-link {
-  color: #0f4c49;
+.text-danger,
+.text-danger a {
+  color:#b23634;
 }
-.alert-warning .alert-link {
-  color: #604e00;
-}
-.alert-danger .alert-link {
-  color: #7b231f;
-}
+
+
+
+
+
+
+
+
 
 /* panel */
 
@@ -1068,7 +1112,8 @@ fieldset[disabled] .btn-pink:hover {
 /* transitions */
 
 .form-control,
-.btn {
+.btn,
+.thumbnail {
   transition: all 0.075s ease-out;
 }
 
@@ -1240,28 +1285,6 @@ a.list-group-item-danger:hover,
 .thumbnail,
 .img-thumbnail {
   box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
-}
-
-/* text helper classes */
-
-.text-primary {
-  color:#e2b700;
-}
-
-.text-success {
-  color:#649b24;
-}
-
-.text-info {
-  color:#</span></h2>;
-}
-
-.text-warning {
-  color:#cc621b;
-}
-
-.text-danger {
-  color:#b23634;
 }
 
 /* dropdown-menu */
