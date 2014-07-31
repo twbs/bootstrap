@@ -354,20 +354,18 @@
   }
 
   Tooltip.prototype.getViewportBounds = function ($viewport) {
-    if ($viewport.is('body')) {
+    if ($viewport.is('body') && (/fixed|absolute/).test(this.$element.css('position'))) {
       // fixed and absolute elements should be tested against the window
-      if ((/fixed|absolute/).test(this.$element.css('position'))) {
-        return this.getScreenSpaceBounds()
-      }
+      return this.getScreenSpaceBounds($viewport)
     }
 
     return $.extend({}, $viewport.offset(), { width: $viewport.outerWidth(), height: $viewport.outerHeight() })
   }
 
-  Tooltip.prototype.getScreenSpaceBounds = function () {
+  Tooltip.prototype.getScreenSpaceBounds = function ($viewport) {
     return {
-      top: $('body').scrollTop(),
-      left: $('body').scrollLeft(),
+      top: $viewport.scrollTop(),
+      left: $viewport.scrollLeft(),
       width: $(window).width(),
       height: $(window).height()
     }
