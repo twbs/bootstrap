@@ -349,7 +349,7 @@ $(function () {
     $carousel.remove()
   })
 
-  test('should skip over non-items', function () {
+  test('should skip over non-items when using item indices', function () {
     var templateHTML = '<div id="myCarousel" class="carousel" data-interval="1814">'
         + '<div class="carousel-inner">'
         + '<div class="item active">'
@@ -370,6 +370,31 @@ $(function () {
     strictEqual($template.find('.item')[0], $template.find('.active')[0], 'first item active')
 
     $template.bootstrapCarousel(1)
+
+    strictEqual($template.find('.item')[1], $template.find('.active')[0], 'second item active')
+  })
+
+  test('should skip over non-items when using next/prev methods', function () {
+    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="1814">'
+        + '<div class="carousel-inner">'
+        + '<div class="item active">'
+        + '<img alt="">'
+        + '</div>'
+        + '<script type="text/x-metamorph" id="thingy"/>'
+        + '<div class="item">'
+        + '<img alt="">'
+        + '</div>'
+        + '<div class="item">'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+    var $template = $(templateHTML)
+
+    $template.bootstrapCarousel()
+
+    strictEqual($template.find('.item')[0], $template.find('.active')[0], 'first item active')
+
+    $template.bootstrapCarousel('next')
 
     strictEqual($template.find('.item')[1], $template.find('.active')[0], 'second item active')
   })
