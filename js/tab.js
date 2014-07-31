@@ -61,6 +61,32 @@
     })
   }
 
+  Tab.prototype.keydown = function (e) {
+    var $li     = $(e.target).parent()
+    var key     = e.which || e.keyCode
+    var $items  = $li.closest('ul[role="tablist"]').find('li')
+    var index   = $li.index()
+    var uBound  = $items.length -1
+    var newTab
+
+    e.preventDefault()
+    e.stopPropagation()
+
+    switch (key) {
+      case 37: // left
+      case 38: // up
+        newTab = (index === 0) ? $items[uBound] : $items[index-1]
+        break
+      case 39: // right
+      case 40: // down
+        newTab = (index === uBound) ? $items[0] : $items[index + 1]
+        break
+    }
+
+    if (newTab) $(newTab).tab('show')
+
+  }
+
   Tab.prototype.activate = function (element, container, callback) {
     var $active    = container.find('> .active')
     var transition = callback
@@ -72,14 +98,28 @@
         .removeClass('active')
         .find('> .dropdown-menu > .active')
           .removeClass('active')
-        .end()
-        .find('[data-toggle="tab"]')
-          .attr('aria-expanded', false)
 
-      element
-        .addClass('active')
-        .find('[data-toggle="tab"]')
-          .attr('aria-expanded', true)
+      if (element.attr('role') === 'tabpanel') { // Is this a panel or a tab
+        $active.attr('aria-hidden', true)
+        element.attr('aria-hidden', false)
+      } else {
+        $active
+          .find('> [role="tab"]')
+          .attr({
+            'aria-selected': false,
+            'tabindex': -1
+          })
+
+        element
+          .find('> [role="tab"]')
+          .attr({
+            'aria-selected': true,
+            'tabindex': 0
+          })
+          .focus()
+      }
+
+      element.addClass('active')
 
       if (transition) {
         element[0].offsetWidth // reflow for transition
@@ -108,7 +148,6 @@
 
     $active.removeClass('in')
   }
-
 
   // TAB PLUGIN DEFINITION
   // =====================
@@ -141,7 +180,28 @@
   // TAB DATA-API
   // ============
 
-  var clickHandler = function (e) {
+  $('[data-toggle="tab"], [data-toggle="pill"]').each(function () {
+    var $this   = $(this)
+    var $parent = $this.parent()
+    var active  = $parent.hasClass('active')
+
+    $parent.attr('role', 'presentation')
+
+    $this.attr({
+      'aria-selected':  active,
+      'aria-controls':  $this.attr('href').replace('#', ''),
+      'role':           'tab',
+      'tabindex':       (active) ? 0 : -1
+    })
+
+    $($this.attr('href')).attr({
+      'aria-hidden':      !active,
+      'aria-labelledby':  $this.attr('id'),
+      'role':             'tabpanel'
+    })
+  });
+
+  $(document).on('click.bs.tab.data-api', '[data-toggle="tab"], [data-toggle="pill"]', function (e) {
     e.preventDefault()
     Plugin.call($(this), 'show')
   }
@@ -149,5 +209,7 @@
   $(document)
     .on('click.bs.tab.data-api', '[data-toggle="tab"]', clickHandler)
     .on('click.bs.tab.data-api', '[data-toggle="pill"]', clickHandler)
+
+  $(document).on('keydown.bs.tab.data-api', '[data-toggle="tab"], [data-toggle="pill"]', $.fn.tab.Constructor.prototype.keydown)
 
 }(jQuery);
