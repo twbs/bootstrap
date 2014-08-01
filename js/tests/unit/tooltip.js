@@ -739,4 +739,40 @@ $(function () {
     $tooltip.trigger('mouseenter')
   })
 
+  test('should correctly position tooltips on SVG elements', function () {
+    if (!window.SVGElement) {
+      // Skip IE8 since it doesn't support SVG
+      expect(0)
+      return
+    }
+
+    stop()
+
+    var styles = '<style>'
+        + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
+        + '.tooltip { position: absolute; }'
+        + '.tooltip .tooltip-inner { width: 24px; height: 24px; font-family: Helvetica; }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    $('#qunit-fixture').append(
+        '<div style="position: fixed; top: 0; left: 0;">'
+      + '  <svg width="200" height="200">'
+      + '    <circle cx="100" cy="100" r="10" title="m" id="theCircle" />'
+      + '  </svg>'
+      + '</div>')
+    var $circle = $('#theCircle')
+
+    $circle
+      .on('shown.bs.tooltip', function () {
+        var offset = $('.tooltip').offset()
+        $styles.remove()
+        ok(Math.abs(offset.left - 88) <= 1, 'tooltip has correct horizontal location')
+        start()
+      })
+      .bootstrapTooltip({ container: 'body', placement: 'top', trigger: 'manual' })
+
+    $circle.bootstrapTooltip('show')
+  })
+
 })
