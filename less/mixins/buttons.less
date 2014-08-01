@@ -7,6 +7,9 @@
   color: @color;
   background-color: @background;
   border-color: @border;
+  &:before {
+    background-color: @background;
+  }
 
   &:hover,
   &:focus,
@@ -17,6 +20,9 @@
     color: @color;
     background-color: darken(@background, 10%);
         border-color: darken(@border, 12%);
+    &:before {
+      background-color: darken(@background, 12%);
+    }
   }
   &:active,
   &.active,

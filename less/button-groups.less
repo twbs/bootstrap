@@ -216,6 +216,21 @@
   > .btn-group .btn {
     width: 100%;
   }
+  
+  // Prevent double borders between justified buttons
+  .btn + .btn,
+  .btn + .btn-group .btn,
+  .btn-group + .btn,
+  .btn-group + .btn-group .btn {
+    &:before {
+      position: absolute;
+      left: -1px;
+      top: 0;
+      content: "";
+      width: 1px;
+      height: 100%;
+    }
+  }
 
   > .btn-group .dropdown-menu {
     left: auto;
