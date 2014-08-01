@@ -86,15 +86,10 @@
             <li><a href="#intro-indice">Índice</a></li>
           </ul>
         </li>
-        <li><a href="#ejemplos">Ejemplos</a>
-          <ul class="nav" style="display:none;">
-            <li><a href="#ejemplos">Ejemplos</a></li>
-          </ul>
-        </li>
-        <li><a href="#dec-encabezado">Declaraciones</a>
+        <li><a href="#base-codigo">Base</a>
           <ul class="nav">
-            <li><a href="#dec-encabezado">Encabezado</a></li>
-            <li><a href="#dec-pie">Pie</a></li>
+            <li><a href="#base-codigo">Código base</a></li>
+            <li><a href="#base-ejemplos">Ejemplos</a></li>
           </ul>
         </li>
         <li><a href="#grilla-base">Grilla</a>
@@ -161,7 +156,7 @@
     <hr />
     <p>Usa <a href="http://getbootstrap.com/" target="_blank">Bootstrap 3</a> y está compuesta por código <strong>HTML, CSS y JavaScript.</strong></p>
     <p>Para su uso es necesario contar con conocimientos de HTML, CSS y Bootstrap 3 (ya que la mayoría de los componentes y clases son los mismos).</p>
-    <p><strong class="text-danger">Es importante tener en cuenta que los archivos NO se bajan. Se los llama desde <a href="#dec-encabezado">las declaraciones</a> del servidor oficial y luego el sitio se arma copiando y pegando el código de <a href="estilos.html">estilos</a> y <a href="componentes.html">componentes.</a></strong></p>
+    <p><strong class="text-danger">Es importante tener en cuenta que los archivos NO se bajan. Se los llama desde <a href="#base-codigo">las declaraciones</a> del servidor oficial y luego el sitio se arma copiando y pegando el código de <a href="estilos.html">estilos</a> y <a href="componentes.html">componentes.</a></strong></p>
   </div>
 </div>
 
@@ -189,15 +184,93 @@
   </div>
 </div>
 
+<!-- Código base -->
+
+<a id="base-codigo" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>Código base</h2>
+  </div>
+  <div class="panel-body">
+    <p class="lead">Copiando y pegando el siguiente código podés comenzar a usar <strong>BAstrap3.</strong></p>
+  </div>
+  <div class="panel-footer">
+<pre><code class="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"es"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"description"</span> <span class="na">content=</span><span class="s">"Descripción del sitio."</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"author"</span> <span class="na">content=</span><span class="s">"Autor del sitio."</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Título de la página<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"shortcut icon"</span> <span class="na">href=</span><span class="s">"VALUE"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon-precomposed"</span> <span class="na">href=</span><span class="s">"VALUE"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"http://www.buenosaires.gob.ar/estilos/bastrap3/bastrap.css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"estilos-extra-del-sitio.css"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!--[if lt IE 9]&gt;
+      &lt;script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"&gt;&lt;/script&gt;
+      &lt;script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"&gt;&lt;/script&gt;
+    &lt;![endif]--&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    ...
+
+
+
+
+
+
+
+    
+    <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">"https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"</span><span class="nt">&gt;</span><span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">"http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"</span><span class="nt">&gt;</span><span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+    ...
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre>
+  </div>
+  <div class="panel-body">
+    <p>Se debe respetar la siguiente estructura en el encabezado (tags "html" y "head") de las páginas del sitio:</p>
+    <ul>
+      <li>Doctype HTML5</li>
+      <li>Atributo de lenguaje español</li>
+      <li>Codificación UTF-8</li>
+      <li>Compatibilidad con IE</li>
+      <li>Compatibilidad mobile</li>
+      <li>Descripción del sitio para buscadores</li>
+      <li>Autor del sitio</li>
+      <li>Título de la página</li>
+      <li>Íconos del sitio para diferentes dispositivos</li>
+      <li>Link de bootstrap minimizado en su CDN</li>
+      <li>Link de BAstrap3 minimizado en su CDN</li>
+      <li>Link de estilos extra del sitio</li>
+      <li>Compatibilidad condicional con IE comentada</li>
+    </ul>
+    <p>Se debe respetar la siguiente estructura en el pie (antes del cierre del tag "body") de las páginas del sitio:</p>
+    <ul>
+      <li>Link de jQuery minimizado en su CDN</li>
+      <li>Link de JavaScript de Bootstrap minimizado en su CDN</li>
+      <li>Scripts de inicialización de componentes usados en la página/sitio</li>
+    </ul>
+    <p>También se deben respetar el encabezado y pie de página oficiales.</p>
+  </div>
+</div>
+
 <!-- Ejemplos -->
 
-<a id="ejemplos" class="anchor"></a>
+<a id="base-ejemplos" class="anchor"></a>
 
 <div class="panel panel-docs">
   <div class="panel-heading">
     <h2>Ejemplos</h2>
   </div>
   <div class="panel-body">
+    <p>Próximamente.</p>
+    <!--
     <p>Hacé click en las imagenes para descargar ejemplos básicos ya preparados.</p>
     <hr />
     <div class="row">
@@ -222,92 +295,9 @@
         </a>
       </div>
     </div>
+    -->
   </div>
 </div>
-
-<!-- Encabezado -->
-
-<a id="dec-encabezado" class="anchor"></a>
-
-<div class="panel panel-docs">
-  <div class="panel-heading">
-    <h2>Encabezado</h2>
-  </div>
-  <div class="panel-body">
-    <p>Se debe respetar la siguiente estructura en el encabezado (tags "html" y "head") de las páginas del sitio:</p>
-    <ul>
-      <li>Doctype HTML5</li>
-      <li>Atributo de lenguaje español</li>
-      <li>Codificación UTF-8</li>
-      <li>Compatibilidad con IE</li>
-      <li>Compatibilidad mobile</li>
-      <li>Descripción del sitio para buscadores</li>
-      <li>Autor del sitio</li>
-      <li>Título de la página</li>
-      <li>Íconos del sitio para diferentes dispositivos</li>
-      <li>Link de bootstrap minimizado en su CDN</li>
-      <li>Link de BAstrap3 minimizado en su CDN</li>
-      <li>Link de estilos extra del sitio</li>
-      <li>Compatibilidad condicional con IE comentada</li>
-    </ul>
-  </div>
-  <div class="panel-footer">
-<pre><code class="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"es"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"description"</span> <span class="na">content=</span><span class="s">"Descripción del sitio."</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"author"</span> <span class="na">content=</span><span class="s">"Autor del sitio."</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;title&gt;</span>Título de la página<span class="nt">&lt;/title&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"shortcut icon"</span> <span class="na">href=</span><span class="s">"VALUE"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon-precomposed"</span> <span class="na">href=</span><span class="s">"VALUE"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"********/bastrap/bastrap.css"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"estilos-extra-del-sitio.css"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!--[if lt IE 9]&gt;
-      &lt;script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"&gt;&lt;/script&gt;
-      &lt;script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"&gt;&lt;/script&gt;
-    &lt;![endif]--&gt;</span>
-  <span class="nt">&lt;/head&gt;</span>
-  ...
-<span class="nt">&lt;/html&gt;</span></code></pre>
-  </div>
-</div>
-
-<!-- Pie -->
-
-<a id="dec-pie" class="anchor"></a>
-
-<div class="panel panel-docs">
-  <div class="panel-heading">
-    <h2>Pie</h2>
-  </div>
-  <div class="panel-body">
-    <p>Se debe respetar la siguiente estructura en el pie (antes del cierre del tag "body") de las páginas del sitio:</p>
-    <ul>
-      <li>Link de jQuery minimizado en su CDN</li>
-      <li>Link de JavaScript de Bootstrap minimizado en su CDN</li>
-      <li>Scripts de inicialización de componentes usados en la página/sitio</li>
-    </ul>
-  </div>
-  <div class="panel-footer">
-<pre><code class="html">...
-<span class="nt">&lt;body&gt;</span>
-...
-<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">"https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"</span><span class="nt">&gt;</span><span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">"http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"</span><span class="nt">&gt;</span><span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
-...
-<span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre>
-  </div>
-</div>
-
-
 
 
 
@@ -333,13 +323,13 @@ responsive = md, xs, sm, lg
 
 
 
-<!-- Base -->
+<!-- Grilla base -->
 
 <a id="grilla-base" class="anchor"></a>
 
 <div class="panel panel-docs">
   <div class="panel-heading">
-    <h2>Base</h2>
+    <h2>Grilla base</h2>
   </div>
   <div class="panel-body">
     <p>La grilla de BAstrap3 está compuesta principalmente por 3 elementos:</p>
