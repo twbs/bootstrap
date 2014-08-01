@@ -27,6 +27,8 @@
 
   Tooltip.VERSION  = '3.2.0'
 
+  Tooltip.TRANSITION_DURATION = 150
+
   Tooltip.DEFAULTS = {
     animation: true,
     placement: 'top',
@@ -207,7 +209,7 @@
       $.support.transition && this.$tip.hasClass('fade') ?
         $tip
           .one('bsTransitionEnd', complete)
-          .emulateTransitionEnd(150) :
+          .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
         complete()
     }
   }
@@ -295,7 +297,7 @@
     $.support.transition && this.$tip.hasClass('fade') ?
       $tip
         .one('bsTransitionEnd', complete)
-        .emulateTransitionEnd(150) :
+        .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
       complete()
 
     this.hoverState = null
