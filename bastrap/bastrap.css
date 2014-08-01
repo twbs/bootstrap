@@ -1341,6 +1341,7 @@ a.list-group-item-danger:hover,
   color:#604e00;
   float:right;
   margin: 32px 0 0 0;
+  text-transform:uppercase;
 }
 @media (max-width: 767px) {
   .navbar-nav .open .dropdown-menu {
