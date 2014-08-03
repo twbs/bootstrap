@@ -194,6 +194,21 @@ input[type="month"] {
   }
 }
 
+// IE 11 hack to reverse the iOS temporal input hack.
+_:-ms-fullscreen, :root input[type="date"],
+_:-ms-fullscreen, :root input[type="time"],
+_:-ms-fullscreen, :root input[type="datetime-local"],
+_:-ms-fullscreen, :root input[type="month"] {
+  line-height: @line-height-base;
+
+  &.input-sm {
+    line-height: @line-height-small;
+  }
+  &.input-lg {
+    line-height: @line-height-large;
+  }
+}
+
 
 // Form groups
 //
