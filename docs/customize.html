@@ -12,6 +12,7 @@ lead: Customize Bootstrap's components, Less variables, and jQuery plugins to ge
 <!--[if lt IE 9]>
   <style>
     .bs-customizer,
+    .bs-customizer-import,
     .bs-docs-sidebar {
       display: none;
     }
@@ -23,6 +24,17 @@ lead: Customize Bootstrap's components, Less variables, and jQuery plugins to ge
 <![endif]-->
 
 <!-- Customizer form -->
+
+<div class="bs-docs-section bs-customizer-import">
+  <div id="import-drop-target" class="bs-dropzone">
+    <h2>✍</h2>
+    <p class="lead">Have an existing configuration? Upload your <code>config.json</code> to import it.</p>
+    <p>Drag and drop here, or <label id="import-manual-trigger" class="btn-link">manually upload<input type="file" id="import-file-select" class="hidden"></label>.</p>
+    <hr>
+    <p><strong>Don't have one?</strong> That's okay—just start customizing the fields below.</p>
+  </div>
+</div><!-- /import -->
+
 <form class="bs-customizer" role="form">
   <div class="bs-docs-section" id="less-section">
     <button class="btn btn-secondary toggle" type="button">Toggle all</button>
@@ -357,8 +369,6 @@ lead: Customize Bootstrap's components, Less variables, and jQuery plugins to ge
     <p class="lead">Customize Less variables to define colors, sizes and more inside your custom CSS stylesheets.</p>
     {% include customizer-variables.html %}
   </div>
-
-
 
   <div class="bs-docs-section">
     <h1 id="download" class="page-header">Download</h1>

@@ -320,7 +320,8 @@ module.exports = function (grunt) {
         reset: true,
         relaxerror: [
           'Bad value X-UA-Compatible for attribute http-equiv on element meta.',
-          'Element img is missing required attribute src.'
+          'Element img is missing required attribute src.',
+          'Attribute autocomplete not allowed on element input at this point.'
         ]
       },
       files: {
@@ -338,7 +339,7 @@ module.exports = function (grunt) {
         tasks: ['jshint:test', 'qunit']
       },
       less: {
-        files: 'less/*.less',
+        files: 'less/**/*.less',
         tasks: 'less'
       },
       docs: {

@@ -186,9 +186,11 @@ input[type="month"] {
 
   &.input-sm {
     line-height: @input-height-small;
+    line-height: @line-height-small ~"\0";
   }
   &.input-lg {
     line-height: @input-height-large;
+    line-height: @line-height-large ~"\0";
   }
 }
 
@@ -420,6 +422,11 @@ input[type="checkbox"] {
       display: inline-block;
       width: auto; // Prevent labels from stacking above inputs in `.form-group`
       vertical-align: middle;
+    }
+
+    // Make static controls behave like regular ones
+    .form-control-static {
+      display: inline-block;
     }
 
     .input-group {

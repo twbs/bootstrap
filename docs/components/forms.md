@@ -233,7 +233,7 @@ Use the default option, or add `multiple` to show multiple options at once.
 
 ## Static controls
 
-When you need to place plain text next to a form label within a horizontal form, use the `.form-control-static` class on a `<p>`.
+When you need to place plain text next to a form label within a form, use the `.form-control-static` class on a `<p>`.
 
 {% example html %}
 <form class="form-horizontal" role="form">
@@ -249,6 +249,20 @@ When you need to place plain text next to a form label within a horizontal form,
       <input type="password" class="form-control" id="inputPassword" placeholder="Password">
     </div>
   </div>
+</form>
+{% endexample %}
+
+{% example html %}
+<form class="form-inline" role="form">
+  <div class="form-group">
+    <label class="sr-only">Email</label>
+    <p class="form-control-static">email@example.com</p>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword2" class="sr-only">Password</label>
+    <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-default">Confirm identity</button>
 </form>
 {% endexample %}
 

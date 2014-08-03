@@ -137,7 +137,7 @@ To keep URLs intact with link buttons, use the `data-target` attribute instead o
 
 {% highlight html %}
 <div class="dropdown">
-  <a id="dLabel" data-target="#" href="http://example.com" type="button" data-toggle="dropdown">
+  <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown">
     Dropdown trigger
     <span class="caret"></span>
   </a>

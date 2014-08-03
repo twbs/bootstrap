@@ -48,13 +48,15 @@ Just add `data-dismiss="alert"` to your close button to automatically give an al
 </button>
 {% endhighlight %}
 
+To have your alerts use animation when closing, make sure they have the `.fade` and `.in` class already applied to them.
+
 ### Methods
 
 #### $().alert()
 
-Wraps all alerts with close functionality. To have your alerts animate out when closed, make sure they have the `.fade` and `.in` class already applied to them.
+Makes an alert listen for click events on descendant elements which have the `data-dismiss="alert"` attribute. (Not necessary when using the data-api's auto-initialization.)
 
-#### .alert('close')
+#### $().alert('close')
 
 Closes an alert.
 
@@ -86,7 +88,7 @@ Bootstrap's alert class exposes a few events for hooking into alert functionalit
 </div>
 
 {% highlight js %}
-$('#my-alert').on('closed.bs.alert', function () {
+$('#myAlert').on('closed.bs.alert', function () {
   // do something…
 })
 {% endhighlight %}

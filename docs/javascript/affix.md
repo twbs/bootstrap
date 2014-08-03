@@ -17,9 +17,8 @@ The affix plugin toggles between three classes, each representing a particular s
 
 Here's how the affix plugin works:
 
-- To start, the plugin adds `.affix-top` to indicate the element is in its top-most position. At this point no CSS positioning is required.
-- Scrolling past the element you want affixed should trigger the actual affixing. This is where `.affix` replaces `.affix-top` and sets `position: fixed;` (provided by Bootstrap's code CSS).
-- If a bottom offset is defined, scrolling past that should replace `.affix` with `.affix-bottom`. Since offsets are optional, setting one requires you to set the appropriate CSS. In this case, add `position: absolute;` when necessary. The plugin uses the data attribute or JavaScript option to determine where to position the element from there.
+- Scrolling past the element you want affixed should trigger the actual affixing. This is where `.affix` replaces `.affix-top` and sets `position: fixed;` (provided by Bootstrap's CSS).
+- If a bottom offset is defined, scrolling past it should replace `.affix` with `.affix-bottom`. Since offsets are optional, setting one requires you to set the appropriate CSS. In this case, add `position: absolute;` when necessary. The plugin uses the data attribute or JavaScript option to determine where to position the element from there.
 
 Follow the above steps to set your CSS for either of the usage options below.
 
@@ -38,14 +37,14 @@ To easily add affix behavior to any element, just add `data-spy="affix"` to the 
 Call the affix plugin via JavaScript:
 
 {% highlight js %}
-  $('#my-affix').affix({
-    offset: {
-      top: 100
-    , bottom: function () {
-        return (this.bottom = $('.footer').outerHeight(true))
-      }
+$('#myAffix').affix({
+  offset: {
+    top: 100,
+    bottom: function () {
+      return (this.bottom = $('.footer').outerHeight(true))
     }
-  })
+  }
+})
 {% endhighlight %}
 
 
@@ -82,7 +81,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Events
 
-Bootstrap's affix class exposes a few events for hooking into affix functionality.
+Bootstrap's affix plugin exposes a few events for hooking into affix functionality.
 
 <div class="table-responsive">
   <table class="table table-bordered table-striped">

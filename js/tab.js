@@ -19,6 +19,8 @@
 
   Tab.VERSION = '3.2.0'
 
+  Tab.TRANSITION_DURATION = 150
+
   Tab.prototype.show = function () {
     var $this    = this.element
     var $ul      = $this.closest('ul:not(.dropdown-menu)')
@@ -82,7 +84,7 @@
     $active.length && transition ?
       $active
         .one('bsTransitionEnd', next)
-        .emulateTransitionEnd(150) :
+        .emulateTransitionEnd(Tab.TRANSITION_DURATION) :
       next()
 
     $active.removeClass('in')

@@ -45,16 +45,21 @@ Add `data-toggle="buttons"` to a group of checkboxes for checkbox style toggling
   <p>For pre-checked options, you must add the <code>.active</code> class to the input's <code>label</code> yourself.</p>
 </div>
 
+<div class="bs-callout bs-callout-warning">
+  <h4>Visual checked state only updated on click</h4>
+  <p>If the checked state of a checkbox button is updated without firing a <code>click</code> event on the button (e.g. via <code>&lt;input type="reset"&gt;</code> or via setting the <code>checked</code> property of the input), you will need to toggle the <code>.active</code> class on the input's <code>label</code> yourself.</p>
+</div>
+
 {% example html %}
 <div class="btn-group" data-toggle="buttons">
   <label class="btn btn-primary active">
-    <input type="checkbox" checked> Option 1 (pre-checked)
+    <input type="checkbox" autocomplete="off" checked> Option 1 (pre-checked)
   </label>
   <label class="btn btn-primary">
-    <input type="checkbox"> Option 2
+    <input type="checkbox" autocomplete="off"> Option 2
   </label>
   <label class="btn btn-primary">
-    <input type="checkbox"> Option 3
+    <input type="checkbox" autocomplete="off"> Option 3
   </label>
 </div>
 {% endexample %}
@@ -68,16 +73,21 @@ Add `data-toggle="buttons"` to a group of radio inputs for radio style toggling 
   <p>For preselected options, you must add the <code>.active</code> class to the input's <code>label</code> yourself.</p>
 </div>
 
+<div class="bs-callout bs-callout-warning">
+  <h4>Visual checked state only updated on click</h4>
+  <p>If the checked state of a checkbox button is updated without firing a <code>click</code> event on the button (e.g. via <code>&lt;input type="reset"&gt;</code> or via setting the <code>checked</code> property of the input), you will need to toggle the <code>.active</code> class on the input's <code>label</code> yourself.</p>
+</div>
+
 {% highlight html %}
 <div class="btn-group" data-toggle="buttons">
   <label class="btn btn-primary active">
-    <input type="radio" name="options" id="option1" checked> Option 1 (preselected)
+    <input type="radio" name="options" id="option1" autocomplete="off" checked> Option 1 (preselected)
   </label>
   <label class="btn btn-primary">
-    <input type="radio" name="options" id="option2"> Option 2
+    <input type="radio" name="options" id="option2" autocomplete="off"> Option 2
   </label>
   <label class="btn btn-primary">
-    <input type="radio" name="options" id="option3"> Option 3
+    <input type="radio" name="options" id="option3" autocomplete="off"> Option 3
   </label>
 </div>
 {% endhighlight %}
@@ -133,7 +143,7 @@ Sets button state to loading - disables button and swaps text to loading text. L
 
 <div class="bs-callout bs-callout-danger">
   <h4>Cross-browser compatibility</h4>
-  <p><a href="https://github.com/twbs/bootstrap/issues/793">Firefox persists form control states across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>.</p>
+  <p><a href="https://github.com/twbs/bootstrap/issues/793">Firefox persists form control states (disabledness and checkedness) across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>.</p>
 </div>
 
 #### $().button('reset')

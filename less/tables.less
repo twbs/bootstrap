@@ -169,11 +169,12 @@ table {
 // will display normally.
 
 .table-responsive {
+  overflow-x: auto;
+
   @media screen and (max-width: @screen-xs-max) {
     width: 100%;
     margin-bottom: (@line-height-computed * 0.75);
     overflow-y: hidden;
-    overflow-x: auto;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     border: 1px solid @table-border-color;
     -webkit-overflow-scrolling: touch;

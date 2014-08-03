@@ -37,22 +37,10 @@ We publicly list browser bugs that are impacting us here, in the hopes of expedi
         <td><a href="{{ site.bug.github }}10690">#10690</a></td>
       </tr>
       <tr>
-        <td>Firefox <strong>&lt;31</strong></td>
-        <td><code>position: relative;</code> doesn't work inside tables</td>
-        <td><a href="{{ site.bug.firefox }}63895">Mozilla bug #63895</a></td>
-        <td><a href="{{ site.bug.github }}12467">#12467</a></td>
-      </tr>
-      <tr>
         <td>Chrome</td>
         <td>Weird button behavior with some number <code>&lt;input&gt;</code>s</td>
         <td><a href="{{ site.bug.chrome }}337668">Chromium issue #337668</a></td>
         <td><a href="{{ site.bug.github }}8350">#8350</a>, <a href="https://github.com/necolas/normalize.css/issues/283">Normalize #283</a></td>
-      </tr>
-      <tr>
-        <td>Chrome</td>
-        <td>Navbar rendering problem on Windows after several clicks</td>
-        <td><a href="{{ site.bug.chrome }}272750">Chromium issue #272750</a>, <a href="{{ site.bug.webkit }}119793">WebKit bug #119793</a></td>
-        <td><a href="{{ site.bug.github }}9226">#9226</a></td>
       </tr>
       <tr>
         <td>Chrome</td>

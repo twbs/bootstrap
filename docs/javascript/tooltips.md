@@ -7,6 +7,8 @@ title: Tooltips
 
 Inspired by the excellent jQuery.tipsy plugin written by Jason Frame; Tooltips are an updated version, which don't rely on images, use CSS3 for animations, and data-attributes for local title storage.
 
+Tooltips with zero-length titles are never displayed.
+
 Hover over the links below to see tooltips:
 
 <div class="bs-example tooltip-demo">
@@ -106,79 +108,85 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
      </tr>
     </thead>
     <tbody>
-     <tr>
-       <td>animation</td>
-       <td>boolean</td>
-       <td>true</td>
-       <td>Apply a CSS fade transition to the tooltip</td>
-     </tr>
-     <tr>
-       <td>container</td>
-       <td>string | false</td>
-       <td>false</td>
-       <td>
-        <p>Appends the tooltip to a specific element. Example: <code>container: 'body'</code>. This option is particularly useful in that it allows you to position the tooltip in the flow of the document near the triggering element - which will prevent the tooltip from floating away from the triggering element during a window resize.</p>
+      <tr>
+        <td>animation</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>Apply a CSS fade transition to the tooltip</td>
+      </tr>
+      <tr>
+        <td>container</td>
+        <td>string | false</td>
+        <td>false</td>
+        <td>
+          <p>Appends the tooltip to a specific element. Example: <code>container: 'body'</code>. This option is particularly useful in that it allows you to position the tooltip in the flow of the document near the triggering element - which will prevent the tooltip from floating away from the triggering element during a window resize.</p>
        </td>
-     </tr>
-     <tr>
-       <td>delay</td>
-       <td>number | object</td>
-       <td>0</td>
-       <td>
-        <p>Delay showing and hiding the tooltip (ms) - does not apply to manual trigger type</p>
-        <p>If a number is supplied, delay is applied to both hide/show</p>
-        <p>Object structure is: <code>delay: { "show": 500, "hide": 100 }</code></p>
-       </td>
-     </tr>
-     <tr>
-       <td>html</td>
-       <td>boolean</td>
-       <td>false</td>
-       <td>Insert HTML into the tooltip. If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</td>
-     </tr>
-     <tr>
-       <td>placement</td>
-       <td>string | function</td>
-       <td>'top'</td>
-       <td>How to position the tooltip - top | bottom | left | right | auto. <br> When "auto" is specified, it will dynamically reorient the tooltip. For example, if placement is "auto left", the tooltip will display to the left when possible, otherwise it will display right.</td>
-     </tr>
-     <tr>
-       <td>selector</td>
-       <td>string</td>
-       <td>false</td>
-       <td>If a selector is provided, tooltip objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have tooltips added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="http://jsfiddle.net/fScua/">an informative example</a>.</td>
-     </tr>
-     <tr>
-       <td>template</td>
-       <td>string</td>
-       <td><code>'&lt;div class="tooltip" role="tooltip"&gt;&lt;div class="tooltip-arrow"&gt;&lt;/div&gt;&lt;div class="tooltip-inner"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
-       <td>
-        <p>Base HTML to use when creating the tooltip.</p>
-        <p>The tooltip's <code>title</code> will be injected into the <code>.tooltip-inner</code>.</p>
-        <p><code>.tooltip-arrow</code> will become the tooltip's arrow.</p>
-        <p>The outermost wrapper element should have the <code>.tooltip</code> class.</p>
-      </td>
-     </tr>
-     <tr>
-       <td>title</td>
-       <td>string | function</td>
-       <td>''</td>
-       <td>Default title value if <code>title</code> attribute isn't present</td>
-     </tr>
-     <tr>
-       <td>trigger</td>
-       <td>string</td>
-       <td>'hover focus'</td>
-       <td>How tooltip is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space.</td>
-     </tr>
-     <tr>
-       <td>viewport</td>
-       <td>string | object</td>
-       <td>{ selector: 'body', padding: 0 }</td>
-       <td>
-        <p>Keeps the tooltip within the bounds of this element. Example: <code>viewport: '#viewport'</code> or <code>{ "selector": "#viewport", "padding": 0 }</code></p>
-       </td>
-     </tr>
+      </tr>
+      <tr>
+        <td>delay</td>
+        <td>number | object</td>
+        <td>0</td>
+        <td>
+         <p>Delay showing and hiding the tooltip (ms) - does not apply to manual trigger type</p>
+         <p>If a number is supplied, delay is applied to both hide/show</p>
+         <p>Object structure is: <code>delay: { "show": 500, "hide": 100 }</code></p>
+        </td>
+      </tr>
+      <tr>
+        <td>html</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Insert HTML into the tooltip. If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</td>
+      </tr>
+      <tr>
+        <td>placement</td>
+        <td>string | function</td>
+        <td>'top'</td>
+        <td>
+          <p>How to position the tooltip - top | bottom | left | right | auto.<br>When "auto" is specified, it will dynamically reorient the tooltip. For example, if placement is "auto left", the tooltip will display to the left when possible, otherwise it will display right.</p>
+          <p>When a function is used to determine the placement, it is called with the tooltip DOM node as its first argument and the triggering element DOM node as its second. The <code>this</code> context is set to the tooltip instance.</p>
+        </td>
+      </tr>
+      <tr>
+        <td>selector</td>
+        <td>string</td>
+        <td>false</td>
+        <td>If a selector is provided, popover objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="http://jsbin.com/zopod/1/edit">an informative example</a>.</td>
+      </tr>
+      <tr>
+        <td>template</td>
+        <td>string</td>
+        <td><code>'&lt;div class="tooltip" role="tooltip"&gt;&lt;div class="tooltip-arrow"&gt;&lt;/div&gt;&lt;div class="tooltip-inner"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
+        <td>
+          <p>Base HTML to use when creating the tooltip.</p>
+          <p>The tooltip's <code>title</code> will be injected into the <code>.tooltip-inner</code>.</p>
+          <p><code>.tooltip-arrow</code> will become the tooltip's arrow.</p>
+          <p>The outermost wrapper element should have the <code>.tooltip</code> class.</p>
+        </td>
+      </tr>
+      <tr>
+        <td>title</td>
+        <td>string | function</td>
+        <td>''</td>
+        <td>
+          <p>Default title value if <code>title</code> attribute isn't present.</p>
+          <p>If a function is given, it will be called with its <code>this</code> reference set to the element that the tooltip is attached to.</p>
+        </td>
+      </tr>
+      <tr>
+        <td>trigger</td>
+        <td>string</td>
+        <td>'hover focus'</td>
+        <td>How tooltip is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space.</td>
+      </tr>
+      <tr>
+        <td>viewport</td>
+        <td>string | object</td>
+        <td>{ selector: 'body', padding: 0 }</td>
+        <td>
+          <p>Keeps the tooltip within the bounds of this element. Example: <code>viewport: '#viewport'</code> or <code>{ "selector": "#viewport", "padding": 0 }</code></p>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>

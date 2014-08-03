@@ -5,6 +5,8 @@ title: Popovers
 
 Add small overlays of content, like those on the iPad, to any element for housing secondary information.
 
+Popovers whose both title and content are zero-length are never displayed.
+
 <div class="bs-callout bs-callout-danger">
   <h4>Plugin dependency</h4>
   <p>Popovers require the <a href="#tooltips">tooltip plugin</a> to be included in your version of Bootstrap.</p>
@@ -24,6 +26,10 @@ Add small overlays of content, like those on the iPad, to any element for housin
 <div class="bs-callout bs-callout-info">
   <h4>Popovers on disabled elements require wrapper elements</h4>
   <p>To add a popover to a <code>disabled</code> or <code>.disabled</code> element, put the element inside of a <code>&lt;div&gt;</code> and apply the popover to that <code>&lt;div&gt;</code> instead.</p>
+</div>
+<div class="bs-callout bs-callout-info">
+  <h4>Multiple-line links</h4>
+  <p>Sometimes you want to add a popover to a hyperlink that wraps multiple lines. The default behavior of the popover plugin is to center it horizontally and vertically. Add <code>white-space: nowrap;</code> to your anchors to avoid this.</p>
 </div>
 
 ### Static popover
@@ -115,8 +121,13 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
 
 Use the `focus` trigger to dismiss popovers on the next click that the user makes.
 
+<div class="bs-callout bs-callout-danger">
+  <h4>Specific markup required for dismiss-on-next-click</h4>
+  <p>For proper cross-browser and cross-platform behavior, you must use the <code>&lt;a&gt;</code> tag, <i>not</i> the <code>&lt;button&gt;</code> tag, and you also must include a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#tabindex"><code>tabindex</code></a> attribute.</p>
+</div>
+
 {% example html %}
-<button type="button" class="btn btn-lg btn-danger popover-dismiss" data-toggle="popover" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</button>
+<a href="#" tabindex="0" class="btn btn-lg btn-danger bs-docs-popover" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
 {% endexample %}
 
 {% highlight js %}
@@ -125,10 +136,6 @@ $('.popover-dismiss').popover({
 })
 {% endhighlight %}
 
-<div class="bs-callout bs-callout-warning">
-  <h4>Multiple-line links</h4>
-  <p>Sometimes you want to add a popover to a hyperlink that wraps multiple lines. The default behavior of the popover plugin is to center it horizontally and vertically. Add <code>white-space: nowrap;</code> to your anchors to avoid this.</p>
-</div>
 
 
 ## Usage
@@ -172,7 +179,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>''</td>
         <td>
           <p>Default content value if <code>data-content</code> attribute isn't present.</p>
-          <p>If a function is given, it will be called with 1 argument, which is the element that the popover is attached to.</p>
+          <p>If a function is given, it will be called with its <code>this</code> reference set to, which is the element that the popover is attached to.</p>
         </td>
       </tr>
       <tr>
@@ -195,13 +202,16 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>placement</td>
         <td>string | function</td>
         <td>'right'</td>
-        <td>How to position the popover - top | bottom | left | right | auto.<br> When "auto" is specified, it will dynamically reorient the popover. For example, if placement is "auto left", the popover will display to the left when possible, otherwise it will display right.</td>
+        <td>
+          <p>How to position the popover - top | bottom | left | right | auto.<br>When "auto" is specified, it will dynamically reorient the popover. For example, if placement is "auto left", the popover will display to the left when possible, otherwise it will display right.</p>
+          <p>When a function is used to determine the placement, it is called with the popover DOM node as its first argument and the triggering element DOM node as its second. The <code>this</code> context is set to the popover instance.</p>
+        </td>
       </tr>
       <tr>
         <td>selector</td>
         <td>string</td>
         <td>false</td>
-        <td>If a selector is provided, popover objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="http://jsfiddle.net/fScua/">an informative example</a>.</td>
+        <td>If a selector is provided, popover objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="http://jsbin.com/zopod/1/edit">an informative example</a>.</td>
       </tr>
       <tr>
         <td>template</td>
@@ -219,7 +229,10 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>title</td>
         <td>string | function</td>
         <td>''</td>
-        <td>Default title value if <code>title</code> attribute isn't present</td>
+        <td>
+          <p>Default title value if <code>title</code> attribute isn't present.</p>
+          <p>If a function is given, it will be called with its <code>this</code> reference set to the element that the popover is attached to.</p>
+        </td>
       </tr>
       <tr>
         <td>trigger</td>

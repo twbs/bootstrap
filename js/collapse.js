@@ -24,6 +24,8 @@
 
   Collapse.VERSION  = '3.2.0'
 
+  Collapse.TRANSITION_DURATION = 350
+
   Collapse.DEFAULTS = {
     toggle: true
   }
@@ -72,7 +74,7 @@
 
     this.$element
       .one('bsTransitionEnd', $.proxy(complete, this))
-      .emulateTransitionEnd(350)[dimension](this.$element[0][scrollSize])
+      .emulateTransitionEnd(Collapse.TRANSITION_DURATION)[dimension](this.$element[0][scrollSize])
   }
 
   Collapse.prototype.hide = function () {
@@ -105,7 +107,7 @@
     this.$element
       [dimension](0)
       .one('bsTransitionEnd', $.proxy(complete, this))
-      .emulateTransitionEnd(350)
+      .emulateTransitionEnd(Collapse.TRANSITION_DURATION)
   }
 
   Collapse.prototype.toggle = function () {
