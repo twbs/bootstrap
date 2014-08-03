@@ -438,7 +438,7 @@ body {
   margin: 2rem -2rem -2rem !important;
   overflow: hidden;
   /* clearfix */
-  font-size: 85% !important;
+  font-size: .8rem !important;
   line-height: 1rem !important;
   color: #cdbfe3 !important;
   text-align: left;
