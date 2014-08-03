@@ -44,7 +44,7 @@
                   <ul class="nav">
                     {% for section in doc.sections %}
                       <li>
-                        <a href="{{ site.baseurl }}{{ group.title | downcase | replace: ' ', '-' }}/{{ doc.title | downcase | replace: ' ', '-' }}#{{ section.title | downcase | replace: ' ', '-' }}">
+                        <a href="{{ site.baseurl }}{{ group.title | downcase | replace: ' ', '-' }}/{{ doc.title | downcase | replace: ' ', '-' }}/#{{ section.title | downcase | replace: ' ', '-' }}">
                           {{ section.title }}
                         </a>
                       </li>

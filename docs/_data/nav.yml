@@ -44,7 +44,7 @@
 
 - title: Components
   pages:
-    - title: Scaffolding
+    # - title: Scaffolding
     - title: Typography
       sections:
         - title: Scale
