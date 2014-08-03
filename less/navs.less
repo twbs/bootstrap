@@ -222,10 +222,11 @@
 // Hide tabbable panes to start, show them when `.active`
 .tab-content {
   > .tab-pane {
-    display: none;
+    height: 0;
+    overflow-y: hidden;
   }
   > .active {
-    display: block;
+    height: auto;
   }
 }
 
