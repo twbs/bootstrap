@@ -2252,9 +2252,9 @@ table th[class*="col-"] {
     width: 100%;
     margin-bottom: 15px;
     overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     border: 1px solid #ddd;
+    /*-webkit-overflow-scrolling: touch;*/
   }
   .table-responsive > .table {
     margin-bottom: 0;
