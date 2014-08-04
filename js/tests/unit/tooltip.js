@@ -775,4 +775,65 @@ $(function () {
     $circle.bootstrapTooltip('show')
   })
 
+  test('should not reload the tooltip on subsequent mouseenter events', function () {
+    var titleHtml = function () {
+      var uid = $.fn.bootstrapTooltip.Constructor.prototype.getUID('tooltip')
+      return '<p id="tt-content">' + uid + '</p><p>' + uid + '</p><p>' + uid + '</p>'
+    }
+
+    var $tooltip = $('<span id="tt-outer" rel="tooltip" data-trigger="hover" data-placement="top">some text</span>')
+      .appendTo('#qunit-fixture')
+
+    $tooltip.bootstrapTooltip({
+      html: true,
+      animation: false,
+      trigger: 'hover',
+      delay: { show: 0, hide: 500 },
+      container: $tooltip,
+      title: titleHtml
+    })
+
+    $('#tt-outer').trigger('mouseenter')
+
+    var currentUid = $('#tt-content').text()
+
+    $('#tt-content').trigger('mouseenter')
+    equal(currentUid, $('#tt-content').text())
+  })
+
+  test('should not reload the tooltip if the mouse leaves and re-enters before hiding', function () {
+    var titleHtml = function () {
+      var uid = $.fn.bootstrapTooltip.Constructor.prototype.getUID('tooltip')
+      return '<p id="tt-content">' + uid + '</p><p>' + uid + '</p><p>' + uid + '</p>'
+    }
+
+    var $tooltip = $('<span id="tt-outer" rel="tooltip" data-trigger="hover" data-placement="top">some text</span>')
+      .appendTo('#qunit-fixture')
+
+    $tooltip.bootstrapTooltip({
+      html: true,
+      animation: false,
+      trigger: 'hover',
+      delay: { show: 0, hide: 500 },
+      container: $tooltip,
+      title: titleHtml
+    })
+
+    var obj = $tooltip.data('bs.tooltip')
+
+    $('#tt-outer').trigger('mouseenter')
+
+    var currentUid = $('#tt-content').text()
+
+    $('#tt-outer').trigger('mouseleave')
+    equal(currentUid, $('#tt-content').text())
+
+    ok(obj.hoverState == 'out', 'the tooltip hoverState should be set to "out"')
+
+    $('#tt-content').trigger('mouseenter')
+    ok(obj.hoverState == 'in', 'the tooltip hoverState should be set to "in"')
+
+    equal(currentUid, $('#tt-content').text())
+  })
+
 })
