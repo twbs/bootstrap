@@ -95,8 +95,7 @@ padding: 15px;
   border-top: 1px solid #ddd;
 }
 .panel-docs > .panel-heading {
-  background-color: #777;
-  border-color: #636363;
+  background-color: #aaa;
   color:#fff;
 }
 .panel-title {

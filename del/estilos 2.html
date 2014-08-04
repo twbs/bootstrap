@@ -105,7 +105,6 @@
         <li><a href="#form-ejemplo">Formulario</a>
           <ul class="nav">
             <li><a href="#form-ejemplo">Ejemplo de formulario</a></li>
-            <li><a href="#form-horizontal">Formulario horizontal</a></li>
             <li><a href="#form-tamano">Tamaño de campo</a></li>
             <li><a href="#form-validacion">Estado de validación</a></li>
             <li><a href="#form-seleccionador">Seleccionador</a></li>
@@ -118,7 +117,7 @@
             <li><a href="#nav-boton-desplegable">Botón con desplegable</a></li>
             <li><a href="#nav-grupo-botones">Grupo de botones</a></li>
             <li><a href="#nav-menu-desplegable">Menú desplegable</a></li>
-            <li><a href="#nav-tabs">Pestañas</a></li>
+            <li><a href="#nav-navegacion">Navegación</a></li>
             <li><a href="#nav-barra-navegacion">Barra de navegación</a></li>
             <li><a href="#nav-indicador">Indicador de página</a></li>
             <li><a href="#nav-paginacion">Paginación</a></li>
@@ -318,14 +317,10 @@ The following snippet of text is <span class="nt">&lt;em&gt;</span>rendered as i
     <h2>Cita <span>(Blockquotes)</span></h2>
   </div>
   <div class="panel-body">
-<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
 <blockquote>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
   <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote>
-<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
   </div>
   <div class="panel-footer">
 <pre><code class="html"><span class="nt">&lt;blockquote&gt;</span>
@@ -714,7 +709,7 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
 
 <div class="panel panel-docs">
   <div class="panel-heading">
-    <h2>Formulario <span>(Form)</span></h2>
+    <h2>Formulario <span>(Forms)</span></h2>
   </div>
   <div class="panel-body">
     <form role="form">
@@ -788,77 +783,6 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
   <span class="nt">&lt;textarea</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">rows=</span><span class="s">"3"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
   <span class="nt">&lt;br /&gt;</span>
   <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/form&gt;</span>
-</code></pre>
-  </div>
-</div>
-
-<!-- Form horizontal -->
-
-<a id="form-horizontal" class="anchor"></a>
-
-<div class="panel panel-docs">
-  <div class="panel-heading">
-    <h2>Formulario horizontal<span>(Horizontal form)</span></h2>
-  </div>
-  <div class="panel-body">
-    <form class="form-horizontal" role="form">
-      <div class="form-group">
-        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-        <div class="col-sm-10">
-          <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-        <div class="col-sm-10">
-          <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <div class="checkbox">
-            <label>
-              <input type="checkbox"> Remember me
-            </label>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-primary">Sign in</button>
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="panel-footer">
-<pre><code class="html"><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"form-horizontal"</span> <span class="na">role=</span><span class="s">"form"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"inputEmail3"</span> <span class="na">class=</span><span class="s">"col-sm-2 control-label"</span><span class="nt">&gt;</span>Email<span class="nt">&lt;/label&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-10"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"inputEmail3"</span> <span class="na">placeholder=</span><span class="s">"Email"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"inputPassword3"</span> <span class="na">class=</span><span class="s">"col-sm-2 control-label"</span><span class="nt">&gt;</span>Password<span class="nt">&lt;/label&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-10"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"inputPassword3"</span> <span class="na">placeholder=</span><span class="s">"Password"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-offset-2 col-sm-10"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;label&gt;</span>
-          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span> Remember me
-        <span class="nt">&lt;/label&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-offset-2 col-sm-10"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Sign in<span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/form&gt;</span>
 </code></pre>
   </div>
@@ -1054,102 +978,112 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
   <div class="panel-body">
   <h3>Tamaños</h3>
     <p>
-      <button type="button" class="btn btn-xl btn-primary">Extra Large</button>
-      <button type="button" class="btn btn-xl btn-default">Extra Large</button>
+      <button type="button" class="btn btn-primary btn-xl">Extra Large</button>
+      <button type="button" class="btn btn-default btn-xl">Extra Large</button>
     </p>
     <p>
-      <button type="button" class="btn btn-lg btn-primary">Large button</button>
-      <button type="button" class="btn btn-lg btn-default">Large button</button>
+      <button type="button" class="btn btn-primary btn-lg">Large button</button>
+      <button type="button" class="btn btn-default btn-lg">Large button</button>
     </p>
     <p>
       <button type="button" class="btn btn-primary">Default button</button>
       <button type="button" class="btn btn-default">Default button</button>
     </p>
     <p>
-      <button type="button" class="btn btn-sm btn-primary">Small button</button>
-      <button type="button" class="btn btn-sm btn-default">Small button</button>
+      <button type="button" class="btn btn-primary btn-sm">Small button</button>
+      <button type="button" class="btn btn-default btn-sm">Small button</button>
     </p>
     <p>
-      <button type="button" class="btn btn-primary">Extra small button</button>
-      <button type="button" class="btn btn-xs btn-default">Extra small button</button>
+      <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
+      <button type="button" class="btn btn-default btn-xs">Extra small button</button>
     </p>
   </div>
   <div class="panel-footer">
-<pre><code class="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-xl btn-primary"</span><span class="nt">&gt;</span>Extra Large<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-primary"</span><span class="nt">&gt;</span>Large button<span class="nt">&lt;/button&gt;</span>
+<pre><code class="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-xl"</span><span class="nt">&gt;</span>Extra Large<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-lg"</span><span class="nt">&gt;</span>Large button<span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Default button<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-sm btn-primary"</span><span class="nt">&gt;</span>Small button<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-xs btn-primary"</span><span class="nt">&gt;</span>Extra small button<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-sm"</span><span class="nt">&gt;</span>Small button<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-xs"</span><span class="nt">&gt;</span>Extra small button<span class="nt">&lt;/button&gt;</span>
 </code></pre>
   </div>
   <div class="panel-body">
   <h3>Colores contextuales</h3>
       <p>
-        <button type="button" class="btn btn-lg btn-default">Default</button>
-        <button type="button" class="btn btn-lg btn-primary">Primary</button>
-        <button type="button" class="btn btn-lg btn-inverse">Inverse</button>
-        <br /><br />
-        <button type="button" class="btn btn-lg btn-success">Success</button>
-        <button type="button" class="btn btn-lg btn-info">Info</button>
-        <button type="button" class="btn btn-lg btn-warning">Warning</button>
-        <button type="button" class="btn btn-lg btn-danger">Danger</button>
-        <button type="button" class="btn btn-lg btn-link">Link</button>
+        <button type="button" class="btn btn-default">Default</button>
+        <button type="button" class="btn btn-primary">Primary</button>
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-info">Info</button>
+        <button type="button" class="btn btn-warning">Warning</button>
+        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="btn btn-link">Link</button>
       </p>
-      <!--
       <hr />
       <p>
+        <button type="button" class="btn btn-inverse">Inverse</button>
         <button type="button" class="btn btn-blue">Blue</button>
         <button type="button" class="btn btn-violet">Violet</button>
         <button type="button" class="btn btn-pink">Pink</button>
       </p>
-    -->
   </div>
   <div class="panel-footer">
-<pre><code class="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-default"</span><span class="nt">&gt;</span>Default<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-primary"</span><span class="nt">&gt;</span>Primary<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-inverse"</span><span class="nt">&gt;</span>Inverse<span class="nt">&lt;/button&gt;</span>
+<pre><code class="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span><span class="nt">&gt;</span>Default<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Primary<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-success"</span><span class="nt">&gt;</span>Success<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-info"</span><span class="nt">&gt;</span>Info<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-warning"</span><span class="nt">&gt;</span>Warning<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-danger"</span><span class="nt">&gt;</span>Danger<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-link"</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/button&gt;</span>
 
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-success"</span><span class="nt">&gt;</span>Success<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-info"</span><span class="nt">&gt;</span>Info<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-warning"</span><span class="nt">&gt;</span>Warning<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-danger"</span><span class="nt">&gt;</span>Danger<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-link"</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-inverse"</span><span class="nt">&gt;</span>Inverse<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-blue"</span><span class="nt">&gt;</span>Blue<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-violet"</span><span class="nt">&gt;</span>Violet<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-pink"</span><span class="nt">&gt;</span>Pink<span class="nt">&lt;/button&gt;</span>
 </code></pre>
   </div>
   <div class="panel-body">
   <h3>Estado activo</h3>
       <p>
-        <button type="button" class="btn btn-lg btn-default active">Default</button>
-        <button type="button" class="btn btn-lg btn-primary active">Primary</button>
-        <button type="button" class="btn btn-lg btn-inverse active">Inverse</button>
-        <br /><br />
-        <button type="button" class="btn btn-lg btn-success active">Success</button>
-        <button type="button" class="btn btn-lg btn-info active">Info</button>
-        <button type="button" class="btn btn-lg btn-warning active">Warning</button>
-        <button type="button" class="btn btn-lg btn-danger active">Danger</button>
-        <button type="button" class="btn btn-lg btn-link active">Link</button>
+        <button type="button" class="btn btn-default active">Default</button>
+        <button type="button" class="btn btn-primary active">Primary</button>
+        <button type="button" class="btn btn-success active">Success</button>
+        <button type="button" class="btn btn-info active">Info</button>
+        <button type="button" class="btn btn-warning active">Warning</button>
+        <button type="button" class="btn btn-danger active">Danger</button>
+        <button type="button" class="btn btn-link active">Link</button>
+      </p>
+      <hr />
+      <p>
+        <button type="button" class="btn btn-inverse active">Inverse</button>
+        <button type="button" class="btn btn-blue active">Blue</button>
+        <button type="button" class="btn btn-violet active">Violet</button>
+        <button type="button" class="btn btn-pink active">Pink</button>
       </p>
   </div>
   <div class="panel-footer">
-<pre><code class="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-default active"</span><span class="nt">&gt;</span>Default<span class="nt">&lt;/button&gt;</span>
+<pre><code class="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default active"</span><span class="nt">&gt;</span>Default<span class="nt">&lt;/button&gt;</span>
 </code></pre>
   </div>
   <div class="panel-body">
   <h3>Estado desactivado</h3>
       <p>
-        <button type="button" class="btn btn-lg btn-default" disabled="disabled">Default</button>
-        <button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary</button>
-        <button type="button" class="btn btn-lg btn-inverse" disabled="disabled">Inverse</button>
-        <br /><br />
-        <button type="button" class="btn btn-lg btn-success" disabled="disabled">Success</button>
-        <button type="button" class="btn btn-lg btn-info" disabled="disabled">Info</button>
-        <button type="button" class="btn btn-lg btn-warning" disabled="disabled">Warning</button>
-        <button type="button" class="btn btn-lg btn-danger" disabled="disabled">Danger</button>
-        <button type="button" class="btn btn-lg btn-link" disabled="disabled">Link</button>
+        <button type="button" class="btn btn-default" disabled="disabled">Default</button>
+        <button type="button" class="btn btn-primary" disabled="disabled">Primary</button>
+        <button type="button" class="btn btn-success" disabled="disabled">Success</button>
+        <button type="button" class="btn btn-info" disabled="disabled">Info</button>
+        <button type="button" class="btn btn-warning" disabled="disabled">Warning</button>
+        <button type="button" class="btn btn-danger" disabled="disabled">Danger</button>
+        <button type="button" class="btn btn-link" disabled="disabled">Link</button>
+      </p>
+      <hr />
+      <p>
+        <button type="button" class="btn btn-inverse" disabled="disabled">Inverse</button>
+        <button type="button" class="btn btn-blue" disabled="disabled">Blue</button>
+        <button type="button" class="btn btn-violet" disabled="disabled">Violet</button>
+        <button type="button" class="btn btn-pink" disabled="disabled">Pink</button>
       </p>
   </div>
   <div class="panel-footer">
-<pre><code class="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-default"</span> <span class="na">disabled=</span><span class="s">"disabled"</span><span class="nt">&gt;</span>Default<span class="nt">&lt;/button&gt;</span>
+<pre><code class="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="na">disabled=</span><span class="s">"disabled"</span><span class="nt">&gt;</span>Default<span class="nt">&lt;/button&gt;</span>
 </code></pre>
   </div>
 </div>
@@ -1183,17 +1117,6 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
         <li><a href="#">Separated link</a></li>
       </ul>
     </div><!-- /btn-group -->
-    <div class="btn-group">
-      <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">Inverse <span class="caret"></span></button>
-      <ul class="dropdown-menu" role="menu">
-        <li><a href="#">Action</a></li>
-        <li><a href="#">Another action</a></li>
-        <li><a href="#">Something else here</a></li>
-        <li class="divider"></li>
-        <li><a href="#">Separated link</a></li>
-      </ul>
-    </div><!-- /btn-group -->
-    <br />
     <div class="btn-group">
       <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Success <span class="caret"></span></button>
       <ul class="dropdown-menu" role="menu">
@@ -1234,9 +1157,7 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
         <li><a href="#">Separated link</a></li>
       </ul>
     </div><!-- /btn-group -->
-
-    <hr />
-
+    <br />
     <div class="btn-group">
       <button type="button" class="btn btn-default">Default</button>
       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -1265,21 +1186,6 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
         <li><a href="#">Separated link</a></li>
       </ul>
     </div><!-- /btn-group -->
-    <div class="btn-group">
-      <button type="button" class="btn btn-inverse">Inverse</button>
-      <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">
-        <span class="caret"></span>
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <ul class="dropdown-menu" role="menu">
-        <li><a href="#">Action</a></li>
-        <li><a href="#">Another action</a></li>
-        <li><a href="#">Something else here</a></li>
-        <li class="divider"></li>
-        <li><a href="#">Separated link</a></li>
-      </ul>
-    </div><!-- /btn-group -->
-    <br />
     <div class="btn-group">
       <button type="button" class="btn btn-success">Success</button>
       <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
@@ -1336,6 +1242,112 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
         <li><a href="#">Separated link</a></li>
       </ul>
     </div><!-- /btn-group -->
+<hr />
+
+
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">Inverse <span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button type="button" class="btn btn-blue dropdown-toggle" data-toggle="dropdown">Blue <span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button type="button" class="btn btn-violet dropdown-toggle" data-toggle="dropdown">Violet <span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button type="button" class="btn btn-pink dropdown-toggle" data-toggle="dropdown">Pink <span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+
+    <br />
+    <div class="btn-group">
+      <button type="button" class="btn btn-inverse">Inverse</button>
+      <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button type="button" class="btn btn-blue">Blue</button>
+      <button type="button" class="btn btn-blue dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button type="button" class="btn btn-violet">Violet</button>
+      <button type="button" class="btn btn-violet dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button type="button" class="btn btn-pink">Pink</button>
+      <button type="button" class="btn btn-pink dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+
+
+
+
 
 
 
@@ -1508,13 +1520,13 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
   </div>
 </div>
 
-<!-- Tabs -->
+<!-- Navs -->
 
-<a id="nav-tabs" class="anchor"></a>
+<a id="nav-navegacion" class="anchor"></a>
 
 <div class="panel panel-docs">
   <div class="panel-heading">
-    <h2>Pestañas <span>(Tabs)</span></h2>
+    <h2>Navegación <span>(Navs)</span></h2>
   </div>
   <div class="panel-body">
     <ul class="nav nav-tabs">
@@ -1534,16 +1546,12 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
         </ul>
       </li>
     </ul>
-
-<!--
     <br />
     <ul class="nav nav-pills">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">Profile</a></li>
       <li><a href="#">Messages</a></li>
     </ul>
--->
-
   </div>
   <div class="panel-footer">
 <pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-tabs"</span><span class="nt">&gt;</span>
@@ -1558,6 +1566,11 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
       ...
     <span class="nt">&lt;/ul&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-pills"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"active"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Messages<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 </code></pre>
   </div>
@@ -1881,6 +1894,46 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Morbi leo risus<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Porta ac consectetur ac<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Vestibulum at eros<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+  </div>
+  <div class="panel-body">
+<h3>Colores contextuales</h3>
+    <div class="row">
+      <div class="col-sm-6">
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-primary">Dapibus ac facilisis in</li>
+          <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
+          <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
+          <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
+          <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
+        </ul>
+      </div>
+      <div class="col-sm-6">
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-primary">Dapibus ac facilisis in</a>
+          <a href="#" class="list-group-item list-group-item-success">Dapibus ac facilisis in</a>
+          <a href="#" class="list-group-item list-group-item-info">Cras sit amet nibh libero</a>
+          <a href="#" class="list-group-item list-group-item-warning">Porta ac consectetur ac</a>
+          <a href="#" class="list-group-item list-group-item-danger">Vestibulum at eros</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer">
+<pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-group"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-primary"</span><span class="nt">&gt;</span>Dapibus ac facilisis in<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-success"</span><span class="nt">&gt;</span>Dapibus ac facilisis in<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-info"</span><span class="nt">&gt;</span>Cras sit amet nibh libero<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-warning"</span><span class="nt">&gt;</span>Porta ac consectetur ac<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-danger"</span><span class="nt">&gt;</span>Vestibulum at eros<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-group"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-primary"</span><span class="nt">&gt;</span>Dapibus ac facilisis in<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-success"</span><span class="nt">&gt;</span>Dapibus ac facilisis in<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-info"</span><span class="nt">&gt;</span>Cras sit amet nibh libero<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-warning"</span><span class="nt">&gt;</span>Porta ac consectetur ac<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-danger"</span><span class="nt">&gt;</span>Vestibulum at eros<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
   </div>

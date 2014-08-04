@@ -1,0 +1,87 @@
+DOCUMENTACION
+redactar razon de uso de cada cosa y segun eso ver que 
+"nunca usar X cosa excepto tal cosa"
+
+Documentar lo no documentado html aparte o ver
+
+PENSAR en aplicaciones back-end
+
+Mismos elementos con variaciones, explicar cuándo se usa cada cosa
+
+Paneles escribir reglas
+colores para casos especiales pero no colorinche [estandarizar]
+
+
+
+
+------------------------------------------------------------------------------------------------------
+
+Paneles comunes como list-groups especiales
+
+repasar grupos de lista vs paneles
+
+SIDEBAR pagina de libro
+buscar lo que hice y ver con juli
+triangulito indicador
+
+Entrar con BA media query cambiar contenido
+
+NAVBAR blanca
+NAVBAR transparente
+sacar primary + inverse como navbar
+
+paginación como abad
+pager como paginacion
+
+jumbotron opcion no centrada... ver
+
+
+
+
+
+------------------------------------------------------------------------------------------------------
+
+SACAR cosas de bs-docs.css > DEJAR solo lo que no se debe usar
+
+Estilos aparte para buenosaires.gob.ar
+encabezado
+notas
+
+CSS impresión para todo y dewspues ver
+bootstrap ya existente
+
+REPASAR:
+sidebar, paneles, botonera bootstrap
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
