@@ -199,20 +199,6 @@ module.exports = function (grunt) {
       }
     },
 
-    lesslint: {
-      src: [
-        'less/bootstrap.less'
-      ],
-      options: {
-        csslint: {
-          csslintrc: 'less/.csslintrc'
-        },
-        imports: {
-          imports: 'less/*.less'
-        }
-      }
-    },
-
     csslint: {
       options: {
         csslintrc: 'less/.csslintrc'
@@ -411,7 +397,7 @@ module.exports = function (grunt) {
   var testSubtasks = [];
   // Skip core tests if running a different subset of the test suite
   if (runSubset('core')) {
-    testSubtasks = testSubtasks.concat(['lesslint', 'dist-css', 'jshint', 'jscs', 'qunit']);
+    testSubtasks = testSubtasks.concat(['dist-css', 'csslint', 'jshint', 'jscs', 'qunit']);
   }
   // Skip HTML validation if running a different subset of the test suite
   if (runSubset('validate-html') &&

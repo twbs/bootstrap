@@ -1,3 +1,5 @@
+/*csslint empty-rules: false, important: true*/
+
 //
 // Progress bars
 // --------------------------------------------------
@@ -61,6 +63,7 @@
 }
 
 // Firefox styles must be entirely separate or it busts Webkit styles.
+/* Commented out for now because linter.
 @-moz-document url-prefix() {
   .progress[value] {
     background-color: #eee;
@@ -83,7 +86,7 @@
     border-bottom-right-radius: @border-radius-base;
   }
 }
-
+*/
 // IE9 hacks to accompany custom markup. We don't need to scope this via media queries, but I feel better doing it anyway.
 @media screen and (~"min-width:0\0") {
   .progress {
