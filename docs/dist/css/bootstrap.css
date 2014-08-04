@@ -2511,6 +2511,7 @@ fieldset[disabled] .btn-danger.active {
 }
 .btn-link,
 .btn-link:active,
+.btn-link.active,
 .btn-link[disabled],
 fieldset[disabled] .btn-link {
   background-color: transparent;
@@ -4902,9 +4903,9 @@ button.close {
 }
 @media all and (transform-3d), (-webkit-transform-3d) {
   .carousel-inner > .item {
-    -webkit-transition: -webkit-transform(.6s ease-in-out);
-         -o-transition:      -o-transform(.6s ease-in-out);
-            transition:         transform(.6s ease-in-out);
+    -webkit-transition: -webkit-transform .6s ease-in-out;
+         -o-transition:      -o-transform .6s ease-in-out;
+            transition:         transform .6s ease-in-out;
 
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;

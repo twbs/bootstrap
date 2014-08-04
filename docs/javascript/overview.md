@@ -56,6 +56,13 @@ $('#myModal').modal('show')                // initializes and invokes show immed
 
 Each plugin also exposes its raw constructor on a `Constructor` property: `$.fn.popover.Constructor`. If you'd like to get a particular plugin instance, retrieve it directly from an element: `$('[rel="popover"]').data('popover')`.
 
+#### Default settings
+You can change the default settings for a plugin by modifying the plugin's `Constructor.DEFAULTS` object:
+
+{% highlight js %}
+$.fn.modal.Constructor.DEFAULTS.keyboard = false // changes default for the modal plugin's `keyboard` option to false
+{% endhighlight %}
+
 ### No conflict
 
 Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In these circumstances, namespace collisions can occasionally occur. If this happens, you may call `.noConflict` on the plugin you wish to revert the value of.

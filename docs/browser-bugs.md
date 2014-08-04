@@ -37,6 +37,12 @@ We publicly list browser bugs that are impacting us here, in the hopes of expedi
         <td><a href="{{ site.bug.github }}10690">#10690</a></td>
       </tr>
       <tr>
+        <td>Firefox</td>
+        <td>Java applets that are descendants of elements with forced hardware acceleration using <code>translate3d(0,0,0)</code> are invisible on Windows</td>
+        <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1048279">Mozilla bug #1048279</a></td>
+        <td><a href="https://github.com/twbs/bootstrap/issues/14124">#14124</a></td>
+      </tr>
+      <tr>
         <td>Chrome</td>
         <td>Weird button behavior with some number <code>&lt;input&gt;</code>s</td>
         <td><a href="{{ site.bug.chrome }}337668">Chromium issue #337668</a></td>

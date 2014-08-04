@@ -3,6 +3,7 @@
   "box-sizing": false,
   "box-model": false,
   "compatible-vendor-prefixes": false,
+  "fallback-colors": false,
   "floats": false,
   "font-sizes": false,
   "gradients": false,

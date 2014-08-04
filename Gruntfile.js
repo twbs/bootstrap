@@ -176,7 +176,7 @@ module.exports = function (grunt) {
           'Android >= 4',
           'Chrome >= 20',
           'Firefox >= 24', // Firefox 24 is the latest ESR
-          'Explorer >= 8',
+          'Explorer >= 9',
           'iOS >= 6',
           'Opera >= 12',
           'Safari >= 6'
@@ -196,6 +196,20 @@ module.exports = function (grunt) {
         cwd: 'docs/examples/',
         src: ['**/*.css'],
         dest: 'docs/examples/'
+      }
+    },
+
+    lesslint: {
+      src: [
+        'less/bootstrap.less'
+      ],
+      options: {
+        csslint: {
+          csslintrc: 'less/.csslintrc'
+        },
+        imports: {
+          imports: 'less/*.less'
+        }
       }
     },
 
@@ -397,7 +411,7 @@ module.exports = function (grunt) {
   var testSubtasks = [];
   // Skip core tests if running a different subset of the test suite
   if (runSubset('core')) {
-    testSubtasks = testSubtasks.concat(['dist-css', 'csslint', 'jshint', 'jscs', 'qunit']);
+    testSubtasks = testSubtasks.concat(['lesslint', 'dist-css', 'jshint', 'jscs', 'qunit']);
   }
   // Skip HTML validation if running a different subset of the test suite
   if (runSubset('validate-html') &&
@@ -433,7 +447,8 @@ module.exports = function (grunt) {
   grunt.registerTask('build', ['clean', 'less-compile', 'autoprefixer:core', 'autoprefixer:docs', 'usebanner', 'csscomb:dist', 'cssmin:core', 'cssmin:docs', 'concat', 'uglify:bootstrap', 'dist-docs']);
 
   // Default task.
-  grunt.registerTask('default', ['test', 'dist']);
+  // grunt.registerTask('default', ['test', 'dist']);
+  grunt.registerTask('default', ['dist']);
 
   // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
