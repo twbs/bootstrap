@@ -23,7 +23,7 @@
 
   <h2 id="alerts-usage">Usage</h2>
 
-  <p>Just add <code>data-dismiss="alert"</code> to your close button to automatically give an alert close functionality.</p>
+  <p>Just add <code>data-dismiss="alert"</code> to your close button to automatically give an alert close functionality. Closing an alert removes it from the DOM.</p>
 
 {% highlight html %}
 <button type="button" class="close" data-dismiss="alert">
@@ -32,7 +32,7 @@
 </button>
 {% endhighlight %}
 
-  <p>To have your alerts use animation when closing, make sure they have the <code>.fade</code> and <code>.in</code> class already applied to them.</p>
+  <p>To have your alerts use animation when closing, make sure they have the <code>.fade</code> and <code>.in</code> classes already applied to them.</p>
 
   <h3>Methods</h3>
 
@@ -40,7 +40,7 @@
   <p>Makes an alert listen for click events on descendant elements which have the <code>data-dismiss="alert"</code> attribute. (Not necessary when using the data-api's auto-initialization.)</p>
 
   <h4>$().alert('close')</h4>
-  <p>Closes an alert.</p>
+  <p>Closes an alert by removing it from the DOM. If the <code>.fade</code> and <code>.in</code> classes are present on the element, the alert will fade out before it is removed.</p>
 
 
   <h3>Events</h3>
