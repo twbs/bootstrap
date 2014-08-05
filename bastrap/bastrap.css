@@ -721,17 +721,39 @@ a.thumbnail.active,
 
 /* Tables */
 
-.table-hover > tbody > tr > td.active,
-.table-hover > tbody > tr > th.active {
-  background:#f9f9f9;
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  border-top:solid 1px #e5e5e5;
+}
+.table > thead > tr > td.active,
+.table > tbody > tr > td.active,
+.table > tfoot > tr > td.active,
+.table > thead > tr > th.active,
+.table > tbody > tr > th.active,
+.table > tfoot > tr > th.active,
+.table > thead > tr.active > td,
+.table > tbody > tr.active > td,
+.table > tfoot > tr.active > td,
+.table > thead > tr.active > th,
+.table > tbody > tr.active > th,
+.table > tfoot > tr.active > th {
+  background-color: #aaa;
+  color: #fff;
+}
+.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th {
+  background-color: #f9f9f9;
 }
 .table-hover > tbody > tr > td.active:hover,
 .table-hover > tbody > tr > th.active:hover,
 .table-hover > tbody > tr.active:hover > td,
 .table-hover > tbody > tr.active:hover > th {
-  background:#f1f1f1;
+  background-color:#a5a5a5;
 }
-
 .list-group-item-primary,
 a.list-group-item-primary,
 .table > thead > tr > td.primary,
@@ -939,6 +961,14 @@ a.list-group-item.active > .badge {
   padding-bottom: 30px;
   font-size:18px;
 }
+.navbar-brand {
+  padding: 15px 0;
+}
+@media (min-width: 767px) {
+  .navbar-brand {
+    padding: 15px;
+  }
+}
 .sub-brand {
   color:#735500;
   float:right;
@@ -1069,7 +1099,7 @@ color: #aaa;
 .navbar-default .dropdown-menu > li > a:hover,
 .navbar-default .dropdown-menu > li > a:focus  {
   background-color: #f5f5f5;
-  color: #777;
+  color: #888;
 }
 .navbar-default .nav>li>a:focus,
 .navbar-default .nav>li>a:hover,
@@ -1077,7 +1107,7 @@ color: #aaa;
 .navbar-default .nav .open>a:focus,
 .navbar-default .nav .open>a:hover {
   background-color: #e5e5e5;
-  color:#777;
+  color: #888;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:focus,
@@ -1093,7 +1123,7 @@ color: #aaa;
   .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus,
   .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
     background-color: #f5f5f5;
-    color: #777;
+    color: #888;
   }
 }
 .navbar-default .navbar-brand,
@@ -1141,12 +1171,12 @@ color: #aaa;
 }
 @media (max-width: 767px) {
   .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
-    color:#777;
+    color: #888;
   }
   .navbar-inverse .navbar-nav .open .dropdown-menu>li>a:focus,
   .navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover {
     background-color: #f5f5f5;
-    color:#777;
+    color: #888;
   }
 }
 .navbar-inverse .navbar-brand,
@@ -1193,15 +1223,25 @@ border-color: transparent;
 
 .pagination > li > a,
 .pagination > li > span {
-  color: #777;
+  color: #888;
+  border:0;
+  padding:10px 16px;
+  border-radius:4px;
+  margin-left:1px;
+  margin-right:1px;
+}
+.pagination > li > a:hover {
+  color: #888;
 }
 .pagination > li > a:hover,
-.pagination > li > a:focus {
-  color: #777;
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+  background-color: #f5f5f5;
 }
-.pagination > li > a:hover, .pagination > li > span:hover,
-.pagination > li > a:focus, .pagination > li > span:focus {
-    background-color: #f1f1f1;
+.pagination > li > a:active,
+.pagination > li > a:focus {
+  background-color: #f1f1f1;
 }
 .pagination > .active > a,
 .pagination > .active > a:focus,
@@ -1209,18 +1249,42 @@ border-color: transparent;
 .pagination > .active > span,
 .pagination > .active > span:focus,
 .pagination > .active > span:hover {
-  background:#aaa;
-  border-color:#aaa;
+  background-color:#aaa;
+}
+.pag-prev a {
+  width:40px;
+  height:40px;
+  background:url(chevron-pag-prev.png) no-repeat center center;
+}
+.pag-next a {
+  width:40px;
+  height:40px;
+  background:url(chevron-pag-next.png) no-repeat center center;
 }
 
 /* pager */
 
-.pager li > a, .pager li > span {
+.pager li > a,
+.pager li > span {
+  border: 0;
   border-radius: 4px;
-  color: #777;
+  padding:10px 16px;
+  color: #888;
 }
-.pager li > a:hover, .pager li > a:focus {
-    background-color: #f1f1f1;
+.pager li > a:hover {
+  background-color: #f5f5f5;
+}
+.pager li > a:active,
+.pager li > a:focus {
+  background-color: #f1f1f1;
+}
+.pager .previous a {
+  background:url(chevron-pag-prev.png) no-repeat left center;
+  padding-left:42px;
+}
+.pager .next a {
+  background:url(chevron-pag-next.png) no-repeat right center;
+  padding-right:42px;
 }
 
 /* labels */
@@ -1286,7 +1350,7 @@ border-color: transparent;
 
 .media,
 .media p {
-  color:#777;
+  color: #888;
 }
 .media h4 {
   color:#333;
@@ -1316,12 +1380,12 @@ border-color: transparent;
   padding-top:60px;
   padding-bottom:60px;
 }
-.jumbotron-home {
+.jumbotron-bg {
   margin-bottom:0;
   color:#fff;
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
 }
-.jumbotron-home .btn {
+.jumbotron-bg .btn {
   text-shadow:none;
 }
 
@@ -1377,17 +1441,24 @@ border-color: transparent;
 
 /* shortcuts */
 
-.shortcut,
 .shortcut {
   text-align:center;
   text-decoration:none;
   padding-top:24px;
   padding-bottom:12px;
   color:#333;
+    border-radius:8px;
 }
 .shortcut:hover {
+  background:#f5f5f5;
   text-decoration:none;
   color:#333;
+}
+.shortcut:active,
+.shortcut:focus {
+  background-color:#f1f1f1;
+  color:#333;
+  text-decoration:none;
 }
 .shortcut span {
   color: #fff;
@@ -1397,10 +1468,6 @@ border-color: transparent;
   height:110px;
   border-radius:110px;
   display:block;
-}
-.shortcut:hover {
-  background:#f5f5f5;
-  border-radius:8px;
 }
 .shortcut span img {
   top: 25%;
@@ -1439,7 +1506,7 @@ border-color: transparent;
   border-color: #ccc;
 }
 .panel-default > .panel-heading {
-  color:#777;
+  color: #888;
 }
 .panel-default > .panel-heading a:active,
 .panel-default > .panel-heading a:focus {

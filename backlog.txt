@@ -30,10 +30,6 @@ NAVBAR blanca
 NAVBAR transparente
 sacar primary + inverse como navbar
 
-paginación como abad
-pager como paginacion
-
-jumbotron opcion no centrada... ver
 
 
 

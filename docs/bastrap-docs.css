@@ -290,6 +290,9 @@ margin-bottom: 8px;
 .jumbotron-home {
   background-image:url(../docs/home.jpg);
 }
+.jumbotron-misc {
+  background-image:url(../docs/misc.jpg);
+}
 
 /* colores */
 

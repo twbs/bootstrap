@@ -26,11 +26,9 @@
       <div class="container">
         <div class="row-fluid">
           <div class="col-md-6">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="index.html">
-                <img src="bastrap/bac-header.png" />
-              </a>
-            </div>
+            <a class="navbar-brand" href="index.html">
+              <img src="bastrap/bac-header.png" />
+            </a>
           </div>
           <div class="col-md-6">
             <h5 class="sub-brand">En todo estás vos</h5>
@@ -469,6 +467,7 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
 </code></pre>
   </div>
 
+<!--
   <div class="panel-body">
 <h3>Con bordes</h3>
           <table class="table table-bordered">
@@ -512,6 +511,7 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
 <span class="nt">&lt;/table&gt;</span>
 </code></pre>
   </div>
+-->
 
   <div class="panel-body">
 <h3>Con franjas</h3>
@@ -553,6 +553,7 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
 </code></pre>
   </div>
 
+<!--
   <div class="panel-body">
 <h3>Con franjas al pasar el mouse</h3>
           <table class="table table-hover">
@@ -591,9 +592,10 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
 <span class="nt">&lt;/table&gt;</span>
 </code></pre>
   </div>
+-->
 
   <div class="panel-body">
-<h3>Con clases contextuales</h3>
+<h3>Con franjas al pasar el mouse y colores contextuales</h3>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -604,38 +606,44 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
         </tr>
       </thead>
       <tbody>
-        <tr class="active">
+        <tr>
           <td>1</td>
           <td>Contenido de columna</td>
           <td>Contenido de columna</td>
           <td>Contenido de columna</td>
         </tr>
-        <tr class="primary">
+        <tr class="active">
           <td>2</td>
           <td>Contenido de columna</td>
           <td>Contenido de columna</td>
           <td>Contenido de columna</td>
         </tr>
-        <tr class="success">
+        <tr class="primary">
           <td>3</td>
           <td>Contenido de columna</td>
           <td>Contenido de columna</td>
           <td>Contenido de columna</td>
         </tr>
-        <tr class="info">
+        <tr class="success">
           <td>4</td>
           <td>Contenido de columna</td>
           <td>Contenido de columna</td>
           <td>Contenido de columna</td>
         </tr>
-        <tr class="warning">
+        <tr class="info">
           <td>5</td>
           <td>Contenido de columna</td>
           <td>Contenido de columna</td>
           <td>Contenido de columna</td>
         </tr>
-        <tr class="danger">
+        <tr class="warning">
           <td>6</td>
+          <td>Contenido de columna</td>
+          <td>Contenido de columna</td>
+          <td>Contenido de columna</td>
+        </tr>
+        <tr class="danger">
+          <td>7</td>
           <td>Contenido de columna</td>
           <td>Contenido de columna</td>
           <td>Contenido de columna</td>
@@ -646,6 +654,7 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
   <div class="panel-footer">
 <pre><code class="html"><span class="c">&lt;!-- En filas --&gt;</span>
 <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-hover"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;tr</span><span class="nt">&gt;</span>...<span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"active"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"primary"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"success"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/tr&gt;</span>
@@ -656,6 +665,7 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
 <span class="c">&lt;!-- En celdas (`td` or `th`) --&gt;</span>
 <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-hover"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
     <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"active"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
     <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"primary"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
     <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"success"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
@@ -1789,13 +1799,13 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
   </div>
   <div class="panel-body">
     <ul class="pagination">
-      <li class="disabled"><a href="#">«</a></li>
+      <li class="pag-prev disabled"><a href="#">&lt;</a></li>
       <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
       <li><a href="#">2</a></li>
       <li><a href="#">3</a></li>
       <li><a href="#">4</a></li>
       <li><a href="#">5</a></li>
-      <li><a href="#">»</a></li>
+      <li class="pag-next"><a href="#"></a></li>
    </ul>
   </div>
   <div class="panel-footer">
@@ -1818,8 +1828,8 @@ To switch directories, type <span class="nt">&lt;kbd&gt;</span>cd<span class="nt
   </div>
   <div class="panel-body">
     <ul class="pager">
-      <li class="previous disabled"><a href="#">← Older</a></li>
-      <li class="next"><a href="#">Newer →</a></li>
+      <li class="previous"><a href="#">Older</a></li>
+      <li class="next"><a href="#">Newer</a></li>
     </ul>
   </div>
   <div class="panel-footer">
