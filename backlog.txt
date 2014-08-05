@@ -27,8 +27,8 @@ triangulito indicador
 Entrar con BA media query cambiar contenido
 
 NAVBAR blanca
-NAVBAR transparente
-sacar primary + inverse como navbar
+NAVBAR fondo gris white-1
+NAVBAR fondo foto
 
 
 

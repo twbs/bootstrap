@@ -1251,7 +1251,7 @@ color: #888;
 /* navbar-inverse */
 
 .navbar-inverse {
-  background-color: #1d1d1b;
+  background-color: #111;
   border:0;
 }
 .navbar-inverse .navbar-nav > li > a:focus,
@@ -1319,7 +1319,7 @@ border-color: transparent;
 body > footer {
   margin-top:120px;
   padding:60px 0 120px 0;
-  background:#1d1d1b;
+  background:#111;
 }
 body > footer > .navbar {
   border:0 none;
@@ -1342,6 +1342,9 @@ body > footer .sub-brand {
   body > footer .navbar-brand {
     float:none;
   }
+}
+body > footer .navbar-brand {
+  padding-left:0;
 }
 .footer-home {
   margin-top:0;
