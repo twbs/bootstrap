@@ -420,7 +420,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-js', ['concat', 'uglify']);
 
   // CSS distribution task.
-  grunt.registerTask('less-compile', ['less:compileCore']);
+  grunt.registerTask('less-compile', ['less:compileDocs', 'less:compileCore']);
   grunt.registerTask('dist-css', ['less-compile', 'autoprefixer', 'usebanner', 'csscomb', 'cssmin']);
 
   // Docs distribution task.

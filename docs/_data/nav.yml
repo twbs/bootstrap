@@ -69,6 +69,18 @@
     - title: Navs
     - title: Navbar
     - title: New navbar
+    - title: Card
+      sections:
+        - title: Basic example
+        - title: Text alignment
+        - title: Header and footer
+        - title: Image caps
+        - title: Image overlays
+        - title: Inverted text
+        - title: Background variants
+        - title: Groups
+        - title: Sets
+        - title: Columns
     - title: Breadcrumb
     - title: Pagination
     - title: Alerts

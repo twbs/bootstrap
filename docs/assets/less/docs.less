@@ -6,8 +6,8 @@
  */
 
 // Import Bootstrap variables and mixins
-@import "../../../less/variables.less";
-@import "../../../less/mixins.less";
+@import "../../../less/_variables.less";
+@import "../../../less/_mixins.less";
 
 // Import the syntax highlighting
 @import "syntax.less";
@@ -727,6 +727,10 @@ body {
   > h2 {
     margin-top: 2.5rem;
   }
+
+  > h3 {
+    margin-top: 1.5rem;
+  }
 }
 
 
@@ -862,6 +866,7 @@ body {
   margin-bottom: -1rem;
   border: solid #f7f7f9;
   border-width: .2rem 0 0;
+  overflow: auto; // clearfix
 
   @media (min-width: 480px) {
     border-width: .2rem;
@@ -871,6 +876,14 @@ body {
   .container {
     width: auto;
   }
+
+  // Card examples should be horizontal
+  > .card {
+    float: left;
+    max-width: 15rem;
+    margin: .25rem;
+  }
+
 }
 
 
