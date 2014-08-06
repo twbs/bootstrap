@@ -118,7 +118,7 @@ Make a paragraph stand out by adding `.lead`.
 
 ## Inline text elements
 
-Styling for all the common inline HTML5 elements.
+Styling for common inline HTML5 elements.
 
 {% example html %}
 <p>You can use the mark tag to <mark>highlight</mark> text.</p>
@@ -129,7 +129,6 @@ Styling for all the common inline HTML5 elements.
 <p><small>This line of text is meant to be treated as fine print.</small></p>
 <p><strong>This line rendered as bold text.</strong></p>
 <p><em>This line rendered as italicized text.</em></p>
-<p></p>
 {% endexample %}
 
 <div class="bs-callout bs-callout-info">
