@@ -2,6 +2,10 @@
 
 .bg-variant(@color) {
   background-color: @color;
+  &.list-group-item {
+    background-color: @color;
+  }
+  a&.list-group-item:hover,
   a&:hover {
     background-color: darken(@color, 10%);
   }
