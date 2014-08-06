@@ -43,25 +43,25 @@ th {
     border-bottom: 2px solid @table-border-color;
   }
   // Remove top border from thead by default
-  > caption + thead,
-  > colgroup + thead,
-  > thead:first-child {
-    > tr:first-child {
-      > th,
-      > td {
-        border-top: 0;
-      }
-    }
-  }
+//  > caption + thead,
+//  > colgroup + thead,
+//  > thead:first-child {
+//    > tr:first-child {
+//      > th,
+//      > td {
+//        border-top: 0;
+//      }
+//    }
+//  }
   // Account for multiple tbody instances
   > tbody + tbody {
     border-top: 2px solid @table-border-color;
   }
 
   // Nesting
-  .table {
-    background-color: @body-bg;
-  }
+//  .table {
+//    background-color: @body-bg;
+//  }
 }
 
 
@@ -261,6 +261,58 @@ table {
       > td {
         border-color: @gray;
       }
+    }
+  }
+}
+
+
+.table-reflow {
+
+  thead {
+    float: left;
+  }
+
+  tbody {
+    display: block;
+    white-space: nowrap;
+  }
+
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        border-top: 1px solid @table-border-color;
+        border-left: 1px solid @table-border-color;
+
+        &:last-child {
+          border-right: 1px solid @table-border-color;
+        }
+      }
+    }
+
+    &:last-child {
+      > tr:last-child {
+        > th,
+        > td {
+          border-bottom: 1px solid @table-border-color;
+        }
+      }
+    }
+  }
+
+  border-right: ;
+  border-bottom: ;
+
+
+  tr {
+    float: left;
+
+    th,
+    td {
+      display: block !important;
+      border: 1px solid @table-border-color;
     }
   }
 }
