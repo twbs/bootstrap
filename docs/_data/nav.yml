@@ -13,8 +13,6 @@
     - title: Support
     # - title: Third party support
     - title: Accessibility
-    - title: License
-    - title: Translations
 
 - title: Layout
   pages:
@@ -114,4 +112,6 @@
     - title: History
     - title: Team
     - title: Brand
+    - title: License FAQs
+    - title: Translations
     # - title: Credits
