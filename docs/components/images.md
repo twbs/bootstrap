@@ -25,9 +25,9 @@ Images in Bootstrap 3 can be made responsive-friendly via the addition of the `.
 Add classes to an `<img>` element to easily style images in any project.
 
 <div class="bs-example bs-example-images">
-  <img data-src="holder.js/140x140" class="img-rounded" alt="A generic square placeholder image with rounded corners">
-  <img data-src="holder.js/140x140" class="img-circle" alt="A generic square placeholder image where only the portion within the circle circumscribed about said square is visible">
-  <img data-src="holder.js/140x140" class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera">
+  <img data-src="holder.js/200x200" class="img-rounded" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="img-circle" alt="A generic square placeholder image where only the portion within the circle circumscribed about said square is visible">
+  <img data-src="holder.js/200x200" class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera">
 </div>
 
 {% highlight html %}
