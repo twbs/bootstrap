@@ -3,7 +3,7 @@ layout: page
 title: Badges
 ---
 
-Easily highlight new or unread items by adding a `<span class="badge"></span>` within links, Bootstrap navs, and more.
+Badges are indicators for new or unread activity and include support for the active states of our [navigation components](/components/navs/), links, buttons, and more.
 
 {% example html %}
 <a href="#">Inbox <span class="badge">42</span></a>
