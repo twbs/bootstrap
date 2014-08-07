@@ -16,6 +16,8 @@ colores para casos especiales pero no colorinche [estandarizar]
 
 ------------------------------------------------------------------------------------------------------
 
+
+
 Paneles comunes como list-groups especiales
 
 repasar grupos de lista vs paneles
@@ -30,7 +32,7 @@ NAVBAR blanca
 NAVBAR fondo gris white-1
 NAVBAR fondo foto
 
-
+JUMBOTRON  con titulo de pagina arriba en docs + ver que onda la navbar
 
 
 
