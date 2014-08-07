@@ -37,6 +37,8 @@
       </div>
     </div>
 
+<div class="jumbotron jumbotron-small jumbotron-misc jumbotron-main">
+
     <div class="navbar navbar-default navbar-top navbar-docs" role="navigation">
       <div class="container">
         <div class="row">
@@ -64,6 +66,16 @@
       </div>
     </div>
 
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Comenzar</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
 
 <div class="row">
@@ -75,7 +87,7 @@
 
 <nav class="sidebar col-md-3" role="sidebar">
     <ul class="panel panel-default nav sidenav affix-top" id="affix-nav" data-spy="affix" data-offset-top="150">
-        <div class="panel-heading" id="sidebar-brand">
+        <div class="panel-heading sidebar-brand">
           <h1><a href="#intro-acerca"><span>BAstrap3</span>Comenzar</a></h1>
         </div>
         <li class="sidebar-first"><a href="#intro-acerca">Introducción</a>
@@ -673,7 +685,7 @@ $(function() {
 <!-- scroll to top -->
 
 <script type="text/javascript">
-  var $logo = $('#sidebar-brand');
+  var $logo = $('.sidebar-brand');
   $(document).scroll(function() {
       $logo.css({display: $(this).scrollTop()>150 ? "block":"none"});
   });

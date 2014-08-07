@@ -38,7 +38,6 @@ padding: 15px;
 /* panels docs fix */
 
 .panel-docs {
-  border:0 none;
   margin-top:60px;
 }
 .panel-docs .panel-heading h2 {
@@ -142,51 +141,6 @@ padding: 15px;
   }
 }
 
-/* sidebar nav */
-
-#sidebar-brand {
-  border:0 none;
-  padding: 10px 15px 18px 15px;
-  display:none;
-  background:#f5f5f5;
-}
-#sidebar-brand h1 {
-  margin:0;
-}
-#sidebar-brand a {
-  margin: 10px 15px 5px 15px;
-  color:#aaa;
-  text-decoration:none;
-  display:block;
-  font-size:14px;
-}
-#sidebar-brand a:hover {
-  color:#666;
-}
-#sidebar-brand a span {
-  font-family: "GothamBold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  font-size: 24px;
-  display:block;
-  margin-bottom:5px;
-}
-.sidebar-first {
-  margin-top:18px;
-}
-/*
-#sidebar {
-  position:relative;
-  z-index:99;
-}
-#sidebar .navbar-collapse {
-  padding:0 0 18px 0;
-}
-.sidebar-collapse {
-  position:fixed;
-  z-index:99;
-}
-*/
-
 /* affix */
 
 ul.affix {
@@ -200,90 +154,7 @@ ul.affix-bottom {
   position: absolute;
 }
 
-/* First level of nav */
 
-.sidenav {
-  margin-bottom: 60px;
-  /*padding-top: 18px;*/
-  padding-bottom: 18px;
-  background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
-  border:0 none;
-}
-
-/* All levels of nav */
-
-.sidebar .nav > li > a {
-  display: block;
-  color: #aaa;
-  padding: 5px 30px;
-  font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  font-size:14px;
-}
-.sidebar .nav > li > a:hover,
-.sidebar .nav > li > a:focus {
-  text-decoration: none;
-  background-color: #F5F5F5;
-}
-.sidebar .nav > .active > a,
-.sidebar .nav > .active:hover > a,
-.sidebar .nav > .active:focus > a {
-  font-family: "OpenSansSemiBold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  color: #333;
-  background-color: transparent;
-}
-
-/* Nav: second level */
-
-.sidebar > ul > li {
-margin-bottom: 8px;
-}
-.sidebar .nav .nav > li > a {
-  padding-top:    3px;
-  padding-bottom: 3px;
-  padding-left: 30px;
-  font-size: 12px;
-  font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  padding-left:45px;
-}
-.sidebar .nav .nav > .active > a,
-.sidebar .nav .nav > .active:hover > a,
-.sidebar .nav .nav > .active:focus > a {
-  font-family: "OpenSansSemiBold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-}
-.sidebar .nav .nav > li {
-  display:none;
-}
-.sidebar .nav > li.active > .nav > li {
-  display:block;
-}
-
-/* sidebar media fix */
-
-@media (max-width: 992px) {
-  #sidebar-brand,
-  .sidebar-first > ul {
-    display:none !important;
-  }
-  ul.affix {
-    position:relative;
-    top:0;
-  }
-  .sidebar .nav > .active > a, .sidebar .nav > .active > a:hover {
-    color:#aaa;
-    font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
-    font-weight: normal;
-  }
-  .sidebar .nav > .active > a:hover {
-    text-decoration: none;
-    background-color: #F5F5F5;
-  }
-}
 
 /* jumbotron home */
 

@@ -11,28 +11,14 @@ Mismos elementos con variaciones, explicar cuándo se usa cada cosa
 Paneles escribir reglas
 colores para casos especiales pero no colorinche [estandarizar]
 
-
+VER QUE PONGO en estilos y qué en componentes....
 
 
 ------------------------------------------------------------------------------------------------------
 
+Pasar casi todo lo de docs a bastrap
 
 
-Paneles comunes como list-groups especiales
-
-repasar grupos de lista vs paneles
-
-SIDEBAR pagina de libro
-buscar lo que hice y ver con juli
-triangulito indicador
-
-Entrar con BA media query cambiar contenido
-
-NAVBAR blanca
-NAVBAR fondo gris white-1
-NAVBAR fondo foto
-
-JUMBOTRON  con titulo de pagina arriba en docs + ver que onda la navbar
 
 
 

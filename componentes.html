@@ -34,6 +34,8 @@
       </div>
     </div>
 
+<div class="jumbotron jumbotron-small jumbotron-misc jumbotron-main">
+
     <div class="navbar navbar-default navbar-top navbar-docs" role="navigation">
       <div class="container">
         <div class="row">
@@ -61,6 +63,16 @@
       </div>
     </div>
 
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Componentes</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container container-main">
 
 <div class="row">
@@ -72,7 +84,7 @@
 
 <nav class="sidebar col-md-3" role="sidebar">
     <ul class="panel panel-default nav sidenav affix-top" id="affix-nav" data-spy="affix" data-offset-top="150">
-        <div class="panel-heading" id="sidebar-brand">
+        <div class="panel-heading sidebar-brand">
           <h1><a href="#bs-jumbotron"><span>BAstrap3</span>Componentes</a></h1>
         </div>
         <li class="sidebar-first"><a href="#bs-jumbotron">Bootstrap</a>
@@ -158,7 +170,7 @@
     <h2>Jumbotron</h2>
   </div>
   <div class="panel-body">
-      <div class="jumbotron jumbotron-bg jumbotron-misc">
+      <div class="jumbotron jumbotron-main jumbotron-misc">
         <h1>¡Hola, mundo!</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         <p><a href="#" class="btn btn-primary btn-xl" role="button">Leer más &raquo;</a></p>
@@ -1102,7 +1114,74 @@
   </div>
 </div>
 
+<!-- Sidebar -->
 
+<a id="varios-botonera-lateral" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>Botonera lateral</h2>
+  </div>
+  <div class="panel-body">
+
+
+
+
+<nav class="sidebar" role="sidebar">
+    <ul class="panel panel-default nav sidenav">
+        <div class="panel-heading sidebar-brand">
+          <h1><a href="#tipo-encabezado"><span>BAstrap3</span>Estilos</a></h1>
+        </div>
+        <li class="sidebar-first"><a href="#tipo-encabezado">Tipografía</a>
+          <ul class="nav">
+            <li><a href="#tipo-encabezado">Encabezado</a></li>
+            <li><a href="#tipo-cuerpo">Cuerpo</a></li>
+            <li><a href="#tipo-enfasis">Énfasis</a></li>
+          </ul>
+        </li>
+        <li><a href="#texto-abreviacion">Elementos de texto</a>
+          <ul class="nav">   
+            <li><a href="#texto-abreviacion">Abreviación</a></li>
+            <li><a href="#texto-direccion">Dirección</a></li>
+            <li><a href="#texto-cita">Cita</a></li>
+            <li><a href="#texto-lista">Lista</a></li>        
+            <li><a href="#texto-descripcion">Descripción</a></li>        
+            <li><a href="#texto-codigo">Código</a></li>      
+          </ul>
+        </li>
+        <li><a href="#tabla">Tabla</a>
+          <ul class="nav" style="display:none;">
+            <li><a href="#tabla">Tabla</a></li>
+          </ul>
+        </li>
+        <li><a href="#form-ejemplo">Formulario</a>
+          <ul class="nav">
+            <li><a href="#form-ejemplo">Ejemplo de formulario</a></li>
+            <li><a href="#form-horizontal">Formulario horizontal</a></li>
+            <li><a href="#form-tamano">Tamaño de campo</a></li>
+            <li><a href="#form-validacion">Estado de validación</a></li>
+            <li><a href="#form-seleccionador">Seleccionador</a></li>
+            <li><a href="#form-grupocampos">Grupo de campos</a></li>
+          </ul>
+        </li>
+    </ul>
+</nav>
+
+
+
+
+
+
+
+
+  </div>
+  <div class="panel-footer">
+<pre><code class="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-block btn-xl"</span><span class="nt">&gt;</span>
+  Entrá con tu cuenta de <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"bastrap/ba-btn.png"</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ba"</span><span class="nt"> /&gt;</span>
+<span class="nt">&lt;/button&gt;</span>
+</code></pre>
+  </div>
+</div>
 
 
 
@@ -1196,7 +1275,7 @@ $(function() {
 <!-- scroll to top -->
 
 <script type="text/javascript">
-  var $logo = $('#sidebar-brand');
+  var $logo = $('.sidebar-brand');
   $(document).scroll(function() {
       $logo.css({display: $(this).scrollTop()>150 ? "block":"none"});
   });
