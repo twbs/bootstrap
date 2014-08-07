@@ -141,6 +141,7 @@ input[type=checkbox]:focus {
   box-shadow: 0 1px 1px rgba(0, 0, 0, .025),
               inset 0 2px 4px rgba(0, 0, 0, .125);
 }
+/*
 .btn,
 .btn:hover,
 .btn:focus,
@@ -149,6 +150,7 @@ input[type=checkbox]:focus {
 .open .dropdown-toggle.btn {
   color:#fff;
 }
+*/
 .btn:active,
 .btn.active {
   background-image: none;
@@ -159,6 +161,40 @@ input[type=checkbox]:focus {
 .btn-link.active,
 .btn-link:focus {
   box-shadow:none;
+}
+.btn-success,
+.btn-success:hover,
+.btn-success:active,
+.btn-success:focus,
+.btn-info,
+.btn-info:hover,
+.btn-info:active,
+.btn-info:focus,
+.btn-warning,
+.btn-warning:hover,
+.btn-warning:active,
+.btn-warning:focus,
+.btn-danger,
+.btn-danger:hover,
+.btn-danger:active,
+.btn-danger:focus,
+.btn-inverse,
+.btn-inverse:hover,
+.btn-inverse:active,
+.btn-inverse:focus,
+.btn-blue,
+.btn-blue:hover,
+.btn-blue:active,
+.btn-blue:focus,
+.btn-violet,
+.btn-violet:hover,
+.btn-violet:active,
+.btn-violet:focus,
+.btn-pink,
+.btn-pink:hover,
+.btn-pink:active,
+.btn-pink:focus {
+  color:#fff;
 }
 .btn-group-xl>.btn, .btn-xl {
   /*height:65px;*/
@@ -211,14 +247,14 @@ input[type=checkbox]:focus {
   background-image: linear-gradient(to bottom, #fbfbfb 0%, #f2f2f2 100%);
   background-color: #f2f2f2;
   border-color: #e3e3e3;
-  color:#aaa;
+  color:#999;
 }
 .btn-default.active,
 .btn-default:active {
   background-image: linear-gradient(to bottom, #ececec 0%, #d9d9d9 100%);
   background-color: #e7e7e7;
   border-color: #c1c1c1;
-  color:#aaa;
+  color:#999;
 }
 
 
@@ -275,6 +311,7 @@ input[type=checkbox]:focus {
   background-image: linear-gradient(to bottom, #a5c740 0%, #7cb242 100%);
   background-color: #7cb242;
   border-color: #769d4c;
+  color:#f6faeb;
 }
 .btn-success:active,
 .btn-success.active {
@@ -299,6 +336,7 @@ input[type=checkbox]:focus {
   background-image: linear-gradient(to bottom, #4fbcb9 0%, #19aea7 100%);
   background-color: #19aea7;
   border-color: #009992;
+  color:#edf8f8;
 }
 .btn-info:active,
 .btn-info.active {
@@ -323,6 +361,7 @@ input[type=checkbox]:focus {
   background-image: linear-gradient(to bottom, #ffa039 0%, #f18a44 100%);
   background-color: #f18a44;
   border-color: #cb8250;
+  color:#fff5eb;
 }
 .btn-warning:active,
 .btn-warning.active {
@@ -347,6 +386,7 @@ input[type=checkbox]:focus {
   background-image: linear-gradient(to bottom, #d65248 0%, #c34a43 100%);
   background-color: #c13c3c;
   border-color: #9e4040;
+  color:#faedec;
 }
 .btn-danger:active,
 .btn-danger.active {
@@ -371,6 +411,7 @@ input[type=checkbox]:focus {
   background-image: linear-gradient(to bottom, #595959 0%, #282828 100%);
   background-color: #282828;
   border-color: #272727;
+  color:#f9f9f9;
 }
 .btn-inverse:active,
 .btn-inverse.active {
@@ -395,6 +436,7 @@ input[type=checkbox]:focus {
   background-image: linear-gradient(to bottom, #5574c3 0%, #3967a8 100%);
   background-color: #3967a8;
   border-color: #3c5e8b;
+  color:#eef1f9;
 }
 .btn-blue:active,
 .btn-blue.active {
@@ -419,6 +461,7 @@ input[type=checkbox]:focus {
   background-image: linear-gradient(to bottom, #a655ac 0%, #8f4cb2 100%);
   background-color: #8f4cb2;
   border-color: #7b4c95;
+  color:#f6eef7;
 }
 .btn-violet:active,
 .btn-violet.active {
@@ -443,6 +486,7 @@ input[type=checkbox]:focus {
   background-image: linear-gradient(to bottom, #cc5d8a 0%, #bc428d 100%);
   background-color: #bc428d;
   border-color: #9d457b;
+  color:#faeff3;
 }
 .btn-pink:active,
 .btn-pink.active {
