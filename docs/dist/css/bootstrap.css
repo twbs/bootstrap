@@ -1181,30 +1181,50 @@ a.text-danger:hover {
   color: #fff;
   background-color: #428bca;
 }
+.bg-primary.list-group-item {
+  background-color: #428bca;
+}
+a.bg-primary.list-group-item:hover,
 a.bg-primary:hover {
   background-color: #3071a9;
 }
 .bg-success {
   background-color: #dff0d8;
 }
+.bg-success.list-group-item {
+  background-color: #dff0d8;
+}
+a.bg-success.list-group-item:hover,
 a.bg-success:hover {
   background-color: #c1e2b3;
 }
 .bg-info {
   background-color: #d9edf7;
 }
+.bg-info.list-group-item {
+  background-color: #d9edf7;
+}
+a.bg-info.list-group-item:hover,
 a.bg-info:hover {
   background-color: #afd9ee;
 }
 .bg-warning {
   background-color: #fcf8e3;
 }
+.bg-warning.list-group-item {
+  background-color: #fcf8e3;
+}
+a.bg-warning.list-group-item:hover,
 a.bg-warning:hover {
   background-color: #f7ecb5;
 }
 .bg-danger {
   background-color: #f2dede;
 }
+.bg-danger.list-group-item {
+  background-color: #f2dede;
+}
+a.bg-danger.list-group-item:hover,
 a.bg-danger:hover {
   background-color: #e4b9b9;
 }
