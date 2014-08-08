@@ -55,7 +55,7 @@
 
     this.isShown = true
 
-    this.checkScrollbar()
+    this.scrollbarWidth = this.measureScrollbar()
     this.$body.addClass('modal-open')
 
     this.setScrollbar()
@@ -206,11 +206,6 @@
     }
   }
 
-  Modal.prototype.checkScrollbar = function () {
-    if (document.body.clientWidth >= window.innerWidth) return
-    this.scrollbarWidth = this.scrollbarWidth || this.measureScrollbar()
-  }
-
   Modal.prototype.setScrollbar = function () {
     var bodyPad = parseInt((this.$body.css('padding-right') || 0), 10)
     if (this.scrollbarWidth) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
@@ -221,6 +216,7 @@
   }
 
   Modal.prototype.measureScrollbar = function () { // thx walsh
+    if (document.body.clientWidth >= window.innerWidth) return 0
     var scrollDiv = document.createElement('div')
     scrollDiv.className = 'modal-scrollbar-measure'
     this.$body.append(scrollDiv)
