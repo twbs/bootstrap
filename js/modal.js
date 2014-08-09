@@ -55,7 +55,7 @@
 
     this.isShown = true
 
-    this.scrollbarWidth = this.measureScrollbar()
+    this.checkScrollbar()
     this.$body.addClass('modal-open')
 
     this.setScrollbar()
@@ -204,6 +204,10 @@
     } else if (callback) {
       callback()
     }
+  }
+
+  Modal.prototype.checkScrollbar = function () {
+    this.scrollbarWidth = this.measureScrollbar()
   }
 
   Modal.prototype.setScrollbar = function () {
