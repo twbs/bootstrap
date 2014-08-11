@@ -1,15 +1,5 @@
 
 
-ICONOS GLYPHICON
-
-
-
-html de ejemplo + codigo en docs
-- links posta de css + imagenes logos
-- footer sin navbar [ver version con navbar, agregar a backlog]
-- sacar parte de estilos y scripts extra
-- Jumbotron para titulo!
-
 
 
 BS FOOTER fixed si no hay scroll, no fixed si sí lo hay
