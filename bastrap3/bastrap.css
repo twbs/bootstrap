@@ -1545,6 +1545,9 @@ border-color: transparent;
 .footer .navbar-brand {
   padding-left:0;
 }
+.footer-home {
+  margin-top:0;
+}
 
 /* breadcrumbs */
 
