@@ -1550,26 +1550,31 @@ body > footer .navbar-brand {
 
 /* pagination */
 
+.pagination > li > a {
+  margin-left:1px;
+  margin-right:1px;
+  color: #5574c3;
+}
+
 .pagination > li > a,
 .pagination > li > span,
 .pagination > li > a:hover,
 .pagination > li > a:focus {
-  color: #aaa;
   border:0;
   padding:10px 16px;
   border-radius:4px;
-  margin-left:1px;
-  margin-right:1px;
-}
+ }
 .pagination > li > a:hover,
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
   background-color: #f5f5f5;
+  color: #215093;
 }
 .pagination > li > a:active,
 .pagination > li > a:focus {
   background-color: #f1f1f1;
+  color: #5574c3;
 }
 .pagination > .active > a,
 .pagination > .active > a:focus,
@@ -1577,42 +1582,40 @@ body > footer .navbar-brand {
 .pagination > .active > span,
 .pagination > .active > span:focus,
 .pagination > .active > span:hover {
-  background-color:#aaa;
+  background-color:#5574c3;
 }
-.pag-prev a {
-  width:40px;
-  height:40px;
-  background:url(chevron-pag-prev.png) no-repeat center center;
-}
-.pag-next a {
-  width:40px;
-  height:40px;
-  background:url(chevron-pag-next.png) no-repeat center center;
+.pagination>.disabled>span,
+.pagination>.disabled>span:hover,
+.pagination>.disabled>span:focus,
+.pagination>.disabled>a,
+.pagination>.disabled>a:hover,
+.pagination>.disabled>a:focus {
+  border:0;
 }
 
 /* pager */
 
 .pager li > a,
 .pager li > span {
+  color: #5574c3;
   border: 0;
   border-radius: 4px;
   padding:10px 16px;
-  color: #888;
 }
 .pager li > a:hover {
   background-color: #f5f5f5;
+  color: #215093;
 }
 .pager li > a:active,
 .pager li > a:focus {
   background-color: #f1f1f1;
+  color: #5574c3;
 }
-.pager .previous a {
-  background:url(chevron-pag-prev.png) no-repeat left center;
-  padding-left:42px;
+.pager .previous a span.glyphicon {
+  padding-right:10px;
 }
-.pager .next a {
-  background:url(chevron-pag-next.png) no-repeat right center;
-  padding-right:42px;
+.pager .next a span.glyphicon {
+  padding-left:10px;
 }
 
 /* labels */
@@ -1749,7 +1752,7 @@ body > footer .navbar-brand {
   padding-top:24px;
   padding-bottom:12px;
   color:#333;
-    border-radius:8px;
+  border-radius:8px;
 }
 .shortcut:hover {
   background:#f5f5f5;
@@ -1771,9 +1774,9 @@ body > footer .navbar-brand {
   border-radius:110px;
   display:block;
 }
-.shortcut span img {
-  top: 25%;
-  position: relative;
+.shortcut span.glyphicon {
+  padding-top:32px;
+  font-size:48px;
 }
 .shortcut p {
   color:#888;
@@ -1934,15 +1937,17 @@ body > footer .navbar-brand {
   box-shadow: none;
   box-shadow: 0 0 4px #ccc;
 }
-
+a.list-group-item {
+  color:#5574c3;
+}
 .list-group-item.active,
 .list-group-item.active:hover,
 .list-group-item.active:focus,
 a.list-group-item.active,
 a.list-group-item.active:hover,
 a.list-group-item.active:focus {
-  background-color:#aaa;
-  border-color:#aaa;
+  background-color:#5574c3;
+  border-color:#5574c3;
 }
 a.list-group-item.active,
 a.list-group-item.active .list-group-item-text,
@@ -1957,7 +1962,9 @@ a.list-group-item.active:focus .list-group-item-text {
 /* special panels + lists */
 
 .list-group-panel h4,
-.list-group-panel h4:hover {
+.list-group-content h4,
+.list-group-panel h4:hover,
+.list-group-content h4:hover {
   color:#333;
 }
 .list-group-panel p,
@@ -1980,6 +1987,7 @@ a.list-group-item.active:focus .list-group-item-text {
 a.list-group-item:hover,
 a.list-group-item:focus {
   background-color: #f5f5f5;
+  color: #215093;
 }
 /* list heading */
 
@@ -1995,7 +2003,7 @@ a.list-group-item:focus {
 .list-heading h3 {
   background-image:none;
   text-shadow:none;
-  float:left;
+  /*float:left;*/
   font-size:30px;
   padding:0 15px 5px 15px;
 }
@@ -2044,10 +2052,10 @@ a.list-group-item:focus {
   color:#fff;
 }
 
-.list-heading img {
+.list-heading .glyphicon {
   float:right;
-  height: 30px;
-  margin: 20px 15px 0 0;
+  /*height: 30px;
+  margin: 20px 15px 0 0;*/
 }
 .list-heading-img {
   padding:85px 0 0 0;
@@ -2086,9 +2094,10 @@ a.list-group-item:focus {
 .list-thumb h4 {
   margin-top:20px;
 }
-.list-thumb img {
-  position:relative;
-  top:35%;
+.list-thumb .glyphicon {
+  font-size:64px;
+  padding-top:40px;
+  color:#fff;
 }
 
 /* list img */
@@ -2240,6 +2249,7 @@ a.list-group-item:focus {
   border-radius:4px;
   padding: 15px;
   margin-bottom: 20px;
+  overflow:auto;
 }
 .alert-spot,
 .alert-spot:hover,
@@ -2248,18 +2258,22 @@ a.list-group-item:focus {
   color:#fff;
   display:block;
 }
-a.alert-spot {
-  background-image:url(chevron-sm.png);
-  background-repeat:no-repeat;
-  background-position:right;
-}
 a.alert-spot:hover {
   opacity:0.9;
 }
-.alert-spot img {
+.alert-spot > div {
   float:left;
-  height: 50px;
-  padding:10px 15px 10px 0;
+}
+.alert-spot .glyphicon {
+  float:left;
+  font-size: 30px;
+  padding:8px 15px 8px 0;
+  width:45px;
+}
+.alert-spot .glyphicon-chevron-right {
+  float:right;
+  font-size: 18px;
+  padding:16px 0 0 0;
 }
 .alert-spot h4 {
   margin-top:5px;
@@ -2267,6 +2281,8 @@ a.alert-spot:hover {
 }
 .alert-spot p {
   margin-bottom:0;
+  font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
+  font-weight: normal;
 }
 .alert-spot-default {
   background-color:#f5f5f5;

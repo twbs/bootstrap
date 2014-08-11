@@ -1,3 +1,64 @@
+
+
+ICONOS GLYPHICON
+
+
+
+html de ejemplo + codigo en docs
+- links posta de css + imagenes logos
+- footer sin navbar [ver version con navbar, agregar a backlog]
+- sacar parte de estilos y scripts extra
+- Jumbotron para titulo!
+
+
+
+BS FOOTER fixed si no hay scroll, no fixed si sí lo hay
+
+
+Pasar casi todo lo de docs a bastrap
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------
+
+
+
+CSS impresión para todo y dewspues ver
+bootstrap ya existente
+
+REPASAR:
+sidebar, paneles, botonera bootstrap
+
+
+
+BS probar sarmiento notebook!
+BS crossbrowsing
+BASTRAP validar html
+
+- hacer lo de las paginas de buenos aires y agregar más ejemplos?
+
+BS type + baseline grid de 5px por columnas de 15/30 !!!
+http://www.google.com/design/spec/style/typography.html#typography-standard-styles
+
+BS usar clases de contexto + colores? danger + red, etc
+
+BS usar sólo grilla de bastrap? sino es más peso de BS y pisar de nuevo para sacar, wtf
+
+BS > sacar shiv y cosas y hacer solo fallback de bordes para IE
+
+BS boton copy!
+
+
+BASTRAP >>> Agregar manual de marca con recursos
+
 DOCUMENTACION
 redactar razon de uso de cada cosa y segun eso ver que 
 "nunca usar X cosa excepto tal cosa"
@@ -13,29 +74,17 @@ colores para casos especiales pero no colorinche [estandarizar]
 
 VER QUE PONGO en estilos y qué en componentes....
 
+BASTRAP > no hacerse el boludo y pasar todo a saas/less
 
-------------------------------------------------------------------------------------------------------
-
-Pasar casi todo lo de docs a bastrap
-
-
-
-
-
-
-------------------------------------------------------------------------------------------------------
-
-SACAR cosas de bs-docs.css > DEJAR solo lo que no se debe usar
 
 Estilos aparte para buenosaires.gob.ar
 encabezado
 notas
 
-CSS impresión para todo y dewspues ver
-bootstrap ya existente
+WEB articulos con garamond?
 
-REPASAR:
-sidebar, paneles, botonera bootstrap
+WEB button tramites etc top left
+
 
 
 
