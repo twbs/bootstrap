@@ -12,11 +12,81 @@
 @well-border-radius:                0;
 @breadcrumb-border-radius:          0;
 
+@manta-color: #FBB919;
+@twitter-color: #4099FF;
+@facebook-color: #3B5998;
+@google-plus-color: #C63D2D;
+
 
 //------------------  color junk ---------------------
 
 .bg-cool-darker {
   background-color: @coolDarker !important;
+}
+
+// background colors from color pallette
+.bg-gray,.bg-gray-hover:hover {
+  background-color: @neutralLightest;
+}
+.bg-cool-lightest, .bg-cool-lighter, .bg-cool-midlight, .bg-cool-middark, .bg-cool-dark, .bg-cool-darker {
+  color: @neutralWhite;
+}
+.bg-cool-lightest{
+  background-color: @coolLightest;
+}
+.bg-cool-lighter{
+  background-color: @coolLighter;
+}
+.bg-cool-midlight{
+  background-color: @coolMidlight;
+}
+.bg-cool-middark {
+  background-color: @coolMiddark;
+}
+.bg-cool-dark {
+  background-color: @coolDark;
+}
+.bg-cool-darker {
+  background-color: @coolDarker;
+}
+// text colors from color pallette
+.text-neutral-white {
+  color: @neutralWhite;
+}
+.text-neutral-light, a.text-neutral-light:hover, a.text-neutral-light:active {
+  color: @neutralLight;
+}
+.text-cool-lightest {
+  color:@coolLightest;
+}
+.text-cool-darker {
+  color: @coolDarker;
+}
+
+.text-manta {
+  color: @manta-color;
+}
+.text-twitter {
+  color: @twitter-color;
+}
+.text-facebook {
+  color: @facebook-color;
+}
+.text-google-plus {
+  color: @google-plus-color;
+}
+
+
+.faded {
+  .opacity(0.5);
+}
+
+// text transforms
+.text-capitalize {
+  text-transform: capitalize;
+}
+.text-uppercase {
+  text-transform: uppercase;
 }
 
 //------------------  END color junk ---------------------
@@ -25,9 +95,6 @@
 .container.content {
   background-color: @neutralWhite;
   padding-top: (@grid-gutter-width / 2);
-}
-.cool-lightest {
-  color:@coolLightest;
 }
 .text-default, a.text-default:hover, a.text-default:active {
   color: @text-color;
@@ -122,6 +189,11 @@ h1.strong,h2.strong,h3.strong,h4.strong,h5.strong,h6.strong,
 .panel-default {
   .box-shadow(none);
 }
+/* remove extra bottom margin that isn't needed since panel-default has no border (and all panel bodies have padding in them) */
+.panel.panel-default {
+  margin-bottom:0;
+}
+
 /*a lighter border color is nicer for tables inside wells*/
 .well .table {
   thead,
@@ -262,19 +334,6 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
 
 
 //------------------ fonts ---------------------------
-
-.icon-manta:before{
-  color:#FBB919;
-}
-.icon-twitter:before{
-  color:#4099FF;
-}
-.icon-facebook:before{
-  color:#3B5998;
-}
-.icon-google-plus:before{
-  color:#c63d2d;
-}
 
 @mantaicon-version: 2;
 
