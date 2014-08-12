@@ -8,18 +8,14 @@
 .theme-showcase > p > .btn {
   margin: 5px 0;
 }
-.anchor {
-  display:block;
-}
-.carousel-inner > .item > img, .thumbnail > img {
+/*
+.carousel-inner > .item > img,
+.thumbnail > img {
   width:100% !important;
 }
+*/
 .zero-clipboard {
   display: none;
-}
-pre {
-  border:0 none;
-  padding:0;
 }
 .bs-example-popover .popover {
 position: relative;
@@ -28,14 +24,16 @@ float: left;
 width: 260px;
 margin: 20px;
 }
-.form-example input, .form-example select, .btngroup-example .btn-group {
+.form-example input,
+.form-example select,
+.btngroup-example .btn-group {
   margin-bottom:10px;
 }
 .helper-example p {
 padding: 15px;
 }
 
-/* panels docs fix */
+/* panels docs */
 
 .panel-docs {
   margin-top:60px;
@@ -79,12 +77,6 @@ padding: 15px;
   margin-top: 20px !important;
   top:0 !important;
 }
-/*
-.panel-body > h3 {
-  position:relative;
-  top:-10px;
-}
-*/
 .panel-example .panel-body {
   padding: 15px;
 }
@@ -101,35 +93,8 @@ padding: 15px;
   margin:0;
 }
 
-/* main navbar fix */
+/* navbar search */
 
-.navbar-docs .navbar-brand {
-  font-family: "GothamBold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  font-size:24px;
-}
-/*
-.navbar-docs .container {
-  padding-left:30px;
-}
-@media (max-width: 768px) {
-  .navbar-docs .container {
-    padding-left:0;
-  }
-  .navbar-docs .navbar-header {
-    padding-left:30px;
-  }
-  .navbar-docs .navbar-toggle {
-    margin-right:30px;
-  }
-  .navbar-primary.navbar-docs .navbar-header {
-    float: left;
-  }
-  .navbar-docs .navbar-nav a {
-    padding-left:45px;
-  }
-}
-*/
 @media (min-width: 560px) {
   .navbar-form .form-control {
     width: auto;
@@ -140,21 +105,6 @@ padding: 15px;
     width: 90px;
   }
 }
-
-/* affix */
-
-ul.affix {
-  position: fixed; 
-  top: 40px;
-}
-ul.affix-top {
-  position: static;
-}
-ul.affix-bottom {
-  position: absolute;
-}
-
-
 
 /* jumbotron home */
 
@@ -208,12 +158,6 @@ ul.affix-bottom {
   border-radius:4px;
   color:#999;
 }
-
-
-
-
-
-
 
 /* Pigments code */
 

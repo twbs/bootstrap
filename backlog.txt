@@ -1,33 +1,10 @@
 
 
+PASAR branch a master!
 
+REPASAR QUE PONGO en estilos y qué en componentes....
 
-BS FOOTER fixed si no hay scroll, no fixed si sí lo hay
-
-
-Pasar casi todo lo de docs a bastrap
-
-
-
-
-
-
-
-
-
-
-
-------------------------------------------------------------------------------------------------------
-
-
-
-CSS impresión para todo y dewspues ver
-bootstrap ya existente
-
-REPASAR:
-sidebar, paneles, botonera bootstrap
-
-
+Documentar BIEN [explicar usos]
 
 BS probar sarmiento notebook!
 BS crossbrowsing
@@ -40,32 +17,31 @@ http://www.google.com/design/spec/style/typography.html#typography-standard-styl
 
 BS usar clases de contexto + colores? danger + red, etc
 
+BS boton copy!
+
+CSS impresión para todo y dewspues ver
+bootstrap ya existente
+
+SUBIR DE NUEVO A CDN ba.gob.ar
+
+
+------------------------------------------------------------------------------------------------------
+
+
+
+
+
 BS usar sólo grilla de bastrap? sino es más peso de BS y pisar de nuevo para sacar, wtf
 
 BS > sacar shiv y cosas y hacer solo fallback de bordes para IE
 
-BS boton copy!
-
+Documentar lo no documentado html aparte o ver
 
 BASTRAP >>> Agregar manual de marca con recursos
 
-DOCUMENTACION
-redactar razon de uso de cada cosa y segun eso ver que 
-"nunca usar X cosa excepto tal cosa"
-
-Documentar lo no documentado html aparte o ver
-
 PENSAR en aplicaciones back-end
 
-Mismos elementos con variaciones, explicar cuándo se usa cada cosa
-
-Paneles escribir reglas
-colores para casos especiales pero no colorinche [estandarizar]
-
-VER QUE PONGO en estilos y qué en componentes....
-
 BASTRAP > no hacerse el boludo y pasar todo a saas/less
-
 
 Estilos aparte para buenosaires.gob.ar
 encabezado
@@ -74,16 +50,6 @@ notas
 WEB articulos con garamond?
 
 WEB button tramites etc top left
-
-
-
-
-
-
-
-
-
-
 
 
 
