@@ -61,8 +61,6 @@
       }
       if (changed) $input.prop('checked', !this.$element.hasClass('active')).trigger('click')
     }
-
-    if (changed) this.$element.toggleClass('active')
   }
 
 
