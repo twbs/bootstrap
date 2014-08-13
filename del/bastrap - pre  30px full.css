@@ -1882,7 +1882,7 @@ border-color: transparent;
 .panel .panel-footer:last-child {
   border-bottom:0;
 }
-@media (min-width: 560px) {
+@media (min-width: 992px) {
   .panel-heading,
   .panel-body,
   .panel-footer {
@@ -1978,7 +1978,7 @@ a.list-group-item:focus {
   background-color: #f5f5f5;
   color: #215093;
 }
-@media (min-width: 560px) {
+@media (min-width: 992px) {
   .list-group-item {
     padding: 12.5px 30px;
   }
@@ -2002,7 +2002,7 @@ a.list-group-item:focus {
   font-size:30px;
   padding:0 15px 5px 15px;
 }
-@media (min-width: 560px) {
+@media (min-width: 992px) {
   .list-heading h3 {
     padding:0 30px 5px 30px;
   }
@@ -2073,7 +2073,7 @@ a.list-group-item:focus {
   float:none;
   color:#fff;
 }
-@media (min-width: 560px) {
+@media (min-width: 992px) {
   .list-heading-img h3 {
     padding:0 30px 20px 30px;
   }
@@ -2085,23 +2085,16 @@ a.list-group-item:focus {
 /* list thumb */
 
 .list-thumb > div {
-  width:100%;
-  height:140px;
+  width:140px;
+  height:90px;
   float:left;
   overflow:hidden;
   background-size:cover;
   text-align:center;
   margin-top:10px;
-  margin-bottom:20px;
-  margin-right:30px;
+  margin-bottom:10px;
+  margin-right:15px;
   border-radius:4px;
-}
-@media (min-width: 560px) {
-  .list-thumb > div {
-    width:140px;
-    height:90px;
-    margin-bottom: 15px;
-  }
 }
 .list-thumb h4 {
   margin-top:20px;

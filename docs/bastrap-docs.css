@@ -50,15 +50,13 @@ margin: 20px;
   font-size:18px;
 }
 .panel-docs > .panel-body > h3 {
-  margin-top: 10px;
+  margin-top: 5px;
   margin-bottom:20px;
 }
 @media (min-width: 992px) {
   .panel-docs > .panel-body {
+    margin-top:15px;
     margin-bottom:15px;
-  }
-  .panel-docs > .panel-body > h3 {
-    margin-top: 20px;
   }
 }
 /*
