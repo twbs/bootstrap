@@ -30,7 +30,7 @@ margin: 20px;
   margin-bottom:10px;
 }
 .helper-example p {
-padding: 15px;
+  padding: 15px;
 }
 
 /* panels docs */
@@ -38,17 +38,30 @@ padding: 15px;
 .panel-docs {
   margin-top:60px;
 }
-.panel-docs .panel-heading h2 {
+.panel-docs > .panel-heading h2 {
   font-weight: normal;
   font-size:24px;
-  margin: 10px 15px;
+  margin: 10px 0;
 }
-.panel-docs .panel-heading h2 span {
+.panel-docs > .panel-heading h2 span {
   color: #aaa;
   font-family: "GothamMedium", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-size:18px;
 }
+.panel-docs > .panel-body > h3 {
+  margin-top: 10px;
+  margin-bottom:20px;
+}
+@media (min-width: 992px) {
+  .panel-docs > .panel-body {
+    margin-bottom:15px;
+  }
+  .panel-docs > .panel-body > h3 {
+    margin-top: 20px;
+  }
+}
+/*
 .panel-docs .panel-body {
   padding: 30px;
   border:0 none;
@@ -57,6 +70,7 @@ padding: 15px;
   padding: 20px 30px;
   border:0 none;
 }
+
 .panel-docs .panel-heading {
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
@@ -65,7 +79,8 @@ padding: 15px;
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
 }
-.panel-docs .panel-body h1 {
+*/
+.panel-docs > .panel-body h1 {
   margin-top:0;
 }
 .panel-first {
@@ -76,34 +91,24 @@ padding: 15px;
   font-weight: normal !important;
   margin-top: 20px !important;
   top:0 !important;
-}
+}/*
 .panel-example .panel-body {
   padding: 15px;
 }
+*/
+/*
 .panel-example .panel-footer {
   padding: 10px 15px;
   background-color: #f5f5f5;
   border-top: 1px solid #ddd;
 }
+*/
 .panel-docs > .panel-heading {
   background-color: #aaa;
   color:#fff;
 }
 .panel-title {
   margin:0;
-}
-
-/* navbar search */
-
-@media (min-width: 560px) {
-  .navbar-form .form-control {
-    width: auto;
-  }
-}
-@media (max-width: 1199px) {
-  .navbar-form .form-control {
-    width: 90px;
-  }
 }
 
 /* jumbotron home */

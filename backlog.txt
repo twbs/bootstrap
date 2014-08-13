@@ -1,5 +1,12 @@
 
 
+
+Corregir el sticky footer que con table sdfsdfksd el ancho de la pagina [usar otro? usar js?]
+
+
+
+
+
 PASAR branch a master!
 
 REPASAR QUE PONGO en estilos y qué en componentes....
@@ -29,7 +36,7 @@ SUBIR DE NUEVO A CDN ba.gob.ar
 
 
 
-
+deshabilitar animaciones de javascript?
 
 BS usar sólo grilla de bastrap? sino es más peso de BS y pisar de nuevo para sacar, wtf
 

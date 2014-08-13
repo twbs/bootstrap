@@ -4,7 +4,6 @@ html,
 body {
   height:100%;
 }
-/*
 body {
   position:relative;
   display:table;
@@ -19,7 +18,6 @@ body > footer {
 body > .wrapper {
   height:100%;
 }
-*/
 .container-center {
   text-align:center;
 }
@@ -383,6 +381,28 @@ input[type=checkbox]:focus {
 .progress-bar-success,
 .btn-success.disabled,
 .btn-success[disabled] {
+  box-shadow: inset 0 10px 10px #9bc12b, inset 0 -2px 0 rgba(0, 0, 0, .075);
+  background-color: #6eaa2e;
+  border-color: #679239;
+}
+.btn-success:hover,
+.btn-success:focus {
+  background-color: #7cb242;
+  border-color: #769d4c;
+  color:#f6faeb;
+}
+.btn-success:active,
+.btn-success.active {
+  background-color: #669e2b;
+  border-color: #608835;
+}
+
+/*
+.btn-success,
+.open > .dropdown-toggle.btn-success,
+.progress-bar-success,
+.btn-success.disabled,
+.btn-success[disabled] {
   background-image: linear-gradient(to bottom, #9bc12b 0%, #6eaa2e 100%);
   background-color: #6eaa2e;
   border-color: #679239;
@@ -400,6 +420,9 @@ input[type=checkbox]:focus {
   background-color: #669e2b;
   border-color: #608835;
 }
+*/
+
+
 
 /* btn gradient info */
 
@@ -1215,29 +1238,12 @@ a.list-group-item.active > .badge {
     border:0;
     border-left: solid 2px;
   }
-  .navbar-default.navbar-top .navbar-right {
-    right:0;
-  }
-  .navbar-default.navbar-top .navbar-nav a {
-    padding:13px 15px;
-    min-height: inherit;
-  }
-  .navbar-top .navbar-collapse {
-    top: -25px;
-  }
 }
 .navbar-form,
 .navbar-collapse {
   border:0;
   box-shadow:none;
 }
-/*
-@media (min-width: 767px) {
-  .navbar-collapse.collapse {
-    display: table !important;
-  }
-}
-*/
 
 /* navbar-default */
 
@@ -1393,7 +1399,7 @@ color: #888;
 .jumbotron > .navbar-default .navbar-nav > .active > a:hover {
   color: #fff;
   background-color: transparent;
-  border-color: #fff;
+  border-bottom: 2px solid #fff;
 }
 .jumbotron > .navbar-default .navbar-brand:focus,
 .jumbotron > .navbar-default .navbar-brand:hover {
@@ -1521,6 +1527,11 @@ background-color: #e5e5e5;
 .navbar-inverse .navbar-form {
 border-color: transparent;
 }
+@media (min-width: 767px) {
+  .navbar-collapse.collapse {
+    display: table !important;
+  }
+}
 .navbar-inverse .navbar-brand:focus,
 .navbar-inverse .navbar-brand:hover {
   color: #ccc;
@@ -1542,7 +1553,6 @@ border-color: transparent;
 .jumbotron p {
   font-size:21px;
   margin-bottom:15px;
-  line-height: 1.1;
 }
 .jumbotron .btn-primary {
   margin-top:24px;
@@ -1875,20 +1885,6 @@ border-color: transparent;
 .panel-default > .panel-heading a:hover {
   color:#888;
 }
-.panel-footer {
-  border-top: 1px solid #e5e5e5;
-  border-bottom: 1px solid #E5E5E5;
-}
-.panel .panel-footer:last-child {
-  border-bottom:0;
-}
-@media (min-width: 992px) {
-  .panel-heading,
-  .panel-body,
-  .panel-footer {
-    padding:12.5px 30px;
-  }
-}
 
 /* panel colors */
 
@@ -1978,12 +1974,6 @@ a.list-group-item:focus {
   background-color: #f5f5f5;
   color: #215093;
 }
-@media (min-width: 992px) {
-  .list-group-item {
-    padding: 12.5px 30px;
-  }
-}
-
 /* list heading */
 
 .list-heading {
@@ -2001,11 +1991,6 @@ a.list-group-item:focus {
   /*float:left;*/
   font-size:30px;
   padding:0 15px 5px 15px;
-}
-@media (min-width: 992px) {
-  .list-heading h3 {
-    padding:0 30px 5px 30px;
-  }
 }
 .list-heading-primary {
   background-color:#ffd300;
@@ -2072,11 +2057,6 @@ a.list-group-item:focus {
   padding:0 15px 20px 15px;
   float:none;
   color:#fff;
-}
-@media (min-width: 992px) {
-  .list-heading-img h3 {
-    padding:0 30px 20px 30px;
-  }
 }
 .list-heading-big {
   padding:300px 0 0 0;
@@ -2263,40 +2243,22 @@ a.list-group-item:focus {
   color:#fff;
   display:block;
 }
-a.alert-spot:hover,
-a.alert-spot:focus {
+a.alert-spot:hover {
   opacity:0.9;
-}
-a.alert-spot:active {
-  opacity:1;
 }
 .alert-spot > div {
   float:left;
-  width:85%;
 }
 .alert-spot .glyphicon {
   float:left;
   font-size: 30px;
-  padding:10px 0 0 0;
+  padding:8px 15px 8px 0;
   width:45px;
 }
 .alert-spot .glyphicon-chevron-right {
   float:right;
   font-size: 18px;
-  margin-top:5px;
-  width:15px;
-}
-@media (min-width: 767px) {
-  .alert-spot > div {
-    padding-left: 30px;
-  }
-  .alert-spot .glyphicon {
-    padding:10px 0 0 15px;
-  }
-  .alert-spot .glyphicon-chevron-right {
-    width:30px;
-    padding-left:0;
-  }
+  padding:16px 0 0 0;
 }
 .alert-spot h4 {
   margin-top:5px;
@@ -2420,16 +2382,15 @@ margin-bottom: 8px;
 /* sidebar media fix */
 
 @media (max-width: 992px) {
-  .sidebar-brand,
+  #sidebar-brand,
   .sidebar-first > ul {
     display:none !important;
   }
   ul.affix {
-    position:relative !important;
-    top:0 !important;
+    position:relative;
+    top:0;
   }
-  .sidebar .nav > .active > a,
-  .sidebar .nav > .active > a:hover {
+  .sidebar .nav > .active > a, .sidebar .nav > .active > a:hover {
     color:#aaa;
     font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
     font-weight: normal;
@@ -2453,77 +2414,5 @@ ul.affix-bottom {
   position: absolute;
 }
 
-/* popover */
 
-.popover {
-  border:0;
-  box-shadow: 0px 0px 8px #ccc;
-  padding:0;
-}
-.popover-title {
-  border:0;
-  border-bottom: 1px solid #e5e5e5;
-  background:#f5f5f5;
-  padding:8px 15px;
-}
-.popover.top > .arrow {
-  border-top-color: #e5e5e5;
-}
-.popover.right > .arrow {
-  border-right-color: #e5e5e5;
-}
-.popover.bottom > .arrow {
-  border-bottom-color: #e5e5e5;
-}
-.popover.left > .arrow {
-  border-left-color: #e5e5e5;
-}
-.popover.bottom > .arrow:after {
-  border-bottom-color: #F5F5F5;
-}
 
-/* accordion */
-
-.panel-group .panel-heading + .panel-collapse .panel-body {
-  border:none;
-  border-radius: 0px;
-  box-shadow:none;
-}
-.panel-group .panel + .panel {
-  margin:0;
-  border-radius: 0px;
-  box-shadow:none;
-}
-#accordion {
-  box-shadow:none;
-  border-radius: 4px;
-  box-shadow: 0px 0px 4px #CCC;
-}
-#accordion .panel {
-  box-shadow:none;
-}
-#accordion .panel:first-child {
-  border-radius: 0px;
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
-}
-#accordion .panel:last-child {
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-#accordion .panel-heading {
-  border-radius: 0px;
-}
-#accordion .panel-group .panel {
-  box-shadow:none;
-}
-#accordion .panel-collapse {
-  border-bottom:solid 1px #e5e5e5;
-}
-#accordion .panel-heading {
-  padding:0;
-}
-#accordion .panel-heading a {
-  display:block;
-  padding: 10px 15px;
-}
