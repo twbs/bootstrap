@@ -19,52 +19,52 @@ $(function () {
   })
 
   test('should provide no conflict', function () {
-    ok(!$.fn.alert, 'alert was set back to undefined (org value)')
+    strictEqual($.fn.alert, undefined, 'alert was set back to undefined (org value)')
   })
 
-  test('should return element', function () {
-    ok($(document.body).bootstrapAlert()[0] == document.body, 'document.body returned')
+  test('should return jquery collection containing the element', function () {
+    var $el = $('<div/>')
+    var $alert = $el.bootstrapAlert()
+    ok($alert instanceof $, 'returns jquery collection')
+    strictEqual($alert[0], $el[0], 'collection contains element')
   })
 
   test('should fade element out on clicking .close', function () {
-    var alertHTML = '<div class="alert-message warning fade in">' +
-        '<a class="close" href="#" data-dismiss="alert">×</a>' +
-        '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>' +
-        '</div>'
-    var alert = $(alertHTML).bootstrapAlert()
+    var alertHTML = '<div class="alert-message warning fade in">'
+        + '<a class="close" href="#" data-dismiss="alert">×</a>'
+        + '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>'
+        + '</div>'
+    var $alert = $(alertHTML).bootstrapAlert()
 
-    alert.find('.close').click()
+    $alert.find('.close').click()
 
-    ok(!alert.hasClass('in'), 'remove .in class on .close click')
+    equal($alert.hasClass('in'), false, 'remove .in class on .close click')
   })
 
   test('should remove element when clicking .close', function () {
-    $.support.transition = false
+    var alertHTML = '<div class="alert-message warning fade in">'
+        + '<a class="close" href="#" data-dismiss="alert">×</a>'
+        + '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>'
+        + '</div>'
+    var $alert = $(alertHTML).appendTo('#qunit-fixture').bootstrapAlert()
 
-    var alertHTML = '<div class="alert-message warning fade in">' +
-        '<a class="close" href="#" data-dismiss="alert">×</a>' +
-        '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>' +
-        '</div>'
-    var alert = $(alertHTML).appendTo('#qunit-fixture').bootstrapAlert()
+    notEqual($('#qunit-fixture').find('.alert-message').length, 0, 'element added to dom')
 
-    ok($('#qunit-fixture').find('.alert-message').length, 'element added to dom')
+    $alert.find('.close').click()
 
-    alert.find('.close').click()
-
-    ok(!$('#qunit-fixture').find('.alert-message').length, 'element removed from dom')
+    equal($('#qunit-fixture').find('.alert-message').length, 0, 'element removed from dom')
   })
 
   test('should not fire closed when close is prevented', function () {
-    $.support.transition = false
     stop()
     $('<div class="alert"/>')
       .on('close.bs.alert', function (e) {
         e.preventDefault()
-        ok(true)
+        ok(true, 'close event fired')
         start()
       })
       .on('closed.bs.alert', function () {
-        ok(false)
+        ok(false, 'closed event fired')
       })
       .bootstrapAlert('close')
   })

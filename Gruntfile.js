@@ -18,7 +18,6 @@ module.exports = function (grunt) {
   var fs = require('fs');
   var path = require('path');
   var npmShrinkwrap = require('npm-shrinkwrap');
-  var generateGlyphiconsData = require('./grunt/bs-glyphicons-data-generator.js');
   var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
   var generateRawFiles = require('./grunt/bs-raw-files-generator.js');
 
@@ -60,7 +59,7 @@ module.exports = function (grunt) {
         src: 'js/tests/unit/*.js'
       },
       assets: {
-        src: ['docs/assets/js/_src/*.js', 'docs/assets/js/*.js', '!docs/assets/js/*.min.js']
+        src: ['docs/assets/js/src/*.js', 'docs/assets/js/*.js', '!docs/assets/js/*.min.js']
       }
     },
 
@@ -119,21 +118,22 @@ module.exports = function (grunt) {
       },
       customize: {
         src: [
-          'docs/assets/js/_vendor/less.min.js',
-          'docs/assets/js/_vendor/jszip.min.js',
-          'docs/assets/js/_vendor/uglify.min.js',
-          'docs/assets/js/_vendor/blob.js',
-          'docs/assets/js/_vendor/filesaver.js',
+          'docs/assets/js/vendor/less.min.js',
+          'docs/assets/js/vendor/jszip.min.js',
+          'docs/assets/js/vendor/uglify.min.js',
+          'docs/assets/js/vendor/blob.js',
+          'docs/assets/js/vendor/filesaver.js',
           'docs/assets/js/raw-files.min.js',
-          'docs/assets/js/_src/customizer.js'
+          'docs/assets/js/src/customizer.js'
         ],
         dest: 'docs/assets/js/customize.min.js'
       },
       docsJs: {
+        // NOTE: This src list is duplicated in footer.html; if making changes here, be sure to update the other copy too.
         src: [
-          'docs/assets/js/_vendor/holder.js',
-          'docs/assets/js/_vendor/ZeroClipboard.min.js',
-          'docs/assets/js/_src/application.js'
+          'docs/assets/js/vendor/holder.js',
+          'docs/assets/js/vendor/ZeroClipboard.min.js',
+          'docs/assets/js/src/application.js'
         ],
         dest: 'docs/assets/js/docs.min.js'
       }
@@ -199,7 +199,7 @@ module.exports = function (grunt) {
         src: 'dist/css/<%= pkg.name %>-theme.css'
       },
       docs: {
-        src: 'docs/assets/css/_src/docs.css'
+        src: 'docs/assets/css/src/docs.css'
       },
       examples: {
         expand: true,
@@ -225,7 +225,7 @@ module.exports = function (grunt) {
           ids: false,
           'overqualified-elements': false
         },
-        src: 'docs/assets/css/_src/docs.css'
+        src: 'docs/assets/css/src/docs.css'
       }
     },
 
@@ -243,8 +243,8 @@ module.exports = function (grunt) {
       },
       docs: {
         src: [
-          'docs/assets/css/_src/docs.css',
-          'docs/assets/css/_src/pygments-manni.css'
+          'docs/assets/css/src/docs.css',
+          'docs/assets/css/src/pygments-manni.css'
         ],
         dest: 'docs/assets/css/docs.min.css'
       }
@@ -278,7 +278,7 @@ module.exports = function (grunt) {
       },
       docs: {
         files: {
-          'docs/assets/css/_src/docs.css': 'docs/assets/css/_src/docs.css'
+          'docs/assets/css/src/docs.css': 'docs/assets/css/src/docs.css'
         }
       }
     },
@@ -340,7 +340,9 @@ module.exports = function (grunt) {
         reset: true,
         relaxerror: [
           'Bad value X-UA-Compatible for attribute http-equiv on element meta.',
-          'Element img is missing required attribute src.'
+          'Element img is missing required attribute src.',
+          'Attribute autocomplete not allowed on element input at this point.',
+          'Attribute autocomplete not allowed on element button at this point.'
         ]
       },
       files: {
@@ -351,14 +353,14 @@ module.exports = function (grunt) {
     watch: {
       src: {
         files: '<%= jshint.src.src %>',
-        tasks: ['jshint:src', 'qunit']
+        tasks: ['jshint:src', 'qunit', 'concat']
       },
       test: {
         files: '<%= jshint.test.src %>',
         tasks: ['jshint:test', 'qunit']
       },
       less: {
-        files: 'less/*.less',
+        files: 'less/**/*.less',
         tasks: 'less'
       }
     },
@@ -445,14 +447,12 @@ module.exports = function (grunt) {
   grunt.registerTask('dist', ['clean', 'dist-css', 'copy:fonts', 'dist-js', 'dist-docs']);
 
   // Default task.
-  grunt.registerTask('default', ['test', 'dist', 'build-glyphicons-data', 'build-customizer']);
+  grunt.registerTask('default', ['test', 'dist', 'build-customizer']);
 
   // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
   // This can be overzealous, so its changes should always be manually reviewed!
   grunt.registerTask('change-version-number', 'sed');
-
-  grunt.registerTask('build-glyphicons-data', function () { generateGlyphiconsData.call(this, grunt); });
 
   // task for building customizer
   grunt.registerTask('build-customizer', ['build-customizer-html', 'build-raw-files']);
@@ -469,7 +469,7 @@ module.exports = function (grunt) {
     var done = this.async();
     npmShrinkwrap({ dev: true, dirname: __dirname }, function (err) {
       if (err) {
-        grunt.fail.warn(err)
+        grunt.fail.warn(err);
       }
       var dest = 'test-infra/npm-shrinkwrap.json';
       fs.renameSync('npm-shrinkwrap.json', dest);

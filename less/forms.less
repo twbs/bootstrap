@@ -183,9 +183,26 @@ input[type="month"] {
 
   &.input-sm {
     line-height: @input-height-small;
+    line-height: @line-height-small ~"\0";
   }
   &.input-lg {
     line-height: @input-height-large;
+    line-height: @line-height-large ~"\0";
+  }
+}
+
+// IE 11 hack to reverse the iOS temporal input hack.
+_:-ms-fullscreen, :root input[type="date"],
+_:-ms-fullscreen, :root input[type="time"],
+_:-ms-fullscreen, :root input[type="datetime-local"],
+_:-ms-fullscreen, :root input[type="month"] {
+  line-height: @line-height-base;
+
+  &.input-sm {
+    line-height: @line-height-small;
+  }
+  &.input-lg {
+    line-height: @line-height-large;
   }
 }
 
@@ -208,11 +225,11 @@ input[type="month"] {
 .checkbox {
   position: relative;
   display: block;
-  min-height: @line-height-computed; // clear the floating input if there is no label text
   margin-top: 10px;
   margin-bottom: 10px;
 
   label {
+    min-height: @line-height-computed; // Ensure the input doesn't jump when there is no text
     padding-left: 20px;
     margin-bottom: 0;
     font-weight: normal;
@@ -341,6 +358,7 @@ input[type="checkbox"] {
   height: @input-height-base;
   line-height: @input-height-base;
   text-align: center;
+  pointer-events: none;
 }
 .input-lg + .form-control-feedback {
   width: @input-height-large;
@@ -416,6 +434,11 @@ input[type="checkbox"] {
       display: inline-block;
       width: auto; // Prevent labels from stacking above inputs in `.form-group`
       vertical-align: middle;
+    }
+
+    // Make static controls behave like regular ones
+    .form-control-static {
+      display: inline-block;
     }
 
     .input-group {

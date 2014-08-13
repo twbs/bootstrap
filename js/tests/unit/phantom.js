@@ -2,7 +2,7 @@
  * grunt-contrib-qunit
  * http://gruntjs.com/
  *
- * Copyright (c) 2013 "Cowboy" Ben Alman, contributors
+ * Copyright (c) 2014 "Cowboy" Ben Alman, contributors
  * Licensed under the MIT license.
  */
 
@@ -21,48 +21,52 @@
   }
 
   // These methods connect QUnit to PhantomJS.
-  QUnit.log = function (obj) {
+  QUnit.log(function (obj) {
     // What is this I don’t even
     if (obj.message === '[object Object], undefined:undefined') { return }
+
     // Parse some stuff before sending it.
-    var actual = QUnit.jsDump.parse(obj.actual)
-    var expected = QUnit.jsDump.parse(obj.expected)
+    var actual
+    var expected
+    if (!obj.result) {
+      // Dumping large objects can be very slow, and the dump isn't used for
+      // passing tests, so only dump if the test failed.
+      actual = QUnit.jsDump.parse(obj.actual)
+      expected = QUnit.jsDump.parse(obj.expected)
+    }
     // Send it.
     sendMessage('qunit.log', obj.result, actual, expected, obj.message, obj.source)
-  }
+  })
 
-  QUnit.testStart = function (obj) {
+  QUnit.testStart(function (obj) {
     sendMessage('qunit.testStart', obj.name)
-  }
+  })
 
-  QUnit.testDone = function (obj) {
-    sendMessage('qunit.testDone', obj.name, obj.failed, obj.passed, obj.total)
-  }
+  QUnit.testDone(function (obj) {
+    sendMessage('qunit.testDone', obj.name, obj.failed, obj.passed, obj.total, obj.duration)
+  })
 
-  QUnit.moduleStart = function (obj) {
+  QUnit.moduleStart(function (obj) {
     sendMessage('qunit.moduleStart', obj.name)
-  }
+  })
 
-  QUnit.begin = function () {
-    sendMessage('qunit.begin')
-    console.log('Starting test suite')
-    console.log('================================================\n')
-  }
-
-  QUnit.moduleDone = function (opts) {
-    if (opts.failed === 0) {
-      console.log('\r\u2714 All tests passed in "' + opts.name + '" module')
+  QUnit.moduleDone(function (obj) {
+    if (obj.failed === 0) {
+      console.log('\r\u2714 All tests passed in "' + obj.name + '" module')
     } else {
-      console.log('\u2716 ' + opts.failed + ' tests failed in "' + opts.name + '" module')
+      console.log('\u2716 ' + obj.failed + ' tests failed in "' + obj.name + '" module')
     }
-    sendMessage('qunit.moduleDone', opts.name, opts.failed, opts.passed, opts.total)
-  }
+    sendMessage('qunit.moduleDone', obj.name, obj.failed, obj.passed, obj.total)
+  })
 
-  QUnit.done = function (opts) {
-    console.log('\n================================================')
-    console.log('Tests completed in ' + opts.runtime + ' milliseconds')
-    console.log(opts.passed + ' tests of ' + opts.total + ' passed, ' + opts.failed + ' failed.')
-    sendMessage('qunit.done', opts.failed, opts.passed, opts.total, opts.runtime)
-  }
+  QUnit.begin(function () {
+    sendMessage('qunit.begin')
+    console.log('\n\nStarting test suite')
+    console.log('================================================\n')
+  })
+
+  QUnit.done(function (obj) {
+    sendMessage('qunit.done', obj.failed, obj.passed, obj.total, obj.runtime)
+  })
 
 }())
