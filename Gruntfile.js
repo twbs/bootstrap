@@ -155,9 +155,8 @@ module.exports = function (grunt) {
           sourceMapURL: '<%= pkg.name %>.css.map',
           sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
         },
-        files: {
-          'dist/css/<%= pkg.name %>.css': 'less/bootstrap.less'
-        }
+        src: 'less/bootstrap.less',
+        dest: 'dist/css/<%= pkg.name %>.css'
       },
       compileTheme: {
         options: {
@@ -167,9 +166,8 @@ module.exports = function (grunt) {
           sourceMapURL: '<%= pkg.name %>-theme.css.map',
           sourceMapFilename: 'dist/css/<%= pkg.name %>-theme.css.map'
         },
-        files: {
-          'dist/css/<%= pkg.name %>-theme.css': 'less/theme.less'
-        }
+        src: 'less/theme.less',
+        dest: 'dist/css/<%= pkg.name %>-theme.css'
       }
     },
 
@@ -277,9 +275,8 @@ module.exports = function (grunt) {
         dest: 'docs/examples/'
       },
       docs: {
-        files: {
-          'docs/assets/css/src/docs.css': 'docs/assets/css/src/docs.css'
-        }
+        src: 'docs/assets/css/src/docs.css',
+        dest: 'docs/assets/css/src/docs.css'
       }
     },
 
