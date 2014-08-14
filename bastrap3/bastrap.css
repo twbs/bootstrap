@@ -2425,7 +2425,7 @@ a.list-group-item:focus {
 /* alert spots */
 
 .alert-spot {
-  border-radius:4px;
+  border-radius:6px;
   padding: 15px;
   margin-bottom: 30px;
   overflow:auto;
