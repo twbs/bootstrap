@@ -5,7 +5,6 @@
 
 
 
-PASAR branch a master!
 
 REPASAR QUE PONGO en estilos y qué en componentes....
 
