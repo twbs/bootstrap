@@ -63,11 +63,11 @@
 
   Tab.prototype.keydown = function (e) {
     var $li     = $(e.target).parent()
-    var key     = e.which || e.keyCode
+    var key     = e.which
     var $items  = $li.closest('ul[role="tablist"]').find('li')
     var index   = $li.index()
-    var uBound  = $items.length -1
-    var newTab
+    var uBound  = $items.length - 1
+    var $newTab
 
     e.preventDefault()
     e.stopPropagation()
@@ -75,15 +75,17 @@
     switch (key) {
       case 37: // left
       case 38: // up
-        newTab = (index === 0) ? $items[uBound] : $items[index-1]
+        $newTab = (index === 0) ? $items.eq(uBound) : $items.eq(index - 1)
         break
       case 39: // right
       case 40: // down
-        newTab = (index === uBound) ? $items[0] : $items[index + 1]
+        $newTab = (index === uBound) ? $items.eq(0) : $items.eq(index + 1)
         break
     }
 
-    if (newTab) $(newTab).tab('show')
+    // if ($newTab) $(newTab).find('a').tab('show')
+
+    if ($newTab) Plugin.call($newTab.find('a'), 'show')
 
   }
 
@@ -107,16 +109,16 @@
           .find('> [role="tab"]')
           .attr({
             'aria-selected': false,
-            'tabindex': -1
+            tabindex: -1
           })
 
         element
           .find('> [role="tab"]')
           .attr({
             'aria-selected': true,
-            'tabindex': 0
+            tabindex: 0
           })
-          .focus()
+          .trigger('focus')
       }
 
       element.addClass('active')
@@ -184,32 +186,33 @@
     var $this   = $(this)
     var $parent = $this.parent()
     var active  = $parent.hasClass('active')
+    var selector = $this.data('target')
+
+    if (!selector) {
+      selector = $this.attr('href')
+      selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
+    }
 
     $parent.attr('role', 'presentation')
 
     $this.attr({
       'aria-selected':  active,
-      'aria-controls':  $this.attr('href').replace('#', ''),
-      'role':           'tab',
-      'tabindex':       (active) ? 0 : -1
+      'aria-controls':  selector.replace('#', ''),
+      role:           'tab',
+      tabindex:       (active) ? 0 : -1
     })
 
-    $($this.attr('href')).attr({
+    $(selector).attr({
       'aria-hidden':      !active,
       'aria-labelledby':  $this.attr('id'),
-      'role':             'tabpanel'
+      role:             'tabpanel'
     })
   });
 
   $(document).on('click.bs.tab.data-api', '[data-toggle="tab"], [data-toggle="pill"]', function (e) {
     e.preventDefault()
     Plugin.call($(this), 'show')
-  }
-
-  $(document)
-    .on('click.bs.tab.data-api', '[data-toggle="tab"]', clickHandler)
-    .on('click.bs.tab.data-api', '[data-toggle="pill"]', clickHandler)
-
-  $(document).on('keydown.bs.tab.data-api', '[data-toggle="tab"], [data-toggle="pill"]', $.fn.tab.Constructor.prototype.keydown)
+  })
+  .on('keydown.bs.tab.data-api', '[data-toggle="tab"], [data-toggle="pill"]', Tab.prototype.keydown)
 
 }(jQuery);
