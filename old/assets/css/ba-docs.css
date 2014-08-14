@@ -1,0 +1,18 @@
+.jumbotron {
+  background: #000!IMPORTANT; 
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  }
+  
+  
+  .jumbotron:after {
+  background: url(../img/aurora.jpg) no-repeat center center!IMPORTANT;
+  background-size: 120%!IMPORTANT;
+}
+
+.bs-docs-sidenav.affix {
+   top: 75px;
+}
+
+.bs-docs-example:after {
+  content: "Ejemplo";
+}

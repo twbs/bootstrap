@@ -1,0 +1,613 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="La herramienta de trabajo que permite unificar la interfaz de los sitios web del Gobierno de la Ciudad de Buenos Aires.">
+    <meta name="author" content="Gobierno de la Ciudad de Buenos Aires">
+    <title>BAstrap3 > Comenzar</title>
+    <link rel="shortcut icon" href="bastrap3/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="bastrap3/favicon-mobile.png">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bastrap3/bastrap.css">
+    <link rel="stylesheet" href="docs/bastrap-docs.css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body role="document" data-spy="scroll" data-target="#affix-nav" class="bg-white-1">
+
+  <a id="intro-acerca" class="anchor"></a>
+
+    <header class="navbar navbar-primary navbar-top" role="navigation">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <a class="navbar-brand" href="index.html">
+              <img src="bastrap3/bac-header.png" />
+            </a>
+          </div>
+          <div class="col-md-6">
+            <h5 class="sub-brand">En todo estás vos</h5>
+          </div>
+        </div>
+      </div>
+    </header>
+
+<div class="wrapper">
+
+<div class="jumbotron jumbotron-small jumbotron-misc jumbotron-main">
+
+    <nav class="navbar navbar-default navbar-top" role="navigation">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#header-main-nav">
+                <span class="sr-only">Cambiar navegación</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.html">BAstrap3</a>
+             </div>
+            <div class="navbar-collapse collapse navbar-right" id="header-main-nav">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="comenzar.html">Comenzar</a></li>
+                <li><a href="estilos.html">Estilos</a></li>
+                <li><a href="componentes.html">Componentes</a></li>
+                <li class="disabled"><a href="#">Lineamientos</a></li>
+                <li><a href="old/index.html" target="blank">BAstrap 0.5</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Comenzar</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="row">
+
+<nav class="sidebar col-md-3" role="sidebar">
+    <ul class="panel panel-default nav sidenav affix-top" id="affix-nav" data-spy="affix" data-offset-top="326">
+        <div class="panel-heading sidebar-brand">
+          <h1><a href="#intro-acerca"><span>BAstrap3</span>Comenzar</a></h1>
+        </div>
+        <li class="sidebar-first"><a href="#intro-acerca">Introducción</a>
+          <ul class="nav">
+            <li><a href="#intro-acerca">Acerca de BAstrap3</a></li>
+            <li><a href="#intro-indice">Índice</a></li>
+          </ul>
+        </li>
+        <li><a href="#base-codigo">Base</a>
+          <ul class="nav">
+            <li><a href="#base-codigo">Código base</a></li>
+            <li><a href="#base-ejemplos">Ejemplos</a></li>
+          </ul>
+        </li>
+        <li><a href="#grilla-base">Grilla</a>
+          <ul class="nav">
+            <li><a href="#grilla-base">Base</a></li>
+            <li><a href="#grilla-columnas">Columnas</a></li>
+            <li><a href="#grilla-espacio">Espacio</a></li>
+            <li><a href="#grilla-anidado">Anidado</a></li>
+            <li><a href="#grilla-orden">Órden</a></li>
+            <li><a href="#grilla-responsive">Opciones responsive</a></li>
+          </ul>
+        </li>
+    </ul>
+</nav>
+
+<div class="col-md-9" role="main">
+
+<!-- Acerca de BAstrap3 -->
+
+<div class="panel panel-docs panel-first">
+  <div class="panel-heading">
+    <h2>Acerca de BAstrap3</h2>
+  </div>
+  <div class="panel-body">
+    <p class="lead"><strong>BAstrap3</strong> se usa para hacer el desarrollo front-end de los sitios web de GCBA.</p>
+    <hr />
+    <p>Usa <a href="http://getbootstrap.com/" target="_blank">Bootstrap 3</a> y está compuesta por código <strong>HTML, CSS y JavaScript.</strong></p>
+    <p>Para su uso es necesario contar con conocimientos de HTML, CSS y Bootstrap 3 (ya que la mayoría de los componentes y clases son los mismos).</p>
+    <p><strong class="text-danger">Es importante tener en cuenta que los archivos NO se bajan. Se los llama desde <a href="#base-codigo">las declaraciones</a> del servidor oficial y luego el sitio se arma copiando y pegando el código de <a href="estilos.html">estilos</a> y <a href="componentes.html">componentes.</a></strong></p>
+  </div>
+</div>
+
+<!-- Indice -->
+
+<a id="intro-indice" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>Índice</h2>
+  </div>
+  <div class="panel-body">
+    <p>La documentación de este sitio está compuesta por:</p>
+    <hr />
+    <h3><a href="comenzar.html">Comenzar</a></h3>
+    <p>Ejemplos, declaraciones de archivos del servidor oficial y uso de la grilla multi-columna.</p>
+    <h3><a href="estilos.html">Estilos</a></h3>
+    <p>Formato y estética de elementos tipográficos, tablas, formularios, navegación, botones y contenido.</p>
+    <h3><a href="componentes.html">Componentes</a></h3>
+    <p>Elementos compuestos con funciones especiales. Algunos funcionando con JavaScript.</p>
+    <h3><a href="lineamientos.html">Lineamientos</a></h3>
+    <p>Guía de diseño web abarcando conceptos de estética, comunicación y función. UIkit para Illustrator y Photoshop, manual de marca, logos y otros recursos.</p>
+    <h3><a href="old/index.html" target="blank">BAstrap 0.5</a></h3>
+    <p>Versión original de BAstrap, vigente en algunos sitios.</p>
+  </div>
+</div>
+
+<a id="base-codigo" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>Código base</h2>
+  </div>
+  <div class="panel-body">
+    <p class="lead">Copiando y pegando el siguiente código podés comenzar a usar <strong>BAstrap3.</strong></p>
+  </div>
+  <div class="panel-footer">
+<pre><code class="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"es"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"description"</span> <span class="na">content=</span><span class="s">"Descripción del sitio."</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"author"</span> <span class="na">content=</span><span class="s">"Autor del sitio."</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Título de la página<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"shortcut icon"</span> <span class="na">href=</span><span class="s">"http://www.buenosaires.gob.ar/estilos/bastrap3/favicon.ico"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon-precomposed"</span> <span class="na">href=</span><span class="s">"http://www.buenosaires.gob.ar/estilos/bastrap3/favicon-mobile.png"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"http://www.buenosaires.gob.ar/estilos/bastrap3/bastrap.css"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!--[if lt IE 9]&gt;
+      &lt;script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"&gt;&lt;/script&gt;
+      &lt;script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"&gt;&lt;/script&gt;
+    &lt;![endif]--&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"navbar navbar-primary navbar-top"</span> <span class="na">role=</span><span class="s">"navigation"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-brand"</span> <span class="na">href=</span><span class="s">"index.html"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"http://www.buenosaires.gob.ar/estilos/bastrap3/bac-header.png"</span><span class="nt"> /&gt;</span>
+            <span class="nt">&lt;/a&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"sub-brand"</span><span class="nt">&gt;</span>En todo estás vos<span class="nt">&lt;/h5&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/header&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"wrapper"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-12"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h1</span><span class="nt">&gt;</span>¡Hola, mundo!<span class="nt">&lt;/h1&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;footer</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"footer"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-brand"</span> <span class="na">href=</span><span class="s">"http://www.buenosaires.gob.ar"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"http://www.buenosaires.gob.ar/estilos/bastrap3/bac-footer.png"</span><span class="nt"> /&gt;</span>
+              <span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sub-brand"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;p</span><span class="nt">&gt;</span>Dirección General<span class="nt">&lt;br /&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Ministerio<span class="nt">&lt;/span&gt;</span><span class="nt">&lt;/p&gt;</span>
+              <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/footer&gt;</span>
+    <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">"https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"</span><span class="nt">&gt;</span><span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">"http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"</span><span class="nt">&gt;</span><span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre>
+  </div>
+  <div class="panel-body">
+    <p><a type="button" class="btn btn-default btn-block btn-lg" href="ej-base.html" target="_blank">Ver archivo HTML</a></p>
+    <hr />
+    <p>Se debe respetar la siguiente estructura en el encabezado (tags "html" y "head") de las páginas del sitio:</p>
+    <ul>
+      <li>Doctype HTML5</li>
+      <li>Atributo de lenguaje español</li>
+      <li>Codificación UTF-8</li>
+      <li>Compatibilidad con IE</li>
+      <li>Compatibilidad mobile</li>
+      <li>Descripción del sitio para buscadores</li>
+      <li>Autor del sitio</li>
+      <li>Título de la página</li>
+      <li>Íconos del sitio para diferentes dispositivos</li>
+      <li>Link de bootstrap minimizado en su CDN</li>
+      <li>Link de BAstrap3 minimizado en su CDN</li>
+      <li>Link de estilos extra del sitio</li>
+      <li>Compatibilidad condicional con IE comentada</li>
+    </ul>
+    <p>Se debe respetar la siguiente estructura en el pie (antes del cierre del tag "body") de las páginas del sitio:</p>
+    <ul>
+      <li>Link de jQuery minimizado en su CDN</li>
+      <li>Link de JavaScript de Bootstrap minimizado en su CDN</li>
+      <li>Scripts de inicialización de componentes usados en la página/sitio</li>
+    </ul>
+    <p>También se deben respetar el encabezado y pie de página oficiales.</p>
+  </div>
+</div>
+
+<!-- Ejemplos -->
+
+<a id="base-ejemplos" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>Ejemplos</h2>
+  </div>
+  <div class="panel-body">
+    <p>Próximamente.</p>
+    <!--
+    <p>Hacé click en las imagenes para descargar ejemplos básicos ya preparados.</p>
+    <hr />
+    <div class="row">
+      <div class="col-xs-6 col-md-3">
+        <a href="#" class="thumbnail" data-original-title="" title="">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4=" style="width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
+        </a>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <a href="#" class="thumbnail" data-original-title="" title="">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4=" style="width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
+        </a>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <a href="#" class="thumbnail" data-original-title="" title="">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4=" style="width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
+        </a>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <a href="#" class="thumbnail" data-original-title="" title="">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4=" style="width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
+        </a>
+      </div>
+    </div>
+    -->
+  </div>
+</div>
+
+<!-- Grilla base -->
+
+<a id="grilla-base" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>Grilla base</h2>
+  </div>
+  <div class="panel-body">
+    <p>La grilla de BAstrap3 está compuesta principalmente por 3 elementos:</p>
+    <ul>
+      <li>Contenedor (Container)</li>
+      <li>Fila (Row)</li>
+      <li>Columna (Col)</li>
+    </ul>
+    <p>El sufijo "-fluid" sirve para que el ancho total se adapte al contenedor padre (que puede ser diferente al ancho total de la página).</p>
+  </div>
+  <div class="panel-footer">
+<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-12"</span><span class="nt">&gt;</span>
+      ...
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-fluid"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row-fluid"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-12"</span><span class="nt">&gt;</span>
+      ...
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+  </div>
+</div>
+
+<!-- Columnas -->
+
+<a id="grilla-columnas" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>Columnas</h2>
+  </div>
+  <div class="panel-body">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <div class="container-fluid container-docs">
+    <div class="row">
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">.col-md-8</div>
+      <div class="col-md-4">.col-md-4</div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">.col-md-4</div>
+      <div class="col-md-4">.col-md-4</div>
+      <div class="col-md-4">.col-md-4</div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">.col-md-6</div>
+      <div class="col-md-6">.col-md-6</div>
+    </div>
+  </div>
+  </div>
+  <div class="panel-footer">
+<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-8"</span><span class="nt">&gt;</span>.col-md-8<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4"</span><span class="nt">&gt;</span>.col-md-4<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4"</span><span class="nt">&gt;</span>.col-md-4<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4"</span><span class="nt">&gt;</span>.col-md-4<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4"</span><span class="nt">&gt;</span>.col-md-4<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>.col-md-6<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>.col-md-6<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+  </div>
+</div>
+
+<!-- Espacio -->
+
+<a id="grilla-espacio" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>Espacio</h2>
+  </div>
+  <div class="panel-body">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <div class="container-fluid container-docs">
+    <div class="row show-grid">
+      <div class="col-md-4">.col-md-4</div>
+      <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+    </div>
+    <div class="row show-grid">
+      <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+      <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+    </div>
+    <div class="row show-grid">
+      <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+    </div>
+  </div>
+  </div>
+  <div class="panel-footer">
+<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4"</span><span class="nt">&gt;</span>.col-md-4<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4 col-md-offset-4"</span><span class="nt">&gt;</span>.col-md-4 .col-md-offset-4<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-3 col-md-offset-3"</span><span class="nt">&gt;</span>.col-md-3 .col-md-offset-3<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-3 col-md-offset-3"</span><span class="nt">&gt;</span>.col-md-3 .col-md-offset-3<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6 col-md-offset-3"</span><span class="nt">&gt;</span>.col-md-6 .col-md-offset-3<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+  </div>
+</div>
+
+<!-- Anidado -->
+
+<a id="grilla-anidado" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>Anidado</h2>
+  </div>
+  <div class="panel-body">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <div class="container-fluid container-docs">
+    <div class="row">
+      <div class="col-sm-9">
+        Level 1: .col-sm-9
+        <div class="row show-grid">
+          <div class="col-xs-8 col-sm-6">
+            Level 2: .col-xs-8 .col-sm-6
+          </div>
+          <div class="col-xs-4 col-sm-6">
+            Level 2: .col-xs-4 .col-sm-6
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="panel-footer">
+<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-9"</span><span class="nt">&gt;</span>
+    Level 1: .col-sm-9
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-8 col-sm-6"</span><span class="nt">&gt;</span>
+        Level 2: .col-xs-8 .col-sm-6
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-4 col-sm-6"</span><span class="nt">&gt;</span>
+        Level 2: .col-xs-4 .col-sm-6
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+  </div>
+</div>
+
+<!-- Orden -->
+
+<a id="grilla-orden" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>Órden</h2>
+  </div>
+  <div class="panel-body">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <div class="container-fluid container-docs">
+      <div class="row show-grid">
+        <div class="col-md-9 col-md-push-3">.col-md-9 .col-md-push-3</div>
+        <div class="col-md-3 col-md-pull-9">.col-md-3 .col-md-pull-9</div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer">
+<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-9 col-md-push-3"</span><span class="nt">&gt;</span>.col-md-9 .col-md-push-3<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-3 col-md-pull-9"</span><span class="nt">&gt;</span>.col-md-3 .col-md-pull-9<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+  </div>
+</div>
+
+<!-- Opciones responsive -->
+
+<a id="grilla-responsive" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>Opciones responsive</h2>
+  </div>
+  <div class="panel-body">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <div class="container-fluid container-docs">
+      <div class="row">
+        <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
+        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+      </div>
+    </div>
+</div>
+  <div class="panel-footer">
+<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-12 col-sm-6 col-md-8"</span><span class="nt">&gt;</span>.col-xs-12 .col-sm-6 .col-md-8<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-6 col-md-4"</span><span class="nt">&gt;</span>.col-xs-6 .col-md-4<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-6 col-sm-4"</span><span class="nt">&gt;</span>.col-xs-6 .col-sm-4<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-6 col-sm-4"</span><span class="nt">&gt;</span>.col-xs-6 .col-sm-4<span class="nt">&lt;/div&gt;</span>
+  <span class="c">&lt;!-- Optional: clear the XS cols if their content doesn't match in height --&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"clearfix visible-xs-block"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-6 col-sm-4"</span><span class="nt">&gt;</span>.col-xs-6 .col-sm-4<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+  </div>
+</div>
+
+</div> <!-- /container -->
+
+</div>
+</div>
+
+</div> <!-- /wrapper -->
+
+<footer>
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <a class="navbar-brand" href="http://www.buenosaires.gob.ar" target="_blank">
+            <img src="bastrap3/bac-footer.png" />
+          </a>
+        </div>
+        <div class="col-md-6">
+          <div class="sub-brand">
+            <p>Dirección General de Gobierno Electrónico<br />
+            <span class="text-muted">Ministerio de Modernización</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+<!-- resize fixed sidebar width -->
+
+<script type="text/javascript">
+$(function() {
+   var $affix = $(".sidenav"), 
+       $parent = $affix.parent(), 
+       resize = function() { $affix.width($parent.width()); };
+   $(window).resize(resize); 
+   resize();
+});
+</script>
+
+<!-- scroll to top -->
+
+<script type="text/javascript">
+  var $logo = $('.sidebar-brand');
+  $(document).scroll(function() {
+      $logo.css({display: $(this).scrollTop()>150 ? "block":"none"});
+  });
+</script>
+
+<!-- tooltip docs fix -->
+
+<script type="text/javascript">
+    $('a').tooltip();
+</script>
+
+
+</body>
+</html>
