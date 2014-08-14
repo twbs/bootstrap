@@ -1,0 +1,583 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Layout · BAstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BAstrap - Framework para desarrollo del GCBA">
+    <meta name="author" content="Gobierno de la Ciudad de Buenos Aires">
+	<!-- Invocando Open Sans y Gotham -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,800,300' rel='stylesheet' type='text/css'>
+	
+    <!-- Le styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/docs.css" rel="stylesheet">
+    <link href="assets/css/ba-docs.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+  </head>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+    <!-- Header GCBA
+    ================================================== -->
+    <div class="gcba-fixed-top">
+      <div class="header-gcba">
+          <div class="header-inner">
+            <div class="container">
+              <div id="logo">Buenos Aires Ciudad</div>
+              <h2 class="slogan">En todo estás vos</h2>
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- Botón de home Bootstrap <a class="brand" href="./index.html">Buenos Aires Ciudad</a> -->
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="./index.html">Inicio</a>
+              </li>
+              <li class="">
+                <a href="./empezar.html">Empezar</a>
+              </li>
+              <li class="active">
+                <a href="./layout.html">Layout</a>
+              </li>
+              <li class="">
+                <a href="./estilos-css.html">Estilos CSS</a>
+              </li>
+              <li class="">
+                <a href="./componentes.html">Componentes</a>
+              </li>
+              <li class="">
+                <a href="./javascript.html">JavaScript</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+﻿<!-- Subhead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1>Layout</h1>
+    <p class="lead">BAstrap funciona sobre grillas responsive de 12 columnas, layouts, y componentes.</p>
+  </div>
+</header>
+
+  <div class="container">
+
+    <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav">
+          <li><a href="#global"><i class="icon-chevron-right"></i> Estilos globales</a></li>
+          <li><a href="#gridSystem"><i class="icon-chevron-right"></i> Sistema de grillas</a></li>
+          <li><a href="#fluidGridSystem"><i class="icon-chevron-right"></i> Sistema de grilla fluida</a></li>
+          <li><a href="#layouts"><i class="icon-chevron-right"></i> Layouts</a></li>
+          <li><a href="#responsive"><i class="icon-chevron-right"></i> Diseño responsive</a></li>
+        </ul>
+      </div>
+      <div class="span9">
+
+
+
+        <!-- Global Bootstrap settings
+        ================================================== -->
+        <section id="global">
+          <div class="page-header">
+            <h1>Estilos globales</h1>
+          </div>
+
+          <h3>Requiere doctype HTML5</h3>
+          <p>BAstrap necesita el doctype de HTML5. Incluilo al principio de tus páginas.</p>
+<pre class="prettyprint linenums">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+  ...
+&lt;/html&gt;
+</pre>
+
+        </section>
+
+
+
+
+        <!-- Grid system
+        ================================================== -->
+        <section id="gridSystem">
+          <div class="page-header">
+            <h1>Sistema predeterminado de grillas</h1>
+          </div>
+
+          <h2>Ejemplo de grilla funcional</h2>
+          <p>El sistema de grilla usa <strong>12 columnas</strong>, que hacen un container de 940px de ancho si no tenemos <a href="./scaffolding.html#responsive">responsive</a> activado. Incluyendo el CSS responsive, la grilla se adapta para ser de 724px y 1170px de ancho dependiendo del tamaño de tu navegador. Para navegadores de menos de 767px las columnas se hacen fluidas y se ordenan verticalmente.</p>
+          <div class="bs-docs-grid">
+            <div class="row show-grid">
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+            </div>
+            <div class="row show-grid">
+              <div class="span2">2</div>
+              <div class="span3">3</div>
+              <div class="span4">4</div>
+            </div>
+            <div class="row show-grid">
+              <div class="span4">4</div>
+              <div class="span5">5</div>
+            </div>
+            <div class="row show-grid">
+              <div class="span9">9</div>
+            </div>
+          </div>
+
+          <h3>Grilla básica HTML</h3>
+          <p>Para un layout simple de dos columnas, creá un <code>.row</code> y agregá el número apropiado de columnas <code>.span*</code>. Los <code>.span*</code> tienen que sumar un total de 12.</p>
+<pre class="prettyprint linenums">
+&lt;div class="row"&gt;
+  &lt;div class="span4"&gt;...&lt;/div&gt;
+  &lt;div class="span8"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+          <p>En este ejemplo tenemos un <code>.span4</code> y <code>.span8</code>, que hacen 12 columnas, o sea una fila completa.</p>
+
+          <h2>Moviendo columnas</h2>
+          <p>Mové columnas a la derecha usando las clases <code>.offset*</code>. Cada clase aumenta el margen izquierdo de una columna por un espacio de una columna entera. Por ejemplo, <code>.offset4</code> mueve <code>.span4</code> en cuatro columnas.</p>
+          <div class="bs-docs-grid">
+            <div class="row show-grid">
+              <div class="span4">4</div>
+              <div class="span3 offset2">3 offset 2</div>
+            </div><!-- /row -->
+            <div class="row show-grid">
+              <div class="span3 offset1">3 offset 1</div>
+              <div class="span3 offset2">3 offset 2</div>
+            </div><!-- /row -->
+            <div class="row show-grid">
+              <div class="span6 offset3">6 offset 3</div>
+            </div><!-- /row -->
+          </div>
+<pre class="prettyprint linenums">
+&lt;div class="row"&gt;
+  &lt;div class="span4"&gt;...&lt;/div&gt;
+  &lt;div class="span3 offset2"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+          <h2>Anidando columnas</h2>
+          <p>Para anidar tu contenido dentro de la grilla predeterminada, agregá un nuevo <code>.row</code> y un conjunto de columnas <code>.span*</code> dentro de una columna <code>.span*</code> existente. Las columnas anidadas deberían incluir un conjunto de columnas que sumen el número de columnas que la contiene.</p>
+          <div class="row show-grid">
+            <div class="span9">
+              Columna nivel 1
+              <div class="row show-grid">
+                <div class="span6">
+                  Nivel 2
+                </div>
+                <div class="span3">
+                  Nivel 2
+                </div>
+              </div>
+            </div>
+          </div>
+<pre class="prettyprint linenums">
+&lt;div class="row"&gt;
+  &lt;div class="span9"&gt;
+    Columna nivel 1
+    &lt;div class="row"&gt;
+      &lt;div class="span6"&gt;Nivel 2&lt;/div&gt;
+      &lt;div class="span3"&gt;Nivel 2&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+        </section>
+
+
+
+        <!-- Fluid grid system
+        ================================================== -->
+        <section id="fluidGridSystem">
+          <div class="page-header">
+            <h1>Sistema de grilla fluida</h1>
+          </div>
+
+          <h2>Ejemplo de grilla fluida</h2>
+          <p>El sistema de grilla fluida usa porcentajes en lugar de píxels para el ancho de las columnas. Tiene las mismas capacidades responsive que el sistema de grilla fija, asegurando proporciones adecuadas para las resoluciones de pantalla más usadas.</p>
+          <div class="bs-docs-grid">
+            <div class="row-fluid show-grid">
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+            </div>
+            <div class="row-fluid show-grid">
+              <div class="span4">4</div>
+              <div class="span4">4</div>
+              <div class="span4">4</div>
+            </div>
+            <div class="row-fluid show-grid">
+              <div class="span4">4</div>
+              <div class="span8">8</div>
+            </div>
+            <div class="row-fluid show-grid">
+              <div class="span6">6</div>
+              <div class="span6">6</div>
+            </div>
+            <div class="row-fluid show-grid">
+              <div class="span12">12</div>
+            </div>
+          </div>
+
+          <h3>HTML de una grilla fluida básica</h3>
+          <p>Hacé que una row sea "fluida" cambiando <code>.row</code> por <code>.row-fluid</code>. Las clases de las columnas quedan igual, lo que facilita el cambio entre grillas fijas y fluidas.</p>
+<pre class="prettyprint linenums">
+&lt;div class="row-fluid"&gt;
+  &lt;div class="span4"&gt;...&lt;/div&gt;
+  &lt;div class="span8"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+          <h2>Offsetting fluido</h2>
+          <p>Funciona de la misma manera que en el sistema de grilla fija: agregar <code>.offset*</code> a cualquier columna para moverla por esa cantidad de columnas.</p>
+          <div class="bs-docs-grid">
+            <div class="row-fluid show-grid">
+              <div class="span4">4</div>
+              <div class="span4 offset4">4 offset 4</div>
+            </div><!-- /row -->
+            <div class="row-fluid show-grid">
+              <div class="span3 offset3">3 offset 3</div>
+              <div class="span3 offset3">3 offset 3</div>
+            </div><!-- /row -->
+            <div class="row-fluid show-grid">
+              <div class="span6 offset6">6 offset 6</div>
+            </div><!-- /row -->
+          </div>
+<pre class="prettyprint linenums">
+&lt;div class="row-fluid"&gt;
+  &lt;div class="span4"&gt;...&lt;/div&gt;
+  &lt;div class="span4 offset2"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+          <h2>Anidado fluido</h2>
+          <p>Las grillas fluidas usan el anidado de forma diferente:: cada nivel anidado de columnas tiene que sumar 12. Esto es porque el sistema de grilla fluida usa porcentajes, no píxeles, para definir anchos.</p>
+          <div class="row-fluid show-grid">
+            <div class="span12">
+              Fluido 12
+              <div class="row-fluid show-grid">
+                <div class="span6">
+                  Fluido 6
+                  <div class="row-fluid show-grid">
+                    <div class="span6">
+                      Fluido 6
+                    </div>
+                    <div class="span6">
+                      Fluido 6
+                    </div>
+                  </div>
+                </div>
+                <div class="span6">
+                  Fluido 6
+                </div>
+              </div>
+            </div>
+          </div>
+<pre class="prettyprint linenums">
+&lt;div class="row-fluid"&gt;
+  &lt;div class="span12"&gt;
+    Fluido 12
+    &lt;div class="row-fluid"&gt;
+      &lt;div class="span6"&gt;
+        Fluido 6
+        &lt;div class="row-fluid"&gt;
+          &lt;div class="span6"&gt;Fluido 6&lt;/div&gt;
+          &lt;div class="span6"&gt;Fluido 6&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="span6"&gt;Fluido 6&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+        </section>
+
+
+
+
+        <!-- Layouts (Default and fluid)
+        ================================================== -->
+        <section id="layouts">
+          <div class="page-header">
+            <h1>Layouts</h1>
+          </div>
+
+          <h2>Layout fijo</h2>
+          <p>Provee un layout de ancho fijo común (con opción responsive) con solo agregar <code>&lt;div class="container"&gt;</code> antes.</p>
+          <div class="mini-layout">
+            <div class="mini-layout-body"></div>
+          </div>
+<pre class="prettyprint linenums">
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    ...
+  &lt;/div&gt;
+&lt;/body&gt;
+</pre>
+
+          <h2>Layout fluido</h2>
+          <p>Creá una página fluida de dos columnas con <code>&lt;div class="container-fluid"&gt;</code>&mdash;útil para aplicaciones y documentación.</p>
+          <div class="mini-layout fluid">
+            <div class="mini-layout-sidebar"></div>
+            <div class="mini-layout-body"></div>
+          </div>
+<pre class="prettyprint linenums">
+&lt;div class="container-fluid"&gt;
+  &lt;div class="row-fluid"&gt;
+    &lt;div class="span2"&gt;
+      &lt;!--Contenido de sidebar--&gt;
+    &lt;/div&gt;
+    &lt;div class="span10"&gt;
+      &lt;!--Contenido del body--&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+        </section>
+
+
+
+
+        <!-- Responsive design
+        ================================================== -->
+        <section id="responsive">
+          <div class="page-header">
+            <h1>Diseño responsive</h1>
+          </div>
+
+          <h2>Activando la funcionalidad responsive</h2>
+          <p>Activá el CSS responsive en tu proyecto incluyendo el meta tag y la hoja de estilos adecuados dentro del <code>&lt;head&gt;</code> de tu documento.</p>
+<pre class="prettyprint linenums">
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;link href="assets/css/bootstrap-responsive.css" rel="stylesheet"&gt;
+</pre>
+
+          <h2>Más información sobre BAstrap responsive</h2>
+          <p>Los Media queries permiten CSS personalizado basado en algunas condiciones&mdash;proporciones, anchos, tipo de pantalla, etc&mdash;pero en general se enfocan en <code>min-width</code> y <code>max-width</code>.</p>
+          <ul>
+            <li>Cambia el ancho de la columna en nuestra grilla</li>
+            <li>Apila elementos en lugar de flotarlos cuando sea necesario</li>
+            <li>Redimensiona encabezados y texto para que se ajusten mejor a los dispositivos</li>
+          </ul>
+          
+
+          <h2>Dispositivos</h2>
+          <p>BAstrap contiene muchos media queries en un solo archivo para ayudar a que tus proyectos se vean bien en diferentes dispositivos y resoluciones de pantalla. Se incluyen:</p>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Ancho de layout</th>
+                <th>Ancho de columna</th>
+                <th>Espacio entre columnas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Pantalla grande</td>
+                <td>1200px y más</td>
+                <td>70px</td>
+                <td>30px</td>
+              </tr>
+              <tr>
+                <td>Default</td>
+                <td>980px y más</td>
+                <td>60px</td>
+                <td>20px</td>
+              </tr>
+              <tr>
+                <td>Tabletas (retrato)</td>
+                <td>768px y más</td>
+                <td>42px</td>
+                <td>20px</td>
+              </tr>
+              <tr>
+                <td>Teléfonos y tabletas</td>
+                <td>767px y menos</td>
+                <td class="muted" colspan="2">Columnas fluidas, sin anchos fijos</td>
+              </tr>
+              <tr>
+                <td>Teléfonos</td>
+                <td>480px y menos</td>
+                <td class="muted" colspan="2">Columnas fluidas, sin anchos fijos</td>
+              </tr>
+            </tbody>
+          </table>
+<pre class="prettyprint linenums">
+/* Large desktop */
+@media (min-width: 1200px) { ... }
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) { ... }
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { ... }
+
+/* Landscape phones and down */
+@media (max-width: 480px) { ... }
+</pre>
+
+
+          <h2>Clases utilitarias responsive</h2>
+          <p>Para un desarrollo apuntado a mobile, usá estas clases utilitarias para mostrar y esconder contenido de acuerdo al dispositivo. Abajo hay una tabla con las clases disponibles y su efecto dado el layout del media query (marcado por dispositivo).</p>
+          <table class="table table-bordered table-striped responsive-utilities">
+            <thead>
+              <tr>
+                <th>Clase</th>
+                <th>Teléfonos <small>767px y menores</small></th>
+                <th>Tabletas <small>De 979px a 768px</small></th>
+                <th>Escritorios <small>Default</small></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th><code>.visible-phone</code></th>
+                <td class="is-visible">Visible</td>
+                <td class="is-hidden">Oculto</td>
+                <td class="is-hidden">Oculto</td>
+              </tr>
+              <tr>
+                <th><code>.visible-tablet</code></th>
+                <td class="is-hidden">Oculto</td>
+                <td class="is-visible">Visible</td>
+                <td class="is-hidden">Oculto</td>
+              </tr>
+              <tr>
+                <th><code>.visible-desktop</code></th>
+                <td class="is-hidden">Oculto</td>
+                <td class="is-hidden">Oculto</td>
+                <td class="is-visible">Visible</td>
+              </tr>
+              <tr>
+                <th><code>.hidden-phone</code></th>
+                <td class="is-hidden">Oculto</td>
+                <td class="is-visible">Visible</td>
+                <td class="is-visible">Visible</td>
+              </tr>
+              <tr>
+                <th><code>.hidden-tablet</code></th>
+                <td class="is-visible">Visible</td>
+                <td class="is-hidden">Oculto</td>
+                <td class="is-visible">Visible</td>
+              </tr>
+              <tr>
+                <th><code>.hidden-desktop</code></th>
+                <td class="is-visible">Visible</td>
+                <td class="is-visible">Visible</td>
+                <td class="is-hidden">Oculto</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Cuándo usarlas</h3>
+          <p>Usá las clases de forma limitada y evitá crear versiones completamente diferentes de un sitio con ellas. En cambio, usalas para aportar a la presentación de un dispositivo. Las utilidades responsive no se deberían usar con tablas.</p>
+
+          <h3>Caso de uso de utilidades responsive</h3>
+          <p>Redimensioná tu navegador o cargá esta página en distintos dispositivos para probar las clases de arriba.</p>
+          <h4>Visible en...</h4>
+          <p>Tildes verdes indican que la clase es visible en tu visualización actual.</p>
+          <ul class="responsive-utilities-test">
+            <li>Teléfono<span class="visible-phone">&#10004; Teléfono</span></li>
+            <li>Tableta<span class="visible-tablet">&#10004; Tableta</span></li>
+            <li>Escritorio<span class="visible-desktop">&#10004; Escritorio</span></li>
+          </ul>
+          <h4>Oculto en...</h4>
+          <p>Acá, las tildes verdes indical que la clase está oculta en tu visualización actual.</p>
+          <ul class="responsive-utilities-test hidden-on">
+            <li>Teléfono<span class="hidden-phone">&#10004; Teléfono</span></li>
+            <li>Tableta<span class="hidden-tablet">&#10004; Tableta</span></li>
+            <li>Escritorio<span class="hidden-desktop">&#10004; Escritorio</span></li>
+          </ul>
+
+        </section>
+
+
+
+      </div>
+    </div>
+
+  </div>
+
+
+
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <a href="http://www.buenosaires.gob.ar"><img src="assets/img/logo-white.png" alt="Buenos Aires Ciudad"></a>
+    </footer>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap-transition.js"></script>
+    <script src="assets/js/bootstrap-alert.js"></script>
+    <script src="assets/js/bootstrap-modal.js"></script>
+    <script src="assets/js/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/bootstrap-tab.js"></script>
+    <script src="assets/js/bootstrap-tooltip.js"></script>
+    <script src="assets/js/bootstrap-popover.js"></script>
+    <script src="assets/js/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap-collapse.js"></script>
+    <script src="assets/js/bootstrap-carousel.js"></script>
+    <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap-affix.js"></script>
+    <script src="assets/js/holder/holder.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script src="assets/js/application.js"></script>
+
+  </body>
+</html>
