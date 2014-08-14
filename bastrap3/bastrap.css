@@ -4,7 +4,7 @@ html,
 body {
   height:100%;
 }
-/*
+
 body {
   position:relative;
   display:table;
@@ -19,7 +19,7 @@ body > footer {
 body > .wrapper {
   height:100%;
 }
-*/
+
 .container-center {
   text-align:center;
 }
@@ -1164,6 +1164,11 @@ a.list-group-item.active > .badge {
   position:relative;
   right:-30px;
 }
+.navbar-top .navbar-brand {
+  font-family: "GothamBold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size:24px;
+}
 
 /* navbar */
 
@@ -1181,11 +1186,6 @@ a.list-group-item.active > .badge {
 }
 .navbar-top .navbar-toggle {
   margin-top: 24px;
-}
-.navbar-top .navbar-brand {
-  font-family: "GothamBold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  font-size:24px;
 }
 /*
 .navbar-lg {
@@ -1209,6 +1209,11 @@ a.list-group-item.active > .badge {
   padding-bottom:13px;
 }
 @media (max-width: 767px) {
+  .navbar .navbar-nav  > li > a{
+    text-align:left;
+    border-left: solid 2px;
+    border-color:transparent;
+  }
   .navbar .navbar-nav > .active > a,
   .navbar .navbar-nav > .active > a:focus,
   .navbar .navbar-nav > .active > a:hover {
