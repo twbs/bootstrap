@@ -1,0 +1,174 @@
+// Typography
+// -------------------------
+
+
+@sansFontFamily:        "Open Sans","Lucida Grande", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@serifFontFamily:       Georgia, "Times New Roman", Times, serif;
+@monoFontFamily:        Monaco, Menlo, Consolas, "Courier New", monospace;
+
+@headingsFontFamily:    Gotham; // empty to use BS default, @baseFontFamily
+@headingsFontWeight:    bold;    // instead of browser default, bold
+@headingsColor:         inherit; // empty to use BS default, @textColor
+
+@btnGCBABackground:              #fcd834;
+@btnGCBABackgroundHighlight:     #fccf00;
+
+
+
+@font-face {
+  font-family: 'Gotham';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/gotham.eot');
+  src: url('../fonts/gotham.eot?#iefix') format('embedded-opentype'), url('../fonts/gotham.woff') format('woff'), url('../fonts/gotham.ttf') format('truetype'), url('../fonts/gotham.svg#Gotham') format('svg');
+}
+
+body {
+  padding-top: 70px!important;
+}
+
+
+@media (max-width: 480px) {
+  /* Remove padding above jumbotron */
+  body {
+    padding-top: 50px;
+  }
+}
+
+.btn {
+  font-weight:bold
+}
+/* Botones nuevos
+------------------------- */
+.btn-gcba {
+.buttonBackground(@btnGCBABackground, @btnGCBABackgroundHighlight);
+  color:#000;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.25);
+  &:hover{
+      
+        .buttonBackground(@btnGCBABackground, darken(@btnGCBABackgroundHighlight,2%));
+  color:#000;
+
+  }
+}
+
+
+/* Tablet to desktop
+------------------------- */
+@media (min-width: 768px) and (max-width: 980px) {
+  /* Remove any padding from the body */
+  body {
+    padding-top:50px;
+  }
+}
+
+/* Tablet
+------------------------- */
+@media (max-width: 767px) {
+  /* Remove any padding from the body */
+  body {
+    padding-top: 50px;
+  }
+}
+
+
+.gcba-fixed-top {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  margin-bottom: 0;
+  top:0;
+
+}
+
+.header-gcba {
+  height: 30px;
+  padding: 10px 0;
+  overflow: visible;
+  background-color: #f0d400;
+  *background-color: #f0d400;
+  background-image: -o-linear-gradient(top, #ffe200, #f0d400);
+  background-image: linear-gradient(top, #ffe200, #f0d400);
+  background-image: -ms-linear-gradient(top, #ffe200, #f0d400);
+  background-image: -webkit-linear-gradient(top, #ffe200, #f0d400);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffe200), to(#f0d400));
+  background-image: -moz-linear-gradient(top, #ffe200, #f0d400);
+  background-repeat: repeat-x;
+  border-color: #f0d400 #f0d400 #a39100;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffe200', endColorstr='#f0d400', GradientType=0);
+  box-shadow: 0 0 6px black;
+}
+
+.header-inner {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.header-gcba #logo {
+  float: left;
+  width: 168px;
+  height: 30px;
+  background: url(../img/logo.png);
+  text-indent: -100%;
+}
+
+.header-gcba h2.slogan {
+  float: right;
+  margin-top: -4px;
+  font-size: 16px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  color: #444;
+  text-transform: uppercase;
+  text-rendering: geometricPrecision;
+}
+
+.navbar-fixed-top {
+top: 50px;
+}
+
+.btn-gcba {
+  
+}
+
+
+/* Base class
+------------------------- */
+
+
+.carousel-caption {
+  position: absolute;
+  right: 0!important;
+  left: auto;
+  bottom: 10px;
+  width: 490px;
+  padding: 25px;
+  text-align: right;
+}
+
+.carousel-caption h3 {
+  margin: 0 0 5px;
+  color:#FFF;
+}
+
+.carousel-caption p {
+  color:#CCC;
+}
+
+
+.footer {
+  background:#252120!important;
+  border-top:#000;
+  padding: 30px 0;
+}
+
+.footer p {
+    color:#D0D2D3!important;
+
+}
+.footer a {
+  color:#FFF;
+}
+

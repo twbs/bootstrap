@@ -1,0 +1,10 @@
+@media (min-width: 767px) {
+  .navbar-sm .navbar-nav {
+    width:400px;
+  }
+}
+@media (min-width: 992px) {
+  .navbar-sm .navbar-nav {
+    width:inherit;
+  }
+}

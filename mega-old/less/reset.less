@@ -1,0 +1,216 @@
+//
+// Reset CSS
+// Adapted from http://github.com/necolas/normalize.css
+// --------------------------------------------------
+
+
+// Display in IE6-9 and FF3
+// -------------------------
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
+}
+
+// Display block in IE6-9 and FF3
+// -------------------------
+
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+// Prevents modern browsers from displaying 'audio' without controls
+// -------------------------
+
+audio:not([controls]) {
+    display: none;
+}
+
+// Base settings
+// -------------------------
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+// Focus states
+a:focus {
+  .tab-focus();
+}
+// Hover & Active
+a:hover,
+a:active {
+  outline: 0;
+}
+
+// Prevents sub and sup affecting line-height in all browsers
+// -------------------------
+
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+
+// Img border in a's and image quality
+// -------------------------
+
+img {
+  /* Responsive images (ensure images don't scale beyond their parents) */
+  max-width: 100%; /* Part 1: Set a maxium relative to the parent */
+  width: auto\9; /* IE7-8 need help adjusting responsive images */
+  height: auto; /* Part 2: Scale the height according to the width, otherwise you get stretching */
+
+  vertical-align: middle;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+
+// Prevent max-width from affecting Google Maps
+#map_canvas img,
+.google-maps img {
+  max-width: none;
+}
+
+// Forms
+// -------------------------
+
+// Font size in all browsers, margin changes, misc consistency
+button,
+input,
+select,
+textarea {
+  margin: 0;
+  font-size: 100%;
+  vertical-align: middle;
+}
+button,
+input {
+  *overflow: visible; // Inner spacing ie IE6/7
+  line-height: normal; // FF3/4 have !important on line-height in UA stylesheet
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner { // Inner padding and border oddities in FF3/4
+  padding: 0;
+  border: 0;
+}
+button,
+html input[type="button"], // Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio` and `video` controls.
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button; // Corrects inability to style clickable `input` types in iOS.
+    cursor: pointer; // Improves usability and consistency of cursor style between image-type `input` and others.
+}
+label,
+select,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+input[type="radio"],
+input[type="checkbox"] {
+    cursor: pointer; // Improves usability and consistency of cursor style between image-type `input` and others.
+}
+input[type="search"] { // Appearance in Safari/Chrome
+  .box-sizing(content-box);
+  -webkit-appearance: textfield;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none; // Inner-padding issues in Chrome OSX, Safari 5
+}
+textarea {
+  overflow: auto; // Remove vertical scrollbar in IE6-9
+  vertical-align: top; // Readability and alignment cross-browser
+}
+
+
+// Printing
+// -------------------------
+// Source: https://github.com/h5bp/html5-boilerplate/blob/master/css/main.css
+
+@media print {
+
+  * {
+    text-shadow: none !important;
+    color: #000 !important; // Black prints faster: h5bp.com/s
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  // Don't show links for images, or javascript/internal links
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group; // h5bp.com/t
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 0.5cm;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
