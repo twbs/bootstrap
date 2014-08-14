@@ -19,6 +19,12 @@ module.exports = function (grunt) {
   var path = require('path');
   var npmShrinkwrap = require('npm-shrinkwrap');
   var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
+  var getLessVarsData = function () {
+    var filePath = path.join(__dirname, 'less/variables.less');
+    var fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
+    var parser = new BsLessdocParser(fileContent);
+    return { sections: parser.parseFile() };
+  };
   var generateRawFiles = require('./grunt/bs-raw-files-generator.js');
 
   // Project configuration.
@@ -233,11 +239,13 @@ module.exports = function (grunt) {
         keepSpecialComments: '*',
         noAdvanced: true
       },
-      core: {
-        files: {
-          'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css',
-          'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css'
-        }
+      minifyCore: {
+        src: 'dist/css/<%= pkg.name %>.css',
+        dest: 'dist/css/<%= pkg.name %>.min.css'
+      },
+      minifyTheme: {
+        src: 'dist/css/<%= pkg.name %>-theme.css',
+        dest: 'dist/css/<%= pkg.name %>-theme.min.css'
       },
       docs: {
         src: [
@@ -312,20 +320,17 @@ module.exports = function (grunt) {
     },
 
     jade: {
-      compile: {
-        options: {
-          pretty: true,
-          data: function () {
-            var filePath = path.join(__dirname, 'less/variables.less');
-            var fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
-            var parser = new BsLessdocParser(fileContent);
-            return { sections: parser.parseFile() };
-          }
-        },
-        files: {
-          'docs/_includes/customizer-variables.html': 'docs/_jade/customizer-variables.jade',
-          'docs/_includes/nav/customize.html': 'docs/_jade/customizer-nav.jade'
-        }
+      options: {
+        pretty: true,
+        data: getLessVarsData
+      },
+      customizerVars: {
+        src: 'docs/_jade/customizer-variables.jade',
+        dest: 'docs/_includes/customizer-variables.html'
+      },
+      customizerNav: {
+        src: 'docs/_jade/customizer-nav.jade',
+        dest: 'docs/_includes/nav/customize.html'
       }
     },
 
