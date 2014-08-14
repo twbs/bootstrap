@@ -42,7 +42,8 @@ module.exports = function (grunt) {
 
     // Task configuration.
     clean: {
-      dist: ['dist', 'docs/dist']
+      dist: 'dist',
+      docs: 'docs/dist'
     },
 
     jshint: {
@@ -55,7 +56,7 @@ module.exports = function (grunt) {
         },
         src: ['Gruntfile.js', 'grunt/*.js']
       },
-      src: {
+      core: {
         src: 'js/*.js'
       },
       test: {
@@ -76,8 +77,8 @@ module.exports = function (grunt) {
       grunt: {
         src: '<%= jshint.grunt.src %>'
       },
-      src: {
-        src: '<%= jshint.src.src %>'
+      core: {
+        src: '<%= jshint.core.src %>'
       },
       test: {
         src: '<%= jshint.test.src %>'
@@ -118,7 +119,7 @@ module.exports = function (grunt) {
       options: {
         preserveComments: 'some'
       },
-      bootstrap: {
+      core: {
         src: '<%= concat.bootstrap.dest %>',
         dest: 'dist/js/<%= pkg.name %>.min.js'
       },
@@ -217,7 +218,7 @@ module.exports = function (grunt) {
       options: {
         csslintrc: 'less/.csslintrc'
       },
-      src: [
+      dist: [
         'dist/css/bootstrap.css',
         'dist/css/bootstrap-theme.css'
       ],
@@ -354,7 +355,7 @@ module.exports = function (grunt) {
 
     watch: {
       src: {
-        files: '<%= jshint.src.src %>',
+        files: '<%= jshint.core.src %>',
         tasks: ['jshint:src', 'qunit', 'concat']
       },
       test: {
@@ -416,7 +417,7 @@ module.exports = function (grunt) {
   var testSubtasks = [];
   // Skip core tests if running a different subset of the test suite
   if (runSubset('core')) {
-    testSubtasks = testSubtasks.concat(['dist-css', 'csslint', 'jshint', 'jscs', 'qunit', 'build-customizer-html']);
+    testSubtasks = testSubtasks.concat(['dist-css', 'dist-js', 'csslint:dist', 'jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit', 'docs']);
   }
   // Skip HTML validation if running a different subset of the test suite
   if (runSubset('validate-html') &&
@@ -436,20 +437,17 @@ module.exports = function (grunt) {
   grunt.registerTask('test', testSubtasks);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat', 'uglify']);
+  grunt.registerTask('dist-js', ['concat', 'uglify:core']);
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
-  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer', 'usebanner', 'csscomb', 'cssmin']);
-
-  // Docs distribution task.
-  grunt.registerTask('dist-docs', 'copy:docs');
+  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'usebanner', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean', 'dist-css', 'copy:fonts', 'dist-js', 'dist-docs']);
+  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['test', 'dist', 'build-customizer']);
+  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'test']);
 
   // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
@@ -463,6 +461,13 @@ module.exports = function (grunt) {
     var banner = grunt.template.process('<%= banner %>');
     generateRawFiles(grunt, banner);
   });
+
+  // Docs task.
+  grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
+  grunt.registerTask('lint-docs-css', ['csslint:docs', 'csslint:examples']);
+  grunt.registerTask('docs-js', ['uglify:docsJs', 'uglify:customize']);
+  grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
+  grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-customizer']);
 
   // Task for updating the cached npm packages used by the Travis build (which are controlled by test-infra/npm-shrinkwrap.json).
   // This task should be run and the updated file should be committed whenever Bootstrap's dependencies change.
