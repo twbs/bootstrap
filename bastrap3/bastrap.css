@@ -2090,17 +2090,21 @@ a.list-group-item.active:focus .list-group-item-text {
   margin:0;
   border-bottom:solid 1px #e5e5e5;
 }
-.list-group-item:last-child {
-  border-bottom:0 !important;
-}
+
 a.list-group-item:hover,
 a.list-group-item:focus {
   background-color: #f5f5f5;
   color: #215093;
 }
 
+/* list-group-panel-body */
+
+.list-group-panel-body .list-group-item:first-child {
+  border-radius:0;
+}
+
 /* list-group-panel footer */
-/*
+
 .list-group-panel .panel-footer {
   padding-top:20px;
   padding-bottom:20px;
@@ -2115,7 +2119,7 @@ a.list-group-item:focus {
     border-top:0;
   }
 }
-*/
+
 /*
 @media (min-width: 560px) {
   .list-group-item {
@@ -2299,20 +2303,65 @@ a.list-group-item:focus {
   padding:300px 0 0 0;
 }
 
+/* list group item img */
+
+.list-group-item-img {
+  /*
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  overflow:auto;
+  */
+  padding:0;
+}
+.list-group-item-img:hover,
+.list-group-item-img:focus {
+  opacity:0.9;
+}
+.list-group-item-img img {
+  width:100%;
+  height:auto;
+}
+
 /* list thumb */
 
 .list-thumb > div {
-  width:100%;
-  height:140px;
+  width:140px;
+  height:90px;
   float:left;
   overflow:hidden;
   background-size:cover;
   text-align:center;
   margin-top:10px;
-  margin-bottom:20px;
+  margin-bottom:10px;
   margin-right:15px;
   border-radius:4px;
 }
+@media (max-width: 560px) {
+  .col-md-4 .list-group-panel .list-thumb > div,
+  .col-md-3 .list-group-panel .list-thumb > div,
+  .col-md-2 .list-group-panel .list-thumb > div,
+  .col-md-1 .list-group-panel .list-thumb > div {
+    width:100%;
+    float:none;
+    margin-bottom:20px;
+  }
+}
+@media (min-width: 992px) {
+  .col-md-4 .list-group-panel .list-thumb > div,
+  .col-md-3 .list-group-panel .list-thumb > div,
+  .col-md-2 .list-group-panel .list-thumb > div,
+  .col-md-1 .list-group-panel .list-thumb > div {
+    width:100%;
+    float:none;
+    margin-bottom:20px;
+  }
+  .col-md-4 .list-group-panel-body .list-group-item:last-child {
+    padding-bottom: 90px;
+    border-bottom: 0;
+  }
+}
+/*
 @media (min-width: 560px) {
   .list-thumb > div {
     width:140px;
@@ -2321,6 +2370,7 @@ a.list-group-item:focus {
     margin-bottom: 10px;
   }
 }
+*/
 .list-thumb h4 {
   margin-top:20px;
 }
