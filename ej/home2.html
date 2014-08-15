@@ -47,7 +47,7 @@
                 <span class="icon-bar"></span>
               </button>
              </div>
-            <div class="collapse navbar-collapse" id="header-main-nav">
+            <div class="navbar-collapse collapse" id="header-main-nav">
               <ul class="nav navbar-nav">
                 <li><a href="#">La Ciudad</a></li>
                 <li><a href="#">Gobierno</a></li>
@@ -73,26 +73,30 @@
 
     <div class="wrapper">
 
-      <div class="container">
+<div class="jumbotron jumbotron-small jumbotron-misc jumbotron-main">
 
-        <div class="row">
-          <div class="col-md-12">
+
+
             <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
-                <a class="item active" href="#">
+                <div class="item active">
                   <img src="../docs/jumbo1.jpg" alt="Carousel test">
                   <div class="carousel-caption">
-                    <h3>Buenos Aires se viste de fiesta con el Festival y el Mundial de Tango</h3>
-                    <p>Se inauguró ayer la edición 2014 de este tradicional evento que todos los años convoca a disfrutar de lo mejor de nuestra música ciudadana con múltiples shows, conciertos y espectáculos de danza. Participan más de 2000 creadores, intérpretes y artistas.</p>
+                    <div class="caption-container">
+                      <h3>Buenos Aires se viste de fiesta con el Festival y el Mundial de Tango</h3>
+                      <p>Se inauguró ayer la edición 2014 de este tradicional evento que todos los años convoca a disfrutar de lo mejor de nuestra música ciudadana con múltiples shows, conciertos y espectáculos de danza. Participan más de 2000 creadores, intérpretes y artistas.</p>
+                    </div>
                   </div>
-                </a>
-                <a class="item" href="#">
+                </div>
+                <div class="item">
                   <img src="../docs/jumbo2.jpg" alt="Carousel test">
                   <div class="carousel-caption">
-                    <h3>Acciones para el crecimiento de los barrios del Sur</h3>
-                    <p>Para la Ciudad su desarrollo es estratégico y se evidencia en sus Distritos Económicos; el subte y el Metrobus; la Ciudad del Rock; la construcción de la Villa Olímpica para 2018; los incentivos para radicación de empresas; la sede de la Policía Metropolitana, entre otras.</p>
+                    <div class="caption-container">
+                      <h3>Acciones para el crecimiento de los barrios del Sur</h3>
+                      <p>Para la Ciudad su desarrollo es estratégico y se evidencia en sus Distritos Económicos; el subte y el Metrobus; la Ciudad del Rock; la construcción de la Villa Olímpica para 2018; los incentivos para radicación de empresas; la sede de la Policía Metropolitana, entre otras.</p>
+                    </div>
                   </div>
-                </a>
+                </div>
               </div>
               <a class="left carousel-control" href="#carousel-example-captions" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left"></span>
@@ -101,6 +105,16 @@
                 <span class="glyphicon glyphicon-chevron-right"></span>
               </a>
             </div>
+
+</div>
+
+
+
+      <div class="container">
+
+        <div class="row">
+          <div class="col-md-12">
+
           </div>
         </div>
 
@@ -126,7 +140,7 @@
             <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur</p>
           </a>
           <a class="col-md-2 col-xs-6 shortcut" href="#">
-            <span class="bg-warning-lt">
+            <span class="bg-primary-lt">
               <span class="glyphicon glyphicon-cloud"></span>
             </span>
             <h3>Lorem ipsum</h3>
@@ -147,7 +161,7 @@
             <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur</p>
           </a>
           <a class="col-md-2 col-xs-6 shortcut" href="#">
-            <span class="bg-gray-1">
+            <span class="bg-danger-lt">
               <span class="glyphicon glyphicon-user"></span>
             </span>
             <h3>Duis aute</h3>
@@ -163,16 +177,16 @@
 
           <div class="col-md-4 col-xs-height">
             <div class="list-group list-group-panel">
-               <div class="list-group-item list-heading list-heading-img" style="background-image:url(../docs/carousel1.jpg);">
+               <div class="list-group-item list-heading list-heading-default">
                   <h3>Agenda Cultural</h3>
                </div>
                <a href="#" class="list-group-item list-thumb">
-                  <div style="background-image:url(../docs/carousel2.jpg);"></div>
+                  <div style="background-image:url(../docs/carousel1.jpg);"></div>
                   <h4>Renovación de licencia de conducir</h4>
                   <p>Este trámite es para renovar alguna o todas las categorías para las cuales ya te encontrabas habilitado y hayan sido hurtadas, robadas o extraviadas.</p>
                </a>
                <a href="#" class="list-group-item list-thumb">
-                  <div style="background-image:url(../docs/carousel2.jpg);"></div>
+                  <div style="background-image:url(../docs/carousel1.jpg);"></div>
                   <h4>Renovación de licencia de conducir</h4>
                   <p>Este trámite es para renovar alguna o todas las categorías para las cuales ya te encontrabas habilitado y hayan sido hurtadas, robadas o extraviadas.</p>
                </a>
@@ -186,17 +200,16 @@
                <a href="#" class="list-group-item">
                   <h4>Renovación de licencia de conducir</h4>
                </a>
-               <div class="panel-footer">
-                  <button class="btn btn-default btn-lg btn-block">Ver todos los trámites</button>
-               </div>
             </div>
           </div>
 
           <div class="col-md-4 col-xs-height">
             <div class="list-group list-group-panel">
-               <div class="list-group-item list-heading list-heading-img" style="background-image:url(../docs/jumbo2.jpg);">
+               <div class="list-group-item list-heading list-heading-default">
                   <h3>Trámites y Servicios</h3>
                </div>
+
+
                <div class="list-group-item list-form">
                   <form role="form">
                     <input class="form-control input-lg" type="text" placeholder="Buscar ...">
@@ -222,19 +235,21 @@
                <a href="#" class="list-group-item">
                   <h4>Renovación de licencia de conducir</h4>
                </a>
-            </div>
-              <div class="panel-footer">
+
+
+               <div class="panel-footer">
                   <button class="btn btn-default btn-lg btn-block">Ver todos los trámites</button>
                </div>
+            </div>
           </div>
 
           <div class="col-md-4 col-xs-height">
             <div class="list-group list-group-panel">
-               <div class="list-group-item list-heading list-heading-img" style="background-image:url(../docs/carousel2.jpg);">
-                  <h3>Mapa Turístico</h3>
+               <div class="list-group-item list-heading list-heading-default">
+                  <h3>Mapa de Turismo</h3>
                </div>
-               <div href="#" class="list-group-item list-map" style="height:800px;">
-                  <iframe src="http://epok.buenosaires.gob.ar/pub/mapa/planmicrocentro/obras_en_microcentro/" name="Mapa de Obras y Desvíos" width="100%" height="800" scrolling="no" frameborder="0"></iframe>
+               <div href="#" class="list-group-item list-map" style="height:900px;">
+                  <iframe src="http://epok.buenosaires.gob.ar/pub/mapa/planmicrocentro/obras_en_microcentro/" name="Mapa de Obras y Desvíos" width="100%" height="900" scrolling="no" frameborder="0"></iframe>
                </div>
            </div>
           </div>
@@ -267,11 +282,5 @@
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="../bastrap3/jquery.matchHeight-min.js"></script>
-    <script type="text/javascript">
-      $(function() {
-          $('.list-group-panel').matchHeight();
-      });
-    </script>
   </body>
 </html>

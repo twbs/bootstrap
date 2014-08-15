@@ -20,6 +20,10 @@ body > .wrapper {
   height:100%;
 }
 
+
+
+
+
 .container-center {
   text-align:center;
 }
@@ -42,12 +46,12 @@ pre {
 /* Font Config */
 
 body, .label, .list-group, .list-group p, .list-group-item-text, .shortcut p, .alert-link p {
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
-    font-weight: 400;
+  font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
+  font-weight: normal;
 }
 a, b, strong, thead > tr > th, .jumbotron p, .progress-bar, label, dt {
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
-    font-weight: 600;
+  font-family: "OpenSansSemiBold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
 }
 .h1, .h2, .h3, h1, h2, h3  {
   font-family: "GothamBold", Helvetica, Arial, sans-serif;
@@ -89,8 +93,8 @@ blockquote footer,
 blockquote small,
 blockquote .small {
   color: #aaa;
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
-    font-weight: 400;
+  font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
+  font-weight: normal;
 }
 
 /* links */
@@ -1021,24 +1025,33 @@ a.list-group-item-danger:hover,
 
 /* nav tabs bg-white-1 */
 
-.bg-white-1 > .nav a {
+.bg-white-1 > .nav a,
+.bg-white-2 > .nav a {
   color:#888;
 }
-.bg-white-1 > .nav-tabs {
+.bg-white-1 > .nav-tabs,
+.bg-white-2 > .nav-tabs {
   border-bottom: 1px solid #ccc;
 }
 .bg-white-1 > .nav .open > a,
 .bg-white-1 > .nav .open > a:hover,
 .bg-white-1 > .nav .open > a:focus,
-.bg-white-1 > .nav-tabs > li > a:hover {
+.bg-white-1 > .nav-tabs > li > a:hover,
+.bg-white-2 > .nav .open > a,
+.bg-white-2 > .nav .open > a:hover,
+.bg-white-2 > .nav .open > a:focus,
+.bg-white-2 > .nav-tabs > li > a:hover {
   background-color: #ddd;
   border-color: #ddd;
 }
-.bg-white-1 > .nav-tabs > li > a:hover {
+.bg-white-1 > .nav-tabs > li > a:hover,
+.bg-white-2 > .nav-tabs > li > a:hover {
   border-bottom: solid 1px #ddd;
 }
 .bg-white-1 > .nav > li > a:hover,
-.bg-white-1 > .nav > li > a:focus {
+.bg-white-1 > .nav > li > a:focus,
+.bg-white-2 > .nav > li > a:hover,
+.bg-white-2 > .nav > li > a:focus {
     text-decoration: none;
     background-color: #ddd;
     color:#888;
@@ -1046,12 +1059,18 @@ a.list-group-item-danger:hover,
 }
 .bg-white-1 > .nav-tabs > li.active > a,
 .bg-white-1 > .nav-tabs > li.active > a:hover,
-.bg-white-1 > .nav-tabs > li.active > a:focus {
+.bg-white-1 > .nav-tabs > li.active > a:focus,
+.bg-white-2 > .nav-tabs > li.active > a,
+.bg-white-2 > .nav-tabs > li.active > a:hover,
+.bg-white-2 > .nav-tabs > li.active > a:focus {
     color: #111;
 }
 .bg-white-1 > .nav-tabs > li.active > a,
 .bg-white-1 > .nav-tabs > li.active > a:hover,
-.bg-white-1 > .nav-tabs > li.active > a:focus {
+.bg-white-1 > .nav-tabs > li.active > a:focus,
+.bg-white-2 > .nav-tabs > li.active > a,
+.bg-white-2 > .nav-tabs > li.active > a:hover,
+.bg-white-2 > .nav-tabs > li.active > a:focus {
     background-color:#e5e5e5;
     border-color: #ccc #ccc transparent;
 }
@@ -1214,6 +1233,12 @@ a.list-group-item.active > .badge {
 
 .navbar-default.navbar-top.navbar-sm {
   min-height:50px;
+  position: relative;
+  z-index: 9;
+  /*
+  border:0;
+  margin-bottom:0;
+  */
 }
 .navbar-sm .navbar-nav {
   margin-left:-30px;
@@ -1310,19 +1335,26 @@ color: #888;
 
 /* navbar default white-1 */
 
-.bg-white-1 > .navbar-default {
+.bg-white-1 > .navbar-default,
+.bg-white-2 > .navbar-default {
   border-bottom: solid 1px#ccc;
 }
-.bg-white-1 > .navbar-default .navbar-nav>li>a {
+}
+.bg-white-1 > .navbar-default .navbar-nav>li>a,
+.bg-white-2 > .navbar-default .navbar-nav>li>a {
   color: #888;
 }
 .bg-white-1 > .navbar-default .navbar-nav > .active > a,
-.bg-white-1 > .navbar-default .nav>li>a:active {
+.bg-white-1 > .navbar-default .nav>li>a:active,
+.bg-white-2 > .navbar-default .navbar-nav > .active > a,
+.bg-white-2 > .navbar-default .nav>li>a:active {
   background-color: #ddd;
   color: #111;
 }
 .bg-white-1 > .navbar-default .dropdown-menu > li > a:hover,
-.bg-white-1 > .navbar-default .dropdown-menu > li > a:focus  {
+.bg-white-1 > .navbar-default .dropdown-menu > li > a:focus,
+.bg-white-2 > .navbar-default .dropdown-menu > li > a:hover,
+.bg-white-2 > .navbar-default .dropdown-menu > li > a:focus  {
   background-color: #f5f5f5;
   color: #333;
 }
@@ -1330,43 +1362,63 @@ color: #888;
 .bg-white-1 > .navbar-default .nav>li>a:hover,
 .bg-white-1 > .navbar-default .nav .open>a,
 .bg-white-1 > .navbar-default .nav .open>a:focus,
-.bg-white-1 > .navbar-default .nav .open>a:hover {
+.bg-white-1 > .navbar-default .nav .open>a:hover,
+.bg-white-2 > .navbar-default .nav>li>a:focus,
+.bg-white-2 > .navbar-default .nav>li>a:hover,
+.bg-white-2 > .navbar-default .nav .open>a,
+.bg-white-2 > .navbar-default .nav .open>a:focus,
+.bg-white-2 > .navbar-default .nav .open>a:hover {
   background-color: #ddd;
   color: #111;
 }
 .bg-white-1 > .navbar-default .navbar-nav > .active > a,
 .bg-white-1 > .navbar-default .navbar-nav > .active > a:focus,
-.bg-white-1 > .navbar-default .navbar-nav > .active > a:hover {
+.bg-white-1 > .navbar-default .navbar-nav > .active > a:hover,
+.bg-white-2 > .navbar-default .navbar-nav > .active > a,
+.bg-white-2 > .navbar-default .navbar-nav > .active > a:focus,
+.bg-white-2 > .navbar-default .navbar-nav > .active > a:hover {
   color: #111;
   background-color: transparent;
   border-color: #111;
 }
 .bg-white-1 > .navbar-default .navbar-brand:focus,
-.bg-white-1 > .navbar-default .navbar-brand:hover {
+.bg-white-1 > .navbar-default .navbar-brand:hover,
+.bg-white-2 > .navbar-default .navbar-brand:focus,
+.bg-white-2 > .navbar-default .navbar-brand:hover {
   color: #111;
 }
 @media (max-width: 767px) {
   .bg-white-1 > .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus,
-  .bg-white-1 > .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+  .bg-white-1 > .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover,
+  .bg-white-2 > .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus,
+  .bg-white-2 > .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
     background-color: #ddd;
     color: #111;
   }
 }
 .bg-white-1 > .navbar-default .navbar-brand,
-.bg-white-1 > .navbar-default .navbar-nav > li > a {
+.bg-white-1 > .navbar-default .navbar-nav > li > a,
+.bg-white-2 > .navbar-default .navbar-brand,
+.bg-white-2 > .navbar-default .navbar-nav > li > a {
   text-shadow: none;
+  color: #888;
 }
-.bg-white-1 > .navbar-default .navbar-toggle {
+.bg-white-1 > .navbar-default .navbar-toggle,
+.bg-white-2 > .navbar-default .navbar-toggle {
   border-color: #ccc;
 }
 .bg-white-1 > .navbar-default .navbar-toggle:hover,
-.bg-white-1 > .navbar-default .navbar-toggle:focus {
+.bg-white-1 > .navbar-default .navbar-toggle:focus,
+.bg-white-2 > .navbar-default .navbar-toggle:hover,
+.bg-white-2 > .navbar-default .navbar-toggle:focus {
   background-color:#ddd;
 }
-.bg-white-1 > .navbar-default .navbar-toggle:active {
+.bg-white-1 > .navbar-default .navbar-toggle:active,
+.bg-white-2 > .navbar-default .navbar-toggle:active {
   background-color: #ddd;
 }
-.bg-white-1 > .navbar-default .navbar-brand {
+.bg-white-1 > .navbar-default .navbar-brand,
+.bg-white-2 > .navbar-default .navbar-brand {
  color: #888;
 }
 
@@ -1835,6 +1887,35 @@ border-color: transparent;
     display:none;
   }
 }
+.carousel .item {
+  transition: opacity 1.5s;
+}
+.carousel .active.left {
+  left:0;
+  opacity:0;
+  z-index:2;
+}
+.carousel .next {
+  left:0;
+  opacity:1;
+  z-index:1;
+}
+
+/* jumbotron carousel */
+
+.jumbotron > .carousel .carousel-inner {
+  border-radius: 0;
+}
+.jumbotron > .carousel p {
+  font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size:14px;
+  line-height: 1.42857143;
+}
+.jumbotron > .carousel .caption-container {
+  max-width:1140px;
+  margin:0 auto;
+}
 
 /* shortcuts */
 
@@ -1859,6 +1940,13 @@ border-color: transparent;
   background-color:#f1f1f1;
   color:#333;
   text-decoration:none;
+}
+.bg-white-2 .shortcut:hover {
+  background:#e9e9e9;
+}
+.bg-white-2 .shortcut:active,
+.bg-white-2 .shortcut:focus {
+  background-color:#f5f5f5;
 }
 .shortcut span {
   color: #fff;
@@ -1901,7 +1989,6 @@ border-color: transparent;
 }
 .panel-footer {
   border-top: 1px solid #e5e5e5;
-  border-bottom: 1px solid #E5E5E5;
 }
 .panel .panel-footer:last-child {
   border-bottom:0;
@@ -1976,6 +2063,10 @@ a.list-group-item.active:focus .list-group-item-text {
 
 /* special panels + lists */
 
+.list-group-panel {
+  margin-bottom:30px;
+  background-color:#fff;
+}
 .list-group-panel h4,
 .list-group-content h4,
 .list-group-panel h4:hover,
@@ -1999,19 +2090,32 @@ a.list-group-item.active:focus .list-group-item-text {
   margin:0;
   border-bottom:solid 1px #e5e5e5;
 }
+.list-group-item:last-child {
+  border-bottom:0 !important;
+}
 a.list-group-item:hover,
 a.list-group-item:focus {
   background-color: #f5f5f5;
   color: #215093;
 }
-.list-group-panel {
-  margin-bottom:0;
-}
+
+/* list-group-panel footer */
+/*
 .list-group-panel .panel-footer {
   padding-top:20px;
   padding-bottom:20px;
-  border-top:0;
+  position: absolute;
+  bottom: 30px;
+  left: 15px;
+  right: 15px;
 }
+@media (max-width: 992px) {
+  .list-group-panel .panel-footer {
+    position:static;
+    border-top:0;
+  }
+}
+*/
 /*
 @media (min-width: 560px) {
   .list-group-item {
@@ -2021,7 +2125,7 @@ a.list-group-item:focus {
 */
 
 /* table row [para columnas con el mismo alto entre sí] */
-
+/*
 .container-xs-height {
   display:block;
 }
@@ -2092,7 +2196,7 @@ a.list-group-item:focus {
     width: 100%;
   }
 }
-
+*/
 /* list heading */
 
 .list-heading {
@@ -2425,13 +2529,33 @@ a.alert-spot:active {
 }
 .alert-spot p {
   margin-bottom:0;
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
-    font-weight: 400;
+  font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
+  font-weight: normal;
 }
 .alert-spot-default {
   background-color:#f5f5f5;
   color:#333;
 }
+.alert-spot-primary {
+  background-color:#ffbc00;
+  color:#735500;
+}
+.alert-spot-primary:hover {
+  color:#735500;
+}
+.alert-spot-success {
+  background-color:#6eaa2e;
+}
+.alert-spot-info {
+  background-color:#00a59d;
+}
+.alert-spot-warning {
+  background-color:#ef7d30;
+}
+.alert-spot-danger {
+  background-color:#ba2727;
+}
+/*
 .alert-spot-primary {
   background-color:#ffd300;
   color:#735500;
@@ -2451,6 +2575,7 @@ a.alert-spot:active {
 .alert-spot-danger {
   background-color:#d13f34;
 }
+*/
 
 /* sidebar nav */
 
@@ -2492,8 +2617,8 @@ a.alert-spot:active {
   display: block;
   color: #aaa;
   padding: 5px 30px 5px 28px;
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
-    font-weight: 400;
+  font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
+  font-weight: normal;
   font-size:14px;
   border-left:solid 2px transparent;
 }
@@ -2505,8 +2630,8 @@ a.alert-spot:active {
 .sidebar .nav > .active > a,
 .sidebar .nav > .active:hover > a,
 .sidebar .nav > .active:focus > a {
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
-    font-weight: 600;
+  font-family: "OpenSansSemiBold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
   color: #333;
   border-color:#333;
 }
@@ -2521,15 +2646,15 @@ margin-bottom: 8px;
   padding-bottom: 3px;
   padding-left: 30px;
   font-size: 12px;
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
-    font-weight: 400;
+  font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
+  font-weight: normal;
   padding-left:45px;
 }
 .sidebar .nav .nav > .active > a,
 .sidebar .nav .nav > .active:hover > a,
 .sidebar .nav .nav > .active:focus > a {
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
-    font-weight: 600;
+  font-family: "OpenSansSemiBold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
 }
 .sidebar .nav .nav > li {
   display:none;
@@ -2552,8 +2677,8 @@ margin-bottom: 8px;
   .sidebar .nav > .active > a,
   .sidebar .nav > .active > a:hover {
     color:#aaa;
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
-    font-weight: 400;
+    font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
+    font-weight: normal;
   }
   .sidebar .nav > .active > a:hover {
     text-decoration: none;
@@ -2651,35 +2776,53 @@ ul.affix-bottom {
 
 /* Font files */
 
-
+@font-face {
+  font-family: "OpenSansRegular";
+  src: url('fonts/opensans-regular.eot');
+  src: url('fonts/opensans-regular.eot?#iefix') format('embedded-opentype'),
+  url('fonts/opensans-regular.svg#OpenSansRegular') format('svg'),
+  url('fonts/opensans-regular.woff') format('woff'),
+  url('fonts/opensans-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "OpenSansSemibold";
+  src: url('fonts/opensans-semibold.eot');
+  src: url('fonts/opensans-semibold.eot?#iefix') format('embedded-opentype'),
+  url('fonts/opensans-semibold.svg#Open Sans Semibold') format('svg'),
+  url('fonts/opensans-semibold.woff') format('woff'),
+  url('fonts/opensans-semibold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 @font-face {
   font-family: "GothamBold";
-  src: url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-bold.eot');
-  src: url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-bold.eot?#iefix') format('embedded-opentype'),
-  url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-bold.svg#GothamBold') format('svg'),
-  url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-bold.woff') format('woff'),
-  url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-bold.ttf') format('truetype');
+  src: url('fonts/gotham-bold.eot');
+  src: url('fonts/gotham-bold.eot?#iefix') format('embedded-opentype'),
+  url('fonts/gotham-bold.svg#GothamBold') format('svg'),
+  url('fonts/gotham-bold.woff') format('woff'),
+  url('fonts/gotham-bold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "GothamMedium";
-  src: url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-medium.eot');
-  src: url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-medium.eot?#iefix') format('embedded-opentype'),
-  url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-medium.svg#Gotham') format('svg'),
-  url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-medium.woff') format('woff'),
-  url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-medium.ttf') format('truetype');
+  src: url('fonts/gotham-medium.eot');
+  src: url('fonts/gotham-medium.eot?#iefix') format('embedded-opentype'),
+  url('fonts/gotham-medium.svg#Gotham') format('svg'),
+  url('fonts/gotham-medium.woff') format('woff'),
+  url('fonts/gotham-medium.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "GothamLight";
-  src: url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-light.eot');
-  src: url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-light.eot?#iefix') format('embedded-opentype'),
-  url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-light.svg#Gotham') format('svg'),
-  url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-light.woff') format('woff'),
-  url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-light.ttf') format('truetype');
+  src: url('fonts/gotham-light.eot');
+  src: url('fonts/gotham-light.eot?#iefix') format('embedded-opentype'),
+  url('fonts/gotham-light.svg#Gotham') format('svg'),
+  url('fonts/gotham-light.woff') format('woff'),
+  url('fonts/gotham-light.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600);
