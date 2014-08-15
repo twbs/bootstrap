@@ -133,8 +133,8 @@ margin: 20px;
   padding-top:45px;
   display:block;
   float:left;
-  font-family: "OpenSansSemiBold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-weight: 600;
 }
 
 .container-docs .col-md-1,

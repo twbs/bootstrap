@@ -39,68 +39,15 @@ pre {
   display:block;
 }
 
-/* Font files */
-
-@font-face {
-  font-family: "OpenSansRegular";
-  src: url('fonts/opensans-regular.eot');
-  src: url('fonts/opensans-regular.eot?#iefix') format('embedded-opentype'),
-  url('fonts/opensans-regular.svg#OpenSansRegular') format('svg'),
-  url('fonts/opensans-regular.woff') format('woff'),
-  url('fonts/opensans-regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "OpenSansSemibold";
-  src: url('fonts/opensans-semibold.eot');
-  src: url('fonts/opensans-semibold.eot?#iefix') format('embedded-opentype'),
-  url('fonts/opensans-semibold.svg#Open Sans Semibold') format('svg'),
-  url('fonts/opensans-semibold.woff') format('woff'),
-  url('fonts/opensans-semibold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "GothamBold";
-  src: url('fonts/gotham-bold.eot');
-  src: url('fonts/gotham-bold.eot?#iefix') format('embedded-opentype'),
-  url('fonts/gotham-bold.svg#GothamBold') format('svg'),
-  url('fonts/gotham-bold.woff') format('woff'),
-  url('fonts/gotham-bold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "GothamMedium";
-  src: url('fonts/gotham-medium.eot');
-  src: url('fonts/gotham-medium.eot?#iefix') format('embedded-opentype'),
-  url('fonts/gotham-medium.svg#Gotham') format('svg'),
-  url('fonts/gotham-medium.woff') format('woff'),
-  url('fonts/gotham-medium.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "GothamLight";
-  src: url('fonts/gotham-light.eot');
-  src: url('fonts/gotham-light.eot?#iefix') format('embedded-opentype'),
-  url('fonts/gotham-light.svg#Gotham') format('svg'),
-  url('fonts/gotham-light.woff') format('woff'),
-  url('fonts/gotham-light.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 /* Font Config */
 
 body, .label, .list-group, .list-group p, .list-group-item-text, .shortcut p, .alert-link p {
-  font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-weight: 400;
 }
 a, b, strong, thead > tr > th, .jumbotron p, .progress-bar, label, dt {
-  font-family: "OpenSansSemiBold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-weight: 600;
 }
 .h1, .h2, .h3, h1, h2, h3  {
   font-family: "GothamBold", Helvetica, Arial, sans-serif;
@@ -142,8 +89,8 @@ blockquote footer,
 blockquote small,
 blockquote .small {
   color: #aaa;
-  font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-weight: 400;
 }
 
 /* links */
@@ -2478,8 +2425,8 @@ a.alert-spot:active {
 }
 .alert-spot p {
   margin-bottom:0;
-  font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-weight: 400;
 }
 .alert-spot-default {
   background-color:#f5f5f5;
@@ -2545,8 +2492,8 @@ a.alert-spot:active {
   display: block;
   color: #aaa;
   padding: 5px 30px 5px 28px;
-  font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-weight: 400;
   font-size:14px;
   border-left:solid 2px transparent;
 }
@@ -2558,8 +2505,8 @@ a.alert-spot:active {
 .sidebar .nav > .active > a,
 .sidebar .nav > .active:hover > a,
 .sidebar .nav > .active:focus > a {
-  font-family: "OpenSansSemiBold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-weight: 600;
   color: #333;
   border-color:#333;
 }
@@ -2574,15 +2521,15 @@ margin-bottom: 8px;
   padding-bottom: 3px;
   padding-left: 30px;
   font-size: 12px;
-  font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-weight: 400;
   padding-left:45px;
 }
 .sidebar .nav .nav > .active > a,
 .sidebar .nav .nav > .active:hover > a,
 .sidebar .nav .nav > .active:focus > a {
-  font-family: "OpenSansSemiBold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-weight: 600;
 }
 .sidebar .nav .nav > li {
   display:none;
@@ -2605,8 +2552,8 @@ margin-bottom: 8px;
   .sidebar .nav > .active > a,
   .sidebar .nav > .active > a:hover {
     color:#aaa;
-    font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
-    font-weight: normal;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-weight: 400;
   }
   .sidebar .nav > .active > a:hover {
     text-decoration: none;
@@ -2701,3 +2648,38 @@ ul.affix-bottom {
   display:block;
   padding: 10px 15px;
 }
+
+/* Font files */
+
+
+@font-face {
+  font-family: "GothamBold";
+  src: url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-bold.eot');
+  src: url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-bold.eot?#iefix') format('embedded-opentype'),
+  url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-bold.svg#GothamBold') format('svg'),
+  url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-bold.woff') format('woff'),
+  url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GothamMedium";
+  src: url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-medium.eot');
+  src: url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-medium.eot?#iefix') format('embedded-opentype'),
+  url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-medium.svg#Gotham') format('svg'),
+  url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-medium.woff') format('woff'),
+  url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GothamLight";
+  src: url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-light.eot');
+  src: url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-light.eot?#iefix') format('embedded-opentype'),
+  url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-light.svg#Gotham') format('svg'),
+  url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-light.woff') format('woff'),
+  url('http://www.buenosaires.gob.ar/estilos/bastrap3/fonts/gotham-light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600);
