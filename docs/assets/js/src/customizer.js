@@ -73,6 +73,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     $.ajax({
       url: 'https://api.github.com/gists',
       type: 'POST',
+      contentType: 'application/json; charset=UTF-8',
       dataType: 'json',
       data: JSON.stringify(data)
     })
