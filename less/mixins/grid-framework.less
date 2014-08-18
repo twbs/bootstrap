@@ -3,89 +3,68 @@
 // Used only by Bootstrap to generate the correct number of grid classes given
 // any value of `@grid-columns`.
 
-.make-grid-columns() {
-  // Common styles for all sizes of grid columns, widths 1-12
-  .col(@index) when (@index = 1) { // initial
-    @item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
-    .col((@index + 1), @item);
+// Create styles for all sizes of grid columns
+.make-grid() {
+  .make-base-grid-columns();
+  .make-inherited-grid-columns();
+}
+
+// Create styles for grid columns of the specified size
+.make-grid(@device) {
+  .make-base-grid-columns(@device);
+  .loop(@grid-columns);
+  .loop(@index) when (@index >= 0) {
+    .loop((@index - 1));
+    .make-grid-column(@device, @index);
   }
-  .col(@index, @list) when (@index =< @grid-columns) { // general; "=<" isn't a typo
-    @item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
-    .col((@index + 1), ~"@{list}, @{item}");
+}
+
+.make-base-grid-columns() {
+  // Common styles for all sizes of grid columns
+  .col-any-any {
+    position: relative;
+    // Prevent columns from collapsing when empty
+    min-height: 1px;
+    // Inner gutter via padding
+    padding-left: (@grid-gutter-width / 2);
+    padding-right: (@grid-gutter-width / 2);
   }
-  .col(@index, @list) when (@index > @grid-columns) { // terminal
-    @{list} {
-      position: relative;
-      // Prevent columns from collapsing when empty
-      min-height: 1px;
-      // Inner gutter via padding
-      padding-left:  (@grid-gutter-width / 2);
-      padding-right: (@grid-gutter-width / 2);
+}
+
+.make-base-grid-columns(@device) {
+  // Common styles for grid columns of the specified size
+  .col-xs-any when (@device = xs) { float: left; }
+  .col-sm-any when (@device = sm) { float: left; }
+  .col-md-any when (@device = md) { float: left; }
+  .col-lg-any when (@device = lg) { float: left; }
+}
+
+.make-inherited-grid-columns() {
+  // Create classes that share common styles with base column
+  .loop(@grid-columns);
+  .loop(@index) when (@index > 0) {
+    .loop((@index - 1));
+    .col-xs-@{index}:extend(.col-xs-any),
+    .col-sm-@{index}:extend(.col-sm-any),
+    .col-md-@{index}:extend(.col-md-any),
+    .col-lg-@{index}:extend(.col-lg-any) {
+      &:extend(.col-any-any);
     }
   }
-  .col(1); // kickstart it
 }
 
-.float-grid-columns(@class) {
-  .col(@index) when (@index = 1) { // initial
-    @item: ~".col-@{class}-@{index}";
-    .col((@index + 1), @item);
-  }
-  .col(@index, @list) when (@index =< @grid-columns) { // general
-    @item: ~".col-@{class}-@{index}";
-    .col((@index + 1), ~"@{list}, @{item}");
-  }
-  .col(@index, @list) when (@index > @grid-columns) { // terminal
-    @{list} {
-      float: left;
-    }
-  }
-  .col(1); // kickstart it
+.make-grid-column(@device, 0) {
+  // Styles for specific grid classes
+  .col-@{device}-push-0   { left: auto; }
+  .col-@{device}-pull-0   { right: auto; }
+  .col-@{device}-offset-0 { margin-left: 0; }
 }
 
-.calc-grid-column(@index, @class, @type) when (@type = width) and (@index > 0) {
-  .col-@{class}-@{index} {
-    width: percentage((@index / @grid-columns));
-  }
-}
-.calc-grid-column(@index, @class, @type) when (@type = push) and (@index > 0) {
-  .col-@{class}-push-@{index} {
-    left: percentage((@index / @grid-columns));
-  }
-}
-.calc-grid-column(@index, @class, @type) when (@type = push) and (@index = 0) {
-  .col-@{class}-push-0 {
-    left: auto;
-  }
-}
-.calc-grid-column(@index, @class, @type) when (@type = pull) and (@index > 0) {
-  .col-@{class}-pull-@{index} {
-    right: percentage((@index / @grid-columns));
-  }
-}
-.calc-grid-column(@index, @class, @type) when (@type = pull) and (@index = 0) {
-  .col-@{class}-pull-0 {
-    right: auto;
-  }
-}
-.calc-grid-column(@index, @class, @type) when (@type = offset) {
-  .col-@{class}-offset-@{index} {
-    margin-left: percentage((@index / @grid-columns));
-  }
-}
-
-// Basic looping in LESS
-.loop-grid-columns(@index, @class, @type) when (@index >= 0) {
-  .calc-grid-column(@index, @class, @type);
-  // next iteration
-  .loop-grid-columns((@index - 1), @class, @type);
-}
-
-// Create grid for specific class
-.make-grid(@class) {
-  .float-grid-columns(@class);
-  .loop-grid-columns(@grid-columns, @class, width);
-  .loop-grid-columns(@grid-columns, @class, pull);
-  .loop-grid-columns(@grid-columns, @class, push);
-  .loop-grid-columns(@grid-columns, @class, offset);
+.make-grid-column(@device, @index) when (@index > 0) {
+  // Styles for specific grid classes
+  @value: percentage((@index / @grid-columns));
+  .col-@{device}-@{index}        { width: @value; }
+  .col-@{device}-push-@{index}   { left: @value; }
+  .col-@{device}-pull-@{index}   { right: @value; }
+  .col-@{device}-offset-@{index} { margin-left: @value; }
 }
