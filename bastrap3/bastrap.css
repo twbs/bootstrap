@@ -555,11 +555,11 @@ input[type=checkbox]:focus {
 .bg-black-1 {
   background-color: #111;
 }
-.bg-black-2,
-.bg-inverse {
+.bg-black-2 {
   background-color: #333;
 }
-.bg-gray-1 {
+.bg-gray-1,
+.bg-inverse {
   background-color: #666;
 }
 .bg-gray-2 {
@@ -1074,7 +1074,7 @@ a.list-group-item-danger:hover,
 /* nav tabs bg-white-2 */
 
 .bg-white-2 > .nav a {
-  color:#777;
+  color:#666;
 }
 .bg-white-2 > .nav-tabs {
   border-bottom: 1px solid #c5c5c5;
@@ -1093,7 +1093,7 @@ a.list-group-item-danger:hover,
 .bg-white-2 > .nav > li > a:focus {
     text-decoration: none;
     background-color: #eee;
-    color:#777;
+    color:#666;
     border-bottom:solid 1px #c5c5c5;
 }
 .bg-white-2 > .nav-tabs > li.active > a,
@@ -1288,24 +1288,19 @@ a.list-group-item.active > .badge {
   right: 0;
 }
 */
-.navbar-default.navbar-top.navbar-sm .navbar-form {
-  max-width:200px;
-}
+
 .navbar-default.navbar-top.navbar-sm .navbar-toggle {
   margin-top: 8px;
 }
-@media (min-width: 1200px) {
-  .navbar-default.navbar-top.navbar-sm .navbar-form {
-    max-width:300px;
-  }
+.navbar-default.navbar-top.navbar-sm .navbar-right {
+  text-align:right;
 }
 @media (max-width: 767px) {
   .navbar-default.navbar-top.navbar-sm .navbar-right {
     left: -15px;
+    text-align:right;
   }
-  .navbar-default.navbar-top.navbar-sm .navbar-form {
-    max-width:inherit;
-  }
+
 }
 
 /* navbar-default */
@@ -1438,7 +1433,7 @@ color: #888;
   border-bottom: solid 1px#c5c5c5;
 }
 .bg-white-2 > .navbar-default .navbar-nav>li>a {
-  color: #777;
+  color: #666;
 }
 .bg-white-2 > .navbar-default .navbar-nav > .active > a,
 .bg-white-2 > .navbar-default .nav>li>a:active {
@@ -1479,7 +1474,7 @@ color: #888;
 .bg-white-2 > .navbar-default .navbar-brand,
 .bg-white-2 > .navbar-default .navbar-nav > li > a {
   text-shadow: none;
-  color: #777;
+  color: #666;
 }
 .bg-white-2 > .navbar-default .navbar-toggle {
   border-color: #ccc;
@@ -1492,7 +1487,7 @@ color: #888;
   background-color: #eee;
 }
 .bg-white-2 > .navbar-default .navbar-brand {
- color: #777;
+ color: #666;
 }
 
 /* navbar default jumbotron */
@@ -1770,6 +1765,13 @@ border-color: transparent;
   float:left;
   margin-right:10px;
 }
+.footer-social img:hover,
+.footer-social img:focus, {
+  opacity:0.9;
+}
+.footer-social img:active, {
+  opacity:1;
+}
 .footer-cc {
   margin-top:45px;
   font-size:12px;
@@ -1965,6 +1967,11 @@ border-color: transparent;
 
 .carousel {
   margin-bottom:30px;
+  border-radius:6px;
+}
+.carousel:hover img,
+.carousel:focus img {
+  opacity:0.9;
 }
 .carousel-indicators {
   display:none;
@@ -1976,7 +1983,7 @@ border-color: transparent;
   z-index: 99;
 }
 .carousel-caption {
-  background-image: linear-gradient(to top,rgba(0,0,0,.8) 0,rgba(0,0,0,.0) 100%);
+  background-image: linear-gradient(to top,rgba(0,0,0,.6) 0,rgba(0,0,0,.0) 100%);
   width: 100%;
   left: 0;
   right: 0;
@@ -2006,7 +2013,12 @@ border-color: transparent;
   width: 100%;
   border-radius: 6px;
 }
+
+
 @media (max-width: 560px) {
+  .carousel-caption {
+    padding:15px;
+  }
   .carousel-caption h3 {
     font-family: "GothamMedium", Helvetica, Arial, sans-serif;
     font-weight: normal;
@@ -2048,8 +2060,8 @@ border-color: transparent;
 
 /* shortcuts */
 
-.shortcut-row {
-  margin:30px 0 60px 0;
+.row-shortcut {
+  margin:30px 0 45px 0;
 }
 .shortcut {
   text-align:center;
@@ -2057,24 +2069,24 @@ border-color: transparent;
   padding-top:24px;
   padding-bottom:12px;
   color:#333;
-  border-radius:8px;
+  border-radius:6px;
 }
-.shortcut:hover {
+.shortcut:hover,
+.shortcut:focus {
   background:#f5f5f5;
   text-decoration:none;
   color:#333;
 }
-.shortcut:active,
-.shortcut:focus {
+.shortcut:active {
   background-color:#f1f1f1;
   color:#333;
   text-decoration:none;
 }
-.bg-white-2 .shortcut:hover {
+.bg-white-2 .shortcut:hover,
+.bg-white-2 .shortcut:focus {
   background:#e9e9e9;
 }
-.bg-white-2 .shortcut:active,
-.bg-white-2 .shortcut:focus {
+.bg-white-2 .shortcut:active {
   background-color:#e5e5e5;
 }
 .shortcut span {
@@ -2093,7 +2105,14 @@ border-color: transparent;
 .shortcut p {
   color:#888;
 }
-.footer .shortcut-row {
+@media (max-width: 560px) {
+  .shortcut h3 {
+    font-family: "GothamMedium", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-size:18px;
+  }
+}
+.footer .row-shortcut {
   margin:0;
 }
 .footer .shortcut {
@@ -2212,7 +2231,7 @@ a.list-group-item.active:focus .list-group-item-text {
 /* special panels + lists */
 
 .list-group-panel {
-  margin-bottom:30px;
+  margin-bottom:20px;
   background-color:#fff;
 }
 .list-group-panel h4,
@@ -2232,6 +2251,9 @@ a.list-group-item.active:focus .list-group-item-text {
 }
 .list-group blockquote p {
   color:#333;
+}
+.list-group::after .btn {
+  margin-bottom:20px;
 }
 .list-group-item {
   border:0;
@@ -2539,25 +2561,6 @@ a.list-group-item:focus {
   text-align:center;
 }
 
-/* special panel form */
-
-.list-group form {
-  margin-top:20px;
-  margin-bottom:20px;
-}
-.list-form {
-  background-color:#999;
-  border:0 none;
-  padding-top:0;
-  padding-bottom:0;
-}
-.list-form .form-control {
-  border-color:#777;
-}
-.list-form .form-control:focus {
-  box-shadow: 0px 0px 6px #777;
-  border-color: #333;
-}
 
 /* special panels */
 
@@ -2630,19 +2633,20 @@ a.list-group-item:focus {
   overflow:hidden !important;
 }
 
-/* special list */
+/* list group content */
 
 .list-group-content,
 .list-group-content .list-group-item {
   border-radius:0;
   border:0 none;
   box-shadow:none;
+  background-color:transparent;
 }
 .list-group-content h3 {
   padding-bottom: 20px;
   margin-bottom: 0;
   border-bottom: 1px solid #e5e5e5;
-  font-size:30px;
+    font-size:30px;
 }
 .list-group-content .list-group-item {
   border-bottom: 1px solid #e5e5e5;
@@ -2651,6 +2655,110 @@ a.list-group-item:focus {
 .list-group-content .list-group-item:last-child {
   border-bottom:0 none;
 }
+
+/* list group full */
+
+.list-group-full h3 {
+  border:0;
+}
+.list-group-full .list-group-item {
+  padding:0;
+  border:0;
+  box-shadow: 0 0 4px #ccc;
+  margin-bottom:20px;
+  border-radius:4px;
+  background-color:#fff;
+}
+.list-group-full .list-group-item:hover,
+.list-group-full .list-group-item:focus {
+  box-shadow: 0 0 6px #aaa;
+  background-color:#fff;
+}
+.list-group-full .list-group-item:hover > div,
+.list-group-full .list-group-item:focus > div {
+  opacity:0.9;
+}
+.list-group-full .list-thumb > div {
+  float:none;
+  width:100%;
+  height:120px;
+  margin-top:0;
+  border-bottom-left-radius:0;
+  border-bottom-right-radius:0;
+  position:relative
+}
+.list-group-full h4 {
+  background-image: linear-gradient(to top,rgba(0,0,0,.6) 0,rgba(0,0,0,.0) 100%);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+  color:#fff;
+  text-align:left;
+  margin:0;
+  padding:15px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position:absolute;
+}
+.list-group-full h4:hover,
+.list-group-full h4:focus {
+  color:#fff;
+}
+.list-group-full p {
+  padding:0 15px;
+  margin-bottom:30px;
+  color:#666;
+}
+
+/* list group special */
+
+.list-group-special .list-group-item:hover,
+.list-group-special .list-group-item:focus {
+  box-shadow: 0 0 6px #aaa;
+  background-color:#fff;
+  position:relative;
+  z-index:9;
+}
+
+
+
+
+
+
+
+/* special panel form */
+
+.list-group form {
+  margin-top:20px;
+  margin-bottom:20px;
+}
+.list-form {
+  border:0 none;
+  padding-top:0;
+  padding-bottom:0;
+}
+.list-form,
+.list-form:hover,
+.list-form:focus,
+.list-form:active {
+  background-color:#999 !important;
+  box-shadow:none !important;
+}
+.list-form .form-control {
+  border-color:#666;
+}
+.list-form .form-control:focus {
+  box-shadow: 0px 0px 6px #666;
+  border-color: #333;
+}
+
+
+
+
+
+
+
+
+
 
 /* special list multi */
 
@@ -2702,6 +2810,15 @@ a.alert-spot:active {
   font-size: 30px;
   padding:10px 0 0 0;
   width:45px;
+}
+@media (max-width: 560px) {
+  .alert-spot .glyphicon {
+    display:none;
+  }
+  .alert-spot .glyphicon-chevron-right {
+    display:block;
+    padding-top:20px;
+  }
 }
 .alert-spot .glyphicon-chevron-right {
   float:right;
@@ -2971,6 +3088,27 @@ ul.affix-bottom {
   display:block;
   padding: 10px 15px;
 }
+
+/* misc */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Font files */
 

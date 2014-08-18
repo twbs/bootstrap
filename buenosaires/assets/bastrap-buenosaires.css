@@ -1,10 +1,46 @@
+
+/* navbar sm top */
+
 @media (min-width: 767px) {
-  .navbar-sm .navbar-nav {
-    width:400px;
+  .navbar-sm .nav>li>a  {
+    padding-left:12px;
+    padding-right:12px;
+  }
+  .navbar-sm .navbar-form .input-group>.form-control {
+	width: 682px;
+	left:1px;
+  }
+  .navbar-sm .navbar-form {
+  	margin-top:0;
+  	margin-bottom:15px;
   }
 }
 @media (min-width: 992px) {
   .navbar-sm .navbar-nav {
     width:inherit;
   }
+  .navbar-sm .navbar-form .input-group>.form-control {
+	width: 160px;
+  }
+}
+@media (min-width: 1200px) {
+  .navbar-sm .navbar-form .input-group>.form-control {
+	width: 300px;
+  }
+}
+.navbar-sm .navbar-nav {
+  margin-left: -28px;
+}
+.navbar-sm .nav>li>a  {
+  padding-left:12px;
+  padding-right:12px;
+}
+
+/* home */
+
+.home-mapa .btn {
+  margin-bottom:20px;
+}
+.col-agendacultural .btn {
+  margin-bottom:60px;
 }
