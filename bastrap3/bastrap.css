@@ -1161,11 +1161,14 @@ a.list-group-item.active > .badge {
     margin-right:15px;
   }
 }
+
+/*
 @media (max-width: 560px) {
   .navbar-top .sub-brand {
     display:none;
   }
 }
+*/
 .navbar-top .navbar-toggle {
   margin-right:0;
 }
@@ -1297,7 +1300,9 @@ a.list-group-item.active > .badge {
 }
 @media (max-width: 767px) {
   .navbar-default.navbar-top.navbar-sm .navbar-right {
-    left: -15px;
+    left: 0;
+    padding-left: 0;
+    padding-right: 0;
     text-align:right;
   }
 
@@ -2484,8 +2489,8 @@ a.list-group-item:focus {
   */
   padding:0;
 }
-.list-group-item-img:hover,
-.list-group-item-img:focus {
+.list-group-item-img:hover img,
+.list-group-item-img:focus img {
   opacity:0.9;
 }
 .list-group-item-img img {
@@ -2642,11 +2647,24 @@ a.list-group-item:focus {
   box-shadow:none;
   background-color:transparent;
 }
+.list-group-content a {
+  text-decoration:none;
+}
 .list-group-content h3 {
   padding-bottom: 20px;
   margin-bottom: 0;
   border-bottom: 1px solid #e5e5e5;
     font-size:30px;
+}
+@media (min-width: 992px) {
+  .list-group-content h3 {
+    font-size:24px;
+  }
+}
+@media (min-width: 1200px) {
+  .list-group-content h3 {
+    font-size:30px;
+  }
 }
 .list-group-content .list-group-item {
   border-bottom: 1px solid #e5e5e5;
