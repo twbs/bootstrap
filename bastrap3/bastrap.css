@@ -60,7 +60,7 @@ body, .label, .list-group, .list-group p, .list-group-item-text, .shortcut p, .a
   font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
-a, b, strong, thead > tr > th, .jumbotron p, .progress-bar, label, dt {
+a, b, strong, thead > tr > th, .progress-bar, label, dt {
   font-family: "OpenSansSemiBold", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
@@ -72,7 +72,7 @@ a, b, strong, thead > tr > th, .jumbotron p, .progress-bar, label, dt {
   font-family: "GothamMedium", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
-blockquote p, .list-group blockquote p, .jumbotron p {
+blockquote p, .list-group blockquote p, .jumbotron p.lead {
 	font-family: "GothamLight", Helvetica, Arial, sans-serif;
 	font-weight: normal;
 }
