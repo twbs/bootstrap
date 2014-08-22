@@ -66,7 +66,6 @@
     var key     = e.which
     var $items  = $li.closest('ul[role="tablist"]').find('li')
     var index   = $li.index()
-    var uBound  = $items.length - 1
     var $newTab
 
     e.preventDefault()
@@ -75,15 +74,13 @@
     switch (key) {
       case 37: // left
       case 38: // up
-        $newTab = (index === 0) ? $items.eq(uBound) : $items.eq(index - 1)
+        $newTab = (index == 0) ? $items.last() : $items.eq(index - 1)
         break
       case 39: // right
       case 40: // down
-        $newTab = (index === uBound) ? $items.eq(0) : $items.eq(index + 1)
+        $newTab = (index == $items.length - 1) ? $items.eq(0) : $items.eq(index + 1)
         break
     }
-
-    // if ($newTab) $(newTab).find('a').tab('show')
 
     if ($newTab) Plugin.call($newTab.find('a'), 'show')
 
@@ -101,7 +98,7 @@
         .find('> .dropdown-menu > .active')
           .removeClass('active')
 
-      if (element.attr('role') === 'tabpanel') { // Is this a panel or a tab
+      if (element.attr('role') == 'tabpanel') { // Is this a panel or a tab
         $active.attr('aria-hidden', true)
         element.attr('aria-hidden', false)
       } else {
@@ -151,6 +148,12 @@
     $active.removeClass('in')
   }
 
+  Tab.prototype.getUID = function (prefix) {
+    do prefix += ~~(Math.random() * 1000000)
+    while (document.getElementById(prefix))
+    return prefix
+  }
+
   // TAB PLUGIN DEFINITION
   // =====================
 
@@ -183,10 +186,10 @@
   // ============
 
   $('[data-toggle="tab"], [data-toggle="pill"]').each(function () {
-    var $this   = $(this)
-    var $parent = $this.parent()
-    var active  = $parent.hasClass('active')
-    var selector = $this.data('target')
+    var $this     = $(this)
+    var $parent   = $this.parent()
+    var active    = $parent.hasClass('active')
+    var selector  = $this.data('target')
 
     if (!selector) {
       selector = $this.attr('href')
@@ -196,16 +199,20 @@
     $parent.attr('role', 'presentation')
 
     $this.attr({
-      'aria-selected':  active,
-      'aria-controls':  selector.replace('#', ''),
-      role:           'tab',
-      tabindex:       (active) ? 0 : -1
+      'aria-selected': active,
+      'aria-controls': selector.replace('#', ''),
+      role: 'tab',
+      tabindex: (active) ? 0 : -1
     })
 
+    if (!$this.attr('id')) {
+      $this.attr('id', Tab.prototype.getUID('tab'))
+    }
+
     $(selector).attr({
-      'aria-hidden':      !active,
-      'aria-labelledby':  $this.attr('id'),
-      role:             'tabpanel'
+      'aria-hidden': !active,
+      'aria-labelledby': $this.attr('id'),
+      role: 'tabpanel'
     })
   });
 
