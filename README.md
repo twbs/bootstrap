@@ -1,24 +1,24 @@
 # [Bootstrap](http://getbootstrap.com)
 [![Bower version](https://badge.fury.io/bo/bootstrap.svg)](http://badge.fury.io/bo/bootstrap)
 [![NPM version](https://badge.fury.io/js/bootstrap.svg)](http://badge.fury.io/js/bootstrap)
-[![Build Status](https://secure.travis-ci.org/twbs/bootstrap.svg?branch=master)](http://travis-ci.org/twbs/bootstrap)
+[![Build Status](https://secure.travis-ci.org/twbs/bootstrap.svg?branch=master)](https://travis-ci.org/twbs/bootstrap)
 [![devDependency Status](https://david-dm.org/twbs/bootstrap/dev-status.svg)](https://david-dm.org/twbs/bootstrap#info=devDependencies)
 [![Selenium Test Status](https://saucelabs.com/browser-matrix/bootstrap.svg)](https://saucelabs.com/u/bootstrap)
 
-Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created by [Mark Otto](http://twitter.com/mdo) and [Jacob Thornton](http://twitter.com/fat), and maintained by the [core team](https://github.com/twbs?tab=members) with the massive support and involvement of the community.
+Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thornton](https://twitter.com/fat), and maintained by the [core team](https://github.com/twbs?tab=members) with the massive support and involvement of the community.
 
 To get started, check out <http://getbootstrap.com>!
 
 ## Table of contents
 
- - [Quick start](#quick-start)
- - [Bugs and feature requests](#bugs-and-feature-requests)
- - [Documentation](#documentation)
- - [Contributing](#contributing)
- - [Community](#community)
- - [Versioning](#versioning)
- - [Creators](#creators)
- - [Copyright and license](#copyright-and-license)
+- [Quick start](#quick-start)
+- [Bugs and feature requests](#bugs-and-feature-requests)
+- [Documentation](#documentation)
+- [Contributing](#contributing)
+- [Community](#community)
+- [Versioning](#versioning)
+- [Creators](#creators)
+- [Copyright and license](#copyright-and-license)
 
 ## Quick start
 
@@ -86,7 +86,7 @@ Documentation for v2.3.2 has been made available for the time being at <http://g
 
 Please read through our [contributing guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
 
-Moreover, if your pull request contains JavaScript patches or features, you must include relevant unit tests. All HTML and CSS should conform to the [Code Guide](http://github.com/mdo/code-guide), maintained by [Mark Otto](http://github.com/mdo).
+Moreover, if your pull request contains JavaScript patches or features, you must include relevant unit tests. All HTML and CSS should conform to the [Code Guide](https://github.com/mdo/code-guide), maintained by [Mark Otto](https://github.com/mdo).
 
 Editor preferences are available in the [editor config](https://github.com/twbs/bootstrap/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
 
@@ -96,7 +96,7 @@ Editor preferences are available in the [editor config](https://github.com/twbs/
 
 Keep track of development and community news.
 
-- Follow [@twbootstrap on Twitter](http://twitter.com/twbootstrap).
+- Follow [@twbootstrap on Twitter](https://twitter.com/twbootstrap).
 - Read and subscribe to [The Official Bootstrap Blog](http://blog.getbootstrap.com).
 - Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##twitter-bootstrap` channel.
 - Implementation help may be found at Stack Overflow (tagged [`twitter-bootstrap-3`](http://stackoverflow.com/questions/tagged/twitter-bootstrap-3)).
@@ -113,13 +113,13 @@ For transparency into our release cycle and in striving to maintain backward com
 
 **Mark Otto**
 
-- <http://twitter.com/mdo>
-- <http://github.com/mdo>
+- <https://twitter.com/mdo>
+- <https://github.com/mdo>
 
 **Jacob Thornton**
 
-- <http://twitter.com/fat>
-- <http://github.com/fat>
+- <https://twitter.com/fat>
+- <https://github.com/fat>
 
 
 
