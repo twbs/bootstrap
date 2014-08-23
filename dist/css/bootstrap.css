@@ -5727,6 +5727,9 @@ button.close {
 }
 .popover-content {
   padding: 9px 14px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 18px;
 }
 .popover > .arrow,
 .popover > .arrow:after {
