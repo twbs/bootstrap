@@ -5,6 +5,18 @@
 
 
 
+ritmo vertical YA
+
+COLOR DE LINKS VISITED!!!!!!!!!!
+
+BS hacer nuevo readme y poner en el root de la branch
+
+---------------------------------------------------------
+
+HACER listado de elementos y mejorar el css por el amor de dios
+todo concatenado, es la única forma de ordenarme [??????]
+
+Agregar alt y rel ...
 
 REPASAR QUE PONGO en estilos y qué en componentes....
 
@@ -28,8 +40,18 @@ bootstrap ya existente
 
 SUBIR DE NUEVO A CDN ba.gob.ar
 
+SHADOW CONTRASTE y pagina con todas las redes sociales fanpages etc de areas todo
+
+BS volver alos 30px de padding para panels?
+
 
 ------------------------------------------------------------------------------------------------------
+
+BS panel de noticias con foto completa...
+
+Ver..... contrastes de links #aaa
+
+Capaz que si los padding-left-right en las nav, así queda mejor el carousel
 
 ojo con el sticky footer, probar en ipad
 
