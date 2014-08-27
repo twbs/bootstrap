@@ -3294,6 +3294,10 @@ tbody.collapse.in {
   right: auto;
   left: 0;
 }
+.dropdown-menu-center {
+  right: auto;
+  left: 50%;
+}
 .dropdown-header {
   display: block;
   padding: 3px 20px;
