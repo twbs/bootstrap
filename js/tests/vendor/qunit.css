@@ -1,12 +1,12 @@
 /*!
- * QUnit 1.14.0
+ * QUnit 1.15.0
  * http://qunitjs.com/
  *
- * Copyright 2013 jQuery Foundation and other contributors
+ * Copyright 2014 jQuery Foundation and other contributors
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2014-01-31T16:40Z
+ * Date: 2014-08-08T16:00Z
  */
 
 /** Font Family and Sizes */
@@ -62,14 +62,14 @@
 }
 
 #qunit-testrunner-toolbar {
-	padding: 0.5em 0 0.5em 2em;
+	padding: 0.5em 1em 0.5em 1em;
 	color: #5E740B;
 	background-color: #EEE;
 	overflow: hidden;
 }
 
 #qunit-userAgent {
-	padding: 0.5em 0 0.5em 2.5em;
+	padding: 0.5em 1em 0.5em 1em;
 	background-color: #2B81AF;
 	color: #FFF;
 	text-shadow: rgba(0, 0, 0, 0.5) 2px 2px 1px;
@@ -86,7 +86,7 @@
 }
 
 #qunit-tests li {
-	padding: 0.4em 0.5em 0.4em 2.5em;
+	padding: 0.4em 1em 0.4em 1em;
 	border-bottom: 1px solid #FFF;
 	list-style-position: inside;
 }
@@ -215,7 +215,7 @@
 /** Result */
 
 #qunit-testresult {
-	padding: 0.5em 0.5em 0.5em 2.5em;
+	padding: 0.5em 1em 0.5em 1em;
 
 	color: #2B81AF;
 	background-color: #D2E0E6;
