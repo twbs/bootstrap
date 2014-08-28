@@ -2,17 +2,16 @@
 var fs = require('fs');
 var path = require('path');
 
-var destDir = 'dist/js';
-var destFilename = 'npm.js';
-var destFilepath = path.join(destDir, destFilename);
+module.exports = function generateCommonJSModule(grunt, srcFiles, destFilepath) {
+  var destDir = path.dirname(destFilepath);
 
-function srcPathToDestRequire(srcFilepath) {
-  var requirePath = path.relative(destDir, srcFilepath);
-  return "require('"+requirePath+"')";
-}
+  function srcPathToDestRequire(srcFilepath) {
+    var requirePath = path.relative(destDir, srcFilepath);
+    return "require('"+requirePath+"')";
+  }
 
-module.exports = function generateCommonJSModule(grunt, files) {
-  var moduleOutputJs = files.map(srcPathToDestRequire).join('\n');
+  var moduleOutputJs = srcFiles.map(srcPathToDestRequire).join('\n');
+  
   try {
     fs.writeFileSync(destFilepath, moduleOutputJs);
   }

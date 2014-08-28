@@ -438,7 +438,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test', testSubtasks);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat', 'uglify:core']);
+  grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs']);
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
@@ -464,8 +464,9 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('commonjs', 'Generate CommonJS entrypoint module in dist dir.', function () {
-    var files = grunt.config.get('concat.bootstrap.src');
-    generateCommonJSModule(grunt, files);
+    var srcFiles = grunt.config.get('concat.bootstrap.src');
+    var destFilepath = 'dist/js/npm.js';
+    generateCommonJSModule(grunt, srcFiles, destFilepath);
   });
 
   // Docs task.
