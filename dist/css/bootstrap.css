@@ -3182,7 +3182,7 @@ input[type="button"].btn-block {
 }
 .collapse.in {
   display: block;
-  visibility: visibile;
+  visibility: visible;
 }
 tr.collapse.in {
   display: table-row;
