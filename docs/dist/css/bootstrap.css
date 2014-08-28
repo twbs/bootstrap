@@ -3178,11 +3178,9 @@ input[type="button"].btn-block {
 }
 .collapse {
   display: none;
-  visibility: hidden;
 }
 .collapse.in {
   display: block;
-  visibility: visibile;
 }
 tr.collapse.in {
   display: table-row;
@@ -3848,11 +3846,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .tab-content > .tab-pane {
   display: none;
-  visibility: hidden;
 }
 .tab-content > .active {
   display: block;
-  visibility: visible;
 }
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
@@ -4655,7 +4651,8 @@ a.list-group-item.active > .badge,
 .jumbotron > hr {
   border-top-color: #d5d5d5;
 }
-.container .jumbotron {
+.container .jumbotron,
+.container-fluid .jumbotron {
   border-radius: 6px;
 }
 .jumbotron .container {
@@ -5118,19 +5115,23 @@ a.list-group-item-danger.active:focus {
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
 }
-.panel > .list-group {
+.panel > .list-group,
+.panel > .panel-collapse > .list-group {
   margin-bottom: 0;
 }
-.panel > .list-group .list-group-item {
+.panel > .list-group .list-group-item,
+.panel > .panel-collapse > .list-group .list-group-item {
   border-width: 1px 0;
   border-radius: 0;
 }
-.panel > .list-group:first-child .list-group-item:first-child {
+.panel > .list-group:first-child .list-group-item:first-child,
+.panel > .panel-collapse > .list-group:first-child .list-group-item:first-child {
   border-top: 0;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
-.panel > .list-group:last-child .list-group-item:last-child {
+.panel > .list-group:last-child .list-group-item:last-child,
+.panel > .panel-collapse > .list-group:last-child .list-group-item:last-child {
   border-bottom: 0;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
