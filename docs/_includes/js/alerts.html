@@ -3,15 +3,13 @@
 
   <h2 id="alerts-examples">Example alerts</h2>
   <p>Add dismiss functionality to all alert messages with this plugin.</p>
-  <div class="bs-example">
-    <div class="alert alert-warning fade in" role="alert">
+  <div class="bs-example bs-example-standalone">
+    <div class="alert alert-warning alert-dismissible fade in" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
     </div>
-  </div><!-- /example -->
 
-  <div class="bs-example">
-    <div class="alert alert-danger fade in" role="alert">
+    <div class="alert alert-danger alert-dismissible fade in" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <h4>Oh snap! You got an error!</h4>
       <p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
@@ -24,25 +22,29 @@
 
 
   <h2 id="alerts-usage">Usage</h2>
-  <p>Enable dismissal of an alert via JavaScript:</p>
-  {% highlight js %}$(".alert").alert(){% endhighlight %}
 
-  <h3>Markup</h3>
-  <p>Just add <code>data-dismiss="alert"</code> to your close button to automatically give an alert close functionality.</p>
-  {% highlight html %}<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>{% endhighlight %}
+  <p>Just add <code>data-dismiss="alert"</code> to your close button to automatically give an alert close functionality. Closing an alert removes it from the DOM.</p>
+
+{% highlight html %}
+<button type="button" class="close" data-dismiss="alert">
+  <span aria-hidden="true">&times;</span>
+  <span class="sr-only">Close</span>
+</button>
+{% endhighlight %}
+
+  <p>To have your alerts use animation when closing, make sure they have the <code>.fade</code> and <code>.in</code> classes already applied to them.</p>
 
   <h3>Methods</h3>
 
   <h4>$().alert()</h4>
-  <p>Wraps all alerts with close functionality. To have your alerts animate out when closed, make sure they have the <code>.fade</code> and <code>.in</code> class already applied to them.</p>
+  <p>Makes an alert listen for click events on descendant elements which have the <code>data-dismiss="alert"</code> attribute. (Not necessary when using the data-api's auto-initialization.)</p>
 
-  <h4>.alert('close')</h4>
-  <p>Closes an alert.</p>
-  {% highlight js %}$(".alert").alert('close'){% endhighlight %}
+  <h4>$().alert('close')</h4>
+  <p>Closes an alert by removing it from the DOM. If the <code>.fade</code> and <code>.in</code> classes are present on the element, the alert will fade out before it is removed.</p>
 
 
   <h3>Events</h3>
-  <p>Bootstrap's alert class exposes a few events for hooking into alert functionality.</p>
+  <p>Bootstrap's alert plugin exposes a few events for hooking into alert functionality.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
       <thead>
@@ -64,7 +66,7 @@
     </table>
   </div><!-- /.table-responsive -->
 {% highlight js %}
-$('#my-alert').on('closed.bs.alert', function () {
+$('#myAlert').on('closed.bs.alert', function () {
   // do something…
 })
 {% endhighlight %}

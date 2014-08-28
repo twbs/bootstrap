@@ -103,9 +103,8 @@
   &:focus {
     color: @dropdown-link-disabled-color;
   }
-}
-// Nuke hover/focus effects
-.dropdown-menu > .disabled > a {
+
+  // Nuke hover/focus effects
   &:hover,
   &:focus {
     text-decoration: none;
@@ -155,6 +154,7 @@
   font-size: @font-size-small;
   line-height: @line-height-base;
   color: @dropdown-header-color;
+  white-space: nowrap; // as with > li > a
 }
 
 // Backdrop to catch body clicks on mobile, etc.
@@ -211,4 +211,3 @@
     }
   }
 }
-

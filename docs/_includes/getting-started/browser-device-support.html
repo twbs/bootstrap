@@ -106,6 +106,9 @@
   <h3 id="support-ie8-box-sizing">Internet Explorer 8 and box-sizing</h3>
   <p>IE8 does not fully support <code>box-sizing: border-box;</code> when combined with <code>min-width</code>, <code>max-width</code>, <code>min-height</code>, or <code>max-height</code>. For that reason, as of v3.0.1, we no longer use <code>max-width</code> on <code>.container</code>s.</p>
 
+  <h3 id="support-ie8-font-face">Internet Explorer 8 and @font-face</h3>
+  <p>IE8 has some issues with <code>@font-face</code> when combined with <code>:before</code>. Bootstrap uses that combination with its Glyphicons. If a page is cached, and loaded without the mouse over the window (i.e. hit the refresh button or load something in an iframe) then the page gets rendered before the font loads. Hovering over the page (body) will show some of the icons and hovering over the remaining icons will show those as well. <a href="https://github.com/twbs/bootstrap/issues/13863">See issue #13863</a> for details.</p>
+
   <h3 id="support-ie-compatibility-modes">IE Compatibility modes</h3>
   <p>Bootstrap is not supported in the old Internet Explorer compatibility modes. To be sure you're using the latest rendering mode for IE, consider including the appropriate <code>&lt;meta&gt;</code> tag in your pages:</p>
 {% highlight html %}
@@ -155,7 +158,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
   <h4>Overflow and scrolling</h4>
   <p>Support for <code>overflow: hidden</code> on the <code>&lt;body&gt;</code> element is quite limited in iOS and Android. To that end, when you scroll past the top or bottom of a modal in either of those devices' browsers, the <code>&lt;body&gt;</code> content will begin to scroll.</p>
   <h4>Virtual keyboards</h4>
-  <p>Also, note that if you're using inputs in your modal or navbar, iOS has a rendering bug that doesn't update the position of fixed elements when the virtual keyboard is triggered. A few workarounds for this include transforming your elements to <code>position: absolute</code> or invoking a timer on focus to try to correct the positioning manually. This is not handled by Bootstrap, so it is up to you to decide which solution is best for your application.</p>
+  <p>Also, note that if you're using a fixed navbar or using inputs within a modal, iOS has a rendering bug that doesn't update the position of fixed elements when the virtual keyboard is triggered. A few workarounds for this include transforming your elements to <code>position: absolute</code> or invoking a timer on focus to try to correct the positioning manually. This is not handled by Bootstrap, so it is up to you to decide which solution is best for your application.</p>
   <h4>Navbar Dropdowns</h4>
   <p>The <code>.dropdown-backdrop</code> element isn't used on iOS in the nav because of the complexity of z-indexing. Thus, to close dropdowns in navbars, you must directly click the dropdown element (or any other element which will fire a click event in iOS).</p>
 
@@ -185,5 +188,5 @@ $(function () {
 })
 </script>
 {% endhighlight %}
-  <p>Want to see an example? <a href="http://jsbin.com/OyaqoDO/2">Check out this JS Bin demo.</a></p>
+  <p>Want to see an example? <a href="http://jsbin.com/kuvoz/1">Check out this JS Bin demo.</a></p>
 </div>

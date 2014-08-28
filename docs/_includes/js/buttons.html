@@ -1,161 +1,134 @@
 <div class="bs-docs-section">
   <h1 id="buttons" class="page-header">Buttons <small>button.js</small></h1>
 
-  <h2 id="buttons-examples">Example uses</h2>
-  <p>Do more with buttons. Control button states or create groups of buttons for more components like toolbars.</p>
+  <p class="lead">Do more with buttons. Control button states or create groups of buttons for more components like toolbars.</p>
 
-  <h4>Stateful</h4>
+  <div class="bs-callout bs-callout-danger">
+    <h4>Cross-browser compatibility</h4>
+    <p><a href="https://github.com/twbs/bootstrap/issues/793">Firefox persists form control states (disabledness and checkedness) across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>.</p>
+  </div>
+
+  <h2 id="buttons-stateful">Stateful</h2>
   <p>Add <code>data-loading-text="Loading..."</code> to use a loading state on a button.</p>
-  <div class="bs-example" style="padding-bottom: 24px;">
-    <button type="button" id="loading-example-btn" data-loading-text="Loading..." class="btn btn-primary">
+  <div class="bs-callout bs-callout-info">
+    <h4>Use whichever state you like!</h4>
+    <p>For the sake of this demonstration, we are using <code>data-loading-text</code> and <code>$().button('loading')</code>, but that's not the only state you can use. <a href="#buttons-methods">See more on this below in the <code>$().button(string)</code> documentation</a>.</p>
+  </div>
+  <div class="bs-example">
+    <button type="button" id="loading-example-btn" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
       Loading state
     </button>
   </div><!-- /example -->
 {% highlight html %}
-<button type="button" id="loading-example-btn" data-loading-text="Loading..." class="btn btn-primary">
+<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
   Loading state
 </button>
+
 <script>
-  $('#loading-example-btn').click(function () {
-    var btn = $(this)
-    btn.button('loading')
-    $.ajax(...).always(function () {
-      btn.button('reset')
-    });
-  });
+  $('#myButton').on('click', function () {
+    var $btn = $(this).button('loading')
+    // business logic...
+    $btn.button('reset')
+  })
 </script>
 {% endhighlight %}
 
-  <h4>Single toggle</h4>
+  <h2 id="buttons-single-toggle">Single toggle</h2>
   <p>Add <code>data-toggle="button"</code> to activate toggling on a single button.</p>
-  <div class="bs-example" style="padding-bottom: 24px;">
-    <button type="button" class="btn btn-primary" data-toggle="button">Single toggle</button>
+  <div class="bs-example">
+    <button type="button" class="btn btn-primary" data-toggle="button" autocomplete="off">
+      Single toggle
+    </button>
   </div><!-- /example -->
 {% highlight html %}
-<button type="button" class="btn btn-primary" data-toggle="button">Single toggle</button>
+<button type="button" class="btn btn-primary" data-toggle="button" autocomplete="off">
+  Single toggle
+</button>
 {% endhighlight %}
 
-  <h4>Checkbox</h4>
-  <p>Add <code>data-toggle="buttons"</code> to a group of checkboxes for checkbox style toggling on btn-group.</p>
-  <div class="bs-callout bs-callout-warning">
-    <h4>Pre-checked options need <code>.active</code></h4>
-    <p>For pre-checked options, you must add the <code>.active</code> class to the input's <code>label</code> yourself.</p>
-  </div>
-  <div class="bs-example" style="padding-bottom: 24px;">
-    <div class="btn-group" data-toggle="buttons">
-      <label class="btn btn-primary active">
-        <input type="checkbox" checked> Option 1 (pre-checked)
-      </label>
-      <label class="btn btn-primary">
-        <input type="checkbox"> Option 2
-      </label>
-      <label class="btn btn-primary">
-        <input type="checkbox"> Option 3
-      </label>
-    </div>
-  </div><!-- /example -->
-{% highlight html %}
-<div class="btn-group" data-toggle="buttons">
-  <label class="btn btn-primary active">
-    <input type="checkbox" checked> Option 1 (pre-checked)
-  </label>
-  <label class="btn btn-primary">
-    <input type="checkbox"> Option 2
-  </label>
-  <label class="btn btn-primary">
-    <input type="checkbox"> Option 3
-  </label>
-</div>
-{% endhighlight %}
-
-  <h4>Radio</h4>
-  <p>Add <code>data-toggle="buttons"</code> to a group of radio inputs for radio style toggling on btn-group.</p>
+  <h2 id="buttons-checkbox-radio">Checkbox / Radio</h2>
+  <p>Add <code>data-toggle="buttons"</code> to a <code>.btn-group</code> containing checkbox or radio inputs to enable toggling in their respective styles.</p>
   <div class="bs-callout bs-callout-warning">
     <h4>Preselected options need <code>.active</code></h4>
     <p>For preselected options, you must add the <code>.active</code> class to the input's <code>label</code> yourself.</p>
   </div>
-  <div class="bs-example" style="padding-bottom: 24px;">
+  <div class="bs-callout bs-callout-warning">
+    <h4>Visual checked state only updated on click</h4>
+    <p>If the checked state of a checkbox button is updated without firing a <code>click</code> event on the button (e.g. via <code>&lt;input type="reset"&gt;</code> or via setting the <code>checked</code> property of the input), you will need to toggle the <code>.active</code> class on the input's <code>label</code> yourself.</p>
+  </div>
+  <div class="bs-example">
     <div class="btn-group" data-toggle="buttons">
       <label class="btn btn-primary active">
-        <input type="radio" name="options" id="option1" checked> Option 1 (preselected)
+        <input type="checkbox" checked autocomplete="off"> Checkbox 1 (pre-checked)
       </label>
       <label class="btn btn-primary">
-        <input type="radio" name="options" id="option2"> Option 2
+        <input type="checkbox" autocomplete="off"> Checkbox 2
       </label>
       <label class="btn btn-primary">
-        <input type="radio" name="options" id="option3"> Option 3
+        <input type="checkbox" autocomplete="off"> Checkbox 3
       </label>
     </div>
   </div><!-- /example -->
 {% highlight html %}
 <div class="btn-group" data-toggle="buttons">
   <label class="btn btn-primary active">
-    <input type="radio" name="options" id="option1" checked> Option 1 (preselected)
+    <input type="checkbox" autocomplete="off" checked> Checkbox 1 (pre-checked)
   </label>
   <label class="btn btn-primary">
-    <input type="radio" name="options" id="option2"> Option 2
+    <input type="checkbox" autocomplete="off"> Checkbox 2
   </label>
   <label class="btn btn-primary">
-    <input type="radio" name="options" id="option3"> Option 3
+    <input type="checkbox" autocomplete="off"> Checkbox 3
   </label>
 </div>
 {% endhighlight %}
 
-
-  <h2 id="buttons-usage">Usage</h2>
-  <p>Enable buttons via JavaScript:</p>
-{% highlight js %}
-$('.btn').button()
+  <div class="bs-example">
+    <div class="btn-group" data-toggle="buttons">
+      <label class="btn btn-primary active">
+        <input type="radio" name="options" id="option1" autocomplete="off" checked> Radio 1 (preselected)
+      </label>
+      <label class="btn btn-primary">
+        <input type="radio" name="options" id="option2" autocomplete="off"> Radio 2
+      </label>
+      <label class="btn btn-primary">
+        <input type="radio" name="options" id="option3" autocomplete="off"> Radio 3
+      </label>
+    </div>
+  </div><!-- /example -->
+{% highlight html %}
+<div class="btn-group" data-toggle="buttons">
+  <label class="btn btn-primary active">
+    <input type="radio" name="options" id="option1" autocomplete="off" checked> Radio 1 (preselected)
+  </label>
+  <label class="btn btn-primary">
+    <input type="radio" name="options" id="option2" autocomplete="off"> Radio 2
+  </label>
+  <label class="btn btn-primary">
+    <input type="radio" name="options" id="option3" autocomplete="off"> Radio 3
+  </label>
+</div>
 {% endhighlight %}
 
-  <h3>Markup</h3>
-  <p>Data attributes are integral to the button plugin. Check out the example code below for the various markup types.</p>
-
-  <h3>Options</h3>
-  <p><em>None</em></p>
-
-  <h3>Methods</h3>
+  <h2 id="buttons-methods">Methods</h2>
 
   <h4>$().button('toggle')</h4>
   <p>Toggles push state. Gives the button the appearance that it has been activated.</p>
-  <div class="bs-callout bs-callout-info">
-    <h4>Auto toggling</h4>
-    <p>You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.</p>
-  </div>
-{% highlight html %}
-<button type="button" class="btn btn-primary" data-toggle="button">...</button>
-{% endhighlight %}
-
-  <h4>$().button('loading')</h4>
-  <p>Sets button state to loading - disables button and swaps text to loading text. Loading text should be defined on the button element using the data attribute <code>data-loading-text</code>.
-  </p>
-{% highlight html %}
-<button id="loading-example-btn" type="button" class="btn btn-primary" data-loading-text="loading stuff...">...</button>
-<script>
-  $('#loading-example-btn').click(function () {
-    var btn = $(this)
-    btn.button('loading')
-    $.ajax(...).always(function () {
-      btn.button('reset')
-    });
-  });
-</script>
-{% endhighlight %}
-
-  <div class="bs-callout bs-callout-danger">
-    <h4>Cross-browser compatibility</h4>
-    <p><a href="https://github.com/twbs/bootstrap/issues/793">Firefox persists the disabled state across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>.</p>
-  </div>
 
   <h4>$().button('reset')</h4>
   <p>Resets button state - swaps text to original text.</p>
 
   <h4>$().button(string)</h4>
-  <p>Resets button state - swaps text to any data defined text state.</p>
+  <p>Swaps text to any data defined text state.</p>
 {% highlight html %}
-<button type="button" class="btn btn-primary" data-complete-text="finished!" >...</button>
+<button type="button" id="myStateButton" data-complete-text="finished!" class="btn btn-primary" autocomplete="off">
+  ...
+</button>
+
 <script>
-  $('.btn').button('complete')
+  $('#myStateButton').on('click', function () {
+    $(this).button('complete') // button text will be "finished!"
+  })
 </script>
 {% endhighlight %}
 </div>

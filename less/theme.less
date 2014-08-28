@@ -48,6 +48,12 @@
     background-color: darken(@btn-color, 12%);
     border-color: darken(@btn-color, 14%);
   }
+
+  &:disabled,
+  &[disabled] {
+    background-color: darken(@btn-color, 12%);
+    background-image: none;
+  }
 }
 
 // Common styles
@@ -110,6 +116,7 @@
   @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
   .box-shadow(@shadow);
 
+  .navbar-nav > .open > a,
   .navbar-nav > .active > a {
     #gradient > .vertical(@start-color: darken(@navbar-default-bg, 5%); @end-color: darken(@navbar-default-bg, 2%));
     .box-shadow(inset 0 3px 9px rgba(0,0,0,.075));
@@ -125,6 +132,7 @@
   #gradient > .vertical(@start-color: lighten(@navbar-inverse-bg, 10%); @end-color: @navbar-inverse-bg);
   .reset-filter(); // Remove gradient in IE<10 to fix bug where dropdowns don't get triggered
 
+  .navbar-nav > .open > a,
   .navbar-nav > .active > a {
     #gradient > .vertical(@start-color: @navbar-inverse-bg; @end-color: lighten(@navbar-inverse-bg, 2.5%));
     .box-shadow(inset 0 3px 9px rgba(0,0,0,.25));
@@ -191,6 +199,11 @@
 .progress-bar-warning    { .progress-bar-styles(@progress-bar-warning-bg); }
 .progress-bar-danger     { .progress-bar-styles(@progress-bar-danger-bg); }
 
+// Reset the striped class because our mixins don't do multiple gradients and
+// the above custom styles override the new `.progress-bar-striped` in v3.2.0.
+.progress-bar-striped {
+  #gradient > .striped();
+}
 
 
 //

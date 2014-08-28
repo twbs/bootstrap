@@ -1,7 +1,7 @@
 <div class="bs-docs-section">
   <h1 id="alerts" class="page-header">Alerts</h1>
 
-  <p class="lead">Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages. For inline dismissal, use the <a href="../javascript/#alerts">alerts jQuery plugin</a>.</p>
+  <p class="lead">Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.</p>
 
   <h2 id="alerts-examples">Examples</h2>
   <p>Wrap any text and an optional dismiss button in <code>.alert</code> and one of the four contextual classes (e.g., <code>.alert-success</code>) for basic alert messages.</p>
@@ -32,16 +32,20 @@
 <div class="alert alert-danger" role="alert">...</div>
 {% endhighlight %}
 
-  <h2 id="alerts-dismissable">Dismissable alerts</h2>
-  <p>Build on any alert by adding an optional <code>.alert-dismissable</code> and close button.</p>
+  <h2 id="alerts-dismissible">Dismissible alerts</h2>
+  <p>Build on any alert by adding an optional <code>.alert-dismissible</code> and close button.</p>
+  <div class="bs-callout bs-callout-info">
+    <h4>Requires JavaScript alert plugin</h4>
+    <p>For fully functioning, dismissible alerts, you must use the <a href="../javascript/#alerts">alerts JavaScript plugin</a>.</p>
+  </div>
   <div class="bs-example">
-    <div class="alert alert-warning alert-dismissable" role="alert">
+    <div class="alert alert-warning alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <strong>Warning!</strong> Better check yourself, you're not looking too good.
     </div>
   </div>
 {% highlight html %}
-<div class="alert alert-warning alert-dismissable" role="alert">
+<div class="alert alert-warning alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
   <strong>Warning!</strong> Better check yourself, you're not looking too good.
 </div>

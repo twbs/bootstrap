@@ -9,7 +9,7 @@
     <nav id="navbar-example" class="navbar navbar-default navbar-static" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-collapse">
+          <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -20,7 +20,10 @@
         <div class="collapse navbar-collapse bs-example-js-navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+              <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+                <span class="caret"></span>
+              </a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
@@ -30,7 +33,10 @@
               </ul>
             </li>
             <li class="dropdown">
-              <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown 2 <span class="caret"></span></a>
+              <a id="drop2" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+                <span class="caret"></span>
+              </a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
@@ -42,7 +48,10 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li id="fat-menu" class="dropdown">
-              <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown 3 <span class="caret"></span></a>
+              <a id="drop3" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+                <span class="caret"></span>
+              </a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
@@ -59,10 +68,13 @@
 
   <h3>Within pills</h3>
   <div class="bs-example">
-    <ul class="nav nav-pills">
-      <li class="active"><a href="#">Regular link</a></li>
-      <li class="dropdown">
-        <a id="drop4" role="button" data-toggle="dropdown" href="#">Dropdown <span class="caret"></span></a>
+    <ul class="nav nav-pills" role="tablist">
+      <li role="presentation" class="active"><a href="#">Regular link</a></li>
+      <li role="presentation" class="dropdown">
+        <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+          <span class="caret"></span>
+        </a>
         <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
           <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
@@ -71,8 +83,11 @@
           <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
         </ul>
       </li>
-      <li class="dropdown">
-        <a id="drop5" role="button" data-toggle="dropdown" href="#">Dropdown 2 <span class="caret"></span></a>
+      <li role="presentation" class="dropdown">
+        <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+          <span class="caret"></span>
+        </a>
         <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
           <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
@@ -81,8 +96,11 @@
           <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
         </ul>
       </li>
-      <li class="dropdown">
-        <a id="drop6" role="button" data-toggle="dropdown" href="#">Dropdown 3 <span class="caret"></span></a>
+      <li role="presentation" class="dropdown">
+        <a id="drop6" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+          <span class="caret"></span>
+        </a>
         <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop6">
           <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
@@ -96,25 +114,30 @@
 
 
   <h2 id="dropdowns-usage">Usage</h2>
-  <p>Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the <code>.open</code> class on the parent list item. When opened, the plugin also adds <code>.dropdown-backdrop</code> as a click area for closing dropdown menus when clicking outside the menu. Note: The <code>data-toggle=dropdown</code> attribute is relied on for closing dropdown menus at an application level, so it's a good idea to always use it.</p>
+  <p>Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the <code>.open</code> class on the parent list item.</p>
+  <p>On mobile devices, opening a dropdown adds a <code>.dropdown-backdrop</code> as a tap area for closing dropdown menus when tapping outside the menu, a requirement for proper iOS support. <strong class="text-danger">This means that switching from an open dropdown menu to a different dropdown menu requires an extra tap on mobile.</strong></p>
+  <p>Note: The <code>data-toggle="dropdown"</code> attribute is relied on for closing dropdown menus at an application level, so it's a good idea to always use it.</p>
 
   <h3>Via data attributes</h3>
   <p>Add <code>data-toggle="dropdown"</code> to a link or button to toggle a dropdown.</p>
 {% highlight html %}
 <div class="dropdown">
-  <a data-toggle="dropdown" href="#">Dropdown trigger</a>
+  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown trigger
+   <span class="caret"></span>
+  </button>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
     ...
   </ul>
 </div>
 {% endhighlight %}
-  <p>To keep URLs intact, use the <code>data-target</code> attribute instead of <code>href="#"</code>.</p>
+  <p>To keep URLs intact with link buttons, use the <code>data-target</code> attribute instead of <code>href="#"</code>.</p>
 {% highlight html %}
 <div class="dropdown">
-  <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
-    Dropdown <span class="caret"></span>
+  <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown trigger
+    <span class="caret"></span>
   </a>
-
 
   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
     ...

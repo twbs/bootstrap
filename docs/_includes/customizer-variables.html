@@ -4,24 +4,28 @@
 <p>Gray and brand colors for use across Bootstrap.</p>
 <div class="row">
   <div class="bs-customizer-input">
+    <label for="input-@gray-base">@gray-base</label>
+    <input id="input-@gray-base" type="text" value="#000" data-var="@gray-base" class="form-control"/>
+  </div>
+  <div class="bs-customizer-input">
     <label for="input-@gray-darker">@gray-darker</label>
-    <input id="input-@gray-darker" type="text" value="lighten(#000, 13.5%)" data-var="@gray-darker" class="form-control"/>
+    <input id="input-@gray-darker" type="text" value="lighten(@gray-base, 13.5%)" data-var="@gray-darker" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@gray-dark">@gray-dark</label>
-    <input id="input-@gray-dark" type="text" value="lighten(#000, 20%)" data-var="@gray-dark" class="form-control"/>
+    <input id="input-@gray-dark" type="text" value="lighten(@gray-base, 20%)" data-var="@gray-dark" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@gray">@gray</label>
-    <input id="input-@gray" type="text" value="lighten(#000, 33.5%)" data-var="@gray" class="form-control"/>
+    <input id="input-@gray" type="text" value="lighten(@gray-base, 33.5%)" data-var="@gray" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@gray-light">@gray-light</label>
-    <input id="input-@gray-light" type="text" value="lighten(#000, 60%)" data-var="@gray-light" class="form-control"/>
+    <input id="input-@gray-light" type="text" value="lighten(@gray-base, 46.7%)" data-var="@gray-light" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@gray-lighter">@gray-lighter</label>
-    <input id="input-@gray-lighter" type="text" value="lighten(#000, 93.5%)" data-var="@gray-lighter" class="form-control"/>
+    <input id="input-@gray-lighter" type="text" value="lighten(@gray-base, 93.5%)" data-var="@gray-lighter" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@brand-primary">@brand-primary</label>
@@ -404,7 +408,7 @@
   </div>
   <div class="bs-customizer-input">
     <label for="input-@input-color-placeholder">@input-color-placeholder</label>
-    <input id="input-@input-color-placeholder" type="text" value="@gray-light" data-var="@input-color-placeholder" class="form-control"/>
+    <input id="input-@input-color-placeholder" type="text" value="#999" data-var="@input-color-placeholder" class="form-control"/>
     <p class="help-block">Placeholder text color</p>
   </div>
   <div class="bs-customizer-input">
@@ -726,7 +730,7 @@
   </div>
   <div class="bs-customizer-input">
     <label for="input-@navbar-inverse-color">@navbar-inverse-color</label>
-    <input id="input-@navbar-inverse-color" type="text" value="@gray-light" data-var="@navbar-inverse-color" class="form-control"/>
+    <input id="input-@navbar-inverse-color" type="text" value="lighten(@gray-light, 15%)" data-var="@navbar-inverse-color" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@navbar-inverse-bg">@navbar-inverse-bg</label>
@@ -738,7 +742,7 @@
   </div>
   <div class="bs-customizer-input">
     <label for="input-@navbar-inverse-link-color">@navbar-inverse-link-color</label>
-    <input id="input-@navbar-inverse-link-color" type="text" value="@gray-light" data-var="@navbar-inverse-link-color" class="form-control"/>
+    <input id="input-@navbar-inverse-link-color" type="text" value="lighten(@gray-light, 15%)" data-var="@navbar-inverse-link-color" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@navbar-inverse-link-hover-color">@navbar-inverse-link-hover-color</label>
@@ -808,10 +812,6 @@
   <div class="bs-customizer-input">
     <label for="input-@nav-disabled-link-hover-color">@nav-disabled-link-hover-color</label>
     <input id="input-@nav-disabled-link-hover-color" type="text" value="@gray-light" data-var="@nav-disabled-link-hover-color" class="form-control"/>
-  </div>
-  <div class="bs-customizer-input">
-    <label for="input-@nav-open-link-hover-color">@nav-open-link-hover-color</label>
-    <input id="input-@nav-open-link-hover-color" type="text" value="#fff" data-var="@nav-open-link-hover-color" class="form-control"/>
   </div>
 </div>
 <h2 id="tabs">Tabs</h2>
@@ -1701,6 +1701,11 @@
 <p></p>
 <div class="row">
   <div class="bs-customizer-input">
+    <label for="input-@component-offset-horizontal">@component-offset-horizontal</label>
+    <input id="input-@component-offset-horizontal" type="text" value="180px" data-var="@component-offset-horizontal" class="form-control"/>
+    <p class="help-block">Horizontal offset for forms and lists.</p>
+  </div>
+  <div class="bs-customizer-input">
     <label for="input-@text-muted">@text-muted</label>
     <input id="input-@text-muted" type="text" value="@gray-light" data-var="@text-muted" class="form-control"/>
     <p class="help-block">Text muted color</p>
@@ -1735,19 +1740,15 @@
     <input id="input-@page-header-border-color" type="text" value="@gray-lighter" data-var="@page-header-border-color" class="form-control"/>
     <p class="help-block">Page header border color</p>
   </div>
-</div>
-<h2 id="miscellaneous">Miscellaneous</h2>
-<p></p>
-<div class="row">
+  <div class="bs-customizer-input">
+    <label for="input-@dl-horizontal-offset">@dl-horizontal-offset</label>
+    <input id="input-@dl-horizontal-offset" type="text" value="@component-offset-horizontal" data-var="@dl-horizontal-offset" class="form-control"/>
+    <p class="help-block">Width of horizontal description list titles</p>
+  </div>
   <div class="bs-customizer-input">
     <label for="input-@hr-border">@hr-border</label>
     <input id="input-@hr-border" type="text" value="@gray-lighter" data-var="@hr-border" class="form-control"/>
     <p class="help-block">Horizontal line color.</p>
-  </div>
-  <div class="bs-customizer-input">
-    <label for="input-@component-offset-horizontal">@component-offset-horizontal</label>
-    <input id="input-@component-offset-horizontal" type="text" value="180px" data-var="@component-offset-horizontal" class="form-control"/>
-    <p class="help-block">Horizontal offset for forms and lists.</p>
   </div>
 </div>
 <!-- NOTE: DO NOT EDIT THE PRECEDING SECTION DIRECTLY! It is autogenerated via the `build-customizer-html` Grunt task using the customizer-variables.jade template.-->

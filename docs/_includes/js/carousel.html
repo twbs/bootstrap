@@ -1,8 +1,9 @@
 <div class="bs-docs-section">
   <h1 id="carousel" class="page-header">Carousel <small>carousel.js</small></h1>
 
+  <p>A slideshow component for cycling through elemnts, like a carousel. <strong>Nested carousels are not supported.</strong></p>
+
   <h2 id="carousel-examples">Examples</h2>
-  <p>The slideshow below shows a generic plugin and component for cycling through elements like a carousel.</p>
   <div class="bs-example">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -10,7 +11,7 @@
         <li data-target="#carousel-example-generic" data-slide-to="1"></li>
         <li data-target="#carousel-example-generic" data-slide-to="2"></li>
       </ol>
-      <div class="carousel-inner">
+      <div class="carousel-inner" role="listbox">
         <div class="item active">
           <img data-src="holder.js/900x500/auto/#777:#555/text:First slide" alt="First slide">
         </div>
@@ -23,9 +24,11 @@
       </div>
       <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
       </a>
       <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
       </a>
     </div>
   </div><!-- /example -->
@@ -39,7 +42,7 @@
   </ol>
 
   <!-- Wrapper for slides -->
-  <div class="carousel-inner">
+  <div class="carousel-inner" role="listbox">
     <div class="item active">
       <img src="..." alt="...">
       <div class="carousel-caption">
@@ -58,9 +61,11 @@
   <!-- Controls -->
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
   </a>
   <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
   </a>
 </div>
 {% endhighlight %}
@@ -79,7 +84,7 @@
         <li data-target="#carousel-example-captions" data-slide-to="1"></li>
         <li data-target="#carousel-example-captions" data-slide-to="2"></li>
       </ol>
-      <div class="carousel-inner">
+      <div class="carousel-inner" role="listbox">
         <div class="item active">
           <img data-src="holder.js/900x500/auto/#777:#777" alt="First slide image">
           <div class="carousel-caption">
@@ -104,9 +109,11 @@
       </div>
       <a class="left carousel-control" href="#carousel-example-captions" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
       </a>
       <a class="right carousel-control" href="#carousel-example-captions" role="button" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
       </a>
     </div>
   </div><!-- /example -->
@@ -132,7 +139,7 @@
 
   <h3>Via data attributes</h3>
   <p>Use data attributes to easily control the position of the carousel. <code>data-slide</code> accepts the keywords <code>prev</code> or <code>next</code>, which alters the slide position relative to its current position. Alternatively, use <code>data-slide-to</code> to pass a raw slide index to the carousel <code>data-slide-to="2"</code>, which shifts the slide position to a particular index beginning with <code>0</code>.</p>
-  <p>The <code>data-ride="carousel"</code> attribute is used to mark a carousel as animating starting at page load.</p>
+  <p>The <code>data-ride="carousel"</code> attribute is used to mark a carousel as animating starting at page load. <strong class="text-danger">It cannot be used in combination with (redundant and unnecessary) explicit JavaScript initialization of the same carousel.</strong></p>
 
   <h3>Via JavaScript</h3>
   <p>Call carousel manually with:</p>

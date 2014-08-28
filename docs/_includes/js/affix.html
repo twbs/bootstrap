@@ -14,8 +14,8 @@
   <p>Here's how the affix plugin works:</p>
   <ol>
     <li>To start, the plugin adds <code>.affix-top</code> to indicate the element is in its top-most position. At this point no CSS positioning is required.</li>
-    <li>Scrolling past the element you want affixed should trigger the actual affixing. This is where <code>.affix</code> replaces <code>.affix-top</code> and sets <code>position: fixed;</code> (provided by Bootstrap's code CSS).</li>
-    <li>If a bottom offset is defined, scrolling past that should replace <code>.affix</code> with <code>.affix-bottom</code>. Since offsets are optional, setting one requires you to set the appropriate CSS. In this case, add <code>position: absolute;</code> when necessary. The plugin uses the data attribute or JavaScript option to determine where to position the element from there.</li>
+    <li>Scrolling past the element you want affixed should trigger the actual affixing. This is where <code>.affix</code> replaces <code>.affix-top</code> and sets <code>position: fixed;</code> (provided by Bootstrap's CSS).</li>
+    <li>If a bottom offset is defined, scrolling past it should replace <code>.affix</code> with <code>.affix-bottom</code>. Since offsets are optional, setting one requires you to set the appropriate CSS. In this case, add <code>position: absolute;</code> when necessary. The plugin uses the data attribute or JavaScript option to determine where to position the element from there.</li>
   </ol>
   <p>Follow the above steps to set your CSS for either of the usage options below.</p>
 
@@ -31,14 +31,14 @@
   <h3>Via JavaScript</h3>
   <p>Call the affix plugin via JavaScript:</p>
 {% highlight js %}
-  $('#my-affix').affix({
-    offset: {
-      top: 100
-    , bottom: function () {
-        return (this.bottom = $('.footer').outerHeight(true))
-      }
+$('#myAffix').affix({
+  offset: {
+    top: 100,
+    bottom: function () {
+      return (this.bottom = $('.footer').outerHeight(true))
     }
-  })
+  }
+})
 {% endhighlight %}
 
 
@@ -75,7 +75,7 @@
 
 
   <h3>Events</h3>
-  <p>Bootstrap's affix class exposes a few events for hooking into affix functionality.</p>
+  <p>Bootstrap's affix plugin exposes a few events for hooking into affix functionality.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
       <thead>
