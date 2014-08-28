@@ -67,7 +67,7 @@
 
     return $e.attr('data-content')
       || (typeof o.content == 'function' ?
-            o.content.call($e[0]) :
+            o.content.call(this,$e[0]) :
             o.content)
   }
 
