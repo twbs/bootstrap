@@ -20,6 +20,7 @@ module.exports = function (grunt) {
   var generateGlyphiconsData = require('./grunt/bs-glyphicons-data-generator.js');
   var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
   var generateRawFiles = require('./grunt/bs-raw-files-generator.js');
+  var generateCommonJSModule = require('./grunt/bs-commonjs-generator.js');
   var updateShrinkwrap = require('./grunt/shrinkwrap.js');
 
   // Project configuration.
@@ -457,6 +458,11 @@ module.exports = function (grunt) {
   grunt.registerTask('build-raw-files', 'Add scripts/less files to customizer.', function () {
     var banner = grunt.template.process('<%= banner %>');
     generateRawFiles(grunt, banner);
+  });
+
+  grunt.registerTask('build-commonjs', 'Build CommonJS entrypoint module for JS.', function () {
+    var files = grunt.config.get('concat.bootstrap.src');
+    generateCommonJSModule(grunt, files);
   });
 
   // Task for updating the npm packages used by the Travis build.
