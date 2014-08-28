@@ -7,11 +7,10 @@ module.exports = function generateCommonJSModule(grunt, srcFiles, destFilepath) 
 
   function srcPathToDestRequire(srcFilepath) {
     var requirePath = path.relative(destDir, srcFilepath);
-    return "require('"+requirePath+"')";
+    return 'require(\'' + requirePath + '\')';
   }
 
   var moduleOutputJs = srcFiles.map(srcPathToDestRequire).join('\n');
-  
   try {
     fs.writeFileSync(destFilepath, moduleOutputJs);
   }
