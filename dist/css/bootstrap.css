@@ -205,8 +205,8 @@ th {
   abbr[title]:after {
     content: " (" attr(title) ")";
   }
-  a[href^="javascript:"]:after,
-  a[href^="#"]:after {
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
     content: "";
   }
   pre,
@@ -241,10 +241,6 @@ th {
   .navbar {
     display: none;
   }
-  .table td,
-  .table th {
-    background-color: #fff !important;
-  }
   .btn > .caret,
   .dropup > .btn > .caret {
     border-top-color: #000 !important;
@@ -254,6 +250,10 @@ th {
   }
   .table {
     border-collapse: collapse !important;
+  }
+  .table td,
+  .table th {
+    background-color: #fff !important;
   }
   .table-bordered th,
   .table-bordered td {
