@@ -102,6 +102,38 @@ $(function () {
     $target.click()
   })
 
+  test('should not close a collapse when initialized with "show" if already shown', function () {
+    stop()
+
+    expect(0)
+
+    var $test = $('<div id="test1" class="in"/>')
+      .appendTo('#qunit-fixture')
+      .on('hide.bs.collapse', function () {
+        ok(false)
+      })
+
+    $test.bootstrapCollapse('show')
+
+    setTimeout(start, 0)
+  })
+
+  test('should open a collapse when initialized with "show" if not already shown', function () {
+    stop()
+
+    expect(1)
+
+    var $test = $('<div id="test1" />')
+      .appendTo('#qunit-fixture')
+      .on('show.bs.collapse', function () {
+        ok(true)
+      })
+
+    $test.bootstrapCollapse('show')
+
+    setTimeout(start, 0)
+  })
+
   test('should remove "collapsed" class from active accordion target', function () {
     stop()
 
