@@ -1,11 +1,12 @@
 <div class="bs-docs-section">
   <h1 id="input-groups" class="page-header">Input groups</h1>
 
-  <p class="lead">Extend form controls by adding text or buttons before, after, or on both sides of any text-based input. Use <code>.input-group</code> with an <code>.input-group-addon</code> to prepend or append elements to a single <code>.form-control</code>.</p>
+  <p class="lead">Extend form controls by adding text or buttons before, after, or on both sides of any text-based <code>&lt;input&gt;</code>. Use <code>.input-group</code> with an <code>.input-group-addon</code> to prepend or append elements to a single <code>.form-control</code>.</p>
 
   <div class="bs-callout bs-callout-danger">
-    <h4>Cross-browser compatibility</h4>
+    <h4>Textual <code>&lt;input&gt;</code>s only</h4>
     <p>Avoid using <code>&lt;select&gt;</code> elements here as they cannot be fully styled in WebKit browsers.</p>
+    <p>Avoid using <code>&lt;textarea&gt;</code> elements here as their <code>rows</code> attribute will not be respected in some cases.</p>
   </div>
   <div class="bs-callout bs-callout-warning">
     <h4>Tooltips &amp; popovers in input groups require special setting</h4>
