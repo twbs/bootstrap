@@ -152,7 +152,7 @@
 
   $(document)
     .on('click.bs.dropdown.data-api', clearMenus)
-    .on('click.bs.dropdown.data-api', '.dropdown form, .dropdown .dropdown-header', function (e) { e.stopPropagation() })
+    .on('click.bs.dropdown.data-api', '.dropdown form, .dropdown .dropdown-header, .dropdown .divider', function (e) { e.stopPropagation() })
     .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
     .on('keydown.bs.dropdown.data-api', toggle + ', [role="menu"], [role="listbox"]', Dropdown.prototype.keydown)
 
