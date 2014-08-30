@@ -51,7 +51,7 @@
     "grunt-exec": "~0.4.6",
     "grunt-html-validation": "~0.1.18",
     "grunt-jekyll": "~0.4.2",
-    "grunt-jscs": "~0.6.2",
+    "grunt-jscs": "~0.7.0",
     "grunt-saucelabs": "~8.3.1",
     "grunt-sed": "~0.1.1",
     "load-grunt-tasks": "~0.6.0",
