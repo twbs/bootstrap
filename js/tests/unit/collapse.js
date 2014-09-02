@@ -75,7 +75,7 @@ $(function () {
   test('should remove "collapsed" class from target when collapse is shown', function () {
     stop()
 
-    var $target = $('<a data-toggle="collapse" href="#test1"/>').appendTo('#qunit-fixture')
+    var $target = $('<a data-toggle="collapse" class="collapsed" href="#test1"/>').appendTo('#qunit-fixture')
 
     $('<div id="test1"/>')
       .appendTo('#qunit-fixture')
