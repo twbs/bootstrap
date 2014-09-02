@@ -164,11 +164,9 @@
 
     if (!data || !data.transitioning) {
       if ($parent) $parent.find('[data-toggle="collapse"][data-parent="' + parent + '"]').not($this).addClass('collapsed').attr('aria-expanded', false)
-      if ($target.hasClass('in')) {
-        $this.addClass('collapsed').attr('aria-expanded', false)
-      } else {
-        $this.removeClass('collapsed').attr('aria-expanded', true)
-      }
+      var isCollapsed = $target.hasClass('in')
++     $this.toggleClass('collapsed', isCollapsed).attr('aria-expanded', !isCollapsed)
+
     }
 
     Plugin.call($target, option)
