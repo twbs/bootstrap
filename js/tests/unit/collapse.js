@@ -102,7 +102,6 @@ $(function () {
     $target.click()
   })
 
-
   test('should not close a collapse when initialized with "show" if already shown', function () {
     stop()
 
