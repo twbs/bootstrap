@@ -739,6 +739,36 @@ $(function () {
     $tooltip.trigger('mouseenter')
   })
 
+  test('should hide element after delay hide even if moused out before end of fade in', function () {
+    stop()
+
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip for test"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({ delay: { show: 200, hide: 200 }})
+
+    setTimeout(function () {
+      ok(!$tooltip.data('bs.tooltip').$tip, '1ms: tooltip exists')
+
+      setTimeout(function () {
+        ok($tooltip.data('bs.tooltip').$tip.is('.fade.in'), '200ms: tooltip faded in')
+      }, 200)
+
+      setTimeout(function () {
+        ok($tooltip.data('bs.tooltip').$tip.is('.fade.in'), '210ms: tooltip faded in')
+
+        $tooltip.trigger('mouseout')
+      }, 210)
+
+      setTimeout(function () {
+        ok(!$tooltip.data('bs.tooltip').$tip.is('.fade.in'), '420ms: tooltip faded out')
+
+        start()
+      }, 420)
+    }, 0)
+
+    $tooltip.trigger('mouseenter')
+  })
+
   test('should correctly position tooltips on SVG elements', function () {
     if (!window.SVGElement) {
       // Skip IE8 since it doesn't support SVG
