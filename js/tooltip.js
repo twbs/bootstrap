@@ -206,7 +206,7 @@
         that.$element.trigger('shown.bs.' + that.type)
         that.hoverState = null
 
-        if (oldHoverState === "out") that.leave(that)
+        if (oldHoverState === 'out') that.leave(that)
       }
 
       $.support.transition && this.$tip.hasClass('fade') ?
