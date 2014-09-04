@@ -8,12 +8,6 @@
 .theme-showcase > p > .btn {
   margin: 5px 0;
 }
-/*
-.carousel-inner > .item > img,
-.thumbnail > img {
-  width:100% !important;
-}
-*/
 .zero-clipboard {
   display: none;
 }
@@ -31,6 +25,18 @@ margin: 20px;
 }
 .helper-example p {
   padding: 15px;
+}
+
+/* navbar */
+
+
+.navbar-default.navbar-top {
+  min-height:80px;
+  margin-bottom:29px;
+}
+.navbar-default.navbar-top a {
+  padding-top:30px;
+  min-height:80px;
 }
 
 /* panels docs */
@@ -59,25 +65,6 @@ margin: 20px;
     margin-bottom:15px;
   }
 }
-/*
-.panel-docs .panel-body {
-  padding: 30px;
-  border:0 none;
-}
-.panel-docs .panel-footer {
-  padding: 20px 30px;
-  border:0 none;
-}
-
-.panel-docs .panel-heading {
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
-}
-.panel-docs .panel-footer {
-  border-bottom-right-radius: 6px;
-  border-bottom-left-radius: 6px;
-}
-*/
 .panel-docs > .panel-body h1 {
   margin-top:0;
 }
@@ -89,18 +76,7 @@ margin: 20px;
   font-weight: normal !important;
   margin-top: 20px !important;
   top:0 !important;
-}/*
-.panel-example .panel-body {
-  padding: 15px;
 }
-*/
-/*
-.panel-example .panel-footer {
-  padding: 10px 15px;
-  background-color: #f5f5f5;
-  border-top: 1px solid #ddd;
-}
-*/
 .panel-docs > .panel-heading {
   background-color: #aaa;
   color:#fff;

@@ -7,8 +7,8 @@
     <meta name="description" content="Descripción del sitio.">
     <meta name="author" content="Autor del sitio.">
     <title>Buenos Aires Ciudad</title>
-    <link rel="shortcut icon" href="../bastrap3/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" href="../bastrap3/favicon-mobile.png">
+    <link rel="shortcut icon" href="http://www.buenosaires.gob.ar/estilos/bastrap3/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="http://www.buenosaires.gob.ar/estilos/bastrap3/favicon-mobile.png">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../bastrap3/bastrap.css">
     <link rel="stylesheet" href="assets/bastrap-buenosaires.css">
@@ -23,8 +23,8 @@
 
 
   </head>
-  <body class="bg-white-1 ba-home">
-    <header class="navbar navbar-primary navbar-top ba-navbar-home" role="navigation">
+  <body class="bg-white-1 ba-area">
+    <header class="navbar navbar-primary navbar-top" role="navigation">
 
 
 <div class="ba-navbar-top">
@@ -33,12 +33,12 @@
         <div class="row">
           <div class="col-md-6">
             <a class="navbar-brand" href="index.html">
-              <img src="../bastrap3/bac-header-big.png" class="ribbon ribbon-black" />
+              <img src="../bastrap3/bac-header.png" />
             </a>
           </div>
           <div class="col-md-6">
             <form class="navbar-form navbar-right" role="search">
-              <input class="form-control input-lg" placeholder="Buscar ..." type="text">
+              <input class="form-control" placeholder="Buscar ..." type="text">
               <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
             </form>
           </div>
@@ -52,7 +52,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="navbar-header">
-              <button type="button" class="navbar-toggle btn btn-primary btn-block btn-lg" data-toggle="collapse" data-target="#header-main-nav">
+              <button type="button" class="navbar-toggle btn btn-primary btn-block" data-toggle="collapse" data-target="#header-main-nav">
                 <span>Menú principal</span>
                 <span class="glyphicon glyphicon-chevron-down"></span>
               </button>
@@ -85,32 +85,86 @@
 
     </header>
 
-<!--
-    <nav class="navbar navbar-default navbar-top" role="navigation">
-      <div class="container">
-
-      </div>
-    </nav>
--->
 
 
     <div class="wrapper">
 
-      <div class="container">
-<!--
-        <div class="row row-alert">
-          <div class="col-md-12">
-            <a href="#" class="alert-spot alert-spot-danger" data-original-title="" title="">
-              <span class="glyphicon glyphicon-fire"></span>
-              <div class="alert-link-text">
-                <h4>Incendio en el Microcentro</h4>
-                <p>Circulá con precaución. Si vas a andar en bicicleta usá casco.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="area-header bg-white-1">
+
+
+          <nav class="navbar navbar-default navbar-top" role="navigation">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">Desarrollo Urbano</a>
+                    <button type="button" class="navbar-toggle btn btn-default btn-block" data-toggle="collapse" data-target="#header-sub-nav">
+                      <span>Menú</span>
+                      <span class="glyphicon glyphicon-chevron-down"></span>
+                    </button>
+                   </div>
+                  <div class="navbar-collapse collapse navbar-right" id="header-sub-nav">
+                    <ul class="nav navbar-nav">
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Licitaciones <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Action</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Institucional <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Action</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Enlaces <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Action</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-              <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
+            </div>
+          </nav>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+      <div class="container">
+
+
+        <div class="row">
+          <div class="col-md-12">
+            <ol class="breadcrumb">
+              <li><a href="#">Buenos Aires</a></li>
+              <li class="active">Desarrollo Urbano</li>
+            </ol>
           </div>
         </div>
--->
+
 
         <div class="row row-carousel">
           <div class="col-md-12">
@@ -140,7 +194,6 @@
             </div>
           </div>
         </div>
-
 
 
         <div class="row row-shortcut">
@@ -180,12 +233,12 @@
 
         <div class="row">
 
-          <div class="col-md-4 col-agendacultural">
+          <div class="col-md-8 col-sm-6 col-agendacultural">
             <div class="list-group list-group-content list-group-full">
-                  <h3>Agenda Cultural</h3>
+                  <h3>Novedades</h3>
 
 <div class="row">
-<div class="col-md-12 col-sm-6">
+<div class="col-md-6 col-sm-12">
                <a href="#" class="list-group-item list-thumb">
                   <div style="background-image:url(../docs/carousel1.jpg);">
                     <h4>Concursos anuales de Arte 2014</h4>
@@ -198,8 +251,14 @@
                   </div>
                   <p>Se inaugura la muestra que retrata a los grupos de campesinos armados que se resistían a la invasión alemana durante la 2º Guerra Mundial.</p>
                </a>
+               <a href="#" class="list-group-item list-thumb">
+                  <div style="background-image:url(../docs/carousel1.jpg);">
+                    <h4>Concursos anuales de Arte 2014</h4>
+                  </div>                  
+                  <p>La Legislatura de la Ciudad Autónoma de Buenos Aires convoca a los Concursos Anuales de Arte, con obras cuya temática refiera a los usos y costumbres de la ciudad de Buenos Aires.</p>
+               </a>
 </div>
-<div class="col-md-12 col-sm-6">
+<div class="col-md-6 col-sm-12">
 
                <a href="#" class="list-group-item list-thumb">
                   <div style="background-image:url(../docs/jumbo2.jpg);">
@@ -212,6 +271,12 @@
                     <h4>Muestra fotográfica del Movimiento Partisano</h4>
                   </div>                  
                   <p>Se inaugura la muestra que retrata a los grupos de campesinos armados que se resistían a la invasión alemana durante la 2º Guerra Mundial.</p>
+               </a>
+               <a href="#" class="list-group-item list-thumb">
+                  <div style="background-image:url(../docs/jumbo2.jpg);">
+                    <h4>Concursos anuales de Arte 2014</h4>
+                  </div>                  
+                  <p>La Legislatura de la Ciudad Autónoma de Buenos Aires convoca a los Concursos Anuales de Arte, con obras cuya temática refiera a los usos y costumbres de la ciudad de Buenos Aires.</p>
                </a>
 </div>
 </div>
@@ -244,58 +309,29 @@
                   <h4>Pago voluntario de infractores de tránsito</h4>
                   <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.</p>
                </a>
-               <a href="#" class="list-group-item">
-                  <h4>Duplicado de DNI</h4>
-                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.</p>
-               </a>
-               <a href="#" class="list-group-item">
-                  <h4>Renovación de licencia de conducir</h4>
-                  <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam.</p>
-               </a>
-               <a href="#" class="list-group-item">
-                  <h4>Solicitud trámites de matrimonio</h4>
-                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.</p>
-               </a>
-               <a href="#" class="list-group-item">
-                  <h4>Consulta de infracciones</h4>
-                  <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam.</p>
-               </a>
-
             </div>
 
             <button class="btn btn-blue btn-lg btn-block">Ver todos los trámites</button>
 
           </div>
 
-          <div class="col-md-4 col-sm-6">
-          <div class="home-mapa">
+          <div class="col-md-4 col-sm-6 col-tramitesyservicios">
             <div class="list-group-content list-group-full">
-
-                  <h3>Mapa turístico</h3>
+                  <h3>Seguí a D. Urbano</h3>
             </div>
 
-            <div class="list-group list-group-panel">
-
-<!--
-                 <div href="#" class="list-group-item list-map" style="height:300px;">
-                    <iframe src="http://epok.buenosaires.gob.ar/pub/mapa/planmicrocentro/obras_en_microcentro/" name="Mapa de Obras y Desvíos" width="100%" height="300" scrolling="no" frameborder="0"></iframe>
-                 </div>
--->
-
-            </div>
-
-            <button class="btn btn-blue btn-lg btn-block">Ver todo el mapa</button>
-          </div>
-            <div class="list-group list-group-panel home-banner">
-              <a href="#" class="list-group-item list-group-item-img">
-              <h4>Terminá la Secundaria</h4>
-                <div class="home-banner-footer">
-                  <div class="btn btn-blue btn-lg btn-block">Conocer más</div>
+                <div class="ba-social">
+                  <ul>
+                    <li><a href="http://www.facebook.com/gcba" target="_blank"><img src="assets/social-fb.png" /></a></li>
+                    <li><a href="http://www.twitter.com/gcba" target="_blank"><img src="assets/social-tw.png" /></a></li>
+                    <li><a href="rss/noticias" target="_blank"><img src="assets/social-rss.png" /></a></li>
+                  </ul>
                 </div>
-                <img src="assets/banner.jpg" />
-              </a>
-            </div>
+
+
           </div>
+
+
 
         </div>
         
