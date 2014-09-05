@@ -40,7 +40,7 @@
   padding-right:5px;
 }
 
-@media (max-width:768px) {
+@media (max-width: 767px) {
   .navbar-top.navbar-primary .col-md-12 {
     padding-bottom:20px;
   }
@@ -95,7 +95,7 @@
   padding-right:15px;
   font-size:14px;
 }
-@media (max-width:992px) and (min-width: 768px) {
+@media (max-width:992px) and (min-width:  767px) {
   .navbar-primary.navbar-top .navbar-nav>li>a {
     padding-left:10px;
     padding-right:10px;
@@ -198,11 +198,16 @@ right: -10px;
   padding-top:12px;
 }
 
-.navbar-form {
+.ba-navbar-top .navbar-form {
   margin-bottom:0;
 }
+@media (min-width:  768px) {
+  .ba-navbar-top .form-control {
+    width: 360px;
+  }
+}
 
-@media (max-width: 768px) {
+@media (max-width:  767px) {
   .navbar-primary.navbar-top.ba-navbar-home .navbar-form {
     margin-top: 60px;
   }
@@ -322,23 +327,50 @@ right: -10px;
 }
 
 
-.area-title {
-  padding-bottom:45px !important;
+
+
+.ba-area .jumbotron {
+  padding-bottom:0;
 }
 
-
-
-.ba-area .breadcrumb {
+.jumbotron .breadcrumb {
   padding-top: 20px;
   margin-bottom: 0;
 }
-.ba-area .breadcrumb a {
-  color: rgba(255, 255, 255, .6);
+.jumbotron-main .breadcrumb a {
+  color: rgba(255, 255, 255, .8);
 }
-.ba-area .breadcrumb a:hover,
-.ba-area .breadcrumb a:focus {
+.jumbotron-main .breadcrumb a:hover,
+.jumbotron-main .breadcrumb a:focus {
   color: #fff;
 }
+
+.jumbotron .jumbotron-overlay {
+  background:transparent;
+}
+.jumbotron-main .jumbotron-overlay {
+  background:rgba(0,0,0,.4);
+}
+
+.jumbotron .area-title {
+  margin-bottom:15px;
+}
+.jumbotron-main .area-title {
+  margin-bottom:45px;
+}
+
+
+
+
+.ba-area .jumbotron {
+  margin-bottom:30px;
+}
+
+.ba-home .navbar-primary,
+.ba-area .jumbotron-main {
+  margin-bottom:60px;
+}
+
 
 
 
@@ -382,9 +414,7 @@ right: -10px;
 
 
 
-.row-carousel {
-  margin-top:60px;
-}
+
 
 
 
