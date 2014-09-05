@@ -2,7 +2,11 @@
 
 
 
-- MODIFICAR DOCUMENTACION CODIGO EJEMPLO [o eliminar.....................]
+
+
+
+
+- NAVBAR disabled......................
 
 
 ritmo vertical YA

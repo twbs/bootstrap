@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../bastrap3/bastrap.css">
     <link rel="stylesheet" href="assets/bastrap-buenosaires.css">
+    <!--[if lt IE 9]>
+      <script src="../bastrap3/ba-modernizr.js"></script>
+    <![endif]-->
 
 
 
@@ -30,8 +33,8 @@
 
 
 
-  
-    <header class="navbar navbar-primary navbar-top ba-navbar-home" role="navigation">
+
+    <header class="navbar navbar-primary navbar-top" role="navigation">
 
 
 <div class="ba-navbar-top">
@@ -39,9 +42,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <a class="navbar-brand" href="index.html">
-              <img src="../bastrap3/bac-header-big.png" class="ribbon ribbon-black" />
-            </a>
+            <a class="navbar-brand bac-header-big" href="index.html"></a>
           </div>
           <div class="col-md-6">
             <form class="navbar-form navbar-right" role="search">
@@ -75,7 +76,7 @@
                 <li><a href="#">Accesible</a></li>
               </ul>
             <ul class="nav navbar-nav sub-brand">
-              <li><a href="#">Ingresar a <img src="../bastrap3/ba-btn.png" class="glyphicon glyphicon-ba" /></a></li>
+              <li><a href="#">Entrar a <span class="ba-btn">&nbsp;</span></a></li>
             </ul>
 
             </div>
@@ -131,11 +132,17 @@
                   </div>
                 </a>
                 <a class="item" href="#">
+                <!--
                   <img src="../docs/jumbo2.jpg" alt="Carousel test">
                   <div class="carousel-caption">
                     <h3>Acciones para el crecimiento de los barrios del Sur</h3>
                     <p>Para la Ciudad su desarrollo es estratégico y se evidencia en sus Distritos Económicos; el subte y el Metrobus; la Ciudad del Rock; la construcción de la Villa Olímpica para 2018; los incentivos para radicación de empresas; la sede de la Policía Metropolitana, entre otras.</p>
                   </div>
+                -->
+                <div class="embed-responsive embed-responsive-16by9">
+                  <iframe width="1280" height="520" src="http://www.youtube.com/embed/9mwGtJ7rOhw" frameborder="0" allowfullscreen></iframe>
+                </div>
+
                 </a>
               </div>
               <a class="left carousel-control" href="#carousel-example-captions" data-slide="prev">
@@ -317,9 +324,9 @@
           <div class="row footer-row">
 
             <div class="col-md-3 col-sm-5">
-              <a class="navbar-brand" href="http://www.buenosaires.gob.ar" target="_blank">
-                <img src="http://www.buenosaires.gob.ar/estilos/bastrap3/bac-footer.png" />
-              </a>
+            <div class="clearfix">
+              <a class="navbar-brand bavos-footer" href="index.html" target="_blank"></a>
+            </div>
               <div>
                 <h5>Seguí al Gobierno de la Ciudad</h5>
                 <ul class="footer-social">
@@ -452,20 +459,6 @@
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-<!--
-    <script src="../bastrap3/jquery.matchHeight-min.js"></script>
-    <script type="text/javascript">
-      $(function() {
-          $('.list-group-panel-body').matchHeight();
-      });
-    </script>
-    -->
-
 
 
 
