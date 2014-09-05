@@ -197,7 +197,6 @@
   margin-right: @navbar-padding-horizontal;
   padding: 9px 10px;
   .navbar-vertical-align(34px);
-  background-color: transparent;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid transparent;
   border-radius: @border-radius-base;
@@ -433,13 +432,19 @@
   }
 
   .navbar-toggle {
+    background-color: @navbar-default-toggle-bg;
     border-color: @navbar-default-toggle-border-color;
     &:hover,
     &:focus {
       background-color: @navbar-default-toggle-hover-bg;
+      border-color: @navbar-default-toggle-hover-border-color;
     }
     .icon-bar {
       background-color: @navbar-default-toggle-icon-bar-bg;
+    }
+    &:hover .icon-bar,
+    &:focus .icon-bar {
+      background-color: @navbar-default-toggle-hover-icon-bar-bg;
     }
   }
 
@@ -568,13 +573,19 @@
 
   // Darken the responsive nav toggle
   .navbar-toggle {
+    background-color: @navbar-inverse-toggle-bg;
     border-color: @navbar-inverse-toggle-border-color;
     &:hover,
     &:focus {
       background-color: @navbar-inverse-toggle-hover-bg;
+      border-color: @navbar-inverse-toggle-hover-border-color;
     }
     .icon-bar {
       background-color: @navbar-inverse-toggle-icon-bar-bg;
+    }
+    &:hover .icon-bar,
+    &:focus .icon-bar {
+      background-color: @navbar-inverse-toggle-hover-icon-bar-bg;
     }
   }
 
