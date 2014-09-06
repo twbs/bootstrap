@@ -304,10 +304,23 @@
 
   Tooltip.prototype.setContent = function () {
     var $tip  = this.tip()
-    var title = this.getTitle()
 
-    $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title)
+    this.setElementContent($tip.find('.tooltip-inner'), this.getTitle())
     $tip.removeClass('fade in top bottom left right')
+  }
+
+  Tooltip.prototype.setElementContent = function ($element, content) {
+    var html = this.options.html
+    if (typeof content == 'object' && (content.nodeType || content.jquery)) {
+      // content is a DOM node or a jQuery
+      if (html) {
+        if (!$(content).parent().is($element)) $element.empty().append(content)
+      } else {
+        $element.text($(content).text())
+      }
+    } else {
+      $element[html ? 'html' : 'text'](content)
+    }
   }
 
   Tooltip.prototype.hide = function (callback) {
