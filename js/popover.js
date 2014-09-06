@@ -41,14 +41,10 @@
   }
 
   Popover.prototype.setContent = function () {
-    var $tip    = this.tip()
-    var title   = this.getTitle()
-    var content = this.getContent()
+    var $tip = this.tip()
 
-    $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
-    $tip.find('.popover-content').children().detach().end()[ // we use append for html objects to maintain js events
-      this.options.html ? (typeof content == 'string' ? 'html' : 'append') : 'text'
-    ](content)
+    this.setElementContent($tip.find('.popover-title'), this.getTitle())
+    this.setElementContent($tip.find('.popover-content'), this.getContent())
 
     $tip.removeClass('fade top bottom left right in')
 
