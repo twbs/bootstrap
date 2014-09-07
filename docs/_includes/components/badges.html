@@ -5,9 +5,17 @@
 
   <div class="bs-example">
     <a href="#">Inbox <span class="badge">42</span></a>
+    <br><br>
+    <button class="btn btn-primary" type="button">
+      Messages <span class="badge">4</span>
+    </button>
   </div>
 {% highlight html %}
 <a href="#">Inbox <span class="badge">42</span></a>
+
+<button class="btn btn-primary" type="button">
+  Messages <span class="badge">4</span>
+</button>
 {% endhighlight %}
 
   <h4>Self collapsing</h4>
@@ -26,36 +34,12 @@
       <li role="presentation"><a href="#">Profile</a></li>
       <li role="presentation"><a href="#">Messages <span class="badge">3</span></a></li>
     </ul>
-    <br>
-    <ul class="nav nav-pills nav-stacked" role="tablist" style="max-width: 260px;">
-      <li role="presentation" class="active">
-        <a href="#">
-          <span class="badge pull-right">42</span>
-          Home
-        </a>
-      </li>
-      <li role="presentation"><a href="#">Profile</a></li>
-      <li role="presentation">
-        <a href="#">
-          <span class="badge pull-right">3</span>
-          Messages
-        </a>
-      </li>
-    </ul>
-    <br>
-    <button class="btn btn-primary" type="button">
-      Messages <span class="badge">4</span>
-    </button>
   </div>
 {% highlight html %}
-<ul class="nav nav-pills nav-stacked" role="tablist">
-  <li role="presentation" class="active">
-    <a href="#">
-      <span class="badge pull-right">42</span>
-      Home
-    </a>
-  </li>
-  ...
+<ul class="nav nav-pills" role="tablist">
+  <li role="presentation" class="active"><a href="#">Home <span class="badge">42</span></a></li>
+  <li role="presentation"><a href="#">Profile</a></li>
+  <li role="presentation"><a href="#">Messages <span class="badge">3</span></a></li>
 </ul>
 {% endhighlight %}
 </div>
