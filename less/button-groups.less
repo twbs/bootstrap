@@ -217,6 +217,19 @@
     width: 100%;
   }
 
+  > .btn-group > .btn:first-child:not(:only-of-type) {
+    margin-right: -32px;
+    padding-right: 32px;
+  }  
+  > .btn-group > .dropdown-toggle{
+    float:right;
+    width:auto;    
+    z-index:3;
+  }  
+  > .btn-group:last-child > .btn:first-child {
+    .border-right-radius(@border-radius-large);
+  }
+  
   > .btn-group .dropdown-menu {
     left: auto;
   }
