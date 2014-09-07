@@ -217,11 +217,20 @@
     width: 100%;
   }
 
-  > .btn-group > .btn:first-child:not(:only-of-type) {
-    padding-right: 32px;
-    margin-right: -32px;
+  > .btn-group > .btn:first-child{
+    padding-right: (2 * @caret-width-base + 18);
+    margin-right: (-2 * @caret-width-base - 18);
   }  
-  > .btn-group > .btn:first-child:not(:only-of-type) + .dropdown-toggle {
+  > .btn-group-lg > .btn-lg:first-child {
+    padding-right: (2 * @caret-width-large + 26);
+    margin-right: (-2 * @caret-width-large - 26);
+  }
+  //fallback to exclude non-split button dropdown
+  > .btn-group > .btn.dropdown-toggle:first-child {
+    padding-right: 0;
+    margin-right: 0;
+  }
+  > .btn-group > .btn + .dropdown-toggle {
     z-index: 3;
     float: right;
     width: auto;
