@@ -102,10 +102,10 @@
 
   $(document)
     .on('click.bs.button.data-api', '[data-toggle^="button"]', function (e) {
-      var $btn = $(e.target)
-      if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
-      Plugin.call($btn, 'toggle')
+      var $target = $(e.target)
+      if (!$target.hasClass('btn')) $target = $target.closest('.btn')
       e.preventDefault()
+      setTimeout(function () { Plugin.call($target, 'toggle') }, 1)
     })
     .on('focus.bs.button.data-api blur.bs.button.data-api', '[data-toggle^="button"]', function (e) {
       $(e.target).closest('.btn').toggleClass('focus', e.type == 'focus')
