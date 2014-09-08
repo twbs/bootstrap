@@ -55,14 +55,17 @@
 
     this.$element
       .removeClass('collapse')
-      .addClass('collapsing')[dimension](0)
+      .addClass('collapsing')
+      .css(dimension, 0)
 
     this.transitioning = 1
 
     var complete = function () {
       this.$element
         .removeClass('collapsing')
-        .addClass('collapse in')[dimension]('')
+        .addClass('collapse in')
+        .css(dimension, '')
+
       this.transitioning = 0
       this.$element
         .trigger('shown.bs.collapse')
@@ -74,7 +77,8 @@
 
     this.$element
       .one('bsTransitionEnd', $.proxy(complete, this))
-      .emulateTransitionEnd(Collapse.TRANSITION_DURATION)[dimension](this.$element[0][scrollSize])
+      .emulateTransitionEnd(Collapse.TRANSITION_DURATION)
+      .css(dimension, this.$element[0][scrollSize])
   }
 
   Collapse.prototype.hide = function () {
@@ -86,7 +90,7 @@
 
     var dimension = this.dimension()
 
-    this.$element[dimension](this.$element[dimension]())[0].offsetHeight
+    this.$element.css(dimension, this.$element.css(dimension))[0].offsetHeight
 
     this.$element
       .addClass('collapsing')
@@ -105,7 +109,7 @@
     if (!$.support.transition) return complete.call(this)
 
     this.$element
-      [dimension](0)
+      .css(dimension, 0)
       .one('bsTransitionEnd', $.proxy(complete, this))
       .emulateTransitionEnd(Collapse.TRANSITION_DURATION)
   }
