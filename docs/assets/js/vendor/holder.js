@@ -249,10 +249,10 @@ function draw_svg(args){
 	var text_height = ts.height;
 	var width = dimensions.width,
 		height = dimensions.height;
-		
+
 	var font = template.font ? template.font : "Arial,Helvetica,sans-serif";
 	var text = template.text ? template.text : (Math.floor(dimensions.width) + "x" + Math.floor(dimensions.height));
-	
+
 	if (literal) {
 		var dimensions = holder.dimensions;
 		text = dimensions.width + "x" + dimensions.height;
@@ -262,11 +262,11 @@ function draw_svg(args){
 		text = (Math.floor(dimensions.width) + "x" + Math.floor(dimensions.height));
 	}
 	var string = svg_el({
-		text: text, 
-		width:width, 
-		height:height, 
-		text_height:text_height, 
-		font:font, 
+		text: text,
+		width:width,
+		height:height,
+		text_height:text_height,
+		font:font,
 		template:template
 	})
 	return "data:image/svg+xml;base64,"+btoa(unescape(encodeURIComponent(string)));
@@ -295,7 +295,7 @@ function render(mode, el, holder, src) {
 	el.setAttribute("data-src", src);
 	holder.theme = theme;
 	el.holder_data = holder;
-	
+
 	if (mode == "image") {
 		el.setAttribute("alt", text ? text : theme.text ? theme.text + " [" + dimensions_caption + "]" : dimensions_caption);
 		if (instance_config.use_fallback || !holder.auto) {
@@ -306,12 +306,12 @@ function render(mode, el, holder, src) {
 			el.style.backgroundColor = theme.background;
 		} else {
 			el.setAttribute("src", draw({ctx: ctx, dimensions: dimensions, template: theme, ratio:ratio, holder: holder}));
-			
+
 			if(holder.textmode && holder.textmode == "exact"){
 				resizable_images.push(el);
 				resizable_update(el);
 			}
-			
+
 		}
 	} else if (mode == "background") {
 		if (!instance_config.use_fallback) {
@@ -333,9 +333,9 @@ function render(mode, el, holder, src) {
 		if (el.style.display == "inline" || el.style.display === "" || el.style.display == "none") {
 			el.style.display = "block";
 		}
-		
+
 		set_initial_dimensions(el)
-		
+
 		if (instance_config.use_fallback) {
 			el.style.backgroundColor = theme.background;
 		} else {
@@ -513,7 +513,7 @@ app.run = function (o) {
 		instance_config.use_canvas = true;
 		instance_config.use_svg = false;
 	}
-			
+
 	if (typeof (options.images) == "string") {
 		imageNodes = selector(options.images);
 	} else if (window.NodeList && options.images instanceof window.NodeList) {
@@ -532,7 +532,7 @@ app.run = function (o) {
 		bgnodes = [options.bgnodes];
 	}
 	for (i = 0, l = imageNodes.length; i < l; i++) images.push(imageNodes[i]);
-	
+
 	var holdercss = document.getElementById("holderjs-style");
 	if (!holdercss) {
 		holdercss = document.createElement("style");
@@ -540,7 +540,7 @@ app.run = function (o) {
 		holdercss.type = "text/css";
 		document.getElementsByTagName("head")[0].appendChild(holdercss);
 	}
-	
+
 	if (!options.nocss) {
 		if (holdercss.styleSheet) {
 			holdercss.styleSheet.cssText += options.stylesheet;
@@ -550,7 +550,7 @@ app.run = function (o) {
 			}
 		}
 	}
-	
+
 	var cssregex = new RegExp(options.domain + "\/(.*?)\"?\\)");
 	for (var l = bgnodes.length, i = 0; i < l; i++) {
 		var src = window.getComputedStyle(bgnodes[i], null)

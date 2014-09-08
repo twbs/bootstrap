@@ -184,4 +184,3 @@ Run `grunt test` before committing to ensure your changes follow our coding stan
 By contributing your code, you agree to license your contribution under the [MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE).
 
 Prior to v3.1.0, Bootstrap was released under the Apache License v2.0.
-
