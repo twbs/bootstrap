@@ -212,13 +212,13 @@ right: -10px;
 .ba-navbar-top .navbar-form {
   margin-bottom:0;
 }
-@media (min-width:  768px) {
+@media (min-width: 768px) {
   .ba-navbar-top .form-control {
     width: 360px;
   }
 }
 
-@media (max-width:  767px) {
+@media (max-width: 767px) {
   /*
   .navbar-primary.navbar-top .navbar-form {
     margin-top: 60px;
@@ -286,11 +286,13 @@ right: -10px;
 
 /* home */
 
+/*
 .col-agendacultural .btn,
 .col-tramitesyservicios .btn,
 .home-mapa .btn {
   margin-bottom:60px;
 }
+*/
 .list-group-item-img h4 {
   font-family: "GothamBold", Helvetica, Arial, sans-serif;
   font-weight: normal;
@@ -307,6 +309,34 @@ right: -10px;
 .list-group-item-img h4:hover {
 	color:#fff;
 }
+
+.home-banner {
+  box-shadow:none;
+}
+
+.home-banner {
+  background-color:#f5f5f5;
+  text-align:center;
+  padding:30px;
+}
+.home-banner img {
+  margin-bottom:30px;
+  border-radius:4px;
+}
+.home-banner a:hover,
+.home-banner a:focus {
+  opacity:0.8;
+}
+.home-banner a:active {
+  opacity:1;
+}
+
+
+
+
+
+
+/*
 .home-banner-footer {
   position:absolute;
   z-index:9;
@@ -330,6 +360,7 @@ right: -10px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, .025),
               inset 0 2px 4px rgba(0, 0, 0, .125);
 }
+*/
 
 /* area */
 
@@ -416,6 +447,93 @@ right: -10px;
 }
 */
 
+
+
+
+
+
+
+
+
+
+.footer-social {
+  padding:0;
+  margin-bottom:30px;
+  overflow:auto;
+}
+.footer-social li {
+  list-style:none;
+  float:left;
+  margin-right:10px;
+}
+.footer-social a:hover,
+.footer-social a:focus,
+.ba-social a:hover,
+.ba-social a:focus {
+  opacity:0.8;
+}
+.footer-social a:active,
+.ba-social a:active {
+  opacity:1;
+}
+.footer-cc {
+  margin-top:45px;
+  font-size:12px;
+  color:#888;
+}
+.footer-cc p {
+  font-size:10px;
+}
+.footer-cc a {
+  display:block;
+  margin-bottom:5px;
+}
+
+
+
+
+
+
+
+
+.footer-social a {
+  width: 40px;
+  height: 40px;
+  display:inline-block;
+  background-repeat:no-repeat;
+  background-size:contain;
+}
+
+.social-fb {
+  background-image:url(social-fb.png);
+  background-image:url(social-fb.svg), none;
+}
+.social-tw {
+  background-image:url(social-tw.png);
+  background-image:url(social-tw.svg), none;
+}
+.social-yt {
+  background-image:url(social-yt.png);
+  background-image:url(social-yt.svg), none;
+}
+.social-fl {
+  background-image:url(social-fl.png);
+  background-image:url(social-fl.svg), none;
+}
+.social-rss {
+  background-image:url(social-rss.png);
+  background-image:url(social-rss.svg), none;
+}
+
+
+
+
+
+
+
+
+
+
 .ba-social {
   display:table;
   margin: 0 auto;
@@ -432,9 +550,50 @@ right: -10px;
 .ba-social li:last-child {
   margin-right:0;
 }
-.ba-social img {
-  width: 90px;
+.ba-social a {
+  width:90px;
+  height:90px;
+  display:inline-block;
+  background-repeat:no-repeat;
+  background-size:contain;
 }
+
+@media (min-width:  767px) {
+  .list-destacados .list-group-item {
+    height:290px;
+  }
+  .list-videos .list-group-item {
+    height:240px;
+  }
+}
+
+
+
+
+
+
+
+.list-group {
+  margin-top:60px;
+}
+
+
+
+
+
+/*
+
+.list-form {
+  background:#e5e5e5 !important;
+}
+*/
+
+
+
+
+
+
+
 
 
 

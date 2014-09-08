@@ -5,6 +5,68 @@
 
 
 
+
+
+
+
+
+
+
+
+
+//////////////////
+
+
+BA
+
+
+
+
+- header chico en área
+- super menu del navbarprimary.....
+- footer desplegable en >768px
+- agenda cultural hacer propuesta con 1 solo
+
+
+
+
+
+BASTRAP>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+- Homogeneizar hovers backgroudns + active + borders en navbars + sidebars + navs
+
+- navbar primary, inverse, jumbotron, default [sin diferencias con fondos]
+
+- mayor contraste
+
+- navbar primary con mayor contraste en todo?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ritmo vertical YA
 
 
