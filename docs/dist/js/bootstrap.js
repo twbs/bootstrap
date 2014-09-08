@@ -567,6 +567,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     this.$element
       .removeClass('collapse')
       .addClass('collapsing')[dimension](0)
+      .attr('aria-expanded', true)
 
     this.transitioning = 1
 
@@ -602,6 +603,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     this.$element
       .addClass('collapsing')
       .removeClass('collapse in')
+      .attr('aria-expanded', false)
 
     this.transitioning = 1
 
@@ -672,8 +674,9 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     var $parent = parent && $(parent)
 
     if (!data || !data.transitioning) {
-      if ($parent) $parent.find('[data-toggle="collapse"][data-parent="' + parent + '"]').not($this).addClass('collapsed')
-      $this.toggleClass('collapsed', $target.hasClass('in'))
+      if ($parent) $parent.find('[data-toggle="collapse"][data-parent="' + parent + '"]').not($this).addClass('collapsed').attr('aria-expanded', false)
+      var isCollapsed = $target.hasClass('in')
+      $this.toggleClass('collapsed', isCollapsed).attr('aria-expanded', !isCollapsed)
     }
 
     Plugin.call($target, option)
