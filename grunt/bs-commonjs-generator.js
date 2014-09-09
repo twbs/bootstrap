@@ -10,7 +10,8 @@ module.exports = function generateCommonJSModule(grunt, srcFiles, destFilepath) 
     return 'require(\'' + requirePath + '\')';
   }
 
-  var moduleOutputJs = srcFiles.map(srcPathToDestRequire).join('\n');
+  var moduleOutputJs = '// This file is generated. You can require() it in a CommonJS environment.\n' +
+  srcFiles.map(srcPathToDestRequire).join('\n');
   try {
     fs.writeFileSync(destFilepath, moduleOutputJs);
   }

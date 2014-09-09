@@ -1,3 +1,4 @@
+// This file is generated. You can require() it in a CommonJS environment.
 require('../../js/transition.js')
 require('../../js/alert.js')
 require('../../js/button.js')
