@@ -3,28 +3,19 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 //////////////////
 
 
 BA
 
 
+- widget 147
+- widget radio en home [menu con coso que se activa what]
 
 
-- header chico en área
-- super menu del navbarprimary.....
-- footer desplegable en >768px
+
+
+- menu HOVER + clickeable...............
 
 
 
@@ -37,40 +28,20 @@ BA
 	tramites
 	resto del sitio
 	header más app con drawer
-	
+
+
+
+
+
+
+
+
 
 
 
 
 
 BASTRAP>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-- Homogeneizar hovers backgroudns + active + borders en navbars + sidebars + navs
-
-- navbar primary, inverse, jumbotron, default [sin diferencias con fondos]
-
-- mayor contraste
-
-- navbar primary con mayor contraste en todo?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
