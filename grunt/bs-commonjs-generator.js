@@ -2,6 +2,8 @@
 var fs = require('fs');
 var path = require('path');
 
+var COMMONJS_BANNER = '// This file is generated. You can require() it in a CommonJS environment.\n';
+
 module.exports = function generateCommonJSModule(grunt, srcFiles, destFilepath) {
   var destDir = path.dirname(destFilepath);
 
@@ -10,8 +12,7 @@ module.exports = function generateCommonJSModule(grunt, srcFiles, destFilepath) 
     return 'require(\'' + requirePath + '\')';
   }
 
-  var moduleOutputJs = '// This file is generated. You can require() it in a CommonJS environment.\n' +
-  srcFiles.map(srcPathToDestRequire).join('\n');
+  var moduleOutputJs = COMMONJS_BANNER + srcFiles.map(srcPathToDestRequire).join('\n');
   try {
     fs.writeFileSync(destFilepath, moduleOutputJs);
   }
