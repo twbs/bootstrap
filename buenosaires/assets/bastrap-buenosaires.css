@@ -558,6 +558,7 @@ right: -10px;
   background-size:contain;
 }
 
+/*
 @media (min-width:  767px) {
   .list-destacados .list-group-item {
     height:290px;
@@ -566,7 +567,7 @@ right: -10px;
     height:240px;
   }
 }
-
+*/
 
 
 

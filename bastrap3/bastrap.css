@@ -2629,7 +2629,7 @@ a.list-group-item:focus {
 .list-group-multi .list-img > div,
 .list-group-multi .list-thumb > div {
   width:100%;
-  height:140px;
+  height:144px;
   margin-top:10px;
   margin-bottom:20px;
   float:none;
