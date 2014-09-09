@@ -178,4 +178,28 @@ $(function () {
         .bootstrapTab('show')
   })
 
+  test('selected tab should have aria-expanded', function () {
+    var tabsHTML = '<ul class="nav nav-tabs">'
+        + '<li class="active"><a href="#home" toggle="tab" aria-expanded="true">Home</a></li>'
+        + '<li><a href="#profile" toggle="tab" aria-expanded="false">Profile</a></li>'
+        + '</ul>'
+    var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
+
+    $tabs.find('li:first a').bootstrapTab('show')
+    equal($tabs.find('.active a').attr('aria-expanded'), 'true', 'shown tab has aria-expanded = true')
+    equal($tabs.find('li:not(.active) a').attr('aria-expanded'), 'false', 'hidden tab has aria-expanded = false')
+
+    $tabs.find('li:last a').click()
+    equal($tabs.find('.active a').attr('aria-expanded'), 'true', 'after click, shown tab has aria-expanded = true')
+    equal($tabs.find('li:not(.active) a').attr('aria-expanded'), 'false', 'after click, hidden tab has aria-expanded = false')
+
+    $tabs.find('li:first a').bootstrapTab('show')
+    equal($tabs.find('.active a').attr('aria-expanded'), 'true', 'shown tab has aria-expanded = true')
+    equal($tabs.find('li:not(.active) a').attr('aria-expanded'), 'false', 'hidden tab has aria-expanded = false')
+
+    $tabs.find('li:first a').click()
+    equal($tabs.find('.active a').attr('aria-expanded'), 'true', 'after second show event, shown tab still has aria-expanded = true')
+    equal($tabs.find('li:not(.active) a').attr('aria-expanded'), 'false', 'after second show event, hidden tab has aria-expanded = false')
+  })
+
 })
