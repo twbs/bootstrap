@@ -59,10 +59,8 @@
         if ($input.prop('checked') && this.$element.hasClass('active')) changed = false
         else $parent.find('.active').removeClass('active')
       }
-      if (changed) $input.prop('checked', !this.$element.hasClass('active')).trigger('change')
+      if (changed) $input.prop('checked', !this.$element.hasClass('active')).trigger('click')
     }
-
-    if (changed) this.$element.toggleClass('active')
   }
 
 
