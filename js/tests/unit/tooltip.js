@@ -382,6 +382,56 @@ $(function () {
     $style.remove()
   })
 
+  test('should position tip on top if viewport has enough space and placement is "auto top"', function () {
+    var styles = '<style>'
+        + 'body { padding-top: 100px; }'
+        + 'section { height: 300px; border: 1px solid red; padding-top: 50px }'
+        + 'div[rel="tooltip"] { width: 150px; border: 1px solid blue; }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    var $container = $('<section/>').appendTo('#qunit-fixture')
+    var $target = $('<div rel="tooltip" title="tip"/>')
+      .appendTo($container)
+      .bootstrapTooltip({
+        placement: 'auto top',
+        viewport: 'section'
+      })
+
+    $target.bootstrapTooltip('show')
+    ok($('.tooltip').is('.top'), 'top positioned tooltip is dynamically positioned to top')
+
+    $target.bootstrapTooltip('hide')
+    equal($('.tooltip').length, 0, 'tooltip removed from dom')
+
+    $styles.remove()
+  })
+
+  test('should position tip on bottom if the tip\'s dimension exceeds the viewport area and placement is "auto top"', function () {
+    var styles = '<style>'
+        + 'body { padding-top: 100px; }'
+        + 'section { height: 300px; border: 1px solid red; }'
+        + 'div[rel="tooltip"] { width: 150px; border: 1px solid blue; }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    var $container = $('<section/>').appendTo('#qunit-fixture')
+    var $target = $('<div rel="tooltip" title="tip"/>')
+      .appendTo($container)
+      .bootstrapTooltip({
+        placement: 'auto top',
+        viewport: 'section'
+      })
+
+    $target.bootstrapTooltip('show')
+    ok($('.tooltip').is('.bottom'), 'top positioned tooltip is dynamically positioned to bottom')
+
+    $target.bootstrapTooltip('hide')
+    equal($('.tooltip').length, 0, 'tooltip removed from dom')
+
+    $styles.remove()
+  })
+
   test('should adjust the tip\'s top position when up against the top of the viewport', function () {
     var styles = '<style>'
         + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
