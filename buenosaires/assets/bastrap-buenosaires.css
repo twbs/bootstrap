@@ -241,6 +241,13 @@ right: -10px;
     margin-bottom:20px;
   }
   .navbar-primary.navbar-top .navbar-brand {
+    /*margin:0 auto;*/
+    float:none;
+  }
+  .ba-navbar-top .col-md-6 {
+    text-align:center;
+  }
+  .bavos-footer {
     margin:0 auto;
     float:none;
   }
@@ -316,11 +323,11 @@ right: -10px;
 
 .home-banner {
   background-color:#f5f5f5;
-  text-align:center;
   padding:30px;
+  overflow:auto;
 }
 .home-banner img {
-  margin-bottom:30px;
+  margin:0 auto 30px auto;
   border-radius:4px;
 }
 .home-banner a:hover,
@@ -478,6 +485,7 @@ right: -10px;
 }
 .footer-cc {
   margin-top:45px;
+  margin-bottom:24px;
   font-size:12px;
   color:#888;
 }
@@ -606,6 +614,42 @@ right: -10px;
   top:-10%;
 }
 */
+
+
+
+
+
+
+
+/* yamm mega menu */
+
+.yamm .nav,
+.yamm .collapse,
+.yamm .dropup,
+.yamm .dropdown {
+  position: static;
+}
+.yamm .container {
+  position: relative;
+}
+.yamm .dropdown-menu {
+  left: auto;
+}
+.yamm .yamm-content {
+  padding: 20px 30px;
+}
+.yamm .dropdown.yamm-fw .dropdown-menu {
+  left: 0;
+  right: 0;
+}
+
+
+
+
+
+
+
+
 
 
 

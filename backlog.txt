@@ -25,7 +25,19 @@ BA
 - header chico en área
 - super menu del navbarprimary.....
 - footer desplegable en >768px
-- agenda cultural hacer propuesta con 1 solo
+
+
+
+
+- TABLET
+	sacar banner
+	tramites arriba
+
+- MOBILE
+	tramites
+	resto del sitio
+	header más app con drawer
+	
 
 
 

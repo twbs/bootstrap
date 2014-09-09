@@ -1797,11 +1797,9 @@ ul.affix-bottom {
   padding-left:0;
   padding-right:0;
 }
-/*
 .footer-row nav {
-  margin-top:24px;
+  margin-bottom:24px;
 }
-*/
 .footer-row ul li {
   list-style:none;
   font-size:12px;
