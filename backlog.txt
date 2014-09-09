@@ -16,7 +16,7 @@ BA
 
 
 - thumbnails nota CON MODAL + imagenes posta!
-
+- más tamaño de tipografía? 66 char per line........
 
 
 - menu HOVER + clickeable...............
