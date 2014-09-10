@@ -397,7 +397,7 @@ $(function () {
         viewport: 'section'
       })
     $target.bootstrapTooltip('show')
-    ok($('.tooltip').is('.top'), 'top positioned tooltip is dynamically positioned to bottom')
+    ok($('.tooltip').is('.top'), 'top positioned tooltip is dynamically positioned to top')
     $target.bootstrapTooltip('hide')
     equal($('.tooltip').length, 0, 'tooltip removed from dom')
 
