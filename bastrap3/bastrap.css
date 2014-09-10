@@ -2014,6 +2014,7 @@ ul.affix-bottom {
 .carousel-control .icon-next {
   top:47%;
   margin:0;
+  color:#fff;
 }
 .carousel-inner {
   border-radius: 6px;

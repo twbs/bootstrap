@@ -449,11 +449,11 @@ right: -10px;
 
 
 
-
+/*
 .dropdown:hover .dropdown-menu {
     display: block;
  }
-
+*/
 
 
 
@@ -809,6 +809,46 @@ right: -10px;
   border-top:solid 1px #e5e5e5;
 }
 */
+
+
+
+
+
+
+#modalCarousel img {
+  border:0;
+  padding:0;
+  box-shadow:none;
+  border-radius:4px;
+  margin-top:10px;
+}
+#modalCarousel:hover img,
+#modalCarousel:focus img {
+  opacity:1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
