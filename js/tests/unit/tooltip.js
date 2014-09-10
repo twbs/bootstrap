@@ -381,8 +381,6 @@ $(function () {
     $container.remove()
     $style.remove()
   })
-
-  
   test('tip should be dynamically positioned to bottom when tip\'s dimension exceeds the viewport area', function () {
     var styles = '<style>'
         + 'body { padding-top: 100px;}'
@@ -396,17 +394,15 @@ $(function () {
       .appendTo($container)
       .bootstrapTooltip({
         placement: 'auto top',
-        viewport: "section"
+        viewport: 'section'
       })
     $target.bootstrapTooltip('show')
-    ok($('.tooltip').is('.bottom'), 'top positioned tooltip is dynamically positioned to bottom')      
-
+    ok($('.tooltip').is('.bottom'), 'top positioned tooltip is dynamically positioned to bottom')
     $target.bootstrapTooltip('hide')
     equal($('.tooltip').length, 0, 'tooltip removed from dom')
 
     $styles.remove()
   })
-
 
   test('should adjust the tip\'s top position when up against the top of the viewport', function () {
     var styles = '<style>'
