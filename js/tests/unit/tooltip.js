@@ -919,4 +919,42 @@ $(function () {
       .bootstrapTooltip('show')
   })
 
+  test('should correctly position tooltips on transformed elements', function () {
+    var styleProps = document.documentElement.style
+    if (!('transform' in styleProps) && !('webkitTransform' in styleProps) && !('msTransform' in styleProps)) {
+      expect(0)
+      return
+    }
+
+    stop()
+
+    var styles = '<style>'
+        + '#qunit-fixture { top: 0; left: 0; }'
+        + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
+        + '.tooltip { position: absolute; }'
+        + '.tooltip .tooltip-inner { width: 24px; height: 24px; font-family: Helvetica; }'
+        + '#target { position: absolute; top: 100px; left: 50px; width: 100px; height: 200px; -webkit-transform: rotate(270deg); -ms-transform: rotate(270deg); transform: rotate(270deg); }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    var $element = $('<div id="target" title="1"/>').appendTo('#qunit-fixture')
+
+    $element
+      .on('shown.bs.tooltip', function () {
+        var offset = $('.tooltip').offset()
+        $styles.remove()
+        ok(Math.abs(offset.left - 88) <= 1, 'tooltip has correct horizontal location')
+        ok(Math.abs(offset.top - 126) <= 1, 'tooltip has correct vertical location')
+        $element.bootstrapTooltip('hide')
+        start()
+      })
+      .bootstrapTooltip({
+        container: 'body',
+        placement: 'top',
+        trigger: 'manual'
+      })
+
+    $element.bootstrapTooltip('show')
+  })
+
 })
