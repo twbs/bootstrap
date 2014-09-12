@@ -52,6 +52,41 @@ body {
 
 
 
+/*
+6
+12
+18
+24
+36
+48
+60
+72
+96
+120
+144
+168
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1982,8 +2017,8 @@ ul.affix-bottom {
   margin-bottom:30px;
   border-radius:6px;
 }
-.carousel:hover img,
-.carousel:focus img {
+.carousel a:hover img,
+.carousel a:focus img {
   opacity:0.9;
 }
 .carousel-indicators {
@@ -2593,7 +2628,7 @@ a.list-group-item:focus {
 /* special panel form */
 
 .list-form {
-  background:#f5f5f5;
+  background:#e5e5e5 !important;
 }
 .list-group form {
   margin-top:10px;
