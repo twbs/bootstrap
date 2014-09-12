@@ -728,13 +728,13 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 
       if (e.isDefaultPrevented()) return
 
-      $this
-        .trigger('focus')
-        .attr('aria-expanded', 'true')
-
       $parent
         .toggleClass('open')
         .trigger('shown.bs.dropdown', relatedTarget)
+
+      $this
+        .trigger('focus')
+        .attr('aria-expanded', 'true')
     }
 
     return false
