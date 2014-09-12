@@ -52,20 +52,6 @@ body {
 
 
 
-/*
-6
-12
-18
-24
-36
-48
-60
-72
-96
-120
-144
-168
-*/
 
 
 
@@ -2425,8 +2411,8 @@ a.list-group-item:focus {
 /* list thumb */
 
 .list-thumb > div {
-  width:140px;
-  height:84px;
+width: 144px;
+height: 96px;
   float:left;
   overflow:hidden;
   background-size:cover;
@@ -2471,7 +2457,7 @@ a.list-group-item:focus {
 }
 */
 .list-thumb h4 {
-  margin-top:20px;
+  margin-top:15px;
 }
 .list-thumb .glyphicon {
   font-size:64px;
