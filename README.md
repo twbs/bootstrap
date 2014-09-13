@@ -22,11 +22,12 @@ To get started, check out <http://getbootstrap.com>!
 
 ## Quick start
 
-Three quick start options are available:
+Four quick start options are available:
 
 - [Download the latest release](https://github.com/twbs/bootstrap/archive/v3.2.0.zip).
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`.
 - Install with [Bower](http://bower.io): `bower install bootstrap`.
+- Install with [npm](https://www.npmjs.org): `npm install bootstrap`.
 
 Read the [Getting started page](http://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
 
