@@ -429,6 +429,15 @@ module.exports = function (grunt) {
   }
   grunt.registerTask('test', testSubtasks);
 
+  // JS tests only.
+  grunt.registerTask('test-js', ['dist-js', 'jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
+
+  // CSS tests only.
+  grunt.registerTask('test-css', ['dist-css', 'csslint:dist']);
+
+  // Run both 'test-js' and 'test-css'
+  grunt.registerTask('test-css-js', ['test-js', 'test-css']);
+
   // JS distribution task.
   grunt.registerTask('dist-js', ['concat', 'uglify:core']);
 
