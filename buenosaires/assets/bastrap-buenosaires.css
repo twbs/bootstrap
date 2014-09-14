@@ -1110,3 +1110,9 @@ border:0 !important;
 
 
 
+/* vertical rhythm */
+
+body {
+  font-size:16px;
+  line-height:24px;
+}

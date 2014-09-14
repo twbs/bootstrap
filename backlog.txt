@@ -3,7 +3,6 @@
 
 
 
-
 8
 16
 24
@@ -26,74 +25,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-6
-12
-18
-24
-
-36
-48
-60
-72
-
-96
-120
-144
-168
-
-
-
-
-
-7
-14
-21
-28
-
-42
-56
-70
-84
-
-112
-140
-168
-196
-
-
-
-
-
-
-
-
-
-
-
-//////////////////
-
-
-BA
-
-
-
 1. MEGA MENU, 3 niveles sin nombre [arriba más importante, medio menos, abajo menos, cada una a 3 columnas ancho]
 
 
 2. poner drawer navigation en mobile
-
-
-
 
 
 
@@ -184,6 +119,52 @@ BASTRAP > no hacerse el boludo y pasar todo a saas/less
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+6
+12
+18
+24
+
+36
+48
+60
+72
+
+96
+120
+144
+168
+
+
+
+
+
+7
+14
+21
+28
+
+42
+56
+70
+84
+
+112
+140
+168
+196
 
 
 
