@@ -203,7 +203,7 @@ right: -10px;
   box-shadow: 0 0 4px #d7a721;
   position:relative;
   z-index:9;
-  min-height: 60px;
+  min-height: 56px;
   padding-top:6px;
 }
 .navbar-primary.ba-navbar-top {
@@ -277,16 +277,6 @@ right: -10px;
     padding-bottom:20px;
   }
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -509,9 +499,26 @@ right: -10px;
   /*margin:15px 0 30px 0;*/
 }
 
+.ba-nota .container-nota .thumbnail,
+.ba-libro .container-libro .thumbnail {
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin-bottom:24px;
+}
+
+
+
+
+
+
+
+
+
+
 .jumbotron-small {
-padding-bottom: 0;
-margin-bottom: 30px;
+  padding-bottom: 0;
+  margin-bottom: 30px;
 }
 
 
@@ -845,13 +852,15 @@ margin-bottom: 30px;
 
 .mini-social {
   padding:0;
-  margin-bottom:30px;
+  margin:0;
   overflow:auto;
 }
 .mini-social li {
   list-style:none;
   float:left;
   margin-right:10px;
+  height: 40px;
+  overflow:hidden;
 }
 .mini-social a:hover,
 .mini-social a:focus,
@@ -921,26 +930,27 @@ margin-bottom: 30px;
 
 
 
-
+/*
 .ba-social {
   display:table;
   margin: 0 auto;
-  padding:15px 0;
+  padding:16px 0;
 }
+*/
 .ba-social ul {
   padding:0;
 }
 .ba-social li {
   list-style:none;
   float:left;
-  margin:0 10px 10px 0;
+  margin:0 15px 16px 0;
 }
 .ba-social li:last-child {
   margin-right:0;
 }
 .ba-social a {
-  width:90px;
-  height:90px;
+  width:80px;
+  height:80px;
   display:inline-block;
   background-repeat:no-repeat;
   background-size:contain;
@@ -961,19 +971,25 @@ margin-bottom: 30px;
 
 
 
-
+/*
 .list-group {
   margin-top:60px;
 }
+*/
 
 
-.ba-nota .list-group:first-child,
-.ba-libro .list-group:first-child {
-  margin-top:36px;
+.ba-nota .list-group,
+.ba-libro .list-group {
+  margin-top:32px;
+  margin-bottom:64px;
 }
 
 
-
+.ba-nota .list-group button,
+.ba-libro .list-group button {
+  margin-top:16px;
+  margin-bottom:24px;
+}
 
 
 
@@ -1092,14 +1108,6 @@ border:0 !important;
 
 
 
-.list-thumb > h4,
-.list-thumb > p {
-  padding-left:159px;
-}
-
-
-
-
 
 
 
@@ -1112,7 +1120,159 @@ border:0 !important;
 
 /* vertical rhythm */
 
-body {
+p, span, a, h1, h2, h3, h4, h5, h6 {
+  padding:0;
+}
+body, p {
   font-size:16px;
   line-height:24px;
 }
+p.lead {
+  font-size:24px;
+  line-height:32px;
+}
+h1 {
+  font-size:48px;
+  line-height:48px;
+}
+h2 {
+  font-size:32px;
+  line-height:32px; 
+}
+h3, .list-group-content h3 {
+  font-size:24px;
+  line-height:24px;
+}
+h4 {
+  font-size:16px;
+  line-height:16px;
+}
+h5, h6, .breadcrumb ol li, .footer-row ul li {
+  font-size:12px;
+  line-height:16px;
+}
+p, p.lead {
+  margin-top:0;
+  margin-bottom:24px;
+}
+h4, h5, h6 {
+  margin-top:0;
+  margin-bottom:16px;
+}
+h1, h2, h3 {
+  margin-top:16px;
+  margin-bottom:16px;
+}
+
+
+
+
+
+
+
+
+
+.list-thumb > h4,
+.list-thumb > p {
+  padding-left:165px;
+}
+
+
+
+
+
+
+.list-group-item {
+  padding: 16px 15px;
+}
+
+
+
+.list-thumb > div {
+width: 150px;
+height: 112px;
+margin:0;
+}
+
+
+
+.list-group-item h4 {
+  margin:0;
+  margin-bottom:8px;
+}
+.list-group-item p {
+  font-size:12px;
+  line-height:16px;
+  margin-bottom:8px;
+}
+
+
+
+
+
+
+
+
+
+@media (min-width: 768px) {
+  .navbar-nav>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+.breadcrumb {
+  margin:0 0 8px 0;
+  padding: 32px 0 0 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+
+
+.container-nota .col-xs-4,
+.container-nota .col-sm-3,
+.container-nota .col-md-3 {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+  
+
+
+
+
+
+
+
+
+

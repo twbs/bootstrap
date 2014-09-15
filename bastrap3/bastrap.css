@@ -24,6 +24,8 @@ body > .wrapper {
 }
 hr {
   border-top: 1px solid #e5e5e5;
+  margin-top: 23px;
+  margin-bottom: 24px;
 }
 .footer hr {
   border-top: 1px solid #333;
@@ -77,26 +79,33 @@ body {
 
 
 
-body, .label, .list-group, .list-group p, .list-group-item-text, .shortcut p, .alert-link p {
+body, .label, .list-group, .list-group p, .list-group-item-text, .shortcut p, .alert-link p,
+blockquote p, .list-group blockquote p, .jumbotron p.lead {
   font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
-a, b, strong, thead > tr > th, .progress-bar, label, dt {
+a, b, strong, thead > tr > th, .progress-bar, label, dt,
+.h6, h6 {
   font-family: "OpenSansSemiBold", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
-.h1, .h2, .h3, h1, h2, h3  {
+.h1, .h2, .h3, h1, h2, h3,
+.h4, .h5, h4, h5, .panel-title, .btn, .input-xl, .navbar-brand  {
   font-family: "GothamBold", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
+/*
 .h4, .h5, .h6, h4, h5, h6, .panel-title, .btn, .input-xl, .navbar-brand{
   font-family: "GothamMedium", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
+*/
+/*
 blockquote p, .list-group blockquote p, .jumbotron p.lead {
 	font-family: "GothamLight", Helvetica, Arial, sans-serif;
 	font-weight: normal;
 }
+*/
 
 /* blockquote */
 
