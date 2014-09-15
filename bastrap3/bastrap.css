@@ -84,7 +84,7 @@ blockquote p, .list-group blockquote p, .jumbotron p.lead {
   font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
-a, b, strong, thead > tr > th, .progress-bar, label, dt,
+a, b, p strong, span strong, thead > tr > th, .progress-bar, label, dt,
 .h6, h6 {
   font-family: "OpenSansSemiBold", Helvetica, Arial, sans-serif;
   font-weight: normal;
@@ -134,8 +134,6 @@ blockquote footer,
 blockquote small,
 blockquote .small {
   color: #aaa;
-  font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
-  font-weight: normal;
 }
 
 /* links */
@@ -2982,6 +2980,7 @@ a.alert-spot:active {
   font-weight: normal;
   font-style: normal;
 }
+/*
 @font-face {
   font-family: "GothamMedium";
   src: url('fonts/gotham-medium.eot');
@@ -3002,3 +3001,4 @@ a.alert-spot:active {
   font-weight: normal;
   font-style: normal;
 }
+*/

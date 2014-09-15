@@ -1028,9 +1028,6 @@ right: -10px;
 
 
 
-
-background-color:#f5f5f5;
-
 #modalCarousel img {
   border:0;
   padding:0;
@@ -1103,6 +1100,55 @@ border:0 !important;
 border:0 !important;
 }
 */
+
+
+
+
+
+
+
+
+.shares-num {
+  font-family: "GothamBold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size:32px;
+  line-height:32px;
+  display:block;
+  position:relative;
+  top:-2px;
+  color:#aaa;
+}
+.shares-txt {
+  font-size:12px;
+  line-height:16px;
+  color:#aaa;
+  position:relative;
+  top:-10px;
+  color:#aaa;
+}
+
+
+
+
+time {
+  float:right;
+  font-size:12px;
+  line-height:12px;
+  position:relative;
+  top:-10px;
+  color:#aaa;
+}
+
+@media (max-width: 767px) {
+  time {
+    float:none;
+    top:8px;
+  }
+}
+
+
+
+
 
 
 
@@ -1195,6 +1241,25 @@ margin:0;
 }
 
 
+@media (min-width: 992px) and (max-width: 1200px) {
+  .list-thumb > div {
+    width: 120px;
+    height: 80px;
+  }
+  .list-thumb > h4,
+  .list-thumb > p {
+    padding-left:135px;
+  }
+}
+
+
+
+
+
+
+
+
+
 
 .list-group-item h4 {
   margin:0;
@@ -1203,7 +1268,7 @@ margin:0;
 .list-group-item p {
   font-size:12px;
   line-height:16px;
-  margin-bottom:8px;
+  margin-bottom:0px;
 }
 
 
