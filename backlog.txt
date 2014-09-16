@@ -30,7 +30,7 @@
 
 2. poner drawer navigation en mobile
 
-
+3. Caption en imagen [figure figcaption]
 
 
 
