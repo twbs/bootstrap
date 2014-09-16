@@ -430,7 +430,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test', testSubtasks);
 
   // JS tests only.
-  grunt.registerTask('test-js', ['dist-js', 'jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
+  grunt.registerTask('test-js', ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
 
   // CSS tests only.
   grunt.registerTask('test-css', ['dist-css', 'csslint:dist']);
