@@ -54,6 +54,7 @@ body {
 
 /* no padding columns */
 
+/*
 .row.nopad {
   margin-right:0;
   margin-left:0;
@@ -62,7 +63,7 @@ body {
   padding-right:0;
   padding-left:0;
 }
-
+*/
 
 
 
@@ -1004,12 +1005,14 @@ a.list-group-item.active > .badge {
 
 /* navbar-brand */
 
+/*
 .navbar-brand:hover,
 .navbar-brand:focus,
 .navbar-sub-brand:hover,
 .navbar-sub-brand:focus {
   opacity:0.7;
 }
+*/
 .navbar-top {
   min-height:48px;
 }
@@ -1873,6 +1876,9 @@ ul.affix-bottom {
   content: ">";
   padding: 0 5px;
   color: #ccc;
+}
+.breadcrumb>.active {
+  color: #888;
 }
 
 /* pagination */

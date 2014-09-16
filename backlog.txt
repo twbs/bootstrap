@@ -1,7 +1,5 @@
 
-
-
-
+* baseline *********************************************************************************************
 
 8
 16
@@ -18,31 +16,70 @@
 192
 224
 
+* TASKS *********************************************************************************************
+
+- MEGA MENU, 3 niveles sin nombre [arriba más importante, medio menos, abajo menos, cada una a 3 columnas ancho]
+	fotitooooo
+	https://mural.ly/#/menuprincipal/1410549935039
+
+- emprolijar buenosaires.css
+	baseline 24px !
+
+- Arreglar responsive......
+
+- imagenes thumbnails con muchas mediaquerys
+	emprolijar mediaqueries [investigar formas de ponerlo ok]
+	item lists en 12px?
+
+- rehacer de nuevo todas las paginas de forma semántica
+
+- hacer paginas medium y landing
+
+- HOME multimedios [en footer, o debajo de alguna columna?]
+	widget radio en home [menu con coso que se activa what]
+
+- NUEVO BASTRAP más liviano + EMPROLIJAR + SUBIR DE NUEVO A CDN ba.gob.ar
+	opensans en cdn google? [con opcional offline]
+	sacar elementos nuevos al pedo, solo bastrap de boostrap
+	íconos en paneles?
+	opacity como .6
+ 
 
 
 
 
+* IMPORTANT *********************************************************************************************
+
+- Y si hacemos que sea siempre offline?
+
+- Lazy load
+
+- Gotham medium ok, ver open sans......
+
+- bold como bold y no semibold??????????
+
+- BS usar sólo grilla de bastrap? sino es más peso de BS y pisar de nuevo para sacar, wtf
+
+- APRENDER y pasar a SASS
+
+- nav mobile para header, footer y sidebar en pag de libro.... [drawer? colapsable todo? no colapsable pag de libro? mmm?
+
+- no ser garca y poner los -webkit y -moz [y modernizr?]
+
+- listar las clases de páginas/zonas/componentes
 
 
 
-1. MEGA MENU, 3 niveles sin nombre [arriba más importante, medio menos, abajo menos, cada una a 3 columnas ancho]
 
+* LATER *********************************************************************************************
 
-2. poner drawer navigation en mobile
+- UI kits
 
-3. Caption en imagen [figure figcaption]
+- DOCS poner indice en comentarios css
 
-
-
+- COMENTAR descriptivamente
 
 - widget 147
-- widget radio en home [menu con coso que se activa what]
-
-
-
-
-- más tamaño de tipografía? 66 char per line........
-
 
 - TABLET
 	sacar banner
@@ -53,68 +90,106 @@
 	resto del sitio
 	header más app con drawer
 
+- Agregar alt, rel, role ...
+
+- Self closing tags caretear?
+
+- no hacerse el boludo y pasar todo a saas/less
+
+- sidebar que te siga hasta arriba y hasta abajo? [claro]
+
+- BA > pagina con todas las redes sociales fanpages etc de areas todo
+
+- BA > proponer resumen de IA > muchas cosas deben ser notas/novedades [ver]
 
 
+* BASTRAP *********************************************************************************************
 
+- BS hacer nuevo readme y poner en el root de la branch
 
+- HACER listado de elementos
 
+- REPASAR QUE PONGO en estilos y qué en componentes....
 
+- Documentar BIEN [explicar usos]
 
+- SARMIENTO
+	BS probar sarmiento notebook!
+	BS crossbrowsing
+	BASTRAP validar html
 
+- BS usar clases de contexto + colores? danger + red, etc
 
+- BS boton copy!
 
-
-
-BASTRAP>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-
-
-bold como bold y no semibold??????????
-
-
-
-ritmo vertical YA
-
-
----------------------------------------------------------
-
-
-BS hacer nuevo readme y poner en el root de la branch
-
-HACER listado de elementos
-
-Agregar alt y rel ...
-
-REPASAR QUE PONGO en estilos y qué en componentes....
-
-Documentar BIEN [explicar usos]
-
-BS probar sarmiento notebook!
-BS crossbrowsing
-BASTRAP validar html
-
-BS type + baseline grid de 5px por columnas de 15/30 !!!
-http://www.google.com/design/spec/style/typography.html#typography-standard-styles
-
-BS usar clases de contexto + colores? danger + red, etc
-
-BS boton copy!
-
-CSS impresión para todo y dewspues ver
+- CSS impresión para todo y dewspues ver
 bootstrap ya existente
 
-SUBIR DE NUEVO A CDN ba.gob.ar
+- deshabilitar animaciones de javascript?
 
-deshabilitar animaciones de javascript?
+- Agregar manual de marca con recursos
 
-BS usar sólo grilla de bastrap? sino es más peso de BS y pisar de nuevo para sacar, wtf
+- Ejemplo back-end
 
-BASTRAP >>> Agregar manual de marca con recursos
 
-Ejemplo back-end
 
-BASTRAP > no hacerse el boludo y pasar todo a saas/less
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
