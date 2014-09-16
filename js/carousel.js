@@ -23,7 +23,7 @@
     this.$active     =
     this.$items      = null
 
-    this.options.pause == 'hover' && this.$element
+    this.options.pause == 'hover' && !('ontouchstart' in document.documentElement) && this.$element
       .on('mouseenter.bs.carousel', $.proxy(this.pause, this))
       .on('mouseleave.bs.carousel', $.proxy(this.cycle, this))
   }
