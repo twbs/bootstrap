@@ -768,6 +768,8 @@ $(function () {
         var offset = $('.tooltip').offset()
         $styles.remove()
         ok(Math.abs(offset.left - 88) <= 1, 'tooltip has correct horizontal location')
+        $circle.bootstrapTooltip('hide')
+        equal($('.tooltip').length, 0, 'tooltip removed from dom')
         start()
       })
       .bootstrapTooltip({ container: 'body', placement: 'top', trigger: 'manual' })
