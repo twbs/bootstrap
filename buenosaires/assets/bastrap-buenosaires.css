@@ -314,6 +314,11 @@
 
 
 
+.btn-sm {
+  padding: 7px 10px;
+  font-size: 12px;
+  line-height: 16px;
+}
 
 .btn-lg,
 .btn-group-lg>.btn {
