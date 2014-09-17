@@ -2831,6 +2831,9 @@ fieldset[disabled] .btn {
           box-shadow: none;
   opacity: .65;
 }
+.btn .glyphicon {
+  pointer-events: none;
+}
 .btn-default {
   color: #333;
   background-color: #fff;
