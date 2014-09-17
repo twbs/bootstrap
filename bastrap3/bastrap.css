@@ -2296,7 +2296,7 @@ a.list-group-item.active:focus .list-group-item-text {
   color:#333;
 }
 .list-group::after .btn {
-  margin-bottom:20px;
+  margin-bottom:24px;
 }
 .list-group-item {
   border:0;

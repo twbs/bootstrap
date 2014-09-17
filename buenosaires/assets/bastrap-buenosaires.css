@@ -315,10 +315,12 @@
 
 
 
-
-
-
-
+.btn-lg,
+.btn-group-lg>.btn {
+  padding: 11px 15px;
+  font-size: 20px;
+  line-height: 24px;
+}
 
 
 
