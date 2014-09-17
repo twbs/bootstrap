@@ -10,15 +10,17 @@ Provide pagination links for your site or app with the multi-page pagination com
 Simple pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.
 
 {% example html %}
-<ul class="pagination">
-  <li><a href="#">&laquo;</a></li>
-  <li><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-  <li><a href="#">&raquo;</a></li>
-</ul>
+<nav>
+  <ul class="pagination">
+    <li><a href="#">&laquo;</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">&raquo;</a></li>
+  </ul>
+</nav>
 {% endexample %}
 
 ### Disabled and active states
@@ -26,25 +28,29 @@ Simple pagination inspired by Rdio, great for apps and search results. The large
 Links are customizable for different circumstances. Use `.disabled` for unclickable links and `.active` to indicate the current page.
 
 {% example html %}
-<ul class="pagination">
-  <li class="disabled"><a href="#">&laquo;</a></li>
-  <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-  <li><a href="#">&raquo;</a></li>
-</ul>
+<nav>
+  <ul class="pagination">
+    <li class="disabled"><a href="#">&laquo;</a></li>
+    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">&raquo;</a></li>
+  </ul>
+</nav>
 {% endexample %}
 
 You can optionally swap out active or disabled anchors for `<span>` to remove click functionality while retaining intended styles.
 
 {% highlight html %}
-<ul class="pagination">
-  <li class="disabled"><span>&laquo;</span></li>
-  <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
-  ...
-</ul>
+<nav>
+  <ul class="pagination">
+    <li class="disabled"><span>&laquo;</span></li>
+    <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
+    ...
+  </ul>
+</nav>
 {% endhighlight %}
 
 
@@ -53,23 +59,27 @@ You can optionally swap out active or disabled anchors for `<span>` to remove cl
 Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for additional sizes.
 
 {% example html %}
-<ul class="pagination pagination-lg">
-  <li><a href="#">&laquo;</a></li>
-  <li><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">&raquo;</a></li>
-</ul>
+<nav>
+  <ul class="pagination pagination-lg">
+    <li><a href="#">&laquo;</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">&raquo;</a></li>
+  </ul>
+</nav>
 {% endexample %}
 
 {% example html %}
-<ul class="pagination pagination-sm">
-  <li><a href="#">&laquo;</a></li>
-  <li><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">&raquo;</a></li>
-</ul>
+<nav>
+  <ul class="pagination pagination-sm">
+    <li><a href="#">&laquo;</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">&raquo;</a></li>
+  </ul>
+</nav>
 {% endexample %}
 
 ## Pager
@@ -81,10 +91,12 @@ Quick previous and next links for simple pagination implementations with light m
 By default, the pager centers links.
 
 {% example html %}
-<ul class="pager">
-  <li><a href="#">Previous</a></li>
-  <li><a href="#">Next</a></li>
-</ul>
+<nav>
+  <ul class="pager">
+    <li><a href="#">Previous</a></li>
+    <li><a href="#">Next</a></li>
+  </ul>
+</nav>
 {% endexample %}
 
 ### Aligned links
@@ -92,10 +104,12 @@ By default, the pager centers links.
 Alternatively, you can align each link to the sides:
 
 {% example html %}
-<ul class="pager">
-  <li class="previous"><a href="#">&larr; Older</a></li>
-  <li class="next"><a href="#">Newer &rarr;</a></li>
-</ul>
+<nav>
+  <ul class="pager">
+    <li class="previous"><a href="#">&larr; Older</a></li>
+    <li class="next"><a href="#">Newer &rarr;</a></li>
+  </ul>
+</nav>
 {% endexample %}
 
 
@@ -104,8 +118,10 @@ Alternatively, you can align each link to the sides:
 Pager links also use the `.disabled` class.
 
 {% highlight html %}
-<ul class="pager">
-  <li class="previous disabled"><a href="#">&larr; Older</a></li>
-  <li class="next"><a href="#">Newer &rarr;</a></li>
-</ul>
+<nav>
+  <ul class="pager">
+    <li class="previous disabled"><a href="#">&larr; Older</a></li>
+    <li class="next"><a href="#">Newer &rarr;</a></li>
+  </ul>
+</nav>
 {% endhighlight %}

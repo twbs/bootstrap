@@ -19,6 +19,12 @@ We publicly list browser bugs that are impacting us here, in the hopes of expedi
     </thead>
     <tbody>
       <tr>
+        <td>Internet Explorer 11</td>
+        <td>When hovering over a <code>&lt;select&gt;</code> menu item, the cursor for the element underneath the menu is displayed</td>
+        <td><a href="https://connect.microsoft.com/IE/feedbackdetail/view/963961">IE bug #963961</a></td>
+        <td><a href="https://github.com/twbs/bootstrap/issues/14528">#14528</a></td>
+      </tr>
+      <tr>
         <td>Firefox</td>
         <td><code>.table-bordered</code> with an empty <code>&lt;tbody&gt;</code> is missing borders</td>
         <td><a href="{{ site.bug.firefox }}1023761">Mozilla bug #1023761</a></td>
@@ -41,6 +47,18 @@ We publicly list browser bugs that are impacting us here, in the hopes of expedi
         <td>Java applets that are descendants of elements with forced hardware acceleration using <code>translate3d(0,0,0)</code> are invisible on Windows</td>
         <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1048279">Mozilla bug #1048279</a></td>
         <td><a href="https://github.com/twbs/bootstrap/issues/14124">#14124</a></td>
+      </tr>
+      <tr>
+        <td>Firefox</td>
+        <td>If the disabled state of a form control is changed via JavaScript, the normal state doesn't return after refreshing the page.</td>
+        <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=654072">Mozilla bug #654072</a></td>
+        <td><a href="https://github.com/twbs/bootstrap/issues/793">#793</a></td>
+      </tr>
+      <tr>
+        <td>Firefox</td>
+        <td>Button elements with <code>width: 100%</code> become cropped in long tables.</td>
+        <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1060131">Mozilla bug #1060131</a></td>
+        <td><a href="https://github.com/twbs/bootstrap/issues/14320">#14320</a></td>
       </tr>
       <tr>
         <td>Chrome</td>

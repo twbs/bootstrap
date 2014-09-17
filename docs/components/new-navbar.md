@@ -77,7 +77,7 @@ Proposal to replace the existing navbar with something simpler and more customiz
       <a class="nav-link" href="#">About</a>
     </li>
   </ul>
-  <form action="" class="form-inline pull-right">
+  <form class="form-inline pull-right">
     <input class="form-control" type="text" placeholder="Search">
     <button class="btn btn-primary" type="submit">Search</button>
   </form>
@@ -101,7 +101,7 @@ Proposal to replace the existing navbar with something simpler and more customiz
       <a class="nav-link" href="#">About</a>
     </li>
   </ul>
-  <form action="" class="form-inline pull-right">
+  <form class="form-inline pull-right">
     <input class="form-control" type="text" placeholder="Search">
     <button class="btn btn-primary" type="submit">Search</button>
   </form>

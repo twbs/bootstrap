@@ -3,9 +3,9 @@ layout: page
 title: Carousel
 ---
 
-## Example
+A slideshow component for cycling through elements—images or slides of text—like a carousel. **Nested carousels are not supported.**
 
-The slideshow below shows a generic plugin and component for cycling through elements like a carousel.
+## Example
 
 {% example html %}
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">

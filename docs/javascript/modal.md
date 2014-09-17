@@ -107,14 +107,14 @@ Toggle a modal via JavaScript by clicking the button below. It will slide down a
 </div>
 
 <div class="bs-example" style="padding-bottom: 24px;">
-  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
     Launch demo modal
   </button>
 </div>
 
 {% highlight html %}
 <!-- Button trigger modal -->
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   Launch demo modal
 </button>
 
@@ -154,8 +154,8 @@ Toggle a modal via JavaScript by clicking the button below. It will slide down a
 Modals have two optional sizes, available via modifier classes to be placed on a `.modal-dialog`.
 
 <div class="bs-example">
-  <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
-  <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
 </div>
 
 {% highlight html %}
@@ -171,7 +171,7 @@ Modals have two optional sizes, available via modifier classes to be placed on a
 </div>
 
 <!-- Small modal -->
-<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
 
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">

@@ -213,3 +213,11 @@ $(function () {
 {% endhighlight %}
 
 Want to see an example? [Check out this JS Bin demo.](http://jsbin.com/OyaqoDO/2)
+
+### Validators
+
+In order to provide the best possible experience to old and buggy browsers, Bootstrap uses [CSS browser hacks](http://browserhacks.com) in several places to target special CSS to certain browser versions in order to work around bugs in the browsers themselves. These hacks understandably cause CSS validators to complain that they are invalid. In a couple places, we also use bleeding-edge CSS features that aren't yet fully standardized, but these are used purely for progressive enhancement.
+
+These validation warnings don't matter in practice since the non-hacky portion of our CSS does fully validate and the hacky portions don't interfere with the proper functioning of the non-hacky portion, hence why we deliberately ignore these particular warnings.
+
+Our HTML docs likewise have some trivial and inconsequential HTML validation warnings due to our inclusion of [X-UA-Compatible `<meta>` tags](#ie-compatibility-modes) to avoid Internet Explorer issues and our inclusion of a workaround for [a certain Firefox bug](https://bugzilla.mozilla.org/show_bug.cgi?id=654072).

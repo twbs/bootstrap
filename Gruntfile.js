@@ -19,6 +19,12 @@ module.exports = function (grunt) {
   var path = require('path');
   var npmShrinkwrap = require('npm-shrinkwrap');
   var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
+  var getLessVarsData = function () {
+    var filePath = path.join(__dirname, 'less/_variables.less');
+    var fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
+    var parser = new BsLessdocParser(fileContent);
+    return { sections: parser.parseFile() };
+  };
   var generateRawFiles = require('./grunt/bs-raw-files-generator.js');
 
   // Project configuration.
@@ -36,7 +42,8 @@ module.exports = function (grunt) {
 
     // Task configuration.
     clean: {
-      dist: ['dist', 'docs/dist']
+      dist: 'dist',
+      docs: 'docs/dist'
     },
 
     jshint: {
@@ -49,7 +56,7 @@ module.exports = function (grunt) {
         },
         src: ['Gruntfile.js', 'grunt/*.js']
       },
-      src: {
+      core: {
         src: 'js/*.js'
       },
       test: {
@@ -70,8 +77,8 @@ module.exports = function (grunt) {
       grunt: {
         src: '<%= jshint.grunt.src %>'
       },
-      src: {
-        src: '<%= jshint.src.src %>'
+      core: {
+        src: '<%= jshint.core.src %>'
       },
       test: {
         src: '<%= jshint.test.src %>'
@@ -112,7 +119,7 @@ module.exports = function (grunt) {
       options: {
         preserveComments: 'some'
       },
-      bootstrap: {
+      core: {
         src: '<%= concat.bootstrap.dest %>',
         dest: 'dist/js/<%= pkg.name %>.min.js'
       },
@@ -155,9 +162,8 @@ module.exports = function (grunt) {
           sourceMapURL: '<%= pkg.name %>.css.map',
           sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
         },
-        files: {
-          'dist/css/<%= pkg.name %>.css': 'less/bootstrap.less'
-        }
+        src: 'less/bootstrap.less',
+        dest: 'dist/css/<%= pkg.name %>.css'
       },
       compileDocs: {
         options: {
@@ -196,25 +202,6 @@ module.exports = function (grunt) {
         cwd: 'docs/examples/',
         src: ['**/*.css'],
         dest: 'docs/examples/'
-      }
-    },
-
-    csslint: {
-      options: {
-        csslintrc: 'less/.csslintrc'
-      },
-      src: [
-        'dist/css/bootstrap.css'
-      ],
-      examples: [
-        'docs/examples/**/*.css'
-      ],
-      docs: {
-        options: {
-          ids: false,
-          'overqualified-elements': false
-        },
-        src: 'docs/assets/css/docs.css'
       }
     },
 
@@ -262,22 +249,15 @@ module.exports = function (grunt) {
         dest: 'docs/examples/'
       },
       docs: {
-        files: {
-          'docs/assets/css/src/docs.css': 'docs/assets/css/src/docs.css'
-        }
+        src: 'docs/assets/css/src/docs.css',
+        dest: 'docs/assets/css/src/docs.css'
       }
     },
 
     copy: {
       docs: {
-        expand: true,
-        cwd: './dist',
-        src: [
-          'css/*',
-          'js/*',
-          'fonts/*'
-        ],
-        dest: 'docs/dist'
+        src: 'dist/*/*',
+        dest: 'docs/'
       }
     },
 
@@ -295,20 +275,17 @@ module.exports = function (grunt) {
     },
 
     jade: {
-      compile: {
-        options: {
-          pretty: true,
-          data: function () {
-            var filePath = path.join(__dirname, 'less/variables.less');
-            var fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
-            var parser = new BsLessdocParser(fileContent);
-            return { sections: parser.parseFile() };
-          }
-        },
-        files: {
-          'docs/_includes/customizer-variables.html': 'docs/_jade/customizer-variables.jade',
-          'docs/_includes/customize-nav.html': 'docs/_jade/customizer-nav.jade'
-        }
+      options: {
+        pretty: true,
+        data: getLessVarsData
+      },
+      customizerVars: {
+        src: 'docs/_jade/customizer-variables.jade',
+        dest: 'docs/_includes/customizer-variables.html'
+      },
+      customizerNav: {
+        src: 'docs/_jade/customizer-nav.jade',
+        dest: 'docs/_includes/nav/customize.html'
       }
     },
 
@@ -321,7 +298,11 @@ module.exports = function (grunt) {
         relaxerror: [
           'Bad value X-UA-Compatible for attribute http-equiv on element meta.',
           'Element img is missing required attribute src.',
-          'Attribute autocomplete not allowed on element input at this point.'
+          'Attribute autocomplete not allowed on element input at this point.',
+          'Attribute autocomplete not allowed on element button at this point.',
+          'Element div not allowed as child of element progress in this context.',
+          'Element thead not allowed as child of element table in this context.',
+          'Bad value tablist for attribute role on element nav.'
         ]
       },
       files: {
@@ -331,8 +312,8 @@ module.exports = function (grunt) {
 
     watch: {
       src: {
-        files: '<%= jshint.src.src %>',
-        tasks: ['jshint:src', 'qunit']
+        files: '<%= jshint.core.src %>',
+        tasks: ['jshint:src', 'qunit', 'concat']
       },
       test: {
         files: '<%= jshint.test.src %>',
@@ -397,7 +378,7 @@ module.exports = function (grunt) {
   var testSubtasks = [];
   // Skip core tests if running a different subset of the test suite
   if (runSubset('core')) {
-    testSubtasks = testSubtasks.concat(['dist-css', 'csslint', 'jshint', 'jscs', 'qunit']);
+    testSubtasks = testSubtasks.concat(['dist-css', 'dist-js', 'jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit', 'docs']);
   }
   // Skip HTML validation if running a different subset of the test suite
   if (runSubset('validate-html') &&
@@ -417,24 +398,17 @@ module.exports = function (grunt) {
   grunt.registerTask('test', testSubtasks);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat', 'uglify']);
+  grunt.registerTask('dist-js', ['concat', 'uglify:core']);
 
   // CSS distribution task.
-  grunt.registerTask('less-compile', ['less:compileDocs', 'less:compileCore']);
-  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer', 'usebanner', 'csscomb', 'cssmin']);
-
-  // Docs distribution task.
-  grunt.registerTask('dist-docs', 'copy:docs');
+  grunt.registerTask('less-compile', ['less:compileCore']);
+  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'usebanner', 'csscomb:dist', 'cssmin:core']);
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js', 'dist-docs']);
-
-  // Custom docs rebuild task.
-  grunt.registerTask('build', ['clean', 'less-compile', 'autoprefixer:core', 'autoprefixer:docs', 'usebanner', 'csscomb:dist', 'cssmin:core', 'cssmin:docs', 'concat', 'uglify:bootstrap', 'dist-docs']);
+  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js']);
 
   // Default task.
-  // grunt.registerTask('default', ['test', 'dist']);
-  grunt.registerTask('default', ['dist']);
+  grunt.registerTask('default', ['clean:dist', 'test']);
 
   // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
@@ -448,6 +422,12 @@ module.exports = function (grunt) {
     var banner = grunt.template.process('<%= banner %>');
     generateRawFiles(grunt, banner);
   });
+
+  // Docs task.
+  grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
+  grunt.registerTask('docs-js', ['uglify:docsJs', 'uglify:customize']);
+  grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
+  grunt.registerTask('docs', ['docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-customizer']);
 
   // Task for updating the cached npm packages used by the Travis build (which are controlled by test-infra/npm-shrinkwrap.json).
   // This task should be run and the updated file should be committed whenever Bootstrap's dependencies change.

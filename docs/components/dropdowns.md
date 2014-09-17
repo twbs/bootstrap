@@ -86,7 +86,7 @@ Separate groups of related menu items with a divider.
 Add `.disabled` to a `<li>` in the dropdown to disable the link.
 
 {% example html %}
-<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
+<ul class="dropdown-menu" role="menu">
   <li role="presentation">
     <a role="menuitem" tabindex="-1" href="#">Regular link</a>
   </li>

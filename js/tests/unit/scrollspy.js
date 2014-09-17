@@ -124,12 +124,12 @@ $(function () {
 
   test('should add the active class to the correct element', function () {
     var navbarHtml =
-        '<div class="navbar">'
+        '<nav class="navbar">'
       + '<ul class="nav">'
       + '<li id="li-1"><a href="#div-1">div 1</a></li>'
       + '<li id="li-2"><a href="#div-2">div 2</a></li>'
       + '</ul>'
-      + '</div>'
+      + '</nav>'
     var contentHtml =
         '<div class="content" style="overflow: auto; height: 50px">'
       + '<div id="div-1" style="height: 100px; padding: 0; margin: 0">div 1</div>'

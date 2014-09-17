@@ -3,11 +3,11 @@ layout: page
 title: Input group
 ---
 
-Extend form controls by adding text or buttons before, after, or on both sides of any text-based input. Use `.input-group` with an `.input-group-addon` to prepend or append elements to a single `.form-control`.
+Extend form controls by adding text or buttons before, after, or on both sides of any text-based `<input>`. Use `.input-group` with an `.input-group-addon` to prepend or append elements to a single `.form-control`.
 
 <div class="bs-callout bs-callout-danger">
-  <h4>Cross-browser compatibility</h4>
-  <p>Avoid using <code>&lt;select&gt;</code> elements here as they cannot be fully styled in WebKit browsers.</p>
+  <h4>Textual <code>&lt;input&gt;</code>s only</h4>
+  <p>Avoid using <code>&lt;textarea&gt;</code> elements here as their <code>rows</code> attribute will not be respected in some cases.</p>
 </div>
 <div class="bs-callout bs-callout-warning">
   <h4>Tooltips &amp; popovers in input groups require special setting</h4>

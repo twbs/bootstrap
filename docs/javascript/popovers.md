@@ -170,7 +170,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>string | false</td>
         <td>false</td>
         <td>
-         <p>Appends the popover to a specific element. Example: <code>container: 'body'</code>. This option is particularly useful in that it allows you to position the popover in the flow of the document near the triggering element - which will prevent the popover from floating away from the triggering element during a window resize.</p>
+          <p>Appends the popover to a specific element. Example: <code>container: 'body'</code>. This option is particularly useful in that it allows you to position the popover in the flow of the document near the triggering element - which will prevent the popover from floating away from the triggering element during a window resize.</p>
         </td>
       </tr>
       <tr>
@@ -179,7 +179,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>''</td>
         <td>
           <p>Default content value if <code>data-content</code> attribute isn't present.</p>
-          <p>If a function is given, it will be called with its <code>this</code> reference set to, which is the element that the popover is attached to.</p>
+          <p>If a function is given, it will be called with its <code>this</code> reference set to the element that the popover is attached to.</p>
         </td>
       </tr>
       <tr>
@@ -218,11 +218,11 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>string</td>
         <td><code>'&lt;div class="popover" role="tooltip"&gt;&lt;div class="arrow"&gt;&lt;/div&gt;&lt;h3 class="popover-title"&gt;&lt;/h3&gt;&lt;div class="popover-content"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
         <td>
-         <p>Base HTML to use when creating the popover.</p>
-         <p>The popover's <code>title</code> will be injected into the <code>.popover-title</code>.</p>
-         <p>The popover's <code>content</code> will be injected into the <code>.popover-content</code>.</p>
-         <p><code>.arrow</code> will become the popover's arrow.</p>
-         <p>The outermost wrapper element should have the <code>.popover</code> class.</p>
+          <p>Base HTML to use when creating the popover.</p>
+          <p>The popover's <code>title</code> will be injected into the <code>.popover-title</code>.</p>
+          <p>The popover's <code>content</code> will be injected into the <code>.popover-content</code>.</p>
+          <p><code>.arrow</code> will become the popover's arrow.</p>
+          <p>The outermost wrapper element should have the <code>.popover</code> class.</p>
         </td>
       </tr>
       <tr>
@@ -241,13 +241,13 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>How popover is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space.</td>
       </tr>
       <tr>
-       <td>viewport</td>
-       <td>string | object</td>
-       <td>{ selector: 'body', padding: 0 }</td>
-       <td>
-        <p>Keeps the popover within the bounds of this element. Example: <code>viewport: '#viewport'</code> or <code>{ "selector": "#viewport", "padding": 0 }</code></p>
-       </td>
-     </tr>
+        <td>viewport</td>
+        <td>string | object</td>
+        <td>{ selector: 'body', padding: 0 }</td>
+        <td>
+          <p>Keeps the popover within the bounds of this element. Example: <code>viewport: '#viewport'</code> or <code>{ "selector": "#viewport", "padding": 0 }</code></p>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
@@ -293,27 +293,27 @@ Hides and destroys an element's popover.
   <table class="table table-bordered table-striped">
     <thead>
      <tr>
-       <th style="width: 150px;">Event Type</th>
-       <th>Description</th>
+        <th style="width: 150px;">Event Type</th>
+        <th>Description</th>
      </tr>
     </thead>
     <tbody>
-     <tr>
-       <td>show.bs.popover</td>
-       <td>This event fires immediately when the <code>show</code> instance method is called.</td>
-     </tr>
-     <tr>
-       <td>shown.bs.popover</td>
-       <td>This event is fired when the popover has been made visible to the user (will wait for CSS transitions to complete).</td>
-     </tr>
-     <tr>
-       <td>hide.bs.popover</td>
-       <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
-     </tr>
-     <tr>
-       <td>hidden.bs.popover</td>
-       <td>This event is fired when the popover has finished being hidden from the user (will wait for CSS transitions to complete).</td>
-     </tr>
+      <tr>
+        <td>show.bs.popover</td>
+        <td>This event fires immediately when the <code>show</code> instance method is called.</td>
+      </tr>
+      <tr>
+        <td>shown.bs.popover</td>
+        <td>This event is fired when the popover has been made visible to the user (will wait for CSS transitions to complete).</td>
+      </tr>
+      <tr>
+        <td>hide.bs.popover</td>
+        <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
+      </tr>
+      <tr>
+        <td>hidden.bs.popover</td>
+        <td>This event is fired when the popover has finished being hidden from the user (will wait for CSS transitions to complete).</td>
+      </tr>
     </tbody>
   </table>
 </div>

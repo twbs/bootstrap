@@ -29,23 +29,6 @@ Built-in styles are included for placing badges in active states in pill navigat
     <a class="nav-link" href="#">Messages <span class="badge">3</span></a>
   </li>
 </ul>
-<ul class="nav nav-pills nav-stacked" role="tablist" style="max-width: 260px;">
-  <li class="nav-item active" role="presentation">
-    <a class="nav-link" href="#">
-      <span class="badge pull-right">42</span>
-      Home
-    </a>
-  </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" href="#">Profile</a>
-  </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" href="#">
-      <span class="badge pull-right">3</span>
-      Messages
-    </a>
-  </li>
-</ul>
 {% endexample %}
 
 ### Buttons

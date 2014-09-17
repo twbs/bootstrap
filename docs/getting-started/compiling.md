@@ -29,6 +29,9 @@ Run `grunt` to run tests locally and compile the CSS and JavaScript into `/dist`
 #### Tests - `grunt test`
 Runs [JSHint](http://jshint.com) and [QUnit](http://qunitjs.com/) tests headlessly in [PhantomJS](http://phantomjs.org/) (used for CI).
 
+#### Tests and assets - `grunt docs`
+Compiles and tests CSS, JavaScript, and more for running the local documentation via `jekyll serve`.
+
 #### Watch - `grunt watch`
 This is a convenience method for watching just Less files and automatically building them whenever you save.
 

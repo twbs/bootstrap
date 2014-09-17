@@ -316,12 +316,12 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
 
 <div class="bs-callout bs-callout-warning">
   <h4>Caveat about link functionality of `&lt;a&gt;`</h4>
-  <p>Our styles use `pointer-events: none` to try to disable the link functionality of `&lt;a class="btn btn-*"&gt;` buttons in this case, but that CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11. So to be safe, use custom JavaScript to disable such links.</p>
+  <p>Our styles use `pointer-events: none` to try to disable the link functionality of <code>&lt;a class="btn btn-*"&gt;</code> buttons in this case, but that CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11. So to be safe, use custom JavaScript to disable such links.</p>
 </div>
 
 <div class="bs-callout bs-callout-danger">
   <h4>Cross-browser compatibility</h4>
-  <p>While Bootstrap will apply these styles in all browsers, Internet Explorer 9 and below don't actually support the `disabled` attribute on a `&lt;fieldset&gt;`. Use custom JavaScript to disable the fieldset in these browsers.</p>
+  <p>While Bootstrap will apply these styles in all browsers, Internet Explorer 11 and below don't fully support the <code>disabled</code> attribute on a <code>&lt;fieldset&gt;</code>. Use custom JavaScript to disable the fieldset in these browsers.</p>
 </div>
 
 ## Readonly inputs
@@ -441,9 +441,9 @@ Set heights using classes like `.input-lg`, and set widths using grid column cla
 <input class="form-control" type="text" placeholder="Default input">
 <input class="form-control input-sm" type="text" placeholder=".input-sm">
 
-<select class="form-control input-lg">...</select>
-<select class="form-control">...</select>
-<select class="form-control input-sm">...</select>
+<select class="form-control input-lg"></select>
+<select class="form-control"></select>
+<select class="form-control input-sm"></select>
 {% endexample %}
 
 Quickly size labels and form controls within `.form-horizontal` by adding `.form-group-lg` or `.form-group-sm` to existing `.form-group`s.

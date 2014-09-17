@@ -16,9 +16,40 @@ Hover over the links below to see tooltips:
   </p>
 </div>
 
-### Directions
+### Static demo
 
-Available in four directions
+Four options are available: top, right, bottom, and left aligned.
+
+<div class="bs-example bs-example-tooltip">
+  <div class="tooltip left" role="tooltip">
+    <div class="tooltip-arrow"></div>
+    <div class="tooltip-inner">
+      Tooltip on the left
+    </div>
+  </div>
+  <div class="tooltip top" role="tooltip">
+    <div class="tooltip-arrow"></div>
+    <div class="tooltip-inner">
+      Tooltip on the top
+    </div>
+  </div>
+  <div class="tooltip bottom" role="tooltip">
+    <div class="tooltip-arrow"></div>
+    <div class="tooltip-inner">
+      Tooltip on the bottom
+    </div>
+  </div>
+  <div class="tooltip right" role="tooltip">
+    <div class="tooltip-arrow"></div>
+    <div class="tooltip-inner">
+      Tooltip on the right
+    </div>
+  </div>
+</div>
+
+### Interactive demo
+
+Hover over the buttons below to see their tooltips.
 
 <div class="bs-example tooltip-demo">
   <div class="bs-example-tooltips">
@@ -100,12 +131,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 <div class="table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
-     <tr>
-       <th style="width: 100px;">Name</th>
-       <th style="width: 100px;">Type</th>
-       <th style="width: 50px;">Default</th>
-       <th>Description</th>
-     </tr>
+      <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 100px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+      </tr>
     </thead>
     <tbody>
       <tr>
@@ -231,28 +262,28 @@ Hides and destroys an element's tooltip.
 <div class="table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
-     <tr>
-       <th style="width: 150px;">Event Type</th>
-       <th>Description</th>
-     </tr>
+      <tr>
+        <th style="width: 150px;">Event Type</th>
+        <th>Description</th>
+      </tr>
     </thead>
     <tbody>
-     <tr>
-       <td>show.bs.tooltip</td>
-       <td>This event fires immediately when the <code>show</code> instance method is called.</td>
-     </tr>
-     <tr>
-       <td>shown.bs.tooltip</td>
-       <td>This event is fired when the tooltip has been made visible to the user (will wait for CSS transitions to complete).</td>
-     </tr>
-     <tr>
-       <td>hide.bs.tooltip</td>
-       <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
-     </tr>
-     <tr>
-       <td>hidden.bs.tooltip</td>
-       <td>This event is fired when the tooltip has finished being hidden from the user (will wait for CSS transitions to complete).</td>
-     </tr>
+      <tr>
+        <td>show.bs.tooltip</td>
+        <td>This event fires immediately when the <code>show</code> instance method is called.</td>
+      </tr>
+      <tr>
+        <td>shown.bs.tooltip</td>
+        <td>This event is fired when the tooltip has been made visible to the user (will wait for CSS transitions to complete).</td>
+      </tr>
+      <tr>
+        <td>hide.bs.tooltip</td>
+        <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
+      </tr>
+      <tr>
+        <td>hidden.bs.tooltip</td>
+        <td>This event is fired when the tooltip has finished being hidden from the user (will wait for CSS transitions to complete).</td>
+      </tr>
     </tbody>
   </table>
 </div>

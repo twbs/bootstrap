@@ -39,7 +39,7 @@ $(".alert").alert()
 
 ### Markup
 
-Just add `data-dismiss="alert"` to your close button to automatically give an alert close functionality.
+Just add `data-dismiss="alert"` to your close button to automatically give an alert close functionality. Closing an alert removes it from the DOM.
 
 {% highlight html %}
 <button type="button" class="close" data-dismiss="alert">
@@ -48,7 +48,7 @@ Just add `data-dismiss="alert"` to your close button to automatically give an al
 </button>
 {% endhighlight %}
 
-To have your alerts use animation when closing, make sure they have the `.fade` and `.in` class already applied to them.
+To have your alerts use animation when closing, make sure they have the `.fade` and `.in` classes already applied to them.
 
 ### Methods
 
@@ -58,13 +58,13 @@ Makes an alert listen for click events on descendant elements which have the `da
 
 #### $().alert('close')
 
-Closes an alert.
+Closes an alert by removing it from the DOM. If the `.fade` and `.in` classes are present on the element, the alert will fade out before it is removed.
 
 {% highlight js %}$(".alert").alert('close'){% endhighlight %}
 
 ### Events
 
-Bootstrap's alert class exposes a few events for hooking into alert functionality.
+Bootstrap's alert plugin exposes a few events for hooking into alert functionality.
 
 <div class="table-responsive">
   <table class="table table-bordered table-striped">

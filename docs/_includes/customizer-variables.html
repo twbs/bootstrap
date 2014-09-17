@@ -87,6 +87,18 @@
     <label for="input-@enable-gradients">@enable-gradients</label>
     <input id="input-@enable-gradients" type="text" value="true" data-var="@enable-gradients" class="form-control"/>
   </div>
+  <div class="bs-customizer-input">
+    <label for="input-@enable-transitions">@enable-transitions</label>
+    <input id="input-@enable-transitions" type="text" value="true" data-var="@enable-transitions" class="form-control"/>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@spacer">@spacer</label>
+    <input id="input-@spacer" type="text" value="1rem" data-var="@spacer" class="form-control"/>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@border-width">@border-width</label>
+    <input id="input-@border-width" type="text" value=".05rem" data-var="@border-width" class="form-control"/>
+  </div>
 </div>
 <h2 id="typography">Typography</h2>
 <p>Font, line-height, and color for body text, headings, and more.</p>
@@ -191,7 +203,7 @@
   </div>
   <div class="bs-customizer-input">
     <label for="input-@padding-base-horizontal">@padding-base-horizontal</label>
-    <input id="input-@padding-base-horizontal" type="text" value="1rem" data-var="@padding-base-horizontal" class="form-control"/>
+    <input id="input-@padding-base-horizontal" type="text" value=".75rem" data-var="@padding-base-horizontal" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@padding-large-vertical">@padding-large-vertical</label>
@@ -227,7 +239,7 @@
   </div>
   <div class="bs-customizer-input">
     <label for="input-@border-radius-base">@border-radius-base</label>
-    <input id="input-@border-radius-base" type="text" value=".2rem" data-var="@border-radius-base" class="form-control"/>
+    <input id="input-@border-radius-base" type="text" value=".25rem" data-var="@border-radius-base" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@border-radius-large">@border-radius-large</label>
@@ -263,7 +275,7 @@
 <div class="row">
   <div class="bs-customizer-input">
     <label for="input-@table-cell-padding">@table-cell-padding</label>
-    <input id="input-@table-cell-padding" type="text" value=".6rem" data-var="@table-cell-padding" class="form-control"/>
+    <input id="input-@table-cell-padding" type="text" value=".75rem" data-var="@table-cell-padding" class="form-control"/>
     <p class="help-block">Padding for <code>&lt;th&gt;</code>s and <code>&lt;td&gt;</code>s.</p>
   </div>
   <div class="bs-customizer-input">
@@ -292,7 +304,7 @@
   </div>
   <div class="bs-customizer-input">
     <label for="input-@table-border-color">@table-border-color</label>
-    <input id="input-@table-border-color" type="text" value="#ddd" data-var="@table-border-color" class="form-control"/>
+    <input id="input-@table-border-color" type="text" value="@gray-lighter" data-var="@table-border-color" class="form-control"/>
     <p class="help-block">Border color for table and cell borders.</p>
   </div>
 </div>
@@ -406,7 +418,17 @@
   <div class="bs-customizer-input">
     <label for="input-@input-border-radius">@input-border-radius</label>
     <input id="input-@input-border-radius" type="text" value="@border-radius-base" data-var="@input-border-radius" class="form-control"/>
-    <p class="help-block"><code>&lt;input&gt;</code> border radius</p>
+    <p class="help-block">Default <code>.form-control</code> border radius</p>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@input-border-radius-large">@input-border-radius-large</label>
+    <input id="input-@input-border-radius-large" type="text" value="@border-radius-large" data-var="@input-border-radius-large" class="form-control"/>
+    <p class="help-block">Large <code>.form-control</code> border radius</p>
+  </div>
+  <div class="bs-customizer-input">
+    <label for="input-@input-border-radius-small">@input-border-radius-small</label>
+    <input id="input-@input-border-radius-small" type="text" value="@border-radius-small" data-var="@input-border-radius-small" class="form-control"/>
+    <p class="help-block">Small <code>.form-control</code> border radius</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@input-border-focus">@input-border-focus</label>
@@ -424,17 +446,17 @@
   </div>
   <div class="bs-customizer-input">
     <label for="input-@input-height-base">@input-height-base</label>
-    <input id="input-@input-height-base" type="text" value="((@font-size-base * @line-height-base) + (@padding-base-vertical * 2) + .2)" data-var="@input-height-base" class="form-control"/>
+    <input id="input-@input-height-base" type="text" value="((@font-size-base * @line-height-base) + (@padding-base-vertical * 2) + (@border-width * 2))" data-var="@input-height-base" class="form-control"/>
     <p class="help-block">Default <code>.form-control</code> height</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@input-height-large">@input-height-large</label>
-    <input id="input-@input-height-large" type="text" value="((@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + .2)" data-var="@input-height-large" class="form-control"/>
+    <input id="input-@input-height-large" type="text" value="((@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + (@border-width * 2))" data-var="@input-height-large" class="form-control"/>
     <p class="help-block">Large <code>.form-control</code> height</p>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@input-height-small">@input-height-small</label>
-    <input id="input-@input-height-small" type="text" value="((@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + .2)" data-var="@input-height-small" class="form-control"/>
+    <input id="input-@input-height-small" type="text" value="((@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + (@border-width * 2))" data-var="@input-height-small" class="form-control"/>
     <p class="help-block">Small <code>.form-control</code> height</p>
   </div>
   <div class="bs-customizer-input">
@@ -678,7 +700,7 @@
   </div>
   <div class="bs-customizer-input">
     <label for="input-@navbar-inverse-bg">@navbar-inverse-bg</label>
-    <input id="input-@navbar-inverse-bg" type="text" value="#222" data-var="@navbar-inverse-bg" class="form-control"/>
+    <input id="input-@navbar-inverse-bg" type="text" value="#373a3c" data-var="@navbar-inverse-bg" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@navbar-inverse-border">@navbar-inverse-border</label>
@@ -686,7 +708,7 @@
   </div>
   <div class="bs-customizer-input">
     <label for="input-@navbar-inverse-link-color">@navbar-inverse-link-color</label>
-    <input id="input-@navbar-inverse-link-color" type="text" value="@gray-light" data-var="@navbar-inverse-link-color" class="form-control"/>
+    <input id="input-@navbar-inverse-link-color" type="text" value="lighten(@gray-light, 15%)" data-var="@navbar-inverse-link-color" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@navbar-inverse-link-hover-color">@navbar-inverse-link-hover-color</label>
@@ -743,7 +765,7 @@
 <div class="row">
   <div class="bs-customizer-input">
     <label for="input-@nav-link-padding">@nav-link-padding</label>
-    <input id="input-@nav-link-padding" type="text" value=".5em 1em" data-var="@nav-link-padding" class="form-control"/>
+    <input id="input-@nav-link-padding" type="text" value=".6em 1em" data-var="@nav-link-padding" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@nav-link-hover-bg">@nav-link-hover-bg</label>
@@ -756,10 +778,6 @@
   <div class="bs-customizer-input">
     <label for="input-@nav-disabled-link-hover-color">@nav-disabled-link-hover-color</label>
     <input id="input-@nav-disabled-link-hover-color" type="text" value="@gray-light" data-var="@nav-disabled-link-hover-color" class="form-control"/>
-  </div>
-  <div class="bs-customizer-input">
-    <label for="input-@nav-open-link-hover-color">@nav-open-link-hover-color</label>
-    <input id="input-@nav-open-link-hover-color" type="text" value="#fff" data-var="@nav-open-link-hover-color" class="form-control"/>
   </div>
 </div>
 <h2 id="tabs">Tabs</h2>
@@ -897,7 +915,7 @@
 <div class="row">
   <div class="bs-customizer-input">
     <label for="input-@jumbotron-padding">@jumbotron-padding</label>
-    <input id="input-@jumbotron-padding" type="text" value="30px" data-var="@jumbotron-padding" class="form-control"/>
+    <input id="input-@jumbotron-padding" type="text" value="2rem" data-var="@jumbotron-padding" class="form-control"/>
   </div>
   <div class="bs-customizer-input">
     <label for="input-@jumbotron-color">@jumbotron-color</label>
@@ -910,10 +928,6 @@
   <div class="bs-customizer-input">
     <label for="input-@jumbotron-heading-color">@jumbotron-heading-color</label>
     <input id="input-@jumbotron-heading-color" type="text" value="inherit" data-var="@jumbotron-heading-color" class="form-control"/>
-  </div>
-  <div class="bs-customizer-input">
-    <label for="input-@jumbotron-font-size">@jumbotron-font-size</label>
-    <input id="input-@jumbotron-font-size" type="text" value="ceil((@font-size-base * 1.5))" data-var="@jumbotron-font-size" class="form-control"/>
   </div>
 </div>
 <h2 id="form-states-and-alerts">Form states and alerts</h2>
@@ -1036,7 +1050,7 @@
   </div>
   <div class="bs-customizer-input">
     <label for="input-@popover-arrow-color">@popover-arrow-color</label>
-    <input id="input-@popover-arrow-color" type="text" value="#fff" data-var="@popover-arrow-color" class="form-control"/>
+    <input id="input-@popover-arrow-color" type="text" value="@popover-bg" data-var="@popover-arrow-color" class="form-control"/>
     <p class="help-block">Popover arrow color</p>
   </div>
   <div class="bs-customizer-input">
