@@ -1034,6 +1034,14 @@ a.list-group-item.active > .badge {
   background-image:url(bac-header.png);
   background-image:url(bac-header.svg), none;
 }
+@media (max-width: 767px) {
+  .bac-header {
+    width:255px;
+    height:45px;
+    background-image:url(bac-header-big.png);
+    background-image:url(bac-header-big.svg), none;
+  }
+}
 .bac-header-big {
   width:255px;
   height:45px;
@@ -1085,9 +1093,12 @@ a.list-group-item.active > .badge {
   padding-top: 27px;
 }
 .navbar-top .sub-brand {
-  color:#292202;
-  float:right;
+  /*
   margin-top: 20px;
+  color:#292202;
+  */
+  float:right;
+  
 }
 
 .navbar-top h5.sub-brand {
@@ -2164,6 +2175,7 @@ ul.affix-bottom {
 .shortcut p {
   color:#888;
 }
+/*
 @media (max-width: 560px) {
   .shortcut h3 {
     font-family: "GothamMedium", Helvetica, Arial, sans-serif;
@@ -2171,7 +2183,7 @@ ul.affix-bottom {
     font-size:18px;
   }
 }
-
+*/
 
 /* panel */
 

@@ -18,19 +18,6 @@
 
 * TASKS *********************************************************************************************
 
-- MEGA MENU, 3 niveles sin nombre [arriba más importante, medio menos, abajo menos, cada una a 3 columnas ancho]
-	fotitooooo
-	https://mural.ly/#/menuprincipal/1410549935039
-
-- emprolijar buenosaires.css
-	baseline 24px !
-
-- Arreglar responsive......
-
-- imagenes thumbnails con muchas mediaquerys
-	emprolijar mediaqueries [investigar formas de ponerlo ok]
-	item lists en 12px?
-
 - rehacer de nuevo todas las paginas de forma semántica
 
 - hacer paginas medium y landing
@@ -38,6 +25,9 @@
 - HOME multimedios [en footer, o debajo de alguna columna?]
 	widget radio en home [menu con coso que se activa what]
 
+- emprolijar buenosaires.css
+	baseline 24px !
+	
 - NUEVO BASTRAP más liviano + EMPROLIJAR + SUBIR DE NUEVO A CDN ba.gob.ar
 	opensans en cdn google? [con opcional offline]
 	sacar elementos nuevos al pedo, solo bastrap de boostrap
@@ -50,9 +40,17 @@
 
 * IMPORTANT *********************************************************************************************
 
+- foto mega menu?
+
 - Y si hacemos que sea siempre offline?
 
 - Lazy load
+
+- Delay para mega menu
+	http://jsfiddle.net/azhagu/6vYr2/2/
+	http://cameronspear.com/demos/bootstrap-hover-dropdown/
+	http://community.sitepoint.com/t/delay-on-mega-menu/59017/5
+	https://github.com/kamens/jQuery-menu-aim
 
 - Gotham medium ok, ver open sans......
 
@@ -175,6 +173,134 @@ bootstrap ya existente
 
 
 
+
+
+
+
+
+
+La Ciudad
+
+	Excepteur sint occaecat
+	Sed ut perspiciatis
+	Neque porro quisquam
+	Quis autem
+	Duis aute irure
+	Nemo enim ipsam voluptatem
+	At vero eos et accusamus
+	Temporibus
+	Ut enim ad minima
+
+	Quis autem
+	Duis aute irure
+	Nemo enim ipsam voluptatem
+
+	Excepteur sint occaecat
+	Sed ut perspiciatis
+	Neque porro quisquam
+	Quis autem
+	Duis aute irure
+	Nemo enim ipsam voluptatem
+	At vero eos et accusamus
+	Temporibus
+	Ut enim ad minima
+
+	Duis aute irure
+	Nemo enim ipsam voluptatem
+	At vero eos et accusamus
+	Temporibus
+
+
+
+Gobierno
+
+	Quis autem
+	Duis aute irure
+	Nemo enim ipsam voluptatem
+	At vero eos et accusamus
+
+	Excepteur sint occaecat
+	Sed ut perspiciatis
+	Neque porro quisquam
+	Quis autem
+	Duis aute irure
+	Nemo enim ipsam voluptatem
+
+	Sed ut perspiciatis
+	Neque porro quisquam
+	Quis autem
+	Duis aute irure
+	Nemo enim ipsam voluptatem
+	Excepteur sint occaecat
+
+	Excepteur sint occaecat
+	Sed ut perspiciatis
+	Neque porro quisquam
+	Quis autem
+	Duis aute irure
+	Nemo enim ipsam voluptatem
+	At vero eos et accusamus
+	Temporibus
+	Ut enim ad minima
+	Quis autem
+	Duis aute irure
+	Nemo enim ipsam voluptatem
+
+
+
+Trámites
+
+	Excepteur sint occaecat
+	Sed ut perspiciatis
+	Neque porro quisquam
+	Quis autem
+	Duis aute irure
+	Nemo enim ipsam voluptatem
+	Neque porro quisquam
+
+	Temporibus
+	Duis aute irure
+	Nemo enim ipsam voluptatem
+	At vero eos et accusamus
+	Temporibus
+
+	Duis aute irure
+	Nemo enim ipsam voluptatem
+	At vero eos et accusamus
+	Temporibus
+	Duis aute irure
+	Nemo enim ipsam voluptatem
+
+
+
+En todo estás vos
+
+	Duis aute irure
+	Nemo enim ipsam voluptatem
+	At vero eos et accusamus
+	Temporibus
+	Duis aute irure
+
+	Nemo enim ipsam voluptatem
+	At vero eos et accusamus
+	Temporibus
+	Duis aute irure
+
+	At vero eos et accusamus
+	Temporibus
+	Duis aute irure
+
+	Duis aute irure
+	At vero eos et accusamus
+	Temporibus
+
+
+
+
+Transparencia
+Turismo
+Noticias
+Accesible
 
 
 
