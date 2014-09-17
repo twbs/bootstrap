@@ -18,33 +18,15 @@
 
 * TASKS *********************************************************************************************
 
-- rehacer de nuevo todas las paginas de forma semántica
+- chequear en windows los bold.....
 
-- hacer paginas medium y landing
+- menu a 2 renglones en tablet [sacar shadow divisor?]
 
-- HOME multimedios [en footer, o debajo de alguna columna?]
-	widget radio en home [menu con coso que se activa what]
+- boton entrar a BA loggeado.......................... [avatarcito y nombre y dropdown para salir, perfil, etc]
 
-- emprolijar buenosaires.css
-	baseline 24px !
-	
-- NUEVO BASTRAP más liviano + EMPROLIJAR + SUBIR DE NUEVO A CDN ba.gob.ar
-	opensans en cdn google? [con opcional offline]
-	sacar elementos nuevos al pedo, solo bastrap de boostrap
-	íconos en paneles?
-	opacity como .6
- 
-
-
-
-
-* IMPORTANT *********************************************************************************************
+- Nota redes sociales, botones más chicos, "compartido xx veces" sin numero grande
 
 - foto mega menu?
-
-- Y si hacemos que sea siempre offline?
-
-- Lazy load
 
 - Delay para mega menu
 	http://jsfiddle.net/azhagu/6vYr2/2/
@@ -52,15 +34,44 @@
 	http://community.sitepoint.com/t/delay-on-mega-menu/59017/5
 	https://github.com/kamens/jQuery-menu-aim
 
-- Gotham medium ok, ver open sans......
+- rehacer de nuevo todas las paginas de forma semántica
 
-- bold como bold y no semibold??????????
+- HOME multimedios [en footer, o debajo de alguna columna?]
+	widget radio en home [menu con coso que se activa what]
+
+- hacer paginas medium y landing
+
+
+
+
+
+
+- emprolijar buenosaires.css
+	baseline 24px !
 
 - BS usar sólo grilla de bastrap? sino es más peso de BS y pisar de nuevo para sacar, wtf
+
+- NUEVO BASTRAP más liviano + EMPROLIJAR + SUBIR DE NUEVO A CDN ba.gob.ar
+	opensans en cdn google? [con opcional offline]
+	sacar elementos nuevos al pedo, solo bastrap de boostrap
+	íconos en paneles?
+	opacity como .6
+ 	version offline opensans https://www.google.com/fonts#UsePlace:use/Collection:Open+Sans
+
+
+
+
+* IMPORTANT *********************************************************************************************
+
+- ribbons
+
+- Y si hacemos que sea siempre offline?
 
 - APRENDER y pasar a SASS
 
 - nav mobile para header, footer y sidebar en pag de libro.... [drawer? colapsable todo? no colapsable pag de libro? mmm?
+	drawer navigation [trunk.js?]
+	todo desplegado
 
 - no ser garca y poner los -webkit y -moz [y modernizr?]
 
@@ -69,7 +80,12 @@
 
 
 
+
+
+
 * LATER *********************************************************************************************
+
+- 
 
 - UI kits
 
@@ -99,6 +115,10 @@
 - BA > pagina con todas las redes sociales fanpages etc de areas todo
 
 - BA > proponer resumen de IA > muchas cosas deben ser notas/novedades [ver]
+
+- Lazy load
+
+
 
 
 * BASTRAP *********************************************************************************************
@@ -179,135 +199,6 @@ bootstrap ya existente
 
 
 
-La Ciudad
-
-	Excepteur sint occaecat
-	Sed ut perspiciatis
-	Neque porro quisquam
-	Quis autem
-	Duis aute irure
-	Nemo enim ipsam voluptatem
-	At vero eos et accusamus
-	Temporibus
-	Ut enim ad minima
-
-	Quis autem
-	Duis aute irure
-	Nemo enim ipsam voluptatem
-
-	Excepteur sint occaecat
-	Sed ut perspiciatis
-	Neque porro quisquam
-	Quis autem
-	Duis aute irure
-	Nemo enim ipsam voluptatem
-	At vero eos et accusamus
-	Temporibus
-	Ut enim ad minima
-
-	Duis aute irure
-	Nemo enim ipsam voluptatem
-	At vero eos et accusamus
-	Temporibus
-
-
-
-Gobierno
-
-	Quis autem
-	Duis aute irure
-	Nemo enim ipsam voluptatem
-	At vero eos et accusamus
-
-	Excepteur sint occaecat
-	Sed ut perspiciatis
-	Neque porro quisquam
-	Quis autem
-	Duis aute irure
-	Nemo enim ipsam voluptatem
-
-	Sed ut perspiciatis
-	Neque porro quisquam
-	Quis autem
-	Duis aute irure
-	Nemo enim ipsam voluptatem
-	Excepteur sint occaecat
-
-	Excepteur sint occaecat
-	Sed ut perspiciatis
-	Neque porro quisquam
-	Quis autem
-	Duis aute irure
-	Nemo enim ipsam voluptatem
-	At vero eos et accusamus
-	Temporibus
-	Ut enim ad minima
-	Quis autem
-	Duis aute irure
-	Nemo enim ipsam voluptatem
-
-
-
-Trámites
-
-	Excepteur sint occaecat
-	Sed ut perspiciatis
-	Neque porro quisquam
-	Quis autem
-	Duis aute irure
-	Nemo enim ipsam voluptatem
-	Neque porro quisquam
-
-	Temporibus
-	Duis aute irure
-	Nemo enim ipsam voluptatem
-	At vero eos et accusamus
-	Temporibus
-
-	Duis aute irure
-	Nemo enim ipsam voluptatem
-	At vero eos et accusamus
-	Temporibus
-	Duis aute irure
-	Nemo enim ipsam voluptatem
-
-
-
-En todo estás vos
-
-	Duis aute irure
-	Nemo enim ipsam voluptatem
-	At vero eos et accusamus
-	Temporibus
-	Duis aute irure
-
-	Nemo enim ipsam voluptatem
-	At vero eos et accusamus
-	Temporibus
-	Duis aute irure
-
-	At vero eos et accusamus
-	Temporibus
-	Duis aute irure
-
-	Duis aute irure
-	At vero eos et accusamus
-	Temporibus
-
-
-
-
-Transparencia
-Turismo
-Noticias
-Accesible
-
-
-
-
-
-
-
 
 
 
@@ -366,47 +257,6 @@ Accesible
 140
 168
 196
-
-
-
-
-
-
-
-
-
-
-<!-- I got these buttons from simplesharebuttons.com -->
-<div id="share-buttons">
- 
-<!-- Facebook -->
-<a href="http://www.facebook.com/sharer.php?u=http://www.simplesharebuttons.com" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" /></a>
- 
-<!-- Twitter -->
-<a href="http://twitter.com/share?url=http://www.simplesharebuttons.com&text=Simple Share Buttons&hashtags=simplesharebuttons" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" /></a>
- 
-<!-- Google+ -->
-<a href="https://plus.google.com/share?url=http://www.simplesharebuttons.com" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/google.png" alt="Google" /></a>
- 
-<!-- Digg -->
-<a href="http://www.digg.com/submit?url=http://www.simplesharebuttons.com" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/diggit.png" alt="Digg" /></a>
- 
-<!-- Reddit -->
-<a href="http://reddit.com/submit?url=http://www.simplesharebuttons.com&title=Simple Share Buttons" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" /></a>
- 
-<!-- LinkedIn -->
-<a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.simplesharebuttons.com" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" /></a>
- 
-<!-- Pinterest -->
-<a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());"><img src="http://www.simplesharebuttons.com/images/somacro/pinterest.png" alt="Pinterest" /></a>
- 
-<!-- StumbleUpon-->
-<a href="http://www.stumbleupon.com/submit?url=http://www.simplesharebuttons.com&title=Simple Share Buttons" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/stumbleupon.png" alt="StumbleUpon" /></a>
- 
-<!-- Email -->
-<a href="mailto:?Subject=Simple Share Buttons&Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://www.simplesharebuttons.com"><img src="http://www.simplesharebuttons.com/images/somacro/email.png" alt="Email" /></a>
- 
-</div>
 
 
 
