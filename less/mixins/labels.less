@@ -10,3 +10,17 @@
     }
   }
 }
+
+.label-variant-inverse(@color) {
+  background-color: transparent;
+  color: @color;
+  border: 1px solid lighten(@color, 10%);
+
+  &[href] {
+    &:hover,
+    &:focus {
+      color: darken(@color, 10%);
+      border: 1px solid @color;
+    }
+  }
+}
