@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../bastrap3/bastrap.css">
     <link rel="stylesheet" href="assets/buenosaires.css">
+    <!--
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    -->
     <!--[if lt IE 9]>
       <script src="../bastrap3/ba-modernizr.js"></script>
     <![endif]-->
@@ -293,7 +296,7 @@
       <ol class="breadcrumb">
         <li><a href="#4">Buenos Aires</a></li>
         <li><a href="#4">Gobierno</a></li>
-        <li><a href="#4">Desarrollo Urbano</a></li>
+        <li><a href="#">Desarrollo Urbano</a></li>
         <li><a href="#4">Reorganización material</a></li>
         <li><a href="#4">Noticias</a></li>
         <li class="active">Discurso del jefe de Gobierno sobre los servicios digitales</li>
@@ -398,17 +401,17 @@
                 <tr>
                   <td>discurso.pdf</td>
                   <td>64.4 KB</td>
-                  <td><button class="btn btn-blue btn-block btn-sm"><span class="glyphicon glyphicon-download"></span></button></td>
+                  <td><button class="btn btn-blue btn-block btn-sm"><span class="glyphicon glyphicon-arrow-down"></span></button></td>
                 </tr>
                 <tr>
                   <td>notas.txt</td>
                   <td>124.4 KB</td>
-                  <td><button class="btn btn-blue btn-block btn-sm"><span class="glyphicon glyphicon-download"></span></button></td>
+                  <td><button class="btn btn-blue btn-block btn-sm"><span class="glyphicon glyphicon-arrow-down"></span></button></td>
                 </tr>
                 <tr>
                   <td>planilla-universal.xls</td>
                   <td>92.6 KB</td>
-                  <td><button class="btn btn-blue btn-block btn-sm"><span class="glyphicon glyphicon-download"></span></button></td>
+                  <td><button class="btn btn-blue btn-block btn-sm"><span class="glyphicon glyphicon-arrow-down"></span></button></td>
                 </tr>
               </tbody>
             </table>
@@ -444,13 +447,16 @@
             <h2>Contactános</h2>
             <form role="form">
               <div class="form-group">
-                <input class="form-control" type="text" placeholder="Nombre" required>
+                <label for="Nombre">Nombre</label>
+                <input class="form-control" type="text" placeholder="Nombre" id="Nombre" required>
               </div>
               <div class="form-group">
-                <input class="form-control" type="text" placeholder="Correo electrónico">
+                <label for="Correo">Correo electrónico</label>
+                <input class="form-control" type="text" placeholder="Correo electrónico" id="Correo">
               </div>
               <div class="form-group">
-                <textarea class="form-control" rows="3" placeholder="Mensaje"></textarea>
+                <label for="Mensaje">Mensaje</label>
+                <textarea class="form-control" rows="3" placeholder="Mensaje" id="Mensaje"></textarea>
               </div>
               <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Enviar mensaje</button>

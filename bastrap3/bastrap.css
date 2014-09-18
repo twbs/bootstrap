@@ -90,21 +90,22 @@ body {
 
 body, .label, .list-group, .list-group p, .list-group-item-text, .shortcut p, .alert-link p,
 blockquote p, .list-group blockquote p, .jumbotron p, .lead {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
   font-weight: 400;
 }
 a, b, p strong, span strong, thead > tr > th, .progress-bar, label, dt, .h6, h6 {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  font-weight: 700;
-}
-h1, .h1, h2, .h2, h3, .h3, .panel-title, .btn, .input-xl, .navbar-brand  {
-  font-family: "GothamBold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
+  font-weight: 600;
 }
 h4, .h4, h5, .h5, .panel-title, .btn, .input-xl, .navbar-brand{
-  font-family: "GothamMedium", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: "Gotham", Helvetica, Arial, sans-serif;
+  font-weight: 400;
 }
+h1, .h1, h2, .h2, h3, .h3, .panel-title, .btn, .input-xl, .navbar-brand  {
+  font-family: "Gotham", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+}
+
 /*
 blockquote p, .list-group blockquote p, .jumbotron p.lead {
 	font-family: "GothamLight", Helvetica, Arial, sans-serif;
@@ -1127,8 +1128,8 @@ a.list-group-item.active > .badge {
 }
 */
 .navbar-top .navbar-brand {
-  font-family: "GothamBold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: "Gotham", Helvetica, Arial, sans-serif;
+  font-weight: 600;
   font-size:24px;
 }
 
@@ -1240,8 +1241,8 @@ a.list-group-item.active > .badge {
   font-size:14px;
 }
 .sidebar-brand a span {
-  font-family: "GothamBold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: "Gotham", Helvetica, Arial, sans-serif;
+  font-weight: 600;
   font-size: 24px;
   display:block;
   margin-bottom:5px;
@@ -1263,7 +1264,7 @@ a.list-group-item.active > .badge {
   display: block;
   color: #aaa;
   padding: 5px 30px 5px 28px;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size:14px;
   /*border-left:solid 2px transparent;*/
@@ -1276,8 +1277,8 @@ a.list-group-item.active > .badge {
 .sidebar .nav > .active > a,
 .sidebar .nav > .active:hover > a,
 .sidebar .nav > .active:focus > a {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  font-weight: 700;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
+  font-weight: 600;
   color: #333;
   /*border-color:#333;*/
 }
@@ -1297,15 +1298,15 @@ margin-bottom: 8px;
   padding-bottom: 3px;
   padding-left: 30px;
   font-size: 12px;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
   font-weight: 400;
   padding-left:45px;
 }
 .sidebar .nav .nav > .active > a,
 .sidebar .nav .nav > .active:hover > a,
 .sidebar .nav .nav > .active:focus > a {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  font-weight: 700;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
+  font-weight: 600;
 }
 .sidebar .nav .nav > li {
   display:none;
@@ -1328,7 +1329,7 @@ margin-bottom: 8px;
   .sidebar .nav > .active > a,
   .sidebar .nav > .active > a:hover {
     color:#aaa;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
   font-weight: 400;
   }
   .sidebar .nav > .active > a:hover {
@@ -1858,7 +1859,7 @@ ul.affix-bottom {
 }
 .footer-row ul li a {
   color:#888;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
   font-weight: 400;
   text-decoration:none;
 }
@@ -2114,7 +2115,7 @@ ul.affix-bottom {
   border-radius: 0;
 }
 .jumbotron > .carousel p {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size:14px;
   line-height: 1.42857143;
@@ -2745,7 +2746,7 @@ a.alert-spot:active {
 }
 .alert-spot p {
   margin-bottom:0;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
   font-weight: 400;
 }
 .alert-spot-default {
@@ -2962,11 +2963,9 @@ a.alert-spot:active {
 
 /* Font files */
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
-/*
 @font-face {
-  font-family: "OpenSansRegular";
+  font-family: "OpenSans";
   src: url('fonts/opensans-regular.eot');
   src: url('fonts/opensans-regular.eot?#iefix') format('embedded-opentype'),
   url('fonts/opensans-regular.svg#OpenSansRegular') format('svg'),
@@ -2975,6 +2974,18 @@ a.alert-spot:active {
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "Gotham";
+  src: url('fonts/gotham-medium.eot');
+  src: url('fonts/gotham-medium.eot?#iefix') format('embedded-opentype'),
+  url('fonts/gotham-medium.svg#Gotham') format('svg'),
+  url('fonts/gotham-medium.woff') format('woff'),
+  url('fonts/gotham-medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+/*
+/*
 @font-face {
   font-family: "OpenSansSemibold";
   src: url('fonts/opensans-semibold.eot');
@@ -2985,7 +2996,6 @@ a.alert-spot:active {
   font-weight: normal;
   font-style: normal;
 }
-*/
 @font-face {
   font-family: "GothamBold";
   src: url('fonts/gotham-bold.eot');
@@ -2996,18 +3006,6 @@ a.alert-spot:active {
   font-weight: normal;
   font-style: normal;
 }
-
-@font-face {
-  font-family: "GothamMedium";
-  src: url('fonts/gotham-medium.eot');
-  src: url('fonts/gotham-medium.eot?#iefix') format('embedded-opentype'),
-  url('fonts/gotham-medium.svg#Gotham') format('svg'),
-  url('fonts/gotham-medium.woff') format('woff'),
-  url('fonts/gotham-medium.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-/*
 @font-face {
   font-family: "GothamLight";
   src: url('fonts/gotham-light.eot');

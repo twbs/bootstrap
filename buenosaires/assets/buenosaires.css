@@ -296,7 +296,7 @@
 
 /* botones + inputs */
 
-.form-control {
+.form-control.input-sm {
   height: inherit;
   padding: 7px 15px 6px 15px;
   font-size: 12px;
@@ -304,8 +304,15 @@
 }
 
 
+/*
 
-
+.form-control {
+  height: inherit;
+  padding: 6px 12px;
+  font-size: 16px;
+  line-height: 24px;
+}
+*/
  
 
 .navbar-primary .navbar-brand {
@@ -465,8 +472,8 @@
 }
 */
 .list-group-item-img h4 {
-  font-family: "GothamBold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: "Gotham", Helvetica, Arial, sans-serif;
+  font-weight: 600;
   font-size:42px;
   background-image: linear-gradient(to bottom,rgba(0,0,0,.6) 0,rgba(0,0,0,.0) 100%);
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
@@ -1460,12 +1467,9 @@ border:0 !important;
 
 
 
-
-
-
 .shares-num {
-  font-family: "GothamBold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: "Gotham", Helvetica, Arial, sans-serif;
+  font-weight: 600;
   font-size:32px;
   line-height:32px;
   display:block;
@@ -1553,7 +1557,7 @@ h4 {
   font-size:16px;
   line-height:16px;
 }
-h5, h6, .breadcrumb ol li, .footer-row ul li {
+h5, h6, .breadcrumb ol li, .footer-row ul li, label {
   font-size:12px;
   line-height:16px;
 }
@@ -1569,10 +1573,6 @@ h1, h2, h3 {
   margin-top:16px;
   margin-bottom:16px;
 }
-
-
-
-
 
 
 
