@@ -65,45 +65,21 @@ body {
 }
 */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 body, .label, .list-group, .list-group p, .list-group-item-text, .shortcut p, .alert-link p,
 blockquote p, .list-group blockquote p, .jumbotron p, .lead {
-  font-family: "OpenSans", Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
-a, b, p strong, span strong, thead > tr > th, .progress-bar, label, dt, .h6, h6 {
-  font-family: "OpenSans", Helvetica, Arial, sans-serif;
-  font-weight: 600;
+b, p strong, span strong, thead > tr > th, .progress-bar, label, dt, .h6, h6 {
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-weight: bold;
 }
-h4, .h4, h5, .h5, .panel-title, .btn, .input-xl, .navbar-brand{
+
+h4, .h4, h5, .h5, .panel-title, .btn, .input-xl, .navbar-brand {
   font-family: "Gotham", Helvetica, Arial, sans-serif;
-  font-weight: 400;
 }
-h1, .h1, h2, .h2, h3, .h3, .panel-title, .btn, .input-xl, .navbar-brand  {
+h1, .h1, h2, .h2, h3, .h3 {
   font-family: "Gotham", Helvetica, Arial, sans-serif;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 /*
@@ -1011,7 +987,7 @@ a.list-group-item.active > .badge {
 }
 */
 .navbar-top {
-  min-height:48px;
+  min-height:40px;
 }
 
 /* brand logos */
@@ -1264,7 +1240,7 @@ a.list-group-item.active > .badge {
   display: block;
   color: #aaa;
   padding: 5px 30px 5px 28px;
-  font-family: "OpenSans", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size:14px;
   /*border-left:solid 2px transparent;*/
@@ -1277,7 +1253,7 @@ a.list-group-item.active > .badge {
 .sidebar .nav > .active > a,
 .sidebar .nav > .active:hover > a,
 .sidebar .nav > .active:focus > a {
-  font-family: "OpenSans", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-weight: 600;
   color: #333;
   /*border-color:#333;*/
@@ -1298,14 +1274,14 @@ margin-bottom: 8px;
   padding-bottom: 3px;
   padding-left: 30px;
   font-size: 12px;
-  font-family: "OpenSans", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-weight: 400;
   padding-left:45px;
 }
 .sidebar .nav .nav > .active > a,
 .sidebar .nav .nav > .active:hover > a,
 .sidebar .nav .nav > .active:focus > a {
-  font-family: "OpenSans", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-weight: 600;
 }
 .sidebar .nav .nav > li {
@@ -1329,7 +1305,7 @@ margin-bottom: 8px;
   .sidebar .nav > .active > a,
   .sidebar .nav > .active > a:hover {
     color:#aaa;
-  font-family: "OpenSans", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-weight: 400;
   }
   .sidebar .nav > .active > a:hover {
@@ -1585,8 +1561,11 @@ ul.affix-bottom {
 @media (max-width: 767px) {
   .navbar-primary .navbar-nav .open .dropdown-menu>li>a:focus,
   .navbar-primary .navbar-nav .open .dropdown-menu>li>a:hover {
-    background-color: #ffd300;
-    color: #292202;
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+    color: #333;
   }
 }
 
@@ -1724,6 +1703,7 @@ ul.affix-bottom {
   color: rgba(255, 255, 255, .4);
   background-color:transparent;
 }
+/*
 @media (max-width: 767px) {
   .jumbotron-main .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus,
   .jumbotron-main .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
@@ -1731,6 +1711,7 @@ ul.affix-bottom {
     color: #fff;
   }
 }
+*/
 
 /* jumbotron */
 
@@ -1860,7 +1841,7 @@ ul.affix-bottom {
 }
 .footer-row ul li a {
   color:#888;
-  font-family: "OpenSans", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-weight: 400;
   text-decoration:none;
 }
@@ -2058,7 +2039,7 @@ ul.affix-bottom {
   right: 0;
   bottom: 0;
   text-align:left;
-  padding: 30px;
+  padding: 30px 30px 0 30px;
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
 }
 .carousel-control {
@@ -2076,7 +2057,7 @@ ul.affix-bottom {
   border-radius: 6px;
 }
 .carousel-inner>.item {
-  max-height:520px;
+  max-height:512px;
 }
 .carousel-inner>.item>img,
 .carousel-inner>.item>a>img {
@@ -2116,7 +2097,7 @@ ul.affix-bottom {
   border-radius: 0;
 }
 .jumbotron > .carousel p {
-  font-family: "OpenSans", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size:14px;
   line-height: 1.42857143;
@@ -2747,7 +2728,7 @@ a.alert-spot:active {
 }
 .alert-spot p {
   margin-bottom:0;
-  font-family: "OpenSans", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-weight: 400;
 }
 .alert-spot-default {
@@ -2987,7 +2968,9 @@ a.alert-spot:active {
 
 /* Font files */
 
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
+/*
 @font-face {
   font-family: "OpenSans";
   src: url('fonts/opensans-regular.eot');
@@ -3008,36 +2991,34 @@ a.alert-spot:active {
   font-weight: normal;
   font-style: normal;
 }
-/*
+*/
+
 /*
 @font-face {
-  font-family: "OpenSansSemibold";
-  src: url('fonts/opensans-semibold.eot');
-  src: url('fonts/opensans-semibold.eot?#iefix') format('embedded-opentype'),
-  url('fonts/opensans-semibold.svg#Open Sans Semibold') format('svg'),
-  url('fonts/opensans-semibold.woff') format('woff'),
-  url('fonts/opensans-semibold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'OpenSans';
+    src: url('fonts/opensans-regular.eot');
+    src: url('fonts/opensans-regular.eot?#iefix') format('embedded-opentype'),
+         url('fonts/opensans-regular.woff') format('woff'),
+         url('fonts/opensans-regular.ttf') format('truetype'),
+         url('fonts/opensans-regular.svg#OpenSans') format('svg');
+    font-weight: normal;
+    font-weight: 400;
+    font-style: normal;
 }
 @font-face {
-  font-family: "GothamBold";
-  src: url('fonts/gotham-bold.eot');
-  src: url('fonts/gotham-bold.eot?#iefix') format('embedded-opentype'),
-  url('fonts/gotham-bold.svg#GothamBold') format('svg'),
-  url('fonts/gotham-bold.woff') format('woff'),
-  url('fonts/gotham-bold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "GothamLight";
-  src: url('fonts/gotham-light.eot');
-  src: url('fonts/gotham-light.eot?#iefix') format('embedded-opentype'),
-  url('fonts/gotham-light.svg#Gotham') format('svg'),
-  url('fonts/gotham-light.woff') format('woff'),
-  url('fonts/gotham-light.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'Gotham';
+    src: url('fonts/gotham.eot');
+    src: url('fonts/gotham.eot?#iefix') format('embedded-opentype'),
+         url('fonts/gotham.woff') format('woff'),
+         url('fonts/gotham.ttf') format('truetype'),
+         url('fonts/gotham.svg#Gotham') format('svg');
+    font-weight: normal;
+    font-weight: 400;
+    font-style: normal;
 }
 */
+
+
+
+
+

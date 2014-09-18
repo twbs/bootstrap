@@ -18,16 +18,16 @@
 
 * TASKS *********************************************************************************************
 
-- Crossbrowsing TRANCA + sarmiento cargador [usar red de tele]
 
-- horas redmine y horas casa
+
+
 
 - rehacer de nuevo todas las paginas de forma semántica
+	home
+	medium [medium+landing]
 
 - HOME multimedios [en footer, o debajo de alguna columna?]
 	widget radio en home [menu con coso que se activa what]
-
-- hacer paginas medium y landing
 
 - emprolijar buenosaires.css
 	baseline 24px !
@@ -42,7 +42,9 @@
 	opacity como .6
  	version offline opensans https://www.google.com/fonts#UsePlace:use/Collection:Open+Sans
 
-- Crossbrowsing BIEN
+- horas redmine y horas casa
+
+- Crossbrowsing + sarmiento cargador [usar red de tele]
 
 
 

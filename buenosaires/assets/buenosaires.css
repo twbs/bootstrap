@@ -118,10 +118,10 @@
     padding-right:10px;
 
   }
-  .navbar-top .navbar-nav {
+  .navbar-primary .navbar-nav {
     margin-left:-10px;
   }
-  .navbar-top .sub-brand {
+  .navbar-primary .sub-brand {
     margin-right:-20px;
   }
   .navbar-primary .navbar-collapse {
@@ -294,6 +294,10 @@
   .navbar-primary .sub-brand {
     margin-top:-40px;
   }
+  .navbar-primary .sub-brand > .dropdown-menu {
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 4px;
+  }
 }
 
 
@@ -404,7 +408,7 @@
 
 
 
-
+/*
 .ba-home .navbar-primary .navbar-form button {
   font-size: 24px !important;
   padding: 9px 15px 3px 15px !important;
@@ -412,7 +416,7 @@
 .ba-home .ba-navbar-top {
   min-height: 72px;
 }
-
+*/
 
 
 
@@ -452,13 +456,13 @@
     margin:0 auto;
     float:none;
   }
-  */
+
   .navbar-top.navbar-default {
     padding-top:20px;
     padding-bottom:20px;
   }
-
-  .navbar-nav .open .dropdown-menu {
+  */
+  .navbar-primary .navbar-nav .open .dropdown-menu {
     margin-left: 30px;
     margin-right: 0;
   }
@@ -635,6 +639,38 @@
 .jumbotron-main .jumbotron-overlay {
   background:rgba(0,0,0,.4);
 }
+
+
+.jumbotron.area-header .container {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.jumbotron.area-header .navbar-collapse {
+  padding:0;
+/*  margin-left: -15px;
+  margin-right: -15px;*/
+}
+.jumbotron.area-header .navbar-nav>li>a {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+
+@media (max-width: 767px) {
+  .jumbotron.area-header .navbar-nav {
+    margin-left:0;
+    margin-right:0;
+  }
+  .jumbotron.area-header .navbar-nav .open .dropdown-menu {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+
+
+
+
 /*
 .jumbotron .area-title {
   margin-bottom:15px;
@@ -653,24 +689,32 @@
 
 
 .ba-area .jumbotron .area-title {
-  padding-top:36px;
-  padding-bottom:36px;
+  padding-top:48px;
+  padding-bottom:24px;
 }
 
+.ba-area .jumbotron h1 {
+  font-size:64px;
+  line-height:64px;
+}
+.ba-area .carousel {
+  margin: 16px 30px;
+}
 
-
-
-
+.ba-home .carousel {
+  margin: 32px 30px 16px 30px;
+}
 
 /*
 .ba-area .jumbotron,
 .ba-nota .jumbotron,
 .ba-libro .jumbotron,
 */
+/*
 .ba-home .navbar-primary {
   margin-bottom:60px;
 }
-
+*/
 
 
 
@@ -781,6 +825,10 @@
 }
 
 
+
+.row-shortcut {
+  margin: 30px 15px 0 15px;
+}
 
 
 
@@ -927,18 +975,6 @@ margin-top: -10px;
 
 
 
-/* mega menu */
-
-.dropdown-menu > li > a span,
-.dropdown-menu > div > div > li > a span {
-  font-size: 12px;
-  display: block;
-  color: #888;
-  font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
-  font-weight:normal;
-}
-
-
 
 
 
@@ -976,12 +1012,10 @@ margin-top: -10px;
 .yamm .dropdown-menu {
   /*left: 0;
   right: 0;*/
-  padding-top: 16px;
-  padding-bottom:16px;
+  
 }
-.yamm .dropdown-menu hr {
-  margin-top: 15px;
-  margin-bottom:16px;
+.dropdown-menu hr {
+  margin: 15px -15px 16px -15px;
 }
 
 
@@ -990,12 +1024,8 @@ margin-top: -10px;
   font-size:12px;
 }
 */
-.yamm .dropdown-menu li > a {
+.dropdown-menu li > a {
   border-radius:4px;
-}
-
-.yamm .dropdown-header {
-  color:#333;
 }
 
 
@@ -1034,11 +1064,11 @@ margin-top: -10px;
 /* dropdown */
 
 .dropdown-menu {
-  padding:0;
+  padding:16px 15px;
 }
 .dropdown-menu > li > a,
 .dropdown-menu > div > div > li > a {
-  padding: 10px 15px;
+  padding: 10px 15px !important;
 }
 .dropdown-menu > div > div > li > a {
   display:block;
@@ -1053,11 +1083,11 @@ margin-top: -10px;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
 }
-
 .dropdown-menu .row {
-  padding-left:30px;
-  padding-right:30px;
+  padding: 0 15px;
 }
+
+
 .dropdown-menu .col-sm-4,
 .dropdown-menu .col-sm-12 {
   padding-left:0;
@@ -1072,7 +1102,7 @@ margin-top: -10px;
   font-size:16px;
 }
 .sub-brand .dropdown-menu {
-  width: 180px;
+  width: 200px;
   right: 16px;
 }
 .sub-brand .avatar {
@@ -1092,7 +1122,6 @@ margin-top: -10px;
 }
 
 
-}
 
 
 
@@ -1167,7 +1196,11 @@ margin-top: -10px;
 
 
 
-
+.pager {
+  border-top: solid 1px #e5e5e5;
+  padding-top: 24px;
+  margin-top: 32px;
+}
 
 
 .pager .previous a {
@@ -1402,13 +1435,13 @@ margin-top: -10px;
 */
 
 
-#main aside .list-group {
+.list-group {
   margin-top:16px;
   margin-bottom:32px;
 }
 
 
-#main aside .list-group button {
+.list-group button {
   margin-top:16px;
 }
 
@@ -1573,6 +1606,11 @@ time {
 }
 
 
+
+
+section h2 {
+  display: inline-block;
+}
 
 
 
