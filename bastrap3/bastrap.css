@@ -1838,6 +1838,7 @@ ul.affix-bottom {
   /*width: 100%;*/
   text-decoration:none;
 }
+.footer-row h3,
 .footer-row h4,
 .footer-row h5 {
   color:#fff;
@@ -2942,9 +2943,32 @@ a.alert-spot:active {
   background-color: #b52d81;
 }
 
+/* colores type */
 
-
-
+.danger-lt {
+  color: #d13f34 !important;
+}
+.warning-lt {
+  color: #ff9624 !important;
+}
+.primary-lt {
+  color: #ffd300 !important;
+}
+.success-lt {
+  color: #9bc12b !important;
+}
+.info-lt {
+  color: #3cb5b1 !important;
+}
+.blue-lt {
+  color: #4265bc !important;
+}
+.violet-lt {
+  color: #9c43a3 !important;
+}
+.pink-lt {
+  color: #c64b7d !important;
+}
 
 
 

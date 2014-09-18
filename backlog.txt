@@ -18,21 +18,9 @@
 
 * TASKS *********************************************************************************************
 
-- chequear en windows los bold.....
+- Crossbrowsing TRANCA + sarmiento cargador [usar red de tele]
 
-- menu a 2 renglones en tablet [sacar shadow divisor?]
-
-- boton entrar a BA loggeado.......................... [avatarcito y nombre y dropdown para salir, perfil, etc]
-
-- Nota redes sociales, botones más chicos, "compartido xx veces" sin numero grande
-
-- foto mega menu?
-
-- Delay para mega menu
-	http://jsfiddle.net/azhagu/6vYr2/2/
-	http://cameronspear.com/demos/bootstrap-hover-dropdown/
-	http://community.sitepoint.com/t/delay-on-mega-menu/59017/5
-	https://github.com/kamens/jQuery-menu-aim
+- horas redmine y horas casa
 
 - rehacer de nuevo todas las paginas de forma semántica
 
@@ -41,13 +29,9 @@
 
 - hacer paginas medium y landing
 
-
-
-
-
-
 - emprolijar buenosaires.css
 	baseline 24px !
+	emprolijar assets....
 
 - BS usar sólo grilla de bastrap? sino es más peso de BS y pisar de nuevo para sacar, wtf
 
@@ -58,16 +42,32 @@
 	opacity como .6
  	version offline opensans https://www.google.com/fonts#UsePlace:use/Collection:Open+Sans
 
+- Crossbrowsing BIEN
 
 
 
-* IMPORTANT *********************************************************************************************
+
+
+
+* QUEUE *********************************************************************************************
+
+- hover y delay para megamenu
+	http://jsfiddle.net/azhagu/6vYr2/2/
+	http://cameronspear.com/demos/bootstrap-hover-dropdown/
+	http://community.sitepoint.com/t/delay-on-mega-menu/59017/5
+	https://github.com/kamens/jQuery-menu-aim
+
+- fix carousel
+
+- foto mega menu?
+
+- Nota redes sociales, botones más chicos, "compartido xx veces" sin numero grande
+
+- boton entrar a BA loggeado.......................... [avatarcito y nombre y dropdown para salir, perfil, etc]
 
 - ribbons
 
 - Y si hacemos que sea siempre offline?
-
-- APRENDER y pasar a SASS
 
 - nav mobile para header, footer y sidebar en pag de libro.... [drawer? colapsable todo? no colapsable pag de libro? mmm?
 	drawer navigation [trunk.js?]
@@ -77,6 +77,14 @@
 
 - listar las clases de páginas/zonas/componentes
 
+- widget 147
+
+- Agregar alt, rel, role ...
+
+- Self closing tags caretear?
+
+
+
 
 
 
@@ -85,15 +93,13 @@
 
 * LATER *********************************************************************************************
 
-- 
+- APRENDER y pasar a SASS
 
 - UI kits
 
 - DOCS poner indice en comentarios css
 
 - COMENTAR descriptivamente
-
-- widget 147
 
 - TABLET
 	sacar banner
@@ -104,10 +110,6 @@
 	resto del sitio
 	header más app con drawer
 
-- Agregar alt, rel, role ...
-
-- Self closing tags caretear?
-
 - no hacerse el boludo y pasar todo a saas/less
 
 - sidebar que te siga hasta arriba y hasta abajo? [claro]
@@ -117,6 +119,11 @@
 - BA > proponer resumen de IA > muchas cosas deben ser notas/novedades [ver]
 
 - Lazy load
+
+
+
+
+
 
 
 
