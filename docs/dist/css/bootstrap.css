@@ -4172,13 +4172,6 @@ a.list-group-item.active > .badge,
   color: inherit;
   background-color: #eceeef;
 }
-.jumbotron h1,
-.jumbotron .h1 {
-  color: inherit;
-}
-.jumbotron > hr {
-  border-top-color: #d0d5d8;
-}
 .container .jumbotron,
 .container-fluid .jumbotron {
   border-radius: .3rem;
@@ -4186,16 +4179,22 @@ a.list-group-item.active > .badge,
 .jumbotron .container {
   max-width: 100%;
 }
-@media screen and (min-width: 48em) {
+.jumbotron-heading {
+  color: inherit;
+}
+.jumbotron-hr {
+  border-top-color: #d0d5d8;
+}
+@media (min-width: 48em) {
   .jumbotron {
     padding: 3.2rem 0;
   }
-  .container .jumbotron {
+  .container .jumbotron,
+  .container-fluid .jumbotron {
     padding-right: 4rem;
     padding-left: 4rem;
   }
-  .jumbotron h1,
-  .jumbotron .h1 {
+  .jumbotron-heading {
     font-size: 4.5rem;
   }
 }
