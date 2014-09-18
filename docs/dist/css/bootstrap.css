@@ -4827,7 +4827,7 @@ button.close {
     width: 300px;
   }
 }
-@media (min-width: 62em) {
+@media (min-width: 48em) {
   .modal-lg {
     width: 900px;
   }
@@ -5229,7 +5229,7 @@ button.close {
 .carousel-caption .btn {
   text-shadow: none;
 }
-@media screen and (min-width: 48em) {
+@media (min-width: 48em) {
   .carousel-control .icon-prev,
   .carousel-control .icon-next {
     width: 30px;
