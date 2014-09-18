@@ -10,6 +10,11 @@
     <!-- QUnit -->
     <link rel="stylesheet" href="vendor/qunit.css" media="screen">
     <script src="vendor/qunit.js"></script>
+    <style>
+      #qunit-tests > li.pass {
+        display: none;/* Make it easier to see failing tests is Sauce screencasts */
+      }
+    </style>
     <script>
       // See https://github.com/axemclion/grunt-saucelabs#test-result-details-with-qunit
       var log = []
