@@ -48,6 +48,8 @@
         - title: Scale
         - title: Body copy
         - title: Headings
+    - title: Jumbotron
+    - title: Page header
     - title: Images
     - title: Code
       sections:
