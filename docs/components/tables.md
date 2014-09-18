@@ -254,12 +254,12 @@ Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
 </table>
 {% endexample %}
 
-## Condensed table
+## Small table
 
-Add `.table-condensed` to make tables more compact by cutting cell padding in half.
+Add `.table-sm` to make tables more compact by cutting cell padding in half.
 
 {% example html %}
-<table class="table table-condensed">
+<table class="table table-sm">
   <thead>
     <tr>
       <th>#</th>
