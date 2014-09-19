@@ -1428,13 +1428,14 @@ margin-top: -10px;
 
 
 
-
+.footer-row .mini-social {
+  min-width: 300px !important;
+}
 
 .mini-social {
   padding:0;
   margin:0;
   overflow:auto;
-  min-width: 300px;
 }
 .mini-social li {
   list-style:none;
@@ -1501,7 +1502,7 @@ margin-top: -10px;
 /*.ba-show article {
   padding-top:48px;
 }*/
-.ba-show section {
+.ba-show > section {
   padding-top:48px;
   padding-bottom:48px;
 }
@@ -1512,7 +1513,7 @@ margin-top: -10px;
   margin-bottom:48px;
 }
 
-.ba-show .mini-social {
+.ba-show > section .mini-social {
   margin:48px auto 0 auto;
   display:table;
   min-width:inherit;
