@@ -1434,7 +1434,7 @@ margin-top: -10px;
 
 .mini-social {
   padding:0;
-  margin:0;
+  margin:0 auto;
   overflow:auto;
 }
 .mini-social li {
@@ -1513,14 +1513,16 @@ margin-top: -10px;
   margin-bottom:48px;
 }
 
-.ba-show > section .mini-social {
+.ba-show article > section .mini-social {
   margin:48px auto 0 auto;
-  display:table;
+  display:table !important;
   min-width:inherit;
 }
 .ba-show .mini-social .shares {
   display:block;
 }
+
+
 
 .show-heading {
   text-align:center;
