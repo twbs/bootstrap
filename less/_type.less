@@ -80,63 +80,6 @@ mark,
   padding: .2em;
 }
 
-// Alignment
-.text-left           { text-align: left; }
-.text-right          { text-align: right; }
-.text-center         { text-align: center; }
-.text-justify        { text-align: justify; }
-.text-nowrap         { white-space: nowrap; }
-
-// Transformation
-.text-lowercase      { text-transform: lowercase; }
-.text-uppercase      { text-transform: uppercase; }
-.text-capitalize     { text-transform: capitalize; }
-
-// Contextual colors
-.text-muted {
-  color: @text-muted;
-}
-.text-primary {
-  .text-emphasis-variant(@brand-primary);
-}
-.text-success {
-  .text-emphasis-variant(@state-success-text);
-}
-.text-info {
-  .text-emphasis-variant(@state-info-text);
-}
-.text-warning {
-  .text-emphasis-variant(@state-warning-text);
-}
-.text-danger {
-  .text-emphasis-variant(@state-danger-text);
-}
-
-// Contextual backgrounds
-// For now we'll leave these alongside the text classes until v4 when we can
-// safely shift things around (per SemVer rules).
-.bg-primary {
-  // Given the contrast here, this is the only class to have its color inverted
-  // automatically.
-  color: #fff;
-  .bg-variant(@brand-primary);
-}
-.bg-success {
-  .bg-variant(@state-success-bg);
-}
-.bg-info {
-  .bg-variant(@state-info-bg);
-}
-.bg-warning {
-  .bg-variant(@state-warning-bg);
-}
-.bg-danger {
-  .bg-variant(@state-danger-bg);
-}
-.bg-gray-dark {
-  .bg-variant(@gray-dark);
-}
-
 
 // Page header
 // -------------------------
