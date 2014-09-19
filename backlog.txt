@@ -18,6 +18,19 @@
 
 * TASKS *********************************************************************************************
 
+
+- megamenu hover + click mmmmm
+
+- medios home, poner player y links más chicos
+
+
+
+
+
+
+
+
+
 - emprolijar buenosaires.css
 	baseline 24px !
 	emprolijar assets....
@@ -42,7 +55,16 @@
 
 
 
+
+
+
 * QUEUE *********************************************************************************************
+
+- paginas faltantes
+	tramite [3 pasos, precio]
+	formulario/wizard [virgin american [mezcla de tramite y show]]
+	listado [para apps moviles, beneficios, noticias? listado de tramites?]
+
 
 - hover y delay para megamenu
 	http://jsfiddle.net/azhagu/6vYr2/2/
@@ -75,6 +97,7 @@
 - Agregar alt, rel, role ...
 
 - Self closing tags caretear?
+
 
 
 
