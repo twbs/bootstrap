@@ -249,7 +249,7 @@
   position:relative;
   z-index:9;
   min-height: 48px;
-  padding-top: 6px;
+  padding-top: 9px;
   padding-bottom: 1px;
 }
 .navbar-primary.ba-navbar-top {
@@ -1498,12 +1498,12 @@ margin-top: -10px;
 .ba-show .jumbotron p {
   text-align:center;
 }
-.ba-show article {
-  margin-top:48px;
-}
+/*.ba-show article {
+  padding-top:48px;
+}*/
 .ba-show section {
-  margin-top:48px;
-  margin-bottom:48px;
+  padding-top:48px;
+  padding-bottom:48px;
 }
 .ba-show .row-shortcut {
   margin-top:0;
@@ -1523,6 +1523,7 @@ margin-top: -10px;
 
 .show-heading {
   text-align:center;
+  padding-top:96px !important;
 }
 /*
 .show-heading .col-md-8 {
@@ -1532,6 +1533,9 @@ margin-top: -10px;
 */
 
 .show-img {
+  padding:0 !important;
+}
+.show-img figure {
   margin:0;
 }
 .show-img img {
@@ -1539,14 +1543,21 @@ margin-top: -10px;
   border-radius:0;
 }
 
+.ba-show section[class*="bg-"] {
+  padding-top:72px;
+}
 
+.ba-show section[class*="bg-"] blockquote {
+  border-color:rgba(0,0,0,.2);
+}
+.ba-show section[class*="bg-"] blockquote footer {
+  color: rgba(0,0,0,.6);
+}
 
-
-
-
-
-
-
+.ba-show section div[class*="col-"] {
+  padding-left:15px;
+  padding-right:15px;
+}
 
 
 
