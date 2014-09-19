@@ -334,6 +334,35 @@
 </label>
 {% endhighlight %}
 
+  <h4>Checkboxes and radios without labels</h4>
+  <p>Should you have no text within the <code>&lt;label&gt;</code>, the input is positioned as you'd expect. <strong>Currently only works on non-inline checkboxes and radios.</strong></p>
+  <div class="bs-example">
+    <form role="form">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" id="blankCheckbox" value="option1">
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="blankRadio" id="blankRadio1" value="option1">
+        </label>
+      </div>
+    </form>
+  </div>
+{% highlight html %}
+<div class="checkbox">
+  <label>
+    <input type="checkbox" id="blankCheckbox" value="option1">
+  </label>
+</div>
+<div class="radio">
+  <label>
+    <input type="radio" name="blankRadio" id="blankRadio1" value="option1">
+  </label>
+</div>
+{% endhighlight %}
+
   <h3>Selects</h3>
   <p>Use the default option, or add <code>multiple</code> to show multiple options at once.</p>
   <div class="bs-example">
