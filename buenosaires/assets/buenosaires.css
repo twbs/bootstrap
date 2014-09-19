@@ -788,7 +788,7 @@ article .thumbnail:active {
 article header {
   border-bottom:solid 1px #e5e5e5;
   padding-bottom:32px;
-  margin-bottom:48px;
+  margin-bottom:40px;
 }
 
 
@@ -1734,7 +1734,7 @@ border:0 !important;
 
 .social-shares,
 time {
-  font-size:16px;
+  font-size:14px;
   line-height:24px;
   position:relative;
   top:8px;
