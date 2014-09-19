@@ -1543,9 +1543,9 @@ margin-top: -10px;
   border-radius:0;
 }
 
-.ba-show section[class*="bg-"] {
+/*.ba-show section[class*="bg-"] {
   padding-top:72px;
-}
+}*/
 
 .ba-show section[class*="bg-"] blockquote {
   border-color:rgba(0,0,0,.2);
