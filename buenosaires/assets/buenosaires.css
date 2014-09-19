@@ -1917,7 +1917,11 @@ margin:0;
 }
 
 
-
+.ba-nota .breadcrumb,
+.ba-libro .breadcrumb {
+  margin-left:15px;
+  margin-right:15px;
+}
 
 
 
