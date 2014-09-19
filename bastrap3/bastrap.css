@@ -94,14 +94,14 @@ blockquote p, .list-group blockquote p, .jumbotron p.lead {
 blockquote {
   border:0;
   text-align:center;
-  margin:30px 15%;
-  padding:20px 0;
+  margin:36px 15% 36px 15%;
+  padding:16px 0;
   border-top:solid 1px #e5e5e5;
   border-bottom:solid 1px #e5e5e5;
 }
 blockquote p {
-  font-size:26px;
-  line-height:1.25;
+  font-size:24px;
+  line-height:32px;
 }
 .list-group blockquote {
   border:0;
@@ -247,9 +247,9 @@ input[type=checkbox]:focus {
 }
 .btn-group-xl>.btn, .btn-xl {
   /*height:65px;*/
-  padding:16px 24px;
+  padding:15px 64px;
   font-size: 24px;
-  line-height: 1.33;
+  line-height: 32px;
   border-radius: 6px;
 }
 
@@ -993,7 +993,6 @@ a.list-group-item.active > .badge {
 /* brand logos */
 
 .bac-header,
-.bac-header-big,
 .bac-footer,
 .bavos-footer,
 .ba-btn {
@@ -1001,25 +1000,27 @@ a.list-group-item.active > .badge {
   background-size:contain;
   display:inline-block;
 }
+.bac-header:hover,
+.bac-header:focus,
+.bac-footer:hover,
+.bac-footer:focus,
+.bavos-footer:hover,
+.bavos-footer:focus {
+  opacity:.8;
+}
+.bac-header:active,
+.bac-footer:active,
+.bavos-footer:active {
+  opacity:1;
+}
+
+
+
 .bac-header {
   width:170px;
   height:30px;
   background-image:url(bac-header.png);
   background-image:url(bac-header.svg), none;
-}
-@media (max-width: 767px) {
-  .bac-header {
-    width:255px;
-    height:45px;
-    background-image:url(bac-header-big.png);
-    background-image:url(bac-header-big.svg), none;
-  }
-}
-.bac-header-big {
-  width:255px;
-  height:45px;
-  background-image:url(bac-header-big.png);
-  background-image:url(bac-header-big.svg), none;
 }
 .bac-footer {
   width:255px;
@@ -1027,12 +1028,7 @@ a.list-group-item.active > .badge {
   background-image:url(bac-footer.png);
   background-image:url(bac-footer.svg), none;
 }
-.bavos-footer {
-  width:234px;
-  height:60px;
-  background-image:url(bavos-footer.png);
-  background-image:url(bavos-footer.svg), none;
-}
+
 /*
 .ba-btn {
   width:76px;
@@ -2021,7 +2017,7 @@ ul.affix-bottom {
 }
 .carousel a:hover img,
 .carousel a:focus img {
-  opacity:0.9;
+  opacity:0.95;
 }
 .carousel-indicators {
   display:none;
@@ -2068,10 +2064,13 @@ ul.affix-bottom {
   .carousel-caption {
     padding:15px;
   }
-  .carousel-caption h3 {
-    font-family: "GothamMedium", Helvetica, Arial, sans-serif;
+  .carousel-caption h3,
+  .carousel-caption h2,
+  .carousel-caption h1 {
+    font-family: "Gotham", Helvetica, Arial, sans-serif;
     font-weight: normal;
-    font-size:18px;
+    font-size:16px;
+    line-height:16px;
   }
   .carousel-caption p {
     display:none;
@@ -2142,9 +2141,9 @@ ul.affix-bottom {
   color: #fff;
   text-align:center;
   margin:0 auto 20px auto;
-  width:110px;
-  height:110px;
-  border-radius:110px;
+  width:112px;
+  height:112px;
+  border-radius:56px;
   display:block;
 }
 .shortcut span.glyphicon {
@@ -2157,9 +2156,23 @@ ul.affix-bottom {
 /*
 @media (max-width: 560px) {
   .shortcut h3 {
-    font-family: "GothamMedium", Helvetica, Arial, sans-serif;
+    font-family: "Gotham", Helvetica, Arial, sans-serif;
     font-weight: normal;
-    font-size:18px;
+    font-size:16px;
+    line-height:16px;
+  }
+  .shortcut p {
+    font-size:14px;
+    line-height:16px;
+  }
+  .shortcut span {
+    width:72px;
+    height:72px;
+    border-radius:36px;
+  }
+  .shortcut span.glyphicon {
+    padding-top:16px;
+    font-size:36px;
   }
 }
 */

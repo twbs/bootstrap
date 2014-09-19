@@ -18,20 +18,11 @@
 
 * TASKS *********************************************************************************************
 
-
-
-
-
-- rehacer de nuevo todas las paginas de forma semántica
-	home
-	medium [medium+landing]
-
-- HOME multimedios [en footer, o debajo de alguna columna?]
-	widget radio en home [menu con coso que se activa what]
-
 - emprolijar buenosaires.css
 	baseline 24px !
 	emprolijar assets....
+	emprolijar clases de elementos que ni son de bootstrap [list-group, .article-nota .article-libro, etc]
+	ba-social por ba-icons [ojo el footer]
 
 - BS usar sólo grilla de bastrap? sino es más peso de BS y pisar de nuevo para sacar, wtf
 

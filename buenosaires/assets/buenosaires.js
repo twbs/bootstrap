@@ -1,6 +1,6 @@
 /* modal carousel */
 
-      $('.carousel').carousel({
+      $('#modalCarousel').carousel({
         interval: false
       })
 
