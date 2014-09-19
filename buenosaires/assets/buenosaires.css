@@ -1502,7 +1502,7 @@ margin-top: -10px;
 /*.ba-show article {
   padding-top:48px;
 }*/
-.ba-show > section {
+.ba-show article > section {
   padding-top:48px;
   padding-bottom:48px;
 }
