@@ -19,19 +19,44 @@
 * TASKS *********************************************************************************************
 
 
-- megamenu hover + click mmmmm
+
+
+
+- libro active border mejor, titular de sidebar, jumbotron libro
+
+- hr al final de show?
+
+- megamenu
+	hover + click mmmmm
+	prioridades font size
+	foto...
 
 - medios home, poner player y links más chicos
 
+- ocultar pager....
 
+- idioma en navbar
 
+- area con widget redes sociales en vez de contacto/iconos
 
+- paginas faltantes
+	tramite [3 pasos, precio]
+		http://www.buenosaires.gob.ar/redentodoestasvos/tarjeta/registro
+	formulario/wizard [virgin american [mezcla de tramite y show]
+		https://www.virginamerica.com/
+	listado [para apps moviles, beneficios, noticias? listado de tramites?]
+		listado dentro de nota abajo
+	resultados de busqueda
 
-
-
-
+- widgets faltantes
+	mapa
+	embed redes sociales
+	flickr
+	1 nota?
+	carousel?
 
 - emprolijar buenosaires.css
+	OJO con las fuentes....
 	baseline 24px !
 	emprolijar assets....
 	emprolijar clases de elementos que ni son de bootstrap [list-group, .article-nota .article-libro, etc]
@@ -45,10 +70,29 @@
 	íconos en paneles?
 	opacity como .6
  	version offline opensans https://www.google.com/fonts#UsePlace:use/Collection:Open+Sans
+ 	VERSION OFFFFLINEEE OPCIONALLLL + cerrar bien documentacion bastrap [por ahora]
 
-- horas redmine y horas casa
+- Crossbrowsing + accesibilidad + sarmiento cargador [usar red de tele]
+	http://wave.webaim.org/report#/http%3A%2F%2Fgcba.github.io%2FBAstrap%2Fbuenosaires%2Fshow.html
+	http://achecker.ca/checker/index.php
+	http://jekyllrb.com/
+	http://gcba.github.io/guiaux/
 
-- Crossbrowsing + sarmiento cargador [usar red de tele]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -60,10 +104,7 @@
 
 * QUEUE *********************************************************************************************
 
-- paginas faltantes
-	tramite [3 pasos, precio]
-	formulario/wizard [virgin american [mezcla de tramite y show]]
-	listado [para apps moviles, beneficios, noticias? listado de tramites?]
+
 
 
 - hover y delay para megamenu
