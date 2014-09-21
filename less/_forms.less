@@ -185,12 +185,12 @@ input[type="month"] {
   line-height: @line-height-base ~"\0";
 
   &.input-sm {
-    line-height: @input-height-small;
-    line-height: @line-height-small ~"\0";
+    line-height: @input-height-sm;
+    line-height: @line-height-sm ~"\0";
   }
   &.input-lg {
-    line-height: @input-height-large;
-    line-height: @line-height-large ~"\0";
+    line-height: @input-height-lg;
+    line-height: @line-height-lg ~"\0";
   }
 }
 
@@ -202,10 +202,10 @@ _:-ms-fullscreen, :root input[type="month"] {
   line-height: @line-height-base;
 
   &.input-sm {
-    line-height: @line-height-small;
+    line-height: @line-height-sm;
   }
   &.input-lg {
-    line-height: @line-height-large;
+    line-height: @line-height-lg;
   }
 }
 
@@ -328,12 +328,12 @@ input[type="checkbox"] {
 
 .input-sm,
 .form-group-sm .form-control {
-  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
+  .input-size(@input-height-sm; @padding-sm-vertical; @padding-smhorizontal; @font-size-sm; @line-height-sm; @input-border-radius-sm);
 }
 
 .input-lg,
 .form-group-lg .form-control {
-  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
+  .input-size(@input-height-lg; @padding-lg-vertical; @padding-lg-horizontal; @font-size-lg; @line-height-lg; @input-border-radius-lg);
 }
 
 
@@ -364,14 +364,14 @@ input[type="checkbox"] {
   pointer-events: none;
 }
 .input-lg + .form-control-feedback {
-  width: @input-height-large;
-  height: @input-height-large;
-  line-height: @input-height-large;
+  width: @input-height-lg;
+  height: @input-height-lg;
+  line-height: @input-height-lg;
 }
 .input-sm + .form-control-feedback {
-  width: @input-height-small;
-  height: @input-height-small;
-  line-height: @input-height-small;
+  width: @input-height-sm;
+  height: @input-height-sm;
+  line-height: @input-height-sm;
 }
 
 // Feedback states
@@ -548,14 +548,14 @@ input[type="checkbox"] {
   .form-group-lg {
     @media (min-width: @screen-sm-min) {
       .control-label {
-        padding-top: ((@padding-large-vertical * @line-height-large) + 1);
+        padding-top: ((@padding-lg-vertical * @line-height-lg) + 1);
       }
     }
   }
   .form-group-sm {
     @media (min-width: @screen-sm-min) {
       .control-label {
-        padding-top: (@padding-small-vertical + 1);
+        padding-top: (@padding-sm-vertical + 1);
       }
     }
   }
