@@ -23,9 +23,9 @@
 <div id="contain"></div>
 
 <script type="text/javascript">
-   jQuery(document).ready(function(){
-       jQuery("#contain").load("http://google.com");
-   });
+$.ajax({url: 'area.html',success:function(result){
+  $( '#contain' ).html(result);
+}});
 </script>
 
 

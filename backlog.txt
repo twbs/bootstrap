@@ -1,4 +1,6 @@
 
+open /Applications/GoogleChrome.app --args --allow-file-access-from-files
+
 * baseline *********************************************************************************************
 
 8
@@ -18,21 +20,11 @@
 
 * TASKS *********************************************************************************************
 
-- home header mas grande
-
-- english y chateá con operador
-
-- megamenu
-	hover + click mmmmm
-	prioridades font size
-	foto...
-
-- medios home, poner player y links más chicos
-
-- PASAR A PHP/JS INCLUDES HEADER FOOTER WIDGETS
 
 
-- area con widget redes sociales en vez de contacto/iconos
+
+
+
 
 - paginas faltantes
 	tramite [3 pasos, precio]
@@ -43,12 +35,11 @@
 		listado dentro de nota abajo
 	resultados de busqueda
 
-- widgets faltantes
-	mapa
-	embed redes sociales
-	flickr
-	1 nota?
-	carousel?
+
+
+
+
+
 
 - emprolijar buenosaires.css
 	OJO con las fuentes....
@@ -73,11 +64,24 @@
 	http://jekyllrb.com/
 	http://gcba.github.io/guiaux/
 
-- chat...
 
 
 
 
+- english y chateá con operador
+
+- PASAR A PHP/JS INCLUDES HEADER FOOTER WIDGETS
+
+- megamenu
+	hover + click mmmmm
+	prioridades font size
+	foto...
+
+- widgets faltantes
+	area radio player
+	flickr
+	1 nota?
+	carousel?
 
 
 
