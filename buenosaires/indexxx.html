@@ -16,28 +16,22 @@
     <!-- [if lt IE 9]><script src="../bastrap3/ba-modernizr.js"></script><![endif] -->
     <!-- <link rel="stylesheet" href="http://basehold.it/32/0/0/0/0.1"> -->
   </head>
-  <body class="ba-home">
+  <body>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
+<div id="contain"></div>
+
 <script type="text/javascript">
-$(".js-include").each(function(){
-    var inc=$(this);
-    $.get(inc.attr("title"), function(data){
-        inc.replaceWith(data);
-    });
-});
+   jQuery(document).ready(function(){
+       jQuery("#contain").load("http://google.com");
+   });
 </script>
 
-<div class="js-include" title="area.html"></div>
 
 
 
 
 
-
-
-
-    
   </body>
 </html>
