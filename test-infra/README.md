@@ -27,7 +27,25 @@ For RubyGems, the `gemdir` of the current RVM-selected Ruby is cached based on t
 Travis does offer built-in caching on their paid plans, but this do-it-ourselves S3 solution is significantly cheaper since we only need caching and not Travis' other paid features.
 
 
-## Setup
+## Configuration
+`s3_cache.py` is configured via `S3Cachefile.json`, which has the following format:
+```json
+{
+    "cache-name-here": {
+        "key": "path/to/file/to/SHA-256/hash/and/use/that/as/the/cache.key",
+        "cache": "path/to/directory/to/be/cached",
+        "generate": "shell-command --to run --to regenerate --the-cache $from scratch"
+    },
+    ...
+}
+```
+
+`s3_cache.py` will SHA-256 hash the contents of the `key` file and try to fetch a tarball from S3 using the hash as the filename.
+If it's unable to fetch the tarball (either because it doesn't exist or there was a network error), it will run the `generate` command. If it was able to fetch the tarball, it will extract it to the `cache` directory.
+If it had to `generate` the cache, it will later create a tarball of the `cache` directory and try to upload the tarball to S3 using the SHA-256 hash of the `key` file as the tarball's filename.
+
+
+## AWS Setup
 
 ### Overview
 1. Create an Amazon Web Services (AWS) account.
