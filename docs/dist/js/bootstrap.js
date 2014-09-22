@@ -953,9 +953,6 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 
     this.isShown = false
 
-    this.$body.removeClass('modal-open')
-
-    this.resetScrollbar()
     this.escape()
 
     $(document).off('focusin.bs.modal')
@@ -996,6 +993,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     var that = this
     this.$element.hide()
     this.backdrop(function () {
+      that.$body.removeClass('modal-open')
+      that.resetScrollbar()
       that.$element.trigger('hidden.bs.modal')
     })
   }
