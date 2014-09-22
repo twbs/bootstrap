@@ -18,13 +18,9 @@
 
 * TASKS *********************************************************************************************
 
+- home header mas grande
 
-
-
-
-- libro active border mejor, titular de sidebar, jumbotron libro
-
-- hr al final de show?
+- english y chateá con operador
 
 - megamenu
 	hover + click mmmmm
@@ -33,9 +29,8 @@
 
 - medios home, poner player y links más chicos
 
-- ocultar pager....
+- PASAR A PHP/JS INCLUDES HEADER FOOTER WIDGETS
 
-- idioma en navbar
 
 - area con widget redes sociales en vez de contacto/iconos
 
@@ -78,7 +73,7 @@
 	http://jekyllrb.com/
 	http://gcba.github.io/guiaux/
 
-
+- chat...
 
 
 
@@ -139,7 +134,7 @@
 
 - Self closing tags caretear?
 
-
+- ocultar pager....
 
 
 

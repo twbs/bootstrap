@@ -628,12 +628,12 @@
   border:0;
   border-top: solid 1px rgba(255, 255, 255, .2);
 }
-*/
+
 .jumbotron-misc {
   background-image:url(../../docs/area.jpg);
   padding-bottom:0;
-  /*margin-top:-29px;*/
 }
+*/
 .navbar .navbar-nav > .active > a,
 .navbar .navbar-nav > .active > a:focus,
 .navbar .navbar-nav > .active > a:hover {
@@ -728,10 +728,6 @@
   padding-bottom:24px;
 }
 
-.ba-area .jumbotron h1 {
-  font-size:64px;
-  line-height:64px;
-}
 .ba-area .carousel {
   margin: 16px 30px;
 }
@@ -751,6 +747,22 @@
   margin-bottom:60px;
 }
 */
+
+
+.ba-libro #main {
+  margin-top: 48px;
+}
+
+.ba-libro .jumbotron .area-title {
+  padding-top:0;
+  padding-bottom:16px;
+}
+
+
+
+
+
+
 
 
 
@@ -912,10 +924,7 @@ margin-top: -10px;
 
 
 
-.jumbotron-small {
-  padding: 0;
-  margin:0;
-}
+
 
 
 
@@ -1064,9 +1073,12 @@ margin-top: -10px;
 
 
 
-
-
-
+/*
+.menu-small > div > li > a {
+  font-size:12px !important;
+  line-height:16px !important;
+}
+*/
 
 
 
@@ -1200,9 +1212,7 @@ margin-top: -10px;
   border-top:solid 1px #e5e5e5;
 }
 
-.page-sidebar li ul li a {
-  font-size:12px;
-}
+
 
 .page-sidebar a {
 
@@ -1300,12 +1310,12 @@ margin-top: -10px;
 
 
 
-.footer-cc {
+.footer-left {
   margin-top:32px;
   margin-bottom:48px;
   color:#444;
 }
-.footer-cc a {
+.footer-left a {
   display:block;
   margin-bottom:5px;
 }
@@ -1483,7 +1493,10 @@ margin-top: -10px;
 
 
 
-
+header.jumbotron {
+  padding: 0;
+  margin:0;
+}
 
 
 
@@ -1796,6 +1809,10 @@ h1 {
   font-size:48px;
   line-height:48px;
 }
+.jumbotron h1 {
+  font-size:64px;
+  line-height:64px;
+}
 h2 {
   font-size:32px;
   line-height:32px; 
@@ -1808,11 +1825,11 @@ h4 {
   font-size:16px;
   line-height:16px;
 }
-h5, .footer-row ul li, .list-group-item p, .navbar-primary .navbar-nav > li > a, .dropdown-menu > li > a, .dropdown-menu > div > div > li > a {
+h5, .footer-row ul li, .list-group-item p, .navbar-primary .navbar-nav > li > a, .dropdown-menu > li > a, .dropdown-menu > div > div > li > a, .page-sidebar li {
   font-size:14px;
   line-height:16px;
 }
-h6, .breadcrumb, .footer-cc p, label {
+h6, .breadcrumb, .footer-left p, label, .page-sidebar li ul li a {
   font-size:12px;
   line-height:16px;
 }
@@ -1917,12 +1934,10 @@ margin:0;
 }
 
 
-.ba-nota .breadcrumb,
-.ba-libro .breadcrumb {
+.ba-nota .breadcrumb {
   margin-left:15px;
   margin-right:15px;
 }
-
 
 
 
@@ -1949,7 +1964,7 @@ margin:0;
 
 
 #main {
-  margin-bottom:48px;
+  padding-bottom:48px;
 }
 
 
