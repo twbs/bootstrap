@@ -53,7 +53,7 @@
     <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
   <div class="container">
     <div class="navbar-header">
-      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -64,19 +64,19 @@
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
         <li>
-          <a href="../getting-started">Getting started</a>
+          <a href="../getting-started/">Getting started</a>
         </li>
         <li>
-          <a href="../css">CSS</a>
+          <a href="../css/">CSS</a>
         </li>
         <li>
-          <a href="../components">Components</a>
+          <a href="../components/">Components</a>
         </li>
         <li>
-          <a href="../javascript">JavaScript</a>
+          <a href="../javascript/">JavaScript</a>
         </li>
         <li>
-          <a href="../customize">Customize</a>
+          <a href="../customize/">Customize</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -120,6 +120,18 @@
       </thead>
       <tbody>
         <tr>
+          <td>Internet Explorer 11</td>
+          <td>Hovered element still remains in <code>:hover</code> state after scrolling away</td>
+          <td><a href="https://connect.microsoft.com/IE/feedback/details/926665/ie-11-hovering-over-an-element-and-then-scrolling-without-moving-the-mouse-pointer-leaves-the-element-in-hover-state">IE bug #926665</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/14211">#14211</a></td>
+        </tr>
+        <tr>
+          <td>Internet Explorer 11</td>
+          <td>When hovering over a <code>&lt;select&gt;</code> menu item, the cursor for the element underneath the menu is displayed</td>
+          <td><a href="https://connect.microsoft.com/IE/feedbackdetail/view/963961">IE bug #963961</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/14528">#14528</a></td>
+        </tr>
+        <tr>
           <td>Firefox</td>
           <td><code>.table-bordered</code> with an empty <code>&lt;tbody&gt;</code> is missing borders</td>
           <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1023761">Mozilla bug #1023761</a></td>
@@ -138,22 +150,28 @@
           <td><a href="https://github.com/twbs/bootstrap/issues/10690">#10690</a></td>
         </tr>
         <tr>
-          <td>Firefox <strong>&lt;31</strong></td>
-          <td><code>position: relative;</code> doesn't work inside tables</td>
-          <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=63895">Mozilla bug #63895</a></td>
-          <td><a href="https://github.com/twbs/bootstrap/issues/12467">#12467</a></td>
+          <td>Firefox</td>
+          <td>Java applets that are descendants of elements with forced hardware acceleration using <code>translate3d(0,0,0)</code> are invisible on Windows</td>
+          <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1048279">Mozilla bug #1048279</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/14124">#14124</a></td>
+        </tr>
+        <tr>
+          <td>Firefox</td>
+          <td>Button elements with <code>width: 100%</code> become cropped in long tables.</td>
+          <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1060131">Mozilla bug #1060131</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/14320">#14320</a></td>
+        </tr>
+        <tr>
+          <td>Firefox</td>
+          <td>If the disabled state of a form control is changed via JavaScript, the normal state doesn't return after refreshing the page.</td>
+          <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=654072">Mozilla bug #654072</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/793">#793</a></td>
         </tr>
         <tr>
           <td>Chrome</td>
           <td>Weird button behavior with some number <code>&lt;input&gt;</code>s</td>
           <td><a href="https://code.google.com/p/chromium/issues/detail?id=337668">Chromium issue #337668</a></td>
           <td><a href="https://github.com/twbs/bootstrap/issues/8350">#8350</a>, <a href="https://github.com/necolas/normalize.css/issues/283">Normalize #283</a></td>
-        </tr>
-        <tr>
-          <td>Chrome</td>
-          <td>Navbar rendering problem on Windows after several clicks</td>
-          <td><a href="https://code.google.com/p/chromium/issues/detail?id=272750">Chromium issue #272750</a>, <a href="https://bugs.webkit.org/show_bug.cgi?id=119793">WebKit bug #119793</a></td>
-          <td><a href="https://github.com/twbs/bootstrap/issues/9226">#9226</a></td>
         </tr>
         <tr>
           <td>Chrome</td>
@@ -192,10 +210,10 @@
           <td><a href="https://github.com/twbs/bootstrap/issues/12548">#12548</a></td>
         </tr>
         <tr>
-          <td>Safari</td>
-          <td>Insufficient CSS percentage precision</td>
-          <td>(No public bug tracker)</td>
-          <td><a href="https://github.com/twbs/bootstrap/issues/9282">#9282</a></td>
+          <td>Chrome</td>
+          <td><code>&lt;input type="password"&gt;</code> sporadically causes bad widths on floated elements</td>
+          <td><a href="https://code.google.com/p/chromium/issues/detail?id=377346">Chrome issue #377346</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/13892">#13892</a></td>
         </tr>
         <tr>
           <td>Safari</td>
@@ -247,7 +265,7 @@
 
 
     <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
-    <p>Maintained by the <a href="https://github.com/twbs?tab=members">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
+    <p>Maintained by the <a href="https://github.com/orgs/twbs/people">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
     <p>Code licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="bs-docs-footer-links muted">
       <li>Currently v3.2.0</li>
@@ -264,7 +282,7 @@
       <li>&middot;</li>
       <li><a href="http://blog.getbootstrap.com">Blog</a></li>
       <li>&middot;</li>
-      <li><a href="https://github.com/twbs/bootstrap/issues?state=open">Issues</a></li>
+      <li><a href="https://github.com/twbs/bootstrap/issues">Issues</a></li>
       <li>&middot;</li>
       <li><a href="https://github.com/twbs/bootstrap/releases">Releases</a></li>
     </ul>
