@@ -1,6 +1,3 @@
-
-open /Applications/GoogleChrome.app --args --allow-file-access-from-files
-
 * baseline *********************************************************************************************
 
 8
@@ -27,15 +24,12 @@ open /Applications/GoogleChrome.app --args --allow-file-access-from-files
 
 
 - paginas faltantes
-	tramite [3 pasos, precio]
-		http://www.buenosaires.gob.ar/redentodoestasvos/tarjeta/registro
 	formulario/wizard [virgin american [mezcla de tramite y show]
 		https://www.virginamerica.com/
-	listado [para apps moviles, beneficios, noticias? listado de tramites?]
-		listado dentro de nota abajo
-	resultados de busqueda
 
 
+- ejemplo thumbnail con icono!
+- pasar ba-home, etc a #
 
 
 
@@ -57,6 +51,7 @@ open /Applications/GoogleChrome.app --args --allow-file-access-from-files
 	opacity como .6
  	version offline opensans https://www.google.com/fonts#UsePlace:use/Collection:Open+Sans
  	VERSION OFFFFLINEEE OPCIONALLLL + cerrar bien documentacion bastrap [por ahora]
+ 	bastrap.js
 
 - Crossbrowsing + accesibilidad + sarmiento cargador [usar red de tele]
 	http://wave.webaim.org/report#/http%3A%2F%2Fgcba.github.io%2FBAstrap%2Fbuenosaires%2Fshow.html
@@ -272,14 +267,14 @@ bootstrap ya existente
 
 
 
+http://www.buenosaires.gob.ar/redentodoestasvos/tarjeta/registro
 
 
 
 
 
 
-
-
+open /Applications/GoogleChrome.app --args --allow-file-access-from-files
 
 
 

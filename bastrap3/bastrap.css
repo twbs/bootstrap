@@ -1939,6 +1939,9 @@ ul.affix-bottom {
 
 /* labels */
 
+.label {
+  font-weight:400;
+}
 .label-default {
   background-color: #e5e5e5;
   color: #888;
@@ -2140,7 +2143,7 @@ ul.affix-bottom {
 .shortcut span {
   color: #fff;
   text-align:center;
-  margin:0 auto 20px auto;
+  margin:0 auto 24px auto;
   width:112px;
   height:112px;
   border-radius:56px;
