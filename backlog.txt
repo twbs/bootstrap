@@ -21,7 +21,7 @@
 
 
 
-
+- descargas como tabla más copada? onda gmail?
 
 - paginas faltantes
 	formulario/wizard [virgin american [mezcla de tramite y show]
@@ -32,7 +32,7 @@
 - pasar ba-home, etc a #
 
 
-
+- ver que onda el responsive de los aside......
 
 
 - emprolijar buenosaires.css

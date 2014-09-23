@@ -372,9 +372,8 @@
   margin-bottom:8px;
 }
 
-.shortcut-list span.glyphicon {
-padding-top: 24px;
-font-size: 32px;
+.shortcut-list span.h1 {
+padding-top: 20px;
 }
 
 .shortcut-list h4 {
@@ -382,8 +381,6 @@ font-size: 32px;
   margin-bottom:8px;
 }
 .shortcut-list p {
-  font-size: 14px;
-  line-height: 16px;
   margin-bottom:0;
 }
 
@@ -2076,7 +2073,7 @@ h4 {
   font-size:16px;
   line-height:16px;
 }
-h5, .footer-row ul li, .list-group-item p, .navbar-primary .navbar-nav > li > a, .dropdown-menu > li > a, .dropdown-menu > div > div > li > a, .page-sidebar li {
+h5, .shortcut-list p, .footer-row ul li, .list-group-item p, .navbar-primary .navbar-nav > li > a, .dropdown-menu > li > a, .dropdown-menu > div > div > li > a, .page-sidebar li {
   font-size:14px;
   line-height:16px;
 }
