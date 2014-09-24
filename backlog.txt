@@ -18,8 +18,9 @@
 * TASKS *********************************************************************************************
 
 
-
-
+- alinear items listado.html
+- buscador ver ejemplo actual + label con resultado
+- RUTAS relativas y/o todo local? JEJJEJ
 
 - descargas como tabla más copada? onda gmail?
 	listado de enlaces
