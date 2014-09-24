@@ -22,22 +22,18 @@
 
 
 - descargas como tabla más copada? onda gmail?
-
-- paginas faltantes
-	formulario/wizard [virgin american [mezcla de tramite y show]
-		https://www.virginamerica.com/
-
-
+	listado de enlaces
+- aplicativo con validacion js y cositas
+	autoscroll al hacer click?
 - ejemplo thumbnail con icono!
-- pasar ba-home, etc a #
-
-
 - ver que onda el responsive de los aside......
+- que onda el tamaño mínimo y el padding 30px???
 
 
 - emprolijar buenosaires.css
 	OJO con las fuentes....
 	baseline 24px !
+	pasar ba-home, etc a #
 	emprolijar assets....
 	emprolijar clases de elementos que ni son de bootstrap [list-group, .article-nota .article-libro, etc]
 	ba-social por ba-icons [ojo el footer]
