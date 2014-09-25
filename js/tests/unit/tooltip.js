@@ -827,6 +827,47 @@ $(function () {
     $circle.bootstrapTooltip('show')
   })
 
+  test('should correctly determine auto placement based on container rather than parent', function () {
+    stop()
+
+    var styles = '<style>'
+        + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
+        + '.tooltip { position: absolute; display: block; font-size: 12px; line-height: 1.4; }'
+        + '.tooltip .tooltip-inner { max-width: 200px; padding: 3px 8px; font-family: Helvetica; text-align: center; }'
+        + '#trigger-parent {'
+        + '  position: fixed;'
+        + '  top: 100px;'
+        + '  right: 17px;'
+        + '}'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    $('#qunit-fixture').append('<span id="trigger-parent"><a id="tt-trigger" title="If a_larger_text is written here, it won\'t fit using older broken version of BS">HOVER OVER ME</a></span>')
+    var $trigger = $('#tt-trigger')
+
+    $trigger
+      .on('shown.bs.tooltip', function () {
+        var $tip = $('.tooltip-inner')
+        var tipXrightEdge = $tip.offset().left + $tip.width()
+        var triggerXleftEdge = $trigger.offset().left
+        ok(tipXrightEdge < triggerXleftEdge, 'tooltip with auto left placement, when near the right edge of the viewport, gets left placement')
+        $trigger.bootstrapTooltip('hide')
+      })
+      .on('hidden.bs.tooltip', function () {
+        $styles.remove()
+        $(this).remove()
+        equal($('.tooltip').length, 0, 'tooltip removed from dom')
+        start()
+      })
+      .bootstrapTooltip({
+        container: 'body',
+        placement: 'auto left',
+        trigger: 'manual'
+      })
+
+    $trigger.bootstrapTooltip('show')
+  })
+
   test('should not reload the tooltip on subsequent mouseenter events', function () {
     var titleHtml = function () {
       var uid = $.fn.bootstrapTooltip.Constructor.prototype.getUID('tooltip')
@@ -909,6 +950,7 @@ $(function () {
       .on('hidden.bs.tooltip', function () {
         $styles.remove()
         $(this).remove()
+        equal($('.tooltip').length, 0, 'tooltip removed from dom')
         start()
       })
       .bootstrapTooltip({
