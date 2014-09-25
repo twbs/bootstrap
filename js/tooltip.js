@@ -192,7 +192,7 @@
         var containerDim = this.getPosition($container)
 
         placement = placement == 'bottom' && pos.top   + pos.height          + actualHeight - containerDim.scroll > containerDim.height ? 'top'    :
-                    placement == 'top'    && pos.top   - containerDim.scroll - actualHeight < containerDim.top                                         ? 'bottom' :
+                    placement == 'top'    && pos.top   - containerDim.scroll - actualHeight < containerDim.top                          ? 'bottom' :
                     placement == 'right'  && pos.right + actualWidth         > containerDim.width                                       ? 'left'   :
                     placement == 'left'   && pos.left  - actualWidth         < containerDim.left                                        ? 'right'  :
                     placement
