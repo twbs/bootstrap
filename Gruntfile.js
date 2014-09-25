@@ -328,22 +328,16 @@ module.exports = function (grunt) {
       }
     },
 
-    validation: {
+    htmllint: {
       options: {
-        charset: 'utf-8',
-        doctype: 'HTML5',
-        failHard: true,
-        reset: true,
-        relaxerror: [
-          'Bad value X-UA-Compatible for attribute http-equiv on element meta.',
-          'Element img is missing required attribute src.',
-          'Attribute autocomplete not allowed on element input at this point.',
-          'Attribute autocomplete not allowed on element button at this point.'
+        ignore: [
+          'Bad value “X-UA-Compatible” for attribute “http-equiv” on XHTML element “meta”.',
+          'XHTML element “img” is missing required attribute “src”.',
+          'Attribute “autocomplete” not allowed on XHTML element “button” at this point.',
+          'Attribute “autocomplete” not allowed on XHTML element “input” at this point.'
         ]
       },
-      files: {
-        src: '_gh_pages/**/*.html'
-      }
+      src: '_gh_pages/**/*.html'
     },
 
     watch: {
@@ -397,7 +391,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   // Docs HTML validation task
-  grunt.registerTask('validate-html', ['jekyll', 'validation']);
+  grunt.registerTask('validate-html', ['jekyll', 'htmllint']);
 
   var runSubset = function (subset) {
     return !process.env.TWBS_TEST || process.env.TWBS_TEST === subset;
