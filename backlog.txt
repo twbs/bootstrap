@@ -17,10 +17,10 @@
 
 * TASKS *********************************************************************************************
 
-
+- megamenu BA menu con iconos
 - alinear items listado.html
 - buscador ver ejemplo actual + label con resultado
-- RUTAS relativas y/o todo local? JEJJEJ
+- RUTAS relativas y/o todo local? JEJJEJ o "//blablabla.blabla"
 
 - descargas como tabla más copada? onda gmail?
 	listado de enlaces
@@ -49,6 +49,7 @@
  	version offline opensans https://www.google.com/fonts#UsePlace:use/Collection:Open+Sans
  	VERSION OFFFFLINEEE OPCIONALLLL + cerrar bien documentacion bastrap [por ahora]
  	bastrap.js
+ 	http://alistapart.com/article/css-audits-taking-stock-of-your-code
 
 - Crossbrowsing + accesibilidad + sarmiento cargador [usar red de tele]
 	http://wave.webaim.org/report#/http%3A%2F%2Fgcba.github.io%2FBAstrap%2Fbuenosaires%2Fshow.html
