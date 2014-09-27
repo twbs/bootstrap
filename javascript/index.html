@@ -1497,11 +1497,10 @@
   <h3>Methods</h3>
 
   <h4>$().alert()</h4>
-  <p>Wraps all alerts with close functionality. To have your alerts animate out when closed, make sure they have the <code>.fade</code> and <code>.in</code> class already applied to them.</p>
+  <p>Makes an alert listen for click events on descendant elements which have the <code>data-dismiss="alert"</code> attribute. (Not necessary when using the data-api's auto-initialization.)</p>
 
-  <h4>.alert('close')</h4>
-  <p>Closes an alert.</p>
-  <div class="highlight"><pre><code class="js"><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.alert&quot;</span><span class="p">).</span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;close&#39;</span><span class="p">)</span></code></pre></div>
+  <h4>$().alert('close')</h4>
+  <p>Closes an alert by removing it from the DOM. If the <code>.fade</code> and <code>.in</code> classes are present on the element, the alert will fade out before it is removed.</p>
 
 
   <h3>Events</h3>
