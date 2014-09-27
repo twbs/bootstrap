@@ -489,7 +489,7 @@
        </tr>
        <tr>
          <td>loaded.bs.modal</td>
-         <td>This event is fired when the modal has loaded content using the remote option.</td>
+         <td>This event is fired when the modal has loaded content using the <code>remote</code> option.</td>
        </tr>
       </tbody>
     </table>
@@ -609,7 +609,7 @@
     ...
   <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
-  <p>To keep URLs intact, use the <code>data-target</code> attribute instead of <code>href="#"</code>.</p>
+  <p>To keep URLs intact with link buttons, use the <code>data-target</code> attribute instead of <code>href="#"</code>.</p>
 <div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&quot;dLabel&quot;</span> <span class="na">role=</span><span class="s">&quot;button&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span> <span class="na">data-target=</span><span class="s">&quot;#&quot;</span> <span class="na">href=</span><span class="s">&quot;/page.html&quot;</span><span class="nt">&gt;</span>
     Dropdown <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
@@ -1498,7 +1498,7 @@
 
 
   <h3>Events</h3>
-  <p>Bootstrap's alert class exposes a few events for hooking into alert functionality.</p>
+  <p>Bootstrap's alert plugin exposes a few events for hooking into alert functionality.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
       <thead>
@@ -1817,7 +1817,7 @@
          <td>parent</td>
          <td>selector</td>
          <td>false</td>
-         <td>If selector then all collapsible elements under the specified parent will be closed when this collapsible item is shown. (similar to traditional accordion behavior - this dependent on the <code>panel</code> class)</td>
+         <td>If a selector is provided, then all collapsible elements under the specified parent will be closed when this collapsible item is shown. (similar to traditional accordion behavior - this is dependent on the <code>panel</code> class)</td>
        </tr>
        <tr>
          <td>toggle</td>
