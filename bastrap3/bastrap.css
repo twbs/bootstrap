@@ -2668,8 +2668,7 @@ height: 96px;
 .list-group-multi .list-thumb > div {
   width:100%;
   height:144px;
-  margin-top:10px;
-  margin-bottom:20px;
+  margin-bottom:24px;
   float:none;
 }
 .list-group-multi .col-sm-3,

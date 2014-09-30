@@ -1448,6 +1448,35 @@ margin-top: -10px;
 .ba-listado #main {
   padding-bottom: 80px;
 }
+
+@media (min-width: 767px) {
+  .ba-listado #main .list-thumb {
+    height:310px;
+    overflow:hidden;
+  }
+}
+@media (min-width: 992px) {
+  .ba-listado #main .list-thumb {
+    height:340px;
+    overflow:hidden;
+  }
+}
+
+
+
+
+
+.list-small {
+  color:#aaa !important;
+  position: relative;
+  top:-4px;
+}
+
+
+
+
+
+
 /*.ba-pagina #main {
   padding-bottom: 64px;
 }*/
@@ -2170,7 +2199,7 @@ h5, .h5, .shortcut-list p, .footer-row ul li, .list-group-item p, .navbar-primar
   font-size:14px;
   line-height:16px;
 }
-h6, .h6, .breadcrumb, .footer-left p, label, .page-sidebar li ul li a {
+h6, .h6, .breadcrumb, .footer-left p, label, .page-sidebar li ul li a, .list-group-item .list-small {
   font-size:12px;
   line-height:16px;
 }
