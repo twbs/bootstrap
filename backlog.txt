@@ -34,7 +34,10 @@
 
 - Agregar alt, rel, role ...
 
+- DOCUMENTACION BASTRAP
+	los códigos deben ser igual al ejemplo, y sin color, ya fue
 
+- http://redmine.buenosaires.gob.ar/projects/dgid/wiki/Contenido_excepcional
 
 
 
