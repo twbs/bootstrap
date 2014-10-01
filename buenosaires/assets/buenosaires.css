@@ -431,6 +431,13 @@ padding-top: 16px;
   line-height: 16px;
 }
 
+select.form-control {
+  height: inherit;
+  padding: 5px 15px 4px 15px;
+  font-size: 14px;
+  line-height: 16px;
+}
+
 
 .navbar-primary .form-group,
 .list-form .form-group {
@@ -1349,14 +1356,14 @@ margin-top: -10px;
 
 .page-sidebar {
   padding:0;
-  margin-top:24px;
-  margin-bottom:24px;
+  margin-top:16px;
+  margin-bottom:48px;
 /*  margin-left:-15px;
   margin-right:-15px;*/
 }
-.page-sidebar:last-child {
+/*.page-sidebar:last-child {
   margin-bottom:48px;
-}
+}*/
 
 
 .page-sidebar li {
@@ -1463,7 +1470,18 @@ margin-top: -10px;
 }
 
 
-
+@media (min-width: 767px) {
+  .pagina-listado .list-thumb {
+    height:370px;
+    overflow:hidden;
+  }
+}
+@media (min-width: 992px) {
+  .pagina-listado .list-thumb {
+    height:300px;
+    overflow:hidden;
+  }
+}
 
 
 .list-small {
@@ -1487,6 +1505,9 @@ margin-top: -10px;
 }
 
 
+aside form .btn[type*="submit"] {
+  margin-top:24px;
+}
 
 
 
@@ -1962,24 +1983,59 @@ header.jumbotron {
 .ba-busqueda .search-xl form {
   margin: 8px 0 24px 0;
   left:0;
-
 }
+
+
+
+
+
+
+
 
 
 /*.sidebar-remove {
   margin-top:36px;
   margin-bottom:36px;
 }*/
+/*.sidebar-remove,
+.sidebar-filters {
+  margin-bottom:24px;
+}*/
 .sidebar-remove a {
   background-color: #e5e5e5;
   color: #888;
   margin:0 0 8px 0;
 }
-.sidebar-remove span,
+
+.sidebar-filters a {
+  margin-left:-15px;
+  margin-right:-15px;
+}
 .sidebar-filters span {
-  float:right;
+  display:block;
+  width:85%;
+}
+.sidebar-filters span.badge {
+  width:inherit;
+  position: relative;
+  top: -16px;
 }
 
+.sidebar-remove span.glyphicon,
+.sidebar-filters span.badge {
+  float:right;
+}
+.sidebar-filters span.glyphicon {
+  width:inherit;
+  float:left;
+  margin-left:0;
+  margin-right:10px;
+}
+.sidebar-filters .btn span {
+  display:inline;
+  width:initial;
+  float:none;
+}
 .sidebar-remove a:hover,
 .sidebar-remove a:focus {
 background-color: #d5d5d5;

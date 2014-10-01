@@ -17,15 +17,16 @@
 
 * TASKS *********************************************************************************************
 
-- buscador ver ejemplo actual + label con resultado
-- buscador a dos columnas?
 
+
+- FUENTES
 - RUTAS relativas y/o todo local? JEJJEJ o "//blablabla.blabla"
 - ejemplo thumbnail con icono/png!
 - shortcuts con iconos/png
 - ver que onda el responsive de los aside......
 - que onda el tamaño mínimo mobile y el padding 30px???
 - ribbons
+- contenido excepcional [VER]
 
 
 - descargas como tabla más copada? onda gmail?
@@ -48,6 +49,7 @@
 - BS usar sólo grilla de bastrap? sino es más peso de BS y pisar de nuevo para sacar, wtf
 
 - NUEVO BASTRAP más liviano + EMPROLIJAR + SUBIR DE NUEVO A CDN ba.gob.ar
+	SAAS
 	opensans en cdn google? [con opcional offline]
 	sacar elementos nuevos al pedo, solo bastrap de boostrap
 	íconos en paneles?

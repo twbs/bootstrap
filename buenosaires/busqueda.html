@@ -306,20 +306,56 @@
           <nav>
             <h3>Contenidos</h3>
             <ul class="page-sidebar sidebar-filters">
-              <li><a href="#9"><span class="glyphicon glyphicon-ok"></span>Todo <span class="badge">42</span></a></li>
-              <li><a href="#9">Normativa <span class="badge">93</span></a></li>
-              <li><a href="#9">Noticia <span class="badge">15</span></a></li>
-              <li><a href="#9">Página de Libro <span class="badge">22</span></a></li>
-              <li><a href="#9">Página <span class="badge">17</span></a></li>
-              <li><a href="#9">Trámites <span class="badge">4</span></a></li>
+              <li><a href="#9"><span class="glyphicon glyphicon-globe"></span><span>Todo</span><span class="badge">42</span></a></li>
+              <li><a href="#9"><span class="glyphicon glyphicon-bullhorn"></span><span>Normativa</span><span class="badge">93</span></a></li>
+              <li><a href="#9"><span class="glyphicon glyphicon-flag"></span><span>Noticia</span><span class="badge">15</span></a></li>
+              <li><a href="#9"><span class="glyphicon glyphicon-book"></span><span>Página de libro</span><span class="badge">22</span></a></li>
+              <li><a href="#9"><span class="glyphicon glyphicon-file"></span><span>Página</span><span class="badge">17</span></a></li>
+              <li><a href="#9"><span class="glyphicon glyphicon-list-alt"></span><span>Trámites</span><span class="badge">4</span></a></li>
             </ul>
             <h3>Áreas</h3>
             <ul class="page-sidebar sidebar-filters">
-              <li><a href="#9">Ministerio de Desarrollo Urban <span class="badge">42</span></a></li>
-              <li><a href="#9">Ministerio de Educación <span class="badge">93</span></a></li>
-              <li><a href="#9">Secretaría de Gestión Comunal y Atención Ciudadana <span class="badge">15</span></a></li>
-              <li><a href="#9">Medios de La Ciudad <span class="badge">22</span></a></li>
+              <li><a href="#9"><span>Ministerio de Desarrollo Urbano</span><span class="badge">42</span></a></li>
+              <li><a href="#9"><span>Ministerio de Educación</span><span class="badge">93</span></a></li>
+              <li><a href="#9"><span>Secretaría de Gestión Comunal y Atención Ciudadana</span><span class="badge">15</span></a></li>
+              <li><a href="#9"><span>Medios de La Ciudad</span><span class="badge">22</span></a></li>
+              <li><a href="#9"><span>Ministerio de Desarrollo Urbano</span><span class="badge">42</span></a></li>
+              <li><a href="#9"><span>Ministerio de Educación</span><span class="badge">93</span></a></li>
+              <button class="btn btn-default btn-sm btn-block"><span class="glyphicon glyphicon-chevron-down"></span>Más áreas</button>
             </ul>
+            <h3>Fecha</h3>
+            <form role="form" class="page-sidebar">
+              <div class="form-group">
+                <label for="Ano">Año</label>
+                <select class="form-control" id="Ano">
+                  <option>Todos</option>
+                  <option>2014</option>
+                  <option>2013</option>
+                  <option>2012</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="Mes">Mes</label>
+                <select class="form-control" id="Mes">
+                  <option>Todos</option>
+                  <option>Septiembre</option>
+                  <option>Agosto</option>
+                  <option>Julio</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="Dia">Día</label>
+                <select class="form-control" id="Dia">
+                  <option>Todos</option>
+                  <option>31</option>
+                  <option>30</option>
+                  <option>29</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-default btn-sm btn-block">Elegir fecha</button>
+              </div>
+            </form>
           </nav>
         </aside>
         <section class="col-md-8 list-group list-group-content search-list">
@@ -350,6 +386,43 @@
             <p>Conversamos con los vecinos sobre las obras del Arroyo Vega.</p>
             <p>
               <span class="label label-default">Desarrollo urbano</span>
+              <span class="label label-default">Movilidad</span>
+              <span class="label label-default">Noticias</span>
+            </p>
+          </a>
+          <a href="#" class="list-group-item list-thumb" data-original-title="" title="">
+            <div style="background-image:url(../docs/carousel2.jpg);"></div>
+            <h4>Parque de los Patricios: Tu barrio y vos</h4>
+            <p>Encuentro con los vecinos de Parque Patricios.</p>
+            <p>
+              <span class="label label-default">Desarrollo urbano</span>
+              <span class="label label-default">Movilidad</span>
+            </p>
+          </a>
+          <a href="#" class="list-group-item list-thumb" data-original-title="" title="">
+            <div style="background-image:url(../docs/jumbo5.jpg);"></div>
+            <h4>Arroyo Maldonado: Consultas Públicas</h4>
+            <p class="list-small">Jefatura de Gabinete de Ministros</p>
+            <p>Charlamos con los vecinos sobre las obras de los ramales secundarios.</p>
+            <p>
+              <span class="label label-default">Noticias</span>
+              <span class="label label-default">Inclusión social</span>
+              <span class="label label-default">Desarrollo urbano</span>
+              <span class="label label-default">Movilidad</span>
+            </p>
+          </a>
+          <a href="#" class="list-group-item">
+            <h4>Consulta y pago de infracciones online</h4>
+            <p class="list-small">Jefatura de Gabinete de Ministros</p>
+            <p>Podés consultar tus infracciones online ingresando tu DNI o el número de patente.</p>
+            <p>
+              <span class="label label-default">Noticias</span>
+            </p>
+          </a>
+          <a href="#" class="list-group-item">
+            <h4>Libre deuda de infractores</h4>
+            <p>Solicitá el libre deuda para renovar tu licencia y para dar de baja un automotor.</p>
+            <p>
               <span class="label label-default">Movilidad</span>
               <span class="label label-default">Noticias</span>
             </p>
