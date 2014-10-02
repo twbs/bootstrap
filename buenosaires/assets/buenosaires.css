@@ -107,10 +107,6 @@
 .navbar-primary .navbar-nav > li > a {
   padding-left:15px;
   padding-right:15px;
-  /*
-  font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  */
 }
 @media (max-width:992px) and (min-width:  767px) {
   .navbar-primary.navbar-top .navbar-nav>li>a {
@@ -298,7 +294,7 @@
   display:none;
 }
 
-@media (min-width: 767px) and (max-width: 1200px) {
+@media (min-width: 768px) and (max-width: 1200px) {
   .menu-divider {
     display:block;
   }
@@ -345,9 +341,11 @@
 }
 
 
-
-
-
+@media (max-width: 991px) {
+  .list-tramite-sidebar {
+    display:none;
+  }
+}
 
 
 
@@ -642,9 +640,10 @@ margin-bottom: 0;
   margin-bottom:60px;
 }
 */
-.list-group-item-img h4 {
+/*.list-group-item-img h4 {
   font-family: "Gotham", Helvetica, Arial, sans-serif;
-  font-weight: 600;
+  font-weight: bold;
+  letter-spacing: -0.5px;
   font-size:42px;
   background-image: linear-gradient(to bottom,rgba(0,0,0,.6) 0,rgba(0,0,0,.0) 100%);
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
@@ -657,10 +656,12 @@ margin-bottom: 0;
 }
 .list-group-item-img h4:hover {
 	color:#fff;
-}
+}*/
 
-.home-banner {
-  margin-top:-16px;
+@media (min-width: 992px) {
+  .home-banner {
+    margin-top:-16px;
+  }
 }
 
 .home-banner img {
@@ -1193,10 +1194,12 @@ margin-top: -10px;
 
 
 
-
-
-
-
+@media (max-width: 560px) {
+  .container, .container-fluid {
+   padding-right: 0; 
+   padding-left: 0; 
+  }
+}
 
 
 
@@ -1572,9 +1575,11 @@ aside form .btn[type*="submit"] {
   margin-bottom:32px;
 }
 
-
-
-
+@media (min-width: 767px) and (max-width: 992px) {
+  .footer-nav > .col-md-4 {
+    margin-bottom: 64px;
+  }
+}
 
 
 
@@ -1654,15 +1659,18 @@ aside form .btn[type*="submit"] {
 
 
 
-
-
 .footer-row .mini-social {
-  min-width: 300px !important;
+  width: 240px;
 }
+/*@media (min-width: 1200px) {
+  .footer-row .mini-social {
+    width: 300px;
+  }
+}*/
 
 .mini-social {
   padding:0;
-  margin:0 auto;
+  /*margin:0 auto;*/
   overflow:auto;
 }
 .mini-social li {
@@ -1687,10 +1695,10 @@ aside form .btn[type*="submit"] {
   padding:0;
 }
 
-.ba-medios a {
+/*.ba-medios a {
   width:96px;
   height:96px;
-}
+}*/
 /*.ba-medios img {
   box-shadow: 0 0 8px #ccc;
   border-radius:48px;
@@ -2160,6 +2168,14 @@ border:0 !important;
 border:0 !important;
 }
 */
+
+/*.twitter-timeline-rendered .photo-link img {
+  width:254px;
+}
+*/
+
+
+
 
 
 

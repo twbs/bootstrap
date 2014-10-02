@@ -67,11 +67,12 @@ body {
 
 body, .label, .list-group, .list-group p, .list-group-item-text, .shortcut p, .alert-link p,
 blockquote p, .list-group blockquote p, .jumbotron p, .lead {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
 }
 b, p strong, span strong, thead > tr > th, .progress-bar, label, dt, .h6, h6 {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-family: "OpenSans", Helvetica, Arial, sans-serif;
   font-weight: bold;
+  letter-spacing: -0.5px;
 }
 
 h4, .h4, h5, .h5, .panel-title, .btn, .input-xl, .navbar-brand {
@@ -1236,7 +1237,7 @@ a.list-group-item.active > .badge {
   display: block;
   color: #aaa;
   padding: 5px 30px 5px 28px;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size:14px;
   /*border-left:solid 2px transparent;*/
@@ -1249,7 +1250,7 @@ a.list-group-item.active > .badge {
 .sidebar .nav > .active > a,
 .sidebar .nav > .active:hover > a,
 .sidebar .nav > .active:focus > a {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
   font-weight: 600;
   color: #333;
   /*border-color:#333;*/
@@ -1270,14 +1271,14 @@ margin-bottom: 8px;
   padding-bottom: 3px;
   padding-left: 30px;
   font-size: 12px;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
   font-weight: 400;
   padding-left:45px;
 }
 .sidebar .nav .nav > .active > a,
 .sidebar .nav .nav > .active:hover > a,
 .sidebar .nav .nav > .active:focus > a {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
   font-weight: 600;
 }
 .sidebar .nav .nav > li {
@@ -1301,7 +1302,7 @@ margin-bottom: 8px;
   .sidebar .nav > .active > a,
   .sidebar .nav > .active > a:hover {
     color:#aaa;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
   font-weight: 400;
   }
   .sidebar .nav > .active > a:hover {
@@ -1837,7 +1838,7 @@ ul.affix-bottom {
 }
 .footer-row ul li a {
   color:#888;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
   font-weight: 400;
   text-decoration:none;
 }
@@ -2099,7 +2100,7 @@ ul.affix-bottom {
   border-radius: 0;
 }
 .jumbotron > .carousel p {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size:14px;
   line-height: 1.42857143;
@@ -2747,7 +2748,7 @@ a.alert-spot:active {
 }
 .alert-spot p {
   margin-bottom:0;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
   font-weight: 400;
 }
 .alert-spot-default {
@@ -3001,7 +3002,7 @@ a.alert-spot:active {
 
 
 @font-face {
-  font-family: "Open Sans";
+  font-family: "OpenSans";
   src: url('fonts/opensans-regular.eot');
   src: url('fonts/opensans-regular.eot?#iefix') format('embedded-opentype'),
   url('fonts/opensans-regular.svg#OpenSansRegular') format('svg'),

@@ -18,23 +18,20 @@
 * TASKS *********************************************************************************************
 
 
-- open sans bold en vez de semi?
 
-- ver que onda el responsive de los aside......
 - que onda el tamaño mínimo mobile y el padding 30px???
-- ribbons
-- contenido excepcional [VER]
-	http://redmine.buenosaires.gob.ar/projects/dgid/wiki/Contenido_excepcional
-
 
 - descargas como tabla más copada? onda gmail?
-	listado de enlaces
+	listado de enlaces sidebar y abajo de todo [que reemplace a descargas?]
+
+
+
 
 
 
 - DOCUMENTACION BASTRAP
 	los códigos deben ser igual al ejemplo, y sin color, ya fue
-
+	RUTAS relativas y/o todo local? JEJJEJ o "//blablabla.blabla"
 
 
 - emprolijar buenosaires.css
@@ -68,9 +65,10 @@
 
 
 
+- contenido excepcional [VER]
+	http://redmine.buenosaires.gob.ar/projects/dgid/wiki/Contenido_excepcional
 
-- RUTAS relativas y/o todo local? JEJJEJ o "//blablabla.blabla"
-
+- ribbons
 
 
 
