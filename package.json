@@ -41,7 +41,7 @@
     "grunt-contrib-copy": "~0.6.0",
     "grunt-contrib-csslint": "~0.3.1",
     "grunt-contrib-cssmin": "~0.10.0",
-    "grunt-contrib-jade": "~0.12.0",
+    "grunt-contrib-jade": "~0.13.0",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-less": "~0.11.4",
     "grunt-contrib-qunit": "~0.5.2",
