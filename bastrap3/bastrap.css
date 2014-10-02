@@ -2477,7 +2477,7 @@ height: 96px;
 .list-thumb h4 {
   margin-top:15px;
 }
-.list-thumb .glyphicon {
+.list-thumb > div > .glyphicon{
   font-size:64px;
   padding-top:40px;
   color:#fff;
@@ -2999,9 +2999,9 @@ a.alert-spot:active {
        url('fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
-/*
+
 @font-face {
-  font-family: "OpenSans";
+  font-family: "Open Sans";
   src: url('fonts/opensans-regular.eot');
   src: url('fonts/opensans-regular.eot?#iefix') format('embedded-opentype'),
   url('fonts/opensans-regular.svg#OpenSansRegular') format('svg'),
@@ -3010,6 +3010,7 @@ a.alert-spot:active {
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Gotham";
   src: url('fonts/gotham-medium.eot');
@@ -3020,32 +3021,6 @@ a.alert-spot:active {
   font-weight: normal;
   font-style: normal;
 }
-*/
-
-/*
-@font-face {
-    font-family: 'OpenSans';
-    src: url('fonts/opensans-regular.eot');
-    src: url('fonts/opensans-regular.eot?#iefix') format('embedded-opentype'),
-         url('fonts/opensans-regular.woff') format('woff'),
-         url('fonts/opensans-regular.ttf') format('truetype'),
-         url('fonts/opensans-regular.svg#OpenSans') format('svg');
-    font-weight: normal;
-    font-weight: 400;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Gotham';
-    src: url('fonts/gotham.eot');
-    src: url('fonts/gotham.eot?#iefix') format('embedded-opentype'),
-         url('fonts/gotham.woff') format('woff'),
-         url('fonts/gotham.ttf') format('truetype'),
-         url('fonts/gotham.svg#Gotham') format('svg');
-    font-weight: normal;
-    font-weight: 400;
-    font-style: normal;
-}
-*/
 
 
 

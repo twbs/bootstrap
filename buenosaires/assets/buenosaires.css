@@ -1470,15 +1470,10 @@ margin-top: -10px;
 }
 
 
-@media (min-width: 767px) {
-  .pagina-listado .list-thumb {
-    height:370px;
-    overflow:hidden;
-  }
-}
+
 @media (min-width: 992px) {
   .pagina-listado .list-thumb {
-    height:300px;
+    height:310px;
     overflow:hidden;
   }
 }
@@ -1688,25 +1683,28 @@ aside form .btn[type*="submit"] {
   opacity:1;
 }
 
-
+.ba-medios {
+  padding:0;
+}
 
 .ba-medios a {
   width:96px;
   height:96px;
-
 }
-.ba-medios img {
+/*.ba-medios img {
   box-shadow: 0 0 8px #ccc;
   border-radius:48px;
-}
+}*/
 
 .ba-medios a:hover img,
 .ba-medios a:focus img {
-  box-shadow: 0 0 12px #aaa;
+  /*box-shadow: 0 0 12px #aaa;*/
+  background-color: #f5f5f5;
 }
 
 .ba-medios a:active img {
-  box-shadow: 0 0 8px #ccc;
+  /*box-shadow: 0 0 8px #ccc;*/
+  background-color: #f1f1f1;
 }
 
 
@@ -1742,6 +1740,22 @@ header.jumbotron {
 .ba-aplicativo .shortcut p {
   color:#333;
 }
+
+
+
+
+
+.glyphicon-shortcut-vos {
+  background:url(shortcut-vos.png) no-repeat center center;
+}
+.glyphicon-shortcut-verde {
+  background:url(shortcut-verde.png) no-repeat center center;
+}
+
+
+
+
+
 
 /*
 .small-heading .shortcut span {
@@ -2306,9 +2320,9 @@ label {
 }
 
 
-.list-group-item .glyphicon {
+.list-group-multi .list-group-item p .glyphicon {
   padding:0;
-  margin-top:8px;
+  margin-top:16px;
   margin-right:5px;
   color:#ccc;
   font-size:24px;

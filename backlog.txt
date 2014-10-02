@@ -18,32 +18,26 @@
 * TASKS *********************************************************************************************
 
 
+- open sans bold en vez de semi?
 
-- FUENTES
-- RUTAS relativas y/o todo local? JEJJEJ o "//blablabla.blabla"
-- ejemplo thumbnail con icono/png!
-- shortcuts con iconos/png
 - ver que onda el responsive de los aside......
 - que onda el tamaño mínimo mobile y el padding 30px???
 - ribbons
 - contenido excepcional [VER]
+	http://redmine.buenosaires.gob.ar/projects/dgid/wiki/Contenido_excepcional
 
 
 - descargas como tabla más copada? onda gmail?
 	listado de enlaces
 
-- Agregar alt, rel, role ...
+
 
 - DOCUMENTACION BASTRAP
 	los códigos deben ser igual al ejemplo, y sin color, ya fue
 
-- http://redmine.buenosaires.gob.ar/projects/dgid/wiki/Contenido_excepcional
-
 
 
 - emprolijar buenosaires.css
-	OJO con las fuentes....
-	baseline 24px !
 	pasar ba-home, etc a #
 	emprolijar assets....
 	emprolijar clases de elementos que ni son de bootstrap [list-group, .article-nota .article-libro, etc]
@@ -53,7 +47,6 @@
 
 - NUEVO BASTRAP más liviano + EMPROLIJAR + SUBIR DE NUEVO A CDN ba.gob.ar
 	SAAS
-	opensans en cdn google? [con opcional offline]
 	sacar elementos nuevos al pedo, solo bastrap de boostrap
 	íconos en paneles?
 	opacity como .6
@@ -71,12 +64,12 @@
 	http://achecker.ca/checker/index.php
 	http://jekyllrb.com/
 	http://gcba.github.io/guiaux/
+	Agregar alt, rel, role ...
 
 
 
 
-
-
+- RUTAS relativas y/o todo local? JEJJEJ o "//blablabla.blabla"
 
 
 
