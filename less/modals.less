@@ -30,10 +30,10 @@
 
   // When fading in the modal, animate it to slide down
   &.fade .modal-dialog {
-    .translate3d(0, -25%, 0);
+    .translate(0, -25%);
     .transition-transform(~"0.3s ease-out");
   }
-  &.in .modal-dialog { .translate3d(0, 0, 0) }
+  &.in .modal-dialog { .translate(0, 0) }
 }
 .modal-open .modal {
   overflow-x: hidden;
