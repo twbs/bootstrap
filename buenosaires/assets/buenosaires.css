@@ -748,6 +748,9 @@ padding-top: 18px;
     margin-bottom: 64px;
   }
 }
+.footer-row ul li {
+margin-bottom: 16px;
+}
 
 /* social */
 
