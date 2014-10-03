@@ -659,7 +659,7 @@ $(function () {
     }, 0)
   })
 
-  test('should show tooltip if leave event hasn\'t occured before delay expires', function () {
+  test('should show tooltip if leave event hasn\'t occurred before delay expires', function () {
     stop()
 
     var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
