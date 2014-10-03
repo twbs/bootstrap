@@ -19,28 +19,19 @@
 
 
 
-- que onda el tamaño mínimo mobile y el padding 30px???
 
-- descargas como tabla más copada? onda gmail?
-	listado de enlaces sidebar y abajo de todo [que reemplace a descargas?]
+- Al final hacer un zip para bajarse la base y bastrap....
 
 
 
 
-
-
-- DOCUMENTACION BASTRAP
-	los códigos deben ser igual al ejemplo, y sin color, ya fue
-	RUTAS relativas y/o todo local? JEJJEJ o "//blablabla.blabla"
-
+- CSS impresión para página, nota de libro, tramite
 
 - emprolijar buenosaires.css
 	pasar ba-home, etc a #
 	emprolijar assets....
 	emprolijar clases de elementos que ni son de bootstrap [list-group, .article-nota .article-libro, etc]
 	ba-social por ba-icons [ojo el footer]
-
-- BS usar sólo grilla de bastrap? sino es más peso de BS y pisar de nuevo para sacar, wtf
 
 - NUEVO BASTRAP más liviano + EMPROLIJAR + SUBIR DE NUEVO A CDN ba.gob.ar
 	SAAS
@@ -63,12 +54,9 @@
 	http://gcba.github.io/guiaux/
 	Agregar alt, rel, role ...
 
+- BS hacer nuevo readme y poner en el root de la branch
 
 
-- contenido excepcional [VER]
-	http://redmine.buenosaires.gob.ar/projects/dgid/wiki/Contenido_excepcional
-
-- ribbons
 
 
 
@@ -91,6 +79,16 @@
 
 * QUEUE *********************************************************************************************
 
+- contenido excepcional [VER]
+	http://redmine.buenosaires.gob.ar/projects/dgid/wiki/Contenido_excepcional
+
+- ribbons
+
+- modal carousel no anda bien
+
+- BASTRAP
+	zarpar contraste navbar? ya fue todo con la gris?
+	los códigos deben ser igual al ejemplo, y sin color, ya fue
 
 - widgets faltantes
 	area radio player
@@ -154,35 +152,17 @@
 
 - Lazy load
 
-
-
-
-
-
-
-
-
-* BASTRAP *********************************************************************************************
-
-- BS hacer nuevo readme y poner en el root de la branch
-
 - HACER listado de elementos
 
 - REPASAR QUE PONGO en estilos y qué en componentes....
 
 - Documentar BIEN [explicar usos]
 
-- SARMIENTO
-	BS probar sarmiento notebook!
-	BS crossbrowsing
-	BASTRAP validar html
+- probar sarmiento notebook!
 
 - BS usar clases de contexto + colores? danger + red, etc
 
 - BS boton copy!
-
-- CSS impresión para todo y dewspues ver
-bootstrap ya existente
 
 - deshabilitar animaciones de javascript?
 

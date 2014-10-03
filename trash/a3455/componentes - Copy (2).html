@@ -35,6 +35,8 @@
         </div>
       </header>
 
+
+
 <div class="jumbotron jumbotron-small jumbotron-misc jumbotron-main">
 
       <nav class="navbar navbar-default" role="navigation">
@@ -66,11 +68,12 @@
     <div class="row">
       <div class="col-md-12">
         <h1>Componentes</h1>
-        <p class="lead">Elementos combinados con funcionones especiales, de Bootstrap y exclusivos.</p>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
       </div>
     </div>
   </div>
 </div>
+
 
 <main id="main" role="main">
 
@@ -79,7 +82,7 @@
 <div class="row">
 
 <nav class="sidebar col-md-3" role="sidebar">
-    <ul class="panel panel-default nav sidenav affix-top" id="affix-nav" data-spy="affix" data-offset-top="286">
+    <ul class="panel panel-default nav sidenav affix-top" id="affix-nav" data-spy="affix" data-offset-top="326">
         <div class="panel-heading sidebar-brand">
           <h1><a href="#bs-jumbotron"><span>BAstrap3</span>Componentes</a></h1>
         </div>
@@ -93,14 +96,27 @@
             <li><a href="#bs-carrusel">Carrusel</a></li>
           </ul>
         </li>
-        <li><a href="#ba-baid">BAstrap3</a>
+        <li><a href="#varios-baid">GCBA varios</a>
           <ul class="nav">
-            <li><a href="#ba-baid">Botón de cuenta BA</a></li>
-            <li><a href="#ba-atajos">Atajos</a></li>
-            <li><a href="#ba-alerta-vinculo">Alerta vínculo</a></li>
-            <li><a href="#ba-panel">Panel especial</a></li>
-            <li><a href="#ba-panel-foto">Panel con encabezado con foto</a></li>
-            <li><a href="#ba-lista">Lista especial</a></li>
+            <li><a href="#varios-baid">Botón de cuenta BA</a></li>
+            <li><a href="#varios-atajos">Atajos</a></li>
+            <li><a href="#varios-alerta-vinculo">Alerta vínculo</a></li>
+          </ul>
+        </li>
+        <li><a href="#panel-especial-basico">GCBA paneles</a>
+          <ul class="nav">
+            <li><a href="#panel-especial-basico">Panel básico</a></li>
+            <li><a href="#panel-especial-foto">Panel con encabezado con foto</a></li>
+            <li><a href="#panel-especial-form">Panel con formulario</a></li>
+            <li><a href="#panel-especial-unico">Panel único</a></li>
+            <li><a href="#panel-especial-mosaico">Panel con mosaico de fotos</a></li>
+            <li><a href="#panel-especial-mapa">Panel con mapa</a></li>
+          </ul>
+        </li>
+        <li><a href="#lista-especial">GCBA listas</a>
+          <ul class="nav">
+            <li><a href="#lista-especial">Lista básica</a></li>
+            <li><a href="#lista-especial-multi">Lista multicolumna</a></li>
           </ul>
         </li>
     </ul>
@@ -424,14 +440,16 @@
     <h2>Carrusel <span>(Carousel)</span></h2>
   </div>
   <div class="panel-body">
-    <div id="carousel-example" class="carousel slide" data-ride="carousel">
+    <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
+
       <!--
       <ol class="carousel-indicators">
-        <li data-target="#carousel-example" data-slide-to="0" class=""></li>
-        <li class="active" data-target="#carousel-example" data-slide-to="1"></li>
-        <li class="" data-target="#carousel-example" data-slide-to="2"></li>
+        <li data-target="#carousel-example-captions" data-slide-to="0" class=""></li>
+        <li class="active" data-target="#carousel-example-captions" data-slide-to="1"></li>
+        <li class="" data-target="#carousel-example-captions" data-slide-to="2"></li>
       </ol>
     -->
+
       <div class="carousel-inner">
         <div class="item active">
           <img src="docs/carousel1.jpg" alt="Carousel test">
@@ -448,52 +466,29 @@
           </div>
         </div>
       </div>
-      <a class="left carousel-control" href="#carousel-example" data-slide="prev">
+      <a class="left carousel-control" href="#carousel-example-captions" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
-      <a class="right carousel-control" href="#carousel-example" data-slide="next">
+      <a class="right carousel-control" href="#carousel-example-captions" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right"></span>
       </a>
     </div>
   </div>
   <div class="panel-footer">
-<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"carousel-example-generic"</span> <span class="na">class=</span><span class="s">"carousel slide"</span> <span class="na">data-ride=</span><span class="s">"carousel"</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- Indicators --&gt;</span>
-  <span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">"carousel-indicators"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">data-target=</span><span class="s">"#carousel-example-generic"</span> <span class="na">data-slide-to=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">"active"</span><span class="nt">&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">data-target=</span><span class="s">"#carousel-example-generic"</span> <span class="na">data-slide-to=</span><span class="s">"1"</span><span class="nt">&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">data-target=</span><span class="s">"#carousel-example-generic"</span> <span class="na">data-slide-to=</span><span class="s">"2"</span><span class="nt">&gt;&lt;/li&gt;</span>
-  <span class="nt">&lt;/ol&gt;</span>
-  <span class="c">&lt;!-- Wrapper for slides --&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"carousel-inner"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item active"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"..."</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"carousel-caption"</span><span class="nt">&gt;</span>
-        ...
-      <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"..."</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"carousel-caption"</span><span class="nt">&gt;</span>
-        ...
-      <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    ...
+<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item active"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"..."</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"carousel-caption"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h3&gt;</span>...<span class="nt">&lt;/h3&gt;</span>
+    <span class="nt">&lt;p&gt;</span>...<span class="nt">&lt;/p&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-  <span class="c">&lt;!-- Controls --&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"left carousel-control"</span> <span class="na">href=</span><span class="s">"#carousel-example-generic"</span> <span class="na">role=</span><span class="s">"button"</span> <span class="na">data-slide=</span><span class="s">"prev"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-chevron-left"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"right carousel-control"</span> <span class="na">href=</span><span class="s">"#carousel-example-generic"</span> <span class="na">role=</span><span class="s">"button"</span> <span class="na">data-slide=</span><span class="s">"next"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-chevron-right"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
   </div>
 </div>
 
 <!-- BAid -->
 
-<a id="ba-baid" class="anchor"></a>
+<a id="varios-baid" class="anchor"></a>
 
 <div class="panel panel-docs">
   <div class="panel-heading">
@@ -504,7 +499,7 @@
   </div>
   <div class="panel-footer">
 <pre><code class="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-block btn-xl"</span><span class="nt">&gt;</span>
-  Entrá con tu cuenta de <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"ba-btn"</span><span class="nt">&gt;</span><span class="nt">&lt;/span&gt;</span>
+  Entrá con tu cuenta de <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"bastrap/ba-btn.png"</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ba"</span><span class="nt"> /&gt;</span>
 <span class="nt">&lt;/button&gt;</span>
 </code></pre>
   </div>
@@ -512,13 +507,14 @@
 
 <!-- Atajos -->
 
-<a id="ba-atajos" class="anchor"></a>
+<a id="varios-atajos" class="anchor"></a>
 
 <div class="panel panel-docs">
   <div class="panel-heading">
     <h2>Atajos</h2>
   </div>
   <div class="panel-body">
+
 <div class="container-fluid">
   <div class="row shortcut-row">
     <a class="col-md-3 col-sm-6 shortcut" href="#">
@@ -551,28 +547,24 @@
 </div>
 
   </div>
-  <div class="panel-footer">
-<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row shortcut-row"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"col-md-3 col-sm-6 shortcut</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"bg-warning-lt"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-cloud"</span><span class="nt">&gt;</span><span class="nt">&lt;/span&gt;</span>
-    <span class="nt">&lt;/span&gt;</span>
-    <span class="nt">&lt;h3</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/h3&gt;</span>
-    <span class="nt">&lt;p</span><span class="nt">&gt;</span> .. <span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/a&gt;</span>
-...
-<span class="nt">&lt;/div&gt;</span></code></pre>
+  <div class="panel-footer" style="display:none;">
+<pre><code class="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-block btn-xl"</span><span class="nt">&gt;</span>
+  Entrá con tu cuenta de <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"bastrap/ba-btn.png"</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ba"</span><span class="nt"> /&gt;</span>
+<span class="nt">&lt;/button&gt;</span>
+</code></pre>
   </div>
 </div>
 
 <!-- Alert Spots -->
 
-<a id="ba-alerta-vinculo" class="anchor"></a>
+<a id="varios-alerta-vinculo" class="anchor"></a>
+
 <div class="panel panel-docs">
   <div class="panel-heading">
     <h2>Alerta Spot</h2>
   </div>
   <div class="panel-body">
+
 <div class="alert-spot alert-spot-primary">
     <span class="glyphicon glyphicon-user"></span>
     <div class="alert-link-text">
@@ -580,6 +572,7 @@
       <p>Circulá con precaución. Si vas a andar en bicicleta usá casco.</p>
     </div>
 </div>
+
 <div class="alert-spot alert-spot-success">
     <span class="glyphicon glyphicon-tree-deciduous"></span>
     <div class="alert-link-text">
@@ -587,6 +580,7 @@
       <p>Circulá con precaución. Si vas a andar en bicicleta usá casco.</p>
     </div>
 </div>
+
 <a href="#" class="alert-spot alert-spot-info">
     <span class="glyphicon glyphicon-cloud"></span>
     <div class="alert-link-text">
@@ -595,6 +589,7 @@
     </div>
     <span class="glyphicon glyphicon-chevron-right"></span>
 </a>
+
 <a href="#" class="alert-spot alert-spot-warning">
     <span class="glyphicon glyphicon-earphone"></span>
     <div class="alert-link-text">
@@ -603,6 +598,7 @@
     </div>
     <span class="glyphicon glyphicon-chevron-right"></span>
 </a>
+
 <a href="#" class="alert-spot alert-spot-danger">
     <span class="glyphicon glyphicon-heart"></span>
     <div class="alert-link-text">
@@ -611,35 +607,26 @@
     </div>
     <span class="glyphicon glyphicon-chevron-right"></span>
 </a>
+
   </div>
-  <div class="panel-footer">
-<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert-spot alert-spot-primary"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-user"</span><span class="nt">&gt;</span><span class="nt">&lt;/span&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert-link-text"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h4</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/h4&gt;</span>
-    <span class="nt">&lt;p</span><span class="nt">&gt;</span> .. <span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"alert-spot alert-spot-danger"</span> <span class="na">href=</span><span class="s">"#"<span class="nt">&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-user"</span><span class="nt">&gt;</span><span class="nt">&lt;/span&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert-link-text"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h4</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/h4&gt;</span>
-    <span class="nt">&lt;p</span><span class="nt">&gt;</span> .. <span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-chevron-right"</span><span class="nt">&gt;</span><span class="nt">&lt;/span&gt;</span>
-<span class="nt">&lt;/a&gt;</span></code></pre>
+  <div class="panel-footer" style="display:none;">
+<pre><code class="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-block btn-xl"</span><span class="nt">&gt;</span>
+  Entrá con tu cuenta de <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"bastrap/ba-btn.png"</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ba"</span><span class="nt"> /&gt;</span>
+<span class="nt">&lt;/button&gt;</span>
+</code></pre>
   </div>
 </div>
 
 <!-- panel especial basico -->
 
-<a id="ba-panel" class="anchor"></a>
+<a id="panel-especial-basico" class="anchor"></a>
 
 <div class="panel panel-docs">
   <div class="panel-heading">
-    <h2>Panel especial</h2>
+    <h2>Panel básico</h2>
   </div>
   <div class="panel-body">
+
         <div class="list-group list-group-panel">
            <div class="list-group-item list-heading list-heading-default">
               <h3>Lorem ipsum</h3>
@@ -650,7 +637,7 @@
               <p>Renová tu licencia cuando no esté vencida por más de un año.</p>
            </a>
            <a href="#" class="list-group-item list-thumb">
-              <div style="background-image:url(docs/carousel2.jpg);"></div>
+              <div style="background-image:url(docs/carousel1.jpg);"></div>
               <h4>Renovación de licencia de conducir</h4>
               <p>Este trámite es para renovar alguna o todas las categorías para las cuales ya te encontrabas habilitado y hayan sido hurtadas, robadas o extraviadas.</p>
            </a>
@@ -665,6 +652,7 @@
               <h4>Renovación de licencia de conducir</h4>
            </a>
        </div>
+
         <div class="list-group list-group-panel">
            <div class="list-group-item list-heading list-heading-violet">
               <h3>Lorem ipsum <span class="glyphicon glyphicon-cloud"></span></h3>
@@ -680,50 +668,32 @@
               <h4>Renovación de licencia de conducir</h4>
            </a>
        </div>
-  </div>
-  <div class="panel-footer">
-<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-group list-group-panel"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-group-item list-heading list-heading-default"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h3</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/h3&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"list-group-item list-thumb"</span> <span class="na">href=</span><span class="s">"#"<span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"background-image:url(example.jpg);"</span><span class="nt">&gt;</span><span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;h4</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/h4&gt;</span>
-    <span class="nt">&lt;p</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"list-group-item"</span> <span class="na">href=</span><span class="s">"#"<span class="nt">&gt;</span>
-    <span class="nt">&lt;h4</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/h4&gt;</span>
-    <span class="nt">&lt;p</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"list-group-item"</span> <span class="na">href=</span><span class="s">"#"<span class="nt">&gt;</span>
-    <span class="nt">&lt;h4</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/h4&gt;</span>
-  <span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
 
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-group list-group-panel"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-group-item list-heading list-heading-violet"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h3</span><span class="nt">&gt;</span> ... <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-cloud"</span><span class="nt">&gt;</span><span class="nt">&lt;/span&gt;</span><span class="nt">&lt;/h3&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-  ...
-<span class="nt">&lt;/div&gt;</span></code></pre>
+  </div>
+  <div class="panel-footer" style="display:none;">
+<pre><code class="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-block btn-xl"</span><span class="nt">&gt;</span>
+  Entrá con tu cuenta de <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"bastrap/ba-btn.png"</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ba"</span><span class="nt"> /&gt;</span>
+<span class="nt">&lt;/button&gt;</span>
+</code></pre>
   </div>
 </div>
 
 <!-- panel especial foto -->              
 
-<a id="ba-panel-foto" class="anchor"></a>
+<a id="panel-especial-foto" class="anchor"></a>
 
 <div class="panel panel-docs">
   <div class="panel-heading">
     <h2>Panel con encabezado con foto</h2>
   </div>
   <div class="panel-body">
+
         <div class="list-group list-group-panel">
-           <div class="list-group-item list-heading list-heading-img" style="background-image:url(docs/jumbo1.jpg);">
+           <div class="list-group-item list-heading list-heading-img" style="background-image:url(docs/carousel1.jpg);">
               <h3>Lorem ipsum</h3>
            </div>
            <div class="list-group-item list-form">
-              <form>
+              <form role="form">
                 <input class="form-control input-lg" type="text" placeholder="Buscar ...">
               </form>
            </div>
@@ -746,12 +716,25 @@
               <h4>Renovación de licencia de conducir</h4>
            </a>
        </div>
+
         <div class="list-group list-group-panel">
-           <div class="list-group-item list-heading list-heading-img" style="background-image:url(docs/jumbo4.jpg);">
+           <div class="list-group-item list-heading list-heading-img list-heading-big" style="background-image:url(docs/carousel2.jpg);">
+              <h3>Jorge Ibañez</h3>
+           </div>
+           <a href="#" class="list-group-item">
+              <blockquote>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere.</p>
+                <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+              </blockquote>
+           </a>
+       </div>
+
+        <div class="list-group list-group-panel">
+           <div class="list-group-item list-heading list-heading-img" style="background-image:url(docs/carousel1.jpg);">
               <h3>Lorem ipsum</h3>
            </div>
            <div href="#" class="list-group-item">
-              <form>
+              <form role="form">
                 <div class="form-group">
                   <input class="form-control" type="text" placeholder="Nombre">
                 </div>
@@ -762,85 +745,31 @@
                   <textarea class="form-control" rows="3" placeholder="Mensaje"></textarea>
                 </div>
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary btn-lg btn-block">Enviar</button>
+                  <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
                 </div>
               </form>
            </div>
        </div>
-        <div class="list-group list-group-panel">
-           <div class="list-group-item list-heading list-heading-img list-heading-big" style="background-image:url(docs/carousel1.jpg);">
-              <h3>Jorge Ibañez</h3>
-           </div>
-           <a href="#" class="list-group-item">
-              <blockquote>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere.</p>
-                <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-              </blockquote>
-           </a>
-       </div>
+
   </div>
-  <div class="panel-footer">
-<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-group list-group-panel"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-group-item list-heading list-heading-img"</span> <span class="na">style=</span><span class="s">"background-image:url(example.jpg);"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h3</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/h3&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-group-item list-form"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;form</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control input-lg"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">placeholder=</span><span class="s">"Buscar ..."</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/form&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"list-group-item"</span> <span class="na">href=</span><span class="s">"#"<span class="nt">&gt;</span>
-    <span class="nt">&lt;h4</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/h4&gt;</span>
-    <span class="nt">&lt;p</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/a&gt;</span>
-  ...
-<span class="nt">&lt;/div&gt;</span>
-
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-group list-group-panel"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-group-item list-heading list-heading-img"</span> <span class="na">style=</span><span class="s">"background-image:url(example.jpg);"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h3</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/h3&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;form</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">placeholder=</span><span class="s">"Nombre"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">placeholder=</span><span class="s">"Correo electrónico"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;textarea</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">rows=</span><span class="s">"3"</span> <span class="na">placeholder=</span><span class="s">"Mensaje"</span><span class="nt">&gt;</span><span class="nt">&lt;/textarea&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-lg btn-block"</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Enviar<span class="nt">&lt;/button&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/form&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-group list-group-panel"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-group-item list-heading list-heading-img list-heading-big"</span> <span class="na">style=</span><span class="s">"background-image:url(example.jpg);"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h3</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/h3&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;blockquote</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;p</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/p&gt;</span>
-      <span class="nt">&lt;footer</span><span class="nt">&gt;</span> ...  <span class="nt">&lt;title</span> <span class="na">title=</span><span class="s">"Source Title"</span><span class="nt">&gt;</span>Source Title<span class="nt">&lt;/title&gt;</span><span class="nt">&lt;/footer&gt;</span>
-    <span class="nt">&lt;/blockquote&gt;</span>
-  <span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre>
+  <div class="panel-footer" style="display:none;">
+<pre><code class="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-block btn-xl"</span><span class="nt">&gt;</span>
+  Entrá con tu cuenta de <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"bastrap/ba-btn.png"</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ba"</span><span class="nt"> /&gt;</span>
+<span class="nt">&lt;/button&gt;</span>
+</code></pre>
   </div>
 </div>
 
 <!-- lista especial -->
 
-<a id="ba-lista" class="anchor"></a>
+<a id="lista-especial" class="anchor"></a>
 
 <div class="panel panel-docs">
   <div class="panel-heading">
-    <h2>Lista especial</h2>
+    <h2>Lista básica</h2>
   </div>
   <div class="panel-body">
+
         <div class="list-group list-group-content">
            <h3>Noticias relacionadas</h3>
            <a href="#" class="list-group-item list-thumb">
@@ -868,23 +797,72 @@
               <h4>Renovación de licencia de conducir</h4>
            </a>
        </div>
+
+  </div>
+  <div class="panel-footer" style="display:none;">
+<pre><code class="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-block btn-xl"</span><span class="nt">&gt;</span>
+  Entrá con tu cuenta de <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"bastrap/ba-btn.png"</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ba"</span><span class="nt"> /&gt;</span>
+<span class="nt">&lt;/button&gt;</span>
+</code></pre>
+  </div>
+</div>
+
+<!-- Sidebar -->
+
+<a id="varios-botonera-lateral" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>Botonera lateral</h2>
+  </div>
+  <div class="panel-body">
+
+<nav class="sidebar" role="sidebar">
+    <ul class="panel panel-default nav sidenav">
+        <div class="panel-heading sidebar-brand">
+          <h1><a href="#tipo-encabezado"><span>BAstrap3</span>Estilos</a></h1>
+        </div>
+        <li class="sidebar-first"><a href="#tipo-encabezado">Tipografía</a>
+          <ul class="nav">
+            <li><a href="#tipo-encabezado">Encabezado</a></li>
+            <li><a href="#tipo-cuerpo">Cuerpo</a></li>
+            <li><a href="#tipo-enfasis">Énfasis</a></li>
+          </ul>
+        </li>
+        <li><a href="#texto-abreviacion">Elementos de texto</a>
+          <ul class="nav">   
+            <li><a href="#texto-abreviacion">Abreviación</a></li>
+            <li><a href="#texto-direccion">Dirección</a></li>
+            <li><a href="#texto-cita">Cita</a></li>
+            <li><a href="#texto-lista">Lista</a></li>        
+            <li><a href="#texto-descripcion">Descripción</a></li>        
+            <li><a href="#texto-codigo">Código</a></li>      
+          </ul>
+        </li>
+        <li><a href="#tabla">Tabla</a>
+          <ul class="nav" style="display:none;">
+            <li><a href="#tabla">Tabla</a></li>
+          </ul>
+        </li>
+        <li><a href="#form-ejemplo">Formulario</a>
+          <ul class="nav">
+            <li><a href="#form-ejemplo">Ejemplo de formulario</a></li>
+            <li><a href="#form-horizontal">Formulario horizontal</a></li>
+            <li><a href="#form-tamano">Tamaño de campo</a></li>
+            <li><a href="#form-validacion">Estado de validación</a></li>
+            <li><a href="#form-seleccionador">Seleccionador</a></li>
+            <li><a href="#form-grupocampos">Grupo de campos</a></li>
+          </ul>
+        </li>
+    </ul>
+</nav>
+
   </div>
   <div class="panel-footer">
-<pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-group list-group-content"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;h3</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/h3&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"list-group-item list-thumb"</span> <span class="na">href=</span><span class="s">"#"<span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"background-image:url(example.jpg);"</span><span class="nt">&gt;</span><span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;h4</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/h4&gt;</span>
-    <span class="nt">&lt;p</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"list-group-item"</span> <span class="na">href=</span><span class="s">"#"<span class="nt">&gt;</span>
-    <span class="nt">&lt;h4</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/h4&gt;</span>
-    <span class="nt">&lt;p</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"list-group-item"</span> <span class="na">href=</span><span class="s">"#"<span class="nt">&gt;</span>
-    <span class="nt">&lt;h4</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/h4&gt;</span>
-  <span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre>
+<pre><code class="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-block btn-xl"</span><span class="nt">&gt;</span>
+  Entrá con tu cuenta de <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"bastrap/ba-btn.png"</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ba"</span><span class="nt"> /&gt;</span>
+<span class="nt">&lt;/button&gt;</span>
+</code></pre>
   </div>
 </div>
 
