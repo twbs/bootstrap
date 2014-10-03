@@ -216,6 +216,7 @@
   .panel {
     margin-bottom: 0;
     border-radius: @panel-border-radius;
+
     + .panel {
       margin-top: 5px;
     }
@@ -223,10 +224,13 @@
 
   .panel-heading {
     border-bottom: 0;
-    + .panel-collapse > .panel-body {
+
+    + .panel-collapse > .panel-body,
+    + .panel-collapse > .list-group {
       border-top: 1px solid @panel-inner-border;
     }
   }
+
   .panel-footer {
     border-top: 0;
     + .panel-collapse .panel-body {

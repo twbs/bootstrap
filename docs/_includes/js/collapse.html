@@ -105,6 +105,28 @@
 </div>
 {% endhighlight %}
 
+  <p>It's also possible to swap out <code>.panel-body</code>s with <code>.list-group</code>s.</p>
+
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="collapseListGroupHeading1">
+        <h4 class="panel-title">
+          <a class="collapsed" data-toggle="collapse" href="#collapseListGroup1" aria-expanded="false" aria-controls="collapseListGroup1">
+            Collapsible list group
+          </a>
+        </h4>
+      </div>
+      <div id="collapseListGroup1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading1">
+        <ul class="list-group">
+          <li class="list-group-item">Bootply</li>
+          <li class="list-group-item">One itmus ac facilin</li>
+          <li class="list-group-item">Second eros</li>
+        </ul>
+        <div class="panel-footer">Footer</div>
+      </div>
+    </div>
+  </div>
+
   <p>You can also use the plugin without the accordion markup. Make a button toggle the expanding and collapsing of another element.</p>
 {% highlight html %}
 <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo" aria-expanded="true" aria-controls="demo">
