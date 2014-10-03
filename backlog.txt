@@ -21,17 +21,13 @@
 
 
 - Al final hacer un zip para bajarse la base y bastrap....
+- BS hacer nuevo readme y poner en el root de la branch
+
 
 
 
 
 - CSS impresión para página, nota de libro, tramite
-
-- emprolijar buenosaires.css
-	pasar ba-home, etc a #
-	emprolijar assets....
-	emprolijar clases de elementos que ni son de bootstrap [list-group, .article-nota .article-libro, etc]
-	ba-social por ba-icons [ojo el footer]
 
 - NUEVO BASTRAP más liviano + EMPROLIJAR + SUBIR DE NUEVO A CDN ba.gob.ar
 	SAAS
@@ -54,7 +50,7 @@
 	http://gcba.github.io/guiaux/
 	Agregar alt, rel, role ...
 
-- BS hacer nuevo readme y poner en el root de la branch
+
 
 
 
