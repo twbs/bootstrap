@@ -49,12 +49,10 @@ pre {
 body, .label, .list-group, .list-group p, .list-group-item-text, .shortcut p, .alert-link p,
 blockquote p, .list-group blockquote p, .jumbotron p, .lead {
   font-family: "OpenSans", Helvetica, Arial, sans-serif;
-  letter-spacing: -0.5px;
 }
 b, p strong, span strong, thead > tr > th, .progress-bar, label, dt, .h6, h6 {
   font-family: "OpenSans", Helvetica, Arial, sans-serif;
   font-weight: bold;
-  letter-spacing: -0.5px;
 }
 
 h4, .h4, h5, .h5, .panel-title, .btn, .input-xl, .navbar-brand {
