@@ -20,6 +20,25 @@
 
 
 
+- Megamenu
+	FOTO
+	iconos, bold, jerarquía....
+
+- Home mobile
+	guía de trámites
+	multas
+	turnos
+	registro civil
+	subte
+	mapa
+	mi ba
+	RESTO
+
+
+
+- Iconos ejes versión grande [por favor no]
+
+
 
 
 - CSS impresión para página, nota de libro, tramite
