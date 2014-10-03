@@ -398,4 +398,26 @@ $(function () {
 
     strictEqual($template.find('.item')[1], $template.find('.active')[0], 'second item active')
   })
+
+  test('should only add mouseenter and mouseleave listeners when not on mobile', function () {
+    var isMobile     = 'ontouchstart' in document.documentElement
+    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false" data-pause="hover">'
+        + '<div class="carousel-inner">'
+        + '<div id="first" class="item active">'
+        + '<img alt="">'
+        + '</div>'
+        + '<div id="second" class="item">'
+        + '<img alt="">'
+        + '</div>'
+        + '<div id="third" class="item">'
+        + '<img alt="">'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+    var $template = $(templateHTML).bootstrapCarousel()
+
+    $.each(['mouseover', 'mouseout'], function (i, type) {
+      strictEqual(type in $._data($template[0], 'events'), !isMobile, 'does' + (isMobile ? ' not' : '') + ' listen for ' + type + ' events')
+    })
+  })
 })
