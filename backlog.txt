@@ -20,11 +20,6 @@
 
 
 
-- Al final hacer un zip para bajarse la base y bastrap....
-- BS hacer nuevo readme y poner en el root de la branch
-
-
-
 
 
 - CSS impresión para página, nota de libro, tramite
