@@ -18,7 +18,7 @@
 * TASKS *********************************************************************************************
 
 
-- Pagina noticias relacionadas abajo [sacar lo de comercios...]
+
 
 - Megamenu
 	FOTO

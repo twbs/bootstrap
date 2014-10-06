@@ -9,9 +9,9 @@
    padding-left: 0; 
   }
 }
-.main-container table {
+/*.main-container table {
   margin-bottom:36px;
-}
+}*/
 aside form .btn[type*="submit"] {
   margin-top:24px;
 }
@@ -404,31 +404,38 @@ margin-bottom: 0;
 }
 .yamm .dropdown-menu {
   left: auto;
-  max-width:720px;
+}
+@media (min-width: 768px) {
+  .yamm .dropdown-menu {
+    width:720px;
+  }
 }
 .yamm .yamm-content {
   padding: 20px 30px;
 }
+
+/* dropdown */
+
 .dropdown-menu hr {
   margin: 15px -15px 16px -15px;
 }
 .dropdown-menu li > a {
   border-radius:4px;
 }
-
-/* dropdown */
-
 .dropdown-menu {
   padding:16px 15px;
 }
 .dropdown-menu > li > a,
-.dropdown-menu > div > div > li > a {
+.dropdown-menu > div > div > li > a,
+.dropdown-menu > div > div > div > li > a {
   padding: 10px 15px !important;
 }
-.dropdown-menu > div > div > li > a {
+.dropdown-menu > div > div > li > a,
+.dropdown-menu > div > div > div > li > a {
   display:block;
 }
-.dropdown-menu > div > div > li > a:hover {
+.dropdown-menu > div > div > li > a:hover,
+.dropdown-menu > div > div > div > li > a:hover {
   background-color:#f5f5f5;
 }
 .dropdown-menu li:last-child > a {
@@ -437,6 +444,10 @@ margin-bottom: 0;
 .dropdown-menu li:last-child > a:hover {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
+}
+.col-menu {
+  padding-left:0;
+  padding-right:0;
 }
 .dropdown-menu .row {
   padding: 0 15px;
@@ -816,6 +827,7 @@ margin-bottom: 16px;
 
 .mini-social {
   padding:0;
+  margin:0;
   overflow:auto;
 }
 .mini-social li {
@@ -969,6 +981,11 @@ article header {
   padding-bottom:32px;
   margin-bottom:40px;
 }
+.ba-pagina article > footer {
+  border-top:solid 1px #e5e5e5;
+  padding-top:32px;
+  margin-top:40px;
+}
 article figure,
 .ba-libro aside header,
 .ba-aplicativo aside header {
@@ -1043,9 +1060,9 @@ time {
     overflow:auto;
   }
 }
-.main-container article section:nth-child(2) {
+/*.ba-pagina article section:nth-child(2) {
   padding-bottom: 8px;
-}
+}*/
 section h2 {
   display: inline-block;
 }
@@ -1059,6 +1076,14 @@ section h2 {
 .pagina-enlaces a:focus h4,
 .pagina-enlaces a:active h4 {
   color:#333;
+}
+
+/* pagina listado row notas relacionadas */
+
+.row-list-pagina {
+  margin-left:-30px;
+  margin-right:-30px;
+  overflow:hidden;
 }
 
 /* pagination + listado + busqueda */
