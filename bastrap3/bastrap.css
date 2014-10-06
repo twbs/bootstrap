@@ -942,6 +942,11 @@ a.list-group-item.active > .badge {
 }
 .bac-header,
 .bac-footer,
+.ba-vos-footer {
+  font-size:0 !important;
+}
+.bac-header,
+.bac-footer,
 .bavos-footer,
 .ba-btn {
   background-repeat:no-repeat;

@@ -18,7 +18,7 @@
 * TASKS *********************************************************************************************
 
 
-
+- Pagina noticias relacionadas abajo [sacar lo de comercios...]
 
 - Megamenu
 	FOTO
@@ -36,7 +36,7 @@
 
 
 
-- Iconos ejes versión grande [por favor no]
+
 
 
 
@@ -88,6 +88,8 @@
 
 
 * QUEUE *********************************************************************************************
+
+- Iconos ejes versión grande [por favor no]
 
 - contenido excepcional [VER]
 	http://redmine.buenosaires.gob.ar/projects/dgid/wiki/Contenido_excepcional
