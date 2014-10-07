@@ -161,18 +161,18 @@ $(function () {
   test('should work with encoded hash fragments', function () {
     stop()
 
-    var sectionHTML = '<div id="root" style="overflow: auto; height:100px">'
-      + '<nav id="navigation" class="navbar">'
-      + '<ul class="nav navbar-nav">'
-      + '<li id="li-1"><a href="#' + encodeURIComponent('こんにちは') + '">div 1</a></li>'
-      + '</ul>'
-      + '</nav>'
-      + '<div style="height: 500px;"></div>'
-      + '<div id="こんにちは" style="height: 200px;">div</div>'
-      + '</div>'
+    var sectionHTML = '<div id="root" style="overflow: auto; height: 100px;">'
+        + '<nav id="navigation" class="navbar">'
+        + '<ul class="nav navbar-nav">'
+        + '<li id="li-1"><a href="#' + encodeURIComponent('こんにちは') + '">div 1</a></li>'
+        + '</ul>'
+        + '</nav>'
+        + '<div style="height: 500px;"></div>'
+        + '<div id="こんにちは" style="height: 200px;">div</div>'
+        + '</div>'
     var $section = $(sectionHTML).appendTo('#qunit-fixture')
-        .show()
-        .bootstrapScrollspy({ target: '#navigation' })
+      .show()
+      .bootstrapScrollspy({ target: '#navigation' })
 
     $section.on('activate.bs.scrollspy', function () {
       ok($section.find('#li-1').hasClass('active'))
