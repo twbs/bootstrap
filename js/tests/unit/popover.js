@@ -30,7 +30,7 @@ $(function () {
   })
 
   test('should render popover element', function () {
-    var $popover = $('<a href="#" title="mdo" data-content="http://twitter.com/mdo">@mdo</a>')
+    var $popover = $('<a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover('show')
 
@@ -40,7 +40,7 @@ $(function () {
   })
 
   test('should store popover instance in popover data object', function () {
-    var $popover = $('<a href="#" title="mdo" data-content="http://twitter.com/mdo">@mdo</a>').bootstrapPopover()
+    var $popover = $('<a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a>').bootstrapPopover()
 
     ok($popover.data('bs.popover'), 'popover instance exists')
   })
