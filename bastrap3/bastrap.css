@@ -1966,8 +1966,8 @@ ul.affix-bottom {
   .carousel-caption h1 {
     font-family: "Gotham", Helvetica, Arial, sans-serif;
     font-weight: normal;
-    font-size:16px;
-    line-height:16px;
+    font-size:24px;
+    line-height:24px;
   }
   .carousel-caption p {
     display:none;
@@ -2023,6 +2023,7 @@ z-index: 11;
   padding-bottom:12px;
   color:#333;
   border-radius:6px;
+  display:block;
 }
 .shortcut:hover,
 .shortcut:focus {

@@ -20,9 +20,7 @@
 
 
 
-- Megamenu
-	FOTO
-	iconos, bold, jerarquía....
+
 
 - Home mobile
 	guía de trámites
@@ -34,46 +32,7 @@
 	mi ba
 	RESTO
 
-
-
-
-
-
-
-
 - CSS impresión para página, nota de libro, tramite
-
-- NUEVO BASTRAP más liviano + EMPROLIJAR + SUBIR DE NUEVO A CDN ba.gob.ar
-	SAAS
-	sacar elementos nuevos al pedo, solo bastrap de boostrap
-	íconos en paneles?
-	opacity como .6
- 	version offline opensans https://www.google.com/fonts#UsePlace:use/Collection:Open+Sans
- 	VERSION OFFFFLINEEE OPCIONALLLL + cerrar bien documentacion bastrap [por ahora]
- 	bastrap.js
- 	http://alistapart.com/article/css-audits-taking-stock-of-your-code
- 	fix carousel
- 	no ser garca y poner los -webkit y -moz [y modernizr?]
- 	y si hacemos que sea siempre offline?
- 	con bordes en panels? dsfsdf ver las tarjetitas ya aplicadas vs buenos aires no border no panel [j3]
-
-- Crossbrowsing + accesibilidad + sarmiento cargador [usar red de tele]
-	http://wave.webaim.org/report#/http%3A%2F%2Fgcba.github.io%2FBAstrap%2Fbuenosaires%2Fshow.html
-	http://achecker.ca/checker/index.php
-	http://jekyllrb.com/
-	http://gcba.github.io/guiaux/
-	Agregar alt, rel, role ...
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -89,7 +48,19 @@
 
 * QUEUE *********************************************************************************************
 
-- Iconos ejes versión grande [por favor no]
+- NUEVO BASTRAP más liviano
+	SAAS
+	opacity como .6
+ 	no ser garca y poner los -webkit y -moz [y modernizr?]
+ 	con bordes en panels? dsfsdf ver las tarjetitas ya aplicadas vs buenos aires no border no panel [j3]
+
+- Crossbrowsing + accesibilidad + sarmiento cargador [usar red de tele]
+	http://alistapart.com/article/css-audits-taking-stock-of-your-code
+	http://wave.webaim.org/report#/http%3A%2F%2Fgcba.github.io%2FBAstrap%2Fbuenosaires%2Fshow.html
+	http://achecker.ca/checker/index.php
+	http://jekyllrb.com/
+	http://gcba.github.io/guiaux/
+	Agregar alt, rel, role ...
 
 - contenido excepcional [VER]
 	http://redmine.buenosaires.gob.ar/projects/dgid/wiki/Contenido_excepcional
@@ -111,7 +82,6 @@
 - megamenu
 	hover + click mmmmm
 	prioridades font size
-	foto...
 	iconos arriba
 
 - hover y delay para megamenu
@@ -128,6 +98,11 @@
 - nav mobile para header, footer y sidebar en pag de libro.... [drawer? colapsable todo? no colapsable pag de libro? mmm?
 	drawer navigation [trunk.js?]
 	todo desplegado
+
+- Iconos ejes versión grande [por favor no]
+
+
+
 
 
 
