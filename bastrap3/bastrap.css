@@ -1993,7 +1993,7 @@ ul.affix-bottom {
 }
 
 .carousel .carousel-control {
-z-index: 2;
+z-index: 11;
 }
 
 /* jumbotron carousel */
