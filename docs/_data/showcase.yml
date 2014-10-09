@@ -1,0 +1,19 @@
+- name: Red Antler
+  url: http://www.redantler.com/
+  expo_url: http://expo.getbootstrap.com/2014/02/24/redantler/
+  img: redantler
+
+- name: Riot Design
+  url: http://riotdesign.eu/en/
+  expo_url: http://expo.getbootstrap.com/2014/03/13/riot-design/
+  img: riot
+
+- name: Newsweek
+  url: http://www.newsweek.com/
+  expo_url: http://expo.getbootstrap.com/2014/02/12/newsweek/
+  img: newsweek
+
+- name: Robinhood
+  url: https://www.robinhood.com
+  expo_url: http://expo.getbootstrap.com/2014/02/26/robinhood/
+  img: robinhood

@@ -1,0 +1,46 @@
+<div class="bs-docs-section">
+  <h1 id="download" class="page-header">Download</h1>
+
+  <p class="lead">Bootstrap (currently v{{ site.current_version }}) has a few easy ways to quickly get started, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
+
+  <div class="row bs-downloads">
+    <div class="col-sm-4">
+      <h3 id="download-bootstrap">Bootstrap</h3>
+      <p>Compiled and minified CSS, JavaScript, and fonts. No docs or original source files are included.</p>
+      <p>
+        <a href="{{ site.download.dist }}" class="btn btn-lg btn-outline" role="button" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download compiled');">Download Bootstrap</a>
+      </p>
+    </div>
+    <div class="col-sm-4">
+      <h3 id="download-source">Source code</h3>
+      <p>Source Less, JavaScript, and font files, along with our docs. <strong>Requires a Less compiler and <a href="#grunt">some setup.</a></strong></p>
+      <p>
+        <a href="{{ site.download.source }}" class="btn btn-lg btn-outline" role="button" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a>
+      </p>
+    </div>
+    <div class="col-sm-4">
+      <h3 id="download-sass">Sass</h3>
+      <p><a href="{{ site.sass_repo }}">Bootstrap ported from Less to Sass</a> for easy inclusion in Rails, Compass, or Sass-only projects.</p>
+      <p>
+        <a href="{{ site.download.sass }}" class="btn btn-lg btn-outline" role="button" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Sass');">Download Sass</a>
+      </p>
+    </div>
+  </div>
+
+  <h3 id="download-cdn">Bootstrap CDN</h3>
+  <p>The folks over at <a href="http://www.maxcdn.com/">MaxCDN</a> graciously provide CDN support for Bootstrap's CSS and JavaScript. Just use these <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links.</p>
+{% highlight html %}
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="{{ site.cdn.css }}">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="{{ site.cdn.css_theme }}">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="{{ site.cdn.js }}"></script>
+{% endhighlight %}
+
+  <h3 id="download-bower">Install with Bower</h3>
+  <p>Install and manage Bootstrap's Less, CSS, JavaScript, and fonts using <a href="http://bower.io">Bower</a>.</p>
+  {% highlight bash %}$ bower install bootstrap{% endhighlight %}
+</div>

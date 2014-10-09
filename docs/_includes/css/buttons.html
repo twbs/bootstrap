@@ -1,0 +1,178 @@
+<div class="bs-docs-section">
+  <h1 id="buttons" class="page-header">Buttons</h1>
+
+  <h2 id="buttons-options">Options</h2>
+  <p>Use any of the available button classes to quickly create a styled button.</p>
+  <div class="bs-example">
+    <button type="button" class="btn btn-default">Default</button>
+    <button type="button" class="btn btn-primary">Primary</button>
+    <button type="button" class="btn btn-success">Success</button>
+    <button type="button" class="btn btn-info">Info</button>
+    <button type="button" class="btn btn-warning">Warning</button>
+    <button type="button" class="btn btn-danger">Danger</button>
+    <button type="button" class="btn btn-link">Link</button>
+  </div>
+{% highlight html %}
+<!-- Standard button -->
+<button type="button" class="btn btn-default">Default</button>
+
+<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+<button type="button" class="btn btn-primary">Primary</button>
+
+<!-- Indicates a successful or positive action -->
+<button type="button" class="btn btn-success">Success</button>
+
+<!-- Contextual button for informational alert messages -->
+<button type="button" class="btn btn-info">Info</button>
+
+<!-- Indicates caution should be taken with this action -->
+<button type="button" class="btn btn-warning">Warning</button>
+
+<!-- Indicates a dangerous or potentially negative action -->
+<button type="button" class="btn btn-danger">Danger</button>
+
+<!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+<button type="button" class="btn btn-link">Link</button>
+{% endhighlight %}
+
+  <h2 id="buttons-sizes">Sizes</h2>
+  <p>Fancy larger or smaller buttons? Add <code>.btn-lg</code>, <code>.btn-sm</code>, or <code>.btn-xs</code> for additional sizes.</p>
+  <div class="bs-example">
+    <p>
+      <button type="button" class="btn btn-primary btn-lg">Large button</button>
+      <button type="button" class="btn btn-default btn-lg">Large button</button>
+    </p>
+    <p>
+      <button type="button" class="btn btn-primary">Default button</button>
+      <button type="button" class="btn btn-default">Default button</button>
+    </p>
+    <p>
+      <button type="button" class="btn btn-primary btn-sm">Small button</button>
+      <button type="button" class="btn btn-default btn-sm">Small button</button>
+    </p>
+    <p>
+      <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
+      <button type="button" class="btn btn-default btn-xs">Extra small button</button>
+    </p>
+  </div>
+{% highlight html %}
+<p>
+  <button type="button" class="btn btn-primary btn-lg">Large button</button>
+  <button type="button" class="btn btn-default btn-lg">Large button</button>
+</p>
+<p>
+  <button type="button" class="btn btn-primary">Default button</button>
+  <button type="button" class="btn btn-default">Default button</button>
+</p>
+<p>
+  <button type="button" class="btn btn-primary btn-sm">Small button</button>
+  <button type="button" class="btn btn-default btn-sm">Small button</button>
+</p>
+<p>
+  <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
+  <button type="button" class="btn btn-default btn-xs">Extra small button</button>
+</p>
+{% endhighlight %}
+
+  <p>Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding <code>.btn-block</code>.</p>
+  <div class="bs-example">
+    <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
+      <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+      <button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
+    </div>
+  </div>
+{% highlight html %}
+<button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+<button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
+{% endhighlight %}
+
+
+  <h2 id="buttons-active">Active state</h2>
+  <p>Buttons will appear pressed (with a darker background, darker border, and inset shadow) when active. For <code>&lt;button&gt;</code> elements, this is done via <code>:active</code>. For <code>&lt;a&gt;</code> elements, it's done with <code>.active</code>. However, you may use <code>.active</code> on <code>&lt;button&gt;</code>s should you need to replicate the active state programmatically.</p>
+
+  <h3>Button element</h3>
+  <p>No need to add <code>:active</code> as it's a pseudo-class, but if you need to force the same appearance, go ahead and add <code>.active</code>.</p>
+  <p class="bs-example">
+    <button type="button" class="btn btn-primary btn-lg active">Primary button</button>
+    <button type="button" class="btn btn-default btn-lg active">Button</button>
+  </p>
+{% highlight html %}
+<button type="button" class="btn btn-primary btn-lg active">Primary button</button>
+<button type="button" class="btn btn-default btn-lg active">Button</button>
+{% endhighlight %}
+
+  <h3>Anchor element</h3>
+  <p>Add the <code>.active</code> class to <code>&lt;a&gt;</code> buttons.</p>
+  <p class="bs-example">
+    <a href="#" class="btn btn-primary btn-lg active" role="button">Primary link</a>
+    <a href="#" class="btn btn-default btn-lg active" role="button">Link</a>
+  </p>
+{% highlight html %}
+<a href="#" class="btn btn-primary btn-lg active" role="button">Primary link</a>
+<a href="#" class="btn btn-default btn-lg active" role="button">Link</a>
+{% endhighlight %}
+
+
+  <h2 id="buttons-disabled">Disabled state</h2>
+  <p>Make buttons look unclickable by fading them back with <code>opacity</code>.</p>
+
+  <h3>Button element</h3>
+  <p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
+  <p class="bs-example">
+    <button type="button" class="btn btn-primary btn-lg" disabled="disabled">Primary button</button>
+    <button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
+  </p>
+{% highlight html %}
+<button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary button</button>
+<button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
+{% endhighlight %}
+
+  <div class="bs-callout bs-callout-danger">
+    <h4>Cross-browser compatibility</h4>
+    <p>If you add the <code>disabled</code> attribute to a <code>&lt;button&gt;</code>, Internet Explorer 9 and below will render text gray with a nasty text-shadow that we cannot fix.</p>
+  </div>
+
+  <h3>Anchor element</h3>
+  <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
+  <p class="bs-example">
+    <a href="#" class="btn btn-primary btn-lg disabled" role="button">Primary link</a>
+    <a href="#" class="btn btn-default btn-lg disabled" role="button">Link</a>
+  </p>
+{% highlight html %}
+<a href="#" class="btn btn-primary btn-lg disabled" role="button">Primary link</a>
+<a href="#" class="btn btn-default btn-lg disabled" role="button">Link</a>
+{% endhighlight %}
+  <p>
+    We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
+  </p>
+  <div class="bs-callout bs-callout-warning">
+    <h4>Link functionality caveat</h4>
+    <p>This class uses <code>pointer-events: none</code> to try to disable the link functionality of <code>&lt;a&gt;</code>s, but that CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11. So to be safe, use custom JavaScript to disable such links.</p>
+  </div>
+  <div class="bs-callout bs-callout-warning">
+    <h4>Context-specific usage</h4>
+    <p>While button classes can be used on <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements, only <code>&lt;button&gt;</code> elements are supported within our nav and navbar components.</p>
+  </div>
+
+
+  <h2 id="buttons-tags">Button tags</h2>
+  <p>Use the button classes on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
+  <form class="bs-example">
+    <a class="btn btn-default" href="#" role="button">Link</a>
+    <button class="btn btn-default" type="submit">Button</button>
+    <input class="btn btn-default" type="button" value="Input">
+    <input class="btn btn-default" type="submit" value="Submit">
+  </form>
+{% highlight html %}
+<a class="btn btn-default" href="#" role="button">Link</a>
+<button class="btn btn-default" type="submit">Button</button>
+<input class="btn btn-default" type="button" value="Input">
+<input class="btn btn-default" type="submit" value="Submit">
+{% endhighlight %}
+
+  <div class="bs-callout bs-callout-warning">
+    <h4>Cross-browser rendering</h4>
+    <p>As a best practice, <strong>we highly recommend using the <code>&lt;button&gt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
+    <p>Among other things, there's <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697451">a bug in Firefox &lt;30</a> that prevents us from setting the <code>line-height</code> of <code>&lt;input&gt;</code>-based buttons, causing them to not exactly match the height of other buttons on Firefox.</p>
+  </div>
+</div>

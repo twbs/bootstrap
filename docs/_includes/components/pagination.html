@@ -1,0 +1,175 @@
+<div class="bs-docs-section">
+  <h1 id="pagination" class="page-header">Pagination</h1>
+
+  <p class="lead">Provide pagination links for your site or app with the multi-page pagination component, or the simpler <a href="#pagination-pager">pager alternative</a>.</p>
+
+  <h2 id="pagination-default">Default pagination</h2>
+  <p>Simple pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.</p>
+  <div class="bs-example">
+    <nav>
+      <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+      </ul>
+    </nav>
+  </div>
+{% highlight html %}
+<nav>
+  <ul class="pagination">
+    <li><a href="#">&laquo;</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">&raquo;</a></li>
+  </ul>
+</nav>
+{% endhighlight %}
+
+  <h3>Disabled and active states</h3>
+  <p>Links are customizable for different circumstances. Use <code>.disabled</code> for unclickable links and <code>.active</code> to indicate the current page.</p>
+  <div class="bs-example">
+    <nav>
+      <ul class="pagination">
+        <li class="disabled"><a href="#">&laquo;</a></li>
+        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+     </ul>
+   </nav>
+  </div>
+{% highlight html %}
+<nav>
+  <ul class="pagination">
+    <li class="disabled"><a href="#">&laquo;</a></li>
+    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+    ...
+  </ul>
+</nav>
+{% endhighlight %}
+  <p>You can optionally swap out active or disabled anchors for <code>&lt;span&gt;</code> to remove click functionality while retaining intended styles.</p>
+{% highlight html %}
+<nav>
+  <ul class="pagination">
+    <li class="disabled"><span>&laquo;</span></li>
+    <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
+    ...
+  </ul>
+</nav>
+{% endhighlight %}
+
+
+  <h3>Sizing</h3>
+  <p>Fancy larger or smaller pagination? Add <code>.pagination-lg</code> or <code>.pagination-sm</code> for additional sizes.</p>
+  <div class="bs-example">
+    <nav>
+      <ul class="pagination pagination-lg">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+      </ul>
+    </nav>
+    <nav>
+      <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+      </ul>
+    </nav>
+    <nav>
+      <ul class="pagination pagination-sm">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+      </ul>
+    </nav>
+  </div>
+{% highlight html %}
+<nav><ul class="pagination pagination-lg">...</ul></nav>
+<nav><ul class="pagination">...</ul></nav>
+<nav><ul class="pagination pagination-sm">...</ul></nav>
+{% endhighlight %}
+
+
+  <h2 id="pagination-pager">Pager</h2>
+  <p>Quick previous and next links for simple pagination implementations with light markup and styles. It's great for simple sites like blogs or magazines.</p>
+
+  <h3>Default example</h3>
+  <p>By default, the pager centers links.</p>
+  <div class="bs-example">
+    <nav>
+      <ul class="pager">
+        <li><a href="#">Previous</a></li>
+        <li><a href="#">Next</a></li>
+      </ul>
+    </nav>
+  </div>
+{% highlight html %}
+<nav>
+  <ul class="pager">
+    <li><a href="#">Previous</a></li>
+    <li><a href="#">Next</a></li>
+  </ul>
+</nav>
+{% endhighlight %}
+
+  <h3>Aligned links</h3>
+  <p>Alternatively, you can align each link to the sides:</p>
+  <div class="bs-example">
+    <nav>
+      <ul class="pager">
+        <li class="previous"><a href="#">&larr; Older</a></li>
+        <li class="next"><a href="#">Newer &rarr;</a></li>
+      </ul>
+    </nav>
+  </div>
+{% highlight html %}
+<nav>
+  <ul class="pager">
+    <li class="previous"><a href="#">&larr; Older</a></li>
+    <li class="next"><a href="#">Newer &rarr;</a></li>
+  </ul>
+</nav>
+{% endhighlight %}
+
+
+  <h3>Optional disabled state</h3>
+  <p>Pager links also use the general <code>.disabled</code> utility class from the pagination.</p>
+  <div class="bs-example">
+    <nav>
+      <ul class="pager">
+        <li class="previous disabled"><a href="#">&larr; Older</a></li>
+        <li class="next"><a href="#">Newer &rarr;</a></li>
+      </ul>
+    </nav>
+  </div>
+{% highlight html %}
+<nav>
+  <ul class="pager">
+    <li class="previous disabled"><a href="#">&larr; Older</a></li>
+    <li class="next"><a href="#">Newer &rarr;</a></li>
+  </ul>
+</nav>
+{% endhighlight %}
+</div>

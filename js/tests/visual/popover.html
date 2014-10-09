@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Popover</title>
+  <link rel="stylesheet" type="text/css" href="../../../dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="page-header">
+    <h1>Popover <small>Bootstrap Visual Test</small></h1>
+  </div>
+
+  <button type="button" class="btn btn-default js-popover" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="">
+    Popover on left
+  </button>
+  <button type="button" class="btn btn-default js-popover" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="">
+    Popover on top
+  </button>
+  <button type="button" class="btn btn-default js-popover" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="">
+    Popover on bottom
+  </button>
+  <button type="button" class="btn btn-default js-popover" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="">
+    Popover on right
+  </button>
+
+</div>
+
+<!-- JavaScript Includes -->
+<script src="../vendor/jquery.min.js"></script>
+<script src="../../transition.js"></script>
+<script src="../../tooltip.js"></script>
+<script src="../../popover.js"></script>
+
+<!-- JavaScript Test -->
+<script>
+$(function () {
+  $('.js-popover').popover()
+})
+</script>
+
+</body>
+</html>
