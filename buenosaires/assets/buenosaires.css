@@ -216,7 +216,7 @@ label {
 }
 @media (min-width: 768px) {
   .navbar-primary .form-control {
-    width: 360px;
+    width: 355px;
   }
 }
 .navbar-nav>li>.dropdown-menu {
@@ -423,15 +423,28 @@ margin-bottom: 0;
 }
 .col-menu-img {
   border-radius:4px;
-  height: 576px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   margin-left:15px;
+  display:none;
 }
-@media (max-width: 992px) {
+@media (min-width: 767px) {
+  .yamm .dropdown-menu {
+    width:715px;
+  }
+}
+@media (min-width: 992px) {
+  .yamm .dropdown-menu {
+    width:940px;
+  }
   .col-menu-img {
-    display:none;
+    display:block;
+  }
+}
+@media (min-width: 1200px) {
+  .yamm .dropdown-menu {
+    width:1140px;
   }
 }
 .yamm .nav,
@@ -448,16 +461,7 @@ margin-bottom: 0;
 /*  font-size:12px;
   line-height:16px;*/
 }
-@media (min-width: 992px) {
-  .yamm .dropdown-menu {
-    width:720px;
-  }
-}
-@media (min-width: 1200px) {
-  .yamm .dropdown-menu {
-    width:960px;
-  }
-}
+
 .yamm .yamm-content {
   padding: 20px 30px;
 }

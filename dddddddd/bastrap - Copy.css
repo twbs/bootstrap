@@ -1,11 +1,23 @@
 /* Main */
 
-html {
-  background-color:#111;
+html,
+body {
   height:100%;
 }
+
 body {
-  background-color:#fff;
+  position:relative;
+  display:table;
+  width:100%;
+}
+body > .navbar-primary,
+body > .wrapper,
+body > footer {
+  display:table-row;
+  height:1px;
+}
+body > .wrapper {
+  height:100%;
 }
 .main-container {
   padding-top:48px;
@@ -925,6 +937,9 @@ a.list-group-item.active > .badge {
 .navbar-brand {
   min-height:40px;
 }
+.navbar-top.navbar-primary, .navbar-brand {
+  height:40px;
+}
 .bac-header,
 .bac-footer,
 .ba-vos-footer {
@@ -999,6 +1014,7 @@ a.list-group-item.active > .badge {
   .navbar-top .navbar-brand {
     margin:8px auto 0 auto !important;
     display: block;
+    float:none;
   }
   .navbar-top .sub-brand {
     display: none;
@@ -1665,12 +1681,12 @@ ul.affix-bottom {
 }
 @media (max-width: 560px) {
   .footer .sub-brand {
-    text-align:left;
+    text-align:center;
     float:none;
-    padding-right:15px;
   }
   .footer .col-md-6 {
-    padding:15px 0 0 15px;
+    text-align:center;
+    padding:15px 0 0 0;
   }
   .footer .navbar-brand {
     float:none;
@@ -1679,8 +1695,14 @@ ul.affix-bottom {
 .footer .navbar-brand {
   padding-left:0;
 }
+
+
+
 .footer-home {
   margin-top:0;
+}
+.footer-row {
+  margin-top:60px;
 }
 .footer-row a.navbar-brand {
   margin-bottom:48px;
