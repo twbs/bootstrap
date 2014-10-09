@@ -2,11 +2,12 @@
 
 .main-container {
   padding-top:0;
+  padding-bottom:64px;
 }
-@media (max-width: 560px) {
+@media (max-width: 767px) {
   .container, .container-fluid {
-   padding-right: 0; 
-   padding-left: 0; 
+   margin-left:-15px;
+   margin-right:-15px;
   }
 }
 /*.main-container table {
@@ -661,6 +662,12 @@ padding-top: 18px;
 .row-shortcut {
   margin: 24px 15px 0 15px;
 }
+@media (max-width: 767px) {
+  .ba-home .main-container .shortcut p,
+  .ba-home .shortcut-tramite {
+    display:none;
+  }
+}
 
 /* widget embed iframes social */
 
@@ -685,12 +692,11 @@ padding-top: 18px;
 
 /* banner */
 
-@media (min-width: 992px) {
+@media (max-width: 992px) {
   .home-banner {
-    margin-top:-16px;
+    display:none;
   }
 }
-
 .home-banner img {
   margin:0 auto 30px auto;
   border-radius:6px;
@@ -728,7 +734,8 @@ padding-top: 18px;
   line-height:32px;
 }
 @media (max-width: 767px) {
-  .bac-header {
+  .bac-header,
+  .ba-home .bac-header {
     width:255px;
     height:45px;
     background-image:url(bac-header-big.png);
@@ -737,8 +744,8 @@ padding-top: 18px;
   .navbar-primary .navbar-brand {
     top: -8px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+/*    margin-left: auto;
+    margin-right: auto;*/
   }
 }
 
@@ -775,7 +782,7 @@ padding-top: 18px;
 }
 #ba-footer .shortcut h3 {
   color:#fff;
-  font-size:65px;
+  font-size:64px;
 }
 #ba-footer .shortcut:hover,
 #ba-footer .shortcut:focus,
@@ -1226,6 +1233,12 @@ section h2 {
 .ba-medios a:active img {
   background-color: #f1f1f1;
 }
+@media (max-width: 992px) {
+  .ba-medios,
+  .medios-home {
+    display:none;
+  }
+}
 .glyphicon-shortcut-vos {
   background:url(shortcut-vos.png) no-repeat center center;
 }
@@ -1234,6 +1247,18 @@ section h2 {
 }
 .alert-spot {
   margin:48px 30px 0 30px;
+}
+@media (min-width: 768px) {
+  .home-nav {
+    display:none;
+  }
+}
+.home-nav {
+  padding:24px 15px;
+  background-color:#e5e5e5;
+}
+.home-nav .btn {
+  margin-bottom:8px;
 }
 
 /* aplicativo */
@@ -1375,7 +1400,7 @@ width: 150px;
 height: 112px;
 margin:0;
 }
-@media (min-width: 992px) and (max-width: 1200px) {
+@media (max-width: 1200px) {
   .list-thumb > div {
     width: 120px;
     height: 80px;

@@ -997,7 +997,6 @@ a.list-group-item.active > .badge {
 
 @media (max-width: 560px) {
   .navbar-top .navbar-brand {
-    margin:8px auto 0 auto !important;
     display: block;
   }
   .navbar-top .sub-brand {
@@ -1944,8 +1943,8 @@ ul.affix-bottom {
   .carousel-caption h1 {
     font-family: "Gotham", Helvetica, Arial, sans-serif;
     font-weight: normal;
-    font-size:24px;
-    line-height:24px;
+    font-size:16px;
+    line-height:16px;
   }
   .carousel-caption p {
     display:none;
@@ -2036,6 +2035,17 @@ z-index: 11;
 }
 .shortcut p {
   color:#888;
+}
+@media (max-width: 560px) {
+  .shortcut span {
+    margin:0 auto 24px auto;
+    width:80px;
+    height:80px;
+  }
+  .shortcut span.glyphicon {
+    padding-top:20px;
+    font-size:40px;
+  }
 }
 
 /* panel */

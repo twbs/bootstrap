@@ -21,19 +21,18 @@
 
 
 
-- Home mobile
-	guía de trámites
-	multas
-	turnos
-	registro civil
-	subte
-	mapa
-	mi ba
-	RESTO
-
 - CSS impresión para página, nota de libro, tramite
+	testear
+	sacar cosas
+	poner logo?
 
-
+- Crossbrowsing + accesibilidad + sarmiento cargador [usar red de tele]
+	http://alistapart.com/article/css-audits-taking-stock-of-your-code
+	http://wave.webaim.org/report#/http%3A%2F%2Fgcba.github.io%2FBAstrap%2Fbuenosaires%2Fshow.html
+	http://achecker.ca/checker/index.php
+	http://jekyllrb.com/
+	http://gcba.github.io/guiaux/
+	Agregar alt, rel, role ...
 
 
 
@@ -52,14 +51,6 @@
 	opacity como .6
  	no ser garca y poner los -webkit y -moz [y modernizr?]
  	con bordes en panels? dsfsdf ver las tarjetitas ya aplicadas vs buenos aires no border no panel [j3]
-
-- Crossbrowsing + accesibilidad + sarmiento cargador [usar red de tele]
-	http://alistapart.com/article/css-audits-taking-stock-of-your-code
-	http://wave.webaim.org/report#/http%3A%2F%2Fgcba.github.io%2FBAstrap%2Fbuenosaires%2Fshow.html
-	http://achecker.ca/checker/index.php
-	http://jekyllrb.com/
-	http://gcba.github.io/guiaux/
-	Agregar alt, rel, role ...
 
 - contenido excepcional [VER]
 	http://redmine.buenosaires.gob.ar/projects/dgid/wiki/Contenido_excepcional
