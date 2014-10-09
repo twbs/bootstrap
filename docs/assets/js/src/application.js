@@ -142,12 +142,14 @@
     // Define what elems have infinite animations
     var $infinitelyAnimatedElems = $('.progress-bar.active')
 
-    // Check for infinitely animated elems in viewport on scroll (debounced)
-    $(window).smartscroll(function () {
+    if ($infinitelyAnimatedElems.length > 0) {
+      // Check for infinitely animated elems in viewport on scroll (debounced)
+      $(window).smartscroll(function () {
+        checkAnimatedElems()
+      })
+      // Check for infinitely animated elems in viewport on load
       checkAnimatedElems()
-    })
-    // Check for infinitely animated elems in viewport on load
-    checkAnimatedElems()
+    }
 
 
     // Config ZeroClipboard
