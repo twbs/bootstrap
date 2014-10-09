@@ -109,6 +109,46 @@
       }, 3000)
     })
 
+    // Pause infinite animations until they are within the viewport
+    // @see: https://github.com/twbs/bootstrap/issues/14409
+    var isInViewport = function (elem) {
+      // Get the scroll position of the page.
+      var scrollElem      = ((navigator.userAgent.toLowerCase().indexOf('webkit') !== -1) ? 'body' : 'html')
+      var viewportTop     = $(scrollElem).scrollTop()
+      var viewportBottom  = viewportTop + $(window).height()
+
+      // Get the position of the element on the page.
+      var elemTop     = Math.round($(elem).offset().top)
+      var elemBottom  = elemTop + $(elem).height()
+
+      return ((elemTop < viewportBottom) && (elemBottom > viewportTop))
+    }
+
+    // Check if it's time to start the animation.
+    var checkAnimatedElems = function () {
+      return $infinitelyAnimatedElems.each(function () {
+        var $this = $(this)
+
+        if (isInViewport(this)) {
+          // Start the animation
+          $this.removeClass('js-pause')
+        } else {
+          // Pause the animation
+          $this.addClass('js-pause')
+        }
+      })
+    }
+
+    // Define what elems have infinite animations
+    var $infinitelyAnimatedElems = $('.progress-bar.active')
+
+    // Check for infinitely animated elems in viewport on scroll (debounced)
+    $(window).smartscroll(function () {
+      checkAnimatedElems()
+    })
+    // Check for infinitely animated elems in viewport on load
+    checkAnimatedElems()
+
 
     // Config ZeroClipboard
     ZeroClipboard.config({
