@@ -132,6 +132,14 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
          <td>shown.bs.tab</td>
          <td>This event fires on tab show after a tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
        </tr>
+       <tr>
+         <td>hide.bs.tab</td>
+         <td>This event fires immediately when a new tab is to be shown and before the <code>show.bs.tab</code> event. Use <code>event.relatedTarget</code> to target the new tab.</td>
+       </tr>
+       <tr>
+         <td>hidden.bs.tab</td>
+         <td>This event fires after a new tab is shown and before the <code>shown.bs.tab</code> event. Use <code>event.relatedTarget</code> to target the new tab.</td>
+       </tr>
       </tbody>
     </table>
   </div><!-- /.table-responsive -->
