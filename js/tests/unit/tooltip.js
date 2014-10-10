@@ -432,6 +432,110 @@ $(function () {
     $styles.remove()
   })
 
+  test('should display the tip on top whenever scrollable viewport has enough room if the given placement is "auto top"', function () {
+    var styles = '<style>'
+        + '#scrollable-div { height: 200px; overflow: auto; }'
+        + '.tooltip-item { margin: 200px 0 400px; width: 150px; }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    var $container = $('<div id="scrollable-div"/>').appendTo('#qunit-fixture')
+    var $target = $('<div rel="tooltip" title="tip" class="tooltip-item">Tooltip Item</div>')
+      .appendTo($container)
+      .bootstrapTooltip({
+        placement: 'top auto',
+        viewport: '#scrollable-div'
+      })
+
+    $('#scrollable-div').scrollTop(100)
+
+    $target.bootstrapTooltip('show')
+    ok($('.tooltip').is('.fade.top.in'), 'has correct classes applied')
+
+    $target.bootstrapTooltip('hide')
+    equal($('.tooltip').length, 0, 'tooltip removed from dom')
+
+    $styles.remove()
+  })
+
+  test('should display the tip on bottom whenever scrollable viewport doesn\'t have enough room if the given placement is "auto top"', function () {
+    var styles = '<style>'
+        + '#scrollable-div { height: 200px; overflow: auto; }'
+        + '.tooltip-item { margin: 200px 0 400px; width: 150px; }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    var $container = $('<div id="scrollable-div"/>').appendTo('#qunit-fixture')
+    var $target = $('<div rel="tooltip" title="tip" class="tooltip-item">Tooltip Item</div>')
+      .appendTo($container)
+      .bootstrapTooltip({
+        placement: 'top auto',
+        viewport: '#scrollable-div'
+      })
+
+    $('#scrollable-div').scrollTop(200)
+
+    $target.bootstrapTooltip('show')
+    ok($('.tooltip').is('.fade.bottom.in'), 'has correct classes applied')
+
+    $target.bootstrapTooltip('hide')
+    equal($('.tooltip').length, 0, 'tooltip removed from dom')
+
+    $styles.remove()
+  })
+
+  test('should display the tip on bottom whenever scrollable viewport has enough room if the given placement is "auto bottom"', function () {
+    var styles = '<style>'
+        + '#scrollable-div { height: 200px; overflow: auto; }'
+        + '.tooltip-item { margin: 200px 0 400px; width: 150px; }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    var $container = $('<div id="scrollable-div"/>').appendTo('#qunit-fixture')
+    var $target = $('<div rel="tooltip" title="tip" class="tooltip-item">Tooltip Item</div>')
+      .appendTo($container)
+      .bootstrapTooltip({
+        placement: 'bottom auto',
+        viewport: '#scrollable-div'
+      })
+
+    $('#scrollable-div').scrollTop(200)
+
+    $target.bootstrapTooltip('show')
+    ok($('.tooltip').is('.fade.bottom.in'), 'has correct classes applied')
+
+    $target.bootstrapTooltip('hide')
+    equal($('.tooltip').length, 0, 'tooltip removed from dom')
+
+    $styles.remove()
+  })
+
+  test('should display the tip on top whenever scrollable viewport doesn\'t have enough room if the given placement is "auto bottom"', function () {
+    var styles = '<style>'
+        + '#scrollable-div { height: 200px; overflow: auto; }'
+        + '.tooltip-item { margin-top: 400px; width: 150px; }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    var $container = $('<div id="scrollable-div"/>').appendTo('#qunit-fixture')
+    var $target = $('<div rel="tooltip" title="tip" class="tooltip-item">Tooltip Item</div>')
+      .appendTo($container)
+      .bootstrapTooltip({
+        placement: 'bottom auto',
+        viewport: '#scrollable-div'
+      })
+
+    $('#scrollable-div').scrollTop(400)
+
+    $target.bootstrapTooltip('show')
+    ok($('.tooltip').is('.fade.top.in'), 'has correct classes applied')
+
+    $target.bootstrapTooltip('hide')
+    equal($('.tooltip').length, 0, 'tooltip removed from dom')
+
+    $styles.remove()
+  })
+
   test('should adjust the tip\'s top position when up against the top of the viewport', function () {
     var styles = '<style>'
         + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
