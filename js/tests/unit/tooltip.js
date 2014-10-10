@@ -434,18 +434,19 @@ $(function () {
 
   test('should display the tip on top whenever scrollable view port has enough room if the given placement is "auto top"', function ()   {
     var styles = '<style>'
-        + '#section { height: 200px; overflow: auto; }'
-        + 'br { font-size: 150px; }'
+        + '#scrollable-div { height: 200px; overflow: auto; }'
+        + '.tooltip-item { margin: 200px 0 400px; width: 150px}'
         + '</style>'
     var $styles = $(styles).appendTo('head')
 
-    var $container = $('<div id="section"/>').appendTo('#qunit-fixture')
-    var $target = $('<br/><div rel="tooltip" title="tip">Tooltip Item</div>')
+    var $container = $('<div id="scrollable-div"/>').appendTo('#qunit-fixture')
+    var $target = $('<div rel="tooltip" title="tip" class="tooltip-item">Tooltip Item</div>')
       .appendTo($container)
       .bootstrapTooltip({
         placement: 'top auto',
-        viewport: '#section'
+        viewport: '#scrollable-div'
       })
+    $('#scrollable-div').scrollTop(100);
 
     $target.bootstrapTooltip('show')
     ok($('.tooltip').is('.fade.top.in'), 'has correct classes applied')
@@ -458,17 +459,19 @@ $(function () {
 
   test('should display the tip on bottom whenever scrollable view port doesn"t have enough room if the given placement is "auto top"', function ()  {
     var styles = '<style>'
-        + '#section { height: 200px; overflow: auto; }'
+        + '#scrollable-div { height: 200px; overflow: auto; }'
+        + '.tooltip-item { margin: 200px 0 400px; width: 150px}'
         + '</style>'
     var $styles = $(styles).appendTo('head')
 
-    var $container = $('<div id="section"/>').appendTo('#qunit-fixture')
-    var $target = $('<div rel="tooltip" title="tip">Tooltip Item</div>')
+    var $container = $('<div id="scrollable-div"/>').appendTo('#qunit-fixture')
+    var $target = $('<div rel="tooltip" title="tip" class="tooltip-item">Tooltip Item</div>')
       .appendTo($container)
       .bootstrapTooltip({
-        placement: 'bottom auto',
-        viewport: '#section'
+        placement: 'top auto',
+        viewport: '#scrollable-div'
       })
+    $('#scrollable-div').scrollTop(200);
 
     $target.bootstrapTooltip('show')
     ok($('.tooltip').is('.fade.bottom.in'), 'has correct classes applied')
@@ -481,20 +484,47 @@ $(function () {
 
   test('should display the tip on bottom whenever scrollable view port has enough room if the given placement is "auto bottom"', function ()    {
     var styles = '<style>'
-        + '#section { height: 200px; overflow: auto; }'
+        + '#scrollable-div { height: 200px; overflow: auto; }'
+        + '.tooltip-item { margin: 200px 0 400px; width: 150px}'
         + '</style>'
     var $styles = $(styles).appendTo('head')
 
-    var $container = $('<div id="section"/>').appendTo('#qunit-fixture')
-    var $target = $('<div rel="tooltip" title="tip">Tooltip Item</div>')
+    var $container = $('<div id="scrollable-div"/>').appendTo('#qunit-fixture')
+    var $target = $('<div rel="tooltip" title="tip" class="tooltip-item">Tooltip Item</div>')
       .appendTo($container)
       .bootstrapTooltip({
-        placement: 'top auto',
-        viewport: '#section'
+        placement: 'bottom auto',
+        viewport: '#scrollable-div'
       })
+    $('#scrollable-div').scrollTop(200);
 
     $target.bootstrapTooltip('show')
     ok($('.tooltip').is('.fade.bottom.in'), 'has correct classes applied')
+
+    $target.bootstrapTooltip('hide')
+    equal($('.tooltip').length, 0, 'tooltip removed from dom')
+
+    $styles.remove()
+  })
+
+  test('should display the tip on top whenever scrollable view port doesn"t have enough room if the given placement is "auto bottom"', function ()    {
+    var styles = '<style>'
+        + '#scrollable-div { height: 200px; overflow: auto; }'
+        + '.tooltip-item { margin-top: 400px; width: 150px}'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    var $container = $('<div id="scrollable-div"/>').appendTo('#qunit-fixture')
+    var $target = $('<div rel="tooltip" title="tip" class="tooltip-item">Tooltip Item</div>')
+      .appendTo($container)
+      .bootstrapTooltip({
+        placement: 'bottom auto',
+        viewport: '#scrollable-div'
+      })
+    $('#scrollable-div').scrollTop(400);
+
+    $target.bootstrapTooltip('show')
+    ok($('.tooltip').is('.fade.top.in'), 'has correct classes applied')
 
     $target.bootstrapTooltip('hide')
     equal($('.tooltip').length, 0, 'tooltip removed from dom')
