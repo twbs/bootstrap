@@ -33,11 +33,11 @@
 
     if ($this.parent('li').hasClass('active')) return
 
-    var $previous   = $ul.find('.active:last a')
-    var hideEvent   = $.Event('hide.bs.tab', {
+    var $previous = $ul.find('.active:last a')
+    var hideEvent = $.Event('hide.bs.tab', {
       relatedTarget: $this[0]
     })
-    var showEvent   = $.Event('show.bs.tab', {
+    var showEvent = $.Event('show.bs.tab', {
       relatedTarget: $previous[0]
     })
 
