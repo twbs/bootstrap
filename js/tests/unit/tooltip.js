@@ -432,6 +432,76 @@ $(function () {
     $styles.remove()
   })
 
+  test('should display the tip on top whenever scrollable view port has enough room if the given placement is "auto top"', function ()   {
+    var styles = '<style>'
+        + '#section { height: 200px; overflow: auto; }'
+        + 'br { font-size: 150px; }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    var $container = $('<div id="section"/>').appendTo('#qunit-fixture')
+    var $target = $('<br/><div rel="tooltip" title="tip">Tooltip Item</div>')
+      .appendTo($container)
+      .bootstrapTooltip({
+        placement: 'top auto',
+        viewport: '#section'
+      })
+
+    $target.bootstrapTooltip('show')
+    ok($('.tooltip').is('.fade.top.in'), 'has correct classes applied')
+
+    $target.bootstrapTooltip('hide')
+    equal($('.tooltip').length, 0, 'tooltip removed from dom')
+
+    $styles.remove()
+  })
+
+  test('should display the tip on bottom whenever scrollable view port doesn"t have enough room if the given placement is "auto top"', function ()  {
+    var styles = '<style>'
+        + '#section { height: 200px; overflow: auto; }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    var $container = $('<div id="section"/>').appendTo('#qunit-fixture')
+    var $target = $('<div rel="tooltip" title="tip">Tooltip Item</div>')
+      .appendTo($container)
+      .bootstrapTooltip({
+        placement: 'bottom auto',
+        viewport: '#section'
+      })
+
+    $target.bootstrapTooltip('show')
+    ok($('.tooltip').is('.fade.bottom.in'), 'has correct classes applied')
+
+    $target.bootstrapTooltip('hide')
+    equal($('.tooltip').length, 0, 'tooltip removed from dom')
+
+    $styles.remove()
+  })
+
+  test('should display the tip on bottom whenever scrollable view port has enough room if the given placement is "auto bottom"', function ()    {
+    var styles = '<style>'
+        + '#section { height: 200px; overflow: auto; }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    var $container = $('<div id="section"/>').appendTo('#qunit-fixture')
+    var $target = $('<div rel="tooltip" title="tip">Tooltip Item</div>')
+      .appendTo($container)
+      .bootstrapTooltip({
+        placement: 'top auto',
+        viewport: '#section'
+      })
+
+    $target.bootstrapTooltip('show')
+    ok($('.tooltip').is('.fade.bottom.in'), 'has correct classes applied')
+
+    $target.bootstrapTooltip('hide')
+    equal($('.tooltip').length, 0, 'tooltip removed from dom')
+
+    $styles.remove()
+  })
+
   test('should adjust the tip\'s top position when up against the top of the viewport', function () {
     var styles = '<style>'
         + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
