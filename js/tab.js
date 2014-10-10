@@ -34,8 +34,10 @@
     if ($this.parent('li').hasClass('active')) return
 
     var $previous   = $ul.find('.active:last a')
-    var hideEvent  = $.Event('hide.bs.tab')
-    var showEvent  = $.Event('show.bs.tab', {
+    var hideEvent   = $.Event('hide.bs.tab', {
+      relatedTarget: $this[0]
+    })
+    var showEvent   = $.Event('show.bs.tab', {
       relatedTarget: $previous[0]
     })
 
@@ -49,7 +51,8 @@
     this.activate($this.closest('li'), $ul)
     this.activate($target, $target.parent(), function () {
       $previous.trigger({
-        type: 'hidden.bs.tab'
+        type: 'hidden.bs.tab',
+        relatedTarget: $this[0]
       })
       $this.trigger({
         type: 'shown.bs.tab',

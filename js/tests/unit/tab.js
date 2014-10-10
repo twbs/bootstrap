@@ -111,7 +111,7 @@ $(function () {
 
     $(tabsHTML)
       .find('li:first a')
-        .on('hide.bs.tab', function (e) {
+        .on('hide.bs.tab', function () {
           ok(true, 'hide event fired')
         })
         .bootstrapTab('show')
@@ -121,7 +121,7 @@ $(function () {
 
     $(tabsHTML)
       .find('li:first a')
-        .on('hidden.bs.tab', function (e) {
+        .on('hidden.bs.tab', function () {
           ok(true, 'hidden event fired')
           start()
         })
@@ -146,8 +146,31 @@ $(function () {
           ok(true, 'hide event fired')
           start()
         })
-        .on('hidden.bs.tab', function (e) {
+        .on('hidden.bs.tab', function () {
           ok(false, 'hidden event fired')
+        })
+        .bootstrapTab('show')
+      .end()
+      .find('li:last a')
+        .bootstrapTab('show')
+  })
+
+  test('hide and hidden events contain correct relatedTarget', function () {
+    stop()
+
+    var tabsHTML = '<ul class="tabs">'
+        + '<li><a href="#home">Home</a></li>'
+        + '<li><a href="#profile">Profile</a></li>'
+        + '</ul>'
+
+    $(tabsHTML)
+      .find('li:first a')
+        .on('hide.bs.tab', function (e) {
+          equal(e.relatedTarget.hash, '#profile', 'references correct element as relatedTarget')
+        })
+        .on('hidden.bs.tab', function (e) {
+          equal(e.relatedTarget.hash, '#profile', 'references correct element as relatedTarget')
+          start()
         })
         .bootstrapTab('show')
       .end()
