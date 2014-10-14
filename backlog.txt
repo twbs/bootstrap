@@ -20,7 +20,6 @@
 
 
 
-
 - CSS impresión para página, nota de libro, tramite
 	testear
 	sacar cosas
@@ -34,9 +33,15 @@
 	http://gcba.github.io/guiaux/
 	Agregar alt, rel, role ...
 
+- fade a blanco en carousel?
 
+- la posta es hacer varios templates para que la gente use no de cero
 
-
+- NUEVO BASTRAP más liviano
+	SAAS
+	opacity como .6
+ 	no ser garca y poner los -webkit y -moz [y modernizr?]
+ 	con bordes en panels? dsfsdf ver las tarjetitas ya aplicadas vs buenos aires no border no panel [j3]
 
 
 
@@ -46,11 +51,7 @@
 
 * QUEUE *********************************************************************************************
 
-- NUEVO BASTRAP más liviano
-	SAAS
-	opacity como .6
- 	no ser garca y poner los -webkit y -moz [y modernizr?]
- 	con bordes en panels? dsfsdf ver las tarjetitas ya aplicadas vs buenos aires no border no panel [j3]
+
 
 - contenido excepcional [VER]
 	http://redmine.buenosaires.gob.ar/projects/dgid/wiki/Contenido_excepcional

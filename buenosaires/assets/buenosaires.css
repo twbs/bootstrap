@@ -4,14 +4,11 @@
   padding-top:0;
   padding-bottom:64px;
 }
-@media (max-width: 767px) {
+/*@media (max-width: 767px) {
   .container, .container-fluid {
    margin-left:-15px;
    margin-right:-15px;
   }
-}
-/*.main-container table {
-  margin-bottom:36px;
 }*/
 aside form .btn[type*="submit"] {
   margin-top:24px;
@@ -718,6 +715,11 @@ padding-top: 18px;
   height:36px;
   background-image:url(bac-header.png);
   background-image:url(bac-header.svg), none;
+}
+@media (max-width: 767px) {
+  .bac-header {
+    margin:0 auto;
+  }
 }
 .ba-home .bac-header {
   width: 272px;

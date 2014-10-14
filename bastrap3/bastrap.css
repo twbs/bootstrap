@@ -923,7 +923,7 @@ a.list-group-item.active > .badge {
   min-height:48px;
 }
 .navbar-brand {
-  min-height:40px;
+  height:48px;
 }
 .bac-header,
 .bac-footer,
