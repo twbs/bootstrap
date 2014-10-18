@@ -41,7 +41,7 @@ module.exports = function (grunt) {
     jqueryCheck: 'if (typeof jQuery === \'undefined\') { throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery\') }\n\n',
     jqueryVersionCheck: 'var jqueryVersion = jQuery.fn.jquery\nvar jqueryVersion = jqueryVersion.split(\'.\')\nvar majorVersion = jqueryVersion[0]\nif (majorVersion < 2){\n\u0020\u0020var minorVersion = jqueryVersion[1]\n\u0020\u0020if ( minorVersion < 9 ) {\n\u0020\u0020\u0020\u0020throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery version 1.9 or higher\')\n\u0020\u0020}\n}\n\n',
 
-      // Task configuration.
+    // Task configuration.
     clean: {
       dist: 'dist',
       docs: 'docs/dist'
