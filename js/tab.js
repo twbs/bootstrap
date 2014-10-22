@@ -28,6 +28,7 @@
 
     if (!selector) {
       selector = $this.attr('href')
+      selector = selector && selector.replace(/^#{1}/, '')
       selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
     }
 
@@ -42,7 +43,7 @@
 
     if (e.isDefaultPrevented()) return
 
-    var $target = $(selector)
+    var $target = $('[id="' + selector + '"]')
 
     this.activate($this.closest('li'), $ul)
     this.activate($target, $target.parent(), function () {
