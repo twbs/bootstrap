@@ -191,10 +191,10 @@
         var $container   = this.options.container ? $(this.options.container) : this.$element.parent()
         var containerDim = this.getPosition($container)
 
-        placement = placement == 'bottom' && pos.bottom   + actualHeight  > containerDim.bottom  ? 'top'    :
-                    placement == 'top'    && pos.top      - actualHeight  < containerDim.top     ? 'bottom' :
-                    placement == 'right'  && pos.right    + actualWidth   > containerDim.width   ? 'left'   :
-                    placement == 'left'   && pos.left     - actualWidth   < containerDim.left    ? 'right'  :
+        placement = placement == 'bottom' && pos.bottom + actualHeight > containerDim.bottom ? 'top'    :
+                    placement == 'top'    && pos.top    - actualHeight < containerDim.top    ? 'bottom' :
+                    placement == 'right'  && pos.right  + actualWidth  > containerDim.width  ? 'left'   :
+                    placement == 'left'   && pos.left   - actualWidth  < containerDim.left   ? 'right'  :
                     placement
 
         $tip
