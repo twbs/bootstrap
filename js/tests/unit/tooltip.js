@@ -461,7 +461,7 @@ $(function () {
   test('should display the tip on bottom whenever scrollable viewport doesn\'t have enough room if the given placement is "auto top"', function () {
     var styles = '<style>'
         + '#scrollable-div { height: 200px; overflow: auto; }'
-        + '.tooltip-item { margin: 200px 0 400px; width: 150px; }'
+        + '.tooltip-item { padding: 200px 0 400px; width: 150px; }'
         + '</style>'
     var $styles = $(styles).appendTo('head')
 
@@ -487,13 +487,17 @@ $(function () {
   test('should display the tip on bottom whenever scrollable viewport has enough room if the given placement is "auto bottom"', function () {
     var styles = '<style>'
         + '#scrollable-div { height: 200px; overflow: auto; }'
-        + '.tooltip-item { margin: 200px 0 400px; width: 150px; }'
+        + '.spacer { height: 400px; }'
+        + '.spacer:first-child { height: 200px; }'
+        + '.tooltip-item { width: 150px; }'
         + '</style>'
     var $styles = $(styles).appendTo('head')
 
     var $container = $('<div id="scrollable-div"/>').appendTo('#qunit-fixture')
     var $target = $('<div rel="tooltip" title="tip" class="tooltip-item">Tooltip Item</div>')
       .appendTo($container)
+      .before('<div class="spacer"/>')
+      .after('<div class="spacer"/>')
       .bootstrapTooltip({
         placement: 'bottom auto',
         viewport: '#scrollable-div'
