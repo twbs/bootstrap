@@ -18,7 +18,7 @@
 * TASKS *********************************************************************************************
 
 
-
+- buenosaires dashboard mi ba
 
 - CSS impresión para página, nota de libro, tramite
 	testear
@@ -26,6 +26,9 @@
 	poner logo?
 
 - Crossbrowsing + accesibilidad + sarmiento cargador [usar red de tele]
+	http://yslow.org/
+	https://browserling.com/
+	
 	http://alistapart.com/article/css-audits-taking-stock-of-your-code
 	http://wave.webaim.org/report#/http%3A%2F%2Fgcba.github.io%2FBAstrap%2Fbuenosaires%2Fshow.html
 	http://achecker.ca/checker/index.php
@@ -44,7 +47,7 @@
  	con bordes en panels? dsfsdf ver las tarjetitas ya aplicadas vs buenos aires no border no panel [j3]
 
 
-- buenosaires dashboard mi ba
+
 
 
 
