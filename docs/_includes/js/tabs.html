@@ -115,6 +115,14 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
 {% endhighlight %}
 
   <h3>Events</h3>
+  <p>When showing a new tab, the events fire in the following order:</p>
+  <ol>
+    <li><code>hide.bs.tab</code> (on the current active tab)</li>
+    <li><code>show.bs.tab</code> (on the to-be-shown tab)</li>
+    <li><code>hidden.bs.tab</code> (on the previous active tab, the same one as for the <code>hide.bs.tab</code> event)</li>
+    <li><code>shown.bs.tab</code> (on the newly-active just-shown tab, the same one as for the <code>show.bs.tab</code> event)</li>
+  </ol>
+  <p>If no tab was already active, then the <code>hide.bs.tab</code> and <code>hidden.bs.tab</code> events will not be fired.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
       <thead>
@@ -134,19 +142,19 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
        </tr>
        <tr>
          <td>hide.bs.tab</td>
-         <td>This event fires immediately when a new tab is to be shown and before the <code>show.bs.tab</code> event. Use <code>event.relatedTarget</code> to target the new tab.</td>
+         <td>This event fires when a new tab is to be shown (and thus the previous active tab is to be hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the current active tab and the new soon-to-be-active tab, respectively.</td>
        </tr>
        <tr>
          <td>hidden.bs.tab</td>
-         <td>This event fires after a new tab is shown and before the <code>shown.bs.tab</code> event. Use <code>event.relatedTarget</code> to target the new tab.</td>
+         <td>This event fires after a new tab is shown (and thus the previous active tab is hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the previous active tab and the new active tab, respectively.</td>
        </tr>
       </tbody>
     </table>
   </div><!-- /.table-responsive -->
 {% highlight js %}
 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-  e.target // activated tab
-  e.relatedTarget // previous tab
+  e.target // newly activated tab
+  e.relatedTarget // previous active tab
 })
 {% endhighlight %}
 </div>
