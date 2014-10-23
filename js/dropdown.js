@@ -77,7 +77,7 @@
 
     if (!$items.length) return
 
-    var index = $items.index($items.filter(':focus'))
+    var index = $items.index(e.target)
 
     if (e.which == 38 && index > 0)                 index--                        // up
     if (e.which == 40 && index < $items.length - 1) index++                        // down
