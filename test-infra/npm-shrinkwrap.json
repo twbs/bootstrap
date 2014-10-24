@@ -1294,8 +1294,8 @@
       }
     },
     "grunt-contrib-less": {
-      "version": "0.11.4",
-      "resolved": "https://registry.npmjs.org/grunt-contrib-less/-/grunt-contrib-less-0.11.4.tgz",
+      "version": "0.12.0",
+      "resolved": "https://registry.npmjs.org/grunt-contrib-less/-/grunt-contrib-less-0.12.0.tgz",
       "dependencies": {
         "async": {
           "version": "0.2.10",
@@ -1702,8 +1702,8 @@
                       "resolved": "https://registry.npmjs.org/bl/-/bl-0.9.3.tgz",
                       "dependencies": {
                         "readable-stream": {
-                          "version": "1.0.32",
-                          "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-1.0.32.tgz",
+                          "version": "1.0.33",
+                          "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-1.0.33.tgz",
                           "dependencies": {
                             "core-util-is": {
                               "version": "1.0.1",
@@ -2173,10 +2173,6 @@
                       "version": "1.4.0",
                       "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.0.tgz"
                     },
-                    "vow": {
-                      "version": "0.4.4",
-                      "resolved": "https://registry.npmjs.org/vow/-/vow-0.4.4.tgz"
-                    },
                     "vow-queue": {
                       "version": "0.3.1",
                       "resolved": "https://registry.npmjs.org/vow-queue/-/vow-queue-0.3.1.tgz"
@@ -2472,8 +2468,8 @@
       }
     },
     "grunt-jscs": {
-      "version": "0.8.0",
-      "resolved": "https://registry.npmjs.org/grunt-jscs/-/grunt-jscs-0.8.0.tgz",
+      "version": "0.8.1",
+      "resolved": "https://registry.npmjs.org/grunt-jscs/-/grunt-jscs-0.8.1.tgz",
       "dependencies": {
         "hooker": {
           "version": "0.2.3",
