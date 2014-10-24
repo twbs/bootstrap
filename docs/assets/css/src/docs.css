@@ -638,7 +638,7 @@ body {
   .bs-docs-sidebar.affix {
     position: fixed; /* Undo the static from mobile first approach */
     top: 20px;
-    bottom: 0;
+    bottom: 20px;
     overflow-y: auto;
   }
   .bs-docs-sidebar.affix-bottom {
