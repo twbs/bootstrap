@@ -116,17 +116,10 @@
       hoverClass: 'btn-clipboard-hover'
     })
 
-    // Insert copy to clipboard button before .highlight or .bs-example
+    // Insert copy to clipboard button before .highlight
     $('.highlight').each(function () {
-      var highlight = $(this)
-      var previous = highlight.prev()
       var btnHtml = '<div class="zero-clipboard"><span class="btn-clipboard">Copy</span></div>'
-
-      if (previous.hasClass('bs-example')) {
-        previous.before(btnHtml.replace(/btn-clipboard/, 'btn-clipboard with-example'))
-      } else {
-        highlight.before(btnHtml)
-      }
+      $(this).before(btnHtml)
     })
     var zeroClipboard = new ZeroClipboard($('.btn-clipboard'))
     var htmlBridge = $('#global-zeroclipboard-html-bridge')
