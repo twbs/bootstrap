@@ -192,11 +192,15 @@
 // JavaScript plugin.
 
 .navbar-toggle {
+  @navbar-toggle-padding-vertical: (floor(@navbar-padding-vertical * 2 / 3 - 1));
+  @icon-bar-height: (floor(@navbar-height / 25));
+  @icon-bar-spacing: (ceil(@navbar-height / 12.5));
+
   position: relative;
   float: right;
   margin-right: @navbar-padding-horizontal;
-  padding: 9px 10px;
-  .navbar-vertical-align(34px);
+  padding: @navbar-toggle-padding-vertical (ceil(@navbar-padding-horizontal * 2 / 3));
+  .navbar-vertical-align((ceil((2 * @navbar-toggle-padding-vertical) + 2 + (3 * @icon-bar-height) + (2 * @icon-bar-spacing))));
   background-color: transparent;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid transparent;
@@ -211,12 +215,12 @@
   // Bars
   .icon-bar {
     display: block;
-    width: 22px;
-    height: 2px;
-    border-radius: 1px;
+    width: (ceil(@navbar-padding-horizontal * 4 / 3) + 2);
+    height: @icon-bar-height;
+    border-radius: (ceil(@border-radius-base / 4));
   }
   .icon-bar + .icon-bar {
-    margin-top: 4px;
+    margin-top: @icon-bar-spacing;
   }
 
   @media (min-width: @grid-float-breakpoint) {
