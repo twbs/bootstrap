@@ -207,8 +207,11 @@
       this.applyPlacement(calculatedOffset, placement)
 
       var complete = function () {
+        var oldHoverState = that.hoverState
         that.$element.trigger('shown.bs.' + that.type)
         that.hoverState = null
+
+        if (oldHoverState == 'out') that.leave(that)
       }
 
       $.support.transition && this.$tip.hasClass('fade') ?
