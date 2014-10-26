@@ -3,6 +3,11 @@
   description: Bootstrap 中文文档
   url: http://v3.bootcss.com/
 
+- name: Danish
+  code: da
+  description: Bootstrap på Dansk
+  url: http://getbootstrap.dk/
+
 - name: French
   code: fr
   description: Bootstrap en Français
