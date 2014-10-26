@@ -15,7 +15,6 @@
         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-        <li role="presentation" class="divider"></li>
         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
       </ul>
     </div>
@@ -30,7 +29,6 @@
     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-    <li role="presentation" class="divider"></li>
     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
   </ul>
 </div>
@@ -65,7 +63,6 @@
         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-        <li role="presentation" class="divider"></li>
         <li role="presentation" class="dropdown-header">Dropdown header</li>
         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
       </ul>
@@ -73,10 +70,33 @@
   </div><!-- /example -->
 {% highlight html %}
 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+  ...
   <li role="presentation" class="dropdown-header">Dropdown header</li>
   ...
+</ul>
+{% endhighlight %}
+
+  <h3 id="dropdowns-divider">Divider</h3>
+  <p>Add a divider to separate series of links in a dropdown menu.</p>
+  <div class="bs-example">
+    <div class="dropdown clearfix">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
+        Dropdown
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+        <li role="presentation" class="divider"></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+      </ul>
+    </div>
+  </div><!-- /example -->
+{% highlight html %}
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+  ...
   <li role="presentation" class="divider"></li>
-  <li role="presentation" class="dropdown-header">Dropdown header</li>
   ...
 </ul>
 {% endhighlight %}
