@@ -110,7 +110,7 @@
     })
 
     // Activate animated progress bar
-    $('.bs-docs-activate-aniamted-progressbar').on('click', function () {
+    $('.bs-docs-activate-animated-progressbar').on('click', function () {
       $(this).siblings('.progress').find('.progress-bar-striped').toggleClass('active')
     })
 
