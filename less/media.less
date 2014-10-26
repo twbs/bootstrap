@@ -2,46 +2,44 @@
   // Proper spacing between instances of .media
   margin-top: 15px;
 
-  // Proper spacing of .media-right
-  .media-right,
-  .pull-right {
-    padding-left: 10px;
-  }
-
-  // Proper spacing of .media-left
-  .media-left,
-  .pull-left {
-    padding-right: 10px;
-  }
-
   &:first-child {
     margin-top: 0;
   }
+}
 
-  .media-left,
-  .media-right,
-  .media-body {
-    display: table-cell;
-    vertical-align: top;
-  }
+.media-right,
+.media > .pull-right {
+  padding-left: 10px;
+}
 
-  .media-middle {
-    vertical-align: middle;
-  }
+.media-left,
+.media > .pull-left {
+  padding-right: 10px;
+}
 
-  .media-bottom {
-    vertical-align: bottom;
-  }
+.media-left,
+.media-right,
+.media-body {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.media-middle {
+  vertical-align: middle;
+}
+
+.media-bottom {
+  vertical-align: bottom;
 }
 
 // Reset margins on headings for tighter default spacing
 .media-heading {
-  margin: 0 0 5px 0;
+  margin-top: 0;
+  margin-bottom: 5px;
 }
 
 // Media list variation
-// -------------------------
-
+//
 // Undo default ul/ol styles
 .media-list {
   padding-left: 0;
