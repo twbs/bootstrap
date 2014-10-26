@@ -153,7 +153,7 @@ $(function () {
         + '<li><a id="three-link" href="#three">Three</a></li>'
         + '</ul>'
         + '</nav>'
-    var $section = $(sectionHTML).appendTo('#qunit-fixture')
+    $(sectionHTML).appendTo('#qunit-fixture')
 
     var scrollspyHTML = '<div id="content" style="height: 200px; overflow-y: auto;">'
         + '<div id="spacer" style="height: 100px;"/>'
