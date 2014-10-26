@@ -111,7 +111,7 @@ Tokenizer.prototype._shift = function () {
     return new Section(match[1], false);
   }
   match = SECTION_DOCSTRING.exec(line);
-  if (match !== null && match[1] !== '') {
+  if (match !== null) {
     return new SectionDocstring(match[1]);
   }
   match = VAR_DOCSTRING.exec(line);
