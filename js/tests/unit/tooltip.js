@@ -928,7 +928,7 @@ $(function () {
     $tooltip.trigger('mouseenter')
   })
 
-  test('should hide tip after hide delay even if moused left before end of fade in', function () {
+  test('should hide tip after hide delay even if mouse left before end of fade in', function () {
     stop()
 
     var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip for test"/>')
