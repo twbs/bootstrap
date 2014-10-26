@@ -60,7 +60,7 @@
       .map(function () {
         var $el   = $(this)
         var href  = $el.data('target') || $el.attr('href')
-        var $href = /^#./.test(href) && $(href)
+        var $href = /^#./.test(href) && $(decodeURIComponent(href))
 
         return ($href
           && $href.length
