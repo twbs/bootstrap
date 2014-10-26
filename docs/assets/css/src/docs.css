@@ -1545,3 +1545,11 @@ h1[id] {
   -webkit-box-shadow: 0 0 8px rgba(82,168,236,.6);
           box-shadow: 0 0 8px rgba(82,168,236,.6);
 }
+
+/* Utility class to pause infinite animation loops (#14409) */
+.js-pause {
+  -webkit-animation-play-state: paused;
+      -ms-animation-play-state: paused;
+       -o-animation-play-state: paused;
+          animation-play-state: paused;
+}
