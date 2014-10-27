@@ -22,8 +22,12 @@
         {% endfor %}
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{{ site.expo }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a></li>
-        <li><a href="{{ site.blog }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ site.expo }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ site.blog }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a>
+        </li>
       </ul>
     </nav>
   </div>
