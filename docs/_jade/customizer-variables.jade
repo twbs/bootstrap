@@ -11,7 +11,7 @@ each section in sections
         each variable, index in subsection.variables
           if index > 0 && index % 3 === 0
             div.clearfix
-          div.bs-customizer-input
+          div.col-xs-4
             label(for="input-" + variable.name)= variable.name
             input.form-control(
               id="input-" + variable.name
