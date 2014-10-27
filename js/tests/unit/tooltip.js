@@ -803,16 +803,16 @@ $(function () {
 
     var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
       .appendTo('#qunit-fixture')
-      .bootstrapTooltip({ delay: 15 })
+      .bootstrapTooltip({ delay: 150 })
 
     setTimeout(function () {
-      ok(!$('.tooltip').is('.fade.in'), '10ms: tooltip is not faded in')
-    }, 10)
+      ok(!$('.tooltip').is('.fade.in'), '100ms: tooltip is not faded in')
+    }, 100)
 
     setTimeout(function () {
-      ok($('.tooltip').is('.fade.in'), '20ms: tooltip is faded in')
+      ok($('.tooltip').is('.fade.in'), '200ms: tooltip is faded in')
       start()
-    }, 20)
+    }, 200)
 
     $tooltip.trigger('mouseenter')
   })
@@ -822,17 +822,17 @@ $(function () {
 
     var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
       .appendTo('#qunit-fixture')
-      .bootstrapTooltip({ delay: 15 })
+      .bootstrapTooltip({ delay: 150 })
 
     setTimeout(function () {
-      ok(!$('.tooltip').is('.fade.in'), '10ms: tooltip not faded in')
+      ok(!$('.tooltip').is('.fade.in'), '100ms: tooltip not faded in')
       $tooltip.trigger('mouseout')
-    }, 10)
+    }, 100)
 
     setTimeout(function () {
-      ok(!$('.tooltip').is('.fade.in'), '20ms: tooltip not faded in')
+      ok(!$('.tooltip').is('.fade.in'), '200ms: tooltip not faded in')
       start()
-    }, 20)
+    }, 200)
 
     $tooltip.trigger('mouseenter')
   })
@@ -842,21 +842,21 @@ $(function () {
 
     var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
       .appendTo('#qunit-fixture')
-      .bootstrapTooltip({ delay: { show: 0, hide: 15 }})
+      .bootstrapTooltip({ delay: { show: 0, hide: 150 }})
 
     setTimeout(function () {
       ok($('.tooltip').is('.fade.in'), '1ms: tooltip faded in')
       $tooltip.trigger('mouseout')
 
       setTimeout(function () {
-        ok($('.tooltip').is('.fade.in'), '10ms: tooltip still faded in')
+        ok($('.tooltip').is('.fade.in'), '100ms: tooltip still faded in')
         $tooltip.trigger('mouseenter')
-      }, 10)
+      }, 100)
 
       setTimeout(function () {
-        ok($('.tooltip').is('.fade.in'), '20ms: tooltip still faded in')
+        ok($('.tooltip').is('.fade.in'), '200ms: tooltip still faded in')
         start()
-      }, 20)
+      }, 200)
     }, 0)
 
     $tooltip.trigger('mouseenter')
@@ -867,17 +867,17 @@ $(function () {
 
     var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
       .appendTo('#qunit-fixture')
-      .bootstrapTooltip({ delay: 15 })
+      .bootstrapTooltip({ delay: 150 })
 
     setTimeout(function () {
-      ok(!$('.tooltip').is('.fade.in'), '10ms: tooltip not faded in')
+      ok(!$('.tooltip').is('.fade.in'), '100ms: tooltip not faded in')
       $tooltip.trigger('mouseout')
-    }, 10)
+    }, 100)
 
     setTimeout(function () {
-      ok(!$('.tooltip').is('.fade.in'), '20ms: tooltip not faded in')
+      ok(!$('.tooltip').is('.fade.in'), '200ms: tooltip not faded in')
       start()
-    }, 20)
+    }, 200)
 
     $tooltip.trigger('mouseenter')
   })
@@ -887,27 +887,27 @@ $(function () {
 
     var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
       .appendTo('#qunit-fixture')
-      .bootstrapTooltip({ delay: { show: 15, hide: 0 }})
+      .bootstrapTooltip({ delay: { show: 150, hide: 0 }})
 
     setTimeout(function () {
-      ok(!$('.tooltip').is('.fade.in'), '10ms: tooltip not faded in')
+      ok(!$('.tooltip').is('.fade.in'), '100ms: tooltip not faded in')
       $tooltip.trigger('mouseout')
-    }, 10)
+    }, 100)
 
     setTimeout(function () {
-      ok(!$('.tooltip').is('.fade.in'), '25ms: tooltip not faded in')
+      ok(!$('.tooltip').is('.fade.in'), '250ms: tooltip not faded in')
       start()
-    }, 25)
+    }, 250)
 
     $tooltip.trigger('mouseenter')
   })
 
-  test('should wait 20ms before hiding the tooltip', function () {
+  test('should wait 200ms before hiding the tooltip', function () {
     stop()
 
     var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
       .appendTo('#qunit-fixture')
-      .bootstrapTooltip({ delay: { show: 0, hide: 15 }})
+      .bootstrapTooltip({ delay: { show: 0, hide: 150 }})
 
     setTimeout(function () {
       ok($tooltip.data('bs.tooltip').$tip.is('.fade.in'), '1ms: tooltip faded in')
@@ -915,13 +915,13 @@ $(function () {
       $tooltip.trigger('mouseout')
 
       setTimeout(function () {
-        ok($tooltip.data('bs.tooltip').$tip.is('.fade.in'), '10ms: tooltip still faded in')
-      }, 10)
+        ok($tooltip.data('bs.tooltip').$tip.is('.fade.in'), '100ms: tooltip still faded in')
+      }, 100)
 
       setTimeout(function () {
-        ok(!$tooltip.data('bs.tooltip').$tip.is('.in'), '20ms: tooltip removed')
+        ok(!$tooltip.data('bs.tooltip').$tip.is('.in'), '200ms: tooltip removed')
         start()
-      }, 20)
+      }, 200)
 
     }, 0)
 
