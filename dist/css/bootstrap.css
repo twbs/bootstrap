@@ -654,17 +654,17 @@ pre code {
 }
 @media (min-width: 48em) {
   .container {
-    width: 45rem;
+    max-width: 45rem;
   }
 }
 @media (min-width: 62em) {
   .container {
-    width: 60rem;
+    max-width: 60rem;
   }
 }
 @media (min-width: 75em) {
   .container {
-    width: 72.25rem;
+    max-width: 72.25rem;
   }
 }
 .container-fluid {
