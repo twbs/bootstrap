@@ -1342,13 +1342,6 @@ h1[id] {
   font-weight: normal;
 }
 
-.bs-customizer-input {
-  float: left;
-  width: 33.333333%;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
 /* Downloads */
 .bs-customize-download .btn-outline {
   padding: 20px;
