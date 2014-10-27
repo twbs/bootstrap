@@ -3,19 +3,35 @@ layout: page
 title: New navbar
 ---
 
-Proposal to replace the existing navbar with something simpler and more customizable.
+The navbar is a simple wrapper for positioning branding, navigation, and other elements. It's easily extensible and with the help of our collapse plugin it can easily integrate offscreen content.
 
+### Basics
+
+Here's what you need to know before getting started with the navbar:
+
+- Navbars require a wrapping `.navbar` and either a color scheme class or custom styles.
+- When using multiple components in a navbar, some [alignment classes](#alignment) are required.
+- Navbars and their contents are fluid by default. Use [optional containers](#containers) to limit their horizontal width.
+
+### Branding
+
+Name your company, product, or project with `.navbar-brand`.
+
+{% example html %}
 <div class="navbar navbar-default">
-  <h3 class="navbar-brand pull-left">
+  <h3 class="navbar-brand">
     <a href="#">Navbar</a>
   </h3>
 </div>
+{% endexample %}
 
+### Navigation
+
+Use `.nav-pills` within a navbar for basic navigation.
+
+{% example html %}
 <div class="navbar navbar-default">
-  <h3 class="navbar-brand pull-left">
-    <a href="#">Navbar</a>
-  </h3>
-  <ul class="nav nav-pills pull-left">
+  <ul class="nav nav-pills">
     <li class="nav-item active">
       <a class="nav-link" href="#">Home</a>
     </li>
@@ -30,7 +46,50 @@ Proposal to replace the existing navbar with something simpler and more customiz
     </li>
   </ul>
 </div>
+{% endexample %}
 
+### Inline forms
+
+Add an `.inline-form` within the navbar with nearly any combination of form controls and buttons.
+
+{% example html %}
+<div class="navbar navbar-default">
+  <form class="form-inline">
+    <input class="form-control" type="text" placeholder="Search">
+    <button class="btn btn-primary" type="submit">Search</button>
+  </form>
+</div>
+{% endexample %}
+
+### Containers
+
+Although it's not required, you can wrap a navbar in a `.container` or add one within for basic horizontal control.
+
+{% example html %}
+<div class="navbar navbar-default">
+  <div class="container">
+    <h3 class="navbar-brand">
+      <a href="#">Navbar</a>
+    </h3>
+  </div>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="container">
+  <div class="navbar navbar-default">
+    <h3 class="navbar-brand">
+      <a href="#">Navbar</a>
+    </h3>
+  </div>
+</div>
+{% endexample %}
+
+### Alignment
+
+Use `.pull-left` or `.pull-right` to align multiple elements within the navbar.
+
+{% example html %}
 <div class="navbar navbar-default">
   <h3 class="navbar-brand pull-left">
     <a href="#">Navbar</a>
@@ -58,31 +117,13 @@ Proposal to replace the existing navbar with something simpler and more customiz
     </li>
   </ul>
 </div>
+{% endexample %}
 
-<div class="navbar navbar-default">
-  <h3 class="navbar-brand pull-left">
-    <a href="#">Navbar</a>
-  </h3>
-  <ul class="nav nav-pills pull-left">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Features</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Pricing</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">About</a>
-    </li>
-  </ul>
-  <form class="form-inline pull-right">
-    <input class="form-control" type="text" placeholder="Search">
-    <button class="btn btn-primary" type="submit">Search</button>
-  </form>
-</div>
+### Inverse color scheme
 
+Replace `.navbar-default` with `.navbar-inverse` for a darker background color and white text.
+
+{% example html %}
 <div class="navbar navbar-inverse">
   <h3 class="navbar-brand pull-left">
     <a href="#">Navbar</a>
@@ -106,8 +147,13 @@ Proposal to replace the existing navbar with something simpler and more customiz
     <button class="btn btn-primary" type="submit">Search</button>
   </form>
 </div>
+{% endexample %}
 
+### Collapsible content
 
+Our collapse plugin allows you to use a `<button>` to toggle hidden content.
+
+{% example html %}
 <div class="collapse" id="navbar-header">
   <div class="inverse p-a">
     <h3>Collapsed content</h3>
@@ -119,5 +165,4 @@ Proposal to replace the existing navbar with something simpler and more customiz
     &#9776;
   </button>
 </div>
-
-
+{% endexample %}
