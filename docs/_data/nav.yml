@@ -78,7 +78,6 @@
     - title: Label
     - title: Navs
     - title: Navbar
-    - title: New navbar
     - title: Card
       sections:
         - title: Basic example
