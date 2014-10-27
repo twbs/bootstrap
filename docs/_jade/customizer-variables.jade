@@ -8,7 +8,9 @@ each section in sections
       if subsection.heading
         h3(id=subsection.id)= subsection.heading
       div.row
-        each variable in subsection.variables
+        each variable, index in subsection.variables
+          if index > 0 && index % 3 === 0
+            div.clearfix
           div.bs-customizer-input
             label(for="input-" + variable.name)= variable.name
             input.form-control(
