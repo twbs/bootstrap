@@ -5,6 +5,8 @@ title: Modal
 
 Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.
 
+**Due to how HTML5 defines its semantics, the `autofocus` HTML attribute has no effect in Bootstrap modals.**
+
 <div class="bs-callout bs-callout-warning" id="callout-stacked-modals">
   <h4>Overlapping modals not supported</h4>
   <p>Be sure not to open a modal while another is still visible. Showing more than one modal at a time requires custom code.</p>

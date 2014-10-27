@@ -68,6 +68,7 @@
 
     &.collapse {
       display: block !important;
+      visibility: visible !important;
       height: auto !important;
       padding-bottom: 0; // Override default setting
       overflow: visible !important;
@@ -142,7 +143,6 @@
   right: 0;
   left: 0;
   z-index: @zindex-navbar-fixed;
-  transform: translate3d(0, 0, 0);
 
   // Undo the rounded corners
   @media (min-width: @grid-float-breakpoint) {

@@ -235,7 +235,7 @@ Attaches a tooltip handler to an element collection.
 
 #### .tooltip('show')
 
-Reveals an element's tooltip.
+Reveals an element's tooltip. Tooltips with zero-length titles are never displayed.
 
 {% highlight js %}$('#element').tooltip('show'){% endhighlight %}
 

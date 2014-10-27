@@ -127,7 +127,7 @@ Use the `focus` trigger to dismiss popovers on the next click that the user make
 </div>
 
 {% example html %}
-<a href="#" tabindex="0" class="btn btn-lg btn-danger bs-docs-popover" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
+<a href="#" tabindex="0" class="btn btn-lg btn-danger bs-docs-popover" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
 {% endexample %}
 
 {% highlight js %}
@@ -265,19 +265,19 @@ Initializes popovers for an element collection.
 
 #### .popover('show')
 
-Reveals an elements popover.
+Reveals an element's popover. Popovers whose both title and content are zero-length are never displayed.
 
 {% highlight js %}$('#element').popover('show'){% endhighlight %}
 
 #### .popover('hide')
 
-Hides an elements popover.
+Hides an element's popover.
 
 {% highlight js %}$('#element').popover('hide'){% endhighlight %}
 
 #### .popover('toggle')
 
-Toggles an elements popover.
+Toggles an element's popover.
 
 {% highlight js %}$('#element').popover('toggle'){% endhighlight %}
 

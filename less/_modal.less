@@ -30,10 +30,10 @@
 
   // When fading in the modal, animate it to slide down
   &.fade .modal-dialog {
-    transform: translate3d(0, -25%, 0);
+    transform: translate(0, -25%);
     transform: transition .3s ease-out;
   }
-  &.in .modal-dialog { transform: translate3d(0, 0, 0) }
+  &.in .modal-dialog { .translate(0, 0) }
 }
 .modal-open .modal {
   overflow-x: hidden;
@@ -51,8 +51,9 @@
 .modal-content {
   position: relative;
   background-color: @modal-content-bg;
+  border: 1px solid @modal-content-fallback-border-color; //old browsers fallback (ie8 etc)
   border: 1px solid @modal-content-border-color;
-  .border-radius(@border-radius-lg);
+  border-radius: @border-radius-large;
   .box-shadow(0 3px 9px rgba(0,0,0,.5));
   background-clip: padding-box;
   // Remove focus outline from opened modal
@@ -66,11 +67,10 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: @zindex-modal-background;
   background-color: @modal-backdrop-bg;
   // Fade for backdrop
-  &.fade { opacity: 0; }
-  &.in { opacity: @modal-backdrop-opacity; }
+  &.fade { .opacity(0); }
+  &.in { .opacity(@modal-backdrop-opacity); }
 }
 
 // Modal header
@@ -130,8 +130,8 @@
 }
 
 // Scale up the modal
-.media-sm({
-  // Automatically set modal width for larger viewports
+@media (min-width: @screen-sm-min) {
+  // Automatically set modal's width for larger viewports
   .modal-dialog {
     width: @modal-md;
     margin: 30px auto;
@@ -142,8 +142,8 @@
 
   // Modal sizes
   .modal-sm { width: @modal-sm; }
-});
+}
 
-.media-sm({
+@media (min-width: @screen-md-min) {
   .modal-lg { width: @modal-lg; }
-});
+}

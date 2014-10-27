@@ -46,6 +46,49 @@ Media components can also be nested.
 </div>
 {% endexample %}
 
+### Media alignment
+
+The images or other media can be aligned top, middle, or bottom. The default is top aligned.
+
+{% example html %}
+<div class="media">
+  <a class="media-left" href="#">
+    <img data-src="holder.js/64x64" alt="Generic placeholder image">
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading">Top aligned media</h4>
+    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+    <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+  </div>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="media">
+  <a class="media-left media-middle" href="#">
+    <img data-src="holder.js/64x64" alt="Generic placeholder image">
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading">Middle aligned media</h4>
+    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+    <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+  </div>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="media">
+  <a class="media-left media-bottom" href="#">
+    <img data-src="holder.js/64x64" alt="Generic placeholder image">
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading">Bottom aligned media</h4>
+    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+    <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+  </div>
+</div>
+{% endexample %}
+
 ### Media list
 
 With a bit of extra markup, you can use media inside list (useful for comment threads or articles lists).

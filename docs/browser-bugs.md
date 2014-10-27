@@ -20,6 +20,12 @@ We publicly list browser bugs that are impacting us here, in the hopes of expedi
     <tbody>
       <tr>
         <td>Internet Explorer 11</td>
+        <td>Hovered element still remains in <code>:hover</code> state after scrolling away</td>
+        <td><a href="https://connect.microsoft.com/IE/feedback/details/926665/ie-11-hovering-over-an-element-and-then-scrolling-without-moving-the-mouse-pointer-leaves-the-element-in-hover-state">IE bug #926665</a></td>
+        <td><a href="https://github.com/twbs/bootstrap/issues/14211">#14211</a></td>
+      </tr>
+      <tr>
+        <td>Internet Explorer 11</td>
         <td>When hovering over a <code>&lt;select&gt;</code> menu item, the cursor for the element underneath the menu is displayed</td>
         <td><a href="https://connect.microsoft.com/IE/feedbackdetail/view/963961">IE bug #963961</a></td>
         <td><a href="https://github.com/twbs/bootstrap/issues/14528">#14528</a></td>
@@ -27,20 +33,14 @@ We publicly list browser bugs that are impacting us here, in the hopes of expedi
       <tr>
         <td>Firefox</td>
         <td><code>.table-bordered</code> with an empty <code>&lt;tbody&gt;</code> is missing borders</td>
-        <td><a href="{{ site.bug.firefox }}1023761">Mozilla bug #1023761</a></td>
-        <td><a href="{{ site.bug.github }}13453">#13453</a></td>
-      </tr>
-      <tr>
-        <td>Firefox</td>
-        <td>Unusual default form control styles on Android</td>
-        <td><a href="{{ site.bug.firefox }}900871">Closed Mozilla bug #900871</a>, <a href="{{ site.bug.firefox }}763671">Open Mozilla bug #763671</a></td>
-        <td><a href="{{ site.bug.github }}8702">#8702</a></td>
+        <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1023761">Mozilla bug #1023761</a></td>
+        <td><a href="https://github.com/twbs/bootstrap/issues/13453">#13453</a></td>
       </tr>
       <tr>
         <td>Firefox</td>
         <td><code>max-width: 100%;</code> doesn't work inside tables</td>
-        <td><a href="{{ site.bug.firefox }}975632">Mozilla bug #975632</a></td>
-        <td><a href="{{ site.bug.github }}10690">#10690</a></td>
+        <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=975632">Mozilla bug #975632</a></td>
+        <td><a href="https://github.com/twbs/bootstrap/issues/10690">#10690</a></td>
       </tr>
       <tr>
         <td>Firefox</td>
@@ -50,75 +50,63 @@ We publicly list browser bugs that are impacting us here, in the hopes of expedi
       </tr>
       <tr>
         <td>Firefox</td>
-        <td>If the disabled state of a form control is changed via JavaScript, the normal state doesn't return after refreshing the page.</td>
-        <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=654072">Mozilla bug #654072</a></td>
-        <td><a href="https://github.com/twbs/bootstrap/issues/793">#793</a></td>
-      </tr>
-      <tr>
-        <td>Firefox</td>
         <td>Button elements with <code>width: 100%</code> become cropped in long tables.</td>
         <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1060131">Mozilla bug #1060131</a></td>
         <td><a href="https://github.com/twbs/bootstrap/issues/14320">#14320</a></td>
       </tr>
       <tr>
+        <td>Firefox</td>
+        <td>If the disabled state of a form control is changed via JavaScript, the normal state doesn't return after refreshing the page.</td>
+        <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=654072">Mozilla bug #654072</a></td>
+        <td><a href="https://github.com/twbs/bootstrap/issues/793">#793</a></td>
+      </tr>
+      <tr>
         <td>Chrome</td>
-        <td>Weird button behavior with some number <code>&lt;input&gt;</code>s</td>
-        <td><a href="{{ site.bug.chrome }}337668">Chromium issue #337668</a></td>
-        <td><a href="{{ site.bug.github }}8350">#8350</a>, <a href="https://github.com/necolas/normalize.css/issues/283">Normalize #283</a></td>
+        <td>Clicking above <code>&lt;input type="number"&gt;</code> increment button flashes the decrement button</td>
+        <td><a href="https://code.google.com/p/chromium/issues/detail?id=419108"></a></td>
+        <td>Offshoot of <a href="https://github.com/twbs/bootstrap/issues/8350">#8350</a> &amp; <a href="https://code.google.com/p/chromium/issues/detail?id=337668">Chromium issue #337668</a></td>
       </tr>
       <tr>
         <td>Chrome</td>
         <td><code>display: table;</code> within <code>display: block;</code> forces sibling content to new line</td>
-        <td><a href="{{ site.bug.chrome }}309483">Chromium issue #309483</a></td>
-        <td><a href="{{ site.bug.github }}9950">#9950</a></td>
-      </tr>
-      <tr>
-        <td>Chrome</td>
-        <td>Unwanted vertical lines when printing styled <code>&lt;select&gt;</code> on OS X</td>
-        <td><a href="{{ site.bug.chrome }}282918">Chromium issue #282918</a></td>
-        <td><a href="{{ site.bug.github }}11245">#11245</a></td>
-      </tr>
-      <tr>
-        <td>Chrome</td>
-        <td>inline-block element collapses white-space on Windows</td>
-        <td><a href="{{ site.bug.chrome }}329574">Chromium issue #329574</a></td>
-        <td><a href="{{ site.bug.github }}11885">#11885</a></td>
+        <td><a href="https://code.google.com/p/chromium/issues/detail?id=309483">Chromium issue #309483</a></td>
+        <td><a href="https://github.com/twbs/bootstrap/issues/9950">#9950</a></td>
       </tr>
       <tr>
         <td>Chrome</td>
         <td>Incorrect viewport size used for media queries when printing</td>
-        <td><a href="{{ site.bug.chrome }}273306">Chromium issue #273306</a></td>
-        <td><a href="{{ site.bug.github }}12078">#12078</a></td>
+        <td><a href="https://code.google.com/p/chromium/issues/detail?id=273306">Chromium issue #273306</a></td>
+        <td><a href="https://github.com/twbs/bootstrap/issues/12078">#12078</a></td>
       </tr>
       <tr>
         <td>Chrome &amp; Safari</td>
         <td>OS X scrollbar clipped in <code>select[multiple]</code> with padding</td>
-        <td><a href="{{ site.bug.chrome }}342208">Chromium issue #342208</a>, <a href="{{ site.bug.webkit }}128489">WebKit bug #128489</a></td>
-        <td><a href="{{ site.bug.github }}12536">#12536</a></td>
+        <td><a href="https://code.google.com/p/chromium/issues/detail?id=342208">Chromium issue #342208</a>, <a href="https://bugs.webkit.org/show_bug.cgi?id=128489">WebKit bug #128489</a></td>
+        <td><a href="https://github.com/twbs/bootstrap/issues/12536">#12536</a></td>
       </tr>
       <tr>
         <td>Chrome</td>
         <td><code>display: table-cell; width: 100%;</code> doesn't work correctly on date <code>&lt;input&gt;</code></td>
-        <td><a href="{{ site.bug.chrome }}346051">Chromium issue #346051</a></td>
-        <td><a href="{{ site.bug.github }}12548">#12548</a></td>
+        <td><a href="https://code.google.com/p/chromium/issues/detail?id=346051">Chromium issue #346051</a></td>
+        <td><a href="https://github.com/twbs/bootstrap/issues/12548">#12548</a></td>
       </tr>
       <tr>
         <td>Chrome</td>
         <td><code>&lt;input type="password"&gt;</code> sporadically causes bad widths on floated elements</td>
-        <td><a href="{{ site.bug.chrome }}377346">Chrome issue #377346</a></td>
-        <td><a href="{{ site.bug.github }}13892">#13892</a></td>
+        <td><a href="https://code.google.com/p/chromium/issues/detail?id=377346">Chrome issue #377346</a></td>
+        <td><a href="https://github.com/twbs/bootstrap/issues/13892">#13892</a></td>
       </tr>
       <tr>
         <td>Safari</td>
-        <td>Insufficient CSS percentage precision</td>
-        <td>(No public bug tracker)</td>
-        <td><a href="{{ site.bug.github }}9282">#9282</a></td>
+        <td>Weird button behavior with some number <code>&lt;input&gt;</code>s</td>
+        <td><a href="https://bugs.webkit.org/show_bug.cgi?id=137269">WebKit bug #137269</a></td>
+        <td><a href="https://github.com/twbs/bootstrap/issues/8350">#8350</a>, <a href="https://github.com/necolas/normalize.css/issues/283">Normalize #283</a>, <a href="https://code.google.com/p/chromium/issues/detail?id=337668">Chromium issue #337668</a></td>
       </tr>
       <tr>
         <td>Safari</td>
         <td>Justified nav rendering bug</td>
         <td>(No public bug tracker)</td>
-        <td><a href="{{ site.bug.github }}9774">#9774</a></td>
+        <td><a href="https://github.com/twbs/bootstrap/issues/9774">#9774</a></td>
       </tr>
     </tbody>
   </table>

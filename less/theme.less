@@ -27,6 +27,10 @@
   &.active {
     .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
   }
+
+  .badge {
+    text-shadow: none;
+  }
 }
 
 // Mixin for generating new styles
@@ -116,7 +120,7 @@
 
   .navbar-nav > .open > a,
   .navbar-nav > .active > a {
-    #gradient > .vertical(@start-color: darken(@navbar-default-bg, 5%); @end-color: darken(@navbar-default-bg, 2%));
+    #gradient > .vertical(@start-color: darken(@navbar-default-link-active-bg, 5%); @end-color: darken(@navbar-default-link-active-bg, 2%));
     .box-shadow(inset 0 3px 9px rgba(0,0,0,.075));
   }
 }
@@ -132,7 +136,7 @@
 
   .navbar-nav > .open > a,
   .navbar-nav > .active > a {
-    #gradient > .vertical(@start-color: @navbar-inverse-bg; @end-color: lighten(@navbar-inverse-bg, 2.5%));
+    #gradient > .vertical(@start-color: @navbar-inverse-link-active-bg; @end-color: lighten(@navbar-inverse-link-active-bg, 2.5%));
     .box-shadow(inset 0 3px 9px rgba(0,0,0,.25));
   }
 

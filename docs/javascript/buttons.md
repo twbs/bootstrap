@@ -8,7 +8,7 @@ Do more with buttons. Control button states or create groups of buttons for more
 
 <div class="bs-callout bs-callout-danger">
   <h4>Cross-browser compatibility</h4>
-  <p><a href="https://github.com/twbs/bootstrap/issues/793">Firefox persists form control states (disabledness and checkedness) across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>.</p>
+  <p><a href="https://github.com/twbs/bootstrap/issues/793">Firefox persists form control states (disabledness and checkedness) across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>. See <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=654072">Mozilla bug #654072</a>.</p>
 </div>
 
 ## Stateful
@@ -38,10 +38,15 @@ Add `data-loading-text="Loading..."` to use a loading state on a button.
 Add `data-toggle="button"` to activate toggling on a single button.
 
 {% example html %}
-<button type="button" class="btn btn-primary" data-toggle="button" autocomplete="off">
+<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
   Single toggle
 </button>
 {% endexample %}
+
+<div class="bs-callout bs-callout-warning">
+  <h4>Pre-toggled buttons need <code>.active</code> and <code>aria-pressed="true"</code></h4>
+  <p>For pre-toggled buttons, you must add the <code>.active</code> class and the <code>aria-pressed="true"</code> attribute to the <code>button</code> yourself.</p>
+</div>
 
 ## Checkbox and radio
 

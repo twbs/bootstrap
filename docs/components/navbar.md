@@ -7,6 +7,8 @@ title: Navbar
 
 Navbars are responsive meta components that serve as navigation headers for your application or site. They begin collapsed (and are toggleable) in mobile views and become horizontal as the available viewport width increases.
 
+**Justified navbar nav links are currently not supported.**
+
 <div class="bs-callout bs-callout-warning" id="callout-navbar-overflow">
   <h4>Overflowing content</h4>
   <p>Since Bootstrap doesn't know how much space the content in your navbar needs, you might run into issues with content wrapping into a second row. To resolve this, you can:</p>

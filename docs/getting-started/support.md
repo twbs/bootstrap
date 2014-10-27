@@ -159,7 +159,7 @@ As a heads up, we include this in all of Bootstrap's documentation and examples 
 
 ### Safari percent rounding
 
-As of Safari v7.0.1 for OS X and Safari for iOS v7.0.1, Safari's rendering engine has some trouble with the number of decimal places used in our `.col-*-1` grid classes. So if you have 12 individual grid columns, you'll notice that they come up short compared to other rows of columns. We can't do much here ([see #9282](https://github.com/twbs/bootstrap/issues/9282)) but you do have some options:
+The rendering engine of versions of Safari prior to v7.1 for OS X and Safari for iOS v8.0 had some trouble with the number of decimal places used in our `.col-*-1` grid classes. So if you had 12 individual grid columns, you'd notice that they came up short compared to other rows of columns. Besides upgrading Safari/iOS, you have some options for workarounds:
 
 - Add `.pull-right` to your last grid column to get the hard-right alignment
 - Tweak your percentages manually to get the perfect rounding for Safari (more difficult than the first option)

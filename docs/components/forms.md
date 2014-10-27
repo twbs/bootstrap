@@ -183,7 +183,7 @@ A checkbox or radio with the `disabled` attribute will be styled appropriately. 
 </div>
 {% endexample %}
 
-#### Inline checkboxes and radios
+#### Inline
 
 Use the `.checkbox-inline` or `.radio-inline` classes on a series of checkboxes or radios for controls that appear on the same line.
 
@@ -209,7 +209,24 @@ Use the `.checkbox-inline` or `.radio-inline` classes on a series of checkboxes 
 </label>
 {% endexample %}
 
-#### Selects
+#### Without labels
+
+Should you have no text within the `<label>`, the input is positioned as you'd expect. **Currently only works on non-inline checkboxes and radios.**
+
+{% example html %}
+<div class="checkbox">
+  <label>
+    <input type="checkbox" id="blankCheckbox" value="option1">
+  </label>
+</div>
+<div class="radio">
+  <label>
+    <input type="radio" name="blankRadio" id="blankRadio1" value="option1">
+  </label>
+</div>
+{% endexample %}
+
+### Selects
 
 Use the default option, or add `multiple` to show multiple options at once.
 

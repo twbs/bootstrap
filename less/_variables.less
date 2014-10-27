@@ -34,6 +34,8 @@
 @link-color:                 @brand-primary;
 //** Link hover color set via `darken()` function.
 @link-hover-color:           darken(@link-color, 15%);
+//** Link hover decoration.
+@link-hover-decoration:      underline;
 
 
 //== Global settings
@@ -260,8 +262,7 @@
 @zindex-popover:           1060;
 @zindex-tooltip:           1070;
 @zindex-navbar-fixed:      1030;
-@zindex-modal-background:  1040;
-@zindex-modal:             1050;
+@zindex-modal:             1040;
 
 
 //== Media queries breakpoints
@@ -606,6 +607,8 @@
 @progress-bg:                 #f5f5f5;
 //** Progress bar text color
 @progress-bar-color:          #fff;
+//** Variable for setting rounded corners on progress bar.
+@progress-border-radius:      @border-radius-base;
 
 //** Default progress bar color
 @progress-bar-bg:             @brand-primary;

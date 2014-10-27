@@ -55,6 +55,10 @@ The ScrollSpy plugin is for automatically updating nav targets based on scroll p
 
 ## Usage
 
+### Requires Bootstrap nav
+
+Scrollspy currently requires the use of a [Bootstrap nav component](/components/nav/) for proper highlighting of active links.
+
 ### Requires relative positioning
 
 No matter the implementation method, scrollspy requires the use of `position: relative;` on the element you're spying on. In most cases this is the `<body>`.

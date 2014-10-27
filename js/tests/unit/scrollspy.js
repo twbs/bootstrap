@@ -29,22 +29,6 @@ $(function () {
     strictEqual($scrollspy[0], $el[0], 'collection contains element')
   })
 
-  // Does not work properly ATM, #13500 will fix this
-  test('should switch "active" class on scroll', function () {
-    var topbarHTML = '<div class="topbar">'
-        + '<div class="topbar-inner">'
-        + '<div class="container">'
-        + '<h3><a href="#">Bootstrap</a></h3>'
-        + '<li><a href="#masthead">Overview</a></li>'
-        + '</ul>'
-        + '</div>'
-        + '</div>'
-        + '</div>'
-    var $topbar = $(topbarHTML).bootstrapScrollspy()
-
-    ok($topbar.find('.active', true))
-  })
-
   test('should only switch "active" class on current target', function () {
     stop()
 
@@ -77,9 +61,9 @@ $(function () {
     var $section = $(sectionHTML).appendTo('#qunit-fixture')
 
     var $scrollspy = $section
-        .show()
-        .find('#scrollspy-example')
-        .bootstrapScrollspy({ target: '#ss-target' })
+      .show()
+      .find('#scrollspy-example')
+      .bootstrapScrollspy({ target: '#ss-target' })
 
     $scrollspy.on('scroll.bs.scrollspy', function () {
       ok($section.hasClass('active'), '"active" class still on root node')
@@ -89,7 +73,7 @@ $(function () {
     $scrollspy.scrollTop(350)
   })
 
-  test('middle navigation option correctly selected when large offset is used', function () {
+  test('should correctly select middle navigation option when large offset is used', function () {
     stop()
 
     var sectionHTML = '<div id="header" style="height: 500px;"></div>'
@@ -107,8 +91,8 @@ $(function () {
         + '</div>'
     var $section = $(sectionHTML).appendTo('#qunit-fixture')
     var $scrollspy = $section
-        .show()
-        .filter('#content')
+      .show()
+      .filter('#content')
 
     $scrollspy.bootstrapScrollspy({ target: '#navigation', offset: $scrollspy.position().top })
 
@@ -156,6 +140,47 @@ $(function () {
 
     $.when(testElementIsActiveAfterScroll('#li-1', '#div-1'))
       .then(function () { return testElementIsActiveAfterScroll('#li-2', '#div-2') })
+  })
+
+  test('should clear selection if above the first section', function () {
+    stop()
+
+    var sectionHTML = '<div id="header" style="height: 500px;"></div>'
+        + '<nav id="navigation" class="navbar">'
+        + '<ul class="nav navbar-nav">'
+        + '<li class="active"><a id="one-link" href="#one">One</a></li>'
+        + '<li><a id="two-link" href="#two">Two</a></li>'
+        + '<li><a id="three-link" href="#three">Three</a></li>'
+        + '</ul>'
+        + '</nav>'
+    $(sectionHTML).appendTo('#qunit-fixture')
+
+    var scrollspyHTML = '<div id="content" style="height: 200px; overflow-y: auto;">'
+        + '<div id="spacer" style="height: 100px;"/>'
+        + '<div id="one" style="height: 100px;"/>'
+        + '<div id="two" style="height: 100px;"/>'
+        + '<div id="three" style="height: 100px;"/>'
+        + '<div id="spacer" style="height: 100px;"/>'
+        + '</div>'
+    var $scrollspy = $(scrollspyHTML).appendTo('#qunit-fixture')
+
+    $scrollspy
+      .bootstrapScrollspy({
+        target: '#navigation',
+        offset: $scrollspy.position().top
+      })
+      .one('scroll.bs.scrollspy', function () {
+        strictEqual($('.active').length, 1, '"active" class on only one element present')
+        strictEqual($('.active').has('#two-link').length, 1, '"active" class on second section')
+
+        $scrollspy
+          .one('scroll.bs.scrollspy', function () {
+            strictEqual($('.active').length, 0, 'selection cleared')
+            start()
+          })
+          .scrollTop(0)
+      })
+      .scrollTop(201)
   })
 
 })

@@ -77,7 +77,7 @@
     $('.bs-docs-popover').popover()
 
     // Button state demo
-    $('#loading-example-btn').click(function () {
+    $('#loading-example-btn').on('click', function () {
       var btn = $(this)
       btn.button('loading')
       setTimeout(function () {
@@ -85,6 +85,10 @@
       }, 3000)
     })
 
+    // Activate animated progress bar
+    $('.bs-docs-activate-animated-progressbar').on('click', function () {
+      $(this).siblings('.progress').find('.progress-bar-striped').toggleClass('active')
+    })
 
     // Config ZeroClipboard
     ZeroClipboard.config({
@@ -92,17 +96,10 @@
       hoverClass: 'btn-clipboard-hover'
     })
 
-    // Insert copy to clipboard button before .highlight or .bs-example
+    // Insert copy to clipboard button before .highlight
     $('.highlight').each(function () {
-      var highlight = $(this)
-      var previous = highlight.prev()
       var btnHtml = '<div class="zero-clipboard"><span class="btn-clipboard">Copy</span></div>'
-
-      if (previous.hasClass('bs-example')) {
-        previous.before(btnHtml.replace(/btn-clipboard/, 'btn-clipboard with-example'))
-      } else {
-        highlight.before(btnHtml)
-      }
+      $(this).before(btnHtml)
     })
     var zeroClipboard = new ZeroClipboard($('.btn-clipboard'))
     var htmlBridge = $('#global-zeroclipboard-html-bridge')
