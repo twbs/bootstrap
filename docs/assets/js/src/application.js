@@ -87,7 +87,7 @@
 
     // Activate animated progress bar
     $('.bs-docs-activate-animated-progressbar').on('click', function () {
-      $(this).siblings('.progress').find('.progress-bar-striped').toggleClass('active')
+      $(this).prev('.progress-striped').toggleClass('progress-animated')
     })
 
     // Config ZeroClipboard

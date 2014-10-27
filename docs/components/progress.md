@@ -50,10 +50,19 @@ Uses a gradient to create a striped effect.
 <progress class="progress progress-striped progress-danger" value="100" max="100">100%</progress>
 {% endexample %}
 
-The striped gradient can also be animated. Add <code>.progress-animated</code> to <code>.progress</code> to animate the stripes right to left via CSS3 animations.
+### Animated stripes
+
+The striped gradient can also be animated. Add `.progress-animated` to `.progress` to animate the stripes right to left via CSS3 animations.
 
 **Animated progress bars do not work in IE9, older versions of Firefox, and Opera 12** as they don't support CSS3 animations.
 
-{% example html %}
+<div class="bs-example">
+  <progress class="progress progress-striped" value="25" max="100">25%</progress>
+  <button type="button" class="btn btn-secondary bs-docs-activate-animated-progressbar" data-toggle="button" aria-pressed="false" autocomplete="off">
+    Toggle animation
+  </button>
+</div>
+
+{% highlight html %}
 <progress class="progress progress-striped progress-animated" value="25" max="100">25%</progress>
-{% endexample %}
+{% endhighlight %}

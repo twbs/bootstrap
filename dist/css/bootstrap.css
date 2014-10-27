@@ -4,7 +4,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-/*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -22,6 +22,7 @@ footer,
 header,
 hgroup,
 main,
+menu,
 nav,
 section,
 summary {
@@ -43,7 +44,7 @@ template {
   display: none;
 }
 a {
-  background: transparent;
+  background-color: transparent;
 }
 a:active,
 a:hover {
@@ -187,8 +188,11 @@ td,
 th {
   padding: 0;
 }
+/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
-  * {
+  *,
+  *:before,
+  *:after {
     color: #000 !important;
     text-shadow: none !important;
     background: transparent !important;
@@ -585,10 +589,6 @@ blockquote footer:before {
 }
 .blockquote-reverse footer:after {
   content: '\00A0 \2014';
-}
-blockquote:before,
-blockquote:after {
-  content: "";
 }
 address {
   margin-bottom: 24px;
@@ -1494,6 +1494,7 @@ table th[class*="col-"] {
   background-color: #ebcccc;
 }
 .table-responsive {
+  min-height: .01%;
   overflow-x: auto;
 }
 @media screen and (max-width: 47.9em) {
@@ -2516,9 +2517,11 @@ input[type="button"].btn-block {
 }
 .collapse {
   display: none;
+  visibility: hidden;
 }
 .collapse.in {
   display: block;
+  visibility: visible;
 }
 tr.collapse.in {
   display: table-row;
@@ -2533,6 +2536,15 @@ tbody.collapse.in {
   -webkit-transition: height .35s ease;
        -o-transition: height .35s ease;
           transition: height .35s ease;
+  -webkit-transition-timing-function: ease;
+       -o-transition-timing-function: ease;
+          transition-timing-function: ease;
+  -webkit-transition-duration: .35s;
+       -o-transition-duration: .35s;
+          transition-duration: .35s;
+  -webkit-transition-property: height, visibility;
+       -o-transition-property: height, visibility;
+          transition-property: height, visibility;
 }
 .dropdown {
   position: relative;
@@ -3110,9 +3122,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .tab-content > .tab-pane {
   display: none;
+  visibility: hidden;
 }
 .tab-content > .active {
   display: block;
+  visibility: visible;
 }
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
@@ -3160,6 +3174,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     height: auto !important;
     padding-bottom: 0;
     overflow: visible !important;
+    visibility: visible !important;
   }
   .navbar-collapse.in {
     overflow-y: visible;
@@ -3212,8 +3227,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   right: 0;
   left: 0;
   z-index: 1030;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
 }
 @media (min-width: 48em) {
   .navbar-fixed-top,
@@ -4228,40 +4241,10 @@ a.list-group-item.active > .badge,
   border-top-left-radius: .25rem;
   border-bottom-left-radius: .25rem;
 }
-.progress[value="0"]::-webkit-progress-value {
-  min-width: 2rem;
-  color: #818a91;
-  background-color: transparent;
-  background-image: none;
-}
 .progress[value="100"]::-webkit-progress-value {
   border-top-right-radius: .25rem;
   border-bottom-right-radius: .25rem;
 }
-/* Commented out for now because linter.
-@-moz-document url-prefix() {
-  .progress[value] {
-    background-color: #eee;
-    .border-radius(@border-radius-base);
-    .box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
-  }
-  .progress[value]::-moz-progress-bar {
-    background-color: #0074d9;
-    border-top-left-radius: @border-radius-base;
-    border-bottom-left-radius: @border-radius-base;
-  }
-  .progress[value="0"]::-moz-progress-bar {
-    color: @gray-light;
-    min-width: 2rem;
-    background-color: transparent;
-    background-image: none;
-  }
-  .progress[value="100"]::-moz-progress-bar {
-    border-top-right-radius: @border-radius-base;
-    border-bottom-right-radius: @border-radius-base;
-  }
-}
-*/
 @media screen and (min-width:0\0) {
   .progress {
     background-color: #eee;
@@ -4368,29 +4351,35 @@ a.list-group-item.active > .badge,
     background-color: #d9534f;
   }
 }
-.media,
-.media-body {
-  overflow: hidden;
-  zoom: 1;
-}
-.media,
-.media .media {
+.media {
   margin-top: 15px;
 }
 .media:first-child {
   margin-top: 0;
 }
-.media-object {
-  display: block;
+.media-right,
+.media > .pull-right {
+  padding-left: 10px;
+}
+.media-left,
+.media > .pull-left {
+  padding-right: 10px;
+}
+.media-left,
+.media-right,
+.media-body {
+  display: table-cell;
+  vertical-align: top;
+}
+.media-middle {
+  vertical-align: middle;
+}
+.media-bottom {
+  vertical-align: bottom;
 }
 .media-heading {
-  margin: 0 0 5px;
-}
-.media > .pull-left {
-  margin-right: 10px;
-}
-.media > .pull-right {
-  margin-left: 10px;
+  margin-top: 0;
+  margin-bottom: 5px;
 }
 .media-list {
   padding-left: 0;
@@ -4582,7 +4571,8 @@ a.list-group-item-danger.active:focus {
 .embed-responsive .embed-responsive-item,
 .embed-responsive iframe,
 .embed-responsive embed,
-.embed-responsive object {
+.embed-responsive object,
+.embed-responsive video {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -4629,23 +4619,27 @@ button.close {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1050;
+  z-index: 1040;
   display: none;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
   outline: 0;
 }
 .modal.fade .modal-dialog {
-  -webkit-transform: translate3d(0, -25%, 0);
+  -webkit-transform: translate(0, -25%);
   -webkit-transform: transition .3s ease-out;
+      -ms-transform: translate(0, -25%);
       -ms-transform: transition .3s ease-out;
+       -o-transform: translate(0, -25%);
        -o-transform: transition .3s ease-out;
-          transform: translate3d(0, -25%, 0);
+          transform: translate(0, -25%);
           transform: transition .3s ease-out;
 }
 .modal.in .modal-dialog {
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+       -o-transform: translate(0, 0);
+          transform: translate(0, 0);
 }
 .modal-open .modal {
   overflow-x: hidden;
@@ -4673,7 +4667,6 @@ button.close {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1040;
   background-color: #000;
 }
 .modal-backdrop.fade {
@@ -4733,7 +4726,7 @@ button.close {
     width: 300px;
   }
 }
-@media (min-width: 48em) {
+@media (min-width: 62em) {
   .modal-lg {
     width: 900px;
   }
