@@ -101,7 +101,7 @@
     $('.bs-docs-popover').popover()
 
     // Button state demo
-    $('#loading-example-btn').click(function () {
+    $('#loading-example-btn').on('click', function () {
       var btn = $(this)
       btn.button('loading')
       setTimeout(function () {
@@ -109,6 +109,10 @@
       }, 3000)
     })
 
+    // Activate animated progress bar
+    $('.bs-docs-activate-animated-progressbar').on('click', function () {
+      $(this).siblings('.progress').find('.progress-bar-striped').toggleClass('active')
+    })
 
     // Config ZeroClipboard
     ZeroClipboard.config({

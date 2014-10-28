@@ -35,9 +35,9 @@ Mini-language:
 var CUSTOMIZABLE_HEADING = /^[/]{2}={2}(.*)$/;
 var UNCUSTOMIZABLE_HEADING = /^[/]{2}-{2}(.*)$/;
 var SUBSECTION_HEADING = /^[/]{2}={3}(.*)$/;
-var SECTION_DOCSTRING = /^[/]{2}#{2}(.*)$/;
-var VAR_ASSIGNMENT = /^(@[a-zA-Z0-9_-]+):[ ]*([^ ;][^;]+);[ ]*$/;
-var VAR_DOCSTRING = /^[/]{2}[*]{2}(.*)$/;
+var SECTION_DOCSTRING = /^[/]{2}#{2}(.+)$/;
+var VAR_ASSIGNMENT = /^(@[a-zA-Z0-9_-]+):[ ]*([^ ;][^;]*);[ ]*$/;
+var VAR_DOCSTRING = /^[/]{2}[*]{2}(.+)$/;
 
 function Section(heading, customizable) {
   this.heading = heading.trim();
