@@ -1702,8 +1702,8 @@
                       "resolved": "https://registry.npmjs.org/bl/-/bl-0.9.3.tgz",
                       "dependencies": {
                         "readable-stream": {
-                          "version": "1.0.33",
-                          "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-1.0.33.tgz",
+                          "version": "1.0.32",
+                          "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-1.0.32.tgz",
                           "dependencies": {
                             "core-util-is": {
                               "version": "1.0.1",
@@ -2173,6 +2173,10 @@
                       "version": "1.4.0",
                       "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.0.tgz"
                     },
+                    "vow": {
+                      "version": "0.4.4",
+                      "resolved": "https://registry.npmjs.org/vow/-/vow-0.4.4.tgz"
+                    },
                     "vow-queue": {
                       "version": "0.3.1",
                       "resolved": "https://registry.npmjs.org/vow-queue/-/vow-queue-0.3.1.tgz"
@@ -2559,13 +2563,7 @@
                 },
                 "vow-queue": {
                   "version": "0.4.1",
-                  "resolved": "https://registry.npmjs.org/vow-queue/-/vow-queue-0.4.1.tgz",
-                  "dependencies": {
-                    "vow": {
-                      "version": "0.4.6",
-                      "resolved": "https://registry.npmjs.org/vow/-/vow-0.4.6.tgz"
-                    }
-                  }
+                  "resolved": "https://registry.npmjs.org/vow-queue/-/vow-queue-0.4.1.tgz"
                 }
               }
             },
@@ -3176,22 +3174,6 @@
                   "resolved": "https://registry.npmjs.org/sigmund/-/sigmund-1.0.0.tgz"
                 }
               }
-            }
-          }
-        }
-      }
-    },
-    "markdown": {
-      "version": "0.5.0",
-      "resolved": "https://registry.npmjs.org/markdown/-/markdown-0.5.0.tgz",
-      "dependencies": {
-        "nopt": {
-          "version": "2.1.2",
-          "resolved": "https://registry.npmjs.org/nopt/-/nopt-2.1.2.tgz",
-          "dependencies": {
-            "abbrev": {
-              "version": "1.0.5",
-              "resolved": "https://registry.npmjs.org/abbrev/-/abbrev-1.0.5.tgz"
             }
           }
         }
@@ -3860,6 +3842,30 @@
               "resolved": "https://registry.npmjs.org/js-string-escape/-/js-string-escape-1.0.0.tgz"
             }
           }
+        }
+      }
+    },
+    "remarkable": {
+      "version": "1.2.1",
+      "resolved": "https://registry.npmjs.org/remarkable/-/remarkable-1.2.1.tgz",
+      "dependencies": {
+        "argparse": {
+          "version": "0.1.15",
+          "resolved": "https://registry.npmjs.org/argparse/-/argparse-0.1.15.tgz",
+          "dependencies": {
+            "underscore": {
+              "version": "1.4.4",
+              "resolved": "https://registry.npmjs.org/underscore/-/underscore-1.4.4.tgz"
+            },
+            "underscore.string": {
+              "version": "2.3.3",
+              "resolved": "https://registry.npmjs.org/underscore.string/-/underscore.string-2.3.3.tgz"
+            }
+          }
+        },
+        "autolinker": {
+          "version": "0.12.3",
+          "resolved": "https://registry.npmjs.org/autolinker/-/autolinker-0.12.3.tgz"
         }
       }
     },
