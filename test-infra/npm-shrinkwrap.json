@@ -129,6 +129,10 @@
           "version": "0.1.1",
           "resolved": "https://registry.npmjs.org/grunt-legacy-log/-/grunt-legacy-log-0.1.1.tgz",
           "dependencies": {
+            "colors": {
+              "version": "0.6.2",
+              "resolved": "https://registry.npmjs.org/colors/-/colors-0.6.2.tgz"
+            },
             "lodash": {
               "version": "2.4.1",
               "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.1.tgz"
@@ -141,7 +145,21 @@
         },
         "grunt-legacy-util": {
           "version": "0.2.0",
-          "resolved": "https://registry.npmjs.org/grunt-legacy-util/-/grunt-legacy-util-0.2.0.tgz"
+          "resolved": "https://registry.npmjs.org/grunt-legacy-util/-/grunt-legacy-util-0.2.0.tgz",
+          "dependencies": {
+            "async": {
+              "version": "0.1.22",
+              "resolved": "https://registry.npmjs.org/async/-/async-0.1.22.tgz"
+            },
+            "lodash": {
+              "version": "0.9.2",
+              "resolved": "https://registry.npmjs.org/lodash/-/lodash-0.9.2.tgz"
+            },
+            "underscore.string": {
+              "version": "2.2.1",
+              "resolved": "https://registry.npmjs.org/underscore.string/-/underscore.string-2.2.1.tgz"
+            }
+          }
         },
         "hooker": {
           "version": "0.2.3",
@@ -2133,6 +2151,10 @@
                     }
                   }
                 },
+                "vow": {
+                  "version": "0.4.4",
+                  "resolved": "https://registry.npmjs.org/vow/-/vow-0.4.4.tgz"
+                },
                 "vow-fs": {
                   "version": "0.3.2",
                   "resolved": "https://registry.npmjs.org/vow-fs/-/vow-fs-0.3.2.tgz",
@@ -2150,6 +2172,10 @@
                     "node-uuid": {
                       "version": "1.4.0",
                       "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.0.tgz"
+                    },
+                    "vow": {
+                      "version": "0.4.4",
+                      "resolved": "https://registry.npmjs.org/vow/-/vow-0.4.4.tgz"
                     },
                     "vow-queue": {
                       "version": "0.3.1",
@@ -2537,7 +2563,13 @@
                 },
                 "vow-queue": {
                   "version": "0.4.1",
-                  "resolved": "https://registry.npmjs.org/vow-queue/-/vow-queue-0.4.1.tgz"
+                  "resolved": "https://registry.npmjs.org/vow-queue/-/vow-queue-0.4.1.tgz",
+                  "dependencies": {
+                    "vow": {
+                      "version": "0.4.6",
+                      "resolved": "https://registry.npmjs.org/vow/-/vow-0.4.6.tgz"
+                    }
+                  }
                 }
               }
             },
@@ -3849,6 +3881,20 @@
               "version": "3.0.1",
               "resolved": "https://registry.npmjs.org/js-yaml/-/js-yaml-3.0.1.tgz",
               "dependencies": {
+                "argparse": {
+                  "version": "0.1.15",
+                  "resolved": "https://registry.npmjs.org/argparse/-/argparse-0.1.15.tgz",
+                  "dependencies": {
+                    "underscore": {
+                      "version": "1.4.4",
+                      "resolved": "https://registry.npmjs.org/underscore/-/underscore-1.4.4.tgz"
+                    },
+                    "underscore.string": {
+                      "version": "2.3.3",
+                      "resolved": "https://registry.npmjs.org/underscore.string/-/underscore.string-2.3.3.tgz"
+                    }
+                  }
+                },
                 "esprima": {
                   "version": "1.0.4",
                   "resolved": "https://registry.npmjs.org/esprima/-/esprima-1.0.4.tgz"
