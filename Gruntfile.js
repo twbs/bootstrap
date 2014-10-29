@@ -138,6 +138,7 @@ module.exports = function (grunt) {
         dest: 'dist/js/<%= pkg.name %>.min.js'
       },
       customize: {
+        // NOTE: This src list is duplicated in footer.html; if making changes here, be sure to update the other copy too.
         src: [
           'docs/assets/js/vendor/less.min.js',
           'docs/assets/js/vendor/jszip.min.js',

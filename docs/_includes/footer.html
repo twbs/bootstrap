@@ -46,7 +46,17 @@
 <script src="../assets/js/src/application.js"></script>
 {% endif %}
 {% if page.slug == "customize" %}
+{% if site.github %}
 <script src="../assets/js/customize.min.js"></script>
+{% else %}
+<script src="../assets/js/vendor/less.min.js"></script>
+<script src="../assets/js/vendor/jszip.min.js"></script>
+<script src="../assets/js/vendor/uglify.min.js"></script>
+<script src="../assets/js/vendor/Blob.js"></script>
+<script src="../assets/js/vendor/FileSaver.js"></script>
+<script src="../assets/js/raw-files.min.js"></script>
+<script src="../assets/js/src/customizer.js"></script>
+{% endif %}
 {% endif %}
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
