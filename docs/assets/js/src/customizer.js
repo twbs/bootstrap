@@ -466,7 +466,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
       generateZip(generateCSS(preamble), generateJS(preamble), generateFonts(), configJson, function (blob) {
         $compileBtn.removeAttr('disabled')
-        saveAs(blob, 'bootstrap.zip')
+        setTimeout(function () { saveAs(blob, 'bootstrap.zip') }, 0)
       })
     })
   });
