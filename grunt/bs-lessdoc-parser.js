@@ -6,11 +6,13 @@
  */
 'use strict';
 
-var markdown = require('markdown').markdown;
+var Remarkable = require('remarkable');
 
 function markdown2html(markdownString) {
+  var md = new Remarkable();
+
   // the slice removes the <p>...</p> wrapper output by Markdown processor
-  return markdown.toHTML(markdownString.trim()).slice(3, -4);
+  return md.render(markdownString.trim()).slice(3, -5);
 }
 
 

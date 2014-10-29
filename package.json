@@ -56,8 +56,8 @@
     "grunt-saucelabs": "~8.3.2",
     "grunt-sed": "~0.1.1",
     "load-grunt-tasks": "~1.0.0",
-    "markdown": "~0.5.0",
     "npm-shrinkwrap": "~4.0.0",
+    "remarkable": "^1.2.0",
     "time-grunt": "~1.0.0"
   },
   "engines": {
