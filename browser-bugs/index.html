@@ -16,24 +16,27 @@
 </title>
 
 <!-- Bootstrap core CSS -->
-<link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="../dist/css/bootstrap.css" rel="stylesheet">
+
 
 
 <!-- Documentation extras -->
-<link href="../assets/css/docs.min.css" rel="stylesheet">
+
+<link href="../assets/css/src/docs.css" rel="stylesheet">
+<link href="../assets/css/src/pygments-manni.css" rel="stylesheet">
+
 <!--[if lt IE 9]><script src="../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
 <script src="../assets/js/ie-emulation-modes-warning.js"></script>
 
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
 <!-- Favicons -->
-<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="icon" href="/favicon.ico">
 
 <script>
@@ -205,14 +208,19 @@
         </tr>
         <tr>
           <td>Safari</td>
-          <td>Justified nav rendering bug</td>
-          <td>(No public bug tracker)</td>
+          <td><code>display: table-cell;</code> within media query renders incorrectly when resizing the window</td>
+          <td><a href="https://bugs.webkit.org/show_bug.cgi?id=138167">WebKit bug #138167</a></td>
           <td><a href="https://github.com/twbs/bootstrap/issues/9774">#9774</a></td>
+        </tr>
+        <tr>
+          <td>Safari</td>
+          <td><code>transform: translate3d(0, 0, 0);</code> iOS bug</td>
+          <td><a href="https://bugs.webkit.org/show_bug.cgi?id=138162">WebKit bug #138162</a>, <a href="http://openradar.appspot.com/18804973">Apple Safari Radar #18804973</a></td>
+          <td><a href="https://github.com/twbs/bootstrap/pull/14603">#14603</a></td>
         </tr>
       </tbody>
     </table>
   </div>
-
 </div>
 
         </div>
@@ -252,11 +260,11 @@
 </div>
 
 
-    <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+    <p>Designed and built with all the love in the world by <a href="https://twitter.com/mdo" target="_blank">@mdo</a> and <a href="https://twitter.com/fat" target="_blank">@fat</a>.</p>
     <p>Maintained by the <a href="https://github.com/orgs/twbs/people">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
     <p>Code licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="bs-docs-footer-links muted">
-      <li>Currently v3.2.0</li>
+      <li>Currently v3.3.0</li>
       <li>&middot;</li>
       <li><a href="https://github.com/twbs/bootstrap">GitHub</a></li>
       <li>&middot;</li>
@@ -281,9 +289,21 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="../dist/js/bootstrap.min.js"></script>
-<script src="../assets/js/docs.min.js"></script>
 
+
+  <script src="../dist/js/bootstrap.js"></script>
+
+
+
+  <script src="../assets/js/vendor/holder.js"></script>
+  <script src="../assets/js/vendor/ZeroClipboard.min.js"></script>
+  <script src="../assets/js/src/application.js"></script>
+
+
+
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
 
 
 <script>
