@@ -8,26 +8,26 @@
   <div class="bs-example">
     <nav>
       <ul class="pagination">
-        <li><a href="#">&laquo;</a></li>
+        <li><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
         <li><a href="#">1</a></li>
         <li><a href="#">2</a></li>
         <li><a href="#">3</a></li>
         <li><a href="#">4</a></li>
         <li><a href="#">5</a></li>
-        <li><a href="#">&raquo;</a></li>
+        <li><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
       </ul>
     </nav>
   </div>
 {% highlight html %}
 <nav>
   <ul class="pagination">
-    <li><a href="#">&laquo;</a></li>
+    <li><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
     <li><a href="#">1</a></li>
     <li><a href="#">2</a></li>
     <li><a href="#">3</a></li>
     <li><a href="#">4</a></li>
     <li><a href="#">5</a></li>
-    <li><a href="#">&raquo;</a></li>
+    <li><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
   </ul>
 </nav>
 {% endhighlight %}
@@ -37,30 +37,30 @@
   <div class="bs-example">
     <nav>
       <ul class="pagination">
-        <li class="disabled"><a href="#">&laquo;</a></li>
+        <li class="disabled"><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
         <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
         <li><a href="#">2</a></li>
         <li><a href="#">3</a></li>
         <li><a href="#">4</a></li>
         <li><a href="#">5</a></li>
-        <li><a href="#">&raquo;</a></li>
+        <li><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
      </ul>
    </nav>
   </div>
 {% highlight html %}
 <nav>
   <ul class="pagination">
-    <li class="disabled"><a href="#">&laquo;</a></li>
+    <li class="disabled"><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
     <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
     ...
   </ul>
 </nav>
 {% endhighlight %}
-  <p>You can optionally swap out active or disabled anchors for <code>&lt;span&gt;</code> to remove click functionality while retaining intended styles.</p>
+  <p>You can optionally swap out active or disabled anchors for <code>&lt;span&gt;</code>, or omit the anchor in the case of the previous/next arrows, to remove click functionality while retaining intended styles.</p>
 {% highlight html %}
 <nav>
   <ul class="pagination">
-    <li class="disabled"><span>&laquo;</span></li>
+    <li class="disabled"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></li>
     <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
     ...
   </ul>
@@ -73,35 +73,35 @@
   <div class="bs-example">
     <nav>
       <ul class="pagination pagination-lg">
-        <li><a href="#">&laquo;</a></li>
+        <li><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
         <li><a href="#">1</a></li>
         <li><a href="#">2</a></li>
         <li><a href="#">3</a></li>
         <li><a href="#">4</a></li>
         <li><a href="#">5</a></li>
-        <li><a href="#">&raquo;</a></li>
+        <li><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
       </ul>
     </nav>
     <nav>
       <ul class="pagination">
-        <li><a href="#">&laquo;</a></li>
+        <li><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
         <li><a href="#">1</a></li>
         <li><a href="#">2</a></li>
         <li><a href="#">3</a></li>
         <li><a href="#">4</a></li>
         <li><a href="#">5</a></li>
-        <li><a href="#">&raquo;</a></li>
+        <li><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
       </ul>
     </nav>
     <nav>
       <ul class="pagination pagination-sm">
-        <li><a href="#">&laquo;</a></li>
+        <li><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
         <li><a href="#">1</a></li>
         <li><a href="#">2</a></li>
         <li><a href="#">3</a></li>
         <li><a href="#">4</a></li>
         <li><a href="#">5</a></li>
-        <li><a href="#">&raquo;</a></li>
+        <li><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
       </ul>
     </nav>
   </div>
@@ -139,16 +139,16 @@
   <div class="bs-example">
     <nav>
       <ul class="pager">
-        <li class="previous"><a href="#">&larr; Older</a></li>
-        <li class="next"><a href="#">Newer &rarr;</a></li>
+        <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+        <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
       </ul>
     </nav>
   </div>
 {% highlight html %}
 <nav>
   <ul class="pager">
-    <li class="previous"><a href="#">&larr; Older</a></li>
-    <li class="next"><a href="#">Newer &rarr;</a></li>
+    <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+    <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
   </ul>
 </nav>
 {% endhighlight %}
@@ -159,16 +159,16 @@
   <div class="bs-example">
     <nav>
       <ul class="pager">
-        <li class="previous disabled"><a href="#">&larr; Older</a></li>
-        <li class="next"><a href="#">Newer &rarr;</a></li>
+        <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+        <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
       </ul>
     </nav>
   </div>
 {% highlight html %}
 <nav>
   <ul class="pager">
-    <li class="previous disabled"><a href="#">&larr; Older</a></li>
-    <li class="next"><a href="#">Newer &rarr;</a></li>
+    <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+    <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
   </ul>
 </nav>
 {% endhighlight %}

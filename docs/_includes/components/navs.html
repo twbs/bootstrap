@@ -3,38 +3,45 @@
 
   <p class="lead">Navs available in Bootstrap have shared markup, starting with the base <code>.nav</code> class, as well as shared states. Swap modifier classes to switch between each style.</p>
 
+  <div class="bs-callout bs-callout-info">
+    <h4>Using navs for tab panels requires JavaScript tabs plugin</h4>
+    <p>For tabs with tabbable areas, you must use the <a href="../javascript/#tabs">tabs JavaScript plugin</a>. The markup will also require additional <code>role</code> and ARIA attributes – see the plugin's <a href="../javascript/#tabs-usage">example markup</a> for further details.</p>
+  </div>
+
+  <div class="bs-callout bs-callout-warning">
+    <h4>Make navs used as navigation accessible</h4>
+    <p>If you are using navs to provide a navigation bar, be sure to add a <code>role="navigation"</code> to the most logical parent container of the <code>&lt;ul&gt;</code>, or wrap a <code>&lt;nav&gt;</code> element around the whole navigation. Do not add the role to the <code>&lt;ul&gt;</code> itself, as this would prevent it from being announced as an actual list by assistive technologies.</p>
+  </div>
+
   <h2 id="nav-tabs">Tabs</h2>
   <p>Note the <code>.nav-tabs</code> class requires the <code>.nav</code> base class.</p>
   <div class="bs-example">
-    <ul class="nav nav-tabs" role="tablist">
+    <ul class="nav nav-tabs">
       <li role="presentation" class="active"><a href="#">Home</a></li>
       <li role="presentation"><a href="#">Profile</a></li>
       <li role="presentation"><a href="#">Messages</a></li>
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav nav-tabs" role="tablist">
+<ul class="nav nav-tabs">
   <li role="presentation" class="active"><a href="#">Home</a></li>
   <li role="presentation"><a href="#">Profile</a></li>
   <li role="presentation"><a href="#">Messages</a></li>
 </ul>
 {% endhighlight %}
-  <div class="bs-callout bs-callout-info">
-    <h4>Requires JavaScript tabs plugin</h4>
-    <p>For tabs with tabbable areas, you must use the <a href="../javascript/#tabs">tabs JavaScript plugin</a>.</p>
-  </div>
+
 
   <h2 id="nav-pills">Pills</h2>
   <p>Take that same HTML, but use <code>.nav-pills</code> instead:</p>
   <div class="bs-example">
-    <ul class="nav nav-pills" role="tablist">
+    <ul class="nav nav-pills">
       <li role="presentation" class="active"><a href="#">Home</a></li>
       <li role="presentation"><a href="#">Profile</a></li>
       <li role="presentation"><a href="#">Messages</a></li>
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav nav-pills" role="tablist">
+<ul class="nav nav-pills">
   <li role="presentation" class="active"><a href="#">Home</a></li>
   <li role="presentation"><a href="#">Profile</a></li>
   <li role="presentation"><a href="#">Messages</a></li>
@@ -42,14 +49,14 @@
 {% endhighlight %}
   <p>Pills are also vertically stackable. Just add <code>.nav-stacked</code>.</p>
   <div class="bs-example">
-    <ul class="nav nav-pills nav-stacked" role="tablist" style="max-width: 300px;">
+    <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
       <li role="presentation" class="active"><a href="#">Home</a></li>
       <li role="presentation"><a href="#">Profile</a></li>
       <li role="presentation"><a href="#">Messages</a></li>
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav nav-pills nav-stacked" role="tablist">
+<ul class="nav nav-pills nav-stacked">
   ...
 </ul>
 {% endhighlight %}
@@ -63,23 +70,23 @@
     <p>As of v8.0, Safari exhibits a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing. This bug is also shown in the <a href="../examples/justified-nav/">justified nav example</a>.</p>
   </div>
   <div class="bs-example">
-    <ul class="nav nav-tabs nav-justified" role="tablist">
+    <ul class="nav nav-tabs nav-justified">
       <li role="presentation" class="active"><a href="#">Home</a></li>
       <li role="presentation"><a href="#">Profile</a></li>
       <li role="presentation"><a href="#">Messages</a></li>
     </ul>
     <br>
-    <ul class="nav nav-pills nav-justified" role="tablist">
+    <ul class="nav nav-pills nav-justified">
       <li role="presentation" class="active"><a href="#">Home</a></li>
       <li role="presentation"><a href="#">Profile</a></li>
       <li role="presentation"><a href="#">Messages</a></li>
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav nav-tabs nav-justified" role="tablist">
+<ul class="nav nav-tabs nav-justified">
   ...
 </ul>
-<ul class="nav nav-pills nav-justified" role="tablist">
+<ul class="nav nav-pills nav-justified">
   ...
 </ul>
 {% endhighlight %}
@@ -94,14 +101,14 @@
   </div>
 
   <div class="bs-example">
-    <ul class="nav nav-pills" role="tablist">
+    <ul class="nav nav-pills">
       <li role="presentation"><a href="#">Clickable link</a></li>
       <li role="presentation"><a href="#">Clickable link</a></li>
       <li role="presentation" class="disabled"><a href="#">Disabled link</a></li>
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav nav-pills" role="tablist">
+<ul class="nav nav-pills">
   ...
   <li role="presentation" class="disabled"><a href="#">Disabled link</a></li>
   ...
@@ -114,11 +121,11 @@
 
   <h3>Tabs with dropdowns</h3>
   <div class="bs-example">
-    <ul class="nav nav-tabs" role="tablist">
+    <ul class="nav nav-tabs">
       <li role="presentation" class="active"><a href="#">Home</a></li>
       <li role="presentation"><a href="#">Help</a></li>
       <li role="presentation" class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
           Dropdown <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" role="menu">
@@ -132,10 +139,10 @@
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav nav-tabs" role="tablist">
+<ul class="nav nav-tabs">
   ...
   <li role="presentation" class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
       Dropdown <span class="caret"></span>
     </a>
     <ul class="dropdown-menu" role="menu">
@@ -148,11 +155,11 @@
 
   <h3>Pills with dropdowns</h3>
   <div class="bs-example">
-    <ul class="nav nav-pills" role="tablist">
+    <ul class="nav nav-pills">
       <li role="presentation" class="active"><a href="#">Home</a></li>
       <li role="presentation"><a href="#">Help</a></li>
       <li role="presentation" class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
           Dropdown <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" role="menu">
@@ -166,10 +173,10 @@
     </ul>
   </div><!-- /example -->
 {% highlight html %}
-<ul class="nav nav-pills" role="tablist">
+<ul class="nav nav-pills">
   ...
   <li role="presentation" class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
       Dropdown <span class="caret"></span>
     </a>
     <ul class="dropdown-menu" role="menu">
