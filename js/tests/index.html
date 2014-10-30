@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Bootstrap Plugin Test Suite</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- jQuery -->
     <script src="vendor/jquery.min.js"></script>
@@ -13,6 +14,11 @@
     <style>
       #qunit-tests > li.pass {
         display: none;/* Make it easier to see failing tests is Sauce screencasts */
+      }
+
+      #qunit-fixture {
+        top: 0;
+        left: 0;
       }
     </style>
     <script>
@@ -36,6 +42,7 @@
       })
 
       QUnit.testStart(function (testDetails) {
+        $(window).scrollTop(0)
         QUnit.log = function (details) {
           if (!details.result) {
             details.name = testDetails.name
