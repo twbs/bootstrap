@@ -3,7 +3,7 @@
 
   <h2 id="tabs-examples">Example tabs</h2>
   <p>Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus.</p>
-  <div class="bs-example bs-example-tabs">
+  <div class="bs-example bs-example-tabs" role="tabpanel">
     <ul id="myTab" class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Home</a></li>
       <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Profile</a></li>
@@ -59,20 +59,24 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
   <h3>Markup</h3>
   <p>You can activate a tab or pill navigation without writing any JavaScript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element. Adding the <code>nav</code> and <code>nav-tabs</code> classes to the tab <code>ul</code> will apply the Bootstrap <a href="../components/#nav-tabs">tab styling</a>, while adding the <code>nav</code> and <code>nav-pills</code> classes will apply <a href="../components/#nav-pills">pill styling</a>.</p>
 {% highlight html %}
-<!-- Nav tabs -->
-<ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
-  <li role="presentation"><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
-  <li role="presentation"><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
-  <li role="presentation"><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
-</ul>
+<div role="tabpanel">
 
-<!-- Tab panes -->
-<div class="tab-content">
-  <div role="tabpanel" class="tab-pane active" id="home">...</div>
-  <div role="tabpanel" class="tab-pane" id="profile">...</div>
-  <div role="tabpanel" class="tab-pane" id="messages">...</div>
-  <div role="tabpanel" class="tab-pane" id="settings">...</div>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">...</div>
+    <div role="tabpanel" class="tab-pane" id="profile">...</div>
+    <div role="tabpanel" class="tab-pane" id="messages">...</div>
+    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+  </div>
+
 </div>
 {% endhighlight %}
 
@@ -94,10 +98,10 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
   </p>
 {% highlight html %}
 <ul class="nav nav-tabs" role="tablist" id="myTab">
-  <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
-  <li role="presentation"><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
-  <li role="presentation"><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
-  <li role="presentation"><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+  <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+  <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+  <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
 </ul>
 
 <div class="tab-content">
