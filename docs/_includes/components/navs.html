@@ -3,39 +3,46 @@
 
   <p class="lead">Navs available in Bootstrap have shared markup, starting with the base <code>.nav</code> class, as well as shared states. Swap modifier classes to switch between each style.</p>
 
+  <div class="bs-callout bs-callout-info">
+    <h4>Using navs for tab panels requires JavaScript tabs plugin</h4>
+    <p>For tabs with tabbable areas, you must use the <a href="../javascript/#tabs">tabs JavaScript plugin</a>. The markup will also require additional <code>role</code> and ARIA attributes – see the plugin's <a href="../javascript/#tabs-usage">example markup</a> for further details.</p>
+  </div>
+
+  <div class="bs-callout bs-callout-warning">
+    <h4>Make navs used as navigation accessible</h4>
+    <p>If you are using navs to provide a navigation bar, be sure to add a <code>role="navigation"</code> to the parent container of the <code>&lt;ul&gt;</code>. Do not add this role to the <code>&lt;ul&gt;</code> itself, as this would prevent it from being announced as an actual list by assistive technologies.</p>
+  </div>
+
   <h2 id="nav-tabs">Tabs</h2>
   <p>Note the <code>.nav-tabs</code> class requires the <code>.nav</code> base class.</p>
   <div class="bs-example">
     <ul class="nav nav-tabs">
-      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li role="presentation" class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
       <li role="presentation"><a href="#">Profile</a></li>
       <li role="presentation"><a href="#">Messages</a></li>
     </ul>
   </div>
 {% highlight html %}
 <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">Home</a></li>
+  <li role="presentation" class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
   <li role="presentation"><a href="#">Profile</a></li>
   <li role="presentation"><a href="#">Messages</a></li>
 </ul>
 {% endhighlight %}
-  <div class="bs-callout bs-callout-info">
-    <h4>Requires JavaScript tabs plugin</h4>
-    <p>For tabs with tabbable areas, you must use the <a href="../javascript/#tabs">tabs JavaScript plugin</a>. The markup will also require additional <code>role</code> and ARIA attributes – see the plugin's <a href="../javascript/#tabs-usage">example markup</a> for further details.</p>
-  </div>
+
 
   <h2 id="nav-pills">Pills</h2>
   <p>Take that same HTML, but use <code>.nav-pills</code> instead:</p>
   <div class="bs-example">
     <ul class="nav nav-pills">
-      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li role="presentation" class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
       <li role="presentation"><a href="#">Profile</a></li>
       <li role="presentation"><a href="#">Messages</a></li>
     </ul>
   </div>
 {% highlight html %}
 <ul class="nav nav-pills">
-  <li role="presentation" class="active"><a href="#">Home</a></li>
+  <li role="presentation" class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
   <li role="presentation"><a href="#">Profile</a></li>
   <li role="presentation"><a href="#">Messages</a></li>
 </ul>
@@ -43,7 +50,7 @@
   <p>Pills are also vertically stackable. Just add <code>.nav-stacked</code>.</p>
   <div class="bs-example">
     <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li role="presentation" class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
       <li role="presentation"><a href="#">Profile</a></li>
       <li role="presentation"><a href="#">Messages</a></li>
     </ul>
@@ -64,13 +71,13 @@
   </div>
   <div class="bs-example">
     <ul class="nav nav-tabs nav-justified">
-      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li role="presentation" class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
       <li role="presentation"><a href="#">Profile</a></li>
       <li role="presentation"><a href="#">Messages</a></li>
     </ul>
     <br>
     <ul class="nav nav-pills nav-justified">
-      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li role="presentation" class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
       <li role="presentation"><a href="#">Profile</a></li>
       <li role="presentation"><a href="#">Messages</a></li>
     </ul>
@@ -115,7 +122,7 @@
   <h3>Tabs with dropdowns</h3>
   <div class="bs-example">
     <ul class="nav nav-tabs">
-      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li role="presentation" class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
       <li role="presentation"><a href="#">Help</a></li>
       <li role="presentation" class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
@@ -149,7 +156,7 @@
   <h3>Pills with dropdowns</h3>
   <div class="bs-example">
     <ul class="nav nav-pills">
-      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li role="presentation" class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
       <li role="presentation"><a href="#">Help</a></li>
       <li role="presentation" class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
