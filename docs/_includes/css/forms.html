@@ -559,6 +559,12 @@
   <h2 id="forms-control-validation">Validation states</h2>
   <p>Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element. Any <code>.control-label</code>, <code>.form-control</code>, and <code>.help-block</code> within that element will receive the validation styles.</p>
 
+  <div class="bs-callout bs-callout-warning">
+    <h4>Conveying validation state to assistive technologies</h4>
+    <p>Using these validation styles to denote the state of a form control only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers.</p>
+    <p>Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's <code>&lt;label&gt;</code> text itself (as is the case in the following code example), or associate an additional element with textual information about the validation state with the form control using <code>aria-describedby</code> (see the example in the following section). In the case of an error, you could also use the <code>aria-invalid="true"</code> attribute on the form control.</p>
+  </div>
+
   <div class="bs-example">
     <form role="form">
       <div class="form-group has-success">
@@ -645,40 +651,45 @@
     <h4>Icons, labels, and input groups</h4>
     <p>Manual positioning of feedback icons is required for inputs without a label and for <a href="../components#input-groups">input groups</a> with an add-on on the right. You are strongly encouraged to provide labels for all inputs for accessibility reasons. If you wish to prevent labels from being displayed, hide them with the <code>sr-only</code> class. If you must do without labels, adjust the <code>top</code> value of the feedback icon. For input groups, adjust the <code>right</code> value to an appropriate pixel value depending on the width of your addon.</p>
   </div>
+  <div class="bs-callout bs-callout-warning">
+    <h4>Conveying the icon's meaning to assistive technologies</h4>
+    <p>To ensure that assistive technologies – such as screen readers – correctly convey the meaning of an icon, additional hidden text should be included with the <code>sr-only</code> class, and the icon itself explicitly associated with the form control it relates to using <code>aria-describedby</code>. Alternatively, ensure that the meaning (for instance, the fact that there is a warning for a particular text entry field) is conveyed in some other form, such as changing the text of the actual <code>&lt;label&gt;</code> associated with the form control.</p>
+    <p>Although the following examples already mention the validation state of their respective form controls in the <code>&lt;label&gt;</code> text itself, the above technique (using <code>sr-only</code> text and <code>aria-describedby</code>) has been included for illustrative purposes.</p>
+  </div>
   <div class="bs-example">
     <form role="form">
       <div class="form-group has-success has-feedback">
         <label class="control-label" for="inputSuccess2">Input with success</label>
-        <input type="text" class="form-control" id="inputSuccess2">
-        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+        <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Icon">
+        <span id="inputSuccess2Icon" class="glyphicon glyphicon-ok form-control-feedback"><span class="sr-only">(success)</span></span>
       </div>
       <div class="form-group has-warning has-feedback">
         <label class="control-label" for="inputWarning2">Input with warning</label>
-        <input type="text" class="form-control" id="inputWarning2">
-        <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+        <input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Icon">
+        <span id="inputWarning2Icon" class="glyphicon glyphicon-warning-sign form-control-feedback"><span class="sr-only">(warning)</span></span>
       </div>
       <div class="form-group has-error has-feedback">
         <label class="control-label" for="inputError2">Input with error</label>
-        <input type="text" class="form-control" id="inputError2">
-        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+        <input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Icon">
+        <span id="inputError2Icon" class="glyphicon glyphicon-remove form-control-feedback"><span class="sr-only">(error)</span></span>
       </div>
     </form>
   </div>
 {% highlight html %}
 <div class="form-group has-success has-feedback">
   <label class="control-label" for="inputSuccess2">Input with success</label>
-  <input type="text" class="form-control" id="inputSuccess2">
-  <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+  <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Icon">
+  <span id="inputSuccess2Icon" class="glyphicon glyphicon-ok form-control-feedback"><span class="sr-only">(success)</span></span>
 </div>
 <div class="form-group has-warning has-feedback">
   <label class="control-label" for="inputWarning2">Input with warning</label>
-  <input type="text" class="form-control" id="inputWarning2">
-  <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+  <input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Icon">
+  <span id="inputWarning2Icon" class="glyphicon glyphicon-warning-sign form-control-feedback"><span class="sr-only">(warning)</span></span>
 </div>
 <div class="form-group has-error has-feedback">
   <label class="control-label" for="inputError2">Input with error</label>
-  <input type="text" class="form-control" id="inputError2">
-  <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+  <input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Icon">
+  <span id="inputError2Icon" class="glyphicon glyphicon-remove form-control-feedback"><span class="sr-only">(error)</span></span>
 </div>
 {% endhighlight %}
 
@@ -688,8 +699,8 @@
       <div class="form-group has-success has-feedback">
         <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="inputSuccess3">
-          <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+          <input type="text" class="form-control" id="inputSuccess3" aria-describedby="inputSuccess3Icon">
+          <span id="inputSuccess3Icon" class="glyphicon glyphicon-ok form-control-feedback"><span class="sr-only">(success)</span></span>
         </div>
       </div>
     </form>
@@ -699,8 +710,8 @@
   <div class="form-group has-success has-feedback">
     <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" id="inputSuccess3">
-      <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+      <input type="text" class="form-control" id="inputSuccess3" aria-describedby="inputSuccess3Icon">
+      <span id="inputSuccess3Icon" class="glyphicon glyphicon-ok form-control-feedback"><span class="sr-only">(success)</span></span>
     </div>
   </div>
 </form>
@@ -710,8 +721,8 @@
     <form class="form-inline" role="form">
       <div class="form-group has-success has-feedback">
         <label class="control-label" for="inputSuccess4">Input with success</label>
-        <input type="text" class="form-control" id="inputSuccess4">
-        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+        <input type="text" class="form-control" id="inputSuccess4" aria-describedby="inputSuccess4Icon">
+        <span id="inputSuccess4Icon" class="glyphicon glyphicon-ok form-control-feedback"><span class="sr-only">(success)</span></span>
       </div>
     </form>
   </div>
@@ -719,8 +730,8 @@
 <form class="form-inline" role="form">
   <div class="form-group has-success has-feedback">
     <label class="control-label" for="inputSuccess4">Input with success</label>
-    <input type="text" class="form-control" id="inputSuccess4">
-    <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+    <input type="text" class="form-control" id="inputSuccess4" aria-describedby="inputSuccess4Icon">
+    <span id="inputSuccess4Icon" class="glyphicon glyphicon-ok form-control-feedback"><span class="sr-only">(success)</span></span>
   </div>
 </form>
 {% endhighlight %}
@@ -730,15 +741,15 @@
   <div class="bs-example">
     <div class="form-group has-success has-feedback">
       <label class="control-label sr-only" for="inputSuccess5">Hidden label</label>
-      <input type="text" class="form-control" id="inputSuccess5">
-      <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+      <input type="text" class="form-control" id="inputSuccess5" aria-describedby="inputSuccess5Icon">
+      <span id="inputSuccess5Icon" class="glyphicon glyphicon-ok form-control-feedback"><span class="sr-only">(success)</span></span>
     </div>
   </div>
 {% highlight html %}
 <div class="form-group has-success has-feedback">
   <label class="control-label sr-only" for="inputSuccess5">Hidden label</label>
-  <input type="text" class="form-control" id="inputSuccess5">
-  <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+  <input type="text" class="form-control" id="inputSuccess5" aria-describedby="inputSuccess5Icon">
+  <span id="inputSuccess5Icon" class="glyphicon glyphicon-ok form-control-feedback"><span class="sr-only">(success)</span></span>
 </div>
 {% endhighlight %}
 
