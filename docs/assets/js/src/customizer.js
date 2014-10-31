@@ -401,7 +401,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
       .on('drop', handleConfigFileSelect)
   }
 
-  $('#import-file-select').on('select', handleConfigFileSelect)
+  $('#import-file-select').on('change', handleConfigFileSelect)
   $('#import-manual-trigger').on('click', removeImportAlerts)
 
   var inputsComponent = $('#less-section input')
