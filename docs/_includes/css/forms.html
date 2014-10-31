@@ -852,14 +852,17 @@
   </div>
   <div class="bs-example">
     <form role="form">
-      <label class="sr-only" for="inputHelpBlock">Input with help text</label>
-      <input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
+      <div class="form-group">
+        <label class="sr-only" for="inputHelpBlock">Input with help text</label>
+        <input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
+      </div>
       <span id="helpBlock" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
     </form>
   </div><!-- /.bs-example -->
 {% highlight html %}
 <label class="sr-only" for="inputHelpBlock">Input with help text</label>
 <input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
+...
 <span id="helpBlock" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
 {% endhighlight %}
 </div>
