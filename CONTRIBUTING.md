@@ -88,6 +88,10 @@ When feasible, we aim to report such upstream bugs to the relevant browser vendo
 | Google, Opera | Chrome, Chromium, Opera v15+ | Blink            | https://code.google.com/p/chromium/issues/list                                        | Click the "New issue" button.                            |
 | Microsoft     | Internet Explorer            | Trident          | https://connect.microsoft.com/IE/feedback/LoadSubmitFeedbackForm                      |                                                          |
 
+### Issues bots
+
+[@twbs-lmvtfy](https://github.com/twbs-lmvtfy) is a Bootstrap bot that hangs out in our GitHub issue tracker and automatically checks for HTML validation errors in live examples (e.g. jsFiddles, JS Bins, Bootplys, Plunks, CodePens, etc.) posted in issue comments. If it finds any errors, it will post a follow-up comment on the issue and point out the errors. If this happens with an example you've posted, please fix the errors and post an updated live example. If you opened a bug report, please check whether the bug still occurs with your revised, valid live example. If the bug no longer occurs, it was probably due to your invalid HTML rather than something in Bootstrap and we'd appreciate it if you could close out the GitHub issue.
+
 
 ## Feature requests
 
@@ -164,6 +168,13 @@ included in the project:
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to
 license your work under the terms of the [MIT License](LICENSE.md).
+
+### Pull request checker bot: Rorschach
+
+[@twbs-rorschach](https://github.com/twbs-rorschach) is a Bootstrap bot that hangs out in our GitHub issue tracker and automatically checks all pull requests for a few simple common mistakes. It's possible that Rorschach might leave a comment on your pull request and then close it. If that happens, simply fix the problem(s) mentioned in the comment (there should be link(s) in the comment explaining the problem(s) in detail) and then either:
+
+* Push the revised version to your pull request's branch and post a comment on the pull request saying that you've fixed the problem(s). One of the Bootstrap Core Team members will then come along and reopen your pull request.
+* Or you can just open a new pull request for your revised version.
 
 
 ## Code guidelines
