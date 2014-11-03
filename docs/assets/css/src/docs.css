@@ -830,6 +830,21 @@ h1[id] {
 
 
 /*
+ * Wall of Browser Bugs
+ *
+ * Better display for the responsive table on the Wall of Browser Bugs.
+ */
+
+.bs-docs-browser-bugs td p {
+  margin-bottom: 0;
+}
+
+.bs-docs-browser-bugs th:first-child {
+  width: 18%;
+}
+
+
+/*
  * Grid examples
  *
  * Highlight the grid columns within the docs so folks can see their padding,
