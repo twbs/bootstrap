@@ -6,7 +6,7 @@
  * details, see http://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global JSZip, less, saveAs, UglifyJS, __configBridge, __js, __less, __fonts */
+/* global JSZip, less, autoprefixer, saveAs, UglifyJS, __configBridge, __js, __less, __fonts */
 
 window.onload = function () { // wait for load in a dumb way because B-0
   'use strict';
@@ -251,6 +251,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
   }
 
   function compileLESS(lessSource, baseFilename, intoResult) {
+    var promise = $.Deferred()
     var parser = new less.Parser({
       paths: ['variables.less', 'mixins.less'],
       optimization: 0,
@@ -259,14 +260,18 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
     parser.parse(lessSource, function (err, tree) {
       if (err) {
-        return showError('<strong>Ruh roh!</strong> Could not parse less files.', err)
+        return promise.reject(err)
       }
       intoResult[baseFilename + '.css']     = cw + tree.toCSS()
       intoResult[baseFilename + '.min.css'] = cw + tree.toCSS({ compress: true })
+      promise.resolve()
     })
+
+    return promise.promise()
   }
 
   function generateCSS(preamble) {
+    var promise = $.Deferred()
     var oneChecked = false
     var lessFileIncludes = {}
     $('#less-section input').each(function () {
@@ -290,14 +295,22 @@ window.onload = function () { // wait for load in a dumb way because B-0
     var bsLessSource    = preamble + generateLESS('bootstrap.less', lessFileIncludes, vars)
     var themeLessSource = preamble + generateLESS('theme.less',     lessFileIncludes, vars)
 
-    try {
-      compileLESS(bsLessSource, 'bootstrap', result)
-      compileLESS(themeLessSource, 'bootstrap-theme', result)
-    } catch (err) {
-      return showError('<strong>Ruh roh!</strong> Could not parse less files.', err)
-    }
+    var prefixer = autoprefixer({ browsers: __configBridge.autoprefixerBrowsers })
 
-    return result
+    $.when(
+      compileLESS(bsLessSource, 'bootstrap', result),
+      compileLESS(themeLessSource, 'bootstrap-theme', result)
+    ).done(function () {
+      for (var key in result) {
+        result[key] = prefixer.process(result[key]).css
+      }
+      promise.resolve(result)
+    }).fail(function (err) {
+      showError('<strong>Ruh roh!</strong> Could not parse less files.', err)
+      promise.reject()
+    })
+
+    return promise.promise()
   }
 
   function uglify(js) {
@@ -453,9 +466,15 @@ window.onload = function () { // wait for load in a dumb way because B-0
         ' * Config saved to config.json and ' + gistUrl + '\n' +
         ' */\n'
 
-      generateZip(generateCSS(preamble), generateJS(preamble), generateFonts(), configJson, function (blob) {
-        $compileBtn.removeAttr('disabled')
-        setTimeout(function () { saveAs(blob, 'bootstrap.zip') }, 0)
+      $.when(
+        generateCSS(preamble),
+        generateJS(preamble),
+        generateFonts()
+      ).done(function (css, js, fonts) {
+        generateZip(css, js, fonts, configJson, function (blob) {
+          $compileBtn.removeAttr('disabled')
+          setTimeout(function () { saveAs(blob, 'bootstrap.zip') }, 0)
+        })
       })
     })
   });
