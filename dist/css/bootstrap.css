@@ -5549,10 +5549,9 @@ button.close {
           box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
 }
 .modal-backdrop {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
-  bottom: 0;
   left: 0;
   background-color: #000;
 }
@@ -5674,14 +5673,16 @@ button.close {
   border-top-color: #000;
 }
 .tooltip.top-left .tooltip-arrow {
+  right: 5px;
   bottom: 0;
-  left: 5px;
+  margin-bottom: -5px;
   border-width: 5px 5px 0;
   border-top-color: #000;
 }
 .tooltip.top-right .tooltip-arrow {
-  right: 5px;
   bottom: 0;
+  left: 5px;
+  margin-bottom: -5px;
   border-width: 5px 5px 0;
   border-top-color: #000;
 }
@@ -5708,13 +5709,15 @@ button.close {
 }
 .tooltip.bottom-left .tooltip-arrow {
   top: 0;
-  left: 5px;
+  right: 5px;
+  margin-top: -5px;
   border-width: 0 5px 5px;
   border-bottom-color: #000;
 }
 .tooltip.bottom-right .tooltip-arrow {
   top: 0;
-  right: 5px;
+  left: 5px;
+  margin-top: -5px;
   border-width: 0 5px 5px;
   border-bottom-color: #000;
 }
