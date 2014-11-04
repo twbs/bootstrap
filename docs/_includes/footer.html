@@ -43,25 +43,19 @@
 {% if site.github %}
   <script src="../assets/js/docs.min.js"></script>
 {% else %}
-  <script src="../assets/js/vendor/holder.js"></script>
-  <script src="../assets/js/vendor/ZeroClipboard.min.js"></script>
-  <script src="../assets/js/src/application.js"></script>
+  {% for file in site.data.configBridge.paths.docsJs %}
+  <script src="{{ file }}"></script>
+  {% endfor %}
 {% endif %}
 
 {% if page.slug == "customize" %}
+  <script>var __configBridge = {{ site.data.configBridge.config | jsonify }}</script>
   {% if site.github %}
     <script src="../assets/js/customize.min.js"></script>
   {% else %}
-    {% comment %}
-      This list is repeated in our Gruntfile—update both when making changes.
-    {% endcomment %}
-    <script src="../assets/js/vendor/less.min.js"></script>
-    <script src="../assets/js/vendor/jszip.min.js"></script>
-    <script src="../assets/js/vendor/uglify.min.js"></script>
-    <script src="../assets/js/vendor/Blob.js"></script>
-    <script src="../assets/js/vendor/FileSaver.js"></script>
-    <script src="../assets/js/raw-files.min.js"></script>
-    <script src="../assets/js/src/customizer.js"></script>
+    {% for file in site.data.configBridge.paths.customizerJs %}
+    <script src="{{ file }}"></script>
+    {% endfor %}
   {% endif %}
 {% endif %}
 

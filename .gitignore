@@ -2,6 +2,7 @@
 _gh_pages
 _site
 .ruby-version
+docs/_data/configBridge.json
 
 # Numerous always-ignore extensions
 *.diff

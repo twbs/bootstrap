@@ -6,13 +6,13 @@
  * details, see http://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global JSZip, less, saveAs, UglifyJS, __js, __less, __fonts */
+/* global JSZip, less, saveAs, UglifyJS, __configBridge, __js, __less, __fonts */
 
 window.onload = function () { // wait for load in a dumb way because B-0
   'use strict';
   var cw = '/*!\n' +
            ' * Bootstrap v3.3.0 (http://getbootstrap.com)\n' +
-           ' * Copyright 2011-2014 Twitter, Inc.\n' +
+           ' * Copyright 2011-' + new Date().getFullYear() + ' Twitter, Inc.\n' +
            ' * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n' +
            ' */\n\n'
 
@@ -319,19 +319,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
   function generateJS(preamble) {
     var $checked = $('#plugin-section input:checked')
-    var jqueryCheck = [
-      'if (typeof jQuery === \'undefined\') {',
-      '  throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery\')',
-      '}\n'
-    ].join('\n')
-    var jqueryVersionCheck = [
-      '+function ($) {',
-      '  var version = $.fn.jquery.split(\' \')[0].split(\'.\')',
-      '  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1)) {',
-      '    throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery version 1.9.1 or higher\')',
-      '  }',
-      '}(jQuery);\n\n'
-    ].join('\n')
+    var jqueryCheck = __configBridge.jqueryCheck.join('\n')
+    var jqueryVersionCheck = __configBridge.jqueryVersionCheck.join('\n')
 
     if (!$checked.length) return false
 
