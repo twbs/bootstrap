@@ -60,6 +60,7 @@
 
     this.setScrollbar()
     this.escape()
+    if (this.options.backdrop) this.resize()
 
     this.$element.on('click.dismiss.bs.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
 
@@ -73,6 +74,8 @@
       that.$element
         .show()
         .scrollTop(0)
+
+      if (that.options.backdrop) that.setBackdropHeight()
 
       if (transition) {
         that.$element[0].offsetWidth // force reflow
@@ -108,6 +111,7 @@
     this.isShown = false
 
     this.escape()
+    if (this.options.backdrop) this.resize()
 
     $(document).off('focusin.bs.modal')
 
@@ -140,6 +144,14 @@
       }, this))
     } else if (!this.isShown) {
       this.$element.off('keydown.dismiss.bs.modal')
+    }
+  }
+
+  Modal.prototype.resize = function () {
+    if (this.isShown) {
+      $(window).on('resize.bs.modal', $.proxy(this.setBackdropHeight, this))
+    } else {
+      $(window).off('resize.bs.modal')
     }
   }
 
@@ -202,6 +214,12 @@
     } else if (callback) {
       callback()
     }
+  }
+
+  Modal.prototype.setBackdropHeight = function () {
+    this.$backdrop
+      .css('height', 0)
+      .css('height', this.$element[0].scrollHeight)
   }
 
   Modal.prototype.checkScrollbar = function () {
