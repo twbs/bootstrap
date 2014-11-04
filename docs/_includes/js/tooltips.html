@@ -60,7 +60,14 @@
 
   <div class="bs-callout bs-callout-danger">
     <h4>Opt-in functionality</h4>
-    <p>For performance reasons, the Tooltip and Popover data-apis are opt-in, meaning <strong>you must initialize them yourself</strong>.</p>
+    <p>For performance reasons, the Tooltip and Popover data-apis are opt-in, meaning <strong>you must initialize them yourself</strong>.
+    One way to initialize all tooltips would be to set <code>rel=tooltip</code> on tooltip elements, and activate them through a selector:</p>
+{% highlight js %}
+$(function() {
+  $("[rel='tooltip']").tooltip();
+});
+{% endhighlight %}
+
   </div>
   <div class="bs-callout bs-callout-warning">
     <h4>Tooltips in button groups and input groups require special setting</h4>
