@@ -7,7 +7,7 @@ module Jekyll
         "Mozilla" => ["https://bugzilla.mozilla.org/show_bug.cgi?id=", "Mozilla bug"],
         "Chromium" => ["https://code.google.com/p/chromium/issues/detail?id=", "Chromium issue"],
         "WebKit" => ["https://bugs.webkit.org/show_bug.cgi?id=", "WebKit bug"],
-        "Safari" => ["http://openradar.appspot.com/", "Apple Safari Radar"],
+        "Safari" => ["https://openradar.appspot.com/", "Apple Safari Radar"],
         "Normalize" => ["https://github.com/necolas/normalize.css/issues/", "Normalize"]
       }
 
