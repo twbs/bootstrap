@@ -2,61 +2,30 @@
 // Variables
 // --------------------------------------------------
 
-// Manta Color Pallette
-@warmLighter     : #fff2c5;
-@warmMidlight    : #dab132;
-@warmMidlight    : #fdd900; //old
-@warmMiddark     : #bb4924;
-@warmMiddark     : #ffb60f; //old
-@warmDark        : #f99a00;
-
-@coolLightest    : #cfe4ee;
-@coolLighter     : #aad1e4;
-@coolLight       : #83bdcc;
-@coolMidlight    : #5ea9d2;
-@coolMiddark     : #3a94c6;
-@coolDark        : #5b5b5b;
-@coolDark        : #1b7fb7; //old
-@coolDarker      : #909090;
-@coolDarker      : #006ba5; //old
-@coolDarkest     : #404040;
-@coolDarkest     : #2d3236;
-@coolDarkest     : #00476d; //old
-
-@neutralWhite    : #ffffff;
-@neutralLightest : #f1f1f1;
-@neutralLighter  : #dddddd;
-@neutralLight    : #cccccc;
-@neutralMidlight : #aaaaaa;
-@neutralMiddark  : #898989;
-@neutralDarker   : #404040;
-@neutralDarker   : #555555; //old
-@neutralDarkest  : #252525;
-
-@naturalMiddark  : #35aa35;
-
-@errorLight      : @warmMidlight;
-@errorLight      : #fad0d0; //old
-@errorDark       : #a95056;
-@errorDark       : #c7272b; //old
-
+//.color-palette () when (@color-palette = true) {
+//  @import "manta-color-palette-2015.less";
+//}
+//.color-palette () when (@color-palette = false) {
+  @import "manta-color-palette-2014.less";
+//}
+//.color-palette();
 
 //== Colors
 //
 //## Gray and brand colors for use across Bootstrap.
 
-@gray-darker:            @neutralDarkest; //lighten(#000, 13.5%) // #252525
-@gray-dark:              @neutralDarker; //lighten(#000, 20%)   // #555
-@gray:                   @neutralMiddark; //lighten(#000, 33.5%) // #898989
-@gray-light:             @neutralMidlight; //lighten(#000, 60%)   // #999
-@gray-lighter:           @neutralLighter; //lighten(#000, 93.5%) // #eee
+@gray-darker:            @neutralDarkest;
+@gray-dark:              @neutralDarker;
+@gray:                   @neutralMiddark;
+@gray-light:             @neutralMidlight;
+@gray-lighter:           @neutralLighter;
 
 // Brand colors
 // -------------------------
 
 @brand-primary:         @coolDarkest;
 @brand-success:         @naturalMiddark;
-@brand-warning:         @errorLight;
+@brand-warning:         @warmMidlight;
 @brand-danger:          @errorDark;
 @brand-info:            @warmMiddark;
 
@@ -74,10 +43,9 @@
 @text-color:            @gray-dark;
 
 //** Global textual link color.
-@link-color:            @warmMiddark;
-@link-color:            @coolDarker; //old
+@link-color:            @coolDarker;
 //** Link hover color set via `darken()` function.
-@link-hover-color:      @link-color; //darken(@link-color, 15%)
+@link-hover-color:      @link-color;
 
 //== Typography
 //
@@ -216,8 +184,7 @@
 //##
 
 //** `<input>` background color
-@input-bg:                       @neutralLightest;
-@input-bg:                       @neutralWhite; //old
+@input-bg:                       @neutralWhite;
 //** `<input disabled>` background color
 @input-bg-disabled:              @gray-lighter;
 
@@ -228,7 +195,7 @@
 //** `<input>` border radius
 @input-border-radius:            @border-radius-base;
 //** Border color for inputs on focus
-@input-border-focus:             @coolMidlight; //#66afe9
+@input-border-focus:             @coolMidlight;
 
 //** Placeholder text color
 @input-color-placeholder:        @gray-light;
@@ -241,7 +208,7 @@
 @input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
 
 @legend-color:                   @gray-dark;
-@legend-border-color:            @neutralLighter; //#e5e5e5
+@legend-border-color:            @neutralLighter;
 
 //** Background color for textual input addons
 @input-group-addon-bg:           @gray-lighter;
@@ -260,7 +227,7 @@
 //** Dropdown menu `border-color` **for IE8**.
 @dropdown-fallback-border:       @neutralLight;
 //** Divider color for between dropdown items.
-@dropdown-divider-bg:            @neutralLighter; //#e5e5e5
+@dropdown-divider-bg:            @neutralLighter;
 
 //** Dropdown link text color.
 @dropdown-link-color:            @gray-dark;
@@ -398,20 +365,17 @@
 //TODO: new
 @navbar-collapse-max-height:       340px;
 
-@navbar-default-color:             @coolDark; //#777
-@navbar-default-bg:                @coolDarkest; //#f8f8f8
+@navbar-default-color:             @coolDark;
+@navbar-default-bg:                @coolDarkest;
 @navbar-default-border:            darken(@navbar-default-bg, 6.5%);
 
 // Navbar links
-@navbar-default-link-color:                @neutralLighter;
-@navbar-default-link-color:                @neutralWhite; //old
+@navbar-default-link-color:                @neutralWhite;
 @navbar-default-link-hover-color:          @neutralWhite;
 @navbar-default-link-hover-bg:             transparent;
-@navbar-default-link-active-color:         @neutralLightest;
-@navbar-default-link-active-color:         @neutralWhite; //old
+@navbar-default-link-active-color:         @neutralWhite;
 @navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
-@navbar-default-link-disabled-color:       @neutralMidlight;
-@navbar-default-link-disabled-color:       @neutralLight; //old
+@navbar-default-link-disabled-color:       @neutralLight;
 @navbar-default-link-disabled-bg:          transparent;
 
 // Navbar brand label
@@ -897,4 +861,7 @@
 
 //** Horizontal offset for forms and lists.
 @component-offset-horizontal: 180px;
+
+//overrides
+//@import "manta-overrides-2015.less";
 
