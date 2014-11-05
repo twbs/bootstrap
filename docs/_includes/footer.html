@@ -38,6 +38,26 @@
 {% if page.slug == "customize" %}
 <script src="../assets/js/customize.min.js"></script>
 {% endif %}
+{% if page.slug == "color-palette" %}
+  <script>
+  function rgb2hex(rgb){
+   if(!rgb) {
+     return '';
+   }
+   rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+   return "#" +
+    ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
+    ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
+    ("0" + parseInt(rgb[3],10).toString(16)).slice(-2);
+  }
+  $(function() {
+    $(".swatch").each(function() {
+      var hex = rgb2hex($(this).css('background-color'));
+      $('<div class="swatch-hex text-muted">').text(hex).insertAfter($(this));
+    });
+  });
+  </script>
+{% endif %}
 
 {% comment %}
   Inject Twitter widgets asynchronously. Snippet snipped from Twitter's
@@ -54,17 +74,3 @@
   }(document, "script", "twitter-wjs"));
 </script>
 
-<!-- Analytics
-================================================== -->
-<script>
-  var _gauges = _gauges || [];
-  (function() {
-    var t   = document.createElement('script');
-    t.async = true;
-    t.id    = 'gauges-tracker';
-    t.setAttribute('data-site-id', '4f0dc9fef5a1f55508000013');
-    t.src = '//secure.gaug.es/track.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(t, s);
-  })();
-</script>

@@ -229,10 +229,9 @@ body {
 .bs-docs-header {
   position: relative;
   padding: 30px 15px;
-  color: #cdbfe3;
+  color: #fff;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0,0,0,.1);
-  background-color: #00476d;
   background-repeat: repeat-x;
 }
 
@@ -1415,3 +1414,23 @@ h1[id] {
   -moz-box-shadow: 0 0 8px rgba(82,168,236,.6);
        box-shadow: 0 0 8px rgba(82,168,236,.6);
 }
+
+.swatches {
+  background-color: #f7f7f9;
+}
+.swatches h3 {
+  margin-top: 20px;
+}
+.swatch {
+  height: 100px;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: bold;
+  box-shadow: 10px 10px 5px #888888;
+  -moz-box-shadow: 0px 3px 10px 2px #aaaaaa;
+       box-shadow: 0px 3px 10px 2px #aaaaaa;
+}
+.swatch-hex {
+  margin: 10px 0 20px;
+}
+

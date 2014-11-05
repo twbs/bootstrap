@@ -3,21 +3,25 @@
 // --------------------------------------------------
 
 // Manta Color Pallette
-@warmLightest    : #fdf9ee;
 @warmLighter     : #fff2c5;
-@warmMidlight    : #fdd900;
-@warmMiddark     : #ffb60f;
+@warmMidlight    : #dab132;
+@warmMidlight    : #fdd900; //old
+@warmMiddark     : #bb4924;
+@warmMiddark     : #ffb60f; //old
 @warmDark        : #f99a00;
-@warmDarker      : #b67801;
 
 @coolLightest    : #cfe4ee;
 @coolLighter     : #aad1e4;
 @coolLight       : #83bdcc;
 @coolMidlight    : #5ea9d2;
 @coolMiddark     : #3a94c6;
-@coolDark        : #1b7fb7;
-@coolDarker      : #006ba5;
-@coolDarkest     : #00476d;
+@coolDark        : #5b5b5b;
+@coolDark        : #1b7fb7; //old
+@coolDarker      : #909090;
+@coolDarker      : #006ba5; //old
+@coolDarkest     : #404040;
+@coolDarkest     : #2d3236;
+@coolDarkest     : #00476d; //old
 
 @neutralWhite    : #ffffff;
 @neutralLightest : #f1f1f1;
@@ -25,18 +29,16 @@
 @neutralLight    : #cccccc;
 @neutralMidlight : #aaaaaa;
 @neutralMiddark  : #898989;
-@neutralDarker   : #555555;
+@neutralDarker   : #404040;
+@neutralDarker   : #555555; //old
 @neutralDarkest  : #252525;
 
-@naturalLightest : #e5f8dc;
-@naturalLighter  : #b9edb9;
-@naturalMidlight : #62c462;
 @naturalMiddark  : #35aa35;
-@naturalDark     : #009900;
-@naturalDarker   : #137513;
 
-@errorLight      : #fad0d0;
-@errorDark       : #C7272B;
+@errorLight      : @warmMidlight;
+@errorLight      : #fad0d0; //old
+@errorDark       : #a95056;
+@errorDark       : #c7272b; //old
 
 
 //== Colors
@@ -52,11 +54,11 @@
 // Brand colors
 // -------------------------
 
-@brand-primary:         @coolDarkest; //#428bca
-@brand-success:         @naturalMiddark; //#5cb85c
-@brand-warning:         @errorLight; //#f0ad4e
-@brand-danger:          @errorDark; //#d9534f
-@brand-info:            @warmMiddark; //#5bc0de
+@brand-primary:         @coolDarkest;
+@brand-success:         @naturalMiddark;
+@brand-warning:         @errorLight;
+@brand-danger:          @errorDark;
+@brand-info:            @warmMiddark;
 
 
 // Links
@@ -72,7 +74,8 @@
 @text-color:            @gray-dark;
 
 //** Global textual link color.
-@link-color:            @coolDarker; //@brand-primary
+@link-color:            @warmMiddark;
+@link-color:            @coolDarker; //old
 //** Link hover color set via `darken()` function.
 @link-hover-color:      @link-color; //darken(@link-color, 15%)
 
@@ -213,7 +216,8 @@
 //##
 
 //** `<input>` background color
-@input-bg:                       @neutralWhite;
+@input-bg:                       @neutralLightest;
+@input-bg:                       @neutralWhite; //old
 //** `<input disabled>` background color
 @input-bg-disabled:              @gray-lighter;
 
@@ -399,12 +403,15 @@
 @navbar-default-border:            darken(@navbar-default-bg, 6.5%);
 
 // Navbar links
-@navbar-default-link-color:                @neutralWhite; //#777
-@navbar-default-link-hover-color:          @neutralWhite; //#333
+@navbar-default-link-color:                @neutralLighter;
+@navbar-default-link-color:                @neutralWhite; //old
+@navbar-default-link-hover-color:          @neutralWhite;
 @navbar-default-link-hover-bg:             transparent;
-@navbar-default-link-active-color:         @neutralWhite; //#555
+@navbar-default-link-active-color:         @neutralLightest;
+@navbar-default-link-active-color:         @neutralWhite; //old
 @navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
-@navbar-default-link-disabled-color:       @neutralLight;
+@navbar-default-link-disabled-color:       @neutralMidlight;
+@navbar-default-link-disabled-color:       @neutralLight; //old
 @navbar-default-link-disabled-bg:          transparent;
 
 // Navbar brand label
