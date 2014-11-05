@@ -478,6 +478,48 @@ $(function () {
     strictEqual($template.find('.item')[0], $template.find('.active')[0], 'first item still active after left arrow press')
   })
 
+  test('should ignore keyboard events within <input>s and <textarea>s', function () {
+    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false">'
+        + '<div class="carousel-inner">'
+        + '<div id="first" class="item active">'
+        + '<img alt="">'
+        + '<input type="text" id="in-put">'
+        + '<textarea id="text-area"></textarea>'
+        + '</div>'
+        + '<div id="second" class="item">'
+        + '<img alt="">'
+        + '</div>'
+        + '<div id="third" class="item">'
+        + '<img alt="">'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+    var $template = $(templateHTML)
+    var $input = $template.find('#in-put')
+    var $textarea = $template.find('#text-area')
+
+    strictEqual($input.length, 1, 'found <input>')
+    strictEqual($textarea.length, 1, 'found <textarea>')
+
+    $template.bootstrapCarousel()
+
+    strictEqual($template.find('.item')[0], $template.find('.active')[0], 'first item active')
+
+
+    $input.trigger($.Event('keydown', { which: 39 }))
+    strictEqual($template.find('.item')[0], $template.find('.active')[0], 'first item still active after right arrow press in <input>')
+
+    $input.trigger($.Event('keydown', { which: 37 }))
+    strictEqual($template.find('.item')[0], $template.find('.active')[0], 'first item still active after left arrow press in <input>')
+
+
+    $textarea.trigger($.Event('keydown', { which: 39 }))
+    strictEqual($template.find('.item')[0], $template.find('.active')[0], 'first item still active after right arrow press in <textarea>')
+
+    $textarea.trigger($.Event('keydown', { which: 37 }))
+    strictEqual($template.find('.item')[0], $template.find('.active')[0], 'first item still active after left arrow press in <textarea>')
+  })
+
   test('should only add mouseenter and mouseleave listeners when not on mobile', function () {
     var isMobile     = 'ontouchstart' in document.documentElement
     var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false" data-pause="hover">'
