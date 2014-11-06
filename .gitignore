@@ -40,3 +40,6 @@ validation-status.json
 # Folders to ignore
 bower_components
 node_modules
+
+# Files to ignore
+js/bootstrap.js
