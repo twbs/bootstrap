@@ -135,12 +135,12 @@ label {
 .navbar-primary .navbar-nav > li > a {
   padding-left:15px;
   padding-right:15px;
+height: 40px;
 }
 @media (max-width:992px) and (min-width:  767px) {
   .navbar-primary.navbar-top .navbar-nav>li>a {
     padding-left:10px;
     padding-right:10px;
-
   }
   .navbar-primary .navbar-nav {
     margin-left:-10px;
@@ -530,6 +530,14 @@ margin-bottom: 0;
 .sub-brand > a {
   padding-left:50px !important;
 }
+.sub-brand-ba > a {
+  padding-left:15px !important;
+}
+@media (max-width: 560px) {
+  .navbar-top .sub-brand {
+    display: inline;
+  }
+}
 
 /* page sidebar */
 
@@ -724,6 +732,7 @@ padding-top: 18px;
 .ba-home .bac-header {
   width: 272px;
   height: 48px;
+  margin-bottom:8px;
 }
 .ba-home .form-control.input-sm {
   padding: 5px 15px 5px 15px;
@@ -745,7 +754,7 @@ padding-top: 18px;
   }
   .navbar-primary .navbar-brand {
     top: -8px;
-    display: block;
+    display: inline-block;
 /*    margin-left: auto;
     margin-right: auto;*/
   }
@@ -1242,10 +1251,24 @@ section h2 {
   }
 }
 .glyphicon-shortcut-vos {
-  background:url(shortcut-vos.png) no-repeat center center;
+  background:no-repeat center center;
+  background-image:url(shortcut-vos.png);
+  background-image:url(shortcut-vos.svg), none;
 }
 .glyphicon-shortcut-verde {
-  background:url(shortcut-verde.png) no-repeat center center;
+  background:no-repeat center center;
+  background-image:url(shortcut-verde.png);
+  background-image:url(shortcut-verde.svg), none;
+}
+.glyphicon-shortcut-cultural {
+  background:no-repeat center center;
+  background-image:url(shortcut-cultural.png);
+  background-image:url(shortcut-cultural.svg), none;
+}
+.glyphicon-shortcut-evoluciona {
+  background:no-repeat center center;
+  background-image:url(shortcut-evoluciona.png);
+  background-image:url(shortcut-evoluciona.svg), none;
 }
 .alert-spot {
   margin:48px 30px 0 30px;
@@ -1463,9 +1486,43 @@ margin:0;
 /* ribbons */
 
 .ribbon {
-
+  position:absolute;
+  margin-left:15px;
+  margin-top:5px;
+  display:inline-block;
+  width:28px;
+  height:45px;
+  background-repeat:no-repeat;
+  background-size:contain;
 }
-
+@media (min-width:768px) {
+  .ribbon {
+  width:19px;
+  height:30px;
+  }
+}
+.ba-home .ribbon {
+  width:28px;
+  height:45px;
+}
+.ribbon:hover, .ribbon:focus {
+  opacity:.8;
+}
+.ribbon:active {
+  opacity:1;
+}
+.ribbon-black {
+  background-image:url(ribbon-black.png);
+  background-image:url(ribbon-black.svg), none;
+}
+.ribbon-red {
+  background-image:url(ribbon-red.png);
+  background-image:url(ribbon-red.svg), none;
+}
+.ribbon-pink {
+  background-image:url(ribbon-pink.png);
+  background-image:url(ribbon-pink.svg), none;
+}
 
 
 
