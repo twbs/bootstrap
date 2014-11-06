@@ -83,7 +83,7 @@ input[type="checkbox"]:focus {
 // Adjust output element
 output {
   display: block;
-  padding-top: (@padding-base-vertical + 1);
+  padding-top: (@input-padding-base-vertical + 1);
   font-size: @font-size-base;
   line-height: @line-height-base;
   color: @input-color;
@@ -116,7 +116,7 @@ output {
   display: block;
   width: 100%;
   height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
-  padding: @padding-base-vertical @padding-base-horizontal;
+  padding: @input-padding-base-vertical @input-padding-base-horizontal;
   font-size: @font-size-base;
   line-height: @line-height-base;
   color: @input-color;
@@ -305,8 +305,8 @@ input[type="checkbox"] {
 
 .form-control-static {
   // Size it appropriately next to real form controls
-  padding-top: (@padding-base-vertical + 1);
-  padding-bottom: (@padding-base-vertical + 1);
+  padding-top: (@input-padding-base-vertical + 1);
+  padding-bottom: (@input-padding-base-vertical + 1);
   // Remove default margin from `p`
   margin-bottom: 0;
 
@@ -325,12 +325,12 @@ input[type="checkbox"] {
 
 .input-sm,
 .form-group-sm .form-control {
-  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
+  .input-size(@input-height-small; @input-padding-small-vertical; @input-padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
 }
 
 .input-lg,
 .form-group-lg .form-control {
-  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
+  .input-size(@input-height-large; @input-padding-large-vertical; @input-padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
 }
 
 
@@ -506,13 +506,13 @@ input[type="checkbox"] {
   .checkbox-inline {
     margin-top: 0;
     margin-bottom: 0;
-    padding-top: (@padding-base-vertical + 1); // Default padding plus a border
+    padding-top: (@input-padding-base-vertical + 1); // Default padding plus a border
   }
   // Account for padding we're adding to ensure the alignment and of help text
   // and other content below items
   .radio,
   .checkbox {
-    min-height: (@line-height-computed + (@padding-base-vertical + 1));
+    min-height: (@line-height-computed + (@input-padding-base-vertical + 1));
   }
 
   // Make form groups behave like rows
@@ -526,7 +526,7 @@ input[type="checkbox"] {
     .control-label {
       text-align: right;
       margin-bottom: 0;
-      padding-top: (@padding-base-vertical + 1); // Default padding plus a border
+      padding-top: (@input-padding-base-vertical + 1); // Default padding plus a border
     }
   }
 
@@ -545,14 +545,14 @@ input[type="checkbox"] {
   .form-group-lg {
     @media (min-width: @screen-sm-min) {
       .control-label {
-        padding-top: ((@padding-large-vertical * @line-height-large) + 1);
+        padding-top: ((@input-padding-large-vertical * @line-height-large) + 1);
       }
     }
   }
   .form-group-sm {
     @media (min-width: @screen-sm-min) {
       .control-label {
-        padding-top: (@padding-small-vertical + 1);
+        padding-top: (@input-padding-small-vertical + 1);
       }
     }
   }
