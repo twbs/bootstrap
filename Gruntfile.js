@@ -50,13 +50,14 @@ module.exports = function (grunt) {
 
     // Task configuration.
     clean: {
-      dist: 'dist',
+      dist: ['dist', 'js/<%= pkg.name %>.js'],
       docs: 'docs/dist'
     },
 
     jshint: {
       options: {
-        jshintrc: 'js/.jshintrc'
+        jshintrc: 'js/.jshintrc',
+        ignores: ['js/*.js', '!js/<%= pkg.name %>.js']
       },
       grunt: {
         options: {
@@ -120,6 +121,15 @@ module.exports = function (grunt) {
           'js/affix.js'
         ],
         dest: 'dist/js/<%= pkg.name %>.js'
+      }
+    },
+
+    insert: {
+      options: {},
+      main: {
+        src: 'dist/js/<%= pkg.name %>.js',
+        dest: 'js/<%= pkg.name %>.js',
+        match: '// Bootstrap code'
       }
     },
 
@@ -283,6 +293,14 @@ module.exports = function (grunt) {
       docs: {
         src: 'dist/*/*',
         dest: 'docs/'
+      },
+      safeJs: {
+        src: 'js/safe.js',
+        dest: 'js/<%= pkg.name %>.js'
+      },
+      safeDist: {
+          src: 'js/<%= pkg.name %>.js',
+          dest: 'dist/js/<%= pkg.name %>.js'
       }
     },
 
@@ -416,8 +434,11 @@ module.exports = function (grunt) {
   grunt.registerTask('test', testSubtasks);
   grunt.registerTask('test-js', ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
 
+  // Safe JS distribution task.
+  grunt.registerTask('dist-safe', ['copy:safeJs', 'insert', 'copy:safeDist']);
+
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs']);
+  grunt.registerTask('dist-js', ['concat', 'dist-safe', 'uglify:core', 'commonjs']);
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
