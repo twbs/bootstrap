@@ -66,7 +66,29 @@
 
     if (changed) this.$element.toggleClass('active')
   }
+  //sorry,it is a test,I study github.
+  Button.prototype.css = function () {
+    var change = true;
+    var $parent = this.$element.closest('[data-toggle="button"]');
 
+    if ($parent.length) {
+      var $input = this.$element.find("input");
+      if ($input.prop('type') == "radio") {
+        if ($input.prop("checked") && this.$element.hasClass("active")) {
+          change =false;
+        }
+        else {
+          $parent.find(".active").removeClass("active");
+        }
+        if (changed) {
+          $input.prop('checked', !this.$element.hasClass(".active")).trigger('change');
+        }
+      }
+      else {
+        this.$element.attr("aria-pressed", !this.$element.hasClass("active"));
+      }
+    }
+  }
 
   // BUTTON PLUGIN DEFINITION
   // ========================
