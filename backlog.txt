@@ -3,41 +3,11 @@
 
 
 
-Alertas
-	No sacar la basura
-	Lluvia
-	Vientos intensos
-	Altas temperaturas
-	Niebla
-	Godzilla
-	Prevención contra el monóxido de carbono
-
-Transporte
-	Cortes y accesos habilitados
-	Cortes por obras
-	Consejos para automovilistas
-	Libre estacionamiento
-	Línea B modificó su horario
-
-Anuncios
-	Padrón electoral
-	Cronograma de servicios para el feriado
-	Dónde donar para damnificados
-	Streaming
-	Evento
-
-
-
-
-
-
-
-
 
 * TASKS *********************************************************************************************
 
 
-- Glyphicons en png...... [hacer lo de las alertas]
+
 
 
 - diferentes jerarquías menu principal

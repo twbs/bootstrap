@@ -524,8 +524,8 @@ margin-bottom: 0;
   display:inline-block;
   background-repeat:no-repeat;
   background-size:contain;
-  background-image:url(social-user.png);
-  background-image:url(social-user.svg), none;
+  background-image:url(social/social-user.png);
+  background-image:url(social/social-user.svg), none;
 }
 .sub-brand > a {
   padding-left:50px !important;
@@ -841,28 +841,28 @@ margin-bottom: 16px;
 }
 
 .social-fb {
-  background-image:url(social-fb.png);
-  background-image:url(social-fb.svg), none;
+  background-image:url(social/social-fb.png);
+  background-image:url(social/social-fb.svg), none;
 }
 .social-tw {
-  background-image:url(social-tw.png);
-  background-image:url(social-tw.svg), none;
+  background-image:url(social/social-tw.png);
+  background-image:url(social/social-tw.svg), none;
 }
 .social-gp {
-  background-image:url(social-gp.png);
-  background-image:url(social-gp.svg), none;
+  background-image:url(social/social-gp.png);
+  background-image:url(social/social-gp.svg), none;
 }
 .social-yt {
-  background-image:url(social-yt.png);
-  background-image:url(social-yt.svg), none;
+  background-image:url(social/social-yt.png);
+  background-image:url(social/social-yt.svg), none;
 }
 .social-fl {
-  background-image:url(social-fl.png);
-  background-image:url(social-fl.svg), none;
+  background-image:url(social/social-fl.png);
+  background-image:url(social/social-fl.svg), none;
 }
 .social-rss {
-  background-image:url(social-rss.png);
-  background-image:url(social-rss.svg), none;
+  background-image:url(social/social-rss.png);
+  background-image:url(social/social-rss.svg), none;
 }
 .ba-social {
   display:table;
@@ -1250,26 +1250,6 @@ section h2 {
     display:none;
   }
 }
-.glyphicon-shortcut-vos {
-  background:no-repeat center center;
-  background-image:url(shortcut-vos.png);
-  background-image:url(shortcut-vos.svg), none;
-}
-.glyphicon-shortcut-verde {
-  background:no-repeat center center;
-  background-image:url(shortcut-verde.png);
-  background-image:url(shortcut-verde.svg), none;
-}
-.glyphicon-shortcut-cultural {
-  background:no-repeat center center;
-  background-image:url(shortcut-cultural.png);
-  background-image:url(shortcut-cultural.svg), none;
-}
-.glyphicon-shortcut-evoluciona {
-  background:no-repeat center center;
-  background-image:url(shortcut-evoluciona.png);
-  background-image:url(shortcut-evoluciona.svg), none;
-}
 .alert-spot {
   margin:48px 30px 0 30px;
 }
@@ -1284,6 +1264,83 @@ section h2 {
 }
 .home-nav .btn {
   margin-bottom:8px;
+}
+
+/* icons sellos */
+
+.glyphicon-shortcut-vos {
+  background:no-repeat center center;
+  background-image:url(sellos/shortcut-vos.png);
+  background-image:url(sellos/shortcut-vos.svg), none;
+}
+.glyphicon-shortcut-verde {
+  background:no-repeat center center;
+  background-image:url(sellos/shortcut-verde.png);
+  background-image:url(sellos/shortcut-verde.svg), none;
+}
+.glyphicon-shortcut-cultural {
+  background:no-repeat center center;
+  background-image:url(sellos/shortcut-cultural.png);
+  background-image:url(sellos/shortcut-cultural.svg), none;
+}
+.glyphicon-shortcut-evoluciona {
+  background:no-repeat center center;
+  background-image:url(sellos/shortcut-evoluciona.png);
+  background-image:url(sellos/shortcut-evoluciona.svg), none;
+}
+
+/* icons alerts */
+
+.glyphicon-alert-calendario,
+.glyphicon-alert-clima,
+.glyphicon-alert-evento,
+.glyphicon-alert-informacion,
+.glyphicon-alert-salud,
+.glyphicon-alert-subte,
+.glyphicon-alert-temperatura,
+.glyphicon-alert-transito {
+  margin-left:7px;
+  margin-right:-7px;
+}
+.glyphicon-alert-calendario {
+  background:no-repeat center center;
+  background-image:url(alerts/alert-calendario.png);
+  background-image:url(alerts/alert-calendario.svg), none;
+}
+.glyphicon-alert-clima {
+  background:no-repeat center center;
+  background-image:url(alerts/alert-clima.png);
+  background-image:url(alerts/alert-clima.svg), none;
+}
+.glyphicon-alert-evento {
+  background:no-repeat center center;
+  background-image:url(alerts/alert-evento.png);
+  background-image:url(alerts/alert-evento.svg), none;
+}
+.glyphicon-alert-informacion {
+  background:no-repeat center center;
+  background-image:url(alerts/alert-informacion.png);
+  background-image:url(alerts/alert-informacion.svg), none;
+}
+.glyphicon-alert-salud {
+  background:no-repeat center center;
+  background-image:url(alerts/alert-salud.png);
+  background-image:url(alerts/alert-salud.svg), none;
+}
+.glyphicon-alert-subte {
+  background:no-repeat center center;
+  background-image:url(alerts/alert-subte.png);
+  background-image:url(alerts/alert-subte.svg), none;
+}
+.glyphicon-alert-temperatura {
+  background:no-repeat center center;
+  background-image:url(alerts/alert-temperatura.png);
+  background-image:url(alerts/alert-temperatura.svg), none;
+}
+.glyphicon-alert-transito {
+  background:no-repeat center center;
+  background-image:url(alerts/alert-transito.png);
+  background-image:url(alerts/alert-transito.svg), none;
 }
 
 /* aplicativo */
@@ -1512,16 +1569,16 @@ margin:0;
   opacity:1;
 }
 .ribbon-black {
-  background-image:url(ribbon-black.png);
-  background-image:url(ribbon-black.svg), none;
+  background-image:url(ribbons/ribbon-black.png);
+  background-image:url(ribbons/ribbon-black.svg), none;
 }
 .ribbon-red {
-  background-image:url(ribbon-red.png);
-  background-image:url(ribbon-red.svg), none;
+  background-image:url(ribbons/ribbon-red.png);
+  background-image:url(ribbons/ribbon-red.svg), none;
 }
 .ribbon-pink {
-  background-image:url(ribbon-pink.png);
-  background-image:url(ribbon-pink.svg), none;
+  background-image:url(ribbons/ribbon-pink.png);
+  background-image:url(ribbons/ribbon-pink.svg), none;
 }
 
 

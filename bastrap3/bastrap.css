@@ -2536,8 +2536,15 @@ a.alert-spot:active {
   font-size: 30px;
   padding:10px 0 0 0;
   width:45px;
+  height:45px;
 }
-@media (max-width: 560px) {
+.alert-spot .glyphicon-chevron-right {
+  float:right;
+  font-size: 18px;
+  margin-top:5px;
+  width:15px;
+}
+@media (max-width: 767px) {
   .alert-spot .glyphicon {
     display:none;
   }
@@ -2545,12 +2552,6 @@ a.alert-spot:active {
     display:block;
     padding-top:20px;
   }
-}
-.alert-spot .glyphicon-chevron-right {
-  float:right;
-  font-size: 18px;
-  margin-top:5px;
-  width:15px;
 }
 @media (min-width: 767px) {
   .alert-spot > div {
