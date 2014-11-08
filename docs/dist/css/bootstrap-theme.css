@@ -275,6 +275,19 @@
 .navbar-fixed-bottom {
   border-radius: 0;
 }
+@media (max-width: 767px) {
+  .navbar .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #fff;
+    background-image: -webkit-linear-gradient(top, #428bca 0%, #357ebd 100%);
+    background-image:      -o-linear-gradient(top, #428bca 0%, #357ebd 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#428bca), to(#357ebd));
+    background-image:         linear-gradient(to bottom, #428bca 0%, #357ebd 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff428bca', endColorstr='#ff357ebd', GradientType=0);
+    background-repeat: repeat-x;
+  }
+}
 .alert {
   text-shadow: 0 1px 0 rgba(255, 255, 255, .2);
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 1px 2px rgba(0, 0, 0, .05);
