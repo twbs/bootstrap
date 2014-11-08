@@ -187,10 +187,11 @@
 
 // Transitions
 
-.transition(@transition) {
-  -webkit-transition: @transition;
-       -o-transition: @transition;
-          transition: @transition;
+.transition (@value1,@value2:X,...) {
+  @value: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
+  -webkit-transition: @value;
+       -o-transition: @value;
+          transition: @value;
 }
 .transition-property(@transition-property) {
   -webkit-transition-property: @transition-property;
