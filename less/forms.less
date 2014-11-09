@@ -168,12 +168,11 @@ input[type="search"] {
 // Special styles for iOS temporal inputs
 //
 // In Mobile Safari, setting `display: block` on temporal inputs causes the
-// text within the input to become vertically misaligned.
-// As a workaround, we set a pixel line-height that matches the
-// given height of the input. Since this fucks up everything else, we have to
-// appropriately reset it for Internet Explorer and the size variations.
+// text within the input to become vertically misaligned. As a workaround, we
+// set a pixel line-height that matches the given height of the input, but only
+// for Safari.
 
-@media screen and (-webkit-min-device-pixel-ratio:0) {
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
   input[type="date"],
   input[type="time"],
   input[type="datetime-local"],
