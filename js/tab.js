@@ -65,25 +65,30 @@
     var $li     = $(e.target).parent()
     var key     = e.which
     var $items  = $li.closest('ul[role="tablist"]').find('li')
+    var len     = $items.length
     var index   = $li.index()
+    var dir
     var $newTab
-
-    e.preventDefault()
-    e.stopPropagation()
 
     switch (key) {
       case 37: // left
       case 38: // up
-        $newTab = (index == 0) ? $items.last() : $items.eq(index - 1)
+        dir = -1
         break
       case 39: // right
       case 40: // down
-        $newTab = (index == $items.length - 1) ? $items.eq(0) : $items.eq(index + 1)
+        dir = 1
         break
+      default:
+        return
     }
 
-    if ($newTab) Plugin.call($newTab.find('a'), 'show')
+    e.preventDefault()
+    e.stopPropagation()
 
+    $newTab = $items.eq((index + len + dir) % len)
+
+    if ($newTab) Plugin.call($newTab.find('a'), 'show')
   }
 
   Tab.prototype.activate = function (element, container, callback) {
