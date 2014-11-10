@@ -2,6 +2,12 @@
 
 
 //
+// Set up variables
+// --------------------------------------------------
+@import "manta-color-palette-2014.less";
+@import "variables.less";
+
+//
 // Load all of bootstrap
 // --------------------------------------------------
 @import "bootstrap.less";
@@ -10,4 +16,25 @@
 // Load manta custom theme
 // --------------------------------------------------
 @import "manta-custom.less";
+
+
+// create temporary 2015 theme for testing
+.twenty15 {
+  //
+  // Set up variables
+  // --------------------------------------------------
+  @import "2015/manta-color-palette-2015.less";
+  @import "2015/variables.less";
+  @import "2015/manta-overrides-2015.less";
+
+  //
+  // Load all of bootstrap
+  // --------------------------------------------------
+  @import "2015/bootstrap.less";
+
+  //
+  // Load manta custom theme
+  // --------------------------------------------------
+  @import "2015/manta-custom.less";
+}
 

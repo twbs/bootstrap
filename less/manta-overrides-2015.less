@@ -1,7 +1,6 @@
 @link-color:            @warmMiddark;
   //uses the above
   @link-hover-color:      @link-color;
-  @btn-warning-color:              @link-color;
   @pagination-color:                     @link-color;
   @badge-active-color:          @link-color;
 @input-bg:                       @neutralLightest;
@@ -14,3 +13,33 @@
   @navbar-default-brand-color:               @navbar-default-link-color;
   @navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%);
   @navbar-default-brand-hover-bg:            transparent;
+
+@headings-color: @neutralDarker;
+@text-color: @neutralMiddark;
+  @btn-default-color:              @text-color;
+  @thumbnail-caption-color:     @text-color;
+  @btn-warning-color:              @text-color;
+@btn-warning-border:             @neutralMidlight;
+
+//temp - for test - too many orange buttons!
+@btn-info-color:                 @btn-primary-color;
+@btn-info-bg:                    @btn-primary-bg;
+@btn-info-border:                @btn-primary-border;
+
+@body-bg:    @neutralLightest;
+  @breadcrumb-bg:               @body-bg;
+  @nav-tabs-active-link-hover-bg:             @body-bg;
+  @nav-tabs-justified-active-link-border-color:     @body-bg;
+
+.alert-info-2015 {
+  .alert-variant(@alert-info-bg; @alert-info-border; @alert-info-text);
+}
+
+.branded-adsense {
+  a.adsense-link, a.adsense-display-url {
+    &,&:hover,&:active {
+      color: @link-color;
+    }
+  }
+}
+
