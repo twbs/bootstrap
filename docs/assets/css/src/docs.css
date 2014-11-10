@@ -437,7 +437,7 @@ body {
   color: #333;
 }
 .bs-docs-featurette-img:hover {
-  color: #428bca;
+  color: #337ab7;
   text-decoration: none;
 }
 .bs-docs-featurette-img img {
@@ -771,7 +771,7 @@ h1[id] {
   background-color: #eee;
 }
 .color-swatches .brand-primary {
-  background-color: #428bca;
+  background-color: #337ab7;
 }
 .color-swatches .brand-success {
   background-color: #5cb85c;
