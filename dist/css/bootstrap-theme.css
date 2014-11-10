@@ -263,10 +263,10 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffb60f', endColorstr='#ffdb9800', GradientType=0);
 }
 .progress-bar-warning {
-  background-image: -webkit-linear-gradient(top, #fad0d0 0%, #f5a2a2 100%);
-  background-image: linear-gradient(to bottom, #fad0d0 0%, #f5a2a2 100%);
+  background-image: -webkit-linear-gradient(top, #fdd900 0%, #caad00 100%);
+  background-image: linear-gradient(to bottom, #fdd900 0%, #caad00 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffad0d0', endColorstr='#fff5a2a2', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffdd900', endColorstr='#ffcaad00', GradientType=0);
 }
 .progress-bar-danger {
   background-image: -webkit-linear-gradient(top, #c7272b 0%, #9c1f22 100%);

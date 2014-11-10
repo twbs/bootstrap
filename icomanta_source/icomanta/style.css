@@ -1,15 +1,15 @@
 @font-face {
 	font-family: 'icomanta';
-	src:url('fonts/icomanta.eot');
-	src:url('fonts/icomanta.eot?#iefix') format('embedded-opentype'),
-		url('fonts/icomanta.ttf') format('truetype'),
-		url('fonts/icomanta.woff') format('woff'),
-		url('fonts/icomanta.svg#icomanta') format('svg');
+	src:url('fonts/icomanta.eot?cl45xr');
+	src:url('fonts/icomanta.eot?#iefixcl45xr') format('embedded-opentype'),
+		url('fonts/icomanta.woff?cl45xr') format('woff'),
+		url('fonts/icomanta.ttf?cl45xr') format('truetype'),
+		url('fonts/icomanta.svg?cl45xr#icomanta') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
-[class*="icon-"] {
+[class^="icon-"], [class*=" icon-"] {
 	font-family: 'icomanta';
 	speak: none;
 	font-style: normal;
@@ -23,6 +23,9 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.icon-manta-logo:before {
+	content: "\e647";
+}
 .icon-automotive:before {
 	content: "\e600";
 }

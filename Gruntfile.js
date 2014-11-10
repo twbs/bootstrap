@@ -155,18 +155,6 @@ module.exports = function (grunt) {
     },
 
     less: {
-      compileCore: {
-        options: {
-          strictMath: true,
-          sourceMap: true,
-          outputSourceFiles: true,
-          sourceMapURL: '<%= pkg.name %>.css.map',
-          sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
-        },
-        files: {
-          'dist/css/<%= pkg.name %>.css': 'less/bootstrap.less'
-        }
-      },
       compileTheme: {
         options: {
           strictMath: true,
@@ -184,6 +172,8 @@ module.exports = function (grunt) {
           strictMath: true,
           sourceMap: true,
           outputSourceFiles: true,
+          //syncImport: true,
+          //strictImports: true,
           sourceMapURL: '<%= pkg.name %>-manta.css.map',
           sourceMapFilename: 'dist/css/<%= pkg.name %>-manta.css.map'
         },
@@ -197,7 +187,6 @@ module.exports = function (grunt) {
           report: 'min'
         },
         files: {
-          'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css',
           'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css',
           'dist/css/<%= pkg.name %>-manta.min.css': 'dist/css/<%= pkg.name %>-manta.css'
         }
@@ -228,8 +217,6 @@ module.exports = function (grunt) {
         },
         files: {
           src: [
-            'dist/css/<%= pkg.name %>.css',
-            'dist/css/<%= pkg.name %>.min.css',
             'dist/css/<%= pkg.name %>-theme.css',
             'dist/css/<%= pkg.name %>-theme.min.css',
             'dist/css/<%= pkg.name %>-manta.css',
@@ -245,7 +232,6 @@ module.exports = function (grunt) {
       },
       dist: {
         files: {
-          'dist/css/<%= pkg.name %>.css': 'dist/css/<%= pkg.name %>.css',
           'dist/css/<%= pkg.name %>-theme.css': 'dist/css/<%= pkg.name %>-theme.css',
           'dist/css/<%= pkg.name %>-manta.css': 'dist/css/<%= pkg.name %>-manta.css'
         }
