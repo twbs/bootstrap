@@ -149,7 +149,7 @@ module.exports = function (grunt) {
     },
 
     less: {
-      compileCore: {
+      core: {
         options: {
           strictMath: true,
           sourceMap: true,
@@ -160,7 +160,7 @@ module.exports = function (grunt) {
         src: 'less/bootstrap.less',
         dest: 'dist/css/<%= pkg.name %>.css'
       },
-      compileDocs: {
+      docs: {
         options: {
           strictMath: true
         },
@@ -388,7 +388,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs']);
 
   // CSS distribution task.
-  grunt.registerTask('less-compile', ['less:compileCore', 'less:compileDocs']);
+  grunt.registerTask('less-compile', ['less:core', 'less:docs']);
   grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'usebanner', 'csscomb:dist', 'cssmin:core']);
 
   // Full distribution task.
