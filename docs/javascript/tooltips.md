@@ -78,6 +78,12 @@ Hover over the buttons below to see their tooltips.
 <div class="bs-callout bs-callout-danger">
   <h4>Opt-in functionality</h4>
   <p>For performance reasons, the Tooltip and Popover data-apis are opt-in, meaning <strong>you must initialize them yourself</strong>.</p>
+  <p>One way to initialize all tooltips on a page would be to select them by their <code>data-toggle</code> attribute:</p>
+{% highlight js %}
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+{% endhighlight %}
 </div>
 <div class="bs-callout bs-callout-warning">
   <h4>Tooltips in button groups and input groups require special setting</h4>

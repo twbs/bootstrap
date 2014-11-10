@@ -9,7 +9,7 @@ A lightweight, flexible component that can optionally extend the entire viewport
 <div class="jumbotron">
   <h1 class="jumbotron-heading">Hello, world!</h1>
   <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <p class="lead"><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+  <p class="lead"><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
 </div>
 {% endexample %}
 
@@ -30,6 +30,6 @@ Jumbotrons also come with an adaptive `hr`—just add `.jumbotron-hr` to the ele
   <h1 class="jumbotron-heading">Jumbotron <code>hr</code></h1>
   <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
   <hr class="jumbotron-hr">
-  <p class="lead"><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+  <p class="lead"><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
 </div>
 {% endexample %}

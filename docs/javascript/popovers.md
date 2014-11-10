@@ -14,6 +14,12 @@ Popovers whose both title and content are zero-length are never displayed.
 <div class="bs-callout bs-callout-danger">
   <h4>Opt-in functionality</h4>
   <p>For performance reasons, the Tooltip and Popover data-apis are opt-in, meaning <strong>you must initialize them yourself</strong>.</p>
+  <p>One way to initialize all popovers on a page would be to select them by their <code>data-toggle</code> attribute:</p>
+{% highlight js %}
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+{% endhighlight %}
 </div>
 <div class="bs-callout bs-callout-warning">
   <h4>Popovers in button groups and input groups require special setting</h4>

@@ -125,7 +125,7 @@ Add `data-toggle="dropdown"` to a link or button to toggle a dropdown.
 <div class="dropdown">
   <button id="dLabel" type="button" data-toggle="dropdown">
     Dropdown trigger
-   <span class="caret"></span>
+    <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
     ...

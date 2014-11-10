@@ -11,7 +11,7 @@ The default media allow to float a media object (images, video, audio) to the le
 
 {% example html %}
 <div class="media">
-  <a class="pull-left" href="#">
+  <a class="media-left" href="#">
     <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
   </a>
   <div class="media-body">
@@ -21,20 +21,20 @@ The default media allow to float a media object (images, video, audio) to the le
 </div>
 {% endexample %}
 
-### Nested media
+### Nesting
 
 Media components can also be nested.
 
 {% example html %}
 <div class="media">
-  <a class="pull-left" href="#">
+  <a class="media-left" href="#">
     <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
   </a>
   <div class="media-body">
     <h4 class="media-heading">Media heading</h4>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
     <div class="media">
-      <a class="pull-left" href="#">
+      <a class="media-left" href="#">
         <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
       </a>
       <div class="media-body">
@@ -46,7 +46,7 @@ Media components can also be nested.
 </div>
 {% endexample %}
 
-### Media alignment
+### Alignment
 
 The images or other media can be aligned top, middle, or bottom. The default is top aligned.
 
@@ -96,7 +96,7 @@ With a bit of extra markup, you can use media inside list (useful for comment th
 {% example html %}
 <ul class="media-list">
   <li class="media">
-    <a class="pull-left" href="#">
+    <a class="media-left" href="#">
       <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
     </a>
     <div class="media-body">
@@ -104,7 +104,7 @@ With a bit of extra markup, you can use media inside list (useful for comment th
       <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
       <!-- Nested media object -->
       <div class="media">
-        <a class="pull-left" href="#">
+        <a class="media-left" href="#">
           <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
         </a>
         <div class="media-body">
@@ -112,7 +112,7 @@ With a bit of extra markup, you can use media inside list (useful for comment th
           Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
           <!-- Nested media object -->
           <div class="media">
-            <a class="pull-left" href="#">
+            <a class="media-left" href="#">
               <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
             </a>
             <div class="media-body">
@@ -124,7 +124,7 @@ With a bit of extra markup, you can use media inside list (useful for comment th
       </div>
       <!-- Nested media object -->
       <div class="media">
-        <a class="pull-left" href="#">
+        <a class="media-left" href="#">
           <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
         </a>
         <div class="media-body">
@@ -135,7 +135,7 @@ With a bit of extra markup, you can use media inside list (useful for comment th
     </div>
   </li>
   <li class="media">
-    <a class="pull-right" href="#">
+    <a class="media-right" href="#">
       <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
     </a>
     <div class="media-body">

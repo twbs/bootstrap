@@ -178,16 +178,16 @@ Just wrap a series of `.btn`s in `.btn-group.btn-group-justified`.
 
 <div class="bs-example">
   <div class="btn-group btn-group-justified">
-    <a class="btn btn-secondary" role="button">Left</a>
-    <a class="btn btn-secondary" role="button">Middle</a>
-    <a class="btn btn-secondary" role="button">Right</a>
+    <a class="btn btn-secondary" href="#" role="button">Left</a>
+    <a class="btn btn-secondary" href="#" role="button">Middle</a>
+    <a class="btn btn-secondary" href="#" role="button">Right</a>
   </div>
   <br>
   <div class="btn-group btn-group-justified">
-    <a class="btn btn-secondary" role="button">Left</a>
-    <a class="btn btn-secondary" role="button">Middle</a>
+    <a class="btn btn-secondary" href="#" role="button">Left</a>
+    <a class="btn btn-secondary" href="#" role="button">Middle</a>
     <div class="btn-group">
-      <a class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+      <a class="btn btn-secondary dropdown-toggle" href="#" data-toggle="dropdown">
         Dropdown
       </a>
       <ul class="dropdown-menu" role="menu">
