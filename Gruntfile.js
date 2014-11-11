@@ -87,6 +87,7 @@ module.exports = function (grunt) {
         'dist/css/bootstrap.css',
         'dist/css/bootstrap-theme.css',
         'dist/css/bootstrap-manta.css',
+        'dist/css/bootstrap-manta2015.css',
         'docs/assets/css/docs.css',
         'docs/examples/**/*.css'
       ]
@@ -172,13 +173,23 @@ module.exports = function (grunt) {
           strictMath: true,
           sourceMap: true,
           outputSourceFiles: true,
-          //syncImport: true,
-          //strictImports: true,
           sourceMapURL: '<%= pkg.name %>-manta.css.map',
           sourceMapFilename: 'dist/css/<%= pkg.name %>-manta.css.map'
         },
         files: {
           'dist/css/<%= pkg.name %>-manta.css': 'less/manta.less'
+        }
+      },
+      compileManta2015: {
+        options: {
+          strictMath: true,
+          sourceMap: true,
+          outputSourceFiles: true,
+          sourceMapURL: '<%= pkg.name %>-manta2015.css.map',
+          sourceMapFilename: 'dist/css/<%= pkg.name %>-manta2015.css.map'
+        },
+        files: {
+          'dist/css/<%= pkg.name %>-manta2015.css': 'less/manta2015.less'
         }
       },
       minify: {
@@ -188,7 +199,8 @@ module.exports = function (grunt) {
         },
         files: {
           'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css',
-          'dist/css/<%= pkg.name %>-manta.min.css': 'dist/css/<%= pkg.name %>-manta.css'
+          'dist/css/<%= pkg.name %>-manta.min.css': 'dist/css/<%= pkg.name %>-manta.css',
+          'dist/css/<%= pkg.name %>-manta2015.min.css': 'dist/css/<%= pkg.name %>-manta2015.css'
         }
       }
     },
@@ -220,7 +232,9 @@ module.exports = function (grunt) {
             'dist/css/<%= pkg.name %>-theme.css',
             'dist/css/<%= pkg.name %>-theme.min.css',
             'dist/css/<%= pkg.name %>-manta.css',
-            'dist/css/<%= pkg.name %>-manta.min.css'
+            'dist/css/<%= pkg.name %>-manta.min.css',
+            'dist/css/<%= pkg.name %>-manta2015.css',
+            'dist/css/<%= pkg.name %>-manta2015.min.css'
           ]
         }
       }
@@ -233,7 +247,8 @@ module.exports = function (grunt) {
       dist: {
         files: {
           'dist/css/<%= pkg.name %>-theme.css': 'dist/css/<%= pkg.name %>-theme.css',
-          'dist/css/<%= pkg.name %>-manta.css': 'dist/css/<%= pkg.name %>-manta.css'
+          'dist/css/<%= pkg.name %>-manta.css': 'dist/css/<%= pkg.name %>-manta.css',
+          'dist/css/<%= pkg.name %>-manta2015.css': 'dist/css/<%= pkg.name %>-manta2015.css'
         }
       },
       examples: {
