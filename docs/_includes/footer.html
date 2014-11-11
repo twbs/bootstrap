@@ -36,17 +36,22 @@
 <script src="../dist/js/bootstrap.min.js"></script>
 <script src="../assets/js/docs.min.js"></script>
 <script>
+var cssBase = '../dist/css/bootstrap-manta';
+var cssSuffix = '.min.css';
+$('#main-css').load(function() {
+  console.log('loaded CSS');
+});
+var timer = false;
 function setTheme(theme) {
-  if(theme === "2015") {
-    $('html').addClass('twenty15');
+  var cssTheme = '';
+  $('#main-css').attr('href', cssBase+theme+cssSuffix);
+  if(timer) {
+    clearTimeout(timer);
   }
-  else {
-    $('html').removeClass('twenty15');
-  }
-  afterThemeChange();
+  timer = setTimeout(afterThemeChange, 1000);
 }
 $('#theme2014-toggle,#theme2014-label').click(function () {
-  setTheme('2014');
+  setTheme('');
 });
 $('#theme2015-toggle,#theme2015-label').click(function () {
   setTheme('2015');
