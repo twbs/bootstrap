@@ -75,6 +75,11 @@
     <p>Bootstrap exclusively uses CSS3 for its animations, but Internet Explorer 8 &amp; 9 don't support the necessary CSS properties. Thus, there are no slide transition animations when using these browsers. We have intentionally decided not to include jQuery-based fallbacks for the transitions.</p>
   </div>
 
+  <div class="bs-callout bs-callout-warning" id="callout-carousel-active">
+    <h4>Initial active element required</h4>
+    <p>The <code>.active</code> class needs to be added to one of the slides. Otherwise, the carousel will not be visible.</p>
+  </div>
+
   <h3>Optional captions</h3>
   <p>Add captions to your slides easily with the <code>.carousel-caption</code> element within any <code>.item</code>. Place just about any optional HTML within there and it will be automatically aligned and formatted.</p>
   <div class="bs-example">
