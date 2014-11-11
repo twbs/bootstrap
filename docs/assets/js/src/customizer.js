@@ -22,8 +22,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
   function showError(msg, err) {
     $('<div id="bsCustomizerAlert" class="bs-customizer-alert">' +
         '<div class="container">' +
-          '<a href="#bsCustomizerAlert" data-dismiss="alert" class="close pull-right">&times;</a>' +
-          '<p class="bs-customizer-alert-text"><span class="glyphicon glyphicon-warning-sign"></span>' + msg + '</p>' +
+          '<a href="#bsCustomizerAlert" data-dismiss="alert" class="close pull-right" aria-label="Close" role="button"><span aria-hidden="true">&times;</span></a>' +
+          '<p class="bs-customizer-alert-text"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span><span class="sr-only">Warning:</span>' + msg + '</p>' +
           (err.extract ? '<pre class="bs-customizer-alert-extract">' + err.extract.join('\n') + '</pre>' : '') +
         '</div>' +
       '</div>').appendTo('body').alert()
@@ -32,7 +32,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
   function showSuccess(msg) {
     $('<div class="bs-callout bs-callout-info">' +
-      '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + msg +
+      '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + msg +
     '</div>').insertAfter('.bs-customize-download')
   }
 
@@ -50,7 +50,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
   }
 
   function showAlert(type, msg, insertAfter) {
-    $('<div class="alert alert-' + type + '">' + msg + '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>')
+    $('<div class="alert alert-' + type + '">' + msg + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
       .insertAfter(insertAfter)
   }
 
