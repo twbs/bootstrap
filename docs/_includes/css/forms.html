@@ -63,7 +63,7 @@
   </div>
   <div class="bs-callout bs-callout-warning">
     <h4>Always add labels</h4>
-    <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the <code>.sr-only</code> class.</p>
+    <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the <code>.sr-only</code> class. There are further alternative methods of providing a label for assistive technologies, such as the <code>aria-label</code>, <code>aria-labelledby</code> or <code>title</code> attribute. If none of these is present, screen readers may resort to using the <code>placeholder</code> attribute, if present, but note that use of <code>placeholder</code> as a replacement for other labelling methods is not advised.</p>
   </div>
   <div class="bs-example">
     <form class="form-inline" role="form">
@@ -92,13 +92,10 @@
 {% highlight html %}
 <form class="form-inline" role="form">
   <div class="form-group">
-    <label class="sr-only" for="exampleInputEmail2">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
-  </div>
-  <div class="form-group">
     <div class="input-group">
+      <label class="sr-only" for="exampleInputEmail2">Email address</label>
       <div class="input-group-addon">@</div>
-      <input class="form-control" type="email" placeholder="Enter email">
+      <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
     </div>
   </div>
   <div class="form-group">
@@ -205,7 +202,7 @@
   <p>Form control which supports multiple lines of text. Change <code>rows</code> attribute as necessary.</p>
   <div class="bs-example">
     <form role="form">
-      <textarea class="form-control" rows="3"></textarea>
+      <textarea class="form-control" rows="3" placeholder="Textarea"></textarea>
     </form>
   </div><!-- /.bs-example -->
 {% highlight html %}
@@ -334,18 +331,18 @@
 </label>
 {% endhighlight %}
 
-  <h4>Checkboxes and radios without labels</h4>
-  <p>Should you have no text within the <code>&lt;label&gt;</code>, the input is positioned as you'd expect. <strong>Currently only works on non-inline checkboxes and radios.</strong></p>
+  <h4>Checkboxes and radios without label text</h4>
+  <p>Should you have no text within the <code>&lt;label&gt;</code>, the input is positioned as you'd expect. <strong>Currently only works on non-inline checkboxes and radios.</strong> Remember to still provide some form of label for assistive technologies (for instance, using <code>aria-label</code>).</p>
   <div class="bs-example">
     <form role="form">
       <div class="checkbox">
         <label>
-          <input type="checkbox" id="blankCheckbox" value="option1">
+          <input type="checkbox" id="blankCheckbox" value="option1" aria-label="Checkbox without label text">
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" name="blankRadio" id="blankRadio1" value="option1">
+          <input type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="Radio button without label text">
         </label>
       </div>
     </form>
@@ -353,12 +350,12 @@
 {% highlight html %}
 <div class="checkbox">
   <label>
-    <input type="checkbox" id="blankCheckbox" value="option1">
+    <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
   </label>
 </div>
 <div class="radio">
   <label>
-    <input type="radio" name="blankRadio" id="blankRadio1" value="option1">
+    <input type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
   </label>
 </div>
 {% endhighlight %}
@@ -464,7 +461,7 @@
 </form>
 {% endhighlight %}
 
-  <h2 id="forms-control-focus">Input focus</h2>
+  <h2 id="forms-control-focus">Focus state</h2>
   <p>We remove the default <code>outline</code> styles on some form controls and apply a <code>box-shadow</code> in its place for <code>:focus</code>.</p>
   <div class="bs-example">
     <form role="form">
@@ -477,7 +474,7 @@
   </div>
 
 
-  <h2 id="forms-control-disabled">Disabled inputs</h2>
+  <h2 id="forms-control-disabled">Disabled state</h2>
   <p>Add the <code>disabled</code> boolean attribute on an input to prevent user input and trigger a slightly different look.</p>
   <div class="bs-example">
     <form role="form">
@@ -547,7 +544,7 @@
 {% endhighlight %}
 
 
-  <h2 id="forms-control-readonly">Readonly inputs</h2>
+  <h2 id="forms-control-readonly">Readonly state</h2>
   <p>Add the <code>readonly</code> boolean attribute on an input to prevent user input and style the input as disabled.</p>
   <div class="bs-example">
     <form role="form">
@@ -561,6 +558,12 @@
 
   <h2 id="forms-control-validation">Validation states</h2>
   <p>Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element. Any <code>.control-label</code>, <code>.form-control</code>, and <code>.help-block</code> within that element will receive the validation styles.</p>
+
+  <div class="bs-callout bs-callout-warning">
+    <h4>Conveying validation state to assistive technologies</h4>
+    <p>Using these validation styles to denote the state of a form control only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers.</p>
+    <p>Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's <code>&lt;label&gt;</code> text itself (as is the case in the following code example), or associate an additional element with textual information about the validation state with the form control using <code>aria-describedby</code> (see the example in the following section). In the case of an error, you could also use the <code>aria-invalid="true"</code> attribute on the form control.</p>
+  </div>
 
   <div class="bs-example">
     <form role="form">
@@ -648,40 +651,51 @@
     <h4>Icons, labels, and input groups</h4>
     <p>Manual positioning of feedback icons is required for inputs without a label and for <a href="../components#input-groups">input groups</a> with an add-on on the right. You are strongly encouraged to provide labels for all inputs for accessibility reasons. If you wish to prevent labels from being displayed, hide them with the <code>sr-only</code> class. If you must do without labels, adjust the <code>top</code> value of the feedback icon. For input groups, adjust the <code>right</code> value to an appropriate pixel value depending on the width of your addon.</p>
   </div>
+  <div class="bs-callout bs-callout-warning">
+    <h4>Conveying the icon's meaning to assistive technologies</h4>
+    <p>To ensure that assistive technologies – such as screen readers – correctly convey the meaning of an icon, additional hidden text should be included with the <code>sr-only</code> class and explicitly associated with the form control it relates to using <code>aria-describedby</code>. Alternatively, ensure that the meaning (for instance, the fact that there is a warning for a particular text entry field) is conveyed in some other form, such as changing the text of the actual <code>&lt;label&gt;</code> associated with the form control.</p>
+    <p>Although the following examples already mention the validation state of their respective form controls in the <code>&lt;label&gt;</code> text itself, the above technique (using <code>sr-only</code> text and <code>aria-describedby</code>) has been included for illustrative purposes.</p>
+  </div>
   <div class="bs-example">
     <form role="form">
       <div class="form-group has-success has-feedback">
         <label class="control-label" for="inputSuccess2">Input with success</label>
-        <input type="text" class="form-control" id="inputSuccess2">
-        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+        <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
+        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+        <span id="inputSuccess2Status" class="sr-only">(success)</span>
       </div>
       <div class="form-group has-warning has-feedback">
         <label class="control-label" for="inputWarning2">Input with warning</label>
-        <input type="text" class="form-control" id="inputWarning2">
-        <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+        <input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Status">
+        <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+        <span id="inputWarning2Status" class="sr-only">(warning)</span>
       </div>
       <div class="form-group has-error has-feedback">
         <label class="control-label" for="inputError2">Input with error</label>
-        <input type="text" class="form-control" id="inputError2">
-        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+        <input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Status">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <span id="inputError2Status" class="sr-only">(error)</span>
       </div>
     </form>
   </div>
 {% highlight html %}
 <div class="form-group has-success has-feedback">
   <label class="control-label" for="inputSuccess2">Input with success</label>
-  <input type="text" class="form-control" id="inputSuccess2">
-  <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+  <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
+  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+  <span id="inputSuccess2Status" class="sr-only">(success)</span>
 </div>
 <div class="form-group has-warning has-feedback">
   <label class="control-label" for="inputWarning2">Input with warning</label>
-  <input type="text" class="form-control" id="inputWarning2">
-  <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+  <input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Status">
+  <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+  <span id="inputWarning2Status" class="sr-only">(warning)</span>
 </div>
 <div class="form-group has-error has-feedback">
   <label class="control-label" for="inputError2">Input with error</label>
-  <input type="text" class="form-control" id="inputError2">
-  <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+  <input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Status">
+  <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+  <span id="inputError2Status" class="sr-only">(error)</span>
 </div>
 {% endhighlight %}
 
@@ -691,8 +705,9 @@
       <div class="form-group has-success has-feedback">
         <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="inputSuccess3">
-          <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+          <input type="text" class="form-control" id="inputSuccess3" aria-describedby="inputSuccess3Status">
+          <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+          <span id="inputSuccess3Status" class="sr-only">(success)</span>
         </div>
       </div>
     </form>
@@ -702,8 +717,9 @@
   <div class="form-group has-success has-feedback">
     <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" id="inputSuccess3">
-      <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+      <input type="text" class="form-control" id="inputSuccess3" aria-describedby="inputSuccess3Status">
+      <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+      <span id="inputSuccess3Status" class="sr-only">(success)</span>
     </div>
   </div>
 </form>
@@ -713,8 +729,9 @@
     <form class="form-inline" role="form">
       <div class="form-group has-success has-feedback">
         <label class="control-label" for="inputSuccess4">Input with success</label>
-        <input type="text" class="form-control" id="inputSuccess4">
-        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+        <input type="text" class="form-control" id="inputSuccess4" aria-describedby="inputSuccess4Status">
+        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+        <span id="inputSuccess4Status" class="sr-only">(success)</span>
       </div>
     </form>
   </div>
@@ -722,8 +739,9 @@
 <form class="form-inline" role="form">
   <div class="form-group has-success has-feedback">
     <label class="control-label" for="inputSuccess4">Input with success</label>
-    <input type="text" class="form-control" id="inputSuccess4">
-    <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+    <input type="text" class="form-control" id="inputSuccess4" aria-describedby="inputSuccess4Status">
+    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+    <span id="inputSuccess4Status" class="sr-only">(success)</span>
   </div>
 </form>
 {% endhighlight %}
@@ -733,15 +751,17 @@
   <div class="bs-example">
     <div class="form-group has-success has-feedback">
       <label class="control-label sr-only" for="inputSuccess5">Hidden label</label>
-      <input type="text" class="form-control" id="inputSuccess5">
-      <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+      <input type="text" class="form-control" id="inputSuccess5" aria-describedby="inputSuccess5Status">
+      <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+      <span id="inputSuccess5Status" class="sr-only">(success)</span>
     </div>
   </div>
 {% highlight html %}
 <div class="form-group has-success has-feedback">
   <label class="control-label sr-only" for="inputSuccess5">Hidden label</label>
-  <input type="text" class="form-control" id="inputSuccess5">
-  <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+  <input type="text" class="form-control" id="inputSuccess5" aria-describedby="inputSuccess5Status">
+  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+  <span id="inputSuccess5Status" class="sr-only">(success)</span>
 </div>
 {% endhighlight %}
 
@@ -849,13 +869,23 @@
 
   <h2 id="forms-help-text">Help text</h2>
   <p>Block level help text for form controls.</p>
+  <div class="bs-callout bs-callout-info">
+    <h4>Associating help text with form controls</h4>
+    <p>Help text should be explicitly associated with the form control it relates to using the <code>aria-describedby</code> attribute. This will ensure that assistive technologies – such as screen readers – will announce this help text when the user focuses or enters the control.</p>
+  </div>
   <div class="bs-example">
     <form role="form">
-      <input type="text" class="form-control">
-      <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+      <div class="form-group">
+        <label for="inputHelpBlock">Input with help text</label>
+        <input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
+      </div>
+      <span id="helpBlock" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
     </form>
   </div><!-- /.bs-example -->
 {% highlight html %}
-<span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+<label class="sr-only" for="inputHelpBlock">Input with help text</label>
+<input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
+...
+<span id="helpBlock" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
 {% endhighlight %}
 </div>

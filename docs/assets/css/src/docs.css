@@ -437,7 +437,7 @@ body {
   color: #333;
 }
 .bs-docs-featurette-img:hover {
-  color: #428bca;
+  color: #337ab7;
   text-decoration: none;
 }
 .bs-docs-featurette-img img {
@@ -638,8 +638,6 @@ body {
   .bs-docs-sidebar.affix {
     position: fixed; /* Undo the static from mobile first approach */
     top: 20px;
-    bottom: 20px;
-    overflow-y: auto;
   }
   .bs-docs-sidebar.affix-bottom {
     position: absolute; /* Undo the static from mobile first approach */
@@ -773,7 +771,7 @@ h1[id] {
   background-color: #eee;
 }
 .color-swatches .brand-primary {
-  background-color: #428bca;
+  background-color: #337ab7;
 }
 .color-swatches .brand-success {
   background-color: #5cb85c;
@@ -828,6 +826,21 @@ h1[id] {
   width: 32px;
   margin-right: 10px;
   border-radius: 4px;
+}
+
+
+/*
+ * Wall of Browser Bugs
+ *
+ * Better display for the responsive table on the Wall of Browser Bugs.
+ */
+
+.bs-docs-browser-bugs td p {
+  margin-bottom: 0;
+}
+
+.bs-docs-browser-bugs th:first-child {
+  width: 18%;
 }
 
 

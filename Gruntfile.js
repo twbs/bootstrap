@@ -27,6 +27,13 @@ module.exports = function (grunt) {
   };
   var generateRawFiles = require('./grunt/bs-raw-files-generator.js');
   var generateCommonJSModule = require('./grunt/bs-commonjs-generator.js');
+  var configBridge = grunt.file.readJSON('./grunt/configBridge.json', { encoding: 'utf8' });
+
+  Object.keys(configBridge.paths).forEach(function (key) {
+    configBridge.paths[key].forEach(function (val, i, arr) {
+      arr[i] = path.join('./docs/assets', val);
+    });
+  });
 
   // Project configuration.
   grunt.initConfig({
@@ -38,21 +45,8 @@ module.exports = function (grunt) {
             ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
             ' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n' +
             ' */\n',
-    // NOTE: This jqueryCheck/jqueryVersionCheck code is duplicated in customizer.js;
-    //       if making changes here, be sure to update the other copy too.
-    jqueryCheck: [
-      'if (typeof jQuery === \'undefined\') {',
-      '  throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery\')',
-      '}\n'
-    ].join('\n'),
-    jqueryVersionCheck: [
-      '+function ($) {',
-      '  var version = $.fn.jquery.split(\' \')[0].split(\'.\')',
-      '  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1)) {',
-      '    throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery version 1.9.1 or higher\')',
-      '  }',
-      '}(jQuery);\n\n'
-    ].join('\n'),
+    jqueryCheck: configBridge.config.jqueryCheck.join('\n'),
+    jqueryVersionCheck: configBridge.config.jqueryVersionCheck.join('\n'),
 
     // Task configuration.
     clean: {
@@ -138,24 +132,11 @@ module.exports = function (grunt) {
         dest: 'dist/js/<%= pkg.name %>.min.js'
       },
       customize: {
-        src: [
-          'docs/assets/js/vendor/less.min.js',
-          'docs/assets/js/vendor/jszip.min.js',
-          'docs/assets/js/vendor/uglify.min.js',
-          'docs/assets/js/vendor/Blob.js',
-          'docs/assets/js/vendor/FileSaver.js',
-          'docs/assets/js/raw-files.min.js',
-          'docs/assets/js/src/customizer.js'
-        ],
+        src: configBridge.paths.customizerJs,
         dest: 'docs/assets/js/customize.min.js'
       },
       docsJs: {
-        // NOTE: This src list is duplicated in footer.html; if making changes here, be sure to update the other copy too.
-        src: [
-          'docs/assets/js/vendor/holder.js',
-          'docs/assets/js/vendor/ZeroClipboard.min.js',
-          'docs/assets/js/src/application.js'
-        ],
+        src: configBridge.paths.docsJs,
         dest: 'docs/assets/js/docs.min.js'
       }
     },
@@ -194,16 +175,7 @@ module.exports = function (grunt) {
 
     autoprefixer: {
       options: {
-        browsers: [
-          'Android 2.3',
-          'Android >= 4',
-          'Chrome >= 20',
-          'Firefox >= 24', // Firefox 24 is the latest ESR
-          'Explorer >= 8',
-          'iOS >= 6',
-          'Opera >= 12',
-          'Safari >= 6'
-        ]
+        browsers: configBridge.config.autoprefixerBrowsers
       },
       core: {
         options: {
@@ -349,7 +321,6 @@ module.exports = function (grunt) {
         failHard: true,
         reset: true,
         relaxerror: [
-          'Bad value X-UA-Compatible for attribute http-equiv on element meta.',
           'Element img is missing required attribute src.',
           'Attribute autocomplete not allowed on element input at this point.',
           'Attribute autocomplete not allowed on element button at this point.'
