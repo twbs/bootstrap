@@ -14,16 +14,16 @@
       <li>Change the point at which your navbar switches between collapsed and horizontal mode. Customize the <code>@grid-float-breakpoint</code> variable or add your own media query.</li>
     </ol>
   </div>
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-navbar-js">
     <h4>Requires JavaScript plugin</h4>
     <p>If JavaScript is disabled and the viewport is narrow enough that the navbar collapses, it will be impossible to expand the navbar and view the content within the <code>.navbar-collapse</code>.</p>
     <p>The responsive navbar requires the <a href="../javascript/#collapse">collapse plugin</a> to be included in your version of Bootstrap.</p>
   </div>
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-navbar-breakpoint">
     <h4>Changing the collapsed mobile navbar breakpoint</h4>
     <p>The navbar collapses into its vertical mobile view when the viewport is narrower than <code>@grid-float-breakpoint</code>, and expands into its horizontal non-mobile view when the viewport is at least <code>@grid-float-breakpoint</code> in width. Adjust this variable in the Less source to control when the navbar collapses/expands. The default value is <code>768px</code> (the smallest "small" or "tablet" screen).</p>
   </div>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-navbar-role">
     <h4>Make navbars accessible</h4>
     <p>Be sure to add a <code>role="navigation"</code> to every navbar to help with accessibility.</p>
   </div>
@@ -201,12 +201,12 @@
 </form>
 {% endhighlight %}
 
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-navbar-mobile-caveats">
     <h4>Mobile device caveats</h4>
     <p>There are some caveats regarding using form controls within fixed elements on mobile devices. <a href="../getting-started/#support-fixed-position-keyboards">See our browser support docs</a> for details.</p>
   </div>
 
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-navbar-form-labels">
     <h4>Always add labels</h4>
     <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline navbar forms, you can hide the labels using the <code>.sr-only</code> class.</p>
   </div>
@@ -236,7 +236,7 @@
 <button type="button" class="btn btn-default navbar-btn">Sign in</button>
 {% endhighlight %}
 
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-navbar-btn-context">
     <h4>Context-specific usage</h4>
     <p>Like the standard <a href="../css/#buttons">button classes</a>, <code>.navbar-btn</code> can be used on <code>&lt;a&gt;</code> and <code>&lt;input&gt;</code> elements. However, neither <code>.navbar-btn</code> nor the standard button classes should be used on <code>&lt;a&gt;</code> elements within <code>.navbar-nav</code>.</p>
   </div>
@@ -294,7 +294,7 @@
   <h2 id="navbar-component-alignment">Component alignment</h2>
   <p>Align nav links, forms, buttons, or text, using the <code>.navbar-left</code> or <code>.navbar-right</code> utility classes. Both classes will add a CSS float in the specified direction. For example, to align nav links, put them in a separate <code>&lt;ul&gt;</code> with the respective utility class applied.</p>
   <p>These classes are mixin-ed versions of <code>.pull-left</code> and <code>.pull-right</code>, but they're scoped to media queries for easier handling of navbar components across device sizes.</p>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-navbar-right-align">
     <h4>Right aligning multiple components</h4>
     <p>Navbars currently have a limitation with multiple <code>.navbar-right</code> classes. To properly space content, we use negative margin on the last <code>.navbar-right</code> element. When there are multiple elements using that class, these margins don't work as intended.</p>
     <p>We'll revisit this when we can rewrite that component in v4.</p>
@@ -335,7 +335,7 @@
 </nav>
 {% endhighlight %}
 
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-navbar-fixed-top-padding">
     <h4>Body padding required</h4>
     <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the top of the <code>&lt;body&gt;</code>. Try out your own values or use our snippet below. Tip: By default, the navbar is 50px high.</p>
 {% highlight scss %}
@@ -379,7 +379,7 @@ body { padding-top: 70px; }
 </nav>
 {% endhighlight %}
 
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-navbar-fixed-bottom-padding">
     <h4>Body padding required</h4>
     <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the bottom of the <code>&lt;body&gt;</code>. Try out your own values or use our snippet below. Tip: By default, the navbar is 50px high.</p>
 {% highlight scss %}

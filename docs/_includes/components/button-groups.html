@@ -3,12 +3,12 @@
 
   <p class="lead">Group a series of buttons together on a single line with the button group. Add on optional JavaScript radio and checkbox style behavior with <a href="../javascript/#buttons">our buttons plugin</a>.</p>
 
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-btn-group-tooltips">
     <h4>Tooltips &amp; popovers in button groups require special setting</h4>
     <p>When using tooltips or popovers on elements within a <code>.btn-group</code>, you'll have to specify the option <code>container: 'body'</code> to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).</p>
   </div>
 
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-btn-group-accessibility">
     <h4>Ensure correct <code>role</code> and provide a label</h4>
     <p>In order for assistive technologies – such as screen readers – to convey that a series of buttons is grouped, an appropriate <code>role</code> attribute needs to be provided. For button groups, this would be <code>role="group"</code>, while toolbars should have a <code>role="toolbar"</code>.</p>
     <p>One exception are groups which only contain a single control (for instance the <a href="#btn-groups-justified">justified button groups</a> with <code>&lt;button&gt;</code> elements) or a dropdown.</p>
@@ -190,11 +190,11 @@
   <h3 id="btn-groups-justified">Justified button groups</h3>
   <p>Make a group of buttons stretch at equal sizes to span the entire width of its parent. Also works with button dropdowns within the button group.</p>
 
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-btn-group-justified-dbl-border">
     <h4>Handling borders</h4>
     <p>Due to the specific HTML and CSS used to justify buttons (namely <code>display: table-cell</code>), the borders between them are doubled. In regular button groups, <code>margin-left: -1px</code> is used to stack the borders instead of removing them. However, <code>margin</code> doesn't work with <code>display: table-cell</code>. As a result, depending on your customizations to Bootstrap, you may wish to remove or re-color the borders.</p>
   </div>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-btn-group-ie8-border">
     <h4>IE8 and borders</h4>
     <p>Internet Explorer 8 doesn't render borders on buttons in a justified button group, whether it's on <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements. To get around that, wrap each button in another <code>.btn-group</code>.</p>
     <p>See <a href="https://github.com/twbs/bootstrap/issues/12476">#12476</a> for more information.</p>
@@ -232,9 +232,9 @@
 </div>
 {% endhighlight %}
 
-  <div class="bs-callout bs-callout-warning">
-  <h4>Links acting as buttons</h4>
-  <p>If the <code>&lt;a&gt;</code> elements are used to act as buttons – triggering in-page functionality, rather than navigating to another document or section within the current page – they should also be given an appropriate <code>role="button"</code>.</p>
+  <div class="bs-callout bs-callout-warning" id="callout-btn-group-anchor-btn">
+    <h4>Links acting as buttons</h4>
+    <p>If the <code>&lt;a&gt;</code> elements are used to act as buttons – triggering in-page functionality, rather than navigating to another document or section within the current page – they should also be given an appropriate <code>role="button"</code>.</p>
   </div>
 
   <h4>With <code>&lt;button&gt;</code> elements</h4>

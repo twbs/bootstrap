@@ -45,7 +45,7 @@
 
   <h2 id="tables-striped">Striped rows</h2>
   <p>Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p>
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-tables-striped-ie8">
     <h4>Cross-browser compatibility</h4>
     <p>Striped tables are styled via the <code>:nth-child</code> CSS selector, which is not available in Internet Explorer 8.</p>
   </div>
@@ -346,7 +346,7 @@
   <td class="info">...</td>
 </tr>
 {% endhighlight %}
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-tables-context-accessibility">
     <h4>Conveying meaning to assistive technologies</h4>
     <p>Using color to add meaning to a table row or individual cell only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (the visible text in the relevant table row/cell), or is included through alternative means, such as additional text hidden with the <code>.sr-only</code> class.</p>
   </div>
@@ -354,7 +354,7 @@
   <h2 id="tables-responsive">Responsive tables</h2>
   <p>Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code> to make them scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, you will not see any difference in these tables.</p>
 
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-tables-responsive-ff-fieldset">
     <h4>Firefox and fieldsets</h4>
     <p>Firefox has some awkward fieldset styling involving <code>width</code> that interferes with the responsive table. This cannot be overriden without a Firefox-specific hack that we <strong>don't</strong> provide in Bootstrap:</p>
 {% highlight css %}
