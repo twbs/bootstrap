@@ -10,11 +10,6 @@
   </div>
 
   <div class="bs-callout bs-callout-danger">
-    <h4>Component data attributes</h4>
-    <p>Don't use data attributes from multiple plugins on the same element. For example, a button cannot both have a tooltip and toggle a modal. To accomplish this, use a wrapping element.</p>
-  </div>
-
-  <div class="bs-callout bs-callout-danger">
     <h4>Plugin dependencies</h4>
     <p>Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that all plugins depend on jQuery (this means jQuery must be included <strong>before</strong> the plugin files). <a href="{{ site.repo }}/blob/v{{ site.current_version }}/bower.json">Consult our <code>bower.json</code></a> to see which versions of jQuery are supported.</p>
   </div>
@@ -31,6 +26,11 @@ $(document).off('.data-api')
 {% highlight js %}
 $(document).off('.alert.data-api')
 {% endhighlight %}
+
+  <div class="bs-callout bs-callout-danger">
+    <h4>Only one plugin per element via data attributes</h4>
+    <p>Don't use data attributes from multiple plugins on the same element. For example, a button cannot both have a tooltip and toggle a modal. To accomplish this, use a wrapping element.</p>
+  </div>
 
   <h3 id="js-programmatic-api">Programmatic API</h3>
   <p>We also believe you should be able to use all Bootstrap plugins purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.</p>
