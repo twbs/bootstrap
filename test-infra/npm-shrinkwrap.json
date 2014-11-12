@@ -1,6 +1,6 @@
 {
   "name": "bootstrap",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "npm-shrinkwrap-version": "5.1.0",
   "dependencies": {
     "btoa": {
