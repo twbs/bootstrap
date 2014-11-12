@@ -35,8 +35,55 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="../dist/js/bootstrap.min.js"></script>
 <script src="../assets/js/docs.min.js"></script>
+<script>
+var cssBase = '../dist/css/bootstrap-manta';
+var cssSuffix = '.min.css';
+$('#main-css').load(function() {
+  console.log('loaded CSS');
+});
+var timer = false;
+function setTheme(theme) {
+  var cssTheme = '';
+  $('#main-css').attr('href', cssBase+theme+cssSuffix);
+  if(timer) {
+    clearTimeout(timer);
+  }
+  timer = setTimeout(afterThemeChange, 1000);
+}
+$('#theme2014-toggle,#theme2014-label').click(function () {
+  setTheme('');
+});
+$('#theme2015-toggle,#theme2015-label').click(function () {
+  setTheme('2015');
+});
+</script>
 {% if page.slug == "customize" %}
 <script src="../assets/js/customize.min.js"></script>
+{% endif %}
+<script>
+var afterThemeChange = function() {};
+</script>
+{% if page.slug == "color-palette" %}
+  <script>
+  function rgb2hex(rgb){
+   if(!rgb) {
+     return '';
+   }
+   rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+   return "#" +
+    ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
+    ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
+    ("0" + parseInt(rgb[3],10).toString(16)).slice(-2);
+  }
+  afterThemeChange = function() {
+    $('.swatch-hex').remove();
+    $(".swatch").each(function() {
+      var hex = rgb2hex($(this).css('background-color'));
+      $('<div class="swatch-hex text-muted">').text(hex).insertAfter($(this));
+    });
+  };
+  $(afterThemeChange);
+  </script>
 {% endif %}
 
 {% comment %}
@@ -54,17 +101,3 @@
   }(document, "script", "twitter-wjs"));
 </script>
 
-<!-- Analytics
-================================================== -->
-<script>
-  var _gauges = _gauges || [];
-  (function() {
-    var t   = document.createElement('script');
-    t.async = true;
-    t.id    = 'gauges-tracker';
-    t.setAttribute('data-site-id', '4f0dc9fef5a1f55508000013');
-    t.src = '//secure.gaug.es/track.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(t, s);
-  })();
-</script>

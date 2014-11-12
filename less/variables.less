@@ -2,61 +2,24 @@
 // Variables
 // --------------------------------------------------
 
-// Manta Color Pallette
-@warmLightest    : #fdf9ee;
-@warmLighter     : #fff2c5;
-@warmMidlight    : #fdd900;
-@warmMiddark     : #ffb60f;
-@warmDark        : #f99a00;
-@warmDarker      : #b67801;
-
-@coolLightest    : #cfe4ee;
-@coolLighter     : #aad1e4;
-@coolLight       : #83bdcc;
-@coolMidlight    : #5ea9d2;
-@coolMiddark     : #3a94c6;
-@coolDark        : #1b7fb7;
-@coolDarker      : #006ba5;
-@coolDarkest     : #00476d;
-
-@neutralWhite    : #ffffff;
-@neutralLightest : #f1f1f1;
-@neutralLighter  : #dddddd;
-@neutralLight    : #cccccc;
-@neutralMidlight : #aaaaaa;
-@neutralMiddark  : #898989;
-@neutralDarker   : #555555;
-@neutralDarkest  : #252525;
-
-@naturalLightest : #e5f8dc;
-@naturalLighter  : #b9edb9;
-@naturalMidlight : #62c462;
-@naturalMiddark  : #35aa35;
-@naturalDark     : #009900;
-@naturalDarker   : #137513;
-
-@errorLight      : #fad0d0;
-@errorDark       : #C7272B;
-
-
 //== Colors
 //
 //## Gray and brand colors for use across Bootstrap.
 
-@gray-darker:            @neutralDarkest; //lighten(#000, 13.5%) // #252525
-@gray-dark:              @neutralDarker; //lighten(#000, 20%)   // #555
-@gray:                   @neutralMiddark; //lighten(#000, 33.5%) // #898989
-@gray-light:             @neutralMidlight; //lighten(#000, 60%)   // #999
-@gray-lighter:           @neutralLighter; //lighten(#000, 93.5%) // #eee
+@gray-darker:            @neutralDarkest;
+@gray-dark:              @neutralDarker;
+@gray:                   @neutralMiddark;
+@gray-light:             @neutralMidlight;
+@gray-lighter:           @neutralLighter;
 
 // Brand colors
 // -------------------------
 
-@brand-primary:         @coolDarkest; //#428bca
-@brand-success:         @naturalMiddark; //#5cb85c
-@brand-warning:         @errorLight; //#f0ad4e
-@brand-danger:          @errorDark; //#d9534f
-@brand-info:            @warmMiddark; //#5bc0de
+@brand-primary:         @coolDarkest;
+@brand-success:         @naturalMiddark;
+@brand-warning:         @warmMidlight;
+@brand-danger:          @errorDark;
+@brand-info:            @warmMiddark;
 
 
 // Links
@@ -72,9 +35,9 @@
 @text-color:            @gray-dark;
 
 //** Global textual link color.
-@link-color:            @coolDarker; //@brand-primary
+@link-color:            @coolDarker;
 //** Link hover color set via `darken()` function.
-@link-hover-color:      @link-color; //darken(@link-color, 15%)
+@link-hover-color:      @link-color;
 
 //== Typography
 //
@@ -224,7 +187,7 @@
 //** `<input>` border radius
 @input-border-radius:            @border-radius-base;
 //** Border color for inputs on focus
-@input-border-focus:             @coolMidlight; //#66afe9
+@input-border-focus:             @coolMidlight;
 
 //** Placeholder text color
 @input-color-placeholder:        @gray-light;
@@ -237,7 +200,7 @@
 @input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
 
 @legend-color:                   @gray-dark;
-@legend-border-color:            @neutralLighter; //#e5e5e5
+@legend-border-color:            @neutralLighter;
 
 //** Background color for textual input addons
 @input-group-addon-bg:           @gray-lighter;
@@ -256,7 +219,7 @@
 //** Dropdown menu `border-color` **for IE8**.
 @dropdown-fallback-border:       @neutralLight;
 //** Divider color for between dropdown items.
-@dropdown-divider-bg:            @neutralLighter; //#e5e5e5
+@dropdown-divider-bg:            @neutralLighter;
 
 //** Dropdown link text color.
 @dropdown-link-color:            @gray-dark;
@@ -394,15 +357,15 @@
 //TODO: new
 @navbar-collapse-max-height:       340px;
 
-@navbar-default-color:             @coolDark; //#777
-@navbar-default-bg:                @coolDarkest; //#f8f8f8
+@navbar-default-color:             @coolDark;
+@navbar-default-bg:                @coolDarkest;
 @navbar-default-border:            darken(@navbar-default-bg, 6.5%);
 
 // Navbar links
-@navbar-default-link-color:                @neutralWhite; //#777
-@navbar-default-link-hover-color:          @neutralWhite; //#333
+@navbar-default-link-color:                @neutralWhite;
+@navbar-default-link-hover-color:          @neutralWhite;
 @navbar-default-link-hover-bg:             transparent;
-@navbar-default-link-active-color:         @neutralWhite; //#555
+@navbar-default-link-active-color:         @neutralWhite;
 @navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
 @navbar-default-link-disabled-color:       @neutralLight;
 @navbar-default-link-disabled-bg:          transparent;
@@ -890,4 +853,7 @@
 
 //** Horizontal offset for forms and lists.
 @component-offset-horizontal: 180px;
+
+//overrides
+//@import "manta-overrides-2015.less";
 

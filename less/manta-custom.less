@@ -12,17 +12,17 @@
 @well-border-radius:                0;
 @breadcrumb-border-radius:          0;
 
-@manta-color: #FBB919;
-@twitter-color: #4099FF;
-@facebook-color: #3B5998;
-@google-plus-color: #C63D2D;
+//@manta-color: #FBB919;
+@manta-color: @neutralMidlight;
+//@twitter-color: #4099FF;
+@twitter-color: @manta-color;
+//@facebook-color: #3B5998;
+@facebook-color: @manta-color;
+//@google-plus-color: #C63D2D;
+@google-plus-color: @manta-color;
 
 
 //------------------  color junk ---------------------
-
-.bg-cool-darker {
-  background-color: @coolDarker !important;
-}
 
 // background colors from color pallette
 .bg-gray,.bg-gray-hover:hover {
@@ -31,13 +31,13 @@
 .bg-cool-lightest, .bg-cool-lighter, .bg-cool-midlight, .bg-cool-middark, .bg-cool-dark, .bg-cool-darker {
   color: @neutralWhite;
 }
-.bg-cool-lightest{
+.bg-cool-lightest {
   background-color: @coolLightest;
 }
-.bg-cool-lighter{
+.bg-cool-lighter {
   background-color: @coolLighter;
 }
-.bg-cool-midlight{
+.bg-cool-midlight {
   background-color: @coolMidlight;
 }
 .bg-cool-middark {
@@ -47,8 +47,77 @@
   background-color: @coolDark;
 }
 .bg-cool-darker {
-  background-color: @coolDarker;
+  background-color: @coolDarker !important;
 }
+.bg-cool-darkest {
+  background-color: @coolDarkest;
+}
+
+.bg-warm-lighter {
+  background-color: @warmLighter;
+}
+.bg-warm-midlight {
+  background-color: @warmMidlight;
+}
+.bg-warm-middark {
+  background-color: @warmMiddark;
+}
+.bg-warm-dark {
+  background-color: @warmDark;
+}
+
+.bg-natural-middark {
+  background-color: @naturalMiddark;
+}
+
+.bg-neutral-white {
+  background-color: @neutralWhite;
+}
+.bg-neutral-lightest {
+  background-color: @neutralLightest;
+}
+.bg-neutral-lighter {
+  background-color: @neutralLighter;
+}
+.bg-neutral-light {
+  background-color: @neutralLight;
+}
+.bg-neutral-midlight {
+  background-color: @neutralMidlight;
+}
+.bg-neutral-middark {
+  background-color: @neutralMiddark;
+}
+.bg-neutral-darker {
+  background-color: @neutralDarker;
+}
+.bg-neutral-darkest {
+  background-color: @neutralDarkest;
+}
+
+.bg-error-light {
+  background-color: @errorLight;
+}
+.bg-error-dark {
+  background-color: @errorDark;
+}
+
+.bg-brand-primary {
+  background-color: @brand-primary;
+}
+.bg-brand-info{
+  background-color: @brand-primary;
+}
+.bg-brand-primary {
+  background-color: @brand-primary;
+}
+.bg-brand-primary {
+  background-color: @brand-primary;
+}
+.bg-brand-primary {
+  background-color: @brand-primary;
+}
+
 // text colors from color pallette
 .text-neutral-white {
   color: @neutralWhite;
@@ -103,12 +172,20 @@
 //----------------- manta footer specific classes-------
 .footer {
   margin-top: @line-height-computed;
-  background-color: @neutralWhite;
+  background-color: @neutralDarker;
+  background-color: @neutralWhite; //old
   font-size: @font-size-small;
+  /* new ----
+  color: @neutralMidlight;
+  a {
+    color: @neutralLightest;
+    text-decoration: underline;
+  }
+  ---- */
 }
 
 .footer .nav.navbar-nav > li > a {
-  padding:0 10px;
+  padding: 0 10px;
   margin-top:17px;
   margin-bottom:17px;
   border-right: 1px solid #fff;
@@ -335,7 +412,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
 
 //------------------ fonts ---------------------------
 
-@mantaicon-version: 2;
+@mantaicon-version: 4;
 
 @font-face {
   font-family: 'icomanta';
