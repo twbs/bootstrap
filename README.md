@@ -16,7 +16,6 @@ To get started, check out <http://getbootstrap.com>!
 - [Documentation](#documentation)
 - [Contributing](#contributing)
 - [Community](#community)
-- [Issues and labels](#issues-and-labels)
 - [Versioning](#versioning)
 - [Creators](#creators)
 - [Copyright and license](#copyright-and-license)
@@ -102,26 +101,6 @@ Keep track of development and community news.
 - Read and subscribe to [The Official Bootstrap Blog](http://blog.getbootstrap.com).
 - Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##bootstrap` channel.
 - Implementation help may be found at Stack Overflow (tagged [`twitter-bootstrap-3`](http://stackoverflow.com/questions/tagged/twitter-bootstrap-3)).
-
-
-
-## Issues and labels
-
-Our bug tracker utilizes several labels to help organize and identify issues. Here's what they represent and how we use them:
-
-- `browser bug` - Issues that are reported to us, but actually are the result of a browser-specific bug. These are diagnosed with reduced test cases and result in a issue opened on that browser's own bug tracker.
-- `confirmed` - Issues that have been confirmed with a reduced test case and idenfity a bug in Bootstrap.
-- `css` - Issues stemming from our compiled CSS or source Less files.
-- `customizer` - Issues with our web-based Customizer.
-- `docs` - Issues for improving or updating our documentation.
-- `examples` - Issues involving the example templates included in our docs.
-- `feature` - Issues asking for a new feature to be added, or an existing one to be extended or modified. New features require a minor version bump (e.g., `v3.0.0` to `v3.1.0`).
-- `grunt` - Issues with our included JavaScript-based Gruntfile, which is used to run all our tests, concatenate and compile source files, and more.
-- `help wanted` - Issues we need or would love help from the community to resolve.
-- `js` - Issues stemming from our compiled or source JavaScript files.
-- `meta` - Issues with the project itself or our GitHub repository.
-
-For a complete look at our labels, see the [project labels page](/twbs/bootstrap/labels).
 
 
 
