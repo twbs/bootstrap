@@ -55,6 +55,14 @@
     <h4>Requires Bootstrap nav</h4>
     <p>Scrollspy currently requires the use of a <a href="../components/#nav">Bootstrap nav component</a> for proper highlighting of active links.</p>
   </div>
+  <div class="bs-callout bs-callout-danger">
+    <h4>Resolvable ID targets required</h4>
+    <p>Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the DOM like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.</p>
+  </div>
+  <div class="bs-callout bs-callout-info">
+    <h4>Non-<code>:visible</code> target elements ignored</h4>
+    <p>Target elements that are not <a href="http://api.jquery.com/visible-selector/"><code>:visible</code> according to jQuery</a> will be ignored and their corresponding nav items will never be highlighted.</p>
+  </div>
 
   <h3>Requires relative positioning</h3>
   <p>No matter the implementation method, scrollspy requires the use of <code>position: relative;</code> on the element you're spying on. In most cases this is the <code>&lt;body&gt;</code>.</p>
@@ -84,14 +92,6 @@ body {
 $('body').scrollspy({ target: '.navbar-example' })
 {% endhighlight %}
 
-  <div class="bs-callout bs-callout-danger">
-    <h4>Resolvable ID targets required</h4>
-    <p>Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the DOM like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.</p>
-  </div>
-  <div class="bs-callout bs-callout-info">
-    <h4>Non-<code>:visible</code> target elements ignored</h4>
-    <p>Target elements that are not <a href="http://api.jquery.com/visible-selector/"><code>:visible</code> according to jQuery</a> will be ignored and their corresponding nav items will never be highlighted.</p>
-  </div>
 
   <h3>Methods</h3>
   <h4>.scrollspy('refresh')</h4>
