@@ -20,9 +20,9 @@ To get started, check out <http://getbootstrap.com>!
 
 Three quick start options are available:
 
-- [Download the latest release](https://github.com/twbs/bootstrap/archive/v3.1.1-m4.zip).
-- Clone the repo: `git clone https://github.com/twbs/bootstrap.git`.
-- Install with [Bower](http://bower.io): `bower install bootstrap`.
+- [Download the latest release](https://github.com/mantacode/bootstrap/archive/v3.1.1-m5.zip).
+- Clone the repo: `git clone https://github.com/mantacode/bootstrap.git`.
+- Install with [Bower](http://bower.io): `bower install manta-bootstrap`.
 
 Read the [Getting Started page](http://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
 
@@ -53,7 +53,7 @@ We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified
 
 ## Bugs and feature requests
 
-Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/twbs/bootstrap/issues/new).
+Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/mantacode/bootstrap/blob/master/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/mantacode/bootstrap/issues/new).
 
 
 ## Documentation
@@ -74,7 +74,7 @@ Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com
 
 Documentation for v2.3.2 has been made available for the time being at <http://getbootstrap.com/2.3.2/> while folks transition to Bootstrap 3.
 
-[Previous releases](https://github.com/twbs/bootstrap/releases) and their documentation are also available for download.
+[Previous releases](https://github.com/mantacode/bootstrap/releases) and their documentation are also available for download.
 
 
 
@@ -87,7 +87,7 @@ Bootstrap uses [Grunt](http://gruntjs.com/) with convenient methods for working 
 From the command line:
 
 1. Install `grunt-cli` globally with `npm install -g grunt-cli`.
-2. Navigate to the root `/bootstrap` directory, then run `npm install`. npm will look at [package.json](https://github.com/twbs/bootstrap/blob/master/package.json) and automatically install the necessary local dependencies listed there.
+2. Navigate to the root `/bootstrap` directory, then run `npm install`. npm will look at [package.json](https://github.com/mantacode/bootstrap/blob/master/package.json) and automatically install the necessary local dependencies listed there.
 
 When completed, you'll be able to run the various Grunt commands provided from the command line.
 
@@ -115,11 +115,11 @@ Should you encounter problems with installing dependencies or running Grunt comm
 
 ## Contributing
 
-Please read through our [contributing guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
+Please read through our [contributing guidelines](https://github.com/mantacode/bootstrap/blob/master/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
 
 Moreover, if your pull request contains JavaScript patches or features, you must include relevant unit tests. All HTML and CSS should conform to the [Code Guide](http://github.com/mdo/code-guide), maintained by [Mark Otto](http://github.com/mdo).
 
-Editor preferences are available in the [editor config](https://github.com/twbs/bootstrap/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
+Editor preferences are available in the [editor config](https://github.com/mantacode/bootstrap/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
 
 
 
