@@ -35,6 +35,10 @@
 
   <h2 id="buttons-single-toggle">Single toggle</h2>
   <p>Add <code>data-toggle="button"</code> to activate toggling on a single button.</p>
+  <div class="bs-callout bs-callout-warning">
+    <h4>Pre-toggled buttons need <code>.active</code> and <code>aria-pressed="true"</code></h4>
+    <p>For pre-toggled buttons, you must add the <code>.active</code> class and the <code>aria-pressed="true"</code> attribute to the <code>button</code> yourself.</p>
+  </div>
   <div class="bs-example">
     <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
       Single toggle
@@ -45,10 +49,6 @@
   Single toggle
 </button>
 {% endhighlight %}
-  <div class="bs-callout bs-callout-warning">
-    <h4>Pre-toggled buttons need <code>.active</code> and <code>aria-pressed="true"</code></h4>
-    <p>For pre-toggled buttons, you must add the <code>.active</code> class and the <code>aria-pressed="true"</code> attribute to the <code>button</code> yourself.</p>
-  </div>
 
   <h2 id="buttons-checkbox-radio">Checkbox / Radio</h2>
   <p>Add <code>data-toggle="buttons"</code> to a <code>.btn-group</code> containing checkbox or radio inputs to enable toggling in their respective styles.</p>
