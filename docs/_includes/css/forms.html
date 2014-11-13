@@ -72,9 +72,10 @@
         <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
       </div>
       <div class="form-group">
+        <label class="sr-only" for="exampleInputUsername2">Username</label>
         <div class="input-group">
           <div class="input-group-addon">@</div>
-          <input class="form-control" type="email" placeholder="Enter email">
+          <input type="text" class="form-control" id="exampleInputUsername2" placeholder="Enter username">
         </div>
       </div>
       <div class="form-group">
@@ -92,10 +93,14 @@
 {% highlight html %}
 <form class="form-inline" role="form">
   <div class="form-group">
+    <label class="sr-only" for="exampleInputEmail2">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputUsername2">Username</label>
     <div class="input-group">
-      <label class="sr-only" for="exampleInputEmail2">Email address</label>
       <div class="input-group-addon">@</div>
-      <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+      <input type="text" class="form-control" id="exampleInputUsername2" placeholder="Enter username">
     </div>
   </div>
   <div class="form-group">
