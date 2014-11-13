@@ -1147,6 +1147,11 @@ h1[id] {
   overflow: auto;
 }
 
+/* Don't wrap event names in Events tables in JS plugin docs */
+.bs-events-table > thead > tr > th:first-child,
+.bs-events-table > tbody > tr > td:first-child {
+  white-space: nowrap;
+}
 
 /*
  * Code snippets
