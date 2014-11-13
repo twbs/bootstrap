@@ -51,15 +51,15 @@
 
   <h2 id="scrollspy-usage">Usage</h2>
 
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-scrollspy-needs-nav">
     <h4>Requires Bootstrap nav</h4>
     <p>Scrollspy currently requires the use of a <a href="../components/#nav">Bootstrap nav component</a> for proper highlighting of active links.</p>
   </div>
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-scrollspy-target-ids">
     <h4>Resolvable ID targets required</h4>
     <p>Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the DOM like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.</p>
   </div>
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-scrollspy-invisible-targets">
     <h4>Non-<code>:visible</code> target elements ignored</h4>
     <p>Target elements that are not <a href="http://api.jquery.com/visible-selector/"><code>:visible</code> according to jQuery</a> will be ignored and their corresponding nav items will never be highlighted.</p>
   </div>
