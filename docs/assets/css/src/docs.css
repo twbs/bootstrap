@@ -137,7 +137,7 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   margin-top: 100px;
-  color: #777;
+  color: #767676;
   text-align: center;
   border-top: 1px solid #e5e5e5;
 }
@@ -554,7 +554,7 @@ body {
   padding: 4px 20px;
   font-size: 13px;
   font-weight: 500;
-  color: #999;
+  color: #767676;
 }
 .bs-docs-sidebar .nav > li > a:hover,
 .bs-docs-sidebar .nav > li > a:focus {
@@ -709,22 +709,22 @@ h1[id] {
 
 /* Variations */
 .bs-callout-danger {
-  border-left-color: #d9534f;
+  border-left-color: #ce4844;
 }
 .bs-callout-danger h4 {
-  color: #d9534f;
+  color: #ce4844;
 }
 .bs-callout-warning {
-  border-left-color: #f0ad4e;
+  border-left-color: #aa6708;
 }
 .bs-callout-warning h4 {
-  color: #f0ad4e;
+  color: #aa6708;
 }
 .bs-callout-info {
-  border-left-color: #5bc0de;
+  border-left-color: #1b809e;
 }
 .bs-callout-info h4 {
-  color: #5bc0de;
+  color: #1b809e;
 }
 
 
@@ -955,7 +955,7 @@ h1[id] {
 
 /* Typography */
 .bs-example-type .table .type-info {
-  color: #999;
+  color: #767676;
   vertical-align: middle;
 }
 .bs-example-type .table td {
@@ -1518,7 +1518,7 @@ h1[id] {
   display: block;
   padding: 5px 8px;
   font-size: 12px;
-  color: #777;
+  color: #767676;
   cursor: pointer;
   background-color: #fff;
   border: 1px solid #e1e1e8;
