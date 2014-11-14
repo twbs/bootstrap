@@ -72,13 +72,6 @@
         <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
       </div>
       <div class="form-group">
-        <label class="sr-only" for="exampleInputUsername2">Username</label>
-        <div class="input-group">
-          <div class="input-group-addon">@</div>
-          <input type="text" class="form-control" id="exampleInputUsername2" placeholder="Enter username">
-        </div>
-      </div>
-      <div class="form-group">
         <label class="sr-only" for="exampleInputPassword2">Password</label>
         <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
       </div>
@@ -97,13 +90,6 @@
     <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
   </div>
   <div class="form-group">
-    <label class="sr-only" for="exampleInputUsername2">Username</label>
-    <div class="input-group">
-      <div class="input-group-addon">@</div>
-      <input type="text" class="form-control" id="exampleInputUsername2" placeholder="Enter username">
-    </div>
-  </div>
-  <div class="form-group">
     <label class="sr-only" for="exampleInputPassword2">Password</label>
     <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
   </div>
@@ -116,6 +102,32 @@
 </form>
 {% endhighlight %}
 
+  <div class="bs-example">
+    <form class="form-inline">
+      <div class="form-group">
+        <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+        <div class="input-group">
+          <div class="input-group-addon">$</div>
+          <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+          <div class="input-group-addon">.00</div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Transfer cash</button>
+    </form>
+  </div><!-- /example -->
+{% highlight html %}
+<form class="form-inline">
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+    <div class="input-group">
+      <div class="input-group-addon">$</div>
+      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+      <div class="input-group-addon">.00</div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Transfer cash</button>
+</form>
+{% endhighlight %}
 
   <h2 id="forms-horizontal">Horizontal form</h2>
   <p>Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout by adding <code>.form-horizontal</code> to the form. Doing so changes <code>.form-group</code>s to behave as grid rows, so no need for <code>.row</code>.</p>
