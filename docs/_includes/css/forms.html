@@ -495,7 +495,7 @@
 
   <div class="bs-callout bs-callout-warning" id="callout-fieldset-disabled-pointer-events">
     <h4>Caveat about link functionality of <code>&lt;a&gt;</code></h4>
-    <p>Our styles use <code>pointer-events: none</code> to try to disable the link functionality of <code>&lt;a class="btn btn-*"&gt;</code> buttons in this case, but that CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11. So to be safe, use custom JavaScript to disable such links.</p>
+    <p>By default, browsers will treat all native form controls (<code>&lt;input&gt;</code>, <code>&lt;select&gt;</code> and <code>&lt;button&gt;</code> elements) inside a <code>&lt;fieldset disabled&gt;</code> as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes <code>&lt;a ... class="btn btn-*"&gt;</code> elements, these will only be given a style of <code>pointer-events: none</code>. As noted in the section about <a href="#buttons-disabled">disabled state for buttons</a> (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.</p>
   </div>
 
   <div class="bs-callout bs-callout-danger" id="callout-fieldset-disabled-ie">
