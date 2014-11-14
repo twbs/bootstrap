@@ -156,7 +156,7 @@
   summary: >
     `display: table-cell;` within media query renders incorrectly when resizing the window.
   upstream_bug: >
-    WebKit#138167
+    WebKit#138167, Safari#18987206
   origin: >
     Bootstrap#9774
 
