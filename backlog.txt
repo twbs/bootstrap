@@ -4,16 +4,60 @@
 
 
 
+
+
+
+
+
+
+
+
 * TASKS *********************************************************************************************
 
 
+- Buenos aires cosas
+
+- Bastrap crossbrowsing
 
 
 
 - diferentes jerarquías menu principal
 	placeholder gris para imagen?
 
+- shortcuts
+	iconos imagenes [analizar]
+	sellos grandes................................
+
 - buenosaires dashboard mi ba
+
+
+ANOTADOR:
+- area, mobile > sacar descripcion
+- footer nav colapsable
+- pagina nota > embed twitter
+- pagina nota > favorito <3
+- trámite > verde 3 sacar
+- trámite > iframe turnero
+- script para delay de hover en iframes [mapa dsfs]
+- aplicativo > completá datos con ba + arriba
+- página libro > sidebar 3er nivel
+- pagina libro > repasar encabezado vs nombre 1er pagina....
+- listado destacados [onda app oficial badge][no debería ser un icono mas destacado abajo?]
+- noticias?
+- ver más tipos en tareas
+
+HOME CARRUSEL
+replantear, buscar que se usa
+	opcion 1: grilla metro 3 niveles jeararquicos
+	opcion 2: 3 thumbs abajo de img de carrusel tal cual ahora
+
+
+
+
+
+
+
+
 
 - CSS impresión para página, nota de libro, tramite
 	testear
@@ -40,6 +84,7 @@
 	opacity como .6
  	no ser garca y poner los -webkit y -moz [y modernizr?]
  	con bordes en panels? dsfsdf ver las tarjetitas ya aplicadas vs buenos aires no border no panel [j3]
+
 
 
 
