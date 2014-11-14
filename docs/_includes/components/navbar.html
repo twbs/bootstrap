@@ -25,11 +25,11 @@
   </div>
   <div class="bs-callout bs-callout-warning" id="callout-navbar-role">
     <h4>Make navbars accessible</h4>
-    <p>Be sure to add a <code>role="navigation"</code> to every navbar to help with accessibility.</p>
+    <p>Be sure to use a <code>&lt;nav&gt;</code> element or, if using a more generic element such as a <code>&lt;div&gt;</code>, add a <code>role="navigation"</code> to every navbar to explicitly identify it as a landmark region for users of assistive technologies.</p>
   </div>
 
   <div class="bs-example">
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -84,7 +84,7 @@
     </nav>
   </div>
 {% highlight html %}
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -143,7 +143,7 @@
   <h2 id="navbar-brand-image">Brand image</h2>
   <p>Replace the navbar brand with your own image by swapping the text for an <code>&lt;img&gt;</code>. Since the <code>.navbar-brand</code> has its own padding and height, you may need to override some CSS depending on your image.</p>
   <div class="bs-example">
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="#">
@@ -154,7 +154,7 @@
     </nav>
   </div>
 {% highlight html %}
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">
@@ -170,7 +170,7 @@
   <p>Place form content within <code>.navbar-form</code> for proper vertical alignment and collapsed behavior in narrow viewports. Use the alignment options to decide where it resides within the navbar content.</p>
   <p>As a heads up, <code>.navbar-form</code> shares much of its code with <code>.form-inline</code> via mixin. <strong class="text-danger">Some form controls, like input groups, may require fixed widths to be show up properly within a navbar.</strong></p>
   <div class="bs-example">
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
@@ -215,7 +215,7 @@
   <h2 id="navbar-buttons">Buttons</h2>
   <p>Add the <code>.navbar-btn</code> class to <code>&lt;button&gt;</code> elements not residing in a <code>&lt;form&gt;</code> to vertically center them in the navbar.</p>
   <div class="bs-example">
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-3">
@@ -244,7 +244,7 @@
   <h2 id="navbar-text">Text</h2>
   <p>Wrap strings of text in an element with <code>.navbar-text</code>, usually on a <code>&lt;p&gt;</code> tag for proper leading and color.</p>
   <div class="bs-example">
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-4">
@@ -269,7 +269,7 @@
   <h2 id="navbar-links">Non-nav links</h2>
   <p>For folks using standard links that are not within the regular navbar navigation component, use the <code>.navbar-link</code> class to add the proper colors for the default and inverse navbar options.</p>
   <div class="bs-example">
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5">
@@ -304,7 +304,7 @@
   <h2 id="navbar-fixed-top">Fixed to top</h2>
   <p>Add <code>.navbar-fixed-top</code> and include a <code>.container</code> or <code>.container-fluid</code> to center and pad navbar content.</p>
   <div class="bs-example bs-navbar-top-example">
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top">
       <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
       <div class="container-fluid">
         <div class="navbar-header">
@@ -328,7 +328,7 @@
     </nav>
   </div><!-- /example -->
 {% highlight html %}
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     ...
   </div>
@@ -348,7 +348,7 @@ body { padding-top: 70px; }
   <h2 id="navbar-fixed-bottom">Fixed to bottom</h2>
   <p>Add <code>.navbar-fixed-bottom</code> and include a <code>.container</code> or <code>.container-fluid</code> to center and pad navbar content.</p>
   <div class="bs-example bs-navbar-bottom-example">
-    <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
       <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
       <div class="container-fluid">
         <div class="navbar-header">
@@ -372,7 +372,7 @@ body { padding-top: 70px; }
     </nav>
   </div><!-- /example -->
 {% highlight html %}
-<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container">
     ...
   </div>
@@ -393,7 +393,7 @@ body { padding-bottom: 70px; }
   <p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code> and include a <code>.container</code> or <code>.container-fluid</code> to center and pad navbar content.</p>
   <p>Unlike the <code>.navbar-fixed-*</code> classes, you do not need to change any padding on the <code>body</code>.</p>
   <div class="bs-example bs-navbar-top-example">
-    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <nav class="navbar navbar-default navbar-static-top">
       <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
       <div class="container-fluid">
         <div class="navbar-header">
@@ -418,7 +418,7 @@ body { padding-bottom: 70px; }
     </nav>
   </div><!-- /example -->
 {% highlight html %}
-<nav class="navbar navbar-default navbar-static-top" role="navigation">
+<nav class="navbar navbar-default navbar-static-top">
   <div class="container">
     ...
   </div>
@@ -429,7 +429,7 @@ body { padding-bottom: 70px; }
   <h2 id="navbar-inverted">Inverted navbar</h2>
   <p>Modify the look of the navbar by adding <code>.navbar-inverse</code>.</p>
   <div class="bs-example">
-    <nav class="navbar navbar-inverse" role="navigation">
+    <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -454,7 +454,7 @@ body { padding-bottom: 70px; }
     </nav>
   </div><!-- /example -->
 {% highlight html %}
-<nav class="navbar navbar-inverse" role="navigation">
+<nav class="navbar navbar-inverse">
   ...
 </nav>
 {% endhighlight %}
