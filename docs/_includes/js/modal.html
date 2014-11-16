@@ -15,7 +15,12 @@
     <p>There are some caveats regarding using modals on mobile devices. <a href="../getting-started/#support-fixed-position-keyboards">See our browser support docs</a> for details.</p>
   </div>
 
-  <p><strong class="text-danger">Due to how HTML5 defines its semantics, the <code>autofocus</code> HTML attribute has no effect in Bootstrap modals.</strong></p>
+  <p><strong class="text-danger">Due to how HTML5 defines its semantics, the <code>autofocus</code> HTML attribute has no effect in Bootstrap modals.</strong> To achieve the same effect, use some custom JavaScript:</p>
+  {% highlight js %}
+  $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').focus()
+  })
+  {% endhighlight %}
 
   <h2 id="modals-examples">Examples</h2>
 
