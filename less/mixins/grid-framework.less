@@ -36,8 +36,11 @@
     .col((@index + 1), ~"@{list}, @{item}");
   }
   .col(@index, @list) when (@index > @grid-columns) { // terminal
-    @{list} {
+    @{list} when(@langDir = ltr){
       float: left;
+    }
+    @{list} when(@langDir = rtl){
+      float: right;
     }
   }
   .col(1); // kickstart it

@@ -1,0 +1,263 @@
+//
+// Responsive Margin & Padding Shortcuts for Twitter Bootstrap 3.0
+// ---------------------------------------------------------------
+// This is an addition to Twitter Bootstrap that allows additional margin and padding shortcuts
+// for enhanced layout control purposes. It should be included after the bootstrap.less
+// import statement or precompiled as you see fit. It differs from bootstrap standards in
+// that for any given screen size it predetermines the margin/padding size. All you have to
+// do is specify the size you want xs,sm,md,lg, or xl. The exception is for items that you
+// want to be centered using auto left/right margins. This can be device responsive by
+// specifying mc-xs, mc-sm, mc-md, or mc-lg depending on when you want that behavior.
+
+// these are the base sizes
+// adjust to your preference
+// ---------------------------------------------------------------
+@margin-xs:   5px;
+@margin-sm:  10px;
+@margin-md:  15px;
+@margin-lg:  30px;
+@margin-xl:  50px;
+
+// these are the scale values for each device size
+// adjust to your preference
+// ---------------------------------------------------------------
+@margin-scale-xs: 0.75;
+@margin-scale-sm: 0.75;
+@margin-scale-md: 1;
+@margin-scale-lg: 1.5;
+
+// ** you shouldnt need to change anything below this point **
+// ---------------------------------------------------------------
+
+// these are the device-agnostic resets and centering
+.mc   {   margin-left: auto;
+         margin-right: auto; }
+.mt-0 {    margin-top: 0; }
+.mr-0 {  margin-right: 0; }
+.mb-0 { margin-bottom: 0; }
+.ml-0 {   margin-left: 0; }
+.pt-0 {   padding-top: 0; }
+.pr-0 { padding-right: 0; }
+.pb-0 {padding-bottom: 0; }
+.pl-0 {  padding-left: 0; }
+
+// what follows are all the different device size adjustments
+@media (max-width: @screen-xs-max) {
+.mc-sm {  margin-right: auto;
+           margin-left: auto; }
+
+.mt-xs {    margin-top: round(@margin-xs * @margin-scale-xs); }
+.mr-xs {  margin-right: round(@margin-xs * @margin-scale-xs); }
+.mb-xs { margin-bottom: round(@margin-xs * @margin-scale-xs); }
+.ml-xs {   margin-left: round(@margin-xs * @margin-scale-xs); }
+
+.mt-sm {    margin-top: round(@margin-sm * @margin-scale-xs); }
+.mr-sm {  margin-right: round(@margin-sm * @margin-scale-xs); }
+.mb-sm { margin-bottom: round(@margin-sm * @margin-scale-xs); }
+.ml-sm {   margin-left: round(@margin-sm * @margin-scale-xs); }
+
+.mt-md {    margin-top: round(@margin-md * @margin-scale-xs); }
+.mr-md {  margin-right: round(@margin-md * @margin-scale-xs); }
+.mb-md { margin-bottom: round(@margin-md * @margin-scale-xs); }
+.ml-md {   margin-left: round(@margin-md * @margin-scale-xs); }
+
+.mt-lg {    margin-top: round(@margin-lg * @margin-scale-xs); }
+.mr-lg {  margin-right: round(@margin-lg * @margin-scale-xs); }
+.mb-lg { margin-bottom: round(@margin-lg * @margin-scale-xs); }
+.ml-lg {   margin-left: round(@margin-lg * @margin-scale-xs); }
+
+.mt-xl {    margin-top: round(@margin-xl * @margin-scale-xs); }
+.mr-xl {  margin-right: round(@margin-xl * @margin-scale-xs); }
+.mb-xl { margin-bottom: round(@margin-xl * @margin-scale-xs); }
+.ml-xl {   margin-left: round(@margin-xl * @margin-scale-xs); }
+
+.pt-xs {   padding-top: round(@margin-xs * @margin-scale-xs); }
+.pr-xs { padding-right: round(@margin-xs * @margin-scale-xs); }
+.pb-xs {padding-bottom: round(@margin-xs * @margin-scale-xs); }
+.pl-xs {  padding-left: round(@margin-xs * @margin-scale-xs); }
+
+.pt-sm {   padding-top: round(@margin-sm * @margin-scale-xs); }
+.pr-sm { padding-right: round(@margin-sm * @margin-scale-xs); }
+.pb-sm {padding-bottom: round(@margin-sm * @margin-scale-xs); }
+.pl-sm {  padding-left: round(@margin-sm * @margin-scale-xs); }
+
+.pt-md {   padding-top: round(@margin-md * @margin-scale-xs); }
+.pr-md { padding-right: round(@margin-md * @margin-scale-xs); }
+.pb-md {padding-bottom: round(@margin-md * @margin-scale-xs); }
+.pl-md {  padding-left: round(@margin-md * @margin-scale-xs); }
+
+.pt-lg {   padding-top: round(@margin-lg * @margin-scale-xs); }
+.pr-lg { padding-right: round(@margin-lg * @margin-scale-xs); }
+.pb-lg {padding-bottom: round(@margin-lg * @margin-scale-xs); }
+.pl-lg {  padding-left: round(@margin-lg * @margin-scale-xs); }
+
+.pt-xl {   padding-top: round(@margin-xl * @margin-scale-xs); }
+.pr-xl { padding-right: round(@margin-xl * @margin-scale-xs); }
+.pb-xl {padding-bottom: round(@margin-xl * @margin-scale-xs); }
+.pl-xl {  padding-left: round(@margin-xl * @margin-scale-xs); }
+}
+
+@media (min-width: @screen-sm) and (max-width: @screen-sm-max) {
+.mc-md {  margin-right: auto;
+           margin-left: auto; }
+
+.mt-xs {    margin-top: round(@margin-xs * @margin-scale-sm); }
+.mr-xs {  margin-right: round(@margin-xs * @margin-scale-sm); }
+.mb-xs { margin-bottom: round(@margin-xs * @margin-scale-sm); }
+.ml-xs {   margin-left: round(@margin-xs * @margin-scale-sm); }
+
+.mt-sm {    margin-top: round(@margin-sm * @margin-scale-sm); }
+.mr-sm {  margin-right: round(@margin-sm * @margin-scale-sm); }
+.mb-sm { margin-bottom: round(@margin-sm * @margin-scale-sm); }
+.ml-sm {   margin-left: round(@margin-sm * @margin-scale-sm); }
+
+.mt-md {    margin-top: round(@margin-md * @margin-scale-sm); }
+.mr-md {  margin-right: round(@margin-md * @margin-scale-sm); }
+.mb-md { margin-bottom: round(@margin-md * @margin-scale-sm); }
+.ml-md {   margin-left: round(@margin-md * @margin-scale-sm); }
+
+.mt-lg {    margin-top: round(@margin-lg * @margin-scale-sm); }
+.mr-lg {  margin-right: round(@margin-lg * @margin-scale-sm); }
+.mb-lg { margin-bottom: round(@margin-lg * @margin-scale-sm); }
+.ml-lg {   margin-left: round(@margin-lg * @margin-scale-sm); }
+
+.mt-xl {    margin-top: round(@margin-xl * @margin-scale-sm); }
+.mr-xl {  margin-right: round(@margin-xl * @margin-scale-sm); }
+.mb-xl { margin-bottom: round(@margin-xl * @margin-scale-sm); }
+.ml-xl {   margin-left: round(@margin-xl * @margin-scale-sm); }
+
+.pt-xs {   padding-top: round(@margin-xs * @margin-scale-sm); }
+.pr-xs { padding-right: round(@margin-xs * @margin-scale-sm); }
+.pb-xs {padding-bottom: round(@margin-xs * @margin-scale-sm); }
+.pl-xs {  padding-left: round(@margin-xs * @margin-scale-sm); }
+
+.pt-sm {   padding-top: round(@margin-sm * @margin-scale-sm); }
+.pr-sm { padding-right: round(@margin-sm * @margin-scale-sm); }
+.pb-sm {padding-bottom: round(@margin-sm * @margin-scale-sm); }
+.pl-sm {  padding-left: round(@margin-sm * @margin-scale-sm); }
+
+.pt-md {   padding-top: round(@margin-md * @margin-scale-sm); }
+.pr-md { padding-right: round(@margin-md * @margin-scale-sm); }
+.pb-md {padding-bottom: round(@margin-md * @margin-scale-sm); }
+.pl-md {  padding-left: round(@margin-md * @margin-scale-sm); }
+
+.pt-lg {   padding-top: round(@margin-lg * @margin-scale-sm); }
+.pr-lg { padding-right: round(@margin-lg * @margin-scale-sm); }
+.pb-lg {padding-bottom: round(@margin-lg * @margin-scale-sm); }
+.pl-lg {  padding-left: round(@margin-lg * @margin-scale-sm); }
+
+.pt-xl {   padding-top: round(@margin-xl * @margin-scale-sm); }
+.pr-xl { padding-right: round(@margin-xl * @margin-scale-sm); }
+.pb-xl {padding-bottom: round(@margin-xl * @margin-scale-sm); }
+.pl-xl {  padding-left: round(@margin-xl * @margin-scale-sm); }
+}
+
+@media (min-width: @screen-md) and (max-width: @screen-md-max) {
+.mc-lg {  margin-right: auto;
+           margin-left: auto; }
+
+.mt-xs {    margin-top: round(@margin-xs * @margin-scale-md); }
+.mr-xs {  margin-right: round(@margin-xs * @margin-scale-md); }
+.mb-xs { margin-bottom: round(@margin-xs * @margin-scale-md); }
+.ml-xs {   margin-left: round(@margin-xs * @margin-scale-md); }
+
+.mt-sm {    margin-top: round(@margin-sm * @margin-scale-md); }
+.mr-sm {  margin-right: round(@margin-sm * @margin-scale-md); }
+.mb-sm { margin-bottom: round(@margin-sm * @margin-scale-md); }
+.ml-sm {   margin-left: round(@margin-sm * @margin-scale-md); }
+
+.mt-md {    margin-top: round(@margin-md * @margin-scale-md); }
+.mr-md {  margin-right: round(@margin-md * @margin-scale-md); }
+.mb-md { margin-bottom: round(@margin-md * @margin-scale-md); }
+.ml-md {   margin-left: round(@margin-md * @margin-scale-md); }
+
+.mt-lg {    margin-top: round(@margin-lg * @margin-scale-md); }
+.mr-lg {  margin-right: round(@margin-lg * @margin-scale-md); }
+.mb-lg { margin-bottom: round(@margin-lg * @margin-scale-md); }
+.ml-lg {   margin-left: round(@margin-lg * @margin-scale-md); }
+
+.mt-xl {    margin-top: round(@margin-xl * @margin-scale-md); }
+.mr-xl {  margin-right: round(@margin-xl * @margin-scale-md); }
+.mb-xl { margin-bottom: round(@margin-xl * @margin-scale-md); }
+.ml-xl {   margin-left: round(@margin-xl * @margin-scale-md); }
+
+.pt-xs {   padding-top: round(@margin-xs * @margin-scale-md); }
+.pr-xs { padding-right: round(@margin-xs * @margin-scale-md); }
+.pb-xs {padding-bottom: round(@margin-xs * @margin-scale-md); }
+.pl-xs {  padding-left: round(@margin-xs * @margin-scale-md); }
+
+.pt-sm {   padding-top: round(@margin-sm * @margin-scale-md); }
+.pr-sm { padding-right: round(@margin-sm * @margin-scale-md); }
+.pb-sm {padding-bottom: round(@margin-sm * @margin-scale-md); }
+.pl-sm {  padding-left: round(@margin-sm * @margin-scale-md); }
+
+.pt-md {   padding-top: round(@margin-md * @margin-scale-md); }
+.pr-md { padding-right: round(@margin-md * @margin-scale-md); }
+.pb-md {padding-bottom: round(@margin-md * @margin-scale-md); }
+.pl-md {  padding-left: round(@margin-md * @margin-scale-md); }
+
+.pt-lg {   padding-top: round(@margin-lg * @margin-scale-md); }
+.pr-lg { padding-right: round(@margin-lg * @margin-scale-md); }
+.pb-lg {padding-bottom: round(@margin-lg * @margin-scale-md); }
+.pl-lg {  padding-left: round(@margin-lg * @margin-scale-md); }
+
+.pt-xl {   padding-top: round(@margin-xl * @margin-scale-md); }
+.pr-xl { padding-right: round(@margin-xl * @margin-scale-md); }
+.pb-xl {padding-bottom: round(@margin-xl * @margin-scale-md); }
+.pl-xl {  padding-left: round(@margin-xl * @margin-scale-md); }
+}
+
+@media (min-width: @screen-lg) {
+.mc-xl {  margin-right: auto;
+           margin-left: auto; }
+
+.mt-xs {    margin-top: round(@margin-xs * @margin-scale-lg); }
+.mr-xs {  margin-right: round(@margin-xs * @margin-scale-lg); }
+.mb-xs { margin-bottom: round(@margin-xs * @margin-scale-lg); }
+.ml-xs {   margin-left: round(@margin-xs * @margin-scale-lg); }
+
+.mt-sm {    margin-top: round(@margin-sm * @margin-scale-lg); }
+.mr-sm {  margin-right: round(@margin-sm * @margin-scale-lg); }
+.mb-sm { margin-bottom: round(@margin-sm * @margin-scale-lg); }
+.ml-sm {   margin-left: round(@margin-sm * @margin-scale-lg); }
+
+.mt-md {    margin-top: round(@margin-md * @margin-scale-lg); }
+.mr-md {  margin-right: round(@margin-md * @margin-scale-lg); }
+.mb-md { margin-bottom: round(@margin-md * @margin-scale-lg); }
+.ml-md {   margin-left: round(@margin-md * @margin-scale-lg); }
+
+.mt-lg {    margin-top: round(@margin-lg * @margin-scale-lg); }
+.mr-lg {  margin-right: round(@margin-lg * @margin-scale-lg); }
+.mb-lg { margin-bottom: round(@margin-lg * @margin-scale-lg); }
+.ml-lg {   margin-left: round(@margin-lg * @margin-scale-lg); }
+
+.mt-xl {    margin-top: round(@margin-xl * @margin-scale-lg); }
+.mr-xl {  margin-right: round(@margin-xl * @margin-scale-lg); }
+.mb-xl { margin-bottom: round(@margin-xl * @margin-scale-lg); }
+.ml-xl {   margin-left: round(@margin-xl * @margin-scale-lg); }
+
+.pt-xs {   padding-top: round(@margin-xs * @margin-scale-lg); }
+.pr-xs { padding-right: round(@margin-xs * @margin-scale-lg); }
+.pb-xs {padding-bottom: round(@margin-xs * @margin-scale-lg); }
+.pl-xs {  padding-left: round(@margin-xs * @margin-scale-lg); }
+
+.pt-sm {   padding-top: round(@margin-sm * @margin-scale-lg); }
+.pr-sm { padding-right: round(@margin-sm * @margin-scale-lg); }
+.pb-sm {padding-bottom: round(@margin-sm * @margin-scale-lg); }
+.pl-sm {  padding-left: round(@margin-sm * @margin-scale-lg); }
+
+.pt-md {   padding-top: round(@margin-md * @margin-scale-lg); }
+.pr-md { padding-right: round(@margin-md * @margin-scale-lg); }
+.pb-md {padding-bottom: round(@margin-md * @margin-scale-lg); }
+.pl-md {  padding-left: round(@margin-md * @margin-scale-lg); }
+
+.pt-lg {   padding-top: round(@margin-lg * @margin-scale-lg); }
+.pr-lg { padding-right: round(@margin-lg * @margin-scale-lg); }
+.pb-lg {padding-bottom: round(@margin-lg * @margin-scale-lg); }
+.pl-lg {  padding-left: round(@margin-lg * @margin-scale-lg); }
+
+.pt-xl {   padding-top: round(@margin-xl * @margin-scale-lg); }
+.pr-xl { padding-right: round(@margin-xl * @margin-scale-lg); }
+.pb-xl {padding-bottom: round(@margin-xl * @margin-scale-lg); }
+.pl-xl {  padding-left: round(@margin-xl * @margin-scale-lg); }
+}
