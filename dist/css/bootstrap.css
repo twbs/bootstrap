@@ -67,6 +67,9 @@
   .ml-md {
     margin-left: 11px;
   }
+  .ml-md {
+    margin-right: 11px;
+  }
   .mt-lg {
     margin-top: 23px;
   }
@@ -381,9 +384,6 @@
   }
   .pt-lg {
     padding-top: 30px;
-  }
-  .pr-lg {
-    padding-right: 30px;
   }
   .pb-lg {
     padding-bottom: 30px;
