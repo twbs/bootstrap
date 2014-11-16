@@ -40,3 +40,6 @@ validation-status.json
 # Folders to ignore
 bower_components
 node_modules
+
+# Test to ignore
+dist/index.htm
