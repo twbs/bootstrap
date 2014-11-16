@@ -6,7 +6,70 @@
 // Base class
 // --------------------------------------------------
 
-.nav {
+.nav when(@langDir = rtl){
+  margin-bottom: 0;
+  padding-right: 0; // Override default ul/ol
+  list-style: none;
+  &:extend(.clearfix all);
+
+  > li {
+    position: relative;
+    display: block;
+
+    > a {
+      position: relative;
+      display: block;
+      padding: @nav-link-padding;
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        background-color: @nav-link-hover-bg;
+      }
+    }
+
+    // Disabled state sets text to gray and nukes hover/tab effects
+    &.disabled > a {
+      color: @nav-disabled-link-color;
+
+      &:hover,
+      &:focus {
+        color: @nav-disabled-link-hover-color;
+        text-decoration: none;
+        background-color: transparent;
+        cursor: @cursor-disabled;
+      }
+    }
+  }
+
+  // Open dropdowns
+  .open > a {
+    &,
+    &:hover,
+    &:focus {
+      background-color: @nav-link-hover-bg;
+      border-color: @link-color;
+    }
+  }
+
+  // Nav dividers (deprecated with v3.0.1)
+  //
+  // This should have been removed in v3 with the dropping of `.nav-list`, but
+  // we missed it. We don't currently support this anywhere, but in the interest
+  // of maintaining backward compatibility in case you use it, it's deprecated.
+  .nav-divider {
+    .nav-divider();
+  }
+
+  // Prevent IE8 from misplacing imgs
+  //
+  // See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
+  > li > a > img {
+    max-width: none;
+  }
+}
+
+
+.nav when(@langDir = ltr){
   margin-bottom: 0;
   padding-left: 0; // Override default ul/ol
   list-style: none;
@@ -115,7 +178,29 @@
 // Pills
 // -------------------------
 .nav-pills {
-  > li {
+  > li when(@langDir = rtl) {
+    float: right;
+
+    // Links rendered as pills
+    > a {
+      border-radius: @nav-pills-border-radius;
+    }
+    + li {
+      margin-right: 2px;
+    }
+
+    // Active state
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @nav-pills-active-link-hover-color;
+        background-color: @nav-pills-active-link-hover-bg;
+      }
+    }
+  }
+  
+  > li when(@langDir = ltr) {
     float: left;
 
     // Links rendered as pills
@@ -136,6 +221,8 @@
       }
     }
   }
+  
+  
 }
 
 

@@ -28,7 +28,14 @@
 // Groups `.navbar-brand` and `.navbar-toggle` into a single component for easy
 // styling of responsive aspects.
 
-.navbar-header {
+.navbar-header when(@langDir = rtl) {
+  &:extend(.clearfix all);
+
+  @media (min-width: @grid-float-breakpoint) {
+    float: right;
+  }
+}
+.navbar-header when(@langDir = ltr) {
   &:extend(.clearfix all);
 
   @media (min-width: @grid-float-breakpoint) {
@@ -161,7 +168,30 @@
 
 // Brand/project name
 
-.navbar-brand {
+.navbar-brand when(@langDir = rtl) {
+  float: right;
+  padding: @navbar-padding-vertical @navbar-padding-horizontal;
+  font-size: @font-size-large;
+  line-height: @line-height-computed;
+  height: @navbar-height;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  > img {
+    display: block;
+  }
+
+  @media (min-width: @grid-float-breakpoint) {
+    .navbar > .container &,
+    .navbar > .container-fluid & {
+      margin-right: -@navbar-padding-horizontal;
+    }
+  }
+}
+.navbar-brand when(@langDir = ltr) {
   float: left;
   padding: @navbar-padding-vertical @navbar-padding-horizontal;
   font-size: @font-size-large;
@@ -230,7 +260,55 @@
 // Builds on top of the `.nav` components with its own modifier class to make
 // the nav the full height of the horizontal nav (above 768px).
 
-.navbar-nav {
+.navbar-nav when(@langDir = rtl){
+  margin: (@navbar-padding-vertical / 2) -@navbar-padding-horizontal;
+
+  > li > a {
+    padding-top:    10px;
+    padding-bottom: 10px;
+    line-height: @line-height-computed;
+  }
+
+  @media (max-width: @grid-float-breakpoint-max) {
+    // Dropdowns get custom display when collapsed
+    .open .dropdown-menu {
+      position: static;
+      float: none;
+      width: auto;
+      margin-top: 0;
+      background-color: transparent;
+      border: 0;
+      box-shadow: none;
+      > li > a,
+      .dropdown-header {
+        padding: 5px 25px 5px 15px;
+      }
+      > li > a {
+        line-height: @line-height-computed;
+        &:hover,
+        &:focus {
+          background-image: none;
+        }
+      }
+    }
+  }
+
+  // Uncollapse the nav
+  @media (min-width: @grid-float-breakpoint) {
+    float: right;
+    margin: 0;
+    > li {
+      float: right;
+      > a {
+        padding-top:    @navbar-padding-vertical;
+        padding-bottom: @navbar-padding-vertical;
+      }
+    }
+  }
+}
+
+
+.navbar-nav when(@langDir = ltr) {
   margin: (@navbar-padding-vertical / 2) -@navbar-padding-horizontal;
 
   > li > a {
@@ -267,7 +345,6 @@
   @media (min-width: @grid-float-breakpoint) {
     float: left;
     margin: 0;
-
     > li {
       float: left;
       > a {
