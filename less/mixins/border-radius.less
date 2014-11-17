@@ -4,7 +4,7 @@
   border-top-right-radius: @radius;
    border-top-left-radius: @radius;
 }
-.border-right-radius(@radius) {
+.border-right-radius(@radius) when(@langDir = rtl) {
   border-bottom-right-radius: @radius;
      border-top-right-radius: @radius;
 }
@@ -12,7 +12,11 @@
   border-bottom-right-radius: @radius;
    border-bottom-left-radius: @radius;
 }
-.border-left-radius(@radius) {
+.border-left-radius(@radius) when(@langDir = rtl){
   border-bottom-left-radius: @radius;
      border-top-left-radius: @radius;
+}
+.border-left-radius(@radius) when(@langDir = ltr){
+  border-bottom-right-radius: @radius;
+     border-top-right-radius: @radius;
 }
