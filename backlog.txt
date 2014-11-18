@@ -14,11 +14,6 @@
 * TASKS *********************************************************************************************
 
 
-HOME CARRUSEL
-replantear, buscar que se usa
-	opcion 1: grilla metro 3 niveles jeararquicos
-	opcion 2: 3 thumbs abajo de img de carrusel tal cual ahora
-
 
 
 - buenosaires dashboard mi ba

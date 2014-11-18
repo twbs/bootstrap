@@ -829,7 +829,7 @@ padding-top: 18px;
 .footer-left {
   margin-top:32px;
   margin-bottom:48px;
-  color:#444;
+  color:#555;
 }
 .footer-left a {
   display:block;
@@ -878,6 +878,7 @@ margin-bottom: 16px;
   display:inline-block;
   background-repeat:no-repeat;
   background-size:contain;
+  text-indent: -9999px;
 }
 .social-fb {
   background-image:url(social/social-fb.png);
@@ -902,6 +903,11 @@ margin-bottom: 16px;
 .social-rss {
   background-image:url(social/social-rss.png);
   background-image:url(social/social-rss.svg), none;
+}
+.social-cc {
+  background-image:url(social/social-cc.png);
+  background-image:url(social/social-cc.svg), none;
+  margin-top:8px;
 }
 .social-fav {
   float:right !important;
@@ -1116,6 +1122,7 @@ article figure,
   border-radius:6px;
 }
 article figcaption,
+.ba-home figcaption,
 .ba-libro aside header h2,
 .ba-aplicativo aside header h2 {
   color:#fff;
