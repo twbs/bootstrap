@@ -11,40 +11,8 @@
 
 
 
-
 * TASKS *********************************************************************************************
 
-
-- Buenos aires cosas
-
-- Bastrap crossbrowsing
-
-
-
-- diferentes jerarquías menu principal
-	placeholder gris para imagen?
-
-- shortcuts
-	iconos imagenes [analizar]
-	sellos grandes................................
-
-- buenosaires dashboard mi ba
-
-
-ANOTADOR:
-- area, mobile > sacar descripcion
-- footer nav colapsable
-- pagina nota > embed twitter
-- pagina nota > favorito <3
-- trámite > verde 3 sacar
-- trámite > iframe turnero
-- script para delay de hover en iframes [mapa dsfs]
-- aplicativo > completá datos con ba + arriba
-- página libro > sidebar 3er nivel
-- pagina libro > repasar encabezado vs nombre 1er pagina....
-- listado destacados [onda app oficial badge][no debería ser un icono mas destacado abajo?]
-- noticias?
-- ver más tipos en tareas
 
 HOME CARRUSEL
 replantear, buscar que se usa
@@ -53,9 +21,34 @@ replantear, buscar que se usa
 
 
 
+- buenosaires dashboard mi ba
+- noticias
 
 
 
+
+- ver más tipos en tareas
+
+
+- redes sociales y corazón en todo menos index y busqueda?
+
+
+
+
+
+
+- BASTRAP
+	zarpar contraste navbar? ya fue todo con la gris?
+	los códigos deben ser igual al ejemplo, y sin color, ya fue
+
+- widgets faltantes
+	area radio player
+	flickr
+	1 nota?
+	carousel?
+
+
+- english y chateá con operador
 
 
 
@@ -86,6 +79,16 @@ replantear, buscar que se usa
  	con bordes en panels? dsfsdf ver las tarjetitas ya aplicadas vs buenos aires no border no panel [j3]
 
 
+- script para delay de hover en iframes [mapa dsfs]
+
+
+
+
+NOTAS:
+- fav sólo si estás loggeado
+
+
+
 
 
 
@@ -96,27 +99,14 @@ replantear, buscar que se usa
 
 
 
+
+
+- pagina nota > embed twitter
+
 - contenido excepcional [VER]
 	http://redmine.buenosaires.gob.ar/projects/dgid/wiki/Contenido_excepcional
 
-- ribbons
-
 - modal carousel no anda bien
-
-- BASTRAP
-	zarpar contraste navbar? ya fue todo con la gris?
-	los códigos deben ser igual al ejemplo, y sin color, ya fue
-
-- widgets faltantes
-	area radio player
-	flickr
-	1 nota?
-	carousel?
-
-- megamenu
-	hover + click mmmmm
-	prioridades font size
-	iconos arriba
 
 - hover y delay para megamenu
 	http://jsfiddle.net/azhagu/6vYr2/2/
@@ -127,14 +117,15 @@ replantear, buscar que se usa
 - aplicativo con validacion js y cositas
 	autoscroll al hacer click?
 
-- english y chateá con operador
-
 - nav mobile para header, footer y sidebar en pag de libro.... [drawer? colapsable todo? no colapsable pag de libro? mmm?
 	drawer navigation [trunk.js?]
 	todo desplegado
 
-- Iconos ejes versión grande [por favor no]
 
+
+- Ejemplo back-end
+- Agregar manual de marca con recursos
+- BS usar clases de contexto + colores? danger + red, etc
 
 
 
@@ -154,18 +145,7 @@ replantear, buscar que se usa
 
 - COMENTAR descriptivamente
 
-- TABLET
-	sacar banner
-	tramites arriba
-
-- MOBILE
-	tramites
-	resto del sitio
-	header más app con drawer
-
 - no hacerse el boludo y pasar todo a saas/less
-
-- sidebar que te siga hasta arriba y hasta abajo? [claro]
 
 - BA > pagina con todas las redes sociales fanpages etc de areas todo
 
@@ -181,15 +161,13 @@ replantear, buscar que se usa
 
 - probar sarmiento notebook!
 
-- BS usar clases de contexto + colores? danger + red, etc
-
 - BS boton copy!
 
 - deshabilitar animaciones de javascript?
 
-- Agregar manual de marca con recursos
 
-- Ejemplo back-end
+
+
 
 
 
@@ -213,149 +191,6 @@ replantear, buscar que se usa
 160
 192
 224
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-http://www.buenosaires.gob.ar/redentodoestasvos/tarjeta/registro
-
-
-
-
-
-
-open /Applications/GoogleChrome.app --args --allow-file-access-from-files
-
-
-
-
-
-
-
-6
-12
-18
-24
-
-36
-48
-60
-72
-
-96
-120
-144
-168
-
-
-
-
-
-7
-14
-21
-28
-
-42
-56
-70
-84
-
-112
-140
-168
-196
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
