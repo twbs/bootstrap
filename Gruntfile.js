@@ -394,7 +394,9 @@ module.exports = function (grunt) {
   // Test task.
   var testSubtasks = [];
   // Skip core tests if running a different subset of the test suite
-  if (runSubset('core')) {
+  if (runSubset('core') &&
+      // Skip core tests if this is a Savage build
+      process.env.TRAVIS_REPO_SLUG !== 'twbs-savage/bootstrap') {
     testSubtasks = testSubtasks.concat(['dist-css', 'dist-js', 'csslint:dist', 'test-js', 'docs']);
   }
   // Skip HTML validation if running a different subset of the test suite
