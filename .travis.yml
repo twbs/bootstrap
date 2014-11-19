@@ -27,6 +27,8 @@ env:
     - secure: "gqjqISbxBJK6byFbsmr1AyP1qoWH+rap06A2gI7v72+Tn2PU2nYkIMUkCvhZw6K889jv+LhQ/ybcBxDOXHpNCExCnSgB4dcnmYp+9oeNZb37jSP0rQ+Ib4OTLjzc3/FawE/fUq5kukZTC7porzc/k0qJNLAZRx3YLALmK1GIdUY="
     - secure: "Gghh/e3Gsbj1+4RR9Lh2aR/xJl35HWiHqlPIeSUqE9D7uDCVTAwNce/dGL3Ew7uJPfJ6Pgr70wD3zgu3stw0Zmzayax0hiDtGwcQCxVIER08wqGANK9C2Q7PYJkNTNtiTo6ehKWbdV4Z+/U+TEYyQfpQTDbAFYk/vVpsdjp0Lmc="
     - secure: "RTbRdx4G/2OTLfrZtP1VbRljxEmd6A1F3GqXboeQTldsnAlwpsES65es5CE3ub/rmixLApOY9ot7OPmNixFgC2Y8xOsV7lNCC62QVpmqQEDyGFFQKb3yO6/dmwQxdsCqGfzf9Np6Wh5V22QFvr50ZLKLd7Uhd9oXMDIk/z1MJ3o="
+    - secure: "cjca/d8HlLWC3kS86028sMI+KPA5FHVl8Da4Y56NHOio1lkTu95QQYTHjxSN1x3LqgWa2m2jGXf+2ocm+SCmyurZahk0BqE22zKzBACYv+iMbcVBLQaQ84tn2yOYHbS3DL4o4FNS8prrkPFYBo9JJ4GZLIRLiQ+4zt+Lhn1TPjg="
+    - secure: "MaUn2+a/iJWTXC8U+Y3Y8WaTbMMuz26QzsAJSvDHGoQD2P9PoepoBjjdElKP4XqqlYN3s2P5rclZ2kpxqChvVGJZxXLWKLTzlmc1sMjlTc4eXkWjZpbx2pjEVGGDM2ZW+0l/uIx2PX3tOlsBbw26sfkn4R89gm9r8Wnl/V03r14="
   matrix:
     - TWBS_TEST=core
     - TWBS_TEST=validate-html
