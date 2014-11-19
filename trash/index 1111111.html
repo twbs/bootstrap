@@ -242,7 +242,14 @@
               <li><a href="#">Turismo</a></li>
               <li><a href="#">Noticias</a></li>
               <li><a href="#">Accesible</a></li>
-              <li class="sub-brand"><a href="#"><span class="avatar social-tw"></span> Pablo</a></li>
+              <li class="dropdown sub-brand">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="avatar social-tw"></span> Gonzalo <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Notificaciones <span class="glyphicon glyphicon-bell success-lt"></span></a></li>
+                  <li><a href="#">Editar perfil <span class="glyphicon glyphicon-user blue-lt"></span></a></li>
+                  <li><a href="#">Salir <span class="glyphicon glyphicon-remove danger-lt"></span></a></li>
+                </ul>
+              </li>
             </ul>
           </nav>
         </div>
@@ -273,30 +280,50 @@
           </a>
         </div>
 -->
-        <div class="row row-grid">
-          <div class="col-md-8">
-            <a href="#">
-              <figure>
-                <img class="img-responsive" src="../docs/jumbo1.jpg" />
-                <figcaption><h4>La gente se sorprende y estalla de alegría al haber tantos globos violetas en más de 10 barrios porteños.</h4></figcaption>
-              </figure>
+
+
+
+
+
+        <div class="row">
+          <div id="carousel-ba" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <a class="item active" href="#">
+                <img src="../docs/jumbo2.jpg" alt="Carousel test">
+                <div class="carousel-caption">
+                  <h2>Se inaugura el V Congreso Internacional de Turismo Idiomático</h2>
+                  <p>En el lanzamiento realizado en la Cámara Argentina de Turismo, se incentiva a intercambiar experiencias, acceder a nuevos conocimientos, tomar contacto con los últimos estudios e investigaciones, y conocer la oferta de las organizaciones de distintos sectores.</p>
+                </div>
+              </a>
+              <a class="item" href="#">
+                <img src="../docs/jumbo5.jpg" alt="Carousel test">
+                <div class="carousel-caption">
+                  <h2>Mauricio Macri y su familia inauguraron hoy en la Costanera Sur la estatua oficial del ilustre tenista Guillermo Vilas</h2>
+                  <p>La escultura está ubicada en El Paseo de la Gloria (Costanera Sur), un recorrido que rinde homenaje a los personajes más destacados del deporte argentino y creado como preludio de los Juegos Olímpicos de la Juventud 2018 que tendrá a Buenos Aires como sede.</p>
+                </div>
+              </a>
+            </div>
+            <a class="left carousel-control" href="#carousel-ba" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
-          </div>
-          <div class="col-md-4">
-            <a href="#">
-              <figure>
-                <img class="img-responsive" src="../docs/jumbo2.jpg" />
-                <figcaption><h4>Charlamos con los vecinos sobre las obras de los ramales secundarios.</h4></figcaption>
-              </figure>
-            </a>
-            <a href="#">
-              <figure>
-                <img class="img-responsive" src="../docs/jumbo4.jpg" />
-                <figcaption><h4>Los vecinos de Villa Real, en la Comuna 10, participan en la creación de la nueva plaza del barrio.</h4></figcaption>
-              </figure>
+            <a class="right carousel-control" href="#carousel-ba" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
             </a>
           </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div class="row row-shortcut">
           <a class="col-md-3 col-sm-6 shortcut shortcut-tramite" href="http://www.buenosaires.gob.ar/tramites">
             <span class="bg-gray-3">
@@ -406,7 +433,7 @@
                 <h4>Régimen de promoción cultural</h4>
                 <p>Si tenés algún proyecto cultural podés presentarlo para solicitar una financiación, a través del Régimen de Promoción Cultural.</p>
               </a>
-            <button class="btn btn-default btn-lg btn-block">Ver todos los trámites</button>
+            <button class="btn btn-default btn-lg btn-block">Ver todas las notas</button>
           </section>
           <section class="col-md-4 col-sm-12 list-group list-group-content">
             <h2 class="medios-home">Medios de Ciudad</h2>

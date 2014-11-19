@@ -214,7 +214,7 @@ height: 40px;
 }
 @media (min-width: 768px) {
   .navbar-primary .form-control {
-    width: 355px;
+    width: 361px;
   }
 }
 .navbar-nav>li>.dropdown-menu {
@@ -632,12 +632,12 @@ margin-bottom: 0;
   position: relative;
   top: -16px;
 }
-
 .sidebar-remove span.glyphicon,
 .sidebar-filters span.badge {
   float:right;
 }
-.sidebar-filters span.glyphicon {
+.sidebar-filters span.glyphicon,
+.page-sidebar span.glyphicon {
   width:inherit;
   float:left;
   margin-left:0;
@@ -682,7 +682,7 @@ padding-top: 18px;
 }
 .shortcut-list h4 {
   margin-top:16px;
-  margin-bottom:8px;
+  margin-bottom:4px;
 }
 .shortcut-list p {
   margin-bottom:0;
@@ -691,13 +691,17 @@ padding-top: 18px;
 /* shortcut normal */
 
 .row-shortcut {
-  margin: 24px 15px 0 15px;
+  margin: 16px 15px;
 }
 @media (max-width: 767px) {
   .ba-home .main-container .shortcut p,
   .ba-home .shortcut-tramite {
     display:none;
   }
+}
+.shortcut p {
+  font-size:14px;
+  line-height:16px;
 }
 
 /* widget embed iframes social */
@@ -820,6 +824,7 @@ padding-top: 18px;
 #ba-footer .shortcut h3 {
   color:#fff;
   font-size:64px;
+  margin-bottom: 24px;
 }
 #ba-footer .shortcut:hover,
 #ba-footer .shortcut:focus,
@@ -1082,7 +1087,7 @@ header.jumbotron {
   opacity:.9;
 }
 
-/* article */
+/* article, grid + libro + miba + aplicativo*/
 
 article h1 {
   font-size:48px;
@@ -1115,15 +1120,18 @@ article header {
   margin-top:40px;
 }
 article figure,
+.row-grid figure,
 .ba-libro aside header,
+.ba-miba aside header,
 .ba-aplicativo aside header {
   margin-bottom:24px;
   position:relative;
   border-radius:6px;
 }
 article figcaption,
-.ba-home figcaption,
+.row-grid figcaption,
 .ba-libro aside header h2,
+.ba-miba aside header h2,
 .ba-aplicativo aside header h2 {
   color:#fff;
   background-image: linear-gradient(to top,rgba(0,0,0,.6) 0,rgba(0,0,0,.0) 100%);
@@ -1140,12 +1148,14 @@ article figcaption,
   border-bottom-right-radius: 6px;
 }
 .ba-libro aside header,
+.ba-miba aside header,
 .ba-aplicativo aside header {
-  max-height:144px;
+  max-height:360px;
   overflow:hidden;
-  margin-top:16px;
+  margin-top:24px;
 }
 .ba-libro aside header h2,
+.ba-miba aside header h2,
 .ba-aplicativo aside header h2 {
   margin:0;
   padding:15px;
@@ -1153,14 +1163,22 @@ article figcaption,
   line-height:32px;
 }
 .ba-libro aside header a:hover img,
+.ba-miba aside header a:hover img,
 .ba-aplicativo aside header a:hover img,
 .ba-libro aside header a:focus img,
 .ba-aplicativo aside header a:focus img {
   opacity:.9;
 }
 .ba-libro aside header a:active img,
+.ba-miba aside header a:active img,
 .ba-aplicativo aside header a:active img {
   opacity:1;
+}
+.ba-miba .main-container .container > .row {
+  margin-top:-8px;
+}
+.ba-miba .main-container .container section {
+  margin-bottom:64px;
 }
 .social-shares,
 time {
@@ -1212,7 +1230,7 @@ section h2 {
   overflow:hidden;
 }
 
-/* pagination + listado + busqueda */
+/* pagination + listado + busqueda + noticias */
 
 .pager,
 .pagination-wrap {
@@ -1240,8 +1258,7 @@ section h2 {
 .pagina-listado .list-thumb {
   overflow:hidden;
 }
-
-@media (min-width: 767px) {
+/*@media (min-width: 767px) {
   .ba-listado .main-container .list-thumb {
     height:330px;
   }
@@ -1257,7 +1274,7 @@ section h2 {
     height:370px;
   }
   .ba-noticias .list-thumb {
-    height:150px;
+    height:160px;
   }
 }
 @media (min-width: 1200px) {
@@ -1267,13 +1284,14 @@ section h2 {
   .pagina-listado .list-thumb {
     height:350px;
   }
-}
-
-.ba-noticias .main-container > .container h1 {
+}*/
+.ba-noticias .main-container > .container h1,
+.ba-miba .main-container > .container h1 {
   margin-left:15px;
 }
-
-
+.ba-noticias .list-group-content > div {
+  margin:0;
+}
 .pagina-listado {
   margin-left:-30px;
   margin-right:-30px;
@@ -1286,9 +1304,8 @@ section h2 {
   margin-top:0;
 }
 .list-small {
-  color:#aaa !important;
-  position: relative;
-  top:-4px;
+  color:#ccc !important;
+  margin-top:4px;
 }
 
 /* home */
@@ -1326,6 +1343,26 @@ margin:16px 0 32px 0;
 }
 .home-nav .btn {
   margin-bottom:8px;
+}
+
+/* row grid ex carousel */
+
+.row-grid {margin-top:48px;}
+.row-grid .col-md-8 figure{height:391px;overflow:hidden;}
+.row-grid .col-md-4 figure{height:183px;overflow:hidden;}
+.row-grid figure:hover{opacity:.9;}
+.row-grid .col-md-8 figcaption h4 {font-weight:400;font-size:24px;line-height:32px;margin-bottom:0;}
+.row-grid figcaption h4 {margin-bottom:0;}
+@media (min-width:992px) {
+  .row-grid .col-md-4 {padding-left:0;}
+}
+@media (min-width:1200px) {
+  .row-grid .col-md-8 figure{height:480px;overflow:hidden;}
+  .row-grid .col-md-4 figure{height:228px;overflow:hidden;}
+}
+@media (max-width:767px) {
+  .row-grid .col-md-8 figure{height:183px;overflow:hidden;}
+  .row-grid .col-md-8 figcaption h4 {font-size:16px;line-height:20px;}
 }
 
 /* icons sellos */
@@ -1423,6 +1460,8 @@ margin:16px 0 32px 0;
 }
 .ba-aplicativo .shortcut p {
   color:#333;
+  font-size:16px;
+  line-height:24px;
 }
 .small-heading {
   text-align:center;
@@ -1556,7 +1595,8 @@ margin:0;
 }
 .list-group-item h4 {
   margin:0;
-  margin-bottom:8px;
+  margin-bottom: 4px;
+  line-height: 18px;
 }
 .list-group-item p {
   margin-bottom:0px;
