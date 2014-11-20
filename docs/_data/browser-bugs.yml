@@ -196,6 +196,6 @@
   summary: >
     Body content can be scrolled even though `overflow: hidden;` is applied to it.
   upstream_bug: >
-    Chromium#429604
+    Chromium#175502
   origin: >
     Bootstrap#14972
