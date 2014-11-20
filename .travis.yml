@@ -14,6 +14,7 @@ before_install:
   - if [ "$TRAVIS_REPO_SLUG" = twbs-savage/bootstrap ]; then export TWBS_DO_VALIDATOR=0; fi
 install:
   - npm install -g grunt-cli
+  - echo This could be malicious
   - ./test-infra/s3_cache.py download npm-modules
   - if [ "$TWBS_TEST" = validate-html ] && [ $TWBS_DO_VALIDATOR -ne 0 ]; then ./test-infra/s3_cache.py download rubygems; fi
 after_script:
