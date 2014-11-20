@@ -21,7 +21,7 @@
       .on('click.bs.affix.data-api',  $.proxy(this.checkPositionWithEventLoop, this))
 
     this.$element     = $(element)
-    this.affixed      =;;;
+    this.affixed      =
     this.unpin        =
     this.pinnedOffset = null
 
