@@ -59,7 +59,7 @@
 
     this.options.interval
       && !this.paused
-      && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
+      && (this.interval = setInterval($.proxy(this.next, this),  this.$element.find('.item.active').data('interval') || this.options.interval))
 
     return this
   }
