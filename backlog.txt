@@ -35,8 +35,6 @@
 - widgets faltantes
 	area radio player
 	flickr
-	1 nota?
-	carousel?
 
 
 - english y chateá con operador
