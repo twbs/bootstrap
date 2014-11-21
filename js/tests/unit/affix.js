@@ -86,6 +86,7 @@ $(function () {
       })
       .on('affixed-top.bs.affix', function () {
         ok($('#affixTopTarget').hasClass('affix-top'), 'affix-top class applied')
+        $('#padding-offset').remove()
         start()
       })
 
