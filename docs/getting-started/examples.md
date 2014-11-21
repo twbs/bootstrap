@@ -16,21 +16,14 @@ Build on the basic template above with Bootstrap's many components. We encourage
     <p>Nothing but the basics: compiled CSS and JavaScript.</p>
   </div>
   <div class="col-xs-6 col-md-4">
-    <a href="{{ site.baseurl }}examples/theme/">
-      <img class="img-thumbnail" src="{{ site.baseurl }}examples/screenshots/theme.jpg" alt="">
-    </a>
-    <h4>Bootstrap theme</h4>
-    <p>Load the optional Bootstrap theme for a visually enhanced experience.</p>
-  </div>
-  <div class="clearfix visible-xs-block"></div>
-
-  <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}examples/grid/">
       <img class="img-thumbnail" src="{{ site.baseurl }}examples/screenshots/grid.jpg" alt="">
     </a>
     <h4>Grids</h4>
     <p>Multiple examples of grid layouts with all four tiers, nesting, and more.</p>
   </div>
+  <div class="clearfix visible-xs-block"></div>
+
   <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}examples/jumbotron/">
       <img class="img-thumbnail" src="{{ site.baseurl }}examples/screenshots/jumbotron.jpg" alt="">
@@ -38,8 +31,6 @@ Build on the basic template above with Bootstrap's many components. We encourage
     <h4>Jumbotron</h4>
     <p>Build around the jumbotron with a navbar and some basic grid columns.</p>
   </div>
-  <div class="clearfix visible-xs-block"></div>
-
   <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}examples/jumbotron-narrow/">
       <img class="img-thumbnail" src="{{ site.baseurl }}examples/screenshots/jumbotron-narrow.jpg" alt="">
