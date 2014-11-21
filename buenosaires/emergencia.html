@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sitio del Gobierno de la Ciudad de Buenos Aires">
+    <meta name="author" content="Gobierno de la Ciudad de Buenos Aires">
+    <title>BA Emergencia</title>
+    <link rel="shortcut icon" href="../bastrap3/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="../bastrap3/favicon-mobile.png">
+    <link rel="stylesheet" href="../bastrap3/bootstrap.min.css">
+    <link rel="stylesheet" href="../bastrap3/bastrap.css">
+    <link rel="stylesheet" href="assets/buenosaires.css">
+    <!-- [if lt IE 9]><script src="../bastrap3/ba-modernizr.js"></script><![endif] -->
+  </head>
+  <body class="ba-emergencia">
+    <header class="navbar navbar-primary navbar-top yamm">
+      <div class="ba-navbar-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <a class="navbar-brand bac-header" href="listado.html">Buenos Aires Ciudad</a>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <form class="navbar-form navbar-right" role="search">
+                <input class="form-control input-sm" placeholder="Buscar ..." type="text">
+                <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle btn btn-primary btn-block btn-sm" data-toggle="collapse" data-target="#header-main-nav">
+              <span>Menú principal</span>
+              <span class="glyphicon glyphicon-chevron-down"></span>
+            </button>
+          </div>
+          <nav class="collapse navbar-collapse" id="header-main-nav" role="navigation">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">La Ciudad <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gobierno <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Trámites <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Red En todo estás Vos <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
+              <div class="menu-divider"></div>
+              <li><a href="#">Transparencia</a></li>
+              <li><a href="#">Turismo</a></li>
+              <li><a href="#">Noticias</a></li>
+              <li><a href="#">Accesible</a></li>
+              <li class="sub-brand sub-brand-ba"><a href="#">Entrar a <img src="../bastrap3/ba-btn.png" class="glyphicon glyphicon-ba" /></a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <header class="jumbotron jumbotron-small area-header">
+      <div class="jumbotron-overlay">
+        <div class="container">
+          <nav role="navigation">
+            <ol class="breadcrumb">
+              <li><a href="#4">Buenos Aires</a></li>
+              <li class="active">Emergencia</li>
+            </ol>
+          </nav>
+          <div class="area-title col-md-8 col-md-offset-2">
+            <h1>Accidente en la Autopista del Oeste</h1>
+            <p class="lead">Hubo un choque múltiple a las 17:45hs.<br />
+            Consultá los hospitales y servicios que están ocupandose.</p>
+            <p><span class="label label-info">Actualizado: 19:20hs</span></p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main-container" role="main">
+      <div class="container">
+        <section class="big-heading shortcut-tel">
+          <h2>Teléfonos</h2>
+          <nav class="row shortcut-row">
+            <a class="col-md-6 shortcut" href="tel:+541108004321234">
+              <h2 class="h1"><span class="glyphicon glyphicon-earphone"></span>0800-432-1234</h2>
+              <p>Consulta de heridos</p>
+            </a>
+            <a class="col-md-3 shortcut" href="tel:+5411107">
+              <h2 class="h1"><span class="glyphicon glyphicon-earphone"></span>107</h2>
+              <p>SAME</p>
+            </a>
+            <a class="col-md-3 shortcut" href="tel:+5411147">
+              <h2 class="h1"><span class="glyphicon glyphicon-earphone"></span>147</h2>
+              <p>Informes</p>
+            </a>
+          </nav>
+        </section>
+        <section class="big-heading">
+          <h2>Mapa</h2>
+          <div class="widget-embed">
+            <iframe src="http://epok.buenosaires.gob.ar/pub/mapa/planmicrocentro/obras_en_microcentro/" name="Mapa de Obras y Desvíos" width="100%" height="480" scrolling="no" frameborder="0"></iframe>
+          </div>
+        </section>
+        <section class="big-heading">
+          <h2>Heridos confirmados</h2>
+          <div class="search-xl">
+            <form class="navbar-right" role="search">
+              <input class="form-control input-xl" placeholder="Buscar personas ..." type="text">
+              <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+            </form>
+          </div>
+          <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th width="35%">Nombre</th>
+                    <th width="15%">DNI</th>
+                    <th width="35%">Trasladado a</th>
+                      <th>Teléfono</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <td>Aguirre Martinez, Juan Felipe</td>
+                      <td>22.321.547</td>
+                      <td><a href="#" target="_blank">Hospital Italiano de Buenos Aires</a></td>
+                      <td>4959-0200</td>
+                  </tr>
+                  <tr>
+                    <td>Benavidez, Mónica</td>
+                      <td>22.321.547</td>
+                      <td><a href="#" target="_blank">Hospital Italiano de Buenos Aires</a></td>
+                      <td>4959-0200</td>
+                  </tr>
+                  <tr>
+                    <td>Aguirre Martinez, Juan Felipe</td>
+                      <td>22.321.547</td>
+                      <td><a href="#" target="_blank">Hospital Italiano de Buenos Aires</a></td>
+                      <td>4959-0200</td>
+                  </tr>
+                  <tr>
+                    <td>Benavidez, Mónica</td>
+                      <td>22.321.547</td>
+                      <td><a href="#" target="_blank">Hospital Italiano de Buenos Aires</a></td>
+                      <td>4959-0200</td>
+                  </tr>
+              </tbody>
+          </table>
+        </section>
+        <section class="big-heading">
+          <h2>Descargas</h2>
+          <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th width="50%">Archivo</th>
+                    <th width="35%">Tamaño</th>
+                    <th>Descargar</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <td>Formulario para reclamos</td>
+                      <td>234.65 KB</td>
+                      <td><button class="btn btn-blue btn-block btn-sm"><span class="glyphicon glyphicon-arrow-down"></span></button></td>
+                  </tr>
+                  <tr>
+                    <td>Formulario para reclamos</td>
+                      <td>234.65 KB</td>
+                      <td><button class="btn btn-blue btn-block btn-sm"><span class="glyphicon glyphicon-arrow-down"></span></button></td>
+                  </tr>
+                  <tr>
+                    <td>Formulario para reclamos</td>
+                      <td>234.65 KB</td>
+                      <td><button class="btn btn-blue btn-block btn-sm"><span class="glyphicon glyphicon-arrow-down"></span></button></td>
+                  </tr>
+                  <tr>
+                    <td>Formulario para reclamos</td>
+                      <td>234.65 KB</td>
+                      <td><button class="btn btn-blue btn-block btn-sm"><span class="glyphicon glyphicon-arrow-down"></span></button></td>
+                  </tr>
+              </tbody>
+          </table>
+        </section>
+      </div>
+    </main>
+    <footer id="ba-footer">
+    <br /><br /><br /><br />
+    </footer>
+    <script src="../bastrap3/jquery.min.js"></script>
+    <script src="../bastrap3/bootstrap.min.js"></script>
+    <script src="assets/buenosaires.js"></script>
+  </body>
+</html>

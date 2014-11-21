@@ -59,6 +59,15 @@ h1, .h1 {
   font-size:64px;
   line-height:64px;
 }
+@media (max-width:540px) {
+  .jumbotron h1 {
+    font-size:48px;
+    line-height:48px;
+  }
+  .ba-area .jumbotron.area-header p.lead {
+    display:none;
+  }
+}
 h2, .h2 {
   font-size:32px;
   line-height:32px; 
@@ -658,7 +667,7 @@ color: #333;
   color: #666;
 }
 
-/* shortcut list tramites */
+/* shortcut list + tramites + emergencias */
 
 .shortcut-list {
   text-align:left;
@@ -686,6 +695,29 @@ padding-top: 18px;
 }
 .shortcut-list p {
   margin-bottom:0;
+}
+.ba-emergencia .shortcut span,
+#ba-footer .shortcut span {
+  color: #aaa;
+  text-align: left;
+  margin: 0;
+  width: inherit;
+  height: inherit;
+  border-radius: 0;
+  display: inline;
+  margin: 10px;
+  font-size: 36px !important;
+}
+#ba-footer .shortcut span {
+  position:relative;
+  top:-4px;
+}
+.ba-emergencia .main-container > .container {
+  padding-left:30px;
+  padding-right:30px;
+}
+.ba-emergencia table {
+  text-align:left;
 }
 
 /* shortcut normal */
@@ -829,7 +861,7 @@ padding-top: 18px;
 #ba-footer .shortcut:hover,
 #ba-footer .shortcut:focus,
 #ba-footer .shortcut:active {
-  background-color:transparent;
+  background-color:#222;
 }
 .footer-left {
   margin-top:32px;
@@ -842,7 +874,7 @@ padding-top: 18px;
 }
 .footer-shortcuts {
   border-top:solid 1px #222;
-  padding-top: 24px;
+  padding-top: 48px;
   padding-bottom: 48px;
 }
 .footer-nav {
@@ -1026,9 +1058,6 @@ header.jumbotron {
   .jumbotron.area-header .navbar-nav .open .dropdown-menu {
     margin-left: 0;
     margin-right: 0;
-  }
-  .jumbotron.area-header p.lead {
-    display:none;
   }
   .ba-area .jumbotron .area-title {
     padding-top: 0;
@@ -1467,15 +1496,33 @@ margin:16px 0 32px 0;
   text-align:center;
 }
 
-/* destacado */
+/* destacado + 404 */
 
-.ba-destacado .jumbotron .area-title {
+.ba-destacado .jumbotron .area-title,
+.ba-404 .jumbotron .area-title,
+.ba-emergencia .jumbotron .area-title {
   padding:64px 0 96px 0;
 }
 .ba-destacado h1,
+.ba-404 h1,
+.ba-emergencia h1,
 .ba-destacado h2,
-.ba-destacado .jumbotron p {
+.ba-404 h2,
+.ba-emergencia h2,
+.ba-destacado .jumbotron p,
+.ba-404 .jumbotron p,
+.ba-emergencia .jumbotron p {
   text-align:center;
+}
+.ba-404 .main-container > .container {
+  padding:0 30px;
+}
+.ba-404 .pagina-enlaces {
+  text-align:center;
+}
+.ba-404 .list-group-content .list-group-item {
+  margin-left:0;
+  margin-right:0;
 }
 .ba-destacado article > section {
   padding-top:48px;
@@ -1602,12 +1649,22 @@ margin:0;
   margin-bottom:0px;
 }
 
-/* search xl */
+/* search xl + 404 */
 
-.search-xl .container {
+.ba-listado .search-xl .container,
+.ba-busqueda .search-xl .container {
   left: -15px;
   position: relative;
   margin-right: -30px;
+}
+.ba-404 .search-xl .container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: -72px;
+}
+.ba-404 .row-shortcut {
+  margin-top: 96px;
 }
 .search-xl form {
   width:100%;

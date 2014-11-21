@@ -17,9 +17,6 @@
 
 
 
-
-- Pagina Emergencia
-- 404
 - BA Foto
 - Galeria
 - FAQ
@@ -34,10 +31,6 @@
 
 
 
-
-- BASTRAP
-	zarpar contraste navbar? ya fue todo con la gris?
-	los códigos deben ser igual al ejemplo, y sin color, ya fue
 
 - widgets faltantes
 	area radio player
