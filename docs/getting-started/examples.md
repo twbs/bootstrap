@@ -158,13 +158,6 @@ Build on the basic template above with Bootstrap's many components. We encourage
 
 <div class="row bs-examples">
   <div class="col-xs-6 col-md-4">
-    <a href="{{ site.baseurl }}examples/non-responsive/">
-      <img class="img-thumbnail" src="{{ site.baseurl }}examples/screenshots/non-responsive.jpg" alt="">
-    </a>
-    <h4>Non-responsive Bootstrap</h4>
-    <p>Easily disable the responsiveness of Bootstrap <a href="#disable-responsive">per our docs</a>.</p>
-  </div>
-  <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}examples/offcanvas/">
       <img class="img-thumbnail" src="{{ site.baseurl }}examples/screenshots/offcanvas.jpg" alt="">
     </a>
