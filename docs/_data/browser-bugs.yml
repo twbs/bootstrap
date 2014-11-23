@@ -144,7 +144,7 @@
   summary: >
     Weird button behavior with some `<input type="number">` elements.
   upstream_bug: >
-    WebKit#137269
+    WebKit#137269, Safari#18834768
   origin: >
     Bootstrap#8350,
     Normalize#283,
