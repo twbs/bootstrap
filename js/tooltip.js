@@ -292,15 +292,13 @@
     var $tip = this.tip()
     var e    = $.Event('hide.bs.' + this.type)
 
-    console.log("hide!");
-
     function complete() {
       if (that.hoverState != 'in') $tip.detach()
       that.$element
           .removeAttr('aria-describedby')
-          .trigger('hidden.bs.' + that.type);
-      that.$tip = null;
-      that.$arrow = null;
+          .trigger('hidden.bs.' + that.type)
+      that.$tip = null
+      that.$arrow = null
       callback && callback()
     }
 
@@ -311,10 +309,10 @@
     $tip.removeClass('in');
 
     $.support.transition && this.$tip.hasClass('fade') ?
-    $tip
+      $tip
         .one('bsTransitionEnd', complete)
         .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
-    complete()
+      complete()
 
     this.hoverState = null
 
