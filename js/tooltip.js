@@ -286,7 +286,6 @@
     $tip.removeClass('fade in top bottom left right')
   }
 
-  
   Tooltip.prototype.hide = function (callback) {
     var that = this
     var $tip = this.tip()
