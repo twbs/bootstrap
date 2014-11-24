@@ -286,30 +286,35 @@
     $tip.removeClass('fade in top bottom left right')
   }
 
+  
   Tooltip.prototype.hide = function (callback) {
     var that = this
     var $tip = this.tip()
     var e    = $.Event('hide.bs.' + this.type)
 
+    console.log("hide!");
+
     function complete() {
       if (that.hoverState != 'in') $tip.detach()
       that.$element
-        .removeAttr('aria-describedby')
-        .trigger('hidden.bs.' + that.type)
+          .removeAttr('aria-describedby')
+          .trigger('hidden.bs.' + that.type);
+      that.$tip = null;
+      that.$arrow = null;
       callback && callback()
     }
 
     this.$element.trigger(e)
 
-    if (e.isDefaultPrevented()) return
+    if (e.isDefaultPrevented()) return;
 
-    $tip.removeClass('in')
+    $tip.removeClass('in');
 
     $.support.transition && this.$tip.hasClass('fade') ?
-      $tip
+    $tip
         .one('bsTransitionEnd', complete)
         .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
-      complete()
+    complete()
 
     this.hoverState = null
 
