@@ -17,27 +17,37 @@
 
 
 
-- BA Foto
-- Galeria
-- FAQ
+
+
+
+- tramite iframe desplegable con boton [falta animate]
+
+
+
+
+
+- galería arreglar............
+
 - Redes Sociales
-- Dataset
-
-
-
-- redes sociales y corazón en todo menos index y busqueda?
-
-
-
-
-
+	http://www.buenosaires.gob.ar/social
+- elemento para la sidebar onda mini-banner con foto para enlazar a flickr o a lo que sea.
 
 - widgets faltantes
 	area radio player
 	flickr
 
-
 - english y chateá con operador
+
+
+
+
+
+
+
+
+
+
+
 
 
 

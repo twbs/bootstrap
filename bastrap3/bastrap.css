@@ -39,8 +39,8 @@ blockquote p, .list-group blockquote p, .jumbotron p, .lead {
   font-family: "OpenSans", Helvetica, Arial, sans-serif;
 }
 b, p strong, span strong, thead > tr > th, .progress-bar, label, dt, .h6, h6 {
-  font-family: "OpenSans", Helvetica, Arial, sans-serif;
-  font-weight: bold;
+  font-family: "OpenSansBold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
 }
 
 h4, .h4, h5, .h5, .panel-title, .btn, .input-xl, .navbar-brand {
@@ -1140,8 +1140,8 @@ a.list-group-item.active > .badge {
 .sidebar .nav > .active > a,
 .sidebar .nav > .active:hover > a,
 .sidebar .nav > .active:focus > a {
-  font-family: "OpenSans", Helvetica, Arial, sans-serif;
-  font-weight: bold;
+  font-family: "OpenSansBold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
   color: #333;
 }
 .sidebar .nav > .active > .nav > .active >a,
@@ -1166,8 +1166,8 @@ margin-bottom: 8px;
 .sidebar .nav .nav > .active > a,
 .sidebar .nav .nav > .active:hover > a,
 .sidebar .nav .nav > .active:focus > a {
-  font-family: "OpenSans", Helvetica, Arial, sans-serif;
-  font-weight: bold;
+  font-family: "OpenSansBold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
 }
 .sidebar .nav .nav > li {
   display:none;
@@ -2803,6 +2803,16 @@ a.alert-spot:active {
   url('fonts/opensans-regular.svg#OpenSansRegular') format('svg'),
   url('fonts/opensans-regular.woff') format('woff'),
   url('fonts/opensans-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "OpenSansBold";
+  src: url('fonts/opensans-bold.eot');
+  src: url('fonts/opensans-bold.eot?#iefix') format('embedded-opentype'),
+  url('fonts/opensans-bold.svg#OpenSansRegular') format('svg'),
+  url('fonts/opensans-bold.woff') format('woff'),
+  url('fonts/opensans-bold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
