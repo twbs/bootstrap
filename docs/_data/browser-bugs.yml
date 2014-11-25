@@ -112,16 +112,6 @@
   browser: >
     Chrome
   summary: >
-    `display: table-cell; width: 100%;` doesn't work correctly on `<input type="date">`.
-  upstream_bug: >
-    Chromium#346051
-  origin: >
-    Bootstrap#12548
-
--
-  browser: >
-    Chrome
-  summary: >
     `<input type="password">` sporadically causes bad widths on floated elements.
   upstream_bug: >
     Chromium#377346
