@@ -2119,8 +2119,6 @@ fieldset[disabled] .btn {
   color: #fff;
   background-color: #0275d8;
   border-color: #0267bf;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -2168,8 +2166,6 @@ fieldset[disabled] .btn-primary.active {
   color: #373a3c;
   background-color: #fff;
   border-color: #eceeef;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
 }
 .btn-secondary:hover,
 .btn-secondary:focus,
@@ -2217,8 +2213,6 @@ fieldset[disabled] .btn-secondary.active {
   color: #fff;
   background-color: #5bc0de;
   border-color: #46b8da;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
 }
 .btn-info:hover,
 .btn-info:focus,
@@ -2266,8 +2260,6 @@ fieldset[disabled] .btn-info.active {
   color: #fff;
   background-color: #5cb85c;
   border-color: #4cae4c;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
 }
 .btn-success:hover,
 .btn-success:focus,
@@ -2315,8 +2307,6 @@ fieldset[disabled] .btn-success.active {
   color: #fff;
   background-color: #f0ad4e;
   border-color: #eea236;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
 }
 .btn-warning:hover,
 .btn-warning:focus,
@@ -2364,8 +2354,6 @@ fieldset[disabled] .btn-warning.active {
   color: #fff;
   background-color: #d9534f;
   border-color: #d43f3a;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
 }
 .btn-danger:hover,
 .btn-danger:focus,
