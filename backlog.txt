@@ -22,7 +22,8 @@
 
 - tramite iframe desplegable con boton [falta animate]
 
-
+- slider busqueda
+- filtros reales busqueda
 
 
 

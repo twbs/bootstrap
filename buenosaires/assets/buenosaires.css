@@ -673,11 +673,20 @@ color: #333;
   text-align:left;
   overflow:auto;
   padding-top:0;
+  float:left;
 }
+.shortcut-list,
 .shortcut-list:hover,
 .shortcut-list:focus,
 .shortcut-list:active {
+  background-repeat:repeat-y;
+  background-position:36px 0;
+  background-image:url(../assets/misc/step-bg.png);
+  background-image:url(../assets/misc/step-bg.svg), none;
   background-color:transparent;
+}
+.shortcut-list:last-of-type {
+  background-image:none;
 }
 .shortcut-list span {
   float:left;
@@ -704,9 +713,34 @@ padding-top: 18px;
 }
 .shortcut-list-info {
   float:left;
-  width:620px;
   margin-bottom:16px;
 }
+@media (max-width:991px) {
+  .shortcut-list,
+  .shortcut-list:hover,
+  .shortcut-list:focus,
+  .shortcut-list:active {
+    background-image:none;
+  }
+  .shortcut-list-info {
+    width:100%;
+  }
+}
+@media (min-width:992px) {
+  .shortcut-list-info {
+    width:480px;
+  }
+}
+
+@media (min-width:1200px) {
+  .shortcut-list-info {
+    width:620px;
+  }
+}
+
+
+
+
 .ba-emergencia .shortcut span,
 #ba-footer .shortcut span {
   color: #aaa;
