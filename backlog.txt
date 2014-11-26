@@ -13,21 +13,35 @@
 
 * TASKS *********************************************************************************************
 
+
+
 - tramite iframe desplegable con boton [falta animate]
-
-
-
-
-
-
-
-
-- slider busqueda
-- filtros reales busqueda
-
-
-
 - galería arreglar............
+
+- pasar a jekyll o algo
+
+
+
+
+
+- Mi BA
+	thumb carougrid en noticias
+	falta "mis turnos"
+	trámites como tabla
+- Páginas restantes
+	/tramites
+	/foto
+	/desarrollourbano/grandesobras
+
+- heart tooltip/popover
+- Tabla responsive emergencia testear [font menor?]
+- teléfonos menú mobile
+- tab chatteá con operador footer right como facebook
+
+
+
+
+
 
 - Redes Sociales
 	http://www.buenosaires.gob.ar/social
@@ -37,7 +51,7 @@
 	area radio player
 	flickr
 
-- english y chateá con operador
+- english
 
 
 
@@ -50,7 +64,8 @@
 
 
 
-
+- IE8
+- Probar mobile con emulador
 
 - CSS impresión para página, nota de libro, tramite
 	testear
@@ -107,7 +122,7 @@ FLASHEADAS:
 
 * QUEUE *********************************************************************************************
 
-
+- DRAWER menú
 
 
 
