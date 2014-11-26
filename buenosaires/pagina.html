@@ -207,6 +207,19 @@
           </article>
           <aside>
             <div class="col-md-4 col-sm-12">
+
+
+
+
+
+
+
+
+
+
+
+
+
               <section>
                 <h2>Imágenes</h2>
                 <div class="row row-modalcarousel">
@@ -246,12 +259,17 @@
                   </div>
                 </div>
               </section>
-              <section class="list-group list-group-content">
-                <h2>Dirección</h2>
-                <div class="widget-embed">
-                  <iframe src="http://epok.buenosaires.gob.ar/pub/mapa/planmicrocentro/obras_en_microcentro/" name="Mapa de Obras y Desvíos" width="100%" height="480" scrolling="no" frameborder="0"></iframe>
-                </div>
-              </section>
+
+
+
+
+
+
+
+
+
+
+
               <section>
                 <h2>Descargas</h2>
                 <table class="table table-striped">
@@ -327,5 +345,58 @@
     <script src="../bastrap3/jquery.min.js"></script>
     <script src="../bastrap3/bootstrap.min.js"></script>
     <script src="assets/buenosaires.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+      /* copy loaded thumbnails into carousel */
+      $('.row .thumbnail').on('load', function() {
+      }).each(function(i) {
+        if(this.complete) {
+          var item = $('<div class="item"></div>');
+          var itemDiv = $(this).parents('div');
+          var title = $(this).parent('a').attr("title");
+          
+          item.attr("title",title);
+          $(itemDiv.html()).appendTo(item);
+          item.appendTo('.carousel-inner'); 
+          if (i==0){ // set first item active
+           item.addClass('active');
+          }
+        }
+      });
+      /* activate the carousel */
+      $('#modalCarousel').carousel({interval:false});
+      /* change modal title when slide changes */
+      $('#modalCarousel').on('slid.bs.carousel', function () {
+        $('.modal-title').html($(this).find('.active').attr("title"));
+      })
+      /* when clicking a thumbnail */
+      $('.row .thumbnail').click(function(){
+          var idx = $(this).parents('div').index();
+          var id = parseInt(idx);
+          $('#myModal').modal('show'); // show the modal
+          $('#modalCarousel').carousel(id); // slide carousel to selected          
+      });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
   </body>
 </html>
