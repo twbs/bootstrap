@@ -5,6 +5,9 @@ title: Quick start
 
 Quickly add Bootstrap to your project via the [Bootstrap CDN](http://bootstrapcdn.com), graciously provided by the [MaxCDN](http://www.maxcdn.com/) folks. Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets.
 
+**Disabled for v4 during alpha releases.**
+
+{% comment %}
 {% highlight html %}
 <link rel="stylesheet" href="{{ site.cdn.css }}">
 {% endhighlight %}
@@ -42,3 +45,4 @@ Put it all together and your pages should look like this:
 {% endhighlight %}
 
 And that's it. Happy Bootstrapping!
+{% endcomment %}
