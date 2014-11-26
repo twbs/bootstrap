@@ -2028,13 +2028,13 @@ select[multiple].form-group-lg .form-control {
 .form-horizontal .checkbox,
 .form-horizontal .radio-inline,
 .form-horizontal .checkbox-inline {
-  padding-top: 1.5rem;
+  padding-top: .6rem;
   margin-top: 0;
   margin-bottom: 0;
 }
 .form-horizontal .radio,
 .form-horizontal .checkbox {
-  min-height: 25.5px;
+  min-height: 24.6px;
 }
 .form-horizontal .form-group {
   margin-right: -.75rem;
@@ -2042,7 +2042,7 @@ select[multiple].form-group-lg .form-control {
 }
 @media (min-width: 48em) {
   .form-horizontal .control-label {
-    padding-top: 1.5rem;
+    padding-top: .6rem;
     margin-bottom: 0;
     text-align: right;
   }
@@ -2052,12 +2052,12 @@ select[multiple].form-group-lg .form-control {
 }
 @media (min-width: 48em) {
   .form-horizontal .form-group-lg .control-label {
-    padding-top: 1.9975rem;
+    padding-top: .75rem;
   }
 }
 @media (min-width: 48em) {
   .form-horizontal .form-group-sm .control-label {
-    padding-top: 1.3rem;
+    padding-top: .4rem;
   }
 }
 .btn {

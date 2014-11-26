@@ -496,13 +496,13 @@ input[type="checkbox"] {
   .checkbox-inline {
     margin-top: 0;
     margin-bottom: 0;
-    padding-top: (@padding-base-vertical + 1); // Default padding plus a border
+    padding-top: (@padding-base-vertical + .1); // Default padding plus a border
   }
   // Account for padding we're adding to ensure the alignment and of help text
   // and other content below items
   .radio,
   .checkbox {
-    min-height: (@line-height-computed + (@padding-base-vertical + 1));
+    min-height: (@line-height-computed + (@padding-base-vertical + .1));
   }
 
   // Make form groups behave like rows
@@ -516,7 +516,7 @@ input[type="checkbox"] {
     .control-label {
       text-align: right;
       margin-bottom: 0;
-      padding-top: (@padding-base-vertical + 1); // Default padding plus a border
+      padding-top: (@padding-base-vertical + .1); // Default padding plus a border
     }
   });
 
@@ -535,14 +535,14 @@ input[type="checkbox"] {
   .form-group-lg {
     @media (min-width: @screen-sm-min) {
       .control-label {
-        padding-top: ((@padding-lg-vertical * @line-height-lg) + 1);
+        padding-top: @padding-lg-vertical;
       }
     }
   }
   .form-group-sm {
     @media (min-width: @screen-sm-min) {
       .control-label {
-        padding-top: (@padding-sm-vertical + 1);
+        padding-top: (@padding-sm-vertical + .1);
       }
     }
   }
