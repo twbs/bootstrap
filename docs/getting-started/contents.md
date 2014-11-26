@@ -36,13 +36,13 @@ The Bootstrap source code download includes the precompiled CSS and JavaScript a
 
 {% highlight bash %}
 bootstrap/
-├── less/
-├── js/
 ├── dist/
 │   ├── css/
 │   └── js/
-└── docs/
-    └── examples/
+├── docs/
+│   └── examples/
+├── js/
+└── less/
 {% endhighlight %}
 
 The `less/` and `js/` are the source code for our CSS and JavaScript. The `dist/` folder includes everything listed in the precompiled download section above. The `docs/` folder includes the source code for our documentation, and `examples/` of Bootstrap usage. Beyond that, any other included file provides support for packages, license information, and development.
