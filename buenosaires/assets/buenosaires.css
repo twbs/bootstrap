@@ -1148,7 +1148,7 @@ header.jumbotron {
   padding:0;
   box-shadow:none;
   border-radius:4px;
-  margin-top:10px;
+  /*margin-top:10px;*/
 }
 #modalCarousel:hover img,
 #modalCarousel:focus img {

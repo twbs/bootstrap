@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="../bastrap3/bastrap.css">
     <link rel="stylesheet" href="assets/buenosaires.css">
     <!-- [if lt IE 9]><script src="../bastrap3/ba-modernizr.js"></script><![endif] -->
+
+    <style>
+      .modal .carousel {
+        margin: 0;
+      }
+    </style>
   </head>
   <body class="ba-pagina">
     <header class="navbar navbar-primary navbar-top yamm">
@@ -222,42 +228,53 @@
 
               <section>
                 <h2>Imágenes</h2>
+
                 <div class="row row-modalcarousel">
-                  <a class="col-xs-6" href="#" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
-                    <img class="thumbnail img-responsive" src="../docs/jumbo1.jpg">
+                  <a class="col-xs-6" href="../docs/jumbo1.jpg" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
+                    <img class="img-responsive thumbnail" src="../docs/jumbo1.jpg">
                   </a>
-                  <a class="col-xs-6" href="#" title="Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.">
-                    <img class="thumbnail img-responsive" src="../docs/jumbo2.jpg">
+                  <a class="col-xs-6" href="../docs/jumbo2.jpg" title="Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.">
+                    <img class="img-responsive thumbnail" src="../docs/jumbo2.jpg">
                   </a>
-                  <a class="col-xs-6" href="#" title="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.">
-                    <img class="thumbnail img-responsive" src="../docs/carousel2.jpg">
+                  <a class="col-xs-6" href="../docs/carousel2.jpg" title="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.">
+                    <img class="img-responsive thumbnail" src="../docs/carousel2.jpg">
                   </a>
-                  <a class="col-xs-6" href="#" title="Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.">
-                    <img class="thumbnail img-responsive" src="../docs/jumbo4.jpg">
+                  <a class="col-xs-6" href="../docs/jumbo4.jpg" title="Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.">
+                    <img class="img-responsive thumbnail" src="../docs/jumbo4.jpg">
                   </a>
-                  <a class="col-xs-6" href="#" title="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.">
-                    <img class="thumbnail img-responsive" src="../docs/jumbo3.jpg">
+                  <a class="col-xs-6" href="../docs/jumbo3.jpg" title="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.">
+                    <img class="img-responsive thumbnail" src="../docs/jumbo3.jpg">
                   </a>
-                  <a class="col-xs-6" href="#" title="Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.">
-                    <img class="thumbnail img-responsive" src="../docs/jumbo5.jpg">
+                  <a class="col-xs-6" href="../docs/jumbo5.jpg" title="Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.">
+                    <img class="img-responsive thumbnail" src="../docs/jumbo5.jpg">
                   </a>
                 </div>
-                <div class="modal" id="myModal" role="dialog">
-                  <div class="modal-dialog">
+
+                <div class="modal modal-carousel" id="carouselModal" role="dialog">
+                  <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                      <div class="modal-body">
-                        <button class="close" type="button" data-dismiss="modal">×</button>
-                        <div id="modalCarousel" class="carousel">
-                          <div class="carousel-inner">
-                            <a class="carousel-control left" href="#modaCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                            <a class="carousel-control right" href="#modalCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
-                          </div>
-                          <p class="modal-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
+                      <!-- <button class="close" type="button" data-dismiss="modal">×</button> -->
+
+                      <div id="modalCarousel" class="carousel">
+
+                        <div class="carousel-inner" role="listbox"></div>
+
+                        <!-- <a class="carousel-control left" href="#modaCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                        <a class="carousel-control right" href="#modalCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a> -->
+
+                        <a class="left carousel-control" href="#modalCarousel" role="button" data-slide="prev">
+                          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#modalCarousel" role="button" data-slide="next">
+                          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
                       </div>
                     </div>
                   </div>
                 </div>
+
               </section>
 
 
@@ -354,39 +371,30 @@
 
 
 
+    <script type="text/javascript">
 
-<script type="text/javascript">
-      /* copy loaded thumbnails into carousel */
-      $('.row .thumbnail').on('load', function() {
-      }).each(function(i) {
-        if(this.complete) {
-          var item = $('<div class="item"></div>');
-          var itemDiv = $(this).parents('div');
-          var title = $(this).parent('a').attr("title");
-          
-          item.attr("title",title);
-          $(itemDiv.html()).appendTo(item);
-          item.appendTo('.carousel-inner'); 
-          if (i==0){ // set first item active
-           item.addClass('active');
-          }
+      $('.row-modalcarousel > a').each(function(i) {
+        var $itemTemplate = $('<div class="item"> <img src="{img}" alt="{alt}"><div class="carousel-caption"><p>{caption}</p></div> </div>');
+
+        $itemTemplate.find('img').attr('src', $(this).attr('href')).attr('alt', $(this).attr('title'));
+        $itemTemplate.find('.carousel-caption p').text($(this).attr('title'));
+        if(i==0){
+          $itemTemplate.addClass('active');
         }
-      });
-      /* activate the carousel */
-      $('#modalCarousel').carousel({interval:false});
-      /* change modal title when slide changes */
-      $('#modalCarousel').on('slid.bs.carousel', function () {
-        $('.modal-title').html($(this).find('.active').attr("title"));
-      })
-      /* when clicking a thumbnail */
-      $('.row .thumbnail').click(function(){
-          var idx = $(this).parents('div').index();
-          var id = parseInt(idx);
-          $('#myModal').modal('show'); // show the modal
-          $('#modalCarousel').carousel(id); // slide carousel to selected          
-      });
-</script>
+        $('.modal-carousel .carousel-inner').append($itemTemplate);
 
+      });
+
+      $('#modalCarousel').carousel({ interval:false });
+
+      $('.row-modalcarousel > a').click(function(event){
+          var index = parseInt($(this).index());
+          console.log(index);
+          $('#carouselModal').modal('show');
+          $('#modalCarousel').carousel(index);
+          event.preventDefault();
+      });
+    </script>
 
 
 

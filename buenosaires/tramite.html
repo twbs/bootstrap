@@ -270,14 +270,25 @@
 
 
 
-<script type="text/javascript">
-$(function () {
-    $('#tramite').on('shown.bs.collapse', function (e) {
-        var offset = $('#tramite iframe').offset();
-            if(offset)$('html,body').scrollTop(offset.top);
+    <script type="text/javascript">
+    $(function () {
+
+      $(document).on('ready', function(){
+        $('#tramite').on('show.bs.collapse', function (e) {
+
+          // Timeout because it's not visible yet
+          setTimeout(function(){
+            var offset = $('#tramite').offset();
+            if(offset){
+              $('html,body').animate({ scrollTop: offset.top}, 400);
+            }
+          }, 10);
+
+        });
+      });
+
     });
-});
-</script>
+    </script>
 
 
 
