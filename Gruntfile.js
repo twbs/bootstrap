@@ -372,6 +372,12 @@ module.exports = function (grunt) {
     exec: {
       npmUpdate: {
         command: 'npm update'
+      },
+      meteorTest: {
+        command: 'meteor/runtests.sh'
+      },
+      meteorPublish: {
+        command: 'meteor/publish.sh'
       }
     }
   });
@@ -471,4 +477,13 @@ module.exports = function (grunt) {
       done();
     });
   });
+
+  // Meteor tasks
+  grunt.registerTask('meteor-test', 'exec:meteorTest');
+  grunt.registerTask('meteor-publish', 'exec:meteorPublish');
+  // Ideally we'd run tests before publishing, but the chances of tests breaking (given that
+  // Meteor is quite orthogonal to Bootstrap) are so small that it's not worth the maintainer's time
+  // grunt.regsterTask('meteor', ['exec:meteorTest', 'exec:meteorPublish']);
+  grunt.registerTask('meteor', 'exec:meteorPublish');
+
 };
