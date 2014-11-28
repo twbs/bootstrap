@@ -4,7 +4,7 @@ $(function () {
   module('tooltip plugin')
 
   test('should be defined on jquery object', function () {
-    ok($(document.body).tooltip, 'popover method is defined')
+    ok($(document.body).tooltip, 'tooltip method is defined')
   })
 
   module('tooltip', {
