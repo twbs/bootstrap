@@ -15,23 +15,21 @@
 
 
 
-- tramite iframe desplegable con boton [falta animate]
-- galería arreglar............
-
+- modal carousel animado
 - pasar a jekyll o algo
 
 
 
 
 
-- Mi BA
-	thumb carougrid en noticias
-	falta "mis turnos"
-	trámites como tabla
+
+
 - Páginas restantes
 	/tramites
 	/foto
 	/desarrollourbano/grandesobras
+
+
 
 - heart tooltip/popover
 - Tabla responsive emergencia testear [font menor?]
@@ -54,7 +52,7 @@
 - english
 
 
-
+- outlines no?
 
 
 
@@ -94,7 +92,7 @@
  	con bordes en panels? dsfsdf ver las tarjetitas ya aplicadas vs buenos aires no border no panel [j3]
 
 
-- script para delay de hover en iframes [mapa dsfs]
+
 
 
 

@@ -13,12 +13,6 @@
     <link rel="stylesheet" href="../bastrap3/bastrap.css">
     <link rel="stylesheet" href="assets/buenosaires.css">
     <!-- [if lt IE 9]><script src="../bastrap3/ba-modernizr.js"></script><![endif] -->
-
-    <style>
-      .modal .carousel {
-        margin: 0;
-      }
-    </style>
   </head>
   <body class="ba-pagina">
     <header class="navbar navbar-primary navbar-top yamm">
@@ -213,22 +207,8 @@
           </article>
           <aside>
             <div class="col-md-4 col-sm-12">
-
-
-
-
-
-
-
-
-
-
-
-
-
               <section>
                 <h2>Imágenes</h2>
-
                 <div class="row row-modalcarousel">
                   <a class="col-xs-6" href="../docs/jumbo1.jpg" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
                     <img class="img-responsive thumbnail" src="../docs/jumbo1.jpg">
@@ -249,19 +229,12 @@
                     <img class="img-responsive thumbnail" src="../docs/jumbo5.jpg">
                   </a>
                 </div>
-
                 <div class="modal modal-carousel" id="carouselModal" role="dialog">
                   <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                      <!-- <button class="close" type="button" data-dismiss="modal">×</button> -->
-
+                      <button class="close" type="button" data-dismiss="modal">×</button>
                       <div id="modalCarousel" class="carousel">
-
                         <div class="carousel-inner" role="listbox"></div>
-
-                        <!-- <a class="carousel-control left" href="#modaCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                        <a class="carousel-control right" href="#modalCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a> -->
-
                         <a class="left carousel-control" href="#modalCarousel" role="button" data-slide="prev">
                           <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                           <span class="sr-only">Previous</span>
@@ -274,19 +247,7 @@
                     </div>
                   </div>
                 </div>
-
               </section>
-
-
-
-
-
-
-
-
-
-
-
               <section>
                 <h2>Descargas</h2>
                 <table class="table table-striped">
@@ -325,32 +286,6 @@
                   </a>
                 </div>
               </section>
-<!--               
-              <section class="list-group list-group-content">
-                <h2>Notas del área</h2>
-                <a href="#" class="list-group-item list-thumb" data-original-title="" title="">
-                  <div style="background-image:url(../docs/jumbo1.jpg);"></div>
-                  <h4>Parque de los Patricios: Tu barrio y vos</h4>
-                  <p>Encuentro con los vecinos de Parque Patricios.</p>
-                </a>
-                <a href="#" class="list-group-item list-thumb" data-original-title="" title="">
-                  <div style="background-image:url(../docs/jumbo3.jpg);"></div>
-                  <h4>Arroyo Maldonado: Consultas Públicas</h4>
-                  <p>Charlamos con los vecinos sobre las obras de los ramales secundarios.</p>
-                </a>
-                <a href="#" class="list-group-item list-thumb" data-original-title="" title="">
-                  <div style="background-image:url(../docs/jumbo2.jpg);"></div>
-                  <h4>Consulta Pública sobre las obras del Arroyo Vega</h4>
-                  <p>Conversamos con los vecinos sobre las obras del Arroyo Vega.</p>
-                </a>
-                <a href="#" class="list-group-item list-thumb" data-original-title="" title="">
-                  <div style="background-image:url(../docs/carousel2.jpg);"></div>
-                  <h4>Villa Real tendrá nueva plaza</h4>
-                  <p>Los vecinos de Villa Real, en la Comuna 10, participan en la creación de la nueva plaza del barrio.</p>
-                </a>
-                <button class="btn btn-default btn-lg btn-block">Ver todas las notas</button>
-              </section>
- -->
             </div>
           </aside>
         </div>
@@ -362,49 +297,5 @@
     <script src="../bastrap3/jquery.min.js"></script>
     <script src="../bastrap3/bootstrap.min.js"></script>
     <script src="assets/buenosaires.js"></script>
-
-
-
-
-
-
-
-
-
-    <script type="text/javascript">
-
-      $('.row-modalcarousel > a').each(function(i) {
-        var $itemTemplate = $('<div class="item"> <img src="{img}" alt="{alt}"><div class="carousel-caption"><p>{caption}</p></div> </div>');
-
-        $itemTemplate.find('img').attr('src', $(this).attr('href')).attr('alt', $(this).attr('title'));
-        $itemTemplate.find('.carousel-caption p').text($(this).attr('title'));
-        if(i==0){
-          $itemTemplate.addClass('active');
-        }
-        $('.modal-carousel .carousel-inner').append($itemTemplate);
-
-      });
-
-      $('#modalCarousel').carousel({ interval:false });
-
-      $('.row-modalcarousel > a').click(function(event){
-          var index = parseInt($(this).index());
-          console.log(index);
-          $('#carouselModal').modal('show');
-          $('#modalCarousel').carousel(index);
-          event.preventDefault();
-      });
-    </script>
-
-
-
-
-
-
-
-
-
-
-
   </body>
 </html>

@@ -84,9 +84,10 @@
     </header>
     <main class="main-container" role="main">
       <div class="container">
+        <h1>Mi Buenos Aires</h1>
         <div class="row">
-          <div class="col-md-8 col-md-push-4 list-group list-group-content search-list">
-            <section>
+          <div class="col-md-8 col-md-push-4">
+            <section class="list-group list-group-content search-list">
               <h2>Mis noticias</h2>
               <a href="#" class="list-group-item list-thumb" data-original-title="" title="">
                 <div style="background-image:url(../docs/jumbo2.jpg);"></div>
@@ -123,55 +124,63 @@
             </section>
             <section>
               <h2>Mis trámites</h2>
-              <div class="row row-list-pagina">
-                <div class="col-md-6 col-sm-12">
-                  <a href="#" class="list-group-item">
-                    <h4>Consulta y pago de infracciones online</h4>
-                    <p>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Trámite</th>
+                    <th>Tipo</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="#" target="_blank">Consulta y pago de infracciones online</a></td>
+                    <td>
                       <span class="label label-default">Reclamo</span>
                       <span class="label label-default">Arbolado</span>
-                    </p>
-                    <p>
+                    </td>
+                    <td>
                       <span class="label label-warning">Notificado</span>
-                    </p>
-                  </a>
-                  <a href="#" class="list-group-item">
-                    <h4>Libre deuda de infractores</h4>
-                    <p>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td><a href="#" target="_blank">Libre deuda de infractores</a></td>
+                    <td>
                       <span class="label label-default">Trámite</span>
                       <span class="label label-default">Registro Civil</span>
-                    <p>
+                    </td>
+                    <td>
                       <span class="label label-success">Entregado</span>
-                    </p>
-                    </p>
-                  </a>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                  <a href="#" class="list-group-item">
-                    <h4>Consulta y pago de infracciones online</h4>
-                    <p>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td><a href="#" target="_blank">Consulta y pago de infracciones online</a></td>
+                    <td>
                       <span class="label label-default">Reclamo</span>
                       <span class="label label-default">Aceras</span>
-                    </p>
-                    <p>
+                    </td>
+                    <td>
                       <span class="label label-danger">Denegado</span>
-                    </p>
-                  </a>
-                  <a href="#" class="list-group-item">
-                    <h4>Libre deuda de infractores</h4>
-                    <p>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td><a href="#" target="_blank">Libre deuda de infractores</a></td>
+                    <td>
                       <span class="label label-default">Reclamo</span>
                       <span class="label label-default">Alumbrado</span>
-                    </p>
-                    <p>
-                      <span class="label label-danger">Denegado</span>
-                    </p>
-                  </a>
-                </div>
-              </div>
+                    </td>
+                    <td>
+                      <span class="label label-success">Entregado</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
               <button class="btn btn-default btn-lg btn-block">Ver todos los trámites</button>
             </section>
-            <section>
+            <section class="list-group list-group-content">
               <h2>Agenda Cultural</h2>
               <div class="row row-list-pagina">
                 <div class="col-md-6 col-sm-12">
@@ -201,7 +210,7 @@
               </div>
               <button class="btn btn-default btn-lg btn-block">Ver todas las notas</button>
             </section>
-            <section>
+            <section class="list-group list-group-content">
               <h2>Ecobici</h2>
               <div class="row row-list-pagina">
                 <div class="col-md-4 col-sm-6">

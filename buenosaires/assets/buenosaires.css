@@ -80,7 +80,15 @@ h4, .h4 {
   font-size:16px;
   line-height:20px;
 }
-h5, .h5, .shortcut p, .shortcut-list p, .footer-row ul li, .list-group-item p, .navbar-primary .navbar-nav > li > a, .dropdown-menu > li > a, .dropdown-menu > div > div > li > a, .page-sidebar li, article figcaption {
+h5, .h5, .shortcut p, .shortcut-list p,
+.footer-row ul li, .list-group-item p,
+.navbar-primary .navbar-nav > li > a,
+.dropdown-menu > li > a,
+.dropdown-menu > div > div > li > a,
+.page-sidebar li,
+article figcaption,
+.ba-miba .well p,
+.page-sidebar .panel-collapse p {
   font-size:14px;
   line-height:16px;
 }
@@ -619,6 +627,25 @@ margin-bottom: 0;
 .page-sidebar h2 {
   margin-bottom:0;
 }
+.page-sidebar .panel-collapse {
+  padding:8px 15px;
+}
+.page-sidebar .panel-collapse p {
+  margin-bottom:8px;
+}
+.page-sidebar .panel-collapse ul {
+  padding:0 0 8px 20px;
+  margin:0;
+}
+.page-sidebar .panel-collapse li {
+  list-style-type: disc;
+}
+.page-sidebar .glyphicon-chevron-down {
+  font-size: 24px;
+}
+.page-sidebar .label {
+  margin-left:15px;
+}
 
 /* busqueda sidebar */
 
@@ -777,7 +804,7 @@ padding-top: 18px;
   }
 }
 
-/* widget embed iframes social */
+/* widget embed iframes social map */
 
 .widget-embed {
   width: 100%;
@@ -796,6 +823,9 @@ padding-top: 18px;
 }
 .ba-area .widget-embed {
   margin-top:16px;
+}
+.widget-map{
+  pointer-events: none;
 }
 
 /* banner */
@@ -1157,6 +1187,29 @@ header.jumbotron {
 .row-modalcarousel a:focus img {
   opacity:.9;
 }
+.modal .carousel {
+  margin:0;
+}
+.modal-carousel .close {
+  color:#fff;
+  text-shadow:none;
+  position:absolute;
+  z-index:999;
+  right:5px;
+  font-size:32px;
+  opacity:.6;
+}
+.modal-carousel .close:focus,
+.modal-carousel .close:hover {
+  opacity:.8;
+}
+.modal-carousel .close:active {
+  opacity:.6;
+}
+
+
+
+
 
 /* article, grid + libro + miba + aplicativo*/
 
@@ -1271,6 +1324,25 @@ article figcaption,
 }
 .ba-miba .main-container .container section {
   margin-bottom:64px;
+}
+.ba-miba h1 {
+  display:none;
+}
+.ba-miba .well {
+  margin:32px 0 0 0;
+  padding-left:0;
+  padding-right:0;
+}
+.ba-miba .well > div {
+  margin-top:16px;
+}
+@media (max-width:991px) {
+  .ba-miba .well > div {
+    margin-bottom:24px;
+  }
+}
+.ba-miba .well h4 {
+  margin-bottom:4px;
 }
 .social-shares,
 time {
@@ -1631,15 +1703,15 @@ margin:16px 0 32px 0;
 .ba-destacado h1,
 .ba-404 h1,
 .ba-emergencia h1,
-.ba-pagina h1,
+.ba-pagina .jumbotron h1,
 .ba-destacado h2,
 .ba-404 h2,
 .ba-emergencia h2,
-.ba-pagina h2,
+.ba-pagina .jumbotron h2,
 .ba-destacado .jumbotron p,
 .ba-404 .jumbotron p,
 .ba-emergencia .jumbotron p,
-.ba-pagina .jumbotron p {
+.ba-pagina .jumbotron .jumbotron p {
   text-align:center;
 }
 .ba-pagina header.jumbotron {
