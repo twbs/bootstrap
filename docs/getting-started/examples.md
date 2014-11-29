@@ -44,17 +44,6 @@ Build on the basic template above with Bootstrap's many components. We encourage
 
 <div class="row bs-examples">
   <div class="col-xs-6 col-md-4">
-    <a href="{{ site.baseurl }}examples/navbar-top/">
-      <h4>New top navbar</h4>
-    </a>
-  </div>
-  <div class="col-xs-6 col-md-4">
-    <a href="{{ site.baseurl }}examples/navbar-top-fixed/">
-      <h4>New fixed top navbar</h4>
-    </a>
-  </div>
-
-  <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}examples/navbar/">
       <img class="img-thumbnail" src="{{ site.baseurl }}examples/screenshots/navbar.jpg" alt="">
     </a>
@@ -62,7 +51,7 @@ Build on the basic template above with Bootstrap's many components. We encourage
     <p>Super basic template that includes the navbar along with some additional content.</p>
   </div>
   <div class="col-xs-6 col-md-4">
-    <a href="{{ site.baseurl }}examples/navbar-static-top/">
+    <a href="{{ site.baseurl }}examples/navbar-top/">
       <img class="img-thumbnail" src="{{ site.baseurl }}examples/screenshots/navbar-static.jpg" alt="">
     </a>
     <h4>Static top navbar</h4>
@@ -71,7 +60,7 @@ Build on the basic template above with Bootstrap's many components. We encourage
   <div class="clearfix visible-xs-block"></div>
 
   <div class="col-xs-6 col-md-4">
-    <a href="{{ site.baseurl }}examples/navbar-fixed-top/">
+    <a href="{{ site.baseurl }}examples/navbar-top-fixed/">
       <img class="img-thumbnail" src="{{ site.baseurl }}examples/screenshots/navbar-fixed.jpg" alt="">
     </a>
     <h4>Fixed navbar</h4>
