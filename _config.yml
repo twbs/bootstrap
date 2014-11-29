@@ -19,7 +19,7 @@ encoding:         UTF-8
 exclude:          [assets/less/, assets/js/src/]
 
 # Custom vars
-current_version:  3.3.0
+current_version:  4.0.0-alpha
 repo:             https://github.com/twbs/bootstrap
 sass_repo:        https://github.com/twbs/bootstrap-sass
 
