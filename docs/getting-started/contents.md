@@ -26,7 +26,7 @@ bootstrap/
     └── bootstrap.min.js
 {% endhighlight %}
 
-This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (1bootstrap.min.*1). Also included is the optional Bootstrap theme.
+This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (1bootstrap.min.*1).
 
 ### Bootstrap source code
 

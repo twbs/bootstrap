@@ -599,8 +599,7 @@ body {
 }
 
 /* Back to top (hidden on mobile) */
-.back-to-top,
-.bs-docs-theme-toggle {
+.back-to-top {
   display: none;
   padding: 4px 10px;
   margin-top: 10px;
@@ -609,18 +608,13 @@ body {
   font-weight: 500;
   color: #999;
 }
-.back-to-top:hover,
-.bs-docs-theme-toggle:hover {
+.back-to-top:hover {
   color: #563d7c;
   text-decoration: none;
 }
-.bs-docs-theme-toggle {
-  margin-top: 0;
-}
 
 @media (min-width: 768px) {
-  .back-to-top,
-  .bs-docs-theme-toggle {
+  .back-to-top {
     display: block;
   }
 }
