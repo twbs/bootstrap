@@ -9,8 +9,32 @@
     <p>Collapse requires the <a href="#transitions">transitions plugin</a> to be included in your version of Bootstrap.</p>
   </div>
 
-  <h2 id="collapse-examples">Example accordion</h2>
-  <p>Using the collapse plugin, we built a simple accordion by extending the panel component.</p>
+  <h2 id="collapse-example">Example</h2>
+  <p>Click the button below to show and hide another element.</p>
+
+  <div class="bs-example">
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Toggle hidden content
+    </button>
+    <div class="collapse" id="collapseExample">
+      <div class="well">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+      </div>
+    </div>
+  </div>
+{% highlight html %}
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  Toggle hidden content
+</button>
+<div class="collapse" id="collapseExample">
+  <div class="well">
+    ...
+  </div>
+</div>
+{% endhighlight %}
+
+  <h2 id="collapse-example-accordion">Accordion example</h2>
+  <p>You can extend the collapse plugin with the panel component to create an accordion.</p>
 
   <div class="bs-example">
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
