@@ -33,6 +33,29 @@
 </div>
 {% endhighlight %}
 
+ <p>Links used to toggle content use the <code>href</code> attribute rather than specifing a separate <code>data-target</code>.  In the example below, the well is shown by default with the <code>collapse in</code> classes.</p>
+
+  <div class="bs-example">
+    <p><a href="#collapseLinkExample" data-toggle="collapse" aria-expanded="true" aria-controls="collapseLinkExample">
+      Toggle content
+    </a></p>
+    <div class="collapse in" id="collapseLinkExample">
+      <div class="well">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+      </div>
+    </div>
+  </div>
+{% highlight html %}
+<a href="#collapseLinkExample" data-toggle="collapse" aria-expanded="false" aria-controls="collapseLinkExample">
+  Toggle content
+</button>
+<div class="collapse in" id="collapseLinkExample">
+  <div class="well">
+    ...
+  </div>
+</div>
+{% endhighlight %}
+
   <h2 id="collapse-example-accordion">Accordion example</h2>
   <p>You can extend the collapse plugin with the panel component to create an accordion.</p>
 
@@ -94,7 +117,7 @@
     </div>
     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        Anim pariatur cliche reprehenderit ...
       </div>
     </div>
   </div>
@@ -108,7 +131,7 @@
     </div>
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        Anim pariatur cliche reprehenderit ...
       </div>
     </div>
   </div>
@@ -122,7 +145,7 @@
     </div>
     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
       <div class="panel-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        Anim pariatur cliche reprehenderit ...
       </div>
     </div>
   </div>
@@ -151,15 +174,6 @@
     </div>
   </div>
 
-  <p>You can also use the plugin without the accordion markup. Make a button toggle the expanding and collapsing of another element.</p>
-{% highlight html %}
-<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo" aria-expanded="true" aria-controls="demo">
-  simple collapsible
-</button>
-
-<div id="demo" class="collapse in">...</div>
-{% endhighlight %}
-
   <div class="bs-callout bs-callout-warning" id="callout-collapse-accessibility">
     <h4>Make expand/collapse controls accessible</h4>
     <p>Be sure to add <code>aria-expanded</code> to the control element. This attribute explicitly defines the current state of the collapsible element to screen readers and similar assistive technologies. If the collapsible element is closed by default, it should have a value of <code>aria-expanded="false"</code>. If you've set the collapsible element to be open by default using the <code>in</code> class, set <code>aria-expanded="true"</code> on the control instead. The plugin will automatically toggle this attribute based on whether or not the collapsible element has been opened or closed.</p>
@@ -177,6 +191,9 @@
 
   <h3>Via data attributes</h3>
   <p>Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to the element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a CSS selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
+
+  <p>When using a link, using the <code>href</code> attribute rather than <code>data-target</code> will ensure the default-action of the link is prevented.</p>
+
   <p>To add accordion-like group management to a collapsible control, add the data attribute <code>data-parent="#selector"</code>. Refer to the demo to see this in action.</p>
 
   <h3>Via JavaScript</h3>

@@ -1150,6 +1150,9 @@ h1[id] {
 #collapseExample .well {
   margin-bottom: 0;
 }
+#collapseLinkExample .well {
+  margin-bottom: 0;
+}
 
 /* Don't wrap event names in Events tables in JS plugin docs */
 .bs-events-table > thead > tr > th:first-child,
