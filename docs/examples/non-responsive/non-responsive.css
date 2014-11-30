@@ -6,9 +6,14 @@
 
 /* Account for fixed navbar */
 body {
-  min-width: 970px;
   padding-top: 70px;
   padding-bottom: 30px;
+}
+
+body,
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  min-width: 970px;
 }
 
 /* Don't let the lead text change font-size. */
@@ -64,6 +69,7 @@ body {
   height: auto !important;
   padding-bottom: 0;
   overflow: visible !important;
+  visibility: visible !important;
 }
 
 .navbar-toggle {
@@ -122,4 +128,74 @@ body {
 .navbar .navbar-nav .open .dropdown-menu > .disabled > a:focus {
   color: #999 !important;
   background-color: transparent !important;
+}
+
+/* Undo form expansion */
+.navbar-form {
+  float: left;
+  width: auto;
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+/* Copy-pasted from forms.less since we mixin the .form-inline styles. */
+.navbar-form .form-group {
+  display: inline-block;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+.navbar-form .form-control {
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+}
+
+.navbar-form .form-control-static {
+  display: inline-block;
+}
+
+.navbar-form .input-group {
+  display: inline-table;
+  vertical-align: middle;
+}
+
+.navbar-form .input-group .input-group-addon,
+.navbar-form .input-group .input-group-btn,
+.navbar-form .input-group .form-control {
+  width: auto;
+}
+
+.navbar-form .input-group > .form-control {
+  width: 100%;
+}
+
+.navbar-form .control-label {
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+.navbar-form .radio,
+.navbar-form .checkbox {
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 0;
+  vertical-align: middle;
+
+  label {
+    padding-left: 0;
+  }
+}
+.navbar-form .radio input[type="radio"],
+.navbar-form .checkbox input[type="checkbox"] {
+  position: relative;
+  margin-left: 0;
+}
+
+.navbar-form .has-feedback .form-control-feedback {
+  top: 0;
 }
