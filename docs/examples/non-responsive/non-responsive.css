@@ -134,12 +134,13 @@ body,
 .navbar-form {
   float: left;
   width: auto;
-  margin-left: 0;
-  margin-right: 0;
   padding-top: 0;
   padding-bottom: 0;
+  margin-right: 0;
+  margin-left: 0;
   border: 0;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 /* Copy-pasted from forms.less since we mixin the .form-inline styles. */
@@ -185,11 +186,13 @@ body,
   margin-top: 0;
   margin-bottom: 0;
   vertical-align: middle;
-
-  label {
-    padding-left: 0;
-  }
 }
+
+.navbar-form .radio label,
+.navbar-form .checkbox label {
+  padding-left: 0;
+}
+
 .navbar-form .radio input[type="radio"],
 .navbar-form .checkbox input[type="checkbox"] {
   position: relative;
