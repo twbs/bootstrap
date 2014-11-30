@@ -9,7 +9,43 @@
     <p>Collapse requires the <a href="#transitions">transitions plugin</a> to be included in your version of Bootstrap.</p>
   </div>
 
-  <h2 id="collapse-examples">Example accordion</h2>
+  <h2 id="collapse-examples">Simple collapse</h2>
+
+  <p>Elements can easily be made to expand or collapse other regions</p>
+
+  <div class="bs-example">
+
+    <ul class="list-group">
+      <li class="list-group-item">
+        <a href="#collapse-simple-demo" data-toggle="collapse" aria-expanded="true" aria-controls="collapse-simple-demo">Expand via link</a>
+      </li>
+      <li class="list-group-item">
+        <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapse-simple-demo" aria-expanded="true" aria-controls="collapse-simple-demo">Expand via button</button>
+      </li>
+    </ul>
+
+    <div id="collapse-simple-demo" class="collapse">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+    </div>
+  </div><!-- bs-example -->
+{% highlight html %}
+<ul class="list-group">
+  <li class="list-group-item">
+    <a href="#collapse-simple-demo" data-toggle="collapse" aria-expanded="true" aria-controls="collapse-simple-demo">Expand via link</a>
+  </li>
+  <li class="list-group-item">
+    <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapse-simple-demo" aria-expanded="true" aria-controls="collapse-simple-demo">Expand via button</button>
+  </li>
+</ul>
+
+<div id="collapse-simple-demo" class="collapse">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+</div>
+{% endhighlight %}
+
+  <p>Note that when using a link to control toggle behavior the <code>href</code> attribute specifies the target and <code>data-target</code> should not be specified.</p>
+
+  <h2>Example accordion</h2>
   <p>Using the collapse plugin, we built a simple accordion by extending the panel component.</p>
 
   <div class="bs-example">
@@ -126,15 +162,6 @@
       </div>
     </div>
   </div>
-
-  <p>You can also use the plugin without the accordion markup. Make a button toggle the expanding and collapsing of another element.</p>
-{% highlight html %}
-<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo" aria-expanded="true" aria-controls="demo">
-  simple collapsible
-</button>
-
-<div id="demo" class="collapse in">...</div>
-{% endhighlight %}
 
   <div class="bs-callout bs-callout-warning" id="callout-collapse-accessibility">
     <h4>Make expand/collapse controls accessible</h4>
