@@ -8,7 +8,7 @@ title: Tabs
 Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus.
 
 <div class="bs-example bs-example-tabs">
-  <ul id="myTab" class="nav nav-tabs" role="tablist">
+  <ul id="myTab" class="nav nav-tabs" role="tabpanel">
     <li role="presentation" class="active">
       <a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Home</a>
     </li>
@@ -71,6 +71,7 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
 
 You can activate a tab or pill navigation without writing any JavaScript by simply specifying `data-toggle="tab"` or `data-toggle="pill"` on an element. Adding the `.nav` and `.nav-tabs` classes to the tab `<ul>` will apply the Bootstrap <a href="../components/#nav-tabs">tab styling</a>, while adding the `.nav` and `.nav-pills` classes will apply <a href="../components/#nav-pills">pill styling</a>.
 
+<div role="tabpanel">
 {% highlight html %}
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
@@ -88,6 +89,7 @@ You can activate a tab or pill navigation without writing any JavaScript by simp
   <div role="tabpanel" class="tab-pane" id="settings">...</div>
 </div>
 {% endhighlight %}
+</div>
 
 ### Fade effect
 
@@ -110,10 +112,18 @@ Activates a tab element and content container. Tab should have either a `data-ta
 
 {% highlight html %}
 <ul class="nav nav-tabs" role="tablist" id="myTab">
-  <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
-  <li role="presentation"><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
-  <li role="presentation"><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
-  <li role="presentation"><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+  <li role="presentation" class="active">
+    <a href="#home" role="tab" data-toggle="tab" aria-controls="home">Home</a>
+  </li>
+  <li role="presentation">
+    <a href="#profile" role="tab" data-toggle="tab" aria-controls="profile">Profile</a>
+  </li>
+  <li role="presentation">
+    <a href="#messages" role="tab" data-toggle="tab" aria-controls="messages">Messages</a>
+  </li>
+  <li role="presentation">
+    <a href="#settings" role="tab" data-toggle="tab" aria-controls="settings">Settings</a>
+  </li>
 </ul>
 
 <div class="tab-content">

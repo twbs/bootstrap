@@ -3,16 +3,42 @@ layout: page
 title: Collapse
 ---
 
-Get base styles and flexible support for collapsible components like accordions and navigation.
+Flexible plugin that utilizes a handful of classes for easy toggle behavior.
 
 <div class="bs-callout bs-callout-danger">
   <h4>Plugin dependency</h4>
   <p>Collapse requires the <a href="#transitions">transitions plugin</a> to be included in your version of Bootstrap.</p>
 </div>
 
-## Example accordion
+## Example
 
-Using the collapse plugin, we built a simple accordion by extending the panel component.
+Click the buttons below to show and hide another element via class changes:
+
+- `.collapse` hides content
+- `.collapsing` is applied during transitions
+- `.collapse.in` shows content
+
+You can use a link with the `href` attribute, or a button with the `data-target` attribute. In both cases, the `data-toggle="collapse"` is required.
+
+{% example html %}
+  <p>
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Link with href
+    </a>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Button with data-target
+    </button>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="well">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+    </div>
+  </div>
+{% endexample %}
+
+## Accoridion example
+
+Extend the default collapse behavior to create an accordion with the panel component.
 
 {% example html %}
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">

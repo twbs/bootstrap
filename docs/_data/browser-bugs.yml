@@ -112,16 +112,6 @@
   browser: >
     Chrome
   summary: >
-    `display: table-cell; width: 100%;` doesn't work correctly on `<input type="date">`.
-  upstream_bug: >
-    Chromium#346051
-  origin: >
-    Bootstrap#12548
-
--
-  browser: >
-    Chrome
-  summary: >
     `<input type="password">` sporadically causes bad widths on floated elements.
   upstream_bug: >
     Chromium#377346
@@ -144,7 +134,7 @@
   summary: >
     Weird button behavior with some `<input type="number">` elements.
   upstream_bug: >
-    WebKit#137269
+    WebKit#137269, Safari#18834768
   origin: >
     Bootstrap#8350,
     Normalize#283,
@@ -156,7 +146,7 @@
   summary: >
     `display: table-cell;` within media query renders incorrectly when resizing the window.
   upstream_bug: >
-    WebKit#138167
+    WebKit#138167, Safari#18987206
   origin: >
     Bootstrap#9774
 
@@ -196,6 +186,6 @@
   summary: >
     Body content can be scrolled even though `overflow: hidden;` is applied to it.
   upstream_bug: >
-    Chromium#429604
+    Chromium#175502
   origin: >
     Bootstrap#14972

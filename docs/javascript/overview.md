@@ -38,6 +38,11 @@ Alternatively, to target a specific plugin, just include the plugin's name as a 
 $(document).off('.alert.data-api')
 {% endhighlight %}
 
+<div class="bs-callout bs-callout-danger">
+  <h4>Only one plugin per element via data attributes</h4>
+  <p>Don't use data attributes from multiple plugins on the same element. For example, a button cannot both have a tooltip and toggle a modal. To accomplish this, use a wrapping element.</p>
+</div>
+
 ### Programmatic API
 
 We also believe you should be able to use all Bootstrap plugins purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.

@@ -19,19 +19,19 @@ Due to the widespread use of tables across plugins like calendars and date picke
   </thead>
   <tbody>
     <tr>
-      <td>1</td>
+      <th scope="rowspan">1</th>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
     </tr>
     <tr>
-      <td>2</td>
+      <th scope="rowspan">2</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
     </tr>
     <tr>
-      <td>3</td>
+      <th scope="rowspan">3</th>
       <td>Larry</td>
       <td>the Bird</td>
       <td>@twitter</td>
@@ -54,19 +54,19 @@ Due to the widespread use of tables across plugins like calendars and date picke
   </thead>
   <tbody>
     <tr>
-      <td>1</td>
+      <th scope="rowspan">1</th>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
     </tr>
     <tr>
-      <td>2</td>
+      <th scope="rowspan">2</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
     </tr>
     <tr>
-      <td>3</td>
+      <th scope="rowspan">3</th>
       <td>Larry</td>
       <td>the Bird</td>
       <td>@twitter</td>
@@ -91,19 +91,19 @@ Use one of two modifier classes to make `<thead>`s appear light or dark gray.
   </thead>
   <tbody>
     <tr>
-      <td>1</td>
+      <th scope="rowspan">1</th>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
     </tr>
     <tr>
-      <td>2</td>
+      <th scope="rowspan">2</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
     </tr>
     <tr>
-      <td>3</td>
+      <th scope="rowspan">3</th>
       <td>Larry</td>
       <td>the Bird</td>
       <td>@twitter</td>
@@ -119,19 +119,19 @@ Use one of two modifier classes to make `<thead>`s appear light or dark gray.
   </thead>
   <tbody>
     <tr>
-      <td>1</td>
+      <th scope="rowspan">1</th>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
     </tr>
     <tr>
-      <td>2</td>
+      <th scope="rowspan">2</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
     </tr>
     <tr>
-      <td>3</td>
+      <th scope="rowspan">3</th>
       <td>Larry</td>
       <td>the Bird</td>
       <td>@twitter</td>
@@ -156,19 +156,19 @@ Use `.table-striped` to add zebra-striping to any table row within the `<tbody>`
   </thead>
   <tbody>
     <tr>
-      <td>1</td>
+      <th scope="rowspan">1</th>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
     </tr>
     <tr>
-      <td>2</td>
+      <th scope="rowspan">2</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
     </tr>
     <tr>
-      <td>3</td>
+      <th scope="rowspan">3</th>
       <td>Larry</td>
       <td>the Bird</td>
       <td>@twitter</td>
@@ -193,7 +193,7 @@ Add `.table-bordered` for borders on all sides of the table and cells.
   </thead>
   <tbody>
     <tr>
-      <td rowspan="2">1</td>
+      <th scope="rowspan" rowspan="2">1</tg>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
@@ -204,13 +204,13 @@ Add `.table-bordered` for borders on all sides of the table and cells.
       <td>@TwBootstrap</td>
     </tr>
     <tr>
-      <td>2</td>
+      <th scope="rowspan">2</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
     </tr>
     <tr>
-      <td>3</td>
+      <th scope="rowspan">3</th>
       <td colspan="2">Larry the Bird</td>
       <td>@twitter</td>
     </tr>
@@ -234,19 +234,19 @@ Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
   </thead>
   <tbody>
     <tr>
-      <td>1</td>
+      <th scope="rowspan">1</th>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
     </tr>
     <tr>
-      <td>2</td>
+      <th scope="rowspan">2</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
     </tr>
     <tr>
-      <td>3</td>
+      <th scope="rowspan">3</th>
       <td colspan="2">Larry the Bird</td>
       <td>@twitter</td>
     </tr>
@@ -270,19 +270,19 @@ Add `.table-sm` to make tables more compact by cutting cell padding in half.
   </thead>
   <tbody>
     <tr>
-      <td>1</td>
+      <th scope="rowspan">1</th>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
     </tr>
     <tr>
-      <td>2</td>
+      <th scope="rowspan">2</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
     </tr>
     <tr>
-      <td>3</td>
+      <th scope="rowspan">3</th>
       <td colspan="2">Larry the Bird</td>
       <td>@twitter</td>
     </tr>
@@ -308,33 +308,33 @@ Use contextual classes to color table rows or individual cells.
     </thead>
     <tbody>
       <tr>
-        <td>
+        <th scope="rowspan">
           <code>.active</code>
-        </td>
+        </th>
         <td>Applies the hover color to a particular row or cell</td>
       </tr>
       <tr>
-        <td>
+        <th scope="rowspan">
           <code>.success</code>
-        </td>
+        </th>
         <td>Indicates a successful or positive action</td>
       </tr>
       <tr>
-        <td>
+        <th scope="rowspan">
           <code>.info</code>
-        </td>
+        </th>
         <td>Indicates a neutral informative change or action</td>
       </tr>
       <tr>
-        <td>
+        <th scope="rowspan">
           <code>.warning</code>
-        </td>
+        </th>
         <td>Indicates a warning that might need attention</td>
       </tr>
       <tr>
-        <td>
+        <th scope="rowspan">
           <code>.danger</code>
-        </td>
+        </th>
         <td>Indicates a dangerous or potentially negative action</td>
       </tr>
     </tbody>
@@ -353,55 +353,55 @@ Use contextual classes to color table rows or individual cells.
     </thead>
     <tbody>
       <tr class="active">
-        <td>1</td>
+        <th scope="rowspan">1</th>
         <td>Column content</td>
         <td>Column content</td>
         <td>Column content</td>
       </tr>
       <tr>
-        <td>2</td>
+        <th scope="rowspan">2</th>
         <td>Column content</td>
         <td>Column content</td>
         <td>Column content</td>
       </tr>
       <tr class="success">
-        <td>3</td>
+        <th scope="rowspan">3</th>
         <td>Column content</td>
         <td>Column content</td>
         <td>Column content</td>
       </tr>
       <tr>
-        <td>4</td>
+        <th scope="rowspan">4</th>
         <td>Column content</td>
         <td>Column content</td>
         <td>Column content</td>
       </tr>
       <tr class="info">
-        <td>5</td>
+        <th scope="rowspan">5</th>
         <td>Column content</td>
         <td>Column content</td>
         <td>Column content</td>
       </tr>
       <tr>
-        <td>6</td>
+        <th scope="rowspan">6</th>
         <td>Column content</td>
         <td>Column content</td>
         <td>Column content</td>
       </tr>
       <tr class="warning">
-        <td>7</td>
+        <th scope="rowspan">7</th>
         <td>Column content</td>
         <td>Column content</td>
         <td>Column content</td>
       </tr>
       <tr>
-        <td>8</td>
+        <th scope="rowspan">8</th>
         <td>Column content</td>
         <td>Column content</td>
         <td>Column content</td>
       </tr>
       <tr class="danger">
-        <td>9</td>
+        <th scope="rowspan">9</th>
         <td>Column content</td>
         <td>Column content</td>
         <td>Column content</td>
@@ -459,7 +459,7 @@ Create responsive tables by wrapping any `.table` in `.table-responsive` to make
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
+          <th scope="rowspan">1</th>
           <td>Table cell</td>
           <td>Table cell</td>
           <td>Table cell</td>
@@ -468,7 +468,7 @@ Create responsive tables by wrapping any `.table` in `.table-responsive` to make
           <td>Table cell</td>
         </tr>
         <tr>
-          <td>2</td>
+          <th scope="rowspan">2</th>
           <td>Table cell</td>
           <td>Table cell</td>
           <td>Table cell</td>
@@ -477,7 +477,7 @@ Create responsive tables by wrapping any `.table` in `.table-responsive` to make
           <td>Table cell</td>
         </tr>
         <tr>
-          <td>3</td>
+          <th scope="rowspan">3</th>
           <td>Table cell</td>
           <td>Table cell</td>
           <td>Table cell</td>
@@ -504,7 +504,7 @@ Create responsive tables by wrapping any `.table` in `.table-responsive` to make
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
+          <th scope="rowspan">1</th>
           <td>Table cell</td>
           <td>Table cell</td>
           <td>Table cell</td>
@@ -513,7 +513,7 @@ Create responsive tables by wrapping any `.table` in `.table-responsive` to make
           <td>Table cell</td>
         </tr>
         <tr>
-          <td>2</td>
+          <th scope="rowspan">2</th>
           <td>Table cell</td>
           <td>Table cell</td>
           <td>Table cell</td>
@@ -522,7 +522,7 @@ Create responsive tables by wrapping any `.table` in `.table-responsive` to make
           <td>Table cell</td>
         </tr>
         <tr>
-          <td>3</td>
+          <th scope="rowspan">3</th>
           <td>Table cell</td>
           <td>Table cell</td>
           <td>Table cell</td>
@@ -561,7 +561,7 @@ Create responsive tables by wrapping any `.table` in `.table-responsive` to make
   </thead>
   <tbody>
     <tr>
-      <td>1</td>
+      <th scope="rowspan">1</th>
       <td>Table cell</td>
       <td>Table cell</td>
       <td>Table cell</td>
@@ -570,7 +570,7 @@ Create responsive tables by wrapping any `.table` in `.table-responsive` to make
       <td>Table cell</td>
     </tr>
     <tr>
-      <td>2</td>
+      <th scope="rowspan">2</th>
       <td>Table cell</td>
       <td>Table cell</td>
       <td>Table cell</td>
@@ -579,7 +579,7 @@ Create responsive tables by wrapping any `.table` in `.table-responsive` to make
       <td>Table cell</td>
     </tr>
     <tr>
-      <td>3</td>
+      <th scope="rowspan">3</th>
       <td>Table cell</td>
       <td>Table cell</td>
       <td>Table cell</td>

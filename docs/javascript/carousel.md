@@ -26,11 +26,11 @@ A slideshow component for cycling through elements—images or slides of text—
     </div>
   </div>
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="icon-prev" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
   <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="icon-next" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
 </div>
@@ -39,6 +39,11 @@ A slideshow component for cycling through elements—images or slides of text—
 <div class="bs-callout bs-callout-warning" id="callout-carousel-transitions">
   <h4>Transition animations not supported in Internet Explorer 8 &amp; 9</h4>
   <p>Bootstrap exclusively uses CSS3 for its animations, but Internet Explorer 8 &amp; 9 don't support the necessary CSS properties. Thus, there are no slide transition animations when using these browsers. We have intentionally decided not to include jQuery-based fallbacks for the transitions.</p>
+</div>
+
+<div class="bs-callout bs-callout-warning" id="callout-carousel-active">
+  <h4>Initial active element required</h4>
+  <p>The <code>.active</code> class needs to be added to one of the slides. Otherwise, the carousel will not be visible.</p>
 </div>
 
 ### Optional captions
@@ -76,11 +81,11 @@ Add captions to your slides easily with the `.carousel-caption` element within a
       </div>
     </div>
     <a class="left carousel-control" href="#carousel-example-captions" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="icon-prev" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
     <a class="right carousel-control" href="#carousel-example-captions" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="icon-next" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
   </div>

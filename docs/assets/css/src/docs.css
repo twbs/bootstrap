@@ -144,7 +144,6 @@ body {
 .bs-docs-footer-links {
   padding-left: 0;
   margin-top: 20px;
-  color: #999;
 }
 .bs-docs-footer-links li {
   display: inline;
@@ -1141,6 +1140,16 @@ h1[id] {
   overflow: auto;
 }
 
+/* Simple collapse example */
+#collapseExample .well {
+  margin-bottom: 0;
+}
+
+/* Don't wrap event names in Events tables in JS plugin docs */
+.bs-events-table > thead > tr > th:first-child,
+.bs-events-table > tbody > tr > td:first-child {
+  white-space: nowrap;
+}
 
 /*
  * Code snippets

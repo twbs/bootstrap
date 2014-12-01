@@ -20,13 +20,14 @@ Once downloaded, unzip the compressed folder to see the structure of (the compil
 bootstrap/
 ├── css/
 │   ├── bootstrap.css
+│   ├── bootstrap.css.map
 │   ├── bootstrap.min.css
 └── js/
     ├── bootstrap.js
     └── bootstrap.min.js
 {% endhighlight %}
 
-This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (1bootstrap.min.*1).
+This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). CSS [source maps](https://developers.google.com/chrome-developer-tools/docs/css-preprocessors) (`bootstrap.*.map`) are available for use with certain browsers' developer tools.
 
 ### Bootstrap source code
 

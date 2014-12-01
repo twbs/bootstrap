@@ -16,7 +16,7 @@ Turn a button into a dropdown toggle with some basic markup changes.
 
 <div class="bs-example">
   <div class="btn-group">
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">Default</button>
+    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Default</button>
     <ul class="dropdown-menu" role="menu">
       <li><a href="#">Action</a></li>
       <li><a href="#">Another action</a></li>
@@ -26,7 +26,7 @@ Turn a button into a dropdown toggle with some basic markup changes.
     </ul>
   </div><!-- /btn-group -->
   <div class="btn-group">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Primary</button>
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Primary</button>
     <ul class="dropdown-menu" role="menu">
       <li><a href="#">Action</a></li>
       <li><a href="#">Another action</a></li>
@@ -36,7 +36,7 @@ Turn a button into a dropdown toggle with some basic markup changes.
     </ul>
   </div><!-- /btn-group -->
   <div class="btn-group">
-    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Success</button>
+    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Success</button>
     <ul class="dropdown-menu" role="menu">
       <li><a href="#">Action</a></li>
       <li><a href="#">Another action</a></li>
@@ -46,7 +46,7 @@ Turn a button into a dropdown toggle with some basic markup changes.
     </ul>
   </div><!-- /btn-group -->
   <div class="btn-group">
-    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Info</button>
+    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Info</button>
     <ul class="dropdown-menu" role="menu">
       <li><a href="#">Action</a></li>
       <li><a href="#">Another action</a></li>
@@ -56,7 +56,7 @@ Turn a button into a dropdown toggle with some basic markup changes.
     </ul>
   </div><!-- /btn-group -->
   <div class="btn-group">
-    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">Warning</button>
+    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Warning</button>
     <ul class="dropdown-menu" role="menu">
       <li><a href="#">Action</a></li>
       <li><a href="#">Another action</a></li>
@@ -66,7 +66,7 @@ Turn a button into a dropdown toggle with some basic markup changes.
     </ul>
   </div><!-- /btn-group -->
   <div class="btn-group">
-    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Danger</button>
+    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Danger</button>
     <ul class="dropdown-menu" role="menu">
       <li><a href="#">Action</a></li>
       <li><a href="#">Another action</a></li>
@@ -80,7 +80,7 @@ Turn a button into a dropdown toggle with some basic markup changes.
 {% highlight html %}
 <!-- Single button -->
 <div class="btn-group">
-  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
     Action
   </button>
   <ul class="dropdown-menu" role="menu">
@@ -100,7 +100,7 @@ Turn a button into a dropdown toggle with some basic markup changes.
 <div class="bs-example">
   <div class="btn-group">
     <button type="button" class="btn btn-secondary">Default</button>
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
       <span class="sr-only">Toggle Dropdown</span>
     </button>
     <ul class="dropdown-menu" role="menu">
@@ -113,7 +113,7 @@ Turn a button into a dropdown toggle with some basic markup changes.
   </div><!-- /btn-group -->
   <div class="btn-group">
     <button type="button" class="btn btn-primary">Primary</button>
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
       <span class="sr-only">Toggle Dropdown</span>
     </button>
     <ul class="dropdown-menu" role="menu">
@@ -126,7 +126,7 @@ Turn a button into a dropdown toggle with some basic markup changes.
   </div><!-- /btn-group -->
   <div class="btn-group">
     <button type="button" class="btn btn-success">Success</button>
-    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
       <span class="sr-only">Toggle Dropdown</span>
     </button>
     <ul class="dropdown-menu" role="menu">
@@ -139,7 +139,7 @@ Turn a button into a dropdown toggle with some basic markup changes.
   </div><!-- /btn-group -->
   <div class="btn-group">
     <button type="button" class="btn btn-info">Info</button>
-    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
       <span class="sr-only">Toggle Dropdown</span>
     </button>
     <ul class="dropdown-menu" role="menu">
@@ -152,7 +152,7 @@ Turn a button into a dropdown toggle with some basic markup changes.
   </div><!-- /btn-group -->
   <div class="btn-group">
     <button type="button" class="btn btn-warning">Warning</button>
-    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
       <span class="sr-only">Toggle Dropdown</span>
     </button>
     <ul class="dropdown-menu" role="menu">
@@ -165,7 +165,7 @@ Turn a button into a dropdown toggle with some basic markup changes.
   </div><!-- /btn-group -->
   <div class="btn-group">
     <button type="button" class="btn btn-danger">Danger</button>
-    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
       <span class="sr-only">Toggle Dropdown</span>
     </button>
     <ul class="dropdown-menu" role="menu">
@@ -182,7 +182,7 @@ Turn a button into a dropdown toggle with some basic markup changes.
 <!-- Split button -->
 <div class="btn-group">
   <button type="button" class="btn btn-danger">Action</button>
-  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
     <span class="sr-only">Toggle Dropdown</span>
   </button>
   <ul class="dropdown-menu" role="menu">
@@ -202,7 +202,7 @@ Button dropdowns work with buttons of all sizes.
 <div class="bs-example">
   <div class="btn-toolbar" role="toolbar">
     <div class="btn-group">
-      <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">
+      <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
         Large button
       </button>
       <ul class="dropdown-menu" role="menu">
@@ -216,7 +216,7 @@ Button dropdowns work with buttons of all sizes.
   </div><!-- /btn-toolbar -->
   <div class="btn-toolbar" role="toolbar">
     <div class="btn-group">
-      <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+      <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
         Small button
       </button>
       <ul class="dropdown-menu" role="menu">
@@ -230,7 +230,7 @@ Button dropdowns work with buttons of all sizes.
   </div><!-- /btn-toolbar -->
   <div class="btn-toolbar" role="toolbar">
     <div class="btn-group">
-      <button class="btn btn-secondary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+      <button class="btn btn-secondary btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
         Extra small button
       </button>
       <ul class="dropdown-menu" role="menu">
@@ -247,7 +247,7 @@ Button dropdowns work with buttons of all sizes.
 {% highlight html %}
 <!-- Large button group -->
 <div class="btn-group">
-  <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">
+  <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
     Large button
   </button>
   <ul class="dropdown-menu" role="menu">
@@ -257,7 +257,7 @@ Button dropdowns work with buttons of all sizes.
 
 <!-- Small button group -->
 <div class="btn-group">
-  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
     Small button
   </button>
   <ul class="dropdown-menu" role="menu">
@@ -267,7 +267,7 @@ Button dropdowns work with buttons of all sizes.
 
 <!-- Extra small button group -->
 <div class="btn-group">
-  <button class="btn btn-secondary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+  <button class="btn btn-secondary btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
     Extra small button
   </button>
   <ul class="dropdown-menu" role="menu">
@@ -284,7 +284,7 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent.
   <div class="btn-toolbar" role="toolbar">
     <div class="btn-group dropup">
       <button type="button" class="btn btn-secondary">Dropup</button>
-      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
         <span class="sr-only">Toggle Dropdown</span>
       </button>
       <ul class="dropdown-menu" role="menu">
@@ -297,7 +297,7 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent.
     </div><!-- /btn-group -->
     <div class="btn-group dropup">
       <button type="button" class="btn btn-primary">Right dropup</button>
-      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
         <span class="sr-only">Toggle Dropdown</span>
       </button>
       <ul class="dropdown-menu dropdown-menu-right" role="menu">
@@ -314,7 +314,7 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent.
 {% highlight html %}
 <div class="btn-group dropup">
   <button type="button" class="btn btn-secondary">Dropup</button>
-  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
     <span class="sr-only">Toggle Dropdown</span>
   </button>
   <ul class="dropdown-menu" role="menu">

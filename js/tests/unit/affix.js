@@ -68,4 +68,34 @@ $(function () {
       }, 16) // for testing in a browser
     }, 0)
   })
+
+  test('should affix-top when scrolling up to offset when parent has padding', function () {
+    stop()
+
+    var templateHTML = '<div id="padding-offset" style="padding-top: 20px;">'
+        + '<div id="affixTopTarget">'
+        + '<p>Testing affix-top class is added</p>'
+        + '</div>'
+        + '<div style="height: 1000px; display: block;"/>'
+        + '</div>'
+    $(templateHTML).appendTo(document.body)
+
+    $('#affixTopTarget')
+      .bootstrapAffix({
+        offset: { top: 120, bottom: 0 }
+      })
+      .on('affixed-top.bs.affix', function () {
+        ok($('#affixTopTarget').hasClass('affix-top'), 'affix-top class applied')
+        $('#padding-offset').remove()
+        start()
+      })
+
+    setTimeout(function () {
+      window.scrollTo(0, document.body.scrollHeight)
+
+      setTimeout(function () {
+        window.scroll(0, 119)
+      }, 250)
+    }, 250)
+  })
 })

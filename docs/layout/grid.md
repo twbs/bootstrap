@@ -77,49 +77,49 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
     </thead>
     <tbody>
       <tr>
-        <th class="text-nowrap">Grid behavior</th>
+        <th class="text-nowrap" scope="row">Grid behavior</th>
         <td>Horizontal at all times</td>
         <td colspan="3">Collapsed to start, horizontal above breakpoints</td>
       </tr>
       <tr>
-        <th class="text-nowrap">Container width</th>
+        <th class="text-nowrap" scope="row">Container width</th>
         <td>None (auto)</td>
         <td>750px</td>
         <td>970px</td>
         <td>1170px</td>
       </tr>
       <tr>
-        <th class="text-nowrap">Class prefix</th>
+        <th class="text-nowrap" scope="row">Class prefix</th>
         <td><code>.col-xs-</code></td>
         <td><code>.col-sm-</code></td>
         <td><code>.col-md-</code></td>
         <td><code>.col-lg-</code></td>
       </tr>
       <tr>
-        <th class="text-nowrap"># of columns</th>
+        <th class="text-nowrap" scope="row"># of columns</th>
         <td colspan="4">12</td>
       </tr>
       <tr>
-        <th class="text-nowrap">Column width</th>
+        <th class="text-nowrap" scope="row">Column width</th>
         <td class="text-muted">Auto</td>
         <td>~62px</td>
         <td>~81px</td>
         <td>~97px</td>
       </tr>
       <tr>
-        <th class="text-nowrap">Gutter width</th>
+        <th class="text-nowrap" scope="row">Gutter width</th>
         <td colspan="4">30px (15px on each side of a column)</td>
       </tr>
       <tr>
-        <th class="text-nowrap">Nestable</th>
+        <th class="text-nowrap" scope="row">Nestable</th>
         <td colspan="4">Yes</td>
       </tr>
       <tr>
-        <th class="text-nowrap">Offsets</th>
+        <th class="text-nowrap" scope="row">Offsets</th>
         <td colspan="4">Yes</td>
       </tr>
       <tr>
-        <th class="text-nowrap">Column ordering</th>
+        <th class="text-nowrap" scope="row">Column ordering</th>
         <td colspan="4">Yes</td>
       </tr>
     </tbody>
@@ -293,7 +293,7 @@ Don't want your columns to simply stack in smaller devices? Use the extra small 
 </div>
 {% endexample %}
 
-### Example: Mobile, tablet, desktops
+### Example: Mobile, tablet, desktop
 
 Build on the previous example by creating even more dynamic and powerful layouts with tablet `.col-sm-*` classes.
 

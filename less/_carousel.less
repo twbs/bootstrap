@@ -27,24 +27,24 @@
 
     // WebKit CSS3 transforms for supported devices
     @media all and (transform-3d), (-webkit-transform-3d) {
-      transition: transform .6s ease-in-out;
-      backface-visibility: hidden;
-      perspective: 1000;
+      .transition-transform(~'0.6s ease-in-out');
+      .backface-visibility(~'hidden');
+      .perspective(1000);
 
       &.next,
       &.active.right {
-        transform: translate3d(100%, 0, 0);
+        .translate3d(100%, 0, 0);
         left: 0;
       }
       &.prev,
       &.active.left {
-        transform: translate3d(-100%, 0, 0);
+        .translate3d(-100%, 0, 0);
         left: 0;
       }
       &.next.left,
       &.prev.right,
       &.active {
-        transform: translate3d(0, 0, 0);
+        .translate3d(0, 0, 0);
         left: 0;
       }
     }
@@ -134,6 +134,7 @@
     height: 20px;
     margin-top: -10px;
     font-family: serif;
+    line-height: 1;
   }
   .icon-prev {
     left: 50%;
@@ -143,8 +144,6 @@
     right: 50%;
     margin-right: -10px;
   }
-
-
   .icon-prev {
     &:before {
       content: '\2039';// SINGLE LEFT-POINTING ANGLE QUOTATION MARK (U+2039)

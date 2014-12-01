@@ -19,7 +19,7 @@ Source Less, JavaScript, and documentation. **Requires a Less compiler and [some
 
 ### Bower
 
-Install and manage Bootstrap's Less, CSS, and JavaScript using [Bower](http://bower.io).
+You can also install and manage Bootstrap's Less, CSS, and JavaScript using [Bower](http://bower.io).
 
 {% highlight bash %}$ bower install bootstrap{% endhighlight %}
 

@@ -12,13 +12,23 @@ Simple pagination inspired by Rdio, great for apps and search results. The large
 {% example html %}
 <nav>
   <ul class="pagination">
-    <li><a href="#">&laquo;</a></li>
+    <li>
+      <a href="#">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
     <li><a href="#">1</a></li>
     <li><a href="#">2</a></li>
     <li><a href="#">3</a></li>
     <li><a href="#">4</a></li>
     <li><a href="#">5</a></li>
-    <li><a href="#">&raquo;</a></li>
+    <li>
+      <a href="#">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
   </ul>
 </nav>
 {% endexample %}
@@ -30,25 +40,41 @@ Links are customizable for different circumstances. Use `.disabled` for unclicka
 {% example html %}
 <nav>
   <ul class="pagination">
-    <li class="disabled"><a href="#">&laquo;</a></li>
-    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+    <li class="disabled">
+      <a href="#">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="active">
+      <a href="#">1 <span class="sr-only">(current)</span></a>
+    </li>
     <li><a href="#">2</a></li>
     <li><a href="#">3</a></li>
     <li><a href="#">4</a></li>
     <li><a href="#">5</a></li>
-    <li><a href="#">&raquo;</a></li>
+    <li>
+      <a href="#">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
   </ul>
 </nav>
 {% endexample %}
 
-You can optionally swap out active or disabled anchors for `<span>` to remove click functionality while retaining intended styles.
+You can optionally swap out active or disabled anchors for `<span>`, or omit the anchor in the case of the previous/next arrows, to remove click functionality while retaining intended styles.
 
 {% highlight html %}
 <nav>
   <ul class="pagination">
-    <li class="disabled"><span>&laquo;</span></li>
+    <li class="disabled">
+      <span>
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </span>
+    </li>
     <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
-    ...
   </ul>
 </nav>
 {% endhighlight %}
@@ -61,11 +87,21 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 {% example html %}
 <nav>
   <ul class="pagination pagination-lg">
-    <li><a href="#">&laquo;</a></li>
+    <li>
+      <a href="#">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
     <li><a href="#">1</a></li>
     <li><a href="#">2</a></li>
     <li><a href="#">3</a></li>
-    <li><a href="#">&raquo;</a></li>
+    <li>
+      <a href="#">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
   </ul>
 </nav>
 {% endexample %}
@@ -73,11 +109,21 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 {% example html %}
 <nav>
   <ul class="pagination pagination-sm">
-    <li><a href="#">&laquo;</a></li>
+    <li>
+      <a href="#">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
     <li><a href="#">1</a></li>
     <li><a href="#">2</a></li>
     <li><a href="#">3</a></li>
-    <li><a href="#">&raquo;</a></li>
+    <li>
+      <a href="#">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
   </ul>
 </nav>
 {% endexample %}
@@ -106,8 +152,8 @@ Alternatively, you can align each link to the sides:
 {% example html %}
 <nav>
   <ul class="pager">
-    <li class="previous"><a href="#">&larr; Older</a></li>
-    <li class="next"><a href="#">Newer &rarr;</a></li>
+    <li class="previous"><a href="#">Older</a></li>
+    <li class="next"><a href="#">Newer</a></li>
   </ul>
 </nav>
 {% endexample %}
@@ -120,8 +166,8 @@ Pager links also use the `.disabled` class.
 {% highlight html %}
 <nav>
   <ul class="pager">
-    <li class="previous disabled"><a href="#">&larr; Older</a></li>
-    <li class="next"><a href="#">Newer &rarr;</a></li>
+    <li class="previous disabled"><a href="#">Older</a></li>
+    <li class="next"><a href="#">Newer</a></li>
   </ul>
 </nav>
 {% endhighlight %}

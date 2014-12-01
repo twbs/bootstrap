@@ -122,7 +122,7 @@ Buttons in input groups are a bit different and require one extra level of nesti
   <div class="col-lg-6">
     <div class="input-group">
       <div class="input-group-btn">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">Action</button>
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action</button>
         <ul class="dropdown-menu" role="menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
@@ -138,7 +138,7 @@ Buttons in input groups are a bit different and require one extra level of nesti
     <div class="input-group">
       <input type="text" class="form-control">
       <div class="input-group-btn">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">Action</button>
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action</button>
         <ul class="dropdown-menu dropdown-menu-right" role="menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
@@ -160,7 +160,7 @@ Buttons in input groups are a bit different and require one extra level of nesti
     <div class="input-group">
       <div class="input-group-btn">
         <button type="button" class="btn btn-secondary" tabindex="-1">Action</button>
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" tabindex="-1" aria-expanded="false">
           <span class="sr-only">Toggle Dropdown</span>
         </button>
         <ul class="dropdown-menu" role="menu">
@@ -179,7 +179,7 @@ Buttons in input groups are a bit different and require one extra level of nesti
       <input type="text" class="form-control">
       <div class="input-group-btn">
         <button type="button" class="btn btn-secondary" tabindex="-1">Action</button>
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" tabindex="-1" aria-expanded="false">
           <span class="sr-only">Toggle Dropdown</span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right" role="menu">

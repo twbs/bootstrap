@@ -23,7 +23,7 @@ Bootstrap supports the **latest, stable releases** of all major browsers and pla
     </thead>
     <tbody>
       <tr>
-        <th>Android</th>
+        <th scope="row">Android</th>
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
         <td class="text-muted" rowspan="3" style="vertical-align: middle;">N/A</td>
@@ -31,21 +31,21 @@ Bootstrap supports the **latest, stable releases** of all major browsers and pla
         <td class="text-muted">N/A</td>
       </tr>
       <tr>
-        <th>iOS</th>
+        <th scope="row">iOS</th>
         <td class="text-success">Supported</td>
         <td class="text-muted">N/A</td>
         <td class="text-danger">Not supported</td>
         <td class="text-success">Supported</td>
       </tr>
       <tr>
-        <th>Mac OS X</th>
+        <th scope="row">Mac OS X</th>
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
       </tr>
       <tr>
-        <th>Windows</th>
+        <th scope="row">Windows</th>
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
@@ -164,8 +164,6 @@ The rendering engine of versions of Safari prior to v7.1 for OS X and Safari for
 - Add `.pull-right` to your last grid column to get the hard-right alignment
 - Tweak your percentages manually to get the perfect rounding for Safari (more difficult than the first option)
 
-We'll keep an eye on this though and update our code if we have an easy solution.
-
 ### Modals, navbars, and virtual keyboards
 
 #### Overflow and scrolling
@@ -178,7 +176,7 @@ Also, note that if you're using a fixed navbar or using inputs within a modal, i
 
 #### Navbar Dropdowns
 
-The `.dropdown-backdrop` element isn't used on iOS in the nav because of the complexity of z-indexing. Thus, to close dropdowns in navbars, you must directly click the dropdown element (or any other element which will fire a click event in iOS).
+The `.dropdown-backdrop` element isn't used on iOS in the nav because of the complexity of z-indexing. Thus, to close dropdowns in navbars, you must directly click the dropdown element (or [any other element which will fire a click event in iOS](https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile)).
 
 ### Browser zooming
 
@@ -228,4 +226,4 @@ In order to provide the best possible experience to old and buggy browsers, Boot
 
 These validation warnings don't matter in practice since the non-hacky portion of our CSS does fully validate and the hacky portions don't interfere with the proper functioning of the non-hacky portion, hence why we deliberately ignore these particular warnings.
 
-Our HTML docs likewise have some trivial and inconsequential HTML validation warnings due to our inclusion of [X-UA-Compatible `<meta>` tags](#ie-compatibility-modes) to avoid Internet Explorer issues and our inclusion of a workaround for [a certain Firefox bug](https://bugzilla.mozilla.org/show_bug.cgi?id=654072).
+Our HTML docs likewise have some trivial and inconsequential HTML validation warnings due to our inclusion of a workaround for [a certain Firefox bug](https://bugzilla.mozilla.org/show_bug.cgi?id=654072).

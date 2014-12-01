@@ -10,7 +10,7 @@ Bootstrap normalizes common HTML5 form elements and adds a number of layout opti
 Individual form controls automatically receive some global styling. All textual `<input>`, `<textarea>`, and `<select>` elements with `.form-control` are set to `width: 100%;` by default. Wrap labels and controls in `.form-group` for optimum spacing.
 
 {% example html %}
-<form role="form">
+<form>
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
@@ -52,16 +52,10 @@ Add `.form-inline` to your `<form>` for left-aligned and inline-block controls. 
 </div>
 
 {% example html %}
-<form class="form-inline" role="form">
+<form class="form-inline">
   <div class="form-group">
     <label class="sr-only" for="exampleInputEmail2">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
-  </div>
-  <div class="form-group">
-    <div class="input-group">
-      <div class="input-group-addon">@</div>
-      <input class="form-control" type="email" placeholder="Enter email">
-    </div>
   </div>
   <div class="form-group">
     <label class="sr-only" for="exampleInputPassword2">Password</label>
@@ -72,7 +66,21 @@ Add `.form-inline` to your `<form>` for left-aligned and inline-block controls. 
       <input type="checkbox"> Remember me
     </label>
   </div>
-  <button type="submit" class="btn btn-secondary">Sign in</button>
+  <button type="submit" class="btn btn-default">Sign in</button>
+</form>
+{% endexample %}
+
+{% example html %}
+<form class="form-inline">
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+    <div class="input-group">
+      <div class="input-group-addon">$</div>
+      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+      <div class="input-group-addon">.00</div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Transfer cash</button>
 </form>
 {% endexample %}
 
@@ -81,7 +89,7 @@ Add `.form-inline` to your `<form>` for left-aligned and inline-block controls. 
 Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout by adding `.form-horizontal` to the form. Doing so changes `.form-group`s to behave as grid rows, so no need for `.row`.
 
 {% example html %}
-<form class="form-horizontal" role="form">
+<form class="form-horizontal">
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-10">
@@ -253,7 +261,7 @@ Use the default option, or add `multiple` to show multiple options at once.
 When you need to place plain text next to a form label within a form, use the `.form-control-static` class on a `<p>`.
 
 {% example html %}
-<form class="form-horizontal" role="form">
+<form class="form-horizontal">
   <div class="form-group">
     <label class="col-sm-2 control-label">Email</label>
     <div class="col-sm-10">
@@ -270,7 +278,7 @@ When you need to place plain text next to a form label within a form, use the `.
 {% endexample %}
 
 {% example html %}
-<form class="form-inline" role="form">
+<form class="form-inline">
   <div class="form-group">
     <label class="sr-only">Email</label>
     <p class="form-control-static">email@example.com</p>
@@ -288,7 +296,7 @@ When you need to place plain text next to a form label within a form, use the `.
 We remove the default `outline` styles on some form controls and apply a `box-shadow` in its place for `:focus`.
 
 <div class="bs-example">
-  <form role="form">
+  <form>
     <input class="form-control" id="focusedInput" type="text" value="Demonstrative focus state">
   </form>
 </div>
@@ -309,7 +317,7 @@ Add the `disabled` boolean attribute on an `<input>`, `<select>`, or `<textarea>
 Add the `disabled` attribute to a `<fieldset>` to disable all the controls within.
 
 {% example html %}
-<form role="form">
+<form>
   <fieldset disabled>
     <div class="form-group">
       <label for="disabledTextInput">Disabled input</label>
@@ -333,7 +341,7 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
 
 <div class="bs-callout bs-callout-warning">
   <h4>Caveat about link functionality of `&lt;a&gt;`</h4>
-  <p>Our styles use `pointer-events: none` to try to disable the link functionality of <code>&lt;a class="btn btn-*"&gt;</code> buttons in this case, but that CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11. So to be safe, use custom JavaScript to disable such links.</p>
+  <p>By default, browsers will treat all native form controls (<code>&lt;input&gt;</code>, <code>&lt;select&gt;</code> and <code>&lt;button&gt;</code> elements) inside a <code>&lt;fieldset disabled&gt;</code> as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes <code>&lt;a ... class="btn btn-*"&gt;</code> elements, these will only be given a style of <code>pointer-events: none</code>. As noted in the section about <a href="#buttons-disabled">disabled state for buttons</a> (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.</p>
 </div>
 
 <div class="bs-callout bs-callout-danger">
@@ -418,7 +426,7 @@ You can also add optional feedback icons with the addition of `.has-feedback` an
 {% endexample %}
 
 {% example html %}
-<form class="form-horizontal" role="form">
+<form class="form-horizontal">
   <div class="form-group has-success has-feedback">
     <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
     <div class="col-sm-9">
@@ -430,7 +438,7 @@ You can also add optional feedback icons with the addition of `.has-feedback` an
 {% endexample %}
 
 {% example html %}
-<form class="form-inline" role="form">
+<form class="form-inline">
   <div class="form-group has-success has-feedback">
     <label class="control-label" for="inputSuccess4">Input with success</label>
     <input type="text" class="form-control" id="inputSuccess4">
@@ -466,7 +474,7 @@ Set heights using classes like `.input-lg`, and set widths using grid column cla
 Quickly size labels and form controls within `.form-horizontal` by adding `.form-group-lg` or `.form-group-sm` to existing `.form-group`s.
 
 {% example html %}
-<form class="form-horizontal" role="form">
+<form class="form-horizontal">
   <div class="form-group form-group-lg">
     <label class="col-sm-2 control-label" for="formGroupInputLarge">Large label</label>
     <div class="col-sm-10">

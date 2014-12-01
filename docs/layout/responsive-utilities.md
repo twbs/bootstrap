@@ -36,28 +36,28 @@ Use a single or combination of the available classes for toggling content across
     </thead>
     <tbody>
       <tr>
-        <th><code>.visible-xs-*</code></th>
+        <th scope="rowspan"><code>.visible-xs-*</code></th>
         <td class="is-visible">Visible</td>
         <td class="is-hidden">Hidden</td>
         <td class="is-hidden">Hidden</td>
         <td class="is-hidden">Hidden</td>
       </tr>
       <tr>
-        <th><code>.visible-sm-*</code></th>
+        <th scope="rowspan"><code>.visible-sm-*</code></th>
         <td class="is-hidden">Hidden</td>
         <td class="is-visible">Visible</td>
         <td class="is-hidden">Hidden</td>
         <td class="is-hidden">Hidden</td>
       </tr>
       <tr>
-        <th><code>.visible-md-*</code></th>
+        <th scope="rowspan"><code>.visible-md-*</code></th>
         <td class="is-hidden">Hidden</td>
         <td class="is-hidden">Hidden</td>
         <td class="is-visible">Visible</td>
         <td class="is-hidden">Hidden</td>
       </tr>
       <tr>
-        <th><code>.visible-lg-*</code></th>
+        <th scope="rowspan"><code>.visible-lg-*</code></th>
         <td class="is-hidden">Hidden</td>
         <td class="is-hidden">Hidden</td>
         <td class="is-hidden">Hidden</td>
@@ -66,28 +66,28 @@ Use a single or combination of the available classes for toggling content across
     </tbody>
     <tbody>
       <tr>
-        <th><code>.hidden-xs</code></th>
+        <th scope="rowspan"><code>.hidden-xs</code></th>
         <td class="is-hidden">Hidden</td>
         <td class="is-visible">Visible</td>
         <td class="is-visible">Visible</td>
         <td class="is-visible">Visible</td>
       </tr>
       <tr>
-        <th><code>.hidden-sm</code></th>
+        <th scope="rowspan"><code>.hidden-sm</code></th>
         <td class="is-visible">Visible</td>
         <td class="is-hidden">Hidden</td>
         <td class="is-visible">Visible</td>
         <td class="is-visible">Visible</td>
       </tr>
       <tr>
-        <th><code>.hidden-md</code></th>
+        <th scope="rowspan"><code>.hidden-md</code></th>
         <td class="is-visible">Visible</td>
         <td class="is-visible">Visible</td>
         <td class="is-hidden">Hidden</td>
         <td class="is-visible">Visible</td>
       </tr>
       <tr>
-        <th><code>.hidden-lg</code></th>
+        <th scope="rowspan"><code>.hidden-lg</code></th>
         <td class="is-visible">Visible</td>
         <td class="is-visible">Visible</td>
         <td class="is-visible">Visible</td>

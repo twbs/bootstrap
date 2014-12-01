@@ -17,6 +17,8 @@ Add dismiss functionality to all alert messages with this plugin.
 </div>
 {% endexample %}
 
+When using a `.close` button, it must be the first child of the `.alert-dismissible` and no text content may come before it in the markup.
+
 {% example html %}
 <div class="alert alert-danger alert-dismissible fade in" role="alert">
   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>

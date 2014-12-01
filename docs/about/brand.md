@@ -49,15 +49,15 @@ The project and framework should always be referred to as **Bootstrap**. No Twit
 <div class="bs-brand-logos">
   <div class="bs-brand-item">
     <h3>Bootstrap</h3>
-    <span class="glyphicon glyphicon-ok"></span>
+    <strong class="text-success">Right</strong>
   </div>
   <div class="bs-brand-item">
     <h3 class="text-muted">BootStrap</h3>
-    <span class="glyphicon glyphicon-remove"></span>
+    <strong class="text-warning">Wrong</strong>
   </div>
   <div class="bs-brand-item">
     <h3 class="text-muted">Twitter Bootstrap</h3>
-    <span class="glyphicon glyphicon-remove"></span>
+    <strong class="text-warning">Wrong</strong>
   </div>
 </div>
 

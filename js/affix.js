@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: affix.js v3.3.0
+ * Bootstrap: affix.js v3.3.1
  * http://getbootstrap.com/javascript/#affix
  * ========================================================================
  * Copyright 2011-2014 Twitter, Inc.
@@ -28,7 +28,7 @@
     this.checkPosition()
   }
 
-  Affix.VERSION  = '3.3.0'
+  Affix.VERSION  = '3.3.1'
 
   Affix.RESET    = 'affix affix-top affix-bottom'
 
@@ -53,7 +53,7 @@
     var colliderTop    = initializing ? scrollTop : position.top
     var colliderHeight = initializing ? targetHeight : height
 
-    if (offsetTop != null && colliderTop <= offsetTop) return 'top'
+    if (offsetTop != null && scrollTop <= offsetTop) return 'top'
     if (offsetBottom != null && (colliderTop + colliderHeight >= scrollHeight - offsetBottom)) return 'bottom'
 
     return false

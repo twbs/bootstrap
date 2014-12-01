@@ -5,12 +5,16 @@ title: Navs
 
 Navigation available in Bootstrap share general markup and styles, from the base `.nav` class to the active and disabled states. Swap modifier classes to switch between each style.
 
+## Regarding accessibility
+
+If you are using navs to provide a navigation bar, be sure to add a `role="navigation"` to the most logical parent container of the `<ul>`, or wrap a `<nav>` element around the whole navigation. Do not add the role to the `<ul>` itself, as this would prevent it from being announced as an actual list by assistive technologies.
+
 ## Base nav
 
 Roll your own navigation style by extending the base `.nav` component. All Bootstrap's nav components are built on top of this. Includes styles for the disabled state, but **not the active state**.
 
 {% example html %}
-<ul class="nav" role="tablist">
+<ul class="nav">
   <li class="nav-item">
     <a class="nav-link" href="#">Link</a>
   </li>
@@ -29,7 +33,7 @@ Roll your own navigation style by extending the base `.nav` component. All Boots
 Classes are used throughout, so your markup can be super flexible. Use `<ul>`s like above, or roll your own with say a `<nav>` element.
 
 {% example html %}
-<nav class="nav" role="tablist">
+<nav class="nav">
   <a class="nav-link active" href="#">Active</a>
   <a class="nav-link" href="#">Link</a>
   <a class="nav-link" href="#">Another link</a>
@@ -39,10 +43,10 @@ Classes are used throughout, so your markup can be super flexible. Use `<ul>`s l
 
 ## Tabs
 
-Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabbed interface.
+Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabbed interface. Use them to create tabbable regions with our [tab JavaScript plugin](../javascript/tabs).
 
 {% example html %}
-<ul class="nav nav-tabs" role="tablist">
+<ul class="nav nav-tabs">
   <li class="nav-item active" role="presentation">
     <a href="#" class="nav-link">Active</a>
   </li>
@@ -58,17 +62,12 @@ Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabb
 </ul>
 {% endexample %}
 
-<div class="bs-callout bs-callout-info">
-  <h4>Requires JavaScript tabs plugin</h4>
-  <p>For tabs with tabbable areas, you must use the <a href="../javascript/#tabs">tabs JavaScript plugin</a>.</p>
-</div>
-
 ## Pills
 
 Take that same HTML, but use `.nav-pills` instead:
 
 {% example html %}
-<ul class="nav nav-pills" role="tablist">
+<ul class="nav nav-pills">
   <li class="nav-item active" role="presentation">
     <a href="#" class="nav-link">Active</a>
   </li>
@@ -89,7 +88,7 @@ Take that same HTML, but use `.nav-pills` instead:
 Just add `.nav-stacked` to the `.nav.nav-pills`.
 
 {% example html %}
-<ul class="nav nav-pills nav-stacked" role="tablist">
+<ul class="nav nav-pills nav-stacked">
   <li class="nav-item active" role="presentation">
     <a href="#" class="nav-link">Active</a>
   </li>
@@ -112,12 +111,12 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
 ### Tabs with dropdowns
 
 {% example html %}
-<ul class="nav nav-tabs" role="tablist">
+<ul class="nav nav-tabs">
   <li class="nav-item active" role="presentation">
     <a href="#" class="nav-link">Active</a>
   </li>
   <li class="nav-item" role="presentation">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown</a>
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
     <ul class="dropdown-menu" role="menu">
       <li><a href="#">Action</a></li>
       <li><a href="#">Another action</a></li>
@@ -138,12 +137,12 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
 ### Pills with dropdowns
 
 {% example html %}
-<ul class="nav nav-pills" role="tablist">
+<ul class="nav nav-pills">
   <li class="nav-item active" role="presentation">
     <a href="#" class="nav-link">Active</a>
   </li>
   <li class="nav-item" role="presentation">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown</a>
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
     <ul class="dropdown-menu" role="menu">
       <li><a href="#">Action</a></li>
       <li><a href="#">Another action</a></li>

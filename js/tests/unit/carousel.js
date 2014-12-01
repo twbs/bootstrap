@@ -541,4 +541,157 @@ $(function () {
       strictEqual(type in $._data($template[0], 'events'), !isMobile, 'does' + (isMobile ? ' not' : '') + ' listen for ' + type + ' events')
     })
   })
+
+  test('should wrap around from end to start when wrap option is true', function () {
+    var carouselHTML = '<div id="carousel-example-generic" class="carousel slide" data-wrap="true">'
+        + '<ol class="carousel-indicators">'
+        + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="1"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="2"/>'
+        + '</ol>'
+        + '<div class="carousel-inner">'
+        + '<div class="item active" id="one">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="item" id="two">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="item" id="three">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"/>'
+        + '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"/>'
+        + '</div>'
+    var $carousel = $(carouselHTML)
+    var getActiveId = function () { return $carousel.find('.item.active').attr('id') }
+
+    stop()
+
+    $carousel
+      .one('slid.bs.carousel', function () {
+        strictEqual(getActiveId(), 'two', 'carousel slid from 1st to 2nd slide')
+        $carousel
+          .one('slid.bs.carousel', function () {
+            strictEqual(getActiveId(), 'three', 'carousel slid from 2nd to 3rd slide')
+            $carousel
+              .one('slid.bs.carousel', function () {
+                strictEqual(getActiveId(), 'one', 'carousel wrapped around and slid from 3rd to 1st slide')
+                start()
+              })
+              .bootstrapCarousel('next')
+          })
+          .bootstrapCarousel('next')
+      })
+      .bootstrapCarousel('next')
+  })
+
+  test('should wrap around from start to end when wrap option is true', function () {
+    var carouselHTML = '<div id="carousel-example-generic" class="carousel slide" data-wrap="true">'
+        + '<ol class="carousel-indicators">'
+        + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="1"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="2"/>'
+        + '</ol>'
+        + '<div class="carousel-inner">'
+        + '<div class="item active" id="one">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="item" id="two">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="item" id="three">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"/>'
+        + '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"/>'
+        + '</div>'
+    var $carousel = $(carouselHTML)
+
+    stop()
+
+    $carousel
+      .on('slid.bs.carousel', function () {
+        strictEqual($carousel.find('.item.active').attr('id'), 'three', 'carousel wrapped around and slid from 1st to 3rd slide')
+        start()
+      })
+      .bootstrapCarousel('prev')
+  })
+
+  test('should stay at the end when the next method is called and wrap is false', function () {
+    var carouselHTML = '<div id="carousel-example-generic" class="carousel slide" data-wrap="false">'
+        + '<ol class="carousel-indicators">'
+        + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="1"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="2"/>'
+        + '</ol>'
+        + '<div class="carousel-inner">'
+        + '<div class="item active" id="one">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="item" id="two">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="item" id="three">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"/>'
+        + '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"/>'
+        + '</div>'
+    var $carousel = $(carouselHTML)
+    var getActiveId = function () { return $carousel.find('.item.active').attr('id') }
+
+    stop()
+
+    $carousel
+      .one('slid.bs.carousel', function () {
+        strictEqual(getActiveId(), 'two', 'carousel slid from 1st to 2nd slide')
+        $carousel
+          .one('slid.bs.carousel', function () {
+            strictEqual(getActiveId(), 'three', 'carousel slid from 2nd to 3rd slide')
+            $carousel
+              .one('slid.bs.carousel', function () {
+                ok(false, 'carousel slid when it should not have slid')
+              })
+              .bootstrapCarousel('next')
+            strictEqual(getActiveId(), 'three', 'carousel did not wrap around and stayed on 3rd slide')
+            start()
+          })
+          .bootstrapCarousel('next')
+      })
+      .bootstrapCarousel('next')
+  })
+
+  test('should stay at the start when the prev method is called and wrap is false', function () {
+    var carouselHTML = '<div id="carousel-example-generic" class="carousel slide" data-wrap="false">'
+        + '<ol class="carousel-indicators">'
+        + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="1"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="2"/>'
+        + '</ol>'
+        + '<div class="carousel-inner">'
+        + '<div class="item active" id="one">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="item" id="two">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="item" id="three">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"/>'
+        + '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"/>'
+        + '</div>'
+    var $carousel = $(carouselHTML)
+
+    $carousel
+      .on('slid.bs.carousel', function () {
+        ok(false, 'carousel slid when it should not have slid')
+      })
+      .bootstrapCarousel('prev')
+    strictEqual($carousel.find('.item.active').attr('id'), 'one', 'carousel did not wrap around and stayed on 1st slide')
+  })
 })

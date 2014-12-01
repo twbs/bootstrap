@@ -5,7 +5,13 @@ title: Modal
 
 Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.
 
-**Due to how HTML5 defines its semantics, the `autofocus` HTML attribute has no effect in Bootstrap modals.**
+**Due to how HTML5 defines its semantics, the `autofocus` HTML attribute has no effect in Bootstrap modals.** To achieve the same effect, use some custom JavaScript:
+
+{% highlight js %}
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
+{% endhighlight %}
 
 <div class="bs-callout bs-callout-warning" id="callout-stacked-modals">
   <h4>Overlapping modals not supported</h4>
@@ -241,7 +247,7 @@ Have a bunch of buttons that all trigger the same modal, just with slightly diff
           <h4 class="modal-title" id="exampleModalLabel">New message</h4>
         </div>
         <div class="modal-body">
-          <form role="form">
+          <form>
             <div class="form-group">
               <label for="recipient-name" class="control-label">Recipient:</label>
               <input type="text" class="form-control" id="recipient-name">
@@ -274,7 +280,7 @@ Have a bunch of buttons that all trigger the same modal, just with slightly diff
         <h4 class="modal-title" id="exampleModalLabel">New message</h4>
       </div>
       <div class="modal-body">
-        <form role="form">
+        <form>
           <div class="form-group">
             <label for="recipient-name" class="control-label">Recipient:</label>
             <input type="text" class="form-control" id="recipient-name">

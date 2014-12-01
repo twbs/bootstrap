@@ -8,7 +8,7 @@ Add dropdown menus to nearly anything with this simple plugin, including the nav
 ### Within navbars
 
 <div class="bs-example">
-  <nav id="navbar-example" class="navbar navbar-default navbar-static" role="navigation">
+  <nav id="navbar-example" class="navbar navbar-default navbar-static">
     <div class="container-fluid">
       <div class="navbar-header">
         <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-collapse">
@@ -173,7 +173,7 @@ Toggles the dropdown menu of a given navbar or tabbed navigation.
 
 ### Events
 
-All dropdown events are fired at the `.dropdown-menu`'s parent element.
+All dropdown events are fired at the `.dropdown-menu`'s parent element and have a `relatedTarget` property, whose value is the toggling anchor element.
 
 <div class="table-responsive">
   <table class="table table-bordered table-striped">
@@ -186,19 +186,19 @@ All dropdown events are fired at the `.dropdown-menu`'s parent element.
     <tbody>
       <tr>
         <td>show.bs.dropdown</td>
-        <td>This event fires immediately when the show instance method is called. The toggling anchor element is available as the <code>relatedTarget</code> property of the event.</td>
+        <td>This event fires immediately when the show instance method is called.</td>
       </tr>
       <tr>
         <td>shown.bs.dropdown</td>
-        <td>This event is fired when the dropdown has been made visible to the user (will wait for CSS transitions, to complete).  The toggling anchor element is available as the <code>relatedTarget</code> property of the event.</td>
+        <td>This event is fired when the dropdown has been made visible to the user (will wait for CSS transitions, to complete).</td>
       </tr>
       <tr>
         <td>hide.bs.dropdown</td>
-        <td>This event is fired immediately when the hide instance method has been called. The toggling anchor element is available as the <code>relatedTarget</code> property of the event.</td>
+        <td>This event is fired immediately when the hide instance method has been called.</td>
       </tr>
       <tr>
         <td>hidden.bs.dropdown</td>
-        <td>This event is fired when the dropdown has finished being hidden from the user (will wait for CSS transitions, to complete). The toggling anchor element is available as the <code>relatedTarget</code> property of the event.</td>
+        <td>This event is fired when the dropdown has finished being hidden from the user (will wait for CSS transitions, to complete).</td>
       </tr>
     </tbody>
   </table>
