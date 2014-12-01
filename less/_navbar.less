@@ -24,102 +24,6 @@
 }
 
 
-// Navbar heading
-//
-// Groups `.navbar-brand` and `.navbar-toggle` into a single component for easy
-// styling of responsive aspects.
-
-.navbar-header {
-  &:extend(.clearfix all);
-
-  @media (min-width: @grid-float-breakpoint) {
-    float: left;
-  }
-}
-
-
-// Navbar collapse (body)
-//
-// Group your navbar content into this for easy collapsing and expanding across
-// various device sizes. By default, this content is collapsed when <768px, but
-// will expand past that for a horizontal display.
-//
-// To start (on mobile devices) the navbar links, forms, and buttons are stacked
-// vertically and include a `max-height` to overflow in case you have too much
-// content for the user's viewport.
-
-.navbar-collapse {
-  overflow-x: visible;
-  padding-right: @navbar-padding-horizontal;
-  padding-left:  @navbar-padding-horizontal;
-  border-top: 1px solid transparent;
-  .box-shadow(inset 0 1px 0 rgba(255,255,255,.1));
-  &:extend(.clearfix all);
-  -webkit-overflow-scrolling: touch;
-
-  &.in {
-    overflow-y: auto;
-  }
-
-  @media (min-width: @grid-float-breakpoint) {
-    width: auto;
-    border-top: 0;
-    .box-shadow(none);
-
-    &.collapse {
-      display: block !important;
-      visibility: visible !important;
-      height: auto !important;
-      padding-bottom: 0; // Override default setting
-      overflow: visible !important;
-    }
-
-    &.in {
-      overflow-y: visible;
-    }
-
-    // Undo the collapse side padding for navbars with containers to ensure
-    // alignment of right-aligned contents.
-    .navbar-fixed-top &,
-    .navbar-static-top &,
-    .navbar-fixed-bottom & {
-      padding-left: 0;
-      padding-right: 0;
-    }
-  }
-}
-
-.navbar-fixed-top,
-.navbar-fixed-bottom {
-  .navbar-collapse {
-    max-height: @navbar-collapse-max-height;
-
-    @media (max-device-width: 480px) and (orientation: landscape) {
-      max-height: 200px;
-    }
-  }
-}
-
-
-// Both navbar header and collapse
-//
-// When a container is present, change the behavior of the header and collapse.
-
-.container,
-.container-fluid {
-  > .navbar-header,
-  > .navbar-collapse {
-    margin-right: -@navbar-padding-horizontal;
-    margin-left:  -@navbar-padding-horizontal;
-
-    @media (min-width: @grid-float-breakpoint) {
-      margin-right: 0;
-      margin-left:  0;
-    }
-  }
-}
-
-
 //
 // Navbar alignment options
 //
@@ -190,7 +94,12 @@
 */
 }
 
-// New hotness
+
+// Navbar toggle
+//
+// Custom button for toggling the `.navbar-collapse`, powered by the collapse
+// JavaScript plugin.
+
 .navbar-toggler {
   float: left;
   padding: .55rem .75rem;
@@ -206,47 +115,6 @@
     text-decoration: none;
   }
 }
-
-
-
-// Navbar toggle
-//
-// Custom button for toggling the `.navbar-collapse`, powered by the collapse
-// JavaScript plugin.
-
-.navbar-toggle {
-  position: relative;
-  float: right;
-  margin-right: @navbar-padding-horizontal;
-  padding: 9px 10px;
-  .navbar-vertical-align(34px);
-  background-color: transparent;
-  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-  border: 1px solid transparent;
-  .border-radius(@border-radius-base);
-
-  // We remove the `outline` here, but later compensate by attaching `:hover`
-  // styles to `:focus`.
-  &:focus {
-    outline: 0;
-  }
-
-  // Bars
-  .icon-bar {
-    display: block;
-    width: 22px;
-    height: 2px;
-    .border-radius(1px);
-  }
-  .icon-bar + .icon-bar {
-    margin-top: 4px;
-  }
-
-  @media (min-width: @grid-float-breakpoint) {
-    display: none;
-  }
-}
-
 
 
 // Navbar nav links
@@ -553,6 +421,7 @@
   background-color: @navbar-inverse-bg;
   border-color: @navbar-inverse-border;
 
+  .navbar-toggler,
   .navbar-brand > a,
   .nav-pills > .nav-item > .nav-link {
     color: @navbar-inverse-link-color;
