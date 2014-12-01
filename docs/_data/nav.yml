@@ -42,7 +42,6 @@
 
 - title: Components
   pages:
-    # - title: Scaffolding
     - title: Typography
       sections:
         # - title: Scale
@@ -118,6 +117,7 @@
 #   pages:
 #     - title: Approach
 #     - title: Icon fonts
+#     - title: Accessibility
 
 - title: About
   pages:
