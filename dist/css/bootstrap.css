@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v3.3.0 (http://getbootstrap.com)
+ * Bootstrap v3.3.1 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
@@ -1806,7 +1806,21 @@ fieldset[disabled] .checkbox label {
   padding-right: 0;
   padding-left: 0;
 }
-.input-sm,
+.input-sm {
+  height: 2.025rem;
+  padding: .3rem .75rem;
+  font-size: .85rem;
+  line-height: 1.5;
+  border-radius: .2rem;
+}
+select.input-sm {
+  height: 2.025rem;
+  line-height: 2.025rem;
+}
+textarea.input-sm,
+select[multiple].input-sm {
+  height: auto;
+}
 .form-group-sm .form-control {
   height: 2.025rem;
   padding: .3rem .75rem;
@@ -1814,18 +1828,29 @@ fieldset[disabled] .checkbox label {
   line-height: 1.5;
   border-radius: .2rem;
 }
-select.input-sm,
 select.form-group-sm .form-control {
   height: 2.025rem;
   line-height: 2.025rem;
 }
-textarea.input-sm,
 textarea.form-group-sm .form-control,
-select[multiple].input-sm,
 select[multiple].form-group-sm .form-control {
   height: auto;
 }
-.input-lg,
+.input-lg {
+  height: 3.3125rem;
+  padding: .75rem 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.33;
+  border-radius: .3rem;
+}
+select.input-lg {
+  height: 3.3125rem;
+  line-height: 3.3125rem;
+}
+textarea.input-lg,
+select[multiple].input-lg {
+  height: auto;
+}
 .form-group-lg .form-control {
   height: 3.3125rem;
   padding: .75rem 1.5rem;
@@ -1833,14 +1858,11 @@ select[multiple].form-group-sm .form-control {
   line-height: 1.33;
   border-radius: .3rem;
 }
-select.input-lg,
 select.form-group-lg .form-control {
   height: 3.3125rem;
   line-height: 3.3125rem;
 }
-textarea.input-lg,
 textarea.form-group-lg .form-control,
-select[multiple].input-lg,
 select[multiple].form-group-lg .form-control {
   height: auto;
 }
@@ -2627,7 +2649,7 @@ tbody.collapse.in {
 .navbar-fixed-bottom .dropdown .dropdown-menu {
   top: auto;
   bottom: 100%;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
 }
 @media (min-width: 48em) {
   .navbar-right .dropdown-menu {
@@ -2659,10 +2681,6 @@ tbody.collapse.in {
 .btn-group > .btn.active,
 .btn-group-vertical > .btn.active {
   z-index: 2;
-}
-.btn-group > .btn:focus,
-.btn-group-vertical > .btn:focus {
-  outline: 0;
 }
 .btn-group .btn + .btn,
 .btn-group .btn + .btn-group,
@@ -4322,6 +4340,14 @@ a.badge:focus {
 .media:first-child {
   margin-top: 0;
 }
+.media,
+.media-body {
+  overflow: hidden;
+  zoom: 1;
+}
+.media-object {
+  display: block;
+}
 .media-right,
 .media > .pull-right {
   padding-left: 10px;
@@ -5035,6 +5061,7 @@ button.close {
   height: 20px;
   margin-top: -10px;
   font-family: serif;
+  line-height: 1;
 }
 .carousel-control .icon-prev {
   left: 50%;

@@ -20,7 +20,7 @@ module.exports = function (grunt) {
   var npmShrinkwrap = require('npm-shrinkwrap');
   var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
   var getLessVarsData = function () {
-    var filePath = path.join(__dirname, 'less/variables.less');
+    var filePath = path.join(__dirname, 'less/_variables.less');
     var fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
     var parser = new BsLessdocParser(fileContent);
     return { sections: parser.parseFile() };
@@ -149,7 +149,7 @@ module.exports = function (grunt) {
     },
 
     less: {
-      compileCore: {
+      core: {
         options: {
           strictMath: true,
           sourceMap: true,
@@ -160,16 +160,13 @@ module.exports = function (grunt) {
         src: 'less/bootstrap.less',
         dest: 'dist/css/<%= pkg.name %>.css'
       },
-      compileTheme: {
+      docs: {
         options: {
-          strictMath: true,
-          sourceMap: true,
-          outputSourceFiles: true,
-          sourceMapURL: '<%= pkg.name %>-theme.css.map',
-          sourceMapFilename: 'dist/css/<%= pkg.name %>-theme.css.map'
+          strictMath: true
         },
-        src: 'less/theme.less',
-        dest: 'dist/css/<%= pkg.name %>-theme.css'
+        files: {
+          'docs/assets/css/docs.min.css': 'docs/assets/less/docs.less'
+        }
       }
     },
 
@@ -183,14 +180,8 @@ module.exports = function (grunt) {
         },
         src: 'dist/css/<%= pkg.name %>.css'
       },
-      theme: {
-        options: {
-          map: true
-        },
-        src: 'dist/css/<%= pkg.name %>-theme.css'
-      },
       docs: {
-        src: 'docs/assets/css/src/docs.css'
+        src: 'docs/assets/css/docs.min.css'
       },
       examples: {
         expand: true,
@@ -200,45 +191,19 @@ module.exports = function (grunt) {
       }
     },
 
-    csslint: {
-      options: {
-        csslintrc: 'less/.csslintrc'
-      },
-      dist: [
-        'dist/css/bootstrap.css',
-        'dist/css/bootstrap-theme.css'
-      ],
-      examples: [
-        'docs/examples/**/*.css'
-      ],
-      docs: {
-        options: {
-          ids: false,
-          'overqualified-elements': false
-        },
-        src: 'docs/assets/css/src/docs.css'
-      }
-    },
-
     cssmin: {
       options: {
         compatibility: 'ie8',
         keepSpecialComments: '*',
         noAdvanced: true
       },
-      minifyCore: {
-        src: 'dist/css/<%= pkg.name %>.css',
-        dest: 'dist/css/<%= pkg.name %>.min.css'
-      },
-      minifyTheme: {
-        src: 'dist/css/<%= pkg.name %>-theme.css',
-        dest: 'dist/css/<%= pkg.name %>-theme.min.css'
+      core: {
+        files: {
+          'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css'
+        }
       },
       docs: {
-        src: [
-          'docs/assets/css/src/docs.css',
-          'docs/assets/css/src/pygments-manni.css'
-        ],
+        src: 'docs/assets/css/docs.min.css',
         dest: 'docs/assets/css/docs.min.css'
       }
     },
@@ -276,10 +241,6 @@ module.exports = function (grunt) {
     },
 
     copy: {
-      fonts: {
-        src: 'fonts/*',
-        dest: 'dist/'
-      },
       docs: {
         src: 'dist/*/*',
         dest: 'docs/'
@@ -331,7 +292,10 @@ module.exports = function (grunt) {
         relaxerror: [
           'Element img is missing required attribute src.',
           'Attribute autocomplete not allowed on element input at this point.',
-          'Attribute autocomplete not allowed on element button at this point.'
+          'Attribute autocomplete not allowed on element button at this point.',
+          'Element div not allowed as child of element progress in this context.',
+          'Element thead not allowed as child of element table in this context.',
+          'Bad value tablist for attribute role on element nav.'
         ]
       },
       files: {
@@ -350,6 +314,10 @@ module.exports = function (grunt) {
       },
       less: {
         files: 'less/**/*.less',
+        tasks: 'less'
+      },
+      docs: {
+        files: 'docs/assets/less/*.less',
         tasks: 'less'
       }
     },
@@ -403,9 +371,8 @@ module.exports = function (grunt) {
   var testSubtasks = [];
   // Skip core tests if running a different subset of the test suite
   if (runSubset('core') &&
-      // Skip core tests if this is a Savage build
-      process.env.TRAVIS_REPO_SLUG !== 'twbs-savage/bootstrap') {
-    testSubtasks = testSubtasks.concat(['dist-css', 'dist-js', 'csslint:dist', 'test-js', 'docs']);
+    // Skip core tests if this is a Savage build
+    process.env.TRAVIS_REPO_SLUG !== 'twbs-savage/bootstrap') {    testSubtasks = testSubtasks.concat(['dist-css', 'dist-js', 'test-js', 'docs']);
   }
   // Skip HTML validation if running a different subset of the test suite
   if (runSubset('validate-html') &&
@@ -429,14 +396,14 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs']);
 
   // CSS distribution task.
-  grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
-  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'usebanner', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
+  grunt.registerTask('less-compile', ['less:core', 'less:docs']);
+  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'usebanner', 'csscomb:dist', 'cssmin:core', 'cssmin:docs']);
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);
+  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'test']);
+  grunt.registerTask('default', ['clean:dist', 'test']);
 
   // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
@@ -459,10 +426,9 @@ module.exports = function (grunt) {
 
   // Docs task.
   grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
-  grunt.registerTask('lint-docs-css', ['csslint:docs', 'csslint:examples']);
   grunt.registerTask('docs-js', ['uglify:docsJs', 'uglify:customize']);
   grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
-  grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-customizer']);
+  grunt.registerTask('docs', ['docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-customizer']);
 
   grunt.registerTask('docs-github', ['jekyll:github']);
 
