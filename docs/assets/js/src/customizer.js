@@ -11,7 +11,7 @@
 window.onload = function () { // wait for load in a dumb way because B-0
   'use strict';
   var cw = '/*!\n' +
-           ' * Bootstrap v3.3.1 (http://getbootstrap.com)\n' +
+           ' * Bootstrap v3.3.0 (http://getbootstrap.com)\n' +
            ' * Copyright 2011-' + new Date().getFullYear() + ' Twitter, Inc.\n' +
            ' * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n' +
            ' */\n\n'
@@ -22,8 +22,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
   function showError(msg, err) {
     $('<div id="bsCustomizerAlert" class="bs-customizer-alert">' +
         '<div class="container">' +
-          '<a href="#bsCustomizerAlert" data-dismiss="alert" class="close pull-right" aria-label="Close" role="button"><span aria-hidden="true">&times;</span></a>' +
-          '<p class="bs-customizer-alert-text"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span><span class="sr-only">Warning:</span>' + msg + '</p>' +
+          '<a href="#bsCustomizerAlert" data-dismiss="alert" class="close pull-right">&times;</a>' +
+          '<p class="bs-customizer-alert-text"><span class="glyphicon glyphicon-warning-sign"></span>' + msg + '</p>' +
           (err.extract ? '<pre class="bs-customizer-alert-extract">' + err.extract.join('\n') + '</pre>' : '') +
         '</div>' +
       '</div>').appendTo('body').alert()
@@ -32,7 +32,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
   function showSuccess(msg) {
     $('<div class="bs-callout bs-callout-info">' +
-      '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + msg +
+      '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + msg +
     '</div>').insertAfter('.bs-customize-download')
   }
 
@@ -50,7 +50,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
   }
 
   function showAlert(type, msg, insertAfter) {
-    $('<div class="alert alert-' + type + '">' + msg + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+    $('<div class="alert alert-' + type + '">' + msg + '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>')
       .insertAfter(insertAfter)
   }
 
@@ -293,11 +293,13 @@ window.onload = function () { // wait for load in a dumb way because B-0
       })
 
     var bsLessSource    = preamble + generateLESS('bootstrap.less', lessFileIncludes, vars)
+    var themeLessSource = preamble + generateLESS('theme.less',     lessFileIncludes, vars)
 
     var prefixer = autoprefixer({ browsers: __configBridge.autoprefixerBrowsers })
 
     $.when(
       compileLESS(bsLessSource, 'bootstrap', result),
+      compileLESS(themeLessSource, 'bootstrap-theme', result)
     ).done(function () {
       for (var key in result) {
         result[key] = prefixer.process(result[key]).css

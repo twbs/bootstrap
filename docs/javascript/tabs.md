@@ -7,8 +7,8 @@ title: Tabs
 
 Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus.
 
-<div class="bs-example bs-example-tabs">
-  <ul id="myTab" class="nav nav-tabs" role="tabpanel">
+<div class="bs-example bs-example-tabs" role="tabpanel">
+  <ul id="myTab" class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
       <a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Home</a>
     </li>

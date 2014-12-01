@@ -31,7 +31,7 @@ module.exports = function generateRawFilesJs(grunt, banner) {
   if (!banner) {
     banner = '';
   }
-  var dirs = ['js', 'less', 'fonts'];
+  var dirs = ['js', 'less'];
   var files = banner + dirs.map(getFiles).reduce(function (combined, file) {
     return combined + file;
   }, '');
