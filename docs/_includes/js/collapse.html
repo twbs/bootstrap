@@ -1,8 +1,7 @@
 <div class="bs-docs-section">
   <h1 id="collapse" class="page-header">Collapse <small>collapse.js</small></h1>
 
-  <h3>About</h3>
-  <p>Get base styles and flexible support for collapsible components like accordions and navigation.</p>
+  <p class="lead">Flexible plugin that utilizes a handful of classes for easy toggle behavior.</p>
 
   <div class="bs-callout bs-callout-danger" id="callout-collapse-dependency">
     <h4>Plugin dependency</h4>
@@ -10,12 +9,23 @@
   </div>
 
   <h2 id="collapse-example">Example</h2>
-  <p>Click the button below to show and hide another element.</p>
+  <p>Click the buttons below to show and hide another element via class changes:</p>
+  <ul>
+    <li><code>.collapse</code> hides content</li>
+    <li><code>.collapsing</code> is applied during transitions</li>
+    <li><code>.collapse.in</code> shows content</li>
+  </ul>
+  <p>You can use a link with the <code>href</code> attribute, or a button with the <code>data-target</code> attribute. In both cases, the <code>data-toggle="collapse"</code> is required.</p>
 
   <div class="bs-example">
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      Toggle hidden content
-    </button>
+    <p>
+      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Link with href
+      </a>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Button with data-target
+      </button>
+    </p>
     <div class="collapse" id="collapseExample">
       <div class="well">
         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
@@ -23,8 +33,11 @@
     </div>
   </div>
 {% highlight html %}
+<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  Link with href
+</a>
 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-  Toggle hidden content
+  Button with data-target
 </button>
 <div class="collapse" id="collapseExample">
   <div class="well">
@@ -34,7 +47,7 @@
 {% endhighlight %}
 
   <h2 id="collapse-example-accordion">Accordion example</h2>
-  <p>You can extend the collapse plugin with the panel component to create an accordion.</p>
+  <p>Extend the default collapse behavior to create an accordion with the panel component.</p>
 
   <div class="bs-example">
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
