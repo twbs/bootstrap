@@ -164,15 +164,6 @@
     </div>
   </div>
 
-  <p>You can also use the plugin without the accordion markup. Make a button toggle the expanding and collapsing of another element.</p>
-{% highlight html %}
-<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo" aria-expanded="true" aria-controls="demo">
-  simple collapsible
-</button>
-
-<div id="demo" class="collapse in">...</div>
-{% endhighlight %}
-
   <div class="bs-callout bs-callout-warning" id="callout-collapse-accessibility">
     <h4>Make expand/collapse controls accessible</h4>
     <p>Be sure to add <code>aria-expanded</code> to the control element. This attribute explicitly defines the current state of the collapsible element to screen readers and similar assistive technologies. If the collapsible element is closed by default, it should have a value of <code>aria-expanded="false"</code>. If you've set the collapsible element to be open by default using the <code>in</code> class, set <code>aria-expanded="true"</code> on the control instead. The plugin will automatically toggle this attribute based on whether or not the collapsible element has been opened or closed.</p>
