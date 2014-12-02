@@ -33,7 +33,7 @@
   &:focus,
   &.focus {
     color: @btn-default-color;
-    text-decoration: none;
+    .text-decoration(none);
   }
 
   &:active,
@@ -107,7 +107,7 @@
   &:hover,
   &:focus {
     color: @link-hover-color;
-    text-decoration: underline;
+    .text-decoration(underline);
     background-color: transparent;
   }
   &[disabled],
@@ -115,7 +115,7 @@
     &:hover,
     &:focus {
       color: @btn-link-disabled-color;
-      text-decoration: none;
+      .text-decoration(none);
     }
   }
 }

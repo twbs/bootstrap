@@ -438,6 +438,8 @@ body {
 .bs-docs-featurette-img:hover {
   color: #337ab7;
   text-decoration: none;
+  text-shadow: none;
+  background-image: none;
 }
 .bs-docs-featurette-img img {
   display: block;
@@ -561,7 +563,9 @@ body {
   padding-left: 19px;
   color: #563d7c;
   text-decoration: none;
+  text-shadow: none;
   background-color: transparent;
+  background-image: none;
   border-left: 1px solid #563d7c;
 }
 .bs-docs-sidebar .nav > .active > a,
@@ -612,6 +616,8 @@ body {
 .bs-docs-theme-toggle:hover {
   color: #563d7c;
   text-decoration: none;
+  text-shadow: none;
+  background-image: none;
 }
 .bs-docs-theme-toggle {
   margin-top: 0;
@@ -813,6 +819,8 @@ h1[id] {
 .bs-team .team-member:hover {
   color: #333;
   text-decoration: none;
+  text-shadow: none;
+  background-image: none;
 }
 .bs-team .github-btn {
   float: right;

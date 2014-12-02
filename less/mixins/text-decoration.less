@@ -1,0 +1,38 @@
+.text-decoration(underline; @bg) when (iscolor(@bg)) {
+  background-image: linear-gradient( to right, currentColor 0%, currentColor 100% );
+  background-repeat: repeat-x;
+  background-position: 0 95%;
+  background-size: 100% 1px;
+
+  text-decoration: none;
+  text-decoration: underline\9;
+
+  &:nth-of-type(1) {
+    text-decoration: underline\9;
+  }
+
+  text-shadow: 2px 0 0 @bg, -2px 0 0 @bg;
+}
+
+.text-decoration(underline) {
+  background-image: linear-gradient( to right, currentColor 0%, currentColor 100% );
+  background-repeat: repeat-x;
+  background-position: 0 95%;
+  background-size: 100% 1px;
+
+  text-decoration: none;
+  text-decoration: underline\9;
+
+  &:nth-of-type(1) {
+    text-decoration: underline\9;
+  }
+}
+
+.text-decoration(none) {
+  background-image: none;
+  background-position: 0% 0%;
+  background-size: auto;
+
+  text-shadow: none;
+  text-decoration: none;
+}
