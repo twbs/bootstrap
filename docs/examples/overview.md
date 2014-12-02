@@ -1,11 +1,11 @@
 ---
-layout: page
+layout: default
 title: Examples
 ---
 
-Build on the basic template above with Bootstrap's many components. We encourage you to customize and adapt Bootstrap to suit your individual project's needs.
-
 ### Framework
+
+Examples that focus on implementing uses of built-in components provided by Bootstrap.
 
 <div class="row bs-examples">
   <div class="col-xs-6 col-md-4">
@@ -42,6 +42,8 @@ Build on the basic template above with Bootstrap's many components. We encourage
 
 ### Navbars
 
+Taking the default navbar component and showing how it can be moved, placed, and extended.
+
 <div class="row bs-examples">
   <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}examples/navbar/">
@@ -68,7 +70,10 @@ Build on the basic template above with Bootstrap's many components. We encourage
   </div>
 </div>
 
-<h3 id="examples-custom">Custom components</h3>
+### Custom components
+
+Brand new components and templates to help folks quickly get started with Bootstrap and demonstrate best practices for adding onto the framework.
+
 <div class="row bs-examples">
   <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}examples/cover/">
@@ -135,6 +140,8 @@ Build on the basic template above with Bootstrap's many components. We encourage
 </div>
 
 ### Experiments
+
+Examples that focus on future-friendly features or techniques.
 
 <div class="row bs-examples">
   <div class="col-xs-6 col-md-4">
