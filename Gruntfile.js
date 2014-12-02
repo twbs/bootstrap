@@ -20,12 +20,12 @@ module.exports = function (grunt) {
   var npmShrinkwrap = require('npm-shrinkwrap');
   var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
   var getLessVarsData = function () {
-    var filePath = path.join(__dirname, 'less/_variables.less');
+    var filePath = path.join(__dirname, 'scss/_variables.scss');
     var fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
     var parser = new BsLessdocParser(fileContent);
     return { sections: parser.parseFile() };
   };
-  var generateRawFiles = require('./grunt/bs-raw-files-generator.js');
+  // var generateRawFiles = require('./grunt/bs-raw-files-generator.js');
   var generateCommonJSModule = require('./grunt/bs-commonjs-generator.js');
   var configBridge = grunt.file.readJSON('./grunt/configBridge.json', { encoding: 'utf8' });
 
@@ -148,25 +148,56 @@ module.exports = function (grunt) {
       files: 'js/tests/index.html'
     },
 
-    less: {
+    // less: {
+    //   core: {
+    //     options: {
+    //       strictMath: true,
+    //       sourceMap: true,
+    //       outputSourceFiles: true,
+    //       sourceMapURL: '<%= pkg.name %>.css.map',
+    //       sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
+    //     },
+    //     src: 'less/bootstrap.less',
+    //     dest: 'dist/css/<%= pkg.name %>.css'
+    //   },
+    //   docs: {
+    //     options: {
+    //       strictMath: true
+    //     },
+    //     files: {
+    //       'docs/assets/css/docs.min.css': 'docs/assets/less/docs.less'
+    //     }
+    //   }
+    // },
+
+    sass: {
+      options: {
+        includePaths: ['scss'],
+        precision: 6,
+        sourceMap: true
+      },
       core: {
-        options: {
-          strictMath: true,
-          sourceMap: true,
-          outputSourceFiles: true,
-          sourceMapURL: '<%= pkg.name %>.css.map',
-          sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
-        },
-        src: 'less/bootstrap.less',
-        dest: 'dist/css/<%= pkg.name %>.css'
+        // files: [{
+        //   expand: true,
+        //   cwd: './scss',
+        //   src: ['<%= pkg.name %>.scss'],
+        //   dest: './dist/css',
+        //   ext: '.css'
+        // }]
+        files: {
+          'dist/css/<%= pkg.name %>.css': 'scss/<%= pkg.name %>.scss'
+        }
       },
       docs: {
-        options: {
-          strictMath: true
-        },
         files: {
-          'docs/assets/css/docs.min.css': 'docs/assets/less/docs.less'
+          'docs/assets/css/docs.min.css': 'docs/assets/scss/docs.scss'
         }
+      // },
+      // watch: {
+      //   css: {
+      //     files: './scss/**/*.scss',
+      //     tasks: ['sass']
+      //   }
       }
     },
 
@@ -220,7 +251,7 @@ module.exports = function (grunt) {
 
     csscomb: {
       options: {
-        config: 'less/.csscomb.json'
+        config: 'scss/.csscomb.json'
       },
       dist: {
         expand: true,
@@ -396,8 +427,8 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs']);
 
   // CSS distribution task.
-  grunt.registerTask('less-compile', ['less:core', 'less:docs']);
-  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'usebanner', 'csscomb:dist', 'cssmin:core', 'cssmin:docs']);
+  grunt.registerTask('sass-compile', ['sass:core', 'sass:docs']);
+  grunt.registerTask('dist-css', ['sass-compile', 'autoprefixer:core', 'usebanner', 'csscomb:dist', 'cssmin:core', 'cssmin:docs']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js']);
@@ -411,12 +442,12 @@ module.exports = function (grunt) {
   grunt.registerTask('change-version-number', 'sed');
 
   // task for building customizer
-  grunt.registerTask('build-customizer', ['build-customizer-html', 'build-raw-files']);
-  grunt.registerTask('build-customizer-html', 'jade');
-  grunt.registerTask('build-raw-files', 'Add scripts/less files to customizer.', function () {
-    var banner = grunt.template.process('<%= banner %>');
-    generateRawFiles(grunt, banner);
-  });
+  // grunt.registerTask('build-customizer', ['build-customizer-html', 'build-raw-files']);
+  // grunt.registerTask('build-customizer-html', 'jade');
+  // grunt.registerTask('build-raw-files', 'Add scripts/less files to customizer.', function () {
+  //   var banner = grunt.template.process('<%= banner %>');
+  //   generateRawFiles(grunt, banner);
+  // });
 
   grunt.registerTask('commonjs', 'Generate CommonJS entrypoint module in dist dir.', function () {
     var srcFiles = grunt.config.get('concat.bootstrap.src');
@@ -428,7 +459,7 @@ module.exports = function (grunt) {
   grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
   grunt.registerTask('docs-js', ['uglify:docsJs', 'uglify:customize']);
   grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
-  grunt.registerTask('docs', ['docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-customizer']);
+  grunt.registerTask('docs', ['docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs']);
 
   grunt.registerTask('docs-github', ['jekyll:github']);
 
