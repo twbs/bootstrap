@@ -148,28 +148,6 @@ module.exports = function (grunt) {
       files: 'js/tests/index.html'
     },
 
-    // less: {
-    //   core: {
-    //     options: {
-    //       strictMath: true,
-    //       sourceMap: true,
-    //       outputSourceFiles: true,
-    //       sourceMapURL: '<%= pkg.name %>.css.map',
-    //       sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
-    //     },
-    //     src: 'less/bootstrap.less',
-    //     dest: 'dist/css/<%= pkg.name %>.css'
-    //   },
-    //   docs: {
-    //     options: {
-    //       strictMath: true
-    //     },
-    //     files: {
-    //       'docs/assets/css/docs.min.css': 'docs/assets/less/docs.less'
-    //     }
-    //   }
-    // },
-
     sass: {
       options: {
         includePaths: ['scss'],
@@ -177,13 +155,6 @@ module.exports = function (grunt) {
         sourceMap: true
       },
       core: {
-        // files: [{
-        //   expand: true,
-        //   cwd: './scss',
-        //   src: ['<%= pkg.name %>.scss'],
-        //   dest: './dist/css',
-        //   ext: '.css'
-        // }]
         files: {
           'dist/css/<%= pkg.name %>.css': 'scss/<%= pkg.name %>.scss'
         }
@@ -192,12 +163,6 @@ module.exports = function (grunt) {
         files: {
           'docs/assets/css/docs.min.css': 'docs/assets/scss/docs.scss'
         }
-      // },
-      // watch: {
-      //   css: {
-      //     files: './scss/**/*.scss',
-      //     tasks: ['sass']
-      //   }
       }
     },
 
