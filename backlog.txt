@@ -24,10 +24,31 @@
 
 
 
-- Páginas restantes
-	/tramites
-	/foto
-	/desarrollourbano/grandesobras
+
+
+MINDMAP fixes
+- primero section luego .list-group-content [cambiar nombre? siempre están al lado de list-group....]
+- buscar .list-group-multi y hacer algo al respecto................
+- hacer menos tipos de página? [fusionar por ejemplo ba-destacado y ba-emergencia?]
+	capaz que existan para el <main> pero que para el <body> existan unas clases más generales?
+
+- falta repasar:
+	paginacenter
+	libro
+	tramite
+	aplicativo
+	destacado
+	404
+	500
+	emergencia
+	listado
+	tramites
+	noticias
+	busqueda
+	miba
+
+
+
 
 
 
