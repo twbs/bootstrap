@@ -301,4 +301,81 @@ $(function () {
 
     $toggleBtn.click()
   })
+
+  QUnit.test('should restore inline body padding after closing', function (assert) {
+    var done = assert.async()
+    var originalBodyPad = 0
+    var $body = $(document.body)
+
+    $body.css('padding-right', originalBodyPad)
+
+    $('<div id="modal-test"/>')
+      .on('hidden.bs.modal', function () {
+        var currentBodyPad = parseInt($body.css('padding-right'), 10)
+        assert.notStrictEqual($body.attr('style'), '', 'body has non-empty style attribute')
+        assert.strictEqual(currentBodyPad, originalBodyPad, 'original body padding was not changed')
+        $body.removeAttr('style')
+        done()
+      })
+      .on('shown.bs.modal', function () {
+        $(this).bootstrapModal('hide')
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should ignore values set via CSS when trying to restore body padding after closing', function (assert) {
+    var done = assert.async()
+    var $body = $(document.body)
+    var $style = $('<style>body { padding-right: 42px; }</style>').appendTo('head')
+
+    $('<div id="modal-test"/>')
+      .on('hidden.bs.modal', function () {
+        assert.ok(!$body.attr('style'), 'body does not have inline padding set')
+        $style.remove()
+        done()
+      })
+      .on('shown.bs.modal', function () {
+        $(this).bootstrapModal('hide')
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should ignore other inline styles when trying to restore body padding after closing', function (assert) {
+    var done = assert.async()
+    var $body = $(document.body)
+    var $style = $('<style>body { padding-right: 42px; }</style>').appendTo('head')
+
+    $body.css('color', 'red')
+
+    $('<div id="modal-test"/>')
+      .on('hidden.bs.modal', function () {
+        assert.strictEqual($body[0].style.paddingRight, '', 'body does not have inline padding set')
+        assert.strictEqual($body[0].style.color, 'red', 'body still has other inline styles set')
+        $body.removeAttr('style')
+        $style.remove()
+        done()
+      })
+      .on('shown.bs.modal', function () {
+        $(this).bootstrapModal('hide')
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should properly restore non-pixel inline body padding after closing', function (assert) {
+    var done = assert.async()
+    var $body = $(document.body)
+
+    $body.css('padding-right', '5%')
+
+    $('<div id="modal-test"/>')
+      .on('hidden.bs.modal', function () {
+        assert.strictEqual($body[0].style.paddingRight, '5%', 'body does not have inline padding set')
+        $body.removeAttr('style')
+        done()
+      })
+      .on('shown.bs.modal', function () {
+        $(this).bootstrapModal('hide')
+      })
+      .bootstrapModal('show')
+  })
 })
