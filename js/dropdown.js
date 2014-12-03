@@ -92,14 +92,14 @@
     var index = $items.index(e.target)
 
     function calcIndex(dir) {
-      return (index + len + (dir || 1)) % len
+      return (index + len + dir) % len
     }
 
     function findIndex() {
       var i = index + 1
       if (i == len) i = 0
       while (i != index) {
-        if ($items.eq(i).html().charAt(0).toLowerCase()
+        if ($items.eq(i).text().charAt(0).toLowerCase()
          == String.fromCharCode(key).toLowerCase()) return i
 
         i = (i + len + 1) % len
@@ -109,7 +109,7 @@
     if (key == 38) {
       index = calcIndex(-1)
     } else if (key == 40) {
-      index = calcIndex()
+      index = calcIndex(1)
     } else {
       index = findIndex()
     }
