@@ -149,8 +149,15 @@
       $next.addClass(direction)
       $active
         .one('bsTransitionEnd', function () {
-          $next.removeClass([type, direction].join(' ')).addClass('active')
-          $active.removeClass(['active', direction].join(' '))
+          $next
+            .removeClass([type, direction].join(' '))
+            .addClass('active')
+            .attr({ 'aria-selected': true, tabIndex: 0 })
+            .trigger('focus')
+          $active
+            .removeClass(['active', direction]
+            .join(' '))
+            .attr({ 'aria-selected': false, tabIndex: -1 })
           that.sliding = false
           setTimeout(function () {
             that.$element.trigger(slidEvent)
@@ -158,8 +165,13 @@
         })
         .emulateTransitionEnd(Carousel.TRANSITION_DURATION)
     } else {
-      $active.removeClass('active')
-      $next.addClass('active')
+      $active
+        .removeClass('active')
+        .attr({ 'aria-selected': false, tabIndex: -1 })
+      $next
+        .addClass('active')
+        .attr({ 'aria-selected': true, tabIndex: 0 })
+        .trigger('focus')
       this.sliding = false
       this.$element.trigger(slidEvent)
     }
