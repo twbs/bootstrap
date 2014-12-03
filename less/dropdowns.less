@@ -75,7 +75,7 @@
 .dropdown-menu > li > a {
   &:hover,
   &:focus {
-    text-decoration: none;
+    .text-decoration(none);
     color: @dropdown-link-hover-color;
     background-color: @dropdown-link-hover-bg;
   }
@@ -87,7 +87,7 @@
   &:hover,
   &:focus {
     color: @dropdown-link-active-color;
-    text-decoration: none;
+    .text-decoration(none);
     outline: 0;
     background-color: @dropdown-link-active-bg;
   }
@@ -107,7 +107,7 @@
   // Nuke hover/focus effects
   &:hover,
   &:focus {
-    text-decoration: none;
+    .text-decoration(none);
     background-color: transparent;
     background-image: none; // Remove CSS gradient
     .reset-filter();

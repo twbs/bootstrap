@@ -1101,7 +1101,21 @@ a {
 a:hover,
 a:focus {
   color: #23527c;
-  text-decoration: underline;
+  text-decoration: none;
+  text-decoration: underline\9;
+  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff;
+  background-image: -webkit-gradient(linear, left top, right top, from(currentColor), to(currentColor));
+  background-image: -webkit-linear-gradient(left, currentColor 0%, currentColor 100%);
+  background-image:      -o-linear-gradient(left, currentColor 0%, currentColor 100%);
+  background-image:         linear-gradient(to right, currentColor 0%, currentColor 100%);
+  background-repeat: repeat-x;
+  background-position: 0 95%;
+  -webkit-background-size: 100% 1px;
+          background-size: 100% 1px;
+}
+a:hover:nth-of-type(1),
+a:focus:nth-of-type(1) {
+  text-decoration: underline\9;
 }
 a:focus {
   outline: thin dotted;
@@ -2986,6 +3000,11 @@ select[multiple].form-group-lg .form-control {
 .btn.focus {
   color: #333;
   text-decoration: none;
+  text-shadow: none;
+  background-image: none;
+  background-position: 0 0;
+  -webkit-background-size: auto auto;
+          background-size: auto;
 }
 .btn:active,
 .btn.active {
@@ -3297,8 +3316,21 @@ fieldset[disabled] .btn-link {
 .btn-link:hover,
 .btn-link:focus {
   color: #23527c;
-  text-decoration: underline;
+  text-decoration: none;
+  text-decoration: underline\9;
   background-color: transparent;
+  background-image: -webkit-gradient(linear, left top, right top, from(currentColor), to(currentColor));
+  background-image: -webkit-linear-gradient(left, currentColor 0%, currentColor 100%);
+  background-image:      -o-linear-gradient(left, currentColor 0%, currentColor 100%);
+  background-image:         linear-gradient(to right, currentColor 0%, currentColor 100%);
+  background-repeat: repeat-x;
+  background-position: 0 95%;
+  -webkit-background-size: 100% 1px;
+          background-size: 100% 1px;
+}
+.btn-link:hover:nth-of-type(1),
+.btn-link:focus:nth-of-type(1) {
+  text-decoration: underline\9;
 }
 .btn-link[disabled]:hover,
 fieldset[disabled] .btn-link:hover,
@@ -3306,6 +3338,11 @@ fieldset[disabled] .btn-link:hover,
 fieldset[disabled] .btn-link:focus {
   color: #777;
   text-decoration: none;
+  text-shadow: none;
+  background-image: none;
+  background-position: 0 0;
+  -webkit-background-size: auto auto;
+          background-size: auto;
 }
 .btn-lg,
 .btn-group-lg > .btn {
@@ -3438,14 +3475,24 @@ tbody.collapse.in {
 .dropdown-menu > li > a:focus {
   color: #262626;
   text-decoration: none;
+  text-shadow: none;
   background-color: #f5f5f5;
+  background-image: none;
+  background-position: 0 0;
+  -webkit-background-size: auto auto;
+          background-size: auto;
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
   color: #fff;
   text-decoration: none;
+  text-shadow: none;
   background-color: #337ab7;
+  background-image: none;
+  background-position: 0 0;
+  -webkit-background-size: auto auto;
+          background-size: auto;
   outline: 0;
 }
 .dropdown-menu > .disabled > a,
@@ -3456,10 +3503,14 @@ tbody.collapse.in {
 .dropdown-menu > .disabled > a:hover,
 .dropdown-menu > .disabled > a:focus {
   text-decoration: none;
+  text-shadow: none;
   cursor: not-allowed;
   background-color: transparent;
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-position: 0 0;
+  -webkit-background-size: auto auto;
+          background-size: auto;
 }
 .open > .dropdown-menu {
   display: block;
@@ -3856,7 +3907,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
+  text-shadow: none;
   background-color: #eee;
+  background-image: none;
+  background-position: 0 0;
+  -webkit-background-size: auto auto;
+          background-size: auto;
 }
 .nav > li.disabled > a {
   color: #777;
@@ -3865,8 +3921,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li.disabled > a:focus {
   color: #777;
   text-decoration: none;
+  text-shadow: none;
   cursor: not-allowed;
   background-color: transparent;
+  background-image: none;
+  background-position: 0 0;
+  -webkit-background-size: auto auto;
+          background-size: auto;
 }
 .nav .open > a,
 .nav .open > a:hover,
@@ -4152,6 +4213,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-brand:hover,
 .navbar-brand:focus {
   text-decoration: none;
+  text-shadow: none;
+  background-image: none;
+  background-position: 0 0;
+  -webkit-background-size: auto auto;
+          background-size: auto;
 }
 .navbar-brand > img {
   display: block;
@@ -4691,7 +4757,12 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pager li > a:hover,
 .pager li > a:focus {
   text-decoration: none;
+  text-shadow: none;
   background-color: #eee;
+  background-image: none;
+  background-position: 0 0;
+  -webkit-background-size: auto auto;
+          background-size: auto;
 }
 .pager .next > a,
 .pager .next > span {
@@ -4725,7 +4796,12 @@ a.label:hover,
 a.label:focus {
   color: #fff;
   text-decoration: none;
+  text-shadow: none;
   cursor: pointer;
+  background-image: none;
+  background-position: 0 0;
+  -webkit-background-size: auto auto;
+          background-size: auto;
 }
 .label:empty {
   display: none;
@@ -4805,7 +4881,12 @@ a.badge:hover,
 a.badge:focus {
   color: #fff;
   text-decoration: none;
+  text-shadow: none;
   cursor: pointer;
+  background-image: none;
+  background-position: 0 0;
+  -webkit-background-size: auto auto;
+          background-size: auto;
 }
 .list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
@@ -4880,6 +4961,12 @@ a.badge:focus {
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail.active {
+  text-decoration: none;
+  text-shadow: none;
+  background-image: none;
+  background-position: 0 0;
+  -webkit-background-size: auto auto;
+          background-size: auto;
   border-color: #337ab7;
 }
 .thumbnail .caption {
@@ -5128,7 +5215,12 @@ a.list-group-item:hover,
 a.list-group-item:focus {
   color: #555;
   text-decoration: none;
+  text-shadow: none;
   background-color: #f5f5f5;
+  background-image: none;
+  background-position: 0 0;
+  -webkit-background-size: auto auto;
+          background-size: auto;
 }
 .list-group-item.disabled,
 .list-group-item.disabled:hover,
@@ -5664,8 +5756,13 @@ a.list-group-item-danger.active:focus {
 .close:focus {
   color: #000;
   text-decoration: none;
+  text-shadow: none;
   cursor: pointer;
+  background-image: none;
   filter: alpha(opacity=50);
+  background-position: 0 0;
+  -webkit-background-size: auto auto;
+          background-size: auto;
   opacity: .5;
 }
 button.close {
@@ -6138,7 +6235,12 @@ button.close {
 .carousel-control:focus {
   color: #fff;
   text-decoration: none;
+  text-shadow: none;
+  background-image: none;
   filter: alpha(opacity=90);
+  background-position: 0 0;
+  -webkit-background-size: auto auto;
+          background-size: auto;
   outline: 0;
   opacity: .9;
 }
@@ -6167,6 +6269,7 @@ button.close {
   height: 20px;
   margin-top: -10px;
   font-family: serif;
+  line-height: 1;
 }
 .carousel-control .icon-prev:before {
   content: '\2039';
