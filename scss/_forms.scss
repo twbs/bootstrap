@@ -148,13 +148,13 @@ output {
     background-color: $input-bg-disabled;
     opacity: 1; // iOS fix for unreadable disabled content
   }
+}
 
-  // Reset height for `textarea`s
-  &textarea {
-    height: auto;
-    padding-top: $padding-base-horizontal;
-    padding-bottom: $padding-base-horizontal;
-  }
+// Reset height for `textarea`s
+textarea.form-control {
+  height: auto;
+  padding-top: $padding-base-horizontal;
+  padding-bottom: $padding-base-horizontal;
 }
 
 
