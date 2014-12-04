@@ -311,7 +311,7 @@
     var option  = $target.data('bs.modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
 
     if ($this.is('a')) {
-      if (e.ctrlKey) return
+      if (e.ctrlKey || e.metaKey) return
 
       e.preventDefault()
     }
