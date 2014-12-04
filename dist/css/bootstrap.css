@@ -1872,61 +1872,61 @@ th {
 .table {
   width: 100%;
   max-width: 100%;
-  margin-bottom: 1;
+  margin-bottom: 1rem;
 }
-/* line 31, /Users/mdo/work/bootstrap/scss/tables */
+/* line 32, /Users/mdo/work/bootstrap/scss/tables */
 .table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
   padding: .75rem;
   line-height: 1.5;
   vertical-align: top;
   border-top: 1px solid #eceeef;
 }
-/* line 40, /Users/mdo/work/bootstrap/scss/tables */
+/* line 41, /Users/mdo/work/bootstrap/scss/tables */
 .table > thead > tr > th {
   vertical-align: bottom;
   border-bottom: 2px solid #eceeef;
 }
-/* line 56, /Users/mdo/work/bootstrap/scss/tables */
+/* line 57, /Users/mdo/work/bootstrap/scss/tables */
 .table > tbody + tbody {
   border-top: 2px solid #eceeef;
 }
 
-/* line 75, /Users/mdo/work/bootstrap/scss/tables */
+/* line 76, /Users/mdo/work/bootstrap/scss/tables */
 .table-sm > thead > tr > th, .table-sm > thead > tr > td, .table-sm > tbody > tr > th, .table-sm > tbody > tr > td, .table-sm > tfoot > tr > th, .table-sm > tfoot > tr > td {
   padding: .3rem;
 }
 
-/* line 87, /Users/mdo/work/bootstrap/scss/tables */
+/* line 88, /Users/mdo/work/bootstrap/scss/tables */
 .table-bordered {
   border: 1px solid #eceeef;
 }
-/* line 94, /Users/mdo/work/bootstrap/scss/tables */
+/* line 95, /Users/mdo/work/bootstrap/scss/tables */
 .table-bordered > thead > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > tfoot > tr > td {
   border: 1px solid #eceeef;
 }
-/* line 101, /Users/mdo/work/bootstrap/scss/tables */
+/* line 102, /Users/mdo/work/bootstrap/scss/tables */
 .table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
   border-bottom-width: 2px;
 }
 
-/* line 113, /Users/mdo/work/bootstrap/scss/tables */
+/* line 114, /Users/mdo/work/bootstrap/scss/tables */
 .table-striped > tbody > tr:nth-child(odd) {
   background-color: #f9f9f9;
 }
 
-/* line 124, /Users/mdo/work/bootstrap/scss/tables */
+/* line 125, /Users/mdo/work/bootstrap/scss/tables */
 .table-hover > tbody > tr:hover {
   background-color: #f5f5f5;
 }
 
-/* line 134, /Users/mdo/work/bootstrap/scss/tables */
+/* line 135, /Users/mdo/work/bootstrap/scss/tables */
 table col[class*="col-"] {
   position: static;
   display: table-column; 
   float: none;
 }
 
-/* line 142, /Users/mdo/work/bootstrap/scss/tables */
+/* line 143, /Users/mdo/work/bootstrap/scss/tables */
 table td[class*="col-"], table th[class*="col-"] {
   position: static;
   display: table-cell; 
@@ -1983,7 +1983,7 @@ table td[class*="col-"], table th[class*="col-"] {
   background-color: #ebcccc;
 }
 
-/* line 170, /Users/mdo/work/bootstrap/scss/tables */
+/* line 171, /Users/mdo/work/bootstrap/scss/tables */
 .table-responsive {
   min-height: .01%; 
   overflow-x: auto;
@@ -1991,90 +1991,90 @@ table td[class*="col-"], table th[class*="col-"] {
 @media screen and (max-width: 47.9em) {
   .table-responsive {
     width: 100%;
-    margin-bottom: .75;
+    margin-bottom: 1rem;
     overflow-y: hidden;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     border: 1px solid #eceeef;
   }
-  /* line 182, /Users/mdo/work/bootstrap/scss/tables */
+  /* line 183, /Users/mdo/work/bootstrap/scss/tables */
   .table-responsive > .table {
     margin-bottom: 0;
   }
-  /* line 191, /Users/mdo/work/bootstrap/scss/tables */
+  /* line 192, /Users/mdo/work/bootstrap/scss/tables */
   .table-responsive > .table > thead > tr > th, .table-responsive > .table > thead > tr > td, .table-responsive > .table > tbody > tr > th, .table-responsive > .table > tbody > tr > td, .table-responsive > .table > tfoot > tr > th, .table-responsive > .table > tfoot > tr > td {
     white-space: nowrap;
   }
-  /* line 199, /Users/mdo/work/bootstrap/scss/tables */
+  /* line 200, /Users/mdo/work/bootstrap/scss/tables */
   .table-responsive > .table-bordered {
     border: 0;
   }
-  /* line 208, /Users/mdo/work/bootstrap/scss/tables */
+  /* line 209, /Users/mdo/work/bootstrap/scss/tables */
   .table-responsive > .table-bordered > thead > tr > th:first-child, .table-responsive > .table-bordered > thead > tr > td:first-child, .table-responsive > .table-bordered > tbody > tr > th:first-child, .table-responsive > .table-bordered > tbody > tr > td:first-child, .table-responsive > .table-bordered > tfoot > tr > th:first-child, .table-responsive > .table-bordered > tfoot > tr > td:first-child {
     border-left: 0;
   }
-  /* line 212, /Users/mdo/work/bootstrap/scss/tables */
+  /* line 213, /Users/mdo/work/bootstrap/scss/tables */
   .table-responsive > .table-bordered > thead > tr > th:last-child, .table-responsive > .table-bordered > thead > tr > td:last-child, .table-responsive > .table-bordered > tbody > tr > th:last-child, .table-responsive > .table-bordered > tbody > tr > td:last-child, .table-responsive > .table-bordered > tfoot > tr > th:last-child, .table-responsive > .table-bordered > tfoot > tr > td:last-child {
     border-right: 0;
   }
-  /* line 225, /Users/mdo/work/bootstrap/scss/tables */
+  /* line 226, /Users/mdo/work/bootstrap/scss/tables */
   .table-responsive > .table-bordered > tbody > tr:last-child > th, .table-responsive > .table-bordered > tbody > tr:last-child > td, .table-responsive > .table-bordered > tfoot > tr:last-child > th, .table-responsive > .table-bordered > tfoot > tr:last-child > td {
     border-bottom: 0;
   }
 }
 
-/* line 237, /Users/mdo/work/bootstrap/scss/tables */
+/* line 238, /Users/mdo/work/bootstrap/scss/tables */
 .table > .thead-inverse > tr > th {
   color: #fff;
   background-color: #373a3c;
 }
 
-/* line 243, /Users/mdo/work/bootstrap/scss/tables */
+/* line 244, /Users/mdo/work/bootstrap/scss/tables */
 .table > .thead-default > tr > th {
   color: #55595c;
   background-color: #eceeef;
 }
 
-/* line 249, /Users/mdo/work/bootstrap/scss/tables */
+/* line 250, /Users/mdo/work/bootstrap/scss/tables */
 .table-inverse {
   color: #eceeef;
   background-color: #373a3c;
 }
-/* line 253, /Users/mdo/work/bootstrap/scss/tables */
+/* line 254, /Users/mdo/work/bootstrap/scss/tables */
 .table-inverse.table-bordered {
   border: 0;
 }
-/* line 261, /Users/mdo/work/bootstrap/scss/tables */
+/* line 262, /Users/mdo/work/bootstrap/scss/tables */
 .table-inverse > thead > tr > th, .table-inverse > thead > tr > td, .table-inverse > tbody > tr > th, .table-inverse > tbody > tr > td {
   border-color: #55595c;
 }
 
-/* line 271, /Users/mdo/work/bootstrap/scss/tables */
+/* line 272, /Users/mdo/work/bootstrap/scss/tables */
 .table-reflow thead {
   float: left;
 }
-/* line 275, /Users/mdo/work/bootstrap/scss/tables */
+/* line 276, /Users/mdo/work/bootstrap/scss/tables */
 .table-reflow tbody {
   display: block;
   white-space: nowrap;
 }
-/* line 285, /Users/mdo/work/bootstrap/scss/tables */
+/* line 286, /Users/mdo/work/bootstrap/scss/tables */
 .table-reflow > thead > tr > th, .table-reflow > thead > tr > td, .table-reflow > tbody > tr > th, .table-reflow > tbody > tr > td, .table-reflow > tfoot > tr > th, .table-reflow > tfoot > tr > td {
   border-top: 1px solid #eceeef;
   border-left: 1px solid #eceeef;
 }
-/* line 289, /Users/mdo/work/bootstrap/scss/tables */
+/* line 290, /Users/mdo/work/bootstrap/scss/tables */
 .table-reflow > thead > tr > th:last-child, .table-reflow > thead > tr > td:last-child, .table-reflow > tbody > tr > th:last-child, .table-reflow > tbody > tr > td:last-child, .table-reflow > tfoot > tr > th:last-child, .table-reflow > tfoot > tr > td:last-child {
   border-right: 1px solid #eceeef;
 }
-/* line 298, /Users/mdo/work/bootstrap/scss/tables */
+/* line 299, /Users/mdo/work/bootstrap/scss/tables */
 .table-reflow > thead:last-child > tr:last-child > th, .table-reflow > thead:last-child > tr:last-child > td, .table-reflow > tbody:last-child > tr:last-child > th, .table-reflow > tbody:last-child > tr:last-child > td, .table-reflow > tfoot:last-child > tr:last-child > th, .table-reflow > tfoot:last-child > tr:last-child > td {
   border-bottom: 1px solid #eceeef;
 }
-/* line 305, /Users/mdo/work/bootstrap/scss/tables */
+/* line 306, /Users/mdo/work/bootstrap/scss/tables */
 .table-reflow tr {
   float: left;
 }
-/* line 309, /Users/mdo/work/bootstrap/scss/tables */
+/* line 310, /Users/mdo/work/bootstrap/scss/tables */
 .table-reflow tr th, .table-reflow tr td {
   display: block !important;
   border: 1px solid #eceeef;
