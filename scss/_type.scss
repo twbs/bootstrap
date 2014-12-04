@@ -183,10 +183,10 @@ abbr[data-original-title] {
 
 // Blockquotes
 blockquote {
-  padding: ($line-height-computed / 2) $line-height-computed;
-  margin: 0 0 $line-height-computed;
+  padding: ($spacer / 2) $spacer;
+  margin: 0 0 $spacer;
   font-size: $blockquote-font-size;
-  border-left: 5px solid $blockquote-border-color;
+  border-left: .25rem solid $blockquote-border-color;
 
   p,
   ul,
@@ -210,9 +210,9 @@ blockquote {
 
 // Opposite alignment of blockquote
 .blockquote-reverse {
-  padding-right: 15px;
+  padding-right: $spacer;
   padding-left: 0;
-  border-right: 5px solid $blockquote-border-color;
+  border-right: .25rem solid $blockquote-border-color;
   border-left: 0;
   text-align: right;
 
