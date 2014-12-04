@@ -424,8 +424,8 @@ img {
 
 /* line 110, /Users/mdo/work/bootstrap/scss/scaffolding */
 hr {
-  margin-top: 24;
-  margin-bottom: 24;
+  margin-top: 1;
+  margin-bottom: 1;
   border: 0;
   border-top: 1px solid #eceeef;
 }
@@ -469,7 +469,7 @@ h1 small, h1 .small, h2 small, h2 .small, h3 small, h3 .small, h4 small, h4 .sma
 
 /* line 27, /Users/mdo/work/bootstrap/scss/type */
 h1, .h1, h2, .h2, h3, .h3 {
-  margin-bottom: 12;
+  margin-bottom: .5;
 }
 /* line 31, /Users/mdo/work/bootstrap/scss/type */
 h1 small, h1 .small, .h1 small, .h1 .small, h2 small, h2 .small, .h2 small, .h2 .small, h3 small, h3 .small, .h3 small, .h3 .small {
@@ -478,7 +478,7 @@ h1 small, h1 .small, .h1 small, .h1 .small, h2 small, h2 .small, .h2 small, .h2 
 
 /* line 37, /Users/mdo/work/bootstrap/scss/type */
 h4, .h4, h5, .h5, h6, .h6 {
-  margin-bottom: 12;
+  margin-bottom: .5;
 }
 /* line 41, /Users/mdo/work/bootstrap/scss/type */
 h4 small, h4 .small, .h4 small, .h4 .small, h5 small, h5 .small, .h5 small, .h5 .small, h6 small, h6 .small, .h6 small, .h6 .small {
@@ -541,7 +541,7 @@ mark, .mark {
 /* line 99, /Users/mdo/work/bootstrap/scss/type */
 ul, ol {
   margin-top: 0;
-  margin-bottom: 12;
+  margin-bottom: .5;
 }
 /* line 103, /Users/mdo/work/bootstrap/scss/type */
 ul ul, ul ol, ol ul, ol ol {
@@ -568,7 +568,7 @@ ul ul, ul ol, ol ul, ol ol {
 /* line 129, /Users/mdo/work/bootstrap/scss/type */
 dl {
   margin-top: 0;
-  margin-bottom: 24;
+  margin-bottom: 1;
 }
 
 /* line 134, /Users/mdo/work/bootstrap/scss/type */
@@ -627,8 +627,8 @@ abbr[title], abbr[data-original-title] {
 
 /* line 185, /Users/mdo/work/bootstrap/scss/type */
 blockquote {
-  padding: 12 24;
-  margin: 0 0 24;
+  padding: .5 1;
+  margin: 0 0 1;
   font-size: 1.25rem;
   border-left: 5px solid #eceeef;
 }
@@ -667,7 +667,7 @@ blockquote footer:before {
 
 /* line 229, /Users/mdo/work/bootstrap/scss/type */
 address {
-  margin-bottom: 24;
+  margin-bottom: 1;
   font-style: normal;
   line-height: 1.5;
 }
@@ -1872,7 +1872,7 @@ th {
 .table {
   width: 100%;
   max-width: 100%;
-  margin-bottom: 24;
+  margin-bottom: 1;
 }
 /* line 31, /Users/mdo/work/bootstrap/scss/tables */
 .table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
@@ -1991,7 +1991,7 @@ table td[class*="col-"], table th[class*="col-"] {
 @media screen and (max-width: 47.9em) {
   .table-responsive {
     width: 100%;
-    margin-bottom: 18;
+    margin-bottom: .75;
     overflow-y: hidden;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     border: 1px solid #eceeef;
@@ -2093,7 +2093,7 @@ legend {
   display: block;
   width: 100%;
   padding: 0;
-  margin-bottom: 24;
+  margin-bottom: 1;
   font-size: 1.5rem;
   line-height: inherit;
   color: #373a3c;
@@ -2199,8 +2199,9 @@ output {
   background-color: #eceeef;
   opacity: 1;
 }
-/* line 153, /Users/mdo/work/bootstrap/scss/forms */
-.form-controltextarea {
+
+/* line 154, /Users/mdo/work/bootstrap/scss/forms */
+textarea.form-control {
   height: auto;
   padding-top: .75rem;
   padding-bottom: .75rem;
@@ -2242,7 +2243,7 @@ input[type="search"] {
 }
 /* line 223, /Users/mdo/work/bootstrap/scss/forms */
 .radio label, .checkbox label {
-  min-height: 24;
+  min-height: 1;
   padding-left: 20px;
   margin-bottom: 0;
   font-weight: normal;
@@ -2500,7 +2501,7 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .input-group-lg > te
 
 /* line 385, /Users/mdo/work/bootstrap/scss/forms */
 .has-feedback label ~ .form-control-feedback {
-  top: 29;
+  top: 6;
 }
 /* line 388, /Users/mdo/work/bootstrap/scss/forms */
 .has-feedback label.sr-only ~ .form-control-feedback {
@@ -2588,7 +2589,7 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .input-group-lg > te
 }
 /* line 511, /Users/mdo/work/bootstrap/scss/forms */
 .form-horizontal .radio, .form-horizontal .checkbox {
-  min-height: 24.6rem;
+  min-height: 1.6rem;
 }
 /* line 516, /Users/mdo/work/bootstrap/scss/forms */
 .form-horizontal .form-group {
@@ -3011,7 +3012,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 /* line 51, /Users/mdo/work/bootstrap/scss/dropdown */
 .dropdown-menu .divider {
   height: 1px;
-  margin: 11 0;
+  margin: -.5 0;
   overflow: hidden;
   background-color: #e5e5e5;
 }
@@ -3580,7 +3581,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
   position: relative;
   padding: 1rem;
   /*min-height: $navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)*/
-  margin-bottom: 24;
+  margin-bottom: 1;
   /*border: 1px solid transparent;*/
 }
 /* line 15, /Users/mdo/work/bootstrap/scss/mixins/clearfix */
@@ -3642,7 +3643,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
   margin-right: 1rem;
   margin-bottom: 0;
   font-size: 1.25rem;
-  line-height: 24;
+  line-height: 1;
   /*height: $navbar-height;*/
 }
 /* line 79, /Users/mdo/work/bootstrap/scss/navbar */
@@ -3661,7 +3662,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
   margin-right: 1rem;
   margin-bottom: 0;
   font-size: 1.25rem;
-  line-height: 24;
+  line-height: 1;
   background: none;
   border: 0;
 }
@@ -4145,7 +4146,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 /* line 6, /Users/mdo/work/bootstrap/scss/breadcrumb */
 .breadcrumb {
   padding: .75rem 1rem;
-  margin-bottom: 24;
+  margin-bottom: 1;
   list-style: none;
   background-color: #eceeef;
   border-radius: .25rem;
@@ -4170,7 +4171,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 .pagination {
   display: inline-block;
   padding-left: 0;
-  margin: 24 0;
+  margin: 1 0;
   border-radius: .25rem;
 }
 /* line 10, /Users/mdo/work/bootstrap/scss/pagination */
@@ -4257,7 +4258,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 /* line 6, /Users/mdo/work/bootstrap/scss/pager */
 .pager {
   padding-left: 0;
-  margin: 24 0;
+  margin: 1 0;
   text-align: center; 
   list-style: none;
 }
@@ -4480,7 +4481,7 @@ a.badge:hover, a.badge:focus {
 /* line 9, /Users/mdo/work/bootstrap/scss/alert */
 .alert {
   padding: 15px;
-  margin-bottom: 24;
+  margin-bottom: 1;
   border: 1px solid transparent;
   border-radius: .25rem;
 }
@@ -4578,7 +4579,7 @@ a.badge:hover, a.badge:focus {
 @-webkit-keyframes progress-bar-stripes {
   /* line 13, /Users/mdo/work/bootstrap/scss/progress */
   from {
-    background-position: 24 0;
+    background-position: 1 0;
   }
 
   /* line 14, /Users/mdo/work/bootstrap/scss/progress */
@@ -4590,7 +4591,7 @@ a.badge:hover, a.badge:focus {
 @-o-keyframes progress-bar-stripes {
   /* line 18, /Users/mdo/work/bootstrap/scss/progress */
   from {
-    background-position: 24 0;
+    background-position: 1 0;
   }
 
   /* line 19, /Users/mdo/work/bootstrap/scss/progress */
@@ -4602,7 +4603,7 @@ a.badge:hover, a.badge:focus {
 @keyframes progress-bar-stripes {
   /* line 18, /Users/mdo/work/bootstrap/scss/progress */
   from {
-    background-position: 24 0;
+    background-position: 1 0;
   }
 
   /* line 19, /Users/mdo/work/bootstrap/scss/progress */
@@ -4615,8 +4616,8 @@ a.badge:hover, a.badge:focus {
 .progress {
   display: block;
   width: 100%;
-  height: 24;
-  margin-bottom: 24;
+  height: 1;
+  margin-bottom: 1;
 }
 
 /* line 33, /Users/mdo/work/bootstrap/scss/progress */
@@ -4665,7 +4666,7 @@ a.badge:hover, a.badge:focus {
   /* line 93, /Users/mdo/work/bootstrap/scss/progress */
   .progress-bar {
     display: inline-block;
-    height: 24;
+    height: 1;
     text-indent: -999rem;
     background-color: #0074d9;
     border-top-left-radius: .25rem;
@@ -4692,8 +4693,8 @@ a.badge:hover, a.badge:focus {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
   background-image:      -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
   background-image:         linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-  -webkit-background-size: 24 24;
-          background-size: 24 24;
+  -webkit-background-size: 1 1;
+          background-size: 1 1;
 }
 
 /* line 122, /Users/mdo/work/bootstrap/scss/progress */
@@ -4701,7 +4702,7 @@ a.badge:hover, a.badge:focus {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
   background-image:      -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
   background-image:         linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-  background-size: 24 24;
+  background-size: 1 1;
 }
 
 @media screen and ("min-width:0\0") {
@@ -4710,8 +4711,8 @@ a.badge:hover, a.badge:focus {
     background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
     background-image:      -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
     background-image:         linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-    -webkit-background-size: 24 24;
-            background-size: 24 24;
+    -webkit-background-size: 1 1;
+            background-size: 1 1;
   }
 }
 
