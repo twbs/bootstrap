@@ -108,10 +108,10 @@ img {
 // Horizontal rules
 
 hr {
-  margin-top:    $line-height-computed;
-  margin-bottom: $line-height-computed;
+  margin-top:    $spacer;
+  margin-bottom: $spacer;
   border: 0;
-  border-top: 1px solid $hr-border;
+  border-top: .05rem solid $hr-border;
 }
 
 
