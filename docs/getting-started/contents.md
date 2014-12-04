@@ -31,7 +31,7 @@ This is the most basic form of Bootstrap: precompiled files for quick drop-in us
 
 ### Bootstrap source code
 
-The Bootstrap source code download includes the precompiled CSS and JavaScript assets, along with source Less, JavaScript, and documentation. More specifically, it includes the following and more:
+The Bootstrap source code download includes the precompiled CSS and JavaScript assets, along with source Sass, JavaScript, and documentation. More specifically, it includes the following and more:
 
 {% highlight bash %}
 bootstrap/
@@ -41,7 +41,7 @@ bootstrap/
 ├── docs/
 │   └── examples/
 ├── js/
-└── less/
+└── scss/
 {% endhighlight %}
 
-The `less/` and `js/` are the source code for our CSS and JavaScript. The `dist/` folder includes everything listed in the precompiled download section above. The `docs/` folder includes the source code for our documentation, and `examples/` of Bootstrap usage. Beyond that, any other included file provides support for packages, license information, and development.
+The `scss/` and `js/` are the source code for our CSS and JavaScript. The `dist/` folder includes everything listed in the precompiled download section above. The `docs/` folder includes the source code for our documentation, and `examples/` of Bootstrap usage. Beyond that, any other included file provides support for packages, license information, and development.

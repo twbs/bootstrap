@@ -21,10 +21,10 @@ When completed, you'll be able to run the various Grunt commands provided from t
 ### Available Grunt commands
 
 #### Build - `grunt`
-Run `grunt` to run tests locally and compile the CSS and JavaScript into `/dist`. **Uses [Less](http://lesscss.org/) and [UglifyJS](http://lisperator.net/uglifyjs/).**
+Run `grunt` to run tests locally and compile the CSS and JavaScript into `/dist`. **Uses [Sass](http://sass-lang.com/) and [UglifyJS](http://lisperator.net/uglifyjs/).**
 
 #### Only compile CSS and JavaScript - `grunt dist`
-`grunt dist` creates the `/dist` directory with compiled files. **Uses [Less](http://lesscss.org/) and [UglifyJS](http://lisperator.net/uglifyjs/).**
+`grunt dist` creates the `/dist` directory with compiled files. **Uses [Sass](http://sass-lang.com/) and [UglifyJS](http://lisperator.net/uglifyjs/).**
 
 #### Tests - `grunt test`
 Runs [JSHint](http://jshint.com) and [QUnit](http://qunitjs.com/) tests headlessly in [PhantomJS](http://phantomjs.org/) (used for CI).
@@ -33,7 +33,7 @@ Runs [JSHint](http://jshint.com) and [QUnit](http://qunitjs.com/) tests headless
 Builds and tests CSS, JavaScript, and other assets which are used when running the documentation locally via `jekyll serve`.
 
 #### Watch - `grunt watch`
-This is a convenience method for watching just Less files and automatically building them whenever you save.
+This is a convenience method for watching just Sass files and automatically building them whenever you save.
 
 ### Troubleshooting dependencies
 
