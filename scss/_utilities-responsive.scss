@@ -1,0 +1,148 @@
+//
+// Responsive: Utility classes
+// --------------------------------------------------
+
+
+// IE10 in Windows (Phone) 8
+//
+// Support for responsive views via media queries is kind of borked in IE10, for
+// Surface/desktop in split view and for Windows Phone 8. This particular fix
+// must be accompanied by a snippet of JavaScript to sniff the user agent and
+// apply some conditional CSS to *only* the Surface/desktop Windows 8. Look at
+// our Getting Started page for more information on this bug.
+//
+// For more information, see the following:
+//
+// Issue: https://github.com/twbs/bootstrap/issues/10497
+// Docs: http://getbootstrap.com/getting-started/#support-ie10-width
+// Source: http://timkadlec.com/2013/01/windows-phone-8-and-device-width/
+// Source: http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
+
+@-ms-viewport {
+  width: device-width;
+}
+
+
+.visible-xs-block,
+.visible-xs-inline,
+.visible-xs-inline-block,
+.visible-sm-block,
+.visible-sm-inline,
+.visible-sm-inline-block,
+.visible-md-block,
+.visible-md-inline,
+.visible-md-inline-block,
+.visible-lg-block,
+.visible-lg-inline,
+.visible-lg-inline-block {
+  display: none !important;
+}
+
+.visible-xs-block {
+  @include media-xs {
+    display: block !important;
+  }
+}
+.visible-xs-inline {
+  @include media-xs {
+    display: inline !important;
+  }
+}
+.visible-xs-inline-block {
+  @include media-xs {
+    display: inline-block !important;
+  }
+}
+
+.visible-sm-block {
+  @include media-sm-max {
+    display: block !important;
+  }
+}
+.visible-sm-inline {
+  @include media-sm-max {
+    display: inline !important;
+  }
+}
+.visible-sm-inline-block {
+  @include media-sm-max {
+    display: inline-block !important;
+  }
+}
+
+.visible-md-block {
+  @include media-md-max {
+    display: block !important;
+  }
+}
+.visible-md-inline {
+  @include media-md-max {
+    display: inline !important;
+  }
+}
+.visible-md-inline-block {
+  @include media-md-max {
+    display: inline-block !important;
+  }
+}
+
+.visible-lg-block {
+  @include media-lg {
+    display: block !important;
+  }
+}
+.visible-lg-inline {
+  @include media-lg {
+    display: inline !important;
+  }
+}
+.visible-lg-inline-block {
+  @include media-lg {
+    display: inline-block !important;
+  }
+}
+
+@include media-sm-max {
+  @include responsive-invisibility('.hidden-sm');
+}
+
+@include media-md-max {
+  @include responsive-invisibility('.hidden-md');
+}
+
+@include media-lg {
+  @include responsive-invisibility('.hidden-lg');
+}
+
+
+// Print utilities
+//
+// Media queries are placed on the inside to be mixin-friendly.
+
+.visible-print-block {
+  display: none !important;
+
+  @media print {
+    display: block !important;
+  }
+}
+.visible-print-inline {
+  display: none !important;
+
+  @media print {
+    display: inline !important;
+  }
+}
+.visible-print-inline-block {
+  display: none !important;
+
+  @media print {
+    display: inline-block !important;
+  }
+}
+
+.hidden-print {
+  @media print {
+    @include responsive-invisibility('.hidden-print');
+  }
+}

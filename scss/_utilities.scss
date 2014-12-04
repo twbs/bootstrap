@@ -1,0 +1,122 @@
+//
+// Utility classes
+// --------------------------------------------------
+
+
+// Floats
+.clearfix {
+  @include clearfix();
+}
+.center-block {
+  @include center-block();
+}
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
+}
+
+
+// Inverse
+.inverse {
+  color: $gray-lighter;
+  background-color: $gray-dark;
+}
+
+// Spacing
+.p-a {
+  padding: $spacer;
+}
+.p-h {
+  padding-left: $spacer;
+  padding-right: $spacer;
+}
+.p-v {
+  padding-top: $spacer;
+  padding-bottom: $spacer;
+}
+
+// Positioning
+.pos-f-t {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $zindex-navbar-fixed;
+}
+
+
+// Toggling content
+.show {
+  display: block !important;
+}
+.invisible {
+  visibility: hidden;
+}
+.text-hide {
+  @include text-hide();
+}
+
+
+// Hide from screenreaders and browsers
+//
+// Credit: HTML5 Boilerplate
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+
+// For Affix plugin
+.affix {
+  position: fixed;
+}
+
+// Alignment
+.text-left           { text-align: left; }
+.text-right          { text-align: right; }
+.text-center         { text-align: center; }
+.text-justify        { text-align: justify; }
+.text-nowrap         { white-space: nowrap; }
+
+// Transformation
+.text-lowercase      { text-transform: lowercase; }
+.text-uppercase      { text-transform: uppercase; }
+.text-capitalize     { text-transform: capitalize; }
+
+// Contextual colors
+
+.text-muted {
+  color: $text-muted;
+}
+
+@include text-emphasis-variant('.text-primary', $brand-primary);
+
+@include text-emphasis-variant('.text-success', $state-success-text);
+
+@include text-emphasis-variant('.text-info', $state-info-text);
+
+@include text-emphasis-variant('.text-warning', $state-warning-text);
+
+@include text-emphasis-variant('.text-danger', $state-danger-text);
+
+// Contextual backgrounds
+// For now we'll leave these alongside the text classes until v4 when we can
+// safely shift things around (per SemVer rules).
+
+.bg-primary {
+  // Given the contrast here, this is the only class to have its color inverted
+  // automatically.
+  color: #fff;
+}
+
+@include bg-variant('.bg-primary', $brand-primary);
+
+@include bg-variant('.bg-success', $state-success-bg);
+
+@include bg-variant('.bg-info', $state-info-bg);
+
+@include bg-variant('.bg-warning', $state-warning-bg);
+
+@include bg-variant('.bg-danger', $state-danger-bg);
