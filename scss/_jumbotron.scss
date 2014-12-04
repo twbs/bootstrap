@@ -13,10 +13,6 @@
   .container-fluid & {
     @include border-radius($border-radius-lg); // Only round corners at higher resolutions if contained in a container
   }
-
-  .container {
-    max-width: 100%;
-  }
 }
 
 .jumbotron-heading {
