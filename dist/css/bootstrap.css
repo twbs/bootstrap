@@ -5171,6 +5171,39 @@ a.list-group-item:focus {
 .list-group-item.active:focus .list-group-item-text {
   color: #c7ddef;
 }
+.list-group-item.text-muted {
+  color: #777;
+}
+.list-group-item.text-primary {
+  color: #337ab7;
+}
+a.list-group-item.text-primary:hover {
+  color: #286090;
+}
+.list-group-item.text-success {
+  color: #31708f;
+}
+a.list-group-item.text-success:hover {
+  color: #245269;
+}
+.list-group-item.text-info {
+  color: #31708f;
+}
+a.list-group-item.text-info:hover {
+  color: #245269;
+}
+.list-group-item.text-warning {
+  color: #8a6d3b;
+}
+a.list-group-item.text-warning:hover {
+  color: #66512c;
+}
+.list-group-item.text-danger {
+  color: #a94442;
+}
+a.list-group-item.text-danger:hover {
+  color: #843534;
+}
 .list-group-item-success {
   color: #3c763d;
   background-color: #dff0d8;
