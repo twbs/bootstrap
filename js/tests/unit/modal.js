@@ -277,14 +277,14 @@ $(function () {
     var $body = $('body')
     $body.css('paddingRight', originalBodyPad)
     $('<div id="modal-test"></div>')
-    .on('hidden.bs.modal', function () {
-      var currentBodyPad = parseInt(($body.css('padding-right') || 0), 10)
-      strictEqual(currentBodyPad, originalBodyPad, 'Original body padding was not changed.')
-      start()
-    })
-    .on('shown.bs.modal', function () {
-      $(this).bootstrapModal('hide')
-    })
-    .bootstrapModal('show')
+      .on('hidden.bs.modal', function () {
+        var currentBodyPad = parseInt(($body.css('padding-right') || 0), 10)
+        strictEqual(currentBodyPad, originalBodyPad, 'Original body padding was not changed.')
+        start()
+      })
+      .on('shown.bs.modal', function () {
+        $(this).bootstrapModal('hide')
+      })
+      .bootstrapModal('show')
   })
 })
