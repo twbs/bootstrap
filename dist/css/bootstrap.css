@@ -469,7 +469,7 @@ h1 small, h1 .small, h2 small, h2 .small, h3 small, h3 .small, h4 small, h4 .sma
 
 /* line 27, /Users/mdo/work/bootstrap/scss/type */
 h1, .h1, h2, .h2, h3, .h3 {
-  margin-bottom: .5;
+  margin-bottom: .5rem;
 }
 /* line 31, /Users/mdo/work/bootstrap/scss/type */
 h1 small, h1 .small, .h1 small, .h1 .small, h2 small, h2 .small, .h2 small, .h2 .small, h3 small, h3 .small, .h3 small, .h3 .small {
@@ -478,7 +478,7 @@ h1 small, h1 .small, .h1 small, .h1 .small, h2 small, h2 .small, .h2 small, .h2 
 
 /* line 37, /Users/mdo/work/bootstrap/scss/type */
 h4, .h4, h5, .h5, h6, .h6 {
-  margin-bottom: .5;
+  margin-bottom: .5rem;
 }
 /* line 41, /Users/mdo/work/bootstrap/scss/type */
 h4 small, h4 .small, .h4 small, .h4 .small, h5 small, h5 .small, .h5 small, .h5 .small, h6 small, h6 .small, .h6 small, .h6 .small {
@@ -4446,33 +4446,29 @@ a.badge:hover, a.badge:focus {
 .container .jumbotron, .container-fluid .jumbotron {
   border-radius: .3rem;
 }
-/* line 17, /Users/mdo/work/bootstrap/scss/jumbotron */
-.jumbotron .container {
-  max-width: 100%;
-}
 
-/* line 22, /Users/mdo/work/bootstrap/scss/jumbotron */
+/* line 18, /Users/mdo/work/bootstrap/scss/jumbotron */
 .jumbotron-heading {
   color: inherit;
 }
 
-/* line 26, /Users/mdo/work/bootstrap/scss/jumbotron */
+/* line 22, /Users/mdo/work/bootstrap/scss/jumbotron */
 .jumbotron-hr {
   border-top-color: #d0d5d8;
 }
 
 @media (min-width: 48em) {
-  /* line 31, /Users/mdo/work/bootstrap/scss/jumbotron */
+  /* line 27, /Users/mdo/work/bootstrap/scss/jumbotron */
   .jumbotron {
     padding: 3.2rem 0;
   }
-  /* line 35, /Users/mdo/work/bootstrap/scss/jumbotron */
+  /* line 31, /Users/mdo/work/bootstrap/scss/jumbotron */
   .container .jumbotron, .container-fluid .jumbotron {
     padding-right: 4rem; 
     padding-left: 4rem;
   }
 
-  /* line 41, /Users/mdo/work/bootstrap/scss/jumbotron */
+  /* line 37, /Users/mdo/work/bootstrap/scss/jumbotron */
   .jumbotron-heading {
     font-size: 4.5rem;
   }
