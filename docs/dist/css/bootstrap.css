@@ -424,10 +424,10 @@ img {
 
 /* line 110, /Users/mdo/work/bootstrap/scss/scaffolding */
 hr {
-  margin-top: 1;
-  margin-bottom: 1;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   border: 0;
-  border-top: 1px solid #eceeef;
+  border-top: .05rem solid #eceeef;
 }
 
 /* line 122, /Users/mdo/work/bootstrap/scss/scaffolding */
@@ -627,10 +627,10 @@ abbr[title], abbr[data-original-title] {
 
 /* line 185, /Users/mdo/work/bootstrap/scss/type */
 blockquote {
-  padding: .5 1;
-  margin: 0 0 1;
+  padding: .5rem 1rem;
+  margin: 0 0 1rem;
   font-size: 1.25rem;
-  border-left: 5px solid #eceeef;
+  border-left: .25rem solid #eceeef;
 }
 /* line 194, /Users/mdo/work/bootstrap/scss/type */
 blockquote p:last-child, blockquote ul:last-child, blockquote ol:last-child {
@@ -650,10 +650,10 @@ blockquote footer:before {
 
 /* line 212, /Users/mdo/work/bootstrap/scss/type */
 .blockquote-reverse {
-  padding-right: 15px;
+  padding-right: 1rem;
   padding-left: 0;
   text-align: right; 
-  border-right: 5px solid #eceeef;
+  border-right: .25rem solid #eceeef;
   border-left: 0;
 }
 /* line 221, /Users/mdo/work/bootstrap/scss/type */
@@ -3639,7 +3639,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 /* line 69, /Users/mdo/work/bootstrap/scss/navbar */
 .navbar-brand {
   float: left;
-  padding: .55rem .75rem;
+  padding: .725rem .75rem;
   margin-right: 1rem;
   margin-bottom: 0;
   font-size: 1.25rem;
