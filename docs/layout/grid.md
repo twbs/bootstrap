@@ -12,7 +12,7 @@ Grid systems are used for creating page layouts through a series of rows and col
 - Rows must be placed within a `.container` (fixed-width) or `.container-fluid` (full-width) for proper alignment and padding.
 - Use rows to create horizontal groups of columns.
 - Content should be placed within columns, and only columns may be immediate children of rows.
-- Predefined grid classes like `.row` and `.col-xs-4` are available for quickly making grid layouts. Less mixins can also be used for more semantic layouts.
+- Predefined grid classes like `.row` and `.col-xs-4` are available for quickly making grid layouts. Sass mixins can also be used for more semantic layouts.
 - Columns create gutters (gaps between column content) via `padding`. That padding is offset in rows for the first and last column via negative margin on `.row`s.
 - The negative margin is why the examples below are outdented. It's so that content within grid columns is lined up with non-grid content.
 - Grid columns are created by specifying the number of twelve available columns you wish to span. For example, three equal columns would use three `.col-xs-4`.
@@ -20,33 +20,6 @@ Grid systems are used for creating page layouts through a series of rows and col
 - Grid classes apply to devices with screen widths greater than or equal to the breakpoint sizes, and override grid classes targeted at smaller devices. Therefore, applying any `.col-md-` class to an element will not only affect its styling on medium devices but also on large devices if a `.col-lg-` class is not present.
 
 Look to the examples for applying these principles to your code.
-
-### Media queries
-
-We use the following media queries in our Less files to create the key breakpoints in our grid system.
-
-{% highlight scss %}
-/* Extra small devices (phones, less than 768px) */
-/* No media query since this is the default in Bootstrap */
-
-/* Small devices (tablets, 768px and up) */
-@media (min-width: @screen-sm-min) { ... }
-
-/* Medium devices (desktops, 992px and up) */
-@media (min-width: @screen-md-min) { ... }
-
-/* Large devices (large desktops, 1200px and up) */
-@media (min-width: @screen-lg-min) { ... }
-{% endhighlight %}
-
-We occasionally expand on these media queries to include a <code>max-width</code> to limit CSS to a narrower set of devices.
-
-{% highlight scss %}
-@media (max-width: @screen-xs-max) { ... }
-@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { ... }
-@media (min-width: @screen-md-min) and (max-width: @screen-md-max) { ... }
-@media (min-width: @screen-lg-min) { ... }
-{% endhighlight %}
 
 ### Grid options
 
@@ -126,17 +99,17 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
   </table>
 </div>
 
-### Example: Semantic grid mixins
+### Semantic mixins
 
-In addition to [prebuilt grid classes](#grid-example-basic) for fast layouts, Bootstrap includes Less variables and mixins for quickly generating your own simple, semantic layouts.
+In addition to [prebuilt grid classes](#grid-example-basic) for fast layouts, Bootstrap includes Sass variables and mixins for quickly generating your own simple, semantic layouts.
 
 #### Variables
 
 Variables determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.
 
 {% highlight scss %}
-@grid-columns:      12;
-@grid-gutter-width: 1.5rem;
+$grid-columns:      12;
+$grid-gutter-width: 1.5rem;
 {% endhighlight %}
 
 #### Mixins
@@ -145,35 +118,35 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 
 {% highlight scss %}
 // Creates a wrapper for a series of columns
-.make-row(@gutter: @grid-gutter-width) {
-  margin-left:  (@gutter / -2);
-  margin-right: (@gutter / -2);
-  &:extend(.clearfix all);
+@mixin make-row($gutter: $grid-gutter-width) {
+  margin-left:  ($gutter / -2);
+  margin-right: ($gutter / -2);
+  @include clearfix();
 }
 
 // Make the element grid-ready (applying everything but the width)
-.make-col(@gutter: @grid-gutter-width) {
+@mixin make-col($gutter: $grid-gutter-width) {
   position: relative;
   float: left;
   min-height: 1px;
-  padding-left:  (@gutter / 2);
-  padding-right: (@gutter / 2);
+  padding-left:  ($gutter / 2);
+  padding-right: ($gutter / 2);
 }
 
 // Set a width (to be used in or out of media queries)
-.make-col-span(@columns) {
-  width: percentage((@columns / @grid-columns));
+@mixin make-col-span($columns) {
+  width: percentage(($columns / $grid-columns));
 }
 
 // Get fancy by offsetting, or changing the sort order
-.make-col-offset(@columns) {
-  margin-left: percentage((@columns / @grid-columns));
+@mixin make-col-offset($columns) {
+  margin-left: percentage(($columns / $grid-columns));
 }
-.make-col-push(@columns) {
-  left: percentage((@columns / @grid-columns));
+@mixin make-col-push($columns) {
+  left: percentage(($columns / $grid-columns));
 }
-.make-col-pull(@columns) {
-  right: percentage((@columns / @grid-columns));
+@mixin make-col-pull($columns) {
+  right: percentage(($columns / $grid-columns));
 }
 {% endhighlight %}
 
@@ -186,29 +159,29 @@ See it in action in <a href="http://jsbin.com/qiqet/3/edit">this rendered exampl
 {% highlight scss %}
 .container {
   max-width: 60em;
-  .make-container();
+  @include make-container();
 }
 .row {
-  .make-row();
+  @include make-row();
 }
 .content-main {
-  .make-col();
+  @include make-col();
 
   @media (max-width: 32em) {
-    .make-col-span(6);
+    @include make-col-span(6);
   }
   @media (min-width: 32.1em) {
-    .make-col-span(8);
+    @include make-col-span(8);
   }
 }
 .content-secondary {
-  .make-col();
+  @include make-col();
 
   @media (max-width: 32em) {
-    .make-col-span(6);
+    @include make-col-span(6);
   }
   @media (min-width: 32.1em) {
-    .make-col-span(4);
+    @include make-col-span(4);
   }
 }
 {% endhighlight %}
@@ -221,6 +194,10 @@ See it in action in <a href="http://jsbin.com/qiqet/3/edit">this rendered exampl
   </div>
 </div>
 {% endhighlight %}
+
+## Predefined classes
+
+In addition to our semantic mixins, Bootstrap includes an extensive set of prebuilt classes for quickly creating grid columns. It includes options for device-based column sizing, reordering columns, and more.
 
 ### Example: Stacked-to-horizontal
 
