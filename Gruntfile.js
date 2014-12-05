@@ -152,6 +152,7 @@ module.exports = function (grunt) {
       options: {
         includePaths: ['scss'],
         precision: 6,
+        sourceComments: false,
         sourceMap: true
       },
       core: {
