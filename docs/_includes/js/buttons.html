@@ -60,7 +60,7 @@
     <h4>Visual checked state only updated on click</h4>
     <p>If the checked state of a checkbox button is updated without firing a <code>click</code> event on the button (e.g. via <code>&lt;input type="reset"&gt;</code> or via setting the <code>checked</code> property of the input), you will need to toggle the <code>.active</code> class on the input's <code>label</code> yourself.</p>
   </div>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="buttons-checkbox">
     <div class="btn-group" data-toggle="buttons">
       <label class="btn btn-primary active">
         <input type="checkbox" checked autocomplete="off"> Checkbox 1 (pre-checked)
@@ -87,7 +87,7 @@
 </div>
 {% endhighlight %}
 
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="buttons-radio">
     <div class="btn-group" data-toggle="buttons">
       <label class="btn btn-primary active">
         <input type="radio" name="options" id="option1" autocomplete="off" checked> Radio 1 (preselected)
