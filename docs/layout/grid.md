@@ -3,7 +3,12 @@ layout: page
 title: Grid system
 ---
 
-Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. It includes [predefined classes](#grid-example-basic) for easy layout options, as well as powerful [mixins for generating more semantic layouts](#grid-semantic).
+Bootstrap includes a powerful grid system for building layouts of all shapes and sizes. It's based on a 12 column layout and features multiple tiers for different device sizes. Put it to work with our predefined classes or semantic mixins. Plus, it's mobile-first!
+
+### Quick start
+
+- Example grid class
+- Example mixins
 
 ### Introduction
 

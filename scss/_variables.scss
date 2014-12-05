@@ -272,16 +272,20 @@ $zindex-modal:             1040;
 //
 //## Define the minimum and maximum dimensions at which your layout will change, adapting to different screen sizes.
 
-// Large screen / wide desktop
-$screen-lg-min:              75em;
+// Extra large screen / wide desktop
+$screen-xl-min:              75em;
 
-// Medium screen / desktop
-$screen-md-min:              62em;
+// Large screen / desktop
+$screen-lg-max:              ($screen-xl-min - .1);
+$screen-lg-min:              62em;
+
+// Medium screen / tablet
 $screen-md-max:              ($screen-lg-min - .1);
+$screen-md-min:              48em;
 
-// Small screen / tablet
-$screen-sm-min:              48em;
+// Small screen / phone
 $screen-sm-max:              ($screen-md-min - .1);
+$screen-sm-min:              34em;
 
 // Extra small screen / phone
 $screen-xs-max:              ($screen-sm-min - .1);
@@ -306,14 +310,17 @@ $grid-float-breakpoint-max:  ($grid-float-breakpoint - 1);
 //
 //## Define the maximum width of `.container` for different screen sizes.
 
+//** For `$screen-xs-min` and up.
+$container-sm:               34em; // 480
+
 //** For `$screen-sm-min` and up.
-$container-sm:               45rem; // 720
+$container-md:               45rem; // 720
 
 //** For `$screen-md-min` and up.
-$container-md:               60rem; // 960
+$container-lg:               60rem; // 960
 
 //** For `$screen-lg-min` and up.
-$container-lg:               72.25rem; // 1140
+$container-xl:               72.25rem; // 1140
 
 
 //== Navbar
