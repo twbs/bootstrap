@@ -24,7 +24,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
         '<div class="container">' +
           '<a href="#bsCustomizerAlert" data-dismiss="alert" class="close pull-right" aria-label="Close" role="button"><span aria-hidden="true">&times;</span></a>' +
           '<p class="bs-customizer-alert-text"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span><span class="sr-only">Warning:</span>' + msg + '</p>' +
-          (err.extract ? '<pre class="bs-customizer-alert-extract">' + err.extract.join('\n') + '</pre>' : '') +
+          (err.message ? $('<p></p>').text('Error: ' + err.message)[0].outerHTML : '') +
+          (err.extract ? $('<pre class="bs-customizer-alert-extract"></pre>').text(err.extract.join('\n'))[0].outerHTML : '') +
         '</div>' +
       '</div>').appendTo('body').alert()
     throw err
@@ -38,7 +39,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
 
   function showCallout(msg, showUpTop) {
     var callout = $('<div class="bs-callout bs-callout-danger">' +
-       '<h4>Attention!</h4>' +
+      '<h4>Attention!</h4>' +
       '<p>' + msg + '</p>' +
     '</div>')
 
@@ -258,12 +259,17 @@ window.onload = function () { // wait for load in a dumb way because B-0
       filename: baseFilename + '.css'
     })
 
-    parser.parse(lessSource, function (err, tree) {
-      if (err) {
-        return promise.reject(err)
+    parser.parse(lessSource, function (parseErr, tree) {
+      if (parseErr) {
+        return promise.reject(parseErr)
       }
-      intoResult[baseFilename + '.css']     = cw + tree.toCSS()
-      intoResult[baseFilename + '.min.css'] = cw + tree.toCSS({ compress: true })
+      try {
+        intoResult[baseFilename + '.css']     = cw + tree.toCSS()
+        intoResult[baseFilename + '.min.css'] = cw + tree.toCSS({ compress: true })
+      }
+      catch (compileErr) {
+        return promise.reject(compileErr)
+      }
       promise.resolve()
     })
 
@@ -306,7 +312,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
       }
       promise.resolve(result)
     }).fail(function (err) {
-      showError('<strong>Ruh roh!</strong> Could not parse less files.', err)
+      showError('<strong>Ruh roh!</strong> Problem parsing or compiling Less files.', err)
       promise.reject()
     })
 
