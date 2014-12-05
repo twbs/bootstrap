@@ -448,16 +448,12 @@
       var $this    = $(this)
       var data     = $this.data('bs.tooltip')
       var options  = typeof option == 'object' && option
-      var selector = options && options.selector
+      var selector = options && options.selector || ''
 
       if (!data && option == 'destroy') return
-      if (selector) {
-        if (!data) $this.data('bs.tooltip', (data = {}))
-        if (!data[selector]) data[selector] = new Tooltip(this, options)
-      } else {
-        if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
-      }
-      if (typeof option == 'string') data[option]()
+      if (!data) $this.data('bs.tooltip', (data = {}))
+      if (!data[selector]) data[selector] = new Tooltip(this, options)
+      if (typeof option == 'string') data[selector][option]()
     })
   }
 
