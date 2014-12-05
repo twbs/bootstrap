@@ -3,79 +3,65 @@
 // Used only by Bootstrap to generate the correct number of grid classes given
 // any value of `$grid-columns`.
 
-// [converter] This is defined recursively in LESS, but Sass supports real loops
-@mixin make-grid-columns($i: 1, $list: ".col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}, .col-xl-#{$i}") {
-  @for $i from (1 + 1) through $grid-columns {
-    $list: "#{$list}, .col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}, .col-xl-#{$i}";
-  }
-  #{$list} {
-    position: relative;
-    // Prevent columns from collapsing when empty
-    min-height: 1px;
-    // Inner gutter via padding
-    padding-left:  ($grid-gutter-width / 2);
-    padding-right: ($grid-gutter-width / 2);
+%twbs-grid-column {
+  position: relative;
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Inner gutter via padding
+  padding-left: ($grid-gutter-width / 2);
+  padding-right: ($grid-gutter-width / 2);
+}
+
+%twbs-grid-column-float {
+  float: left
+}
+
+@mixin make-grid-columns($columns: $grid-columns) {
+  @for $i from 1 through $columns {
+    .col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}, .col-xl-#{$i} {
+      @extend %twbs-grid-column;
+    }
   }
 }
 
-
-// [converter] This is defined recursively in LESS, but Sass supports real loops
-@mixin float-grid-columns($class, $i: 1, $list: ".col-#{$class}-#{$i}") {
-  @for $i from (1 + 1) through $grid-columns {
-    $list: "#{$list}, .col-#{$class}-#{$i}";
-  }
-  #{$list} {
-    float: left;
+@mixin float-grid-columns($class, $columns: $grid-columns) {
+  @for $i from 1 through $columns {
+    .col-#{$class}-#{$i} {
+      @extend %twbs-grid-column-float;
+    }
   }
 }
 
-
-@mixin calc-grid-column($index, $class, $type) {
+@mixin calc-grid-column($index, $class, $type, $columns: $grid-columns) {
   @if ($type == width) and ($index > 0) {
     .col-#{$class}-#{$index} {
-      width: percentage(($index / $grid-columns));
+      width: percentage($index / $columns);
     }
   }
-  @if ($type == push) and ($index > 0) {
+  @if $type == push {
     .col-#{$class}-push-#{$index} {
-      left: percentage(($index / $grid-columns));
+      left: if($index > 0, percentage($index / $columns), auto);
     }
   }
-  @if ($type == push) and ($index == 0) {
-    .col-#{$class}-push-0 {
-      left: auto;
-    }
-  }
-  @if ($type == pull) and ($index > 0) {
+  @if $type == pull {
     .col-#{$class}-pull-#{$index} {
-      right: percentage(($index / $grid-columns));
+      right: if($index > 0, percentage($index / $columns), auto);
     }
   }
-  @if ($type == pull) and ($index == 0) {
-    .col-#{$class}-pull-0 {
-      right: auto;
-    }
-  }
-  @if ($type == offset) {
+  @if $type == offset {
     .col-#{$class}-offset-#{$index} {
-      margin-left: percentage(($index / $grid-columns));
+      margin-left: percentage($index / $columns);
     }
   }
 }
-
-// [converter] This is defined recursively in LESS, but Sass supports real loops
-@mixin loop-grid-columns($columns, $class, $type) {
-  @for $i from 0 through $columns {
-    @include calc-grid-column($i, $class, $type);
-  }
-}
-
 
 // Create grid for specific class
-@mixin make-grid($class) {
+@mixin make-grid($class, $columns: $grid-columns) {
   @include float-grid-columns($class);
-  @include loop-grid-columns($grid-columns, $class, width);
-  @include loop-grid-columns($grid-columns, $class, pull);
-  @include loop-grid-columns($grid-columns, $class, push);
-  @include loop-grid-columns($grid-columns, $class, offset);
+  @for $i from 0 through $columns {
+    @include calc-grid-column($i, $class, width, $columns);
+    @include calc-grid-column($i, $class, push, $columns);
+    @include calc-grid-column($i, $class, pull, $columns);
+    @include calc-grid-column($i, $class, offset, $columns);
+  }
 }
