@@ -82,3 +82,12 @@
 @include media-lg {
   @include make-grid(lg);
 }
+
+
+// Large grid
+//
+// Columns, offsets, pushes, and pulls for the large desktop device range.
+
+@include media-lg {
+  @include make-grid(xl);
+}
