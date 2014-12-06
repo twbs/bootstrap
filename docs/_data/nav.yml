@@ -137,11 +137,11 @@
     - title: Sticky footer with navbar
     - title: Offcanvas
 
-# - title: Learn & Extend
-#   pages:
-#     - title: Approach
-#     - title: Icon fonts
-#     - title: Accessibility
+- title: Extend
+  pages:
+    - title: Approach
+    - title: Icon fonts
+    # - title: Accessibility
 
 - title: About
   pages:
