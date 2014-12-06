@@ -16,13 +16,14 @@
   var Button = function (element, options) {
     this.$element  = $(element)
     this.options   = $.extend({}, Button.DEFAULTS, options)
-    this.isLoading = false
+    this.isDisabled = false
   }
 
   Button.VERSION  = '3.3.1'
 
   Button.DEFAULTS = {
-    loadingText: 'loading...'
+    loadingText: 'loading...',
+    completedText: 'completed!'
   }
 
   Button.prototype.setState = function (state) {
@@ -39,11 +40,11 @@
     setTimeout($.proxy(function () {
       $el[val](data[state] == null ? this.options[state] : data[state])
 
-      if (state == 'loadingText') {
-        this.isLoading = true
+      if (state == 'loadingText' || state == 'completedText') {
+        this.isDisabled = true
         $el.addClass(d).attr(d, d)
-      } else if (this.isLoading) {
-        this.isLoading = false
+      } else if (this.isDisabled) {
+        this.isDisabled = false
         $el.removeClass(d).removeAttr(d)
       }
     }, this), 0)
