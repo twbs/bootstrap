@@ -20,9 +20,10 @@
       position: relative;
       display: block;
       padding: @nav-link-padding;
+      text-decoration: none;
+
       &:hover,
       &:focus {
-        text-decoration: none;
         background-color: @nav-link-hover-bg;
       }
     }
@@ -30,11 +31,11 @@
     // Disabled state sets text to gray and nukes hover/tab effects
     &.disabled > a {
       color: @nav-disabled-link-color;
+      text-decoration: none;
 
       &:hover,
       &:focus {
         color: @nav-disabled-link-hover-color;
-        text-decoration: none;
         background-color: transparent;
         cursor: @cursor-disabled;
       }

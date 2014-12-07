@@ -66,6 +66,7 @@
     clear: both;
     font-weight: normal;
     line-height: @line-height-base;
+    text-decoration: none;
     color: @dropdown-link-color;
     white-space: nowrap; // prevent links from randomly breaking onto new lines
   }
@@ -75,7 +76,6 @@
 .dropdown-menu > li > a {
   &:hover,
   &:focus {
-    text-decoration: none;
     color: @dropdown-link-hover-color;
     background-color: @dropdown-link-hover-bg;
   }
@@ -101,13 +101,13 @@
   &,
   &:hover,
   &:focus {
+    text-decoration: none;
     color: @dropdown-link-disabled-color;
   }
 
   // Nuke hover/focus effects
   &:hover,
   &:focus {
-    text-decoration: none;
     background-color: transparent;
     background-image: none; // Remove CSS gradient
     .reset-filter();
