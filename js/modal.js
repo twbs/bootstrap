@@ -16,6 +16,8 @@
   var Modal = function (element, options) {
     this.options        = options
     this.$body          = $(document.body)
+    this.$navbar        = this.$body.find('.navbar.navbar-fixed-top, .navbar.navbar-fixed-buttom')
+    this.$footer        = this.$body.find('.footer')
     this.$element       = $(element)
     this.$backdrop      =
     this.isShown        = null
@@ -246,11 +248,19 @@
 
   Modal.prototype.setScrollbar = function () {
     var bodyPad = parseInt((this.$body.css('padding-right') || 0), 10)
-    if (this.bodyIsOverflowing) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
+    var navbarPad = parseInt((this.$navbar.css('padding-right') || 0), 10)
+    var footerPad = parseInt((this.$footer.css('padding-right') || 0), 10)
+    if (this.bodyIsOverflowing){
+      this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
+      this.$navbar.css('padding-right', navbarPad + this.scrollbarWidth)
+      this.$footer.css('padding-right', footerPad + this.scrollbarWidth)
+    }
   }
 
   Modal.prototype.resetScrollbar = function () {
     this.$body.css('padding-right', '')
+    this.$navbar.css('padding-right', '')
+    this.$footer.css('padding-right', '')
   }
 
   Modal.prototype.measureScrollbar = function () { // thx walsh
