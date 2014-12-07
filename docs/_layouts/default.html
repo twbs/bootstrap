@@ -26,8 +26,8 @@
           {{ content }}
         </div>
         {% unless page.fullwidth == true %}
-        <div class="col-md-3">
-          <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
+        <div class="col-md-3" role="complementary">
+          <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
             <ul class="nav bs-docs-sidenav">
               {% if page.slug == "getting-started" %}
                 {% include nav/getting-started.html %}
@@ -53,7 +53,7 @@
               Preview theme
             </a>
             {% endif %}
-          </div>
+          </nav>
         </div>
         {% endunless %}
       </div>
