@@ -24,8 +24,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
         '<div class="container">' +
           '<a href="#bsCustomizerAlert" data-dismiss="alert" class="close pull-right" aria-label="Close" role="button"><span aria-hidden="true">&times;</span></a>' +
           '<p class="bs-customizer-alert-text"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span><span class="sr-only">Warning:</span>' + msg + '</p>' +
-          (err.message ? $('<p></p>').text('Error: ' + err.message)[0].outerHTML : '') +
-          (err.extract ? $('<pre class="bs-customizer-alert-extract"></pre>').text(err.extract.join('\n'))[0].outerHTML : '') +
+          (err.message ? '<p>Error: ' + err.message + '</p>' : '') +
+          (err.extract ? '<pre class="bs-customizer-alert-extract">' + err.extract.join('\n') + '</pre>' : '') +
         '</div>' +
       '</div>').appendTo('body').alert()
     throw err
