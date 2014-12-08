@@ -25,6 +25,7 @@
     var $this = $(this)
 
     if ($this.is('.disabled, :disabled')) return
+    if (e.type == 'keydown' && (!/13|32|38|40/.test(e.which))) return
 
     var $parent  = getParent($this)
     var isActive = $parent.hasClass('open')
@@ -43,45 +44,75 @@
       if (e.isDefaultPrevented()) return
 
       $this
-        .trigger('focus')
         .attr('aria-expanded', 'true')
 
       $parent
         .toggleClass('open')
         .trigger('shown.bs.dropdown', relatedTarget)
+        .find('[role="menu"] li:first:not(.divider):visible a')
+        .trigger('focus')
     }
 
     return false
   }
 
   Dropdown.prototype.keydown = function (e) {
-    if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) return
+    if (/input|textarea/i.test(e.target.tagName) ||
+      e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return
 
-    var $this = $(this)
+    var $this     = $(this)
+    var $parent   = getParent($this)
+    var isActive  = $parent.hasClass('open')
+    var key       = e.which
+
+    if (key == 9) {
+      if (!isActive) return
+      clearMenus()
+      return
+    }
 
     e.preventDefault()
     e.stopPropagation()
 
     if ($this.is('.disabled, :disabled')) return
 
-    var $parent  = getParent($this)
-    var isActive = $parent.hasClass('open')
+    var exit = (key == 27 || key == 37)
 
-    if ((!isActive && e.which != 27) || (isActive && e.which == 27)) {
-      if (e.which == 27) $parent.find(toggle).trigger('focus')
+    if ((!isActive && !exit) || (isActive && exit)) {
+      if (exit) $parent.find(toggle).trigger('focus')
       return $this.trigger('click')
     }
 
-    var desc = ' li:not(.divider):visible a'
+    var desc   = ' li:not(.divider):visible a'
     var $items = $parent.find('[role="menu"]' + desc + ', [role="listbox"]' + desc)
+    var len    = $items.length
 
-    if (!$items.length) return
+    if (!len) return
 
     var index = $items.index(e.target)
 
-    if (e.which == 38 && index > 0)                 index--                        // up
-    if (e.which == 40 && index < $items.length - 1) index++                        // down
-    if (!~index)                                      index = 0
+    function calcIndex(dir) {
+      return (index + len + dir) % len
+    }
+
+    function findIndex() {
+      var i = index + 1
+      if (i == len) i = 0
+      while (i != index) {
+        if ($items.eq(i).text().charAt(0).toLowerCase()
+         == String.fromCharCode(key).toLowerCase()) return i
+
+        i = (i + len + 1) % len
+      }
+    }
+
+    if (key == 38) {
+      index = calcIndex(-1)
+    } else if (key == 40) {
+      index = calcIndex(1)
+    } else {
+      index = findIndex()
+    }
 
     $items.eq(index).trigger('focus')
   }
@@ -154,7 +185,7 @@
     .on('click.bs.dropdown.data-api', clearMenus)
     .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
     .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
-    .on('keydown.bs.dropdown.data-api', toggle, Dropdown.prototype.keydown)
+    .on('keydown.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
     .on('keydown.bs.dropdown.data-api', '[role="menu"]', Dropdown.prototype.keydown)
     .on('keydown.bs.dropdown.data-api', '[role="listbox"]', Dropdown.prototype.keydown)
 

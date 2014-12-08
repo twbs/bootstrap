@@ -187,13 +187,13 @@
       <div class="col-lg-6">
         <div class="input-group">
           <div class="input-group-btn">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
+            <button type="button" id="inpGrpBtn1" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Action <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="inpGrpBtn1">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
             </ul>
           </div><!-- /btn-group -->
           <input type="text" class="form-control">
@@ -203,13 +203,13 @@
         <div class="input-group">
           <input type="text" class="form-control">
           <div class="input-group-btn">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action <span class="caret"></span></button>
-            <ul class="dropdown-menu dropdown-menu-right" role="menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
+            <button type="button" id="inpGrpBtn2" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Action <span class="caret"></span></button>
+            <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="inpGrpBtn2">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
             </ul>
           </div><!-- /btn-group -->
         </div><!-- /input-group -->
@@ -221,13 +221,13 @@
   <div class="col-lg-6">
     <div class="input-group">
       <div class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action <span class="caret"></span></button>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
+        <button type="button" id="inpGrpBtn3" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Action <span class="caret"></span></button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="inpGrpBtn3">
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+          <li role="separator" class="divider"></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
         </ul>
       </div><!-- /btn-group -->
       <input type="text" class="form-control">
@@ -237,13 +237,13 @@
     <div class="input-group">
       <input type="text" class="form-control">
       <div class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action <span class="caret"></span></button>
-        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
+        <button type="button" id="inpGrpBtn4" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Action <span class="caret"></span></button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="inpGrpBtn4">
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+          <li role="separator" class="divider"></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
         </ul>
       </div><!-- /btn-group -->
     </div><!-- /input-group -->
@@ -257,17 +257,17 @@
       <div class="col-lg-6">
         <div class="input-group">
           <div class="input-group-btn">
-            <button type="button" class="btn btn-default" tabindex="-1">Action</button>
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <button type="button" id="inpGrpBtn5" class="btn btn-default" tabindex="-1">Action</button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
               <span class="caret"></span>
               <span class="sr-only">Toggle Dropdown</span>
             </button>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
+            <ul class="dropdown-menu" role="menu" aria-describedby="inpGrpBtn5">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
             </ul>
           </div>
           <input type="text" class="form-control">
@@ -277,17 +277,17 @@
         <div class="input-group">
           <input type="text" class="form-control">
           <div class="input-group-btn">
-            <button type="button" class="btn btn-default" tabindex="-1">Action</button>
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <button type="button" id="inpGrpBtn6" class="btn btn-default" tabindex="-1">Action</button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
               <span class="caret"></span>
               <span class="sr-only">Toggle Dropdown</span>
             </button>
-            <ul class="dropdown-menu dropdown-menu-right" role="menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
+            <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="inpGrpBtn6">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
             </ul>
           </div>
         </div><!-- /.input-group -->
