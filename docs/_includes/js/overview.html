@@ -19,12 +19,12 @@
 
   <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the document namespaced with <code>data-api</code>. This looks like this:</p>
 {% highlight js %}
-$(document).off('.data-api')
+$(document).off('.data-api');
 {% endhighlight %}
 
   <p>Alternatively, to target a specific plugin, just include the plugin's name as a namespace along with the data-api namespace like this:</p>
 {% highlight js %}
-$(document).off('.alert.data-api')
+$(document).off('.alert.data-api');
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-danger" id="callout-overview-single-data">
@@ -35,14 +35,14 @@ $(document).off('.alert.data-api')
   <h3 id="js-programmatic-api">Programmatic API</h3>
   <p>We also believe you should be able to use all Bootstrap plugins purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.</p>
 {% highlight js %}
-$('.btn.danger').button('toggle').addClass('fat')
+$('.btn.danger').button('toggle').addClass('fat');
 {% endhighlight %}
 
   <p>All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a plugin with default behavior):</p>
 {% highlight js %}
-$('#myModal').modal()                      // initialized with defaults
-$('#myModal').modal({ keyboard: false })   // initialized with no keyboard
-$('#myModal').modal('show')                // initializes and invokes show immediately
+$('#myModal').modal();                     // initialized with defaults
+$('#myModal').modal({ keyboard: false });  // initialized with no keyboard
+$('#myModal').modal('show');               // initializes and invokes show immediately
 {% endhighlight %}
 
   <p>Each plugin also exposes its raw constructor on a <code>Constructor</code> property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel="popover"]').data('popover')</code>.</p>
@@ -50,14 +50,14 @@ $('#myModal').modal('show')                // initializes and invokes show immed
   <h4>Default settings</h4>
   <p>You can change the default settings for a plugin by modifying the plugin's <code>Constructor.DEFAULTS</code> object:<p>
 {% highlight js %}
-$.fn.modal.Constructor.DEFAULTS.keyboard = false // changes default for the modal plugin's `keyboard` option to false
+$.fn.modal.Constructor.DEFAULTS.keyboard = false; // changes default for the modal plugin's `keyboard` option to false
 {% endhighlight %}
 
   <h3 id="js-noconflict">No conflict</h3>
   <p>Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In these circumstances, namespace collisions can occasionally occur. If this happens, you may call <code>.noConflict</code> on the plugin you wish to revert the value of.</p>
 {% highlight js %}
-var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
-$.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the Bootstrap functionality
+var bootstrapButton = $.fn.button.noConflict(); // return $.fn.button to previously assigned value
+$.fn.bootstrapBtn = bootstrapButton;            // give $().bootstrapBtn the Bootstrap functionality
 {% endhighlight %}
 
   <h3 id="js-events">Events</h3>
@@ -66,8 +66,8 @@ $.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the Boot
   <p>All infinitive events provide <code>preventDefault</code> functionality. This provides the ability to stop the execution of an action before it starts.</p>
 {% highlight js %}
 $('#myModal').on('show.bs.modal', function (e) {
-  if (!data) return e.preventDefault() // stops modal from being shown
-})
+  if (!data) return e.preventDefault(); // stops modal from being shown
+});
 {% endhighlight %}
 
   <h3 id="js-disabled">No special fallbacks when JavaScript is disabled</h3>
