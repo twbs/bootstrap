@@ -63,9 +63,16 @@
     <h4>Non-<code>:visible</code> target elements ignored</h4>
     <p>Target elements that are not <a href="http://api.jquery.com/visible-selector/"><code>:visible</code> according to jQuery</a> will be ignored and their corresponding nav items will never be highlighted.</p>
   </div>
+  <div class="bs-callout bs-callout-info" id="callout-scrollspy-relative-positioning">
+    <h4>Requires relative positioning</h4>
+    <p>No matter the implementation method, scrollspy requires the use of <code>position: relative;</code> on the element you're spying on. In most cases this is the <code>&lt;body&gt;</code>.</p>
+  </div>
+  <div class="bs-callout bs-callout-info" id="callout-scrollspy-height-attribute">
+    <h4>Spied-on element must have height attribute</h4>
+    <p>The element that is being spied upon, e.g. <code>&lt;body&gt;</code>`, must have a height attribute, such as <code>body{ height: 100%; }</code> </p>
+  </div>
 
-  <h3>Requires relative positioning</h3>
-  <p>No matter the implementation method, scrollspy requires the use of <code>position: relative;</code> on the element you're spying on. In most cases this is the <code>&lt;body&gt;</code>.</p>
+
 
   <h3>Via data attributes</h3>
   <p>To easily add scrollspy behavior to your topbar navigation, add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the <code>&lt;body&gt;</code>). Then add the <code>data-target</code> attribute with the ID or class of the parent element of any Bootstrap <code>.nav</code> component.</p>
