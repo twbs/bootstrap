@@ -38,6 +38,9 @@ Thumbs.db
 validation-report.json
 validation-status.json
 
+# SCSS-Lint
+scss-lint-report.xml
+
 # Folders to ignore
 bower_components
 node_modules

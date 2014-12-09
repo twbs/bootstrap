@@ -167,6 +167,14 @@ module.exports = function (grunt) {
       }
     },
 
+    scsslint: {
+      scss: ['scss/*.scss', '!scss/_normalize.scss'],
+      options: {
+        config: 'scss/.scss-lint.yml',
+        reporterOutput: 'scss-lint-report.xml'
+      }
+    },
+
     autoprefixer: {
       options: {
         browsers: configBridge.config.autoprefixerBrowsers
@@ -369,7 +377,7 @@ module.exports = function (grunt) {
   // Skip core tests if running a different subset of the test suite
   if (runSubset('core') &&
     // Skip core tests if this is a Savage build
-    process.env.TRAVIS_REPO_SLUG !== 'twbs-savage/bootstrap') {    testSubtasks = testSubtasks.concat(['dist-css', 'dist-js', 'test-js', 'docs']);
+    process.env.TRAVIS_REPO_SLUG !== 'twbs-savage/bootstrap') {    testSubtasks = testSubtasks.concat(['dist-css', 'dist-js', 'test-scss', 'test-js', 'docs']);
   }
   // Skip HTML validation if running a different subset of the test suite
   if (runSubset('validate-html') &&
@@ -391,6 +399,8 @@ module.exports = function (grunt) {
 
   // JS distribution task.
   grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs']);
+
+  grunt.registerTask('test-scss', ['scsslint:scss']);
 
   // CSS distribution task.
   grunt.registerTask('sass-compile', ['sass:core', 'sass:docs']);
