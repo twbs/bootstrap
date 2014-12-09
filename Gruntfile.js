@@ -382,7 +382,27 @@ module.exports = function (grunt) {
       npmUpdate: {
         command: 'npm update'
       }
+    },
+
+    compress: {
+      main: {
+        options: {
+          archive: 'bootstrap-<%= pkg.version %>-dist.zip',
+          mode: 'zip',
+          level: 9,
+          pretty: true
+        },
+        files: [
+          {
+            expand: true,
+            cwd: 'dist/',
+            src: ['**'],
+            dest: 'bootstrap-<%= pkg.version %>-dist'
+          }
+        ]
+      }
     }
+
   });
 
 
@@ -465,7 +485,7 @@ module.exports = function (grunt) {
   grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
   grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-customizer']);
 
-  grunt.registerTask('docs-github', ['jekyll:github']);
+  grunt.registerTask('prep-release', ['jekyll:github', 'compress']);
 
   // Task for updating the cached npm packages used by the Travis build (which are controlled by test-infra/npm-shrinkwrap.json).
   // This task should be run and the updated file should be committed whenever Bootstrap's dependencies change.
