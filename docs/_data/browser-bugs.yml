@@ -100,16 +100,6 @@
 
 -
   browser: >
-    Safari (OS X)
-  summary: >
-    Scrollbar clipped in `select[multiple]` with padding.
-  upstream_bug: >
-    WebKit#128489
-  origin: >
-    Bootstrap#12536
-
--
-  browser: >
     Chrome
   summary: >
     `<input type="password">` sporadically causes bad widths on floated elements.
@@ -127,6 +117,16 @@
     Chromium#429375
   origin: >
     Bootstrap#14409
+
+-
+  browser: >
+    Safari (OS X)
+  summary: >
+    Scrollbar clipped in `select[multiple]` with padding.
+  upstream_bug: >
+    WebKit#128489
+  origin: >
+    Bootstrap#12536
 
 -
   browser: >
