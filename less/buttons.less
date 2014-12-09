@@ -11,6 +11,7 @@
   margin-bottom: 0; // For input.btn
   font-weight: @btn-font-weight;
   text-align: center;
+  text-decoration: none;
   vertical-align: middle;
   touch-action: manipulation;
   cursor: pointer;
@@ -33,7 +34,6 @@
   &:focus,
   &.focus {
     color: @btn-default-color;
-    text-decoration: none;
   }
 
   &:active,
@@ -88,6 +88,7 @@
 .btn-link {
   color: @link-color;
   font-weight: normal;
+  text-decoration: underline;
   border-radius: 0;
 
   &,
@@ -107,7 +108,6 @@
   &:hover,
   &:focus {
     color: @link-hover-color;
-    text-decoration: underline;
     background-color: transparent;
   }
   &[disabled],

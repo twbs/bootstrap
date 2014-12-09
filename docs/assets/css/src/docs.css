@@ -606,12 +606,12 @@ body {
   margin-left: 10px;
   font-size: 12px;
   font-weight: 500;
+  text-decoration: none;
   color: #999;
 }
 .back-to-top:hover,
 .bs-docs-theme-toggle:hover {
   color: #563d7c;
-  text-decoration: none;
 }
 .bs-docs-theme-toggle {
   margin-top: 0;
