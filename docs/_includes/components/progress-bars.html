@@ -26,7 +26,7 @@
 {% endhighlight %}
 
   <h3 id="progress-label">With label</h3>
-  <p>Remove the <code>.sr-only</code> class from within the progress bar to show a visible percentage. For low percentages, consider adding a <code>min-width</code> to ensure the label's text is fully visible.</p>
+  <p>Remove the <code>&lt;span&gt;</code> with <code>.sr-only</code> class from within the progress bar to show a visible percentage.</p>
   <div class="bs-example" data-example-id="progress-bar-with-label">
     <div class="progress">
       <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
@@ -41,29 +41,27 @@
   </div>
 </div>
 {% endhighlight %}
-
-  <h3 id="progress-low-percentages">Low percentages</h3>
-  <p>Progress bars representing low single digit percentages, as well as 0%, include a <code>min-width: 20px;</code> for legibility.</p>
+  <p>To ensure that the label text remains legible even for low percentages, consider adding a <code>min-width</code> to the progress bar.</p>
   <div class="bs-example" data-example-id="progress-bar-at-low-percentage">
     <div class="progress">
-      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;">
         0%
       </div>
     </div>
     <div class="progress">
-      <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
+      <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 2%;">
         2%
       </div>
     </div>
   </div>
 {% highlight html %}
 <div class="progress">
-  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;">
     0%
   </div>
 </div>
 <div class="progress">
-  <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
+  <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 2%;">
     2%
   </div>
 </div>
