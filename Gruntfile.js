@@ -18,14 +18,7 @@ module.exports = function (grunt) {
   var fs = require('fs');
   var path = require('path');
   var npmShrinkwrap = require('npm-shrinkwrap');
-  var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
-  var getLessVarsData = function () {
-    var filePath = path.join(__dirname, 'scss/_variables.scss');
-    var fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
-    var parser = new BsLessdocParser(fileContent);
-    return { sections: parser.parseFile() };
-  };
-  // var generateRawFiles = require('./grunt/bs-raw-files-generator.js');
+
   var generateCommonJSModule = require('./grunt/bs-commonjs-generator.js');
   var configBridge = grunt.file.readJSON('./grunt/configBridge.json', { encoding: 'utf8' });
 
@@ -130,10 +123,6 @@ module.exports = function (grunt) {
       core: {
         src: '<%= concat.bootstrap.dest %>',
         dest: 'dist/js/<%= pkg.name %>.min.js'
-      },
-      customize: {
-        src: configBridge.paths.customizerJs,
-        dest: 'docs/assets/js/customize.min.js'
       },
       docsJs: {
         src: configBridge.paths.docsJs,
@@ -265,21 +254,6 @@ module.exports = function (grunt) {
       }
     },
 
-    jade: {
-      options: {
-        pretty: true,
-        data: getLessVarsData
-      },
-      customizerVars: {
-        src: 'docs/_jade/customizer-variables.jade',
-        dest: 'docs/_includes/customizer-variables.html'
-      },
-      customizerNav: {
-        src: 'docs/_jade/customizer-nav.jade',
-        dest: 'docs/_includes/nav/customize.html'
-      }
-    },
-
     validation: {
       options: {
         charset: 'utf-8',
@@ -407,14 +381,6 @@ module.exports = function (grunt) {
   // This can be overzealous, so its changes should always be manually reviewed!
   grunt.registerTask('change-version-number', 'sed');
 
-  // task for building customizer
-  // grunt.registerTask('build-customizer', ['build-customizer-html', 'build-raw-files']);
-  // grunt.registerTask('build-customizer-html', 'jade');
-  // grunt.registerTask('build-raw-files', 'Add scripts/less files to customizer.', function () {
-  //   var banner = grunt.template.process('<%= banner %>');
-  //   generateRawFiles(grunt, banner);
-  // });
-
   grunt.registerTask('commonjs', 'Generate CommonJS entrypoint module in dist dir.', function () {
     var srcFiles = grunt.config.get('concat.bootstrap.src');
     var destFilepath = 'dist/js/npm.js';
@@ -423,7 +389,7 @@ module.exports = function (grunt) {
 
   // Docs task.
   grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
-  grunt.registerTask('docs-js', ['uglify:docsJs', 'uglify:customize']);
+  grunt.registerTask('docs-js', ['uglify:docsJs']);
   grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
   grunt.registerTask('docs', ['docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs']);
 
