@@ -135,7 +135,7 @@
   summary: >
     Scrollbar clipped in `select[multiple]` with padding.
   upstream_bug: >
-    WebKit#128489
+    WebKit#128489, Safari#19208483
   origin: >
     Bootstrap#12536
 
