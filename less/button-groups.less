@@ -202,6 +202,10 @@
   width: 100%;
   table-layout: fixed;
   border-collapse: separate;
+  > .btn:not(:last-child),
+  > .btn-group:not(:last-child) > .btn {
+    border-right-width: 0;
+  }
   > .btn,
   > .btn-group {
     float: none;
@@ -210,6 +214,31 @@
   }
   > .btn-group .btn {
     width: 100%;
+  }
+
+  .btn-default,
+  .btn-group > .btn-default {
+    .button-justified-border(@btn-default-border);
+  }
+  .btn-primary,
+  .btn-group > .btn-primary {
+    .button-justified-border(@btn-primary-border);
+  }
+  .btn-success,
+  .btn-group > .btn-success {
+    .button-justified-border(@btn-success-border);
+  }
+  .btn-info,
+  .btn-group > .btn-info {
+    .button-justified-border(@btn-info-border);
+  }
+  .btn-warning,
+  .btn-group > .btn-warning {
+    .button-justified-border(@btn-warning-border);
+  }
+  .btn-danger,
+  .btn-group > .btn-danger {
+    .button-justified-border(@btn-danger-border);
   }
 
   > .btn-group .dropdown-menu {

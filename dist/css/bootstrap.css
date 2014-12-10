@@ -3665,6 +3665,10 @@ tbody.collapse.in {
   table-layout: fixed;
   border-collapse: separate;
 }
+.btn-group-justified > .btn:not(:last-child),
+.btn-group-justified > .btn-group:not(:last-child) > .btn {
+  border-right-width: 0;
+}
 .btn-group-justified > .btn,
 .btn-group-justified > .btn-group {
   display: table-cell;
@@ -3673,6 +3677,66 @@ tbody.collapse.in {
 }
 .btn-group-justified > .btn-group .btn {
   width: 100%;
+}
+.btn-group-justified .btn-default:hover + .btn,
+.btn-group-justified .btn-group > .btn-default:hover + .btn,
+.btn-group-justified .btn-default:focus + .btn,
+.btn-group-justified .btn-group > .btn-default:focus + .btn,
+.btn-group-justified .btn-default:hover + .btn-group > .btn,
+.btn-group-justified .btn-group > .btn-default:hover + .btn-group > .btn,
+.btn-group-justified .btn-default:focus + .btn-group > .btn,
+.btn-group-justified .btn-group > .btn-default:focus + .btn-group > .btn {
+  border-left-color: #adadad;
+}
+.btn-group-justified .btn-primary:hover + .btn,
+.btn-group-justified .btn-group > .btn-primary:hover + .btn,
+.btn-group-justified .btn-primary:focus + .btn,
+.btn-group-justified .btn-group > .btn-primary:focus + .btn,
+.btn-group-justified .btn-primary:hover + .btn-group > .btn,
+.btn-group-justified .btn-group > .btn-primary:hover + .btn-group > .btn,
+.btn-group-justified .btn-primary:focus + .btn-group > .btn,
+.btn-group-justified .btn-group > .btn-primary:focus + .btn-group > .btn {
+  border-left-color: #204d74;
+}
+.btn-group-justified .btn-success:hover + .btn,
+.btn-group-justified .btn-group > .btn-success:hover + .btn,
+.btn-group-justified .btn-success:focus + .btn,
+.btn-group-justified .btn-group > .btn-success:focus + .btn,
+.btn-group-justified .btn-success:hover + .btn-group > .btn,
+.btn-group-justified .btn-group > .btn-success:hover + .btn-group > .btn,
+.btn-group-justified .btn-success:focus + .btn-group > .btn,
+.btn-group-justified .btn-group > .btn-success:focus + .btn-group > .btn {
+  border-left-color: #398439;
+}
+.btn-group-justified .btn-info:hover + .btn,
+.btn-group-justified .btn-group > .btn-info:hover + .btn,
+.btn-group-justified .btn-info:focus + .btn,
+.btn-group-justified .btn-group > .btn-info:focus + .btn,
+.btn-group-justified .btn-info:hover + .btn-group > .btn,
+.btn-group-justified .btn-group > .btn-info:hover + .btn-group > .btn,
+.btn-group-justified .btn-info:focus + .btn-group > .btn,
+.btn-group-justified .btn-group > .btn-info:focus + .btn-group > .btn {
+  border-left-color: #269abc;
+}
+.btn-group-justified .btn-warning:hover + .btn,
+.btn-group-justified .btn-group > .btn-warning:hover + .btn,
+.btn-group-justified .btn-warning:focus + .btn,
+.btn-group-justified .btn-group > .btn-warning:focus + .btn,
+.btn-group-justified .btn-warning:hover + .btn-group > .btn,
+.btn-group-justified .btn-group > .btn-warning:hover + .btn-group > .btn,
+.btn-group-justified .btn-warning:focus + .btn-group > .btn,
+.btn-group-justified .btn-group > .btn-warning:focus + .btn-group > .btn {
+  border-left-color: #d58512;
+}
+.btn-group-justified .btn-danger:hover + .btn,
+.btn-group-justified .btn-group > .btn-danger:hover + .btn,
+.btn-group-justified .btn-danger:focus + .btn,
+.btn-group-justified .btn-group > .btn-danger:focus + .btn,
+.btn-group-justified .btn-danger:hover + .btn-group > .btn,
+.btn-group-justified .btn-group > .btn-danger:hover + .btn-group > .btn,
+.btn-group-justified .btn-danger:focus + .btn-group > .btn,
+.btn-group-justified .btn-group > .btn-danger:focus + .btn-group > .btn {
+  border-left-color: #ac2925;
 }
 .btn-group-justified > .btn-group .dropdown-menu {
   left: auto;

@@ -43,6 +43,16 @@
   }
 }
 
+.button-justified-border(@border) {
+  &:hover,
+  &:focus {
+    + .btn,
+    + .btn-group > .btn {
+      border-left-color: darken(@border, 12%);
+    }
+  }
+}
+
 // Button sizes
 .button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
   padding: @padding-vertical @padding-horizontal;
