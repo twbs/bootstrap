@@ -87,26 +87,6 @@
 
 
 
-
-
-
-
-
-* TASKS *********************************************************************************************
-
-
-
-- modal carousel animado
-- pasar a jekyll o algo
-
-
-
-
-
-
-
-
-
 MINDMAP fixes
 - primero section luego .list-group-content [cambiar nombre? siempre están al lado de list-group....]
 - buscar .list-group-multi y hacer algo al respecto................
@@ -127,6 +107,41 @@ MINDMAP fixes
 	noticias
 	busqueda
 	miba
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* TASKS *********************************************************************************************
+
+
+
+- modal carousel animado
+- pasar a jekyll o algo
+
+
+
+
+
+
+
 
 
 
