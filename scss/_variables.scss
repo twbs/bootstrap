@@ -294,7 +294,7 @@ $screen-xs-max:              ($screen-sm-min - .1);
 //== Grid system
 //
 //## Define your custom responsive grid.
-
+$grid-breakpoints: (xs sm md lg xl);
 //** Number of columns in the grid.
 $grid-columns:               12;
 //** Padding between columns. Gets divided in half for the left and right.
