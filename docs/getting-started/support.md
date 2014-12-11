@@ -19,7 +19,7 @@ Bootstrap supports the **latest, stable releases** of all major browsers and pla
         <th>Internet Explorer</th>
         <th>Opera</th>
         <th>Safari</th>
-        <th>Android Browser & WebView</th>
+        <th>Android Browser &amp; WebView</th>
       </tr>
     </thead>
     <tbody>
