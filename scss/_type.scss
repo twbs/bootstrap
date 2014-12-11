@@ -142,28 +142,11 @@ dd {
   margin-left: 0; // Undo browser default
 }
 
-// Horizontal description lists
-//
-// Defaults to being stacked without any of the below styles applied, until the
-// grid breakpoint is reached (default of ~768px).
-
+// Horizontal description lists w/ grid classes
 .dl-horizontal {
-  dd {
-    @include clearfix(); // Clear the floated `dt` if an empty `dd` is present
-  }
-
-  @media (min-width: $grid-float-breakpoint) {
-    dt {
-      float: left;
-      width: ($dl-horizontal-offset - 20);
-      clear: left;
-      text-align: right;
-      @include text-overflow();
-    }
-    dd {
-      margin-left: $dl-horizontal-offset;
-    }
-  }
+  margin-right: -$grid-gutter-width;
+  margin-left: -$grid-gutter-width;
+  @include clearfix;
 }
 
 

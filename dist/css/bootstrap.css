@@ -486,27 +486,16 @@ dd {
   margin-left: 0;
 }
 
-.dl-horizontal dd:before, .dl-horizontal dd:after {
+.dl-horizontal {
+  margin-right: -1.5rem;
+  margin-left: -1.5rem;
+}
+.dl-horizontal:before, .dl-horizontal:after {
   display: table; 
   content: " ";
 }
-.dl-horizontal dd:after {
+.dl-horizontal:after {
   clear: both;
-}
-@media (min-width: 34em) {
-  .dl-horizontal dt {
-    float: left;
-    width: 160px;
-    overflow: hidden;
-    clear: left;
-    text-align: right;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .dl-horizontal dd {
-    margin-left: 180px;
-  }
 }
 
 abbr[title], abbr[data-original-title] {
@@ -5069,6 +5058,12 @@ a.list-group-item-state.active, a.list-group-item-state.active:hover, a.list-gro
 }
 
 .text-nowrap {
+  white-space: nowrap;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 

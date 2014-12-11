@@ -79,6 +79,7 @@
 .text-center         { text-align: center; }
 .text-justify        { text-align: justify; }
 .text-nowrap         { white-space: nowrap; }
+.text-truncate       { @include text-truncate; }
 
 // Transformation
 .text-lowercase      { text-transform: lowercase; }

@@ -16,7 +16,7 @@
 		"../../../scss/mixins/_size.scss",
 		"../../../scss/mixins/_tab-focus.scss",
 		"../../../scss/mixins/_text-emphasis.scss",
-		"../../../scss/mixins/_text-overflow.scss",
+		"../../../scss/mixins/_text-truncate.scss",
 		"../../../scss/mixins/_alert.scss",
 		"../../../scss/mixins/_buttons.scss",
 		"../../../scss/mixins/_pagination.scss",
