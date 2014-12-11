@@ -352,8 +352,3 @@ Align terms and descriptions horizontally by using our grid system's predefined 
   <dd class="col-sm-9">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
 </dl>
 {% endexample %}
-
-<div class="bs-callout bs-callout-info">
-  <h4>Auto-truncating</h4>
-  <p>Horizontal description lists will truncate terms that are too long to fit in the left column with <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.</p>
-</div>
