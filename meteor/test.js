@@ -4,11 +4,11 @@ var packageName  // there seems to be no official way of finding out the name of
 
 // Check that the font files are downloadable. Meteor places assets at /packages/<packageName>/.
 // Only 'woff' for now, but 'woff2' may become available - https://github.com/FortAwesome/Font-Awesome/pull/5062#discussion_r20936453
-['woff'].forEach(function (font) {
+['eot', 'svg', 'ttf', 'woff'].forEach(function (font) {
   Tinytest.addAsync(font + ' fonts are shipped', function (test, done) {
 
     // curiously enough, the 'local-test:...' package isn't loaded into Package before calling Tinytest, so we can't do this determination outside this loop
-    if (!packageName) 
+    if (!packageName)
       Object.keys(Package).forEach(function(p) {
         if (p.search(/local-test/) > -1)
           packageName = p.replace('local-test:', '')  // we should stop the loop, but forEach can't do that
@@ -33,7 +33,7 @@ var packageName  // there seems to be no official way of finding out the name of
           test.fail({message: 'Font failed to load'})
         } else {
           // if the file is 404, Meteor will redirect to / and return the Meteor.js boilerplate
-          test.isTrue(result.content.length > 20000, font + ' font could not be downloaded')
+          test.isTrue(result.content.length > 15000, font + ' font could not be downloaded')
         }
 
         done()
@@ -60,13 +60,20 @@ plugins.forEach(function (plugin) {
 
 
     // TODO ideally we'd get the htmls straight from this repo, but no idea how to do this from TinyTest - http://stackoverflow.com/questions/27180892/pull-an-html-file-into-a-tinytest
-    HTTP.get('https://rawgit.com/twbs/bootstrap/master/js/tests/visual/' + plugin + '.html', function callback(error, result) {
+    HTTP.get('http://rawgit.com/twbs/bootstrap/master/js/tests/visual/' + plugin + '.html', function callback(error, result) {
       if (error) {
         test.fail('Error getting the test file. Do we have an Internet connection to rawgit.com?')
       } else {
         // [^] matches across newlines. Stay within the container div, or else the fragment will attempt to load resources on its own.
         bootstrapDropZone.innerHTML = result.content.match(/<div[^]+<\/div>/)
-        test.ok({message: 'Test passed if the display looks OK *and* clicking dropdowns/modals/popovers works.'})
+        test.ok({message: 'Test passed if the display looks OK *and* clicking dropdowns/popovers/tooltips works.'})
+        // only does anything after loading the 'dropdown' plugin test
+        $('[data-toggle="dropdown"]').dropdown()
+        // only does anything after loading the 'popover' plugin test
+        $('[data-toggle="popover"]').popover()
+        // only does anything after loading the 'tooltip' plugin test
+        $('[data-toggle="tooltip"]').tooltip()
+        // don't initialize the modals because that messes up the Tinytest runner HTML
       }
 
       done()

@@ -373,11 +373,25 @@ module.exports = function (grunt) {
       npmUpdate: {
         command: 'npm update'
       },
+      meteorInit: {
+        command: [
+          // Make sure Meteor is installed, per https://meteor.com/install.
+          // The curl'ed script is safe; takes 2 minutes to read source & check.
+          'type meteor >/dev/null 2>&1 || { curl https://install.meteor.com/ | sh; }',
+          // Meteor expects package.js to be in the root directory
+          // of the checkout, so copy it there temporarily
+          'cp meteor/package.js .'
+        ].join(';')
+      },
+      meteorCleanup: {
+        // remove build files and package.js
+        command: 'rm -rf .build.* versions.json package.js'
+      },
       meteorTest: {
-        command: 'meteor/runtests.sh'
+        command: 'node_modules/.bin/spacejam --mongo-url mongodb:// test-packages ./'
       },
       meteorPublish: {
-        command: 'meteor/publish.sh'
+        command: 'meteor publish'
       }
     }
   });
@@ -479,11 +493,7 @@ module.exports = function (grunt) {
   });
 
   // Meteor tasks
-  grunt.registerTask('meteor-test', 'exec:meteorTest');
-  grunt.registerTask('meteor-publish', 'exec:meteorPublish');
-  // Ideally we'd run tests before publishing, but the chances of tests breaking (given that
-  // Meteor is quite orthogonal to Bootstrap) are so small that it's not worth the maintainer's time
-  // grunt.regsterTask('meteor', ['exec:meteorTest', 'exec:meteorPublish']);
-  grunt.registerTask('meteor', 'exec:meteorPublish');
-
+  grunt.registerTask('meteor-test', ['exec:meteorInit', 'exec:meteorTest', 'exec:meteorCleanup']);
+  grunt.registerTask('meteor-publish', ['exec:meteorInit', 'exec:meteorPublish', 'exec:meteorCleanup']);
+  grunt.registerTask('meteor', ['exec:meteorInit', 'exec:meteorTest', 'exec:meteorPublish', 'exec:meteorCleanup']);
 };
