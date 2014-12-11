@@ -19,6 +19,7 @@ Bootstrap supports the **latest, stable releases** of all major browsers and pla
         <th>Internet Explorer</th>
         <th>Opera</th>
         <th>Safari</th>
+        <th>Android Browser & WebView</th>
       </tr>
     </thead>
     <tbody>
@@ -29,6 +30,7 @@ Bootstrap supports the **latest, stable releases** of all major browsers and pla
         <td class="text-muted" rowspan="3" style="vertical-align: middle;">N/A</td>
         <td class="text-danger">Not supported</td>
         <td class="text-muted">N/A</td>
+        <td class="text-success">Android v5.0+<br>supported</td>
       </tr>
       <tr>
         <th scope="row">iOS</th>
@@ -36,6 +38,7 @@ Bootstrap supports the **latest, stable releases** of all major browsers and pla
         <td class="text-muted">N/A</td>
         <td class="text-danger">Not supported</td>
         <td class="text-success">Supported</td>
+        <td class="text-muted">N/A</td>
       </tr>
       <tr>
         <th scope="row">Mac OS X</th>
@@ -43,6 +46,7 @@ Bootstrap supports the **latest, stable releases** of all major browsers and pla
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
+        <td class="text-muted">N/A</td>
       </tr>
       <tr>
         <th scope="row">Windows</th>
@@ -51,6 +55,7 @@ Bootstrap supports the **latest, stable releases** of all major browsers and pla
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
         <td class="text-danger">Not supported</td>
+        <td class="text-muted">N/A</td>
       </tr>
     </tbody>
   </table>
