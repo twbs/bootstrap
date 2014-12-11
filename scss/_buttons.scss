@@ -11,14 +11,14 @@
   margin-bottom: 0; // For input.btn
   font-weight: $btn-font-weight;
   text-align: center;
+  white-space: nowrap;
   vertical-align: middle;
   touch-action: manipulation;
   cursor: pointer;
+  user-select: none;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: $border-width solid transparent;
-  white-space: nowrap;
   @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-base, $line-height-base, $border-radius-base);
-  user-select: none;
   transition: all .2s ease-in-out;
 
   &,
@@ -38,16 +38,16 @@
 
   &:active,
   &.active {
-    outline: 0;
     background-image: none;
+    outline: 0;
     @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
   }
 
   &.disabled,
   &[disabled],
   fieldset[disabled] & {
-    cursor: $cursor-disabled;
     pointer-events: none; // Future-proof disabling of clicks
+    cursor: $cursor-disabled;
     opacity: .65;
     @include box-shadow(none);
   }
@@ -82,8 +82,8 @@
 
 // Make a button look and behave like a link
 .btn-link {
-  color: $link-color;
   font-weight: normal;
+  color: $link-color;
   border-radius: 0;
 
   &,

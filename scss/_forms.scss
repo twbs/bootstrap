@@ -8,13 +8,13 @@
 // Restyle and baseline non-control form elements.
 
 fieldset {
-  padding: 0;
-  margin: 0;
-  border: 0;
   // Chrome and Firefox set a `min-width: min-content;` on fieldsets,
   // so we reset that to ensure it behaves more like a standard block element.
   // See https://github.com/twbs/bootstrap/issues/12359.
   min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
 
 legend {
@@ -233,8 +233,8 @@ input[type="search"] {
 .checkbox input[type="checkbox"],
 .checkbox-inline input[type="checkbox"] {
   position: absolute;
-  margin-left: -20px;
   margin-top: 4px \9;
+  margin-left: -20px;
 }
 
 .radio + .radio,
@@ -248,8 +248,8 @@ input[type="search"] {
   display: inline-block;
   padding-left: 20px;
   margin-bottom: 0;
-  vertical-align: middle;
   font-weight: normal;
+  vertical-align: middle;
   cursor: pointer;
 }
 .radio-inline + .radio-inline,
@@ -304,8 +304,8 @@ input[type="checkbox"] {
 
   &.input-lg,
   &.input-sm {
-    padding-left: 0;
     padding-right: 0;
+    padding-left: 0;
   }
 }
 
@@ -382,11 +382,12 @@ input[type="checkbox"] {
 // Reposition feedback icon if input has visible label above
 .has-feedback label {
 
-  & ~ .form-control-feedback {
-     top: ($line-height-computed + 5); // Height of the `label` and its margin
+  ~ .form-control-feedback {
+    top: ($line-height-computed + 5); // Height of the `label` and its margin
   }
+
   &.sr-only ~ .form-control-feedback {
-     top: 0;
+    top: 0;
   }
 }
 
@@ -501,9 +502,9 @@ input[type="checkbox"] {
   .checkbox,
   .radio-inline,
   .checkbox-inline {
+    padding-top: ($padding-base-vertical + .1); // Default padding plus a border
     margin-top: 0;
     margin-bottom: 0;
-    padding-top: ($padding-base-vertical + .1); // Default padding plus a border
   }
   // Account for padding we're adding to ensure the alignment and of help text
   // and other content below items
@@ -521,9 +522,9 @@ input[type="checkbox"] {
   // labels on narrow viewports stack the same as a default form example.
   @include media-sm {
     .control-label {
-      text-align: right;
-      margin-bottom: 0;
       padding-top: ($padding-base-vertical + .1); // Default padding plus a border
+      margin-bottom: 0;
+      text-align: right;
     }
   }
 

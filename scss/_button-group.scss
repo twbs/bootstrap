@@ -106,12 +106,12 @@
 
 // Give the line between buttons some depth
 .btn-group > .btn + .dropdown-toggle {
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 .btn-group > .btn-lg + .dropdown-toggle {
-  padding-left: 12px;
   padding-right: 12px;
+  padding-left: 12px;
 }
 
 // The clickable button for toggling the menu
@@ -210,8 +210,8 @@
 
   > .btn,
   > .btn-group {
-    float: none;
     display: table-cell;
+    float: none;
     width: 1%;
   }
 

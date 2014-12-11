@@ -10,12 +10,12 @@
 
 .carousel-inner {
   position: relative;
-  overflow: hidden;
   width: 100%;
+  overflow: hidden;
 
   > .item {
-    display: none;
     position: relative;
+    display: none;
     transition: .6s ease-in-out left;
 
     // Account for jankitude on images
@@ -33,19 +33,19 @@
 
       &.next,
       &.active.right {
-        transform: translate3d(100%, 0, 0);
         left: 0;
+        transform: translate3d(100%, 0, 0);
       }
       &.prev,
       &.active.left {
-        transform: translate3d(-100%, 0, 0);
         left: 0;
+        transform: translate3d(-100%, 0, 0);
       }
       &.next.left,
       &.prev.right,
       &.active {
-        transform: translate3d(0, 0, 0);
         left: 0;
+        transform: translate3d(0, 0, 0);
       }
     }
   }
@@ -93,14 +93,14 @@
 .carousel-control {
   position: absolute;
   top: 0;
-  left: 0;
   bottom: 0;
+  left: 0;
   width: $carousel-control-width;
-  opacity: $carousel-control-opacity;
   font-size: $carousel-control-font-size;
   color: $carousel-control-color;
   text-align: center;
   text-shadow: $carousel-text-shadow;
+  opacity: $carousel-control-opacity;
   // We can't have this transition here because WebKit cancels the carousel
   // animation if you trip this while in the middle of another animation.
 
@@ -109,17 +109,17 @@
     @include gradient-horizontal($start-color: rgba(0,0,0,.5), $end-color: rgba(0,0,0,.0001));
   }
   &.right {
-    left: auto;
     right: 0;
+    left: auto;
     @include gradient-horizontal($start-color: rgba(0,0,0,.0001), $end-color: rgba(0,0,0,.5));
   }
 
   // Hover/focus state
   &:hover,
   &:focus {
-    outline: 0;
     color: $carousel-control-color;
     text-decoration: none;
+    outline: 0;
     opacity: .9;
   }
 
@@ -130,7 +130,7 @@
     top: 50%;
     z-index: 5;
     display: inline-block;
-    width:  20px;
+    width: 20px;
     height: 20px;
     margin-top: -10px;
     font-family: serif;
@@ -146,12 +146,12 @@
   }
   .icon-prev {
     &:before {
-      content: '\2039';// SINGLE LEFT-POINTING ANGLE QUOTATION MARK (U+2039)
+      content: "\2039";// SINGLE LEFT-POINTING ANGLE QUOTATION MARK (U+2039)
     }
   }
   .icon-next {
     &:before {
-      content: '\203a';// SINGLE RIGHT-POINTING ANGLE QUOTATION MARK (U+203A)
+      content: "\203a";// SINGLE RIGHT-POINTING ANGLE QUOTATION MARK (U+203A)
     }
   }
 }
@@ -167,32 +167,31 @@
   left: 50%;
   z-index: 15;
   width: 60%;
-  margin-left: -30%;
   padding-left: 0;
-  list-style: none;
+  margin-left: -30%;
   text-align: center;
+  list-style: none;
 
   li {
     display: inline-block;
-    width:  10px;
+    width: 10px;
     height: 10px;
     margin: 1px;
     text-indent: -999px;
-    border: 1px solid $carousel-indicator-border-color;
-    border-radius: 10px;
     cursor: pointer;
-
     // IE9 hack for event handling
     //
     // Internet Explorer 9 does not support clicks on elements without a set
     // `background-color`. We cannot use `filter` since that's not viewed as a
     // background color by the browser. Thus, a hack is needed.
     background-color: rgba(0,0,0,0); // IE9
+    border: 1px solid $carousel-indicator-border-color;
+    border-radius: 10px;
   }
   .active {
-    margin: 0;
-    width:  12px;
+    width: 12px;
     height: 12px;
+    margin: 0;
     background-color: $carousel-indicator-active-bg;
   }
 }
@@ -202,9 +201,9 @@
 // Hidden by default for smaller viewports
 .carousel-caption {
   position: absolute;
-  left: 15%;
   right: 15%;
   bottom: 20px;
+  left: 15%;
   z-index: 10;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -212,7 +211,7 @@
   text-align: center;
   text-shadow: $carousel-text-shadow;
 
-  & .btn {
+  .btn {
     text-shadow: none; // No shadow for button elements in carousel-caption
   }
 }
@@ -239,8 +238,8 @@
 
   // Show and left align the captions
   .carousel-caption {
-    left: 20%;
     right: 20%;
+    left: 20%;
     padding-bottom: 30px;
   }
 

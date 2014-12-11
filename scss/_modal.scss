@@ -14,24 +14,22 @@
 
 // Container that the modal scrolls within
 .modal {
-  display: none;
-  overflow: hidden;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: $zindex-modal;
-  -webkit-overflow-scrolling: touch;
-
+  display: none;
+  overflow: hidden;
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
   outline: 0;
+  -webkit-overflow-scrolling: touch;
 
   // When fading in the modal, animate it to slide down
   &.fade .modal-dialog {
-    transform: translate(0, -25%);
-    transform: transition .3s ease-out;
+    transform: transition .3s ease-out, translate(0, -25%);
   }
   &.in .modal-dialog { transform: translate(0, 0); }
 }
@@ -51,10 +49,10 @@
 .modal-content {
   position: relative;
   background-color: $modal-content-bg;
+  background-clip: padding-box;
   border: 1px solid $modal-content-border-color;
   border-radius: $border-radius-lg;
   @include box-shadow(0 3px 9px rgba(0,0,0,.5));
-  background-clip: padding-box;
   // Remove focus outline from opened modal
   outline: 0;
 }
@@ -74,9 +72,9 @@
 // Modal header
 // Top section of the modal w/ title and dismiss
 .modal-header {
+  min-height: ($modal-title-padding + $modal-title-line-height);
   padding: $modal-title-padding;
   border-bottom: 1px solid $modal-header-border-color;
-  min-height: ($modal-title-padding + $modal-title-line-height);
 }
 // Close icon
 .modal-header .close {
@@ -105,8 +103,8 @@
 
   // Properly space out buttons
   .btn + .btn {
-    margin-left: 5px;
     margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+    margin-left: 5px;
   }
   // but override that for button groups
   .btn-group .btn + .btn {

@@ -9,8 +9,8 @@
 
 .list-group {
   // No need to set list-style: none; since .list-group-item is block level
-  margin-bottom: 20px;
   padding-left: 0; // reset padding because ul and ol
+  margin-bottom: 20px;
 }
 
 
@@ -53,8 +53,8 @@ a.list-group-item {
   // Hover state
   &:hover,
   &:focus {
-    text-decoration: none;
     color: $list-group-link-hover-color;
+    text-decoration: none;
     background-color: $list-group-hover-bg;
   }
 }
@@ -64,9 +64,9 @@ a.list-group-item {
   &.disabled,
   &.disabled:hover,
   &.disabled:focus {
-    background-color: $list-group-disabled-bg;
     color: $list-group-disabled-color;
     cursor: $cursor-disabled;
+    background-color: $list-group-disabled-bg;
 
     // Force color to inherit for custom content
     .list-group-item-heading {
