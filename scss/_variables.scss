@@ -299,11 +299,6 @@ $grid-breakpoints: (xs sm md lg xl);
 $grid-columns:               12 !default;
 //** Padding between columns. Gets divided in half for the left and right.
 $grid-gutter-width:          1.5rem !default;
-// Navbar collapse
-//** Point at which the navbar becomes uncollapsed.
-$grid-float-breakpoint:      $screen-sm-min !default;
-//** Point at which the navbar begins collapsing.
-$grid-float-breakpoint-max:  ($grid-float-breakpoint - 1) !default;
 
 
 //== Container sizes
