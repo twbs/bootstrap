@@ -11,9 +11,7 @@
 .navbar {
   position: relative;
   padding: $spacer;
-  /*min-height: $navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)*/
   margin-bottom: $navbar-margin-bottom;
-  /*border: 1px solid transparent;*/
 
   // Prevent floats from breaking the navbar
   @include clearfix();
@@ -73,7 +71,6 @@
   margin-bottom: 0; // For headings
   font-size: $font-size-lg;
   line-height: $line-height-computed;
-  /*height: $navbar-height;*/
 
   > a:hover,
   > a:focus {
@@ -172,9 +169,9 @@
 // our navbars.
 
 .navbar-form {
-  margin-left: -$navbar-padding-horizontal;
-  margin-right: -$navbar-padding-horizontal;
   padding: 10px $navbar-padding-horizontal;
+  margin-right: -$navbar-padding-horizontal;
+  margin-left: -$navbar-padding-horizontal;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   @include box-shadow(inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1));
@@ -198,11 +195,11 @@
   // Undo 100% width for pull classes
   @media (min-width: $grid-float-breakpoint) {
     width: auto;
-    border: 0;
-    margin-left: 0;
-    margin-right: 0;
     padding-top: 0;
     padding-bottom: 0;
+    margin-right: 0;
+    margin-left: 0;
+    border: 0;
     @include box-shadow(none);
   }
 }
@@ -247,8 +244,8 @@
 
   @media (min-width: $grid-float-breakpoint) {
     float: left;
-    margin-left: $navbar-padding-horizontal;
     margin-right: $navbar-padding-horizontal;
+    margin-left: $navbar-padding-horizontal;
   }
 }
 
@@ -286,6 +283,7 @@
 
   .navbar-brand {
     color: $navbar-default-brand-color;
+    
     &:hover,
     &:focus {
       color: $navbar-default-brand-hover-color;
@@ -348,8 +346,8 @@
       &,
       &:hover,
       &:focus {
-        background-color: $navbar-default-link-active-bg;
         color: $navbar-default-link-active-color;
+        background-color: $navbar-default-link-active-bg;
       }
     }
 
@@ -506,8 +504,8 @@
       &,
       &:hover,
       &:focus {
-        background-color: $navbar-inverse-link-active-bg;
         color: $navbar-inverse-link-active-color;
+        background-color: $navbar-inverse-link-active-bg;
       }
     }
 

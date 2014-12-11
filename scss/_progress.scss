@@ -1,5 +1,3 @@
-/*csslint empty-rules: false, important: true*/
-
 //
 // Progress bars
 // --------------------------------------------------
@@ -26,12 +24,12 @@
   margin-bottom: $line-height-computed;
 }
 .progress[value] {
-  // Reset the default appearance
-  appearance: none;
-  // Remove Firefox and Opera border
-  border: 0;
   // IE10 uses `color` to set the bar background-color
   color: #0074d9;
+  // Remove Firefox and Opera border
+  border: 0;
+  // Reset the default appearance
+  appearance: none;
 }
 .progress[value]::-webkit-progress-bar {
   background-color: #eee;
@@ -94,8 +92,8 @@
     border-bottom-left-radius: $border-radius-base;
   }
   .progress[width^="0"] {
-    color: $gray-light;
     min-width: 2rem;
+    color: $gray-light;
     background-color: transparent;
     background-image: none;
   }

@@ -76,8 +76,8 @@ small,
 
 mark,
 .mark {
-  background-color: $state-warning-bg;
   padding: .2em;
+  background-color: $state-warning-bg;
 }
 
 
@@ -99,6 +99,7 @@ ul,
 ol {
   margin-top: 0;
   margin-bottom: ($line-height-computed / 2);
+  
   ul,
   ol {
     margin-bottom: 0;
@@ -120,8 +121,8 @@ ol {
 
   > li {
     display: inline-block;
-    padding-left: 5px;
     padding-right: 5px;
+    padding-left: 5px;
   }
 }
 
@@ -203,7 +204,7 @@ blockquote {
     color: $blockquote-small-color;
 
     &:before {
-      content: '\2014 \00A0'; // em dash, nbsp
+      content: "\2014 \00A0"; // em dash, nbsp
     }
   }
 }
@@ -212,15 +213,15 @@ blockquote {
 .blockquote-reverse {
   padding-right: $spacer;
   padding-left: 0;
+  text-align: right;
   border-right: .25rem solid $blockquote-border-color;
   border-left: 0;
-  text-align: right;
 
   // Account for citation
   footer {
-    &:before { content: ''; }
+    &:before { content: ""; }
     &:after {
-      content: '\00A0 \2014'; // nbsp, em dash
+      content: "\00A0 \2014"; // nbsp, em dash
     }
   }
 }

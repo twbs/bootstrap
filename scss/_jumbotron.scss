@@ -29,8 +29,8 @@
 
     .container &,
     .container-fluid & {
-      padding-left:  ($jumbotron-padding * 2);
       padding-right: ($jumbotron-padding * 2);
+      padding-left: ($jumbotron-padding * 2);
     }
   }
 

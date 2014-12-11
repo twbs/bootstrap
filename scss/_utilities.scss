@@ -29,8 +29,8 @@
   padding: $spacer;
 }
 .p-h {
-  padding-left: $spacer;
   padding-right: $spacer;
+  padding-left: $spacer;
 }
 .p-v {
   padding-top: $spacer;
@@ -41,8 +41,8 @@
 .pos-f-t {
   position: fixed;
   top: 0;
-  left: 0;
   right: 0;
+  left: 0;
   z-index: $zindex-navbar-fixed;
 }
 

@@ -103,15 +103,15 @@
 }
 
 @include media-sm-max {
-  @include responsive-invisibility('.hidden-sm');
+  @include responsive-invisibility(".hidden-sm");
 }
 
 @include media-md-max {
-  @include responsive-invisibility('.hidden-md');
+  @include responsive-invisibility(".hidden-md");
 }
 
 @include media-lg {
-  @include responsive-invisibility('.hidden-lg');
+  @include responsive-invisibility(".hidden-lg");
 }
 
 
@@ -143,6 +143,6 @@
 
 .hidden-print {
   @media print {
-    @include responsive-invisibility('.hidden-print');
+    @include responsive-invisibility(".hidden-print");
   }
 }

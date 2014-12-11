@@ -33,8 +33,8 @@
     &:hover,
     &:focus {
       color: $nav-disabled-link-hover-color;
-      background-color: transparent;
       cursor: $cursor-disabled;
+      background-color: transparent;
     }
   }
 }
@@ -120,16 +120,16 @@
     &:hover,
     &:focus {
       color: $component-active-color;
-      background-color: $component-active-bg;
       cursor: default;
+      background-color: $component-active-bg;
     }
   }
 }
 
 .nav-stacked {
   .nav-item {
-    float: none;
     display: block;
+    float: none;
 
     + .nav-item {
       margin-top: .2rem;

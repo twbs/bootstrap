@@ -101,9 +101,9 @@
 //
 
 .card-blockquote {
-  border-left: 0;
   padding: 0;
   margin-bottom: 0;
+  border-left: 0;
 }
 
 // Card image
@@ -143,14 +143,14 @@
   border-spacing: 1.25rem 0;
 
   .card {
-    float: none;
     display: table-cell;
+    float: none;
     max-width: none;
   }
 }
 .card-set-wrapper {
-  margin-left: -1.25rem;
   margin-right: -1.25rem;
+  margin-left: -1.25rem;
 }
 
 
@@ -164,13 +164,13 @@
   table-layout: fixed;
 
   .card {
-    float: none;
     display: table-cell;
+    float: none;
     max-width: none;
 
     + .card {
-      border-left: 0;
       margin-left: 0;
+      border-left: 0;
     }
   }
 }
@@ -181,12 +181,11 @@
 //
 
 .card-columns {
-          column-count: 3;
-          column-gap: 1rem;
+  column-count: 3;
+  column-gap: 1rem;
 
   .card {
     display: inline-block;
     width: 100%; // Don't let them exceed the column width
-    /*margin-bottom: 1rem;*/
   }
 }
