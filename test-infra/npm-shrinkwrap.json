@@ -3336,8 +3336,8 @@
       }
     },
     "grunt-saucelabs": {
-      "version": "8.3.3",
-      "resolved": "https://registry.npmjs.org/grunt-saucelabs/-/grunt-saucelabs-8.3.3.tgz",
+      "version": "8.4.0",
+      "resolved": "https://registry.npmjs.org/grunt-saucelabs/-/grunt-saucelabs-8.4.0.tgz",
       "dependencies": {
         "colors": {
           "version": "0.6.2",
