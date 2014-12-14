@@ -90,6 +90,26 @@ body {
 
 
 /*
+ * Fancy skip link
+ *
+ * Make it look a bit less "bare bones"
+ */
+
+#skippy {
+  display: block;
+  padding: 1em;
+  color: #fff;
+  background-color: #6F5499;
+  outline: 0;
+}
+
+#skippy .skiplink-text {
+  padding: 0.5em;
+  outline: 1px dotted;
+}
+
+
+/*
  * Main navigation
  *
  * Turn the `.navbar` at the top of the docs purple.
