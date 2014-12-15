@@ -187,7 +187,6 @@ module.exports = function (grunt) {
 
     cssmin: {
       options: {
-        compatibility: 'ie8',
         keepSpecialComments: '*',
         noAdvanced: true
       },
