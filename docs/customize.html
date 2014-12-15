@@ -22,6 +22,22 @@ lead: Customize Bootstrap's components, Less variables, and jQuery plugins to ge
     Please take a second to <a href="http://browsehappy.com/">upgrade to a more modern browser</a>.
   </div>
 <![endif]-->
+<style>
+/*
+CSS hack to disable the Customizer in Firefox
+because file downloads fail randomly (as of FF 34).
+See https://github.com/twbs/bootstrap/issues/15016
+Hack: http://browserhacks.com/#hack-8e9b5504d9fda44ec75169381b3c3157
+Not in docs.css to avoid CSSLint breaking due to https://github.com/CSSLint/parser-lib/issues/93
+*/
+@supports (-moz-appearance: meterbar) {
+  .bs-customizer,
+  .bs-customizer-import,
+  .bs-docs-sidebar {
+    display: none;
+  }
+}
+</style>
 
 <!-- Customizer form -->
 
