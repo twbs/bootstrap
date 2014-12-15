@@ -2412,7 +2412,7 @@ QUnit.log(function( details ) {
 
 		message += "</table>";
 
-	// this occours when pushFailure is set and we have an extracted stack trace
+	// this occurs when pushFailure is set and we have an extracted stack trace
 	} else if ( !details.result && details.source ) {
 		message += "<table>" +
 			"<tr class='test-source'><th>Source: </th><td><pre>" +
