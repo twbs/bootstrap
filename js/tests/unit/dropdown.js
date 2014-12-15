@@ -227,7 +227,6 @@ $(function () {
 
   test('should ignore keyboard events within <input>s and <textarea>s', function () {
     stop()
-
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
         + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
@@ -266,29 +265,24 @@ $(function () {
     $dropdown.click()
   })
 
-  test('should skip disabled element in a dropdown', function(assert){
- 
-    var dropdownHTML ='<div class="dropdown">'
+
+  test('should skip disabled element in a dropdown', function () {
+    var dropdownHTML = '<div class="dropdown">'
      + '<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown">Dropdown <span class="caret"></span> </button>'
      + '<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">'
      + '<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>'
      + '<li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>'
      + '<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li></ul>'
-     +'</div>'
-
-  
+     + '</div>'
     var $dropdown = $(dropdownHTML)
-        .appendTo('#qunit-fixture')
-        .find('[data-toggle="dropdown"]')
-        .bootstrapDropdown().click()
-   
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown().click()
+
     for (var i = 0; i < 3; i++){
       $dropdown.trigger($.Event('keydown', { which: 40 }))
-      
-      ok(!$("li[role='presentation']:focus").is('.disabled'), ".disabled is not focused")
-
+      ok(!$('li[role="presentation"]:focus').is('.disabled'), '.disabled is not focused')
     }
-   
   })
 
 })
