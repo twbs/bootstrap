@@ -15,15 +15,12 @@ before_install:
 install:
   - npm install -g grunt-cli
   - ./test-infra/s3_cache.py download npm-modules
-  - if [ "$TWBS_TEST" = validate-html ] && [ $TWBS_DO_VALIDATOR -ne 0 ]; then ./test-infra/s3_cache.py download rubygems; fi
+  - if [ -n "$BUNDLE_GEMFILE" ]; then ./test-infra/s3_cache.py download rubygems; fi
 after_script:
   - if [ "$TRAVIS_REPO_SLUG" != twbs-savage/bootstrap ] && [ "$TWBS_TEST" = core ]; then ./test-infra/s3_cache.py upload npm-modules; fi
-  - if [ "$TRAVIS_REPO_SLUG" != twbs-savage/bootstrap ] && [ "$TWBS_TEST" = validate-html ] && [ $TWBS_DO_VALIDATOR -ne 0 ]; then ./test-infra/s3_cache.py upload rubygems; fi
+  - if [ "$TRAVIS_REPO_SLUG" != twbs-savage/bootstrap ] && [ -n "$BUNDLE_GEMFILE" ]; then ./test-infra/s3_cache.py upload rubygems; fi
 env:
   global:
-    - JEKYLL_VERSION="2.5.1"
-    - ROUGE_VERSION="1.7.2"
-    - SCSS_LINT_VERSION="0.30.0"
     - SAUCE_USERNAME="bootstrap"
     - secure: "pJkBwnuae9dKU5tEcCqccfS1QQw7/meEcfz63fM7ba7QJNjoA6BaXj08L5Z3Vb5vBmVPwBawxo5Hp0jC0r/Z/O0hGnAmz/Cz09L+cy7dSAZ9x4hvZePSja/UAusaB5ogMoO8l2b773MzgQeSmrLbExr9BWLeqEfjC2hFgdgHLaQ="
     - secure: "gqjqISbxBJK6byFbsmr1AyP1qoWH+rap06A2gI7v72+Tn2PU2nYkIMUkCvhZw6K889jv+LhQ/ybcBxDOXHpNCExCnSgB4dcnmYp+9oeNZb37jSP0rQ+Ib4OTLjzc3/FawE/fUq5kukZTC7porzc/k0qJNLAZRx3YLALmK1GIdUY="
@@ -35,8 +32,9 @@ env:
     - secure: "PabpUdG2dE40hHUkMCdxk1e9Ak3BOo0h7Y5/uekosLKOz5N60Xmn/ooyrSkvicLthXO4cfONFhO3/xSVRKQOxlUw4on5i0VuNK+QSqxJk0IDaRSZnTCcC8J7083K0YL+FvMdGQwcYwMY9LiwS8aS014IRkSQjsa+mjo3owP+dOU="
     - secure: "G4/f4PVyVi9o6UbZMqw9YFmDu7cHqe9iymiXYd1RcnPXwhWAePX12m0PWMhUj5itJ180PTEddVip8PNOgBdqyrDxEPKkcgAW2EElVAPIKJXVfvDW64UjQ0H7NS7XvF7iLQUJp/XfmR7NJ7tT393AQdh8SGmuQpJhgYbwIWbES/k="
   matrix:
-    - TWBS_TEST=core
-    - TWBS_TEST=validate-html
+    - TWBS_TEST=core TWBS_SASS=libsass BUNDLE_GEMFILE=test-infra/gemfiles/core.gemfile
+    - TWBS_TEST=core TWBS_SASS=sass    BUNDLE_GEMFILE=test-infra/gemfiles/core.gemfile
+    - TWBS_TEST=validate-html BUNDLE_GEMFILE=Gemfile
     - TWBS_TEST=sauce-js-unit
 matrix:
   fast_finish: true

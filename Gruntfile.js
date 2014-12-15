@@ -17,6 +17,7 @@ module.exports = function (grunt) {
 
   var fs = require('fs');
   var path = require('path');
+  var glob = require('glob');
   var npmShrinkwrap = require('npm-shrinkwrap');
 
   var generateCommonJSModule = require('./grunt/bs-commonjs-generator.js');
@@ -142,25 +143,6 @@ module.exports = function (grunt) {
         inject: 'js/tests/unit/phantom.js'
       },
       files: 'js/tests/index.html'
-    },
-
-    sass: {
-      options: {
-        includePaths: ['scss'],
-        precision: 6,
-        sourceComments: false,
-        sourceMap: true
-      },
-      core: {
-        files: {
-          'dist/css/<%= pkg.name %>.css': 'scss/<%= pkg.name %>.scss'
-        }
-      },
-      docs: {
-        files: {
-          'docs/assets/css/docs.min.css': 'docs/assets/scss/docs.scss'
-        }
-      }
     },
 
     scsslint: {
@@ -342,13 +324,23 @@ module.exports = function (grunt) {
     exec: {
       npmUpdate: {
         command: 'npm update'
+      },
+      bundleUpdate: {
+        command: function () {
+          // Update dev gems and all the test gemsets
+          return 'bundle update && ' + glob.sync('test-infra/gemfiles/*.gemfile').map(function (gemfile) {
+            return 'BUNDLE_GEMFILE=' + gemfile + ' bundle update';
+          }).join(' && ');
+        }
       }
     }
   });
 
 
   // These plugins provide necessary tasks.
-  require('load-grunt-tasks')(grunt, { scope: 'devDependencies' });
+  require('load-grunt-tasks')(grunt, { scope: 'devDependencies',
+    // Exclude Sass compilers. We choose the one to load later on.
+    pattern: ['grunt-*', '!grunt-sass', '!grunt-contrib-sass'] });
   require('time-grunt')(grunt);
 
   // Docs HTML validation task
@@ -366,7 +358,8 @@ module.exports = function (grunt) {
   // Skip core tests if running a different subset of the test suite
   if (runSubset('core') &&
     // Skip core tests if this is a Savage build
-    process.env.TRAVIS_REPO_SLUG !== 'twbs-savage/bootstrap') {    testSubtasks = testSubtasks.concat(['dist-css', 'dist-js', 'test-scss', 'test-js', 'docs']);
+    process.env.TRAVIS_REPO_SLUG !== 'twbs-savage/bootstrap') {
+    testSubtasks = testSubtasks.concat(['dist-css', 'dist-js', 'test-scss', 'test-js', 'docs']);
   }
   // Skip HTML validation if running a different subset of the test suite
   if (runSubset('validate-html') &&
@@ -392,7 +385,12 @@ module.exports = function (grunt) {
   grunt.registerTask('test-scss', ['scsslint:scss']);
 
   // CSS distribution task.
+  // Supported Compilers: sass (Ruby) and libsass.
+  (function (sassCompilerName) {
+    require('./grunt/bs-sass-compile/' + sassCompilerName + '.js')(grunt);
+  })(process.env.TWBS_SASS || 'libsass');
   grunt.registerTask('sass-compile', ['sass:core', 'sass:docs']);
+
   grunt.registerTask('dist-css', ['sass-compile', 'autoprefixer:core', 'usebanner', 'csscomb:dist', 'cssmin:core', 'cssmin:docs']);
 
   // Full distribution task.
@@ -435,4 +433,7 @@ module.exports = function (grunt) {
       done();
     });
   });
+  // Task for updating the cached RubyGem packages used by the Travis build (which are controlled by test-infra/Gemfile.lock).
+  // This task should be run and the updated file should be committed whenever Bootstrap's RubyGem dependencies change.
+  grunt.registerTask('update-gemfile-lock', ['exec:bundleUpdate']);
 };
