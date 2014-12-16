@@ -13,9 +13,9 @@
   @include border-radius($alert-border-radius);
 
   // Headings for larger alerts
-  h4 {
+  .alert-heading {
     margin-top: 0;
-    // Specified for the h4 to prevent conflicts of changing $headings-color
+    // Specified to prevent conflicts of changing $headings-color
     color: inherit;
   }
   // Provide class for links that match alerts

@@ -22,7 +22,7 @@ When using a `.close` button, it must be the first child of the `.alert-dismissi
 {% example html %}
 <div class="alert alert-danger alert-dismissible fade in" role="alert">
   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-  <h4>Oh snap! You got an error!</h4>
+  <h4 class="alert-heading">Oh snap! You got an error!</h4>
   <p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
   <p>
     <button type="button" class="btn btn-danger">Take this action</button>
