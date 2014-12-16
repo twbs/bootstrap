@@ -16,6 +16,10 @@ install:
   - npm install -g grunt-cli
   - ./test-infra/s3_cache.py download npm-modules
   - if [ "$TWBS_TEST" = validate-html ] && [ $TWBS_DO_VALIDATOR -ne 0 ]; then ./test-infra/s3_cache.py download rubygems; fi
+  # Install meteor
+  - curl https://install.meteor.com | /bin/sh
+  # Install spacejam, Meteor's CI helper
+  - npm install -g spacejam
 after_script:
   - if [ "$TRAVIS_REPO_SLUG" != twbs-savage/bootstrap ] && [ "$TWBS_TEST" = core ]; then ./test-infra/s3_cache.py upload npm-modules; fi
   - if [ "$TRAVIS_REPO_SLUG" != twbs-savage/bootstrap ] && [ "$TWBS_TEST" = validate-html ] && [ $TWBS_DO_VALIDATOR -ne 0 ]; then ./test-infra/s3_cache.py upload rubygems; fi

@@ -51,7 +51,8 @@ module.exports = function (grunt) {
     // Task configuration.
     clean: {
       dist: 'dist',
-      docs: 'docs/dist'
+      docs: 'docs/dist',
+      meteor: ['.build.*', 'versions.json', 'package.js']
     },
 
     jshint: {
@@ -373,27 +374,14 @@ module.exports = function (grunt) {
       npmUpdate: {
         command: 'npm update'
       },
-      meteorInit: {
-        command: [
-          // Make sure Meteor is installed, per https://meteor.com/install.
-          // The curl'ed script is safe; takes 2 minutes to read source & check.
-          'type meteor >/dev/null 2>&1 || { curl https://install.meteor.com/ | sh; }',
-          // Meteor expects package.js to be in the root directory
-          // of the checkout, so copy it there temporarily
-          'cp meteor/package.js .'
-        ].join(';')
-      },
-      meteorCleanup: {
-        // remove build files and package.js
-        command: 'rm -rf .build.* versions.json package.js'
-      },
+      // These tasks require Meteor to be installed: curl https://install.meteor.com/ | sh;
       meteorTest: {
         // the -noglyph(icons) package only runs a subset of the tests from package.js, so skip it
-        command: 'node_modules/.bin/spacejam --mongo-url mongodb:// test-packages ./'
+        command: 'cp grunt/meteor/package.js .; node_modules/.bin/spacejam --mongo-url mongodb:// test-packages ./'
       },
       meteorPublish: {
         // publish both packages
-        command: 'meteor publish; cp meteor/package-noglyph.js package.js; meteor publish'
+        command: 'cp grunt/meteor/package.js .; meteor publish; cp grunt/meteor/package-noglyph.js package.js; meteor publish'
       }
     }
   });
@@ -447,12 +435,12 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'usebanner', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
 
   // Meteor tasks
-  grunt.registerTask('meteor-test', ['exec:meteorInit', 'exec:meteorTest', 'exec:meteorCleanup']);
-  grunt.registerTask('meteor-publish', ['exec:meteorInit', 'exec:meteorPublish', 'exec:meteorCleanup']);
-  grunt.registerTask('meteor', ['exec:meteorInit', 'exec:meteorTest', 'exec:meteorPublish', 'exec:meteorCleanup']);
+  grunt.registerTask('meteor-test', ['exec:meteorTest', 'clean:meteor']);
+  grunt.registerTask('meteor-publish', ['exec:meteorPublish', 'clean:meteor']);
+  grunt.registerTask('meteor', ['exec:meteorTest', 'exec:meteorPublish', 'clean:meteor']);
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js', 'meteor-publish']);
+  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);
 
   // Default task.
   grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'test']);

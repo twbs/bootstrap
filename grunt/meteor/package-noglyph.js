@@ -10,8 +10,8 @@ Package.describe({
   name: packageName,
   summary: 'Bootstrap without the glyphicons font (official): the most popular HTML/CSS/JS responsive framework',  // limited to 100 characters
   version: packageJson.version,
-  git: 'https://github.com/MeteorPackaging/bootstrap.git',
-  readme: 'https://raw.githubusercontent.com/MeteorPackaging/bootstrap/meteor-integration/meteor/README.md'
+  git: 'https://github.com/twbs/bootstrap.git',
+  readme: 'https://raw.githubusercontent.com/twbs/bootstrap/meteor-integration/grunt/meteor/README.md'
 })
 
 Package.onUse(function (api) {
@@ -27,5 +27,5 @@ Package.onTest(function (api) {
   api.use(packageName, where)
   api.use(['tinytest', 'http'], where)
 
-  api.addFiles('meteor/test-noglyph.js', where)
+  api.addFiles('grunt/meteor/test-noglyph.js', where)
 })
