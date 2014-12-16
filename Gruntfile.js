@@ -388,10 +388,12 @@ module.exports = function (grunt) {
         command: 'rm -rf .build.* versions.json package.js'
       },
       meteorTest: {
+        // the -noglyph(icons) package only runs a subset of the tests from package.js, so skip it
         command: 'node_modules/.bin/spacejam --mongo-url mongodb:// test-packages ./'
       },
       meteorPublish: {
-        command: 'meteor publish'
+        // publish both packages
+        command: 'meteor publish; cp meteor/package-noglyph.js package.js; meteor publish'
       }
     }
   });
@@ -444,8 +446,13 @@ module.exports = function (grunt) {
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
   grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'usebanner', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
 
+  // Meteor tasks
+  grunt.registerTask('meteor-test', ['exec:meteorInit', 'exec:meteorTest', 'exec:meteorCleanup']);
+  grunt.registerTask('meteor-publish', ['exec:meteorInit', 'exec:meteorPublish', 'exec:meteorCleanup']);
+  grunt.registerTask('meteor', ['exec:meteorInit', 'exec:meteorTest', 'exec:meteorPublish', 'exec:meteorCleanup']);
+
   // Full distribution task.
-  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);
+  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js', 'meteor-publish']);
 
   // Default task.
   grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'test']);
@@ -492,8 +499,4 @@ module.exports = function (grunt) {
     });
   });
 
-  // Meteor tasks
-  grunt.registerTask('meteor-test', ['exec:meteorInit', 'exec:meteorTest', 'exec:meteorCleanup']);
-  grunt.registerTask('meteor-publish', ['exec:meteorInit', 'exec:meteorPublish', 'exec:meteorCleanup']);
-  grunt.registerTask('meteor', ['exec:meteorInit', 'exec:meteorTest', 'exec:meteorPublish', 'exec:meteorCleanup']);
 };

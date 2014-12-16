@@ -2,7 +2,14 @@ Packaging [Bootstrap](http://getbootstrap.com) for [Meteor.js](http://meteor.com
 We'll be working with the Bootstrap team to include this integration in their repo
 and provide same-day updates on Atmosphere.
 
-Bootstrap.css, .js and the Glyphicons font are included.
+# Versions
+
+There are two versions of this package:
+
+* [twbs:bootstrap](https://atmospherejs.com/twbs/bootstrap) - Bootstrap.css, .js and the Glyphicons font are included.
+* [twbs:bootstrap-noglyph](https://atmospherejs.com/twbs/bootstrap-noglyph) - Only the Bootstrap .CSS and .JS files are
+  included. Useful if you plan to use a different icon set, such as [Font Awesome](https://atmospherejs.com/fortawesome/fontawesome)
+  or the one from [Bootstrap Material Design](https://atmospherejs.com/fezvrasta/bootstrap-material-design).
 
 If you need more detailed control on the files, see [Nemo64's package](https://github.com/Nemo64/meteor-bootstrap).
 
