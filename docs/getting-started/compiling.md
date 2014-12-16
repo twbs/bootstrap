@@ -41,7 +41,7 @@ This is a convenience method for watching just Sass files and automatically buil
 
 ### Use another Sass compiler
 Bootstrap is compiled with [libsass][libsass] by default.
-Use another compiler by setting `TWBS_SASS` environment variable to:
+Use another compiler by setting the `TWBS_SASS` environment variable to:
 
 * `sass` to use [Ruby Sass][ruby-sass] via [grunt-contrib-sass][grunt-contrib-sass].
 * `libsass` (default) to use [libsass][libsass] via [grunt-sass][grunt-sass].
