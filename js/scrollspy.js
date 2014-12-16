@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: scrollspy.js v3.2.0
+ * Bootstrap: scrollspy.js v3.3.1
  * http://getbootstrap.com/javascript/#scrollspy
  * ========================================================================
  * Copyright 2011-2014 Twitter, Inc.
@@ -30,7 +30,7 @@
     this.process()
   }
 
-  ScrollSpy.VERSION  = '3.2.0'
+  ScrollSpy.VERSION  = '3.3.1'
 
   ScrollSpy.DEFAULTS = {
     offset: 10
@@ -65,7 +65,6 @@
         return ($href
           && $href.length
           && $href.is(':visible')
-          && $el.is(':visible')
           && [[$href[offsetMethod]().top + offsetBase, href]]) || null
       })
       .sort(function (a, b) { return a[0] - b[0] })
@@ -92,8 +91,9 @@
       return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
     }
 
-    if (activeTarget && scrollTop <= offsets[0]) {
-      return activeTarget != (i = targets[0]) && this.activate(i)
+    if (activeTarget && scrollTop < offsets[0]) {
+      this.activeTarget = null
+      return this.clear()
     }
 
     for (i = offsets.length; i--;) {
@@ -107,9 +107,7 @@
   ScrollSpy.prototype.activate = function (target) {
     this.activeTarget = target
 
-    $(this.selector)
-      .parentsUntil(this.options.target, '.active')
-      .removeClass('active')
+    this.clear()
 
     var selector = this.selector +
         '[data-target="' + target + '"],' +
@@ -126,6 +124,12 @@
     }
 
     active.trigger('activate.bs.scrollspy')
+  }
+
+  ScrollSpy.prototype.clear = function () {
+    $(this.selector)
+      .parentsUntil(this.options.target, '.active')
+      .removeClass('active')
   }
 
 

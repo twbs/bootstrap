@@ -1,11 +1,11 @@
 # [Bootstrap](http://getbootstrap.com)
 [![Bower version](https://badge.fury.io/bo/bootstrap.svg)](http://badge.fury.io/bo/bootstrap)
-[![NPM version](https://badge.fury.io/js/bootstrap.svg)](http://badge.fury.io/js/bootstrap)
+[![npm version](https://badge.fury.io/js/bootstrap.svg)](http://badge.fury.io/js/bootstrap)
 [![Build Status](https://secure.travis-ci.org/twbs/bootstrap.svg?branch=master)](https://travis-ci.org/twbs/bootstrap)
 [![devDependency Status](https://david-dm.org/twbs/bootstrap/dev-status.svg)](https://david-dm.org/twbs/bootstrap#info=devDependencies)
 [![Selenium Test Status](https://saucelabs.com/browser-matrix/bootstrap.svg)](https://saucelabs.com/u/bootstrap)
 
-Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thornton](https://twitter.com/fat), and maintained by the [core team](https://github.com/twbs?tab=members) with the massive support and involvement of the community.
+Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thornton](https://twitter.com/fat), and maintained by the [core team](https://github.com/orgs/twbs/people) with the massive support and involvement of the community.
 
 To get started, check out <http://getbootstrap.com>!
 
@@ -24,7 +24,7 @@ To get started, check out <http://getbootstrap.com>!
 
 Four quick start options are available:
 
-- [Download the latest release](https://github.com/twbs/bootstrap/archive/v3.2.0.zip).
+- [Download the latest release](https://github.com/twbs/bootstrap/archive/v3.3.1.zip).
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`.
 - Install with [Bower](http://bower.io): `bower install bootstrap`.
 - Install with [npm](https://www.npmjs.org): `npm install bootstrap`.
@@ -39,8 +39,10 @@ Within the download you'll find the following directories and files, logically g
 bootstrap/
 ├── css/
 │   ├── bootstrap.css
+│   ├── bootstrap.css.map
 │   ├── bootstrap.min.css
 │   ├── bootstrap-theme.css
+│   ├── bootstrap-theme.css.map
 │   └── bootstrap-theme.min.css
 ├── js/
 │   ├── bootstrap.js
@@ -49,10 +51,11 @@ bootstrap/
     ├── glyphicons-halflings-regular.eot
     ├── glyphicons-halflings-regular.svg
     ├── glyphicons-halflings-regular.ttf
-    └── glyphicons-halflings-regular.woff
+    ├── glyphicons-halflings-regular.woff
+    └── glyphicons-halflings-regular.woff2
 ```
 
-We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). Fonts from Glyphicons are included, as is the optional Bootstrap theme.
+We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). CSS [source maps](https://developers.google.com/chrome-developer-tools/docs/css-preprocessors) (`bootstrap.*.map`) are available for use with certain browsers' developer tools. Fonts from Glyphicons are included, as is the optional Bootstrap theme.
 
 
 
@@ -67,7 +70,7 @@ Bootstrap's documentation, included in this repo in the root directory, is built
 
 ### Running documentation locally
 
-1. If necessary, [install Jekyll](http://jekyllrb.com/docs/installation) (requires v2.3.x).
+1. If necessary, [install Jekyll](http://jekyllrb.com/docs/installation) (requires v2.5.x).
   - **Windows users:** Read [this unofficial guide](http://jekyll-windows.juthilo.com/) to get Jekyll up and running without problems.
 2. Install the Ruby-based syntax highlighter, [Rouge](https://github.com/jneen/rouge), with `gem install rouge`.
 3. From the root `/bootstrap` directory, run `jekyll serve` in the command line.
@@ -126,4 +129,4 @@ For transparency into our release cycle and in striving to maintain backward com
 
 ## Copyright and license
 
-Code and documentation copyright 2011-2014 Twitter, Inc. Code released under [the MIT license](LICENSE). Docs released under [Creative Commons](docs/LICENSE).
+Code and documentation copyright 2011-2014 Twitter, Inc. Code released under [the MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).

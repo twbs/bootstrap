@@ -90,6 +90,26 @@ body {
 
 
 /*
+ * Fancy skip link
+ *
+ * Make it look a bit less "bare bones"
+ */
+
+#skippy {
+  display: block;
+  padding: 1em;
+  color: #fff;
+  background-color: #6F5499;
+  outline: 0;
+}
+
+#skippy .skiplink-text {
+  padding: 0.5em;
+  outline: 1px dotted;
+}
+
+
+/*
  * Main navigation
  *
  * Turn the `.navbar` at the top of the docs purple.
@@ -137,14 +157,13 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   margin-top: 100px;
-  color: #777;
+  color: #767676;
   text-align: center;
   border-top: 1px solid #e5e5e5;
 }
 .bs-docs-footer-links {
   padding-left: 0;
   margin-top: 20px;
-  color: #999;
 }
 .bs-docs-footer-links li {
   display: inline;
@@ -437,7 +456,7 @@ body {
   color: #333;
 }
 .bs-docs-featurette-img:hover {
-  color: #428bca;
+  color: #337ab7;
   text-decoration: none;
 }
 .bs-docs-featurette-img img {
@@ -555,7 +574,7 @@ body {
   padding: 4px 20px;
   font-size: 13px;
   font-weight: 500;
-  color: #999;
+  color: #767676;
 }
 .bs-docs-sidebar .nav > li > a:hover,
 .bs-docs-sidebar .nav > li > a:focus {
@@ -710,22 +729,22 @@ h1[id] {
 
 /* Variations */
 .bs-callout-danger {
-  border-left-color: #d9534f;
+  border-left-color: #ce4844;
 }
 .bs-callout-danger h4 {
-  color: #d9534f;
+  color: #ce4844;
 }
 .bs-callout-warning {
-  border-left-color: #f0ad4e;
+  border-left-color: #aa6708;
 }
 .bs-callout-warning h4 {
-  color: #f0ad4e;
+  color: #aa6708;
 }
 .bs-callout-info {
-  border-left-color: #5bc0de;
+  border-left-color: #1b809e;
 }
 .bs-callout-info h4 {
-  color: #5bc0de;
+  color: #1b809e;
 }
 
 
@@ -771,7 +790,7 @@ h1[id] {
   background-color: #eee;
 }
 .color-swatches .brand-primary {
-  background-color: #428bca;
+  background-color: #337ab7;
 }
 .color-swatches .brand-success {
   background-color: #5cb85c;
@@ -830,6 +849,21 @@ h1[id] {
 
 
 /*
+ * Wall of Browser Bugs
+ *
+ * Better display for the responsive table on the Wall of Browser Bugs.
+ */
+
+.bs-docs-browser-bugs td p {
+  margin-bottom: 0;
+}
+
+.bs-docs-browser-bugs th:first-child {
+  width: 18%;
+}
+
+
+/*
  * Grid examples
  *
  * Highlight the grid columns within the docs so folks can see their padding,
@@ -880,7 +914,8 @@ h1[id] {
 }
 
 /* Tweak display of the code snippets when following an example */
-.bs-example + .highlight {
+.bs-example + .highlight,
+.bs-example + .zero-clipboard + .highlight {
   margin: -15px -15px 15px;
   border-width: 0 0 1px;
   border-radius: 0;
@@ -898,7 +933,8 @@ h1[id] {
     -webkit-box-shadow: none;
             box-shadow: none;
   }
-  .bs-example + .highlight {
+  .bs-example + .highlight,
+  .bs-example + .zero-clipboard + .highlight {
     margin-top: -16px;
     margin-right: 0;
     margin-left: 0;
@@ -939,7 +975,7 @@ h1[id] {
 
 /* Typography */
 .bs-example-type .table .type-info {
-  color: #999;
+  color: #767676;
   vertical-align: middle;
 }
 .bs-example-type .table td {
@@ -1130,6 +1166,16 @@ h1[id] {
   overflow: auto;
 }
 
+/* Simple collapse example */
+#collapseExample .well {
+  margin-bottom: 0;
+}
+
+/* Don't wrap event names in Events tables in JS plugin docs */
+.bs-events-table > thead > tr > th:first-child,
+.bs-events-table > tbody > tr > td:first-child {
+  white-space: nowrap;
+}
 
 /*
  * Code snippets
@@ -1338,13 +1384,6 @@ h1[id] {
   font-weight: normal;
 }
 
-.bs-customizer-input {
-  float: left;
-  width: 33.333333%;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
 /* Downloads */
 .bs-customize-download .btn-outline {
   padding: 20px;
@@ -1440,10 +1479,6 @@ h1[id] {
   color: #fff;
   background-color: #563d7c;
 }
-.bs-brand-item .svg {
-  width: 144px;
-  height: 144px;
-}
 
 /* Heading content within */
 .bs-brand-item h1,
@@ -1503,7 +1538,7 @@ h1[id] {
   display: block;
   padding: 5px 8px;
   font-size: 12px;
-  color: #777;
+  color: #767676;
   cursor: pointer;
   background-color: #fff;
   border: 1px solid #e1e1e8;
@@ -1518,6 +1553,10 @@ h1[id] {
 @media (min-width: 768px) {
   .zero-clipboard {
     display: block;
+  }
+  .bs-example + .zero-clipboard .btn-clipboard {
+    top: -16px;
+    border-top-right-radius: 0;
   }
 }
 

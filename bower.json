@@ -1,7 +1,7 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "3.2.0",
+  "version": "3.3.1",
   "keywords": [
     "css",
     "js",
@@ -33,6 +33,6 @@
     "test-infra"
   ],
   "dependencies": {
-    "jquery": ">= 1.9.0"
+    "jquery": ">= 1.9.1"
   }
 }

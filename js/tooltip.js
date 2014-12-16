@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: tooltip.js v3.2.0
+ * Bootstrap: tooltip.js v3.3.1
  * http://getbootstrap.com/javascript/#tooltip
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ========================================================================
@@ -25,7 +25,7 @@
     this.init('tooltip', element, options)
   }
 
-  Tooltip.VERSION  = '3.2.0'
+  Tooltip.VERSION  = '3.3.1'
 
   Tooltip.TRANSITION_DURATION = 150
 
@@ -191,10 +191,10 @@
         var $container   = this.options.container ? $(this.options.container) : this.$element.parent()
         var containerDim = this.getPosition($container)
 
-        placement = placement == 'bottom' && pos.top   + pos.height          + actualHeight - containerDim.scroll > containerDim.height ? 'top'    :
-                    placement == 'top'    && pos.top   - containerDim.scroll - actualHeight < containerDim.top                          ? 'bottom' :
-                    placement == 'right'  && pos.right + actualWidth         > containerDim.width                                       ? 'left'   :
-                    placement == 'left'   && pos.left  - actualWidth         < containerDim.left                                        ? 'right'  :
+        placement = placement == 'bottom' && pos.bottom + actualHeight > containerDim.bottom ? 'top'    :
+                    placement == 'top'    && pos.top    - actualHeight < containerDim.top    ? 'bottom' :
+                    placement == 'right'  && pos.right  + actualWidth  > containerDim.width  ? 'left'   :
+                    placement == 'left'   && pos.left   - actualWidth  < containerDim.left   ? 'right'  :
                     placement
 
         $tip
@@ -207,8 +207,11 @@
       this.applyPlacement(calculatedOffset, placement)
 
       var complete = function () {
+        var prevHoverState = that.hoverState
         that.$element.trigger('shown.bs.' + that.type)
         that.hoverState = null
+
+        if (prevHoverState == 'out') that.leave(that)
       }
 
       $.support.transition && this.$tip.hasClass('fade') ?
@@ -442,12 +445,18 @@
 
   function Plugin(option) {
     return this.each(function () {
-      var $this   = $(this)
-      var data    = $this.data('bs.tooltip')
-      var options = typeof option == 'object' && option
+      var $this    = $(this)
+      var data     = $this.data('bs.tooltip')
+      var options  = typeof option == 'object' && option
+      var selector = options && options.selector
 
       if (!data && option == 'destroy') return
-      if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
+      if (selector) {
+        if (!data) $this.data('bs.tooltip', (data = {}))
+        if (!data[selector]) data[selector] = new Tooltip(this, options)
+      } else {
+        if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
+      }
       if (typeof option == 'string') data[option]()
     })
   }

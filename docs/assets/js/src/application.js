@@ -101,7 +101,7 @@
     $('.bs-docs-popover').popover()
 
     // Button state demo
-    $('#loading-example-btn').click(function () {
+    $('#loading-example-btn').on('click', function () {
       var btn = $(this)
       btn.button('loading')
       setTimeout(function () {
@@ -109,6 +109,21 @@
       }, 3000)
     })
 
+    // Modal relatedTarget demo
+    $('#exampleModal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var recipient = button.data('whatever') // Extract info from data-* attributes
+      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      var modal = $(this)
+      modal.find('.modal-title').text('New message to ' + recipient)
+      modal.find('.modal-body input').val(recipient)
+    })
+
+    // Activate animated progress bar
+    $('.bs-docs-activate-animated-progressbar').on('click', function () {
+      $(this).siblings('.progress').find('.progress-bar-striped').toggleClass('active')
+    })
 
     // Config ZeroClipboard
     ZeroClipboard.config({
@@ -116,17 +131,10 @@
       hoverClass: 'btn-clipboard-hover'
     })
 
-    // Insert copy to clipboard button before .highlight or .bs-example
+    // Insert copy to clipboard button before .highlight
     $('.highlight').each(function () {
-      var highlight = $(this)
-      var previous = highlight.prev()
       var btnHtml = '<div class="zero-clipboard"><span class="btn-clipboard">Copy</span></div>'
-
-      if (previous.hasClass('bs-example')) {
-        previous.before(btnHtml.replace(/btn-clipboard/, 'btn-clipboard with-example'))
-      } else {
-        highlight.before(btnHtml)
-      }
+      $(this).before(btnHtml)
     })
     var zeroClipboard = new ZeroClipboard($('.btn-clipboard'))
     var htmlBridge = $('#global-zeroclipboard-html-bridge')

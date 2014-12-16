@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: carousel.js v3.2.0
+ * Bootstrap: carousel.js v3.3.1
  * http://getbootstrap.com/javascript/#carousel
  * ========================================================================
  * Copyright 2011-2014 Twitter, Inc.
@@ -30,7 +30,7 @@
       .on('mouseleave.bs.carousel', $.proxy(this.cycle, this))
   }
 
-  Carousel.VERSION  = '3.2.0'
+  Carousel.VERSION  = '3.3.1'
 
   Carousel.TRANSITION_DURATION = 600
 
@@ -42,6 +42,7 @@
   }
 
   Carousel.prototype.keydown = function (e) {
+    if (/input|textarea/i.test(e.target.tagName)) return
     switch (e.which) {
       case 37: this.prev(); break
       case 39: this.next(); break
@@ -69,8 +70,11 @@
   }
 
   Carousel.prototype.getItemForDirection = function (direction, active) {
-    var delta = direction == 'prev' ? -1 : 1
     var activeIndex = this.getItemIndex(active)
+    var willWrap = (direction == 'prev' && activeIndex === 0)
+                || (direction == 'next' && activeIndex == (this.$items.length - 1))
+    if (willWrap && !this.options.wrap) return active
+    var delta = direction == 'prev' ? -1 : 1
     var itemIndex = (activeIndex + delta) % this.$items.length
     return this.$items.eq(itemIndex)
   }
@@ -115,13 +119,7 @@
     var $next     = next || this.getItemForDirection(type, $active)
     var isCycling = this.interval
     var direction = type == 'next' ? 'left' : 'right'
-    var fallback  = type == 'next' ? 'first' : 'last'
     var that      = this
-
-    if (!$next.length) {
-      if (!this.options.wrap) return
-      $next = this.$element.find('.item')[fallback]()
-    }
 
     if ($next.hasClass('active')) return (this.sliding = false)
 
@@ -207,7 +205,7 @@
   // CAROUSEL DATA-API
   // =================
 
-  $(document).on('click.bs.carousel.data-api', '[data-slide], [data-slide-to]', function (e) {
+  var clickHandler = function (e) {
     var href
     var $this   = $(this)
     var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) // strip for ie7
@@ -223,7 +221,11 @@
     }
 
     e.preventDefault()
-  })
+  }
+
+  $(document)
+    .on('click.bs.carousel.data-api', '[data-slide]', clickHandler)
+    .on('click.bs.carousel.data-api', '[data-slide-to]', clickHandler)
 
   $(window).on('load', function () {
     $('[data-ride="carousel"]').each(function () {

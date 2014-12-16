@@ -33,9 +33,9 @@ $(function () {
     var $btn = $('<button class="btn" data-loading-text="fat">mdo</button>')
     equal($btn.html(), 'mdo', 'btn text equals mdo')
     $btn.bootstrapButton('loading')
-    equal($btn.html(), 'fat', 'btn text equals fat')
     stop()
     setTimeout(function () {
+      equal($btn.html(), 'fat', 'btn text equals fat')
       ok($btn[0].hasAttribute('disabled'), 'btn is disabled')
       ok($btn.hasClass('disabled'), 'btn has disabled class')
       start()
@@ -46,16 +46,16 @@ $(function () {
     var $btn = $('<button class="btn" data-loading-text="fat">mdo</button>')
     equal($btn.html(), 'mdo', 'btn text equals mdo')
     $btn.bootstrapButton('loading')
-    equal($btn.html(), 'fat', 'btn text equals fat')
     stop()
     setTimeout(function () {
+      equal($btn.html(), 'fat', 'btn text equals fat')
       ok($btn[0].hasAttribute('disabled'), 'btn is disabled')
       ok($btn.hasClass('disabled'), 'btn has disabled class')
       start()
       stop()
       $btn.bootstrapButton('reset')
-      equal($btn.html(), 'mdo', 'btn text equals mdo')
       setTimeout(function () {
+        equal($btn.html(), 'mdo', 'btn text equals mdo')
         ok(!$btn[0].hasAttribute('disabled'), 'btn is not disabled')
         ok(!$btn.hasClass('disabled'), 'btn does not have disabled class')
         start()
@@ -67,16 +67,16 @@ $(function () {
     var $btn = $('<button class="btn" data-loading-text="fat"/>')
     equal($btn.html(), '', 'btn text equals ""')
     $btn.bootstrapButton('loading')
-    equal($btn.html(), 'fat', 'btn text equals fat')
     stop()
     setTimeout(function () {
+      equal($btn.html(), 'fat', 'btn text equals fat')
       ok($btn[0].hasAttribute('disabled'), 'btn is disabled')
       ok($btn.hasClass('disabled'), 'btn has disabled class')
       start()
       stop()
       $btn.bootstrapButton('reset')
-      equal($btn.html(), '', 'btn text equals ""')
       setTimeout(function () {
+        equal($btn.html(), '', 'btn text equals ""')
         ok(!$btn[0].hasAttribute('disabled'), 'btn is not disabled')
         ok(!$btn.hasClass('disabled'), 'btn does not have disabled class')
         start()
@@ -85,7 +85,7 @@ $(function () {
   })
 
   test('should toggle active', function () {
-    var $btn = $('<button class="btn">mdo</button>')
+    var $btn = $('<button class="btn" data-toggle="button">mdo</button>')
     ok(!$btn.hasClass('active'), 'btn does not have active class')
     $btn.bootstrapButton('toggle')
     ok($btn.hasClass('active'), 'btn has class active')
@@ -100,6 +100,24 @@ $(function () {
     ok(!$btn.hasClass('active'), 'btn does not have active class')
     $inner.click()
     ok($btn.hasClass('active'), 'btn has class active')
+  })
+
+  test('should toggle aria-pressed', function () {
+    var $btn = $('<button class="btn" data-toggle="button" aria-pressed="false">redux</button>')
+    equal($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
+    $btn.bootstrapButton('toggle')
+    equal($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
+  })
+
+  test('should toggle aria-pressed when btn children are clicked', function () {
+    var $btn = $('<button class="btn" data-toggle="button" aria-pressed="false">redux</button>')
+    var $inner = $('<i/>')
+    $btn
+      .append($inner)
+      .appendTo('#qunit-fixture')
+    equal($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
+    $inner.click()
+    equal($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
   })
 
   test('should toggle active when btn children are clicked within btn-group', function () {
