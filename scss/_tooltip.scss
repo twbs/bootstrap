@@ -58,26 +58,11 @@
   border-color: transparent;
   border-style: solid;
 }
-// Note: Deprecated .top-left, .top-right, .bottom-left, and .bottom-right as of v3.3.1
 .tooltip {
   &.top .tooltip-arrow {
     bottom: 0;
     left: 50%;
     margin-left: -$tooltip-arrow-width;
-    border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
-    border-top-color: $tooltip-arrow-color;
-  }
-  &.top-left .tooltip-arrow {
-    right: $tooltip-arrow-width;
-    bottom: 0;
-    margin-bottom: -$tooltip-arrow-width;
-    border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
-    border-top-color: $tooltip-arrow-color;
-  }
-  &.top-right .tooltip-arrow {
-    bottom: 0;
-    left: $tooltip-arrow-width;
-    margin-bottom: -$tooltip-arrow-width;
     border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
     border-top-color: $tooltip-arrow-color;
   }
@@ -99,20 +84,6 @@
     top: 0;
     left: 50%;
     margin-left: -$tooltip-arrow-width;
-    border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
-    border-bottom-color: $tooltip-arrow-color;
-  }
-  &.bottom-left .tooltip-arrow {
-    top: 0;
-    right: $tooltip-arrow-width;
-    margin-top: -$tooltip-arrow-width;
-    border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
-    border-bottom-color: $tooltip-arrow-color;
-  }
-  &.bottom-right .tooltip-arrow {
-    top: 0;
-    left: $tooltip-arrow-width;
-    margin-top: -$tooltip-arrow-width;
     border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
     border-bottom-color: $tooltip-arrow-color;
   }
