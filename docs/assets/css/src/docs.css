@@ -1550,7 +1550,7 @@ h1[id] {
   border-color: rgb(204,204,204); /* Restate unfocused value to make CSSLint happy that there's a pre-CSS3 fallback*/
   border-color: rgba(82,168,236,.8);
   outline: 0;
-  outline: thin dotted \9; /* IE6-9 */
+  outline: thin dotted \9; /* IE9 */
   -webkit-box-shadow: 0 0 8px rgba(82,168,236,.6);
           box-shadow: 0 0 8px rgba(82,168,236,.6);
 }
