@@ -238,6 +238,17 @@
     offset.top  = offset.top  + marginTop
     offset.left = offset.left + marginLeft
 
+    var screenWidth = $(window).width();
+    var screenHeight = $(window).height();
+    var resizeWidth = false;
+    var resizeHeight = false;
+    if (offset.left + width > screenWidth){
+      resizeWidth = true;
+    }
+    if (offset.top + height > screenHeight){
+      resizeHeight = true;
+    }
+
     // $.fn.offset doesn't round pixel values
     // so we use setOffset directly with our own function B-0
     $.offset.setOffset($tip[0], $.extend({
@@ -255,21 +266,25 @@
     var actualWidth  = $tip[0].offsetWidth
     var actualHeight = $tip[0].offsetHeight
 
-    if (placement == 'top' && actualHeight != height) {
-      offset.top = offset.top + height - actualHeight
+    if (resizeWidth && actualWidth != width){
+      offset.left = Math.floor(offset.left) - width + actualWidth;
+    } else if (resizeHeight && actualHeight != height){
+      offset.top = Math.floor(offset.top) + height - actualHeight;
     }
-
     var delta = this.getViewportAdjustedDelta(placement, offset, actualWidth, actualHeight)
 
     if (delta.left) offset.left += delta.left
     else offset.top += delta.top
 
+    offset.left = Math.round(offset.left)
+    offset.top = Math.round(offset.top)
+
     var isVertical          = /top|bottom/.test(placement)
     var arrowDelta          = isVertical ? delta.left * 2 - width + actualWidth : delta.top * 2 - height + actualHeight
-    var arrowOffsetPosition = isVertical ? 'offsetWidth' : 'offsetHeight'
+    var arrowOffset         = isVertical ? actualWidth : actualHeight
 
     $tip.offset(offset)
-    this.replaceArrow(arrowDelta, $tip[0][arrowOffsetPosition], isVertical)
+    this.replaceArrow(arrowDelta, arrowOffset, isVertical)
   }
 
   Tooltip.prototype.replaceArrow = function (delta, dimension, isHorizontal) {
