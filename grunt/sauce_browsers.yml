@@ -31,17 +31,6 @@
     version: "9",
     platform: "Windows 7"
   },
-  {
-    browserName: "internet explorer",
-    version: "8",
-    platform: "Windows 7"
-  },
-
-  # { # Unofficial
-  #   browserName: "internet explorer",
-  #   version: "7",
-  #   platform: "Windows XP"
-  # },
 
   {
     browserName: "chrome",
