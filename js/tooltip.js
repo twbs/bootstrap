@@ -293,6 +293,14 @@ Tooltip.prototype['destroy'] = function () {
  * and replace with external lib
  */
 Tooltip.prototype['show'] = function () {
+  // jQuery's :hidden gives false positives for SVG elements
+  // See https://github.com/jquery/jquery/pull/939
+  // Since this hiddenness check is just a nicety anyway, simply assume SVGs are always visible.
+  var isHidden = $(this.element).is(':hidden') && !(window.SVGElement && this.element instanceof window.SVGElement)
+  if (isHidden) {
+    throw new Error('Can\'t show a tooltip/popover on a hidden element')
+  }
+
   var showEvent = $.Event(this.getEventObject().SHOW)
 
   if (this.isWithContent() && this._isEnabled) {
