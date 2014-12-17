@@ -122,7 +122,6 @@ output {
   line-height: $line-height-base;
   color: $input-color;
   background-color: $input-bg;
-  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid $input-border;
   @include border-radius($input-border-radius);
   @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
