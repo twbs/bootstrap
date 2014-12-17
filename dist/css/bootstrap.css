@@ -97,7 +97,6 @@ figure {
 hr {
   height: 0; 
   -webkit-box-sizing: content-box;
-     -moz-box-sizing: content-box;
           box-sizing: content-box;
 }
 
@@ -144,7 +143,6 @@ input {
 
 input[type="checkbox"], input[type="radio"] {
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
           box-sizing: border-box;
   padding: 0;
 }
@@ -155,7 +153,6 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 
 input[type="search"] {
   -webkit-box-sizing: content-box;
-     -moz-box-sizing: content-box;
           box-sizing: content-box; 
   -webkit-appearance: textfield;
 }
@@ -244,10 +241,6 @@ td, th {
     page-break-after: avoid;
   }
 
-  select {
-    background: #fff !important;
-  }
-
   .navbar {
     display: none;
   }
@@ -274,7 +267,6 @@ td, th {
 
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
 
@@ -1923,7 +1915,6 @@ label {
 
 input[type="search"] {
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
 
@@ -1969,7 +1960,6 @@ output {
   line-height: 1.5;
   color: #55595c;
   background-color: #fff;
-  background-image: none;
   border: 1px solid #ccc;
   border-radius: .25rem;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
@@ -2377,7 +2367,6 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .input-group-lg > te
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  background-image: none;
   border: .075rem solid transparent;
   border-radius: .25rem;
   -webkit-transition: all .2s ease-in-out;
