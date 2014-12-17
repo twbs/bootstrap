@@ -5,30 +5,5 @@
       "../assets/js/vendor/ZeroClipboard.min.js",
       "../assets/js/src/application.js"
     ]
-  },
-  "config": {
-    "autoprefixerBrowsers": [
-      "Android 2.3",
-      "Android >= 4",
-      "Chrome >= 20",
-      "Firefox >= 31",
-      "Explorer >= 9",
-      "iOS >= 6",
-      "Opera >= 12",
-      "Safari >= 6"
-    ],
-    "jqueryCheck": [
-      "if (typeof jQuery === 'undefined') {",
-      "  throw new Error('Bootstrap\\'s JavaScript requires jQuery')",
-      "}\n"
-    ],
-    "jqueryVersionCheck": [
-      "+function ($) {",
-      "  var version = $.fn.jquery.split(' ')[0].split('.')",
-      "  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1)) {",
-      "    throw new Error('Bootstrap\\'s JavaScript requires jQuery version 1.9.1 or higher')",
-      "  }",
-      "}(jQuery);\n\n"
-    ]
   }
 }

@@ -38,8 +38,15 @@ module.exports = function (grunt) {
             ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
             ' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n' +
             ' */\n',
-    jqueryCheck: configBridge.config.jqueryCheck.join('\n'),
-    jqueryVersionCheck: configBridge.config.jqueryVersionCheck.join('\n'),
+    jqueryCheck: 'if (typeof jQuery === \'undefined\') {\n' +
+                 '  throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery\')\n' +
+                 '}\n',
+    jqueryVersionCheck: '+function ($) {\n' +
+                        '  var version = $.fn.jquery.split(\' \')[0].split(\'.\')\n' +
+                        '  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1)) {\n' +
+                        '    throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery version 1.9.1 or higher\')\n' +
+                        '  }\n' +
+                        '}(jQuery);\n\n',
 
     // Task configuration.
     clean: {
@@ -166,7 +173,16 @@ module.exports = function (grunt) {
 
     autoprefixer: {
       options: {
-        browsers: configBridge.config.autoprefixerBrowsers
+        browsers: [
+          'Android 2.3',
+          'Android >= 4',
+          'Chrome >= 20',
+          'Firefox >= 31',
+          'Explorer >= 9',
+          'iOS >= 6',
+          'Opera >= 12',
+          'Safari >= 6'
+        ]
       },
       core: {
         options: {
