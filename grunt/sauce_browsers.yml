@@ -73,10 +73,10 @@
   }
 
   # Android Chrome not currently supported by Sauce Labs
-
-  # { # Android Browser (super-unofficial)
+  # Android v5.0+ not currently supported by Sauce Labs
+  # { # Android Browser
   #   browserName: "android",
-  #   version: "4.0",
+  #   version: "5.0",
   #   platform: "Linux"
   # }
 ]
