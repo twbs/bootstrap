@@ -108,7 +108,7 @@ Add captions to your slides easily with the `.carousel-caption` element within a
 
 ## Usage
 
-### Multiple carousels</h3>
+### Multiple carousels
 
 Carousels require the use of an `id` on the outermost container (the `.carousel`) for carousel controls to function properly. When adding multiple carousels, or when changing a carousel's `id`, be sure to update the relevant controls.
 
