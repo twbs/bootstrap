@@ -29,20 +29,6 @@
     }
   }
 
-  .next {
-    > a,
-    > span {
-      float: right;
-    }
-  }
-
-  .previous {
-    > a,
-    > span {
-      float: left;
-    }
-  }
-
   .disabled {
     > a,
     > a:hover,
@@ -52,5 +38,19 @@
       cursor: $cursor-disabled;
       background-color: $pager-bg;
     }
+  }
+}
+
+.pager-next {
+  > a,
+  > span {
+    float: right;
+  }
+}
+
+.pager-prev {
+  > a,
+  > span {
+    float: left;
   }
 }
