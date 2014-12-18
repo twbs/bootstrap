@@ -63,7 +63,7 @@ Links are customizable for different circumstances. Use `.disabled` for unclicka
 </nav>
 {% endexample %}
 
-You can optionally swap out active or disabled anchors for `<span>`, or omit the anchor in the case of the previous/next arrows, to remove click functionality while retaining intended styles.
+You can optionally swap out active or disabled anchors for `<span>`, or omit the anchor in the case of the prev/next arrows, to remove click functionality while retaining intended styles.
 
 {% highlight html %}
 <nav>
@@ -152,8 +152,8 @@ Alternatively, you can align each link to the sides:
 {% example html %}
 <nav>
   <ul class="pager">
-    <li class="previous"><a href="#">Older</a></li>
-    <li class="next"><a href="#">Newer</a></li>
+    <li class="pager-prev"><a href="#">Older</a></li>
+    <li class="pager-next"><a href="#">Newer</a></li>
   </ul>
 </nav>
 {% endexample %}
@@ -166,8 +166,8 @@ Pager links also use the `.disabled` class.
 {% highlight html %}
 <nav>
   <ul class="pager">
-    <li class="previous disabled"><a href="#">Older</a></li>
-    <li class="next"><a href="#">Newer</a></li>
+    <li class="pager-prev disabled"><a href="#">Older</a></li>
+    <li class="pager-next"><a href="#">Newer</a></li>
   </ul>
 </nav>
 {% endhighlight %}
