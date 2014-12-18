@@ -15,13 +15,13 @@ A slideshow component for cycling through elements—images or slides of text—
     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
   </ol>
   <div class="carousel-inner" role="listbox">
-    <div class="item active">
+    <div class="carousel-item active">
       <img data-src="holder.js/900x500/auto/#777:#555/text:First slide" alt="First slide">
     </div>
-    <div class="item">
+    <div class="carousel-item">
       <img data-src="holder.js/900x500/auto/#666:#444/text:Second slide" alt="Second slide">
     </div>
-    <div class="item">
+    <div class="carousel-item">
       <img data-src="holder.js/900x500/auto/#555:#333/text:Third slide" alt="Third slide">
     </div>
   </div>
@@ -48,7 +48,7 @@ A slideshow component for cycling through elements—images or slides of text—
 
 ### Optional captions
 
-Add captions to your slides easily with the `.carousel-caption` element within any `.item`. Place just about any optional HTML within there and it will be automatically aligned and formatted.
+Add captions to your slides easily with the `.carousel-caption` element within any `.carousel-item`. Place just about any optional HTML within there and it will be automatically aligned and formatted.
 
 <div class="bs-example">
   <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
@@ -58,21 +58,21 @@ Add captions to your slides easily with the `.carousel-caption` element within a
       <li data-target="#carousel-example-captions" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
-      <div class="item active">
+      <div class="carousel-item active">
         <img data-src="holder.js/900x500/auto/#777:#777" alt="First slide image">
         <div class="carousel-caption">
           <h3>First slide label</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </div>
       </div>
-      <div class="item">
+      <div class="carousel-item">
         <img data-src="holder.js/900x500/auto/#666:#666" alt="Second slide image">
         <div class="carousel-caption">
           <h3>Second slide label</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
       </div>
-      <div class="item">
+      <div class="carousel-item">
         <img data-src="holder.js/900x500/auto/#555:#5555" alt="Third slide image">
         <div class="carousel-caption">
           <h3>Third slide label</h3>
@@ -92,7 +92,7 @@ Add captions to your slides easily with the `.carousel-caption` element within a
 </div>
 
 {% highlight html %}
-<div class="item">
+<div class="carousel-item">
   <img src="..." alt="...">
   <div class="carousel-caption">
     <h3>...</h3>
