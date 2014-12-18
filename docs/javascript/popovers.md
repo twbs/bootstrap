@@ -44,7 +44,7 @@ Four options are available: top, right, bottom, and left aligned.
 
 <div class="bs-example bs-example-popover">
   <div class="popover top">
-    <div class="arrow"></div>
+    <div class="popover-arrow"></div>
     <h3 class="popover-title">Popover top</h3>
     <div class="popover-content">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
@@ -52,7 +52,7 @@ Four options are available: top, right, bottom, and left aligned.
   </div>
 
   <div class="popover right">
-    <div class="arrow"></div>
+    <div class="popover-arrow"></div>
     <h3 class="popover-title">Popover right</h3>
     <div class="popover-content">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
@@ -60,7 +60,7 @@ Four options are available: top, right, bottom, and left aligned.
   </div>
 
   <div class="popover bottom">
-    <div class="arrow"></div>
+    <div class="popover-arrow"></div>
     <h3 class="popover-title">Popover bottom</h3>
 
     <div class="popover-content">
@@ -69,7 +69,7 @@ Four options are available: top, right, bottom, and left aligned.
   </div>
 
   <div class="popover left">
-    <div class="arrow"></div>
+    <div class="popover-arrow"></div>
     <h3 class="popover-title">Popover left</h3>
     <div class="popover-content">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
@@ -222,12 +222,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <tr>
         <td>template</td>
         <td>string</td>
-        <td><code>'&lt;div class="popover" role="tooltip"&gt;&lt;div class="arrow"&gt;&lt;/div&gt;&lt;h3 class="popover-title"&gt;&lt;/h3&gt;&lt;div class="popover-content"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
+        <td><code>'&lt;div class="popover" role="tooltip"&gt;&lt;div class="popover-arrow"&gt;&lt;/div&gt;&lt;h3 class="popover-title"&gt;&lt;/h3&gt;&lt;div class="popover-content"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
         <td>
           <p>Base HTML to use when creating the popover.</p>
           <p>The popover's <code>title</code> will be injected into the <code>.popover-title</code>.</p>
           <p>The popover's <code>content</code> will be injected into the <code>.popover-content</code>.</p>
-          <p><code>.arrow</code> will become the popover's arrow.</p>
+          <p><code>.popover-arrow</code> will become the popover's arrow.</p>
           <p>The outermost wrapper element should have the <code>.popover</code> class.</p>
         </td>
       </tr>

@@ -47,9 +47,9 @@
 
 // Arrows
 //
-// .arrow is outer, .arrow:after is inner
+// .popover-arrow is outer, .popover-arrow:after is inner
 
-.popover > .arrow {
+.popover > .popover-arrow {
   &,
   &:after {
     position: absolute;
@@ -60,16 +60,16 @@
     border-style: solid;
   }
 }
-.popover > .arrow {
+.popover > .popover-arrow {
   border-width: $popover-arrow-outer-width;
 }
-.popover > .arrow:after {
+.popover > .popover-arrow:after {
   content: "";
   border-width: $popover-arrow-width;
 }
 
 .popover {
-  &.top > .arrow {
+  &.top > .popover-arrow {
     bottom: -$popover-arrow-outer-width;
     left: 50%;
     margin-left: -$popover-arrow-outer-width;
@@ -83,7 +83,7 @@
       border-bottom-width: 0;
     }
   }
-  &.right > .arrow {
+  &.right > .popover-arrow {
     top: 50%;
     left: -$popover-arrow-outer-width;
     margin-top: -$popover-arrow-outer-width;
@@ -97,7 +97,7 @@
       border-left-width: 0;
     }
   }
-  &.bottom > .arrow {
+  &.bottom > .popover-arrow {
     top: -$popover-arrow-outer-width;
     left: 50%;
     margin-left: -$popover-arrow-outer-width;
@@ -112,7 +112,7 @@
     }
   }
 
-  &.left > .arrow {
+  &.left > .popover-arrow {
     top: 50%;
     right: -$popover-arrow-outer-width;
     margin-top: -$popover-arrow-outer-width;
