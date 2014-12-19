@@ -1,9 +1,9 @@
 {
   "paths": {
     "docsJs": [
-      "../assets/js/vendor/holder.js",
-      "../assets/js/vendor/ZeroClipboard.min.js",
-      "../assets/js/src/application.js"
+      "assets/js/vendor/holder.js",
+      "assets/js/vendor/ZeroClipboard.min.js",
+      "assets/js/src/application.js"
     ]
   }
 }

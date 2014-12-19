@@ -42,9 +42,9 @@
 {% if site.github %}
   <script src="{{ site.baseurl }}/assets/js/docs.min.js"></script>
 {% else %}
-  <script src="{{ site.baseurl }}/assets/js/vendor/holder.js"></script>
-  <script src="{{ site.baseurl }}/assets/js/vendor/ZeroClipboard.min.js"></script>
-  <script src="{{ site.baseurl }}/assets/js/src/application.js"></script>
+  {% for file in site.data.configBridge.paths.docsJs %}
+    <script src="{{ site.baseurl }}/{{ file }}"></script>
+  {% endfor %}
 {% endif %}
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
