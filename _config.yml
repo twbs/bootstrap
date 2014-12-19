@@ -16,7 +16,7 @@ port:             9001
 baseurl:          ""
 url:              http://getbootstrap.com
 encoding:         UTF-8
-exclude:          [assets/less/, assets/js/src/]
+exclude:          [assets/less/]
 
 # Custom vars
 current_version:  4.0.0-alpha
