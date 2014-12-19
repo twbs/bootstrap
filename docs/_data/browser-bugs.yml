@@ -173,6 +173,16 @@
 
 -
   browser: >
+    Safari (OS X)
+  summary: >
+    Alpha linear-gradient has dark line at its edge.
+  upstream_bug: >
+    WebKit#139803  
+  origin: >
+    Bootstrap#15205
+
+-
+  browser: >
     Safari (iOS)
   summary: >
     `transform: translate3d(0,0,0);` rendering bug.
