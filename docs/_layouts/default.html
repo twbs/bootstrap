@@ -31,6 +31,9 @@
         {% elsif page.url contains "about" %}
           <h1>About</h1>
           <p class="lead">Learn about the project's history, meet the maintaining teams, and find out how to use the Bootstrap brand.</p>
+        {% elsif page.url contains "migration" %}
+          <h1>Migration</h1>
+          <p class="lead">Bootstrap 4 is not backwards compatible with v3.x.x. Use this section as a general guide to upgrading from v3.x.x to v4.0.0.</p>
         {% endif %}
 
         {% include ads.html %}

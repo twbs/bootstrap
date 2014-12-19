@@ -3,11 +3,9 @@ layout: page
 title: Migrating to v4.x.x
 ---
 
-## Migrating from 3.x.x to 4.0.0
+## Summary
 
-Bootstrap 4 is not backwards compatible with v3.x.x. Use this section as a general guide to upgrading from v3.x.x to v4.0.0. For a broader overview, see [what's new](http://blog.getbootstrap.com/DEAD-LINK-FIX-ME-PLEASE) in the v4.0.0 release announcement.
-
-## At a glance
+For a broader overview, see [what's new](http://blog.getbootstrap.com/DEAD-LINK-FIX-ME-PLEASE) in the v4.0.0 release announcement.
 
 - Dropped IE8 support—v4 is now only IE9+. For sites needing IE8, use v3.
 - Switched from `px` to `rem` as our primary unit in CSS.
