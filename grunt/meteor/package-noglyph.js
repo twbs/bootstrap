@@ -8,10 +8,10 @@ var packageJson = JSON.parse(Npm.require("fs").readFileSync('package.json'))
 
 Package.describe({
   name: packageName,
-  summary: 'Bootstrap without the glyphicons font (official): the most popular HTML/CSS/JS responsive framework',  // limited to 100 characters
+  summary: 'Bootstrap without the Glyphicons font (official): the most popular HTML/CSS/JS responsive framework',  // limited to 100 characters
   version: packageJson.version,
   git: 'https://github.com/twbs/bootstrap.git',
-  readme: 'https://raw.githubusercontent.com/twbs/bootstrap/meteor-integration/grunt/meteor/README.md'
+  readme: 'https://github.com/MeteorPackaging/bootstrap/blob/meteor-integration/grunt/meteor/README.md'
 })
 
 Package.onUse(function (api) {
