@@ -163,16 +163,6 @@
 
 -
   browser: >
-    Safari (iOS)
-  summary: >
-    `transform: translate3d(0,0,0);` rendering bug.
-  upstream_bug: >
-    WebKit#138162, Safari#18804973
-  origin: >
-    Bootstrap#14603
-
--
-  browser: >
     Safari (OS X)
   summary: >
     Small font size when printing webpage with fixed-width `.container`.
@@ -180,6 +170,26 @@
     WebKit#138192
   origin: >
     Bootstrap#14868
+
+-
+  browser: >
+    Safari (OS X)
+  summary: >
+    Alpha linear-gradient has dark line at its edge.
+  upstream_bug: >
+    WebKit#139803  
+  origin: >
+    Bootstrap#15205
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    `transform: translate3d(0,0,0);` rendering bug.
+  upstream_bug: >
+    WebKit#138162, Safari#18804973
+  origin: >
+    Bootstrap#14603
 
 -
   browser: >
