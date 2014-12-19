@@ -551,6 +551,31 @@ body {
   @media (min-width: 992px) {
     padding: 2rem 4rem;
   }
+
+  > table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-y: auto;
+    margin-bottom: $spacer;
+    // border: 1px solid $table-border-color;
+
+    // Cells
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr {
+        > th,
+        > td {
+          padding: $table-cell-padding;
+          line-height: $line-height-base;
+          vertical-align: top;
+          // border-top: 1px solid $table-border-color;
+          border: 1px solid $table-border-color;
+        }
+      }
+    }
+  }
 }
 
 
