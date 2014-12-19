@@ -354,7 +354,7 @@ if (typeof jQuery === 'undefined') {
   }
 
   Carousel.prototype.getItemIndex = function (item) {
-    this.$items = item.parent().children('.item')
+    this.$items = item.parent().children('.carousel-item')
     return this.$items.index(item || this.$active)
   }
 
@@ -370,7 +370,7 @@ if (typeof jQuery === 'undefined') {
 
   Carousel.prototype.to = function (pos) {
     var that        = this
-    var activeIndex = this.getItemIndex(this.$active = this.$element.find('.item.active'))
+    var activeIndex = this.getItemIndex(this.$active = this.$element.find('.carousel-item.active'))
 
     if (pos > (this.$items.length - 1) || pos < 0) return
 
@@ -404,7 +404,7 @@ if (typeof jQuery === 'undefined') {
   }
 
   Carousel.prototype.slide = function (type, next) {
-    var $active   = this.$element.find('.item.active')
+    var $active   = this.$element.find('.carousel-item.active')
     var $next     = next || this.getItemForDirection(type, $active)
     var isCycling = this.interval
     var direction = type == 'next' ? 'left' : 'right'
@@ -1457,7 +1457,7 @@ if (typeof jQuery === 'undefined') {
     var marginTop = parseInt($tip.css('margin-top'), 10)
     var marginLeft = parseInt($tip.css('margin-left'), 10)
 
-    // we must check for NaN for ie 8/9
+    // we must check for NaN for IE9
     if (isNaN(marginTop))  marginTop  = 0
     if (isNaN(marginLeft)) marginLeft = 0
 
