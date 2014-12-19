@@ -19,7 +19,8 @@ Package.onUse(function (api) {
   api.use('jquery')  // required by Bootstrap's JavaScript
   api.addFiles([
     'dist/css/bootstrap.css',
-    'dist/js/bootstrap.js'
+    'dist/js/bootstrap.js',
+    'grunt/meteor/init.js'
   ], where)
 })
 

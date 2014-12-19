@@ -66,12 +66,11 @@ plugins.forEach(function (plugin) {
         // [^] matches across newlines. Stay within the container div, or else the fragment will attempt to load resources on its own.
         bootstrapDropZone.innerHTML = result.content.match(/<div[^]+<\/div>/)
         test.ok({message: 'Test passed if the display looks OK *and* clicking dropdowns/popovers/tooltips works.'})
-        // only does anything after loading the 'dropdown' plugin test
+        // Only does anything after loading the 'dropdown' plugin test. No idea why it's necessary though.
         $('[data-toggle="dropdown"]').dropdown()
-        // only does anything after loading the 'popover' plugin test
-        $('[data-toggle="popover"]').popover()
-        // only does anything after loading the 'tooltip' plugin test
+        // toltips and popovers are initialized by the package, but on Template.body.rendered, which is not available in this Tinytest
         $('[data-toggle="tooltip"]').tooltip()
+        $('[data-toggle="popover"]').popover()
         // don't initialize the modals because that messes up the Tinytest runner HTML
       }
 

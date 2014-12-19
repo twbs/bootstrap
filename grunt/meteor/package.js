@@ -25,7 +25,8 @@ Package.onUse(function (api) {
     'dist/fonts/glyphicons-halflings-regular.woff',  // Supported by all modern browsers
     'dist/fonts/glyphicons-halflings-regular.woff2', // Most modern font format
     'dist/css/bootstrap.css',
-    'dist/js/bootstrap.js'
+    'dist/js/bootstrap.js',
+    'grunt/meteor/init.js'
   ], where)
 })
 
