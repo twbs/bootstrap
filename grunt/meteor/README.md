@@ -8,12 +8,14 @@ meteor add twbs:bootstrap
 ```
 
 Features requiring JavaScript (such as drop-downs) or custom jQuery plugins like tooltip or popover should work automatically.
-If don't work in templates other than `body`, make sure to run the initialization code in `Template.<yourtemplate>.rendered`:
+If they don't work in templates other than `body`, make sure to run the initialization code in `Template.<yourtemplate>.rendered`:
 
 ```js
-this.$('[data-toggle="dropdown"]').dropdown();
-this.$('[data-toggle="tooltip"]').tooltip();
-this.$('[data-toggle="popover"]').popover();
+Template.foo.rendered = function () {
+  this.$('[data-toggle="dropdown"]').dropdown();
+  this.$('[data-toggle="tooltip"]').tooltip();
+  this.$('[data-toggle="popover"]').popover();
+}
 ```
 
 For performance reasons, [the Tooltip and Popover data-apis are opt-in](http://getbootstrap.com/javascript/#popovers).
