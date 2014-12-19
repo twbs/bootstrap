@@ -193,13 +193,13 @@ Add `.table-bordered` for borders on all sides of the table and cells.
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</tg>
+      <th scope="row">1</th>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
     </tr>
     <tr>
-      <th scope="row">2</tg>
+      <th scope="row">2</th>
       <td>Mark</td>
       <td>Otto</td>
       <td>@TwBootstrap</td>
