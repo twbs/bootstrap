@@ -1,0 +1,92 @@
+<html>
+	<head>
+		meta
+			utf-8
+			viewport
+			description
+			author
+		title
+		icons
+		styles
+			bootstrap
+			bastrap
+			buenosaires
+	<body> (.ba-xxxx)
+		<header>
+			.ba-navbar-top
+				.bac-header
+				.ribbon
+				.navbar-form
+			nav#header-main-nav
+				megamenu
+				links
+				link ba/user
+		<main>
+			nav.home-nav [ba-home]
+			nav.breadcrumb
+			header.jumbotron [ba-area, ba-pagina, ba-aplicativo, ba-destacado, ba-404, ba-emergencia]
+				nav.breadcrumb
+				.area-title
+				nav.navbar-default
+			section > .alert-spot [ba-home]
+			section > .row-grid [ba-home, ba-area, ba-listado]
+			section > .row-shortcut [ba-home, ba-area]
+			section.big-heading, section.search-xl [ba-aplicativo, ba-destacado, ba-emergencia]
+			section.big-heading > ul.mini-social [ba-area, ba-aplicativo, ba-destacad, ba-emergencia, ba-listado, ba-tramites, ba-noticias]
+			section.big-img [ba-destacado]
+			.row
+				.col-md-4
+					section > .list-group-content
+					section > .list-group-content.list-group-multi
+					section > .list-group-content.search-list [ba-noticias, ba-busqueda]
+						agenda cultural [ba-home]
+							a.list-group-item
+							a.list-group-item.list-group-thumb
+						tramites [ba-home]
+						medios [ba-home]
+						banners [ba-home]
+						notas destacadas [ba-area]
+						widget red social [ba-area]
+						form contacto [ba-area]
+						links redes sociales [ba-area]
+			nav.pagination-wrap [ba-listado, ba-noticias, ba-busqueda]
+			article.col-md-8 [ba-pagina, ba-tramite]
+			article.col-md-8.col-md-push-4 [ba-libro, ba-busqueda, ba-miba]
+				header
+					title+lead
+					.article-social
+					time
+				section
+					heading+p
+					blockquote
+					.alert-spot
+					figure > img
+					figure > iframe
+					.well
+					ul
+					table
+				footer
+					section > .list-group-content
+						noticias del area
+			aside.col-md-4 [ba-pagina, ba-tramite]
+			aside.col-md-4.col-md-pull-8 [ba-libro, ba-busqueda, ba-miba]
+				section
+					imagenes
+					descargas
+				section > .list-group-content
+					pagina-enlaces > .list-group-multi
+				nav > ul.page-sidebar [ba-libro, ba-busqueda, ba-miba]
+			section > .mini-social
+		<footer>
+			.row
+				.col-md-3
+					.bavos-footer
+					section > redes sociales
+					section > .footer-left
+				.col-md-8
+					nav#header-footer-nav
+			.footer-shortcuts			
+		scripts
+			jquery
+			bootstrap
+			buenosaires

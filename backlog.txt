@@ -7,119 +7,12 @@
 
 
 
-<html>
-	<head>
-		meta
-			utf-8
-			viewport
-			description
-			author
-		title
-		icons
-		styles
-			bootstrap
-			bastrap
-			buenosaires
-	<body> [.ba-xxxx]
-		<header>
-			.ba-navbar-top
-				.bac-header
-				.ribbon
-				.navbar-form
-			nav#header-main-nav
-				megamenu
-				links
-				link ba/user
-		<main>
-			nav.home-nav [ba-home]
-			nav.breadcrumb
-			header.jumbotron [ba-area]
-				nav.breadcrumb
-				.area-title
-				nav.navbar-default
-			section > .alert-spot
-			section > .row-grid
-			section > .row-shortcut
-			.row
-				.col-md-4
-					section > .list-group-content
-						agenda cultural [ba-home]
-						tramites [ba-home]
-						medios [ba-home]
-						banners [ba-home]
-						notas destacadas [ba-area]
-						widget red social [ba-area]
-						form contacto [ba-area]
-						links redes sociales [ba-area]
-			article.col-md-8
-				header
-					title+lead
-					.article-social
-					time
-				section
-					heading+p
-					blockquote
-					.alert-spot
-					figure > img
-					figure > iframe
-					.well
-					ul
-					table
-				footer
-					section > .list-group-content
-						noticias del area
-			aside.col-md-4
-				section
-					imagenes
-					descargas
-				section > .list-group-content
-					pagina-enlaces > .list-group-multi
-			section > .mini-social
-		<footer>
-			.row
-				.col-md-3
-					.bavos-footer
-					section > redes sociales
-					section > .footer-left
-				.col-md-8
-					nav#header-footer-nav
-			.footer-shortcuts			
-		scripts
-			jquery
-			bootstrap
-			buenosaires
-			
-
-
-
-
 
 MINDMAP fixes
 - primero section luego .list-group-content [cambiar nombre? siempre están al lado de list-group....]
 - buscar .list-group-multi y hacer algo al respecto................
 - hacer menos tipos de página? [fusionar por ejemplo ba-destacado y ba-emergencia?]
 	capaz que existan para el <main> pero que para el <body> existan unas clases más generales?
-
-- falta repasar:
-	paginacenter
-	libro
-	tramite
-	aplicativo
-	destacado
-	404
-	500
-	emergencia
-	listado
-	tramites
-	noticias
-	busqueda
-	miba
-
-
-
-
-
-
 
 
 
@@ -147,7 +40,8 @@ MINDMAP fixes
 
 
 
-
+- Descargas diseño replantear + posicion dentro de nota
+	ver con edu y  santi 
 
 
 
