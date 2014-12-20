@@ -46,5 +46,6 @@ The following components have been removed in v4.0.0.
 | Panels |  | Cards |
 | Thumbnails |  | Cards |
 | Wells |  | Cards |
+| Justified navs | | |
 
 ## Additional notes
