@@ -25,7 +25,9 @@ This table shows the style changes between v3.x.x and v4.0.0.
 
 | Bootstrap 3.x.x | Bootstrap 4.0.0 |
 | --- | --- |
-|  |  |
+| Pager's `.previous` | `.pager-prev` |
+| Pager's `.next` | `.pager-next` |
+| Carousel's `.item` | `.carousel-item` |
 
 ## What's new
 We've added new components and changed some existing ones. Here are the new or updated styles.
