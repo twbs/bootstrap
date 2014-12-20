@@ -26,10 +26,10 @@
   @include box-shadow(0 5px 10px rgba(0,0,0,.2));
 
   // Offset the popover to account for the popover arrow
-  &.top     { margin-top: -$popover-arrow-width; }
-  &.right   { margin-left: $popover-arrow-width; }
-  &.bottom  { margin-top: $popover-arrow-width; }
-  &.left    { margin-left: -$popover-arrow-width; }
+  &.popover-top     { margin-top: -$popover-arrow-width; }
+  &.popover-right   { margin-left: $popover-arrow-width; }
+  &.popover-bottom  { margin-top: $popover-arrow-width; }
+  &.popover-left    { margin-left: -$popover-arrow-width; }
 }
 
 .popover-title {
@@ -69,7 +69,7 @@
 }
 
 .popover {
-  &.top > .popover-arrow {
+  &.popover-top > .popover-arrow {
     bottom: -$popover-arrow-outer-width;
     left: 50%;
     margin-left: -$popover-arrow-outer-width;
@@ -83,7 +83,7 @@
       border-bottom-width: 0;
     }
   }
-  &.right > .popover-arrow {
+  &.popover-right > .popover-arrow {
     top: 50%;
     left: -$popover-arrow-outer-width;
     margin-top: -$popover-arrow-outer-width;
@@ -97,7 +97,7 @@
       border-left-width: 0;
     }
   }
-  &.bottom > .popover-arrow {
+  &.popover-bottom > .popover-arrow {
     top: -$popover-arrow-outer-width;
     left: 50%;
     margin-left: -$popover-arrow-outer-width;
@@ -112,7 +112,7 @@
     }
   }
 
-  &.left > .popover-arrow {
+  &.popover-left > .popover-arrow {
     top: 50%;
     right: -$popover-arrow-outer-width;
     margin-top: -$popover-arrow-outer-width;
