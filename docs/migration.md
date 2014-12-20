@@ -45,6 +45,8 @@ We've added new components and changed some existing ones. Here are the new or u
 | New table variants | |
 | New utility classes | |
 
+TODO: audit new classes that didn't exist in v3
+
 ## What's removed
 The following components have been removed in v4.0.0.
 
@@ -55,11 +57,15 @@ The following components have been removed in v4.0.0.
 | Wells |  | Cards |
 | Justified navs | | |
 
+TODO: audit classes in v4 that aren't present in v4
+
 The following deprecated Less/SCSS variables have been removed in v4.0.0:
 * `@screen-phone`, `@screen-tablet`, `@screen-desktop`, `@screen-lg-desktop`. Use the more abstract `$screen-{xs,sm,md,lg,xl}-*` variables instead.
 * `@screen-sm`, `@screen-md`, `@screen-lg`. Use the more clearly named `$screen-{xs,sm,md,lg,xl}-min` variables instead.
 * `@screen-xs`, `@screen-xs-min`. The extra small breakpoint has no lower bound, so these variables were logically absurd. Reformulate your expression in terms of `$screen-xs-max` instead.
 * `@grid-float-breakpoint`
+
+TODO: audit list of stuff in v3 that was marked as deprecated
 
 ## Additional notes
 - Removed support for styled nested tables (for now)
