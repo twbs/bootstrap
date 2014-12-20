@@ -8,6 +8,7 @@ title: Migrating to v4.x.x
 For a broader overview, see [what's new](http://blog.getbootstrap.com/DEAD-LINK-FIX-ME-PLEASE) in the v4.0.0 release announcement.
 
 - Dropped IE8 support—v4 is now only IE9+. For sites needing IE8, use v3.
+- Added official support for Android v5.0 Lollipop's Browser and WebView. Earlier versions of the Android Browser and WebView remain only unofficially supported.
 - Switched from `px` to `rem` as our primary unit in CSS.
 - Media queries are now in `em`s.
 - Global font-size increased from `14px` to `16px`.
