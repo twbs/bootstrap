@@ -32,6 +32,7 @@ This table shows the style changes between v3.x.x and v4.0.0.
 | Carousel's `.item` | `.carousel-item` |
 | Tabs | |
 | Pills | |
+| Buttons | |
 
 ## What's new
 We've added new components and changed some existing ones. Here are the new or updated styles.
