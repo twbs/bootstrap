@@ -43,6 +43,8 @@ The following components have been removed in v4.0.0.
 
 | Component | Removed from 3.x.x | 4.0.0 Equivalent |
 | --- | --- | --- |
-|  |  |  |
+| Panels |  | Cards |
+| Thumbnails |  | Cards |
+| Wells |  | Cards |
 
 ## Additional notes
