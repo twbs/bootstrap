@@ -541,14 +541,14 @@ input[type="checkbox"] {
   // Quick utility class for applying `.input-lg` and `.input-sm` styles to the
   // inputs and labels within a `.form-group`.
   .form-group-lg {
-    @media (min-width: $screen-sm-min) {
+    @include media-sm {
       .control-label {
         padding-top: $padding-lg-vertical;
       }
     }
   }
   .form-group-sm {
-    @media (min-width: $screen-sm-min) {
+    @include media-sm {
       .control-label {
         padding-top: ($padding-sm-vertical + .1);
       }
