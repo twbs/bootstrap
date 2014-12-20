@@ -49,7 +49,7 @@
 //
 // .popover-arrow is outer, .popover-arrow:after is inner
 
-.popover > .popover-arrow {
+.popover-arrow {
   &,
   &:after {
     position: absolute;
@@ -60,10 +60,10 @@
     border-style: solid;
   }
 }
-.popover > .popover-arrow {
+.popover-arrow {
   border-width: $popover-arrow-outer-width;
 }
-.popover > .popover-arrow:after {
+.popover-arrow:after {
   content: "";
   border-width: $popover-arrow-width;
 }
