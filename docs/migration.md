@@ -36,7 +36,7 @@ We've added new components and changed some existing ones. Here are the new or u
 | --- | --- |
 | Cards | New, more flexible component to replace v3's panels, thumbnails, and wells. |
 | New navbar | Replaces the previous navbar with a new, simpler component. |
-| New progress bars | Replaces the old `.progress` with a real `<progress>` element. |
+| New progress bars | Replaces the old `.progress` `<div>` with a real `<progress>` element. |
 
 ## What's removed
 The following components have been removed in v4.0.0.
