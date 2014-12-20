@@ -177,7 +177,7 @@
       $tip
         .detach()
         .css({ top: 0, left: 0, display: 'block' })
-        .addClass(placement)
+        .addClass(this.type + '-' + placement)
         .data('bs.' + this.type, this)
 
       this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
@@ -187,7 +187,7 @@
       var actualHeight = $tip[0].offsetHeight
 
       if (autoPlace) {
-        var orgPlacement = placement
+        var origPlacement = placement
         var $container   = this.options.container ? $(this.options.container) : this.$element.parent()
         var containerDim = this.getPosition($container)
 
@@ -198,8 +198,8 @@
                     placement
 
         $tip
-          .removeClass(orgPlacement)
-          .addClass(placement)
+          .removeClass(this.type + '-' + origPlacement)
+          .addClass(this.type + '-' + placement)
       }
 
       var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
@@ -283,7 +283,7 @@
     var title = this.getTitle()
 
     $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title)
-    $tip.removeClass('fade in top bottom left right')
+    $tip.removeClass('fade in tooltip-top tooltip-bottom tooltip-left tooltip-right')
   }
 
   Tooltip.prototype.hide = function (callback) {

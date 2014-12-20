@@ -85,7 +85,7 @@ $(function () {
       .bootstrapTooltip({ placement: 'bottom' })
 
     $tooltip.bootstrapTooltip('show')
-    ok($('.tooltip').is('.fade.bottom.in'), 'has correct classes applied')
+    ok($('.tooltip').is('.fade.tooltip-bottom.in'), 'has correct classes applied')
 
     $tooltip.bootstrapTooltip('hide')
     equal($('.tooltip').length, 0, 'tooltip removed')
@@ -300,8 +300,8 @@ $(function () {
 
   test('should add position class before positioning so that position-specific styles are taken into account', function () {
     var styles = '<style>'
-        + '.tooltip.right { white-space: nowrap; }'
-        + '.tooltip.right .tooltip-inner { max-width: none; }'
+        + '.tooltip.tooltip-right { white-space: nowrap; }'
+        + '.tooltip.tooltip-right .tooltip-inner { max-width: none; }'
         + '</style>'
     var $styles = $(styles).appendTo('head')
 
@@ -384,7 +384,7 @@ $(function () {
       .bootstrapTooltip({ placement: 'auto' })
 
     $topTooltip.bootstrapTooltip('show')
-    ok($('.tooltip').is('.bottom'), 'top positioned tooltip is dynamically positioned to bottom')
+    ok($('.tooltip').is('.tooltip-bottom'), 'top positioned tooltip is dynamically positioned to bottom')
 
     $topTooltip.bootstrapTooltip('hide')
     equal($('.tooltip').length, 0, 'top positioned tooltip removed from dom')
@@ -394,7 +394,7 @@ $(function () {
       .bootstrapTooltip({ placement: 'right auto' })
 
     $rightTooltip.bootstrapTooltip('show')
-    ok($('.tooltip').is('.left'), 'right positioned tooltip is dynamically positioned left')
+    ok($('.tooltip').is('.tooltip-left'), 'right positioned tooltip is dynamically positioned left')
 
     $rightTooltip.bootstrapTooltip('hide')
     equal($('.tooltip').length, 0, 'right positioned tooltip removed from dom')
@@ -404,7 +404,7 @@ $(function () {
       .bootstrapTooltip({ placement: 'auto left' })
 
     $leftTooltip.bootstrapTooltip('show')
-    ok($('.tooltip').is('.right'), 'left positioned tooltip is dynamically positioned right')
+    ok($('.tooltip').is('.tooltip-right'), 'left positioned tooltip is dynamically positioned right')
 
     $leftTooltip.bootstrapTooltip('hide')
     equal($('.tooltip').length, 0, 'left positioned tooltip removed from dom')
@@ -430,7 +430,7 @@ $(function () {
       })
 
     $target.bootstrapTooltip('show')
-    ok($('.tooltip').is('.top'), 'top positioned tooltip is dynamically positioned to top')
+    ok($('.tooltip').is('.tooltip-top'), 'top positioned tooltip is dynamically positioned to top')
 
     $target.bootstrapTooltip('hide')
     equal($('.tooltip').length, 0, 'tooltip removed from dom')
@@ -455,7 +455,7 @@ $(function () {
       })
 
     $target.bootstrapTooltip('show')
-    ok($('.tooltip').is('.bottom'), 'top positioned tooltip is dynamically positioned to bottom')
+    ok($('.tooltip').is('.tooltip-bottom'), 'top positioned tooltip is dynamically positioned to bottom')
 
     $target.bootstrapTooltip('hide')
     equal($('.tooltip').length, 0, 'tooltip removed from dom')
@@ -481,7 +481,7 @@ $(function () {
     $('#scrollable-div').scrollTop(100)
 
     $target.bootstrapTooltip('show')
-    ok($('.tooltip').is('.fade.top.in'), 'has correct classes applied')
+    ok($('.tooltip').is('.fade.tooltip-top.in'), 'has correct classes applied')
 
     $target.bootstrapTooltip('hide')
     equal($('.tooltip').length, 0, 'tooltip removed from dom')
@@ -507,7 +507,7 @@ $(function () {
     $('#scrollable-div').scrollTop(200)
 
     $target.bootstrapTooltip('show')
-    ok($('.tooltip').is('.fade.bottom.in'), 'has correct classes applied')
+    ok($('.tooltip').is('.fade.tooltip-bottom.in'), 'has correct classes applied')
 
     $target.bootstrapTooltip('hide')
     equal($('.tooltip').length, 0, 'tooltip removed from dom')
@@ -537,7 +537,7 @@ $(function () {
     $('#scrollable-div').scrollTop(200)
 
     $target.bootstrapTooltip('show')
-    ok($('.tooltip').is('.fade.bottom.in'), 'has correct classes applied')
+    ok($('.tooltip').is('.fade.tooltip-bottom.in'), 'has correct classes applied')
 
     $target.bootstrapTooltip('hide')
     equal($('.tooltip').length, 0, 'tooltip removed from dom')
@@ -563,7 +563,7 @@ $(function () {
     $('#scrollable-div').scrollTop(400)
 
     $target.bootstrapTooltip('show')
-    ok($('.tooltip').is('.fade.top.in'), 'has correct classes applied')
+    ok($('.tooltip').is('.fade.tooltip-top.in'), 'has correct classes applied')
 
     $target.bootstrapTooltip('hide')
     equal($('.tooltip').length, 0, 'tooltip removed from dom')
