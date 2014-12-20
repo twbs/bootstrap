@@ -18,6 +18,7 @@ For a broader overview, see [what's new](http://blog.getbootstrap.com/DEAD-LINK-
 - Dropped Glyphicons icon font.
 - Refactored nearly all components to use more unnested classes instead of children selectors.
 - Non-responsive usage of Bootstrap is no longer supported.
+- Dropped the online Customizer in favor of more extensive setup documentation.
 
 ## Major class changes
 
