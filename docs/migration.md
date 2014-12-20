@@ -17,6 +17,7 @@ For a broader overview, see [what's new](http://blog.getbootstrap.com/DEAD-LINK-
 - Added a new grid tier for ~`480px` and below.
 - Dropped Glyphicons icon font.
 - Refactored nearly all components to use more unnested classes instead of children selectors.
+- Non-responsive usage of Bootstrap is no longer supported.
 
 ## Major class changes
 
