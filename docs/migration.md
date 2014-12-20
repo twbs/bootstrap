@@ -61,3 +61,4 @@ The following deprecated Less/SCSS variables have been removed in v4.0.0:
 * `@grid-float-breakpoint`
 
 ## Additional notes
+- Removed support for styled nested tables (for now)
