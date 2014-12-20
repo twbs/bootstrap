@@ -17,25 +17,25 @@
   opacity: 0;
 
   &.in { opacity: $tooltip-opacity; }
-  
-  &.top { 
-    padding: $tooltip-arrow-width 0; 
-    margin-top: -3px; 
+
+  &.top {
+    padding: $tooltip-arrow-width 0;
+    margin-top: -3px;
   }
 
-  &.right { 
-    padding: 0 $tooltip-arrow-width; 
-    margin-left: 3px; 
+  &.right {
+    padding: 0 $tooltip-arrow-width;
+    margin-left: 3px;
   }
 
-  &.bottom { 
-    padding: $tooltip-arrow-width 0; 
-    margin-top: 3px; 
+  &.bottom {
+    padding: $tooltip-arrow-width 0;
+    margin-top: 3px;
   }
 
-  &.left { 
-    padding: 0 $tooltip-arrow-width; 
-    margin-left: -3px; 
+  &.left {
+    padding: 0 $tooltip-arrow-width;
+    margin-left: -3px;
   }
 }
 
