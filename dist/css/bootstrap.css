@@ -4322,6 +4322,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-top-right-radius: 0;
 }
 .navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {
+  margin-bottom: 0;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   border-bottom-right-radius: 0;
@@ -5065,6 +5066,9 @@ a.thumbnail.active {
 .media-body {
   overflow: hidden;
   zoom: 1;
+}
+.media-body {
+  width: 10000px;
 }
 .media-object {
   display: block;
