@@ -68,7 +68,7 @@
       </button>
       <a href="../" class="navbar-brand">Bootstrap</a>
     </div>
-    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+    <nav class="collapse navbar-collapse bs-navbar-collapse">
       <ul class="nav navbar-nav">
         <li>
           <a href="../getting-started/">Getting started</a>
@@ -168,7 +168,7 @@
     <li>The negative margin is why the examples below are outdented. It's so that content within grid columns is lined up with non-grid content.</li>
     <li>Grid columns are created by specifying the number of twelve available columns you wish to span. For example, three equal columns would use three <code>.col-xs-4</code>.</li>
     <li>If more than 12 columns are placed within a single row, each group of extra columns will, as one unit, wrap onto a new line.</li>
-    <li>Grid classes apply to devices with screen widths greater than or equal to the breakpoint sizes, and override grid classes targeted at smaller devices. Therefore, applying any <code>.col-md-</code> class to an element will not only affect its styling on medium devices but also on large devices if a <code>.col-lg-</code> class is not present.</li>
+    <li>Grid classes apply to devices with screen widths greater than or equal to the breakpoint sizes, and override grid classes targeted at smaller devices. Therefore, e.g. applying any <code>.col-md-*</code> class to an element will not only affect its styling on medium devices but also on large devices if a <code>.col-lg-*</code> class is not present.</li>
   </ul>
   <p>Look to the examples for applying these principles to your code.</p>
 
@@ -218,49 +218,49 @@
       </thead>
       <tbody>
         <tr>
-          <th class="text-nowrap">Grid behavior</th>
+          <th class="text-nowrap" scope="row">Grid behavior</th>
           <td>Horizontal at all times</td>
           <td colspan="3">Collapsed to start, horizontal above breakpoints</td>
         </tr>
         <tr>
-          <th class="text-nowrap">Container width</th>
+          <th class="text-nowrap" scope="row">Container width</th>
           <td>None (auto)</td>
           <td>750px</td>
           <td>970px</td>
           <td>1170px</td>
         </tr>
         <tr>
-          <th class="text-nowrap">Class prefix</th>
+          <th class="text-nowrap" scope="row">Class prefix</th>
           <td><code>.col-xs-</code></td>
           <td><code>.col-sm-</code></td>
           <td><code>.col-md-</code></td>
           <td><code>.col-lg-</code></td>
         </tr>
         <tr>
-          <th class="text-nowrap"># of columns</th>
+          <th class="text-nowrap" scope="row"># of columns</th>
           <td colspan="4">12</td>
         </tr>
         <tr>
-          <th class="text-nowrap">Column width</th>
+          <th class="text-nowrap" scope="row">Column width</th>
           <td class="text-muted">Auto</td>
           <td>~62px</td>
           <td>~81px</td>
           <td>~97px</td>
         </tr>
         <tr>
-          <th class="text-nowrap">Gutter width</th>
+          <th class="text-nowrap" scope="row">Gutter width</th>
           <td colspan="4">30px (15px on each side of a column)</td>
         </tr>
         <tr>
-          <th class="text-nowrap">Nestable</th>
+          <th class="text-nowrap" scope="row">Nestable</th>
           <td colspan="4">Yes</td>
         </tr>
         <tr>
-          <th class="text-nowrap">Offsets</th>
+          <th class="text-nowrap" scope="row">Offsets</th>
           <td colspan="4">Yes</td>
         </tr>
         <tr>
-          <th class="text-nowrap">Column ordering</th>
+          <th class="text-nowrap" scope="row">Column ordering</th>
           <td colspan="4">Yes</td>
         </tr>
       </tbody>
@@ -688,7 +688,7 @@
   <!-- Headings -->
   <h2 id="type-headings">Headings</h2>
   <p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>, are available. <code>.h1</code> through <code>.h6</code> classes are also available, for when you want to match the font styling of a heading but still want your text to be displayed inline.</p>
-  <div class="bs-example bs-example-type">
+  <div class="bs-example bs-example-type" data-example-id="simple-headings">
     <table class="table">
       <tbody>
         <tr>
@@ -726,7 +726,7 @@
 <span class="nt">&lt;h6&gt;</span>h6. Bootstrap heading<span class="nt">&lt;/h6&gt;</span></code></pre></div>
 
   <p>Create lighter, secondary text in any heading with a generic <code>&lt;small&gt;</code> tag or the <code>.small</code> class.</p>
-  <div class="bs-example bs-example-type">
+  <div class="bs-example bs-example-type" data-example-id="small-headings">
     <table class="table">
       <tbody>
         <tr>
@@ -761,7 +761,7 @@
   <!-- Body copy -->
   <h2 id="type-body-copy">Body copy</h2>
   <p>Bootstrap's global default <code>font-size</code> is <strong>14px</strong>, with a <code>line-height</code> of <strong>1.428</strong>. This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition, <code>&lt;p&gt;</code> (paragraphs) receive a bottom margin of half their computed line-height (10px by default).</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="body-copy">
     <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
     <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
     <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
@@ -771,7 +771,7 @@
   <!-- Body copy .lead -->
   <h3>Lead body copy</h3>
   <p>Make a paragraph stand out by adding <code>.lead</code>.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="lead-copy">
     <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
   </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"lead"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span></code></pre></div>
@@ -784,7 +784,7 @@
   <h2 id="type-inline-text">Inline text elements</h2>
   <h3>Marked text</h3>
   <p>For highlighting a run of text due to its relevance in another context, use the <code>&lt;mark&gt;</code> tag.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-mark">
     <p>You can use the mark tag to <mark>highlight</mark> text.</p>
   </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html">You can use the mark tag to <span class="nt">&lt;mark&gt;</span>highlight<span class="nt">&lt;/mark&gt;</span> text.</code></pre></div>
@@ -792,28 +792,28 @@
 
   <h3>Deleted text</h3>
   <p>For indicating blocks of text that have been deleted use the <code>&lt;del&gt;</code> tag.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-del">
     <p><del>This line of text is meant to be treated as deleted text.</del></p>
   </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;del&gt;</span>This line of text is meant to be treated as deleted text.<span class="nt">&lt;/del&gt;</span></code></pre></div>
 
   <h3>Strikethrough text</h3>
   <p>For indicating blocks of text that are no longer relevant use the <code>&lt;s&gt;</code> tag.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-s">
     <p><s>This line of text is meant to be treated as no longer accurate.</s></p>
   </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;s&gt;</span>This line of text is meant to be treated as no longer accurate.<span class="nt">&lt;/s&gt;</span></code></pre></div>
 
   <h3>Inserted text</h3>
   <p>For indicating additions to the document use the <code>&lt;ins&gt;</code> tag.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-ins">
     <p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
   </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ins&gt;</span>This line of text is meant to be treated as an addition to the document.<span class="nt">&lt;/ins&gt;</span></code></pre></div>
 
   <h3>Underlined text</h3>
   <p>To underline text use the <code>&lt;u&gt;</code> tag.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-u">
     <p><u>This line of text will render as underlined</u></p>
   </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;u&gt;</span>This line of text will render as underlined<span class="nt">&lt;/u&gt;</span></code></pre></div>
@@ -823,7 +823,7 @@
   <h3>Small text</h3>
   <p>For de-emphasizing inline or blocks of text, use the <code>&lt;small&gt;</code> tag to set text at 85% the size of the parent. Heading elements receive their own <code>font-size</code> for nested <code>&lt;small&gt;</code> elements.</p>
   <p>You may alternatively use an inline element with <code>.small</code> in place of any <code>&lt;small&gt;</code>.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-small">
     <p><small>This line of text is meant to be treated as fine print.</small></p>
   </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;small&gt;</span>This line of text is meant to be treated as fine print.<span class="nt">&lt;/small&gt;</span></code></pre></div>
@@ -831,26 +831,26 @@
 
   <h3>Bold</h3>
   <p>For emphasizing a snippet of text with a heavier font-weight.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-strong">
     <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
   </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;strong&gt;</span>rendered as bold text<span class="nt">&lt;/strong&gt;</span></code></pre></div>
 
   <h3>Italics</h3>
   <p>For emphasizing a snippet of text with italics.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-em">
     <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
   </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;em&gt;</span>rendered as italicized text<span class="nt">&lt;/em&gt;</span></code></pre></div>
 
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-type-b-i-elems">
     <h4>Alternate elements</h4>
     <p>Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
   </div>
 
   <h2 id="type-alignment">Alignment classes</h2>
   <p>Easily realign text to components with text alignment classes.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="text-alignment">
     <p class="text-left">Left aligned text.</p>
     <p class="text-center">Center aligned text.</p>
     <p class="text-right">Right aligned text.</p>
@@ -865,7 +865,7 @@
 
   <h2 id="type-transformation">Transformation classes</h2>
   <p>Transform text in components with text capitalization classes.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="text-capitalization">
     <p class="text-lowercase">Lowercased text.</p>
     <p class="text-uppercase">Uppercased text.</p>
     <p class="text-capitalize">Capitalized text.</p>
@@ -876,18 +876,17 @@
 
   <!-- Abbreviations -->
   <h2 id="type-abbreviations">Abbreviations</h2>
-  <p>Stylized implementation of HTML's <code>&lt;abbr&gt;</code> element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover.</p>
+  <p>Stylized implementation of HTML's <code>&lt;abbr&gt;</code> element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover and to users of assistive technologies.</p>
 
   <h3>Basic abbreviation</h3>
-  <p>For expanded text on long hover of an abbreviation, include the <code>title</code> attribute with the <code>&lt;abbr&gt;</code> element.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-abbr">
     <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
   </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;abbr</span> <span class="na">title=</span><span class="s">"attribute"</span><span class="nt">&gt;</span>attr<span class="nt">&lt;/abbr&gt;</span></code></pre></div>
 
   <h3>Initialism</h3>
   <p>Add <code>.initialism</code> to an abbreviation for a slightly smaller font-size.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-initialism">
     <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.</p>
   </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;abbr</span> <span class="na">title=</span><span class="s">"HyperText Markup Language"</span> <span class="na">class=</span><span class="s">"initialism"</span><span class="nt">&gt;</span>HTML<span class="nt">&lt;/abbr&gt;</span></code></pre></div>
@@ -896,7 +895,7 @@
   <!-- Addresses -->
   <h2 id="type-addresses">Addresses</h2>
   <p>Present contact information for the nearest ancestor or the entire body of work. Preserve formatting by ending all lines with <code>&lt;br&gt;</code>.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-address">
     <address>
       <strong>Twitter, Inc.</strong><br>
       795 Folsom Ave, Suite 600<br>
@@ -927,7 +926,7 @@
 
   <h3>Default blockquote</h3>
   <p>Wrap <code>&lt;blockquote&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes, we recommend a <code>&lt;p&gt;</code>.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-blockquote">
     <blockquote>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
     </blockquote>
@@ -941,7 +940,7 @@
 
   <h4>Naming a source</h4>
   <p>Add a <code>&lt;footer&gt;</code> for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="blockquote-cite">
     <blockquote>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
       <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
@@ -954,7 +953,7 @@
 
   <h4>Alternate displays</h4>
   <p>Add <code>.blockquote-reverse</code> for a blockquote with right-aligned content.</p>
-  <div class="bs-example" style="overflow: hidden;">
+  <div class="bs-example" style="overflow: hidden;" data-example-id="blockquote-reverse">
     <blockquote class="blockquote-reverse">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
       <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
@@ -970,7 +969,7 @@
 
   <h3>Unordered</h3>
   <p>A list of items in which the order does <em>not</em> explicitly matter.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-ul">
     <ul>
       <li>Lorem ipsum dolor sit amet</li>
       <li>Consectetur adipiscing elit</li>
@@ -995,7 +994,7 @@
 
   <h3>Ordered</h3>
   <p>A list of items in which the order <em>does</em> explicitly matter.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-ol">
     <ol>
       <li>Lorem ipsum dolor sit amet</li>
       <li>Consectetur adipiscing elit</li>
@@ -1013,7 +1012,7 @@
 
   <h3>Unstyled</h3>
   <p>Remove the default <code>list-style</code> and left margin on list items (immediate children only). <strong>This only applies to immediate children list items</strong>, meaning you will need to add the class for any nested lists as well.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="unstyled-list">
     <ul class="list-unstyled">
       <li>Lorem ipsum dolor sit amet</li>
       <li>Consectetur adipiscing elit</li>
@@ -1038,7 +1037,7 @@
 
   <h3>Inline</h3>
   <p>Place all list items on a single line with <code>display: inline-block;</code> and some light padding.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="list-inline">
     <ul class="list-inline">
       <li>Lorem ipsum</li>
       <li>Phasellus iaculis</li>
@@ -1051,7 +1050,7 @@
 
   <h3>Description</h3>
   <p>A list of terms with their associated descriptions.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-dl">
     <dl>
       <dt>Description lists</dt>
       <dd>A description list is perfect for defining terms.</dd>
@@ -1069,7 +1068,7 @@
 
   <h4>Horizontal description</h4>
   <p>Make terms and descriptions in <code>&lt;dl&gt;</code> line up side-by-side. Starts off stacked like default <code>&lt;dl&gt;</code>s, but when the navbar expands, so do these.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="horizontal-dl">
     <dl class="dl-horizontal">
       <dt>Description lists</dt>
       <dd>A description list is perfect for defining terms.</dd>
@@ -1087,7 +1086,7 @@
   <span class="nt">&lt;dd&gt;</span>...<span class="nt">&lt;/dd&gt;</span>
 <span class="nt">&lt;/dl&gt;</span></code></pre></div>
 
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-type-dl-truncate">
     <h4>Auto-truncating</h4>
     <p>Horizontal description lists will truncate terms that are too long to fit in the left column with <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.</p>
   </div>
@@ -1098,14 +1097,14 @@
 
   <h2 id="code-inline">Inline</h2>
   <p>Wrap inline snippets of code with <code>&lt;code&gt;</code>.</p>
-<div class="bs-example">
+<div class="bs-example" data-example-id="inline-code">
   For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html">For example, <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>section<span class="ni">&amp;gt;</span><span class="nt">&lt;/code&gt;</span> should be wrapped as inline.</code></pre></div>
 
   <h2 id="code-user-input">User input</h2>
   <p>Use the <code>&lt;kbd&gt;</code> to indicate input that is typically entered via keyboard.</p>
-<div class="bs-example">
+<div class="bs-example" data-example-id="simple-kbd">
   To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>
   To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
 </div>
@@ -1114,7 +1113,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h2 id="code-block">Basic block</h2>
   <p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to escape any angle brackets in the code for proper rendering.</p>
-<div class="bs-example">
+<div class="bs-example" data-example-id="simple-pre">
   <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;pre&gt;</span><span class="ni">&amp;lt;</span>p<span class="ni">&amp;gt;</span>Sample text here...<span class="ni">&amp;lt;</span>/p<span class="ni">&amp;gt;</span><span class="nt">&lt;/pre&gt;</span></code></pre></div>
@@ -1122,7 +1121,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   <p>You may optionally add the <code>.pre-scrollable</code> class, which will set a max-height of 350px and provide a y-axis scrollbar.</p>
   <h2 id="code-variables">Variables</h2>
   <p>For indicating variables use the <code>&lt;var&gt;</code> tag.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-var">
     <p><var>y</var> = <var>m</var><var>x</var> + <var>b</var></p>
 
   </div>
@@ -1130,7 +1129,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h2 id="code-sample-output">Sample output</h2>
   <p>For indicating blocks sample output from a program use the <code>&lt;samp&gt;</code> tag.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-samp">
     <p><samp>This text is meant to be treated as sample output from a computer program.</samp></p>
   </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;samp&gt;</span>This text is meant to be treated as sample output from a computer program.<span class="nt">&lt;/samp&gt;</span></code></pre></div>
@@ -1141,7 +1140,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h2 id="tables-example">Basic example</h2>
   <p>For basic styling&mdash;light padding and only horizontal dividers&mdash;add the base class <code>.table</code> to any <code>&lt;table&gt;</code>. It may seem super redundant, but given the widespread use of tables for other plugins like calendars and date pickers, we've opted to isolate our custom table styles.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-table">
     <table class="table">
       <caption>Optional table caption.</caption>
       <thead>
@@ -1181,11 +1180,11 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h2 id="tables-striped">Striped rows</h2>
   <p>Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p>
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-tables-striped-ie8">
     <h4>Cross-browser compatibility</h4>
     <p>Striped tables are styled via the <code>:nth-child</code> CSS selector, which is not available in Internet Explorer 8.</p>
   </div>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="striped-table">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -1224,7 +1223,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h2 id="tables-bordered">Bordered table</h2>
   <p>Add <code>.table-bordered</code> for borders on all sides of the table and cells.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="bordered-table">
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -1267,7 +1266,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h2 id="tables-hover-rows">Hover rows</h2>
   <p>Add <code>.table-hover</code> to enable a hover state on table rows within a <code>&lt;tbody&gt;</code>.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="hoverable-table">
     <table class="table table-hover">
       <thead>
         <tr>
@@ -1305,7 +1304,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h2 id="tables-condensed">Condensed table</h2>
   <p>Add <code>.table-condensed</code> to make tables more compact by cutting cell padding in half.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="condensed-table">
     <table class="table table-condensed">
       <thead>
         <tr>
@@ -1389,7 +1388,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
       </tbody>
     </table>
   </div>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="contextual-table">
     <table class="table">
       <thead>
         <tr>
@@ -1472,7 +1471,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"danger"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
   <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"info"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
 <span class="nt">&lt;/tr&gt;</span></code></pre></div>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-tables-context-accessibility">
     <h4>Conveying meaning to assistive technologies</h4>
     <p>Using color to add meaning to a table row or individual cell only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (the visible text in the relevant table row/cell), or is included through alternative means, such as additional text hidden with the <code>.sr-only</code> class.</p>
   </div>
@@ -1480,7 +1479,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   <h2 id="tables-responsive">Responsive tables</h2>
   <p>Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code> to make them scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, you will not see any difference in these tables.</p>
 
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-tables-responsive-ff-fieldset">
     <h4>Firefox and fieldsets</h4>
     <p>Firefox has some awkward fieldset styling involving <code>width</code> that interferes with the responsive table. This cannot be overriden without a Firefox-specific hack that we <strong>don't</strong> provide in Bootstrap:</p>
 <div class="highlight"><pre><code class="language-css" data-lang="css"><span class="k">@-moz-document</span> <span class="n">url-prefix</span><span class="p">()</span> <span class="p">{</span>
@@ -1489,7 +1488,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
     <p>For more information, read <a href="http://stackoverflow.com/questions/17408815/fieldset-resizes-wrong-appears-to-have-unremovable-min-width-min-content/17863685#17863685">this Stack Overflow answer</a>.</p>
   </div>
 
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-responsive-table">
     <div class="table-responsive">
       <table class="table">
         <thead>
@@ -1592,7 +1591,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h2 id="forms-example">Basic example</h2>
   <p>Individual form controls automatically receive some global styling. All textual <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> elements with <code>.form-control</code> are set to <code>width: 100%;</code> by default. Wrap labels and controls in <code>.form-group</code> for optimum spacing.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="basic-forms">
     <form role="form">
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
@@ -1636,7 +1635,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;/form&gt;</span></code></pre></div>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-formgroup-inputgroup">
     <h4>Don't mix form groups with input groups</h4>
     <p>Do not mix form groups directly with <a href="/components/#input-groups">input groups</a>. Instead, nest the input group inside of the form group.</p>
   </div>
@@ -1644,15 +1643,15 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h2 id="forms-inline">Inline form</h2>
   <p>Add <code>.form-inline</code> to your <code>&lt;form&gt;</code> for left-aligned and inline-block controls. <strong>This only applies to forms within viewports that are at least 768px wide.</strong></p>
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-inline-form-width">
     <h4>Requires custom widths</h4>
     <p>Inputs and selects have <code>width: 100%;</code> applied by default in Bootstrap. Within inline forms, we reset that to <code>width: auto;</code> so multiple controls can reside on the same line. Depending on your layout, additional custom widths may be required.</p>
   </div>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-inline-form-labels">
     <h4>Always add labels</h4>
     <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the <code>.sr-only</code> class. There are further alternative methods of providing a label for assistive technologies, such as the <code>aria-label</code>, <code>aria-labelledby</code> or <code>title</code> attribute. If none of these is present, screen readers may resort to using the <code>placeholder</code> attribute, if present, but note that use of <code>placeholder</code> as a replacement for other labelling methods is not advised.</p>
   </div>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-form-inline">
     <form class="form-inline" role="form">
       <div class="form-group">
         <label class="sr-only" for="exampleInputEmail2">Email address</label>
@@ -1699,7 +1698,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h2 id="forms-horizontal">Horizontal form</h2>
   <p>Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout by adding <code>.form-horizontal</code> to the form. Doing so changes <code>.form-group</code>s to behave as grid rows, so no need for <code>.row</code>.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-horizontal-form">
     <form class="form-horizontal" role="form">
       <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
@@ -1764,24 +1763,24 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h3>Inputs</h3>
   <p>Most common form control, text-based input fields. Includes support for all HTML5 types: <code>text</code>, <code>password</code>, <code>datetime</code>, <code>datetime-local</code>, <code>date</code>, <code>month</code>, <code>time</code>, <code>week</code>, <code>number</code>, <code>email</code>, <code>url</code>, <code>search</code>, <code>tel</code>, and <code>color</code>.</p>
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-input-needs-type">
     <h4>Type declaration required</h4>
     <p>Inputs will only be fully styled if their <code>type</code> is properly declared.</p>
   </div>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="text-form-control">
     <form role="form">
       <input type="text" class="form-control" placeholder="Text input">
     </form>
   </div><!-- /.bs-example -->
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">placeholder=</span><span class="s">"Text input"</span><span class="nt">&gt;</span></code></pre></div>
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-xref-input-group">
     <h4>Input groups</h4>
     <p>To add integrated text or buttons before and/or after any text-based <code>&lt;input&gt;</code>, <a href="../components/#input-groups">check out the input group component</a>.</p>
   </div>
 
   <h3>Textarea</h3>
   <p>Form control which supports multiple lines of text. Change <code>rows</code> attribute as necessary.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="textarea-form-control">
     <form role="form">
       <textarea class="form-control" rows="3" placeholder="Textarea"></textarea>
     </form>
@@ -1792,7 +1791,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   <p>Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.</p>
   <p>A checkbox or radio with the <code>disabled</code> attribute will be styled appropriately. To have the <code>&lt;label&gt;</code> for the checkbox or radio also display a "not-allowed" cursor when the user hovers over the label, add the <code>.disabled</code> class to your <code>.radio</code>, <code>.radio-inline</code>, <code>.checkbox</code>, <code>.checkbox-inline</code>, or <code>&lt;fieldset&gt;</code>.</p>
   <h4>Default (stacked)</h4>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="block-checkboxes-radios">
     <form role="form">
       <div class="checkbox">
         <label>
@@ -1861,7 +1860,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h4>Inline checkboxes and radios</h4>
   <p>Use the <code>.checkbox-inline</code> or <code>.radio-inline</code> classes on a series of checkboxes or radios for controls that appear on the same line.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="inline-checkboxes-radios">
     <form role="form">
       <label class="checkbox-inline">
         <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
@@ -1908,7 +1907,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h4>Checkboxes and radios without label text</h4>
   <p>Should you have no text within the <code>&lt;label&gt;</code>, the input is positioned as you'd expect. <strong>Currently only works on non-inline checkboxes and radios.</strong> Remember to still provide some form of label for assistive technologies (for instance, using <code>aria-label</code>).</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="checkboxes-radios-without-labels">
     <form role="form">
       <div class="checkbox">
         <label>
@@ -1934,8 +1933,8 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3>Selects</h3>
-  <p>Use the default option, or add <code>multiple</code> to show multiple options at once.</p>
-  <div class="bs-example">
+  <p>Note that many native select menus—namely in Safari and Chrome—have rounded corners that cannot be modified via <code>border-radius</code> properties.</p>
+  <div class="bs-example" data-example-ids="select-form-control">
     <form role="form">
       <select class="form-control">
         <option>1</option>
@@ -1973,7 +1972,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h2 id="forms-controls-static">Static control</h2>
   <p>When you need to place plain text next to a form label within a form, use the <code>.form-control-static</code> class on a <code>&lt;p&gt;</code>.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="horizontal-static-form-control">
     <form class="form-horizontal" role="form">
       <div class="form-group">
         <label class="col-sm-2 control-label">Email</label>
@@ -2003,7 +2002,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/form&gt;</span></code></pre></div>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="inline-static-form-control">
     <form class="form-inline" role="form">
       <div class="form-group">
         <label class="sr-only">Email</label>
@@ -2035,7 +2034,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
       <input class="form-control" id="focusedInput" type="text" value="Demonstrative focus state">
     </form>
   </div>
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-focus-demo">
     <h4>Demo <code>:focus</code> state</h4>
     <p>The above example input uses custom styles in our documentation to demonstrate the <code>:focus</code> state on a <code>.form-control</code>.</p>
   </div>
@@ -2043,7 +2042,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h2 id="forms-control-disabled">Disabled state</h2>
   <p>Add the <code>disabled</code> boolean attribute on an input to prevent user input and trigger a slightly different look.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="text-form-control-disabled">
     <form role="form">
       <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here…" disabled>
     </form>
@@ -2053,17 +2052,17 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   <h3 id="forms-disabled-fieldsets">Disabled fieldsets</h3>
   <p>Add the <code>disabled</code> attribute to a <code>&lt;fieldset&gt;</code> to disable all the controls within the <code>&lt;fieldset&gt;</code> at once.</p>
 
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-fieldset-disabled-pointer-events">
     <h4>Caveat about link functionality of <code>&lt;a&gt;</code></h4>
-    <p>Our styles use <code>pointer-events: none</code> to try to disable the link functionality of <code>&lt;a class="btn btn-*"&gt;</code> buttons in this case, but that CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11. So to be safe, use custom JavaScript to disable such links.</p>
+    <p>By default, browsers will treat all native form controls (<code>&lt;input&gt;</code>, <code>&lt;select&gt;</code> and <code>&lt;button&gt;</code> elements) inside a <code>&lt;fieldset disabled&gt;</code> as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes <code>&lt;a ... class="btn btn-*"&gt;</code> elements, these will only be given a style of <code>pointer-events: none</code>. As noted in the section about <a href="#buttons-disabled">disabled state for buttons</a> (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.</p>
   </div>
 
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-fieldset-disabled-ie">
     <h4>Cross-browser compatibility</h4>
     <p>While Bootstrap will apply these styles in all browsers, Internet Explorer 11 and below don't fully support the <code>disabled</code> attribute on a <code>&lt;fieldset&gt;</code>. Use custom JavaScript to disable the fieldset in these browsers.</p>
   </div>
 
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="disabled-fieldset">
     <form role="form">
       <fieldset disabled>
         <div class="form-group">
@@ -2109,7 +2108,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h2 id="forms-control-readonly">Readonly state</h2>
   <p>Add the <code>readonly</code> boolean attribute on an input to prevent user input and style the input as disabled.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="readonly-text-form-control">
     <form role="form">
       <input class="form-control" type="text" placeholder="Readonly input here…" readonly>
     </form>
@@ -2120,13 +2119,13 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   <h2 id="forms-control-validation">Validation states</h2>
   <p>Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element. Any <code>.control-label</code>, <code>.form-control</code>, and <code>.help-block</code> within that element will receive the validation styles.</p>
 
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-form-validation-state-accessibility">
     <h4>Conveying validation state to assistive technologies</h4>
     <p>Using these validation styles to denote the state of a form control only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers.</p>
     <p>Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's <code>&lt;label&gt;</code> text itself (as is the case in the following code example), or associate an additional element with textual information about the validation state with the form control using <code>aria-describedby</code> (see the example in the following section). In the case of an error, you could also use the <code>aria-invalid="true"</code> attribute on the form control.</p>
   </div>
 
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="form-validation-states">
     <form role="form">
       <div class="form-group has-success">
         <label class="control-label" for="inputSuccess1">Input with success</label>
@@ -2206,16 +2205,16 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   <h3>With optional icons</h3>
   <p>You can also add optional feedback icons with the addition of <code>.has-feedback</code> and the right icon.</p>
   <p><strong class="text-danger">Feedback icons only work with textual <code>&lt;input class="form-control"&gt;</code> elements.</strong></p>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-has-feedback-icon-positioning">
     <h4>Icons, labels, and input groups</h4>
     <p>Manual positioning of feedback icons is required for inputs without a label and for <a href="../components#input-groups">input groups</a> with an add-on on the right. You are strongly encouraged to provide labels for all inputs for accessibility reasons. If you wish to prevent labels from being displayed, hide them with the <code>.sr-only</code> class. If you must do without labels, adjust the <code>top</code> value of the feedback icon. For input groups, adjust the <code>right</code> value to an appropriate pixel value depending on the width of your addon.</p>
   </div>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-has-feedback-icon-accessibility">
     <h4>Conveying the icon's meaning to assistive technologies</h4>
     <p>To ensure that assistive technologies – such as screen readers – correctly convey the meaning of an icon, additional hidden text should be included with the <code>.sr-only</code> class and explicitly associated with the form control it relates to using <code>aria-describedby</code>. Alternatively, ensure that the meaning (for instance, the fact that there is a warning for a particular text entry field) is conveyed in some other form, such as changing the text of the actual <code>&lt;label&gt;</code> associated with the form control.</p>
     <p>Although the following examples already mention the validation state of their respective form controls in the <code>&lt;label&gt;</code> text itself, the above technique (using <code>.sr-only</code> text and <code>aria-describedby</code>) has been included for illustrative purposes.</p>
   </div>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="form-validation-states-with-icons">
     <form role="form">
       <div class="form-group has-success has-feedback">
         <label class="control-label" for="inputSuccess2">Input with success</label>
@@ -2257,7 +2256,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h4>Optional icons in horizontal and inline forms</h4>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="horizontal-form-validation-state-with-icon">
     <form class="form-horizontal" role="form">
       <div class="form-group has-success has-feedback">
         <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
@@ -2280,7 +2279,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/form&gt;</span></code></pre></div>
 
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="inline-form-validation-state-with-icon">
     <form class="form-inline" role="form">
       <div class="form-group has-success has-feedback">
         <label class="control-label" for="inputSuccess4">Input with success</label>
@@ -2300,8 +2299,8 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 <span class="nt">&lt;/form&gt;</span></code></pre></div>
 
   <h4>Optional icons with hidden <code>.sr-only</code> labels</h4>
-  <p>For form controls with no visible label, add the <code>.sr-only</code> class on the label. Bootstrap will automatically adjust the position of the icon once it's been added.</p>
-  <div class="bs-example">
+  <p>If you use the <code>.sr-only</code> class to hide a form control's <code>&lt;label&gt;</code> (rather than using other labelling options, such as the <code>aria-label</code> attribute), Bootstrap will automatically adjust the position of the icon once it's been added.</p>
+  <div class="bs-example" data-example-id="form-validation-state-with-icon-without-label">
     <div class="form-group has-success has-feedback">
       <label class="control-label sr-only" for="inputSuccess5">Hidden label</label>
       <input type="text" class="form-control" id="inputSuccess5" aria-describedby="inputSuccess5Status">
@@ -2322,7 +2321,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h3>Height sizing</h3>
   <p>Create taller or shorter form controls that match button sizes.</p>
-  <div class="bs-example bs-example-control-sizing">
+  <div class="bs-example bs-example-control-sizing" data-example-id="form-control-height-sizes">
     <form role="form">
       <div class="controls">
         <input class="form-control input-lg" type="text" placeholder=".input-lg">
@@ -2351,7 +2350,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h3>Horizontal form group sizes</h3>
   <p>Quickly size labels and form controls within <code>.form-horizontal</code> by adding <code>.form-group-lg</code> or <code>.form-group-sm</code>.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="form-group-height-sizes">
     <form class="form-horizontal" role="form">
       <div class="form-group form-group-lg">
         <label class="col-sm-2 control-label" for="formGroupInputLarge">Large label</label>
@@ -2385,7 +2384,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h3>Column sizing</h3>
   <p>Wrap inputs in grid columns, or any custom parent element, to easily enforce desired widths.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="form-control-column-sizing">
     <form role="form">
       <div class="row">
         <div class="col-xs-2">
@@ -2414,11 +2413,11 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h2 id="forms-help-text">Help text</h2>
   <p>Block level help text for form controls.</p>
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-help-text-accessibility">
     <h4>Associating help text with form controls</h4>
     <p>Help text should be explicitly associated with the form control it relates to using the <code>aria-describedby</code> attribute. This will ensure that assistive technologies – such as screen readers – will announce this help text when the user focuses or enters the control.</p>
   </div>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-help-text">
     <form role="form">
       <div class="form-group">
         <label for="inputHelpBlock">Input with help text</label>
@@ -2438,7 +2437,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h2 id="buttons-options">Options</h2>
   <p>Use any of the available button classes to quickly create a styled button.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="btn-variants">
     <button type="button" class="btn btn-default">Default</button>
     <button type="button" class="btn btn-primary">Primary</button>
     <button type="button" class="btn btn-success">Success</button>
@@ -2468,14 +2467,14 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 <span class="c">&lt;!-- Deemphasize a button by making it look like a link while maintaining button behavior --&gt;</span>
 <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-link"</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/button&gt;</span></code></pre></div>
 
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-buttons-color-accessibility">
     <h4>Conveying meaning to assistive technologies</h4>
     <p>Using color to add meaning to a button only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (the visible text of the button), or is included through alternative means, such as additional text hidden with the <code>.sr-only</code> class.</p>
   </div>
 
   <h2 id="buttons-sizes">Sizes</h2>
   <p>Fancy larger or smaller buttons? Add <code>.btn-lg</code>, <code>.btn-sm</code>, or <code>.btn-xs</code> for additional sizes.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="btn-sizes">
     <p>
       <button type="button" class="btn btn-primary btn-lg">Large button</button>
       <button type="button" class="btn btn-default btn-lg">Large button</button>
@@ -2511,7 +2510,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 <span class="nt">&lt;/p&gt;</span></code></pre></div>
 
   <p>Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding <code>.btn-block</code>.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="block-btns">
     <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
       <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
       <button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
@@ -2526,7 +2525,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h3>Button element</h3>
   <p>No need to add <code>:active</code> as it's a pseudo-class, but if you need to force the same appearance, go ahead and add <code>.active</code>.</p>
-  <p class="bs-example">
+  <p class="bs-example" data-example-id="active-button-btns">
     <button type="button" class="btn btn-primary btn-lg active">Primary button</button>
     <button type="button" class="btn btn-default btn-lg active">Button</button>
   </p>
@@ -2535,7 +2534,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h3>Anchor element</h3>
   <p>Add the <code>.active</code> class to <code>&lt;a&gt;</code> buttons.</p>
-  <p class="bs-example">
+  <p class="bs-example" data-example-id="active-anchor-btns">
     <a href="#" class="btn btn-primary btn-lg active" role="button">Primary link</a>
     <a href="#" class="btn btn-default btn-lg active" role="button">Link</a>
   </p>
@@ -2548,21 +2547,21 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h3>Button element</h3>
   <p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
-  <p class="bs-example">
+  <p class="bs-example" data-example-id="disabled-button-btns">
     <button type="button" class="btn btn-primary btn-lg" disabled="disabled">Primary button</button>
     <button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
   </p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-primary"</span> <span class="na">disabled=</span><span class="s">"disabled"</span><span class="nt">&gt;</span>Primary button<span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default btn-lg"</span> <span class="na">disabled=</span><span class="s">"disabled"</span><span class="nt">&gt;</span>Button<span class="nt">&lt;/button&gt;</span></code></pre></div>
 
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-buttons-ie-disabled">
     <h4>Cross-browser compatibility</h4>
     <p>If you add the <code>disabled</code> attribute to a <code>&lt;button&gt;</code>, Internet Explorer 9 and below will render text gray with a nasty text-shadow that we cannot fix.</p>
   </div>
 
   <h3>Anchor element</h3>
   <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
-  <p class="bs-example">
+  <p class="bs-example" data-example-id="disabled-anchor-btns">
     <a href="#" class="btn btn-primary btn-lg disabled" role="button">Primary link</a>
     <a href="#" class="btn btn-default btn-lg disabled" role="button">Link</a>
   </p>
@@ -2571,7 +2570,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   <p>
     We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
   </p>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-buttons-disabled-anchor">
     <h4>Link functionality caveat</h4>
     <p>This class uses <code>pointer-events: none</code> to try to disable the link functionality of <code>&lt;a&gt;</code>s, but that CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11. In addition, even in browsers that do support <code>pointer-events: none</code>, keyboard navigation remains unaffected, meaning that sighted keyboard users and users of assistive technologies will still be able to activate these links. So to be safe, use custom JavaScript to disable such links.</p>
   </div>
@@ -2611,7 +2610,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h2 id="images-responsive">Responsive images</h2>
   <p>Images in Bootstrap 3 can be made responsive-friendly via the addition of the <code>.img-responsive</code> class. This applies <code>max-width: 100%;</code> and <code>height: auto;</code> to the image so that it scales nicely to the parent element.</p>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-images-ie-svg">
     <h4>SVG images and IE 8-10</h4>
     <p>In Internet Explorer 8-10, SVG images with <code>.img-responsive</code> are disproportionately sized. To fix this, add <code>width: 100% \9;</code> where necessary. Bootstrap doesn't apply this automatically as it causes complications to other image formats.</p>
   </div>
@@ -2619,11 +2618,11 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h2 id="images-shapes">Image shapes</h2>
   <p>Add classes to an <code>&lt;img&gt;</code> element to easily style images in any project.</p>
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-images-ie-rounded-corners">
     <h4>Cross-browser compatibility</h4>
     <p>Keep in mind that Internet Explorer 8 lacks support for rounded corners.</p>
   </div>
-  <div class="bs-example bs-example-images">
+  <div class="bs-example bs-example-images" data-example-id="image-shapes">
     <img data-src="holder.js/140x140" class="img-rounded" alt="A generic square placeholder image with rounded corners">
     <img data-src="holder.js/140x140" class="img-circle" alt="A generic square placeholder image where only the portion within the circle circumscribed about said square is visible">
     <img data-src="holder.js/140x140" class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera">
@@ -2638,7 +2637,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h3 id="helper-classes-colors">Contextual colors</h3>
   <p>Convey meaning through color with a handful of emphasis utility classes. These may also be applied to links and will darken on hover just like our default link styles.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="contextual-colors-helpers">
     <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
     <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
     <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
@@ -2652,18 +2651,18 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-info"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-warning"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-danger"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span></code></pre></div>
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-helper-context-color-specificity">
     <h4>Dealing with specificity</h4>
     <p>Sometimes emphasis classes cannot be applied due to the specificity of another selector. In most cases, a sufficient workaround is to wrap your text in a <code>&lt;span&gt;</code> with the class.</p>
   </div>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-helper-context-color-accessibility">
     <h4>Conveying meaning to assistive technologies</h4>
     <p>Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (the contextual colors are only used to reinforce meaning that is already present in the text/markup), or is included through alternative means, such as additional text hidden with the <code>.sr-only</code> class.</p>
   </div>
 
   <h3 id="helper-classes-backgrounds">Contextual backgrounds</h3>
   <p>Similar to the contextual text color classes, easily set the background of an element to any contextual class. Anchor components will darken on hover, just like the text classes.</p>
-  <div class="bs-example bs-example-bg-classes">
+  <div class="bs-example bs-example-bg-classes" data-example-id="contextual-backgrounds-helpers">
     <p class="bg-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
     <p class="bg-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
     <p class="bg-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
@@ -2675,18 +2674,18 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"bg-info"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"bg-warning"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"bg-danger"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span></code></pre></div>
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-helper-bg-specificity">
     <h4>Dealing with specificity</h4>
     <p>Sometimes contextual background classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a <code>&lt;div&gt;</code> with the class.</p>
   </div>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-helper-bg-accessibility">
     <h4>Conveying meaning to assistive technologies</h4>
     <p>As with <a href="#helper-classes-colors">contextual colors</a>, ensure that any meaning conveyed through color is also conveyed in a format that is not purely presentational.</p>
   </div>
 
   <h3 id="helper-classes-close">Close icon</h3>
   <p>Use the generic close icon for dismissing content like modals and alerts.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="close-icon">
     <p><button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></p>
   </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Close<span class="nt">&lt;/span&gt;&lt;/button&gt;</span></code></pre></div>
@@ -2694,7 +2693,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h3 id="helper-classes-carets">Carets</h3>
   <p>Use carets to indicate dropdown functionality and direction. Note that the default caret will reverse automatically in <a href="../components/#btn-dropdowns-dropup">dropup menus</a>.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="caret">
     <span class="caret"></span>
   </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"caret"</span><span class="nt">&gt;&lt;/span&gt;</span></code></pre></div>
@@ -2720,7 +2719,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   <span class="nc">.pull-right</span><span class="o">()</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
 
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-helper-pull-navbar">
     <h4>Not for use in navbars</h4>
     <p>To align components in navbars with utility classes, use <code>.navbar-left</code> or <code>.navbar-right</code> instead. <a href="../components/#navbar-component-alignment">See the navbar docs</a> for details.</p>
   </div>
@@ -2844,28 +2843,28 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
       </thead>
       <tbody>
         <tr>
-          <th><code>.visible-xs-*</code></th>
+          <th scope="row"><code>.visible-xs-*</code></th>
           <td class="is-visible">Visible</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
         </tr>
         <tr>
-          <th><code>.visible-sm-*</code></th>
+          <th scope="row"><code>.visible-sm-*</code></th>
           <td class="is-hidden">Hidden</td>
           <td class="is-visible">Visible</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
         </tr>
         <tr>
-          <th><code>.visible-md-*</code></th>
+          <th scope="row"><code>.visible-md-*</code></th>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-visible">Visible</td>
           <td class="is-hidden">Hidden</td>
         </tr>
         <tr>
-          <th><code>.visible-lg-*</code></th>
+          <th scope="row"><code>.visible-lg-*</code></th>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
@@ -2874,28 +2873,28 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
       </tbody>
       <tbody>
         <tr>
-          <th><code>.hidden-xs</code></th>
+          <th scope="row"><code>.hidden-xs</code></th>
           <td class="is-hidden">Hidden</td>
           <td class="is-visible">Visible</td>
           <td class="is-visible">Visible</td>
           <td class="is-visible">Visible</td>
         </tr>
         <tr>
-          <th><code>.hidden-sm</code></th>
+          <th scope="row"><code>.hidden-sm</code></th>
           <td class="is-visible">Visible</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-visible">Visible</td>
           <td class="is-visible">Visible</td>
         </tr>
         <tr>
-          <th><code>.hidden-md</code></th>
+          <th scope="row"><code>.hidden-md</code></th>
           <td class="is-visible">Visible</td>
           <td class="is-visible">Visible</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-visible">Visible</td>
         </tr>
         <tr>
-          <th><code>.hidden-lg</code></th>
+          <th scope="row"><code>.hidden-lg</code></th>
           <td class="is-visible">Visible</td>
           <td class="is-visible">Visible</td>
           <td class="is-visible">Visible</td>
@@ -2916,15 +2915,15 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
       </thead>
       <tbody>
         <tr>
-          <td><code>.visible-*-block</code></td>
+          <th scope="row"><code>.visible-*-block</code></th>
           <td><code>display: block;</code></td>
         </tr>
         <tr>
-          <td><code>.visible-*-inline</code></td>
+          <th scope="row"><code>.visible-*-inline</code></th>
           <td><code>display: inline;</code></td>
         </tr>
         <tr>
-          <td><code>.visible-*-inline-block</code></td>
+          <th scope="row"><code>.visible-*-inline-block</code></th>
           <td><code>display: inline-block;</code></td>
         </tr>
       </tbody>
@@ -2946,7 +2945,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
       </thead>
       <tbody>
         <tr>
-          <th>
+          <th scope="row">
             <code>.visible-print-block</code><br>
             <code>.visible-print-inline</code><br>
             <code>.visible-print-inline-block</code>
@@ -2955,7 +2954,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
           <td class="is-visible">Visible</td>
         </tr>
         <tr>
-          <th><code>.hidden-print</code></th>
+          <th scope="row"><code>.hidden-print</code></th>
           <td class="is-visible">Visible</td>
           <td class="is-hidden">Hidden</td>
         </tr>
@@ -3419,7 +3418,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   <p>Utility mixins are mixins that combine otherwise unrelated CSS properties to achieve a specific goal or task.</p>
 
   <h3 id="less-mixins-clearfix">Clearfix</h3>
-  <p>Forget adding <code>class="clearfix"</code> to any element and instead add the <code>.clearfix()</code> mixin where appropriate. Uses the <a href="http://nicolasgallagher.com/micro-clearfix-hack/" target="_blank">micro clearfix</a> from <a href="https://twitter.com/necolas" target="_blank">Nicolas Gallager</a>.</p>
+  <p>Forget adding <code>class="clearfix"</code> to any element and instead add the <code>.clearfix()</code> mixin where appropriate. Uses the <a href="http://nicolasgallagher.com/micro-clearfix-hack/" target="_blank">micro clearfix</a> from <a href="https://twitter.com/necolas" target="_blank">Nicolas Gallagher</a>.</p>
 <div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Mixin
 </span><span class="nc">.clearfix</span><span class="o">()</span> <span class="p">{</span>
   <span class="k">&amp;</span><span class="nd">:before</span><span class="o">,</span>
@@ -3532,27 +3531,27 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
       </thead>
       <tbody>
         <tr>
-          <th><code>lib/</code></th>
+          <th scope="row"><code>lib/</code></th>
           <td>Ruby gem code (Sass configuration, Rails and Compass integrations)</td>
         </tr>
         <tr>
-          <th><code>tasks/</code></th>
+          <th scope="row"><code>tasks/</code></th>
           <td>Converter scripts (turning upstream Less to Sass)</td>
         </tr>
         <tr>
-          <th><code>test/</code></th>
+          <th scope="row"><code>test/</code></th>
           <td>Compilation tests</td>
         </tr>
         <tr>
-          <th><code>templates/</code></th>
+          <th scope="row"><code>templates/</code></th>
           <td>Compass package manifest</td>
         </tr>
         <tr>
-          <th><code>vendor/assets/</code></th>
+          <th scope="row"><code>vendor/assets/</code></th>
           <td>Sass, JavaScript, and font files</td>
         </tr>
         <tr>
-          <th><code>Rakefile</code></th>
+          <th scope="row"><code>Rakefile</code></th>
           <td>Internal tasks, such as rake and convert</td>
         </tr>
       </tbody>
@@ -3571,8 +3570,8 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
         </div>
         
-        <div class="col-md-3">
-          <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
+        <div class="col-md-3" role="complementary">
+          <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
             <ul class="nav bs-docs-sidenav">
               
                 <li>
@@ -3722,7 +3721,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
               Preview theme
             </a>
             
-          </div>
+          </nav>
         </div>
         
       </div>
@@ -3753,7 +3752,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
     <p>Designed and built with all the love in the world by <a href="https://twitter.com/mdo" target="_blank">@mdo</a> and <a href="https://twitter.com/fat" target="_blank">@fat</a>.</p>
     <p>Maintained by the <a href="https://github.com/orgs/twbs/people">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
     <p>Code licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-    <ul class="bs-docs-footer-links muted">
+    <ul class="bs-docs-footer-links text-muted">
       <li>Currently v3.3.1</li>
       <li>&middot;</li>
       <li><a href="https://github.com/twbs/bootstrap">GitHub</a></li>

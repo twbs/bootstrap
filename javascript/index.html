@@ -68,7 +68,7 @@
       </button>
       <a href="../" class="navbar-brand">Bootstrap</a>
     </div>
-    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+    <nav class="collapse navbar-collapse bs-navbar-collapse">
       <ul class="nav navbar-nav">
         <li>
           <a href="../getting-started/">Getting started</a>
@@ -115,17 +115,12 @@
   <h3 id="js-individual-compiled">Individual or compiled</h3>
   <p>Plugins can be included individually (using Bootstrap's individual <code>*.js</code> files), or all at once (using <code>bootstrap.js</code> or the minified <code>bootstrap.min.js</code>).</p>
 
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-overview-not-both">
     <h4>Using the compiled JavaScript</h4>
     <p>Both <code>bootstrap.js</code> and <code>bootstrap.min.js</code> contain all plugins in a single file. Include only one.</p>
   </div>
 
-  <div class="bs-callout bs-callout-danger">
-    <h4>Component data attributes</h4>
-    <p>Don't use data attributes from multiple plugins on the same element. For example, a button cannot both have a tooltip and toggle a modal. To accomplish this, use a wrapping element.</p>
-  </div>
-
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-overview-dependencies">
     <h4>Plugin dependencies</h4>
     <p>Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that all plugins depend on jQuery (this means jQuery must be included <strong>before</strong> the plugin files). <a href="https://github.com/twbs/bootstrap/blob/v3.3.1/bower.json">Consult our <code>bower.json</code></a> to see which versions of jQuery are supported.</p>
   </div>
@@ -138,6 +133,11 @@
 
   <p>Alternatively, to target a specific plugin, just include the plugin's name as a namespace along with the data-api namespace like this:</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">off</span><span class="p">(</span><span class="s1">'.alert.data-api'</span><span class="p">)</span></code></pre></div>
+
+  <div class="bs-callout bs-callout-danger" id="callout-overview-single-data">
+    <h4>Only one plugin per element via data attributes</h4>
+    <p>Don't use data attributes from multiple plugins on the same element. For example, a button cannot both have a tooltip and toggle a modal. To accomplish this, use a wrapping element.</p>
+  </div>
 
   <h3 id="js-programmatic-api">Programmatic API</h3>
   <p>We also believe you should be able to use all Bootstrap plugins purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.</p>
@@ -197,7 +197,7 @@
     <h4>Modal markup placement</h4>
     <p>Always try to place a modal's HTML code in a top-level position in your document to avoid other components affecting the modal's appearance and/or functionality.</p>
   </div>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-modal-mobile-caveats">
     <h4>Mobile device caveats</h4>
     <p>There are some caveats regarding using modals on mobile devices. <a href="../getting-started/#support-fixed-position-keyboards">See our browser support docs</a> for details.</p>
   </div>
@@ -208,7 +208,7 @@
 
   <h3>Static example</h3>
   <p>A rendered modal with header, body, and set of actions in the footer.</p>
-  <div class="bs-example bs-example-modal">
+  <div class="bs-example bs-example-modal" data-example-id="static-modal">
     <div class="modal">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -317,13 +317,13 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-modal-accessibility">
     <h4>Make modals accessible</h4>
     <p>Be sure to add <code>role="dialog"</code> to <code>.modal</code>, <code>aria-labelledby="myModalLabel"</code> attribute to reference the modal title, and <code>aria-hidden="true"</code> to tell assistive technologies to skip the modal's DOM elements.</p>
     <p>Additionally, you may give a description of your modal dialog with <code>aria-describedby</code> on <code>.modal</code>.</p>
   </div>
 
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-modal-youtube">
     <h4>Embedding YouTube videos</h4>
     <p>Embedding YouTube videos in modals requires additional JavaScript not in Bootstrap to automatically stop playback and more. <a href="http://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal">See this helpful Stack Overflow post</a> for more information.</p>
   </div>
@@ -479,7 +479,7 @@
   <p>Call a modal with id <code>myModal</code> with a single line of JavaScript:</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span></code></pre></div>
 
-  <h3>Options</h3>
+  <h3 id="modals-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-backdrop=""</code>.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
@@ -524,7 +524,7 @@
     </table>
   </div><!-- /.table-responsive -->
 
-  <h3>Methods</h3>
+  <h3 id="modals-methods">Methods</h3>
 
   <h4>.modal(options)</h4>
   <p>Activates your content as a modal. Accepts an optional options <code>object</code>.</p>
@@ -544,10 +544,10 @@
   <p>Manually hides a modal. <strong>Returns to the caller before the modal has actually been hidden</strong> (i.e. before the <code>hidden.bs.modal</code> event occurs).</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="s1">'hide'</span><span class="p">)</span></code></pre></div>
 
-  <h3>Events</h3>
+  <h3 id="modals-events">Events</h3>
   <p>Bootstrap's modal class exposes a few events for hooking into modal functionality.</p>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped bs-events-table">
       <thead>
        <tr>
          <th style="width: 150px;">Event Type</th>
@@ -729,22 +729,23 @@
   <h3>Via JavaScript</h3>
   <p>Call the dropdowns via JavaScript:</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'.dropdown-toggle'</span><span class="p">).</span><span class="nx">dropdown</span><span class="p">()</span></code></pre></div>
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-dropdowns-data-required">
     <h4><code>data-toggle="dropdown"</code> still required</h4>
     <p>Regardless of whether you call your dropdown via JavaScript or instead use the data-api, <code>data-toggle="dropdown"</code> is always required to be present on the dropdown's trigger element.</p>
   </div>
 
-  <h3>Options</h3>
+  <h3 id="dropdowns-options">Options</h3>
   <p><em>None</em></p>
 
-  <h3>Methods</h3>
+  <h3 id="dropdowns-methods">Methods</h3>
   <h4>$().dropdown('toggle')</h4>
   <p>Toggles the dropdown menu of a given navbar or tabbed navigation.</p>
 
-  <h3>Events</h3>
+  <h3 id="dropdowns-events">Events</h3>
   <p>All dropdown events are fired at the <code>.dropdown-menu</code>'s parent element.</p>
+  <p>All dropdown events have a <code>relatedTarget</code> property, whose value is the toggling anchor element.</p>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped bs-events-table">
       <thead>
         <tr>
           <th style="width: 150px;">Event Type</th>
@@ -754,19 +755,19 @@
       <tbody>
         <tr>
           <td>show.bs.dropdown</td>
-          <td>This event fires immediately when the show instance method is called. The toggling anchor element is available as the <code>relatedTarget</code> property of the event.</td>
+          <td>This event fires immediately when the show instance method is called.</td>
         </tr>
         <tr>
           <td>shown.bs.dropdown</td>
-          <td>This event is fired when the dropdown has been made visible to the user (will wait for CSS transitions, to complete).  The toggling anchor element is available as the <code>relatedTarget</code> property of the event.</td>
+          <td>This event is fired when the dropdown has been made visible to the user (will wait for CSS transitions, to complete).</td>
         </tr>
         <tr>
           <td>hide.bs.dropdown</td>
-          <td>This event is fired immediately when the hide instance method has been called. The toggling anchor element is available as the <code>relatedTarget</code> property of the event.</td>
+          <td>This event is fired immediately when the hide instance method has been called.</td>
         </tr>
         <tr>
           <td>hidden.bs.dropdown</td>
-          <td>This event is fired when the dropdown has finished being hidden from the user (will wait for CSS transitions, to complete). The toggling anchor element is available as the <code>relatedTarget</code> property of the event.</td>
+          <td>This event is fired when the dropdown has finished being hidden from the user (will wait for CSS transitions, to complete).</td>
         </tr>
       </tbody>
     </table>
@@ -781,7 +782,7 @@
 
   <h2 id="scrollspy-examples">Example in navbar</h2>
   <p>The ScrollSpy plugin is for automatically updating nav targets based on scroll position. Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="embedded-scrollspy">
     <nav id="navbar-example2" class="navbar navbar-default navbar-static" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -829,15 +830,15 @@
 
   <h2 id="scrollspy-usage">Usage</h2>
 
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-scrollspy-needs-nav">
     <h4>Requires Bootstrap nav</h4>
     <p>Scrollspy currently requires the use of a <a href="../components/#nav">Bootstrap nav component</a> for proper highlighting of active links.</p>
   </div>
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-scrollspy-target-ids">
     <h4>Resolvable ID targets required</h4>
     <p>Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the DOM like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.</p>
   </div>
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-scrollspy-invisible-targets">
     <h4>Non-<code>:visible</code> target elements ignored</h4>
     <p>Target elements that are not <a href="http://api.jquery.com/visible-selector/"><code>:visible</code> according to jQuery</a> will be ignored and their corresponding nav items will never be highlighted.</p>
   </div>
@@ -865,7 +866,7 @@
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'body'</span><span class="p">).</span><span class="nx">scrollspy</span><span class="p">({</span> <span class="na">target</span><span class="p">:</span> <span class="s1">'.navbar-example'</span> <span class="p">})</span></code></pre></div>
 
 
-  <h3>Methods</h3>
+  <h3 id="scrollspy-methods">Methods</h3>
   <h4>.scrollspy('refresh')</h4>
   <p>When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'[data-spy="scroll"]'</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
@@ -873,7 +874,7 @@
 <span class="p">})</span></code></pre></div>
 
 
-  <h3>Options</h3>
+  <h3 id="scrollspy-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset=""</code>.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
@@ -896,9 +897,9 @@
     </table>
   </div><!-- ./bs-table-responsive -->
 
-  <h3>Events</h3>
+  <h3 id="scrollspy-events">Events</h3>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped bs-events-table">
       <thead>
        <tr>
          <th style="width: 150px;">Event Type</th>
@@ -923,7 +924,7 @@
 
   <h2 id="tabs-examples">Example tabs</h2>
   <p>Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus.</p>
-  <div class="bs-example bs-example-tabs" role="tabpanel">
+  <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
     <ul id="myTab" class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Home</a></li>
       <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Profile</a></li>
@@ -951,7 +952,7 @@
     </div>
   </div><!-- /example -->
 
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-tabs-extends-component">
     <h4>Extends tabbed navigation</h4>
     <p>This plugin extends the <a href="../components/#nav-tabs">tabbed navigation component</a> to add tabbable areas.</p>
   </div>
@@ -1003,7 +1004,7 @@
   <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"settings"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-  <h3>Methods</h3>
+  <h3 id="tabs-methods">Methods</h3>
   <h4>$().tab</h4>
   <p>
     Activates a tab element and content container. Tab should have either a <code>data-target</code> or an <code>href</code> targeting a container node in the DOM.
@@ -1028,7 +1029,7 @@
   <span class="p">})</span>
 <span class="nt">&lt;/script&gt;</span></code></pre></div>
 
-  <h3>Events</h3>
+  <h3 id="tabs-events">Events</h3>
   <p>When showing a new tab, the events fire in the following order:</p>
   <ol>
     <li><code>hide.bs.tab</code> (on the current active tab)</li>
@@ -1038,7 +1039,7 @@
   </ol>
   <p>If no tab was already active, then the <code>hide.bs.tab</code> and <code>hidden.bs.tab</code> events will not be fired.</p>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped bs-events-table">
       <thead>
        <tr>
          <th style="width: 150px;">Event Type</th>
@@ -1085,7 +1086,7 @@
 
   <h3>Static tooltip</h3>
   <p>Four options are available: top, right, bottom, and left aligned.</p>
-  <div class="bs-example bs-example-tooltip">
+  <div class="bs-example bs-example-tooltip" data-example-id="static-tooltips">
     <div class="tooltip left" role="tooltip">
       <div class="tooltip-arrow"></div>
       <div class="tooltip-inner">
@@ -1129,7 +1130,7 @@
 
 <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="na">data-toggle=</span><span class="s">"tooltip"</span> <span class="na">data-placement=</span><span class="s">"right"</span> <span class="na">title=</span><span class="s">"Tooltip on right"</span><span class="nt">&gt;</span>Tooltip on right<span class="nt">&lt;/button&gt;</span></code></pre></div>
 
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-tooltip-opt-in">
     <h4>Opt-in functionality</h4>
     <p>For performance reasons, the Tooltip and Popover data-apis are opt-in, meaning <strong>you must initialize them yourself</strong>.</p>
     <p>One way to initialize all tooltips on a page would be to select them by their <code>data-toggle</code> attribute:</p>
@@ -1138,15 +1139,15 @@
 <span class="p">})</span></code></pre></div>
 
   </div>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-tooltip-groups">
     <h4>Tooltips in button groups and input groups require special setting</h4>
     <p>When using tooltips on elements within a <code>.btn-group</code> or an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> (documented below) to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip is triggered).</p>
   </div>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-tooltip-hidden">
     <h4>Don't try to show tooltips on hidden elements</h4>
     <p>Invoking <code>$(...).tooltip('show')</code> when the target element is <code>display: none;</code> will cause the tooltip to be incorrectly positioned.</p>
   </div>
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-tooltip-disabled">
     <h4>Tooltips on disabled elements require wrapper elements</h4>
     <p>To add a tooltip to a <code>disabled</code> or <code>.disabled</code> element, put the element inside of a <code>&lt;div&gt;</code> and apply the tooltip to that <code>&lt;div&gt;</code> instead.</p>
   </div>
@@ -1158,7 +1159,7 @@
 
   <h3>Markup</h3>
   <p>The required markup for a tooltip is only a <code>data</code> attribute and <code>title</code> on the HTML element you wish to have a tooltip. The generated markup of a tooltip is rather simple, though it does require a position (by default, set to <code>top</code> by the plugin).</p>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-tooltip-multiline">
     <h4>Multiple-line links</h4>
     <p>Sometimes you want to add a tooltip to a hyperlink that wraps multiple lines. The default behavior of the tooltip plugin is to center it horizontally and vertically. Add <code>white-space: nowrap;</code> to your anchors to avoid this.</p>
   </div>
@@ -1173,7 +1174,7 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-  <h3>Options</h3>
+  <h3 id="tooltips-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
@@ -1268,12 +1269,12 @@
       </tbody>
     </table>
   </div><!-- /.table-responsive -->
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-tooltip-data">
     <h4>Data attributes for individual tooltips</h4>
     <p>Options for individual tooltips can alternatively be specified through the use of data attributes, as explained above.</p>
   </div>
 
-  <h3>Methods</h3>
+  <h3 id="tooltips-methods">Methods</h3>
 
   <h4>$().tooltip(options)</h4>
   <p>Attaches a tooltip handler to an element collection.</p>
@@ -1294,9 +1295,9 @@
   <p>Hides and destroys an element's tooltip.</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">(</span><span class="s1">'destroy'</span><span class="p">)</span></code></pre></div>
 
-  <h3>Events</h3>
+  <h3 id="tooltips-events">Events</h3>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped bs-events-table">
       <thead>
         <tr>
           <th style="width: 150px;">Event Type</th>
@@ -1334,11 +1335,11 @@
   <p>Add small overlays of content, like those on the iPad, to any element for housing secondary information.</p>
   <p>Popovers whose both title and content are zero-length are never displayed.</p>
 
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-popover-needs-tooltip">
     <h4>Plugin dependency</h4>
     <p>Popovers require the <a href="#tooltips">tooltip plugin</a> to be included in your version of Bootstrap.</p>
   </div>
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-popover-opt-in">
     <h4>Opt-in functionality</h4>
     <p>For performance reasons, the Tooltip and Popover data-apis are opt-in, meaning <strong>you must initialize them yourself</strong>.</p>
     <p>One way to initialize all popovers on a page would be to select them by their <code>data-toggle</code> attribute:</p>
@@ -1346,19 +1347,19 @@
   <span class="nx">$</span><span class="p">(</span><span class="s1">'[data-toggle="popover"]'</span><span class="p">).</span><span class="nx">popover</span><span class="p">()</span>
 <span class="p">})</span></code></pre></div>
   </div>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-popover-groups">
     <h4>Popovers in button groups and input groups require special setting</h4>
     <p>When using popovers on elements within a <code>.btn-group</code> or an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> (documented below) to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the popover is triggered).</p>
   </div>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-popover-hidden">
     <h4>Don't try to show popovers on hidden elements</h4>
     <p>Invoking <code>$(...).popover('show')</code> when the target element is <code>display: none;</code> will cause the popover to be incorrectly positioned.</p>
   </div>
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-popover-disabled">
     <h4>Popovers on disabled elements require wrapper elements</h4>
     <p>To add a popover to a <code>disabled</code> or <code>.disabled</code> element, put the element inside of a <code>&lt;div&gt;</code> and apply the popover to that <code>&lt;div&gt;</code> instead.</p>
   </div>
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-popover-multiline">
     <h4>Multiple-line links</h4>
     <p>Sometimes you want to add a popover to a hyperlink that wraps multiple lines. The default behavior of the popover plugin is to center it horizontally and vertically. Add <code>white-space: nowrap;</code> to your anchors to avoid this.</p>
   </div>
@@ -1366,7 +1367,7 @@
   <h2 id="popovers-examples">Examples</h2>
   <h3>Static popover</h3>
   <p>Four options are available: top, right, bottom, and left aligned.</p>
-  <div class="bs-example bs-example-popover">
+  <div class="bs-example bs-example-popover" data-example-id="static-popovers">
     <div class="popover top">
       <div class="arrow"></div>
       <h3 class="popover-title">Popover top</h3>
@@ -1445,7 +1446,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 
   <h4>Dismiss on next click</h4>
   <p>Use the <code>focus</code> trigger to dismiss popovers on the next click that the user makes.</p>
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-popover-dismiss-click">
     <h4>Specific markup required for dismiss-on-next-click</h4>
     <p>For proper cross-browser and cross-platform behavior, you must use the <code>&lt;a&gt;</code> tag, <i>not</i> the <code>&lt;button&gt;</code> tag, and you also must include a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#tabindex"><code>tabindex</code></a> attribute.</p>
   </div>
@@ -1459,7 +1460,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   <p>Enable popovers via JavaScript:</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span></code></pre></div>
 
-  <h3>Options</h3>
+  <h3 id="popovers-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
@@ -1564,7 +1565,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
       </tbody>
     </table>
   </div><!-- /.table-responsive -->
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-popover-data">
     <h4>Data attributes for individual popovers</h4>
     <p>Options for individual popovers can alternatively be specified through the use of data attributes, as explained above.</p>
   </div>
@@ -1588,9 +1589,9 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   <h4>.popover('destroy')</h4>
   <p>Hides and destroys an element's popover.</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="s1">'destroy'</span><span class="p">)</span></code></pre></div>
-  <h3>Events</h3>
+  <h3 id="popovers-events">Events</h3>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped bs-events-table">
       <thead>
         <tr>
           <th style="width: 150px;">Event Type</th>
@@ -1628,7 +1629,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   <h2 id="alerts-examples">Example alerts</h2>
   <p>Add dismiss functionality to all alert messages with this plugin.</p>
   <p>When using a <code>.close</code> button, it must be the first child of the <code>.alert-dismissible</code> and no text content may come before it in the markup.</p>
-  <div class="bs-example bs-example-standalone">
+  <div class="bs-example bs-example-standalone" data-example-id="dismissible-alert-js">
     <div class="alert alert-warning alert-dismissible fade in" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
@@ -1657,7 +1658,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 
   <p>To have your alerts use animation when closing, make sure they have the <code>.fade</code> and <code>.in</code> classes already applied to them.</p>
 
-  <h3>Methods</h3>
+  <h3 id="alerts-methods">Methods</h3>
 
   <h4>$().alert()</h4>
   <p>Makes an alert listen for click events on descendant elements which have the <code>data-dismiss="alert"</code> attribute. (Not necessary when using the data-api's auto-initialization.)</p>
@@ -1666,10 +1667,10 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   <p>Closes an alert by removing it from the DOM. If the <code>.fade</code> and <code>.in</code> classes are present on the element, the alert will fade out before it is removed.</p>
 
 
-  <h3>Events</h3>
+  <h3 id="alerts-events">Events</h3>
   <p>Bootstrap's alert plugin exposes a few events for hooking into alert functionality.</p>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped bs-events-table">
       <thead>
         <tr>
           <th style="width: 150px;">Event Type</th>
@@ -1698,14 +1699,14 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 
   <p class="lead">Do more with buttons. Control button states or create groups of buttons for more components like toolbars.</p>
 
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-buttons-ff-autocomplete">
     <h4>Cross-browser compatibility</h4>
     <p><a href="https://github.com/twbs/bootstrap/issues/793">Firefox persists form control states (disabledness and checkedness) across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>. See <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=654072">Mozilla bug #654072</a>.</p>
   </div>
 
   <h2 id="buttons-stateful">Stateful</h2>
   <p>Add <code>data-loading-text="Loading..."</code> to use a loading state on a button.</p>
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-buttons-state-names">
     <h4>Use whichever state you like!</h4>
     <p>For the sake of this demonstration, we are using <code>data-loading-text</code> and <code>$().button('loading')</code>, but that's not the only state you can use. <a href="#buttons-methods">See more on this below in the <code>$().button(string)</code> documentation</a>.</p>
   </div>
@@ -1728,7 +1729,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 
   <h2 id="buttons-single-toggle">Single toggle</h2>
   <p>Add <code>data-toggle="button"</code> to activate toggling on a single button.</p>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-buttons-single-pretoggled">
     <h4>Pre-toggled buttons need <code>.active</code> and <code>aria-pressed="true"</code></h4>
     <p>For pre-toggled buttons, you must add the <code>.active</code> class and the <code>aria-pressed="true"</code> attribute to the <code>button</code> yourself.</p>
   </div>
@@ -1743,15 +1744,15 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 
   <h2 id="buttons-checkbox-radio">Checkbox / Radio</h2>
   <p>Add <code>data-toggle="buttons"</code> to a <code>.btn-group</code> containing checkbox or radio inputs to enable toggling in their respective styles.</p>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-buttons-multi-preselected">
     <h4>Preselected options need <code>.active</code></h4>
     <p>For preselected options, you must add the <code>.active</code> class to the input's <code>label</code> yourself.</p>
   </div>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-buttons-only-click">
     <h4>Visual checked state only updated on click</h4>
     <p>If the checked state of a checkbox button is updated without firing a <code>click</code> event on the button (e.g. via <code>&lt;input type="reset"&gt;</code> or via setting the <code>checked</code> property of the input), you will need to toggle the <code>.active</code> class on the input's <code>label</code> yourself.</p>
   </div>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="buttons-checkbox">
     <div class="btn-group" data-toggle="buttons">
       <label class="btn btn-primary active">
         <input type="checkbox" checked autocomplete="off"> Checkbox 1 (pre-checked)
@@ -1776,7 +1777,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   <span class="nt">&lt;/label&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="buttons-radio">
     <div class="btn-group" data-toggle="buttons">
       <label class="btn btn-primary active">
         <input type="radio" name="options" id="option1" autocomplete="off" checked> Radio 1 (preselected)
@@ -1828,13 +1829,19 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   <h3>About</h3>
   <p>Get base styles and flexible support for collapsible components like accordions and navigation.</p>
 
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-collapse-dependency">
     <h4>Plugin dependency</h4>
     <p>Collapse requires the <a href="#transitions">transitions plugin</a> to be included in your version of Bootstrap.</p>
   </div>
 
-  <h2 id="collapse-examples">Example accordion</h2>
-  <p>Using the collapse plugin, we built a simple accordion by extending the panel component.</p>
+  <h2 id="collapse-example">Example</h2>
+  <p>Click the buttons below to show and hide another element via class changes:</p>
+  <ul>
+    <li><code>.collapse</code> hides content</li>
+    <li><code>.collapsing</code> is applied during transitions</li>
+    <li><code>.collapse.in</code> shows content</li>
+  </ul>
+  <p>You can use a link with the <code>href</code> attribute, or a button with the <code>data-target</code> attribute. In both cases, the <code>data-toggle="collapse"</code> is required.</p>
 
   <div class="bs-example">
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -1956,7 +1963,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 
 <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"demo"</span> <span class="na">class=</span><span class="s">"collapse in"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-collapse-accessibility">
     <h4>Make expand/collapse controls accessible</h4>
     <p>Be sure to add <code>aria-expanded</code> to the control element. This attribute explicitly defines the current state of the collapsible element to screen readers and similar assistive technologies. If the collapsible element is closed by default, it should have a value of <code>aria-expanded="false"</code>. If you've set the collapsible element to be open by default using the <code>in</code> class, set <code>aria-expanded="true"</code> on the control instead. The plugin will automatically toggle this attribute based on whether or not the collapsible element has been opened or closed.</p>
     <p>Additionally, if your control element is targetting a single collapsible element – i.e. the <code>data-target</code> attribute is pointing to an <code>id</code> selector – you may add an additional <code>aria-controls</code> attribute to the control element, containing the <code>id</code> of the collapsible element. Modern screen readers and similar assistive technologies make use of this attribute to provide users with additional shortcuts to navigate directly to the collapsible element itself.</p>
@@ -1979,7 +1986,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   <p>Enable manually with:</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'.collapse'</span><span class="p">).</span><span class="nx">collapse</span><span class="p">()</span></code></pre></div>
 
-  <h3>Options</h3>
+  <h3 id="collapse-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-parent=""</code>.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
@@ -2008,7 +2015,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
     </table>
   </div><!-- /.table-responsive -->
 
-  <h3>Methods</h3>
+  <h3 id="collapse-methods">Methods</h3>
 
   <h4>.collapse(options)</h4>
   <p>Activates your content as a collapsible element. Accepts an optional options <code>object</code>.
@@ -2025,10 +2032,10 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   <h4>.collapse('hide')</h4>
   <p>Hides a collapsible element.</p>
 
-  <h3>Events</h3>
+  <h3 id="collapse-events">Events</h3>
   <p>Bootstrap's collapse class exposes a few events for hooking into collapse functionality.</p>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped bs-events-table">
       <thead>
        <tr>
          <th style="width: 150px;">Event Type</th>
@@ -2068,7 +2075,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   <p>A slideshow component for cycling through elements, like a carousel. <strong>Nested carousels are not supported.</strong></p>
 
   <h2 id="carousel-examples">Examples</h2>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-carousel">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -2149,7 +2156,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 
   <h3>Optional captions</h3>
   <p>Add captions to your slides easily with the <code>.carousel-caption</code> element within any <code>.item</code>. Place just about any optional HTML within there and it will be automatically aligned and formatted.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="carousel-with-captions">
     <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
@@ -2210,7 +2217,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   <p>Call carousel manually with:</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'.carousel'</span><span class="p">).</span><span class="nx">carousel</span><span class="p">()</span></code></pre></div>
 
-  <h3>Options</h3>
+  <h3 id="carousel-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-interval=""</code>.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
@@ -2251,7 +2258,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
     </table>
   </div><!-- /.table-responsive -->
 
-  <h3>Methods</h3>
+  <h3 id="carousel-methods">Methods</h3>
 
   <h4>.carousel(options)</h4>
   <p>Initializes the carousel with an optional options <code>object</code> and starts cycling through items.</p>
@@ -2275,7 +2282,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   <h4>.carousel('next')</h4>
   <p>Cycles to the next item.</p>
 
-  <h3>Events</h3>
+  <h3 id="carousel-events">Events</h3>
   <p>Bootstrap's carousel class exposes two events for hooking into carousel functionality.</p>
   <p>Both events have the following additional properties:</p>
   <ul>
@@ -2283,7 +2290,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
     <li><code>relatedTarget</code>: The DOM element that is being slid into place as the active item.</li>
   </ul>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped bs-events-table">
       <thead>
        <tr>
          <th style="width: 150px;">Event Type</th>
@@ -2347,7 +2354,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 <span class="p">})</span></code></pre></div>
 
 
-  <h3>Options</h3>
+  <h3 id="affix-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset-top="200"</code>.</p>
 
   <div class="table-responsive">
@@ -2379,10 +2386,10 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   </div><!-- /.table-responsive -->
 
 
-  <h3>Events</h3>
+  <h3 id="affix-events">Events</h3>
   <p>Bootstrap's affix plugin exposes a few events for hooking into affix functionality.</p>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped bs-events-table">
       <thead>
         <tr>
           <th style="width: 150px;">Event Type</th>
@@ -2422,8 +2429,8 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 
         </div>
         
-        <div class="col-md-3">
-          <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
+        <div class="col-md-3" role="complementary">
+          <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
             <ul class="nav bs-docs-sidenav">
               
                 <li>
@@ -2532,7 +2539,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
               Preview theme
             </a>
             
-          </div>
+          </nav>
         </div>
         
       </div>
@@ -2563,7 +2570,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
     <p>Designed and built with all the love in the world by <a href="https://twitter.com/mdo" target="_blank">@mdo</a> and <a href="https://twitter.com/fat" target="_blank">@fat</a>.</p>
     <p>Maintained by the <a href="https://github.com/orgs/twbs/people">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
     <p>Code licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-    <ul class="bs-docs-footer-links muted">
+    <ul class="bs-docs-footer-links text-muted">
       <li>Currently v3.3.1</li>
       <li>&middot;</li>
       <li><a href="https://github.com/twbs/bootstrap">GitHub</a></li>
