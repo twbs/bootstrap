@@ -63,7 +63,7 @@
       </button>
       <a href="../" class="navbar-brand">Bootstrap</a>
     </div>
-    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+    <nav class="collapse navbar-collapse bs-navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="active">
           <a href="../getting-started/">Getting started</a>
@@ -145,7 +145,7 @@
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
 
   <h3 id="download-bower">Install with Bower</h3>
-  <p>Install and manage Bootstrap's Less, CSS, JavaScript, and fonts using <a href="http://bower.io">Bower</a>.</p>
+  <p>You can also install and manage Bootstrap's Less, CSS, JavaScript, and fonts using <a href="http://bower.io">Bower</a>:</p>
   <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>bower install bootstrap</code></pre></div>
 </div>
 
@@ -166,8 +166,10 @@ Copy any changes made here over to the README too. -->
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">bootstrap/
 ├── css/
 │   ├── bootstrap.css
+│   ├── bootstrap.css.map
 │   ├── bootstrap.min.css
 │   ├── bootstrap-theme.css
+│   ├── bootstrap-theme.css.map
 │   └── bootstrap-theme.min.css
 ├── js/
 │   ├── bootstrap.js
@@ -176,9 +178,11 @@ Copy any changes made here over to the README too. -->
     ├── glyphicons-halflings-regular.eot
     ├── glyphicons-halflings-regular.svg
     ├── glyphicons-halflings-regular.ttf
-    └── glyphicons-halflings-regular.woff</code></pre></div>
-
-  <p>This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). Fonts from Glyphicons are included, as is the optional Bootstrap theme.</p>
+    ├── glyphicons-halflings-regular.woff
+    └── glyphicons-halflings-regular.woff2</code></pre></div>
+<!-- NOTE: This info is intentionally duplicated in the README.
+Copy any changes made here over to the README too. -->
+  <p>This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). CSS <a href="https://developers.google.com/chrome-developer-tools/docs/css-preprocessors">source maps</a> (<code>bootstrap.*.map</code>) are available for use with certain browsers' developer tools. Fonts from Glyphicons are included, as is the optional Bootstrap theme.</p>
 
   <h2 id="whats-included-source">Bootstrap source code</h2>
   <p>The Bootstrap source code download includes the precompiled CSS, JavaScript, and font assets, along with source Less, JavaScript, and documentation. More specifically, it includes the following and more:</p>
@@ -275,14 +279,14 @@ Copy any changes made here over to the README too. -->
   <div class="row bs-examples">
     <div class="col-xs-6 col-md-4">
       <a class="thumbnail" href="../examples/starter-template/">
-        <img src="../examples/screenshots/starter-template.jpg" alt="">
+        <img src="../examples/screenshots/starter-template.jpg" alt="Starter template example">
       </a>
       <h4>Starter template</h4>
       <p>Nothing but the basics: compiled CSS and JavaScript along with a container.</p>
     </div>
     <div class="col-xs-6 col-md-4">
       <a class="thumbnail" href="../examples/theme/">
-        <img src="../examples/screenshots/theme.jpg" alt="">
+        <img src="../examples/screenshots/theme.jpg" alt="Bootstrap theme example">
       </a>
       <h4>Bootstrap theme</h4>
       <p>Load the optional Bootstrap theme for a visually enhanced experience.</p>
@@ -291,14 +295,14 @@ Copy any changes made here over to the README too. -->
 
     <div class="col-xs-6 col-md-4">
       <a class="thumbnail" href="../examples/grid/">
-        <img src="../examples/screenshots/grid.jpg" alt="">
+        <img src="../examples/screenshots/grid.jpg" alt="Multiple grids example">
       </a>
       <h4>Grids</h4>
       <p>Multiple examples of grid layouts with all four tiers, nesting, and more.</p>
     </div>
     <div class="col-xs-6 col-md-4">
       <a class="thumbnail" href="../examples/jumbotron/">
-        <img src="../examples/screenshots/jumbotron.jpg" alt="">
+        <img src="../examples/screenshots/jumbotron.jpg" alt="Jumbotron example">
       </a>
       <h4>Jumbotron</h4>
       <p>Build around the jumbotron with a navbar and some basic grid columns.</p>
@@ -307,7 +311,7 @@ Copy any changes made here over to the README too. -->
 
     <div class="col-xs-6 col-md-4">
       <a class="thumbnail" href="../examples/jumbotron-narrow/">
-        <img src="../examples/screenshots/jumbotron-narrow.jpg" alt="">
+        <img src="../examples/screenshots/jumbotron-narrow.jpg" alt="Narrow jumbotron example">
       </a>
       <h4>Narrow jumbotron</h4>
       <p>Build a more custom page by narrowing the default container and jumbotron.</p>
@@ -318,14 +322,14 @@ Copy any changes made here over to the README too. -->
   <div class="row bs-examples">
     <div class="col-xs-6 col-md-4">
       <a class="thumbnail" href="../examples/navbar/">
-        <img src="../examples/screenshots/navbar.jpg" alt="">
+        <img src="../examples/screenshots/navbar.jpg" alt="Navbar example">
       </a>
       <h4>Navbar</h4>
       <p>Super basic template that includes the navbar along with some additional content.</p>
     </div>
     <div class="col-xs-6 col-md-4">
       <a class="thumbnail" href="../examples/navbar-static-top/">
-        <img src="../examples/screenshots/navbar-static.jpg" alt="">
+        <img src="../examples/screenshots/navbar-static.jpg" alt="Static top navbar example">
       </a>
       <h4>Static top navbar</h4>
       <p>Super basic template with a static top navbar along with some additional content.</p>
@@ -334,7 +338,7 @@ Copy any changes made here over to the README too. -->
 
     <div class="col-xs-6 col-md-4">
       <a class="thumbnail" href="../examples/navbar-fixed-top/">
-        <img src="../examples/screenshots/navbar-fixed.jpg" alt="">
+        <img src="../examples/screenshots/navbar-fixed.jpg" alt="Fixed navbar example">
       </a>
       <h4>Fixed navbar</h4>
       <p>Super basic template with a fixed top navbar along with some additional content.</p>
@@ -345,14 +349,14 @@ Copy any changes made here over to the README too. -->
   <div class="row bs-examples">
     <div class="col-xs-6 col-md-4">
       <a class="thumbnail" href="../examples/cover/">
-        <img src="../examples/screenshots/cover.jpg" alt="">
+        <img src="../examples/screenshots/cover.jpg" alt="A one-page template example">
       </a>
       <h4>Cover</h4>
       <p>A one-page template for building simple and beautiful home pages.</p>
     </div>
     <div class="col-xs-6 col-md-4">
       <a class="thumbnail" href="../examples/carousel/">
-        <img src="../examples/screenshots/carousel.jpg" alt="">
+        <img src="../examples/screenshots/carousel.jpg" alt="Carousel example">
       </a>
       <h4>Carousel</h4>
       <p>Customize the navbar and carousel, then add some new components.</p>
@@ -361,30 +365,30 @@ Copy any changes made here over to the README too. -->
 
     <div class="col-xs-6 col-md-4">
       <a class="thumbnail" href="../examples/blog/">
-        <img src="../examples/screenshots/blog.jpg" alt="">
+        <img src="../examples/screenshots/blog.jpg" alt="Blog layout example">
       </a>
       <h4>Blog</h4>
       <p>Simple two-column blog layout with custom navigation, header, and type.</p>
     </div>
     <div class="col-xs-6 col-md-4">
       <a class="thumbnail" href="../examples/dashboard/">
-        <img src="../examples/screenshots/dashboard.jpg" alt="">
+        <img src="../examples/screenshots/dashboard.jpg" alt="Dashboard example">
       </a>
       <h4>Dashboard</h4>
-      <p>Basic structure for a admin dashboard with fixed sidebar and navbar.</p>
+      <p>Basic structure for an admin dashboard with fixed sidebar and navbar.</p>
     </div>
     <div class="clearfix visible-xs"></div>
 
     <div class="col-xs-6 col-md-4">
       <a class="thumbnail" href="../examples/signin/">
-        <img src="../examples/screenshots/sign-in.jpg" alt="">
+        <img src="../examples/screenshots/sign-in.jpg" alt="Sign-in page example">
       </a>
       <h4>Sign-in page</h4>
       <p>Custom form layout and design for a simple sign in form.</p>
     </div>
     <div class="col-xs-6 col-md-4">
       <a class="thumbnail" href="../examples/justified-nav/">
-        <img src="../examples/screenshots/justified-nav.jpg" alt="">
+        <img src="../examples/screenshots/justified-nav.jpg" alt="Justified nav example">
       </a>
       <h4>Justified nav</h4>
       <p>Create a custom navbar with justified links. Heads up! <a href="../components/#nav-justified">Not too Safari friendly.</a></p>
@@ -393,14 +397,14 @@ Copy any changes made here over to the README too. -->
 
     <div class="col-xs-6 col-md-4">
       <a class="thumbnail" href="../examples/sticky-footer/">
-        <img src="../examples/screenshots/sticky-footer.jpg" alt="">
+        <img src="../examples/screenshots/sticky-footer.jpg" alt="Sticky footer example">
       </a>
       <h4>Sticky footer</h4>
       <p>Attach a footer to the bottom of the viewport when the content is shorter than it.</p>
     </div>
     <div class="col-xs-6 col-md-4">
       <a class="thumbnail" href="../examples/sticky-footer-navbar/">
-        <img src="../examples/screenshots/sticky-footer-navbar.jpg" alt="">
+        <img src="../examples/screenshots/sticky-footer-navbar.jpg" alt="Sticky footer with navbar example">
       </a>
       <h4>Sticky footer with navbar</h4>
       <p>Attach a footer to the bottom of the viewport with a fixed navbar at the top.</p>
@@ -411,14 +415,14 @@ Copy any changes made here over to the README too. -->
   <div class="row bs-examples">
     <div class="col-xs-6 col-md-4">
       <a class="thumbnail" href="../examples/non-responsive/">
-        <img src="../examples/screenshots/non-responsive.jpg" alt="">
+        <img src="../examples/screenshots/non-responsive.jpg" alt="Non-responsive example">
       </a>
       <h4>Non-responsive Bootstrap</h4>
       <p>Easily disable the responsiveness of Bootstrap <a href="#disable-responsive">per our docs</a>.</p>
     </div>
     <div class="col-xs-6 col-md-4">
       <a class="thumbnail" href="../examples/offcanvas/">
-        <img src="../examples/screenshots/offcanvas.jpg" alt="">
+        <img src="../examples/screenshots/offcanvas.jpg" alt="Off-canvas navigation example">
       </a>
       <h4>Offcanvas</h4>
       <p>Build a toggleable off-canvas navigation menu for use with Bootstrap.</p>
@@ -439,7 +443,7 @@ Copy any changes made here over to the README too. -->
   <p class="lead">Stay up to date on the development of Bootstrap and reach out to the community with these helpful resources.</p>
   <ul>
     <li>Read and subscribe to <a href="http://blog.getbootstrap.com/">The Official Bootstrap Blog</a>.</li>
-    <li>Chat with fellow Bootstrappers using IRC in the <code>irc.freenode.net</code> server, in the <a href="irc://irc.freenode.net/#twitter-bootstrap">##twitter-bootstrap channel</a>.</li>
+    <li>Chat with fellow Bootstrappers using IRC in the <code>irc.freenode.net</code> server, in the <a href="irc://irc.freenode.net/%23bootstrap">##bootstrap channel</a>.</li>
     <li>For help using Bootstrap, ask on <a href="http://stackoverflow.com/questions/tagged/twitter-bootstrap-3">StackOverflow using the tag <code>twitter-bootstrap-3</code></a>.</li>
     <li>Find inspiring examples of people building with Bootstrap at the <a href="http://expo.getbootstrap.com">Bootstrap Expo</a>.</li>
   </ul>
@@ -496,7 +500,7 @@ Copy any changes made here over to the README too. -->
       </thead>
       <tbody>
         <tr>
-          <th>Android</th>
+          <th scope="row">Android</th>
           <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
           <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
           <td class="text-muted" rowspan="3" style="vertical-align: middle;">N/A</td>
@@ -504,21 +508,21 @@ Copy any changes made here over to the README too. -->
           <td class="text-muted">N/A</td>
         </tr>
         <tr>
-          <th>iOS</th>
+          <th scope="row">iOS</th>
           <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
           <td class="text-muted">N/A</td>
           <td class="text-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Not Supported</td>
           <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
         </tr>
         <tr>
-          <th>Mac OS X</th>
+          <th scope="row">Mac OS X</th>
           <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
           <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
           <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
           <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
         </tr>
         <tr>
-          <th>Windows</th>
+          <th scope="row">Windows</th>
           <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
           <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
           <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
@@ -537,9 +541,9 @@ Copy any changes made here over to the README too. -->
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th scope="col" class="col-xs-4">Feature</th>
-          <th scope="col" class="col-xs-4">Internet Explorer 8</th>
-          <th scope="col" class="col-xs-4">Internet Explorer 9</th>
+          <th class="col-xs-4">Feature</th>
+          <th class="col-xs-4">Internet Explorer 8</th>
+          <th class="col-xs-4">Internet Explorer 9</th>
         </tr>
       </thead>
       <tbody>
@@ -622,7 +626,6 @@ Copy any changes made here over to the README too. -->
     <li>Add <code>.pull-right</code> to your last grid column to get the hard-right alignment</li>
     <li>Tweak your percentages manually to get the perfect rounding for Safari (more difficult than the first option)</li>
   </ul>
-  <p>We'll keep an eye on this though and update our code if we have an easy solution.</p>
 
   <h3 id="support-fixed-position-keyboards">Modals, navbars, and virtual keyboards</h3>
   <h4>Overflow and scrolling</h4>
@@ -630,7 +633,7 @@ Copy any changes made here over to the README too. -->
   <h4>Virtual keyboards</h4>
   <p>Also, note that if you're using a fixed navbar or using inputs within a modal, iOS has a rendering bug that doesn't update the position of fixed elements when the virtual keyboard is triggered. A few workarounds for this include transforming your elements to <code>position: absolute</code> or invoking a timer on focus to try to correct the positioning manually. This is not handled by Bootstrap, so it is up to you to decide which solution is best for your application.</p>
   <h4>Navbar Dropdowns</h4>
-  <p>The <code>.dropdown-backdrop</code> element isn't used on iOS in the nav because of the complexity of z-indexing. Thus, to close dropdowns in navbars, you must directly click the dropdown element (or any other element which will fire a click event in iOS).</p>
+  <p>The <code>.dropdown-backdrop</code> element isn't used on iOS in the nav because of the complexity of z-indexing. Thus, to close dropdowns in navbars, you must directly click the dropdown element (or <a href="https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile">any other element which will fire a click event in iOS</a>).</p>
 
   <h3 id="support-browser-zooming">Browser zooming</h3>
   <p>Page zooming inevitably presents rendering artifacts in some components, both in Bootstrap and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.</p>
@@ -726,11 +729,12 @@ Copy any changes made here over to the README too. -->
   <p class="lead">Bootstrap follows common web standards and&mdash;with minimal extra effort&mdash;can be used to create sites that are accessible to those using <abbr title="Assistive Technology" class="initialism">AT</abbr>.</p>
 
   <h3>Skip navigation</h3>
-  <p>If your navigation contains many links and comes before the main content in the DOM, add a <code>Skip to main content</code> link immediately after your opening <code>&lt;body&gt;</code> tag. <a href="http://a11yproject.com/posts/skip-nav-links/">(read why)</a></p>
+  <p>If your navigation contains many links and comes before the main content in the DOM, add a <code>Skip to main content</code> link before the navigation <a href="http://a11yproject.com/posts/skip-nav-links/">(read why)</a>. Using the <code>.sr-only</code> class will visually hide the skip link, and the <code>.sr-only-focusable</code> class will ensure that the link becomes visible once focused (for sighted keyboard users).</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#content"</span> <span class="na">class=</span><span class="s">"sr-only sr-only-focusable"</span><span class="nt">&gt;</span>Skip to main content<span class="nt">&lt;/a&gt;</span>
+  ...
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span> <span class="na">id=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-    The main page content.
+    <span class="c">&lt;!-- The main page content --&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/body&gt;</span></code></pre></div>
 
@@ -818,8 +822,8 @@ Copy any changes made here over to the README too. -->
 
         </div>
         
-        <div class="col-md-3">
-          <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
+        <div class="col-md-3" role="complementary">
+          <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
             <ul class="nav bs-docs-sidenav">
               
                 <li>
@@ -904,7 +908,7 @@ Copy any changes made here over to the README too. -->
               Back to top
             </a>
             
-          </div>
+          </nav>
         </div>
         
       </div>
@@ -935,7 +939,7 @@ Copy any changes made here over to the README too. -->
     <p>Designed and built with all the love in the world by <a href="https://twitter.com/mdo" target="_blank">@mdo</a> and <a href="https://twitter.com/fat" target="_blank">@fat</a>.</p>
     <p>Maintained by the <a href="https://github.com/orgs/twbs/people">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
     <p>Code licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-    <ul class="bs-docs-footer-links muted">
+    <ul class="bs-docs-footer-links text-muted">
       <li>Currently v3.3.1</li>
       <li>&middot;</li>
       <li><a href="https://github.com/twbs/bootstrap">GitHub</a></li>
