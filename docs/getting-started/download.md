@@ -29,7 +29,7 @@ Compiled and minified CSS and JavaScript. No docs or original source files are i
 
 ### Download source and docs
 
-Source Sass, JavaScript, and documentation. **Requires a Sass compiler and [some setup](#grunt).**
+Source Sass, JavaScript, and documentation. **Requires a Sass compiler and [some setup](../compiling).**
 
 <a href="{{ site.download.source }}" class="btn btn-lg btn-outline" role="button" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a>
 

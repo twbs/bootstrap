@@ -7,7 +7,7 @@ Bootstrap is downloadable in two forms, within which you'll find the following d
 
 <div class="bs-callout bs-callout-warning" id="jquery-required">
   <h4>jQuery required</h4>
-  <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included, as shown in the <a href="#template">starter template</a>. <a href="{{ site.repo }}/blob/v{{ site.current_version }}/bower.json">Consult our <code>bower.json</code></a> to see which versions of jQuery are supported.</p>
+  <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included, as shown in the <a href="../quick-start">starter template</a>. <a href="{{ site.repo }}/blob/v{{ site.current_version }}/bower.json">Consult our <code>bower.json</code></a> to see which versions of jQuery are supported.</p>
 </div>
 
 ### Precompiled Bootstrap
