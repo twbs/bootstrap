@@ -1,5 +1,5 @@
 <header class="navbar navbar-static-top bs-docs-sidebar" id="top" role="banner">
-  <a href="{{ site.baseurl }}" class="navbar-brand">
+  <a href="{{ site.baseurl }}/" class="navbar-brand">
     Bootstrap
   </a>
   {% for group in site.data.nav %}
@@ -12,7 +12,7 @@
     {% endif %}
 
     <div class="bs-docs-toc-item {{ active }}">
-      <a class="bs-docs-toc-link" href="{{ site.baseurl }}{{ group.title | downcase | replace: ' ', '-' }}/{{ link.title | downcase | replace: ' ', '-' || page.title | downcase | replace: ' ', '-'  }}">
+      <a class="bs-docs-toc-link" href="{{ site.baseurl }}/{{ group.title | downcase | replace: ' ', '-' }}/{{ link.title | downcase | replace: ' ', '-' || page.title | downcase | replace: ' ', '-'  }}">
         {{ group.title }}
       </a>
 
@@ -26,7 +26,7 @@
           {% endif %}
 
           <li class="{{ active }}">
-            <a href="{{ site.baseurl }}{{ group.title | downcase | replace: ' ', '-' }}/{{ doc.title | downcase | replace: ' ', '-' }}">
+            <a href="{{ site.baseurl }}/{{ group.title | downcase | replace: ' ', '-' }}/{{ doc.title | downcase | replace: ' ', '-' }}">
               {{ doc.title }}
             </a>
 
@@ -34,7 +34,7 @@
               <ul class="nav">
                 {% for section in doc.sections %}
                   <li>
-                    <a href="{{ site.baseurl }}{{ group.title | downcase | replace: ' ', '-' }}/{{ doc.title | downcase | replace: ' ', '-' }}/#{{ section.title | downcase | replace: ' ', '-' }}">
+                    <a href="{{ site.baseurl }}/{{ group.title | downcase | replace: ' ', '-' }}/{{ doc.title | downcase | replace: ' ', '-' }}/#{{ section.title | downcase | replace: ' ', '-' }}">
                       {{ section.title }}
                     </a>
                   </li>
