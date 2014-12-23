@@ -43,7 +43,7 @@
   }
 
   &.disabled,
-  &[disabled],
+  &:disabled,
   fieldset[disabled] & {
     pointer-events: none; // Future-proof disabling of clicks
     cursor: $cursor-disabled;
@@ -88,7 +88,7 @@
   &,
   &:active,
   &.active,
-  &[disabled],
+  &:disabled,
   fieldset[disabled] & {
     background-color: transparent;
     @include box-shadow(none);
@@ -105,7 +105,7 @@
     text-decoration: underline;
     background-color: transparent;
   }
-  &[disabled],
+  &:disabled,
   fieldset[disabled] & {
     &:hover,
     &:focus {

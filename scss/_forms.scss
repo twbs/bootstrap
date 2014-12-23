@@ -133,6 +133,7 @@ output {
   // Placeholder
   &::placeholder {
     color: $input-color-placeholder;
+    opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
   }
 
   // Disabled and read-only inputs
@@ -140,7 +141,7 @@ output {
   // HTML5 says that controls under a fieldset > legend:first-child won't be
   // disabled if the fieldset is disabled. Due to implementation difficulty, we
   // don't honor that edge case; we style them as disabled anyway.
-  &[disabled],
+  &:disabled,
   &[readonly],
   fieldset[disabled] & {
     cursor: $cursor-disabled;
@@ -263,7 +264,7 @@ input[type="search"] {
 // Note: Neither radios nor checkboxes can be readonly.
 input[type="radio"],
 input[type="checkbox"] {
-  &[disabled],
+  &:disabled,
   &.disabled,
   fieldset[disabled] & {
     cursor: $cursor-disabled;

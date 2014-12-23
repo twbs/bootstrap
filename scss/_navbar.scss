@@ -309,7 +309,7 @@
     &:focus {
       color: $navbar-default-link-hover-color;
     }
-    &[disabled],
+    &:disabled,
     fieldset[disabled] & {
       &:hover,
       &:focus {
@@ -422,7 +422,7 @@
       color: $navbar-inverse-link-hover-color;
     }
 
-    &[disabled],
+    &:disabled,
     fieldset[disabled] & {
       &:hover,
       &:focus {

@@ -46,12 +46,6 @@
   z-index: $zindex-navbar-fixed;
 }
 
-
-// Toggling content
-.show {
-  display: block !important;
-}
-
 // Always hide an element with the `hidden` HTML attribute (from PureCSS).
 [hidden] {
   display: none !important;
@@ -63,15 +57,6 @@
 
 .text-hide {
   @include text-hide();
-}
-
-
-// Hide from screenreaders and browsers
-//
-// Credit: HTML5 Boilerplate
-.hidden {
-  display: none !important;
-  visibility: hidden !important;
 }
 
 
