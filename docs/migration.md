@@ -8,6 +8,7 @@ title: Migrating to v4.x.x
 For a broader overview, see [what's new](http://blog.getbootstrap.com/DEAD-LINK-FIX-ME-PLEASE) in the v4.0.0 release announcement.
 
 - Dropped IE8 support—v4 is now only IE9+. For sites needing IE8, use v3.
+- Dropped iOS 6 support.
 - Added official support for Android v5.0 Lollipop's Browser and WebView. Earlier versions of the Android Browser and WebView remain only unofficially supported.
 - Switched from `px` to `rem` as our primary unit in CSS.
 - Media queries are now in `em`s.
@@ -64,6 +65,12 @@ The following deprecated Less/SCSS variables have been removed in v4.0.0:
 * `@screen-sm`, `@screen-md`, `@screen-lg`. Use the more clearly named `$screen-{xs,sm,md,lg,xl}-min` variables instead.
 * `@screen-xs`, `@screen-xs-min`. The extra small breakpoint has no lower bound, so these variables were logically absurd. Reformulate your expression in terms of `$screen-xs-max` instead.
 * `@grid-float-breakpoint`
+
+## Misc notes to prioritize
+
+- Removed the `min--moz-device-pixel-ratio` typo hack for retina media queries
+- Dropped `.hidden` and `.show` because it interferes with jQuery's `$(...).hide()`.
+- Change buttons' `[disabled]` to `:disabled` as IE9+ supports `:disabled`. However `fieldset[disabled]` is still necessary because [native disabled fieldsets are still buggy in IE11](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#Browser_compatibility).
 
 TODO: audit list of stuff in v3 that was marked as deprecated
 
