@@ -160,6 +160,7 @@ The `.invisible` class can be used to toggle only the visibility of an element, 
 .element {
   .invisible();
 }
+{% endhighlight %}
 
 ### Screen readers and keyboard navigation
 
