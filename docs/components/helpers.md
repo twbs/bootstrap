@@ -78,17 +78,12 @@ Float an element to the left or right with a class. `!important` is included to 
 
 // Usage as mixins
 .element {
-  .pull-left();
+  @include pull-left;
 }
 .another-element {
-  .pull-right();
+  @include pull-right;
 }
 {% endhighlight %}
-
-<div class="bs-callout bs-callout-warning">
-  <h4>Not for use in navbars</h4>
-  <p>To align components in navbars with utility classes, use <code>.navbar-left</code> or <code>.navbar-right</code> instead. <a href="../components/#navbar-component-alignment">See the navbar docs</a> for details.</p>
-</div>
 
 ### Center content blocks
 
