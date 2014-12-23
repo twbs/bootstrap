@@ -51,9 +51,16 @@
 .show {
   display: block !important;
 }
+
+// Always hide an element with the `hidden` HTML attribute (from PureCSS).
+[hidden] {
+  display: none !important;
+}
+
 .invisible {
   visibility: hidden;
 }
+
 .text-hide {
   @include text-hide();
 }

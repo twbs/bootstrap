@@ -4625,7 +4625,7 @@ a.list-group-item-state.active, a.list-group-item-state.active:hover, a.list-gro
   bottom: -11px;
   left: 50%;
   margin-left: -11px;
-  border-top-color: fadein(rgba(0, 0, 0, .2), 5%);
+  border-top-color: rgba(0, 0, 0, .25);
   border-bottom-width: 0;
 }
 .popover.top > .arrow:after {
@@ -4639,7 +4639,7 @@ a.list-group-item-state.active, a.list-group-item-state.active:hover, a.list-gro
   top: 50%;
   left: -11px;
   margin-top: -11px;
-  border-right-color: fadein(rgba(0, 0, 0, .2), 5%);
+  border-right-color: rgba(0, 0, 0, .25);
   border-left-width: 0;
 }
 .popover.right > .arrow:after {
@@ -4654,7 +4654,7 @@ a.list-group-item-state.active, a.list-group-item-state.active:hover, a.list-gro
   left: 50%;
   margin-left: -11px;
   border-top-width: 0;
-  border-bottom-color: fadein(rgba(0, 0, 0, .2), 5%);
+  border-bottom-color: rgba(0, 0, 0, .25);
 }
 .popover.bottom > .arrow:after {
   top: 1px;
@@ -4668,7 +4668,7 @@ a.list-group-item-state.active, a.list-group-item-state.active:hover, a.list-gro
   right: -11px;
   margin-top: -11px;
   border-right-width: 0;
-  border-left-color: fadein(rgba(0, 0, 0, .2), 5%);
+  border-left-color: rgba(0, 0, 0, .25);
 }
 .popover.left > .arrow:after {
   right: 1px;
@@ -4934,6 +4934,10 @@ a.list-group-item-state.active, a.list-group-item-state.active:hover, a.list-gro
 
 .show {
   display: block !important;
+}
+
+[hidden] {
+  display: none !important;
 }
 
 .invisible {
