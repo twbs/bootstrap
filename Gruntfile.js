@@ -179,7 +179,7 @@ module.exports = function (grunt) {
           'Chrome >= 20',
           'Firefox >= 31',
           'Explorer >= 9',
-          'iOS >= 6',
+          'iOS >= 7',
           'Opera >= 12',
           'Safari >= 6'
         ]
