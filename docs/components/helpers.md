@@ -137,36 +137,23 @@ Easily clear `float`s by adding `.clearfix` **to the parent element**. Utilizes 
 }
 {% endhighlight %}
 
-### Showing and hiding content
+### Making content invisible
 
-Force an element to be shown or hidden (**including for screen readers**) with the use of `.show` and `.hidden` classes. These classes use `!important` to avoid specificity conflicts, just like the [quick floats](#helper-floats). They are only available for block level toggling. They can also be used as mixins.
-
-Furthermore, `.invisible` can be used to toggle only the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document.
+The `.invisible` class can be used to toggle only the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document.
 
 {% highlight html %}
-<div class="show">...</div>
-<div class="hidden">...</div>
+<div class="invisible">...</div>
 {% endhighlight %}
 
 {% highlight scss %}
 // Classes
-.show {
-  display: block !important;
-}
-.hidden {
-  display: none !important;
-  visibility: hidden !important;
-}
 .invisible {
   visibility: hidden;
 }
 
-// Usage as mixins
+// Usage as mixin
 .element {
-  .show();
-}
-.another-element {
-  .hidden();
+  .invisible();
 }
 {% endhighlight %}
 
