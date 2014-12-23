@@ -132,7 +132,7 @@ Easily clear `float`s by adding `.clearfix` **to the parent element**. Utilizes 
 }
 {% endhighlight %}
 
-### Hidden elements
+### Hidden content
 
 Hide any HTML element with the `[hidden]` attribute. Previously, v3.x included a `.hidden` class that forced toggled content. However, we removed it due to conflicts with jQuery's `hide()` function. It's taken from [PureCSS](http://purecss.io).
 
@@ -142,13 +142,24 @@ Furthermore, `.invisible` can be used to toggle the visibility of an element, me
 <input type="text" hidden>
 {% endhighlight %}
 
-### Visible elements
+### Invisible content
 
-On the other side of hiding content, you can show content with `.show`.
+The `.invisible` class can be used to toggle only the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document.
 
 {% highlight html %}
-<div class="show">...</div>
+<div class="invisible">...</div>
 {% endhighlight %}
+
+{% highlight scss %}
+// Classes
+.invisible {
+  visibility: hidden;
+}
+
+// Usage as mixin
+.element {
+  .invisible();
+}
 
 ### Screen readers and keyboard navigation
 
