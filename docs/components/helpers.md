@@ -137,37 +137,22 @@ Easily clear `float`s by adding `.clearfix` **to the parent element**. Utilizes 
 }
 {% endhighlight %}
 
-### Showing and hiding content
+### Hidden elements
 
-Force an element to be shown or hidden (**including for screen readers**) with the use of `.show` and `.hidden` classes. These classes use `!important` to avoid specificity conflicts, just like the [quick floats](#helper-floats). They are only available for block level toggling. They can also be used as mixins.
+Hide any HTML element with the `[hidden]` attribute. Previously, v3.x included a `.hidden` class that forced toggled content. However, we removed it due to conflicts with jQuery's `hide()` function. It's taken from [PureCSS](http://purecss.io).
 
-Furthermore, `.invisible` can be used to toggle only the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document.
+Furthermore, `.invisible` can be used to toggle the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document.
+
+{% highlight html %}
+<input type="text" hidden>
+{% endhighlight %}
+
+### Visible elements
+
+On the other side of hiding content, you can show content with `.show`.
 
 {% highlight html %}
 <div class="show">...</div>
-<div class="hidden">...</div>
-{% endhighlight %}
-
-{% highlight scss %}
-// Classes
-.show {
-  display: block !important;
-}
-.hidden {
-  display: none !important;
-  visibility: hidden !important;
-}
-.invisible {
-  visibility: hidden;
-}
-
-// Usage as mixins
-.element {
-  .show();
-}
-.another-element {
-  .hidden();
-}
 {% endhighlight %}
 
 ### Screen readers and keyboard navigation
