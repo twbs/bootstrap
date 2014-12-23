@@ -32,10 +32,6 @@ To ensure proper rendering and touch zooming, **add the viewport meta tag** to y
 
 For improved cross-browser rendering, we use [Normalize.css](http://necolas.github.io/normalize.css/) to correct small inconsistencies across browsers and devices.
 
-### jQuery plugins
-
-All our JavaScript plugins are built on top of jQuery.
-
 ### Important CSS resets
 
 Still need to do this section. Should port the third party section about box sizing and edit it for here, then add the rest of the list items.
