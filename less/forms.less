@@ -178,18 +178,16 @@ input[type="search"] {
   input[type="datetime-local"],
   input[type="month"] {
     line-height: @input-height-base;
-  }
-  input[type="date"].input-sm,
-  input[type="time"].input-sm,
-  input[type="datetime-local"].input-sm,
-  input[type="month"].input-sm {
-    line-height: @input-height-small;
-  }
-  input[type="date"].input-lg,
-  input[type="time"].input-lg,
-  input[type="datetime-local"].input-lg,
-  input[type="month"].input-lg {
-    line-height: @input-height-large;
+
+    &.input-sm,
+    .input-group-sm & {
+      line-height: @input-height-small;
+    }
+
+    &.input-lg,
+    .input-group-lg & {
+      line-height: @input-height-large;
+    }
   }
 }
 
