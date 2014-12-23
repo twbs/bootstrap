@@ -103,7 +103,7 @@ Set an element to `display: block;` and center via `margin`. Available as a mixi
 
 // Usage as mixins
 .element {
-  .center-block();
+  @include center-block;
 }
 {% endhighlight %}
 
@@ -128,7 +128,7 @@ Easily clear `float`s by adding `.clearfix` **to the parent element**. Utilizes 
 
 // Usage as a Mixin
 .element {
-  .clearfix();
+  @include clearfix;
 }
 {% endhighlight %}
 
@@ -161,8 +161,8 @@ Hide an element to all devices **except screen readers** with `.sr-only`. Combin
 {% highlight scss %}
 // Usage as a Mixin
 .skip-navigation {
-  .sr-only();
-  .sr-only-focusable();
+  @include sr-only;
+  @include sr-only-focusable;
 }
 {% endhighlight %}
 
@@ -177,6 +177,6 @@ Utilize the `.text-hide` class or mixin to help replace an element's text conten
 {% highlight scss %}
 // Usage as a Mixin
 .heading {
-  .text-hide();
+  @include text-hide;
 }
 {% endhighlight %}
