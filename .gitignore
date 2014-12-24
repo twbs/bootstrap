@@ -1,8 +1,11 @@
 # Ignore docs files
 _gh_pages
 _site
+
+# Ignore ruby files
 .ruby-version
-Gemfile.lock
+.bundle
+vendor/cache
 
 # Numerous always-ignore extensions
 *.diff
@@ -40,6 +43,9 @@ validation-status.json
 
 # SCSS-Lint
 scss-lint-report.xml
+
+# grunt-contrib-sass cache
+.sass-cache
 
 # Folders to ignore
 bower_components
