@@ -8,7 +8,7 @@
 
 .c-input {
 	position: relative;
-	display: inline-block;
+	display: inline;
 	padding-left: 1.5rem;
 	color: #555;
 	font-weight: normal;
@@ -33,6 +33,10 @@
 			background-color: #84c6ff;
 		}
 	}
+
+	+ .c-input {
+		margin-left: 1rem;
+	}
 }
 
 // Custom indicator
@@ -41,7 +45,7 @@
 
 .c-indicator {
 	position: absolute;
-	top: .25rem;
+	top: 0;
 	left: 0;
 	display: block;
 	width:  1rem;
@@ -91,6 +95,27 @@
 }
 .control-dash input:checked ~ .control-indicator {
 	background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iOHB4IiBoZWlnaHQ9IjhweCIgdmlld0JveD0iMCAwIDggOCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgOCA4IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0wLDN2Mmg4VjNIMHoiLz4NCjwvc3ZnPg0K)
+}
+
+// Layout options
+//
+// By default radios and checkboxes are `inline-block` with no additional spacing
+// set. Use these optional classes to tweak the layout.
+
+.c-inputs-stacked {
+	.c-input {
+		display: inline;
+
+		&:after {
+			display: block;
+			content: "";
+			margin-bottom: .25rem;
+		}
+
+		+ .c-input {
+			margin-left: 0;
+		}
+	}
 }
 
 
