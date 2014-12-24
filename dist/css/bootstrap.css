@@ -1953,15 +1953,19 @@ output {
 }
 .form-control::-webkit-input-placeholder {
   color: #999;
+  opacity: 1;
 }
 .form-control::-moz-placeholder {
   color: #999;
+  opacity: 1;
 }
 .form-control:-ms-input-placeholder {
   color: #999;
+  opacity: 1;
 }
 .form-control::placeholder {
   color: #999;
+  opacity: 1;
 }
 .form-control:disabled, .form-control[readonly], fieldset[disabled] .form-control {
   cursor: not-allowed;
@@ -4932,10 +4936,6 @@ a.list-group-item-state.active, a.list-group-item-state.active:hover, a.list-gro
   z-index: 1030;
 }
 
-.show {
-  display: block !important;
-}
-
 [hidden] {
   display: none !important;
 }
@@ -4950,11 +4950,6 @@ a.list-group-item-state.active, a.list-group-item-state.active:hover, a.list-gro
   text-shadow: none;
   background-color: transparent;
   border: 0;
-}
-
-.hidden {
-  display: none !important;
-  visibility: hidden !important;
 }
 
 .affix {
