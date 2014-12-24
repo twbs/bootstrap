@@ -75,6 +75,7 @@
   pages:
     - title: Jumbotron
     - title: Page header
+    - title: Custom forms
     - title: Button group
     - title: Button dropdown
     - title: Input group

@@ -50,6 +50,15 @@
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="{{ site.baseurl }}/assets/js/ie10-viewport-bug-workaround.js"></script>
 
+<script>
+SimpleJekyllSearch.init({
+  searchInput: document.getElementById('search-input'),
+  resultsContainer: document.getElementById('search-results'),
+  searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
+  dataSource: '/search.json'
+})
+</script>
+
 {% comment %}
   Inject Twitter widgets asynchronously. Snippet snipped from Twitter's
   JS interface site: https://dev.twitter.com/docs/tfw-javascript
