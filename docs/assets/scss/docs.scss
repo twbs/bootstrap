@@ -623,9 +623,6 @@ body {
     overflow-y: auto;
     @include gradient-vertical(#29262f, #322f38);
   }
-  .bs-docs-sidebar .navbar-brand {
-    margin-bottom: 15px;
-  }
 }
 
 .bs-docs-sidebar .navbar-brand {
@@ -643,6 +640,46 @@ body {
   color: #fff;
   text-decoration: none;
 }
+
+.bs-docs-search {
+  position: relative;
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+  margin-bottom: 1.5rem;
+
+  .form-control {
+    height: 2.45rem;
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+    color: rgba(255,255,255,.5);
+    background-color: lighten(#29262f, 10%);
+    border-color: lighten(#29262f, 15%);
+
+    &:focus {
+      border-color: rgba(255,255,255,.25);
+      box-shadow: 0 0 .5rem rgba(255,255,255,.25);
+    }
+  }
+}
+
+.bs-docs-search-results {
+  top: 108%;
+  right: 0;
+  display: block;
+  padding: 0;
+  font-size: .9rem;
+  overflow: hidden;
+  border: 0;
+
+  > li > a {
+    padding-left: .75rem;
+    padding-right: .75rem;
+  }
+
+  > li:first-child { padding-top: .25rem; }
+  > li:last-child { padding-bottom: .25rem; }
+}
+
 
 .bs-docs-sidenav {
   display: none;

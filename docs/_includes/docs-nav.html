@@ -2,6 +2,12 @@
   <a href="{{ site.baseurl }}/" class="navbar-brand">
     Bootstrap
   </a>
+
+  <div class="bs-docs-search">
+    <input type="text" class="form-control" id="search-input" placeholder="Search...">
+    <ul class="dropdown-menu bs-docs-search-results" id="search-results"></ul>
+  </div>
+
   {% for group in site.data.nav %}
     {% assign link = group.pages | first %}
     {% assign slug = group.title | downcase | replace: ' ', '-' || page.title | downcase | replace: ' ', '-' %}

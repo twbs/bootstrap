@@ -147,6 +147,13 @@
         .tooltip('show')
     })
 
+    SimpleJekyllSearch.init({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('search-results'),
+      searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
+      dataSource: '/search.json'
+    })
+
   })
 
 }(jQuery)
