@@ -17,12 +17,17 @@
         {% elsif page.url contains "layout" %}
           <h1>Layout</h1>
           <p class="lead">Grid system, containers, media object, and responsive utilities for organization pages.</p>
-        {% elsif page.url contains "components" %}
+          {% elsif page.url contains "content" %}
           <h1>Components</h1>
           <p class="lead">
-            Global styles for common HTML elements, as well as dozens of reusable components like dropdowns, input groups, navigation, alerts, and much more.
+            Styles and patterns for common HTML elements like typography, tables, forms, and more.
           </p>
-        {% elsif page.url contains "javascript" %}
+          {% elsif page.url contains "components" %}
+          <h1>Components</h1>
+          <p class="lead">
+            Custom design patterns built as reusable components, including dropdowns, input groups, navigation, alerts, and more.
+          </p>
+          {% elsif page.url contains "javascript" %}
           <h1>JavaScript</h1>
           <p class="lead">Bring Bootstrap's components to life with over a dozen custom jQuery plugins. Easily include them all, or one by one.</p>
         {% elsif page.url contains "examples" %}

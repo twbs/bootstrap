@@ -43,7 +43,7 @@
         - title: Print
         - title: Test cases
 
-- title: Components
+- title: Content
   pages:
     - title: Typography
       sections:
@@ -59,8 +59,6 @@
         - title: Address
         - title: Blockquotes
         - title: Lists
-    - title: Jumbotron
-    - title: Page header
     - title: Images
     - title: Code
       sections:
@@ -72,6 +70,11 @@
     - title: Tables
     - title: Forms
     - title: Buttons
+
+- title: Components
+  pages:
+    - title: Jumbotron
+    - title: Page header
     - title: Button group
     - title: Button dropdown
     - title: Input group
