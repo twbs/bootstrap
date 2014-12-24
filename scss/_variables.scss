@@ -272,29 +272,22 @@ $zindex-modal:             1040 !default;
 //
 //## Define the minimum and maximum dimensions at which your layout will change, adapting to different screen sizes.
 
-// Extra large screen / wide desktop
-$screen-xl-min:              75em !default;
-
-// Large screen / desktop
-$screen-lg-max:              ($screen-xl-min - .1) !default;
-$screen-lg-min:              62em !default;
-
-// Medium screen / tablet
-$screen-md-max:              ($screen-lg-min - .1) !default;
-$screen-md-min:              48em !default;
-
-// Small screen / phone
-$screen-sm-max:              ($screen-md-min - .1) !default;
-$screen-sm-min:              34em !default;
-
-// Extra small screen / phone
-$screen-xs-max:              ($screen-sm-min - .1) !default;
-
-
 //== Grid system
 //
 //## Define your custom responsive grid.
-$grid-breakpoints: (xs sm md lg xl);
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 34em,
+  // Medium screen / tablet
+  md: 48em,
+  // Large screen / desktop
+  lg: 62em,
+  // Extra large screen / wide desktop
+  xl: 75em
+) !default;
+
 //** Number of columns in the grid.
 $grid-columns:               12 !default;
 //** Padding between columns. Gets divided in half for the left and right.
@@ -305,17 +298,12 @@ $grid-gutter-width:          1.5rem !default;
 //
 //## Define the maximum width of `.container` for different screen sizes.
 
-//** For `$screen-xs-min` and up.
-$container-sm:               34em !default; // 480
-
-//** For `$screen-sm-min` and up.
-$container-md:               45rem !default; // 720
-
-//** For `$screen-md-min` and up.
-$container-lg:               60rem !default; // 960
-
-//** For `$screen-lg-min` and up.
-$container-xl:               72.25rem !default; // 1140
+$container-max-widths: (
+  sm: 34rem,    // 480
+  md: 45rem,    // 720
+  lg: 60rem,    // 960
+  xl: 72.25rem  // 1140
+) !default;
 
 
 //== Navbar
