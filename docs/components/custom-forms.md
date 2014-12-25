@@ -62,3 +62,35 @@ Custom checkboxes and radios are inline to start. Add a parent with class `.c-in
   </label>
 </div>
 {% endexample %}
+
+## Select menu
+
+Similar to the checkboxes and radios, we wrap the `<select>` in a `<label>` as a semantic wrapper that we can generate custom styles on with CSS's generated content.
+
+{% example html %}
+  <label class="select">
+    <select>
+      <option selected>Open this select menu</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </label>
+{% endexample %}
+
+The `<select>` has quite a few styles to override and includes a few hacks to get things done. Here's what's happening:
+
+- The `appearance` is reset to `none` for nearly all styles to correctly apply across modern browsers (meaning not IE9).
+- The `:-moz-focusring` is overridden so that on focus there's no inner border in Firefox.
+- The arrow is hidden in Firefox with a media query hack. (There's a [longstanding open bug](https://bugzilla.mozilla.org/show_bug.cgi?id=649849) for a native method of addressing this.)
+- The arrow is hidden in IE10+ with a simple selector.
+- The arrow is hidden in IE9 with a separate media query hack which generates another pseudo-element to literally mask it. Not ideal, but doable.
+
+**Heads up!** This one comes with some quirks right now:
+
+- `select[multiple]` is currently currently **not supported**.
+- Clickability is limited in IE9.
+- Firefox's dropdown of `option`s looks rather ugly.
+- The custom caret is unable to receive the selected state's `color`.
+
+Any ideas on improving these are most welcome.
