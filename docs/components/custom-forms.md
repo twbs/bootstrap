@@ -68,14 +68,14 @@ Custom checkboxes and radios are inline to start. Add a parent with class `.c-in
 Similar to the checkboxes and radios, we wrap the `<select>` in a `<label>` as a semantic wrapper that we can generate custom styles on with CSS's generated content.
 
 {% example html %}
-  <label class="select">
-    <select>
-      <option selected>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-  </label>
+<label class="select">
+  <select>
+    <option selected>Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+</label>
 {% endexample %}
 
 The `<select>` has quite a few styles to override and includes a few hacks to get things done. Here's what's happening:
@@ -94,3 +94,24 @@ The `<select>` has quite a few styles to override and includes a few hacks to ge
 - The custom caret is unable to receive the selected state's `color`.
 
 Any ideas on improving these are most welcome.
+
+## File browser
+
+{% example html %}
+<label class="file">
+  <input type="file" id="file">
+  <span class="file-custom"></span>
+</label>
+{% endexample %}
+
+The file input is the most gnarly of the bunch. Here's how it works:
+
+- We wrap the `<input>` in a `<label>` so the custom control properly triggers the file browser.
+- We hide the default file `<input>` via `opacity`.
+- We use `:after` to generate a custom background and directive (*Choose file...*).
+- We use `:before` to generate and position the *Browse* button.
+- We declare a `height` on the `<input>` for proper spacing for surrounding content.
+
+In other words, it's an entirely custom element, all generated via CSS.
+
+**Heads up!** The custom file input is currently unable to update the *Choose file...* text with the filename. Without JavaScript, this might not be possible to change, but I'm open to ideas.
