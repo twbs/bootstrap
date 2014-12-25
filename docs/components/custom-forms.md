@@ -7,6 +7,18 @@ In the interest of customization and cross browser consistency, Bootstrap includ
 
 ## Checkboxes and radios
 
+Each checkbox and radio is wrapped in a `<label>` for three reasons:
+
+- It provides a larger hit areas for checking the control.
+- It provides a helpful and semantic wrapper to help us replace the default `<input>`s.
+- It triggers the state of the `<input>` automatically, meaning no JavaScript is required.
+
+We hide the default `<input>` with `opacity` and use the `.c-indicator` to build a new custom form control. We can't build a custom one from just the `<input>` because CSS's `content` doesn't work on that element.
+
+With the sibling selector (`~`), we use the `:checked` state to trigger a makeshift checked state on the custom control.
+
+In the checked states, we use **base64 embedded SVG icons** from [Open Iconic](http://useiconic.com/open). This provides us the best control for styling and positioning across browsers and devices.
+
 ### Checkboxes
 
 {% example html %}
