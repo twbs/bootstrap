@@ -643,9 +643,9 @@ body {
 
 .bs-docs-search {
   position: relative;
-  margin-left: 1.25rem;
   margin-right: 1.25rem;
   margin-bottom: 1.5rem;
+  margin-left: 1.25rem;
 
   .form-control {
     height: 2.45rem;
@@ -667,8 +667,8 @@ body {
   right: 0;
   display: block;
   padding: 0;
-  font-size: .9rem;
   overflow: hidden;
+  font-size: .9rem;
   border: 0;
 
   > li > a {
@@ -676,8 +676,14 @@ body {
     padding-right: .75rem;
   }
 
-  > li:first-child { padding-top: .25rem; }
-  > li:last-child { padding-bottom: .25rem; }
+  > li:first-child { margin-top: .25rem; }
+  > li:last-child { margin-bottom: .25rem; }
+
+   > .no-results {
+    padding: .75rem 1rem;
+    color: #7a7a7a;
+    text-align: center;
+  }
 }
 
 
