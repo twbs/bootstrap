@@ -76,6 +76,10 @@
     - title: Jumbotron
     - title: Page header
     - title: Custom forms
+      sections:
+        - title: Checkboxes and radios
+        - title: Select menu
+        - title: File browser
     - title: Button group
     - title: Button dropdown
     - title: Input group
