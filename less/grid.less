@@ -8,7 +8,7 @@
 // Set the container width, and override it for fixed navbars in media queries.
 
 .container {
-  .container-fixed();
+  .container-fixed(@grid-xs-gutter-width);
 
   @media (min-width: @screen-sm-min) {
     width: @container-sm;
@@ -28,7 +28,7 @@
 // width for fluid, full width layouts.
 
 .container-fluid {
-  .container-fixed();
+  .container-fixed(@grid-xs-gutter-width);
 }
 
 
@@ -37,7 +37,7 @@
 // Rows contain and clear the floats of your columns.
 
 .row {
-  .make-row();
+  .make-row(@grid-xs-gutter-width);
 }
 
 
@@ -45,7 +45,7 @@
 //
 // Common styles for small and large grid columns
 
-.make-grid-columns();
+.make-grid-columns(@grid-xs-gutter-width);
 
 
 // Extra small grid
@@ -62,6 +62,16 @@
 // to tablets.
 
 @media (min-width: @screen-sm-min) {
+  .container {
+    .container-fixed(@grid-sm-gutter-width);
+  }
+  .container-fluid {
+    .container-fixed(@grid-sm-gutter-width);
+  }
+  .row {
+    .make-row(@grid-sm-gutter-width);
+  }
+  .make-grid-columns(@grid-sm-gutter-width);
   .make-grid(sm);
 }
 
@@ -71,6 +81,16 @@
 // Columns, offsets, pushes, and pulls for the desktop device range.
 
 @media (min-width: @screen-md-min) {
+  .container {
+    .container-fixed(@grid-md-gutter-width);
+  }
+  .container-fluid {
+    .container-fixed(@grid-md-gutter-width);
+  }
+  .row {
+    .make-row(@grid-md-gutter-width);
+  }
+  .make-grid-columns(@grid-md-gutter-width);
   .make-grid(md);
 }
 
@@ -80,5 +100,15 @@
 // Columns, offsets, pushes, and pulls for the large desktop device range.
 
 @media (min-width: @screen-lg-min) {
+  .container {
+    .container-fixed(@grid-lg-gutter-width);
+  }
+  .container-fluid {
+    .container-fixed(@grid-lg-gutter-width);
+  }
+  .row {
+    .make-row(@grid-lg-gutter-width);
+  }
+  .make-grid-columns(@grid-lg-gutter-width);
   .make-grid(lg);
 }
