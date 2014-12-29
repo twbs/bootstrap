@@ -3170,16 +3170,16 @@
       }
     },
     "grunt-jscs": {
-      "version": "1.0.0",
-      "resolved": "https://registry.npmjs.org/grunt-jscs/-/grunt-jscs-1.0.0.tgz",
+      "version": "1.1.0",
+      "resolved": "https://registry.npmjs.org/grunt-jscs/-/grunt-jscs-1.1.0.tgz",
       "dependencies": {
         "hooker": {
           "version": "0.2.3",
           "resolved": "https://registry.npmjs.org/hooker/-/hooker-0.2.3.tgz"
         },
         "jscs": {
-          "version": "1.8.1",
-          "resolved": "https://registry.npmjs.org/jscs/-/jscs-1.8.1.tgz",
+          "version": "1.9.0",
+          "resolved": "https://registry.npmjs.org/jscs/-/jscs-1.9.0.tgz",
           "dependencies": {
             "colors": {
               "version": "1.0.3",
@@ -3196,6 +3196,10 @@
             "esprima-harmony-jscs": {
               "version": "1.1.0-dev-harmony",
               "resolved": "https://registry.npmjs.org/esprima-harmony-jscs/-/esprima-harmony-jscs-1.1.0-dev-harmony.tgz"
+            },
+            "estraverse": {
+              "version": "1.8.0",
+              "resolved": "https://registry.npmjs.org/estraverse/-/estraverse-1.8.0.tgz"
             },
             "exit": {
               "version": "0.1.2",
@@ -3239,6 +3243,10 @@
                 }
               }
             },
+            "regenerate": {
+              "version": "1.0.1",
+              "resolved": "https://registry.npmjs.org/regenerate/-/regenerate-1.0.1.tgz"
+            },
             "strip-json-comments": {
               "version": "1.0.2",
               "resolved": "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-1.0.2.tgz"
@@ -3246,6 +3254,10 @@
             "supports-color": {
               "version": "1.2.0",
               "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-1.2.0.tgz"
+            },
+            "unicode-6.3.0": {
+              "version": "0.1.5",
+              "resolved": "https://registry.npmjs.org/unicode-6.3.0/-/unicode-6.3.0-0.1.5.tgz"
             },
             "vow-fs": {
               "version": "0.3.4",
