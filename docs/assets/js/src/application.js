@@ -10,6 +10,7 @@
  */
 
 /* global ZeroClipboard */
+/* global SimpleJekyllSearch */
 
 !function ($) {
   'use strict';
