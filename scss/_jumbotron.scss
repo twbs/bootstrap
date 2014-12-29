@@ -19,7 +19,7 @@
   border-top-color: darken($jumbotron-bg, 10%);
 }
 
-@include media-sm {
+@include media-breakpoint-up(sm) {
   .jumbotron {
     padding: ($jumbotron-padding * 2) $jumbotron-padding;
   }

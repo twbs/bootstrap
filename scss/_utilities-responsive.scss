@@ -39,78 +39,78 @@
 }
 
 .visible-xs-block {
-  @include media-xs {
+  @include media-breakpoint-down(xs) {
     display: block !important;
   }
 }
 .visible-xs-inline {
-  @include media-xs {
+  @include media-breakpoint-down(xs) {
     display: inline !important;
   }
 }
 .visible-xs-inline-block {
-  @include media-xs {
+  @include media-breakpoint-down(xs) {
     display: inline-block !important;
   }
 }
 
 .visible-sm-block {
-  @include media-sm-max {
+  @include media-breakpoint-only(sm) {
     display: block !important;
   }
 }
 .visible-sm-inline {
-  @include media-sm-max {
+  @include media-breakpoint-only(sm) {
     display: inline !important;
   }
 }
 .visible-sm-inline-block {
-  @include media-sm-max {
+  @include media-breakpoint-only(sm) {
     display: inline-block !important;
   }
 }
 
 .visible-md-block {
-  @include media-md-max {
+  @include media-breakpoint-only(md) {
     display: block !important;
   }
 }
 .visible-md-inline {
-  @include media-md-max {
+  @include media-breakpoint-only(md) {
     display: inline !important;
   }
 }
 .visible-md-inline-block {
-  @include media-md-max {
+  @include media-breakpoint-only(md) {
     display: inline-block !important;
   }
 }
 
 .visible-lg-block {
-  @include media-lg {
+  @include media-breakpoint-up(lg) {
     display: block !important;
   }
 }
 .visible-lg-inline {
-  @include media-lg {
+  @include media-breakpoint-up(lg) {
     display: inline !important;
   }
 }
 .visible-lg-inline-block {
-  @include media-lg {
+  @include media-breakpoint-up(lg) {
     display: inline-block !important;
   }
 }
 
-@include media-sm-max {
+@include media-breakpoint-only(sm) {
   @include responsive-invisibility(".hidden-sm");
 }
 
-@include media-md-max {
+@include media-breakpoint-only(md) {
   @include responsive-invisibility(".hidden-md");
 }
 
-@include media-lg {
+@include media-breakpoint-up(lg) {
   @include responsive-invisibility(".hidden-lg");
 }
 

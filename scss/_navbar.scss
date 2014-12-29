@@ -14,7 +14,7 @@
   margin-bottom: $navbar-margin-bottom;
   @include clearfix;
 
-  @include media-sm {
+  @include media-breakpoint-up(sm) {
     @include border-radius($navbar-border-radius);
   }
 }
@@ -30,7 +30,7 @@
 .navbar-static-top {
   z-index: $zindex-navbar;
 
-  @include media-sm {
+  @include media-breakpoint-up(sm) {
     @include border-radius(0);
   }
 }
@@ -45,7 +45,7 @@
   margin-bottom: 0; // override .navbar defaults
 
   // Undo the rounded corners
-  @include media-sm {
+  @include media-breakpoint-up(sm) {
     @include border-radius(0);
   }
 }
@@ -119,7 +119,7 @@
   @extend .form-inline;
 
   .form-group {
-    @include media-sm {
+    @include media-breakpoint-up(sm) {
       margin-bottom: 5px;
 
       &:last-child {
@@ -132,7 +132,7 @@
   // @include navbar-vertical-align($input-height-base);
 
   // Undo 100% width for pull classes
-  @include media-sm {
+  @include media-breakpoint-up(sm) {
     width: auto;
     padding-top: 0;
     padding-bottom: 0;
@@ -181,7 +181,7 @@
 .navbar-text {
   // @include navbar-vertical-align($line-height-computed);
 
-  @include media-sm {
+  @include media-breakpoint-up(sm) {
     float: left;
     margin-right: $navbar-padding-horizontal;
     margin-left: $navbar-padding-horizontal;
@@ -197,7 +197,7 @@
 //
 // Declared after the navbar components to ensure more specificity on the margins.
 
-@include media-sm {
+@include media-breakpoint-up(sm) {
   .navbar-left {
     @include pull-left();
   }
