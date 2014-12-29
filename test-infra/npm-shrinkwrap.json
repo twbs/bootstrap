@@ -2398,8 +2398,8 @@
       }
     },
     "grunt-contrib-uglify": {
-      "version": "0.6.0",
-      "resolved": "https://registry.npmjs.org/grunt-contrib-uglify/-/grunt-contrib-uglify-0.6.0.tgz",
+      "version": "0.7.0",
+      "resolved": "https://registry.npmjs.org/grunt-contrib-uglify/-/grunt-contrib-uglify-0.7.0.tgz",
       "dependencies": {
         "chalk": {
           "version": "0.5.1",
