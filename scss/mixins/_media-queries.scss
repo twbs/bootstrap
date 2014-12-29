@@ -1,11 +1,11 @@
 // Media query mixins for default breakpoints
 
 @mixin media-xs() {
-  @include media-breakpoint-max(xs) { @content }
+  @include media-breakpoint-down(xs) { @content }
 }
 
 @mixin media-sm() {
-  @include media-breakpoint-min(sm) { @content }
+  @include media-breakpoint-up(sm) { @content }
 }
 
 @mixin media-sm-max() {
@@ -13,7 +13,7 @@
 }
 
 @mixin media-md() {
-  @include media-breakpoint-min(md) { @content }
+  @include media-breakpoint-up(md) { @content }
 }
 
 @mixin media-md-max() {
@@ -21,5 +21,5 @@
 }
 
 @mixin media-lg() {
-  @include media-breakpoint-min(lg) { @content }
+  @include media-breakpoint-up(lg) { @content }
 }

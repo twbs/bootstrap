@@ -39,7 +39,8 @@
 }
 
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
-@mixin media-breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+// Makes the @content apply to the given breakpoint and wider.
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
   $min: breakpoint-min($name, $breakpoints);
   @if $min {
     @media (min-width: $min) {
@@ -51,7 +52,8 @@
 }
 
 // Media of at most the maximum breakpoint width. No query for the largest breakpoint.
-@mixin media-breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+// Makes the @content apply to the given breakpoint and narrower.
+@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
   $max: breakpoint-max($name, $breakpoints);
   @if $max {
     @media (max-width: $max) {
@@ -64,6 +66,7 @@
 
 // Media between the breakpoint's minimum and maximum widths.
 // No minimum for the smallest breakpoint, and no maximum for the largest one.
+// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
 @mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
   // Nested media query combination does not work in libsass yet
   // https://github.com/sass/libsass/issues/185
@@ -76,8 +79,8 @@
     }
   } @else {
     // One of min or max is a no-op, so this branch is not affected by libsass#185
-    @include media-breakpoint-min($name, $breakpoints) {
-      @include media-breakpoint-max($name, $breakpoints) {
+    @include media-breakpoint-up($name, $breakpoints) {
+      @include media-breakpoint-down($name, $breakpoints) {
         @content;
       }
     }
