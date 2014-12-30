@@ -3062,6 +3062,7 @@ fieldset[disabled] .btn-default.active {
   background-color: #337ab7;
   border-color: #2e6da4;
 }
+
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary.focus,
@@ -3107,6 +3108,7 @@ fieldset[disabled] .btn-primary.active {
   background-color: #5cb85c;
   border-color: #4cae4c;
 }
+
 .btn-success:hover,
 .btn-success:focus,
 .btn-success.focus,
@@ -3152,6 +3154,7 @@ fieldset[disabled] .btn-success.active {
   background-color: #5bc0de;
   border-color: #46b8da;
 }
+
 .btn-info:hover,
 .btn-info:focus,
 .btn-info.focus,
@@ -3282,6 +3285,7 @@ fieldset[disabled] .btn-danger.active {
   color: #d9534f;
   background-color: #fff;
 }
+
 .btn-link {
   font-weight: normal;
   color: #337ab7;
@@ -6553,3 +6557,65 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+/*More Wells - Julez*/
+.well-primary {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #337ab7;
+  border: 1px solid #2e6da4;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+}
+.well-primary {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #337ab7;
+  border: 1px solid #2e6da4;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+}
+.well-success {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #5cb85c;
+  border: 1px solid #4cae4c;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+}
+.well-info {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #5bc0de;
+  border: 1px solid #46b8da;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+}
+.well-warning {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #f0ad4e;
+  border: 1px solid #eea236;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+}
+.well-warning {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #d9534f;
+  border: 1px solid #d43f3a;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+}
