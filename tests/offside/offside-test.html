@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Bootstrap offside canvas extension - html test/example page</title>
+
+	<link rel="stylesheet" type="text/css" href="../../less/offside.less">
+
+	<style>
+
+		/*
+			OTHER SETTINGS
+			*/
+
+		div[data-test] {
+			padding: 1em;
+			border: 1px solid black;
+			margin-bottom: 2em;
+		}
+
+		.pageWrapper {
+			max-width: 800px;
+			width: 100%;
+			margin: 0 auto;
+		}
+
+		.content {
+			background-color: green;
+		}
+
+		.topMenu {
+			display: block;
+			height: 3em;
+			background-color: yellow;
+		}
+		
+		/*
+			OFF CANVAS OVERRIDES
+			*/
+
+		.off-canvas-container {
+			background-color: lightblue;
+		}
+
+		.oc-viewport {
+			background-color: lightblue;
+		}
+
+		.oc-left-menu {
+			width: 90%;
+			left: -90%;
+			background-color: lightgray;
+		}
+
+		.oc-right-menu {
+			width: 90%;
+			right: -90%;
+			background-color: gray;
+		}
+
+		.oc-left-push .oc-viewport {
+			left: 90%;
+		}
+
+		.oc-left-slide .oc-left-menu {
+			left: 0%;
+		}
+
+		.oc-right-push .oc-viewport {
+			left: -90%;
+		}
+
+		.oc-right-slide .oc-right-menu {
+			right: 0%;
+		}
+
+		.oc-panel-1 {
+			background-color: #ffdab9;
+		}
+
+		.oc-panel-2 {
+			background-color: #ffa07a;
+		}
+
+		.oc-panel-3 {
+			background-color: #ff7f50;
+		}
+
+		.oc-panel-4 {
+			background-color: #ff4500;
+		}
+
+		.oc-panel-5 {
+			background-color: #ff4500;
+		}
+
+		.oc-exit {
+			background-color: red;
+			background: rgba(255, 255, 255, 0.5);
+		}
+	</style>
+</head>
+<body>
+	<h1>Offside canvas test HTML</h1>
+	<p>Depending on our needs some part of the CSS may be modified (see HTML). f.e: we can change the size of the menu panel, or the space we keep from the main content after menu slides in.</p>
+	<p>By default there's also an exit panel class defined. With z-index it's aligned so, that it is always above the main content but below the menu. Exitting the menu can be achieved also by adding a button (or anchor tag) with the proper data- elements - see exit link.</p>
+
+	<hr/>
+
+	<h2>Classic slide/push in menu</h2>
+
+	<div data-test class="pageWrapper">
+		<a href="#" data-toggle="off-canvas" data-target="#off1" data-param="oc-left-slide">left slide</a>
+		<a href="#" data-toggle="off-canvas" data-target="#off1" data-param="oc-left-push">left push</a>
+		<a href="#" data-toggle="off-canvas" data-target="#off1" data-param="oc-right-slide">right slide</a>
+		<a href="#" data-toggle="off-canvas" data-target="#off1" data-param="oc-right-push">right push</a>
+		<a href="#" data-toggle="off-canvas" data-target="#off1" data-param="oc-exit">exit</a>
+	</div>
+
+	<div data-test class="pageWrapper">
+
+		<div id="off1" class="off-canvas-container">
+			<div class="oc-viewport">
+				<div class="topMenu">top menu</div>
+				<div class="oc-left-menu">left menu<br />a<br />a</div>
+				<div class="oc-right-menu">right menu</div>
+				<div class="content">
+					content<br />a<br />a<br />a<br />a<br />a
+					<a class="oc-exit" data-toggle="off-canvas" data-target="#off1" data-param="oc-exit">this is an exit panel (it may be any html element), visible when offside panel is active. sometimes we use a full panel with alpha over the main content...</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<hr/>
+
+	<h2>Multi-panel menu</h2>
+	<p>Currently we have configured 5 panels in the CSS. I kept every important detail (as description) so if it's needed it's easy to modify CSS and support any 1..N panels. The javascript code must not be modified to achieve this, it's enough to change/extend the CSS.</p>
+	<p>Separate exit button can be configured (the same way as with slide/push in menus) - but what it only does is switching to the default panel. And since I assume there will be always a visible buttom to change panels from 1..N, the exit has no real meaning in this case.</p>
+
+	<div data-test class="pageWrapper">
+		<a href="#" data-toggle="off-canvas" data-target="#off2" data-param="oc-show-panel-1">panel 1</a>
+		<a href="#" data-toggle="off-canvas" data-target="#off2" data-param="oc-show-panel-2">panel 2</a>
+		<a href="#" data-toggle="off-canvas" data-target="#off2" data-param="oc-show-panel-3">panel 3</a>
+	</div>
+
+	<div data-test class="pageWrapper">
+
+		<div id="off2" class="off-canvas-container">
+			<div class="topMenu">top menu</div>
+			<div class="oc-viewport oc-panel-viewport">
+				<div class="oc-panel oc-panel-1">panel1</div>
+				<div class="oc-panel oc-panel-2">panel2<br />a<br />a<br />a<br />a</div>
+				<div class="oc-panel oc-panel-3">panel3</div>
+				<div class="oc-panel oc-panel-4"></div>
+				<div class="oc-panel oc-panel-5"></div>
+			</div>
+			<!--
+<a class="oc-exit" data-toggle="off-canvas" data-target="#off2" data-param="oc-exit">exit should not be used on oc-panel-viewport</a>-->
+		</div>
+
+	</div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" ></script>
+	<script src="../../js/offside.js" ></script>
+
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+
+			$('[data-toggle=off-canvas]').offcanvas();
+		})
+
+	</script>
+
+</body>
+</html>
