@@ -188,36 +188,6 @@ $(function () {
     equal($('.popover').length, 0, 'popover was removed')
   })
 
-  test('should render popover elements using different delegated selectors on the same node', function () {
-    var popoverHTML = '<div>'
-        + '<a href="#" class="first" title="mdo" data-content="http://twitter.com/mdo">@mdo</a>'
-        + '<a href="#" class="second" title="mdo" data-content="http://twitter.com/mdo">@mdo</a>'
-        + '</div>'
-
-    var $div = $(popoverHTML)
-      .appendTo('#qunit-fixture')
-      .bootstrapPopover({
-        selector: 'a.first',
-        trigger: 'click'
-      })
-      .bootstrapPopover({
-        selector: 'a.second',
-        trigger: 'click'
-      })
-
-    $div.find('a.first').click()
-    notEqual($('.popover').length, 0, 'first popover was inserted')
-
-    $div.find('a.first').click()
-    equal($('.popover').length, 0, 'first popover removed')
-
-    $div.find('a.second').click()
-    notEqual($('.popover').length, 0, 'second popover was inserted')
-
-    $div.find('a.second').click()
-    equal($('.popover').length, 0, 'second popover removed')
-  })
-
   test('should detach popover content rather than removing it so that event handlers are left intact', function () {
     var $content = $('<div class="content-with-handler"><a class="btn btn-warning">Button with event handler</a></div>').appendTo('#qunit-fixture')
 
