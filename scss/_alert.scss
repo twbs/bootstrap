@@ -12,17 +12,6 @@
   border: 1px solid transparent;
   @include border-radius($alert-border-radius);
 
-  // Headings for larger alerts
-  .alert-heading {
-    margin-top: 0;
-    // Specified to prevent conflicts of changing $headings-color
-    color: inherit;
-  }
-  // Provide class for links that match alerts
-  .alert-link {
-    font-weight: $alert-link-font-weight;
-  }
-
   // Improve alignment and spacing of inner content
   > p,
   > ul {
@@ -31,6 +20,18 @@
   > p + p {
     margin-top: 5px;
   }
+}
+
+// Headings for larger alerts
+.alert-heading {
+  margin-top: 0;
+  // Specified to prevent conflicts of changing $headings-color
+  color: inherit;
+}
+
+// Provide class for links that match alerts
+.alert-link {
+  font-weight: $alert-link-font-weight;
 }
 
 // Dismissible alerts
