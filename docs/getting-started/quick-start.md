@@ -22,7 +22,7 @@ Then, add the Bootstrap JavaScript—and jQuery—near the end of your pages. It
 Be sure to have your pages set up with the latest design and development standards. That means:
 
 * Using an HTML5 doctype
-* Forcing Internet Explorer to use it's latest rendering mode ([read more]())
+* Forcing Internet Explorer to use its latest rendering mode ([read more]())
 * And, utilizing the viewport meta tag.
 
 Put it all together and your pages should look like this:
