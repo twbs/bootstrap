@@ -81,8 +81,6 @@ $.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the Boot
 
 Bootstrap provides custom events for most plugins' unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. `show`) is triggered at the start of an event, and its past participle form (ex. `shown`) is triggered on the completion of an action.
 
-As of 3.0.0, all Bootstrap events are namespaced.
-
 All infinitive events provide `preventDefault` functionality. This provides the ability to stop the execution of an action before it starts.
 
 {% highlight js %}
