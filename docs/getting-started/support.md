@@ -162,13 +162,6 @@ For more information and usage guidelines, read [Windows Phone 8 and Device-Widt
 
 As a heads up, we include this in all of Bootstrap's documentation and examples as a demonstration.
 
-### Safari percent rounding
-
-The rendering engine of versions of Safari prior to v7.1 for OS X and Safari for iOS v8.0 had some trouble with the number of decimal places used in our `.col-*-1` grid classes. So if you had 12 individual grid columns, you'd notice that they came up short compared to other rows of columns. Besides upgrading Safari/iOS, you have some options for workarounds:
-
-- Add `.pull-right` to your last grid column to get the hard-right alignment
-- Tweak your percentages manually to get the perfect rounding for Safari (more difficult than the first option)
-
 ### Modals, navbars, and virtual keyboards
 
 #### Overflow and scrolling
