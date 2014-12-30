@@ -221,10 +221,10 @@ $(function () {
   test('should detach popover content rather than removing it so that event handlers are left intact', function () {
     var $content = $('<div class="content-with-handler"><a class="btn btn-warning">Button with event handler</a></div>').appendTo('#qunit-fixture')
 
-    var handlerCalled = false;
+    var handlerCalled = false
     $('.content-with-handler .btn').click(function () {
       handlerCalled = true
-    });
+    })
 
     var $div = $('<div><a href="#">Show popover</a></div>')
       .appendTo('#qunit-fixture')
@@ -233,7 +233,7 @@ $(function () {
         trigger: 'manual',
         container: 'body',
         content: function () {
-          return $content;
+          return $content
         }
       })
 
