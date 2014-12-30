@@ -901,12 +901,6 @@ th {
 .glyphicon-paste:before {
   content: "\e206";
 }
-.glyphicon-door:before {
-  content: "\1f6aa";
-}
-.glyphicon-key:before {
-  content: "\1f511";
-}
 .glyphicon-alert:before {
   content: "\e209";
 }
