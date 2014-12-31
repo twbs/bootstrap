@@ -37,23 +37,23 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
         <th></th>
         <th>
           Extra small devices
-          <small>Portrait phones (&lt;???px)</small>
+          <small>Portrait phones (&lt;34em)</small>
         </th>
         <th>
           Small devices
-          <small>Landscape phones (&ge;???px)</small>
+          <small>Landscape phones (&ge;38em)</small>
         </th>
         <th>
           Medium devices
-          <small>Tablets (&ge;768px)</small>
+          <small>Tablets (&ge;48em)</small>
         </th>
         <th>
           Large devices
-          <small>Desktops (&ge;992px)</small>
+          <small>Desktops (&ge;62em)</small>
         </th>
         <th>
           Extra large devices
-          <small>Desktops (&ge;1200px)</small>
+          <small>Desktops (&ge;75em)</small>
         </th>
       </tr>
     </thead>
@@ -66,10 +66,10 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
       <tr>
         <th class="text-nowrap" scope="row">Container width</th>
         <td>None (auto)</td>
-        <td>???px</td>
-        <td>750px</td>
-        <td>970px</td>
-        <td>1170px</td>
+        <td>34rem</td>
+        <td>45rem</td>
+        <td>60rem</td>
+        <td>72.25rem</td>
       </tr>
       <tr>
         <th class="text-nowrap" scope="row">Class prefix</th>
@@ -82,14 +82,6 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
       <tr>
         <th class="text-nowrap" scope="row"># of columns</th>
         <td colspan="5">12</td>
-      </tr>
-      <tr>
-        <th class="text-nowrap" scope="row">Column width</th>
-        <td class="text-muted">Auto</td>
-        <td>~??px</td>
-        <td>~62px</td>
-        <td>~81px</td>
-        <td>~97px</td>
       </tr>
       <tr>
         <th class="text-nowrap" scope="row">Gutter width</th>
