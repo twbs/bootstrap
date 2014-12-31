@@ -1431,9 +1431,11 @@ h1[id] {
   border: 2px dashed #eee;
   border-radius: 4px;
 }
-.bs-dropzone h2 {
-  margin-top: 0;
+.bs-dropzone .import-header {
   margin-bottom: 5px;
+}
+.bs-dropzone .glyphicon-download-alt {
+  font-size: 40px;
 }
 .bs-dropzone hr {
   width: 100px;
