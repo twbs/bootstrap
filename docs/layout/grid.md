@@ -37,19 +37,23 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
         <th></th>
         <th>
           Extra small devices
-          <small>Phones (&lt;768px)</small>
+          <small>Portrait phones (&lt;34em)</small>
         </th>
         <th>
           Small devices
-          <small>Tablets (&ge;768px)</small>
+          <small>Landscape phones (&ge;38em)</small>
         </th>
         <th>
           Medium devices
-          <small>Desktops (&ge;992px)</small>
+          <small>Tablets (&ge;48em)</small>
         </th>
         <th>
           Large devices
-          <small>Desktops (&ge;1200px)</small>
+          <small>Desktops (&ge;62em)</small>
+        </th>
+        <th>
+          Extra large devices
+          <small>Desktops (&ge;75em)</small>
         </th>
       </tr>
     </thead>
@@ -57,14 +61,15 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
       <tr>
         <th class="text-nowrap" scope="row">Grid behavior</th>
         <td>Horizontal at all times</td>
-        <td colspan="3">Collapsed to start, horizontal above breakpoints</td>
+        <td colspan="4">Collapsed to start, horizontal above breakpoints</td>
       </tr>
       <tr>
         <th class="text-nowrap" scope="row">Container width</th>
         <td>None (auto)</td>
-        <td>750px</td>
-        <td>970px</td>
-        <td>1170px</td>
+        <td>34rem</td>
+        <td>45rem</td>
+        <td>60rem</td>
+        <td>72.25rem</td>
       </tr>
       <tr>
         <th class="text-nowrap" scope="row">Class prefix</th>
@@ -72,33 +77,27 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
         <td><code>.col-sm-</code></td>
         <td><code>.col-md-</code></td>
         <td><code>.col-lg-</code></td>
+        <td><code>.col-xl-</code></td>
       </tr>
       <tr>
         <th class="text-nowrap" scope="row"># of columns</th>
-        <td colspan="4">12</td>
-      </tr>
-      <tr>
-        <th class="text-nowrap" scope="row">Column width</th>
-        <td class="text-muted">Auto</td>
-        <td>~62px</td>
-        <td>~81px</td>
-        <td>~97px</td>
+        <td colspan="5">12</td>
       </tr>
       <tr>
         <th class="text-nowrap" scope="row">Gutter width</th>
-        <td colspan="4">30px (15px on each side of a column)</td>
+        <td colspan="5">30px (15px on each side of a column)</td>
       </tr>
       <tr>
         <th class="text-nowrap" scope="row">Nestable</th>
-        <td colspan="4">Yes</td>
+        <td colspan="5">Yes</td>
       </tr>
       <tr>
         <th class="text-nowrap" scope="row">Offsets</th>
-        <td colspan="4">Yes</td>
+        <td colspan="5">Yes</td>
       </tr>
       <tr>
         <th class="text-nowrap" scope="row">Column ordering</th>
-        <td colspan="4">Yes</td>
+        <td colspan="5">Yes</td>
       </tr>
     </tbody>
   </table>
