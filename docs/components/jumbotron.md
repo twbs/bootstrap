@@ -3,7 +3,7 @@ layout: page
 title: Jumbotron
 ---
 
-A lightweight, flexible component that can optionally extend the entire viewport to showcase key content on your site.
+A lightweight, flexible component that can optionally extend the entire viewport to showcase key marketing messages on your site.
 
 {% example html %}
 <div class="jumbotron">
@@ -13,15 +13,16 @@ A lightweight, flexible component that can optionally extend the entire viewport
 </div>
 {% endexample %}
 
-To make the jumbotron full width, and without rounded corners, place it outside all `.container`s and instead add a `.container` within.
+To make the jumbotron full width, and without rounded corners, add the `.jumbotron-fluid` modifier class and add a `.container` or `.container-fluid` within.
 
-{% highlight html %}
-<div class="jumbotron">
+{% example html %}
+<div class="jumbotron jumbotron-fluid">
   <div class="container">
-    ...
+    <h1 class="jumbotron-heading">Fluid jumbotron</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of it's parent.</p>
   </div>
 </div>
-{% endhighlight %}
+{% endexample %}
 
 Jumbotrons also come with an adaptive `hr`—just add `.jumbotron-hr` to the element and the `border-top-color` will be tinted based on the jumbotron background.
 

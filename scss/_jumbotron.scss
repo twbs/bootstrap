@@ -8,11 +8,7 @@
   margin-bottom: $jumbotron-padding;
   color: $jumbotron-color;
   background-color: $jumbotron-bg;
-
-  .container &,
-  .container-fluid & {
-    @include border-radius($border-radius-lg); // Only round corners at higher resolutions if contained in a container
-  }
+  @include border-radius($border-radius-lg);
 }
 
 .jumbotron-heading {
@@ -25,16 +21,16 @@
 
 @include media-sm {
   .jumbotron {
-    padding: ($jumbotron-padding * 1.6) 0;
-
-    .container &,
-    .container-fluid & {
-      padding-right: ($jumbotron-padding * 2);
-      padding-left: ($jumbotron-padding * 2);
-    }
+    padding: ($jumbotron-padding * 2) $jumbotron-padding;
   }
 
   .jumbotron-heading {
     font-size: ($font-size-base * 4.5);
   }
+}
+
+.jumbotron-fluid {
+  padding-left: 0;
+  padding-right: 0;
+  @include border-radius(0);
 }
