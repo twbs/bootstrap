@@ -16,7 +16,7 @@ Depending on the context, you may override as-needed (Option 1) or reset the box
  *
  * Reset individual elements or override regions to avoid conflicts due to
  * global box model settings of Bootstrap. Two options, individual overrides and
- * region resets, are available as plain CSS and uncompiled Less formats.
+ * region resets, are available as plain CSS and uncompiled Sass formats.
  */
 
 /* Option 1A: Override a single element's box model via CSS */
@@ -26,7 +26,7 @@ Depending on the context, you may override as-needed (Option 1) or reset the box
           box-sizing: content-box;
 }
 
-/* Option 1B: Override a single element's box model by using a Bootstrap Less mixin */
+/* Option 1B: Override a single element's box model by using a Bootstrap Sass mixin */
 .element {
   .box-sizing(content-box);
 }
@@ -41,7 +41,7 @@ Depending on the context, you may override as-needed (Option 1) or reset the box
           box-sizing: content-box;
 }
 
-/* Option 2B: Reset an entire region with a custom Less mixin */
+/* Option 2B: Reset an entire region with a custom Sass mixin */
 .reset-box-sizing {
   &,
   *,
