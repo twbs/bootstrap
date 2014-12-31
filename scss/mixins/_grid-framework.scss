@@ -3,69 +3,40 @@
 // Used only by Bootstrap to generate the correct number of grid classes given
 // any value of `$grid-columns`.
 
-// Common properties for all breakpoints
-@mixin make-grid-columns($columns: $grid-columns, $breakpoints: $grid-breakpoints) {
+@mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
+  // Common properties for all breakpoints
   %grid-column {
     position: relative;
     // Prevent columns from collapsing when empty
     min-height: 1px;
     // Inner gutter via padding
-    padding-left: ($grid-gutter-width / 2);
-    padding-right: ($grid-gutter-width / 2);
+    padding-left: ($gutter / 2);
+    padding-right: ($gutter / 2);
   }
-  @for $i from 1 through $columns {
-    @each $breakpoint in $breakpoints {
+  @each $breakpoint in map-keys($breakpoints) {
+    @for $i from 1 through $columns {
       .col-#{$breakpoint}-#{$i} {
         @extend %grid-column;
       }
     }
-  }
-}
-
-// Breakpoint-specific properties
-@mixin make-grid($breakpoint, $columns: $grid-columns) {
-  // Work around cross-media @extend (https://github.com/sass/sass/issues/1050)
-  %grid-column-float-#{$breakpoint} {
-    float: left;
-  }
-  @for $i from 1 through $columns {
-    .col-#{$breakpoint}-#{$i} {
-      @extend %grid-column-float-#{$breakpoint};
-      @include grid-column-width($i, $columns);
-    }
-  }
-  @each $modifier in (pull, push, offset) {
-    @for $i from 0 through $columns {
-      .col-#{$breakpoint}-#{$modifier}-#{$i} {
-        @include grid-column-modifier($modifier, $i, $columns)
+    @include media-breakpoint-min($breakpoint) {
+      // Work around cross-media @extend (https://github.com/sass/sass/issues/1050)
+      %grid-column-float-#{$breakpoint} {
+        float: left;
+      }
+      @for $i from 1 through $columns {
+        .col-#{$breakpoint}-#{$i} {
+          @extend %grid-column-float-#{$breakpoint};
+          @include make-col-span($i, $columns);
+        }
+      }
+      @each $modifier in (pull, push, offset) {
+        @for $i from 0 through $columns {
+          .col-#{$breakpoint}-#{$modifier}-#{$i} {
+            @include make-col-modifier($modifier, $i, $columns)
+          }
+        }
       }
     }
-  }
-}
-
-@mixin grid-column-width($index, $columns) {
-  width: percentage($index / $columns);
-}
-
-@mixin grid-column-push($index, $columns) {
-  left: if($index > 0, percentage($index / $columns), auto);
-}
-
-@mixin grid-column-pull($index, $columns) {
-  right: if($index > 0, percentage($index / $columns), auto);
-}
-
-@mixin grid-column-offset($index, $columns) {
-  margin-left: percentage($index / $columns);
-}
-
-// Work around the lack of dynamic mixin @include support (https://github.com/sass/sass/issues/626)
-@mixin grid-column-modifier($type, $index, $columns) {
-  @if $type == push {
-    @include grid-column-push($index, $columns);
-  } @else if $type == pull {
-    @include grid-column-pull($index, $columns);
-  } @else if $type == offset {
-    @include grid-column-offset($index, $columns);
   }
 }

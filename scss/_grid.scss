@@ -10,14 +10,11 @@
 .container {
   @include make-container();
 
-  @media (min-width: $screen-sm-min) {
-    max-width: $container-sm;
-  }
-  @media (min-width: $screen-md-min) {
-    max-width: $container-md;
-  }
-  @media (min-width: $screen-lg-min) {
-    max-width: $container-lg;
+  // For each breakpoint, define the maximum width of the container in a media query
+  @each $breakpoint, $container-max-width in $container-max-widths {
+    @include media-breakpoint-min($breakpoint) {
+      max-width: $container-max-width;
+    }
   }
 }
 
@@ -47,47 +44,3 @@
 
 @include make-grid-columns();
 
-
-// Extra small grid
-//
-// Columns, offsets, pushes, and pulls for extra small devices like
-// smartphones.
-
-@include make-grid(xs);
-
-
-// Small grid
-//
-// Columns, offsets, pushes, and pulls for the small device range, from phones
-// to tablets.
-
-@include media-sm {
-  @include make-grid(sm);
-}
-
-
-// Medium grid
-//
-// Columns, offsets, pushes, and pulls for the desktop device range.
-
-@include media-md {
-  @include make-grid(md);
-}
-
-
-// Large grid
-//
-// Columns, offsets, pushes, and pulls for the large desktop device range.
-
-@include media-lg {
-  @include make-grid(lg);
-}
-
-
-// Large grid
-//
-// Columns, offsets, pushes, and pulls for the large desktop device range.
-
-@include media-lg {
-  @include make-grid(xl);
-}

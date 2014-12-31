@@ -5,8 +5,8 @@
         "generate": "./uncached-npm-install.sh"
     },
     "rubygems": {
-        "key": "../pseudo_Gemfile.lock",
-        "cache": "$GEMDIR",
-        "generate": "gem install -N scss-lint -v $SCSS_LINT_VERSION && gem install -N jekyll -v $JEKYLL_VERSION && gem install -N rouge -v $ROUGE_VERSION"
+        "key": "$BUNDLE_GEMFILE",
+        "cache": "../vendor/cache",
+        "generate": "cd .. ; bundle install --path=\"`pwd`/vendor/cache\""
     }
 }

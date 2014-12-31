@@ -199,10 +199,10 @@
 
 @include media-sm {
   .navbar-left {
-    @extend .pull-left;
+    @include pull-left();
   }
   .navbar-right {
-    @extend .pull-right;
+    @include pull-right();
     margin-right: -$navbar-padding-horizontal;
 
     ~ .navbar-right {

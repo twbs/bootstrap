@@ -21,7 +21,7 @@ Cards require very little markup, but do require some additional classes to give
 
 ### Text alignment
 
-You can quickly change the text alignment of any card—in it's entirety or specific parts—with our [text align classes]().
+You can quickly change the text alignment of any card—in its entirety or specific parts—with our [text align classes]().
 
 {% example html %}
 <div class="card">

@@ -3,7 +3,7 @@ layout: page
 title: Tables
 ---
 
-Due to the widespread use of tables across plugins like calendars and date pickers, we've designed our tables to be **opt-in**. Just add the base class `.table` to any `<table>`.
+Due to the widespread use of tables across third-party widgets like calendars and date pickers, we've designed our tables to be **opt-in**. Just add the base class `.table` to any `<table>`.
 
 ## Basic example
 

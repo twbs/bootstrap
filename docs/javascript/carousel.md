@@ -37,8 +37,8 @@ A slideshow component for cycling through elements—images or slides of text—
 {% endexample %}
 
 <div class="bs-callout bs-callout-warning" id="callout-carousel-transitions">
-  <h4>Transition animations not supported in Internet Explorer 8 &amp; 9</h4>
-  <p>Bootstrap exclusively uses CSS3 for its animations, but Internet Explorer 8 &amp; 9 don't support the necessary CSS properties. Thus, there are no slide transition animations when using these browsers. We have intentionally decided not to include jQuery-based fallbacks for the transitions.</p>
+  <h4>Transition animations not supported in Internet Explorer 9</h4>
+  <p>Bootstrap exclusively uses CSS3 for its animations, but Internet Explorer 9 doesn't support the necessary CSS properties. Thus, there are no slide transition animations when using that browser. We have intentionally decided not to include jQuery-based fallbacks for the transitions.</p>
 </div>
 
 <div class="bs-callout bs-callout-warning" id="callout-carousel-active">

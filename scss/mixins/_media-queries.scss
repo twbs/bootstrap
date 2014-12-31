@@ -1,25 +1,25 @@
-// Media query mixins
+// Media query mixins for default breakpoints
 
 @mixin media-xs() {
-  @media (max-width: $screen-xs-max) { @content }
+  @include media-breakpoint-max(xs) { @content }
 }
 
 @mixin media-sm() {
-  @media (min-width: $screen-sm-min) { @content }
+  @include media-breakpoint-min(sm) { @content }
 }
 
 @mixin media-sm-max() {
-  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) { @content }
+  @include media-breakpoint-only(sm) { @content }
 }
 
 @mixin media-md() {
-  @media (min-width: $screen-md-min) { @content }
+  @include media-breakpoint-min(md) { @content }
 }
 
 @mixin media-md-max() {
-  @media (min-width: $screen-md-min) and (max-width: $screen-md-max) { @content }
+  @include media-breakpoint-only(md) { @content }
 }
 
 @mixin media-lg() {
-  @media (min-width: $screen-lg-min) { @content }
+  @include media-breakpoint-min(lg) { @content }
 }
