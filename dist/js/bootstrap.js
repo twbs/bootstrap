@@ -1,6 +1,6 @@
 /*!
  * Bootstrap v3.3.1 (http://getbootstrap.com)
- * Copyright 2011-2014 Twitter, Inc.
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -1403,7 +1403,7 @@ if (typeof jQuery === 'undefined') {
       $tip
         .detach()
         .css({ top: 0, left: 0, display: 'block' })
-        .addClass(placement)
+        .addClass(this.type + '-' + placement)
         .data('bs.' + this.type, this)
 
       this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
@@ -1413,7 +1413,7 @@ if (typeof jQuery === 'undefined') {
       var actualHeight = $tip[0].offsetHeight
 
       if (autoPlace) {
-        var orgPlacement = placement
+        var origPlacement = placement
         var $container   = this.options.container ? $(this.options.container) : this.$element.parent()
         var containerDim = this.getPosition($container)
 
@@ -1424,8 +1424,8 @@ if (typeof jQuery === 'undefined') {
                     placement
 
         $tip
-          .removeClass(orgPlacement)
-          .addClass(placement)
+          .removeClass(this.type + '-' + origPlacement)
+          .addClass(this.type + '-' + placement)
       }
 
       var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
@@ -1509,7 +1509,7 @@ if (typeof jQuery === 'undefined') {
     var title = this.getTitle()
 
     $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title)
-    $tip.removeClass('fade in top bottom left right')
+    $tip.removeClass('fade in tooltip-top tooltip-bottom tooltip-left tooltip-right')
   }
 
   Tooltip.prototype.hide = function (callback) {
@@ -1730,7 +1730,7 @@ if (typeof jQuery === 'undefined') {
     placement: 'right',
     trigger: 'click',
     content: '',
-    template: '<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+    template: '<div class="popover" role="tooltip"><div class="popover-arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
   })
 
 
@@ -1755,7 +1755,7 @@ if (typeof jQuery === 'undefined') {
       this.options.html ? (typeof content == 'string' ? 'html' : 'append') : 'text'
     ](content)
 
-    $tip.removeClass('fade top bottom left right in')
+    $tip.removeClass('fade popover-top popover-bottom popover-left popover-right in')
 
     // IE8 doesn't accept hiding via the `:empty` pseudo selector, we have to do
     // this manually by checking the contents.
@@ -1777,7 +1777,7 @@ if (typeof jQuery === 'undefined') {
   }
 
   Popover.prototype.arrow = function () {
-    return (this.$arrow = this.$arrow || this.tip().find('.arrow'))
+    return (this.$arrow = this.$arrow || this.tip().find('.popover-arrow'))
   }
 
   Popover.prototype.tip = function () {

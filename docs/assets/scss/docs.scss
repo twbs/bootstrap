@@ -110,6 +110,8 @@ body {
   color: #cdbfe3;
 }
 .bs-docs-nav .navbar-brand {
+  padding-right: .25rem;
+  padding-left: .25rem;
   color: #fff;
 }
 .bs-docs-nav .navbar-nav > li > a:hover,
@@ -629,7 +631,7 @@ body {
   display: block;
   float: none;
   height: auto;
-  padding: 2rem 1.25rem;
+  padding: 1.75rem 1.25rem;
   font-size: 20px;
   font-weight: 500;
   line-height: 1;
@@ -950,6 +952,10 @@ body {
 
   @media (min-width: 480px) {
     border-width: .2rem;
+  }
+
+  + p {
+    margin-top: 2rem;
   }
 
   // Undo width of container
