@@ -3038,10 +3038,14 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 .c-input > input:checked ~ .c-indicator {
   color: #fff;
   background-color: #0074d9;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 .c-input > input:active ~ .c-indicator {
   color: #fff;
   background-color: #84c6ff;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 .c-input + .c-input {
   margin-left: 1rem;
