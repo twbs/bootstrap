@@ -10,7 +10,6 @@
  */
 
 /* global ZeroClipboard */
-/* global SimpleJekyllSearch */
 
 !function ($) {
   'use strict';
@@ -101,6 +100,9 @@
     $('.bs-docs-activate-animated-progressbar').on('click', function () {
       $(this).prev('.progress-striped').toggleClass('progress-animated')
     })
+
+    // Custom indeterminate checkbox
+    $('.bs-example-indeterminate input').prop('indeterminate', true)
 
     // Config ZeroClipboard
     ZeroClipboard.config({

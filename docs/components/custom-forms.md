@@ -29,6 +29,22 @@ In the checked states, we use **base64 embedded SVG icons** from [Open Iconic](h
 </label>
 {% endexample %}
 
+Custom checkboxes can also utilize the `:indeterminate` pseudo class.
+
+<div class="bs-example bs-example-indeterminate">
+  <label class="c-input c-checkbox">
+    <input type="checkbox">
+    <span class="c-indicator"></span>
+    Check this custom checkbox
+  </label>
+</div>
+
+**Heads up!** You'll need to set this state manually via JavaScript as there is no available HTML attribute for specifying it. If you're using jQuery, something like this should suffice:
+
+{% highlight js %}
+$('.your-checkbox').prop('indeterminate', true)
+{% endhighlight %}
+
 ### Radios
 
 {% example html %}
