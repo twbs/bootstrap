@@ -5,7 +5,9 @@
   #{$parent} {
     background-color: $color;
   }
-  a#{$parent}:hover {
-    background-color: darken($color, 10%);
+  a#{$parent} {
+    @include hover {
+      background-color: darken($color, 10%);
+    }
   }
 }

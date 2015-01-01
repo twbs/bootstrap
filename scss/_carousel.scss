@@ -115,8 +115,7 @@
   }
 
   // Hover/focus state
-  &:hover,
-  &:focus {
+  @include hover-focus {
     color: $carousel-control-color;
     text-decoration: none;
     outline: 0;

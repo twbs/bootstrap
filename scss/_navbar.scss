@@ -69,9 +69,10 @@
   font-size: $font-size-lg;
   line-height: $line-height-computed;
 
-  > a:hover,
-  > a:focus {
-    text-decoration: none;
+  > a {
+    @include hover-focus {
+      text-decoration: none;
+    }
   }
 
   > img {
@@ -95,8 +96,7 @@
   background: none;
   border: 0;
 
-  &:hover,
-  &:focus {
+  @include hover-focus {
     text-decoration: none;
   }
 }
@@ -223,8 +223,7 @@
   .navbar-brand {
     color: $navbar-default-brand-color;
 
-    &:hover,
-    &:focus {
+    @include hover-focus {
       color: $navbar-default-brand-hover-color;
       background-color: $navbar-default-brand-hover-bg;
     }
@@ -238,24 +237,19 @@
     > li > a {
       color: $navbar-default-link-color;
 
-      &:hover,
-      &:focus {
+      @include hover-focus {
         color: $navbar-default-link-hover-color;
         background-color: $navbar-default-link-hover-bg;
       }
     }
     > .active > a {
-      &,
-      &:hover,
-      &:focus {
+      @include plain-hover-focus {
         color: $navbar-default-link-active-color;
         background-color: $navbar-default-link-active-bg;
       }
     }
     > .disabled > a {
-      &,
-      &:hover,
-      &:focus {
+      @include plain-hover-focus {
         color: $navbar-default-link-disabled-color;
         background-color: $navbar-default-link-disabled-bg;
       }
@@ -264,8 +258,7 @@
 
   .navbar-toggle {
     border-color: $navbar-default-toggle-border-color;
-    &:hover,
-    &:focus {
+    @include hover-focus {
       background-color: $navbar-default-toggle-hover-bg;
     }
     .icon-bar {
@@ -282,9 +275,7 @@
   .navbar-nav {
     // Remove background color from open dropdown
     > .open > a {
-      &,
-      &:hover,
-      &:focus {
+      @include plain-hover-focus {
         color: $navbar-default-link-active-color;
         background-color: $navbar-default-link-active-bg;
       }
@@ -298,21 +289,19 @@
 
   .navbar-link {
     color: $navbar-default-link-color;
-    &:hover {
+    @include hover {
       color: $navbar-default-link-hover-color;
     }
   }
 
   .btn-link {
     color: $navbar-default-link-color;
-    &:hover,
-    &:focus {
+    @include hover-focus {
       color: $navbar-default-link-hover-color;
     }
     &:disabled,
     fieldset[disabled] & {
-      &:hover,
-      &:focus {
+      @include hover-focus {
         color: $navbar-default-link-disabled-color;
       }
     }
@@ -330,14 +319,12 @@
   .nav-pills > .nav-item > .nav-link {
     color: $navbar-inverse-link-color;
 
-    &:hover,
-    &:focus {
+    @include hover-focus {
       color: $navbar-inverse-link-hover-color;
     }
   }
   .nav-pills > .nav-item > .nav-link {
-    &:hover,
-    &:focus {
+    @include hover-focus {
       color: $navbar-inverse-link-active-color;
       background-color: $navbar-inverse-link-active-bg;
     }
@@ -351,8 +338,7 @@
 
   .navbar-brand {
     color: $navbar-inverse-brand-color;
-    &:hover,
-    &:focus {
+    @include hover-focus {
       color: $navbar-inverse-brand-hover-color;
       background-color: $navbar-inverse-brand-hover-bg;
     }
@@ -366,24 +352,19 @@
     > li > a {
       color: $navbar-inverse-link-color;
 
-      &:hover,
-      &:focus {
+      @include hover-focus {
         color: $navbar-inverse-link-hover-color;
         background-color: $navbar-inverse-link-hover-bg;
       }
     }
     > .active > a {
-      &,
-      &:hover,
-      &:focus {
+      @include plain-hover-focus {
         color: $navbar-inverse-link-active-color;
         background-color: $navbar-inverse-link-active-bg;
       }
     }
     > .disabled > a {
-      &,
-      &:hover,
-      &:focus {
+      @include plain-hover-focus {
         color: $navbar-inverse-link-disabled-color;
         background-color: $navbar-inverse-link-disabled-bg;
       }
@@ -398,9 +379,7 @@
   // Dropdowns
   .navbar-nav {
     > .open > a {
-      &,
-      &:hover,
-      &:focus {
+      @include plain-hover-focus {
         color: $navbar-inverse-link-active-color;
         background-color: $navbar-inverse-link-active-bg;
       }
@@ -409,7 +388,7 @@
 
   .navbar-link {
     color: $navbar-inverse-link-color;
-    &:hover {
+    @include hover {
       color: $navbar-inverse-link-hover-color;
     }
   }
@@ -417,15 +396,13 @@
   .btn-link {
     color: $navbar-inverse-link-color;
 
-    &:hover,
-    &:focus {
+    @include hover-focus {
       color: $navbar-inverse-link-hover-color;
     }
 
     &:disabled,
     fieldset[disabled] & {
-      &:hover,
-      &:focus {
+      @include hover-focus {
         color: $navbar-inverse-link-disabled-color;
       }
     }

@@ -182,10 +182,11 @@
 }
 
 // Hover state
-// Uncomment if you need it, but be aware of the sticky iOS states.
-// .select select:hover {
-//   background-color: #ddd;
-// }
+.select select {
+  @include hover {
+    background-color: #ddd;
+  }
+}
 
 
 // Media query to target Firefox only
@@ -223,11 +224,11 @@
     content: "";
     background-color: #eee;
   }
-  .select select:hover,
-  .select select:focus,
-  .select select:active {
-    color: #555;
-    background-color: #eee;
+  .select select {
+    @include hover-focus-active {
+      color: #555;
+      background-color: #eee;
+    }
   }
 }
 

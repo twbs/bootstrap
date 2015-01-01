@@ -17,12 +17,26 @@
   // Hover states for `.table-hover`
   // Note: this is not available for cells or rows within `thead` or `tfoot`.
   .table-hover > tbody > tr {
-    > td.#{$state}:hover,
-    > th.#{$state}:hover,
-    &.#{$state}:hover > td,
-    &:hover > .#{$state},
-    &.#{$state}:hover > th {
-      background-color: darken($background, 5%);
+    $hover-background: darken($background, 5%);
+
+    > td.#{$state},
+    > th.#{$state} {
+      @include hover {
+        background-color: $hover-background;
+      }
+    }
+    &.#{$state} {
+      @include hover {
+        > td,
+        > th {
+          background-color: $hover-background;
+        }
+      }
+    }
+    @include hover {
+      > .#{$state} {
+        background-color: $hover-background;
+      }
     }
   }
 }

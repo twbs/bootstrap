@@ -143,9 +143,7 @@
       margin-left: -1px;
     }
     // Bring the "active" button to the front
-    &:hover,
-    &:focus,
-    &:active {
+    @include hover-focus-active {
       z-index: 2;
     }
   }

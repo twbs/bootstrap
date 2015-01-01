@@ -18,8 +18,7 @@
   padding: $nav-link-padding;
   line-height: $line-height-base;
 
-  &:hover,
-  &:focus {
+  @include hover-focus {
     text-decoration: none;
     background-color: $nav-link-hover-bg;
   }
@@ -29,9 +28,7 @@
   &.disabled {
     color: $nav-disabled-link-color;
 
-    &,
-    &:hover,
-    &:focus {
+    @include plain-hover-focus {
       color: $nav-disabled-link-hover-color;
       cursor: $cursor-disabled;
       background-color: transparent;
@@ -62,8 +59,7 @@
     border: 1px solid transparent;
     @include border-radius($border-radius-base $border-radius-base 0 0);
 
-    &:hover,
-    &:focus {
+    @include hover-focus {
       border-color: $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color $nav-tabs-border-color;
     }
   }
@@ -72,9 +68,7 @@
   .active > .nav-link,
   .nav-link.open,
   .nav-link.active {
-    &,
-    &:hover,
-    &:focus {
+    @include plain-hover-focus {
       color: $nav-tabs-active-link-hover-color;
       background-color: $nav-tabs-active-link-hover-bg;
       border-color: $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-border-color transparent;
@@ -83,9 +77,7 @@
 
   .disabled > .nav-link,
   .nav-link.disabled {
-    &,
-    &:hover,
-    &:focus {
+    @include plain-hover-focus {
       color: $nav-disabled-link-color;
       background-color: transparent;
       border-color: transparent;
@@ -116,9 +108,7 @@
   .active > .nav-link,
   .nav-link.open,
   .nav-link.active {
-    &,
-    &:hover,
-    &:focus {
+    @include plain-hover-focus {
       color: $component-active-color;
       cursor: default;
       background-color: $component-active-bg;

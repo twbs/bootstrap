@@ -20,8 +20,10 @@
     margin-left: .75rem;
   }
 }
-.card-link:hover {
-  text-decoration: none;
+.card-link {
+  @include hover {
+    text-decoration: none;
+  }
 }
 
 
@@ -89,9 +91,10 @@
   .card-blockquote > footer {
     color: rgba(255,255,255,.65);
   }
-  .card-link:hover,
-  .card-link:focus {
-    color: #fff;
+  .card-link {
+    @include hover-focus {
+      color: #fff;
+    }
   }
 }
 

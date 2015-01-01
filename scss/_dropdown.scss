@@ -67,8 +67,7 @@
 
 // Hover/Focus state
 .dropdown-menu > li > a {
-  &:hover,
-  &:focus {
+  @include hover-focus {
     color: $dropdown-link-hover-color;
     text-decoration: none;
     background-color: $dropdown-link-hover-bg;
@@ -77,9 +76,7 @@
 
 // Active state
 .dropdown-menu > .active > a {
-  &,
-  &:hover,
-  &:focus {
+  @include plain-hover-focus {
     color: $dropdown-link-active-color;
     text-decoration: none;
     background-color: $dropdown-link-active-bg;
@@ -92,15 +89,12 @@
 // Gray out text and ensure the hover/focus state remains gray
 
 .dropdown-menu > .disabled > a {
-  &,
-  &:hover,
-  &:focus {
+  @include plain-hover-focus {
     color: $dropdown-link-disabled-color;
   }
 
   // Nuke hover/focus effects
-  &:hover,
-  &:focus {
+  @include hover-focus {
     text-decoration: none;
     cursor: $cursor-disabled;
     background-color: transparent;

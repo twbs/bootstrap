@@ -51,8 +51,7 @@ a.list-group-item {
   }
 
   // Hover state
-  &:hover,
-  &:focus {
+  @include hover-focus {
     color: $list-group-link-hover-color;
     text-decoration: none;
     background-color: $list-group-hover-bg;
@@ -61,39 +60,39 @@ a.list-group-item {
 
 .list-group-item {
   // Disabled state
-  &.disabled,
-  &.disabled:hover,
-  &.disabled:focus {
-    color: $list-group-disabled-color;
-    cursor: $cursor-disabled;
-    background-color: $list-group-disabled-bg;
+  &.disabled {
+    @include plain-hover-focus {
+      color: $list-group-disabled-color;
+      cursor: $cursor-disabled;
+      background-color: $list-group-disabled-bg;
 
-    // Force color to inherit for custom content
-    .list-group-item-heading {
-      color: inherit;
-    }
-    .list-group-item-text {
-      color: $list-group-disabled-text-color;
+      // Force color to inherit for custom content
+      .list-group-item-heading {
+        color: inherit;
+      }
+      .list-group-item-text {
+        color: $list-group-disabled-text-color;
+      }
     }
   }
 
   // Active class on item itself, not parent
-  &.active,
-  &.active:hover,
-  &.active:focus {
-    z-index: 2; // Place active items above their siblings for proper border styling
-    color: $list-group-active-color;
-    background-color: $list-group-active-bg;
-    border-color: $list-group-active-border;
+  &.active {
+    @include plain-hover-focus {
+      z-index: 2; // Place active items above their siblings for proper border styling
+      color: $list-group-active-color;
+      background-color: $list-group-active-bg;
+      border-color: $list-group-active-border;
 
-    // Force color to inherit for custom content
-    .list-group-item-heading,
-    .list-group-item-heading > small,
-    .list-group-item-heading > .small {
-      color: inherit;
-    }
-    .list-group-item-text {
-      color: $list-group-active-text-color;
+      // Force color to inherit for custom content
+      .list-group-item-heading,
+      .list-group-item-heading > small,
+      .list-group-item-heading > .small {
+        color: inherit;
+      }
+      .list-group-item-text {
+        color: $list-group-active-text-color;
+      }
     }
   }
 }

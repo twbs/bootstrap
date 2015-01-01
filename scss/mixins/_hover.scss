@@ -1,0 +1,28 @@
+@mixin hover {
+  // See Media Queries Level 4: http://drafts.csswg.org/mediaqueries/#hover
+  // Currently shimmed by https://github.com/cvrebert/mq4-hover-hover-shim
+  @media (hover: hover) {
+    &:hover { @content }
+  }
+}
+
+@mixin hover-focus {
+  &:focus { @content }
+  @include hover { @content }
+}
+
+@mixin plain-hover-focus {
+  &,
+  &:focus {
+    @content
+  }
+  @include hover { @content }
+}
+
+@mixin hover-focus-active {
+  &:focus,
+  &:active {
+    @content
+  }
+  @include hover { @content }
+}
