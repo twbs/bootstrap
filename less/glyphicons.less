@@ -239,8 +239,14 @@
 .glyphicon-level-up               { &:before { content: "\e204"; } }
 .glyphicon-copy                   { &:before { content: "\e205"; } }
 .glyphicon-paste                  { &:before { content: "\e206"; } }
-.glyphicon-door                   { &:before { content: "\1f6aa"; } }
-.glyphicon-key                    { &:before { content: "\1f511"; } }
+// The following 2 Glyphicons are omitted for the time being because
+// they currently use Unicode codepoints that are outside the
+// Basic Multilingual Plane (BMP). Older buggy versions of WebKit can't handle
+// non-BMP codepoints in CSS string escapes, and thus can't display these two icons.
+// Notably, the bug affects some older versions of the Android Browser.
+// More info: https://github.com/twbs/bootstrap/issues/10106
+// .glyphicon-door                   { &:before { content: "\1f6aa"; } }
+// .glyphicon-key                    { &:before { content: "\1f511"; } }
 .glyphicon-alert                  { &:before { content: "\e209"; } }
 .glyphicon-equalizer              { &:before { content: "\e210"; } }
 .glyphicon-king                   { &:before { content: "\e211"; } }
