@@ -108,32 +108,78 @@ module.exports = function (grunt) {
       },
       bootstrap: {
         src: [
-          'js/hover.js',
-          mq4HoverShim.featureDetector.umdGlobal,
-          'js/transition.js',
+          'js/util.js',
           'js/alert.js',
           'js/button.js',
           'js/carousel.js',
           'js/collapse.js',
           'js/dropdown.js',
           'js/modal.js',
+          'js/scrollspy.js',
           'js/tooltip.js',
           'js/popover.js',
-          'js/scrollspy.js',
-          'js/tab.js',
-          'js/affix.js'
+          'js/tab.js'
         ],
         dest: 'dist/js/<%= pkg.name %>.js'
       }
     },
 
+    closureCompiler:  {
+
+      options: {
+        compilerFile: require('superstartup-closure-compiler').getPath(),
+        checkModified: false,
+
+        compilerOpts: {
+           // jscomp_warning: 'reportUnknownTypes', someday - maybe we will get to 100% typed, this helps track those down
+           compilation_level: 'ADVANCED_OPTIMIZATIONS',
+           warning_level: 'verbose',
+           summary_detail_level: 3,
+           output_wrapper:
+                '"<%= banner %><%= jqueryCheck %><%= jqueryVersionCheck %>'
+             + '(function($){%output%})(jQuery);"',
+           externs: 'js/externs/*.js'
+        },
+
+        execOpts: {
+           maxBuffer: 999999 * 1024
+        },
+
+        // [OPTIONAL] Java VM optimization options
+        // see https://code.google.com/p/closure-compiler/wiki/FAQ#What_are_the_recommended_Java_VM_command-line_options?
+        // Setting one of these to 'true' is strongly recommended,
+        // and can reduce compile times by 50-80% depending on compilation size
+        // and hardware.
+        // On server-class hardware, such as with Github's Travis hook,
+        // TieredCompilation should be used; on standard developer hardware,
+        // d32 may be better. Set as appropriate for your environment.
+        // Default for both is 'false'; do not set both to 'true'.
+        d32: false, // will use 'java -client -d32 -jar compiler.jar'
+        TieredCompilation: false // will use 'java -server -XX:+TieredCompilation -jar compiler.jar'
+      },
+
+      targetName: {
+        src: [
+          'js/util.js',
+          'js/alert.js',
+          'js/button.js',
+          'js/carousel.js',
+          'js/collapse.js',
+          'js/dropdown.js',
+          'js/modal.js',
+          'js/scrollspy.js',
+          'js/tooltip.js',
+          'js/popover.js',
+          'js/tab.js'
+        ],
+        dest: 'dist/js/<%= pkg.name %>.min.js'
+      }
+
+    },
+
     uglify: {
       options: {
         preserveComments: 'some'
-      },
-      core: {
-        src: '<%= concat.bootstrap.dest %>',
-        dest: 'dist/js/<%= pkg.name %>.min.js'
       },
       docsJs: {
         src: configBridge.paths.docsJs,
@@ -388,7 +434,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test-js', ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs']);
+  grunt.registerTask('dist-js', ['concat', 'closureCompiler', 'commonjs']);
 
   grunt.registerTask('test-scss', ['scsslint:scss']);
 

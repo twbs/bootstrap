@@ -322,30 +322,31 @@ $(function () {
         + '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>'
         + '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>'
         + '</div>'
+
     var $carousel = $(templateHTML)
     $carousel.attr('data-interval', 1814)
 
     $carousel.appendTo('body')
     $('[data-slide]').first().click()
-    equal($carousel.data('bs.carousel').options.interval, 1814)
+    equal($carousel.data('bs.carousel').getConfig().interval, 1814)
     $carousel.remove()
 
     $carousel.appendTo('body').attr('data-modal', 'foobar')
     $('[data-slide]').first().click()
-    equal($carousel.data('bs.carousel').options.interval, 1814, 'even if there is an data-modal attribute set')
+    equal($carousel.data('bs.carousel').getConfig().interval, 1814, 'even if there is an data-modal attribute set')
     $carousel.remove()
 
     $carousel.appendTo('body')
     $('[data-slide]').first().click()
     $carousel.attr('data-interval', 1860)
     $('[data-slide]').first().click()
-    equal($carousel.data('bs.carousel').options.interval, 1814, 'attributes should be read only on initialization')
+    equal($carousel.data('bs.carousel').getConfig().interval, 1814, 'attributes should be read only on initialization')
     $carousel.remove()
 
     $carousel.attr('data-interval', false)
     $carousel.appendTo('body')
     $carousel.bootstrapCarousel(1)
-    strictEqual($carousel.data('bs.carousel').options.interval, false, 'data attribute has higher priority than default options')
+    strictEqual($carousel.data('bs.carousel').getConfig().interval, false, 'data attribute has higher priority than default options')
     $carousel.remove()
   })
 

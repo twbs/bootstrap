@@ -30,7 +30,7 @@ $(function () {
   })
 
   test('should expose defaults var for settings', function () {
-    ok($.fn.bootstrapModal.Constructor.DEFAULTS, 'default object exposed')
+    ok($.fn.bootstrapModal.Constructor.Defaults, 'default object exposed')
   })
 
   test('should insert into dom when show method is called', function (assert) {
