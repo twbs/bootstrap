@@ -7,7 +7,7 @@ Bootstrap follows common web standards and—with minimal extra effort—can be 
 
 ### Skip navigation
 
-If your navigation contains many links and comes before the main content in the DOM, add a `Skip to main content` link immediately after your opening `<body>` tag. [(read why)](http://a11yproject.com/posts/skip-nav-links/)
+If your navigation contains many links and comes before the main content in the DOM, add a `Skip to main content` link [before the navigation](http://a11yproject.com/posts/skip-nav-links/). Using the `.sr-only` class will visually hide the skip link, and the `.sr-only-focusable` class will ensure that the link becomes visible once focused (for sighted keyboard users).
 
 {% highlight html %}
 <body>

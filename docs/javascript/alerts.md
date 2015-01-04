@@ -9,7 +9,7 @@ Add dismiss functionality to all alert messages with this plugin.
 
 {% example html %}
 <div class="alert alert-warning alert-dismissible fade in" role="alert">
-  <button type="button" class="close" data-dismiss="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
     <span class="sr-only">Close</span>
   </button>
@@ -44,7 +44,7 @@ $(".alert").alert()
 Just add `data-dismiss="alert"` to your close button to automatically give an alert close functionality. Closing an alert removes it from the DOM.
 
 {% highlight html %}
-<button type="button" class="close" data-dismiss="alert">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
   <span aria-hidden="true">&times;</span>
   <span class="sr-only">Close</span>
 </button>

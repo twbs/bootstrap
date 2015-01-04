@@ -89,6 +89,14 @@ $('#myModal').on('show.bs.modal', function (e) {
 })
 {% endhighlight %}
 
+### Version numbers
+
+The version of each of Bootstrap's jQuery plugins can be accessed via the `VERSION` property of the plugin's constructor. For example, for the tooltip plugin:
+
+{% highlight js %}
+$.fn.tooltip.Constructor.VERSION // => "{{ site.current_version }}"
+{% endhighlight %}
+
 ### No special fallbacks when JavaScript is disabled
 
 Bootstrap's plugins don't fall back particularly gracefully when JavaScript is disabled. If you care about the user experience in this case, use [`<noscript>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript) to explain the situation (and how to re-enable JavaScript) to your users, and/or add your own custom fallbacks.

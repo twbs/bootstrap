@@ -54,7 +54,7 @@ Combine sets of button groups into button toolbars for more complex components.
 
 ### Sizing
 
-Instead of applying button sizing classes to every button in a group, just add `.btn-group-*` to the `.btn-group`.
+Instead of applying button sizing classes to every button in a group, just add `.btn-group-*` to each `.btn-group`, including each one when nesting multiple groups.
 
 <div class="bs-example">
   <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">

@@ -33,7 +33,7 @@ Build on any alert by adding an optional `.alert-dismissible` and [close button]
 
 {% example html %}
 <div class="alert alert-warning alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
     <span class="sr-only">Close</span>
   </button>

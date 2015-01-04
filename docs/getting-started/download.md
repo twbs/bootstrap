@@ -44,3 +44,7 @@ You can also install and manage Bootstrap's Sass, CSS, and JavaScript using [Bow
 Bootstrap is available as [an npm package](https://www.npmjs.org/package/bootstrap). Install it into your Node powered apps with:
 
 {% highlight bash %}$ npm install bootstrap{% endhighlight %}
+
+### Autoprefixer required for Less/Sass
+
+Bootstrap uses [Autoprefixer](https://github.com/postcss/autoprefixer) to deal with [CSS vendor prefixes](http://webdesign.about.com/od/css/a/css-vendor-prefixes.htm). If you're compiling Bootstrap from its Less/Sass source and not using our Gruntfile, you'll need to integrate Autoprefixer into your build process yourself. If you're using precompiled Bootstrap or using our Gruntfile, you don't need to worry about this because Autoprefixer is already integrated into our Gruntfile.

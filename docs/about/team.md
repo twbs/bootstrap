@@ -12,7 +12,7 @@ Bootstrap is maintained by the founding team and a small group of invaluable cor
     <div class="list-group-item">
       <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user={{ member.user }}&amp;type=follow"></iframe>
       <a class="team-member" href="https://github.com/{{ member.user }}">
-        <img src="http://www.gravatar.com/avatar/{{ member.gravatar }}" alt="@{{ member.user }}">
+        <img src="http://www.gravatar.com/avatar/{{ member.gravatar }}" alt="@{{ member.user }}" width="32" height="32">
         <strong>{{ member.name }}</strong> <small>@{{ member.user }}</small>
       </a>
     </div>
@@ -28,7 +28,7 @@ Get involved with Bootstrap development by [opening an issue](https://github.com
     <div class="list-group-item">
       <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user={{ member.user }}&amp;type=follow"></iframe>
       <a class="team-member" href="https://github.com/{{ member.user }}">
-        <img src="http://www.gravatar.com/avatar/{{ member.gravatar }}" alt="@{{ member.user }}">
+        <img src="http://www.gravatar.com/avatar/{{ member.gravatar }}" alt="@{{ member.user }}" width="32" height="32">
         <strong>{{ member.name }}</strong> <small>@{{ member.user }}</small>
       </a>
     </div>

@@ -236,6 +236,8 @@ Should you have no text within the `<label>`, the input is positioned as you'd e
 
 ### Selects
 
+Note that many native select menus—namely in Safari and Chrome—have rounded corners that cannot be modified via `border-radius` properties.
+
 Use the default option, or add `multiple` to show multiple options at once.
 
 {% example html %}
@@ -246,7 +248,11 @@ Use the default option, or add `multiple` to show multiple options at once.
   <option>4</option>
   <option>5</option>
 </select>
+{% endexample %}
 
+For `<select>` controls with the `multiple` attribute, multiple options are shown by default.
+
+{% example html %}
 <select multiple class="form-control">
   <option>1</option>
   <option>2</option>

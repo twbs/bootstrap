@@ -100,16 +100,6 @@
 
 -
   browser: >
-    Safari (OS X)
-  summary: >
-    Scrollbar clipped in `select[multiple]` with padding.
-  upstream_bug: >
-    WebKit#128489
-  origin: >
-    Bootstrap#12536
-
--
-  browser: >
     Chrome
   summary: >
     `<input type="password">` sporadically causes bad widths on floated elements.
@@ -127,6 +117,16 @@
     Chromium#429375
   origin: >
     Bootstrap#14409
+
+-
+  browser: >
+    Safari (OS X)
+  summary: >
+    Scrollbar clipped in `select[multiple]` with padding.
+  upstream_bug: >
+    WebKit#128489, Safari#19208483
+  origin: >
+    Bootstrap#12536
 
 -
   browser: >
@@ -152,16 +152,6 @@
 
 -
   browser: >
-    Safari (iOS)
-  summary: >
-    `transform: translate3d(0,0,0);` rendering bug.
-  upstream_bug: >
-    WebKit#138162, Safari#18804973
-  origin: >
-    Bootstrap#14603
-
--
-  browser: >
     Safari (OS X)
   summary: >
     Small font size when printing webpage with fixed-width `.container`.
@@ -169,6 +159,26 @@
     WebKit#138192
   origin: >
     Bootstrap#14868
+
+-
+  browser: >
+    Safari (OS X)
+  summary: >
+    Alpha linear-gradient has dark line at its edge.
+  upstream_bug: >
+    WebKit#139803  
+  origin: >
+    Bootstrap#15205
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    `transform: translate3d(0,0,0);` rendering bug.
+  upstream_bug: >
+    WebKit#138162, Safari#18804973
+  origin: >
+    Bootstrap#14603
 
 -
   browser: >
@@ -182,10 +192,10 @@
 
 -
   browser: >
-    Chrome (Windows & Linux)
+    Safari (iOS)
   summary: >
-    Body content can be scrolled even though `overflow: hidden;` is applied to it.
+    `display: block` causes text of temporal `<input>`s to become vertically misaligned
   upstream_bug: >
-    Chromium#175502
+    WebKit#139848
   origin: >
-    Bootstrap#14972
+    Bootstrap#11266, Bootstrap#13098

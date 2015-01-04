@@ -13,7 +13,7 @@ Simple pagination inspired by Rdio, great for apps and search results. The large
 <nav>
   <ul class="pagination">
     <li>
-      <a href="#">
+      <a href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
@@ -24,7 +24,7 @@ Simple pagination inspired by Rdio, great for apps and search results. The large
     <li><a href="#">4</a></li>
     <li><a href="#">5</a></li>
     <li>
-      <a href="#">
+      <a href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
       </a>
@@ -41,7 +41,7 @@ Links are customizable for different circumstances. Use `.disabled` for unclicka
 <nav>
   <ul class="pagination">
     <li class="disabled">
-      <a href="#">
+      <a href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
@@ -54,7 +54,7 @@ Links are customizable for different circumstances. Use `.disabled` for unclicka
     <li><a href="#">4</a></li>
     <li><a href="#">5</a></li>
     <li>
-      <a href="#">
+      <a href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
       </a>
@@ -69,7 +69,7 @@ You can optionally swap out active or disabled anchors for `<span>`, or omit the
 <nav>
   <ul class="pagination">
     <li class="disabled">
-      <span>
+      <span aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </span>
@@ -88,7 +88,7 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 <nav>
   <ul class="pagination pagination-lg">
     <li>
-      <a href="#">
+      <a href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
@@ -97,7 +97,7 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
     <li><a href="#">2</a></li>
     <li><a href="#">3</a></li>
     <li>
-      <a href="#">
+      <a href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
       </a>
@@ -110,7 +110,7 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 <nav>
   <ul class="pagination pagination-sm">
     <li>
-      <a href="#">
+      <a href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
@@ -119,7 +119,7 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
     <li><a href="#">2</a></li>
     <li><a href="#">3</a></li>
     <li>
-      <a href="#">
+      <a href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
       </a>
