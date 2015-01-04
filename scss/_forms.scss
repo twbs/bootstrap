@@ -181,16 +181,16 @@ input[type="search"] {
   input[type="time"],
   input[type="datetime-local"],
   input[type="month"] {
-    line-height: @input-height-base;
+    line-height: $input-height-base;
 
     &.input-sm,
     .input-group-sm & {
-      line-height: @input-height-small;
+      line-height: $input-height-sm;
     }
 
     &.input-lg,
     .input-group-lg & {
-      line-height: @input-height-large;
+      line-height: $input-height-lg;
     }
   }
 }
