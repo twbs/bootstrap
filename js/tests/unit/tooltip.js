@@ -1115,8 +1115,8 @@ $(function () {
     } catch (err) {
       passed = false
       console.log(err)
-    }    
-	ok(passed && $('.tooltip').length === 0, 'document-level tooltip is correctly treated as invalid without raising errors')
-  })  
-  
+    }
+    ok(passed && $('.tooltip').length === 0, 'document-level tooltip is correctly treated as invalid without raising errors')
+  })
+
 })
