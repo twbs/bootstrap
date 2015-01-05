@@ -728,7 +728,7 @@ $(function () {
 
     $target.bootstrapTooltip('show')
     var $tooltip = $container.find('.tooltip')
-    var $initialTop = $tooltip.offset().top
+    var $initialTop = Math.round($tooltip.offset().top)
 
     $target.bootstrapTooltip('hide')
 
@@ -737,7 +737,7 @@ $(function () {
     $target.bootstrapTooltip('show')
     $tooltip = $container.find('.tooltip')
 
-    equal($tooltip.offset().top, $initialTop, 'position is the same after scrolling')
+    equal(Math.round($tooltip.offset().top), $initialTop, 'position is the same after scrolling')
     equal($(document).scrollTop(), 2000, 'document scrolled')
 
     $target.bootstrapTooltip('hide')
