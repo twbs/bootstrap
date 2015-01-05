@@ -8,10 +8,15 @@
 // Heads up! This reset may cause conflicts with some third-party widgets.
 // For recommendations on resolving such conflicts, see
 // http://getbootstrap.com/getting-started/#third-box-sizing
+// Credit: Jon Neal & CSS-Tricks
+// http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+html {
+  box-sizing: border-box;
+}
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
+  box-sizing: inherit;
 }
 
 
