@@ -5192,10 +5192,6 @@ a.list-group-item-state.active, a.list-group-item-state.active:hover, a.list-gro
   border: 0;
 }
 
-.affix {
-  position: fixed;
-}
-
 .text-left {
   text-align: left;
 }
