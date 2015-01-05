@@ -225,4 +225,11 @@ $(function () {
       })
       .bootstrapPopover('show')
   })
+
+  test('should throw an error when initializing popover on the document object without specifying a delegation selector', function () {
+    throws(function () {
+      $(document).bootstrapPopover({ title: 'What am I on?', content: 'My selector is missing' })
+    }, new Error('`selector` option must be specified when initializing popover on the window.document object!'))
+  })
+
 })

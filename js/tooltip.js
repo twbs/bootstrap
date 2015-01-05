@@ -52,6 +52,10 @@
     this.options   = this.getOptions(options)
     this.$viewport = this.options.viewport && $(this.options.viewport.selector || this.options.viewport)
 
+    if (this.$element[0] instanceof window.Document && !this.options.selector) {
+      throw new Error('`selector` option must be specified when initializing ' + this.type + ' on the window.document object!');
+    }
+
     var triggers = this.options.trigger.split(' ')
 
     for (var i = triggers.length; i--;) {

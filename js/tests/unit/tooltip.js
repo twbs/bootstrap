@@ -1107,4 +1107,10 @@ $(function () {
     $element.bootstrapTooltip('show')
   })
 
+  test('should throw an error when initializing tooltip on the document object without specifying a delegation selector', function () {
+    throws(function () {
+      $(document).bootstrapTooltip({ title: 'What am I on?' })
+    }, new Error('`selector` option must be specified when initializing tooltip on the window.document object!'))
+  })
+
 })
