@@ -163,7 +163,7 @@ module.exports = function (grunt) {
           'Explorer >= 9',
           'iOS >= 7',
           'Opera >= 12',
-          'Safari >= 6'
+          'Safari >= 7.1'
         ]
       },
       core: {
