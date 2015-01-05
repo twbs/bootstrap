@@ -373,6 +373,7 @@ module.exports = function (grunt) {
           build: process.env.TRAVIS_JOB_ID,
           throttled: 10,
           maxRetries: 3,
+          maxPollRetries: 4,
           urls: ['http://127.0.0.1:3000/js/tests/index.html'],
           browsers: grunt.file.readYAML('grunt/sauce_browsers.yml')
         }
