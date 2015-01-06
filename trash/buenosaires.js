@@ -26,19 +26,19 @@ $('.row-modalcarousel > a').click(function(event){
 
 /* tramites toggle scroll */
 
-// $(function () {
-//   $(document).on('ready', function(){
-//     $('#tramite').on('show.bs.collapse', function (e) {
-//       // Timeout because it's not visible yet
-//       setTimeout(function(){
-//         var offset = $('#tramite').offset();
-//         if(offset){
-//           $('html,body').animate({ scrollTop: offset.top}, 400);
-//         }
-//       }, 10);
-//     });
-//   });
-// });
+$(function () {
+  $(document).on('ready', function(){
+    $('#tramite').on('show.bs.collapse', function (e) {
+      // Timeout because it's not visible yet
+      setTimeout(function(){
+        var offset = $('#tramite').offset();
+        if(offset){
+          $('html,body').animate({ scrollTop: offset.top}, 400);
+        }
+      }, 10);
+    });
+  });
+});
 
 /* widget-map scroll fix */
 

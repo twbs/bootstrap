@@ -183,11 +183,14 @@
             <section class="list-group list-group-content">
               <form class="form-tramite" role="form">
                 <div class="form-group">
-                  <a class="btn btn-primary btn-lg btn-block" href="#" target="_blank">Iniciar trámite online</a>
+                  <a class="btn btn-primary btn-lg btn-block" data-toggle="collapse" href="#tramite">Iniciar trámite online</a>
                   <h3>Costo: <span class="success-lt">$42</span></h3>
                   <p>El valor del trámite se debe consultar en la <a href="#">Ley Tarifaria</a></p>
                 </div>
               </form>
+            </section>
+            <section id="tramite" class="panel-collapse collapse">
+              <iframe src="http://apps.buenosaires.gov.ar/apps/turnos_online/paso1.php" name="Turnos online" width="100%" height="480" scrolling="no" frameborder="0"></iframe>
             </section>
           </article>
           <aside>
@@ -195,7 +198,7 @@
               <section class="list-group list-group-content list-tramite-sidebar">
                 <form class="form-tramite" role="form">
                   <div class="form-group">
-                    <a class="btn btn-primary btn-lg btn-block" href="#" target="_blank">Iniciar trámite online</a>
+                    <a class="btn btn-primary btn-lg btn-block" data-toggle="collapse" href="#tramite">Iniciar trámite online</a>
                     <h3>Costo: <span class="success-lt">$42</span></h3>
                     <p>El valor del trámite se debe consultar en la <a href="#">Ley Tarifaria</a></p>
                   </div>
