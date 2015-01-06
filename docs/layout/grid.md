@@ -41,7 +41,7 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
         </th>
         <th>
           Small devices
-          <small>Landscape phones (&ge;38em)</small>
+          <small>Landscape phones (&ge;34em)</small>
         </th>
         <th>
           Medium devices
