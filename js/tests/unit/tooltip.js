@@ -1107,4 +1107,16 @@ $(function () {
     $element.bootstrapTooltip('show')
   })
 
+  test('should gracefully treat document like any !inDom element without raising errors', function () {
+    var passed = true
+    var $tooltip = $(document).bootstrapTooltip({ title: 'document-level tooltip', template: '<div class="tooltip some-class">!inDom document-level Tooltip<div class="tooltip-arrow"/><div class="tooltip-inner"/></div>' })
+    try {
+      $tooltip.bootstrapTooltip('show')
+    } catch (err) {
+      passed = false
+      console.log(err)
+    }
+    ok(passed && $('.tooltip').length === 0, 'document-level tooltip is correctly treated as invalid without raising errors')
+  })
+
 })
