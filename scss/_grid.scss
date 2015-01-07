@@ -12,7 +12,7 @@
 
   // For each breakpoint, define the maximum width of the container in a media query
   @each $breakpoint, $container-max-width in $container-max-widths {
-    @include media-breakpoint-min($breakpoint) {
+    @include media-breakpoint-up($breakpoint) {
       max-width: $container-max-width;
     }
   }

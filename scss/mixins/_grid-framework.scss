@@ -19,7 +19,7 @@
         @extend %grid-column;
       }
     }
-    @include media-breakpoint-min($breakpoint) {
+    @include media-breakpoint-up($breakpoint) {
       // Work around cross-media @extend (https://github.com/sass/sass/issues/1050)
       %grid-column-float-#{$breakpoint} {
         float: left;
