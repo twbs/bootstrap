@@ -1532,6 +1532,9 @@ ul.affix-bottom {
 
 /* navbar default jumbotron */
 
+.jumbotron-main {
+  background-color:#666;
+}
 .jumbotron-main .navbar-default .navbar-nav>li>a,
 .jumbotron-main .navbar-default .navbar-brand {
   color: rgba(255, 255, 255, .8);
@@ -1865,6 +1868,27 @@ ul.affix-bottom {
 .label-inverse[href]:focus {
   background-color: #666;
 }
+.label-blue {
+  background-color: #4f65b7;
+}
+.label-blue[href]:hover,
+.label-blue[href]:focus {
+  background-color: #4f65b7;
+}
+.label-pink {
+  background-color: #ac4c7b;
+}
+.label-pink[href]:hover,
+.label-pink[href]:focus {
+  background-color: #ac4c7b;
+}
+.label-violet {
+  background-color: #88459e;
+}
+.label-violet[href]:hover,
+.label-violet[href]:focus {
+  background-color: #88459e;
+}
 
 /* progress */
 
@@ -2009,6 +2033,7 @@ z-index: 11;
   color:#333;
   border-radius:6px;
   display:block;
+  background-color:transparent;
 }
 .shortcut:hover,
 .shortcut:focus {
@@ -2766,6 +2791,27 @@ a.alert-spot:active {
 }
 .bg-pink-dk {
   background-color: #b52d81;
+}
+
+.bg-primary {
+  background-color: #fffcea;
+  color: #5f4600;
+}
+.bg-success {
+  background-color: #f6faeb;
+  color: #456225;
+}
+.bg-info {
+  background-color: #edf8f8;
+  color: #0d605c;
+}
+.bg-warning {
+  background-color: #fff5eb;
+  color: #844c26;
+}
+.bg-danger {
+  background-color: #faedec;
+  color: #6a2121;
 }
 
 /* colores type */

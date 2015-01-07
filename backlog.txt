@@ -31,18 +31,6 @@ BASTRAP PABLO
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 * LATER *********************************************************************************************
 
 - la posta es hacer varios templates para que la gente use no de cero
@@ -53,7 +41,6 @@ BASTRAP PABLO
 - APRENDER y pasar a SASS
 - BS boton copy!
 - Ejemplo back-end
-
 
 
 
