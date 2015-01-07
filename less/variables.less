@@ -19,7 +19,7 @@
 @brand-success:         @naturalMiddark;
 @brand-warning:         @warmMidlight;
 @brand-danger:          @errorDark;
-@brand-info:            @warmMiddark;
+@brand-info:            @coolMiddark;
 
 
 // Links
@@ -146,8 +146,8 @@
 @btn-font-weight:                normal;
 
 @btn-default-color:              @text-color;
-@btn-default-bg:                 @neutralLightest;
-@btn-default-border:             darken(@btn-default-bg, 5%); //@neutralLight
+@btn-default-bg:                 @neutralWhite;
+@btn-default-border:             @neutralMiddark;
 
 @btn-primary-color:              @neutralWhite;
 @btn-primary-bg:                 @brand-primary;
@@ -161,15 +161,9 @@
 @btn-info-bg:                    @brand-info;
 @btn-info-border:                darken(@btn-info-bg, 5%);
 
-//temp - for test - too many orange buttons!
-@btn-info-color:                 @btn-primary-color;
-@btn-info-bg:                    @btn-primary-bg;
-@btn-info-border:                @btn-primary-border;
-//end temp
-
-@btn-warning-color:              @link-color;
-@btn-warning-bg:                 @neutralWhite;
-@btn-warning-border:             @neutralMidlight;
+@btn-warning-color:              @neutralWhite;
+@btn-warning-bg:                 @brand-warning;
+@btn-warning-border:             darken(@btn-warning-bg, 5%);
 
 @btn-danger-color:               @neutralWhite;
 @btn-danger-bg:                  @brand-danger;
