@@ -6,8 +6,6 @@
 
 BUENOSAIRES
 - pagina.html sidebar modal carousel animado
-- tab chatteá con operador footer right como facebook
-
 
 BASTRAP NICO
 - opacity como .6

@@ -1974,5 +1974,38 @@ margin:0;
   background-image:url(ribbons/ribbon-pink.svg), none;
 }
 
+/* chat */
 
+.ba-chat {
+  background:#ffd300;
+  color:#5f4600;
+  width:300px;
+  height:50px;
+  position:fixed;
+  bottom:0;
+  right:30px;
+  z-index:999;
+  font-size:20px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  text-align:center;
+  padding-top:8px;
+}
+.ba-chat,
+.ba-chat:hover,
+.ba-chat:focus,
+.ba-chat span {
+  color:#5f4600;
+  text-decoration:none;
+}
+.ba-chat:hover,
+.ba-chat:focus {
+  background:#ffdc33;
+}
+.ba-chat .glyphicon {
+  font-size:24px;
+  margin-left:10px;
+  position:relative;
+  top:4px;
+}
 
