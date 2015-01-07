@@ -1061,11 +1061,12 @@ a.list-group-item.active > .badge {
 .navbar-nav > li > a {
   text-shadow: none;
 }
-
 .navbar-nav  > li > a{
   height:48px;
 }
-
+.navbar-header p {
+  margin:0;
+}
 @media (max-width: 767px) {
   .navbar .navbar-nav  > li > a{
     text-align:left;
