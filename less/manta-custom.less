@@ -28,8 +28,14 @@
 .bg-gray,.bg-gray-hover:hover {
   background-color: @neutralLightest;
 }
-.bg-cool-lightest, .bg-cool-lighter, .bg-cool-midlight, .bg-cool-middark, .bg-cool-dark, .bg-cool-darker {
-  color: @neutralWhite;
+.bg-cool-lightest, .bg-cool-lighter, .bg-cool-midlight, .bg-cool-middark, .bg-cool-dark, .bg-cool-darker,
+.bg-warm-middlight, .bg-warm-middark, .bg-warm-dark,
+.bg-neutral-middark,
+.bg-neutral-midlight, .bg-neutral-middark, .bg-neutral-darker, .bg-neutral-darkest
+{
+  &,.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
+    color: @neutralWhite;
+  }
 }
 .bg-cool-lightest {
   background-color: @coolLightest;
@@ -103,16 +109,16 @@
   background-color: @brand-primary;
 }
 .bg-brand-info{
-  background-color: @brand-primary;
+  background-color: @brand-info;
 }
-.bg-brand-primary {
-  background-color: @brand-primary;
+.bg-brand-success {
+  background-color: @brand-success;
 }
-.bg-brand-primary {
-  background-color: @brand-primary;
+.bg-brand-warning {
+  background-color: @brand-warning;
 }
-.bg-brand-primary {
-  background-color: @brand-primary;
+.bg-brand-danger {
+  background-color: @brand-danger;
 }
 
 // text colors from color pallette
