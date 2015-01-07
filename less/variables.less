@@ -30,12 +30,12 @@
 // ## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               @neutralLight;
+@body-bg:               @neutralLightest;
 //** Global text color on `<body>`.
-@text-color:            @gray-dark;
+@text-color:            @neutralMiddark;
 
 //** Global textual link color.
-@link-color:            @coolDarker;
+@link-color:            @warmMiddark;
 //** Link hover color set via `darken()` function.
 @link-hover-color:      @link-color;
 
@@ -43,7 +43,7 @@
 //
 //## Font, line-height, and color for body text, headings, and more.
 @font-family-sans-serif:  arial,helvetica,clean,sans-serif; //"Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-serif:       'vegurlight', @font-family-sans-serif; //Georgia, "Times New Roman", Times, serif;
+@font-family-serif:       'Source Sans Pro', @font-family-sans-serif; //Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 @font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
@@ -68,7 +68,8 @@
 @headings-font-family:    inherit;
 @headings-font-weight:    500;
 @headings-line-height:    1.1;
-@headings-color:          inherit;
+//@headings-color:          inherit;
+@headings-color: @neutralDarker;
 
 
 //-- Iconography
@@ -160,9 +161,15 @@
 @btn-info-bg:                    @brand-info;
 @btn-info-border:                darken(@btn-info-bg, 5%);
 
+//temp - for test - too many orange buttons!
+@btn-info-color:                 @btn-primary-color;
+@btn-info-bg:                    @btn-primary-bg;
+@btn-info-border:                @btn-primary-border;
+//end temp
+
 @btn-warning-color:              @link-color;
 @btn-warning-bg:                 @neutralWhite;
-@btn-warning-border:             darken(@btn-warning-bg, 25%);
+@btn-warning-border:             @neutralMidlight;
 
 @btn-danger-color:               @neutralWhite;
 @btn-danger-bg:                  @brand-danger;
@@ -176,7 +183,7 @@
 //##
 
 //** `<input>` background color
-@input-bg:                       @neutralWhite;
+@input-bg:                       @neutralLightest;
 //** `<input disabled>` background color
 @input-bg-disabled:              @gray-lighter;
 
@@ -362,12 +369,12 @@
 @navbar-default-border:            darken(@navbar-default-bg, 6.5%);
 
 // Navbar links
-@navbar-default-link-color:                @neutralWhite;
+@navbar-default-link-color:                @neutralLighter;
 @navbar-default-link-hover-color:          @neutralWhite;
 @navbar-default-link-hover-bg:             transparent;
-@navbar-default-link-active-color:         @neutralWhite;
+@navbar-default-link-active-color:         @neutralLightest;
 @navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
-@navbar-default-link-disabled-color:       @neutralLight;
+@navbar-default-link-disabled-color:       @neutralMidlight;
 @navbar-default-link-disabled-bg:          transparent;
 
 // Navbar brand label
