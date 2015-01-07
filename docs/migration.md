@@ -17,6 +17,7 @@ For a broader overview, see [what's new](http://blog.getbootstrap.com/DEAD-LINK-
 - Switched from LESS to SCSS for our source CSS files.
 - Added a new grid tier for ~`480px` and below.
 - Dropped Glyphicons icon font.
+- Dropped the Affix jQuery plugin. We recommend using a `position: sticky` polyfill instead. [See the HTML5 Please entry](http://html5please.com/#sticky) for details and specific polyfill recommendations.
 - Refactored nearly all components to use more unnested classes instead of children selectors.
 - Non-responsive usage of Bootstrap is no longer supported.
 - Dropped the online Customizer in favor of more extensive setup documentation.
