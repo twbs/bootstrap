@@ -101,17 +101,12 @@ body {
   background-color: #563d7c;
   border-bottom: 0;
 }
-.bs-home-nav .bs-nav-b {
-  display: none;
-}
-.bs-docs-nav .navbar-brand,
+.bs-docs-nav .navbar-brand > a,
 .bs-docs-nav .navbar-nav > li > a {
   font-weight: 500;
   color: #cdbfe3;
 }
-.bs-docs-nav .navbar-brand {
-  padding-right: .25rem;
-  padding-left: .25rem;
+.bs-docs-nav .navbar-brand > a {
   color: #fff;
 }
 .bs-docs-nav .navbar-nav > li > a:hover,

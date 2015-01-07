@@ -1,22 +1,18 @@
 <header class="navbar navbar-inverse navbar-static-top bs-docs-nav" id="top" role="banner">
-  <a href="../" class="navbar-brand">Bootstrap</a>
-  <ul class="nav nav-pills pull-left">
-    {% for group in site.data.nav %}
-      {% assign link = group.pages | first %}
-      {% assign slug = group.title | downcase | replace: ' ', '-' || page.title | downcase | replace: ' ', '-' %}
+  <div class="container">
+    <h3 class="navbar-brand">
+      <a href="{{ site.baseurl }}">Bootstrap</a>
+    </h3>
+    <ul class="nav nav-pills pull-right">
       <li class="nav-item">
-        <a class="nav-link" href="{{ site.baseurl }}{{ group.title | downcase | replace: ' ', '-' }}/{{ link.title | downcase | replace: ' ', '-' || page.title | downcase | replace: ' ', '-'  }}">
-          {{ group.title }}
-        </a>
+        <a class="nav-link" href="{{ site.baseurl }}/getting-started/quick-start" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Documentation</a>
       </li>
-    {% endfor %}
-  </ul>
-  <ul class="nav nav-pills pull-right">
-    <li class="nav-item">
-      <a class="nav-link" href="{{ site.expo }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{{ site.blog }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a>
-    </li>
-  </ul>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ site.expo }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ site.blog }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a>
+      </li>
+    </ul>
+  </div>
 </header>
