@@ -1,172 +1,41 @@
-* TEMP *********************************************************************************************
-
-
-
-
-1305
-
-
-
-
-MINDMAP fixes
-- primero section luego .list-group-content [cambiar nombre? siempre están al lado de list-group....]
-- buscar .list-group-multi y hacer algo al respecto................
-- hacer menos tipos de página? [fusionar por ejemplo ba-destacado y ba-emergencia?]
-	capaz que existan para el <main> pero que para el <body> existan unas clases más generales?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 * TASKS *********************************************************************************************
 
 
 
-- modal carousel animado
-- pasar a jekyll o algo
 
 
-
-
-
-- Descargas diseño replantear + posicion dentro de nota
-	ver con edu y  santi 
-
-
-
-
-
-
-
-- heart tooltip/popover
-- Tabla responsive emergencia testear [font menor?]
-- teléfonos menú mobile
+BUENOSAIRES
+- pagina.html sidebar modal carousel animado
 - tab chatteá con operador footer right como facebook
 
 
-
-
-
-
-- Redes Sociales
-	http://www.buenosaires.gob.ar/social
-- elemento para la sidebar onda mini-banner con foto para enlazar a flickr o a lo que sea.
-
-- widgets faltantes
-	area radio player
-	flickr
-
-- english
-
-
-- outlines no?
-
-
-
-
-
-
-
-
-
-- IE8
-- Probar mobile con emulador
-
-- CSS impresión para página, nota de libro, tramite
-	testear
-	sacar cosas
-	poner logo?
-
-- Crossbrowsing + accesibilidad + sarmiento cargador [usar red de tele]
+BASTRAP NICO
+- opacity como .6
+- poner los -webkit y -moz
+- CSS impresión, testear y emprolijar
+- IE8 [testear modernizr]
+- probar mobile con emulador
+- crossbrowsing + accesibilidad + notebook sarmiento
 	http://yslow.org/
 	https://browserling.com/
-	
-	http://alistapart.com/article/css-audits-taking-stock-of-your-code
-	http://wave.webaim.org/report#/http%3A%2F%2Fgcba.github.io%2FBAstrap%2Fbuenosaires%2Fshow.html
-	http://achecker.ca/checker/index.php
-	http://jekyllrb.com/
-	http://gcba.github.io/guiaux/
-	Agregar alt, rel, role ...
 
-- fade a blanco en carousel?
-
-- la posta es hacer varios templates para que la gente use no de cero
-
-- NUEVO BASTRAP más liviano
-	SAAS
-	opacity como .6
- 	no ser garca y poner los -webkit y -moz [y modernizr?]
- 	con bordes en panels? dsfsdf ver las tarjetitas ya aplicadas vs buenos aires no border no panel [j3]
-
-
-
-
-
-
-
-NOTAS:
-- fav sólo si estás loggeado
-
-
-
-
-FLASHEADAS:
-- Baid progressive disclosure y gamification motivation
-	http://wrapbootstrap.com/preview/WB0P4TG24
-	http://www.google.com/landing/now/
-	http://www.dtelepathy.com/blog/design/progressive-reduction-evolving-the-experience-for-your-most-frequent-users
-- Todos usan heramientas con templates armados [habria que hacer guidelines flat ultra básicos]
-- NO usar bastrap para BA, hacer la versión optimizada, y todo de nuevo en css...
-- Nico = SAAS BASTRAP ahora<<<<, lo que hay que terminar es buenos aires!
-
-
-
-
-
-
-
-* QUEUE *********************************************************************************************
-
-- DRAWER menú
-
-
-
-- pagina nota > embed twitter
-
-- contenido excepcional [VER]
-	http://redmine.buenosaires.gob.ar/projects/dgid/wiki/Contenido_excepcional
-
-- modal carousel no anda bien
-
-- hover y delay para megamenu
-	http://jsfiddle.net/azhagu/6vYr2/2/
-	http://cameronspear.com/demos/bootstrap-hover-dropdown/
-	http://community.sitepoint.com/t/delay-on-mega-menu/59017/5
-	https://github.com/kamens/jQuery-menu-aim
-
-- aplicativo con validacion js y cositas
-	autoscroll al hacer click?
-
-- nav mobile para header, footer y sidebar en pag de libro.... [drawer? colapsable todo? no colapsable pag de libro? mmm?
-	drawer navigation [trunk.js?]
-	todo desplegado
-
-
-
-- Ejemplo back-end
-- Agregar manual de marca con recursos
+BASTRAP PABLO
+- REPASAR QUE PONGO en estilos y qué en componentes....
+- Código sin colores, y real, ya fue
 - BS usar clases de contexto + colores? danger + red, etc
+- cosas de buenosaires en bastrap componentes ba?
+	bordes en panels? ver las tarjetitas ya aplicadas vs buenos aires no border no panel
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -178,39 +47,74 @@ FLASHEADAS:
 
 * LATER *********************************************************************************************
 
-- APRENDER y pasar a SASS
-
-- UI kits
-
+- la posta es hacer varios templates para que la gente use no de cero
+- hacer guía de uso bien [explicar usos de cada elemento]
+- Agregar manual de marca con recursos
 - DOCS poner indice en comentarios css
-
-- COMENTAR descriptivamente
-
-- no hacerse el boludo y pasar todo a saas/less
-
-- BA > pagina con todas las redes sociales fanpages etc de areas todo
-
-- BA > proponer resumen de IA > muchas cosas deben ser notas/novedades [ver]
-
-- Lazy load
-
-- HACER listado de elementos
-
-- REPASAR QUE PONGO en estilos y qué en componentes....
-
-- Documentar BIEN [explicar usos]
-
-- probar sarmiento notebook!
-
+- UI kits
+- APRENDER y pasar a SASS
 - BS boton copy!
-
-- deshabilitar animaciones de javascript?
-
+- Ejemplo back-end
 
 
 
 
 
+
+
+
+* 4.0 *********************************************************************************************
+
+- main nav desplegable guardar página heart favorito
+- descargas diseño replantear + posicion dentro de nota
+- english
+- DRAWER menú
+- nav mobile para header, footer y sidebar en pag de libro.... [drawer? colapsable todo? no colapsable pag de libro? mmm?
+	drawer navigation [trunk.js?]
+	todo desplegado
+- aplicativo [nuevo] con validacion js y cositas
+	autoscroll al hacer click?
+- pagina nota > embed twitter
+- elemento para la sidebar onda mini-banner con foto para enlazar a flickr o a lo que sea.
+- widgets faltantes
+	area radio player
+	flickr
+- contenido excepcional [VER]
+	http://redmine.buenosaires.gob.ar/projects/dgid/wiki/Contenido_excepcional
+
+
+
+
+
+
+
+* TRASH *********************************************************************************************
+
+MINDMAP fixes
+- primero section luego .list-group-content [cambiar nombre? siempre están al lado de list-group....]
+- buscar .list-group-multi y hacer algo al respecto................
+- hacer menos tipos de página? [fusionar por ejemplo ba-destacado y ba-emergencia?]
+	capaz que existan para el <main> pero que para el <body> existan unas clases más generales?
+- Redes Sociales
+	http://www.buenosaires.gob.ar/social
+FLASHEADAS:
+- Baid progressive disclosure y gamification motivation
+	http://wrapbootstrap.com/preview/WB0P4TG24
+	http://www.google.com/landing/now/
+	http://www.dtelepathy.com/blog/design/progressive-reduction-evolving-the-experience-for-your-most-frequent-users
+- hover y delay para megamenu
+	http://jsfiddle.net/azhagu/6vYr2/2/
+	http://cameronspear.com/demos/bootstrap-hover-dropdown/
+	http://community.sitepoint.com/t/delay-on-mega-menu/59017/5
+	https://github.com/kamens/jQuery-menu-aim
+- BA > proponer resumen de IA > muchas cosas deben ser notas/novedades [ver]
+- Lazy load
+- fav sólo si estás loggeado
+http://alistapart.com/article/css-audits-taking-stock-of-your-code
+http://wave.webaim.org/report#/http%3A%2F%2Fgcba.github.io%2FBAstrap%2Fbuenosaires%2Fshow.html
+http://achecker.ca/checker/index.php
+http://jekyllrb.com/
+http://gcba.github.io/guiaux/
 
 
 

@@ -856,7 +856,7 @@ a.list-group-item-danger:hover,
 
 /* nav tabs */
 
-.nav a {
+.nav-tabs a {
   color:#aaa;
 }
 .nav-tabs {
@@ -1226,8 +1226,8 @@ ul.affix-bottom {
 .navbar-default .nav .open>a,
 .navbar-default .nav .open>a:focus,
 .navbar-default .nav .open>a:hover,
-.navbar-default .navbar-brand:focus,
-.navbar-default .navbar-brand:hover,
+.navbar-default a.navbar-brand:focus,
+.navbar-default a.navbar-brand:hover,
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:focus,
 .navbar-default .navbar-nav > .active > a:hover {
