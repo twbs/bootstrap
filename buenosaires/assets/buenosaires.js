@@ -18,7 +18,6 @@ $('.row-modalcarousel > a').each(function(i) {
 $('#modalCarousel').carousel({ interval:false });
 $('.row-modalcarousel > a').click(function(event){
     var index = parseInt($(this).index());
-    console.log(index);
     $('#carouselModal').modal('show');
     $('#modalCarousel').carousel(index);
     event.preventDefault();
@@ -47,4 +46,7 @@ $('.widget-embed').click(function () {
 });
 
 
+/* Tooltips */
+
+$('[data-toggle="tooltip"]').tooltip();
 
