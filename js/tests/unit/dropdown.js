@@ -265,4 +265,25 @@ $(function () {
     $dropdown.click()
   })
 
+  test('should skip disabled element in a dropdown', function () {
+    var dropdownHTML = '<ul class="tabs">'
+        + '<li class="dropdown">'
+        + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
+        + '<ul class="dropdown-menu" role="menu">'
+        + '<li class="disabled"><a href="#">Disabled link</a></li>'
+        + '<li><a href="#">Another link</a></li>'
+        + '</ul>'
+        + '</li>'
+        + '</ul>'
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+      .click()
+
+    $dropdown.trigger($.Event('keydown', { which: 40 }))
+    $dropdown.trigger($.Event('keydown', { which: 40 }))
+
+    ok(!$(document.activeElement).parent().is('.disabled'), '.disabled is not focused')
+  })
 })
