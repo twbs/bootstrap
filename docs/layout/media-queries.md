@@ -32,7 +32,7 @@ These media queries are available via Sass mixins:
 @include media-breakpoint-up(sm) { ... }
 @include media-breakpoint-up(md) { ... }
 @include media-breakpoint-up(lg) { ... }
-@include media-breakpoint-up(lxl) { ... }
+@include media-breakpoint-up(xl) { ... }
 
 // Example usage:
 @include media-breakpoint-up(sm) {
@@ -66,5 +66,5 @@ These media queries are available via Sass mixins:
 @include media-breakpoint-down(sm) { ... }
 @include media-breakpoint-down(md) { ... }
 @include media-breakpoint-down(lg) { ... }
-@include media-breakpoint-down(lxl) { ... }
+@include media-breakpoint-down(xl) { ... }
 {% endhighlight %}
