@@ -2037,6 +2037,7 @@ fieldset[disabled] .btn {
   border-color: #5b5b5b;
 }
 .btn-default:hover,
+.btn-default.hover,
 .btn-default:focus,
 .btn-default:active,
 .btn-default.active,
@@ -2056,6 +2057,9 @@ fieldset[disabled] .btn-default,
 .btn-default.disabled:hover,
 .btn-default[disabled]:hover,
 fieldset[disabled] .btn-default:hover,
+.btn-default.disabled.hover,
+.btn-default[disabled].hover,
+fieldset[disabled] .btn-default.hover,
 .btn-default.disabled:focus,
 .btn-default[disabled]:focus,
 fieldset[disabled] .btn-default:focus,
@@ -2078,6 +2082,7 @@ fieldset[disabled] .btn-default.active {
   border-color: #181818;
 }
 .btn-primary:hover,
+.btn-primary.hover,
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active,
@@ -2097,6 +2102,9 @@ fieldset[disabled] .btn-primary,
 .btn-primary.disabled:hover,
 .btn-primary[disabled]:hover,
 fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled.hover,
+.btn-primary[disabled].hover,
+fieldset[disabled] .btn-primary.hover,
 .btn-primary.disabled:focus,
 .btn-primary[disabled]:focus,
 fieldset[disabled] .btn-primary:focus,
@@ -2119,6 +2127,7 @@ fieldset[disabled] .btn-primary.active {
   border-color: #6f9848;
 }
 .btn-success:hover,
+.btn-success.hover,
 .btn-success:focus,
 .btn-success:active,
 .btn-success.active,
@@ -2138,6 +2147,9 @@ fieldset[disabled] .btn-success,
 .btn-success.disabled:hover,
 .btn-success[disabled]:hover,
 fieldset[disabled] .btn-success:hover,
+.btn-success.disabled.hover,
+.btn-success[disabled].hover,
+fieldset[disabled] .btn-success.hover,
 .btn-success.disabled:focus,
 .btn-success[disabled]:focus,
 fieldset[disabled] .btn-success:focus,
@@ -2160,6 +2172,7 @@ fieldset[disabled] .btn-success.active {
   border-color: #476075;
 }
 .btn-info:hover,
+.btn-info.hover,
 .btn-info:focus,
 .btn-info:active,
 .btn-info.active,
@@ -2179,6 +2192,9 @@ fieldset[disabled] .btn-info,
 .btn-info.disabled:hover,
 .btn-info[disabled]:hover,
 fieldset[disabled] .btn-info:hover,
+.btn-info.disabled.hover,
+.btn-info[disabled].hover,
+fieldset[disabled] .btn-info.hover,
 .btn-info.disabled:focus,
 .btn-info[disabled]:focus,
 fieldset[disabled] .btn-info:focus,
@@ -2201,6 +2217,7 @@ fieldset[disabled] .btn-info.active {
   border-color: #cda425;
 }
 .btn-warning:hover,
+.btn-warning.hover,
 .btn-warning:focus,
 .btn-warning:active,
 .btn-warning.active,
@@ -2220,6 +2237,9 @@ fieldset[disabled] .btn-warning,
 .btn-warning.disabled:hover,
 .btn-warning[disabled]:hover,
 fieldset[disabled] .btn-warning:hover,
+.btn-warning.disabled.hover,
+.btn-warning[disabled].hover,
+fieldset[disabled] .btn-warning.hover,
 .btn-warning.disabled:focus,
 .btn-warning[disabled]:focus,
 fieldset[disabled] .btn-warning:focus,
@@ -2242,6 +2262,7 @@ fieldset[disabled] .btn-warning.active {
   border-color: #98484d;
 }
 .btn-danger:hover,
+.btn-danger.hover,
 .btn-danger:focus,
 .btn-danger:active,
 .btn-danger.active,
@@ -2261,6 +2282,9 @@ fieldset[disabled] .btn-danger,
 .btn-danger.disabled:hover,
 .btn-danger[disabled]:hover,
 fieldset[disabled] .btn-danger:hover,
+.btn-danger.disabled.hover,
+.btn-danger[disabled].hover,
+fieldset[disabled] .btn-danger.hover,
 .btn-danger.disabled:focus,
 .btn-danger[disabled]:focus,
 fieldset[disabled] .btn-danger:focus,
@@ -2293,11 +2317,13 @@ fieldset[disabled] .btn-link {
 }
 .btn-link,
 .btn-link:hover,
+.btn-link.hover,
 .btn-link:focus,
 .btn-link:active {
   border-color: transparent;
 }
 .btn-link:hover,
+.btn-link.hover,
 .btn-link:focus {
   color: #bb4924;
   text-decoration: underline;
@@ -2305,6 +2331,8 @@ fieldset[disabled] .btn-link {
 }
 .btn-link[disabled]:hover,
 fieldset[disabled] .btn-link:hover,
+.btn-link[disabled].hover,
+fieldset[disabled] .btn-link.hover,
 .btn-link[disabled]:focus,
 fieldset[disabled] .btn-link:focus {
   color: #909090;
@@ -6732,11 +6760,17 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   font-size: 12px;
 }
 .btn-primary:hover,
+.btn-primary.hover,
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
   background-color: #bb4924;
   border-color: #88351a;
+}
+.btn.disabled,
+.btn[disabled],
+fieldset[disabled] .btn {
+  color: #cccccc;
 }
 /*# sourceMappingURL=bootstrap-manta2015.css.map */

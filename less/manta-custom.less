@@ -617,6 +617,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
 //hover should use the brick color on this one
 .btn-primary {
   &:hover,
+  &.hover,
   &:focus,
   &:active,
   &.active,
@@ -625,3 +626,11 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
         border-color: darken(@warmMiddark, 12%);
   }
 }
+.btn {
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    color: @neutralLight;
+  }
+}
+
