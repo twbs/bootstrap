@@ -158,7 +158,7 @@ module.exports = function (grunt) {
         browsers: [
           'Android 2.3',
           'Android >= 4',
-          'Chrome >= 20',
+          'Chrome >= 35',
           'Firefox >= 31',
           'Explorer >= 9',
           'iOS >= 7',
