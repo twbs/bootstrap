@@ -265,9 +265,14 @@ td, th {
   }
 }
 
-*, *:before, *:after {
+html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
 }
 
 html {
@@ -5318,102 +5323,64 @@ a.bg-danger:hover {
   background-color: #e4b9b9;
 }
 
-@-ms-viewport {
-  width: device-width;
-}
-
-.visible-xs-block, .visible-xs-inline, .visible-xs-inline-block, .visible-sm-block, .visible-sm-inline, .visible-sm-inline-block, .visible-md-block, .visible-md-inline, .visible-md-inline-block, .visible-lg-block, .visible-lg-inline, .visible-lg-inline-block {
+.hidden-xs-up {
   display: none !important;
 }
 
 @media (max-width: 33.9em) {
-  .visible-xs-block {
-    display: block !important;
-  }
-}
-
-@media (max-width: 33.9em) {
-  .visible-xs-inline {
-    display: inline !important;
-  }
-}
-
-@media (max-width: 33.9em) {
-  .visible-xs-inline-block {
-    display: inline-block !important;
-  }
-}
-
-@media (min-width: 34em) and (max-width: 47.9em) {
-  .visible-sm-block {
-    display: block !important;
-  }
-}
-
-@media (min-width: 34em) and (max-width: 47.9em) {
-  .visible-sm-inline {
-    display: inline !important;
-  }
-}
-
-@media (min-width: 34em) and (max-width: 47.9em) {
-  .visible-sm-inline-block {
-    display: inline-block !important;
-  }
-}
-
-@media (min-width: 48em) and (max-width: 61.9em) {
-  .visible-md-block {
-    display: block !important;
-  }
-}
-
-@media (min-width: 48em) and (max-width: 61.9em) {
-  .visible-md-inline {
-    display: inline !important;
-  }
-}
-
-@media (min-width: 48em) and (max-width: 61.9em) {
-  .visible-md-inline-block {
-    display: inline-block !important;
-  }
-}
-
-@media (min-width: 62em) {
-  .visible-lg-block {
-    display: block !important;
-  }
-}
-
-@media (min-width: 62em) {
-  .visible-lg-inline {
-    display: inline !important;
-  }
-}
-
-@media (min-width: 62em) {
-  .visible-lg-inline-block {
-    display: inline-block !important;
-  }
-}
-
-@media (min-width: 34em) and (max-width: 47.9em) {
-  .hidden-sm {
+  .hidden-xs-down {
     display: none !important;
   }
 }
 
-@media (min-width: 48em) and (max-width: 61.9em) {
-  .hidden-md {
+@media (min-width: 34em) {
+  .hidden-sm-up {
+    display: none !important;
+  }
+}
+
+@media (max-width: 47.9em) {
+  .hidden-sm-down {
+    display: none !important;
+  }
+}
+
+@media (min-width: 48em) {
+  .hidden-md-up {
+    display: none !important;
+  }
+}
+
+@media (max-width: 61.9em) {
+  .hidden-md-down {
     display: none !important;
   }
 }
 
 @media (min-width: 62em) {
-  .hidden-lg {
+  .hidden-lg-up {
     display: none !important;
   }
+}
+
+@media (max-width: 74.9em) {
+  .hidden-lg-down {
+    display: none !important;
+  }
+}
+
+@media (min-width: 75em) {
+  .hidden-xl-up {
+    display: none !important;
+  }
+}
+
+.hidden-xl-down {
+  display: none !important;
+}
+
+@-ms-viewport {
+  width: device-width;
 }
 
 .visible-print-block {
