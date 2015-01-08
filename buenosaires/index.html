@@ -91,7 +91,7 @@
                     </div>
                   </div>
                     <div class="col-md-4 col-menu">
-                      <div class="col-menu-img yamm-img1"></div>
+                      <div class="col-menu-img" style="background-image:url(../docs/nav1.jpg);"></div>
                   </div>
                 </ul>
               </li>
@@ -146,7 +146,7 @@
                     </div>
                   </div>
                     <div class="col-md-4 col-menu">
-                      <div class="col-menu-img yamm-img2"></div>
+                      <div class="col-menu-img" style="background-image:url(../docs/nav2.jpg);"></div>
                   </div>
                 </ul>
               </li>
@@ -191,7 +191,7 @@
                     </div>
                   </div>
                     <div class="col-md-4 col-menu">
-                      <div class="col-menu-img yamm-img3"></div>
+                      <div class="col-menu-img" style="background-image:url(../docs/nav3.jpg);"></div>
                   </div>
                 </ul>
               </li>
@@ -233,7 +233,7 @@
                     </div>
                   </div>
                     <div class="col-md-4 col-menu">
-                      <div class="col-menu-img yamm-img4"></div>
+                      <div class="col-menu-img" style="background-image:url(../docs/nav4.jpg);"></div>
                   </div>
                 </ul>
               </li>
@@ -586,7 +586,12 @@
     <script src="assets/buenosaires.js"></script>
 
 
-
+    <script>
+      $('.nav .dropdown').on('show.bs.dropdown', function(){ 
+        var height = $(this).find('.dropdown-menu').height();
+        $(this).find('.col-menu-img').height( height );
+      })
+    </script>
 
 
 

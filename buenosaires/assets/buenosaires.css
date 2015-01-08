@@ -487,22 +487,6 @@ margin-bottom: 0;
   font-family: "Gotham", Helvetica, Arial, sans-serif;
   color:#333;
 }
-.yamm-img1 {
-  background-image:url(../../docs/nav1.jpg);
-  height:380px;
-}
-.yamm-img2 {
-  background-image:url(../../docs/nav2.jpg);
-  height:425px;
-}
-.yamm-img3 {
-  background-image:url(../../docs/nav3.jpg);
-  height:310px;
-}
-.yamm-img4 {
-  background-image:url(../../docs/nav4.jpg);
-  height:260px;
-}
 
 /* dropdown */
 
