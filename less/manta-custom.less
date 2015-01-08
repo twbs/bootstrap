@@ -28,49 +28,13 @@
 .bg-gray,.bg-gray-hover:hover {
   background-color: @neutralLightest;
 }
-.bg-cool-lightest, .bg-cool-lighter, .bg-cool-midlight, .bg-cool-middark, .bg-cool-dark, .bg-cool-darker,
-.bg-warm-middlight, .bg-warm-middark, .bg-warm-dark,
+.bg-brand-info, .bg-brand-primary, .bg-brand-success, .bg-brand-warning, .bg-brand-danger, .bg-brand, .bg-brand-alt,
 .bg-neutral-middark,
 .bg-neutral-midlight, .bg-neutral-middark, .bg-neutral-darker, .bg-neutral-darkest
 {
   &,.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
     color: @neutralWhite;
   }
-}
-.bg-cool-lightest {
-  background-color: @coolLightest;
-}
-.bg-cool-midlight {
-  background-color: @coolMidlight;
-}
-.bg-cool-middark {
-  background-color: @coolMiddark;
-}
-.bg-cool-dark {
-  background-color: @coolDark;
-}
-.bg-cool-darker {
-  background-color: @coolDarker !important;
-}
-.bg-cool-darkest {
-  background-color: @coolDarkest;
-}
-
-.bg-warm-lighter {
-  background-color: @warmLighter;
-}
-.bg-warm-midlight {
-  background-color: @warmMidlight;
-}
-.bg-warm-middark {
-  background-color: @warmMiddark;
-}
-.bg-warm-dark {
-  background-color: @warmDark;
-}
-
-.bg-natural-middark {
-  background-color: @naturalMiddark;
 }
 
 .bg-neutral-white {
@@ -98,13 +62,6 @@
   background-color: @neutralDarkest;
 }
 
-.bg-error-light {
-  background-color: @errorLight;
-}
-.bg-error-dark {
-  background-color: @errorDark;
-}
-
 .bg-brand-primary {
   background-color: @brand-primary;
 }
@@ -120,6 +77,12 @@
 .bg-brand-danger {
   background-color: @brand-danger;
 }
+.bg-brand {
+  background-color: @brand;
+}
+.bg-brand-alt {
+  background-color: @brand-alt;
+}
 
 // text colors from color pallette
 .text-neutral-white {
@@ -128,14 +91,11 @@
 .text-neutral-light, a.text-neutral-light:hover, a.text-neutral-light:active {
   color: @neutralLight;
 }
-.text-cool-lightest {
-  color:@coolLightest;
+.text-brand {
+  color: @brand;
 }
-.text-cool-darker {
-  color: @coolDarker;
-}
-.text-warm-middark {
-  color: @warmMiddark;
+.text-brand-alt {
+  color: @brand-alt;
 }
 
 .text-manta {
@@ -207,7 +167,6 @@
 
 /*
 .add-info-bar {
-  background-color: @coolLightest;
   padding-top: @padding-base-vertical;
   padding-bottom: @padding-base-vertical;
 }
@@ -614,7 +573,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   font-size: @font-size-small;
 }
 
-//hover should use the brick color on this one
+//hover should use the brand color on this one
 .btn-primary {
   &:hover,
   &.hover,
@@ -622,8 +581,8 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   &:active,
   &.active,
   .open .dropdown-toggle& {
-    background-color: @warmMiddark;
-        border-color: darken(@warmMiddark, 12%);
+    background-color: @brand;
+        border-color: darken(@brand, 12%);
   }
 }
 .btn {

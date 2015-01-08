@@ -15,12 +15,14 @@
 // Brand colors
 // -------------------------
 
-@brand-primary:         @coolDarkest;
-@brand-success:         @naturalMiddark;
-@brand-warning:         @warmMidlight;
-@brand-danger:          @errorDark;
-@brand-info:            @coolMiddark;
-
+@brand-primary:         @gray-darker;
+@brand-success:         #7ca950;
+@brand-warning:         #dab132;
+@brand-danger:          #a95056;
+@brand-info:            #516d85;
+//manta created brand variables
+@brand:                 #bb4924;
+@brand-alt:             #529fba;
 
 // Links
 // -------------------------
@@ -32,10 +34,10 @@
 //** Background color for `<body>`.
 @body-bg:               @neutralLightest;
 //** Global text color on `<body>`.
-@text-color:            @neutralMiddark;
+@text-color:            @gray;
 
 //** Global textual link color.
-@link-color:            @warmMiddark;
+@link-color:            @brand;
 //** Link hover color set via `darken()` function.
 @link-hover-color:      @link-color;
 
@@ -147,7 +149,7 @@
 
 @btn-default-color:              @text-color;
 @btn-default-bg:                 @neutralWhite;
-@btn-default-border:             @neutralMiddark;
+@btn-default-border:             @gray;
 
 @btn-primary-color:              @neutralWhite;
 @btn-primary-bg:                 @brand-primary;
@@ -188,7 +190,7 @@
 //** `<input>` border radius
 @input-border-radius:            @border-radius-base;
 //** Border color for inputs on focus
-@input-border-focus:             @coolMidlight;
+@input-border-focus:             @brand-alt;
 
 //** Placeholder text color
 @input-color-placeholder:        @gray-light;
@@ -242,7 +244,7 @@
 @dropdown-header-color:          @gray-light;
 
 // Note: Deprecated @dropdown-caret-color as of v3.1.0
-@dropdown-caret-color:           @neutralDarkest;
+@dropdown-caret-color:           @gray-darker;
 
 //-- Z-index master list
 //
@@ -358,8 +360,8 @@
 //TODO: new
 @navbar-collapse-max-height:       340px;
 
-@navbar-default-color:             @coolDark;
-@navbar-default-bg:                @coolDarkest;
+@navbar-default-color:             @gray-light;
+@navbar-default-bg:                @brand-primary;
 @navbar-default-border:            darken(@navbar-default-bg, 6.5%);
 
 // Navbar links
@@ -368,7 +370,7 @@
 @navbar-default-link-hover-bg:             transparent;
 @navbar-default-link-active-color:         @neutralLightest;
 @navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
-@navbar-default-link-disabled-color:       @neutralMidlight;
+@navbar-default-link-disabled-color:       @gray-light;
 @navbar-default-link-disabled-bg:          transparent;
 
 // Navbar brand label
@@ -384,28 +386,28 @@
 
 // Inverted navbar
 // Reset inverted navbar basics
-@navbar-inverse-color:                      @neutralWhite; //@gray-light
-@navbar-inverse-bg:                         @coolDark; //#222
+@navbar-inverse-color:                      @neutralWhite;
+@navbar-inverse-bg:                         @gray-light;
 @navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
 
 // Inverted navbar links
-@navbar-inverse-link-color:                 @neutralWhite; //@gray-light
+@navbar-inverse-link-color:                 @neutralWhite;
 @navbar-inverse-link-hover-color:           @navbar-inverse-link-color;
 @navbar-inverse-link-hover-bg:              transparent;
 @navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
 @navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%);
-@navbar-inverse-link-disabled-color:        @neutralDarker; //#444
+@navbar-inverse-link-disabled-color:        @neutralDarker;
 @navbar-inverse-link-disabled-bg:           transparent;
 
 // Inverted navbar brand label
 @navbar-inverse-brand-color:                @navbar-inverse-link-color;
-@navbar-inverse-brand-hover-color:          @neutralWhite; //@neutralWhite
+@navbar-inverse-brand-hover-color:          @neutralWhite;
 @navbar-inverse-brand-hover-bg:             transparent;
 
 // Inverted navbar toggle
-@navbar-inverse-toggle-hover-bg:            @neutralDarkest; //#333
+@navbar-inverse-toggle-hover-bg:            @gray-darker;
 @navbar-inverse-toggle-icon-bar-bg:         @neutralWhite;
-@navbar-inverse-toggle-border-color:        @neutralDarkest; //#333
+@navbar-inverse-toggle-border-color:        @gray-darker;
 
 
 //== Navs
@@ -491,20 +493,20 @@
 //
 //## Define colors for form feedback states and, by default, alerts.
 
-@state-success-text:             @brand-success; //#468847
-@state-success-bg:               lighten(@state-success-text, 50%); //#dff0d8
+@state-success-text:             @brand-success;
+@state-success-bg:               lighten(@state-success-text, 35%);
 @state-success-border:           darken(spin(@state-success-bg, -10), 5%);
 
-@state-info-text:                @coolMiddark; //#3a87ad
-@state-info-bg:                  @coolLightest;
+@state-info-text:                @brand-info;
+@state-info-bg:                  lighten(@state-info-text, 42%);
 @state-info-border:              darken(spin(@state-info-bg, -10), 7%);
 
-@state-warning-text:             @warmDark; //#c09853
-@state-warning-bg:               @warmLighter; //#fcf8e3
+@state-warning-text:             @brand-warning;
+@state-warning-bg:               lighten(@state-warning-text, 35%);
 @state-warning-border:           darken(spin(@state-warning-bg, -10), 3%);
 
-@state-danger-text:              @errorDark; //#b94a48
-@state-danger-bg:                @errorLight; //#f2dede
+@state-danger-text:              @brand-danger;
+@state-danger-bg:                lighten(@state-danger-text, 30%);
 @state-danger-border:            darken(spin(@state-danger-bg, -10), 3%);
 
 
@@ -517,7 +519,7 @@
 //** Tooltip text color
 @tooltip-color:               @neutralWhite;
 //** Tooltip background color
-@tooltip-bg:                  @neutralDarkest;
+@tooltip-bg:                  @gray-darker;
 @tooltip-opacity:             .9;
 
 //** Tooltip arrow width
@@ -553,7 +555,6 @@
 @popover-arrow-outer-color:           fadein(@popover-border-color, 5%);
 //** Popover outer arrow fallback color
 @popover-arrow-outer-fallback-color:  darken(@popover-fallback-border-color, 20%);
-//@popover-arrow-outer-fallback-color:  @neutralMiddark; //#999;
 
 
 //== Labels
@@ -596,10 +597,10 @@
 //** Modal content border color
 @modal-content-border-color:                   rgba(0,0,0,.2);
 //** Modal content border color **for IE8**
-@modal-content-fallback-border-color:          @neutralMiddark; //#999
+@modal-content-fallback-border-color:          @gray; //#999
 
 //** Modal backdrop background color
-@modal-backdrop-bg:           @neutralDarkest;
+@modal-backdrop-bg:           @gray-darker;
 //** Modal backdrop opacity
 @modal-backdrop-opacity:      .5;
 //** Modal header border color
@@ -681,7 +682,7 @@
 @list-group-active-text-color:  lighten(@list-group-active-bg, 40%);
 
 @list-group-link-color:          @neutralDarker; //#555
-@list-group-link-heading-color:  @neutralDarkest; //#333
+@list-group-link-heading-color:  @gray-darker; //#333
 
 
 //== Panels
@@ -696,8 +697,8 @@
 @panel-footer-bg:             @neutralLightest;
 
 @panel-default-text:          @navbar-inverse-color; //@neutralWhite
-@panel-default-border:        none; //@coolDark; //@neutralLighter
-@panel-default-heading-bg:    @coolDarker; //@coolDark
+@panel-default-border:        none;
+@panel-default-heading-bg:    @gray;
 
 @panel-primary-text:          @neutralWhite; //@neutralWhite
 @panel-primary-border:        @brand-primary;
@@ -711,9 +712,9 @@
 @panel-info-border:           @state-info-border;
 @panel-info-heading-bg:       @state-info-bg;
 
-@panel-warning-text:          @neutralWhite;
-@panel-warning-border:        @warmDark;
-@panel-warning-heading-bg:    @warmDark;
+@panel-warning-text:          @state-warning-text;
+@panel-warning-border:        @state-warning-border;
+@panel-warning-heading-bg:    @state-warning-bg;
 
 @panel-danger-text:           @state-danger-text;
 @panel-danger-border:         @state-danger-border;
@@ -805,7 +806,7 @@
 //##
 
 @close-font-weight:           bold;
-@close-color:                 @neutralDarkest;
+@close-color:                 @gray-darker;
 @close-text-shadow:           0 1px 0 @neutralWhite;
 
 
@@ -813,7 +814,7 @@
 //
 //##
 
-@code-color:                  @warmDark;
+@code-color:                  @brand-warning;
 @code-bg:                     @neutralLightest;
 
 @kbd-color:                   @neutralWhite;
