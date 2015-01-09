@@ -102,16 +102,6 @@
   browser: >
     Chrome
   summary: >
-    `<input type="password">` sporadically causes bad widths on floated elements.
-  upstream_bug: >
-    Chromium#377346
-  origin: >
-    Bootstrap#13892
-
--
-  browser: >
-    Chrome
-  summary: >
     CSS infinite linear animation with alpha transparency leaks memory.
   upstream_bug: >
     Chromium#429375
