@@ -300,10 +300,10 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5b5b5b', endColorstr='#ff4e4e4e', GradientType=0);
 }
 .panel-primary > .panel-heading {
-  background-image: -webkit-linear-gradient(top, #252525 0%, #181818 100%);
-  background-image: linear-gradient(to bottom, #252525 0%, #181818 100%);
+  background-image: -webkit-linear-gradient(top, #404040 0%, #333333 100%);
+  background-image: linear-gradient(to bottom, #404040 0%, #333333 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff252525', endColorstr='#ff181818', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff404040', endColorstr='#ff333333', GradientType=0);
 }
 .panel-success > .panel-heading {
   background-image: -webkit-linear-gradient(top, #d6e4c7 0%, #c9dcb6 100%);

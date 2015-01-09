@@ -3,7 +3,7 @@
 
 //------------------ variables -----------------------
 
-@well-color:                        @neutralMiddark;
+@well-color:                        @gray-dark;
 @well-border:                       none;
 @well-shadow:                       none;
 @subnavbar-height:                  25px;
@@ -12,54 +12,37 @@
 @well-border-radius:                0;
 @breadcrumb-border-radius:          0;
 
-//@manta-color: #FBB919;
-@manta-color: @neutralMidlight;
-//@twitter-color: #4099FF;
-@twitter-color: @manta-color;
-//@facebook-color: #3B5998;
-@facebook-color: @manta-color;
-//@google-plus-color: #C63D2D;
-@google-plus-color: @manta-color;
-
-
 //------------------  color junk ---------------------
 
 // background colors from color pallette
 .bg-gray,.bg-gray-hover:hover {
-  background-color: @neutralLightest;
+  background-color: @gray-lighter;
 }
 .bg-brand-info, .bg-brand-primary, .bg-brand-success, .bg-brand-warning, .bg-brand-danger, .bg-brand, .bg-brand-alt,
-.bg-neutral-middark,
-.bg-neutral-midlight, .bg-neutral-middark, .bg-neutral-darker, .bg-neutral-darkest
+.bg-gray, .bg-gray-dark, .bg-gray-darker
 {
   &,.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
-    color: @neutralWhite;
+    color: @white;
   }
 }
 
-.bg-neutral-white {
-  background-color: @neutralWhite;
+.bg-white {
+  background-color: @white;
 }
-.bg-neutral-lightest {
-  background-color: @neutralLightest;
+.bg-gray-darker {
+  background-color: @gray-darker;
 }
-.bg-neutral-lighter {
-  background-color: @neutralLighter;
+.bg-gray-dark {
+  background-color: @gray-dark;
 }
-.bg-neutral-light {
-  background-color: @neutralLight;
+.bg-gray {
+  background-color: @gray;
 }
-.bg-neutral-midlight {
-  background-color: @neutralMidlight;
+.bg-gray-light {
+  background-color: @gray-light;
 }
-.bg-neutral-middark {
-  background-color: @neutralMiddark;
-}
-.bg-neutral-darker {
-  background-color: @neutralDarker;
-}
-.bg-neutral-darkest {
-  background-color: @neutralDarkest;
+.bg-gray-lighter {
+  background-color: @gray-lighter;
 }
 
 .bg-brand-primary {
@@ -85,32 +68,46 @@
 }
 
 // text colors from color pallette
-.text-neutral-white {
-  color: @neutralWhite;
+.text-white {
+  &,&:hover,&:active {
+    color: @white;
+  }
 }
-.text-neutral-light, a.text-neutral-light:hover, a.text-neutral-light:active {
-  color: @neutralLight;
+.text-gray-lighter {
+  &,&:hover,&:active {
+    color: @gray-lighter;
+  }
+}
+.text-gray-light {
+  &,&:hover,&:active {
+    color: @gray-light;
+  }
+}
+.text-gray {
+  &,&:hover,&:active {
+    color: @gray;
+  }
+}
+.text-gray-dark {
+  &,&:hover,&:active {
+    color: @gray-dark;
+  }
+}
+.text-gray-darker {
+  &,&:hover,&:active {
+    color: @gray-darker;
+  }
 }
 .text-brand {
-  color: @brand;
+  &,&:hover,&:active {
+    color: @brand;
+  }
 }
 .text-brand-alt {
-  color: @brand-alt;
+  &,&:hover,&:active {
+    color: @brand-alt;
+  }
 }
-
-.text-manta {
-  color: @manta-color;
-}
-.text-twitter {
-  color: @twitter-color;
-}
-.text-facebook {
-  color: @facebook-color;
-}
-.text-google-plus {
-  color: @google-plus-color;
-}
-
 
 .faded {
   .opacity(0.5);
@@ -128,7 +125,7 @@
 
 //------------------  generic  -----------------------
 .container.content {
-  background-color: @neutralWhite;
+  background-color: @white;
   padding-top: (@grid-gutter-width / 2);
 }
 .text-default, a.text-default:hover, a.text-default:active {
@@ -138,16 +135,9 @@
 //----------------- manta footer specific classes-------
 .footer {
   margin-top: @line-height-computed;
-  background-color: @neutralDarker;
-  background-color: @neutralWhite; //old
+  background-color: @gray-darker;
+  background-color: @white; //old
   font-size: @font-size-small;
-  /* new ----
-  color: @neutralMidlight;
-  a {
-    color: @neutralLightest;
-    text-decoration: underline;
-  }
-  ---- */
 }
 
 .footer .nav.navbar-nav > li > a {
@@ -243,7 +233,7 @@ h1.strong,h2.strong,h3.strong,h4.strong,h5.strong,h6.strong,
     > tr {
       > th,
       > td {
-        border-top-color: @neutralWhite;
+        border-top-color: @white;
       }
     }
   }
@@ -470,7 +460,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
 .photocard {
   @transition: all .20s;
   @hover-delay: .15s;
-  @card-text-color: @neutralWhite;
+  @card-text-color: @white;
 
   position: relative;
   overflow: hidden;
@@ -568,7 +558,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
 //.flipcard .front
 
 .text-secondary {
-  color: @gray-darker;
+  color: @brand-primary;
   line-height: 1.2;
   font-size: @font-size-small;
 }
@@ -589,7 +579,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
   &.disabled,
   &[disabled],
   fieldset[disabled] & {
-    color: @neutralLight;
+    color: @gray-light;
   }
 }
 
