@@ -288,13 +288,13 @@ module.exports = function (grunt) {
         files: '<%= jshint.test.src %>',
         tasks: ['jshint:test', 'qunit']
       },
-      less: {
-        files: 'less/**/*.less',
-        tasks: 'less'
+      sass: {
+        files: 'scss/**/*.scss',
+        tasks: 'sass-compile'
       },
       docs: {
-        files: 'docs/assets/less/*.less',
-        tasks: 'less'
+        files: 'docs/assets/scss/*.scss',
+        tasks: 'sass:docs'
       }
     },
 
