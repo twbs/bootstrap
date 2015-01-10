@@ -186,6 +186,6 @@
   summary: >
     `display: block` causes text of temporal `<input>`s to become vertically misaligned
   upstream_bug: >
-    WebKit#139848
+    WebKit#139848, Safari#19434878
   origin: >
     Bootstrap#11266, Bootstrap#13098
