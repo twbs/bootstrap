@@ -156,7 +156,7 @@
   summary: >
     Alpha linear-gradient has dark line at its edge.
   upstream_bug: >
-    WebKit#139803  
+    WebKit#139803, Safari#19434933
   origin: >
     Bootstrap#15205
 
