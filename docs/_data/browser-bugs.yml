@@ -146,7 +146,7 @@
   summary: >
     Small font size when printing webpage with fixed-width `.container`.
   upstream_bug: >
-    WebKit#138192
+    WebKit#138192, Safari#19435018
   origin: >
     Bootstrap#14868
 
