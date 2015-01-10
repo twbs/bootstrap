@@ -6039,10 +6039,6 @@ button.close {
 .icon-manta-logo:before {
   content: "\e647";
 }
-.bg-gray,
-.bg-gray-hover:hover {
-  background-color: #f1f1f1;
-}
 .bg-brand-info,
 .bg-brand-primary,
 .bg-brand-success,
