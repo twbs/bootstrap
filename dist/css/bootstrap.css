@@ -3673,6 +3673,12 @@ tbody.collapse.in {
   float: none;
   width: 1%;
 }
+.btn-group-justified > .btn + .btn,
+.btn-group-justified > .btn-group + .btn,
+.btn-group-justified > .btn + .btn-group > .btn,
+.btn-group-justified > .btn-group + .btn-group > .btn {
+  border-left-width: 0;
+}
 .btn-group-justified > .btn-group .btn {
   width: 100%;
 }
