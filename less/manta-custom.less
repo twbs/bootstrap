@@ -152,15 +152,6 @@
 
 //------------------ END of generic ------------------
 
-/*
-.add-info-bar {
-  padding-top: @padding-base-vertical;
-  padding-bottom: @padding-base-vertical;
-}
-*/
-/*  Shan He's ad-hoc
-*/
-
 .fs-small {
   font-size: @font-size-small;
 }
@@ -276,7 +267,7 @@ ul.nav li.dropdown:hover > .dropdown-onhover {
 //------------------ sub navbar overrides ------------
 
 .navbar.subnav {
-  z-index: @zindex-navbar - 10;
+  z-index: (@zindex-navbar - 10);
   min-height: @subnavbar-height;
   font-size: @font-size-small;
   &.navbar-fixed-top {

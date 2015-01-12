@@ -6299,14 +6299,6 @@ a.text-default:active {
 .footer .navbar-nav > li:last-child > a {
   border-right: none;
 }
-/*
-.add-info-bar {
-  padding-top: @padding-base-vertical;
-  padding-bottom: @padding-base-vertical;
-}
-*/
-/*  Shan He's ad-hoc
-*/
 .fs-small {
   font-size: 12px;
 }
@@ -6430,7 +6422,7 @@ ul.nav li.dropdown:hover > .dropdown-onhover {
   box-shadow: none;
 }
 .navbar.subnav {
-  z-index: 1000 - 10;
+  z-index: 990;
   min-height: 25px;
   font-size: 12px;
 }
