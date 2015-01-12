@@ -19,19 +19,19 @@ exclude:
   - "vendor"
 
 # Custom vars
-current_version:  3.1.1-m5
+current_version:  3.1.1-m6
 repo:             https://github.com/mantacode/bootstrap
 sass_repo:        https://github.com/mantacode/bootstrap-sass
 
 download:
-  source:         https://github.com/mantacode/bootstrap/archive/v3.1.1-m5.zip
-  dist:           https://github.com/mantacode/bootstrap/releases/download/v3.1.1-m5/bootstrap-3.1.1-m5-dist.zip
-  sass:           https://github.com/mantacode/bootstrap-sass/archive/v3.1.1-m5.tar.gz
+  source:         https://github.com/mantacode/bootstrap/archive/v3.1.1-m6.zip
+  dist:           https://github.com/mantacode/bootstrap/releases/download/v3.1.1-m6/bootstrap-3.1.1-m6-dist.zip
+  sass:           https://github.com/mantacode/bootstrap-sass/archive/v3.1.1-m6.tar.gz
 
 blog:             http://blog.getbootstrap.com
 expo:             http://expo.getbootstrap.com
 
 cdn:
-  css:            //netdna.bootstrapcdn.com/bootstrap/3.1.1-m5/css/bootstrap.min.css
-  css_theme:      //netdna.bootstrapcdn.com/bootstrap/3.1.1-m5/css/bootstrap-theme.min.css
-  js:             //netdna.bootstrapcdn.com/bootstrap/3.1.1-m5/js/bootstrap.min.js
+  css:            //netdna.bootstrapcdn.com/bootstrap/3.1.1-m6/css/bootstrap.min.css
+  css_theme:      //netdna.bootstrapcdn.com/bootstrap/3.1.1-m6/css/bootstrap-theme.min.css
+  js:             //netdna.bootstrapcdn.com/bootstrap/3.1.1-m6/js/bootstrap.min.js

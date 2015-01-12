@@ -20,7 +20,7 @@ To get started, check out <http://getbootstrap.com>!
 
 Three quick start options are available:
 
-- [Download the latest release](https://github.com/mantacode/bootstrap/archive/v3.1.1-m5.zip).
+- [Download the latest release](https://github.com/mantacode/bootstrap/archive/v3.1.1-m6.zip).
 - Clone the repo: `git clone https://github.com/mantacode/bootstrap.git`.
 - Install with [Bower](http://bower.io): `bower install manta-bootstrap`.
 
