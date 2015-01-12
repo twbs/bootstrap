@@ -261,7 +261,7 @@ ul.dropdown-menu > li > a.fs-small {
   margin-left: 10px;
 }
 /* dropdowns that show on hover */
-ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
+ul.nav li.dropdown:hover > .dropdown-onhover {
   display: block;
 }
 
@@ -290,37 +290,9 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
       padding-top:    5px;
       padding-bottom: 5px;
     }
-    // Uncollapse the nav
-    @media (min-width: @grid-float-breakpoint) {
-
-      > li > a {
-        padding-top: ((@subnavbar-height - @line-height-computed) / 2);
-        padding-bottom: ((@subnavbar-height - @line-height-computed) / 2);
-      }
-    }
-  }
-}
-//override negative left margin
-.navbar-brand {
-  float: left;
-  padding: @navbar-padding-vertical @navbar-padding-horizontal;
-  font-size: @font-size-large;
-  line-height: @line-height-computed;
-  &:hover,
-  &:focus {
-    text-decoration: none;
-  }
-
-  @media (min-width: @grid-float-breakpoint) {
-    .navbar > .container & {
-      margin-left: 0;
-    }
   }
 }
 
-.navbar-header.col-lg-1{
-  width:12%;
-}
 // Navbar form
 //
 // Extension of the `.form-inline` with some extra flavor for optimum display in
@@ -346,18 +318,6 @@ ul.nav li.dropdown:hover > ul.dropdown-menu.dropdown-onhover {
 
   // Vertically center in expanded, horizontal navbar
   .navbar-vertical-align(@input-height-base);
-
-  // Undo 100% width for pull classes
-  @media (min-width: @grid-float-breakpoint) {
-    display:inline;
-    width: auto;
-    border: 0;
-    margin-left: 0;
-    margin-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    .box-shadow(none);
-  }
 }
 
 
