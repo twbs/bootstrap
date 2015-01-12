@@ -1426,9 +1426,8 @@ h1[id] {
   text-align: center;
   vertical-align: middle;
   font-weight: bold;
-  box-shadow: 10px 10px 5px #888888;
-  -moz-box-shadow: 0px 3px 10px 2px #aaaaaa;
-       box-shadow: 0px 3px 10px 2px #aaaaaa;
+  -moz-box-shadow: 0 3px 10px 2px #aaaaaa;
+       box-shadow: 0 3px 10px 2px #aaaaaa;
 }
 .swatch-hex {
   margin: 10px 0 20px;
