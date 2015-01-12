@@ -9,6 +9,7 @@
   "homepage": "http://mantacode.github.io/bootstrap/",
   "author": "Manta Media, Inc.",
   "scripts": {
+    "pretest": "npm install",
     "test": "grunt test"
   },
   "style": "./dist/css/bootstrap-manta.css",

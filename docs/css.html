@@ -2147,9 +2147,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <div class="bs-docs-section">
   <h1 id="buttons" class="page-header">Buttons</h1>
 
-  <h2 id="buttons-options">Options</h2>
+  <h2 id="buttons-options">Options (and states)</h2>
   <p>Use any of the available button classes to quickly create a styled button.</p>
   <div class="bs-example">
+   <p>
+    <h4>default state</h4>
     <button type="button" class="btn btn-default">Default</button>
     <button type="button" class="btn btn-primary">Primary</button>
     <button type="button" class="btn btn-success">Success</button>
@@ -2157,7 +2159,29 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <button type="button" class="btn btn-warning">Warning</button>
     <button type="button" class="btn btn-danger">Danger</button>
     <button type="button" class="btn btn-link">Link</button>
+   </p>
+   <p>
+    <h4>hover state</h4>
+    <button type="button" class="btn btn-default hover">Default</button>
+    <button type="button" class="btn btn-primary hover">Primary</button>
+    <button type="button" class="btn btn-success hover">Success</button>
+    <button type="button" class="btn btn-info hover">Info</button>
+    <button type="button" class="btn btn-warning hover">Warning</button>
+    <button type="button" class="btn btn-danger hover">Danger</button>
+    <button type="button" class="btn btn-link hover">Link</button>
+   </p>
+   <p>
+    <h4>disabled state</h4>
+    <button type="button" class="btn btn-default disabled">Default</button>
+    <button type="button" class="btn btn-primary disabled">Primary</button>
+    <button type="button" class="btn btn-success disabled">Success</button>
+    <button type="button" class="btn btn-info disabled">Info</button>
+    <button type="button" class="btn btn-warning disabled">Warning</button>
+    <button type="button" class="btn btn-danger disabled">Danger</button>
+    <button type="button" class="btn btn-link disabled">Link</button>
+   </p>
   </div>
+
 {% highlight html %}
 <!-- Standard button -->
 <button type="button" class="btn btn-default">Default</button>
