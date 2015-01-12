@@ -306,7 +306,8 @@ module.exports = function (grunt) {
         reset: true,
         relaxerror: [
           'Bad value X-UA-Compatible for attribute http-equiv on element meta.',
-          'Element img is missing required attribute src.'
+          'Element img is missing required attribute src.',
+          'No p element in scope but a p end tag seen.'
         ]
       },
       files: {
