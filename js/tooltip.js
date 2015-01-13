@@ -288,7 +288,7 @@
 
   Tooltip.prototype.hide = function (callback) {
     var that = this
-    var $tip = this.tip()
+    var $tip = this.$tip || $()
     var e    = $.Event('hide.bs.' + this.type)
 
     function complete() {
@@ -305,7 +305,7 @@
 
     $tip.removeClass('in')
 
-    $.support.transition && this.$tip.hasClass('fade') ?
+    $.support.transition && $tip.hasClass('fade') ?
       $tip
         .one('bsTransitionEnd', complete)
         .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
