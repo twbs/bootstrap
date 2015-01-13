@@ -308,14 +308,16 @@ input[type="checkbox"] {
 // Build on `.form-control` with modifier classes to decrease or increase the
 // height and font-size of form controls.
 //
-// The `.form-group-* form-control` variations are sadly duplicated to avoid the
-// issue documented in https://github.com/twbs/bootstrap/issues/15074.
+// The `.form-group-* form-control`, `.form-group-* form-control-static` 
+// variations are sadly duplicated to avoid the issue documented
+// in https://github.com/twbs/bootstrap/issues/15074.
 
 .input-sm {
   .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
 }
 .form-group-sm {
-  .form-control {
+  .form-control,
+  .form-control-static {
     .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
   }
 }
@@ -324,7 +326,8 @@ input[type="checkbox"] {
   .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
 }
 .form-group-lg {
-  .form-control {
+  .form-control,
+  .form-control-static {
     .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
   }
 }
