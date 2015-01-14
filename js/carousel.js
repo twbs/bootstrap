@@ -59,7 +59,11 @@
 
     this.options.interval
       && !this.paused
-      && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
+      && (this.interval = setInterval(
+        // Make use of Page Visibility API when it's available
+        $.proxy(document.visibilityState ? this.nextWhenVisible : this.next, this),
+        this.options.interval
+      ))
 
     return this
   }
@@ -102,6 +106,15 @@
     this.interval = clearInterval(this.interval)
 
     return this
+  }
+
+  Carousel.prototype.nextWhenVisible = function () {
+    // Don't advance when the page isn't visible to the user.
+    // Saves the browser from doing unnecessary work and gives better UX.
+    // Also works around a Chrome bug: https://github.com/twbs/bootstrap/issues/15298
+    if (!document.hidden) {
+      this.next()
+    }
   }
 
   Carousel.prototype.next = function () {
