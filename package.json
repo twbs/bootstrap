@@ -4,7 +4,7 @@
   "version": "3.3.1",
   "keywords": [
     "css",
-    "less",
+    "sass",
     "mobile-first",
     "responsive",
     "front-end",
@@ -17,7 +17,7 @@
     "test": "grunt test"
   },
   "style": "dist/css/bootstrap.css",
-  "less": "less/bootstrap.less",
+  "sass": "_sass/bootstrap.sass",
   "main": "./dist/js/npm",
   "repository": {
     "type": "git",

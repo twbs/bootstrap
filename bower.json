@@ -5,7 +5,7 @@
   "keywords": [
     "css",
     "js",
-    "less",
+    "sass",
     "mobile-first",
     "responsive",
     "front-end",
@@ -14,7 +14,7 @@
   ],
   "homepage": "http://getbootstrap.com",
   "main": [
-    "less/bootstrap.less",
+    "sass/_bootstrap.scss",
     "dist/css/bootstrap.css",
     "dist/js/bootstrap.js"
   ],
