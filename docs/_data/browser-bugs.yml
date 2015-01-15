@@ -110,6 +110,16 @@
 
 -
   browser: >
+    Chrome (Windows)
+  summary: >
+    Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
+  upstream_bug: >
+    Chromium#449180
+  origin: >
+    Bootstrap#15298
+
+-
+  browser: >
     Safari (OS X)
   summary: >
     Scrollbar clipped in `select[multiple]` with padding.
