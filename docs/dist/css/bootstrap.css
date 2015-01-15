@@ -1,6 +1,6 @@
 /*!
  * Bootstrap v3.3.1 (http://getbootstrap.com)
- * Copyright 2011-2014 Twitter, Inc.
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -900,12 +900,6 @@ th {
 }
 .glyphicon-paste:before {
   content: "\e206";
-}
-.glyphicon-door:before {
-  content: "\1f6aa";
-}
-.glyphicon-key:before {
-  content: "\1f511";
 }
 .glyphicon-alert:before {
   content: "\e209";
