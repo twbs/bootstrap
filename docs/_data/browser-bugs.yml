@@ -110,7 +110,7 @@
 
 -
   browser: >
-    Chrome (Windows)
+    Chrome (Windows & Linux)
   summary: >
     Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
   upstream_bug: >
