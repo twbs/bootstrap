@@ -1,5 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="es">
+<!--[if lt IE 7]><html lang="es" class="lt-ie10 lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="es" class="lt-ie10 lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="es" class="lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]><html lang="es" class="lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="es"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,17 +14,89 @@
     <link rel="shortcut icon" href="../bastrap3/favicon.ico">
     <link rel="apple-touch-icon-precomposed" href="../bastrap3/favicon-mobile.png">
     <style type="text/css">
-      * {margin:0;padding:0;}
-      html, body {background-color:#111;text-align:center;color:#fff;text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);height:100%;}
-      h1 {font-family: "Gotham", Helvetica, Arial, sans-serif;font-size: 48px;line-height: 48px;margin-bottom:24px;}
-      p {font-family: "OpenSans", Helvetica, Arial, sans-serif;font-size: 24px;line-height: 32px;}
-      header {background-image: linear-gradient(to bottom, #ffd300 0%, #ffbc00 100%);font-size:0;height:60px;padding-top:8px;}
-      header a {display:block;width: 272px;height: 48px;background-image: url(../bastrap3/bac-header.png);background-image: url(../bastrap3/bac-header.svg), none;background-size:contain;background-repeat:no-repeat;margin:0 auto;}
-      section {background-image: url(../docs/misc.jpg);background-repeat:no-repeat;background-size:cover;background-position: center center;height: 50%;padding-top:10%;}
-      .container {max-width:1170px;margin:0 auto;padding:0 30px;}
-      .status-icon {display:block;width: 112px;height: 112px;background-size:contain;background-repeat:no-repeat;margin:0 auto 16px auto;}
-      .status-icon-no {background-image: url(assets/misc/icon-no.png);background-image: url(assets/misc/icon-no.svg), none;}
+      * {
+        margin:0;
+        padding:0;
+      }
+      html, body {
+        background-color:#111;
+        text-align:center;
+        color:#fff;
+        text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+        height:100%;
+      }
+      h1 {
+        font-family: "Gotham", Helvetica, Arial, sans-serif;
+        font-size: 48px;
+        line-height: 48px;
+        margin-bottom:24px;
+      }
+      p {
+        font-family: "OpenSans", Helvetica, Arial, sans-serif;
+        font-size: 24px;
+        line-height: 32px;
+      }
+      header {
+        background-image: linear-gradient(to bottom, #ffd300 0%, #ffbc00 100%);
+        font-size:0;
+        height:60px;
+        padding-top:8px;
+       position:relative;
+       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd300', endColorstr='#ffbc00',GradientType=0 ); /* IE6-9 */
+     }
+      header a {
+        display:block;
+        width: 272px;
+        height: 48px;
+        background-image: url(../bastrap3/bac-header.png);
+        background-image: url(../bastrap3/bac-header.svg), none;
+        background-size:contain;
+        background-repeat:no-repeat;
+        margin:0 auto;
+        position: relative;
+        -ms-behavior: url(../bastrap3/backgroundsize.min.htc);
+      }
+      section {
+        background-image: url(../docs/misc.jpg);
+        background-repeat:no-repeat;
+        background-size:cover;
+        background-position: center center;
+        /*height: 50%;*/
+        padding:10% 0;
+        position:relative;
+        -ms-behavior: url(../bastrap3/backgroundsize.min.htc);
+      }
+      .container {
+        max-width:1170px;
+        margin:0 auto;
+        padding:0 30px;
+      }
+      .status-icon {
+        display:block;
+        width: 112px;
+        height: 112px;
+        background-size:contain;
+        background-repeat:no-repeat;
+        margin:0 auto 16px auto;
+        position:relative;
+        -ms-behavior: url(../bastrap3/backgroundsize.min.htc);
+      }
+      .status-icon-no {
+        background-image: url(assets/misc/icon-no.png);
+        background-image: url(assets/misc/icon-no.svg), none;
+      }
+      @media (max-width:540px) {
+        h1 {
+          font-size:32px;
+          line-height:32px;
+        }
+      }
     </style>
+
+    <!--[if lt IE 9]>
+      <script src="../bastrap3/html5shiv.min.js"></script>
+      <script src="../bastrap3/respond.min.js"></script>
+    <![endif]-->
   </head>
   <body>
     <header>

@@ -1,5 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="es">
+<!--[if lt IE 7]><html lang="es" class="lt-ie10 lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="es" class="lt-ie10 lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="es" class="lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]><html lang="es" class="lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="es"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,9 +16,22 @@
     <link rel="stylesheet" href="../bastrap3/bootstrap.min.css">
     <link rel="stylesheet" href="../bastrap3/bastrap.css">
     <link rel="stylesheet" href="assets/buenosaires.css">
-    <!-- [if lt IE 9]><script src="../bastrap3/ba-modernizr.js"></script><![endif] -->
+    <!--[if lt IE 9]>
+      <script src="../bastrap3/html5shiv.min.js"></script>
+      <script src="../bastrap3/respond.min.js"></script>
+    <![endif]-->
   </head>
   <body class="ba-aplicativo">
+    <noscript class="how-to">
+      <a class="alert-spot alert-spot-danger text-center" href="http://www.enable-javascript.com/es/" target="_blank">
+        Para utilizar las funcionalidades completas de este sitio es necesario tener
+        JavaScript habilitado. Aquí están las instrucciones para habilitar JavaScript en tu navegador web.
+      </a>
+    </noscript>
+    <a class="lt-ie9-alert alert-spot alert-spot-danger text-center" href="http://browsehappy.com/" target="_blank">
+      Tu navegador no está actualizado. Tiene conocidas fallos de seguridad y podría no mostrar todas las características de este y otros sitios web.
+      Aprendé cómo podes actualizarlo.
+    </a>
     <header class="navbar navbar-primary navbar-top yamm">
       <div class="ba-navbar-top">
         <div class="container">

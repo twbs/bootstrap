@@ -1,5 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="es">
+<!--[if lt IE 7]><html lang="es" class="lt-ie10 lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="es" class="lt-ie10 lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="es" class="lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]><html lang="es" class="lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="es"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,9 +16,22 @@
     <link rel="stylesheet" href="../bastrap3/bootstrap.min.css">
     <link rel="stylesheet" href="../bastrap3/bastrap.css">
     <link rel="stylesheet" href="assets/buenosaires.css">
-    <!-- [if lt IE 9]><script src="../bastrap3/ba-modernizr.js"></script><![endif] -->
+    <!--[if lt IE 9]>
+      <script src="../bastrap3/html5shiv.min.js"></script>
+      <script src="../bastrap3/respond.min.js"></script>
+    <![endif]-->
   </head>
   <body class="ba-miba">
+    <noscript class="how-to">
+      <a class="alert-spot alert-spot-danger text-center" href="http://www.enable-javascript.com/es/" target="_blank">
+        Para utilizar las funcionalidades completas de este sitio es necesario tener
+        JavaScript habilitado. Aquí están las instrucciones para habilitar JavaScript en tu navegador web.
+      </a>
+    </noscript>
+    <a class="lt-ie9-alert alert-spot alert-spot-danger text-center" href="http://browsehappy.com/" target="_blank">
+      Tu navegador no está actualizado. Tiene conocidas fallos de seguridad y podría no mostrar todas las características de este y otros sitios web.
+      Aprendé cómo podes actualizarlo.
+    </a>
     <header class="navbar navbar-primary navbar-top yamm">
       <div class="ba-navbar-top">
         <div class="container">
@@ -124,113 +141,117 @@
             </section>
             <section>
               <h2>Mis trámites</h2>
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Trámite</th>
-                    <th>Tipo</th>
-                    <th width="100">Estado</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><a href="#" target="_blank">Consulta y pago de infracciones online</a></td>
-                    <td>
-                      <span class="label label-default">Reclamo</span>
-                      <span class="label label-default">Arbolado</span>
-                    </td>
-                    <td>
-                      <span class="label label-warning">Notificado</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="#" target="_blank">Libre deuda de infractores</a></td>
-                    <td>
-                      <span class="label label-default">Trámite</span>
-                      <span class="label label-default">Registro Civil</span>
-                    </td>
-                    <td>
-                      <span class="label label-success">Entregado</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="#" target="_blank">Consulta y pago de infracciones online</a></td>
-                    <td>
-                      <span class="label label-default">Reclamo</span>
-                      <span class="label label-default">Aceras</span>
-                    </td>
-                    <td>
-                      <span class="label label-danger">Denegado</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="#" target="_blank">Libre deuda de infractores</a></td>
-                    <td>
-                      <span class="label label-default">Reclamo</span>
-                      <span class="label label-default">Alumbrado</span>
-                    </td>
-                    <td>
-                      <span class="label label-success">Entregado</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Trámite</th>
+                      <th>Tipo</th>
+                      <th width="100">Estado</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><a href="#" target="_blank">Consulta y pago de infracciones online</a></td>
+                      <td>
+                        <span class="label label-default">Reclamo</span>
+                        <span class="label label-default">Arbolado</span>
+                      </td>
+                      <td>
+                        <span class="label label-warning">Notificado</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><a href="#" target="_blank">Libre deuda de infractores</a></td>
+                      <td>
+                        <span class="label label-default">Trámite</span>
+                        <span class="label label-default">Registro Civil</span>
+                      </td>
+                      <td>
+                        <span class="label label-success">Entregado</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><a href="#" target="_blank">Consulta y pago de infracciones online</a></td>
+                      <td>
+                        <span class="label label-default">Reclamo</span>
+                        <span class="label label-default">Aceras</span>
+                      </td>
+                      <td>
+                        <span class="label label-danger">Denegado</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><a href="#" target="_blank">Libre deuda de infractores</a></td>
+                      <td>
+                        <span class="label label-default">Reclamo</span>
+                        <span class="label label-default">Alumbrado</span>
+                      </td>
+                      <td>
+                        <span class="label label-success">Entregado</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
               <button class="btn btn-default btn-lg btn-block">Ver todos los trámites</button>
             </section>
             <section>
               <h2>Mis turnos</h2>
               <p class="small text-muted">No tenés turnos solicitados para los próximos 5 días.</p>
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Turno</th>
-                    <th>Tipo</th>
-                    <th width="100">Estado</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><a href="#" target="_blank">Turno 1</a></td>
-                    <td>
-                      <span class="label label-default">Reclamo</span>
-                      <span class="label label-default">Arbolado</span>
-                    </td>
-                    <td>
-                      <span class="label label-warning">Notificado</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="#" target="_blank">Turno 2</a></td>
-                    <td>
-                      <span class="label label-default">Trámite</span>
-                      <span class="label label-default">Registro Civil</span>
-                    </td>
-                    <td>
-                      <span class="label label-success">Entregado</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="#" target="_blank">Turno 3</a></td>
-                    <td>
-                      <span class="label label-default">Reclamo</span>
-                      <span class="label label-default">Aceras</span>
-                    </td>
-                    <td>
-                      <span class="label label-danger">Denegado</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="#" target="_blank">Turno 4</a></td>
-                    <td>
-                      <span class="label label-default">Reclamo</span>
-                      <span class="label label-default">Alumbrado</span>
-                    </td>
-                    <td>
-                      <span class="label label-success">Entregado</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Turno</th>
+                      <th>Tipo</th>
+                      <th width="100">Estado</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><a href="#" target="_blank">Turno 1</a></td>
+                      <td>
+                        <span class="label label-default">Reclamo</span>
+                        <span class="label label-default">Arbolado</span>
+                      </td>
+                      <td>
+                        <span class="label label-warning">Notificado</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><a href="#" target="_blank">Turno 2</a></td>
+                      <td>
+                        <span class="label label-default">Trámite</span>
+                        <span class="label label-default">Registro Civil</span>
+                      </td>
+                      <td>
+                        <span class="label label-success">Entregado</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><a href="#" target="_blank">Turno 3</a></td>
+                      <td>
+                        <span class="label label-default">Reclamo</span>
+                        <span class="label label-default">Aceras</span>
+                      </td>
+                      <td>
+                        <span class="label label-danger">Denegado</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><a href="#" target="_blank">Turno 4</a></td>
+                      <td>
+                        <span class="label label-default">Reclamo</span>
+                        <span class="label label-default">Alumbrado</span>
+                      </td>
+                      <td>
+                        <span class="label label-success">Entregado</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
               <div class="row well">
                 <div class="col-md-4">
                   <h4>Turnos generales</h4>
