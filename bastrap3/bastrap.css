@@ -2033,8 +2033,8 @@ ul.affix-bottom {
     display: none; } }
 .carousel .item {
   opacity: 0;
-  -webkit-transition: opacity 1.5s;
-  transition: opacity 1.5s; }
+  -webkit-transition: opacity .6s;
+  transition: opacity .6s; }
 
 .carousel .active {
   opacity: 1; }
