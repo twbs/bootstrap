@@ -2706,6 +2706,12 @@ textarea.form-group-sm .form-control,
 select[multiple].form-group-sm .form-control {
   height: auto;
 }
+.form-group-sm .form-control-static {
+  height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+}
 .input-lg {
   height: 46px;
   padding: 10px 16px;
@@ -2735,6 +2741,12 @@ select.form-group-lg .form-control {
 textarea.form-group-lg .form-control,
 select[multiple].form-group-lg .form-control {
   height: auto;
+}
+.form-group-lg .form-control-static {
+  height: 46px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
 }
 .has-feedback {
   position: relative;

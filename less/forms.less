@@ -318,6 +318,12 @@ input[type="checkbox"] {
   .form-control {
     .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
   }
+  .form-control-static {
+    height: @input-height-small;
+    padding: @padding-small-vertical @padding-small-horizontal;
+    font-size: @font-size-small;
+    line-height: @line-height-small;
+  }
 }
 
 .input-lg {
@@ -326,6 +332,12 @@ input[type="checkbox"] {
 .form-group-lg {
   .form-control {
     .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
+  }
+  .form-control-static {
+    height: @input-height-large;
+    padding: @padding-large-vertical @padding-large-horizontal;
+    font-size: @font-size-large;
+    line-height: @line-height-large;
   }
 }
 
