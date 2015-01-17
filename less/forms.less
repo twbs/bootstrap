@@ -147,7 +147,9 @@ output {
   }
 
   // Reset height for `textarea`s
-  textarea& {
+  textarea&,
+  .form-group-sm textarea&,
+  .form-group-lg textarea& {
     height: auto;
   }
 }
