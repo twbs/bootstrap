@@ -17,7 +17,7 @@
     "test": "grunt test"
   },
   "style": "dist/css/bootstrap.css",
-  "sass": "scss/_bootstrap.scss",
+  "sass": "scss/bootstrap.scss",
   "main": "./dist/js/npm",
   "repository": {
     "type": "git",

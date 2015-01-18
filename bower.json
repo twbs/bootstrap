@@ -14,7 +14,7 @@
   ],
   "homepage": "http://getbootstrap.com",
   "main": [
-    "scss/_bootstrap.scss",
+    "scss/bootstrap.scss",
     "dist/css/bootstrap.css",
     "dist/js/bootstrap.js"
   ],
