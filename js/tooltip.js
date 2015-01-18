@@ -39,6 +39,7 @@
     delay: 0,
     html: false,
     container: false,
+    jsOnly: false,
     viewport: {
       selector: 'body',
       padding: 0
@@ -317,9 +318,11 @@
   }
 
   Tooltip.prototype.fixTitle = function () {
-    var $e = this.$element
-    if ($e.attr('title') || typeof ($e.attr('data-original-title')) != 'string') {
-      $e.attr('data-original-title', $e.attr('title') || '').attr('title', '')
+    if (this.options.jsOnly === false) {
+      var $e = this.$element
+      if ($e.attr('title') || typeof ($e.attr('data-original-title')) != 'string') {
+        $e.attr('data-original-title', $e.attr('title') || '').attr('title', '')
+      }
     }
   }
 
