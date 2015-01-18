@@ -38,7 +38,7 @@ $(function () {
   <h2 id="popovers-examples">Examples</h2>
   <h3>Static popover</h3>
   <p>Four options are available: top, right, bottom, and left aligned.</p>
-  <div class="bs-example bs-example-popover">
+  <div class="bs-example bs-example-popover" data-example-id="static-popovers">
     <div class="popover top">
       <div class="arrow"></div>
       <h3 class="popover-title">Popover top</h3>
@@ -252,20 +252,21 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
   <p>Initializes popovers for an element collection.</p>
 
   <h4>.popover('show')</h4>
-  <p>Reveals an element's popover. Popovers whose both title and content are zero-length are never displayed.</p>
+  <p>Reveals an element's popover. <strong>Returns to the caller before the popover has actually been shown</strong> (i.e. before the <code>shown.bs.popover</code> event occurs). This is considered a "manual" triggering of the popover. Popovers whose both title and content are zero-length are never displayed.</p>
   {% highlight js %}$('#element').popover('show'){% endhighlight %}
 
   <h4>.popover('hide')</h4>
-  <p>Hides an element's popover.</p>
+  <p>Hides an element's popover. <strong>Returns to the caller before the popover has actually been hidden</strong> (i.e. before the <code>hidden.bs.popover</code> event occurs). This is considered a "manual" triggering of the popover.</p>
   {% highlight js %}$('#element').popover('hide'){% endhighlight %}
 
   <h4>.popover('toggle')</h4>
-  <p>Toggles an element's popover.</p>
+  <p>Toggles an element's popover. <strong>Returns to the caller before the popover has actually been shown or hidden</strong> (i.e. before the <code>shown.bs.popover</code> or <code>hidden.bs.popover</code> event occurs). This is considered a "manual" triggering of the popover.</p>
   {% highlight js %}$('#element').popover('toggle'){% endhighlight %}
 
   <h4>.popover('destroy')</h4>
   <p>Hides and destroys an element's popover.</p>
   {% highlight js %}$('#element').popover('destroy'){% endhighlight %}
+
   <h3 id="popovers-events">Events</h3>
   <div class="table-responsive">
     <table class="table table-bordered table-striped bs-events-table">

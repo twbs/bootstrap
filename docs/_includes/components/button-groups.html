@@ -17,7 +17,7 @@
 
   <h3 id="btn-groups-single">Basic example</h3>
   <p>Wrap a series of buttons with <code>.btn</code> in <code>.btn-group</code>.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-button-group">
     <div class="btn-group" role="group" aria-label="Basic example">
       <button type="button" class="btn btn-default">Left</button>
       <button type="button" class="btn btn-default">Middle</button>
@@ -34,7 +34,7 @@
 
   <h3 id="btn-groups-toolbar">Button toolbar</h3>
   <p>Combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex components.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-button-toolbar">
     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
       <div class="btn-group" role="group" aria-label="First group">
         <button type="button" class="btn btn-default">1</button>
@@ -61,8 +61,8 @@
 {% endhighlight %}
 
   <h3 id="btn-groups-sizing">Sizing</h3>
-  <p>Instead of applying button sizing classes to every button in a group, just add <code>.btn-group-*</code> to the <code>.btn-group</code>.</p>
-  <div class="bs-example">
+  <p>Instead of applying button sizing classes to every button in a group, just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including when nesting multiple groups.</p>
+  <div class="bs-example" data-example-id="button-group-sizing">
     <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
       <button type="button" class="btn btn-default">Left</button>
       <button type="button" class="btn btn-default">Middle</button>
@@ -96,7 +96,7 @@
 
   <h3 id="btn-groups-nested">Nesting</h3>
   <p>Place a <code>.btn-group</code> within another <code>.btn-group</code> when you want dropdown menus mixed with a series of buttons.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="button-group-nesting">
     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
       <button type="button" class="btn btn-default">1</button>
       <button type="button" class="btn btn-default">2</button>
@@ -133,7 +133,7 @@
 
   <h3 id="btn-groups-vertical">Vertical variation</h3>
   <p>Make a set of buttons appear vertically stacked rather than horizontally. <strong class="text-danger">Split button dropdowns are not supported here.</strong></p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="vertical-button-group">
     <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
       <button type="button" class="btn btn-default">Button</button>
       <button type="button" class="btn btn-default">Button</button>
@@ -202,7 +202,7 @@
 
   <h4>With <code>&lt;a&gt;</code> elements</h4>
   <p>Just wrap a series of <code>.btn</code>s in <code>.btn-group.btn-group-justified</code>.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-justified-button-group">
     <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
       <a href="#" class="btn btn-default" role="button">Left</a>
       <a href="#" class="btn btn-default" role="button">Middle</a>
@@ -239,7 +239,7 @@
 
   <h4>With <code>&lt;button&gt;</code> elements</h4>
   <p>To use justified button groups with <code>&lt;button&gt;</code> elements, <strong class="text-danger">you must wrap each button in a button group</strong>. Most browsers don't properly apply our CSS for justification to <code>&lt;button&gt;</code> elements, but since we support button dropdowns, we can work around that.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="button-tag-button-group-justified">
     <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
       <div class="btn-group" role="group">
         <button type="button" class="btn btn-default">Left</button>

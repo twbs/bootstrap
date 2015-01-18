@@ -100,26 +100,6 @@
 
 -
   browser: >
-    Safari (OS X)
-  summary: >
-    Scrollbar clipped in `select[multiple]` with padding.
-  upstream_bug: >
-    WebKit#128489
-  origin: >
-    Bootstrap#12536
-
--
-  browser: >
-    Chrome
-  summary: >
-    `<input type="password">` sporadically causes bad widths on floated elements.
-  upstream_bug: >
-    Chromium#377346
-  origin: >
-    Bootstrap#13892
-
--
-  browser: >
     Chrome
   summary: >
     CSS infinite linear animation with alpha transparency leaks memory.
@@ -127,6 +107,26 @@
     Chromium#429375
   origin: >
     Bootstrap#14409
+
+-
+  browser: >
+    Chrome (Windows & Linux)
+  summary: >
+    Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
+  upstream_bug: >
+    Chromium#449180
+  origin: >
+    Bootstrap#15298
+
+-
+  browser: >
+    Safari (OS X)
+  summary: >
+    Scrollbar clipped in `select[multiple]` with padding.
+  upstream_bug: >
+    WebKit#128489, Safari#19208483
+  origin: >
+    Bootstrap#12536
 
 -
   browser: >
@@ -152,6 +152,26 @@
 
 -
   browser: >
+    Safari (OS X)
+  summary: >
+    Small font size when printing webpage with fixed-width `.container`.
+  upstream_bug: >
+    WebKit#138192, Safari#19435018
+  origin: >
+    Bootstrap#14868
+
+-
+  browser: >
+    Safari (OS X)
+  summary: >
+    Alpha linear-gradient has dark line at its edge.
+  upstream_bug: >
+    WebKit#139803, Safari#19434933
+  origin: >
+    Bootstrap#15205
+
+-
+  browser: >
     Safari (iOS)
   summary: >
     `transform: translate3d(0,0,0);` rendering bug.
@@ -159,16 +179,6 @@
     WebKit#138162, Safari#18804973
   origin: >
     Bootstrap#14603
-
--
-  browser: >
-    Safari (OS X)
-  summary: >
-    Small font size when printing webpage with fixed-width `.container`.
-  upstream_bug: >
-    WebKit#138192
-  origin: >
-    Bootstrap#14868
 
 -
   browser: >
@@ -182,11 +192,10 @@
 
 -
   browser: >
-    Chrome (Windows)
+    Safari (iOS)
   summary: >
-    Body content can be scrolled even though `overflow: hidden;` is applied to it.
+    `display: block` causes text of temporal `<input>`s to become vertically misaligned
   upstream_bug: >
-    Chromium#438064
+    WebKit#139848, Safari#19434878
   origin: >
-    Chromium#175502,
-    Bootstrap#14972
+    Bootstrap#11266, Bootstrap#13098

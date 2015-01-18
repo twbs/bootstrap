@@ -1,8 +1,8 @@
 # [Bootstrap](http://getbootstrap.com)
-[![Bower version](https://badge.fury.io/bo/bootstrap.svg)](http://badge.fury.io/bo/bootstrap)
-[![npm version](https://badge.fury.io/js/bootstrap.svg)](http://badge.fury.io/js/bootstrap)
-[![Build Status](https://secure.travis-ci.org/twbs/bootstrap.svg?branch=master)](https://travis-ci.org/twbs/bootstrap)
-[![devDependency Status](https://david-dm.org/twbs/bootstrap/dev-status.svg)](https://david-dm.org/twbs/bootstrap#info=devDependencies)
+![Bower version](https://img.shields.io/bower/v/bootstrap.svg?style=flat)
+[![npm version](https://img.shields.io/npm/v/bootstrap.svg?style=flat)](https://www.npmjs.com/package/bootstrap)
+[![Build Status](https://img.shields.io/travis/twbs/bootstrap/master.svg?style=flat)](https://travis-ci.org/twbs/bootstrap)
+[![devDependency Status](https://img.shields.io/david/dev/twbs/bootstrap.svg?style=flat)](https://david-dm.org/twbs/bootstrap#info=devDependencies)
 [![Selenium Test Status](https://saucelabs.com/browser-matrix/bootstrap.svg)](https://saucelabs.com/u/bootstrap)
 
 Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thornton](https://twitter.com/fat), and maintained by the [core team](https://github.com/orgs/twbs/people) with the massive support and involvement of the community.
@@ -39,8 +39,10 @@ Within the download you'll find the following directories and files, logically g
 bootstrap/
 ├── css/
 │   ├── bootstrap.css
+│   ├── bootstrap.css.map
 │   ├── bootstrap.min.css
 │   ├── bootstrap-theme.css
+│   ├── bootstrap-theme.css.map
 │   └── bootstrap-theme.min.css
 ├── js/
 │   ├── bootstrap.js
@@ -49,10 +51,11 @@ bootstrap/
     ├── glyphicons-halflings-regular.eot
     ├── glyphicons-halflings-regular.svg
     ├── glyphicons-halflings-regular.ttf
-    └── glyphicons-halflings-regular.woff
+    ├── glyphicons-halflings-regular.woff
+    └── glyphicons-halflings-regular.woff2
 ```
 
-We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). Fonts from Glyphicons are included, as is the optional Bootstrap theme.
+We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). CSS [source maps](https://developers.google.com/chrome-developer-tools/docs/css-preprocessors) (`bootstrap.*.map`) are available for use with certain browsers' developer tools. Fonts from Glyphicons are included, as is the optional Bootstrap theme.
 
 
 
@@ -126,4 +129,4 @@ For transparency into our release cycle and in striving to maintain backward com
 
 ## Copyright and license
 
-Code and documentation copyright 2011-2014 Twitter, Inc. Code released under [the MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).
+Code and documentation copyright 2011-2015 Twitter, Inc. Code released under [the MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).

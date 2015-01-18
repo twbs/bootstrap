@@ -4,14 +4,14 @@
   <h2 id="alerts-examples">Example alerts</h2>
   <p>Add dismiss functionality to all alert messages with this plugin.</p>
   <p>When using a <code>.close</code> button, it must be the first child of the <code>.alert-dismissible</code> and no text content may come before it in the markup.</p>
-  <div class="bs-example bs-example-standalone">
+  <div class="bs-example bs-example-standalone" data-example-id="dismissible-alert-js">
     <div class="alert alert-warning alert-dismissible fade in" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
     </div>
 
     <div class="alert alert-danger alert-dismissible fade in" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <h4>Oh snap! You got an error!</h4>
       <p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
       <p>
@@ -27,9 +27,8 @@
   <p>Just add <code>data-dismiss="alert"</code> to your close button to automatically give an alert close functionality. Closing an alert removes it from the DOM.</p>
 
 {% highlight html %}
-<button type="button" class="close" data-dismiss="alert">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
   <span aria-hidden="true">&times;</span>
-  <span class="sr-only">Close</span>
 </button>
 {% endhighlight %}
 

@@ -11,7 +11,7 @@
     <p>Alerts don't have default classes, only base and modifier classes. A default gray alert doesn't make too much sense, so you're required to specify a type via contextual class. Choose from success, info, warning, or danger.</p>
   </div>
 
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-alerts">
     <div class="alert alert-success" role="alert">
       <strong>Well done!</strong> You successfully read this important alert message.
     </div>
@@ -38,15 +38,15 @@
     <h4>Requires JavaScript alert plugin</h4>
     <p>For fully functioning, dismissible alerts, you must use the <a href="../javascript/#alerts">alerts JavaScript plugin</a>.</p>
   </div>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="dismissible-alert-css">
     <div class="alert alert-warning alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <strong>Warning!</strong> Better check yourself, you're not looking too good.
     </div>
   </div>
 {% highlight html %}
 <div class="alert alert-warning alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <strong>Warning!</strong> Better check yourself, you're not looking too good.
 </div>
 {% endhighlight %}
@@ -58,7 +58,7 @@
 
   <h2 id="alerts-links">Links in alerts</h2>
   <p>Use the <code>.alert-link</code> utility class to quickly provide matching colored links within any alert.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="alerts-with-links">
     <div class="alert alert-success" role="alert">
       <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
     </div>

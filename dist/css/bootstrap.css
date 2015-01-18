@@ -1,6 +1,6 @@
 /*!
  * Bootstrap v3.3.1 (http://getbootstrap.com)
- * Copyright 2011-2014 Twitter, Inc.
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -268,7 +268,7 @@ th {
   font-family: 'Glyphicons Halflings';
 
   src: url('../fonts/glyphicons-halflings-regular.eot');
-  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   position: relative;
@@ -900,12 +900,6 @@ th {
 }
 .glyphicon-paste:before {
   content: "\e206";
-}
-.glyphicon-door:before {
-  content: "\1f6aa";
-}
-.glyphicon-key:before {
-  content: "\1F511";
 }
 .glyphicon-alert:before {
   content: "\e209";
@@ -2303,7 +2297,7 @@ th {
 .table-bordered > thead > tr > td {
   border-bottom-width: 2px;
 }
-.table-striped > tbody > tr:nth-child(odd) {
+.table-striped > tbody > tr:nth-of-type(odd) {
   background-color: #f9f9f9;
 }
 .table-hover > tbody > tr:hover {
@@ -2590,13 +2584,21 @@ input[type="search"] {
   input[type="date"].input-sm,
   input[type="time"].input-sm,
   input[type="datetime-local"].input-sm,
-  input[type="month"].input-sm {
+  input[type="month"].input-sm,
+  .input-group-sm input[type="date"],
+  .input-group-sm input[type="time"],
+  .input-group-sm input[type="datetime-local"],
+  .input-group-sm input[type="month"] {
     line-height: 30px;
   }
   input[type="date"].input-lg,
   input[type="time"].input-lg,
   input[type="datetime-local"].input-lg,
-  input[type="month"].input-lg {
+  input[type="month"].input-lg,
+  .input-group-lg input[type="date"],
+  .input-group-lg input[type="time"],
+  .input-group-lg input[type="datetime-local"],
+  .input-group-lg input[type="month"] {
     line-height: 46px;
   }
 }
@@ -2704,6 +2706,12 @@ textarea.form-group-sm .form-control,
 select[multiple].form-group-sm .form-control {
   height: auto;
 }
+.form-group-sm .form-control-static {
+  height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+}
 .input-lg {
   height: 46px;
   padding: 10px 16px;
@@ -2733,6 +2741,12 @@ select.form-group-lg .form-control {
 textarea.form-group-lg .form-control,
 select[multiple].form-group-lg .form-control {
   height: auto;
+}
+.form-group-lg .form-control-static {
+  height: 46px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
 }
 .has-feedback {
   position: relative;
@@ -4322,6 +4336,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-top-right-radius: 0;
 }
 .navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {
+  margin-bottom: 0;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   border-bottom-right-radius: 0;
@@ -5066,6 +5081,9 @@ a.thumbnail.active {
   overflow: hidden;
   zoom: 1;
 }
+.media-body {
+  width: 10000px;
+}
 .media-object {
   display: block;
 }
@@ -5293,7 +5311,11 @@ a.list-group-item-danger.active:focus {
   font-size: 16px;
   color: inherit;
 }
-.panel-title > a {
+.panel-title > a,
+.panel-title > small,
+.panel-title > .small,
+.panel-title > small > a,
+.panel-title > .small > a {
   color: inherit;
 }
 .panel-footer {

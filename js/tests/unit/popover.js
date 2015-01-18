@@ -188,33 +188,41 @@ $(function () {
     equal($('.popover').length, 0, 'popover was removed')
   })
 
-  test('should render popover elements using different delegated selectors on the same node', function () {
-    var popoverHTML = '<div>'
-        + '<a href="#" class="first" title="mdo" data-content="http://twitter.com/mdo">@mdo</a>'
-        + '<a href="#" class="second" title="mdo" data-content="http://twitter.com/mdo">@mdo</a>'
-        + '</div>'
+  test('should detach popover content rather than removing it so that event handlers are left intact', function () {
+    var $content = $('<div class="content-with-handler"><a class="btn btn-warning">Button with event handler</a></div>').appendTo('#qunit-fixture')
 
-    var $div = $(popoverHTML)
+    var handlerCalled = false
+    $('.content-with-handler .btn').click(function () {
+      handlerCalled = true
+    })
+
+    var $div = $('<div><a href="#">Show popover</a></div>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
-        selector: 'a.first',
-        trigger: 'click'
+        html: true,
+        trigger: 'manual',
+        container: 'body',
+        content: function () {
+          return $content
+        }
       })
-      .bootstrapPopover({
-        selector: 'a.second',
-        trigger: 'click'
+
+    stop()
+    $div
+      .one('shown.bs.popover', function () {
+        $div
+          .one('hidden.bs.popover', function () {
+            $div
+              .one('shown.bs.popover', function () {
+                $('.content-with-handler .btn').click()
+                $div.bootstrapPopover('destroy')
+                ok(handlerCalled, 'content\'s event handler still present')
+                start()
+              })
+              .bootstrapPopover('show')
+          })
+          .bootstrapPopover('hide')
       })
-
-    $div.find('a.first').click()
-    notEqual($('.popover').length, 0, 'first popover was inserted')
-
-    $div.find('a.first').click()
-    equal($('.popover').length, 0, 'first popover removed')
-
-    $div.find('a.second').click()
-    notEqual($('.popover').length, 0, 'second popover was inserted')
-
-    $div.find('a.second').click()
-    equal($('.popover').length, 0, 'second popover removed')
+      .bootstrapPopover('show')
   })
 })

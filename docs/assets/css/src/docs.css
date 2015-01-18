@@ -90,6 +90,26 @@ body {
 
 
 /*
+ * Fancy skip link
+ *
+ * Make it look a bit less "bare bones"
+ */
+
+#skippy {
+  display: block;
+  padding: 1em;
+  color: #fff;
+  background-color: #6f5499;
+  outline: 0;
+}
+
+#skippy .skiplink-text {
+  padding: .5em;
+  outline: 1px dotted;
+}
+
+
+/*
  * Main navigation
  *
  * Turn the `.navbar` at the top of the docs purple.
@@ -137,7 +157,7 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   margin-top: 100px;
-  color: #777;
+  color: #767676;
   text-align: center;
   border-top: 1px solid #e5e5e5;
 }
@@ -554,7 +574,7 @@ body {
   padding: 4px 20px;
   font-size: 13px;
   font-weight: 500;
-  color: #999;
+  color: #767676;
 }
 .bs-docs-sidebar .nav > li > a:hover,
 .bs-docs-sidebar .nav > li > a:focus {
@@ -709,22 +729,22 @@ h1[id] {
 
 /* Variations */
 .bs-callout-danger {
-  border-left-color: #d9534f;
+  border-left-color: #ce4844;
 }
 .bs-callout-danger h4 {
-  color: #d9534f;
+  color: #ce4844;
 }
 .bs-callout-warning {
-  border-left-color: #f0ad4e;
+  border-left-color: #aa6708;
 }
 .bs-callout-warning h4 {
-  color: #f0ad4e;
+  color: #aa6708;
 }
 .bs-callout-info {
-  border-left-color: #5bc0de;
+  border-left-color: #1b809e;
 }
 .bs-callout-info h4 {
-  color: #5bc0de;
+  color: #1b809e;
 }
 
 
@@ -955,7 +975,7 @@ h1[id] {
 
 /* Typography */
 .bs-example-type .table .type-info {
-  color: #999;
+  color: #767676;
   vertical-align: middle;
 }
 .bs-example-type .table td {
@@ -1411,9 +1431,11 @@ h1[id] {
   border: 2px dashed #eee;
   border-radius: 4px;
 }
-.bs-dropzone h2 {
-  margin-top: 0;
+.bs-dropzone .import-header {
   margin-bottom: 5px;
+}
+.bs-dropzone .glyphicon-download-alt {
+  font-size: 40px;
 }
 .bs-dropzone hr {
   width: 100px;
@@ -1458,10 +1480,6 @@ h1[id] {
 .bs-brand-logos .inverse {
   color: #fff;
   background-color: #563d7c;
-}
-.bs-brand-item .svg {
-  width: 144px;
-  height: 144px;
 }
 
 /* Heading content within */
@@ -1522,7 +1540,7 @@ h1[id] {
   display: block;
   padding: 5px 8px;
   font-size: 12px;
-  color: #777;
+  color: #767676;
   cursor: pointer;
   background-color: #fff;
   border: 1px solid #e1e1e8;

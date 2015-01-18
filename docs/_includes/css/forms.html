@@ -3,7 +3,7 @@
 
   <h2 id="forms-example">Basic example</h2>
   <p>Individual form controls automatically receive some global styling. All textual <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> elements with <code>.form-control</code> are set to <code>width: 100%;</code> by default. Wrap labels and controls in <code>.form-group</code> for optimum spacing.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="basic-forms">
     <form>
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
@@ -56,24 +56,52 @@
 
 
   <h2 id="forms-inline">Inline form</h2>
-  <p>Add <code>.form-inline</code> to your <code>&lt;form&gt;</code> for left-aligned and inline-block controls. <strong>This only applies to forms within viewports that are at least 768px wide.</strong></p>
+  <p>Add <code>.form-inline</code> to your form (which doesn't have to be a <code>&lt;form&gt;</code>) for left-aligned and inline-block controls. <strong>This only applies to forms within viewports that are at least 768px wide.</strong></p>
   <div class="bs-callout bs-callout-danger" id="callout-inline-form-width">
-    <h4>Requires custom widths</h4>
+    <h4>May require custom widths</h4>
     <p>Inputs and selects have <code>width: 100%;</code> applied by default in Bootstrap. Within inline forms, we reset that to <code>width: auto;</code> so multiple controls can reside on the same line. Depending on your layout, additional custom widths may be required.</p>
   </div>
   <div class="bs-callout bs-callout-warning" id="callout-inline-form-labels">
     <h4>Always add labels</h4>
     <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the <code>.sr-only</code> class. There are further alternative methods of providing a label for assistive technologies, such as the <code>aria-label</code>, <code>aria-labelledby</code> or <code>title</code> attribute. If none of these is present, screen readers may resort to using the <code>placeholder</code> attribute, if present, but note that use of <code>placeholder</code> as a replacement for other labelling methods is not advised.</p>
   </div>
-  <div class="bs-example">
+
+  <div class="bs-example" data-example-id="simple-form-inline">
     <form class="form-inline">
       <div class="form-group">
-        <label class="sr-only" for="exampleInputEmail2">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+        <label for="exampleInputName2">Name</label>
+        <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
       </div>
       <div class="form-group">
-        <label class="sr-only" for="exampleInputPassword2">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+        <label for="exampleInputEmail2">Email</label>
+        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+      </div>
+      <button type="submit" class="btn btn-default">Send invitation</button>
+    </form>
+  </div><!-- /example -->
+{% highlight html %}
+<form class="form-inline">
+  <div class="form-group">
+    <label for="exampleInputName2">Name</label>
+    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail2">Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+  </div>
+  <button type="submit" class="btn btn-default">Send invitation</button>
+</form>
+{% endhighlight %}
+
+  <div class="bs-example" data-example-id="simple-form-inline">
+    <form class="form-inline">
+      <div class="form-group">
+        <label class="sr-only" for="exampleInputEmail3">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="exampleInputPassword3">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
       </div>
       <div class="checkbox">
         <label>
@@ -86,12 +114,12 @@
 {% highlight html %}
 <form class="form-inline">
   <div class="form-group">
-    <label class="sr-only" for="exampleInputEmail2">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+    <label class="sr-only" for="exampleInputEmail3">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter email">
   </div>
   <div class="form-group">
-    <label class="sr-only" for="exampleInputPassword2">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+    <label class="sr-only" for="exampleInputPassword3">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
   </div>
   <div class="checkbox">
     <label>
@@ -102,7 +130,7 @@
 </form>
 {% endhighlight %}
 
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="form-inline-with-input-group">
     <form class="form-inline">
       <div class="form-group">
         <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
@@ -130,8 +158,8 @@
 {% endhighlight %}
 
   <h2 id="forms-horizontal">Horizontal form</h2>
-  <p>Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout by adding <code>.form-horizontal</code> to the form. Doing so changes <code>.form-group</code>s to behave as grid rows, so no need for <code>.row</code>.</p>
-  <div class="bs-example">
+  <p>Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout by adding <code>.form-horizontal</code> to the form (which doesn't have to be a <code>&lt;form&gt;</code>). Doing so changes <code>.form-group</code>s to behave as grid rows, so no need for <code>.row</code>.</p>
+  <div class="bs-example" data-example-id="simple-horizontal-form">
     <form class="form-horizontal">
       <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
@@ -202,7 +230,7 @@
     <h4>Type declaration required</h4>
     <p>Inputs will only be fully styled if their <code>type</code> is properly declared.</p>
   </div>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="text-form-control">
     <form>
       <input type="text" class="form-control" placeholder="Text input">
     </form>
@@ -217,7 +245,7 @@
 
   <h3>Textarea</h3>
   <p>Form control which supports multiple lines of text. Change <code>rows</code> attribute as necessary.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="textarea-form-control">
     <form>
       <textarea class="form-control" rows="3" placeholder="Textarea"></textarea>
     </form>
@@ -230,7 +258,7 @@
   <p>Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.</p>
   <p>A checkbox or radio with the <code>disabled</code> attribute will be styled appropriately. To have the <code>&lt;label&gt;</code> for the checkbox or radio also display a "not-allowed" cursor when the user hovers over the label, add the <code>.disabled</code> class to your <code>.radio</code>, <code>.radio-inline</code>, <code>.checkbox</code>, <code>.checkbox-inline</code>, or <code>&lt;fieldset&gt;</code>.</p>
   <h4>Default (stacked)</h4>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="block-checkboxes-radios">
     <form>
       <div class="checkbox">
         <label>
@@ -301,7 +329,7 @@
 
   <h4>Inline checkboxes and radios</h4>
   <p>Use the <code>.checkbox-inline</code> or <code>.radio-inline</code> classes on a series of checkboxes or radios for controls that appear on the same line.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="inline-checkboxes-radios">
     <form>
       <label class="checkbox-inline">
         <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
@@ -350,7 +378,7 @@
 
   <h4>Checkboxes and radios without label text</h4>
   <p>Should you have no text within the <code>&lt;label&gt;</code>, the input is positioned as you'd expect. <strong>Currently only works on non-inline checkboxes and radios.</strong> Remember to still provide some form of label for assistive technologies (for instance, using <code>aria-label</code>).</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="checkboxes-radios-without-labels">
     <form>
       <div class="checkbox">
         <label>
@@ -378,18 +406,10 @@
 {% endhighlight %}
 
   <h3>Selects</h3>
-  <p>Use the default option, or add <code>multiple</code> to show multiple options at once.</p>
-  <div class="bs-example">
+  <p>Note that many native select menus—namely in Safari and Chrome—have rounded corners that cannot be modified via <code>border-radius</code> properties.</p>
+  <div class="bs-example" data-example-ids="select-form-control">
     <form>
       <select class="form-control">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
-      <br>
-      <select multiple class="form-control">
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -406,7 +426,23 @@
   <option>4</option>
   <option>5</option>
 </select>
+{% endhighlight %}
 
+  <p>For <code>&lt;select&gt;</code> controls with the <code>multiple</code> attribute, multiple options are shown by default.</p>
+
+  <div class="bs-example" data-example-ids="select-multiple-form-control">
+    <form>
+      <select multiple class="form-control">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </form>
+  </div><!-- /.bs-example -->
+
+{% highlight html %}
 <select multiple class="form-control">
   <option>1</option>
   <option>2</option>
@@ -419,7 +455,7 @@
 
   <h2 id="forms-controls-static">Static control</h2>
   <p>When you need to place plain text next to a form label within a form, use the <code>.form-control-static</code> class on a <code>&lt;p&gt;</code>.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="horizontal-static-form-control">
     <form class="form-horizontal">
       <div class="form-group">
         <label class="col-sm-2 control-label">Email</label>
@@ -451,7 +487,7 @@
   </div>
 </form>
 {% endhighlight %}
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="inline-static-form-control">
     <form class="form-inline">
       <div class="form-group">
         <label class="sr-only">Email</label>
@@ -493,7 +529,7 @@
 
   <h2 id="forms-control-disabled">Disabled state</h2>
   <p>Add the <code>disabled</code> boolean attribute on an input to prevent user input and trigger a slightly different look.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="text-form-control-disabled">
     <form>
       <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here…" disabled>
     </form>
@@ -515,7 +551,7 @@
     <p>While Bootstrap will apply these styles in all browsers, Internet Explorer 11 and below don't fully support the <code>disabled</code> attribute on a <code>&lt;fieldset&gt;</code>. Use custom JavaScript to disable the fieldset in these browsers.</p>
   </div>
 
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="disabled-fieldset">
     <form>
       <fieldset disabled>
         <div class="form-group">
@@ -563,7 +599,7 @@
 
   <h2 id="forms-control-readonly">Readonly state</h2>
   <p>Add the <code>readonly</code> boolean attribute on an input to prevent user input and style the input as disabled.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="readonly-text-form-control">
     <form>
       <input class="form-control" type="text" placeholder="Readonly input here…" readonly>
     </form>
@@ -582,7 +618,7 @@
     <p>Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's <code>&lt;label&gt;</code> text itself (as is the case in the following code example), or associate an additional element with textual information about the validation state with the form control using <code>aria-describedby</code> (see the example in the following section). In the case of an error, you could also use the <code>aria-invalid="true"</code> attribute on the form control.</p>
   </div>
 
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="form-validation-states">
     <form>
       <div class="form-group has-success">
         <label class="control-label" for="inputSuccess1">Input with success</label>
@@ -673,7 +709,7 @@
     <p>To ensure that assistive technologies – such as screen readers – correctly convey the meaning of an icon, additional hidden text should be included with the <code>.sr-only</code> class and explicitly associated with the form control it relates to using <code>aria-describedby</code>. Alternatively, ensure that the meaning (for instance, the fact that there is a warning for a particular text entry field) is conveyed in some other form, such as changing the text of the actual <code>&lt;label&gt;</code> associated with the form control.</p>
     <p>Although the following examples already mention the validation state of their respective form controls in the <code>&lt;label&gt;</code> text itself, the above technique (using <code>.sr-only</code> text and <code>aria-describedby</code>) has been included for illustrative purposes.</p>
   </div>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="form-validation-states-with-icons">
     <form>
       <div class="form-group has-success has-feedback">
         <label class="control-label" for="inputSuccess2">Input with success</label>
@@ -692,6 +728,15 @@
         <input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Status">
         <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
         <span id="inputError2Status" class="sr-only">(error)</span>
+      </div>
+      <div class="form-group has-success has-feedback">
+        <label class="control-label" for="inputGroupSuccess1">Input group with success</label>
+        <div class="input-group">
+          <span class="input-group-addon">@</span>
+          <input type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+        </div>
+        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+        <span id="inputGroupSuccess1Status" class="sr-only">(success)</span>
       </div>
     </form>
   </div>
@@ -714,10 +759,19 @@
   <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
   <span id="inputError2Status" class="sr-only">(error)</span>
 </div>
+<div class="form-group has-success has-feedback">
+  <label class="control-label" for="inputGroupSuccess1">Input group with success</label>
+  <div class="input-group">
+    <span class="input-group-addon">@</span>
+    <input type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+  </div>
+  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+  <span id="inputGroupSuccess1Status" class="sr-only">(success)</span>
+</div>
 {% endhighlight %}
 
   <h4>Optional icons in horizontal and inline forms</h4>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="horizontal-form-validation-state-with-icon">
     <form class="form-horizontal">
       <div class="form-group has-success has-feedback">
         <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
@@ -725,6 +779,17 @@
           <input type="text" class="form-control" id="inputSuccess3" aria-describedby="inputSuccess3Status">
           <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
           <span id="inputSuccess3Status" class="sr-only">(success)</span>
+        </div>
+      </div>
+      <div class="form-group has-success has-feedback">
+        <label class="control-label col-sm-3" for="inputGroupSuccess2">Input group with success</label>
+        <div class="col-sm-9">
+          <div class="input-group">
+            <span class="input-group-addon">@</span>
+            <input type="text" class="form-control" id="inputGroupSuccess2" aria-describedby="inputGroupSuccess2Status">
+          </div>
+          <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+          <span id="inputGroupSuccess2Status" class="sr-only">(success)</span>
         </div>
       </div>
     </form>
@@ -739,16 +804,39 @@
       <span id="inputSuccess3Status" class="sr-only">(success)</span>
     </div>
   </div>
+  <div class="form-group has-success has-feedback">
+    <label class="control-label col-sm-3" for="inputGroupSuccess2">Input group with success</label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <span class="input-group-addon">@</span>
+        <input type="text" class="form-control" id="inputGroupSuccess2" aria-describedby="inputGroupSuccess2Status">
+      </div>
+      <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+      <span id="inputGroupSuccess2Status" class="sr-only">(success)</span>
+    </div>
+  </div>
 </form>
 {% endhighlight %}
 
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="inline-form-validation-state-with-icon">
     <form class="form-inline">
       <div class="form-group has-success has-feedback">
         <label class="control-label" for="inputSuccess4">Input with success</label>
         <input type="text" class="form-control" id="inputSuccess4" aria-describedby="inputSuccess4Status">
         <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
         <span id="inputSuccess4Status" class="sr-only">(success)</span>
+      </div>
+    </form>
+    <br>
+    <form class="form-inline">
+      <div class="form-group has-success has-feedback">
+        <label class="control-label" for="inputGroupSuccess3">Input group with success</label>
+        <div class="input-group">
+          <span class="input-group-addon">@</span>
+          <input type="text" class="form-control" id="inputGroupSuccess3" aria-describedby="inputGroupSuccess3Status">
+        </div>
+        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+        <span id="inputGroupSuccess3Status" class="sr-only">(success)</span>
       </div>
     </form>
   </div>
@@ -761,16 +849,36 @@
     <span id="inputSuccess4Status" class="sr-only">(success)</span>
   </div>
 </form>
+<form class="form-inline">
+  <div class="form-group has-success has-feedback">
+    <label class="control-label" for="inputGroupSuccess3">Input group with success</label>
+    <div class="input-group">
+      <span class="input-group-addon">@</span>
+      <input type="text" class="form-control" id="inputGroupSuccess3" aria-describedby="inputGroupSuccess3Status">
+    </div>
+    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+    <span id="inputGroupSuccess3Status" class="sr-only">(success)</span>
+  </div>
+</form>
 {% endhighlight %}
 
   <h4>Optional icons with hidden <code>.sr-only</code> labels</h4>
-  <p>For form controls with no visible label, add the <code>.sr-only</code> class on the label. Bootstrap will automatically adjust the position of the icon once it's been added.</p>
-  <div class="bs-example">
+  <p>If you use the <code>.sr-only</code> class to hide a form control's <code>&lt;label&gt;</code> (rather than using other labelling options, such as the <code>aria-label</code> attribute), Bootstrap will automatically adjust the position of the icon once it's been added.</p>
+  <div class="bs-example" data-example-id="form-validation-state-with-icon-without-label">
     <div class="form-group has-success has-feedback">
       <label class="control-label sr-only" for="inputSuccess5">Hidden label</label>
       <input type="text" class="form-control" id="inputSuccess5" aria-describedby="inputSuccess5Status">
       <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
       <span id="inputSuccess5Status" class="sr-only">(success)</span>
+    </div>
+    <div class="form-group has-success has-feedback">
+      <label class="control-label sr-only" for="inputGroupSuccess4">Input group with success</label>
+      <div class="input-group">
+        <span class="input-group-addon">@</span>
+        <input type="text" class="form-control" id="inputGroupSuccess4" aria-describedby="inputGroupSuccess4Status">
+      </div>
+      <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+      <span id="inputGroupSuccess4Status" class="sr-only">(success)</span>
     </div>
   </div>
 {% highlight html %}
@@ -780,6 +888,15 @@
   <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
   <span id="inputSuccess5Status" class="sr-only">(success)</span>
 </div>
+<div class="form-group has-success has-feedback">
+  <label class="control-label sr-only" for="inputGroupSuccess4">Input group with success</label>
+  <div class="input-group">
+    <span class="input-group-addon">@</span>
+    <input type="text" class="form-control" id="inputGroupSuccess4" aria-describedby="inputGroupSuccess4Status">
+  </div>
+  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+  <span id="inputGroupSuccess4Status" class="sr-only">(success)</span>
+</div>
 {% endhighlight %}
 
 
@@ -788,7 +905,7 @@
 
   <h3>Height sizing</h3>
   <p>Create taller or shorter form controls that match button sizes.</p>
-  <div class="bs-example bs-example-control-sizing">
+  <div class="bs-example bs-example-control-sizing" data-example-id="form-control-height-sizes">
     <form>
       <div class="controls">
         <input class="form-control input-lg" type="text" placeholder=".input-lg">
@@ -819,7 +936,7 @@
 
   <h3>Horizontal form group sizes</h3>
   <p>Quickly size labels and form controls within <code>.form-horizontal</code> by adding <code>.form-group-lg</code> or <code>.form-group-sm</code>.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="form-group-height-sizes">
     <form class="form-horizontal">
       <div class="form-group form-group-lg">
         <label class="col-sm-2 control-label" for="formGroupInputLarge">Large label</label>
@@ -855,7 +972,7 @@
 
   <h3>Column sizing</h3>
   <p>Wrap inputs in grid columns, or any custom parent element, to easily enforce desired widths.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="form-control-column-sizing">
     <form>
       <div class="row">
         <div class="col-xs-2">
@@ -890,7 +1007,7 @@
     <h4>Associating help text with form controls</h4>
     <p>Help text should be explicitly associated with the form control it relates to using the <code>aria-describedby</code> attribute. This will ensure that assistive technologies – such as screen readers – will announce this help text when the user focuses or enters the control.</p>
   </div>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-help-text">
     <form>
       <div class="form-group">
         <label for="inputHelpBlock">Input with help text</label>
