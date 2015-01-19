@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v3.3.1 (http://getbootstrap.com)
+ * Bootstrap v4.0.0-alpha (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
@@ -1763,7 +1763,7 @@ th {
   border-bottom-width: 2px;
 }
 
-.table-striped tbody tr:nth-child(odd) {
+.table-striped tbody tr:nth-of-type(odd) {
   background-color: #f9f9f9;
 }
 
@@ -1946,6 +1946,7 @@ output {
   line-height: 1.5;
   color: #55595c;
   background-color: #fff;
+  background-image: none;
   border: 1px solid #ccc;
   border-radius: .25rem;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
@@ -2000,7 +2001,7 @@ input[type="search"] {
     line-height: 2.025rem;
   }
   input[type="date"].input-lg, .input-group-lg > input[type="date"].form-control, .input-group-lg > input[type="date"].input-group-addon, .input-group-lg > .input-group-btn > input[type="date"].btn, .input-group-lg input[type="date"], input[type="time"].input-lg, .input-group-lg > input[type="time"].form-control, .input-group-lg > input[type="time"].input-group-addon, .input-group-lg > .input-group-btn > input[type="time"].btn, .input-group-lg input[type="time"], input[type="datetime-local"].input-lg, .input-group-lg > input[type="datetime-local"].form-control, .input-group-lg > input[type="datetime-local"].input-group-addon, .input-group-lg > .input-group-btn > input[type="datetime-local"].btn, .input-group-lg input[type="datetime-local"], input[type="month"].input-lg, .input-group-lg > input[type="month"].form-control, .input-group-lg > input[type="month"].input-group-addon, .input-group-lg > .input-group-btn > input[type="month"].btn, .input-group-lg input[type="month"] {
-    line-height: 3.3125rem;
+    line-height: 3.316667rem;
   }
 }
 
@@ -2099,18 +2100,24 @@ textarea.input-sm, .input-group-sm > textarea.form-control, .input-group-sm > te
 .form-group-sm textarea.form-control, .form-group-sm select[multiple].form-control {
   height: auto;
 }
+.form-group-sm .form-control-static {
+  height: 2.025rem;
+  padding: .3rem .75rem;
+  font-size: .85rem;
+  line-height: 1.5;
+}
 
 .input-lg, .input-group-lg > .form-control, .input-group-lg > .input-group-addon, .input-group-lg > .input-group-btn > .btn {
-  height: 3.3125rem;
+  height: 3.316667rem;
   padding: .75rem 1.5rem;
   font-size: 1.25rem;
-  line-height: 1.33;
+  line-height: 1.333333;
   border-radius: .3rem;
 }
 
 select.input-lg, .input-group-lg > select.form-control, .input-group-lg > select.input-group-addon, .input-group-lg > .input-group-btn > select.btn {
-  height: 3.3125rem;
-  line-height: 3.3125rem;
+  height: 3.316667rem;
+  line-height: 3.316667rem;
 }
 
 textarea.input-lg, .input-group-lg > textarea.form-control, .input-group-lg > textarea.input-group-addon, .input-group-lg > .input-group-btn > textarea.btn, select[multiple].input-lg, .input-group-lg > select[multiple].form-control, .input-group-lg > select[multiple].input-group-addon, .input-group-lg > .input-group-btn > select[multiple].btn {
@@ -2118,18 +2125,24 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .input-group-lg > te
 }
 
 .form-group-lg .form-control {
-  height: 3.3125rem;
+  height: 3.316667rem;
   padding: .75rem 1.5rem;
   font-size: 1.25rem;
-  line-height: 1.33;
+  line-height: 1.333333;
   border-radius: .3rem;
 }
 .form-group-lg select.form-control {
-  height: 3.3125rem;
-  line-height: 3.3125rem;
+  height: 3.316667rem;
+  line-height: 3.316667rem;
 }
 .form-group-lg textarea.form-control, .form-group-lg select[multiple].form-control {
   height: auto;
+}
+.form-group-lg .form-control-static {
+  height: 3.316667rem;
+  padding: .75rem 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.333333;
 }
 
 .has-feedback {
@@ -2153,9 +2166,9 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .input-group-lg > te
 }
 
 .input-lg + .form-control-feedback, .input-group-lg > .form-control + .form-control-feedback, .input-group-lg > .input-group-addon + .form-control-feedback, .input-group-lg > .input-group-btn > .btn + .form-control-feedback {
-  width: 3.3125rem;
-  height: 3.3125rem;
-  line-height: 3.3125rem;
+  width: 3.316667rem;
+  height: 3.316667rem;
+  line-height: 3.316667rem;
 }
 
 .input-sm + .form-control-feedback, .input-group-sm > .form-control + .form-control-feedback, .input-group-sm > .input-group-addon + .form-control-feedback, .input-group-sm > .input-group-btn > .btn + .form-control-feedback {
@@ -2553,7 +2566,7 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .input-group-lg > te
 .btn-lg, .btn-group-lg > .btn {
   padding: .75rem 1.5rem;
   font-size: 1.25rem;
-  line-height: 1.33;
+  line-height: 1.333333;
   border-radius: .3rem;
 }
 
@@ -2618,7 +2631,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
           transition-property: height, visibility;
 }
 
-.dropdown {
+.dropup, .dropdown {
   position: relative;
 }
 
@@ -2808,12 +2821,12 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
   border-radius: 0;
 }
 
-.btn-group > .btn-group:first-child > .btn:last-child, .btn-group > .btn-group:first-child > .dropdown-toggle {
+.btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child, .btn-group > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
   border-top-right-radius: 0; 
   border-bottom-right-radius: 0;
 }
 
-.btn-group > .btn-group:last-child > .btn:first-child {
+.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
   border-top-left-radius: 0; 
   border-bottom-left-radius: 0;
 }
@@ -4144,7 +4157,6 @@ a.badge:hover, a.badge:focus {
   from {
     background-position: 1 0;
   }
-
   to {
     background-position: 0 0;
   }
@@ -4154,7 +4166,6 @@ a.badge:hover, a.badge:focus {
   from {
     background-position: 1 0;
   }
-
   to {
     background-position: 0 0;
   }
