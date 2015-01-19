@@ -248,20 +248,24 @@
       }
     },
     "grunt-autoprefixer": {
-      "version": "2.1.0",
-      "resolved": "https://registry.npmjs.org/grunt-autoprefixer/-/grunt-autoprefixer-2.1.0.tgz",
+      "version": "2.2.0",
+      "resolved": "https://registry.npmjs.org/grunt-autoprefixer/-/grunt-autoprefixer-2.2.0.tgz",
       "dependencies": {
         "autoprefixer-core": {
-          "version": "4.0.2",
-          "resolved": "https://registry.npmjs.org/autoprefixer-core/-/autoprefixer-core-4.0.2.tgz",
+          "version": "5.0.0",
+          "resolved": "https://registry.npmjs.org/autoprefixer-core/-/autoprefixer-core-5.0.0.tgz",
           "dependencies": {
+            "browserslist": {
+              "version": "0.1.1",
+              "resolved": "https://registry.npmjs.org/browserslist/-/browserslist-0.1.1.tgz"
+            },
             "caniuse-db": {
-              "version": "1.0.30000047",
-              "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000047.tgz"
+              "version": "1.0.30000048",
+              "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000048.tgz"
             },
             "postcss": {
-              "version": "3.0.7",
-              "resolved": "https://registry.npmjs.org/postcss/-/postcss-3.0.7.tgz",
+              "version": "4.0.1",
+              "resolved": "https://registry.npmjs.org/postcss/-/postcss-4.0.1.tgz",
               "dependencies": {
                 "js-base64": {
                   "version": "2.1.7",
@@ -1110,8 +1114,8 @@
       }
     },
     "grunt-contrib-csslint": {
-      "version": "0.3.1",
-      "resolved": "https://registry.npmjs.org/grunt-contrib-csslint/-/grunt-contrib-csslint-0.3.1.tgz",
+      "version": "0.4.0",
+      "resolved": "https://registry.npmjs.org/grunt-contrib-csslint/-/grunt-contrib-csslint-0.4.0.tgz",
       "dependencies": {
         "chalk": {
           "version": "0.5.1",
@@ -1164,6 +1168,10 @@
         "lodash": {
           "version": "2.4.1",
           "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.1.tgz"
+        },
+        "strip-json-comments": {
+          "version": "1.0.2",
+          "resolved": "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-1.0.2.tgz"
         }
       }
     },
@@ -1210,8 +1218,8 @@
           }
         },
         "clean-css": {
-          "version": "3.0.4",
-          "resolved": "https://registry.npmjs.org/clean-css/-/clean-css-3.0.4.tgz",
+          "version": "3.0.5",
+          "resolved": "https://registry.npmjs.org/clean-css/-/clean-css-3.0.5.tgz",
           "dependencies": {
             "commander": {
               "version": "2.5.1",
@@ -2744,8 +2752,8 @@
               "resolved": "https://registry.npmjs.org/commander/-/commander-2.5.1.tgz"
             },
             "esprima": {
-              "version": "1.2.2",
-              "resolved": "https://registry.npmjs.org/esprima/-/esprima-1.2.2.tgz"
+              "version": "1.2.3",
+              "resolved": "https://registry.npmjs.org/esprima/-/esprima-1.2.3.tgz"
             },
             "esprima-harmony-jscs": {
               "version": "1.1.0-regex-token-fix",
