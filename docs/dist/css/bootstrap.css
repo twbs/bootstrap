@@ -1846,7 +1846,7 @@ table td[class*="col-"], table th[class*="col-"] {
 .table-inverse.table-bordered {
   border: 0;
 }
-.table-inverse th, .table-inverse td {
+.table-inverse th, .table-inverse td, .table-inverse thead th {
   border-color: #55595c;
 }
 

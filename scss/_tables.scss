@@ -181,7 +181,8 @@ table {
   }
 
   th,
-  td {
+  td,
+  thead th {
     border-color: $gray;
   }
 }
