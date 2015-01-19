@@ -121,8 +121,9 @@ output {
   line-height: $line-height-base;
   color: $input-color;
   background-color: $input-bg;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid $input-border;
-  @include border-radius($input-border-radius);
+  @include border-radius($input-border-radius); // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
   @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 
@@ -319,12 +320,27 @@ input[type="checkbox"] {
 
 .form-group-sm {
   @include input-size('.form-control', $input-height-sm, $padding-sm-vertical, $padding-sm-horizontal, $font-size-sm, $line-height-sm, $input-border-radius-sm);
+
+  .form-control-static {
+    height: $input-height-sm;
+    padding: $padding-sm-vertical $padding-sm-horizontal;
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+}
 }
 
 @include input-size('.input-lg', $input-height-lg, $padding-lg-vertical, $padding-lg-horizontal, $font-size-lg, $line-height-lg, $input-border-radius-lg);
 
 .form-group-lg {
   @include input-size('.form-control', $input-height-lg, $padding-lg-vertical, $padding-lg-horizontal, $font-size-lg, $line-height-lg, $input-border-radius-lg);
+
+  .form-control-static {
+    height: $input-height-lg;
+    padding: $padding-lg-vertical $padding-lg-horizontal;
+    font-size: $font-size-lg;
+    line-height: $line-height-lg;
+  }
 }
 
 

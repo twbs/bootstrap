@@ -355,7 +355,7 @@ Move columns to the right using `.col-md-offset-*` classes. These classes increa
 
 ### Example: Nesting columns
 
-To nest your content with the default grid, add a new `.row` and set of `.col-sm-*` columns within an existing `.col-sm-*` column. Nested rows should include a set of columns that add up to 12 or less (it is not required that you use all 12 available columns).
+To nest your content with the default grid, add a new `.row` and set of `.col-sm-*` columns within an existing `.col-sm-*` column. Nested rows should include a set of columns that add up to 12 or fewer (it is not required that you use all 12 available columns).
 
 {% example html %}
 <div class="row">

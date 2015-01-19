@@ -88,7 +88,7 @@ th {
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 
 .table-striped {
-  tbody tr:nth-child(odd) {
+  tbody tr:nth-of-type(odd) {
     background-color: $table-bg-accent;
   }
 }

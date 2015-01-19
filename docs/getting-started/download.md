@@ -45,6 +45,13 @@ Bootstrap is available as [an npm package](https://www.npmjs.org/package/bootstr
 
 {% highlight bash %}$ npm install bootstrap{% endhighlight %}
 
-### Autoprefixer required for Less/Sass
+`require('bootstrap')` will load all of Bootstrap's jQuery plugins onto the jQuery object. The `bootstrap` module itself does not export anything. You can manually load Bootstrap's jQuery plugins individually by loading the `/js/*.js` files under the package's top-level directory.
 
-Bootstrap uses [Autoprefixer](https://github.com/postcss/autoprefixer) to deal with [CSS vendor prefixes](http://webdesign.about.com/od/css/a/css-vendor-prefixes.htm). If you're compiling Bootstrap from its Less/Sass source and not using our Gruntfile, you'll need to integrate Autoprefixer into your build process yourself. If you're using precompiled Bootstrap or using our Gruntfile, you don't need to worry about this because Autoprefixer is already integrated into our Gruntfile.
+Bootstrap's `package.json` contains some additional metadata under the following keys:
+
+- `less` - path to Bootstrap's main [Less](http://lesscss.org) source file
+- `style` - path to Bootstrap's non-minified CSS that's been precompiled using the default settings (no customization)
+
+### Autoprefixer required
+
+Bootstrap uses [Autoprefixer](https://github.com/postcss/autoprefixer) to deal with [CSS vendor prefixes](http://webdesign.about.com/od/css/a/css-vendor-prefixes.htm). If you're compiling Bootstrap from its source Sass and not using our Gruntfile, you'll need to integrate Autoprefixer into your build process yourself. If you're using precompiled Bootstrap or using our Gruntfile, you don't need to worry about this as Autoprefixer is already integrated into our Gruntfile.

@@ -102,21 +102,21 @@
   browser: >
     Chrome
   summary: >
-    `<input type="password">` sporadically causes bad widths on floated elements.
-  upstream_bug: >
-    Chromium#377346
-  origin: >
-    Bootstrap#13892
-
--
-  browser: >
-    Chrome
-  summary: >
     CSS infinite linear animation with alpha transparency leaks memory.
   upstream_bug: >
     Chromium#429375
   origin: >
     Bootstrap#14409
+
+-
+  browser: >
+    Chrome (Windows & Linux)
+  summary: >
+    Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
+  upstream_bug: >
+    Chromium#449180
+  origin: >
+    Bootstrap#15298
 
 -
   browser: >
@@ -156,7 +156,7 @@
   summary: >
     Small font size when printing webpage with fixed-width `.container`.
   upstream_bug: >
-    WebKit#138192
+    WebKit#138192, Safari#19435018
   origin: >
     Bootstrap#14868
 
@@ -166,7 +166,7 @@
   summary: >
     Alpha linear-gradient has dark line at its edge.
   upstream_bug: >
-    WebKit#139803  
+    WebKit#139803, Safari#19434933
   origin: >
     Bootstrap#15205
 
@@ -196,6 +196,6 @@
   summary: >
     `display: block` causes text of temporal `<input>`s to become vertically misaligned
   upstream_bug: >
-    WebKit#139848
+    WebKit#139848, Safari#19434878
   origin: >
     Bootstrap#11266, Bootstrap#13098
