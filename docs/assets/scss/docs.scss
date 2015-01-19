@@ -96,36 +96,39 @@ body {
 // Main navigation
 //
 
-.bs-docs-nav {
+.bs-nav-home {
   margin-bottom: 0;
   background-color: #563d7c;
   border-bottom: 0;
+
+  .navbar-brand > a {
+    font-weight: 500;
+    color: #fff;
+  }
+
+  .nav-link {
+    font-weight: 500;
+    color: #cdbfe3;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      background-color: rgba(0,0,0,.5);
+    }
+  }
 }
-.bs-docs-nav .navbar-brand > a,
-.bs-docs-nav .navbar-nav > li > a {
-  font-weight: 500;
-  color: #cdbfe3;
-}
-.bs-docs-nav .navbar-brand > a {
-  color: #fff;
-}
-.bs-docs-nav .navbar-nav > li > a:hover,
-.bs-docs-nav .navbar-nav > .active > a,
-.bs-docs-nav .navbar-nav > .active > a:hover {
-  color: #fff;
-  background-color: #563d7c;
-}
-.bs-docs-nav .navbar-toggle .icon-bar {
-  background-color: #fff;
-}
-.bs-docs-nav .navbar-header .navbar-toggle {
-  border-color: #322f38;
-}
-.bs-docs-nav .navbar-header .navbar-toggle:hover,
-.bs-docs-nav .navbar-header .navbar-toggle:focus {
-  background-color: #29262f;
-  border-color: #29262f;
-}
+
+// .bs-nav-home .navbar-toggle .icon-bar {
+//   background-color: #fff;
+// }
+// .bs-nav-home .navbar-header .navbar-toggle {
+//   border-color: #322f38;
+// }
+// .bs-nav-home .navbar-header .navbar-toggle:hover,
+// .bs-nav-home .navbar-header .navbar-toggle:focus {
+//   background-color: #29262f;
+//   border-color: #29262f;
+// }
 
 
 //
