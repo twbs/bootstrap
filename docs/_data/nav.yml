@@ -17,9 +17,6 @@
   pages:
     - title: Scaffolding
     - title: Media queries
-      sections:
-        - title: Common queries
-        - title: Sass mixins
     - title: Containers
     - title: Grid
       sections:

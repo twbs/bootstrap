@@ -5,8 +5,6 @@ title: Media queries
 
 Since Bootstrap is designed to be mobile-first, we employ media queries in our CSS to create responsive pages and components. Media queries allow you to group rulesets by a handful of parameters, most notably viewport dimensions, to gracefully scale content across devices.
 
-### Common queries
-
 Bootstrap mainly uses the following media query ranges in our source Sass files for key breakpoints in our layout, grid system, and components.
 
 {% highlight scss %}
