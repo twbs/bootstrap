@@ -4,18 +4,6 @@
 
 
 
-BUENOSAIRES
-- pagina.html sidebar modal carousel animado
-
-BASTRAP NICO
-- opacity como .6
-- poner los -webkit y -moz
-- CSS impresión, testear y emprolijar
-- IE8 [testear modernizr]
-- probar mobile con emulador
-- crossbrowsing + accesibilidad + notebook sarmiento
-	http://yslow.org/
-	https://browserling.com/
 
 BASTRAP PABLO
 - REPASAR QUE PONGO en estilos y qué en componentes....
