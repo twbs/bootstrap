@@ -49,7 +49,7 @@
 
   </head>
   <body>
-    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+    <a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
 
     <!-- Docs master nav -->
     <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
@@ -244,6 +244,17 @@
         </tr>
         
         <tr>
+          <td>Chrome (Windows & Linux)
+</td>
+          <td><p>Animation glitch when returning to inactive tab after animations occurred while tab was hidden.</p>
+</td>
+          <td><a href="https://code.google.com/p/chromium/issues/detail?id=449180">Chromium issue #449180</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/15298">#15298</a>
+</td>
+        </tr>
+        
+        <tr>
           <td>Safari (OS X)
 </td>
           <td><p>Scrollbar clipped in <code>select[multiple]</code> with padding.</p>
@@ -366,8 +377,8 @@
     <p>Designed and built with all the love in the world by <a href="https://twitter.com/mdo" target="_blank">@mdo</a> and <a href="https://twitter.com/fat" target="_blank">@fat</a>.</p>
     <p>Maintained by the <a href="https://github.com/orgs/twbs/people">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
     <p>Code licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-    <ul class="bs-docs-footer-links muted">
-      <li>Currently v3.3.1</li>
+    <ul class="bs-docs-footer-links text-muted">
+      <li>Currently v3.3.2</li>
       <li>&middot;</li>
       <li><a href="https://github.com/twbs/bootstrap">GitHub</a></li>
       <li>&middot;</li>
@@ -391,7 +402,7 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 
   <script src="../dist/js/bootstrap.min.js"></script>

@@ -122,7 +122,7 @@
 
   <div class="bs-callout bs-callout-danger" id="callout-overview-dependencies">
     <h4>Plugin dependencies</h4>
-    <p>Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that all plugins depend on jQuery (this means jQuery must be included <strong>before</strong> the plugin files). <a href="https://github.com/twbs/bootstrap/blob/v3.3.1/bower.json">Consult our <code>bower.json</code></a> to see which versions of jQuery are supported.</p>
+    <p>Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that all plugins depend on jQuery (this means jQuery must be included <strong>before</strong> the plugin files). <a href="https://github.com/twbs/bootstrap/blob/v3.3.2/bower.json">Consult our <code>bower.json</code></a> to see which versions of jQuery are supported.</p>
   </div>
 
   <h3 id="js-data-attrs">Data attributes</h3>
@@ -166,6 +166,10 @@
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'show.bs.modal'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">data</span><span class="p">)</span> <span class="k">return</span> <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span> <span class="c1">// stops modal from being shown</span>
 <span class="p">})</span></code></pre></div>
+
+  <h3 id="js-version-nums">Version numbers</h3>
+  <p>The version of each of Bootstrap's jQuery plugins can be accessed via the <code>VERSION</code> property of the plugin's constructor. For example, for the tooltip plugin:</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">tooltip</span><span class="p">.</span><span class="nx">Constructor</span><span class="p">.</span><span class="nx">VERSION</span> <span class="c1">// =&gt; "3.3.2"</span></code></pre></div>
 
   <h3 id="js-disabled">No special fallbacks when JavaScript is disabled</h3>
   <p>Bootstrap's plugins don't fall back particularly gracefully when JavaScript is disabled. If you care about the user experience in this case, use <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript"><code>&lt;noscript&gt;</code></a> to explain the situation (and how to re-enable JavaScript) to your users, and/or add your own custom fallbacks.</p>
@@ -1083,8 +1087,7 @@
   <h2 id="tooltips-examples">Examples</h2>
   <p>Hover over the links below to see tooltips:</p>
   <div class="bs-example tooltip-demo">
-    <p class="muted" style="margin-bottom: 0;">Tight pants next level keffiyeh <a href="#" data-toggle="tooltip" title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" data-toggle="tooltip" title="Another tooltip">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" data-toggle="tooltip" title="Another one here too">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" data-toggle="tooltip" title="The last tip!">twitter handle</a> freegan cred raw denim single-origin coffee viral.
-    </p>
+    <p>Tight pants next level keffiyeh <a href="#" data-toggle="tooltip" title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" data-toggle="tooltip" title="Another tooltip">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" data-toggle="tooltip" title="Another one here too">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" data-toggle="tooltip" title="The last tip!">twitter handle</a> freegan cred raw denim single-origin coffee viral.</p>
   </div><!-- /example -->
 
   <h3>Static tooltip</h3>
@@ -1283,15 +1286,15 @@
   <p>Attaches a tooltip handler to an element collection.</p>
 
   <h4>.tooltip('show')</h4>
-  <p>Reveals an element's tooltip. Tooltips with zero-length titles are never displayed.</p>
+  <p>Reveals an element's tooltip. <strong>Returns to the caller before the tooltip has actually been shown</strong> (i.e. before the <code>shown.bs.tooltip</code> event occurs). This is considered a "manual" triggering of the tooltip. Tooltips with zero-length titles are never displayed.</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">(</span><span class="s1">'show'</span><span class="p">)</span></code></pre></div>
 
   <h4>.tooltip('hide')</h4>
-  <p>Hides an element's tooltip.</p>
+  <p>Hides an element's tooltip. <strong>Returns to the caller before the tooltip has actually been hidden</strong> (i.e. before the <code>hidden.bs.tooltip</code> event occurs). This is considered a "manual" triggering of the tooltip.</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">(</span><span class="s1">'hide'</span><span class="p">)</span></code></pre></div>
 
   <h4>.tooltip('toggle')</h4>
-  <p>Toggles an element's tooltip.</p>
+  <p>Toggles an element's tooltip. <strong>Returns to the caller before the tooltip has actually been shown or hidden</strong> (i.e. before the <code>shown.bs.tooltip</code> or <code>hidden.bs.tooltip</code> event occurs). This is considered a "manual" triggering of the tooltip.</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">(</span><span class="s1">'toggle'</span><span class="p">)</span></code></pre></div>
 
   <h4>.tooltip('destroy')</h4>
@@ -1454,9 +1457,9 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
     <p>For proper cross-browser and cross-platform behavior, you must use the <code>&lt;a&gt;</code> tag, <i>not</i> the <code>&lt;button&gt;</code> tag, and you also must include a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#tabindex"><code>tabindex</code></a> attribute.</p>
   </div>
   <div class="bs-example" style="padding-bottom: 24px;">
-    <a href="#" tabindex="0" class="btn btn-lg btn-danger bs-docs-popover" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
+    <a tabindex="0" class="btn btn-lg btn-danger bs-docs-popover" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
   </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-danger"</span> <span class="na">role=</span><span class="s">"button"</span> <span class="na">data-toggle=</span><span class="s">"popover"</span> <span class="na">data-trigger=</span><span class="s">"focus"</span> <span class="na">title=</span><span class="s">"Dismissible popover"</span> <span class="na">data-content=</span><span class="s">"And here's some amazing content. It's very engaging. Right?"</span><span class="nt">&gt;</span>Dismissible popover<span class="nt">&lt;/a&gt;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-danger"</span> <span class="na">role=</span><span class="s">"button"</span> <span class="na">data-toggle=</span><span class="s">"popover"</span> <span class="na">data-trigger=</span><span class="s">"focus"</span> <span class="na">title=</span><span class="s">"Dismissible popover"</span> <span class="na">data-content=</span><span class="s">"And here's some amazing content. It's very engaging. Right?"</span><span class="nt">&gt;</span>Dismissible popover<span class="nt">&lt;/a&gt;</span></code></pre></div>
 
 
   <h2 id="popovers-usage">Usage</h2>
@@ -1578,20 +1581,21 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   <p>Initializes popovers for an element collection.</p>
 
   <h4>.popover('show')</h4>
-  <p>Reveals an element's popover. Popovers whose both title and content are zero-length are never displayed.</p>
+  <p>Reveals an element's popover. <strong>Returns to the caller before the popover has actually been shown</strong> (i.e. before the <code>shown.bs.popover</code> event occurs). This is considered a "manual" triggering of the popover. Popovers whose both title and content are zero-length are never displayed.</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="s1">'show'</span><span class="p">)</span></code></pre></div>
 
   <h4>.popover('hide')</h4>
-  <p>Hides an element's popover.</p>
+  <p>Hides an element's popover. <strong>Returns to the caller before the popover has actually been hidden</strong> (i.e. before the <code>hidden.bs.popover</code> event occurs). This is considered a "manual" triggering of the popover.</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="s1">'hide'</span><span class="p">)</span></code></pre></div>
 
   <h4>.popover('toggle')</h4>
-  <p>Toggles an element's popover.</p>
+  <p>Toggles an element's popover. <strong>Returns to the caller before the popover has actually been shown or hidden</strong> (i.e. before the <code>shown.bs.popover</code> or <code>hidden.bs.popover</code> event occurs). This is considered a "manual" triggering of the popover.</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="s1">'toggle'</span><span class="p">)</span></code></pre></div>
 
   <h4>.popover('destroy')</h4>
   <p>Hides and destroys an element's popover.</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="s1">'destroy'</span><span class="p">)</span></code></pre></div>
+
   <h3 id="popovers-events">Events</h3>
   <div class="table-responsive">
     <table class="table table-bordered table-striped bs-events-table">
@@ -2465,6 +2469,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
     <li><a href="#js-programmatic-api">Programmatic API</a></li>
     <li><a href="#js-noconflict">No conflict</a></li>
     <li><a href="#js-events">Events</a></li>
+    <li><a href="#js-version-nums">Version numbers</a></li>
     <li><a href="#js-disabled">When JavaScript is disabled</a></li>
     <li><a href="#callout-third-party-libs">Third-party libraries</a></li>
   </ul>
@@ -2621,7 +2626,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
     <p>Maintained by the <a href="https://github.com/orgs/twbs/people">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
     <p>Code licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="bs-docs-footer-links text-muted">
-      <li>Currently v3.3.1</li>
+      <li>Currently v3.3.2</li>
       <li>&middot;</li>
       <li><a href="https://github.com/twbs/bootstrap">GitHub</a></li>
       <li>&middot;</li>
@@ -2645,7 +2650,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 
   <script src="../dist/js/bootstrap.min.js"></script>
