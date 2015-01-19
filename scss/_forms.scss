@@ -328,7 +328,6 @@ input[type="checkbox"] {
     line-height: $line-height-sm;
   }
 }
-}
 
 @include input-size('.input-lg', $input-height-lg, $padding-lg-vertical, $padding-lg-horizontal, $font-size-lg, $line-height-lg, $input-border-radius-lg);
 
