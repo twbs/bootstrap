@@ -1,28 +1,59 @@
 @mixin hover {
-  // See Media Queries Level 4: http://drafts.csswg.org/mediaqueries/#hover
-  // Currently shimmed by https://github.com/cvrebert/mq4-hover-hover-shim
-  @media (hover: hover) {
+  @if $use-hover-media-query {
+    // See Media Queries Level 4: http://drafts.csswg.org/mediaqueries/#hover
+    // Currently shimmed by https://github.com/cvrebert/mq4-hover-hover-shim
+    @media (hover: hover) {
+      &:hover { @content }
+    }
+  }
+  @else {
     &:hover { @content }
   }
 }
 
 @mixin hover-focus {
-  &:focus { @content }
-  @include hover { @content }
+  @if $use-hover-media-query {
+    &:focus { @content }
+    @include hover { @content }
+  }
+  @else {
+    &:focus,
+    &:hover {
+      @content
+    }
+  }
 }
 
 @mixin plain-hover-focus {
-  &,
-  &:focus {
-    @content
+  @if $use-hover-media-query {
+    &,
+    &:focus {
+      @content
+    }
+    @include hover { @content }
   }
-  @include hover { @content }
+  @else {
+    &,
+    &:focus,
+    &:hover {
+      @content
+    }
+  }
 }
 
 @mixin hover-focus-active {
-  &:focus,
-  &:active {
-    @content
+  @if $use-hover-media-query {
+    &:focus,
+    &:active {
+      @content
+    }
+    @include hover { @content }
   }
-  @include hover { @content }
+  @else {
+    &:focus,
+    &:active,
+    &:hover {
+      @content
+    }
+  }
 }
