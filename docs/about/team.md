@@ -5,8 +5,6 @@ title: Team
 
 Bootstrap is maintained by the founding team and a small group of invaluable core contributors, with the massive support and involvement of our community.
 
-## Core team
-
 <div class="list-group bs-team">
   {% for member in site.data.core-team %}
     <div class="list-group-item">
