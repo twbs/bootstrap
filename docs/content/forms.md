@@ -40,10 +40,10 @@ Individual form controls automatically receive some global styling. All textual 
 
 ## Inline forms
 
-Add `.form-inline` to your `<form>` for left-aligned and inline-block controls. **This only applies to forms within viewports that are at least 768px wide.**
+Add `.form-inline` to your `<form>` or a parent element for left-aligned and inline-block controls. **This only applies to form controls within viewports that are at least 768px wide.**
 
 <div class="bs-callout bs-callout-danger">
-  <h4>Requires custom widths</h4>
+  <h4>May require custom widths</h4>
   <p>Inputs and selects have `width: 100%;` applied by default in Bootstrap. Within inline forms, we reset that to `width: auto;` so multiple controls can reside on the same line. Depending on your layout, additional custom widths may be required.</p>
 </div>
 <div class="bs-callout bs-callout-warning">
@@ -51,15 +51,35 @@ Add `.form-inline` to your `<form>` for left-aligned and inline-block controls. 
   <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the `.sr-only` class.</p>
 </div>
 
+### Visible labels
+
+{% example html %}
+<div class="bs-example" data-example-id="simple-form-inline">
+  <form class="form-inline">
+    <div class="form-group">
+      <label for="exampleInputName2">Name</label>
+      <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail2">Email</label>
+      <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+    </div>
+    <button type="submit" class="btn btn-default">Send invitation</button>
+  </form>
+</div>
+{% endexample %}
+
+### Hidden labels
+
 {% example html %}
 <form class="form-inline">
   <div class="form-group">
-    <label class="sr-only" for="exampleInputEmail2">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+    <label class="sr-only" for="exampleInputEmail3">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter email">
   </div>
   <div class="form-group">
-    <label class="sr-only" for="exampleInputPassword2">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+    <label class="sr-only" for="exampleInputPassword3">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
   </div>
   <div class="checkbox">
     <label>
@@ -86,7 +106,7 @@ Add `.form-inline` to your `<form>` for left-aligned and inline-block controls. 
 
 ## Horizontal forms
 
-Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout by adding `.form-horizontal` to the form. Doing so changes `.form-group`s to behave as grid rows, so no need for `.row`.
+Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout by adding `.form-horizontal` to the form or form control's parent. Doing so changes `.form-group`s to behave as grid rows, so no need for `.row`.
 
 {% example html %}
 <form class="form-horizontal">
@@ -416,18 +436,30 @@ You can also add optional feedback icons with the addition of `.has-feedback` an
 {% example html %}
 <div class="form-group has-success has-feedback">
   <label class="control-label" for="inputSuccess2">Input with success</label>
-  <input type="text" class="form-control" id="inputSuccess2">
-  <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+  <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
+  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+  <span id="inputSuccess2Status" class="sr-only">(success)</span>
 </div>
 <div class="form-group has-warning has-feedback">
   <label class="control-label" for="inputWarning2">Input with warning</label>
-  <input type="text" class="form-control" id="inputWarning2">
-  <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+  <input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Status">
+  <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+  <span id="inputWarning2Status" class="sr-only">(warning)</span>
 </div>
 <div class="form-group has-error has-feedback">
   <label class="control-label" for="inputError2">Input with error</label>
-  <input type="text" class="form-control" id="inputError2">
-  <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+  <input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Status">
+  <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+  <span id="inputError2Status" class="sr-only">(error)</span>
+</div>
+<div class="form-group has-success has-feedback">
+  <label class="control-label" for="inputGroupSuccess1">Input group with success</label>
+  <div class="input-group">
+    <span class="input-group-addon">@</span>
+    <input type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+  </div>
+  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+  <span id="inputGroupSuccess1Status" class="sr-only">(success)</span>
 </div>
 {% endexample %}
 
@@ -438,6 +470,18 @@ You can also add optional feedback icons with the addition of `.has-feedback` an
     <div class="col-sm-9">
       <input type="text" class="form-control" id="inputSuccess3">
       <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+    </div>
+  </div>
+  <br>
+  <div class="form-group has-success has-feedback">
+    <label class="control-label col-sm-3" for="inputGroupSuccess2">Input group with success</label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <span class="input-group-addon">@</span>
+        <input type="text" class="form-control" id="inputGroupSuccess2" aria-describedby="inputGroupSuccess2Status">
+      </div>
+      <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+      <span id="inputGroupSuccess2Status" class="sr-only">(success)</span>
     </div>
   </div>
 </form>
@@ -451,6 +495,18 @@ You can also add optional feedback icons with the addition of `.has-feedback` an
     <span class="glyphicon glyphicon-ok form-control-feedback"></span>
   </div>
 </form>
+{% endexample %}
+
+{% example html %}
+<div class="form-group has-success has-feedback">
+  <label class="control-label sr-only" for="inputGroupSuccess4">Input group with success</label>
+  <div class="input-group">
+    <span class="input-group-addon">@</span>
+    <input type="text" class="form-control" id="inputGroupSuccess4" aria-describedby="inputGroupSuccess4Status">
+  </div>
+  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+  <span id="inputGroupSuccess4Status" class="sr-only">(success)</span>
+</div>
 {% endexample %}
 
 For form controls with no visible label, add the `.sr-only` class on the label. Bootstrap will automatically adjust the position of the icon once it's been added.
