@@ -1,3 +1,10 @@
+/* main nav img height fix */
+
+$('.nav .dropdown').on('show.bs.dropdown', function(){ 
+  var height = $(this).find('.dropdown-menu').height();
+  $(this).find('.col-menu-img').height( height );
+})
+
 /* modal carousel */
 
 $('#carousel-ba').carousel({
