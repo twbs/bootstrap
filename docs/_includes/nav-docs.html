@@ -28,7 +28,7 @@
           {% assign active = nil %}
 
           {% if page.url contains slug %}
-            {% assign active = 'active' %}
+            {% assign active = 'active bs-docs-sidenav-active' %}
           {% endif %}
 
           <li class="{{ active }}">
@@ -40,7 +40,7 @@
               <ul class="nav">
                 {% for section in doc.sections %}
                   <li>
-                    <a href="{{ site.baseurl }}/{{ group.title | downcase | replace: ' ', '-' }}/{{ doc.title | downcase | replace: ' ', '-' }}/#{{ section.title | downcase | replace: ' ', '-' }}">
+                    <a href="#{{ section.title | downcase | replace: ' ', '-' }}">
                       {{ section.title }}
                     </a>
                   </li>
