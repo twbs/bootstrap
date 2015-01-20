@@ -3,7 +3,7 @@ layout: page
 title: Media
 ---
 
-Abstract object styles for building various types of components (like blog comments, Tweets, etc) that feature a left- or right-aligned image alongside textual content.
+Abstract object styles for building custom components (like blog comments, Tweets, etc) that feature a left- or right-aligned image alongside textual content.
 
 ### Default media
 

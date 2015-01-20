@@ -3,7 +3,7 @@ layout: page
 title: Button dropdown
 ---
 
-Use any button to trigger a dropdown menu by placing it within a `.btn-group` and providing the proper menu markup.
+Use any button to trigger a dropdown menu by placing it within a `.btn-group` and providing the proper dropdown menu markup.
 
 <div class="bs-callout bs-callout-danger">
   <h4>Plugin dependency</h4>

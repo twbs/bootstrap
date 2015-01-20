@@ -2,6 +2,10 @@
 layout: default
 ---
 
-<h1>{{ page.title }}</h1>
+{% include nav-docs.html %}
 
-{{ content }}
+<div class="bs-docs-container bs-docs-content">
+  {% include ads.html %}
+  <h1 class="bs-docs-title">{{ page.title }}</h1>
+  {{ content }}
+</div>

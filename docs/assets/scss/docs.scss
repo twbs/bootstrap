@@ -329,11 +329,12 @@ body {
   overflow: hidden; /* clearfix */
   font-size: .8rem !important;
   line-height: 1rem !important;
-  color: $bs-purple-light !important;
+  color: $gray !important;
   text-align: left;
-  background: transparent !important;
-  border: solid #866ab3 !important;
-  border-width: 1px 0 !important;
+  background: #f5f5f5 !important;
+  border: 0 !important;
+  // border: solid #e5e5e5 !important;
+  // border-width: 1px 0 !important;
 }
 .carbonad-img {
   margin: 0 !important;
@@ -356,7 +357,11 @@ body {
 }
 .carbonad-text a,
 .carbonad-tag a {
-  color: #fff !important;
+  color: $gray !important;
+
+  &:hover {
+    color: $brand-primary !important;
+  }
 }
 .carbonad #azcarbon > img {
   display: none; // hide what I assume are tracking images
@@ -394,15 +399,22 @@ body {
 
 @media (min-width: 992px) {
   .carbonad {
-    position: absolute;
-    top: 2rem;
-    right: 4rem;
+    float: right;
     width: 330px !important;
     padding: 1rem !important;
-    margin: 0 !important;
+    margin: .5rem 0 1rem 2rem !important;
   }
-  .bs-docs-masthead .carbonad {
-    position: static;
+  .bs-docs-masthead {
+    .carbonad {
+      float: none;
+      margin: 0 !important;
+      color: $bs-purple-light !important;
+      border-color: #866ab3 !important;
+    }
+    .carbonad-text a,
+    .carbonad-tag a {
+      color: #fff !important;
+    }
   }
 }
 
@@ -548,7 +560,7 @@ body {
   }
 
   @media (min-width: 992px) {
-    padding: 2rem 4rem;
+    padding: 4rem;
   }
 
   > table {
@@ -776,30 +788,23 @@ body {
 //
 
 .bs-docs-content {
-  > h1 {
-    padding-top: 2rem;
-    margin-top: 3rem;
-
-    &:first-child {
-      margin-top: 0;
-    }
-
-     + p {
-      font-size: 1.25rem;
-      font-weight: 300;
-    }
-  }
-
   > h2 {
     margin-top: 3rem;
-    margin-bottom: 1.5rem;
     font-weight: normal;
-    padding-bottom: 1rem;
-    border-bottom: .065rem solid #eee;
   }
 
   > h3 {
     margin-top: 1.5rem;
+  }
+}
+
+.bs-docs-title {
+  margin-right: 23rem;
+
+  + p {
+    margin-right: 23rem;
+    font-size: 1.25rem;
+    font-weight: 300;
   }
 }
 

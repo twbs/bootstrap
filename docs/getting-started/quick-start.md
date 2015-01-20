@@ -3,7 +3,9 @@ layout: page
 title: Quick start
 ---
 
-Quickly add Bootstrap to your project via the [Bootstrap CDN](http://bootstrapcdn.com), graciously provided by the [MaxCDN](http://www.maxcdn.com/) folks. Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets.
+Quickly add Bootstrap to your project via the [Bootstrap CDN](http://bootstrapcdn.com), graciously provided by the [MaxCDN](http://www.maxcdn.com/) folks.
+
+Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets.
 
 **Disabled for v4 during alpha releases.**
 

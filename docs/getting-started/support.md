@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Browser and device support
+title: Supported platforms
 ---
 
-Bootstrap is built to work best in the latest desktop and mobile browsers, meaning older browsers might display differently styled, though fully functional, renderings of certain components.
+Bootstrap is built to work best with the latest techniques. As such, older desktop and mobile browsers may display differently, but should remain fully functional.
 
 ### Supported browsers
 

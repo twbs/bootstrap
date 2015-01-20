@@ -3,7 +3,9 @@ layout: page
 title: Grid system
 ---
 
-Bootstrap includes a powerful grid system for building layouts of all shapes and sizes. It's based on a 12 column layout and features multiple tiers for different device sizes. Put it to work with our predefined classes or semantic mixins. Plus, it's mobile-first!
+Bootstrap includes a powerful mobile-first grid system for building layouts of all shapes and sizes based on a 12 column layout.
+
+There are multiple tiers for different device sizes, available via our predefined classes or semantic mixins.
 
 ### Quick start
 

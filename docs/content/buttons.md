@@ -3,7 +3,11 @@ layout: page
 title: Buttons
 ---
 
-Use any of the available button classes to quickly create a styled button.
+Buttons are used to execute actions in forms, dialogs, and more. Use any of the available button classes to quickly create a styled button.
+
+## Examples
+
+Bootstrap includes six predefined button styles, each serving its own semantic purpose.
 
 {% example html %}
 <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->

@@ -3,7 +3,7 @@ layout: page
 title: Contents
 ---
 
-Bootstrap is downloadable in two forms, within which you'll find the following directories and files, logically grouping common resources and providing both compiled and minified variations.
+Bootstrap can come in one of two forms, as precompiled or source code. Learn more about each form's contents and structure below.
 
 <div class="bs-callout bs-callout-warning" id="jquery-required">
   <h4>jQuery required</h4>

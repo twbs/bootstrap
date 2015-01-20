@@ -5,6 +5,8 @@ title: Jumbotron
 
 A lightweight, flexible component that can optionally extend the entire viewport to showcase key marketing messages on your site.
 
+## Example
+
 {% example html %}
 <div class="jumbotron">
   <h1 class="jumbotron-heading">Hello, world!</h1>
