@@ -3812,7 +3812,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
   padding-right: .5rem;
   padding-left: .5rem;
   color: #818a91;
-  content: "breadcrumb-divider\00a0";
+  content: "/\00a0";
 }
 .breadcrumb > .active {
   color: #818a91;
