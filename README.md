@@ -40,16 +40,13 @@ bootstrap/
 ├── css/
 │   ├── bootstrap.css
 │   ├── bootstrap.css.map
-│   ├── bootstrap.min.css
-│   ├── bootstrap-theme.css
-│   ├── bootstrap-theme.css.map
-│   └── bootstrap-theme.min.css
+│   └── bootstrap.min.css
 └── js/
     ├── bootstrap.js
     └── bootstrap.min.js
 ```
 
-We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). CSS [source maps](https://developers.google.com/chrome-developer-tools/docs/css-preprocessors) (`bootstrap.*.map`) are available for use with certain browsers' developer tools. The optional Bootstrap theme is also included.
+We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). CSS [source maps](https://developers.google.com/chrome-developer-tools/docs/css-preprocessors) (`bootstrap.*.map`) are available for use with certain browsers' developer tools.
 
 
 
