@@ -1176,6 +1176,25 @@ body {
   overflow: auto;
 }
 
+// Helpers
+.bs-example > {
+  .center-block {
+    max-width: 200px;
+    padding: .5rem;
+    background-color: #eee;
+  }
+
+  .bg-primary,
+  .bg-success,
+  .bg-info,
+  .bg-warning,
+  .bg-danger {
+    padding: .5rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+  }
+}
+
 
 //
 // Code snippets

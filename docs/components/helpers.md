@@ -90,7 +90,7 @@ Float an element to the left or right with a class. `!important` is included to 
 Set an element to `display: block;` and center via `margin`. Available as a mixin and class.
 
 {% example html %}
-<div class="center-block">...</div>
+<div class="center-block">Centered block</div>
 {% endexample %}
 
 {% highlight scss %}
@@ -182,9 +182,9 @@ Hide an element to all devices **except screen readers** with `.sr-only`. Combin
 
 Utilize the `.text-hide` class or mixin to help replace an element's text content with a background image.
 
-{% example html %}
+{% highlight html %}
 <h1 class="text-hide">Custom heading</h1>
-{% endexample %}
+{% endhighlight %}
 
 {% highlight scss %}
 // Usage as a Mixin

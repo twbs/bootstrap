@@ -4576,7 +4576,8 @@ a.list-group-item-state.active, a.list-group-item-state.active:hover, a.list-gro
   cursor: pointer;
   opacity: .5;
 }
-.closebutton {
+
+button.close {
   -webkit-appearance: none; 
   padding: 0;
   cursor: pointer;
