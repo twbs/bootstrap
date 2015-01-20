@@ -63,8 +63,8 @@ Use a generic close icon for dismissing content like modals and alerts. **Be sur
 Float an element to the left or right with a class. `!important` is included to avoid specificity issues. Classes can also be used as mixins.
 
 {% example html %}
-<div class="pull-left">...</div>
-<div class="pull-right">...</div>
+<div class="pull-left">Float left</div>
+<div class="pull-right">Float right</div>
 {% endexample %}
 
 {% highlight scss %}
