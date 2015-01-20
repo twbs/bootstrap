@@ -225,7 +225,9 @@ Use the `.checkbox-inline` or `.radio-inline` classes on a series of checkboxes 
 <label class="checkbox-inline">
   <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
 </label>
+{% endexample %}
 
+{% example html %}
 <label class="radio-inline">
   <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
 </label>
