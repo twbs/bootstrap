@@ -64,7 +64,7 @@ Add `.form-inline` to your `<form>` or a parent element for left-aligned and inl
       <label for="exampleInputEmail2">Email</label>
       <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
     </div>
-    <button type="submit" class="btn btn-default">Send invitation</button>
+    <button type="submit" class="btn btn-primary">Send invitation</button>
   </form>
 </div>
 {% endexample %}
@@ -86,7 +86,7 @@ Add `.form-inline` to your `<form>` or a parent element for left-aligned and inl
       <input type="checkbox"> Remember me
     </label>
   </div>
-  <button type="submit" class="btn btn-default">Sign in</button>
+  <button type="submit" class="btn btn-primary">Sign in</button>
 </form>
 {% endexample %}
 
@@ -315,7 +315,7 @@ When you need to place plain text next to a form label within a form, use the `.
     <label for="inputPassword2" class="sr-only">Password</label>
     <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
   </div>
-  <button type="submit" class="btn btn-default">Confirm identity</button>
+  <button type="submit" class="btn btn-primary">Confirm identity</button>
 </form>
 {% endexample %}
 

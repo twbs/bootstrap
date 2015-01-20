@@ -280,7 +280,7 @@ Have a bunch of buttons that all trigger the same modal, just with slightly diff
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary">Send message</button>
         </div>
       </div>
@@ -316,7 +316,7 @@ Have a bunch of buttons that all trigger the same modal, just with slightly diff
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Send message</button>
       </div>
     </div>
