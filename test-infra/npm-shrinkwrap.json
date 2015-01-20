@@ -3295,6 +3295,30 @@
         }
       }
     },
+    "markdown-it": {
+      "version": "3.0.4",
+      "resolved": "https://registry.npmjs.org/markdown-it/-/markdown-it-3.0.4.tgz",
+      "dependencies": {
+        "argparse": {
+          "version": "0.1.16",
+          "resolved": "https://registry.npmjs.org/argparse/-/argparse-0.1.16.tgz",
+          "dependencies": {
+            "underscore": {
+              "version": "1.7.0",
+              "resolved": "https://registry.npmjs.org/underscore/-/underscore-1.7.0.tgz"
+            },
+            "underscore.string": {
+              "version": "2.4.0",
+              "resolved": "https://registry.npmjs.org/underscore.string/-/underscore.string-2.4.0.tgz"
+            }
+          }
+        },
+        "autolinker": {
+          "version": "0.15.2",
+          "resolved": "https://registry.npmjs.org/autolinker/-/autolinker-0.15.2.tgz"
+        }
+      }
+    },
     "npm-shrinkwrap": {
       "version": "200.0.0",
       "resolved": "https://registry.npmjs.org/npm-shrinkwrap/-/npm-shrinkwrap-200.0.0.tgz",
@@ -4020,30 +4044,6 @@
               "resolved": "https://registry.npmjs.org/js-string-escape/-/js-string-escape-1.0.0.tgz"
             }
           }
-        }
-      }
-    },
-    "remarkable": {
-      "version": "1.6.0",
-      "resolved": "https://registry.npmjs.org/remarkable/-/remarkable-1.6.0.tgz",
-      "dependencies": {
-        "argparse": {
-          "version": "0.1.16",
-          "resolved": "https://registry.npmjs.org/argparse/-/argparse-0.1.16.tgz",
-          "dependencies": {
-            "underscore": {
-              "version": "1.7.0",
-              "resolved": "https://registry.npmjs.org/underscore/-/underscore-1.7.0.tgz"
-            },
-            "underscore.string": {
-              "version": "2.4.0",
-              "resolved": "https://registry.npmjs.org/underscore.string/-/underscore.string-2.4.0.tgz"
-            }
-          }
-        },
-        "autolinker": {
-          "version": "0.15.2",
-          "resolved": "https://registry.npmjs.org/autolinker/-/autolinker-0.15.2.tgz"
         }
       }
     },
