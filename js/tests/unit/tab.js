@@ -93,10 +93,10 @@ $(function () {
       .find('ul > li:last a')
         .on('show.bs.tab', function (e) {
           equal(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
-          done()
         })
         .on('shown.bs.tab', function (e) {
           equal(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
+          done()
         })
         .bootstrapTab('show')
   })
