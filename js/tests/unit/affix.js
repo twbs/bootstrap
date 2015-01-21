@@ -35,8 +35,8 @@ $(function () {
     ok(!$affix.hasClass('affix'), 'affix class was not added')
   })
 
-  test('should trigger affixed event after affix', function () {
-    stop()
+  test('should trigger affixed event after affix', function (assert) {
+    var done = assert.async()
 
     var templateHTML = '<div id="affixTarget">'
         + '<ul>'
@@ -57,7 +57,7 @@ $(function () {
       }).on('affixed.bs.affix', function () {
         ok(true, 'affixed event fired')
         $('#affixTarget, #affixAfter').remove()
-        start()
+        done()
       })
 
     setTimeout(function () {
@@ -69,8 +69,8 @@ $(function () {
     }, 0)
   })
 
-  test('should affix-top when scrolling up to offset when parent has padding', function () {
-    stop()
+  test('should affix-top when scrolling up to offset when parent has padding', function (assert) {
+    var done = assert.async()
 
     var templateHTML = '<div id="padding-offset" style="padding-top: 20px;">'
         + '<div id="affixTopTarget">'
@@ -87,7 +87,7 @@ $(function () {
       .on('affixed-top.bs.affix', function () {
         ok($('#affixTopTarget').hasClass('affix-top'), 'affix-top class applied')
         $('#padding-offset').remove()
-        start()
+        done()
       })
 
     setTimeout(function () {

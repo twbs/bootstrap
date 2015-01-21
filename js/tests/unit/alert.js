@@ -55,13 +55,13 @@ $(function () {
     equal($('#qunit-fixture').find('.alert').length, 0, 'element removed from dom')
   })
 
-  test('should not fire closed when close is prevented', function () {
-    stop()
+  test('should not fire closed when close is prevented', function (assert) {
+    var done = assert.async()
     $('<div class="alert"/>')
       .on('close.bs.alert', function (e) {
         e.preventDefault()
         ok(true, 'close event fired')
-        start()
+        done()
       })
       .on('closed.bs.alert', function () {
         ok(false, 'closed event fired')
