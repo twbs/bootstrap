@@ -128,23 +128,9 @@ This tag is included in all of Bootstrap's documentation and examples to ensure 
 
 See [this StackOverflow question](http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge) for more information.
 
-### Internet Explorer 10 in Windows 8 and Windows Phone 8
+### Internet Explorer 10 in Windows Phone 8
 
-Internet Explorer 10 doesn't differentiate **device width** from **viewport width**, and thus doesn't properly apply the media queries in Bootstrap's CSS. Normally you'd just add a quick snippet of CSS to fix this:
-
-{% highlight scss %}
-@-ms-viewport { width: device-width; }
-{% endhighlight %}
-
-However, this doesn't work for devices running Windows Phone 8 versions older than [Update 3 (a.k.a. GDR3)](http://blogs.windows.com/windows_phone/b/wpdev/archive/2013/10/14/introducing-windows-phone-preview-for-developers.aspx), as it causes such devices to show a mostly desktop view instead of narrow "phone" view. To address this, you'll need to **include the following CSS and JavaScript to work around the bug**.
-
-{% highlight scss %}
-@-webkit-viewport   { width: device-width; }
-@-moz-viewport      { width: device-width; }
-@-ms-viewport       { width: device-width; }
-@-o-viewport        { width: device-width; }
-@viewport           { width: device-width; }
-{% endhighlight %}
+Internet Explorer 10 in Windows Phone 8 versions older than [Update 3 (a.k.a. GDR3)](http://blogs.windows.com/windows_phone/b/wpdev/archive/2013/10/14/introducing-windows-phone-preview-for-developers.aspx) doesn't differentiate **device width** from **viewport width** in `@-ms-viewport` at-rules, and thus doesn't properly apply the media queries in Bootstrap's CSS. To address this, you'll need to **include the following JavaScript to work around the bug**.
 
 {% highlight js %}
 if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
