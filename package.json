@@ -55,12 +55,12 @@
     "grunt-jekyll": "~0.4.2",
     "grunt-jscs": "~1.2.0",
     "grunt-sass": "~0.17.0",
-    "grunt-saucelabs": "~8.4.1",
+    "grunt-saucelabs": "~8.5.0",
     "grunt-scss-lint": "^0.3.4",
     "grunt-sed": "~0.1.1",
     "load-grunt-tasks": "~2.0.0",
+    "markdown-it": "^3.0.4",
     "npm-shrinkwrap": "^200.0.0",
-    "remarkable": "~1.6.0",
     "time-grunt": "~1.0.0"
   },
   "engines": {

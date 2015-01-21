@@ -180,6 +180,9 @@ The `.dropdown-backdrop` element isn't used on iOS in the nav because of the com
 
 Page zooming inevitably presents rendering artifacts in some components, both in Bootstrap and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.
 
+### Sticky `:hover`/`:focus` on mobile
+Even though real hovering isn't possible on most touchscreens, most mobile browsers emulate hovering support and make `:hover` "sticky". In other words, `:hover` styles start applying after tapping an element and only stop applying after the user taps some other element. This can cause Bootstrap's `:hover` states to become unwantedly "stuck" on such browsers. Some mobile browsers also make `:focus` similarly sticky. There is currently no simple workaround for these issues other than removing such styles entirely.
+
 ### Printing
 
 Even in some modern browsers, printing can be quirky.
