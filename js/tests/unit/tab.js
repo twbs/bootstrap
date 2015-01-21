@@ -59,14 +59,14 @@ $(function () {
     equal($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
-  test('should not fire shown when show is prevented', function () {
-    stop()
+  test('should not fire shown when show is prevented', function (assert) {
+    var done = assert.async()
 
     $('<div class="tab"/>')
       .on('show.bs.tab', function (e) {
         e.preventDefault()
         ok(true, 'show event fired')
-        start()
+        done()
       })
       .on('shown.bs.tab', function () {
         ok(false, 'shown event fired')
@@ -74,8 +74,8 @@ $(function () {
       .bootstrapTab('show')
   })
 
-  test('show and shown events should reference correct relatedTarget', function () {
-    stop()
+  test('show and shown events should reference correct relatedTarget', function (assert) {
+    var done = assert.async()
 
     var dropHTML = '<ul class="drop">'
         + '<li class="dropdown"><a data-toggle="dropdown" href="#">1</a>'
@@ -93,7 +93,7 @@ $(function () {
       .find('ul > li:last a')
         .on('show.bs.tab', function (e) {
           equal(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
-          start()
+          done()
         })
         .on('shown.bs.tab', function (e) {
           equal(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
@@ -101,8 +101,8 @@ $(function () {
         .bootstrapTab('show')
   })
 
-  test('should fire hide and hidden events', function () {
-    stop()
+  test('should fire hide and hidden events', function (assert) {
+    var done = assert.async()
 
     var tabsHTML = '<ul class="tabs">'
         + '<li><a href="#home">Home</a></li>'
@@ -123,7 +123,7 @@ $(function () {
       .find('li:first a')
         .on('hidden.bs.tab', function () {
           ok(true, 'hidden event fired')
-          start()
+          done()
         })
         .bootstrapTab('show')
       .end()
@@ -131,8 +131,8 @@ $(function () {
         .bootstrapTab('show')
   })
 
-  test('should not fire hidden when hide is prevented', function () {
-    stop()
+  test('should not fire hidden when hide is prevented', function (assert) {
+    var done = assert.async()
 
     var tabsHTML = '<ul class="tabs">'
         + '<li><a href="#home">Home</a></li>'
@@ -144,7 +144,7 @@ $(function () {
         .on('hide.bs.tab', function (e) {
           e.preventDefault()
           ok(true, 'hide event fired')
-          start()
+          done()
         })
         .on('hidden.bs.tab', function () {
           ok(false, 'hidden event fired')
@@ -155,8 +155,8 @@ $(function () {
         .bootstrapTab('show')
   })
 
-  test('hide and hidden events contain correct relatedTarget', function () {
-    stop()
+  test('hide and hidden events contain correct relatedTarget', function (assert) {
+    var done = assert.async()
 
     var tabsHTML = '<ul class="tabs">'
         + '<li><a href="#home">Home</a></li>'
@@ -170,7 +170,7 @@ $(function () {
         })
         .on('hidden.bs.tab', function (e) {
           equal(e.relatedTarget.hash, '#profile', 'references correct element as relatedTarget')
-          start()
+          done()
         })
         .bootstrapTab('show')
       .end()

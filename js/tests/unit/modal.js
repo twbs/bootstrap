@@ -33,36 +33,36 @@ $(function () {
     ok($.fn.bootstrapModal.Constructor.DEFAULTS, 'default object exposed')
   })
 
-  test('should insert into dom when show method is called', function () {
-    stop()
+  test('should insert into dom when show method is called', function (assert) {
+    var done = assert.async()
 
     $('<div id="modal-test"/>')
       .on('shown.bs.modal', function () {
         notEqual($('#modal-test').length, 0, 'modal inserted into dom')
-        start()
+        done()
       })
       .bootstrapModal('show')
   })
 
-  test('should fire show event', function () {
-    stop()
+  test('should fire show event', function (assert) {
+    var done = assert.async()
 
     $('<div id="modal-test"/>')
       .on('show.bs.modal', function () {
         ok(true, 'show event fired')
-        start()
+        done()
       })
       .bootstrapModal('show')
   })
 
-  test('should not fire shown when show was prevented', function () {
-    stop()
+  test('should not fire shown when show was prevented', function (assert) {
+    var done = assert.async()
 
     $('<div id="modal-test"/>')
       .on('show.bs.modal', function (e) {
         e.preventDefault()
         ok(true, 'show event fired')
-        start()
+        done()
       })
       .on('shown.bs.modal', function () {
         ok(false, 'shown event fired')
@@ -70,8 +70,8 @@ $(function () {
       .bootstrapModal('show')
   })
 
-  test('should hide modal when hide is called', function () {
-    stop()
+  test('should hide modal when hide is called', function (assert) {
+    var done = assert.async()
 
     $('<div id="modal-test"/>')
       .on('shown.bs.modal', function () {
@@ -81,13 +81,13 @@ $(function () {
       })
       .on('hidden.bs.modal', function () {
         ok(!$('#modal-test').is(':visible'), 'modal hidden')
-        start()
+        done()
       })
       .bootstrapModal('show')
   })
 
-  test('should toggle when toggle is called', function () {
-    stop()
+  test('should toggle when toggle is called', function (assert) {
+    var done = assert.async()
 
     $('<div id="modal-test"/>')
       .on('shown.bs.modal', function () {
@@ -97,13 +97,13 @@ $(function () {
       })
       .on('hidden.bs.modal', function () {
         ok(!$('#modal-test').is(':visible'), 'modal hidden')
-        start()
+        done()
       })
       .bootstrapModal('toggle')
   })
 
-  test('should remove from dom when click [data-dismiss="modal"]', function () {
-    stop()
+  test('should remove from dom when click [data-dismiss="modal"]', function (assert) {
+    var done = assert.async()
 
     $('<div id="modal-test"><span class="close" data-dismiss="modal"/></div>')
       .on('shown.bs.modal', function () {
@@ -113,13 +113,13 @@ $(function () {
       })
       .on('hidden.bs.modal', function () {
         ok(!$('#modal-test').is(':visible'), 'modal hidden')
-        start()
+        done()
       })
       .bootstrapModal('toggle')
   })
 
-  test('should allow modal close with "backdrop:false"', function () {
-    stop()
+  test('should allow modal close with "backdrop:false"', function (assert) {
+    var done = assert.async()
 
     $('<div id="modal-test" data-backdrop="false"/>')
       .on('shown.bs.modal', function () {
@@ -128,13 +128,13 @@ $(function () {
       })
       .on('hidden.bs.modal', function () {
         ok(!$('#modal-test').is(':visible'), 'modal hidden')
-        start()
+        done()
       })
       .bootstrapModal('show')
   })
 
-  test('should close modal when clicking outside of modal-content', function () {
-    stop()
+  test('should close modal when clicking outside of modal-content', function (assert) {
+    var done = assert.async()
 
     $('<div id="modal-test"><div class="contents"/></div>')
       .on('shown.bs.modal', function () {
@@ -145,13 +145,13 @@ $(function () {
       })
       .on('hidden.bs.modal', function () {
         ok(!$('#modal-test').is(':visible'), 'modal hidden')
-        start()
+        done()
       })
       .bootstrapModal('show')
   })
 
-  test('should close modal when escape key is pressed via keydown', function () {
-    stop()
+  test('should close modal when escape key is pressed via keydown', function (assert) {
+    var done = assert.async()
 
     var div = $('<div id="modal-test"/>')
     div
@@ -163,14 +163,14 @@ $(function () {
         setTimeout(function () {
           ok(!$('#modal-test').is(':visible'), 'modal hidden')
           div.remove()
-          start()
+          done()
         }, 0)
       })
       .bootstrapModal('show')
   })
 
-  test('should not close modal when escape key is pressed via keyup', function () {
-    stop()
+  test('should not close modal when escape key is pressed via keyup', function (assert) {
+    var done = assert.async()
 
     var div = $('<div id="modal-test"/>')
     div
@@ -182,14 +182,14 @@ $(function () {
         setTimeout(function () {
           ok($('#modal-test').is(':visible'), 'modal still visible')
           div.remove()
-          start()
+          done()
         }, 0)
       })
       .bootstrapModal('show')
   })
 
-  test('should trigger hide event once when clicking outside of modal-content', function () {
-    stop()
+  test('should trigger hide event once when clicking outside of modal-content', function (assert) {
+    var done = assert.async()
 
     var triggered
 
@@ -201,13 +201,13 @@ $(function () {
       .on('hide.bs.modal', function () {
         triggered += 1
         strictEqual(triggered, 1, 'modal hide triggered once')
-        start()
+        done()
       })
       .bootstrapModal('show')
   })
 
-  test('should close reopened modal with [data-dismiss="modal"] click', function () {
-    stop()
+  test('should close reopened modal with [data-dismiss="modal"] click', function (assert) {
+    var done = assert.async()
 
     $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"/></div></div>')
       .on('shown.bs.modal', function () {
@@ -217,15 +217,15 @@ $(function () {
       .one('hidden.bs.modal', function () {
         $(this)
           .one('hidden.bs.modal', function () {
-            start()
+            done()
           })
           .bootstrapModal('show')
       })
       .bootstrapModal('show')
   })
 
-  test('should restore focus to toggling element when modal is hidden after having been opened via data-api', function () {
-    stop()
+  test('should restore focus to toggling element when modal is hidden after having been opened via data-api', function (assert) {
+    var done = assert.async()
 
     var $toggleBtn = $('<button data-toggle="modal" data-target="#modal-test"/>').appendTo('#qunit-fixture')
 
@@ -233,7 +233,7 @@ $(function () {
       .on('hidden.bs.modal', function () {
         setTimeout(function () {
           ok($(document.activeElement).is($toggleBtn), 'toggling element is once again focused')
-          start()
+          done()
         }, 0)
       })
       .on('shown.bs.modal', function () {
@@ -244,8 +244,8 @@ $(function () {
     $toggleBtn.click()
   })
 
-  test('should not restore focus to toggling element if the associated show event gets prevented', function () {
-    stop()
+  test('should not restore focus to toggling element if the associated show event gets prevented', function (assert) {
+    var done = assert.async()
     var $toggleBtn = $('<button data-toggle="modal" data-target="#modal-test"/>').appendTo('#qunit-fixture')
     var $otherBtn = $('<button id="other-btn"/>').appendTo('#qunit-fixture')
 
@@ -260,7 +260,7 @@ $(function () {
       .on('hidden.bs.modal', function () {
         setTimeout(function () {
           ok($(document.activeElement).is($otherBtn), 'focus returned to toggling element')
-          start()
+          done()
         }, 0)
       })
       .on('shown.bs.modal', function () {
