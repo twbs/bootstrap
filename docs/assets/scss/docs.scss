@@ -407,9 +407,10 @@ body {
   .bs-docs-masthead {
     .carbonad {
       float: none;
-      margin: 0 !important;
+      margin: 0 auto !important;
       color: $bs-purple-light !important;
-      border-color: #866ab3 !important;
+      background: transparent !important;
+      border: 1px solid #866ab3 !important;
     }
     .carbonad-text a,
     .carbonad-tag a {
