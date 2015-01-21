@@ -3,7 +3,7 @@ layout: page
 title: Custom forms
 ---
 
-In the interest of customization and cross browser consistency, Bootstrap include a handful of customized form elements. They're solid replacements for default form controls as they're built on top of semantic and accessible markup.
+In the interest of customization and cross browser consistency, Bootstrap include a handful of customized form elements. They're built on top of semantic and accessible markup, so they're solid replacements for default form controls.
 
 ## Checkboxes and radios
 
