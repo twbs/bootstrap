@@ -789,6 +789,10 @@ body {
 //
 
 .bs-docs-content {
+  > h1 {
+    font-size: 4rem;
+  }
+  
   > h2 {
     margin-top: 3rem;
     font-weight: normal;
