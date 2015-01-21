@@ -210,13 +210,18 @@ $(function () {
     var done = assert.async()
 
     $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"/></div></div>')
-      .on('shown.bs.modal', function () {
+      .one('shown.bs.modal', function () {
         $('#close').click()
-        ok(!$('#modal-test').is(':visible'), 'modal hidden')
       })
       .one('hidden.bs.modal', function () {
+        // after one open-close cycle
+        ok(!$('#modal-test').is(':visible'), 'modal hidden')
         $(this)
+          .one('shown.bs.modal', function () {
+            $('#close').click()
+          })
           .one('hidden.bs.modal', function () {
+            ok(!$('#modal-test').is(':visible'), 'modal hidden')
             done()
           })
           .bootstrapModal('show')
