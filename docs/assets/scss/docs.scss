@@ -325,7 +325,7 @@ body {
   width: auto !important;
   height: auto !important;
   padding: 1.25rem !important;
-  margin: 2rem -2rem -2rem !important;
+  margin: 0 -1rem 2rem !important;
   overflow: hidden; /* clearfix */
   font-size: .8rem !important;
   line-height: 1rem !important;
@@ -378,7 +378,7 @@ body {
 //   color: $bs-purple !important;
 // }
 
-@media (min-width: 480px) {
+@include media-breakpoint-up(sm) {
   .carbonad {
     width: 330px !important;
     margin: 1.5rem auto !important;
@@ -390,14 +390,14 @@ body {
   }
 }
 
-@media (min-width: 768px) {
+@include media-breakpoint-up(md) {
   .carbonad {
     margin-right: 0 !important;
     margin-left: 0 !important;
   }
 }
 
-@media (min-width: 992px) {
+@include media-breakpoint-up(lg) {
   .carbonad {
     float: right;
     width: 330px !important;
@@ -552,7 +552,7 @@ body {
 .bs-docs-container {
   position: relative;
   max-width: 62rem;
-  padding: 1rem;
+  padding: 0 1rem 1rem;
   margin-right: auto;
   margin-left: auto;
 
@@ -700,10 +700,6 @@ body {
 }
 
 
-.bs-docs-sidenav {
-  display: none;
-}
-
 .bs-docs-toc-link {
   display: block;
   padding: 4px 20px;
@@ -789,10 +785,6 @@ body {
 //
 
 .bs-docs-content {
-  > h1 {
-    font-size: 4rem;
-  }
-  
   > h2 {
     margin-top: 3rem;
     font-weight: normal;
@@ -804,12 +796,18 @@ body {
 }
 
 .bs-docs-title {
-  margin-right: 23rem;
-
   + p {
-    margin-right: 23rem;
     font-size: 1.25rem;
     font-weight: 300;
+  }
+
+  @include media-breakpoint-up(sm) {
+    margin-right: 23rem;
+    font-size: 4rem;
+
+    + p {
+      margin-right: 23rem;
+    }
   }
 }
 
@@ -954,14 +952,15 @@ body {
 
 .bs-example {
   position: relative;
-  padding: 1.5rem;
-  margin-top: 1rem;
-  margin-bottom: -1rem;
+  padding: 1rem;
+  margin: 1rem -1rem;
   border: solid #f7f7f9;
   border-width: .2rem 0 0;
   @include clearfix();
 
-  @media (min-width: 480px) {
+  @include media-breakpoint-up(sm) {
+    margin-bottom: -1rem;
+    padding: 1.5rem;
     border-width: .2rem;
   }
 
@@ -1211,10 +1210,14 @@ body {
 //
 
 .highlight {
-  padding: 1.5rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  padding: 1rem;
+  margin: -1rem -1rem 1rem;
   background-color: #f7f7f9;
+
+  @include media-breakpoint-up(sm) {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
 }
 .highlight pre {
   padding: 0;
