@@ -436,8 +436,8 @@
     clearTimeout(this.timeout)
     this.hide(function () {
       that.$element.off('.' + that.type).removeData('bs.' + that.type)
-	  that.$tip = null
-	  that.$arrow = null
+      that.$tip = null
+      that.$arrow = null
     })
   }
 
