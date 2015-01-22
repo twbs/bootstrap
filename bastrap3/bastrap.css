@@ -1094,10 +1094,16 @@ a.list-group-item.active > .badge {
   border-bottom: solid 1px;
   border-radius: 0;
   position: relative;
-  -ms-behavior: url(../bastrap3/pie.htc);
   text-shadow: none;
   background-color: transparent;
-  min-height: 48px; }
+  min-height: 48px; 
+  -ms-behavior: url(../bastrap3/pie.htc);
+}
+
+.lt-ie9 .navbar {
+  top: 0;
+  height: 48px;
+}
 
 .navbar-static-top,
 .navbar-fixed-top,
@@ -1691,10 +1697,17 @@ ul.affix-bottom {
 
 .jumbotron-small .container {
   padding-top: 0;
-  padding-bottom: 0; }
+  padding-bottom: 0; 
+}
 
 .jumbotron-small .navbar {
   margin-bottom: 0; }
+
+.lt-ie9 .jumbotron .navbar {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0; }
 
 /* footer */
 .footer {
@@ -1982,8 +1995,8 @@ ul.affix-bottom {
   background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, .6) 0, transparent 100%);
   background-image: linear-gradient(to top, rgba(0, 0, 0, .6) 0, transparent 100%);
   width: 100%;
-  left: 0;
-  right: 0;
+  left: 0 !important;
+  right: 0 !important;
   bottom: 0;
   text-align: left;
   padding: 30px 30px 0 30px;
@@ -2342,7 +2355,6 @@ a.list-group-item:focus {
   background-size: cover;
   overflow: auto;
   border-bottom: 0; 
-  -ms-behavior: url(../bastrap3/backgroundsize.min.htc);
   -ms-behavior: url(../bastrap3/backgroundsize.min.htc);
 }
 

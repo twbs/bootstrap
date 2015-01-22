@@ -93,9 +93,12 @@ margin: 20px;
 
 .jumbotron-home {
   background-image:url(../docs/home.jpg);
+  -ms-behavior: url(bastrap3/backgroundsize.min.htc);
 }
+
 .jumbotron-misc {
   background-image:url(../docs/misc.jpg);
+  -ms-behavior: url(bastrap3/backgroundsize.min.htc);
 }
 
 /* colores */
@@ -237,9 +240,52 @@ margin: 20px;
 
 
 
+/* IE polyfill uri fix */
 
+.btn-group-xl > .btn, .btn-xl,
+.badge,
+.navbar,
+.pagination > li > a,
+.pagination > li > span,
+.pagination > li > a:hover,
+.pagination > li > a:focus,
+.pager li > a,
+.pager li > span,
+.label,
+.media img,
+.carousel,
+.carousel-inner,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img,
+.jumbotron > .carousel .carousel-inner,
+.shortcut,
+.shortcut span,
+.panel,
+.list-grou,
+.list-group-panel-body .list-group-item:first-child,
+.list-thumb > div,
+.list-group-content,
+.list-group-content .list-group-item,
+.list-group-full .list-group-item,
+.alert-spot,
+.panel-group .panel-heading + .panel-collapse .panel-body,
+.panel-group .panel + .panel,
+#accordion,
+#accordion .panel:first-child,
+#accordion .panel-heading {
+  -ms-behavior: url(bastrap3/pie.htc);
+}
 
-
+.bac-header,
+.bac-footer,
+.bavos-footer,
+.ba-btn,
+.jumbotron,
+.list-heading-img,
+.list-thumb > div,
+.list-img {
+  -ms-behavior: url(bastrap3/backgroundsize.min.htc);
+}
 
 
 
