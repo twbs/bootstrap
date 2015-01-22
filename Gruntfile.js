@@ -479,9 +479,10 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('commonjs', 'Generate CommonJS entrypoint module in dist dir.', function () {
-    var srcFiles = grunt.config.get('concat.bootstrap.src');
+    var srcFilePath = 'dist/js/bootstrap.js';
     var destFilepath = 'dist/js/npm.js';
-    generateCommonJSModule(grunt, srcFiles, destFilepath);
+
+    generateCommonJSModule(grunt, srcFilePath, destFilepath);
   });
 
   // Docs task.
