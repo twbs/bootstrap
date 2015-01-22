@@ -1578,12 +1578,3 @@ h1[id] {
   -webkit-box-shadow: 0 0 8px rgba(82,168,236,.6);
           box-shadow: 0 0 8px rgba(82,168,236,.6);
 }
-
-/* AnchorJS overrides */
-.anchorjs-link:link,
-.anchorjs-link:visited,
-.anchorjs-link:hover,
-.anchorjs-link:active {
-  color: #563d7c;
-  text-decoration: none;
-}
