@@ -10,11 +10,6 @@ module.exports = function generateCommonJSModule(grunt, srcFilePath, destFilepat
   var moduleOutputJs = COMMONJS_BANNER;
   var fileContent;
 
-//  function srcPathToDestRequire(srcFilepath) {
-//    var requirePath = path.relative(destDir, srcFilepath).replace(/\\/g, '/');
-//    return 'require(\'' + requirePath + '\')';
-//  }
-//  var  + srcFiles.map(srcPathToDestRequire).join('\n');
   try {
     fileContent = fs.readFileSync(srcFile);
   }
