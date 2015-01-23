@@ -1,7 +1,7 @@
 <div class="bs-docs-section">
   <h1 id="dropdowns" class="page-header">Dropdowns</h1>
 
-  <p class="lead">Toggleable, contextual menu for displaying lists of links. Made interactive with the <a href="../javascript/#dropdowns">dropdown JavaScript plugin</a>. Dropdowns can use the <a href="../components/#btn-dropdowns-dropup">dropup variation</a>.</p>
+  <p class="lead">Toggleable, contextual menu for displaying lists of links. Made interactive with the <a href="../javascript/#dropdowns">dropdown JavaScript plugin</a>.</p>
 
   <h3 id="dropdowns-example">Example</h3>
   <p>Wrap the dropdown's trigger and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Then add the menu's HTML.</p>
@@ -20,6 +20,38 @@
   </div><!-- /example -->
 {% highlight html %}
 <div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+    Dropdown
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+  </ul>
+</div>
+{% endhighlight %}
+
+  <h3>Dropup Variation</h3> 
+  <p>Trigger dropdown menus above elements by adding <code>.dropup</code> to the parent.</p>
+
+  <h3 id="dropdowns-dropup-variation">Example</h3>
+  <div class="bs-example" data-example-id="static-dropdown">
+    <div class="dropup clearfix">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Dropdown
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+      </ul>
+    </div>
+  </div><!-- /example -->
+{% highlight html %}
+<div class="dropup">
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
     Dropdown
     <span class="caret"></span>
