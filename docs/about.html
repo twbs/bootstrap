@@ -1,0 +1,127 @@
+---
+layout: default
+title: About
+slug: about
+lead: "Learn about the project's history, meet the maintaining teams, and find out how to use the Bootstrap brand."
+---
+
+
+<!-- History
+================================================== -->
+<div class="bs-docs-section">
+  <h1 id="history" class="page-header">History</h1>
+
+  <p class="lead">Originally created by a designer and a developer at Twitter, Bootstrap has become one of the most popular front-end frameworks and open source projects in the world.</p>
+  <p>Bootstrap was created at Twitter in mid-2010 by <a href="https://twitter.com/mdo">@mdo</a> and <a href="https://twitter.com/fat">@fat</a>. Prior to being an open-sourced framework, Bootstrap was known as <em>Twitter Blueprint</em>. A few months into development, Twitter held its <a href="https://blog.twitter.com/2010/hack-week">first Hack Week</a> and the project exploded as developers of all skill levels jumped in without any external guidance. It served as the style guide for internal tools development at the company for over a year before its public release, and continues to do so today.</p>
+  <p>Originally <a href="https://dev.twitter.com/blog/bootstrap-twitter">released</a> on <a href="https://twitter.com/mdo/statuses/104620039650557952"><time datetime="2011-08-19 11:25">Friday, August 19, 2011</time></a>, we've since had over <a href="https://github.com/twbs/bootstrap/releases">twenty releases</a>, including two major rewrites with v2 and v3. With Bootstrap 2, we added responsive functionality to the entire framework as an optional stylesheet. Building on that with Bootstrap 3, we rewrote the library once more to make it responsive by default with a mobile first approach.</p>
+</div>
+
+
+<!-- Team
+================================================== -->
+<div class="bs-docs-section">
+  <h1 id="team" class="page-header">Team</h1>
+
+  <p class="lead">Bootstrap is maintained by the founding team and a small group of invaluable core contributors, with the massive support and involvement of our community.</p>
+
+  <h2 id="team-core">Core team</h2>
+  <div class="list-group bs-team">
+    {% for member in site.data.core-team %}
+      <div class="list-group-item">
+        <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user={{ member.user }}&amp;type=follow"></iframe>
+        <a class="team-member" href="https://github.com/{{ member.user }}">
+          <img src="http://www.gravatar.com/avatar/{{ member.gravatar }}" alt="@{{ member.user }}" width="32" height="32">
+          <strong>{{ member.name }}</strong> <small>@{{ member.user }}</small>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+  <p>Get involved with Bootstrap development by <a href="https://github.com/twbs/bootstrap/issues/new">opening an issue</a> or submitting a pull request. Read our <a href="https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md">contributing guidelines</a> for information on how we develop.</p>
+
+  <h2 id="team-sass">Sass team</h2>
+  <div class="list-group bs-team">
+    {% for member in site.data.sass-team %}
+      <div class="list-group-item">
+        <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user={{ member.user }}&amp;type=follow"></iframe>
+        <a class="team-member" href="https://github.com/{{ member.user }}">
+          <img src="http://www.gravatar.com/avatar/{{ member.gravatar }}" alt="@{{ member.user }}">
+          <strong>{{ member.name }}</strong> <small>@{{ member.user }}</small>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+  <p>The <a href="{{ site.sass_repo }}">official Sass port of Bootstrap</a> was created and is maintained by this team. It became part of Bootstrap's organization with v3.1.0. Read the Sass <a href="https://github.com/twbs/bootstrap-sass/blob/master/CONTRIBUTING.md">contributing guidelines</a> for information on how the Sass port is developed.</p>
+</div>
+
+
+<!-- Brand
+================================================== -->
+<div class="bs-docs-section">
+  <h1 id="brand" class="page-header">Brand guidelines</h1>
+
+  <p class="lead">Have a need for Bootstrap's brand resources? Great! We have only a few guidelines we follow, and in turn ask you to follow as well. These guidelines were inspired by MailChimp's <a href="http://mailchimp.com/about/brand-assets/" target="_blank">Brand Assets</a>.</p>
+
+  <h2>Mark and logo</h2>
+  <p>Use either the Bootstrap mark (a capital <strong>B</strong>) or the standard logo (just <strong>Bootstrap</strong>). It should always appear in Helvetica Neue Bold. <strong>Do not use the Twitter bird</strong> in association with Bootstrap.</p>
+  <div class="bs-brand-logos">
+    <div class="bs-brand-item">
+      <div class="bs-docs-booticon bs-docs-booticon-lg">B</div>
+    </div>
+    <div class="bs-brand-item inverse">
+      <div class="bs-docs-booticon bs-docs-booticon-lg bs-docs-booticon-inverse">B</div>
+    </div>
+  </div>
+  <div class="bs-brand-logos">
+    <div class="bs-brand-item">
+      <h1>Bootstrap</h1>
+    </div>
+    <div class="bs-brand-item inverse">
+      <h1>Bootstrap</h1>
+    </div>
+  </div>
+
+  <h2>Download mark</h2>
+  <p>Download the Bootstrap mark in one of three styles, each available as an SVG file. Right click, Save as.</p>
+  <div class="bs-brand-logos">
+    <div class="bs-brand-item">
+      <img class="svg" src="../assets/brand/bootstrap-solid.svg" alt="Bootstrap" width="144" height="144">
+    </div>
+    <div class="bs-brand-item inverse">
+      <img class="svg" src="../assets/brand/bootstrap-outline.svg" alt="Bootstrap" width="144" height="144">
+    </div>
+    <div class="bs-brand-item inverse">
+      <img class="svg" src="../assets/brand/bootstrap-punchout.svg" alt="Bootstrap" width="144" height="144">
+    </div>
+  </div>
+
+  <h2>Name</h2>
+  <p>The project and framework should always be referred to as <strong>Bootstrap</strong>. No Twitter before it, no capital <em>s</em>, and no abbreviations except for one, a capital <strong>B</strong>.</p>
+  <div class="bs-brand-logos">
+    <div class="bs-brand-item">
+      <h3>Bootstrap</h3>
+      <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+      <span class="sr-only">(correct)</span>
+    </div>
+    <div class="bs-brand-item">
+      <h3 class="text-muted">BootStrap</h3>
+      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      <span class="sr-only">(incorrect)</span>
+    </div>
+    <div class="bs-brand-item">
+      <h3 class="text-muted">Twitter Bootstrap</h3>
+      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      <span class="sr-only">(incorrect)</span>
+    </div>
+  </div>
+
+  <h2>Colors</h2>
+  <p>Our docs and branding use a handful of primary colors to differentiate what <em>is</em> Bootstrap from what <em>is in</em> Bootstrap. In other words, if it's purple, it's representative of Bootstrap.</p>
+  <div class="bs-brand">
+    <div class="color-swatches">
+      <div class="color-swatch bs-purple"></div>
+      <div class="color-swatch bs-purple-light"></div>
+      <div class="color-swatch bs-purple-lighter"></div>
+      <div class="color-swatch bs-gray"></div>
+    </div>
+  </div>
+</div>
