@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Bootstrap Plugin Test Suite</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- jQuery -->
     <script src="vendor/jquery.min.js"></script>
@@ -10,34 +11,50 @@
     <!-- QUnit -->
     <link rel="stylesheet" href="vendor/qunit.css" media="screen">
     <script src="vendor/qunit.js"></script>
+    <style>
+      #qunit-tests > li.pass {
+        display: none;/* Make it easier to see failing tests in Sauce screencasts */
+      }
+
+      #qunit-fixture {
+        top: 0;
+        left: 0;
+      }
+    </style>
     <script>
       // See https://github.com/axemclion/grunt-saucelabs#test-result-details-with-qunit
       var log = []
-      QUnit.done = function (test_results) {
-        var tests = log.map(function (details) {
-          return {
+      QUnit.done(function (testResults) {
+        var tests = []
+        for (var i = 0, len = log.length; i < len; i++) {
+          var details = log[i]
+          tests.push({
             name: details.name,
             result: details.result,
             expected: details.expected,
             actual: details.actual,
             source: details.source
-          }
-        })
-        test_results.tests = tests
+          })
+        }
+        testResults.tests = tests
 
-        // Delaying results a bit because in real-world scenario you won't get them immediately
-        setTimeout(function () {
-          window.global_test_results = test_results
-        }, 2000)
-      }
+        window.global_test_results = testResults
+      })
 
       QUnit.testStart(function (testDetails) {
+        $(window).scrollTop(0)
         QUnit.log = function (details) {
           if (!details.result) {
             details.name = testDetails.name
             log.push(details)
           }
         }
+      })
+
+      // Cleanup
+      QUnit.testDone(function () {
+        $('#qunit-fixture').empty()
+        $('#modal-test, .modal-backdrop').remove()
       })
     </script>
 
@@ -70,7 +87,7 @@
 
   </head>
   <body>
-    <div>
+    <div id="qunit-container">
       <div id="qunit"></div>
       <div id="qunit-fixture"></div>
     </div>

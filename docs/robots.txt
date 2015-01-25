@@ -1,5 +1,4 @@
 ---
-layout: nil
 ---
 
 # www.robotstxt.org/

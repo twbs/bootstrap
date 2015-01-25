@@ -1,16 +1,17 @@
 <div class="bs-docs-section">
   <h1 id="carousel" class="page-header">Carousel <small>carousel.js</small></h1>
 
+  <p>A slideshow component for cycling through elements, like a carousel. <strong>Nested carousels are not supported.</strong></p>
+
   <h2 id="carousel-examples">Examples</h2>
-  <p>The slideshow below shows a generic plugin and component for cycling through elements like a carousel.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-carousel">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
         <li data-target="#carousel-example-generic" data-slide-to="1"></li>
         <li data-target="#carousel-example-generic" data-slide-to="2"></li>
       </ol>
-      <div class="carousel-inner">
+      <div class="carousel-inner" role="listbox">
         <div class="item active">
           <img data-src="holder.js/900x500/auto/#777:#555/text:First slide" alt="First slide">
         </div>
@@ -22,10 +23,12 @@
         </div>
       </div>
       <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
       </a>
       <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
       </a>
     </div>
   </div><!-- /example -->
@@ -39,7 +42,7 @@
   </ol>
 
   <!-- Wrapper for slides -->
-  <div class="carousel-inner">
+  <div class="carousel-inner" role="listbox">
     <div class="item active">
       <img src="..." alt="...">
       <div class="carousel-caption">
@@ -57,29 +60,41 @@
 
   <!-- Controls -->
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
   </a>
   <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
   </a>
 </div>
 {% endhighlight %}
+
+  <div class="bs-callout bs-callout-danger" id="callout-carousel-accessibility">
+    <h4>Accessibility issue</h4>
+    <p>The carousel component is generally not compliant with accessibility standards. If you need to be compliant, please consider other options for presenting your content.</p>
+  </div>
 
   <div class="bs-callout bs-callout-warning" id="callout-carousel-transitions">
     <h4>Transition animations not supported in Internet Explorer 8 &amp; 9</h4>
     <p>Bootstrap exclusively uses CSS3 for its animations, but Internet Explorer 8 &amp; 9 don't support the necessary CSS properties. Thus, there are no slide transition animations when using these browsers. We have intentionally decided not to include jQuery-based fallbacks for the transitions.</p>
   </div>
 
+  <div class="bs-callout bs-callout-warning" id="callout-carousel-active">
+    <h4>Initial active element required</h4>
+    <p>The <code>.active</code> class needs to be added to one of the slides. Otherwise, the carousel will not be visible.</p>
+  </div>
+
   <h3>Optional captions</h3>
   <p>Add captions to your slides easily with the <code>.carousel-caption</code> element within any <code>.item</code>. Place just about any optional HTML within there and it will be automatically aligned and formatted.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="carousel-with-captions">
     <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
         <li data-target="#carousel-example-captions" data-slide-to="1"></li>
         <li data-target="#carousel-example-captions" data-slide-to="2"></li>
       </ol>
-      <div class="carousel-inner">
+      <div class="carousel-inner" role="listbox">
         <div class="item active">
           <img data-src="holder.js/900x500/auto/#777:#777" alt="First slide image">
           <div class="carousel-caption">
@@ -103,10 +118,12 @@
         </div>
       </div>
       <a class="left carousel-control" href="#carousel-example-captions" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
       </a>
       <a class="right carousel-control" href="#carousel-example-captions" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
       </a>
     </div>
   </div><!-- /example -->
@@ -120,11 +137,6 @@
 </div>
 {% endhighlight %}
 
-  <div class="bs-callout bs-callout-danger">
-    <h4>Accessibility issue</h4>
-    <p>The carousel component is generally not compliant with accessibility standards. If you need to be compliant, please consider other options for presenting your content.</p>
-  </div>
-
   <h2 id="carousel-usage">Usage</h2>
 
   <h3>Multiple carousels</h3>
@@ -132,7 +144,7 @@
 
   <h3>Via data attributes</h3>
   <p>Use data attributes to easily control the position of the carousel. <code>data-slide</code> accepts the keywords <code>prev</code> or <code>next</code>, which alters the slide position relative to its current position. Alternatively, use <code>data-slide-to</code> to pass a raw slide index to the carousel <code>data-slide-to="2"</code>, which shifts the slide position to a particular index beginning with <code>0</code>.</p>
-  <p>The <code>data-ride="carousel"</code> attribute is used to mark a carousel as animating starting at page load.</p>
+  <p>The <code>data-ride="carousel"</code> attribute is used to mark a carousel as animating starting at page load. <strong class="text-danger">It cannot be used in combination with (redundant and unnecessary) explicit JavaScript initialization of the same carousel.</strong></p>
 
   <h3>Via JavaScript</h3>
   <p>Call carousel manually with:</p>
@@ -140,15 +152,15 @@
 $('.carousel').carousel()
 {% endhighlight %}
 
-  <h3>Options</h3>
+  <h3 id="carousel-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-interval=""</code>.</p>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped js-options-table">
       <thead>
        <tr>
-         <th style="width: 100px;">Name</th>
-         <th style="width: 50px;">type</th>
-         <th style="width: 50px;">default</th>
+         <th>Name</th>
+         <th>type</th>
+         <th>default</th>
          <th>description</th>
        </tr>
       </thead>
@@ -171,11 +183,17 @@ $('.carousel').carousel()
          <td>true</td>
          <td>Whether the carousel should cycle continuously or have hard stops.</td>
        </tr>
+       <tr>
+         <td>keyboard</td>
+         <td>boolean</td>
+         <td>true</td>
+         <td>Whether the carousel should react to keyboard events.</td>
+       </tr>
       </tbody>
     </table>
   </div><!-- /.table-responsive -->
 
-  <h3>Methods</h3>
+  <h3 id="carousel-methods">Methods</h3>
 
   <h4>.carousel(options)</h4>
   <p>Initializes the carousel with an optional options <code>object</code> and starts cycling through items.</p>
@@ -201,7 +219,7 @@ $('.carousel').carousel({
   <h4>.carousel('next')</h4>
   <p>Cycles to the next item.</p>
 
-  <h3>Events</h3>
+  <h3 id="carousel-events">Events</h3>
   <p>Bootstrap's carousel class exposes two events for hooking into carousel functionality.</p>
   <p>Both events have the following additional properties:</p>
   <ul>
@@ -209,10 +227,10 @@ $('.carousel').carousel({
     <li><code>relatedTarget</code>: The DOM element that is being slid into place as the active item.</li>
   </ul>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped bs-events-table">
       <thead>
        <tr>
-         <th style="width: 150px;">Event Type</th>
+         <th>Event Type</th>
          <th>Description</th>
        </tr>
       </thead>

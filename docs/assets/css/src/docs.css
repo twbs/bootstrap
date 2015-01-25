@@ -9,27 +9,6 @@
 /*
  * Bootstrap Documentation
  * Special styles for presenting Bootstrap's documentation and code examples.
- *
- * Table of contents:
- *
- * Scaffolding
- * Main navigation
- * Footer
- * Social buttons
- * Homepage
- * Page headers
- * Old docs callout
- * Ads
- * Side navigation
- * Docs sections
- * Callouts
- * Grid styles
- * Examples
- * Code snippets (highlight)
- * Responsive tests
- * Glyphicons
- * Customizer
- * Miscellaneous
  */
 
 
@@ -111,6 +90,26 @@ body {
 
 
 /*
+ * Fancy skip link
+ *
+ * Make it look a bit less "bare bones"
+ */
+
+#skippy {
+  display: block;
+  padding: 1em;
+  color: #fff;
+  background-color: #6f5499;
+  outline: 0;
+}
+
+#skippy .skiplink-text {
+  padding: .5em;
+  outline: 1px dotted;
+}
+
+
+/*
  * Main navigation
  *
  * Turn the `.navbar` at the top of the docs purple.
@@ -158,14 +157,13 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   margin-top: 100px;
-  color: #777;
+  color: #767676;
   text-align: center;
   border-top: 1px solid #e5e5e5;
 }
 .bs-docs-footer-links {
   padding-left: 0;
   margin-top: 20px;
-  color: #999;
 }
 .bs-docs-footer-links li {
   display: inline;
@@ -458,22 +456,12 @@ body {
   color: #333;
 }
 .bs-docs-featurette-img:hover {
-  color: #428bca;
+  color: #337ab7;
   text-decoration: none;
 }
 .bs-docs-featurette-img img {
   display: block;
   margin-bottom: 15px;
-}
-
-/* Featured sites */
-.bs-docs-featured-sites {
-  margin-right: -1px;
-  margin-left: -1px;
-}
-.bs-docs-featured-sites .col-sm-3 {
-  padding-right: 1px;
-  padding-left: 1px;
 }
 
 @media (min-width: 480px) {
@@ -494,6 +482,30 @@ body {
     margin-right: auto;
     margin-left: auto;
   }
+  .bs-docs-featurette .img-responsive {
+    margin-top: 0;
+  }
+}
+
+
+/*
+ * Featured sites
+ *
+ * Homepage thumbnails from the Expo.
+ */
+
+.bs-docs-featured-sites {
+  margin-right: -1px;
+  margin-left: -1px;
+}
+.bs-docs-featured-sites .col-xs-6 {
+  padding: 1px;
+}
+.bs-docs-featured-sites .img-responsive {
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
   .bs-docs-featured-sites .col-sm-3:first-child img {
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -502,9 +514,33 @@ body {
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
   }
+}
 
-  .bs-docs-featurette .img-responsive {
-    margin-top: 0;
+
+/*
+ * Examples
+ *
+ * Linked docs examples.
+ */
+
+.bs-examples .thumbnail {
+  margin-bottom: 10px;
+}
+.bs-examples h4 {
+  margin-bottom: 5px;
+}
+.bs-examples p {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 480px) {
+  .bs-examples {
+    margin-right: -10px;
+    margin-left: -10px;
+  }
+  .bs-examples > [class^="col-"] {
+    padding-right: 10px;
+    padding-left: 10px;
   }
 }
 
@@ -538,7 +574,7 @@ body {
   padding: 4px 20px;
   font-size: 13px;
   font-weight: 500;
-  color: #999;
+  color: #767676;
 }
 .bs-docs-sidebar .nav > li > a:hover,
 .bs-docs-sidebar .nav > li > a:focus {
@@ -693,22 +729,22 @@ h1[id] {
 
 /* Variations */
 .bs-callout-danger {
-  border-left-color: #d9534f;
+  border-left-color: #ce4844;
 }
 .bs-callout-danger h4 {
-  color: #d9534f;
+  color: #ce4844;
 }
 .bs-callout-warning {
-  border-left-color: #f0ad4e;
+  border-left-color: #aa6708;
 }
 .bs-callout-warning h4 {
-  color: #f0ad4e;
+  color: #aa6708;
 }
 .bs-callout-info {
-  border-left-color: #5bc0de;
+  border-left-color: #1b809e;
 }
 .bs-callout-info h4 {
-  color: #5bc0de;
+  color: #1b809e;
 }
 
 
@@ -754,7 +790,7 @@ h1[id] {
   background-color: #eee;
 }
 .color-swatches .brand-primary {
-  background-color: #428bca;
+  background-color: #337ab7;
 }
 .color-swatches .brand-success {
   background-color: #5cb85c;
@@ -813,6 +849,21 @@ h1[id] {
 
 
 /*
+ * Wall of Browser Bugs
+ *
+ * Better display for the responsive table on the Wall of Browser Bugs.
+ */
+
+.bs-docs-browser-bugs td p {
+  margin-bottom: 0;
+}
+
+.bs-docs-browser-bugs th:first-child {
+  width: 18%;
+}
+
+
+/*
  * Grid examples
  *
  * Highlight the grid columns within the docs so folks can see their padding,
@@ -843,7 +894,6 @@ h1[id] {
   position: relative;
   padding: 45px 15px 15px;
   margin: 0 -15px 15px;
-  background-color: #fafafa;
   border-color: #e5e5e5 #eee #eee;
   border-style: solid;
   border-width: 1px 0;
@@ -863,8 +913,13 @@ h1[id] {
   content: "Example";
 }
 
+.bs-example-padded-bottom {
+  padding-bottom: 24px;
+}
+
 /* Tweak display of the code snippets when following an example */
-.bs-example + .highlight {
+.bs-example + .highlight,
+.bs-example + .zero-clipboard + .highlight {
   margin: -15px -15px 15px;
   border-width: 0 0 1px;
   border-radius: 0;
@@ -882,13 +937,17 @@ h1[id] {
     -webkit-box-shadow: none;
             box-shadow: none;
   }
-  .bs-example + .highlight {
+  .bs-example + .highlight,
+  .bs-example + .zero-clipboard + .highlight {
     margin-top: -16px;
     margin-right: 0;
     margin-left: 0;
     border-width: 1px;
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
+  }
+  .bs-example-standalone {
+    border-radius: 4px;
   }
 }
 
@@ -920,7 +979,7 @@ h1[id] {
 
 /* Typography */
 .bs-example-type .table .type-info {
-  color: #999;
+  color: #767676;
   vertical-align: middle;
 }
 .bs-example-type .table td {
@@ -1083,6 +1142,12 @@ h1[id] {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+.bs-example-tooltip .tooltip {
+  position: relative;
+  display: inline-block;
+  margin: 10px 20px;
+  opacity: 1;
+}
 
 /* Popovers */
 .bs-example-popover {
@@ -1105,6 +1170,33 @@ h1[id] {
   overflow: auto;
 }
 
+.bs-example > .nav-pills-stacked-example {
+  max-width: 300px;
+}
+
+/* Simple collapse example */
+#collapseExample .well {
+  margin-bottom: 0;
+}
+
+/* Don't wrap event names in Events tables in JS plugin docs */
+.bs-events-table > thead > tr > th:first-child,
+.bs-events-table > tbody > tr > td:first-child {
+  white-space: nowrap;
+}
+
+.bs-events-table > thead > tr > th:first-child {
+  width: 150px;
+}
+
+.js-options-table > thead > tr > th:nth-child(1),
+.js-options-table > thead > tr > th:nth-child(2) {
+  width: 100px;
+}
+
+.js-options-table > thead > tr > th:nth-child(3) {
+  width: 50px;
+}
 
 /*
  * Code snippets
@@ -1124,7 +1216,6 @@ h1[id] {
   margin-top: 0;
   margin-bottom: 0;
   word-break: normal;
-  word-wrap: nowrap;
   white-space: nowrap;
   background-color: transparent;
   border: 0;
@@ -1314,13 +1405,6 @@ h1[id] {
   font-weight: normal;
 }
 
-.bs-customizer-input {
-  float: left;
-  width: 33.333333%;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
 /* Downloads */
 .bs-customize-download .btn-outline {
   padding: 20px;
@@ -1359,6 +1443,35 @@ h1[id] {
           box-shadow: inset 0 2px 4px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
 }
 
+.bs-dropzone {
+  position: relative;
+  padding: 20px;
+  margin-bottom: 20px;
+  color: #777;
+  text-align: center;
+  border: 2px dashed #eee;
+  border-radius: 4px;
+}
+.bs-dropzone .import-header {
+  margin-bottom: 5px;
+}
+.bs-dropzone .glyphicon-download-alt {
+  font-size: 40px;
+}
+.bs-dropzone hr {
+  width: 100px;
+}
+.bs-dropzone .lead {
+  margin-bottom: 10px;
+  font-weight: normal;
+  color: #333;
+}
+/*.bs-dropzone*/ #import-manual-trigger {
+  cursor: pointer;
+}
+.bs-dropzone p:last-child {
+  margin-bottom: 0;
+}
 
 /*
  * Brand guidelines
@@ -1388,10 +1501,6 @@ h1[id] {
 .bs-brand-logos .inverse {
   color: #fff;
   background-color: #563d7c;
-}
-.bs-brand-item .svg {
-  width: 144px;
-  height: 144px;
 }
 
 /* Heading content within */
@@ -1437,34 +1546,6 @@ h1[id] {
 
 
 /*
- * Miscellaneous
- *
- * Odds and ends for optimum docs display.
- */
-
-/* Examples gallery: space out content better */
-.bs-examples .thumbnail {
-  margin-bottom: 10px;
-}
-.bs-examples h4 {
-  margin-bottom: 5px;
-}
-.bs-examples p {
-  margin-bottom: 20px;
-}
-
-/* Pseudo :focus state for showing how it looks in the docs */
-#focusedInput {
-  border-color: rgb(204,204,204); /* Restate unfocused value to make CSSLint happy that there's a pre-CSS3 fallback*/
-  border-color: rgba(82,168,236,.8);
-  outline: 0;
-  outline: thin dotted \9; /* IE6-9 */
-  -webkit-box-shadow: 0 0 8px rgba(82,168,236,.6);
-          box-shadow: 0 0 8px rgba(82,168,236,.6);
-}
-
-
-/*
  * ZeroClipboard styles
  */
 
@@ -1480,7 +1561,7 @@ h1[id] {
   display: block;
   padding: 5px 8px;
   font-size: 12px;
-  color: #777;
+  color: #767676;
   cursor: pointer;
   background-color: #fff;
   border: 1px solid #e1e1e8;
@@ -1496,4 +1577,25 @@ h1[id] {
   .zero-clipboard {
     display: block;
   }
+  .bs-example + .zero-clipboard .btn-clipboard {
+    top: -16px;
+    border-top-right-radius: 0;
+  }
+}
+
+
+/*
+ * Miscellaneous
+ *
+ * Odds and ends for optimum docs display.
+ */
+
+/* Pseudo :focus state for showing how it looks in the docs */
+#focusedInput {
+  border-color: rgb(204,204,204); /* Restate unfocused value to make CSSLint happy that there's a pre-CSS3 fallback*/
+  border-color: rgba(82,168,236,.8);
+  outline: 0;
+  outline: thin dotted \9; /* IE6-9 */
+  -webkit-box-shadow: 0 0 8px rgba(82,168,236,.6);
+          box-shadow: 0 0 8px rgba(82,168,236,.6);
 }

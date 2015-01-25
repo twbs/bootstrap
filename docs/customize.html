@@ -5,25 +5,44 @@ slug: customize
 lead: Customize Bootstrap's components, Less variables, and jQuery plugins to get your very own version.
 ---
 
+
 <!-- less.js isn't IE8-compatible and throws an exception during initialization, so our Blob compatibility check and error messaging code never get called in that case.
   So we use a conditional comment instead to inform folks about the lack of IE8 support.
-  The alert covers up the entire customizer UI.
 -->
 <!--[if lt IE 9]>
   <style>
     .bs-customizer,
+    .bs-customizer-import,
     .bs-docs-sidebar {
       display: none;
     }
   </style>
-  <div class="alert alert-danger bs-customizer-alert-ie">
+  <div class="alert alert-danger">
     <strong>The Bootstrap Customizer does not support IE9 and below.</strong><br>
     Please take a second to <a href="http://browsehappy.com/">upgrade to a more modern browser</a>.
   </div>
 <![endif]-->
 
 <!-- Customizer form -->
-<form class="bs-customizer" role="form">
+
+<div id="defaults-change-alert" class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Heads up!</strong> The default value for <code>@brand-primary</code> has changed in the latest release to improve contrast and accessibility. Please double check your compiled CSS when upgrading.
+</div>
+
+<div class="bs-docs-section bs-customizer-import">
+  <div id="import-drop-target" class="bs-dropzone">
+    <div class="import-header">
+      <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+    </div>
+    <p class="lead">Have an existing configuration? Upload your <code>config.json</code> to import it.</p>
+    <p>Drag and drop here, or <label id="import-manual-trigger" class="btn-link">manually upload<input type="file" id="import-file-select" class="hidden"></label>.</p>
+    <hr>
+    <p><strong>Don't have one?</strong> That's okay—just start customizing the fields below.</p>
+  </div>
+</div>
+
+<form class="bs-customizer">
   <div class="bs-docs-section" id="less-section">
     <button class="btn btn-default toggle" type="button">Toggle all</button>
     <h1 id="less" class="page-header">Less files</h1>
@@ -249,8 +268,6 @@ lead: Customize Bootstrap's components, Less variables, and jQuery plugins to ge
     </div><!-- /.row -->
   </div>
 
-
-
   <div class="bs-docs-section" id="plugin-section">
     <button class="btn btn-default toggle" type="button">Toggle all</button>
     <h1 id="plugins" class="page-header">jQuery plugins</h1>
@@ -348,8 +365,6 @@ lead: Customize Bootstrap's components, Less variables, and jQuery plugins to ge
     </div>
   </div>
 
-
-
   <div class="bs-docs-section" id="less-variables-section">
     <button class="btn btn-default toggle" type="button">Reset to defaults</button>
     <h1 id="less-variables" class="page-header">Less variables</h1>
@@ -358,12 +373,15 @@ lead: Customize Bootstrap's components, Less variables, and jQuery plugins to ge
     {% include customizer-variables.html %}
   </div>
 
-
-
   <div class="bs-docs-section">
     <h1 id="download" class="page-header">Download</h1>
 
     <p class="lead">Hooray! Your custom version of Bootstrap is now ready to be compiled. Just click the button below to finish the process.</p>
+    <div id="firefox-customizer-alert" class="alert alert-warning alert-dismissible fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4>Warning for Firefox users!</h4>
+      <p>Due to a possible browser bug, the customizer download randomly fails in Firefox. If this happens to you, we advise either retrying in Firefox or using one of the other browsers supported by the Customizer (Chrome or IE10+).</p>
+    </div>
     <div class="bs-customize-download">
       <button type="submit" id="btn-compile" disabled class="btn btn-block btn-lg btn-outline" onclick="ga('send', 'event', 'Customize', 'Download', 'Customize and Download');">Compile and Download</button>
     </div>

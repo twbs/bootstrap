@@ -7,6 +7,6 @@
     "rubygems": {
         "key": "../pseudo_Gemfile.lock",
         "cache": "$GEMDIR",
-        "generate": "gem install -N jekyll -v $JEKYLL_VERSION"
+        "generate": "gem install -N jekyll -v $JEKYLL_VERSION && gem install -N rouge -v $ROUGE_VERSION"
     }
 }
