@@ -334,8 +334,7 @@ module.exports = function (grunt) {
         relaxerror: [
           'Element img is missing required attribute src.',
           'Attribute autocomplete not allowed on element input at this point.',
-          'Attribute autocomplete not allowed on element button at this point.',
-          'Bad value separator for attribute role on element li.'
+          'Attribute autocomplete not allowed on element button at this point.'
         ]
       },
       files: {
