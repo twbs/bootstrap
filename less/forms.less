@@ -123,7 +123,7 @@ output {
   background-color: @input-bg;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid @input-border;
-  border-radius: @input-border-radius;
+  border-radius: @input-border-radius; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
   .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
   .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 
@@ -143,7 +143,7 @@ output {
   fieldset[disabled] & {
     cursor: @cursor-disabled;
     background-color: @input-bg-disabled;
-    opacity: 1; // iOS fix for unreadable disabled content
+    opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
   }
 
   // Reset height for `textarea`s
@@ -170,7 +170,7 @@ input[type="search"] {
 // In Mobile Safari, setting `display: block` on temporal inputs causes the
 // text within the input to become vertically misaligned. As a workaround, we
 // set a pixel line-height that matches the given height of the input, but only
-// for Safari.
+// for Safari. See https://bugs.webkit.org/show_bug.cgi?id=139848
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   input[type="date"],
@@ -178,18 +178,16 @@ input[type="search"] {
   input[type="datetime-local"],
   input[type="month"] {
     line-height: @input-height-base;
-  }
-  input[type="date"].input-sm,
-  input[type="time"].input-sm,
-  input[type="datetime-local"].input-sm,
-  input[type="month"].input-sm {
-    line-height: @input-height-small;
-  }
-  input[type="date"].input-lg,
-  input[type="time"].input-lg,
-  input[type="datetime-local"].input-lg,
-  input[type="month"].input-lg {
-    line-height: @input-height-large;
+
+    &.input-sm,
+    .input-group-sm & {
+      line-height: @input-height-small;
+    }
+
+    &.input-lg,
+    .input-group-lg & {
+      line-height: @input-height-large;
+    }
   }
 }
 
@@ -309,15 +307,38 @@ input[type="checkbox"] {
 //
 // Build on `.form-control` with modifier classes to decrease or increase the
 // height and font-size of form controls.
+//
+// The `.form-group-* form-control` variations are sadly duplicated to avoid the
+// issue documented in https://github.com/twbs/bootstrap/issues/15074.
 
-.input-sm,
-.form-group-sm .form-control {
+.input-sm {
   .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
 }
+.form-group-sm {
+  .form-control {
+    .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
+  }
+  .form-control-static {
+    height: @input-height-small;
+    padding: @padding-small-vertical @padding-small-horizontal;
+    font-size: @font-size-small;
+    line-height: @line-height-small;
+  }
+}
 
-.input-lg,
-.form-group-lg .form-control {
+.input-lg {
   .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
+}
+.form-group-lg {
+  .form-control {
+    .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
+  }
+  .form-control-static {
+    height: @input-height-large;
+    padding: @padding-large-vertical @padding-large-horizontal;
+    font-size: @font-size-large;
+    line-height: @line-height-large;
+  }
 }
 
 
@@ -450,8 +471,7 @@ input[type="checkbox"] {
     }
 
     // Remove default margin on radios/checkboxes that were used for stacking, and
-    // then undo the floating of radios and checkboxes to match (which also avoids
-    // a bug in WebKit: https://github.com/twbs/bootstrap/issues/1969).
+    // then undo the floating of radios and checkboxes to match.
     .radio,
     .checkbox {
       display: inline-block;

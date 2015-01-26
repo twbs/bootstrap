@@ -28,7 +28,7 @@
     <p>Be sure to use a <code>&lt;nav&gt;</code> element or, if using a more generic element such as a <code>&lt;div&gt;</code>, add a <code>role="navigation"</code> to every navbar to explicitly identify it as a landmark region for users of assistive technologies.</p>
   </div>
 
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="default-navbar">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -142,7 +142,7 @@
 
   <h2 id="navbar-brand-image">Brand image</h2>
   <p>Replace the navbar brand with your own image by swapping the text for an <code>&lt;img&gt;</code>. Since the <code>.navbar-brand</code> has its own padding and height, you may need to override some CSS depending on your image.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="navbar-with-image-brand">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -169,7 +169,7 @@
   <h2 id="navbar-forms">Forms</h2>
   <p>Place form content within <code>.navbar-form</code> for proper vertical alignment and collapsed behavior in narrow viewports. Use the alignment options to decide where it resides within the navbar content.</p>
   <p>As a heads up, <code>.navbar-form</code> shares much of its code with <code>.form-inline</code> via mixin. <strong class="text-danger">Some form controls, like input groups, may require fixed widths to be show up properly within a navbar.</strong></p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="navbar-form">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -208,13 +208,13 @@
 
   <div class="bs-callout bs-callout-warning" id="callout-navbar-form-labels">
     <h4>Always add labels</h4>
-    <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline navbar forms, you can hide the labels using the <code>.sr-only</code> class.</p>
+    <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the <code>.sr-only</code> class. There are further alternative methods of providing a label for assistive technologies, such as the <code>aria-label</code>, <code>aria-labelledby</code> or <code>title</code> attribute. If none of these is present, screen readers may resort to using the <code>placeholder</code> attribute, if present, but note that use of <code>placeholder</code> as a replacement for other labelling methods is not advised.</p>
   </div>
 
 
   <h2 id="navbar-buttons">Buttons</h2>
   <p>Add the <code>.navbar-btn</code> class to <code>&lt;button&gt;</code> elements not residing in a <code>&lt;form&gt;</code> to vertically center them in the navbar.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="navbar-button">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -243,7 +243,7 @@
 
   <h2 id="navbar-text">Text</h2>
   <p>Wrap strings of text in an element with <code>.navbar-text</code>, usually on a <code>&lt;p&gt;</code> tag for proper leading and color.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="navbar-text">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -268,7 +268,7 @@
 
   <h2 id="navbar-links">Non-nav links</h2>
   <p>For folks using standard links that are not within the regular navbar navigation component, use the <code>.navbar-link</code> class to add the proper colors for the default and inverse navbar options.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="navbar-link">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -303,7 +303,7 @@
 
   <h2 id="navbar-fixed-top">Fixed to top</h2>
   <p>Add <code>.navbar-fixed-top</code> and include a <code>.container</code> or <code>.container-fluid</code> to center and pad navbar content.</p>
-  <div class="bs-example bs-navbar-top-example">
+  <div class="bs-example bs-navbar-top-example" data-example-id="navbar-fixed-to-top">
     <nav class="navbar navbar-default navbar-fixed-top">
       <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
       <div class="container-fluid">
@@ -347,7 +347,7 @@ body { padding-top: 70px; }
 
   <h2 id="navbar-fixed-bottom">Fixed to bottom</h2>
   <p>Add <code>.navbar-fixed-bottom</code> and include a <code>.container</code> or <code>.container-fluid</code> to center and pad navbar content.</p>
-  <div class="bs-example bs-navbar-bottom-example">
+  <div class="bs-example bs-navbar-bottom-example" data-example-id="navbar-fixed-to-bottom">
     <nav class="navbar navbar-default navbar-fixed-bottom">
       <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
       <div class="container-fluid">
@@ -392,7 +392,7 @@ body { padding-bottom: 70px; }
   <h2 id="navbar-static-top">Static top</h2>
   <p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code> and include a <code>.container</code> or <code>.container-fluid</code> to center and pad navbar content.</p>
   <p>Unlike the <code>.navbar-fixed-*</code> classes, you do not need to change any padding on the <code>body</code>.</p>
-  <div class="bs-example bs-navbar-top-example">
+  <div class="bs-example bs-navbar-top-example" data-example-id="navbar-static-top">
     <nav class="navbar navbar-default navbar-static-top">
       <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
       <div class="container-fluid">
@@ -428,7 +428,7 @@ body { padding-bottom: 70px; }
 
   <h2 id="navbar-inverted">Inverted navbar</h2>
   <p>Modify the look of the navbar by adding <code>.navbar-inverse</code>.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="inverted-navbar">
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->

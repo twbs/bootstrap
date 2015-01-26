@@ -38,7 +38,7 @@ $(function () {
   <h2 id="popovers-examples">Examples</h2>
   <h3>Static popover</h3>
   <p>Four options are available: top, right, bottom, and left aligned.</p>
-  <div class="bs-example bs-example-popover">
+  <div class="bs-example bs-example-popover" data-example-id="static-popovers">
     <div class="popover top">
       <div class="arrow"></div>
       <h3 class="popover-title">Popover top</h3>
@@ -76,7 +76,7 @@ $(function () {
   </div>
 
   <h3>Live demo</h3>
-  <div class="bs-example" style="padding-bottom: 24px;">
+  <div class="bs-example bs-example-padded-bottom">
     <button type="button" class="btn btn-lg btn-danger bs-docs-popover" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
   </div>
 {% highlight html %}
@@ -125,11 +125,11 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
     <h4>Specific markup required for dismiss-on-next-click</h4>
     <p>For proper cross-browser and cross-platform behavior, you must use the <code>&lt;a&gt;</code> tag, <i>not</i> the <code>&lt;button&gt;</code> tag, and you also must include a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#tabindex"><code>tabindex</code></a> attribute.</p>
   </div>
-  <div class="bs-example" style="padding-bottom: 24px;">
-    <a href="#" tabindex="0" class="btn btn-lg btn-danger bs-docs-popover" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
+  <div class="bs-example bs-example-padded-bottom">
+    <a tabindex="0" class="btn btn-lg btn-danger bs-docs-popover" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
   </div>
 {% highlight html %}
-<a href="#" tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
+<a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
 {% endhighlight %}
 
 
@@ -140,12 +140,12 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
   <h3 id="popovers-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.</p>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped js-options-table js-options-table">
       <thead>
         <tr>
-          <th style="width: 100px;">Name</th>
-          <th style="width: 100px;">Type</th>
-          <th style="width: 50px;">Default</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Default</th>
           <th>Description</th>
         </tr>
       </thead>
@@ -252,26 +252,27 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
   <p>Initializes popovers for an element collection.</p>
 
   <h4>.popover('show')</h4>
-  <p>Reveals an element's popover. Popovers whose both title and content are zero-length are never displayed.</p>
+  <p>Reveals an element's popover. <strong>Returns to the caller before the popover has actually been shown</strong> (i.e. before the <code>shown.bs.popover</code> event occurs). This is considered a "manual" triggering of the popover. Popovers whose both title and content are zero-length are never displayed.</p>
   {% highlight js %}$('#element').popover('show'){% endhighlight %}
 
   <h4>.popover('hide')</h4>
-  <p>Hides an element's popover.</p>
+  <p>Hides an element's popover. <strong>Returns to the caller before the popover has actually been hidden</strong> (i.e. before the <code>hidden.bs.popover</code> event occurs). This is considered a "manual" triggering of the popover.</p>
   {% highlight js %}$('#element').popover('hide'){% endhighlight %}
 
   <h4>.popover('toggle')</h4>
-  <p>Toggles an element's popover.</p>
+  <p>Toggles an element's popover. <strong>Returns to the caller before the popover has actually been shown or hidden</strong> (i.e. before the <code>shown.bs.popover</code> or <code>hidden.bs.popover</code> event occurs). This is considered a "manual" triggering of the popover.</p>
   {% highlight js %}$('#element').popover('toggle'){% endhighlight %}
 
   <h4>.popover('destroy')</h4>
   <p>Hides and destroys an element's popover.</p>
   {% highlight js %}$('#element').popover('destroy'){% endhighlight %}
+
   <h3 id="popovers-events">Events</h3>
   <div class="table-responsive">
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
         <tr>
-          <th style="width: 150px;">Event Type</th>
+          <th>Event Type</th>
           <th>Description</th>
         </tr>
       </thead>

@@ -3,12 +3,13 @@
   <p class="lead">Bootstrap follows common web standards and&mdash;with minimal extra effort&mdash;can be used to create sites that are accessible to those using <abbr title="Assistive Technology" class="initialism">AT</abbr>.</p>
 
   <h3>Skip navigation</h3>
-  <p>If your navigation contains many links and comes before the main content in the DOM, add a <code>Skip to main content</code> link immediately after your opening <code>&lt;body&gt;</code> tag. <a href="http://a11yproject.com/posts/skip-nav-links/">(read why)</a></p>
+  <p>If your navigation contains many links and comes before the main content in the DOM, add a <code>Skip to main content</code> link before the navigation <a href="http://a11yproject.com/posts/skip-nav-links/">(read why)</a>. Using the <code>.sr-only</code> class will visually hide the skip link, and the <code>.sr-only-focusable</code> class will ensure that the link becomes visible once focused (for sighted keyboard users).</p>
 {% highlight html %}
 <body>
   <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+  ...
   <div class="container" id="content">
-    The main page content.
+    <!-- The main page content -->
   </div>
 </body>
 {% endhighlight %}

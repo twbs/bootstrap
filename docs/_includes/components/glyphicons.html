@@ -2,7 +2,7 @@
   <h1 id="glyphicons" class="page-header">Glyphicons</h1>
 
   <h2 id="glyphicons-glyphs">Available glyphs</h2>
-  <p>Includes 200 glyphs in font format from the Glyphicon Halflings set. <a href="http://glyphicons.com/">Glyphicons</a> Halflings are normally not available for free, but their creator has made them available for Bootstrap free of cost. As a thank you, we only ask that you include a link back to <a href="http://glyphicons.com/">Glyphicons</a> whenever possible.</p>
+  <p>Includes 260 glyphs in font format from the Glyphicon Halflings set. <a href="http://glyphicons.com/">Glyphicons</a> Halflings are normally not available for free, but their creator has made them available for Bootstrap free of cost. As a thank you, we only ask that you include a link back to <a href="http://glyphicons.com/">Glyphicons</a> whenever possible.</p>
   <div class="bs-glyphicons">
     <ul class="bs-glyphicons-list">
       {% for iconClassName in site.data.glyphicons %}
@@ -48,7 +48,7 @@
 
   <h2 id="glyphicons-examples">Examples</h2>
   <p>Use them in buttons, button groups for a toolbar, navigation, or prepended form inputs.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="glyphicons-general">
     <div class="btn-toolbar" role="toolbar">
       <div class="btn-group">
         <button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-align-left" aria-hidden="true"></span></button>
@@ -74,7 +74,7 @@
 </button>
 {% endhighlight %}
   <p>An icon used in an <a href="#alerts">alert</a> to convey that it's an error message, with additional <code>.sr-only</code> text to convey this hint to users of assistive technologies.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="glyphicons-accessibility">
     <div class="alert alert-danger" role="alert">
       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
       <span class="sr-only">Error:</span>

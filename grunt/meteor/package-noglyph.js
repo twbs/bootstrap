@@ -11,7 +11,7 @@ Package.describe({
   summary: 'Bootstrap without the Glyphicons font (official): the most popular HTML/CSS/JS responsive framework',  // limited to 100 characters
   version: packageJson.version,
   git: 'https://github.com/twbs/bootstrap.git',
-  readme: 'https://github.com/MeteorPackaging/bootstrap/blob/meteor-integration/grunt/meteor/README.md'
+  documentation: 'grunt/meteor/README.md'
 })
 
 Package.onUse(function (api) {

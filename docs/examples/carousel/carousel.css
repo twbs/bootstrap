@@ -59,6 +59,15 @@ body {
   min-width: 100%;
   height: 500px;
 }
+.carousel-inner > .item > .first-slide {
+  background-color: #777;
+}
+.carousel-inner > .item > .second-slide {
+  background-color: #666;
+}
+.carousel-inner > .item > .third-slide {
+  background-color: #555;
+}
 
 
 /* MARKETING CONTENT
@@ -75,6 +84,11 @@ body {
 .marketing .col-lg-4 p {
   margin-right: 10px;
   margin-left: 10px;
+}
+.marketing .col-lg-4 img {
+  width: 140px;
+  height: 140px;
+  background-color: #777;
 }
 
 

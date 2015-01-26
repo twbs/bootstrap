@@ -11,7 +11,7 @@
 
   <h3>Static tooltip</h3>
   <p>Four options are available: top, right, bottom, and left aligned.</p>
-  <div class="bs-example bs-example-tooltip">
+  <div class="bs-example bs-example-tooltip" data-example-id="static-tooltips">
     <div class="tooltip left" role="tooltip">
       <div class="tooltip-arrow"></div>
       <div class="tooltip-inner">
@@ -110,12 +110,12 @@ $('#example').tooltip(options)
   <h3 id="tooltips-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.</p>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped js-options-table">
       <thead>
         <tr>
-          <th style="width: 100px;">Name</th>
-          <th style="width: 100px;">Type</th>
-          <th style="width: 50px;">Default</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Default</th>
           <th>Description</th>
         </tr>
       </thead>
@@ -213,15 +213,15 @@ $('#example').tooltip(options)
   <p>Attaches a tooltip handler to an element collection.</p>
 
   <h4>.tooltip('show')</h4>
-  <p>Reveals an element's tooltip. Tooltips with zero-length titles are never displayed.</p>
+  <p>Reveals an element's tooltip. <strong>Returns to the caller before the tooltip has actually been shown</strong> (i.e. before the <code>shown.bs.tooltip</code> event occurs). This is considered a "manual" triggering of the tooltip. Tooltips with zero-length titles are never displayed.</p>
   {% highlight js %}$('#element').tooltip('show'){% endhighlight %}
 
   <h4>.tooltip('hide')</h4>
-  <p>Hides an element's tooltip.</p>
+  <p>Hides an element's tooltip. <strong>Returns to the caller before the tooltip has actually been hidden</strong> (i.e. before the <code>hidden.bs.tooltip</code> event occurs). This is considered a "manual" triggering of the tooltip.</p>
   {% highlight js %}$('#element').tooltip('hide'){% endhighlight %}
 
   <h4>.tooltip('toggle')</h4>
-  <p>Toggles an element's tooltip.</p>
+  <p>Toggles an element's tooltip. <strong>Returns to the caller before the tooltip has actually been shown or hidden</strong> (i.e. before the <code>shown.bs.tooltip</code> or <code>hidden.bs.tooltip</code> event occurs). This is considered a "manual" triggering of the tooltip.</p>
   {% highlight js %}$('#element').tooltip('toggle'){% endhighlight %}
 
   <h4>.tooltip('destroy')</h4>
@@ -233,7 +233,7 @@ $('#example').tooltip(options)
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
         <tr>
-          <th style="width: 150px;">Event Type</th>
+          <th>Event Type</th>
           <th>Description</th>
         </tr>
       </thead>

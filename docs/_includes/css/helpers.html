@@ -3,7 +3,7 @@
 
   <h3 id="helper-classes-colors">Contextual colors</h3>
   <p>Convey meaning through color with a handful of emphasis utility classes. These may also be applied to links and will darken on hover just like our default link styles.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="contextual-colors-helpers">
     <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
     <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
     <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
@@ -30,7 +30,7 @@
 
   <h3 id="helper-classes-backgrounds">Contextual backgrounds</h3>
   <p>Similar to the contextual text color classes, easily set the background of an element to any contextual class. Anchor components will darken on hover, just like the text classes.</p>
-  <div class="bs-example bs-example-bg-classes">
+  <div class="bs-example bs-example-bg-classes" data-example-id="contextual-backgrounds-helpers">
     <p class="bg-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
     <p class="bg-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
     <p class="bg-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
@@ -55,17 +55,17 @@
 
   <h3 id="helper-classes-close">Close icon</h3>
   <p>Use the generic close icon for dismissing content like modals and alerts.</p>
-  <div class="bs-example">
-    <p><button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></p>
+  <div class="bs-example" data-example-id="close-icon">
+    <p><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>
   </div>
 {% highlight html %}
-<button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 {% endhighlight %}
 
 
   <h3 id="helper-classes-carets">Carets</h3>
   <p>Use carets to indicate dropdown functionality and direction. Note that the default caret will reverse automatically in <a href="../components/#btn-dropdowns-dropup">dropup menus</a>.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="caret">
     <span class="caret"></span>
   </div>
 {% highlight html %}
