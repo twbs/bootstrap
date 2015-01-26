@@ -1,6 +1,6 @@
 /*!
  * Bootstrap v3.1.1-m6 (http://mantacode.github.io/bootstrap/)
- * Copyright 2011-2014 Manta Media, Inc.
+ * Copyright 2011-2015 Manta Media, Inc.
  * Licensed under MIT (https://github.com/mantacode/bootstrap/blob/master/LICENSE)
  */
 
