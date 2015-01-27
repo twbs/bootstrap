@@ -36,8 +36,9 @@ require('bootstrap')(jquery);
 console.log('Is Bootstrap loaded?');
 console.log(typeof jquery().modal === 'function');
 ```
- (Individual module)
+ 
 ```javascript
+// Individual module
 var jquery = require('jquery');
 require('bootstrap-modal')(jquery);
 ````

@@ -21,4 +21,5 @@ module.exports = function generateCommonJSModule(grunt) {
   files.forEach(function (file) {
     commonizeFile(path.resolve(srcPath + file + '.js'), path.resolve(npmPath + 'bootstrap-' + file + '/' + 'index.js'));
   });
+  commonizeFile(path.resolve('dist/js/bootstrap.js'), path.resolve(npmPath + 'index.js'));
 };
