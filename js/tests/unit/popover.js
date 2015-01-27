@@ -200,8 +200,8 @@ $(function () {
     var testBinder = function(pop) {
       var $content = $(pop).find('.popover-content'),
           $title = $(pop).find('.popover-title')
-      $title.text($title.text().replace('{{things}}', 'DATA')
-      $content.text($context.text().replace('{{stuff}}', 'BOUND')
+      $title.text($title.text().replace('{{things}}', 'DATA'))
+      $content.text($content.text().replace('{{stuff}}', 'BOUND'))
     };
     var $popover = $('<a href="#">@idisposable</a>')
       .appendTo('#qunit-fixture')
