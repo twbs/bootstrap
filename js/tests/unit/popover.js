@@ -188,18 +188,10 @@ $(function () {
     equal($('.popover').length, 0, 'popover was removed')
   })
 
-  test('should detach popover content rather than removing it so that event handlers are left intact', function (assert) {
-    var $content = $('<div class="content-with-handler"><a class="btn btn-warning">Button with event handler</a></div>').appendTo('#qunit-fixture')
-
-    var handlerCalled = false
-    $('.content-with-handler .btn').click(function () {
-      handlerCalled = true
-    })
-
   test('should call dataBinder', function () {
     var testBinder = function (pop) {
-      var $content = $(pop).find('.popover-content'),
-          $title = $(pop).find('.popover-title')
+      var $content = $(pop).find('.popover-content')
+      var $title = $(pop).find('.popover-title')
       $title.text($title.text().replace('{{things}}', 'DATA'))
       $content.text($content.text().replace('{{stuff}}', 'BOUND'))
     };
@@ -221,7 +213,15 @@ $(function () {
     $popover.bootstrapPopover('hide')
     equal($('.popover').length, 0, 'popover was removed')
   })
-  
+
+  test('should detach popover content rather than removing it so that event handlers are left intact', function (assert) {
+    var $content = $('<div class="content-with-handler"><a class="btn btn-warning">Button with event handler</a></div>').appendTo('#qunit-fixture')
+
+    var handlerCalled = false
+    $('.content-with-handler .btn').click(function () {
+      handlerCalled = true
+    })
+
     var $div = $('<div><a href="#">Show popover</a></div>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
