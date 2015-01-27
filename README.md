@@ -34,8 +34,13 @@ var jquery = require('jquery');
 require('bootstrap')(jquery);
 
 console.log('Is Bootstrap loaded?');
-console.log(typeof jquery.emulateTransitionEnd === 'function');
+console.log(typeof jquery().modal === 'function');
 ```
+ (Individual module)
+```javascript
+var jquery = require('jquery');
+require('bootstrap-modal')(jquery);
+````
 
 Read the [Getting started page](http://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
 
