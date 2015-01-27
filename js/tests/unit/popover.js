@@ -203,13 +203,14 @@ $(function () {
       $title.text($title.text().replace('{{things}}', 'DATA'))
       $content.text($content.text().replace('{{stuff}}', 'BOUND'))
     };
+
     var $popover = $('<a href="#">@idisposable</a>')
-        .appendTo('#qunit-fixture')
-        .bootstrapPopover({
-          title: 'Test {{things}}',
-          content: 'Test {{stuff}}',
-          dataBinder: testBinder
-        })
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover({
+        title: 'Test {{things}}',
+        content: 'Test {{stuff}}',
+        dataBinder: testBinder
+      })
 
     $popover.bootstrapPopover('show')
 
