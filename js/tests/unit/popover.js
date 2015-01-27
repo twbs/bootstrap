@@ -196,6 +196,31 @@ $(function () {
       handlerCalled = true
     })
 
+  test('should call dataBinder', function () {
+    var testBinder = function(pop) {
+      var $content = $(pop).find('.popover-content'),
+          $title = $(pop).find('.popover-title')
+      $title.text($title.text().replace('{{things}}', 'DATA')
+      $content.text($context.text().replace('{{stuff}}', 'BOUND')
+    };
+    var $popover = $('<a href="#">@idisposable</a>')
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover({
+        title: 'Test {{things}}',
+        content: 'Test {{stuff}}',
+        dataBinder: testBinder
+      })}
+
+    $popover.bootstrapPopover('show')
+
+    notEqual($('.popover').length, 0, 'popover was inserted')
+    equal($('.popover .popover-title').text(), 'Test DATA', 'title correctly dataBound')
+    equal($('.popover .popover-content').text(), 'Test BOUND', 'content correctly dataBound')
+
+    $popover.bootstrapPopover('hide')
+    equal($('.popover').length, 0, 'popover was removed')
+  })
+  
     var $div = $('<div><a href="#">Show popover</a></div>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
