@@ -88,7 +88,7 @@
         element.removeClass('fade')
       }
 
-      if (element.parent('.dropdown-menu')) {
+      if (element.parent('.dropdown-menu').length) {
         element
           .closest('li.dropdown')
             .addClass('active')
